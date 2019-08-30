@@ -1,6 +1,10 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "build": "lerna run build",
+    "dev": "lerna run dev"
+  },
   "devDependencies": {
     "commitizen": "^4.0.3",
     "cz-lerna-changelog": "^2.0.2",
