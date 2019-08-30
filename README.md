@@ -8,4 +8,4 @@ You'll find all the code in the `packages/` folder. The documentation site is fo
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.
 
-We have added a tool called `commitizen` that helps you with following this standard. Simply run `git cz` instead of `git commit`, and you will be prompted with what kind of commit you want to make.
+We have added a tool called `commitizen` that helps you with following this standard. Simply write `git commit`, and you'll be guided through a UI that creates nice commit messages that contain all the info we need.
