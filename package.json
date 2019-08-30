@@ -5,6 +5,10 @@
     "build": "lerna run build",
     "dev": "lerna run dev"
   },
+  "workspaces": [
+    "packages/colors",
+    "packages/docs"
+  ],
   "devDependencies": {
     "commitizen": "^4.0.3",
     "cz-lerna-changelog": "^2.0.2",
