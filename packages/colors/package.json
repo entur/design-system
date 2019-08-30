@@ -1,0 +1,7 @@
+{
+  "name": "@entur/colors",
+  "version": "1.0.0",
+  "description": "The Entur color palette",
+  "main": "src/index.js",
+  "license": "MIT"
+}
