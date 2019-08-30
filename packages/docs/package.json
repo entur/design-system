@@ -2,10 +2,6 @@
   "name": "@entur/designsystem-docs",
   "description": "The documentation site for the Entur Design System",
   "version": "0.0.1",
-  "keywords": [
-    "gatsby",
-    "docz"
-  ],
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",
@@ -13,6 +9,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@entur/colors": "^1.0.0",
     "gatsby": "^2.13.73",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-sass": "^2.1.12",

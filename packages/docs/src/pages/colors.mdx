@@ -1,0 +1,48 @@
+---
+name: Colors
+route: /colors
+menu: General
+---
+
+import colors from '@entur/colors';
+import ColorList from '../components/ColorList';
+
+# Colors
+
+Entur has a large palette of colors that's easy to use.
+
+## How to choose what colors
+
+Good question! Let's get back to that.
+
+## Primary colors
+
+<ColorList colors={colors.primary} />
+
+## Secondary colors
+
+<ColorList colors={colors.secondary} />
+
+## Tertiary colors
+
+<ColorList colors={colors.tertiary} />
+
+## Validation colors
+
+<ColorList colors={colors.validation} />
+
+## Miscellaneous colors
+
+<ColorList colors={colors.misc} />
+
+## Transport colors
+
+We have a separate set for the different transport types:
+
+### Default theme
+
+<ColorList colors={colors.transport.default} />
+
+### Midnight theme
+
+<ColorList colors={colors.transport.midnight} />

@@ -1,0 +1,14 @@
+.color-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+
+.color-list__item {
+  align-self: center;
+  padding: 40px;
+}
