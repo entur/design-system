@@ -11,38 +11,66 @@ import ColorList from '../components/ColorList';
 
 Entur has a large palette of colors that's easy to use.
 
-## How to choose what colors
+## Installation
+
+```sh
+npm install @entur/colors
+```
+
+## Usage
+
+You should load the css file containing the colors as soon as possible in your application. Other components might require the css properties contained in this file to be present in order to be styled correctly.
+
+```js
+import '@entur/colors/colors.css';
+```
+
+After this is included, you can refer to the css properties throughout your code without loading them again.
+
+### JavaScript
+
+The colors are also exported as a JavaScript object as well - keyed by the type of color (primary, secondary etc), and then by name. The colors are provided in the hex format (i.e. #123abc).
+
+```js
+import colors from '@entur/colors';
+
+const Example = () => <div style={{ backgroundColor: colors.primary.blue }} />;
+```
+
+## How to choose what colors to use
 
 Good question! Let's get back to that.
 
-## Primary colors
+## Available colors
 
-<ColorList colors={colors.primary} />
+### Primary colors
 
-## Secondary colors
+<ColorList colors={colors.primary} category="primary" />
 
-<ColorList colors={colors.secondary} />
+### Secondary colors
 
-## Tertiary colors
+<ColorList colors={colors.secondary} category="secondary" />
 
-<ColorList colors={colors.tertiary} />
+### Tertiary colors
 
-## Validation colors
+<ColorList colors={colors.tertiary} category="tertiary" />
 
-<ColorList colors={colors.validation} />
+### Validation colors
 
-## Miscellaneous colors
+<ColorList colors={colors.validation} category="validation" />
 
-<ColorList colors={colors.misc} />
+### Miscellaneous colors
 
-## Transport colors
+<ColorList colors={colors.misc} category="misc" />
+
+### Transport colors
 
 We have a separate set for the different transport types:
 
-### Default theme
+#### Default theme
 
-<ColorList colors={colors.transport.default} />
+<ColorList colors={colors.transport.default} category="transport-default" />
 
-### Midnight theme
+#### Midnight theme
 
-<ColorList colors={colors.transport.midnight} />
+<ColorList colors={colors.transport.midnight} category="transport-midnight" />
