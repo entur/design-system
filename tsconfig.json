@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@entur/*": ["./*/src"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react"
+  }
+}
