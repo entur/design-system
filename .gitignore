@@ -1,3 +1,7 @@
+# generated files
+lib
+*.tsbuildinfo
+
 # dependencies
 node_modules
 
