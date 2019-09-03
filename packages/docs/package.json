@@ -9,7 +9,8 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@entur/colors": "^1.0.0",
+    "@entur/colors": "^0.1.0",
+    "@entur/typography": "^0.1.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "gatsby": "^2.13.73",

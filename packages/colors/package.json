@@ -1,7 +1,16 @@
 {
   "name": "@entur/colors",
-  "version": "1.0.0",
-  "description": "The Entur color palette",
-  "main": "src/index.js",
-  "license": "MIT"
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/colors.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  }
 }
