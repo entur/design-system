@@ -1,10 +1,16 @@
 import React from 'react';
 import './ColorList.scss';
 
-const camelCaseToKebabCase = str =>
+const camelCaseToKebabCase = (str: string) =>
   str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
 
-export default function ColorList(props) {
+interface IProps {
+  colors: {
+    [name: string]: string;
+  };
+  category: string;
+}
+export default function ColorList(props: IProps) {
   return (
     <ul className="color-list">
       {Object.entries(props.colors).map(([name, hex]) => (

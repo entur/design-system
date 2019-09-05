@@ -9,12 +9,16 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@entur/colors": "^1.0.0",
+    "@entur/colors": "^0.1.0",
+    "@entur/typography": "^0.1.0",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "gatsby": "^2.13.73",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-sass": "^2.1.12",
     "gatsby-plugin-sharp": "^2.2.18",
-    "gatsby-theme-docz": "2.0.0-rc.6",
+    "gatsby-plugin-typescript": "^2.1.6",
+    "gatsby-theme-docz": "2.0.0-rc.28",
     "gatsby-transformer-sharp": "^2.2.7",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",

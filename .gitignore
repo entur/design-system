@@ -1,3 +1,9 @@
+# generated files
+dist
+*.tsbuildinfo
+.rts2_cache_cjs
+.rts2_cache_esm
+
 # dependencies
 node_modules
 
