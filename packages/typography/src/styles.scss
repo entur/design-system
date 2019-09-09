@@ -1,0 +1,123 @@
+html {
+  color: var(--primary-blue);
+  font-family: 'Nationale', 'Gotham Rounded', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1,
+.entur-h1 {
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 1.2352941176;
+}
+
+.h1-mobile,
+.entur-h1-mobile {
+  font-size: 1.375rem;
+  line-height: 1.2727272727;
+}
+
+h2,
+.entur-h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2857142857;
+}
+
+.h2-mobile,
+.entur-h2-mobile {
+  font-size: 1rem;
+  line-height: 1.375;
+}
+
+h3,
+.entur-h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3636363636;
+}
+
+.h3-mobile,
+.entur-h3-mobile {
+  font-size: 0.875rem;
+  line-height: 1.4285714285;
+}
+
+h4,
+.entur-h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+h5,
+.entur-h5 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5714285714;
+}
+
+h1,
+.entur-h1,
+h2,
+.entur-h2,
+h3,
+.entur-h3,
+h4,
+.entur-h4,
+h5,
+.entur-h5 {
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-weight: 500;
+}
+
+sub {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4285714285;
+}
+
+ul,
+ol {
+  font-size: 1rem;
+}
+
+a {
+  font-weight: 500;
+
+  &,
+  &:link,
+  &:visited {
+    color: var(--primary-blue);
+  }
+
+  &:hover {
+    color: var(--primary-blue-60);
+  }
+
+  &:focus {
+    outline-color: var(--focus);
+  }
+}
+
+.html-mobile,
+.a-mobile {
+  line-height: 1.375;
+}
+
+.entur-sub-label.sub-label-mobile {
+  line-height: 1.3333333333;
+}
+
+.small-mobile {
+  color: var(--primary-blue-40);
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
