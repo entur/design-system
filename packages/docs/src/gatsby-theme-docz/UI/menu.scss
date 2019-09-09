@@ -1,0 +1,30 @@
+.navbar {
+}
+
+.logo-wrapper {
+  display: inline-block;
+  width: 15vw;
+  min-width: 15vw;
+}
+
+.tab-link-container {
+  display: inline-block;
+  background: white;
+  width: auto;
+  // width: 85vw;
+  padding-left: 10rem;
+}
+
+.tab-link {
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.sidemenu-wrapper {
+  position: fixed;
+  overflow-x: hidden;
+  width: 15vw;
+  max-width: 15vw;
+  min-width: 15vw;
+  background: #181c56;
+}

@@ -1,0 +1,128 @@
+@import './config';
+@import './colors';
+
+html {
+  color: $blue;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+h1,
+.#{$prefix}-h1 {
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 1.2352941176;
+}
+
+.h1-mobile,
+.#{$prefix}-h1-mobile {
+  font-size: 1.375rem;
+  line-height: 1.2727272727;
+}
+
+h2,
+.#{$prefix}-h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2857142857;
+}
+
+.h2-mobile,
+.#{$prefix}-h2-mobile {
+  font-size: 1rem;
+  line-height: 1.375;
+}
+
+h3,
+.#{$prefix}-h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3636363636;
+}
+
+.h3-mobile,
+.#{$prefix}-h3-mobile {
+  font-size: 0.875rem;
+  line-height: 1.4285714285;
+}
+
+h4,
+.#{$prefix}-h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+h5,
+.#{$prefix}-h5 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5714285714;
+}
+
+h1,
+.#{$prefix}-h1,
+h2,
+.#{$prefix}-h2,
+h3,
+.#{$prefix}-h3,
+h4,
+.#{$prefix}-h4,
+h5,
+.#{$prefix}-h5 {
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-size: $base-font-size;
+  font-weight: 500;
+  line-height: $base-line-height;
+}
+
+sub {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4285714285;
+}
+
+ul,
+ol {
+  font-size: 1rem;
+}
+
+a {
+  font-size: $base-font-size;
+  font-weight: 500;
+  line-height: $base-line-height;
+
+  &,
+  &:link,
+  &:visited {
+    color: $blue;
+  }
+
+  &:hover {
+    color: $blue-60;
+  }
+
+  &:focus {
+    outline-color: $focus;
+  }
+}
+
+.html-mobile,
+.a-mobile {
+  line-height: 1.375;
+}
+
+.entur-sub-label.sub-label-mobile {
+  line-height: 1.3333333333;
+}
+
+.small-mobile {
+  color: $blue-40;
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1.4;
+}

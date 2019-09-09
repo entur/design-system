@@ -1,0 +1,29 @@
+@import '../styles/config';
+
+$padding-top-md: 0.65625rem;
+$padding-right-md: 1rem;
+$padding-bottom-md: 0.65625rem;
+$padding-left-md: 1rem;
+
+$button-height-md: $padding-top-md + $padding-bottom-md + $base-line-height;
+
+$padding-top-lg: 0.96875rem;
+$padding-right-lg: 1rem;
+$padding-bottom-lg: 0.96875rem;
+$padding-left-lg: 1rem;
+
+$button-height-lg: $padding-top-lg + $padding-bottom-lg + $base-line-height;
+
+@mixin md-size($add-top: 0, $add-right: 0, $add-bottom: 0, $add-left: 0) {
+  font-size: 1rem;
+  line-height: $base-line-height;
+  padding: ($padding-top-md + $add-top) ($padding-right-md + $add-right)
+    ($padding-bottom-md + $add-bottom) ($padding-left-md + $add-left);
+}
+
+@mixin lg-size($add-top: 0, $add-right: 0, $add-bottom: 0, $add-left: 0) {
+  font-size: 1rem;
+  line-height: $base-line-height;
+  padding: ($padding-top-lg + $add-top) ($padding-right-lg + $add-right)
+    ($padding-bottom-lg + $add-bottom) ($padding-left-lg + $add-left);
+}

@@ -1,0 +1,21 @@
+@import '~@entur/fonts/index.css';
+@import './entur/styles/typo.scss';
+
+body {
+  margin: 0;
+  overflow-y: hidden;
+  background: #181c56;
+}
+
+.page-wrapper {
+}
+
+.content-wrapper {
+  height: 95vh;
+  margin-left: 15vw;
+  width: 85vw;
+  padding: 2rem;
+  border: white 1rem solid;
+  overflow-y: scroll;
+  background: white;
+}
