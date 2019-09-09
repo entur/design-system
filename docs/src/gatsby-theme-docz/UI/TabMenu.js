@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useMenus, Link } from 'docz';
 import { Menu as EnturMenu } from '../entur/menu';
 import { MenuItem } from '../entur/menu/MenuItem';
@@ -12,8 +12,12 @@ export default function TabMenu(props) {
       menus.find(menu =>
         menu.menu.find(subMenu => subMenu.route === props.currentPath),
       ) || menus[0],
-    [props.currentPath],
+    [props.currentPath, menus],
   );
+
+  const isActive = ({ isCurrent }) => {
+    return isCurrent ? { className: 'tab-link active-tab-link' } : null;
+  };
 
   return (
     <>
@@ -25,28 +29,37 @@ export default function TabMenu(props) {
           {menus
             .filter(menu => menu.menu)
             .map(menu => (
-              <Link to={menu.menu[0].route} className="tab-link" key={menu.id}>
+              <Link
+                // {...props}
+                getProps={isActive}
+                to={menu.menu[0].route}
+                className="tab-link"
+                key={menu.id}
+              >
                 {menu.name}
               </Link>
             ))}
         </div>
       </nav>
       <div className="sidemenu-wrapper">
-        <SideMenu menu={currentMenu} />
+        <SideMenu menu={currentMenu} currentPath={props.currentPath} />
       </div>
     </>
   );
 }
 
-function SideMenu({ menu }) {
+function SideMenu({ menu, currentPath }) {
+  const [active, setActive] = useState(currentPath);
   return (
-    <EnturMenu>
+    <EnturMenu active={active} onItemSelected={setActive}>
       {menu.menu.map(subMenu => (
         <MenuItem
           label={<Link to={subMenu.route}>{subMenu.name}</Link>}
-          id={subMenu.id}
+          id={subMenu.route}
           key={subMenu.id + subMenu.name}
-        ></MenuItem>
+        >
+          {subMenu.menu && <SideMenu menu={subMenu.menu} />}
+        </MenuItem>
       ))}
     </EnturMenu>
   );

@@ -1,23 +1,33 @@
 .navbar {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
 }
 
 .logo-wrapper {
-  display: inline-block;
+  flex: 0 0 auto;
   width: 15vw;
   min-width: 15vw;
 }
 
 .tab-link-container {
-  display: inline-block;
+  flex: 1 0 auto;
   background: white;
   width: auto;
   // width: 85vw;
   padding-left: 10rem;
+  display: flex;
+  align-items: center;
 }
 
 .tab-link {
   text-decoration: none;
   padding: 1rem;
+}
+.tab-link.active-tab-link {
+  text-decoration: underline;
+  text-decoration-color: #ff5959;
 }
 
 .sidemenu-wrapper {
