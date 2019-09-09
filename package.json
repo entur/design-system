@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "build": "lerna run build",
-    "start": "lerna run dev",
+    "start": "cd docs && yarn start",
     "test": "tsdx test --env=jsdom"
   },
   "workspaces": [
+    "docs",
     "packages/colors",
-    "packages/docs",
     "packages/typography"
   ],
   "devDependencies": {
