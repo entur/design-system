@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["packages/*/src", "packages/*/types"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -17,13 +17,10 @@
     "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "paths": {
-      "*": ["src/*", "node_modules/*"]
-    },
     "jsx": "react",
     "esModuleInterop": true
   }
