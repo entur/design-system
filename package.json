@@ -4,7 +4,8 @@
   "scripts": {
     "build": "lerna run build",
     "start": "cd docs && yarn start",
-    "test": "tsdx test --env=jsdom"
+    "test": "tsdx test --env=jsdom",
+    "new-package": "./bin/new-package.js"
   },
   "workspaces": [
     "docs",
@@ -15,9 +16,11 @@
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "case": "^1.6.2",
     "commitizen": "^4.0.3",
     "cz-lerna-changelog": "^2.0.2",
     "husky": "^3.0.5",
+    "inquirer": "^7.0.0",
     "lerna": "^3.16.4",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
