@@ -14,7 +14,11 @@ export default function ColorList(props: IProps) {
   return (
     <ul className="color-list">
       {Object.entries(props.colors).map(([name, hex]) => (
-        <li className="color-list__item" style={{ backgroundColor: hex }}>
+        <li
+          className="color-list__item"
+          style={{ backgroundColor: hex }}
+          key={hex + name}
+        >
           <div className="color-list__detail">
             {name}: {hex}
             <br />

@@ -9,14 +9,16 @@ const compomentMap = {};
 
 const Theme = ({ children }) => {
   return (
-    <div className="page-wrapper">
+    <div>
       <ComponentsProvider components={compomentMap}>
         <div className="components-provider-wrapper">
           <Location>
             {({ location }) => (
               <React.Fragment>
                 <TabMenu currentPath={location.pathname} />
-                <div className="content-wrapper">{children}</div>
+                <div className="content-wrapper">
+                  <div className="content-container">{children}</div>
+                </div>
               </React.Fragment>
             )}
           </Location>

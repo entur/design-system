@@ -7,15 +7,16 @@ body {
   background: #181c56;
 }
 
-.page-wrapper {
-}
-
 .content-wrapper {
   height: 95vh;
   margin-left: 15vw;
   width: 85vw;
-  padding: 2rem;
-  border: white 1rem solid;
+  overflow-y: scroll;
+}
+
+.content-container {
+  padding: 1rem 2rem 2rem 3rem;
   overflow-y: scroll;
   background: white;
+  height: -webkit-fill-available;
 }
