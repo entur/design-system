@@ -3,6 +3,7 @@ dist
 *.tsbuildinfo
 .rts2_cache_cjs
 .rts2_cache_esm
+.firebase
 
 # dependencies
 node_modules

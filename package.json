@@ -6,6 +6,8 @@
     "build": "lerna run build",
     "start": "cd docs && yarn start",
     "test": "tsdx test --env=jsdom",
+    "predeploy-docs": "yarn build",
+    "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js"
   },
   "workspaces": [
@@ -20,6 +22,7 @@
     "case": "^1.6.2",
     "commitizen": "^4.0.3",
     "cz-lerna-changelog": "^2.0.2",
+    "firebase-tools": "^7.3.1",
     "husky": "^3.0.5",
     "inquirer": "^7.0.0",
     "lerna": "^3.16.4",

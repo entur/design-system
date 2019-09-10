@@ -22,6 +22,20 @@ Once this function is done, you'll want to visit the `packages/<your-new-package
 
 You will document the component via an MDX file in the `docs`-folder. This will also let you get some visual feedback while developing your component.
 
+## Deploying the docs
+
+The docs are currently available at [entur-design-system.firebaseapp.com](https://entur-design-system.firebaseapp.com).
+
+In the future, this will happen automatically whenever we merge to master. For now, there's a few manual steps.
+
+### Setting up and logging in to Firebase
+
+In order to deploy the docs, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Kristofer Giltvedt Selbekk](mailto:kristoffer.giltvedt.selbekk@entur.org) to be granted the correct access rights.
+
+### The actual deploying part
+
+To deploy the documentation website, run `yarn deploy-docs`. This will build the Gatsby site, and deploy it via the Firebase CLI.
+
 ## Contributing
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.
