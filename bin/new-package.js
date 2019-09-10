@@ -17,23 +17,28 @@ function sortByKey([prevKey], [nextKey]) {
 
 async function run() {
   try {
-    const answers = await inquirer.prompt([
-      {
-        name: 'packageName',
-        message: 'What do you want to name your package?',
-        validate: input => {
-          const normalizedInput = `${input}`.toLowerCase().trim();
-          const packageExists = fs.existsSync(
-            path.resolve('packages', normalizedInput),
-          );
-          return packageExists
-            ? `There's already a package with the name "${normalizedInput}".`
-            : true;
+    let packageName = process.argv[2];
+    if (!packageName) {
+      const answers = await inquirer.prompt([
+        {
+          name: 'packageName',
+          message: 'What do you want to name your package?',
+          validate: input => {
+            const normalizedInput = `${input}`.toLowerCase().trim();
+            const packageExists = fs.existsSync(
+              path.resolve('packages', normalizedInput),
+            );
+            return packageExists
+              ? `There's already a package with the name "${normalizedInput}".`
+              : true;
+          },
         },
-      },
-    ]);
+      ]);
+      packageName = answers.packageName;
+    }
 
-    const packageName = toCase.kebab(answers.packageName);
+    packageName = toCase.kebab(answers.packageName);
+
     const paths = {
       templateFolder: path.resolve('bin', 'template'),
       newPackageFolder: path.resolve('packages', packageName),
