@@ -18,6 +18,10 @@ To create a new package, simply run `yarn new-package`, and you'll be guided thr
 
 You can also specify the name of the new package if you want - like `yarn new-package swirler`.
 
+Once this function is done, you'll want to visit the `packages/<your-new-package>/src` folder, and start implementing.
+
+You will document the component via an MDX file in the `docs`-folder. This will also let you get some visual feedback while developing your component.
+
 ## Contributing
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.

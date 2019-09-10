@@ -37,7 +37,7 @@ async function run() {
       packageName = answers.packageName;
     }
 
-    packageName = toCase.kebab(answers.packageName);
+    packageName = toCase.kebab(packageName);
 
     const paths = {
       templateFolder: path.resolve('bin', 'template'),
@@ -67,7 +67,7 @@ async function run() {
 
     fs.writeFileSync(paths.newIndexTsx, indexTsxContent);
 
-    console.log('🦷 Adding package to the active workspaces');
+    console.log('🦷  Adding package to the active workspaces');
     const rootPackageJson = await fs.readJson(paths.rootPackageJson);
     rootPackageJson.workspaces.push(`packages/${packageName}`);
     rootPackageJson.workspaces.sort();
@@ -89,7 +89,7 @@ async function run() {
       'Now, remember to document it thoroughly, and write some tests!',
     );
   } catch (e) {
-    console.error('Something went wrong - exiting in a dirty state 🙀', e);
+    console.error('🙀 Something went wrong - exiting in a dirty state', e);
   }
 }
 
