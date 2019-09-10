@@ -5,7 +5,7 @@
   "scripts": {
     "build": "lerna run build",
     "start": "cd docs && yarn start",
-    "test": "tsdx test --env=jsdom",
+    "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js"
@@ -16,6 +16,7 @@
     "packages/typography"
   ],
   "devDependencies": {
+    "@testing-library/react": "^9.1.4",
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -36,6 +37,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
   "husky": {

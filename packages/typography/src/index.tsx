@@ -3,9 +3,11 @@ import './styles.scss';
 
 interface Props {
   as?: string | React.ComponentType;
-  children: React.ReactChildren;
 }
 
-export const PageHeading = ({ as: Element = 'h1', ...rest }: Props) => {
+export const PageHeading: React.FC<Props> = ({
+  as: Element = 'h1',
+  ...rest
+}) => {
   return <Element {...rest} />;
 };
