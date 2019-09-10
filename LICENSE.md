@@ -81,7 +81,7 @@ to carry prominent notices stating that the Work has been modified and the date 
 
 Copyleft clause: If the Licensee distributes or communicates copies of the Original Works or Derivative Works, this
 Distribution or Communication will be done under the terms of this Licence or of a later version of this Licence unless
-the Original Work is expressly distributed only under this version of the Licence â€” for example by communicating
+the Original Work is expressly distributed only under this version of the Licence - for example by communicating
 'EUPL v. 1.2 only'. The Licensee (becoming Licensor) cannot offer or impose any additional terms or conditions on the
 Work or Derivative Work that alter or restrict the terms of the Licence.
 
@@ -202,7 +202,7 @@ Without prejudice to specific agreement between parties,
 - GNU Lesser General Public Licence (LGPL) v. 2.1, v. 3
 - Creative Commons Attribution-ShareAlike v. 3.0 Unported (CC BY-SA 3.0) for works other than software
 - European Union Public Licence (EUPL) v. 1.1, v. 1.2
-- QuÃ©bec Free and Open-Source Licence â€” Reciprocity (LiLiQ-R) or Strong Reciprocity (LiLiQ-R+).
+- Québec Free and Open-Source Licence - Reciprocity (LiLiQ-R) or Strong Reciprocity (LiLiQ-R+).
 
 The European Commission may update this Appendix to later versions of the above licences without producing
 a new version of the EUPL, as long as they provide the rights granted in Article 2 of this Licence and protect the
