@@ -12,6 +12,10 @@ To build all packages, run `yarn build`
 
 To start a development server, run `yarn dev`
 
+## Adding new packages
+
+To create a new package, simply run `yarn new-package`, and you'll be guided through the process of creating a new package.
+
 ## Contributing
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.
