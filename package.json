@@ -1,6 +1,7 @@
 {
   "name": "root",
   "private": true,
+  "license": "EUPL-1.2",
   "scripts": {
     "build": "lerna run build",
     "start": "cd docs && yarn start",
