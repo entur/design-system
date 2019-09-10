@@ -16,7 +16,7 @@ pipelines:
 
     - step:
         name: Deploy to Firebase
-        deployment: default
+        deployment: production
         script:
           - pipe: atlassian/firebase-deploy:0.3.3
             variables:
