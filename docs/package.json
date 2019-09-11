@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@entur/colors": "^0.1.0",
-    "@entur/fonts": "git+ssh://git@bitbucket.org:enturas/entur-fonts.git#a5e1956",
     "@entur/typography": "^0.1.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -29,5 +28,8 @@
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "scheduler": "^0.15.0"
+  },
+  "optionalDependencies": {
+    "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master"
   }
 }
