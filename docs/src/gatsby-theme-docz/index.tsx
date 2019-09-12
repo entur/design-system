@@ -2,8 +2,8 @@ import React from 'react';
 import { theme, ComponentsProvider } from 'docz';
 import './index.scss';
 import '@entur/fonts/index.css';
-import TabMenu from './UI/TabMenu';
 import { Location } from '@reach/router';
+import Menu from './UI/Menu';
 
 const compomentMap = {};
 
@@ -15,7 +15,7 @@ const Theme = ({ children }) => {
           <Location>
             {({ location }) => (
               <React.Fragment>
-                <TabMenu currentPath={location.pathname} />
+                <Menu currentPath={location} />
                 <div className="content-wrapper">
                   <div className="content-container">{children}</div>
                 </div>
@@ -24,7 +24,6 @@ const Theme = ({ children }) => {
           </Location>
         </div>
       </ComponentsProvider>
-      ;
     </div>
   );
 };

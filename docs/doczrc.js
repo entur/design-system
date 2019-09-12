@@ -1,5 +1,5 @@
 export default {
-  menu: ['Kom i gang', 'Components'],
+  menu: ['Components', 'Principles'],
   typescript: true,
   title: 'Entur Designsystem',
   ignore: ['README.md', 'CHANGELOG.md'],
