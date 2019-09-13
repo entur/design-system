@@ -22,7 +22,7 @@ export default function ColorList(props: IProps) {
           <div className="color-list__detail">
             {name}: {hex}
             <br />
-            --{props.category}-{camelCaseToKebabCase(name)}
+            --colors-{props.category}-{camelCaseToKebabCase(name)}
           </div>
         </li>
       ))}
