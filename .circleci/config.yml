@@ -27,6 +27,10 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
+          name: build
+          command: yarn build
+
+      - run:
           name: test
           command: yarn test
   deploy:
