@@ -15,7 +15,7 @@ const Theme = ({ children }) => {
           <Location>
             {({ location }) => (
               <React.Fragment>
-                <Menu currentPath={location} />
+                <Menu />
                 <div className="content-wrapper">
                   <div className="content-container">{children}</div>
                 </div>

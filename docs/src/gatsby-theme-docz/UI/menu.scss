@@ -9,13 +9,17 @@
   flex: 0 0 auto;
   width: 15vw;
   min-width: 15vw;
+  background: #181c56;
+}
+
+.logo-container {
+  width: 50%;
 }
 
 .tab-link-container {
   flex: 1 0 auto;
-  background: white;
+  background: #181c56;
   width: auto;
-  // width: 85vw;
   padding-left: 10rem;
   display: flex;
   align-items: center;
@@ -24,10 +28,12 @@
 .tab-link {
   text-decoration: none;
   padding: 1rem;
-}
-.tab-link.active-tab-link {
-  text-decoration: underline;
-  text-decoration-color: #ff5959;
+  color: white;
+
+  &.tab-link.active-tab-link {
+    text-decoration: underline;
+    text-decoration-color: #ff5959;
+  }
 }
 
 .sidemenu-wrapper {
@@ -36,5 +42,30 @@
   width: 15vw;
   max-width: 15vw;
   min-width: 15vw;
+  height: 95vh;
+  background: #181c56;
+}
+
+.sidemenu-link {
+  color: white;
+}
+
+.sidemenu-group-header {
+  color: #ddd;
+  font-size: 14px;
+}
+
+.heading-navigator-wrapper {
+  position: fixed;
+  overflow-x: hidden;
+  right: 0;
+  width: 15vw;
+  max-width: 15vw;
+  min-width: 15vw;
   background: white;
+}
+
+.heading-navigator-links-wrapper {
+  display: flex;
+  flex-direction: column;
 }

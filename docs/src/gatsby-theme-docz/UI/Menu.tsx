@@ -33,58 +33,77 @@ function Sidebar({ menus, docs, parent }) {
         menus.map(({ id, name, menu }) => {
           if (!menu) return null;
           if (menu[0].parent !== parent) return null;
-          console.log(menu, name, parent);
 
           return (
-            <React.Fragment key={id}>
-              {menu[0].parent === parent && <div>{name}</div>}
+            <div key={id}>
+              {menu[0].parent === parent && (
+                <div className="sidemenu-group-header">{name}</div>
+              )}
               {menu.map(item => {
                 const doc = docs && docs.find(doc => doc.name === item.name);
                 if (!doc) return null;
 
                 return (
-                  <div>
-                    <Link key={doc.id} to={doc.route}>
-                      {doc.name}
-                    </Link>
-                  </div>
+                  <Link key={doc.id} to={doc.route}>
+                    <div className="sidemenu-link">{doc.name}</div>
+                  </Link>
                 );
               })}
-            </React.Fragment>
+            </div>
           );
         })}
     </Fragment>
   );
 }
 
-export default function Menu({ currentPath }) {
+function HeadingNavigator({ currentDoc }) {
+  return (
+    <div className="heading-navigator-links-wrapper">
+      {currentDoc.headings.map(heading => (
+        <a
+          className="heading-link"
+          href={`#${heading.slug}`}
+          key={heading.depth}
+        >
+          {heading.value}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+export default function Menu() {
   const menus = useMenus();
   const currentDoc = useCurrentDoc();
 
   const docs = useDocs();
 
   const [currentTop, setTop] = useState(currentDoc.parent);
-
+  console.log(currentDoc);
   return (
     <>
       <nav className="navbar">
         <div className="logo-wrapper">
-          <img src={logoSVG} alt="" />
+          <img src={logoSVG} alt="Entur logo" className="logo-container" />
         </div>
         <div className="tab-link-container">
           {TOPBAR.map((menu, index) => (
             <Link
               to={menu.to}
-              className="tab-link"
               key={index}
               onClick={() => setTop(menu.children)}
             >
-              {menu.children}
+              <div className="tab-link">{menu.children}</div>
             </Link>
           ))}
         </div>
       </nav>
-      <Sidebar menus={menus} docs={docs} parent={currentTop} />
+      <div className="sidemenu-wrapper">
+        <Sidebar menus={menus} docs={docs} parent={currentTop} />
+      </div>
+      <div className="heading-navigator-wrapper">
+        <HeadingNavigator currentDoc={currentDoc} />
+      </div>
     </>
   );
 }

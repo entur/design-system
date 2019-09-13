@@ -5,7 +5,7 @@ export interface Props {
   as?: string | React.ComponentType;
 }
 
-export const PageHeading: React.SFC<Props> = ({
+export const PageHeading: React.FC<Props> = ({
   as: Element = 'h1',
   ...rest
 }) => {
