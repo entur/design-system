@@ -60,9 +60,10 @@ function Sidebar({ menus, docs, parent }) {
 }
 
 function HeadingNavigator({ currentDoc }) {
+  const headings = currentDoc ? currentDoc.headings : [''];
   return (
     <div className="heading-navigator-links-wrapper">
-      {currentDoc.headings.map(heading => (
+      {headings.map(heading => (
         <a
           className="heading-link"
           href={`#${heading.slug}`}
@@ -79,9 +80,11 @@ export default function Menu() {
   const menus = useMenus();
   const currentDoc = useCurrentDoc();
 
+  const parent = currentDoc ? currentDoc.parent : 'Kom i gang';
+
   const docs = useDocs();
 
-  const [currentTop, setTop] = useState(currentDoc.parent);
+  const [currentTop, setTop] = useState(parent);
   return (
     <>
       <nav className="navbar">
