@@ -1,0 +1,22 @@
+{
+  "name": "@entur/tokens",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/tokens.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn build:tokens && yarn build:css",
+    "build:tokens": "tsdx build",
+    "build:css": "ts-node -O '{\"module\": \"commonjs\"}' bin/generate-css-properties.ts",
+    "test": "tsdx test"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.0",
+    "case": "^1.6.2",
+    "fs-extra": "^8.1.0",
+    "ts-node": "^8.3.0"
+  }
+}
