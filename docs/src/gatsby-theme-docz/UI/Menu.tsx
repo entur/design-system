@@ -27,15 +27,18 @@ export const TOPBAR = [
 ];
 
 function Sidebar({ menus, docs, parent }) {
+  if (!menus) {
+    return null;
+  }
+
   return (
     <Fragment>
-      {menus &&
-        menus.map(({ id, name, menu }) => {
-          if (!menu) return null;
-          if (menu[0].parent !== parent) return null;
-
+      {menus
+        .filter(({ menu }) => menu)
+        .filter(({ menu }) => menu[0].parent === parent)
+        .map(({ id, name, menu }) => {
           return (
-            <div key={id}>
+            <ul key={id}>
               {menu[0].parent === parent && (
                 <div className="sidemenu-group-header">{name}</div>
               )}
@@ -49,7 +52,7 @@ function Sidebar({ menus, docs, parent }) {
                   </Link>
                 );
               })}
-            </div>
+            </ul>
           );
         })}
     </Fragment>
@@ -63,7 +66,7 @@ function HeadingNavigator({ currentDoc }) {
         <a
           className="heading-link"
           href={`#${heading.slug}`}
-          key={heading.depth}
+          key={heading.depth + heading.slug}
         >
           {heading.value}
         </a>
@@ -79,7 +82,6 @@ export default function Menu() {
   const docs = useDocs();
 
   const [currentTop, setTop] = useState(currentDoc.parent);
-  console.log(currentDoc);
   return (
     <>
       <nav className="navbar">
@@ -87,23 +89,26 @@ export default function Menu() {
           <img src={logoSVG} alt="Entur logo" className="logo-container" />
         </div>
         <div className="tab-link-container">
-          {TOPBAR.map((menu, index) => (
-            <Link
-              to={menu.to}
-              key={index}
-              onClick={() => setTop(menu.children)}
-            >
-              <div className="tab-link">{menu.children}</div>
-            </Link>
-          ))}
+          <Link to={'/'} onClick={() => setTop('Kom i gang')}>
+            <div className="tab-link">Kom i gang</div>
+          </Link>
+          <Link to={'/principles/'} onClick={() => setTop('Designprinsipper')}>
+            <div className="tab-link">Designprinsipper</div>
+          </Link>
+          <Link to={'/visual/'} onClick={() => setTop('Visuell Identitet')}>
+            <div className="tab-link">Visuell Identitet</div>
+          </Link>
+          <Link to={'/components/'} onClick={() => setTop('Komponenter')}>
+            <div className="tab-link">Komponenter</div>
+          </Link>
         </div>
       </nav>
-      <div className="sidemenu-wrapper">
+      <nav className="sidemenu-wrapper">
         <Sidebar menus={menus} docs={docs} parent={currentTop} />
-      </div>
-      <div className="heading-navigator-wrapper">
+      </nav>
+      <nav className="heading-navigator-wrapper">
         <HeadingNavigator currentDoc={currentDoc} />
-      </div>
+      </nav>
     </>
   );
 }
