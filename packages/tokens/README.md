@@ -24,7 +24,7 @@ import '@entur/tokens/dist/tokens.css';
 
 You'll then have access to all design tokens as CSS variables. You can then use them like so:
 
-````css
+```css
 .custom-box {
   background-color: var(--colors-greys-grey10);
   color: var(--colors-brand-coral);
