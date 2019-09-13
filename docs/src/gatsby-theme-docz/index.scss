@@ -4,13 +4,14 @@
 body {
   margin: 0;
   overflow-y: hidden;
-  background: #181c56;
+  // background: #181c56;
 }
 
 .content-wrapper {
   height: 95vh;
   margin-left: 15vw;
-  width: 85vw;
+  margin-right: 15vw;
+  width: 70vw;
   overflow-y: scroll;
 }
 

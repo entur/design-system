@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-interface Props {
+export interface Props {
   as?: string | React.ComponentType;
 }
 
