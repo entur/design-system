@@ -1,45 +1,45 @@
 import React, { Fragment, useState } from 'react';
 import { useMenus, Link, useDocs, useCurrentDoc } from 'docz';
-import { Menu as EnturMenu, MenuItem } from '../entur/menu';
+import { Menu as EnturMenu } from '../entur/menu';
+import { MenuItem } from '../entur/menu/MenuItem';
 var classNames = require('classnames');
 import './menu.scss';
 const logoSVG = require('./enturWhite.svg');
 
-function Sidebar({ menus, docs, parent, currentDoc }) {
+function Sidebar({ menus, docs, currentParent, currentDoc }) {
+  //CurrentDoc.fullpage can be used if one wants to hide sidebar on certain pages
   if (!menus) {
     return null;
   }
   return (
-    <Fragment>
-      {menus
-        .filter(({ menu }) => menu)
-        .filter(({ menu }) => menu[0].parent === parent)
-        .map(({ id, name, menu }) => {
+    <EnturMenu active="2">
+      {menus.map(({ id, name, menu, parent, route }) => {
+        if (parent === currentParent) {
           return (
-            <ul key={id}>
-              {menu[0].parent === parent && (
-                <li>
-                  <div className="sidemenu-group-header">{name}</div>
-                </li>
-              )}
-              <ul>
-                {menu.map(item => {
-                  const doc = docs && docs.find(doc => doc.name === item.name);
-                  if (!doc) return null;
-
+            <MenuItem id="1" label={<Link to={route}>{name}</Link>}></MenuItem>
+          );
+        } else if (menu && menu[0].parent === currentParent) {
+          console.table(menu);
+          return (
+            <MenuItem label={name} id="1">
+              <EnturMenu>
+                {menu.map(nestedMenu => {
+                  console.log(nestedMenu);
                   return (
-                    <li key={doc.id}>
-                      <Link to={doc.route}>
-                        <div className="sidemenu-link">{doc.name}</div>
-                      </Link>
-                    </li>
+                    <MenuItem
+                      id="2"
+                      label={
+                        <Link to={nestedMenu.route}>{nestedMenu.name}</Link>
+                      }
+                    ></MenuItem>
                   );
                 })}
-              </ul>
-            </ul>
+              </EnturMenu>
+            </MenuItem>
           );
-        })}
-    </Fragment>
+        }
+      })}
+    </EnturMenu>
   );
 }
 
@@ -124,7 +124,7 @@ export default function Menu() {
         <Sidebar
           menus={menus}
           docs={docs}
-          parent={currentTop}
+          currentParent={currentTop}
           currentDoc={currentDoc}
         />
       </nav>
