@@ -8,30 +8,46 @@ const logoSVG = require('./enturWhite.svg');
 
 function Sidebar({ menus, docs, currentParent, currentDoc }) {
   //CurrentDoc.fullpage can be used if one wants to hide sidebar on certain pages
+  const startValue = menus.find(
+    m =>
+      m.name === currentDoc.name ||
+      (m.menu && m.menu.find(n => n.name === currentDoc.name)),
+  );
+  const [currentSidemenu, setCurrentSidemenu] = useState(startValue.id);
+
   if (!menus) {
     return null;
   }
   return (
-    <EnturMenu active="2">
+    <EnturMenu active={currentSidemenu}>
       {menus.map(({ id, name, menu, parent, route }) => {
         if (parent === currentParent) {
           return (
-            <MenuItem id="1" label={<Link to={route}>{name}</Link>}></MenuItem>
+            <MenuItem
+              id={id}
+              key={id}
+              label={<Link to={route}>{name}</Link>}
+              onClick={() => setCurrentSidemenu(id)}
+            />
           );
         } else if (menu && menu[0].parent === currentParent) {
-          console.table(menu);
           return (
-            <MenuItem label={name} id="1">
+            <MenuItem
+              label={name}
+              id={id}
+              onClick={() => setCurrentSidemenu(id)}
+            >
               <EnturMenu>
                 {menu.map(nestedMenu => {
-                  console.log(nestedMenu);
                   return (
                     <MenuItem
-                      id="2"
+                      id={nestedMenu.ud}
+                      key={nestedMenu.id}
                       label={
                         <Link to={nestedMenu.route}>{nestedMenu.name}</Link>
                       }
-                    ></MenuItem>
+                      onClick={() => setCurrentSidemenu(nestedMenu.id)}
+                    />
                   );
                 })}
               </EnturMenu>
@@ -120,7 +136,7 @@ export default function Menu() {
         </div>
       </nav>
       <nav className="sidemenu-wrapper">
-        <input type="text"></input>
+        <input type="text" /> {/**Placeholder for search functionality */}
         <Sidebar
           menus={menus}
           docs={docs}

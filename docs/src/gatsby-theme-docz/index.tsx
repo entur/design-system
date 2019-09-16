@@ -3,6 +3,7 @@ import { theme, ComponentsProvider } from 'docz';
 import './index.scss';
 import '@entur/fonts/index.css';
 import Menu from './UI/Menu';
+import { Location } from '@reach/router';
 
 const compomentMap = {};
 
@@ -11,12 +12,10 @@ const Theme = ({ children }) => {
     <div>
       <ComponentsProvider components={compomentMap}>
         <div className="components-provider-wrapper">
-          <React.Fragment>
-            <Menu />
-            <div className="content-wrapper">
-              <div className="content-container">{children}</div>
-            </div>
-          </React.Fragment>
+          <Menu />
+          <div className="content-wrapper">
+            <div className="content-container">{children}</div>
+          </div>
         </div>
       </ComponentsProvider>
     </div>
