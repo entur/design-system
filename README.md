@@ -10,7 +10,7 @@ To develop, please clone the project, and run `yarn` to install all dependencies
 
 To build all packages, run `yarn build`
 
-To start a development server, run `yarn dev`
+To start a development server, run `yarn start`
 
 ## Adding new packages
 
@@ -26,11 +26,9 @@ You will document the component via an MDX file in the `docs`-folder. This will 
 
 The docs are currently available at [entur-design-system.firebaseapp.com](https://entur-design-system.firebaseapp.com).
 
-In the future, this will happen automatically whenever we merge to master. For now, there's a few manual steps.
-
 ### Setting up and logging in to Firebase
 
-In order to deploy the docs, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Kristofer Giltvedt Selbekk](mailto:kristoffer.giltvedt.selbekk@entur.org) to be granted the correct access rights.
+In order to deploy the docs locally, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Kristofer Giltvedt Selbekk](mailto:kristoffer.giltvedt.selbekk@entur.org) to be granted the correct access rights.
 
 ### The actual deploying part
 
