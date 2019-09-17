@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMenus, Link, useCurrentDoc } from 'docz';
 import { Menu as EnturMenu } from '../entur/menu';
 import { MenuItem } from '../entur/menu/MenuItem';
-var classNames = require('classnames');
+import classNames from 'classnames';
 import './menu.scss';
 const logoSVG = require('./enturWhite.svg');
 
@@ -92,45 +92,41 @@ export default function Menu() {
           <img src={logoSVG} alt="Entur logo" className="logo-container" />
         </div>
         <div className="tab-link-container">
-          <Link to={'/'}>
-            <div
-              className={classNames(
-                'tab-link',
-                currentTop === 'Kom i gang' ? 'active-tab-link' : '',
-              )}
-            >
-              Kom i gang
-            </div>
+          <Link
+            to="/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Kom i gang' ? 'active-tab-link' : '',
+            )}
+          >
+            Kom i gang
           </Link>
-          <Link to={'/designprinsipper/'}>
-            <div
-              className={classNames(
-                'tab-link',
-                currentTop === 'Designprinsipper' ? 'active-tab-link' : '',
-              )}
-            >
-              Designprinsipper
-            </div>
+          <Link
+            to="/design-prinsipper/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Designprinsipper' ? 'active-tab-link' : '',
+            )}
+          >
+            Designprinsipper
           </Link>
-          <Link to={'/visuellidentitet/'}>
-            <div
-              className={classNames(
-                'tab-link',
-                currentTop === 'Visuell Identitet' ? 'active-tab-link' : '',
-              )}
-            >
-              Visuell Identitet
-            </div>
+          <Link
+            to="/visuell-identitet/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Visuell Identitet' ? 'active-tab-link' : '',
+            )}
+          >
+            Visuell Identitet
           </Link>
-          <Link to={'/komponenter/'}>
-            <div
-              className={classNames(
-                'tab-link',
-                currentTop === 'Komponenter' ? 'active-tab-link' : '',
-              )}
-            >
-              Komponenter
-            </div>
+          <Link
+            to="/komponenter/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Komponenter' ? 'active-tab-link' : '',
+            )}
+          >
+            Komponenter
           </Link>
         </div>
       </nav>

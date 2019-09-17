@@ -24,14 +24,10 @@
   padding-left: 10rem;
   display: flex;
   align-items: center;
-}
-
-a {
-  text-decoration: none;
+  justify-content: flex-end;
 }
 
 .tab-link {
-  width: 100%;
   text-decoration: none;
   padding: 1rem;
   color: #181c56;
