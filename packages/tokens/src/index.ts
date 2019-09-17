@@ -109,8 +109,8 @@ export const space = {
 
 // Typography
 export const fontWeights = {
-  body: 500,
-  heading: 600,
+  body: '500',
+  heading: '600',
 };
 const fontSizeScale = [10, 12, 14, 16, 22, 28, 34];
 export const fontSizes = {
