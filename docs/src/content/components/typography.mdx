@@ -1,29 +1,65 @@
 ---
-name: Typography
-route: /komponenter/typography
+name: Typografi
+route: /komponenter/typografi
 parent: Komponenter
 ---
 
 import { Playground, Props } from 'docz';
-import { PageHeading } from '@entur/typography';
+import {
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  Paragraph,
+  SubParagraph,
+  Label,
+  SubLabel,
+} from '@entur/typography/src/index.tsx';
 
-# Typography
+# Typografi
 
-<PageHeading>Heisann</PageHeading>
+## Overskrifter
 
-Right now, the only typography component we have is the PageHeading component.
+Vi har egne komponenter for hver overskriftstype - en for hvert av de 6 nivåene vi støtter.
 
-## `<PageHeading />`
-
-Used at most once on every screen. Should be the main topic of what the user will be doing,
-reading or learning on that particular screen.
+<Playground>
+  <Heading1>Overskrift nivå 1</Heading1>
+  <Heading2>Overskrift nivå 2</Heading2>
+  <Heading3>Overskrift nivå 3</Heading3>
+  <Heading4>Overskrift nivå 4</Heading4>
+  <Heading5>Overskrift nivå 5</Heading5>
+  <Heading6>Overskrift nivå 6</Heading6>
+</Playground>
 
 ### Props
 
-<Props of={PageHeading} />
+Alle 6 typene med overskrifter har de samme propsene:
 
-### Playground
+<Props of={Heading1} />
+
+## Vanlig tekst
+
+Vi har to nivåer med tekst - "paragraph" og "sub paragraph".
 
 <Playground>
-  <PageHeading>Tickets</PageHeading>
+  <Paragraph>
+    I Norge har vi et godt kollektivtilbud, med tusenvis av daglige avganger fra
+    mer enn 60 000 stoppesteder i bygd og by.
+  </Paragraph>
+  <SubParagraph>
+    I Norge har vi et godt kollektivtilbud, med tusenvis av daglige avganger fra
+    mer enn 60 000 stoppesteder i bygd og by.
+  </SubParagraph>
+</Playground>
+
+## Label-tekst
+
+Vi har to nivåer med "label"-tekst - "label" og "sub label".
+
+<Playground>
+  <Label>Avreisested</Label>
+  <br />
+  <SubLabel>Du må skrive inn hvor du skal reise fra</SubLabel>
 </Playground>
