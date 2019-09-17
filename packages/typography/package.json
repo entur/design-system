@@ -15,5 +15,13 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.9",
+    "classnames": "^2.2.6",
+    "normalize-scss": "^7.0.1"
+  },
+  "devDependencies": {
+    "@entur/tokens": "^0.1.0"
   }
 }

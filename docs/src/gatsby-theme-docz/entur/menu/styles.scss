@@ -1,13 +1,15 @@
-@import '../styles/config';
-@import '../utils/sizing';
-@import '../styles/colors';
+@import '~@entur/tokens/dist/styles.scss';
 
-$root-class-name: #{$prefix}-menu;
+$root-class-name: entur-menu;
 $list-class-name: #{$root-class-name}-list;
 $item-class-name: #{$root-class-name}-item;
 
 .#{$root-class-name} {
-  background: $blue;
+  --primary-background-color: #{$colors-brand-blue};
+  --primary-text-color: #{$colors-brand-white};
+
+  background: $colors-brand-blue; // ie fallback
+  background: var(--primary-background-color);
   display: block;
 }
 
@@ -18,13 +20,15 @@ $item-class-name: #{$root-class-name}-item;
 }
 
 .#{$item-class-name} {
-  background: $blue;
-  color: $white;
+  background: $colors-brand-blue; // ie fallback
+  background: var(--primary-background-color);
+  color: $colors-brand-white; // ie fallback
+  color: var(--primary-text-color);
   margin: 0;
   padding: 0;
 
   svg {
-    color: $blue-50;
+    color: $colors-blues-blue50;
     margin-right: 0.5rem;
   }
 
@@ -51,14 +55,15 @@ $item-class-name: #{$root-class-name}-item;
   }
 
   .#{$item-class-name}__inner > * {
-    background: $blue;
+    background: $colors-brand-blue; // ie fallback
+    background: var(--primary-background-color);
     border: 0;
-    border-bottom: 0.0625rem solid $blue-10;
+    border-bottom: 0.0625rem solid $colors-blues-blue10;
     border-left: 0.25rem solid transparent;
-    color: $white;
+    color: $colors-brand-white; // ie fallback
+    color: var(--primary-text-color);
     cursor: pointer;
     display: block;
-    font-family: $base-font-family;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
@@ -69,7 +74,7 @@ $item-class-name: #{$root-class-name}-item;
   }
 
   &.#{$item-class-name}--nested li .#{$item-class-name}__inner > * {
-    background: $blue-10;
+    background: $colors-blues-blue10;
     border-left: 0.25rem solid transparent;
     font-weight: 400;
   }
@@ -78,22 +83,22 @@ $item-class-name: #{$root-class-name}-item;
     li.#{$item-class-name}--active
     .#{$item-class-name}__inner
     > * {
-    background: $blue-30;
+    background: $colors-blues-blue30;
   }
 
   &:not(.#{$item-class-name}--disabled) .#{$item-class-name}__inner > * {
     &:hover {
-      background: $blue-20;
+      background: $colors-blues-blue20;
     }
 
     &:active,
     &:focus {
-      background: $blue-30;
+      background: $colors-blues-blue30;
     }
   }
 
   &.#{$item-class-name}--active .#{$item-class-name}__inner > * {
-    border-left: 0.25rem solid $coral;
+    border-left: 0.25rem solid $colors-brand-coral;
   }
 
   &.#{$item-class-name}--disabled .#{$item-class-name}__inner > * {
