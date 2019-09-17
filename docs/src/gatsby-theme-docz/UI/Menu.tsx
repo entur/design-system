@@ -1,61 +1,61 @@
-import React, { Fragment, useState } from 'react';
-import { useMenus, Link, useDocs, useCurrentDoc } from 'docz';
+import React, { useState } from 'react';
+import { useMenus, Link, useCurrentDoc } from 'docz';
+import { Menu as EnturMenu } from '../entur/menu';
+import { MenuItem } from '../entur/menu/MenuItem';
+import classNames from 'classnames';
 import './menu.scss';
-
 const logoSVG = require('./enturWhite.svg');
-export const TOPBAR = [
-  {
-    id: 1,
-    children: 'Kom i gang',
-    to: '/',
-  },
-  {
-    id: 2,
-    children: 'Designprinsipper',
-    to: '/principles/lederstjerne', //Hardcode to specific subpage, or make sure every menu has a  "/" route (startpage)??
-  },
-  {
-    id: 3,
-    children: 'Visuell Identitet',
-    to: '/visual/colors',
-  },
-  {
-    id: 4,
-    children: 'Komponenter',
-    to: '/components/button',
-  },
-];
 
-function Sidebar({ menus, docs, parent }) {
+function Sidebar({ menus, currentParent, currentDoc }) {
+  //CurrentDoc.fullpage can be used if one wants to hide sidebar on certain pages
+  const startValue = menus.find(
+    m =>
+      m.name === currentDoc.name ||
+      (m.menu && m.menu.find(n => n.name === currentDoc.name)),
+  );
+  const [currentSidemenu, setCurrentSidemenu] = useState(startValue.id);
+
   if (!menus) {
     return null;
   }
-
   return (
-    <Fragment>
-      {menus
-        .filter(({ menu }) => menu)
-        .filter(({ menu }) => menu[0].parent === parent)
-        .map(({ id, name, menu }) => {
+    <EnturMenu active={currentSidemenu}>
+      {menus.map(({ id, name, menu, parent, route }) => {
+        if (parent === currentParent) {
           return (
-            <ul key={id}>
-              {menu[0].parent === parent && (
-                <div className="sidemenu-group-header">{name}</div>
-              )}
-              {menu.map(item => {
-                const doc = docs && docs.find(doc => doc.name === item.name);
-                if (!doc) return null;
-
-                return (
-                  <Link key={doc.id} to={doc.route}>
-                    <div className="sidemenu-link">{doc.name}</div>
-                  </Link>
-                );
-              })}
-            </ul>
+            <MenuItem
+              id={id}
+              key={id}
+              label={<Link to={route}>{name}</Link>}
+              onClick={() => setCurrentSidemenu(id)}
+            />
           );
-        })}
-    </Fragment>
+        } else if (menu && menu[0].parent === currentParent) {
+          return (
+            <MenuItem
+              label={name}
+              id={id}
+              onClick={() => setCurrentSidemenu(id)}
+            >
+              <EnturMenu>
+                {menu.map(nestedMenu => {
+                  return (
+                    <MenuItem
+                      id={nestedMenu.id}
+                      key={nestedMenu.id}
+                      label={
+                        <Link to={nestedMenu.route}>{nestedMenu.name}</Link>
+                      }
+                      onClick={() => setCurrentSidemenu(nestedMenu.id)}
+                    />
+                  );
+                })}
+              </EnturMenu>
+            </MenuItem>
+          );
+        }
+      })}
+    </EnturMenu>
   );
 }
 
@@ -79,12 +79,12 @@ function HeadingNavigator({ currentDoc }) {
 export default function Menu() {
   const menus = useMenus();
   const currentDoc = useCurrentDoc();
+  const [currentTop, setCurrentTop] = useState(currentDoc.parent);
 
-  const parent = currentDoc ? currentDoc.parent : 'Kom i gang';
+  React.useEffect(() => {
+    setCurrentTop(currentDoc ? currentDoc.parent : 'Kom i gang');
+  }, [currentDoc]);
 
-  const docs = useDocs();
-
-  const [currentTop, setTop] = useState(parent);
   return (
     <>
       <nav className="navbar">
@@ -92,22 +92,56 @@ export default function Menu() {
           <img src={logoSVG} alt="Entur logo" className="logo-container" />
         </div>
         <div className="tab-link-container">
-          <Link to={'/'} onClick={() => setTop('Kom i gang')}>
-            <div className="tab-link">Kom i gang</div>
+          <Link
+            to="/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Kom i gang' ? 'active-tab-link' : '',
+            )}
+          >
+            Kom i gang
           </Link>
-          <Link to={'/principles/'} onClick={() => setTop('Designprinsipper')}>
-            <div className="tab-link">Designprinsipper</div>
+          <Link
+            to="/design-prinsipper/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Designprinsipper' ? 'active-tab-link' : '',
+            )}
+          >
+            Designprinsipper
           </Link>
-          <Link to={'/visual/'} onClick={() => setTop('Visuell Identitet')}>
-            <div className="tab-link">Visuell Identitet</div>
+          <Link
+            to="/visuell-identitet/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Visuell Identitet' ? 'active-tab-link' : '',
+            )}
+          >
+            Visuell Identitet
           </Link>
-          <Link to={'/components/'} onClick={() => setTop('Komponenter')}>
-            <div className="tab-link">Komponenter</div>
+          <Link
+            to="/komponenter/"
+            className={classNames(
+              'tab-link',
+              currentTop === 'Komponenter' ? 'active-tab-link' : '',
+            )}
+          >
+            Komponenter
           </Link>
         </div>
       </nav>
       <nav className="sidemenu-wrapper">
-        <Sidebar menus={menus} docs={docs} parent={currentTop} />
+        {/**Placeholder for search functionality */}
+        <input
+          type="text"
+          className="searchbar-placeholder"
+          placeholder="Søk..."
+        />
+        <Sidebar
+          menus={menus}
+          currentParent={currentTop}
+          currentDoc={currentDoc}
+        />
       </nav>
       <nav className="heading-navigator-wrapper">
         <HeadingNavigator currentDoc={currentDoc} />
