@@ -122,7 +122,7 @@ export const fontSizes = {
   extraLarge2: fontSizeScale[5],
   extraLarge3: fontSizeScale[6],
 };
-const lineHeightScale = [14, 16, 20, 22, 24, 30, 36, 42];
+const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42];
 export const lineHeights = {
   xSmall: lineHeightScale[0],
   small: lineHeightScale[1],
@@ -132,6 +132,7 @@ export const lineHeights = {
   extraLarge2: lineHeightScale[5],
   extraLarge3: lineHeightScale[6],
   extraLarge4: lineHeightScale[7],
+  extraLarge5: lineHeightScale[8],
 };
 // Responsivity
 export const breakpoints = {
