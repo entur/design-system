@@ -5,8 +5,11 @@ $list-class-name: #{$root-class-name}-list;
 $item-class-name: #{$root-class-name}-item;
 
 .#{$root-class-name} {
+  --primary-background-color: #{$colors-brand-blue};
+  --primary-text-color: #{$colors-brand-white};
+
   background: $colors-brand-blue; // ie fallback
-  background: var(--contrast-background-color);
+  background: var(--primary-background-color);
   display: block;
 }
 
@@ -18,9 +21,9 @@ $item-class-name: #{$root-class-name}-item;
 
 .#{$item-class-name} {
   background: $colors-brand-blue; // ie fallback
-  background: var(--contrast-background-color);
+  background: var(--primary-background-color);
   color: $colors-brand-white; // ie fallback
-  color: var(--contrast-text-color);
+  color: var(--primary-text-color);
   margin: 0;
   padding: 0;
 
@@ -53,12 +56,12 @@ $item-class-name: #{$root-class-name}-item;
 
   .#{$item-class-name}__inner > * {
     background: $colors-brand-blue; // ie fallback
-    background: var(--contrast-background-color);
+    background: var(--primary-background-color);
     border: 0;
     border-bottom: 0.0625rem solid $colors-blues-blue10;
     border-left: 0.25rem solid transparent;
     color: $colors-brand-white; // ie fallback
-    color: var(--contrast-text-color);
+    color: var(--primary-text-color);
     cursor: pointer;
     display: block;
     font-size: 1rem;

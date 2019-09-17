@@ -11,12 +11,9 @@
   --primary-background-color: #{$colors-brand-white};
   --primary-text-color: #{$colors-brand-blue};
   --primary-label-color: #{$colors-blues-blue40};
-  --contrast-background-color: #{$colors-brand-blue};
-  --contrast-text-color: #{$colors-brand-white};
-  --contrast-label-color: #{$colors-brand-lavender};
 
   @media (prefers-color-scheme: dark) {
-    // TODO: Implement this
+    // TODO: We still need a design for this
   }
 }
 
@@ -149,11 +146,6 @@ html {
 .entur-sub-label {
   color: $colors-blues-blue40; // ie fallback
   color: var(--primary-label-color);
-
-  .entur-contrast & {
-    color: $colors-brand-lavender; // ie fallback
-    color: var(--contrast-label-color);
-  }
 }
 
 .entur-label {
