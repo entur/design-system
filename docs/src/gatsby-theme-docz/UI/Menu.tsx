@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from 'react';
-import { useMenus, Link, useDocs, useCurrentDoc } from 'docz';
+import React, { useState } from 'react';
+import { useMenus, Link, useCurrentDoc } from 'docz';
 import { Menu as EnturMenu } from '../entur/menu';
 import { MenuItem } from '../entur/menu/MenuItem';
 var classNames = require('classnames');
 import './menu.scss';
 const logoSVG = require('./enturWhite.svg');
 
-function Sidebar({ menus, docs, currentParent, currentDoc }) {
+function Sidebar({ menus, currentParent, currentDoc }) {
   //CurrentDoc.fullpage can be used if one wants to hide sidebar on certain pages
   const startValue = menus.find(
     m =>
@@ -41,7 +41,7 @@ function Sidebar({ menus, docs, currentParent, currentDoc }) {
                 {menu.map(nestedMenu => {
                   return (
                     <MenuItem
-                      id={nestedMenu.ud}
+                      id={nestedMenu.id}
                       key={nestedMenu.id}
                       label={
                         <Link to={nestedMenu.route}>{nestedMenu.name}</Link>
@@ -79,7 +79,6 @@ function HeadingNavigator({ currentDoc }) {
 export default function Menu() {
   const menus = useMenus();
   const currentDoc = useCurrentDoc();
-  const docs = useDocs();
   const [currentTop, setCurrentTop] = useState(currentDoc.parent);
 
   React.useEffect(() => {
@@ -136,10 +135,14 @@ export default function Menu() {
         </div>
       </nav>
       <nav className="sidemenu-wrapper">
-        <input type="text" /> {/**Placeholder for search functionality */}
+        {/**Placeholder for search functionality */}
+        <input
+          type="text"
+          className="searchbar-placeholder"
+          placeholder="Søk..."
+        />
         <Sidebar
           menus={menus}
-          docs={docs}
           currentParent={currentTop}
           currentDoc={currentDoc}
         />

@@ -1,3 +1,4 @@
+//Topbar
 .navbar {
   width: 100vw;
   height: 5vh;
@@ -55,19 +56,12 @@ a {
   }
 }
 
-.tab-link::after {
-  // transition: all 200ms ease-in-out;
-  // content: '';
-  // display: block;
-  // bottom: 16px;
-  // height: 3px;
-  // width: 30px;
-  // background: transparent;
-  // border-radius: 1px;
-  // margin: 0 auto;
-  // opacity: 0;
+//Sidemenu
+.searchbar-placeholder {
+  width: 10rem;
+  margin: 1rem;
+  padding: 0.5rem;
 }
-
 .sidemenu-wrapper {
   position: fixed;
   overflow-x: hidden;
@@ -95,6 +89,7 @@ ul {
   padding-inline-start: 0;
 }
 
+//Heading navigator
 .heading-navigator-wrapper {
   position: fixed;
   overflow-x: hidden;

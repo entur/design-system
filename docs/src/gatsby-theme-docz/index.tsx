@@ -3,7 +3,6 @@ import { theme, ComponentsProvider } from 'docz';
 import './index.scss';
 import '@entur/fonts/index.css';
 import Menu from './UI/Menu';
-import { Location } from '@reach/router';
 
 const compomentMap = {};
 
