@@ -22,6 +22,7 @@
 html {
   background-color: $colors-brand-white;
   background-color: var(--primary-background-color);
+  box-sizing: border-box;
   color: $colors-brand-blue; // ie fallback
   color: var(--primary-text-color);
   font-family: 'Nationale', 'Gotham Rounded', -apple-system, BlinkMacSystemFont,
@@ -35,6 +36,12 @@ html {
     font-size: $font-sizes-large;
     line-height: $line-heights-extra-large;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 // Headings
