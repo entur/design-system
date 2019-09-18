@@ -1,0 +1,25 @@
+---
+name: Tooltip
+route: /komponenter/tooltip
+parent: Komponenter
+---
+
+import Tooltip from '@entur/tooltip';
+import '@entur/tooltip/dist/styles.css';
+import { Playground, Props } from 'docz';
+
+# Tooltip
+
+Here is a tooltip
+
+<Tooltip content="hallo" placement="top" className="ok">
+  Innsida er her ok?
+</Tooltip>
+
+## Playground
+
+<Playground>
+  <Tooltip content="hallo" placement="top">
+    lek her
+  </Tooltip>
+</Playground>
