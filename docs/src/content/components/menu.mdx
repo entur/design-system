@@ -1,0 +1,45 @@
+---
+name: Menyer
+route: /komponenter/menyer
+parent: Komponenter
+---
+
+import { Props, Playground } from 'docz';
+import { Link } from 'gatsby';
+import { Menu, MenuItem } from '@entur/menu/src/index.tsx';
+
+# Menyer
+
+Entur har flere forskjellige menyer. Her er et enkelt eksempel:
+
+<Playground>
+  <Menu>
+    <MenuItem href="#menyer">Toppen</MenuItem>
+    <MenuItem href="#eksempler">Eksempler</MenuItem>
+    <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+    <MenuItem>
+      Andre alternativer
+      <Menu>
+        <MenuItem href="#">Sparkesykkel</MenuItem>
+        <MenuItem disabled={true}>Ski</MenuItem>
+      </Menu>
+    </MenuItem>
+  </Menu>
+</Playground>
+
+Her er en mer kompakt versjon:
+
+<Playground>
+  <Menu size="small">
+    <MenuItem href="#menyer">Toppen</MenuItem>
+    <MenuItem href="#eksempler">Eksempler</MenuItem>
+    <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+    <MenuItem>
+      Andre alternativer
+      <Menu>
+        <MenuItem href="#">Sparkesykkel</MenuItem>
+        <MenuItem disabled={true}>Ski</MenuItem>
+      </Menu>
+    </MenuItem>
+  </Menu>
+</Playground>

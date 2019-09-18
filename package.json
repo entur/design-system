@@ -12,6 +12,7 @@
   },
   "workspaces": [
     "docs",
+    "packages/menu",
     "packages/tokens",
     "packages/typography"
   ],
