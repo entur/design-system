@@ -1,69 +1,68 @@
-import React, { useState } from 'react';
-import { useMenus, Link, useCurrentDoc } from 'docz';
-import { Menu as EnturMenu } from '../entur/menu';
-import { MenuItem } from '../entur/menu/MenuItem';
+import React from 'react';
+import { useMenus, Link, useCurrentDoc, MenuItem } from 'docz';
+import { Location, WindowLocation } from '@reach/router';
+import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
 import classNames from 'classnames';
 import './menu.scss';
-const logoSVG = require('./enturWhite.svg');
+import logoSVG from './enturWhite.svg';
 
-function Sidebar({ menus, currentParent, currentDoc }) {
-  //CurrentDoc.fullpage can be used if one wants to hide sidebar on certain pages
-  const startValue = menus.find(
-    m =>
-      m.name === currentDoc.name ||
-      (m.menu && m.menu.find(n => n.name === currentDoc.name)),
-  );
-  const [currentSidemenu, setCurrentSidemenu] = useState(startValue.id);
+const removeTrailingSlash = (str: string) =>
+  str.endsWith('/') ? str.slice(0, -1) : str;
 
-  if (!menus) {
+const isActive = (route = '', location: WindowLocation) =>
+  removeTrailingSlash(route) === removeTrailingSlash(location.pathname);
+
+type SidebarProps = {
+  menuItems: MenuItem[] | null;
+};
+const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
+  if (!menuItems) {
     return null;
   }
   return (
-    <EnturMenu active={currentSidemenu}>
-      {menus.map(({ id, name, menu, parent, route }) => {
-        if (parent === currentParent) {
-          return (
-            <MenuItem
-              id={id}
-              key={id}
-              label={<Link to={route}>{name}</Link>}
-              onClick={() => setCurrentSidemenu(id)}
-            />
-          );
-        } else if (menu && menu[0].parent === currentParent) {
-          return (
-            <MenuItem
-              label={name}
-              id={id}
-              onClick={() => setCurrentSidemenu(id)}
+    <Location>
+      {({ location }) => (
+        <EnturMenu>
+          {menuItems.map(menuItem => (
+            <EnturMenuItem
+              key={menuItem.id}
+              as={Link}
+              to={menuItem.route}
+              isActive={isActive(menuItem.route, location)}
             >
-              <EnturMenu>
-                {menu.map(nestedMenu => {
-                  return (
-                    <MenuItem
-                      id={nestedMenu.id}
-                      key={nestedMenu.id}
-                      label={
-                        <Link to={nestedMenu.route}>{nestedMenu.name}</Link>
-                      }
-                      onClick={() => setCurrentSidemenu(nestedMenu.id)}
-                    />
-                  );
-                })}
-              </EnturMenu>
-            </MenuItem>
-          );
-        }
-      })}
-    </EnturMenu>
-  );
-}
+              {menuItem.name}
 
-function HeadingNavigator({ currentDoc }) {
+              {menuItem.menu && (
+                <EnturMenu>
+                  {menuItem.menu.map(menuItem => (
+                    <EnturMenuItem
+                      key={menuItem.id}
+                      as={Link}
+                      to={menuItem.route}
+                      isActive={isActive(menuItem.route, location)}
+                    >
+                      {menuItem.name}
+                    </EnturMenuItem>
+                  ))}
+                </EnturMenu>
+              )}
+            </EnturMenuItem>
+          ))}
+        </EnturMenu>
+      )}
+    </Location>
+  );
+};
+
+const TOCNavigation: React.FC = () => {
+  const currentDoc = useCurrentDoc();
   const headings = currentDoc ? currentDoc.headings : [''];
+  if (headings.length < 2) {
+    return null;
+  }
   return (
     <div className="heading-navigator-links-wrapper">
-      {headings.map(heading => (
+      {headings.map((heading: any) => (
         <a
           className="heading-link"
           href={`#${heading.slug}`}
@@ -74,16 +73,28 @@ function HeadingNavigator({ currentDoc }) {
       ))}
     </div>
   );
+};
+
+function hasSameParentCategory(menuItem: MenuItem, currentDoc: any): boolean {
+  if (menuItem.parent === currentDoc.parent) {
+    return true;
+  }
+  return (menuItem.menu || []).some(subMenuItem =>
+    hasSameParentCategory(subMenuItem, currentDoc),
+  );
 }
 
-export default function Menu() {
-  const menus = useMenus();
+export default function Menus() {
   const currentDoc = useCurrentDoc();
-  const [currentTop, setCurrentTop] = useState(currentDoc.parent);
+  const menuItems = useMenus({
+    filter: item => hasSameParentCategory(item, currentDoc),
+  });
 
-  React.useEffect(() => {
-    setCurrentTop(currentDoc ? currentDoc.parent : 'Kom i gang');
-  }, [currentDoc]);
+  const getLinkProps = ({ isPartiallyCurrent }: any) => ({
+    className: classNames('tab-link', {
+      'active-tab-link': isPartiallyCurrent,
+    }),
+  });
 
   return (
     <>
@@ -92,40 +103,16 @@ export default function Menu() {
           <img src={logoSVG} alt="Entur logo" className="logo-container" />
         </div>
         <div className="tab-link-container">
-          <Link
-            to="/"
-            className={classNames(
-              'tab-link',
-              currentTop === 'Kom i gang' ? 'active-tab-link' : '',
-            )}
-          >
+          <Link to="/kom-i-gang" getProps={getLinkProps}>
             Kom i gang
           </Link>
-          <Link
-            to="/design-prinsipper/"
-            className={classNames(
-              'tab-link',
-              currentTop === 'Designprinsipper' ? 'active-tab-link' : '',
-            )}
-          >
+          <Link to="/design-prinsipper" getProps={getLinkProps}>
             Designprinsipper
           </Link>
-          <Link
-            to="/visuell-identitet/"
-            className={classNames(
-              'tab-link',
-              currentTop === 'Visuell Identitet' ? 'active-tab-link' : '',
-            )}
-          >
+          <Link to="/visuell-identitet" getProps={getLinkProps}>
             Visuell Identitet
           </Link>
-          <Link
-            to="/komponenter/"
-            className={classNames(
-              'tab-link',
-              currentTop === 'Komponenter' ? 'active-tab-link' : '',
-            )}
-          >
+          <Link to="/komponenter" getProps={getLinkProps}>
             Komponenter
           </Link>
         </div>
@@ -137,14 +124,10 @@ export default function Menu() {
           className="searchbar-placeholder"
           placeholder="Søk..."
         />
-        <Sidebar
-          menus={menus}
-          currentParent={currentTop}
-          currentDoc={currentDoc}
-        />
+        <Sidebar menuItems={menuItems} />
       </nav>
       <nav className="heading-navigator-wrapper">
-        <HeadingNavigator currentDoc={currentDoc} />
+        <TOCNavigation />
       </nav>
     </>
   );
