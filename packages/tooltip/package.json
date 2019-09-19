@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsdx start",
+    "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
@@ -17,5 +17,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@entur/tokens": "^0.1.0"
   }
 }
