@@ -27,11 +27,15 @@
   margin-right: $space-small;
 }
 
-.entur-new-menu__item {
+.entur-new-menu {
   // Nested items
   & & .entur-new-menu__click-target {
     border-left-color: transparent;
     padding-left: $space-extra-large2;
+
+    &--active {
+      background-color: $colors-blues-blue50;
+    }
   }
 }
 
@@ -43,6 +47,7 @@
   border-top: 0.0625rem solid $colors-blues-blue10;
   border-radius: 0;
   color: inherit;
+  cursor: pointer;
   display: block;
   font-size: inherit;
   line-height: inherit;

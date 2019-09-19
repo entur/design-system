@@ -1,142 +1,144 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import classNames from 'classnames';
 import './styles.scss';
 
-type MenuContextType = {
-  activeMenuItem: string | null;
-  setActiveMenuItem: (activeMenuItem: string | null) => void;
-} | null;
-const MenuContext = React.createContext<MenuContextType>(null);
-
-type MenuProviderType = {
-  value?: any;
-  children: React.ReactChild;
-  onItemSelected?: (id: string | null) => void;
-};
-const MenuProvider: React.FC<MenuProviderType> = ({
-  children,
-  onItemSelected = () => {},
-  ...rest
-}) => {
-  const isSubMenu = !!React.useContext(MenuContext);
-  const [activeMenuItem, setActiveMenuItem] = React.useState<string | null>(
-    null,
-  );
-
-  if (isSubMenu) {
-    return <>{children}</>;
+function isActiveRecursively(child: any): boolean {
+  if (!child.props) {
+    return false;
+  }
+  if (child.props.isActive) {
+    return true;
+  }
+  if (!child.props.children) {
+    return false;
   }
 
-  const updateActiveMenuItem = (item: string | null) => {
-    setActiveMenuItem(item);
-    onItemSelected(item);
-  };
-
-  return (
-    <MenuContext.Provider
-      value={{ activeMenuItem, setActiveMenuItem: updateActiveMenuItem }}
-      {...rest}
-    >
-      {children}
-    </MenuContext.Provider>
+  return React.Children.toArray(child.props.children).some(child =>
+    isActiveRecursively(child),
   );
-};
-
-const useMenu = () => {
-  const context = React.useContext(MenuContext);
-  if (!context) {
-    throw new Error('You need to wrap your MenuItem(s) in a Menu component');
-  }
-  return context;
-};
+}
 
 type MenuItemProps = {
+  isActive?: boolean;
   as: 'a' | 'button' | React.ElementType;
   className?: string;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent) => any;
   [key: string]: any;
 };
-
-export const MenuItem: React.FC<MenuItemProps> = ({
+const RegularMenuItem: React.FC<MenuItemProps> = ({
+  isActive = false,
   as: Element = 'a',
   children,
   className,
   disabled,
-  onClick = () => {},
+  onClick = e => e,
   ...rest
 }) => {
-  // TODO: Remove this generated ID
-  const uniqueId = React.useRef(`${Math.random()}`.substring(2, 10));
-  const { activeMenuItem, setActiveMenuItem } = useMenu();
-  const isActive = uniqueId.current === activeMenuItem;
+  const handleClick = (e: MouseEvent) => {
+    if (disabled) {
+      return;
+    }
+    onClick(e);
+  };
+  return (
+    <li className={classNames('entur-new-menu__item', className)}>
+      <Element
+        className={classNames('entur-new-menu__click-target', {
+          'entur-new-menu__click-target--active': isActive,
+        })}
+        onClick={handleClick}
+        aria-disabled={disabled}
+        {...rest}
+      >
+        {children}
+      </Element>
+    </li>
+  );
+};
 
+const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
+  isActive = false,
+  children,
+  className,
+  disabled,
+  onClick = e => e,
+  ...rest
+}) => {
   const childrenArray = React.Children.toArray(children);
-  const subMenu = childrenArray.find(child => child && child.type === Menu);
-  const label = subMenu
-    ? childrenArray.filter(child => child && child.type !== Menu)
-    : children;
+  const subMenu = childrenArray.find(
+    (child: any) => child && child.type === Menu,
+  );
+  const label = childrenArray.filter(
+    (child: any) => child && child.type !== Menu,
+  );
+  const isActiveOrHasActiveDescendents = isActiveRecursively({
+    props: { children, isActive },
+  });
+
+  const [isExpanded, setExpanded] = React.useState(
+    isActiveOrHasActiveDescendents,
+  );
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) {
       return;
     }
-    setActiveMenuItem(uniqueId.current);
+    setExpanded(prev => !prev);
     onClick(e);
   };
 
-  const ClickTarget = subMenu ? 'button' : Element;
-
-  const ariaProps: any = {};
-  if (disabled) {
-    ariaProps['aria-disabled'] = true;
-  }
-  if (subMenu) {
-    ariaProps['aria-expanded'] = isActive;
-  }
-
   return (
     <li className={classNames('entur-new-menu__item', className)}>
-      <ClickTarget
+      <button
         className={classNames('entur-new-menu__click-target', {
-          'entur-new-menu__click-target--active': isActive,
+          'entur-new-menu__click-target--active': isActiveOrHasActiveDescendents,
         })}
         onClick={handleClick}
-        {...ariaProps}
+        aria-disabled={disabled}
+        aria-expanded={isExpanded}
         {...rest}
       >
         {label}
-      </ClickTarget>
-      {isActive && subMenu}
+      </button>
+      {isExpanded && subMenu}
     </li>
+  );
+};
+
+export const MenuItem: React.FC<MenuItemProps> = props => {
+  const hasSubMenu = React.Children.toArray(props.children).some(
+    (child: any) => child && child.type === Menu,
+  );
+  return hasSubMenu ? (
+    <MenuItemWithSubMenu {...props} />
+  ) : (
+    <RegularMenuItem {...props} />
   );
 };
 
 type MenuProps = {
   className?: string;
-  onItemSelected?: () => {};
+  onItemSelected?: (id: string) => void;
   size?: 'small' | 'medium';
 };
 
 export const Menu: React.FC<MenuProps> = ({
   className,
   children,
-  onItemSelected,
   size = 'medium',
   ...rest
 }) => {
   return (
-    <MenuProvider onItemSelected={onItemSelected}>
-      <ul
-        className={classNames(
-          'entur-new-menu',
-          { 'entur-new-menu--small': size === 'small' },
-          className,
-        )}
-        {...rest}
-      >
-        {children}
-      </ul>
-    </MenuProvider>
+    <ul
+      className={classNames(
+        'entur-new-menu',
+        { 'entur-new-menu--small': size === 'small' },
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+    </ul>
   );
 };
