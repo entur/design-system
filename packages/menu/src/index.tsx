@@ -41,18 +41,19 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
     }
     onClick(e);
   };
+  const RenderedElement = disabled ? 'button' : Element;
   return (
     <li className={classNames('entur-menu__item', className)}>
-      <Element
+      <RenderedElement
         className={classNames('entur-menu__click-target', {
           'entur-menu__click-target--active': active,
         })}
         onClick={handleClick}
-        aria-disabled={disabled}
+        disabled={disabled}
         {...rest}
       >
         {children}
-      </Element>
+      </RenderedElement>
     </li>
   );
 };
@@ -95,7 +96,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
           'entur-menu__click-target--active': isActiveOrHasActiveDescendents,
         })}
         onClick={handleClick}
-        aria-disabled={disabled}
+        disabled={disabled}
         aria-expanded={isExpanded}
         {...rest}
       >
@@ -119,7 +120,6 @@ export const MenuItem: React.FC<MenuItemProps> = props => {
 
 type MenuProps = {
   className?: string;
-  onItemSelected?: (id: string) => void;
   size?: 'small' | 'medium';
 };
 

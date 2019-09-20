@@ -60,12 +60,12 @@
     border-left-color: $colors-brand-coral;
   }
 
-  &[aria-disabled='true'] {
+  &[disabled] {
     cursor: default;
     color: $colors-blues-blue40;
   }
 
-  &:not([aria-disabled='true']) {
+  &:not([disabled]) {
     &:hover {
       background-color: $colors-blues-blue20;
     }
