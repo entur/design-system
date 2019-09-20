@@ -6,40 +6,68 @@ parent: Komponenter
 
 import { Props, Playground } from 'docz';
 import { Link } from 'gatsby';
-import { Menu, MenuItem } from '@entur/menu/src/index.tsx';
+import { Menu, MenuItem } from '@entur/menu';
 
 # Menyer
 
-Entur har flere forskjellige menyer. Her er et enkelt eksempel:
+Menyer lar brukerne få oversikt over side-struktur på en enkel og forståelig måte.
 
 <Playground>
   <Menu>
     <MenuItem href="#menyer">Toppen</MenuItem>
-    <MenuItem href="#eksempler">Eksempler</MenuItem>
+    <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+      Si hei
+    </MenuItem>
     <MenuItem disabled={true}>Utilgjengelig</MenuItem>
     <MenuItem>
       Andre alternativer
       <Menu>
-        <MenuItem href="#">Sparkesykkel</MenuItem>
+        <MenuItem isActive={true} href="#">
+          Sparkesykkel
+        </MenuItem>
         <MenuItem disabled={true}>Ski</MenuItem>
       </Menu>
     </MenuItem>
   </Menu>
 </Playground>
 
-Her er en mer kompakt versjon:
+## Prop types
+
+### `<Menu />`
+
+<Props of={Menu} />
+
+### `<MenuItem />`
+
+<Props of={MenuItem} />
+
+## Variasjoner
+
+### Kompakt meny
 
 <Playground>
   <Menu size="small">
-    <MenuItem href="#menyer">Toppen</MenuItem>
-    <MenuItem href="#eksempler">Eksempler</MenuItem>
+    <MenuItem href="#menyer" isActive={true}>
+      Toppen
+    </MenuItem>
+    <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+      Si hei
+    </MenuItem>
     <MenuItem disabled={true}>Utilgjengelig</MenuItem>
     <MenuItem>
       Andre alternativer
-      <Menu>
+      <Menu size="small">
         <MenuItem href="#">Sparkesykkel</MenuItem>
         <MenuItem disabled={true}>Ski</MenuItem>
       </Menu>
     </MenuItem>
   </Menu>
 </Playground>
+
+## Retningslinjer
+
+Det skal maksimum være én meny per side, og den skal inneholde lenker til andre interne sider. Det kan brukes både som første- og andrenivås navigasjon.
+
+### Inaktive elementer
+
+Om man ønsker å synliggjøre at en lenke finnes, men er utilgjengelig av en eller annen grunn, kan man gjøre et menyelement "disabled". Dette er noe man helst ikke skal gjøre, siden det ikke er noen god måte å fortelle brukeren hvorfor elementet ikke er tilgjengelig for dem. Vurder heller å fjerne elementet fra listen.
