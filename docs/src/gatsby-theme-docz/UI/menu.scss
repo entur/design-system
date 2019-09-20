@@ -1,3 +1,4 @@
+@import '~@entur/tokens/dist/styles.scss';
 //Topbar
 .navbar {
   width: 100vw;
@@ -60,12 +61,9 @@
 }
 .sidemenu-wrapper {
   position: fixed;
-  overflow-x: hidden;
   width: 15vw;
-  max-width: 15vw;
-  min-width: 15vw;
   height: 95vh;
-  background: #181c56;
+  background-color: $colors-brand-blue;
 }
 
 .sidemenu-link {
@@ -75,14 +73,6 @@
 .sidemenu-group-header {
   color: #ddd;
   font-size: 14px;
-}
-
-li {
-  list-style: none;
-}
-
-ul {
-  padding-inline-start: 0;
 }
 
 //Heading navigator
