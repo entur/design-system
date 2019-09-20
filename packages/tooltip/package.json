@@ -1,0 +1,24 @@
+{
+  "name": "@entur/tooltip",
+  "version": "0.1.0",
+  "license": "EUPL-1.2",
+  "main": "dist/index.js",
+  "module": "dist/tooltip.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@entur/tokens": "^0.1.0"
+  }
+}
