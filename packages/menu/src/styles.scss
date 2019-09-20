@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-new-menu {
+.entur-menu {
   --primary-background-color: #{$colors-brand-blue};
   --primary-text-color: #{$colors-brand-white};
   --padding-vertical: #{$space-medium};
@@ -22,14 +22,14 @@
   }
 }
 
-.entur-new-menu svg {
+.entur-menu svg {
   color: $colors-blues-blue50;
   margin-right: $space-small;
 }
 
-.entur-new-menu {
+.entur-menu {
   // Nested items
-  & & .entur-new-menu__click-target {
+  & & .entur-menu__click-target {
     border-left-color: transparent;
     padding-left: $space-extra-large2;
 
@@ -39,7 +39,7 @@
   }
 }
 
-.entur-new-menu__click-target {
+.entur-menu__click-target {
   appearance: none;
   background: none;
   border: 0;

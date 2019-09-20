@@ -6,7 +6,7 @@ function isActiveRecursively(child: any): boolean {
   if (!child.props) {
     return false;
   }
-  if (child.props.isActive) {
+  if (child.props.active) {
     return true;
   }
   if (!child.props.children) {
@@ -19,15 +19,15 @@ function isActiveRecursively(child: any): boolean {
 }
 
 type MenuItemProps = {
-  isActive?: boolean;
-  as: 'a' | 'button' | React.ElementType;
+  active?: boolean;
+  as?: 'a' | 'button' | React.ElementType;
   className?: string;
   disabled?: boolean;
   onClick?: (e: React.MouseEvent) => any;
   [key: string]: any;
 };
 const RegularMenuItem: React.FC<MenuItemProps> = ({
-  isActive = false,
+  active = false,
   as: Element = 'a',
   children,
   className,
@@ -42,10 +42,10 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
     onClick(e);
   };
   return (
-    <li className={classNames('entur-new-menu__item', className)}>
+    <li className={classNames('entur-menu__item', className)}>
       <Element
-        className={classNames('entur-new-menu__click-target', {
-          'entur-new-menu__click-target--active': isActive,
+        className={classNames('entur-menu__click-target', {
+          'entur-menu__click-target--active': active,
         })}
         onClick={handleClick}
         aria-disabled={disabled}
@@ -58,7 +58,7 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
 };
 
 const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
-  isActive = false,
+  active = false,
   children,
   className,
   disabled,
@@ -73,7 +73,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
     (child: any) => child && child.type !== Menu,
   );
   const isActiveOrHasActiveDescendents = isActiveRecursively({
-    props: { children, isActive },
+    props: { children, active },
   });
 
   const [isExpanded, setExpanded] = React.useState(
@@ -89,10 +89,10 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <li className={classNames('entur-new-menu__item', className)}>
+    <li className={classNames('entur-menu__item', className)}>
       <button
-        className={classNames('entur-new-menu__click-target', {
-          'entur-new-menu__click-target--active': isActiveOrHasActiveDescendents,
+        className={classNames('entur-menu__click-target', {
+          'entur-menu__click-target--active': isActiveOrHasActiveDescendents,
         })}
         onClick={handleClick}
         aria-disabled={disabled}
@@ -132,8 +132,8 @@ export const Menu: React.FC<MenuProps> = ({
   return (
     <ul
       className={classNames(
-        'entur-new-menu',
-        { 'entur-new-menu--small': size === 'small' },
+        'entur-menu',
+        { 'entur-menu--small': size === 'small' },
         className,
       )}
       {...rest}
