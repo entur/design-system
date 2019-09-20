@@ -20,10 +20,5 @@
   },
   "devDependencies": {
     "@entur/tokens": "^0.1.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/../../__mocks__/styleMock.js"
-    }
   }
 }
