@@ -28,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
               key={menuItem.id}
               as={Link}
               to={menuItem.route}
-              isActive={isActive(menuItem.route, location)}
+              active={isActive(menuItem.route, location)}
             >
               {menuItem.name}
 
@@ -39,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
                       key={menuItem.id}
                       as={Link}
                       to={menuItem.route}
-                      isActive={isActive(menuItem.route, location)}
+                      active={isActive(menuItem.route, location)}
                     >
                       {menuItem.name}
                     </EnturMenuItem>

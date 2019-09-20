@@ -22,7 +22,7 @@ Menyer lar brukerne få oversikt over side-struktur på en enkel og forståelig 
     <MenuItem>
       Andre alternativer
       <Menu>
-        <MenuItem isActive={true} href="#">
+        <MenuItem active={true} href="#">
           Sparkesykkel
         </MenuItem>
         <MenuItem disabled={true}>Ski</MenuItem>
@@ -47,7 +47,7 @@ Menyer lar brukerne få oversikt over side-struktur på en enkel og forståelig 
 
 <Playground>
   <Menu size="small">
-    <MenuItem href="#menyer" isActive={true}>
+    <MenuItem href="#menyer" active={true}>
       Toppen
     </MenuItem>
     <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
