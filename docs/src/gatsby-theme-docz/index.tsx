@@ -16,7 +16,11 @@ const componentMap = {
   a: typography.Link,
 };
 
-export default theme({})(({ children }) => (
+const themeConfig = {
+  showPlaygroundEditor: false,
+};
+
+export default theme(themeConfig)(({ children }) => (
   <div>
     <div className="components-provider-wrapper">
       <Menu />
