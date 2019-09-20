@@ -1,0 +1,79 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-menu {
+  --primary-background-color: #{$colors-brand-blue};
+  --primary-text-color: #{$colors-brand-white};
+  --padding-vertical: #{$space-medium};
+  --padding-horizontal: #{$space-large};
+
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  &--small {
+    --padding-vertical: #{$space-small};
+  }
+
+  // Nested sub menus
+  & & {
+    background-color: $colors-blues-blue10;
+  }
+}
+
+.entur-menu svg {
+  color: $colors-blues-blue50;
+  margin-right: $space-small;
+}
+
+.entur-menu {
+  // Nested items
+  & & .entur-menu__click-target {
+    border-left-color: transparent;
+    padding-left: $space-extra-large2;
+
+    &--active {
+      background-color: $colors-blues-blue50;
+    }
+  }
+}
+
+.entur-menu__click-target {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-left: $space-extra-small solid transparent;
+  border-top: 0.0625rem solid $colors-blues-blue10;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: inherit;
+  line-height: inherit;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+
+  &--active {
+    border-left-color: $colors-brand-coral;
+  }
+
+  &[disabled] {
+    cursor: default;
+    color: $colors-blues-blue40;
+  }
+
+  &:not([disabled]) {
+    &:hover {
+      background-color: $colors-blues-blue20;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $colors-blues-blue30;
+      outline: none;
+    }
+  }
+}
