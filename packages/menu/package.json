@@ -1,6 +1,7 @@
 {
   "name": "@entur/menu",
   "version": "0.1.0",
+  "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
   "typings": "dist/index.d.ts",
@@ -12,6 +13,9 @@
     "start": "tsdx watch",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
+  },
+  "dependencies": {
+    "@entur/tokens": "^0.1.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
