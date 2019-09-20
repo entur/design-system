@@ -1,0 +1,129 @@
+---
+name: AlertBox
+route: /komponenter/alert-box
+parent: Komponenter
+---
+
+import { Playground, Props } from 'docz';
+import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert';
+import '@entur/alert/dist/styles.css';
+
+# Alertbokser
+
+AlertBox brukes når man skal si ifra om at noe har skjedd.
+
+<Playground>
+  {() => {
+    const [isClosed, setClosed] = React.useState(false);
+    return isClosed ? null : (
+      <BannerAlertBox
+        variant="success"
+        title="Nå har du billett!"
+        onClose={() => setClosed(true)}
+      >
+        Ha det gøy på togturen til Bergen!
+      </BannerAlertBox>
+    );
+  }}
+</Playground>
+
+## Størrelser og varianter
+
+Det finnes tre størrelser og fire varianter av AlertBox.
+
+### Banner
+
+Brukes for hendelser som gjelder hele siden man er på. Plasseres typisk på toppen av siden. Man bør kunne lukke dem.
+
+<Playground>
+  <BannerAlertBox
+    variant="success"
+    title="Systemene våre er oppe igjen!"
+    style={{ marginBottom: '1em' }}
+  >
+    Etter planlagt nedetid, er systemene våre igjen 100 % operasjonelle!
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="info"
+    title="Vi bruker informasjonskapsler"
+    style={{ marginBottom: '1em' }}
+    onClose={() => {}}
+  >
+    Ved å bruke denne siden godtar du at vi bruker informasjonskapsler.
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="warning"
+    title="Systemene våre er ustabile"
+    style={{ marginBottom: '1em' }}
+    onClose={() => {}}
+  >
+    Systemene våre kan oppleves litt ustabile akkurat nå. Vi jobber med å fikse
+    problemet!
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="error"
+    title="Kjøp kan ikke gjennomføres nå"
+    style={{ marginBottom: '1em' }}
+  >
+    Vi har et teknisk problem akkurat nå. Du kan fortsatt bruke
+    reiseplanleggeren, men kjøpsløsningen for billetter fungerer ikke.
+  </BannerAlertBox>
+</Playground>
+
+### Toast
+
+Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp av seg selv øverst i høyre hjørne, og skal forsvinne automatisk etter minst seks sekunder.
+
+<Playground>
+  <ToastAlertBox
+    variant="success"
+    title="Nå har du billett!"
+    style={{ marginBottom: '1em' }}
+  >
+    Ha det gøy på togturen til Bergen!
+  </ToastAlertBox>
+  <ToastAlertBox
+    variant="info"
+    title="Toget går fra plattform 2"
+    style={{ marginBottom: '1em' }}
+  >
+    Husk å sjekke plattform når du ankommer.
+  </ToastAlertBox>
+  <ToastAlertBox
+    variant="warning"
+    title="Buss for tog på deler av strekningen"
+    style={{ marginBottom: '1em' }}
+  >
+    Det er buss for tog på strekningen Bergen-Voss. Følg skilting underveis.
+  </ToastAlertBox>
+  <ToastAlertBox
+    variant="error"
+    title="Kjøpet kunne ikke gjennomføres!"
+    style={{ marginBottom: '1em' }}
+  >
+    Det ser ut til at det ikke var dekning på det kortet du prøvde å betale med.
+  </ToastAlertBox>
+</Playground>
+
+### Small
+
+Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
+
+<Playground>
+  <SmallAlertBox variant="success" style={{ marginBottom: '1em' }}>
+    Kjøpet gikk i orden!
+  </SmallAlertBox>
+  <SmallAlertBox variant="info" style={{ marginBottom: '1em' }}>
+    Toget går fra plattform 2
+  </SmallAlertBox>
+  <SmallAlertBox variant="warning" style={{ marginBottom: '1em' }}>
+    Snøvær på Bergensbanen
+  </SmallAlertBox>
+  <SmallAlertBox variant="error" style={{ marginBottom: '1em' }}>
+    Kjøpet kunne ikke gjennomføres!
+  </SmallAlertBox>
+</Playground>
+
+## Retningslinjer
+
+Disse boksene skal brukes når vi har noe å si ifra om - gjerne som en respons på en handling.
