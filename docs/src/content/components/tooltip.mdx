@@ -30,12 +30,20 @@ yarn add @entur/tooltip
   </Tooltip>
 </Playground>
 
+Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også tooltip om knappen/linken etc er fokusert
+
+<Playground>
+  <Tooltip content="Tooltip til knappen" placement="top">
+    <button>Her er en knapp med tooltip</button>
+  </Tooltip>
+</Playground>
+
 Tooltip fungerer også i contrast theme
 
 <Playground>
   <div className="entur-contrast">
     <Tooltip content="Her er tooltipen" placement="top">
-      Denne teksten har en tooltip
+      Denne teksten har en tooltip i contrast theme
     </Tooltip>
   </div>
 </Playground>

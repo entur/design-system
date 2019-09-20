@@ -45,6 +45,8 @@ const Tooltip: React.FC<TooltipProps> = ({
       <span
         className="entur-tooltip--trigger"
         onMouseOver={() => setShowTooltip(true)}
+        onFocus={() => setShowTooltip(true)}
+        onBlur={() => setShowTooltip(false)}
         aria-describedby={content}
       >
         {children}
