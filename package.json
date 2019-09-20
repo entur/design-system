@@ -17,6 +17,7 @@
     "packages/typography"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.2",
@@ -43,7 +44,10 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    }
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.ts"
+    ]
   },
   "husky": {
     "hooks": {
