@@ -11,14 +11,12 @@ type placements =
   | 'bottom-left'
   | 'bottom'
   | 'bottom-right';
-
 interface TooltipProps {
   placement: placements;
   content: string;
   children: React.ReactNode;
   className?: string;
 }
-
 const Tooltip: React.FC<TooltipProps> = ({
   placement,
   content,

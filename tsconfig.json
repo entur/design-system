@@ -1,5 +1,5 @@
 {
-  "include": ["packages/*/src", "packages/*/types"],
+  "include": ["packages/*/src", "packages/*/types", "jest.setup.ts"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
