@@ -38,6 +38,9 @@ export const colors = {
     grey40: '#f8f8f8',
   },
   validation: {
+    sky: '#0082b9',
+    skyContrast: '#64b3e7',
+    skyTint: '#e1eff8',
     lava: '#d31b1b',
     lavaContrast: '#ff9494',
     lavaTint: '#ffcece',
