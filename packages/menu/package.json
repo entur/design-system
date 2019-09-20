@@ -15,7 +15,8 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/tokens": "^0.1.0"
+    "@entur/tokens": "^0.1.0",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
