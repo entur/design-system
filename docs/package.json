@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@entur/button": "^0.1.0",
+    "@entur/icons": "^0.1.0",
     "@entur/menu": "^0.1.0",
     "@entur/tokens": "^0.1.0",
     "@entur/tooltip": "^0.1.0",
