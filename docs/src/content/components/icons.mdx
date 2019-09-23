@@ -1,0 +1,23 @@
+---
+name: Ikoner
+parent: Komponenter
+route: komponenter/ikoner
+---
+
+import { Props, Playground } from 'docz';
+import * as icons from '@entur/icons';
+
+# Ikoner
+
+Vi har massevis av ikoner!
+
+Her er det massevis av koselige ikoner:
+
+<div>
+  {Object.entries(icons).map(([name, Icon]) => (
+    <div key={name}>
+      <h3 className="entur-h3">{name}</h3>
+      <Icon style={{ width: 100, height: 100 }} />
+    </div>
+  ))}
+</div>
