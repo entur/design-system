@@ -13,21 +13,21 @@ export const ParkAndRideIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M11.422 8.6v.96h.978v.53h-.973v.96h-.549v-.96H9.9v-.53h.973V8.6z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M8 1C4.14 1 1 4.141 1 8s3.14 7 7 7 7-3.141 7-7-3.14-7-7-7zm0 13c-3.308 0-6-2.691-6-6s2.692-6 6-6 6 2.691 6 6-2.692 6-6 6z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M7.927 4H5v8h1.601V8.867h1.315c1.792 0 2.799-.92 2.799-2.519C10.715 4.79 9.617 4 7.927 4zm.044 3.414h-1.37v-2.02h1.358c.821 0 1.219.37 1.22.995.001.538-.323 1.03-1.208 1.025z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

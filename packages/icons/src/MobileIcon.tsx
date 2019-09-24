@@ -13,9 +13,9 @@ export const MobileIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M3.6 1.8v12.4a.8.8 0 00.8.8h7.2a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8H4.4a.8.8 0 00-.8.8zM8 14a1 1 0 110-2 1 1 0 010 2zm-3-3V2.4h6V11H5z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

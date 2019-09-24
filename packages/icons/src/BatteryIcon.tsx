@@ -13,9 +13,9 @@ export const BatteryIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14.2 5.5h-.7V4a1 1 0 00-1-1H2a1 1 0 00-1 1v8a1 1 0 001 1h10.5a1 1 0 001-1v-1.5h.7a.8.8 0 00.8-.8V6.3a.8.8 0 00-.8-.8zm-9.45 5h-2v-5h2v5zm3.45 0h-2v-5h2v5zm3.45 0h-2v-5h2v5z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

@@ -13,9 +13,9 @@ export const CameraIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14 4.5h-2l-1.7-2.125A1 1 0 009.52 2H6.48a1 1 0 00-.78.375L4 4.5H2a1 1 0 00-1 1v7a1 1 0 001 1h12a1 1 0 001-1v-7a1 1 0 00-1-1zm-6 6.696c-1.417 0-2.5-1.083-2.5-2.5 0-1.416 1.083-2.5 2.5-2.5s2.5 1.084 2.5 2.5c0 1.417-1.083 2.5-2.5 2.5z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

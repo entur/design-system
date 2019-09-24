@@ -43,10 +43,14 @@ function getComponentString({
   import IconComponentType from '../types';
   
   export const ${componentName}: IconComponentType = ({ className, ...rest }) => (
-    ${svgString.replace(
-      '<svg ',
-      "<svg {...rest} className={classNames('entur-icon', className)} ",
-    )}
+    ${svgString
+      .replace(/enable-background/g, 'enableBackground')
+      .replace(/clip-rule/g, 'clipRule')
+      .replace(/fill-rule/g, 'fillRule')
+      .replace(
+        '<svg ',
+        "<svg {...rest} className={classNames('entur-icon', className)} ",
+      )}
   );
   export default ${componentName};
   `;

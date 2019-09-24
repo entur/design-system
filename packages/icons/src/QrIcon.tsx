@@ -11,7 +11,7 @@ export const QrIcon: IconComponentType = ({ className, ...rest }) => (
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+    <g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
       <path d="M14.2 1H9.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3z" />
       <path d="M6.2 9H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V9.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3z" />
       <path d="M6.2 1H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8z" />

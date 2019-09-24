@@ -13,9 +13,9 @@ export const PositionIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14.428 1.023L1.297 5.4a.434.434 0 000 .824l6.257 2.085a.217.217 0 01.137.137l2.085 6.257a.434.434 0 00.824 0l4.377-13.131a.434.434 0 00-.549-.549z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

@@ -9,7 +9,7 @@ export const AlignRightIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
     {...rest}
     className={classNames('entur-icon', className)}
-    enable-background="new 0 0 16 16"
+    enableBackground="new 0 0 16 16"
     viewBox="0 0 16 16"
   >
     <path

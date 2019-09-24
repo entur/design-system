@@ -13,9 +13,9 @@ export const PhoneIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14.738 11.687l-2.317-2.331a.898.898 0 00-1.273-.002L9.09 11.413 4.595 6.919l2.062-2.062a.9.9 0 00.001-1.27L4.339 1.263a.899.899 0 00-1.272 0L1.004 3.326 1 3.324c0 6.453 5.231 11.684 11.685 11.684l2.052-2.052a.898.898 0 00.001-1.269"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

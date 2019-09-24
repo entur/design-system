@@ -13,9 +13,9 @@ export const DesktopIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14 2H2a1 1 0 00-1 1v7.6a1 1 0 001 1h4v1H3V14h10v-1.4h-3v-1h4a1 1 0 001-1V3a1 1 0 00-1-1zm-.4 7H2.4V3.4h11.2V9z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

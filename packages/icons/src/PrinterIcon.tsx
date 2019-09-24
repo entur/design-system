@@ -13,15 +13,15 @@ export const PrinterIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14.2 5.6H1.8a.8.8 0 00-.8.8v5.2a.8.8 0 00.8.8H4v1.8a.8.8 0 00.8.8h6.4a.8.8 0 00.8-.8v-1.8h2.2a.8.8 0 00.8-.8V6.4a.8.8 0 00-.8-.8zm-3.6 8H5.4V8.4h5.2v5.2z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M11.2 1H4.8a.8.8 0 00-.8.8v2.4h8V1.8a.8.8 0 00-.8-.8z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );

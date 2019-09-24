@@ -13,9 +13,9 @@ export const ImageIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM6 4a1 1 0 110 2 1 1 0 010-2zm-3 8l2-4 2 2 3-4 3 6H3z"
-      clip-rule="evenodd"
+      clipRule="evenodd"
     />
   </svg>
 );
