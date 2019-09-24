@@ -5,25 +5,96 @@ parent: Komponenter
 menu: Button
 ---
 
-# Button
+import { Button } from '@entur/button';
+import '@entur/button/dist/styles.css';
+import { Playground, Props } from 'docz';
+import DoAndDont from '../../components/DoAndDont';
+import doPic from '../static/ButtonDo.png';
+import dontPic from '../static/ButtonDont.png';
 
-This is the second component
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+# Knapper
 
-## test
+Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 
-Lorem ipLorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+<Playground>
+  <Button>Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="success">Success</Button>
+  <Button variant="negative">Danger</Button>
+</Playground>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+## Props
 
-sum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+<Props of={Button} />
 
-### test2
+## Knapp med ikon og tekst
 
-Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+<Playground>
+  <Button variant="secondary">Ikon</Button>
+  <Button variant="success">Ikon</Button>
+</Playground>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+## Store knapper
 
-ipsum dolor sit amet, consectetur adipiscing elit. In luctus hendrerit augue, a tempus est sollicitudin in. Fusce velit justo, facilisis in suscipit sed, viverra vitae quam. Cras mauris eros, viverra ut convallis sed, ultrices non dui. Morbi laoreet ultrices massa. Mauris posuere pellentesque finibus. Sed dignissim purus eu neque mattis, ac malesuada lectus gravida. Pellentesque sollicitudin ornare diam quis vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat urna. Suspendisse venenatis condimentum tempus. Fusce pretium libero nec nibh porta laoreet. Sed ac eleifend urna, et scelerisque tellus. Pellentesque venenatis lorem id ornare bibendum.
+<Playground>
+  <Button size="large">Primary</Button>
+  <Button size="large" variant="secondary">
+    Secondary
+  </Button>
+  <Button size="large" variant="success">
+    Success
+  </Button>
+  <Button size="large" variant="negative">
+    Danger
+  </Button>
+</Playground>
+
+## Retningslinjer for brukerne
+
+#### Primary (Høy prioritet):
+
+Brukes kun til primær handlinger som har høyt prioritert på en side.
+Det bør ikke være mer enn én slik knapp per side eller visning.
+Kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
+
+#### Secondary (Middels prioritet):
+
+Subtil variant som brukes til å indikere en sekundær handling som komplimenterer
+en primær handling. Middels prioriterte handlinger og dersom man ikke ønsker at
+den skal være i fokus eller for å redusere visuell støy når det er mange handlinger
+av like stor prioritet på siden.
+
+#### Success (Svært høyt prioritert):
+
+Indikerer en vellykket eller positiv handling. Brukes som “call to action”
+for svært høyt prioriterte handlinger. Hovedregelen her er kun én action knapp per
+side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
+
+#### Danger:
+
+Indikerer en fare eller potensielt negativ handling. Brukes kun for å
+advare brukeren mot handlinger som kan føre til negative konsekvenser
+som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
+
+## Knapp med ikon og tekst
+
+Når navngivingen på knappen ikke er tydelig nok, kan man vurdere å bruke
+ikoner i knapper for å kommunisere tydeligere hva knappen gjør. Ikoner er
+alltid sammen med en tekst.
+
+## Aktiv vs inaktiv knapp
+
+<DoAndDont
+  doList={[
+    'Aktiv knapp som validerer (når man klikker på den) erstatter bruk av disabled (inaktive) knapp.',
+    'Validering av påkrevde felter skal skje underveis i skjema, men først når man går ut av inputfeltet. ',
+    'Hvis man ikke går inn i feltet vil validering først komme når man validerer siden (ved f.eks å klikke “lagre” eller lignende). Det gjelder også for felter som validerer mot baksystemer.',
+  ]}
+  dontList={[
+    'Inaktive knapper bør unngås fordi den skaper vanligvis en elendig brukeropplevelse og utelukker mange mennesker med funksjonshemninger.',
+    'Når du ved et uhell klikker på dem, får du ingen konkret tilbakemelding.',
+    'Irritasjonsmoment, brukeren skjønner ikke hva knappen sier eller hvorfor den ikke er klikkbar.',
+  ]}
+  doPicture={doPic}
+  dontPicture={dontPic}
+/>

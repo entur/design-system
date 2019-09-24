@@ -12,6 +12,7 @@
   },
   "workspaces": [
     "docs",
+    "packages/button",
     "packages/tokens",
     "packages/tooltip",
     "packages/typography"

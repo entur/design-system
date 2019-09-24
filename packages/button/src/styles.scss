@@ -1,0 +1,126 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.entur-button {
+  width: calc(9.5rem - 1rem / 8); //width 152-150
+  height: 2.75rem; // 44px
+  border-width: calc(1rem / 8); //Border 2px, to make total 152
+  border-radius: calc(1rem / 16);
+  border-color: transparent;
+  font-size: inherit;
+  cursor: pointer;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  //Size
+  &--size-large {
+    height: 3.75rem;
+  }
+
+  //Widths
+  &--width-large {
+  }
+
+  &--width-square {
+    width: 2.75rem;
+  }
+
+  &--width-fluid {
+    width: 100%;
+  }
+
+  //Variant
+  &--variant-primary {
+    background-color: $colors-brand-blue;
+    color: $colors-brand-white;
+
+    &:hover {
+      background-color: tint($colors-brand-blue, 10%);
+    }
+    &:active {
+      background-color: shade($colors-brand-blue, 10%);
+    }
+    .entur-contrast & {
+      background-color: $colors-brand-lavender;
+      color: $colors-brand-blue;
+      &:hover {
+        background-color: tint($colors-brand-lavender, 10%);
+      }
+      &:active {
+        background-color: shade($colors-brand-lavender, 10%);
+      }
+    }
+  }
+  &--variant-secondary {
+    background-color: $colors-brand-lavender;
+    color: $colors-brand-blue;
+    &:hover {
+      background-color: tint($colors-brand-lavender, 10%);
+    }
+    &:active {
+      background-color: mix(black, $colors-brand-lavender, 10%);
+    }
+    .entur-contrast & {
+      background-color: $colors-blues-blue20;
+      color: $colors-brand-white;
+      &:hover {
+        background-color: tint($colors-brand-lavender, 10%);
+      }
+      &:active {
+        background-color: shade($colors-brand-lavender, 10%);
+      }
+    }
+  }
+
+  &--variant-success {
+    background-color: $colors-validation-mint-contrast;
+    color: $colors-brand-blue;
+    &:hover {
+      background-color: tint($colors-validation-mint-contrast, 10%);
+    }
+    &:active {
+      background-color: shade($colors-validation-mint-contrast, 5%);
+    }
+  }
+
+  &--variant-negative {
+    background: transparent;
+    color: $colors-validation-lava;
+    border-color: $colors-validation-lava;
+    &:hover {
+      background-color: rgba($colors-validation-lava-tint, 0.6);
+    }
+    &:active {
+      background-color: $colors-validation-lava;
+      color: $colors-brand-white;
+    }
+    .entur-contrast & {
+      color: $colors-brand-white;
+      &:hover {
+        background-color: tint($colors-blues-blue20, 10%);
+      }
+      &:active {
+        background-color: $colors-validation-lava-contrast;
+      }
+    }
+  }
+}

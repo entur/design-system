@@ -9,6 +9,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@entur/button": "^0.1.0",
     "@entur/tokens": "^0.1.0",
     "@entur/tooltip": "^0.1.0",
     "@entur/typography": "^0.1.0",
