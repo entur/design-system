@@ -36,7 +36,8 @@
 
   &--disabled {
     cursor: default;
-    opacity: 0.4;
+    background-color: $colors-greys-grey20;
+    color: $colors-greys-grey40;
   }
 
   //Size
