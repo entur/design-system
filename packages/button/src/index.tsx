@@ -32,7 +32,7 @@ export const Button: React.RefForwardingComponent<
       disabled = false,
       width,
       active,
-      as: Element = 'button',
+      as = 'button',
       ...rest
     },
     ref: React.Ref<HTMLButtonElement>,
@@ -49,6 +49,8 @@ export const Button: React.RefForwardingComponent<
       },
       className,
     );
+
+    const Element = disabled ? 'button' : as;
 
     return (
       <Element
