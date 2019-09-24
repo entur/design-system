@@ -1,9 +1,9 @@
 {
-  "name": "@entur/{package-name}",
+  "name": "@entur/button",
   "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/{package-name}.esm.js",
+  "module": "dist/button.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -17,5 +17,11 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {
+    "@entur/tokens": "^0.1.0"
   }
 }

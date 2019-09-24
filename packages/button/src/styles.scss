@@ -1,0 +1,146 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.entur-button {
+  min-width: 9.5rem - (1rem / 8); //width 152-border
+  border: ($space-default / 8) solid transparent; // ~2px transparent border
+  border-radius: $space-default / 16;
+  font-size: inherit;
+  cursor: pointer;
+  display: inline-block;
+  appearance: none;
+  text-decoration: none;
+  padding: $space-small;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-extra-large;
+  font-weight: $font-weights-body;
+  text-align: center;
+  font-family: inherit;
+
+  &--disabled {
+    cursor: default;
+    background-color: $colors-greys-grey20;
+    color: $colors-greys-grey40;
+  }
+
+  //Size
+  &--size-large {
+    padding-top: $space-medium;
+    padding-bottom: $space-medium;
+  }
+
+  //Widths
+  &--width-medium {
+    padding-right: $space-medium;
+    padding-left: $space-medium;
+  }
+
+  &--width-large {
+    padding-right: $space-extra-large;
+    padding-left: $space-extra-large;
+  }
+
+  &--width-square {
+    padding-right: $space-none;
+    padding-left: $space-none;
+    min-width: ($space-extra-large2 + $space-extra-small);
+    width: ($space-extra-large2 + $space-extra-small);
+  }
+
+  &--width-fluid {
+    width: 100%;
+  }
+
+  //Variant
+  &--variant-primary {
+    background-color: $colors-brand-blue;
+    color: $colors-brand-white;
+
+    &:hover {
+      background-color: tint($colors-brand-blue, 10%);
+    }
+    &:active {
+      background-color: shade($colors-brand-blue, 10%);
+    }
+    .entur-contrast & {
+      background-color: $colors-brand-lavender;
+      color: $colors-brand-blue;
+      &:hover {
+        background-color: tint($colors-brand-lavender, 10%);
+      }
+      &:active {
+        background-color: shade($colors-brand-lavender, 10%);
+      }
+    }
+  }
+  &--variant-secondary {
+    background-color: $colors-brand-lavender;
+    color: $colors-brand-blue;
+    &:hover {
+      background-color: tint($colors-brand-lavender, 10%);
+    }
+    &:active {
+      background-color: mix(black, $colors-brand-lavender, 10%);
+    }
+    .entur-contrast & {
+      background-color: $colors-blues-blue20;
+      color: $colors-brand-white;
+      &:hover {
+        background-color: tint($colors-brand-lavender, 10%);
+      }
+      &:active {
+        background-color: shade($colors-brand-lavender, 10%);
+      }
+    }
+  }
+
+  &--variant-success {
+    background-color: $colors-validation-mint-contrast;
+    color: $colors-brand-blue;
+    &:hover {
+      background-color: tint($colors-validation-mint-contrast, 10%);
+    }
+    &:active {
+      background-color: shade($colors-validation-mint-contrast, 5%);
+    }
+  }
+
+  &--variant-negative {
+    background: transparent;
+    color: $colors-validation-lava;
+    border-color: $colors-validation-lava;
+    &:hover {
+      background-color: rgba($colors-validation-lava-tint, 0.6);
+    }
+    &:active {
+      background-color: $colors-validation-lava;
+      color: $colors-brand-white;
+    }
+    .entur-contrast & {
+      color: $colors-brand-white;
+      &:hover {
+        background-color: tint($colors-blues-blue20, 10%);
+      }
+      &:active {
+        background-color: $colors-validation-lava-contrast;
+      }
+    }
+  }
+}
