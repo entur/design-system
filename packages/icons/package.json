@@ -10,10 +10,11 @@
     "svgs"
   ],
   "scripts": {
-    "prebuild": "rimraf src dist",
+    "prebuild": "rimraf tmp dist",
     "build": "yarn build:generate && yarn build:tsdx",
     "build:generate": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-icons.ts",
-    "build:tsdx": "tsdx build",
+    "build:tsdx": "tsdx build --entry tmp/index.ts",
+    "postbuild": "rimraf tmp",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },

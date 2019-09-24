@@ -59,7 +59,7 @@ function getComponentString({
 
 async function processFile(filePath: string) {
   const componentName = toCase.pascal(path.basename(filePath, '.svg')) + 'Icon';
-  const outputFile = path.resolve('src', `${componentName}.tsx`);
+  const outputFile = path.resolve('tmp', `${componentName}.tsx`);
   const svgString = await getSvgString(filePath);
   const iconComponent = getComponentString({
     svgString,
@@ -101,7 +101,7 @@ ${flattenedResult
   .map(Comp => `export { default as ${Comp} } from './${Comp}';`)
   .join('\n')}`;
 
-  fs.writeFileSync(path.resolve('src', 'index.ts'), fileContent);
+  fs.writeFileSync(path.resolve('tmp', 'index.ts'), fileContent);
   console.info(`Created ${flattenedResult.length} icon components!`);
 }
 run();
