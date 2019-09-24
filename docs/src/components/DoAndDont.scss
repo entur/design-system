@@ -41,7 +41,7 @@
   font-weight: bold;
   margin-top: 0.5rem;
   &::before {
-    content: '\2713';
+    content: '\2713'; //Checkmark
     color: #5ac39a;
   }
 }
@@ -50,17 +50,19 @@
   font-weight: bold;
   margin-top: 0.5rem;
   &::before {
-    content: '\274C';
+    content: '\274C'; // Cross
     color: #d31b1b;
   }
 }
 
 .do-and-dont-list {
-  list-style: none;
+  & ul {
+    list-style: none;
+  }
   & li {
     margin-bottom: 0.5rem;
     &::before {
-      content: '-';
+      content: '- ';
     }
   }
 }

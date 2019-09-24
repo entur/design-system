@@ -19,21 +19,15 @@
 }
 
 .entur-button {
-  min-width: calc(9.5rem - 1rem / 8); //width 152-border
-  border-style: solid;
-  border-width: $space-default / 8; //Border 2px, to make total 152
+  min-width: 9.5rem - (1rem / 8); //width 152-border
+  border: ($space-default / 8) solid transparent; // ~2px transparent border
   border-radius: $space-default / 16;
-  border-color: transparent;
   font-size: inherit;
   cursor: pointer;
   display: inline-block;
   appearance: none;
   text-decoration: none;
-  padding-top: $space-small;
-  padding-bottom: $space-small;
-  padding-right: $space-medium;
-  padding-left: $space-medium;
-  white-space: nowrap;
+  padding: $space-small;
   font-size: $font-sizes-large;
   line-height: $line-heights-extra-large;
   font-weight: $font-weights-body;
@@ -41,7 +35,8 @@
   font-family: inherit;
 
   &--disabled {
-    cursor: not-allowed;
+    cursor: default;
+    opacity: 0.4;
   }
 
   //Size
@@ -51,6 +46,11 @@
   }
 
   //Widths
+  &--width-medium {
+    padding-right: $space-medium;
+    padding-left: $space-medium;
+  }
+
   &--width-large {
     padding-right: $space-extra-large;
     padding-left: $space-extra-large;

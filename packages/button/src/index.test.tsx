@@ -9,7 +9,12 @@ test('Button renders and is clickable', () => {
   const spy = jest.fn();
 
   const { getByTestId } = render(
-    <Button onClick={spy} data-testid="testerButton" className={testClass}>
+    <Button
+      variant="primary"
+      onClick={spy}
+      data-testid="testerButton"
+      className={testClass}
+    >
       {children}
     </Button>,
   );
@@ -26,7 +31,12 @@ test('Button renders as an <a> tag, with an href-property', () => {
   let children = 'Button children';
   const hrefLink = '#coolLinkAddresss';
   const { getByTestId } = render(
-    <Button as="a" href={hrefLink} data-testid="testerButton2">
+    <Button
+      variant="primary"
+      as="a"
+      href={hrefLink}
+      data-testid="testerButton2"
+    >
       {children}
     </Button>,
   );
