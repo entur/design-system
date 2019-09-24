@@ -1,0 +1,32 @@
+---
+name: SquareButton
+route: /komponenter/squarebutton
+parent: Komponenter
+menu: Button
+---
+
+import { Button } from '@entur/button';
+import '@entur/button/dist/styles.css';
+import { Playground, Props } from 'docz';
+import DoAndDont from '../../components/DoAndDont';
+import doPic from '../static/ButtonDo.png';
+import dontPic from '../static/ButtonDont.png';
+
+## Square button
+
+Square buttons brukes gjerne med ikoner
+
+<Playground>
+  <Button variant="primary" width="square">
+    Ja
+  </Button>
+  <Button variant="secondary" width="square">
+    Ok
+  </Button>
+  <Button variant="success" width="square">
+    Nei
+  </Button>
+  <Button variant="negative" width="square">
+    I
+  </Button>
+</Playground>

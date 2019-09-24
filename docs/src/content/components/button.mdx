@@ -17,7 +17,7 @@ import dontPic from '../static/ButtonDont.png';
 Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 
 <Playground>
-  <Button>Primary</Button>
+  <Button variant="primary">Primary</Button>
   <Button variant="secondary">Secondary</Button>
   <Button variant="success">Success</Button>
   <Button variant="negative">Danger</Button>
@@ -37,7 +37,9 @@ Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 ## Store knapper
 
 <Playground>
-  <Button size="large">Primary</Button>
+  <Button size="large" variant="primary">
+    Primary
+  </Button>
   <Button size="large" variant="secondary">
     Secondary
   </Button>
@@ -102,7 +104,7 @@ alltid sammen med en tekst.
       </li>
     </ul>
   </DoAndDont.Do>
-  <DoAndDont.Dont dontPicture={doPic}>
+  <DoAndDont.Dont dontPicture={dontPic}>
     <ul>
       <li>
         Inaktive knapper bør unngås fordi den skaper vanligvis en elendig

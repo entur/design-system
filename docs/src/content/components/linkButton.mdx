@@ -1,0 +1,20 @@
+---
+name: Link Button
+route: /komponenter/linkbutton
+parent: Komponenter
+menu: Button
+---
+
+import { Button } from '@entur/button';
+import '@entur/button/dist/styles.css';
+import { Playground, Props } from 'docz';
+import DoAndDont from '../../components/DoAndDont';
+
+# Linkbuttons
+
+Noen ganger vil man at knappen skal være en link. Da kan man bruk _as_ for å sette knappen som en `<a>`-tag.
+
+<Playground>
+    <Button as="a" href="#" variant="primary">Primary</Button>
+
+</Playground>
