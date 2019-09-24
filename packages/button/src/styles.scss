@@ -19,13 +19,26 @@
 }
 
 .entur-button {
-  width: calc(9.5rem - 1rem / 8); //width 152-150
-  height: 2.75rem; // 44px
-  border-width: calc(1rem / 8); //Border 2px, to make total 152
-  border-radius: calc(1rem / 16);
+  min-width: calc(9.5rem - 1rem / 8); //width 152-border
+  border-style: solid;
+  border-width: $space-default / 8; //Border 2px, to make total 152
+  border-radius: $space-default / 16;
   border-color: transparent;
   font-size: inherit;
   cursor: pointer;
+  display: inline-block;
+  appearance: none;
+  text-decoration: none;
+  padding-top: $space-small;
+  padding-bottom: $space-small;
+  padding-right: $space-medium;
+  padding-left: $space-medium;
+  white-space: nowrap;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-extra-large;
+  font-weight: $font-weights-body;
+  text-align: center;
+  font-family: inherit;
 
   &--disabled {
     cursor: not-allowed;
@@ -33,15 +46,21 @@
 
   //Size
   &--size-large {
-    height: 3.75rem;
+    padding-top: $space-medium;
+    padding-bottom: $space-medium;
   }
 
   //Widths
   &--width-large {
+    padding-right: $space-extra-large;
+    padding-left: $space-extra-large;
   }
 
   &--width-square {
-    width: 2.75rem;
+    padding-right: $space-none;
+    padding-left: $space-none;
+    min-width: ($space-extra-large2 + $space-extra-small);
+    width: ($space-extra-large2 + $space-extra-small);
   }
 
   &--width-fluid {

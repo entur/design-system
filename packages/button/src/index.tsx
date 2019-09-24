@@ -6,7 +6,7 @@ declare type sizes = 'medium' | 'large';
 declare type variants = 'primary' | 'secondary' | 'success' | 'negative';
 declare type widths = 'medium' | 'large' | 'fluid' | 'square';
 type ButtonProps = {
-  variant?: variants;
+  variant: variants;
   size?: sizes;
   loading?: boolean;
   className?: string;
@@ -24,7 +24,7 @@ export const Button: React.RefForwardingComponent<
 > = React.forwardRef(
   (
     {
-      variant = 'primary',
+      variant,
       size = 'medium',
       loading = false,
       className,
