@@ -11,7 +11,11 @@ export const LeftArrowIcon: IconComponentType = ({ className, ...rest }) => (
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <path fill="currentColor" d="M4.657 6.243v6h-2v-8h8v2h-6z" />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M5.105 6.833L3.69 8.247l5.658 5.656 1.413-1.414-4.242-4.242 4.242-4.243L9.348 2.59z"
+    />
   </svg>
 );
 export default LeftArrowIcon;

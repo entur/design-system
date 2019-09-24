@@ -52,7 +52,7 @@ const plugins = [
   { sortAttrs: true },
   { sortDefsChildren: true },
   { removeDimensions: true },
-  { removeAttrs: true },
+  { removeAttrs: false },
   { removeAttributesBySelector: false },
   { removeElementsByAttr: false },
   { addAttributesToSVGElement: false },

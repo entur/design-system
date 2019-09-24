@@ -13,7 +13,7 @@ export const ForwardIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      d="M6.863 14l1.224-1.254-3.762-3.85H15V7.104H4.325l3.762-3.85L6.863 2 1 8z"
+      d="M9.137 2L7.913 3.254l3.762 3.85H1v1.792h10.675l-3.762 3.85L9.137 14 15 8z"
     />
   </svg>
 );

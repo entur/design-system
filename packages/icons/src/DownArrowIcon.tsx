@@ -11,7 +11,10 @@ export const DownArrowIcon: IconComponentType = ({ className, ...rest }) => (
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <path fill="currentColor" d="M9.757 8.657v-6h2v8h-8v-2h6z" />
+    <path
+      fill="currentColor"
+      d="M7.757 9.485l4.242-4.242 1.415 1.414-4.243 4.242-1.414 1.415L2.1 6.657l1.414-1.414 4.243 4.242z"
+    />
   </svg>
 );
 export default DownArrowIcon;

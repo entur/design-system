@@ -5,7 +5,7 @@ import React from 'react';
 import classNames from 'classnames';
 import IconComponentType from '../types';
 
-export const ColorChooserIcon: IconComponentType = ({ className, ...rest }) => (
+export const ColorPickerIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
     {...rest}
     className={classNames('entur-icon', className)}
@@ -17,4 +17,4 @@ export const ColorChooserIcon: IconComponentType = ({ className, ...rest }) => (
     />
   </svg>
 );
-export default ColorChooserIcon;
+export default ColorPickerIcon;

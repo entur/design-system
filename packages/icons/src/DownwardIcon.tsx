@@ -13,7 +13,7 @@ export const DownwardIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      d="M9.137 2L7.912 3.254l3.763 3.85H1v1.792h10.675l-3.763 3.85L9.137 14 15 8z"
+      d="M14 9.137l-1.254-1.225-3.85 3.763V1H7.104v10.675l-3.85-3.763L2 9.137 8 15z"
     />
   </svg>
 );

@@ -5,13 +5,13 @@ import React from 'react';
 import classNames from 'classnames';
 import IconComponentType from '../types';
 
-export const LeftIcon: IconComponentType = ({ className, ...rest }) => (
+export const SubtractIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
     {...rest}
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <path fill="currentColor" d="M4.657 6.243v6h-2v-8h8v2h-6z" />
+    <path fill="currentColor" d="M9 1v14H7V1z" />
   </svg>
 );
-export default LeftIcon;
+export default SubtractIcon;

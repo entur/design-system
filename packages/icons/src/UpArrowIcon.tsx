@@ -11,7 +11,10 @@ export const UpArrowIcon: IconComponentType = ({ className, ...rest }) => (
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <path fill="currentColor" d="M5.757 12.343h6v2h-8v-8h2v6z" />
+    <path
+      fill="currentColor"
+      d="M7.757 7.515l4.242 4.242 1.415-1.414L9.17 6.1 7.757 4.686 2.1 10.343l1.414 1.414 4.243-4.242z"
+    />
   </svg>
 );
 export default UpArrowIcon;

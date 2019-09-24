@@ -5,7 +5,7 @@ import React from 'react';
 import classNames from 'classnames';
 import IconComponentType from '../types';
 
-export const VerticaleIcon: IconComponentType = ({ className, ...rest }) => (
+export const StandardIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
     {...rest}
     className={classNames('entur-icon', className)}
@@ -13,8 +13,8 @@ export const VerticaleIcon: IconComponentType = ({ className, ...rest }) => (
   >
     <path
       fill="currentColor"
-      d="M13 6.25a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zm-5.25 0a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5zm-5.25 0a1.75 1.75 0 110 3.5 1.75 1.75 0 010-3.5z"
+      d="M7.4 1.225c.3-.3.9-.3 1.2 0l5 4-1.2 1.6-4.4-3.5-4.4 3.5-1.2-1.6 5-4zm.6 11.5l4.4-3.5 1.2 1.6-5 4c-.2.1-.4.2-.6.2s-.4-.1-.6-.2l-5-4 1.2-1.6 4.4 3.5z"
     />
   </svg>
 );
-export default VerticaleIcon;
+export default StandardIcon;

@@ -11,7 +11,11 @@ export const RightArrowIcon: IconComponentType = ({ className, ...rest }) => (
     className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <path fill="currentColor" d="M7.343 10.243h6v2h-8v-8h2v6z" />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M5.25 4.005l4.243 4.243L5.25 12.49l1.415 1.414 5.656-5.656-1.415-1.414L6.665 2.59z"
+    />
   </svg>
 );
 export default RightArrowIcon;
