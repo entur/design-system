@@ -3,15 +3,12 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const DownloadIcon: React.FC<IconProps> = ({ className, ...rest }) => (
+export const DownloadIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
     <path

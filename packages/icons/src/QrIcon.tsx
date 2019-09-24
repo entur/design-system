@@ -3,19 +3,20 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const QrIcon: React.FC<IconProps> = ({ className, ...rest }) => (
+export const QrIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
-    <g fill="#181E53" fill-rule="evenodd" clip-rule="evenodd">
-      <path d="M14.2 1H9.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3zM6.2 9H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V9.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3zM6.2 1H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8zM9 13.5h1.5V15H9zM13.5 9H15v1.5h-1.5z" />
+    <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+      <path d="M14.2 1H9.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3z" />
+      <path d="M6.2 9H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V9.8a.8.8 0 00-.8-.8zm-.7 4.5h-3v-3h3v3z" />
+      <path d="M6.2 1H1.8a.8.8 0 00-.8.8v4.4a.8.8 0 00.8.8h4.4a.8.8 0 00.8-.8V1.8a.8.8 0 00-.8-.8z" />
+      <path d="M9 13.5h1.5V15H9z" />
+      <path d="M13.5 9H15v1.5h-1.5z" />
       <path d="M12 12h-1.5v-1.5H12V9H9v3h1.5v1.5h3V15H15v-3h-1.5v-1.5H12z" />
     </g>
   </svg>

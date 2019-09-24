@@ -3,19 +3,16 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const LaptopIcon: React.FC<IconProps> = ({ className, ...rest }) => (
+export const LaptopIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
     <path
-      fill="#181E53"
+      fill="currentColor"
       fill-rule="evenodd"
       d="M14.941 12.89L13.4 9.037V2.8a.8.8 0 00-.8-.8H3.4a.8.8 0 00-.8.8v6.237L1.059 12.89A.81.81 0 001.81 14h12.38a.81.81 0 00.751-1.11zM12 8.6H4V3.4h8v5.2z"
       clip-rule="evenodd"

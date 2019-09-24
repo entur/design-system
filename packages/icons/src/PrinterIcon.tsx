@@ -3,21 +3,24 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const PrinterIcon: React.FC<IconProps> = ({ className, ...rest }) => (
+export const PrinterIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
     <path
-      fill="#181E53"
+      fill="currentColor"
       fill-rule="evenodd"
-      d="M14.2 5.6H1.8a.8.8 0 00-.8.8v5.2a.8.8 0 00.8.8H4v1.8a.8.8 0 00.8.8h6.4a.8.8 0 00.8-.8v-1.8h2.2a.8.8 0 00.8-.8V6.4a.8.8 0 00-.8-.8zm-3.6 8H5.4V8.4h5.2v5.2zM11.2 1H4.8a.8.8 0 00-.8.8v2.4h8V1.8a.8.8 0 00-.8-.8z"
+      d="M14.2 5.6H1.8a.8.8 0 00-.8.8v5.2a.8.8 0 00.8.8H4v1.8a.8.8 0 00.8.8h6.4a.8.8 0 00.8-.8v-1.8h2.2a.8.8 0 00.8-.8V6.4a.8.8 0 00-.8-.8zm-3.6 8H5.4V8.4h5.2v5.2z"
+      clip-rule="evenodd"
+    />
+    <path
+      fill="currentColor"
+      fill-rule="evenodd"
+      d="M11.2 1H4.8a.8.8 0 00-.8.8v2.4h8V1.8a.8.8 0 00-.8-.8z"
       clip-rule="evenodd"
     />
   </svg>

@@ -3,18 +3,15 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const BicycleParkingIcon: React.FC<IconProps> = ({
+export const BicycleParkingIcon: IconComponentType = ({
   className,
   ...rest
 }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
     <path

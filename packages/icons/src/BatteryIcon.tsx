@@ -3,19 +3,16 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import IconComponentType from '../types';
 
-type IconProps = {
-  className?: string;
-};
-
-export const BatteryIcon: React.FC<IconProps> = ({ className, ...rest }) => (
+export const BatteryIcon: IconComponentType = ({ className, ...rest }) => (
   <svg
-    className={classNames('entur-icon', className)}
     {...rest}
+    className={classNames('entur-icon', className)}
     viewBox="0 0 16 16"
   >
     <path
-      fill="#181E53"
+      fill="currentColor"
       fill-rule="evenodd"
       d="M14.2 5.5h-.7V4a1 1 0 00-1-1H2a1 1 0 00-1 1v8a1 1 0 001 1h10.5a1 1 0 001-1v-1.5h.7a.8.8 0 00.8-.8V6.3a.8.8 0 00-.8-.8zm-9.45 5h-2v-5h2v5zm3.45 0h-2v-5h2v5zm3.45 0h-2v-5h2v5z"
       clip-rule="evenodd"
