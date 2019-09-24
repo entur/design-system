@@ -1,0 +1,80 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+:root {
+  --ruler-line-width: 0.25rem;
+  --ruler-end-thickness: 0.125rem;
+  --ruler-end-length: 0.25rem;
+}
+
+.ruler-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ruler-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-size: $font-sizes-small;
+  color: #656782;
+  margin-right: 1rem;
+}
+.x-ruler-wrapper {
+  display: inline-block;
+}
+
+.y-ruler-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: 0.5rem;
+  align-items: center;
+  margin-top: -0.125rem;
+}
+
+.ruler-mask {
+  background-color: #d1d3d3;
+  mask-image: url(./line.svg);
+  mask-position: center;
+}
+
+.y-ruler-line {
+  mask-repeat: repeat-y;
+  width: var(--ruler-line-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.hortizontal-end {
+  mask-repeat: repeat-x;
+  width: var(--ruler-end-length);
+  height: var(--ruler-end-thickness);
+}
+.x-ruler-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: -0.125rem;
+}
+.x-ruler {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+}
+.x-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.x-ruler-line {
+  mask-repeat: repeat-x;
+  height: var(--ruler-line-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-end {
+  mask-repeat: repeat-y;
+  width: var(--ruler-end-thickness);
+  height: var(--ruler-end-length);
+}

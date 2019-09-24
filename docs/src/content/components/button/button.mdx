@@ -10,6 +10,7 @@ import '@entur/button/dist/styles.css';
 import { Playground, Props } from 'docz';
 import DoAndDont from '../../../components/DoAndDont';
 import ComponentPresenter from '../../../components/ComponentPresenter';
+import ComponentRuler from '../../../components/ComponentRuler';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 
@@ -116,6 +117,27 @@ alltid sammen med en tekst.
 
 Default størrelsen på våre knapper er “medium”. Men man kan vurdere å bruke
 “large” som har en større høyde, dersom man trenger knapper med mer oppmerksomhet.
+
+<ComponentRuler.Wrapper>
+  <ComponentRuler
+    xName="Min-Width"
+    xNumber="150px"
+    yName="Høyde"
+    yNumber="44px"
+  >
+    <Button variant="primary">Medium</Button>
+  </ComponentRuler>
+  <ComponentRuler
+    xName="Min-Width"
+    xNumber="150px"
+    yName="Høyde"
+    yNumber="60px"
+  >
+    <Button variant="primary" size="large">
+      Large
+    </Button>
+  </ComponentRuler>
+</ComponentRuler.Wrapper>
 
 ## Aktiv vs inaktiv knapp
 
