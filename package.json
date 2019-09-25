@@ -9,7 +9,8 @@
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
-    "lerna:version": "lerna version --conventional-commits"
+    "prepublish": "yarn build && yarn test",
+    "lerna:publish": "lerna publish --conventional-commits"
   },
   "workspaces": [
     "docs",
