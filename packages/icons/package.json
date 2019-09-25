@@ -10,11 +10,12 @@
     "svgs"
   ],
   "scripts": {
-    "prebuild": "rimraf tmp dist",
-    "build": "yarn build:generate && yarn build:tsdx",
-    "build:generate": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-icons.ts",
-    "build:tsdx": "tsdx build --entry tmp/index.ts",
-    "postbuild": "rimraf tmp",
+    "prebuild": "rimraf src dist",
+    "build": "yarn build:icons && yarn build:index && yarn build:tsdx",
+    "build:icons": "svgr --ext tsx --out-dir src svgs",
+    "build:index": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-index.ts",
+    "build:tsdx": "tsdx build",
+    "postbuild": "rimraf src",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },
@@ -23,15 +24,12 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^4.3.3",
     "@types/fs-extra": "^8.0.0",
-    "@types/prettier": "^1.18.2",
-    "@types/svgo": "^1.2.1",
     "case": "^1.6.2",
     "fs-extra": "^8.1.0",
     "jsdom": "^15.1.1",
-    "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
-    "svgo": "^1.3.0",
     "ts-node": "^8.4.1"
   }
 }

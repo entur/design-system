@@ -25,13 +25,7 @@ const plugins = [
   { cleanupEnableBackground: true },
   { minifyStyles: true },
   { convertStyleToAttrs: true },
-  {
-    convertColors: {
-      // The icon set has two very similar colors - #181E53 and #181C56
-      // This regex makes sure we switch out both with "currentColor"
-      currentColor: /#181(E53|C56)/i,
-    },
-  },
+  { convertColors: true },
   { convertPathData: true },
   { convertTransform: true },
   { removeUnknownsAndDefaults: true },
@@ -62,6 +56,6 @@ const plugins = [
   { mergePaths: false },
 ];
 
-export default {
+module.exports = {
   plugins,
 };
