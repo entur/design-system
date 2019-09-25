@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ComponentRuler.scss';
 
 type ComponentRulerProps = {
   children: React.ReactNode;
   xName?: string;
-  xNumber?: string;
+  xNumber: string;
   yName?: string;
-  yNumber?: string;
+  yNumber: string;
 };
 
 function ComponentRuler(props: ComponentRulerProps) {
   return (
-    <div className="ruler-container">
-      <div className="y-ruler-wrapper">
+    <div className="component-ruler-container">
+      <div className="vertical-ruler-wrapper">
         {props.yName && <div className="yName">{`${props.yName}:`}</div>}
         {props.yNumber && <div className="yNumber">{props.yNumber}</div>}
         <div>
-          <div className="ruler-mask hortizontal-end" />
           <div
-            className="ruler-mask y-ruler-line"
+            className="vertical-ruler-line"
             style={{ height: props.yNumber }}
           />
-          <div className="ruler-mask hortizontal-end" />
         </div>
       </div>
-      <div className="x-ruler-wrapper">
+      <div className="hortizontal-ruler-wrapper">
         {props.children}
-        <div className="x-ruler">
-          <div className="ruler-mask vertical-end" />
+        <div className="horizontal-ruler-container">
           <div
-            className="ruler-mask x-ruler-line"
+            className="horizontal-ruler-line"
             style={{ width: props.xNumber }}
           />
-          <div className="ruler-mask vertical-end" />
         </div>
-        <div className="x-info-wrapper">
+        <div className="horizontal-ruler-information-wrapper">
           {props.xName && <div> {`${props.xName}: `}</div>}
           {props.xNumber && <div>{props.xNumber}</div>}
         </div>
@@ -48,7 +44,7 @@ type WrapperProps = {
 };
 
 function Wrapper(props: WrapperProps) {
-  return <div className="ruler-wrapper">{props.children}</div>;
+  return <div className="component-ruler-wrapper">{props.children}</div>;
 }
 
 ComponentRuler.Wrapper = Wrapper;
