@@ -8,7 +8,8 @@
     "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
-    "new-package": "./bin/new-package.js"
+    "new-package": "./bin/new-package.js",
+    "lerna:version": "lerna version --conventional-commits"
   },
   "workspaces": [
     "docs",
