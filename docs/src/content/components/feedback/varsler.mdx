@@ -1,39 +1,18 @@
 ---
-name: AlertBox
-route: /komponenter/alert-box
+name: Varsler
+route: /komponenter/feedback/varsler
 parent: Komponenter
+menu: Feedback
 ---
 
 import { Playground, Props } from 'docz';
-import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert';
-import '@entur/alert/dist/styles.css';
+import DoAndDont from '../../../components/DoAndDont';
+import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert/src';
+// import '@entur/alert/dist/styles.css';
 
-# Alertbokser
+# Varsler
 
-AlertBox brukes når man skal si ifra om at noe har skjedd.
-
-<Playground>
-  {() => {
-    const [isClosed, setClosed] = React.useState(false);
-    return isClosed ? null : (
-      <BannerAlertBox
-        variant="success"
-        title="Nå har du billett!"
-        onClose={() => setClosed(true)}
-      >
-        Ha det gøy på togturen til Bergen!
-      </BannerAlertBox>
-    );
-  }}
-</Playground>
-
-## Størrelser og varianter
-
-Det finnes tre størrelser og fire varianter av AlertBox.
-
-### Banner
-
-Brukes for hendelser som gjelder hele siden man er på. Plasseres typisk på toppen av siden. Man bør kunne lukke dem.
+Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige meldinger som de bør ta hensyn til.
 
 <Playground>
   <BannerAlertBox
@@ -47,7 +26,6 @@ Brukes for hendelser som gjelder hele siden man er på. Plasseres typisk på top
     variant="info"
     title="Vi bruker informasjonskapsler"
     style={{ marginBottom: '1em' }}
-    onClose={() => {}}
   >
     Ved å bruke denne siden godtar du at vi bruker informasjonskapsler.
   </BannerAlertBox>
@@ -55,7 +33,6 @@ Brukes for hendelser som gjelder hele siden man er på. Plasseres typisk på top
     variant="warning"
     title="Systemene våre er ustabile"
     style={{ marginBottom: '1em' }}
-    onClose={() => {}}
   >
     Systemene våre kan oppleves litt ustabile akkurat nå. Vi jobber med å fikse
     problemet!
@@ -70,7 +47,11 @@ Brukes for hendelser som gjelder hele siden man er på. Plasseres typisk på top
   </BannerAlertBox>
 </Playground>
 
-### Toast
+## Props
+
+<Props of={BannerAlertBox} />
+
+## Toast-varsler
 
 Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp av seg selv øverst i høyre hjørne, og skal forsvinne automatisk etter minst seks sekunder.
 
@@ -105,7 +86,7 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
   </ToastAlertBox>
 </Playground>
 
-### Small
+## Små varsler
 
 Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
 
@@ -124,6 +105,59 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
   </SmallAlertBox>
 </Playground>
 
+<Playground>
+  <SmallAlertBox variant="success" style={{ marginBottom: '1em' }}>
+    Kjøpet gikk i orden!
+  </SmallAlertBox>
+  <SmallAlertBox variant="info" style={{ marginBottom: '1em' }}>
+    Toget går fra plattform 2
+  </SmallAlertBox>
+  <SmallAlertBox variant="warning" style={{ marginBottom: '1em' }}>
+    Snøvær på Bergensbanen
+  </SmallAlertBox>
+  <SmallAlertBox variant="error" style={{ marginBottom: '1em' }}>
+    Kjøpet kunne ikke gjennomføres!
+  </SmallAlertBox>
+</Playground>
+
 ## Retningslinjer
 
-Disse boksene skal brukes når vi har noe å si ifra om - gjerne som en respons på en handling.
+### Varianter
+
+#### Information
+
+Informasjonsvarslingen er blå. Den gir brukeren relevante tips eller informasjon som man behøver å vite når man skal utføre en oppgave.
+
+#### Success
+
+Suksessvarselet er grønn og vises når en handling er vellykket. (F.eks. I en kjøpsflyt der betalingen ble gjennomført)
+
+#### Warning
+
+Advarselen er gul og brukes for å advare brukeren om viktig informasjon som trenger oppmerksomhet. (F.eks. Systemet er nede pga. vedlikehold eller avvik i reiseforslag).
+
+#### Error
+
+Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. (F.eks. Skjemaet kunne ikke lagres fordi det mangler data på noen felter)
+
+## Prinsipper
+
+<DoAndDont>
+  <DoAndDont.Do>
+    <ul>
+      <li>Bruk varsler sparsomt</li>
+      <li>Hold det kort og konsist</li>
+      <li>Tillat brukeren å avvise et varsel der det er aktuelt</li>
+      <li>Bruk standardikonet for info, suksess, advarsel og feil</li>
+    </ul>
+  </DoAndDont.Do>
+  <DoAndDont.Dont>
+    <ul>
+      <li>Legg varsler som legges over eller flyter over innhold</li>
+      <li>
+        Ikke overdriv bruken av varsler. For mange vil enten overvelde eller
+        irritere brukeren og vil sannsynligvis bli ignorert
+      </li>
+    </ul>
+  </DoAndDont.Dont>
+</DoAndDont>

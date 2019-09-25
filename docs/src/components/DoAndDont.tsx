@@ -6,16 +6,18 @@ function DoAndDont(props: any) {
 }
 
 type DoProps = {
-  image: string;
+  image?: string;
   children: React.ReactNode;
 };
 
 function Do(props: DoProps) {
   return (
     <div className="do-or-dont-container">
-      <div className="do-and-dont-image-wrapper">
-        <img className="do-and-dont-image-container" src={props.image} />
-      </div>
+      {props.image && (
+        <div className="do-and-dont-image-wrapper">
+          <img className="do-and-dont-image-container" src={props.image} />
+        </div>
+      )}
       <Divider color="green" />
       <div className="do-header">Do</div>
       <div className="do-and-dont-list">{props.children}</div>
@@ -24,16 +26,18 @@ function Do(props: DoProps) {
 }
 
 type DontProps = {
-  image: string;
+  image?: string;
   children: React.ReactNode;
 };
 
 function Dont(props: DontProps) {
   return (
     <div className="do-or-dont-container">
-      <div className="do-and-dont-image-wrapper">
-        <img className="do-and-dont-image-container" src={props.image} />
-      </div>
+      {props.image && (
+        <div className="do-and-dont-image-wrapper">
+          <img className="do-and-dont-image-container" src={props.image} />
+        </div>
+      )}
       <Divider color="red" />
       <div className="dont-header">Don't</div>
       <div className="do-and-dont-list">{props.children}</div>
