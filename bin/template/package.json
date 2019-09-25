@@ -8,6 +8,11 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/enturas/design-system.git",
+    "directory": "packages/{package-name}"
+  },
   "publishConfig": {
     "access": "public"
   },

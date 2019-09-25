@@ -9,6 +9,11 @@
     "dist",
     "svgs"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/enturas/design-system.git",
+    "directory": "packages/icons"
+  },
   "publishConfig": {
     "access": "public"
   },
