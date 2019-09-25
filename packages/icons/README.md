@@ -24,4 +24,4 @@ If you're adding an icon, please add the SVG file to the appropriate `svg/` fold
 
 If you're changing an existing icon, just update the existing SVG file with the new source code.
 
-Once you're done, run `yarn build` to generate the new components, and commit them to Git. This process will take ~10-60 seconds, depending on your computer and cache status.
+Once you're done, run `yarn build` to generate the new components. This process will take ~10-60 seconds, depending on your computer and cache status.
