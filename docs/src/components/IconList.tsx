@@ -26,9 +26,9 @@ const IconList: React.FC<IconListProps> = props => {
         onChange={e => setFilter(e.target.value)}
       />
       <ul className="icon-list">
-        {filteredIcons.map(([iconName, Icon]) => (
+        {filteredIcons.map(([iconName, Icon]: any) => (
           <li className="icon-list__item" key={iconName}>
-            <Icon aria-label="Eksempelikon" />
+            <Icon width="4em" height="4em" />
             <Label as="div">{iconName}</Label>
           </li>
         ))}
