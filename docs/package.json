@@ -3,6 +3,7 @@
   "description": "The documentation site for the Entur Design System",
   "version": "0.0.1",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "gatsby develop",
     "build": "gatsby build",
