@@ -1044,6 +1044,11 @@
   version "1.0.0"
   resolved "ssh://git@bitbucket.org:enturas/entur-fonts.git#a5e195614a950bdfbd508915ea5056914340bc10"
 
+"@entur/tokens@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@entur/tokens/-/tokens-0.1.0.tgz#f1803dada754283f4e0790fdef37f7cf2bf43a7f"
+  integrity sha512-itT3QqhNT18jmvBeW0WUu//CagMofGQbfz7uwAaUdatCpkXs5TjivYqxyhHcjJsyIDTJQ9Bccb4wI/Kr5bnK5w==
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"

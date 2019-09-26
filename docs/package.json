@@ -10,6 +10,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@entur/alert": "^0.1.0",
     "@entur/button": "^0.2.0",
     "@entur/icons": "^0.2.0",
     "@entur/menu": "^0.2.0",

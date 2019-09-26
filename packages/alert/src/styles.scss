@@ -1,0 +1,112 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
+.entur-alert-box {
+  border: 1px solid;
+  color: $colors-brand-blue;
+  display: flex;
+  padding: $space-medium - $space-extra-small; // 12px / 0.75rem
+  position: relative;
+
+  // Size overrides
+  &--banner {
+    padding: $space-medium;
+    width: 100%;
+
+    @include for-desktop {
+      padding: $space-large;
+    }
+  }
+
+  &--toast {
+    max-width: 22rem;
+    width: 100%;
+
+    @include for-desktop {
+      min-height: 9rem;
+      width: fit-content;
+    }
+  }
+
+  // Variants
+  &--success {
+    background-color: $colors-validation-mint-tint;
+    border-color: $colors-validation-mint;
+    color: $colors-validation-mint;
+  }
+  &--info {
+    background-color: $colors-validation-sky-tint;
+    border-color: $colors-validation-sky;
+    color: $colors-validation-sky;
+  }
+  &--warning {
+    background-color: $colors-validation-canary;
+    border-color: $colors-validation-canary;
+    color: $colors-brand-blue;
+  }
+  &--error {
+    background-color: $colors-validation-lava-tint;
+    border-color: $colors-validation-lava;
+    color: $colors-validation-lava;
+  }
+}
+
+.entur-alert-box__icon {
+  display: inline-block;
+  flex: 0 0 1em;
+  font-size: 1.2rem; // Required since the icons are a tiny bit too small
+  margin-right: 0.5em;
+
+  .entur-alert-box--banner &,
+  .entur-alert-box--toast & {
+    @include for-desktop {
+      font-size: $space-extra-large2; // standalone icon size
+    }
+  }
+}
+
+.entur-alert-box__title {
+  font-weight: $font-weights-heading;
+  margin: 0;
+}
+
+.entur-alert-box__content {
+  color: $colors-brand-blue;
+  margin-right: $space-extra-large;
+
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.entur-alert-box__close-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: none;
+  color: $colors-brand-blue;
+  font-size: $font-sizes-large;
+  padding: 0;
+  position: absolute;
+  right: $space-medium;
+  top: $space-medium;
+
+  &:focus {
+    outline-color: $colors-misc-focus;
+  }
+
+  @include for-desktop {
+    font-size: $font-sizes-extra-large;
+    right: $space-large;
+    top: $space-large;
+  }
+}

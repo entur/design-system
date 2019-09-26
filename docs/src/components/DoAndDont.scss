@@ -1,13 +1,11 @@
 .do-and-dont-wrapper {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
 }
 
 .do-or-dont-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   flex: 1 90%;
   margin: 1rem;
 }
@@ -58,6 +56,7 @@
 .do-and-dont-list {
   & ul {
     list-style: none;
+    padding: 0;
   }
   & li {
     margin-bottom: 0.5rem;
