@@ -14,6 +14,12 @@ yarn add @entur/icons
 
 ## Usage
 
+```js
+import { AddIcon } from "@entur/icons; //Import specific icon
+
+<AddIcon/>
+```
+
 Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/ikoner) for usage information.
 
 ## Development

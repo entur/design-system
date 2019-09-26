@@ -1,47 +1,47 @@
 ---
-name: Colors
+name: Farger
 menu: Visuell Identitet
-route: /visuell-identitet/colors
+route: /visuell-identitet/farger
 parent: Visuell Identitet
 ---
 
 import { colors } from '@entur/tokens';
 import ColorList from '../../components/ColorList';
 
-# Colors
+# Farger
 
-Entur has a large palette of colors that's easy to use.
+Entur har en stor palett av farger som man kan bruke.
 
-## Available colors
+## Tilgjengelige farger
 
-### Brand colors
+### Brand-farger
 
 <ColorList colors={colors.brand} category="brand" />
 
-### Blue colors
+### Blue-farger
 
 <ColorList colors={colors.blues} category="blues" />
 
-### Grey colors
+### Grey-farger
 
 <ColorList colors={colors.greys} category="greys" />
 
-### Validation colors
+### Validation-farger
 
 <ColorList colors={colors.validation} category="validation" />
 
-### Miscellaneous colors
+### Miscellaneous-farger
 
 <ColorList colors={colors.misc} category="misc" />
 
-### Transport colors
+### Transport-farger
 
 We have a separate set for the different transport types:
 
-#### Default theme
+#### Default-theme
 
 <ColorList colors={colors.transport.default} category="transport-default" />
 
-#### Contrast theme
+#### Contrast-theme
 
 <ColorList colors={colors.transport.contrast} category="transport-contrast" />

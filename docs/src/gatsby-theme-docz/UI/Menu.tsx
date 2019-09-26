@@ -4,7 +4,7 @@ import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
 import classNames from 'classnames';
 import './menu.scss';
-import logoSVG from './enturWhite.svg';
+import logoSVG from './designsystem-Logo.svg';
 
 const removeTrailingSlash = (str: string) =>
   str.endsWith('/') ? str.slice(0, -1) : str;
@@ -99,9 +99,9 @@ export default function Menus() {
   return (
     <>
       <nav className="navbar">
-        <div className="logo-wrapper">
+        <Link to="/" className="logo-wrapper">
           <img src={logoSVG} alt="Entur logo" className="logo-container" />
-        </div>
+        </Link>
         <div className="tab-link-container">
           <Link to="/kom-i-gang" getProps={getLinkProps}>
             Kom i gang
