@@ -9,6 +9,8 @@ import { Button } from '@entur/button';
 import '@entur/button/dist/styles.css';
 import { Playground, Props } from 'docz';
 import DoAndDont from '../../../components/DoAndDont';
+import ComponentPresenter from '../../../components/ComponentPresenter';
+import ComponentRuler from '../../../components/ComponentRuler';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 
@@ -53,30 +55,57 @@ Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 
 ## Retningslinjer for brukerne
 
-**Primary (Høy prioritet):**
+### Knappvarianter
 
-Brukes kun til primær handlinger som har høyt prioritert på en side.
-Det bør ikke være mer enn én slik knapp per side eller visning.
-Kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
+<ComponentPresenter variantHeader="Varianter" presentationHeader="Bruksområde">
+  <ComponentPresenter.Component>
+    <Button  variant="primary">
+      Lagre
+    </Button>
+  </ComponentPresenter.Component>
+  <ComponentPresenter.Presentation header="Primary (høy prioritet)">
+    Brukes kun til primær handlinger som har høyt prioritert på en side.
+    Det bør ikke være mer enn én slik knapp per side eller visning.
+    Kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
 
-**Secondary (Middels prioritet):**
+  </ComponentPresenter.Presentation>
 
-Subtil variant som brukes til å indikere en sekundær handling som komplimenterer
-en primær handling. Middels prioriterte handlinger og dersom man ikke ønsker at
-den skal være i fokus eller for å redusere visuell støy når det er mange handlinger
-av like stor prioritet på siden.
+  <ComponentPresenter.Component>
+    <Button  variant="secondary">
+      Avbryt
+    </Button>
+  </ComponentPresenter.Component>
+  <ComponentPresenter.Presentation header="Secondary (Middels prioritet)">
+    Subtil variant som brukes til å indikere en sekundær handling som komplimenterer
+    en primær handling. Middels prioriterte handlinger og dersom man ikke ønsker at
+    den skal være i fokus eller for å redusere visuell støy når det er mange handlinger
+    av like stor prioritet på siden.
 
-**Success (Svært høyt prioritert):**
+  </ComponentPresenter.Presentation>
 
-Indikerer en vellykket eller positiv handling. Brukes som “call to action”
-for svært høyt prioriterte handlinger. Hovedregelen her er kun én action knapp per
-side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
+  <ComponentPresenter.Component>
+    <Button  variant="success">
+      Gå til betaling
+    </Button>
+  </ComponentPresenter.Component>
+  <ComponentPresenter.Presentation header="Success (Svært høyt prioritert)">
+    Indikerer en vellykket eller positiv handling. Brukes som “call to action”
+    for svært høyt prioriterte handlinger. Hovedregelen her er kun én action knapp per
+    side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
 
-**Danger:**
+  </ComponentPresenter.Presentation>
+  <ComponentPresenter.Component>
+    <Button  variant="negative">
+      Kanseller
+    </Button>
+  </ComponentPresenter.Component>
+  <ComponentPresenter.Presentation header="Danger"> 
+    Indikerer en fare eller potensielt negativ handling. Brukes kun for å
+    advare brukeren mot handlinger som kan føre til negative konsekvenser
+    som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
 
-Indikerer en fare eller potensielt negativ handling. Brukes kun for å
-advare brukeren mot handlinger som kan føre til negative konsekvenser
-som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
+  </ComponentPresenter.Presentation>
+</ComponentPresenter>
 
 ## Knapp med ikon og tekst
 
@@ -89,6 +118,27 @@ alltid sammen med en tekst.
 Default størrelsen på våre knapper er “medium”. Men man kan vurdere å bruke
 “large” som har en større høyde, dersom man trenger knapper med mer oppmerksomhet.
 
+<ComponentRuler.Wrapper>
+  <ComponentRuler
+    xName="Min-Width"
+    xNumber="150px"
+    yName="Høyde"
+    yNumber="44px"
+  >
+    <Button variant="primary">Medium</Button>
+  </ComponentRuler>
+  <ComponentRuler
+    xName="Min-Width"
+    xNumber="150px"
+    yName="Høyde"
+    yNumber="60px"
+  >
+    <Button variant="primary" size="large">
+      Large
+    </Button>
+  </ComponentRuler>
+</ComponentRuler.Wrapper>
+
 ## Aktiv vs inaktiv knapp
 
 <DoAndDont>
@@ -96,7 +146,7 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
     <ul>
       <li>
         Aktiv knapp som validerer (når man klikker på den) erstatter bruk av
-        disabled (inaktive) knapp.
+        disabled (inaktiv) knapp.
       </li>
       <li>
         Validering av påkrevde felter skal skje underveis i skjema, men først

@@ -1,0 +1,97 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+:root {
+  --ruler-line-width: 0.125rem;
+  --ruler-end-thickness: 0.125rem;
+  --ruler-end-length: 0.25rem;
+}
+
+.component-ruler-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.component-ruler-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-size: $font-sizes-small;
+  color: $colors-blues-blue40;
+  margin-right: $space-medium;
+}
+
+.vertical-ruler-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: $space-small;
+  align-items: center;
+  margin-top: -0.125rem; //Offset for ruler end
+}
+
+.vertical-ruler-line {
+  background-color: $colors-greys-grey10;
+  margin-top: 0.125rem;
+  width: var(--ruler-line-width);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    background-color: $colors-greys-grey10;
+    height: var(--ruler-end-length);
+    width: var(--ruler-end-thickness);
+    transform: rotate(90deg);
+    position: absolute;
+  }
+  &::before {
+    top: -0.2rem;
+  }
+  &::after {
+    bottom: -0.2rem;
+  }
+}
+
+.horizontal-ruler-line {
+  background-color: $colors-greys-grey10;
+  height: var(--ruler-line-width);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    background-color: $colors-greys-grey10;
+    width: var(--ruler-end-length);
+    height: var(--ruler-end-thickness);
+    transform: rotate(90deg);
+    position: absolute;
+  }
+  &::before {
+    left: -0.125rem;
+  }
+  &::after {
+    right: -0.125rem;
+  }
+}
+
+.horizontal-ruler-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: $space-small;
+}
+
+.horizontal-ruler-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: -0.125rem; //Offset for ruler end
+}
+
+.horizontal-ruler-information-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
