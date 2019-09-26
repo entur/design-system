@@ -2,7 +2,7 @@
 
 This package contains the different AlertBox components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/alert-box)?
+> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/feedback/varsler)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/alert
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/alert-box) for usage information.
+Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/feedback/varsler) for usage information.
