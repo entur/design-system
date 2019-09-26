@@ -15,9 +15,9 @@ yarn add @entur/button
 ## Usage
 
 ```js
-<button variant="primary">Click me</button>
+<Button variant="primary">Click me</Button>
 
-<button as="a" href="#">This is a link-button</button>
+<Button as="a" href="#" variant="secondary">This is a link-button</Button>
 ```
 
 Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/knapper) for further usage information.
