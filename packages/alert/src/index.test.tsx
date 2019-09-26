@@ -29,12 +29,13 @@ test('renders small alert boxes', () => {
   expect(getByText('Some content')).toBeInTheDocument();
 });
 
-test('renders a close button when a onClose callback is passed', () => {
+test('renders a close button when closable is true', () => {
   const spy = jest.fn();
-  const { getByLabelText } = render(
+  const { queryByLabelText, getByLabelText } = render(
     <ToastAlertBox
       variant="success"
       onClose={spy}
+      closable={true}
       closeButtonLabel="Click to close"
     >
       Everything went well
@@ -44,4 +45,5 @@ test('renders a close button when a onClose callback is passed', () => {
   expect(getByLabelText('Click to close')).toBeInTheDocument();
   fireEvent.click(getByLabelText('Click to close'));
   expect(spy).toHaveBeenCalled();
+  expect(queryByLabelText('Click to close')).not.toBeInTheDocument();
 });

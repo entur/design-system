@@ -21,6 +21,7 @@ type AlertBoxProps = {
   className?: string;
   closeButtonLabel?: string;
   onClose?: () => void;
+  closable?: boolean;
   title?: string;
   variant: 'success' | 'info' | 'warning' | 'error';
   [key: string]: any;
@@ -33,13 +34,22 @@ type InternalAlertBoxProps = AlertBoxProps & {
 const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
   children,
   className,
+  closable = false,
   closeButtonLabel = 'Lukk',
   variant,
-  onClose,
+  onClose = () => {},
   size,
   title,
   ...rest
 }) => {
+  const [isClosed, setClosed] = React.useState(false);
+  if (isClosed) {
+    return null;
+  }
+  const handleClose = () => {
+    setClosed(true);
+    onClose();
+  };
   const Icon = iconsMap[variant];
   return (
     <div
@@ -51,12 +61,12 @@ const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
       )}
       {...rest}
     >
-      {onClose && (
+      {closable && (
         <button
           aria-label={closeButtonLabel}
           className="entur-alert-box__close-button"
           type="button"
-          onClick={onClose}
+          onClick={handleClose}
         >
           <CloseIcon />
         </button>
