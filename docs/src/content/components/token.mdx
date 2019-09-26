@@ -1,0 +1,30 @@
+---
+name: Tokens
+parent: Komponenter
+route: /komponenter/tokens
+---
+
+import { colors } from '@entur/tokens';
+
+# Tokens
+
+Ved bruk av pakken _@entur/tokens_ så har man tilgang til alle gjenbrukbare verdier
+som kan brukes for å designe sider og komponenter for å følge Entur sin visuelle identitet.
+Det vil si: farger, spacing, fontstørrelser og vekting og linjehøyde
+Disse kan akksesseres enten ved CSS, SASS, LESS eller Javscript-variabler.
+
+Eksempelvis, importering av SASS-variablene og bruk av dem.
+
+```CSS
+@import '~@entur/tokens/dist/styles.scss';
+
+div {
+    color: $colors-greys-grey40;
+}
+```
+
+SASS og LESS variablene akksesseres med henoldsvis _\$_ og _@_, og er semantisk delt opp ved _-_ (bindestrek).
+CSS-variablene prefikses med to bindestrek.
+Javascript-variablene akksesseres som nestede objekter.
+
+## Alle tokens

@@ -10,12 +10,13 @@
 .logo-wrapper {
   flex: 0 0 auto;
   width: 15vw;
-  min-width: 15vw;
+  // min-width: 15vw;
   background: #181c56;
 }
 
 .logo-container {
-  width: 50%;
+  width: 100%;
+  padding: 1rem;
 }
 
 .tab-link-container {
@@ -56,7 +57,7 @@
 //Sidemenu
 .searchbar-placeholder {
   width: 10rem;
-  margin: 1rem;
+  margin: 1.5rem;
   padding: 0.5rem;
 }
 .sidemenu-wrapper {
