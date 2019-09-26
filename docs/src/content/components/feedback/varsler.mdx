@@ -7,12 +7,12 @@ menu: Feedback
 
 import { Playground, Props } from 'docz';
 import DoAndDont from '../../../components/DoAndDont';
-import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert/src';
-// import '@entur/alert/dist/styles.css';
+import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert';
+import '@entur/alert/dist/styles.css';
 
 # Varsler
 
-Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige meldinger som de bør ta hensyn til.
+Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige meldinger som man bør ta hensyn til.
 
 <Playground>
   <BannerAlertBox
@@ -130,15 +130,15 @@ Informasjonsvarslingen er blå. Den gir brukeren relevante tips eller informasjo
 
 #### Success
 
-Suksessvarselet er grønn og vises når en handling er vellykket. (F.eks. I en kjøpsflyt der betalingen ble gjennomført)
+Suksessvarselet er grønn og vises når en handling er vellykket. For eksempel en kjøpsflyt der betalingen ble gjennomført.
 
 #### Warning
 
-Advarselen er gul og brukes for å advare brukeren om viktig informasjon som trenger oppmerksomhet. (F.eks. Systemet er nede pga. vedlikehold eller avvik i reiseforslag).
+Advarselen er gul og brukes for å advare brukeren om viktig informasjon som trenger oppmerksomhet. For eksempel at systemet er nede grunnet vedlikehold eller avvik i reiseforslag.
 
 #### Error
 
-Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. (F.eks. Skjemaet kunne ikke lagres fordi det mangler data på noen felter)
+Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. For eksempel at skjemaet ikke kunne lagres fordi noen felter ikke er fylt ut.
 
 ## Prinsipper
 
@@ -155,8 +155,8 @@ Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en ha
     <ul>
       <li>Legg varsler som legges over eller flyter over innhold</li>
       <li>
-        Ikke overdriv bruken av varsler. For mange vil enten overvelde eller
-        irritere brukeren og vil sannsynligvis bli ignorert
+        Overdriv bruken av varsler. For mange varsler vil enten overvelde eller
+        irritere brukeren og vil sannsynligvis bli ignorert.
       </li>
     </ul>
   </DoAndDont.Dont>
