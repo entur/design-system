@@ -22,13 +22,11 @@ const themeConfig = {
 
 export default theme(themeConfig)(({ children }) => (
   <div>
-    <div className="components-provider-wrapper">
-      <Menu />
-      <div className="content-wrapper">
-        <ComponentsProvider components={componentMap}>
-          <div className="content-container">{children}</div>
-        </ComponentsProvider>
-      </div>
-    </div>
+    <Menu />
+    <main className="site-content">
+      <ComponentsProvider components={componentMap}>
+        {children}
+      </ComponentsProvider>
+    </main>
   </div>
 ));
