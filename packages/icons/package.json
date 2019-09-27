@@ -18,12 +18,10 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf src dist",
-    "build": "yarn build:icons && yarn build:index && yarn build:tsdx",
-    "build:icons": "svgr --ext tsx --out-dir src svgs",
+    "prebuild": "rimraf dist",
+    "build": "yarn build:index && yarn build:tsdx",
     "build:index": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-index.ts",
     "build:tsdx": "tsdx build",
-    "postbuild": "rimraf src",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },
@@ -32,7 +30,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@svgr/cli": "^4.3.3",
+    "@svgr/rollup": "^4.3.3",
     "@types/fs-extra": "^8.0.0",
     "case": "^1.6.2",
     "fs-extra": "^8.1.0",
