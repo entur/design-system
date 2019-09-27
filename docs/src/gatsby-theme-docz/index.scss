@@ -1,23 +1,22 @@
 @import '~@entur/fonts/index.css';
 @import '~@entur/typography/dist/styles.css';
 @import '~@entur/menu/dist/styles.css';
+@import '~@entur/tokens/dist/styles.scss';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
 
 body {
   margin: 0;
-  overflow-y: hidden;
 }
 
-.content-wrapper {
-  height: 95vh;
-  margin-left: 15vw;
-  margin-right: 15vw;
-  width: 70vw;
-  overflow-y: scroll;
-}
-
-.content-container {
-  padding: 1rem 2rem 2rem 3rem;
-  overflow-y: scroll;
-  background: white;
-  height: -webkit-fill-available;
+.site-content {
+  margin: $space-default;
+  @include for-desktop {
+    margin: 5rem 11rem 1rem 22rem;
+    max-width: 60rem;
+  }
 }
