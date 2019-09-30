@@ -1,0 +1,90 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-textfield {
+  font-family: inherit;
+  ::placeholder {
+    color: $colors-blues-blue40;
+  }
+  &--label {
+    display: block;
+    color: $colors-blues-blue40;
+    font-size: $font-sizes-medium;
+    line-height: $line-heights-large;
+    .entur-contrast & {
+      color: $colors-brand-lavender;
+    }
+  }
+
+  &--wrapper {
+    display: inline-block;
+    width: 22rem;
+  }
+  &--fluid {
+    width: 100%;
+  }
+  &--container {
+    display: flex;
+    align-items: center;
+    border: 0px hidden transparent;
+    border-bottom: 2px solid $colors-brand-blue;
+    border-radius: 1px;
+    border-style: solid;
+    height: $space-extra-large2;
+    background-color: $colors-greys-grey40;
+    font-size: inherit;
+    font-family: inherit;
+    color: $colors-brand-blue;
+    width: 100%;
+    .entur-contrast & {
+      border-color: $colors-brand-lavender;
+    }
+
+    &:focus-within {
+      box-shadow: inset 0 0 0 2px $colors-brand-blue;
+      border-bottom: hidden;
+      padding-bottom: 2px;
+      .entur-contrast & {
+        box-shadow: inset 0 0 0 2px $colors-brand-lavender;
+        border-bottom: hidden;
+        padding-bottom: 2px;
+      }
+    }
+
+    &:hover:not(:focus-within):not(.entur-textfield--disabled) {
+      border-bottom: 2px solid $colors-brand-lavender;
+      .entur-contrast & {
+        box-shadow: inset 0 0 0 2px $colors-brand-lavender;
+        border-bottom: hidden;
+        padding-bottom: 2px;
+      }
+    }
+  }
+  &--disabled {
+    background-color: $colors-greys-grey20;
+    border-bottom: 2px solid $colors-greys-grey20;
+  }
+
+  &--prepend {
+    padding-left: 1em;
+    color: $colors-blues-blue40;
+    display: flex;
+  }
+
+  &--input {
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: $font-sizes-large;
+    font-weight: $font-weights-body;
+    padding-left: 1em;
+    overflow: hidden;
+    flex-grow: 1;
+    &:focus {
+      outline: none;
+    }
+    &:disabled {
+      color: rgba($color: $colors-brand-blue, $alpha: 0.5);
+    }
+  }
+}

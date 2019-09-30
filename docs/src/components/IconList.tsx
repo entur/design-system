@@ -1,5 +1,6 @@
 import React from 'react';
 import { Label } from '@entur/typography';
+import { TextField } from '@entur/input';
 import matchSorter from 'match-sorter';
 import './IconList.scss';
 
@@ -20,8 +21,9 @@ const IconList: React.FC<IconListProps> = props => {
   }, [filter, props.icons]);
   return (
     <div>
-      <input
-        placeholder="Filtrer ikoner"
+      <TextField
+        label="Filtrer ikoner"
+        placeholder="Søk..."
         value={filter}
         onChange={e => setFilter(e.target.value)}
       />

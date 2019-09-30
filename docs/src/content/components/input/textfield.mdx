@@ -1,0 +1,42 @@
+---
+name: TextField
+route: /komponenter/input/textfield
+parent: Komponenter
+menu: Input
+---
+
+import { TextField } from '@entur/input/src';
+// import '@entur/input/dist/styles.css';
+import { Playground, Props } from 'docz';
+import { AddIcon } from '@entur/icons';
+
+# TextField
+
+<Playground>
+  <div style={{display: "flex", flexDirection: "column"}}>
+  <TextField size="medium" placeholder="Skriv her..." label="Label og placeholder" />
+  <TextField size="medium" disabled label="Disabled" placeholder="disabled" />
+  <TextField size="medium" className="test" required label="Denne er required" />
+  <TextField
+    size="medium"
+    fluid
+    label="Fluid og ikon som prepend"
+    prepend={<AddIcon/>}
+  />
+
+  <div style={{ width: '8rem' }}>
+    <TextField
+      size="medium"
+      fluid
+      label="Kortere input med fluid"
+      prepend="Fra"
+    />
+  </div>
+  </div>
+</Playground>
+
+<Playground>
+  <div className="entur-contrast">
+    <TextField size="medium" label="Contrast theme" />
+  </div>
+</Playground>

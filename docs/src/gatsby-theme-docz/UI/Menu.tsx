@@ -2,6 +2,7 @@ import React from 'react';
 import { useMenus, Link, useCurrentDoc, MenuItem } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
+import { TextField } from '@entur/input';
 import classNames from 'classnames';
 import './menu.scss';
 import logoSVG from './designsystem-Logo.svg';
@@ -119,11 +120,9 @@ export default function Menus() {
       </nav>
       <nav className="sidemenu-wrapper">
         {/**Placeholder for search functionality */}
-        <input
-          type="text"
-          className="searchbar-placeholder"
-          placeholder="Søk..."
-        />
+        <span className="entur-contrast">
+          <TextField fluid size="medium" placeholder="Søk..." />
+        </span>
         <Sidebar menuItems={menuItems} />
       </nav>
       <nav className="heading-navigator-wrapper">

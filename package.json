@@ -17,6 +17,7 @@
     "packages/alert",
     "packages/button",
     "packages/icons",
+    "packages/input",
     "packages/menu",
     "packages/tokens",
     "packages/tooltip",
