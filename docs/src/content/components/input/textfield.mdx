@@ -8,27 +8,28 @@ menu: Input
 import { TextField } from '@entur/input/src';
 // import '@entur/input/dist/styles.css';
 import { Playground, Props } from 'docz';
-import { AddIcon } from '@entur/icons';
+import { ImageIcon } from '@entur/icons';
 
 # TextField
 
+TextField er en inputkomponent, for å ta imot tekst fra brukeren. En
+
 <Playground>
-  <div style={{display: "flex", flexDirection: "column"}}>
-  <TextField size="medium" placeholder="Skriv her..." label="Label og placeholder" />
-  <TextField size="medium" disabled label="Disabled" placeholder="disabled" />
-  <TextField size="medium" className="test" required label="Denne er required" />
+  <div style={{display: "grid", rowGap: "1em"}}>
+  <TextField  placeholder="Skriv her..."  />
+  <TextField  disabled  placeholder="Disabled" />
+  <TextField  variant="success" placeholder="Suksess"   />
+  <TextField  variant="error"  placeholder="Feil" />
   <TextField
-    size="medium"
-    fluid
-    label="Fluid og ikon som prepend"
-    prepend={<AddIcon/>}
+    width="fluid"
+    placeholder="Bilde Fluid og ikon som prepend"
+    prepend={<ImageIcon/>}
   />
 
-  <div style={{ width: '8rem' }}>
+  <div style={{ width: '15rem' }}>
     <TextField
-      size="medium"
-      fluid
-      label="Kortere input med fluid"
+      width="fluid"
+      placeholder="Kortere input med fluid"
       prepend="Fra"
     />
   </div>
@@ -37,6 +38,6 @@ import { AddIcon } from '@entur/icons';
 
 <Playground>
   <div className="entur-contrast">
-    <TextField size="medium" label="Contrast theme" />
+    <TextField label="Contrast theme" placeholder="contrast-theme" />
   </div>
 </Playground>

@@ -121,7 +121,7 @@ export default function Menus() {
       <nav className="sidemenu-wrapper">
         {/**Placeholder for search functionality */}
         <span className="entur-contrast">
-          <TextField fluid size="medium" placeholder="Søk..." />
+          <TextField width="fluid" placeholder="Søk..." />
         </span>
         <Sidebar menuItems={menuItems} />
       </nav>

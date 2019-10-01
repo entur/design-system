@@ -2,66 +2,71 @@
 
 .entur-textfield {
   font-family: inherit;
-  ::placeholder {
-    color: $colors-blues-blue40;
-  }
-  &--label {
-    display: block;
-    color: $colors-blues-blue40;
-    font-size: $font-sizes-medium;
-    line-height: $line-heights-large;
-    .entur-contrast & {
-      color: $colors-brand-lavender;
-    }
-  }
-
-  &--wrapper {
-    display: inline-block;
-    width: 22rem;
-  }
-  &--fluid {
-    width: 100%;
-  }
+  font-size: inherit;
   &--container {
     display: flex;
     align-items: center;
     border: 0px hidden transparent;
-    border-bottom: 2px solid $colors-brand-blue;
-    border-radius: 1px;
-    border-style: solid;
+    border-bottom: ($space-default / 8) solid $colors-brand-blue;
+    border-radius: $space-default / 16;
     height: $space-extra-large2;
     background-color: $colors-greys-grey40;
-    font-size: inherit;
-    font-family: inherit;
     color: $colors-brand-blue;
-    width: 100%;
+    width: 22rem;
+
+    &.entur-textfield--width-fluid {
+      width: 100%;
+    }
     .entur-contrast & {
       border-color: $colors-brand-lavender;
     }
+    &.entur-textfield--variant-success {
+      border-color: $colors-validation-mint;
+    }
+    &.entur-textfield--variant-error {
+      border-color: $colors-validation-lava;
+    }
 
     &:focus-within {
-      box-shadow: inset 0 0 0 2px $colors-brand-blue;
+      box-shadow: inset 0 0 0 ($space-default / 8) $colors-brand-blue;
       border-bottom: hidden;
-      padding-bottom: 2px;
+      padding-bottom: ($space-default / 8);
+
       .entur-contrast & {
-        box-shadow: inset 0 0 0 2px $colors-brand-lavender;
+        box-shadow: inset 0 0 0 ($space-default / 8) $colors-brand-lavender;
         border-bottom: hidden;
-        padding-bottom: 2px;
+        padding-bottom: ($space-default / 8);
+      }
+      &.entur-textfield--variant-success {
+        box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-mint;
+      }
+      &.entur-textfield--variant-error {
+        box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-lava;
       }
     }
 
     &:hover:not(:focus-within):not(.entur-textfield--disabled) {
-      border-bottom: 2px solid $colors-brand-lavender;
+      border-bottom: ($space-default / 8) solid $colors-brand-lavender;
       .entur-contrast & {
-        box-shadow: inset 0 0 0 2px $colors-brand-lavender;
+        box-shadow: inset 0 0 0 ($space-default / 8) $colors-brand-lavender;
         border-bottom: hidden;
-        padding-bottom: 2px;
+        padding-bottom: ($space-default / 8);
+      }
+      &.entur-textfield--variant-success {
+        box-shadow: none;
+        padding-bottom: 0px;
+        border-bottom: ($space-default / 8) solid $colors-validation-mint-tint;
+      }
+      &.entur-textfield--variant-error {
+        box-shadow: none;
+        padding-bottom: 0px;
+        border-bottom: ($space-default / 8) solid $colors-validation-lava-tint;
       }
     }
   }
   &--disabled {
     background-color: $colors-greys-grey20;
-    border-bottom: 2px solid $colors-greys-grey20;
+    border-bottom: ($space-default / 8) solid $colors-greys-grey20;
   }
 
   &--prepend {
@@ -85,6 +90,9 @@
     }
     &:disabled {
       color: rgba($color: $colors-brand-blue, $alpha: 0.5);
+    }
+    ::placeholder {
+      color: $colors-blues-blue40;
     }
   }
 }

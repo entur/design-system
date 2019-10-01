@@ -5,13 +5,10 @@ import './styles.scss';
 type TextFieldProps = {
   prepend?: React.ReactNode;
   variant?: 'success' | 'error' | 'warning' | 'info' | 'none';
-  disabled: boolean;
-  fluid: boolean;
-  size: 'medium' | 'lagre';
-  label: string;
+  disabled?: boolean;
+  width?: 'fluid';
   className?: string;
-  required: boolean;
-  id?: string;
+  required?: boolean;
   [key: string]: any;
 };
 
@@ -24,10 +21,8 @@ export const TextField: React.RefForwardingComponent<
       prepend,
       variant,
       disabled = false,
-      fluid = false,
-      size,
+      width,
       className,
-      label,
       required = false,
       ...rest
     },
@@ -37,41 +32,27 @@ export const TextField: React.RefForwardingComponent<
       'entur-textfield',
       {
         [`entur-textfield--variant-${variant}`]: variant,
-
         [`entur-textfield--disabled`]: disabled,
+        [`entur-textfield--width-${width}`]: width,
       },
       className,
     );
 
     return (
-      <>
-        <label
-          className={cx('entur-textfield--wrapper', {
-            [`entur-textfield--size-${size}`]: size,
-
-            [`entur-textfield--fluid`]: fluid,
-          })}
-        >
-          <div className="entur-textfield--label">
-            {label}
-            {required && '*'}
-          </div>
-          <div
-            className={cx(classList, 'entur-textfield--container', className)}
-          >
-            {prepend && (
-              <span className="entur-textfield--prepend">{prepend}</span>
-            )}
-            <input
-              className="entur-textfield--input"
-              disabled={disabled}
-              ref={ref}
-              required={required}
-              {...rest}
-            />
-          </div>
-        </label>
-      </>
+      <label className={cx('entur-textfield--container', classList)}>
+        {prepend && (
+          <span className=" entur-textfield entur-textfield--prepend">
+            {prepend}
+          </span>
+        )}
+        <input
+          className="entur-textfield entur-textfield--input"
+          disabled={disabled}
+          ref={ref}
+          required={required}
+          {...rest}
+        />
+      </label>
     );
   },
 );
