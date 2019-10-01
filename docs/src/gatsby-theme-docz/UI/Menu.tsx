@@ -1,9 +1,10 @@
 import React from 'react';
-import { useMenus, Link, useCurrentDoc, MenuItem } from 'docz';
+import { useMenus, Link, useCurrentDoc, MenuItem, Entry } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
 import { TextField } from '@entur/input';
 import classNames from 'classnames';
+import debounce from '../../utils/debounce';
 import './menu.scss';
 import logoSVG from './designsystem-Logo.svg';
 
@@ -55,24 +56,70 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
   );
 };
 
+function useCurrentActiveHeading(headings: Entry['headings']) {
+  let headingElements: HTMLElement[] = [];
+  const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
+
+  const findActiveHeading = debounce(() => {
+    for (let nextElement of headingElements) {
+      const nextTop = nextElement.getBoundingClientRect().top;
+      console.log(nextElement);
+      if (nextTop >= 0) {
+        setActiveHeading(nextElement.id);
+        break;
+      }
+    }
+  }, 16);
+
+  React.useEffect(() => {
+    headingElements = headings.map(
+      heading => document.getElementById(heading.slug) as HTMLElement,
+    );
+    window.addEventListener('resize', findActiveHeading);
+    window.addEventListener('scroll', findActiveHeading);
+    findActiveHeading();
+    return () => {
+      window.removeEventListener('resize', findActiveHeading);
+      window.removeEventListener('scroll', findActiveHeading);
+    };
+  }, []);
+
+  return activeHeading;
+}
+
 const TOCNavigation: React.FC = () => {
-  const currentDoc = useCurrentDoc();
-  const headings = currentDoc ? currentDoc.headings : [''];
+  const currentDoc = useCurrentDoc() as Entry;
+  const headings = currentDoc
+    ? currentDoc.headings.filter(heading => heading.depth > 1)
+    : [];
+  const activeHeading = useCurrentActiveHeading(headings);
   if (headings.length < 2) {
     return null;
   }
   return (
-    <div className="heading-navigator-links-wrapper">
-      {headings.map((heading: any) => (
-        <a
-          className="heading-link"
-          href={`#${heading.slug}`}
-          key={heading.depth + heading.slug}
-        >
-          {heading.value}
-        </a>
-      ))}
-    </div>
+    <nav className="table-of-content-container">
+      <ul className="table-of-content">
+        {headings.map(heading => (
+          <li
+            key={heading.slug}
+            className={classNames(
+              'table-of-content__item',
+              `table-of-content__item--depth-${heading.depth}`,
+            )}
+          >
+            <a
+              className={classNames('table-of-content__link', {
+                'table-of-content__link--active':
+                  activeHeading === heading.slug,
+              })}
+              href={`#${heading.slug}`}
+            >
+              {heading.value}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
@@ -99,10 +146,7 @@ export default function Menus() {
 
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="logo-wrapper">
-          <img src={logoSVG} alt="Entur logo" className="logo-container" />
-        </Link>
+      <nav className="site-navbar">
         <div className="tab-link-container">
           <Link to="/kom-i-gang" getProps={getLinkProps}>
             Kom i gang
@@ -118,11 +162,15 @@ export default function Menus() {
           </Link>
         </div>
       </nav>
-      <nav className="sidemenu-wrapper">
-        {/**Placeholder for search functionality */}
-        <span className="entur-contrast">
-          <TextField width="fluid" placeholder="Søk..." />
-        </span>
+      <nav className="site-sidebar-wrapper">
+        <Link to="/">
+          <img src={logoSVG} alt="Entur logo" className="site-logo" />
+        </Link>
+        <input
+          type="text"
+          className="searchbar-placeholder"
+          placeholder="Søk..."
+        />
         <Sidebar menuItems={menuItems} />
       </nav>
       <nav className="heading-navigator-wrapper">

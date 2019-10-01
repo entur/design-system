@@ -21,15 +21,12 @@ function traverse(directory: string, dirEnt: fs.Dirent | null): string[] {
     );
 }
 
-const indexFileString = traverse('src', null)
+const indexFileString = traverse('src/svgs', null)
   .map(filePath => {
-    const componentName = toCase.pascal(path.basename(filePath, '.tsx'));
-    const importPath = path
-      .relative('.', filePath)
-      .replace('src/', './')
-      .replace(/.tsx$/, '');
+    const componentName = toCase.pascal(path.basename(filePath, '.svg'));
+    const importPath = path.relative('.', filePath).replace('src/', './');
     return `export { default as ${componentName}Icon } from '${importPath}';`;
   })
   .join('\n');
 
-fs.writeFileSync(path.resolve('src', 'index.ts'), indexFileString);
+fs.outputFileSync(path.resolve('src', 'index.ts'), indexFileString);
