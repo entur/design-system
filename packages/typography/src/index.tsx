@@ -53,6 +53,17 @@ export const Paragraph: React.FC<Props> = ({
   <Element className={classNames('entur-paragraph', className)} {...rest} />
 );
 
+export const LeadParagraph: React.FC<Props> = ({
+  as: Element = 'p',
+  className,
+  ...rest
+}) => (
+  <Element
+    className={classNames('entur-lead-paragraph', className)}
+    {...rest}
+  />
+);
+
 export const SubParagraph: React.FC<Props> = ({
   as: Element = 'p',
   className,
