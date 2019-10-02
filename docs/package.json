@@ -12,8 +12,8 @@
   "dependencies": {
     "@entur/alert": "^0.2.0",
     "@entur/button": "^0.2.0",
+    "@entur/form": "^0.1.0",
     "@entur/icons": "^0.2.0",
-    "@entur/input": "^0.1.0",
     "@entur/menu": "^0.2.0",
     "@entur/tokens": "^0.2.0",
     "@entur/tooltip": "^0.2.0",

@@ -1,0 +1,32 @@
+---
+name: FormGroup
+route: /komponenter/input/formgroup
+parent: Komponenter
+menu: Input
+---
+
+import { FormGroup } from '@entur/form/src';
+import { TextField } from '@entur/input/src';
+// import '@entur/input/dist/styles.css';
+import { Playground, Props } from 'docz';
+
+# FormGroup
+
+FormGroup er en wrapper-komponent, som legger på nødvendig label og potensiell infomelding på en input.
+
+<Playground>
+  <FormGroup
+    title="Label på topp"
+    alertLabel="label på bunn"
+    alertLevel="success"
+  >
+    <TextField placeholder="test" />
+  </FormGroup>
+  <FormGroup
+    title="Label på topp"
+    alertLabel="label på bunn"
+    alertLevel="error"
+  >
+    <TextField placeholder="test" />
+  </FormGroup>
+</Playground>
