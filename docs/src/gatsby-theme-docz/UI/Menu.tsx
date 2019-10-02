@@ -62,7 +62,6 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
   const findActiveHeading = debounce(() => {
     for (let nextElement of headingElements) {
       const nextTop = nextElement.getBoundingClientRect().top;
-      console.log(nextElement);
       if (nextTop >= 0) {
         setActiveHeading(nextElement.id);
         break;
