@@ -4,7 +4,7 @@
   --primary-background-color: #{$colors-brand-blue};
   --primary-text-color: #{$colors-brand-white};
   --padding-vertical: #{$space-medium};
-  --padding-horizontal: #{$space-large};
+  --padding-horizontal: #{$space-medium};
 
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
@@ -24,7 +24,15 @@
 
 .entur-menu svg {
   color: $colors-blues-blue50;
-  margin-right: $space-small;
+  margin-right: $space-medium;
+  display: inline-flex;
+  align-self: center;
+  position: relative;
+  top: 0.075em;
+}
+
+.entur-menu [disabled] svg {
+  color: $colors-blues-blue40;
 }
 
 .entur-menu {
