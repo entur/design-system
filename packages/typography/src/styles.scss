@@ -191,3 +191,12 @@ html {
 .entur-emphasized-text {
   font-style: italic;
 }
+
+.entur-preformatted-text {
+  background: $colors-blues-blue80;
+  color: inherit;
+  font-family: 'Dank Mono', monospace;
+  font-size: inherit;
+  padding: 1em;
+  border-radius: 1px;
+}

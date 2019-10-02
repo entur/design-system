@@ -110,3 +110,14 @@ export const EmphasizedText: React.FC<Props> = ({
     {...rest}
   />
 );
+
+export const PreformattedText: React.FC<Props> = ({
+  as: Element = 'pre',
+  className,
+  ...rest
+}) => (
+  <Element
+    className={classNames('entur-preformatted-text', className)}
+    {...rest}
+  />
+);
