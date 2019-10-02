@@ -1,5 +1,5 @@
 const svgr = require('@svgr/rollup').default;
-const ts = require('rollup-plugin-typescript2');
+const ts = require('@wessberg/rollup-plugin-ts');
 
 const svgrConfig = {
   icon: true,
@@ -13,17 +13,25 @@ const svgrConfig = {
 };
 
 module.exports = {
-  rollup(config) {
-    config.plugins = [...config.plugins, svgr(svgrConfig)];
-    config.plugins = config.plugins.map(plugin => {
-      if (plugin && plugin.name === 'rpt2') {
+  rollup(config, opts) {
+    config.plugins = [svgr(svgrConfig), ...config.plugins];
+    // swap out rollup-plugin-typescript2
+    config.plugins = config.plugins.map(p => {
+      if (p && p.name === 'rpt2') {
         return ts({
-          ...plugin.options,
-          objectHashIgnoreUnknownHack: true,
+          tsconfig: tsconfig => {
+            return {
+              ...tsconfig,
+              target: 'ESNext',
+              sourceMap: true,
+              declaration: true,
+            };
+          },
+          transpiler: 'babel',
         });
       }
-      return plugin;
+      return p;
     });
-    return config;
+    return { ...config };
   },
 };
