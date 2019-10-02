@@ -14,6 +14,7 @@ const componentMap = {
   h6: typography.Heading6,
   p: typography.Paragraph,
   a: typography.Link,
+  pre: typography.PreformattedText,
 };
 
 const themeConfig = {
