@@ -70,9 +70,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   const subMenu = childrenArray.find(
     (child: any) => child && child.type === Menu,
   );
-  const label = childrenArray.filter(
-    (child: any) => child && child.type !== Menu,
-  );
+  const label = childrenArray.filter((child: any) => child !== subMenu);
   const isActiveOrHasActiveDescendents = isActiveRecursively({
     props: { children, active },
   });
