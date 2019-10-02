@@ -1,16 +1,19 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .entur-form-group {
   color: inherit;
-}
 
-.entur-form-group-alert-label-wrapper {
-  display: flex;
-  align-items: center;
-}
+  &-alert-label-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: $space-extra-small;
+  }
 
-.entur-form-group-sub-label {
-  padding-left: 0.5em;
-}
+  &-sub-label {
+    padding-left: 0.5em;
+  }
 
-.entur-form-group-alert-icon {
-  margin-bottom: 0.1875rem;
+  &-alert-icon {
+    margin-bottom: $space-extra-small/2;
+  }
 }

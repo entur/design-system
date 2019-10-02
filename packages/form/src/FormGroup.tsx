@@ -7,7 +7,7 @@ import {
 } from '@entur/icons';
 import * as TOKENS from '@entur/tokens';
 import { Label, SubLabel } from '@entur/typography';
-import './styles.scss';
+import './FormGroup.scss';
 
 type variants = 'success' | 'error' | 'warning' | 'info' | 'none';
 
@@ -21,7 +21,7 @@ function FormGroupProvider({ variant, ...rest }: FormGroupProviderProps) {
   return <FormGroupContext.Provider value={variant} {...rest} />;
 }
 
-export function useVariant(): variants {
+export function useVariant(): any {
   const context = React.useContext(FormGroupContext);
   return context;
 }
@@ -31,6 +31,7 @@ type FormGroupProps = {
   alertLabel?: string;
   alertLevel: variants;
   children: React.ReactNode;
+  [key: string]: any;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
@@ -77,9 +78,19 @@ const AlertIcon: React.FC<AlertIconProps> = ({ level }) => {
         />
       );
     case 'info':
-      return <ValidationInfoIcon className={iconClass} />;
+      return (
+        <ValidationInfoIcon
+          className={iconClass}
+          color={TOKENS.colors.validation.sky}
+        />
+      );
     case 'warning':
-      return <ValidationExclamationIcon className={iconClass} />;
+      return (
+        <ValidationExclamationIcon
+          className={iconClass}
+          color={TOKENS.colors.validation.sky}
+        />
+      );
     case 'none':
       return null;
     default:

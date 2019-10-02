@@ -31,9 +31,7 @@ export const TextField: React.RefForwardingComponent<
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const formGroupVariant: any = useVariant();
-    const prioritizedVariant: any = variant | formGroupVariant;
-    console.log(prioritizedVariant);
-
+    const prioritizedVariant: any = variant || formGroupVariant;
     const classList = cx(
       'entur-textfield',
       {

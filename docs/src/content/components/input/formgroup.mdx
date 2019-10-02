@@ -5,8 +5,7 @@ parent: Komponenter
 menu: Input
 ---
 
-import { FormGroup } from '@entur/form/src';
-import { TextField } from '@entur/input/src';
+import { FormGroup, TextField } from '@entur/form/src';
 // import '@entur/input/dist/styles.css';
 import { Playground, Props } from 'docz';
 
@@ -16,17 +15,31 @@ FormGroup er en wrapper-komponent, som legger på nødvendig label og potensiell
 
 <Playground>
   <FormGroup
-    title="Label på topp"
-    alertLabel="label på bunn"
+    title="Togdestinasjon"
+    alertLabel="Gratulerer"
     alertLevel="success"
   >
-    <TextField placeholder="test" />
+    <TextField placeholder="Oslo" />
   </FormGroup>
   <FormGroup
-    title="Label på topp"
-    alertLabel="label på bunn"
+    title="Togdestinasjon"
+    alertLabel="Oisann, noe galt skjedde her"
     alertLevel="error"
   >
-    <TextField placeholder="test" />
+    <TextField placeholder="Gjøvik" />
+  </FormGroup>
+  <FormGroup
+    title="Togdestinasjon"
+    alertLabel="Pass på her"
+    alertLevel="warning"
+  >
+    <TextField placeholder="Advarsel" />
+  </FormGroup>
+  <FormGroup
+    title="Togdestinasjon"
+    alertLabel="Denne informasjonen hjelper deg"
+    alertLevel="info"
+  >
+    <TextField placeholder="Informasjon" />
   </FormGroup>
 </Playground>

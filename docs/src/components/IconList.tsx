@@ -1,6 +1,6 @@
 import React from 'react';
 import { Label } from '@entur/typography';
-import { TextField } from '@entur/input';
+import { TextField } from '@entur/form';
 import matchSorter from 'match-sorter';
 import './IconList.scss';
 
