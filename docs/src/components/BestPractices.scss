@@ -1,0 +1,47 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.best-practices {
+  display: flex;
+}
+
+.best-practices__example {
+  flex: 1;
+  margin: 0 1em;
+}
+
+.best-practices__image {
+  display: block;
+  width: calc(100% - $space-extra-large3 * 2);
+  margin: 1em auto 0;
+}
+
+.best-practices__heading {
+  background-color: $colors-greys-grey40;
+  border-bottom: 4px solid currentColor;
+  font-weight: $font-weights-heading;
+  padding: $space-large;
+
+  &--do {
+    color: $colors-validation-mint;
+  }
+
+  &--dont {
+    color: $colors-validation-lava;
+  }
+
+  > span {
+    color: var(--primary-text-color);
+  }
+
+  > .entur-icon {
+    position: relative;
+    top: 0.1em;
+    margin-right: $space-small;
+  }
+}
+
+.best-practices__content {
+  ul {
+    padding-left: 1em;
+  }
+}
