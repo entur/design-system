@@ -6,7 +6,7 @@ menu: Feedback
 ---
 
 import { Playground, Props } from 'docz';
-import DoAndDont from '../../../components/DoAndDont';
+import { BestPractices, Example } from '../../../components/BestPractices';
 import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert';
 import '@entur/alert/dist/styles.css';
 
@@ -60,34 +60,32 @@ Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige 
 Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp av seg selv øverst i høyre hjørne, og skal forsvinne automatisk etter minst seks sekunder.
 
 <Playground>
-  <ToastAlertBox
-    variant="success"
-    title="Nå har du billett!"
-    style={{ marginBottom: '1em' }}
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '1em 1em',
+      alignItems: 'center',
+      justifyItems: 'center',
+    }}
   >
-    Ha det gøy på togturen til Bergen!
-  </ToastAlertBox>
-  <ToastAlertBox
-    variant="info"
-    title="Toget går fra plattform 2"
-    style={{ marginBottom: '1em' }}
-  >
-    Husk å sjekke plattform når du ankommer.
-  </ToastAlertBox>
-  <ToastAlertBox
-    variant="warning"
-    title="Buss for tog på deler av strekningen"
-    style={{ marginBottom: '1em' }}
-  >
-    Det er buss for tog på strekningen Bergen-Voss. Følg skilting underveis.
-  </ToastAlertBox>
-  <ToastAlertBox
-    variant="error"
-    title="Kjøpet kunne ikke gjennomføres!"
-    style={{ marginBottom: '1em' }}
-  >
-    Det ser ut til at det ikke var dekning på det kortet du prøvde å betale med.
-  </ToastAlertBox>
+    <ToastAlertBox variant="success" title="Nå har du billett!">
+      Ha det gøy på togturen til Bergen!
+    </ToastAlertBox>
+    <ToastAlertBox variant="info" title="Toget går fra plattform 2">
+      Husk å sjekke plattform når du ankommer.
+    </ToastAlertBox>
+    <ToastAlertBox
+      variant="warning"
+      title="Buss for tog på deler av strekningen"
+    >
+      Det er buss for tog på strekningen Bergen-Voss. Følg skilting underveis.
+    </ToastAlertBox>
+    <ToastAlertBox variant="error" title="Kjøpet kunne ikke gjennomføres!">
+      Det ser ut til at det ikke var dekning på det kortet du prøvde å betale
+      med.
+    </ToastAlertBox>
+  </div>
 </Playground>
 
 ## Små varsler
@@ -95,23 +93,33 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
 Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
 
 <Playground>
-  <SmallAlertBox variant="success" style={{ marginBottom: '1em' }}>
-    Kjøpet gikk i orden!
-  </SmallAlertBox>
-  <SmallAlertBox variant="info" style={{ marginBottom: '1em' }}>
-    Toget går fra plattform 2
-  </SmallAlertBox>
-  <SmallAlertBox variant="warning" style={{ marginBottom: '1em' }}>
-    Snøvær på Bergensbanen
-  </SmallAlertBox>
-  <SmallAlertBox variant="error" style={{ marginBottom: '1em' }}>
-    Kjøpet kunne ikke gjennomføres!
-  </SmallAlertBox>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '1em 1em',
+    }}
+  >
+    <SmallAlertBox variant="success" style={{ width: '100%' }}>
+      Kjøpet gikk i orden!
+    </SmallAlertBox>
+    <SmallAlertBox variant="info" style={{ width: '100%' }}>
+      Toget går fra plattform 2
+    </SmallAlertBox>
+    <SmallAlertBox variant="warning" style={{ width: '100%' }}>
+      Snøvær på Bergensbanen
+    </SmallAlertBox>
+    <SmallAlertBox variant="error" style={{ width: '100%' }}>
+      Kjøpet kunne ikke gjennomføres!
+    </SmallAlertBox>
+  </div>
 </Playground>
 
 ## Retningslinjer
 
-### Varianter
+### Når skal komponentene brukes?
+
+Komponenten skal brukes som en valideringsmelding som varsler brukerne om at noe de nettopp gjorde må korrigeres eller som en bekreftelse på at en handling ble fullført. Varsler brukes også som en utrop eller varsling for viktig informasjon som brukeren bør ta stilling til.
 
 #### Information
 
@@ -131,22 +139,37 @@ Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en ha
 
 ## Prinsipper
 
-<DoAndDont>
-  <DoAndDont.Do>
+<BestPractices>
+  <Example type="do">
     <ul>
       <li>Bruk varsler sparsomt</li>
       <li>Hold det kort og konsist</li>
-      <li>Tillat brukeren å avvise et varsel der det er aktuelt</li>
-      <li>Bruk standardikonet for info, suksess, advarsel og feil</li>
-    </ul>
-  </DoAndDont.Do>
-  <DoAndDont.Dont>
-    <ul>
-      <li>Legg varsler som legges over eller flyter over innhold</li>
       <li>
-        Overdriv bruken av varsler. For mange varsler vil enten overvelde eller
-        irritere brukeren og vil sannsynligvis bli ignorert.
+        Hvis feilen er knyttet til et spesifikk tekstfelt, bør man også gi disse
+        feltene en feiltilstand
+      </li>
+      <li>
+        Hvis det kreves at brukeren må gjøre noe som svar på et varsel, må man
+        gi beskjed om hva de trenger å gjøre for å gjennomføre oppgaven.
+      </li>
+      <li>Tillatt brukeren å avvise et varsel der det er aktuelt.</li>
+      <li>Bruk standardikonet for info, suksess, advarsel og feil.</li>
+    </ul>
+  </Example>
+  <Example type="dont">
+    <ul>
+      <li>Ikke legg varsler over innhold på siden</li>
+      <li>
+        Ikke overdriv bruken av varsler. For mange vil enten overvelde eller
+        irritere brukeren
+      </li>
+      <li>
+        Ikke legg skylden på brukeren ved en feilmelding. Ha en vennlig tone og
+        hold språket forståelig
+      </li>
+      <li>
+        Ikke ta med varsler som ikke er relevant for brukerens nåværende oppgave
       </li>
     </ul>
-  </DoAndDont.Dont>
-</DoAndDont>
+  </Example>
+</BestPractices>
