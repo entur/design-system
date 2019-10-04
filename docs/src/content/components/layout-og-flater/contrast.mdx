@@ -1,0 +1,35 @@
+---
+name: Kontrastseksjoner
+parent: Komponenter
+route: komponenter/layout/kontrastseksjon
+menu: Layout og flater
+---
+
+import { Props, Playground } from 'docz';
+import { Contrast } from '@entur/layout';
+import { LeadParagraph, Paragraph } from '@entur/typography';
+
+# Kontrastseksjoner
+
+<LeadParagraph>
+  Vi bruker kontrastseksjoner rundt om i våre design.
+</LeadParagraph>
+
+<Playground>
+  <div style={{ padding: '4em' }}>
+    <Paragraph>
+      Det fine med kontrastseksjoner er at man ikke trenger å tenke på hvordan
+      de skal brukes. Du kan bare plassere dem rundt litt kode, og komponentene
+      inni vil endre utseendet basert på CSS-variabler.
+    </Paragraph>
+  </div>
+  <Contrast>
+    <div style={{ padding: '4em' }}>
+      <Paragraph>
+        Det fine med kontrastseksjoner er at man ikke trenger å tenke på hvordan
+        de skal brukes. Du kan bare plassere dem rundt litt kode, og
+        komponentene inni vil endre utseendet basert på CSS-variabler.
+      </Paragraph>
+    </div>
+  </Contrast>
+</Playground>
