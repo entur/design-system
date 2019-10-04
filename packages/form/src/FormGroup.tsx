@@ -5,95 +5,68 @@ import {
   ValidationExclamationIcon,
   ValidationInfoIcon,
 } from '@entur/icons';
-import * as TOKENS from '@entur/tokens';
 import { Label, SubLabel } from '@entur/typography';
+import { VariantType } from './variants';
 import './FormGroup.scss';
 
-type variants = 'success' | 'error' | 'warning' | 'info' | 'none';
-
 type FormGroupProviderProps = {
-  variant: variants;
+  variant: VariantType;
   [key: string]: any;
 };
 
-const FormGroupContext = React.createContext('none');
+const FormGroupContext = React.createContext<VariantType>('none');
 function FormGroupProvider({ variant, ...rest }: FormGroupProviderProps) {
   return <FormGroupContext.Provider value={variant} {...rest} />;
 }
 
-export function useVariant(): any {
+export function useVariant(): VariantType {
   const context = React.useContext(FormGroupContext);
   return context;
 }
 
 type FormGroupProps = {
-  title: string;
-  alertLabel?: string;
-  alertLevel: variants;
+  label: string;
+  feedback?: string;
+  variant: VariantType;
   children: React.ReactNode;
-  [key: string]: any;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
-  title,
-  alertLabel,
-  alertLevel,
+  label,
+  feedback,
+  variant,
   children,
 }) => {
   return (
-    <FormGroupProvider variant={alertLevel}>
+    <FormGroupProvider variant={variant}>
       <Label>
-        <span className="entur-form-group-title-wrapper">{title}</span>
+        <span className="entur-form-group__label">{label}</span>
         {children}
       </Label>
-      {alertLabel && (
-        <SubLabel className="entur-form-group-alert-label-wrapper">
-          <AlertIcon level={alertLevel} />
-          <span className="entur-form-group-sub-label">{alertLabel}</span>
+      {feedback && (
+        <SubLabel className="entur-form-group__sub-label--wrapper">
+          <AlertIcon level={variant} />
+          <span className="entur-form-group__sub-label--feedback">
+            {feedback}
+          </span>
         </SubLabel>
       )}
     </FormGroupProvider>
   );
 };
 
-type AlertIconProps = {
-  level?: string;
-};
-
-const AlertIcon: React.FC<AlertIconProps> = ({ level }) => {
-  const iconClass = 'entur-form-group-alert-icon';
+const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
+  const iconClass = `entur-form-group__icon entur-form-group__icon--${level}`;
   switch (level) {
     case 'success':
-      return (
-        <ValidationCheckIcon
-          className={iconClass}
-          color={TOKENS.colors.validation.mint}
-        />
-      );
+      return <ValidationCheckIcon className={iconClass} />;
     case 'error':
-      return (
-        <ValidationErrorIcon
-          className={iconClass}
-          color={TOKENS.colors.validation.lava}
-        />
-      );
+      return <ValidationErrorIcon className={iconClass} />;
     case 'info':
-      return (
-        <ValidationInfoIcon
-          className={iconClass}
-          color={TOKENS.colors.validation.sky}
-        />
-      );
+      return <ValidationInfoIcon className={iconClass} />;
     case 'warning':
-      return (
-        <ValidationExclamationIcon
-          className={iconClass}
-          color={TOKENS.colors.validation.sky}
-        />
-      );
+      return <ValidationExclamationIcon className={iconClass} />;
     case 'none':
-      return null;
-    default:
       return null;
   }
 };

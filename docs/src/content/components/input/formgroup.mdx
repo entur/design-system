@@ -5,8 +5,8 @@ parent: Komponenter
 menu: Input
 ---
 
-import { FormGroup, TextField } from '@entur/form/src';
-// import '@entur/input/dist/styles.css';
+import { FormGroup, TextField } from '@entur/form';
+import '@entur/form/dist/styles.css';
 import { Playground, Props } from 'docz';
 
 # FormGroup
@@ -14,32 +14,53 @@ import { Playground, Props } from 'docz';
 FormGroup er en wrapper-komponent, som legger på nødvendig label og potensiell infomelding på en input.
 
 <Playground>
-  <FormGroup
-    title="Togdestinasjon"
-    alertLabel="Gratulerer"
-    alertLevel="success"
-  >
+  <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
     <TextField placeholder="Oslo" />
   </FormGroup>
   <FormGroup
-    title="Togdestinasjon"
-    alertLabel="Oisann, noe galt skjedde her"
-    alertLevel="error"
+    label="Togdestinasjon"
+    feedback="Oisann, noe galt skjedde her"
+    variant="error"
   >
     <TextField placeholder="Gjøvik" />
   </FormGroup>
-  <FormGroup
-    title="Togdestinasjon"
-    alertLabel="Pass på her"
-    alertLevel="warning"
-  >
+  <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
     <TextField placeholder="Advarsel" />
   </FormGroup>
   <FormGroup
-    title="Togdestinasjon"
-    alertLabel="Denne informasjonen hjelper deg"
-    alertLevel="info"
+    label="Togdestinasjon"
+    feedback="Denne informasjonen hjelper deg"
+    variant="info"
   >
     <TextField placeholder="Informasjon" />
   </FormGroup>
+
+</Playground>
+
+Under er de samme komponentene i _contrast_.
+
+<Playground>
+  <div className="entur-contrast" style={{backgroundColor:"#181c56"}}>
+   <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
+     <TextField placeholder="Oslo" />
+   </FormGroup>
+   <FormGroup
+     label="Togdestinasjon"
+     feedback="Oisann, noe galt skjedde her"
+     variant="error"
+   >
+     <TextField placeholder="Gjøvik" />
+   </FormGroup>
+   <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
+     <TextField placeholder="Advarsel" />
+   </FormGroup>
+   <FormGroup
+     label="Togdestinasjon"
+     feedback="Denne informasjonen hjelper deg"
+     variant="info"
+   >
+      <TextField placeholder="Informasjon" />
+    </FormGroup>
+  </div>
+
 </Playground>

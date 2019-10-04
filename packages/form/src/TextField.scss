@@ -22,9 +22,15 @@
     }
     &.entur-textfield--variant-success {
       border-color: $colors-validation-mint;
+      .entur-contrast & {
+        border-color: $colors-validation-mint-contrast;
+      }
     }
     &.entur-textfield--variant-error {
       border-color: $colors-validation-lava;
+      .entur-contrast & {
+        border-color: $colors-validation-lava-contrast;
+      }
     }
 
     &:focus-within {
@@ -39,9 +45,17 @@
       }
       &.entur-textfield--variant-success {
         box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-mint;
+        .entur-contrast & {
+          box-shadow: inset 0 0 0 ($space-default / 8)
+            $colors-validation-mint-contrast;
+        }
       }
       &.entur-textfield--variant-error {
         box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-lava;
+        .entur-contrast & {
+          box-shadow: inset 0 0 0 ($space-default / 8)
+            $colors-validation-lava-contrast;
+        }
       }
     }
 

@@ -3,17 +3,54 @@
 .entur-form-group {
   color: inherit;
 
-  &-alert-label-wrapper {
-    display: flex;
-    align-items: center;
-    margin-top: $space-extra-small;
+  &__label {
+    .entur-contrast & {
+      color: $colors-brand-lavender;
+    }
   }
 
-  &-sub-label {
-    padding-left: 0.5em;
+  &__sub-label {
+    &--feedback {
+      padding-left: 0.5em;
+      font-style: italic;
+      .entur-contrast & {
+        color: $colors-brand-lavender;
+      }
+    }
+    &--wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: $space-extra-small;
+    }
   }
 
-  &-alert-icon {
-    margin-bottom: $space-extra-small/2;
+  &__icon {
+    // margin-bottom: $space-extra-small/2;
+    position: relative;
+    top: -0.1em;
+    &--success {
+      color: $colors-validation-mint;
+      .entur-contrast & {
+        color: $colors-validation-mint-contrast;
+      }
+    }
+    &--error {
+      color: $colors-validation-lava;
+      .entur-contrast & {
+        color: $colors-validation-lava-contrast;
+      }
+    }
+    &--info {
+      color: $colors-validation-sky;
+      .entur-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
+    }
+    &--warning {
+      color: $colors-validation-sky;
+      .entur-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
+    }
   }
 }

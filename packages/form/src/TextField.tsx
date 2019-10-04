@@ -1,16 +1,15 @@
 import React from 'react';
 import cx from 'classnames';
 import { useVariant } from './FormGroup';
+import { VariantType } from './variants';
 import './TextField.scss';
 
-type variants = 'success' | 'error' | 'warning' | 'info' | 'none';
 type TextFieldProps = {
   prepend?: React.ReactNode;
-  variant?: variants;
+  variant?: VariantType;
   disabled?: boolean;
   width?: 'fluid';
   className?: string;
-  required?: boolean;
   [key: string]: any;
 };
 
@@ -19,15 +18,7 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    {
-      prepend,
-      variant,
-      disabled = false,
-      width,
-      className,
-      required = false,
-      ...rest
-    },
+    { prepend, variant, disabled = false, width, className, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const formGroupVariant: any = useVariant();
@@ -52,7 +43,6 @@ export const TextField: React.RefForwardingComponent<
           className="entur-textfield entur-textfield--input"
           disabled={disabled}
           ref={ref}
-          required={required}
           {...rest}
         />
       </label>
