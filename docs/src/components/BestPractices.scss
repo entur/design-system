@@ -11,7 +11,7 @@
 
 .best-practices__image {
   display: block;
-  width: calc(100% - $space-extra-large3 * 2);
+  width: calc(100% - #{$space-extra-large3} * 2);
   margin: 1em auto 0;
 }
 
