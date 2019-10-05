@@ -22,6 +22,7 @@
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "classnames": "^2.2.6",
+    "copy-text-to-clipboard": "^2.1.1",
     "docz": "^2.0.0-rc.52",
     "gatsby": "^2.13.73",
     "gatsby-plugin-offline": "^2.2.7",
@@ -36,6 +37,7 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-helmet": "^5.2.1",
+    "react-live": "^2.2.1",
     "scheduler": "^0.15.0"
   },
   "optionalDependencies": {

@@ -5,3 +5,21 @@
   padding: 1em;
   margin-bottom: 0.5em;
 }
+
+.playground__controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+.playground__control {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  text-transform: uppercase;
+
+  & + & {
+    margin-left: 1em;
+  }
+}
