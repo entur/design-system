@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
-import ToggleSwitch from './ToggleSwitch';
-import './Playground.scss';
 import { Language } from 'prism-react-renderer';
+import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import copy from 'copy-text-to-clipboard';
-import prismTheme from './prism-theme';
-import { SubLabel, Label } from '@entur/typography';
 import { ReportsIcon } from '@entur/icons';
+import { SubLabel, Label } from '@entur/typography';
 import SourceCodeIcon from './SourceCodeIcon';
+import ToggleSwitch from './ToggleSwitch';
+import prismTheme from './prism-theme';
+import './Playground.scss';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
