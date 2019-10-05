@@ -7,6 +7,7 @@ type Props = {
   as?: string | React.ElementType;
   /** Additional class names */
   className?: string;
+  [key: string]: any;
 };
 
 export const Heading1: React.FC<Props> = ({
