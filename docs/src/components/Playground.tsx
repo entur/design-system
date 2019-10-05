@@ -9,6 +9,7 @@ import './Playground.scss';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
+  hideContrastOption?: boolean;
   children: React.ReactNode;
   // These three props are injected by MDX and required by DoczPlayground
   __code: string;
@@ -19,6 +20,7 @@ type PlaygroundProps = {
 
 export const Playground: React.FC<PlaygroundProps & DoczPlaygroundProps> = ({
   defaultContrast = false,
+  hideContrastOption = false,
   ...playgroundProps
 }) => {
   const [isContrast, setContrast] = React.useState(defaultContrast);
@@ -30,12 +32,14 @@ export const Playground: React.FC<PlaygroundProps & DoczPlaygroundProps> = ({
         <DoczPlayground {...playgroundProps} />
       </div>
       <div>
-        <ToggleSwitch
-          checked={isContrast}
-          onChange={() => setContrast(prev => !prev)}
-        >
-          Contrast
-        </ToggleSwitch>
+        {!hideContrastOption && (
+          <ToggleSwitch
+            checked={isContrast}
+            onChange={() => setContrast(prev => !prev)}
+          >
+            Kontrast
+          </ToggleSwitch>
+        )}
       </div>
     </>
   );

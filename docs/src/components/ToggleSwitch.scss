@@ -44,8 +44,8 @@
 
   :checked + & {
     &::before {
-      background: $colors-validation-mint-tint;
-      box-shadow: inset 0 0 0 0.125em $colors-validation-mint-tint;
+      background: $colors-validation-mint-contrast;
+      box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast;
     }
     &::after {
       transform: translateX(1.7em);
@@ -59,7 +59,7 @@
   }
 
   :focus:checked + &::before {
-    box-shadow: inset 0 0 0 0.125em $colors-validation-mint-tint,
+    box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast,
       0 0 0.3em $colors-misc-focus;
   }
 
