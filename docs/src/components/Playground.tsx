@@ -16,9 +16,8 @@ type PlaygroundProps = {
   hideContrastOption?: boolean;
   children: React.ReactNode;
   language?: Language;
-  // These three props are injected by MDX and required by DoczPlayground
+  // These three props are injected by MDX
   __code: string;
-  __position: number;
   __scope: Record<string, any>;
   [key: string]: any;
 };
