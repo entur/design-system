@@ -6,7 +6,7 @@ import './Playground.scss';
 import { Language } from 'prism-react-renderer';
 import copy from 'copy-text-to-clipboard';
 import prismTheme from './prism-theme';
-import { SubLabel } from '@entur/typography';
+import { SubLabel, Label } from '@entur/typography';
 import { ReportsIcon } from '@entur/icons';
 import SourceCodeIcon from './SourceCodeIcon';
 
@@ -60,7 +60,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
             checked={isContrast}
             onChange={() => setContrast(prev => !prev)}
           >
-            Kontrast
+            <Label as="span">Kontrast</Label>
           </ToggleSwitch>
         )}
         <div>
