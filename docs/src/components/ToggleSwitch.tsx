@@ -2,14 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import './ToggleSwitch.scss';
 
-const ToggleSwitch: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  className,
-  checked,
-  children,
-  onChange,
-}) => (
+type Props = {
+  className?: string;
+  checked?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  [key: string]: any;
+};
+
+const ToggleSwitch: React.FC<Props> = ({ className, children, ...rest }) => (
   <label className={classNames('toggle-switch', className)}>
-    <input type="checkbox" checked={checked} onChange={onChange} />
+    <input type="checkbox" {...rest} />
     <span className="toggle-switch__switch" />
     {children}
   </label>
