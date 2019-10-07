@@ -19,7 +19,7 @@ import { Playground } from '../../../components/Playground';
   applikasjonen.
 </LeadParagraph>
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu>
     <MenuItem href="#menyer">Toppen</MenuItem>
     <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
@@ -42,7 +42,7 @@ import { Playground } from '../../../components/Playground';
 
 ### Meny med ikoner
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu>
     <MenuItem active={true} href="#">
       <UserIcon /> Min konto
@@ -58,7 +58,7 @@ import { Playground } from '../../../components/Playground';
 
 ### Kompakt meny
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu size="small">
     <MenuItem href="#menyer" active={true}>
       Toppen
@@ -79,7 +79,7 @@ import { Playground } from '../../../components/Playground';
 
 ### Kompakt meny med ikoner
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu size="small">
     <MenuItem active={true} href="#">
       <UserIcon /> Min konto
