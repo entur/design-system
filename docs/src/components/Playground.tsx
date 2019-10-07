@@ -53,7 +53,9 @@ export const Playground: React.FC<PlaygroundProps> = ({
         <LivePreview />
       </div>
       <div className="playground__controls">
-        {!hideContrastOption && (
+        {hideContrastOption ? (
+          <div />
+        ) : (
           <ToggleSwitch
             checked={isContrast}
             onChange={() => setContrast(prev => !prev)}
