@@ -1,5 +1,11 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
 .entur-menu {
   --primary-background-color: #{$colors-brand-blue};
   --primary-text-color: #{$colors-brand-white};
@@ -11,6 +17,10 @@
   padding: 0;
   margin: 0;
   list-style: none;
+
+  @include for-desktop {
+    max-width: 18rem;
+  }
 
   &--small {
     --padding-vertical: #{$space-small};
