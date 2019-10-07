@@ -1,0 +1,52 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-form-group {
+  color: inherit;
+  width: fit-content;
+  &__label {
+    .entur-contrast & {
+      color: $colors-brand-lavender;
+    }
+  }
+
+  &__feedback {
+    padding-left: 0.5em;
+    .entur-contrast & {
+      color: $colors-brand-lavender;
+    }
+  }
+  &__feedback-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: $space-extra-small;
+  }
+
+  &__icon {
+    position: relative;
+    top: -0.1em;
+    &--success {
+      color: $colors-validation-mint;
+      .entur-contrast & {
+        color: $colors-validation-mint-contrast;
+      }
+    }
+    &--error {
+      color: $colors-validation-lava;
+      .entur-contrast & {
+        color: $colors-validation-lava-contrast;
+      }
+    }
+    &--info {
+      color: $colors-validation-sky;
+      .entur-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
+    }
+    &--warning {
+      color: $colors-validation-sky;
+      .entur-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
+    }
+  }
+}

@@ -5,11 +5,12 @@ parent: Komponenter
 menu: Navigasjon
 ---
 
-import { Props, Playground } from 'docz';
+import { Props } from 'docz';
 import { Link } from 'gatsby';
 import { Menu, MenuItem } from '@entur/menu';
 import { LeadParagraph } from '@entur/typography';
 import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import { Playground } from '../../../components/Playground';
 
 # Menyer
 
@@ -18,7 +19,7 @@ import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
   applikasjonen.
 </LeadParagraph>
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu>
     <MenuItem href="#menyer">Toppen</MenuItem>
     <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
@@ -41,7 +42,7 @@ import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 
 ### Meny med ikoner
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu>
     <MenuItem active={true} href="#">
       <UserIcon /> Min konto
@@ -57,7 +58,7 @@ import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 
 ### Kompakt meny
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu size="small">
     <MenuItem href="#menyer" active={true}>
       Toppen
@@ -78,7 +79,7 @@ import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 
 ### Kompakt meny med ikoner
 
-<Playground>
+<Playground hideContrastOption={true}>
   <Menu size="small">
     <MenuItem active={true} href="#">
       <UserIcon /> Min konto

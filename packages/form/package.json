@@ -1,9 +1,9 @@
 {
-  "name": "@entur/layout",
-  "version": "0.2.0",
+  "name": "@entur/form",
+  "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/layout.esm.js",
+  "module": "dist/form.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/layout"
+    "directory": "packages/form"
   },
   "publishConfig": {
     "access": "public"
@@ -27,9 +27,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "classnames": "^2.2.6"
-  },
-  "devDependencies": {
-    "@entur/tokens": "^0.2.0"
+    "@entur/icons": "^0.2.0",
+    "@entur/tokens": "^0.2.0",
+    "@entur/typography": "^0.2.0"
   }
 }

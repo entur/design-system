@@ -2,6 +2,7 @@ import React from 'react';
 import { useMenus, Link, useCurrentDoc, MenuItem, Entry } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
+import { TextField } from '@entur/form';
 import classNames from 'classnames';
 import debounce from '../../utils/debounce';
 import './menu.scss';
@@ -164,7 +165,7 @@ export default function Menus() {
         <Link to="/">
           <img src={logoSVG} alt="Entur logo" className="site-logo" />
         </Link>
-        <input
+        <TextField
           type="text"
           className="searchbar-placeholder"
           placeholder="Søk..."
