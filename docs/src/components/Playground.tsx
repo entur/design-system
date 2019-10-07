@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import copy from 'copy-text-to-clipboard';
-import { ReportsIcon } from '@entur/icons';
+import { ReportsIcon, SourceCodeIcon } from '@entur/icons';
 import { SubLabel, Label } from '@entur/typography';
-import SourceCodeIcon from './SourceCodeIcon';
 import ToggleSwitch from './ToggleSwitch';
 import prismTheme from './prism-theme';
 import './Playground.scss';
@@ -16,7 +15,7 @@ type PlaygroundProps = {
   hideContrastOption?: boolean;
   children: React.ReactNode;
   language?: Language;
-  // These three props are injected by MDX
+  // These props are injected by MDX
   __code: string;
   __scope: Record<string, any>;
   [key: string]: any;
