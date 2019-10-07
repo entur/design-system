@@ -1,0 +1,83 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.toggle-switch {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  user-select: none;
+
+  input {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+}
+
+.toggle-switch__switch {
+  margin-right: ($space-extra-small + $space-small);
+  position: relative;
+
+  &::before,
+  &::after {
+    box-shadow: inset 0 0 0 0.125em $colors-greys-grey10;
+    content: '';
+    display: block;
+    transition: all 0.1s ease-out;
+    background: $colors-brand-white;
+    height: 1.3em;
+  }
+
+  &::before {
+    width: 3em;
+    border-radius: 0.65em;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0em;
+    top: 0;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 50%;
+    background: $colors-brand-white;
+  }
+
+  :checked + & {
+    &::before {
+      background: $colors-validation-mint-contrast;
+      box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast;
+    }
+    &::after {
+      transform: translateX(1.7em);
+      box-shadow: inset 0 0 0 0.125em $colors-validation-mint;
+    }
+  }
+
+  :focus + &::before {
+    box-shadow: inset 0 0 0 0.125em $colors-greys-grey10,
+      0 0 0.3em $colors-misc-focus;
+  }
+
+  :focus:checked + &::before {
+    box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast,
+      0 0 0.3em $colors-misc-focus;
+  }
+
+  :disabled + & {
+    cursor: default;
+    &::before {
+      background: $colors-greys-grey20;
+      box-shadow: inset 0 0 0 0.125em $colors-greys-grey20;
+    }
+    &::after {
+      background: $colors-greys-grey10;
+      box-shadow: inset 0 0 0 0.125em $colors-greys-grey10;
+    }
+  }
+
+  :disabled:checked + & {
+    &::after {
+      transform: translateX(1.7em);
+    }
+  }
+}
