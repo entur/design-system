@@ -4,7 +4,7 @@ import './styles.scss';
 
 declare type sizes = 'medium' | 'large';
 declare type variants = 'primary' | 'secondary' | 'success' | 'negative';
-declare type widths = 'medium' | 'large' | 'fluid' | 'square';
+declare type widths = 'fluid' | 'square';
 type ButtonProps = {
   variant: variants;
   size?: sizes;

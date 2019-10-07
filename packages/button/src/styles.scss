@@ -19,7 +19,7 @@
 }
 
 .entur-button {
-  min-width: 9.5rem - (1rem / 8); //width 152-border
+  min-width: 9.5rem; //width 152-border
   border: ($space-default / 8) solid transparent; // ~2px transparent border
   border-radius: $space-default / 16;
   font-size: inherit;
@@ -44,17 +44,7 @@
   &--size-large {
     padding-top: $space-medium;
     padding-bottom: $space-medium;
-  }
-
-  //Widths
-  &--width-medium {
-    padding-right: $space-medium;
-    padding-left: $space-medium;
-  }
-
-  &--width-large {
-    padding-right: $space-extra-large;
-    padding-left: $space-extra-large;
+    min-width: 11.75rem;
   }
 
   &--width-square {
@@ -103,10 +93,10 @@
       background-color: $colors-blues-blue20;
       color: $colors-brand-white;
       &:hover {
-        background-color: tint($colors-brand-lavender, 10%);
+        background-color: tint($colors-blues-blue20, 10%);
       }
       &:active {
-        background-color: shade($colors-brand-lavender, 10%);
+        background-color: shade($colors-blues-blue20, 10%);
       }
     }
   }
