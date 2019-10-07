@@ -39,18 +39,20 @@ export const FormGroup: React.FC<FormGroupProps> = ({
 }) => {
   return (
     <FormGroupProvider variant={variant}>
-      <Label>
-        <span className="entur-form-group__label">{label}</span>
-        {children}
-      </Label>
-      {feedback && (
-        <SubLabel className="entur-form-group__sub-label--wrapper">
-          <AlertIcon level={variant} />
-          <span className="entur-form-group__sub-label--feedback">
-            {feedback}
-          </span>
-        </SubLabel>
-      )}
+      <div className="entur-form-group">
+        <Label>
+          <span className="entur-form-group__label">{label}</span>
+          {children}
+        </Label>
+        {feedback && (
+          <SubLabel className="entur-form-group__sub-label--wrapper">
+            <AlertIcon level={variant} />
+            <span className="entur-form-group__sub-label--feedback">
+              {feedback}
+            </span>
+          </SubLabel>
+        )}
+      </div>
     </FormGroupProvider>
   );
 };

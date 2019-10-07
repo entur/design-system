@@ -33,14 +33,10 @@ export const TextField: React.RefForwardingComponent<
       className,
     );
     return (
-      <label className={cx('entur-textfield--container', classList)}>
-        {prepend && (
-          <span className=" entur-textfield entur-textfield--prepend">
-            {prepend}
-          </span>
-        )}
+      <label className={cx('entur-textfield', classList)}>
+        {prepend && <span className="entur-textfield--prepend">{prepend}</span>}
         <input
-          className="entur-textfield entur-textfield--input"
+          className="entur-textfield--input"
           disabled={disabled}
           ref={ref}
           {...rest}

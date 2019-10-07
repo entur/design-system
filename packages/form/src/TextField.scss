@@ -3,62 +3,32 @@
 .entur-textfield {
   font-family: inherit;
   font-size: inherit;
-  &--container {
-    display: flex;
-    align-items: center;
-    border: 0px hidden transparent;
-    border-bottom: ($space-default / 8) solid $colors-brand-blue;
-    border-radius: $space-default / 16;
-    height: $space-extra-large2;
-    background-color: $colors-greys-grey40;
-    color: $colors-brand-blue;
-    width: 22rem;
-
-    &.entur-textfield--width-fluid {
-      width: 100%;
-    }
-    .entur-contrast & {
-      border-color: $colors-brand-lavender;
-    }
-    &.entur-textfield--variant-success {
-      border-color: $colors-validation-mint;
-      .entur-contrast & {
-        border-color: $colors-validation-mint-contrast;
-      }
-    }
-    &.entur-textfield--variant-error {
-      border-color: $colors-validation-lava;
-      .entur-contrast & {
-        border-color: $colors-validation-lava-contrast;
-      }
-    }
-
+  display: flex;
+  align-items: center;
+  border: 0px hidden transparent;
+  border-bottom: ($space-default / 8) solid $colors-brand-blue;
+  border-radius: $space-default / 16;
+  height: $space-extra-large2;
+  background-color: $colors-greys-grey40;
+  color: $colors-brand-blue;
+  width: 22rem;
+  &--width-fluid {
+    width: 100%;
+  }
+  .entur-contrast & {
+    border-color: $colors-brand-lavender;
+  }
+  &--variant-none,
+  &--variant-warning,
+  &--variant-info {
     &:focus-within {
       box-shadow: inset 0 0 0 ($space-default / 8) $colors-brand-blue;
       border-bottom: hidden;
       padding-bottom: ($space-default / 8);
-
       .entur-contrast & {
         box-shadow: inset 0 0 0 ($space-default / 8) $colors-brand-lavender;
-        border-bottom: hidden;
-        padding-bottom: ($space-default / 8);
-      }
-      &.entur-textfield--variant-success {
-        box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-mint;
-        .entur-contrast & {
-          box-shadow: inset 0 0 0 ($space-default / 8)
-            $colors-validation-mint-contrast;
-        }
-      }
-      &.entur-textfield--variant-error {
-        box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-lava;
-        .entur-contrast & {
-          box-shadow: inset 0 0 0 ($space-default / 8)
-            $colors-validation-lava-contrast;
-        }
       }
     }
-
     &:hover:not(:focus-within):not(.entur-textfield--disabled) {
       border-bottom: ($space-default / 8) solid $colors-brand-lavender;
       .entur-contrast & {
@@ -66,18 +36,45 @@
         border-bottom: hidden;
         padding-bottom: ($space-default / 8);
       }
-      &.entur-textfield--variant-success {
-        box-shadow: none;
-        padding-bottom: 0px;
-        border-bottom: ($space-default / 8) solid $colors-validation-mint-tint;
-      }
-      &.entur-textfield--variant-error {
-        box-shadow: none;
-        padding-bottom: 0px;
-        border-bottom: ($space-default / 8) solid $colors-validation-lava-tint;
-      }
     }
   }
+  &--variant-success {
+    border-color: $colors-validation-mint;
+    .entur-contrast & {
+      border-color: $colors-validation-mint-contrast;
+    }
+    &:focus-within {
+      border-bottom: hidden;
+      padding-bottom: ($space-default / 8);
+      box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-mint;
+      .entur-contrast & {
+        box-shadow: inset 0 0 0 ($space-default / 8)
+          $colors-validation-mint-contrast;
+      }
+    }
+    &:hover:not(:focus-within):not(.entur-textfield--disabled) {
+      border-bottom: ($space-default / 8) solid $colors-validation-mint-tint;
+    }
+  }
+  &--variant-error {
+    border-color: $colors-validation-lava;
+    .entur-contrast & {
+      border-color: $colors-validation-lava-contrast;
+    }
+    &:focus-within {
+      box-shadow: inset 0 0 0 ($space-default / 8) $colors-validation-lava;
+      border-bottom: hidden;
+      padding-bottom: ($space-default / 8);
+      .entur-contrast & {
+        box-shadow: inset 0 0 0 ($space-default / 8)
+          $colors-validation-lava-contrast;
+      }
+    }
+    &:hover:not(:focus-within):not(.entur-textfield--disabled) {
+      border-bottom: ($space-default / 8) solid $colors-validation-lava-tint;
+    }
+  }
+
   &--disabled {
     background-color: $colors-greys-grey20;
     border-bottom: ($space-default / 8) solid $colors-greys-grey20;
