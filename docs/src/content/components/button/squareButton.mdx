@@ -1,30 +1,30 @@
 ---
-name: SquareButton
+name: Kvadratiske knapper
 route: /komponenter/kvadratiske-knapper
 parent: Komponenter
-menu: Button
+menu: Knapper
 ---
 
 import { Button } from '@entur/button';
 import '@entur/button/dist/styles.css';
 import { Props } from 'docz';
+import { AddIcon, BellIcon, DepositionIcon, HeartIcon } from '@entur/icons';
 import { Playground } from '../../../components/Playground';
+import PageHeader from '../../../components/PageHeader';
 
-# Kvadratiske button
-
-Kvadratiske buttons brukes gjerne med ikoner
+<PageHeader>Kvadratiske buttons brukes gjerne med ikoner</PageHeader>
 
 <Playground>
-  <Button variant="primary" width="square">
-    Ja
+  <Button variant="primary" width="square" aria-label="Legg til">
+    <AddIcon />
   </Button>
-  <Button variant="secondary" width="square">
-    Ok
+  <Button variant="secondary" width="square" aria-label="Ring">
+    <BellIcon />
   </Button>
-  <Button variant="success" width="square">
-    Nei
+  <Button variant="success" width="square" aria-label="Lage som favoritt">
+    <HeartIcon />
   </Button>
-  <Button variant="negative" width="square">
-    I
+  <Button variant="negative" width="square" aria-label="Legg til depositum">
+    <DepositionIcon />
   </Button>
 </Playground>
