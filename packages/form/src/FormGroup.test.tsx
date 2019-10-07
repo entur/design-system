@@ -9,13 +9,13 @@ test('Form-group renders with TextField as child, and appropriate labels and fie
   const variant = 'success';
 
   const testId = 'textfieldTester';
-  const { getByTestId, getByText, getByLabelText } = render(
+  const { getByTestId, getByText } = render(
     <FormGroup label={labelMsg} variant={variant} feedback={feedbackMsg}>
       <TextField data-testid={testId} />
     </FormGroup>,
   );
 
-  const labelGroup = getByLabelText(labelMsg);
+  const labelGroup = getByText(labelMsg);
   const feedbackGroup = getByText(feedbackMsg);
   const testerTextField = getByTestId(testId);
 
@@ -26,5 +26,5 @@ test('Form-group renders with TextField as child, and appropriate labels and fie
   expect(feedbackGroup.previousSibling).toHaveClass(
     `entur-form-group__icon--${variant}`,
   );
-  expect(labelGroup).toHaveClass('entur-textfield');
+  expect(labelGroup).toHaveClass('entur-form-group__label');
 });

@@ -2,7 +2,7 @@
 
 This package contains all the common form-components
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/input/formgroup)?
+> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/formgroup)?
 
 ## Installation
 
@@ -28,4 +28,4 @@ yarn add @entur/form
 </FormGroup>
 ```
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/input/formgroup) for further usage information.
+Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/formgroup) for further usage information.

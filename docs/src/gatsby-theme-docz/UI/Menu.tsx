@@ -165,7 +165,7 @@ export default function Menus() {
         <Link to="/">
           <img src={logoSVG} alt="Entur logo" className="site-logo" />
         </Link>
-        <input
+        <TextField
           type="text"
           className="searchbar-placeholder"
           placeholder="Søk..."

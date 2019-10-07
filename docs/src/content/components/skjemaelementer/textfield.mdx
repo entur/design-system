@@ -1,0 +1,36 @@
+---
+name: TextField
+route: /komponenter/skjemaelementer/textfield
+parent: Komponenter
+menu: Skjemaelementer
+---
+
+import { TextField } from '@entur/form';
+import '@entur/form/dist/styles.css';
+import { Playground, Props } from 'docz';
+import { ImageIcon } from '@entur/icons';
+
+# TextField
+
+TextField er en inputkomponent, for å ta imot tekst fra brukeren.
+
+<Playground>
+  <div style={{ display: 'grid', rowGap: '1em' }}>
+    <TextField placeholder="Skriv her..." />
+    <TextField disabled placeholder="Disabled" />
+    <TextField variant="success" placeholder="Suksess" />
+    <TextField variant="error" placeholder="Feil" />
+    <TextField
+      width="fluid"
+      placeholder="Bilde Fluid og ikon som prepend"
+      prepend={<ImageIcon />}
+    />
+    <div style={{ width: '15rem' }}>
+      <TextField
+        width="fluid"
+        placeholder="Kortere input med fluid"
+        prepend="Fra"
+      />
+    </div>
+  </div>
+</Playground>

@@ -33,11 +33,12 @@ export const TextField: React.RefForwardingComponent<
       className,
     );
     return (
-      <label className={cx('entur-textfield', classList)}>
+      <label className={classList}>
         {prepend && <span className="entur-textfield--prepend">{prepend}</span>}
         <input
           className="entur-textfield--input"
           disabled={disabled}
+          aria-invalid={prioritizedVariant === 'error'}
           ref={ref}
           {...rest}
         />

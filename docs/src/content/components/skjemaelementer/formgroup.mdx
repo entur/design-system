@@ -1,8 +1,8 @@
 ---
 name: FormGroup
-route: /komponenter/input/formgroup
+route: /komponenter/skjemaelementer/formgroup
 parent: Komponenter
-menu: Input
+menu: Skjemaelementer
 ---
 
 import { FormGroup, TextField } from '@entur/form';
@@ -34,33 +34,5 @@ FormGroup er en wrapper-komponent, som legger på nødvendig label og potensiell
   >
     <TextField placeholder="Informasjon" />
   </FormGroup>
-
-</Playground>
-
-Under er de samme komponentene i _contrast_.
-
-<Playground>
-  <div className="entur-contrast" style={{backgroundColor:"#181c56"}}>
-   <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
-     <TextField placeholder="Oslo" />
-   </FormGroup>
-   <FormGroup
-     label="Togdestinasjon"
-     feedback="Oisann, noe galt skjedde her"
-     variant="error"
-   >
-     <TextField placeholder="Gjøvik" />
-   </FormGroup>
-   <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
-     <TextField placeholder="Advarsel" />
-   </FormGroup>
-   <FormGroup
-     label="Togdestinasjon"
-     feedback="Denne informasjonen hjelper deg"
-     variant="info"
-   >
-      <TextField placeholder="Informasjon" />
-    </FormGroup>
-  </div>
 
 </Playground>

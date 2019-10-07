@@ -9,19 +9,16 @@
     }
   }
 
-  &__sub-label {
-    &--feedback {
-      padding-left: 0.5em;
-      font-style: italic;
-      .entur-contrast & {
-        color: $colors-brand-lavender;
-      }
+  &__feedback {
+    padding-left: 0.5em;
+    .entur-contrast & {
+      color: $colors-brand-lavender;
     }
-    &--wrapper {
-      display: flex;
-      align-items: center;
-      margin-top: $space-extra-small;
-    }
+  }
+  &__feedback-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: $space-extra-small;
   }
 
   &__icon {

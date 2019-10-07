@@ -27,14 +27,14 @@ export function useVariant(): VariantType {
 type FormGroupProps = {
   label: string;
   feedback?: string;
-  variant: VariantType;
+  variant?: VariantType;
   children: React.ReactNode;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
   label,
   feedback,
-  variant,
+  variant = 'none',
   children,
 }) => {
   return (
@@ -45,11 +45,9 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           {children}
         </Label>
         {feedback && (
-          <SubLabel className="entur-form-group__sub-label--wrapper">
+          <SubLabel className="entur-form-group__feedback-wrapper">
             <AlertIcon level={variant} />
-            <span className="entur-form-group__sub-label--feedback">
-              {feedback}
-            </span>
+            <span className="entur-form-group__feedback">{feedback}</span>
           </SubLabel>
         )}
       </div>
