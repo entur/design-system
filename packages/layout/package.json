@@ -1,9 +1,9 @@
 {
-  "name": "@entur/typography",
-  "version": "0.3.0",
+  "name": "@entur/layout",
+  "version": "0.2.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/typography.esm.js",
+  "module": "dist/layout.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,12 +11,13 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/typography"
+    "directory": "packages/layout"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
+    "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
@@ -26,9 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@types/classnames": "^2.2.9",
-    "classnames": "^2.2.6",
-    "normalize-scss": "^7.0.1"
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@entur/tokens": "^0.2.0"

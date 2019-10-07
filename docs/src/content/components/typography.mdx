@@ -4,7 +4,7 @@ route: /komponenter/typografi
 parent: Komponenter
 ---
 
-import { Playground, Props } from 'docz';
+import { Link } from 'gatsby';
 import {
   Heading1,
   Heading2,
@@ -12,13 +12,24 @@ import {
   Heading4,
   Heading5,
   Heading6,
+  LeadParagraph,
   Paragraph,
   SubParagraph,
   Label,
   SubLabel,
 } from '@entur/typography/src/index.tsx';
+import { Playground } from '../../components/Playground.tsx';
 
 # Typografi
+
+<LeadParagraph>
+  Retningslinjer for bruk av typografi står beskrevet under{' '}
+  <Link to="/visuell-identitet">Visuell identitet</Link>.
+</LeadParagraph>
+
+Det er definert en typografisk skala, hvor vi bruker ulike fontstørrelser for å skape typografisk hierarki i teksten. Dette er den typografiske skalaen for løpende brødtekst og titler, navngitt etter “heading” nummerering i synkende skala der øverste nivå er H1, deretter H2, H3 osv.
+
+Tabellen viser hvilke størrelser og linjeavstander vi skal bruke når vi designer for web. Ved å kombinere ulike fontstørrelser på en god måte kan vi skape et tydelig hierarki og en struktur som gjør det enklere for leseren å forstå og navigere seg gjennom tekstene våre.
 
 ## Overskrifter
 
@@ -33,11 +44,13 @@ Vi har egne komponenter for hver overskriftstype - en for hvert av de 6 nivåene
   <Heading6>Overskrift nivå 6</Heading6>
 </Playground>
 
-### Props
+## Ingress
 
-Alle 6 typene med overskrifter har de samme propsene:
+Ingressen er et kort avsnitt som normalt kommer etter tittelen på en side.
 
-<Props of={Heading1} />
+<Playground>
+  <LeadParagraph>Entur gjør det enklere å reise kollektivt</LeadParagraph>
+</Playground>
 
 ## Vanlig tekst
 
@@ -45,12 +58,12 @@ Vi har to nivåer med tekst - "paragraph" og "sub paragraph".
 
 <Playground>
   <Paragraph>
-    I Norge har vi et godt kollektivtilbud, med tusenvis av daglige avganger fra
-    mer enn 60 000 stoppesteder i bygd og by.
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
   </Paragraph>
   <SubParagraph>
-    I Norge har vi et godt kollektivtilbud, med tusenvis av daglige avganger fra
-    mer enn 60 000 stoppesteder i bygd og by.
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
   </SubParagraph>
 </Playground>
 
@@ -59,9 +72,15 @@ Vi har to nivåer med tekst - "paragraph" og "sub paragraph".
 Vi har to nivåer med "label"-tekst - "label" og "sub label".
 
 <Playground>
-  <Label>Avreisested</Label>
+  <Label>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </Label>
   <br />
-  <SubLabel>Du må skrive inn hvor du skal reise fra</SubLabel>
+  <SubLabel>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </SubLabel>
 </Playground>
 
 ## CSS properties

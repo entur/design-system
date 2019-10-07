@@ -5,6 +5,8 @@ aliases:
 version: 2
 jobs:
   build:
+    parallelism: 1
+    resource_class: large
     docker:
       - image: circleci/node:latest
     steps:
@@ -34,6 +36,8 @@ jobs:
           name: test
           command: yarn test
   deploy:
+    parallelism: 1
+    resource_class: large
     docker:
       - image: circleci/node:latest
     steps:

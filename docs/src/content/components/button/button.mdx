@@ -7,10 +7,11 @@ menu: Button
 
 import { Button } from '@entur/button';
 import '@entur/button/dist/styles.css';
-import { Playground, Props } from 'docz';
-import DoAndDont from '../../../components/DoAndDont';
+import { Props } from 'docz';
+import { BestPractices, Example } from '../../../components/BestPractices';
 import ComponentPresenter from '../../../components/ComponentPresenter';
 import ComponentRuler from '../../../components/ComponentRuler';
+import { Playground } from '../../../components/Playground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 
@@ -141,8 +142,8 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
 
 ## Aktiv vs inaktiv knapp
 
-<DoAndDont>
-  <DoAndDont.Do image={doPic}>
+<BestPractices>
+  <Example type="do" src={doPic}>
     <ul>
       <li>
         Aktiv knapp som validerer (når man klikker på den) erstatter bruk av
@@ -158,8 +159,8 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
         også for felter som validerer mot baksystemer.
       </li>
     </ul>
-  </DoAndDont.Do>
-  <DoAndDont.Dont image={dontPic}>
+  </Example>
+  <Example type="dont" src={dontPic}>
     <ul>
       <li>
         Inaktive knapper bør unngås fordi den skaper vanligvis en elendig
@@ -173,5 +174,5 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
         den ikke er klikkbar.
       </li>
     </ul>
-  </DoAndDont.Dont>
-</DoAndDont>
+  </Example>
+</BestPractices>

@@ -1,4 +1,5 @@
 @import '~@entur/fonts/index.css';
+@import '~@entur/layout/dist/styles.css';
 @import '~@entur/typography/dist/styles.css';
 @import '~@entur/menu/dist/styles.css';
 @import '~@entur/tokens/dist/styles.scss';
@@ -16,7 +17,7 @@ body {
 .site-content {
   margin: $space-default;
   @include for-desktop {
-    margin: 5rem 11rem 1rem 22rem;
+    margin: 5rem 16rem 1rem 22rem;
     max-width: 60rem;
   }
 }

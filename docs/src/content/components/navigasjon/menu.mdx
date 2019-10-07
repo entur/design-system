@@ -2,15 +2,22 @@
 name: Menyer
 route: /komponenter/menyer
 parent: Komponenter
+menu: Navigasjon
 ---
 
-import { Props, Playground } from 'docz';
+import { Props } from 'docz';
 import { Link } from 'gatsby';
 import { Menu, MenuItem } from '@entur/menu';
+import { LeadParagraph } from '@entur/typography';
+import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import { Playground } from '../../../components/Playground';
 
 # Menyer
 
-Navigasjon hjelper brukeren å flytte mellom sider og lokalisere seg i applikasjonen.
+<LeadParagraph>
+  Navigasjon hjelper brukeren å flytte mellom sider og lokalisere seg i
+  applikasjonen.
+</LeadParagraph>
 
 <Playground>
   <Menu>
@@ -31,17 +38,23 @@ Navigasjon hjelper brukeren å flytte mellom sider og lokalisere seg i applikasj
   </Menu>
 </Playground>
 
-## Prop types
-
-### `<Menu />`
-
-<Props of={Menu} />
-
-### `<MenuItem />`
-
-<Props of={MenuItem} />
-
 ## Variasjoner
+
+### Meny med ikoner
+
+<Playground>
+  <Menu>
+    <MenuItem active={true} href="#">
+      <UserIcon /> Min konto
+    </MenuItem>
+    <MenuItem disabled={true}>
+      <StatsIcon /> Statistikk
+    </MenuItem>
+    <MenuItem href="#">
+      <SettingsIcon /> Innstillinger
+    </MenuItem>
+  </Menu>
+</Playground>
 
 ### Kompakt meny
 
@@ -64,9 +77,27 @@ Navigasjon hjelper brukeren å flytte mellom sider og lokalisere seg i applikasj
   </Menu>
 </Playground>
 
+### Kompakt meny med ikoner
+
+<Playground>
+  <Menu size="small">
+    <MenuItem active={true} href="#">
+      <UserIcon /> Min konto
+    </MenuItem>
+    <MenuItem disabled={true}>
+      <StatsIcon /> Statistikk
+    </MenuItem>
+    <MenuItem href="#">
+      <SettingsIcon /> Innstillinger
+    </MenuItem>
+  </Menu>
+</Playground>
+
 ## Retningslinjer
 
-Navigasjonsmeny er anbefalt å brukes hvis applikasjonen krever en global navigasjon. Navigasjonsmønsteret støtter opptil to nivåer av navigasjon (Nivå 1 og Nivå 2). Hvert navigasjonselement trenger ikke å ha samme antall navigasjonsnivåer. Navigasjonsmenyen finnes både med og uten ikon, men skal kun benyttes på Nivå 1. Menyen skal helst vises til venstre.
+### Når skal komponenten brukes?
+
+Navigasjonsmeny er anbefalt å brukes hvis applikasjonen krever en global navigasjon. Navigasjonsmønsteret støtter opptil to nivåer av navigasjon (Nivå 1 og Nivå 2). Hvert navigasjonselement trenger ikke å ha samme antall navigasjonsnivåer. Navigasjonsmenyen finnes både med og uten ikon, men ikon skal kun benyttes på Nivå 1. Menyen skal helst vises til venstre.
 
 ### Inaktive elementer
 

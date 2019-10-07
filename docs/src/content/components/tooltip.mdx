@@ -6,7 +6,8 @@ parent: Komponenter
 
 import Tooltip from '@entur/tooltip';
 import '@entur/tooltip/dist/styles.css';
-import { Playground, Props } from 'docz';
+import { Props } from 'docz';
+import { Playground } from '../../components/Playground';
 
 # Tooltip
 
@@ -31,16 +32,6 @@ Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også toolti
   <Tooltip content="Tooltip til knappen" placement="top">
     <button>Her er en knapp med tooltip</button>
   </Tooltip>
-</Playground>
-
-Tooltip fungerer også i contrast theme
-
-<Playground>
-  <div className="entur-contrast">
-    <Tooltip content="Her er tooltipen" placement="top">
-      Denne teksten har en tooltip i contrast theme
-    </Tooltip>
-  </div>
 </Playground>
 
 Tooltip-teksten vil også bli lagt til i trigger-elementet som en aria-label.

@@ -115,6 +115,17 @@ html {
   }
 }
 
+.entur-lead-paragraph {
+  color: inherit;
+  font-size: $font-sizes-extra-large;
+  line-height: $line-heights-extra-large3;
+
+  @include for-desktop {
+    font-size: $font-sizes-extra-large;
+    line-height: $line-heights-extra-large3;
+  }
+}
+
 .entur-sub-paragraph {
   color: inherit;
   font-size: $font-sizes-medium;
@@ -179,4 +190,13 @@ html {
 
 .entur-emphasized-text {
   font-style: italic;
+}
+
+.entur-preformatted-text {
+  background: $colors-blues-blue80;
+  color: inherit;
+  font-family: 'Dank Mono', monospace;
+  font-size: inherit;
+  padding: 1em;
+  border-radius: 1px;
 }

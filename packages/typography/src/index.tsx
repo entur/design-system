@@ -7,6 +7,7 @@ type Props = {
   as?: string | React.ElementType;
   /** Additional class names */
   className?: string;
+  [key: string]: any;
 };
 
 export const Heading1: React.FC<Props> = ({
@@ -53,6 +54,17 @@ export const Paragraph: React.FC<Props> = ({
   <Element className={classNames('entur-paragraph', className)} {...rest} />
 );
 
+export const LeadParagraph: React.FC<Props> = ({
+  as: Element = 'p',
+  className,
+  ...rest
+}) => (
+  <Element
+    className={classNames('entur-lead-paragraph', className)}
+    {...rest}
+  />
+);
+
 export const SubParagraph: React.FC<Props> = ({
   as: Element = 'p',
   className,
@@ -96,6 +108,17 @@ export const EmphasizedText: React.FC<Props> = ({
 }) => (
   <Element
     className={classNames('entur-emphasized-text', className)}
+    {...rest}
+  />
+);
+
+export const PreformattedText: React.FC<Props> = ({
+  as: Element = 'pre',
+  className,
+  ...rest
+}) => (
+  <Element
+    className={classNames('entur-preformatted-text', className)}
     {...rest}
   />
 );
