@@ -1,17 +1,19 @@
 ---
-name: FormGroup
+name: Skjemagruppe
 route: /komponenter/skjemaelementer/formgroup
 parent: Komponenter
 menu: Skjemaelementer
 ---
 
 import { FormGroup, TextField } from '@entur/form';
+import { Props } from 'docz';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
 import '@entur/form/dist/styles.css';
-import { Playground, Props } from 'docz';
 
-# FormGroup
-
-FormGroup er en wrapper-komponent, som legger på nødvendig label og potensiell infomelding på en input.
+<PageHeader>
+  FormGroup-komponenten legger på label og tilbakemelding rundt skjemaelementer.
+</PageHeader>
 
 <Playground>
   <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">

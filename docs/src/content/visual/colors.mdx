@@ -6,11 +6,10 @@ parent: Visuell Identitet
 ---
 
 import { colors } from '@entur/tokens';
-import ColorList from '../../components/ColorList';
+import ColorList from 'src/components/ColorList';
+import PageHeader from 'src/components/PageHeader';
 
-# Farger
-
-Entur har en stor palett av farger som man kan bruke.
+<PageHeader>Entur har en stor palett av farger som man kan bruke.</PageHeader>
 
 ## Tilgjengelige farger
 
@@ -30,13 +29,13 @@ Entur har en stor palett av farger som man kan bruke.
 
 <ColorList colors={colors.validation} category="validation" />
 
-### Miscellaneous-farger
+### Diverse farger
 
 <ColorList colors={colors.misc} category="misc" />
 
 ### Transport-farger
 
-We have a separate set for the different transport types:
+Vi har forskjellige farger for transport-ikonene våre.
 
 #### Default-theme
 
