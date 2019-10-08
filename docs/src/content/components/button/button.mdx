@@ -1,24 +1,25 @@
 ---
-name: Button
+name: Vanlige knapper
 route: /komponenter/knapper
 parent: Komponenter
-menu: Button
+menu: Knapper
 ---
 
 import { Button } from '@entur/button';
 import '@entur/button/dist/styles.css';
 import { Props } from 'docz';
-import { BestPractices, Example } from '../../../components/BestPractices';
-import ComponentPresenter from '../../../components/ComponentPresenter';
-import ComponentRuler from '../../../components/ComponentRuler';
-import { Playground } from '../../../components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import { BestPractices, Example } from 'src/components/BestPractices';
+import ComponentPresenter from 'src/components/ComponentPresenter';
+import ComponentRuler from 'src/components/ComponentRuler';
+import { Playground } from 'src/components/Playground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 import { RefreshIcon } from '@entur/icons';
 
-# Knapper
-
-Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
+<PageHeader>
+  Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
+</PageHeader>
 
 <Playground>
   <Button variant="primary">Primary</Button>

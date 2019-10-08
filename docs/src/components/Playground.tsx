@@ -5,8 +5,8 @@ import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import copy from 'copy-text-to-clipboard';
 import { ReportsIcon, SourceCodeIcon } from '@entur/icons';
 import { SubLabel, Label } from '@entur/typography';
-import ToggleSwitch from './ToggleSwitch';
-import prismTheme from './prism-theme';
+import ToggleSwitch from 'src/components/ToggleSwitch';
+import prismTheme from 'src/components/prism-theme';
 import './Playground.scss';
 
 type PlaygroundProps = {

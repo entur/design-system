@@ -8,13 +8,10 @@ menu: Layout og flater
 import { Props } from 'docz';
 import { Contrast } from '@entur/layout';
 import { LeadParagraph, Paragraph } from '@entur/typography';
-import { Playground } from '../../../components/Playground';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
 
-# Kontrastseksjoner
-
-<LeadParagraph>
-  Vi bruker kontrastseksjoner rundt om i våre design.
-</LeadParagraph>
+<PageHeader>Vi bruker kontrastseksjoner rundt om i våre design.</PageHeader>
 
 <Playground hideContrastOption={true}>
   <div style={{ padding: '4em' }}>
