@@ -20,6 +20,7 @@
     "@entur/tooltip": "^0.2.0",
     "@entur/typography": "^0.3.0",
     "@types/classnames": "^2.2.9",
+    "@types/match-sorter": "^2.3.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "classnames": "^2.2.6",

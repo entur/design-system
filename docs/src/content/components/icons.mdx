@@ -6,28 +6,51 @@ route: /komponenter/ikoner
 
 import { Props } from 'docz';
 import * as icons from '@entur/icons';
-import { AddIcon, FerryIcon, HomeIcon } from '@entur/icons';
 import IconList from 'src/components/IconList';
-import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
+import { BestPractices, Example } from 'src/components/BestPractices';
 
 <PageHeader>
   Ikoner gir visuell kontekst som blir brukt for å representere handlinger og
   forbedrer brukervennligheten.
 </PageHeader>
 
-Man kan lett importere spesifikke ikoner, og bruke dem direkte.
-
-```js
-import { AddIcon, FerryIcon, HomeIcon } from '@entur/icons';
-```
-
-<Playground>
-  <AddIcon />
-  <FerryIcon />
-  <HomeIcon />
-</Playground>
+Enturs UI-ikoner er funksjonelle ikoner, til bruk i alle Enturs digitale kanaler. Vårt ikonbibliotek er basert på ikoner fra [nucleoapp.com](https://nucleoapp.com). Disse ikonene har Entur lisens til å bruke.
 
 ## Alle ikoner
 
 <IconList icons={icons} />
+
+## Retningslinjer for bruk
+
+### Når skal ikoner brukes?
+
+Ikoner skal brukes for å skape bedre navigasjon og brukeropplevelse. De skal oppleves som relevant for de formålene de brukes til, og for å hjelpe brukeren å forstå innholdet raskere enn med kun tekst. Ikoner benyttes oftest sammen med forklarende tekst, og helst ikke frittstående.
+
+Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir verdi. Ikoner skal ikke være for detaljerte eller blandes i farger, det vil gjøre de mer til en illustrasjon istedenfor et ikon. Ikoner som ikke er en del av ikonbiblioteket skal ikke brukes. Utvikling av nye ikoner skal skje gjennom designansvarlig i Entur.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do">
+    Bruk samme farge på ikon og tekst når de skal stå sammen
+  </Example>
+  <Example type="dont">Ikke bruk forskjellige farger på ikon og tekst</Example>
+</BestPractices>
+
+<BestPractices>
+  <Example type="do">
+    Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
+  </Example>
+  <Example type="dont">Ikke baseline-juster ikonet til teksten</Example>
+</BestPractices>
+
+<BestPractices>
+  <Example type="do">
+    Størrelsen på både ikon og tekst skal alltid være lik og innenfor
+    størrelse-skalaen
+  </Example>
+  <Example type="dont">
+    Ikke bruk forskjellig størrelser på ikon og tekst
+  </Example>
+</BestPractices>
