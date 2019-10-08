@@ -19,10 +19,13 @@
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./packages",
+    "baseUrl": ".",
     "paths": {
-      "@entur/*": ["packages/*/src"]
+      "@entur/*": ["packages/*/src"],
+      "~/*": ["docs/src/*"],
+      "src/*": ["docs/src/*"]
     },
+    "traceResolution": true,
     "jsx": "react",
     "esModuleInterop": true
   }
