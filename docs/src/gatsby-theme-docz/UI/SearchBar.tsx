@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from '@entur/form';
-import { MenuItem, Entry } from 'docz';
+import { MenuItem } from 'docz';
 import matchSorter from 'match-sorter';
 import { Contrast } from '@entur/layout';
 import { SearchIcon } from '@entur/icons';
@@ -8,13 +8,14 @@ import './SearchBar.scss';
 
 type SearchBarProps = {
   menuItems: MenuItem[];
-  propagateFilteredSearch: Function;
+  onFilteredSearchChange: Function; //(menuItems: MenuItem[]) => void;
 };
 
 export function SearchBar(props: SearchBarProps) {
   const [filter, setFilter] = React.useState('');
   const [focus, setFocus] = React.useState(false);
-  let inputRef = React.createRef<HTMLInputElement>();
+  let inputRef = React.useRef<HTMLInputElement>();
+  let previousFocusRef = React.useRef<HTMLElement>();
 
   const filteredMenuItems = React.useMemo(() => {
     if (filter === '') {
@@ -31,34 +32,36 @@ export function SearchBar(props: SearchBarProps) {
     });
   }, [filter, props.menuItems]);
   React.useEffect(() => {
-    props.propagateFilteredSearch(filteredMenuItems);
+    props.onFilteredSearchChange(filteredMenuItems);
   }, [filteredMenuItems]);
 
   React.useEffect(() => {
-    function handleSlashKeyUp(e: KeyboardEvent) {
-      if (
-        e.key === '/' &&
-        document.activeElement &&
-        document.activeElement.tagName != 'INPUT'
-      ) {
-        e.stopPropagation();
-        inputRef.current!.focus();
+    function handleKeyUp(e: KeyboardEvent) {
+      switch (e.key) {
+        case '/':
+          if (
+            !focus &&
+            document.activeElement &&
+            document.activeElement.tagName != 'INPUT'
+          ) {
+            previousFocusRef.current = document.activeElement as HTMLElement;
+            e.stopPropagation();
+            inputRef.current!.focus();
+          }
+          break;
+        case 'Escape':
+          if (focus) {
+            previousFocusRef.current!.focus();
+          }
+          break;
+
+        default:
       }
     }
-    function handleEscapeKeyUp(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        inputRef.current!.blur();
-      }
-    }
-    if (!focus) {
-      document.addEventListener('keyup', handleSlashKeyUp);
-    }
-    if (focus) {
-      document.addEventListener('keyup', handleEscapeKeyUp);
-    }
+    document.addEventListener('keyup', handleKeyUp);
+
     return () => {
-      document.removeEventListener('keyup', handleSlashKeyUp);
-      document.removeEventListener('keyup', handleEscapeKeyUp);
+      document.removeEventListener('keyup', handleKeyUp);
     };
   });
 

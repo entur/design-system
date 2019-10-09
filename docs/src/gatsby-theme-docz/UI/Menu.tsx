@@ -172,7 +172,7 @@ export default function Menus() {
         </Link>
         <SearchBar
           menuItems={menuItems!}
-          propagateFilteredSearch={setFilteredSearch}
+          onFilteredSearchChange={setFilteredSearch}
         />
         <Sidebar menuItems={filtered} />
       </nav>
