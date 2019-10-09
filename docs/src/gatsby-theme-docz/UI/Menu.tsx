@@ -5,7 +5,7 @@ import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
 import { SearchBar } from './SearchBar';
 import classNames from 'classnames';
 import debounce from '../../utils/debounce';
-import './menu.scss';
+import './Menu.scss';
 import logoSVG from './designsystem-Logo.svg';
 
 const removeTrailingSlash = (str: string) =>
