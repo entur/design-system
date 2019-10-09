@@ -9,6 +9,12 @@ import * as icons from '@entur/icons';
 import IconList from 'src/components/IconList';
 import PageHeader from 'src/components/PageHeader';
 import { BestPractices, Example } from 'src/components/BestPractices';
+import alignDoSrc from './align-do.png';
+import alignDontSrc from './align-dont.png';
+import colorDoSrc from './color-do.png';
+import colorDontSrc from './color-dont.png';
+import sizeDoSrc from './size-do.png';
+import sizeDontSrc from './size-dont.png';
 
 <PageHeader>
   Ikoner gir visuell kontekst som blir brukt for å representere handlinger og
@@ -32,25 +38,29 @@ Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir ver
 ### Prinsipper
 
 <BestPractices>
-  <Example type="do">
+  <Example type="do" src={colorDoSrc} alt="">
     Bruk samme farge på ikon og tekst når de skal stå sammen
   </Example>
-  <Example type="dont">Ikke bruk forskjellige farger på ikon og tekst</Example>
+  <Example type="dont" src={colorDontSrc} alt="">
+    Ikke bruk forskjellige farger på ikon og tekst
+  </Example>
 </BestPractices>
 
 <BestPractices>
-  <Example type="do">
+  <Example type="do" src={alignDoSrc} alt="">
     Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
   </Example>
-  <Example type="dont">Ikke baseline-juster ikonet til teksten</Example>
+  <Example type="dont" src={alignDontSrc} alt="">
+    Ikke baseline-juster ikonet til teksten
+  </Example>
 </BestPractices>
 
 <BestPractices>
-  <Example type="do">
+  <Example type="do" src={sizeDoSrc} alt="">
     Størrelsen på både ikon og tekst skal alltid være lik og innenfor
     størrelse-skalaen
   </Example>
-  <Example type="dont">
+  <Example type="dont" src={sizeDontSrc} alt="">
     Ikke bruk forskjellig størrelser på ikon og tekst
   </Example>
 </BestPractices>

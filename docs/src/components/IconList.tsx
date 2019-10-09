@@ -15,18 +15,18 @@ type IconListProps = {
 };
 const IconList: React.FC<IconListProps> = props => {
   const [isContrast, setContrast] = React.useState(false);
-  const [filter, setFilter] = React.useState('');
+  const [filterString, setFilterString] = React.useState('');
   const filteredIcons = React.useMemo(() => {
     const iconEntries = Object.entries(props.icons);
-    if (filter === '') {
+    if (filterString === '') {
       return iconEntries;
     }
 
-    return matchSorter(iconEntries, filter, { keys: ['0'] });
-  }, [filter, props.icons]);
+    return matchSorter(iconEntries, filterString, { keys: ['0'] });
+  }, [filterString, props.icons]);
   const noHits = filteredIcons.length === 0;
   const feedbackText =
-    filter.length > 0
+    filterString.length > 0
       ? `${filteredIcons.length} treff på søket ditt`
       : undefined;
   return (
@@ -38,9 +38,9 @@ const IconList: React.FC<IconListProps> = props => {
       >
         <TextField
           placeholder="eks. bicycle"
-          value={filter}
+          value={filterString}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setFilter(e.target.value)
+            setFilterString(e.target.value)
           }
           prepend={<SearchIcon />}
         />
