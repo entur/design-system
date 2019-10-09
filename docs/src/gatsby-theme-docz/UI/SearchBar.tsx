@@ -8,7 +8,7 @@ import './SearchBar.scss';
 
 type SearchBarProps = {
   menuItems: MenuItem[];
-  onFilteredSearchChange: Function; //(menuItems: MenuItem[]) => void;
+  onFilteredSearchChange: (menuItems: MenuItem[]) => void;
 };
 
 export function SearchBar(props: SearchBarProps) {
@@ -50,8 +50,9 @@ export function SearchBar(props: SearchBarProps) {
           }
           break;
         case 'Escape':
-          if (focus) {
-            previousFocusRef.current!.focus();
+          if (focus && previousFocusRef.current) {
+            previousFocusRef.current.focus();
+            setFilter('');
           }
           break;
 
