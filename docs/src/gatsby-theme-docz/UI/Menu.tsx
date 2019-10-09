@@ -2,10 +2,10 @@ import React from 'react';
 import { useMenus, Link, useCurrentDoc, MenuItem, Entry } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
-import { TextField } from '@entur/form';
+import { SearchBar } from './SearchBar';
 import classNames from 'classnames';
 import debounce from '../../utils/debounce';
-import './menu.scss';
+import './Menu.scss';
 import logoSVG from './designsystem-Logo.svg';
 
 const removeTrailingSlash = (str: string) =>
@@ -136,12 +136,17 @@ export default function Menus() {
   const menuItems = useMenus({
     filter: item => hasSameParentCategory(item, currentDoc),
   });
+  let [filtered, setFiltered] = React.useState(menuItems);
 
   const getLinkProps = ({ isPartiallyCurrent }: any) => ({
     className: classNames('tab-link', {
       'active-tab-link': isPartiallyCurrent,
     }),
   });
+
+  function setFilteredSearch(items: MenuItem[]) {
+    setFiltered(items);
+  }
 
   return (
     <>
@@ -165,12 +170,11 @@ export default function Menus() {
         <Link to="/">
           <img src={logoSVG} alt="Entur logo" className="site-logo" />
         </Link>
-        <TextField
-          type="text"
-          className="searchbar-placeholder"
-          placeholder="Søk..."
+        <SearchBar
+          menuItems={menuItems!}
+          onFilteredSearchChange={setFilteredSearch}
         />
-        <Sidebar menuItems={menuItems} />
+        <Sidebar menuItems={filtered} />
       </nav>
       <nav className="heading-navigator-wrapper">
         <TOCNavigation />

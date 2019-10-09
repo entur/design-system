@@ -46,6 +46,7 @@
     "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master"
   },
   "devDependencies": {
+    "@types/match-sorter": "^2.3.0",
     "eslint-config-react-app": "^5.0.2"
   }
 }
