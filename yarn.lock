@@ -2900,6 +2900,11 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@types/wcag-contrast@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/wcag-contrast/-/wcag-contrast-2.1.0.tgz#7e419448f6ff4b0dd290a04581088aaee84c7d72"
+  integrity sha512-WjjVovgwhip0JUJB4jha2gSl0UTm4bP+xWVS+wG/X4v6EHXOo1oPcmofB1uoEDoEiZTEkA4eAK5VwrR5hUEidw==
+
 "@types/yargs-parser@*":
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-13.1.0.tgz#c563aa192f39350a1d18da36c5a8da382bbd8228"
@@ -20140,6 +20145,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+wcag-contrast@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/wcag-contrast/-/wcag-contrast-2.1.1.tgz#d1c730d8ee8e475a1f77b408324e704ddb86c16d"
+  integrity sha512-GQ7pbF/5YKjB+51ObyEepv/asgmuzyb9wLTqB5iMtmLLVzv/myj3BYwiAPIlDekutQFnI60RnmE3zH6EwDB7ow==
 
 wcwidth@^1.0.0, wcwidth@^1.0.1:
   version "1.0.1"
