@@ -1,14 +1,42 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .icon-list {
-  margin: 0;
+  margin: 1em 0;
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+
+  &.entur-contrast {
+    box-shadow: 0 0 0 1rem var(--primary-background-color);
+  }
 }
 
 .icon-list__item {
+  border: 1px solid $colors-greys-grey20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
-  max-width: 100px;
+  padding: $space-large;
   text-align: center;
+
+  .entur-contrast & {
+    border-color: $colors-blues-blue40;
+  }
+}
+
+.icon-list__name {
+  appearance: none;
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  color: inherit;
+  cursor: pointer;
+  font-size: $font-sizes-medium;
+  padding: $space-small;
+  margin-top: $space-small;
+  word-break: break-all;
+  hyphens: auto;
 }

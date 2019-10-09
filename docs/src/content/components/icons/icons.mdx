@@ -1,0 +1,66 @@
+---
+name: Ikoner
+parent: Komponenter
+route: /komponenter/ikoner
+---
+
+import { Props } from 'docz';
+import * as icons from '@entur/icons';
+import IconList from 'src/components/IconList';
+import PageHeader from 'src/components/PageHeader';
+import { BestPractices, Example } from 'src/components/BestPractices';
+import alignDoSrc from './align-do.png';
+import alignDontSrc from './align-dont.png';
+import colorDoSrc from './color-do.png';
+import colorDontSrc from './color-dont.png';
+import sizeDoSrc from './size-do.png';
+import sizeDontSrc from './size-dont.png';
+
+<PageHeader>
+  Ikoner gir visuell kontekst som blir brukt for å representere handlinger og
+  forbedrer brukervennligheten.
+</PageHeader>
+
+Enturs UI-ikoner er funksjonelle ikoner, til bruk i alle Enturs digitale kanaler. Vårt ikonbibliotek er basert på ikoner fra [nucleoapp.com](https://nucleoapp.com). Disse ikonene har Entur lisens til å bruke.
+
+## Alle ikoner
+
+<IconList icons={icons} />
+
+## Retningslinjer for bruk
+
+### Når skal ikoner brukes?
+
+Ikoner skal brukes for å skape bedre navigasjon og brukeropplevelse. De skal oppleves som relevant for de formålene de brukes til, og for å hjelpe brukeren å forstå innholdet raskere enn med kun tekst. Ikoner benyttes oftest sammen med forklarende tekst, og helst ikke frittstående.
+
+Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir verdi. Ikoner skal ikke være for detaljerte eller blandes i farger, det vil gjøre de mer til en illustrasjon istedenfor et ikon. Ikoner som ikke er en del av ikonbiblioteket skal ikke brukes. Utvikling av nye ikoner skal skje gjennom designansvarlig i Entur.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do" src={colorDoSrc} alt="">
+    Bruk samme farge på ikon og tekst når de skal stå sammen
+  </Example>
+  <Example type="dont" src={colorDontSrc} alt="">
+    Ikke bruk forskjellige farger på ikon og tekst
+  </Example>
+</BestPractices>
+
+<BestPractices>
+  <Example type="do" src={alignDoSrc} alt="">
+    Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
+  </Example>
+  <Example type="dont" src={alignDontSrc} alt="">
+    Ikke baseline-juster ikonet til teksten
+  </Example>
+</BestPractices>
+
+<BestPractices>
+  <Example type="do" src={sizeDoSrc} alt="">
+    Størrelsen på både ikon og tekst skal alltid være lik og innenfor
+    størrelse-skalaen
+  </Example>
+  <Example type="dont" src={sizeDontSrc} alt="">
+    Ikke bruk forskjellig størrelser på ikon og tekst
+  </Example>
+</BestPractices>
