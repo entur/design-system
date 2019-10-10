@@ -30,6 +30,13 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
       : contrastWithBlue >= 4.5
       ? colors.brand.blue
       : colors.misc.black;
+
+  const variableName =
+    '$colors-' +
+    path
+      .replace(/\./g, '-') // replaces . with -
+      .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // camelCase to kebab-case
+      .toLowerCase();
   return (
     <div
       className="color-swatch"
@@ -39,7 +46,7 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
       <div className="color-swatch__details">
         {backgroundColor}
         <br />
-        $colors-{path.replace(/\./g, '-')}
+        {variableName}
       </div>
     </div>
   );
