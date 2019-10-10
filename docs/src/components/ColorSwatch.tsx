@@ -5,38 +5,49 @@ import { StrongText } from '@entur/typography';
 
 import './ColorSwatch.scss';
 
-type Props = {
-  path: string;
-  style?: any;
-};
-
-const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
-  const backgroundColor = path
+function getColorFromPath(path: string) {
+  return path
     .split('.')
     .reduce(
       (currentObject: any, key: string) =>
         currentObject ? currentObject[key] : null,
       colors,
     );
+}
 
+function getBestForegroundColorForBackground(backgroundColor: string) {
   const contrastWithWhite = hex(colors.brand.white, backgroundColor);
   const contrastWithBlue = hex(colors.brand.blue, backgroundColor);
 
-  // This pretty piece of code makes sure we use the text color with the best
-  // contrast,
-  let foregroundColor =
-    contrastWithWhite >= contrastWithBlue
-      ? colors.brand.white
-      : contrastWithBlue >= 4.5
-      ? colors.brand.blue
-      : colors.misc.black;
+  if (contrastWithWhite >= contrastWithBlue) {
+    return colors.brand.white;
+  }
+  if (contrastWithBlue >= 4.5) {
+    return colors.brand.blue;
+  }
+  // Fallback color for when blue doesn't give us a strong enough contrast
+  return colors.misc.black;
+}
 
-  const variableName =
-    '$colors-' +
-    path
-      .replace(/\./g, '-') // replaces . with -
-      .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // camelCase to kebab-case
-      .toLowerCase();
+function getVariableNameFromPath(path: string) {
+  const kebabCasedPath = path
+    .replace(/\./g, '-') // replaces . with -
+    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // camelCase to kebab-case
+    .toLowerCase();
+
+  return `$colors-${kebabCasedPath}`;
+}
+
+type Props = {
+  path: string;
+  style?: any;
+};
+
+const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
+  const backgroundColor = getColorFromPath(path);
+  const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
+  const variableName = getVariableNameFromPath(path);
+
   return (
     <div
       className="color-swatch"
