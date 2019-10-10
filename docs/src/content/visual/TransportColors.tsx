@@ -3,6 +3,7 @@ import { colors } from '@entur/tokens';
 import { Paragraph, StrongText } from '@entur/typography';
 import { Contrast } from '@entur/layout';
 import ColorSwatch from 'src/components/ColorSwatch';
+import Divider from 'src/components/Divider';
 import ToggleSwitch from 'src/components/ToggleSwitch';
 
 const TransportColors: React.FC = () => {
@@ -25,10 +26,12 @@ const TransportColors: React.FC = () => {
         <StrongText>Metro</StrongText>-fargen brukes for t-bane
       </Paragraph>
       <ColorSwatch path={`transport.${pathName}.metro`}>Metro</ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Bus</StrongText>-fargen brukes for alle typer buss-transport
       </Paragraph>
       <ColorSwatch path={`transport.${pathName}.bus`}>Bus</ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Plane</StrongText> er basert på Avinor sin profilfarge, og
         brukes på fly og helikopter
@@ -37,6 +40,7 @@ const TransportColors: React.FC = () => {
       <ColorSwatch path={`transport.${pathName}.helicopter`}>
         Helicopter
       </ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Tram</StrongText> brukes for trikk, Fløibanen, Ulriken osv.
       </Paragraph>
@@ -47,17 +51,20 @@ const TransportColors: React.FC = () => {
       <ColorSwatch path={`transport.${pathName}.cableway`}>
         Cableway
       </ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Blue</StrongText> brukes for taxi, sykkel og gange
       </Paragraph>
       <ColorSwatch path={`transport.${pathName}.taxi`}>Taxi</ColorSwatch>
       <ColorSwatch path={`transport.${pathName}.bicycle`}>Bicycle</ColorSwatch>
       <ColorSwatch path={`transport.${pathName}.walk`}>Walk</ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Train</StrongText> er basert på Bane NOR sin profilfarge, og
         brukes på tog
       </Paragraph>
       <ColorSwatch path={`transport.${pathName}.train`}>Train</ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Ferry</StrongText> brukes for vanngående transport, som
         ferjer, bilferjer, skip og cruise
@@ -66,6 +73,7 @@ const TransportColors: React.FC = () => {
       <ColorSwatch path={`transport.${pathName}.carferry`}>
         Carferry
       </ColorSwatch>
+      <Divider />
       <Paragraph>
         <StrongText>Mobility</StrongText> er fargen som brukes for
         mobilitetsløsninger, slik som bysykler og sparkesykler
