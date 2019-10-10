@@ -1,0 +1,14 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.color-swatch {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $space-default $space-large;
+  margin-bottom: $space-extra-small;
+}
+
+.color-swatch__details {
+  text-align: right;
+  font-weight: $font-weights-body;
+}
