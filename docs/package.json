@@ -1,7 +1,7 @@
 {
   "name": "@entur/designsystem-docs",
   "description": "The documentation site for the Entur Design System",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@entur/alert": "^0.2.1",
-    "@entur/button": "^0.2.1",
-    "@entur/form": "^0.1.0",
+    "@entur/button": "^1.0.0",
+    "@entur/form": "^0.2.0",
     "@entur/icons": "^0.3.0",
     "@entur/layout": "^0.2.0",
-    "@entur/menu": "^0.2.1",
+    "@entur/menu": "^0.2.2",
     "@entur/tokens": "^0.2.0",
     "@entur/tooltip": "^0.2.0",
     "@entur/typography": "^0.3.0",

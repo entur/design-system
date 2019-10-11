@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@0.3.0...@entur/designsystem-docs@1.0.0) (2019-10-11)
+
+### Bug Fixes
+
+- size property is proper height ([b8d88d2](https://bitbucket.org/enturas/design-system/commits/b8d88d2))
+- **docs:** add images to icon best practices ([6af364c](https://bitbucket.org/enturas/design-system/commits/6af364c))
+- **docs:** display variables correctly ([e9b89a8](https://bitbucket.org/enturas/design-system/commits/e9b89a8))
+- **docs:** fix missing slash in path ([e94e46e](https://bitbucket.org/enturas/design-system/commits/e94e46e))
+- **docs:** make copy and show code options always show up to the right ([4c369e5](https://bitbucket.org/enturas/design-system/commits/4c369e5))
+- **docs:** make icon documentation responsive ([fabc814](https://bitbucket.org/enturas/design-system/commits/fabc814))
+- **docs:** remove the contrast option for menus ([5549fb3](https://bitbucket.org/enturas/design-system/commits/5549fb3))
+- **docs Searchbar:** focus to previous Element on escape ([dc4e60c](https://bitbucket.org/enturas/design-system/commits/dc4e60c))
+- **Searchbar:** escape key without previousRef bug ([c295b50](https://bitbucket.org/enturas/design-system/commits/c295b50))
+
+### Features
+
+- **docs:** add Divider component ([a806c6b](https://bitbucket.org/enturas/design-system/commits/a806c6b))
+- **docs:** add root import ([bf735a1](https://bitbucket.org/enturas/design-system/commits/bf735a1))
+- **docs:** implement a new and fancy doc site for our colors ([1a220c1](https://bitbucket.org/enturas/design-system/commits/1a220c1))
+- **docs:** redesign and add info about icons ([d3060bb](https://bitbucket.org/enturas/design-system/commits/d3060bb))
+- **form:** formGroup component for input components ([844612f](https://bitbucket.org/enturas/design-system/commits/844612f))
+- **input:** textField component added ([d486047](https://bitbucket.org/enturas/design-system/commits/d486047))
+- **searchbar:** searchbar in docs to search across documentation ([e051843](https://bitbucket.org/enturas/design-system/commits/e051843))
+
+### BREAKING CHANGES
+
+- Width=medium|large removed
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@0.2.0...@entur/designsystem-docs@0.3.0) (2019-10-07)
 
 ### Bug Fixes

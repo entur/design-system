@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.2.1...@entur/menu@0.2.2) (2019-10-11)
+
+### Bug Fixes
+
+- **menu:** set max-width for menus on desktop ([476b56e](https://bitbucket.org/enturas/design-system/commits/476b56e))
+
 ## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.2.0...@entur/menu@0.2.1) (2019-10-07)
 
 ### Bug Fixes
