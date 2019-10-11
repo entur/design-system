@@ -1,6 +1,26 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
 $border-width: ($space-default / 8);
+$tint-amount: 30;
+$shade-amount: 5;
 
 .entur-textfield {
   font-family: inherit;
@@ -19,6 +39,12 @@ $border-width: ($space-default / 8);
   }
   .entur-contrast & {
     border-color: $colors-brand-lavender;
+    background: $colors-brand-white;
+
+    &:hover:not(:focus-within):not(.entur-textfield--disabled) {
+      border-bottom: none;
+      padding-bottom: $border-width;
+    }
   }
   &--variant-none,
   &--variant-warning,
@@ -33,10 +59,10 @@ $border-width: ($space-default / 8);
     }
     &:hover:not(:focus-within):not(.entur-textfield--disabled) {
       border-bottom: $border-width solid $colors-brand-lavender;
+      background-color: tint($colors-greys-grey40, $tint-amount);
       .entur-contrast & {
         box-shadow: inset 0 0 0 $border-width $colors-brand-lavender;
-        border-bottom: hidden;
-        padding-bottom: $border-width;
+        background-color: shade($colors-brand-white, $shade-amount);
       }
     }
   }
@@ -46,7 +72,7 @@ $border-width: ($space-default / 8);
       border-color: $colors-validation-mint-contrast;
     }
     &:focus-within {
-      border-bottom: hidden;
+      border-bottom: none;
       padding-bottom: $border-width;
       box-shadow: inset 0 0 0 $border-width $colors-validation-mint;
       .entur-contrast & {
@@ -55,6 +81,11 @@ $border-width: ($space-default / 8);
     }
     &:hover:not(:focus-within):not(.entur-textfield--disabled) {
       border-bottom: $border-width solid $colors-validation-mint-tint;
+      background-color: tint($colors-greys-grey40, $tint-amount);
+      .entur-contrast & {
+        background-color: shade($colors-brand-white, $shade-amount);
+        box-shadow: inset 0 0 0 $border-width $colors-validation-mint-contrast;
+      }
     }
   }
   &--variant-error {
@@ -64,7 +95,7 @@ $border-width: ($space-default / 8);
     }
     &:focus-within {
       box-shadow: inset 0 0 0 $border-width $colors-validation-lava;
-      border-bottom: hidden;
+      border-bottom: none;
       padding-bottom: $border-width;
       .entur-contrast & {
         box-shadow: inset 0 0 0 $border-width $colors-validation-lava-contrast;
@@ -72,6 +103,11 @@ $border-width: ($space-default / 8);
     }
     &:hover:not(:focus-within):not(.entur-textfield--disabled) {
       border-bottom: $border-width solid $colors-validation-lava-tint;
+      background-color: tint($colors-greys-grey40, $tint-amount);
+      .entur-contrast & {
+        background-color: shade($colors-brand-white, $shade-amount);
+        box-shadow: inset 0 0 0 $border-width $colors-validation-lava-contrast;
+      }
     }
   }
 

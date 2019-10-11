@@ -15,7 +15,7 @@ import ComponentRuler from 'src/components/ComponentRuler';
 import { Playground } from 'src/components/Playground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
-import { RefreshIcon } from '@entur/icons';
+import { RefreshIcon, AddIcon, BusIcon } from '@entur/icons';
 
 <PageHeader>
   Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
@@ -26,6 +26,9 @@ import { RefreshIcon } from '@entur/icons';
   <Button variant="secondary">Secondary</Button>
   <Button variant="success">Success</Button>
   <Button variant="negative">Danger</Button>
+  <Button variant="primary" loading={true}>
+    Laster...
+  </Button>
 </Playground>
 
 ## Props
@@ -35,8 +38,12 @@ import { RefreshIcon } from '@entur/icons';
 ## Knapp med ikon og tekst
 
 <Playground>
-  <Button variant="secondary">Ikon</Button>
-  <Button variant="success">Ikon</Button>
+  <Button variant="secondary">
+    <AddIcon /> Ikon
+  </Button>
+  <Button variant="success">
+    Ikon <BusIcon />
+  </Button>
 </Playground>
 
 ## Store knapper

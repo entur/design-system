@@ -27,12 +27,19 @@
   display: inline-block;
   appearance: none;
   text-decoration: none;
-  padding: $space-small;
+  padding: 0;
+  height: 2.75rem;
   font-size: $font-sizes-large;
   line-height: $line-heights-extra-large;
   font-weight: $font-weights-body;
   text-align: center;
   font-family: inherit;
+  position: relative;
+  vertical-align: top;
+  svg {
+    position: relative;
+    top: 0.2em;
+  }
 
   &--disabled {
     cursor: default;
@@ -42,9 +49,8 @@
 
   //Size
   &--size-large {
-    padding-top: $space-medium;
-    padding-bottom: $space-medium;
     min-width: 11.75rem;
+    height: 3.75rem;
   }
 
   &--width-square {
@@ -133,4 +139,23 @@
       }
     }
   }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  border-right-color: white;
+  animation: 1s infinite linear spin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

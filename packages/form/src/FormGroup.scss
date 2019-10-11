@@ -11,8 +11,9 @@
 
   &__feedback {
     padding-left: 0.5em;
+    color: $colors-brand-blue;
     .entur-contrast & {
-      color: $colors-brand-lavender;
+      color: $colors-brand-white;
     }
   }
   &__feedback-wrapper {
