@@ -26,7 +26,7 @@ export const Button: React.RefForwardingComponent<
     {
       variant,
       size = 'medium',
-      loading = false,
+      loading,
       className,
       children,
       disabled = false,
@@ -60,7 +60,7 @@ export const Button: React.RefForwardingComponent<
         disabled={disabled}
         {...rest}
       >
-        {children}
+        {loading ? <div className="spinner" /> : children}
       </Element>
     );
   },
