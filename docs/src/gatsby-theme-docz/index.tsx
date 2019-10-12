@@ -2,6 +2,7 @@ import React from 'react';
 import { theme, ComponentsProvider } from 'docz';
 import * as typography from '@entur/typography';
 import Menu from './UI/Menu';
+import { SettingsProvider } from 'src/components/SettingsContext';
 
 import './index.scss';
 
@@ -22,12 +23,14 @@ const themeConfig = {
 };
 
 export default theme(themeConfig)(({ children }) => (
-  <div>
-    <Menu />
-    <main className="site-content">
-      <ComponentsProvider components={componentMap}>
-        {children}
-      </ComponentsProvider>
-    </main>
-  </div>
+  <SettingsProvider>
+    <div>
+      <Menu />
+      <main className="site-content">
+        <ComponentsProvider components={componentMap}>
+          {children}
+        </ComponentsProvider>
+      </main>
+    </div>
+  </SettingsProvider>
 ));
