@@ -208,4 +208,6 @@ html {
   font-size: inherit;
   padding: 1em;
   border-radius: 1px;
+  white-space: pre-wrap;
+  word-break: keep-all;
 }
