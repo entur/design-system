@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Label } from '@entur/typography';
 import './ToggleSwitch.scss';
 
 type Props = {
@@ -13,7 +14,7 @@ const ToggleSwitch: React.FC<Props> = ({ className, children, ...rest }) => (
   <label className={classNames('toggle-switch', className)}>
     <input type="checkbox" {...rest} />
     <span className="toggle-switch__switch" />
-    {children}
+    <Label as="span">{children}</Label>
   </label>
 );
 

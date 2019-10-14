@@ -2,8 +2,9 @@ import React from 'react';
 import { useMenus, Link, useCurrentDoc, MenuItem, Entry } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
-import { SearchBar } from './SearchBar';
 import classNames from 'classnames';
+import { SearchBar } from './SearchBar';
+import SettingsPanel from 'src/components/SettingsPanel';
 import debounce from '../../utils/debounce';
 import './Menu.scss';
 import logoSVG from './designsystem-Logo.svg';
@@ -166,7 +167,7 @@ export default function Menus() {
           </Link>
         </div>
       </nav>
-      <nav className="site-sidebar-wrapper">
+      <nav className="site-sidebar-wrapper entur-contrast">
         <Link to="/">
           <img src={logoSVG} alt="Entur logo" className="site-logo" />
         </Link>
@@ -175,6 +176,7 @@ export default function Menus() {
           onFilteredSearchChange={setFilteredSearch}
         />
         <Sidebar menuItems={filtered} />
+        <SettingsPanel />
       </nav>
       <nav className="heading-navigator-wrapper">
         <TOCNavigation />

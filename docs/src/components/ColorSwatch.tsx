@@ -4,6 +4,7 @@ import { colors } from '@entur/tokens';
 import { StrongText } from '@entur/typography';
 
 import './ColorSwatch.scss';
+import { useSettings, VariableFormat } from './SettingsContext';
 
 function getColorFromPath(path: string) {
   return path
@@ -29,13 +30,22 @@ function getBestForegroundColorForBackground(backgroundColor: string) {
   return colors.misc.black;
 }
 
-function getVariableNameFromPath(path: string) {
+function getVariableNameFromPath(path: string, variableFormat: VariableFormat) {
   const kebabCasedPath = path
     .replace(/\./g, '-') // replaces . with -
     .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // camelCase to kebab-case
     .toLowerCase();
 
-  return `$colors-${kebabCasedPath}`;
+  switch (variableFormat) {
+    case 'scss':
+      return `$colors-${kebabCasedPath}`;
+    case 'less':
+      return `@colors-${kebabCasedPath}`;
+    case 'css':
+      return `var(--colors-${kebabCasedPath})`;
+    case 'js':
+      return `colors.${path}`;
+  }
 }
 
 type Props = {
@@ -44,9 +54,10 @@ type Props = {
 };
 
 const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
+  const { variableFormat } = useSettings();
   const backgroundColor = getColorFromPath(path);
   const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
-  const variableName = getVariableNameFromPath(path);
+  const variableName = getVariableNameFromPath(path, variableFormat);
 
   return (
     <div
