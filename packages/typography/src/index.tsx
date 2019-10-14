@@ -73,6 +73,12 @@ export const SubParagraph: React.FC<Props> = ({
   <Element className={classNames('entur-sub-paragraph', className)} {...rest} />
 );
 
+export const Small: React.FC<Props> = ({
+  as: Element = 'small',
+  className,
+  ...rest
+}) => <Element className={classNames('entur-small', className)} {...rest} />;
+
 export const Link: React.FC<Props> = ({
   as: Element = 'a',
   className,

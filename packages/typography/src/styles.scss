@@ -136,6 +136,15 @@ html {
   }
 }
 
+.entur-small {
+  color: inherit;
+  font-size: $font-sizes-small;
+  line-height: $line-heights-medium;
+  @include for-desktop {
+    line-height: $line-heights-medium;
+  }
+}
+
 .entur-link {
   font-size: $font-sizes-large;
   line-height: $line-heights-large;

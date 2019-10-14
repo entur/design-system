@@ -5,7 +5,7 @@ import {
   ValidationExclamationIcon,
   ValidationInfoIcon,
 } from '@entur/icons';
-import { Label, SubLabel } from '@entur/typography';
+import { Label, Small } from '@entur/typography';
 import { VariantType } from './variants';
 import './FormGroup.scss';
 
@@ -45,10 +45,10 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           {children}
         </Label>
         {feedback && (
-          <SubLabel className="entur-form-group__feedback-wrapper">
+          <Small className="entur-form-group__feedback-wrapper">
             <AlertIcon level={variant} />
             <span className="entur-form-group__feedback">{feedback}</span>
-          </SubLabel>
+          </Small>
         )}
       </div>
     </FormGroupProvider>
