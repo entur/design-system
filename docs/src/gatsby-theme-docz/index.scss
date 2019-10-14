@@ -15,9 +15,15 @@ body {
 }
 
 .site-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
   margin: $space-default;
   @include for-desktop {
     margin: 5rem 16rem 1rem 22rem;
     max-width: 60rem;
   }
+}
+.site-content main {
+  flex: 1;
 }
