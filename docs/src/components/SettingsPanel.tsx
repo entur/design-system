@@ -2,7 +2,12 @@ import React from 'react';
 import { CollapsedIcon, SettingsIcon } from '@entur/icons';
 import { Heading2 } from '@entur/typography';
 import { FormGroup } from '@entur/form';
-import { useSettings, UserType, VariableFormat } from './SettingsContext';
+import {
+  useSettings,
+  UserType,
+  VariableFormat,
+  PackageManager,
+} from './SettingsContext';
 import './SettingsPanel.scss';
 import { Contrast } from '@entur/layout';
 
@@ -13,6 +18,8 @@ const SettingsPanel: React.FC = props => {
     setVariableFormat,
     userType,
     setUserType,
+    packageManager,
+    setPackageManager,
   } = useSettings();
 
   return (
@@ -39,6 +46,20 @@ const SettingsPanel: React.FC = props => {
                 <option value="designer">Designer ‍👨‍🎨</option>
               </select>
             </FormGroup>
+            {userType === 'developer' && (
+              <FormGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
+                <select
+                  className="entur-dropdown"
+                  onChange={e =>
+                    setPackageManager(e.target.value as PackageManager)
+                  }
+                  value={packageManager}
+                >
+                  <option value="yarn">yarn ‍🧶</option>
+                  <option value="npm">npm ⬢</option>
+                </select>
+              </FormGroup>
+            )}
             <FormGroup label="Hva slags variabler vil du se?">
               <select
                 className="entur-dropdown"
