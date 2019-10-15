@@ -1,15 +1,16 @@
 import React from 'react';
 
 function usePersistedState<Type>(key: string, initialState: Type) {
-  const useStateResult = React.useState<Type>(initialState);
+  const useStateResult = React.useState<Type>(() => {
+    if (typeof window === 'undefined') {
+      // Server side
+      return initialState;
+    }
+    return JSON.parse(localStorage.getItem(key) as string) || initialState;
+  });
   // It seem like an unnecessary step to not destructure right away, but it's
   // done this way to keep the type definition intact
-  const [state, setState] = useStateResult;
-  React.useEffect(() => {
-    // We need to set the initial state on second render, since we use Gatsby,
-    // and we can't use `localStorage` there
-    setState(JSON.parse(localStorage.getItem(key) as string) || initialState);
-  }, []);
+  const [state] = useStateResult;
   React.useEffect(() => {
     localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
@@ -41,7 +42,7 @@ export const SettingsProvider: React.FC = props => {
   );
 
   const [packageManager, setPackageManager] = usePersistedState<PackageManager>(
-    'yarn',
+    'package-manager',
     'npm',
   );
 
