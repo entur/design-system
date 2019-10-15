@@ -71,13 +71,13 @@ const IconList: React.FC<IconListProps> = props => {
           >
             {filteredIcons.map(([iconName, Icon]: any) => (
               <li className="icon-list__item" key={iconName}>
-                <Icon width="2em" height="2em" />
+                <Icon style={{ width: '2em', height: '2em' }} />
                 <button
                   className="icon-list__name"
                   onClick={handleIconClick(iconName)}
                   type="button"
                 >
-                  {iconName} <ReportsIcon />
+                  {iconName} <ReportsIcon inline={true} />
                 </button>
               </li>
             ))}
