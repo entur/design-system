@@ -2,7 +2,9 @@ import React from 'react';
 import { ToastAlertBox } from './AlertBoxes';
 
 type ToastId = string;
+
 type ToastVariants = 'success' | 'info';
+
 type ToastType = {
   title?: string;
   content: React.ReactNode;
@@ -15,7 +17,6 @@ type ToastContextType = {
   removeToast: (id: ToastId) => void;
   toasts: ToastType[];
 };
-const ToastContext = React.createContext<ToastContextType | null>(null);
 
 type AddToastPayload =
   | { title?: string; content: React.ReactNode; variant?: ToastVariants }
@@ -24,6 +25,8 @@ type AddToastPayload =
 type ToastAction =
   | { type: 'ADD_TOAST'; payload: ToastType }
   | { type: 'REMOVE_TOAST'; payload: ToastId };
+
+const ToastContext = React.createContext<ToastContextType | null>(null);
 
 const toastReducer = (
   prevToasts: ToastType[],
@@ -94,8 +97,8 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   };
 
   const handleClose = (toastId: ToastId) => () => {
-    handleMouseLeave();
     removeToast(toastId);
+    handleMouseLeave();
   };
 
   return (
@@ -132,9 +135,8 @@ export const useToast = () => {
         'order to use the useToast hook',
     );
   }
-  const { addToast, toasts } = context;
+  const { addToast } = context;
   return {
     addToast,
-    toasts,
   };
 };
