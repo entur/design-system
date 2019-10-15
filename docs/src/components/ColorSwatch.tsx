@@ -1,10 +1,12 @@
 import React from 'react';
 import { hex } from 'wcag-contrast';
+import copy from 'copy-text-to-clipboard';
+import { useToast } from '@entur/alert';
 import { colors } from '@entur/tokens';
+import { ReportsIcon } from '@entur/icons';
 import { StrongText } from '@entur/typography';
-
-import './ColorSwatch.scss';
 import { useSettings, VariableFormat } from './SettingsContext';
+import './ColorSwatch.scss';
 
 function getColorFromPath(path: string) {
   return path
@@ -55,9 +57,15 @@ type Props = {
 
 const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
   const { variableFormat } = useSettings();
+  const { addToast } = useToast();
   const backgroundColor = getColorFromPath(path);
   const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
   const variableName = getVariableNameFromPath(path, variableFormat);
+
+  const handleCopyClick = textToCopy => () => {
+    copy(textToCopy);
+    addToast(`"${textToCopy}" er kopiert til utklippstavla`);
+  };
 
   return (
     <div
@@ -66,9 +74,20 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
     >
       <StrongText>{children}</StrongText>
       <div className="color-swatch__details">
-        {backgroundColor}
-        <br />
-        {variableName}
+        <button
+          className="color-swatch__copy-button"
+          onClick={handleCopyClick(backgroundColor)}
+          type="button"
+        >
+          {backgroundColor} <ReportsIcon />
+        </button>
+        <button
+          className="color-swatch__copy-button"
+          onClick={handleCopyClick(variableName)}
+          type="button"
+        >
+          {variableName} <ReportsIcon />
+        </button>
       </div>
     </div>
   );
