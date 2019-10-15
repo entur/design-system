@@ -64,7 +64,7 @@
   .entur-alert-box--banner &,
   .entur-alert-box--toast & {
     @include for-desktop {
-      font-size: $space-extra-large2; // standalone icon size
+      font-size: $space-extra-large; // standalone icon size
     }
   }
 }
