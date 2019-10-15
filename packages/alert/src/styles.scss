@@ -28,7 +28,6 @@
     width: 100%;
 
     @include for-desktop {
-      min-height: 9rem;
       width: fit-content;
     }
   }
@@ -108,5 +107,21 @@
     font-size: $font-sizes-extra-large;
     right: $space-large;
     top: $space-large;
+  }
+}
+
+.entur-toast-container {
+  position: fixed;
+  bottom: $space-default;
+  right: $space-default;
+  left: $space-default;
+  z-index: 100;
+
+  > * + * {
+    margin-top: $space-default;
+  }
+
+  @include for-desktop {
+    left: initial;
   }
 }

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
 import { TextField, FormGroup } from '@entur/form';
 import { SearchIcon, ReportsIcon } from '@entur/icons';
+import { useToast } from '@entur/alert';
 import matchSorter from 'match-sorter';
 import './IconList.scss';
 import ToggleSwitch from './ToggleSwitch';
@@ -16,6 +17,7 @@ type IconListProps = {
 const IconList: React.FC<IconListProps> = props => {
   const [isContrast, setContrast] = React.useState(false);
   const [filterString, setFilterString] = React.useState('');
+  const { addToast } = useToast();
   const filteredIcons = React.useMemo(() => {
     const iconEntries = Object.entries(props.icons);
     if (filterString === '') {
@@ -64,7 +66,20 @@ const IconList: React.FC<IconListProps> = props => {
                 <Icon width="2em" height="2em" />
                 <button
                   className="icon-list__name"
-                  onClick={() => copy(iconName)}
+                  onClick={() => {
+                    copy(iconName);
+                    addToast({
+                      title: `"${iconName}" kopiert!`,
+                      content: (
+                        <>
+                          <Icon
+                            style={{ position: 'relative', top: '0.2em' }}
+                          />{' '}
+                          Du finner det i utklippstavla
+                        </>
+                      ),
+                    });
+                  }}
                 >
                   {iconName} <ReportsIcon />
                 </button>

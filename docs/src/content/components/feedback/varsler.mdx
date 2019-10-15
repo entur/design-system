@@ -8,8 +8,15 @@ menu: Feedback
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
+import InlineComponent from 'src/components/InlineComponent';
 import { BestPractices, Example } from 'src/components/BestPractices';
-import { BannerAlertBox, ToastAlertBox, SmallAlertBox } from '@entur/alert';
+import { Button } from '@entur/button';
+import {
+  BannerAlertBox,
+  ToastAlertBox,
+  SmallAlertBox,
+  useToast,
+} from '@entur/alert';
 import '@entur/alert/dist/styles.css';
 
 <PageHeader>
@@ -78,18 +85,87 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
     <ToastAlertBox variant="info" title="Toget går fra plattform 2">
       Husk å sjekke plattform når du ankommer.
     </ToastAlertBox>
-    <ToastAlertBox
-      variant="warning"
-      title="Buss for tog på deler av strekningen"
-    >
-      Det er buss for tog på strekningen Bergen-Voss. Følg skilting underveis.
-    </ToastAlertBox>
-    <ToastAlertBox variant="error" title="Kjøpet kunne ikke gjennomføres!">
-      Det ser ut til at det ikke var dekning på det kortet du prøvde å betale
-      med.
-    </ToastAlertBox>
   </div>
 </Playground>
+
+<InlineComponent>
+  {() => {
+    const { addToast } = useToast();
+    return (
+      <>
+        <Button
+          onClick={() =>
+            addToast({
+              title: 'Dette er din første toast!',
+              content: 'Den forsvinner om ca 6 sekunder',
+            })
+          }
+          variant="primary"
+          type="button"
+          style={{ marginRight: '1rem' }}
+        >
+          Lag suksess-toast
+        </Button>
+        <Button
+          onClick={() =>
+            addToast({
+              title: 'Toasts burde brukes sparsomt!',
+              content: 'For mye av det gode er aldri bra.',
+              variant: 'info',
+            })
+          }
+          variant="secondary"
+          type="button"
+        >
+          Lag info-toast
+        </Button>
+      </>
+    );
+  }}
+</InlineComponent>
+
+### Hvordan bruke toasts
+
+Du får fiks ferdige toast-funksjonalitet på null komma niks med `@entur/alert`. Først må du wrappe appen din i en `<ToastProvider />`.
+
+```js
+import { ToastProvider } from '@entur/alert';
+
+const App = () => {
+  return (
+    <ToastProvider>
+      <Router>{/* Osv */}</Router>
+    </ToastProvider>
+  );
+};
+```
+
+For å lage en toast, så må du bruke hooken `useToast`.
+
+```js
+import { useToast } from '@entur/alert';
+
+const SaveButton = ({ children }) => {
+  const { addToast } = useToast();
+  return <button onClick={() => addToast('Lagret!')}>
+}
+```
+
+Du kan enten sende inn en string, eller et objekt med følgende form:
+
+```js
+{
+  title: 'Tittelen på toasten',
+  content: <>Mer <em>utfyllende</em> informasjon</>
+  variant: 'info' // eller 'success', som er default
+}
+```
+
+Toasts vil lukkes automatisk etter 6 sekunder, med mindre du flytter musepekeren over dem, eller lukker dem manuelt. Du kan sette den automatiske lukketiden for toasts i din app ved å sette `delay` propen på `<ToastProvider />` (antall millisekunder):
+
+```js
+<ToastProvider delay={10000} />
+```
 
 ## Små varsler
 
@@ -232,3 +308,4 @@ Skriv en informativ tekst som gir brukeren en utfyllende beskrivelse av situasjo
     </ul>
   </Example>
 </BestPractices>
+```

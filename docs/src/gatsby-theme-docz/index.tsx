@@ -1,6 +1,7 @@
 import React from 'react';
 import { theme, ComponentsProvider, useCurrentDoc } from 'docz';
 import * as typography from '@entur/typography';
+import { ToastProvider } from '@entur/alert';
 import Menu from './UI/Menu';
 import { SettingsProvider } from 'src/components/SettingsContext';
 
@@ -29,26 +30,29 @@ export default theme(themeConfig)(({ children }) => {
   const { filepath } = useCurrentDoc();
   return (
     <SettingsProvider>
-      <Menu />
-      <div className="site-content">
-        <ComponentsProvider components={componentMap}>
-          <main>{children}</main>
-          <footer className="site-footer">
-            <Divider />
-            Kontakt oss på{' '}
-            <Link href="https://entur.slack.com/messages/C899QSPB7">
-              #talk-designsystem
-            </Link>{' '}
-            i Slack, eller send oss en{' '}
-            <Link href="mailto:nicolai.fredriksen@entur.org">mail</Link>.{' '}
-            <Link
-              href={`https://bitbucket.org/enturas/design-system/src/master/docs/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
-            >
-              Endre siden
-            </Link>
-          </footer>
-        </ComponentsProvider>
-      </div>
+      <ToastProvider>
+        <Menu />
+        <div className="site-content">
+          <ComponentsProvider components={componentMap}>
+            <main>{children}</main>
+
+            <footer className="site-footer">
+              <Divider />
+              Kontakt oss på{' '}
+              <Link href="https://entur.slack.com/messages/C899QSPB7">
+                #talk-designsystem
+              </Link>{' '}
+              i Slack, eller send oss en{' '}
+              <Link href="mailto:nicolai.fredriksen@entur.org">mail</Link>.{' '}
+              <Link
+                href={`https://bitbucket.org/enturas/design-system/src/master/docs/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
+              >
+                Endre siden
+              </Link>
+            </footer>
+          </ComponentsProvider>
+        </div>
+      </ToastProvider>
     </SettingsProvider>
   );
 });

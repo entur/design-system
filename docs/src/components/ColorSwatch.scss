@@ -9,6 +9,30 @@
 }
 
 .color-swatch__details {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-weight: $font-weights-body;
+}
+
+.color-swatch__copy-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 1px;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: inherit;
+  padding: $space-extra-small;
+  width: fit-content;
+
+  & + & {
+    margin-top: $space-extra-small;
+  }
+
+  svg {
+    position: relative;
+    top: 0.2em;
+  }
 }
