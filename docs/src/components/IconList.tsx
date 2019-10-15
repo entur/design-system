@@ -31,6 +31,14 @@ const IconList: React.FC<IconListProps> = props => {
     filterString.length > 0
       ? `${filteredIcons.length} treff på søket ditt`
       : undefined;
+
+  const handleIconClick = (iconName: string) => () => {
+    copy(iconName);
+    addToast({
+      title: `"${iconName}" kopiert!`,
+      content: 'Du finner det i utklippstavla',
+    });
+  };
   return (
     <div>
       <FormGroup
@@ -66,20 +74,8 @@ const IconList: React.FC<IconListProps> = props => {
                 <Icon width="2em" height="2em" />
                 <button
                   className="icon-list__name"
-                  onClick={() => {
-                    copy(iconName);
-                    addToast({
-                      title: `"${iconName}" kopiert!`,
-                      content: (
-                        <>
-                          <Icon
-                            style={{ position: 'relative', top: '0.2em' }}
-                          />{' '}
-                          Du finner det i utklippstavla
-                        </>
-                      ),
-                    });
-                  }}
+                  onClick={handleIconClick(iconName)}
+                  type="button"
                 >
                   {iconName} <ReportsIcon />
                 </button>
