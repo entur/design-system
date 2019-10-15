@@ -18,11 +18,14 @@ function usePersistedState<Type>(key: string, initialState: Type) {
 
 export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
+export type PackageManager = 'yarn' | 'npm';
 type Context = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;
   userType: UserType;
   setUserType: React.Dispatch<React.SetStateAction<UserType>>;
+  packageManager: PackageManager;
+  setPackageManager: React.Dispatch<React.SetStateAction<PackageManager>>;
 };
 
 const SettingsContext = React.createContext<Context | null>(null);
@@ -37,9 +40,21 @@ export const SettingsProvider: React.FC = props => {
     'developer',
   );
 
+  const [packageManager, setPackageManager] = usePersistedState<PackageManager>(
+    'yarn',
+    'npm',
+  );
+
   const contextValue = React.useMemo(
-    () => ({ variableFormat, userType, setVariableFormat, setUserType }),
-    [variableFormat, userType],
+    () => ({
+      variableFormat,
+      userType,
+      setVariableFormat,
+      setUserType,
+      packageManager,
+      setPackageManager,
+    }),
+    [variableFormat, userType, packageManager],
   );
 
   return <SettingsContext.Provider value={contextValue} {...props} />;

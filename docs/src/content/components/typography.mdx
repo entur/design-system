@@ -2,6 +2,7 @@
 name: Typografi
 route: /komponenter/typografi
 parent: Komponenter
+npmPackage: typography
 ---
 
 import { Link } from 'gatsby';
@@ -17,7 +18,8 @@ import {
   SubParagraph,
   Label,
   SubLabel,
-} from '@entur/typography/src/index.tsx';
+  SmallText,
+} from '@entur/typography';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 
@@ -53,7 +55,7 @@ Ingressen er et kort avsnitt som normalt kommer etter tittelen på en side.
 
 ## Vanlig tekst
 
-Vi har to nivåer med tekst - "paragraph" og "sub paragraph".
+Vi har tre nivåer med tekst - "paragraph", "sub paragraph" og "small text".
 
 <Playground>
   <Paragraph>
@@ -64,6 +66,10 @@ Vi har to nivåer med tekst - "paragraph" og "sub paragraph".
     Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
     kollektivselskaper i Norge.
   </SubParagraph>
+  <SmallText>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </SmallText>
 </Playground>
 
 ## Label-tekst

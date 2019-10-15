@@ -2,9 +2,11 @@
 name: Tooltip
 route: /komponenter/tooltip
 parent: Komponenter
+npmPackage: tooltip
 ---
 
 import Tooltip from '@entur/tooltip';
+import { Button } from '@entur/button';
 import '@entur/tooltip/dist/styles.css';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
@@ -33,7 +35,7 @@ Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også toolti
 
 <Playground>
   <Tooltip content="Tooltip til knappen" placement="top">
-    <button>Her er en knapp med tooltip</button>
+    <Button>Her er en knapp med tooltip</Button>
   </Tooltip>
 </Playground>
 

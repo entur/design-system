@@ -29,6 +29,6 @@
   "dependencies": {
     "@entur/icons": "^0.2.0",
     "@entur/tokens": "^0.2.0",
-    "@entur/typography": "^0.2.0"
+    "@entur/typography": "^0.3.0"
   }
 }
