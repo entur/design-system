@@ -62,7 +62,7 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
   const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
   const variableName = getVariableNameFromPath(path, variableFormat);
 
-  const handleCopyClick = textToCopy => () => {
+  const handleCopyClick = (textToCopy: string) => () => {
     copy(textToCopy);
     addToast(`"${textToCopy}" er kopiert til utklippstavla`);
   };
@@ -79,14 +79,14 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
           onClick={handleCopyClick(backgroundColor)}
           type="button"
         >
-          {backgroundColor} <ReportsIcon />
+          {backgroundColor} <ReportsIcon inline={true} />
         </button>
         <button
           className="color-swatch__copy-button"
           onClick={handleCopyClick(variableName)}
           type="button"
         >
-          {variableName} <ReportsIcon />
+          {variableName} <ReportsIcon inline={true} />
         </button>
       </div>
     </div>

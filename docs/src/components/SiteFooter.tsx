@@ -20,7 +20,7 @@ const SiteFooter: React.FC = () => {
           <Link href="mailto:nicolai.fredriksen@entur.org">mail</Link>.{' '}
         </div>
         <div>
-          <EditIcon />{' '}
+          <EditIcon inline={true} />{' '}
           <Link
             href={`https://bitbucket.org/enturas/design-system/src/master/docs/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
           >
