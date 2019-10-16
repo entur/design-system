@@ -1,45 +1,54 @@
 import React from 'react';
-import cx from 'classnames';
-import { useVariant } from './FormGroup';
-import { VariantType } from './variants';
 import './TextField.scss';
+import {
+  GenericFormComponent,
+  GenericFormComponentProps,
+} from './GenericFormComponent';
+import cx from 'classnames';
 
-type TextFieldProps = {
+type TextFieldPropsExtender = {
+  /** Prepend icon or text inside the TextField */
   prepend?: React.ReactNode;
-  variant?: VariantType;
-  disabled?: boolean;
-  width?: 'fluid';
-  className?: string;
-  [key: string]: any;
 };
+
+type TextFieldProps = TextFieldPropsExtender &
+  Omit<GenericFormComponentProps, 'fieldType' | 'componentName'>;
 
 export const TextField: React.RefForwardingComponent<
   HTMLInputElement,
   TextFieldProps
 > = React.forwardRef(
   (
-    { prepend, variant, disabled = false, width, className, ...rest },
+    { prepend, variant, disabled = false, className, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const formGroupVariant: any = useVariant();
-    const prioritizedVariant: any = variant || formGroupVariant;
-    const classList = cx(
-      'entur-textfield',
-      {
-        [`entur-textfield--variant-${prioritizedVariant}`]: prioritizedVariant,
-        [`entur-textfield--disabled`]: disabled,
-        [`entur-textfield--width-${width}`]: width,
-      },
-      className,
-    );
-    return (
-      <label className={classList}>
-        {prepend && <span className="entur-textfield--prepend">{prepend}</span>}
-        <input
-          className="entur-textfield--input"
+    const randId = 's';
+    if (!prepend) {
+      return (
+        <GenericFormComponent
+          id={randId}
+          className={className}
           disabled={disabled}
-          aria-invalid={prioritizedVariant === 'error'}
+          aria-invalid={variant === 'error'}
           ref={ref}
+          componentName="input"
+          inputType="input"
+          variant={variant}
+          {...rest}
+        />
+      );
+    }
+    return (
+      <label className={cx(className, 'entur-form-component__input--wrapper')}>
+        <span className="entur-form-component__input--prepend">{prepend}</span>
+        <GenericFormComponent
+          id={randId}
+          disabled={disabled}
+          aria-invalid={variant === 'error'}
+          ref={ref}
+          componentName="input"
+          inputType="input"
+          variant={variant}
           {...rest}
         />
       </label>
