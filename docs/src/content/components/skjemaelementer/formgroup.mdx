@@ -6,7 +6,7 @@ menu: Skjemaelementer
 npmPackage: form
 ---
 
-import { FormGroup, TextField } from '@entur/form';
+import { FormGroup, TextField, TextArea } from '@entur/form';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
@@ -36,6 +36,13 @@ import '@entur/form/dist/styles.css';
     variant="info"
   >
     <TextField placeholder="Informasjon" />
+  </FormGroup>
+ <FormGroup
+    label="Togdestinasjon"
+    feedback="Denne informasjonen hjelper deg"
+    variant="info"
+  >
+    <TextArea placeholder="Informasjon" />
   </FormGroup>
 
 </Playground>

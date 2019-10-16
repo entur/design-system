@@ -1,0 +1,31 @@
+---
+name: Tekstarea
+route: /komponenter/skjemaelementer/textarea
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { TextArea } from '@entur/form';
+import { ImageIcon } from '@entur/icons';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import '@entur/form/dist/styles.css';
+
+<PageHeader>
+  TextArea er en inputkomponent, for å ta imot tekst fra brukeren.
+</PageHeader>
+
+<Playground>
+  <div
+    style={{
+      display: 'grid',
+      rowGap: '1em',
+    }}
+  >
+    <TextArea placeholder="Suksess" variant="success" />
+    <TextArea placeholder="Feil" variant="error" resize={true} />
+    <TextArea placeholder="Info" variant="info" />
+  </div>
+</Playground>
