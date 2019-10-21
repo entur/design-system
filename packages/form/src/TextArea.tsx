@@ -15,6 +15,7 @@ type TextAreaProps = {
   disabled?: boolean;
   /** true for å tillate resize horistontalt */
   resize?: boolean;
+  [key: string]: any;
 };
 
 export const TextArea: React.RefForwardingComponent<

@@ -45,7 +45,6 @@ test('Accepts possible props', () => {
       width="fluid"
       required
       onInput={handler}
-      disabled
     />,
   );
 
@@ -59,6 +58,6 @@ test('Accepts possible props', () => {
   );
   expect(testerTextField.previousSibling).toContainHTML('Fra');
   //Disable input
-  rerender(<TextField disabled={true} />);
-  expect(testerTextField).toHaveProperty('disabled', true);
+  rerender(<TextField disabled data-testid="disabledTest" />);
+  expect(getByTestId('disabledTest')).toHaveProperty('disabled', true);
 });
