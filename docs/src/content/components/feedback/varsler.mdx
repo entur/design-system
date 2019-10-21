@@ -15,15 +15,17 @@ import { Button } from '@entur/button';
 import {
   BannerAlertBox,
   ToastAlertBox,
+  ToastProvider,
   SmallAlertBox,
   useToast,
 } from '@entur/alert';
-import '@entur/alert/dist/styles.css';
 
 <PageHeader>
   Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige
   meldinger som man bør ta hensyn til.
 </PageHeader>
+
+## Lokale varsler
 
 <Playground>
   <BannerAlertBox
@@ -61,8 +63,6 @@ import '@entur/alert/dist/styles.css';
     reiseplanleggeren, men kjøpsløsningen for billetter fungerer ikke.
   </BannerAlertBox>
 </Playground>
-
-## Props
 
 <Props of={BannerAlertBox} />
 
@@ -124,6 +124,10 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
     );
   }}
 </InlineComponent>
+
+<Props of={ToastAlertBox} />
+
+<Props of={ToastProvider} title="Props, ToastProvider" />
 
 ### Hvordan bruke toasts
 
@@ -194,6 +198,8 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
     </SmallAlertBox>
   </div>
 </Playground>
+
+<Props of={SmallAlertBox} />
 
 ## Retningslinjer
 

@@ -5,10 +5,15 @@ import { VariantType } from './variants';
 import './TextField.scss';
 
 type TextFieldProps = {
+  /** Ikon som kommer før tekstfeltet */
   prepend?: React.ReactNode;
+  /** Hvilken valideringsfarge som vises. Hentes fra FormGroup om mulig */
   variant?: VariantType;
+  /** Deaktiver tekstfeltet */
   disabled?: boolean;
+  /** Sett bredden på feltet. Verdien "fluid" setter bredden til 100 % av containeren */
   width?: 'fluid';
+  /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
 };

@@ -1,13 +1,13 @@
 import React from 'react';
-import { theme, ComponentsProvider, useCurrentDoc } from 'docz';
+import { ComponentsProvider, theme } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import SiteFooter from 'src/components/SiteFooter';
 import { SettingsProvider } from 'src/components/SettingsContext';
+import Props from 'src/components/Props';
 import Menu from './UI/Menu';
 
 import './index.scss';
-import Divider from 'src/components/Divider';
 
 const componentMap = {
   h1: typography.Heading1,
@@ -19,13 +19,10 @@ const componentMap = {
   p: typography.Paragraph,
   a: typography.Link,
   pre: typography.PreformattedText,
+  props: Props,
 };
 
-const themeConfig = {
-  showPlaygroundEditor: false,
-};
-
-export default theme(themeConfig)(({ children }) => {
+const App: React.FC = ({ children }) => {
   return (
     <SettingsProvider>
       <ToastProvider>
@@ -39,4 +36,5 @@ export default theme(themeConfig)(({ children }) => {
       </ToastProvider>
     </SettingsProvider>
   );
-});
+};
+export default theme({})(App);

@@ -211,3 +211,11 @@ html {
   white-space: pre-wrap;
   word-break: keep-all;
 }
+
+.entur-code-text {
+  background-color: $colors-blues-blue80;
+  border-radius: 0.125rem;
+  font-family: 'Dank Mono', monospace;
+  font-size: 90%; // Slightly smaller than
+  padding: ($space-extra-small / 2) $space-extra-small;
+}
