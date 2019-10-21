@@ -2,62 +2,73 @@ import React from 'react';
 import { PropsComponentProps } from 'docz';
 import { CodeText, Heading4 } from '@entur/typography';
 import { CheckIcon } from '@entur/icons';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
 import { useSettings } from './SettingsContext';
-
-import './Props.scss';
 
 function skipUndefinedType(type: string) {
   return type.replace(/\| undefined/g, '');
 }
 
-const Props: React.FC<PropsComponentProps> = ({ title = 'Props', props }) => {
+type PropsProps = PropsComponentProps & {
+  defaultOpen?: boolean;
+};
+
+const Props: React.FC<PropsProps> = ({
+  title = 'Props',
+  props,
+  defaultOpen,
+}) => {
   const { userType } = useSettings();
   const hasAnyDefaultValues = Object.values(props).some(
     details => details.defaultValue,
   );
+  const isDefaultOpenSet = defaultOpen === undefined;
   return (
-    <details open={userType === 'developer'}>
+    <details open={isDefaultOpenSet ? defaultOpen : userType === 'developer'}>
       <summary>
-        <Heading4 as="h2" style={{ display: 'inline-block' }}>
+        <Heading4 as="div" style={{ display: 'inline-block' }}>
           {title}
         </Heading4>
       </summary>
-      <table className="entur-table entur-table--width-fluid entur-table--fixed">
-        <thead>
-          <tr className="entur-table__row">
-            <th className="entur-table__header-cell">Navn</th>
-            <th className="entur-table__header-cell">Type</th>
-            <th className="entur-table__header-cell">Påkrevd?</th>
-            {hasAnyDefaultValues && (
-              <th className="entur-table__header-cell">Default-verdi</th>
-            )}
-            <th className="entur-table__header-cell">Beskrivelse</th>
-          </tr>
-        </thead>
-        <tbody className="entur-table__body">
+      <Table fixed={true}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell>Navn</HeaderCell>
+            <HeaderCell>Type</HeaderCell>
+            <HeaderCell>Påkrevd?</HeaderCell>
+            {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
+            <HeaderCell>Beskrivelse</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {Object.entries(props).map(([propName, details]) => (
-            <tr className="entur-table__row" key={propName}>
-              <td className="entur-table__data-cell">
+            <TableRow key={propName}>
+              <DataCell>
                 <CodeText>{propName}</CodeText>
-              </td>
-              <td className="entur-table__data-cell">
+              </DataCell>
+              <DataCell>
                 <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
-              </td>
-              <td className="entur-table__data-cell">
-                {details.required && <CheckIcon />}
-              </td>
+              </DataCell>
+              <DataCell>{details.required && <CheckIcon />}</DataCell>
               {hasAnyDefaultValues && (
-                <td className="entur-table__data-cell">
+                <DataCell>
                   {details.defaultValue ? (
                     <CodeText>{String(details.defaultValue.value)}</CodeText>
                   ) : null}
-                </td>
+                </DataCell>
               )}
-              <td className="entur-table__data-cell">{details.description}</td>
-            </tr>
+              <DataCell>{details.description}</DataCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </details>
   );
 };

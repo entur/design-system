@@ -20,6 +20,7 @@
     "packages/icons",
     "packages/layout",
     "packages/menu",
+    "packages/table",
     "packages/tokens",
     "packages/tooltip",
     "packages/typography"
