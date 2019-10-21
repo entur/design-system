@@ -7,6 +7,10 @@
     width: 100%;
   }
 
+  &--fixed {
+    table-layout: fixed;
+  }
+
   &__header-cell {
     color: $colors-blues-blue40;
     font-size: $font-sizes-medium;
@@ -27,9 +31,5 @@
   &__header-cell {
     border-bottom: 0.125rem solid $colors-greys-grey20;
     padding: 0 $space-default;
-  }
-
-  &__data-cell--align-center {
-    text-align: center;
   }
 }
