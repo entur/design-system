@@ -1,8 +1,11 @@
 @import '~@entur/fonts/index.css';
 @import '~@entur/icons/dist/styles.css';
 @import '~@entur/layout/dist/styles.css';
-@import '~@entur/typography/dist/styles.css';
+
+@import '~@entur/alert/dist/styles.css';
 @import '~@entur/menu/dist/styles.css';
+@import '~@entur/typography/dist/styles.css';
+
 @import '~@entur/tokens/dist/styles.scss';
 
 @mixin for-desktop {
