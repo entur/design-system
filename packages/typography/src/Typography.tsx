@@ -132,3 +132,11 @@ export const PreformattedText: React.FC<Props> = ({
     {...rest}
   />
 );
+
+export const CodeText: React.FC<Props> = ({
+  as: Element = 'code',
+  className,
+  ...rest
+}) => (
+  <Element className={classNames('entur-code-text', className)} {...rest} />
+);
