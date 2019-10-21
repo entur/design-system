@@ -11,12 +11,16 @@ type placements =
   | 'bottom-left'
   | 'bottom'
   | 'bottom-right';
-interface TooltipProps {
+type TooltipProps = {
+  /** Plassering av tooltip-en */
   placement: placements;
+  /** Innholdet i tooltip-boksen */
   content: string;
+  /** Elementet som skal ha tooltip-funksjonalitet */
   children: React.ReactNode;
+  /** Ekstra klassenavn */
   className?: string;
-}
+};
 export const Tooltip: React.FC<TooltipProps> = ({
   placement,
   content,

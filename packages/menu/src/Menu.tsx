@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import './styles.scss';
 
 type MenuProps = {
+  /** Ekstra klassenavn */
   className?: string;
+  /** Størrelse på menyen */
   size?: 'small' | 'medium';
 };
 

@@ -3,10 +3,12 @@ import classNames from 'classnames';
 import './styles.scss';
 
 type Props = {
-  /** Elementet eller komponenten som rendres */
+  /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
+  /** Innholdet */
+  children: React.ReactNode;
   [key: string]: any;
 };
 

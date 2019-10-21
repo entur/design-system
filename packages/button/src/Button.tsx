@@ -6,14 +6,21 @@ declare type sizes = 'medium' | 'large';
 declare type variants = 'primary' | 'secondary' | 'success' | 'negative';
 declare type widths = 'fluid' | 'square';
 type ButtonProps = {
+  /** Farge og uttrykk på knappen */
   variant: variants;
+  /** Størrelsen på knappen */
   size?: sizes;
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe */
   loading?: boolean;
+  /** Ekstra klassenavn */
   className?: string;
+  /** Deaktivering av knappen */
   disabled?: boolean;
+  /** Bredden på knappen. Defaulter til "standard-størrelse" */
   width?: widths;
-  active?: boolean;
+  /** Innholdet i knappen */
   children: React.ReactNode;
+  /** HTML-elementet eller React-komponenten som lager knappen */
   as?: 'a' | 'button' | React.ElementType;
   [key: string]: any;
 };
@@ -31,7 +38,6 @@ export const Button: React.RefForwardingComponent<
       children,
       disabled = false,
       width,
-      active,
       as = 'button',
       ...rest
     },
@@ -43,7 +49,6 @@ export const Button: React.RefForwardingComponent<
         [`entur-button--variant-${variant}`]: variant,
         [`entur-button--size-${size}`]: size,
         [`entur-button--width-${width}`]: width,
-        [`entur-button--active`]: active,
         [`entur-button--disabled`]: disabled,
         [`entur-button--loading`]: loading,
       },
