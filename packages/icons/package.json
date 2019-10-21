@@ -32,7 +32,6 @@
   "devDependencies": {
     "@svgr/rollup": "^4.3.3",
     "@types/fs-extra": "^8.0.0",
-    "@wessberg/rollup-plugin-ts": "^1.1.65",
     "case": "^1.6.2",
     "fs-extra": "^8.1.0",
     "jsdom": "^15.1.1",

@@ -1,0 +1,35 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-table {
+  border-collapse: collapse;
+
+  &--width-fluid {
+    width: 100%;
+  }
+
+  &--fixed {
+    table-layout: fixed;
+  }
+
+  &__header-cell {
+    color: $colors-blues-blue40;
+    font-size: $font-sizes-medium;
+    font-weight: $font-weights-heading;
+    height: $space-extra-large2;
+    text-align: left;
+  }
+
+  &__row {
+    height: $space-extra-large5;
+  }
+
+  &__body > &__row:hover {
+    background-color: $colors-blues-blue80;
+  }
+
+  &__data-cell,
+  &__header-cell {
+    border-bottom: 0.125rem solid $colors-greys-grey20;
+    padding: 0 $space-default;
+  }
+}

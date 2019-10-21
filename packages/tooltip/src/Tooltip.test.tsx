@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Tooltip from './';
+import { Tooltip } from '.';
 
 test('Tooltip renders with content and children, and is displayed on mouse-over', () => {
   const content = 'tooltipcontent';

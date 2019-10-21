@@ -1,12 +1,13 @@
 import React from 'react';
-import { theme, ComponentsProvider, useCurrentDoc } from 'docz';
+import { ComponentsProvider, theme } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
-import Menu from './UI/Menu';
+import SiteFooter from 'src/components/SiteFooter';
 import { SettingsProvider } from 'src/components/SettingsContext';
+import Props from 'src/components/Props';
+import Menu from './UI/Menu';
 
 import './index.scss';
-import Divider from 'src/components/Divider';
 
 const componentMap = {
   h1: typography.Heading1,
@@ -18,16 +19,10 @@ const componentMap = {
   p: typography.Paragraph,
   a: typography.Link,
   pre: typography.PreformattedText,
+  props: Props,
 };
 
-const themeConfig = {
-  showPlaygroundEditor: false,
-};
-
-const { Link } = typography;
-
-export default theme(themeConfig)(({ children }) => {
-  const { filepath } = useCurrentDoc();
+const App: React.FC = ({ children }) => {
   return (
     <SettingsProvider>
       <ToastProvider>
@@ -35,24 +30,11 @@ export default theme(themeConfig)(({ children }) => {
         <div className="site-content">
           <ComponentsProvider components={componentMap}>
             <main>{children}</main>
-
-            <footer className="site-footer">
-              <Divider />
-              Kontakt oss på{' '}
-              <Link href="https://entur.slack.com/messages/C899QSPB7">
-                #talk-designsystem
-              </Link>{' '}
-              i Slack, eller send oss en{' '}
-              <Link href="mailto:nicolai.fredriksen@entur.org">mail</Link>.{' '}
-              <Link
-                href={`https://bitbucket.org/enturas/design-system/src/master/docs/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
-              >
-                Endre siden
-              </Link>
-            </footer>
+            <SiteFooter />
           </ComponentsProvider>
         </div>
       </ToastProvider>
     </SettingsProvider>
   );
-});
+};
+export default theme({})(App);

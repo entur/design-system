@@ -1,0 +1,30 @@
+import React from 'react';
+import classNames from 'classnames';
+import './styles.scss';
+
+type MenuProps = {
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Størrelse på menyen */
+  size?: 'small' | 'medium';
+};
+
+export const Menu: React.FC<MenuProps> = ({
+  className,
+  children,
+  size = 'medium',
+  ...rest
+}) => {
+  return (
+    <ul
+      className={classNames(
+        'entur-menu',
+        { 'entur-menu--small': size === 'small' },
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+    </ul>
+  );
+};

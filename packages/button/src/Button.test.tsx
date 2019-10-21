@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { Button } from './';
+import { Button } from '.';
 
 test('Button renders and is clickable', () => {
   let children = 'Button children';

@@ -6,17 +6,17 @@ import { useFormComponent } from './GenericFormComponent';
 import { VariantType } from './variants';
 
 type TextFieldProps = {
-  /** Tekst eller ikoner som kommer før inputfeltet */
+  /** Tekst eller ikon som kommer før inputfeltet */
   prepend?: React.ReactNode;
-  /** Tekst eller ikoner som kommer etter inputfeltet */
+  /** Tekst eller ikon som kommer etter inputfeltet */
   append?: React.ReactNode;
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
+  /** Ekstra klassenavn */
   className?: string;
-  /** Settes til 'fluid' for flytende inputfelt */
+  /** Sett bredden på feltet. Verdien "fluid" setter bredden til 100 % av containeren */
   width?: 'fluid';
-  /** Settes for å style komponenten basert på state */
+  /** Hvilken valideringsfarge som vises. Hentes fra FormGroup om mulig */
   variant?: VariantType;
-  /** For å deaktivere inputfeltet */
+  /** Deaktiver tekstfeltet */
   disabled?: boolean;
   [key: string]: any;
 };

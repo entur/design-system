@@ -70,7 +70,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
             type="button"
             onClick={() => copy(__code)}
           >
-            <ReportsIcon /> Kopier kode
+            <ReportsIcon inline={true} /> Kopier kode
           </SubLabel>
           <SubLabel
             className="playground__control"
@@ -78,7 +78,8 @@ export const Playground: React.FC<PlaygroundProps> = ({
             type="button"
             onClick={() => setShowingEditor(prev => !prev)}
           >
-            <SourceCodeIcon /> {isShowingEditor ? 'Skjul' : 'Vis'} kode
+            <SourceCodeIcon inline={true} /> {isShowingEditor ? 'Skjul' : 'Vis'}{' '}
+            kode
           </SubLabel>
         </div>
       </div>

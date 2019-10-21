@@ -5,7 +5,7 @@ parent: Komponenter
 npmPackage: tooltip
 ---
 
-import Tooltip from '@entur/tooltip';
+import { Tooltip } from '@entur/tooltip';
 import { Button } from '@entur/button';
 import '@entur/tooltip/dist/styles.css';
 import { Props } from 'docz';
@@ -18,8 +18,6 @@ import PageHeader from 'src/components/PageHeader';
 </PageHeader>
 
 Man må derimot _unngå_ å legge nødvendig og kritisk informasjon i tooltip'en.
-
-## Props
 
 <Props of={Tooltip} />
 
