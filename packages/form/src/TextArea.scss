@@ -1,10 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .entur-form-component {
-  &__textarea {
+  &--textarea {
     padding: $space-small $space-default;
     height: 7.75rem;
-    resize: none;
+    resize: vertical;
 
     &:focus {
       outline: none;

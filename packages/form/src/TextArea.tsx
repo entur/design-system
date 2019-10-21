@@ -1,39 +1,36 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-  GenericFormComponent,
-  GenericFormComponentProps,
-} from './GenericFormComponent';
 import './TextArea.scss';
+import { useFormComponent } from './GenericFormComponent';
+import { VariantType } from './variants';
 
-type TextAreaPropsExtender = {
-  resize: boolean;
+type TextAreaProps = {
+  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
+  className?: string;
+  /** Settes til 'fluid' for flytende textarea */
+  width?: 'fluid';
+  /** Settes for å style komponenten basert på state */
+  variant?: VariantType;
+  /** For å deaktivere inputfeltet */
+  disabled?: boolean;
+  /** true for å tillate resize horistontalt */
+  resize?: boolean;
 };
-
-type TextAreaProps = TextAreaPropsExtender &
-  Omit<GenericFormComponentProps, 'fieldType' | 'componentName'>;
 
 export const TextArea: React.RefForwardingComponent<
   HTMLAreaElement,
   TextAreaProps
 > = React.forwardRef(
   (
-    { variant, disabled = false, className, resize = false, ...rest },
-    ref: React.Ref<HTMLAreaElement>,
+    { variant, disabled = false, className, resize = false, width, ...rest },
+    ref: React.Ref<HTMLTextAreaElement>,
   ) => {
-    const classList = cx(className, {
+    const cL = useFormComponent(variant, disabled, className, width);
+    const classList = cx(cL, 'entur-form-component--textarea', {
       ['entur-form-component__textarea--resize']: resize,
     });
     return (
-      <GenericFormComponent
-        variant={variant}
-        disabled={disabled}
-        componentName="textarea"
-        inputType="textarea"
-        className={classList}
-        ref={ref}
-        {...rest}
-      />
+      <textarea disabled={disabled} className={classList} ref={ref} {...rest} />
     );
   },
 );
