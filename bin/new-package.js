@@ -44,6 +44,12 @@ async function run() {
       newPackageFolder: path.resolve('packages', packageName),
       newPackageJson: path.resolve('packages', packageName, 'package.json'),
       newIndexTsx: path.resolve('packages', packageName, 'src', 'index.tsx'),
+      newComponentFileTsx: path.resolve(
+        'packages',
+        packageName,
+        'src',
+        'PackageName.tsx',
+      ),
       rootPackageJson: path.resolve('package.json'),
       docsFolder: path.resolve('docs'),
       docsPackageJson: path.resolve('docs', 'package.json'),
@@ -64,8 +70,21 @@ async function run() {
     const indexTsxContent = fs
       .readFileSync(paths.newIndexTsx, 'utf-8')
       .replace(/PackageName/g, toCase.pascal(packageName));
-
     fs.writeFileSync(paths.newIndexTsx, indexTsxContent);
+
+    // Update the src/PackageName.tsx and rename it to the correct name
+    const componentFileTsxContent = fs
+      .readFileSync(paths.newComponentFileTsx, 'utf-8')
+      .replace(/PackageName/g, toCase.pascal(packageName));
+    fs.writeFileSync(paths.newComponentFileTsx, componentFileTsxContent);
+    fs.renameSync(
+      paths.newComponentFileTsx,
+      path.resolve(
+        paths.newPackageFolder,
+        'src',
+        `${toCase.pascal(packageName)}.tsx`,
+      ),
+    );
 
     console.log('🦷  Adding package to the active workspaces');
     const rootPackageJson = await fs.readJson(paths.rootPackageJson);
