@@ -10,14 +10,14 @@ test('TextArea renders, and accepts text input ', () => {
   const handler = jest.fn();
   const { getByTestId } = render(
     <TextArea
-      data-testid="testerTextField"
+      data-testid="testerTextArea"
       onClick={spy}
       className={testClass}
       onInput={handler}
     />,
   );
 
-  const testerTextArea = getByTestId('testerTextField') as HTMLInputElement;
+  const testerTextArea = getByTestId('testerTextArea') as HTMLInputElement;
   fireEvent.click(testerTextArea);
   expect(spy).toHaveBeenCalled();
   fireEvent.input(testerTextArea, { target: { value: testValue } });
@@ -32,7 +32,7 @@ test('Accepts possible props', () => {
   const handler = jest.fn();
   const { getByTestId, rerender } = render(
     <TextArea
-      data-testid="testerTextField"
+      data-testid="testerTextArea2"
       onClick={spy}
       className={testClass}
       variant="success"
@@ -42,7 +42,7 @@ test('Accepts possible props', () => {
     />,
   );
 
-  const testerTextArea = getByTestId('testerTextField') as HTMLInputElement;
+  const testerTextArea = getByTestId('testerTextArea2') as HTMLInputElement;
   expect(testerTextArea).toHaveProperty('required', true);
   expect(testerTextArea).toHaveClass('entur-form-component--variant-success');
   expect(testerTextArea).toHaveClass('entur-form-component--width-fluid');

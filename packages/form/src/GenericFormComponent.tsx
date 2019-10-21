@@ -3,13 +3,6 @@ import { useVariant } from './FormGroup';
 import { VariantType } from './variants';
 import './GenericFormComponent.scss';
 
-export type useFormComponentType = {
-  variant?: VariantType;
-  disabled?: boolean;
-  className?: string;
-  width?: 'fluid';
-};
-
 export function useFormComponent(
   variant?: VariantType,
   disabled?: boolean,
