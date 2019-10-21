@@ -1,8 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
 import './TextField.scss';
-import './GenericFormComponent.scss';
-import { useFormComponent } from './GenericFormComponent';
+import { useFormComponentClasses } from './FormComponentClasses';
 import { VariantType } from './variants';
 
 type TextFieldProps = {
@@ -26,13 +24,26 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    { prepend, append, variant, disabled = false, width, className, ...rest },
+    {
+      prepend,
+      append,
+      variant = 'none',
+      disabled = false,
+      width,
+      className,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = useFormComponent(variant, disabled, className, width);
+    const classList = useFormComponentClasses({
+      variant: variant as VariantType,
+      disabled,
+      className: ['entur-form-component--input', className],
+      width,
+    });
     if (prepend || append) {
       return (
-        <label className={cx(classList, 'entur-form-component--input')}>
+        <label className={classList}>
           {prepend && (
             <span className="entur-form-component--input--prepend">
               {prepend}
@@ -54,7 +65,7 @@ export const TextField: React.RefForwardingComponent<
     } else {
       return (
         <input
-          className={cx(classList, 'entur-form-component--input')}
+          className={classList}
           disabled={disabled}
           aria-invalid={variant === 'error'}
           ref={ref}

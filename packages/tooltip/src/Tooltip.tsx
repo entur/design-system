@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import './styles.scss';
 
-type placements =
+export type Placements =
   | 'top-left'
   | 'top'
   | 'top-right'
@@ -13,7 +13,7 @@ type placements =
   | 'bottom-right';
 type TooltipProps = {
   /** Plassering av tooltip-en */
-  placement: placements;
+  placement: Placements;
   /** Innholdet i tooltip-boksen */
   content: string;
   /** Elementet som skal ha tooltip-funksjonalitet */

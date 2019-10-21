@@ -35,10 +35,6 @@ $shade-amount: 5;
   background-color: $colors-greys-grey40;
   color: $colors-brand-blue;
   width: 22rem;
-  --border-color-hover: #{$colors-brand-lavender};
-
-  &__prepend {
-  }
 
   &--width-fluid {
     width: 100%;

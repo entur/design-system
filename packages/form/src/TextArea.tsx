@@ -1,7 +1,6 @@
 import React from 'react';
-import cx from 'classnames';
 import './TextArea.scss';
-import { useFormComponent } from './GenericFormComponent';
+import { useFormComponentClasses } from './FormComponentClasses';
 import { VariantType } from './variants';
 
 type TextAreaProps = {
@@ -19,19 +18,39 @@ type TextAreaProps = {
 };
 
 export const TextArea: React.RefForwardingComponent<
-  HTMLAreaElement,
+  HTMLTextAreaElement,
   TextAreaProps
 > = React.forwardRef(
   (
-    { variant, disabled = false, className, resize = false, width, ...rest },
+    {
+      variant = 'none',
+      disabled = false,
+      className,
+      resize = false,
+      width,
+      ...rest
+    },
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
-    const cL = useFormComponent(variant, disabled, className, width);
-    const classList = cx(cL, 'entur-form-component--textarea', {
-      ['entur-form-component__textarea--resize']: resize,
+    const classList = useFormComponentClasses({
+      variant: variant as VariantType,
+      disabled,
+      className: [
+        'entur-form-component--textarea',
+        className,
+        { ['entur-form-component__textarea--resize']: resize },
+      ],
+      width,
     });
+
     return (
-      <textarea disabled={disabled} className={classList} ref={ref} {...rest} />
+      <textarea
+        disabled={disabled}
+        aria-invalid={variant === 'error'}
+        className={classList}
+        ref={ref}
+        {...rest}
+      />
     );
   },
 );

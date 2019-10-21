@@ -1,16 +1,25 @@
 import cx from 'classnames';
 import { useVariant } from './FormGroup';
 import { VariantType } from './variants';
-import './GenericFormComponent.scss';
+import './FormComponentClasses.scss';
+import { ClassValue } from 'classnames/types';
 
-export function useFormComponent(
-  variant?: VariantType,
-  disabled?: boolean,
-  className?: string,
-  width?: string,
-) {
+type UseFormComponentClasses = {
+  variant: VariantType;
+  disabled?: boolean;
+  className?: ClassValue;
+  width?: string;
+};
+
+export function useFormComponentClasses({
+  variant,
+  disabled,
+  className,
+  width,
+}: UseFormComponentClasses) {
   const formGroupVariant: any = useVariant();
-  const prioritizedVariant: any = variant || formGroupVariant;
+  const prioritizedVariant: any =
+    variant === 'none' ? formGroupVariant : variant;
   const classList = cx(
     `entur-form-component`,
     {
