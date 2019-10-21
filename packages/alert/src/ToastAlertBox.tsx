@@ -20,5 +20,5 @@ type ToastAlertBoxProps = {
 };
 
 export const ToastAlertBox: React.FC<ToastAlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="toast" />
+  <InternalAlertBox {...props} size="toast" role="status" />
 );
