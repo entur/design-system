@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
-import { ToastProvider, useToast } from './ToastContext';
+import { ToastProvider, useToast } from './ToastProvider';
 
 jest.useFakeTimers();
 

@@ -16,22 +16,27 @@ const iconsMap = {
   error: ValidationErrorIcon,
 };
 
-type AlertBoxProps = {
+type InternalAlertBoxProps = {
+  /** Innholdet i alert-boksen */
   children: React.ReactNode;
+  /** Ekstra klassenavn */
   className?: string;
+  /** Skjermleser-label for lukkeknappen, om den vises */
   closeButtonLabel?: string;
+  /** Callback som kalles når man lukker boksen */
   onClose?: () => void;
+  /** Om denne er true, vil boksen få en lukkeknapp i høyre hjørne */
   closable?: boolean;
+  /** Tittel på boksen - oppsummer virkning */
   title?: string;
+  /** Farge og uttrykk på alert-boksen */
   variant: 'success' | 'info' | 'warning' | 'error';
+  /** Typen boks (internt bruk) */
+  size: 'banner' | 'toast' | 'small';
   [key: string]: any;
 };
 
-type InternalAlertBoxProps = AlertBoxProps & {
-  size: 'banner' | 'toast' | 'small';
-};
-
-const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
+export const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
   children,
   className,
   closable = false,
@@ -79,15 +84,3 @@ const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
     </div>
   );
 };
-
-export const BannerAlertBox: React.FC<AlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="banner" />
-);
-
-export const ToastAlertBox: React.FC<AlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="toast" role="status" />
-);
-
-export const SmallAlertBox: React.FC<AlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="small" />
-);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastAlertBox } from './AlertBoxes';
+import { ToastAlertBox } from './ToastAlertBox';
 
 type ToastId = string;
 
@@ -54,6 +54,7 @@ const createToast = (toast: AddToastPayload, id: ToastId): ToastType => {
 };
 
 type ToastProviderProps = {
+  /** Antall millisekunder før toasts forsvinner av seg selv */
   delay?: number;
 };
 
