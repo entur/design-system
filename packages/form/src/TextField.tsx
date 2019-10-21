@@ -1,20 +1,21 @@
 import React from 'react';
-import cx from 'classnames';
-import { useVariant } from './FormGroup';
-import { VariantType } from './variants';
 import './TextField.scss';
+import { useFormComponentClasses } from './FormComponentClasses';
+import { VariantType } from './variants';
 
 type TextFieldProps = {
-  /** Ikon som kommer før tekstfeltet */
+  /** Tekst eller ikon som kommer før inputfeltet */
   prepend?: React.ReactNode;
+  /** Tekst eller ikon som kommer etter inputfeltet */
+  append?: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Sett bredden på feltet. Verdien "fluid" setter bredden til 100 % av containeren */
+  width?: 'fluid';
   /** Hvilken valideringsfarge som vises. Hentes fra FormGroup om mulig */
   variant?: VariantType;
   /** Deaktiver tekstfeltet */
   disabled?: boolean;
-  /** Sett bredden på feltet. Verdien "fluid" setter bredden til 100 % av containeren */
-  width?: 'fluid';
-  /** Ekstra klassenavn */
-  className?: string;
   [key: string]: any;
 };
 
@@ -23,31 +24,54 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    { prepend, variant, disabled = false, width, className, ...rest },
+    {
+      prepend,
+      append,
+      variant = 'none',
+      disabled = false,
+      width,
+      className,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const formGroupVariant: any = useVariant();
-    const prioritizedVariant: any = variant || formGroupVariant;
-    const classList = cx(
-      'entur-textfield',
-      {
-        [`entur-textfield--variant-${prioritizedVariant}`]: prioritizedVariant,
-        [`entur-textfield--disabled`]: disabled,
-        [`entur-textfield--width-${width}`]: width,
-      },
-      className,
-    );
-    return (
-      <label className={classList}>
-        {prepend && <span className="entur-textfield--prepend">{prepend}</span>}
+    const classList = useFormComponentClasses({
+      variant: variant as VariantType,
+      disabled,
+      className: ['entur-form-component--input', className],
+      width,
+    });
+    if (prepend || append) {
+      return (
+        <label className={classList}>
+          {prepend && (
+            <span className="entur-form-component--input--prepend">
+              {prepend}
+            </span>
+          )}
+          <input
+            disabled={disabled}
+            aria-invalid={variant === 'error'}
+            ref={ref}
+            {...rest}
+          />
+          {append && (
+            <span className="entur-form-component--input--append">
+              {append}
+            </span>
+          )}
+        </label>
+      );
+    } else {
+      return (
         <input
-          className="entur-textfield--input"
+          className={classList}
           disabled={disabled}
-          aria-invalid={prioritizedVariant === 'error'}
+          aria-invalid={variant === 'error'}
           ref={ref}
           {...rest}
         />
-      </label>
-    );
+      );
+    }
   },
 );

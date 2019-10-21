@@ -22,7 +22,7 @@ test('TextField renders, and accepts text and number input with input-type attri
   expect(spy).toHaveBeenCalled();
   fireEvent.input(testerTextField, { target: { value: testValue } });
   expect(handler).toHaveBeenCalled();
-  expect(testerTextField.parentNode!).toHaveClass(testClass);
+  expect(testerTextField).toHaveClass(testClass);
   expect(testerTextField).toHaveProperty('value', testValue);
 
   rerender(<TextField type="number" />);
@@ -51,13 +51,13 @@ test('Accepts possible props', () => {
   const testerTextField = getByTestId('testerTextField') as HTMLInputElement;
   expect(testerTextField).toHaveProperty('required', true);
   expect(testerTextField.parentNode!).toHaveClass(
-    'entur-textfield--variant-success',
+    'entur-form-component--variant-success',
   );
   expect(testerTextField.parentNode!).toHaveClass(
-    'entur-textfield--width-fluid',
+    'entur-form-component--width-fluid',
   );
   expect(testerTextField.previousSibling).toContainHTML('Fra');
   //Disable input
-  rerender(<TextField disabled />);
-  expect(testerTextField).toHaveProperty('disabled', true);
+  rerender(<TextField disabled data-testid="disabledTest" />);
+  expect(getByTestId('disabledTest')).toHaveProperty('disabled', true);
 });

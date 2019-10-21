@@ -1,2 +1,3 @@
-export { TextField } from './TextField';
-export { FormGroup } from './FormGroup';
+export * from './TextField';
+export * from './FormGroup';
+export * from './TextArea';

@@ -25,9 +25,13 @@ export function useVariant(): VariantType {
 }
 
 type FormGroupProps = {
+  /** Tekst/label over en form-komponent */
   label: string;
+  /** Varselmelding, som vil komme under form-komponenten */
   feedback?: string;
+  /** Hvilken variant varselmeldingen skal ha */
   variant?: VariantType;
+  /** En form-komponent */
   children: React.ReactNode;
 };
 
