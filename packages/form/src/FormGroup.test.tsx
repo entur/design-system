@@ -19,8 +19,8 @@ test('Form-group renders with TextField as child, and appropriate labels and fie
   const feedbackGroup = getByText(feedbackMsg);
   const testerTextField = getByTestId(testId);
 
-  expect(testerTextField.parentNode!).toHaveClass(
-    `entur-textfield--variant-${variant}`,
+  expect(testerTextField).toHaveClass(
+    `entur-form-component--variant-${variant}`,
   );
 
   expect(feedbackGroup.previousSibling).toHaveClass(
