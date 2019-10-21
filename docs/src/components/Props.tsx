@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsComponentProps } from 'docz';
-import { Heading4 } from '@entur/typography';
+import { CodeText, Heading4 } from '@entur/typography';
 import { CheckIcon } from '@entur/icons';
 import { useSettings } from './SettingsContext';
 
@@ -37,16 +37,20 @@ const Props: React.FC<PropsComponentProps> = ({ title = 'Props', props }) => {
         <tbody className="entur-table__body">
           {Object.entries(props).map(([propName, details]) => (
             <tr className="entur-table__row" key={propName}>
-              <td className="entur-table__data-cell">{propName}</td>
               <td className="entur-table__data-cell">
-                {skipUndefinedType(details.type.name)}
+                <CodeText>{propName}</CodeText>
+              </td>
+              <td className="entur-table__data-cell">
+                <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
               </td>
               <td className="entur-table__data-cell">
                 {details.required && <CheckIcon />}
               </td>
               {hasAnyDefaultValues && (
                 <td className="entur-table__data-cell">
-                  {details.defaultValue ? details.defaultValue.value : null}
+                  {details.defaultValue ? (
+                    <CodeText>{String(details.defaultValue.value)}</CodeText>
+                  ) : null}
                 </td>
               )}
               <td className="entur-table__data-cell">{details.description}</td>
