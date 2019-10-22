@@ -29,7 +29,7 @@ const Props: React.FC<PropsProps> = ({
   const hasAnyDefaultValues = Object.values(props).some(
     details => details.defaultValue,
   );
-  const isDefaultOpenSet = defaultOpen === undefined;
+  const isDefaultOpenSet = defaultOpen !== undefined;
   return (
     <details open={isDefaultOpenSet ? defaultOpen : userType === 'developer'}>
       <summary>
