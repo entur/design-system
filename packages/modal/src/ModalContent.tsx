@@ -1,11 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DialogContent, DialogContentProps } from '@reach/dialog';
+import { DialogContent } from '@reach/dialog';
 
-export const ModalContent: React.FC<DialogContentProps> = ({
-  className,
-  ...rest
-}) => (
+type Props = {
+  /** Innholdet i modalen */
+  children: React.ReactNode;
+} & React.HTMLProps<HTMLDivElement>;
+
+export const ModalContent: React.FC<Props> = ({ className, ...rest }) => (
   <DialogContent
     className={classNames('entur-modal__content', className)}
     {...rest}
