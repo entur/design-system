@@ -16,6 +16,7 @@
     "@entur/icons": "^0.4.0",
     "@entur/layout": "^0.2.1",
     "@entur/menu": "^0.2.3",
+    "@entur/modal": "^0.1.0",
     "@entur/table": "^0.2.0",
     "@entur/tokens": "^0.2.0",
     "@entur/tooltip": "^1.0.0",
