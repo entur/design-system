@@ -7,6 +7,7 @@ npmPackage: button
 ---
 
 import { Button } from '@entur/button';
+import * as Nice from '@entur/button';
 import '@entur/button/dist/styles.css';
 import { Props } from 'docz';
 import PageHeader from 'src/components/PageHeader';
@@ -18,7 +19,7 @@ import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 import { RefreshIcon, AddIcon, BusIcon } from '@entur/icons';
 
-<PageHeader>
+<PageHeader exports={Nice}>
   Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 </PageHeader>
 
