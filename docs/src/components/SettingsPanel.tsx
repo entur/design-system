@@ -1,6 +1,7 @@
 import React from 'react';
-import { CollapsedIcon, SettingsIcon } from '@entur/icons';
-import { Heading2 } from '@entur/typography';
+import { SettingsIcon } from '@entur/icons';
+import { Button } from '@entur/button';
+import { Heading4 } from '@entur/typography';
 import { FormGroup } from '@entur/form';
 import {
   useSettings,
@@ -8,10 +9,10 @@ import {
   VariableFormat,
   PackageManager,
 } from './SettingsContext';
+import { Modal } from '@entur/modal';
 import './SettingsPanel.scss';
-import { Contrast } from '@entur/layout';
 
-const SettingsPanel: React.FC = props => {
+const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
   const {
     variableFormat,
@@ -23,61 +24,66 @@ const SettingsPanel: React.FC = props => {
   } = useSettings();
 
   return (
-    <section className="settings-panel">
-      <Contrast>
-        <button
-          aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
-          className="settings-panel__trigger"
-          onClick={() => setOpen(prev => !prev)}
-          type="button"
-        >
-          {isOpen ? <CollapsedIcon /> : <SettingsIcon />}
-        </button>
-        {isOpen && (
-          <>
-            <Heading2>Innstillinger</Heading2>
-            <FormGroup label="Hva slags bruker er du?">
-              <select
-                className="entur-dropdown"
-                onChange={e => setUserType(e.target.value as UserType)}
-                value={userType}
-              >
-                <option value="developer">Utvikler 👩‍💻</option>
-                <option value="designer">Designer ‍👨‍🎨</option>
-              </select>
-            </FormGroup>
-            {userType === 'developer' && (
-              <FormGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
-                <select
-                  className="entur-dropdown"
-                  onChange={e =>
-                    setPackageManager(e.target.value as PackageManager)
-                  }
-                  value={packageManager}
-                >
-                  <option value="yarn">yarn ‍🧶</option>
-                  <option value="npm">npm ⬢</option>
-                </select>
-              </FormGroup>
-            )}
-            <FormGroup label="Hva slags variabler vil du se?">
+    <>
+      <button
+        aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
+        className="settings-trigger"
+        onClick={() => setOpen(prev => !prev)}
+        type="button"
+      >
+        <SettingsIcon />
+      </button>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={() => setOpen(false)}
+        style={{ minWidth: '22rem' }}
+      >
+        <form onSubmit={() => setOpen(false)}>
+          <Heading4 as="h2">Innstillinger</Heading4>
+          <FormGroup label="Hva slags bruker er du?">
+            <select
+              className="entur-dropdown"
+              onChange={e => setUserType(e.target.value as UserType)}
+              value={userType}
+            >
+              <option value="developer">Utvikler 👩‍💻</option>
+              <option value="designer">Designer ‍👨‍🎨</option>
+            </select>
+          </FormGroup>
+          {userType === 'developer' && (
+            <FormGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
               <select
                 className="entur-dropdown"
                 onChange={e =>
-                  setVariableFormat(e.target.value as VariableFormat)
+                  setPackageManager(e.target.value as PackageManager)
                 }
-                value={variableFormat}
+                value={packageManager}
               >
-                <option value="css">CSS</option>
-                <option value="scss">SCSS</option>
-                <option value="less">LESS</option>
-                <option value="js">JavaScript</option>
+                <option value="yarn">yarn ‍🧶</option>
+                <option value="npm">npm ⬢</option>
               </select>
             </FormGroup>
-          </>
-        )}
-      </Contrast>
-    </section>
+          )}
+          <FormGroup label="Hva slags variabler vil du se?">
+            <select
+              className="entur-dropdown"
+              onChange={e =>
+                setVariableFormat(e.target.value as VariableFormat)
+              }
+              value={variableFormat}
+            >
+              <option value="css">CSS</option>
+              <option value="scss">SCSS</option>
+              <option value="less">LESS</option>
+              <option value="js">JavaScript</option>
+            </select>
+          </FormGroup>
+          <Button variant="primary" width="fluid" style={{ marginTop: '1rem' }}>
+            Lagre
+          </Button>
+        </form>
+      </Modal>
+    </>
   );
 };
 

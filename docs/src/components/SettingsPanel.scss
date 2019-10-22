@@ -1,32 +1,26 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.settings-panel {
-  position: absolute;
-  bottom: 0;
-  padding: $space-default;
-}
-
-.settings-panel__trigger {
+.settings-trigger {
   appearance: none;
-  background: $colors-blues-blue30;
+  background: $colors-brand-white;
   border: 0;
   border-radius: 50%;
-  color: $colors-brand-white;
+  box-shadow: 0 0 0.25rem rgba($colors-misc-black, 0.15);
+  color: $colors-brand-blue;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: inherit;
   padding: $space-default;
-  margin: $space-default;
-
-  &:hover {
-    background-color: $colors-blues-blue50;
-  }
+  position: fixed;
+  bottom: $space-default;
+  right: $space-default;
+  z-index: 10001;
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 5px 1px $colors-misc-focus;
+    box-shadow: 0 0 0.25rem $colors-misc-focus;
   }
 }
 

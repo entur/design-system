@@ -4,7 +4,6 @@ import { Location, WindowLocation } from '@reach/router';
 import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
 import classNames from 'classnames';
 import { SearchBar } from './SearchBar';
-import SettingsPanel from 'src/components/SettingsPanel';
 import debounce from '../../utils/debounce';
 import './Menu.scss';
 import logoSVG from './designsystem-Logo.svg';
@@ -176,7 +175,6 @@ export default function Menus() {
           onFilteredSearchChange={setFilteredSearch}
         />
         <Sidebar menuItems={filtered} />
-        <SettingsPanel />
       </nav>
       <nav className="heading-navigator-wrapper">
         <TOCNavigation />
