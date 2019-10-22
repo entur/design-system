@@ -14,24 +14,19 @@ function BorderWrapper(props) {
 }
 
 function ImageDisplay(props) {
-  const [showIcon, setShowIcon] = React.useState(false);
   return (
-    <div
-      className="image-display"
-      onMouseOver={() => setShowIcon(true)}
-      onMouseLeave={() => setShowIcon(false)}
-    >
+    <div className="image-display">
       <a
         className="image-display__download-icon"
-        style={{ display: showIcon ? 'block' : 'none' }}
         href={props.src}
         download
+        aria-label="Last ned bilde"
       >
         <DownloadIcon />
       </a>
 
       <div className="image-display__image">
-        <img src={props.src} />
+        <img src={props.src} alt="" />
       </div>
     </div>
   );

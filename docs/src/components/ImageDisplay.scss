@@ -1,33 +1,38 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .border-wrapper {
-  border: 2px solid $colors-greys-grey20;
+  border: ($space-default / 8) solid $colors-greys-grey20;
   display: grid;
-  gap: 1rem;
+  gap: $space-default;
 }
 
 .image-display {
   width: 100%;
   position: relative;
-}
 
-.image-display__download-icon {
-  cursor: pointer;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  background: $colors-brand-white;
-  box-shadow: 0px 0px 20px -12px rgba(0, 0, 0, 1);
-  box-sizing: border-box;
-  border-radius: 50%;
-  justify-content: center;
-  border: none;
-  align-items: center;
-  padding: 1rem;
-  color: inherit;
-  line-height: 1rem;
-  height: 3rem;
-  width: 3rem;
+  &__download-icon {
+    cursor: pointer;
+    position: absolute;
+    right: $space-large;
+    top: $space-large;
+    background: $colors-brand-white;
+    box-shadow: 0px 0px 1.25rem -0.75rem $colors-misc-black;
+    border-radius: 50%;
+    border: none;
+    padding: $space-default;
+    color: inherit;
+    height: $space-extra-large3;
+    width: $space-extra-large3;
+    opacity: 0;
+    .image-display:hover &,
+    &:focus {
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 1rem $colors-misc-focus;
+    }
+  }
 }
 
 .image-display__image {
