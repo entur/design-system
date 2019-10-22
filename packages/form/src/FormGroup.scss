@@ -46,4 +46,8 @@
       }
     }
   }
+
+  & + & {
+    margin-top: $space-large;
+  }
 }
