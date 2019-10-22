@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@1.0.0...@entur/designsystem-docs@2.0.0) (2019-10-22)
+
+### Bug Fixes
+
+- **docs:** align the "Endre side" content to the right of the site footer ([684af44](https://bitbucket.org/enturas/design-system/commits/684af447c01d0405c1cbb02bdd7e5b2a2b99dd54))
+- **docs:** fix bug where settings were flashed as their initial value ([706aacf](https://bitbucket.org/enturas/design-system/commits/706aacfa032a52efb0ef2920ad72bcb9c102ac33))
+- **docs:** there were fnutts that weren't supposed to be there ([7b8531d](https://bitbucket.org/enturas/design-system/commits/7b8531dd9f34c1d19b491d3bfcde255750111cb5))
+- **tooltip:** using Entur Button in tooltip documentation ([a1abfb2](https://bitbucket.org/enturas/design-system/commits/a1abfb2c6fa9e39e8bb1c5e6ac6fffb0e9153ad7))
+
+### Code Refactoring
+
+- **tooltip:** use named exports instead of default exports ([ad487aa](https://bitbucket.org/enturas/design-system/commits/ad487aa63a591fa979b7d57cb804426cc54ed3b7))
+
+### Features
+
+- **docs:** add "copy color" feature to color swatches ([dcc2b01](https://bitbucket.org/enturas/design-system/commits/dcc2b013651d90dbf263fd3687d54d4e1a69263c))
+- **docs:** add edit page feature ([d4823b3](https://bitbucket.org/enturas/design-system/commits/d4823b3313a0be098a7758acf49ac90521ce8a33))
+- **docs:** add info for developers on how to get started ([2fe4162](https://bitbucket.org/enturas/design-system/commits/2fe41623376938ecb7a6a87f79220b0caaca10a7))
+- **docs:** add props component ([aa21c10](https://bitbucket.org/enturas/design-system/commits/aa21c1051ddc2a0dbe13190e1a622499eecd32a1))
+- **docs:** add settings ([33e5e56](https://bitbucket.org/enturas/design-system/commits/33e5e568d4d01ac1f5af092ff54f01cccd9b4ab6))
+- **docs:** added install and import code examples for components ([3947218](https://bitbucket.org/enturas/design-system/commits/394721862f307913a7e553ee9266ad335bb98d7d))
+- **docs:** show a toast every time an icon is copied ([3afc5d1](https://bitbucket.org/enturas/design-system/commits/3afc5d12092bb65317ffd15ba5d00d75625cfbf4))
+- **docs:** start using new CodeText component in MDX ([73918a3](https://bitbucket.org/enturas/design-system/commits/73918a35a515997a61829fa707f464fc665c17a1))
+- **icons:** Add inline and extra class support ([50dc694](https://bitbucket.org/enturas/design-system/commits/50dc694063585c4c39618bf38f1c0d2a87a3319e))
+- **Props:** show code values with new CodeText component ([339d7f8](https://bitbucket.org/enturas/design-system/commits/339d7f8ba1942438bb667eb54a79fd1ba21efba3))
+- **Props:** skip showing default value column if no default values ([df898c9](https://bitbucket.org/enturas/design-system/commits/df898c984f2ae107fbe4fd2a5060c687f7b8f7c3))
+- **settings:** added NPM/yarn settings ([92e4d54](https://bitbucket.org/enturas/design-system/commits/92e4d545500ca8e99aea1cfbf0f96f0f6d16e7a4))
+- **small typography:** added Small typography and documentation ([f2c6a0a](https://bitbucket.org/enturas/design-system/commits/f2c6a0a108b177efad32ca0fec0733a2072bd9d1))
+- **table:** new package @entur/table ([45d7e3b](https://bitbucket.org/enturas/design-system/commits/45d7e3b151b6ff4e59bf58d776da5b45df34f196))
+
+### BREAKING CHANGES
+
+- **tooltip:** Change from default export to named export (Tooltip)
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@0.3.0...@entur/designsystem-docs@1.0.0) (2019-10-11)
 
 ### Bug Fixes

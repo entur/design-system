@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.0.0...@entur/button@1.0.1) (2019-10-22)
+
+### Bug Fixes
+
+- **icons:** upgrade tsdx to avoid custom config for icons ([712f1cc](https://bitbucket.org/enturas/design-system/commits/712f1cccfd3f0242f3287c21b45c8d5c9ad92084))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@0.2.1...@entur/button@1.0.0) (2019-10-11)
 
 ### Bug Fixes

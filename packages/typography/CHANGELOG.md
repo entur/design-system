@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.3.0...@entur/typography@0.4.0) (2019-10-22)
+
+### Features
+
+- **docs:** added install and import code examples for components ([3947218](https://bitbucket.org/enturas/design-system/commits/394721862f307913a7e553ee9266ad335bb98d7d))
+- **small typography:** added Small typography and documentation ([f2c6a0a](https://bitbucket.org/enturas/design-system/commits/f2c6a0a108b177efad32ca0fec0733a2072bd9d1))
+- **typography:** add new component - CodeText ([474721d](https://bitbucket.org/enturas/design-system/commits/474721dac9ca84b0d1ecfb7a93ad339ba0653184))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.2.0...@entur/typography@0.3.0) (2019-10-07)
 
 ### Bug Fixes

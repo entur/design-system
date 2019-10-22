@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.3.0...@entur/icons@0.4.0) (2019-10-22)
+
+### Bug Fixes
+
+- **icons:** upgrade tsdx to avoid custom config for icons ([712f1cc](https://bitbucket.org/enturas/design-system/commits/712f1cccfd3f0242f3287c21b45c8d5c9ad92084))
+
+### Features
+
+- **icons:** Add inline and extra class support ([50dc694](https://bitbucket.org/enturas/design-system/commits/50dc694063585c4c39618bf38f1c0d2a87a3319e))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.2.0...@entur/icons@0.3.0) (2019-10-07)
 
 ### Bug Fixes
