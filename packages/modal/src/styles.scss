@@ -1,0 +1,41 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+:root {
+  // Tell Reach that we're doing the styling ourselves
+  --reach-dialog: 1;
+}
+
+.entur-modal__overlay {
+  background: rgba($colors-brand-blue, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  z-index: 10000;
+}
+
+.entur-modal__content {
+  background: var(--primary-background-color);
+  color: var(--primary-text-color);
+  margin: $space-large auto;
+  min-width: 20rem;
+  padding: $space-large;
+  position: relative;
+  outline: none;
+  z-index: 10001;
+  width: fit-content;
+}
+
+.entur-modal__close {
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+  position: absolute;
+  top: $space-large;
+  right: $space-large;
+}

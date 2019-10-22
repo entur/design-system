@@ -4,6 +4,7 @@ import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import SiteFooter from 'src/components/SiteFooter';
 import { SettingsProvider } from 'src/components/SettingsContext';
+import SettingsPanel from 'src/components/SettingsPanel';
 import Props from 'src/components/Props';
 import Menu from './UI/Menu';
 
@@ -34,6 +35,7 @@ const App: React.FC = ({ children }) => {
             <SiteFooter />
           </ComponentsProvider>
         </div>
+        <SettingsPanel />
       </ToastProvider>
     </SettingsProvider>
   );
