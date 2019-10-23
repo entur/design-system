@@ -10,17 +10,17 @@ type Props = {
   /** The content to show and copy */
   children: string;
   /** Config is directly passed to addToast */
-  copiedToastMessage: string | { title?: string; content: React.ReactNode };
+  successMessage: string;
 };
 
 export const CopyablePreformattedText: React.FC<Props> = ({
   children,
-  copiedToastMessage,
+  successMessage,
 }) => {
   const { addToast } = useToast();
   const handleClick = () => {
     copy(children);
-    addToast(copiedToastMessage);
+    addToast({ title: 'Kopiert!', content: successMessage });
   };
   return (
     <button
@@ -31,7 +31,7 @@ export const CopyablePreformattedText: React.FC<Props> = ({
       <PreformattedText>{children}</PreformattedText>
       <ReportsIcon
         className="copyable-preformatted-text__icon"
-        aria-label="Kopier"
+        aria-label="Kopier innhold"
       />
     </button>
   );

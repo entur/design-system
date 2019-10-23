@@ -1,14 +1,6 @@
 import React from 'react';
 import { useCurrentDoc } from 'docz';
-import copy from 'copy-text-to-clipboard';
-import { useToast } from '@entur/alert';
-import { ReportsIcon } from '@entur/icons';
-import {
-  Heading1,
-  Label,
-  LeadParagraph,
-  PreformattedText,
-} from '@entur/typography';
+import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { CopyablePreformattedText } from 'src/components/CopyablePreformattedText';
 import { useSettings } from './SettingsContext';
 import './PageHeader.scss';
@@ -34,12 +26,7 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
       {children && <LeadParagraph>{children}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
-        <CopyablePreformattedText
-          copiedToastMessage={{
-            title: `Kopiert!`,
-            content: 'Innstalleringstekst ble kopiert til utklippstavla.',
-          }}
-        >
+        <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
           {installText}
         </CopyablePreformattedText>
       )}
