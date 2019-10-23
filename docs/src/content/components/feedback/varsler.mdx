@@ -11,6 +11,7 @@ import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import InlineComponent from 'src/components/InlineComponent';
 import { BestPractices, Example } from 'src/components/BestPractices';
+import { ImportStatement } from 'src/components/ImportStatement';
 import { Button } from '@entur/button';
 import {
   BannerAlertBox,
@@ -25,7 +26,14 @@ import {
   meldinger som man bør ta hensyn til.
 </PageHeader>
 
-## Lokale varsler
+## Komponenter
+
+### Lokale varsler
+
+<ImportStatement imports="BannerAlertBox" />
+<Props of={BannerAlertBox} />
+
+Lokale varsler brukes forskjellige steder på en side for å informere om noe viktig.
 
 <Playground>
   <BannerAlertBox
@@ -64,9 +72,11 @@ import {
   </BannerAlertBox>
 </Playground>
 
-<Props of={BannerAlertBox} />
+### Toast-varsler
 
-## Toast-varsler
+<ImportStatement imports="ToastAlertBox, ToastProvider, useToast" />
+<Props of={ToastAlertBox} />
+<Props of={ToastProvider} />
 
 Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp av seg selv øverst i høyre hjørne, og skal forsvinne automatisk etter minst seks sekunder.
 
@@ -125,11 +135,7 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
   }}
 </InlineComponent>
 
-<Props of={ToastAlertBox} />
-
-<Props of={ToastProvider} title="Props, ToastProvider" />
-
-### Hvordan bruke toasts
+#### Hvordan bruke toasts
 
 Du får fiks ferdige toast-funksjonalitet på null komma niks med `@entur/alert`. Først må du wrappe appen din i en `<ToastProvider />`.
 
@@ -172,7 +178,10 @@ Toasts vil lukkes automatisk etter 6 sekunder, med mindre du flytter musepekeren
 <ToastProvider delay={10000} />
 ```
 
-## Små varsler
+### Små varsler
+
+<ImportStatement imports="SmallAlertBox" />
+<Props of={SmallAlertBox} />
 
 Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
 
@@ -198,8 +207,6 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
     </SmallAlertBox>
   </div>
 </Playground>
-
-<Props of={SmallAlertBox} />
 
 ## Retningslinjer
 
