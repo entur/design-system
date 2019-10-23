@@ -1,5 +1,11 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
 .table-of-content-container {
   display: none;
 
