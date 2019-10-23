@@ -43,7 +43,7 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
       {children && <LeadParagraph>{children}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <PreformattedText
-          onClick={() => handleInstallClick()}
+          onClick={handleInstallClick}
           className="page-header__install-text"
         >
           {npmPackage && installText}
