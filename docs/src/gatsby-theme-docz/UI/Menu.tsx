@@ -1,40 +1,17 @@
 import React from 'react';
-import { useMenus, Link, useCurrentDoc, MenuItem } from 'docz';
+import { Link } from 'docz';
 import classNames from 'classnames';
-import { Contrast } from '@entur/layout';
 import { TocNavigation } from 'src/components/TocNavigation';
 import { SiteSidebar } from 'src/components/SiteSidebar';
-import { SearchBar } from './SearchBar';
-import logoSVG from './designsystem-Logo.svg';
-
 import './Menu.scss';
 
-function hasSameParentCategory(menuItem: MenuItem, currentDoc: any): boolean {
-  if (menuItem.parent === currentDoc.parent) {
-    return true;
-  }
-  return (menuItem.menu || []).some(subMenuItem =>
-    hasSameParentCategory(subMenuItem, currentDoc),
-  );
-}
+const getLinkProps = ({ isPartiallyCurrent }: any) => ({
+  className: classNames('tab-link', {
+    'active-tab-link': isPartiallyCurrent,
+  }),
+});
 
 export default function Menus() {
-  const currentDoc = useCurrentDoc();
-  const menuItems = useMenus({
-    filter: item => hasSameParentCategory(item, currentDoc),
-  });
-  let [filtered, setFiltered] = React.useState(menuItems);
-
-  const getLinkProps = ({ isPartiallyCurrent }: any) => ({
-    className: classNames('tab-link', {
-      'active-tab-link': isPartiallyCurrent,
-    }),
-  });
-
-  function setFilteredSearch(items: MenuItem[]) {
-    setFiltered(items);
-  }
-
   return (
     <>
       <nav className="site-navbar">
@@ -53,16 +30,7 @@ export default function Menus() {
           </Link>
         </div>
       </nav>
-      <Contrast as="nav" className="site-sidebar-wrapper">
-        <Link to="/">
-          <img src={logoSVG} alt="Entur logo" className="site-logo" />
-        </Link>
-        <SearchBar
-          menuItems={menuItems!}
-          onFilteredSearchChange={setFilteredSearch}
-        />
-        <SiteSidebar menuItems={filtered} />
-      </Contrast>
+      <SiteSidebar />
       <nav className="heading-navigator-wrapper">
         <TocNavigation />
       </nav>

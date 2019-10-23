@@ -1,0 +1,60 @@
+import React from 'react';
+import { TextField } from '@entur/form';
+import { SearchIcon } from '@entur/icons';
+import './SearchBar.scss';
+
+type SearchBarProps = {
+  /** The query text shown in the search field */
+  searchText: string;
+  /** Change handler, passed to the DOM input element */
+  onSearchTextChange: (text: string) => void;
+};
+
+export const SearchBar: React.FC<SearchBarProps> = ({
+  searchText,
+  onSearchTextChange,
+}) => {
+  let inputRef = React.useRef<HTMLInputElement>();
+  let previousFocusRef = React.useRef<HTMLElement>();
+  // This little trick lets the user tap '/' to focus the search field
+  React.useEffect(() => {
+    function handleKeyUp(e: KeyboardEvent) {
+      const hasFocus = inputRef.current === document.activeElement;
+      switch (e.key) {
+        case '/':
+          if (!hasFocus) {
+            previousFocusRef.current = document.activeElement as HTMLElement;
+            e.stopPropagation();
+            inputRef.current!.focus(); // inputRef will always be set
+          }
+          break;
+        case 'Escape':
+          if (hasFocus && previousFocusRef.current) {
+            previousFocusRef.current.focus();
+            onSearchTextChange('');
+          }
+          break;
+      }
+    }
+    document.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  });
+
+  return (
+    <div className="searchbar-wrapper">
+      <TextField
+        prepend={<SearchIcon />}
+        placeholder="Søk..."
+        value={searchText}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onSearchTextChange(e.target.value)
+        }
+        width="fluid"
+        ref={inputRef}
+      />
+    </div>
+  );
+};

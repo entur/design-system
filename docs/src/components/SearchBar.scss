@@ -1,7 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .searchbar-wrapper {
-  display: flex;
-  justify-content: center;
+  display: block;
   margin: $space-medium;
 }
