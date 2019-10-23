@@ -1,126 +1,13 @@
 import React from 'react';
-import { useMenus, Link, useCurrentDoc, MenuItem, Entry } from 'docz';
-import { Location, WindowLocation } from '@reach/router';
-import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
+import { useMenus, Link, useCurrentDoc, MenuItem } from 'docz';
 import classNames from 'classnames';
+import { Contrast } from '@entur/layout';
+import { TocNavigation } from 'src/components/TocNavigation';
+import { SiteSidebar } from 'src/components/SiteSidebar';
 import { SearchBar } from './SearchBar';
-import debounce from '../../utils/debounce';
-import './Menu.scss';
 import logoSVG from './designsystem-Logo.svg';
 
-const removeTrailingSlash = (str: string) =>
-  str.endsWith('/') ? str.slice(0, -1) : str;
-
-const isActive = (route = '', location: WindowLocation) =>
-  removeTrailingSlash(route) === removeTrailingSlash(location.pathname);
-
-type SidebarProps = {
-  menuItems: MenuItem[] | null;
-};
-const Sidebar: React.FC<SidebarProps> = ({ menuItems }) => {
-  if (!menuItems) {
-    return null;
-  }
-  return (
-    <Location>
-      {({ location }) => (
-        <EnturMenu>
-          {menuItems.map(menuItem => (
-            <EnturMenuItem
-              key={menuItem.id}
-              as={Link}
-              to={menuItem.route}
-              active={isActive(menuItem.route, location)}
-            >
-              {menuItem.name}
-
-              {menuItem.menu && (
-                <EnturMenu>
-                  {menuItem.menu.map(menuItem => (
-                    <EnturMenuItem
-                      key={menuItem.id}
-                      as={Link}
-                      to={menuItem.route}
-                      active={isActive(menuItem.route, location)}
-                    >
-                      {menuItem.name}
-                    </EnturMenuItem>
-                  ))}
-                </EnturMenu>
-              )}
-            </EnturMenuItem>
-          ))}
-        </EnturMenu>
-      )}
-    </Location>
-  );
-};
-
-function useCurrentActiveHeading(headings: Entry['headings']) {
-  let headingElements: HTMLElement[] = [];
-  const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
-
-  const findActiveHeading = debounce(() => {
-    for (let nextElement of headingElements) {
-      const nextTop = nextElement.getBoundingClientRect().top;
-      if (nextTop >= 0) {
-        setActiveHeading(nextElement.id);
-        break;
-      }
-    }
-  }, 16);
-
-  React.useEffect(() => {
-    headingElements = headings.map(
-      heading => document.getElementById(heading.slug) as HTMLElement,
-    );
-    window.addEventListener('resize', findActiveHeading);
-    window.addEventListener('scroll', findActiveHeading);
-    findActiveHeading();
-    return () => {
-      window.removeEventListener('resize', findActiveHeading);
-      window.removeEventListener('scroll', findActiveHeading);
-    };
-  }, []);
-
-  return activeHeading;
-}
-
-const TOCNavigation: React.FC = () => {
-  const currentDoc = useCurrentDoc() as Entry;
-  const headings = currentDoc
-    ? currentDoc.headings.filter(heading => heading.depth > 1)
-    : [];
-  const activeHeading = useCurrentActiveHeading(headings);
-  if (headings.length < 2) {
-    return null;
-  }
-  return (
-    <nav className="table-of-content-container">
-      <ul className="table-of-content">
-        {headings.map(heading => (
-          <li
-            key={heading.slug}
-            className={classNames(
-              'table-of-content__item',
-              `table-of-content__item--depth-${heading.depth}`,
-            )}
-          >
-            <a
-              className={classNames('table-of-content__link', {
-                'table-of-content__link--active':
-                  activeHeading === heading.slug,
-              })}
-              href={`#${heading.slug}`}
-            >
-              {heading.value}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+import './Menu.scss';
 
 function hasSameParentCategory(menuItem: MenuItem, currentDoc: any): boolean {
   if (menuItem.parent === currentDoc.parent) {
@@ -166,7 +53,7 @@ export default function Menus() {
           </Link>
         </div>
       </nav>
-      <nav className="site-sidebar-wrapper entur-contrast">
+      <Contrast as="nav" className="site-sidebar-wrapper">
         <Link to="/">
           <img src={logoSVG} alt="Entur logo" className="site-logo" />
         </Link>
@@ -174,10 +61,10 @@ export default function Menus() {
           menuItems={menuItems!}
           onFilteredSearchChange={setFilteredSearch}
         />
-        <Sidebar menuItems={filtered} />
-      </nav>
+        <SiteSidebar menuItems={filtered} />
+      </Contrast>
       <nav className="heading-navigator-wrapper">
-        <TOCNavigation />
+        <TocNavigation />
       </nav>
     </>
   );
