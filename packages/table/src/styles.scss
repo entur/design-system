@@ -22,6 +22,9 @@
 
   &__row {
     height: $space-extra-large5;
+    .entur-table--compact & {
+      height: $space-extra-large2;
+    }
   }
 
   &__body > &__row:hover {
@@ -35,7 +38,7 @@
   &__data-cell,
   &__header-cell {
     border-bottom: 0.125rem solid $colors-greys-grey20;
-    padding: 0 $space-default;
+    padding: 0 ($space-default + $space-extra-small);
 
     .entur-contrast & {
       border-bottom-color: $colors-blues-blue20;
