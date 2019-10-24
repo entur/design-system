@@ -12,7 +12,7 @@ jest.mock('@reach/utils', () => ({
 test('renders a nice looking modal', () => {
   const spy = jest.fn();
   const { getByTestId } = render(
-    <Modal onDismiss={spy} defaultOpen={true}>
+    <Modal onDismiss={spy} isOpen={true}>
       <div data-testid="content">Modal content</div>
     </Modal>,
   );
@@ -26,7 +26,7 @@ test('renders a nice looking modal', () => {
 test('can be closed by clicking the close button', () => {
   const spy = jest.fn();
   const { getByLabelText } = render(
-    <Modal onDismiss={spy} defaultOpen={true}>
+    <Modal onDismiss={spy} isOpen={true}>
       <div data-testid="content">Modal content</div>
     </Modal>,
   );
