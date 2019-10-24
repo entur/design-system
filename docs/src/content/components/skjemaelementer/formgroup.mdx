@@ -9,8 +9,7 @@ npmPackage: form
 import { FormGroup, TextField, TextArea } from '@entur/form';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
-import PageHeader from 'src/components/PageHeader';
-import '@entur/form/dist/styles.css';
+import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
   FormGroup-komponenten legger på label og tilbakemelding rundt skjemaelementer.
@@ -37,14 +36,20 @@ import '@entur/form/dist/styles.css';
   >
     <TextField placeholder="Informasjon" />
   </FormGroup>
- <FormGroup
+  <FormGroup
     label="Togdestinasjon"
     feedback="Denne informasjonen hjelper deg"
     variant="info"
   >
     <TextArea placeholder="Informasjon" />
   </FormGroup>
-
 </Playground>
 
+## Komponenter
+
+### FormGroup
+
+<ImportStatement imports="FormGroup" />
 <Props of={FormGroup} />
+
+`<FormGroup />` gir oss en universelt utformet måte å legge til label, validering og variant-stiler til skjemaelementer.
