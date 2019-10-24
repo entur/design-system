@@ -43,6 +43,7 @@ async function run() {
       templateFolder: path.resolve('bin', 'template'),
       newPackageFolder: path.resolve('packages', packageName),
       newPackageJson: path.resolve('packages', packageName, 'package.json'),
+      newReadme: path.resolve('packages', packageName, 'README.md'),
       newIndexTsx: path.resolve('packages', packageName, 'src', 'index.tsx'),
       newComponentFileTsx: path.resolve(
         'packages',
@@ -85,6 +86,14 @@ async function run() {
         `${toCase.pascal(packageName)}.tsx`,
       ),
     );
+
+    // Update the README.md
+    const readmeContent = fs
+      .readFileSync(paths.newReadme, 'utf-8')
+      .replace(/PackageName/g, toCase.pascal(packageName))
+      .replace(/package-name/g, toCase.kebab(packageName));
+
+    fs.writeFileSync(paths.newReadme, readmeContent);
 
     console.log('🦷  Adding package to the active workspaces');
     const rootPackageJson = await fs.readJson(paths.rootPackageJson);
