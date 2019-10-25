@@ -7,17 +7,24 @@ npmPackage: form
 ---
 
 import { Props } from 'docz';
-import { Radio } from '@entur/form';
+import { Radio, RadioLabel } from '@entur/form/src/index.tsx';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
-import '@entur/form/dist/styles.css';
+import '@entur/form/src/styles.scss';
 
-<PageHeader>Radio.</PageHeader>
+<PageHeader>
+  Radio brukes for å velge mellom flere verdier i et skjema, og har gjerne en
+  label på sin høyre side.
+</PageHeader>
 
-<Playground> 
-  <Radio name="ok" /> 
+<Playground>
   <Radio name="ok" />
-
+  <Radio name="ok" />
+  <RadioLabel>
+    <Radio name="ok" />
+    ok
+  </RadioLabel>
 </Playground>
 
 <Props of={Radio} />
+<Props of={RadioLabel} />

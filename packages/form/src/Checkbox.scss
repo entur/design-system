@@ -4,72 +4,84 @@
   @return mix(white, $color, $percentage);
 }
 
-.entur-form-component--checkbox {
-  & input {
+.entur-form-component--checkbox__container {
+  display: block;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  input {
     position: absolute;
     opacity: 0;
     height: 0;
     width: 0;
+
+    &:hover ~ .entur-form-component--checkbox__icon {
+      border-color: $colors-blues-blue30;
+      background: $colors-greys-grey30;
+      .entur-contrast & {
+        border-color: $colors-blues-blue40;
+        background: $colors-blues-blue10;
+      }
+    }
+
+    &:not(:checked):active ~ .entur-form-component--checkbox__icon {
+      border-color: $colors-brand-lavender;
+    }
+
     &:checked ~ .entur-form-component--checkbox__icon {
-      background: red;
+      background-color: $colors-brand-blue;
+      color: white;
+      .entur-form-component--checkbox__icon {
+        height: 32px;
+        width: 16px;
+        color: red;
+        svg {
+          color: red;
+        }
+      }
+      .entur-contrast & {
+        background: $colors-blues-blue30;
+      }
+      &:hover {
+        border-color: $colors-blues-blue30;
+        background-color: $colors-blues-blue30;
+        .entur-contrast & {
+          background: $colors-blues-blue50;
+          border-color: $colors-blues-blue50;
+        }
+      }
+      &:active {
+        border-color: $colors-blues-blue40;
+        background-color: $colors-blues-blue40;
+        .entur-contrast & {
+          background: $colors-brand-lavender;
+          border-color: $colors-brand-lavender;
+        }
+      }
     }
   }
 
   .entur-form-component--checkbox__icon {
-    height: 16px;
-    width: 16px;
-  }
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  height: 1.25rem;
-  width: 1.25rem;
-  border: (1rem / 8) solid $colors-brand-blue;
-  background-color: transparent;
-  cursor: pointer;
-  // background-image: url(Check.svg);
-
-  .entur-contrast & {
-    //   background-color: $colors-blues-blue30;
-    border-color: $colors-blues-blue30;
-  }
-
-  &:hover {
-    border-color: $colors-blues-blue30;
-    background: $colors-greys-grey30;
-    .entur-contrast & {
-      border-color: $colors-blues-blue40;
-      background: $colors-blues-blue10;
-    }
-  }
-
-  &:not(:checked):active {
-    border-color: $colors-brand-lavender;
-  }
-
-  &:checked {
-    background-color: $colors-brand-blue;
+    position: absolute;
+    height: 1.25rem !important;
+    width: 1.25rem !important;
+    top: (0.75rem / 2);
+    left: (0.75rem / 2);
+    border: (1rem / 8) solid $colors-brand-blue;
+    background-color: transparent;
     color: white;
-    // background-image: url(Check.svg);
     .entur-contrast & {
-      background: $colors-blues-blue30;
-    }
-    &:hover {
+      // background-color: $colors-blues-blue30;
       border-color: $colors-blues-blue30;
-      background-color: $colors-blues-blue30;
-      .entur-contrast & {
-        background: $colors-blues-blue50;
-        border-color: $colors-blues-blue50;
-      }
+      color: $colors-brand-blue;
     }
-    &:active {
-      border-color: $colors-blues-blue40;
-      background-color: $colors-blues-blue40;
-      .entur-contrast & {
-        background: $colors-brand-lavender;
-        border-color: $colors-brand-lavender;
-      }
+    svg {
+      height: 16px;
+      width: 16px;
     }
   }
 }

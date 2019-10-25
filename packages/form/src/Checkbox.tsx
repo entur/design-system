@@ -23,7 +23,7 @@ export const Checkbox: React.RefForwardingComponent<
     ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
-      <label className={cx('entur-form-component--checkbox')}>
+      <label className={cx('entur-form-component--checkbox__container')}>
         <input type="checkbox" ref={ref} {...rest} />
         <span className="entur-form-component--checkbox__icon">
           <CheckIcon />
