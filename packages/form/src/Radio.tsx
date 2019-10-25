@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { Label } from '@entur/typography';
 import './Radio.scss';
 type RadioProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
@@ -24,8 +25,27 @@ export const Radio: React.RefForwardingComponent<
     return (
       <label className="entur-form-component--radio__container">
         <input type="radio" disabled={disabled} ref={ref} {...rest} />
-        <span className={classList}></span>
+        <span className={classList}>
+          <span className="entur-form-component--radio__circle"></span>
+        </span>
       </label>
     );
   },
 );
+
+type RadioLabelProps = {
+  /** Children blir labelteksten */
+  children: React.ReactNode;
+  [key: string]: any;
+};
+
+export const RadioLabel: React.FC<RadioLabelProps> = ({
+  children,
+  ...rest
+}) => {
+  return (
+    <Label {...rest} className="entur-form-component--radio--label">
+      {children}
+    </Label>
+  );
+};

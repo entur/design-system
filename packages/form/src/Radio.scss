@@ -12,7 +12,7 @@
     -ms-user-select: none;
     user-select: none;
     :hover ~ .entur-form-component--radio__radio {
-      border-color: $colors-blues-blue30;
+      background-color: $colors-blues-blue30;
     }
     input {
       position: absolute;
@@ -20,8 +20,13 @@
       cursor: pointer;
       height: 0;
       width: 0;
-      &:checked ~ .entur-form-component--radio__radio {
-        border-width: 5px;
+      &:checked
+        ~ .entur-form-component--radio__radio
+        .entur-form-component--radio__circle {
+        transform: scale((10/16));
+      }
+      &:focus ~ .entur-form-component--radio__radio {
+        box-shadow: 0 0 2px 2px $colors-misc-focus;
       }
     }
     .entur-form-component--radio__radio {
@@ -30,11 +35,23 @@
       left: (1.25rem / 2);
       height: 1.25rem;
       width: 1.25rem;
-      background-color: $colors-brand-white;
-      border: (1rem / 8) solid $colors-brand-blue;
+      background-color: $colors-brand-blue;
       border-radius: 50%;
-      transition: border-color 0.2s ease;
-      transition: border-width 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .entur-form-component--radio__circle {
+        display: block;
+        width: $space-default;
+        height: $space-default;
+        border-radius: 50%;
+        background-color: $colors-brand-white;
+        transition: transform 0.1s linear;
+      }
     }
+  }
+  &--label {
+    display: flex;
+    align-items: center;
   }
 }
