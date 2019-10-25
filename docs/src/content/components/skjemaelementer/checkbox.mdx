@@ -1,0 +1,21 @@
+---
+name: Checkbox
+route: /komponenter/skjemaelementer/checkbox
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Checkbox } from '@entur/form';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import '@entur/form/dist/styles.css';
+
+<PageHeader>Checkbox.</PageHeader>
+
+<Playground>
+  <Checkbox />
+</Playground>
+
+<Props of={Checkbox} />

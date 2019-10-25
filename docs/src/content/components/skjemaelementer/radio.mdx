@@ -1,0 +1,23 @@
+---
+name: Radio
+route: /komponenter/skjemaelementer/radio
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Radio } from '@entur/form';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import '@entur/form/dist/styles.css';
+
+<PageHeader>Radio.</PageHeader>
+
+<Playground> 
+  <Radio name="ok" /> 
+  <Radio name="ok" />
+
+</Playground>
+
+<Props of={Radio} />

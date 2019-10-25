@@ -1,0 +1,23 @@
+---
+name: Dropdown
+route: /komponenter/skjemaelementer/dropdown
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Dropdown } from '@entur/form';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import '@entur/form/dist/styles.css';
+
+<PageHeader>
+  Dropdown er en skjemakomponent for å velge mellom 2 til flere valg.
+</PageHeader>
+
+<Playground>
+  <Dropdown />
+</Playground>
+
+<Props of={Dropdown} />
