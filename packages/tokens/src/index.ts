@@ -90,24 +90,25 @@ export const colors = {
 };
 
 // Dimensions
-const spaceScale = [0, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
+const spaceScale = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
 export const space = {
   none: spaceScale[0],
-  default: spaceScale[3],
+  default: spaceScale[4],
 
-  extraSmall: spaceScale[1],
-  small: spaceScale[2],
-  medium: spaceScale[3],
-  large: spaceScale[4],
-  extraLarge: spaceScale[5],
-  extraLarge2: spaceScale[6],
-  extraLarge3: spaceScale[7],
-  extraLarge4: spaceScale[8],
-  extraLarge5: spaceScale[9],
-  extraLarge6: spaceScale[10],
-  extraLarge7: spaceScale[11],
-  extraLarge8: spaceScale[12],
-  extraLarge9: spaceScale[13],
+  extraSmall2: spaceScale[1],
+  extraSmall: spaceScale[2],
+  small: spaceScale[3],
+  medium: spaceScale[4],
+  large: spaceScale[5],
+  extraLarge: spaceScale[6],
+  extraLarge2: spaceScale[7],
+  extraLarge3: spaceScale[8],
+  extraLarge4: spaceScale[9],
+  extraLarge5: spaceScale[10],
+  extraLarge6: spaceScale[11],
+  extraLarge7: spaceScale[12],
+  extraLarge8: spaceScale[13],
+  extraLarge9: spaceScale[14],
 };
 
 // Typography
