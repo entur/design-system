@@ -14,7 +14,7 @@
 }
 
 .toggle-switch__switch {
-  margin-right: ($space-extra-small + $space-small);
+  margin-right: $space-small;
   position: relative;
 
   &::before,

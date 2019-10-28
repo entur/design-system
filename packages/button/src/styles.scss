@@ -56,8 +56,8 @@
   &--width-square {
     padding-right: $space-none;
     padding-left: $space-none;
-    min-width: ($space-extra-large2 + $space-extra-small);
-    width: ($space-extra-large2 + $space-extra-small);
+    min-width: ($space-extra-large2 + $space-extra-small2);
+    width: ($space-extra-large2 + $space-extra-small2);
   }
 
   &--width-fluid {
