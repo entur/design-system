@@ -138,7 +138,38 @@ export const lineHeights = {
   extraLarge4: lineHeightScale[7],
   extraLarge5: lineHeightScale[8],
 };
+
 // Responsivity
 export const breakpoints = {
   large: 800,
+};
+
+// Borders
+const borderWidthScale = [1, 2, 4];
+export const borderWidths = {
+  default: borderWidthScale[1],
+
+  small: borderWidthScale[0],
+  medium: borderWidthScale[1],
+  large: borderWidthScale[2],
+};
+
+const borderRadiusScale = [1, 4];
+export const borderRadiuses = {
+  default: borderRadiusScale[0],
+
+  small: borderRadiusScale[0],
+  medium: borderRadiusScale[1],
+};
+
+// Z-indexes
+const zIndexScale = ['-1', '0', '10', '20', '30', '40', '50'];
+export const zIndexes = {
+  behind: zIndexScale[0],
+  default: zIndexScale[1],
+  sticky: zIndexScale[2],
+  popover: zIndexScale[3],
+  overlay: zIndexScale[4],
+  modal: zIndexScale[5],
+  toast: zIndexScale[6],
 };
