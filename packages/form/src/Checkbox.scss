@@ -4,22 +4,36 @@
   @return mix(white, $color, $percentage);
 }
 
-.entur-form-component--checkbox__container {
-  display: block;
-  position: relative;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  height: 2rem;
-  width: 2rem;
-  input {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
+.entur-form-component--checkbox {
+  &__container {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    height: $space-extra-large;
+    user-select: none;
 
-    &:hover ~ .entur-form-component--checkbox__icon {
+    input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+
+      &:checked + .entur-form-component--checkbox__icon {
+        background-color: $colors-brand-blue;
+        .entur-contrast & {
+          background: $colors-blues-blue30;
+        }
+        svg {
+          visibility: visible;
+        }
+      }
+    }
+    &:hover input:not(:checked) + .entur-form-component--checkbox__icon {
       border-color: $colors-blues-blue30;
       background: $colors-greys-grey30;
       .entur-contrast & {
@@ -27,61 +41,35 @@
         background: $colors-blues-blue10;
       }
     }
-
-    &:not(:checked):active ~ .entur-form-component--checkbox__icon {
-      border-color: $colors-brand-lavender;
-    }
-
-    &:checked ~ .entur-form-component--checkbox__icon {
-      background-color: $colors-brand-blue;
-      color: white;
-      .entur-form-component--checkbox__icon {
-        height: 32px;
-        width: 16px;
-        color: red;
-        svg {
-          color: red;
-        }
-      }
+    &:hover input:checked + .entur-form-component--checkbox__icon {
+      border-color: $colors-blues-blue30;
+      background-color: $colors-blues-blue30;
       .entur-contrast & {
-        background: $colors-blues-blue30;
-      }
-      &:hover {
-        border-color: $colors-blues-blue30;
-        background-color: $colors-blues-blue30;
-        .entur-contrast & {
-          background: $colors-blues-blue50;
-          border-color: $colors-blues-blue50;
-        }
-      }
-      &:active {
-        border-color: $colors-blues-blue40;
-        background-color: $colors-blues-blue40;
-        .entur-contrast & {
-          background: $colors-brand-lavender;
-          border-color: $colors-brand-lavender;
-        }
+        background: $colors-blues-blue50;
+        border-color: $colors-blues-blue50;
       }
     }
   }
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-  .entur-form-component--checkbox__icon {
-    position: absolute;
-    height: 1.25rem !important;
-    width: 1.25rem !important;
-    top: (0.75rem / 2);
-    left: (0.75rem / 2);
+    margin-right: $space-default;
+    height: 1.25rem;
+    width: 1.25rem;
     border: (1rem / 8) solid $colors-brand-blue;
+    border-radius: (1rem / 16);
     background-color: transparent;
-    color: white;
+    color: $colors-brand-white;
     .entur-contrast & {
-      // background-color: $colors-blues-blue30;
       border-color: $colors-blues-blue30;
-      color: $colors-brand-blue;
     }
     svg {
-      height: 16px;
-      width: 16px;
+      height: $space-default - $space-extra-small;
+      width: $space-default - $space-extra-small;
+      visibility: hidden;
     }
   }
 }
