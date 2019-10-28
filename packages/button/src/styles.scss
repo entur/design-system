@@ -20,8 +20,8 @@
 
 .entur-button {
   min-width: 9.5rem; //width 152-border
-  border: ($space-default / 8) solid transparent; // ~2px transparent border
-  border-radius: $space-default / 16;
+  border: $border-widths-default solid transparent;
+  border-radius: $border-radiuses-default;
   font-size: inherit;
   cursor: pointer;
   display: inline-block;
@@ -150,7 +150,7 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  border: 4px solid rgba(255, 255, 255, 0.4);
+  border: $border-widths-large solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   border-right-color: white;
   animation: 1s infinite linear spin;

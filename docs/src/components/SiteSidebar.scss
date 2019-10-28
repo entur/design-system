@@ -16,6 +16,6 @@
     max-width: 18rem;
     overflow-y: scroll;
     position: fixed;
-    z-index: 11;
+    z-index: $z-indexes-sticky;
   }
 }

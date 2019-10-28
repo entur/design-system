@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .playground {
-  border: 1px solid $colors-greys-grey20;
+  border: $border-widths-small solid $colors-greys-grey20;
   padding: 1em;
   margin-bottom: 0.5em;
 }

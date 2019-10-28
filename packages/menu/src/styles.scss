@@ -61,8 +61,8 @@
   appearance: none;
   background: none;
   border: 0;
-  border-left: $space-extra-small2 solid transparent;
-  border-top: 0.0625rem solid $colors-blues-blue10;
+  border-left: $border-widths-large solid transparent;
+  border-top: $border-widths-small solid $colors-blues-blue10;
   border-radius: 0;
   color: inherit;
   cursor: pointer;

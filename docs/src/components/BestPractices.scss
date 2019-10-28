@@ -18,7 +18,7 @@
 
 .best-practices__heading {
   background-color: $colors-greys-grey40;
-  border-bottom: 4px solid currentColor;
+  border-bottom: $border-widths-large solid currentColor;
   font-weight: $font-weights-heading;
   padding: $space-large;
 
