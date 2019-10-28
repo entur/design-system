@@ -37,8 +37,8 @@
 
   &__data-cell,
   &__header-cell {
-    border-bottom: 0.125rem solid $colors-greys-grey20;
-    padding: 0 ($space-default + $space-extra-small);
+    border-bottom: $border-widths-default solid $colors-greys-grey20;
+    padding: 0 ($space-default + $space-extra-small2);
 
     .entur-contrast & {
       border-bottom-color: $colors-blues-blue20;

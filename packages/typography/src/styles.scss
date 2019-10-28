@@ -207,7 +207,7 @@ html {
   font-family: 'Dank Mono', monospace;
   font-size: inherit;
   padding: 1em;
-  border-radius: 1px;
+  border-radius: $border-radiuses-small;
   white-space: pre-wrap;
   word-break: keep-all;
 }
@@ -217,5 +217,5 @@ html {
   border-radius: 0.125rem;
   font-family: 'Dank Mono', monospace;
   font-size: 90%; // Slightly smaller than
-  padding: ($space-extra-small / 2) $space-extra-small;
+  padding: ($space-extra-small2 / 2) $space-extra-small2;
 }

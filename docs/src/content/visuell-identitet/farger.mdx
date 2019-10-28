@@ -4,7 +4,7 @@ route: /visuell-identitet/farger
 parent: Visuell Identitet
 ---
 
-import { colors } from '@entur/tokens';
+import { borderWidths, colors } from '@entur/tokens';
 import ColorSwatch from 'src/components/ColorSwatch';
 import PageHeader from 'src/components/PageHeader';
 import Divider from 'src/components/Divider';
@@ -47,7 +47,7 @@ Den korallrøde står for effektiviteten, tydeligheten og den lille detaljen som
 
 <ColorSwatch
   path="brand.white"
-  style={{ border: `1px solid ${colors.greys.grey20}` }}
+  style={{ border: `${borderWidths.small} solid ${colors.greys.grey20}` }}
 >
   White
 </ColorSwatch>

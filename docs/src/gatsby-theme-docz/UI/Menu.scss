@@ -25,7 +25,7 @@
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: $z-indexes-sticky;
   }
 }
 
@@ -52,7 +52,7 @@
     height: 3px;
     width: 2rem;
     background: transparent;
-    border-radius: 1px;
+    border-radius: $border-radiuses-small;
     margin: 0 auto;
     opacity: 0;
   }

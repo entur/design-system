@@ -14,7 +14,7 @@
 }
 
 .icon-list__item {
-  border: 1px solid $colors-greys-grey20;
+  border: $border-widths-small solid $colors-greys-grey20;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,14 +30,14 @@
 .icon-list__name {
   appearance: none;
   background: none;
-  border: 1px solid currentColor;
-  border-radius: 1px;
+  border: $border-widths-small solid currentColor;
+  border-radius: $border-radiuses-default;
   color: inherit;
   cursor: pointer;
   font-size: $font-sizes-medium;
   line-height: $line-heights-large;
-  padding: $space-small;
-  margin-top: $space-small;
+  padding: $space-extra-small;
+  margin-top: $space-extra-small;
   word-break: break-all;
   hyphens: auto;
 }

@@ -15,14 +15,14 @@
   color: $colors-brand-white; // IE
   color: var(--primary-text-color);
   background-color: var(--primary-background-color);
-  border: 0.125rem solid var(--primary-border-color);
-  border-radius: 0.0625rem;
+  border: $border-widths-default solid var(--primary-border-color);
+  border-radius: $border-radiuses-default;
   box-shadow: 0 0.125rem 0.3125rem 0 var(--primary-border-color);
   min-height: 1rem;
   min-width: 11.125rem;
   padding: 0.3125rem 0.625rem;
   position: absolute;
-  z-index: 9999;
+  z-index: $z-indexes-popover;
 
   &[aria-hidden='true'] {
     display: none;
@@ -35,13 +35,13 @@
     background: var(--primary-background-color);
     border-color: var(--primary-border-color);
     border-style: solid;
-    border-width: 0 0.125rem 0.125rem 0;
+    border-width: 0 $border-widths-default $border-widths-default 0;
     content: '';
     height: 0.625rem;
     position: absolute;
     transform: rotate(45deg) translateY(0.125rem);
     width: 0.625rem;
-    z-index: -1;
+    z-index: $z-indexes-behind;
   }
 
   &--top {
@@ -81,7 +81,7 @@
     transform: translateY(-50%);
 
     &::after {
-      border-width: 0.125rem 0.125rem 0 0;
+      border-width: $border-widths-default $border-widths-default 0 0;
       bottom: calc(50% - 0.3125rem);
       left: calc(100% - 0.25rem);
     }
@@ -93,7 +93,7 @@
     transform: translateY(-50%);
 
     &::after {
-      border-width: 0 0 0.125rem 0.125rem;
+      border-width: 0 0 $border-widths-default $border-widths-default;
       bottom: calc(50% - 0.3125rem);
       right: calc(100% - 0.3125rem);
     }
@@ -105,7 +105,7 @@
     transform: translateX(-50%);
 
     &::after {
-      border-width: 0.125rem 0 0 0.125rem;
+      border-width: $border-widths-default 0 0 $border-widths-default;
       left: calc(50% - 0.3125rem);
       top: -0.625rem;
     }
@@ -116,7 +116,7 @@
     top: calc(100% + 0.625rem);
 
     &::after {
-      border-width: 0.125rem 0 0 0.125rem;
+      border-width: $border-widths-default 0 0 $border-widths-default;
       bottom: calc(100% - 0.25rem);
       left: calc(100% - 1rem);
     }
@@ -127,7 +127,7 @@
     top: calc(100% + 0.625rem);
 
     &::after {
-      border-width: 0.125rem 0 0 0.125rem;
+      border-width: $border-widths-default 0 0 $border-widths-default;
       bottom: calc(100% - 0.25rem);
       right: calc(100% - 1rem);
     }

@@ -24,7 +24,7 @@
 .vertical-ruler-wrapper {
   display: inline-flex;
   flex-direction: row;
-  margin-right: $space-small;
+  margin-right: $space-extra-small;
   align-items: center;
   margin-top: -0.125rem; //Offset for ruler end
 }
@@ -81,7 +81,7 @@
 .horizontal-ruler-container {
   display: flex;
   flex-direction: row;
-  margin-top: $space-small;
+  margin-top: $space-extra-small;
 }
 
 .horizontal-ruler-wrapper {
