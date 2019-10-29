@@ -1,3 +1,11 @@
+/**
+ * Flattens a complex object into a single-level object
+ * with dot-notation keys and string values
+ *
+ * @param obj A complex multi-level object of nested objects
+ *
+ * @returns object with flattened dot-notation keys and string values
+ */
 export const flatten = (
   obj: { [key: string]: any },
   current?: string,

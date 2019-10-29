@@ -10,9 +10,10 @@ import {
   HeaderCell,
 } from '@entur/table';
 import { CodeText } from '@entur/typography';
-import { useFormatVariable } from 'src/utils/formatVariable';
+import { formatVariable } from 'src/utils/formatVariable';
 import { flatten } from 'src/utils/flatten';
 import { CopyButton } from './CopyButton';
+import { useSettings } from './SettingsContext';
 
 type Props = {
   tokenKey: keyof typeof allTokens;
@@ -31,7 +32,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
     tokenKey,
     allTokens,
   ]);
-  const variableFormatter = useFormatVariable();
+  const { variableFormat } = useSettings();
 
   return (
     <Table>
@@ -47,7 +48,9 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
         {Object.entries(flattenedTokens).map(([key, value]) => (
           <TableRow key={key}>
             <DataCell>
-              <CodeText>{variableFormatter(`${tokenKey}.${key}`)}</CodeText>
+              <CodeText>
+                {formatVariable(`${tokenKey}.${key}`, variableFormat)}
+              </CodeText>
             </DataCell>
             <DataCell>
               <CodeText>{formatValue(value)}</CodeText>
@@ -55,7 +58,10 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
             {renderExample && <DataCell>{renderExample(value)}</DataCell>}
             <DataCell>
               <CopyButton
-                textToCopy={variableFormatter(`${tokenKey}.${key}`)}
+                textToCopy={formatVariable(
+                  `${tokenKey}.${key}`,
+                  variableFormat,
+                )}
               />
             </DataCell>
           </TableRow>

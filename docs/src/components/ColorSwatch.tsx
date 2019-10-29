@@ -5,8 +5,9 @@ import { useToast } from '@entur/alert';
 import { colors } from '@entur/tokens';
 import { ReportsIcon } from '@entur/icons';
 import { StrongText } from '@entur/typography';
-import { useFormatVariable } from 'src/utils/formatVariable';
+import { formatVariable } from 'src/utils/formatVariable';
 import './ColorSwatch.scss';
+import { useSettings } from './SettingsContext';
 
 function getColorFromPath(path: string) {
   return path
@@ -41,7 +42,8 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
   const { addToast } = useToast();
   const backgroundColor = getColorFromPath(path);
   const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
-  const variableName = useFormatVariable()(`colors.${path}`);
+  const { variableFormat } = useSettings();
+  const variableName = formatVariable(`colors.${path}`, variableFormat);
 
   const handleCopyClick = (textToCopy: string) => () => {
     copy(textToCopy);
