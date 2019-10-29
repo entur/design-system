@@ -7,7 +7,7 @@ npmPackage: form
 ---
 
 import { Props } from 'docz';
-import { Radio, RadioLabel } from '@entur/form/src/index.tsx';
+import { Radio, RadioGroup } from '@entur/form';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import '@entur/form/src/styles.scss';
@@ -18,13 +18,25 @@ import '@entur/form/src/styles.scss';
 </PageHeader>
 
 <Playground>
-  <Radio name="ok" />
-  <Radio name="ok" />
-  <RadioLabel>
-    <Radio name="ok" />
-    ok
-  </RadioLabel>
+  {() => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <RadioGroup
+        name="ok"
+        label="Velg din hjemby"
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      >
+        <Radio label="Oslo" value="Oslo" />
+        <Radio label="Bergen" value="Bergen" />
+        <Radio label="Leknes" value="Leknes" />
+      </RadioGroup>
+    );
+  }}
 </Playground>
 
+Radioknapper brukes i radiogrupper, slik at man dermed får en kontekt av forskjellige mulige valg man kan ta.
+
 <Props of={Radio} />
-<Props of={RadioLabel} />
+
+<Props of={RadioGroup} />

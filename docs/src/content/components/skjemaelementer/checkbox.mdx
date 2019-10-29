@@ -7,15 +7,17 @@ npmPackage: form
 ---
 
 import { Props } from 'docz';
-import { Checkbox } from '@entur/form/src/index.tsx';
+import { Checkbox } from '@entur/form';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
-import '@entur/form/src/styles.scss';
 
-<PageHeader>Checkbox.</PageHeader>
+<PageHeader>
+  Checkbox lar deg velge om en verdi skal være på eller av.
+</PageHeader>
 
 <Playground>
   <Checkbox />
+  <Checkbox label="Denne har en label" />
 </Playground>
 
 <Props of={Checkbox} />

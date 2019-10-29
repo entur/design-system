@@ -7,7 +7,7 @@ npmPackage: form
 ---
 
 import { Props } from 'docz';
-import { Dropdown } from '@entur/form';
+import { Dropdown, DropdownItem } from '@entur/form';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import '@entur/form/dist/styles.css';
@@ -17,7 +17,14 @@ import '@entur/form/dist/styles.css';
 </PageHeader>
 
 <Playground>
-  <Dropdown />
+  <Dropdown>
+    <DropdownItem>Oslo</DropdownItem>
+    <DropdownItem>Bergen</DropdownItem>
+    <DropdownItem>Leknes</DropdownItem>
+  </Dropdown>
 </Playground>
+
+Foreløpig er Dropdown-komponenten en wrapper for `<select>` og `<option>`, så alle props som brukes for disse er også tilgjengelig her.
+Påtenkte utvidelse og forbedring av komponenten er derimot påtenkt, så breaking changes kan komme.
 
 <Props of={Dropdown} />
