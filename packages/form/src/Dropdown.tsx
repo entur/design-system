@@ -2,15 +2,18 @@ import React from 'react';
 import { VariantType } from './variants';
 import { useFormComponentClasses } from './FormComponentClasses';
 import './Dropdown.scss';
+
 type DropdownProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
   className?: string;
-  /** Settes til 'fluid' for flytende textarea */
+  /** Settes til 'fluid' for flytende dropdown */
   width?: 'fluid';
-  /** Settes for å style komponenten basert på state */
+  /** Settes for å style komponenten basert på state/validering */
   variant?: VariantType;
-  /** For å deaktivere inputfeltet */
+  /** For å deaktivere dropdownen */
   disabled?: boolean;
+  /** Alle mulige valg for dropdownen å ha */
+  children: React.ReactNode;
   [key: string]: any;
 };
 
@@ -19,6 +22,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   width,
   variant = 'none',
   disabled = false,
+  children,
   ...rest
 }) => {
   const classList = useFormComponentClasses({
@@ -30,20 +34,20 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <select className={classList} {...rest}>
-      <option value="1">Heisann</option>
+      {children}
     </select>
   );
 };
 
 type DropdownItemProps = {
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
-  className?: string;
+  /** Labelen/children for en option */
+  children: React.ReactNode;
   [key: string]: any;
 };
 
 export const DropdownItem: React.FC<DropdownItemProps> = ({
-  className,
+  children,
   ...rest
 }) => {
-  return <option className={className} {...rest}></option>;
+  return <option {...rest}>{children}</option>;
 };
