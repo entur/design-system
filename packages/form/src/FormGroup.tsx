@@ -26,7 +26,7 @@ export function useVariant(): VariantType {
 
 type FormGroupProps = {
   /** Tekst/label over en form-komponent */
-  label: string;
+  label?: string;
   /** Varselmelding, som vil komme under form-komponenten */
   feedback?: string;
   /** Hvilken variant varselmeldingen skal ha */
