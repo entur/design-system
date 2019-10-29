@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   padding: $space-default $space-large;
-  margin-bottom: $space-extra-small;
+  margin-bottom: $space-extra-small2;
 }
 
 .color-swatch__details {
@@ -19,15 +19,15 @@
   appearance: none;
   background: none;
   border: 0;
-  border-radius: 1px;
+  border-radius: $border-radiuses-default;
   color: inherit;
   cursor: pointer;
   display: block;
   font-size: inherit;
-  padding: $space-extra-small;
+  padding: $space-extra-small2;
   width: fit-content;
 
   & + & {
-    margin-top: $space-extra-small;
+    margin-top: $space-extra-small2;
   }
 }

@@ -6,6 +6,7 @@ npmPackage: typography
 ---
 
 import { Link } from 'gatsby';
+import { Props } from 'docz';
 import {
   Heading1,
   Heading2,
@@ -19,9 +20,15 @@ import {
   Label,
   SubLabel,
   SmallText,
+  StrongText,
+  EmphasizedText,
+  Link as LinkText,
+  PreformattedText,
+  CodeText,
 } from '@entur/typography';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
+import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
   Retningslinjer for bruk av typografi står beskrevet under{' '}
@@ -101,3 +108,65 @@ Vi eksponerer noen CSS-properties fra denne pakken, som kan brukes på tvers av 
 ```
 
 De vil bli dokumentert bedre etterhvert, men vil være de aktuelle hovedfargene for gitt tema og modus.
+
+## Komponenter
+
+### Heading1-6
+
+<ImportStatement imports="Heading1, Heading2, Heading3, Heading4, Heading5, Heading6" />
+<Props of={Heading1} />
+
+### LeadParagraph
+
+<ImportStatement imports="LeadParagraph" />
+<Props of={LeadParagraph} />
+
+### Paragraph
+
+<ImportStatement imports="Paragraph" />
+<Props of={Paragraph} />
+
+### SubParagraph
+
+<ImportStatement imports="SubParagraph" />
+<Props of={SubParagraph} />
+
+### SmallText
+
+<ImportStatement imports="SmallText" />
+<Props of={SmallText} />
+
+### Label
+
+<ImportStatement imports="Label" />
+<Props of={Label} />
+
+### SubLabel
+
+<ImportStatement imports="SubLabel" />
+<Props of={SubLabel} />
+
+### StrongText
+
+<ImportStatement imports="StrongText" />
+<Props of={StrongText} />
+
+### EmphasizedText
+
+<ImportStatement imports="EmphasizedText" />
+<Props of={EmphasizedText} />
+
+### Link
+
+<ImportStatement imports="Link" />
+<Props of={LinkText} />
+
+### PreformattedText
+
+<ImportStatement imports="PreformattedText" />
+<Props of={PreformattedText} />
+
+### CodeText
+
+<ImportStatement imports="CodeText" />
+<Props of={CodeText} />

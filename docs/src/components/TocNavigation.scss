@@ -1,0 +1,45 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
+.table-of-content-container {
+  display: none;
+
+  @include for-desktop {
+    display: block;
+    position: fixed;
+    right: $space-extra-large;
+    top: $space-extra-large4;
+  }
+}
+.table-of-content {
+  list-style: none;
+  padding: 0;
+  max-width: 10rem;
+}
+
+.table-of-content__item {
+  &--depth-3 {
+    padding-left: $space-large;
+  }
+
+  &--depth-4 {
+    padding-left: $space-extra-large;
+  }
+}
+
+.table-of-content__link {
+  color: var(--primary-label-color);
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-small;
+  text-decoration: underline;
+
+  &--active {
+    color: var(--primary-text-color);
+    font-weight: $font-weights-heading;
+  }
+}

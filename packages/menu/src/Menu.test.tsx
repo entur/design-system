@@ -109,3 +109,60 @@ test('menu items are disabled if specified', () => {
 
   expect(getByText('Disabled item')).toBeDisabled();
 });
+
+test('forceExpandSubMenus works as expected without active items', () => {
+  const { getByTestId, queryByTestId, rerender } = render(
+    <Menu size="small">
+      <MenuItem forceExpandSubMenus={true}>
+        Sub-menu trigger
+        <Menu>
+          <MenuItem href="#second" data-testid="sub-menu-item">
+            Sub-menu item
+          </MenuItem>
+        </Menu>
+      </MenuItem>
+      <MenuItem forceExpandSubMenus={true}>
+        Active sub-menu trigger
+        <Menu>
+          <MenuItem
+            href="#second"
+            data-testid="active-sub-menu-item"
+            active={true}
+          >
+            Active sub-menu item
+          </MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>,
+  );
+
+  expect(getByTestId('sub-menu-item')).toBeInTheDocument();
+  expect(getByTestId('active-sub-menu-item')).toBeInTheDocument();
+  rerender(
+    <Menu size="small">
+      >
+      <MenuItem forceExpandSubMenus={false}>
+        Sub-menu trigger
+        <Menu>
+          <MenuItem href="#second" data-testid="sub-menu-item">
+            Sub-menu item
+          </MenuItem>
+        </Menu>
+      </MenuItem>
+      <MenuItem forceExpandSubMenus={false}>
+        Active sub-menu trigger
+        <Menu>
+          <MenuItem
+            href="#second"
+            data-testid="active-sub-menu-item"
+            active={true}
+          >
+            Active sub-menu item
+          </MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>,
+  );
+  expect(queryByTestId('sub-menu-item')).not.toBeInTheDocument();
+  expect(getByTestId('active-sub-menu-item')).toBeInTheDocument();
+});

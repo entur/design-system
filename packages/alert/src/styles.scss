@@ -7,10 +7,10 @@
 }
 
 .entur-alert-box {
-  border: 1px solid;
+  border: $border-widths-small solid;
   color: $colors-brand-blue;
   display: flex;
-  padding: $space-medium - $space-extra-small; // 12px / 0.75rem
+  padding: $space-small;
   position: relative;
 
   // Size overrides
@@ -115,7 +115,7 @@
   bottom: $space-default;
   right: $space-default;
   left: $space-default;
-  z-index: 100;
+  z-index: $z-indexes-toast;
 
   > * + * {
     margin-top: $space-default;

@@ -1,0 +1,21 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
+.site-sidebar-wrapper {
+  width: 100%;
+
+  @include for-desktop {
+    height: 100vh;
+    left: 0;
+    top: 0;
+    max-width: 18rem;
+    overflow-y: scroll;
+    position: fixed;
+    z-index: $z-indexes-sticky;
+  }
+}

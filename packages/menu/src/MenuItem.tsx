@@ -29,6 +29,8 @@ type MenuItemProps = {
   disabled?: boolean;
   /** Callback for når man klikker på meny-elementet */
   onClick?: (e: React.MouseEvent) => any;
+  /** Sett til true om du vil tvinge alle sub-menus til å rendre barna sine. Typisk for å vise søkeresultater */
+  forceExpandSubMenus?: boolean;
   [key: string]: any;
 };
 const RegularMenuItem: React.FC<MenuItemProps> = ({
@@ -38,6 +40,7 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
   className,
   disabled,
   onClick = e => e,
+  forceExpandSubMenus, // This property is ignored
   ...rest
 }) => {
   const handleClick = (e: MouseEvent) => {
@@ -68,6 +71,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   children,
   className,
   disabled,
+  forceExpandSubMenus,
   onClick = e => e,
   ...rest
 }) => {
@@ -81,8 +85,16 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   });
 
   const [isExpanded, setExpanded] = React.useState(
-    isActiveOrHasActiveDescendents,
+    forceExpandSubMenus || isActiveOrHasActiveDescendents,
   );
+
+  React.useEffect(() => {
+    if (forceExpandSubMenus) {
+      setExpanded(true);
+    } else {
+      setExpanded(isActiveOrHasActiveDescendents);
+    }
+  }, [forceExpandSubMenus]);
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) {

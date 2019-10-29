@@ -90,24 +90,25 @@ export const colors = {
 };
 
 // Dimensions
-const spaceScale = [0, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
+const spaceScale = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
 export const space = {
   none: spaceScale[0],
-  default: spaceScale[3],
+  default: spaceScale[4],
 
-  extraSmall: spaceScale[1],
-  small: spaceScale[2],
-  medium: spaceScale[3],
-  large: spaceScale[4],
-  extraLarge: spaceScale[5],
-  extraLarge2: spaceScale[6],
-  extraLarge3: spaceScale[7],
-  extraLarge4: spaceScale[8],
-  extraLarge5: spaceScale[9],
-  extraLarge6: spaceScale[10],
-  extraLarge7: spaceScale[11],
-  extraLarge8: spaceScale[12],
-  extraLarge9: spaceScale[13],
+  extraSmall2: spaceScale[1],
+  extraSmall: spaceScale[2],
+  small: spaceScale[3],
+  medium: spaceScale[4],
+  large: spaceScale[5],
+  extraLarge: spaceScale[6],
+  extraLarge2: spaceScale[7],
+  extraLarge3: spaceScale[8],
+  extraLarge4: spaceScale[9],
+  extraLarge5: spaceScale[10],
+  extraLarge6: spaceScale[11],
+  extraLarge7: spaceScale[12],
+  extraLarge8: spaceScale[13],
+  extraLarge9: spaceScale[14],
 };
 
 // Typography
@@ -137,7 +138,38 @@ export const lineHeights = {
   extraLarge4: lineHeightScale[7],
   extraLarge5: lineHeightScale[8],
 };
+
 // Responsivity
 export const breakpoints = {
   large: 800,
+};
+
+// Borders
+const borderWidthScale = [1, 2, 4];
+export const borderWidths = {
+  default: borderWidthScale[1],
+
+  small: borderWidthScale[0],
+  medium: borderWidthScale[1],
+  large: borderWidthScale[2],
+};
+
+const borderRadiusScale = [1, 4];
+export const borderRadiuses = {
+  default: borderRadiusScale[0],
+
+  small: borderRadiusScale[0],
+  medium: borderRadiusScale[1],
+};
+
+// Z-indexes
+const zIndexScale = ['-1', '0', '10', '20', '30', '40', '50'];
+export const zIndexes = {
+  behind: zIndexScale[0],
+  default: zIndexScale[1],
+  sticky: zIndexScale[2],
+  popover: zIndexScale[3],
+  overlay: zIndexScale[4],
+  modal: zIndexScale[5],
+  toast: zIndexScale[6],
 };

@@ -13,6 +13,7 @@ import { LeadParagraph } from '@entur/typography';
 import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
+import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
   Navigasjon hjelper brukeren å flytte mellom sider og lokalisere seg i
@@ -38,9 +39,21 @@ import PageHeader from 'src/components/PageHeader';
   </Menu>
 </Playground>
 
-<Props of={Menu} title="Props, Menu" />
+## Komponenter
 
-<Props of={MenuItem} title="Props, MenuItem" />
+### Menu
+
+<ImportStatement imports="Menu" />
+<Props of={Menu} />
+
+`<Menu />` beskriver en meny, både på øverste nivå, eller som barn av et `<MenuItem />`. De kan være store eller små
+
+### MenuItem
+
+<ImportStatement imports="MenuItem" />
+<Props of={MenuItem} />
+
+`<MenuItem />` er et menypunkt, og er typisk en lenke. De kan inneholde en label, eller en sub-meny.
 
 ## Variasjoner
 

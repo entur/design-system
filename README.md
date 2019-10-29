@@ -11,6 +11,7 @@ To develop, please clone the project, and run `yarn` to install all dependencies
 To build all packages, run `yarn build`
 
 To start a development server, run `yarn start`
+PS: For first time setup, you will have to run `yarn build` at least once for the development server to function.
 
 ## Adding new packages
 

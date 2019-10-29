@@ -18,7 +18,6 @@
   @return mix(black, $color, $percentage);
 }
 
-$border-width: ($space-default / 8);
 $tint-amount: 30;
 $shade-amount: 5;
 
@@ -30,8 +29,8 @@ $shade-amount: 5;
   display: flex;
   align-items: center;
   border: none;
-  border-bottom: $border-width solid $colors-brand-blue;
-  border-radius: $space-default / 16;
+  border-bottom: $border-widths-default solid $colors-brand-blue;
+  border-radius: $border-radiuses-default;
   background-color: $colors-greys-grey40;
   color: $colors-brand-blue;
   width: 22rem;
@@ -45,25 +44,25 @@ $shade-amount: 5;
 
     &:hover:not(:focus-within):not(.entur-form-component--disabled) {
       border-bottom: none;
-      padding-bottom: $border-width;
+      padding-bottom: $border-widths-default;
     }
   }
   &--variant-none,
   &--variant-warning,
   &--variant-info {
     &:focus-within {
-      box-shadow: inset 0 0 0 $border-width $colors-brand-blue;
+      box-shadow: inset 0 0 0 $border-widths-default $colors-brand-blue;
       border-bottom: hidden;
-      padding-bottom: $border-width;
+      padding-bottom: $border-widths-default;
       .entur-contrast & {
-        box-shadow: inset 0 0 0 $border-width $colors-brand-lavender;
+        box-shadow: inset 0 0 0 $border-widths-default $colors-brand-lavender;
       }
     }
     &:hover:not(:focus-within):not(.entur-form-component--disabled) {
-      border-bottom: $border-width solid $colors-brand-lavender;
+      border-bottom: $border-widths-default solid $colors-brand-lavender;
       background-color: tint($colors-greys-grey40, $tint-amount);
       .entur-contrast & {
-        box-shadow: inset 0 0 0 $border-width $colors-brand-lavender;
+        box-shadow: inset 0 0 0 $border-widths-default $colors-brand-lavender;
         background-color: shade($colors-brand-white, $shade-amount);
       }
     }
@@ -75,18 +74,20 @@ $shade-amount: 5;
     }
     &:focus-within {
       border-bottom: none;
-      padding-bottom: $border-width;
-      box-shadow: inset 0 0 0 $border-width $colors-validation-mint;
+      padding-bottom: $border-widths-default;
+      box-shadow: inset 0 0 0 $border-widths-default $colors-validation-mint;
       .entur-contrast & {
-        box-shadow: inset 0 0 0 $border-width $colors-validation-mint-contrast;
+        box-shadow: inset 0 0 0 $border-widths-default
+          $colors-validation-mint-contrast;
       }
     }
     &:hover:not(:focus-within):not(.entur-form-component--disabled) {
-      border-bottom: $border-width solid $colors-validation-mint-tint;
+      border-bottom: $border-widths-default solid $colors-validation-mint-tint;
       background-color: tint($colors-greys-grey40, $tint-amount);
       .entur-contrast & {
         background-color: shade($colors-brand-white, $shade-amount);
-        box-shadow: inset 0 0 0 $border-width $colors-validation-mint-contrast;
+        box-shadow: inset 0 0 0 $border-widths-default
+          $colors-validation-mint-contrast;
       }
     }
   }
@@ -96,29 +97,31 @@ $shade-amount: 5;
       border-color: $colors-validation-lava-contrast;
     }
     &:focus-within {
-      box-shadow: inset 0 0 0 $border-width $colors-validation-lava;
+      box-shadow: inset 0 0 0 $border-widths-default $colors-validation-lava;
       border-bottom: none;
-      padding-bottom: $border-width;
+      padding-bottom: $border-widths-default;
       .entur-contrast & {
-        box-shadow: inset 0 0 0 $border-width $colors-validation-lava-contrast;
+        box-shadow: inset 0 0 0 $border-widths-default
+          $colors-validation-lava-contrast;
       }
     }
     &:hover:not(:focus-within):not(.entur-form-component--disabled) {
-      border-bottom: $border-width solid $colors-validation-lava-tint;
+      border-bottom: $border-widths-default solid $colors-validation-lava-tint;
       background-color: tint($colors-greys-grey40, $tint-amount);
       .entur-contrast & {
         background-color: shade($colors-brand-white, $shade-amount);
-        box-shadow: inset 0 0 0 $border-width $colors-validation-lava-contrast;
+        box-shadow: inset 0 0 0 $border-widths-default
+          $colors-validation-lava-contrast;
       }
     }
   }
 
   &--disabled {
     background-color: $colors-greys-grey20;
-    border-bottom: $border-width solid $colors-greys-grey20;
+    border-bottom: $border-widths-default solid $colors-greys-grey20;
     .entur-contrast & {
       background-color: $colors-greys-grey20;
-      border-bottom: $border-width solid $colors-greys-grey20;
+      border-bottom: $border-widths-default solid $colors-greys-grey20;
     }
   }
 

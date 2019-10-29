@@ -1,0 +1,34 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.copyable-preformatted-text {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: inherit;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.copyable-preformatted-text__icon {
+  display: none;
+  position: absolute;
+  right: $space-large;
+  top: $space-medium;
+  bottom: $space-medium;
+
+  .copyable-preformatted-text:hover &,
+  .copyable-preformatted-text:focus & {
+    display: block;
+  }
+}

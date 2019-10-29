@@ -16,7 +16,7 @@
   position: fixed;
   bottom: $space-default;
   right: $space-default;
-  z-index: 10001;
+  z-index: $z-indexes-sticky;
   transition: background-color 0.15s ease-out;
   &:hover {
     background-color: $colors-brand-lavender;
@@ -53,12 +53,12 @@
   background-repeat: no-repeat;
   background-position: right $space-medium center;
   border: none;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: $border-widths-default solid var(--border-color);
   border-radius: 0;
   color: var(--text-color);
   display: block;
   font-size: inherit;
-  padding: ($space-extra-small + $space-small) $space-medium;
+  padding: $space-small $space-medium;
   position: relative;
   width: 100%;
 
