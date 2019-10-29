@@ -5,7 +5,7 @@ import { useToast } from '@entur/alert';
 import { colors } from '@entur/tokens';
 import { ReportsIcon } from '@entur/icons';
 import { StrongText } from '@entur/typography';
-import { useSettings, VariableFormat } from './SettingsContext';
+import { useFormatVariable } from 'src/utils/formatVariable';
 import './ColorSwatch.scss';
 
 function getColorFromPath(path: string) {
@@ -32,35 +32,16 @@ function getBestForegroundColorForBackground(backgroundColor: string) {
   return colors.misc.black;
 }
 
-function getVariableNameFromPath(path: string, variableFormat: VariableFormat) {
-  const kebabCasedPath = path
-    .replace(/\./g, '-') // replaces . with -
-    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2') // camelCase to kebab-case
-    .toLowerCase();
-
-  switch (variableFormat) {
-    case 'scss':
-      return `$colors-${kebabCasedPath}`;
-    case 'less':
-      return `@colors-${kebabCasedPath}`;
-    case 'css':
-      return `var(--colors-${kebabCasedPath})`;
-    case 'js':
-      return `colors.${path}`;
-  }
-}
-
 type Props = {
   path: string;
   style?: any;
 };
 
 const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
-  const { variableFormat } = useSettings();
   const { addToast } = useToast();
   const backgroundColor = getColorFromPath(path);
   const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
-  const variableName = getVariableNameFromPath(path, variableFormat);
+  const variableName = useFormatVariable()(`colors.${path}`);
 
   const handleCopyClick = (textToCopy: string) => () => {
     copy(textToCopy);
