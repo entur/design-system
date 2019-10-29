@@ -48,7 +48,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           <span className="entur-form-group__label">{label}</span>
           {children}
         </Label>
-        {feedback && (
+        {feedback && variant !== 'none' && (
           <SmallText className="entur-form-group__feedback-wrapper">
             <AlertIcon level={variant} />
             <span className="entur-form-group__feedback">{feedback}</span>
