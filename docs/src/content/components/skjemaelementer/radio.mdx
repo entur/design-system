@@ -14,8 +14,7 @@ import PageHeader from 'src/components/PageHeader';
 import '@entur/form/src/styles.scss';
 
 <PageHeader>
-  Radio brukes for å velge mellom flere verdier i et skjema, og har gjerne en
-  label på sin høyre side.
+  Radioknapper brukes for å velge mellom flere verdier i et skjema.
 </PageHeader>
 
 <Playground>
@@ -23,23 +22,39 @@ import '@entur/form/src/styles.scss';
     const [value, setValue] = React.useState(null);
     return (
       <RadioGroup
-        name="ok"
+        name="city"
         label="Velg din hjemby"
         onChange={e => setValue(e.target.value)}
         value={value}
       >
-        <Radio label="Oslo" value="Oslo" />
-        <Radio label="Bergen" value="Bergen" />
-        <Radio label="Leknes" value="Leknes" />
+        <Radio value="Oslo">Oslo</Radio>
+        <Radio value="Bergen">Bergen</Radio>
+        <Radio value="Leknes">Leknes</Radio>
       </RadioGroup>
     );
   }}
 </Playground>
 
-Radioknapper brukes i radiogrupper, slik at man dermed får en kontekt av forskjellige mulige valg man kan ta.
+## Komponenter
+
+### Radio
 
 <ImportStatement imports="Radio" />
 <Props of={Radio} />
 
+`<Radio />` brukes når man har to eller flere motstridende valg å velge mellom. Må brukes inni en `<RadioGroup />`.
+
+### RadioGroup
+
 <ImportStatement imports="RadioGroup" />
 <Props of={RadioGroup} />
+
+`<RadioGroup />` lar deg gruppere flere radio buttons under en overskrift. Du kan spesifisere valgt verdi via `value`-propen, og lytte på endringer med `onChange` på toppnivå.
+
+`name`-propen blir propagert ned til hver av `<Radio />`-elementene, så du slipper å gjøre dette manuelt.
+
+## Retningslinjer
+
+Du må minst ha to valg å velge mellom når du skal bruke radioknapper, og de må også være motstridende (du skal ikke kunne velge begge). Om du bare har ett valg, eller om man skal kunne velge flere valg, anbefaler vi å bruke [checkboxes](/komponenter/skjemaelementer/checkbox) eller toggle switches.
+
+Om du har mange valg, vurder om det kan være enklere for brukeren å bruke en [dropdown-komponent](/komponenter/skjemaelementer/dropdown) istedenfor.

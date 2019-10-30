@@ -7,18 +7,52 @@ npmPackage: form
 ---
 
 import { Props } from 'docz';
-import { Checkbox } from '@entur/form';
+import { Link } from '@entur/typography';
+import { Checkbox, Fieldset } from '@entur/form';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 
-<PageHeader>
-  Checkbox lar deg velge om en verdi skal være på eller av.
-</PageHeader>
+<PageHeader>Checkboxes lar deg velge ett eller flere binære valg</PageHeader>
 
 <Playground>
-  <Checkbox />
-  <Checkbox label="Denne har en label" />
+  <Checkbox>
+    Jeg godtar <Link href="#">bruksvilkårene</Link> for denne tjenesten
+  </Checkbox>
+  <Checkbox>
+    Jeg godtar <Link href="#">cookies</Link> for denne tjenesten
+  </Checkbox>
+  <Checkbox>Jeg godtar alt.</Checkbox>
 </Playground>
+
+## Komponenter
+
+### Checkbox
 
 <ImportStatement imports="Checkbox" />
 <Props of={Checkbox} />
+
+### Fieldset
+
+<ImportStatement imports="Fieldset" />
+<Props of={Fieldset} />
+
+Brukes for å gruppere valg sammen.
+
+## Retningslinjer
+
+Checkboxen kan brukes for binære valg (f.eks. ja/nei) der man bekrefter valget med en sekundær interaksjon (f.eks. klikk på "lagre"). Om du ønsker at valget blir gjenspeilet / lagret med en gang, bruk en toggle switch istedenfor.
+
+Om brukeren skal velge en eller flere valg, så bør du bruke checkboxes istedenfor.
+
+<Playground>
+  <Fieldset label="Jeg vil gjerne reise med">
+    <Checkbox>Buss</Checkbox>
+    <Checkbox>Tog</Checkbox>
+    <Checkbox>Båt</Checkbox>
+    <Checkbox>Fly</Checkbox>
+    <Checkbox>Sykkel</Checkbox>
+    <Checkbox>Sparkesykkel</Checkbox>
+  </Fieldset>
+</Playground>
+
+For flere retningslinjer rundt toggles vs checkboxes vennligst ta en titt på [denne artikkelen](https://uxplanet.org/checkbox-vs-toggle-switch-7fc6e83f10b8).
