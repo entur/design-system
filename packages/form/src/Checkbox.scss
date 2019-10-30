@@ -10,8 +10,6 @@
     align-items: center;
     position: relative;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     cursor: pointer;
     height: $space-extra-large;
     user-select: none;
@@ -67,8 +65,8 @@
       border-color: $colors-blues-blue30;
     }
     svg {
-      height: $space-default - $space-extra-small;
-      width: $space-default - $space-extra-small;
+      height: $space-default;
+      width: $space-default;
       visibility: hidden;
     }
   }

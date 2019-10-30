@@ -18,7 +18,7 @@ export const Radio: React.RefForwardingComponent<
 > = React.forwardRef(
   ({ className, label, value, ...rest }, ref: React.Ref<HTMLInputElement>) => {
     const classList = cx(className, 'entur-form-component--radio__radio');
-    const { name, value: selectedValue } = useRadioGroupContext();
+    const { name, value: selectedValue, onChange } = useRadioGroupContext();
     return (
       <label className="entur-form-component--radio__container">
         <input
@@ -27,6 +27,7 @@ export const Radio: React.RefForwardingComponent<
           ref={ref}
           value={value}
           checked={selectedValue === value}
+          onChange={onChange}
           {...rest}
         />
         <span className={classList}>
@@ -59,7 +60,7 @@ function useRadioGroupContext() {
 }
 
 type RadioGroupProps = {
-  /**  */
+  /** Navnet til radiogruppen. */
   name: string;
   /** Overskrift over radiogruppen */
   label?: string;
@@ -77,10 +78,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   value,
   label,
   children,
+  onChange,
   ...rest
 }) => {
   return (
-    <RadioGroupContext.Provider value={{ name, value }}>
+    <RadioGroupContext.Provider value={{ name, value, onChange }}>
       <fieldset className="entur-radio-group" {...rest}>
         {label && (
           <Heading4 as="legend" className="entur-radio-group__label">

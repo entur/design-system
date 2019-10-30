@@ -44,7 +44,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   return (
     <FormGroupProvider variant={variant}>
       <div className="entur-form-group">
-        <Label>
+        <Label style={{ display: 'block' }}>
           <span className="entur-form-group__label">{label}</span>
           {children}
         </Label>

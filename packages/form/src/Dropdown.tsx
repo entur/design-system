@@ -12,10 +12,12 @@ type DropdownProps = {
   variant?: VariantType;
   /** For å deaktivere dropdownen */
   disabled?: boolean;
+  /** Den valgte verdien */
+  value: string;
   /** Alle mulige valg for dropdownen å ha */
   children: React.ReactNode;
   [key: string]: any;
-};
+} & React.HTMLProps<HTMLSelectElement>;
 
 export const Dropdown: React.FC<DropdownProps> = ({
   className,

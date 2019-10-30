@@ -26,7 +26,7 @@ $shade-amount: 5;
   font-size: inherit;
   font-size: $font-sizes-large;
   font-weight: $font-weights-body;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   border: none;
   border-bottom: $border-widths-default solid $colors-brand-blue;

@@ -2,8 +2,9 @@
 
 .entur-form-group {
   color: inherit;
-  display: block;
+  display: inline-block;
   &__label {
+    display: block;
     .entur-contrast & {
       color: $colors-brand-lavender;
     }
