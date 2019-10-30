@@ -9,6 +9,7 @@ npmPackage: form
 import { FormGroup, TextField, TextArea } from '@entur/form';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
 import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
@@ -16,38 +17,36 @@ import { ImportStatement } from 'src/components/ImportStatement';
 </PageHeader>
 
 <Playground>
-  <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
-    <TextField placeholder="Oslo" />
-  </FormGroup>
-  <FormGroup
-    label="Togdestinasjon"
-    feedback="Oisann, noe galt skjedde her"
-    variant="error"
-  >
-    <TextField placeholder="Gjøvik" />
-  </FormGroup>
-  <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
-    <TextField placeholder="Advarsel" />
-  </FormGroup>
-  <FormGroup
-    label="Togdestinasjon"
-    feedback="Denne informasjonen hjelper deg"
-    variant="info"
-  >
-    <TextField placeholder="Informasjon" />
-  </FormGroup>
-  <FormGroup
-    label="Togdestinasjon"
-    feedback="Denne informasjonen hjelper deg"
-    variant="info"
-  >
-    <TextArea placeholder="Informasjon" />
-  </FormGroup>
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
+      <TextField placeholder="Oslo" />
+    </FormGroup>
+    <FormGroup
+      label="Togdestinasjon"
+      feedback="Oisann, noe galt skjedde her"
+      variant="error"
+    >
+      <TextField placeholder="Gjøvik" width="fluid" />
+    </FormGroup>
+    <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
+      <TextField placeholder="Advarsel" />
+    </FormGroup>
+    <FormGroup
+      label="Togdestinasjon"
+      feedback="Denne informasjonen hjelper deg"
+      variant="info"
+    >
+      <TextField placeholder="Informasjon" />
+    </FormGroup>
+    <FormGroup
+      label="Togdestinasjon"
+      feedback="Denne informasjonen hjelper deg"
+      variant="info"
+    >
+      <TextArea placeholder="Informasjon" />
+    </FormGroup>
+  </div>
 </Playground>
-
-## Komponenter
-
-### FormGroup
 
 <ImportStatement imports="FormGroup" />
 <Props of={FormGroup} />
