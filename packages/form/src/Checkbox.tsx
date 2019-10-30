@@ -8,15 +8,18 @@ type CheckboxProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
   className?: string;
   /** Label for checkboxen, som vises ved høyre side. */
-  label?: string;
+  children?: React.ReactNode;
   [key: string]: any;
-};
+} & React.HTMLProps<HTMLInputElement>;
 
 export const Checkbox: React.RefForwardingComponent<
   HTMLInputElement,
   CheckboxProps
 > = React.forwardRef(
-  ({ className, width, label, ...rest }, ref: React.Ref<HTMLInputElement>) => {
+  (
+    { className, width, children, ...rest },
+    ref: React.Ref<HTMLInputElement>,
+  ) => {
     return (
       <label
         className={cx('entur-form-component--checkbox__container', className)}
@@ -25,7 +28,7 @@ export const Checkbox: React.RefForwardingComponent<
         <span className="entur-form-component--checkbox__icon">
           <CheckIcon />
         </span>
-        {label && <Label as="span">{label}</Label>}
+        {children && <Label as="span">{children}</Label>}
       </label>
     );
   },
