@@ -66,7 +66,7 @@ type RadioGroupProps = {
   label?: string;
   /** Verdien til den valgte radioknappen */
   value: string;
-  /** Innholdet av Radiogruppen (Radioknapper) */
+  /** Innholdet av radiogruppen (Radioknapper) */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en radioknapp klikkes på  */
   onChange: (e: React.ChangeEvent<any>) => void;

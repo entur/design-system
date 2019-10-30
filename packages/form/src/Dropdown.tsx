@@ -14,6 +14,8 @@ type DropdownProps = {
   disabled?: boolean;
   /** Den valgte verdien */
   value: string;
+  /** En callback for endringer av value */
+  onChange: (e: React.ChangeEvent) => void;
   /** Alle mulige valg for dropdownen å ha */
   children: React.ReactNode;
   [key: string]: any;

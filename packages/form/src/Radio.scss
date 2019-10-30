@@ -9,9 +9,6 @@
     cursor: pointer;
     height: $space-extra-large2;
     width: fit-content;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     :hover ~ .entur-form-component--radio__radio {
       background-color: $colors-blues-blue30;
