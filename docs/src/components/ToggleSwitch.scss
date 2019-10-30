@@ -22,7 +22,7 @@
     box-shadow: inset 0 0 0 0.125em $colors-greys-grey10;
     content: '';
     display: block;
-    transition: all 0.1s ease-out;
+    transition: all $timings-fast ease-out;
     background: $colors-brand-white;
     height: 1.3em;
   }

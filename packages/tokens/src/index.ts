@@ -173,3 +173,9 @@ export const zIndexes = {
   modal: zIndexScale[5],
   toast: zIndexScale[6],
 };
+
+const timingScale = ['0.1s', '0.5s'];
+export const timings = {
+  fast: timingScale[0],
+  slow: timingScale[1],
+};

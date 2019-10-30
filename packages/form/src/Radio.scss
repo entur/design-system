@@ -28,7 +28,7 @@
         transform: scale((8/16));
         .entur-contrast & {
           background-color: white;
-          transition: background-color 0.1s ease-out;
+          transition: background-color $timings-fast ease-out;
         }
       }
       &:focus ~ .entur-form-component--radio__radio {
@@ -54,7 +54,7 @@
         height: $space-default;
         border-radius: 50%;
         background-color: $colors-brand-white;
-        transition: transform 0.1s ease-out;
+        transition: transform $timings-fast ease-out;
         .entur-contrast & {
           background-color: $colors-brand-blue;
         }
