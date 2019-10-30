@@ -7,7 +7,7 @@ type RadioProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre styling */
   className?: string;
   /** Label til radio-button. Vises ved høyre side. */
-  label?: string;
+  children?: React.ReactNode;
   /** Verdien til radioknappen */
   value: string;
   [key: string]: any;
@@ -17,7 +17,10 @@ export const Radio: React.RefForwardingComponent<
   HTMLInputElement,
   RadioProps
 > = React.forwardRef(
-  ({ className, label, value, ...rest }, ref: React.Ref<HTMLInputElement>) => {
+  (
+    { className, children, value, ...rest },
+    ref: React.Ref<HTMLInputElement>,
+  ) => {
     const classList = cx(className, 'entur-form-component--radio__radio');
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
     return (
@@ -34,7 +37,7 @@ export const Radio: React.RefForwardingComponent<
         <span className={classList}>
           <span className="entur-form-component--radio__circle"></span>
         </span>
-        {label && <Label as="span">{label}</Label>}
+        {children && <Label as="span">{children}</Label>}
       </label>
     );
   },
@@ -67,7 +70,7 @@ type RadioGroupProps = {
   label?: string;
   /** Verdien til den valgte radioknappen */
   value: string;
-  /** Innholdet av radiogruppen (Radioknapper) */
+  /** Radioknappene sendes inn som children */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en radioknapp klikkes på  */
   onChange: (e: React.ChangeEvent<any>) => void;
