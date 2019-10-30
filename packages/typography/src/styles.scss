@@ -146,13 +146,11 @@ html {
 }
 
 .entur-link {
-  font-size: $font-sizes-large;
-  line-height: $line-heights-large;
-
   &,
   &:link,
   &:visited {
     color: inherit;
+    font-size: inherit;
   }
 
   &:hover {
