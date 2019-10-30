@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@2.0.0...@entur/designsystem-docs@2.1.0) (2019-10-30)
+
+### Bug Fixes
+
+- migrate to latest version of space tokens ([4330496](https://bitbucket.org/enturas/design-system/commits/4330496e269bf628f7b9b7aec75f704800201101))
+- update all packages to use new tokens ([4847835](https://bitbucket.org/enturas/design-system/commits/48478359b0e562ba828e06d9b5c57239316805c2))
+- **docs:** remove divider between colors ([85b10eb](https://bitbucket.org/enturas/design-system/commits/85b10eb25dc5fc756f89c7e948ef460cf1afcdb8))
+- **menu:** make the search bar filter the menu correctly ([4e02469](https://bitbucket.org/enturas/design-system/commits/4e024698b1f444584df6f4f6ad8d252c8e2df72f))
+- **Props:** fix bug where settings weren't respected ([288870c](https://bitbucket.org/enturas/design-system/commits/288870caad68baa2fc089235e48753c517d318d5))
+
+### Features
+
+- **docs:** add import statements all over the code ([6921110](https://bitbucket.org/enturas/design-system/commits/6921110c0d55976cec604f3cd6da31a708fb7871))
+- **docs:** add new ImportStatement component ([0e48c4c](https://bitbucket.org/enturas/design-system/commits/0e48c4c3b959a4a2091d5eb8e260fa0060184032))
+- **docs:** add token overview ([6cabfe6](https://bitbucket.org/enturas/design-system/commits/6cabfe60744296786f590d49b34615f03d26435c))
+- **modal:** add new package @entur/modal ([642e78c](https://bitbucket.org/enturas/design-system/commits/642e78cac1f4db4e63ac3c202405c9876b68ff4a))
+- **settings:** start using modal component for settings in docs ([9acadcc](https://bitbucket.org/enturas/design-system/commits/9acadccad387a9725552203b62c624467c809ca6))
+- **table:** add new option "compact" to Table component ([6de5abd](https://bitbucket.org/enturas/design-system/commits/6de5abdc3655fb72b3595c447d814b3e51e30e17))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@1.0.0...@entur/designsystem-docs@2.0.0) (2019-10-22)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.2.3...@entur/menu@0.3.0) (2019-10-30)
+
+### Bug Fixes
+
+- migrate to latest version of space tokens ([4330496](https://bitbucket.org/enturas/design-system/commits/4330496e269bf628f7b9b7aec75f704800201101))
+- update all packages to use new tokens ([4847835](https://bitbucket.org/enturas/design-system/commits/48478359b0e562ba828e06d9b5c57239316805c2))
+
+### Features
+
+- **MenuItem:** add new prop forceExpandSubMenus ([c6c307d](https://bitbucket.org/enturas/design-system/commits/c6c307d045838c1d938da5bf162baa5cda300c5b))
+
 ## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.2.2...@entur/menu@0.2.3) (2019-10-22)
 
 **Note:** Version bump only for package @entur/menu

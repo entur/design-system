@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.0...@entur/typography@0.4.1) (2019-10-30)
+
+### Bug Fixes
+
+- migrate to latest version of space tokens ([4330496](https://bitbucket.org/enturas/design-system/commits/4330496e269bf628f7b9b7aec75f704800201101))
+- update all packages to use new tokens ([4847835](https://bitbucket.org/enturas/design-system/commits/48478359b0e562ba828e06d9b5c57239316805c2))
+- **Link:** let links inherit the font-size ([83a2db5](https://bitbucket.org/enturas/design-system/commits/83a2db57c52c466f5c97d1a8f41d6315eb496bb1))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.3.0...@entur/typography@0.4.0) (2019-10-22)
 
 ### Features
