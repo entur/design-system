@@ -1,0 +1,73 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+.entur-form-component--checkbox {
+  &__container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+    height: $space-extra-large;
+    user-select: none;
+    width: fit-content;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+
+      &:checked + .entur-form-component--checkbox__icon {
+        background-color: $colors-brand-blue;
+        .entur-contrast & {
+          background: $colors-blues-blue30;
+        }
+        svg {
+          visibility: visible;
+        }
+      }
+    }
+    &:hover input:not(:checked) + .entur-form-component--checkbox__icon {
+      border-color: $colors-blues-blue30;
+      background: $colors-greys-grey30;
+      .entur-contrast & {
+        border-color: $colors-blues-blue40;
+        background: $colors-blues-blue10;
+      }
+    }
+    &:hover input:checked + .entur-form-component--checkbox__icon {
+      border-color: $colors-blues-blue30;
+      background-color: $colors-blues-blue30;
+      .entur-contrast & {
+        background: $colors-blues-blue50;
+        border-color: $colors-blues-blue50;
+      }
+    }
+  }
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    margin-right: $space-default;
+    height: 1.25rem;
+    width: 1.25rem;
+    border: $border-widths-default solid $colors-brand-blue;
+    border-radius: $border-radiuses-default;
+    background-color: transparent;
+    color: $colors-brand-white;
+    .entur-contrast & {
+      border-color: $colors-blues-blue30;
+    }
+    svg {
+      height: $space-default;
+      width: $space-default;
+      visibility: hidden;
+    }
+  }
+}

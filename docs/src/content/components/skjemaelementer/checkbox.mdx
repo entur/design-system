@@ -1,0 +1,24 @@
+---
+name: Checkbox
+route: /komponenter/skjemaelementer/checkbox
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Checkbox } from '@entur/form';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+
+<PageHeader>
+  Checkbox lar deg velge om en verdi skal være på eller av.
+</PageHeader>
+
+<Playground>
+  <Checkbox />
+  <Checkbox label="Denne har en label" />
+</Playground>
+
+<ImportStatement imports="Checkbox" />
+<Props of={Checkbox} />

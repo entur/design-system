@@ -26,7 +26,7 @@ export function useVariant(): VariantType {
 
 type FormGroupProps = {
   /** Tekst/label over en form-komponent */
-  label: string;
+  label?: string;
   /** Varselmelding, som vil komme under form-komponenten */
   feedback?: string;
   /** Hvilken variant varselmeldingen skal ha */
@@ -44,11 +44,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   return (
     <FormGroupProvider variant={variant}>
       <div className="entur-form-group">
-        <Label>
+        <Label style={{ display: 'block' }}>
           <span className="entur-form-group__label">{label}</span>
           {children}
         </Label>
-        {feedback && (
+        {feedback && variant !== 'none' && (
           <SmallText className="entur-form-group__feedback-wrapper">
             <AlertIcon level={variant} />
             <span className="entur-form-group__feedback">{feedback}</span>

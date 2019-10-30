@@ -2,8 +2,9 @@
 
 .entur-form-group {
   color: inherit;
-  width: fit-content;
+  display: inline-block;
   &__label {
+    display: block;
     .entur-contrast & {
       color: $colors-brand-lavender;
     }
@@ -45,9 +46,5 @@
         color: $colors-validation-sky-contrast;
       }
     }
-  }
-
-  & + & {
-    margin-top: $space-large;
   }
 }

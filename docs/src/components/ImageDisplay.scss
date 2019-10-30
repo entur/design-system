@@ -24,6 +24,11 @@
     height: $space-extra-large3;
     width: $space-extra-large3;
     opacity: 0;
+    transition: background-color 0.5s ease-out;
+    &:hover {
+      background: $colors-brand-lavender;
+    }
+
     .image-display:hover &,
     &:focus {
       opacity: 1;

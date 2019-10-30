@@ -1,0 +1,45 @@
+---
+name: Radio
+route: /komponenter/skjemaelementer/radio
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Radio, RadioGroup } from '@entur/form';
+import { Playground } from 'src/components/Playground';
+import { ImportStatement } from 'src/components/ImportStatement';
+import PageHeader from 'src/components/PageHeader';
+import '@entur/form/src/styles.scss';
+
+<PageHeader>
+  Radio brukes for å velge mellom flere verdier i et skjema, og har gjerne en
+  label på sin høyre side.
+</PageHeader>
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <RadioGroup
+        name="ok"
+        label="Velg din hjemby"
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      >
+        <Radio label="Oslo" value="Oslo" />
+        <Radio label="Bergen" value="Bergen" />
+        <Radio label="Leknes" value="Leknes" />
+      </RadioGroup>
+    );
+  }}
+</Playground>
+
+Radioknapper brukes i radiogrupper, slik at man dermed får en kontekt av forskjellige mulige valg man kan ta.
+
+<ImportStatement imports="Radio" />
+<Props of={Radio} />
+
+<ImportStatement imports="RadioGroup" />
+<Props of={RadioGroup} />
