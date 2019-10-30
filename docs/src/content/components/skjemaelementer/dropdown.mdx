@@ -14,9 +14,7 @@ import { ImportStatement } from 'src/components/ImportStatement';
 import PageHeader from 'src/components/PageHeader';
 import '@entur/form/dist/styles.css';
 
-<PageHeader>
-  Dropdown er en skjemakomponent for å velge mellom 2 til flere valg.
-</PageHeader>
+<PageHeader>Dropdown lar deg velge mellom mange valg</PageHeader>
 
 <Playground>
   <Dropdown>
@@ -39,3 +37,7 @@ Foreløpig er Dropdown-komponenten en wrapper for `<select>` og `<option>`, så 
 
 <ImportStatement imports="Dropdown" />
 <Props of={Dropdown} />
+
+## Retningslinjer
+
+Kun bruk en dropdown dersom det ikke er aktuelt med radioknapper grunnet antall valg eller plasshensyn.
