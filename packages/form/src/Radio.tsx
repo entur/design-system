@@ -1,8 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import { Label } from '@entur/typography';
-import { Fieldset } from './Fieldset';
+import { useRadioGroupContext } from './RadioGroupContext';
 import './Radio.scss';
+
 type RadioProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre styling */
   className?: string;
@@ -42,56 +43,3 @@ export const Radio: React.RefForwardingComponent<
     );
   },
 );
-
-type RadioGroupContextProps = {
-  name: string;
-  value: string;
-  [key: string]: any;
-};
-
-const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(
-  null,
-);
-
-function useRadioGroupContext() {
-  const context = React.useContext(RadioGroupContext);
-  if (!context) {
-    throw new Error(
-      'You need to wrap your RadioButtons in a RadioGroup component',
-    );
-  }
-  return context;
-}
-
-type RadioGroupProps = {
-  /** Navnet til radiogruppen. */
-  name: string;
-  /** Overskrift over radiogruppen */
-  label?: string;
-  /** Verdien til den valgte radioknappen */
-  value: string;
-  /** Radioknappene sendes inn som children */
-  children: React.ReactNode;
-  /** En callback som blir kalles hver gang en radioknapp klikkes på  */
-  onChange: (e: React.ChangeEvent<any>) => void;
-  [key: string]: any;
-};
-
-export const RadioGroup: React.FC<RadioGroupProps> = ({
-  name,
-  value,
-  children,
-  onChange,
-  ...rest
-}) => {
-  const contextValue = React.useMemo(() => ({ name, value, onChange }), [
-    name,
-    value,
-    onChange,
-  ]);
-  return (
-    <RadioGroupContext.Provider value={contextValue}>
-      <Fieldset {...rest}>{children}</Fieldset>
-    </RadioGroupContext.Provider>
-  );
-};
