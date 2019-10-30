@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { Label, Heading4 } from '@entur/typography';
+import { Label } from '@entur/typography';
+import { Fieldset } from './Fieldset';
 import './Radio.scss';
 type RadioProps = {
   /** Klasse som sendes til komponenten. Bruk denne om du vil endre styling */
@@ -76,21 +77,18 @@ type RadioGroupProps = {
 export const RadioGroup: React.FC<RadioGroupProps> = ({
   name,
   value,
-  label,
   children,
   onChange,
   ...rest
 }) => {
+  const contextValue = React.useMemo(() => ({ name, value, onChange }), [
+    name,
+    value,
+    onChange,
+  ]);
   return (
-    <RadioGroupContext.Provider value={{ name, value, onChange }}>
-      <fieldset className="entur-radio-group" {...rest}>
-        {label && (
-          <Heading4 as="legend" className="entur-radio-group__label">
-            {label}
-          </Heading4>
-        )}
-        {children}
-      </fieldset>
+    <RadioGroupContext.Provider value={contextValue}>
+      <Fieldset {...rest}>{children}</Fieldset>
     </RadioGroupContext.Provider>
   );
 };
