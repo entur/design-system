@@ -43,7 +43,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 <TokenTable
   tokenKey="colors"
-  renderExample={value => (
+  example={({ value }) => (
     <div
       style={{
         backgroundColor: value,
@@ -59,7 +59,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 <TokenTable
   tokenKey="space"
-  renderExample={value => (
+  example={({ value }) => (
     <div
       style={{
         background: colors.brand.blue,
@@ -75,14 +75,14 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 <TokenTable
   tokenKey="fontWeights"
-  renderExample={value => <div style={{ fontWeight: value }}>ABC abc</div>}
+  example={({ value }) => <div style={{ fontWeight: value }}>ABC abc</div>}
 />
 
 ### Tekststørrelser
 
 <TokenTable
   tokenKey="fontSizes"
-  renderExample={value => <div style={{ fontSize: value }}>ABC abc</div>}
+  example={({ value }) => <div style={{ fontSize: value }}>ABC abc</div>}
 />
 
 ### Linjehøyder
@@ -97,7 +97,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 <TokenTable
   tokenKey="borderWidths"
-  renderExample={value => (
+  example={({ value }) => (
     <div
       style={{
         border: `${value}px solid ${colors.misc.black}`,
@@ -112,7 +112,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 <TokenTable
   tokenKey="borderRadiuses"
-  renderExample={value => (
+  example={({ value }) => (
     <div
       style={{
         border: `${borderWidths.default}px solid ${colors.misc.black}`,
@@ -127,4 +127,26 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 ### Z-indexer
 
 <TokenTable tokenKey="zIndexes" />
-```
+
+### Timings
+
+<TokenTable
+  tokenKey="timings"
+  example={({ value }) => {
+    let [currBg, setCurrBg] = React.useState(colors.brand.white);
+    return (
+      <div
+        style={{
+          display: 'block',
+          border: `${borderWidths.default}px solid ${colors.misc.black}`,
+          backgroundColor: `${currBg}`,
+          transition: `${value} background linear`,
+        }}
+        onMouseOver={() => setCurrBg(colors.brand.lavender)}
+        onMouseOut={() => setCurrBg(colors.brand.white)}
+      >
+        Hover for transisjonstid
+      </div>
+    );
+  }}
+/>

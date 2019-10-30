@@ -17,7 +17,7 @@
   bottom: $space-default;
   right: $space-default;
   z-index: $z-indexes-sticky;
-  transition: background-color 0.15s ease-out;
+  transition: background-color $timings-fast ease-out;
   &:hover {
     background-color: $colors-brand-lavender;
   }

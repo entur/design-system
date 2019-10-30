@@ -24,7 +24,7 @@
     height: $space-extra-large3;
     width: $space-extra-large3;
     opacity: 0;
-    transition: background-color 0.5s ease-out;
+    transition: background-color $timings-fast ease-out;
     &:hover {
       background: $colors-brand-lavender;
     }

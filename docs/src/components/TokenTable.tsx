@@ -17,7 +17,7 @@ import { useSettings } from './SettingsContext';
 
 type Props = {
   tokenKey: keyof typeof allTokens;
-  renderExample?: (value: string) => React.ReactNode;
+  example?: React.ComponentType<{ value: string }>;
 };
 
 const formatValue = (value: string | number) => {
@@ -27,7 +27,7 @@ const formatValue = (value: string | number) => {
   return value;
 };
 
-export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
+export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
   const flattenedTokens = React.useMemo(() => flatten(allTokens[tokenKey]), [
     tokenKey,
     allTokens,
@@ -40,7 +40,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
         <TableRow>
           <HeaderCell>Navn</HeaderCell>
           <HeaderCell>Verdi</HeaderCell>
-          {renderExample && <HeaderCell>Eksempel</HeaderCell>}
+          {Example && <HeaderCell>Eksempel</HeaderCell>}
           <HeaderCell>Kopier</HeaderCell>
         </TableRow>
       </TableHead>
@@ -55,7 +55,11 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, renderExample }) => {
             <DataCell>
               <CodeText>{formatValue(value)}</CodeText>
             </DataCell>
-            {renderExample && <DataCell>{renderExample(value)}</DataCell>}
+            {Example && (
+              <DataCell>
+                <Example value={value} />
+              </DataCell>
+            )}
             <DataCell>
               <CopyButton
                 textToCopy={formatVariable(
