@@ -2,7 +2,7 @@ import React from 'react';
 import { SettingsIcon } from '@entur/icons';
 import { Button } from '@entur/button';
 import { Heading4 } from '@entur/typography';
-import { FormGroup } from '@entur/form';
+import { InputGroup } from '@entur/form';
 import {
   useSettings,
   UserType,
@@ -40,7 +40,7 @@ const SettingsPanel: React.FC = () => {
       >
         <form onSubmit={() => setOpen(false)}>
           <Heading4 as="h2">Innstillinger</Heading4>
-          <FormGroup label="Hva slags bruker er du?">
+          <InputGroup label="Hva slags bruker er du?">
             <select
               className="entur-dropdown"
               onChange={e => setUserType(e.target.value as UserType)}
@@ -49,9 +49,9 @@ const SettingsPanel: React.FC = () => {
               <option value="developer">Utvikler 👩‍💻</option>
               <option value="designer">Designer ‍👨‍🎨</option>
             </select>
-          </FormGroup>
+          </InputGroup>
           {userType === 'developer' && (
-            <FormGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
+            <InputGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
               <select
                 className="entur-dropdown"
                 onChange={e =>
@@ -62,9 +62,9 @@ const SettingsPanel: React.FC = () => {
                 <option value="yarn">yarn ‍🧶</option>
                 <option value="npm">npm ⬢</option>
               </select>
-            </FormGroup>
+            </InputGroup>
           )}
-          <FormGroup label="Hva slags variabler vil du se?">
+          <InputGroup label="Hva slags variabler vil du se?">
             <select
               className="entur-dropdown"
               onChange={e =>
@@ -77,7 +77,7 @@ const SettingsPanel: React.FC = () => {
               <option value="less">LESS</option>
               <option value="js">JavaScript</option>
             </select>
-          </FormGroup>
+          </InputGroup>
           <Button variant="primary" width="fluid" style={{ marginTop: '1rem' }}>
             Lagre
           </Button>

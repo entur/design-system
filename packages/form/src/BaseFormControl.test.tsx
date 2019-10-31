@@ -1,7 +1,7 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BaseFormControl } from './BaseFormControl';
-import { FormGroup } from './FormGroup';
+import { InputGroup } from './InputGroup';
 
 test('renders a nice looking component', () => {
   const { getByTestId } = render(
@@ -16,50 +16,61 @@ test('renders a nice looking component', () => {
 test('renders variants correctly', () => {
   const { getByTestId, rerender } = render(
     <BaseFormControl variant="error" data-testid="wrapper">
-      <input data-testid="input" />
+      <input />
     </BaseFormControl>,
   );
 
-  const wrapper = getByTestId('wrapper');
+  let wrapper = getByTestId('wrapper');
   expect(wrapper).toHaveClass('entur-form-control-wrapper--error');
   expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl variant="success">
-      <input data-testid="input" />
+    <BaseFormControl variant="success" data-testid="wrapper">
+      <input />
     </BaseFormControl>,
   );
+
+  wrapper = getByTestId('wrapper');
 
   expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
   expect(wrapper).toHaveClass('entur-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl>
-      <input data-testid="input" />
+    <BaseFormControl data-testid="wrapper">
+      <input />
     </BaseFormControl>,
   );
+
+  wrapper = getByTestId('wrapper');
 
   expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
   expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
 
   rerender(
-    <FormGroup variant="success">
-      <BaseFormControl>
-        <input data-testid="input" />
+    <InputGroup variant="success">
+      <BaseFormControl data-testid="wrapper">
+        <input />
       </BaseFormControl>
-    </FormGroup>,
+    </InputGroup>,
   );
+
+  wrapper = getByTestId('wrapper');
+
+  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
+  expect(wrapper).toHaveClass('entur-form-control-wrapper--success');
+
+  rerender(
+    <InputGroup variant="success">
+      <BaseFormControl variant="error" data-testid="wrapper">
+        <input />
+      </BaseFormControl>
+    </InputGroup>,
+  );
+
+  wrapper = getByTestId('wrapper');
 
   expect(wrapper).toHaveClass('entur-form-control-wrapper--error');
   expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
-
-  rerender(
-    <FormGroup variant="success">
-      <BaseFormControl variant="error">
-        <input data-testid="input" />
-      </BaseFormControl>
-    </FormGroup>,
-  );
 });
 
 test('renders prepend- and append-containers', () => {

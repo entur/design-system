@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 
@@ -18,17 +17,18 @@ export const TextArea: React.RefForwardingComponent<
   TextAreaProps
 > = React.forwardRef(
   (
-    { variant, disabled = false, className, ...rest },
+    { variant, disabled = false, className, style, ...rest },
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
     return (
-      <BaseFormControl disabled={disabled} variant={variant}>
+      <BaseFormControl
+        className={className}
+        disabled={disabled}
+        variant={variant}
+        style={style}
+      >
         <textarea
-          className={classNames(
-            'entur-form-control',
-            'entur-textarea',
-            className,
-          )}
+          className="entur-form-control entur-textarea"
           ref={ref}
           {...rest}
         />

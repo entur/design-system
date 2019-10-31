@@ -7,24 +7,16 @@ import {
 } from '@entur/icons';
 import { Label, SmallText } from '@entur/typography';
 import { VariantType } from './variants';
-import './FormGroup.scss';
+import './InputGroup.scss';
 
-type FormGroupProviderProps = {
-  variant: VariantType;
-  [key: string]: any;
-};
+const InputGroupContext = React.createContext<VariantType | null>(null);
 
-const FormGroupContext = React.createContext<VariantType>('none');
-function FormGroupProvider({ variant, ...rest }: FormGroupProviderProps) {
-  return <FormGroupContext.Provider value={variant} {...rest} />;
-}
-
-export function useVariant(): VariantType {
-  const context = React.useContext(FormGroupContext);
+export function useVariant(): VariantType | null {
+  const context = React.useContext(InputGroupContext);
   return context;
 }
 
-type FormGroupProps = {
+type InputGroupProps = {
   /** Tekst/label over en form-komponent */
   label?: string;
   /** Varselmelding, som vil komme under form-komponenten */
@@ -35,27 +27,27 @@ type FormGroupProps = {
   children: React.ReactNode;
 };
 
-export const FormGroup: React.FC<FormGroupProps> = ({
+export const InputGroup: React.FC<InputGroupProps> = ({
   label,
   feedback,
-  variant = 'none',
+  variant = null,
   children,
 }) => {
   return (
-    <FormGroupProvider variant={variant}>
+    <InputGroupContext.Provider value={variant}>
       <div className="entur-form-group">
         <Label style={{ display: 'block' }}>
           <span className="entur-form-group__label">{label}</span>
           {children}
         </Label>
-        {feedback && variant !== 'none' && (
+        {feedback && variant && (
           <SmallText className="entur-form-group__feedback-wrapper">
             <AlertIcon level={variant} />
             <span className="entur-form-group__feedback">{feedback}</span>
           </SmallText>
         )}
       </div>
-    </FormGroupProvider>
+    </InputGroupContext.Provider>
   );
 };
 
@@ -70,7 +62,7 @@ const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
       return <ValidationInfoIcon className={iconClass} />;
     case 'warning':
       return <ValidationExclamationIcon className={iconClass} />;
-    case 'none':
+    default:
       return null;
   }
 };

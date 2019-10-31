@@ -1,5 +1,5 @@
 export * from './TextField';
-export * from './FormGroup';
+export * from './InputGroup';
 export * from './TextArea';
 export * from './Dropdown';
 export * from './Fieldset';

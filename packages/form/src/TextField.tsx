@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 
@@ -22,7 +21,7 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    { prepend, append, variant, disabled = false, className, ...rest },
+    { prepend, append, variant, disabled = false, className, style, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
@@ -31,10 +30,12 @@ export const TextField: React.RefForwardingComponent<
         variant={variant}
         prepend={prepend}
         append={append}
+        className={className}
+        style={style}
       >
         <input
           aria-invalid={variant === 'error'}
-          className={classNames('entur-form-control', className)}
+          className="entur-form-control"
           disabled={disabled}
           ref={ref}
           {...rest}

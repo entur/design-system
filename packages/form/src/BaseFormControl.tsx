@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { VariantType } from './variants';
-import { useVariant } from './FormGroup';
+import { useVariant } from './InputGroup';
 import './BaseFormControl.scss';
 
 type Props = {
@@ -29,8 +29,8 @@ export const BaseFormControl: React.FC<Props> = ({
   append,
   ...rest
 }) => {
-  const variantFromFormGroup = useVariant();
-  const currentVariant = variant || variantFromFormGroup;
+  const variantFromInputGroup = useVariant();
+  const currentVariant = variant || variantFromInputGroup;
   return (
     <div
       className={classNames('entur-form-control-wrapper', {

@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
@@ -28,6 +27,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   disabled = false,
   children,
   prepend,
+  style,
   ...rest
 }) => {
   return (
@@ -37,10 +37,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
       prepend={prepend}
       append={<DownArrowIcon inline={true} />}
       variant={variant}
+      className={className}
+      style={style}
     >
       <select
         aria-invalid={variant === 'error'}
-        className={classNames('entur-form-control', className)}
+        className="entur-form-control"
         disabled={disabled}
         {...rest}
       >

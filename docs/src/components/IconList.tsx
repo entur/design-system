@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
-import { TextField, FormGroup } from '@entur/form';
+import { TextField, InputGroup } from '@entur/form';
 import { SearchIcon, ReportsIcon } from '@entur/icons';
 import { useToast } from '@entur/alert';
 import matchSorter from 'match-sorter';
@@ -41,7 +41,7 @@ const IconList: React.FC<IconListProps> = props => {
   };
   return (
     <div>
-      <FormGroup
+      <InputGroup
         label="Søk etter ikon"
         feedback={feedbackText}
         variant={noHits ? 'error' : 'info'}
@@ -54,7 +54,7 @@ const IconList: React.FC<IconListProps> = props => {
           }
           prepend={<SearchIcon />}
         />
-      </FormGroup>
+      </InputGroup>
       {!noHits && (
         <>
           <Heading4>Filter</Heading4>
