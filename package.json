@@ -16,6 +16,7 @@
     "docs",
     "packages/alert",
     "packages/button",
+    "packages/expand",
     "packages/form",
     "packages/icons",
     "packages/layout",
