@@ -1,7 +1,7 @@
 import React from 'react';
-import './TextField.scss';
-import { useFormComponentClasses } from './FormComponentClasses';
+import classNames from 'classnames';
 import { VariantType } from './variants';
+import { BaseFormControl } from './BaseFormControl';
 
 type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -10,9 +10,7 @@ type TextFieldProps = {
   append?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Sett bredden på feltet. Verdien "fluid" setter bredden til 100 % av containeren */
-  width?: 'fluid';
-  /** Hvilken valideringsfarge som vises. Hentes fra FormGroup om mulig */
+  /** Hvilken valideringsfarge som vises */
   variant?: VariantType;
   /** Deaktiver tekstfeltet */
   disabled?: boolean;
@@ -24,54 +22,24 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    {
-      prepend,
-      append,
-      variant = 'none',
-      disabled = false,
-      width,
-      className,
-      ...rest
-    },
+    { prepend, append, variant, disabled = false, className, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = useFormComponentClasses({
-      variant: variant as VariantType,
-      disabled,
-      className: ['entur-form-component--input', className],
-      width,
-    });
-    if (prepend || append) {
-      return (
-        <label className={classList}>
-          {prepend && (
-            <span className="entur-form-component--input--prepend">
-              {prepend}
-            </span>
-          )}
-          <input
-            disabled={disabled}
-            aria-invalid={variant === 'error'}
-            ref={ref}
-            {...rest}
-          />
-          {append && (
-            <span className="entur-form-component--input--append">
-              {append}
-            </span>
-          )}
-        </label>
-      );
-    } else {
-      return (
+    return (
+      <BaseFormControl
+        disabled={disabled}
+        variant={variant}
+        prepend={prepend}
+        append={append}
+      >
         <input
-          className={classList}
-          disabled={disabled}
           aria-invalid={variant === 'error'}
+          className={classNames('entur-form-control', className)}
+          disabled={disabled}
           ref={ref}
           {...rest}
         />
-      );
-    }
+      </BaseFormControl>
+    );
   },
 );

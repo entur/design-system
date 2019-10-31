@@ -1007,11 +1007,6 @@
   version "1.0.0"
   resolved "ssh://git@bitbucket.org:enturas/entur-fonts.git#983afcdcd863091808ad3161309e8607c1033cb7"
 
-"@entur/icons@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@entur/icons/-/icons-0.2.0.tgz#7afc80293de666eb0018fe40972dd05c225178e4"
-  integrity sha512-liOgay84NVfnkG5UYj6S37RKT9zbjbVNQpennCpPPZaccdcxJ/FPpX8WrxIJu/0AeTBh3Yhb9RYVgLcXk32rbA==
-
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
