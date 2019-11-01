@@ -9,6 +9,7 @@
 @import '~@entur/typography/dist/styles.css';
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/expand/dist/styles.css';
 
 @mixin for-desktop {
   @media screen and (min-width: #{$breakpoints-large}) {
