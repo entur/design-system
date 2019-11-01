@@ -35,15 +35,15 @@ export const InputGroup: React.FC<InputGroupProps> = ({
 }) => {
   return (
     <InputGroupContext.Provider value={variant}>
-      <div className="entur-form-group">
+      <div className="entur-input-group">
         <Label style={{ display: 'block' }}>
-          <span className="entur-form-group__label">{label}</span>
+          <span className="entur-input-group__label">{label}</span>
           {children}
         </Label>
         {feedback && variant && (
-          <SmallText className="entur-form-group__feedback-wrapper">
+          <SmallText className="entur-input-group__feedback-wrapper">
             <AlertIcon level={variant} />
-            <span className="entur-form-group__feedback">{feedback}</span>
+            <span className="entur-input-group__feedback">{feedback}</span>
           </SmallText>
         )}
       </div>
@@ -52,7 +52,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({
 };
 
 const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
-  const iconClass = `entur-form-group__icon entur-form-group__icon--${level}`;
+  const iconClass = `entur-input-group__icon entur-input-group__icon--${level}`;
   switch (level) {
     case 'success':
       return <ValidationCheckIcon className={iconClass} />;

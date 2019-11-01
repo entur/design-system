@@ -1,6 +1,7 @@
 import React from 'react';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
+import './TextArea.scss';
 
 type TextAreaProps = {
   /** Ekstra klassenavn */

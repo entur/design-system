@@ -7,6 +7,8 @@ import './BaseFormControl.scss';
 type Props = {
   /** Et skjemaelement med `entur-form-control`-klassen */
   children: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
   /** Sett til true om skjema-elementet skal ha mørkt design i contrast mode */
   dark?: boolean;
   /** Sett til true om skjema-elementet er disabled */
@@ -22,6 +24,7 @@ type Props = {
 
 export const BaseFormControl: React.FC<Props> = ({
   children,
+  className,
   dark = false,
   disabled = false,
   variant,
@@ -33,7 +36,7 @@ export const BaseFormControl: React.FC<Props> = ({
   const currentVariant = variant || variantFromInputGroup;
   return (
     <div
-      className={classNames('entur-form-control-wrapper', {
+      className={classNames('entur-form-control-wrapper', className, {
         'entur-form-control-wrapper--success': currentVariant === 'success',
         'entur-form-control-wrapper--error': currentVariant === 'error',
         'entur-form-control-wrapper--dark': dark,

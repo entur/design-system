@@ -1,54 +1,55 @@
 ---
-name: Skjemagruppe
-route: /komponenter/skjemaelementer/formgroup
+name: InputGroup
+route: /komponenter/skjemaelementer/inputgroups
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: form
 ---
 
-import { FormGroup, TextField, TextArea } from '@entur/form';
+import { InputGroup, TextField, TextArea } from '@entur/form';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
-  FormGroup-komponenten legger på label og tilbakemelding rundt skjemaelementer.
+  InputGroup-komponenten legger på label og tilbakemelding rundt
+  skjemaelementer.
 </PageHeader>
 
 <Playground>
   <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <FormGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
+    <InputGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
       <TextField placeholder="Oslo" />
-    </FormGroup>
-    <FormGroup
+    </InputGroup>
+    <InputGroup
       label="Togdestinasjon"
       feedback="Oisann, noe galt skjedde her"
       variant="error"
     >
       <TextField placeholder="Gjøvik" width="fluid" />
-    </FormGroup>
-    <FormGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
+    </InputGroup>
+    <InputGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
       <TextField placeholder="Advarsel" />
-    </FormGroup>
-    <FormGroup
+    </InputGroup>
+    <InputGroup
       label="Togdestinasjon"
       feedback="Denne informasjonen hjelper deg"
       variant="info"
     >
       <TextField placeholder="Informasjon" />
-    </FormGroup>
-    <FormGroup
+    </InputGroup>
+    <InputGroup
       label="Togdestinasjon"
       feedback="Denne informasjonen hjelper deg"
       variant="info"
     >
       <TextArea placeholder="Informasjon" />
-    </FormGroup>
+    </InputGroup>
   </div>
 </Playground>
 
-<ImportStatement imports="FormGroup" />
-<Props of={FormGroup} />
+<ImportStatement imports="InputGroup" />
+<Props of={InputGroup} />
 
-`<FormGroup />` gir oss en universelt utformet måte å legge til label, validering og variant-stiler til skjemaelementer.
+`<InputGroup />` gir oss en universelt utformet måte å legge til label, validering og variant-stiler til skjemaelementer.
