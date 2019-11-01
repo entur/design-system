@@ -65,7 +65,5 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
-  "dependencies": {
-    "gatsby": "2.13.73"
-  }
+  "dependencies": {}
 }
