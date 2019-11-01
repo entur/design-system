@@ -7,24 +7,16 @@ import {
 } from '@entur/icons';
 import { Label, SmallText } from '@entur/typography';
 import { VariantType } from './variants';
-import './FormGroup.scss';
+import './InputGroup.scss';
 
-type FormGroupProviderProps = {
-  variant: VariantType;
-  [key: string]: any;
-};
+const InputGroupContext = React.createContext<VariantType | null>(null);
 
-const FormGroupContext = React.createContext<VariantType>('none');
-function FormGroupProvider({ variant, ...rest }: FormGroupProviderProps) {
-  return <FormGroupContext.Provider value={variant} {...rest} />;
-}
-
-export function useVariant(): VariantType {
-  const context = React.useContext(FormGroupContext);
+export function useVariant(): VariantType | null {
+  const context = React.useContext(InputGroupContext);
   return context;
 }
 
-type FormGroupProps = {
+type InputGroupProps = {
   /** Tekst/label over en form-komponent */
   label?: string;
   /** Varselmelding, som vil komme under form-komponenten */
@@ -35,32 +27,32 @@ type FormGroupProps = {
   children: React.ReactNode;
 };
 
-export const FormGroup: React.FC<FormGroupProps> = ({
+export const InputGroup: React.FC<InputGroupProps> = ({
   label,
   feedback,
-  variant = 'none',
+  variant = null,
   children,
 }) => {
   return (
-    <FormGroupProvider variant={variant}>
-      <div className="entur-form-group">
+    <InputGroupContext.Provider value={variant}>
+      <div className="entur-input-group">
         <Label style={{ display: 'block' }}>
-          <span className="entur-form-group__label">{label}</span>
+          <span className="entur-input-group__label">{label}</span>
           {children}
         </Label>
-        {feedback && variant !== 'none' && (
-          <SmallText className="entur-form-group__feedback-wrapper">
+        {feedback && variant && (
+          <SmallText className="entur-input-group__feedback-wrapper">
             <AlertIcon level={variant} />
-            <span className="entur-form-group__feedback">{feedback}</span>
+            <span className="entur-input-group__feedback">{feedback}</span>
           </SmallText>
         )}
       </div>
-    </FormGroupProvider>
+    </InputGroupContext.Provider>
   );
 };
 
 const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
-  const iconClass = `entur-form-group__icon entur-form-group__icon--${level}`;
+  const iconClass = `entur-input-group__icon entur-input-group__icon--${level}`;
   switch (level) {
     case 'success':
       return <ValidationCheckIcon className={iconClass} />;
@@ -70,7 +62,7 @@ const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
       return <ValidationInfoIcon className={iconClass} />;
     case 'warning':
       return <ValidationExclamationIcon className={iconClass} />;
-    case 'none':
+    default:
       return null;
   }
 };

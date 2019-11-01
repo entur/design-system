@@ -1,19 +1,15 @@
 import React from 'react';
-import './TextArea.scss';
-import { useFormComponentClasses } from './FormComponentClasses';
 import { VariantType } from './variants';
+import { BaseFormControl } from './BaseFormControl';
+import './TextArea.scss';
 
 type TextAreaProps = {
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
+  /** Ekstra klassenavn */
   className?: string;
-  /** Settes til 'fluid' for flytende textarea */
-  width?: 'fluid';
-  /** Settes for å style komponenten basert på state */
+  /** Valideringsvariant */
   variant?: VariantType;
-  /** For å deaktivere inputfeltet */
+  /** Deaktiverer tekstområdet */
   disabled?: boolean;
-  /** true for å tillate resize horistontalt */
-  resize?: boolean;
   [key: string]: any;
 };
 
@@ -22,35 +18,22 @@ export const TextArea: React.RefForwardingComponent<
   TextAreaProps
 > = React.forwardRef(
   (
-    {
-      variant = 'none',
-      disabled = false,
-      className,
-      resize = false,
-      width,
-      ...rest
-    },
+    { variant, disabled = false, className, style, ...rest },
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
-    const classList = useFormComponentClasses({
-      variant: variant as VariantType,
-      disabled,
-      className: [
-        'entur-form-component--textarea',
-        className,
-        { ['entur-form-component__textarea--resize']: resize },
-      ],
-      width,
-    });
-
     return (
-      <textarea
+      <BaseFormControl
+        className={className}
         disabled={disabled}
-        aria-invalid={variant === 'error'}
-        className={classList}
-        ref={ref}
-        {...rest}
-      />
+        variant={variant}
+        style={style}
+      >
+        <textarea
+          className="entur-form-control entur-textarea"
+          ref={ref}
+          {...rest}
+        />
+      </BaseFormControl>
     );
   },
 );
