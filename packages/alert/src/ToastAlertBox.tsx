@@ -1,5 +1,5 @@
 import React from 'react';
-import { InternalAlertBox } from './InternalAlertBox';
+import { BaseAlertBox } from './BaseAlertBox';
 
 type ToastAlertBoxProps = {
   /** Innholdet i toasten */
@@ -20,5 +20,5 @@ type ToastAlertBoxProps = {
 };
 
 export const ToastAlertBox: React.FC<ToastAlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="toast" role="status" />
+  <BaseAlertBox {...props} size="toast" role="status" />
 );
