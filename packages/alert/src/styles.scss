@@ -32,6 +32,10 @@
     }
   }
 
+  &--fit-content {
+    width: fit-content;
+  }
+
   // Variants
   &--success {
     background-color: $colors-validation-mint-tint;
@@ -76,7 +80,11 @@
 
 .entur-alert-box__content {
   color: $colors-brand-blue;
-  margin-right: $space-extra-large;
+
+  .entur-alert-box--banner &,
+  .entur-alert-box--toast & {
+    margin-right: $space-extra-large;
+  }
 
   & > *:first-child {
     margin-top: 0;
