@@ -1,11 +1,12 @@
 ---
 name: Expandable
-route: /komponenter/expandable
 parent: Komponenter
+route: /komponenter/layout/expandable
+menu: Layout og flater
 npmPackage: expand
 ---
 
-import { Expandable } from '@entur/expand';
+import { ControlledExpandable } from '@entur/expand';
 import '@entur/expand/dist/styles.css';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
@@ -18,7 +19,7 @@ import { ImportStatement } from 'src/components/ImportStatement';
 </PageHeader>
 
 <Playground>
-  <Expandable title="Heisann denne kan du åpne">
+  <ControlledExpandable title="Heisann denne kan du åpne">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc
       vel ante sodales, at fermentum erat luctus. Donec dignissim mauris sed mi
@@ -28,13 +29,10 @@ import { ImportStatement } from 'src/components/ImportStatement';
       risus ut venenatis vestibulum, eros risus pretium ante, convallis
       malesuada mauris erat vel arcu. Etiam id eros erat.
     </div>
-  </Expandable>
+  </ControlledExpandable>
 </Playground>
-
-<ImportStatement imports="Expandable" />
-<Props of={Expandable} />
 
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `ControlledExpandable`.
 
 <ImportStatement imports="ControlledExpandable" />
-<Props of={Expandable} />
+<Props of={ControlledExpandable} />

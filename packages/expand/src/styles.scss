@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-expand-expandable {
-  &--panel {
+.entur-expandable {
+  &-panel {
     appearance: none;
     margin: 0;
     padding: 0;
@@ -38,5 +38,5 @@
   }
 }
 .ReactCollapse--collapse {
-  transition: height $timings-slow ease-out; //$timings-slow;
+  transition: height $timings-slow ease-out;
 }
