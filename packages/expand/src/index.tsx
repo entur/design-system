@@ -1,1 +1,2 @@
-export * from './Expandable';
+export * from './ExpandablePanel';
+export * from './BaseExpand';

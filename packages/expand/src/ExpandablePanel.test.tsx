@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { Expandable } from '.';
+import { ExpandablePanel } from '.';
 import { BaseExpand } from './BaseExpand';
 
 test('BaseExpand works properly', () => {
@@ -15,9 +15,9 @@ test('Expandable is rendered, clicked, and opened', () => {
   const title = 'ExpandPanel Tittel';
   const testId = 'idForTestingExpandable';
   const { getByText, getByTestId } = render(
-    <Expandable title={title} data-testid={testId}>
+    <ExpandablePanel title={title} data-testid={testId}>
       {children}
-    </Expandable>,
+    </ExpandablePanel>,
   );
   const expandable = getByTestId(testId);
   fireEvent.click(expandable.firstElementChild!);
@@ -31,9 +31,14 @@ test('Controlled Expandable works properly', () => {
   const testId = 'idForTestingControlledExpandable';
   const open = false;
   const { getByTestId } = render(
-    <Expandable title={title} onToggle={spy} open={open} data-testid={testId}>
+    <ExpandablePanel
+      title={title}
+      onToggle={spy}
+      open={open}
+      data-testid={testId}
+    >
       {children}
-    </Expandable>,
+    </ExpandablePanel>,
   );
 
   const expandable = getByTestId(testId);

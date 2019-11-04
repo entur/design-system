@@ -15,8 +15,11 @@
     align-items: center;
     cursor: pointer;
     color: inherit;
+    height: ($space-extra-large4 + $space-extra-small2);
+    border-bottom: $border-widths-default solid $colors-brand-white;
     .entur-contrast & {
       background: $colors-blues-blue20;
+      border-color: $colors-brand-blue;
     }
     &:hover {
       background: $colors-greys-grey30;
@@ -35,6 +38,9 @@
         transform: rotate(-180deg);
       }
     }
+  }
+  &-content {
+    padding: $space-default;
   }
 }
 .ReactCollapse--collapse {

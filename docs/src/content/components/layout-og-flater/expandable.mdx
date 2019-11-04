@@ -1,37 +1,60 @@
 ---
-name: Expandable
+name: ExpandablePanel
 parent: Komponenter
-route: /komponenter/layout/expandable
+route: /komponenter/layout/expandablepanel
 menu: Layout og flater
 npmPackage: expand
 ---
 
-import { Expandable } from '@entur/expand';
+import { ExpandablePanel, BaseExpand } from '@entur/expand';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
-  Expandable er et panel som inneholder noe innhold som vises ved å klikke på
-  panelet
+  ExpandablePanel er et panel som inneholder noe innhold som vises ved å klikke
+  på panelet
 </PageHeader>
 
 <Playground>
-  <Expandable title="Heisann denne kan du åpne">
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices nunc
-      vel ante sodales, at fermentum erat luctus. Donec dignissim mauris sed mi
-      rhoncus convallis sed at est. Vestibulum in est sit amet sapien
-      ullamcorper feugiat eu a nunc. Aliquam erat volutpat. Vestibulum tincidunt
-      urna quis eros bibendum, hendrerit dignissim felis fermentum. Nam gravida,
-      risus ut venenatis vestibulum, eros risus pretium ante, convallis
-      malesuada mauris erat vel arcu. Etiam id eros erat.
-    </div>
-  </Expandable>
+  <ExpandablePanel title="Om Entur">
+    I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å
+    reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor samler
+    vi reisedata fra alle kollektivselskap i landet.
+  </ExpandablePanel>
 </Playground>
 
-<ImportStatement imports="Expandable" />
-<Props of={Expandable} />
+## Komponenter
 
+### ExpandablePanel
+
+<ImportStatement imports="ExpandablePanel" />
+<Props of={ExpandablePanel} />
+ExpandablePanel kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
+Se eksempel på dette under.
+
+<Playground>
+  {() => {
+    const [open, setOpen] = React.useState(false);
+    return (
+      <ExpandablePanel
+        title="Om Entur"
+        open={open}
+        onToggle={() => setOpen(!open)}
+      >
+        I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge
+        å reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor
+        samler vi reisedata fra alle kollektivselskap i landet.
+      </ExpandablePanel>
+    );
+  }}
+</Playground>
+
+### BaseExpand
+
+<ImportStatement imports="BaseExpand" />
+<Props of={BaseExpand} />
+
+ExpandablePanel (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.

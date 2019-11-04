@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse } from 'react-collapse';
+import { UnmountClosed } from 'react-collapse';
 
 type BaseExpandProps = {
   /** Innholdet som skal være expandable */
@@ -14,8 +14,8 @@ export const BaseExpand: React.FC<BaseExpandProps> = ({
   ...rest
 }) => {
   return (
-    <Collapse isOpened={open} {...rest}>
-      {children}
-    </Collapse>
+    <UnmountClosed isOpened={open}>
+      <div {...rest}>{children}</div>
+    </UnmountClosed>
   );
 };
