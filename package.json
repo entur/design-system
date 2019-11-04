@@ -20,6 +20,7 @@
     "packages/form",
     "packages/icons",
     "packages/layout",
+    "packages/loader",
     "packages/menu",
     "packages/modal",
     "packages/table",
