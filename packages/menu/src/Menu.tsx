@@ -9,7 +9,11 @@ type MenuProps = {
   size?: 'small' | 'medium';
 };
 
-export const Menu: React.FC<MenuProps> = ({
+type InternalMarker = {
+  __IS_ENTUR_MENU__: boolean;
+};
+
+export const Menu: React.FC<MenuProps> & InternalMarker = ({
   className,
   children,
   size = 'medium',
@@ -28,3 +32,6 @@ export const Menu: React.FC<MenuProps> = ({
     </ul>
   );
 };
+
+/** This is required to check that the Menu */
+Menu.__IS_ENTUR_MENU__ = true;
