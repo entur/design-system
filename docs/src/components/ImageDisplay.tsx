@@ -28,6 +28,15 @@ type ImageDisplayProps = {
 const ImageDisplay: React.FC<ImageDisplayProps> = ({ src }) => {
   return (
     <div className="image-display">
+      <a
+        className="image-display__download-icon"
+        href={src}
+        download
+        aria-label="Last ned bilde"
+      >
+        <DownloadIcon />
+      </a>
+
       <div className="image-display__image">
         <img src={src} alt="" />
       </div>

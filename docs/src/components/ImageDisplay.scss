@@ -9,6 +9,35 @@
 .image-display {
   width: 100%;
   position: relative;
+
+  &__download-icon {
+    cursor: pointer;
+    position: absolute;
+    right: $space-large;
+    top: $space-large;
+    background: $colors-brand-white;
+    box-shadow: 0px 0px 1.25rem -0.75rem $colors-misc-black;
+    border-radius: 50%;
+    border: none;
+    padding: $space-default;
+    color: inherit;
+    height: $space-extra-large3;
+    width: $space-extra-large3;
+    opacity: 0;
+    transition: background-color $timings-fast ease-out;
+    &:hover {
+      background: $colors-brand-lavender;
+    }
+
+    .image-display:hover &,
+    &:focus {
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 1rem $colors-misc-focus;
+    }
+  }
 }
 
 .image-display__image {
