@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@0.4.0...@entur/form@1.0.0) (2019-11-04)
+
+### Code Refactoring
+
+- **Dropdown, TextArea, TextField:** rewrite form field implementation ([0b6b9d0](https://bitbucket.org/enturas/design-system/commits/0b6b9d0d87c712366e05b6a275eea406f1a5cdb9))
+- **InputGroup:** rename FormGroup to InputGroup ([520281d](https://bitbucket.org/enturas/design-system/commits/520281d8dc461c73fb533db92ceed0ebf40a1823))
+- **InputGroup:** rename FormGroup to InputGroup ([725f121](https://bitbucket.org/enturas/design-system/commits/725f121f9597310a1c4f9e46501eeef1c8a82829))
+
+### BREAKING CHANGES
+
+- **InputGroup:** Rename FormGroup to InputGroup
+- **InputGroup:** FormGroup is now known as InputGroup. Change your imports. Also, variant="none" is not a valid form
+  control variant - pass null instead.
+- **Dropdown, TextArea, TextField:** Removes width prop (now fluid by default)
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@0.3.0...@entur/form@0.4.0) (2019-10-30)
 
 ### Bug Fixes

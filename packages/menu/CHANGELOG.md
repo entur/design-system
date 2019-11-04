@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.3.0...@entur/menu@0.3.1) (2019-11-04)
+
+### Bug Fixes
+
+- **Menu:** make sub menu detection work more consistently ([096538e](https://bitbucket.org/enturas/design-system/commits/096538e83714261398379e56d31704a59c7324fc))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.2.3...@entur/menu@0.3.0) (2019-10-30)
 
 ### Bug Fixes
