@@ -4,7 +4,7 @@ import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 
 type DropdownProps = {
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
+  /** Ekstra klassenavn */
   className?: string;
   /** Settes for å style komponenten basert på state/validering */
   variant?: VariantType;

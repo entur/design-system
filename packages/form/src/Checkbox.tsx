@@ -5,7 +5,7 @@ import cx from 'classnames';
 import './Checkbox.scss';
 
 type CheckboxProps = {
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre style */
+  /** Ekstra klassenavn */
   className?: string;
   /** Label for checkboxen, som vises ved høyre side. */
   children?: React.ReactNode;
