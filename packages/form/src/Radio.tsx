@@ -5,7 +5,7 @@ import { useRadioGroupContext } from './RadioGroupContext';
 import './Radio.scss';
 
 type RadioProps = {
-  /** Klasse som sendes til komponenten. Bruk denne om du vil endre styling */
+  /** Ekstra klassenavn */
   className?: string;
   /** Label til radio-button. Vises ved høyre side. */
   children?: React.ReactNode;
