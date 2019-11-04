@@ -32,7 +32,10 @@ import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
   Retningslinjer for bruk av typografi står beskrevet under{' '}
-  <Link to="/visuell-identitet">Visuell identitet</Link>.
+  <LinkText as={Link} to="/visuell-identitet">
+    Visuell identitet
+  </LinkText>
+  .
 </PageHeader>
 
 Det er definert en typografisk skala, hvor vi bruker ulike fontstørrelser for å skape typografisk hierarki i teksten. Dette er den typografiske skalaen for løpende brødtekst og titler, navngitt etter “heading” nummerering i synkende skala der øverste nivå er H1, deretter H2, H3 osv.
