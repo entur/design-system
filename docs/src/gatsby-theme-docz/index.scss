@@ -35,3 +35,17 @@ body {
 .site-content main {
   flex: 1;
 }
+
+.frontpage-site-content {
+  display: flex;
+  margin: $space-default;
+  flex-direction: column;
+  min-height: 90vh;
+  @include for-desktop {
+    margin: 2rem auto;
+    max-width: 64rem;
+  }
+}
+.frontpage-site-content main {
+  flex: 1;
+}

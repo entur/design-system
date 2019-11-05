@@ -1,0 +1,17 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.frontpage {
+  &-menu-navbar {
+    border-bottom: $colors-greys-grey20 solid $border-widths-small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  &-tab-link-container {
+    display: flex;
+  }
+  &--logo {
+    margin-left: 3rem;
+  }
+}

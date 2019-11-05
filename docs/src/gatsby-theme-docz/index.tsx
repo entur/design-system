@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentsProvider, theme } from 'docz';
+import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import SiteFooter from 'src/components/SiteFooter';
@@ -7,6 +7,7 @@ import { SettingsProvider } from 'src/components/SettingsContext';
 import SettingsPanel from 'src/components/SettingsPanel';
 import Props from 'src/components/Props';
 import Menu from './UI/Menu';
+import FrontPageMenu from './UI/FrontPageMenu';
 
 import './index.scss';
 
@@ -25,17 +26,27 @@ const componentMap = {
 };
 
 const App: React.FC = ({ children }) => {
+  const isFrontPage = useCurrentDoc().frontpage;
   return (
     <SettingsProvider>
       <ToastProvider>
-        <Menu />
-        <div className="site-content">
-          <ComponentsProvider components={componentMap}>
-            <main>{children}</main>
-            <SiteFooter />
-          </ComponentsProvider>
-        </div>
-        <SettingsPanel />
+        <ComponentsProvider components={componentMap}>
+          {isFrontPage ? (
+            <>
+              <FrontPageMenu />
+              <main className="frontpage-site-content">{children}</main>
+            </>
+          ) : (
+            <>
+              <Menu />
+              <div className="site-content">
+                <main>{children}</main>
+                <SiteFooter />
+              </div>
+            </>
+          )}
+          <SettingsPanel />
+        </ComponentsProvider>
       </ToastProvider>
     </SettingsProvider>
   );
