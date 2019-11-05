@@ -23,7 +23,10 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
+    "@entur/expand": "^0.2.0",
+    "@entur/icons": "^0.4.0",
     "@entur/tokens": "^1.0.0",
+    "@entur/typography": "^0.4.1",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
