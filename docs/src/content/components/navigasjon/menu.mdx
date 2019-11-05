@@ -8,7 +8,7 @@ npmPackage: menu
 
 import { Props } from 'docz';
 import { Link } from 'gatsby';
-import { Menu, MenuItem } from '@entur/menu';
+import { Menu, MenuItem, MenuGroup } from '@entur/menu';
 import { LeadParagraph } from '@entur/typography';
 import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 import { Playground } from 'src/components/Playground';
@@ -54,6 +54,13 @@ import { ImportStatement } from 'src/components/ImportStatement';
 <Props of={MenuItem} />
 
 `<MenuItem />` er et menypunkt, og er typisk en lenke. De kan inneholde en label, eller en sub-meny.
+
+### MenuGroup
+
+<ImportStatement imports="MenuGroup" />
+<Props of={MenuGroup} />
+
+`<MenuGroup />` brukes til å gruppere deler av menyen sammen.
 
 ## Variasjoner
 
@@ -110,6 +117,88 @@ import { ImportStatement } from 'src/components/ImportStatement';
   </Menu>
 </Playground>
 
+### Gruppert meny
+
+<Playground hideContrastOption={true}>
+  <MenuGroup title="En gruppe">
+    <Menu>
+      <MenuItem href="#menyer" active={true}>
+        Toppen
+      </MenuItem>
+      <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+        Si hei
+      </MenuItem>
+      <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+      <MenuItem>
+        Andre alternativer
+        <Menu>
+          <MenuItem href="#">Sparkesykkel</MenuItem>
+          <MenuItem disabled={true}>Ski</MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>
+  </MenuGroup>
+  <MenuGroup title="Enda en gruppe">
+    <Menu>
+      <MenuItem href="#menyer" active={true}>
+        Toppen
+      </MenuItem>
+      <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+        Si hei
+      </MenuItem>
+      <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+      <MenuItem>
+        Andre alternativer
+        <Menu>
+          <MenuItem href="#">Sparkesykkel</MenuItem>
+          <MenuItem disabled={true}>Ski</MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>
+  </MenuGroup>
+</Playground>
+
+### Gruppert kompakt meny
+
+<Playground hideContrastOption={true}>
+  <MenuGroup title="En gruppe" defaultOpen={true}>
+    <Menu size="small">
+      <MenuItem href="#menyer" active={true}>
+        Toppen
+      </MenuItem>
+      <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+        Si hei
+      </MenuItem>
+      <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+      <MenuItem>
+        Andre alternativer
+        <Menu size="small">
+          <MenuItem href="#">Sparkesykkel</MenuItem>
+          <MenuItem disabled={true}>Ski</MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>
+  </MenuGroup>
+  <MenuGroup title="Enda en gruppe" defaultOpen={true}>
+    <Menu size="small">
+      <MenuItem href="#menyer" active={true}>
+        Toppen
+      </MenuItem>
+      <MenuItem as="button" type="button" onClick={() => alert('Hei på deg')}>
+        Si hei
+      </MenuItem>
+      <MenuItem disabled={true}>Utilgjengelig</MenuItem>
+      <MenuItem>
+        Andre alternativer
+        <Menu size="small">
+          <MenuItem href="#">Sparkesykkel</MenuItem>
+          <MenuItem disabled={true}>Ski</MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>
+  </MenuGroup>
+</Playground>
+
 ## Retningslinjer
 
 ### Når skal komponenten brukes?
@@ -119,3 +208,11 @@ Navigasjonsmeny er anbefalt å brukes hvis applikasjonen krever en global naviga
 ### Inaktive elementer
 
 Om man ønsker å synliggjøre at en lenke finnes, men er utilgjengelig av en eller annen grunn, kan man gjøre et menyelement "disabled". Dette er noe man helst ikke skal gjøre, siden det ikke er noen god måte å fortelle brukeren hvorfor elementet ikke er tilgjengelig for dem. Vurder heller å fjerne elementet fra listen.
+
+## Menygrupper
+
+Noen applikasjoner kan trenge en mer avansert menystruktur. I de tilfellene kan man bruke menygrupper til å gruppere noen menyvalg sammen.
+
+Menygruppene kan kollapses, men skal være åpne til å begynne med. Man kan velge mellom å ha alle menyer åpne på en gang, eller å kun ha den "aktive" menyen åpen.
+
+Unngå å ha nøstede undermenyer under en menygruppe.
