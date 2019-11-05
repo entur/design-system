@@ -193,20 +193,18 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
       gap: '1em 1em',
     }}
   >
-    <SmallAlertBox variant="success" style={{ width: '100%' }}>
-      Kjøpet gikk i orden!
-    </SmallAlertBox>
-    <SmallAlertBox variant="info" style={{ width: '100%' }}>
-      Toget går fra plattform 2
-    </SmallAlertBox>
-    <SmallAlertBox variant="warning" style={{ width: '100%' }}>
+    <SmallAlertBox variant="success">Kjøpet gikk i orden!</SmallAlertBox>
+    <SmallAlertBox variant="info">Toget går fra plattform 2</SmallAlertBox>
+    <SmallAlertBox variant="warning" width="fit-content">
       Snøvær på Bergensbanen
     </SmallAlertBox>
-    <SmallAlertBox variant="error" style={{ width: '100%' }}>
+    <SmallAlertBox variant="error" width="fit-content">
       Kjøpet kunne ikke gjennomføres!
     </SmallAlertBox>
   </div>
 </Playground>
+
+Default så opptar disse varslene full bredde. Om ønskelig kan du sette `width="fit-content"` for å la dem ta størrelsen til innholdet.
 
 ## Retningslinjer
 

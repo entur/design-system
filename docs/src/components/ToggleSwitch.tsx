@@ -4,6 +4,7 @@ import { Label } from '@entur/typography';
 import './ToggleSwitch.scss';
 
 type Props = {
+  /** Ekstra klassenavn */
   className?: string;
   checked?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

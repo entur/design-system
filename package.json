@@ -20,6 +20,7 @@
     "packages/form",
     "packages/icons",
     "packages/layout",
+    "packages/loader",
     "packages/menu",
     "packages/modal",
     "packages/table",
@@ -66,7 +67,5 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
-  "dependencies": {
-    "gatsby": "2.13.73"
-  }
+  "dependencies": {}
 }

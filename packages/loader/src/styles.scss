@@ -1,0 +1,53 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@keyframes back-and-forth {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translateX(calc(100% - #{$space-extra-large3}));
+  }
+}
+
+@keyframes grow {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scaleX(2);
+  }
+}
+
+.entur-loader {
+  text-align: center;
+  overflow-x: hidden;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.entur-loader__bar {
+  border: $border-widths-medium solid $colors-greys-grey20;
+  &::after {
+    background: $colors-brand-coral;
+    content: '';
+    display: block;
+    height: 0.3125rem; // 5px
+    transition: width $timings-fast ease-out;
+    width: var(--loader-width);
+  }
+
+  &--indeterminate {
+    animation: 1s back-and-forth alternate infinite ease-in-out;
+    border: none;
+    will-change: transform;
+
+    &::after {
+      animation: 1s grow alternate infinite ease-in-out;
+      width: $space-extra-large3;
+      will-change: transform;
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 This package contains all the common form-components
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/formgroup)?
+> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/inputgroup)?
 
 ## Installation
 
@@ -14,18 +14,4 @@ yarn add @entur/form
 
 ## Usage
 
-```js
-<TextField />
-
-// Or with a FormGroup component wrapping it, giving it additional labels
-
-<FormGroup
-  title="Togdestinasjon"
-  alertLabel="Gratulerer"
-  alertLevel="success"
->
-  <TextField placeholder="Oslo" />
-</FormGroup>
-```
-
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/formgroup) for further usage information.
+Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/skjemaelementer/inputgroup) for further usage information.

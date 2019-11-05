@@ -16,7 +16,7 @@ const iconsMap = {
   error: ValidationErrorIcon,
 };
 
-type InternalAlertBoxProps = {
+type BaseAlertBoxProps = {
   /** Innholdet i alert-boksen */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -36,7 +36,7 @@ type InternalAlertBoxProps = {
   [key: string]: any;
 };
 
-export const InternalAlertBox: React.FC<InternalAlertBoxProps> = ({
+export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
   children,
   className,
   closable = false,

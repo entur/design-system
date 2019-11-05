@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@2.1.0...@entur/designsystem-docs@3.0.0) (2019-11-04)
+
+### Bug Fixes
+
+- **docs:** add missing ImportStatement import statement ([034b00d](https://bitbucket.org/enturas/design-system/commits/034b00de7ffaa056cf5026bd018ee723471ebbed))
+
+### Code Refactoring
+
+- **InputGroup:** rename FormGroup to InputGroup ([520281d](https://bitbucket.org/enturas/design-system/commits/520281d8dc461c73fb533db92ceed0ebf40a1823))
+- **InputGroup:** rename FormGroup to InputGroup ([725f121](https://bitbucket.org/enturas/design-system/commits/725f121f9597310a1c4f9e46501eeef1c8a82829))
+
+### Features
+
+- **Expand:** adding Expandable, ControlledExpandable component in expand package ([d469df0](https://bitbucket.org/enturas/design-system/commits/d469df03e3da6e70e206746debc5ec0a11d18af1))
+- **SmallAlertBox:** add width="fit-content" option ([1f4d327](https://bitbucket.org/enturas/design-system/commits/1f4d32763a65bbe2a70f814f9ca9377a737f53ca))
+
+### BREAKING CHANGES
+
+- **InputGroup:** Rename FormGroup to InputGroup
+- **InputGroup:** FormGroup is now known as InputGroup. Change your imports. Also, variant="none" is not a valid form
+  control variant - pass null instead.
+
 # [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@2.0.0...@entur/designsystem-docs@2.1.0) (2019-10-30)
 
 ### Bug Fixes

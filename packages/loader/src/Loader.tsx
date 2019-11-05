@@ -1,0 +1,47 @@
+import React from 'react';
+import classNames from 'classnames';
+import { Heading4 } from '@entur/typography';
+
+type Props = {
+  /** Tekst som beskriver prosessen */
+  children?: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Tall mellom 0-100, eller "indeterminate" om man ikke vet */
+  progress?: number | 'indeterminate';
+  [key: string]: any;
+};
+
+export const Loader: React.FC<Props> = ({
+  children,
+  className,
+  progress = 'indeterminate',
+  ...rest
+}) => {
+  const isIndeterminate = progress === 'indeterminate';
+  let styles = {};
+  if (!isIndeterminate) {
+    styles = {
+      '--loader-width': `${progress}%`,
+    } as React.CSSProperties;
+  }
+  return (
+    <div
+      className={classNames('entur-loader', className)}
+      role="alert"
+      aria-busy={true}
+      aria-live="polite"
+      {...rest}
+    >
+      {children && (
+        <Heading4 className="entur-loader__label">{children}</Heading4>
+      )}
+      <div
+        className={classNames('entur-loader__bar', {
+          'entur-loader__bar--indeterminate': isIndeterminate,
+        })}
+        style={styles}
+      />
+    </div>
+  );
+};

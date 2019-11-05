@@ -1,19 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-form-component {
-  &--textarea {
-    padding: $space-extra-small $space-default;
-    height: 7.75rem;
-    resize: vertical;
-
-    &:focus {
-      outline: none;
-    }
-    ::placeholder {
-      color: $colors-blues-blue40;
-    }
-    &--resize {
-      resize: both;
-    }
-  }
+.entur-textarea {
+  min-height: 7.75rem;
+  resize: vertical;
 }

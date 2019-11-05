@@ -3,13 +3,14 @@
 @import '~@entur/layout/dist/styles.css';
 
 @import '~@entur/alert/dist/styles.css';
+@import '~@entur/expand/dist/styles.css';
 @import '~@entur/form/dist/styles.css';
+@import '~@entur/loader/dist/styles.css';
 @import '~@entur/menu/dist/styles.css';
 @import '~@entur/modal/dist/styles.css';
-@import '~@entur/typography/dist/styles.css';
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/expand/dist/styles.css';
+@import '~@entur/typography/dist/styles.css';
 
 @mixin for-desktop {
   @media screen and (min-width: #{$breakpoints-large}) {

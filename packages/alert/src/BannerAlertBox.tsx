@@ -1,5 +1,5 @@
 import React from 'react';
-import { InternalAlertBox } from './InternalAlertBox';
+import { BaseAlertBox } from './BaseAlertBox';
 
 type BannerAlertBoxProps = {
   /** Innholdet i alert-boksen */
@@ -20,5 +20,5 @@ type BannerAlertBoxProps = {
 };
 
 export const BannerAlertBox: React.FC<BannerAlertBoxProps> = props => (
-  <InternalAlertBox {...props} size="banner" />
+  <BaseAlertBox {...props} size="banner" />
 );

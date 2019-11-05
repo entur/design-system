@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
-
 import './Fieldset.scss';
 
 type Props = {

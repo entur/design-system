@@ -1,0 +1,112 @@
+---
+name: Changelog
+parent: Komponenter
+route: /komponenter/changelog
+---
+
+import PageHeader from 'src/components/PageHeader';
+
+<PageHeader title="Changelog">
+  Vi lanserer som regel nye versjoner en gang eller to i uken. Her vil du finne
+  en oppsummering av hva som har blitt lansert
+</PageHeader>
+
+### 2019-11-04
+
+- [@entur/alert@0.4.0](https://www.npmjs.com/package/@entur/alert)
+- [@entur/expand@0.2.0](https://www.npmjs.com/package/@entur/expand)
+- [@entur/form@1.0.0](https://www.npmjs.com/package/@entur/form)
+- [@entur/menu@0.3.1](https://www.npmjs.com/package/@entur/menu)
+
+Dere kan finne en full changelog [her](https://bitbucket.org/enturas/design-system/commits/5fb924b798c6083c377940abef35ecc126efc1f9).
+
+**TL;DR:**
+
+- 🎉 **Ny pakke: @entur/expand** 🎉 - Inkluderer to komponenter `ExpandablePanel` og `BaseExpand`.
+- `SmallAlertBox` i `@entur/alert` får støtte for propen `width="fit-content"`, for å kunne spesifisere at boksen ikke skal være større enn innholdet.
+- 💥 **Breaking change: `@entur/form`** 💥:
+  - `width: fluid` er nå default, og propen kan fjernes. Du kan styre bredden om ønskelig via din egen CSS.
+  - `FormGroup` er renamet til `InputGroup`, for å unngå misforståelser.
+- `Menu` og `MenuItem` har fått en bugfix som gjør at de fungerer med React 16.10 og nyere også.
+
+### 2019-10-30
+
+Release-tid!
+
+- [@entur/alert@0.3.1](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@1.0.2](https://www.npmjs.com/package/@entur/button)
+- [@entur/form@0.4.0](https://www.npmjs.com/package/@entur/form)
+- [@entur/layout@0.2.2](https://www.npmjs.com/package/@entur/layout)
+- [@entur/menu@0.3.0](https://www.npmjs.com/package/@entur/menu)
+- [@entur/modal@0.2.0](https://www.npmjs.com/package/@entur/modal)
+- [@entur/table@0.3.0](https://www.npmjs.com/package/@entur/table)
+- [@entur/tokens@1.0.0](https://www.npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.0.1](https://www.npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.4.1](https://www.npmjs.com/package/@entur/typography)
+
+Dere kan finne en full changelog [her](https://bitbucket.org/enturas/design-system/commits/33a589c66b9169353060466237d3e69972b7a726).
+
+**TL;DR:**
+
+- :tada: Ny pakke: @entur/modal! “For all your modal needs”, som @Nicolai Fredriksen sa. Les dokumentasjonen her: https://design.entur.org/komponenter/layout/modal
+- Tokens har fått seg sin første breaking change - space.extraSmall renames til space.extraSmall2 og space.small har blitt space.extraSmall. Dette var gjort for å få plass til et token for 12 px - en verdi vi ser vi bruker ofte.
+- Andre kule ting skjedde i tokens også - vi har fått borderWidths, borderRadiuses, zIndexes og timings. Sjekk dokumentasjonen på https://design.entur.org/komponenter/tokens
+- Form-pakken har fått en haug nye komponenter: Checkbox, Dropdown, Radio, RadioGroup og Fieldset.
+- Table har fått en ny compact prop, som er perfekt for UIs med høy datatetthet.
+  I tillegg fortsetter websiden vår å bli finere og finere. Om du ikke har vært innom enda, og om de to foregående linkene i denne posten ikke var nok, så ta en titt på design.entur.org
+
+### 2019-10-11
+
+Release idag også 🎊
+
+- [@entur/button](https://www.npmjs.com/package/@entur/button): 0.2.1 => 1.0.0
+- [@entur/form](https://www.npmjs.com/package/@entur/form): 0.1.0 => 0.2.0
+- [@entur/menu](https://www.npmjs.com/package/@entur/menu): 0.2.1 => 0.2.2
+
+Form er en ny pakke som inneholder `TextField` og `FormGroup`.
+
+### 2019-10-07
+
+I dag kjørte vi en release på diverse endringer jeg og @Nicolai Fredriksen har gjort siste uka:
+
+- [@entur/alert@0.2.1](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@0.2.1](https://www.npmjs.com/package/@entur/button)
+- [@entur/icons@0.3.0](https://www.npmjs.com/package/@entur/icons)
+- [@entur/layout@0.2.0](https://www.npmjs.com/package/@entur/layout)
+- [@entur/menu@0.2.1](https://www.npmjs.com/package/@entur/menu)
+- [@entur/typography@0.3.0](https://www.npmjs.com/package/@entur/typography)
+
+Dere kan finne en full changelog på tvers av pakker [her](https://bitbucket.org/enturas/design-system/commits/831e395503aa7f4a5703f452eb4df97140f961e8).
+
+**TL;DR:**
+
+- Et par nye ikoner: `SourceCodeIcon`, `PremiumSeatIcon`
+- Oppdatert `QuestionIcon` og `ParkAndRideIcon` til nye design
+- 🎉 **Ny pakke: @entur/layout** 🎉 - akkurat nå tilbyr den `.entur-contrast` / `<Contrast />` - som lar deg lage kontrast-seksjoner.
+- Litt bugfiksing i menu-pakken
+- To nye typografi-komponenter - `PreformattedText` og `LeadParagraph`.
+
+I tillegg har dokumentasjonssiden vår fått seg et løft, med en kul playground og mye bedre dokumentasjon for knapper, alerts, menyer og typografi.
+
+Vi håper dere tester ut komponentene våre, og gir oss litt tilbakemeldinger underveis, slik at vi lager de tingene dere trenger.
+
+### 2019-09-26
+
+🎉 **Ny pakke: @entur/alert** 🎉
+
+Les med om hvordan de brukes her:
+https://entur-design-system.firebaseapp.com/komponenter/feedback/varsler
+
+### 2019-09-25
+
+Da har vi lansert våre første pakker! De er fortsatt som pre-releases, men du kan laste dem ned og teste dem ut om du vil 🙂
+
+Først ut er følgende pakker:
+
+- [@entur/tokens](https://www.npmjs.com/package/@entur/tokens) - design tokens, inkludert farger, spacing, font-vekter med mer.
+- [@entur/buttons](https://www.npmjs.com/package/@entur/buttons) - knapper du kan trykke på
+- [@entur/typography](https://www.npmjs.com/package/@entur/typography) - all typografi finner du her
+- [@entur/icons](https://www.npmjs.com/package/@entur/icons) - nye og oppdaterte ikoner!
+- [@entur/menu](https://www.npmjs.com/package/@entur/menu) - navigasjonsmenyer.
+
+Du kan lese dokumentasjon etc på hjemmesiden vår: [design.entur.org](https://design.entur.org)

@@ -4,6 +4,6 @@ This is the documentation website for the Entur Design System. It's built on [Ga
 
 ## Development
 
-You can start a development server with `yarn dev`.
+You can start a development server with `yarn start`.
 
 You can build a production version locally with `yarn build` and serve it locally with `yarn serve`.

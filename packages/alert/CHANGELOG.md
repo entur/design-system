@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.3.1...@entur/alert@0.4.0) (2019-11-04)
+
+### Features
+
+- **SmallAlertBox:** add width="fit-content" option ([1f4d327](https://bitbucket.org/enturas/design-system/commits/1f4d32763a65bbe2a70f814f9ca9377a737f53ca))
+
 ## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.3.0...@entur/alert@0.3.1) (2019-10-30)
 
 ### Bug Fixes

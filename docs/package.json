@@ -1,7 +1,7 @@
 {
   "name": "@entur/designsystem-docs",
   "description": "The documentation site for the Entur Design System",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -10,13 +10,14 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@entur/alert": "^0.3.1",
+    "@entur/alert": "^0.4.0",
     "@entur/button": "^1.0.2",
-    "@entur/expand": "^0.1.0",
-    "@entur/form": "^0.4.0",
+    "@entur/expand": "^0.2.0",
+    "@entur/form": "^1.0.0",
     "@entur/icons": "^0.4.0",
     "@entur/layout": "^0.2.2",
-    "@entur/menu": "^0.3.0",
+    "@entur/loader": "^0.1.0",
+    "@entur/menu": "^0.3.1",
     "@entur/modal": "^0.2.0",
     "@entur/table": "^0.3.0",
     "@entur/tokens": "^1.0.0",
@@ -30,7 +31,7 @@
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
     "docz": "^2.0.0-rc.57",
-    "gatsby": "^2.13.73",
+    "gatsby": "^2.17.7",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-sass": "^2.1.12",
     "gatsby-plugin-sharp": "^2.2.18",
@@ -40,11 +41,10 @@
     "match-sorter": "^4.0.1",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-live": "^2.2.1",
-    "scheduler": "^0.15.0",
     "wcag-contrast": "^2.1.1"
   },
   "optionalDependencies": {

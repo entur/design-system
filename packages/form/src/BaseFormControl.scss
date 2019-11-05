@@ -1,0 +1,146 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-form-control-wrapper {
+  --border-color: #{$colors-brand-blue};
+  --border-color-hover: #{$colors-brand-lavender};
+
+  .entur-contrast & {
+    --border-color: #{$colors-brand-lavender};
+    background-color: $colors-brand-white;
+  }
+
+  align-items: center;
+  background-color: $colors-greys-grey40;
+  border-radius: $border-radiuses-default;
+  color: $colors-brand-blue;
+  display: flex;
+  max-width: 30rem;
+  overflow: hidden;
+  position: relative;
+
+  /* 
+  We use pseudo elements to create the border design we need.
+  The `before` element is a complete border, while the `after` is only the bottom border.
+  */
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    transition: all $timings-fast ease-out;
+  }
+
+  &::before {
+    border: $border-widths-default solid transparent;
+    top: 0;
+  }
+
+  &::after {
+    border-bottom: $border-widths-default solid var(--border-color);
+  }
+
+  &:hover::after {
+    border-bottom-color: var(--border-color-hover);
+  }
+  &:focus-within {
+    &::before,
+    &::after {
+      border-color: var(--border-color);
+    }
+  }
+
+  &::placeholder {
+    color: $colors-blues-blue40;
+  }
+
+  // Variations
+  &--disabled {
+    background-color: $colors-greys-grey20;
+    color: $colors-blues-blue40;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  // Validation modes changes the border colors
+  &--success {
+    --border-color: #{$colors-validation-mint};
+    --border-color-hover: #{$colors-validation-mint-contrast};
+
+    .entur-contrast & {
+      --border-color: #{$colors-validation-mint};
+    }
+  }
+
+  &--error {
+    --border-color: #{$colors-validation-lava};
+    --border-color-hover: #{$colors-validation-lava-contrast};
+
+    .entur-contrast & {
+      --border-color: #{$colors-validation-lava};
+    }
+  }
+
+  /* 
+  Some input controls require a darker design while inside a contrast block. 
+  These elements require the `--dark` modifier, even on the wrapper.
+  */
+  .entur-contrast & {
+    &--dark {
+      background-color: $colors-blues-blue20;
+      color: $colors-brand-white;
+
+      &:hover {
+        background-color: $colors-blues-blue30;
+      }
+
+      * {
+        color: inherit;
+      }
+
+      &.entur-form-control-wrapper--disabled {
+        background-color: $colors-blues-blue10;
+        color: $colors-blues-blue50;
+      }
+    }
+  }
+}
+
+.entur-form-control {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  padding: $space-small $space-default;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__prepend,
+  &__append {
+    position: relative;
+    top: 0.1rem;
+    margin: $space-small $space-default;
+    line-height: inherit;
+  }
+
+  &__prepend {
+    margin-right: 0;
+  }
+
+  &__append {
+    margin-left: 0;
+  }
+}

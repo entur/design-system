@@ -124,7 +124,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
 
 export const MenuItem: React.FC<MenuItemProps> = props => {
   const hasSubMenu = React.Children.toArray(props.children).some(
-    (child: any) => child && child.type === Menu,
+    (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
   );
   return hasSubMenu ? (
     <MenuItemWithSubMenu {...props} />
