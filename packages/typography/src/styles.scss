@@ -212,6 +212,7 @@ html {
 
 .entur-code-text {
   background-color: $colors-blues-blue80;
+  border: $border-widths-small solid $colors-blues-blue60;
   border-radius: 0.125rem;
   font-family: 'Dank Mono', monospace;
   font-size: 90%; // Slightly smaller than
