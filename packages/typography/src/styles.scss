@@ -42,6 +42,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  font-weight: inherit;
 }
 
 // Headings
