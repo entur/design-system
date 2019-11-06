@@ -10,7 +10,9 @@ type Props = {
 const FrontPageChangelog: React.FC<Props> = ({ date, heading, children }) => {
   return (
     <div className="front-page-changelog">
-      <Label className="front-page--date">{date}</Label>
+      <Label as="span" className="front-page--date">
+        {date}
+      </Label>
       <Heading4 as="span" className="front-page--heading">
         {heading}
       </Heading4>
