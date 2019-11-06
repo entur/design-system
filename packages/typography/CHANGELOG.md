@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.1...@entur/typography@0.4.2) (2019-11-06)
+
+### Bug Fixes
+
+- **CodeText:** add border to inline code text component ([83b76ae](https://bitbucket.org/enturas/design-system/commits/83b76aefce6c8972208cae8652b89ae84c763b12))
+- **PreformattedText:** add border ([8bc0b47](https://bitbucket.org/enturas/design-system/commits/8bc0b477b7a213f87aa1af169d6fa48363514419))
+
 ## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.0...@entur/typography@0.4.1) (2019-10-30)
 
 ### Bug Fixes

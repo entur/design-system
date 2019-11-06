@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.3.1...@entur/menu@0.4.0) (2019-11-06)
+
+### Bug Fixes
+
+- **MenuGroup:** add 1 px letter spacing to menu group label ([93b46fa](https://bitbucket.org/enturas/design-system/commits/93b46fa034d96d5bda22a4a279ad2563c3d8e34b))
+- **MenuGroup:** add margin between menu groups ([3bd10ff](https://bitbucket.org/enturas/design-system/commits/3bd10ffcf84712f119f50165a753a43444ea209d))
+
+### Features
+
+- add new component MenuGroup ([1f5b6f1](https://bitbucket.org/enturas/design-system/commits/1f5b6f1a2f40146a22e71cc6f71e3157f6a7ab9c))
+
 ## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.3.0...@entur/menu@0.3.1) (2019-11-04)
 
 ### Bug Fixes
