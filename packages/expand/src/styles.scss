@@ -17,6 +17,7 @@
     color: inherit;
     height: ($space-extra-large4 + $space-extra-small2);
     border-bottom: $border-widths-default solid $colors-brand-white;
+    padding: 0 $space-extra-large;
     .entur-contrast & {
       background: $colors-blues-blue20;
       border-color: $colors-brand-blue;
@@ -32,7 +33,6 @@
       user-select: none;
     }
     &__chevron {
-      margin-right: $space-large;
       transition: ($timings-fast + $timings-fast) transform ease-out;
       &--open {
         transform: rotate(-180deg);
