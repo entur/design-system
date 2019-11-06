@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading3, Paragraph } from '@entur/typography';
+import classNames from 'classnames';
 import { ForwardIcon } from '@entur/icons';
 import './CardBox.scss';
 import './BaseCard.scss';
@@ -11,6 +12,8 @@ type CardProps = {
   title: string;
   /** Valgfritt ikon som står over tittelen */
   titleIcon?: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
   [key: string]: any;
 };
 
@@ -19,10 +22,12 @@ export const CardBox: React.FC<CardProps> = ({
   title,
   children,
   titleIcon,
+  className,
   ...rest
 }) => {
+  const classList = classNames('entur-base-card', 'entur-card-box', className);
   return (
-    <Element className="entur-base-card entur-card-box" {...rest}>
+    <Element className={classList} {...rest}>
       {titleIcon && (
         <div className="entur-card-box__title-icon">{titleIcon}</div>
       )}

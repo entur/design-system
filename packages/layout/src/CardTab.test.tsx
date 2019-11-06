@@ -13,7 +13,7 @@ test('CardTab renders properly, and takes additional class and parameters', () =
     />,
   );
   const cardtab = getByTestId('TestingId');
-  expect(cardtab).toBeTruthy();
+  expect(cardtab).toBeInTheDocument();
   expect(cardtab).toHaveClass('extra-class');
   expect(cardtab).toHaveTextContent('TestingTitle');
   expect(cardtab).toHaveProperty('href', testUrl);
