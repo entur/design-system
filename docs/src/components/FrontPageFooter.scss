@@ -1,0 +1,35 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.front-page-footer {
+  width: 100vw;
+  background: $colors-greys-grey30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  &--link {
+    margin: 3rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    &:hover {
+      text-decoration: underline;
+    }
+    &__circle {
+      width: 7rem;
+      height: 7rem;
+      background: $colors-brand-white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__text {
+      width: 12rem;
+      padding-left: 1rem;
+      display: inline-block;
+      margin-top: 1rem;
+      height: 4rem;
+    }
+  }
+}

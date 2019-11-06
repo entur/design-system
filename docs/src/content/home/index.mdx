@@ -6,10 +6,12 @@ frontpage: true
 ---
 
 import landing4 from 'src/content/visuell-identitet/illustrations/Landingssider/2250x580_Partner Dialog.jpg';
+import contactImage from 'src/content/visuell-identitet/illustrations/Ikoner/Kontakt.jpg';
 import duer from './Doves.png';
 import {
   LeadParagraph,
   Heading3,
+  Heading2,
   Paragraph,
   Heading1,
   Label,
@@ -17,11 +19,12 @@ import {
   Heading4,
 } from '@entur/typography';
 import { Button } from '@entur/button';
-import { Card } from '@entur/layout';
+import { CardBox } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
 import { Link } from 'docz';
 import Changelog from 'src/components/FrontPageChangelog';
+import './index.scss';
 
 <img
   src={landing4}
@@ -34,16 +37,10 @@ import Changelog from 'src/components/FrontPageChangelog';
   API-dokumentasjon for komponentene våre.
 </LeadParagraph>
 
-<div style={{ height: '4rem' }}></div>
+<div style={{ height: '1rem' }}></div>
 
-<div
-  style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridGap: '24px',
-  }}
->
-  <Card
+<div className="front-page--card-box-container">
+  <CardBox
     title="Stil og tone"
     titleIcon={<EditIcon />}
     as={Link}
@@ -51,8 +48,8 @@ import Changelog from 'src/components/FrontPageChangelog';
   >
     Hvem snakker vi til? <br />
     Lær om hvordan vi bruker språket til å kommunisere med brukerne våre.
-  </Card>
-  <Card
+  </CardBox>
+  <CardBox
     title="Visuell identitet"
     titleIcon={<ColorPickerIcon />}
     as={Link}
@@ -60,8 +57,8 @@ import Changelog from 'src/components/FrontPageChangelog';
   >
     Bli kjent med hvem Entur er. Veiledning og retningslinjer til deg som skal
     ta identiteten i bruk.
-  </Card>
-  <Card
+  </CardBox>
+  <CardBox
     title="Universell utforming"
     titleIcon={<ViewIcon />}
     as={Link}
@@ -69,7 +66,7 @@ import Changelog from 'src/components/FrontPageChangelog';
   >
     Retningslinjer for design og utvikling av digitale løsninger i henhold til
     lovverket.
-  </Card>
+  </CardBox>
 </div>
 
 <div style={{ height: '3rem' }}></div>
@@ -78,46 +75,51 @@ import Changelog from 'src/components/FrontPageChangelog';
   style={{
     display: 'grid',
     gridTemplateColumns: '1fr 2fr',
-    gridGap: '5.75rem',
+    gridGap: '6rem',
     width: '100%',
     background: colors.blues.blue80,
     padding:'1rem 5.75rem'
   }}
 >
-  <img src={duer} alt="3 Duer som spiser korn" style={{width:'100%'}} />
+  <img src={duer} alt="3 Duer som spiser korn" style={{ width:'100%'}} />
 
   <div style={{display: 'flex', flexDirection: "column"}}>
-    <Heading3 as="span">Komponenter</Heading3>
+    <Heading3 as="span" style={{marginBottom: '0em'}}>Komponenter</Heading3>
     <Paragraph>
       Vårt komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer på hvordan man skal ta komponentene i bruk når man setter opp et brukergrensesnitt.      
     </Paragraph>
-    <Button variant="primary">Utforsk komponenter</Button>
+    <Button variant="primary" style={{width: "14rem"}} >Utforsk komponenter</Button>
   </div>
 </div>
 
-<div style={{margin: "0 14rem"}}>
+<div style={{ margin: '0 14rem', textAlign:'center'}}>
   <div style={{ textAlign: 'center' }}>
-    <Heading1>Hva er nytt?</Heading1>
+    <Heading2>Hva er nytt?</Heading2>
     <Paragraph>
       Få siste oppdateringer på komponenter, retningslinjer og dokumentasjon
+      <br/>
+    Les changelogen <Link to="/komponenter/changelog">her</Link>.
     </Paragraph>
   </div>
+  <div style={{margin: "0 10rem"}}>
+<img
+  src={contactImage}
+  alt="To personer som snakker sammen"
+  style={{ width: '100%' }}
+/>
+</div>
 
-<Changelog
-  date="4. november 2019"
-  heading="@entur/alert@0.4.0
-@entur/expand@0.2.0
-@entur/form@1.0.0
-@entur/menu@0.3.1
-"
->
-* 🎉 Ny pakke: @entur/expand 🎉 - Inkluderer to komponenter ExpandablePanel og BaseExpand.
-  SmallAlertBox i @entur/alert får støtte for propen width="fit-content", for å kunne spesifisere at boksen ikke skal være større enn innholdet.
-  💥 Breaking change: @entur/form 💥:
-* width: fluid er nå default, og propen kan fjernes. Du kan styre bredden om ønskelig via din egen CSS.
-* FormGroup er renamet til InputGroup, for å unngå misforståelser.
-* Menu og MenuItem har fått en bugfix som gjør at de fungerer med React 16.10 og nyere også.
+<Heading2>
+  Vil du bidra?
+</Heading2>
+<Paragraph>
+Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet, 
+så er det selvfølgelig også muligheter for å bidra.
 
-</Changelog>
+Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne kontakt oss
+gjennom Slack (#talk-designsystem) eller ved å legge inn et issue på Jira.
 
+Designsystem ansvarlige er [Long Ngo](mailto:longo@entur.org) og [Nicolai Fredriksen](mailto:nicolai.fredriksen@entur.org).
+
+</Paragraph>
 </div>

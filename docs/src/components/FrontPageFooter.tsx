@@ -1,0 +1,41 @@
+import React from 'react';
+import AbstractLogo from './Abstractlogo.png';
+import BitbucketLogo from './Bitbucket-blue.svg';
+import { Heading4, SubParagraph } from '@entur/typography';
+import './FrontPageFooter.scss';
+
+function FrontPageFooter() {
+  return (
+    <div className="front-page-footer">
+      <a
+        className="front-page-footer--link"
+        href="https://share.goabstract.com/ecd2091b-ba8a-4fe6-9997-622265c6db64?sha=94121e0337062ce5a223384edef977dd0dfd22a5"
+      >
+        <div className="front-page-footer--link__circle">
+          <img src={AbstractLogo} style={{ height: '50%' }} />
+        </div>
+        <div className="front-page-footer--link__text">
+          <Heading4 style={{ lineHeight: '0' }}>Abstract UI Library</Heading4>
+          <SubParagraph>
+            Last ned Sketch-biblioteket for designere.
+          </SubParagraph>
+        </div>
+      </a>
+
+      <a
+        className="front-page-footer--link"
+        href="https://bitbucket.org/enturas/design-system/src/master/"
+      >
+        <div className="front-page-footer--link__circle">
+          <img src={BitbucketLogo} style={{ width: '50%' }} />
+        </div>
+        <div className="front-page-footer--link__text">
+          <Heading4 style={{ lineHeight: '0' }}>Bitbucket</Heading4>
+          <SubParagraph>Utforsk kildekoden vår i Bitbucket.</SubParagraph>
+        </div>
+      </a>
+    </div>
+  );
+}
+
+export default FrontPageFooter;

@@ -3,6 +3,7 @@ import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import SiteFooter from 'src/components/SiteFooter';
+import FrontPageFooter from 'src/components/FrontPageFooter';
 import { SettingsProvider } from 'src/components/SettingsContext';
 import SettingsPanel from 'src/components/SettingsPanel';
 import Props from 'src/components/Props';
@@ -35,6 +36,7 @@ const App: React.FC = ({ children }) => {
             <>
               <FrontPageMenu />
               <main className="frontpage-site-content">{children}</main>
+              <FrontPageFooter />
             </>
           ) : (
             <>

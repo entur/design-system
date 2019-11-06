@@ -1,0 +1,17 @@
+@import '~@entur/tokens/dist/styles.scss';
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
+.front-page {
+  &--card-box-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $space-large;
+    @include for-desktop {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

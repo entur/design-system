@@ -6,12 +6,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: $space-default;
+    background-color: var(--primary-background-color);
   }
   &-tab-link-container {
     display: flex;
   }
-  &--logo {
-    margin-left: 3rem;
+  &--logo img {
+    width: 15rem;
   }
 }
