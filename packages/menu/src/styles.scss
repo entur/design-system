@@ -103,6 +103,10 @@
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
 
+  & + & {
+    padding-top: $space-medium;
+  }
+
   @include for-desktop {
     max-width: 18rem;
   }
@@ -118,6 +122,7 @@
   display: flex;
   font-size: $font-sizes-medium;
   justify-content: space-between;
+  letter-spacing: 1px;
   line-height: $line-heights-medium;
   padding: $space-small 0 $space-small $space-default;
   margin: 0;
