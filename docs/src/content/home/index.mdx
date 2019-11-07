@@ -2,20 +2,116 @@
 name: Home
 route: /
 parent: Startside
-fullpage: true
+frontpage: true
 ---
 
-import PageHeader from 'src/components/PageHeader';
+import landing4 from 'src/content/visuell-identitet/illustrations/Landingssider/2250x580_Partner Dialog.jpg';
+import contactImage from 'src/content/visuell-identitet/illustrations/Ikoner/Kontakt.jpg';
+import duer from './Doves.png';
+import {
+  LeadParagraph,
+  Heading3,
+  Heading2,
+  Paragraph,
+  Heading1,
+  Label,
+  SubParagraph,
+  Heading4,
+} from '@entur/typography';
+import { Button } from '@entur/button';
+import { CardBox } from '@entur/layout';
+import { colors } from '@entur/tokens';
+import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
+import { Link } from 'docz';
+import Changelog from 'src/components/FrontPageChangelog';
+import './index.scss';
 
-<PageHeader title="Entur Designsystem" category="Velkommen">
+<img
+  className="front-page-landing-picture"
+  src={landing4}
+  alt="Tog med passasjerer som snakker sammen"
+  style={{ width: '100%' }}
+/>
+
+<LeadParagraph className="front-page-lead-paragraph">
   Velkommen til Entur sitt designsystem. Her vil du finne informasjon om bruk og
   API-dokumentasjon for komponentene våre.
-</PageHeader>
+</LeadParagraph>
 
-## Vil du bidra?
+<div className="front-page--card-box-container">
+  <CardBox
+    title="Stil og tone"
+    titleIcon={<EditIcon />}
+    as={Link}
+    to="/design-prinsipper/stil-og-tone"
+  >
+    Hvem snakker vi til? <br />
+    Lær om hvordan vi bruker språket til å kommunisere med brukerne våre.
+  </CardBox>
+  <CardBox
+    title="Visuell identitet"
+    titleIcon={<ColorPickerIcon />}
+    as={Link}
+    to="/visuell-identitet"
+  >
+    Bli kjent med hvem Entur er. Veiledning og retningslinjer til deg som skal
+    ta identiteten i bruk.
+  </CardBox>
+  <CardBox
+    title="Universell utforming"
+    titleIcon={<ViewIcon />}
+    as={Link}
+    to="/design-prinsipper/universell-utforming"
+  >
+    Retningslinjer for design og utvikling av digitale løsninger i henhold til
+    lovverket.
+  </CardBox>
+</div>
 
-Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet, så er det selvfølgelig også muligheter for å bidra.
+<div className="front-page-components">
+  <img
+    className="front-page-components__image"
+    src={duer}
+    alt="3 Duer som spiser korn"
+  />
+  <div className="front-page-components__text">
+    <Heading3 as="span" style={{ marginBottom: '0em' }}>
+      Komponenter
+    </Heading3>
+    <Paragraph>
+      Vårt komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer
+      på hvordan man skal ta komponentene i bruk når man setter opp et
+      brukergrensesnitt.
+    </Paragraph>
+    <Button variant="primary" style={{ width: '14rem' }}>
+      Utforsk komponenter
+    </Button>
+  </div>
+</div>
 
-Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne kontakt oss gjennom Slack(#talk-designsystem) eller ved å legge inn et issue på Jira.
-
-Vedlikeholderne er [Nicolai Fredriksen](mailto:nicolai.fredriksen@entur.org) og [Kristofer Giltvedt Selbekk](mailto:kristofer.giltvedt.selbekk@entur.org).
+<div className="front-page-bottom">
+  <div>
+    <Heading2>Hva er nytt?</Heading2>
+    <Paragraph>
+      Få siste oppdateringer på komponenter, retningslinjer og dokumentasjon
+      <br />
+      Se changelogen <Link to="/komponenter/changelog">her</Link>.
+    </Paragraph>
+  </div>
+  <div style={{ height: '15rem' }}>
+    <img
+      src={contactImage}
+      alt="Illustrasjoon av to personer som snakker sammen"
+      style={{ height: '100%' }}
+    />
+  </div>
+  <Heading2>Vil du bidra?</Heading2>
+  <Paragraph>
+    Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet,
+    så er det selvfølgelig også muligheter for å bidra. <br />
+    <br />
+    Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne
+    kontakt oss gjennom Slack (#talk-designsystem) eller ved å legge inn et
+    issue på Jira.
+  </Paragraph>
+</div>

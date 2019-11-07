@@ -71,7 +71,7 @@ export const SiteSidebar: React.FC = () => {
   );
   return (
     <Contrast as="nav" className="site-sidebar-wrapper">
-      <Link to="/">
+      <Link to="/" className="site-sidebar-logo">
         <img src={logoSVG} alt="Entur logo" className="site-logo" />
       </Link>
       <SearchBar searchText={searchText} onSearchTextChange={setSearchText} />

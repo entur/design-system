@@ -25,14 +25,28 @@ body {
 .site-content {
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 87vh;
   margin: $space-default;
 
   @include for-desktop {
-    margin: 5rem 16rem 1rem 22rem;
+    margin: 6rem 16rem 1rem 22rem;
     max-width: 60rem;
   }
 }
 .site-content main {
+  flex: 1;
+}
+
+.frontpage-site-content {
+  display: flex;
+  margin: $space-default;
+  flex-direction: column;
+  min-height: 90vh;
+  @include for-desktop {
+    margin: 1rem auto;
+    max-width: 64rem;
+  }
+}
+.frontpage-site-content main {
   flex: 1;
 }

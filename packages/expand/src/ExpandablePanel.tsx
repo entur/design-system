@@ -55,7 +55,7 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
           {title}
         </Heading4>
 
-        <DownArrowIcon inline className={iconClass} />
+        <DownArrowIcon className={iconClass} />
       </button>
 
       <BaseExpand
