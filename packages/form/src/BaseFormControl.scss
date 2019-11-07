@@ -131,9 +131,11 @@
   &__prepend,
   &__append {
     position: relative;
-    top: 0.1rem;
-    margin: $space-small $space-default;
+    margin: 0 $space-default;
     line-height: inherit;
+    svg {
+      top: (0.125rem);
+    }
   }
 
   &__prepend {
