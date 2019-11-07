@@ -1,0 +1,10 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.2.0 (2019-11-06)
+
+### Features
+
+- **loaders:** add new package - @entur/loader ([a0811ae](https://bitbucket.org/enturas/design-system/commits/a0811aee2f1ba713a7190c9fa9fd84cdcd2a6d90))

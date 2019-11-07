@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@3.0.0...@entur/designsystem-docs@3.1.0) (2019-11-06)
+
+### Features
+
+- **docs:** add changelog page to docs website ([7e4c06d](https://bitbucket.org/enturas/design-system/commits/7e4c06dc5ec2c1121c70679c1fad9d2ed26274ad))
+- **loaders:** add new package - @entur/loader ([a0811ae](https://bitbucket.org/enturas/design-system/commits/a0811aee2f1ba713a7190c9fa9fd84cdcd2a6d90))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@2.1.0...@entur/designsystem-docs@3.0.0) (2019-11-04)
 
 ### Bug Fixes

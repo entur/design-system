@@ -42,6 +42,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  font-weight: inherit;
 }
 
 // Headings
@@ -201,17 +202,19 @@ html {
 
 .entur-preformatted-text {
   background: $colors-blues-blue80;
+  border: $border-widths-small solid $colors-blues-blue60;
+  border-radius: $border-radiuses-small;
   color: inherit;
   font-family: 'Dank Mono', monospace;
   font-size: inherit;
   padding: 1em;
-  border-radius: $border-radiuses-small;
   white-space: pre-wrap;
   word-break: keep-all;
 }
 
 .entur-code-text {
   background-color: $colors-blues-blue80;
+  border: $border-widths-small solid $colors-blues-blue60;
   border-radius: 0.125rem;
   font-family: 'Dank Mono', monospace;
   font-size: 90%; // Slightly smaller than

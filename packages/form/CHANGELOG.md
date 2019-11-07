@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.0...@entur/form@1.0.1) (2019-11-06)
+
+**Note:** Version bump only for package @entur/form
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@0.4.0...@entur/form@1.0.0) (2019-11-04)
 
 ### Code Refactoring
