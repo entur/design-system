@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.1...@entur/form@1.0.2) (2019-11-07)
+
+### Bug Fixes
+
+- **FormControl:** fixing spacing on prepend and append ([0837844](https://bitbucket.org/enturas/design-system/commits/0837844247cfcbffc99f1bb6aeb7b74cddb0c8c7))
+
 ## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.0...@entur/form@1.0.1) (2019-11-06)
 
 **Note:** Version bump only for package @entur/form

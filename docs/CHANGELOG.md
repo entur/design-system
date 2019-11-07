@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@3.1.0...@entur/designsystem-docs@3.2.0) (2019-11-07)
+
+### Features
+
+- **Frontpage:** finalizing styling and layout for the new landing page ([ec87b1c](https://bitbucket.org/enturas/design-system/commits/ec87b1c804f5cfa5fc88f313e40f107089048d65))
+
+### Reverts
+
+- **illustrations:** readding highres images and download button ([4dec899](https://bitbucket.org/enturas/design-system/commits/4dec899985458b8ac026e2976faf5fc2e0d72cc7))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/designsystem-docs@3.0.0...@entur/designsystem-docs@3.1.0) (2019-11-06)
 
 ### Features
