@@ -6,12 +6,50 @@
 }
 
 .front-page {
+  &-landing-picture {
+    margin-top: $space-default;
+  }
+  &-lead-paragraph {
+    text-align: center;
+    margin-bottom: $space-extra-large;
+  }
   &--card-box-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: $space-large;
     @include for-desktop {
       grid-template-columns: 1fr 1fr 1fr;
+    }
+    margin-bottom: $space-extra-large4;
+  }
+  &-components {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $space-extra-large9;
+    width: 100%;
+    background: $colors-blues-blue80;
+    padding: $space-default $space-extra-large;
+    @include for-desktop {
+      padding: $space-default 5.75rem $space-extra-large2;
+      grid-template-columns: 1fr 3fr;
+    }
+    &__image {
+      display: none;
+      @include for-desktop {
+        display: block;
+        height: 100%;
+      }
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &-bottom {
+    margin: 0 $space-default;
+    text-align: center;
+    @include for-desktop {
+      margin: 0 12rem $space-extra-large;
     }
   }
 }

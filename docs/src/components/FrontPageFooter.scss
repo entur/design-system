@@ -28,9 +28,8 @@
     }
     &__text {
       width: 12rem;
-      padding-left: 1rem;
+      padding-left: $space-default;
       display: inline-block;
-      margin-top: 1rem;
       height: 4rem;
     }
   }

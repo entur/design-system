@@ -27,17 +27,16 @@ import Changelog from 'src/components/FrontPageChangelog';
 import './index.scss';
 
 <img
+  className="front-page-landing-picture"
   src={landing4}
   alt="Tog med passasjerer som snakker sammen"
   style={{ width: '100%' }}
 />
 
-<LeadParagraph style={{ textAlign: 'center' }}>
+<LeadParagraph className="front-page-lead-paragraph">
   Velkommen til Entur sitt designsystem. Her vil du finne informasjon om bruk og
   API-dokumentasjon for komponentene våre.
 </LeadParagraph>
-
-<div style={{ height: '1rem' }}></div>
 
 <div className="front-page--card-box-container">
   <CardBox
@@ -69,55 +68,50 @@ import './index.scss';
   </CardBox>
 </div>
 
-<div style={{ height: '3rem' }}></div>
-
-<div 
-  style={{
-    display: 'grid',
-    gridTemplateColumns: '1fr 2fr',
-    gridGap: '6rem',
-    width: '100%',
-    background: colors.blues.blue80,
-    padding:'1rem 5.75rem'
-  }}
->
-  <img src={duer} alt="3 Duer som spiser korn" style={{ width:'100%'}} />
-
-  <div style={{display: 'flex', flexDirection: "column"}}>
-    <Heading3 as="span" style={{marginBottom: '0em'}}>Komponenter</Heading3>
+<div className="front-page-components">
+  <img
+    className="front-page-components__image"
+    src={duer}
+    alt="3 Duer som spiser korn"
+  />
+  <div className="front-page-components__text">
+    <Heading3 as="span" style={{ marginBottom: '0em' }}>
+      Komponenter
+    </Heading3>
     <Paragraph>
-      Vårt komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer på hvordan man skal ta komponentene i bruk når man setter opp et brukergrensesnitt.      
+      Vårt komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer
+      på hvordan man skal ta komponentene i bruk når man setter opp et
+      brukergrensesnitt.
     </Paragraph>
-    <Button variant="primary" style={{width: "14rem"}} >Utforsk komponenter</Button>
+    <Button variant="primary" style={{ width: '14rem' }}>
+      Utforsk komponenter
+    </Button>
   </div>
 </div>
 
-<div style={{ margin: '0 14rem', textAlign:'center'}}>
-  <div style={{ textAlign: 'center' }}>
+<div className="front-page-bottom">
+  <div>
     <Heading2>Hva er nytt?</Heading2>
     <Paragraph>
       Få siste oppdateringer på komponenter, retningslinjer og dokumentasjon
-      <br/>
-    Se changelogen <Link to="/komponenter/changelog">her</Link>.
+      <br />
+      Se changelogen <Link to="/komponenter/changelog">her</Link>.
     </Paragraph>
   </div>
-  <div style={{margin: "0 10rem"}}>
-<img
-  src={contactImage}
-  alt="To personer som snakker sammen"
-  style={{ width: '100%' }}
-/>
-</div>
-
-<Heading2>
-  Vil du bidra?
-</Heading2>
-<Paragraph>
-Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet, 
-så er det selvfølgelig også muligheter for å bidra.
-
-Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne kontakt oss
-gjennom Slack (#talk-designsystem) eller ved å legge inn et issue på Jira.
-
-</Paragraph>
+  <div style={{ height: '15rem' }}>
+    <img
+      src={contactImage}
+      alt="Illustrasjoon av to personer som snakker sammen"
+      style={{ height: '100%' }}
+    />
+  </div>
+  <Heading2>Vil du bidra?</Heading2>
+  <Paragraph>
+    Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet,
+    så er det selvfølgelig også muligheter for å bidra. <br />
+    <br />
+    Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne
+    kontakt oss gjennom Slack (#talk-designsystem) eller ved å legge inn et
+    issue på Jira.
+  </Paragraph>
 </div>

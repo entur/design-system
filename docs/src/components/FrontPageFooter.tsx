@@ -20,7 +20,7 @@ function FrontPageFooter() {
           />
         </div>
         <div className="front-page-circle-link__text">
-          <Heading4 style={{ lineHeight: '0' }}>Abstract UI Library</Heading4>
+          <Heading4>Abstract UI Library</Heading4>
           <SubParagraph>
             Last ned Sketch-biblioteket for designere.
           </SubParagraph>
@@ -40,7 +40,7 @@ function FrontPageFooter() {
           />
         </div>
         <div className="front-page-circle-link__text">
-          <Heading4 style={{ lineHeight: '0' }}>Bitbucket</Heading4>
+          <Heading4>Bitbucket</Heading4>
           <SubParagraph>Utforsk kildekoden vår i Bitbucket.</SubParagraph>
         </div>
       </a>
