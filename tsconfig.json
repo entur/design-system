@@ -1,5 +1,5 @@
 {
-  "include": ["jest.setup.ts"],
+  "include": ["jest.setup.ts", "src"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -22,10 +22,10 @@
     "baseUrl": ".",
     "paths": {
       "@entur/*": ["packages/*/src"],
-      "~/*": ["docs/src/*"],
-      "src/*": ["docs/src/*"]
+      "~*": ["src/*"],
+      "src/*": ["src/*"]
     },
-    "traceResolution": true,
+    "traceResolution": false,
     "jsx": "react",
     "esModuleInterop": true
   }

@@ -4,7 +4,7 @@
   "license": "EUPL-1.2",
   "scripts": {
     "build": "lerna run build",
-    "start": "cd docs && yarn start",
+    "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
@@ -13,7 +13,6 @@
     "lerna:publish": "lerna publish --conventional-commits"
   },
   "workspaces": [
-    "docs",
     "packages/alert",
     "packages/button",
     "packages/expand",
@@ -67,5 +66,17 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
+    "classnames": "^2.2.6",
+    "copy-text-to-clipboard": "^2.1.1",
+    "docz": "^2.0.0-rc.72",
+    "gatsby-plugin-sass": "^2.1.20",
+    "match-sorter": "^4.0.2",
+    "node-sass": "^4.13.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-live": "^2.2.1",
+    "wcag-contrast": "^3.0.0"
+  }
 }

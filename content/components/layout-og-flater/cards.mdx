@@ -1,0 +1,44 @@
+---
+name: Card
+parent: Komponenter
+route: /komponenter/layout/card
+menu: Layout og flater
+npmPackage: layout
+---
+
+import { CardBox, CardTab } from '@entur/layout';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import { BanknoteIcon } from '@entur/icons';
+
+<PageHeader>
+  Card er en komponent for å navigere til annet innhold med en større og mer
+  visuell knapp enn en vanlig link.
+</PageHeader>
+
+<Playground>
+  <CardBox title="Betaling" titleIcon={<BanknoteIcon />} href="#">
+    Klikk her for å gå videre til betaling
+  </CardBox>
+  <br />
+  <CardTab title="Betaling" href="#" />
+</Playground>
+
+## Komponenter
+
+### CardBox
+
+<ImportStatement imports="CardBox" />
+<Props of={CardBox} />
+
+CardBox kan brukes gjerne på landingssider for å gi oversiktlige linker til forskjellige undersider.
+CardBox skal ha en beskrivende tekst under tittelen, og gjerne et beskrivende ikon.
+
+### CardTab
+
+<ImportStatement imports="CardTab" />
+<Props of={CardTab} />
+
+CardTab kan brukes på samme måte som CardBox, men heller om man vil bruke mindre plass, eller ikke har en beskrivende tekst til tittelen.

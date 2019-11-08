@@ -1,0 +1,322 @@
+---
+name: Varsler
+route: /komponenter/feedback/varsler
+parent: Komponenter
+menu: Feedback
+npmPackage: alert
+---
+
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import InlineComponent from '~/components/InlineComponent';
+import { BestPractices, Example } from '~/components/BestPractices';
+import { ImportStatement } from '~/components/ImportStatement';
+import { Button } from '@entur/button';
+import {
+  BannerAlertBox,
+  ToastAlertBox,
+  ToastProvider,
+  SmallAlertBox,
+  useToast,
+} from '@entur/alert';
+
+<PageHeader>
+  Varsler brukes for å fange brukerens oppmerksomhet og inneholder korte viktige
+  meldinger som man bør ta hensyn til.
+</PageHeader>
+
+## Komponenter
+
+### Lokale varsler
+
+<ImportStatement imports="BannerAlertBox" />
+<Props of={BannerAlertBox} />
+
+Lokale varsler brukes forskjellige steder på en side for å informere om noe viktig.
+
+<Playground>
+  <BannerAlertBox
+    variant="success"
+    title="Systemene våre er oppe igjen!"
+    closable={true}
+    style={{ marginBottom: '1em' }}
+  >
+    Etter planlagt nedetid, er systemene våre igjen 100 % operasjonelle!
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="info"
+    title="Vi bruker informasjonskapsler"
+    closable={true}
+    style={{ marginBottom: '1em' }}
+  >
+    Ved å bruke denne siden godtar du at vi bruker informasjonskapsler.
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="warning"
+    title="Systemene våre er ustabile"
+    closable={true}
+    style={{ marginBottom: '1em' }}
+  >
+    Systemene våre kan oppleves litt ustabile akkurat nå. Vi jobber med å fikse
+    problemet!
+  </BannerAlertBox>
+  <BannerAlertBox
+    variant="error"
+    title="Kjøp kan ikke gjennomføres nå"
+    closable={true}
+    style={{ marginBottom: '1em' }}
+  >
+    Vi har et teknisk problem akkurat nå. Du kan fortsatt bruke
+    reiseplanleggeren, men kjøpsløsningen for billetter fungerer ikke.
+  </BannerAlertBox>
+</Playground>
+
+### Toast-varsler
+
+<ImportStatement imports="ToastAlertBox, ToastProvider, useToast" />
+<Props of={ToastAlertBox} />
+<Props of={ToastProvider} />
+
+Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp av seg selv øverst i høyre hjørne, og skal forsvinne automatisk etter minst seks sekunder.
+
+<Playground>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '1em 1em',
+      alignItems: 'center',
+      justifyItems: 'center',
+    }}
+  >
+    <ToastAlertBox variant="success" title="Nå har du billett!">
+      Ha det gøy på togturen til Bergen!
+    </ToastAlertBox>
+    <ToastAlertBox variant="info" title="Toget går fra plattform 2">
+      Husk å sjekke plattform når du ankommer.
+    </ToastAlertBox>
+  </div>
+</Playground>
+
+<InlineComponent>
+  {() => {
+    const { addToast } = useToast();
+    return (
+      <>
+        <Button
+          onClick={() =>
+            addToast({
+              title: 'Dette er din første toast!',
+              content: 'Den forsvinner om ca 6 sekunder',
+            })
+          }
+          variant="primary"
+          type="button"
+          style={{ marginRight: '1rem' }}
+        >
+          Lag suksess-toast
+        </Button>
+        <Button
+          onClick={() =>
+            addToast({
+              title: 'Toasts burde brukes sparsomt!',
+              content: 'For mye av det gode er aldri bra.',
+              variant: 'info',
+            })
+          }
+          variant="secondary"
+          type="button"
+        >
+          Lag info-toast
+        </Button>
+      </>
+    );
+  }}
+</InlineComponent>
+
+#### Hvordan bruke toasts
+
+Du får fiks ferdige toast-funksjonalitet på null komma niks med `@entur/alert`. Først må du wrappe appen din i en `<ToastProvider />`.
+
+```js
+import { ToastProvider } from '@entur/alert';
+
+const App = () => {
+  return (
+    <ToastProvider>
+      <Router>{/* Osv */}</Router>
+    </ToastProvider>
+  );
+};
+```
+
+For å lage en toast, så må du bruke hooken `useToast`.
+
+```js
+import { useToast } from '@entur/alert';
+
+const SaveButton = ({ children }) => {
+  const { addToast } = useToast();
+  return <button onClick={() => addToast('Lagret!')}>
+}
+```
+
+Du kan enten sende inn en string, eller et objekt med følgende form:
+
+```js
+{
+  title: 'Tittelen på toasten',
+  content: <>Mer <em>utfyllende</em> informasjon</>
+  variant: 'info' // eller 'success', som er default
+}
+```
+
+Toasts vil lukkes automatisk etter 6 sekunder, med mindre du flytter musepekeren over dem, eller lukker dem manuelt. Du kan sette den automatiske lukketiden for toasts i din app ved å sette `delay` propen på `<ToastProvider />` (antall millisekunder):
+
+```js
+<ToastProvider delay={10000} />
+```
+
+### Små varsler
+
+<ImportStatement imports="SmallAlertBox" />
+<Props of={SmallAlertBox} />
+
+Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
+
+<Playground>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '1em 1em',
+    }}
+  >
+    <SmallAlertBox variant="success">Kjøpet gikk i orden!</SmallAlertBox>
+    <SmallAlertBox variant="info">Toget går fra plattform 2</SmallAlertBox>
+    <SmallAlertBox variant="warning" width="fit-content">
+      Snøvær på Bergensbanen
+    </SmallAlertBox>
+    <SmallAlertBox variant="error" width="fit-content">
+      Kjøpet kunne ikke gjennomføres!
+    </SmallAlertBox>
+  </div>
+</Playground>
+
+Default så opptar disse varslene full bredde. Om ønskelig kan du sette `width="fit-content"` for å la dem ta størrelsen til innholdet.
+
+## Retningslinjer
+
+### Globale varsler
+
+<BannerAlertBox
+  variant="info"
+  title="Vi bruker informasjonskapsler"
+  closable={true}
+>
+  Entur sine løsninger bruker noen informasjonskapsler for å tilby sine
+  tjenester til deg som bruker. Ved å bruke denne tjenesten, godtar du denne
+  bruken.{' '}
+  <a href="#">Se hvilke informasjonskapsler vi bruker, og hva de gjør</a>.
+</BannerAlertBox>
+
+Globale varsler brukes når man ønsker å meddele informasjon på tvers av en applikasjon. Eksempler kan være cookie-info, et API som er nede eller generalstreik som påvirker alt og alle.
+
+Globale varsler finnes i info, warning og error-utførelse (ikke suksess). De skal dekke hele toppen av siden, og skyver ned sidens innhold. De har vanligvis muligheten til å bli lukket, slik at brukerne kan fjerne den. Beskjeden bør dukke opp igjen neste gang man laster siden, men dette er opp til konsumenten.
+
+### Lokale varsler
+
+<BannerAlertBox variant="warning" title="Manglende tariffkoder">
+  Det er noen produkter i listen under som ikke har tilegnede tariffkoder. Dette
+  betyr at man ikke kan kjøpe dette produktet gjennom Entur sine APIer.
+</BannerAlertBox>
+
+Lokale varsler brukes for å vise informasjon om en underside, en seksjon eller et skjema. Oppsummering av valideringsfeil, advarsel om manglende tariffkoder og generell avgangsinformasjon kan være gode brukseksempler.
+
+Lokale varsler bør inneholde kort og konsis informasjon, men kan også inneholde mer detaljert informasjon for "proffe" brukere. Slik ekstra informasjon bør skjules bak en ekspanderbar lenke. Disse varslene bør vanligvis ikke være lukkbare, siden de ikke okkuperer like mye plass som de globale.
+
+Dette er den typen varsel vi bruker oftest i løsningene våre, men de bør fortsatt brukes sparsomt. Siden de er ganske sterke visuelle virkemidler, bør hver og en få stå for seg selv og få den oppmerksomheten den fortjener.
+
+### Kontekstuelle varsler
+
+<SmallAlertBox variant="info">Avgang fra spor 2</SmallAlertBox>
+
+Kontekstuelle varsler finnes i alle typer og vises i direkte tilknytning til innholdet det omtaler. De brukes ofte for å supplere innhold med ekstra informasjon.
+
+Kontekstuelle varsler bør ikke kunne lukkes, og bør være ekstra korte og konsise. Disse brukes ikke så ofte, og man kan ofte benytte valideringsmeldinger istedenfor.
+
+### Toasts
+
+<ToastAlertBox variant="success" title="Kunden ble opprettet">
+  Kunden kan nå kjøpe billetter, bestille reiser og mye mer.
+</ToastAlertBox>
+
+Toasts brukes i respons på visse typer handlinger og hendelser, og vises automatisk. De bør forsvinne etter minst 6 sekunder, eller om man trykker på lukke-knappen. Lukke-knappen bør dukke opp når man holder musepekeren over feltet, og "nedtellingen" for å automatisk fjerne knappen bør starte på nytt.
+
+Toasts er kun tilgjengelige i typene success og info, men vi brukes for det meste success-varselet. De skal kun brukes som reaksjon på en hendelse, eller vise tidssensitiv informasjon. Et godt eksempel kan være at brukeren er oppdatert, eller at en annen bruker har begynt å redigere samme dokument.
+
+Toast-varsler skal ikke plasseres over kritisk funksjonalitet, som knapper, navigasjon og andre funksjoner. De dukker opp nedenfra på små flater, og ligger øverst i høyre hjørne på store flater.
+
+### Nivåer
+
+Komponenten skal brukes som en valideringsmelding som varsler brukerne om at noe de nettopp gjorde må korrigeres eller som en bekreftelse på at en handling ble fullført. Varsler brukes også som en utrop eller varsling for viktig informasjon som brukeren bør ta stilling til.
+
+#### Information
+
+Informasjonsvarslingen er blå. Den gir brukeren relevante tips eller informasjon som man behøver å vite når man skal utføre en oppgave.
+
+#### Success
+
+Suksessvarselet er grønn og vises når en handling er vellykket. For eksempel en kjøpsflyt der betalingen ble gjennomført.
+
+#### Warning
+
+Advarselen er gul og brukes for å advare brukeren om viktig informasjon som trenger oppmerksomhet. For eksempel at systemet er nede grunnet vedlikehold eller avvik i reiseforslag.
+
+En advarsel vil ikke stoppe noe, men er der for å fortelle brukeren at det skjedde noe som ikke forventes (eller om et potensielt problem), og at det ikke er kritisk nok til å avslutte. Advarsler brukes først og fremst ved avvik i trafikkbildet, og bør ikke brukes i brukergrensesnittet som en reaksjon på noe brukeren gjør.
+
+#### Error
+
+Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. For eksempel at skjemaet ikke kunne lagres fordi noen felter ikke er fylt ut.
+
+### Retningslinjer om teksten
+
+Skriv en informativ tekst som gir brukeren en utfyllende beskrivelse av situasjonen, dens konsekvenser og måter å komme seg ut av. Globale og lokale varsler har plass til mer tekst enn kontekstuelle varsler og toasts.
+
+## Prinsipper
+
+<BestPractices>
+  <Example type="do">
+    <ul>
+      <li>Bruk varsler sparsomt</li>
+      <li>Hold det kort og konsist</li>
+      <li>
+        Hvis feilen er knyttet til et spesifikk tekstfelt, bør man også gi disse
+        feltene en feiltilstand
+      </li>
+      <li>
+        Hvis det kreves at brukeren må gjøre noe som svar på et varsel, må man
+        gi beskjed om hva de trenger å gjøre for å gjennomføre oppgaven.
+      </li>
+      <li>Tillatt brukeren å avvise et varsel der det er aktuelt.</li>
+      <li>Bruk standardikonet for info, suksess, advarsel og feil.</li>
+    </ul>
+  </Example>
+  <Example type="dont">
+    <ul>
+      <li>Ikke legg varsler over innhold på siden</li>
+      <li>
+        Ikke overdriv bruken av varsler. For mange vil enten overvelde eller
+        irritere brukeren
+      </li>
+      <li>
+        Ikke legg skylden på brukeren ved en feilmelding. Ha en vennlig tone og
+        hold språket forståelig
+      </li>
+      <li>
+        Ikke ta med varsler som ikke er relevant for brukerens nåværende oppgave
+      </li>
+    </ul>
+  </Example>
+</BestPractices>

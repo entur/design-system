@@ -5,6 +5,7 @@ dist
 .rts2_cache_cjs
 .rts2_cache_esm
 .firebase
+.docz
 
 # dependencies
 node_modules
