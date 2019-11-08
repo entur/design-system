@@ -4,6 +4,9 @@ import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import cx from 'classnames';
 import './styles.scss';
+import { useExpandableGroup } from './ExpandableGroup';
+import { useControllableProp } from './useControllableProp';
+import { useRandomId } from './useRandomId';
 
 type ExpandablePanelProps = {
   /** Teksten som skal stå i panelet */
@@ -26,41 +29,38 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   defaultOpen = false,
   ...rest
 }) => {
-  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
+  const randomId = useRandomId('entur-expandable');
+  const groupContext = useExpandableGroup({ id: randomId, defaultOpen });
 
-  const isControlled = open !== undefined;
-  const isOpen = isControlled ? open : internalOpen;
-  const updater = isControlled
-    ? onToggle
-    : () => setInternalOpen(!internalOpen);
-
-  const iconClass = cx('entur-expandable-panel__chevron', {
-    'entur-expandable-panel__chevron--open': isOpen,
+  const [isOpen, updater] = useControllableProp({
+    defaultValue: defaultOpen,
+    prop: groupContext ? groupContext.isOpen : open,
+    updater: groupContext ? groupContext.toggle : onToggle,
   });
-
-  const randIdRef = React.useRef(
-    'entur-expandable-' + String(Math.random()).substring(2),
-  );
 
   return (
     <div {...rest}>
       <button
         type="button"
         className="entur-expandable-panel"
-        onClick={updater}
+        onClick={() => updater(!isOpen)}
         aria-expanded={isOpen}
-        aria-controls={randIdRef.current}
+        aria-controls={randomId}
       >
         <Heading4 as="span" className="entur-expandable-panel__title">
           {title}
         </Heading4>
 
-        <DownArrowIcon className={iconClass} />
+        <DownArrowIcon
+          className={cx('entur-expandable-panel__chevron', {
+            'entur-expandable-panel__chevron--open': isOpen,
+          })}
+        />
       </button>
 
       <BaseExpand
         className="entur-expandable-content"
-        id={randIdRef.current}
+        id={randomId}
         open={isOpen!}
       >
         {children}
