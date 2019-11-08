@@ -6,7 +6,8 @@ menu: Layout og flater
 npmPackage: expand
 ---
 
-import { ExpandablePanel, BaseExpand } from '@entur/expand';
+import { ExpandablePanel, ExpandableGroup, BaseExpand } from '@entur/expand';
+import { Heading2 } from '@entur/typography';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
@@ -31,9 +32,12 @@ import { ImportStatement } from 'src/components/ImportStatement';
 
 <ImportStatement imports="ExpandablePanel" />
 <Props of={ExpandablePanel} />
-ExpandablePanel kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
+
+`ExpandablePanel` kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
+
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
-Se eksempel på dette under.
+
+Her er noen eksempler:
 
 <Playground>
   {() => {
@@ -50,6 +54,31 @@ Se eksempel på dette under.
       </ExpandablePanel>
     );
   }}
+</Playground>
+
+### ExpandableGroup
+
+<ImportStatement imports="ExpandableGroup" />
+<Props of={ExpandableGroup} />
+
+Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du wrappe panelene i en `ExpandableGroup`-komponent:
+
+<Playground>
+  <Heading2>Ofte stilte spørsmål</Heading2>
+  <ExpandableGroup>
+    <ExpandablePanel title="Jeg er redd for tuneller" defaultOpen>
+      Det går greit - tuneller er veldig sikre i dag. Om du ikke ønsker å reise
+      gjennom tuneller, ber vi deg vurdere ferge.
+    </ExpandablePanel>
+    <ExpandablePanel title="Jeg kommer ikke ut av bussen">
+      Om bussdøren ikke åpner seg, prøv å rop på bussjåføren. Får du ikke
+      kontakt, vurder å bruke en nødutgang.
+    </ExpandablePanel>
+    <ExpandablePanel title="Båten min synker">
+      Uff da. I så fall ber vi deg ta på deg en redningsvest og følge
+      instruksjonene fra kapteinen.
+    </ExpandablePanel>
+  </ExpandableGroup>
 </Playground>
 
 ### BaseExpand
