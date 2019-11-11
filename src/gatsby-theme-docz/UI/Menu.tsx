@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'docz';
-import classNames from 'classnames';
-import { TocNavigation } from '~/components/TocNavigation';
-import { SiteSidebar } from '~/components/SiteSidebar';
+import { TocNavigation } from 'src/components/TocNavigation';
+import { SiteSidebar } from 'src/components/SiteSidebar';
+import { NavBarItem } from '@entur/menu';
 import './Menu.scss';
 
 const getLinkProps = ({ isPartiallyCurrent }: any) => ({
-  className: classNames('tab-link', {
-    'active-tab-link': isPartiallyCurrent,
-  }),
+  selected: isPartiallyCurrent ? true : false,
 });
 
 export default function Menus() {
@@ -16,18 +14,23 @@ export default function Menus() {
     <>
       <nav className="site-navbar">
         <div className="tab-link-container">
-          <Link to="/kom-i-gang" getProps={getLinkProps}>
+          <NavBarItem
+            as={Link}
+            to="/kom-i-gang"
+            selected={true}
+            getProps={getLinkProps}
+          >
             Kom i gang
-          </Link>
-          <Link to="/design-prinsipper" getProps={getLinkProps}>
+          </NavBarItem>
+          <NavBarItem as={Link} to="/design-prinsipper" getProps={getLinkProps}>
             Designprinsipper
-          </Link>
-          <Link to="/visuell-identitet" getProps={getLinkProps}>
+          </NavBarItem>
+          <NavBarItem as={Link} to="/visuell-identitet" getProps={getLinkProps}>
             Visuell Identitet
-          </Link>
-          <Link to="/komponenter" getProps={getLinkProps}>
+          </NavBarItem>
+          <NavBarItem as={Link} to="/komponenter" getProps={getLinkProps}>
             Komponenter
-          </Link>
+          </NavBarItem>
         </div>
       </nav>
       <SiteSidebar />

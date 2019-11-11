@@ -1,0 +1,26 @@
+---
+name: Navbaritem
+route: /komponenter/navbaritem
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+---
+
+import { Props } from 'docz';
+import { Link } from 'gatsby';
+import { NavBarItem } from '@entur/menu';
+import { LeadParagraph } from '@entur/typography';
+import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import { ImportStatement } from 'src/components/ImportStatement';
+
+<PageHeader>
+  Navigasjonselementer som hjelper brukeren å flytte mellom sider og lokalisere
+  seg i applikasjonen.
+</PageHeader>
+
+<Playground>
+  <NavBarItem>Kom i gang</NavBarItem>
+  <NavBarItem active>Komponenter</NavBarItem>
+</Playground>
