@@ -6,7 +6,7 @@ menu: Layout og flater
 npmPackage: expand
 ---
 
-import { ExpandablePanel, BaseExpand, ExpandableLink } from '@entur/expand';
+import { ExpandablePanel, BaseExpand, ExpandableText } from '@entur/expand';
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
@@ -39,7 +39,7 @@ import { ImportStatement } from 'src/components/ImportStatement';
 
 ExpandablePanel kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
 ExpandablePanel skal i utgangspunktet ikke stå alene, dvs, det burde være minst _to_ ExpandablePanel ved siden av hverandre til ei hver tid.
-ExpandableLink skal heller brukes om man har et alenestående stående innhold man ønsker å skjule.
+ExpandableLink skal heller brukes om man har et enkeltstående innhold man ønsker å skjule.
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
 Se eksempel på dette under.
 
@@ -60,17 +60,17 @@ Se eksempel på dette under.
   }}
 </Playground>
 
-### Expandable Link
+### ExpandableText
 
-ExpandableLink brukes om man ønsker å skjule et innhold, og i motsetning til ExpandablePanel, så står den gjerne alene uten andre "Expand"-komponenter.
+ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til ExpandablePanel, så står den gjerne alene uten andre "Expand"-komponenter.
 
 <Playground>
-  <ExpandableLink title="Se mer info">
+  <ExpandableText title="Se mer info">
     Her står det mye mer info, under en mindre knapp som ikke tar så mye fokus
     fra brukeren, men fortsatt har muligheten til åpning/lukking. Her står det
     mye mer info, under en mindre knapp som ikke tar så mye fokus fra brukeren,
     men fortsatt har muligheten til åpning/lukking.
-  </ExpandableLink>
+  </ExpandableText>
 </Playground>
 
 ### BaseExpand

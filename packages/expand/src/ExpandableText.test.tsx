@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { ExpandableLink } from '.';
+import { ExpandableText } from '.';
 
 test('ExpandableLink is rendered, clicked, and opened', () => {
   const children = 'This is the expanded content';
   const title = 'ExpandPanel Tittel';
   const testId = 'idForTestingExpandable';
   const { getByText, getByTestId } = render(
-    <ExpandableLink title={title} data-testid={testId}>
+    <ExpandableText title={title} data-testid={testId}>
       {children}
-    </ExpandableLink>,
+    </ExpandableText>,
   );
   const expandable = getByTestId(testId);
   fireEvent.click(expandable.firstElementChild!);
@@ -23,14 +23,14 @@ test('Controlled ExpandableLink works properly', () => {
   const testId = 'idForTestingControlledExpandable';
   const open = false;
   const { getByTestId } = render(
-    <ExpandableLink
+    <ExpandableText
       title={title}
       onToggle={spy}
       open={open}
       data-testid={testId}
     >
       {children}
-    </ExpandableLink>,
+    </ExpandableText>,
   );
 
   const expandable = getByTestId(testId);

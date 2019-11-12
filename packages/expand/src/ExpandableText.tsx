@@ -3,27 +3,24 @@ import { BaseExpand } from './BaseExpand';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import cx from 'classnames';
-import './ExpandableLink.scss';
+import './ExpandableText.scss';
 
-type ExpandableLinkProps = {
-  /** Teksten som skal vises som en link */
+type ExpandableTextProps = {
+  /** Teksten som skal "vises" */
   title: string;
   /** Innholdet som skal vises under linken */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager knappen */
-  as?: 'a' | 'button' | React.ElementType;
-  /** Hvilken tilstand ExpandablePanel skal ha som default (med mindre den er kontrollert) */
+  /** Hvilken tilstand ExpandableText skal ha som default (med mindre den er kontrollert) */
   defaultOpen?: boolean;
-  /** Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandablePanel, sammen med onToggle */
+  /** Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandableText, sammen med onToggle */
   open?: boolean;
-  /** Funksjonen som styrer åpningen av ExpandablePanel */
+  /** Funksjonen som styrer åpningen av ExpandableText */
   onToggle?: () => void;
   [key: string]: any;
 };
-export const ExpandableLink: React.FC<ExpandableLinkProps> = ({
+export const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,
   children,
-  as,
   open,
   onToggle,
   defaultOpen = false,
@@ -37,18 +34,18 @@ export const ExpandableLink: React.FC<ExpandableLinkProps> = ({
     ? onToggle
     : () => setInternalOpen(!internalOpen);
 
-  const iconClass = cx('entur-expandable-link__chevron', {
-    'entur-expandable-link__chevron--open': isOpen,
+  const iconClass = cx('entur-expandable-text', {
+    'entur-expandable-text--open': isOpen,
   });
 
   const randIdRef = React.useRef(
-    'entur-expandable-link-' + String(Math.random()).substring(2),
+    'entur-expandable-text-' + String(Math.random()).substring(2),
   );
 
   return (
     <>
       <button
-        className="entur-expandable-link"
+        className="entur-expandable-text"
         aria-expanded={isOpen}
         aria-controls={randIdRef.current}
         onClick={updater}
@@ -58,7 +55,7 @@ export const ExpandableLink: React.FC<ExpandableLinkProps> = ({
         <Heading4 as="span">{title}</Heading4>
       </button>
       <BaseExpand
-        className="entur-expandable-link-content"
+        className="entur-expandable-text-content"
         id={randIdRef.current}
         open={isOpen!}
       >
