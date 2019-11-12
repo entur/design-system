@@ -6,19 +6,30 @@ menu: Layout og flater
 npmPackage: expand
 ---
 
-import { ExpandablePanel, ExpandableGroup, BaseExpand } from '@entur/expand';
+import {
+  ExpandablePanel,
+  ExpandableGroup,
+  BaseExpand,
+  ExpandableText,
+} from '@entur/expand';
 import { Heading2 } from '@entur/typography';
+
 import { Props } from 'docz';
 import { Playground } from 'src/components/Playground';
 import PageHeader from 'src/components/PageHeader';
 import { ImportStatement } from 'src/components/ImportStatement';
 
 <PageHeader>
-  ExpandablePanel er et panel som inneholder noe innhold som vises ved å klikke
-  på panelet
+  Expandable er en rekke komponenter som brukes for å skjule innhold, som kan
+  vises ved å klikke på komponenten.
 </PageHeader>
 
 <Playground>
+  <ExpandablePanel title="Om Entur">
+    I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å
+    reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor samler
+    vi reisedata fra alle kollektivselskap i landet.
+  </ExpandablePanel>
   <ExpandablePanel title="Om Entur">
     I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å
     reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor samler
@@ -34,6 +45,8 @@ import { ImportStatement } from 'src/components/ImportStatement';
 <Props of={ExpandablePanel} />
 
 `ExpandablePanel` kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
+ExpandablePanel skal i utgangspunktet ikke stå alene, dvs, det burde være minst _to_ ExpandablePanel ved siden av hverandre til ei hver tid.
+ExpandableLink skal heller brukes om man har et enkeltstående innhold man ønsker å skjule.
 
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
 
@@ -54,6 +67,19 @@ Her er noen eksempler:
       </ExpandablePanel>
     );
   }}
+</Playground>
+
+### ExpandableText
+
+ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til ExpandablePanel, så står den gjerne alene uten andre "Expand"-komponenter.
+
+<Playground>
+  <ExpandableText title="Se mer info">
+    Her står det mye mer info, under en mindre knapp som ikke tar så mye fokus
+    fra brukeren, men fortsatt har muligheten til åpning/lukking. Her står det
+    mye mer info, under en mindre knapp som ikke tar så mye fokus fra brukeren,
+    men fortsatt har muligheten til åpning/lukking.
+  </ExpandableText>
 </Playground>
 
 ### ExpandableGroup

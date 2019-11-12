@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsComponentProps } from 'docz';
-import { CodeText, Heading4 } from '@entur/typography';
+import { CodeText } from '@entur/typography';
 import { CheckIcon } from '@entur/icons';
 import {
   Table,
@@ -10,6 +10,7 @@ import {
   HeaderCell,
   DataCell,
 } from '@entur/table';
+import { ExpandableText } from '@entur/expand';
 import { useSettings } from './SettingsContext';
 
 function skipUndefinedType(type: string) {
@@ -18,6 +19,7 @@ function skipUndefinedType(type: string) {
 
 type PropsProps = PropsComponentProps & {
   defaultOpen?: boolean;
+  title?: string;
 };
 
 const Props: React.FC<PropsProps> = ({
@@ -31,12 +33,10 @@ const Props: React.FC<PropsProps> = ({
   );
   const isDefaultOpenSet = defaultOpen !== undefined;
   return (
-    <details open={isDefaultOpenSet ? defaultOpen : userType === 'developer'}>
-      <summary>
-        <Heading4 as="div" style={{ display: 'inline-block' }}>
-          {title}
-        </Heading4>
-      </summary>
+    <ExpandableText
+      title={title}
+      defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
+    >
       <Table fixed={true}>
         <TableHead>
           <TableRow>
@@ -69,7 +69,7 @@ const Props: React.FC<PropsProps> = ({
           ))}
         </TableBody>
       </Table>
-    </details>
+    </ExpandableText>
   );
 };
 

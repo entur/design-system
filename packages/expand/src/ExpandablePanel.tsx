@@ -3,7 +3,7 @@ import { BaseExpand } from './BaseExpand';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import cx from 'classnames';
-import './styles.scss';
+import './ExpandablePanel.scss';
 import { useExpandableGroup } from './ExpandableGroup';
 import { useControllableProp } from './useControllableProp';
 import { useRandomId } from './useRandomId';
