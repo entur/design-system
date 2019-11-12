@@ -48,8 +48,6 @@ const hasSameParentCategory = (
   menuItem: MenuItem,
   currentDoc: any,
 ): boolean => {
-  console.log(menuItem);
-
   if (menuItem.parent === currentDoc.parent) {
     return true;
   }

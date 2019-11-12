@@ -19,11 +19,11 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     row-gap: $space-extra-large2;
-    &--text {
+    &__text {
       font-size: $font-sizes-small;
       padding-left: $space-large;
       border-left: $colors-greys-grey20 $border-widths-default solid;
-      &__field {
+      &-title {
         color: $colors-blues-blue40;
       }
     }
@@ -41,13 +41,13 @@
     flex-direction: column;
     font-size: $font-sizes-medium;
   }
-  &-bold {
+  &--bold {
     font-weight: $font-weights-heading;
   }
-  &-italic {
+  &--italic {
     font-style: italic;
   }
-  &-large {
+  &--large {
     font-size: 3.5rem;
     padding-right: $space-extra-large;
   }

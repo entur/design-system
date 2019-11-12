@@ -7,11 +7,11 @@
   &-presenter {
     display: flex;
     flex-direction: column;
-    &--image {
+    &__image {
       height: 6.5rem;
       width: 6.5rem;
     }
-    &--text {
+    &__text {
       display: flex;
       flex-direction: column;
       &-header {

@@ -17,35 +17,35 @@ function TypographyDisplay({ bold }: TypographyDisplayProps) {
           <TypographyAlphabet bold={bold} italic />
         </div>
         <div className="typography-display-information">
-          <div className="typography-display-information--text">
+          <div className="typography-display-information__text">
             <div style={{ fontWeight: 'bold' }}>
               Nationale {bold ? 'DemiBold' : 'Medium'} Normal
             </div>
             <div>
-              <span className="typography-display-information--text__field">
-                Weigth:{' '}
+              <span className="typography-display-information__text-title">
+                Weight:{' '}
               </span>
               {bold ? '600' : '500'}
             </div>
             <div>
-              <span className="typography-display-information--text__field">
+              <span className="typography-display-information__text-title">
                 Style:{' '}
               </span>
               normal
             </div>
           </div>
-          <div className="typography-display-information--text">
+          <div className="typography-display-information__text">
             <div style={{ fontWeight: 'bold' }}>
               Nationale {bold ? 'DemiBold' : 'Medium'} Italic
             </div>
             <div>
-              <span className="typography-display-information--text__field">
-                Weigth:{' '}
+              <span className="typography-display-information__text-title">
+                Weight:{' '}
               </span>
               {bold ? '600' : '500'}
             </div>
             <div>
-              <span className="typography-display-information--text__field">
+              <span className="typography-display-information__text-title">
                 Style:{' '}
               </span>
               italic
@@ -66,14 +66,14 @@ function TypographyAlphabet({ italic, bold }: TypographyAlphabetProps) {
   const classList = cx([
     'typography-alphabet-wrapper',
     {
-      'typography-alphabet-bold': bold,
-      'typography-alphabet-italic': italic,
+      'typography-alphabet--bold': bold,
+      'typography-alphabet--italic': italic,
     },
   ]);
 
   return (
     <div className={classList}>
-      <div className="typography-alphabet-large">Aa</div>
+      <div className="typography-alphabet--large">Aa</div>
       <div className="typography-alphabet-text">
         <span>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
         <span>abcdefghijklmnopqrstuvwxyz</span>

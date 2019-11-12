@@ -10,8 +10,12 @@ function DesignTools() {
   return (
     <div className="design-tools">
       <div className="design-tools-presenter">
-        <img className="design-tools-presenter--image" src={abstract}></img>
-        <div className="design-tools-presenter--text">
+        <img
+          className="design-tools-presenter__image"
+          src={abstract}
+          alt="Logo av programmet Abstract"
+        />
+        <div className="design-tools-presenter__text">
           <Heading4 as="span" className="design-tools-presenter--text-header">
             Abstract
           </Heading4>
@@ -22,8 +26,12 @@ function DesignTools() {
         </div>
       </div>
       <div className="design-tools-presenter">
-        <img className="design-tools-presenter--image" src={sketch}></img>
-        <div className="design-tools-presenter--text">
+        <img
+          className="design-tools-presenter__image"
+          src={sketch}
+          alt="Logo av programmet Sketch"
+        />
+        <div className="design-tools-presenter__text">
           <Heading4 as="span" className="design-tools-presenter--text-header">
             Sketch
           </Heading4>
@@ -31,8 +39,12 @@ function DesignTools() {
         </div>
       </div>
       <div className="design-tools-presenter">
-        <img className="design-tools-presenter--image" src={craft}></img>
-        <div className="design-tools-presenter--text">
+        <img
+          className="design-tools-presenter__image"
+          src={craft}
+          alt="Logo av programmet Craft"
+        />
+        <div className="design-tools-presenter__text">
           <Heading4 as="span" className="design-tools-presenter--text-header">
             Craft
           </Heading4>
@@ -43,9 +55,13 @@ function DesignTools() {
         </div>
       </div>
       <div className="design-tools-presenter">
-        <img className="design-tools-presenter--image" src={invision}></img>
-        <div className="design-tools-presenter--text">
-          <Heading4 as="span" className="design-tools-presenter--text-header">
+        <img
+          className="design-tools-presenter__image"
+          src={invision}
+          alt="Logo av programmet Invision"
+        />
+        <div className="design-tools-presenter__text">
+          <Heading4 as="span" className="design-tools-presenter__text-header">
             Invision
           </Heading4>
           <SubParagraph>Brukertesting og utvikling av prototyper.</SubParagraph>
