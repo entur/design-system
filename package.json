@@ -17,6 +17,7 @@
   "workspaces": [
     "packages/alert",
     "packages/button",
+    "packages/chips",
     "packages/expand",
     "packages/form",
     "packages/icons",

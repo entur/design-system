@@ -1,0 +1,17 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-chip {
+  background: $colors-blues-blue80;
+  border: $border-widths-small solid $colors-blues-blue70;
+  border-radius: 1rem;
+  height: 2rem;
+  min-width: 8rem;
+  cursor: pointer;
+  color: inherit;
+  padding: 0 $space-small;
+
+  .entur-contrast & {
+    background: $colors-blues-blue20;
+    border-color: transparent;
+  }
+}

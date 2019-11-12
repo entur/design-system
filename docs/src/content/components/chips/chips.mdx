@@ -1,0 +1,28 @@
+---
+name: Chips
+route: /komponenter/chips
+parent: Komponenter
+menu: Chips
+npmPackage: chips
+---
+
+import { ActionChip, ChoiceChip } from '@entur/chips';
+import '@entur/chips/dist/styles.css';
+import { Props } from 'docz';
+import { AddIcon, BellIcon, DepositionIcon, HeartIcon } from '@entur/icons';
+import { Playground } from 'src/components/Playground';
+import PageHeader from 'src/components/PageHeader';
+import { ImportStatement } from 'src/components/ImportStatement';
+
+<PageHeader>Chips er godt, nam nam</PageHeader>
+
+<Playground>
+  <ActionChip>Klikk meg</ActionChip>
+  <ActionChip>Klikk meg</ActionChip>
+  <ActionChip>Klikk meg</ActionChip>
+<br/>
+  <ChoiceChip>Radio</ChoiceChip>
+  <ChoiceChip>Radio</ChoiceChip>
+  <ChoiceChip>Radio</ChoiceChip>
+
+</Playground>
