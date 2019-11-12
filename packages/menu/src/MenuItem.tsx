@@ -80,9 +80,13 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
     (child: any) => child && child.type === Menu,
   );
   const label = childrenArray.filter((child: any) => child !== subMenu);
-  const isActiveOrHasActiveDescendents = isActiveRecursively({
-    props: { children, active },
-  });
+  const isActiveOrHasActiveDescendents = React.useMemo(
+    () =>
+      isActiveRecursively({
+        props: { children, active },
+      }),
+    [children, active],
+  );
 
   const [isExpanded, setExpanded] = React.useState(
     forceExpandSubMenus || isActiveOrHasActiveDescendents,
@@ -94,7 +98,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
     } else {
       setExpanded(isActiveOrHasActiveDescendents);
     }
-  }, [forceExpandSubMenus]);
+  }, [forceExpandSubMenus, isActiveOrHasActiveDescendents]);
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) {

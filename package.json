@@ -5,7 +5,7 @@
   "scripts": {
     "build:packages": "lerna run build",
     "build:docz": "docz build",
-    "lint": "eslint src/**/*\\.tsx",
+    "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
     "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
