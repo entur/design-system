@@ -27,7 +27,7 @@ export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
 }) => (
   <BaseAlertBox
     className={classNames(className, {
-      'entur-alert-box--fit-content': width === 'fit-content',
+      'eds-alert-box--fit-content': width === 'fit-content',
     })}
     {...rest}
     closable={false}

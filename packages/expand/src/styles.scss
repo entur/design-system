@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-expandable-panel {
+.eds-expandable-panel {
   appearance: none;
   margin: 0;
   padding: 0 $space-large 0 $space-extra-large;
@@ -17,14 +17,14 @@
   height: ($space-extra-large4 + $space-extra-small2);
   border-bottom: $border-widths-default solid $colors-brand-white;
 
-  .entur-contrast & {
+  .eds-contrast & {
     background: $colors-blues-blue20;
     border-color: $colors-brand-blue;
   }
 
   &:hover {
     background: $colors-greys-grey30;
-    .entur-contrast & {
+    .eds-contrast & {
       background: $colors-blues-blue30;
     }
   }
@@ -39,7 +39,7 @@
     }
   }
 }
-.entur-expandable-content {
+.eds-expandable-content {
   padding: $space-default;
 }
 .ReactCollapse--collapse {

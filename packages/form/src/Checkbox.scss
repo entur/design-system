@@ -4,7 +4,7 @@
   @return mix(white, $color, $percentage);
 }
 
-.entur-form-component--checkbox {
+.eds-form-component--checkbox {
   &__container {
     display: flex;
     align-items: center;
@@ -21,9 +21,9 @@
       height: 0;
       width: 0;
 
-      &:checked + .entur-form-component--checkbox__icon {
+      &:checked + .eds-form-component--checkbox__icon {
         background-color: $colors-brand-blue;
-        .entur-contrast & {
+        .eds-contrast & {
           background: $colors-blues-blue30;
         }
         svg {
@@ -31,18 +31,18 @@
         }
       }
     }
-    &:hover input:not(:checked) + .entur-form-component--checkbox__icon {
+    &:hover input:not(:checked) + .eds-form-component--checkbox__icon {
       border-color: $colors-blues-blue30;
       background: $colors-greys-grey30;
-      .entur-contrast & {
+      .eds-contrast & {
         border-color: $colors-blues-blue40;
         background: $colors-blues-blue10;
       }
     }
-    &:hover input:checked + .entur-form-component--checkbox__icon {
+    &:hover input:checked + .eds-form-component--checkbox__icon {
       border-color: $colors-blues-blue30;
       background-color: $colors-blues-blue30;
-      .entur-contrast & {
+      .eds-contrast & {
         background: $colors-blues-blue50;
         border-color: $colors-blues-blue50;
       }
@@ -61,7 +61,7 @@
     border-radius: $border-radiuses-default;
     background-color: transparent;
     color: $colors-brand-white;
-    .entur-contrast & {
+    .eds-contrast & {
       border-color: $colors-blues-blue30;
     }
     svg {

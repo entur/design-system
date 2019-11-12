@@ -17,9 +17,9 @@ export const Table: React.FC<TableProps> = ({
 }) => (
   <table
     className={classNames(
-      'entur-table',
-      { 'entur-table--fixed': fixed },
-      { 'entur-table--compact': compact },
+      'eds-table',
+      { 'eds-table--fixed': fixed },
+      { 'eds-table--compact': compact },
       className,
     )}
     {...rest}

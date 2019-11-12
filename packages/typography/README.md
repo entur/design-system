@@ -2,7 +2,7 @@
 
 This package contains styles and React components for all of our typography.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/typografi)?
+> 💡 Looking for the [documentation](https://design.entur.ord/komponenter/typografi)?
 
 ## Installation
 
@@ -22,4 +22,4 @@ yarn add ssh://git@bitbucket.org:enturas/entur-fonts.git#master
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/typografi) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/typografi) for usage information.

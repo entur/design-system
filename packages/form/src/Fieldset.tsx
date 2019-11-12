@@ -19,9 +19,9 @@ export const Fieldset: React.FC<Props> = ({
   label,
   ...rest
 }) => (
-  <fieldset className={classNames('entur-fieldset', className)} {...rest}>
+  <fieldset className={classNames('eds-fieldset', className)} {...rest}>
     {label && (
-      <Heading4 as="legend" className="entur-legend">
+      <Heading4 as="legend" className="eds-legend">
         {label}
       </Heading4>
     )}

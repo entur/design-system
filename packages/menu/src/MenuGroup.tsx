@@ -56,17 +56,17 @@ export const MenuGroup: React.FC<Props> = ({
   });
 
   return (
-    <div className={classNames('entur-menu-group', className)} {...rest}>
+    <div className={classNames('eds-menu-group', className)} {...rest}>
       <button
         onClick={() => setOpen(!isOpen)}
         type="button"
-        className="entur-menu-group__trigger"
+        className="eds-menu-group__trigger"
       >
         <span>{title}</span>
         <DownArrowIcon
           inline
-          className={classNames('entur-menu-group__icon', {
-            'entur-menu-group__icon--open': isOpen,
+          className={classNames('eds-menu-group__icon', {
+            'eds-menu-group__icon--open': isOpen,
           })}
         />
       </button>

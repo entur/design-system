@@ -28,7 +28,7 @@
   }
 }
 
-.entur-dropdown {
+.eds-dropdown {
   --background-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='#181c56' transform='rotate(-45 1.172 4)' d='M4 8h6v2H2V2h2v6z' /%3E%3C/svg%3E");
   --background-color: #{$colors-greys-grey40};
   --background-color-hover: #{$colors-greys-grey40};
@@ -37,7 +37,7 @@
   --border-color: #{$colors-brand-blue};
   --border-color-hover: #{$colors-brand-lavender};
 
-  .entur-contrast & {
+  .eds-contrast & {
     --background-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='#ffffff' transform='rotate(-45 1.172 4)' d='M4 8h6v2H2V2h2v6z' /%3E%3C/svg%3E");
     --background-color: #{$colors-blues-blue10};
     --background-color-hover: #{$colors-blues-blue30};

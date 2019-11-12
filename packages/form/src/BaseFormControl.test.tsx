@@ -21,8 +21,8 @@ test('renders variants correctly', () => {
   );
 
   let wrapper = getByTestId('wrapper');
-  expect(wrapper).toHaveClass('entur-form-control-wrapper--error');
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
     <BaseFormControl variant="success" data-testid="wrapper">
@@ -32,8 +32,8 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
-  expect(wrapper).toHaveClass('entur-form-control-wrapper--success');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
     <BaseFormControl data-testid="wrapper">
@@ -43,8 +43,8 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
     <InputGroup variant="success">
@@ -56,8 +56,8 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--error');
-  expect(wrapper).toHaveClass('entur-form-control-wrapper--success');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
     <InputGroup variant="success">
@@ -69,8 +69,8 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).toHaveClass('entur-form-control-wrapper--error');
-  expect(wrapper).not.toHaveClass('entur-form-control-wrapper--success');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 });
 
 test('renders prepend- and append-containers', () => {
@@ -80,11 +80,11 @@ test('renders prepend- and append-containers', () => {
     </BaseFormControl>,
   );
   expect(
-    container.querySelector('.entur-form-control__prepend'),
+    container.querySelector('.eds-form-control__prepend'),
   ).not.toBeInTheDocument();
 
   expect(
-    container.querySelector('.entur-form-control__append'),
+    container.querySelector('.eds-form-control__append'),
   ).not.toBeInTheDocument();
 
   rerender(
@@ -94,10 +94,10 @@ test('renders prepend- and append-containers', () => {
   );
 
   expect(
-    container.querySelector('.entur-form-control__prepend'),
+    container.querySelector('.eds-form-control__prepend'),
   ).toBeInTheDocument();
 
   expect(
-    container.querySelector('.entur-form-control__append'),
+    container.querySelector('.eds-form-control__append'),
   ).toBeInTheDocument();
 });

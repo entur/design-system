@@ -8,5 +8,5 @@ interface DataCellProps
 }
 
 export const DataCell: React.FC<DataCellProps> = ({ className, ...rest }) => (
-  <td className={classNames('entur-table__data-cell', className)} {...rest} />
+  <td className={classNames('eds-table__data-cell', className)} {...rest} />
 );

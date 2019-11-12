@@ -42,7 +42,7 @@ const SettingsPanel: React.FC = () => {
           <Heading4 as="h2">Innstillinger</Heading4>
           <InputGroup label="Hva slags bruker er du?">
             <select
-              className="entur-dropdown"
+              className="eds-dropdown"
               onChange={e => setUserType(e.target.value as UserType)}
               value={userType}
             >
@@ -53,7 +53,7 @@ const SettingsPanel: React.FC = () => {
           {userType === 'developer' && (
             <InputGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
               <select
-                className="entur-dropdown"
+                className="eds-dropdown"
                 onChange={e =>
                   setPackageManager(e.target.value as PackageManager)
                 }
@@ -66,7 +66,7 @@ const SettingsPanel: React.FC = () => {
           )}
           <InputGroup label="Hva slags variabler vil du se?">
             <select
-              className="entur-dropdown"
+              className="eds-dropdown"
               onChange={e =>
                 setVariableFormat(e.target.value as VariableFormat)
               }

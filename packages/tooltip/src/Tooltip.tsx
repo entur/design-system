@@ -31,14 +31,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const [showTooltip, setShowTooltip] = useState(false);
   return (
     <div
-      className="entur-tooltip-wrapper"
+      className="eds-tooltip-wrapper"
       onMouseLeave={() => setShowTooltip(false)}
     >
       <div
         className={classNames(
-          'entur-tooltip',
+          'eds-tooltip',
           className,
-          `entur-tooltip--${placement}`,
+          `eds-tooltip--${placement}`,
         )}
         role="tooltip"
         aria-hidden={!showTooltip}
@@ -47,7 +47,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {content}
       </div>
       <span
-        className="entur-tooltip--trigger"
+        className="eds-tooltip--trigger"
         onMouseOver={() => setShowTooltip(true)}
         onFocus={() => setShowTooltip(true)}
         onBlur={() => setShowTooltip(false)}

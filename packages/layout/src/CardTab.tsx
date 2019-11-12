@@ -21,13 +21,13 @@ export const CardTab: React.FC<CardProps> = ({
   className,
   ...rest
 }) => {
-  const classList = classNames('entur-base-card', 'entur-card-tab', className);
+  const classList = classNames('eds-base-card', 'eds-card-tab', className);
   return (
     <Element className={classList} {...rest}>
-      <Heading3 as="span" className="entur-card-tab__heading">
+      <Heading3 as="span" className="eds-card-tab__heading">
         {title}
       </Heading3>
-      <ForwardIcon inline className="entur-card-tab__arrow-icon" />
+      <ForwardIcon inline className="eds-card-tab__arrow-icon" />
     </Element>
   );
 };

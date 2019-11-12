@@ -59,9 +59,9 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
   return (
     <div
       className={classNames(
-        'entur-alert-box',
-        `entur-alert-box--${size}`,
-        `entur-alert-box--${variant}`,
+        'eds-alert-box',
+        `eds-alert-box--${size}`,
+        `eds-alert-box--${variant}`,
         className,
       )}
       {...rest}
@@ -69,16 +69,16 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
       {closable && (
         <button
           aria-label={closeButtonLabel}
-          className="entur-alert-box__close-button"
+          className="eds-alert-box__close-button"
           type="button"
           onClick={handleClose}
         >
           <CloseIcon />
         </button>
       )}
-      <Icon className="entur-alert-box__icon" />
-      <div className="entur-alert-box__content">
-        {title && <p className="entur-alert-box__title">{title}</p>}
+      <Icon className="eds-alert-box__icon" />
+      <div className="eds-alert-box__content">
+        {title && <p className="eds-alert-box__title">{title}</p>}
         {children}
       </div>
     </div>

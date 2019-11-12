@@ -44,13 +44,13 @@ export const Button: React.RefForwardingComponent<
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const classList = cx(
-      'entur-button',
+      'eds-button',
       {
-        [`entur-button--variant-${variant}`]: variant,
-        [`entur-button--size-${size}`]: size,
-        [`entur-button--width-${width}`]: width,
-        [`entur-button--disabled`]: disabled,
-        [`entur-button--loading`]: loading,
+        [`eds-button--variant-${variant}`]: variant,
+        [`eds-button--size-${size}`]: size,
+        [`eds-button--width-${width}`]: width,
+        [`eds-button--disabled`]: disabled,
+        [`eds-button--loading`]: loading,
       },
       className,
     );

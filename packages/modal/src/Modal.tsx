@@ -32,7 +32,7 @@ export const Modal: React.FC<Props> = ({
   >
     <ModalContent {...rest}>
       <button
-        className="entur-modal__close"
+        className="eds-modal__close"
         aria-label={closeLabel}
         onClick={onDismiss}
       >

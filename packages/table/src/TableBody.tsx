@@ -7,5 +7,5 @@ interface TableBodyProps extends React.HTMLAttributes<HTMLTableSectionElement> {
 }
 
 export const TableBody: React.FC<TableBodyProps> = ({ className, ...rest }) => (
-  <tbody className={classNames('entur-table__body', className)} {...rest} />
+  <tbody className={classNames('eds-table__body', className)} {...rest} />
 );

@@ -16,8 +16,5 @@ export const EmphasizedText: React.FC<Props> = ({
   className,
   ...rest
 }) => (
-  <Element
-    className={classNames('entur-emphasized-text', className)}
-    {...rest}
-  />
+  <Element className={classNames('eds-emphasized-text', className)} {...rest} />
 );

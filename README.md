@@ -25,7 +25,7 @@ You will document the component via an MDX file in the `docs`-folder. This will 
 
 ## Deploying the docs
 
-The docs are currently available at [entur-design-system.firebaseapp.com](https://entur-design-system.firebaseapp.com).
+The docs are currently available at [design.entur.org](https://design.entur.org).
 
 ### Setting up and logging in to Firebase
 

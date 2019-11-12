@@ -2,7 +2,7 @@
 
 This package contains the different PackageName components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/package-name
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/) for usage information.

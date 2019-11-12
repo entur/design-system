@@ -5,7 +5,7 @@
   --reach-dialog: 1;
 }
 
-.entur-modal__overlay {
+.eds-modal__overlay {
   background: rgba($colors-brand-blue, 0.8);
   bottom: 0;
   display: flex;
@@ -17,7 +17,7 @@
   z-index: $z-indexes-overlay;
 }
 
-.entur-modal__content {
+.eds-modal__content {
   background: var(--primary-background-color);
   color: var(--primary-text-color);
   margin: auto;
@@ -29,7 +29,7 @@
   z-index: $z-indexes-modal;
 }
 
-.entur-modal__close {
+.eds-modal__close {
   appearance: none;
   background: none;
   border: none;

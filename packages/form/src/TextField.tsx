@@ -35,7 +35,7 @@ export const TextField: React.RefForwardingComponent<
       >
         <input
           aria-invalid={variant === 'error'}
-          className="entur-form-control"
+          className="eds-form-control"
           disabled={disabled}
           ref={ref}
           {...rest}

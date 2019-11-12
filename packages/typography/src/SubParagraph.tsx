@@ -16,5 +16,5 @@ export const SubParagraph: React.FC<Props> = ({
   className,
   ...rest
 }) => (
-  <Element className={classNames('entur-sub-paragraph', className)} {...rest} />
+  <Element className={classNames('eds-sub-paragraph', className)} {...rest} />
 );

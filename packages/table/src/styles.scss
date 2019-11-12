@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-table {
+.eds-table {
   border-collapse: collapse;
   width: 100%;
 
@@ -15,14 +15,14 @@
     height: $space-extra-large2;
     text-align: left;
 
-    .entur-contrast & {
+    .eds-contrast & {
       color: $colors-brand-lavender;
     }
   }
 
   &__row {
     height: $space-extra-large5;
-    .entur-table--compact & {
+    .eds-table--compact & {
       height: $space-extra-large2;
     }
   }
@@ -30,7 +30,7 @@
   &__body > &__row:hover {
     background-color: $colors-blues-blue80;
 
-    .entur-contrast & {
+    .eds-contrast & {
       background-color: $colors-blues-blue10;
     }
   }
@@ -40,7 +40,7 @@
     border-bottom: $border-widths-default solid $colors-greys-grey20;
     padding: 0 ($space-default + $space-extra-small2);
 
-    .entur-contrast & {
+    .eds-contrast & {
       border-bottom-color: $colors-blues-blue20;
     }
   }

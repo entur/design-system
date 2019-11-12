@@ -2,7 +2,7 @@
 
 This package contains the tooltip component.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/tooltip)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/tooltip)?
 
 ## Installation
 
@@ -20,4 +20,4 @@ yarn add @entur/tooltip
 </Tooltip>
 ```
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/tooltip) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/tooltip) for usage information.

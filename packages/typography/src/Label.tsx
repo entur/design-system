@@ -15,4 +15,4 @@ export const Label: React.FC<Props> = ({
   as: Element = 'label',
   className,
   ...rest
-}) => <Element className={classNames('entur-label', className)} {...rest} />;
+}) => <Element className={classNames('eds-label', className)} {...rest} />;

@@ -17,7 +17,7 @@ export const PreformattedText: React.FC<Props> = ({
   ...rest
 }) => (
   <Element
-    className={classNames('entur-preformatted-text', className)}
+    className={classNames('eds-preformatted-text', className)}
     {...rest}
   />
 );

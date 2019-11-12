@@ -16,5 +16,5 @@ export const StrongText: React.FC<Props> = ({
   className,
   ...rest
 }) => (
-  <Element className={classNames('entur-strong-text', className)} {...rest} />
+  <Element className={classNames('eds-strong-text', className)} {...rest} />
 );

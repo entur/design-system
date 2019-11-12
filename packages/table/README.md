@@ -2,7 +2,7 @@
 
 This package contains the different Table components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout/tabeller)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout/tabeller)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/table
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout/tabeller) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/layout/tabeller) for usage information.

@@ -15,6 +15,4 @@ export const SmallText: React.FC<Props> = ({
   as: Element = 'span',
   className,
   ...rest
-}) => (
-  <Element className={classNames('entur-small-text', className)} {...rest} />
-);
+}) => <Element className={classNames('eds-small-text', className)} {...rest} />;

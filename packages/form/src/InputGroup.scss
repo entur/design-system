@@ -1,12 +1,12 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-input-group {
+.eds-input-group {
   color: inherit;
   display: block;
 
   &__label {
     display: block;
-    .entur-contrast & {
+    .eds-contrast & {
       color: $colors-brand-lavender;
     }
   }
@@ -25,25 +25,25 @@
     top: -0.1em;
     &--success {
       color: $colors-validation-mint;
-      .entur-contrast & {
+      .eds-contrast & {
         color: $colors-validation-mint-contrast;
       }
     }
     &--error {
       color: $colors-validation-lava;
-      .entur-contrast & {
+      .eds-contrast & {
         color: $colors-validation-lava-contrast;
       }
     }
     &--info {
       color: $colors-validation-sky;
-      .entur-contrast & {
+      .eds-contrast & {
         color: $colors-validation-sky-contrast;
       }
     }
     &--warning {
       color: $colors-validation-sky;
-      .entur-contrast & {
+      .eds-contrast & {
         color: $colors-validation-sky-contrast;
       }
     }

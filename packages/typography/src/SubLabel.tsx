@@ -15,6 +15,4 @@ export const SubLabel: React.FC<Props> = ({
   as: Element = 'span',
   className,
   ...rest
-}) => (
-  <Element className={classNames('entur-sub-label', className)} {...rest} />
-);
+}) => <Element className={classNames('eds-sub-label', className)} {...rest} />;
