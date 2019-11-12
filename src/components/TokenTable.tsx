@@ -1,5 +1,4 @@
 import React from 'react';
-import { useToast } from '@entur/alert';
 import * as allTokens from '@entur/tokens';
 import {
   Table,
@@ -30,7 +29,6 @@ const formatValue = (value: string | number) => {
 export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
   const flattenedTokens = React.useMemo(() => flatten(allTokens[tokenKey]), [
     tokenKey,
-    allTokens,
   ]);
   const { variableFormat } = useSettings();
 

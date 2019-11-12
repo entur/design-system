@@ -55,7 +55,14 @@ export const SettingsProvider: React.FC = props => {
       packageManager,
       setPackageManager,
     }),
-    [variableFormat, userType, packageManager],
+    [
+      variableFormat,
+      userType,
+      setVariableFormat,
+      setUserType,
+      packageManager,
+      setPackageManager,
+    ],
   );
 
   return <SettingsContext.Provider value={contextValue} {...props} />;

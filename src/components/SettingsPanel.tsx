@@ -46,8 +46,18 @@ const SettingsPanel: React.FC = () => {
               onChange={e => setUserType(e.target.value as UserType)}
               value={userType}
             >
-              <option value="developer">Utvikler 👩‍💻</option>
-              <option value="designer">Designer ‍👨‍🎨</option>
+              <option value="developer">
+                Utvikler{' '}
+                <span role="img" aria-label="Emoji developer">
+                  👩‍💻
+                </span>
+              </option>
+              <option value="designer">
+                Designer ‍
+                <span role="img" aria-label="Emoji designer">
+                  👨‍🎨
+                </span>
+              </option>
             </select>
           </InputGroup>
           {userType === 'developer' && (
@@ -59,8 +69,18 @@ const SettingsPanel: React.FC = () => {
                 }
                 value={packageManager}
               >
-                <option value="yarn">yarn ‍🧶</option>
-                <option value="npm">npm ⬢</option>
+                <option value="yarn">
+                  yarn ‍
+                  <span role="img" aria-label="Emoji yarn ball">
+                    🧶
+                  </span>
+                </option>
+                <option value="npm">
+                  npm
+                  <span role="img" aria-label="Emoji hexagon">
+                    ⬢
+                  </span>
+                </option>
               </select>
             </InputGroup>
           )}

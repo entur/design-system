@@ -5,21 +5,19 @@ import { useCurrentDoc, Entry } from 'docz';
 import './TocNavigation.scss';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
-  let headingElements: HTMLElement[] = [];
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
 
-  const findActiveHeading = debounce(() => {
-    for (let nextElement of headingElements) {
-      const nextTop = nextElement.getBoundingClientRect().top;
-      if (nextTop >= 0) {
-        setActiveHeading(nextElement.id);
-        break;
-      }
-    }
-  }, 16);
-
   React.useEffect(() => {
-    headingElements = headings.map(
+    const findActiveHeading = debounce(() => {
+      for (let nextElement of headingElements) {
+        const nextTop = nextElement.getBoundingClientRect().top;
+        if (nextTop >= 0) {
+          setActiveHeading(nextElement.id);
+          break;
+        }
+      }
+    }, 16);
+    const headingElements = headings.map(
       heading => document.getElementById(heading.slug) as HTMLElement,
     );
     window.addEventListener('resize', findActiveHeading);
@@ -29,7 +27,7 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
       window.removeEventListener('resize', findActiveHeading);
       window.removeEventListener('scroll', findActiveHeading);
     };
-  }, []);
+  }, [headings]);
 
   return activeHeading;
 }
