@@ -5,7 +5,6 @@ parent: Komponenter
 menu: Feedback
 npmPackage: alert
 ---
-
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -103,7 +102,7 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
   {() => {
     const { addToast } = useToast();
     return (
-      <>
+      <React.Fragment>
         <Button
           onClick={() =>
             addToast({
@@ -130,7 +129,7 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
         >
           Lag info-toast
         </Button>
-      </>
+      </React.Fragment>
     );
   }}
 </InlineComponent>

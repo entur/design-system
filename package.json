@@ -3,7 +3,8 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
-    "build": "lerna run build",
+    "build:packages": "lerna run build",
+    "build:docz": "docz build",
     "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
@@ -70,7 +71,7 @@
     "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
-    "docz": "^2.0.0-rc.72",
+    "docz": "^2.0.0-rc.73",
     "gatsby-plugin-sass": "^2.1.20",
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
