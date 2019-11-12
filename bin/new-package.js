@@ -52,8 +52,6 @@ async function run() {
         'PackageName.tsx',
       ),
       rootPackageJson: path.resolve('package.json'),
-      docsFolder: path.resolve('docs'),
-      docsPackageJson: path.resolve('docs', 'package.json'),
     };
 
     console.log(`👉 Copying files into packages/${packageName}...`);
@@ -95,22 +93,11 @@ async function run() {
 
     fs.writeFileSync(paths.newReadme, readmeContent);
 
-    console.log('🦷  Adding package to the active workspaces');
+    console.log('🦷  Adding package to the root workspaces');
     const rootPackageJson = await fs.readJson(paths.rootPackageJson);
     rootPackageJson.workspaces.push(`packages/${packageName}`);
     rootPackageJson.workspaces.sort();
     await fs.writeJson(paths.rootPackageJson, rootPackageJson, { spaces: 2 });
-
-    console.log('📃 Adding package to the docs project');
-    const docsPackageJson = await fs.readJson(paths.docsPackageJson);
-    docsPackageJson.dependencies[`@entur/${packageName}`] = '^0.1.0';
-    docsPackageJson.dependencies = Object.entries(docsPackageJson.dependencies)
-      .sort(sortByKey)
-      .reduce((acc, [name, value]) => ({ ...acc, [name]: value }), {});
-    await fs.writeJson(paths.docsPackageJson, docsPackageJson, { spaces: 2 });
-
-    console.log('📦 Installing packages in the docs project');
-    spawnSync('yarn', ['install'], { cwd: paths.docsFolder });
 
     console.log('✅ Package created!');
     console.log(
