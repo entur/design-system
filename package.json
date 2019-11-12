@@ -3,6 +3,7 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
+    "build": "yarn build:packages && yarn build build:docz",
     "build:packages": "lerna run build",
     "build:docz": "docz build",
     "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
