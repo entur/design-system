@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/layout.esm.js",
@@ -27,6 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@entur/typography": "^0.4.3",
     "classnames": "^2.2.6"
   },
   "devDependencies": {

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.2...@entur/typography@0.4.3) (2019-11-07)
+
+### Bug Fixes
+
+- fix issue where fallback font was used ([8c31176](https://bitbucket.org/enturas/design-system/commits/8c31176ded49432692820d6cbcfcf07d784e88fc))
+
 ## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.1...@entur/typography@0.4.2) (2019-11-06)
 
 ### Bug Fixes

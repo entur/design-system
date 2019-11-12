@@ -1,47 +1,46 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-expandable {
-  &-panel {
-    appearance: none;
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    width: 100%;
-    font-size: inherit;
-    background: $colors-greys-grey20;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    color: inherit;
-    height: ($space-extra-large4 + $space-extra-small2);
-    border-bottom: $border-widths-default solid $colors-brand-white;
+.entur-expandable-panel {
+  appearance: none;
+  margin: 0;
+  padding: 0 $space-large 0 $space-extra-large;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  font-size: inherit;
+  background: $colors-greys-grey20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: inherit;
+  height: ($space-extra-large4 + $space-extra-small2);
+  border-bottom: $border-widths-default solid $colors-brand-white;
+
+  .entur-contrast & {
+    background: $colors-blues-blue20;
+    border-color: $colors-brand-blue;
+  }
+
+  &:hover {
+    background: $colors-greys-grey30;
     .entur-contrast & {
-      background: $colors-blues-blue20;
-      border-color: $colors-brand-blue;
-    }
-    &:hover {
-      background: $colors-greys-grey30;
-      .entur-contrast & {
-        background: $colors-blues-blue30;
-      }
-    }
-    &__title {
-      margin-left: $space-extra-large;
-      user-select: none;
-    }
-    &__chevron {
-      margin-right: $space-large;
-      transition: ($timings-fast + $timings-fast) transform ease-out;
-      &--open {
-        transform: rotate(-180deg);
-      }
+      background: $colors-blues-blue30;
     }
   }
-  &-content {
-    padding: $space-default;
+
+  &__title {
+    user-select: none;
   }
+  &__chevron {
+    transition: ($timings-fast + $timings-fast) transform ease-out;
+    &--open {
+      transform: rotate(-180deg);
+    }
+  }
+}
+.entur-expandable-content {
+  padding: $space-default;
 }
 .ReactCollapse--collapse {
   transition: height $timings-slow ease-out;

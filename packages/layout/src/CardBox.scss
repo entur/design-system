@@ -1,0 +1,24 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.entur-card-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.5rem;
+
+  &__title-icon {
+    font-size: 2rem;
+  }
+  &__heading {
+    .entur-card-box & {
+      margin-bottom: 0;
+    }
+  }
+  &__arrow-icon {
+    margin-top: 1rem;
+    transition: transform $timings-fast ease-out;
+    .entur-card-box:hover & {
+      transform: translateX(0.5rem);
+    }
+  }
+}

@@ -10,7 +10,7 @@ import {
   HeaderCell,
   DataCell,
 } from '@entur/table';
-import { ExpandableLink } from '@entur/expand';
+import { ExpandableText } from '@entur/expand';
 import { useSettings } from './SettingsContext';
 
 function skipUndefinedType(type: string) {
@@ -33,7 +33,7 @@ const Props: React.FC<PropsProps> = ({
   );
   const isDefaultOpenSet = defaultOpen !== undefined;
   return (
-    <ExpandableLink
+    <ExpandableText
       title={title}
       defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
     >
@@ -69,7 +69,7 @@ const Props: React.FC<PropsProps> = ({
           ))}
         </TableBody>
       </Table>
-    </ExpandableLink>
+    </ExpandableText>
   );
 };
 

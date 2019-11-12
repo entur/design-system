@@ -1,0 +1,18 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.frontpage {
+  &-menu-navbar {
+    border-bottom: $colors-greys-grey20 solid $border-widths-small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-default;
+    background-color: var(--primary-background-color);
+  }
+  &-tab-link-container {
+    display: flex;
+  }
+  &--logo img {
+    width: 15rem;
+  }
+}

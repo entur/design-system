@@ -34,8 +34,8 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
     ? onToggle
     : () => setInternalOpen(!internalOpen);
 
-  const iconClass = cx('entur-expandable-text', {
-    'entur-expandable-text--open': isOpen,
+  const iconClass = cx('entur-expandable-text__chevron', {
+    'entur-expandable-text__chevron--open': isOpen,
   });
 
   const randIdRef = React.useRef(
