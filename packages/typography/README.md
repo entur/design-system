@@ -2,7 +2,7 @@
 
 This package contains styles and React components for all of our typography.
 
-> 💡 Looking for the [documentation](https://design.entur.ord/komponenter/typografi)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/typografi)?
 
 ## Installation
 
