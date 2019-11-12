@@ -5,32 +5,15 @@ import { SiteSidebar } from 'src/components/SiteSidebar';
 import { NavBarItem } from '@entur/menu';
 import './Menu.scss';
 
-const getLinkProps = ({ isPartiallyCurrent }: any) => ({
-  selected: isPartiallyCurrent ? true : false,
-});
-
 export default function Menus() {
   return (
     <>
       <nav className="site-navbar">
         <div className="tab-link-container">
-          <NavBarItem
-            as={Link}
-            to="/kom-i-gang"
-            selected={true}
-            getProps={getLinkProps}
-          >
-            Kom i gang
-          </NavBarItem>
-          <NavBarItem as={Link} to="/design-prinsipper" getProps={getLinkProps}>
-            Designprinsipper
-          </NavBarItem>
-          <NavBarItem as={Link} to="/visuell-identitet" getProps={getLinkProps}>
-            Visuell Identitet
-          </NavBarItem>
-          <NavBarItem as={Link} to="/komponenter" getProps={getLinkProps}>
-            Komponenter
-          </NavBarItem>
+          <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+          <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
+          <NavItem to="/visuell-identitet">Visuell Identitet</NavItem>
+          <NavItem to="/komponenter">Komponenter</NavItem>
         </div>
       </nav>
       <SiteSidebar />
@@ -40,3 +23,24 @@ export default function Menus() {
     </>
   );
 }
+
+type NavItemProps = {
+  children: React.ReactNode;
+  [key: string]: any;
+};
+const NavItem: React.FC<NavItemProps> = ({ children, ...rest }) => {
+  const [selected, setSelected] = React.useState(false);
+  return (
+    <NavBarItem
+      as={Link}
+      selected={selected}
+      getProps={({ isPartiallyCurrent }: any) => {
+        console.log('Kjøres');
+        setSelected(isPartiallyCurrent);
+      }}
+      {...rest}
+    >
+      {children}
+    </NavBarItem>
+  );
+};
