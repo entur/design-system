@@ -51,7 +51,8 @@ const hasSameParentCategory = (
   if (menuItem.parent === currentDoc.parent) {
     return true;
   }
-  return (menuItem.menu || []).some(subMenuItem =>
+
+  return (Array.isArray(menuItem.menu) ? menuItem.menu : []).some(subMenuItem =>
     hasSameParentCategory(subMenuItem, currentDoc),
   );
 };
