@@ -1,0 +1,23 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.design-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: $space-extra-large3;
+  &-presenter {
+    display: flex;
+    flex-direction: column;
+    &__image {
+      height: 6.5rem;
+      width: 6.5rem;
+    }
+    &__text {
+      display: flex;
+      flex-direction: column;
+      &-header {
+        margin: $space-large 0 0;
+        font-weight: bold;
+      }
+    }
+  }
+}

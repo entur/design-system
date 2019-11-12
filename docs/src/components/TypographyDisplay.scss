@@ -1,0 +1,54 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.typography-display {
+  padding: $space-extra-large3;
+  border: $colors-greys-grey20 $border-widths-default solid;
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  &-header {
+    font-weight: bold;
+    margin: $space-extra-large 0 $space-default;
+  }
+
+  &-presenter {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: $space-extra-large2;
+  }
+  &-information {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: $space-extra-large2;
+    &__text {
+      font-size: $font-sizes-small;
+      padding-left: $space-large;
+      border-left: $colors-greys-grey20 $border-widths-default solid;
+      &-title {
+        color: $colors-blues-blue40;
+      }
+    }
+  }
+}
+
+.typography-alphabet {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    padding-right: $space-extra-large2;
+  }
+  &-text {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-sizes-medium;
+  }
+  &--bold {
+    font-weight: $font-weights-heading;
+  }
+  &--italic {
+    font-style: italic;
+  }
+  &--large {
+    font-size: 3.5rem;
+    padding-right: $space-extra-large;
+  }
+}
