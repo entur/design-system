@@ -47,9 +47,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
       transformCode={transformCode}
       theme={prismTheme}
     >
-      <div
-        className={classNames('playground', { 'entur-contrast': isContrast })}
-      >
+      <div className={classNames('playground', { 'eds-contrast': isContrast })}>
         <LivePreview />
       </div>
       <div className="playground__controls">

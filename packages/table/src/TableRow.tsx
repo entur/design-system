@@ -7,5 +7,5 @@ interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
 }
 
 export const TableRow: React.FC<TableRowProps> = ({ className, ...rest }) => (
-  <tr className={classNames('entur-table__row', className)} {...rest} />
+  <tr className={classNames('eds-table__row', className)} {...rest} />
 );

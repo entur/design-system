@@ -1,10 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-form-control-wrapper {
+.eds-form-control-wrapper {
   --border-color: #{$colors-brand-blue};
   --border-color-hover: #{$colors-brand-lavender};
 
-  .entur-contrast & {
+  .eds-contrast & {
     --border-color: #{$colors-brand-lavender};
     background-color: $colors-brand-white;
   }
@@ -74,7 +74,7 @@
     --border-color: #{$colors-validation-mint};
     --border-color-hover: #{$colors-validation-mint-contrast};
 
-    .entur-contrast & {
+    .eds-contrast & {
       --border-color: #{$colors-validation-mint};
     }
   }
@@ -83,7 +83,7 @@
     --border-color: #{$colors-validation-lava};
     --border-color-hover: #{$colors-validation-lava-contrast};
 
-    .entur-contrast & {
+    .eds-contrast & {
       --border-color: #{$colors-validation-lava};
     }
   }
@@ -92,7 +92,7 @@
   Some input controls require a darker design while inside a contrast block. 
   These elements require the `--dark` modifier, even on the wrapper.
   */
-  .entur-contrast & {
+  .eds-contrast & {
     &--dark {
       background-color: $colors-blues-blue20;
       color: $colors-brand-white;
@@ -105,7 +105,7 @@
         color: inherit;
       }
 
-      &.entur-form-control-wrapper--disabled {
+      &.eds-form-control-wrapper--disabled {
         background-color: $colors-blues-blue10;
         color: $colors-blues-blue50;
       }
@@ -113,7 +113,7 @@
   }
 }
 
-.entur-form-control {
+.eds-form-control {
   appearance: none;
   background-color: transparent;
   border: 0;

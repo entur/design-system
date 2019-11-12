@@ -21,14 +21,14 @@
   }
 }
 
-.entur-loader {
+.eds-loader {
   text-align: center;
   overflow-x: hidden;
   max-width: 20rem;
   margin: 0 auto;
 }
 
-.entur-loader__bar {
+.eds-loader__bar {
   border: $border-widths-medium solid $colors-greys-grey20;
   &::after {
     background: $colors-brand-coral;

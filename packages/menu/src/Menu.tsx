@@ -22,8 +22,8 @@ export const Menu: React.FC<MenuProps> & InternalMarker = ({
   return (
     <ul
       className={classNames(
-        'entur-menu',
-        { 'entur-menu--small': size === 'small' },
+        'eds-menu',
+        { 'eds-menu--small': size === 'small' },
         className,
       )}
       {...rest}

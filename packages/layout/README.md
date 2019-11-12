@@ -2,7 +2,7 @@
 
 This package contains the different layout components, and the powerful EnturContrast wrapper
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/layout
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/layout) for usage information.

@@ -27,18 +27,18 @@ export const Loader: React.FC<Props> = ({
   }
   return (
     <div
-      className={classNames('entur-loader', className)}
+      className={classNames('eds-loader', className)}
       role="alert"
       aria-busy={true}
       aria-live="polite"
       {...rest}
     >
       {children && (
-        <Heading4 className="entur-loader__label">{children}</Heading4>
+        <Heading4 className="eds-loader__label">{children}</Heading4>
       )}
       <div
-        className={classNames('entur-loader__bar', {
-          'entur-loader__bar--indeterminate': isIndeterminate,
+        className={classNames('eds-loader__bar', {
+          'eds-loader__bar--indeterminate': isIndeterminate,
         })}
         style={styles}
       />

@@ -46,12 +46,12 @@ html {
 }
 
 // Headings
-.entur-h1,
-.entur-h2,
-.entur-h3,
-.entur-h4,
-.entur-h5,
-.entur-h6 {
+.eds-h1,
+.eds-h2,
+.eds-h3,
+.eds-h4,
+.eds-h5,
+.eds-h6 {
   color: inherit;
   font-weight: $font-weights-heading;
   -webkit-font-smoothing: antialiased;
@@ -59,7 +59,7 @@ html {
   margin-bottom: 1em;
 }
 
-.entur-h1 {
+.eds-h1 {
   font-size: $font-sizes-extra-large;
   line-height: $line-heights-extra-large2;
 
@@ -68,7 +68,7 @@ html {
     line-height: $line-heights-extra-large5;
   }
 }
-.entur-h2 {
+.eds-h2 {
   font-size: $font-sizes-large;
   line-height: $line-heights-large;
 
@@ -77,7 +77,7 @@ html {
     line-height: $line-heights-extra-large4;
   }
 }
-.entur-h3 {
+.eds-h3 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
@@ -86,7 +86,7 @@ html {
     line-height: $line-heights-extra-large3;
   }
 }
-.entur-h4 {
+.eds-h4 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
@@ -95,8 +95,8 @@ html {
     line-height: $line-heights-extra-large;
   }
 }
-.entur-h5,
-.entur-h6 {
+.eds-h5,
+.eds-h6 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
@@ -106,7 +106,7 @@ html {
 }
 
 // Body text and inline element styling
-.entur-paragraph {
+.eds-paragraph {
   color: inherit;
   font-size: $font-sizes-large;
   line-height: $line-heights-large;
@@ -117,7 +117,7 @@ html {
   }
 }
 
-.entur-lead-paragraph {
+.eds-lead-paragraph {
   color: inherit;
   font-size: $font-sizes-extra-large;
   line-height: $line-heights-extra-large3;
@@ -128,7 +128,7 @@ html {
   }
 }
 
-.entur-sub-paragraph {
+.eds-sub-paragraph {
   color: inherit;
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
@@ -138,7 +138,7 @@ html {
   }
 }
 
-.entur-small-text {
+.eds-small-text {
   color: inherit;
   font-size: $font-sizes-small;
   line-height: $line-heights-medium;
@@ -147,7 +147,7 @@ html {
   }
 }
 
-.entur-link {
+.eds-link {
   &,
   &:link,
   &:visited {
@@ -169,13 +169,13 @@ html {
   }
 }
 
-.entur-label,
-.entur-sub-label {
+.eds-label,
+.eds-sub-label {
   color: $colors-blues-blue40; // ie fallback
   color: var(--primary-label-color);
 }
 
-.entur-label {
+.eds-label {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
@@ -184,7 +184,7 @@ html {
   }
 }
 
-.entur-sub-label {
+.eds-sub-label {
   font-size: $font-sizes-small;
   line-height: $line-heights-small;
 
@@ -193,15 +193,15 @@ html {
   }
 }
 
-.entur-strong-text {
+.eds-strong-text {
   font-weight: $font-weights-heading;
 }
 
-.entur-emphasized-text {
+.eds-emphasized-text {
   font-style: italic;
 }
 
-.entur-preformatted-text {
+.eds-preformatted-text {
   background: $colors-blues-blue80;
   border: $border-widths-small solid $colors-blues-blue60;
   border-radius: $border-radiuses-small;
@@ -213,7 +213,7 @@ html {
   word-break: keep-all;
 }
 
-.entur-code-text {
+.eds-code-text {
   background-color: $colors-blues-blue80;
   border: $border-widths-small solid $colors-blues-blue60;
   border-radius: 0.125rem;

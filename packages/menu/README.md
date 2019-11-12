@@ -2,7 +2,7 @@
 
 This package contains the button component
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/menyer)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/menyer)?
 
 ## Installation
 
@@ -29,4 +29,4 @@ yarn add @entur/menu
 </Menu>
 ```
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/menyer) for further usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/menyer) for further usage information.

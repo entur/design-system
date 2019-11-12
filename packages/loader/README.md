@@ -2,7 +2,7 @@
 
 This package contains the different loader components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/loaders)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/loaders)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/loader
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/loaders) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/loaders) for usage information.

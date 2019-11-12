@@ -92,9 +92,7 @@ test('renders a small menu if the small flag is set', () => {
     </Menu>,
   );
 
-  expect(container.querySelector('.entur-menu')).toHaveClass(
-    'entur-menu--small',
-  );
+  expect(container.querySelector('.eds-menu')).toHaveClass('eds-menu--small');
 });
 
 test('menu items are disabled if specified', () => {

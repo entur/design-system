@@ -16,8 +16,5 @@ export const LeadParagraph: React.FC<Props> = ({
   className,
   ...rest
 }) => (
-  <Element
-    className={classNames('entur-lead-paragraph', className)}
-    {...rest}
-  />
+  <Element className={classNames('eds-lead-paragraph', className)} {...rest} />
 );

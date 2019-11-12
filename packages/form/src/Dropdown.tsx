@@ -42,7 +42,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     >
       <select
         aria-invalid={variant === 'error'}
-        className="entur-form-control"
+        className="eds-form-control"
         disabled={disabled}
         {...rest}
       >

@@ -22,10 +22,10 @@ export const Radio: React.RefForwardingComponent<
     { className, children, value, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = cx(className, 'entur-form-component--radio__radio');
+    const classList = cx(className, 'eds-form-component--radio__radio');
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
     return (
-      <label className="entur-form-component--radio__container">
+      <label className="eds-form-component--radio__container">
         <input
           type="radio"
           name={name}
@@ -36,7 +36,7 @@ export const Radio: React.RefForwardingComponent<
           {...rest}
         />
         <span className={classList}>
-          <span className="entur-form-component--radio__circle"></span>
+          <span className="eds-form-component--radio__circle"></span>
         </span>
         {children && <Label as="span">{children}</Label>}
       </label>

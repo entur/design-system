@@ -5,7 +5,7 @@ import { useVariant } from './InputGroup';
 import './BaseFormControl.scss';
 
 type Props = {
-  /** Et skjemaelement med `entur-form-control`-klassen */
+  /** Et skjemaelement med `eds-form-control`-klassen */
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
@@ -36,17 +36,17 @@ export const BaseFormControl: React.FC<Props> = ({
   const currentVariant = variant || variantFromInputGroup;
   return (
     <div
-      className={classNames('entur-form-control-wrapper', className, {
-        'entur-form-control-wrapper--success': currentVariant === 'success',
-        'entur-form-control-wrapper--error': currentVariant === 'error',
-        'entur-form-control-wrapper--dark': dark,
-        'entur-form-control-wrapper--disabled': disabled,
+      className={classNames('eds-form-control-wrapper', className, {
+        'eds-form-control-wrapper--success': currentVariant === 'success',
+        'eds-form-control-wrapper--error': currentVariant === 'error',
+        'eds-form-control-wrapper--dark': dark,
+        'eds-form-control-wrapper--disabled': disabled,
       })}
       {...rest}
     >
-      {prepend && <div className="entur-form-control__prepend">{prepend}</div>}
+      {prepend && <div className="eds-form-control__prepend">{prepend}</div>}
       {children}
-      {append && <div className="entur-form-control__append">{append}</div>}
+      {append && <div className="eds-form-control__append">{append}</div>}
     </div>
   );
 };

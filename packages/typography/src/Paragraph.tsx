@@ -15,6 +15,4 @@ export const Paragraph: React.FC<Props> = ({
   as: Element = 'p',
   className,
   ...rest
-}) => (
-  <Element className={classNames('entur-paragraph', className)} {...rest} />
-);
+}) => <Element className={classNames('eds-paragraph', className)} {...rest} />;

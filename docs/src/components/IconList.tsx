@@ -66,7 +66,7 @@ const IconList: React.FC<IconListProps> = props => {
           </ToggleSwitch>
           <ul
             className={classNames('icon-list', {
-              'entur-contrast': isContrast,
+              'eds-contrast': isContrast,
             })}
           >
             {filteredIcons.map(([iconName, Icon]: any) => (

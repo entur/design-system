@@ -15,6 +15,6 @@ export const Contrast: React.FC<ContrastProps> = ({
   ...rest
 }) => {
   return (
-    <Element className={classNames('entur-contrast', className)} {...rest} />
+    <Element className={classNames('eds-contrast', className)} {...rest} />
   );
 };

@@ -107,7 +107,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       value={React.useMemo(() => ({ toasts, addToast, removeToast }), [toasts])}
     >
       {toasts.length > 0 && (
-        <div className="entur-toast-container">
+        <div className="eds-toast-container">
           {toasts.slice(0, 3).map(toastToShow => (
             <ToastAlertBox
               variant={toastToShow.variant}

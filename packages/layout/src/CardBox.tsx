@@ -25,17 +25,15 @@ export const CardBox: React.FC<CardProps> = ({
   className,
   ...rest
 }) => {
-  const classList = classNames('entur-base-card', 'entur-card-box', className);
+  const classList = classNames('eds-base-card', 'eds-card-box', className);
   return (
     <Element className={classList} {...rest}>
-      {titleIcon && (
-        <div className="entur-card-box__title-icon">{titleIcon}</div>
-      )}
-      <Heading3 as="span" className="entur-card-box__heading">
+      {titleIcon && <div className="eds-card-box__title-icon">{titleIcon}</div>}
+      <Heading3 as="span" className="eds-card-box__heading">
         {title}
       </Heading3>
       <Paragraph>{children}</Paragraph>
-      <ForwardIcon className="entur-card-box__arrow-icon" />
+      <ForwardIcon className="eds-card-box__arrow-icon" />
     </Element>
   );
 };

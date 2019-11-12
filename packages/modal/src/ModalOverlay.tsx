@@ -15,7 +15,7 @@ type Props = {
 
 export const ModalOverlay: React.FC<Props> = ({ className, ...rest }) => (
   <DialogOverlay
-    className={classNames('entur-modal__overlay', className)}
+    className={classNames('eds-modal__overlay', className)}
     {...rest}
   />
 );

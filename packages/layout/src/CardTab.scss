@@ -1,13 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-card-tab {
+.eds-card-tab {
   flex-direction: row;
   justify-content: space-between;
   min-width: 5rem;
   padding: $space-default $space-extra-large2;
   &__arrow-icon {
     transition: transform $timings-fast ease-out;
-    .entur-card-tab:hover & {
+    .eds-card-tab:hover & {
       transform: translateX(0.5rem);
     }
   }

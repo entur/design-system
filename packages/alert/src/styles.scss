@@ -6,7 +6,7 @@
   }
 }
 
-.entur-alert-box {
+.eds-alert-box {
   border: $border-widths-small solid;
   color: $colors-brand-blue;
   display: flex;
@@ -59,30 +59,30 @@
   }
 }
 
-.entur-alert-box__icon {
+.eds-alert-box__icon {
   display: inline-block;
   flex: 0 0 1em;
   font-size: 1.2rem; // Required since the icons are a tiny bit too small
   margin-right: 0.5em;
 
-  .entur-alert-box--banner &,
-  .entur-alert-box--toast & {
+  .eds-alert-box--banner &,
+  .eds-alert-box--toast & {
     @include for-desktop {
       font-size: $space-extra-large; // standalone icon size
     }
   }
 }
 
-.entur-alert-box__title {
+.eds-alert-box__title {
   font-weight: $font-weights-heading;
   margin: 0;
 }
 
-.entur-alert-box__content {
+.eds-alert-box__content {
   color: $colors-brand-blue;
 
-  .entur-alert-box--banner &,
-  .entur-alert-box--toast & {
+  .eds-alert-box--banner &,
+  .eds-alert-box--toast & {
     margin-right: $space-extra-large;
   }
 
@@ -95,7 +95,7 @@
   }
 }
 
-.entur-alert-box__close-button {
+.eds-alert-box__close-button {
   appearance: none;
   background: none;
   border: 0;
@@ -118,7 +118,7 @@
   }
 }
 
-.entur-toast-container {
+.eds-toast-container {
   position: fixed;
   bottom: $space-default;
   right: $space-default;

@@ -51,10 +51,10 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
   };
   const RenderedElement = disabled ? 'button' : Element;
   return (
-    <li className={classNames('entur-menu__item', className)}>
+    <li className={classNames('eds-menu__item', className)}>
       <RenderedElement
-        className={classNames('entur-menu__click-target', {
-          'entur-menu__click-target--active': active,
+        className={classNames('eds-menu__click-target', {
+          'eds-menu__click-target--active': active,
         })}
         onClick={handleClick}
         disabled={disabled}
@@ -105,10 +105,10 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <li className={classNames('entur-menu__item', className)}>
+    <li className={classNames('eds-menu__item', className)}>
       <button
-        className={classNames('entur-menu__click-target', {
-          'entur-menu__click-target--active': isActiveOrHasActiveDescendents,
+        className={classNames('eds-menu__click-target', {
+          'eds-menu__click-target--active': isActiveOrHasActiveDescendents,
         })}
         onClick={handleClick}
         disabled={disabled}

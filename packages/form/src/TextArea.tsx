@@ -29,7 +29,7 @@ export const TextArea: React.RefForwardingComponent<
         style={style}
       >
         <textarea
-          className="entur-form-control entur-textarea"
+          className="eds-form-control eds-textarea"
           ref={ref}
           {...rest}
         />

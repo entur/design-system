@@ -11,5 +11,5 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   className,
   ...rest
 }) => (
-  <th className={classNames('entur-table__header-cell', className)} {...rest} />
+  <th className={classNames('eds-table__header-cell', className)} {...rest} />
 );

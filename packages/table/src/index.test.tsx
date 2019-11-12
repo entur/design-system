@@ -19,13 +19,11 @@ test('creates a nice looking table', () => {
       </TableBody>
     </Table>,
   );
-  expect(container.querySelector('.entur-table')).toBeInTheDocument();
-  expect(container.querySelector('.entur-table__body')).toBeInTheDocument();
-  expect(container.querySelector('.entur-table__row')).toBeInTheDocument();
+  expect(container.querySelector('.eds-table')).toBeInTheDocument();
+  expect(container.querySelector('.eds-table__body')).toBeInTheDocument();
+  expect(container.querySelector('.eds-table__row')).toBeInTheDocument();
+  expect(container.querySelector('.eds-table__data-cell')).toBeInTheDocument();
   expect(
-    container.querySelector('.entur-table__data-cell'),
-  ).toBeInTheDocument();
-  expect(
-    container.querySelector('.entur-table__header-cell'),
+    container.querySelector('.eds-table__header-cell'),
   ).toBeInTheDocument();
 });

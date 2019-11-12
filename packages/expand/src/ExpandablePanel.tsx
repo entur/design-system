@@ -29,7 +29,7 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   defaultOpen = false,
   ...rest
 }) => {
-  const randomId = useRandomId('entur-expandable');
+  const randomId = useRandomId('eds-expandable');
   const groupContext = useExpandableGroup({ id: randomId, defaultOpen });
 
   const [isOpen, updater] = useControllableProp({
@@ -42,24 +42,24 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
     <div {...rest}>
       <button
         type="button"
-        className="entur-expandable-panel"
+        className="eds-expandable-panel"
         onClick={() => updater(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={randomId}
       >
-        <Heading4 as="span" className="entur-expandable-panel__title">
+        <Heading4 as="span" className="eds-expandable-panel__title">
           {title}
         </Heading4>
 
         <DownArrowIcon
-          className={cx('entur-expandable-panel__chevron', {
-            'entur-expandable-panel__chevron--open': isOpen,
+          className={cx('eds-expandable-panel__chevron', {
+            'eds-expandable-panel__chevron--open': isOpen,
           })}
         />
       </button>
 
       <BaseExpand
-        className="entur-expandable-content"
+        className="eds-expandable-content"
         id={randomId}
         open={isOpen!}
       >

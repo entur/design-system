@@ -18,7 +18,7 @@
   @return mix(black, $color, $percentage);
 }
 
-.entur-button {
+.eds-button {
   min-width: 9.5rem; //width 152-border
   border: $border-widths-default solid transparent;
   border-radius: $border-radiuses-default;
@@ -75,7 +75,7 @@
     &:active {
       background-color: shade($colors-brand-blue, 10%);
     }
-    .entur-contrast & {
+    .eds-contrast & {
       background-color: $colors-brand-lavender;
       color: $colors-brand-blue;
       &:hover {
@@ -95,7 +95,7 @@
     &:active {
       background-color: mix(black, $colors-brand-lavender, 10%);
     }
-    .entur-contrast & {
+    .eds-contrast & {
       background-color: $colors-blues-blue20;
       color: $colors-brand-white;
       &:hover {
@@ -129,7 +129,7 @@
       background-color: $colors-validation-lava;
       color: $colors-brand-white;
     }
-    .entur-contrast & {
+    .eds-contrast & {
       color: $colors-brand-white;
       &:hover {
         background-color: tint($colors-blues-blue20, 10%);

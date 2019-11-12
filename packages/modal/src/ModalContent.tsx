@@ -9,7 +9,7 @@ type Props = {
 
 export const ModalContent: React.FC<Props> = ({ className, ...rest }) => (
   <DialogContent
-    className={classNames('entur-modal__content', className)}
+    className={classNames('eds-modal__content', className)}
     {...rest}
   />
 );

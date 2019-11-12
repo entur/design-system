@@ -20,7 +20,7 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   expect(tooltipdiv).toHaveAttribute('aria-hidden', 'false');
   expect(tooltipdiv).toHaveClass('testerclass');
 
-  expect(tooltipdiv).toHaveClass('entur-tooltip--top');
+  expect(tooltipdiv).toHaveClass('eds-tooltip--top');
   fireEvent.mouseLeave(getByText(children));
 
   expect(tooltipdiv).toHaveAttribute('aria-hidden', 'true');

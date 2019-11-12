@@ -2,7 +2,7 @@
 
 This package contains the different Modal components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout/modal)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout/modal)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/modal
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/layout/modal) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/layout/modal) for usage information.

@@ -22,10 +22,10 @@ export const Checkbox: React.RefForwardingComponent<
   ) => {
     return (
       <label
-        className={cx('entur-form-component--checkbox__container', className)}
+        className={cx('eds-form-component--checkbox__container', className)}
       >
         <input type="checkbox" ref={ref} {...rest} />
-        <span className="entur-form-component--checkbox__icon">
+        <span className="eds-form-component--checkbox__icon">
           <CheckIcon />
         </span>
         {children && <Label as="span">{children}</Label>}

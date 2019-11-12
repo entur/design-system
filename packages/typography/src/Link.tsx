@@ -15,4 +15,4 @@ export const Link: React.FC<Props> = ({
   as: Element = 'a',
   className,
   ...rest
-}) => <Element className={classNames('entur-link', className)} {...rest} />;
+}) => <Element className={classNames('eds-link', className)} {...rest} />;

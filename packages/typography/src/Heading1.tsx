@@ -15,4 +15,4 @@ export const Heading1: React.FC<Props> = ({
   as: Element = 'h1',
   className,
   ...rest
-}) => <Element className={classNames('entur-h1', className)} {...rest} />;
+}) => <Element className={classNames('eds-h1', className)} {...rest} />;
