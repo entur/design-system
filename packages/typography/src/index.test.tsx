@@ -26,7 +26,7 @@ test('passes on all props', () => {
   Object.values(components).forEach(Component => {
     const { getByLabelText } = render(
       <Component aria-label="one hundred" className="custom-class">
-        💯
+        one hunned
       </Component>,
     );
     const result = getByLabelText('one hundred');
