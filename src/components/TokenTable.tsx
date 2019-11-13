@@ -39,7 +39,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
           <HeaderCell>Navn</HeaderCell>
           <HeaderCell>Verdi</HeaderCell>
           {Example && <HeaderCell>Eksempel</HeaderCell>}
-          <HeaderCell>Kopier</HeaderCell>
+          <HeaderCell style={{ textAlign: 'right' }}>Kopier</HeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -58,7 +58,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
                 <Example value={value} />
               </DataCell>
             )}
-            <DataCell>
+            <DataCell style={{ textAlign: 'right' }}>
               <CopyButton
                 textToCopy={formatVariable(
                   `${tokenKey}.${key}`,
