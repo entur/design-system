@@ -1,0 +1,39 @@
+---
+name: Tekstarea
+route: /komponenter/skjemaelementer/textarea
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { TextArea } from '@entur/form';
+import { ImageIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  TextArea brukes når brukeren skal fylle ut lengre tekster, som et avsnitt
+  eller lenger
+</PageHeader>
+
+<Playground>
+  <div
+    style={{
+      display: 'grid',
+      rowGap: '1em',
+    }}
+  >
+    <TextArea placeholder="Suksess" variant="success" />
+    <TextArea placeholder="Feil" variant="error" resize={true} />
+    <TextArea placeholder="Info" variant="info" />
+  </div>
+</Playground>
+
+## Komponenter
+
+### TextArea
+
+<ImportStatement imports="TextArea" />
+<Props of={TextArea} />

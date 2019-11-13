@@ -94,7 +94,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
     } else {
       setExpanded(isActiveOrHasActiveDescendents);
     }
-  }, [forceExpandSubMenus]);
+  }, [forceExpandSubMenus, isActiveOrHasActiveDescendents]);
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) {

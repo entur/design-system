@@ -72,12 +72,15 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     delete timeoutIdRefs.current[id];
   }, []);
 
-  const addToast = React.useCallback((toast: AddToastPayload) => {
-    const id = createUniqueId();
-    const payload = createToast(toast, id);
-    dispatch({ type: 'ADD_TOAST', payload });
-    timeoutIdRefs.current[id] = setTimeout(() => removeToast(id), delay);
-  }, []);
+  const addToast = React.useCallback(
+    (toast: AddToastPayload) => {
+      const id = createUniqueId();
+      const payload = createToast(toast, id);
+      dispatch({ type: 'ADD_TOAST', payload });
+      timeoutIdRefs.current[id] = setTimeout(() => removeToast(id), delay);
+    },
+    [delay, removeToast],
+  );
 
   const handleMouseEnter = (toastId: ToastId) => () => {
     setHovering(toastId);
@@ -102,10 +105,13 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     handleMouseLeave();
   };
 
+  const contextValue = React.useMemo(
+    () => ({ toasts, addToast, removeToast }),
+    [addToast, removeToast, toasts],
+  );
+
   return (
-    <ToastContext.Provider
-      value={React.useMemo(() => ({ toasts, addToast, removeToast }), [toasts])}
-    >
+    <ToastContext.Provider value={contextValue}>
       {toasts.length > 0 && (
         <div className="eds-toast-container">
           {toasts.slice(0, 3).map(toastToShow => (

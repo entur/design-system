@@ -10,7 +10,7 @@ type CheckboxProps = {
   /** Label for checkboxen, som vises ved høyre side. */
   children?: React.ReactNode;
   [key: string]: any;
-} & React.HTMLProps<HTMLInputElement>;
+};
 
 export const Checkbox: React.RefForwardingComponent<
   HTMLInputElement,

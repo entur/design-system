@@ -3,8 +3,11 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
-    "build": "lerna run build",
-    "start": "cd docs && yarn start",
+    "build": "yarn build:packages && yarn build:docz",
+    "build:packages": "lerna run build",
+    "build:docz": "docz build",
+    "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
+    "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
@@ -13,7 +16,6 @@
     "lerna:publish": "lerna publish --conventional-commits"
   },
   "workspaces": [
-    "docs",
     "packages/alert",
     "packages/button",
     "packages/expand",
@@ -34,9 +36,18 @@
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
     "case": "^1.6.2",
     "commitizen": "^4.0.3",
     "cz-lerna-changelog": "^2.0.2",
+    "eslint": "^6.6.0",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.2.0",
     "firebase-tools": "^7.3.1",
     "husky": "^3.0.5",
     "inquirer": "^7.0.0",
@@ -67,5 +78,17 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
+    "classnames": "^2.2.6",
+    "copy-text-to-clipboard": "^2.1.1",
+    "docz": "^2.0.0-rc.73",
+    "gatsby-plugin-sass": "^2.1.20",
+    "match-sorter": "^4.0.2",
+    "node-sass": "^4.13.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-live": "^2.2.1",
+    "wcag-contrast": "^3.0.0"
+  }
 }

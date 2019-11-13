@@ -1,0 +1,48 @@
+---
+name: Tekstfelt
+route: /komponenter/skjemaelementer/textfield
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { TextField } from '@entur/form';
+import { ImageIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  TextField er en inputkomponent, for å ta imot tekst fra brukeren.
+</PageHeader>
+
+<Playground>
+  <div style={{ display: 'grid', rowGap: '1em' }}>
+    <TextField placeholder="Skriv her..." />
+    <TextField disabled placeholder="Disabled" />
+    <TextField variant="success" placeholder="Suksess" />
+    <TextField variant="error" placeholder="Feil" />
+    <TextField variant="none" placeholder="Søk..." />
+    <TextField
+      width="fluid"
+      placeholder="Bilde Fluid og ikon som prepend"
+      prepend={<ImageIcon inline />}
+    />
+    <div style={{ width: '15rem' }}>
+      <TextField
+        width="fluid"
+        placeholder="Kortere input med fluid"
+        prepend="Fra"
+        append="Kroner"
+      />
+    </div>
+  </div>
+</Playground>
+
+## Komponenter
+
+### TextField
+
+<ImportStatement imports="TextField" />
+<Props of={TextField} />

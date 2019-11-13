@@ -40,7 +40,7 @@ export const useExpandableGroup = ({
     if (defaultOpen) {
       setOpenId(id);
     }
-  }, [defaultOpen]);
+  }, [defaultOpen, id, setOpenId]);
   return {
     isOpen,
     toggle: () => setOpenId(isOpen ? null : id),
