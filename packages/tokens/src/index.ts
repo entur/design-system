@@ -31,7 +31,7 @@ export const colors = {
     blue80: '#ebebf1',
   },
   greys: {
-    grey: '#565659',
+    grey: '#949494',
     grey10: '#d1d3d3',
     grey20: '#e9e9e9',
     grey30: '#f3f3f3',
