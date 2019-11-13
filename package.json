@@ -9,6 +9,7 @@
     "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
     "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
+    "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
     "prepublishOnly": "yarn build && yarn lint && yarn test",
