@@ -1,12 +1,13 @@
 import React from 'react';
-import { BaseExpand } from './BaseExpand';
+import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
-import cx from 'classnames';
-import './ExpandablePanel.scss';
+import { BaseExpand } from './BaseExpand';
 import { useExpandableGroup } from './ExpandableGroup';
 import { useControllableProp } from './useControllableProp';
 import { useRandomId } from './useRandomId';
+
+import './ExpandablePanel.scss';
 
 type ExpandablePanelProps = {
   /** Teksten som skal stå i panelet */
@@ -24,6 +25,7 @@ type ExpandablePanelProps = {
 export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   title,
   children,
+  className,
   open,
   onToggle,
   defaultOpen = false,
@@ -39,27 +41,26 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   });
 
   return (
-    <div {...rest}>
+    <div className={classNames('eds-expandable-panel', className)} {...rest}>
       <button
         type="button"
-        className="eds-expandable-panel"
+        className="eds-expandable-panel__trigger"
         onClick={() => updater(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={randomId}
+        {...rest}
       >
-        <Heading4 as="span" className="eds-expandable-panel__title">
-          {title}
-        </Heading4>
+        <Heading4 as="span">{title}</Heading4>
 
         <DownArrowIcon
-          className={cx('eds-expandable-panel__chevron', {
-            'eds-expandable-panel__chevron--open': isOpen,
+          className={classNames('eds-expandable-panel__arrow', {
+            'eds-expandable-panel__arrow--open': isOpen,
           })}
         />
       </button>
 
       <BaseExpand
-        className="eds-expandable-content"
+        className="eds-expandable-panel__content"
         id={randomId}
         open={isOpen!}
       >

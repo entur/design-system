@@ -30,8 +30,10 @@
     "@entur/icons": "^0.4.0",
     "@entur/tokens": "^1.0.0",
     "@entur/typography": "^0.4.3",
-    "@types/react-collapse": "^4.0.2",
     "classnames": "^2.2.6",
     "react-collapse": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react-collapse": "^4.0.2"
   }
 }

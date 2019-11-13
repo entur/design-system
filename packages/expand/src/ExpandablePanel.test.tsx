@@ -11,37 +11,34 @@ test('BaseExpand works properly', () => {
 });
 
 test('Expandable is rendered, clicked, and opened', () => {
-  const children = 'This is the expanded content';
-  const title = 'ExpandPanel Tittel';
-  const testId = 'idForTestingExpandable';
-  const { getByText, getByTestId } = render(
-    <ExpandablePanel title={title} data-testid={testId}>
-      {children}
-    </ExpandablePanel>,
+  const { queryByText, getByRole } = render(
+    <ExpandablePanel title="Some title">expanded content</ExpandablePanel>,
   );
-  const expandable = getByTestId(testId);
-  fireEvent.click(expandable.firstElementChild!);
-  expect(getByText(children)).toContainHTML(children);
+
+  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  fireEvent.click(getByRole('button'));
+  expect(queryByText('expanded content')).toBeInTheDocument();
 });
 
 test('Controlled Expandable works properly', () => {
-  const children = 'This is the expanded content';
-  const title = 'ExpandPanel Tittel';
   const spy = jest.fn();
-  const testId = 'idForTestingControlledExpandable';
-  const open = false;
-  const { getByTestId } = render(
-    <ExpandablePanel
-      title={title}
-      onToggle={spy}
-      open={open}
-      data-testid={testId}
-    >
-      {children}
+  const { queryByText, getByRole, rerender } = render(
+    <ExpandablePanel title="Some title" onClick={spy} open={false}>
+      expanded content
     </ExpandablePanel>,
   );
 
-  const expandable = getByTestId(testId);
-  fireEvent.click(expandable.firstElementChild!);
-  expect(spy).toHaveBeenCalledTimes(1);
+  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  expect(spy).not.toHaveBeenCalled();
+
+  fireEvent.click(getByRole('button'));
+
+  expect(spy).toHaveBeenCalled();
+  rerender(
+    <ExpandablePanel title="Some title" onClick={spy} open={true}>
+      expanded content
+    </ExpandablePanel>,
+  );
+
+  expect(queryByText('expanded content')).toBeInTheDocument();
 });

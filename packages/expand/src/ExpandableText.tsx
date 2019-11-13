@@ -1,8 +1,10 @@
 import React from 'react';
-import { BaseExpand } from './BaseExpand';
+import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
-import cx from 'classnames';
+import { useRandomId } from './useRandomId';
+import { useControllableProp } from './useControllableProp';
+import { BaseExpand } from './BaseExpand';
 import './ExpandableText.scss';
 
 type ExpandableTextProps = {
@@ -26,38 +28,35 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   defaultOpen = false,
   ...rest
 }) => {
-  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-
-  const isControlled = open !== undefined;
-  const isOpen = isControlled ? open : internalOpen;
-  const updater = isControlled
-    ? onToggle
-    : () => setInternalOpen(!internalOpen);
-
-  const iconClass = cx('eds-expandable-text__chevron', {
-    'eds-expandable-text__chevron--open': isOpen,
+  const randomId = useRandomId('eds-expandable-text');
+  const [isOpen, updater] = useControllableProp({
+    defaultValue: defaultOpen,
+    prop: open,
+    updater: onToggle,
   });
-
-  const randIdRef = React.useRef(
-    'eds-expandable-text-' + String(Math.random()).substring(2),
-  );
 
   return (
     <>
       <button
-        className="eds-expandable-text"
+        className="eds-expandable-text__trigger"
         aria-expanded={isOpen}
-        aria-controls={randIdRef.current}
-        onClick={updater}
+        aria-controls={randomId}
+        onClick={() => updater(!isOpen)}
+        type="button"
         {...rest}
       >
-        <DownArrowIcon inline className={iconClass} />
+        <DownArrowIcon
+          inline
+          className={classNames('eds-expandable-text__arrow', {
+            'eds-expandable-text__arrow--open': isOpen,
+          })}
+        />
         <Heading4 as="span">{title}</Heading4>
       </button>
       <BaseExpand
-        className="eds-expandable-text-content"
-        id={randIdRef.current}
-        open={isOpen!}
+        className="eds-expandable-text__content"
+        id={randomId}
+        open={isOpen}
       >
         {children}
       </BaseExpand>

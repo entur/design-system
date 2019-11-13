@@ -1,9 +1,8 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-expandable-text {
+.eds-expandable-text__trigger {
   appearance: none;
   margin: 0;
-  padding: 0;
   border: none;
   padding: $space-small;
   cursor: pointer;
@@ -11,17 +10,21 @@
   color: inherit;
   background: inherit;
   font-size: inherit;
+
   &:hover {
     text-decoration: underline;
   }
-  &-content {
-    width: 100%;
-  }
-  &__chevron {
-    transition: ($timings-fast + $timings-fast) transform ease-out;
-    margin-right: 1em;
-    &--open {
-      transform: rotate(-180deg);
-    }
+}
+
+.eds-expandable-text__content {
+  width: 100%;
+  padding-left: $space-small;
+}
+
+.eds-expandable-text__arrow {
+  transition: ($timings-fast + $timings-fast) transform ease-out;
+  margin-right: 1em;
+  &--open {
+    transform: rotate(-180deg);
   }
 }

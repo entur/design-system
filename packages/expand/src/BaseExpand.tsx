@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { UnmountClosed } from 'react-collapse';
 
 type BaseExpandProps = {
