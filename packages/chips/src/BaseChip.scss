@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-chip {
+.eds-chip {
   background: $colors-blues-blue80;
   border: $border-widths-small solid $colors-blues-blue70;
   border-radius: 1rem;
@@ -9,9 +9,18 @@
   cursor: pointer;
   color: inherit;
   padding: 0 $space-small;
+  font-size: 0.875rem;
 
-  .entur-contrast & {
-    background: $colors-blues-blue20;
+  svg {
+    font-size: 1rem;
+  }
+
+  .eds-contrast & {
+    background-color: $colors-blues-blue20;
     border-color: transparent;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
   }
 }

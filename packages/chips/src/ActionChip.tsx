@@ -1,6 +1,6 @@
 import React from 'react';
 import { SubParagraph } from '@entur/typography';
-import './BaseChips.scss';
+import './BaseChip.scss';
 
 type ActionChipProps = {
   /** Teksten som står inne i chippen */
@@ -17,12 +17,12 @@ export const ActionChip: React.RefForwardingComponent<
   ({ children, className, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
     return (
       <button
-        className={`entur-chip ${className}`}
+        className={`eds-chip ${className}`}
         ref={ref}
         type="button"
         {...rest}
       >
-        <SubParagraph as="div">{children}</SubParagraph>
+        {children}
       </button>
     );
   },

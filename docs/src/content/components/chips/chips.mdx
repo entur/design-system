@@ -6,7 +6,7 @@ menu: Chips
 npmPackage: chips
 ---
 
-import { ActionChip, ChoiceChip } from '@entur/chips';
+import { ActionChip, ChoiceChip, ChoiceChipsGroup } from '@entur/chips';
 import '@entur/chips/dist/styles.css';
 import { Props } from 'docz';
 import { AddIcon, BellIcon, DepositionIcon, HeartIcon } from '@entur/icons';
@@ -17,12 +17,25 @@ import { ImportStatement } from 'src/components/ImportStatement';
 <PageHeader>Chips er godt, nam nam</PageHeader>
 
 <Playground>
-  <ActionChip>Klikk meg</ActionChip>
-  <ActionChip>Klikk meg</ActionChip>
-  <ActionChip>Klikk meg</ActionChip>
-<br/>
-  <ChoiceChip>Radio</ChoiceChip>
-  <ChoiceChip>Radio</ChoiceChip>
-  <ChoiceChip>Radio</ChoiceChip>
-
+  {() => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <>
+        <ActionChip>Klikk Meg</ActionChip>
+        <br />
+        <ChoiceChipsGroup
+          name="city"
+          label="Velg din hjemby"
+          onChange={e => setValue(e.target.value)}
+          value={value}
+        >
+          <ChoiceChip value="Oslo">Oslo</ChoiceChip>
+          <ChoiceChip value="Bergen">Bergen</ChoiceChip>
+          <ChoiceChip disabled value="Leknes">
+            Leknes
+          </ChoiceChip>
+        </ChoiceChipsGroup>
+      </>
+    );
+  }}
 </Playground>

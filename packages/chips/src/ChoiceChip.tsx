@@ -1,11 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
-import './BaseChips.scss';
-import './ChoiceChips.scss';
+import { useChoiceChipsGroupContext } from './ChoiceChipsGroupContext';
+import './BaseChip.scss';
+import './ChoiceChip.scss';
 
 type ChoiceChipProps = {
   /** Ekstra klassenavn */
   className?: string;
+  /** Om Choicechip er deaktivert eller ikke */
+  disabled?: boolean;
   /** Label til choicechippen. */
   children?: React.ReactNode;
   /** Verdien til choice chippen */
@@ -18,20 +21,27 @@ export const ChoiceChip: React.RefForwardingComponent<
   ChoiceChipProps
 > = React.forwardRef(
   (
-    { className, children, value, ...rest },
+    { className, children, value, disabled = false, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = cx(className, 'entur-chip', 'entur-choice-chip');
-    // const { name, value: selectedValue, onChange } = false;
+    const classList = cx(className, 'eds-chip', {
+      'eds-chip--disabled': disabled,
+    });
+    const {
+      name,
+      value: selectedValue,
+      onChange,
+    } = useChoiceChipsGroupContext();
     return (
-      <label className="entur-choice-chip">
+      <label className="eds-choice-chip">
         <input
           type="radio"
           name={name}
           ref={ref}
           value={value}
-          //   checked={selectedValue === value}
-          //   onChange={onChange}
+          disabled={disabled}
+          checked={selectedValue === value}
+          onChange={onChange}
           {...rest}
         />
         <div className={classList}>{children}</div>

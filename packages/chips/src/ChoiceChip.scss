@@ -1,0 +1,24 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-choice-chip {
+  cursor: pointer;
+  position: relative;
+  input {
+    position: absolute;
+    // appearance: none;
+    // height: 0;
+    // width: 0;
+    &:not(:checked) ~ .eds-chip {
+      background-color: transparent;
+    }
+    &:checked ~ .eds-chip {
+      background-color: inherit;
+    }
+  }
+  .eds-chip {
+    &--disabled {
+      color: $colors-blues-blue70;
+      cursor: not-allowed;
+    }
+  }
+}
