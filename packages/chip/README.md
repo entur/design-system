@@ -1,15 +1,15 @@
-# Chips
+# chip
 
-This package contains the different Chips components.
+This package contains the different chip components.
 
 > 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/)?
 
 ## Installation
 
 ```sh
-npm install @entur/chips
+npm install @entur/chip
 # or if you are using Yarn:
-yarn add @entur/chips
+yarn add @entur/chip
 ```
 
 ## Usage

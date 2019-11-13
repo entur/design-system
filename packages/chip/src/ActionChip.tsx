@@ -1,5 +1,4 @@
 import React from 'react';
-import { SubParagraph } from '@entur/typography';
 import './BaseChip.scss';
 
 type ActionChipProps = {

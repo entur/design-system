@@ -1,9 +1,9 @@
 {
-  "name": "@entur/chips",
+  "name": "@entur/chip",
   "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/chips.esm.js",
+  "module": "dist/chip.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/chips"
+    "directory": "packages/chip"
   },
   "publishConfig": {
     "access": "public"
