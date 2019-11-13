@@ -9,10 +9,9 @@
     "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
     "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
-    "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
-    "prepublishOnly": "yarn build && yarn test",
+    "prepublishOnly": "yarn build && yarn lint && yarn test",
     "lerna:publish": "lerna publish --conventional-commits"
   },
   "workspaces": [
@@ -75,6 +74,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
+      "pre-push": "yarn lint && yarn test",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
