@@ -2,7 +2,7 @@
 
 This package contains the different Expand components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout/expandablepanel)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout/expand)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/expand
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/layout/expandablepanel) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/layout/expand) for usage information.
