@@ -34,18 +34,18 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
     ? onToggle
     : () => setInternalOpen(!internalOpen);
 
-  const iconClass = cx('entur-expandable-text__chevron', {
-    'entur-expandable-text__chevron--open': isOpen,
+  const iconClass = cx('eds-expandable-text__chevron', {
+    'eds-expandable-text__chevron--open': isOpen,
   });
 
   const randIdRef = React.useRef(
-    'entur-expandable-text-' + String(Math.random()).substring(2),
+    'eds-expandable-text-' + String(Math.random()).substring(2),
   );
 
   return (
     <>
       <button
-        className="entur-expandable-text"
+        className="eds-expandable-text"
         aria-expanded={isOpen}
         aria-controls={randIdRef.current}
         onClick={updater}
@@ -55,7 +55,7 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
         <Heading4 as="span">{title}</Heading4>
       </button>
       <BaseExpand
-        className="entur-expandable-text-content"
+        className="eds-expandable-text-content"
         id={randIdRef.current}
         open={isOpen!}
       >
