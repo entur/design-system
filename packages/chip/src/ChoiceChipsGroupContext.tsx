@@ -16,7 +16,7 @@ export const useChoiceChipsGroupContext = () => {
   const context = React.useContext(ChoiceChipsGroupContext);
   if (!context) {
     throw new Error(
-      'You need to wrap your ChoiceChipsButtons in a ChoiceChipsGroup component',
+      'You need to wrap your ChoiceChips in a ChoiceChipsGroup component',
     );
   }
   return context;
