@@ -1,7 +1,7 @@
 ---
-name: ExpandablePanel
+name: Expandables
 parent: Komponenter
-route: /komponenter/layout/expandablepanel
+route: /komponenter/layout/expand
 menu: Layout og flater
 npmPackage: expand
 ---
@@ -12,7 +12,7 @@ import {
   BaseExpand,
   ExpandableText,
 } from '@entur/expand';
-import { Heading2 } from '@entur/typography';
+import { Heading2, Heading3, Paragraph } from '@entur/typography';
 
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
@@ -20,20 +20,28 @@ import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader>
-  Expandable er en rekke komponenter som brukes for å skjule innhold, som kan
+  Expandables er en rekke komponenter som brukes for å skjule innhold, som kan
   vises ved å klikke på komponenten.
 </PageHeader>
 
 <Playground>
-  <ExpandablePanel title="Om Entur">
-    I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å
-    reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor samler
-    vi reisedata fra alle kollektivselskap i landet.
-  </ExpandablePanel>
-  <ExpandablePanel title="Om Entur">
-    I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å
-    reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor samler
-    vi reisedata fra alle kollektivselskap i landet.
+  <ExpandablePanel title="Kollektivreisende">
+    <Heading3>
+      Planlegg hele reisen fra ett sted — uansett hvor du skal
+    </Heading3>
+    <Paragraph>
+      For de reisende tilbyr Entur en nasjonal reiseplanlegger, der man får oppdaterte reiseforslag for alle kollektivreiser i Norge. Denne løsningen er gratis å bruke og konkurransenøytral.
+    </Paragraph>
+
+    <Heading3>Én billett til hele reisen — på tvers av selskaper</Heading3>
+    <Paragraph>
+      Uansett om reisen består av flere delstrekninger, vil Entur gjøre det mulig å kjøpe billetter til hele reisen med ett tastetrykk. Dette gjelder selv om man må bytte mellom tog og buss, eller reise på tvers av fylkesgrenser.
+    </Paragraph>
+
+    <Heading3>Kollektivdata til alle — mulighetene er mange</Heading3>
+    <Paragraph>
+      I fremtiden vil flere og flere tilby reiseinformasjon som en del av sine tjenester. Blant annet bruker Google, Finn, Gule Sider og Bing data fra oss i dag.
+    </Paragraph>
   </ExpandablePanel>
 </Playground>
 
@@ -50,7 +58,7 @@ ExpandableLink skal heller brukes om man har et enkeltstående innhold man ønsk
 
 Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
 
-Her er noen eksempler:
+Her er et eksempel:
 
 <Playground>
   {() => {

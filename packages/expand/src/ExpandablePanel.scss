@@ -14,7 +14,6 @@
   align-items: center;
   cursor: pointer;
   color: inherit;
-  height: ($space-extra-large4 + $space-extra-small2);
   border-bottom: $border-widths-default solid $colors-brand-white;
 
   .eds-contrast & {
@@ -31,6 +30,8 @@
 
   &__title {
     user-select: none;
+    text-align: left;
+    word-break: break-word;
   }
   &__chevron {
     transition: ($timings-fast + $timings-fast) transform ease-out;
