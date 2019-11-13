@@ -14,9 +14,9 @@
   border-radius: $border-radiuses-default;
   color: $colors-brand-blue;
   display: flex;
-  max-width: 30rem;
   overflow: hidden;
   position: relative;
+  width: 100%;
 
   /* 
   We use pseudo elements to create the border design we need.
