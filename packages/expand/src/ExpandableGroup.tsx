@@ -30,17 +30,22 @@ export const useExpandableGroup = ({
   id,
   defaultOpen,
 }: UseExpandableGroupArgs) => {
-  const context = React.useContext(ExpandableGroupContext);
-  if (!context) {
-    return null;
-  }
-  const [openId, setOpenId] = context;
-  const isOpen = openId === id;
+  const contextValue = React.useContext(ExpandableGroupContext);
+  const isInsideExpandableGroup = !!contextValue;
+  const [openId, setOpenId] = contextValue || [-1, () => {}];
+
   React.useEffect(() => {
-    if (defaultOpen) {
+    if (defaultOpen && isInsideExpandableGroup) {
       setOpenId(id);
     }
-  }, [defaultOpen, id, setOpenId]);
+  }, [defaultOpen, id, setOpenId, isInsideExpandableGroup]);
+
+  if (!isInsideExpandableGroup) {
+    return null;
+  }
+
+  const isOpen = openId === id;
+
   return {
     isOpen,
     toggle: () => setOpenId(isOpen ? null : id),
