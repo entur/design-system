@@ -9,7 +9,7 @@ const svgrConfig = {
   },
   svgProps: {
     className:
-      '{"entur-icon " + (props.className ? props.className : "") + (props.inline ? " entur-icon--inline" : "")}',
+      '{"eds-icon " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}',
     inline: '{undefined}',
   },
   expandProps: 'start',
