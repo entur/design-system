@@ -40,6 +40,10 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
+  }
   svg {
     position: relative;
     top: 0.2em;
@@ -115,22 +119,25 @@ a.eds-button {
     }
   }
   &--variant-secondary {
-    background-color: $colors-brand-lavender;
+    background-color: $colors-brand-white;
+    border: $border-widths-default solid $colors-brand-lavender;
     color: $colors-brand-blue;
     &:hover {
-      background-color: tint($colors-brand-lavender, 10%);
+      background-color: $colors-brand-lavender;
     }
     &:active {
-      background-color: mix(black, $colors-brand-lavender, 10%);
+      background-color: shade($colors-brand-lavender, 10%);
+      border-color: shade($colors-brand-lavender, 10%);
     }
     .eds-contrast & {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-brand-blue;
       color: $colors-brand-white;
       &:hover {
-        background-color: tint($colors-blues-blue20, 10%);
+        background-color: $colors-blues-blue20;
       }
       &:active {
-        background-color: shade($colors-blues-blue20, 10%);
+        background: $colors-brand-lavender;
+        color: $colors-brand-blue;
       }
     }
   }
