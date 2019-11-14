@@ -106,7 +106,7 @@ a.eds-button {
         border-color: shade($colors-brand-lavender, 10%);
       }
       .eds-contrast & {
-        color: white;
+        color: $colors-brand-white;
         &:hover {
           background-color: $colors-blues-blue20;
         }
@@ -187,7 +187,7 @@ a.eds-button {
   height: 24px;
   border: $border-widths-large solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  border-right-color: white;
+  border-right-color: $colors-brand-white;
   animation: 1s infinite linear spin;
   position: absolute;
   left: 50%;
