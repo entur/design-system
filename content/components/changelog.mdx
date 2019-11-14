@@ -33,6 +33,7 @@ Se full changelog her: https://bitbucket.org/enturas/design-system/commits/f4745
 
 - Nå kan du bruke det nye designsystemet sammen med det gamle `@entur/component-library` i en overgangsperiode, uten å få CSS-konflikter. Vi har endret alle CSS-klassenavn til å starte med `eds` istedenfor `entur`, som gjør at vi unngår disse konfliktene. Merk at **dette kan være breaking** om du har lagt på style-overrides direkte på klassenavnene vi bruker. Dette er et pattern vi ikke anbefaler, og derfor heller ikke støtter. You have been warned!
 - Expandable panels støtter nå lange titler som brekker over flere linjer uten å se rare ut. I tillegg har vi lagt på litt padding så ting ser litt fjongere ut.
+- `@entur/expand` har også to nye komponenter - `ExpandableGroup` og `ExpandableText`. Førstnevnte er en måte å gruppere flere `ExpandablePanel`-er på, og sistnevnte er en mer lettvekts måte å lage ekspanderbare seksjoner på.
 - Skjemaelementer som TextField, Dropdown og TextArea fyller nå størrelsen til sine containere (vel, i alle fall horisontalt). Nå er det opp til deg å bestemme hvor brede de skal være!
 - Tokenen `colors.greys.grey` har endret fargen sin såvidt. Heldigvis har du brukt tokens overalt, sant? Hvis ikke kan du bytte ut fargen `#565659` med `#949494` med et globalt søk.
 
