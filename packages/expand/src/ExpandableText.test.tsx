@@ -1,39 +1,37 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+
 import { ExpandableText } from '.';
 
-test('ExpandableLink is rendered, clicked, and opened', () => {
-  const children = 'This is the expanded content';
-  const title = 'ExpandPanel Tittel';
-  const testId = 'idForTestingExpandable';
-  const { getByText, getByTestId } = render(
-    <ExpandableText title={title} data-testid={testId}>
-      {children}
-    </ExpandableText>,
+test('Expandable is rendered, clicked, and opened', () => {
+  const { queryByText, getByRole } = render(
+    <ExpandableText title="Some title">expanded content</ExpandableText>,
   );
-  const expandable = getByTestId(testId);
-  fireEvent.click(expandable.firstElementChild!);
-  expect(getByText(children)).toContainHTML(children);
+
+  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  fireEvent.click(getByRole('button'));
+  expect(queryByText('expanded content')).toBeInTheDocument();
 });
 
-test('Controlled ExpandableLink works properly', () => {
-  const children = 'This is the expanded content';
-  const title = 'ExpandPanel Tittel';
+test('Controlled Expandable works properly', () => {
   const spy = jest.fn();
-  const testId = 'idForTestingControlledExpandable';
-  const open = false;
-  const { getByTestId } = render(
-    <ExpandableText
-      title={title}
-      onToggle={spy}
-      open={open}
-      data-testid={testId}
-    >
-      {children}
+  const { queryByText, getByRole, rerender } = render(
+    <ExpandableText title="Some title" onClick={spy} open={false}>
+      expanded content
     </ExpandableText>,
   );
 
-  const expandable = getByTestId(testId);
-  fireEvent.click(expandable.firstElementChild!);
-  expect(spy).toHaveBeenCalledTimes(1);
+  expect(queryByText('expanded content')).not.toBeInTheDocument();
+  expect(spy).not.toHaveBeenCalled();
+
+  fireEvent.click(getByRole('button'));
+
+  expect(spy).toHaveBeenCalled();
+  rerender(
+    <ExpandableText title="Some title" onClick={spy} open={true}>
+      expanded content
+    </ExpandableText>,
+  );
+
+  expect(queryByText('expanded content')).toBeInTheDocument();
 });

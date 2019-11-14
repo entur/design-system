@@ -1,20 +1,29 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-expandable-panel {
+  & + & {
+    margin-top: $border-widths-default;
+  }
+}
+
+.eds-expandable-panel__trigger {
+  align-items: center;
   appearance: none;
-  margin: 0;
-  padding: 0 $space-large 0 $space-extra-large;
+  background: $colors-greys-grey20;
   border: none;
   border-radius: 0;
-  width: 100%;
-  font-size: inherit;
-  background: $colors-greys-grey20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
   color: inherit;
-  border-bottom: $border-widths-default solid $colors-brand-white;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: inherit;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 $space-large 0 $space-extra-large;
+  text-align: left;
+  user-select: none;
+  width: 100%;
+  word-break: break-word;
 
   .eds-contrast & {
     background: $colors-blues-blue20;
@@ -27,22 +36,21 @@
       background: $colors-blues-blue30;
     }
   }
+}
 
-  &__title {
-    user-select: none;
-    text-align: left;
-    word-break: break-word;
-  }
-  &__chevron {
-    transition: ($timings-fast + $timings-fast) transform ease-out;
-    &--open {
-      transform: rotate(-180deg);
-    }
+.eds-expandable-panel__arrow {
+  transition: ($timings-fast + $timings-fast) transform ease-out;
+  &--open {
+    transform: rotate(-180deg);
   }
 }
-.eds-expandable-content {
-  padding: $space-default;
+
+.eds-expandable-panel__content {
+  overflow: auto;
+  padding: $space-default $space-default $space-default $space-extra-large;
 }
+
+// Used to override react-collapse's default transition
 .ReactCollapse--collapse {
   transition: height $timings-slow ease-out;
 }
