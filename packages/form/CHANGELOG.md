@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.2...@entur/form@1.0.3) (2019-11-14)
+
+### Bug Fixes
+
+- make form controls expand to the size of its container ([df4ff54](https://bitbucket.org/enturas/design-system/commits/df4ff546d6911cedea21e025f3ff30f703cdcc18))
+- **checkbox:** change types to work with newest typescript ([090d933](https://bitbucket.org/enturas/design-system/commits/090d933b7b55ac6a5882e53e652d0e94c853c31f))
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.1...@entur/form@1.0.2) (2019-11-07)
 
 ### Bug Fixes

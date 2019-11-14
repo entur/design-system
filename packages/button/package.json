@@ -1,6 +1,6 @@
 {
   "name": "@entur/button",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/button.esm.js",
@@ -30,6 +30,6 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "@entur/tokens": "^1.0.0"
+    "@entur/tokens": "^1.0.1"
   }
 }

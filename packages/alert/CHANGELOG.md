@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.4.0...@entur/alert@0.4.1) (2019-11-14)
+
+### Bug Fixes
+
+- add missing dependencies to dependency arrays ([15f1e81](https://bitbucket.org/enturas/design-system/commits/15f1e81f5a3dfea3e60453195379d392e6d536a0))
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.3.1...@entur/alert@0.4.0) (2019-11-04)
 
 ### Features

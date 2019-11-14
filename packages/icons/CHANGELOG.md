@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.0...@entur/icons@0.4.1) (2019-11-14)
+
+### Bug Fixes
+
+- **class prefix:** fixing final class name prefixes ([bdcd590](https://bitbucket.org/enturas/design-system/commits/bdcd590407c0f3cc4a9cc02d294edcce6b106cc7))
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.3.0...@entur/icons@0.4.0) (2019-10-22)
 
 ### Bug Fixes

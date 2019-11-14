@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.0.1...@entur/tooltip@1.0.2) (2019-11-14)
+
+### Bug Fixes
+
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 ## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.0.0...@entur/tooltip@1.0.1) (2019-10-30)
 
 ### Bug Fixes

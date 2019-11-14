@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@0.2.2...@entur/expand@0.3.0) (2019-11-14)
+
+### Bug Fixes
+
+- fix a few padding issues ([017e79b](https://bitbucket.org/enturas/design-system/commits/017e79bf5df8ec38a2d791de2b8d9f9ea8fc0f5a))
+- **class prefix:** fixing final class name prefixes ([bdcd590](https://bitbucket.org/enturas/design-system/commits/bdcd590407c0f3cc4a9cc02d294edcce6b106cc7))
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+- **ExpandablePanel:** fix how paddings are applied ([0e3dd23](https://bitbucket.org/enturas/design-system/commits/0e3dd23f98e1365ca55f1abd1a01741dd00c9f0a))
+- **ExpandablePanel:** make expandable panels accept longer titles ([85a3329](https://bitbucket.org/enturas/design-system/commits/85a3329e7de390014182354786e3c01908131735))
+- add missing dependencies to dependency arrays ([15f1e81](https://bitbucket.org/enturas/design-system/commits/15f1e81f5a3dfea3e60453195379d392e6d536a0))
+- fix lint errors ([8539282](https://bitbucket.org/enturas/design-system/commits/8539282c04b01cc1459109cbc9c4111dfcdaa5f4))
+
+### Features
+
+- **ExpandableGroup:** add new component ExpandableGroup ([d070846](https://bitbucket.org/enturas/design-system/commits/d0708469b26de68237a0d6a139cd77ad86c60959))
+- **ExpandableLink:** adding ExpandableLink as its own component ([03bea1f](https://bitbucket.org/enturas/design-system/commits/03bea1f37a6febc558c79501c0b149868881471a))
+
 ## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/expand@0.2.1...@entur/expand@0.2.2) (2019-11-07)
 
 ### Bug Fixes

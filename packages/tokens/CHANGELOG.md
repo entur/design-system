@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.0.0...@entur/tokens@1.0.1) (2019-11-14)
+
+### Bug Fixes
+
+- change the color of colors.greys.grey ([9e9cf17](https://bitbucket.org/enturas/design-system/commits/9e9cf1720b00ffe54cfc2c800335034c5c3e637c))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@0.2.0...@entur/tokens@1.0.0) (2019-10-30)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.3.0...@entur/layout@0.3.1) (2019-11-14)
+
+### Bug Fixes
+
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.2.2...@entur/layout@0.3.0) (2019-11-07)
 
 ### Features

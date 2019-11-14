@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.4.1...@entur/menu@0.4.2) (2019-11-14)
+
+### Bug Fixes
+
+- **docs:** fix bug in sidebar for when the menu prop is a string ([ea2f2d9](https://bitbucket.org/enturas/design-system/commits/ea2f2d987f8fee90b6af40c94953dc773f9eaccf))
+- add missing dependencies to dependency arrays ([15f1e81](https://bitbucket.org/enturas/design-system/commits/15f1e81f5a3dfea3e60453195379d392e6d536a0))
+- **css classnames:** fixing naming collisions with CSS classes ([a93ca43](https://bitbucket.org/enturas/design-system/commits/a93ca435d3a01d61d8f02694a672686b9e943a66))
+
 ## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.4.0...@entur/menu@0.4.1) (2019-11-07)
 
 **Note:** Version bump only for package @entur/menu
