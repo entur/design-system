@@ -18,6 +18,10 @@
   @return mix(black, $color, $percentage);
 }
 
+a.eds-button {
+  padding: 0.5rem 0;
+}
+
 .eds-button {
   min-width: 9.5rem; //width 152-border
   border: $border-widths-default solid transparent;
