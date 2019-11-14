@@ -25,7 +25,7 @@ a.eds-button {
 .eds-button {
   min-width: 9.5rem; //width 152-border
   border: $border-widths-default solid transparent;
-  border-radius: $border-radiuses-default;
+  border-radius: $border-radiuses-medium;
   font-size: inherit;
   cursor: pointer;
   display: inline-block;
