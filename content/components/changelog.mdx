@@ -11,6 +11,31 @@ import PageHeader from '~/components/PageHeader';
   en oppsummering av hva som har blitt lansert
 </PageHeader>
 
+### 2019-11-14
+
+- [@entur/alert@0.4.1](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@1.0.3](https://www.npmjs.com/package/@entur/button)
+- [@entur/expand@0.3.0](https://www.npmjs.com/package/@entur/expand)
+- [@entur/form@1.0.3](https://www.npmjs.com/package/@entur/form)
+- [@entur/icons@0.4.1](https://www.npmjs.com/package/@entur/icons)
+- [@entur/layout@0.3.1](https://www.npmjs.com/package/@entur/layout)
+- [@entur/loader@0.2.2](https://www.npmjs.com/package/@entur/loader)
+- [@entur/menu@0.4.2](https://www.npmjs.com/package/@entur/menu)
+- [@entur/modal@0.2.1](https://www.npmjs.com/package/@entur/modal)
+- [@entur/table@0.3.1](https://www.npmjs.com/package/@entur/table)
+- [@entur/tokens@1.0.1](https://www.npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.0.2](https://www.npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.4.4](https://www.npmjs.com/package/@entur/typography)
+
+Se full changelog her: https://bitbucket.org/enturas/design-system/commits/f474568d4572a715c5800781e34d42999d7c22ba
+
+**TL;DR:**
+
+- Nå kan du bruke det nye designsystemet sammen med det gamle `@entur/component-library` i en overgangsperiode, uten å få CSS-konflikter. Vi har endret alle CSS-klassenavn til å starte med `eds` istedenfor `entur`, som gjør at vi unngår disse konfliktene. Merk at **dette kan være breaking** om du har lagt på style-overrides direkte på klassenavnene vi bruker. Dette er et pattern vi ikke anbefaler, og derfor heller ikke støtter. You have been warned!
+- Expandable panels støtter nå lange titler som brekker over flere linjer uten å se rare ut. I tillegg har vi lagt på litt padding så ting ser litt fjongere ut.
+- Skjemaelementer som TextField, Dropdown og TextArea fyller nå størrelsen til sine containere (vel, i alle fall horisontalt). Nå er det opp til deg å bestemme hvor brede de skal være!
+- Tokenen `colors.greys.grey` har endret fargen sin såvidt. Heldigvis har du brukt tokens overalt, sant? Hvis ikke kan du bytte ut fargen `#565659` med `#949494` med et globalt søk.
+
 ### 2019-11-07
 
 - [@entur/expand@0.2.2](https://www.npmjs.com/package/@entur/expand)
