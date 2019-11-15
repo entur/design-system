@@ -10,6 +10,8 @@ type DropdownProps = {
   variant?: VariantType;
   /** For å deaktivere dropdownen */
   disabled?: boolean;
+  /** Setter dropdownen i read-only modus */
+  readOnly?: boolean;
   /** Den valgte verdien */
   value: string;
   /** En callback for endringer av value */
@@ -25,6 +27,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   className,
   variant,
   disabled = false,
+  readOnly = false,
   children,
   prepend,
   style,
@@ -34,8 +37,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <BaseFormControl
       dark={true}
       disabled={disabled}
+      readOnly={readOnly}
       prepend={prepend}
-      append={<DownArrowIcon inline={true} />}
+      append={disabled || readOnly ? null : <DownArrowIcon inline={true} />}
       variant={variant}
       className={className}
       style={style}
@@ -43,7 +47,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <select
         aria-invalid={variant === 'error'}
         className="eds-form-control"
-        disabled={disabled}
+        disabled={disabled || readOnly}
         {...rest}
       >
         {children}

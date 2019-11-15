@@ -69,6 +69,16 @@
     }
   }
 
+  &--readonly {
+    pointer-events: none;
+    cursor: default;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
   // Validation modes changes the border colors
   &--success {
     --border-color: #{$colors-validation-mint};

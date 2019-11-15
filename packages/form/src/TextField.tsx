@@ -11,8 +11,10 @@ type TextFieldProps = {
   className?: string;
   /** Hvilken valideringsfarge som vises */
   variant?: VariantType;
-  /** Deaktiver tekstfeltet */
+  /** Deaktiver inputfeltet */
   disabled?: boolean;
+  /** Setter inputfeltet i read-only modus */
+  readOnly?: boolean;
   [key: string]: any;
 };
 
@@ -21,12 +23,22 @@ export const TextField: React.RefForwardingComponent<
   TextFieldProps
 > = React.forwardRef(
   (
-    { prepend, append, variant, disabled = false, className, style, ...rest },
+    {
+      prepend,
+      append,
+      variant,
+      disabled = false,
+      readOnly = false,
+      className,
+      style,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     return (
       <BaseFormControl
         disabled={disabled}
+        readOnly={readOnly}
         variant={variant}
         prepend={prepend}
         append={append}
@@ -37,6 +49,7 @@ export const TextField: React.RefForwardingComponent<
           aria-invalid={variant === 'error'}
           className="eds-form-control"
           disabled={disabled}
+          readOnly={readOnly}
           ref={ref}
           {...rest}
         />

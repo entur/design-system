@@ -13,6 +13,8 @@ type Props = {
   dark?: boolean;
   /** Sett til true om skjema-elementet er disabled */
   disabled?: boolean;
+  /** Sett til true om skjema-elementet er i read-only modus */
+  readOnly?: boolean;
   /** Tekst eller ikon som vises foran skjema-elementet */
   prepend?: React.ReactNode;
   /** Tekst eller ikon som vises etter skjema-elementet */
@@ -27,6 +29,7 @@ export const BaseFormControl: React.FC<Props> = ({
   className,
   dark = false,
   disabled = false,
+  readOnly = false,
   variant,
   prepend,
   append,
@@ -41,6 +44,7 @@ export const BaseFormControl: React.FC<Props> = ({
         'eds-form-control-wrapper--error': currentVariant === 'error',
         'eds-form-control-wrapper--dark': dark,
         'eds-form-control-wrapper--disabled': disabled,
+        'eds-form-control-wrapper--readonly': readOnly,
       })}
       {...rest}
     >
