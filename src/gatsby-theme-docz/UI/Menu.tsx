@@ -1,33 +1,20 @@
 import React from 'react';
 import { Link } from 'docz';
-import classNames from 'classnames';
+import { Location } from '@reach/router';
 import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
+import { NavBarItem } from '@entur/menu';
 import './Menu.scss';
-
-const getLinkProps = ({ isPartiallyCurrent }: any) => ({
-  className: classNames('tab-link', {
-    'active-tab-link': isPartiallyCurrent,
-  }),
-});
 
 export default function Menus() {
   return (
     <>
       <nav className="site-navbar">
         <div className="tab-link-container">
-          <Link to="/kom-i-gang" getProps={getLinkProps}>
-            Kom i gang
-          </Link>
-          <Link to="/design-prinsipper" getProps={getLinkProps}>
-            Designprinsipper
-          </Link>
-          <Link to="/visuell-identitet" getProps={getLinkProps}>
-            Visuell Identitet
-          </Link>
-          <Link to="/komponenter" getProps={getLinkProps}>
-            Komponenter
-          </Link>
+          <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+          <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
+          <NavItem to="/visuell-identitet">Visuell Identitet</NavItem>
+          <NavItem to="/komponenter">Komponenter</NavItem>
         </div>
       </nav>
       <SiteSidebar />
@@ -37,3 +24,24 @@ export default function Menus() {
     </>
   );
 }
+
+type NavItemProps = {
+  to: string;
+  children: React.ReactNode;
+  [key: string]: any;
+};
+const NavItem: React.FC<NavItemProps> = props => {
+  return (
+    <Location>
+      {({ location }) => (
+        <NavBarItem
+          as={Link}
+          to={props.to}
+          active={location.pathname.startsWith(props.to)}
+        >
+          {props.children}
+        </NavBarItem>
+      )}
+    </Location>
+  );
+};
