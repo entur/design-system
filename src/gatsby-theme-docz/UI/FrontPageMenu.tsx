@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'docz';
-<<<<<<< HEAD:src/gatsby-theme-docz/UI/FrontPageMenu.tsx
-import LogoDark from '~/components/logoDark.svg';
-=======
 import { NavBarItem } from '@entur/menu';
-import LogoDark from 'src/components/logoDark.svg';
->>>>>>> fix(NavBarItem): proper usage of navbaritem in docs:docs/src/gatsby-theme-docz/UI/FrontPageMenu.tsx
+import LogoDark from '~/components/logoDark.svg';
 import './FrontPageMenu.scss';
 
 function FrontPageMenu() {

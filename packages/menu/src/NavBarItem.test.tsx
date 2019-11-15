@@ -20,7 +20,7 @@ test('Renders a navbaritem with additional classes, and working selected attribu
 
   fireEvent.click(trigger);
   expect(spy).toHaveBeenCalledTimes(1);
-  expect(trigger).not.toHaveClass('entur-navbar-item--active');
+  expect(trigger).not.toHaveClass('eds-navbar-item--active');
   expect(trigger).toHaveClass('additionalClass');
   rerender(
     <NavBarItem
@@ -33,5 +33,5 @@ test('Renders a navbaritem with additional classes, and working selected attribu
     </NavBarItem>,
   );
 
-  expect(trigger).toHaveClass('entur-navbar-item--active');
+  expect(trigger).toHaveClass('eds-navbar-item--active');
 });

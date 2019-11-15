@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'docz';
-import { TocNavigation } from 'src/components/TocNavigation';
-import { SiteSidebar } from 'src/components/SiteSidebar';
+import { TocNavigation } from '~/components/TocNavigation';
+import { SiteSidebar } from '~/components/SiteSidebar';
 import { NavBarItem } from '@entur/menu';
 import './Menu.scss';
 
