@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'docz';
+import { Location } from '@reach/router';
 import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
 import { NavBarItem } from '@entur/menu';
@@ -25,22 +26,22 @@ export default function Menus() {
 }
 
 type NavItemProps = {
+  to: string;
   children: React.ReactNode;
   [key: string]: any;
 };
-const NavItem: React.FC<NavItemProps> = ({ children, ...rest }) => {
-  const [selected, setSelected] = React.useState(false);
+const NavItem: React.FC<NavItemProps> = props => {
   return (
-    <NavBarItem
-      as={Link}
-      selected={selected}
-      getProps={({ isPartiallyCurrent }: any) => {
-        console.log('Kjøres');
-        setSelected(isPartiallyCurrent);
-      }}
-      {...rest}
-    >
-      {children}
-    </NavBarItem>
+    <Location>
+      {({ location }) => (
+        <NavBarItem
+          as={Link}
+          to={props.to}
+          selected={location.pathname.startsWith(props.to)}
+        >
+          {props.children}
+        </NavBarItem>
+      )}
+    </Location>
   );
 };
