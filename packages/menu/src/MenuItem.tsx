@@ -68,6 +68,7 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
 
 const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   active = false,
+  as, // Ignored. Always overridden to button
   children,
   className,
   disabled,
