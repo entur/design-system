@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type Props = {
+type StrongTextProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
@@ -11,7 +11,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const StrongText: React.FC<Props> = ({
+export const StrongText: React.FC<StrongTextProps> = ({
   as: Element = 'strong',
   className,
   ...rest
