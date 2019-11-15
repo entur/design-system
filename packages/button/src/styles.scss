@@ -18,10 +18,14 @@
   @return mix(black, $color, $percentage);
 }
 
+a.eds-button {
+  padding: 0.5rem 0;
+}
+
 .eds-button {
   min-width: 9.5rem; //width 152-border
   border: $border-widths-default solid transparent;
-  border-radius: $border-radiuses-default;
+  border-radius: $border-radiuses-medium;
   font-size: inherit;
   cursor: pointer;
   display: inline-block;
@@ -36,6 +40,10 @@
   font-family: inherit;
   position: relative;
   vertical-align: top;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
+  }
   svg {
     position: relative;
     top: 0.2em;
@@ -85,24 +93,51 @@
         background-color: shade($colors-brand-lavender, 10%);
       }
     }
-  }
-  &--variant-secondary {
-    background-color: $colors-brand-lavender;
-    color: $colors-brand-blue;
-    &:hover {
-      background-color: tint($colors-brand-lavender, 10%);
-    }
-    &:active {
-      background-color: mix(black, $colors-brand-lavender, 10%);
-    }
-    .eds-contrast & {
-      background-color: $colors-blues-blue20;
-      color: $colors-brand-white;
+    &.eds-button--width-square {
+      background-color: transparent;
+      border: solid $border-widths-default $colors-brand-lavender;
+      color: $colors-brand-blue;
       &:hover {
-        background-color: tint($colors-blues-blue20, 10%);
+        background-color: tint($colors-brand-lavender, 10%);
+        border-color: tint($colors-brand-lavender, 10%);
       }
       &:active {
-        background-color: shade($colors-blues-blue20, 10%);
+        background-color: shade($colors-brand-lavender, 10%);
+        border-color: shade($colors-brand-lavender, 10%);
+      }
+      .eds-contrast & {
+        color: $colors-brand-white;
+        &:hover {
+          background-color: $colors-blues-blue20;
+        }
+        &:active {
+          background-color: $colors-brand-lavender;
+          border-color: $colors-brand-lavender;
+          color: $colors-brand-blue;
+        }
+      }
+    }
+  }
+  &--variant-secondary {
+    background-color: $colors-brand-white;
+    border: $border-widths-default solid $colors-brand-lavender;
+    color: $colors-brand-blue;
+    &:hover {
+      background-color: $colors-brand-lavender;
+    }
+    &:active {
+      background-color: shade($colors-brand-lavender, 10%);
+      border-color: shade($colors-brand-lavender, 10%);
+    }
+    .eds-contrast & {
+      background-color: $colors-brand-blue;
+      color: $colors-brand-white;
+      &:hover {
+        background-color: $colors-blues-blue20;
+      }
+      &:active {
+        background: $colors-brand-lavender;
+        color: $colors-brand-blue;
       }
     }
   }
@@ -152,7 +187,7 @@
   height: 24px;
   border: $border-widths-large solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  border-right-color: white;
+  border-right-color: $colors-brand-white;
   animation: 1s infinite linear spin;
   position: absolute;
   left: 50%;
