@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropsComponentProps } from 'docz';
-import { CodeText } from '@entur/typography';
+import { CodeText, Paragraph } from '@entur/typography';
 import { CheckIcon } from '@entur/icons';
 import {
   Table,
@@ -37,38 +37,42 @@ const Props: React.FC<PropsProps> = ({
       title={title}
       defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
     >
-      <Table fixed={true}>
-        <TableHead>
-          <TableRow>
-            <HeaderCell>Navn</HeaderCell>
-            <HeaderCell>Type</HeaderCell>
-            <HeaderCell>Påkrevd?</HeaderCell>
-            {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
-            <HeaderCell>Beskrivelse</HeaderCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {Object.entries(props).map(([propName, details]) => (
-            <TableRow key={propName}>
-              <DataCell>
-                <CodeText>{propName}</CodeText>
-              </DataCell>
-              <DataCell>
-                <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
-              </DataCell>
-              <DataCell>{details.required && <CheckIcon />}</DataCell>
-              {hasAnyDefaultValues && (
-                <DataCell>
-                  {details.defaultValue ? (
-                    <CodeText>{String(details.defaultValue.value)}</CodeText>
-                  ) : null}
-                </DataCell>
-              )}
-              <DataCell>{details.description}</DataCell>
+      {Object.keys(props).length > 0 ? (
+        <Table fixed={true}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Type</HeaderCell>
+              <HeaderCell>Påkrevd?</HeaderCell>
+              {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
+              <HeaderCell>Beskrivelse</HeaderCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {Object.entries(props).map(([propName, details]) => (
+              <TableRow key={propName}>
+                <DataCell>
+                  <CodeText>{propName}</CodeText>
+                </DataCell>
+                <DataCell>
+                  <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
+                </DataCell>
+                <DataCell>{details.required && <CheckIcon />}</DataCell>
+                {hasAnyDefaultValues && (
+                  <DataCell>
+                    {details.defaultValue ? (
+                      <CodeText>{String(details.defaultValue.value)}</CodeText>
+                    ) : null}
+                  </DataCell>
+                )}
+                <DataCell>{details.description}</DataCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <Paragraph>Denne komponenten har ingen props</Paragraph>
+      )}
     </ExpandableText>
   );
 };
