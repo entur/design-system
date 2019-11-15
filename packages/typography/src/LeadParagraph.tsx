@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type Props = {
+type LeadParagraphProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
@@ -11,7 +11,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const LeadParagraph: React.FC<Props> = ({
+export const LeadParagraph: React.FC<LeadParagraphProps> = ({
   as: Element = 'p',
   className,
   ...rest

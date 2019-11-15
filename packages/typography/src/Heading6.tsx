@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type Props = {
+type Heading6Props = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
@@ -11,7 +11,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const Heading6: React.FC<Props> = ({
+export const Heading6: React.FC<Heading6Props> = ({
   as: Element = 'h6',
   className,
   ...rest
