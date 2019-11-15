@@ -1,6 +1,5 @@
 import React, { MouseEvent } from 'react';
 import classNames from 'classnames';
-import { Menu } from './Menu';
 
 function isActiveRecursively(child: any): boolean {
   if (!child.props) {
@@ -78,7 +77,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
 }) => {
   const childrenArray = React.Children.toArray(children);
   const subMenu = childrenArray.find(
-    (child: any) => child && child.type === Menu,
+    (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
   );
   const label = childrenArray.filter((child: any) => child !== subMenu);
   const isActiveOrHasActiveDescendents = isActiveRecursively({
