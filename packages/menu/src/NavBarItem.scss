@@ -1,12 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.entur-navbar-item {
-  --active-item: 0;
+.eds-navbar-item {
+  --show-active-line: 0;
 
   display: inline-block;
   cursor: pointer;
-  font-size: inherit;
-  font-weight: inherit;
   color: inherit;
   text-decoration: none;
   position: relative;
@@ -14,11 +12,14 @@
   min-width: 5rem;
   width: fit-content;
   text-align: center;
+  font-family: inherit;
+  font-size: $font-sizes-large;
+  font-weight: $font-weights-heading;
   div {
     margin: 0;
   }
   &--active {
-    --active-item: 1;
+    --show-active-line: 1;
   }
   &::after {
     content: '';
@@ -28,7 +29,7 @@
     width: $space-extra-large;
     background: transparent;
     margin: 0 auto;
-    opacity: var(--active-item);
+    opacity: var(--show-active-line);
     background: $colors-brand-coral;
   }
 }

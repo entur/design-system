@@ -1,5 +1,4 @@
 import React from 'react';
-import { Heading4 } from '@entur/typography';
 import classNames from 'classnames';
 import './NavBarItem.scss';
 
@@ -21,13 +20,13 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
   return (
     <Element
       className={classNames([
-        'entur-navbar-item',
+        'eds-navbar-item',
         className,
-        { 'entur-navbar-item--active': selected },
+        { 'eds-navbar-item--active': selected },
       ])}
       {...rest}
     >
-      <Heading4 as="div">{children}</Heading4>
+      {children}
     </Element>
   );
 };
