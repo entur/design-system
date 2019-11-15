@@ -37,7 +37,7 @@ const NavItem: React.FC<NavItemProps> = props => {
         <NavBarItem
           as={Link}
           to={props.to}
-          selected={location.pathname.startsWith(props.to)}
+          active={location.pathname.startsWith(props.to)}
         >
           {props.children}
         </NavBarItem>

@@ -10,7 +10,7 @@ test('Renders a navbaritem with additional classes, and working selected attribu
     <NavBarItem
       className="additionalClass"
       data-testid="testid"
-      selected={tester}
+      active={tester}
       onClick={spy}
     >
       Click me
@@ -26,7 +26,7 @@ test('Renders a navbaritem with additional classes, and working selected attribu
     <NavBarItem
       className="additional class"
       data-testid="testid"
-      selected={true}
+      active={true}
       onClick={spy}
     >
       Click me

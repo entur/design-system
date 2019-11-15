@@ -3,15 +3,19 @@ import classNames from 'classnames';
 import './NavBarItem.scss';
 
 type NavBarItemProps = {
-  selected?: boolean;
+  /** Om komponenten vises som valgt eller ikke */
+  active?: boolean;
+  /** Tekste som vises */
   children: React.ReactNode;
+  /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: 'a' | React.ElementType;
+  /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
 };
 
 export const NavBarItem: React.FC<NavBarItemProps> = ({
-  selected = false,
+  active = false,
   children,
   as: Element = 'a',
   className,
@@ -22,7 +26,7 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
       className={classNames([
         'eds-navbar-item',
         className,
-        { 'eds-navbar-item--active': selected },
+        { 'eds-navbar-item--active': active },
       ])}
       {...rest}
     >
