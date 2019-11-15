@@ -2,7 +2,6 @@
 name: Chips
 route: /komponenter/chips
 parent: Komponenter
-menu: Skjemaelementer
 npmPackage: chip
 ---
 
@@ -12,14 +11,35 @@ import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 
-<PageHeader> Chips namananmanm</PageHeader>
-<ChoiceChipsGroup
-name="city"
-label="Velg din hjemby"
-onChange={() => "Oslo"}
-value={"Oslo"}
->
-<ChoiceChip value="Oslo">Oslo</ChoiceChip>
-<ChoiceChip value="Bergen">Bergen</ChoiceChip>
-<ChoiceChip value="Leknes">Leknes</ChoiceChip>
-</ChoiceChipsGroup>
+<PageHeader> Chips er en komponent for å gjøre mindre handlinger, relatert til hovedflyten. </PageHeader>
+
+<Playground>
+  {() => {  
+    const [value, setValue] = React.useState(null);
+    return(
+      <>
+        <ChoiceChipsGroup
+          name="city"
+          label="Velg din hjemby"
+          onChange={e => setValue(e.target.value)}
+          value={value}
+        >
+          <ChoiceChip value="Oslo">Oslo</ChoiceChip>
+          <ChoiceChip value="Bergen">Bergen</ChoiceChip>
+          <ChoiceChip value="Leknes">Leknes</ChoiceChip>
+        </ChoiceChipsGroup>
+        <br/>
+        <br/>
+        <ActionChip>Klikk meg</ActionChip> 
+      <>
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### ActionChip
+
+<ImportStatement imports="ActionChip" />
+<Props of={ActionChip} />
+
