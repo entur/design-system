@@ -114,6 +114,7 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
         onClick={handleClick}
         disabled={disabled}
         aria-expanded={isExpanded}
+        type="button"
         {...rest}
       >
         {label}
