@@ -95,14 +95,18 @@ html {
     line-height: $line-heights-extra-large;
   }
 }
-.eds-h5,
-.eds-h6 {
+.eds-h5 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
   @include for-desktop {
     line-height: $line-heights-large;
   }
+}
+
+.eds-h6 {
+  font-size: $font-sizes-small;
+  line-height: $line-heights-medium;
 }
 
 // Body text and inline element styling
