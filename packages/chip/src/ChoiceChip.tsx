@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { useChoiceChipsGroupContext } from './ChoiceChipsGroupContext';
+import { useChoiceChipGroupContext } from './ChoiceChipGroupContext';
 import './BaseChip.scss';
 import './ChoiceChip.scss';
 
@@ -9,9 +9,9 @@ type ChoiceChipProps = {
   className?: string;
   /** Om Choicechip er deaktivert eller ikke */
   disabled?: boolean;
-  /** Label til choicechippen. */
+  /** Label til ChoiceChip */
   children?: React.ReactNode;
-  /** Verdien til choice chippen */
+  /** Verdien til ChoiceChip */
   value: string;
   [key: string]: any;
 };
@@ -31,7 +31,7 @@ export const ChoiceChip: React.RefForwardingComponent<
       name,
       value: selectedValue,
       onChange,
-    } = useChoiceChipsGroupContext();
+    } = useChoiceChipGroupContext();
     return (
       <label className="eds-choice-chip">
         <input
