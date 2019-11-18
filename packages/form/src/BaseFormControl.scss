@@ -46,6 +46,10 @@
   &:hover::after {
     border-bottom-color: var(--border-color-hover);
   }
+  .eds-contrast &:hover::before {
+    border-color: var(--border-color-hover);
+  }
+
   &:focus-within {
     &::before,
     &::after {
@@ -109,6 +113,10 @@
 
       &:hover {
         background-color: $colors-blues-blue30;
+
+        &::before {
+          border-color: transparent;
+        }
       }
 
       * {
