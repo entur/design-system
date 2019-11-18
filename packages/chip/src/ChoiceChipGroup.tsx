@@ -4,8 +4,6 @@ import './ChoiceChip.scss';
 type ChoiceChipGroupProps = {
   /** Navnet til ChoiceChipsGroup */
   name: string;
-  /** Overskrift over ChoiceChipsGroup */
-  label?: string;
   /** Verdien til den valgte ChoiceChipen */
   value: string;
   /** ChoiceChip-komponentene sendes inn som children */

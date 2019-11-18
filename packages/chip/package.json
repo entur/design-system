@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@entur/tokens": "^1.0.0",
-    "@entur/typography": "^0.4.3",
     "classnames": "^2.2.6"
   }
 }
