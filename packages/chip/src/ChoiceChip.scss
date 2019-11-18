@@ -15,48 +15,46 @@
   min-width: 8rem;
   position: relative;
   transition: all $timings-fast ease-out;
-  input {
+  &__input {
     appearance: none;
     height: 0;
     position: absolute;
     width: 0;
-    &:not(:disabled) {
-      ~ .eds-chip {
-        background-color: transparent;
-        .eds-contrast & {
-          border-color: $colors-brand-lavender;
-          color: $colors-brand-white;
-        }
-      }
-      &:checked ~ .eds-chip {
-        background-color: $colors-blues-blue80;
-        .eds-contrast & {
-          background-color: $colors-brand-lavender;
-          color: $colors-brand-blue;
-        }
-      }
-      &:focus ~ .eds-chip {
-        box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
-      }
-      &:not(:checked):hover ~ .eds-chip {
+    ~ .eds-chip {
+      background-color: transparent;
+      .eds-contrast & {
         border-color: $colors-brand-lavender;
-        .eds-contrast & {
-          border-color: $colors-brand-white;
-        }
+        color: $colors-brand-white;
       }
-      &:hover:checked ~ .eds-chip {
-        background-color: tint($colors-blues-blue80, 10);
-        .eds-contrast & {
-          background-color: tint($colors-brand-lavender, 10);
-          border-color: tint($colors-brand-lavender, 10);
-        }
+    }
+    &:checked ~ .eds-chip {
+      background-color: $colors-blues-blue80;
+      .eds-contrast & {
+        background-color: $colors-brand-lavender;
+        color: $colors-brand-blue;
       }
-      &:active ~ .eds-chip {
-        background-color: $colors-blues-blue70;
-        border-color: $colors-blues-blue70;
-        .eds-contrast & {
-          background: shade($colors-blues-blue80, 10);
-        }
+    }
+    &:focus ~ .eds-chip {
+      box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
+    }
+    &:not(:checked):hover ~ .eds-chip {
+      border-color: $colors-brand-lavender;
+      .eds-contrast & {
+        border-color: $colors-brand-white;
+      }
+    }
+    &:hover:checked ~ .eds-chip {
+      background-color: tint($colors-blues-blue80, 10);
+      .eds-contrast & {
+        background-color: tint($colors-brand-lavender, 10);
+        border-color: tint($colors-brand-lavender, 10);
+      }
+    }
+    &:active ~ .eds-chip {
+      background-color: $colors-blues-blue70;
+      border-color: $colors-blues-blue70;
+      .eds-contrast & {
+        background: shade($colors-blues-blue80, 10);
       }
     }
   }
@@ -67,6 +65,7 @@
       border-style: dashed;
       color: $colors-blues-blue70;
       cursor: not-allowed;
+      pointer-events: none;
       .eds-contrast & {
         border-color: $colors-blues-blue50;
         color: $colors-blues-blue60;

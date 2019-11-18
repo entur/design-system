@@ -35,6 +35,7 @@ export const ChoiceChip: React.RefForwardingComponent<
     return (
       <label className="eds-choice-chip">
         <input
+          className="eds-choice-chip__input"
           type="radio"
           name={name}
           ref={ref}
