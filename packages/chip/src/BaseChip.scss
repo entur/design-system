@@ -1,0 +1,50 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.eds-chip {
+  background: $colors-blues-blue80;
+  border: $border-widths-small solid $colors-blues-blue70;
+  border-radius: 1rem;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: $font-sizes-medium;
+  height: 2rem;
+  min-width: 8rem;
+  padding: 0 $space-small;
+  transition: all $timings-fast ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    font-size: 1rem;
+  }
+
+  .eds-contrast & {
+    background-color: $colors-blues-blue20;
+    border-color: transparent;
+  }
+  &:focus {
+    box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
+    outline: none;
+  }
+  &:hover {
+    border-color: $colors-brand-blue;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
+  }
+  &:active {
+    background: $colors-blues-blue70;
+    .eds-contrast & {
+      background-color: $colors-blues-blue10;
+    }
+  }
+}
