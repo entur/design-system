@@ -31,7 +31,7 @@ a.eds-button {
   display: inline-block;
   appearance: none;
   text-decoration: none;
-  padding: 0;
+  padding: 0 $space-default;
   height: 2.75rem;
   font-size: $font-sizes-large;
   line-height: $line-heights-extra-large;
@@ -40,13 +40,22 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
+
   &:focus {
     outline: none;
     box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
   }
-  svg {
+
+  .eds-icon {
     position: relative;
     top: 0.2em;
+  }
+
+  &--leading-icon .eds-icon {
+    margin-right: $space-small;
+  }
+  &--trailing-icon .eds-icon {
+    margin-left: $space-small;
   }
 
   &--disabled {

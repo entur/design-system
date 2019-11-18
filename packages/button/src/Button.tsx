@@ -43,23 +43,30 @@ export const Button: React.RefForwardingComponent<
     },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
-    const classList = cx(
-      'eds-button',
-      {
-        [`eds-button--variant-${variant}`]: variant,
-        [`eds-button--size-${size}`]: size,
-        [`eds-button--width-${width}`]: width,
-        [`eds-button--disabled`]: disabled,
-        [`eds-button--loading`]: loading,
-      },
-      className,
-    );
-
     const Element = disabled ? 'button' : as;
+
+    const childrenArray = React.Children.toArray(children);
+    const hasLeadingIcon =
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+    const hasTrailingIcon =
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
 
     return (
       <Element
-        className={classList}
+        className={cx(
+          'eds-button',
+          {
+            [`eds-button--variant-${variant}`]: variant,
+            [`eds-button--size-${size}`]: size,
+            [`eds-button--width-${width}`]: width,
+            'eds-button--disabled': disabled,
+            'eds-button--loading': loading,
+            'eds-button--leading-icon': hasLeadingIcon,
+            'eds-button--trailing-icon': hasTrailingIcon,
+          },
+          className,
+        )}
         ref={ref}
         aria-busy={loading}
         disabled={disabled}
