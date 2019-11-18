@@ -45,3 +45,37 @@ test('Button renders as an <a> tag, with an href-property', () => {
   expect(testerButton.nodeName).toBe('A');
   expect(testerButton).toHaveAttribute('href', hrefLink);
 });
+
+test('adds the correct icon classes', () => {
+  const someVariable = 'World';
+  const { getByRole, rerender } = render(
+    <Button variant="primary">
+      <svg /> hello {someVariable}
+    </Button>,
+  );
+  expect(getByRole('button')).toHaveClass('eds-button--leading-icon');
+  expect(getByRole('button')).not.toHaveClass('eds-button--trailing-icon');
+
+  rerender(
+    <Button variant="primary">
+      hello {someVariable} <svg />
+    </Button>,
+  );
+
+  expect(getByRole('button')).not.toHaveClass('eds-button--leading-icon');
+  expect(getByRole('button')).toHaveClass('eds-button--trailing-icon');
+
+  rerender(<Button variant="primary">hello {someVariable}</Button>);
+
+  expect(getByRole('button')).not.toHaveClass('eds-button--leading-icon');
+  expect(getByRole('button')).not.toHaveClass('eds-button--trailing-icon');
+
+  rerender(
+    <Button variant="primary">
+      <svg />
+    </Button>,
+  );
+
+  expect(getByRole('button')).not.toHaveClass('eds-button--leading-icon');
+  expect(getByRole('button')).not.toHaveClass('eds-button--trailing-icon');
+});

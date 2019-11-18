@@ -17,12 +17,12 @@ import ComponentRuler from '~/components/ComponentRuler';
 import { Playground } from '~/components/Playground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
-import { RefreshIcon, AddIcon, BusIcon } from '@entur/icons';
+import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
 
 <PageHeader>
   Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
 </PageHeader>
-
+&nbsp;
 <Playground>
   <Button variant="primary">Primary</Button>
   <Button variant="secondary">Secondary</Button>
@@ -46,10 +46,10 @@ import { RefreshIcon, AddIcon, BusIcon } from '@entur/icons';
 
 <Playground>
   <Button variant="secondary">
-    <AddIcon /> Ikon
+    <AddIcon /> Legg til kunde
   </Button>
   <Button variant="success">
-    Ikon <BusIcon />
+    Gå videre <ForwardIcon />
   </Button>
 </Playground>
 
