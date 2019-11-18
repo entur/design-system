@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
+import { SkipToContent } from '@entur/a11y';
 import SiteFooter from '~/components/SiteFooter';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
@@ -32,17 +33,22 @@ const App: React.FC = ({ children }) => {
     <SettingsProvider>
       <ToastProvider>
         <ComponentsProvider components={componentMap}>
+          <SkipToContent mainId="site-content">
+            Gå til hovedinnhold
+          </SkipToContent>
           {isFrontPage ? (
             <>
               <FrontPageMenu />
-              <main className="frontpage-site-content">{children}</main>
+              <main id="site-content" className="frontpage-site-content">
+                {children}
+              </main>
               <FrontPageFooter />
             </>
           ) : (
             <>
               <Menu />
               <div className="site-content">
-                <main>{children}</main>
+                <main id="site-content">{children}</main>
                 <SiteFooter />
               </div>
             </>
