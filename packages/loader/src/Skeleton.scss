@@ -1,0 +1,13 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-skeleton {
+  display: block;
+  margin: 0.2rem 0;
+  height: 1rem;
+  width: 100%;
+  &-circle {
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+  }
+}
