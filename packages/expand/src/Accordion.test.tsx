@@ -1,67 +1,92 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Accordion, ExpandablePanel } from '.';
+import { Accordion, AccordionItem } from '.';
 
-test('renders a group of expandable panels that can be opened and closed', () => {
-  const { getByText, queryByTestId } = render(
+// This sucks, but there is some black magic in react-collapse that doesn't play well with jest tests. Please try fixing this
+jest.mock('react-collapse', () => ({
+  UnmountClosed: ({ children, isOpened }: any) => (isOpened ? children : null),
+}));
+
+test('renders a single accordion item', async () => {
+  const { getByTestId, queryByText } = render(
     <Accordion>
-      <ExpandablePanel title="Trains">
-        <div data-testid="expanded-trains">Trains go "choo choo"</div>
-      </ExpandablePanel>
-      <ExpandablePanel title="Boats">
-        <div data-testid="expanded-boats">Boats float</div>
-      </ExpandablePanel>
-      <ExpandablePanel title="Buses">
-        <div data-testid="expanded-buses">Buses go "vroom vroom"</div>
-      </ExpandablePanel>
+      <AccordionItem title="Trains" data-testid="trains-button">
+        Trains go "choo choo"
+      </AccordionItem>
     </Accordion>,
   );
 
-  expect(queryByTestId('expanded-trains')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
 
-  fireEvent.click(getByText('Boats'));
+  fireEvent.click(getByTestId('trains-button'));
 
-  expect(queryByTestId('expanded-trains')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
+  expect(queryByText('Trains go "choo choo"')).toBeInTheDocument();
 
-  fireEvent.click(getByText('Trains'));
+  fireEvent.click(getByTestId('trains-button'));
 
-  expect(queryByTestId('expanded-trains')).toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
-
-  fireEvent.click(getByText('Trains'));
-
-  expect(queryByTestId('expanded-trains')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
 });
 
-test('works with the defaultOpen option', () => {
-  const { getByText, queryByTestId } = render(
+test('renders a group of accordion items that can be opened and closed', () => {
+  const { getByTestId, queryByText } = render(
     <Accordion>
-      <ExpandablePanel title="Trains" defaultOpen>
-        <div data-testid="expanded-trains">Trains go "choo choo"</div>
-      </ExpandablePanel>
-      <ExpandablePanel title="Boats">
-        <div data-testid="expanded-boats">Boats float</div>
-      </ExpandablePanel>
-      <ExpandablePanel title="Buses">
-        <div data-testid="expanded-buses">Buses go "vroom vroom"</div>
-      </ExpandablePanel>
+      <AccordionItem title="Trains" data-testid="trains-button">
+        Trains go "choo choo"
+      </AccordionItem>
+      <AccordionItem title="Boats" data-testid="boats-button">
+        Boats float
+      </AccordionItem>
+      <AccordionItem title="Buses" data-testid="buses-button">
+        Buses go "vroom vroom"
+      </AccordionItem>
     </Accordion>,
   );
 
-  expect(queryByTestId('expanded-trains')).toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
+  expect(queryByText('Boats float')).not.toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
 
-  fireEvent.click(getByText('Boats'));
+  fireEvent.click(getByTestId('boats-button'));
 
-  expect(queryByTestId('expanded-trains')).not.toBeInTheDocument();
-  expect(queryByTestId('expanded-boats')).toBeInTheDocument();
-  expect(queryByTestId('expanded-buses')).not.toBeInTheDocument();
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
+  expect(queryByText('Boats float')).toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
+
+  fireEvent.click(getByTestId('trains-button'));
+
+  expect(queryByText('Trains go "choo choo"')).toBeInTheDocument();
+  expect(queryByText('Boats float')).not.toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
+
+  fireEvent.click(getByTestId('trains-button'));
+
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
+  expect(queryByText('Boats float')).not.toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
+});
+
+test('works with the defaultOpen option', async () => {
+  const { getByTestId, queryByText } = render(
+    <Accordion>
+      <AccordionItem title="Trains" defaultOpen data-testid="trains-button">
+        Trains go "choo choo"
+      </AccordionItem>
+      <AccordionItem title="Boats" data-testid="boats-button">
+        Boats float
+      </AccordionItem>
+      <AccordionItem title="Buses" data-testid="buses-button">
+        Buses go "vroom vroom"
+      </AccordionItem>
+    </Accordion>,
+  );
+
+  expect(queryByText('Trains go "choo choo"')).toBeInTheDocument();
+  expect(queryByText('Boats float')).not.toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
+
+  fireEvent.click(getByTestId('boats-button'));
+
+  expect(queryByText('Trains go "choo choo"')).not.toBeInTheDocument();
+  expect(queryByText('Boats float')).toBeInTheDocument();
+  expect(queryByText('Buses go "vroom vroom"')).not.toBeInTheDocument();
 });

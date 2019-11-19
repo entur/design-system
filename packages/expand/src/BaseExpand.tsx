@@ -9,14 +9,10 @@ type BaseExpandProps = {
   open: boolean;
   [key: string]: any;
 };
-export const BaseExpand: React.FC<BaseExpandProps> = ({
-  children,
-  open,
-  ...rest
-}) => {
+export const BaseExpand: React.FC<BaseExpandProps> = ({ open, ...rest }) => {
   return (
     <UnmountClosed isOpened={open}>
-      <div {...rest}>{children}</div>
+      <div {...rest} />
     </UnmountClosed>
   );
 };

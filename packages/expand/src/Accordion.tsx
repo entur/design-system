@@ -5,7 +5,7 @@ type AccordionContextType = [Id, React.Dispatch<React.SetStateAction<Id>>];
 const AccordionContext = React.createContext<AccordionContextType | null>(null);
 
 type Props = {
-  /** To eller flere ExpandablePanel-komponenter */
+  /** To eller flere AccordionItem-komponenter */
   children: React.ReactNode;
   [key: string]: any;
 };
@@ -22,18 +22,17 @@ type UseAccordionArgs = {
 
 export const useAccordion = ({ id, defaultOpen }: UseAccordionArgs) => {
   const contextValue = React.useContext(AccordionContext);
-  const isInsideAccordion = !!contextValue;
-  const [openId, setOpenId] = contextValue || [-1, () => {}];
+  if (!contextValue) {
+    throw new Error('You need to wrap your AccordionItem inside an Accordion');
+  }
+
+  const [openId, setOpenId] = contextValue;
 
   React.useEffect(() => {
-    if (defaultOpen && isInsideAccordion) {
+    if (defaultOpen) {
       setOpenId(id);
     }
-  }, [defaultOpen, id, setOpenId, isInsideAccordion]);
-
-  if (!isInsideAccordion) {
-    return null;
-  }
+  }, [defaultOpen, id, setOpenId]);
 
   const isOpen = openId === id;
 
