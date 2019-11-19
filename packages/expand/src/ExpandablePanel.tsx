@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import { BaseExpand } from './BaseExpand';
-import { useExpandableGroup } from './ExpandableGroup';
+import { useAccordion } from './Accordion';
 import { useControllableProp } from './useControllableProp';
 import { useRandomId } from './useRandomId';
 
@@ -32,12 +32,12 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable');
-  const groupContext = useExpandableGroup({ id: randomId, defaultOpen });
+  const accordionContext = useAccordion({ id: randomId, defaultOpen });
 
   const [isOpen, updater] = useControllableProp({
     defaultValue: defaultOpen,
-    prop: groupContext ? groupContext.isOpen : open,
-    updater: groupContext ? groupContext.toggle : onToggle,
+    prop: accordionContext ? accordionContext.isOpen : open,
+    updater: accordionContext ? accordionContext.toggle : onToggle,
   });
 
   return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { ExpandableGroup, ExpandablePanel } from '.';
+import { Accordion, ExpandablePanel } from '.';
 
 test('renders a group of expandable panels that can be opened and closed', () => {
   const { getByText, queryByTestId } = render(
-    <ExpandableGroup>
+    <Accordion>
       <ExpandablePanel title="Trains">
         <div data-testid="expanded-trains">Trains go "choo choo"</div>
       </ExpandablePanel>
@@ -14,7 +14,7 @@ test('renders a group of expandable panels that can be opened and closed', () =>
       <ExpandablePanel title="Buses">
         <div data-testid="expanded-buses">Buses go "vroom vroom"</div>
       </ExpandablePanel>
-    </ExpandableGroup>,
+    </Accordion>,
   );
 
   expect(queryByTestId('expanded-trains')).not.toBeInTheDocument();
@@ -42,7 +42,7 @@ test('renders a group of expandable panels that can be opened and closed', () =>
 
 test('works with the defaultOpen option', () => {
   const { getByText, queryByTestId } = render(
-    <ExpandableGroup>
+    <Accordion>
       <ExpandablePanel title="Trains" defaultOpen>
         <div data-testid="expanded-trains">Trains go "choo choo"</div>
       </ExpandablePanel>
@@ -52,7 +52,7 @@ test('works with the defaultOpen option', () => {
       <ExpandablePanel title="Buses">
         <div data-testid="expanded-buses">Buses go "vroom vroom"</div>
       </ExpandablePanel>
-    </ExpandableGroup>,
+    </Accordion>,
   );
 
   expect(queryByTestId('expanded-trains')).toBeInTheDocument();
