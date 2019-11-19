@@ -23,7 +23,7 @@
 
 .eds-expandable-text__arrow {
   transition: ($timings-fast + $timings-fast) transform ease-out;
-  margin-right: 1em;
+  margin-left: 1em;
   &--open {
     transform: rotate(-180deg);
   }

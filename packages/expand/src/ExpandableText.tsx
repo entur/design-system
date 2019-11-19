@@ -45,13 +45,13 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
         type="button"
         {...rest}
       >
+        <Heading4 as="span">{title}</Heading4>
         <DownArrowIcon
           inline
           className={classNames('eds-expandable-text__arrow', {
             'eds-expandable-text__arrow--open': isOpen,
           })}
         />
-        <Heading4 as="span">{title}</Heading4>
       </button>
       <BaseExpand
         className="eds-expandable-text__content"
