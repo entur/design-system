@@ -30,4 +30,16 @@
   & + & {
     margin-top: $space-extra-small2;
   }
+
+  .eds-icon {
+    opacity: 0;
+    transition: all $timings-fast ease-out;
+    visibility: hidden;
+  }
+
+  .color-swatch:hover & .eds-icon,
+  &:focus .eds-icon {
+    opacity: 1;
+    visibility: visible;
+  }
 }
