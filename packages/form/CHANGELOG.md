@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.3...@entur/form@1.1.0) (2019-11-18)
+
+### Bug Fixes
+
+- add hover-effect for form elements in contrast sections ([a9da726](https://bitbucket.org/enturas/design-system/commits/a9da7266d9500b39aa69da39b57e50ab55a8a6e4))
+
+### Features
+
+- add readOnly prop to Dropdown, TextField and TextArea components ([ac26116](https://bitbucket.org/enturas/design-system/commits/ac26116338dce15bc23fe0fb9582f95c67c9c6e2))
+
 ## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.2...@entur/form@1.0.3) (2019-11-14)
 
 ### Bug Fixes

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.4.2...@entur/menu@0.5.0) (2019-11-18)
+
+### Bug Fixes
+
+- add explicit import of expand styling ([a90e9ed](https://bitbucket.org/enturas/design-system/commits/a90e9ed06ddf3dae6a225c7a05923978844292b4))
+- add missing type="button" to sub menu togglers ([2a47e90](https://bitbucket.org/enturas/design-system/commits/2a47e90fd72d03db17a2b5d656546266fdc0574b))
+- ignore as prop on MenuItems with sub menus ([56c5216](https://bitbucket.org/enturas/design-system/commits/56c5216d21dffc00220f1bb9ed52d6ad9655341a))
+- make sure the typography is correct for all menus ([b4fc9ce](https://bitbucket.org/enturas/design-system/commits/b4fc9ce120cbf0dcf0ffef67356cf80891a5a7ca))
+- verify that a child element is an entur menu the correct way ([a3e766f](https://bitbucket.org/enturas/design-system/commits/a3e766fba398891bc664fac54bada81d1352d40b))
+
+### Features
+
+- adding new component -> NavBarItem ([70d3af0](https://bitbucket.org/enturas/design-system/commits/70d3af0d02c1847596354242ddc293212b311e4a))
+
 ## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.4.1...@entur/menu@0.4.2) (2019-11-14)
 
 ### Bug Fixes

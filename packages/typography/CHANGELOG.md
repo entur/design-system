@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.4...@entur/typography@0.4.5) (2019-11-18)
+
+### Bug Fixes
+
+- add custom styles for h6 headings ([4f8e643](https://bitbucket.org/enturas/design-system/commits/4f8e6433f05f51f3db3c2be2b6aeb08b52d94931))
+- **type:** fix broken types due to duplicate declarations ([01e4e21](https://bitbucket.org/enturas/design-system/commits/01e4e215c57b3a812c79d69ded2834401c35d4fe))
+
 ## [0.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.4.3...@entur/typography@0.4.4) (2019-11-14)
 
 ### Bug Fixes

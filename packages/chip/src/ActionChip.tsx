@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './BaseChip.scss';
+import './ActionChip.scss';
 
 type ActionChipProps = {
   /** Teksten som vises i ActionChip */
@@ -17,7 +18,7 @@ export const ActionChip: React.RefForwardingComponent<
   ({ children, className, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
     return (
       <button
-        className={classNames('eds-chip', className)}
+        className={classNames('eds-chip', 'eds-action-chip', className)}
         ref={ref}
         type="button"
         {...rest}
