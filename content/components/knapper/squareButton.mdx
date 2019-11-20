@@ -8,7 +8,6 @@ npmPackage: button
 
 import { Button } from '@entur/button';
 import { Label } from '@entur/typography';
-import '@entur/button/dist/styles.css';
 import { Props } from 'docz';
 import { AddIcon, CheckIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
@@ -18,11 +17,11 @@ import { ImportStatement } from '~/components/ImportStatement';
 <PageHeader>Kvadratiske buttons brukes gjerne med ikoner</PageHeader>
 
 <Playground>
-  <div style={{display: "flex", alignItems: "center"}}>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
     <Button variant="primary" width="square" aria-label="Legg til">
       <AddIcon />
     </Button>
-    <Label style={{marginLeft: "1em"}} >Legg til </Label>
+    <Label style={{ marginLeft: '1em' }}>Legg til </Label>
   </div>
   <Button variant="success" width="square" aria-label="Lage som favoritt">
     <CheckIcon />

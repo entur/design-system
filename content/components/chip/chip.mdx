@@ -11,12 +11,15 @@ import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 
-<PageHeader> Chip er en rekke komponenter for å gjøre mindre handlinger, relatert til hovedflyten</PageHeader>
+<PageHeader>
+  Chip er en rekke komponenter for å gjøre mindre handlinger, relatert til
+  hovedflyten
+</PageHeader>
 
 <Playground>
-  {() => {  
+  {() => {
     const [value, setValue] = React.useState(null);
-    return(
+    return (
       <>
         <ChoiceChipGroup
           name="city"
@@ -26,9 +29,11 @@ import PageHeader from '~/components/PageHeader';
         >
           <ChoiceChip value="Oslo">Oslo</ChoiceChip>
           <ChoiceChip value="Leknes">Leknes</ChoiceChip>
-          <ChoiceChip value="Bergen" disabled>Bergen</ChoiceChip>
+          <ChoiceChip value="Bergen" disabled>
+            Bergen
+          </ChoiceChip>
         </ChoiceChipGroup>
-        <br/>
+        <br />
         <ActionChip>Lagre</ActionChip>
       </>
     );
@@ -50,7 +55,7 @@ Alternativt kan man bruke tertiærknapp.
 <ImportStatement imports="ChoiceChip" />
 <Props of={ChoiceChip} />
 
-`ChoiceChip` og `ChoiceChipGroup` er alternativer for vanlige radioknapper. 
+`ChoiceChip` og `ChoiceChipGroup` er alternativer for vanlige radioknapper.
 
 ### ChoiceChipGroup
 
