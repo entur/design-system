@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Menu, MenuItem } from '.';
 
 test('renders a single-level menu without issues', () => {
@@ -20,10 +20,10 @@ test('renders a single-level menu without issues', () => {
 });
 
 test('renders a multi-level menu', () => {
-  const { getByText, queryByText } = render(
+  const { queryByText, rerender } = render(
     <Menu>
       <MenuItem href="#">Top level</MenuItem>
-      <MenuItem>
+      <MenuItem href="#first">
         Sub-menu trigger
         <Menu>
           <MenuItem href="#second">Sub-menu item</MenuItem>
@@ -34,23 +34,29 @@ test('renders a multi-level menu', () => {
 
   expect(queryByText('Sub-menu item')).not.toBeInTheDocument();
 
-  fireEvent.click(getByText('Sub-menu trigger'));
+  rerender(
+    <Menu>
+      <MenuItem href="#">Top level</MenuItem>
+      <MenuItem href="#first" active>
+        Sub-menu trigger
+        <Menu>
+          <MenuItem href="#second">Sub-menu item</MenuItem>
+        </Menu>
+      </MenuItem>
+    </Menu>,
+  );
 
   expect(queryByText('Sub-menu item')).toBeInTheDocument();
-
-  fireEvent.click(getByText('Sub-menu trigger'));
-
-  expect(queryByText('Sub-menu item')).not.toBeInTheDocument();
 });
 
 test('renders the sub-menu if a sub-menu item is set to active', () => {
   const { getByText } = render(
     <Menu>
       <MenuItem href="#">Top level</MenuItem>
-      <MenuItem>
+      <MenuItem href="#first">
         Sub-menu trigger
         <Menu>
-          <MenuItem href="#second" active={true}>
+          <MenuItem href="#second" active>
             Sub-menu item
           </MenuItem>
         </Menu>
@@ -139,7 +145,7 @@ test('forceExpandSubMenus works as expected without active items', () => {
   rerender(
     <Menu size="small">
       >
-      <MenuItem forceExpandSubMenus={false}>
+      <MenuItem forceExpandSubMenus={false} href="#first">
         Sub-menu trigger
         <Menu>
           <MenuItem href="#second" data-testid="sub-menu-item">
@@ -147,7 +153,7 @@ test('forceExpandSubMenus works as expected without active items', () => {
           </MenuItem>
         </Menu>
       </MenuItem>
-      <MenuItem forceExpandSubMenus={false}>
+      <MenuItem forceExpandSubMenus={false} href="#first">
         Active sub-menu trigger
         <Menu>
           <MenuItem

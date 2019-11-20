@@ -67,7 +67,7 @@ const RegularMenuItem: React.FC<MenuItemProps> = ({
 
 const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
   active = false,
-  as, // Ignored. Always overridden to button
+  as: Element = 'a',
   children,
   className,
   disabled,
@@ -84,40 +84,28 @@ const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
     props: { children, active },
   });
 
-  const [isExpanded, setExpanded] = React.useState(
-    forceExpandSubMenus || isActiveOrHasActiveDescendents,
-  );
-
-  React.useEffect(() => {
-    if (forceExpandSubMenus) {
-      setExpanded(true);
-    } else {
-      setExpanded(isActiveOrHasActiveDescendents);
-    }
-  }, [forceExpandSubMenus, isActiveOrHasActiveDescendents]);
+  const isExpanded = forceExpandSubMenus || isActiveOrHasActiveDescendents;
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) {
       return;
     }
-    setExpanded(prev => !prev);
     onClick(e);
   };
 
   return (
     <li className={classNames('eds-menu__item', className)}>
-      <button
+      <Element
         className={classNames('eds-menu__click-target', {
           'eds-menu__click-target--active': isActiveOrHasActiveDescendents,
         })}
         onClick={handleClick}
         disabled={disabled}
         aria-expanded={isExpanded}
-        type="button"
         {...rest}
       >
         {label}
-      </button>
+      </Element>
       {isExpanded && subMenu}
     </li>
   );
