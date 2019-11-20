@@ -1,8 +1,8 @@
-# Button
+# Menu
 
 This package contains the button component
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/menyer)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/navigation/top-navigation)?
 
 ## Installation
 
@@ -29,4 +29,4 @@ yarn add @entur/menu
 </Menu>
 ```
 
-Please refer to the [documentation](https://design.entur.org/komponenter/menyer) for further usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/navigation/top-navigation) for further usage information.
