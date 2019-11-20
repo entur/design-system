@@ -129,6 +129,20 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   );
 };
 
+const componentsMenuSortOrder = {
+  Resources: 1,
+  Buttons: 2,
+  Inputs: 3,
+  Navigation: 4,
+  'Layouts & Surfaces': 5,
+  Feedback: 6,
+} as any;
+const sortComponentMenus = (a: MenuItem, b: MenuItem) => {
+  const aSortOrder = componentsMenuSortOrder[a.name] || 10;
+  const bSortOrder = componentsMenuSortOrder[b.name] || 10;
+  return aSortOrder - bSortOrder;
+};
+
 type ComponentsSideNavigationProps = {
   menuItems: MenuItem[];
   location: WindowLocation;
@@ -149,6 +163,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
       <SearchBar searchText={searchText} onSearchTextChange={setSearchText} />
       {filteredMenuItems
         .filter(topLevelMenu => topLevelMenu.menu)
+        .sort(sortComponentMenus)
         .map(topLevelMenu => (
           <MenuGroup
             defaultOpen={true}
