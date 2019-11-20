@@ -67,24 +67,6 @@ test('renders the sub-menu if a sub-menu item is set to active', () => {
   expect(getByText('Sub-menu item')).toBeInTheDocument();
 });
 
-test('renders the sub-menu trigger as active if a sub-menu item is set to active', () => {
-  const { getByText } = render(
-    <Menu size="small">
-      <MenuItem href="#">Top level</MenuItem>
-      <MenuItem>
-        Sub-menu trigger
-        <Menu>
-          <MenuItem href="#second" active={true}>
-            Sub-menu item
-          </MenuItem>
-        </Menu>
-      </MenuItem>
-    </Menu>,
-  );
-
-  expect(getByText('Sub-menu trigger').className).toContain('--active');
-});
-
 test('renders a small menu if the small flag is set', () => {
   const { container } = render(
     <Menu size="small">

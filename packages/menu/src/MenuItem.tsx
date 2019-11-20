@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 function isActiveRecursively(child: any): boolean {
@@ -17,6 +17,43 @@ function isActiveRecursively(child: any): boolean {
   );
 }
 
+type BaseMenuItemProps = {
+  active?: boolean;
+  as?: 'a' | 'button' | React.ElementType;
+  className?: string;
+  children: React.ReactNode;
+  subMenu?: React.ReactNode;
+  [key: string]: any;
+};
+const BaseMenuItem: React.FC<BaseMenuItemProps> = ({
+  className,
+  active = false,
+  as: Element = 'a',
+  subMenu,
+  ...rest
+}) => {
+  return (
+    <li className={classNames('eds-menu__item', className)}>
+      <Element
+        className={classNames('eds-menu__click-target', {
+          'eds-menu__click-target--active': active,
+        })}
+        {...rest}
+      />
+      {subMenu}
+    </li>
+  );
+};
+
+type DisabledMenuItemProps = {
+  children: React.ReactNode;
+};
+const DisabledMenuItem: React.FC<DisabledMenuItemProps> = ({ children }) => (
+  <BaseMenuItem as="button" disabled={true}>
+    {children}
+  </BaseMenuItem>
+);
+
 type MenuItemProps = {
   /** Om meny-elementet er det som er aktivt */
   active?: boolean;
@@ -32,92 +69,44 @@ type MenuItemProps = {
   forceExpandSubMenus?: boolean;
   [key: string]: any;
 };
-const RegularMenuItem: React.FC<MenuItemProps> = ({
-  active = false,
-  as: Element = 'a',
-  children,
-  className,
+export const MenuItem: React.FC<MenuItemProps> = ({
+  active,
   disabled,
-  onClick = e => e,
-  forceExpandSubMenus, // This property is ignored
-  ...rest
-}) => {
-  const handleClick = (e: MouseEvent) => {
-    if (disabled) {
-      return;
-    }
-    onClick(e);
-  };
-  const RenderedElement = disabled ? 'button' : Element;
-  return (
-    <li className={classNames('eds-menu__item', className)}>
-      <RenderedElement
-        className={classNames('eds-menu__click-target', {
-          'eds-menu__click-target--active': active,
-        })}
-        onClick={handleClick}
-        disabled={disabled}
-        {...rest}
-      >
-        {children}
-      </RenderedElement>
-    </li>
-  );
-};
-
-const MenuItemWithSubMenu: React.FC<MenuItemProps> = ({
-  active = false,
-  as: Element = 'a',
   children,
-  className,
-  disabled,
   forceExpandSubMenus,
-  onClick = e => e,
   ...rest
 }) => {
   const childrenArray = React.Children.toArray(children);
   const subMenu = childrenArray.find(
     (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
   );
-  const label = childrenArray.filter((child: any) => child !== subMenu);
-  const isActiveOrHasActiveDescendents = isActiveRecursively({
-    props: { children, active },
-  });
+  const label = subMenu
+    ? childrenArray.filter(child => child !== subMenu)
+    : children;
 
-  const isExpanded = forceExpandSubMenus || isActiveOrHasActiveDescendents;
+  if (disabled) {
+    return <DisabledMenuItem>{label}</DisabledMenuItem>;
+  }
 
-  const handleClick = (e: React.MouseEvent) => {
-    if (disabled) {
-      return;
-    }
-    onClick(e);
-  };
+  if (!subMenu) {
+    return (
+      <BaseMenuItem active={active} {...rest}>
+        {label}
+      </BaseMenuItem>
+    );
+  }
+
+  const isExpanded =
+    forceExpandSubMenus || isActiveRecursively({ props: { children, active } });
 
   return (
-    <li className={classNames('eds-menu__item', className)}>
-      <Element
-        className={classNames('eds-menu__click-target', {
-          'eds-menu__click-target--active': isActiveOrHasActiveDescendents,
-        })}
-        onClick={handleClick}
-        disabled={disabled}
-        aria-expanded={isExpanded}
-        {...rest}
-      >
-        {label}
-      </Element>
-      {isExpanded && subMenu}
-    </li>
-  );
-};
-
-export const MenuItem: React.FC<MenuItemProps> = props => {
-  const hasSubMenu = React.Children.toArray(props.children).some(
-    (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
-  );
-  return hasSubMenu ? (
-    <MenuItemWithSubMenu {...props} />
-  ) : (
-    <RegularMenuItem {...props} />
+    <BaseMenuItem
+      active={active}
+      subMenu={isExpanded && subMenu}
+      aria-expanded={isExpanded}
+      {...rest}
+    >
+      {label}
+    </BaseMenuItem>
   );
 };
