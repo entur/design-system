@@ -2,7 +2,11 @@ import React from 'react';
 import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Contrast } from '@entur/layout';
-import { Menu as EnturMenu, MenuItem as EnturMenuItem } from '@entur/menu';
+import {
+  Menu as EnturMenu,
+  MenuItem as EnturMenuItem,
+  MenuGroup,
+} from '@entur/menu';
 import { SearchBar } from '~/components/SearchBar';
 import logoSVG from './logo.svg';
 import './SiteSidebar.scss';
@@ -63,52 +67,109 @@ export const SiteSidebar: React.FC = () => {
     useMenus({
       filter: item => hasSameParentCategory(item, currentDoc),
     }) || [];
-  const [searchText, setSearchText] = React.useState('');
-  const isSearchMode = searchText.length > 0;
 
-  const filteredMenuItems = React.useMemo<MenuItem[]>(
-    () => filterMenuItems(menuItems, searchText),
-    [menuItems, searchText],
-  );
   return (
     <Contrast as="nav" className="site-sidebar-wrapper">
       <Link to="/" className="site-sidebar-logo">
         <img src={logoSVG} alt="Entur logo" className="site-logo" />
       </Link>
-      <SearchBar searchText={searchText} onSearchTextChange={setSearchText} />
 
       <Location>
-        {({ location }) => (
-          <EnturMenu>
-            {filteredMenuItems.map(menuItem => (
-              <EnturMenuItem
-                key={menuItem.id}
-                as={Link}
-                to={menuItem.route}
-                active={isActive(menuItem.route, location)}
-                forceExpandSubMenus={isSearchMode}
-              >
-                {menuItem.name}
-
-                {menuItem.menu && (
-                  <EnturMenu>
-                    {menuItem.menu.map(menuItem => (
-                      <EnturMenuItem
-                        key={menuItem.id}
-                        as={Link}
-                        to={menuItem.route}
-                        active={isActive(menuItem.route, location)}
-                      >
-                        {menuItem.name}
-                      </EnturMenuItem>
-                    ))}
-                  </EnturMenu>
-                )}
-              </EnturMenuItem>
-            ))}
-          </EnturMenu>
-        )}
+        {({ location }) =>
+          currentDoc.parent === 'Komponenter' ? (
+            <ComponentsSideNavigation
+              location={location}
+              menuItems={menuItems}
+            />
+          ) : (
+            <SideNavigation location={location} menuItems={menuItems} />
+          )
+        }
       </Location>
     </Contrast>
+  );
+};
+
+type SideNavigationProps = {
+  menuItems: MenuItem[];
+  location: WindowLocation;
+};
+const SideNavigation: React.FC<SideNavigationProps> = ({
+  menuItems,
+  location,
+}) => {
+  return (
+    <EnturMenu>
+      {menuItems.map(menuItem => (
+        <EnturMenuItem
+          key={menuItem.id}
+          as={Link}
+          to={menuItem.route}
+          active={isActive(menuItem.route, location)}
+        >
+          {menuItem.name}
+
+          {menuItem.menu && (
+            <EnturMenu>
+              {menuItem.menu.map(menuItem => (
+                <EnturMenuItem
+                  key={menuItem.id}
+                  as={Link}
+                  to={menuItem.route}
+                  active={isActive(menuItem.route, location)}
+                >
+                  {menuItem.name}
+                </EnturMenuItem>
+              ))}
+            </EnturMenu>
+          )}
+        </EnturMenuItem>
+      ))}
+    </EnturMenu>
+  );
+};
+
+type ComponentsSideNavigationProps = {
+  menuItems: MenuItem[];
+  location: WindowLocation;
+};
+const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
+  menuItems,
+  location,
+}) => {
+  const [searchText, setSearchText] = React.useState('');
+
+  const filteredMenuItems = React.useMemo<MenuItem[]>(
+    () => filterMenuItems(menuItems, searchText),
+    [menuItems, searchText],
+  );
+
+  return (
+    <>
+      <SearchBar searchText={searchText} onSearchTextChange={setSearchText} />
+      {filteredMenuItems
+        .filter(topLevelMenu => topLevelMenu.menu)
+        .map(topLevelMenu => (
+          <MenuGroup
+            defaultOpen={true}
+            open={searchText !== '' ? true : undefined}
+            title={topLevelMenu.name}
+            key={topLevelMenu.id}
+          >
+            <EnturMenu size="small">
+              {topLevelMenu.menu!.map(menuItem => (
+                <EnturMenuItem
+                  key={menuItem.id}
+                  as={Link}
+                  to={menuItem.route}
+                  active={isActive(menuItem.route, location)}
+                >
+                  {menuItem.name}
+                </EnturMenuItem>
+              ))}
+            </EnturMenu>
+          </MenuGroup>
+        ))}
+    </>
   );
 };
