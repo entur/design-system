@@ -19,6 +19,9 @@ export const Menu: React.FC<MenuProps> & InternalMarker = ({
   size = 'medium',
   ...rest
 }) => {
+  if (!children || !React.Children.count(children)) {
+    return null;
+  }
   return (
     <ul
       className={classNames(

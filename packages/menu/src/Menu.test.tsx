@@ -164,3 +164,12 @@ test('forceExpandSubMenus works as expected without active items', () => {
   expect(queryByTestId('sub-menu-item')).not.toBeInTheDocument();
   expect(getByTestId('active-sub-menu-item')).toBeInTheDocument();
 });
+
+test('a Menu renders nothing if there is no menu items passed', () => {
+  const { queryByTestId, rerender } = render(<Menu data-testid="empty-menu" />);
+  expect(queryByTestId('empty-menu')).not.toBeInTheDocument();
+
+  const menuItems: any[] = [];
+  rerender(<Menu data-testid="empty-menu">{menuItems.map(item => item)}</Menu>);
+  expect(queryByTestId('empty-menu')).not.toBeInTheDocument();
+});
