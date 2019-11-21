@@ -40,7 +40,6 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
-  $spinner-color: $colors-brand-white;
   &:focus {
     outline: none;
     box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
@@ -85,8 +84,10 @@ a.eds-button {
   &--variant-primary {
     background-color: $colors-brand-blue;
     color: $colors-brand-white;
-    $spinner-color: $colors-brand-white;
-
+    > .eds-button__spinner {
+      border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+      border-right-color: $colors-brand-white;
+    }
     &:hover {
       background-color: tint($colors-brand-blue, 10%);
     }
@@ -96,7 +97,10 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-lavender;
       color: $colors-brand-blue;
-      $spinner-color: $colors-brand-blue;
+      > .eds-button__spinner {
+        border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+        border-right-color: $colors-brand-blue;
+      }
       &:hover {
         background-color: tint($colors-brand-lavender, 10%);
       }
@@ -109,7 +113,10 @@ a.eds-button {
     background-color: $colors-brand-white;
     border: $border-widths-default solid $colors-brand-lavender;
     color: $colors-brand-blue;
-    $spinner-color: $colors-brand-blue;
+    > .eds-button__spinner {
+      border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+      border-right-color: $colors-brand-blue;
+    }
     &:hover {
       background-color: $colors-brand-lavender;
     }
@@ -120,14 +127,21 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-blue;
       color: $colors-brand-white;
-      $spinner-color: $colors-brand-white;
+
+      > .eds-button__spinner {
+        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+        border-right-color: $colors-brand-white;
+      }
       &:hover {
         background-color: $colors-blues-blue20;
       }
       &:active {
         background: $colors-brand-lavender;
         color: $colors-brand-blue;
-        $spinner-color: $colors-brand-blue;
+        > .eds-button__spinner {
+          border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+          border-right-color: $colors-brand-blue;
+        }
       }
     }
   }
@@ -135,7 +149,11 @@ a.eds-button {
   &--variant-success {
     background-color: $colors-validation-mint-contrast;
     color: $colors-brand-blue;
-    $spinner-color: $colors-brand-blue;
+    > .eds-button__spinner {
+      border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+      border-right-color: $colors-brand-blue;
+    }
+
     &:hover {
       background-color: tint($colors-validation-mint-contrast, 10%);
     }
@@ -147,19 +165,28 @@ a.eds-button {
   &--variant-negative {
     background: transparent;
     color: $colors-validation-lava;
-    $spinner-color: $colors-validation-lava;
     border-color: $colors-validation-lava;
+    > .eds-button__spinner {
+      border: $border-widths-large solid rgba($colors-validation-lava, 0.5);
+      border-right-color: $colors-validation-lava;
+    }
     &:hover {
       background-color: rgba($colors-validation-lava-tint, 0.6);
     }
     &:active {
       background-color: $colors-validation-lava;
       color: $colors-brand-white;
-      $spinner-color: $colors-brand-white;
+      > .eds-button__spinner {
+        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+        border-right-color: $colors-brand-white;
+      }
     }
     .eds-contrast & {
       color: $colors-brand-white;
-      $spinner-color: $colors-brand-white;
+      > .eds-button__spinner {
+        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+        border-right-color: $colors-brand-white;
+      }
       &:hover {
         background-color: tint($colors-blues-blue20, 10%);
       }
@@ -172,9 +199,7 @@ a.eds-button {
     display: inline-block;
     width: 24px;
     height: 24px;
-    border: $border-widths-large solid rgba($spinner-color, 0.5);
     border-radius: 50%;
-    border-right-color: $spinner-color;
     animation: 1s infinite linear spin;
     position: absolute;
     left: 50%;
