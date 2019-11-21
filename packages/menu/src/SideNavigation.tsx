@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import './styles.scss';
+import './SideNavigation.scss';
 
-type MenuProps = {
+type SideNavigationProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Størrelse på menyen */
@@ -13,7 +13,7 @@ type InternalMarker = {
   __IS_ENTUR_MENU__: boolean;
 };
 
-export const Menu: React.FC<MenuProps> & InternalMarker = ({
+export const SideNavigation: React.FC<SideNavigationProps> & InternalMarker = ({
   className,
   children,
   size = 'medium',
@@ -25,8 +25,8 @@ export const Menu: React.FC<MenuProps> & InternalMarker = ({
   return (
     <ul
       className={classNames(
-        'eds-menu',
-        { 'eds-menu--small': size === 'small' },
+        'eds-side-navigation',
+        { 'eds-side-navigation--small': size === 'small' },
         className,
       )}
       {...rest}
@@ -37,4 +37,4 @@ export const Menu: React.FC<MenuProps> & InternalMarker = ({
 };
 
 /** This is required to check that the Menu */
-Menu.__IS_ENTUR_MENU__ = true;
+SideNavigation.__IS_ENTUR_MENU__ = true;

@@ -17,7 +17,7 @@ function isActiveRecursively(child: any): boolean {
   );
 }
 
-type BaseMenuItemProps = {
+type BaseSideNavigationItemProps = {
   active?: boolean;
   as?: 'a' | 'button' | React.ElementType;
   className?: string;
@@ -25,7 +25,7 @@ type BaseMenuItemProps = {
   subMenu?: React.ReactNode;
   [key: string]: any;
 };
-const BaseMenuItem: React.FC<BaseMenuItemProps> = ({
+const BaseSideNavigationItem: React.FC<BaseSideNavigationItemProps> = ({
   className,
   active = false,
   as: Element = 'a',
@@ -33,10 +33,10 @@ const BaseMenuItem: React.FC<BaseMenuItemProps> = ({
   ...rest
 }) => {
   return (
-    <li className={classNames('eds-menu__item', className)}>
+    <li className={classNames('eds-side-navigation__item', className)}>
       <Element
-        className={classNames('eds-menu__click-target', {
-          'eds-menu__click-target--active': active,
+        className={classNames('eds-side-navigation__click-target', {
+          'eds-side-navigation__click-target--active': active,
         })}
         {...rest}
       />
@@ -45,16 +45,18 @@ const BaseMenuItem: React.FC<BaseMenuItemProps> = ({
   );
 };
 
-type DisabledMenuItemProps = {
+type DisabledSideNavigationItemProps = {
   children: React.ReactNode;
 };
-const DisabledMenuItem: React.FC<DisabledMenuItemProps> = ({ children }) => (
-  <BaseMenuItem as="button" disabled={true}>
+const DisabledSideNavigationItem: React.FC<DisabledSideNavigationItemProps> = ({
+  children,
+}) => (
+  <BaseSideNavigationItem as="button" disabled={true}>
     {children}
-  </BaseMenuItem>
+  </BaseSideNavigationItem>
 );
 
-type MenuItemProps = {
+type SideNavigationItemProps = {
   /** Om meny-elementet er det som er aktivt */
   active?: boolean;
   /** HTML-elementet eller React-komponenten som rendres */
@@ -69,7 +71,7 @@ type MenuItemProps = {
   forceExpandSubMenus?: boolean;
   [key: string]: any;
 };
-export const MenuItem: React.FC<MenuItemProps> = ({
+export const SideNavigationItem: React.FC<SideNavigationItemProps> = ({
   active,
   disabled,
   children,
@@ -85,14 +87,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     : children;
 
   if (disabled) {
-    return <DisabledMenuItem>{label}</DisabledMenuItem>;
+    return <DisabledSideNavigationItem>{label}</DisabledSideNavigationItem>;
   }
 
   if (!subMenu) {
     return (
-      <BaseMenuItem active={active} {...rest}>
+      <BaseSideNavigationItem active={active} {...rest}>
         {label}
-      </BaseMenuItem>
+      </BaseSideNavigationItem>
     );
   }
 
@@ -100,13 +102,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     forceExpandSubMenus || isActiveRecursively({ props: { children, active } });
 
   return (
-    <BaseMenuItem
+    <BaseSideNavigationItem
       active={active}
       subMenu={isExpanded && subMenu}
       aria-expanded={isExpanded}
       {...rest}
     >
       {label}
-    </BaseMenuItem>
+    </BaseSideNavigationItem>
   );
 };

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { BaseExpand } from '@entur/expand';
 import { DownArrowIcon } from '@entur/icons';
 
-type Props = {
+type SideNavigationGroupProps = {
   /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert */
   defaultOpen?: boolean;
   /** Er menyen åpen? */
@@ -40,7 +40,7 @@ function useControllableProp<T>({
     : [prop, updater];
 }
 
-export const MenuGroup: React.FC<Props> = ({
+export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
   defaultOpen = false,
   open,
   onToggle,
@@ -56,17 +56,20 @@ export const MenuGroup: React.FC<Props> = ({
   });
 
   return (
-    <div className={classNames('eds-menu-group', className)} {...rest}>
+    <div
+      className={classNames('eds-side-navigation-group', className)}
+      {...rest}
+    >
       <button
         onClick={() => setOpen(!isOpen)}
         type="button"
-        className="eds-menu-group__trigger"
+        className="eds-side-navigation-group__trigger"
       >
         <span>{title}</span>
         <DownArrowIcon
           inline
-          className={classNames('eds-menu-group__icon', {
-            'eds-menu-group__icon--open': isOpen,
+          className={classNames('eds-side-navigation-group__icon', {
+            'eds-side-navigation-group__icon--open': isOpen,
           })}
         />
       </button>

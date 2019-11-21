@@ -1,6 +1,6 @@
 # Menu
 
-This package contains the button component
+This package contains the navigation components
 
 > 💡 Looking for the [documentation](https://design.entur.org/komponenter/navigation/top-navigation)?
 
@@ -13,20 +13,5 @@ yarn add @entur/menu
 ```
 
 ## Usage
-
-```js
-<Menu>
-  <MenuItem href="#menus">Menu item</MenuItem>
-  <MenuItem>
-    Nested menu
-    <Menu>
-      <MenuItem active={true} href="#">
-        Nested menu item
-      </MenuItem>
-      <MenuItem disabled={true}>Second nested menu</MenuItem>
-    </Menu>
-  </MenuItem>
-</Menu>
-```
 
 Please refer to the [documentation](https://design.entur.org/komponenter/navigation/top-navigation) for further usage information.

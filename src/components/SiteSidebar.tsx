@@ -3,9 +3,9 @@ import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
 import { Location, WindowLocation } from '@reach/router';
 import { Contrast } from '@entur/layout';
 import {
-  Menu as EnturMenu,
-  MenuItem as EnturMenuItem,
-  MenuGroup,
+  SideNavigation,
+  SideNavigationItem,
+  SideNavigationGroup,
 } from '@entur/menu';
 import { SearchBar } from '~/components/SearchBar';
 import logoSVG from './logo.svg';
@@ -82,7 +82,7 @@ export const SiteSidebar: React.FC = () => {
               menuItems={menuItems}
             />
           ) : (
-            <SideNavigation location={location} menuItems={menuItems} />
+            <SimpleSideNavigation location={location} menuItems={menuItems} />
           )
         }
       </Location>
@@ -90,18 +90,18 @@ export const SiteSidebar: React.FC = () => {
   );
 };
 
-type SideNavigationProps = {
+type SimpleSideNavigationProps = {
   menuItems: MenuItem[];
   location: WindowLocation;
 };
-const SideNavigation: React.FC<SideNavigationProps> = ({
+const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   menuItems,
   location,
 }) => {
   return (
-    <EnturMenu>
+    <SideNavigation>
       {menuItems.map(menuItem => (
-        <EnturMenuItem
+        <SideNavigationItem
           key={menuItem.id}
           as={Link}
           to={menuItem.route}
@@ -110,22 +110,22 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           {menuItem.name}
 
           {menuItem.menu && (
-            <EnturMenu>
+            <SideNavigation>
               {menuItem.menu.map(menuItem => (
-                <EnturMenuItem
+                <SideNavigationItem
                   key={menuItem.id}
                   as={Link}
                   to={menuItem.route}
                   active={isActive(menuItem.route, location)}
                 >
                   {menuItem.name}
-                </EnturMenuItem>
+                </SideNavigationItem>
               ))}
-            </EnturMenu>
+            </SideNavigation>
           )}
-        </EnturMenuItem>
+        </SideNavigationItem>
       ))}
-    </EnturMenu>
+    </SideNavigation>
   );
 };
 
@@ -165,25 +165,25 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
         .filter(topLevelMenu => topLevelMenu.menu)
         .sort(sortComponentMenus)
         .map(topLevelMenu => (
-          <MenuGroup
+          <SideNavigationGroup
             defaultOpen={true}
             open={searchText !== '' ? true : undefined}
             title={topLevelMenu.name}
             key={topLevelMenu.id}
           >
-            <EnturMenu size="small">
+            <SideNavigation size="small">
               {topLevelMenu.menu!.map(menuItem => (
-                <EnturMenuItem
+                <SideNavigationItem
                   key={menuItem.id}
                   as={Link}
                   to={menuItem.route}
                   active={isActive(menuItem.route, location)}
                 >
                   {menuItem.name}
-                </EnturMenuItem>
+                </SideNavigationItem>
               ))}
-            </EnturMenu>
-          </MenuGroup>
+            </SideNavigation>
+          </SideNavigationGroup>
         ))}
     </>
   );
