@@ -1,9 +1,7 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
-import './Skeleton.scss';
-import './SkeletonWrapper.scss';
-
-type SkeletonProps = {
+import { BaseSkeleton } from './BaseSkeleton';
+type SkeletonRectangleProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Bredden til komponenten. Er 100% som default. */
@@ -13,18 +11,15 @@ type SkeletonProps = {
   [key: string]: any;
 };
 
-export const Skeleton: React.FC<SkeletonProps> = ({
+export const SkeletonRectangle: React.FC<SkeletonRectangleProps> = ({
   className,
   width,
   height,
   ...rest
 }) => {
   return (
-    <div
-      className={classNames('eds-skeleton', 'eds-skeleton-animate', className)}
-      role="alert"
-      aria-busy={true}
-      aria-live="polite"
+    <BaseSkeleton
+      className={classNames('eds-skeleton-rectangle', className)}
       style={{ width, height, ...rest.style }}
       {...rest}
     />

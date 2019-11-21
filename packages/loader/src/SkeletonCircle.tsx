@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
-import './Skeleton.scss';
-import './SkeletonWrapper.scss';
+import { BaseSkeleton } from './BaseSkeleton';
 
 type SkeletonCircleProps = {
   /** Ekstra klassenavn */
@@ -17,16 +16,8 @@ export const SkeletonCircle: React.FC<SkeletonCircleProps> = ({
   ...rest
 }) => {
   return (
-    <div
-      className={classNames(
-        'eds-skeleton',
-        'eds-skeleton-animate',
-        className,
-        'eds-skeleton-circle',
-      )}
-      role="alert"
-      aria-busy={true}
-      aria-live="polite"
+    <BaseSkeleton
+      className={classNames(className, 'eds-skeleton-circle')}
       style={{ width: size, height: size, ...rest.style }}
       {...rest}
     />

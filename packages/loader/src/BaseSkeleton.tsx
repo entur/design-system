@@ -1,28 +1,25 @@
 import React from 'react';
 import classNames from 'classnames';
+import './BaseSkeleton.scss';
+import './SkeletonWrapper.scss';
 
-type SkeletonWrapperProps = {
+type BaseSkeletonProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Skeletonkomponentene som skal vises */
-  children: React.ReactNode;
   [key: string]: any;
 };
 
-export const SkeletonWrapper: React.FC<SkeletonWrapperProps> = ({
+export const BaseSkeleton: React.FC<BaseSkeletonProps> = ({
   className,
-  children,
   ...rest
 }) => {
   return (
     <div
-      className={classNames('eds-skeleton-wrapper', className)}
+      className={classNames('eds-skeleton', 'eds-skeleton-animate', className)}
       role="alert"
       aria-busy={true}
       aria-live="polite"
       {...rest}
-    >
-      {children}
-    </div>
+    />
   );
 };
