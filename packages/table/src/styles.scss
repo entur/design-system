@@ -12,18 +12,10 @@
     color: $colors-blues-blue40;
     font-size: $font-sizes-medium;
     font-weight: $font-weights-body;
-    height: $space-extra-large2;
     text-align: left;
 
     .eds-contrast & {
       color: $colors-brand-lavender;
-    }
-  }
-
-  &__row {
-    height: $space-extra-large5;
-    .eds-table--compact & {
-      height: $space-extra-large2;
     }
   }
 
@@ -38,10 +30,14 @@
   &__data-cell,
   &__header-cell {
     border-bottom: $border-widths-default solid $colors-greys-grey20;
-    padding: 0 ($space-default + $space-extra-small2);
+    padding: $space-default ($space-default + $space-extra-small2);
 
     .eds-contrast & {
       border-bottom-color: $colors-blues-blue20;
+    }
+
+    .eds-table--compact & {
+      padding: $space-extra-small ($space-default + $space-extra-small2);
     }
   }
 }
