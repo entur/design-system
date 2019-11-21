@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import './NavBarItem.scss';
+import './TopNavigationItem.scss';
 
-type NavBarItemProps = {
+type TopNavigationItemProps = {
   /** Om komponenten vises som valgt eller ikke */
   active?: boolean;
   /** Tekste som vises */
@@ -14,9 +14,8 @@ type NavBarItemProps = {
   [key: string]: any;
 };
 
-export const NavBarItem: React.FC<NavBarItemProps> = ({
+export const TopNavigationItem: React.FC<TopNavigationItemProps> = ({
   active = false,
-  children,
   as: Element = 'a',
   className,
   ...rest
@@ -24,13 +23,11 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
   return (
     <Element
       className={classNames([
-        'eds-navbar-item',
+        'eds-top-navigation-item',
         className,
-        { 'eds-navbar-item--active': active },
+        { 'eds-top-navigation-item--active': active },
       ])}
       {...rest}
-    >
-      {children}
-    </Element>
+    />
   );
 };

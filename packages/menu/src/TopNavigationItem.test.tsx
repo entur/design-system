@@ -1,37 +1,37 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { NavBarItem } from '.';
+import { TopNavigationItem } from '.';
 
-test('Renders a navbaritem with additional classes, and working selected attribute', () => {
+test('Renders a TopNavigationItem with additional classes, and working selected attribute', () => {
   let tester = false;
   const spy = jest.fn();
   const { getByTestId, rerender } = render(
-    <NavBarItem
+    <TopNavigationItem
       className="additionalClass"
       data-testid="testid"
       active={tester}
       onClick={spy}
     >
       Click me
-    </NavBarItem>,
+    </TopNavigationItem>,
   );
   const trigger = getByTestId('testid');
 
   fireEvent.click(trigger);
   expect(spy).toHaveBeenCalledTimes(1);
-  expect(trigger).not.toHaveClass('eds-navbar-item--active');
+  expect(trigger).not.toHaveClass('eds-top-navigation-item--active');
   expect(trigger).toHaveClass('additionalClass');
   rerender(
-    <NavBarItem
+    <TopNavigationItem
       className="additional class"
       data-testid="testid"
       active={true}
       onClick={spy}
     >
       Click me
-    </NavBarItem>,
+    </TopNavigationItem>,
   );
 
-  expect(trigger).toHaveClass('eds-navbar-item--active');
+  expect(trigger).toHaveClass('eds-top-navigation-item--active');
 });

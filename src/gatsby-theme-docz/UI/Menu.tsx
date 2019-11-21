@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'docz';
 import { Location } from '@reach/router';
+import { TopNavigationItem } from '@entur/menu';
 import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
-import { NavBarItem } from '@entur/menu';
 import './Menu.scss';
 
 export default function Menus() {
@@ -34,13 +34,13 @@ const NavItem: React.FC<NavItemProps> = props => {
   return (
     <Location>
       {({ location }) => (
-        <NavBarItem
+        <TopNavigationItem
           as={Link}
           to={props.to}
           active={location.pathname.startsWith(props.to)}
         >
           {props.children}
-        </NavBarItem>
+        </TopNavigationItem>
       )}
     </Location>
   );

@@ -8,7 +8,7 @@ npmPackage: menu
 
 import { Props } from 'docz';
 import { Link } from 'gatsby';
-import { NavBarItem } from '@entur/menu';
+import { TopNavigationItem } from '@entur/menu';
 import { LeadParagraph } from '@entur/typography';
 import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
@@ -16,21 +16,21 @@ import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader>
-  NavBarItem er et navigasjonselement som hjelper brukeren å flytte mellom sider
-  og lokalisere seg i applikasjonen.
+  TopNavigationItem er et navigasjonselement som hjelper brukeren å flytte
+  mellom sider og lokalisere seg i applikasjonen.
 </PageHeader>
 
 <Playground>
-  <NavBarItem>Kom i gang</NavBarItem>
-  <NavBarItem active>Komponenter</NavBarItem>
+  <TopNavigationItem>Kom i gang</TopNavigationItem>
+  <TopNavigationItem active>Komponenter</TopNavigationItem>
 </Playground>
 
 ## Komponenter
 
-### NavBarItem
+### TopNavigationItem
 
-<ImportStatement imports="NavBarItem" />
-<Props of={NavBarItem} />
+<ImportStatement imports="TopNavigationItem" />
+<Props of={TopNavigationItem} />
 
-`NavBarItem` bruker som en horisontal navigasjonsmeny på toppen av en applikasjon, ved å vise alle tilgjengelige undersider i applikasjonen.
+`TopNavigationItem` bruker som en horisontal navigasjonsmeny på toppen av en applikasjon, ved å vise alle tilgjengelige undersider i applikasjonen.
 `active` brukes for å vise hvilken underside man er inne på for øyeblikket, og maks én skal være det til enhver tid.
