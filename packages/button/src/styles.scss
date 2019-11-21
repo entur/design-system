@@ -104,33 +104,6 @@ a.eds-button {
         background-color: shade($colors-brand-lavender, 10%);
       }
     }
-    &.eds-button--width-square {
-      background-color: transparent;
-      border: solid $border-widths-default $colors-brand-lavender;
-      color: $colors-brand-blue;
-      $spinner-color: $colors-brand-blue;
-      &:hover {
-        background-color: tint($colors-brand-lavender, 10%);
-        border-color: tint($colors-brand-lavender, 10%);
-      }
-      &:active {
-        background-color: shade($colors-brand-lavender, 10%);
-        border-color: shade($colors-brand-lavender, 10%);
-      }
-      .eds-contrast & {
-        color: $colors-brand-white;
-        $spinner-color: $colors-brand-white;
-        &:hover {
-          background-color: $colors-blues-blue20;
-        }
-        &:active {
-          background-color: $colors-brand-lavender;
-          border-color: $colors-brand-lavender;
-          color: $colors-brand-blue;
-          $spinner-color: $colors-brand-blue;
-        }
-      }
-    }
   }
   &--variant-secondary {
     background-color: $colors-brand-white;
