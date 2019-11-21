@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import './BaseSkeleton.scss';
-import './SkeletonWrapper.scss';
 
 type BaseSkeletonProps = {
   /** Ekstra klassenavn */

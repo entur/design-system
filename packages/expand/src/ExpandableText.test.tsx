@@ -12,26 +12,3 @@ test('Expandable is rendered, clicked, and opened', () => {
   fireEvent.click(getByRole('button'));
   expect(queryByText('expanded content')).toBeInTheDocument();
 });
-
-test('Controlled Expandable works properly', () => {
-  const spy = jest.fn();
-  const { queryByText, getByRole, rerender } = render(
-    <ExpandableText title="Some title" onClick={spy} open={false}>
-      expanded content
-    </ExpandableText>,
-  );
-
-  expect(queryByText('expanded content')).not.toBeInTheDocument();
-  expect(spy).not.toHaveBeenCalled();
-
-  fireEvent.click(getByRole('button'));
-
-  expect(spy).toHaveBeenCalled();
-  rerender(
-    <ExpandableText title="Some title" onClick={spy} open={true}>
-      expanded content
-    </ExpandableText>,
-  );
-
-  expect(queryByText('expanded content')).toBeInTheDocument();
-});

@@ -4,6 +4,7 @@
 
 @import '~@entur/a11y/dist/styles.css';
 @import '~@entur/alert/dist/styles.css';
+@import '~@entur/button/dist/styles.css';
 @import '~@entur/chip/dist/styles.css';
 @import '~@entur/expand/dist/styles.css';
 @import '~@entur/form/dist/styles.css';
@@ -11,8 +12,10 @@
 @import '~@entur/menu/dist/styles.css';
 @import '~@entur/modal/dist/styles.css';
 @import '~@entur/table/dist/styles.css';
-@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/tooltip/dist/styles.css';
 @import '~@entur/typography/dist/styles.css';
+
+@import '~@entur/tokens/dist/styles.scss';
 
 @mixin for-desktop {
   @media screen and (min-width: #{$breakpoints-large}) {

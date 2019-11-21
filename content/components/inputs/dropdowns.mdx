@@ -1,0 +1,42 @@
+---
+name: Dropdowns
+route: /komponenter/inputs/dropdowns
+parent: Komponenter
+menu: Inputs
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Dropdown, DropdownItem } from '@entur/form';
+import { BannerAlertBox } from '@entur/alert';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader>Dropdown lar deg velge mellom mange valg</PageHeader>
+
+<Playground>
+  <Dropdown>
+    <DropdownItem>Oslo</DropdownItem>
+    <DropdownItem>Bergen</DropdownItem>
+    <DropdownItem>Leknes</DropdownItem>
+  </Dropdown>
+</Playground>
+
+Foreløpig er Dropdown-komponenten en wrapper for `<select>` og `<option>`, så alle props som brukes for disse er også tilgjengelig her.
+
+<BannerAlertBox
+  variant="warning"
+  title="Under aktiv utvikling"
+  style={{ marginBottom: '1em' }}
+>
+  Påtenkt utvidelse og forbedring av komponenten er planlagt, så breaking
+  changes kan komme i nær framtid.
+</BannerAlertBox>
+
+<ImportStatement imports="Dropdown" />
+<Props of={Dropdown} />
+
+## Retningslinjer
+
+Kun bruk en dropdown dersom det ikke er aktuelt med radioknapper grunnet antall valg eller plasshensyn.

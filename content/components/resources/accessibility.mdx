@@ -1,0 +1,55 @@
+---
+name: Accessibility
+parent: Komponenter
+route: /komponenter/resources/accessibility
+menu: Resources
+npmPackage: a11y
+---
+
+import { Link, Props } from 'docz';
+import { CodeText } from '@entur/typography';
+import { SkipToContent, VisuallyHidden } from '@entur/a11y';
+import PageHeader from '~/components/PageHeader';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Entur sitt designsystem er utviklet for å være universelt utformet. Det betyr
+  at det skal kunne fungere for alle. Her finner du noen ekstra komponenter for
+  å forenkle dette arbeidet i løsningene våre også.
+</PageHeader>
+
+## Komponenter
+
+### SkipToContent
+
+<ImportStatement imports="SkipToContent" />
+<Props of={SkipToContent} />
+
+`SkipToContent` er en snarvei for brukere av tastaturnavigasjon for å forenkle veien til sidens hovedinnhold. Den synes ikke for vanlige brukere, men vil vises med en gang man trykker "tab" for å navigere seg nedover siden.
+
+Den plasseres så tidlig som mulig i dokumentet. Du kan sende inn id-en til sidens hovedinnhold via `mainId`-propen, og en tekst som sier noe slikt som "Gå til hovedinnhold" i teksten.
+
+Vi bruker den på denne siden også - test den ut med å trykke "tab"!
+
+### VisuallyHidden
+
+<ImportStatement imports="VisuallyHidden" />
+<Props of={VisuallyHidden} />
+
+`VisuallyHidden` brukes for å gi skjermlesere en tekstlig beskrivelse av et visuelt element. Det er den logiske motsetningen til `aria-hidden="true"`, og brukes ofte for å gi informasjon til skjermlesere der man ikke kan (eller vil) vise denne informasjonen til alle brukere.
+
+<VisuallyHidden>
+  Alle de kule utviklerne bruker <CodeText>VisuallyHidden</CodeText>
+  -komponenten, asså.
+</VisuallyHidden>
+
+#### Hvorfor ikke aria-label?
+
+`aria-label` fungerer som regel greit, men av og til strekker det ikke til. De to største utfordringene er:
+
+- `aria-label` blir ikke oversatt av verktøy som Google Translate
+- `aria-label` kan ikke brukes på elementer uten en aria-rolle (`role`)
+- Noen (få) skjermlesere støtter ikke aria-tags.
+
+Vi anbefaler deg å lese mer om [når man burde bruke visuelt skjult tekst og `aria-label`](https://accessible360.com/accessible360-blog/use-aria-label-screen-reader-text/) om du er interessert. [Denne artikkelen](https://www.heydonworks.com/article/aria-label-is-a-xenophobe) gir også et innsyn i hvorfor `aria-label` kan være feil verktøy til jobben.

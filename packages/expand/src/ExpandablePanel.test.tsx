@@ -2,15 +2,8 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { ExpandablePanel } from '.';
-import { BaseExpand } from './BaseExpand';
 
-test('BaseExpand works properly', () => {
-  const children = 'This is the expanded content';
-  const { getByText } = render(<BaseExpand open>{children}</BaseExpand>);
-  expect(getByText(children)).toContainHTML(children);
-});
-
-test('Expandable is rendered, clicked, and opened', () => {
+test('ExpandablePanel is rendered, clicked, and opened', () => {
   const { queryByText, getByRole } = render(
     <ExpandablePanel title="Some title">expanded content</ExpandablePanel>,
   );
@@ -20,10 +13,10 @@ test('Expandable is rendered, clicked, and opened', () => {
   expect(queryByText('expanded content')).toBeInTheDocument();
 });
 
-test('Controlled Expandable works properly', () => {
+test('You can even control them by passing open and onToggle props', () => {
   const spy = jest.fn();
   const { queryByText, getByRole, rerender } = render(
-    <ExpandablePanel title="Some title" onClick={spy} open={false}>
+    <ExpandablePanel title="Some title" onToggle={spy} open={false}>
       expanded content
     </ExpandablePanel>,
   );
@@ -35,7 +28,7 @@ test('Controlled Expandable works properly', () => {
 
   expect(spy).toHaveBeenCalled();
   rerender(
-    <ExpandablePanel title="Some title" onClick={spy} open={true}>
+    <ExpandablePanel title="Some title" onToggle={spy} open={true}>
       expanded content
     </ExpandablePanel>,
   );

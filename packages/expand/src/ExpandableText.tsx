@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import { useRandomId } from './useRandomId';
-import { useControllableProp } from './useControllableProp';
 import { BaseExpand } from './BaseExpand';
 import './ExpandableText.scss';
 
@@ -23,40 +22,34 @@ type ExpandableTextProps = {
 export const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,
   children,
-  open,
-  onToggle,
   defaultOpen = false,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
-  const [isOpen, updater] = useControllableProp({
-    defaultValue: defaultOpen,
-    prop: open,
-    updater: onToggle,
-  });
+  const [open, setOpen] = React.useState(defaultOpen);
 
   return (
     <>
       <button
         className="eds-expandable-text__trigger"
-        aria-expanded={isOpen}
+        aria-expanded={open}
         aria-controls={randomId}
-        onClick={() => updater(!isOpen)}
+        onClick={() => setOpen(prev => !prev)}
         type="button"
         {...rest}
       >
+        <Heading4 as="span">{title}</Heading4>
         <DownArrowIcon
           inline
           className={classNames('eds-expandable-text__arrow', {
-            'eds-expandable-text__arrow--open': isOpen,
+            'eds-expandable-text__arrow--open': open,
           })}
         />
-        <Heading4 as="span">{title}</Heading4>
       </button>
       <BaseExpand
         className="eds-expandable-text__content"
         id={randomId}
-        open={isOpen}
+        open={open}
       >
         {children}
       </BaseExpand>
