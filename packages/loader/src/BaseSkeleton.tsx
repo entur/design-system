@@ -14,7 +14,7 @@ export const BaseSkeleton: React.FC<BaseSkeletonProps> = ({
 }) => {
   return (
     <div
-      className={classNames('eds-skeleton', 'eds-skeleton-animate', className)}
+      className={classNames('eds-skeleton', 'eds-skeleton--animate', className)}
       role="alert"
       aria-busy={true}
       aria-live="polite"

@@ -40,7 +40,7 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
-  $spinner-color: white;
+  $spinner-color: $colors-brand-white;
   &:focus {
     outline: none;
     box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
@@ -195,7 +195,7 @@ a.eds-button {
       }
     }
   }
-  .spinner {
+  .eds-button__spinner {
     display: inline-block;
     width: 24px;
     height: 24px;

@@ -13,20 +13,20 @@
   &-rectangle {
     height: $space-default;
   }
-  &-animate {
-    --color-1: #{$colors-greys-grey30};
-    --color-2: #{rgba($colors-greys-grey30, 0.5)};
+  &--animate {
+    --background-color: #{$colors-greys-grey30};
+    --shimmer-highlight-color: #{rgba($colors-greys-grey30, 0.5)};
     animation: shimmer 2s infinite linear;
     background: linear-gradient(
       to right,
-      var(--color-1) 4%,
-      var(--color-2) 25%,
-      var(--color-1) 36%
+      var(--background-color) 4%,
+      var(--shimmer-highlight-color) 25%,
+      var(--background-color) 36%
     );
     background-size: 1000px 100%;
     .eds-contrast & {
-      --color-1: #{$colors-blues-blue10};
-      --color-2: #{rgba($colors-blues-blue10, 0.5)};
+      --background-color: #{$colors-blues-blue10};
+      --shimmer-highlight-color: #{rgba($colors-blues-blue10, 0.5)};
     }
   }
 }
