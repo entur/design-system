@@ -1,0 +1,25 @@
+import React, { CSSProperties } from 'react';
+import classNames from 'classnames';
+import { BaseSkeleton } from './BaseSkeleton';
+
+type SkeletonCircleProps = {
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Høyde og bredde av sirkelen. 1rem som default */
+  size: CSSProperties;
+  [key: string]: any;
+};
+
+export const SkeletonCircle: React.FC<SkeletonCircleProps> = ({
+  className,
+  size,
+  ...rest
+}) => {
+  return (
+    <BaseSkeleton
+      className={classNames(className, 'eds-skeleton-circle')}
+      style={{ width: size, height: size, ...rest.style }}
+      {...rest}
+    />
+  );
+};

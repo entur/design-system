@@ -72,7 +72,7 @@ export const Button: React.RefForwardingComponent<
         disabled={disabled}
         {...rest}
       >
-        {loading ? <div className="spinner" /> : children}
+        {loading ? <div className="eds-button__spinner" /> : children}
       </Element>
     );
   },

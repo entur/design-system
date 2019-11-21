@@ -40,7 +40,7 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
-
+  $spinner-color: $colors-brand-white;
   &:focus {
     outline: none;
     box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
@@ -85,6 +85,7 @@ a.eds-button {
   &--variant-primary {
     background-color: $colors-brand-blue;
     color: $colors-brand-white;
+    $spinner-color: $colors-brand-white;
 
     &:hover {
       background-color: tint($colors-brand-blue, 10%);
@@ -95,6 +96,7 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-lavender;
       color: $colors-brand-blue;
+      $spinner-color: $colors-brand-blue;
       &:hover {
         background-color: tint($colors-brand-lavender, 10%);
       }
@@ -106,6 +108,7 @@ a.eds-button {
       background-color: transparent;
       border: solid $border-widths-default $colors-brand-lavender;
       color: $colors-brand-blue;
+      $spinner-color: $colors-brand-blue;
       &:hover {
         background-color: tint($colors-brand-lavender, 10%);
         border-color: tint($colors-brand-lavender, 10%);
@@ -116,6 +119,7 @@ a.eds-button {
       }
       .eds-contrast & {
         color: $colors-brand-white;
+        $spinner-color: $colors-brand-white;
         &:hover {
           background-color: $colors-blues-blue20;
         }
@@ -123,6 +127,7 @@ a.eds-button {
           background-color: $colors-brand-lavender;
           border-color: $colors-brand-lavender;
           color: $colors-brand-blue;
+          $spinner-color: $colors-brand-blue;
         }
       }
     }
@@ -131,6 +136,7 @@ a.eds-button {
     background-color: $colors-brand-white;
     border: $border-widths-default solid $colors-brand-lavender;
     color: $colors-brand-blue;
+    $spinner-color: $colors-brand-blue;
     &:hover {
       background-color: $colors-brand-lavender;
     }
@@ -141,12 +147,14 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-blue;
       color: $colors-brand-white;
+      $spinner-color: $colors-brand-white;
       &:hover {
         background-color: $colors-blues-blue20;
       }
       &:active {
         background: $colors-brand-lavender;
         color: $colors-brand-blue;
+        $spinner-color: $colors-brand-blue;
       }
     }
   }
@@ -154,6 +162,7 @@ a.eds-button {
   &--variant-success {
     background-color: $colors-validation-mint-contrast;
     color: $colors-brand-blue;
+    $spinner-color: $colors-brand-blue;
     &:hover {
       background-color: tint($colors-validation-mint-contrast, 10%);
     }
@@ -165,6 +174,7 @@ a.eds-button {
   &--variant-negative {
     background: transparent;
     color: $colors-validation-lava;
+    $spinner-color: $colors-validation-lava;
     border-color: $colors-validation-lava;
     &:hover {
       background-color: rgba($colors-validation-lava-tint, 0.6);
@@ -172,9 +182,11 @@ a.eds-button {
     &:active {
       background-color: $colors-validation-lava;
       color: $colors-brand-white;
+      $spinner-color: $colors-brand-white;
     }
     .eds-contrast & {
       color: $colors-brand-white;
+      $spinner-color: $colors-brand-white;
       &:hover {
         background-color: tint($colors-blues-blue20, 10%);
       }
@@ -183,23 +195,23 @@ a.eds-button {
       }
     }
   }
+  .eds-button__spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: $border-widths-large solid rgba($spinner-color, 0.5);
+    border-radius: 50%;
+    border-right-color: $spinner-color;
+    animation: 1s infinite linear spin;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 @keyframes spin {
   to {
     transform: translate(-50%, -50%) rotate(360deg);
   }
-}
-.spinner {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: $border-widths-large solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  border-right-color: $colors-brand-white;
-  animation: 1s infinite linear spin;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }

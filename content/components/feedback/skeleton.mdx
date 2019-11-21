@@ -1,0 +1,57 @@
+---
+name: Skeleton
+route: /komponenter/feedback/skeleton
+parent: Komponenter
+menu: Feedback
+npmPackage: loader
+---
+
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import InlineComponent from '~/components/InlineComponent';
+
+import { ImportStatement } from '~/components/ImportStatement';
+
+import {
+  SkeletonRectangle,
+  SkeletonCircle,
+  SkeletonWrapper,
+} from '@entur/loader';
+
+<PageHeader>
+  Skeleton brukes for å vise et omriss av innhold som blir lastet.
+</PageHeader>
+
+<Playground>
+  <SkeletonWrapper>
+    <SkeletonCircle size="5rem" />
+    <SkeletonRectangle width="30%" />
+    <SkeletonRectangle width="70%" />
+    <SkeletonRectangle />
+  </SkeletonWrapper>
+</Playground>
+
+## Komponenter
+
+### Skeleton
+
+<ImportStatement imports="SkeletonRectangle" />
+<Props of={SkeletonRectangle} />
+
+`Skeleton` er en firkantig boks, som man gir en høyde og bredde til.
+Elementene har litt marigin seg i mellom per default.
+
+### SkeletonCircle
+
+<ImportStatement imports="SkeletonCircle" />
+<Props of={SkeletonCircle} />
+
+`SkeletonCircle` er en sirkulær "Skeleton", for å illustrere sirkulære komponenter som vil vises etter lastingen er gjennomført.
+
+### SkeletonWrapper
+
+<ImportStatement imports="SkeletonWrapper" />
+<Props of={SkeletonWrapper} />
+
+Det ytterste elementet som `Skeleton` og `SkeletonCircle` pakkes inn i. Brukes for å gi nødvendige aria-labels o.l.

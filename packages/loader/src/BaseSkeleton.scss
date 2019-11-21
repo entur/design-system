@@ -1,0 +1,41 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-skeleton {
+  display: block;
+  margin: 0.2rem 0;
+  height: 1rem;
+  width: 100%;
+  &-circle {
+    border-radius: 50%;
+    width: $space-default;
+    height: $space-default;
+  }
+  &-rectangle {
+    height: $space-default;
+  }
+  &--animate {
+    --background-color: #{$colors-greys-grey30};
+    --shimmer-highlight-color: #{rgba($colors-greys-grey30, 0.5)};
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+      to right,
+      var(--background-color) 4%,
+      var(--shimmer-highlight-color) 25%,
+      var(--background-color) 36%
+    );
+    background-size: 1000px 100%;
+    .eds-contrast & {
+      --background-color: #{$colors-blues-blue10};
+      --shimmer-highlight-color: #{rgba($colors-blues-blue10, 0.5)};
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
