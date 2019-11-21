@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 
-type Props = {
+type LoaderProps = {
   /** Tekst som beskriver prosessen */
   children?: React.ReactNode;
   /** Ekstra klassenavn */
@@ -12,7 +12,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const Loader: React.FC<Props> = ({
+export const Loader: React.FC<LoaderProps> = ({
   children,
   className,
   progress = 'indeterminate',

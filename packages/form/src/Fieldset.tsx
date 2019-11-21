@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 import './Fieldset.scss';
 
-type Props = {
+type FieldsetProps = {
   /** Innholdet i felt-gruppen. */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -13,7 +13,7 @@ type Props = {
   [key: string]: any;
 } & React.HTMLProps<HTMLFieldSetElement>;
 
-export const Fieldset: React.FC<Props> = ({
+export const Fieldset: React.FC<FieldsetProps> = ({
   children,
   className,
   label,

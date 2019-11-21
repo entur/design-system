@@ -4,7 +4,7 @@ import { VariantType } from './variants';
 import { useVariant } from './InputGroup';
 import './BaseFormControl.scss';
 
-type Props = {
+type BaseFormControlProps = {
   /** Et skjemaelement med `eds-form-control`-klassen */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -24,7 +24,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const BaseFormControl: React.FC<Props> = ({
+export const BaseFormControl: React.FC<BaseFormControlProps> = ({
   children,
   className,
   dark = false,

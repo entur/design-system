@@ -3,7 +3,7 @@ import { CloseIcon } from '@entur/icons';
 import { ModalOverlay } from './ModalOverlay';
 import { ModalContent } from './ModalContent';
 
-type Props = {
+type ModalProps = {
   /** Innholdet i modalen */
   children: React.ReactNode;
   /** Skjermleser-label til lukk-knappen */
@@ -17,7 +17,7 @@ type Props = {
   [key: string]: any;
 };
 
-export const Modal: React.FC<Props> = ({
+export const Modal: React.FC<ModalProps> = ({
   children,
   closeLabel = 'Lukk',
   initialFocusRef,
