@@ -23,6 +23,7 @@
   &__icon {
     position: relative;
     top: -0.1em;
+    font-size: $font-sizes-large;
     &--success {
       color: $colors-validation-mint;
       .eds-contrast & {
