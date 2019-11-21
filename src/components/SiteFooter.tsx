@@ -22,7 +22,7 @@ const SiteFooter: React.FC = () => {
         <div>
           <EditIcon inline={true} />{' '}
           <Link
-            href={`https://bitbucket.org/enturas/design-system/src/master/docs/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
+            href={`https://bitbucket.org/enturas/design-system/src/master/${filepath}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
           >
             Endre siden
           </Link>
