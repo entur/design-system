@@ -3,7 +3,7 @@ import { CloseIcon } from '@entur/icons';
 import { ModalOverlay } from './ModalOverlay';
 import { ModalContent } from './ModalContent';
 
-type ModalProps = {
+export type ModalProps = {
   /** Innholdet i modalen */
   children: React.ReactNode;
   /** Skjermleser-label til lukk-knappen */

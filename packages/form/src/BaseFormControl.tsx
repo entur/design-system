@@ -4,7 +4,7 @@ import { VariantType } from './variants';
 import { useVariant } from './InputGroup';
 import './BaseFormControl.scss';
 
-type BaseFormControlProps = {
+export type BaseFormControlProps = {
   /** Et skjemaelement med `eds-form-control`-klassen */
   children: React.ReactNode;
   /** Ekstra klassenavn */

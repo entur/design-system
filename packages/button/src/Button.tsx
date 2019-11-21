@@ -5,7 +5,7 @@ import './styles.scss';
 declare type sizes = 'medium' | 'large';
 declare type variants = 'primary' | 'secondary' | 'success' | 'negative';
 declare type widths = 'fluid' | 'square';
-type ButtonProps = {
+export type ButtonProps = {
   /** Farge og uttrykk på knappen */
   variant: variants;
   /** Størrelsen på knappen */

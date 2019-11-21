@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@entur/typography';
 import './SkipToContent.scss';
 
-type SkipToContentProps = {
+export type SkipToContentProps = {
   /** Lenketeksten */
   children: React.ReactNode;
   /** IDen til hovedinnholdsområdet */

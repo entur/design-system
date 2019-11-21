@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './BaseChip.scss';
 import './ActionChip.scss';
 
-type ActionChipProps = {
+export type ActionChipProps = {
   /** Teksten som vises i ActionChip */
   children: React.ReactNode;
   /** Ekstra klassenavn */

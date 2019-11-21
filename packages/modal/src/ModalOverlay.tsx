@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { DialogOverlay } from '@reach/dialog';
 
-type ModalOverlayProps = {
+export type ModalOverlayProps = {
   /** Flagg som sier om modalen er åpen */
   isOpen?: boolean;
   /** Callback som kalles når brukeren ber om å lukke modalen */

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { DialogContent } from '@reach/dialog';
 
-type ModalContentProps = {
+export type ModalContentProps = {
   /** Innholdet i modalen */
   children: React.ReactNode;
 } & React.HTMLProps<HTMLDivElement>;

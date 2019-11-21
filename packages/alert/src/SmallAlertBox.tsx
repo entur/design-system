@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { BaseAlertBox } from './BaseAlertBox';
 
-type SmallAlertBoxProps = {
+export type SmallAlertBoxProps = {
   /** Innholdet i alert-boksen */
   children: React.ReactNode;
   /** Ekstra klassenavn */

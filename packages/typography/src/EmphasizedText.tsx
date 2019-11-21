@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type EmphasizedTextProps = {
+export type EmphasizedTextProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */

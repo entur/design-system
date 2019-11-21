@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
 import { useRandomId } from './useRandomId';
 
-type ExpandablePanelProps = {
+export type ExpandablePanelProps = {
   /** Teksten som skal stå i panelet */
   title: React.ReactNode;
   /** Innholdet som skal vises under panelet */

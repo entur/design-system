@@ -1,7 +1,7 @@
 import React from 'react';
 import './VisuallyHidden.scss';
 
-type VisuallyHiddenProps = {
+export type VisuallyHiddenProps = {
   /** HTML-elementet eller React-komponenten som lager elementet */
   as: string | React.ElementType;
   /** Innhold for skjermlesere */

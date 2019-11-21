@@ -3,7 +3,7 @@ import { DownArrowIcon } from '@entur/icons';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 
-type DropdownProps = {
+export type DropdownProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Settes for å style komponenten basert på state/validering */
@@ -39,7 +39,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       disabled={disabled}
       readOnly={readOnly}
       prepend={prepend}
-      append={disabled || readOnly ? null : <DownArrowIcon inline={true} />}
+      append={disabled || readOnly ? null : <DownArrowIcon inline={true} />}
       variant={variant}
       className={className}
       style={style}
@@ -47,7 +47,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <select
         aria-invalid={variant === 'error'}
         className="eds-form-control"
-        disabled={disabled || readOnly}
+        disabled={disabled || readOnly}
         {...rest}
       >
         {children}
@@ -56,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   );
 };
 
-type DropdownItemProps = {
+export type DropdownItemProps = {
   /** Labelen/children for en option */
   children: React.ReactNode;
   [key: string]: any;

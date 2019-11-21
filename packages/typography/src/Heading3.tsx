@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type Heading3Props = {
+export type Heading3Props = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseAlertBox } from './BaseAlertBox';
 
-type ToastAlertBoxProps = {
+export type ToastAlertBoxProps = {
   /** Innholdet i toasten */
   children: React.ReactNode;
   /** Ekstra klassenavn */

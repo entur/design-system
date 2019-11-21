@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './SideNavigation.scss';
 
-type SideNavigationProps = {
+export type SideNavigationProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Størrelse på menyen */

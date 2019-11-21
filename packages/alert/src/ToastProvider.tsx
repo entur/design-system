@@ -53,7 +53,7 @@ const createToast = (toast: AddToastPayload, id: ToastId): ToastType => {
   }
 };
 
-type ToastProviderProps = {
+export type ToastProviderProps = {
   /** Antall millisekunder før toasts forsvinner av seg selv */
   delay?: number;
 };

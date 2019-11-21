@@ -5,7 +5,7 @@ import { ForwardIcon } from '@entur/icons';
 import './CardTab.scss';
 import './BaseCard.scss';
 
-type CardProps = {
+export type CardProps = {
   /** HTML-elementet eller React-komponenten som lager CardTab */
   as?: 'a' | 'button' | React.ElementType;
   /** Tittelen/teksten som står i CardTab */

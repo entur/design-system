@@ -11,7 +11,7 @@ export type Placements =
   | 'bottom-left'
   | 'bottom'
   | 'bottom-right';
-type TooltipProps = {
+export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement: Placements;
   /** Innholdet i tooltip-boksen */

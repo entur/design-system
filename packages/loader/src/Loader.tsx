@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 
-type LoaderProps = {
+export type LoaderProps = {
   /** Tekst som beskriver prosessen */
   children?: React.ReactNode;
   /** Ekstra klassenavn */

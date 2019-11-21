@@ -16,7 +16,7 @@ export function useVariant(): VariantType | null {
   return context;
 }
 
-type InputGroupProps = {
+export type InputGroupProps = {
   /** Tekst/label over en form-komponent */
   label?: string;
   /** Varselmelding, som vil komme under form-komponenten */

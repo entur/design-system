@@ -4,7 +4,7 @@ type Id = string | null;
 type AccordionContextType = [Id, React.Dispatch<React.SetStateAction<Id>>];
 const AccordionContext = React.createContext<AccordionContextType | null>(null);
 
-type AccordionProps = {
+export type AccordionProps = {
   /** To eller flere AccordionItem-komponenter */
   children: React.ReactNode;
   [key: string]: any;

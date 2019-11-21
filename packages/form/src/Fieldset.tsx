@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 import './Fieldset.scss';
 
-type FieldsetProps = {
+export type FieldsetProps = {
   /** Innholdet i felt-gruppen. */
   children: React.ReactNode;
   /** Ekstra klassenavn */

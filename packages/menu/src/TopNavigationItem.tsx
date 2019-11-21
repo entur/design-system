@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './TopNavigationItem.scss';
 
-type TopNavigationItemProps = {
+export type TopNavigationItemProps = {
   /** Om komponenten vises som valgt eller ikke */
   active?: boolean;
   /** Tekste som vises */

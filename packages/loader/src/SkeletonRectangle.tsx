@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
 import { BaseSkeleton } from './BaseSkeleton';
-type SkeletonRectangleProps = {
+export type SkeletonRectangleProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Bredden til komponenten. Er 100% som default. */
