@@ -3,7 +3,7 @@ import { BaseExpandablePanel } from './BaseExpandablePanel';
 import { useRandomId } from './useRandomId';
 import { useAccordion } from './Accordion';
 
-type AccordionItemProps = {
+export type AccordionItemProps = {
   /** Teksten som skal stå i panelet */
   title: React.ReactNode;
   /** Innholdet som skal vises under panelet */

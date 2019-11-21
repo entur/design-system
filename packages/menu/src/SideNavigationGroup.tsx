@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { BaseExpand } from '@entur/expand';
 import { DownArrowIcon } from '@entur/icons';
 
-type SideNavigationGroupProps = {
+export type SideNavigationGroupProps = {
   /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert */
   defaultOpen?: boolean;
   /** Er menyen åpen? */
@@ -19,7 +19,7 @@ type SideNavigationGroupProps = {
   [key: string]: any;
 };
 
-type UseControllablePropType<T> = {
+export type UseControllablePropType<T> = {
   prop?: T;
   updater?: (value?: T) => void;
   defaultValue: T;

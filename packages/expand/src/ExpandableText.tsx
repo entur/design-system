@@ -6,7 +6,7 @@ import { useRandomId } from './useRandomId';
 import { BaseExpand } from './BaseExpand';
 import './ExpandableText.scss';
 
-type ExpandableTextProps = {
+export type ExpandableTextProps = {
   /** Teksten som skal "vises" */
   title: string;
   /** Innholdet som skal vises under linken */

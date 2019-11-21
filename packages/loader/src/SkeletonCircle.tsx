@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
 import { BaseSkeleton } from './BaseSkeleton';
 
-type SkeletonCircleProps = {
+export type SkeletonCircleProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Høyde og bredde av sirkelen. 1rem som default */

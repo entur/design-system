@@ -3,7 +3,7 @@ import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
 
-type TextAreaProps = {
+export type TextAreaProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Valideringsvariant */

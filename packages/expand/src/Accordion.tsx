@@ -4,13 +4,13 @@ type Id = string | null;
 type AccordionContextType = [Id, React.Dispatch<React.SetStateAction<Id>>];
 const AccordionContext = React.createContext<AccordionContextType | null>(null);
 
-type Props = {
+export type AccordionProps = {
   /** To eller flere AccordionItem-komponenter */
   children: React.ReactNode;
   [key: string]: any;
 };
 
-export const Accordion: React.FC<Props> = ({ ...rest }) => {
+export const Accordion: React.FC<AccordionProps> = ({ ...rest }) => {
   const currentlyOpenState = React.useState<Id>(null);
   return <AccordionContext.Provider value={currentlyOpenState} {...rest} />;
 };

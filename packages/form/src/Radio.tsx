@@ -4,7 +4,7 @@ import { Label } from '@entur/typography';
 import { useRadioGroupContext } from './RadioGroupContext';
 import './Radio.scss';
 
-type RadioProps = {
+export type RadioProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Label til radio-button. Vises ved høyre side. */

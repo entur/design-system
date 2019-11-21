@@ -4,7 +4,7 @@ import { useChoiceChipGroupContext } from './ChoiceChipGroupContext';
 import './BaseChip.scss';
 import './ChoiceChip.scss';
 
-type ChoiceChipProps = {
+export type ChoiceChipProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Om Choicechip er deaktivert eller ikke */

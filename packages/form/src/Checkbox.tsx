@@ -4,7 +4,7 @@ import { Label } from '@entur/typography';
 import cx from 'classnames';
 import './Checkbox.scss';
 
-type CheckboxProps = {
+export type CheckboxProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Label for checkboxen, som vises ved høyre side. */

@@ -2,7 +2,7 @@ import React from 'react';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
 
-type TextFieldProps = {
+export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
   prepend?: React.ReactNode;
   /** Tekst eller ikon som kommer etter inputfeltet */

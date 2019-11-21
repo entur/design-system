@@ -56,7 +56,7 @@ const DisabledSideNavigationItem: React.FC<DisabledSideNavigationItemProps> = ({
   </BaseSideNavigationItem>
 );
 
-type SideNavigationItemProps = {
+export type SideNavigationItemProps = {
   /** Om meny-elementet er det som er aktivt */
   active?: boolean;
   /** HTML-elementet eller React-komponenten som rendres */

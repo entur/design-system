@@ -1,7 +1,7 @@
 import React from 'react';
 import './SkipToContent.scss';
 
-type SkipToContentProps = {
+export type SkipToContentProps = {
   /** Lenketeksten */
   children: React.ReactNode;
   /** IDen til hovedinnholdsområdet */

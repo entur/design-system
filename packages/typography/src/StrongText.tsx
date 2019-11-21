@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type StrongTextProps = {
+export type StrongTextProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */

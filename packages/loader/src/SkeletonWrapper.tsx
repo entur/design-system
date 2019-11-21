@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type SkeletonWrapperProps = {
+export type SkeletonWrapperProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Skeletonkomponentene som skal vises */

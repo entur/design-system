@@ -2,7 +2,7 @@ import React from 'react';
 import { RadioGroupContextProvider } from './RadioGroupContext';
 import { Fieldset } from './Fieldset';
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   /** Navnet til radiogruppen. */
   name: string;
   /** Overskrift over radiogruppen */

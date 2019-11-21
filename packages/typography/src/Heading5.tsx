@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type Heading5Props = {
+export type Heading5Props = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */

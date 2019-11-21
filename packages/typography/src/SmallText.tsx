@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type SmallTextProps = {
+export type SmallTextProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
