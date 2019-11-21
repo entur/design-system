@@ -63,7 +63,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
   example={({ value }) => (
     <div
       style={{
-        background: colors.brand.blue,
+        background: colors.brand.lavender,
         borderRadius: borderRadiuses.default,
         width: value,
         height: value,
@@ -142,6 +142,7 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
           border: `${borderWidths.default}px solid ${colors.misc.black}`,
           backgroundColor: `${currBg}`,
           transition: `${value} background linear`,
+          padding: `${space.small}px ${space.default}px`,
         }}
         onMouseOver={() => setCurrBg(colors.brand.lavender)}
         onMouseOut={() => setCurrBg(colors.brand.white)}
