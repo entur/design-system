@@ -1,0 +1,36 @@
+---
+name: Top navigation
+route: /komponenter/navigation/top-navigation
+parent: Komponenter
+menu: Navigation
+npmPackage: menu
+---
+
+import { Props } from 'docz';
+import { Link } from 'gatsby';
+import { TopNavigationItem } from '@entur/menu';
+import { LeadParagraph } from '@entur/typography';
+import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  TopNavigationItem er et navigasjonselement som hjelper brukeren å flytte
+  mellom sider og lokalisere seg i applikasjonen.
+</PageHeader>
+
+<Playground>
+  <TopNavigationItem>Kom i gang</TopNavigationItem>
+  <TopNavigationItem active>Komponenter</TopNavigationItem>
+</Playground>
+
+## Komponenter
+
+### TopNavigationItem
+
+<ImportStatement imports="TopNavigationItem" />
+<Props of={TopNavigationItem} />
+
+`TopNavigationItem` bruker som en horisontal navigasjonsmeny på toppen av en applikasjon, ved å vise alle tilgjengelige undersider i applikasjonen.
+`active` brukes for å vise hvilken underside man er inne på for øyeblikket, og maks én skal være det til enhver tid.

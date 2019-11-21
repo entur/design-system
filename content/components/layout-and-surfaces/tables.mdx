@@ -1,0 +1,97 @@
+---
+name: Tables
+parent: Komponenter
+route: /komponenter/layout-and-surfaces/tables
+menu: Layout & Surfaces
+npmPackage: table
+---
+
+import { Props } from 'docz';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableFooter,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>Tabeller brukes for å vise frem strukturert data</PageHeader>
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Fra</HeaderCell>
+        <HeaderCell>Avgang</HeaderCell>
+        <HeaderCell>Til</HeaderCell>
+        <HeaderCell>Ankomst</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>10.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>10.28</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>11.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>11.28</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>12.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>12.28</DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
+## Komponenter
+
+En tabell settes sammen av flere forskjellige komponenter. Rekkefølgen er viktig her, så følg nøye med om du ikke har brukt denne pakken før:
+
+### Table
+
+<ImportStatement imports="Table" />
+<Props of={Table} />
+
+`<Table />` er grunnkomponenten til en tabell. Den wrapper man rundt en eller flere seksjonskomponenter (se `<TableHead />`, `<TableBody />` og `<TableFooter />`), for å lage en tabell. Du kan også sende inn en `<caption />` for å gi en tittel til tabellen din. `<caption />` må i så fall være første barneelement.
+
+Du kan spesifisere `fixed`-propen for å ha like kolonnestørrelser.
+
+Om du ønsker en mer kompakt tabell, så kan du spesifisere `compact`-propen.
+
+### TableHead, TableBody og TableFooter
+
+<ImportStatement imports="TableHead, TableBody, TableFooter" />
+<Props of={TableHead} />
+
+`<TableHead />`, `<TableBody />` og `<TableFooter />` er såkalte seksjonskomponenter, og brukes for å dele inn innholdet i tabellen din. `<TableHead />` inneholder overskriftene, `<TableBody />` inneholder selve den tabulære dataen, og `<TableFooter />` inneholder raden eller radene som oppsummerer de andre radene.
+
+### TableRow
+
+<ImportStatement imports="TableRow" />
+<Props of={TableRow} />
+
+`<TableRow />` er en rad i tabellen, og inneholder enten `<HeaderCell />`- eller `<DataCell />`-komponenter.
+
+### HeaderCell og DataCell
+
+<ImportStatement imports="HeaderCell, DataCell" />
+<Props of={HeaderCell} title="Props, HeaderCell" />
+<Props of={DataCell} title="Props, DataCell" />
+
+`<HeaderCell />` brukes som kolonneoverskrifter, og skal plasseres inni en `<TableRow />` inni en `<TableHead />`. Gi et godt og oppsummerende navn.
+
+Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre for en rad.
+
+`<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.

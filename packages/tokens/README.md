@@ -2,6 +2,8 @@
 
 This package contains all design tokens used throughout the design system. You'l find all of them in the `src/tokens.ts` file.
 
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/resources/tokens)?
+
 ## Installation
 
 ```sh
@@ -11,6 +13,8 @@ yarn add @entur/tokens
 ```
 
 ## Usage
+
+Please refer to the [documentation](https://design.entur.org/komponenter/resources/tokens) for in-depth usage information.
 
 This package has several main exports:
 

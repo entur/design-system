@@ -1,0 +1,126 @@
+---
+name: Expandable sections
+parent: Komponenter
+route: /komponenter/layout-and-surfaces/expandable-sections
+menu: Layout & Surfaces
+npmPackage: expand
+---
+
+import {
+  ExpandablePanel,
+  Accordion,
+  AccordionItem,
+  BaseExpand,
+  ExpandableText,
+} from '@entur/expand';
+import { Heading2, Heading3, Paragraph } from '@entur/typography';
+
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Expandables er en rekke komponenter som brukes for å skjule innhold, som kan
+  vises ved å klikke på komponenten.
+</PageHeader>
+
+<Playground>
+  <ExpandablePanel title="Kollektivreisende">
+    <Heading3>
+      Planlegg hele reisen fra ett sted — uansett hvor du skal
+    </Heading3>
+    <Paragraph>
+      For de reisende tilbyr Entur en nasjonal reiseplanlegger, der man får oppdaterte reiseforslag for alle kollektivreiser i Norge. Denne løsningen er gratis å bruke og konkurransenøytral.
+    </Paragraph>
+
+    <Heading3>Én billett til hele reisen — på tvers av selskaper</Heading3>
+    <Paragraph>
+      Uansett om reisen består av flere delstrekninger, vil Entur gjøre det mulig å kjøpe billetter til hele reisen med ett tastetrykk. Dette gjelder selv om man må bytte mellom tog og buss, eller reise på tvers av fylkesgrenser.
+    </Paragraph>
+
+    <Heading3>Kollektivdata til alle — mulighetene er mange</Heading3>
+    <Paragraph>
+      I fremtiden vil flere og flere tilby reiseinformasjon som en del av sine tjenester. Blant annet bruker Google, Finn, Gule Sider og Bing data fra oss i dag.
+    </Paragraph>
+
+  </ExpandablePanel>
+</Playground>
+
+## Komponenter
+
+### ExpandablePanel
+
+<ImportStatement imports="ExpandablePanel" />
+<Props of={ExpandablePanel} />
+
+`ExpandablePanel` kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
+ExpandablePanel skal i utgangspunktet ikke stå alene, dvs, det burde være minst _to_ ExpandablePanel ved siden av hverandre til ei hver tid.
+ExpandableLink skal heller brukes om man har et enkeltstående innhold man ønsker å skjule.
+
+Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
+
+Her er et eksempel:
+
+<Playground>
+  {() => {
+    const [open, setOpen] = React.useState(false);
+    return (
+      <ExpandablePanel
+        title="Om Entur"
+        open={open}
+        onToggle={() => setOpen(!open)}
+      >
+        I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge
+        å reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor
+        samler vi reisedata fra alle kollektivselskap i landet.
+      </ExpandablePanel>
+    );
+  }}
+</Playground>
+
+### ExpandableText
+
+ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til ExpandablePanel, så står den gjerne alene uten andre "Expand"-komponenter.
+
+<Playground>
+  <ExpandableText title="Se mer info">
+    Her står det mye mer info, under en mindre knapp som ikke tar så mye fokus
+    fra brukeren, men fortsatt har muligheten til åpning/lukking. Her står det
+    mye mer info, under en mindre knapp som ikke tar så mye fokus fra brukeren,
+    men fortsatt har muligheten til åpning/lukking.
+  </ExpandableText>
+</Playground>
+
+### Accordion og AccordionItem
+
+<ImportStatement imports="Accordion, AccordionItem" />
+<Props of={Accordion} title="Props, Accordion" />
+<Props of={AccordionItem} title="Props, AccordionItem" />
+
+
+Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du heller bruke `Accordion`- og `AccordionItem`-komponenter:
+
+<Playground>
+  <Accordion>
+    <AccordionItem title="Jeg er redd for tuneller" defaultOpen>
+      Det går greit - tuneller er veldig sikre i dag. Om du ikke ønsker å reise
+      gjennom tuneller, ber vi deg vurdere ferge.
+    </AccordionItem>
+    <AccordionItem title="Jeg kommer ikke ut av bussen">
+      Om bussdøren ikke åpner seg, prøv å rop på bussjåføren. Får du ikke
+      kontakt, vurder å bruke en nødutgang.
+    </AccordionItem>
+    <AccordionItem title="Båten min synker">
+      Uff da. I så fall ber vi deg ta på deg en redningsvest og følge
+      instruksjonene fra kapteinen.
+    </AccordionItem>
+  </Accordion>
+</Playground>
+
+### BaseExpand
+
+<ImportStatement imports="BaseExpand" />
+<Props of={BaseExpand} />
+
+ExpandablePanel, AccordionItem (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.

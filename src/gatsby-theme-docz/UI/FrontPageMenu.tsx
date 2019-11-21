@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'docz';
-import { NavBarItem } from '@entur/menu';
+import { TopNavigationItem } from '@entur/menu';
 import LogoDark from '~/components/logoDark.svg';
 import './FrontPageMenu.scss';
 
@@ -11,18 +11,18 @@ function FrontPageMenu() {
         <img src={LogoDark} alt="Entur logo" />
       </Link>
       <div className="frontpage-tab-link-container">
-        <NavBarItem as={Link} to="/kom-i-gang">
+        <TopNavigationItem as={Link} to="/kom-i-gang">
           Kom i gang
-        </NavBarItem>
-        <NavBarItem as={Link} to="/design-prinsipper">
+        </TopNavigationItem>
+        <TopNavigationItem as={Link} to="/design-prinsipper">
           Designprinsipper
-        </NavBarItem>
-        <NavBarItem as={Link} to="/visuell-identitet">
+        </TopNavigationItem>
+        <TopNavigationItem as={Link} to="/visuell-identitet">
           Visuell Identitet
-        </NavBarItem>
-        <NavBarItem as={Link} to="/komponenter">
+        </TopNavigationItem>
+        <TopNavigationItem as={Link} to="/komponenter">
           Komponenter
-        </NavBarItem>
+        </TopNavigationItem>
       </div>
     </nav>
   );

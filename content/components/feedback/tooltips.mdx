@@ -1,0 +1,49 @@
+---
+name: Tooltips
+route: /komponenter/feedback/tooltips
+parent: Komponenter
+menu: Feedback
+npmPackage: tooltip
+---
+
+import { Tooltip } from '@entur/tooltip';
+import { Button } from '@entur/button';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Tooltip kan brukes for å gi ekstra informasjon til brukeren ved hover eller
+  fokus.
+</PageHeader>
+
+<Playground>
+  <Tooltip content="Her er tooltipen" placement="top">
+    Denne teksten har en tooltip
+  </Tooltip>
+</Playground>
+
+## Komponenter
+
+### Tooltip
+
+<ImportStatement imports="Tooltip" />
+
+<Props of={Tooltip} />
+
+Du wrapper `<Tooltip />` rundt elementet du ønsker at skal ha en tooltip.
+
+## Retningslinjer
+
+Man må _unngå_ å legge nødvendig og kritisk informasjon i tooltip'en.
+
+Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også tooltip om knappen/linken etc er fokusert
+
+<Playground>
+  <Tooltip content="Tooltip til knappen" placement="top">
+    <Button variant="primary">Knapp med tooltip</Button>
+  </Tooltip>
+</Playground>
+
+Tooltip-teksten vil også bli lagt til i trigger-elementet som en aria-label.
