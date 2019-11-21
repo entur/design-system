@@ -8,7 +8,8 @@ npmPackage: expand
 
 import {
   ExpandablePanel,
-  ExpandableGroup,
+  Accordion,
+  AccordionItem,
   BaseExpand,
   ExpandableText,
 } from '@entur/expand';
@@ -91,29 +92,30 @@ ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til E
   </ExpandableText>
 </Playground>
 
-### ExpandableGroup
+### Accordion og AccordionItem
 
-<ImportStatement imports="ExpandableGroup" />
-<Props of={ExpandableGroup} />
+<ImportStatement imports="Accordion, AccordionItem" />
+<Props of={Accordion} title="Props, Accordion" />
+<Props of={AccordionItem} title="Props, AccordionItem" />
 
-Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du wrappe panelene i en `ExpandableGroup`-komponent:
+
+Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du heller bruke `Accordion`- og `AccordionItem`-komponenter:
 
 <Playground>
-  <Heading2>Ofte stilte spørsmål</Heading2>
-  <ExpandableGroup>
-    <ExpandablePanel title="Jeg er redd for tuneller" defaultOpen>
+  <Accordion>
+    <AccordionItem title="Jeg er redd for tuneller" defaultOpen>
       Det går greit - tuneller er veldig sikre i dag. Om du ikke ønsker å reise
       gjennom tuneller, ber vi deg vurdere ferge.
-    </ExpandablePanel>
-    <ExpandablePanel title="Jeg kommer ikke ut av bussen">
+    </AccordionItem>
+    <AccordionItem title="Jeg kommer ikke ut av bussen">
       Om bussdøren ikke åpner seg, prøv å rop på bussjåføren. Får du ikke
       kontakt, vurder å bruke en nødutgang.
-    </ExpandablePanel>
-    <ExpandablePanel title="Båten min synker">
+    </AccordionItem>
+    <AccordionItem title="Båten min synker">
       Uff da. I så fall ber vi deg ta på deg en redningsvest og følge
       instruksjonene fra kapteinen.
-    </ExpandablePanel>
-  </ExpandableGroup>
+    </AccordionItem>
+  </Accordion>
 </Playground>
 
 ### BaseExpand
@@ -121,4 +123,4 @@ Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en acco
 <ImportStatement imports="BaseExpand" />
 <Props of={BaseExpand} />
 
-ExpandablePanel (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.
+ExpandablePanel, AccordionItem (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.
