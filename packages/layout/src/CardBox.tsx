@@ -5,7 +5,7 @@ import { ForwardIcon } from '@entur/icons';
 import './CardBox.scss';
 import './BaseCard.scss';
 
-export type CardProps = {
+export type CardBoxProps = {
   /** HTML-elementet eller React-komponenten som lager CardBox */
   as?: 'a' | 'button' | React.ElementType;
   /** Tittelen/teksten som står i CardBox */
@@ -17,7 +17,7 @@ export type CardProps = {
   [key: string]: any;
 };
 
-export const CardBox: React.FC<CardProps> = ({
+export const CardBox: React.FC<CardBoxProps> = ({
   as: Element = 'a',
   title,
   children,
