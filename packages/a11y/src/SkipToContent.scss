@@ -3,24 +3,22 @@
 .eds-skip-to-content {
   background: $colors-validation-canary;
   color: $colors-brand-blue;
+  display: block;
   text-align: center;
   padding: 1em;
   margin: 0 auto;
   transform: translateY(-100%);
   transition: transform 0.1s ease-out;
-  position: absolute;
+  outline: none;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-indexes-toast;
+  z-index: $z-indexes-popover;
 
-  &:focus-within {
-    transform: none;
-  }
-
-  a,
-  a:focus,
-  a:hover {
+  &:visited {
     color: inherit;
-    outline: none;
+  }
+  &:focus {
+    transform: none;
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@entur/typography';
 import './SkipToContent.scss';
 
 type SkipToContentProps = {
@@ -13,7 +12,7 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   children,
   mainId = 'main-content',
 }) => (
-  <div className="eds-skip-to-content">
-    <Link href={`#${mainId}`}>{children}</Link>
-  </div>
+  <a className="eds-skip-to-content" href={`#${mainId}`}>
+    {children}
+  </a>
 );
