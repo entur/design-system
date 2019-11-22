@@ -20,15 +20,22 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
     packageManager === 'yarn'
       ? `yarn add @entur/${npmPackage}`
       : `npm install @entur/${npmPackage}`;
+  const cssImport = `@import '~@entur/${npmPackage}/dist/styles.css'`;
   return (
     <header>
       {categoryToShow && <Label as="div">{categoryToShow.toUpperCase()}</Label>}
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
       {children && <LeadParagraph>{children}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
-        <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
-          {installText}
-        </CopyablePreformattedText>
+        <div style={{ display: 'flex' }}>
+          <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
+            {installText}
+          </CopyablePreformattedText>
+
+          <CopyablePreformattedText successMessage="CSS-importen ble kopiert til utklippstavla.">
+            {cssImport}
+          </CopyablePreformattedText>
+        </div>
       )}
     </header>
   );
