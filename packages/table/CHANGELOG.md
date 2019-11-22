@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.1...@entur/table@0.3.2) (2019-11-22)
+
+### Bug Fixes
+
+- make table rows always have the same padding ([cbebeee](https://bitbucket.org/enturas/design-system/commits/cbebeeead42d597f4a8c56c38ab52cdbe94e820e))
+
 ## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.0...@entur/table@0.3.1) (2019-11-14)
 
 ### Bug Fixes

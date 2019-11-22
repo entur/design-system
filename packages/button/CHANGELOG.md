@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.0.4...@entur/button@1.1.0) (2019-11-22)
+
+### Bug Fixes
+
+- **spinner:** fixes styling on the spinner for all variants ([a0322cd](https://bitbucket.org/enturas/design-system/commits/a0322cd3c95e94ed9a4ba9af15a2a2b4c205b1b0))
+- **styling:** fixing styling of loading spinner on all button variants ([74f79f4](https://bitbucket.org/enturas/design-system/commits/74f79f4dc6150d9759f430055ff295a94edd4751))
+
+### Features
+
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
 ## [1.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.0.3...@entur/button@1.0.4) (2019-11-18)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.0.2...@entur/tooltip@1.1.0) (2019-11-22)
+
+### Features
+
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.0.1...@entur/tooltip@1.0.2) (2019-11-14)
 
 ### Bug Fixes

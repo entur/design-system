@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.0.1...@entur/tokens@1.0.2) (2019-11-22)
+
+**Note:** Version bump only for package @entur/tokens
+
 ## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.0.0...@entur/tokens@1.0.1) (2019-11-14)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.1.0...@entur/form@1.2.0) (2019-11-22)
+
+### Bug Fixes
+
+- fixing potential duplication of props naming ([6efd896](https://bitbucket.org/enturas/design-system/commits/6efd896d381bca09bc047dbdaec6d2629a9571db))
+- **InputGroup:** increase the size of the feedback icon ([fc543b0](https://bitbucket.org/enturas/design-system/commits/fc543b01fb9365140b6ee23e0031cde746155b44))
+
+### Features
+
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
 # [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.0.3...@entur/form@1.1.0) (2019-11-18)
 
 ### Bug Fixes

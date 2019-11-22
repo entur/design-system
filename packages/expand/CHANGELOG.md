@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@0.3.1...@entur/expand@1.0.0) (2019-11-22)
+
+### Bug Fixes
+
+- fixing potential duplication of props naming ([6efd896](https://bitbucket.org/enturas/design-system/commits/6efd896d381bca09bc047dbdaec6d2629a9571db))
+- **ExpandableText:** move toggle arrow to right side of toggle text ([5bc75d7](https://bitbucket.org/enturas/design-system/commits/5bc75d72f06cf20d174745924c11cd4e24199dab))
+- **ExpandableText:** remove possibility to control ExpandableText ([ff9cd6c](https://bitbucket.org/enturas/design-system/commits/ff9cd6ce50867ae000bb61f0f9901bbeb645fe40))
+
+### Code Refactoring
+
+- **ExpandableGroup:** rename to Accordion ([e5f1a96](https://bitbucket.org/enturas/design-system/commits/e5f1a9644be8184e80f849970f255fc3553b0d46))
+
+### Features
+
+- **Accordion:** add new component - AccordionItem ([e73072a](https://bitbucket.org/enturas/design-system/commits/e73072a704cb591413601c5c6c4d5442432e7f34))
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
+### BREAKING CHANGES
+
+- **ExpandableText:** No longer possible to control the ExpandableText component
+- **ExpandableGroup:** The export ExpandableGroup is renamed to Accordion
+
 ## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@0.3.0...@entur/expand@0.3.1) (2019-11-18)
 
 **Note:** Version bump only for package @entur/expand

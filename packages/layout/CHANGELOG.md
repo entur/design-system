@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.3.2...@entur/layout@0.4.0) (2019-11-22)
+
+### Bug Fixes
+
+- add missing Props to end of type name ([d28f9c6](https://bitbucket.org/enturas/design-system/commits/d28f9c65dd2ab72c94108cad3dab39c320c95146))
+
+### Features
+
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
 ## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.3.1...@entur/layout@0.3.2) (2019-11-18)
 
 **Note:** Version bump only for package @entur/layout

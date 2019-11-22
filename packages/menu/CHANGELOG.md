@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.5.0...@entur/menu@1.0.0) (2019-11-22)
+
+### Bug Fixes
+
+- **Menu:** fix issue where an empty menu was rendered ([360d3b0](https://bitbucket.org/enturas/design-system/commits/360d3b03a2803981b9f9c44565a05c0a4467c7f1))
+
+### Code Refactoring
+
+- **Menu, MenuItem, MenuGroup:** rename to SideNavigation, -Item and -Group ([61fd869](https://bitbucket.org/enturas/design-system/commits/61fd8698b9c32eaeae4e9521237609b09201dac9))
+- **NavBarItem:** rename to TopNavigationItem ([56a219c](https://bitbucket.org/enturas/design-system/commits/56a219c8f58137c34e72878fa1672ec99a1338ad))
+
+### Features
+
+- **MenuItem:** require MenuItems to be links ([caa5798](https://bitbucket.org/enturas/design-system/commits/caa57987f134322f33249d109286e4ae109ff1cf))
+- **types:** exporting all public types for public components ([4a277ab](https://bitbucket.org/enturas/design-system/commits/4a277ab266fdb32a6760821a07b1c6cc716bac85))
+
+### BREAKING CHANGES
+
+- **NavBarItem:** NavBarItem is renamed to TopNavigationItem, but maintains the same API
+- **Menu, MenuItem, MenuGroup:** Menu, MenuItem and MenuGroup is renamed, but maintains the same APIs
+- **MenuItem:** MenuItem now needs to be a link to a landing page
+
 # [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.4.2...@entur/menu@0.5.0) (2019-11-18)
 
 ### Bug Fixes
