@@ -12,6 +12,38 @@ import PageHeader from '~/components/PageHeader';
   en oppsummering av hva som har blitt lansert
 </PageHeader>
 
+### 2019-11-22
+
+- [@entur/a11y@0.2.0](https://www.npmjs.com/packages/@entur/a11y)
+- [@entur/alert@0.5.0](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@1.1.0](https://www.npmjs.com/package/@entur/button)
+- [@entur/chip@0.2.0](https://www.npmjs.com/package/@entur/chip)
+- [@entur/expand@1.0.0](https://www.npmjs.com/package/@entur/expand)
+- [@entur/form@1.2.0](https://www.npmjs.com/package/@entur/form)
+- [@entur/icons@0.4.2](https://www.npmjs.com/package/@entur/icons)
+- [@entur/layout@0.4.0](https://www.npmjs.com/package/@entur/layout)
+- [@entur/loader@0.3.0](https://www.npmjs.com/package/@entur/loader)
+- [@entur/menu@1.0.0](https://www.npmjs.com/package/@entur/menu)
+- [@entur/modal@0.3.0](https://www.npmjs.com/package/@entur/modal)
+- [@entur/table@0.3.2](https://www.npmjs.com/package/@entur/table)
+- [@entur/tokens@1.0.2](https://www.npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.1.0](https://www.npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.5.0](https://www.npmjs.com/package/@entur/typography)
+
+Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/1361952e906665487ca35fa5eacae5922a759c28
+
+Et par breaking changes i denne releasen, men for det meste er det ny navngivning av komponenter, så burde ikke være så ille!
+
+- Ny pakke `@entur/a11y` for alle komponenter relatert til universell utforming! Den lanseres med komponentene `SkipToContent` og `VisuallyHidden`.
+- Loading-spinnere på knappene er nå riktig farge
+- To breaking changes i @entur/expand: `ExpandableText` er ikke kontrollerbar lengre. Og `ExpandableGroup` har endret navn til `Accordion` som man wrapper rundt `AccordionItem`
+- `@entur/loader` har nye komponenter: `SkeletonCircle`,`SkeletonRectangle` og `SkeletonWrapper` som kan brukes når man vil laste inn strukturen til en nettside
+- Noen breaking changes i `@entur/menu`:
+  - `NavBarItem` heter nå `TopNavigationItem`.
+  - `Menu` `MenuItem` `MenuGroup` heter nå henoldsvis `SideNavigation` `SideNavigationItem` `SideNavigationGroup`.
+  - `SideNavigationItem` krever nå en link til en side for å fungere.
+- Alle pakkene våre eksporterer nå typene via Typescript, og skal være tilgjengelig via `KomponentNavn+Props`
+
 ### 2019-11-18
 
 - [@entur/button@1.0.4](https://www.npmjs.com/package/@entur/button)
