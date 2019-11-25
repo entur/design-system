@@ -27,7 +27,7 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
       {children && <LeadParagraph>{children}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
           <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
             {installText}
           </CopyablePreformattedText>
