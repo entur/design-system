@@ -4,3 +4,9 @@
   margin-left: -2em;
   pointer-events: none;
 }
+
+// Override for Windows
+.eds-dropdown option {
+  color: $colors-brand-blue;
+  background-color: $colors-brand-white;
+}
