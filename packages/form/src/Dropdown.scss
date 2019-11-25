@@ -1,0 +1,6 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown + .eds-form-control__append {
+  margin-left: -2em;
+  pointer-events: none;
+}

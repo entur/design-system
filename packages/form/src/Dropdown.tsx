@@ -2,6 +2,7 @@ import React from 'react';
 import { DownArrowIcon } from '@entur/icons';
 import { VariantType } from './variants';
 import { BaseFormControl } from './BaseFormControl';
+import './Dropdown.scss';
 
 export type DropdownProps = {
   /** Ekstra klassenavn */
@@ -46,7 +47,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     >
       <select
         aria-invalid={variant === 'error'}
-        className="eds-form-control"
+        className="eds-form-control eds-dropdown"
         disabled={disabled || readOnly}
         {...rest}
       >
