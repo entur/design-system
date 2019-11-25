@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.2.0...@entur/form@1.2.1) (2019-11-25)
+
+### Bug Fixes
+
+- **Dropdown:** ensure color is set correctly for option items on Windows ([f2a8fce](https://bitbucket.org/enturas/design-system/commits/f2a8fceaf47e34c60ff66a0c36551bddfe196e2e))
+- **Dropdown:** increase the click target size of dropdowns ([b5aa231](https://bitbucket.org/enturas/design-system/commits/b5aa231c359752c92e794bbbeda4d45665ed13b0))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.1.0...@entur/form@1.2.0) (2019-11-22)
 
 ### Bug Fixes
