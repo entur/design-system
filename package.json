@@ -85,7 +85,7 @@
     "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
-    "docz": "^2.0.0-rc.75",
+    "docz": "^2.0.0-rc.76",
     "gatsby-plugin-sass": "^2.1.20",
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
