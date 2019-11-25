@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import './styles.scss';
+import './Button.scss';
 
 declare type sizes = 'medium' | 'large';
 declare type variants = 'primary' | 'secondary' | 'success' | 'negative';

@@ -6,7 +6,7 @@ menu: Buttons
 npmPackage: button
 ---
 
-import { Button } from '@entur/button';
+import { Button, ButtonGroup } from '@entur/button';
 import { Props } from 'docz';
 import PageHeader from '~/components/PageHeader';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -23,13 +23,15 @@ import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
 </PageHeader>
 
 <Playground>
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="success">Success</Button>
-  <Button variant="negative">Danger</Button>
-  <Button variant="primary" loading={true}>
-    Laster...
-  </Button>
+  <ButtonGroup>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="success">Success</Button>
+    <Button variant="negative">Danger</Button>
+    <Button variant="primary" loading={true}>
+      Laster...
+    </Button>
+  </ButtonGroup>
 </Playground>
 
 ## Komponenter
@@ -39,34 +41,47 @@ import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
 <ImportStatement imports="Button" />
 <Props of={Button} />
 
+`<Button />` er grunn-komponenten som lar deg lage de fleste forskjellige knappene våre.
+
+### ButtonGroup
+
+<ImportStatement imports="ButtonGroup" />
+<Props of={ButtonGroup} />
+
+Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<ButtonGroup />`. Dette gir deg riktig avstand mellom knappene.
+
 ## Eksempler
 
 ### Knapp med ikon og tekst
 
 <Playground>
-  <Button variant="secondary">
-    <AddIcon /> Legg til kunde
-  </Button>
-  <Button variant="success">
-    Gå videre <ForwardIcon />
-  </Button>
+  <ButtonGroup>
+    <Button variant="secondary">
+      <AddIcon /> Legg til kunde
+    </Button>
+    <Button variant="success">
+      Gå videre <ForwardIcon />
+    </Button>
+  </ButtonGroup>
 </Playground>
 
 ### Store knapper
 
 <Playground>
-  <Button size="large" variant="primary">
-    Primary
-  </Button>
-  <Button size="large" variant="secondary">
-    Secondary
-  </Button>
-  <Button size="large" variant="success">
-    Success
-  </Button>
-  <Button size="large" variant="negative">
-    Danger
-  </Button>
+  <ButtonGroup>
+    <Button size="large" variant="primary">
+      Primary
+    </Button>
+    <Button size="large" variant="secondary">
+      Secondary
+    </Button>
+    <Button size="large" variant="success">
+      Success
+    </Button>
+    <Button size="large" variant="negative">
+      Danger
+    </Button>
+  </ButtonGroup>
 </Playground>
 
 ## Retningslinjer for bruk

@@ -1,0 +1,12 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-button-group {
+  .eds-button {
+    margin-right: $space-small;
+    margin-bottom: $space-small;
+
+    &:only-child {
+      margin: 0;
+    }
+  }
+}
