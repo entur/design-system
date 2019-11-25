@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import debounce from '~/utils/debounce';
 import { useCurrentDoc, Entry } from 'docz';
 import './TocNavigation.scss';
+import { Heading3 } from '@entur/typography/src';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
@@ -43,6 +44,7 @@ export const TocNavigation: React.FC = () => {
   }
   return (
     <nav className="table-of-content-container">
+      <Heading3 style={{ margin: 0 }}>Innhold</Heading3>
       <ul className="table-of-content">
         {headings.map(heading => (
           <li

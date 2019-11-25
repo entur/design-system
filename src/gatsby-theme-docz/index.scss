@@ -30,11 +30,11 @@ body {
 .site-content {
   display: flex;
   flex-direction: column;
-  min-height: 87vh;
+  min-height: 95vh;
   margin: $space-default;
 
   @include for-desktop {
-    margin: 6rem 16rem 1rem 22rem;
+    margin-left: 22rem;
     max-width: 60rem;
   }
 }
