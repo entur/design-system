@@ -24,7 +24,7 @@ export const ComponentSearcher: React.FC<ComponentSearcherProps> = ({
         component.exportName.toLowerCase().includes(normalizedQuery) ||
         component.packageName.toLowerCase().includes(normalizedQuery),
     );
-  }, [allComponentsAlphabetically, query]);
+  }, [query]);
 
   let feedbackProps = {};
   if (!searchResults.length) {

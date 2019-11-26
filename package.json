@@ -27,6 +27,7 @@
     "packages/loader",
     "packages/menu",
     "packages/modal",
+    "packages/tab",
     "packages/table",
     "packages/tokens",
     "packages/tooltip",
