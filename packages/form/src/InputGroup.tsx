@@ -6,6 +6,7 @@ import {
   ValidationInfoIcon,
 } from '@entur/icons';
 import { Label, SmallText } from '@entur/typography';
+import classNames from 'classnames';
 import { VariantType } from './variants';
 import './InputGroup.scss';
 
@@ -17,6 +18,8 @@ export function useVariant(): VariantType | null {
 }
 
 export type InputGroupProps = {
+  /** Ekstra klassenavn */
+  className?: string;
   /** Tekst/label over en form-komponent */
   label?: string;
   /** Varselmelding, som vil komme under form-komponenten */
@@ -25,17 +28,20 @@ export type InputGroupProps = {
   variant?: VariantType;
   /** En form-komponent */
   children: React.ReactNode;
+  [key: string]: any;
 };
 
 export const InputGroup: React.FC<InputGroupProps> = ({
+  className,
   label,
   feedback,
   variant = null,
   children,
+  ...rest
 }) => {
   return (
     <InputGroupContext.Provider value={variant}>
-      <div className="eds-input-group">
+      <div className={classNames('eds-input-group', className)} {...rest}>
         <Label style={{ display: 'block' }}>
           <span className="eds-input-group__label">{label}</span>
           {children}
