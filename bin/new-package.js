@@ -3,17 +3,6 @@ const inquirer = require('inquirer');
 const fs = require('fs-extra');
 const path = require('path');
 const toCase = require('case');
-const { spawnSync } = require('child_process');
-
-function sortByKey([prevKey], [nextKey]) {
-  if (prevKey < nextKey) {
-    return -1;
-  }
-  if (prevKey > nextKey) {
-    return 1;
-  }
-  return 0;
-}
 
 async function run() {
   try {
@@ -101,7 +90,19 @@ async function run() {
 
     console.log('✅ Package created!');
     console.log(
-      'Now, remember to document it thoroughly, and write some tests!',
+      '🔥 There is a few things you need to remember to do manually, though:',
+    );
+    console.log(
+      ' 👉 Add your new package to src/utils/componentsList.ts. This will make your exports show up in the component overview.',
+    );
+    console.log(
+      ' 👉 Write thorough documentation with examples, usage guidelines etc.',
+    );
+    console.log(
+      ' 👉 Update the README.md with links to your documentation\n\n',
+    );
+    console.log(
+      "💪 That's it! Have fun creating your new package - it's gonna be savage!",
     );
   } catch (e) {
     console.error('🙀 Something went wrong - exiting in a dirty state', e);

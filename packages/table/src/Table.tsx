@@ -1,14 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
+export type TableProps = {
+  /** Ekstra klassenavn */
+  className?: string;
   /** Lager en mer kompakt tabell. Typisk for sider med høy informasjonstetthet */
   compact?: boolean;
   /** Setter kolonne-layout til å være uavhengig av innhold */
   fixed?: boolean;
   /** Innholdet i tabellen */
   children: React.ReactNode;
-}
+};
 export const Table: React.FC<TableProps> = ({
   className,
   fixed = false,

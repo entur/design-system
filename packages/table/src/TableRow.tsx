@@ -1,10 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
+type TableRowProps = {
   /** Tabellceller */
   children: React.ReactNode;
-}
+  /** Ekstra klassenavn */
+  className?: string;
+};
 
 export const TableRow: React.FC<TableRowProps> = ({ className, ...rest }) => (
   <tr className={classNames('eds-table__row', className)} {...rest} />

@@ -11,7 +11,7 @@ export type FieldsetProps = {
   /** Labelen til felt-gruppen. */
   label?: React.ReactNode;
   [key: string]: any;
-} & React.HTMLProps<HTMLFieldSetElement>;
+};
 
 export const Fieldset: React.FC<FieldsetProps> = ({
   children,
