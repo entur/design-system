@@ -1,0 +1,161 @@
+---
+name: Tabs
+parent: Komponenter
+route: /komponenter/layout-and-surfaces/tabs
+menu: Layout & Surfaces
+npmPackage: tab
+---
+
+import { Props } from 'docz';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { Heading3, Paragraph } from '@entur/typography';
+import { Button } from '@entur/button';
+import { InputGroup, TextField, TextArea } from '@entur/form';
+import { BannerAlertBox } from '@entur/alert';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Tabs lar oss designe grupperte brukergrensesnitt på en enkel måte
+</PageHeader>
+
+<Playground hideContrastOption>
+  <Tabs>
+    <TabList>
+      <Tab>Priser</Tab>
+      <Tab>Detaljer</Tab>
+      <Tab disabled>Disabled</Tab>
+      <Tab>Avansert</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <Heading3>Informasjon</Heading3>
+        <Paragraph>
+          Et tab-panel kan inneholde masse informasjon, sortert og gruppert
+          etter kategori.
+        </Paragraph>
+        <Paragraph>
+          Man kan ha langt innhold eller kort innhold, og tab-panelet vil
+          tilpasse seg underveis.
+        </Paragraph>
+      </TabPanel>
+      <TabPanel>
+        <Heading3>Priser</Heading3>
+        <InputGroup label="Pris">
+          <TextField defaultValue="99,00" />
+        </InputGroup>
+        <InputGroup>
+          <TextArea defaultValue="Prisen er inkludert MVA" />
+        </InputGroup>
+        <Button variant="primary">Lagre</Button>
+      </TabPanel>
+      <TabPanel />
+      <TabPanel>
+        <Heading3>Avansert</Heading3>
+        <img
+          src="https://media.giphy.com/media/TlK63EWh6J1puKmzYmQ/giphy.gif"
+          alt="Thomas-toget"
+        />
+      </TabPanel>
+    </TabPanels>
+
+  </Tabs>
+</Playground>
+
+<BannerAlertBox variant="info" title="Ikke bruk denne i kontrast-seksjoner">
+  Denne komponenten er ikke tiltenkt bruk i kontrast-seksjoner.
+</BannerAlertBox>
+
+## Komponenter
+
+Tab-pakken består av mange forskjellige komponenter, som lar deg komponere en Tab-opplevelse som passer dine behov.
+
+Strukturen til et tabs-panel ser slik ut:
+
+```js
+<Tabs>
+  <TabList>
+    <Tab>Option 1</Tab>
+    <Tab>Option 2</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>Panel 1</TabPanel>
+    <TabPanel>Panel 2</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+Under får du en beskrivelse av alle komponentene og hvordan du kan sette dem sammen.
+
+### Tabs
+
+<ImportStatement imports="Tabs" />
+<Props of={Tabs} />
+
+`<Tabs />` brukes som en wrapper rundt tab-panelet.
+
+### Kontrollerbar om du vil
+
+I utgangspunktet så er Tabs-paneler selvstyrt. Du kan spesifisere `defaultIndex` for å si hvilket panel som skal være valgt by default.
+
+Om du ønsker, kan du også styre hvilket panel som er valgt programmatisk. Du kan sette valgt panel med `index`-propen, og `onChange` til å lytte på når brukeren ønsker å endre det.
+
+Her er et eksempel der man går fra 1 tab til en annen programmatisk:
+
+<Playground hideContrastOption>
+  {() => {
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    return (
+      <Tabs
+        index={currentIndex}
+        onChange={newIndex => setCurrentIndex(newIndex)}
+      >
+        <TabList>
+          <Tab>En tab</Tab>
+          <Tab>En annen tab</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Button
+              variant="primary"
+              onClick={() => setCurrentIndex(1)}
+              type="button"
+            >
+              Gå til den andre taben
+            </Button>
+          </TabPanel>
+          <TabPanel>Da er vi på tab nummer 2!</TabPanel>
+        </TabPanels>
+      </Tabs>
+    );
+  }}
+</Playground>
+
+### TabList
+
+<ImportStatement imports="TabList" />
+<Props of={TabList} />
+
+`<TabList />` er listen med tabs på toppen av siden. Denne kommer som første barn til `<Tabs />`, og godtar flere `<Tab />` barn.
+
+### Tab
+
+<ImportStatement imports="Tab" />
+<Props of={Tab} />
+
+`<Tab />` er hver av ark-fanene, og kan være `disabled` om man ønsker det. De inneholder som regel bare en enkel tekst.
+
+### TabPanels
+
+<ImportStatement imports="TabPanels" />
+<Props of={TabPanels} />
+
+`<TabPanels />` er wrapper-komponenten rundt alle panelene. Den tar ikke i mot noen spesielle props.
+
+### TabPanel
+
+<ImportStatement imports="TabPanel" />
+<Props of={TabPanel} />
+
+`<TabPanel />` er hvert innholdspanel. De må ligge i samme rekkefølge som overskriftene i `<TabList />`.

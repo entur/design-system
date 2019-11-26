@@ -41,13 +41,13 @@ Du kan inkludere CSSen i hver pakke i prosjektet ditt på den måten som passer 
 Du kan importere CSS-filen i en `.scss` eller `.less` fil med et `@import` statement:
 
 ```scss
-@import '~@entur/buttons/dist/styles.css';
+@import '~@entur/button/dist/styles.css';
 ```
 
 Om du bruker `webpack`, kan du bruke en loader ([her er en fin artikkel](https://medium.com/a-beginners-guide-for-webpack-2/webpack-loaders-css-and-sass-2cc0079b5b3a) som guider deg gjennom dette) til å importere det rett i JavaScripten din.
 
 ```js
-import '@entur/buttons/dist/styles.css';
+import '@entur/button/dist/styles.css';
 ```
 
 ## React-komponenter
@@ -63,6 +63,18 @@ Vi har ikke gjort noe arbeid her enda, fordi det ikke er flere teams internt som
 ## Typer
 
 Per i dag leveres alle pakker med komplette TypeScript typings. Vi vil prøve å få på plass Flow-types og vanlige prop types også på sikt, slik at dere får best mulig utvikleropplevelse uansett hvilket typesystem dere bruker.
+
+Alle typer er eksportert på toppnivå, og kan importeres for å brukes videre i egen kode.
+
+## Exports
+
+Designsystemets pakker benytter seg kun av [named exports](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export). Dette gjør at du alltid vil importere komponenter og funksjoner slik:
+
+```js
+import { EnKomponent, useEnHook } from '@entur/en-pakke';
+```
+
+Du vil med andre ord _aldri_ se default exports. Vi gjør dette så du slipper å gjette hva nettopp _denne_ pakken bruker.
 
 ## Spørsmål?
 

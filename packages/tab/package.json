@@ -1,9 +1,9 @@
 {
-  "name": "@entur/modal",
-  "version": "0.3.0",
+  "name": "@entur/tab",
+  "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/modal.esm.js",
+  "module": "dist/tab.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/modal"
+    "directory": "packages/tab"
   },
   "publishConfig": {
     "access": "public"
@@ -19,7 +19,6 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },
   "peerDependencies": {
@@ -27,10 +26,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "^0.4.2",
     "@entur/tokens": "^1.0.2",
-    "@reach/dialog": "^0.6.2",
-    "@types/reach__dialog": "^0.1.0",
+    "@reach/tabs": "^0.6.2",
     "classnames": "^2.2.6"
   }
 }

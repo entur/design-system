@@ -10,6 +10,7 @@ import * as layout from '@entur/layout';
 import * as loader from '@entur/loader';
 import * as menu from '@entur/menu';
 import * as modal from '@entur/modal';
+import * as tab from '@entur/tab';
 import * as table from '@entur/table';
 import * as tooltip from '@entur/tooltip';
 import * as typography from '@entur/typography';
@@ -25,6 +26,7 @@ const allComponentsByPackage = {
   loader,
   menu,
   modal,
+  tab,
   table,
   tooltip,
   typography,
