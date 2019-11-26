@@ -14,7 +14,6 @@
   border-radius: $border-radiuses-default;
   color: $colors-brand-blue;
   display: flex;
-  overflow: hidden;
   position: relative;
   width: 100%;
 
@@ -139,8 +138,8 @@
   color: inherit;
   display: block;
   font-family: inherit;
-  font-size: inherit;
   line-height: $line-heights-medium;
+  font-size: $font-sizes-large;
   padding: $space-small $space-default;
   width: 100%;
 
