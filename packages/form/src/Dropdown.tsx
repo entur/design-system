@@ -22,7 +22,7 @@ export type DropdownProps = {
   /** Tekst eller ikon som kommer før dropdownen */
   prepend?: React.ReactNode;
   [key: string]: any;
-} & React.HTMLProps<HTMLSelectElement>;
+};
 
 export const Dropdown: React.FC<DropdownProps> = ({
   className,

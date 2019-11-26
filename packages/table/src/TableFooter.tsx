@@ -1,10 +1,9 @@
 import React from 'react';
 
-interface TableFooterProps
-  extends React.HTMLAttributes<HTMLTableSectionElement> {
+export type TableFooterProps = {
   /** Tabellrader */
   children: React.ReactNode;
-}
+};
 
 export const TableFooter: React.FC<TableFooterProps> = props => (
   <tfoot {...props} />
