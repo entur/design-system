@@ -1,0 +1,50 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown-option {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  border-radius: $border-radiuses-default;
+  z-index: $z-indexes-popover;
+  box-shadow: rgba(black, 0.2) 0 2px 4px 2px;
+  position: absolute;
+  z-index: 100000;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__item {
+    list-style: none;
+    width: 100%;
+    background-color: $colors-greys-grey40;
+    border-bottom: solid $colors-greys-grey20 $border-widths-default;
+    font-size: $font-sizes-large;
+    font-family: inherit;
+    padding: $space-small $space-default;
+    line-height: $line-heights-medium;
+    color: $colors-brand-blue;
+    .eds-contrast & {
+      color: $colors-brand-white;
+      background-color: $colors-blues-blue10;
+      border-bottom-color: rgba($colors-brand-white, 0.05);
+    }
+    svg.eds-icon {
+      float: right;
+    }
+    &--highlighted {
+      background-color: $colors-blues-blue70;
+      .eds-contrast & {
+        background-color: $colors-blues-blue20;
+      }
+    }
+  }
+}
+
+.eds-form-control {
+  text-align: left;
+  svg.eds-icon {
+    float: right;
+  }
+}

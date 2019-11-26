@@ -1,0 +1,34 @@
+{
+  "name": "@entur/dropdown",
+  "version": "0.1.0",
+  "license": "EUPL-1.2",
+  "main": "dist/index.js",
+  "module": "dist/dropdown.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/enturas/design-system.git",
+    "directory": "packages/dropdown"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@entur/form": "^1.2.0",
+    "classnames": "^2.2.6",
+    "downshift": "^3.4.2"
+  }
+}
