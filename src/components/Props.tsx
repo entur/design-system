@@ -32,6 +32,7 @@ const Props: React.FC<PropsProps> = ({
     details => details.defaultValue,
   );
   const isDefaultOpenSet = defaultOpen !== undefined;
+
   return (
     <ExpandableText
       title={title}
