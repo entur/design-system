@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useCurrentDoc } from 'docz';
 import { Location } from '@reach/router';
 import ogImageSrc from './ogImage.jpg';
+import favicon from './favicon.ico';
 
 type SeoProps = {
   /** En beskrivelse av siden, maks 155 tegn */
@@ -26,6 +27,7 @@ const SEO: React.FC<SeoProps> = props => {
       {({ location }) => (
         <Helmet>
           <html lang="nb-no" />
+          <link rel="shortcut icon" type="image/png" href={favicon} />
           <title>{currentDoc.name || title} | Entur Designsystem</title>
           <meta name="description" content={description} />
           <meta property="og:title" content={title} />
