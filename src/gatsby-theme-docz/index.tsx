@@ -7,6 +7,7 @@ import SiteFooter from '~/components/SiteFooter';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
 import SettingsPanel from '~/components/SettingsPanel';
+import SEO from '~/gatsby-theme-docz/base/Seo';
 import Props from '~/components/Props';
 import Menu from './UI/Menu';
 import FrontPageMenu from './UI/FrontPageMenu';
@@ -38,6 +39,7 @@ const App: React.FC = ({ children }) => {
           </SkipToContent>
           {isFrontPage ? (
             <>
+              <SEO title="Velkommen" />
               <FrontPageMenu />
               <main id="site-content" className="frontpage-site-content">
                 {children}
@@ -46,6 +48,7 @@ const App: React.FC = ({ children }) => {
             </>
           ) : (
             <>
+              <SEO />
               <Menu />
               <div className="site-content">
                 <main id="site-content">{children}</main>
