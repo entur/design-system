@@ -48,6 +48,8 @@
 
   &[aria-selected='true'] {
     border-color: $colors-brand-blue;
+    color: $colors-brand-blue;
+    font-weight: $font-weights-heading;
 
     &::before {
       background-color: $colors-brand-white;
