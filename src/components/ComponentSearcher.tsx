@@ -5,6 +5,7 @@ import {
   allComponentsAlphabetically,
   ComponentRepresentationType,
 } from '../utils/componentList';
+import { Heading3 } from '@entur/typography';
 
 type ComponentSearcherProps = {
   children: (component: ComponentRepresentationType) => React.ReactNode;
@@ -26,23 +27,10 @@ export const ComponentSearcher: React.FC<ComponentSearcherProps> = ({
     );
   }, [query]);
 
-  let feedbackProps = {};
-  if (!searchResults.length) {
-    feedbackProps = { variant: 'error', feedback: 'Ingen treff!' };
-  } else if (searchResults.length < allComponentsAlphabetically.length) {
-    feedbackProps = {
-      feedback: `${searchResults.length} søkeresultat${
-        searchResults.length !== 1 ? 'er' : ''
-      }`,
-      variant: 'info',
-    };
-  }
-
   return (
     <div>
       <InputGroup
         label="Søk etter komponenter"
-        {...feedbackProps}
         style={{ maxWidth: '20rem', marginBottom: space.extraLarge }}
       >
         <TextField
@@ -53,6 +41,9 @@ export const ComponentSearcher: React.FC<ComponentSearcherProps> = ({
           placeholder="f.eks. SideNavigationItem"
         />
       </InputGroup>
+      <Heading3 as="p">
+        {searchResults.length ? searchResults.length : 'Ingen'} treff
+      </Heading3>
       {searchResults.map(children)}
     </div>
   );
