@@ -107,7 +107,7 @@
   color: var(--primary-text-color);
 
   & + & {
-    padding-top: $space-medium;
+    padding-top: $space-extra-small;
   }
 
   @include for-desktop {

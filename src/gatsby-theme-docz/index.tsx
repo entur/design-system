@@ -46,8 +46,8 @@ const App: React.FC = ({ children }) => {
             </>
           ) : (
             <>
+              <Menu />
               <div className="site-content">
-                <Menu />
                 <main id="site-content">{children}</main>
                 <SiteFooter />
               </div>

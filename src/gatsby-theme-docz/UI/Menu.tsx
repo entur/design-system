@@ -9,7 +9,7 @@ import './Menu.scss';
 export default function Menus() {
   return (
     <>
-      <nav className="site-navbar">
+      <nav className="top-navigation">
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
         <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
         <NavItem to="/visuell-identitet">Visuell Identitet</NavItem>

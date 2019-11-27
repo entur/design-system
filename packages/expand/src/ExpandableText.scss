@@ -4,7 +4,7 @@
   appearance: none;
   margin: 0;
   border: none;
-  padding: $space-small;
+  padding: $space-small 0;
   cursor: pointer;
   font-family: inherit;
   color: inherit;
@@ -23,7 +23,7 @@
 
 .eds-expandable-text__arrow {
   transition: ($timings-fast + $timings-fast) transform ease-out;
-  margin-left: 1em;
+  margin-left: $space-extra-small;
   &--open {
     transform: rotate(-180deg);
   }
