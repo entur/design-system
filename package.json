@@ -88,6 +88,7 @@
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
     "docz": "^2.1.1",
+    "gatsby-plugin-google-analytics": "^2.1.29",
     "gatsby-plugin-sass": "^2.1.20",
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
