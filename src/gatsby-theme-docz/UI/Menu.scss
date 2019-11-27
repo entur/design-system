@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-.site-navbar {
+.top-navigation {
   display: flex;
   background-color: var(--primary-background-color);
   overflow-x: scroll;
@@ -22,9 +22,9 @@
   @include for-desktop {
     background-color: var(--primary-background-color);
     overflow-x: initial;
-    width: 100%;
-    padding: 0rem;
-    max-width: 60rem;
+    width: auto;
+    padding: $space-default;
+    margin-right: 5rem;
     justify-content: flex-end;
   }
 }

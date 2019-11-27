@@ -31,7 +31,6 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
           <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
             {installText}
           </CopyablePreformattedText>
-
           <CopyablePreformattedText successMessage="CSS-importen ble kopiert til utklippstavla.">
             {cssImport}
           </CopyablePreformattedText>
