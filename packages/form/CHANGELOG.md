@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.2.1...@entur/form@1.3.0) (2019-11-27)
+
+### Bug Fixes
+
+- **types:** simplify the types to avoid extraneous props ([571ac56](https://bitbucket.org/enturas/design-system/commits/571ac568abb5a6b2c353d5711418d1058b51a91b))
+
+### Features
+
+- **InputGroup:** add support for custom class names and extra props ([aaf68de](https://bitbucket.org/enturas/design-system/commits/aaf68de25959c793c5dafdc73452feb5ae63b68f))
+
 ## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.2.0...@entur/form@1.2.1) (2019-11-25)
 
 ### Bug Fixes
