@@ -2,7 +2,7 @@ import React from 'react';
 import { SettingsIcon } from '@entur/icons';
 import { Button } from '@entur/button';
 import { Heading4 } from '@entur/typography';
-import { InputGroup } from '@entur/form';
+import { Dropdown, InputGroup } from '@entur/form';
 import {
   useSettings,
   UserType,
@@ -41,19 +41,17 @@ const SettingsPanel: React.FC = () => {
         <form onSubmit={() => setOpen(false)}>
           <Heading4 as="h2">Innstillinger</Heading4>
           <InputGroup label="Hva slags bruker er du?">
-            <select
-              className="eds-dropdown"
+            <Dropdown
               onChange={e => setUserType(e.target.value as UserType)}
               value={userType}
             >
               <option value="developer">Utvikler</option>
               <option value="designer">Designer</option>
-            </select>
+            </Dropdown>
           </InputGroup>
           {userType === 'developer' && (
             <InputGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
-              <select
-                className="eds-dropdown"
+              <Dropdown
                 onChange={e =>
                   setPackageManager(e.target.value as PackageManager)
                 }
@@ -61,11 +59,11 @@ const SettingsPanel: React.FC = () => {
               >
                 <option value="yarn">yarn</option>
                 <option value="npm">npm</option>
-              </select>
+              </Dropdown>
             </InputGroup>
           )}
           <InputGroup label="Hva slags variabler vil du se?">
-            <select
+            <Dropdown
               className="eds-dropdown"
               onChange={e =>
                 setVariableFormat(e.target.value as VariableFormat)
@@ -76,7 +74,7 @@ const SettingsPanel: React.FC = () => {
               <option value="scss">SCSS</option>
               <option value="less">LESS</option>
               <option value="js">JavaScript</option>
-            </select>
+            </Dropdown>
           </InputGroup>
           <Button variant="primary" width="fluid" style={{ marginTop: '1rem' }}>
             Lagre

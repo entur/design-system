@@ -9,18 +9,14 @@ import './Menu.scss';
 export default function Menus() {
   return (
     <>
-      <nav className="site-navbar">
-        <div className="tab-link-container">
-          <NavItem to="/kom-i-gang">Kom i gang</NavItem>
-          <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
-          <NavItem to="/visuell-identitet">Visuell Identitet</NavItem>
-          <NavItem to="/komponenter">Komponenter</NavItem>
-        </div>
+      <nav className="top-navigation">
+        <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+        <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
+        <NavItem to="/visuell-identitet">Visuell Identitet</NavItem>
+        <NavItem to="/komponenter">Komponenter</NavItem>
       </nav>
       <SiteSidebar />
-      <nav className="heading-navigator-wrapper">
-        <TocNavigation />
-      </nav>
+      <TocNavigation />
     </>
   );
 }

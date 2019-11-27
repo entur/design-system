@@ -9,9 +9,11 @@ export type ModalOverlayProps = {
   onDismiss?: () => void;
   /** Innholdet i modalen */
   children: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
   /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen */
   initialFocusRef?: React.RefObject<HTMLElement>;
-} & React.HTMLProps<HTMLDivElement>;
+};
 
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   className,

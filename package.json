@@ -27,6 +27,7 @@
     "packages/loader",
     "packages/menu",
     "packages/modal",
+    "packages/tab",
     "packages/table",
     "packages/tokens",
     "packages/tooltip",
@@ -83,14 +84,17 @@
   },
   "dependencies": {
     "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
+    "@reach/router": "^1.2.1",
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
-    "docz": "^2.0.0-rc.76",
+    "docz": "^2.1.1",
+    "gatsby-plugin-google-analytics": "^2.1.29",
     "gatsby-plugin-sass": "^2.1.20",
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-helmet-async": "^1.0.4",
     "react-live": "^2.2.1",
     "wcag-contrast": "^3.0.0"
   }

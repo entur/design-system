@@ -5,7 +5,9 @@ import { DialogContent } from '@reach/dialog';
 export type ModalContentProps = {
   /** Innholdet i modalen */
   children: React.ReactNode;
-} & React.HTMLProps<HTMLDivElement>;
+  /** Ekstra klassenavn */
+  className?: string;
+};
 
 export const ModalContent: React.FC<ModalContentProps> = ({
   className,

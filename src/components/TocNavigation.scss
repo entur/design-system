@@ -1,19 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
-
 .table-of-content-container {
   display: none;
 
-  @include for-desktop {
+  @media screen and (min-width: 100rem) {
     display: block;
     position: fixed;
-    right: $space-extra-large;
-    top: $space-extra-large6;
+    left: 85rem;
+    top: 11.5rem;
   }
 }
 .table-of-content {

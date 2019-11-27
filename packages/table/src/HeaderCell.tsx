@@ -1,11 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-interface HeaderCellProps
-  extends React.ThHTMLAttributes<HTMLTableDataCellElement> {
+export type HeaderCellProps = {
   /** Kolonneoverskrift */
   children: React.ReactNode;
-}
+  /** Ekstra klassenavn */
+  className?: string;
+};
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({
   className,

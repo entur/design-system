@@ -11,6 +11,7 @@
 @import '~@entur/loader/dist/styles.css';
 @import '~@entur/menu/dist/styles.css';
 @import '~@entur/modal/dist/styles.css';
+@import '~@entur/tab/dist/styles.css';
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/tooltip/dist/styles.css';
 @import '~@entur/typography/dist/styles.css';
@@ -30,11 +31,11 @@ body {
 .site-content {
   display: flex;
   flex-direction: column;
-  min-height: 87vh;
+  min-height: 95vh;
   margin: $space-default;
 
   @include for-desktop {
-    margin: 6rem 16rem 1rem 22rem;
+    margin-left: 22rem;
     max-width: 60rem;
   }
 }

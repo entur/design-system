@@ -1,0 +1,33 @@
+{
+  "name": "@entur/tab",
+  "version": "0.2.0",
+  "license": "EUPL-1.2",
+  "main": "dist/index.js",
+  "module": "dist/tab.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/enturas/design-system.git",
+    "directory": "packages/tab"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@entur/tokens": "^1.0.2",
+    "@reach/tabs": "^0.6.2",
+    "classnames": "^2.2.6"
+  }
+}

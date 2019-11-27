@@ -12,28 +12,19 @@
   width: 100%;
 }
 
-.site-navbar {
+.top-navigation {
   display: flex;
   background-color: var(--primary-background-color);
   overflow-x: scroll;
   width: 100%;
   padding: 1rem 1rem 0rem;
+
   @include for-desktop {
     background-color: var(--primary-background-color);
     overflow-x: initial;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: $z-indexes-sticky;
+    width: auto;
+    padding: $space-default;
+    margin-right: 5rem;
+    justify-content: flex-end;
   }
-}
-
-.tab-link-container {
-  flex: 1 0 auto;
-  background: $colors-brand-white;
-  width: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 }

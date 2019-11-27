@@ -6,11 +6,9 @@ import './FrontPageMenu.scss';
 
 function FrontPageMenu() {
   return (
-    <nav className="frontpage-menu-navbar">
-      <Link to="/" className="frontpage--logo">
-        <img src={LogoDark} alt="Entur logo" />
-      </Link>
-      <div className="frontpage-tab-link-container">
+    <header className="frontpage-header">
+      <img src={LogoDark} alt="Entur logo" className="frontpage-header__logo" />
+      <nav className="frontpage-header__navigation">
         <TopNavigationItem as={Link} to="/kom-i-gang">
           Kom i gang
         </TopNavigationItem>
@@ -23,8 +21,8 @@ function FrontPageMenu() {
         <TopNavigationItem as={Link} to="/komponenter">
           Komponenter
         </TopNavigationItem>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
 

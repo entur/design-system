@@ -1,18 +1,17 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.frontpage {
-  &-menu-navbar {
-    border-bottom: $colors-greys-grey20 solid $border-widths-small;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $space-default;
-    background-color: var(--primary-background-color);
-  }
-  &-tab-link-container {
-    display: flex;
-  }
-  &--logo img {
-    width: 15rem;
-  }
+.frontpage-header {
+  border-bottom: $colors-greys-grey20 solid $border-widths-small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-default;
+  background-color: var(--primary-background-color);
+}
+.frontpage-header__logo {
+  width: 15rem;
+}
+.frontpage-header__navigation {
+  display: flex;
+  margin-right: 5rem;
 }
