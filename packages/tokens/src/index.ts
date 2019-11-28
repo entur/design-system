@@ -89,6 +89,11 @@ export const colors = {
   },
 };
 
+export const shadows = {
+  focus: `0 0 0.125rem 0.125rem rgba(${colors.misc.focus}, 0.5)`,
+  shadow: 'rgba(0, 0, 0, 0.2) 0 0.125rem 0.25rem 0.125rem',
+};
+
 // Dimensions
 const spaceScale = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
 export const space = {
