@@ -42,7 +42,7 @@ a.eds-button {
   vertical-align: top;
   &:focus {
     outline: none;
-    box-shadow: 0 0 0.25rem 0.125rem $colors-misc-focus;
+    box-shadow: $shadows-focus;
   }
 
   .eds-icon {

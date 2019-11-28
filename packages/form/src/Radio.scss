@@ -32,7 +32,7 @@
         }
       }
       &:focus ~ .eds-form-component--radio__radio {
-        box-shadow: 0 0 (1rem / 8) (1rem / 8) $colors-misc-focus;
+        box-shadow: $shadows-focus;
       }
     }
     .eds-form-component--radio__radio {

@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 .eds-action-chip {
   &:focus {
-    box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
+    box-shadow: $shadows-focus;
     outline: none;
   }
   &:hover {
