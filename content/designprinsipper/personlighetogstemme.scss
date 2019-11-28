@@ -1,8 +1,8 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-red-arrow {
+.red-arrow {
   background-color: $colors-brand-coral;
-  width: 27rem;
+  width: 100%;
   height: 0.125rem;
   display: inline-block;
   position: relative;
@@ -21,6 +21,6 @@
   }
   &::after {
     transform: rotate(-45deg);
-    left: 26.7rem;
+    right: 0rem;
   }
 }

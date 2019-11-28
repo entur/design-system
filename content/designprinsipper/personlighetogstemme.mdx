@@ -1,11 +1,12 @@
 ---
-name: Personlighet og Stemme
+name: Personlighet og stemme
 route: /design-prinsipper/personlighetogstemme
 parent: Designprinsipper
 ---
 
 import PageHeader from '~/components/PageHeader';
 import { BannerAlertBox } from '@entur/alert';
+import { VisuallyHidden } from '@entur/a11y';
 import * as tokens from '@entur/tokens';
 import './personlighetogstemme.scss';
 
@@ -48,18 +49,26 @@ For å sjonglere mellom disse hovedkategoriene kan vi se for oss at kommunikasjo
 <div
   style={{
     backgroundColor: tokens.colors.greys.grey30,
-    padding: '2rem',
-    width: '35rem',
+    padding: tokens.space.extraLarge2,
+    width: '80%',
   }}
 >
   <div>Hvilke tone skal vi ha i språket?</div>
   <div
     style={{ padding: '7rem 2rem', display: 'flex', flexDirection: 'column' }}
   >
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        fontWeight: '600',
+        marginBottom: '0.5rem',
+      }}
+    >
       <div>Personlig</div> <div>Profesjonell</div>
     </div>
-    <div className="eds-red-arrow"></div>
+    <VisuallyHidden>Toveis pil fra personlig til profesjonell</VisuallyHidden>
+    <div className="red-arrow" />
   </div>
 </div>
 
