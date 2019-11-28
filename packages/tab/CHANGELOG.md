@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.0...@entur/tab@0.2.1) (2019-11-28)
+
+### Bug Fixes
+
+- **Tab:** tweak design of selected tabs ([4420310](https://bitbucket.org/enturas/design-system/commits/4420310e8710508a5615e481a88216fbca2239fa))
+
 # 0.2.0 (2019-11-27)
 
 ### Bug Fixes

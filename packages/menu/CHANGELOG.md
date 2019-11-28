@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.0...@entur/menu@1.0.1) (2019-11-28)
+
+### Bug Fixes
+
+- **SideNavigationGroup:** reduce vertical padding between elements ([3a4131a](https://bitbucket.org/enturas/design-system/commits/3a4131a957634a46dcd29870cb301542fecdb6dc))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@0.5.0...@entur/menu@1.0.0) (2019-11-22)
 
 ### Bug Fixes
