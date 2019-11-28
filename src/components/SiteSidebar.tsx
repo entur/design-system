@@ -65,7 +65,7 @@ export const SiteSidebar: React.FC = () => {
   const currentDoc = useCurrentDoc();
   const menuItems =
     useMenus({
-      filter: item => hasSameParentCategory(item, currentDoc),
+      filter: item => hasSameParentCategory(item, currentDoc) && !item.index,
     }) || [];
 
   return (

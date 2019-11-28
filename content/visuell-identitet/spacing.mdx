@@ -5,5 +5,124 @@ route: /visuell-identitet/spacing
 ---
 
 import PageHeader from '~/components/PageHeader';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  DataCell,
+  HeaderCell,
+} from '@entur/table';
 
-<PageHeader />
+<PageHeader>
+  Spacing brukes konsekvent på margin og padding for å oppnå konsistens på tvers
+  av komponenter og UI.
+</PageHeader>
+
+Vårt spacing system baserer seg på standardariserte klesstørrelser fra XS til XXXL.
+Spacing M er default. Størrelsesskalaen baserer seg på 8 gangen som gjør det enkelt å skalere for et bredt utvalg av størrelser.
+
+Vi skal forholde oss til denne skalaen når vi skal definere ulike avstandsituasjoner.
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Navn</HeaderCell>
+      <HeaderCell>Sass variabel</HeaderCell>
+      <HeaderCell>Rem</HeaderCell>
+      <HeaderCell>px</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell>XXS</DataCell>
+      <DataCell>$space-extra-small2</DataCell>
+      <DataCell>0.25</DataCell>
+      <DataCell>4</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>XS</DataCell>
+      <DataCell>$space-extra-small</DataCell>
+      <DataCell>0.5</DataCell>
+      <DataCell>8</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>S</DataCell>
+      <DataCell>$space-small</DataCell>
+      <DataCell>0.75</DataCell>
+      <DataCell>12</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>M (Default)</DataCell>
+      <DataCell>$space-medium</DataCell>
+      <DataCell>1</DataCell>
+      <DataCell>16</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>L</DataCell>
+      <DataCell>$space-large</DataCell>
+      <DataCell>1.5</DataCell>
+      <DataCell>24</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>XL</DataCell>
+      <DataCell>$space-extra-large</DataCell>
+      <DataCell>2</DataCell>
+      <DataCell>32</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>2XL</DataCell>
+      <DataCell>$space-extra-large2</DataCell>
+      <DataCell>2.5</DataCell>
+      <DataCell>40</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>3XL</DataCell>
+      <DataCell>$space-extra-large3</DataCell>
+      <DataCell>3</DataCell>
+      <DataCell>48</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>4XL</DataCell>
+      <DataCell>$space-extra-large4</DataCell>
+      <DataCell>3.5</DataCell>
+      <DataCell>56</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>5XL</DataCell>
+      <DataCell>$space-extra-large5</DataCell>
+      <DataCell>4</DataCell>
+      <DataCell>64</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>6XL</DataCell>
+      <DataCell>$space-extra-large6</DataCell>
+      <DataCell>4.5</DataCell>
+      <DataCell>72</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>7XL</DataCell>
+      <DataCell>$space-extra-large7</DataCell>
+      <DataCell>5</DataCell>
+      <DataCell>80</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>8XL</DataCell>
+      <DataCell>$space-extra-large8</DataCell>
+      <DataCell>5.5</DataCell>
+      <DataCell>88</DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell>9XL</DataCell>
+      <DataCell>$space-extra-large9</DataCell>
+      <DataCell>6</DataCell>
+      <DataCell>96</DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Retningslinjer for bruk
+
+Spacing brukes f.eks innenfor konteksten til en komponent (dvs. avstand mellom en label og et inputfelt).
+
+Det kan også brukes til å lage en god avstand mellom komponenter i en layout (dvs. avstand mellom et inputfelt og en nedtrekksmeny). Denne avstandsskalaen kontrollerer mengden av whitespace mellom komponenter og layout.
