@@ -19,19 +19,33 @@ import dontPic from './ButtonDont.png';
 import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
 
 <PageHeader>
-  Knapper lar brukerne gjøre handlinger og ta valg med ett klikk.
+  Knapper lar brukerne gjøre handlinger og ta valg med et klikk.
 </PageHeader>
 
 <Playground>
-  <ButtonGroup>
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="success">Success</Button>
-    <Button variant="negative">Danger</Button>
-    <Button variant="primary" loading={true}>
-      Laster...
-    </Button>
-  </ButtonGroup>
+  {() => {
+    const [loading, setLoading] = React.useState(null);
+    const getLoadingProps = name => ({
+      loading: loading === name,
+      onClick: () => setLoading(prev => (prev === name ? null : name)),
+    });
+    return (
+      <ButtonGroup>
+        <Button variant="primary" {...getLoadingProps('primary')}>
+          Lagre
+        </Button>
+        <Button variant="secondary" {...getLoadingProps('secondary')}>
+          Avbryt
+        </Button>
+        <Button variant="success" {...getLoadingProps('success')}>
+          Kjøp
+        </Button>
+        <Button variant="negative" {...getLoadingProps('negative')}>
+          Slett konto
+        </Button>
+      </ButtonGroup>
+    );
+  }}
 </Playground>
 
 ## Komponenter
@@ -146,6 +160,8 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
 </ComponentRuler.Wrapper>
 
 ### Aktiv vs inaktiv knapp
+
+Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre.
 
 <BestPractices>
   <Example type="do" src={doPic}>
