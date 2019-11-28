@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.3.0...@entur/form@1.3.1) (2019-11-28)
+
+### Bug Fixes
+
+- **Dropdown:** fix bug where dropdown options don't show ([703fd9a](https://bitbucket.org/enturas/design-system/commits/703fd9a035aab7218787e487939e42b44979b112))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.2.1...@entur/form@1.3.0) (2019-11-27)
 
 ### Bug Fixes

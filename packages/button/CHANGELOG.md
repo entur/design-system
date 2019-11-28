@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.2.0...@entur/button@1.2.1) (2019-11-28)
+
+### Bug Fixes
+
+- **Button:** add disabled styles to buttons ([745acca](https://bitbucket.org/enturas/design-system/commits/745acca56cf245cc21af3d7f6ae73a675571f82d))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.1.0...@entur/button@1.2.0) (2019-11-25)
 
 ### Features
