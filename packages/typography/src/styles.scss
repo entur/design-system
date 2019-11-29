@@ -109,6 +109,23 @@ html {
   line-height: $line-heights-medium;
 }
 
+.eds-h1,
+.eds-h2,
+.eds-h3,
+.eds-h4,
+.eds-h5,
+.eds-h6 {
+  &--margin-top {
+    margin-bottom: 0;
+  }
+  &--margin-bottom {
+    margin-top: 0;
+  }
+  &--margin-none {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
 // Body text and inline element styling
 .eds-paragraph {
   color: inherit;

@@ -39,7 +39,9 @@ export const ModalContent: React.FC<ModalContentProps> = ({
       )}
       {...rest}
     >
-      <Heading as="h2">{title}</Heading>
+      <Heading margin="bottom" as="h2">
+        {title}
+      </Heading>
       {children}
     </DialogContent>
   );
