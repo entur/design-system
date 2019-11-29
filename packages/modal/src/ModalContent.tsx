@@ -22,6 +22,11 @@ const headingsMap = {
   extraLarge: Heading2,
 };
 
+const useRandomId = (prefix: string) => {
+  const randomNumber = React.useRef(String(Math.random()).substring(2));
+  return `${prefix}-${randomNumber.current}`;
+};
+
 export const ModalContent: React.FC<ModalContentProps> = ({
   children,
   className,
@@ -30,6 +35,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   ...rest
 }) => {
   const Heading = headingsMap[size] || Heading2;
+  const randomId = useRandomId('eds-modal');
   return (
     <DialogContent
       className={classNames(
@@ -37,9 +43,10 @@ export const ModalContent: React.FC<ModalContentProps> = ({
         `eds-modal__content--size-${size}`,
         className,
       )}
+      aria-labelledby={randomId}
       {...rest}
     >
-      <Heading margin="bottom" as="h2">
+      <Heading margin="bottom" as="h2" id={randomId}>
         {title}
       </Heading>
       {children}
