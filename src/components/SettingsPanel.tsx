@@ -1,7 +1,6 @@
 import React from 'react';
 import { SettingsIcon } from '@entur/icons';
 import { Button } from '@entur/button';
-import { Heading4 } from '@entur/typography';
 import { Dropdown, InputGroup } from '@entur/form';
 import {
   useSettings,
