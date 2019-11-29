@@ -50,7 +50,7 @@ export const colors = {
     canary: '#efd358',
   },
   misc: {
-    focus: '#44c0ff',
+    focus: 'rgba(68, 192, 255, 0.5)',
     black: '#1a1a1a',
   },
   transport: {
@@ -87,6 +87,11 @@ export const colors = {
       mobility: '#00db9b',
     },
   },
+};
+
+export const shadows = {
+  focus: `0 0 0.125rem 0.125rem ${colors.misc.focus}`,
+  cardShadow: '0 0.125rem 0.25rem 0.125rem rgba(0, 0, 0, 0.2)',
 };
 
 // Dimensions

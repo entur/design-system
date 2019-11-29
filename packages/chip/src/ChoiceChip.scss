@@ -35,7 +35,7 @@
       }
     }
     &:focus ~ .eds-chip {
-      box-shadow: 0 0 (1rem/8) (1rem/8) $colors-misc-focus;
+      box-shadow: $shadows-focus;
     }
     &:not(:checked):not(:disabled):hover ~ .eds-chip {
       border-color: $colors-brand-blue;

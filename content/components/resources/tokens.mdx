@@ -155,4 +155,16 @@ Du kan lese mer om fargene våre i [visuell identitet-seksjonen](/visuell-identi
 
 ### Shadows
 
-<TokenTable tokenKey="shadows" />
+<TokenTable
+  tokenKey="shadows"
+  example={({ value }) => (
+    <div
+      style={{
+        border: `${borderWidths.default}px solid ${colors.misc.black}`,
+        boxShadow: value,
+        width: space.extraLarge,
+        height: space.extraLarge,
+      }}
+    />
+  )}
+/>
