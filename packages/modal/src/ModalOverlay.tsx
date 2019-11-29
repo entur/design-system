@@ -4,7 +4,7 @@ import { DialogOverlay } from '@reach/dialog';
 
 export type ModalOverlayProps = {
   /** Flagg som sier om modalen er åpen */
-  isOpen?: boolean;
+  open?: boolean;
   /** Callback som kalles når brukeren ber om å lukke modalen */
   onDismiss?: () => void;
   /** Innholdet i modalen */
@@ -17,10 +17,12 @@ export type ModalOverlayProps = {
 
 export const ModalOverlay: React.FC<ModalOverlayProps> = ({
   className,
+  open,
   ...rest
 }) => (
   <DialogOverlay
     className={classNames('eds-modal__overlay', className)}
+    isOpen={open}
     {...rest}
   />
 );

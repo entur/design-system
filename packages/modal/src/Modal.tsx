@@ -11,7 +11,7 @@ export type ModalProps = {
   /** En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen */
   initialFocusRef?: React.RefObject<HTMLElement>;
   /** Flagg som sier om modalen er åpen */
-  isOpen?: boolean;
+  open?: boolean;
   /** Callback som kalles når brukeren ber om å lukke modalen */
   onDismiss?: () => void;
   /** Størrelsen på modalen */
@@ -25,7 +25,7 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   closeLabel = 'Lukk',
   initialFocusRef,
-  isOpen,
+  open,
   onDismiss,
   size,
   ...rest
@@ -33,7 +33,7 @@ export const Modal: React.FC<ModalProps> = ({
   const showCloseButton = ['medium', 'large', 'extraLarge'].includes(size);
   return (
     <ModalOverlay
-      isOpen={isOpen}
+      open={open}
       onDismiss={onDismiss}
       initialFocusRef={initialFocusRef}
     >
