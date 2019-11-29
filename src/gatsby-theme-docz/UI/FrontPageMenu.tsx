@@ -16,7 +16,7 @@ function FrontPageMenu() {
           Designprinsipper
         </TopNavigationItem>
         <TopNavigationItem as={Link} to="/visuell-identitet">
-          Visuell Identitet
+          Visuell identitet
         </TopNavigationItem>
         <TopNavigationItem as={Link} to="/komponenter">
           Komponenter

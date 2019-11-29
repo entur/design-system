@@ -2,10 +2,11 @@
 name: Om Entur
 route: /kom-i-gang/om-entur
 parent: Kom i gang
-fullpage: true
+order: 1
 ---
 
 import PageHeader from '~/components/PageHeader';
+import './om-entur.scss';
 
 <PageHeader>
   Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
@@ -16,9 +17,23 @@ I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge å reise
 
 Entur bearbeider denne informasjonen, og syr den sammen slik at alle kan få tilgang til hele landets kollektivtilbud. Entur samler data om:
 
-- 589238 stoppesteder
-- 57 kollektivselskaper
-- 4000 daglige ruter
+<div className="stats-wrapper">
+  <div className="stats-box">
+    <div className="stats-box__number">58 9238</div>
+    <div className="stats-box__line"></div>
+    <div className="stats-box__text">stoppesteder</div>
+  </div>
+  <div className="stats-box">
+    <div className="stats-box__number">57</div>
+    <div className="stats-box__line"></div>
+    <div className="stats-box__text">kollektivselskaper</div>
+  </div>
+  <div className="stats-box">
+    <div className="stats-box__number">4000</div>
+    <div className="stats-box__line"></div>
+    <div className="stats-box__text">daglige ruter</div>
+  </div>
+</div>
 
 ## Våre kunder
 

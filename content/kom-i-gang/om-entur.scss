@@ -1,0 +1,26 @@
+@import '~@entur/tokens/dist/styles.scss';
+.stats {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: $space-extra-large;
+  }
+  &-box {
+    background: $colors-greys-grey30;
+    padding: $space-extra-large4 $space-extra-large2;
+    display: flex;
+    flex-direction: column;
+    &__number {
+      font-size: $font-sizes-extra-large3;
+      font-weight: $font-weights-heading;
+    }
+    &__line {
+      content: '';
+      display: block;
+      height: 0.1875rem;
+      margin: $space-extra-small 0 $space-extra-small2;
+      background-color: $colors-brand-coral;
+      width: 3rem;
+    }
+  }
+}
