@@ -21,8 +21,12 @@ import { ImportStatement } from '~/components/ImportStatement';
     const [isOpen, setOpen] = React.useState(false);
     return (
       <>
-        <Modal isOpen={isOpen} onDismiss={() => setOpen(false)}>
-          <Heading2>Ikke overbruk modaler</Heading2>
+        <Modal
+          open={isOpen}
+          onDismiss={() => setOpen(false)}
+          title="Her er en modal"
+          size="medium"
+        >
           <Paragraph>
             Modaler må kun vises etter en brukerinteraksjon, og skal ikke
             avbryte brukeren på noe vis.
@@ -48,7 +52,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 I de aller fleste tilfeller, så kan du bare bruke `<Modal />` komponenten direkte. Du kan rendre den hvor du vil i DOM-treet, den vil uansett dukke opp på riktig sted.
 
-Du kan enten sende inn en `isOpen` prop, eller rett og slett mounte/unmounte hele Modal-komponenten:
+Du kan enten sende inn en `open` prop, eller rett og slett mounte/unmounte hele Modal-komponenten:
 
 ```js
 const Settings = () => {

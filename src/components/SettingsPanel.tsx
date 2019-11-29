@@ -1,7 +1,6 @@
 import React from 'react';
 import { SettingsIcon } from '@entur/icons';
 import { Button } from '@entur/button';
-import { Heading4 } from '@entur/typography';
 import { Dropdown, InputGroup } from '@entur/form';
 import {
   useSettings,
@@ -34,12 +33,13 @@ const SettingsPanel: React.FC = () => {
         <SettingsIcon />
       </button>
       <Modal
-        isOpen={isOpen}
+        open={isOpen}
         onDismiss={() => setOpen(false)}
+        title="Innstillinger"
+        size="small"
         style={{ minWidth: '22rem' }}
       >
         <form onSubmit={() => setOpen(false)}>
-          <Heading4 as="h2">Innstillinger</Heading4>
           <InputGroup label="Hva slags bruker er du?">
             <Dropdown
               onChange={e => setUserType(e.target.value as UserType)}

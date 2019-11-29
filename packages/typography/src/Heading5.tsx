@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import { BaseHeading } from './BaseHeading';
 
 export type Heading5Props = {
   /** HTML-elementet eller React-komponenten som rendres */
@@ -8,11 +8,13 @@ export type Heading5Props = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
+  /** Hvor du vil ha marginer */
+  margin?: 'top' | 'bottom' | 'both' | 'none';
   [key: string]: any;
 };
 
 export const Heading5: React.FC<Heading5Props> = ({
-  as: Element = 'h5',
-  className,
+  as = 'h5',
+  margin = 'both',
   ...rest
-}) => <Element className={classNames('eds-h5', className)} {...rest} />;
+}) => <BaseHeading as={as} margin="both" {...rest} level={5} />;
