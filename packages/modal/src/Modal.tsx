@@ -14,6 +14,10 @@ export type ModalProps = {
   isOpen?: boolean;
   /** Callback som kalles når brukeren ber om å lukke modalen */
   onDismiss?: () => void;
+  /** Størrelsen på modalen */
+  size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
+  /** Tittelen som vises i modalen */
+  title: string;
   [key: string]: any;
 };
 
@@ -23,22 +27,28 @@ export const Modal: React.FC<ModalProps> = ({
   initialFocusRef,
   isOpen,
   onDismiss,
+  size,
   ...rest
-}) => (
-  <ModalOverlay
-    isOpen={isOpen}
-    onDismiss={onDismiss}
-    initialFocusRef={initialFocusRef}
-  >
-    <ModalContent {...rest}>
-      <button
-        className="eds-modal__close"
-        aria-label={closeLabel}
-        onClick={onDismiss}
-      >
-        <CloseIcon />
-      </button>
-      {children}
-    </ModalContent>
-  </ModalOverlay>
-);
+}) => {
+  const showCloseButton = ['medium', 'large', 'extraLarge'].includes(size);
+  return (
+    <ModalOverlay
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      initialFocusRef={initialFocusRef}
+    >
+      <ModalContent size={size} {...rest}>
+        {showCloseButton && (
+          <button
+            className="eds-modal__close"
+            aria-label={closeLabel}
+            onClick={onDismiss}
+          >
+            <CloseIcon />
+          </button>
+        )}
+        {children}
+      </ModalContent>
+    </ModalOverlay>
+  );
+};

@@ -21,12 +21,36 @@
   background: var(--primary-background-color);
   color: var(--primary-text-color);
   margin: auto;
-  min-width: 20rem;
   padding: $space-large;
   position: relative;
   outline: none;
-  width: fit-content;
+  width: 100%;
   z-index: $z-indexes-modal;
+
+  &--size-extra-small {
+    max-width: 21rem;
+    padding: $space-large;
+  }
+
+  &--size-small {
+    max-width: 28.125rem;
+    padding: $space-extra-large2;
+  }
+
+  &--size-medium {
+    max-width: 45rem;
+    padding: $space-extra-large3;
+  }
+
+  &--size-large {
+    max-width: 56.25rem;
+    padding: $space-extra-large3;
+  }
+
+  &--size-extra-large {
+    max-width: 78.75rem;
+    padding: $space-extra-large3;
+  }
 }
 
 .eds-modal__close {
@@ -37,6 +61,6 @@
   font-size: inherit;
   color: inherit;
   position: absolute;
-  top: $space-large;
-  right: $space-large;
+  top: $space-medium;
+  right: $space-medium;
 }
