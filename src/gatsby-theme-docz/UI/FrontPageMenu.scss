@@ -5,13 +5,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $space-default;
   background-color: var(--primary-background-color);
 }
 .frontpage-header__logo {
   width: 15rem;
+  margin: $space-extra-large $space-medium;
 }
 .frontpage-header__navigation {
   display: flex;
   margin-right: 5rem;
+  padding: $space-default;
 }

@@ -98,6 +98,21 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   menuItems,
   location,
 }) => {
+  function compare(a: MenuItem, b: MenuItem) {
+    // Use toUpperCase() to ignore character casing
+    const menuItemAOrder = a.order ? a.order : 1000;
+    const menuItemBOrder = b.order ? b.order : 1000;
+
+    let comparison = 0;
+    if (menuItemAOrder > menuItemBOrder) {
+      comparison = 1;
+    } else if (menuItemAOrder < menuItemBOrder) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+  menuItems.sort(compare);
+
   return (
     <SideNavigation>
       {menuItems.map(menuItem => (
