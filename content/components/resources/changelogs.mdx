@@ -12,6 +12,36 @@ import PageHeader from '~/components/PageHeader';
   en oppsummering av hva som har blitt lansert
 </PageHeader>
 
+### 2019-11-29
+
+- [@entur/a11y@0.2.1](https://www.npmjs.com/package/@entur/a11y)
+- [@entur/alert@0.5.1](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@1.2.2](https://www.npmjs.com/package/@entur/button)
+- [@entur/chip@0.2.1](https://www.npmjs.com/package/@entur/chip)
+- [@entur/expand@1.0.2](https://www.npmjs.com/package/@entur/expand)
+- [@entur/form@1.3.2](https://www.npmjs.com/package/@entur/form)
+- [@entur/layout@0.4.1](https://www.npmjs.com/package/@entur/layout)
+- [@entur/loader@0.3.1](https://www.npmjs.com/package/@entur/loader)
+- [@entur/menu@1.0.2](https://www.npmjs.com/package/@entur/menu)
+- [@entur/modal@1.0.0](https://www.npmjs.com/package/@entur/modal)
+- [@entur/tab@0.2.2](https://www.npmjs.com/package/@entur/tab)
+- [@entur/table@0.3.4](https://www.npmjs.com/package/@entur/table)
+- [@entur/tokens@1.1.0](https://www.npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.1.1](https://www.npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.6.0](https://www.npmjs.com/package/@entur/typography)
+
+Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/063faba53aff9f8a3248ca8880f9f1dd3db36a9d
+
+**TL;DR:**
+
+- Et par breaking changes i `@entur/modal`:
+  - `title` er en ny påkrevd prop. Denne lager overskriften i toppen av modalen din. I de fleste tilfeller kan du bare flytte tittelen du har sendt inn i `children` opp hit og fjerne JSXen.
+  - `size` er en ny påkrevd prop som styrer hvor bred modalen din vil være på større skjermer. Den tar verdiene `extraSmall`, `small`, `medium`, `large` og `extraLarge`.
+  - `isOpen` har endret navn til `open`, for å følge samme mønster som resten av designsystemet.
+- Ny tokens-kategori `shadows`! Per i dag har vi to - `focus` og `cardShadow`. Bruk dem om dere skal legge til skygger eller fokus-outlines noe sted!
+- Ny prop for `Heading1-6`-komponenter - `margin`! Den lar deg bestemme om du vil ha margin både over og under, enten over eller under, eller ingen i det hele tatt. Den tar verdiene `both`, `top`, `bottom` og `none`.
+- Tabs har fått en smule mer horisontal padding inni `TabPanels`.
+
 ### 2019-11-28
 
 - [@entur/button@1.2.1](https://www.npmjs.com/package/@entur/button)
