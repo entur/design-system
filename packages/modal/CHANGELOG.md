@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@0.3.1...@entur/modal@1.0.0) (2019-11-29)
+
+### Bug Fixes
+
+- **Modal, ModalOverlay:** rename isOpen to open ([c910829](https://bitbucket.org/enturas/design-system/commits/c910829527f3352e73c30ee4a2ae2c79c0d35070))
+- **ModalContent:** add aria-labelledby to use the title as label ([400117c](https://bitbucket.org/enturas/design-system/commits/400117c93b03c693d088d579afa68c4702871330))
+
+### Features
+
+- **Heading1-6:** add margin prop to all headings ([a167485](https://bitbucket.org/enturas/design-system/commits/a1674852143e8a99bff7c2dbebf20ff09aeea977))
+- **Modal, ModalContent:** add support for title and sizes ([5190a2f](https://bitbucket.org/enturas/design-system/commits/5190a2f29ba410870f8d21621066e3647ccf5e3a))
+
+### BREAKING CHANGES
+
+- **Modal, ModalOverlay:** Rename isOpen to open for the Modal and ModalOverlay components
+- **Modal, ModalContent:** The title prop is now required. Remove any top level heading, and use the title prop instead. The
+  size prop is now required, too.
+
 ## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/modal@0.3.0...@entur/modal@0.3.1) (2019-11-27)
 
 ### Bug Fixes

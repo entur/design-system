@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.0...@entur/chip@0.2.1) (2019-11-29)
+
+### Bug Fixes
+
+- using new box shadow tokens ([9ff30bd](https://bitbucket.org/enturas/design-system/commits/9ff30bd52ad2b6e6d770565684a05e15f0b0ba9a))
+
 # [0.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.1.1...@entur/chip@0.2.0) (2019-11-22)
 
 ### Features

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.0.2...@entur/tokens@1.1.0) (2019-11-29)
+
+### Bug Fixes
+
+- updating focus color to be a rgba color ([a99dab6](https://bitbucket.org/enturas/design-system/commits/a99dab6177ddfb3bd6724e1106286595d0bab192))
+
+### Features
+
+- adding boxshadow tokens ([abe861f](https://bitbucket.org/enturas/design-system/commits/abe861f943c06a9743a12fe1144a3249bbc3a4aa))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.0.1...@entur/tokens@1.0.2) (2019-11-22)
 
 **Note:** Version bump only for package @entur/tokens

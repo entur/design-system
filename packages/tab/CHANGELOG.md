@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.1...@entur/tab@0.2.2) (2019-11-29)
+
+### Bug Fixes
+
+- **TabPanels:** add slightly more horizontal padding to TabPanels ([e14b7ca](https://bitbucket.org/enturas/design-system/commits/e14b7caafc92d119e80585aaaf92a83910a6d687))
+- using new box shadow tokens ([9ff30bd](https://bitbucket.org/enturas/design-system/commits/9ff30bd52ad2b6e6d770565684a05e15f0b0ba9a))
+
 ## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.0...@entur/tab@0.2.1) (2019-11-28)
 
 ### Bug Fixes

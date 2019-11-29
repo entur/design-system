@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.3.1...@entur/form@1.3.2) (2019-11-29)
+
+### Bug Fixes
+
+- using new box shadow tokens ([9ff30bd](https://bitbucket.org/enturas/design-system/commits/9ff30bd52ad2b6e6d770565684a05e15f0b0ba9a))
+
 ## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.3.0...@entur/form@1.3.1) (2019-11-28)
 
 ### Bug Fixes
