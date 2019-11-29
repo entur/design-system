@@ -1,0 +1,46 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.logo-display {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $space-default;
+  }
+  display: flex;
+  flex-direction: column;
+  &-background {
+    padding: $space-extra-large5 $space-extra-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $colors-greys-grey30;
+    &--dark {
+      background-color: $colors-brand-blue;
+    }
+  }
+  &-text {
+    padding: $space-default 0;
+    &__heading {
+      font-weight: $font-weights-heading;
+    }
+  }
+}
+
+.entur-sub-logo {
+  height: 3rem;
+}
+
+.guidelines-logo {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 2%;
+    row-gap: $space-extra-large;
+  }
+  &__image {
+    width: 100%;
+  }
+  &__heading {
+    font-weight: $font-weights-heading;
+  }
+}

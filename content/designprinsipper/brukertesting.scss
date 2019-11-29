@@ -1,0 +1,18 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.brukertesting {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &-fordeler,
+  &-ulemper {
+    background-color: $colors-greys-grey30;
+    padding: $space-large;
+  }
+  &-fordeler {
+    margin-right: $space-large;
+  }
+  &-overskrift {
+    margin-bottom: $space-small;
+    font-weight: $font-weights-heading;
+  }
+}

@@ -60,7 +60,6 @@ export const Button: React.RefForwardingComponent<
             [`eds-button--variant-${variant}`]: variant,
             [`eds-button--size-${size}`]: size,
             [`eds-button--width-${width}`]: width,
-            'eds-button--disabled': disabled,
             'eds-button--loading': loading,
             'eds-button--leading-icon': hasLeadingIcon,
             'eds-button--trailing-icon': hasTrailingIcon,

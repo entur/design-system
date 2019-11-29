@@ -24,6 +24,7 @@ const componentMap = {
   p: typography.Paragraph,
   a: typography.Link,
   pre: typography.PreformattedText,
+  strong: typography.StrongText,
   inlineCode: typography.CodeText,
   props: Props,
 };

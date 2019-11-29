@@ -57,13 +57,7 @@ a.eds-button {
     margin-left: $space-small;
   }
 
-  &--disabled {
-    cursor: default;
-    background-color: $colors-greys-grey20;
-    color: $colors-greys-grey40;
-  }
-
-  //Size
+  // Size
   &--size-large {
     min-width: 11.75rem;
     height: 3.75rem;
@@ -205,6 +199,19 @@ a.eds-button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &[disabled] {
+    background-color: $colors-greys-grey20;
+    border-color: $colors-greys-grey20;
+    color: $colors-greys-grey40;
+    pointer-events: none;
+
+    .eds-contrast & {
+      background-color: $colors-blues-blue40;
+      border-color: $colors-blues-blue40;
+      color: $colors-blues-blue60;
+    }
   }
 }
 

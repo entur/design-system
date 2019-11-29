@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.0.0...@entur/expand@1.0.1) (2019-11-28)
+
+### Bug Fixes
+
+- **ExpandableText:** tweak design of the expandable text component ([2d5dc34](https://bitbucket.org/enturas/design-system/commits/2d5dc34972ccc3e0a40b8c6cd0b6d73809f0ba0f))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@0.3.1...@entur/expand@1.0.0) (2019-11-22)
 
 ### Bug Fixes
