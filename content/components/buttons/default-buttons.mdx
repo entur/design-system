@@ -43,6 +43,7 @@ import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
         <Button variant="negative" {...getLoadingProps('negative')}>
           Slett konto
         </Button>
+        <Button variant="tertiary">Legg til</Button>
       </ButtonGroup>
     );
   }}
@@ -126,6 +127,11 @@ side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
 Indikerer en fare eller potensielt negativ handling. Brukes kun for å
 advare brukeren mot handlinger som kan føre til negative konsekvenser
 som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
+
+#### Tertiær
+
+Tertiærknapper brukes på steder hvor de andre knappevariantene bruker for stor plass, og en mindre knapp er nødvendig.
+Alternativt kan man også bruke ActionChip for dette behovet, men tertiærknappen finnes som et alternativ til den.
 
 ### Knapp med ikon og tekst
 

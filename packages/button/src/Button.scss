@@ -23,7 +23,7 @@ a.eds-button {
 }
 
 .eds-button {
-  min-width: 9.5rem; //width 152-border
+  min-width: 9.5rem;
   border: $border-widths-default solid transparent;
   border-radius: $border-radiuses-medium;
   font-size: inherit;
@@ -121,6 +121,7 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-blue;
       color: $colors-brand-white;
+      border-color: $colors-brand-lavender;
 
       > .eds-button__spinner {
         border: $border-widths-large solid rgba($colors-brand-white, 0.5);
@@ -177,6 +178,7 @@ a.eds-button {
     }
     .eds-contrast & {
       color: $colors-brand-white;
+      border-color: $colors-validation-lava-contrast;
       > .eds-button__spinner {
         border: $border-widths-large solid rgba($colors-brand-white, 0.5);
         border-right-color: $colors-brand-white;
@@ -186,6 +188,7 @@ a.eds-button {
       }
       &:active {
         background-color: $colors-validation-lava-contrast;
+        color: $colors-brand-blue;
       }
     }
   }
@@ -199,6 +202,35 @@ a.eds-button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &--variant-tertiary {
+    font-size: $font-sizes-medium;
+    border: $border-widths-small solid $colors-brand-blue;
+    border-radius: $border-radiuses-small;
+    background: transparent;
+    color: $colors-brand-blue;
+    height: 1.5rem;
+    padding: 0 $space-small;
+    min-width: 7.5rem;
+    &:hover {
+      background-color: $colors-blues-blue70;
+    }
+    &:active {
+      color: $colors-brand-white;
+      background-color: $colors-brand-blue;
+    }
+    .eds-contrast & {
+      color: $colors-brand-white;
+      border-color: $colors-brand-white;
+      &:hover {
+        background-color: $colors-blues-blue20;
+      }
+      &:active {
+        background-color: $colors-brand-white;
+        color: $colors-brand-blue;
+      }
+    }
   }
 
   &[disabled] {
