@@ -12,6 +12,7 @@ import {
 } from '@entur/table';
 import { ExpandableText } from '@entur/expand';
 import { useSettings } from './SettingsContext';
+import './Props.scss';
 
 function skipUndefinedType(type: string) {
   return type.replace(/\| undefined/g, '');
@@ -39,7 +40,7 @@ const Props: React.FC<PropsProps> = ({
       defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
     >
       {Object.keys(props).length > 0 ? (
-        <Table fixed={true}>
+        <Table fixed compact>
           <TableHead>
             <TableRow>
               <HeaderCell>Navn</HeaderCell>
@@ -66,7 +67,9 @@ const Props: React.FC<PropsProps> = ({
                     ) : null}
                   </DataCell>
                 )}
-                <DataCell>{details.description}</DataCell>
+                <DataCell className="props__description">
+                  {details.description}
+                </DataCell>
               </TableRow>
             ))}
           </TableBody>
