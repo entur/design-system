@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { CardTab } from '.';
+import { NavigationCard } from '.';
 
-test('CardTab renders properly, and takes additional class and parameters', () => {
+test('CardBox renders properly, and takes additional class and parameters', () => {
   const testUrl = 'https://www.entur.org/';
   const { getByTestId } = render(
-    <CardTab
+    <NavigationCard
       className="extra-class"
       title="TestingTitle"
       href={testUrl}
