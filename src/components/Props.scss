@@ -1,4 +1,7 @@
-.props__description * {
+@import '~@entur/tokens/dist/styles.scss';
+
+.props__description > .eds-paragraph {
   margin: 0;
-  font-size: inherit;
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
 }
