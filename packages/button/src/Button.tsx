@@ -3,7 +3,12 @@ import cx from 'classnames';
 import './Button.scss';
 
 declare type sizes = 'medium' | 'large';
-declare type variants = 'primary' | 'secondary' | 'success' | 'negative';
+declare type variants =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'negative'
+  | 'tertiary';
 declare type widths = 'fluid' | 'square';
 export type ButtonProps = {
   /** Farge og uttrykk på knappen */
