@@ -33,7 +33,6 @@ Du kan lese mer om hver komponent i menyen til venstre. Du kan også få full ov
           </Label>
         </span>
       }
-      defaultOpen={false}
     >
       <Paragraph>
         Fra pakken{' '}
@@ -47,11 +46,7 @@ Du kan lese mer om hver komponent i menyen til venstre. Du kan også få full ov
         imports={component.exportName}
         packageName={component.packageName}
       />
-      <Props
-        key={component.exportName}
-        of={component.exportImpl}
-        defaultOpen={allResults.length === 1}
-      />
+      <Props key={component.exportName} of={component.exportImpl} />
     </ExpandablePanel>
   )}
 </ComponentSearcher>
