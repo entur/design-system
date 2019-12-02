@@ -17,4 +17,4 @@ export const Heading4: React.FC<Heading4Props> = ({
   as = 'h4',
   margin = 'both',
   ...rest
-}) => <BaseHeading as={as} margin="both" {...rest} level={4} />;
+}) => <BaseHeading as={as} margin={margin} {...rest} level={4} />;

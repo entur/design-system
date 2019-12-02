@@ -17,4 +17,4 @@ export const Heading5: React.FC<Heading5Props> = ({
   as = 'h5',
   margin = 'both',
   ...rest
-}) => <BaseHeading as={as} margin="both" {...rest} level={5} />;
+}) => <BaseHeading as={as} margin={margin} {...rest} level={5} />;
