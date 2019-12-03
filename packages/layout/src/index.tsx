@@ -2,4 +2,4 @@ import './styles.scss';
 
 export * from './Contrast';
 export * from './NavigationCard';
-export * from './Card';
+export * from './BaseCard';

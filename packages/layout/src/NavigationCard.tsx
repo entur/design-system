@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading3, Paragraph } from '@entur/typography';
 import classNames from 'classnames';
 import { ForwardIcon } from '@entur/icons';
-import { Card } from './Card';
+import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
 
 export type NavigationCardProps = {
@@ -39,7 +39,7 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
     },
   );
   return (
-    <Card as={as} className={classList} {...rest}>
+    <BaseCard as={as} className={classList} {...rest}>
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}
@@ -51,6 +51,6 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
         inline={compact}
         className="eds-navigation-card__arrow-icon"
       />
-    </Card>
+    </BaseCard>
   );
 };

@@ -4,16 +4,13 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 1.5rem;
+  padding: $space-large;
   &:hover {
     border: $colors-brand-blue $border-widths-default solid;
   }
 
   &__title-icon {
     font-size: 2rem;
-  }
-  &__heading {
-    margin-bottom: 0;
   }
   &__arrow-icon {
     margin-top: 1rem;
@@ -25,7 +22,6 @@
   &--compact {
     flex-direction: row;
     justify-content: space-between;
-    min-width: 5rem;
     padding: $space-default $space-extra-large2;
     .eds-navigation-card__arrow-icon {
       margin-top: 0rem;
