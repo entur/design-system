@@ -74,6 +74,7 @@ export const Button: React.RefForwardingComponent<
         ref={ref}
         aria-busy={loading}
         disabled={disabled}
+        aria-disabled={disabled}
         {...rest}
       >
         {loading ? <div className="eds-button__spinner" /> : children}
