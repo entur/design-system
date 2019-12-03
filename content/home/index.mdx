@@ -19,7 +19,7 @@ import {
   Heading4,
 } from '@entur/typography';
 import { Button } from '@entur/button';
-import { CardBox } from '@entur/layout';
+import { NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
 import { Link } from 'docz';
@@ -39,7 +39,7 @@ import './index.scss';
 </LeadParagraph>
 
 <div className="front-page--card-box-container">
-  <CardBox
+  <NavigationCard
     title="Personlighet og stemme"
     titleIcon={<EditIcon />}
     as={Link}
@@ -47,8 +47,8 @@ import './index.scss';
   >
     Hvem snakker vi til? <br />
     Lær om hvordan vi bruker språket til å kommunisere med brukerne våre.
-  </CardBox>
-  <CardBox
+  </NavigationCard>
+  <NavigationCard
     title="Visuell identitet"
     titleIcon={<ColorPickerIcon />}
     as={Link}
@@ -56,8 +56,8 @@ import './index.scss';
   >
     Bli kjent med hvem Entur er. Veiledning og retningslinjer til deg som skal
     ta identiteten i bruk.
-  </CardBox>
-  <CardBox
+  </NavigationCard>
+  <NavigationCard
     title="Universell utforming"
     titleIcon={<ViewIcon />}
     as={Link}
@@ -65,7 +65,7 @@ import './index.scss';
   >
     Retningslinjer for design og utvikling av digitale løsninger i henhold til
     lovverket.
-  </CardBox>
+  </NavigationCard>
 </div>
 
 <div className="front-page-components">

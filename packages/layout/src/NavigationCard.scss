@@ -1,0 +1,30 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-navigation-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: $space-large;
+  &:hover {
+    border: $colors-brand-blue $border-widths-default solid;
+  }
+
+  &__title-icon {
+    font-size: 2rem;
+  }
+  &__arrow-icon {
+    margin-top: 1rem;
+    transition: transform $timings-fast ease-out;
+    .eds-base-card:hover & {
+      transform: translateX(0.5rem);
+    }
+  }
+  &--compact {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $space-default $space-extra-large2;
+    .eds-navigation-card__arrow-icon {
+      margin-top: 0rem;
+    }
+  }
+}

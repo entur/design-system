@@ -1,5 +1,5 @@
 import './styles.scss';
 
 export * from './Contrast';
-export * from './CardBox';
-export * from './CardTab';
+export * from './NavigationCard';
+export * from './BaseCard';

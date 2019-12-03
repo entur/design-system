@@ -10,7 +10,4 @@
   text-decoration: none;
   color: inherit;
   transition: border-color $timings-fast ease-out;
-  &:hover {
-    border: $colors-brand-blue $border-widths-default solid;
-  }
 }
