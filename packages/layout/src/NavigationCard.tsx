@@ -6,7 +6,7 @@ import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
 
 export type NavigationCardProps = {
-  /** HTML-elementet eller React-komponenten som lager CardBox */
+  /** HTML-elementet eller React-komponenten som lager NavigationCard */
   as?: 'a' | 'button' | React.ElementType;
   /** Tittelen/teksten som står i CardBox */
   title: string;
@@ -14,7 +14,7 @@ export type NavigationCardProps = {
   titleIcon?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Lager en mer kompakt NavigationCard, uten Ikon og */
+  /** Lager en mer kompakt NavigationCard, uten ikon og beskrivende tekst */
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;

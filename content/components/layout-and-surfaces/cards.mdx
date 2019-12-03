@@ -6,7 +6,7 @@ menu: Layout & Surfaces
 npmPackage: layout
 ---
 
-import { NavigationCard, Card } from '@entur/layout';
+import { NavigationCard, BaseCard } from '@entur/layout';
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -24,13 +24,15 @@ import { BanknoteIcon } from '@entur/icons';
   <br />
   <NavigationCard compact title="Betaling" href="#" />
   <div style={{ margin: '1rem 0rem' }}>
-    <Card style={{ display: 'flex', flexDirection: 'column', width: '10rem' }}>
-      <div style={{ textAlign: 'middle', fontWeight: '600' }}>Card</div>
+    <BaseCard
+      style={{ display: 'flex', flexDirection: 'column', width: '10rem' }}
+    >
+      <div style={{ fontWeight: '600' }}>Card</div>
       <div>
         Man kan også benytte seg av komponenten Card, for å få en ikke-klikkbar
         boks for å ha innhold i.
       </div>
-    </Card>
+    </BaseCard>
   </div>
 </Playground>
 
@@ -41,13 +43,13 @@ import { BanknoteIcon } from '@entur/icons';
 <ImportStatement imports="NavigationCard" />
 <Props of={NavigationCard} />
 
-`NavigationCard` kan brukes gjerne `å landingssider for å gi oversiktlige linker til forskjellige undersider.`NavigationCard` skal ha en beskrivende tekst under tittelen, og gjerne et beskrivende ikon.
+`NavigationCard` kan brukes gjerne på landingssider for å gi oversiktlige linker til forskjellige undersider. `NavigationCard` skal ha en beskrivende tekst under tittelen, og gjerne et beskrivende ikon.
 
 `NavigationCard` med `compact`-propen kan brukes på samme måte, men heller om man vil bruke mindre plass, eller ikke har en beskrivende tekst til tittelen.
 
 ### Card
 
-<ImportStatement imports="Card" />
-<Props of={Card} />
+<ImportStatement imports="BaseCard" />
+<Props of={BaseCard} />
 
-`Card` er komponenten som `NavigationCard` bygger seg oppå, og kan også brukes direkte, om man skulle ha behov stylingen som `Card` er "kjent" for.
+`BaseCard` er komponenten som `NavigationCard` bygger seg oppå, og kan også brukes direkte, om man skulle ha behov stylingen som `BaseCard` er "kjent" for.
