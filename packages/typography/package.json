@@ -19,7 +19,8 @@
   "scripts": {
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "start": "tsdx watch"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
