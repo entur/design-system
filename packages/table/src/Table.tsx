@@ -4,9 +4,13 @@ import classNames from 'classnames';
 export type TableProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Lager en mer kompakt tabell. Typisk for sider med høy informasjonstetthet */
+  /** Lager en mer kompakt tabell. Typisk for sider med høy informasjonstetthet
+   * @default false
+   */
   compact?: boolean;
-  /** Setter kolonne-layout til å være uavhengig av innhold */
+  /** Setter kolonne-layout til å være uavhengig av innhold
+   * @default false
+   */
   fixed?: boolean;
   /** Innholdet i tabellen */
   children: React.ReactNode;

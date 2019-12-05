@@ -17,7 +17,7 @@ export const Checkbox: React.RefForwardingComponent<
   CheckboxProps
 > = React.forwardRef(
   (
-    { className, width, children, ...rest },
+    { className, width, children, icon, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     return (

@@ -7,7 +7,9 @@ export type ExpandablePanelProps = {
   title: React.ReactNode;
   /** Innholdet som skal vises under panelet */
   children: React.ReactNode;
-  /** Hvilken tilstand ExpandablePanel skal ha som default */
+  /** Hvilken tilstand ExpandablePanel skal ha som default
+   * @default false
+   */
   defaultOpen?: boolean;
   /** Funksjonen som styrer åpningen av ExpandablePanel */
   onToggle?: () => void;

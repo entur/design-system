@@ -4,7 +4,9 @@ import { BaseExpand } from '@entur/expand';
 import { DownArrowIcon } from '@entur/icons';
 
 export type SideNavigationGroupProps = {
-  /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert */
+  /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert
+   * @default false
+   */
   defaultOpen?: boolean;
   /** Er menyen åpen? */
   open?: boolean;

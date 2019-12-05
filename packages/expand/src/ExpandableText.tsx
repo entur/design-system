@@ -11,7 +11,9 @@ export type ExpandableTextProps = {
   title: string;
   /** Innholdet som skal vises under linken */
   children: React.ReactNode;
-  /** Hvilken tilstand ExpandableText skal ha som default (med mindre den er kontrollert) */
+  /** Hvilken tilstand ExpandableText skal ha som default (med mindre den er kontrollert)
+   * @default false
+   */
   defaultOpen?: boolean;
   /** Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandableText, sammen med onToggle */
   open?: boolean;

@@ -4,9 +4,13 @@ import { BaseSkeleton } from './BaseSkeleton';
 export type SkeletonRectangleProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Bredden til komponenten. Er 100% som default. */
+  /** Bredden til komponenten. Er 100% som default.
+   * @default '100%'
+   */
   width?: CSSProperties;
-  /** Høyden til komponenten. 1rem som default. */
+  /** Høyden til komponenten. 1rem som default.
+   * @default '1rem'
+   */
   height?: CSSProperties;
   [key: string]: any;
 };

@@ -2,30 +2,30 @@ import React from 'react';
 import cx from 'classnames';
 import './Button.scss';
 
-declare type sizes = 'medium' | 'large';
-declare type variants =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'negative'
-  | 'tertiary';
-declare type widths = 'fluid' | 'square';
 export type ButtonProps = {
   /** Farge og uttrykk på knappen */
-  variant: variants;
-  /** Størrelsen på knappen */
-  size?: sizes;
-  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe */
+  variant: 'primary' | 'secondary' | 'success' | 'negative' | 'tertiary';
+  /** Størrelsen på knappen
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
   loading?: boolean;
   /** Ekstra klassenavn */
   className?: string;
-  /** Deaktivering av knappen */
+  /** Deaktivering av knappen
+   * @default false
+   */
   disabled?: boolean;
   /** Bredden på knappen. Defaulter til "standard-størrelse" */
-  width?: widths;
+  width?: 'fluid' | 'square';
   /** Innholdet i knappen */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager knappen */
+  /** HTML-elementet eller React-komponenten som lager knappen
+   * @default "button"
+   */
   as?: 'a' | 'button' | React.ElementType;
   [key: string]: any;
 };

@@ -21,11 +21,17 @@ type BaseAlertBoxProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Skjermleser-label for lukkeknappen, om den vises */
+  /** Skjermleser-label for lukkeknappen, om den vises
+   * @default "Lukk"
+   */
   closeButtonLabel?: string;
-  /** Callback som kalles når man lukker boksen */
+  /** Callback som kalles når man lukker boksen
+   * @default () => {}
+   */
   onClose?: () => void;
-  /** Om denne er true, vil boksen få en lukkeknapp i høyre hjørne */
+  /** Om denne er true, vil boksen få en lukkeknapp i høyre hjørne
+   * @default false
+   */
   closable?: boolean;
   /** Tittel på boksen - oppsummer virkning */
   title?: string;

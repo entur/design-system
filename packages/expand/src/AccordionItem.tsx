@@ -8,7 +8,9 @@ export type AccordionItemProps = {
   title: React.ReactNode;
   /** Innholdet som skal vises under panelet */
   children: React.ReactNode;
-  /** Hvilken tilstand AccordionItem skal ha som default */
+  /** Hvilken tilstand AccordionItem skal ha som default
+   * @default false
+   */
   defaultOpen?: boolean;
   [key: string]: any;
 };

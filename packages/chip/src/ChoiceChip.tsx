@@ -7,7 +7,9 @@ import './ChoiceChip.scss';
 export type ChoiceChipProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Om Choicechip er deaktivert eller ikke */
+  /** Om Choicechip er deaktivert eller ikke
+   * @default false
+   */
   disabled?: boolean;
   /** Label til ChoiceChip */
   children?: React.ReactNode;

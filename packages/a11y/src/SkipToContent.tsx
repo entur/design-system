@@ -4,7 +4,9 @@ import './SkipToContent.scss';
 export type SkipToContentProps = {
   /** Lenketeksten */
   children: React.ReactNode;
-  /** IDen til hovedinnholdsområdet */
+  /** IDen til hovedinnholdsområdet
+   * @default "main-content"
+   */
   mainId?: string;
 };
 
