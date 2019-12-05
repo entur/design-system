@@ -23,7 +23,11 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
   const cssImport = `@import '~@entur/${npmPackage}/dist/styles.css'`;
   return (
     <header>
-      {categoryToShow && <Label as="div">{categoryToShow.toUpperCase()}</Label>}
+      {categoryToShow && (
+        <Label as="div" style={{ letterSpacing: '1px' }}>
+          {categoryToShow.toUpperCase()}
+        </Label>
+      )}
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
       {children && <LeadParagraph>{children}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
