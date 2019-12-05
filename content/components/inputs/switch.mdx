@@ -1,0 +1,59 @@
+---
+name: Switch
+route: /komponenter/inputs/switch
+parent: Komponenter
+menu: Inputs
+npmPackage: form
+---
+
+import { Props } from 'docz';
+import { Switch, TravelSwitch } from '@entur/form';
+import { colors } from '@entur/tokens';
+import { BusIcon, FerryIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader>
+  Switch er en knapp som enten er av eller på, og hvor tilstanden er viktig å
+  vise tydelig.
+</PageHeader>
+
+<Playground>
+  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <div>
+      <Switch>Barnevogn</Switch>
+      <TravelSwitch mode="bus" />
+      <TravelSwitch mode="ferry" />
+      <TravelSwitch mode="plane" />
+      <TravelSwitch mode="tram" />
+      <TravelSwitch mode="bike" />
+      <TravelSwitch mode="metro" />
+      <TravelSwitch mode="scooter" />
+      <TravelSwitch mode="train" />
+    </div>
+    <div>
+      <Switch size="large">Barnevogn</Switch>
+      <TravelSwitch mode="bus" size="large" />
+      <TravelSwitch mode="ferry" size="large" />
+      <TravelSwitch mode="plane" size="large" />
+      <TravelSwitch mode="tram" size="large" />
+      <TravelSwitch mode="bike" size="large" />
+      <TravelSwitch mode="metro" size="large" />
+      <TravelSwitch mode="scooter" size="large" />
+      <TravelSwitch mode="train" size="large" />
+    </div>
+  </div>
+</Playground>
+
+## Komponenter
+
+### Switch
+
+<ImportStatement imports="Switch" />
+<Props of={Switch} />
+
+### TravelSwitch
+
+<ImportStatement imports="TravelSwitch" />
+<Props of={TravelSwitch} />
