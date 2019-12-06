@@ -19,7 +19,10 @@ const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
 
   return menuItems
     .map(menuItem => {
-      if (searchTextRegex.test(menuItem.name)) {
+      if (
+        searchTextRegex.test(menuItem.name) ||
+        searchTextRegex.test(menuItem.tags)
+      ) {
         return menuItem;
       }
 
@@ -27,8 +30,10 @@ const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
         return null;
       }
 
-      const subMenuHits = menuItem.menu.filter(subMenuItem =>
-        searchTextRegex.test(subMenuItem.name),
+      const subMenuHits = menuItem.menu.filter(
+        subMenuItem =>
+          searchTextRegex.test(subMenuItem.name) ||
+          searchTextRegex.test(subMenuItem.tags),
       );
 
       if (!subMenuHits.length) {
@@ -145,11 +150,11 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
 };
 
 const componentsMenuSortOrder = {
-  Resources: 1,
-  Buttons: 2,
-  Inputs: 3,
-  Navigation: 4,
-  'Layouts & Surfaces': 5,
+  Ressurser: 1,
+  Knapper: 2,
+  Skjemaelementer: 3,
+  Navigasjon: 4,
+  'Layout & Flater': 5,
   Feedback: 6,
 } as any;
 const sortComponentMenus = (a: MenuItem, b: MenuItem) => {
