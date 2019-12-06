@@ -145,11 +145,11 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
 };
 
 const componentsMenuSortOrder = {
-  Resources: 1,
-  Buttons: 2,
-  Inputs: 3,
-  Navigation: 4,
-  'Layouts & Surfaces': 5,
+  Ressurser: 1,
+  Knapper: 2,
+  Skjemaelementer: 3,
+  Navigasjon: 4,
+  'Layout & Flater': 5,
   Feedback: 6,
 } as any;
 const sortComponentMenus = (a: MenuItem, b: MenuItem) => {
