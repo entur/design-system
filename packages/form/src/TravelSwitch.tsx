@@ -22,7 +22,7 @@ export type TravelSwitchProps = {
   /** Label for TravelSwitchen, som vises ved høyre side. */
   children?: React.ReactNode;
   /** Hvilken type reise som skal vises rikig ikon og farge for */
-  transportMode:
+  transport:
     | 'bus'
     | 'metro'
     | 'plane'
@@ -43,11 +43,11 @@ export type TravelSwitchProps = {
 export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   className,
   children,
-  transportMode = 'bus',
+  transport,
   size = 'medium',
   ...rest
 }) => {
-  const { color, contrast, Icon } = modeCalc(transportMode);
+  const { color, contrast, Icon } = modeCalc(transport);
   return (
     <Switch
       className={className}
@@ -113,6 +113,6 @@ function modeCalc(mode: string) {
         contrast: colors.transport.contrast.bicycle,
       };
     default:
-      return {};
+      throw Error('Plese select a transport for the TravelSwitch.');
   }
 }

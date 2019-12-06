@@ -1,9 +1,10 @@
 ---
 name: Switch
-route: /komponenter/inputs/switch
+route: /komponenter/skjemaelementer/switch
 parent: Komponenter
-menu: Inputs
+menu: Skjemaelementer
 npmPackage: form
+tags: slideswitch, toggle, toggleswitch, bryter, av, på
 ---
 
 import { Props } from 'docz';
@@ -23,25 +24,25 @@ import PageHeader from '~/components/PageHeader';
   <div style={{ display: 'flex', justifyContent: 'space-around' }}>
     <div>
       <Switch>Barnevogn</Switch>
-      <TravelSwitch transportMode="bus" />
-      <TravelSwitch transportMode="ferry" />
-      <TravelSwitch transportMode="plane" />
-      <TravelSwitch transportMode="tram" />
-      <TravelSwitch transportMode="bike" />
-      <TravelSwitch transportMode="metro" />
-      <TravelSwitch transportMode="scooter" />
-      <TravelSwitch transportMode="train" />
+      <TravelSwitch transport="bus" />
+      <TravelSwitch transport="ferry" />
+      <TravelSwitch transport="plane" />
+      <TravelSwitch transport="tram" />
+      <TravelSwitch transport="bike" />
+      <TravelSwitch transport="metro" />
+      <TravelSwitch transport="scooter" />
+      <TravelSwitch transport="train" />
     </div>
     <div>
       <Switch size="large">Barnevogn</Switch>
-      <TravelSwitch transportMode="bus" size="large" />
-      <TravelSwitch transportMode="ferry" size="large" />
-      <TravelSwitch transportMode="plane" size="large" />
-      <TravelSwitch transportMode="tram" size="large" />
-      <TravelSwitch transportMode="bike" size="large" />
-      <TravelSwitch transportMode="metro" size="large" />
-      <TravelSwitch transportMode="scooter" size="large" />
-      <TravelSwitch transportMode="train" size="large" />
+      <TravelSwitch transport="bus" size="large" />
+      <TravelSwitch transport="ferry" size="large" />
+      <TravelSwitch transport="plane" size="large" />
+      <TravelSwitch transport="tram" size="large" />
+      <TravelSwitch transport="bike" size="large" />
+      <TravelSwitch transport="metro" size="large" />
+      <TravelSwitch transport="scooter" size="large" />
+      <TravelSwitch transport="train" size="large" />
     </div>
   </div>
 </Playground>
