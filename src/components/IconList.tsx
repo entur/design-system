@@ -6,7 +6,7 @@ import { SearchIcon, ReportsIcon } from '@entur/icons';
 import { useToast } from '@entur/alert';
 import matchSorter from 'match-sorter';
 import './IconList.scss';
-import ToggleSwitch from './ToggleSwitch';
+import { Switch } from '@entur/form';
 import { Heading4 } from '@entur/typography';
 
 type IconListProps = {
@@ -58,12 +58,12 @@ const IconList: React.FC<IconListProps> = props => {
       {!noHits && (
         <>
           <Heading4>Filter</Heading4>
-          <ToggleSwitch
+          <Switch
             checked={isContrast}
             onChange={() => setContrast(prev => !prev)}
           >
             Kontrast
-          </ToggleSwitch>
+          </Switch>
           <ul
             className={classNames('icon-list', {
               'eds-contrast': isContrast,

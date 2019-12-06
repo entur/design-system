@@ -4,7 +4,7 @@ import { Paragraph, StrongText } from '@entur/typography';
 import { Contrast } from '@entur/layout';
 import ColorSwatch from '~/components/ColorSwatch';
 import Divider from '~/components/Divider';
-import ToggleSwitch from '~/components/ToggleSwitch';
+import { Switch } from '@entur/form';
 
 const TransportColors: React.FC = () => {
   const [isContrast, setContrast] = React.useState(false);
@@ -16,12 +16,9 @@ const TransportColors: React.FC = () => {
         boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
       }}
     >
-      <ToggleSwitch
-        onChange={() => setContrast(prev => !prev)}
-        checked={isContrast}
-      >
+      <Switch onChange={() => setContrast(prev => !prev)} checked={isContrast}>
         Vis kontrastfarger
-      </ToggleSwitch>
+      </Switch>
       <Paragraph>
         <StrongText>Metro</StrongText>-fargen brukes for t-bane
       </Paragraph>

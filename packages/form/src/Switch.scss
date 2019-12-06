@@ -24,8 +24,8 @@
     transition: all $timings-fast ease-out;
     box-shadow: $shadows-card-shadow;
     background-color: $colors-brand-white;
-    top: 2px;
-    left: 2px;
+    top: 0.125rem;
+    left: 0.125rem;
     position: relative;
     .eds-switch__switch--large & {
       height: 1.75rem;
@@ -42,10 +42,12 @@
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
-    svg g,
+
+    svg g, // This is to colorize every type of icon that will potentially be included
     path {
       fill: $colors-greys-grey;
     }
+
     :checked + & {
       background-color: var(--eds-switch-color);
       .eds-switch__circle {
@@ -81,68 +83,3 @@
     }
   }
 }
-
-//   &::before,
-//   &::after {
-//     box-shadow: inset 0 0 0 0.125em $colors-greys-grey10;
-//     content: '';
-//     display: block;
-//     transition: all $timings-fast ease-out;
-//     background: $colors-brand-white;
-//     height: 1.5rem;
-//   }
-
-//   &::before {
-//     width: 3em;
-//     border-radius: 30%;
-//   }
-
-//   &::after {
-//     position: absolute;
-//     left: 0em;
-//     top: 0;
-//     width: 1.5rem;
-//     height: 1.5rem;
-//     border-radius: 50%;
-//     background: $colors-brand-white;
-//   }
-
-//   :checked + & {
-//     &::before {
-//       background: $colors-validation-mint-contrast;
-//       box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast;
-//     }
-//     &::after {
-//       transform: translateX(1.45em);
-//       box-shadow: inset 0 0 0 0.125em $colors-validation-mint;
-//     }
-//   }
-
-//   :focus + &::before {
-//     box-shadow: inset 0 0 0 0.125em $colors-greys-grey10,
-//       0 0 0.3em $colors-misc-focus;
-//   }
-
-//   :focus:checked + &::before {
-//     box-shadow: inset 0 0 0 0.125em $colors-validation-mint-contrast,
-//       0 0 0.3em $colors-misc-focus;
-//   }
-
-//   :disabled + & {
-//     cursor: default;
-//     &::before {
-//       background: $colors-greys-grey20;
-//       box-shadow: inset 0 0 0 0.125em $colors-greys-grey20;
-//     }
-//     &::after {
-//       background: $colors-greys-grey10;
-//       box-shadow: inset 0 0 0 0.125em $colors-greys-grey10;
-//     }
-//   }
-
-//   :disabled:checked + & {
-//     &::after {
-//       transform: translateX(1.45em);
-//     }
-//   }
-// }

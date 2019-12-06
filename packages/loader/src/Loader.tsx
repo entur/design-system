@@ -8,7 +8,7 @@ export type LoaderProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Tall mellom 0-100, eller "indeterminate" om man ikke vet
-   * @default 'indeterminate
+   * @default 'indeterminate'
    */
   progress?: number | 'indeterminate';
   [key: string]: any;

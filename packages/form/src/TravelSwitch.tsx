@@ -19,8 +19,10 @@ export type TravelSwitchProps = {
   className?: string;
   /** Om switchen er checked eller ikke */
   checked?: boolean;
+  /** Label for TravelSwitchen, som vises ved høyre side. */
   children?: React.ReactNode;
-  mode:
+  /** Hvilken type reise som skal vises rikig ikon og farge for */
+  transportMode:
     | 'bus'
     | 'metro'
     | 'plane'
@@ -29,7 +31,11 @@ export type TravelSwitchProps = {
     | 'ferry'
     | 'bike'
     | 'scooter';
+  /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Størrelsen på Switchen
+   * @default "medium"
+   */
   size?: 'medium' | 'large';
   [key: string]: any;
 };
@@ -37,11 +43,11 @@ export type TravelSwitchProps = {
 export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   className,
   children,
-  mode,
+  transportMode = 'bus',
   size = 'medium',
   ...rest
 }) => {
-  const { color, contrast, Icon } = ModeCalc(mode);
+  const { color, contrast, Icon } = modeCalc(transportMode);
   return (
     <Switch
       className={className}
@@ -56,14 +62,14 @@ export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   );
 };
 
-function ModeCalc(mode: string) {
+function modeCalc(mode: string) {
   switch (mode) {
     case 'bus':
       return {
         Icon: BusIcon,
         color: colors.transport.default.bus,
         contrast: colors.transport.contrast.bus,
-      }; //Her skal begge fargene returneres
+      };
     case 'metro':
       return {
         Icon: SubwayIcon,
@@ -107,10 +113,6 @@ function ModeCalc(mode: string) {
         contrast: colors.transport.contrast.bicycle,
       };
     default:
-      return {
-        Icon: BusIcon,
-        color: colors.validation.mintContrast,
-        contrast: colors.validation.mintContrast,
-      };
+      return {};
   }
 }

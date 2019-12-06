@@ -7,7 +7,7 @@ import './NavigationCard.scss';
 
 export type NavigationCardProps = {
   /** HTML-elementet eller React-komponenten som lager NavigationCard
-   * @default 'a
+   * @default 'a'
    */
   as?: 'a' | 'button' | React.ElementType;
   /** Tittelen/teksten som står i CardBox */

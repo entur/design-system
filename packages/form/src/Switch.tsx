@@ -21,6 +21,8 @@ export type SwitchProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
+  /** Callback for når verdien endres */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
 };
 
@@ -42,7 +44,10 @@ export const Switch: React.RefForwardingComponent<
   ) => {
     const chosenContrastColor = (contrastColor && contrastColor) || color;
     return (
-      <label className={classNames('eds-switch', className)}>
+      <label
+        className={classNames('eds-switch', className)}
+        style={{ ...rest.style }}
+      >
         <input type="checkbox" ref={ref} {...rest} />
         <span
           className={classNames('eds-switch__switch', {
