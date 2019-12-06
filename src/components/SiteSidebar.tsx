@@ -19,7 +19,10 @@ const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
 
   return menuItems
     .map(menuItem => {
-      if (searchTextRegex.test(menuItem.name)) {
+      if (
+        searchTextRegex.test(menuItem.name) ||
+        searchTextRegex.test(menuItem.tags)
+      ) {
         return menuItem;
       }
 
@@ -27,8 +30,10 @@ const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
         return null;
       }
 
-      const subMenuHits = menuItem.menu.filter(subMenuItem =>
-        searchTextRegex.test(subMenuItem.name),
+      const subMenuHits = menuItem.menu.filter(
+        subMenuItem =>
+          searchTextRegex.test(subMenuItem.name) ||
+          searchTextRegex.test(subMenuItem.tags),
       );
 
       if (!subMenuHits.length) {
