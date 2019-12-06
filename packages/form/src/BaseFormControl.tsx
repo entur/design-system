@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { VariantType } from './variants';
-import { useVariant } from './InputGroup';
+import { VariantType, useVariant } from './VariantProvider';
 import './BaseFormControl.scss';
 
 export type BaseFormControlProps = {
@@ -35,8 +34,8 @@ export const BaseFormControl: React.FC<BaseFormControlProps> = ({
   append,
   ...rest
 }) => {
-  const variantFromInputGroup = useVariant();
-  const currentVariant = variant || variantFromInputGroup;
+  const contextVariant = useVariant();
+  const currentVariant = variant || contextVariant;
   return (
     <div
       className={classNames('eds-form-control-wrapper', className, {

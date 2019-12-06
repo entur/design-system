@@ -1,21 +1,9 @@
 import React from 'react';
-import {
-  ValidationCheckIcon,
-  ValidationErrorIcon,
-  ValidationExclamationIcon,
-  ValidationInfoIcon,
-} from '@entur/icons';
-import { Label, SmallText } from '@entur/typography';
+import { Label } from '@entur/typography';
 import classNames from 'classnames';
-import { VariantType } from './variants';
+import { FeedbackText } from './FeedbackText';
+import { VariantType, VariantProvider } from './VariantProvider';
 import './InputGroup.scss';
-
-const InputGroupContext = React.createContext<VariantType | null>(null);
-
-export function useVariant(): VariantType | null {
-  const context = React.useContext(InputGroupContext);
-  return context;
-}
 
 export type InputGroupProps = {
   /** Ekstra klassenavn */
@@ -35,40 +23,21 @@ export const InputGroup: React.FC<InputGroupProps> = ({
   className,
   label,
   feedback,
-  variant = null,
+  variant,
   children,
   ...rest
 }) => {
   return (
-    <InputGroupContext.Provider value={variant}>
+    <VariantProvider variant={variant}>
       <div className={classNames('eds-input-group', className)} {...rest}>
         <Label style={{ display: 'block' }}>
           <span className="eds-input-group__label">{label}</span>
           {children}
         </Label>
         {feedback && variant && (
-          <SmallText className="eds-input-group__feedback-wrapper">
-            <AlertIcon level={variant} />
-            <span className="eds-input-group__feedback">{feedback}</span>
-          </SmallText>
+          <FeedbackText variant={variant}>{feedback}</FeedbackText>
         )}
       </div>
-    </InputGroupContext.Provider>
+    </VariantProvider>
   );
-};
-
-const AlertIcon: React.FC<{ level: VariantType }> = ({ level }) => {
-  const iconClass = `eds-input-group__icon eds-input-group__icon--${level}`;
-  switch (level) {
-    case 'success':
-      return <ValidationCheckIcon className={iconClass} />;
-    case 'error':
-      return <ValidationErrorIcon className={iconClass} />;
-    case 'info':
-      return <ValidationInfoIcon className={iconClass} />;
-    case 'warning':
-      return <ValidationExclamationIcon className={iconClass} />;
-    default:
-      return null;
-  }
 };
