@@ -5,7 +5,9 @@ import './SideNavigation.scss';
 export type SideNavigationProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Størrelse på menyen */
+  /** Størrelse på menyen
+   * @default 'medium'
+   */
   size?: 'small' | 'medium';
 };
 

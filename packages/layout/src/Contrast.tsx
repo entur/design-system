@@ -2,7 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 export type ContrastProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default 'div'
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;

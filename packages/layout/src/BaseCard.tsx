@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import './BaseCard.scss';
 
 export type BaseCardProps = {
-  /** HTML-elementet eller React-komponenten som lager Card */
+  /** HTML-elementet eller React-komponenten som lager Card
+   * @default "div"
+   */
   as?: 'div' | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;

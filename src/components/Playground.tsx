@@ -5,7 +5,7 @@ import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import copy from 'copy-text-to-clipboard';
 import { ReportsIcon, SourceCodeIcon } from '@entur/icons';
 import { SubLabel, Label } from '@entur/typography';
-import ToggleSwitch from '~/components/ToggleSwitch';
+import { Switch } from '@entur/form';
 import prismTheme from '~/components/prism-theme';
 import './Playground.scss';
 
@@ -54,12 +54,12 @@ export const Playground: React.FC<PlaygroundProps> = ({
         {hideContrastOption ? (
           <div />
         ) : (
-          <ToggleSwitch
+          <Switch
             checked={isContrast}
             onChange={() => setContrast(prev => !prev)}
           >
             <Label as="span">Kontrast</Label>
-          </ToggleSwitch>
+          </Switch>
         )}
         <div>
           <SubLabel

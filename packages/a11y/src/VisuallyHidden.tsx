@@ -2,7 +2,9 @@ import React from 'react';
 import './VisuallyHidden.scss';
 
 export type VisuallyHiddenProps = {
-  /** HTML-elementet eller React-komponenten som lager elementet */
+  /** HTML-elementet eller React-komponenten som lager elementet
+   * @default "span"
+   */
   as: string | React.ElementType;
   /** Innhold for skjermlesere */
   children: React.ReactNode;

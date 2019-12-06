@@ -5,7 +5,9 @@ import { BaseSkeleton } from './BaseSkeleton';
 export type SkeletonCircleProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Høyde og bredde av sirkelen. 1rem som default */
+  /** Høyde og bredde av sirkelen. 1rem som default
+   * @default '1rem'
+   */
   size: CSSProperties;
   [key: string]: any;
 };

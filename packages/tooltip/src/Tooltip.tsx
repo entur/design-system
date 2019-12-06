@@ -2,18 +2,17 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import './styles.scss';
 
-export type Placements =
-  | 'top-left'
-  | 'top'
-  | 'top-right'
-  | 'left'
-  | 'right'
-  | 'bottom-left'
-  | 'bottom'
-  | 'bottom-right';
 export type TooltipProps = {
   /** Plassering av tooltip-en */
-  placement: Placements;
+  placement:
+    | 'top-left'
+    | 'top'
+    | 'top-right'
+    | 'left'
+    | 'right'
+    | 'bottom-left'
+    | 'bottom'
+    | 'bottom-right';
   /** Innholdet i tooltip-boksen */
   content: string;
   /** Elementet som skal ha tooltip-funksjonalitet */

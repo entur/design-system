@@ -3,11 +3,15 @@ import classNames from 'classnames';
 import './TopNavigationItem.scss';
 
 export type TopNavigationItemProps = {
-  /** Om komponenten vises som valgt eller ikke */
+  /** Om komponenten vises som valgt eller ikke
+   * @default false
+   */
   active?: boolean;
   /** Tekste som vises */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager komponenten */
+  /** HTML-elementet eller React-komponenten som lager komponenten
+   * @default 'a'
+   */
   as?: 'a' | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;

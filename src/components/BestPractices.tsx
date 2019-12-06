@@ -24,7 +24,7 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
       <div
         className={`best-practices__heading best-practices__heading--${type}`}
       >
-        <Icon inline={true} /> <span>{type === 'do' ? 'Do' : "Don't"}</span>
+        <Icon inline={true} /> <span>{type === 'do' ? 'Gjør' : 'Unngå'}</span>
         {src && <img src={src} alt={alt} className="best-practices__image" />}
       </div>
       {children && <div className="best-practices__content">{children}</div>}

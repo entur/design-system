@@ -7,7 +7,9 @@ export type LoaderProps = {
   children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Tall mellom 0-100, eller "indeterminate" om man ikke vet */
+  /** Tall mellom 0-100, eller "indeterminate" om man ikke vet
+   * @default 'indeterminate'
+   */
   progress?: number | 'indeterminate';
   [key: string]: any;
 };
