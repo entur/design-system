@@ -103,14 +103,14 @@ function modeCalc(mode: string) {
     case 'bike':
       return {
         Icon: BicycleIcon,
-        color: colors.transport.default.bicycle,
-        contrast: colors.transport.contrast.bicycle,
+        color: colors.transport.default.mobility,
+        contrast: colors.transport.contrast.mobility,
       };
     case 'scooter':
       return {
         Icon: ScooterIcon,
-        color: colors.transport.default.bicycle,
-        contrast: colors.transport.contrast.bicycle,
+        color: colors.transport.default.mobility,
+        contrast: colors.transport.contrast.mobility,
       };
     default:
       throw Error('Plese select a transport for the TravelSwitch.');
