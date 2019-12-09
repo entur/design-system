@@ -27,11 +27,7 @@ export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
   ]);
   return (
     <ChoiceChipGroupContextProvider value={contextValue}>
-      <div
-        className="eds-choice-chips-group"
-        style={{ ...rest.style }}
-        {...rest}
-      >
+      <div className="eds-choice-chips-group" {...rest}>
         {children}
       </div>
     </ChoiceChipGroupContextProvider>
