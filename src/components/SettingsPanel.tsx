@@ -1,7 +1,8 @@
 import React from 'react';
 import { SettingsIcon } from '@entur/icons';
 import { Button } from '@entur/button';
-import { Dropdown, InputGroup } from '@entur/form';
+import { InputGroup } from '@entur/form';
+import { Dropdown } from '@entur/dropdown';
 import {
   useSettings,
   UserType,
@@ -37,45 +38,51 @@ const SettingsPanel: React.FC = () => {
         onDismiss={() => setOpen(false)}
         title="Innstillinger"
         size="small"
-        style={{ minWidth: '22rem' }}
       >
         <form onSubmit={() => setOpen(false)}>
-          <InputGroup label="Hva slags bruker er du?">
-            <Dropdown
-              onChange={e => setUserType(e.target.value as UserType)}
-              value={userType}
-            >
-              <option value="developer">Utvikler</option>
-              <option value="designer">Designer</option>
-            </Dropdown>
-          </InputGroup>
+          <Dropdown
+            label="Hva slags bruker er du?"
+            onChange={selectedItem =>
+              setUserType(
+                selectedItem ? (selectedItem.value as UserType) : 'developer',
+              )
+            }
+            items={[
+              { value: 'developer', label: 'Utvikler' },
+              { value: 'designer', label: 'Designer' },
+            ]}
+            value={userType}
+          />
           {userType === 'developer' && (
-            <InputGroup label="Hvilket pakkehåndteringsverktøy bruker du?">
-              <Dropdown
-                onChange={e =>
-                  setPackageManager(e.target.value as PackageManager)
-                }
-                value={packageManager}
-              >
-                <option value="yarn">yarn</option>
-                <option value="npm">npm</option>
-              </Dropdown>
-            </InputGroup>
-          )}
-          <InputGroup label="Hva slags variabler vil du se?">
             <Dropdown
-              className="eds-dropdown"
-              onChange={e =>
-                setVariableFormat(e.target.value as VariableFormat)
+              label="Hvilket pakkehåndteringsverktøy bruker du?"
+              onChange={selectedItem =>
+                setPackageManager(
+                  selectedItem
+                    ? (selectedItem.value as PackageManager)
+                    : 'yarn',
+                )
               }
-              value={variableFormat}
-            >
-              <option value="css">CSS</option>
-              <option value="scss">SCSS</option>
-              <option value="less">LESS</option>
-              <option value="js">JavaScript</option>
-            </Dropdown>
-          </InputGroup>
+              items={['yarn', 'npm']}
+              value={packageManager}
+            />
+          )}
+          <Dropdown
+            className="eds-dropdown"
+            items={[
+              { value: 'css', label: 'CSS' },
+              { value: 'scss', label: 'SCSS' },
+              { value: 'less', label: 'LESS' },
+              { value: 'js', label: 'JavaScript' },
+            ]}
+            label="Hva slags variabler vil du se?"
+            onChange={selectedItem =>
+              setVariableFormat(
+                selectedItem ? (selectedItem.value as VariableFormat) : 'js',
+              )
+            }
+            value={variableFormat}
+          />
           <Button variant="primary" width="fluid" style={{ marginTop: '1rem' }}>
             Lagre
           </Button>
