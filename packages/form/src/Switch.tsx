@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Label } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import './Switch.scss';
 
@@ -62,7 +62,7 @@ export const Switch: React.RefForwardingComponent<
         >
           <span className="eds-switch__circle">{icon && icon}</span>
         </span>
-        {children && <Label as="span">{children}</Label>}
+        {children && <Paragraph as="span">{children}</Paragraph>}
       </label>
     );
   },
