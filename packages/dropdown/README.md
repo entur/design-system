@@ -2,7 +2,7 @@
 
 This package contains the different Dropdown components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/skjemaelementer/dropdowns)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/dropdown
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/skjemaelementer/dropdowns) for usage information.

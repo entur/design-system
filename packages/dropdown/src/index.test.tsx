@@ -54,6 +54,7 @@ test('renders a searchable dropdown', () => {
   expect(changeSpy).toHaveBeenCalled();
 });
 test('handles all sorts of items', () => {
+  const spy = jest.fn();
   const MockIcon = () => <svg />;
   const diverseListOfItems = [
     'Simple option',
@@ -67,10 +68,24 @@ test('handles all sorts of items', () => {
     },
   ];
   const { getAllByRole, getByRole } = render(
-    <Dropdown items={diverseListOfItems} placeholder="Velg noe" searchable />,
+    <Dropdown
+      items={diverseListOfItems}
+      placeholder="Velg noe"
+      searchable
+      onChange={spy}
+    />,
   );
 
   fireEvent.click(getByRole('button'));
 
   expect(getAllByRole('option')).toHaveLength(diverseListOfItems.length);
+  fireEvent.click(getAllByRole('option')[0]); // Click the first option
+
+  expect(spy).toHaveBeenCalledWith(
+    expect.objectContaining({
+      value: 'Simple option',
+      label: 'Simple option',
+    }),
+    expect.anything(),
+  );
 });

@@ -17,17 +17,15 @@ export const DropdownInputGroup: React.FC<DropdownInputGroupProps> = ({
   const { getLabelProps } = useDownshift();
   return (
     <VariantProvider variant={variant}>
-      <div className="eds-input-group">
-        {label && (
-          <Label {...getLabelProps()} style={{ display: 'block' }}>
-            {label}
-          </Label>
-        )}
-        {children}
-        {feedback && variant && (
-          <FeedbackText variant={variant}>{feedback}</FeedbackText>
-        )}
-      </div>
+      {label && (
+        <Label {...getLabelProps()} style={{ display: 'block' }}>
+          {label}
+        </Label>
+      )}
+      {children}
+      {feedback && variant && (
+        <FeedbackText variant={variant}>{feedback}</FeedbackText>
+      )}
     </VariantProvider>
   );
 };

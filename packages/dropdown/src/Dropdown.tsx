@@ -61,6 +61,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         <SimpleDropdown
           onChange={handleChange}
           items={normalizedItems}
+          value={value}
           {...rest}
         />
       </InputGroup>
