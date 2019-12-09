@@ -44,7 +44,7 @@ export const ChoiceChip: React.RefForwardingComponent<
       onChange,
     } = useChoiceChipGroupContext();
     return (
-      <label className="eds-choice-chip">
+      <label className="eds-choice-chip" style={{ ...rest.style }}>
         <input
           className="eds-choice-chip__input"
           type="radio"
