@@ -1,5 +1,5 @@
 import React from 'react';
-import { VariantType } from './variants';
+import { VariantType } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
 
 export type TextFieldProps = {

@@ -1,0 +1,39 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-feedback-text {
+  display: flex;
+  align-items: center;
+  margin-top: $space-extra-small2;
+}
+
+.eds-feedback-text__icon {
+  font-size: 1.5rem;
+  padding-right: 0.5rem;
+  position: relative;
+  top: -0.1rem;
+
+  &--success {
+    color: $colors-validation-mint;
+    .eds-contrast & {
+      color: $colors-validation-mint-contrast;
+    }
+  }
+  &--error {
+    color: $colors-validation-lava;
+    .eds-contrast & {
+      color: $colors-validation-lava-contrast;
+    }
+  }
+  &--info {
+    color: $colors-validation-sky;
+    .eds-contrast & {
+      color: $colors-validation-sky-contrast;
+    }
+  }
+  &--warning {
+    color: $colors-validation-sky;
+    .eds-contrast & {
+      color: $colors-validation-sky-contrast;
+    }
+  }
+}

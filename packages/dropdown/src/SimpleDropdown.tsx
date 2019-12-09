@@ -1,39 +1,37 @@
 import React from 'react';
 import { DownArrowIcon } from '@entur/icons';
-import { VariantType } from './variants';
-import { BaseFormControl } from './BaseFormControl';
-import './Dropdown.scss';
+import { BaseFormControl, useVariant } from '@entur/form';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
+import './SimpleDropdown.scss';
 
-export type DropdownProps = {
+export type SimpleDropdownProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Settes for å style komponenten basert på state/validering */
-  variant?: VariantType;
   /** For å deaktivere dropdownen */
   disabled?: boolean;
   /** Setter dropdownen i read-only modus */
   readOnly?: boolean;
   /** Den valgte verdien */
-  value: string;
+  value?: string;
   /** En callback for endringer av value */
-  onChange: (e: React.ChangeEvent) => void;
-  /** Alle mulige valg for dropdownen å ha */
-  children: React.ReactNode;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  /** Alle valg for dropdownen å ha */
+  items: NormalizedDropdownItemType[];
   /** Tekst eller ikon som kommer før dropdownen */
   prepend?: React.ReactNode;
   [key: string]: any;
 };
 
-export const Dropdown: React.FC<DropdownProps> = ({
+export const SimpleDropdown: React.FC<SimpleDropdownProps> = ({
   className,
-  variant,
   disabled = false,
   readOnly = false,
-  children,
+  items,
   prepend,
   style,
   ...rest
 }) => {
+  const variant = useVariant();
   return (
     <BaseFormControl
       dark={true}
@@ -41,7 +39,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
       readOnly={readOnly}
       prepend={prepend}
       append={disabled || readOnly ? null : <DownArrowIcon inline={true} />}
-      variant={variant}
       className={className}
       style={style}
     >
@@ -51,21 +48,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
         disabled={disabled || readOnly}
         {...rest}
       >
-        {children}
+        {items.map(item => (
+          <option key={item.value} value={item.value}>
+            {item.label}
+          </option>
+        ))}
       </select>
     </BaseFormControl>
   );
-};
-
-export type DropdownItemProps = {
-  /** Labelen/children for en option */
-  children: React.ReactNode;
-  [key: string]: any;
-};
-
-export const DropdownItem: React.FC<DropdownItemProps> = ({
-  children,
-  ...rest
-}) => {
-  return <option {...rest}>{children}</option>;
 };

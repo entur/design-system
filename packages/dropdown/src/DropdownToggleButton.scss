@@ -1,0 +1,15 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown__toggle-button {
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: $space-extra-small;
+  margin-right: -$space-small;
+  font-size: inherit;
+  font-family: inherit;
+  &--open svg {
+    transform: rotate(180deg);
+  }
+}

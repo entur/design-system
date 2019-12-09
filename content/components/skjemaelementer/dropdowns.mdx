@@ -3,41 +3,50 @@ name: Dropdowns
 route: /komponenter/skjemaelementer/dropdowns
 parent: Komponenter
 menu: Skjemaelementer
-npmPackage: form
-tags: dropdown, select, nedtrekksliste
+npmPackage: dropdown
+tags: select, autocomplete, dropdown, nedtrekksmeny
 ---
 
 import { Props } from 'docz';
-import { Dropdown, DropdownItem } from '@entur/form';
-import { BannerAlertBox } from '@entur/alert';
+import { Dropdown } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
+import dropdownItems from './dropdownItems';
 
-<PageHeader>Dropdown lar deg velge mellom mange valg</PageHeader>
+<PageHeader>Dropdowns lar deg velge mellom mange valg</PageHeader>
 
 <Playground>
-  <Dropdown>
-    <DropdownItem>Oslo</DropdownItem>
-    <DropdownItem>Bergen</DropdownItem>
-    <DropdownItem>Leknes</DropdownItem>
-  </Dropdown>
+  <Dropdown items={dropdownItems} label="Stoppesteder" />
+  <Dropdown
+    items={dropdownItems}
+    searchable
+    label="Søk etter stoppesteder"
+    placeholder="F.eks. Bislett"
+  />
 </Playground>
 
-Foreløpig er Dropdown-komponenten en wrapper for `<select>` og `<option>`, så alle props som brukes for disse er også tilgjengelig her.
+## Komponenter
 
-<BannerAlertBox
-  variant="warning"
-  title="Under aktiv utvikling"
-  style={{ marginBottom: '1em' }}
->
-  Påtenkt utvidelse og forbedring av komponenten er planlagt, så breaking
-  changes kan komme i nær framtid.
-</BannerAlertBox>
+### Dropdown
 
 <ImportStatement imports="Dropdown" />
 <Props of={Dropdown} />
 
-## Retningslinjer
+`<Dropdown />` er en fleksibel komponent for å lage nedtrekkslister. Du sender inn en liste med valg, som kan være en string, eller objekter med verdi og label - eller en blanding av disse. Du kan også sende med en liste med ikoner, som vises til høyre:
 
-Kun bruk en dropdown dersom det ikke er aktuelt med radioknapper grunnet antall valg eller plasshensyn.
+```js
+const items = {
+  'Bislett',
+  { value: 'OsloMet', label: 'Holbergsplass', },
+  {
+    value: 'Oslo S',
+    label: 'Oslo Sentralstasjon',
+    icons: [BusIcon, TrainIcon, MetroIcon],
+  },
+};
+```
+
+By default så fungerer Dropdown som en vanlig select-boks - men den har også støtte for å være søkbar. Da sender du med propertyen `searchable`.
+
+På mobile flater rendrer vi kun en vanlig select-boks, da vi mener at den innebygde "native"-selecten er bedre enn vi kan implementere selv.

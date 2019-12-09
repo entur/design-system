@@ -11,45 +11,6 @@
     }
   }
 
-  &__feedback {
-    padding-left: 0.5em;
-  }
-  &__feedback-wrapper {
-    display: flex;
-    align-items: center;
-    margin-top: $space-extra-small2;
-  }
-
-  &__icon {
-    position: relative;
-    top: -0.1em;
-    font-size: $font-sizes-large;
-    &--success {
-      color: $colors-validation-mint;
-      .eds-contrast & {
-        color: $colors-validation-mint-contrast;
-      }
-    }
-    &--error {
-      color: $colors-validation-lava;
-      .eds-contrast & {
-        color: $colors-validation-lava-contrast;
-      }
-    }
-    &--info {
-      color: $colors-validation-sky;
-      .eds-contrast & {
-        color: $colors-validation-sky-contrast;
-      }
-    }
-    &--warning {
-      color: $colors-validation-sky;
-      .eds-contrast & {
-        color: $colors-validation-sky-contrast;
-      }
-    }
-  }
-
   & + & {
     margin-top: $space-default;
   }
