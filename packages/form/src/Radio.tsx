@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Label } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
 import { useRadioGroupContext } from './RadioGroupContext';
 import './Radio.scss';
 
@@ -38,7 +38,7 @@ export const Radio: React.RefForwardingComponent<
         <span className={classList}>
           <span className="eds-form-component--radio__circle"></span>
         </span>
-        {children && <Label as="span">{children}</Label>}
+        {children && <Paragraph as="span">{children}</Paragraph>}
       </label>
     );
   },

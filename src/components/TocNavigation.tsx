@@ -41,6 +41,9 @@ export const TocNavigation: React.FC = () => {
       )
     : [];
   const activeHeading = useCurrentActiveHeading(headings);
+  if (currentDoc.removeToc) {
+    return null;
+  }
   if (headings.length < 2) {
     return null;
   }

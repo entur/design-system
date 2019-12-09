@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckIcon } from '@entur/icons';
-import { Label } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
 import cx from 'classnames';
 import './Checkbox.scss';
 
@@ -28,7 +28,7 @@ export const Checkbox: React.RefForwardingComponent<
         <span className="eds-form-component--checkbox__icon">
           <CheckIcon />
         </span>
-        {children && <Label as="span">{children}</Label>}
+        {children && <Paragraph as="span">{children}</Paragraph>}
       </label>
     );
   },

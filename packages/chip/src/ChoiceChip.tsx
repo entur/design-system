@@ -23,11 +23,20 @@ export const ChoiceChip: React.RefForwardingComponent<
   ChoiceChipProps
 > = React.forwardRef(
   (
-    { className, children, value, disabled = false, ...rest },
+    { className, children, value, disabled = false, style, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const childrenArray = React.Children.toArray(children);
+    const hasLeadingIcon =
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+    const hasTrailingIcon =
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
+
     const classList = cx(className, 'eds-chip', {
       'eds-chip--disabled': disabled,
+      'eds-chip--leading-icon': hasLeadingIcon,
+      'eds-chip--trailing-icon': hasTrailingIcon,
     });
     const {
       name,
@@ -35,7 +44,7 @@ export const ChoiceChip: React.RefForwardingComponent<
       onChange,
     } = useChoiceChipGroupContext();
     return (
-      <label className="eds-choice-chip">
+      <label className="eds-choice-chip" style={style}>
         <input
           className="eds-choice-chip__input"
           type="radio"

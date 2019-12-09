@@ -9,6 +9,7 @@ tags: chips, potetgull, knapp, labels
 
 import { Props } from 'docz';
 import { ActionChip, ChoiceChip, ChoiceChipGroup } from '@entur/chip';
+import { AddIcon, CarIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
@@ -37,6 +38,12 @@ import PageHeader from '~/components/PageHeader';
         </ChoiceChipGroup>
         <br />
         <ActionChip>Lagre</ActionChip>
+        <ActionChip>
+          Legg til <AddIcon />
+        </ActionChip>
+        <ActionChip>
+          <CarIcon /> Kjør da
+        </ActionChip>
       </>
     );
   }}
