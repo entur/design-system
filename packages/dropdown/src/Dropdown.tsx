@@ -1,107 +1,78 @@
 import React from 'react';
-import { useSelect } from 'downshift';
-import { BaseFormControl } from '@entur/form';
-import { DownArrowIcon, CheckIcon } from '@entur/icons';
-import classNames from 'classNames';
-import './styles.scss';
-
-type DropdownItem =
-  | {
-      label: string;
-      value: string;
-    }
-  | string;
+import { InputGroup, VariantType } from '@entur/form';
+import { SimpleDropdown } from './SimpleDropdown';
+import { useScreenSize } from './useScreenSize';
+import {
+  useNormalizedItems,
+  DropdownItemType,
+  NormalizedDropdownItemType,
+} from './useNormalizedItems';
+import { RegularDropdown } from './RegularDropdown';
+import { DownshiftProvider } from './DownshiftProvider';
+import { SearchableDropdown } from './SearchableDropdown';
+import { DropdownInputGroup } from './DropdownInputGroup';
 
 type DropdownProps = {
-  items: DropdownItem[];
+  /** Tilgjengelige valg i dropdownen */
+  items: DropdownItemType[];
+  /** Om man skal kunne søke i dropdownen eller ikke */
+  searchable?: boolean;
+  /** Beskrivende tekst som forklarer feltet */
+  label?: string;
+  /** Hvilken valideringsvariant som gjelder */
+  variant?: VariantType;
+  /** Valideringsmelding, brukes sammen med `variant` */
+  feedback?: string;
+  /** Tekst eller ikon som kommer før dropdownen */
+  prepend?: React.ReactNode;
+  /** Deaktiver dropdownen */
   disabled?: boolean;
+  /** Setter dropdownen i read-only modus */
+  readOnly?: boolean;
+  /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
-  className?: string;
+  /** Callback når brukeren endrer valg */
+  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
+  [key: string]: any;
 };
-
-function stateReducer(state: any, actionAndChanges: any) {
-  // this prevents the menu from being closed when the user selects an item with 'Enter' or mouse
-  console.log(actionAndChanges);
-  switch (actionAndChanges.type) {
-    case '__item__click__':
-      return {
-        ...actionAndChanges.changes, // default Downshift new state changes on item selection.
-        isOpen: false, // but keep menu open.
-        highlightedIndex: state.highlightedIndex, // with the item highlighted.
-      };
-    default:
-      return actionAndChanges.changes; // otherwise business as usual.
-  }
-}
-
 export const Dropdown: React.FC<DropdownProps> = ({
+  feedback,
   items,
-  disabled = false,
-  placeholder,
-  className,
+  label,
+  onChange = () => {},
+  searchable,
+  variant,
+  ...rest
 }) => {
-  const normalizedItems = items.map(item => {
-    if (typeof item == 'string') {
-      return { value: item, label: item };
-    }
-    return item;
-  });
+  const screenSize = useScreenSize();
+  const normalizedItems = useNormalizedItems(items);
 
-  const {
-    isOpen,
-    selectedItem,
-    getToggleButtonProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps,
-  } = useSelect({
-    items: normalizedItems,
-    itemToString: item => item.label,
-    stateReducer,
-  });
-
-  console.log(isOpen);
+  if (screenSize !== 'large') {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedItem =
+        normalizedItems.find(item => item.value === e.target.value) || null;
+      onChange(selectedItem);
+    };
+    return (
+      <InputGroup label={label} feedback={feedback} variant={variant}>
+        <SimpleDropdown
+          onChange={handleChange}
+          items={normalizedItems}
+          {...rest}
+        />
+      </InputGroup>
+    );
+  }
 
   return (
-    <div style={{ width: '100%', position: 'relative' }}>
-      <BaseFormControl
-        style={{ display: 'flex', flexDirection: 'column' }}
-        disabled={disabled}
-        className={className}
-        dark
-      >
-        <button
-          className="eds-form-control"
-          {...getToggleButtonProps({ disabled })}
-        >
-          {(selectedItem && selectedItem.label) ||
-            placeholder ||
-            normalizedItems[0].label ||
-            'Velg'}
-          <DownArrowIcon />
-        </button>
-      </BaseFormControl>
-      <ul className="eds-dropdown-option" {...getMenuProps()}>
-        {isOpen &&
-          normalizedItems.map((option: any, index: any) => (
-            <li
-              className={classNames(
-                'eds-dropdown-option__item',
-                highlightedIndex === index &&
-                  'eds-dropdown-option__item--highlighted',
-              )}
-              key={`${option.label}${index}`}
-              {...getItemProps({
-                item: option,
-                index,
-                onClick: e => e.stopPropagation(),
-              })}
-            >
-              {option.label}
-              {option === selectedItem && <CheckIcon inline />}
-            </li>
-          ))}
-      </ul>
-    </div>
+    <DownshiftProvider onChange={onChange}>
+      <DropdownInputGroup label={label} feedback={feedback} variant={variant}>
+        {searchable ? (
+          <SearchableDropdown items={normalizedItems} {...rest} />
+        ) : (
+          <RegularDropdown items={normalizedItems} {...rest} />
+        )}
+      </DropdownInputGroup>
+    </DownshiftProvider>
   );
 };
