@@ -1,6 +1,5 @@
 export * from './BaseFormControl';
 export * from './Checkbox';
-export * from './Dropdown';
 export * from './FeedbackText';
 export * from './Fieldset';
 export * from './InputGroup';
