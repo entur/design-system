@@ -15,6 +15,8 @@ import { DropdownInputGroup } from './DropdownInputGroup';
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
   items: DropdownItemType[];
+  /** Valgt verdi */
+  value?: string;
   /** Om man skal kunne søke i dropdownen eller ikke */
   searchable?: boolean;
   /** Beskrivende tekst som forklarer feltet */
@@ -42,6 +44,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   onChange = () => {},
   searchable,
   variant,
+  value,
   ...rest
 }) => {
   const screenSize = useScreenSize();
@@ -64,8 +67,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
     );
   }
 
+  const initialSelectedItem = normalizedItems.find(
+    item => value === item.value,
+  );
+
   return (
-    <DownshiftProvider onChange={onChange}>
+    <DownshiftProvider
+      onChange={onChange}
+      initialSelectedItem={initialSelectedItem}
+    >
       <DropdownInputGroup label={label} feedback={feedback} variant={variant}>
         {searchable ? (
           <SearchableDropdown items={normalizedItems} {...rest} />

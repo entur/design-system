@@ -11,6 +11,7 @@ export type DownshiftProviderProps = {
     selectedItem: NormalizedDropdownItemType,
     stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
   ) => void;
+  initialSelectedItem?: NormalizedDropdownItemType;
   [key: string]: any;
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
@@ -20,8 +21,7 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   return (
     <Downshift itemToString={item => (item ? item.label : '')} {...rest}>
       {args => (
-        <div>
-          {' '}
+        <div className="eds-input-group">
           {/* Required by Downshift */}
           <DownshiftContext.Provider value={args}>
             {children}
