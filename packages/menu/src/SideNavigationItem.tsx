@@ -87,7 +87,9 @@ export const SideNavigationItem: React.FC<SideNavigationItemProps> = ({
     : children;
 
   if (disabled) {
-    return <DisabledSideNavigationItem>{label}</DisabledSideNavigationItem>;
+    return (
+      <DisabledSideNavigationItem {...rest}>{label}</DisabledSideNavigationItem>
+    );
   }
 
   if (!subMenu) {
