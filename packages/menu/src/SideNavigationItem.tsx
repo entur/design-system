@@ -47,11 +47,18 @@ const BaseSideNavigationItem: React.FC<BaseSideNavigationItemProps> = ({
 
 type DisabledSideNavigationItemProps = {
   children: React.ReactNode;
+  [key: string]: any;
 };
 const DisabledSideNavigationItem: React.FC<DisabledSideNavigationItemProps> = ({
   children,
+  ...rest
 }) => (
-  <BaseSideNavigationItem as="button" disabled={true}>
+  <BaseSideNavigationItem
+    as="button"
+    disabled={true}
+    aria-disabled={true}
+    {...rest}
+  >
     {children}
   </BaseSideNavigationItem>
 );
