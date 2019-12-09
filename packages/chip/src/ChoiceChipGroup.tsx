@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChoiceChipGroupContextProvider } from './ChoiceChipGroupContext';
-import './ChoiceChip.scss';
+import './ChoiceChipGroup.scss';
 export type ChoiceChipGroupProps = {
   /** Navnet til ChoiceChipsGroup */
   name: string;

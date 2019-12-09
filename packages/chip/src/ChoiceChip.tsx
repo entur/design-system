@@ -26,8 +26,17 @@ export const ChoiceChip: React.RefForwardingComponent<
     { className, children, value, disabled = false, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const childrenArray = React.Children.toArray(children);
+    const hasLeadingIcon =
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+    const hasTrailingIcon =
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
+
     const classList = cx(className, 'eds-chip', {
       'eds-chip--disabled': disabled,
+      'eds-chip--leading-icon': hasLeadingIcon,
+      'eds-chip--trailing-icon': hasTrailingIcon,
     });
     const {
       name,

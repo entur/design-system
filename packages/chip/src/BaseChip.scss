@@ -31,4 +31,11 @@
     background-color: $colors-blues-blue20;
     border-color: transparent;
   }
+
+  &--leading-icon .eds-icon {
+    margin-right: $space-extra-small;
+  }
+  &--trailing-icon .eds-icon {
+    margin-left: $space-extra-small;
+  }
 }
