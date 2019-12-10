@@ -26,8 +26,11 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
 };
 
 export type FeedbackTextProps = {
+  /** Teksten som vises */
   children: React.ReactNode;
+  /** Skjuler ikonet */
   hideIcon?: boolean;
+  /** Feedbackvarianten */
   variant: VariantType;
 };
 export const FeedbackText: React.FC<FeedbackTextProps> = ({
