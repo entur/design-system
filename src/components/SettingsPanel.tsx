@@ -1,6 +1,6 @@
 import React from 'react';
 import { SettingsIcon } from '@entur/icons';
-import { Button } from '@entur/button';
+import { PrimaryButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import {
   useSettings,
@@ -82,9 +82,9 @@ const SettingsPanel: React.FC = () => {
             }
             value={variableFormat}
           />
-          <Button variant="primary" width="fluid" style={{ marginTop: '1rem' }}>
+          <PrimaryButton width="fluid" style={{ marginTop: '1rem' }}>
             Lagre
-          </Button>
+          </PrimaryButton>
         </form>
       </Modal>
     </>

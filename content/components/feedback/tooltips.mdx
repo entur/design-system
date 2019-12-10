@@ -8,7 +8,7 @@ tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
 import { Tooltip } from '@entur/tooltip';
-import { Button } from '@entur/button';
+import { PrimaryButton } from '@entur/button';
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -30,7 +30,6 @@ import { ImportStatement } from '~/components/ImportStatement';
 ### Tooltip
 
 <ImportStatement imports="Tooltip" />
-
 <Props of={Tooltip} />
 
 Du wrapper `<Tooltip />` rundt elementet du ønsker at skal ha en tooltip.
@@ -43,7 +42,7 @@ Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også toolti
 
 <Playground>
   <Tooltip content="Tooltip til knappen" placement="top">
-    <Button variant="primary">Knapp med tooltip</Button>
+    <PrimaryButton>Knapp med tooltip</PrimaryButton>
   </Tooltip>
 </Playground>
 
