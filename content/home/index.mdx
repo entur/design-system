@@ -18,7 +18,7 @@ import {
   SubParagraph,
   Heading4,
 } from '@entur/typography';
-import { Button } from '@entur/button';
+import { PrimaryButton } from '@entur/button';
 import { NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
@@ -83,14 +83,9 @@ import './index.scss';
       på hvordan man skal ta komponentene i bruk når man setter opp et
       brukergrensesnitt.
     </Paragraph>
-    <Button
-      variant="primary"
-      as={Link}
-      to="/komponenter"
-      style={{ width: '14rem' }}
-    >
+    <PrimaryButton as={Link} to="/komponenter" style={{ width: '14rem' }}>
       Utforsk komponenter
-    </Button>
+    </PrimaryButton>
   </div>
 </div>
 

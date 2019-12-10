@@ -7,7 +7,15 @@ npmPackage: button
 tags: knapp, default button, large button, primary, secondary, tertiary, primær, sekundær, tertiær
 ---
 
-import { Button, ButtonGroup } from '@entur/button';
+import {
+  Button,
+  PrimaryButton,
+  SecondaryButton,
+  TertiaryButton,
+  SuccessButton,
+  NegativeButton,
+  ButtonGroup,
+} from '@entur/button';
 import { Props } from 'docz';
 import PageHeader from '~/components/PageHeader';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -32,19 +40,15 @@ import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
     });
     return (
       <ButtonGroup>
-        <Button variant="primary" {...getLoadingProps('primary')}>
-          Lagre
-        </Button>
-        <Button variant="secondary" {...getLoadingProps('secondary')}>
+        <PrimaryButton {...getLoadingProps('primary')}>Lagre</PrimaryButton>
+        <SecondaryButton {...getLoadingProps('secondary')}>
           Avbryt
-        </Button>
-        <Button variant="success" {...getLoadingProps('success')}>
-          Kjøp
-        </Button>
-        <Button variant="negative" {...getLoadingProps('negative')}>
+        </SecondaryButton>
+        <SuccessButton {...getLoadingProps('success')}>Kjøp</SuccessButton>
+        <NegativeButton {...getLoadingProps('negative')}>
           Slett konto
-        </Button>
-        <Button variant="tertiary">Legg til</Button>
+        </NegativeButton>
+        <TertiaryButton>Legg til</TertiaryButton>
       </ButtonGroup>
     );
   }}
@@ -52,12 +56,47 @@ import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
 
 ## Komponenter
 
+### PrimaryButton
+
+<ImportStatement imports="PrimaryButton" />
+<Props of={PrimaryButton} />
+
+`<PrimaryButton />` brukes kun til primær handlinger som har høy prioritert på en side. Det bør ikke være mer enn én slik knapp per side eller visning. Den kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
+
+### SecondaryButton
+
+<ImportStatement imports="SecondaryButton" />
+<Props of={SecondaryButton} />
+
+`<SecondaryButton />` er en subtil knappevariant, som brukes til å indikere en sekundær handling som komplimenterer en primær handling. Den bør brukes for prioriterte handlinger, og dersom man ikke ønsker at den skal være i fokus eller for å redusere visuell støy når det er mange handlinger av like stor prioritet på siden.
+
+### SuccessButton
+
+<ImportStatement imports="SuccessButton" />
+<Props of={SuccessButton} />
+
+`<SuccessButton />` indikerer en vellykket eller positiv handling. Brukes som “call to action” for svært høyt prioriterte handlinger. Hovedregelen her er kun én suksessknapp per side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
+
+### NegativeButton
+
+<ImportStatement imports="NegativeButton" />
+<Props of={NegativeButton} />
+
+`<NegativeButton />` indikerer en potensielt negativ eller irreversibel handling. Brukes kun for å advare brukeren mot handlinger som kan føre til negative konsekvenser som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
+
+### TertiaryButton
+
+<ImportStatement imports="TertiaryButton" />
+<Props of={TertiaryButton} />
+
+`<TertiaryButton />` brukes på steder hvor de andre knappevariantene bruker for stor plass, og en mindre knapp er nødvendig. Alternativt kan man også bruke ActionChip for dette behovet, men tertiærknappen finnes som et alternativ til den.
+
 ### Button
 
 <ImportStatement imports="Button" />
 <Props of={Button} />
 
-`<Button />` er grunn-komponenten som lar deg lage de fleste forskjellige knappene våre.
+`<Button />` er grunn-komponenten som lar deg lage de andre knappene. Du vil typisk bruke en av de andre komponentene direkte.
 
 ### ButtonGroup
 
@@ -72,12 +111,12 @@ Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<Bu
 
 <Playground>
   <ButtonGroup>
-    <Button variant="secondary">
+    <SecondaryButton>
       <AddIcon /> Legg til kunde
-    </Button>
-    <Button variant="success">
+    </SecondaryButton>
+    <SuccessButton>
       Gå videre <ForwardIcon />
-    </Button>
+    </SuccessButton>
   </ButtonGroup>
 </Playground>
 
@@ -85,54 +124,14 @@ Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<Bu
 
 <Playground>
   <ButtonGroup>
-    <Button size="large" variant="primary">
-      Primary
-    </Button>
-    <Button size="large" variant="secondary">
-      Secondary
-    </Button>
-    <Button size="large" variant="success">
-      Success
-    </Button>
-    <Button size="large" variant="negative">
-      Danger
-    </Button>
+    <PrimaryButton size="large">Primary</PrimaryButton>
+    <SecondaryButton size="large">Secondary</SecondaryButton>
+    <SuccessButton size="large">Success</SuccessButton>
+    <NegativeButton size="large">Negative</NegativeButton>
   </ButtonGroup>
 </Playground>
 
 ## Retningslinjer for bruk
-
-### Knappvarianter
-
-#### Primary (Høy prioritet):
-
-Brukes kun til primær handlinger som har høyt prioritert på en side.
-Det bør ikke være mer enn én slik knapp per side eller visning.
-Kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
-
-#### Secondary (Middels prioritet):
-
-Subtil variant som brukes til å indikere en sekundær handling som komplimenterer
-en primær handling. Middels prioriterte handlinger og dersom man ikke ønsker at
-den skal være i fokus eller for å redusere visuell støy når det er mange handlinger
-av like stor prioritet på siden.
-
-#### Success (Svært høy prioritet):
-
-Indikerer en vellykket eller positiv handling. Brukes som “call to action”
-for svært høyt prioriterte handlinger. Hovedregelen her er kun én action knapp per
-side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
-
-#### Danger:
-
-Indikerer en fare eller potensielt negativ handling. Brukes kun for å
-advare brukeren mot handlinger som kan føre til negative konsekvenser
-som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
-
-#### Tertiær
-
-Tertiærknapper brukes på steder hvor de andre knappevariantene bruker for stor plass, og en mindre knapp er nødvendig.
-Alternativt kan man også bruke ActionChip for dette behovet, men tertiærknappen finnes som et alternativ til den.
 
 ### Knapp med ikon og tekst
 
@@ -152,7 +151,7 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
     yName="Høyde"
     yNumber="44px"
   >
-    <Button variant="primary">Default Button</Button>
+    <PrimaryButton>Vanlig knapp</PrimaryButton>
   </ComponentRuler>
   <ComponentRuler
     xName="Min-Width"
@@ -160,9 +159,7 @@ Default størrelsen på våre knapper er “medium”. Men man kan vurdere å br
     yName="Høyde"
     yNumber="60px"
   >
-    <Button variant="primary" size="large">
-      Large Button
-    </Button>
+    <PrimaryButton size="large">Stor knapp</PrimaryButton>
   </ComponentRuler>
 </ComponentRuler.Wrapper>
 

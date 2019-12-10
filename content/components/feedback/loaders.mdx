@@ -14,7 +14,7 @@ import InlineComponent from '~/components/InlineComponent';
 
 import { ImportStatement } from '~/components/ImportStatement';
 
-import { Button } from '@entur/button';
+import { SecondaryButton } from '@entur/button';
 import { Loader } from '@entur/loader';
 
 <PageHeader>
@@ -30,12 +30,11 @@ import { Loader } from '@entur/loader';
         <Loader>Vennligst vent</Loader>
         <Loader progress={20}>Laster opp fil</Loader>
         <Loader progress={progress}>
-          <Button
+          <SecondaryButton
             onClick={() => setProgress(prev => (prev + 10) % 101)}
-            variant="secondary"
           >
             Gå videre &rarr;
-          </Button>
+          </SecondaryButton>
         </Loader>
       </>
     );

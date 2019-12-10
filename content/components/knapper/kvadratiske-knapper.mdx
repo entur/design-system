@@ -7,7 +7,7 @@ npmPackage: button
 tags: firkant, knapp, funksjonsknapp, tabellknapp
 ---
 
-import { Button } from '@entur/button';
+import { SecondaryButton, SuccessButton } from '@entur/button';
 import { Label } from '@entur/typography';
 import { Props } from 'docz';
 import { AddIcon, CheckIcon } from '@entur/icons';
@@ -21,22 +21,24 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <Playground>
   <div style={{ display: 'flex', alignItems: 'center' }}>
-    <Button variant="secondary" width="square" aria-label="Legg til">
+    <SecondaryButton width="square" aria-label="Legg til">
       <AddIcon />
-    </Button>
-    <Label style={{ marginLeft: '1em' }}>Legg til </Label>
+    </SecondaryButton>
+    <Label as="span" style={{ marginLeft: '1em' }}>
+      Legg til
+    </Label>
   </div>
-  <Button variant="success" width="square" aria-label="Lage som favoritt">
+  <SuccessButton width="square" aria-label="Lage som favoritt">
     <CheckIcon />
-  </Button>
+  </SuccessButton>
 </Playground>
 
-Kvadratiske knapper bruker enten `secondary` eller `success` varianten. Andre varianter er støttet, men det er disse to man først og fremst skal bruke.
+Kvadratiske knapper er støttet som `SecondaryButton` og `SuccessButton`.
 
 ## Komponenter
 
-### Button
+### SuccessButton og SecondaryButton
 
-<ImportStatement imports="Button" />
+<ImportStatement imports="SuccessButton, SecondaryButton" />
 
-<Props of={Button} />
+<Props of={SuccessButton} />

@@ -13,7 +13,7 @@ import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
 import { BestPractices, Example } from '~/components/BestPractices';
 import { ImportStatement } from '~/components/ImportStatement';
-import { Button } from '@entur/button';
+import { PrimaryButton, SecondaryButton } from '@entur/button';
 import {
   BannerAlertBox,
   ToastAlertBox,
@@ -105,20 +105,19 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
     const { addToast } = useToast();
     return (
       <React.Fragment>
-        <Button
+        <PrimaryButton
           onClick={() =>
             addToast({
               title: 'Dette er din første toast!',
               content: 'Den forsvinner om ca 6 sekunder',
             })
           }
-          variant="primary"
           type="button"
           style={{ marginRight: '1rem' }}
         >
           Lag suksess-toast
-        </Button>
-        <Button
+        </PrimaryButton>
+        <SecondaryButton
           onClick={() =>
             addToast({
               title: 'Toasts burde brukes sparsomt!',
@@ -126,11 +125,10 @@ Toasts brukes for å bekrefte handlinger brukeren har gjort. De bør dukke opp a
               variant: 'info',
             })
           }
-          variant="secondary"
           type="button"
         >
           Lag info-toast
-        </Button>
+        </SecondaryButton>
       </React.Fragment>
     );
   }}

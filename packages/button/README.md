@@ -2,7 +2,7 @@
 
 This package contains the button component
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/buttons/default-buttons)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/knapper/standardknapper)?
 
 ## Installation
 
@@ -14,10 +14,4 @@ yarn add @entur/button
 
 ## Usage
 
-```js
-<Button variant="primary">Click me</Button>
-
-<Button as="a" href="#" variant="secondary">This is a link-button</Button>
-```
-
-Please refer to the [documentation](https://design.entur.org/komponenter/buttons/default-buttons) for further usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/knapper/standardknapper) for further usage information.

@@ -10,7 +10,7 @@ tags: faner, flater
 import { Props } from 'docz';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 import { Heading3, Paragraph } from '@entur/typography';
-import { Button } from '@entur/button';
+import { PrimaryButton } from '@entur/button';
 import { InputGroup, TextField, TextArea } from '@entur/form';
 import { BannerAlertBox } from '@entur/alert';
 import { Playground } from '~/components/Playground';
@@ -49,7 +49,7 @@ import { ImportStatement } from '~/components/ImportStatement';
         <InputGroup>
           <TextArea defaultValue="Prisen er inkludert MVA" />
         </InputGroup>
-        <Button variant="primary">Lagre</Button>
+        <PrimaryButton>Lagre</PrimaryButton>
       </TabPanel>
       <TabPanel />
       <TabPanel>
@@ -118,13 +118,9 @@ Her er et eksempel der man går fra 1 tab til en annen programmatisk:
         </TabList>
         <TabPanels>
           <TabPanel>
-            <Button
-              variant="primary"
-              onClick={() => setCurrentIndex(1)}
-              type="button"
-            >
+            <PrimaryButton onClick={() => setCurrentIndex(1)} type="button">
               Gå til den andre taben
-            </Button>
+            </PrimaryButton>
           </TabPanel>
           <TabPanel>Da er vi på tab nummer 2!</TabPanel>
         </TabPanels>

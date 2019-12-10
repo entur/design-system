@@ -24,7 +24,7 @@ export type ButtonProps = {
   /** Innholdet i knappen */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager knappen
-   * @default "button"
+   * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
   [key: string]: any;
