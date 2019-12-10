@@ -12,7 +12,6 @@
   cursor: pointer;
   display: inline-block;
   margin-right: $space-small;
-  min-width: 8rem;
   position: relative;
   transition: all $timings-fast ease-out;
   &__input {
@@ -71,8 +70,5 @@
         color: $colors-blues-blue60;
       }
     }
-  }
-  &-group {
-    display: flex;
   }
 }

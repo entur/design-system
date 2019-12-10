@@ -2,7 +2,7 @@
 
 This package contains the different chip components.
 
-> 💡 Looking for the [documentation](https://entur-design-system.firebaseapp.com/komponenter/buttons/chips)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/skjemaelementer/chips)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/chip
 
 ## Usage
 
-Please refer to the [documentation](https://entur-design-system.firebaseapp.com/komponenter/buttons/chips) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/skjemaelementer/chips) for usage information.

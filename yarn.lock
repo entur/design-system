@@ -1026,6 +1026,25 @@
   version "1.0.0"
   resolved "ssh://git@bitbucket.org:enturas/entur-fonts.git#983afcdcd863091808ad3161309e8607c1033cb7"
 
+"@entur/form@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@entur/form/-/form-2.0.0.tgz#bf5550bbebd3e48b76bdeb50cccf4831ab82c41b"
+  integrity sha512-uBapFkPC8dkIyAko1AhgY1UhpnJD5QsE1sygWPmiRPM643YSvg+W6v4bg3uXVEdrfao9E1NqU/a+kIjm3se/Tg==
+  dependencies:
+    "@entur/icons" "^0.4.2"
+    "@entur/tokens" "^1.1.0"
+    "@entur/typography" "^0.6.1"
+    classnames "^2.2.6"
+
+"@entur/typography@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@entur/typography/-/typography-0.6.1.tgz#ff178b230c021ac661c0c0ff5e3291925b4de4d6"
+  integrity sha512-S7oLnIQrwVOdssmwa4Pde/ENFl83wj4TglD5B5Jf91EDmE14Tjm6XJDzbc7MGjeuOlifviJLdLVrqtWQWxSlkA==
+  dependencies:
+    "@types/classnames" "^2.2.9"
+    classnames "^2.2.6"
+    normalize-scss "^7.0.1"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"

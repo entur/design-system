@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChoiceChipGroupContextProvider } from './ChoiceChipGroupContext';
-import './ChoiceChipGroup.scss';
+import { Fieldset } from '@entur/form';
 export type ChoiceChipGroupProps = {
   /** Navnet til ChoiceChipsGroup */
   name: string;
@@ -27,9 +27,9 @@ export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
   ]);
   return (
     <ChoiceChipGroupContextProvider value={contextValue}>
-      <div className="eds-choice-chips-group" {...rest}>
+      <Fieldset className="eds-choice-chips-group" {...rest}>
         {children}
-      </div>
+      </Fieldset>
     </ChoiceChipGroupContextProvider>
   );
 };
