@@ -11,6 +11,7 @@ import {
   DataCell,
 } from '@entur/table';
 import { ExpandableText } from '@entur/expand';
+import { colors } from '@entur/tokens';
 import { useSettings } from './SettingsContext';
 import './Props.scss';
 
@@ -59,7 +60,11 @@ const Props: React.FC<PropsProps> = ({
                 <DataCell>
                   <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
                 </DataCell>
-                <DataCell>{details.required && <CheckIcon />}</DataCell>
+                <DataCell>
+                  {details.required && (
+                    <CheckIcon style={{ color: colors.validation.mint }} />
+                  )}
+                </DataCell>
                 {hasAnyDefaultValues && (
                   <DataCell>
                     {details.defaultValue ? (
