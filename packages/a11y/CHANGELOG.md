@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.2...@entur/a11y@0.2.3) (2019-12-10)
+
+### Bug Fixes
+
+- **SkipToContent:** make sure the SkipToContent line is hidden on all screens ([c5a87db](https://bitbucket.org/enturas/design-system/commits/c5a87dbf0bb35d8d86503abe9624db97a9060a41))
+
 ## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.1...@entur/a11y@0.2.2) (2019-12-10)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.2...@entur/chip@0.2.3) (2019-12-10)
+
+### Bug Fixes
+
+- decreasing min-width for chips to 48px ([fe273db](https://bitbucket.org/enturas/design-system/commits/fe273dbd587a31514d852e743da564c2402ef13a))
+- fixing label support for choice chips group ([8bebf95](https://bitbucket.org/enturas/design-system/commits/8bebf9503ccb7dadd100fbd177b3da31a9375483))
+
 ## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.1...@entur/chip@0.2.2) (2019-12-10)
 
 ### Bug Fixes

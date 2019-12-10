@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.3.0...@entur/button@1.4.0) (2019-12-10)
+
+### Bug Fixes
+
+- **All buttons:** set button props explicitly for each prop ([2bb306e](https://bitbucket.org/enturas/design-system/commits/2bb306e676df094a12d3b41e78006350322d4261))
+
+### Features
+
+- **Button:** introduce new components for the different button variants ([26cdb6e](https://bitbucket.org/enturas/design-system/commits/26cdb6e0b70a11254f8902357fc3da8ae9ef8b4a))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.2.2...@entur/button@1.3.0) (2019-12-10)
 
 ### Bug Fixes
