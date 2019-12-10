@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.1...@entur/chip@0.2.2) (2019-12-10)
+
+### Bug Fixes
+
+- spreading styles on ChoiceChip-components ([4bdfef8](https://bitbucket.org/enturas/design-system/commits/4bdfef86acdc29e3620a9b20792812672b58bfa6))
+- **icon position:** consistent spacing for icons in chips ([f8ab91f](https://bitbucket.org/enturas/design-system/commits/f8ab91f255e70f1945d7145e6aef7c5136232bc1))
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+
 ## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.0...@entur/chip@0.2.1) (2019-11-29)
 
 ### Bug Fixes

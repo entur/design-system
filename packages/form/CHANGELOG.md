@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.3.2...@entur/form@2.0.0) (2019-12-10)
+
+### Bug Fixes
+
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+- exposing BaseFormControl for use in new dropdown component ([ba859d2](https://bitbucket.org/enturas/design-system/commits/ba859d2653df265413b2b23cc0bbc0a88db0b3d8))
+- fixing 44px height for form-components ([a73794c](https://bitbucket.org/enturas/design-system/commits/a73794c73eed4464efa90a33f7bd122be11cecce))
+- fixing mobility colors on travel switch ([fbe10c6](https://bitbucket.org/enturas/design-system/commits/fbe10c6119e899e63ca965606ce79b42aa7a7263))
+- paragraph styling for label ([b98a5c5](https://bitbucket.org/enturas/design-system/commits/b98a5c5924599fddd32ee193295551baf31b0a2f))
+
+### Code Refactoring
+
+- **Dropdown, DropdownItem:** remove Dropdown and DropdownItem from @entur/form ([db64c30](https://bitbucket.org/enturas/design-system/commits/db64c304df278ecd37584db18cde43277537c28c))
+
+### Features
+
+- refactor input groups to provide flexibility ([e55d493](https://bitbucket.org/enturas/design-system/commits/e55d49395baf2d2d29e8ca942415493e132c7fea))
+- **switch:** adding new components: Switch and TravelSwitch ([28ca3f9](https://bitbucket.org/enturas/design-system/commits/28ca3f9ce152f56382e4000d990ec3a49484b6a3))
+
+### BREAKING CHANGES
+
+- **Dropdown, DropdownItem:** Dropdown and DropdownItem is being moved to its own package - @entur/dropdown. Install the new
+  dependency, and import Dropdown from there. See the docs on how to migrate
+
 ## [1.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@1.3.1...@entur/form@1.3.2) (2019-11-29)
 
 ### Bug Fixes

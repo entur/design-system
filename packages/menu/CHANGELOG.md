@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.2...@entur/menu@1.0.3) (2019-12-10)
+
+### Bug Fixes
+
+- **border left:** fixing skewed left border on active item ([fd69f56](https://bitbucket.org/enturas/design-system/commits/fd69f565355ad8e61bdb70b001a5393d866dc599))
+- **disabled sidemenu:** spreading props on component if SideNavigationItem is disabled ([0a4125a](https://bitbucket.org/enturas/design-system/commits/0a4125a503a1cade6dfd8df5ae5beeed132d5b32))
+- **disabled sidemenuitem:** proper props spread, and aria-disabled label ([15a578d](https://bitbucket.org/enturas/design-system/commits/15a578d1872c14cccf4a8d19ee3e018d511caf8a))
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.1...@entur/menu@1.0.2) (2019-11-29)
 
 **Note:** Version bump only for package @entur/menu

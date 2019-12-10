@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.2.2...@entur/button@1.3.0) (2019-12-10)
+
+### Bug Fixes
+
+- adding aria-disabled to disabled state ([c048c0e](https://bitbucket.org/enturas/design-system/commits/c048c0e335ea97dd0989cc98515b5e3262887357))
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+- **styling:** fixing contrast styling for secondary and negative button ([d0ebaa1](https://bitbucket.org/enturas/design-system/commits/d0ebaa18ff2b0c5bd69668934399db1d47747e07))
+
+### Features
+
+- adding the tertiary button as a new variant ([808e129](https://bitbucket.org/enturas/design-system/commits/808e129be233ae6ff47d4d8a0add1524138041ad))
+
 ## [1.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.2.1...@entur/button@1.2.2) (2019-11-29)
 
 ### Bug Fixes

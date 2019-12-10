@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.6.0...@entur/typography@0.6.1) (2019-12-10)
+
+### Bug Fixes
+
+- fixing the api for the margin-prop, used in headers ([85e04d3](https://bitbucket.org/enturas/design-system/commits/85e04d3db248a66ec6b05ad85ba02ef7438f76e8))
+
 # [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.5.0...@entur/typography@0.6.0) (2019-11-29)
 
 ### Features

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.4.1...@entur/layout@1.0.0) (2019-12-10)
+
+### Bug Fixes
+
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+- **Card:** renaming CardBox/Tab, to NavigationCard ([da9856a](https://bitbucket.org/enturas/design-system/commits/da9856a285136e773825efe6ea4e927fea4a0ef4))
+
+### Features
+
+- adding new component Card ([836331f](https://bitbucket.org/enturas/design-system/commits/836331f985baee213d116ec364b19a864d73755f))
+
+### BREAKING CHANGES
+
+- **Card:** CardBox and CardTab are renamed to NavigationCard,
+  whereas CardBox is a renaming procedure(CardBox -> NavigationCard),
+  CardTab is NavigationCard with the compact prop
+
 ## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@0.4.0...@entur/layout@0.4.1) (2019-11-29)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.4...@entur/table@0.3.5) (2019-12-10)
+
+### Bug Fixes
+
+- adding default prop as part of documentation ([1ef7510](https://bitbucket.org/enturas/design-system/commits/1ef75107362f6262429d7fe31519b4353eccc8de))
+
 ## [0.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.3...@entur/table@0.3.4) (2019-11-29)
 
 **Note:** Version bump only for package @entur/table
