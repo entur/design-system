@@ -13,6 +13,7 @@ export const DropdownToggleButton = () => {
           'eds-dropdown__toggle-button--open': isOpen,
         }),
       })}
+      tabIndex="-1"
     >
       <DownArrowIcon inline />
     </button>
