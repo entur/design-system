@@ -13,6 +13,40 @@ import PageHeader from '~/components/PageHeader';
   en oppsummering av hva som har blitt lansert
 </PageHeader>
 
+### 2019-12-10
+
+- [@entur/a11y@0.2.2](https://npmjs.com/package/@entur/a11y)
+- [@entur/alert@0.5.2](https://npmjs.com/package/@entur/alert)
+- [@entur/button@1.3.0](https://npmjs.com/package/@entur/button)
+- [@entur/chip@0.2.2](https://npmjs.com/package/@entur/chip)
+- [@entur/dropdown@0.2.0](https://npmjs.com/package/@entur/dropdown)
+- [@entur/expand@1.0.3](https://npmjs.com/package/@entur/expand)
+- [@entur/form@2.0.0](https://npmjs.com/package/@entur/form)
+- [@entur/layout@1.0.0](https://npmjs.com/package/@entur/layout)
+- [@entur/loader@0.3.2](https://npmjs.com/package/@entur/loader)
+- [@entur/menu@1.0.3](https://npmjs.com/package/@entur/menu)
+- [@entur/table@0.3.5](https://npmjs.com/package/@entur/table)
+- [@entur/tooltip@1.1.2](https://npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.6.1](https://npmjs.com/package/@entur/typography)
+
+Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/c518a56619cd30d0c7254b0f9f5298c69e54a8a0
+
+**TL;DR:**
+
+- 🎉 Ny pakke: `@entur/dropdown`! 🎉 Denne inneholder en første versjon av en dropdown med nytt design og støtte for søk.
+- 🚨 Breaking change: `{ Dropdown, DropdownItem }` i `@entur/form` er fjernet! For å fortsette å bruke dropdowns, bruk `@entur/dropdown`. Det er et litt annerledes API (du sender inn et `items` array istedenfor `<option />` tags), men migrasjonen ellers er ganske grei. [Her er et eksempel av hvordan vi migrerte design.entur.org](https://bitbucket.org/enturas/design-system/commits/92559832d2968081b18eb0619070a8274e4af5d8).
+- `@entur/form` har også fått et par nye komponenter:
+  - `Switch` er en toggle-komponent som lar deg slå features av og på.
+  - `TravelSwitch` er en spesiell versjon av samme switch, som brukes for å filtrere ut forskjellige modaliteter.
+  - `BaseFormControl` er en wrapper-komponent som vi bruker for å lage dropdowns, blant annet.
+  - `FeedbackText` er teksten som rendres under et input-felt.
+  - `VariantProvider` lar deg legge en variant på context, og `useVariant` lar deg hente den ut igjen.
+- 🚨 Breaking change: `CardBox` og `CardTab` har fått blitt til `NavigationCard` i `@entur/layout`. For å migrere kan du rename begge to til `NavigationCard`. For å beholde `CardTab`-utseendet, må du legge på propen `compact={true}`.
+- `@entur/layout` har også fått en ny komponent `Card`, som kan brukes for å lage mer avanserte interaktive grensesnitt.
+- `@entur/button` har nå fått en ny `variant`: `tertiary`! Dette er en fin størrelse for når en `ActionChip` blir en smule for stor. I tillegg har vi fikset et issue der den negative varianten hadde feil design i kontrastseksjoner.
+
+I tillegg er det en rekke mindre bugfixes, tweaks og generelle tekniske forbedringer.
+
 ### 2019-11-29
 
 - [@entur/a11y@0.2.1](https://www.npmjs.com/package/@entur/a11y)
