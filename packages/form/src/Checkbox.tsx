@@ -1,5 +1,4 @@
 import React from 'react';
-import { CheckIcon } from '@entur/icons';
 import { Paragraph } from '@entur/typography';
 import cx from 'classnames';
 import './Checkbox.scss';
@@ -26,10 +25,27 @@ export const Checkbox: React.RefForwardingComponent<
       >
         <input type="checkbox" ref={ref} {...rest} />
         <span className="eds-form-component--checkbox__icon">
-          <CheckIcon />
+          <CheckboxIcon />
         </span>
         {children && <Paragraph as="span">{children}</Paragraph>}
       </label>
     );
   },
 );
+
+function CheckboxIcon() {
+  return (
+    <svg
+      className="eds-checkbox-icon"
+      width="11px"
+      height="9px"
+      viewBox="6 11 37 33"
+    >
+      <path
+        className="eds-checkbox-icon__path"
+        d="M14.1 27.2l7.1 7.2 14.6-14.8"
+        fill="none"
+      />
+    </svg>
+  );
+}
