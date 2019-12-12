@@ -26,9 +26,9 @@
         .eds-contrast & {
           background: $colors-blues-blue30;
         }
-        svg {
+        .eds-checkbox-icon {
           visibility: visible;
-          path {
+          &__path {
             stroke: $colors-brand-white;
             animation: stroke ease-in-out 0.2s 0.1s forwards;
           }
@@ -68,11 +68,11 @@
     .eds-contrast & {
       border-color: $colors-blues-blue30;
     }
-    svg {
+    .eds-checkbox-icon {
       height: $space-default;
       width: $space-default;
       visibility: hidden;
-      path {
+      &__path {
         transform-origin: 50% 50%;
         stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
         stroke-dashoffset: 48;

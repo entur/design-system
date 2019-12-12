@@ -36,14 +36,16 @@ export const Checkbox: React.RefForwardingComponent<
 function CheckboxIcon() {
   return (
     <svg
+      className="eds-checkbox-icon"
       width="11px"
       height="9px"
       viewBox="6 11 37 33"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <path id="path-1" d="M14.1 27.2l7.1 7.2 14.6-14.8" fill="none"></path>
+      <path
+        className="eds-checkbox-icon__path"
+        d="M14.1 27.2l7.1 7.2 14.6-14.8"
+        fill="none"
+      />
     </svg>
   );
 }
