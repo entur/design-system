@@ -234,10 +234,11 @@ a.eds-button {
   }
 
   &[disabled] {
-    background-color: $colors-greys-grey20;
-    border-color: $colors-greys-grey20;
-    color: $colors-greys-grey40;
+    opacity: 0.5;
     pointer-events: none;
+    &.eds-button--loading {
+      opacity: 1;
+    }
 
     .eds-contrast & {
       background-color: $colors-blues-blue40;
