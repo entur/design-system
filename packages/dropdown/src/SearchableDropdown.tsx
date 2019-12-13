@@ -4,20 +4,28 @@ import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
 
 type SearchableDropdownProps = {
-  items: NormalizedDropdownItemType[];
-  disabled?: boolean;
-  placeholder?: string;
   className?: string;
+  disabled?: boolean;
+  items: NormalizedDropdownItemType[];
+  loading?: boolean;
+  loadingText?: string;
+  placeholder?: string;
+  prepend?: React.ReactNode;
   readOnly?: boolean;
+  selectOnTab?: boolean;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
-  items,
   disabled = false,
   className,
+  items,
+  loading,
+  loadingText,
   readOnly = false,
+  prepend,
+  selectOnTab = false,
   ...rest
 }) => {
-  const { getInputProps, inputValue } = useDownshift();
+  const { getInputProps, inputValue, selectHighlightedItem } = useDownshift();
   const filteredItems = React.useMemo(() => {
     if (!inputValue) {
       return items;
@@ -32,12 +40,20 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       disabled={disabled}
       readOnly={readOnly}
       className={className}
+      loading={loading}
+      loadingText={loadingText}
+      prepend={prepend}
     >
       <input
         {...getInputProps({
           disabled,
           readOnly,
-          className: 'eds-form-control',
+          className: 'eds-form-control eds-dropdown__input',
+          onKeyDown: e => {
+            if (selectOnTab && e.key === 'Tab') {
+              selectHighlightedItem();
+            }
+          },
           ...rest,
         })}
       />

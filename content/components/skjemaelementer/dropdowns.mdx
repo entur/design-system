@@ -8,7 +8,7 @@ tags: select, autocomplete, dropdown, nedtrekksmeny
 ---
 
 import { Props } from 'docz';
-import { Dropdown } from '@entur/dropdown';
+import { Dropdown, NativeDropdown } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
@@ -49,4 +49,49 @@ const items = {
 
 By default så fungerer Dropdown som en vanlig select-boks - men den har også støtte for å være søkbar. Da sender du med propertyen `searchable`.
 
-På mobile flater rendrer vi kun en vanlig select-boks, da vi mener at den innebygde "native"-selecten er bedre enn vi kan implementere selv.
+#### Autocomplete, typeahead og lignende
+
+Om du ønsker å hente innholdet i dropdownen basert på hva brukeren skriver inn, så kan du sende inn _en funksjon_ til `items` istedenfor.
+
+Denne funksjonen blir kalt hver gang man endrer noe i input-feltet, og mottar den nye input-strengen som argument. Funkjsonen kan være asynkron, og vil i så tilfeller vise en spinner mens brukeren venter.
+
+Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake server med tilfeldig forsinkelse:
+
+<Playground>
+  {() => {
+    // `fetchItems` her vil vanligvis være et fetch-kall.
+    let timeoutId;
+    const fetchItems = query =>
+      new Promise(resolve => {
+        clearTimeout(timeoutId);
+        if (!query) {
+          resolve([]);
+          return;
+        }
+        const queryRegex = new RegExp(query, 'i');
+        timeoutId = setTimeout(
+          () =>
+            resolve(
+              dropdownItems.filter(item => queryRegex.test(item.label || item)),
+            ),
+          Math.max(Math.random() * 1000, 100), // Et tilfeldig delay per søk
+        );
+      });
+    return (
+      <Dropdown searchable items={fetchItems} placeholder="Søk asynkront" />
+    );
+  }}
+</Playground>
+
+### NativeDropdown
+
+<ImportStatement imports="NativeDropdown" />
+<Props of={NativeDropdown} />
+
+`<NativeDropdown />` ser til forveksling lik ut som `<Dropdown />`, men er en mye enklere implementasjon, som bruker HTMLs `<select />`-element under panseret. Det gjør at den er veldig mobilvennlig, både i størrelse og bruk.
+
+Den har ikke støtte for søk, men godtar en (asynkron) funksjon for å hente data fra en ekstern kilde, slik som `<Dropdown />`.
+
+<Playground>
+  <NativeDropdown items={dropdownItems} />
+</Playground>

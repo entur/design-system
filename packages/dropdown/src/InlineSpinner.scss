@@ -1,0 +1,29 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@keyframes inline-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.eds-inline-spinner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.eds-inline-spinner__twirly-part {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+  border-right-color: $colors-brand-blue;
+  animation: 1s infinite linear inline-spin;
+
+  .eds-contrast & {
+    border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+    border-right-color: $colors-brand-white;
+  }
+}

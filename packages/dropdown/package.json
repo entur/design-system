@@ -27,6 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@entur/a11y": "^0.2.3",
     "@entur/form": "^2.0.1",
     "@entur/tokens": "^1.1.0",
     "classnames": "^2.2.6",
