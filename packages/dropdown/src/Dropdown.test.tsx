@@ -150,8 +150,6 @@ test('handles typeahead case', async () => {
     fireEvent.change(inputField, { target: { value: 'er' } });
   });
 
-  expect(getByText('2 sek')).toBeInTheDocument();
-
   await wait(() => getByText('Bergen'));
 
   expect(queryByText('2 sek')).not.toBeInTheDocument();

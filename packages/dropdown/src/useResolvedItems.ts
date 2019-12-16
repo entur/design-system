@@ -1,5 +1,16 @@
 import React from 'react';
 import { DropdownItemType, useNormalizedItems } from './useNormalizedItems';
+import debounce from './debounce';
+
+const useIsMounted = () => {
+  const isMountedRef = React.useRef(true);
+  React.useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
+  return isMountedRef.current;
+};
 
 type AsyncDropdownItemType = (inputType: string) => Promise<DropdownItemType[]>;
 type SyncDropdownItemType = (inputType: string) => DropdownItemType[];
@@ -36,6 +47,8 @@ export const useResolvedItems = (
   itemsOrItemsResolver: PotentiallyAsyncDropdownItemType,
   /** If true, the items resolver function will be called initially */
   fetchInitially?: boolean,
+  /** The time to wait after the input changes to the fetchItems method is called */
+  debounceTimeout: number = 250,
 ) => {
   const isItemsFunction = typeof itemsOrItemsResolver === 'function';
 
@@ -54,12 +67,20 @@ export const useResolvedItems = (
     loading: false,
   });
 
-  // Next, let's create the fetching function. This is called whenever
+  // This is a way to check whether or not the dropdown is still in the
+  // document. We use it below to make sure we're not updating the state of
+  // an unmounted component.
+  const isMounted = useIsMounted();
+
+  // Next, let's create the fetching function. This should be called whenever
+  // the input value changes
   const fetchItems = React.useCallback(
     async (inputValue: string) => {
       dispatch({ type: 'request results' });
       const resolvedItems = await itemsResolver(inputValue);
-      dispatch({ type: 'received results', payload: resolvedItems });
+      if (isMounted) {
+        dispatch({ type: 'received results', payload: resolvedItems });
+      }
     },
     [itemsResolver],
   );
@@ -75,6 +96,6 @@ export const useResolvedItems = (
   return {
     items: normalizedItems,
     loading: isItemsFunction ? loading : false,
-    fetchItems,
+    fetchItems: debounce(fetchItems, debounceTimeout),
   };
 };

@@ -37,10 +37,13 @@ type DropdownProps = {
   onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
   /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
   selectOnTab?: boolean;
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
+  debounceTimeout?: number;
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
 export const Dropdown: React.FC<DropdownProps> = ({
+  debounceTimeout,
   disabled,
   feedback,
   items,
@@ -59,6 +62,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
     items,
     !searchable, // only fetch initially if not searchable
+    debounceTimeout,
   );
 
   const initialSelectedItem = normalizedItems.find(
