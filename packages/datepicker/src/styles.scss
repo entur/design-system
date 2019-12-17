@@ -38,7 +38,7 @@
     font-weight: $font-weights-heading;
   }
   &__month-container {
-    margin: 0.0625rem $space-large $space-large $space-extra-default; // Miniscule padding on top here to show outline
+    margin: 0.0625rem $space-large $space-large $space-default; // Miniscule padding on top here to show outline
     .eds-contrast & {
       background-color: $colors-blues-blue20;
     }

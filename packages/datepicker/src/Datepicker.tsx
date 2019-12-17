@@ -1,5 +1,6 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
 import { BaseFormControl } from '@entur/form';
 import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
@@ -11,11 +12,14 @@ type DatepickerProps = {
    * @default new Date()
    */
   selected?: Date;
+  /** Ekstra klassenavn */
+  className?: string;
   [key: string]: any;
 };
 
 export const Datepicker: React.FC<DatepickerProps> = ({
   selected = new Date(),
+  className,
   ...rest
 }) => {
   const [startDate, setStartDate] = React.useState(selected);
@@ -23,7 +27,7 @@ export const Datepicker: React.FC<DatepickerProps> = ({
   return (
     <BaseFormControl prepend={<DateIcon inline />} dark>
       <DatePicker
-        className="eds-form-control"
+        className={classNames('eds-form-control', className)}
         calendarClassName="eds-datepicker__calender"
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
