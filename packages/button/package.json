@@ -1,6 +1,6 @@
 {
   "name": "@entur/button",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/button.esm.js",

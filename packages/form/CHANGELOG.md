@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.1...@entur/form@2.0.2) (2019-12-17)
+
+### Bug Fixes
+
+- new and improved icon for Checkbox ([0f58e5b](https://bitbucket.org/enturas/design-system/commits/0f58e5ba3f561dd57dc1a0fb9bab49d191755d11))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.0...@entur/form@2.0.1) (2019-12-10)
 
 **Note:** Version bump only for package @entur/form

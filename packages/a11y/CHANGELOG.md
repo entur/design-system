@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.3...@entur/a11y@0.2.4) (2019-12-17)
+
+### Bug Fixes
+
+- **VisuallyHidden:** make as prop optional ([d272e4d](https://bitbucket.org/enturas/design-system/commits/d272e4d32bcf954f164e99c5b90aa5aabf98c365))
+
 ## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.2...@entur/a11y@0.2.3) (2019-12-10)
 
 ### Bug Fixes
