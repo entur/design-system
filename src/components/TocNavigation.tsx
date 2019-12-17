@@ -11,6 +11,9 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
   React.useEffect(() => {
     const findActiveHeading = debounce(() => {
       for (let nextElement of headingElements) {
+        if (!nextElement) {
+          continue;
+        }
         const nextTop = nextElement.getBoundingClientRect().top;
         if (nextTop >= 0) {
           setActiveHeading(nextElement.id);

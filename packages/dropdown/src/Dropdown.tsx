@@ -1,20 +1,18 @@
 import React from 'react';
-import { InputGroup, VariantType } from '@entur/form';
-import { SimpleDropdown } from './SimpleDropdown';
-import { useScreenSize } from './useScreenSize';
-import {
-  useNormalizedItems,
-  DropdownItemType,
-  NormalizedDropdownItemType,
-} from './useNormalizedItems';
+import { VariantType } from '@entur/form';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { RegularDropdown } from './RegularDropdown';
 import { DownshiftProvider } from './DownshiftProvider';
 import { SearchableDropdown } from './SearchableDropdown';
 import { DropdownInputGroup } from './DropdownInputGroup';
+import {
+  useResolvedItems,
+  PotentiallyAsyncDropdownItemType,
+} from './useResolvedItems';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
-  items: DropdownItemType[];
+  items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi */
   value?: string;
   /** Om man skal kunne søke i dropdownen eller ikke */
@@ -33,56 +31,64 @@ type DropdownProps = {
   readOnly?: boolean;
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
+  /** En tekst som beskriver hva som skjer når man venter på items */
+  loadingText?: string;
   /** Callback når brukeren endrer valg */
   onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
+  /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
+  selectOnTab?: boolean;
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
+  debounceTimeout?: number;
+  /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
 export const Dropdown: React.FC<DropdownProps> = ({
+  debounceTimeout,
+  disabled,
   feedback,
   items,
   label,
+  loadingText,
   onChange = () => {},
+  placeholder,
+  prepend,
+  readOnly,
   searchable,
+  selectOnTab,
   variant,
   value,
   ...rest
 }) => {
-  const screenSize = useScreenSize();
-  const normalizedItems = useNormalizedItems(items);
-
-  if (screenSize !== 'large') {
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const selectedItem =
-        normalizedItems.find(item => item.value === e.target.value) || null;
-      onChange(selectedItem);
-    };
-    return (
-      <InputGroup label={label} feedback={feedback} variant={variant}>
-        <SimpleDropdown
-          onChange={handleChange}
-          items={normalizedItems}
-          value={value}
-          {...rest}
-        />
-      </InputGroup>
-    );
-  }
+  const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
+    items,
+    !searchable, // only fetch initially if not searchable
+    debounceTimeout,
+  );
 
   const initialSelectedItem = normalizedItems.find(
     item => value === item.value,
   );
 
+  const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
+
   return (
     <DownshiftProvider
-      onChange={onChange}
       initialSelectedItem={initialSelectedItem}
+      onInputValueChange={fetchItems}
+      onChange={onChange}
+      {...rest}
     >
       <DropdownInputGroup label={label} feedback={feedback} variant={variant}>
-        {searchable ? (
-          <SearchableDropdown items={normalizedItems} {...rest} />
-        ) : (
-          <RegularDropdown items={normalizedItems} {...rest} />
-        )}
+        <RenderedDropdown
+          items={normalizedItems}
+          loading={loading}
+          loadingText={loadingText}
+          disabled={disabled}
+          readOnly={readOnly}
+          placeholder={placeholder}
+          prepend={prepend}
+          selectOnTab={selectOnTab}
+        />
       </DropdownInputGroup>
     </DownshiftProvider>
   );

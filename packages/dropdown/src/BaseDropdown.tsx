@@ -3,13 +3,16 @@ import { BaseFormControl } from '@entur/form';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { DropdownList } from './DropdownList';
 import { DropdownToggleButton } from './DropdownToggleButton';
+import { InlineSpinner } from './InlineSpinner';
 import './BaseDropdown.scss';
 
 type BaseDropdownProps = {
-  items: NormalizedDropdownItemType[];
-  disabled?: boolean;
-  placeholder?: string;
   className?: string;
+  disabled?: boolean;
+  items: NormalizedDropdownItemType[];
+  loading?: boolean;
+  loadingText?: string;
+  placeholder?: string;
   style?: { [key: string]: any };
   [key: string]: any;
 };
@@ -17,6 +20,8 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   children,
   className,
   items,
+  loading,
+  loadingText = 'Loading...',
   placeholder,
   style,
   ...rest
@@ -24,7 +29,13 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   return (
     <div className="eds-dropdown-wrapper">
       <BaseFormControl
-        append={<DropdownToggleButton />}
+        append={
+          loading ? (
+            <InlineSpinner>{loadingText}</InlineSpinner>
+          ) : (
+            <DropdownToggleButton />
+          )
+        }
         className={className}
         dark
         {...rest}

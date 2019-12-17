@@ -11,18 +11,36 @@ export type DownshiftProviderProps = {
     selectedItem: NormalizedDropdownItemType,
     stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
   ) => void;
+  onInputValueChange?: (value: string) => void;
+  inputValue?: string;
   initialSelectedItem?: NormalizedDropdownItemType;
   [key: string]: any;
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   children,
+  onChange = () => {},
+  onInputValueChange = () => {},
   ...rest
 }) => {
+  const handleStateChange = (
+    changes: any,
+    stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
+  ) => {
+    if ('selectedItem' in changes) {
+      onChange(changes.selectedItem, stateAndHelpers);
+    } else if ('inputValue' in changes) {
+      onInputValueChange(changes.inputValue);
+    }
+  };
   return (
-    <Downshift itemToString={item => (item ? item.label : '')} {...rest}>
+    <Downshift
+      itemToString={item => (item ? item.label : '')}
+      onStateChange={handleStateChange}
+      {...rest}
+    >
       {args => (
         <div className="eds-input-group">
-          {/* Required by Downshift */}
+          {/* This div is required by Downshift */}
           <DownshiftContext.Provider value={args}>
             {children}
           </DownshiftContext.Provider>

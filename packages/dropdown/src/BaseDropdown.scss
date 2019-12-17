@@ -1,3 +1,10 @@
 .eds-dropdown-wrapper {
   position: relative;
 }
+
+.eds-dropdown__input {
+  &::placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+}

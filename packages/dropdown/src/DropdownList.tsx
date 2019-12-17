@@ -20,7 +20,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
     getItemProps,
   } = useDownshift();
 
-  if (!isOpen) {
+  if (!isOpen || !items.length) {
     return null;
   }
   return (
