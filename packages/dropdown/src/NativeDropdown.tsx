@@ -11,24 +11,30 @@ import './NativeDropdown.scss';
 export type NativeDropdownProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** For å deaktivere dropdownen */
+  /**
+   * For å deaktivere dropdownen
+   * @default false
+   **/
   disabled?: boolean;
-  /** Beskrivende tekst som forklarer feltet */
-  label?: string;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Setter dropdownen i read-only modus */
+  /** Alle valg for dropdownen å ha */
+  items: PotentiallyAsyncDropdownItemType;
+  /** Beskrivende tekst som forklarer feltet */
+  label?: string;
+  /** En callback for endringer av value */
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  /** Tekst eller ikon som kommer før dropdownen */
+  prepend?: React.ReactNode;
+  /**
+   * Setter dropdownen i read-only modus
+   * @default false
+   **/
   readOnly?: boolean;
   /** Den valgte verdien */
   value?: string;
-  /** En callback for endringer av value */
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  /** Alle valg for dropdownen å ha */
-  items: PotentiallyAsyncDropdownItemType;
-  /** Tekst eller ikon som kommer før dropdownen */
-  prepend?: React.ReactNode;
+  /** Hvilken valideringsvariant som gjelder */
+  variant?: VariantType;
   [key: string]: any;
 };
 
