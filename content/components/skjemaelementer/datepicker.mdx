@@ -4,11 +4,11 @@ route: /komponenter/skjemaelementer/datepicker
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: datepicker
-tags: dato
+tags: dato, date, time, tid, picker
 ---
 
 import { Props } from 'docz';
-import { Datepicker } from '@entur/datepicker';
+import { DatePicker } from '@entur/datepicker';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
@@ -20,22 +20,35 @@ import { addDays } from 'date-fns';
 </PageHeader>
 
 <Playground>
-  <Datepicker />
+  {() => {
+    const [date, setDate] = React.useState();
+    return <DatePicker selectedDate={date} onChange={date => setDate(date)} />;
+  }}
 </Playground>
 
 ## Komponenter
 
 ### Datepicker
 
-<ImportStatement imports="Datepicker" />
-<Props of={Datepicker} />
+<ImportStatement imports="DatePicker" />
+<Props of={DatePicker} />
 
-Komponenten vår er bygget på `react-datepicker`, og støtter dermed [en rekke props](https://github.com/Hacker0x01/react-datepicker/blob/master/src/index.jsx#L110), selv om 100% kompabilitet ikke kan garanteres.
+Komponenten vår er bygget på `react-datepicker`, og støtter dermed en rekke props(som forsåvidt ligger i lista over) , selv om 100% kompabilitet ikke kan garanteres.
 Les mer om disse [her](https://reactdatepicker.com/)
 
 Den støtter også `date-fns` og det anbefales at datofunksjonene fra `date-fns` brukes.
-Eksempelvis `addWeeks` for å sette en maksgrense på tre uker man kan velge fra.
+Eksempelvis `addWeeks` for å sette en maksgrense på én uker man kan velge datoer fra.
 
 <Playground>
-  <Datepicker maxDate={addWeeks(new Date(), 3)} />
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <DatePicker
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        minDate={new Date()} //Mindate, Fra og med
+        maxDate={addWeeks(new Date(), 1)} // Til og med
+      />
+    );
+  }}
 </Playground>
