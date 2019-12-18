@@ -3,16 +3,19 @@
 .eds-datepicker {
   &__calender {
     color: $colors-brand-blue;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      background-color: $colors-blues-blue20;
+    }
+    .react-datepicker__triangle {
+      border-color: blue;
+    }
   }
   &__day {
     border: $colors-greys-grey20;
   }
-  .eds-contrast & {
-    background-color: $colors-blues-blue20;
-  }
 }
 
-.react-datepicker-popper.eds-datepicker__popper {
+.eds-contrast .eds-form-control-wrapper--dark .eds-datepicker__popper {
   height: fit-content;
   background-color: transparent;
 }
@@ -20,7 +23,8 @@
 .react-datepicker {
   border: $border-widths-default solid $colors-greys-grey20;
   box-shadow: $shadows-card-shadow;
-  .eds-contrast & {
+  .eds-contrast .eds-form-control-wrapper--dark & {
+    //Used continously in stylesheet, to get higher specificity of parent's style
     border-color: $colors-blues-blue20;
   }
   &-wrapper {
@@ -32,14 +36,16 @@
     font-size: 16px;
     line-height: 40px;
   }
+
   &__current-month {
     color: $colors-brand-blue;
     font-size: $font-sizes-large;
     font-weight: $font-weights-heading;
   }
   &__month-container {
-    margin: 0.0625rem $space-large $space-large $space-default; // Miniscule padding on top here to show outline
-    .eds-contrast & {
+    // Miniscule padding on top here to show outline
+    margin: 0.0625rem $space-large $space-large $space-default;
+    .eds-contrast .eds-form-control-wrapper--dark & {
       background-color: $colors-blues-blue20;
     }
   }
@@ -50,7 +56,7 @@
     border-right: none;
     transform: rotate(135deg);
     top: 24px;
-    .eds-contrast & {
+    .eds-contrast .eds-form-control-wrapper--dark & {
       border-color: $colors-brand-white;
     }
     &--previous {
@@ -68,26 +74,23 @@
     margin: 0.125rem;
   }
   &__week {
-    // background: $colors-greys-grey20;
     height: 40px;
-    &-number {
-      width: 40px;
-      height: 40px;
-      vertical-align: middle;
-      line-height: 36px;
-      font-size: 14px;
-      margin: 0;
-      color: $colors-blues-blue40;
-      background: $colors-brand-white;
-      &:first-child {
-        margin-right: $space-extra-small;
-      }
-      .eds-contrast & {
-        color: $colors-brand-lavender;
-      }
-    }
   }
-  &__day-names {
+  &__week-number {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 36px;
+    font-size: 14px;
+    margin: 0;
+    color: $colors-blues-blue40;
+    background: $colors-brand-white;
+    &:first-child {
+      margin-right: $space-extra-small;
+    }
+    .eds-contrast & {
+      color: $colors-brand-lavender;
+    }
   }
   &__day-name {
     width: 40px;
@@ -123,13 +126,13 @@
     }
     &:hover {
       border-radius: 0;
-      .eds-contrast & {
+      .eds-contrast .eds-form-control-wrapper--dark & {
         background-color: $colors-blues-blue30;
       }
     }
     &--outside-month {
       color: $colors-blues-blue40;
-      .eds-contrast & {
+      .eds-contrast .eds-form-control-wrapper--dark & {
         color: $colors-brand-lavender;
       }
     }
@@ -139,18 +142,21 @@
       &:hover {
         background: $colors-greys-grey30;
       }
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        background: $colors-blues-blue50;
+      }
     }
     &--selected {
       border-radius: 0;
       background: $colors-brand-blue;
       color: $colors-brand-white;
-      .eds-contrast & {
+      .eds-contrast .eds-form-control-wrapper--dark & {
         background-color: $colors-brand-lavender;
         color: $colors-brand-blue;
       }
       &:hover {
         background: $colors-blues-blue10;
-        .eds-contrast & {
+        .eds-contrast .eds-form-control-wrapper--dark & {
           background: $colors-blues-blue60;
         }
       }

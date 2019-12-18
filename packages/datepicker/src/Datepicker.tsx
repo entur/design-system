@@ -1,5 +1,8 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
+import {
+  default as ReactDatepicker,
+  ReactDatePickerProps,
+} from 'react-datepicker';
 import classNames from 'classnames';
 import { BaseFormControl } from '@entur/form';
 import { DateIcon } from '@entur/icons';
@@ -7,38 +10,45 @@ import { nb } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.scss';
 
-type DatepickerProps = {
-  /** Hva som er den valgte datoen
-   * @default new Date()
+export type DatePickerProps = {
+  /** Hva som er den valgte datoen */
+  selectedDate?: Date;
+  /** Kalles når datoen/tiden endres */
+  onChange: (
+    date: Date | null,
+    event: React.SyntheticEvent<any, Event>,
+  ) => void;
+  /** Placeholder om ingen dato er valgt
+   * @default "Velg dato"
    */
-  selected?: Date;
+  placeholder?: string;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
-};
+} & ReactDatePickerProps;
 
-export const Datepicker: React.FC<DatepickerProps> = ({
-  selected = new Date(),
+export const DatePicker: React.FC<DatePickerProps> = ({
+  selectedDate = null,
+  onChange,
+  placeholder = 'Velg dato',
   className,
   ...rest
 }) => {
-  const [startDate, setStartDate] = React.useState(selected);
-
   return (
-    <BaseFormControl prepend={<DateIcon inline />} dark>
-      <DatePicker
+    <BaseFormControl dark prepend={<DateIcon inline />}>
+      <ReactDatepicker
         className={classNames('eds-form-control', className)}
         calendarClassName="eds-datepicker__calender"
-        selected={startDate}
-        onChange={(date: Date) => setStartDate(date)}
+        selected={selectedDate}
+        onChange={onChange}
         showWeekNumbers={true}
         weekLabel="uke"
         locale={nb}
-        // showTimeSelect  Commented for now, until design is done
         timeFormat="HH:mm"
         dateFormat="dd.MM.yyyy"
         timeIntervals={15}
         timeCaption="time"
+        placeholderText={placeholder}
         popperClassName="eds-datepicker__popper"
         {...rest}
       />

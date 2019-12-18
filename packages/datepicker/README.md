@@ -2,7 +2,7 @@
 
 This package contains the different Datepicker components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/skjemaelementer/datepicker)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/datepicker
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/skjemaelementer/datepicker) for usage information.

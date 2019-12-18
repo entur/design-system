@@ -1,12 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Datepicker } from '.';
+import { DatePicker } from '.';
 
 test('renders a datepicker', () => {
+  const spy = jest.fn();
   const { queryByText } = render(
-    <Datepicker placeholderText="placeholder">
+    <DatePicker onChange={spy} placeholder="placeholder">
       Inside the datepicker
-    </Datepicker>,
+    </DatePicker>,
   );
   expect(queryByText('Inside the datepicker')).not.toBeInTheDocument();
 });
