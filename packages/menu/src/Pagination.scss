@@ -1,0 +1,56 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.eds-pagination__page {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: $border-widths-small solid transparent;
+  border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: $font-sizes-medium;
+  height: $space-extra-large;
+  justify-content: center;
+  margin: 0 $border-widths-small;
+  transition: all $timings-fast ease-out;
+  width: $space-extra-large;
+
+  &--selected {
+    border-color: currentColor;
+    color: inherit;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $colors-blues-blue70;
+    border-color: $colors-blues-blue70;
+
+    .eds-contrast & {
+      background-color: $colors-blues-blue20;
+      border-color: $colors-blues-blue20;
+    }
+  }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
+
+.eds-pagination__ellipsis {
+  align-items: center;
+  display: flex;
+  font-size: $font-sizes-extra-large;
+  height: $space-extra-large;
+  justify-content: center;
+  padding: 0.5rem;
+  width: $space-extra-large;
+}
