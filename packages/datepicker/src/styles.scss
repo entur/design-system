@@ -6,9 +6,6 @@
     .eds-contrast .eds-form-control-wrapper--dark & {
       background-color: $colors-blues-blue20;
     }
-    .react-datepicker__triangle {
-      border-color: blue;
-    }
   }
   &__day {
     border: $colors-greys-grey20;
@@ -19,13 +16,28 @@
   height: fit-content;
   background-color: transparent;
 }
-
+.react-datepicker__triangle {
+  .react-datepicker-popper[data-placement^='bottom'] & {
+    border-bottom-color: $colors-brand-white;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      border-bottom-color: $colors-blues-blue20;
+      background-color: transparent;
+    }
+    &::before {
+      border-bottom-color: $colors-greys-grey20;
+      top: (0-$border-widths-default);
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        border-bottom-color: $colors-blues-blue10;
+      }
+    }
+  }
+}
 .react-datepicker {
   border: $border-widths-default solid $colors-greys-grey20;
   box-shadow: $shadows-card-shadow;
   .eds-contrast .eds-form-control-wrapper--dark & {
     //Used continously in stylesheet, to get higher specificity of parent's style
-    border-color: $colors-blues-blue20;
+    border-color: $colors-blues-blue10;
   }
   &-wrapper {
     width: 100%;
@@ -43,7 +55,7 @@
     font-weight: $font-weights-heading;
   }
   &__month-container {
-    // Miniscule padding on top here to show outline
+    // Miniscule padding on top here to show outline of days
     margin: 0.0625rem $space-large $space-large $space-default;
     .eds-contrast .eds-form-control-wrapper--dark & {
       background-color: $colors-blues-blue20;
@@ -169,4 +181,8 @@
       pointer-events: none;
     }
   }
+}
+
+.eds-native-date-picker {
+  height: 2.75rem;
 }

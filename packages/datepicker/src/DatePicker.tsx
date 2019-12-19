@@ -32,10 +32,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   onChange,
   placeholder = 'Velg dato',
   className,
+  style,
   ...rest
 }) => {
   return (
-    <BaseFormControl dark prepend={<DateIcon inline />}>
+    <BaseFormControl style={style} dark prepend={<DateIcon inline />}>
       <ReactDatepicker
         className={classNames('eds-form-control', className)}
         calendarClassName="eds-datepicker__calender"

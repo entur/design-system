@@ -19,7 +19,12 @@ export const NativeDatePicker: React.RefForwardingComponent<
         className={className}
         prepend={<DateIcon inline />}
       >
-        <input ref={ref} type="date" className="eds-form-control" {...rest} />
+        <input
+          ref={ref}
+          type="date"
+          className="eds-form-control eds-native-date-picker"
+          {...rest}
+        />
       </BaseFormControl>
     );
   },
