@@ -8,7 +8,7 @@ tags: dato, date, time, tid, picker
 ---
 
 import { Props } from 'docz';
-import { DatePicker } from '@entur/datepicker';
+import { DatePicker, NativeDatePicker } from '@entur/datepicker';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
@@ -51,4 +51,11 @@ Eksempelvis `addWeeks` for å sette en maksgrense på én uker man kan velge dat
       />
     );
   }}
+</Playground>
+
+For deg som ønsker å støtte mobil, så eksisterer det også en `NativeDatePicker`.
+Den wrapper en `input` hvor `type="date"`, som i noen sammenhenger kan være å foretrekke.
+
+<Playground>
+  <NativeDatePicker />
 </Playground>
