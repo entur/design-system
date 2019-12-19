@@ -1,0 +1,188 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-datepicker {
+  &__calender {
+    color: $colors-brand-blue;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      background-color: $colors-blues-blue20;
+    }
+  }
+  &__day {
+    border: $colors-greys-grey20;
+  }
+}
+
+.eds-contrast .eds-form-control-wrapper--dark .eds-datepicker__popper {
+  height: fit-content;
+  background-color: transparent;
+}
+.react-datepicker__triangle {
+  .react-datepicker-popper[data-placement^='bottom'] & {
+    border-bottom-color: $colors-brand-white;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      border-bottom-color: $colors-blues-blue20;
+      background-color: transparent;
+    }
+    &::before {
+      border-bottom-color: $colors-greys-grey20;
+      top: (0-$border-widths-default);
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        border-bottom-color: $colors-blues-blue10;
+      }
+    }
+  }
+}
+.react-datepicker {
+  border: $border-widths-default solid $colors-greys-grey20;
+  box-shadow: $shadows-card-shadow;
+  .eds-contrast .eds-form-control-wrapper--dark & {
+    //Used continously in stylesheet, to get higher specificity of parent's style
+    border-color: $colors-blues-blue10;
+  }
+  &-wrapper {
+    width: 100%;
+  }
+  &__header {
+    background: $colors-brand-white;
+    border: none;
+    font-size: 16px;
+    line-height: 40px;
+  }
+
+  &__current-month {
+    color: $colors-brand-blue;
+    font-size: $font-sizes-large;
+    font-weight: $font-weights-heading;
+  }
+  &__month-container {
+    // Miniscule padding on top here to show outline of days
+    margin: 0.0625rem $space-large $space-large $space-default;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      background-color: $colors-blues-blue20;
+    }
+  }
+  &__navigation {
+    border-color: $colors-brand-blue;
+    border-width: 2px;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(135deg);
+    top: 24px;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      border-color: $colors-brand-white;
+    }
+    &--previous {
+      transform: rotate(-45deg);
+      left: $space-large;
+    }
+    &--next {
+      right: $space-extra-large;
+    }
+    &:hover {
+      border-color: $colors-brand-blue;
+    }
+  }
+  &__month {
+    margin: 0.125rem;
+  }
+  &__week {
+    height: 40px;
+  }
+  &__week-number {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    line-height: 36px;
+    font-size: 14px;
+    margin: 0;
+    color: $colors-blues-blue40;
+    background: $colors-brand-white;
+    &:first-child {
+      margin-right: $space-extra-small;
+    }
+    .eds-contrast & {
+      color: $colors-brand-lavender;
+    }
+  }
+  &__day-name {
+    width: 40px;
+    line-height: 22px;
+    font-size: 14px;
+    margin: 0;
+    color: $colors-blues-blue40;
+    &:first-child {
+      margin-right: $space-extra-small2;
+    }
+    .eds-contrast & {
+      color: $colors-brand-lavender;
+    }
+  }
+  &__day {
+    margin: $border-widths-default 0 0;
+    font-weight: $font-weights-body;
+    height: 40px;
+    width: 40px;
+    color: $colors-brand-blue;
+    background: $colors-brand-white;
+    margin: 0;
+    line-height: 36px;
+    vertical-align: middle;
+    font-size: 14px;
+    outline: 1px solid $colors-greys-grey20;
+    .eds-contrast & {
+      outline-color: $colors-blues-blue30;
+    }
+
+    &:focus {
+      box-shadow: $shadows-focus;
+    }
+    &:hover {
+      border-radius: 0;
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        background-color: $colors-blues-blue30;
+      }
+    }
+    &--outside-month {
+      color: $colors-blues-blue40;
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        color: $colors-brand-lavender;
+      }
+    }
+    &--keyboard-selected {
+      background: $colors-greys-grey20;
+      border-radius: 0;
+      &:hover {
+        background: $colors-greys-grey30;
+      }
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        background: $colors-blues-blue50;
+      }
+    }
+    &--selected {
+      border-radius: 0;
+      background: $colors-brand-blue;
+      color: $colors-brand-white;
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        background-color: $colors-brand-lavender;
+        color: $colors-brand-blue;
+      }
+      &:hover {
+        background: $colors-blues-blue10;
+        .eds-contrast .eds-form-control-wrapper--dark & {
+          background: $colors-blues-blue60;
+        }
+      }
+    }
+    &--today {
+      border-bottom: $border-widths-large solid $colors-brand-coral;
+    }
+    &--disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}
+
+.eds-native-date-picker {
+  height: 2.75rem;
+}

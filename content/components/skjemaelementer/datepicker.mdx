@@ -1,0 +1,68 @@
+---
+name: Datepicker
+route: /komponenter/skjemaelementer/datepicker
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: datepicker
+tags: dato, date, time, tid, picker
+---
+
+import { Props } from 'docz';
+import { DatePicker, NativeDatePicker } from '@entur/datepicker';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import { addWeeks } from 'date-fns';
+import PageHeader from '~/components/PageHeader';
+import { addDays } from 'date-fns';
+
+<PageHeader>
+  DatePicker er en komponent for å velge dato og tidspunkt.
+</PageHeader>
+
+<Playground>
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <DatePicker
+        style={{ width: '15rem' }}
+        selectedDate={date}
+        onChange={date => setDate(date)}
+      />
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### Datepicker
+
+<ImportStatement imports="DatePicker" />
+<Props of={DatePicker} />
+
+Komponenten vår er bygget på `react-datepicker`, og støtter dermed en rekke props(som forsåvidt ligger i lista over) , selv om 100% kompabilitet ikke kan garanteres.
+Les mer om disse [her.](https://reactdatepicker.com/)
+
+Den støtter også `date-fns` og det anbefales at datofunksjonene fra `date-fns` brukes.
+Eksempelvis `addWeeks` for å sette en maksgrense på én uker man kan velge datoer fra.
+
+<Playground>
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <DatePicker
+        style={{ width: '105em' }}
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        minDate={new Date()} //Mindate, Fra og med
+        maxDate={addWeeks(new Date(), 1)} // Til og med
+      />
+    );
+  }}
+</Playground>
+
+For deg som ønsker å støtte mobil, så eksisterer det også en `NativeDatePicker`.
+Den wrapper en `input` hvor `type="date"`, som i noen sammenhenger kan være og foretrekke.
+
+<Playground>
+  <NativeDatePicker style={{ width: '15rem' }} />
+</Playground>
