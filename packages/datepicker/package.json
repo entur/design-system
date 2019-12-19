@@ -27,7 +27,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
     "@entur/form": "^2.0.1",
     "@entur/icons": "^0.4.2",
     "@entur/tokens": "^1.1.0",
