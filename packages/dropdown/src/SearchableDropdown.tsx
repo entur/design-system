@@ -13,6 +13,7 @@ type SearchableDropdownProps = {
   prepend?: React.ReactNode;
   readOnly?: boolean;
   selectOnTab?: boolean;
+  openOnFocus?: boolean;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   disabled = false,
@@ -23,9 +24,16 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   readOnly = false,
   prepend,
   selectOnTab = false,
+  openOnFocus = false,
   ...rest
 }) => {
-  const { getInputProps, inputValue, selectHighlightedItem } = useDownshift();
+  const {
+    getInputProps,
+    inputValue,
+    selectHighlightedItem,
+    openMenu,
+  } = useDownshift();
+
   const filteredItems = React.useMemo(() => {
     if (!inputValue) {
       return items;
@@ -52,6 +60,11 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
+            }
+          },
+          onFocus: () => {
+            if (openOnFocus) {
+              openMenu();
             }
           },
           ...rest,

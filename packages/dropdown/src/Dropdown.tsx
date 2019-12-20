@@ -37,6 +37,8 @@ type DropdownProps = {
   onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
   /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
   selectOnTab?: boolean;
+  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
+  openOnFocus?: boolean;
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
   debounceTimeout?: number;
   /** Alle ekstra props videresendes til Downshift */
@@ -55,6 +57,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   readOnly,
   searchable,
   selectOnTab,
+  openOnFocus,
   variant,
   value,
   ...rest
@@ -88,6 +91,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           placeholder={placeholder}
           prepend={prepend}
           selectOnTab={selectOnTab}
+          openOnFocus={openOnFocus}
         />
       </DropdownInputGroup>
     </DownshiftProvider>
