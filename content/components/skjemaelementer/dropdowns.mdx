@@ -55,19 +55,20 @@ Om du ønsker å hente innholdet i dropdownen basert på hva brukeren skriver in
 
 Denne funksjonen blir kalt hver gang man endrer noe i input-feltet, og mottar den nye input-strengen som argument. Funksjonen kan være asynkron, og vil i så tilfeller vise en spinner mens brukeren venter.
 
+Dersom `openOnFocus` er satt til `true` vil funksjonen bli kalt når tekstfeltet fokuseres. Da må man håndtere det at queryet kan være tomt. Dette er fint for å kunne vise noen elementer som skal være default ved åpning.
+
 Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake server med tilfeldig forsinkelse:
 
 <Playground>
   {() => {
     // `fetchItems` her vil vanligvis være et fetch-kall.
     let timeoutId;
-    const fetchItems = query =>
-      new Promise(resolve => {
+    const fetchItems = query => {
+      if (!query) {
+        return ['A default item'];
+      }
+      return new Promise(resolve => {
         clearTimeout(timeoutId);
-        if (!query) {
-          resolve([]);
-          return;
-        }
         const queryRegex = new RegExp(query, 'i');
         timeoutId = setTimeout(
           () =>
@@ -77,8 +78,14 @@ Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake serve
           Math.max(Math.random() * 1000, 100), // Et tilfeldig delay per søk
         );
       });
+    };
     return (
-      <Dropdown searchable items={fetchItems} placeholder="Søk asynkront" />
+      <Dropdown
+        searchable
+        openOnFocus
+        items={fetchItems}
+        placeholder="Søk asynkront"
+      />
     );
   }}
 </Playground>

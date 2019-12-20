@@ -45,8 +45,6 @@ const reducer = (_state: ResolverState, action: ResolverAction) => {
 export const useResolvedItems = (
   /** The list of items, or an async function that resolves the list of items */
   itemsOrItemsResolver: PotentiallyAsyncDropdownItemType,
-  /** If true, the items resolver function will be called initially */
-  fetchInitially?: boolean,
   /** The time to wait after the input changes to the fetchItems method is called */
   debounceTimeout: number = 250,
 ) => {
@@ -82,16 +80,16 @@ export const useResolvedItems = (
         dispatch({ type: 'received results', payload: resolvedItems });
       }
     },
-    [itemsResolver],
+    [itemsResolver], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const normalizedItems = useNormalizedItems(items);
   React.useEffect(() => {
     // Let's fetch the list initially if it's specified
-    if (fetchInitially && isItemsFunction) {
+    if (isItemsFunction) {
       fetchItems('');
     }
-  }, [fetchInitially, isItemsFunction]);
+  }, [isItemsFunction]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     items: normalizedItems,
