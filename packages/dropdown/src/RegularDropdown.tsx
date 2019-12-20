@@ -11,17 +11,20 @@ type RegularDropdownProps = {
   loadingText?: string;
   className?: string;
   selectOnTab?: boolean;
+  openOnFocus?: boolean;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   disabled,
   placeholder = 'Vennligst velg',
   selectOnTab = false,
+  openOnFocus = false,
   ...rest
 }) => {
   const {
     getToggleButtonProps,
     selectedItem,
     selectHighlightedItem,
+    openMenu,
   } = useDownshift();
   return (
     <BaseDropdown disabled={disabled} {...rest}>
@@ -34,6 +37,11 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
+            }
+          },
+          onFocus: () => {
+            if (openOnFocus) {
+              openMenu();
             }
           },
         })}
