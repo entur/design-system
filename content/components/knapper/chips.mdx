@@ -10,6 +10,7 @@ tags: chips, potetgull, knapp, labels
 import { Props } from 'docz';
 import { ActionChip, ChoiceChip, ChoiceChipGroup } from '@entur/chip';
 import { AddIcon, CarIcon } from '@entur/icons';
+import { Label } from '@entur/typography';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
@@ -23,28 +24,35 @@ import PageHeader from '~/components/PageHeader';
   {() => {
     const [value, setValue] = React.useState(null);
     return (
-      <>
-        <ChoiceChipGroup
-          name="city"
-          label="Velg din hjemby"
-          onChange={e => setValue(e.target.value)}
-          value={value}
-        >
-          <ChoiceChip value="Oslo">Oslo</ChoiceChip>
-          <ChoiceChip value="Leknes">Leknes</ChoiceChip>
-          <ChoiceChip value="Bergen" disabled>
-            Bergen
-          </ChoiceChip>
-        </ChoiceChipGroup>
-        <br />
-        <ActionChip>Lagre</ActionChip>
-        <ActionChip>
-          Legg til <AddIcon />
-        </ActionChip>
-        <ActionChip>
-          <CarIcon /> Kjør da
-        </ActionChip>
-      </>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div>
+          <Label>ChoiceChips</Label>
+          <ChoiceChipGroup
+            name="city"
+            label="Velg din hjemby"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          >
+            <ChoiceChip value="Oslo">Oslo</ChoiceChip>
+            <ChoiceChip value="Leknes">Leknes</ChoiceChip>
+            <ChoiceChip value="Bergen" disabled>
+              Bergen
+            </ChoiceChip>
+          </ChoiceChipGroup>
+        </div>
+        <div>
+          <Label>ActionChip</Label>
+          <div style={{ display: 'flex' }}>
+            <ActionChip>Lagre</ActionChip>
+            <ActionChip>
+              Legg til <AddIcon />
+            </ActionChip>
+            <ActionChip>
+              <CarIcon /> Kjør da
+            </ActionChip>
+          </div>
+        </div>
+      </div>
     );
   }}
 </Playground>
