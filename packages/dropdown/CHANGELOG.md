@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.3.0...@entur/dropdown@0.4.0) (2019-12-20)
+
+### Features
+
+- **Dropdown:** add openOnFocus prop for Dropdown ([313f61f](https://bitbucket.org/enturas/design-system/commits/313f61f6829ad66eb9896dae65fd11db5f4ea073))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.2.1...@entur/dropdown@0.3.0) (2019-12-17)
 
 ### Bug Fixes
