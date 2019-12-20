@@ -117,3 +117,39 @@ test('renders the currentPage as selected', () => {
   expect(getByText('3')).toHaveAttribute('aria-current', 'page');
   expect(getByText('3')).toHaveClass('eds-pagination__page--selected');
 });
+
+test('page input works as expected', () => {
+  const pageChangeSpy = jest.fn();
+  const { getByRole } = render(
+    <Pagination
+      pageCount={5}
+      currentPage={3}
+      onPageChange={pageChangeSpy}
+      showInput
+    />,
+  );
+
+  const input = getByRole('textbox');
+  const form = getByRole('form');
+  fireEvent.change(input, { target: { value: '2' } });
+  expect(pageChangeSpy).not.toHaveBeenCalled();
+
+  fireEvent.submit(form);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
+
+  // if you're submitting the same value as the current value, don't call the
+  // onPageChange callback
+  fireEvent.change(input, { target: { value: '3' } });
+  fireEvent.submit(form);
+  expect(pageChangeSpy).toHaveBeenCalledTimes(1);
+
+  // When handled values that are too big - assume last page
+  fireEvent.change(input, { target: { value: '100' } });
+  fireEvent.submit(form);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(5); // page count
+
+  // When handled values less than 1 - assume first page
+  fireEvent.change(input, { target: { value: '-19' } });
+  fireEvent.submit(form);
+  expect(pageChangeSpy).toHaveBeenLastCalledWith(1);
+});

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { PaginationPage } from './PaginationPage';
 import './Pagination.scss';
+import { PaginationInput } from './PaginationInput';
 
 export type PaginationProps = {
   /** Ekstra klassenavn */
@@ -28,16 +29,25 @@ export type PaginationProps = {
    * @default pageNumber => `Gå til side ${pageNumber}`,
    */
   pageLabel?: (pageNumber: number) => string;
+  /** Vis et felt til høyre for pagineringen hvor man kan angi siden man
+   * ønsker å vise i et tekstfelt.
+   *
+   * @default false
+   */
+  showInput?: boolean;
+  /** Label som vises til venstre for input-feltet som vises om `showInput` er true */
   [key: string]: any;
 };
 
 export const Pagination: React.FC<PaginationProps> = ({
   className,
   currentPage,
+  inputLabel,
   onPageChange,
   pageCount,
   pageLabel = pageNumber => `Gå til side ${pageNumber}`,
   previousPageLabel = 'Gå til forrige side',
+  showInput,
   nextPageLabel = 'Gå til neste side',
   ...rest
 }) => {
@@ -109,6 +119,14 @@ export const Pagination: React.FC<PaginationProps> = ({
         >
           <RightArrowIcon />
         </PaginationPage>
+      )}
+      {showInput && (
+        <PaginationInput
+          pageCount={pageCount}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+          label={inputLabel}
+        />
       )}
     </div>
   );

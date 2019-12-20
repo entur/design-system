@@ -1,6 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-pagination {
+  align-items: center;
   display: flex;
   justify-content: center;
 }
@@ -51,6 +52,37 @@
   font-size: $font-sizes-extra-large;
   height: $space-extra-large;
   justify-content: center;
-  padding: 0.5rem;
   width: $space-extra-large;
+}
+
+.eds-pagination__input-label {
+  border-left: $border-widths-small solid $colors-greys-grey10;
+  color: $colors-blues-blue40;
+  font-size: $font-sizes-medium;
+  margin-left: $space-extra-small;
+  padding: 0 $space-medium;
+
+  .eds-contrast & {
+    border-color: $colors-blues-blue20;
+    color: $colors-brand-lavender;
+  }
+}
+
+.eds-pagination__input-field {
+  appearance: none;
+  background: transparent;
+  border: $border-widths-default solid $colors-brand-lavender;
+  border-radius: 0;
+  color: inherit;
+  font-size: $font-sizes-medium;
+  height: $space-extra-large;
+  text-align: center;
+  width: $space-extra-large;
+
+  // Removes those pesky increment and decrement buttons on input[type=number]
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
 }
