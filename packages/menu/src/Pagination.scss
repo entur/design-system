@@ -1,0 +1,88 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-pagination {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.eds-pagination__page {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: $border-widths-small solid transparent;
+  border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: $font-sizes-medium;
+  height: $space-extra-large;
+  justify-content: center;
+  margin: 0 $border-widths-small;
+  transition: all $timings-fast ease-out;
+  width: $space-extra-large;
+
+  &--selected {
+    border-color: currentColor;
+    color: inherit;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $colors-blues-blue70;
+    border-color: $colors-blues-blue70;
+
+    .eds-contrast & {
+      background-color: $colors-blues-blue20;
+      border-color: $colors-blues-blue20;
+    }
+  }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
+
+.eds-pagination__ellipsis {
+  align-items: center;
+  display: flex;
+  font-size: $font-sizes-extra-large;
+  height: $space-extra-large;
+  justify-content: center;
+  width: $space-extra-large;
+}
+
+.eds-pagination__input-label {
+  border-left: $border-widths-small solid $colors-greys-grey10;
+  color: $colors-blues-blue40;
+  font-size: $font-sizes-medium;
+  margin-left: $space-extra-small;
+  padding: 0 $space-medium;
+
+  .eds-contrast & {
+    border-color: $colors-blues-blue20;
+    color: $colors-brand-lavender;
+  }
+}
+
+.eds-pagination__input-field {
+  appearance: none;
+  background: transparent;
+  border: $border-widths-default solid $colors-brand-lavender;
+  border-radius: 0;
+  color: inherit;
+  font-size: $font-sizes-medium;
+  height: $space-extra-large;
+  text-align: center;
+  width: $space-extra-large;
+
+  // Removes those pesky increment and decrement buttons on input[type=number]
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
