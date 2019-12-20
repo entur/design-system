@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.3...@entur/menu@1.1.0) (2019-12-20)
+
+### Features
+
+- **Pagination:** add new component - Pagination ([bc6d042](https://bitbucket.org/enturas/design-system/commits/bc6d0427041a784a42ae028ebffc6271e5ab5a67))
+- **Pagination:** add support for showInput ([588d9f3](https://bitbucket.org/enturas/design-system/commits/588d9f31c769298e1b6d8d2aee3c97b5e308b4fe))
+
 ## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.2...@entur/menu@1.0.3) (2019-12-10)
 
 ### Bug Fixes
