@@ -74,13 +74,16 @@ export const useResolvedItems = (
   // the input value changes
   const fetchItems = React.useCallback(
     async (inputValue: string) => {
+      if (!isMounted) {
+        return;
+      }
       dispatch({ type: 'request results' });
       const resolvedItems = await itemsResolver(inputValue);
       if (isMounted) {
         dispatch({ type: 'received results', payload: resolvedItems });
       }
     },
-    [itemsResolver], // eslint-disable-line react-hooks/exhaustive-deps
+    [itemsResolver, isMounted],
   );
 
   const normalizedItems = useNormalizedItems(items);
@@ -89,7 +92,7 @@ export const useResolvedItems = (
     if (isItemsFunction) {
       fetchItems('');
     }
-  }, [isItemsFunction]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isItemsFunction, fetchItems]);
 
   return {
     items: normalizedItems,
