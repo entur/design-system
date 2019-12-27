@@ -64,7 +64,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
     items,
-    !searchable, // only fetch initially if not searchable
     debounceTimeout,
   );
 

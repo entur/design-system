@@ -51,7 +51,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   feedback,
   ...rest
 }) => {
-  const { items: normalizedItems, loading } = useResolvedItems(items, true);
+  const { items: normalizedItems, loading } = useResolvedItems(items);
 
   let rightSideIcon: JSX.Element | null = <DownArrowIcon inline={true} />;
   if (disabled || readOnly) {
