@@ -1,3 +1,4 @@
+export * from './Breadcrumbs';
 export * from './SideNavigation';
 export * from './SideNavigationItem';
 export * from './SideNavigationGroup';

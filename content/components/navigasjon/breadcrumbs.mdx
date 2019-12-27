@@ -1,0 +1,51 @@
+---
+name: Breadcrumbs
+route: /komponenter/navigasjon/breadcrumbs
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tabs: brødsmuler, sidenavigasjon
+---
+
+import { Props, Link } from 'docz';
+import { Breadcrumbs } from '@entur/menu';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Breadcrumbs - eller brødsmulesti - er en måte å navigere mellom forskjellige
+  sider i en dyp sidestruktur på.
+</PageHeader>
+
+<Playground>
+  <Breadcrumbs
+    links={[
+      { link: '/', label: 'Hjem' },
+      { link: '/komponenter', label: 'Komponenter' },
+      { link: '/komponenter/navigasjon/breadcrumbs', label: 'Breadcrumbs' },
+    ]}
+    as={Link}
+  />
+</Playground>
+
+## Komponenter
+
+### Breadcrumbs
+
+<ImportStatement imports="Breadcrumbs" />
+<Props of={Breadcrumbs} />
+
+`<Breadcrumbs />` lager en universelt utformet brødsmulesti - bedre kjent som breadcrumbs. Den mottar en liste med lenker - hvor den første i listen er "øverst" i lenkehierarkiet (tenk forsiden), og den siste i listen er den nåværende siden.
+
+Du kan sende inn en lenke-komponent via `as`, som vil rendre hver av lenkene. Om du bruker `react-router`, for eksempel, kan du sende inn `Link` - så ordner komponenten resten.
+
+Listen med lenker ser slik ut:
+
+```js
+[
+  { link: '/', label: 'Hjem' },
+  { link: '/produkter', label: 'Produkter' },
+  { link: '/produkter/togsett', label: 'Togsett' },
+];
+```
