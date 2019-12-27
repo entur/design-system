@@ -21,7 +21,8 @@
       height: 0;
       width: 0;
 
-      &:checked + .eds-form-component--checkbox__icon {
+      &:checked + .eds-form-component--checkbox__icon,
+      &:indeterminate + .eds-form-component--checkbox__icon {
         background-color: $colors-brand-blue;
         .eds-contrast & {
           background: $colors-blues-blue30;
@@ -35,20 +36,25 @@
         }
       }
     }
-    &:hover input:not(:checked) + .eds-form-component--checkbox__icon {
-      border-color: $colors-blues-blue30;
-      background: $colors-greys-grey30;
-      .eds-contrast & {
-        border-color: $colors-blues-blue40;
-        background: $colors-blues-blue10;
+    &:hover {
+      input + .eds-form-component--checkbox__icon {
+        border-color: $colors-blues-blue30;
+        background: $colors-greys-grey30;
+        .eds-contrast & {
+          border-color: $colors-blues-blue40;
+          background: $colors-blues-blue10;
+        }
       }
-    }
-    &:hover input:checked + .eds-form-component--checkbox__icon {
-      border-color: $colors-blues-blue30;
-      background-color: $colors-blues-blue30;
-      .eds-contrast & {
-        background: $colors-blues-blue50;
-        border-color: $colors-blues-blue50;
+
+      input:checked + .eds-form-component--checkbox__icon,
+      input:indeterminate + .eds-form-component--checkbox__icon {
+        border-color: $colors-blues-blue30;
+        background-color: $colors-blues-blue30;
+
+        .eds-contrast & {
+          background: $colors-blues-blue50;
+          border-color: $colors-blues-blue50;
+        }
       }
     }
   }
