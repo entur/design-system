@@ -12,16 +12,6 @@ test('renders its children', () => {
   });
 });
 
-test('renders as the specified element', () => {
-  Object.values(components).forEach(Component => {
-    const { container } = render(
-      <Component as="button">Hello world</Component>,
-    );
-    expect(container.querySelector('button')).toBeTruthy();
-    cleanup();
-  });
-});
-
 test('passes on all props', () => {
   Object.values(components).forEach(Component => {
     const { getByLabelText } = render(
