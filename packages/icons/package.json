@@ -30,7 +30,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@svgr/rollup": "^4.3.3",
+    "@svgr/rollup": "^5.0.1",
     "@types/fs-extra": "^8.0.0",
     "case": "^1.6.2",
     "fs-extra": "^8.1.0",

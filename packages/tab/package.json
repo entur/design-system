@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@entur/tokens": "^1.1.0",
-    "@reach/tabs": "^0.6.2",
+    "@reach/tabs": "^0.7.0",
     "classnames": "^2.2.6"
   }
 }
