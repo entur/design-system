@@ -15,7 +15,7 @@ yarn add @entur/icons
 ## Usage
 
 ```js
-import { AddIcon } from "@entur/icons; //Import specific icon
+import { AddIcon } from "@entur/icons"; //Import specific icon
 
 <AddIcon/>
 ```
