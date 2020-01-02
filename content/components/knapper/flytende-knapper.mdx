@@ -1,0 +1,56 @@
+---
+name: Flytende knapper
+route: /komponenter/knapper/flytende-knapper
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+tags: flytende, knapp, funksjonsknapp, tabellknapp, button, fab, floating, action, buttons
+---
+
+import { FloatingButton } from '@entur/button';
+import { Label } from '@entur/typography';
+import { Props } from 'docz';
+import { AddIcon, CheckIcon, RightArrowIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Flytende knapper - også kjent som floating action buttons eller FABs - er
+  ikonknapper med optional tekst, og brukes for å trigge hovedfunksjonaliteten
+  på en side.
+</PageHeader>
+
+<Playground>
+  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <FloatingButton aria-label="Legg til" onClick={() => {}}>
+      <AddIcon />
+    </FloatingButton>
+    <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
+      <CheckIcon /> Favoritt
+    </FloatingButton>
+    <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
+      Favoritt <RightArrowIcon />
+    </FloatingButton>
+  </div>
+</Playground>
+
+## Komponenter
+
+### FloatingButton
+
+<ImportStatement imports="FloatingButton" />
+<Props of={FloatingButton} />
+
+`<FloatingButton />` kan ha et ikon, eller ikon og tekst. Ikonet kan være til venstre eller til høyre for teksten.
+
+Denne typen knapp bør være "sticky" på toppen av eksisterende innhold, men denne posisjoneringen må du gjøre selv - enten ved hjelp av en CSS-klasse, eller med inline styles:
+
+```js
+<FloatingButton
+  {...otherProps}
+  style={{ position: 'fixed', top: '1em', right: '1em' }}
+/>
+```
+
+Du bør ha en eller _maks_ to av disse på en side, siden de er veldig dominerende.
