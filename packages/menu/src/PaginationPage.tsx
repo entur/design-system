@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 export type PaginationPageProps = {
-  /** sidenummeret som er aktivt nå */
+  /** Sidenummeret som er aktivt nå */
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
