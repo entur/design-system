@@ -1,18 +1,29 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-dropdown-list {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  list-style: none;
-  width: 100%;
   border-radius: $border-radiuses-default;
-  z-index: $z-indexes-popover;
   box-shadow: $shadows-card-shadow;
+  display: none;
+  list-style: none;
+  margin: 0;
+  max-height: 50vh;
+  padding: 0;
   position: relative;
+  overflow-y: scroll;
+  width: 100%;
+  z-index: $z-indexes-popover;
+
+  &--open {
+    // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
+    display: inline-block;
+  }
 
   &:focus {
     outline: none;
+  }
+
+  @media all and (min-width: $breakpoints-large) {
+    max-height: 30vh;
   }
 }
 .eds-dropdown-list__item {
