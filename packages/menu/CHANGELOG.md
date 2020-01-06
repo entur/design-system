@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.1.0...@entur/menu@1.2.0) (2020-01-06)
+
+### Bug Fixes
+
+- **Pagination:** fix ios safari bug with small prev/next buttons ([c3c06d4](https://bitbucket.org/enturas/design-system/commits/c3c06d408e994a14d94d1536da86111327e55fbb))
+- **Pagination:** make each pagination page text unselectable ([746fc7a](https://bitbucket.org/enturas/design-system/commits/746fc7ab6a2e6348a0a5e03f4c8c0000f9ed75b2))
+
+### Features
+
+- **BreadcrumbNavigation, BreadcrumbItem:** create new components for composing breadcrumbs together ([37c3e5e](https://bitbucket.org/enturas/design-system/commits/37c3e5e897d222d65e0ce51fceae9693788a0f0f))
+- **Breadcrumbs:** add new component - Breadcrumbs ([0ee248d](https://bitbucket.org/enturas/design-system/commits/0ee248d7ac936904eaf9dbc324197d4bb44b498e))
+
 # [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.3...@entur/menu@1.1.0) (2019-12-20)
 
 ### Features

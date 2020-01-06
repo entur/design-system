@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.6.1...@entur/typography@0.7.0) (2020-01-06)
+
+### Bug Fixes
+
+- new styling for preformatted and code text ([c929097](https://bitbucket.org/enturas/design-system/commits/c9290975269797e8080362336b9d2cac65e028e9))
+
+### Features
+
+- **UnorderedList, NumberedList, ListItem:** add new list components ([96de00e](https://bitbucket.org/enturas/design-system/commits/96de00e21d852702e1ab23d388a807d5ad035580))
+
 ## [0.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.6.0...@entur/typography@0.6.1) (2019-12-10)
 
 ### Bug Fixes

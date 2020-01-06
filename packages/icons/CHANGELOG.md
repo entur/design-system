@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.2...@entur/icons@0.4.3) (2020-01-06)
+
+### Bug Fixes
+
+- **SubtractIcon, VerticalDotsIcon:** fix two rotated icons ([9cd49ee](https://bitbucket.org/enturas/design-system/commits/9cd49ee0ad24c11675c0e4ca0082aecbaef4f0d7))
+
 ## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.1...@entur/icons@0.4.2) (2019-11-22)
 
 **Note:** Version bump only for package @entur/icons

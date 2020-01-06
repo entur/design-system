@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.2...@entur/form@2.1.0) (2020-01-06)
+
+### Features
+
+- **Checkbox:** add support for indeterminate checkboxes ([a98fb42](https://bitbucket.org/enturas/design-system/commits/a98fb429d3b917fc4804a5ceb7a0052ea84052ca))
+
 ## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.1...@entur/form@2.0.2) (2019-12-17)
 
 ### Bug Fixes

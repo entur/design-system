@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.4.0...@entur/dropdown@0.4.1) (2020-01-06)
+
+### Bug Fixes
+
+- **Dropdown:** add a max-height to DropdownList, and improve a11y ([d3f5046](https://bitbucket.org/enturas/design-system/commits/d3f50460a8fa78bbc95b3274bb5678a1a51b9f73))
+- **Dropdown:** add missing dependencies ([e7c046f](https://bitbucket.org/enturas/design-system/commits/e7c046f5408170a3974790f3ccfa2d77e7510f49))
+- **Dropdown:** fetch initially also for searchable dropdowns ([8e18927](https://bitbucket.org/enturas/design-system/commits/8e189274fc6dfe743f17ed819e7aaefad20b2bf9))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.3.0...@entur/dropdown@0.4.0) (2019-12-20)
 
 ### Features

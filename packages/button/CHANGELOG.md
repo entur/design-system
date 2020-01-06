@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.4.1...@entur/button@1.5.0) (2020-01-06)
+
+### Features
+
+- **FloatingButton:** add new component: FloatingButton ([2f38bc5](https://bitbucket.org/enturas/design-system/commits/2f38bc53cb1b4a357126ca35d6548b7a6e36b3dc))
+
 ## [1.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.4.0...@entur/button@1.4.1) (2019-12-17)
 
 ### Bug Fixes
