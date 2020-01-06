@@ -58,3 +58,64 @@ Om brukeren skal velge en eller flere valg, så bør du bruke checkboxes isteden
 </Playground>
 
 For flere retningslinjer rundt toggles vs checkboxes vennligst ta en titt på [denne artikkelen](https://uxplanet.org/checkbox-vs-toggle-switch-7fc6e83f10b8).
+
+### Indeterminate
+
+Det finnes tilfeller der en checkbox hverken er på eller av. Det er typisk når man bruker en checkbox til å velge en rekke andre checkboxes.
+
+Her har du et eksempel hvor det brukes. Prøv å velg ingen, alle eller en blanding.
+
+<Playground>
+  {() => {
+    const [selectedItems, setSelectedItems] = React.useState({
+      Buss: false,
+      Tog: false,
+      Båt: false,
+      Fly: false,
+      Sykkel: false,
+      Sparkesykkel: false,
+    });
+    const isEverythingSelected = Object.values(selectedItems).every(
+      value => value,
+    );
+    const isNothingSelected = Object.values(selectedItems).every(
+      value => !value,
+    );
+    const isSomeSelected = !isEverythingSelected && !isNothingSelected;
+    const handleAllOrNothingChange = () => {
+      setSelectedItems(prev =>
+        Object.keys(prev).reduce(
+          (acc, key) => ({ ...acc, [key]: !isEverythingSelected }),
+          {},
+        ),
+      );
+    };
+    const handleRegularChange = e => {
+      setSelectedItems({
+        ...selectedItems,
+        [e.target.name]: e.target.checked,
+      });
+    };
+    return (
+      <Fieldset label="Jeg vil gjerne reise med">
+        <Checkbox
+          name="all"
+          checked={isSomeSelected ? 'indeterminate' : isEverythingSelected}
+          onChange={handleAllOrNothingChange}
+        >
+          Alt
+        </Checkbox>
+        {Object.entries(selectedItems).map(([name, checked]) => (
+          <Checkbox
+            key={name}
+            checked={checked}
+            name={name}
+            onChange={handleRegularChange}
+          >
+            {name}
+          </Checkbox>
+        ))}
+      </Fieldset>
+    );
+  }}
+</Playground>

@@ -8,6 +8,7 @@ export type CheckboxProps = {
   className?: string;
   /** Label for checkboxen, som vises ved høyre side. */
   children?: React.ReactNode;
+  checked?: boolean | 'indeterminate';
   [key: string]: any;
 };
 
@@ -16,16 +17,33 @@ export const Checkbox: React.RefForwardingComponent<
   CheckboxProps
 > = React.forwardRef(
   (
-    { className, width, children, ...rest },
+    { checked, className, width, children, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    // Trick to allow using a ref locally, while still allowing for ref forwarding
+    // Read more at https://reactjs.org/docs/hooks-reference.html#useimperativehandle
+    const innerRef = React.useRef<HTMLInputElement>(null);
+    React.useImperativeHandle(ref, () => innerRef.current!);
+
+    const isIndeterminate = checked === 'indeterminate';
+    const isControlled = checked !== undefined;
+
+    React.useEffect(() => {
+      innerRef!.current!.indeterminate = isIndeterminate;
+    }, [isIndeterminate]);
+
     return (
       <label
         className={cx('eds-form-component--checkbox__container', className)}
       >
-        <input type="checkbox" ref={ref} {...rest} />
+        <input
+          type="checkbox"
+          ref={innerRef}
+          checked={isControlled ? checked === true : undefined}
+          {...rest}
+        />
         <span className="eds-form-component--checkbox__icon">
-          <CheckboxIcon />
+          <CheckboxIcon indeterminate={isIndeterminate} />
         </span>
         {children && <Paragraph as="span">{children}</Paragraph>}
       </label>
@@ -33,7 +51,9 @@ export const Checkbox: React.RefForwardingComponent<
   },
 );
 
-function CheckboxIcon() {
+const CheckboxIcon: React.FC<{ indeterminate: boolean }> = ({
+  indeterminate = false,
+}) => {
   return (
     <svg
       className="eds-checkbox-icon"
@@ -41,11 +61,15 @@ function CheckboxIcon() {
       height="9px"
       viewBox="6 11 37 33"
     >
-      <path
-        className="eds-checkbox-icon__path"
-        d="M14.1 27.2l7.1 7.2 14.6-14.8"
-        fill="none"
-      />
+      {indeterminate ? (
+        <rect x="10" y="25" width="28" height="5" fill="white" />
+      ) : (
+        <path
+          className="eds-checkbox-icon__path"
+          d="M14.1 27.2l7.1 7.2 14.6-14.8"
+          fill="none"
+        />
+      )}
     </svg>
   );
-}
+};
