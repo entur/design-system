@@ -29,7 +29,7 @@
   "dependencies": {
     "@entur/icons": "^0.4.2",
     "@entur/tokens": "^1.1.0",
-    "@reach/dialog": "^0.6.2",
+    "@reach/dialog": "^0.7.0",
     "@types/reach__dialog": "^0.1.0",
     "classnames": "^2.2.6"
   }

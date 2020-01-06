@@ -13,7 +13,8 @@
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
     "prepublishOnly": "yarn build && yarn lint && yarn test",
-    "lerna:publish": "lerna publish --conventional-commits"
+    "lerna:publish": "lerna publish --conventional-commits",
+    "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx"
   },
   "workspaces": [
     "packages/a11y",
@@ -57,10 +58,10 @@
     "husky": "^3.0.5",
     "inquirer": "^7.0.0",
     "lerna": "^3.16.4",
-    "prettier": "1.18.2",
-    "pretty-quick": "^1.11.1",
+    "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1",
     "rollup-plugin-sass": "^1.2.2",
-    "tsdx": "^0.10.0",
+    "tsdx": "0.10.x",
     "tslib": "^1.10.0",
     "typescript": "^3.6.2"
   },
