@@ -8,7 +8,7 @@ tabs: brødsmuler, sidenavigasjon
 ---
 
 import { Props, Link } from 'docz';
-import { Breadcrumbs } from '@entur/menu';
+import { BreadcrumbNavigation, BreadcrumbItem } from '@entur/menu';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -19,33 +19,33 @@ import { ImportStatement } from '~/components/ImportStatement';
 </PageHeader>
 
 <Playground>
-  <Breadcrumbs
-    links={[
-      { link: '/', label: 'Hjem' },
-      { link: '/komponenter', label: 'Komponenter' },
-      { link: '/komponenter/navigasjon/breadcrumbs', label: 'Breadcrumbs' },
-    ]}
-    as={Link}
-  />
+  <BreadcrumbNavigation>
+    <BreadcrumbItem as={Link} to="/">
+      Hjem
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter">
+      Komponenter
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter/navigasjon/breadcrumbs">
+      Breadcrumbs
+    </BreadcrumbItem>
+  </BreadcrumbNavigation>
 </Playground>
 
 ## Komponenter
 
-### Breadcrumbs
+### BreadcrumbNavigation
 
-<ImportStatement imports="Breadcrumbs" />
-<Props of={Breadcrumbs} />
+<ImportStatement imports="BreadcrumbNavigation" />
+<Props of={BreadcrumbNavigation} />
 
-`<Breadcrumbs />` lager en universelt utformet brødsmulesti - bedre kjent som breadcrumbs. Den mottar en liste med lenker - hvor den første i listen er "øverst" i lenkehierarkiet (tenk forsiden), og den siste i listen er den nåværende siden.
+`<BreadcrumbNavigation />` er en wrapper-komponent som brukes rundt `<BreadcrumbItem />`-komponenter for å lage en komplett brødsmulesti.
 
-Du kan sende inn en lenke-komponent via `as`, som vil rendre hver av lenkene. Om du bruker `react-router`, for eksempel, kan du sende inn `Link` - så ordner komponenten resten.
+Merk at du kun kan sende inn `<BreadcrumbItem />`s som `children` til denne komponenten for at den skal fungere som forventet.
 
-Listen med lenker ser slik ut:
+### BreadcrumbItem
 
-```js
-[
-  { link: '/', label: 'Hjem' },
-  { link: '/produkter', label: 'Produkter' },
-  { link: '/produkter/togsett', label: 'Togsett' },
-];
-```
+<ImportStatement imports="BreadcrumbItem" />
+<Props of={BreadcrumbItem} />
+
+`<BreadcrumbItem />` lager en lenke i brødsmulestien. Du sender inn navnet på siden som `children`, og lenken som `href`. For å fungere som forventet må de wrappes inne i en `<BreadcrumbNavigation />`-komponent.
