@@ -20,7 +20,7 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
     packageManager === 'yarn'
       ? `yarn add @entur/${npmPackage}`
       : `npm install @entur/${npmPackage}`;
-  const cssImport = `@import '~@entur/${npmPackage}/dist/styles.css;'`;
+  const cssImport = `@import '~@entur/${npmPackage}/dist/styles.css';`;
   return (
     <header>
       {categoryToShow && (
