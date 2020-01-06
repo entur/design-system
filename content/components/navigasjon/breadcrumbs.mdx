@@ -1,0 +1,51 @@
+---
+name: Breadcrumbs
+route: /komponenter/navigasjon/breadcrumbs
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tabs: brødsmuler, sidenavigasjon
+---
+
+import { Props, Link } from 'docz';
+import { BreadcrumbNavigation, BreadcrumbItem } from '@entur/menu';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Breadcrumbs - eller brødsmulesti - er en måte å navigere mellom forskjellige
+  sider i en dyp sidestruktur på.
+</PageHeader>
+
+<Playground>
+  <BreadcrumbNavigation>
+    <BreadcrumbItem as={Link} to="/">
+      Hjem
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter">
+      Komponenter
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter/navigasjon/breadcrumbs">
+      Breadcrumbs
+    </BreadcrumbItem>
+  </BreadcrumbNavigation>
+</Playground>
+
+## Komponenter
+
+### BreadcrumbNavigation
+
+<ImportStatement imports="BreadcrumbNavigation" />
+<Props of={BreadcrumbNavigation} />
+
+`<BreadcrumbNavigation />` er en wrapper-komponent som brukes rundt `<BreadcrumbItem />`-komponenter for å lage en komplett brødsmulesti.
+
+Merk at du kun kan sende inn `<BreadcrumbItem />`s som `children` til denne komponenten for at den skal fungere som forventet.
+
+### BreadcrumbItem
+
+<ImportStatement imports="BreadcrumbItem" />
+<Props of={BreadcrumbItem} />
+
+`<BreadcrumbItem />` lager en lenke i brødsmulestien. Du sender inn navnet på siden som `children`, og lenken som `href`. For å fungere som forventet må de wrappes inne i en `<BreadcrumbNavigation />`-komponent.

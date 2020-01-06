@@ -1,0 +1,23 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eds-breadcrumb__item {
+  display: inline-block;
+}
+
+.eds-breadcrumb__separator {
+  margin: 0 $space-small 0 $space-extra-small;
+}
+
+.eds-breadcrumb__link {
+  text-decoration: none;
+
+  &--current {
+    font-weight: $font-weights-heading;
+  }
+}
