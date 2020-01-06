@@ -13,6 +13,43 @@ import PageHeader from '~/components/PageHeader';
   en oppsummering av hva som har blitt lansert
 </PageHeader>
 
+### 2020-01-06
+
+- [@entur/a11y@0.2.5](https://npmjs.com/package/@entur/a11y)
+- [@entur/alert@0.5.3](https://npmjs.com/package/@entur/alert)
+- [@entur/button@1.5.0](https://npmjs.com/package/@entur/button)
+- [@entur/chip@0.2.5](https://npmjs.com/package/@entur/chip)
+- [@entur/datepicker@0.2.1](https://npmjs.com/package/@entur/datepicker)
+- [@entur/dropdown@0.4.1](https://npmjs.com/package/@entur/dropdown)
+- [@entur/expand@1.1.0](https://npmjs.com/package/@entur/expand)
+- [@entur/form@2.1.0](https://npmjs.com/package/@entur/form)
+- [@entur/icons@0.4.3](https://npmjs.com/package/@entur/icons)
+- [@entur/layout@1.0.1](https://npmjs.com/package/@entur/layout)
+- [@entur/loader@0.3.3](https://npmjs.com/package/@entur/loader)
+- [@entur/menu@1.2.0](https://npmjs.com/package/@entur/menu)
+- [@entur/modal@1.0.1](https://npmjs.com/package/@entur/modal)
+- [@entur/tab@0.2.3](https://npmjs.com/package/@entur/tab)
+- [@entur/table@0.3.6](https://npmjs.com/package/@entur/table)
+- [@entur/tokens@1.1.1](https://npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.1.3](https://npmjs.com/package/@entur/tooltip)
+- [@entur/typography@0.7.0](https://npmjs.com/package/@entur/typography)
+
+Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/1755d311b4cb5121c90a6abf85c17a9dfc530abe
+
+**TL;DR:**
+
+- ✨ `@entur/button`: Ny knapp `FloatingButton`! Perfekt for når du trenger en knapp på toppen av UIet ditt.
+- ✨ `@entur/menu`: Nye komponenter `BreadcrumbNavigation` og `BreadcrumbItem`! Disse kan du sette sammen til å lage en brødsmulesti - helt a11y-compliant!
+- ✨ `@entur/typography`: Nye komponenter for lister - `UnorderedList`, `NumberedList` og `ListItem`. Perfekt for opplisting av både sortert og usortert informasjon.
+- ✨ `@entur/expand`: Nå eksponerer vi bare knappen fra `ExpandableText` som `ExpandableTextButton`. Dette er perfekt for om du ønsker å styre hvordan DOM-rekkefølgen skal være. Bare husk å ivareta a11y på egenhånd med `aria-controls` eller lignende!
+- ✨ `@entur/form`. Nå støtter `Checkbox`-komponenten propen `checked="indeterminate"`. Denne tilstanden brukes når man bruker en checkbox til å velge flere checkboxes, men bare et subsett av disse er valgt.
+- 💄 `@entur/dropdown`: Resultatlisten til dropdownen får nå en makshøyde.
+- 💄 `@entur/typography`: Ny styling for preformattert og inline kodetekst (`PreformattedText`- og `CodeText`-komponentene).
+- 🐛 `@entur/dropdown`: Hent data initielt for søkbare dropdowns også.
+- 🐛 `@entur/alert`: Fikset issue med TypeScript-typings i `ToastProvider`
+- 🐛 `@entur/icons`: `VerticalDotsIcon` og `SubtractIcon` er nå riktig vei! Om du har korrigert for dette selv, så må du fjerne disse korrigeringene.
+- 🐛 `@entur/menu`: Fikser en bug der `Pagination`-komponentens forrige- og neste-knapper fikk veldig små ikoner på iOS Safari. Også går det ikke lenger an å velge teksten inni en side, som ofte kunne skje ved et uhell.
+
 ### 2019-12-20
 
 - [@entur/datepicker@0.2.0](https://npmjs.com/package/@entur/datepicker)
