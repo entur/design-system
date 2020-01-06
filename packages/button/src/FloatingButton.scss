@@ -1,0 +1,48 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+$height: (44rem/16);
+$padding: ((44rem - 14rem) / 2 / 16);
+
+.eds-floating-button {
+  align-items: center;
+  appearance: none;
+  background: $colors-brand-blue;
+  border: 0;
+  border-radius: ($height / 2);
+  box-shadow: $shadows-card-shadow;
+  color: $colors-brand-white;
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: $font-sizes-medium;
+  font-weight: $font-weights-body;
+  justify-content: center;
+  min-height: $height;
+  margin: 0;
+  min-width: $height;
+  padding: 0 $padding;
+  position: relative;
+  z-index: $z-indexes-sticky;
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-card-shadow, $shadows-focus;
+  }
+
+  .eds-contrast & {
+    background: $colors-brand-white;
+    color: $colors-brand-blue;
+  }
+}
+
+.eds-floating-button--extended > * {
+  margin: 0 1em;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
