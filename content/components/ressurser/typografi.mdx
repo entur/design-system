@@ -26,6 +26,9 @@ import {
   Link as LinkText,
   PreformattedText,
   CodeText,
+  UnorderedList,
+  NumberedList,
+  ListItem,
 } from '@entur/typography';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -109,6 +112,38 @@ Vi har to nivåer med "label"-tekst - "label" og "sub label".
   </SubLabel>
 </Playground>
 
+## Lister
+
+Du har to forskjellige listetyper - usortert og nummerert.
+
+<Playground>
+  <Paragraph>
+    Usorterte lister er fine for å summere opp en rekke punkter der rekkefølgen
+    ikke er så viktig
+  </Paragraph>
+  <UnorderedList>
+    <ListItem>Du kan bruke dem til å summere opp hva kunden har kjøpt</ListItem>
+    <ListItem>Du kan liste opp hovedtrekk i en kjøpskontrakt</ListItem>
+    <ListItem>
+      Du kan gjerne skrive lengre punkter om du vil, men det er ofte lettere å
+      lese korte og konsise punkter enn lange og detaljrike tekster.
+    </ListItem>
+  </UnorderedList>
+  <Paragraph>
+    Nummererte lister er flotte når du har en rekke punker du vil fremheve
+    rekkefølgen på.
+  </Paragraph>
+  <NumberedList>
+    <ListItem title="Først bør du huske på å bruke title-propen">
+      Da får du en fin fet overskrift på punktet ditt
+    </ListItem>
+    <ListItem title="For det andre bør du ha gode overskrifter">
+      Dette er forferdelige eksempler, så gjør en mye bedre jobb enn det vi har
+      gjort her.
+    </ListItem>
+  </NumberedList>
+</Playground>
+
 ## CSS properties
 
 Vi eksponerer noen CSS-properties fra denne pakken, som kan brukes på tvers av andre komponenter. Disse er:
@@ -182,3 +217,18 @@ De vil bli dokumentert bedre etterhvert, men vil være de aktuelle hovedfargene 
 
 <ImportStatement imports="CodeText" />
 <Props of={CodeText} />
+
+### UnorderedList
+
+<ImportStatement imports="UnorderedList" />
+<Props of={UnorderedList} />
+
+### NumberedList
+
+<ImportStatement imports="NumberedList" />
+<Props of={NumberedList} />
+
+### ListItem
+
+<ImportStatement imports="ListItem" />
+<Props of={ListItem} />

@@ -242,3 +242,41 @@ html {
   font-size: $font-sizes-medium; // Slightly smaller than
   padding: ($space-extra-small2 / 2) $space-extra-small2;
 }
+
+.eds-unordered-list,
+.eds-numbered-list {
+  margin: $space-default 0;
+}
+
+.eds-numbered-list {
+  counter-reset: eds-numbered-list-counter;
+  list-style: none;
+}
+
+.eds-list-item {
+  padding-left: $space-extra-small;
+}
+
+.eds-numbered-list > .eds-list-item {
+  counter-increment: eds-numbered-list-counter;
+  margin-top: $space-large;
+  position: relative;
+
+  &::before {
+    content: counter(eds-numbered-list-counter) '. ';
+    color: inherit;
+    position: absolute;
+    font-weight: $font-weights-heading;
+    left: -$space-large;
+  }
+}
+
+.eds-list-item__title {
+  display: block;
+  font-weight: $font-weights-heading;
+  margin-bottom: $space-extra-small;
+
+  .eds-list-item:first-of-type {
+    margin: none;
+  }
+}
