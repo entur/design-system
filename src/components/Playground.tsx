@@ -2,12 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
-import copy from 'copy-text-to-clipboard';
-import { ReportsIcon, SourceCodeIcon } from '@entur/icons';
-import { SubLabel, Label } from '@entur/typography';
+import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
 import prismTheme from '~/components/prism-theme';
 import './Playground.scss';
+import { ExpandableTextButton, BaseExpand } from '@entur/expand/src';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -62,15 +61,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
           </Switch>
         )}
         <div>
-          <SubLabel
-            className="playground__control"
-            as="button"
-            type="button"
-            onClick={() => copy(__code)}
-          >
-            <ReportsIcon inline={true} /> Kopier kode
-          </SubLabel>
-          <SubLabel
+          {/* <SubLabel
             className="playground__control"
             as="button"
             type="button"
@@ -78,10 +69,18 @@ export const Playground: React.FC<PlaygroundProps> = ({
           >
             <SourceCodeIcon inline={true} /> {isShowingEditor ? 'Skjul' : 'Vis'}{' '}
             kode
-          </SubLabel>
+          </SubLabel> */}
+          <ExpandableTextButton
+            open={isShowingEditor}
+            onClick={() => setShowingEditor(prev => !prev)}
+          >
+            Kode
+          </ExpandableTextButton>
         </div>
       </div>
-      {isShowingEditor && <LiveEditor className="playground__editor" />}
+      <BaseExpand open={isShowingEditor}>
+        <LiveEditor className="playground__editor" />
+      </BaseExpand>
     </LiveProvider>
   );
 };

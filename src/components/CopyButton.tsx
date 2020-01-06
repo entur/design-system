@@ -1,14 +1,15 @@
 import React from 'react';
 import { useToast } from '@entur/alert';
 import copy from 'copy-text-to-clipboard';
-import { Button } from '@entur/button';
-import { CheckIcon, ReportsIcon } from '@entur/icons';
+import { TertiaryButton } from '@entur/button';
+import { ReportsIcon } from '@entur/icons';
 
 type Props = {
   textToCopy: string;
+  children: React.ReactNode;
 };
 
-export const CopyButton: React.FC<Props> = ({ textToCopy }) => {
+export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
   const [isCopied, setCopied] = React.useState(false);
   const { addToast } = useToast();
 
@@ -20,7 +21,7 @@ export const CopyButton: React.FC<Props> = ({ textToCopy }) => {
     return () => clearTimeout(id);
   }, [isCopied]);
   return (
-    <Button
+    <TertiaryButton
       onClick={() => {
         copy(textToCopy);
         setCopied(true);
@@ -29,11 +30,8 @@ export const CopyButton: React.FC<Props> = ({ textToCopy }) => {
           content: 'Tokenet ble kopiert til utklippstavla',
         });
       }}
-      type="button"
-      variant={isCopied ? 'success' : 'secondary'}
-      width="square"
     >
-      {isCopied ? <CheckIcon /> : <ReportsIcon />}
-    </Button>
+      {children} <ReportsIcon />
+    </TertiaryButton>
   );
 };

@@ -3,7 +3,7 @@ import { colors } from '@entur/tokens';
 
 const theme: PrismTheme = {
   plain: {
-    backgroundColor: colors.blues.blue80,
+    backgroundColor: colors.brand.white,
     borderRadius: '1px',
     color: colors.brand.blue,
     fontFamily: '"Dank Mono", monospace',

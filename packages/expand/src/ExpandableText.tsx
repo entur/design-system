@@ -1,7 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
-import { DownArrowIcon } from '@entur/icons';
-import { Heading4 } from '@entur/typography';
+import { ExpandableTextButton } from './ExpandableTextButton';
 import { useRandomId } from './useRandomId';
 import { BaseExpand } from './BaseExpand';
 import './ExpandableText.scss';
@@ -32,22 +30,13 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
 
   return (
     <>
-      <button
-        className="eds-expandable-text__trigger"
-        aria-expanded={open}
+      <ExpandableTextButton
         aria-controls={randomId}
         onClick={() => setOpen(prev => !prev)}
-        type="button"
         {...rest}
       >
-        <Heading4 as="span">{title}</Heading4>
-        <DownArrowIcon
-          inline
-          className={classNames('eds-expandable-text__arrow', {
-            'eds-expandable-text__arrow--open': open,
-          })}
-        />
-      </button>
+        {title}
+      </ExpandableTextButton>
       <BaseExpand
         className="eds-expandable-text__content"
         id={randomId}
