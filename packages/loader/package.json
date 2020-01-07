@@ -29,6 +29,7 @@
   "dependencies": {
     "@entur/tokens": "^1.1.1",
     "@entur/typography": "^0.7.0",
+    "@entur/utils": "^0.1.0",
     "classnames": "^2.2.6"
   }
 }

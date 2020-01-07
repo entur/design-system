@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@entur/icons": "^0.4.3",
+    "@entur/utils": "^0.1.0",
     "classnames": "^2.2.6"
   },
   "devDependencies": {

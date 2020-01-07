@@ -1,4 +1,7 @@
-import './styles.scss';
+import { warnAboutMissingStyles } from '@entur/utils';
+import './index.scss';
+
+warnAboutMissingStyles('tab');
 
 export * from './Tab';
 export * from './Tabs';

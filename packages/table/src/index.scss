@@ -1,5 +1,9 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+:root {
+  --eds-table: 1; // Register that the styles are loaded!
+}
+
 .eds-table {
   border-collapse: collapse;
   width: 100%;
