@@ -34,7 +34,8 @@
     "packages/table",
     "packages/tokens",
     "packages/tooltip",
-    "packages/typography"
+    "packages/typography",
+    "packages/utils"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.1.0",
