@@ -25,5 +25,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "tiny-warning": "^1.0.3"
   }
 }
