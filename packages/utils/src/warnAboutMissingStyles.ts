@@ -30,7 +30,7 @@ Please add the following CSS import${
     } somewhere in your app:
 
 ${missingImports
-  .map(namespace => `\t@import '~@entur/${namespace}/dist/styles';`)
+  .map(namespace => `\t@import '~@entur/${namespace}/dist/styles.css';`)
   .join('\n')}
 `,
   );
