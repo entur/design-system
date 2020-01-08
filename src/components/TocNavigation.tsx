@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import debounce from '~/utils/debounce';
 import { useCurrentDoc, Entry } from 'docz';
 import './TocNavigation.scss';
-import { Heading3 } from '@entur/typography/src';
+import { Heading3 } from '@entur/typography';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);

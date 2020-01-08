@@ -8,6 +8,7 @@
 }
 
 :root {
+  --eds-typography: 1; // Register that the styles are loaded!
   --primary-background-color: #{$colors-brand-white};
   --primary-text-color: #{$colors-brand-blue};
   --primary-label-color: #{$colors-blues-blue40};

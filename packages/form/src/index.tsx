@@ -1,3 +1,8 @@
+import { warnAboutMissingStyles } from '@entur/utils';
+import './index.scss';
+
+warnAboutMissingStyles('form', 'icons', 'typography');
+
 export * from './BaseFormControl';
 export * from './Checkbox';
 export * from './FeedbackText';

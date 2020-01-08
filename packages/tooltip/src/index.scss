@@ -1,5 +1,9 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+:root {
+  --eds-tooltip: 1; // Register that the styles are loaded!
+}
+
 .eds-tooltip-wrapper {
   --primary-border-color: #{$colors-greys-grey20};
   display: inline-block;

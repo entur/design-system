@@ -1,9 +1,9 @@
 {
-  "name": "@entur/datepicker",
-  "version": "0.2.1",
+  "name": "@entur/utils",
+  "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/datepicker.esm.js",
+  "module": "dist/utils.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/datepicker"
+    "directory": "packages/utils"
   },
   "publishConfig": {
     "access": "public"
@@ -27,12 +27,6 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^2.1.0",
-    "@entur/icons": "^0.4.3",
-    "@entur/tokens": "^1.1.1",
-    "@entur/utils": "^0.1.0",
-    "@types/react-datepicker": "^2.9.5",
-    "classnames": "^2.2.6",
-    "react-datepicker": "^2.10.1"
+    "tiny-warning": "^1.0.3"
   }
 }
