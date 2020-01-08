@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.5...@entur/chip@0.2.6) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
 ## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.4...@entur/chip@0.2.5) (2020-01-06)
 
 **Note:** Version bump only for package @entur/chip

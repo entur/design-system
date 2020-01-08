@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.3...@entur/alert@0.5.4) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
 ## [0.5.3](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.2...@entur/alert@0.5.3) (2020-01-06)
 
 ### Bug Fixes

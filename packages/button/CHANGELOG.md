@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.5.0...@entur/button@1.5.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
 # [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.4.1...@entur/button@1.5.0) (2020-01-06)
 
 ### Features
