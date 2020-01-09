@@ -1,0 +1,47 @@
+---
+name: TravelTag
+route: /komponenter/reise/traveltag
+parent: Komponenter
+menu: reise
+npmPackage: travel
+tabs: tag, reisetag
+---
+
+import { Props, Link } from 'docz';
+import { BusIcon, BicycleIcon } from '@entur/icons';
+import { TravelTag } from '@entur/travel';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import './traveltag.css';
+
+<PageHeader>TravelTag er en komponent for å vise noe om en reise</PageHeader>
+
+<Playground>
+  <div className="even-spacing-travel-tag">
+    <TravelTag>
+      <BusIcon inline /> Oslo
+    </TravelTag>
+  </div>
+  <div className="even-spacing-travel-tag">
+    <TravelTag>
+      <BicycleIcon inline />
+    </TravelTag>
+  </div>
+  <div className="even-spacing-travel-tag">
+    <TravelTag onClose={() => alert('Lukkes')}>
+      <BicycleIcon inline /> Bergen
+    </TravelTag>
+  </div>
+</Playground>
+
+## Komponenter
+
+### TravelTag
+
+<ImportStatement imports="TravelTag" />
+
+<Props of={TravelTag} />
+
+For å gjøre TravelTag lukkbar, så sendes det inn en funksjon til `onClose`.
+Da det ikke eksisterer noen `closable` prop, så vises kun krysset i TravelTag hvis onClose er truthy.
