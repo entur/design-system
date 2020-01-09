@@ -3,9 +3,15 @@ import classNames from 'classnames';
 import './TravelHeader.scss';
 
 export type TravelHeaderProps = {
+  /** Destinasjonen man reiser fra */
   from: string;
+  /** Destinasjonen man reiser til */
   to: string;
+  /**Størrelsen på komponenten
+   * @default 'large'
+   */
   size?: 'large' | 'medium';
+  /**Ekstra klassenavn */
   className?: string;
   [key: string]: any;
 };
