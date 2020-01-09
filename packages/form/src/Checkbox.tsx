@@ -17,7 +17,7 @@ export const Checkbox: React.RefForwardingComponent<
   CheckboxProps
 > = React.forwardRef(
   (
-    { checked, className, width, children, ...rest },
+    { checked, className, width, children, style, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     // Trick to allow using a ref locally, while still allowing for ref forwarding
@@ -35,6 +35,7 @@ export const Checkbox: React.RefForwardingComponent<
     return (
       <label
         className={cx('eds-form-component--checkbox__container', className)}
+        style={style}
       >
         <input
           type="checkbox"
