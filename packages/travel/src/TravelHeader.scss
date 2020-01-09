@@ -4,6 +4,7 @@
   color: $colors-brand-blue;
   display: flex;
   flex-direction: column;
+  font-weight: $font-weights-heading;
   .eds-contrast & {
     color: $colors-brand-white;
   }
@@ -14,20 +15,20 @@
     font-size: $font-sizes-large;
   }
   &__line {
-    height: 0.25rem;
-    width: 2rem;
-    display: block;
     background-color: $colors-brand-coral;
     content: ' ';
+    display: block;
+    height: 0.25rem;
     margin-right: $space-small;
+    width: 2rem;
     .eds-travel-header--medium & {
-      width: 1.5rem;
       height: 0.125rem;
       margin-right: $space-extra-small;
+      width: 1.5rem;
     }
   }
   &__bottom {
-    display: flex;
     align-items: center;
+    display: flex;
   }
 }
