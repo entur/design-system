@@ -1058,11 +1058,6 @@
   version "1.0.0"
   resolved "ssh://git@bitbucket.org:enturas/entur-fonts.git#983afcdcd863091808ad3161309e8607c1033cb7"
 
-"@entur/utils@^0.1.0":
-  version "0.2.0"
-  dependencies:
-    tiny-warning "^1.0.3"
-
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
