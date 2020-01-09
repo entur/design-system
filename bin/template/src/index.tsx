@@ -1,6 +1,6 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-warnAboutMissingStyles('PackageName');
+warnAboutMissingStyles('package-name');
 
 export * from './PackageName';
