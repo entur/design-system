@@ -36,7 +36,7 @@ import dropdownItems from './dropdownItems';
 `<Dropdown />` er en fleksibel komponent for å lage nedtrekkslister. Du sender inn en liste med valg, som kan være en string, eller objekter med verdi og label - eller en blanding av disse. Du kan også sende med en liste med ikoner, som vises til høyre:
 
 ```js
-const items = {
+const items = [
   'Bislett',
   { value: 'OsloMet', label: 'Holbergsplass', },
   {
@@ -44,7 +44,7 @@ const items = {
     label: 'Oslo Sentralstasjon',
     icons: [BusIcon, TrainIcon, MetroIcon],
   },
-};
+];
 ```
 
 By default så fungerer Dropdown som en vanlig select-boks - men den har også støtte for å være søkbar. Da sender du med propertyen `searchable`.
