@@ -2,7 +2,7 @@
 
 This package contains the different Travel components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/reise/travelheader)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/travel
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/) for usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/reise/travelheader) for usage information.

@@ -1,7 +1,7 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-warnAboutMissingStyles('Travel');
+warnAboutMissingStyles('travel');
 
 export * from './TravelHeader';
 export * from './TravelTag';

@@ -29,6 +29,7 @@ export const TravelHeader: React.FC<TravelHeaderProps> = ({
         'eds-travel-header--large': size === 'large',
         'eds-travel-header--medium': size === 'medium',
       })}
+      aria-label={`Fra ${from}, til ${to}`}
       {...rest}
     >
       <span className="eds-travel-header__from">{from}</span>
