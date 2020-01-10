@@ -57,6 +57,12 @@
         }
       }
     }
+    &:focus,
+    :focus-within {
+      + .eds-form-component--checkbox__icon {
+        box-shadow: $shadows-focus;
+      }
+    }
   }
   &__icon {
     display: inline-flex;
