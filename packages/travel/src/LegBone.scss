@@ -1,0 +1,45 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-leg-bone {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  &__start,
+  &__stop {
+    background-color: $bus;
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  &__line {
+    flex-grow: 1;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    width: 1rem;
+
+    .eds-leg-bone__start {
+      margin-bottom: 0.125rem;
+    }
+
+    .eds-leg-bone__stop {
+      margin-top: 0.125rem;
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    height: 1rem;
+
+    .eds-leg-bone__start {
+      margin-right: 0.125rem;
+    }
+
+    .eds-leg-bone__stop {
+      margin-left: 0.125rem;
+    }
+  }
+}

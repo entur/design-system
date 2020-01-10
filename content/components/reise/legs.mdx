@@ -1,0 +1,33 @@
+---
+name: Reiselinjer
+route: /komponenter/reise/reiselinjer
+parent: Komponenter
+menu: reise
+npmPackage: travel
+tags: leg, legs, legbone, leglines
+---
+
+import { Props, Link } from 'docz';
+import { LegLine, LegBone } from '@entur/travel';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Reiselinjer brukes for å illustrere mellom to desitnasjoner
+</PageHeader>
+
+<Playground>
+  <LegLine color="blue" pattern="line" />
+  <div style={{ height: '6rem', display: 'flex' }}>
+    <LegBone direction="vertical" pattern="line" color="#dd5415" />
+  </div>
+</Playground>
+
+## Komponenter
+
+### LegLine
+
+<ImportStatement imports="LegLine" />
+
+<Props of={LegLine} />
