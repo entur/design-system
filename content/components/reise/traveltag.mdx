@@ -4,7 +4,7 @@ route: /komponenter/reise/traveltag
 parent: Komponenter
 menu: reise
 npmPackage: travel
-tabs: tag, reisetag
+tags: tag, reisetag
 ---
 
 import { Props, Link } from 'docz';
@@ -43,5 +43,4 @@ import './traveltag.css';
 
 <Props of={TravelTag} />
 
-For å gjøre TravelTag lukkbar, så sendes det inn en funksjon til `onClose`.
-Da det ikke eksisterer noen `closable` prop, så vises kun krysset i TravelTag hvis onClose er truthy.
+Om du ønsker at man skal kunne lukke / fjerne en TravelTag, kan du sende inn en onClose-callback funksjon.
