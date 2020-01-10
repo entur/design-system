@@ -9,6 +9,7 @@ import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
+import classNames from 'classnames';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
@@ -41,6 +42,8 @@ type DropdownProps = {
   openOnFocus?: boolean;
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
   debounceTimeout?: number;
+  /** Ekstra klassenavn */
+  className?: string;
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
@@ -60,6 +63,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   openOnFocus,
   variant,
   value,
+  className,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -80,7 +84,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
       onChange={onChange}
       {...rest}
     >
-      <DropdownInputGroup label={label} feedback={feedback} variant={variant}>
+      <DropdownInputGroup
+        className={classNames(className)}
+        label={label}
+        feedback={feedback}
+        variant={variant}
+      >
         <RenderedDropdown
           items={normalizedItems}
           loading={loading}

@@ -1,0 +1,29 @@
+---
+name: TravelHeader
+route: /komponenter/reise/reiseskrift
+parent: Komponenter
+menu: reise
+npmPackage: travel
+tags: reise, fra, til
+---
+
+import { Props, Link } from 'docz';
+import { TravelHeader } from '@entur/travel';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>TravelHeader viser en reise med fra- og tildestinasjon</PageHeader>
+
+<Playground>
+  <TravelHeader from="Leknes" to="Oslo" />
+  <TravelHeader from="Leknes" to="Oslo" size="medium" />
+</Playground>
+
+## Komponenter
+
+### TravelHeader
+
+<ImportStatement imports="TravelHeader" />
+
+<Props of={TravelHeader} />

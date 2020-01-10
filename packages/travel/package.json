@@ -1,0 +1,35 @@
+{
+  "name": "@entur/travel",
+  "version": "0.1.0",
+  "license": "EUPL-1.2",
+  "main": "dist/index.js",
+  "module": "dist/travel.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/enturas/design-system.git",
+    "directory": "packages/travel"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "dependencies": {
+    "@entur/icons": "^0.4.4",
+    "@entur/tokens": "^1.1.1",
+    "@entur/utils": "^0.2.0",
+    "classnames": "^2.2.6"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
+}
