@@ -24,12 +24,10 @@
     .eds-icon {
       color: $colors-brand-blue;
       font-size: $font-sizes-medium;
-      &:focus {
-        outline: none;
-      }
     }
     &:focus,
     :focus-within {
+      outline: none;
       box-shadow: $shadows-focus;
     }
   }
