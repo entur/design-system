@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.2...@entur/modal@1.0.3) (2020-01-10)
+
+### Bug Fixes
+
+- **modal:** added a max height to the modal as well as overflow handling. ([32e78d9](https://bitbucket.org/enturas/design-system/commits/32e78d91b51599591c3cafc35f4adeffce966617))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.1...@entur/modal@1.0.2) (2020-01-08)
 
 ### Bug Fixes

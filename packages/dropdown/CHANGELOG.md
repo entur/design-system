@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.4.2...@entur/dropdown@0.5.0) (2020-01-10)
+
+### Features
+
+- add classname prop for dropdown component ([60bdd48](https://bitbucket.org/enturas/design-system/commits/60bdd487a1cd04d0e55363698b095041e4953216))
+
 ## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.4.1...@entur/dropdown@0.4.2) (2020-01-08)
 
 ### Bug Fixes

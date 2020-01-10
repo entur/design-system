@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.1.1...@entur/form@2.2.0) (2020-01-10)
+
+### Bug Fixes
+
+- add focus styling for checkbox ([5355da4](https://bitbucket.org/enturas/design-system/commits/5355da4b460ddcc706bdf1b6173fbde158de29f0))
+
+### Features
+
+- **Checkbox:** style prop explicitly set to label instead of being spread to input ([47f283c](https://bitbucket.org/enturas/design-system/commits/47f283c303d93ccc87bf8ad424f6d6ff81b72922))
+
 ## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.1.0...@entur/form@2.1.1) (2020-01-08)
 
 ### Bug Fixes

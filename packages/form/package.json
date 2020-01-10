@@ -1,6 +1,6 @@
 {
   "name": "@entur/form",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/form.esm.js",
