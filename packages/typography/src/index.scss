@@ -54,7 +54,7 @@ html {
 .eds-h5,
 .eds-h6 {
   color: inherit; // ie fallback
-  color: --primary-text-color;
+  color: var(--primary-text-color);
   font-weight: $font-weights-heading;
   -webkit-font-smoothing: antialiased;
   margin-top: 1em;
@@ -131,7 +131,7 @@ html {
 // Body text and inline element styling
 .eds-paragraph {
   color: inherit; // ie fallback
-  color: --primary-text-color;
+  color: var(--primary-text-color);
   font-size: $font-sizes-large;
   line-height: $line-heights-large;
 
@@ -143,7 +143,7 @@ html {
 
 .eds-lead-paragraph {
   color: inherit; // ie fallback
-  color: --primary-text-color;
+  color: var(--primary-text-color);
   font-size: $font-sizes-extra-large;
   line-height: $line-heights-extra-large3;
 
@@ -155,7 +155,7 @@ html {
 
 .eds-sub-paragraph {
   color: inherit; // ie fallback
-  color: --primary-text-color;
+  color: var(--primary-text-color);
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
 
@@ -166,7 +166,7 @@ html {
 
 .eds-small-text {
   color: inherit; // ie fallback
-  color: --primary-text-color;
+  color: var(--primary-text-color);
   font-size: $font-sizes-small;
   line-height: $line-heights-medium;
   @include for-desktop {
@@ -179,7 +179,7 @@ html {
   &:link,
   &:visited {
     color: inherit; // ie fallback
-    color: --primary-text-color;
+    color: var(--primary-text-color);
     font-size: inherit;
   }
 
@@ -271,8 +271,8 @@ html {
 
   &::before {
     content: counter(eds-numbered-list-counter) '. ';
-    color: inherit;
-    color: --primary-text-color;
+    color: inherit; // ie fallback
+    color: var(--primary-text-color);
     position: absolute;
     font-weight: $font-weights-heading;
     left: -$space-large;
