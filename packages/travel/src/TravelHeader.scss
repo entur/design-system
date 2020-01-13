@@ -18,13 +18,13 @@
     background-color: $colors-brand-coral;
     content: ' ';
     display: block;
-    height: 0.25rem;
+    height: $space-extra-small2;
     margin-right: $space-small;
-    width: 2rem;
+    width: $space-extra-large;
     .eds-travel-header--medium & {
       height: 0.125rem;
       margin-right: $space-extra-small;
-      width: 1.5rem;
+      width: $space-large;
     }
   }
   &__bottom {

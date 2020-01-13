@@ -65,4 +65,10 @@
   position: absolute;
   top: $space-medium;
   right: $space-medium;
+  padding: $space-extra-small;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
 }
