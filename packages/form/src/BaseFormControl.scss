@@ -56,7 +56,7 @@
     }
   }
 
-  &::placeholder {
+  ::placeholder {
     color: $colors-blues-blue40;
   }
 
@@ -89,6 +89,9 @@
 
     .eds-contrast & {
       --border-color: #{$colors-validation-mint};
+      &--dark {
+        --border-color: #{$colors-validation-mint-contrast};
+      }
     }
   }
 
@@ -98,6 +101,9 @@
 
     .eds-contrast & {
       --border-color: #{$colors-validation-lava};
+      &--dark {
+        --border-color: #{$colors-validation-lava-contrast};
+      }
     }
   }
 
@@ -109,6 +115,9 @@
     &--dark {
       background-color: $colors-blues-blue20;
       color: $colors-brand-white;
+      ::placeholder {
+        color: $colors-blues-blue60;
+      }
 
       &:hover {
         background-color: $colors-blues-blue30;
@@ -119,7 +128,7 @@
       }
 
       * {
-        background-color: inherit;
+        background-color: transparent;
         color: inherit;
       }
 
