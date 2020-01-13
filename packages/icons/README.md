@@ -15,9 +15,9 @@ yarn add @entur/icons
 ## Usage
 
 ```js
-import { AddIcon } from "@entur/icons"; //Import specific icon
+import { AddIcon } from '@entur/icons'; // Import specific icon
 
-<AddIcon/>
+<AddIcon />;
 ```
 
 Please refer to the [documentation](https://design.entur.org/komponenter/resources/icons) for usage information.
