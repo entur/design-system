@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.3...@entur/modal@1.0.4) (2020-01-13)
+
+### Bug Fixes
+
+- fix focus styling for close button in modal window ([8d4b02f](https://bitbucket.org/enturas/design-system/commits/8d4b02f77500200c9a5281c9bb07a629fc3134b1))
+
 ## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.2...@entur/modal@1.0.3) (2020-01-10)
 
 ### Bug Fixes

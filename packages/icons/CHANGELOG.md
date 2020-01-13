@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.4...@entur/icons@0.4.5) (2020-01-13)
+
+### Bug Fixes
+
+- fix listview icon rotation ([7940940](https://bitbucket.org/enturas/design-system/commits/7940940d8629422ac72346f926ec84f2040fb529))
+
 ## [0.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.3...@entur/icons@0.4.4) (2020-01-08)
 
 ### Bug Fixes
