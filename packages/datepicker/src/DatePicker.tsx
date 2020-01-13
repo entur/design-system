@@ -47,10 +47,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         locale={nb}
         timeFormat="HH:mm"
         dateFormat="dd.MM.yyyy"
-        timeIntervals={15}
         timeCaption="time"
         placeholderText={placeholder}
         popperClassName="eds-datepicker__popper"
+        popperModifiers={{
+          offset: {
+            enabled: true,
+            offset: '-32, 0',
+          },
+        }}
         {...rest}
       />
     </BaseFormControl>
