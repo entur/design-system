@@ -12,7 +12,7 @@ export type FloatingButtonProps = {
   /** Callback når knappen klikkes */
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   /** Størrelse på knappen
-   * @default: 'medium'
+   * @default "medium"
    */
   size?: 'medium' | 'small';
   [key: string]: any;
