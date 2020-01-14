@@ -1,6 +1,6 @@
 {
   "name": "@entur/typography",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/typography.esm.js",
@@ -27,12 +27,12 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/utils": "^0.2.0",
+    "@entur/utils": "^0.2.1",
     "@types/classnames": "^2.2.9",
     "classnames": "^2.2.6",
     "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
-    "@entur/tokens": "^1.1.1"
+    "@entur/tokens": "^1.1.2"
   }
 }

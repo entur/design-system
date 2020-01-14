@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.5...@entur/icons@0.5.0) (2020-01-14)
+
+### Bug Fixes
+
+- **icons:** fix inline icon styles ([a454c62](https://bitbucket.org/enturas/design-system/commits/a454c621e87a807efa5b39605d16cc0578d49e38))
+- include the "native" folder in the npm package ([02f398c](https://bitbucket.org/enturas/design-system/commits/02f398c2a4a489b79a2002cb745ae1fda077201a))
+
+### Features
+
+- **icons:** add react-native icons ([962f1a5](https://bitbucket.org/enturas/design-system/commits/962f1a543567f5a0a7b76d6b0c53f48c81343e69))
+
 ## [0.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.4...@entur/icons@0.4.5) (2020-01-13)
 
 ### Bug Fixes
