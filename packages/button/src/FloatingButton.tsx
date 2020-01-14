@@ -11,12 +11,17 @@ export type FloatingButtonProps = {
   className?: string;
   /** Callback når knappen klikkes */
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  /** Størrelse på knappen
+   * @default: 'medium'
+   */
+  size?: 'medium' | 'small';
   [key: string]: any;
 };
 
 export const FloatingButton: React.FC<FloatingButtonProps> = ({
   className,
   children,
+  size = 'medium',
   ...rest
 }) => {
   return (
@@ -24,6 +29,7 @@ export const FloatingButton: React.FC<FloatingButtonProps> = ({
       className={classNames(
         'eds-floating-button',
         { 'eds-floating-button--extended': React.Children.count(children) > 1 },
+        { 'eds-floating-button--small': size === 'small' },
         className,
       )}
       type="button"
