@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@entur/icons": "^0.4.4",
+    "@entur/layout": "^1.0.4",
     "@entur/tokens": "^1.1.1",
     "@entur/utils": "^0.2.0",
     "classnames": "^2.2.6"
@@ -31,5 +32,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-copy-assets": "^2.0.1"
   }
 }
