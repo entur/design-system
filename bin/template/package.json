@@ -23,7 +23,7 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/utils": "^0.1.0"
+    "@entur/utils": "^0.2.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

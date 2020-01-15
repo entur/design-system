@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.4...@entur/datepicker@0.2.5) (2020-01-14)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.3...@entur/datepicker@0.2.4) (2020-01-13)
+
+### Bug Fixes
+
+- fix offset of datepicker to align with input ([ee68af2](https://bitbucket.org/enturas/design-system/commits/ee68af2111b475692dfec6f47461083c730b3004))
+
+## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.2...@entur/datepicker@0.2.3) (2020-01-10)
+
+**Note:** Version bump only for package @entur/datepicker
+
 ## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.1...@entur/datepicker@0.2.2) (2020-01-08)
 
 ### Bug Fixes

@@ -58,7 +58,9 @@ const Props: React.FC<PropsProps> = ({
                   <CodeText>{propName}</CodeText>
                 </DataCell>
                 <DataCell>
-                  <CodeText>{skipUndefinedType(details.type.name)}</CodeText>
+                  <CodeText className="props-table__type">
+                    {skipUndefinedType(details.type.name)}
+                  </CodeText>
                 </DataCell>
                 <DataCell>
                   {details.required && (

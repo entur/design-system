@@ -1,0 +1,9 @@
+:root {
+  --eds-icons: 1;
+}
+
+.eds-icon.eds-icon--inline,
+p .eds-icon {
+  position: relative;
+  top: 0.2em;
+}

@@ -58,7 +58,8 @@ async function run() {
     // Update the src/index.tsx
     const indexTsxContent = fs
       .readFileSync(paths.newIndexTsx, 'utf-8')
-      .replace(/PackageName/g, toCase.pascal(packageName));
+      .replace(/PackageName/g, toCase.pascal(packageName))
+      .replace(/package-name/g, toCase.kebab(packageName));
     fs.writeFileSync(paths.newIndexTsx, indexTsxContent);
 
     // Update the src/PackageName.tsx and rename it to the correct name
@@ -78,7 +79,7 @@ async function run() {
     // Update the index.scss
     const scssContent = fs
       .readFileSync(paths.newIndexScss, 'utf-8')
-      .replace(/PackageName/g, toCase.pascal(packageName));
+      .replace(/package-name/g, toCase.kebab(packageName));
     fs.writeFileSync(paths.newIndexScss, scssContent);
 
     // Update the README.md

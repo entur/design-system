@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.2...@entur/typography@0.7.3) (2020-01-14)
+
+**Note:** Version bump only for package @entur/typography
+
+## [0.7.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.1...@entur/typography@0.7.2) (2020-01-13)
+
+### Bug Fixes
+
+- **Typography:** added var() ([02ea259](https://bitbucket.org/enturas/design-system/commits/02ea2594c9064484eebb06529887c4e34c8479c7))
+- **Typography:** switched color: inherit with css prop ([ccd3a04](https://bitbucket.org/enturas/design-system/commits/ccd3a046b78be146f1b136211f4a3e92c7e31df9))
+
 ## [0.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.0...@entur/typography@0.7.1) (2020-01-08)
 
 ### Bug Fixes

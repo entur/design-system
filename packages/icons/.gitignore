@@ -1,6 +1,4 @@
 # Generated files 
-
-src/index.ts
-
-# Cache files
-.rpt2_cache*
+dist
+tmp
+native

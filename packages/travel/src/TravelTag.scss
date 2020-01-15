@@ -24,6 +24,9 @@
     .eds-icon {
       color: $colors-brand-blue;
       font-size: $font-sizes-medium;
+      .eds-contrast & {
+        color: $colors-brand-white;
+      }
     }
     &:focus,
     :focus-within {
