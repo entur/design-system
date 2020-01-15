@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { LegLine } from './LegLine';
+import './LegBone.scss';
 
 export type LegBoneProps = {
   /** Retning på komponenten */
@@ -20,15 +21,15 @@ export type LegBoneProps = {
   /** Vis startpunkt
    * @default true
    */
-  showStart: boolean;
+  showStart?: boolean;
   /** Vis linke
    * @default true
    */
-  showLine: boolean;
+  showLine?: boolean;
   /** Vis endepunkt
    * @default true
    */
-  showStop: boolean;
+  showStop?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
@@ -47,7 +48,13 @@ export const LegBone: React.FC<LegBoneProps> = ({
   ...rest
 }) => {
   return (
-    <div className={classNames(className)} {...rest}>
+    <div
+      className={classNames(className, 'eds-leg-bone', [
+        { 'eds-leg-bone--vertical': direction === 'vertical' },
+        { 'eds-leg-bone--horizontal': direction === 'horizontal' },
+      ])}
+      {...rest}
+    >
       {showStart && (
         <div
           className={`eds-leg-bone__start`}
