@@ -7,3 +7,4 @@ export * from './TravelHeader';
 export * from './TravelTag';
 export * from './LegLine';
 export * from './LegBone';
+export * from './TravelLeg';
