@@ -22,7 +22,16 @@ import { ImportStatement } from '~/components/ImportStatement';
 </PageHeader>
 
 <Playground>
-  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    }}
+  >
+    <FloatingButton size="small" aria-label="Legg til" onClick={() => {}}>
+      <AddIcon />
+    </FloatingButton>
     <FloatingButton aria-label="Legg til" onClick={() => {}}>
       <AddIcon />
     </FloatingButton>
