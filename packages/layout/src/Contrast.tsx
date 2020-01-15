@@ -17,6 +17,18 @@ export const Contrast: React.FC<ContrastProps> = ({
   ...rest
 }) => {
   return (
-    <Element className={classNames('eds-contrast', className)} {...rest} />
+    <ContrastContext.Provider value={true}>
+      <Element className={classNames('eds-contrast', className)} {...rest} />
+    </ContrastContext.Provider>
   );
+};
+
+const ContrastContext = React.createContext<boolean>(false);
+
+export const useContrast = () => {
+  const context = React.useContext(ContrastContext);
+  if (!context) {
+    return false;
+  }
+  return context;
 };
