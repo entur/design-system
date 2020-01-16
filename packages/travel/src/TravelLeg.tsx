@@ -15,7 +15,8 @@ export type TravelLegProps = {
     | 'train'
     | 'ferry'
     | 'bike'
-    | 'scooter';
+    | 'scooter'
+    | 'walk';
   /** Retningen på komponenten */
   direction: 'horizontal' | 'vertical';
   [key: string]: any;
@@ -29,13 +30,12 @@ export const TravelLeg: React.FC<TravelLegProps> = ({
 }) => {
   const { color, contrast, pattern } = modeCalc(transport);
   const isContrast = useContrast();
-  console.log(useContrast);
 
   return (
     <LegBone
       direction={direction}
       pattern={pattern}
-      color={isContrast ? color : contrast}
+      color={isContrast ? contrast : color}
       className={className}
       {...rest}
     />
@@ -98,7 +98,13 @@ function modeCalc(mode: string): modeCalcResult {
         contrast: colors.transport.contrast.mobility,
         pattern: 'line',
       };
+    case 'walk':
+      return {
+        color: colors.transport.default.walk,
+        contrast: colors.transport.contrast.walk,
+        pattern: 'dotted',
+      };
     default:
-      throw Error('Plese select a transport for the TravelSwitch.');
+      throw Error('Plese select a valid transport for the TravelLeg.');
   }
 }
