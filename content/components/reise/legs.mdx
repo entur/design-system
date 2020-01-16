@@ -8,7 +8,7 @@ tags: leg, legs, legbone, leglines
 ---
 
 import { Props, Link } from 'docz';
-import { LegLine, LegBone } from '@entur/travel';
+import { LegLine, LegBone, TravelLeg } from '@entur/travel';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -18,9 +18,17 @@ import { ImportStatement } from '~/components/ImportStatement';
 </PageHeader>
 
 <Playground>
-  <LegLine color="blue" pattern="line" />
-  <div style={{ height: '6rem', display: 'flex' }}>
-    <LegBone direction="vertical" pattern="line" color="#dd5415" />
+  <div>
+    <LegLine color="blue" pattern="wave" />
+    <LegBone
+      direction="vertical"
+      pattern="line"
+      color="#dd5415"
+      style={{ height: '6rem' }}
+    />
+    <div style={{ height: '5rem', display: 'flex' }}>
+      <TravelLeg transport="bus" direction="vertical" />
+    </div>
   </div>
 </Playground>
 
