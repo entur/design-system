@@ -28,7 +28,7 @@ const ContrastContext = React.createContext<boolean>(false);
 export const useContrast = () => {
   const context = React.useContext(ContrastContext);
   if (!context) {
-    return false;
+    return context;
   }
   return context;
 };
