@@ -1,9 +1,9 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
+import { Contrast } from '@entur/layout';
 import prismTheme from '~/components/prism-theme';
 import './Playground.scss';
 import { ExpandableTextButton, BaseExpand } from '@entur/expand/src';
@@ -38,6 +38,13 @@ export const Playground: React.FC<PlaygroundProps> = ({
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
 
+  const ConditionalWrapper = ({ condition, wrapper, children }: any) =>
+    condition ? (
+      wrapper(children)
+    ) : (
+      <div className="playground">{children}</div>
+    );
+
   return (
     <LiveProvider
       code={__code}
@@ -46,9 +53,14 @@ export const Playground: React.FC<PlaygroundProps> = ({
       transformCode={transformCode}
       theme={prismTheme}
     >
-      <div className={classNames('playground', { 'eds-contrast': isContrast })}>
+      <ConditionalWrapper
+        condition={isContrast}
+        wrapper={(children: React.ReactNode) => (
+          <Contrast className="playground">{children}</Contrast>
+        )}
+      >
         <LivePreview />
-      </div>
+      </ConditionalWrapper>
       <div className="playground__controls">
         {hideContrastOption ? (
           <div />
