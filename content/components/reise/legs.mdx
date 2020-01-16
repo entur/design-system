@@ -19,20 +19,40 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <Playground>
   <div>
-    <LegLine color="blue" pattern="wave" />
     <LegBone
-      direction="vertical"
+      direction="horizontal"
       pattern="line"
-      color="#dd5415"
-      style={{ height: '6rem' }}
+      color="black"
+      style={{ width: '10rem' }}
     />
     <div style={{ height: '5rem', display: 'flex' }}>
       <TravelLeg transport="bus" direction="vertical" />
+      <TravelLeg transport="train" direction="vertical" />
+      <TravelLeg transport="plane" direction="vertical" />
+      <TravelLeg transport="ferry" direction="vertical" />
+      <TravelLeg transport="walk" direction="vertical" />
+      <TravelLeg transport="metro" direction="vertical" />
     </div>
+    <LegLine color="blue" pattern="wave" />
   </div>
 </Playground>
 
 ## Komponenter
+
+### TravelLeg
+
+<ImportStatement imports="TravelLeg" />
+
+<Props of={TravelLeg} />
+
+Ved å bruke TravelLeg istedet for LegLine og/eller LegBone, kan man enkelt få riktig farge ved å velge transportmodalitet.
+Disse tar også hensyn til om man er i en Kontrast-seksjon eller ikke.
+
+### LegBone
+
+<ImportStatement imports="LegBone" />
+
+<Props of={LegBone} />
 
 ### LegLine
 
