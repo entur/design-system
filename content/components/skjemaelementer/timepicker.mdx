@@ -24,7 +24,7 @@ import { addDays } from 'date-fns';
     const [date, setDate] = React.useState();
     return (
       <TimePicker
-        style={{ width: '15rem' }}
+        style={{ width: '10rem' }}
         selectedTime={date}
         onChange={date => setDate(date)}
       />
@@ -38,3 +38,10 @@ import { addDays } from 'date-fns';
 
 <ImportStatement imports="TimePicker" />
 <Props of={TimePicker} />
+
+### NativeTimePicker
+
+<ImportStatement imports="TimePicker" />
+<Props of={TimePicker} />
+
+Som med datepicker, så anbefales det å bruke NativeTimePicker, dersom du vise en timepicker for mobile enheter.
