@@ -12,6 +12,9 @@
   --primary-background-color: #{$colors-brand-white};
   --primary-text-color: #{$colors-brand-blue};
   --primary-label-color: #{$colors-blues-blue40};
+  --eds-font-family: 'Nationale', 'Gotham Rounded', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
 
   @media (prefers-color-scheme: dark) {
     // TODO: We still need a design for this
@@ -26,9 +29,7 @@ html {
   box-sizing: border-box;
   color: $colors-brand-blue; // ie fallback
   color: var(--primary-text-color);
-  font-family: 'Nationale', 'Gotham Rounded', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--eds-font-family);
   font-weight: $font-weights-body;
   font-size: $font-sizes-large;
   line-height: $line-heights-large;
