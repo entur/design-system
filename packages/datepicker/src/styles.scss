@@ -4,7 +4,7 @@
   &__calender {
     color: $colors-brand-blue;
     .eds-contrast .eds-form-control-wrapper--dark & {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-brand-white;
     }
   }
   &__day {
@@ -13,21 +13,21 @@
 }
 
 .eds-contrast .eds-form-control-wrapper--dark .eds-datepicker__popper {
-  height: fit-content;
-  background-color: transparent;
+  // height: fit-content;
+  // background-color: transparent;
 }
 .react-datepicker__triangle {
   .react-datepicker-popper[data-placement^='bottom'] & {
     border-bottom-color: $colors-brand-white;
     .eds-contrast .eds-form-control-wrapper--dark & {
-      border-bottom-color: $colors-blues-blue20;
-      background-color: transparent;
+      // border-bottom-color: $colors-blues-blue20;
+      // background-color: transparent;
     }
     &::before {
       border-bottom-color: $colors-greys-grey20;
       top: (0-$border-widths-default);
       .eds-contrast .eds-form-control-wrapper--dark & {
-        border-bottom-color: $colors-blues-blue10;
+        // border-bottom-color: $colors-blues-blue10;
       }
     }
   }
@@ -37,7 +37,7 @@
   box-shadow: $shadows-card-shadow;
   .eds-contrast .eds-form-control-wrapper--dark & {
     //Used continously in stylesheet, to get higher specificity of parent's style
-    border-color: $colors-blues-blue10;
+    // border-color: $colors-blues-blue10;
   }
   &-wrapper {
     width: 100%;
@@ -53,12 +53,15 @@
     color: $colors-brand-blue;
     font-size: $font-sizes-large;
     font-weight: $font-weights-heading;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-brand-blue;
+    }
   }
   &__month-container {
     // Miniscule padding on top here to show outline of days
     margin: 0.0625rem $space-large $space-large $space-default;
     .eds-contrast .eds-form-control-wrapper--dark & {
-      background-color: $colors-blues-blue20;
+      // background-color: $colors-blues-blue20;
     }
   }
   &__navigation {
@@ -69,7 +72,7 @@
     transform: rotate(135deg);
     top: 24px;
     .eds-contrast .eds-form-control-wrapper--dark & {
-      border-color: $colors-brand-white;
+      // border-color: $colors-brand-white;
     }
     &--previous {
       transform: rotate(-45deg);
@@ -100,8 +103,8 @@
     &:first-child {
       margin-right: $space-extra-small;
     }
-    .eds-contrast & {
-      color: $colors-brand-lavender;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-blues-blue40;
     }
   }
   &__day-name {
@@ -113,8 +116,8 @@
     &:first-child {
       margin-right: $space-extra-small2;
     }
-    .eds-contrast & {
-      color: $colors-brand-lavender;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-blues-blue40;
     }
   }
   &__day {
@@ -129,8 +132,9 @@
     vertical-align: middle;
     font-size: 14px;
     outline: 1px solid $colors-greys-grey20;
-    .eds-contrast & {
-      outline-color: $colors-blues-blue30;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-brand-blue;
+      // outline-color: $colors-blues-blue30;
     }
 
     &:focus {
@@ -139,13 +143,15 @@
     &:hover {
       border-radius: 0;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background-color: $colors-blues-blue30;
+        // background-color: $colors-blues-blue30;
+        background-color: $colors-greys-grey30;
       }
     }
     &--outside-month {
       color: $colors-blues-blue40;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        color: $colors-brand-lavender;
+        color: $colors-blues-blue40;
+        // color: $colors-brand-lavender;
       }
     }
     &--keyboard-selected {
@@ -155,7 +161,8 @@
         background: $colors-greys-grey30;
       }
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background: $colors-blues-blue50;
+        background: $colors-greys-grey20;
+        // background: $colors-blues-blue50;
       }
     }
     &--selected {
@@ -163,13 +170,13 @@
       background: $colors-brand-blue;
       color: $colors-brand-white;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background-color: $colors-brand-lavender;
-        color: $colors-brand-blue;
+        color: $colors-brand-white;
+        background: $colors-brand-blue;
       }
       &:hover {
         background: $colors-blues-blue10;
         .eds-contrast .eds-form-control-wrapper--dark & {
-          background: $colors-blues-blue60;
+          background: $colors-blues-blue10;
         }
       }
     }
