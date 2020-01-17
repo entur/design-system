@@ -8,7 +8,7 @@ import { BaseFormControl } from '@entur/form';
 import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
-import './styles.scss';
+import './DatePicker.scss';
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
