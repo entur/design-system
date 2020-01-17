@@ -5,3 +5,4 @@ warnAboutMissingStyles('datepicker', 'form', 'icons');
 
 export * from './DatePicker';
 export * from './NativeDatePicker';
+export * from './TimePicker';

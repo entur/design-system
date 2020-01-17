@@ -1,0 +1,40 @@
+---
+name: Timepicker
+route: /komponenter/skjemaelementer/timepicker
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: datepicker
+tags: timepicker, tidvelger, tid
+---
+
+import { Props } from 'docz';
+import { TimePicker } from '@entur/datepicker';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import { addWeeks } from 'date-fns';
+import PageHeader from '~/components/PageHeader';
+import { addDays } from 'date-fns';
+
+<PageHeader>
+  DatePicker er en komponent for å velge dato og tidspunkt.
+</PageHeader>
+
+<Playground>
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <TimePicker
+        style={{ width: '15rem' }}
+        selectedTime={date}
+        onChange={date => setDate(date)}
+      />
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### TimePicker
+
+<ImportStatement imports="TimePicker" />
+<Props of={TimePicker} />

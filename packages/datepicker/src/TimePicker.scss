@@ -1,0 +1,22 @@
+@import '~@entur/tokens/dist/styles.scss';
+.react-datepicker {
+  &__header--time {
+    display: none;
+  }
+  &__time-list-item {
+    &:hover {
+      background: $colors-greys-grey30;
+    }
+    &--selected {
+      color: $colors-brand-white;
+      background: $colors-brand-blue;
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        color: $colors-brand-white;
+        background: $colors-brand-blue;
+      }
+    }
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-brand-blue;
+    }
+  }
+}
