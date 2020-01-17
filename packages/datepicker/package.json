@@ -30,6 +30,7 @@
     "@entur/form": "^2.2.2",
     "@entur/icons": "^0.5.0",
     "@entur/tokens": "^1.1.2",
+    "@entur/typography": "^0.7.3",
     "@entur/utils": "^0.2.1",
     "@types/react-datepicker": "^2.9.5",
     "classnames": "^2.2.6",
