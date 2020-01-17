@@ -39,7 +39,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({
     <BaseFormControl style={style} dark prepend={<ClockIcon inline />}>
       <ReactDatepicker
         className={classNames('eds-form-control', className)}
-        calendarClassName="eds-datepicker__calender"
+        calendarClassName="eds-timepicker"
         selected={selectedTime}
         onChange={onChange}
         showWeekNumbers={true}
@@ -51,7 +51,6 @@ export const TimePicker: React.FC<TimePickerProps> = ({
         showPopperArrow={false}
         placeholderText={placeholder}
         popperClassName="eds-datepicker__popper"
-        renderCustomHeader={() => <div></div>}
         popperModifiers={{
           offset: {
             enabled: true,

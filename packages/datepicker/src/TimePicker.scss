@@ -1,22 +1,57 @@
 @import '~@entur/tokens/dist/styles.scss';
-.react-datepicker {
-  &__header--time {
+.react-datepicker.eds-timepicker.react-datepicker--time-only {
+  width: 7rem;
+  .react-datepicker__time-container {
+    float: left;
+    width: inherit;
+  }
+  .react-datepicker__time-box {
+    width: inherit;
+  }
+  .react-datepicker__header--time {
     display: none;
   }
-  &__time-list-item {
-    &:hover {
-      background: $colors-greys-grey30;
-    }
-    &--selected {
-      color: $colors-brand-white;
-      background: $colors-brand-blue;
-      .eds-contrast .eds-form-control-wrapper--dark & {
-        color: $colors-brand-white;
-        background: $colors-brand-blue;
-      }
-    }
+  .react-datepicker__time-container {
     .eds-contrast .eds-form-control-wrapper--dark & {
-      color: $colors-brand-blue;
+      background-color: $colors-brand-white;
+    }
+  }
+  .react-datepicker__time
+    .react-datepicker__time-box
+    .react-datepicker__time-list {
+    font-family: var(--eds-font-family);
+    color: $colors-brand-blue;
+    background-color: $colors-brand-white;
+    .react-datepicker__time-list-item {
+      align-items: center;
+      border-bottom: $border-widths-default solid $colors-greys-grey20;
+      display: flex;
+      font-size: $font-sizes-large;
+      height: $space-extra-large;
+      justify-content: start;
+      line-height: $line-heights-medium;
+      padding: $space-extra-small2 $space-default;
+      &:hover {
+        background-color: $colors-brand-lavender;
+      }
+      .eds-contrast .eds-form-control-wrapper--dark & {
+        color: $colors-brand-blue;
+        background-color: $colors-brand-white;
+        &:hover {
+          background-color: $colors-brand-lavender;
+        }
+      }
+      &--selected {
+        color: $colors-brand-white;
+        background-color: $colors-brand-blue;
+        &:hover {
+          background-color: $colors-blues-blue10;
+        }
+        .eds-contrast .eds-form-control-wrapper--dark & {
+          color: $colors-brand-white;
+          background-color: $colors-brand-blue;
+        }
+      }
     }
   }
 }
