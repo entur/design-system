@@ -16,14 +16,16 @@ test('renders the correct items for large pageCounts', () => {
     currentPage: 1,
     onPageChange: () => {},
   });
-  expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('123…100');
+  expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('12…100');
   expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1…4…100');
-  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent('1…97…100');
-  expect(renderWithProps({ currentPage: 98 })).toHaveTextContent('1…9899100');
+  expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('1234…100');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1…345…100');
+  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
+    '1…969798…100',
+  );
+  expect(renderWithProps({ currentPage: 98 })).toHaveTextContent('1…979899100');
   expect(renderWithProps({ currentPage: 99 })).toHaveTextContent('1…9899100');
-  expect(renderWithProps({ currentPage: 100 })).toHaveTextContent('1…9899100');
+  expect(renderWithProps({ currentPage: 100 })).toHaveTextContent('1…99100');
 });
 
 test('renders the correct items for small pageCounts', () => {

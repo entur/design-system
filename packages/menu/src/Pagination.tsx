@@ -60,19 +60,31 @@ export const Pagination: React.FC<PaginationProps> = ({
   const showLeadingEllipsis = currentPage > 3 && pageCount > 4;
   const showTrailingEllipsis = pageCount - currentPage > 2 && pageCount > 4;
 
-  // This might look a bit complex, but calculates which numbers to show between
-  // the start and end numbers.
-  let middlePages: number[] = [];
-  if (![1, pageCount].includes(currentPage)) {
-    middlePages = [currentPage];
+  let entries: Array<number | '…'> = Array(pageCount)
+    .fill(null)
+    .map((_, i) => i + 1);
+
+  if (pageCount > 6) {
+    if (showLeadingEllipsis) {
+      entries = [
+        1,
+        '…',
+        currentPage - 1,
+        currentPage,
+        ...entries.slice(currentPage),
+      ];
+    }
+    if (showTrailingEllipsis) {
+      const currentPageIndex = entries.indexOf(currentPage);
+      entries = [
+        ...entries.slice(0, currentPageIndex),
+        currentPage,
+        currentPage + 1,
+        '…',
+        pageCount,
+      ];
+    }
   }
-  if (!showLeadingEllipsis) {
-    middlePages = [2, 3, ...middlePages];
-  }
-  if (!showTrailingEllipsis) {
-    middlePages = [...middlePages, pageCount - 2, pageCount - 1];
-  }
-  middlePages = Array.from(new Set(middlePages)).sort(); // Remove any doubles
 
   return (
     <div className={classNames('eds-pagination', className)} {...rest}>
@@ -84,33 +96,19 @@ export const Pagination: React.FC<PaginationProps> = ({
           <LeftArrowIcon />
         </PaginationPage>
       )}
-      <PaginationPage
-        selected={currentPage === 1}
-        onClick={() => onPageChange(1)}
-        aria-label={pageLabel(1)}
-      >
-        1
-      </PaginationPage>
-      {showLeadingEllipsis && <Ellipsis />}
-      {middlePages.map(pageNumber => (
-        <PaginationPage
-          selected={pageNumber === currentPage}
-          onClick={() => onPageChange(pageNumber)}
-          aria-label={pageLabel(pageNumber)}
-          key={pageNumber}
-        >
-          {pageNumber}
-        </PaginationPage>
-      ))}
-      {showTrailingEllipsis && <Ellipsis />}
-      {pageCount > 1 && (
-        <PaginationPage
-          selected={currentPage === pageCount}
-          onClick={() => onPageChange(pageCount)}
-          aria-label={pageLabel(pageCount)}
-        >
-          {pageCount}
-        </PaginationPage>
+      {entries.map((entry, index) =>
+        entry === '…' ? (
+          <Ellipsis key={`ellipsis-${index}`} />
+        ) : (
+          <PaginationPage
+            selected={entry === currentPage}
+            onClick={() => onPageChange(entry)}
+            aria-label={pageLabel(entry)}
+            key={entry}
+          >
+            {entry}
+          </PaginationPage>
+        ),
       )}
       {!isLastPostSelected && (
         <PaginationPage
