@@ -19,9 +19,13 @@ test('renders the correct items for large pageCounts', () => {
   expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('12…100');
   expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('123…100');
   expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('1234…100');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1…345…100');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('12345…100');
+  expect(renderWithProps({ currentPage: 5 })).toHaveTextContent('1…456…100');
   expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
-    '1…969798…100',
+    '1…959697…100',
+  );
+  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
+    '1…96979899100',
   );
   expect(renderWithProps({ currentPage: 98 })).toHaveTextContent('1…979899100');
   expect(renderWithProps({ currentPage: 99 })).toHaveTextContent('1…9899100');
@@ -30,16 +34,19 @@ test('renders the correct items for large pageCounts', () => {
 
 test('renders the correct items for small pageCounts', () => {
   const renderWithProps = createWithDefaults({
-    pageCount: 4,
+    pageCount: 6,
     currentPage: 1,
     onPageChange: () => {},
   });
-  expect(renderWithProps()).toHaveTextContent('1234');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1234');
+  expect(renderWithProps()).toHaveTextContent('123456');
+  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('123456');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('123456');
+  expect(renderWithProps({ pageCount: 5 })).toHaveTextContent('123');
+  expect(renderWithProps({ pageCount: 4 })).toHaveTextContent('123');
   expect(renderWithProps({ pageCount: 3 })).toHaveTextContent('123');
   expect(renderWithProps({ pageCount: 2 })).toHaveTextContent('12');
   expect(renderWithProps({ pageCount: 1 })).toHaveTextContent('1');
+  expect(renderWithProps({ pageCount: 0 })).toBe(null);
 });
 
 test('Previous and next buttons work as expected', () => {

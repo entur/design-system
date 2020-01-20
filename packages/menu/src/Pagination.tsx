@@ -68,7 +68,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     if (showLeadingEllipsis) {
       entries = [
         1,
-        '…',
+        currentPage === 4 ? 2 : '…',
         currentPage - 1,
         currentPage,
         ...entries.slice(currentPage),
@@ -80,7 +80,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         ...entries.slice(0, currentPageIndex),
         currentPage,
         currentPage + 1,
-        '…',
+        currentPage === pageCount - 2 ? pageCount - 1 : '…',
         pageCount,
       ];
     }
