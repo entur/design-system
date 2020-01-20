@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.3...@entur/menu@1.2.4) (2020-01-20)
+
+### Bug Fixes
+
+- **Pagination:** fix bug where low page counts didn't work ([5b564d8](https://bitbucket.org/enturas/design-system/commits/5b564d882afe33dab27b737328de1510c1cd5b1f))
+- **Pagination:** make ellipsisisisis less clickable ([f63f241](https://bitbucket.org/enturas/design-system/commits/f63f24150f059214dfa776a2d1c18def8ff85b5a))
+- **Pagination:** show number when ellipsis is a single number ([7bd8048](https://bitbucket.org/enturas/design-system/commits/7bd80482d3cfb6be927851007b5e98c0b6ddc2b8))
+- **Pagination:** show two neighbors instead of one ([e426962](https://bitbucket.org/enturas/design-system/commits/e42696249bc2318d9a6babe95ee30700d845d42d))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.2...@entur/menu@1.2.3) (2020-01-14)
 
 **Note:** Version bump only for package @entur/menu

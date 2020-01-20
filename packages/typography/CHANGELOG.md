@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.3...@entur/typography@0.7.4) (2020-01-20)
+
+### Bug Fixes
+
+- fixing use of fallback font, and adding font family as css variable ([a4d28c4](https://bitbucket.org/enturas/design-system/commits/a4d28c42768a2b8d6faee4565a9fe6b9be7034f9))
+
 ## [0.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.2...@entur/typography@0.7.3) (2020-01-14)
 
 **Note:** Version bump only for package @entur/typography

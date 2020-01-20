@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.3...@entur/expand@1.1.4) (2020-01-20)
+
+**Note:** Version bump only for package @entur/expand
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.2...@entur/expand@1.1.3) (2020-01-14)
 
 **Note:** Version bump only for package @entur/expand
