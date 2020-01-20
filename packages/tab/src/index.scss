@@ -12,6 +12,22 @@
   display: flex;
   scrollbar-width: none;
   padding-top: 2px;
+  z-index: $z-indexes-default;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $colors-greys-grey10;
+    display: block;
+    height: $border-widths-default;
+    width: inherit;
+    z-index: $z-indexes-behind;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -20,45 +36,74 @@
 
 .eds-tab {
   appearance: none;
-  background: transparent;
-  border: $border-widths-default solid $colors-brand-lavender;
-  border-radius: $border-radiuses-small $border-radiuses-small 0 0;
-  color: $colors-blues-blue40;
+  background: $colors-greys-grey30;
+  border: $border-widths-default solid $colors-greys-grey30;
+  border-radius: $border-radiuses-medium $border-radiuses-medium 0 0;
+  color: $colors-brand-blue;
+  cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+  line-height: inherit;
   margin: 0;
   min-width: 10rem;
   padding: $space-extra-small $space-default;
   position: relative;
+  .eds-contrast & {
+    background-color: $colors-blues-blue30;
+    border-color: $colors-blues-blue30;
+    color: $colors-brand-white;
+  }
+  &:hover {
+    background-color: $colors-greys-grey10;
+    border-color: $colors-greys-grey10;
+    .eds-contrast & {
+      background-color: $colors-brand-lavender;
+      border-color: $colors-brand-lavender;
+      color: $colors-brand-blue;
+    }
+  }
 
   & + & {
-    margin-left: $space-extra-small;
+    margin-left: $space-extra-small2;
   }
 
   // This will work as the bottom border overlay
-  &::before {
+  &::after {
     content: '';
     position: absolute;
     bottom: -$border-widths-default;
     left: -$border-widths-default;
     right: -$border-widths-default;
-    background-color: $colors-brand-blue;
+    background-color: $colors-greys-grey10;
     display: block;
     height: $border-widths-default;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
   }
 
   &[aria-selected='true'] {
-    border-color: $colors-brand-blue;
+    background-color: $colors-brand-white;
+    border-color: $colors-greys-grey10;
     color: $colors-brand-blue;
     font-weight: $font-weights-heading;
 
-    &::before {
-      background-color: $colors-brand-white;
-      left: 0;
-      right: 0;
+    .eds-contrast & {
+      background-color: $colors-brand-blue;
+      color: $colors-brand-white;
+      border-color: $colors-blues-blue30;
     }
 
     &::after {
+      background-color: $colors-brand-white;
+      left: 0;
+      right: 0;
+      .eds-contrast & {
+        background-color: $colors-brand-blue;
+      }
+    }
+
+    &::before {
       content: '';
       display: block;
       margin: 0 auto;
@@ -73,7 +118,15 @@
   }
 
   &[disabled] {
-    background: $colors-blues-blue80;
+    background: $colors-greys-grey40;
+    border-color: $colors-greys-grey40;
+    color: $colors-greys-grey10;
+    pointer-events: none;
+    .eds-contrast & {
+      background: $colors-blues-blue10;
+      border-color: $colors-blues-blue10;
+      color: $colors-blues-blue60;
+    }
   }
 
   &:focus {
@@ -83,7 +136,6 @@
 }
 
 .eds-tab-panels {
-  border: $border-widths-default solid $colors-brand-blue;
   padding: $space-default $space-extra-large;
 }
 
