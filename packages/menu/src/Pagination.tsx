@@ -51,39 +51,39 @@ export const Pagination: React.FC<PaginationProps> = ({
   nextPageLabel = 'Gå til neste side',
   ...rest
 }) => {
-  if (!pageCount) {
+  if (pageCount < 1) {
     return null;
   }
 
   const isFirstPostSelected = currentPage === 1;
   const isLastPostSelected = currentPage === pageCount;
-  const showLeadingEllipsis = currentPage > 3 && pageCount > 4;
-  const showTrailingEllipsis = pageCount - currentPage > 2 && pageCount > 4;
+  const showLeadingEllipsis = currentPage > 5 && pageCount > 7;
+  const showTrailingEllipsis = pageCount - currentPage > 4 && pageCount > 7;
 
   let entries: Array<number | '…'> = Array(pageCount)
     .fill(null)
     .map((_, i) => i + 1);
 
-  if (pageCount > 6) {
-    if (showLeadingEllipsis) {
-      entries = [
-        1,
-        currentPage === 4 ? 2 : '…',
-        currentPage - 1,
-        currentPage,
-        ...entries.slice(currentPage),
-      ];
-    }
-    if (showTrailingEllipsis) {
-      const currentPageIndex = entries.indexOf(currentPage);
-      entries = [
-        ...entries.slice(0, currentPageIndex),
-        currentPage,
-        currentPage + 1,
-        currentPage === pageCount - 2 ? pageCount - 1 : '…',
-        pageCount,
-      ];
-    }
+  if (showLeadingEllipsis) {
+    entries = [
+      1,
+      '…',
+      currentPage - 2,
+      currentPage - 1,
+      currentPage,
+      ...entries.slice(currentPage),
+    ];
+  }
+  if (showTrailingEllipsis) {
+    const currentPageIndex = entries.indexOf(currentPage);
+    entries = [
+      ...entries.slice(0, currentPageIndex),
+      currentPage,
+      currentPage + 1,
+      currentPage + 2,
+      '…',
+      pageCount,
+    ];
   }
 
   return (
