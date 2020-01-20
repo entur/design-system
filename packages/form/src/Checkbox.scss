@@ -4,7 +4,7 @@
   @return mix(white, $color, $percentage);
 }
 
-.eds-form-component--checkbox {
+.eds-checkbox {
   &__container {
     display: flex;
     align-items: center;
@@ -21,8 +21,8 @@
       height: 0;
       width: 0;
 
-      &:checked + .eds-form-component--checkbox__icon,
-      &:indeterminate + .eds-form-component--checkbox__icon {
+      &:checked + .eds-checkbox__icon,
+      &:indeterminate + .eds-checkbox__icon {
         background-color: $colors-brand-blue;
         .eds-contrast & {
           background: $colors-blues-blue30;
@@ -37,7 +37,7 @@
       }
     }
     &:hover {
-      input + .eds-form-component--checkbox__icon {
+      input + .eds-checkbox__icon {
         border-color: $colors-blues-blue30;
         background: $colors-greys-grey30;
         .eds-contrast & {
@@ -46,8 +46,8 @@
         }
       }
 
-      input:checked + .eds-form-component--checkbox__icon,
-      input:indeterminate + .eds-form-component--checkbox__icon {
+      input:checked + .eds-checkbox__icon,
+      input:indeterminate + .eds-checkbox__icon {
         border-color: $colors-blues-blue30;
         background-color: $colors-blues-blue30;
 
@@ -59,9 +59,15 @@
     }
     &:focus,
     :focus-within {
-      + .eds-form-component--checkbox__icon {
+      + .eds-checkbox__icon {
         box-shadow: $shadows-focus;
       }
+    }
+  }
+  &--disabled {
+    cursor: not-allowed;
+    .eds-checkbox__icon {
+      display: none;
     }
   }
   &__icon {
