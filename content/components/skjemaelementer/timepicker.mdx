@@ -15,9 +15,7 @@ import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
 import { addDays } from 'date-fns';
 
-<PageHeader>
-  DatePicker er en komponent for å velge dato og tidspunkt.
-</PageHeader>
+<PageHeader>Timepicker er en komponent for å velge et tidspunkt.</PageHeader>
 
 <Playground>
   {() => {
@@ -44,4 +42,4 @@ import { addDays } from 'date-fns';
 <ImportStatement imports="TimePicker" />
 <Props of={TimePicker} />
 
-Som med datepicker, så anbefales det å bruke NativeTimePicker, dersom du vise en timepicker for mobile enheter.
+Som med datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.

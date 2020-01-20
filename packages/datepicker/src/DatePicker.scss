@@ -33,8 +33,8 @@
   &__header {
     background: $colors-brand-white;
     border: none;
-    font-size: 16px;
-    line-height: 40px;
+    font-size: $font-sizes-large;
+    line-height: 2.5rem;
   }
 
   &__current-month {
@@ -51,11 +51,11 @@
   }
   &__navigation {
     border-color: $colors-brand-blue;
-    border-width: 2px;
+    border-width: $border-widths-default;
     border-bottom: none;
     border-right: none;
     transform: rotate(135deg);
-    top: 24px;
+    top: 1.5rem;
 
     &--previous {
       transform: rotate(-45deg);
@@ -72,14 +72,14 @@
     margin: 0.125rem;
   }
   &__week {
-    height: 40px;
+    height: 2.5rem;
   }
   &__week-number {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     vertical-align: middle;
-    line-height: 36px;
-    font-size: 14px;
+    line-height: $line-heights-extra-large4;
+    font-size: $font-sizes-medium;
     margin: 0;
     color: $colors-blues-blue40;
     background: $colors-brand-white;
@@ -91,9 +91,9 @@
     }
   }
   &__day-name {
-    width: 40px;
-    line-height: 22px;
-    font-size: 14px;
+    width: 2.5rem;
+    line-height: $line-heights-large;
+    font-size: $font-sizes-medium;
     margin: 0;
     color: $colors-blues-blue40;
     &:first-child {
@@ -106,15 +106,15 @@
   &__day {
     margin: $border-widths-default 0 0;
     font-weight: $font-weights-body;
-    height: 40px;
-    width: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
     color: $colors-brand-blue;
     background: $colors-brand-white;
     margin: 0;
-    line-height: 36px;
+    line-height: $line-heights-extra-large4;
     vertical-align: middle;
-    font-size: 14px;
-    outline: 1px solid $colors-greys-grey20;
+    font-size: $font-sizes-medium;
+    outline: $border-widths-small solid $colors-greys-grey20;
     .eds-contrast .eds-form-control-wrapper--dark & {
       color: $colors-brand-blue;
     }
