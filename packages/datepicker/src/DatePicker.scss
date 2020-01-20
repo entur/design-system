@@ -2,9 +2,10 @@
 
 .eds-datepicker {
   &__calender {
+    font-family: var(--eds-font-family);
     color: $colors-brand-blue;
     .eds-contrast .eds-form-control-wrapper--dark & {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-brand-white;
     }
   }
   &__day {
@@ -12,65 +13,50 @@
   }
 }
 
-.eds-contrast .eds-form-control-wrapper--dark .eds-datepicker__popper {
-  height: fit-content;
-  background-color: transparent;
-}
 .react-datepicker__triangle {
   .react-datepicker-popper[data-placement^='bottom'] & {
     border-bottom-color: $colors-brand-white;
-    .eds-contrast .eds-form-control-wrapper--dark & {
-      border-bottom-color: $colors-blues-blue20;
-      background-color: transparent;
-    }
+
     &::before {
       border-bottom-color: $colors-greys-grey20;
       top: (0-$border-widths-default);
-      .eds-contrast .eds-form-control-wrapper--dark & {
-        border-bottom-color: $colors-blues-blue10;
-      }
     }
   }
 }
 .react-datepicker {
   border: $border-widths-default solid $colors-greys-grey20;
   box-shadow: $shadows-card-shadow;
-  .eds-contrast .eds-form-control-wrapper--dark & {
-    //Used continously in stylesheet, to get higher specificity of parent's style
-    border-color: $colors-blues-blue10;
-  }
+
   &-wrapper {
     width: 100%;
   }
   &__header {
     background: $colors-brand-white;
     border: none;
-    font-size: 16px;
-    line-height: 40px;
+    font-size: $font-sizes-large;
+    line-height: 2.5rem;
   }
 
   &__current-month {
     color: $colors-brand-blue;
     font-size: $font-sizes-large;
     font-weight: $font-weights-heading;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-brand-blue;
+    }
   }
   &__month-container {
     // Miniscule padding on top here to show outline of days
     margin: 0.0625rem $space-large $space-large $space-default;
-    .eds-contrast .eds-form-control-wrapper--dark & {
-      background-color: $colors-blues-blue20;
-    }
   }
   &__navigation {
     border-color: $colors-brand-blue;
-    border-width: 2px;
+    border-width: $border-widths-default;
     border-bottom: none;
     border-right: none;
     transform: rotate(135deg);
-    top: 24px;
-    .eds-contrast .eds-form-control-wrapper--dark & {
-      border-color: $colors-brand-white;
-    }
+    top: 1.5rem;
+
     &--previous {
       transform: rotate(-45deg);
       left: $space-large;
@@ -86,51 +72,51 @@
     margin: 0.125rem;
   }
   &__week {
-    height: 40px;
+    height: 2.5rem;
   }
   &__week-number {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     vertical-align: middle;
-    line-height: 36px;
-    font-size: 14px;
+    line-height: $line-heights-extra-large4;
+    font-size: $font-sizes-medium;
     margin: 0;
     color: $colors-blues-blue40;
     background: $colors-brand-white;
     &:first-child {
       margin-right: $space-extra-small;
     }
-    .eds-contrast & {
-      color: $colors-brand-lavender;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-blues-blue40;
     }
   }
   &__day-name {
-    width: 40px;
-    line-height: 22px;
-    font-size: 14px;
+    width: 2.5rem;
+    line-height: $line-heights-large;
+    font-size: $font-sizes-medium;
     margin: 0;
     color: $colors-blues-blue40;
     &:first-child {
       margin-right: $space-extra-small2;
     }
-    .eds-contrast & {
-      color: $colors-brand-lavender;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-blues-blue40;
     }
   }
   &__day {
     margin: $border-widths-default 0 0;
     font-weight: $font-weights-body;
-    height: 40px;
-    width: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
     color: $colors-brand-blue;
     background: $colors-brand-white;
     margin: 0;
-    line-height: 36px;
+    line-height: $line-heights-extra-large4;
     vertical-align: middle;
-    font-size: 14px;
-    outline: 1px solid $colors-greys-grey20;
-    .eds-contrast & {
-      outline-color: $colors-blues-blue30;
+    font-size: $font-sizes-medium;
+    outline: $border-widths-small solid $colors-greys-grey20;
+    .eds-contrast .eds-form-control-wrapper--dark & {
+      color: $colors-brand-blue;
     }
 
     &:focus {
@@ -139,13 +125,13 @@
     &:hover {
       border-radius: 0;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background-color: $colors-blues-blue30;
+        background-color: $colors-greys-grey30;
       }
     }
     &--outside-month {
       color: $colors-blues-blue40;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        color: $colors-brand-lavender;
+        color: $colors-blues-blue40;
       }
     }
     &--keyboard-selected {
@@ -155,7 +141,7 @@
         background: $colors-greys-grey30;
       }
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background: $colors-blues-blue50;
+        background: $colors-greys-grey20;
       }
     }
     &--selected {
@@ -163,13 +149,13 @@
       background: $colors-brand-blue;
       color: $colors-brand-white;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background-color: $colors-brand-lavender;
-        color: $colors-brand-blue;
+        color: $colors-brand-white;
+        background: $colors-brand-blue;
       }
       &:hover {
         background: $colors-blues-blue10;
         .eds-contrast .eds-form-control-wrapper--dark & {
-          background: $colors-blues-blue60;
+          background: $colors-blues-blue10;
         }
       }
     }
