@@ -71,17 +71,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     debounceTimeout,
   );
 
-  const initialSelectedItem = normalizedItems.find(
-    item => value === item.value,
-  );
+  const selectedItem = normalizedItems.find(item => value === item.value);
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
 
   return (
     <DownshiftProvider
-      initialSelectedItem={initialSelectedItem}
+      selectedItem={selectedItem}
       onInputValueChange={fetchItems}
       onChange={onChange}
+      value={value}
       {...rest}
     >
       <DropdownInputGroup
