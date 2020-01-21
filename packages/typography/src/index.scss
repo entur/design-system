@@ -111,6 +111,18 @@ html {
   margin: $space-large 0 0;
 }
 
+// Body text and inline element styling
+.eds-paragraph {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-large;
+  line-height: $line-heights-large;
+  margin: 0 0 $space-default;
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
 .eds-h1,
 .eds-h2,
 .eds-h3,
@@ -127,18 +139,6 @@ html {
   &--margin-none {
     margin-top: 0;
     margin-bottom: 0;
-  }
-}
-// Body text and inline element styling
-.eds-paragraph {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
-  font-size: $font-sizes-large;
-  line-height: $line-heights-large;
-  margin: 0 0 $space-default;
-  @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
   }
 }
 

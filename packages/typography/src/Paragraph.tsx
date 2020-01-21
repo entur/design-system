@@ -9,13 +9,13 @@ export type ParagraphProps = {
   /** Innholdet */
   children: React.ReactNode;
   /** Hvor du vil ha marginer */
-  margin?: 'top' | 'bottom' | 'both' | 'none';
+  margin?: 'bottom' | 'none';
   [key: string]: any;
 };
 
 export const Paragraph: React.FC<ParagraphProps> = ({
   as: Element = 'p',
-  margin = 'both',
+  margin = 'bottom',
   className,
   ...rest
 }) => (
@@ -23,7 +23,6 @@ export const Paragraph: React.FC<ParagraphProps> = ({
     className={classNames(
       'eds-paragraph',
       {
-        [`eds-paragraph--margin-top`]: margin === 'top',
         [`eds-paragraph--margin-bottom`]: margin === 'bottom',
         [`eds-paragraph--margin-none`]: margin === 'none',
       },
