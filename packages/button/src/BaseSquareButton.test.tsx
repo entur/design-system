@@ -8,7 +8,7 @@ test('renders secondary square buttons', () => {
       <svg /> Add
     </SecondarySquareButton>,
   );
-  expect(getByRole('button')).toHaveClassName('eds-square-button--secondary');
+  expect(getByRole('button')).toHaveClass('eds-square-button--secondary');
 });
 
 test('renders success square buttons', () => {
@@ -17,5 +17,5 @@ test('renders success square buttons', () => {
       <svg /> Save
     </SuccessSquareButton>,
   );
-  expect(getByRole('button')).toHaveClassName('eds-square-button--success');
+  expect(getByRole('button')).toHaveClass('eds-square-button--success');
 });
