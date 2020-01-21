@@ -21,7 +21,7 @@ import { ImportStatement } from '~/components/ImportStatement';
   Tabs lar oss designe grupperte brukergrensesnitt på en enkel måte
 </PageHeader>
 
-<Playground hideContrastOption>
+<Playground >
   <Tabs>
     <TabList>
       <Tab>Priser</Tab>
@@ -64,10 +64,6 @@ import { ImportStatement } from '~/components/ImportStatement';
   </Tabs>
 </Playground>
 
-<BannerAlertBox variant="info" title="Ikke bruk denne i kontrast-seksjoner">
-  Denne komponenten er ikke tiltenkt bruk i kontrast-seksjoner.
-</BannerAlertBox>
-
 ## Komponenter
 
 Tab-pakken består av mange forskjellige komponenter, som lar deg komponere en Tab-opplevelse som passer dine behov.
@@ -104,7 +100,7 @@ Om du ønsker, kan du også styre hvilket panel som er valgt programmatisk. Du k
 
 Her er et eksempel der man går fra 1 tab til en annen programmatisk:
 
-<Playground hideContrastOption>
+<Playground>
   {() => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
     return (
