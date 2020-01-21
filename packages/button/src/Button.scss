@@ -46,13 +46,6 @@ a.eds-button {
     height: 3.75rem;
   }
 
-  &--width-square {
-    padding-right: $space-none;
-    padding-left: $space-none;
-    min-width: ($space-extra-large2 + $space-extra-small2);
-    width: ($space-extra-large2 + $space-extra-small2);
-  }
-
   &--width-fluid {
     width: 100%;
   }
