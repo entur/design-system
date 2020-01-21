@@ -8,9 +8,8 @@ npmPackage: button
 tags: firkant, knapp, funksjonsknapp, tabellknapp
 ---
 
-import { SecondaryButton, SuccessButton } from '@entur/button';
-import { Paragraph } from '@entur/typography';
 import { Props } from 'docz';
+import { SecondarySquareButton, SuccessSquareButton } from '@entur/button';
 import { AddIcon, CheckIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -19,32 +18,32 @@ import { ImportStatement } from '~/components/ImportStatement';
 <PageHeader />
 
 <Playground>
-  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <SecondaryButton width="square" aria-label="Legg til">
-        <AddIcon />
-      </SecondaryButton>
-      <Paragraph as="span" style={{ marginLeft: '1em' }}>
-        Legg til
-      </Paragraph>
-    </div>
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <SuccessButton width="square" aria-label="Lage som favoritt">
-        <CheckIcon />
-      </SuccessButton>
-      <Paragraph as="span" style={{ marginLeft: '1em' }}>
-        Lagre
-      </Paragraph>
-    </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SecondarySquareButton>
+      Legg til <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }}>
+      <AddIcon /> Legg til
+    </SecondarySquareButton>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <SuccessSquareButton>
+      Lagre <CheckIcon />
+    </SuccessSquareButton>
+    <SuccessSquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </SuccessSquareButton>
   </div>
 </Playground>
 
-Kvadratiske knapper er støttet som `SecondaryButton` og `SuccessButton`.
+Kvadratiske knapper skal alltid ha ett ikon, og _kan_ ha en label på enten venstre eller høyre side. Du kan også bruke dem uten label, men bør da sende inn en alternativ beskrivelse med `aria-label`.
 
 ## Komponenter
 
-### SuccessButton og SecondaryButton
+### SuccessSquareButton og SecondarySquareButton
 
-<ImportStatement imports="SuccessButton, SecondaryButton" />
+<ImportStatement imports="SuccessSquareButton, SecondarySquareButton" />
 
-<Props of={SuccessButton} />
+<Props of={SuccessSquareButton} />
