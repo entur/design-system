@@ -1,0 +1,291 @@
+@import '~normalize-scss';
+@import '~@entur/tokens/dist/styles.scss';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
+
+:root {
+  --eds-typography: 1; // Register that the styles are loaded!
+  --primary-background-color: #{$colors-brand-white};
+  --primary-text-color: #{$colors-brand-blue};
+  --primary-label-color: #{$colors-blues-blue40};
+  --eds-font-family: 'Nationale', 'Gotham Rounded', Arial, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
+
+  @media (prefers-color-scheme: dark) {
+    // TODO: We still need a design for this
+  }
+}
+
+// Base styles
+// These styles will propagate across the project
+html {
+  background-color: $colors-brand-white;
+  background-color: var(--primary-background-color);
+  box-sizing: border-box;
+  color: $colors-brand-blue; // ie fallback
+  color: var(--primary-text-color);
+  font-family: var(--eds-font-family);
+  font-weight: $font-weights-body;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-large;
+
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-weight: inherit;
+}
+
+// Headings
+.eds-h1,
+.eds-h2,
+.eds-h3,
+.eds-h4,
+.eds-h5,
+.eds-h6 {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-weight: $font-weights-heading;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eds-h1 {
+  font-size: $font-sizes-extra-large;
+  line-height: $line-heights-extra-large2;
+  margin: 0 0 $space-default;
+  @include for-desktop {
+    font-size: $font-sizes-extra-large3;
+    line-height: $line-heights-extra-large5;
+  }
+}
+.eds-h2 {
+  font-size: $font-sizes-large;
+  line-height: $line-heights-large;
+  margin: $space-extra-large 0 $space-small;
+  @include for-desktop {
+    font-size: $font-sizes-extra-large2;
+    line-height: $line-heights-extra-large4;
+  }
+}
+.eds-h3 {
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
+  margin: $space-large 0 $space-extra-small;
+  @include for-desktop {
+    font-size: $font-sizes-extra-large;
+    line-height: $line-heights-extra-large3;
+  }
+}
+.eds-h4 {
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
+  margin: $space-large 0 0;
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
+.eds-h5 {
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
+  margin: $space-large 0 0;
+  @include for-desktop {
+    line-height: $line-heights-large;
+  }
+}
+
+.eds-h6 {
+  font-size: $font-sizes-small;
+  line-height: $line-heights-medium;
+  margin: $space-large 0 0;
+}
+
+.eds-h1,
+.eds-h2,
+.eds-h3,
+.eds-h4,
+.eds-h5,
+.eds-h6,
+.eds-paragraph {
+  &--margin-top {
+    margin-bottom: 0;
+  }
+  &--margin-bottom {
+    margin-top: 0;
+  }
+  &--margin-none {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+// Body text and inline element styling
+.eds-paragraph {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-large;
+  line-height: $line-heights-large;
+  margin: 0 0 $space-default;
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
+
+.eds-lead-paragraph {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-extra-large;
+  line-height: $line-heights-extra-large3;
+  margin: $space-large 0;
+  @include for-desktop {
+    font-size: $font-sizes-extra-large;
+    line-height: $line-heights-extra-large3;
+  }
+}
+
+.eds-sub-paragraph {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
+
+  @include for-desktop {
+    line-height: $line-heights-large;
+  }
+}
+
+.eds-small-text {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-small;
+  line-height: $line-heights-medium;
+  @include for-desktop {
+    line-height: $line-heights-medium;
+  }
+}
+
+.eds-link {
+  &,
+  &:link,
+  &:visited {
+    color: inherit; // ie fallback
+    color: var(--primary-text-color);
+    font-size: inherit;
+  }
+
+  &:hover {
+    color: $colors-brand-lavender;
+  }
+
+  &:focus {
+    outline-color: $colors-misc-focus;
+  }
+
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
+
+.eds-label,
+.eds-sub-label {
+  color: $colors-blues-blue40; // ie fallback
+  color: var(--primary-label-color);
+}
+
+.eds-label {
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-medium;
+
+  @include for-desktop {
+    line-height: $line-heights-large;
+  }
+}
+
+.eds-sub-label {
+  font-size: $font-sizes-small;
+  line-height: $line-heights-small;
+
+  @include for-desktop {
+    line-height: $line-heights-medium;
+  }
+}
+
+.eds-strong-text {
+  font-weight: $font-weights-heading;
+}
+
+.eds-emphasized-text {
+  font-style: italic;
+}
+
+.eds-preformatted-text {
+  background-color: $colors-brand-white;
+  border: $border-widths-small solid $colors-brand-blue;
+  border-radius: $border-radiuses-small;
+  color: inherit;
+  font-family: 'Dank Mono', monospace;
+  font-size: inherit;
+  padding: 1em;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+.eds-code-text {
+  background-color: $colors-brand-white;
+  border: $border-widths-small solid $colors-brand-blue;
+  border-radius: $border-radiuses-small;
+  font-family: 'Dank Mono', monospace;
+  font-size: $font-sizes-medium; // Slightly smaller than
+  padding: ($space-extra-small2 / 2) $space-extra-small2;
+}
+
+.eds-unordered-list,
+.eds-numbered-list {
+  margin: $space-default 0;
+}
+
+.eds-numbered-list {
+  counter-reset: eds-numbered-list-counter;
+  list-style: none;
+}
+
+.eds-list-item {
+  padding-left: $space-extra-small;
+}
+
+.eds-numbered-list > .eds-list-item {
+  counter-increment: eds-numbered-list-counter;
+  margin-top: $space-large;
+  position: relative;
+
+  &::before {
+    content: counter(eds-numbered-list-counter) '. ';
+    color: inherit; // ie fallback
+    color: var(--primary-text-color);
+    position: absolute;
+    font-weight: $font-weights-heading;
+    left: -$space-large;
+  }
+}
+
+.eds-list-item__title {
+  display: block;
+  font-weight: $font-weights-heading;
+  margin-bottom: $space-extra-small;
+
+  .eds-list-item:first-of-type {
+    margin: none;
+  }
+}

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.8...@entur/a11y@0.2.9) (2020-01-20)
+
+**Note:** Version bump only for package @entur/a11y
+
+## [0.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.7...@entur/a11y@0.2.8) (2020-01-14)
+
+**Note:** Version bump only for package @entur/a11y
+
+## [0.2.7](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.6...@entur/a11y@0.2.7) (2020-01-13)
+
+**Note:** Version bump only for package @entur/a11y
+
+## [0.2.6](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.5...@entur/a11y@0.2.6) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.4...@entur/a11y@0.2.5) (2020-01-06)
+
+**Note:** Version bump only for package @entur/a11y
+
+## [0.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.3...@entur/a11y@0.2.4) (2019-12-17)
+
+### Bug Fixes
+
+- **VisuallyHidden:** make as prop optional ([d272e4d](https://bitbucket.org/enturas/design-system/commits/d272e4d32bcf954f164e99c5b90aa5aabf98c365))
+
 ## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.2...@entur/a11y@0.2.3) (2019-12-10)
 
 ### Bug Fixes

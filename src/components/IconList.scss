@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
-  padding: $space-large;
+  padding: $space-large 0;
   text-align: center;
 
   .eds-contrast & {
@@ -28,15 +28,6 @@
 }
 
 .icon-list__name {
-  appearance: none;
-  background: none;
-  border: $border-widths-small solid currentColor;
-  border-radius: $border-radiuses-default;
-  color: inherit;
-  cursor: pointer;
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-large;
-  padding: $space-extra-small;
   margin-top: $space-extra-small;
   word-break: break-all;
   hyphens: auto;

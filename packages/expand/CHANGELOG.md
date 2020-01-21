@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.3...@entur/expand@1.1.4) (2020-01-20)
+
+**Note:** Version bump only for package @entur/expand
+
+## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.2...@entur/expand@1.1.3) (2020-01-14)
+
+**Note:** Version bump only for package @entur/expand
+
+## [1.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.1...@entur/expand@1.1.2) (2020-01-13)
+
+**Note:** Version bump only for package @entur/expand
+
+## [1.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.0...@entur/expand@1.1.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.0.3...@entur/expand@1.1.0) (2020-01-06)
+
+### Features
+
+- refactor expandable-text-button as seperate component, and expose it ([c5765b0](https://bitbucket.org/enturas/design-system/commits/c5765b0fde18c146ec3858ccb098490ffd48274b))
+
 ## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.0.2...@entur/expand@1.0.3) (2019-12-10)
 
 ### Bug Fixes

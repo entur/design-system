@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.4...@entur/tooltip@1.1.5) (2020-01-14)
+
+**Note:** Version bump only for package @entur/tooltip
+
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.3...@entur/tooltip@1.1.4) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.2...@entur/tooltip@1.1.3) (2020-01-06)
+
+**Note:** Version bump only for package @entur/tooltip
+
 ## [1.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.1...@entur/tooltip@1.1.2) (2019-12-10)
 
 ### Bug Fixes

@@ -1,0 +1,55 @@
+---
+name: Paginering
+route: /komponenter/navigasjon/paginering
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: paginering, pagination, navigation
+---
+
+import { Props, Link } from 'docz';
+import { Pagination } from '@entur/menu';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Paginering lar deg navigere mellom sider i et resultatsett.
+</PageHeader>
+
+<Playground>
+  {() => {
+    const [currentPage, setPage] = React.useState(1);
+    return (
+      <React.Fragment>
+        <Pagination
+          pageCount={10}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+        />
+        <Pagination
+          pageCount={10}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          showInput
+        />
+      </React.Fragment>
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### Pagination
+
+<ImportStatement imports="Pagination" />
+<Props of={Pagination} />
+
+`<Pagination />` komponenten er ganske grei å bruke. Du sier hvor mange sider du har totalt, hvilken side man er på nå, og hva som skal skje når man trykker på et tall.
+
+Hver gang brukeren ber om å endre en side, så blir callbacken `onPageChange` kalt med nummeret til den ønskede siden. Det er da opp til utvikleren å implementere navigasjonen derifra - f.eks. med `window.history.push()`, eller APIene til `react-router`, om du bruker det.
+
+Du kan også spesifisere `showInput` for å vise et input-felt, der man kan skrive inn hvilken side man ønsker å bruke. Det kan være praktisk i svært store
+datasett, men bør kun brukes der det er behov.
+
+Om du ønsker flerspråklig støtte, har du tilgang på flere props: `pageLabel`, `previousPageLabel`, `nextPageLabel`, og eventuelt `inputLabel` om det trengs.

@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.3...@entur/menu@1.2.4) (2020-01-20)
+
+### Bug Fixes
+
+- **Pagination:** fix bug where low page counts didn't work ([5b564d8](https://bitbucket.org/enturas/design-system/commits/5b564d882afe33dab27b737328de1510c1cd5b1f))
+- **Pagination:** make ellipsisisisis less clickable ([f63f241](https://bitbucket.org/enturas/design-system/commits/f63f24150f059214dfa776a2d1c18def8ff85b5a))
+- **Pagination:** show number when ellipsis is a single number ([7bd8048](https://bitbucket.org/enturas/design-system/commits/7bd80482d3cfb6be927851007b5e98c0b6ddc2b8))
+- **Pagination:** show two neighbors instead of one ([e426962](https://bitbucket.org/enturas/design-system/commits/e42696249bc2318d9a6babe95ee30700d845d42d))
+
+## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.2...@entur/menu@1.2.3) (2020-01-14)
+
+**Note:** Version bump only for package @entur/menu
+
+## [1.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.1...@entur/menu@1.2.2) (2020-01-13)
+
+**Note:** Version bump only for package @entur/menu
+
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.0...@entur/menu@1.2.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.1.0...@entur/menu@1.2.0) (2020-01-06)
+
+### Bug Fixes
+
+- **Pagination:** fix ios safari bug with small prev/next buttons ([c3c06d4](https://bitbucket.org/enturas/design-system/commits/c3c06d408e994a14d94d1536da86111327e55fbb))
+- **Pagination:** make each pagination page text unselectable ([746fc7a](https://bitbucket.org/enturas/design-system/commits/746fc7ab6a2e6348a0a5e03f4c8c0000f9ed75b2))
+
+### Features
+
+- **BreadcrumbNavigation, BreadcrumbItem:** create new components for composing breadcrumbs together ([37c3e5e](https://bitbucket.org/enturas/design-system/commits/37c3e5e897d222d65e0ce51fceae9693788a0f0f))
+- **Breadcrumbs:** add new component - Breadcrumbs ([0ee248d](https://bitbucket.org/enturas/design-system/commits/0ee248d7ac936904eaf9dbc324197d4bb44b498e))
+
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.3...@entur/menu@1.1.0) (2019-12-20)
+
+### Features
+
+- **Pagination:** add new component - Pagination ([bc6d042](https://bitbucket.org/enturas/design-system/commits/bc6d0427041a784a42ae028ebffc6271e5ab5a67))
+- **Pagination:** add support for showInput ([588d9f3](https://bitbucket.org/enturas/design-system/commits/588d9f31c769298e1b6d8d2aee3c97b5e308b4fe))
+
 ## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.0.2...@entur/menu@1.0.3) (2019-12-10)
 
 ### Bug Fixes

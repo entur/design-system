@@ -1,0 +1,202 @@
+---
+name: Bidra
+route: /kom-i-gang/bidra
+parent: Kom i gang
+order: 5
+---
+
+import { BannerAlertBox } from '@entur/alert';
+import { CodeText, Link, Paragraph } from '@entur/typography';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader>
+  Har du funnet en bug i designsystemet? Vil du legge til en ny feature, eller
+  kanskje en helt ny komponent? Da er dette guiden for deg.
+</PageHeader>
+
+Enturs designsystem både brukes og utvikles av alle utviklere hos Entur. Vi mener at det er gjennom dette felles eierskapet vi klarer å lage et designsystem som fungerer for de som faktisk skal bruke det.
+
+Denne guiden viser deg hvordan du kan bidra med features, bug fixes, forbedring av dokumentasjon eller tilogmed helt nye komponenter!
+
+## Hvordan sette opp utviklingsmiljøet
+
+Først må du klone ned dette repositoryet:
+
+```sh
+$ git clone git@bitbucket.org:enturas/design-system.git
+```
+
+Gå inn i den nye mappen `design-system`, og installer dependencies med `yarn`:
+
+```sh
+$ yarn
+```
+
+**Merk at vi bruker `yarn` og ikke `npm` i dette prosjektet**. Det er fordi vi bruker en yarn-only feature - workspaces - som letter utvikling i såkalte monorepos. For å innstallere `yarn` på din maskin, kjør `npm install --global yarn`.
+
+<BannerAlertBox variant="info" title="Feiler det på @entur/fonts?">
+  <Paragraph>
+    <CodeText>@entur/fonts</CodeText>-avhengigheten er litt spesiell, siden den
+    inneholder våre lisensierte fonter, og krever et annet tilgangsnivå. Om du
+    ikke har gjort det allerede, kreves det at du har lagt til den offentlige
+    SSH-nøkkelen din i Bitbucket.
+  </Paragraph>
+  <Paragraph>
+    Om du sitter på OSX kan du kopiere den til utklippstavla med
+    terminal-kommandoen <CodeText>cat ~/.ssh/id_rsa.pub | pbcopy</CodeText>.
+    Atlassian har også{' '}
+    <Link href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">
+      en fin guide
+    </Link>{' '}
+    for hvordan dette gjøres.
+  </Paragraph>
+  <Paragraph>
+    Du kan legge til SSH-nøkkelen din på Bitbucket ved å gå til{' '}
+    <Link href="https://bitbucket.org/account">innstillinger</Link>,så{' '}
+    <CodeText>Security -> SSH keys</CodeText> og så trykke på "Add key".
+    <br />
+    Når SSH-nøkkelen er lagt til her kan du prøve å kjøre `yarn` på nytt igjen.
+  </Paragraph>
+</BannerAlertBox>
+
+Siste steg i prosessen er å bygge alle pakkene. Dette gjør du med `yarn build:packages`.
+
+Når du har kommet hit, burde du være klar for å starte arbeidet ditt.
+
+## Scripts
+
+Du har en rekke scripts tilgjengelig via `yarn`:
+
+Du kan starte en utviklingsversjon av dokumentasjonssiden med `yarn start`. Du kan starte en byggprosess for hver pakke også ved å gå inn i hver pakke (`cd packages/buttons` for eksempel), og kjøre `yarn start` der også.
+
+Du kan kjøre alle testene med `yarn test` og starte en test watcher med `yarn test --watch`.
+
+Du kan bygge hele prosjektet med `yarn build`. Dette kan ta noen minutter, men kan være smart å gjøre før du lager et pull request, så ikke CI-prosessen kræsjer.
+
+Om du har de rette tilgangene, kan du også bygge og publisere nye versjoner med `yarn lerna:publish`. **Kun kjør denne om du har de riktige tilgangene! Ellers blir det masse rot med git tags og slikt.** For å få tilgang, snakk med Mats Byrkjeland, eller spør på `#talk-admin` på Slack.
+
+## Prosjektstruktur
+
+Designsystemet er et såkalt "monorepo". Det vil si at alle de forskjellige NPM-pakkene du laster ned finnes i samme repository. Det gjør det lettere å utvikle features på tvers av pakker, samt å samkjøre endringer som må skje i hele kodebasen.
+
+Prosjektet er strukturert på følgende måte:
+
+```
+- src
+  - components
+  - gatsby-theme-docz
+  - utils
+- packages
+  - package-name
+  - another-package-name
+  - ...
+- content
+  - designprinsipper
+  - kom-i-gang
+  - ...
+- bin
+```
+
+### `packages`: NPM-pakkene
+
+`packages` inneholder en mappe for hver pakke. Det vil si at `@entur/typography`-pakken ligger i `packages/typography`.
+
+Om du vil utvikle på en slik pakke, kan du kjøre `yarn start` for å slippe å bygge manuelt etter hver endring.
+
+Hver av pakkene inneholder omtrentlig den samme strukturen:
+
+```
+- package-name
+  - src
+    - index.tsx
+    - ComponentName.tsx
+    - ComponentName.test.tsx
+    - ComponentName.scss
+```
+
+`index.tsx`-filen definerer hva som kan importeres fra pakken din, og er således hoved-APIet til pakken. Derifra kan du finne frem til riktig komponent.
+
+Vi bruker `scss` til styling, og `react-testing-library` og Jest for testing.
+
+### `content`: dokumentasjonen
+
+All dokumentasjonen vår finner du i `content`-mappa. Vi har lagt dem i mapper basert på hvilken del av siden den tilhører, og hver av filene er i såkalt `mdx`-format.
+
+`MDX` er Markdown med JSX-støtte i seg. Det betyr at du kan bruke React-komponenter for å lage dokumentasjonen din! Med andre ord kan du dokumentere komponenten din ved hjelp av den faktiske komponenten din - det er ganske tøffe saker. Du kan lese mer om det på [dokumentasjonssiden deres](https://mdxjs.com/).
+
+For komponent-dokumentasjonen så har vi prøvd å standardisere utseendet og strukturen på hver side. Kopier gjerne en eksisterende fil om du skal legge til en ny side, så får du alt på kjøpet.
+
+#### Frontmatter
+
+I tillegg bruker vi noe som heter `frontmatter` på toppen av hver fil, for å definere metainformasjon om hver dokumentasjonsside. Dette kan være tittelen på siden, hvilken NPM-pakke denne komponenten tilhører, hvilken rekkefølge den burde dukke opp i hvilken meny osv. Frontmatter er formatert i `yaml`.
+
+Følgende valg er tilgjengelige i frontmatter-YAMLen:
+
+```yaml
+title: Tittel på siden
+route: /url/til/siden
+order: 1
+parent: Hovedkategori (Komponenter, Kom i gang osv)
+menu: Hvilken undermeny (kun relevant for komponenter-sider)
+npmPackage: navnet på npm-pakken (kun relevant for komponenter-sider)
+tags: søkbare, ord (kun relevant for komponenter-siden)
+```
+
+Det finnes et par andre også (`index`, `frontpage` etc), men de trenger du mest sannsynligvis aldri å bry deg om. Om i tvil, ta en titt på kildekoden - den er ikke så ille.
+
+### `src`: dokumentasjonssiden
+
+Trenger du å endre noe på selve dokumentasjonssiden, eller lage noen spesielle komponenter for å dokumentere noe, så kan du legge dem inn i denne mappen. Dette er nemlig koden som bygger opp selve dokumentasjonssiden!
+
+Mappen inneholder tre mapper:
+
+- `gatsby-theme-docz` inneholder toppnivå-komponentene i komponentbiblioteket.
+- `utils` inneholder utilities som brukes på kryss og tvers av siden
+- `components` inneholder en rekke gjenbrukbare komponenter, som både kan brukes i dokumentasjonen og rundt om i dokumentasjonssiden.
+
+### `bin`: scripts
+
+Per i dag inneholder `bin`-mappen kun ett script - `new-package`-scriptet. Vi prøver å skrive alle scripts i Node, slik at det blir lettest mulig å forstå seg på.
+
+## Jeg trenger en feature eller bugfix
+
+Start med å skrive en test for å verifisere buggen eller for å vise APIet til den nye featuren din. Det gjør det enklere for deg å utvikle, og for de som skal verifisere pull requestet ditt å forstå hva du har gjort.
+
+Neste steg er å faktisk skrive koden som fikser bugen eller implementererer featuren. Sjekk at testen passerer!
+
+Det kan jo være greit å se en versjon av komponenten din mens du utvikler. Du kan starte opp en dev-versjon av dokumentasjonssiden med `yarn start` på rotnivå, og en lokal file watcher som rekompilerer filene dine med `yarn start` i mappen der pakken du jobber på ligger. Så om du utvikler en komponent for `@entur/a11y`-pakken, gjør du følgende:
+
+```sh
+$ ~/design-system: yarn start
+# så, i en annen terminal
+$ ~/design-system: cd packages/a11y
+$ ~/design-system/packages/a11y: yarn start
+```
+
+Så går du til dokumentasjonssiden for den featuren du jobber på, og ser at alt oppfører seg som forventet. Du kan tweake på komponenten så mye du vil i en Playground, eller bare rendre den rett i dokumentet.
+
+Mens vi snakker om dokumentasjon - trenger du å dokumentere endringen din? Neste steg er i så fall å legge til eller endre det som skal til på dokumentasjonssiden. Dokumentér heller for mye enn for lite!
+
+Til slutt committer du endringen din. Vi bruker et verktøy som heter `commitizen` for å standardisere commit-meldinger. Følg brukergrensesnittet så godt du kan, så burde du komme ganske godt i mål. Når den spør om "scope", skriv opp navne(t|ne) på komponenten(e) du har endret, eller bare hopp over.
+
+## Jeg vil legge til en ny pakke
+
+Da kan du kjøre `yarn new-package`, og så vil du bli guidet gjennom valg av navn, og en liste med manuelle steg du enn så lenge må gjøre.
+
+Husk å diskuter dette på `#talk-designsystem`-kanalen før du kjører i gang - så vi kan bli enige om at det er riktig ting å gjøre.
+
+## Jira, møter og annen prosess
+
+Vi har et [Jira-board](https://enturas.atlassian.net/secure/RapidBoard.jspa?rapidView=75&projectKey=DS) for å opprette oppgaver. Vi anbefaler at du oppretter en Jira-sak på det arbeidet du skal gjøre, slik at vi får muligheten til å tallfeste hvor mange slike saker vi går gjennom, samt å ha en bedre historikk enn det vi kan få gjennom Git alene.
+
+Du vil finne design guidelines for de fleste komponenter og sider i designsystemet på Abstract. Ta kontakt på `#talk-designsystem` for å få tilgang til dette, om du ikke allerede har.
+
+Vi har ukentlige designsystem-møter, der vi snakker om behov og ønsker på tvers av organisasjonen, samt å legge retning og strategi for fremtidig utvikling. Det er veldig viktig at minst en representant fra hvert team kommer på disse møtene, slik at deres behov og ønsker også blir hørt. Ta kontakt på `#talk-designsystem` for å få innkalling til disse møtene.
+
+## Felles ansvar
+
+Selv om dette er et distribuert prosjekt på tvers av Entur sine mange utviklingsteam, er det et kjerneteam som "eier" selve designsystemet. Det er ledet av Long Ngo (design) og Nicolai Fredriksen (utvikling). Det er ikke tenkt at de skal "gjøre alt arbeidet", men de vil være tilretteleggere for samarbeid på tvers av organisasjonen.
+
+## Spørsmål?
+
+Sitter du fast? Lurer du på noe? Har du lyst til å slå av en hyggelig prat? Da kan du stikke innom `#talk-designsystem`-kanalen vår på Slack. Der vil du finne mange som enten jobber med designsystemet hver dag, eller som kanskje vet hvem du kan spørre.

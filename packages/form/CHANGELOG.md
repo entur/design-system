@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.2...@entur/form@2.2.3) (2020-01-20)
+
+**Note:** Version bump only for package @entur/form
+
+## [2.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.1...@entur/form@2.2.2) (2020-01-14)
+
+**Note:** Version bump only for package @entur/form
+
+## [2.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.0...@entur/form@2.2.1) (2020-01-13)
+
+### Bug Fixes
+
+- placeholder and focus styling bugs fixed ([a59b972](https://bitbucket.org/enturas/design-system/commits/a59b972ba3fb3239ad133903b3d84fa66bda5564))
+
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.1.1...@entur/form@2.2.0) (2020-01-10)
+
+### Bug Fixes
+
+- add focus styling for checkbox ([5355da4](https://bitbucket.org/enturas/design-system/commits/5355da4b460ddcc706bdf1b6173fbde158de29f0))
+
+### Features
+
+- **Checkbox:** style prop explicitly set to label instead of being spread to input ([47f283c](https://bitbucket.org/enturas/design-system/commits/47f283c303d93ccc87bf8ad424f6d6ff81b72922))
+
+## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.1.0...@entur/form@2.1.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.2...@entur/form@2.1.0) (2020-01-06)
+
+### Features
+
+- **Checkbox:** add support for indeterminate checkboxes ([a98fb42](https://bitbucket.org/enturas/design-system/commits/a98fb429d3b917fc4804a5ceb7a0052ea84052ca))
+
+## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.1...@entur/form@2.0.2) (2019-12-17)
+
+### Bug Fixes
+
+- new and improved icon for Checkbox ([0f58e5b](https://bitbucket.org/enturas/design-system/commits/0f58e5ba3f561dd57dc1a0fb9bab49d191755d11))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.0.0...@entur/form@2.0.1) (2019-12-10)
 
 **Note:** Version bump only for package @entur/form

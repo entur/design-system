@@ -26,6 +26,9 @@ import {
   Link as LinkText,
   PreformattedText,
   CodeText,
+  UnorderedList,
+  NumberedList,
+  ListItem,
 } from '@entur/typography';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -43,15 +46,26 @@ Det er definert en typografisk skala, hvor vi bruker ulike fontstørrelser for �
 
 Tabellen viser hvilke størrelser og linjeavstander vi skal bruke når vi designer for web. Ved å kombinere ulike fontstørrelser på en god måte kan vi skape et tydelig hierarki og en struktur som gjør det enklere for leseren å forstå og navigere seg gjennom tekstene våre.
 
-For å benytte seg av fonten, så må man legge den til som en avhengighet i `package.json` med en link til bitbucket:
+<Props of={Heading1} title="Props, alle typografikomponenter" />
 
-```json
-"dependencies": {
-  "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master"
-}
+## Installasjon
+
+Det er et par steg å følge ved førstegangs oppsett av typografi-pakken.
+
+Først må man legge til både `@entur/typography` og `@entur/fonts` som avhengigheter i `package.json`. `@entur/fonts` er litt spesiell grunnet rettighetsstyring, og legges til med en link til Bitbucket-repositoryet.
+
+```sh
+npm install @entur/typography ssh://git@bitbucket.org:enturas/entur-fonts.git#master
 ```
 
-<Props of={Heading1} title="Props, alle typografikomponenter" />
+> Om dette feiler, så kan det hende at du må registrere SSH-nøkkelen din i Bitbucket. Her er en [guide](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html) til hvordan du får til det.
+
+Til slutt må du også inkludere CSSen til både `@entur/fonts`- og `@entur/typography`-pakkene i koden din via CSS eller JavaScript.
+
+```scss
+@import '~@entur/fonts/index.css';
+@import '~@entur/typography/dist/styles.css';
+```
 
 ## Overskrifter
 
@@ -107,6 +121,38 @@ Vi har to nivåer med "label"-tekst - "label" og "sub label".
     Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
     kollektivselskaper i Norge.
   </SubLabel>
+</Playground>
+
+## Lister
+
+Du har to forskjellige listetyper - usortert og nummerert.
+
+<Playground>
+  <Paragraph>
+    Usorterte lister er fine for å summere opp en rekke punkter der rekkefølgen
+    ikke er så viktig
+  </Paragraph>
+  <UnorderedList>
+    <ListItem>Du kan bruke dem til å summere opp hva kunden har kjøpt</ListItem>
+    <ListItem>Du kan liste opp hovedtrekk i en kjøpskontrakt</ListItem>
+    <ListItem>
+      Du kan gjerne skrive lengre punkter om du vil, men det er ofte lettere å
+      lese korte og konsise punkter enn lange og detaljrike tekster.
+    </ListItem>
+  </UnorderedList>
+  <Paragraph>
+    Nummererte lister er flotte når du har en rekke punker du vil fremheve
+    rekkefølgen på.
+  </Paragraph>
+  <NumberedList>
+    <ListItem title="Først bør du huske på å bruke title-propen">
+      Da får du en fin fet overskrift på punktet ditt
+    </ListItem>
+    <ListItem title="For det andre bør du ha gode overskrifter">
+      Dette er forferdelige eksempler, så gjør en mye bedre jobb enn det vi har
+      gjort her.
+    </ListItem>
+  </NumberedList>
 </Playground>
 
 ## CSS properties
@@ -182,3 +228,18 @@ De vil bli dokumentert bedre etterhvert, men vil være de aktuelle hovedfargene 
 
 <ImportStatement imports="CodeText" />
 <Props of={CodeText} />
+
+### UnorderedList
+
+<ImportStatement imports="UnorderedList" />
+<Props of={UnorderedList} />
+
+### NumberedList
+
+<ImportStatement imports="NumberedList" />
+<Props of={NumberedList} />
+
+### ListItem
+
+<ImportStatement imports="ListItem" />
+<Props of={ListItem} />

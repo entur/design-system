@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import './styles.scss';
 
 export type TooltipProps = {
   /** Plassering av tooltip-en */

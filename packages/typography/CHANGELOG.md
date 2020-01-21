@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.3...@entur/typography@0.7.4) (2020-01-20)
+
+### Bug Fixes
+
+- fixing use of fallback font, and adding font family as css variable ([a4d28c4](https://bitbucket.org/enturas/design-system/commits/a4d28c42768a2b8d6faee4565a9fe6b9be7034f9))
+
+## [0.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.2...@entur/typography@0.7.3) (2020-01-14)
+
+**Note:** Version bump only for package @entur/typography
+
+## [0.7.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.1...@entur/typography@0.7.2) (2020-01-13)
+
+### Bug Fixes
+
+- **Typography:** added var() ([02ea259](https://bitbucket.org/enturas/design-system/commits/02ea2594c9064484eebb06529887c4e34c8479c7))
+- **Typography:** switched color: inherit with css prop ([ccd3a04](https://bitbucket.org/enturas/design-system/commits/ccd3a046b78be146f1b136211f4a3e92c7e31df9))
+
+## [0.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.0...@entur/typography@0.7.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.6.1...@entur/typography@0.7.0) (2020-01-06)
+
+### Bug Fixes
+
+- new styling for preformatted and code text ([c929097](https://bitbucket.org/enturas/design-system/commits/c9290975269797e8080362336b9d2cac65e028e9))
+
+### Features
+
+- **UnorderedList, NumberedList, ListItem:** add new list components ([96de00e](https://bitbucket.org/enturas/design-system/commits/96de00e21d852702e1ab23d388a807d5ad035580))
+
 ## [0.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.6.0...@entur/typography@0.6.1) (2019-12-10)
 
 ### Bug Fixes

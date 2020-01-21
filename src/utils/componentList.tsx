@@ -4,6 +4,7 @@ import * as a11y from '@entur/a11y';
 import * as alert from '@entur/alert';
 import * as button from '@entur/button';
 import * as chip from '@entur/chip';
+import * as datepicker from '@entur/datepicker';
 import * as dropdown from '@entur/dropdown';
 import * as expand from '@entur/expand';
 import * as form from '@entur/form';
@@ -21,6 +22,7 @@ const allComponentsByPackage = {
   alert,
   button,
   chip,
+  datepicker,
   dropdown,
   expand,
   form,

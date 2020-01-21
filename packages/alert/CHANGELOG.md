@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.5...@entur/alert@0.5.6) (2020-01-14)
+
+**Note:** Version bump only for package @entur/alert
+
+## [0.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.4...@entur/alert@0.5.5) (2020-01-13)
+
+**Note:** Version bump only for package @entur/alert
+
+## [0.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.3...@entur/alert@0.5.4) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+## [0.5.3](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.2...@entur/alert@0.5.3) (2020-01-06)
+
+### Bug Fixes
+
+- **ToastProvider:** fix issue with typescript typings ([e0217b9](https://bitbucket.org/enturas/design-system/commits/e0217b960d757c71a5ac542a7a2452510af9fc98))
+
 ## [0.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.1...@entur/alert@0.5.2) (2019-12-10)
 
 ### Bug Fixes

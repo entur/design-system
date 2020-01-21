@@ -5,7 +5,7 @@ export type VisuallyHiddenProps = {
   /** HTML-elementet eller React-komponenten som lager elementet
    * @default "span"
    */
-  as: string | React.ElementType;
+  as?: string | React.ElementType;
   /** Innhold for skjermlesere */
   children: React.ReactNode;
   [key: string]: any;

@@ -9,17 +9,20 @@
     "lint": "eslint src/**/*\\.tsx packages/*/src/*\\.tsx",
     "start": "docz dev",
     "test": "tsdx test --env=jsdom packages",
+    "test:single-run": "cross-env CI=true yarn test",
     "predeploy-docs": "yarn build",
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
-    "prepublishOnly": "yarn build && yarn lint && yarn test",
-    "lerna:publish": "lerna publish --conventional-commits"
+    "prepublishOnly": "yarn build && yarn lint && yarn test:single-run",
+    "lerna:publish": "lerna publish --conventional-commits",
+    "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx"
   },
   "workspaces": [
     "packages/a11y",
     "packages/alert",
     "packages/button",
     "packages/chip",
+    "packages/datepicker",
     "packages/dropdown",
     "packages/expand",
     "packages/form",
@@ -32,7 +35,9 @@
     "packages/table",
     "packages/tokens",
     "packages/tooltip",
-    "packages/typography"
+    "packages/travel",
+    "packages/typography",
+    "packages/utils"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.1.0",
@@ -44,6 +49,7 @@
     "@typescript-eslint/parser": "^2.7.0",
     "case": "^1.6.2",
     "commitizen": "^4.0.3",
+    "cross-env": "^6.0.3",
     "cz-lerna-changelog": "^2.0.2",
     "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.0.2",
@@ -57,9 +63,9 @@
     "inquirer": "^7.0.0",
     "lerna": "^3.16.4",
     "prettier": "1.18.2",
-    "pretty-quick": "^1.11.1",
+    "pretty-quick": "^2.0.1",
     "rollup-plugin-sass": "^1.2.2",
-    "tsdx": "^0.10.0",
+    "tsdx": "^0.12.1",
     "tslib": "^1.10.0",
     "typescript": "^3.6.2"
   },
@@ -79,7 +85,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
-      "pre-push": "yarn lint && yarn test",
+      "pre-push": "yarn lint && yarn test:single-run",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },

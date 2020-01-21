@@ -15,10 +15,11 @@ import {
   Paragraph,
   Heading1,
   Label,
+  Link as LinkText,
   SubParagraph,
   Heading4,
 } from '@entur/typography';
-import { PrimaryButton } from '@entur/button';
+import { PrimaryButton, SecondaryButton, ButtonGroup } from '@entur/button';
 import { NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
@@ -95,7 +96,11 @@ import './index.scss';
     <Paragraph>
       Få siste oppdateringer på komponenter, retningslinjer og dokumentasjon
       <br />
-      Se changelogen <Link to="/komponenter/resources/changelogs">her</Link>.
+      Se changelogen{' '}
+      <LinkText as={Link} to="/komponenter/ressurser/changelog">
+        her
+      </LinkText>
+      .
     </Paragraph>
   </div>
   <div style={{ height: '15rem' }}>
@@ -107,11 +112,22 @@ import './index.scss';
   </div>
   <Heading2>Vil du bidra?</Heading2>
   <Paragraph>
-    Selv om designsystemet er utviklet og vedlikeholdt av designsystem-teamet,
-    så er det selvfølgelig også muligheter for å bidra. <br />
-    <br />
-    Om du har en feature, bug report eller vil bidra til dokumentasjonen, gjerne
-    kontakt oss gjennom Slack (#talk-designsystem) eller ved å legge inn et
-    issue på Jira.
+    Designsystemet er utviklet og vedlikeholdt av hele Enturs
+    utviklingsorganisasjon.
   </Paragraph>
+  <Paragraph>
+    Om du har en feature, bug report eller vil bidra til dokumentasjonen, ta en
+    titt på{' '}
+    <LinkText as={Link} to="/kom-i-gang/bidra">
+      bidra-siden vår
+    </LinkText>
+    , ta en prat på Slack (#talk-designsystem) eller legg inn et issue på <LinkText href="https://enturas.atlassian.net/secure/RapidBoard.jspa?rapidView=75&projectKey=DS">
+      Jira
+    </LinkText>.
+  </Paragraph>
+  <ButtonGroup>
+    <SecondaryButton as={Link} to="/kom-i-gang/bidra">
+      Bidra!
+    </SecondaryButton>
+  </ButtonGroup>
 </div>

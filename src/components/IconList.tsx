@@ -8,6 +8,7 @@ import matchSorter from 'match-sorter';
 import './IconList.scss';
 import { Switch } from '@entur/form';
 import { Heading4 } from '@entur/typography';
+import { TertiaryButton } from '@entur/button';
 
 type IconListProps = {
   icons: {
@@ -72,13 +73,12 @@ const IconList: React.FC<IconListProps> = props => {
             {filteredIcons.map(([iconName, Icon]: any) => (
               <li className="icon-list__item" key={iconName}>
                 <Icon style={{ width: '2em', height: '2em' }} />
-                <button
-                  className="icon-list__name"
+                <TertiaryButton
                   onClick={handleIconClick(iconName)}
-                  type="button"
+                  className="icon-list__name"
                 >
                   {iconName} <ReportsIcon inline={true} />
-                </button>
+                </TertiaryButton>
               </li>
             ))}
           </ul>

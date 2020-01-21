@@ -66,10 +66,10 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 }) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
   const [hoveringId, setHovering] = React.useState<string>();
-  const timeoutIdRefs = React.useRef<{ [key: string]: NodeJS.Timeout }>({});
+  const timeoutIdRefs = React.useRef<{ [key: string]: number }>({});
 
   const removeToast = React.useCallback((id: ToastId) => {
-    clearTimeout(timeoutIdRefs.current[id]);
+    window.clearTimeout(timeoutIdRefs.current[id]);
     dispatch({ type: 'REMOVE_TOAST', payload: id });
     delete timeoutIdRefs.current[id];
   }, []);
@@ -79,7 +79,10 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       const id = createUniqueId();
       const payload = createToast(toast, id);
       dispatch({ type: 'ADD_TOAST', payload });
-      timeoutIdRefs.current[id] = setTimeout(() => removeToast(id), delay);
+      timeoutIdRefs.current[id] = window.setTimeout(
+        () => removeToast(id),
+        delay,
+      );
     },
     [delay, removeToast],
   );
@@ -87,7 +90,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   const handleMouseEnter = (toastId: ToastId) => () => {
     setHovering(toastId);
     Object.values(timeoutIdRefs.current).forEach(timeoutId =>
-      clearTimeout(timeoutId),
+      window.clearTimeout(timeoutId),
     );
     timeoutIdRefs.current = {};
   };
@@ -95,7 +98,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   const handleMouseLeave = () => {
     setHovering(undefined);
     toasts.forEach(toast => {
-      timeoutIdRefs.current[toast.id] = setTimeout(
+      timeoutIdRefs.current[toast.id] = window.setTimeout(
         () => removeToast(toast.id),
         delay,
       );

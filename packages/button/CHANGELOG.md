@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.5.2...@entur/button@1.6.0) (2020-01-20)
+
+### Bug Fixes
+
+- fix transparent styling for secondary buttons ([79640f6](https://bitbucket.org/enturas/design-system/commits/79640f6fd7b9679b7cb958d3b39e181c70bcb67c))
+- **FloatingButton:** add hover effect to the floating buttons ([998ad0b](https://bitbucket.org/enturas/design-system/commits/998ad0b1275af64eb83025195b6b9b0f1d46ff88))
+- **FloatingButton:** fix issue with docs ([a1c7879](https://bitbucket.org/enturas/design-system/commits/a1c7879e4363476541d43f76b9cc3fba17e2d290))
+
+### Features
+
+- **FloatingButton:** add new prop "size" to FloatingButotn ([8fc534d](https://bitbucket.org/enturas/design-system/commits/8fc534d59e1d03a35a465affc2a98bc91c1fab56))
+
+## [1.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.5.1...@entur/button@1.5.2) (2020-01-14)
+
+**Note:** Version bump only for package @entur/button
+
+## [1.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.5.0...@entur/button@1.5.1) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.4.1...@entur/button@1.5.0) (2020-01-06)
+
+### Features
+
+- **FloatingButton:** add new component: FloatingButton ([2f38bc5](https://bitbucket.org/enturas/design-system/commits/2f38bc53cb1b4a357126ca35d6548b7a6e36b3dc))
+
+## [1.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.4.0...@entur/button@1.4.1) (2019-12-17)
+
+### Bug Fixes
+
+- fix styling for disabled buttons for higher contrast ([7b6b6ce](https://bitbucket.org/enturas/design-system/commits/7b6b6cec62fe5801c538d3db4bf8d76714d64395))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.3.0...@entur/button@1.4.0) (2019-12-10)
 
 ### Bug Fixes

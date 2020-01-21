@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.9...@entur/chip@0.2.10) (2020-01-20)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.8...@entur/chip@0.2.9) (2020-01-14)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.7...@entur/chip@0.2.8) (2020-01-13)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.7](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.6...@entur/chip@0.2.7) (2020-01-10)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.6](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.5...@entur/chip@0.2.6) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.4...@entur/chip@0.2.5) (2020-01-06)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.3...@entur/chip@0.2.4) (2019-12-17)
+
+**Note:** Version bump only for package @entur/chip
+
 ## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.2...@entur/chip@0.2.3) (2019-12-10)
 
 ### Bug Fixes

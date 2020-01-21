@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.5...@entur/modal@1.0.6) (2020-01-20)
+
+**Note:** Version bump only for package @entur/modal
+
+## [1.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.4...@entur/modal@1.0.5) (2020-01-14)
+
+**Note:** Version bump only for package @entur/modal
+
+## [1.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.3...@entur/modal@1.0.4) (2020-01-13)
+
+### Bug Fixes
+
+- fix focus styling for close button in modal window ([8d4b02f](https://bitbucket.org/enturas/design-system/commits/8d4b02f77500200c9a5281c9bb07a629fc3134b1))
+
+## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.2...@entur/modal@1.0.3) (2020-01-10)
+
+### Bug Fixes
+
+- **modal:** added a max height to the modal as well as overflow handling. ([32e78d9](https://bitbucket.org/enturas/design-system/commits/32e78d91b51599591c3cafc35f4adeffce966617))
+
+## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.1...@entur/modal@1.0.2) (2020-01-08)
+
+### Bug Fixes
+
+- warn in development if the developer have forgotten the CSS ([e5c30fc](https://bitbucket.org/enturas/design-system/commits/e5c30fc08624ef22c02773892778abd92205c6b0))
+
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.0...@entur/modal@1.0.1) (2020-01-06)
+
+**Note:** Version bump only for package @entur/modal
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@0.3.1...@entur/modal@1.0.0) (2019-11-29)
 
 ### Bug Fixes

@@ -1,12 +1,13 @@
 {
   "name": "@entur/icons",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/icons.esm.js",
+  "module": "dist/index.esm.js",
   "typings": "types/index.d.ts",
   "files": [
     "dist",
+    "native",
     "types"
   ],
   "repository": {
@@ -18,24 +19,31 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "yarn build:index && yarn build:tsdx",
-    "build:index": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-index.ts",
-    "build:tsdx": "tsdx build",
-    "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "prebuild": "rimraf dist native tmp ",
+    "build": "node bin/build.js && rollup -c",
+    "postbuild": "rimraf tmp"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@svgr/rollup": "^4.3.3",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@svgr/core": "^5.0.1",
+    "@svgr/plugin-jsx": "^5.0.1",
+    "@svgr/plugin-prettier": "^5.0.1",
+    "@svgr/plugin-svgo": "^5.0.1",
     "@types/fs-extra": "^8.0.0",
     "case": "^1.6.2",
     "fs-extra": "^8.1.0",
-    "jsdom": "^15.1.1",
     "rimraf": "^3.0.0",
-    "ts-node": "^8.4.1"
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.3.3"
+  },
+  "dependencies": {
+    "@entur/utils": "^0.2.1"
   }
 }

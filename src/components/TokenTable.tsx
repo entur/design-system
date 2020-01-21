@@ -39,16 +39,20 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
           <HeaderCell>Navn</HeaderCell>
           <HeaderCell>Verdi</HeaderCell>
           {Example && <HeaderCell>Eksempel</HeaderCell>}
-          <HeaderCell style={{ textAlign: 'right' }}>Kopier</HeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {Object.entries(flattenedTokens).map(([key, value]) => (
           <TableRow key={key}>
             <DataCell>
-              <CodeText>
+              <CopyButton
+                textToCopy={formatVariable(
+                  `${tokenKey}.${key}`,
+                  variableFormat,
+                )}
+              >
                 {formatVariable(`${tokenKey}.${key}`, variableFormat)}
-              </CodeText>
+              </CopyButton>
             </DataCell>
             <DataCell>
               <CodeText>{formatValue(value)}</CodeText>
@@ -58,14 +62,6 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
                 <Example value={value} />
               </DataCell>
             )}
-            <DataCell style={{ textAlign: 'right' }}>
-              <CopyButton
-                textToCopy={formatVariable(
-                  `${tokenKey}.${key}`,
-                  variableFormat,
-                )}
-              />
-            </DataCell>
           </TableRow>
         ))}
       </TableBody>

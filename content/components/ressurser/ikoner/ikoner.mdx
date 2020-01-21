@@ -8,6 +8,9 @@ tags: ikoner, icons
 ---
 
 import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import { PrimaryButton } from '@entur/button';
+import { AddIcon } from '@entur/icons';
 import * as icons from '@entur/icons';
 import IconList from '~/components/IconList';
 import PageHeader from '~/components/PageHeader';
@@ -30,6 +33,23 @@ Enturs UI-ikoner er funksjonelle ikoner, til bruk i alle Enturs digitale kanaler
 
 <IconList icons={icons} />
 
+### Props
+
+Alle ikoner har støtte for propen `inline`, som forenkler bruken av ikoner når de skal stå i en tekstlig sammenheng.
+Dette brukes først og fremst internt i komponenter som bruker komponenter, men anbefales å bruke sammen med knapper og andre komponenter hvor man har behov for et inline ikon.
+
+<Playground>
+  <div>
+    Se dette ikoner ligger inline med teksten <AddIcon inline />
+    <br /> i motsetning til dette som ligger litt for høyt opp <AddIcon />
+    <br />
+    <br />
+    <PrimaryButton>
+      Legg til <AddIcon />
+    </PrimaryButton>
+  </div>
+</Playground>
+
 ## Retningslinjer for bruk
 
 ### Når skal ikoner brukes?
@@ -48,7 +68,6 @@ Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir ver
     Ikke bruk forskjellige farger på ikon og tekst
   </Example>
 </BestPractices>
-
 <BestPractices>
   <Example type="do" src={alignDoSrc} alt="">
     Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
@@ -57,7 +76,6 @@ Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir ver
     Ikke baseline-juster ikonet til teksten
   </Example>
 </BestPractices>
-
 <BestPractices>
   <Example type="do" src={sizeDoSrc} alt="">
     Størrelsen på både ikon og tekst skal alltid være lik og innenfor

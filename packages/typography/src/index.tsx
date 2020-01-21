@@ -1,4 +1,7 @@
-import './styles.scss';
+import { warnAboutMissingStyles } from '@entur/utils';
+import './index.scss';
+
+warnAboutMissingStyles('typography');
 
 export * from './CodeText';
 export * from './EmphasizedText';
@@ -11,9 +14,12 @@ export * from './Heading6';
 export * from './Label';
 export * from './LeadParagraph';
 export * from './Link';
+export * from './ListItem';
+export * from './NumberedList';
 export * from './Paragraph';
 export * from './PreformattedText';
 export * from './SmallText';
 export * from './StrongText';
 export * from './SubLabel';
 export * from './SubParagraph';
+export * from './UnorderedList';

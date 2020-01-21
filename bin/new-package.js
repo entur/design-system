@@ -34,6 +34,7 @@ async function run() {
       newPackageJson: path.resolve('packages', packageName, 'package.json'),
       newReadme: path.resolve('packages', packageName, 'README.md'),
       newIndexTsx: path.resolve('packages', packageName, 'src', 'index.tsx'),
+      newIndexScss: path.resolve('packages', packageName, 'src', 'index.scss'),
       newComponentFileTsx: path.resolve(
         'packages',
         packageName,
@@ -57,7 +58,8 @@ async function run() {
     // Update the src/index.tsx
     const indexTsxContent = fs
       .readFileSync(paths.newIndexTsx, 'utf-8')
-      .replace(/PackageName/g, toCase.pascal(packageName));
+      .replace(/PackageName/g, toCase.pascal(packageName))
+      .replace(/package-name/g, toCase.kebab(packageName));
     fs.writeFileSync(paths.newIndexTsx, indexTsxContent);
 
     // Update the src/PackageName.tsx and rename it to the correct name
@@ -73,6 +75,12 @@ async function run() {
         `${toCase.pascal(packageName)}.tsx`,
       ),
     );
+
+    // Update the index.scss
+    const scssContent = fs
+      .readFileSync(paths.newIndexScss, 'utf-8')
+      .replace(/package-name/g, toCase.kebab(packageName));
+    fs.writeFileSync(paths.newIndexScss, scssContent);
 
     // Update the README.md
     const readmeContent = fs

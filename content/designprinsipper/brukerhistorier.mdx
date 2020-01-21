@@ -1,0 +1,116 @@
+---
+name: Brukerhistorier
+route: /design-prinsipper/brukerhistorier
+parent: Designprinsipper
+order: 3
+---
+
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader />
+
+## Hvorfor skrive brukerhistorier?
+
+I smidig utvikling bygger vi løsninger ved å dele opp arbeidet i mindre oppgaver. Vi gjør dette for å redusere risiko ved produksjonssetting, for å gjøre det enklere å teste konkrete deler av løsningen og for å gjøre det mulig å kontinuerlig få tilbakemeldinger om løsningen fra reell bruk. Når vi jobber på denne måten, bygger løsninger i store team, bygger løsninger i tverrfaglige team og/eller jobber med løsninger som har avhengigheter som krysser teamorganiseringen, trenger vi et felles format for å beskrive oppgavene.
+
+Brukerhistorier er et format for å beskrive oppgaver som vektlegger oppgavens verdi og akseptkriterier. De vil gi designere, produkteiere, utviklere og testere en felles forståelse av oppgaven. Dette gir teamet et grunnlag for å prioritere og det styrker kommunikasjonen rundt oppgaver. Ved å bruke tid på å skrive verdiforslag og akseptansekriterier skal teamet i større grad unngå misforståelser, informasjonstap og dobbeltarbeid slik vi kan utnytte ressursene våre bedre.
+
+## Hvordan skrive brukerhistorier?
+
+En brukerhistorie består av tre deler:
+
+**1. Selve brukerhistorien (verdiforslaget)**
+
+Brukerhistorien skrives etter et fast format for å få frem verdien og hvem som skal få den verdien. Hensikten med å skrive verdiforslaget etter dette faste formatet er at det tilrettelegger for at en raskt kan få et overblikk over hva historien løser (En skal slippe å måtte lese gjennom hele historien som å oppfatte verdiforsalget). Dette er verdifullt når man vurderer flere oppgaver i fellesmøter, prioriteringsmøter og under standup.
+
+**Formatet er:**
+
+```
+Som en [bruker]
+Ønsker jeg en [funksjon]
+Slik at jeg [oppnår en verdi]
+```
+
+Når man beskriver brukeren holder det noen ganger med standardkategoriene:
+
+- ‘som en klient’,
+- ‘som en kundebehandler’
+- ’som en reisende’
+
+Man må gjerne bruke spisset situasjonsbehov (se eksempel her ‘lenke til siden om brukergrupper’) i formulering av brukerhistorier, i steden for personas. I tilfeller hvor det for eksempel er nyttig å presisere behovet kan ‘som en reisende’ bli til ‘som en togpendler’.
+
+**2. Løsningsbeskrivelse**
+
+Løsningsbeskrivelsen har et løst format. Den enkelte vurderer hvordan de ønsker å skrive denne. Løsningsbeskrivelsen bør være en enkel og spesifikk forklaring/oppsummering av hvordan en løser oppgaven. En kan for eksempel bruke løsningsbeskrivelsen til å oppsummere akseptansekriteriene og til å lenke til relevante dokumenter.
+
+**3. Akseptansekriterier**
+
+Akseptansekriterier skrives etter et fast format. De skal fortelle utvikler og tester spesifikt hva som skal lages og testes. Akseptansekriteriene skal gi lite rom for tolkning. Hvert kriterium skal skrives på en slik måte at en kan bekrefte eller avkrefte om det er oppfylt.
+
+**Formatet er:**
+
+```
+Gitt at ....., så skal
+
+1. ................
+   a. .................
+   b. .................
+2. ................
+```
+
+### Oppsummering
+
+Brukerhistorien består av tre deler; selve historien, løsningsbeskrivelsen og akseptansekriterier. De skrives etter et fast-løst-fast format.
+
+```
+Brukerhistorie
+Som en [bruker]
+Ønsker jeg [en funksjon]
+Slik at jeg [oppnår en verdi]
+
+Løsningsbeskrivelse
+Kort og presis forklaring av akseptansekriterier.
+
+Akseptansekriterier
+Gitt at ..... så skal:
+
+1. ................
+   a. .................
+   b. .................
+2. ................
+```
+
+## Eksempler
+
+### App: Peoplepicker for periodebillett Vy
+
+```
+Brukerhistorie
+Som periodebillettkjøper,
+Ønsker jeg å velge strekning for min billett før jeg velger passasjertype,
+Slik at jeg ser hvem som tilbys periodebilletter på valgt strekning.
+
+Løsningsbeskrivelse
+Det er nødvendig å aldri vise alder i peoplepicker ved kjøp av periodebillett, da disse parametrene kan være feil for periodebilletten (grunnet felles passasjerprofil for Enkelt og Periodebillett). For brukeren vil det være teksten som informerer om riktig aldersgrense på periodebilletten.
+
+Dessuten skal vi vise riktige passasjerprofiler for Vy eller Ruter. Nå spør vi etter peoplepicker basert på valget i selskapsvelgeren, men vi må spørre om korrekte passasjerprofiler basert på produkt.
+
+Akseptansekriterier
+A. Gitt at jeg er i kjøpsløpet, har valgt periodebillett fra VY og valgt strekning for priodebilletten, så skal jeg se og ha mulighet til å velge passasjerkategori:
+  1. Voksen
+  2. Student
+    a. Student skal angis uten alder.
+
+(Følgende profiler skal filtreres vekk for Vy; Honnør, Militær, Barn 6-17 år, Barn 0-5 år).
+
+B. Gitt at jeg er i Vy’s kjøpsløp og velger Ruters periodebillett, så skal jeg se og ha mulighet til å velge passasjerkategori:
+  1. Voksen
+  2. Honnør
+  3. Student
+    a. Student skal angis uten alder.
+  4. Barn
+    a. Barn skal angis uten alder.
+  5. Ungdom
+
+(Følgende profiler skal filtreres vekk for Ruter; Militær, Barn 0-5 år).
+```

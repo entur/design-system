@@ -25,6 +25,8 @@
   position: relative;
   outline: none;
   width: 100%;
+  max-height: 90vh;
+  overflow: auto;
   z-index: $z-indexes-modal;
 
   &--size-extra-small {
@@ -63,4 +65,10 @@
   position: absolute;
   top: $space-medium;
   right: $space-medium;
+  padding: $space-extra-small;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
 }
