@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import debounce from '~/utils/debounce';
+import { debounce } from '@entur/utils';
 import { useCurrentDoc, Entry } from 'docz';
 import './TocNavigation.scss';
 import { Heading3 } from '@entur/typography';
