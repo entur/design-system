@@ -9,7 +9,6 @@ import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
-import classNames from 'classnames';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
@@ -84,7 +83,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {...rest}
     >
       <DropdownInputGroup
-        className={classNames(className)}
+        className={className}
         label={label}
         feedback={feedback}
         variant={variant}
