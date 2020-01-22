@@ -43,6 +43,8 @@ type DropdownProps = {
   debounceTimeout?: number;
   /** Ekstra klassenavn */
   className?: string;
+  /** Ekstra inline-styles */
+  style?: { [key: string]: any };
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
@@ -63,6 +65,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   variant,
   value,
   className,
+  style,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -87,6 +90,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         label={label}
         feedback={feedback}
         variant={variant}
+        style={style}
       >
         <RenderedDropdown
           items={normalizedItems}
