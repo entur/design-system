@@ -21,6 +21,16 @@ import { ImportStatement } from '~/components/ImportStatement';
   <div
     style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
   >
+    <SecondarySquareButton aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }} aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+  </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
     <SecondarySquareButton>
       Legg til <AddIcon />
     </SecondarySquareButton>
@@ -47,3 +57,21 @@ Kvadratiske knapper skal alltid ha ett ikon, og _kan_ ha en label på enten vens
 <ImportStatement imports="SuccessSquareButton, SecondarySquareButton" />
 
 <Props of={SuccessSquareButton} />
+
+Disse to komponentene har samme API, og brukes på samme måte. Se på "standardknapper"-siden for retningslinjer om når du burde bruke Success vs Secondary.
+
+Knappen regner med at du sender inn label-teksten som en ren string, og ikonet som en komponent. Med andre ord på denne måten:
+
+```js
+<SecondarySquareButton>
+  <RandomIkon /> En label-tekst
+</SecondarySquareButton>
+```
+
+Du kan ikke plassere teksten inni en `<span />` eller lignende, da komponenten da vil tolke den biten som et ikon. Dette vil med andre ord _ikke_ fungere:
+
+```js
+<SecondarySquareButton>
+  <RandomIkon /> <span>En label-tekst</span>
+</SecondarySquareButton>
+```
