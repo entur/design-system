@@ -43,8 +43,6 @@ type DropdownProps = {
   debounceTimeout?: number;
   /** Ekstra klassenavn */
   className?: string;
-  /** Ekstra inline-styles */
-  style?: { [key: string]: any };
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
