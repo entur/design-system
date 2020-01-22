@@ -11,7 +11,7 @@ export type LegBoneProps = {
   /** Farge på linja */
   color: string;
   /** Farge på startpunktet
-   * @deault Verdien til color
+   * @default Verdien til color
    */
   startColor?: string;
   /** Farge på endepunktet

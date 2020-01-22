@@ -25,10 +25,4 @@ export const Contrast: React.FC<ContrastProps> = ({
 
 const ContrastContext = React.createContext<boolean>(false);
 
-export const useContrast = () => {
-  const context = React.useContext(ContrastContext);
-  if (!context) {
-    return context;
-  }
-  return context;
-};
+export const useContrast = () => React.useContext(ContrastContext);

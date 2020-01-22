@@ -3,9 +3,13 @@ import classNames from 'classnames';
 import './LegLine.scss';
 
 export type LegLineProps = {
+  /** Farge på  LegLine'n */
   color: string;
+  /** Retningen til LegLine */
   direction: 'horizontal' | 'vertical';
+  /** Hvilket linjemønster som skal brukes */
   pattern: 'line' | 'dashed' | 'dotted' | 'wave';
+  /** Ekstra klassenavn */
   className?: string;
 };
 
