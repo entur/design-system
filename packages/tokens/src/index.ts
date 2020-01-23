@@ -147,6 +147,7 @@ export const lineHeights = {
 // Responsivity
 export const breakpoints = {
   large: 800,
+  extraLarge: 1200,
 };
 
 // Borders
