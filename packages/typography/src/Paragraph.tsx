@@ -23,8 +23,8 @@ export const Paragraph: React.FC<ParagraphProps> = ({
     className={classNames(
       'eds-paragraph',
       {
-        [`eds-paragraph--margin-bottom`]: margin === 'bottom',
-        [`eds-paragraph--margin-none`]: margin === 'none',
+        'eds-paragraph--margin-bottom': margin === 'bottom',
+        'eds-paragraph--margin-none': margin === 'none',
       },
       className,
     )}

@@ -45,7 +45,7 @@ export const Loader: React.FC<LoaderProps> = ({
         style={styles}
       />
       {progress !== 'indeterminate' && (
-        <SmallText className="eds-loader__percentage">{progress}%</SmallText>
+        <SmallText className="eds-loader__percentage">{progress} %</SmallText>
       )}
     </div>
   );
