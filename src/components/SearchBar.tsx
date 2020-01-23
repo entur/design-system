@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
+import classNames from 'classnames';
 import './SearchBar.scss';
 
 type SearchBarProps = {
@@ -8,11 +9,14 @@ type SearchBarProps = {
   searchText: string;
   /** Change handler, passed to the DOM input element */
   onSearchTextChange: (text: string) => void;
+  /** Ekstra klassenavn */
+  className?: string;
 };
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   searchText,
   onSearchTextChange,
+  className,
 }) => {
   let inputRef = React.useRef<HTMLInputElement>();
   let previousFocusRef = React.useRef<HTMLElement>();
@@ -44,7 +48,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   });
 
   return (
-    <div className="searchbar-wrapper">
+    <div className={classNames('searchbar-wrapper', className)}>
       <TextField
         prepend={<SearchIcon inline />}
         placeholder="Søk..."

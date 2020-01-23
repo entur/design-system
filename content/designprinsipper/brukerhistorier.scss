@@ -1,0 +1,13 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.brukerhistorier {
+  &-custom-code {
+    background-color: $colors-blues-blue80;
+    padding: $space-large $space-extra-large;
+    margin-bottom: $space-extra-large;
+  }
+  &-summary {
+    background: $colors-greys-grey30;
+    padding: $space-large $space-extra-large;
+  }
+}

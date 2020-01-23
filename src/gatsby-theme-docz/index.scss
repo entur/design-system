@@ -22,6 +22,12 @@
 
 @import '~@entur/tokens/dist/styles.scss';
 
+@mixin for-large-desktop {
+  @media screen and (min-width: #{$breakpoints-extra-large}) {
+    @content;
+  }
+}
+
 @mixin for-desktop {
   @media screen and (min-width: #{$breakpoints-large}) {
     @content;
@@ -37,9 +43,15 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
+  transition: max-width $timings-fast ease-out,
+    margin-left $timings-fast ease-out;
 
   @include for-desktop {
-    margin-left: 22rem;
+    margin-left: 21rem;
+    max-width: 60rem;
+  }
+  @include for-large-desktop {
+    margin-left: 30rem;
     max-width: 60rem;
   }
 }
@@ -52,7 +64,7 @@ body {
   margin: $space-default;
   flex-direction: column;
   min-height: 90vh;
-  @include for-desktop {
+  @include for-large-desktop {
     margin: 1rem auto;
     max-width: 64rem;
   }

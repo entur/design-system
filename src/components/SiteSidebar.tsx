@@ -75,8 +75,12 @@ export const SiteSidebar: React.FC = () => {
 
   return (
     <Contrast as="nav" className="site-sidebar-wrapper">
-      <Link to="/" className="site-sidebar-logo">
-        <img src={logoSVG} alt="Entur logo" className="site-logo" />
+      <Link to="/" className="site-sidebar__logo">
+        <img
+          src={logoSVG}
+          alt="Entur logo"
+          className="site-sidebar__logo-svg"
+        />
       </Link>
 
       <Location>
@@ -119,7 +123,7 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   menuItems.sort(compare);
 
   return (
-    <SideNavigation>
+    <SideNavigation style={{ marginTop: '1.5rem' }}>
       {menuItems.map(menuItem => (
         <SideNavigationItem
           key={menuItem.id}
@@ -180,7 +184,11 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
 
   return (
     <>
-      <SearchBar searchText={searchText} onSearchTextChange={setSearchText} />
+      <SearchBar
+        className="site-sitebar__searchbar"
+        searchText={searchText}
+        onSearchTextChange={setSearchText}
+      />
       {filteredMenuItems
         .filter(topLevelMenu => topLevelMenu.menu)
         .sort(sortComponentMenus)
@@ -190,6 +198,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
             open={searchText !== '' ? true : undefined}
             title={topLevelMenu.name}
             key={topLevelMenu.id}
+            className="site-sidebar__group"
           >
             <SideNavigation size="small">
               {topLevelMenu.menu!.map(menuItem => (
