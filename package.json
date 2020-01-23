@@ -90,7 +90,6 @@
     }
   },
   "dependencies": {
-    "@entur/fonts": "ssh://git@bitbucket.org:enturas/entur-fonts.git#master",
     "@reach/router": "^1.2.1",
     "classnames": "^2.2.6",
     "copy-text-to-clipboard": "^2.1.1",
