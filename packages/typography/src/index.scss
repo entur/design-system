@@ -1,11 +1,6 @@
 @import '~normalize-scss';
 @import '~@entur/tokens/dist/styles.scss';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
