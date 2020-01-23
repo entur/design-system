@@ -38,7 +38,9 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         aria-controls={id}
         {...rest}
       >
-        <Heading4 as="span">{title}</Heading4>
+        <Heading4 margin="none" as="span">
+          {title}
+        </Heading4>
 
         <DownArrowIcon
           className={classNames('eds-expandable-panel__arrow', {

@@ -38,7 +38,11 @@ export const Radio: React.RefForwardingComponent<
         <span className={classList}>
           <span className="eds-form-component--radio__circle"></span>
         </span>
-        {children && <Paragraph as="span">{children}</Paragraph>}
+        {children && (
+          <Paragraph margin="none" as="span">
+            {children}
+          </Paragraph>
+        )}
       </label>
     );
   },

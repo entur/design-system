@@ -121,7 +121,7 @@ export const fontWeights = {
   body: '500',
   heading: '600',
 };
-const fontSizeScale = [10, 12, 14, 16, 22, 28, 34];
+const fontSizeScale = [10, 12, 14, 16, 24, 28, 32, 40];
 export const fontSizes = {
   extraSmall: fontSizeScale[0],
   small: fontSizeScale[1],
@@ -130,8 +130,9 @@ export const fontSizes = {
   extraLarge: fontSizeScale[4],
   extraLarge2: fontSizeScale[5],
   extraLarge3: fontSizeScale[6],
+  extraLarge4: fontSizeScale[7],
 };
-const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42];
+const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42, 48, 60];
 export const lineHeights = {
   extraSmall: lineHeightScale[0],
   small: lineHeightScale[1],
