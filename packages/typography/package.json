@@ -1,7 +1,7 @@
 {
   "name": "@entur/typography",
   "version": "0.7.4",
-  "license": "EUPL-1.2",
+  "license": "See licences in README.md",
   "main": "dist/index.js",
   "module": "dist/typography.esm.js",
   "typings": "dist/index.d.ts",

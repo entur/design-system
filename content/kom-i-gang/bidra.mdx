@@ -5,8 +5,6 @@ parent: Kom i gang
 order: 5
 ---
 
-import { BannerAlertBox } from '@entur/alert';
-import { CodeText, Link, Paragraph } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
 
 <PageHeader>
@@ -33,31 +31,6 @@ $ yarn
 ```
 
 **Merk at vi bruker `yarn` og ikke `npm` i dette prosjektet**. Det er fordi vi bruker en yarn-only feature - workspaces - som letter utvikling i såkalte monorepos. For å innstallere `yarn` på din maskin, kjør `npm install --global yarn`.
-
-<BannerAlertBox variant="info" title="Feiler det på @entur/fonts?">
-  <Paragraph>
-    <CodeText>@entur/fonts</CodeText>-avhengigheten er litt spesiell, siden den
-    inneholder våre lisensierte fonter, og krever et annet tilgangsnivå. Om du
-    ikke har gjort det allerede, kreves det at du har lagt til den offentlige
-    SSH-nøkkelen din i Bitbucket.
-  </Paragraph>
-  <Paragraph>
-    Om du sitter på OSX kan du kopiere den til utklippstavla med
-    terminal-kommandoen <CodeText>cat ~/.ssh/id_rsa.pub | pbcopy</CodeText>.
-    Atlassian har også{' '}
-    <Link href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">
-      en fin guide
-    </Link>{' '}
-    for hvordan dette gjøres.
-  </Paragraph>
-  <Paragraph>
-    Du kan legge til SSH-nøkkelen din på Bitbucket ved å gå til{' '}
-    <Link href="https://bitbucket.org/account">innstillinger</Link>,så{' '}
-    <CodeText>Security -> SSH keys</CodeText> og så trykke på "Add key".
-    <br />
-    Når SSH-nøkkelen er lagt til her kan du prøve å kjøre `yarn` på nytt igjen.
-  </Paragraph>
-</BannerAlertBox>
 
 Siste steg i prosessen er å bygge alle pakkene. Dette gjør du med `yarn build:packages`.
 
