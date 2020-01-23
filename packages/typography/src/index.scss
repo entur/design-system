@@ -1,6 +1,6 @@
 @import '~normalize-scss';
 @import '~@entur/tokens/dist/styles.scss';
-@import './fonts.css';
+@import 'fonts';
 
 @mixin for-desktop {
   @media screen and (min-width: #{$breakpoints-large}) {
