@@ -1,0 +1,54 @@
+---
+name: Segmented Control
+description: TODO
+route: /komponenter/skjemaelementer/segmented-control
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: radio, checkbox
+---
+
+import { Props } from 'docz';
+import { SegmentedGroup, SegmentedControl } from '@entur/form';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader />
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState(null);
+    const [value1, setValue1] = React.useState(null);
+    return (
+      <div>
+        <div>
+          <SegmentedGroup
+            name="city"
+            label="Velg din hjemby"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+            multiple={false}
+          >
+            <SegmentedControl value="Oslo">Oslo</SegmentedControl>
+            <SegmentedControl value="Bergen">Bergen</SegmentedControl>
+            <SegmentedControl value="Leknes">Leknes</SegmentedControl>
+          </SegmentedGroup>
+        </div>
+        <div>
+          <SegmentedGroup
+            name="city"
+            label="Velg din hjemby"
+            onChange={e => setValue1(e.target.value)}
+            value={value1}
+            multiple={true}
+          >
+            <SegmentedControl value="b">bold</SegmentedControl>
+            <SegmentedControl value="i">italics</SegmentedControl>
+            <SegmentedControl value="k">kursiv</SegmentedControl>
+          </SegmentedGroup>
+        </div>
+      </div>
+    );
+  }}
+</Playground>
