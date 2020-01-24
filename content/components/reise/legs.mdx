@@ -1,0 +1,61 @@
+---
+name: Reiselinjer
+route: /komponenter/reise/reiselinjer
+parent: Komponenter
+menu: reise
+npmPackage: travel
+tags: leg, legs, legbone, leglines
+---
+
+import { Props, Link } from 'docz';
+import { LegLine, LegBone, TravelLeg } from '@entur/travel';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader>
+  Reiselinjer brukes for å illustrere mellom to destinasjoner
+</PageHeader>
+
+<Playground>
+  <div>
+    <LegBone
+      direction="horizontal"
+      pattern="line"
+      color="black"
+      style={{ width: '10rem' }}
+    />
+    <div style={{ height: '5rem', display: 'flex' }}>
+      <TravelLeg transport="bus" direction="vertical" />
+      <TravelLeg transport="train" direction="vertical" />
+      <TravelLeg transport="plane" direction="vertical" />
+      <TravelLeg transport="ferry" direction="vertical" />
+      <TravelLeg transport="walk" direction="vertical" />
+      <TravelLeg transport="metro" direction="vertical" />
+    </div>
+    <LegLine color="blue" pattern="wave" />
+  </div>
+</Playground>
+
+## Komponenter
+
+### TravelLeg
+
+<ImportStatement imports="TravelLeg" />
+
+<Props of={TravelLeg} />
+
+Ved å bruke TravelLeg istedet for LegLine og/eller LegBone, kan man enkelt få riktig farge ved å velge transportmodalitet.
+Disse tar også hensyn til om man er i en Kontrast-seksjon eller ikke.
+
+### LegBone
+
+<ImportStatement imports="LegBone" />
+
+<Props of={LegBone} />
+
+### LegLine
+
+<ImportStatement imports="LegLine" />
+
+<Props of={LegLine} />

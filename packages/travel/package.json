@@ -18,12 +18,13 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && cp -r src/pattern dist/pattern",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },
   "dependencies": {
     "@entur/icons": "^0.5.0",
+    "@entur/layout": "^1.0.4",
     "@entur/tokens": "^1.1.2",
     "@entur/utils": "^0.2.1",
     "classnames": "^2.2.6"
@@ -31,5 +32,8 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-sass": "^1.2.2"
   }
 }
