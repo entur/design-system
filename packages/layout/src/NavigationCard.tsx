@@ -47,7 +47,7 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}
-      <Heading3 as="span" margin={compact ? 'both' : 'top'}>
+      <Heading3 as="span" margin="both">
         {title}
       </Heading3>
       {!compact && <Paragraph>{children}</Paragraph>}

@@ -5,22 +5,21 @@ import {
 } from 'react-datepicker';
 import classNames from 'classnames';
 import { BaseFormControl } from '@entur/form';
-import { DateIcon } from '@entur/icons';
+import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
-
 import 'react-datepicker/dist/react-datepicker.css';
-import './DatePicker.scss';
+import './TimePicker.scss';
 
-export type DatePickerProps = {
+export type TimePickerProps = {
   /** Hva som er den valgte datoen */
-  selectedDate?: Date;
+  selectedTime?: Date;
   /** Kalles når datoen/tiden endres */
   onChange: (
     date: Date | null,
     event: React.SyntheticEvent<any, Event>,
   ) => void;
   /** Placeholder om ingen dato er valgt
-   * @default "Velg dato"
+   * @default "Velg tid"
    */
   placeholder?: string;
   /** Ekstra klassenavn */
@@ -28,25 +27,27 @@ export type DatePickerProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
-export const DatePicker: React.FC<DatePickerProps> = ({
-  selectedDate = null,
+export const TimePicker: React.FC<TimePickerProps> = ({
+  selectedTime = null,
   onChange,
-  placeholder = 'Velg dato',
+  placeholder = 'Velg tid',
   className,
   style,
   ...rest
 }) => {
   return (
-    <BaseFormControl style={style} dark prepend={<DateIcon inline />}>
+    <BaseFormControl style={style} dark prepend={<ClockIcon inline />}>
       <ReactDatepicker
         className={classNames('eds-form-control', className)}
-        calendarClassName="eds-datepicker__calender"
-        selected={selectedDate}
+        calendarClassName="eds-timepicker"
+        selected={selectedTime}
         onChange={onChange}
         showWeekNumbers={true}
-        weekLabel="uke"
         locale={nb}
-        dateFormat="dd.MM.yyyy"
+        dateFormat="HH:mm"
+        timeFormat="HH:mm"
+        showTimeSelect
+        showTimeSelectOnly
         showPopperArrow={false}
         placeholderText={placeholder}
         popperClassName="eds-datepicker__popper"

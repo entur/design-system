@@ -17,24 +17,37 @@ test('renders the correct items for large pageCounts', () => {
     onPageChange: () => {},
   });
   expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1…4…100');
-  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent('1…97…100');
-  expect(renderWithProps({ currentPage: 98 })).toHaveTextContent('1…9899100');
-  expect(renderWithProps({ currentPage: 99 })).toHaveTextContent('1…9899100');
+  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234…100');
+  expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('12345…100');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('123456…100');
+  expect(renderWithProps({ currentPage: 5 })).toHaveTextContent('1234567…100');
+  expect(renderWithProps({ currentPage: 6 })).toHaveTextContent('1…45678…100');
+
+  expect(renderWithProps({ currentPage: 96 })).toHaveTextContent(
+    '1…949596979899100',
+  );
+  expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
+    '1…9596979899100',
+  );
+  expect(renderWithProps({ currentPage: 98 })).toHaveTextContent(
+    '1…96979899100',
+  );
+  expect(renderWithProps({ currentPage: 99 })).toHaveTextContent('1…979899100');
   expect(renderWithProps({ currentPage: 100 })).toHaveTextContent('1…9899100');
 });
 
 test('renders the correct items for small pageCounts', () => {
   const renderWithProps = createWithDefaults({
-    pageCount: 4,
+    pageCount: 7,
     currentPage: 1,
     onPageChange: () => {},
   });
-  expect(renderWithProps()).toHaveTextContent('1234');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1234');
+  expect(renderWithProps()).toHaveTextContent('1234567');
+  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234567');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('1234567');
+  expect(renderWithProps({ pageCount: 6 })).toHaveTextContent('123456');
+  expect(renderWithProps({ pageCount: 5 })).toHaveTextContent('12345');
+  expect(renderWithProps({ pageCount: 4 })).toHaveTextContent('1234');
   expect(renderWithProps({ pageCount: 3 })).toHaveTextContent('123');
   expect(renderWithProps({ pageCount: 2 })).toHaveTextContent('12');
   expect(renderWithProps({ pageCount: 1 })).toHaveTextContent('1');

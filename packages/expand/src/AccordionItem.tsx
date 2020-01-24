@@ -1,6 +1,6 @@
 import React from 'react';
+import { useRandomId } from '@entur/utils';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
-import { useRandomId } from './useRandomId';
 import { useAccordion } from './Accordion';
 
 export type AccordionItemProps = {

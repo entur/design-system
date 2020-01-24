@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && cp src/*.scss dist",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },

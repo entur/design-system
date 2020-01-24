@@ -1,6 +1,6 @@
 import React from 'react';
+import { useRandomId } from '@entur/utils';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
-import { useRandomId } from './useRandomId';
 
 export type ExpandablePanelProps = {
   /** Teksten som skal stå i panelet */

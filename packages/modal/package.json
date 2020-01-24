@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@entur/icons": "^0.5.0",
     "@entur/tokens": "^1.1.2",
-    "@entur/typography": "^0.7.3",
+    "@entur/typography": "^0.7.4",
     "@entur/utils": "^0.2.1",
     "@reach/dialog": "^0.7.0",
     "@types/reach__dialog": "^0.1.0",

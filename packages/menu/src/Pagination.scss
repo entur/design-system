@@ -50,10 +50,12 @@
 
 .eds-pagination__ellipsis {
   align-items: center;
+  cursor: default;
   display: flex;
   font-size: $font-sizes-extra-large;
   height: $space-extra-large;
   justify-content: center;
+  user-select: none;
   width: $space-extra-large;
 }
 

@@ -1,0 +1,47 @@
+---
+name: Timepicker
+route: /komponenter/skjemaelementer/timepicker
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: datepicker
+tags: timepicker, tidvelger, tid
+---
+
+import { Props } from 'docz';
+import { addDays, addWeeks } from 'date-fns';
+import { TimePicker, NativeTimePicker } from '@entur/datepicker';
+import { InputGroup } from '@entur/form';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader>TimePicker er en komponent for å velge et tidspunkt.</PageHeader>
+
+<Playground>
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <InputGroup>
+        <TimePicker
+          style={{ width: '10rem' }}
+          selectedTime={date}
+          onChange={date => setDate(date)}
+        />
+      </InputGroup>
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### TimePicker
+
+<ImportStatement imports="TimePicker" />
+<Props of={TimePicker} />
+
+### NativeTimePicker
+
+<ImportStatement imports="NativeTimePicker" />
+<Props of={NativeTimePicker} />
+
+Som med datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.

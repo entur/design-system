@@ -1,14 +1,17 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/color-utils.scss';
 
-$height: (44rem/16);
-$padding: ((44rem - 14rem) / 2 / 16);
+$default-height: (44rem/16);
+$small-height: (36rem/16);
+$default-padding: ((44rem - 14rem) / 2 / 16);
+$small-padding: ((36rem - 14rem) / 2 / 16);
 
 .eds-floating-button {
   align-items: center;
   appearance: none;
   background: $colors-brand-blue;
   border: 0;
-  border-radius: ($height / 2);
+  border-radius: ($default-height / 2);
   box-shadow: $shadows-card-shadow;
   color: $colors-brand-white;
   cursor: pointer;
@@ -17,12 +20,16 @@ $padding: ((44rem - 14rem) / 2 / 16);
   font-size: $font-sizes-medium;
   font-weight: $font-weights-body;
   justify-content: center;
-  min-height: $height;
+  min-height: $default-height;
   margin: 0;
-  min-width: $height;
-  padding: 0 $padding;
+  min-width: $default-height;
+  padding: 0 $default-padding;
   position: relative;
   z-index: $z-indexes-sticky;
+
+  &:hover {
+    background-color: tint($colors-brand-blue, 10%);
+  }
 
   &:focus {
     outline: none;
@@ -32,11 +39,24 @@ $padding: ((44rem - 14rem) / 2 / 16);
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
+
+    &:hover {
+      background-color: tint($colors-brand-lavender, 10%);
+    }
+  }
+
+  &--small {
+    border-radius: ($small-height / 2);
+    height: $small-height;
+    padding: 0 $small-padding;
+    min-width: $small-height;
+    min-height: $small-height;
+    flex: 0 1 auto;
   }
 }
 
 .eds-floating-button--extended > * {
-  margin: 0 1em;
+  margin: 0 0.5em;
 
   &:first-child {
     margin-left: 0;

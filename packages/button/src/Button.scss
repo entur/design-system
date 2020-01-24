@@ -1,22 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-/// Slightly darken a color
-/// @access public
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 a.eds-button {
   padding: 0.5rem 0;
@@ -104,7 +87,7 @@ a.eds-button {
     }
   }
   &--variant-secondary {
-    background-color: $colors-brand-white;
+    background-color: transparent;
     border: $border-widths-default solid $colors-brand-lavender;
     color: $colors-brand-blue;
     > .eds-button__spinner {
@@ -119,7 +102,7 @@ a.eds-button {
       border-color: shade($colors-brand-lavender, 10%);
     }
     .eds-contrast & {
-      background-color: $colors-brand-blue;
+      background-color: transparent;
       color: $colors-brand-white;
       border-color: $colors-brand-lavender;
 
@@ -128,7 +111,7 @@ a.eds-button {
         border-right-color: $colors-brand-white;
       }
       &:hover {
-        background-color: $colors-blues-blue20;
+        background-color: (rgba($color: $colors-brand-white, $alpha: 0.2));
       }
       &:active {
         background: $colors-brand-lavender;

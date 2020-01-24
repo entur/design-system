@@ -62,7 +62,11 @@ export const Switch: React.RefForwardingComponent<
         >
           <span className="eds-switch__circle">{icon && icon}</span>
         </span>
-        {children && <Paragraph as="span">{children}</Paragraph>}
+        {children && (
+          <Paragraph margin="none" as="span">
+            {children}
+          </Paragraph>
+        )}
       </label>
     );
   },
