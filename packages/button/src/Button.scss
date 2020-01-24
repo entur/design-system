@@ -203,6 +203,12 @@ a.eds-button {
       color: $colors-brand-white;
       background-color: $colors-brand-blue;
     }
+    &.eds-button--leading-icon .eds-icon {
+      margin-right: $space-extra-small;
+    }
+    &.eds-button--trailing-icon .eds-icon {
+      margin-left: $space-extra-small;
+    }
     .eds-contrast & {
       color: $colors-brand-white;
       border-color: $colors-brand-white;
