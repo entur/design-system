@@ -9,7 +9,6 @@ import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
-import classNames from 'classnames';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
@@ -64,6 +63,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   variant,
   value,
   className,
+  style,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -84,10 +84,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {...rest}
     >
       <DropdownInputGroup
-        className={classNames(className)}
+        className={className}
         label={label}
         feedback={feedback}
         variant={variant}
+        style={style}
       >
         <RenderedDropdown
           items={normalizedItems}

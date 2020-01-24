@@ -30,7 +30,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
     <BaseDropdown disabled={disabled} {...rest}>
       <button
         {...getToggleButtonProps({
-          className: 'eds-form-control',
+          className: 'eds-form-control eds-dropdown__selected-item',
           style: { textAlign: 'left' },
           disabled,
           type: 'button',
