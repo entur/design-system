@@ -1,0 +1,44 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-base-segmented {
+  --background-color: transparent;
+  background-color: var(--background-color);
+  border: $border-widths-default solid $colors-brand-lavender;
+  color: inherit;
+  cursor: pointer;
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-large;
+  text-align: center;
+  .eds-contrast & {
+    border-color: $colors-blues-blue20;
+  }
+  &:hover {
+    background-color: $colors-blues-blue80;
+    .eds-contrast & {
+      background: $colors-blues-blue10;
+    }
+  }
+  input {
+    appearance: none;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    &:checked {
+      --background-color: #{$colors-brand-lavender};
+      .eds-contrast & {
+        --background-color: #{$colors-blues-blue20};
+      }
+    }
+  }
+  &:first-child {
+    border-top-left-radius: $border-radiuses-medium;
+    border-bottom-left-radius: $border-radiuses-medium;
+    border-right: none;
+  }
+  &:last-child {
+    border-top-right-radius: $border-radiuses-medium;
+    border-bottom-right-radius: $border-radiuses-medium;
+    border-left: none;
+  }
+}

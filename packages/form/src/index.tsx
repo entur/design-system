@@ -15,3 +15,5 @@ export * from './TravelSwitch';
 export * from './TextArea';
 export * from './TextField';
 export * from './VariantProvider';
+export * from './segmented-control/SegmentedControl';
+export * from './segmented-control/SegmentedGroup';
