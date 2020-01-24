@@ -83,7 +83,11 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
         </button>
       )}
       <Icon className="eds-alert-box__icon" />
-      <div className="eds-alert-box__content">
+      <div
+        className={classNames('eds-alert-box__content', {
+          'eds-alert-box__content--no-title': !title,
+        })}
+      >
         {title && <p className="eds-alert-box__title">{title}</p>}
         {children}
       </div>
