@@ -75,6 +75,10 @@
 
 .eds-alert-box__content {
   color: $colors-brand-blue;
+  &--no-title {
+    display: flex;
+    align-items: center;
+  }
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
