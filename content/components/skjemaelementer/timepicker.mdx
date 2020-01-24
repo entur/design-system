@@ -8,24 +8,26 @@ tags: timepicker, tidvelger, tid
 ---
 
 import { Props } from 'docz';
-import { TimePicker } from '@entur/datepicker';
+import { addDays, addWeeks } from 'date-fns';
+import { TimePicker, NativeTimePicker } from '@entur/datepicker';
+import { InputGroup } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
-import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
-import { addDays } from 'date-fns';
 
-<PageHeader>Timepicker er en komponent for å velge et tidspunkt.</PageHeader>
+<PageHeader>TimePicker er en komponent for å velge et tidspunkt.</PageHeader>
 
 <Playground>
   {() => {
     const [date, setDate] = React.useState();
     return (
-      <TimePicker
-        style={{ width: '10rem' }}
-        selectedTime={date}
-        onChange={date => setDate(date)}
-      />
+      <InputGroup>
+        <TimePicker
+          style={{ width: '10rem' }}
+          selectedTime={date}
+          onChange={date => setDate(date)}
+        />
+      </InputGroup>
     );
   }}
 </Playground>
@@ -39,7 +41,7 @@ import { addDays } from 'date-fns';
 
 ### NativeTimePicker
 
-<ImportStatement imports="TimePicker" />
-<Props of={TimePicker} />
+<ImportStatement imports="NativeTimePicker" />
+<Props of={NativeTimePicker} />
 
 Som med datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.
