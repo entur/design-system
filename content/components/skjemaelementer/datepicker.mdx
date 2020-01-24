@@ -1,5 +1,6 @@
 ---
-name: Datepicker
+name: DatePicker
+description: DatePicker og NativeDatePicker er komponenter for å velge datoer.
 route: /komponenter/skjemaelementer/datepicker
 parent: Komponenter
 menu: Skjemaelementer
@@ -16,9 +17,7 @@ import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
 import { addDays } from 'date-fns';
 
-<PageHeader>
-  DatePicker er en komponent for å velge dato og tidspunkt.
-</PageHeader>
+<PageHeader />
 
 <Playground>
   {() => {
@@ -37,7 +36,7 @@ import { addDays } from 'date-fns';
 
 ## Komponenter
 
-### Datepicker
+### DatePicker
 
 <ImportStatement imports="DatePicker" />
 <Props of={DatePicker} />
