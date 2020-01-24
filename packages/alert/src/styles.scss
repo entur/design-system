@@ -23,6 +23,7 @@
     width: 100%;
 
     @include for-desktop {
+      min-width: 12rem;
       width: fit-content;
     }
   }
@@ -123,6 +124,9 @@
   right: $space-default;
   left: $space-default;
   z-index: $z-indexes-toast;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 
   > * + * {
     margin-top: $space-default;
