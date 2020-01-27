@@ -74,23 +74,25 @@ export const SiteSidebar: React.FC = () => {
     }) || [];
 
   return (
-    <Contrast as="nav" className="site-sidebar-wrapper">
+    <Contrast className="site-sidebar-wrapper">
       <Link to="/" className="site-sidebar-logo">
         <img src={logoSVG} alt="Entur logo" className="site-logo" />
       </Link>
 
-      <Location>
-        {({ location }) =>
-          currentDoc.parent === 'Komponenter' ? (
-            <ComponentsSideNavigation
-              location={location}
-              menuItems={menuItems}
-            />
-          ) : (
-            <SimpleSideNavigation location={location} menuItems={menuItems} />
-          )
-        }
-      </Location>
+      <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
+        <Location>
+          {({ location }) =>
+            currentDoc.parent === 'Komponenter' ? (
+              <ComponentsSideNavigation
+                location={location}
+                menuItems={menuItems}
+              />
+            ) : (
+              <SimpleSideNavigation location={location} menuItems={menuItems} />
+            )
+          }
+        </Location>
+      </nav>
     </Contrast>
   );
 };
