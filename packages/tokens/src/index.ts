@@ -59,7 +59,7 @@ export const colors = {
       bus: '#dd5415',
       plane: '#800664',
       helicopter: '#800664',
-      tram: '#78469a',
+      tram: '#642e88',
       funicular: '#642e88',
       cableway: '#642e88',
       taxi: '#181c56',
