@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.1...@entur/utils@0.2.2) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.0...@entur/utils@0.2.1) (2020-01-14)
 
 **Note:** Version bump only for package @entur/utils

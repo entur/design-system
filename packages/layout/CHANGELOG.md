@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.0.5...@entur/layout@1.1.0) (2020-01-27)
+
+### Bug Fixes
+
+- update navigationcards to comply with new typography ([3d77634](https://bitbucket.org/enturas/design-system/commits/3d776344dbfdec913f73bc33fcf209d6fdafd088))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+### Features
+
+- adding the useContrast-hook, for contrast awereness in JS/TS ([ba580ef](https://bitbucket.org/enturas/design-system/commits/ba580ef67c7250f7ea7d9ecb0c6662b5ed8449d1))
+
 ## [1.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.0.4...@entur/layout@1.0.5) (2020-01-20)
 
 **Note:** Version bump only for package @entur/layout

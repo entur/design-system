@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.4...@entur/menu@1.2.5) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.3...@entur/menu@1.2.4) (2020-01-20)
 
 ### Bug Fixes

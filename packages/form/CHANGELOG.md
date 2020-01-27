@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.3...@entur/form@2.2.4) (2020-01-27)
+
+### Bug Fixes
+
+- adjust typography ([e630ebc](https://bitbucket.org/enturas/design-system/commits/e630ebcfbf1de9326b2969f919fedd19d662cbe3))
+- fixing form elements to comply with new typography standards ([4de70a5](https://bitbucket.org/enturas/design-system/commits/4de70a5c05a619a19bf194468d1799b5e686e0b3))
+- fixing pixel alignment for switch buttons ([d8b1a5e](https://bitbucket.org/enturas/design-system/commits/d8b1a5e384e2595f3b44d3c62e2ad98e23be609d))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [2.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.2...@entur/form@2.2.3) (2020-01-20)
 
 **Note:** Version bump only for package @entur/form

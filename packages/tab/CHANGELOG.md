@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.5...@entur/tab@0.3.0) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+### Features
+
+- new and improved styling, with added support for contrast ([9597fe2](https://bitbucket.org/enturas/design-system/commits/9597fe2ae5cc1c6be4e30e7850e8cad6e6caf0c8))
+
 ## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.4...@entur/tab@0.2.5) (2020-01-14)
 
 **Note:** Version bump only for package @entur/tab

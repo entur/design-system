@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.3...@entur/dropdown@0.5.4) (2020-01-27)
+
+### Bug Fixes
+
+- **Dropdown:** make dropdowns controllable ([38e503e](https://bitbucket.org/enturas/design-system/commits/38e503edf6cee98ec7e086a6f836c8bf899adb75))
+- **Dropdown:** make long choices overflow into an ellipsis ([c936358](https://bitbucket.org/enturas/design-system/commits/c9363585f316936b8eac2d100b90d28f1f30f760))
+- **Dropdown:** make styles spreadable to the input group ([8ef9a24](https://bitbucket.org/enturas/design-system/commits/8ef9a244de17cad1c4fd63c13127527f02be103c))
+- **Dropdown:** remove unnecessary classNames call ([97cf52c](https://bitbucket.org/enturas/design-system/commits/97cf52c42f419f042a3fc93ab493417c2baae7af))
+- **DropdownList:** only show scrollbar if necessary ([09b25e9](https://bitbucket.org/enturas/design-system/commits/09b25e9558fe6aff6de9a695c37b67a2da98cdad))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [0.5.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.2...@entur/dropdown@0.5.3) (2020-01-20)
 
 **Note:** Version bump only for package @entur/dropdown

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@0.2.2...@entur/travel@0.3.0) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+- adding walk transport and fix contrast detection ([05e5e9f](https://bitbucket.org/enturas/design-system/commits/05e5e9f10d4d562118f94593b773f624b077201e))
+- fix styling for legline and legbone ([85489f3](https://bitbucket.org/enturas/design-system/commits/85489f35a3995d308791453c7dd5b1a4862b4082))
+
+### Features
+
+- add new components legbone and legline ([01e7592](https://bitbucket.org/enturas/design-system/commits/01e75923e98d70f4ec86bd73718b9dc8bc72644f))
+- add travelleg component ([54e5504](https://bitbucket.org/enturas/design-system/commits/54e55040bae2b21a22d2e9b9952ed140b9409e5b))
+
 ## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/travel@0.2.1...@entur/travel@0.2.2) (2020-01-14)
 
 ### Bug Fixes
