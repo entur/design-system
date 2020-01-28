@@ -8,7 +8,10 @@ function FrontPageMenu() {
   return (
     <header className="frontpage-header">
       <img src={LogoDark} alt="Entur logo" className="frontpage-header__logo" />
-      <nav className="frontpage-header__navigation">
+      <nav
+        className="frontpage-header__navigation"
+        aria-label="Navigasjon, hovedseksjoner"
+      >
         <TopNavigationItem as={Link} to="/kom-i-gang">
           Kom i gang
         </TopNavigationItem>

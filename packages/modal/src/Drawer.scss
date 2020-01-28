@@ -1,0 +1,49 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@keyframes slideFromRight {
+  from {
+    box-shadow: none;
+    transform: translateX(100%);
+  }
+  to {
+    box-shadow: $shadows-card-shadow;
+    transform: 0;
+  }
+}
+
+.eds-drawer {
+  animation: slideFromRight forwards ease-out $timings-fast;
+  background: $colors-blues-blue80;
+  bottom: 0;
+  padding: $space-large;
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-width: 100%;
+  min-width: 20rem;
+  width: 25vw;
+  z-index: $z-indexes-modal;
+
+  .eds-contrast & {
+    background: $colors-blues-blue10;
+  }
+}
+
+.eds-drawer__close-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  font-size: $font-sizes-extra-large;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: $space-large;
+  right: $space-large;
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}

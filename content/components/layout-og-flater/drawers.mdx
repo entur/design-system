@@ -1,0 +1,95 @@
+---
+name: Drawers
+description: Drawers lar deg vise frem funksjonalitet når du trenger det fra kanten av siden.
+parent: Komponenter
+route: /komponenter/layout-og-flater/drawers
+menu: Layout & Flater
+npmPackage: layout
+tags: drawer, skuff, skoff, panel, side
+---
+
+import { Props } from 'docz';
+import { BannerAlertBox } from '@entur/alert';
+import { PrimaryButton, SecondaryButton, ButtonGroup } from '@entur/button';
+import { Contrast } from '@entur/layout';
+import { Drawer } from '@entur/modal';
+import { CodeText, Paragraph } from '@entur/typography';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader />
+
+<Playground hideContrastOption>
+  {() => {
+    const [mode, setMode] = React.useState('closed');
+    const Wrapper = mode === 'dark' ? Contrast : React.Fragment;
+    return (
+      <div>
+        <ButtonGroup>
+          <PrimaryButton
+            onClick={() => setMode('light')}
+            aria-expanded={mode === 'light'}
+          >
+            Åpne en lys drawer
+          </PrimaryButton>
+          <SecondaryButton
+            onClick={() => setMode('dark')}
+            aria-expanded={mode === 'dark'}
+          >
+            Åpne en mørk drawer
+          </SecondaryButton>
+        </ButtonGroup>
+        <Drawer
+          contrast={mode === 'dark'}
+          title="Litt mer informasjon"
+          open={mode !== 'closed'}
+          onDismiss={() => setMode('closed')}
+        >
+          <Paragraph>
+            Denne drawer-komponenten skal i hovedsak kun brukes til å gi mer
+            informasjon - litt som et mer avansert tooltip. Et eksempel kan være
+            å vise flere detaljer om et valgt produkt, reise eller lignende. Du
+            kan lenke til mer funksjonalitet om ønskelig.
+          </Paragraph>
+          <Paragraph>
+            Man skal aldri plassere tekstfelt, radioknapper og lignende i
+            drawers. Lenk heller til egne views for å endre dette - eller tilby
+            disse kontrollene kontekstuelt.
+          </Paragraph>
+          <PrimaryButton type="button" onClick={() => setMode('closed')}>
+            Den er grei
+          </PrimaryButton>
+        </Drawer>
+      </div>
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### Drawer
+
+<ImportStatement imports="Drawer" />
+<Props of={Drawer} />
+
+`<Drawer />`-komponenten rendrer en "skuff" som sklir inn fra siden. Rent teknisk beholder den sin plass i DOM-treet, slik at tastatur-brukere og skjermlesere finner frem til den.
+
+Første fokuserbare element blir fokusert by default.
+
+<BannerAlertBox variant="info" title="Husk på aria-attributtene!">
+  For å gi skjermlesere riktig kontekst, er det viktig at du setter riktig
+  aria-attributter på elementet som trigger visningen av draweren. Husk også å
+  plassere <CodeText>Drawer</CodeText> rett etter knappen som viser den.
+</BannerAlertBox>
+
+## Retningslinjer for bruk
+
+Denne drawer-komponenten skal i hovedsak kun brukes til å gi mer
+informasjon - litt som et mer avansert tooltip. Et eksempel kan være
+å vise flere detaljer om et valgt produkt, reise eller lignende. Du
+kan lenke til mer funksjonalitet om ønskelig.
+
+Man skal aldri plassere tekstfelt, radioknapper og lignende i
+drawers. Lenk heller til egne views for å endre dette - eller tilby
+disse kontrollene kontekstuelt.
