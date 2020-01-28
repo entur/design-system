@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.3...@entur/tokens@1.1.4) (2020-01-28)
+
+### Bug Fixes
+
+- **colors:** update tram color to be consistent with other purps ([4651eb3](https://bitbucket.org/enturas/design-system/commits/4651eb386252ea97787c94c0f01b652d4bbd4e30))
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.2...@entur/tokens@1.1.3) (2020-01-27)
 
 ### Bug Fixes

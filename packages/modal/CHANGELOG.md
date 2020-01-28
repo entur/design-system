@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.7...@entur/modal@1.1.0) (2020-01-28)
+
+### Features
+
+- **Drawer:** add new component - Drawer ([e869df0](https://bitbucket.org/enturas/design-system/commits/e869df0946bdc81c177df4b25f3cfe5dee0a7eb5))
+
 ## [1.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.0.6...@entur/modal@1.0.7) (2020-01-27)
 
 ### Bug Fixes

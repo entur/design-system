@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.3.0...@entur/tab@0.3.1) (2020-01-28)
+
+**Note:** Version bump only for package @entur/tab
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.2.5...@entur/tab@0.3.0) (2020-01-27)
 
 ### Bug Fixes
