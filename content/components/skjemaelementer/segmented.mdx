@@ -1,6 +1,6 @@
 ---
 name: Segmented Control
-description: TODO
+description: SegmentedControl er alternative komponenter for å gi radio- og checkbox-funksjonalitet.
 route: /komponenter/skjemaelementer/segmented-control
 parent: Komponenter
 menu: Skjemaelementer
@@ -12,6 +12,7 @@ import { Props } from 'docz';
 import { SegmentedGroup, SegmentedControl } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
+import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
 import PageHeader from '~/components/PageHeader';
 
 <PageHeader />
@@ -20,9 +21,10 @@ import PageHeader from '~/components/PageHeader';
   {() => {
     const [value, setValue] = React.useState(null);
     const [value1, setValue1] = React.useState(null);
+    const [checkbox1, setCheckbox1] = React.useState(false);
     return (
       <div>
-        <div>
+        <div style={{ marginBottom: '1rem' }}>
           <SegmentedGroup
             name="city"
             label="Velg din hjemby"
@@ -35,20 +37,46 @@ import PageHeader from '~/components/PageHeader';
             <SegmentedControl value="Leknes">Leknes</SegmentedControl>
           </SegmentedGroup>
         </div>
-        <div>
+        <div style={{ marginBottom: '1rem' }}>
           <SegmentedGroup
-            name="city"
-            label="Velg din hjemby"
-            onChange={e => setValue1(e.target.value)}
+            label="Velg skrifttype"
             value={value1}
             multiple={true}
+            onChange={e => console.log(e.target.name, e.target.checked)}
+            style={{ width: '7rem' }}
           >
-            <SegmentedControl value="b">bold</SegmentedControl>
-            <SegmentedControl value="i">italics</SegmentedControl>
-            <SegmentedControl value="k">kursiv</SegmentedControl>
+            <SegmentedControl value="b" name="b">
+              <BoldIcon inline />
+            </SegmentedControl>
+            <SegmentedControl value="k" name="k">
+              <ItalicIcon inline />
+            </SegmentedControl>
+            <SegmentedControl value="u" name="u">
+              <UnderlineIcon inline />
+            </SegmentedControl>
           </SegmentedGroup>
+        </div>
+        <div style={{ display: 'flex' }}>
+
         </div>
       </div>
     );
-  }}
+
+}}
+
 </Playground>
+
+## Komponenter
+
+### SegmentedGroup
+
+<ImportStatement imports="SegmentedGroup" />
+<Props of={SegmentedGroup} />
+
+Om man wrapper `SegmentedControl` i en `SegmentedGroup`, så kan man ved hjelp av `multiple` bestemme om man ønsker seg radio- eller checkbox-funksjonalitet.
+Multiple i dette tilfelle refererer til om man har mulighet til å velge flere alternativer, det vil si, flere valg betyr Checkbox.
+
+### SegmentedControl
+
+<ImportStatement imports="SegmentedControl" />
+<Props of={SegmentedControl} />
