@@ -1,10 +1,11 @@
 import React from 'react';
-import { Fieldset } from '../Fieldset';
+import { Label } from '@entur/typography';
+import './SegmentedGroup.scss';
 
 type SegmentedGroupContextProps = {
-  name: string;
-  onChange: (e: React.ChangeEvent) => void;
-  value: string;
+  name?: string;
+  onChange?: (e: React.ChangeEvent) => void;
+  value?: string;
   multiple: boolean;
 };
 
@@ -18,16 +19,20 @@ export const useSegmentedGroupContext = () => {
   const context = React.useContext(SegmentedGroupContext);
   if (!context) {
     throw new Error(
-      'You need to wrap your SegmentedControl components in a SegmentedGroup component',
+      'Did you mean to use SegmentedControl without a SegmentedGroup?',
     );
   }
   return context;
 };
 
 export type SegmentedGroupProps = {
-  name: string;
+  /** Navn på gruppen brukes i forhold til radiogrupper */
+  name?: string;
+  /** Label som vises over SegmentedGroup */
   label?: string;
+  /** Den valgte verdien */
   value: string;
+  /** */
   multiple: boolean;
   children: React.ReactNode;
   onChange: (e: React.ChangeEvent) => void;
@@ -40,18 +45,50 @@ export const SegmentedGroup: React.FC<SegmentedGroupProps> = ({
   value,
   children,
   onChange,
-  multiple,
   ...rest
 }) => {
   const contextValue = React.useMemo(
-    () => ({ name, value, onChange, multiple }),
-    [name, value, onChange, multiple],
+    () => ({ name, value, onChange, multiple: false }),
+    [name, value, onChange],
   );
+
   return (
     <SegmentedGroupContextProvider value={contextValue}>
-      <Fieldset className="eds-segmented-group" {...rest}>
+      <Label as="div">{label}</Label>
+      <div className="eds-segmented-group" {...rest}>
         {children}
-      </Fieldset>
+      </div>
+    </SegmentedGroupContextProvider>
+  );
+};
+
+export type SegmentedCheckboxGroupProps = {
+  /** Labelenn for gruppen */
+  label: string;
+  /** SegmentedControl-komponentene */
+  children: React.ReactNode;
+  onChange: (e: React.ChangeEvent) => void;
+};
+
+export const SegmentedCheckboxGroup: React.FC<SegmentedCheckboxGroupProps> = ({
+  label,
+  children,
+
+  onChange,
+  ...rest
+}) => {
+  const contextValue = {
+    name: undefined,
+    value: undefined,
+    onChange: onChange,
+    multiple: true,
+  };
+  return (
+    <SegmentedGroupContextProvider value={contextValue}>
+      <Label as="div">{label}</Label>
+      <div className="eds-segmented-group" {...rest}>
+        {children}
+      </div>
     </SegmentedGroupContextProvider>
   );
 };
