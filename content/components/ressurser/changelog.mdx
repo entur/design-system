@@ -11,6 +11,35 @@ import PageHeader from '~/components/PageHeader';
 
 <PageHeader />
 
+### 2020-01-28
+
+- [@entur/a11y@0.2.11](https://www.npmjs.com/package/@entur/a11y)
+- [@entur/alert@0.5.8](https://www.npmjs.com/package/@entur/alert)
+- [@entur/button@2.0.0](https://www.npmjs.com/package/@entur/button)
+- [@entur/chip@0.2.12](https://www.npmjs.com/package/@entur/chip)
+- [@entur/datepicker@0.3.2](https://www.npmjs.com/package/@entur/datepicker)
+- [@entur/dropdown@0.5.5](https://www.npmjs.com/package/@entur/dropdown)
+- [@entur/expand@1.1.6](https://www.npmjs.com/package/@entur/expand)
+- [@entur/form@2.2.5](https://www.npmjs.com/package/@entur/form)
+- [@entur/layout@1.1.1](https://www.npmjs.com/package/@entur/layout)
+- [@entur/loader@0.3.9](https://www.npmjs.com/package/@entur/loader)
+- [@entur/menu@1.2.6](https://www.npmjs.com/package/@entur/menu)
+- [@entur/modal@1.1.0](https://www.npmjs.com/package/@entur/modal)
+- [@entur/tab@0.3.1](https://www.npmjs.com/package/@entur/tab)
+- [@entur/table@0.3.10](https://www.npmjs.com/package/@entur/table)
+- [@entur/tokens@1.1.4](https://www.npmjs.com/package/@entur/tokens)
+- [@entur/tooltip@1.1.7](https://www.npmjs.com/package/@entur/tooltip)
+- [@entur/travel@0.3.1](https://www.npmjs.com/package/@entur/travel)
+- [@entur/typography@1.0.1](https://www.npmjs.com/package/@entur/typography)
+
+Full changelog can be found here: https://bitbucket.org/enturas/design-system/commits/618617acaf1300290f805dd5773be22c0e62afad
+
+**TL;DR:**
+
+- 💥 `@entur/buttons` has a breaking change for people using square buttons. Previously, you imported `Button` and added `width="square"` and your preferred `variant`. Now, you need to import `SecondarySquareButton` or `SuccessSquareButton` instead.
+- ✨ `@entur/modal` has a new component - `Drawer`! Se [dokumentasjonen](https://design.entur.org/komponenter/layout-og-flater/drawers) for mer info.
+- 💄 `@entur/tokens` changed one of its color values (`colors.transport.tram`) to be consistent with `funicular` and `cableway`. This is why all packages got a version bump as well (since all packages depend on `@entur/tokens`)
+
 ### 2020-01-27
 
 - [@entur/a11y@0.2.10](https://www.npmjs.com/package/@entur/a11y)
