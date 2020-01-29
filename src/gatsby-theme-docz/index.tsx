@@ -42,9 +42,12 @@ const App: React.FC = ({ children }) => {
             <>
               <SEO title="Velkommen" />
               <FrontPageMenu />
-              <main id="site-content" className="frontpage-site-content">
-                {children}
-              </main>
+              <div className="blueback">
+                <div className="oi" />
+                <main id="site-content" className="frontpage-site-content">
+                  {children}
+                </main>
+              </div>
               <FrontPageFooter />
             </>
           ) : (

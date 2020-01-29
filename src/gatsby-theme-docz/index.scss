@@ -59,13 +59,23 @@ body {
   flex: 1;
 }
 
+.blueback {
+  .oi {
+    background: $colors-brand-blue;
+    height: 30rem;
+    position: absolute;
+    width: 100vw;
+    z-index: -1;
+  }
+}
+
 .frontpage-site-content {
   display: flex;
   margin: $space-default;
   flex-direction: column;
   min-height: 90vh;
   @include for-large-desktop {
-    margin: 1rem auto;
+    margin: 0 auto 1rem auto;
     max-width: 64rem;
   }
 }
