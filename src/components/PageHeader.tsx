@@ -6,16 +6,23 @@ import { useSettings } from './SettingsContext';
 import './PageHeader.scss';
 
 type Props = {
-  title?: string;
   category?: string;
+  forceNoLeadText?: boolean;
+  title?: string;
 };
 
-const PageHeader: React.FC<Props> = ({ title, children, category }) => {
+const PageHeader: React.FC<Props> = ({
+  title,
+  children,
+  category,
+  forceNoLeadText,
+}) => {
   const currentDoc = useCurrentDoc();
   const npmPackage: string = currentDoc.npmPackage;
   const categoryToShow = category || currentDoc.parent;
   const titleToShow = title || currentDoc.name;
   const { packageManager, userType } = useSettings();
+  const leadText = forceNoLeadText ? null : children || currentDoc.description;
   const installText =
     packageManager === 'yarn'
       ? `yarn add @entur/${npmPackage}`
@@ -29,7 +36,7 @@ const PageHeader: React.FC<Props> = ({ title, children, category }) => {
         </Label>
       )}
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
-      {children && <LeadParagraph>{children}</LeadParagraph>}
+      {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <div style={{ display: 'flex', alignItems: 'flex-start' }}>
           <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">

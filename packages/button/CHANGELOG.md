@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.6.1...@entur/button@2.0.0) (2020-01-28)
+
+### Code Refactoring
+
+- **Button:** remove size="square" as a valid prop from regular buttons ([7fb1f95](https://bitbucket.org/enturas/design-system/commits/7fb1f95c9dfa56155be762258d59eba7210e6dbc))
+
+### Features
+
+- **square buttons:** new components \`SecondarySquareButton\`, \`SuccessSquareButton\` ([2e92897](https://bitbucket.org/enturas/design-system/commits/2e92897f22acacdc649e03dc145db6b589751454))
+
+### BREAKING CHANGES
+
+- **Button:** Square buttons are now their own components.
+
+ISSUES CLOSED: DS-179
+
+## [1.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.6.0...@entur/button@1.6.1) (2020-01-27)
+
+### Bug Fixes
+
+- reduce padding for icons in tertiary buttons ([31491b6](https://bitbucket.org/enturas/design-system/commits/31491b6e979a208430199607ff85f0b6fc7a06f8))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 # [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.5.2...@entur/button@1.6.0) (2020-01-20)
 
 ### Bug Fixes

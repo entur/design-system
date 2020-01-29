@@ -1,22 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-/// Slightly darken a color
-/// @access public
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 a.eds-button {
   padding: 0.5rem 0;
@@ -61,13 +44,6 @@ a.eds-button {
   &--size-large {
     min-width: 11.75rem;
     height: 3.75rem;
-  }
-
-  &--width-square {
-    padding-right: $space-none;
-    padding-left: $space-none;
-    min-width: ($space-extra-large2 + $space-extra-small2);
-    width: ($space-extra-large2 + $space-extra-small2);
   }
 
   &--width-fluid {
@@ -219,6 +195,12 @@ a.eds-button {
     &:active {
       color: $colors-brand-white;
       background-color: $colors-brand-blue;
+    }
+    &.eds-button--leading-icon .eds-icon {
+      margin-right: $space-extra-small;
+    }
+    &.eds-button--trailing-icon .eds-icon {
+      margin-left: $space-extra-small;
     }
     .eds-contrast & {
       color: $colors-brand-white;

@@ -1,18 +1,13 @@
 @import '~normalize-scss';
 @import '~@entur/tokens/dist/styles.scss';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
   --primary-background-color: #{$colors-brand-white};
   --primary-text-color: #{$colors-brand-blue};
   --primary-label-color: #{$colors-blues-blue40};
-  --eds-font-family: 'Nationale', 'Gotham Rounded', -apple-system,
+  --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     'Helvetica Neue', sans-serif;
 
@@ -58,14 +53,12 @@ html {
   color: var(--primary-text-color);
   font-weight: $font-weights-heading;
   -webkit-font-smoothing: antialiased;
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 .eds-h1 {
   font-size: $font-sizes-extra-large;
   line-height: $line-heights-extra-large2;
-
+  margin: 0 0 $space-default;
   @include for-desktop {
     font-size: $font-sizes-extra-large3;
     line-height: $line-heights-extra-large5;
@@ -74,7 +67,7 @@ html {
 .eds-h2 {
   font-size: $font-sizes-large;
   line-height: $line-heights-large;
-
+  margin: $space-extra-large 0 $space-small;
   @include for-desktop {
     font-size: $font-sizes-extra-large2;
     line-height: $line-heights-extra-large4;
@@ -83,7 +76,7 @@ html {
 .eds-h3 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
-
+  margin: $space-large 0 $space-extra-small;
   @include for-desktop {
     font-size: $font-sizes-extra-large;
     line-height: $line-heights-extra-large3;
@@ -92,7 +85,7 @@ html {
 .eds-h4 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
-
+  margin: $space-large 0 0;
   @include for-desktop {
     font-size: $font-sizes-large;
     line-height: $line-heights-extra-large;
@@ -101,7 +94,7 @@ html {
 .eds-h5 {
   font-size: $font-sizes-medium;
   line-height: $line-heights-medium;
-
+  margin: $space-large 0 0;
   @include for-desktop {
     line-height: $line-heights-large;
   }
@@ -110,14 +103,28 @@ html {
 .eds-h6 {
   font-size: $font-sizes-small;
   line-height: $line-heights-medium;
+  margin: $space-large 0 0;
 }
 
+// Body text and inline element styling
+.eds-paragraph {
+  color: inherit; // ie fallback
+  color: var(--primary-text-color);
+  font-size: $font-sizes-large;
+  line-height: $line-heights-large;
+  margin: 0 0 $space-default;
+  @include for-desktop {
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
+  }
+}
 .eds-h1,
 .eds-h2,
 .eds-h3,
 .eds-h4,
 .eds-h5,
-.eds-h6 {
+.eds-h6,
+.eds-paragraph {
   &--margin-top {
     margin-bottom: 0;
   }
@@ -129,25 +136,13 @@ html {
     margin-bottom: 0;
   }
 }
-// Body text and inline element styling
-.eds-paragraph {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
-  font-size: $font-sizes-large;
-  line-height: $line-heights-large;
-
-  @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
-  }
-}
 
 .eds-lead-paragraph {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
   font-size: $font-sizes-extra-large;
   line-height: $line-heights-extra-large3;
-
+  margin: $space-large 0;
   @include for-desktop {
     font-size: $font-sizes-extra-large;
     line-height: $line-heights-extra-large3;

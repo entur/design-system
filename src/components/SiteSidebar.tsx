@@ -83,18 +83,20 @@ export const SiteSidebar: React.FC = () => {
         />
       </Link>
 
-      <Location>
-        {({ location }) =>
-          currentDoc.parent === 'Komponenter' ? (
-            <ComponentsSideNavigation
-              location={location}
-              menuItems={menuItems}
-            />
-          ) : (
-            <SimpleSideNavigation location={location} menuItems={menuItems} />
-          )
-        }
-      </Location>
+      <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
+        <Location>
+          {({ location }) =>
+            currentDoc.parent === 'Komponenter' ? (
+              <ComponentsSideNavigation
+                location={location}
+                menuItems={menuItems}
+              />
+            ) : (
+              <SimpleSideNavigation location={location} menuItems={menuItems} />
+            )
+          }
+        </Location>
+      </nav>
     </Contrast>
   );
 };

@@ -1,0 +1,38 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-leg-line {
+  flex-grow: 1;
+
+  mask-image: url('./pattern/line.svg');
+  mask-position: center;
+  &--dotted {
+    mask-image: url('./pattern/dotted.svg');
+  }
+
+  &--vertical {
+    mask-repeat: repeat-y;
+    width: 1rem;
+
+    &.eds-leg-line--dashed {
+      mask-image: url('./pattern/dashed-vertical.svg');
+    }
+
+    &.eds-leg-line--wave {
+      mask-image: url('./pattern/wave-vertical.svg');
+    }
+  }
+
+  &--horizontal {
+    height: 1rem;
+    mask-repeat: repeat-x;
+    min-width: 6.25rem;
+
+    &.eds-leg-line--dashed {
+      mask-image: url('./pattern/dashed-horizontal.svg');
+    }
+
+    &.eds-leg-line--wave {
+      mask-image: url('./pattern/wave-horizontal.svg');
+    }
+  }
+}

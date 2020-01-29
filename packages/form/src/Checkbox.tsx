@@ -46,7 +46,11 @@ export const Checkbox: React.RefForwardingComponent<
         <span className="eds-form-component--checkbox__icon">
           <CheckboxIcon indeterminate={isIndeterminate} />
         </span>
-        {children && <Paragraph as="span">{children}</Paragraph>}
+        {children && (
+          <Paragraph margin="none" as="span">
+            {children}
+          </Paragraph>
+        )}
       </label>
     );
   },

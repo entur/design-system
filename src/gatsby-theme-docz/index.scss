@@ -21,18 +21,7 @@
 @import '~@entur/typography/dist/styles.css';
 
 @import '~@entur/tokens/dist/styles.scss';
-
-@mixin for-large-desktop {
-  @media screen and (min-width: #{$breakpoints-extra-large}) {
-    @content;
-  }
-}
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 body {
   margin: 0;

@@ -1,9 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .front-page {
   &__top {

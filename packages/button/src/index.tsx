@@ -11,3 +11,5 @@ export * from './NegativeButton';
 export * from './TertiaryButton';
 export * from './ButtonGroup';
 export * from './FloatingButton';
+export * from './SecondarySquareButton';
+export * from './SuccessSquareButton';

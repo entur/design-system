@@ -1,11 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/expand/dist/styles.css';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .eds-side-navigation,
 .eds-side-navigation-group {
