@@ -1,18 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useSegmentedGroupContext } from './SegmentedGroup';
+import {
+  useSegmentedGroup,
+  SelectedValues,
+  SelectedValue,
+} from './SegmentedGroupContext';
 import './SegmentedControl.scss';
 
 export type SegmentedControlProps = {
   /** Verdien til Segmented Control
-   * @default Verdien til children
    */
   value: string;
-  /** Label for Segmented Control */
+  /** Innhold som beskriver valget */
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** */
+  /** Callback som kalles når komponenten endres */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
 };
 
@@ -21,28 +25,32 @@ export const SegmentedControl: React.RefForwardingComponent<
   SegmentedControlProps
 > = React.forwardRef(
   (
-    { children, className, style, value, name, checked, ...rest },
+    { children, className, style, value, name, onChange = () => {}, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const {
-      name: selectedName,
-      value: selectedValue,
-      onChange,
+      name: commonName,
+      selectedValue,
+      onChange: commonOnChange,
       multiple,
-    } = useSegmentedGroupContext();
+    } = useSegmentedGroup();
 
-    const isControlled = checked !== undefined;
-    const isCheckbox = multiple;
-    let isChecked;
-    if (isCheckbox) {
-      if (isControlled) {
-        isChecked = checked;
-      } else {
-        isChecked = selectedValue![name];
+    const isChecked = multiple
+      ? (selectedValue as SelectedValues)[value]
+      : (selectedValue as SelectedValue) === value;
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(e);
+      if (multiple) {
+        commonOnChange({
+          ...(selectedValue as SelectedValues),
+          [value]: e.target.checked,
+        } as any);
+      } else if (e.target.checked) {
+        commonOnChange(value as any);
       }
-    } else {
-      isChecked = selectedValue === value;
-    }
+    };
+
     return (
       <label
         className={classNames('eds-segmented-control', className)}
@@ -50,10 +58,10 @@ export const SegmentedControl: React.RefForwardingComponent<
       >
         <input
           type={multiple ? 'checkbox' : 'radio'}
-          name={selectedName || name}
+          name={name || multiple ? commonName : undefined}
           checked={isChecked}
           value={value}
-          onChange={onChange}
+          onChange={handleChange}
           ref={ref}
           {...rest}
         />

@@ -1,64 +1,59 @@
 import React from 'react';
 import { Label } from '@entur/typography';
+import {
+  SegmentedGroupProvider,
+  SelectedValue,
+  SelectedValues,
+} from './SegmentedGroupContext';
 import './SegmentedGroup.scss';
 
-type SegmentedGroupContextProps = {
-  name?: string;
-  onChange?: (e: React.ChangeEvent) => void;
-  value?: string;
-  multiple: boolean;
-};
-
-const SegmentedGroupContext = React.createContext<SegmentedGroupContextProps | null>(
-  null,
-);
-
-const SegmentedGroupContextProvider = SegmentedGroupContext.Provider;
-
-export const useSegmentedGroupContext = () => {
-  const context = React.useContext(SegmentedGroupContext);
-  if (!context) {
-    throw new Error(
-      'Did you mean to use SegmentedControl without a SegmentedGroup?',
-    );
-  }
-  return context;
-};
-
 export type SegmentedGroupProps = {
-  /** Navn på gruppen brukes i forhold til radiogrupper */
+  /** Navn på input-elementene, for når multiple: false */
   name?: string;
-  /** Label som vises over SegmentedGroup */
+  /** Beskrivende tekst */
   label?: string;
-  /** Den valgte verdien */
-  value: string;
-  /** */
-  multiple: boolean;
+  /** En eller flere SegmentedControl-funksjoner */
   children: React.ReactNode;
-  onChange: (e: React.ChangeEvent) => void;
   [key: string]: any;
-};
+} & (
+  | {
+      /** Den eller de valgte verdiene */
+      selectedValue: SelectedValue;
+      /** Om man skal kunne velge flere valg */
+      multiple: false;
+      /** Callback for når det gjøres et valg. Om multiple er false */
+      onChange: (value: SelectedValue) => void;
+    }
+  | {
+      /** Den eller de valgte verdiene */
+      selectedValue: SelectedValues;
+      /** Om man skal kunne velge flere valg */
+      multiple: true;
+      /** Callback for når det gjøres et valg. Om multiple er false */
+      onChange: (value: SelectedValues) => void;
+    });
 
 export const SegmentedGroup: React.FC<SegmentedGroupProps> = ({
-  name,
-  label,
-  value,
   children,
+  label,
+  multiple,
+  name,
   onChange,
+  selectedValue,
   ...rest
 }) => {
-  const contextValue = React.useMemo(
-    () => ({ name, value, onChange, multiple: false }),
-    [name, value, onChange],
-  );
-
   return (
-    <SegmentedGroupContextProvider value={contextValue}>
+    <SegmentedGroupProvider
+      name={name}
+      selectedValue={selectedValue as any}
+      onChange={onChange as any}
+      multiple={multiple as any}
+    >
       <Label as="div">{label}</Label>
       <div className="eds-segmented-group" {...rest}>
         {children}
       </div>
-    </SegmentedGroupContextProvider>
+    </SegmentedGroupProvider>
   );
 };
 
@@ -68,27 +63,4 @@ export type SegmentedCheckboxGroupProps = {
   /** SegmentedControl-komponentene */
   children: React.ReactNode;
   onChange: (e: React.ChangeEvent) => void;
-};
-
-export const SegmentedCheckboxGroup: React.FC<SegmentedCheckboxGroupProps> = ({
-  label,
-  children,
-
-  onChange,
-  ...rest
-}) => {
-  const contextValue = {
-    name: undefined,
-    value: undefined,
-    onChange: onChange,
-    multiple: true,
-  };
-  return (
-    <SegmentedGroupContextProvider value={contextValue}>
-      <Label as="div">{label}</Label>
-      <div className="eds-segmented-group" {...rest}>
-        {children}
-      </div>
-    </SegmentedGroupContextProvider>
-  );
 };

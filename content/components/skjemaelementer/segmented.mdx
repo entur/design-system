@@ -1,6 +1,6 @@
 ---
 name: Segmented Control
-description: SegmentedControl er alternative komponenter for å gi radio- og checkbox-funksjonalitet.
+description: Komponenter for å tilby tett gruppert radio- og checkbox funksjonalitet
 route: /komponenter/skjemaelementer/segmented-control
 parent: Komponenter
 menu: Skjemaelementer
@@ -19,18 +19,15 @@ import PageHeader from '~/components/PageHeader';
 
 <Playground>
   {() => {
-    const [value, setValue] = React.useState(null);
-    const [value1, setValue1] = React.useState(null);
-    const [checkbox1, setCheckbox1] = React.useState(false);
+    const [homeTown, setHomeTown] = React.useState(null);
+    const [formatting, setFormatting] = React.useState({ b: false, i: false, u: false });
     return (
       <div>
         <div style={{ marginBottom: '1rem' }}>
           <SegmentedGroup
-            name="city"
             label="Velg din hjemby"
-            onChange={e => setValue(e.target.value)}
-            value={value}
-            multiple={false}
+            onChange={selectedValue => setHomeTown(selectedValue)}
+            selectedValue={homeTown}
           >
             <SegmentedControl value="Oslo">Oslo</SegmentedControl>
             <SegmentedControl value="Bergen">Bergen</SegmentedControl>
@@ -40,28 +37,24 @@ import PageHeader from '~/components/PageHeader';
         <div style={{ marginBottom: '1rem' }}>
           <SegmentedGroup
             label="Velg skrifttype"
-            value={value1}
-            multiple={true}
-            onChange={e => console.log(e.target.name, e.target.checked)}
+            selectedValue={formatting}
+            multiple
+            onChange={selectedValues => setFormatting(selectedValues)}
             style={{ width: '7rem' }}
           >
-            <SegmentedControl value="b" name="b">
+            <SegmentedControl value="b">
               <BoldIcon inline />
             </SegmentedControl>
-            <SegmentedControl value="k" name="k">
+            <SegmentedControl value="k">
               <ItalicIcon inline />
             </SegmentedControl>
-            <SegmentedControl value="u" name="u">
+            <SegmentedControl value="u">
               <UnderlineIcon inline />
             </SegmentedControl>
           </SegmentedGroup>
         </div>
-        <div style={{ display: 'flex' }}>
-
-        </div>
       </div>
     );
-
 }}
 
 </Playground>
@@ -80,3 +73,5 @@ Multiple i dette tilfelle refererer til om man har mulighet til å velge flere a
 
 <ImportStatement imports="SegmentedControl" />
 <Props of={SegmentedControl} />
+
+## Eksempler
