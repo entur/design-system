@@ -1,36 +1,31 @@
 import React from 'react';
 import { Label } from '@entur/typography';
-import { SegmentedProvider, SelectedValue } from './SegmentedContext';
+import { SegmentedProvider, SelectedValues } from './SegmentedContext';
 import './SegmentedControl.scss';
 
-export type SegmentedControlProps = {
+export type MultipleSegmentedControlProps = {
   /** Navn på input-elementene */
   name?: string;
   /** Beskrivende tekst */
   label?: string;
   /** En eller flere SegmentedChoice-komponenter */
   children: React.ReactNode;
-  /** Den valgte verdien */
-  selectedValue: SelectedValue;
+  /** Den eller de valgte verdiene */
+  selectedValue: SelectedValues;
   /** Callback for når det gjøres et valg */
-  onChange: (value: SelectedValue) => void;
+  onChange: (value: SelectedValues) => void;
   [key: string]: any;
 };
 
-export const SegmentedControl: React.FC<SegmentedControlProps> = ({
-  children,
-  label,
-  name,
-  onChange,
-  selectedValue,
-  ...rest
-}) => {
+export const MultipleSegmentedControl: React.FC<
+  MultipleSegmentedControlProps
+> = ({ children, label, name, onChange, selectedValue, ...rest }) => {
   return (
     <SegmentedProvider
       name={name}
       selectedValue={selectedValue}
       onChange={onChange}
-      multiple={false}
+      multiple={true}
     >
       <Label as="div">{label}</Label>
       <div className="eds-segmented-control" {...rest}>

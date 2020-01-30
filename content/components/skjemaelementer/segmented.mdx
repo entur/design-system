@@ -9,7 +9,11 @@ tags: radio, checkbox
 ---
 
 import { Props } from 'docz';
-import { SegmentedGroup, SegmentedControl } from '@entur/form';
+import {
+  SegmentedControl,
+  MultipleSegmentedControl,
+  SegmentedChoice,
+} from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
@@ -24,34 +28,33 @@ import PageHeader from '~/components/PageHeader';
     return (
       <div>
         <div style={{ marginBottom: '1rem' }}>
-          <SegmentedGroup
+          <SegmentedControl
             label="Velg din hjemby"
             onChange={selectedValue => setHomeTown(selectedValue)}
             selectedValue={homeTown}
           >
-            <SegmentedControl value="Oslo">Oslo</SegmentedControl>
-            <SegmentedControl value="Bergen">Bergen</SegmentedControl>
-            <SegmentedControl value="Leknes">Leknes</SegmentedControl>
-          </SegmentedGroup>
+            <SegmentedChoice value="Oslo">Oslo</SegmentedChoice>
+            <SegmentedChoice value="Bergen">Bergen</SegmentedChoice>
+            <SegmentedChoice value="Leknes">Leknes</SegmentedChoice>
+          </SegmentedControl>
         </div>
         <div style={{ marginBottom: '1rem' }}>
-          <SegmentedGroup
+          <MultipleSegmentedControl
             label="Velg skrifttype"
             selectedValue={formatting}
-            multiple
             onChange={selectedValues => setFormatting(selectedValues)}
             style={{ width: '7rem' }}
           >
-            <SegmentedControl value="b">
+            <SegmentedChoice value="b">
               <BoldIcon inline />
-            </SegmentedControl>
-            <SegmentedControl value="k">
+            </SegmentedChoice>
+            <SegmentedChoice value="k">
               <ItalicIcon inline />
-            </SegmentedControl>
-            <SegmentedControl value="u">
+            </SegmentedChoice>
+            <SegmentedChoice value="u">
               <UnderlineIcon inline />
-            </SegmentedControl>
-          </SegmentedGroup>
+            </SegmentedChoice>
+          </MultipleSegmentedControl>
         </div>
       </div>
     );
@@ -61,17 +64,41 @@ import PageHeader from '~/components/PageHeader';
 
 ## Komponenter
 
-### SegmentedGroup
-
-<ImportStatement imports="SegmentedGroup" />
-<Props of={SegmentedGroup} />
-
-Om man wrapper `SegmentedControl` i en `SegmentedGroup`, så kan man ved hjelp av `multiple` bestemme om man ønsker seg radio- eller checkbox-funksjonalitet.
-Multiple i dette tilfelle refererer til om man har mulighet til å velge flere alternativer, det vil si, flere valg betyr Checkbox.
-
 ### SegmentedControl
 
 <ImportStatement imports="SegmentedControl" />
 <Props of={SegmentedControl} />
 
-## Eksempler
+`SegmentedControl` wrapper to eller flere `SegmentedChoice`-komponenter, og lar brukeren velge mellom forskjellige valg. For å kunne velge flere valg, bruk `MultipleSegmentedControl`.
+
+### MultipleSegmentedControl
+
+<ImportStatement imports="MultipleSegmentedControl" />
+<Props of={MultipleSegmentedControl} />
+
+`MultipleSegmentedControl` er lik som `SegmentedControl`, men tillater brukeren å velge flere valg på en gang. Dette gjør at `selectedValue`-propen må være et objekt, der nøklene korresponderer til `value`-verdien i de nøstede `SegmentedChoice`-komponentene. `onChange` vil også bli kalt med samme objektet.
+
+Et eksempel kan være:
+
+```js
+<MultipleSegmentedControl
+  selectedValue={{ italics: true, bold: false }}
+  onChange={{ italics, bold } => changeFormatting({ italics, bold })}
+>
+  <SegmentedChoice value="italics"><em>Italics</em></SegmentedChoice>
+  <SegmentedChoice value="bold"><strong>Bold</strong></SegmentedChoice>
+</MultipleSegmentedControl>
+```
+
+### SegmentedChoice
+
+<ImportStatement imports="SegmentedChoice" />
+<Props of={SegmentedChoice} />
+
+`SegmentedChoice` wrapper et valg inni en `SegmentedControl` eller `MultipleSegmentedControl`. Send inn en unik `value` som identifiserer valget, og send inn hva du vil (typisk en tekst eller et ikon) som `children`.
+
+<BannerAlertBox variant="info" title="Husk beskrivelser for skjermlesere">
+  Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
+  viktig at du sender inn en `aria-label` prop, eller bruker `VisuallyHidden`
+  (fra `@entur/a11y`) for å gi valget en god beskrivelse.
+</BannerAlertBox>

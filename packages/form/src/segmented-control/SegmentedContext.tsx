@@ -3,7 +3,7 @@ import { useRandomId } from '@entur/utils';
 
 export type SelectedValues = { [key: string]: boolean };
 export type SelectedValue = string | null;
-export type SegmentedGroupContextProps =
+export type SegmentedContextProps =
   | {
       name: string;
       onChange: (value: SelectedValues) => void;
@@ -17,11 +17,11 @@ export type SegmentedGroupContextProps =
       multiple: false;
     };
 
-const SegmentedGroupContext = React.createContext<SegmentedGroupContextProps | null>(
+const SegmentedContext = React.createContext<SegmentedContextProps | null>(
   null,
 );
 
-export type SegmentedGroupProviderProps =
+export type SegmentedProviderProps =
   | {
       name?: string;
       onChange?: (value: SelectedValues) => void;
@@ -35,14 +35,14 @@ export type SegmentedGroupProviderProps =
       multiple: false;
     };
 
-export const SegmentedGroupProvider: React.FC<SegmentedGroupProviderProps> = ({
+export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
   name,
   onChange = () => {},
   selectedValue,
   multiple,
   ...rest
 }) => {
-  const generatedName = useRandomId('eds-segmented-group');
+  const generatedName = useRandomId('eds-segmented-control');
   const contextValue = React.useMemo(
     () => ({
       name: name || generatedName,
@@ -51,15 +51,15 @@ export const SegmentedGroupProvider: React.FC<SegmentedGroupProviderProps> = ({
       selectedValue,
     }),
     [generatedName, multiple, name, onChange, selectedValue],
-  ) as SegmentedGroupContextProps;
-  return <SegmentedGroupContext.Provider value={contextValue} {...rest} />;
+  ) as SegmentedContextProps;
+  return <SegmentedContext.Provider value={contextValue} {...rest} />;
 };
 
-export const useSegmentedGroup = () => {
-  const context = React.useContext(SegmentedGroupContext);
+export const useSegmentedContext = () => {
+  const context = React.useContext(SegmentedContext);
   if (!context) {
     throw new Error(
-      'Did you mean to use SegmentedControl without a SegmentedGroup?',
+      'You need to wrap your SegmentedChoice in a SegmentedControl component',
     );
   }
   return context;
