@@ -2,22 +2,41 @@
 
 .eds-navigation-card {
   display: flex;
+  border: none;
   flex-direction: column;
   text-align: center;
   padding: $space-large;
-  &:hover {
-    border: $colors-brand-blue $border-widths-default solid;
+  position: relative;
+  overflow: hidden;
+  &:after {
+    background-color: $colors-brand-coral;
+    border-bottom-left-radius: $border-radiuses-medium;
+    border-bottom-right-radius: $border-radiuses-medium;
+    bottom: -$space-small;
+    content: '';
+    display: block;
+    height: $border-widths-large;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    transition: bottom $timings-medium ease-in-out,
+      opacity $timings-medium ease-in-out;
+    width: 100%;
+  }
+  &:hover:after {
+    bottom: 0;
+    opacity: 1;
   }
 
   &__title-icon {
+    background: $colors-blues-blue80;
+    border-radius: 50%;
+    display: flex;
     font-size: 2rem;
+    padding: $space-small;
   }
   &__arrow-icon {
     margin-top: 1rem;
-    transition: transform $timings-fast ease-out;
-    .eds-base-card:hover & {
-      transform: translateX(0.5rem);
-    }
   }
   &--compact {
     flex-direction: row;
