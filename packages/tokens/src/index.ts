@@ -181,8 +181,9 @@ export const zIndexes = {
   toast: zIndexScale[6],
 };
 
-const timingScale = ['0.1s', '0.5s'];
+const timingScale = ['0.1s', '0.2s', '0.5s'];
 export const timings = {
   fast: timingScale[0],
-  slow: timingScale[1],
+  medium: timingScale[1],
+  slow: timingScale[2],
 };
