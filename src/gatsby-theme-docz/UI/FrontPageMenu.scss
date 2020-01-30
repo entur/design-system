@@ -1,15 +1,14 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .frontpage-header {
-  border-bottom: $colors-greys-grey20 solid $border-widths-small;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--primary-background-color);
 }
 .frontpage-header__logo {
-  width: 15rem;
-  margin: $space-extra-large $space-medium;
+  width: 100%;
+  padding: $space-extra-large2 $space-extra-large2 0 $space-extra-large2;
 }
 .frontpage-header__navigation {
   display: flex;

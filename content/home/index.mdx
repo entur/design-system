@@ -22,7 +22,12 @@ import { PrimaryButton, SecondaryButton, ButtonGroup } from '@entur/button';
 import { Contrast } from '@entur/layout';
 import { NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
-import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
+import {
+  GoalIcon,
+  ColorPickerIcon,
+  ViewIcon,
+  SourceCodeIcon,
+} from '@entur/icons';
 import { Link } from 'docz';
 import Changelog from '~/components/FrontPageChangelog';
 import './index.scss';
@@ -43,31 +48,49 @@ import './index.scss';
 
 <div className="front-page--card-box-container">
   <NavigationCard
-    title="Personlighet og stemme"
-    titleIcon={<EditIcon />}
+    title="Kom  i gang"
+    titleIcon={<GoalIcon />}
     as={Link}
     to="/design-prinsipper/personlighet-og-stemme"
   >
-    Hvem snakker vi til? <br />
-    Lær om hvordan vi bruker språket til å kommunisere med brukerne våre.
+    Les mer om hvem Entur er, vår arbeidskultur, designprosess og verktøyene vi
+    bruker.
+  </NavigationCard>
+  <NavigationCard
+    title="Designprinsipper"
+    titleIcon={<ColorPickerIcon />}
+    as={Link}
+    to="/visuell-identitet"
+  >
+    Lær om hvordan vi bruker språket til å kommunisere med brukerne våre og
+    hvordan vi brukertester
   </NavigationCard>
   <NavigationCard
     title="Visuell identitet"
     titleIcon={<ColorPickerIcon />}
     as={Link}
-    to="/visuell-identitet"
+    to="/design-prinsipper/universell-utforming"
   >
-    Bli kjent med hvem Entur er. Veiledning og retningslinjer til deg som skal
+    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
     ta identiteten i bruk.
   </NavigationCard>
   <NavigationCard
-    title="Universell utforming"
-    titleIcon={<ViewIcon />}
+    title="Marked"
+    titleIcon={<GoalIcon />}
     as={Link}
     to="/design-prinsipper/universell-utforming"
   >
-    Retningslinjer for design og utvikling av digitale løsninger i henhold til
-    lovverket.
+    Hvem snakker vi til? <br /> Lær om hvordan vi bruker språket til å
+    kommunisere med brukerne våre.
+  </NavigationCard>
+  <NavigationCard
+    title="Komponenter"
+    titleIcon={<SourceCodeIcon />}
+    as={Link}
+    to="/design-prinsipper/universell-utforming"
+  >
+    Komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer for
+    bruk.
   </NavigationCard>
   <NavigationCard
     title="Universell utforming"
@@ -78,35 +101,4 @@ import './index.scss';
     Retningslinjer for design og utvikling av digitale løsninger i henhold til
     lovverket.
   </NavigationCard>
-  <NavigationCard
-    title="Universell utforming"
-    titleIcon={<ViewIcon />}
-    as={Link}
-    to="/design-prinsipper/universell-utforming"
-  >
-    Retningslinjer for design og utvikling av digitale løsninger i henhold til
-    lovverket.
-  </NavigationCard>
-  <NavigationCard
-    title="Universell utforming"
-    titleIcon={<ViewIcon />}
-    as={Link}
-    to="/design-prinsipper/universell-utforming"
-  >
-    Retningslinjer for design og utvikling av digitale løsninger i henhold til
-    lovverket.
-  </NavigationCard>
-</div>
-
-<div className="front-page-bottom">
-  <div>
-    <Heading3>Entur AS</Heading3>
-    <div>Addresse</div>
-  </div>
-  <div>
-    <Heading3>Kontakt</Heading3>
-  </div>
-  <div>
-    <Heading3>Sidestruktur</Heading3>
-  </div>
 </div>

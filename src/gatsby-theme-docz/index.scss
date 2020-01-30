@@ -51,9 +51,10 @@ body {
 .blueback {
   .oi {
     background: $colors-brand-blue;
-    height: 30rem;
+    height: 35rem;
     position: absolute;
     width: 100vw;
+    top: 0;
     z-index: -1;
   }
 }

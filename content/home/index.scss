@@ -3,6 +3,7 @@
 
 .front-page {
   &__top {
+    margin-top: $space-extra-large;
   }
   &-landing-picture {
     margin-top: $space-default;
@@ -19,6 +20,7 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
     margin-bottom: $space-extra-large4;
+    margin-top: $space-extra-large5;
   }
   &-components {
     display: grid;
@@ -44,10 +46,8 @@
     }
   }
   &-bottom {
-    margin: 0 $space-default;
-    text-align: center;
-    @include for-desktop {
-      margin: 0 12rem $space-extra-large;
-    }
+    background-color: $colors-greys-grey40;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

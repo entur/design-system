@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'docz';
 import { TopNavigationItem } from '@entur/menu';
-import LogoDark from '~/components/logoDark.svg';
+import logo from '~/components/logo.svg';
 import './FrontPageMenu.scss';
+import { Contrast } from '@entur/layout/src';
 
 function FrontPageMenu() {
   return (
-    <header className="frontpage-header">
-      <img src={LogoDark} alt="Entur logo" className="frontpage-header__logo" />
+    <Contrast as="header" className="frontpage-header">
+      <span style={{ width: '26rem', alignSelf: 'flex-start' }}>
+        <img src={logo} alt="Entur logo" className="frontpage-header__logo" />
+      </span>
       <nav
         className="frontpage-header__navigation"
         aria-label="Navigasjon, hovedseksjoner"
@@ -25,7 +28,7 @@ function FrontPageMenu() {
           Komponenter
         </TopNavigationItem>
       </nav>
-    </header>
+    </Contrast>
   );
 }
 
