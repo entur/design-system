@@ -9,6 +9,15 @@ export type BaseSquareButtonProps = {
   className?: string;
   /** En type knapp */
   variant: 'success' | 'secondary';
+  /** Deaktivering av knappen
+   * @default false
+   */
+  disabled?: boolean;
+  /** HTML-elementet eller React-komponenten som lager knappen
+   * @default 'button'
+   */
+  as?: 'a' | 'button' | React.ElementType;
+
   [key: string]: any;
 };
 
@@ -16,10 +25,14 @@ export const BaseSquareButton: React.FC<BaseSquareButtonProps> = ({
   children,
   className,
   variant,
+  disabled = false,
+  as = 'button',
   ...rest
 }) => {
+  const Element = disabled ? 'button' : as;
+
   return (
-    <button
+    <Element
       className={classNames(
         'eds-square-button',
         { 'eds-square-button--success': variant === 'success' },
@@ -34,6 +47,6 @@ export const BaseSquareButton: React.FC<BaseSquareButtonProps> = ({
         }
         return <span className="eds-square-button__icon">{child}</span>;
       })}
-    </button>
+    </Element>
   );
 };
