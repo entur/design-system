@@ -3,6 +3,8 @@ import { TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
 import './SearchBar.scss';
 
+const LazyEasterEgg = React.lazy(() => import('react-confetti'));
+
 type SearchBarProps = {
   /** The query text shown in the search field */
   searchText: string;
@@ -43,6 +45,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     };
   });
 
+  const enableEasterEgg = searchText === '🎉';
+
   return (
     <div className="searchbar-wrapper">
       <TextField
@@ -55,6 +59,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         width="fluid"
         ref={inputRef}
       />
+      {enableEasterEgg && (
+        <React.Suspense fallback="">
+          <LazyEasterEgg />
+        </React.Suspense>
+      )}
     </div>
   );
 };

@@ -82,6 +82,7 @@
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.11.0",
     "react-helmet-async": "^1.0.4",
     "react-live": "^2.2.1",
