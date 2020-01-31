@@ -59,7 +59,7 @@ export const useSegmentedContext = () => {
   const context = React.useContext(SegmentedContext);
   if (!context) {
     throw new Error(
-      'You need to wrap your SegmentedChoice in a SegmentedControl component',
+      'You need to wrap your SegmentedChoice in either SegmentedControl or MultipleSegmentedControl',
     );
   }
   return context;
