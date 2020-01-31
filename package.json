@@ -3,6 +3,7 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "yarn build:packages && yarn build:docz",
     "build:packages": "lerna run build",
     "build:docz": "docz build",
@@ -18,26 +19,7 @@
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx"
   },
   "workspaces": [
-    "packages/a11y",
-    "packages/alert",
-    "packages/button",
-    "packages/chip",
-    "packages/datepicker",
-    "packages/dropdown",
-    "packages/expand",
-    "packages/form",
-    "packages/icons",
-    "packages/layout",
-    "packages/loader",
-    "packages/menu",
-    "packages/modal",
-    "packages/tab",
-    "packages/table",
-    "packages/tokens",
-    "packages/tooltip",
-    "packages/travel",
-    "packages/typography",
-    "packages/utils"
+    "packages/*"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^4.1.0",
@@ -100,6 +82,7 @@
     "match-sorter": "^4.0.2",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.11.0",
     "react-helmet-async": "^1.0.4",
     "react-live": "^2.2.1",
