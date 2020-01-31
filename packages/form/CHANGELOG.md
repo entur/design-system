@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.5...@entur/form@2.3.0) (2020-01-31)
+
+### Bug Fixes
+
+- **SegmentedControl:** improve the error message slightly ([8df42c8](https://bitbucket.org/enturas/design-system/commits/8df42c8b8905fd4f9b8de7719422027770a3e7b5))
+
+### Features
+
+- add the SegmentedControl and SegmentedGroup components ([59fbd54](https://bitbucket.org/enturas/design-system/commits/59fbd543211d5222f17a365dd7fbb583fcf92373))
+- rename to SegmentedControl and SegmentedChoice ([a1919b1](https://bitbucket.org/enturas/design-system/commits/a1919b17151ba278926a2d00fa1c9639164a7b0b))
+
 ## [2.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.4...@entur/form@2.2.5) (2020-01-28)
 
 **Note:** Version bump only for package @entur/form
