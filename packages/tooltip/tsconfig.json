@@ -4,7 +4,7 @@
   "exclude": ["src/**/*.test.tsx", "node_modules", "dist"],
   "compilerOptions": {
     "paths": {
-      "@entur/*": ["../*/src"]
+      "@entur/*": ["../*/dist"]
     },
     "baseUrl": "..",
     "rootDir": "."
