@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build && cp -r src/pattern dist/pattern",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"

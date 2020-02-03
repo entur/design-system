@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.13](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.12...@entur/chip@0.2.13) (2020-01-31)
+
+**Note:** Version bump only for package @entur/chip
+
 ## [0.2.12](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.11...@entur/chip@0.2.12) (2020-01-28)
 
 **Note:** Version bump only for package @entur/chip

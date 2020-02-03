@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.0.0...@entur/button@2.1.0) (2020-01-31)
+
+### Bug Fixes
+
+- **Bugfiks: let square buttons accept "as":** let square buttons accept "as" ([a94eec1](https://bitbucket.org/enturas/design-system/commits/a94eec11e3e6a65361df2d1087a52afc792051dc))
+
+### Features
+
+- **Add types for as in square button:** add types for as in square button ([2a71ee3](https://bitbucket.org/enturas/design-system/commits/2a71ee3af96214a5a92957d4d1dd348ec4bc5255))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@1.6.1...@entur/button@2.0.0) (2020-01-28)
 
 ### Code Refactoring

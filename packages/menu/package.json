@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },

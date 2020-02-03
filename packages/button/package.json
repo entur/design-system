@@ -1,6 +1,6 @@
 {
   "name": "@entur/button",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/button.esm.js",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
