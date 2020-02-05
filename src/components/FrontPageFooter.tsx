@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading3, Heading4, SubParagraph, Link } from '@entur/typography';
 import { Link as DoczLink } from 'docz';
+import { FacebookIcon, TwitterIcon } from '@entur/icons';
 import logo from './EnturLogo.svg';
 import './FrontPageFooter.scss';
 
@@ -62,6 +63,20 @@ function FrontPageFooter() {
           <Heading4 margin="none" as={Link} href="https://entur.no/">
             Entur.no
           </Heading4>
+          <div style={{ marginTop: '2rem', display: 'flex' }}>
+            <a
+              href="https://www.facebook.com/entur.org/"
+              className="front-page-footer__circular-icon"
+            >
+              <FacebookIcon />
+            </a>
+            <a
+              href="https://twitter.com/Entur_AS"
+              className="front-page-footer__circular-icon"
+            >
+              <TwitterIcon />
+            </a>
+          </div>
         </div>
       </div>
     </div>

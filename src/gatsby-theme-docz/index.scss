@@ -32,6 +32,7 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
+  margin-top: $space-extra-large;
   transition: max-width $timings-fast ease-out,
     margin-left $timings-fast ease-out;
 
@@ -51,7 +52,7 @@ body {
 .blueback {
   .oi {
     background: $colors-brand-blue;
-    height: 35rem;
+    height: 39rem;
     position: absolute;
     width: 100vw;
     top: 0;
@@ -65,7 +66,7 @@ body {
   flex-direction: column;
   min-height: 90vh;
   @include for-large-desktop {
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1rem;
     max-width: 64rem;
   }
 }

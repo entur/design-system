@@ -1,13 +1,15 @@
 import React from 'react';
 import { hex } from 'wcag-contrast';
-import copy from 'copy-text-to-clipboard';
 import { useToast } from '@entur/alert';
 import { colors } from '@entur/tokens';
 import { ReportsIcon } from '@entur/icons';
 import { StrongText } from '@entur/typography';
 import { formatVariable } from '~/utils/formatVariable';
-import './ColorSwatch.scss';
 import { useSettings } from './SettingsContext';
+import { DataCell, TableRow } from '@entur/table';
+import copy from 'copy-text-to-clipboard';
+import hexrgb from 'hex-rgb';
+import './ColorSwatch.scss';
 
 function getColorFromPath(path: string) {
   return path
@@ -35,13 +37,13 @@ function getBestForegroundColorForBackground(backgroundColor: string) {
 
 type Props = {
   path: string;
+  type: string;
   style?: any;
 };
 
-const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
+const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
   const { addToast } = useToast();
   const backgroundColor = getColorFromPath(path);
-  const foregroundColor = getBestForegroundColorForBackground(backgroundColor);
   const { variableFormat } = useSettings();
   const variableName = formatVariable(`colors.${path}`, variableFormat);
 
@@ -50,29 +52,29 @@ const ColorSwatch: React.FC<Props> = ({ children, path, style }) => {
     addToast(`"${textToCopy}" er kopiert til utklippstavla`);
   };
 
+  const rgb = hexrgb(backgroundColor, { format: 'array' });
+
   return (
-    <div
-      className="color-swatch"
-      style={{ backgroundColor, color: foregroundColor, ...style }}
-    >
-      <StrongText>{children}</StrongText>
-      <div className="color-swatch__details">
-        <button
-          className="color-swatch__copy-button"
-          onClick={handleCopyClick(backgroundColor)}
-          type="button"
-        >
-          {backgroundColor} <ReportsIcon inline={true} />
-        </button>
-        <button
-          className="color-swatch__copy-button"
-          onClick={handleCopyClick(variableName)}
-          type="button"
-        >
-          {variableName} <ReportsIcon inline={true} />
-        </button>
-      </div>
-    </div>
+    <TableRow className="color-swatch">
+      <DataCell>
+        <div
+          className="color-square"
+          style={{ backgroundColor: backgroundColor, ...style }}
+        />
+      </DataCell>
+      <DataCell>
+        <StrongText style={{ textTransform: 'capitalize' }}>
+          {children}
+        </StrongText>
+      </DataCell>
+      <DataCell>{type}</DataCell>
+      <DataCell>{variableName}</DataCell>
+
+      <DataCell>{backgroundColor}</DataCell>
+      <DataCell>
+        {rgb[0]}, {rgb[1]}, {rgb[2]}{' '}
+      </DataCell>
+    </TableRow>
   );
 };
 

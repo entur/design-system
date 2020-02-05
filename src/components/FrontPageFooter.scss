@@ -24,5 +24,17 @@
       display: flex;
       flex-direction: column;
     }
+    &__circular-icon {
+      appearance: none;
+      color: $colors-brand-white;
+      background: $colors-brand-blue;
+      margin-right: $space-small;
+      display: flex;
+      border-radius: 50%;
+      padding: $space-extra-small;
+      &:hover {
+        background-color: $colors-brand-lavender;
+      }
+    }
   }
 }

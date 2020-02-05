@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'docz';
 import { TopNavigationItem } from '@entur/menu';
 import logo from '~/components/logo.svg';
-import './FrontPageMenu.scss';
+import SettingsPanel from '~/components/SettingsPanel';
 import { Contrast } from '@entur/layout/src';
+import './FrontPageMenu.scss';
 
 function FrontPageMenu() {
   return (
@@ -28,6 +29,7 @@ function FrontPageMenu() {
           Komponenter
         </TopNavigationItem>
       </nav>
+      <SettingsPanel />
     </Contrast>
   );
 }

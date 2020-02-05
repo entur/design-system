@@ -6,7 +6,6 @@ import { SkipToContent } from '@entur/a11y';
 import SiteFooter from '~/components/SiteFooter';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
-import SettingsPanel from '~/components/SettingsPanel';
 import SEO from '~/gatsby-theme-docz/base/Seo';
 import Props from '~/components/Props';
 import Menu from './UI/Menu';
@@ -60,7 +59,6 @@ const App: React.FC = ({ children }) => {
               </div>
             </>
           )}
-          <SettingsPanel />
         </ComponentsProvider>
       </ToastProvider>
     </SettingsProvider>
