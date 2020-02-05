@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.0...@entur/layout@1.2.1) (2020-02-05)
+
+### Bug Fixes
+
+- fixing broken flow for mediacard ([b9069b8](https://bitbucket.org/enturas/design-system/commits/b9069b8bb115f750968ae194f357b72d3f1442ab))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.1.1...@entur/layout@1.2.0) (2020-02-05)
 
 ### Bug Fixes
