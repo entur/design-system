@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.4...@entur/tokens@1.2.0) (2020-02-05)
+
+### Bug Fixes
+
+- add "medium" timing for transition and animation purposes ([e1fd226](https://bitbucket.org/enturas/design-system/commits/e1fd22680064babdbe51f69708c2516410d9d0fd))
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+### Features
+
+- adding extra large breakpoint token ([543e60b](https://bitbucket.org/enturas/design-system/commits/543e60b224f05ae390252bdd86d7aa35c7ca77e3))
+
 ## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.3...@entur/tokens@1.1.4) (2020-01-28)
 
 ### Bug Fixes
