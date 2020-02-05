@@ -7,3 +7,4 @@ warnAboutMissingStyles('layout', 'typography');
 export * from './Contrast';
 export * from './NavigationCard';
 export * from './BaseCard';
+export * from './MediaCard';
