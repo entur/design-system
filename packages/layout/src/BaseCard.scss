@@ -9,6 +9,9 @@
   text-decoration: none;
   color: inherit;
   transition: border-color $timings-fast ease-out;
+  .eds-contrast & {
+    background-color: $colors-blues-blue10;
+  }
   &--red-line {
     &:after {
       background-color: $colors-brand-coral;

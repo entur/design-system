@@ -20,6 +20,9 @@
     display: flex;
     font-size: 2rem;
     padding: $space-small;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
   }
   &__arrow-icon {
     margin-top: 1rem;
