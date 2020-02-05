@@ -3,14 +3,13 @@
 
 .front-page {
   &__top {
-    margin-top: $space-extra-large;
+    margin-top: $space-extra-large3;
+    .front-page__lead-paragraph {
+      margin-bottom: $space-extra-large3;
+    }
   }
   &-landing-picture {
     margin-top: $space-default;
-  }
-  &-lead-paragraph {
-    text-align: center;
-    margin-bottom: $space-extra-large;
   }
   &--card-box-container {
     display: grid;
