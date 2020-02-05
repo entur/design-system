@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-media-card {
-  display: block;
+  flex-direction: column;
   overflow: hidden;
   position: relative;
   width: fit-content;
