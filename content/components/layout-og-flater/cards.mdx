@@ -13,16 +13,40 @@ import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
-import { BanknoteIcon } from '@entur/icons';
+import { BanknoteIcon, DesktopIcon, FileIcon } from '@entur/icons';
 
 <PageHeader />
 
 <Playground>
-  <NavigationCard title="Betaling" titleIcon={<BanknoteIcon />} href="#">
-    Klikk her for å gå videre til betaling
-  </NavigationCard>
+  <div
+    style={{
+      display: 'grid',
+      gridGap: '1.5rem',
+      gridTemplateColumns: '1fr 1fr 1fr',
+    }}
+  >
+    <NavigationCard title="Data" titleIcon={<DesktopIcon />} href="#">
+      Se all dataen vår
+    </NavigationCard>
+    <NavigationCard title="Bestilling" titleIcon={<BanknoteIcon />} href="#">
+      Se dine bestillinger
+    </NavigationCard>
+    <NavigationCard title="Oppsummering" titleIcon={<FileIcon />} href="#">
+      Oppsummering av all fakta
+    </NavigationCard>
+  </div>
   <br />
-  <NavigationCard compact title="Betaling" href="#" />
+  <div
+    style={{
+      display: 'grid',
+      gridGap: '1rem',
+      gridTemplateRows: '1fr 1fr 1fr',
+    }}
+  >
+    <NavigationCard compact title="Data" href="#" />
+    <NavigationCard compact title="Bestilling" href="#" />
+    <NavigationCard compact title="Oppsummering" href="#" />
+  </div>
   <div style={{ margin: '1rem 0rem' }}>
     <BaseCard
       style={{ display: 'flex', flexDirection: 'column', width: '10rem' }}
@@ -44,8 +68,10 @@ import { BanknoteIcon } from '@entur/icons';
 <Props of={NavigationCard} />
 
 `NavigationCard` kan brukes gjerne på landingssider for å gi oversiktlige linker til forskjellige undersider. `NavigationCard` skal ha en beskrivende tekst under tittelen, og gjerne et beskrivende ikon.
+Bruk helst eksempelet over, og ha 1.5rem/24px mellom hvert NavigationCard.
 
 `NavigationCard` med `compact`-propen kan brukes på samme måte, men heller om man vil bruke mindre plass, eller ikke har en beskrivende tekst til tittelen.
+Ettersom denne ikke har forflyttning ved hover, så kan du bruke lavere verdier for spacing mellom boksene.
 
 ### Card
 

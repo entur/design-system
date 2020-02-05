@@ -3,19 +3,30 @@
 
 .site-sidebar-wrapper {
   width: 100%;
-
+  transition: max-width $timings-fast ease-out;
   @include for-desktop {
+    max-width: 18rem;
     height: 100vh;
     left: 0;
     top: 0;
     padding-bottom: 10rem;
-    max-width: 18rem;
     overflow-y: scroll;
     position: fixed;
     z-index: $z-indexes-sticky;
   }
+  @include for-large-desktop {
+    max-width: 26rem;
+  }
 }
 
-.site-sidebar-logo img {
-  width: 15rem;
+.site-sidebar__logo-svg {
+  width: 100%;
+  padding: $space-extra-large2 $space-extra-large2 0 $space-extra-large2;
+}
+
+.site-sidebar {
+  &__searchbar {
+  }
+  &__group {
+  }
 }

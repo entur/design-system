@@ -36,6 +36,7 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
 }) => {
   const classList = classNames(
     'eds-base-card',
+    'eds-base-card--red-line',
     'eds-navigation-card',
     className,
     {
@@ -47,7 +48,11 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}
-      <Heading3 as="span" margin="both">
+      <Heading3
+        className="eds-navigation-card__title"
+        as="span"
+        margin={compact ? 'none' : 'both'}
+      >
         {title}
       </Heading3>
       {!compact && <Paragraph>{children}</Paragraph>}

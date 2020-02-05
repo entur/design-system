@@ -1,13 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .color-swatch {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: $space-default $space-large;
-  margin-bottom: $space-extra-small2;
 }
 
+.color-square {
+  height: 3rem;
+  width: 3rem;
+  border-radius: $border-radiuses-medium;
+}
 .color-swatch__details {
   display: flex;
   flex-direction: column;

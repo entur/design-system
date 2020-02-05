@@ -4,6 +4,7 @@ import { Location } from '@reach/router';
 import { TopNavigationItem } from '@entur/menu';
 import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
+import SettingsPanel from '~/components/SettingsPanel';
 import './Menu.scss';
 
 export default function Menus() {
@@ -14,6 +15,7 @@ export default function Menus() {
         <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
         <NavItem to="/visuell-identitet">Visuell identitet</NavItem>
         <NavItem to="/komponenter">Komponenter</NavItem>
+        <SettingsPanel />
       </nav>
       <SiteSidebar />
       <TocNavigation />

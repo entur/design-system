@@ -2,27 +2,41 @@
 
 .eds-navigation-card {
   display: flex;
+  border: none;
   flex-direction: column;
   text-align: center;
   padding: $space-large;
+  position: relative;
+  overflow: hidden;
+  transition: transform $timings-medium ease-in-out;
+
   &:hover {
-    border: $colors-brand-blue $border-widths-default solid;
+    transform: translateY(-$space-extra-small2);
   }
 
   &__title-icon {
+    background: $colors-blues-blue80;
+    border-radius: 50%;
+    display: flex;
     font-size: 2rem;
+    padding: $space-small;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
   }
   &__arrow-icon {
     margin-top: 1rem;
-    transition: transform $timings-fast ease-out;
-    .eds-base-card:hover & {
-      transform: translateX(0.5rem);
-    }
   }
   &--compact {
     flex-direction: row;
     justify-content: space-between;
     padding: $space-default $space-extra-large2;
+    &:hover {
+      transform: none;
+    }
+    .eds-navigation-card__title {
+      padding: 1rem 0;
+    }
     .eds-navigation-card__arrow-icon {
       margin-top: 0rem;
     }

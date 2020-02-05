@@ -5,3 +5,9 @@
     @content;
   }
 }
+
+@mixin for-large-desktop {
+  @media screen and (min-width: #{$breakpoints-extra-large}) {
+    @content;
+  }
+}

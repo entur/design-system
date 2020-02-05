@@ -6,9 +6,7 @@ parent: Startside
 frontpage: true
 ---
 
-import landing4 from '../visuell-identitet/illustrations/Landingssider/2250x580_Partner Dialog.jpg';
-import contactImage from '../visuell-identitet/illustrations/Ikoner/Kontakt.jpg';
-import duer from './Doves.png';
+import forsidebilde from './Entur_Forsidebilde.jpg';
 import {
   LeadParagraph,
   Heading3,
@@ -21,34 +19,44 @@ import {
   Heading4,
 } from '@entur/typography';
 import { PrimaryButton, SecondaryButton, ButtonGroup } from '@entur/button';
+import { Contrast } from '@entur/layout';
 import { NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
-import { EditIcon, ColorPickerIcon, ViewIcon } from '@entur/icons';
+import {
+  ColorPickerIcon,
+  SourceCodeIcon,
+  EditIcon,
+  UsersIcon,
+  RulesIcon,
+  GridViewIcon,
+} from '@entur/icons';
 import { Link } from 'docz';
 import Changelog from '~/components/FrontPageChangelog';
 import './index.scss';
 
-<img
-  className="front-page-landing-picture"
-  src={landing4}
-  alt="Tog med passasjerer som snakker sammen"
-  style={{ width: '100%' }}
-/>
-
-<LeadParagraph className="front-page-lead-paragraph">
-  Velkommen til Entur sitt designsystem. Her vil du finne informasjon om bruk og
-  API-dokumentasjon for komponentene våre.
-</LeadParagraph>
+<div>
+  <div className="front-page__top">
+    <Contrast>
+      <Heading1>Velkommen til Entur Designsystem</Heading1>
+      <LeadParagraph className="front-page__lead-paragraph">
+        Bruk vårt system med gjenbrukbare designelementer og frontend-kode for å
+        oppnå visuell konsistens som er oppdatert i henhold til vår grafiske
+        profil.
+      </LeadParagraph>
+    </Contrast>
+  </div>
+  <img src={forsidebilde} style={{ width: '100%' }} />
+</div>
 
 <div className="front-page--card-box-container">
   <NavigationCard
-    title="Personlighet og stemme"
-    titleIcon={<EditIcon />}
+    title="Kom i gang"
+    titleIcon={<RulesIcon />}
     as={Link}
-    to="/design-prinsipper/personlighet-og-stemme"
+    to="/kom-i-gang"
   >
-    Hvem snakker vi til? <br />
-    Lær om hvordan vi bruker språket til å kommunisere med brukerne våre.
+    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
+    ta identiteten i bruk.
   </NavigationCard>
   <NavigationCard
     title="Visuell identitet"
@@ -56,79 +64,43 @@ import './index.scss';
     as={Link}
     to="/visuell-identitet"
   >
-    Bli kjent med hvem Entur er. Veiledning og retningslinjer til deg som skal
+    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
     ta identiteten i bruk.
   </NavigationCard>
   <NavigationCard
-    title="Universell utforming"
-    titleIcon={<ViewIcon />}
+    title="Komponenter"
+    titleIcon={<SourceCodeIcon />}
     as={Link}
-    to="/design-prinsipper/universell-utforming"
+    to="/komponenter"
   >
-    Retningslinjer for design og utvikling av digitale løsninger i henhold til
-    lovverket.
+    Komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer for
+    bruk.
   </NavigationCard>
-</div>
-
-<div className="front-page-components">
-  <img
-    className="front-page-components__image"
-    src={duer}
-    alt="3 Duer som spiser korn"
-  />
-  <div className="front-page-components__text">
-    <Heading3 as="span" style={{ marginBottom: '0em' }}>
-      Komponenter
-    </Heading3>
-    <Paragraph>
-      Vårt komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer
-      på hvordan man skal ta komponentene i bruk når man setter opp et
-      brukergrensesnitt.
-    </Paragraph>
-    <PrimaryButton as={Link} to="/komponenter" style={{ width: '14rem' }}>
-      Utforsk komponenter
-    </PrimaryButton>
-  </div>
-</div>
-
-<div className="front-page-bottom">
-  <div>
-    <Heading2>Hva er nytt?</Heading2>
-    <Paragraph>
-      Få siste oppdateringer på komponenter, retningslinjer og dokumentasjon
-      <br />
-      Se changelogen{' '}
-      <LinkText as={Link} to="/komponenter/ressurser/changelog">
-        her
-      </LinkText>
-      .
-    </Paragraph>
-  </div>
-  <div style={{ height: '15rem' }}>
-    <img
-      src={contactImage}
-      alt="Illustrasjoon av to personer som snakker sammen"
-      style={{ height: '100%' }}
-    />
-  </div>
-  <Heading2>Vil du bidra?</Heading2>
-  <Paragraph>
-    Designsystemet er utviklet og vedlikeholdt av hele Enturs
-    utviklingsorganisasjon.
-  </Paragraph>
-  <Paragraph>
+  <NavigationCard
+    title="Personlighet & stemme"
+    titleIcon={<EditIcon />}
+    as={Link}
+    to="/design-prinsipper/personlighet-og-stemme"
+  >
+    Hvem snakker vi til? <br /> Lær om hvordan vi bruker språket til å
+    kommunisere med brukerne våre.
+  </NavigationCard>
+  <NavigationCard
+    title="Ikonbibliotek"
+    titleIcon={<GridViewIcon />}
+    as={Link}
+    to="/komponenter/ressurser/ikoner"
+  >
+    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
+    ta identiteten i bruk.
+  </NavigationCard>
+  <NavigationCard
+    title="Vil du bidra?"
+    titleIcon={<UsersIcon />}
+    as={Link}
+    to="/kom-i-gang/bidra"
+  >
     Om du har en feature, bug report eller vil bidra til dokumentasjonen, ta en
-    titt på{' '}
-    <LinkText as={Link} to="/kom-i-gang/bidra">
-      bidra-siden vår
-    </LinkText>
-    , ta en prat på Slack (#talk-designsystem) eller legg inn et issue på <LinkText href="https://enturas.atlassian.net/secure/RapidBoard.jspa?rapidView=75&projectKey=DS">
-      Jira
-    </LinkText>.
-  </Paragraph>
-  <ButtonGroup>
-    <SecondaryButton as={Link} to="/kom-i-gang/bidra">
-      Bidra!
-    </SecondaryButton>
-  </ButtonGroup>
+    titt på bidra-siden vår.
+  </NavigationCard>
 </div>

@@ -69,7 +69,6 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
       >
         <span>{title}</span>
         <DownArrowIcon
-          inline
           className={classNames('eds-side-navigation-group__icon', {
             'eds-side-navigation-group__icon--open': isOpen,
           })}
