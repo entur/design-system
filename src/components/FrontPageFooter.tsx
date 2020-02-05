@@ -10,7 +10,7 @@ function FrontPageFooter() {
     <div className="front-page-footer">
       <div className="front-page-footer__grid">
         <div className="front-page-footer__logo-container">
-          <img src={logo} height="32"></img>
+          <img src={logo} height="32" alt="Entur logo"></img>
         </div>
 
         <div>
