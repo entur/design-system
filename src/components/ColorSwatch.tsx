@@ -1,13 +1,9 @@
 import React from 'react';
-import { hex } from 'wcag-contrast';
-import { useToast } from '@entur/alert';
 import { colors } from '@entur/tokens';
-import { ReportsIcon } from '@entur/icons';
 import { StrongText } from '@entur/typography';
 import { formatVariable } from '~/utils/formatVariable';
 import { useSettings } from './SettingsContext';
 import { DataCell, TableRow } from '@entur/table';
-import copy from 'copy-text-to-clipboard';
 import hexrgb from 'hex-rgb';
 import './ColorSwatch.scss';
 
@@ -21,20 +17,6 @@ function getColorFromPath(path: string) {
     );
 }
 
-function getBestForegroundColorForBackground(backgroundColor: string) {
-  const contrastWithWhite = hex(colors.brand.white, backgroundColor);
-  const contrastWithBlue = hex(colors.brand.blue, backgroundColor);
-
-  if (contrastWithWhite >= contrastWithBlue) {
-    return colors.brand.white;
-  }
-  if (contrastWithBlue >= 4.5) {
-    return colors.brand.blue;
-  }
-  // Fallback color for when blue doesn't give us a strong enough contrast
-  return colors.misc.black;
-}
-
 type Props = {
   path: string;
   type: string;
@@ -42,16 +24,9 @@ type Props = {
 };
 
 const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
-  const { addToast } = useToast();
   const backgroundColor = getColorFromPath(path);
   const { variableFormat } = useSettings();
   const variableName = formatVariable(`colors.${path}`, variableFormat);
-
-  const handleCopyClick = (textToCopy: string) => () => {
-    copy(textToCopy);
-    addToast(`"${textToCopy}" er kopiert til utklippstavla`);
-  };
-
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
   return (
