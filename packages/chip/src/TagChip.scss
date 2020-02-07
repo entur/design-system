@@ -1,0 +1,30 @@
+@import '~@entur/tokens/dist/styles.scss';
+.eds-tag-chip {
+  cursor: default;
+  &__close-button {
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: $colors-brand-blue;
+    cursor: pointer;
+    display: flex;
+    padding: $space-extra-small2;
+    margin-left: $space-extra-small;
+    transition: box-shadow $timings-fast ease-in-out,
+      background $timings-fast ease-in-out;
+    .eds-contrast & {
+      color: $colors-brand-white;
+    }
+    &:hover {
+      background: $colors-blues-blue60;
+      .eds-contrast & {
+        background: $colors-blues-blue30;
+      }
+    }
+    &:focus {
+      outline: none;
+      box-shadow: $shadows-focus;
+    }
+  }
+}

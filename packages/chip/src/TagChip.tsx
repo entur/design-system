@@ -1,0 +1,38 @@
+import React from 'react';
+import classNames from 'classnames';
+import { CloseIcon } from '@entur/icons';
+import './BaseChip.scss';
+import './TagChip.scss';
+
+export type TagChipProps = {
+  /** Teksten som vises i TagChip */
+  children: React.ReactNode;
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Callback for når man klikker på krysset */
+  onClose: () => void;
+  [key: string]: any;
+};
+
+export const TagChip: React.FC<TagChipProps> = ({
+  children,
+  className,
+  onClose,
+  ...rest
+}) => {
+  return (
+    <div
+      className={classNames('eds-chip', 'eds-tag-chip', className)}
+      {...rest}
+    >
+      {children}
+      <button
+        className="eds-tag-chip__close-button"
+        type="button"
+        onClick={onClose}
+      >
+        <CloseIcon />
+      </button>
+    </div>
+  );
+};
