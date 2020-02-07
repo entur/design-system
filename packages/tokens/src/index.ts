@@ -59,7 +59,7 @@ export const colors = {
       bus: '#dd5415',
       plane: '#800664',
       helicopter: '#800664',
-      tram: '#78469a',
+      tram: '#642e88',
       funicular: '#642e88',
       cableway: '#642e88',
       taxi: '#181c56',
@@ -121,7 +121,7 @@ export const fontWeights = {
   body: '500',
   heading: '600',
 };
-const fontSizeScale = [10, 12, 14, 16, 22, 28, 34];
+const fontSizeScale = [10, 12, 14, 16, 24, 28, 32, 40];
 export const fontSizes = {
   extraSmall: fontSizeScale[0],
   small: fontSizeScale[1],
@@ -130,8 +130,9 @@ export const fontSizes = {
   extraLarge: fontSizeScale[4],
   extraLarge2: fontSizeScale[5],
   extraLarge3: fontSizeScale[6],
+  extraLarge4: fontSizeScale[7],
 };
-const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42];
+const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42, 48, 60];
 export const lineHeights = {
   extraSmall: lineHeightScale[0],
   small: lineHeightScale[1],
@@ -147,6 +148,7 @@ export const lineHeights = {
 // Responsivity
 export const breakpoints = {
   large: 800,
+  extraLarge: 1200,
 };
 
 // Borders
@@ -179,8 +181,9 @@ export const zIndexes = {
   toast: zIndexScale[6],
 };
 
-const timingScale = ['0.1s', '0.5s'];
+const timingScale = ['0.1s', '0.2s', '0.5s'];
 export const timings = {
   fast: timingScale[0],
-  slow: timingScale[1],
+  medium: timingScale[1],
+  slow: timingScale[2],
 };

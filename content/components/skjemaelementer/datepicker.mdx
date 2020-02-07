@@ -1,5 +1,6 @@
 ---
-name: Datepicker
+name: DatePicker
+description: DatePicker og NativeDatePicker er komponenter for å velge datoer.
 route: /komponenter/skjemaelementer/datepicker
 parent: Komponenter
 menu: Skjemaelementer
@@ -9,32 +10,33 @@ tags: dato, date, time, tid, picker
 
 import { Props } from 'docz';
 import { DatePicker, NativeDatePicker } from '@entur/datepicker';
+import { InputGroup } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
 import { addDays } from 'date-fns';
 
-<PageHeader>
-  DatePicker er en komponent for å velge dato og tidspunkt.
-</PageHeader>
+<PageHeader />
 
 <Playground>
   {() => {
     const [date, setDate] = React.useState();
     return (
-      <DatePicker
-        style={{ width: '15rem' }}
-        selectedDate={date}
-        onChange={date => setDate(date)}
-      />
+      <InputGroup>
+        <DatePicker
+          style={{ width: '15rem' }}
+          selectedDate={date}
+          onChange={date => setDate(date)}
+        />
+      </InputGroup>
     );
   }}
 </Playground>
 
 ## Komponenter
 
-### Datepicker
+### DatePicker
 
 <ImportStatement imports="DatePicker" />
 <Props of={DatePicker} />

@@ -8,11 +8,26 @@ export type ParagraphProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
+  /** Hvor du vil ha marginer */
+  margin?: 'bottom' | 'none';
   [key: string]: any;
 };
 
 export const Paragraph: React.FC<ParagraphProps> = ({
   as: Element = 'p',
+  margin = 'bottom',
   className,
   ...rest
-}) => <Element className={classNames('eds-paragraph', className)} {...rest} />;
+}) => (
+  <Element
+    className={classNames(
+      'eds-paragraph',
+      {
+        'eds-paragraph--margin-bottom': margin === 'bottom',
+        'eds-paragraph--margin-none': margin === 'none',
+      },
+      className,
+    )}
+    {...rest}
+  />
+);

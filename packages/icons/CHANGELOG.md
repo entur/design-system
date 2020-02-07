@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.6.0...@entur/icons@0.7.0) (2020-02-05)
+
+### Features
+
+- adding new icon: rulesicon ([07c63d7](https://bitbucket.org/enturas/design-system/commits/07c63d7cd59ee4e7fc43585edfc7f0bc4d744085))
+
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.5.0...@entur/icons@0.6.0) (2020-01-27)
+
+### Features
+
+- add redo and undo icon ([de1a001](https://bitbucket.org/enturas/design-system/commits/de1a00128e6bed5f6366b6d200789176517552d3))
+
 # [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.4.5...@entur/icons@0.5.0) (2020-01-14)
 
 ### Bug Fixes

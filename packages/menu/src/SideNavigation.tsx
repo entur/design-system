@@ -9,6 +9,7 @@ export type SideNavigationProps = {
    * @default 'medium'
    */
   size?: 'small' | 'medium';
+  [key: string]: any;
 };
 
 type InternalMarker = {

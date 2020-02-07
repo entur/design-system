@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.3...@entur/datepicker@0.3.4) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [0.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.2...@entur/datepicker@0.3.3) (2020-01-31)
+
+### Bug Fixes
+
+- fix overflow design bug of timepicker ([258a748](https://bitbucket.org/enturas/design-system/commits/258a7486b3ee4ee28af96a3b73356423b6c57cd3))
+
+## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.1...@entur/datepicker@0.3.2) (2020-01-28)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.0...@entur/datepicker@0.3.1) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.5...@entur/datepicker@0.3.0) (2020-01-20)
 
 ### Bug Fixes

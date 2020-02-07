@@ -3,11 +3,34 @@
 .eds-base-card {
   display: flex;
   box-shadow: $shadows-card-shadow;
-  border: transparent $border-widths-default solid;
   border-radius: $border-radiuses-medium;
   align-items: center;
   appearance: none;
   text-decoration: none;
   color: inherit;
   transition: border-color $timings-fast ease-out;
+  .eds-contrast & {
+    background-color: $colors-blues-blue10;
+  }
+  &--red-line {
+    &:after {
+      background-color: $colors-brand-coral;
+      border-bottom-left-radius: $border-radiuses-medium;
+      border-bottom-right-radius: $border-radiuses-medium;
+      bottom: -$space-small;
+      content: '';
+      display: block;
+      height: $border-widths-large;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      transition: bottom $timings-medium ease-in-out,
+        opacity $timings-medium ease-in-out;
+      width: 100%;
+    }
+    &:hover:after {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
 }

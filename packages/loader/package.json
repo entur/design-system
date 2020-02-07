@@ -1,6 +1,6 @@
 {
   "name": "@entur/loader",
-  "version": "0.3.7",
+  "version": "0.3.10",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/loader.esm.js",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
@@ -27,9 +27,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^1.1.2",
-    "@entur/typography": "^0.7.4",
-    "@entur/utils": "^0.2.1",
+    "@entur/tokens": "^1.2.0",
+    "@entur/typography": "^1.0.2",
+    "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"
   }
 }

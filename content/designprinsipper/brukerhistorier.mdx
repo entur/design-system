@@ -1,11 +1,13 @@
 ---
 name: Brukerhistorier
+description: Brukerhistorier er et format for å beskrive oppgaver som vektlegger oppgavens verdi og akseptkriterier. De vil gi designere, produkteiere, utviklere og testere en felles forståelse av oppgaven
 route: /design-prinsipper/brukerhistorier
 parent: Designprinsipper
 order: 3
 ---
 
 import PageHeader from '~/components/PageHeader';
+import './brukerhistorier.scss';
 
 <PageHeader />
 
@@ -19,98 +21,146 @@ Brukerhistorier er et format for å beskrive oppgaver som vektlegger oppgavens v
 
 En brukerhistorie består av tre deler:
 
-**1. Selve brukerhistorien (verdiforslaget)**
+1.  **Selve brukerhistorien (verdiforslaget)**
 
-Brukerhistorien skrives etter et fast format for å få frem verdien og hvem som skal få den verdien. Hensikten med å skrive verdiforslaget etter dette faste formatet er at det tilrettelegger for at en raskt kan få et overblikk over hva historien løser (En skal slippe å måtte lese gjennom hele historien som å oppfatte verdiforsalget). Dette er verdifullt når man vurderer flere oppgaver i fellesmøter, prioriteringsmøter og under standup.
+<div style={{marginLeft:'2.5rem'}}>
 
-**Formatet er:**
+<div style={{ marginBottom: '2rem' }}>
+  Brukerhistorien skrives etter et fast format for å få frem verdien og hvem som
+  skal få den verdien. Hensikten med å skrive verdiforslaget etter dette faste
+  formatet er at det tilrettelegger for at en raskt kan få et overblikk over hva
+  historien løser (En skal slippe å måtte lese gjennom hele historien som å
+  oppfatte verdiforsalget). Dette er verdifullt når man vurderer flere oppgaver
+  i fellesmøter, prioriteringsmøter og under standup.
+</div>
 
-```
-Som en [bruker]
-Ønsker jeg en [funksjon]
-Slik at jeg [oppnår en verdi]
-```
+<strong>Formatet:</strong>
 
-Når man beskriver brukeren holder det noen ganger med standardkategoriene:
+<div className="brukerhistorier-custom-code">
+  Som en <strong> [bruker]</strong>
+  <br />
+  Ønsker jeg en <strong>[funksjon]</strong>
+  <br />
+  Slik at jeg <strong>[oppnår en verdi]</strong>
+</div>
 
-- ‘som en klient’,
-- ‘som en kundebehandler’
-- ’som en reisende’
+  <div>
+    Når man beskriver brukeren holder det noen ganger med standardkategoriene:
+    <ul>
+      <li>‘som en klient’,</li>
+      <li>‘som en kundebehandler’</li>
+      <li>
+        ’som en reisende’
+      </li>
+    </ul>
+  </div>
+  Man må gjerne bruke spisset situasjonsbehov (se eksempel her ‘lenke til siden om brukergrupper’) i formulering av brukerhistorier, i steden for personas. I tilfeller hvor det for eksempel er nyttig å presisere behovet kan ‘som en reisende’ bli til ‘som en togpendler’.
 
-Man må gjerne bruke spisset situasjonsbehov (se eksempel her ‘lenke til siden om brukergrupper’) i formulering av brukerhistorier, i steden for personas. I tilfeller hvor det for eksempel er nyttig å presisere behovet kan ‘som en reisende’ bli til ‘som en togpendler’.
+</div>
 
-**2. Løsningsbeskrivelse**
+2. **Løsningsbeskrivelse**
+   Løsningsbeskrivelsen har et løst format. Den enkelte vurderer hvordan de ønsker å skrive denne. Løsningsbeskrivelsen bør være en enkel og spesifikk forklaring/oppsummering av hvordan en løser oppgaven. En kan for eksempel bruke løsningsbeskrivelsen til å oppsummere akseptansekriteriene og til å lenke til relevante dokumenter.
 
-Løsningsbeskrivelsen har et løst format. Den enkelte vurderer hvordan de ønsker å skrive denne. Løsningsbeskrivelsen bør være en enkel og spesifikk forklaring/oppsummering av hvordan en løser oppgaven. En kan for eksempel bruke løsningsbeskrivelsen til å oppsummere akseptansekriteriene og til å lenke til relevante dokumenter.
+3. **Akseptansekriterier**
+   Akseptansekriterier skrives etter et fast format. De skal fortelle utvikler og tester spesifikt hva som skal lages og testes. Akseptansekriteriene skal gi lite rom for tolkning. Hvert kriterium skal skrives på en slik måte at en kan bekrefte eller avkrefte om det er oppfylt.
 
-**3. Akseptansekriterier**
+   **Formatet er:**
 
-Akseptansekriterier skrives etter et fast format. De skal fortelle utvikler og tester spesifikt hva som skal lages og testes. Akseptansekriteriene skal gi lite rom for tolkning. Hvert kriterium skal skrives på en slik måte at en kan bekrefte eller avkrefte om det er oppfylt.
-
-**Formatet er:**
-
-```
-Gitt at ....., så skal
-
-1. ................
-   a. .................
-   b. .................
-2. ................
-```
+<div className="brukerhistorier-custom-code" style={{ marginLeft: '2.5rem' }}>
+  <div>Gitt at ....., så skal</div>
+  <div>
+    {'1.................'}
+    <div style={{ marginLeft: '1rem' }}>{'a .................'}</div>
+    <div style={{ marginLeft: '1rem' }}>{'b .................'}</div>
+  </div>
+  <div> {'2.................'}</div>
+</div>
 
 ### Oppsummering
 
 Brukerhistorien består av tre deler; selve historien, løsningsbeskrivelsen og akseptansekriterier. De skrives etter et fast-løst-fast format.
 
-```
-Brukerhistorie
-Som en [bruker]
-Ønsker jeg [en funksjon]
-Slik at jeg [oppnår en verdi]
-
-Løsningsbeskrivelse
-Kort og presis forklaring av akseptansekriterier.
-
-Akseptansekriterier
-Gitt at ..... så skal:
-
-1. ................
-   a. .................
-   b. .................
-2. ................
-```
+<div className="brukerhistorier-summary">
+  <div style={{ fontWeight: '600' }}>Brukerhistorie</div>
+  Som en <strong> [bruker]</strong>
+  <br />
+  Ønsker jeg en <strong>[funksjon]</strong>
+  <br />
+  Slik at jeg <strong>[oppnår en verdi]</strong>
+  <div style={{ marginTop: '1rem', fontWeight: '600' }}>
+    Løsningsbeskrivelse
+  </div>
+  Kort og presis forklaring av akseptansekriterier.
+  <div style={{ marginTop: '1rem', fontWeight: '600' }}>
+    Akseptansekriterier
+  </div>
+  <div>Gitt at ....., så skal</div>
+  <div>
+    {'1.................'}
+    <div style={{ marginLeft: '1rem' }}>{'a .................'}</div>
+    <div style={{ marginLeft: '1rem' }}>{'b .................'}</div>
+  </div>
+  <div> {'2.................'}</div>
+</div>
 
 ## Eksempler
 
 ### App: Peoplepicker for periodebillett Vy
 
-```
-Brukerhistorie
-Som periodebillettkjøper,
-Ønsker jeg å velge strekning for min billett før jeg velger passasjertype,
-Slik at jeg ser hvem som tilbys periodebilletter på valgt strekning.
+<div className="brukerhistorier-summary">
+  <div style={{ fontWeight: "600" }}>Brukerhistorie</div>
+  Som periodebillettkjøper, Ønsker jeg å velge strekning for min billett før jeg
+  velger passasjertype, Slik at jeg ser hvem som tilbys periodebilletter på
+  valgt strekning.
+  <div style={{ marginTop: "1rem", fontWeight: "600" }}>
+    Løsningsbeskrivelse
+  </div>
+  Det er nødvendig å aldri vise alder i peoplepicker ved kjøp av periodebillett,
+  da disse parametrene kan være feil for periodebilletten (grunnet felles
+  passasjerprofil for Enkelt og Periodebillett). For brukeren vil det være
+  teksten som informerer om riktig aldersgrense på periodebilletten. Dessuten
+  skal vi vise riktige passasjerprofiler for Vy eller Ruter. Nå spør vi etter
+  peoplepicker basert på valget i selskapsvelgeren, men vi må spørre om korrekte
+  passasjerprofiler basert på produkt.
+  <div style={{ marginTop: "1rem", fontWeight: "600" }}>
+    Akseptansekriterier
+  </div>
 
-Løsningsbeskrivelse
-Det er nødvendig å aldri vise alder i peoplepicker ved kjøp av periodebillett, da disse parametrene kan være feil for periodebilletten (grunnet felles passasjerprofil for Enkelt og Periodebillett). For brukeren vil det være teksten som informerer om riktig aldersgrense på periodebilletten.
-
-Dessuten skal vi vise riktige passasjerprofiler for Vy eller Ruter. Nå spør vi etter peoplepicker basert på valget i selskapsvelgeren, men vi må spørre om korrekte passasjerprofiler basert på produkt.
-
-Akseptansekriterier
-A. Gitt at jeg er i kjøpsløpet, har valgt periodebillett fra VY og valgt strekning for priodebilletten, så skal jeg se og ha mulighet til å velge passasjerkategori:
-  1. Voksen
-  2. Student
-    a. Student skal angis uten alder.
-
-(Følgende profiler skal filtreres vekk for Vy; Honnør, Militær, Barn 6-17 år, Barn 0-5 år).
-
-B. Gitt at jeg er i Vy’s kjøpsløp og velger Ruters periodebillett, så skal jeg se og ha mulighet til å velge passasjerkategori:
-  1. Voksen
-  2. Honnør
-  3. Student
-    a. Student skal angis uten alder.
-  4. Barn
-    a. Barn skal angis uten alder.
-  5. Ungdom
-
-(Følgende profiler skal filtreres vekk for Ruter; Militær, Barn 0-5 år).
-```
+  <ol type="A">
+    <li>
+      Gitt at jeg er i kjøpsløpet, har valgt periodebillett fra VY og valgt
+      strekning for priodebilletten, så skal jeg se og ha mulighet til å velge
+      passasjerkategori:
+    </li>
+    <ol>
+      <li>Voksen</li>
+      <li>Student</li>
+      <ol type="a">
+        <li>Student skal angis uten alder.</li>
+      </ol>
+    </ol>
+    (Følgende profiler skal filtreres vekk for Vy; Honnør, Militær, Barn 6-17 år, Barn 0-5 år).
+    <li>
+      Gitt at jeg er i Vy’s kjøpsløp og velger Ruters periodebillett, så skal
+      jeg se og ha mulighet til å velge passasjerkategori:
+    </li>
+    <ol>
+      <li>Voksen</li>
+      <li>Honnør</li>
+      <li>
+        Student
+      </li>
+        <ol type="a">
+          <li>Student skal angis uten alder.</li>
+        </ol>
+      <li>
+        Barn
+      </li>
+        <ol type="a">
+          <li>Barn skal angis uten alder.</li>
+        </ol>
+      <li>Ungdom</li>
+    </ol>
+    (Følgende profiler skal filtreres vekk for Ruter; Militær, Barn 0-5 år).
+  </ol>
+</div>

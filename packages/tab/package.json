@@ -1,6 +1,6 @@
 {
   "name": "@entur/tab",
-  "version": "0.2.5",
+  "version": "0.3.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tab.esm.js",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build",
     "lint": "tsdx lint"
   },
@@ -26,8 +26,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^1.1.2",
-    "@entur/utils": "^0.2.1",
+    "@entur/tokens": "^1.2.0",
+    "@entur/utils": "^0.2.3",
     "@reach/tabs": "^0.7.0",
     "classnames": "^2.2.6"
   }

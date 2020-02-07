@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.0.1...@entur/typography@1.0.2) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [1.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.0.0...@entur/typography@1.0.1) (2020-01-28)
+
+**Note:** Version bump only for package @entur/typography
+
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.4...@entur/typography@1.0.0) (2020-01-27)
+
+### Bug Fixes
+
+- add marigin prop for paragraph component ([c7c932a](https://bitbucket.org/enturas/design-system/commits/c7c932ac057e9c393200b6f84093ea62966fa6bd))
+- ensure proper usage of margin props for paragraph ([c3fd065](https://bitbucket.org/enturas/design-system/commits/c3fd06501973537c5b6318cdd6a6090f88bce33d))
+- updating margins for header and paragraph components ([a7cc7a0](https://bitbucket.org/enturas/design-system/commits/a7cc7a0cb15100613e4edca89fa18424c59d7987))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+- updating marigins for all typography components ([29e9a27](https://bitbucket.org/enturas/design-system/commits/29e9a273c6c45a7a417f59b59e9ec91971d72e8a))
+
+### BREAKING CHANGES
+
+- as some typography components now have either removed or added marign,
+  if these have been used directly in components or other places where
+  their margins were used for styling purposes, you may experience issues
+  with this. So doublecheck your usage of Heading1-6 and Paragraph in places
+  where their margins may be interferring
+
 ## [0.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@0.7.3...@entur/typography@0.7.4) (2020-01-20)
 
 ### Bug Fixes

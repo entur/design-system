@@ -1,15 +1,15 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .playground {
-  border: $border-widths-small solid $colors-greys-grey20;
+  border: 0.1875rem solid $colors-greys-grey30; //3px
   padding: 1em;
-  margin-bottom: 0.5em;
 }
 
 .playground__controls {
+  background-color: $colors-greys-grey30;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1em;
+  padding: $space-extra-small2 $space-default;
 }
 .playground__control {
   appearance: none;
@@ -25,5 +25,5 @@
   }
 }
 .playground__editor {
-  border: solid $border-widths-small $colors-brand-blue;
+  border-top: $border-widths-default solid $colors-brand-white;
 }

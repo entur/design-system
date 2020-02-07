@@ -19,8 +19,10 @@ export type ButtonProps = {
    * @default false
    */
   disabled?: boolean;
-  /** Bredden på knappen. Defaulter til "standard-størrelse" */
-  width?: 'fluid' | 'square';
+  /** Bredden på knappen.
+   * @default 'auto'
+   */
+  width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager knappen
@@ -42,7 +44,7 @@ export const Button: React.RefForwardingComponent<
       className,
       children,
       disabled = false,
-      width,
+      width = 'auto',
       as = 'button',
       ...rest
     },
@@ -64,7 +66,7 @@ export const Button: React.RefForwardingComponent<
           {
             [`eds-button--variant-${variant}`]: variant,
             [`eds-button--size-${size}`]: size,
-            [`eds-button--width-${width}`]: width,
+            'eds-button--width-fluid': width === 'fluid',
             'eds-button--loading': loading,
             'eds-button--leading-icon': hasLeadingIcon,
             'eds-button--trailing-icon': hasTrailingIcon,

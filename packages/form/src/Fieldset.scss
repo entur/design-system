@@ -1,9 +1,10 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .eds-fieldset {
   margin: 0;
   padding: 0;
   border: 0;
-}
-
-.eds-legend {
-  margin: 0;
+  .eds-legend {
+    margin: 0 0 $space-extra-small;
+  }
 }

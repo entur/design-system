@@ -1,18 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/color-utils.scss';
 
 $default-height: (44rem/16);
 $small-height: (36rem/16);
 $default-padding: ((44rem - 14rem) / 2 / 16);
 $small-padding: ((36rem - 14rem) / 2 / 16);
-
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
 
 .eds-floating-button {
   align-items: center;

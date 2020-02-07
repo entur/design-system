@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Heading4 } from '@entur/typography';
+import { Heading4, SmallText } from '@entur/typography';
 
 export type LoaderProps = {
   /** Tekst som beskriver prosessen */
@@ -44,6 +44,9 @@ export const Loader: React.FC<LoaderProps> = ({
         })}
         style={styles}
       />
+      {progress !== 'indeterminate' && (
+        <SmallText className="eds-loader__percentage">{progress} %</SmallText>
+      )}
     </div>
   );
 };

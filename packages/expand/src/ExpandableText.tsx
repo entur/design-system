@@ -1,6 +1,6 @@
 import React from 'react';
+import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
-import { useRandomId } from './useRandomId';
 import { BaseExpand } from './BaseExpand';
 import './ExpandableText.scss';
 

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.14](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.13...@entur/chip@0.2.14) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [0.2.13](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.12...@entur/chip@0.2.13) (2020-01-31)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.12](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.11...@entur/chip@0.2.12) (2020-01-28)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.10...@entur/chip@0.2.11) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [0.2.10](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.2.9...@entur/chip@0.2.10) (2020-01-20)
 
 **Note:** Version bump only for package @entur/chip

@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.0...@entur/layout@1.2.1) (2020-02-05)
+
+### Bug Fixes
+
+- fixing broken flow for mediacard ([b9069b8](https://bitbucket.org/enturas/design-system/commits/b9069b8bb115f750968ae194f357b72d3f1442ab))
+
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.1.1...@entur/layout@1.2.0) (2020-02-05)
+
+### Bug Fixes
+
+- fix contrast styling for card-components ([9490181](https://bitbucket.org/enturas/design-system/commits/9490181256c3f628bde9125e468b6d26d77bc220))
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+- update look and hover-effect for navigationcard ([05690ac](https://bitbucket.org/enturas/design-system/commits/05690ac39553e2aaf6130d3eca230e009bdd1ff4))
+
+### Features
+
+- adding new component: mediacard ([00989a9](https://bitbucket.org/enturas/design-system/commits/00989a9b740b8526db5cc237381bdd982c9a391c))
+- new look and feel for navigationcards ([942398c](https://bitbucket.org/enturas/design-system/commits/942398c7ab5ffc53e96679ce1893738e4eb94066))
+
+## [1.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.1.0...@entur/layout@1.1.1) (2020-01-28)
+
+**Note:** Version bump only for package @entur/layout
+
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.0.5...@entur/layout@1.1.0) (2020-01-27)
+
+### Bug Fixes
+
+- update navigationcards to comply with new typography ([3d77634](https://bitbucket.org/enturas/design-system/commits/3d776344dbfdec913f73bc33fcf209d6fdafd088))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+### Features
+
+- adding the useContrast-hook, for contrast awereness in JS/TS ([ba580ef](https://bitbucket.org/enturas/design-system/commits/ba580ef67c7250f7ea7d9ecb0c6662b5ed8449d1))
+
 ## [1.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.0.4...@entur/layout@1.0.5) (2020-01-20)
 
 **Note:** Version bump only for package @entur/layout

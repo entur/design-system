@@ -8,3 +8,9 @@
     opacity: 0.5;
   }
 }
+
+.eds-dropdown__selected-item {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

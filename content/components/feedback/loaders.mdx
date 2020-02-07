@@ -1,5 +1,6 @@
 ---
 name: Loaders
+description: Loaders brukes for å indikere at en prosess er i gang, og eventuelt hvor langt denne prosessen har kommet.
 route: /komponenter/feedback/loaders
 parent: Komponenter
 menu: Feedback
@@ -17,10 +18,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 import { SecondaryButton } from '@entur/button';
 import { Loader } from '@entur/loader';
 
-<PageHeader>
-  Loaders brukes for å indikere at en prosess er i gang, og eventuelt hvor langt
-  denne prosessen har kommet.
-</PageHeader>
+<PageHeader />
 
 <Playground>
   {() => {

@@ -1,17 +1,15 @@
 @import '~@entur/tokens/dist/styles.scss';
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .front-page {
+  &__top {
+    margin-top: $space-extra-large3;
+    .front-page__lead-paragraph {
+      margin-bottom: $space-extra-large3;
+    }
+  }
   &-landing-picture {
     margin-top: $space-default;
-  }
-  &-lead-paragraph {
-    text-align: center;
-    margin-bottom: $space-extra-large;
   }
   &--card-box-container {
     display: grid;
@@ -21,6 +19,7 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
     margin-bottom: $space-extra-large4;
+    margin-top: $space-extra-large5;
   }
   &-components {
     display: grid;
@@ -46,10 +45,8 @@
     }
   }
   &-bottom {
-    margin: 0 $space-default;
-    text-align: center;
-    @include for-desktop {
-      margin: 0 12rem $space-extra-large;
-    }
+    background-color: $colors-greys-grey40;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

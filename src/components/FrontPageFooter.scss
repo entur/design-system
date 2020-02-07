@@ -8,29 +8,33 @@
     align-items: center;
     justify-content: center;
     appearance: none;
-  }
-  &-circle-link {
-    margin: 3rem;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    &:hover {
-      text-decoration: underline;
+    &__grid {
+      width: 64rem;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: $space-large;
+      padding-bottom: 4.5rem;
     }
-    &__circle {
-      width: 7rem;
-      height: 7rem;
-      background: $colors-brand-white;
-      border-radius: 50%;
+    &__logo-container {
+      grid-column: 1 / 4;
+      padding: 5rem 0 3rem;
+    }
+    &__structure {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
     }
-    &__text {
-      width: 12rem;
-      padding-left: $space-default;
-      display: inline-block;
-      height: 4rem;
+    &__circular-icon {
+      appearance: none;
+      color: $colors-brand-white;
+      background: $colors-brand-blue;
+      margin-right: $space-small;
+      display: flex;
+      border-radius: 50%;
+      padding: $space-extra-small;
+      &:hover {
+        background-color: $colors-brand-lavender;
+      }
     }
   }
 }

@@ -1,5 +1,14 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+.settings-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__icon {
+    font-size: $font-sizes-extra-large;
+    margin-right: $space-extra-small2;
+  }
+}
 .settings-trigger {
   appearance: none;
   background: $colors-brand-white;
@@ -12,11 +21,8 @@
   justify-content: center;
   align-items: center;
   font-size: inherit;
+  margin-left: $space-large;
   padding: $space-default;
-  position: fixed;
-  bottom: $space-default;
-  right: $space-default;
-  z-index: $z-indexes-sticky;
   transition: background-color $timings-fast ease-out;
   &:hover {
     background-color: $colors-brand-lavender;

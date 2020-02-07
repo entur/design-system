@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.0...@entur/form@2.3.1) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.5...@entur/form@2.3.0) (2020-01-31)
+
+### Bug Fixes
+
+- **SegmentedControl:** improve the error message slightly ([8df42c8](https://bitbucket.org/enturas/design-system/commits/8df42c8b8905fd4f9b8de7719422027770a3e7b5))
+
+### Features
+
+- add the SegmentedControl and SegmentedGroup components ([59fbd54](https://bitbucket.org/enturas/design-system/commits/59fbd543211d5222f17a365dd7fbb583fcf92373))
+- rename to SegmentedControl and SegmentedChoice ([a1919b1](https://bitbucket.org/enturas/design-system/commits/a1919b17151ba278926a2d00fa1c9639164a7b0b))
+
+## [2.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.4...@entur/form@2.2.5) (2020-01-28)
+
+**Note:** Version bump only for package @entur/form
+
+## [2.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.3...@entur/form@2.2.4) (2020-01-27)
+
+### Bug Fixes
+
+- adjust typography ([e630ebc](https://bitbucket.org/enturas/design-system/commits/e630ebcfbf1de9326b2969f919fedd19d662cbe3))
+- fixing form elements to comply with new typography standards ([4de70a5](https://bitbucket.org/enturas/design-system/commits/4de70a5c05a619a19bf194468d1799b5e686e0b3))
+- fixing pixel alignment for switch buttons ([d8b1a5e](https://bitbucket.org/enturas/design-system/commits/d8b1a5e384e2595f3b44d3c62e2ad98e23be609d))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [2.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.2.2...@entur/form@2.2.3) (2020-01-20)
 
 **Note:** Version bump only for package @entur/form
