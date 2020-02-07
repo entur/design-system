@@ -2932,6 +2932,11 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@types/wcag-contrast@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/wcag-contrast/-/wcag-contrast-2.1.0.tgz#7e419448f6ff4b0dd290a04581088aaee84c7d72"
+  integrity sha512-WjjVovgwhip0JUJB4jha2gSl0UTm4bP+xWVS+wG/X4v6EHXOo1oPcmofB1uoEDoEiZTEkA4eAK5VwrR5hUEidw==
+
 "@types/yargs-parser@*":
   version "15.0.0"
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
