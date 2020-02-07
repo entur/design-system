@@ -56,7 +56,7 @@ html {
 }
 
 .eds-h1 {
-  font-size: $font-sizes-extra-large;
+  font-size: $font-sizes-extra-large2;
   line-height: $line-heights-extra-large2;
   margin: 0 0 $space-default;
   @include for-desktop {
@@ -65,7 +65,7 @@ html {
   }
 }
 .eds-h2 {
-  font-size: $font-sizes-large;
+  font-size: $font-sizes-extra-large;
   line-height: $line-heights-large;
   margin: $space-extra-large 0 $space-small;
   @include for-desktop {
@@ -74,7 +74,7 @@ html {
   }
 }
 .eds-h3 {
-  font-size: $font-sizes-medium;
+  font-size: $font-sizes-large;
   line-height: $line-heights-medium;
   margin: $space-large 0 $space-extra-small;
   @include for-desktop {
@@ -145,7 +145,7 @@ html {
   margin: $space-large 0;
   @include for-desktop {
     font-size: $font-sizes-extra-large;
-    line-height: $line-heights-extra-large3;
+    line-height: $line-heights-extra-large4;
   }
 }
 
