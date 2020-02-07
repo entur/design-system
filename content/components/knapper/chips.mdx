@@ -9,7 +9,13 @@ tags: chips, potetgull, knapp, labels
 ---
 
 import { Props } from 'docz';
-import { ActionChip, ChoiceChip, ChoiceChipGroup } from '@entur/chip';
+import {
+  ActionChip,
+  ChoiceChip,
+  ChoiceChipGroup,
+  TagChip,
+  SelectorChip,
+} from '@entur/chip';
 import { AddIcon, CarIcon } from '@entur/icons';
 import { Label } from '@entur/typography';
 import { Playground } from '~/components/Playground';
@@ -50,6 +56,12 @@ import PageHeader from '~/components/PageHeader';
             </ActionChip>
           </div>
         </div>
+        <div>
+          <TagChip>Buss</TagChip>
+        </div>
+        <div>
+          <SelectorChip>Mandag</SelectorChip>
+        </div>
       </div>
     );
   }}
@@ -76,3 +88,8 @@ Alternativt kan man bruke tertiærknapp.
 
 <ImportStatement imports="ChoiceChipGroup" />
 <Props of={ChoiceChipGroup} />
+
+### TagChip
+
+<ImportStatement imports="TagChip" />
+<Props of={TagChip} />
