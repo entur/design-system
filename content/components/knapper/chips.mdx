@@ -1,6 +1,6 @@
 ---
 name: Chips
-description: Chips er komponenter for å gjøre mindre handlinger relatert til hovedflyten
+description: Chips er små avrundede knapper som eksisterer i ulike typer; Action chips og Choice chips (med eller uten ikon), samt Filter chips og tags.
 route: /komponenter/skjemaelementer/chips
 parent: Komponenter
 menu: Knapper
@@ -14,7 +14,7 @@ import {
   ChoiceChip,
   ChoiceChipGroup,
   TagChip,
-  SelectorChip,
+  FilterChip,
 } from '@entur/chip';
 import { AddIcon, CarIcon } from '@entur/icons';
 import { Label } from '@entur/typography';
@@ -28,7 +28,13 @@ import PageHeader from '~/components/PageHeader';
   {() => {
     const [value, setValue] = React.useState(null);
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridGap: '1rem',
+        }}
+      >
         <div>
           <Label>ChoiceChips</Label>
           <ChoiceChipGroup
@@ -47,8 +53,8 @@ import PageHeader from '~/components/PageHeader';
         <div>
           <Label>ActionChip</Label>
           <div style={{ display: 'flex' }}>
-            <ActionChip>Lagre</ActionChip>
-            <ActionChip>
+            <ActionChip style={{ marginRight: '1rem' }}>Lagre</ActionChip>
+            <ActionChip style={{ marginRight: '1rem' }}>
               Legg til <AddIcon />
             </ActionChip>
             <ActionChip>
@@ -57,10 +63,12 @@ import PageHeader from '~/components/PageHeader';
           </div>
         </div>
         <div>
+          <Label>TagChip</Label>
           <TagChip>Buss</TagChip>
         </div>
         <div>
-          <SelectorChip>Mandag</SelectorChip>
+          <Label>FilterChip</Label>
+          <FilterChip>Mandag</FilterChip>
         </div>
       </div>
     );
@@ -93,3 +101,42 @@ Alternativt kan man bruke tertiærknapp.
 
 <ImportStatement imports="TagChip" />
 <Props of={TagChip} />
+
+### FilterChip
+
+<ImportStatement imports="FilterChip" />
+<Props of={FilterChip} />
+
+## Retningslinjer for bruk
+
+### Action chips
+
+Disse oppfører seg som **handlingsknapper** som skal brukes når handlingen(e) er direkte knyttet/relatert til hovedinnholdet.
+Det er oftest flere handlinger, f.eks. ‘Endre’, ‘Slett’, ‘Kjøp på nytt’ osv. men i tabeller kan også action chips benyttes alene.
+Siden Action chips aktiverer en handling, er ingen av dem forhåndsvalgt. Hvis man kun hr én action kan man alternativt benytte Tertiærknapp.
+Action chip kan ikke være inaktiv, hvis innholdet mangler må man allikevel navigere til ønsket side/funksjon,
+og vise en melding om hvorfor dette ikke er tilgjengelig.
+
+### Choice chips
+
+Disse skal benyttes for å tilby et **valg** mellom flere ulike opsjoner.
+De er ofte direkte knyttet til info som vises ovenfor i flaten (f.eks en reiserute i kart eller en billettkategori),
+og viser også ofte mer info/forklaring knyttet til valgt Choice chip under raden med chips. Funksjonen er samme som i radio buttons,
+én verdi er forhåndsvalgt og man kan velge én av de andre. Inaktive Choice chips kan kun benyttes hvis man vil vise noe som vanligvis er tilgjengelig,
+men akkurat nå ikke er det, f.eks. hvis et setevalg er utsolgt. Årsaken til at et valg ikke er tilgjengelig må alltid beskrives på knappen,
+og inaktivt design skal være godt lesbart og ikke tonet ned.
+
+### Filter chips
+
+Selector chips benyttes til **forhåndsdefinerte valg**, f.eks. mellom aktuelle kategorier.
+De tilbyr tydelig avgrensede alternativer i et kompakt område. De er et godt alternativ toggle-knapper eller checkboxes.
+
+Funksjonelt er dette checkboxer; ingen er valgt by default, og det er mulig å velge flere eller ingen.
+Nytt design med tom/full check, som tydeligere indikerer at det å trykke på chip’en er et mulig valg er underveis.
+
+### Tag chips
+
+Filter chips dukker opp når de aktiveres, og kan deaktiveres med krysset på selve taggen,
+eller ved å ‘huke vekk’ valget inne i en meny. De kan organiseres i en horisontalt på rekke og rad, tilnyttet flere søkefelter.
+Samme design benyttes også til å vise valg i dropdown med multiple choice-funksjon.
+Man kan velge om man vil vise tags utenfor eller inne i søkefeltet/søkefeltene.
