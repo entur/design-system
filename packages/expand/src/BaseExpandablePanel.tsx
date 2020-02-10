@@ -38,17 +38,20 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         aria-controls={id}
         {...rest}
       >
-        <Heading4 margin="none" as="span">
-          {title}
-        </Heading4>
+        <div className="eds-expandable-panel__grid">
+          <Heading4 margin="none" as="div">
+            {title}
+          </Heading4>
 
-        <DownArrowIcon
-          className={classNames('eds-expandable-panel__arrow', {
-            'eds-expandable-panel__arrow--open': open,
-          })}
-        />
+          <div className="eds-expandable-panel__icon-container">
+            <DownArrowIcon
+              className={classNames('eds-expandable-panel__arrow', {
+                'eds-expandable-panel__arrow--open': open,
+              })}
+            />
+          </div>
+        </div>
       </button>
-
       <BaseExpand className="eds-expandable-panel__content" id={id} open={open}>
         {children}
       </BaseExpand>
