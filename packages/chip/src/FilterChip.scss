@@ -1,14 +1,16 @@
 @import '~@entur/tokens/dist/styles.scss';
-.eds-selector-chip {
+.eds-filter-chip {
   cursor: pointer;
   user-select: none;
+  padding-left: $space-extra-small2;
+  width: fit-content;
   &__input {
     position: absolute;
     opacity: 0;
     height: 0;
     width: 0;
-    &:checked + .eds-selector-chip__icon {
-      .eds-selector-chip-icon {
+    &:checked + .eds-filter-chip__icon {
+      .eds-filter-chip-icon {
         visibility: visible;
         &__path {
           stroke: $colors-brand-blue;
@@ -36,9 +38,9 @@
     align-items: center;
     position: relative;
 
-    margin-right: $space-default;
-    height: 1.25rem;
-    width: 1.25rem;
+    margin-right: $space-extra-small;
+    height: 1.5rem;
+    width: 1.5rem;
     border: $border-widths-default solid transparent;
     border-radius: 50%;
     background-color: $colors-brand-white;
@@ -46,9 +48,9 @@
     .eds-contrast & {
       background-color: $colors-brand-blue;
     }
-    .eds-selector-chip-icon {
-      height: $space-default;
-      width: $space-default;
+    .eds-filter-chip-icon {
+      height: $font-sizes-large;
+      width: $font-sizes-large;
       visibility: hidden;
       .eds-contrast & {
         color: $colors-brand-white;

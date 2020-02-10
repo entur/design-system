@@ -1,43 +1,39 @@
 import React from 'react';
 import cx from 'classnames';
 import './BaseChip.scss';
-import './SelectorChip.scss';
+import './FilterChip.scss';
 
-export type SelectorChipProps = {
+export type FilterChipProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Om Choicechip er deaktivert eller ikke
-   * @default false
-   */
-  disabled?: boolean;
-  /** Label til ChoiceChip */
+  /** Label til FilterChip */
   children?: React.ReactNode;
-  /** Verdien til ChoiceChip */
+  /** Verdien til FilterChip */
   value: string;
   [key: string]: any;
 };
 
-export const SelectorChip: React.RefForwardingComponent<
+export const FilterChip: React.RefForwardingComponent<
   HTMLInputElement,
-  SelectorChipProps
+  FilterChipProps
 > = React.forwardRef(
   (
     { className, children, value, disabled = false, name, style, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = cx(className, 'eds-chip', 'eds-selector-chip');
+    const classList = cx(className, 'eds-chip', 'eds-filter-chip');
 
     return (
       <label className={classList} style={style}>
         <input
-          className="eds-selector-chip__input"
+          className="eds-filter-chip__input"
           type="checkbox"
           name={name}
           ref={ref}
           value={value}
           {...rest}
         />
-        <span className="eds-selector-chip__icon">
+        <span className="eds-filter-chip__icon">
           <CheckboxIcon />
         </span>
         {children}
@@ -49,13 +45,13 @@ export const SelectorChip: React.RefForwardingComponent<
 const CheckboxIcon: React.FC = () => {
   return (
     <svg
-      className="eds-selector-chip-icon"
+      className="eds-filter-chip-icon"
       width="11px"
       height="9px"
       viewBox="6 11 37 33"
     >
       <path
-        className="eds-selector-chip-icon__path"
+        className="eds-filter-chip-icon__path"
         d="M14.1 27.2l7.1 7.2 14.6-14.8"
         fill="none"
       />

@@ -1,6 +1,8 @@
 @import '~@entur/tokens/dist/styles.scss';
 .eds-tag-chip {
   cursor: default;
+  padding-right: $space-extra-small2;
+  width: fit-content;
   &__close-button {
     appearance: none;
     background: none;
@@ -9,8 +11,9 @@
     color: $colors-brand-blue;
     cursor: pointer;
     display: flex;
+    font-size: $font-sizes-medium;
     padding: $space-extra-small2;
-    margin-left: $space-extra-small;
+    margin-left: $space-extra-small2;
     transition: box-shadow $timings-fast ease-in-out,
       background $timings-fast ease-in-out;
     .eds-contrast & {
