@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.1...@entur/form@2.3.2) (2020-02-10)
+
+### Bug Fixes
+
+- update styling for input fields ([24cbccf](https://bitbucket.org/enturas/design-system/commits/24cbccf2b6c278c34101cf6cc827fbc4df0bfe64))
+
 ## [2.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.0...@entur/form@2.3.1) (2020-02-05)
 
 ### Bug Fixes

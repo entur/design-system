@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.1.1...@entur/button@2.1.2) (2020-02-10)
+
+### Bug Fixes
+
+- update styling for tertiary buttons ([e55f0fb](https://bitbucket.org/enturas/design-system/commits/e55f0fba0ae4a6ad7f73968f769735ae2c50efb4))
+
 ## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.1.0...@entur/button@2.1.1) (2020-02-05)
 
 ### Bug Fixes

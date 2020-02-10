@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.0.2...@entur/typography@1.0.3) (2020-02-10)
+
+### Bug Fixes
+
+- better font sizes for smaller screens ([721fe06](https://bitbucket.org/enturas/design-system/commits/721fe062652df71c6520acd58a839310b2a4807f))
+- update colors for preformatted and code text ([846d144](https://bitbucket.org/enturas/design-system/commits/846d144df0402bbc27bfd6997aba2db59303c85d))
+
 ## [1.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.0.1...@entur/typography@1.0.2) (2020-02-05)
 
 ### Bug Fixes
