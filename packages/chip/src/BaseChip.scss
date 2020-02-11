@@ -1,19 +1,11 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 .eds-chip {
   background: $colors-blues-blue80;
   border: $border-widths-small solid $colors-blues-blue70;
   border-radius: 1rem;
   color: inherit;
-  cursor: pointer;
   font-family: inherit;
   font-size: $font-sizes-medium;
   height: 2rem;
@@ -24,7 +16,7 @@
   justify-content: center;
   align-items: center;
   svg {
-    font-size: 1rem;
+    font-size: $font-sizes-medium;
   }
 
   .eds-contrast & {

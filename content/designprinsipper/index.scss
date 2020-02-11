@@ -1,0 +1,26 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.designprinsipper {
+  &-top-grid {
+    display: grid;
+    grid-gap: $space-large;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &-three-grid {
+    grid-row-start: 1;
+    padding: 0 $space-large;
+  }
+  &-wide-grid {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    padding: 0 $space-large 0;
+  }
+  &-grey-box {
+    background-color: $colors-greys-grey30;
+  }
+  &-lofter {
+    padding-bottom: $space-medium;
+    display: block;
+  }
+}

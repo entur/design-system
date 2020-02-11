@@ -5,10 +5,11 @@
   background: none;
   border: none;
   border-radius: 0;
-  padding: $space-extra-small;
-  margin-right: -$space-small;
   font-size: inherit;
   font-family: inherit;
+  margin-right: -$space-small;
+  padding: $space-extra-small;
+
   &--open svg {
     transform: rotate(180deg);
   }

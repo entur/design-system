@@ -1,5 +1,6 @@
 import React from 'react';
-import { SettingsIcon } from '@entur/icons';
+import { SettingsIcon, ViewIcon } from '@entur/icons';
+import { Paragraph } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import {
@@ -24,14 +25,23 @@ const SettingsPanel: React.FC = () => {
 
   return (
     <>
-      <button
-        aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
-        className="settings-trigger"
-        onClick={() => setOpen(prev => !prev)}
-        type="button"
+      <div
+        className="settings-panel"
+        style={{ marginLeft: 'auto', paddingRight: '2.5rem' }}
       >
-        <SettingsIcon />
-      </button>
+        <ViewIcon className="settings-panel__icon" />
+        <Paragraph margin="none">
+          Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
+        </Paragraph>
+        <button
+          aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
+          className="settings-trigger"
+          onClick={() => setOpen(prev => !prev)}
+          type="button"
+        >
+          <SettingsIcon />
+        </button>
+      </div>
       <Modal
         open={isOpen}
         onDismiss={() => setOpen(false)}

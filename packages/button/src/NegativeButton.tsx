@@ -16,8 +16,10 @@ export type NegativeButtonProps = {
    * @default false
    */
   disabled?: boolean;
-  /** Bredden på knappen. Defaulter til "standard-størrelse" */
-  width?: 'fluid';
+  /** Bredden på knappen.
+   * @default 'auto'
+   */
+  width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager knappen

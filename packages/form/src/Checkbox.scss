@@ -1,8 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 .eds-checkbox {
   &__container {

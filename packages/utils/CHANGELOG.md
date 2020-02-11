@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.2...@entur/utils@0.2.3) (2020-02-05)
+
+### Bug Fixes
+
+- add new breakpoint mixin for new breakpoint token ([eb6cc7a](https://bitbucket.org/enturas/design-system/commits/eb6cc7a63ff345e9835ab209f035dd2d615d20f8))
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [0.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.1...@entur/utils@0.2.2) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [0.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.0...@entur/utils@0.2.1) (2020-01-14)
 
 **Note:** Version bump only for package @entur/utils

@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.7...@entur/menu@1.2.8) (2020-02-10)
+
+**Note:** Version bump only for package @entur/menu
+
+## [1.2.7](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.6...@entur/menu@1.2.7) (2020-02-05)
+
+### Bug Fixes
+
+- increasing padding left on side navigation items, and increasing max width ([6bf7ce6](https://bitbucket.org/enturas/design-system/commits/6bf7ce6b277996fffd9085b72f23225bf1213496))
+- remove 'inline' on icon on side navigation group ([525370f](https://bitbucket.org/enturas/design-system/commits/525370f349d1acaf5b2b2b8b59ece9ff28d61c4c))
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [1.2.6](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.5...@entur/menu@1.2.6) (2020-01-28)
+
+**Note:** Version bump only for package @entur/menu
+
+## [1.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.4...@entur/menu@1.2.5) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.3...@entur/menu@1.2.4) (2020-01-20)
+
+### Bug Fixes
+
+- **Pagination:** fix bug where low page counts didn't work ([5b564d8](https://bitbucket.org/enturas/design-system/commits/5b564d882afe33dab27b737328de1510c1cd5b1f))
+- **Pagination:** make ellipsisisisis less clickable ([f63f241](https://bitbucket.org/enturas/design-system/commits/f63f24150f059214dfa776a2d1c18def8ff85b5a))
+- **Pagination:** show number when ellipsis is a single number ([7bd8048](https://bitbucket.org/enturas/design-system/commits/7bd80482d3cfb6be927851007b5e98c0b6ddc2b8))
+- **Pagination:** show two neighbors instead of one ([e426962](https://bitbucket.org/enturas/design-system/commits/e42696249bc2318d9a6babe95ee30700d845d42d))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.2...@entur/menu@1.2.3) (2020-01-14)
 
 **Note:** Version bump only for package @entur/menu

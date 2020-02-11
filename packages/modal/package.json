@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.0.5",
+  "version": "1.1.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
@@ -27,12 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "^0.5.0",
-    "@entur/tokens": "^1.1.2",
-    "@entur/typography": "^0.7.3",
-    "@entur/utils": "^0.2.1",
+    "@entur/a11y": "^0.2.13",
+    "@entur/icons": "^0.7.0",
+    "@entur/layout": "^1.2.2",
+    "@entur/tokens": "^1.2.0",
+    "@entur/typography": "^1.0.3",
+    "@entur/utils": "^0.2.3",
     "@reach/dialog": "^0.7.0",
     "@types/reach__dialog": "^0.1.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "react-focus-lock": "^2.2.1"
   }
 }

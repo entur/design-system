@@ -1,0 +1,71 @@
+@import '~@entur/tokens/dist/styles.scss';
+.eds-filter-chip {
+  cursor: pointer;
+  user-select: none;
+  padding-left: $space-extra-small2;
+  width: fit-content;
+  &__input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    &:checked + .eds-filter-chip__icon {
+      .eds-filter-chip-icon {
+        visibility: visible;
+        &__path {
+          stroke: $colors-brand-blue;
+          animation: stroke ease-in-out 0.2s 0.1s forwards;
+          .eds-contrast & {
+            stroke: $colors-validation-mint-contrast;
+          }
+        }
+      }
+    }
+  }
+  &:focus-within {
+    box-shadow: $shadows-focus;
+  }
+  &:hover {
+    border-color: $colors-brand-blue;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+      border-color: $colors-blues-blue30;
+    }
+  }
+  &__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    margin-right: $space-extra-small;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: $border-widths-default solid transparent;
+    border-radius: 50%;
+    background-color: $colors-brand-white;
+    color: $colors-brand-white;
+    .eds-contrast & {
+      background-color: $colors-brand-blue;
+    }
+    .eds-filter-chip-icon {
+      height: $font-sizes-large;
+      width: $font-sizes-large;
+      visibility: hidden;
+      .eds-contrast & {
+        color: $colors-brand-white;
+      }
+      &__path {
+        transform-origin: 50% 50%;
+        stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
+        stroke-dashoffset: 48;
+        stroke-width: 0.375rem;
+      }
+    }
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

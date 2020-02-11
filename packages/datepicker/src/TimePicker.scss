@@ -3,9 +3,11 @@
   width: 7rem;
   .react-datepicker__time-container {
     float: left;
+    overflow-x: hidden;
     width: inherit;
   }
   .react-datepicker__time-box {
+    border-radius: 0;
     width: inherit;
   }
   .react-datepicker__header--time {
@@ -28,7 +30,7 @@
       display: flex;
       font-size: $font-sizes-large;
       height: $space-extra-large;
-      justify-content: start;
+      justify-content: flex-start;
       line-height: $line-heights-medium;
       padding: $space-extra-small2 $space-default;
       &:hover {

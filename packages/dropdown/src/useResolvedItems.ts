@@ -1,6 +1,6 @@
 import React from 'react';
+import { debounce } from '@entur/utils';
 import { DropdownItemType, useNormalizedItems } from './useNormalizedItems';
-import debounce from './debounce';
 
 const useIsMounted = () => {
   const isMountedRef = React.useRef(true);

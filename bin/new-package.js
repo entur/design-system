@@ -90,12 +90,6 @@ async function run() {
 
     fs.writeFileSync(paths.newReadme, readmeContent);
 
-    console.log('🦷  Adding package to the root workspaces');
-    const rootPackageJson = await fs.readJson(paths.rootPackageJson);
-    rootPackageJson.workspaces.push(`packages/${packageName}`);
-    rootPackageJson.workspaces.sort();
-    await fs.writeJson(paths.rootPackageJson, rootPackageJson, { spaces: 2 });
-
     console.log('✅ Package created!');
     console.log(
       '🔥 There is a few things you need to remember to do manually, though:',

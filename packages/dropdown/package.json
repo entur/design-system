@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "0.5.2",
+  "version": "0.5.8",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/dropdown.esm.js",
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch --noClean",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
@@ -27,10 +27,10 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.8",
-    "@entur/form": "^2.2.2",
-    "@entur/tokens": "^1.1.2",
-    "@entur/utils": "^0.2.1",
+    "@entur/a11y": "^0.2.13",
+    "@entur/form": "^2.3.2",
+    "@entur/tokens": "^1.2.0",
+    "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6",
     "downshift": "^4.0.1"
   }

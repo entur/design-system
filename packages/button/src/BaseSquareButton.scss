@@ -1,0 +1,104 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+.eds-square-button {
+  --icon-color: var(--primary-text-color);
+  --icon-background: transparent;
+  --border-color: transparent;
+
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: $border-radiuses-medium;
+  cursor: pointer;
+  font-size: $font-sizes-large;
+  display: inline-flex;
+  font-family: inherit;
+  font-weight: $font-weights-body;
+  justify-content: center;
+  padding: 0;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
+
+.eds-square-button__icon {
+  align-items: center;
+  background-color: var(--icon-background);
+  border: $border-widths-default solid var(--border-color);
+  border-radius: $border-radiuses-medium;
+  color: var(--icon-color);
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  line-height: $line-heights-extra-large;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  width: 2.75rem;
+}
+
+.eds-square-button--secondary {
+  --icon-background: transparent;
+  --border-color: #{$colors-brand-lavender};
+
+  &:hover {
+    --icon-background: #{$colors-brand-lavender};
+  }
+  &:active {
+    --icon-background: #{shade($colors-brand-lavender, 10%)};
+    --border-color: #{shade($colors-brand-lavender, 10%)};
+  }
+
+  .eds-contrast & {
+    &:hover {
+      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+    }
+    &:active {
+      --icon-background: #{$colors-brand-lavender};
+      --icon-color: #{$colors-brand-blue};
+    }
+  }
+}
+
+.eds-square-button--success {
+  --icon-background: #{$colors-validation-mint-contrast};
+
+  &:hover {
+    --icon-background: #{tint($colors-validation-mint-contrast, 10%)};
+  }
+  &:active {
+    --icon-background: #{shade($colors-validation-mint-contrast, 5%)};
+  }
+}
+
+.eds-square-button__label {
+  color: var(--primary-text-color);
+}
+
+.eds-square-button__label + .eds-square-button__icon,
+.eds-square-button__icon + .eds-square-button__label {
+  margin-left: $space-default;
+}

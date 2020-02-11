@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.4...@entur/datepicker@0.3.5) (2020-02-10)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.3...@entur/datepicker@0.3.4) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [0.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.2...@entur/datepicker@0.3.3) (2020-01-31)
+
+### Bug Fixes
+
+- fix overflow design bug of timepicker ([258a748](https://bitbucket.org/enturas/design-system/commits/258a7486b3ee4ee28af96a3b73356423b6c57cd3))
+
+## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.1...@entur/datepicker@0.3.2) (2020-01-28)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.0...@entur/datepicker@0.3.1) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.5...@entur/datepicker@0.3.0) (2020-01-20)
+
+### Bug Fixes
+
+- fixing styling of datepicker ([7a12dba](https://bitbucket.org/enturas/design-system/commits/7a12dbafc4a2bfdf4fff9684d7eb28ff13b06329))
+- fixing styling of timepicker component ([0f721db](https://bitbucket.org/enturas/design-system/commits/0f721db28057d8789686df06ef6624f51310df48))
+- remove popper arrow for datepicker ([5f169e1](https://bitbucket.org/enturas/design-system/commits/5f169e1eddb6f1bb89631cbb697e76f74bb7e421))
+- similar styling for datepicker in normal and contrast ([2697b66](https://bitbucket.org/enturas/design-system/commits/2697b6681347b92a00a1d380680995e8f15dfd26))
+
+### Features
+
+- adding native timepicker ([205a3de](https://bitbucket.org/enturas/design-system/commits/205a3de6d2d302e22676443753a50be2e0b0912a))
+- adding the timepicker component ([6279a95](https://bitbucket.org/enturas/design-system/commits/6279a9506f69838e0c8691b58bc1d2e774235fdd))
+
 ## [0.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.2.4...@entur/datepicker@0.2.5) (2020-01-14)
 
 **Note:** Version bump only for package @entur/datepicker

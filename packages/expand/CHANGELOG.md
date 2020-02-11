@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.7...@entur/expand@1.1.8) (2020-02-10)
+
+### Bug Fixes
+
+- fix rendering of expandable panels ([4784f7c](https://bitbucket.org/enturas/design-system/commits/4784f7c010c38c4b20d96d007dee64dfe15b8380))
+
+## [1.1.7](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.6...@entur/expand@1.1.7) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [1.1.6](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.5...@entur/expand@1.1.6) (2020-01-28)
+
+**Note:** Version bump only for package @entur/expand
+
+## [1.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.4...@entur/expand@1.1.5) (2020-01-27)
+
+### Bug Fixes
+
+- update expandable panels to comply with new typography ([6c8276f](https://bitbucket.org/enturas/design-system/commits/6c8276f8ced0eead81c936af8ec24b8665c0281e))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.3...@entur/expand@1.1.4) (2020-01-20)
+
+**Note:** Version bump only for package @entur/expand
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.2...@entur/expand@1.1.3) (2020-01-14)
 
 **Note:** Version bump only for package @entur/expand

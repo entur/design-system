@@ -29,7 +29,7 @@ The docs are currently available at [design.entur.org](https://design.entur.org)
 
 ### Setting up and logging in to Firebase
 
-In order to deploy the docs locally, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Kristofer Giltvedt Selbekk](mailto:kristoffer.giltvedt.selbekk@entur.org) to be granted the correct access rights.
+In order to deploy the docs locally, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Nicolai Fredriksen](mailto:nicolai.fredriksen@entur.org) to be granted the correct access rights.
 
 ### The actual deploying part
 

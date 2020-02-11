@@ -1,5 +1,6 @@
 ---
 name: Text fields
+description: TextField en komponent for å ta imot tekst fra brukeren.
 route: /komponenter/skjemaelementer/textfield
 parent: Komponenter
 menu: Skjemaelementer
@@ -14,9 +15,7 @@ import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
-<PageHeader>
-  TextField er en inputkomponent, for å ta imot tekst fra brukeren.
-</PageHeader>
+<PageHeader />
 
 <Playground>
   <div style={{ display: 'grid', rowGap: '1em' }}>
@@ -27,17 +26,11 @@ import { ImportStatement } from '~/components/ImportStatement';
     <TextField variant="error" placeholder="Feil" />
     <TextField variant="none" placeholder="Søk..." />
     <TextField
-      width="fluid"
-      placeholder="Bilde Fluid og ikon som prepend"
+      placeholder="Her er et ikon som prepend"
       prepend={<ImageIcon inline />}
     />
     <div style={{ width: '15rem' }}>
-      <TextField
-        width="fluid"
-        placeholder="Kortere input med fluid"
-        prepend="Fra"
-        append="Kroner"
-      />
+      <TextField placeholder="Kortere input" prepend="Fra" append="Kroner" />
     </div>
   </div>
 </Playground>

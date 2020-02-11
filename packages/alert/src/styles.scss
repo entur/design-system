@@ -1,10 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .eds-alert-box {
   border: $border-widths-small solid;
@@ -28,6 +23,7 @@
     width: 100%;
 
     @include for-desktop {
+      min-width: 12rem;
       width: fit-content;
     }
   }
@@ -80,6 +76,10 @@
 
 .eds-alert-box__content {
   color: $colors-brand-blue;
+  &--no-title {
+    display: flex;
+    align-items: center;
+  }
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
@@ -124,6 +124,9 @@
   right: $space-default;
   left: $space-default;
   z-index: $z-indexes-toast;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
 
   > * + * {
     margin-top: $space-default;

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.8...@entur/alert@0.5.9) (2020-02-05)
+
+### Bug Fixes
+
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+## [0.5.8](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.7...@entur/alert@0.5.8) (2020-01-28)
+
+**Note:** Version bump only for package @entur/alert
+
+## [0.5.7](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.6...@entur/alert@0.5.7) (2020-01-27)
+
+### Bug Fixes
+
+- center text of alerts if no title is provided ([3976be9](https://bitbucket.org/enturas/design-system/commits/3976be9831c306a5d8a16530b16af03dcf5ad323))
+- min width and right side flexing of toast alerts ([21f2f2e](https://bitbucket.org/enturas/design-system/commits/21f2f2e33a69951ed3be64a2f1c24a6dd897f401))
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+
 ## [0.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.5...@entur/alert@0.5.6) (2020-01-14)
 
 **Note:** Version bump only for package @entur/alert

@@ -1,32 +1,17 @@
 {
+  "extends": "./tsconfig.base.json",
   "include": ["jest.setup.ts", "src"],
+  "exclude": [
+    "node_modules",
+    "packages/**/node_modules",
+    "packages/**/node_modules/*"
+  ],
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@entur/*": ["packages/*/src"],
+      "@entur/*": ["packages/*/dist"],
       "~*": ["src/*"],
       "src/*": ["src/*"]
-    },
-    "traceResolution": false,
-    "jsx": "react",
-    "esModuleInterop": true
+    }
   }
 }

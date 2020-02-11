@@ -51,7 +51,7 @@
     :checked + & {
       background-color: var(--eds-switch-color);
       .eds-switch__circle {
-        left: 1.6rem;
+        left: 1.625rem;
         svg g,
         path {
           fill: var(--eds-switch-color);
@@ -77,7 +77,7 @@
       border-radius: 3.75rem;
       :checked + & {
         .eds-switch__circle {
-          left: 1.9rem;
+          left: 1.875rem; //30px
         }
       }
     }

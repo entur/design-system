@@ -1,4 +1,12 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["src", "types"]
+  "extends": "../../tsconfig.base.json",
+  "include": ["src", "types"],
+  "exclude": ["src/**/*.test.tsx", "node_modules", "dist"],
+  "compilerOptions": {
+    "paths": {
+      "@entur/*": ["../*/dist"]
+    },
+    "baseUrl": "..",
+    "rootDir": "."
+  }
 }

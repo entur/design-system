@@ -1,11 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/expand/dist/styles.css';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .eds-side-navigation,
 .eds-side-navigation-group {
@@ -15,7 +9,7 @@
 
 .eds-side-navigation {
   --padding-vertical: #{$space-medium};
-  --padding-horizontal: #{$space-medium};
+  --padding-horizontal: #{$space-extra-large2};
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 0;
@@ -23,7 +17,7 @@
   list-style: none;
 
   @include for-desktop {
-    max-width: 18rem;
+    max-width: 26rem;
   }
 
   &--small {
@@ -110,7 +104,7 @@
   }
 
   @include for-desktop {
-    max-width: 18rem;
+    max-width: 26rem;
   }
 }
 
@@ -129,7 +123,7 @@
   justify-content: space-between;
   letter-spacing: 1px;
   line-height: $line-heights-medium;
-  padding: $space-small 0 $space-small $space-default;
+  padding: $space-small 0 $space-small $space-extra-large2;
   margin: 0;
   text-transform: uppercase;
   width: 100%;
@@ -137,7 +131,7 @@
 
 .eds-side-navigation-group__icon {
   transition: transform $timings-fast ease-out;
-  margin-right: $space-default;
+  margin-right: $space-large;
   &--open {
     transform: rotateZ(180deg);
   }

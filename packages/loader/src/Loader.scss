@@ -26,6 +26,13 @@
   overflow-x: hidden;
   max-width: 20rem;
   margin: 0 auto;
+  .eds-loader__label {
+    margin-bottom: $space-extra-small;
+  }
+  .eds-loader__percentage {
+    float: right;
+    margin-top: $space-extra-small;
+  }
 }
 
 .eds-loader__bar {

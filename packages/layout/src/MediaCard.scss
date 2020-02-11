@@ -1,0 +1,26 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-media-card {
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
+  .eds-contrast & {
+    background-color: $colors-blues-blue10;
+  }
+  &__media {
+  }
+  &__text {
+    appearance: none;
+    cursor: pointer;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 0 $space-extra-large2;
+  }
+  &__arrow-icon {
+    align-self: center;
+    margin: $space-default 0 $space-large;
+  }
+}

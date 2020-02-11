@@ -1,0 +1,49 @@
+---
+name: MediaCard
+description: MediaCard er en komponent for å vise noe valgfri medie sammen med lenke kapabilitet.
+parent: Komponenter
+route: /komponenter/layout-og-flater/media-card
+menu: Layout & Flater
+npmPackage: layout
+tags: media, richmedia, rich media, kort, card, navigasjon
+---
+
+import { MediaCard } from '@entur/layout';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import { DesktopIcon } from '@entur/icons';
+
+<PageHeader />
+
+<Playground>
+  <MediaCard
+    title="Velkommen til Entur"
+    description="Entur samler hele Norge til et samlet kollektiv med buss og tog."
+    href="www.entur.no"
+    style={{ width: '21rem' }}
+  >
+    <video
+      id="promo-video"
+      controls
+      controlsList="nodownload"
+      poster="https://www.entur.org/wp-content/uploads/2018/02/omentur-2.jpg"
+      style={{ height: '9.75rem', width: '100%' }}
+    >
+      <source
+        src="https://www.entur.org/wp-content/uploads/2018/04/frontpage-video.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </MediaCard>
+</Playground>
+
+## Komponenter
+
+### MediaCard
+
+<ImportStatement imports="MediaCard" />
+<Props of={MediaCard} />
+
+MediaCard, har

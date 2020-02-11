@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.4...@entur/tokens@1.2.0) (2020-02-05)
+
+### Bug Fixes
+
+- add "medium" timing for transition and animation purposes ([e1fd226](https://bitbucket.org/enturas/design-system/commits/e1fd22680064babdbe51f69708c2516410d9d0fd))
+- remove test-files from build process ([e0b24af](https://bitbucket.org/enturas/design-system/commits/e0b24af05d5c2ad8de4ae587d83c389495235890))
+
+### Features
+
+- adding extra large breakpoint token ([543e60b](https://bitbucket.org/enturas/design-system/commits/543e60b224f05ae390252bdd86d7aa35c7ca77e3))
+
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.3...@entur/tokens@1.1.4) (2020-01-28)
+
+### Bug Fixes
+
+- **colors:** update tram color to be consistent with other purps ([4651eb3](https://bitbucket.org/enturas/design-system/commits/4651eb386252ea97787c94c0f01b652d4bbd4e30))
+
+## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.2...@entur/tokens@1.1.3) (2020-01-27)
+
+### Bug Fixes
+
+- **types:** place types in the correct place ([acace09](https://bitbucket.org/enturas/design-system/commits/acace09ec0e258c5cff3a65e13ab29d6603780d9))
+- update lineheight and font size tokens to align with 8x system ([4b5455e](https://bitbucket.org/enturas/design-system/commits/4b5455ee9ae4daaebfee0fa6b787c0d41f6b3008))
+
 ## [1.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.1...@entur/tokens@1.1.2) (2020-01-14)
 
 **Note:** Version bump only for package @entur/tokens

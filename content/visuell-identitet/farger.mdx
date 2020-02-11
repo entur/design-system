@@ -1,11 +1,19 @@
 ---
 name: Farger
+description: Fargepaletten er et viktig grafisk virkemiddel i identiteten vår.
 route: /visuell-identitet/farger
 parent: Visuell identitet
 order: 2
 ---
 
 import { borderWidths, colors } from '@entur/tokens';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  HeaderCell,
+  TableBody,
+} from '@entur/table';
 import ColorSwatch from '~/components/ColorSwatch';
 import PageHeader from '~/components/PageHeader';
 import TransportColors from '~/components/TransportColors';
@@ -18,59 +26,152 @@ import TransportColors from '~/components/TransportColors';
 
 ## Identitetsfarger
 
+<Table style={{ marginBottom: '3rem' }}>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Eksempel</HeaderCell>
+      <HeaderCell>Navn</HeaderCell>
+      <HeaderCell>Type</HeaderCell>
+      <HeaderCell>CSS-Variabel</HeaderCell>
+      <HeaderCell>Hex</HeaderCell>
+      <HeaderCell>RGB</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <ColorSwatch type="Profil" path="brand.blue">
+      Blue
+    </ColorSwatch>
+    <ColorSwatch type="Profil" path="brand.lavender">
+      Lavender
+    </ColorSwatch>
+    <ColorSwatch type="Profil" path="brand.coral">
+      Coral
+    </ColorSwatch>
+    <ColorSwatch type="Profil" path="brand.peach">
+      Peach
+    </ColorSwatch>
+    <ColorSwatch
+      type="Profil"
+      path="brand.white"
+      style={{ border: '0.125rem solid #e9e9e9' }}
+    >
+      White
+    </ColorSwatch>
+  </TableBody>
+</Table>
+
 **Blue** er primærfargen til Entur og skal være gjennomgående i den visuelle profilen vår. Den varme, mørkeblå fargen hentyder til den statlige, trygge aktøren. Brukes i logo, typografi, bakgrunn (contrast tema) og enkelte elementer som bærer av vår identitet.
 
-<ColorSwatch path="brand.blue">Blue</ColorSwatch>
-
 **Lavender** brukes som støttefarge for å gi et mykere og varmere uttrykk. En mer subtil og nøytral blåfarge som skaper en visuell harmoni i layouten.
-
-<ColorSwatch path="brand.lavender">Lavender</ColorSwatch>
 
 **Coral** er Enturs aksentfarge. Fargen er vektet lavt, men er viktig og brukes ofte til mindre detaljer.
 Den korallrøde står for effektiviteten, tydeligheten og den lille detaljen som binder det hele sammen.
 
-<ColorSwatch path="brand.coral">Coral</ColorSwatch>
-
 **Peach** brukes for å få et ekstra lekent uttrykk. I likhet med coral skal også denne fargen vektes lavt, og brukes minimalt i designet.
-
-<ColorSwatch path="brand.peach">Peach</ColorSwatch>
 
 **White** brukes ofte som bakgrunnsfarge og typografi i for “contrast” tema. Bruken av mye hvitt og whitespace i tillegg til de andre fargene gjør at profilen fremstår lys, luftig og dynamisk.
 
-<ColorSwatch
-  path="brand.white"
-  style={{ border: `${borderWidths.small} solid ${colors.greys.grey20}` }}
->
-  White
-</ColorSwatch>
-
-Når det er snakk om kjernekommunikasjon, skal vi prøve å forholde oss til disse hovedfargene.
+Når det er snakk om **kjernekommunikasjon**, skal vi prøve å forholde oss til disse hovedfargene.
 
 ## Blåtoner
 
 Disse blå fargenyansene brukes hovedsakelig som bakgrunnsfarger i kontrast-tema og enkelte elementer i designet.
 
-<React.Fragment>
-  {Object.keys(colors.blues).map(color => (
-    <ColorSwatch key={color} path={`blues.${color}`}>
-      {color}
-    </ColorSwatch>
-  ))}
-</React.Fragment>
+<Table style={{ marginBottom: '3rem' }}>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Eksempel</HeaderCell>
+      <HeaderCell>Navn</HeaderCell>
+      <HeaderCell>Type</HeaderCell>
+      <HeaderCell>CSS-Variabel</HeaderCell>
+      <HeaderCell>Hex</HeaderCell>
+      <HeaderCell>RGB</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <React.Fragment>
+      {Object.keys(colors.blues).map(color => (
+        <ColorSwatch type="UX" key={color} path={`blues.${color}`}>
+          {color}
+        </ColorSwatch>
+      ))}
+    </React.Fragment>
+  </TableBody>
+</Table>
 
 ## Gråtoner
 
 Gråtonene symboliserer det tekniske og robuste i plattformen vår. Brukes hovedsakelig som bakgrunnsfarger i kontrast-tema for å få frem det lyse og luftige ved layouten i designet.
 
-<React.Fragment>
+<Table style={{marginBottom:"3rem"}}>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Eksempel</HeaderCell>
+      <HeaderCell>Navn</HeaderCell>
+      <HeaderCell>Type</HeaderCell>
+      <HeaderCell>Variabel</HeaderCell>
+      <HeaderCell>Hex</HeaderCell>
+      <HeaderCell>RGB</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
   {Object.keys(colors.greys).map(color => (
-    <ColorSwatch key={color} path={`greys.${color}`}>
+    <ColorSwatch type="UX" key={color} path={`greys.${color}`}>
       {color}
     </ColorSwatch>
   ))}
-</React.Fragment>
+
+  </TableBody>
+</Table>
 
 ## Feedback-farger
+
+<Table style={{ marginBottom: '3rem' }}>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Eksempel</HeaderCell>
+      <HeaderCell>Navn</HeaderCell>
+      <HeaderCell>Type</HeaderCell>
+      <HeaderCell>CSS-Variabel</HeaderCell>
+      <HeaderCell>Hex</HeaderCell>
+      <HeaderCell>RGB</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <ColorSwatch type="UX" path="validation.sky">
+      Sky
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.skyContrast">
+      Sky Contrast
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.skyTint">
+      Sky Tint
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.mint">
+      Mint
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.mintContrast">
+      Mint Contrast
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.mintTint">
+      Mint Tint
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.canary">
+      Canary
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.lava">
+      Lava
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.lavaContrast">
+      Lava Contrast
+    </ColorSwatch>
+    <ColorSwatch type="UX" path="validation.lavaTint">
+      Lava Tint
+    </ColorSwatch>
+  </TableBody>
+</Table>
+
+### Infomelding
 
 **Sky** er fargen som brukes på infomeldinger for å gi brukeren relevante tips eller informasjon.
 
@@ -78,9 +179,7 @@ Gråtonene symboliserer det tekniske og robuste i plattformen vår. Brukes hoved
 
 **Sky Tint** er støttefargen til Sky som kan brukes på bakgrunn til suksessmeldinger.
 
-<ColorSwatch path="validation.sky">Sky</ColorSwatch>
-<ColorSwatch path="validation.skyContrast">Sky Contrast</ColorSwatch>
-<ColorSwatch path="validation.skyTint">Sky Tint</ColorSwatch>
+### Suksessmelding
 
 **Mint** indikerer at det er gjennomført, trygt, vellykket.
 
@@ -88,23 +187,17 @@ Gråtonene symboliserer det tekniske og robuste i plattformen vår. Brukes hoved
 
 **Mint Tint** er støttefargen til Mint som kan brukes på bakgrunn til suksessmeldinger.
 
-<ColorSwatch path="validation.mint">Mint</ColorSwatch>
-<ColorSwatch path="validation.mintContrast">Mint Contrast</ColorSwatch>
-<ColorSwatch path="validation.mintTint">Mint Tint</ColorSwatch>
+### Advarselmelding
 
 **Canary** indikerer en advarsel som kanskje trenger oppmerksomhet. Brukes for å fremheve viktig innhold eller informasjon som brukeren bør få med seg.
 
-<ColorSwatch path="validation.canary">Canary</ColorSwatch>
+### Feilmelding
 
 **Lava** indikerer at det er en feil eller mangel. Fargen indikerer også advarsel for fare eller potensielt negativ handling som kan føre til tap av data.
 
 **Lava Contrast** brukes på feilmeldinger i kontrast-tema.
 
 **Lava Tint** er støttefargen til Lava som kan brukes på bakgrunn til feilmeldinger.
-
-<ColorSwatch path="validation.lava">Lava</ColorSwatch>
-<ColorSwatch path="validation.lavaContrast">Lava Contrast</ColorSwatch>
-<ColorSwatch path="validation.lavaTint">Lava Tint</ColorSwatch>
 
 ## Transportfarger
 

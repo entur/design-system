@@ -1,6 +1,6 @@
 {
   "name": "@entur/utils",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/utils.esm.js",
@@ -17,8 +17,8 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
+    "start": "tsdx watch --noClean",
+    "build": "tsdx build && cp src/*.scss dist",
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
   },

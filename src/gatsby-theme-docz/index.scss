@@ -21,12 +21,7 @@
 @import '~@entur/typography/dist/styles.css';
 
 @import '~@entur/tokens/dist/styles.scss';
-
-@mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
-    @content;
-  }
-}
+@import '~@entur/utils/dist/breakpoints.scss';
 
 body {
   margin: 0;
@@ -37,9 +32,16 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
+  margin-top: $space-extra-large;
+  transition: max-width $timings-fast ease-out,
+    margin-left $timings-fast ease-out;
 
   @include for-desktop {
-    margin-left: 22rem;
+    margin-left: 21rem;
+    max-width: 60rem;
+  }
+  @include for-large-desktop {
+    margin-left: 30rem;
     max-width: 60rem;
   }
 }
@@ -47,16 +49,31 @@ body {
   flex: 1;
 }
 
+.blueback {
+  .oi {
+    background: $colors-brand-blue;
+    height: 39rem;
+    position: absolute;
+    width: 100vw;
+    top: 0;
+    z-index: -1;
+  }
+}
+
 .frontpage-site-content {
   display: flex;
   margin: $space-default;
   flex-direction: column;
   min-height: 90vh;
-  @include for-desktop {
-    margin: 1rem auto;
+  @include for-large-desktop {
+    margin: 0 auto 1rem;
     max-width: 64rem;
   }
 }
 .frontpage-site-content main {
   flex: 1;
+}
+
+code {
+  font-size: 14px; //Override  for code, as rem is redefined
 }
