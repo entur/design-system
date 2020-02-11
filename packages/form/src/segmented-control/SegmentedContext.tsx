@@ -9,12 +9,14 @@ export type SegmentedContextProps =
       onChange: (value: SelectedValues) => void;
       selectedValue: SelectedValues;
       multiple: true;
+      size: 'medium' | 'large';
     }
   | {
       name: string;
       onChange: (value: SelectedValue) => void;
       selectedValue: SelectedValue;
       multiple: false;
+      size: 'medium' | 'large';
     };
 
 const SegmentedContext = React.createContext<SegmentedContextProps | null>(
@@ -27,12 +29,14 @@ export type SegmentedProviderProps =
       onChange?: (value: SelectedValues) => void;
       selectedValue: SelectedValues;
       multiple: true;
+      size: 'medium' | 'large';
     }
   | {
       name?: string;
       onChange?: (value: SelectedValue) => void;
       selectedValue: SelectedValue;
       multiple: false;
+      size: 'medium' | 'large';
     };
 
 export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
@@ -40,6 +44,7 @@ export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
   onChange = () => {},
   selectedValue,
   multiple,
+  size,
   ...rest
 }) => {
   const generatedName = useRandomId('eds-segmented-control');
@@ -49,8 +54,9 @@ export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
       onChange,
       multiple,
       selectedValue,
+      size,
     }),
-    [generatedName, multiple, name, onChange, selectedValue],
+    [generatedName, multiple, name, onChange, selectedValue, size],
   ) as SegmentedContextProps;
   return <SegmentedContext.Provider value={contextValue} {...rest} />;
 };

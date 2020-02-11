@@ -32,6 +32,7 @@ export const SegmentedChoice: React.RefForwardingComponent<
       selectedValue,
       onChange: commonOnChange,
       multiple,
+      size,
     } = useSegmentedContext();
 
     const isChecked = multiple
@@ -52,7 +53,9 @@ export const SegmentedChoice: React.RefForwardingComponent<
 
     return (
       <label
-        className={classNames('eds-segmented-choice', className)}
+        className={classNames('eds-segmented-choice', className, {
+          'eds-segmented-choide--large': size === 'large',
+        })}
         style={style}
       >
         <input
@@ -64,7 +67,13 @@ export const SegmentedChoice: React.RefForwardingComponent<
           ref={ref}
           {...rest}
         />
-        <div className="eds-base-segmented">{children}</div>
+        <div
+          className={classNames('eds-base-segmented', {
+            'eds-base-segmented--large': size === 'large',
+          })}
+        >
+          {children}
+        </div>
       </label>
     );
   },
