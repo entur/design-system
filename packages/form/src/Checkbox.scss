@@ -21,15 +21,21 @@
       &:checked + .eds-checkbox__icon,
       &:indeterminate + .eds-checkbox__icon {
         background-color: $colors-brand-blue;
-        .eds-contrast & {
-          background: $colors-blues-blue30;
-        }
         .eds-checkbox-icon {
           visibility: visible;
           &__path {
             stroke: $colors-brand-white;
             animation: stroke ease-in-out 0.2s 0.1s forwards;
           }
+        }
+        &--disabled {
+          opacity: 0.5;
+          .eds-checkbox-icon__path {
+            opacity: 0.5;
+          }
+        }
+        .eds-contrast & {
+          background: $colors-blues-blue30;
         }
       }
     }
@@ -62,9 +68,12 @@
     }
   }
   &--disabled {
-    cursor: not-allowed;
+    pointer-events: none;
+    .eds-checkbox__label {
+      opacity: 0.5;
+    }
     .eds-checkbox__icon {
-      display: none;
+      opacity: 0.5;
     }
   }
   &__icon {

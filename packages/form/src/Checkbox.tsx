@@ -43,13 +43,18 @@ export const Checkbox: React.RefForwardingComponent<
           type="checkbox"
           ref={innerRef}
           checked={isControlled ? checked === true : undefined}
+          disabled={disabled}
           {...rest}
         />
-        <span className="eds-checkbox__icon">
+        <span
+          className={cx('eds-checkbox__icon', {
+            'eds-checkbox__icon--disabled': disabled,
+          })}
+        >
           <CheckboxIcon indeterminate={isIndeterminate} />
         </span>
         {children && (
-          <Paragraph margin="none" as="span">
+          <Paragraph className="eds-checkbox__label" margin="none" as="span">
             {children}
           </Paragraph>
         )}
