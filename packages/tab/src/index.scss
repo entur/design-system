@@ -29,6 +29,10 @@
     }
   }
 
+  &--width-fluid {
+    color: red;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -48,6 +52,9 @@
   min-width: 10rem;
   padding: $space-extra-small $space-default;
   position: relative;
+  .eds-tab-list--width-fluid & {
+    flex-grow: 1;
+  }
   .eds-contrast & {
     background-color: $colors-blues-blue30;
     border-color: $colors-blues-blue30;
