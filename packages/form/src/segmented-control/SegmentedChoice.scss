@@ -19,6 +19,10 @@
     .eds-contrast & {
       border-color: $colors-blues-blue20;
     }
+    &--large {
+      line-height: $line-heights-medium;
+      padding: 0.625rem $space-small;
+    }
   }
   &:hover input:not(:checked) + .eds-base-segmented {
     --background-color: #{$colors-blues-blue80};
