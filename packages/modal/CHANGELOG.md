@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.3...@entur/modal@1.1.4) (2020-02-12)
+
+### Bug Fixes
+
+- fix missing type for spreading of props ([0e5beba](https://bitbucket.org/enturas/design-system/commits/0e5beba82ea7dde39915cd626e665aa6c15dafbf))
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.2...@entur/modal@1.1.3) (2020-02-10)
 
 **Note:** Version bump only for package @entur/modal

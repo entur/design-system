@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.2...@entur/form@2.3.3) (2020-02-12)
+
+### Bug Fixes
+
+- add size prop, for support of larger segmented controls to align with input fields ([e761945](https://bitbucket.org/enturas/design-system/commits/e761945ceab7bf49dd3da1671f287a18fc5c1652))
+- adding styling for disabled checkboxes, according to design-discussions ([52ffb2a](https://bitbucket.org/enturas/design-system/commits/52ffb2a8203a3dc49eb158a719177232afa43cd1))
+- proper styling for disabled checkbox ([57b5d71](https://bitbucket.org/enturas/design-system/commits/57b5d719d1b0cadb15302fe652503f9014780456))
+
 ## [2.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.1...@entur/form@2.3.2) (2020-02-10)
 
 ### Bug Fixes
