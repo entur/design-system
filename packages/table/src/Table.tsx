@@ -14,6 +14,7 @@ export type TableProps = {
   fixed?: boolean;
   /** Innholdet i tabellen */
   children: React.ReactNode;
+  [key: string]: any;
 };
 export const Table: React.FC<TableProps> = ({
   className,
