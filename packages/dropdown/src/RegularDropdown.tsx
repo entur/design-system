@@ -45,10 +45,11 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu();
-              if (autoHighlightFirstItem) {
-                setHighlightedIndex(0);
-              }
+              openMenu(() => {
+                if (autoHighlightFirstItem) {
+                  setHighlightedIndex(0);
+                }
+              });
             }
           },
         })}

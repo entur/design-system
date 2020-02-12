@@ -71,10 +71,11 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu();
-              if (autoHighlightFirstItem) {
-                setHighlightedIndex(0);
-              }
+              openMenu(() => {
+                if (autoHighlightFirstItem) {
+                  setHighlightedIndex(0);
+                }
+              });
             }
           },
           ...rest,
