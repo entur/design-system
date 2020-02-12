@@ -14,12 +14,14 @@ export type DownshiftProviderProps = {
   onInputValueChange?: (value: string) => void;
   inputValue?: string;
   initialSelectedItem?: NormalizedDropdownItemType;
+  autoHighlightFirstItem?: boolean;
   [key: string]: any;
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   children,
   onChange = () => {},
   onInputValueChange = () => {},
+  autoHighlightFirstItem = false,
   ...rest
 }) => {
   const handleStateChange = (
@@ -30,6 +32,9 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
       onChange(changes.selectedItem, stateAndHelpers);
     } else if ('inputValue' in changes) {
       onInputValueChange(changes.inputValue);
+    }
+    if ('isOpen' in changes && changes.isOpen && autoHighlightFirstItem) {
+      stateAndHelpers.setHighlightedIndex(0);
     }
   };
   return (

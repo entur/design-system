@@ -84,6 +84,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       onInputValueChange={fetchItems}
       onChange={onChange}
       value={value}
+      autoHighlightFirstItem={autoHighlightFirstItem}
       {...rest}
     >
       <DropdownInputGroup

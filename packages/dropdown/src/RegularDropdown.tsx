@@ -20,7 +20,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   placeholder = 'Vennligst velg',
   selectOnTab = false,
   openOnFocus = false,
-  autoHighlightFirstItem = false,
+  autoHighlightFirstItem: removeToAvoidPropagation,
   ...rest
 }) => {
   const {
@@ -28,7 +28,6 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
     selectedItem,
     selectHighlightedItem,
     openMenu,
-    setHighlightedIndex,
   } = useDownshift();
   return (
     <BaseDropdown disabled={disabled} {...rest}>
@@ -45,11 +44,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu(() => {
-                if (autoHighlightFirstItem) {
-                  setHighlightedIndex(0);
-                }
-              });
+              openMenu();
             }
           },
         })}
