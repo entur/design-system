@@ -26,7 +26,7 @@ import { ImportStatement } from '~/components/ImportStatement';
       <Tab>Priser</Tab>
       <Tab>Detaljer</Tab>
       <Tab disabled>Disabled</Tab>
-      <Tab>Avansert</Tab>
+      <Tab>Tom fane</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
@@ -45,21 +45,16 @@ import { ImportStatement } from '~/components/ImportStatement';
         <InputGroup label="Pris">
           <TextField defaultValue="99,00" />
         </InputGroup>
-        <InputGroup>
+        <InputGroup style={{ marginBottom: '1rem' }}>
           <TextArea defaultValue="Prisen er inkludert MVA" />
         </InputGroup>
         <PrimaryButton>Lagre</PrimaryButton>
       </TabPanel>
       <TabPanel />
       <TabPanel>
-        <Heading3>Avansert</Heading3>
-        <img
-          src="https://media.giphy.com/media/TlK63EWh6J1puKmzYmQ/giphy.gif"
-          alt="Thomas-toget"
-        />
+        <Heading3>Denne er tom</Heading3>
       </TabPanel>
     </TabPanels>
-
   </Tabs>
 </Playground>
 
