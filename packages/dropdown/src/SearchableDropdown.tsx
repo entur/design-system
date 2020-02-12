@@ -14,6 +14,7 @@ type SearchableDropdownProps = {
   readOnly?: boolean;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  autoHighlightFirstItem?: boolean;
   [key: string]: any;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
@@ -26,6 +27,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   prepend,
   selectOnTab = false,
   openOnFocus = false,
+  autoHighlightFirstItem = false,
   ...rest
 }) => {
   const {
@@ -33,6 +35,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     inputValue,
     selectHighlightedItem,
     openMenu,
+    setHighlightedIndex,
   } = useDownshift();
 
   const filteredItems = React.useMemo(() => {
@@ -40,6 +43,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       return items;
     }
     const inputRegex = new RegExp(inputValue, 'i');
+    setHighlightedIndex(0);
     return items.filter(item => inputRegex.test(item.label));
   }, [inputValue, items]);
 
@@ -66,6 +70,9 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           onFocus: () => {
             if (openOnFocus) {
               openMenu();
+              if (autoHighlightFirstItem) {
+                setHighlightedIndex(0);
+              }
             }
           },
           ...rest,

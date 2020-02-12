@@ -12,6 +12,7 @@ type RegularDropdownProps = {
   className?: string;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  autoHighlightFirstItem?: boolean;
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -19,6 +20,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   placeholder = 'Vennligst velg',
   selectOnTab = false,
   openOnFocus = false,
+  autoHighlightFirstItem = false,
   ...rest
 }) => {
   const {
@@ -26,6 +28,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
     selectedItem,
     selectHighlightedItem,
     openMenu,
+    setHighlightedIndex,
   } = useDownshift();
   return (
     <BaseDropdown disabled={disabled} {...rest}>
@@ -43,6 +46,9 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           onFocus: () => {
             if (openOnFocus) {
               openMenu();
+              if (autoHighlightFirstItem) {
+                setHighlightedIndex(0);
+              }
             }
           },
         })}
