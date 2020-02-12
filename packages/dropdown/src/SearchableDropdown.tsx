@@ -39,11 +39,13 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   } = useDownshift();
 
   const filteredItems = React.useMemo(() => {
+    if (autoHighlightFirstItem) {
+      setHighlightedIndex(0);
+    }
     if (!inputValue) {
       return items;
     }
     const inputRegex = new RegExp(inputValue, 'i');
-    setHighlightedIndex(0);
     return items.filter(item => inputRegex.test(item.label));
   }, [inputValue, items]);
 
