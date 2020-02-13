@@ -98,7 +98,7 @@ test('handles all sorts of items', () => {
   );
 });
 
-test('handles items prop when they are delivered by a synchronous function', async () => {
+test('handles items prop it is a synchronous function', async () => {
   const { getAllByRole, queryAllByRole, getByText } = render(
     <Dropdown items={() => testItems} placeholder="Velg noe" />,
   );
@@ -113,7 +113,7 @@ test('handles items prop when they are delivered by a synchronous function', asy
   expect(getAllByRole('option')).toHaveLength(testItems.length);
 });
 
-test('handles items prop when they are delivered by an asynchronous function', async () => {
+test('handles items prop it is an asynchronous function', async () => {
   const { queryAllByRole, getAllByRole, getByText } = render(
     <Dropdown items={async () => testItems} placeholder="Velg noe" />,
   );
