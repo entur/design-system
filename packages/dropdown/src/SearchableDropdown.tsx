@@ -26,7 +26,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   prepend,
   selectOnTab = false,
   openOnFocus = false,
-  autoHighlightFirstItem = false,
   ...rest
 }) => {
   const {
