@@ -14,7 +14,6 @@ type SearchableDropdownProps = {
   readOnly?: boolean;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
-  autoHighlightFirstItem?: boolean;
   [key: string]: any;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
@@ -35,13 +34,9 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     inputValue,
     selectHighlightedItem,
     openMenu,
-    setHighlightedIndex,
   } = useDownshift();
 
   const filteredItems = React.useMemo(() => {
-    if (autoHighlightFirstItem) {
-      setHighlightedIndex(0);
-    }
     if (!inputValue) {
       return items;
     }

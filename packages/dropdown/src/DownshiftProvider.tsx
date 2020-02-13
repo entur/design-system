@@ -1,5 +1,9 @@
 import React from 'react';
-import Downshift, { ControllerStateAndHelpers } from 'downshift';
+import Downshift, {
+  ControllerStateAndHelpers,
+  DownshiftState,
+  StateChangeOptions,
+} from 'downshift';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 
 const DownshiftContext = React.createContext<ControllerStateAndHelpers<
@@ -33,14 +37,26 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
     } else if ('inputValue' in changes) {
       onInputValueChange(changes.inputValue);
     }
-    if ('isOpen' in changes && changes.isOpen && autoHighlightFirstItem) {
-      stateAndHelpers.setHighlightedIndex(0);
-    }
   };
+
+  const stateReducer = (
+    _: DownshiftState<NormalizedDropdownItemType>,
+    changes: StateChangeOptions<NormalizedDropdownItemType>,
+  ): Partial<StateChangeOptions<NormalizedDropdownItemType>> => {
+    if (autoHighlightFirstItem) {
+      const wasJustOpened = 'isOpen' in changes && changes.isOpen;
+      if (wasJustOpened) {
+        return { ...changes, highlightedIndex: 0 };
+      }
+    }
+    return changes;
+  };
+
   return (
     <Downshift
       itemToString={item => (item ? item.label : '')}
       onStateChange={handleStateChange}
+      stateReducer={stateReducer}
       {...rest}
     >
       {args => (

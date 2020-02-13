@@ -12,7 +12,6 @@ type RegularDropdownProps = {
   className?: string;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
-  autoHighlightFirstItem?: boolean;
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -20,7 +19,6 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   placeholder = 'Vennligst velg',
   selectOnTab = false,
   openOnFocus = false,
-  autoHighlightFirstItem: removeToAvoidPropagation,
   ...rest
 }) => {
   const {

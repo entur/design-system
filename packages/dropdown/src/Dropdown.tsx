@@ -104,7 +104,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
           prepend={prepend}
           selectOnTab={selectOnTab}
           openOnFocus={openOnFocus}
-          autoHighlightFirstItem={autoHighlightFirstItem}
         />
       </DropdownInputGroup>
     </DownshiftProvider>
