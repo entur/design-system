@@ -43,10 +43,13 @@ type DropdownProps = {
   debounceTimeout?: number;
   /** Ekstra klassenavn */
   className?: string;
+  /** Marker første valgmulighet automatisk */
+  highlightFirstItemOnOpen?: boolean;
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
 export const Dropdown: React.FC<DropdownProps> = ({
+  highlightFirstItemOnOpen,
   debounceTimeout,
   disabled,
   feedback,
@@ -81,6 +84,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       onInputValueChange={fetchItems}
       onChange={onChange}
       value={value}
+      highlightFirstItemOnOpen={highlightFirstItemOnOpen}
       {...rest}
     >
       <DropdownInputGroup
