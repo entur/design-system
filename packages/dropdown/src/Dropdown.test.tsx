@@ -98,7 +98,7 @@ test('handles all sorts of items', () => {
   );
 });
 
-test('handles items prop when a sync function', async () => {
+test('handles items prop when they are delivered by a synchronous function', async () => {
   const { getAllByRole, queryAllByRole, getByText } = render(
     <Dropdown items={() => testItems} placeholder="Velg noe" />,
   );
@@ -113,7 +113,7 @@ test('handles items prop when a sync function', async () => {
   expect(getAllByRole('option')).toHaveLength(testItems.length);
 });
 
-test('handles items prop when an async function', async () => {
+test('handles items prop when they are delivered by an asynchronous function', async () => {
   const { queryAllByRole, getAllByRole, getByText } = render(
     <Dropdown items={async () => testItems} placeholder="Velg noe" />,
   );
@@ -189,6 +189,35 @@ test('lets the user select the highlighted index on tab', async () => {
     {
       value: 'Bergen',
       label: 'Bergen',
+    },
+    expect.anything(),
+  );
+});
+
+test('auto-highlights first item if the autoHighlightFirstItem prop is set', async () => {
+  const changeSpy = jest.fn();
+  const { getByPlaceholderText } = render(
+    <Dropdown
+      autoHighlightFirstItem
+      openOnFocus
+      selectOnTab
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+  // The menu is opened automatically as the field gains focus. The first item is also highlighted.
+  fireEvent.focus(inputField);
+  // Because the selectOnTab prop is true, pressing tab immediately selects the first item
+  fireEvent.keyDown(inputField, { key: 'Tab' });
+
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Oslo',
+      label: 'Oslo',
     },
     expect.anything(),
   );
