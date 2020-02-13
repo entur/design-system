@@ -23,6 +23,8 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "@types/jest": "^24.0.18",
@@ -67,6 +69,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "pretty-quick --staged",
       "pre-push": "yarn lint && yarn test:single-run",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
