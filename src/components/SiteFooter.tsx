@@ -7,7 +7,6 @@ import './SiteFooter.scss';
 
 const SiteFooter: React.FC = () => {
   const { filepath } = useCurrentDoc();
-  console.log(filepath.substring(8));
   return (
     <>
       <Divider />
