@@ -1,5 +1,8 @@
 .eds-dropdown-wrapper {
   position: relative;
+  .eds-form-control {
+    padding-right: 0;
+  }
 }
 
 .eds-dropdown__input {
