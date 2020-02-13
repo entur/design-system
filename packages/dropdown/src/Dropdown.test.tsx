@@ -194,13 +194,12 @@ test('lets the user select the highlighted index on tab', async () => {
   );
 });
 
-test('auto-highlights first item if the autoHighlightFirstItem prop is set', async () => {
+test('auto-highlights first item if the highlightFirstItemOnOpen prop is set', async () => {
   const changeSpy = jest.fn();
   const { getByPlaceholderText } = render(
     <Dropdown
-      autoHighlightFirstItem
+      highlightFirstItemOnOpen
       openOnFocus
-      selectOnTab
       items={testItems}
       placeholder="Velg noe"
       onChange={changeSpy}
@@ -212,12 +211,54 @@ test('auto-highlights first item if the autoHighlightFirstItem prop is set', asy
   // The menu is opened automatically as the field gains focus. The first item is also highlighted.
   fireEvent.focus(inputField);
   // Because the selectOnTab prop is true, pressing tab immediately selects the first item
-  fireEvent.keyDown(inputField, { key: 'Tab' });
+  fireEvent.keyDown(inputField, { key: 'Enter' });
 
   expect(changeSpy).toHaveBeenCalledWith(
     {
       value: 'Oslo',
       label: 'Oslo',
+    },
+    expect.anything(),
+  );
+});
+
+test('auto-highlights first item if the highlightFirstItemOnOpen prop is set in the typeahead case', async () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, getByPlaceholderText } = render(
+    <Dropdown
+      highlightFirstItemOnOpen
+      openOnFocus
+      items={inputValue =>
+        Promise.resolve(testItems.filter(item => item.includes(inputValue)))
+      }
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+      loadingText="2 sek"
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+  expect(queryByText('Bergen')).not.toBeInTheDocument();
+
+  act(() => {
+    fireEvent.focus(inputField);
+    fireEvent.change(inputField, { target: { value: 'er' } });
+  });
+
+  await wait(() => getByText('Bergen'));
+
+  expect(queryByText('2 sek')).not.toBeInTheDocument();
+
+  expect(getByText('Bergen')).toBeInTheDocument();
+  expect(getByText('Stavanger')).toBeInTheDocument();
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+
+  fireEvent.keyDown(inputField, { key: 'Enter' });
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Bergen',
+      label: 'Bergen',
     },
     expect.anything(),
   );
