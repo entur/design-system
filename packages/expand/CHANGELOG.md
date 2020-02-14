@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.9...@entur/expand@1.1.10) (2020-02-14)
+
+### Bug Fixes
+
+- reduce left-padding for expandable panels ([27144ef](https://bitbucket.org/enturas/design-system/commits/27144ef0969e57811ca9b1fb22c12d2143c44c98))
+
 ## [1.1.9](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.8...@entur/expand@1.1.9) (2020-02-12)
 
 **Note:** Version bump only for package @entur/expand

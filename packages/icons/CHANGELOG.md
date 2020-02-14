@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.8.0...@entur/icons@0.9.0) (2020-02-14)
+
+### Bug Fixes
+
+- update look for teddy icon ([45a2fc2](https://bitbucket.org/enturas/design-system/commits/45a2fc206ca8ccc5a004968e2c566bd1c28c6a23))
+
+### Features
+
+- new icons ([f50efb3](https://bitbucket.org/enturas/design-system/commits/f50efb3c7fd37c95464a362dd563dfa64126004f))
+
 # [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.7.0...@entur/icons@0.8.0) (2020-02-12)
 
 ### Features

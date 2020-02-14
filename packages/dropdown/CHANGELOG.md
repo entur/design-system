@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.9...@entur/dropdown@0.6.0) (2020-02-14)
+
+### Bug Fixes
+
+- decrease padding inside dropdown ([63b847f](https://bitbucket.org/enturas/design-system/commits/63b847f74fbbf9d0cb8806b8d1018548ca1d23bd))
+- Remove prop which is not used ([5c4758e](https://bitbucket.org/enturas/design-system/commits/5c4758ef37eeabf86ae6f79a3c5ff53a46003d0a))
+- **dropdown:** Only auto-highlight if the option has been set ([6127c1b](https://bitbucket.org/enturas/design-system/commits/6127c1be48bb16650ec354a592ab85ce59e5e951))
+
+### Features
+
+- **dropdown:** ability to style dropdown list directly ([9449090](https://bitbucket.org/enturas/design-system/commits/94490901e196b78d95d9136d3aaa41b8a993b517))
+- **dropdown:** Add option for auto highlighting the first result ([2833e24](https://bitbucket.org/enturas/design-system/commits/2833e24256eb7f0cf9198eae9fda2d720e8b9fc9))
+
 ## [0.5.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.8...@entur/dropdown@0.5.9) (2020-02-12)
 
 ### Bug Fixes

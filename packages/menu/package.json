@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
@@ -23,10 +23,10 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/expand": "^1.1.9",
-    "@entur/icons": "^0.8.0",
+    "@entur/expand": "^1.1.10",
+    "@entur/icons": "^0.9.0",
     "@entur/tokens": "^1.2.0",
-    "@entur/typography": "^1.0.3",
+    "@entur/typography": "^1.1.0",
     "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"
   },

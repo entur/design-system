@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.0...@entur/tab@0.4.1) (2020-02-14)
+
+### Bug Fixes
+
+- decrease padding in tabpanels ([dbcdbfc](https://bitbucket.org/enturas/design-system/commits/dbcdbfc04e22222a0a6cd3661f057928641ec586))
+- remove focus styling on tabpanel click ([a87b2b5](https://bitbucket.org/enturas/design-system/commits/a87b2b57f5718eeffe74ed53fff9a4d859818b21))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.3.2...@entur/tab@0.4.0) (2020-02-12)
 
 ### Bug Fixes
