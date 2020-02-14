@@ -1,5 +1,9 @@
 # Typography
 
+## Read before use
+
+Entur's official font is Nationale and is created by Playtype Foundry, located in Copenhagen. The font is protected under licence and shall only be used in official Entur products. All other uses will be regarded as a violation to the licence agreement and to Entur's brand, and legal actions may be filed. By downloading this font you confirm that you are employed by Entur and that the font only will be used in developing official Entur products.
+
 This package contains styles and React components for all of our typography.
 
 > 💡 Looking for the [documentation](https://design.entur.org/komponenter/resources/typography)?
@@ -19,4 +23,4 @@ Please refer to the [documentation](https://design.entur.org/komponenter/resourc
 ## Licenses
 
 - Source code is licensed under European Union Public License, version 1.2 (EUPL-1.2)
-- The fonts are licensed separately. See [LICENSE-FONTS.pdf](./LICENCE-FONTS.pdf).
+- The fonts are licensed separately, and all use should follow its licence.
