@@ -25,8 +25,12 @@
     width: inherit;
     z-index: $z-indexes-behind;
     .eds-contrast & {
-      background-color: $colors-blues-blue30;
+      background-color: $colors-brand-lavender;
     }
+  }
+
+  &--width-fluid {
+    color: red;
   }
 
   &::-webkit-scrollbar {
@@ -48,6 +52,9 @@
   min-width: 10rem;
   padding: $space-extra-small $space-default;
   position: relative;
+  .eds-tab-list--width-fluid & {
+    flex-grow: 1;
+  }
   .eds-contrast & {
     background-color: $colors-blues-blue30;
     border-color: $colors-blues-blue30;
@@ -78,7 +85,7 @@
     display: block;
     height: $border-widths-default;
     .eds-contrast & {
-      background-color: $colors-blues-blue30;
+      background-color: $colors-brand-lavender;
     }
   }
 
@@ -91,7 +98,7 @@
     .eds-contrast & {
       background-color: $colors-brand-blue;
       color: $colors-brand-white;
-      border-color: $colors-blues-blue30;
+      border-color: $colors-brand-lavender;
     }
 
     &::after {

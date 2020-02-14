@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.1...@entur/layout@1.2.2) (2020-02-10)
+
+### Bug Fixes
+
+- remove deprecated and colliding styling ([81f3128](https://bitbucket.org/enturas/design-system/commits/81f3128afb75b74ae9d4e643ca2d7af1b1efabb3))
+
 ## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.0...@entur/layout@1.2.1) (2020-02-05)
 
 ### Bug Fixes

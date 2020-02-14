@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.7.0...@entur/icons@0.8.0) (2020-02-12)
+
+### Features
+
+- add new icon: turnable ([3025950](https://bitbucket.org/enturas/design-system/commits/30259503234ee9351aa8f2416c37af15a1adae84))
+
 # [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.6.0...@entur/icons@0.7.0) (2020-02-05)
 
 ### Features

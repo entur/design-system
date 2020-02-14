@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.8...@entur/dropdown@0.5.9) (2020-02-12)
+
+### Bug Fixes
+
+- fix missing type for spreading of props ([0e5beba](https://bitbucket.org/enturas/design-system/commits/0e5beba82ea7dde39915cd626e665aa6c15dafbf))
+
+## [0.5.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.7...@entur/dropdown@0.5.8) (2020-02-10)
+
+### Bug Fixes
+
+- remove arrow from dropdown if readonly ([eca07da](https://bitbucket.org/enturas/design-system/commits/eca07da574ab130b0f3313202d34f72f221b5265))
+
 ## [0.5.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.6...@entur/dropdown@0.5.7) (2020-02-05)
 
 ### Bug Fixes

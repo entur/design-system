@@ -12,6 +12,7 @@ type RegularDropdownProps = {
   className?: string;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   disabled,

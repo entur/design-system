@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.3.2...@entur/tab@0.4.0) (2020-02-12)
+
+### Bug Fixes
+
+- increase visibility of tabs in contrast ([c440679](https://bitbucket.org/enturas/design-system/commits/c440679644d539d9cb06f1fb841635bfb792cc7d))
+
+### Features
+
+- fluid width spreading for tabslist ([1ebd20c](https://bitbucket.org/enturas/design-system/commits/1ebd20cbbf63d166877cf993247a5fba51a2db10))
+
 ## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.3.1...@entur/tab@0.3.2) (2020-02-05)
 
 ### Bug Fixes

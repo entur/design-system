@@ -26,7 +26,7 @@ import { ImportStatement } from '~/components/ImportStatement';
       <Tab>Priser</Tab>
       <Tab>Detaljer</Tab>
       <Tab disabled>Disabled</Tab>
-      <Tab>Avansert</Tab>
+      <Tab>Tom fane</Tab>
     </TabList>
     <TabPanels>
       <TabPanel>
@@ -45,21 +45,16 @@ import { ImportStatement } from '~/components/ImportStatement';
         <InputGroup label="Pris">
           <TextField defaultValue="99,00" />
         </InputGroup>
-        <InputGroup>
+        <InputGroup style={{ marginBottom: '1rem' }}>
           <TextArea defaultValue="Prisen er inkludert MVA" />
         </InputGroup>
         <PrimaryButton>Lagre</PrimaryButton>
       </TabPanel>
       <TabPanel />
       <TabPanel>
-        <Heading3>Avansert</Heading3>
-        <img
-          src="https://media.giphy.com/media/TlK63EWh6J1puKmzYmQ/giphy.gif"
-          alt="Thomas-toget"
-        />
+        <Heading3>Denne er tom</Heading3>
       </TabPanel>
     </TabPanels>
-
   </Tabs>
 </Playground>
 
@@ -151,3 +146,7 @@ Her er et eksempel der man går fra 1 tab til en annen programmatisk:
 <Props of={TabPanel} />
 
 `<TabPanel />` er hvert innholdspanel. De må ligge i samme rekkefølge som overskriftene i `<TabList />`.
+
+## Retningslinjer for bruk
+
+Tabs eller faner lar oss designe grupperte brukergrensesnitt på en enkel måte. De benyttes ofte som en menynavigasjon innad på en side (f.eks. på nivå 3 eller 4), der valgt tab påvirker alt innhold under tabsrekken. De kan også benyttes til en avgrenset seksjon på en side, men da med en tydelig ramme rundt det de påvirker (?).

@@ -13,6 +13,7 @@ export type ModalContentProps = {
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
   title: string;
+  [key: string]: any;
 };
 
 const headingsMap = {

@@ -13,7 +13,10 @@ import {
   SegmentedControl,
   MultipleSegmentedControl,
   SegmentedChoice,
+  InputGroup,
+  TextField,
 } from '@entur/form';
+import { BannerAlertBox } from '@entur/alert';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
@@ -26,7 +29,6 @@ import PageHeader from '~/components/PageHeader';
     const [homeTown, setHomeTown] = React.useState(null);
     const [formatting, setFormatting] = React.useState({ b: false, i: false, u: false });
     return (
-      <div>
         <div style={{ marginBottom: '1rem' }}>
           <SegmentedControl
             label="Velg din hjemby"
@@ -38,25 +40,6 @@ import PageHeader from '~/components/PageHeader';
             <SegmentedChoice value="Leknes">Leknes</SegmentedChoice>
           </SegmentedControl>
         </div>
-        <div style={{ marginBottom: '1rem' }}>
-          <MultipleSegmentedControl
-            label="Velg skrifttype"
-            selectedValue={formatting}
-            onChange={selectedValues => setFormatting(selectedValues)}
-            style={{ width: '9rem' }}
-          >
-            <SegmentedChoice value="b">
-              <BoldIcon inline />
-            </SegmentedChoice>
-            <SegmentedChoice value="k">
-              <ItalicIcon inline />
-            </SegmentedChoice>
-            <SegmentedChoice value="u">
-              <UnderlineIcon inline />
-            </SegmentedChoice>
-          </MultipleSegmentedControl>
-        </div>
-      </div>
     );
 }}
 
@@ -70,6 +53,19 @@ import PageHeader from '~/components/PageHeader';
 <Props of={SegmentedControl} />
 
 `SegmentedControl` wrapper to eller flere `SegmentedChoice`-komponenter, og lar brukeren velge mellom forskjellige valg. For å kunne velge flere valg, bruk `MultipleSegmentedControl`.
+
+### SegmentedChoice
+
+<ImportStatement imports="SegmentedChoice" />
+<Props of={SegmentedChoice} />
+
+`SegmentedChoice` wrapper et valg inni en `SegmentedControl` eller `MultipleSegmentedControl`. Send inn en unik `value` som identifiserer valget, og send inn hva du vil (typisk en tekst eller et ikon) som `children`.
+
+<BannerAlertBox variant="info" title="Husk beskrivelser for skjermlesere">
+  Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
+  viktig at du sender inn en `aria-label` prop, eller bruker `VisuallyHidden`
+  (fra `@entur/a11y`) for å gi valget en god beskrivelse.
+</BannerAlertBox>
 
 ### MultipleSegmentedControl
 
@@ -90,15 +86,19 @@ Et eksempel kan være:
 </MultipleSegmentedControl>
 ```
 
-### SegmentedChoice
+## Retningslinjer for bruk
 
-<ImportStatement imports="SegmentedChoice" />
-<Props of={SegmentedChoice} />
+Segmented Control benyttes fremst til å velge en setting. De tilbyr et kontekstuelt valg, som er knyttet 1:1 til andre
+objekter eller skjemagrupper. Valgt segment definerer ‘regler’ for verdiene i tilknyttede felter.
+Segmented controls benyttes altså ofte som velgere/settings for andre felter, f.eks. om verdien som angis skal
+i prosent eller kroner, eller om tidspunkt skal gjelde for avreise eller ankomst. De plasseres gjerne ovenfor/før
+feltet de styrer over, eller under/etter i tilfelle konteksten tillater dette.
 
-`SegmentedChoice` wrapper et valg inni en `SegmentedControl` eller `MultipleSegmentedControl`. Send inn en unik `value` som identifiserer valget, og send inn hva du vil (typisk en tekst eller et ikon) som `children`.
+Segmented control har samme funksjon som en radiobutton, det vil si at én av verdiene er forhåndsvalgt, og den predefinerte
+verdien kan byttes ut med en annen i samme rekke. Kun én av verdiene innen en segmented control kan velges.
 
-<BannerAlertBox variant="info" title="Husk beskrivelser for skjermlesere">
-  Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
-  viktig at du sender inn en `aria-label` prop, eller bruker `VisuallyHidden`
-  (fra `@entur/a11y`) for å gi valget en god beskrivelse.
-</BannerAlertBox>
+For å oppnå best mulig brukervennlighet, bør en Segmented Control ikke ha fler enn fem segmenter. Alle segmenter bør ha samme bredde.
+Det er lettere for brukeren å “tappe” bredere segmenter.
+
+Bruk kun en Segmented Control når alternativene er forhåndsdefinerte. Hold segmentinnholdet kort og konsistent.
+Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.

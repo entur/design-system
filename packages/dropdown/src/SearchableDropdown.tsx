@@ -14,6 +14,7 @@ type SearchableDropdownProps = {
   readOnly?: boolean;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  [key: string]: any;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   disabled = false,

@@ -18,6 +18,7 @@ export type TooltipProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 export const Tooltip: React.FC<TooltipProps> = ({
   placement,

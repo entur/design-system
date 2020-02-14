@@ -33,7 +33,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
           loading ? (
             <InlineSpinner>{loadingText}</InlineSpinner>
           ) : (
-            <DropdownToggleButton />
+            !rest.readOnly && <DropdownToggleButton />
           )
         }
         className={className}

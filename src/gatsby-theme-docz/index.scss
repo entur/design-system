@@ -72,3 +72,7 @@ body {
 .frontpage-site-content main {
   flex: 1;
 }
+
+code {
+  font-size: 14px; //Override  for code, as rem is redefined
+}
