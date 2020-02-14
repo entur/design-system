@@ -22,7 +22,7 @@
   font-family: inherit;
   font-size: inherit;
   margin: 0;
-  padding: $space-medium $space-large $space-medium $space-extra-large;
+  padding: $space-medium $space-large $space-medium $space-large;
   text-align: left;
   user-select: none;
   width: 100%;
@@ -56,7 +56,7 @@
 
 .eds-expandable-panel__content {
   overflow: auto;
-  padding: $space-default $space-default $space-default $space-extra-large;
+  padding: $space-default $space-default $space-default $space-large;
 }
 
 // Used to override react-collapse's default transition

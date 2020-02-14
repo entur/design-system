@@ -12,6 +12,7 @@ type RegularDropdownProps = {
   className?: string;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  listStyle?: { [key: string]: any };
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -19,6 +20,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   placeholder = 'Vennligst velg',
   selectOnTab = false,
   openOnFocus = false,
+  listStyle,
   ...rest
 }) => {
   const {
@@ -28,7 +30,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
     openMenu,
   } = useDownshift();
   return (
-    <BaseDropdown disabled={disabled} {...rest}>
+    <BaseDropdown disabled={disabled} listStyle={listStyle} {...rest}>
       <button
         {...getToggleButtonProps({
           className: 'eds-form-control eds-dropdown__selected-item',
