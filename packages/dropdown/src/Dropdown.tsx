@@ -45,6 +45,8 @@ type DropdownProps = {
   className?: string;
   /** Marker første valgmulighet automatisk */
   highlightFirstItemOnOpen?: boolean;
+  /** Styling som sendes ned til Dropdown-lista */
+  listStyle?: { [key: string]: any };
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
@@ -67,6 +69,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   value,
   className,
   style,
+  listStyle,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -104,6 +107,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           prepend={prepend}
           selectOnTab={selectOnTab}
           openOnFocus={openOnFocus}
+          listStyle={listStyle}
         />
       </DropdownInputGroup>
     </DownshiftProvider>

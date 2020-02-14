@@ -14,6 +14,7 @@ type BaseDropdownProps = {
   loadingText?: string;
   placeholder?: string;
   style?: { [key: string]: any };
+  listStyle?: { [key: string]: any };
   [key: string]: any;
 };
 export const BaseDropdown: React.FC<BaseDropdownProps> = ({
@@ -24,6 +25,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   loadingText = 'Loading...',
   placeholder,
   style,
+  listStyle,
   ...rest
 }) => {
   return (
@@ -44,7 +46,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
       </BaseFormControl>
       <DropdownList
         items={items}
-        style={{ position: 'absolute', top: '100%', ...style }}
+        style={{ position: 'absolute', top: '100%', ...listStyle }}
         {...rest}
       />
     </div>
