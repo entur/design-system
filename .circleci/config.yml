@@ -1,7 +1,7 @@
 aliases:
   - &ssh-fingerprint
     fingerprints:
-      - 'c6:c9:72:ee:b4:0f:36:7c:e6:2b:25:46:96:5c:d2:2e'
+      - '02:85:42:40:c5:08:04:66:58:80:10:2f:60:97:38:c2'
 version: 2
 jobs:
   build:
