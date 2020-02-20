@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@artsy/fresnel@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.1.0.tgz#9ad22eba6aea7931d044be651ebb8396951d3f43"
+  integrity sha512-Kf0HaYmceuHoXpASYQ8B4EKqikOg5Ra2eYl2JYgjlawC6/E4JOGfnNlg9ITCcVf09kI3Ch23OFfcW4bQHvnAXQ==
+
 "@babel/cli@^7.5.5":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.8.3.tgz#121beb7c273e0521eb2feeb3883a2b7435d12328"

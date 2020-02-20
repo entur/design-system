@@ -1,11 +1,19 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 .stats {
   &-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: $space-extra-large;
+    grid-gap: $space-extra-large;
+    grid-template-columns: 1fr;
+    @include for-large-desktop {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
   &-box {
+    @include for-large-desktop {
+      align-items: flex-start;
+    }
+    align-items: center;
     background: $colors-greys-grey30;
     padding: $space-extra-large4 $space-extra-large2;
     display: flex;

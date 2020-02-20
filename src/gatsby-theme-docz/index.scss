@@ -43,28 +43,53 @@ body {
     margin-left: 30rem;
     max-width: 60rem;
   }
+  &--hidden {
+    overflow: hidden;
+    position: fixed;
+  }
 }
 .site-content main {
   flex: 1;
 }
+.ui-menu {
+  &--desktop {
+    display: none;
+    @include for-desktop {
+      display: flex;
+    }
+  }
+  &--mobile {
+    display: block;
+    @include for-desktop {
+      display: none;
+    }
+  }
+}
 
-.blueback {
-  .oi {
+.frontpage__site-content-wrapper {
+  .frontpage-blue-backer {
     background: $colors-brand-blue;
-    height: 39rem;
     position: absolute;
     width: 100vw;
     top: 0;
     z-index: -1;
+    height: 44rem;
+    @include for-desktop {
+      height: 39rem;
+    }
+  }
+  &--hidden {
+    overflow: hidden;
+    position: fixed;
   }
 }
 
 .frontpage-site-content {
   display: flex;
-  margin: $space-default;
+  margin: $space-default $space-large;
   flex-direction: column;
   min-height: 90vh;
-  @include for-large-desktop {
+  @include for-desktop {
     margin: 0 auto 1rem;
     max-width: 64rem;
   }

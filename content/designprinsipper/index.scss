@@ -1,23 +1,35 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .designprinsipper {
   &-top-grid {
     display: grid;
     grid-gap: $space-large;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    @include for-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   &-three-grid {
-    grid-row-start: 1;
+    @include for-desktop {
+      grid-row-start: 1;
+    }
     padding: 0 $space-large;
   }
   &-wide-grid {
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-column-end: 4;
+    @include for-desktop {
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
     padding: 0 $space-large 0;
   }
   &-grey-box {
     background-color: $colors-greys-grey30;
+    padding-bottom: $space-default;
+    @include for-desktop {
+      padding-bottom: 0;
+    }
   }
   &-lofter {
     padding-bottom: $space-medium;

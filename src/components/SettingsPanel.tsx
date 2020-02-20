@@ -25,14 +25,13 @@ const SettingsPanel: React.FC = () => {
 
   return (
     <>
-      <div
-        className="settings-panel"
-        style={{ marginLeft: 'auto', paddingRight: '2.5rem' }}
-      >
-        <ViewIcon className="settings-panel__icon" />
-        <Paragraph margin="none">
-          Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
-        </Paragraph>
+      <div className="settings-panel">
+        <div className="settings-panel__container">
+          <ViewIcon className="settings-panel__icon" />
+          <Paragraph margin="none">
+            Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
+          </Paragraph>
+        </div>
         <button
           aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
           className="settings-trigger"
