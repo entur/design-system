@@ -41,6 +41,10 @@ type DropdownProps = {
   openOnFocus?: boolean;
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
   debounceTimeout?: number;
+  /** Om man skal ha muliget for å nullstille Dropdownen
+   * @default false
+   */
+  clearable?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   /** Marker første valgmulighet automatisk */
@@ -67,6 +71,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   openOnFocus,
   variant,
   value,
+  clearable = false,
   className,
   style,
   listStyle,
@@ -108,6 +113,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           selectOnTab={selectOnTab}
           openOnFocus={openOnFocus}
           listStyle={listStyle}
+          clearable={clearable}
         />
       </DropdownInputGroup>
     </DownshiftProvider>
