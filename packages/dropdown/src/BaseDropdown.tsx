@@ -62,17 +62,15 @@ const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
   return (
     <>
       {selectedItem && (
-        <>
-          <button
-            className="eds-dropdown__clear-button"
-            type="button"
-            tabIndex={-1}
-            onClick={() => clearSelection()}
-            {...props}
-          >
-            <CloseIcon />
-          </button>
-        </>
+        <button
+          className="eds-dropdown__clear-button"
+          type="button"
+          tabIndex={-1}
+          onClick={() => clearSelection()}
+          {...props}
+        >
+          <CloseIcon />
+        </button>
       )}
       {selectedItem && <div className="eds-dropdown__divider"></div>}
     </>
