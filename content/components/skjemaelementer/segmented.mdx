@@ -19,9 +19,10 @@ import {
 import { BannerAlertBox } from '@entur/alert';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
+import { CodeText } from '@entur/typography';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
 import PageHeader from '~/components/PageHeader';
-
+ 
 <PageHeader />
 
 <Playground>
@@ -63,8 +64,8 @@ import PageHeader from '~/components/PageHeader';
 
 <BannerAlertBox variant="info" title="Husk beskrivelser for skjermlesere">
   Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
-  viktig at du sender inn en `aria-label` prop, eller bruker `VisuallyHidden`
-  (fra `@entur/a11y`) for å gi valget en god beskrivelse.
+  viktig at du sender inn en <CodeText>aria-label</CodeText> prop, eller bruker <CodeText>VisuallyHidden</CodeText>
+  (fra <CodeText>@entur/a11y</CodeText>) for å gi valget en god beskrivelse.
 </BannerAlertBox>
 
 ### MultipleSegmentedControl
