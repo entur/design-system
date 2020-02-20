@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.9.0...@entur/icons@0.10.0) (2020-02-20)
+
+### Features
+
+- add sleepicon ([018acf9](https://bitbucket.org/enturas/design-system/commits/018acf9ffa4b56f89f5d90cff18cf5c8117e7207))
+
 # [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.8.0...@entur/icons@0.9.0) (2020-02-14)
 
 ### Bug Fixes

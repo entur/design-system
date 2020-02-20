@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.3...@entur/layout@1.2.4) (2020-02-20)
+
+### Bug Fixes
+
+- update navigationcard to align with new small typography ([ec23db5](https://bitbucket.org/enturas/design-system/commits/ec23db52ce70a45699a4a74e326f478185d1d729))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.2...@entur/layout@1.2.3) (2020-02-14)
 
 **Note:** Version bump only for package @entur/layout
