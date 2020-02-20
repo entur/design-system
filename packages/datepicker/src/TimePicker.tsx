@@ -7,7 +7,6 @@ import classNames from 'classnames';
 import { BaseFormControl } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
-import 'react-datepicker/dist/react-datepicker.css';
 import './TimePicker.scss';
 
 export type TimePickerProps = {
