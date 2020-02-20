@@ -86,15 +86,14 @@ const Appendix: React.FC<{
   if (loading) {
     return <InlineSpinner>{loadingText}</InlineSpinner>;
   }
-  return (
+  if (readOnly) {
+    return null;
+  }
+  return clearable ? (
     <>
-      {!readOnly && clearable ? (
-        <>
-          <ClearButton></ClearButton> <DropdownToggleButton />
-        </>
-      ) : (
-        <DropdownToggleButton />
-      )}
+      <ClearButton></ClearButton> <DropdownToggleButton />
     </>
+  ) : (
+    <DropdownToggleButton />
   );
 };
