@@ -98,6 +98,22 @@ test('handles all sorts of items', () => {
   );
 });
 
+test('renders a clearable dropdown, and dropdown is cleared on click on clear-button', () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, queryAllByRole } = render(
+    <Dropdown items={testItems} placeholder="Velg noe" onChange={changeSpy} />,
+  );
+
+  const triggerButton = getByText('Velg noe');
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+
+  fireEvent.click(triggerButton);
+  expect(queryByText('Oslo')).toBeInTheDocument();
+
+  fireEvent.click(queryAllByRole('button')[0]); //clearable-button
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+});
+
 test('handles items prop it is a synchronous function', async () => {
   const { getAllByRole, queryAllByRole, getByText } = render(
     <Dropdown items={() => testItems} placeholder="Velg noe" />,
