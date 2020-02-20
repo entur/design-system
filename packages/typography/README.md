@@ -2,7 +2,7 @@
 
 ## Read before use
 
-Entur's official font is Nationale and is created by Playtype Foundry, located in Copenhagen. The font is protected under licence and shall only be used in official Entur products. All other uses will be regarded as a violation to the licence agreement and to Entur's brand, and legal actions may be filed. By downloading this font you confirm that you are employed by Entur and that the font only will be used in developing official Entur products.
+Entur's official font is Nationale and is created by Playtype Foundry, located in Copenhagen. The font is protected under licence and shall only be used in official Entur products. By downloading this font you confirm that you are employed by Entur and that the font only will be used in developing official Entur products. **All other uses will be regarded as a violation to the licence agreement and to Entur's brand, and legal actions may be filed.**
 
 This package contains styles and React components for all of our typography.
 
