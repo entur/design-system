@@ -22,13 +22,12 @@ import { ImportStatement } from '~/components/ImportStatement';
 import { CodeText } from '@entur/typography';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
 import PageHeader from '~/components/PageHeader';
- 
+
 <PageHeader />
 
 <Playground>
   {() => {
     const [homeTown, setHomeTown] = React.useState(null);
-    const [formatting, setFormatting] = React.useState({ b: false, i: false, u: false });
     return (
         <div style={{ marginBottom: '1rem' }}>
           <SegmentedControl
@@ -64,7 +63,8 @@ import PageHeader from '~/components/PageHeader';
 
 <BannerAlertBox variant="info" title="Husk beskrivelser for skjermlesere">
   Om du sender inn ikoner eller tekster som krever en visuell kontekst, er det
-  viktig at du sender inn en <CodeText>aria-label</CodeText> prop, eller bruker <CodeText>VisuallyHidden</CodeText>
+  viktig at du sender inn en <CodeText>aria-label</CodeText> prop, eller bruker{' '}
+  <CodeText>VisuallyHidden</CodeText>
   (fra <CodeText>@entur/a11y</CodeText>) for å gi valget en god beskrivelse.
 </BannerAlertBox>
 
