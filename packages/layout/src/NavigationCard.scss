@@ -9,6 +9,12 @@
   position: relative;
   overflow: hidden;
   transition: transform $timings-medium ease-in-out;
+  &__title {
+    font-size: $font-sizes-extra-large;
+    line-height: $line-heights-extra-large3;
+    font-weight: $font-weights-heading;
+    margin: 1.5rem 0 0.5rem;
+  }
 
   &:hover {
     transform: translateY(-$space-extra-small2);
@@ -35,6 +41,7 @@
       transform: none;
     }
     .eds-navigation-card__title {
+      margin: 0;
       padding: 1rem 0;
     }
     .eds-navigation-card__arrow-icon {

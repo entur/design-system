@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.6.0...@entur/dropdown@0.7.0) (2020-02-20)
+
+### Features
+
+- add clearable prop for dropdown ([7c048be](https://bitbucket.org/enturas/design-system/commits/7c048be592be8f77ccfe4bfcbc285d18510df41b))
+
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.9...@entur/dropdown@0.6.0) (2020-02-14)
+
+### Bug Fixes
+
+- decrease padding inside dropdown ([63b847f](https://bitbucket.org/enturas/design-system/commits/63b847f74fbbf9d0cb8806b8d1018548ca1d23bd))
+- Remove prop which is not used ([5c4758e](https://bitbucket.org/enturas/design-system/commits/5c4758ef37eeabf86ae6f79a3c5ff53a46003d0a))
+- **dropdown:** Only auto-highlight if the option has been set ([6127c1b](https://bitbucket.org/enturas/design-system/commits/6127c1be48bb16650ec354a592ab85ce59e5e951))
+
+### Features
+
+- **dropdown:** ability to style dropdown list directly ([9449090](https://bitbucket.org/enturas/design-system/commits/94490901e196b78d95d9136d3aaa41b8a993b517))
+- **dropdown:** Add option for auto highlighting the first result ([2833e24](https://bitbucket.org/enturas/design-system/commits/2833e24256eb7f0cf9198eae9fda2d720e8b9fc9))
+
+## [0.5.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.8...@entur/dropdown@0.5.9) (2020-02-12)
+
+### Bug Fixes
+
+- fix missing type for spreading of props ([0e5beba](https://bitbucket.org/enturas/design-system/commits/0e5beba82ea7dde39915cd626e665aa6c15dafbf))
+
+## [0.5.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.7...@entur/dropdown@0.5.8) (2020-02-10)
+
+### Bug Fixes
+
+- remove arrow from dropdown if readonly ([eca07da](https://bitbucket.org/enturas/design-system/commits/eca07da574ab130b0f3313202d34f72f221b5265))
+
 ## [0.5.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.5.6...@entur/dropdown@0.5.7) (2020-02-05)
 
 ### Bug Fixes

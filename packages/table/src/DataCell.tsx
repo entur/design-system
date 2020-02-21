@@ -6,6 +6,7 @@ export type DataCellProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 
 export const DataCell: React.FC<DataCellProps> = ({ className, ...rest }) => (

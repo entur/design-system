@@ -1,6 +1,13 @@
 @import '~normalize-scss';
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
+@import 'fonts';
+
+@mixin for-desktop {
+  @media screen and (min-width: #{$breakpoints-large}) {
+    @content;
+  }
+}
 
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
@@ -56,35 +63,35 @@ html {
 }
 
 .eds-h1 {
-  font-size: $font-sizes-extra-large;
-  line-height: $line-heights-extra-large2;
+  font-size: $font-sizes-extra-large2;
+  line-height: $line-heights-extra-large5;
   margin: 0 0 $space-default;
   @include for-desktop {
-    font-size: $font-sizes-extra-large3;
-    line-height: $line-heights-extra-large5;
+    font-size: $font-sizes-extra-large4;
+    line-height: $line-heights-extra-large7;
   }
 }
 .eds-h2 {
-  font-size: $font-sizes-large;
-  line-height: $line-heights-large;
+  font-size: $font-sizes-extra-large;
+  line-height: $line-heights-extra-large4;
   margin: $space-extra-large 0 $space-small;
   @include for-desktop {
-    font-size: $font-sizes-extra-large2;
-    line-height: $line-heights-extra-large4;
+    font-size: $font-sizes-extra-large3;
+    line-height: $line-heights-extra-large6;
   }
 }
 .eds-h3 {
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-medium;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-extra-large;
   margin: $space-large 0 $space-extra-small;
   @include for-desktop {
     font-size: $font-sizes-extra-large;
-    line-height: $line-heights-extra-large3;
+    line-height: $line-heights-extra-large4;
   }
 }
 .eds-h4 {
   font-size: $font-sizes-medium;
-  line-height: $line-heights-medium;
+  line-height: $line-heights-large;
   margin: $space-large 0 0;
   @include for-desktop {
     font-size: $font-sizes-large;
@@ -92,7 +99,7 @@ html {
   }
 }
 .eds-h5 {
-  font-size: $font-sizes-medium;
+  font-size: $font-sizes-small;
   line-height: $line-heights-medium;
   margin: $space-large 0 0;
   @include for-desktop {
@@ -111,7 +118,7 @@ html {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
   font-size: $font-sizes-large;
-  line-height: $line-heights-large;
+  line-height: $line-heights-extra-large;
   margin: 0 0 $space-default;
   @include for-desktop {
     font-size: $font-sizes-large;
@@ -140,12 +147,12 @@ html {
 .eds-lead-paragraph {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-size: $font-sizes-extra-large;
-  line-height: $line-heights-extra-large3;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
   margin: $space-large 0;
   @include for-desktop {
     font-size: $font-sizes-extra-large;
-    line-height: $line-heights-extra-large3;
+    line-height: $line-heights-extra-large4;
   }
 }
 
@@ -163,9 +170,10 @@ html {
 .eds-small-text {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-size: $font-sizes-small;
-  line-height: $line-heights-medium;
+  font-size: $font-sizes-extra-small;
+  line-height: $line-heights-small;
   @include for-desktop {
+    font-size: $font-sizes-small;
     line-height: $line-heights-medium;
   }
 }
@@ -226,20 +234,18 @@ html {
 }
 
 .eds-preformatted-text {
-  background-color: $colors-brand-white;
-  border: $border-widths-small solid $colors-brand-blue;
+  background-color: $colors-greys-grey30;
   border-radius: $border-radiuses-small;
   color: inherit;
   font-family: 'Dank Mono', monospace;
-  font-size: inherit;
+  font-size: $font-sizes-medium;
   padding: 1em;
   white-space: pre-wrap;
   word-break: keep-all;
 }
 
 .eds-code-text {
-  background-color: $colors-brand-white;
-  border: $border-widths-small solid $colors-brand-blue;
+  background-color: $colors-blues-blue80;
   border-radius: $border-radiuses-small;
   font-family: 'Dank Mono', monospace;
   font-size: $font-sizes-medium; // Slightly smaller than

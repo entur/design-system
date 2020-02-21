@@ -23,14 +23,6 @@
     }
   }
 
-  &__body > &__row:hover {
-    background-color: $colors-blues-blue80;
-
-    .eds-contrast & {
-      background-color: $colors-blues-blue10;
-    }
-  }
-
   &__data-cell,
   &__header-cell {
     border-bottom: $border-widths-default solid $colors-greys-grey20;

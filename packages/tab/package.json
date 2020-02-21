@@ -1,6 +1,6 @@
 {
   "name": "@entur/tab",
-  "version": "0.3.2",
+  "version": "0.4.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tab.esm.js",
@@ -26,7 +26,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^1.2.0",
+    "@entur/tokens": "^1.2.1",
     "@entur/utils": "^0.2.3",
     "@reach/tabs": "^0.7.0",
     "classnames": "^2.2.6"

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.7...@entur/datepicker@0.3.8) (2020-02-20)
+
+### Bug Fixes
+
+- include react datepicker css directly ([29e8402](https://bitbucket.org/enturas/design-system/commits/29e84028b43c2d4664bcf7b71eaac4dea78e59c9))
+
+## [0.3.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.6...@entur/datepicker@0.3.7) (2020-02-14)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.5...@entur/datepicker@0.3.6) (2020-02-12)
+
+**Note:** Version bump only for package @entur/datepicker
+
+## [0.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.4...@entur/datepicker@0.3.5) (2020-02-10)
+
+**Note:** Version bump only for package @entur/datepicker
+
 ## [0.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.3...@entur/datepicker@0.3.4) (2020-02-05)
 
 ### Bug Fixes

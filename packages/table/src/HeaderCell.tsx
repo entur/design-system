@@ -6,6 +6,7 @@ export type HeaderCellProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 
 export const HeaderCell: React.FC<HeaderCellProps> = ({

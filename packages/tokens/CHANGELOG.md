@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.2.0...@entur/tokens@1.2.1) (2020-02-20)
+
+### Bug Fixes
+
+- readjusting typography for small surfaces ([033ecaa](https://bitbucket.org/enturas/design-system/commits/033ecaad78be039b0290dbacba80604b502cd4cd))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.1.4...@entur/tokens@1.2.0) (2020-02-05)
 
 ### Bug Fixes

@@ -1,5 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 .eds-action-chip {
+  cursor: pointer;
   &:focus {
     box-shadow: $shadows-focus;
     outline: none;

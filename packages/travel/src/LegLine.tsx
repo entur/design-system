@@ -11,6 +11,7 @@ export type LegLineProps = {
   pattern: 'line' | 'dashed' | 'dotted' | 'wave';
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 
 export const LegLine: React.FC<LegLineProps> = ({

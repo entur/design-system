@@ -1,5 +1,14 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .eds-dropdown-wrapper {
   position: relative;
+  .eds-form-control {
+    padding-right: 2rem;
+  }
+  .eds-form-control__append {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .eds-dropdown__input {
@@ -13,4 +22,31 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.eds-dropdown__clear-button {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: 0.5rem;
+  &:hover {
+    background: $colors-greys-grey30;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.eds-dropdown__divider {
+  content: '';
+  display: block;
+  background-color: $colors-greys-grey20;
+  height: 1.5rem;
+  width: 1px;
 }
