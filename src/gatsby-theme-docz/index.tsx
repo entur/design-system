@@ -71,8 +71,8 @@ const App: React.FC = ({ children }) => {
                   <main id="site-content" className="frontpage-site-content">
                     {children}
                   </main>
+                  <FrontPageFooter />
                 </div>
-                <FrontPageFooter />
               </>
             ) : (
               <>

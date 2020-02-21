@@ -12,14 +12,14 @@
       color: inherit;
       cursor: pointer;
       font-size: $font-sizes-extra-large;
-      padding: 0.5rem 1.5rem;
+      padding: $space-extra-small $space-large;
       &:focus {
         box-shadow: $shadows-focus;
       }
     }
     &--settings {
       color: inherit;
-      padding: 0.5rem;
+      padding: $space-extra-small;
       font-size: $font-sizes-extra-large;
       flex-grow: 1;
       &:focus {
@@ -28,16 +28,16 @@
     }
   }
   &__links {
-    border-bottom: 1px solid $colors-greys-grey20;
+    border-bottom: $border-widths-small solid $colors-greys-grey20;
     display: flex;
     overflow-x: auto;
     .eds-contrast & {
-      border-bottom: 1px solid $colors-blues-blue20;
+      border-bottom: $border-widths-small solid $colors-blues-blue20;
     }
   }
 }
 .mobile-nav-item {
-  padding: 1rem 1.5rem;
+  padding: $space-medium $space-large;
   word-break: keep-all;
   display: flex;
   color: inherit;
@@ -46,7 +46,7 @@
   white-space: nowrap;
   &--active {
     &:after {
-      border-bottom: 2px solid $colors-brand-coral;
+      border-bottom: $border-widths-medium solid $colors-brand-coral;
       content: '';
       display: block;
       position: absolute;
@@ -62,7 +62,7 @@
   position: absolute;
   top: 8.5rem;
   left: -100%;
-  transition: left 0.5s ease-in-out;
+  transition: left $timings-slow ease-in-out;
   z-index: $z-indexes-popover;
   height: 100%;
   &--show {

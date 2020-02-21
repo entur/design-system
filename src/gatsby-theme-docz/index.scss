@@ -73,7 +73,7 @@ body {
     width: 100vw;
     top: 0;
     z-index: -1;
-    height: 44rem;
+    height: 42rem;
     @include for-desktop {
       height: 39rem;
     }
@@ -81,6 +81,9 @@ body {
   &--hidden {
     overflow: hidden;
     position: fixed;
+    .frontpage-blue-backer {
+      height: 33rem; //Hack to avoid visual bug
+    }
   }
 }
 
