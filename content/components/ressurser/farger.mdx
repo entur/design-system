@@ -11,6 +11,7 @@ import ContrastChecker from '~/components/ContrastChecker';
 import PageHeader from '~/components/PageHeader';
 import { BestPractices, Example } from '~/components/BestPractices';
 import { Heading3, Paragraph } from '@entur/typography';
+import { colors } from '@entur/tokens';
 
 <PageHeader>
   For å sikre god lesbarhet i våre applikasjoner er det viktig å opprettholde
@@ -30,19 +31,36 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
 ### Eksempler på kontrastnivå:
 
 <BestPractices>
-    <Example type="dont">
-        <Heading3>Om Entur</Heading3>
-        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
-    </Example>
-    <Example type="do">
-        <Heading3>Om Entur</Heading3>
-        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
-    </Example>
-    <Example type="do">
-        <Heading3>Om Entur</Heading3>
-        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
-    </Example>
-
+  <Example
+    type="dont"
+    subText="Slik ser det ut med kontrast 1.7:1. Dette er ikke innafor kontrast-kravet og ikke godkjent."
+  >
+    <Heading3 style={{ color: colors.blues.blue60 }}>Om Entur</Heading3>
+    <Paragraph style={{ color: colors.blues.blue60 }}>
+      Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+      kollektiv-selskaper i Norge.
+    </Paragraph>
+  </Example>
+  <Example
+    type="do"
+    subText="Slik ser det ut med kontrast 5.5:1. Dette er innafor kontrastkravet."
+  >
+    <Heading3 style={{ color: colors.blues.blue40 }}>Om Entur</Heading3>
+    <Paragraph style={{ color: colors.blues.blue40 }}>
+      Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+      kollektiv-selskaper i Norge.
+    </Paragraph>
+  </Example>
+  <Example
+    type="do"
+    subText="Slik ser det ut med maks kontrast 15.6:1. Dette er veldig innafor!"
+  >
+    <Heading3>Om Entur</Heading3>
+    <Paragraph>
+      Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+      kollektiv-selskaper i Norge.
+    </Paragraph>
+  </Example>
 </BestPractices>
 
 ## Color Contrast Checker
