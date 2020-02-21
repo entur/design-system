@@ -2,7 +2,17 @@ import React from 'react';
 import { hex } from 'wcag-contrast';
 import { colors } from '@entur/tokens';
 import { Dropdown } from '@entur/dropdown';
+import { SecondarySquareButton } from '@entur/button';
+import { SwitchIcon } from '@entur/icons';
 import { flatten } from '~/utils/flatten';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
 
 function ContrastChecker() {
   const flatColors = flatten(colors);
@@ -14,6 +24,13 @@ function ContrastChecker() {
   const [background, setBackground] = React.useState(lis[2]);
   const score = hex(text.value, background.value);
 
+  function SwitchColors() {
+    const tempText = text;
+    setText(background);
+    setBackground(tempText);
+  }
+
+  function WCAGTest({ type: string }) {}
   return (
     <div>
       <div
@@ -26,13 +43,16 @@ function ContrastChecker() {
       >
         <div>
           <Dropdown
-            label="Tekst"
+            label="Forgrunn"
             items={lis}
             onChange={item =>
               setText({ value: item!.value, label: item!.label })
             }
             placeholder={text.label}
           />
+          <SecondarySquareButton>
+            <SwitchIcon onClick={SwitchColors} />
+          </SecondarySquareButton>
           <Dropdown
             items={lis}
             label="Bakgrunn"

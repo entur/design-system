@@ -1,0 +1,52 @@
+---
+name: Farger
+description: Vi lanserer som regel nye versjoner en gang eller to i uken. Her vil du finne en oppsummering av hva som har blitt lansert
+route: /komponenter/ressurser/farger
+parent: Komponenter
+menu: Ressurser
+tags: farger, kontrast
+---
+
+import ContrastChecker from '~/components/ContrastChecker';
+import PageHeader from '~/components/PageHeader';
+import { BestPractices, Example } from '~/components/BestPractices';
+import { Heading3, Paragraph } from '@entur/typography';
+
+<PageHeader>
+  For å sikre god lesbarhet i våre applikasjoner er det viktig å opprettholde
+  kontrastkrav for farger på nett.
+</PageHeader>
+
+I henhold til lovverket er vi pålagt å følge forskrift om universell utforming når vi utvikler våre digitale løsninger. Når det gjelder farger, må all tekst derfor ha tilstrekkelig kontrast mot bakgrunnen for å sikre god lesbarhet. Dette er viktig for alle brukere, særlig under vanskelige lysforhold.
+Kravet til kontrast er avhengig av størrelsen på teksten/objektene:
+
+- Stor tekst: kontrastkrav 3.0:1
+- Liten tekst: kontrastkrav 4.5:1
+- Ved normal teksttykkelse er stor tekst 18 punkt og større.
+- Ved fet tekststil er stor tekst 14 punkt og større.
+
+Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mesteparten av tekstinnholdet på våre nettsider krever **kontrastkrav 4.5:1**.
+
+### Eksempler på kontrastnivå:
+
+<BestPractices>
+    <Example type="dont">
+        <Heading3>Om Entur</Heading3>
+        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
+    </Example>
+    <Example type="do">
+        <Heading3>Om Entur</Heading3>
+        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
+    </Example>
+    <Example type="do">
+        <Heading3>Om Entur</Heading3>
+        <Paragraph>Entur leverer tjenester som gjør det enkelt å reise på tvers av alle kollektiv-selskaper i Norge.</Paragraph>
+    </Example>
+
+</BestPractices>
+
+## Color Contrast Checker
+
+Bruk vår Color Contrast Checker for å hjelpe deg med å bestemme lesbarheten til tekst og kontrasten til grafiske objekter.
+
+<ContrastChecker />
