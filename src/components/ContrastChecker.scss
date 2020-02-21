@@ -1,12 +1,16 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .contrast-checker {
   &__container {
-    margin-top: $space-extra-large 0;
+    margin-top: $space-extra-large;
   }
   &__calculator {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr;
+    @include for-large-desktop {
+      grid-template-columns: 3fr 1fr;
+    }
     grid-gap: $space-large;
     margin-bottom: $space-extra-large4;
   }
@@ -21,7 +25,7 @@
     &-ratio {
       font-weight: $font-weights-heading;
       font-size: $font-sizes-extra-large4;
-      line-height: 60px;
+      line-height: $line-heights-extra-large7;
       text-align: center;
     }
   }
@@ -35,7 +39,7 @@
 .color-pickers-container {
   display: grid;
   grid-gap: $space-medium;
-  grid-template-columns: 15rem 2.75rem 15rem;
+  grid-template-columns: auto 2.75rem auto;
 }
 
 .color-picker-wrapper {
@@ -79,9 +83,10 @@
     font-size: $font-sizes-medium;
     margin-top: $space-large;
     line-height: $line-heights-medium;
-    padding-right: $space-large;
-    margin-right: $space-large;
+    padding-right: $space-medium;
+    margin-right: $space-medium;
     color: $colors-blues-blue40;
+    align-items: center;
   }
   &__values {
     display: grid;

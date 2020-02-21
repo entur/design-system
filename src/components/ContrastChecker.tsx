@@ -2,7 +2,7 @@ import React from 'react';
 import { hex } from 'wcag-contrast';
 import { colors } from '@entur/tokens';
 import { Dropdown } from '@entur/dropdown';
-import { SecondarySquareButton, TertiaryButton } from '@entur/button';
+import { SecondarySquareButton } from '@entur/button';
 import { flatten } from '~/utils/flatten';
 import {
   Table,
@@ -13,8 +13,9 @@ import {
   DataCell,
 } from '@entur/table';
 import { CheckIcon, CloseIcon, SwitchIcon, TicketIcon } from '@entur/icons';
-import './ContrastChecker.scss';
 import { Heading4, CodeText } from '@entur/typography/dist';
+import { CopyButton } from './CopyButton';
+import './ContrastChecker.scss';
 
 function ContrastChecker() {
   const flattenedColorMap = flatten(colors);
@@ -217,10 +218,10 @@ const ColorValues: React.FC<{ color: string; hex: string }> = ({
       <div className="color-values__values">
         <CodeText>{hex}</CodeText>
         <div>
-          <TertiaryButton>{color}</TertiaryButton>
+          <CopyButton textToCopy={`@colors.${color}`}>{color}</CopyButton>
         </div>
         <div>
-          <TertiaryButton>SCSS verdi</TertiaryButton>
+          <CopyButton textToCopy={`$colors.${color}`}>{color}</CopyButton>
         </div>
       </div>
     </div>
