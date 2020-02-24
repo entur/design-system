@@ -1,0 +1,68 @@
+---
+name: Badge
+description: Badge brukes hihihi
+route: /komponenter/feedback/badge
+parent: Komponenter
+menu: Feedback
+npmPackage: tooltip
+tags: hjelpetekst, tooltip, verktøyhjelp, popover
+---
+
+import { Badge } from '@entur/layout';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { Heading3, Paragraph } from '@entur/typography';
+import { PrimaryButton } from '@entur/button';
+import { InputGroup, TextField, TextArea } from '@entur/form';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader />
+
+<Playground>
+  <Tabs>
+    <TabList>
+      <Badge content={3} variant="primary" as={Tab}>
+        Priser
+      </Badge>
+      <Tab>Detaljer</Tab>
+      <Tab disabled>Disabled</Tab>
+      <Tab>Tom fane</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <Heading3>Informasjon</Heading3>
+        <Paragraph>
+          Et tab-panel kan inneholde masse informasjon, sortert og gruppert
+          etter kategori.
+        </Paragraph>
+        <Paragraph>
+          Man kan ha langt innhold eller kort innhold, og tab-panelet vil
+          tilpasse seg underveis.
+        </Paragraph>
+      </TabPanel>
+      <TabPanel>
+        <Heading3>Priser</Heading3>
+        <InputGroup label="Pris">
+          <TextField defaultValue="99,00" />
+        </InputGroup>
+        <InputGroup style={{ marginBottom: '1rem' }}>
+          <TextArea defaultValue="Prisen er inkludert MVA" />
+        </InputGroup>
+        <PrimaryButton>Lagre</PrimaryButton>
+      </TabPanel>
+      <TabPanel />
+      <TabPanel>
+        <Heading3>Denne er tom</Heading3>
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+</Playground>
+
+## Komponenter
+
+### Badge
+
+<ImportStatement imports="Badge" />
+<Props of={Badge} />

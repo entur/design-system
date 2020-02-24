@@ -1,0 +1,62 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-badge__wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.eds-badge {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  position: absolute;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-weight: $font-weights-body;
+  font-size: $font-sizes-small;
+  min-width: 1.5rem;
+  line-height: 1rem;
+  padding: 0 6px;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  //   z-index:  //Trengs den?
+  transition: ease-in-out $timings-medium transform;
+  top: 0;
+  right: 0;
+  transform: scale(1) translate(50%, -50%);
+  transform-origin: 100% 0%;
+  color: $colors-brand-white;
+  &--invisible {
+    transform: scale(0) translate(50%, -50%);
+  }
+  &--variant-primary {
+    background-color: $colors-brand-blue;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-brand-lavender;
+    }
+  }
+  &--variant-success {
+    background-color: $colors-validation-mint;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-validation-mint-contrast;
+    }
+  }
+  &--variant-warning {
+    background-color: $colors-validation-canary;
+    color: $colors-brand-blue;
+  }
+  &--variant-danger {
+    background-color: $colors-validation-lava;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-validation-lava-contrast;
+    }
+  }
+}
