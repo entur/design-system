@@ -23,24 +23,32 @@ import PageHeader from '~/components/PageHeader';
     <div>
       <Switch>Barnevogn</Switch>
       <TravelSwitch transport="bus" />
+      <TravelSwitch transport="train" />
       <TravelSwitch transport="ferry" />
       <TravelSwitch transport="plane" />
       <TravelSwitch transport="tram" />
       <TravelSwitch transport="bike" />
       <TravelSwitch transport="metro" />
       <TravelSwitch transport="scooter" />
-      <TravelSwitch transport="train" />
+      <TravelSwitch transport="airportTrain">Flytog</TravelSwitch>
+      <TravelSwitch transport="airportBus">Flybuss</TravelSwitch>
     </div>
     <div>
       <Switch size="large">Barnevogn</Switch>
       <TravelSwitch transport="bus" size="large" />
+      <TravelSwitch transport="train" size="large" />
       <TravelSwitch transport="ferry" size="large" />
       <TravelSwitch transport="plane" size="large" />
       <TravelSwitch transport="tram" size="large" />
       <TravelSwitch transport="bike" size="large" />
       <TravelSwitch transport="metro" size="large" />
       <TravelSwitch transport="scooter" size="large" />
-      <TravelSwitch transport="train" size="large" />
+      <TravelSwitch transport="airportTrain" size="large">
+        Flytog
+      </TravelSwitch>
+      <TravelSwitch transport="airportBus" size="large">
+        Flybuss
+      </TravelSwitch>
     </div>
   </div>
 </Playground>
