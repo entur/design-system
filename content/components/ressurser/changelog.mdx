@@ -8,6 +8,7 @@ tags: endringslogg, versjonslogg
 ---
 
 import PageHeader from '~/components/PageHeader';
+import { Bug, Breaking, Feature, Styling } from '~/components/ChangelogTags';
 
 <PageHeader />
 
@@ -37,9 +38,16 @@ Changelog: https://bitbucket.org/enturas/design-system/commits/4adf368b06a4aaa92
 
 **TL;DR:**
 
-- @entur/datepicker: Bugfix for dårlig håndtering av datepicker-css. Potensielle problemer man har hatt med utseende av denne skal være fikset,
-- @entur/dropdown: `clearable` kan nå sendes inn, for å aktivere nullstillingsknapp for dropdown
-- @entur/icon: Ikon for sovekupé
+<Bug pck="datepicker">
+  Bugfix for dårlig håndtering av datepicker-css. Potensielle problemer man har
+  hatt med utseende av denne skal være fikset.
+</Bug>
+
+<Feature pck="dropdown">
+  "clearable" kan nå sendes inn, for å aktivere nullstillingsknapp for dropdown
+</Feature>
+
+<Feature pck="icon">Ikon for sovekupé</Feature>
 
 ### 2020-02-14
 
@@ -65,9 +73,15 @@ Changelog: https://bitbucket.org/enturas/design-system/commits/a5971955ffbf0ff33
 
 **TL;DR**
 
-- @entur/typography: webfont-filene er nå inkludert i pakken, for å forenkle bruken av Entur’s font framover! Nå slipper du og SSH’e deg inn i Bitbucket osv, noe som forenkler bruken i CI-verktøy
-- @entur/dropdown: Mulighet for å auto-highlighte første resultat (Takk @vageskar!), og nå kan du style dropdownlista om du f.eks. vil ha en bred dropdown-liste men et smalt inputfelt
-- Masse bugfixing og små forbedringer ift tilbakemeldinger på Slack
+<Feature pck="typography">
+  webfont-filene er nå inkludert i pakken, for å forenkle bruken av Entur’s font framover! Nå slipper du og SSH’e deg inn i Bitbucket osv, noe som forenkler bruken i CI-verktøy
+</Feature> 
+<Feature pck="dropdown">
+  Mulighet for å auto-highlighte første resultat (Takk @vageskar!), og nå kan du style dropdownlista om du f.eks. vil ha en bred dropdown-liste men et smalt inputfelt
+</Feature>
+<Bug>
+  Masse bugfixing og små forbedringer ift tilbakemeldinger på Slack
+</Bug>
 
 ### 2020-02-12
 
@@ -86,12 +100,13 @@ Changelog: https://bitbucket.org/enturas/design-system/commits/a5971955ffbf0ff33
 - [@entur/travel@0.3.5](https://www.npmjs.com/package/@entur/travel)
 
 Changelog her: https://bitbucket.org/enturas/design-system/commits/9f26fade88356576a3fab8b2c1766396b1f9c1a7
+
 **TL;DR**
 
-- 🌟Nytt ikon: Turnable
-- 🐛Fikset dårlig støtte av spreading av typescript-props i Table, Modal, Tooltip, Travel og Dropdown
-- 🌟@entur/form: size="large" av SegmentedControl, og disabled Checkbox
-- 🌟@entur/tab: width="fluid" for TabList
+<Feature pck="icons"> Nytt ikon: Turnable</Feature>
+<Feature pck="form">size="large" av SegmentedControl, og disabled Checkbox</Feature> 
+<Feature pck="tab">width="fluid" for TabList</Feature> 
+<Bug>Fikset dårlig støtte av spreading av typescript-props i Table, Modal, Tooltip, Travel og Dropdown</Bug>
 
 ### 2020-02-10
 
@@ -111,15 +126,15 @@ Changelog her: https://bitbucket.org/enturas/design-system/commits/9f26fade88356
 
 Changelog er her: https://bitbucket.org/enturas/design-system/commits/bca99f0e27cd81e2017164d1784642882eefb64a
 
-TL;DR
+**TL;DR**
 
-- 🌟Nye komponenter: FilterChip og TagChip!
-- 💄Oppdatert styling for tertiærknapp, inputfelter og kode-tekst
-- 🐛Litt bugfixing.
+<Feature pck="chip">Nye komponenter: FilterChip og TagChip! </Feature>
+<Styling>
+    Oppdatert styling for tertiærknapp, inputfelter og kode-tekst
+  </Styling>
+<Bug>Litt bugfixing.</Bug>
 
 ### 2020-02-05 Hotfix
-
-HotFix
 
 - [@entur/layout@1.2.1](https://www.npmjs.com/package/@entur/layout)
 - [@entur/modal@1.1.2](https://www.npmjs.com/package/@entur/modal)
@@ -128,7 +143,8 @@ HotFix
 Changelog: https://bitbucket.org/enturas/design-system/commits/ce9ac9cd23b51a9fe83b72f2331f7b9c4b022ba8
 
 **TL;DR:**
-💄Fikset designbug i MediaCard
+
+<Bug pck="layout">Fikset designbug i MediaCard</Bug>
 
 ### 2020-02-05
 
@@ -159,12 +175,22 @@ Changelog kan leses her: https://bitbucket.org/enturas/design-system/commits/ab2
 
 **TL;DR:**
 
-- @entur/layout: Ny komponent: MediaCard! Se den her: https://design.entur.org/komponenter/layout-og-flater/media-card (OBS: Oppgrader 1.2.1 for å fikse ødelagt design på denne)
-- Nytt ikon: RulesIcon
-- Nytt design for NavigationCard
-- Ny token for medium transisjonshastighet og ny breakpoint.
-- Fikset en bug på tvers av alle pakker, som gjorde at komponenter forsvant sporadisk fra noen releaser.
-- @entur/m enu: Økt padding og økt max-bredde for sidemenyer. Dobbelsjekk gjerne denne ved oppdatering.
+<Feature pck="layout">Ny komponent: MediaCard! Se den her: https://design.entur.org/komponenter/layout-og-flater/media-card (OBS: Oppgrader 1.2.1 for å fikse ødelagt design på denne)</Feature> 
+<Styling pck="layout">
+Nytt design for NavigationCard
+</Styling>
+<Feature pck="icons">
+Nytt ikon: RulesIcon
+</Feature>
+<Feature>
+Ny token for medium transisjonshastighet og ny breakpoint.
+</Feature>
+<Bug>
+Fikset en bug på tvers av alle pakker, som gjorde at komponenter forsvant sporadisk fra noen releaser.
+</Bug>
+<Styling pck="menu">
+  Økt padding og økt max-bredde for sidemenyer. Dobbelsjekk gjerne denne ved oppdatering.
+</Styling>
 
 ### 2020-01-31
 
@@ -178,9 +204,9 @@ Full changelog kan leses her: https://bitbucket.org/enturas/design-system/commit
 
 **TL;DR:**
 
-- ✨ `@entur/form` har fått tre nye komponenter - `SegmentedControl`, `MultipleSegmentedControl` og `SegmentedChoice` . Les om hvordan de brukes i [dokumentasjonen](https://design.entur.org/komponenter/skjemaelementer/segmented-control/)
-- ✨ `@entur/button` sine `*SquareButton`-komponenter har nå støtte for `as`-prop, for å kunne endre selve elementet til noe annet enn en button.
-- 💄 `@entur/datepicker` sin `TimePicker` har fått fiksa noen små visuelle bugs
+<Feature pck="form">tre nye komponenter - `SegmentedControl`, `MultipleSegmentedControl` og `SegmentedChoice` . Les om hvordan de brukes i [dokumentasjonen](https://design.entur.org/komponenter/skjemaelementer/segmented-control/) </Feature>
+<Feature pck="button"> `@entur/button` sine `*SquareButton`-komponenter har nå støtte for `as`-prop, for å kunne endre selve elementet til noe annet enn en button.</Feature>
+<Feature pck="datepicker">`TimePicker` har fått fiksa noen små visuelle bugs</Feature>
 
 ### 2020-01-28
 
@@ -207,9 +233,9 @@ Full changelog kan leses her: https://bitbucket.org/enturas/design-system/commit
 
 **TL;DR:**
 
-- 💥 `@entur/buttons` har en breaking change for folk som bruker kvadratiske knapper. Før importerte man `Button` og la til `width="square"`, samt den ønskede `variant`. Nå må du istedenfor importere `SecondarySquareButton` eller `SuccessSquareButton`.
-- ✨ `@entur/modal` har en ny komponent - `Drawer`! Se [dokumentasjonen](https://design.entur.org/komponenter/layout-og-flater/drawers) for mer info.
-- 💄 `@entur/tokens` har endret en av fargeverdiene sine (`colors.transport.tram`) for å være konsistent med `funicular` og `cableway`.
+<Breaking pck="button"> En breaking change for folk som bruker kvadratiske knapper. Før importerte man `Button` og la til `width="square"`, samt den ønskede `variant`. Nå må du istedenfor importere `SecondarySquareButton` eller `SuccessSquareButton`.</Breaking>
+<Feature pck="modal">Ny komponent - `Drawer`! Se dokumentasjonen for mer info.</Feature>
+<Styling pck="tokens">Endret en av fargeverdiene sine (`colors.transport.tram`) for å være konsistent med `funicular` og `cableway`.</Styling>
 
 ### 2020-01-27
 
@@ -238,16 +264,49 @@ Full changelog kan leses her: https://bitbucket.org/enturas/design-system/commit
 
 **TL;DR:**
 
-- 💥 Typografien vår har fått en skikkelig oppdatering - vi har oppdatert marginer på tvers av alt. Se hvor du bruker komponenter fra `@entur/typography`, og sjekk at ting ser ut som de skal. Det er ingen API-breaking changes, men siden denne oppgraderingen mest sannsynlig påvirker layouten til mange konsumenter, har vi valgt å lansere den som en major-versjon.
-- 🐛 Om du bruker TypeScript, så merket du kanskje at det har vært litt vanskelig å bruke typer i det siste - det var fordi vi klarte å plassere dem på feil sted 🙈. Nå er de der de skal være igjen.
-- 🐛 `@entur/alert` sentrerer nå teksten i `BannerAlertBox` om du ikke sender inn en `title`. I tillegg har vi tweaket litt på utseendet til toasts!
-- 💄 `@entur/button`: `TertiaryButton` har fått litt mindre plass mellom tekst og ikon.
-- 🐛 `@entur/dropdown` har fått en haug med mindre bugfikser og forbedringer.
-- ✨ `@entur/icons` har fått to nye ikoner - `UndoIcon` og `RedoIcon`.
-- ✨ `@entur/layout` har fått en `useContrast` hook du kan bruke for å vite om du er i en kontrast-seksjon eller ikke.
-- ✨ `@entur/loader` sin `Progress`-komponent har fått støtte for å vise prosent i tekst også.
-- 💄 `@entur/tab` har fått nytt utseende, og støtter nå også kontrast-seksjoner!
-- ✨ `@entur/travel` har fått tre nye komponenter - `LegBone`, `LegLine` og `TravelBone`!
+<Breaking pck="typography">
+  Typografien vår har fått en skikkelig oppdatering - vi har oppdatert marginer
+  på tvers av alt. Se hvor du bruker komponenter fra `@entur/typography`, og
+  sjekk at ting ser ut som de skal. Det er ingen API-breaking changes, men siden
+  denne oppgraderingen mest sannsynlig påvirker layouten til mange konsumenter,
+  har vi valgt å lansere den som en major-versjon.
+</Breaking>
+
+<Bug>
+  Om du bruker TypeScript, så merket du kanskje at det har vært litt vanskelig å
+  bruke typer i det siste - det var fordi vi klarte å plassere dem på feil sted.
+  Nå er de der de skal være igjen.
+</Bug>
+
+<Bug pck="alert">
+  Sentrerer nå teksten i `BannerAlertBox` om du ikke sender inn en `title`. I
+  tillegg har vi tweaket litt på utseendet til toasts!
+</Bug>
+
+<Styling pck="button">
+  `TertiaryButton` har fått litt mindre plass mellom tekst og ikon.
+</Styling>
+
+<Bug pck="dropdown">Har fått en haug med mindre bugfikser og forbedringer.</Bug>
+
+<Feature>To nye ikoner - `UndoIcon` og `RedoIcon`.</Feature>
+
+<Feature pck="layout">
+  Har fått en `useContrast` hook du kan bruke for å vite om du er i en
+  kontrast-seksjon eller ikke.
+</Feature>
+
+<Feature pck="loader">
+  `Progress`-komponent har fått støtte for å vise prosent i tekst også.
+</Feature>
+
+<Styling pck="tab">
+  Tab har fått nytt utseende, og støtter nå også kontrast-seksjoner!
+</Styling>
+
+<Feature pck="travel">
+  Tre nye komponenter - `LegBone`, `LegLine` og `TravelBone`!
+</Feature>
 
 ### 2020-01-20
 
@@ -268,11 +327,30 @@ Full changelog kan leses her: https://bitbucket.org/enturas/design-system/commit
 
 **TL;DR:**
 
-- ✨ `@entur/datepicker`: To nye komponenter `TimePicker` og `NativeTimePicker`! Nå kan du velge tidspunkt som en boss! Designet på `DatePicker` er også oppdatert en smule.
-- 🐛 `@entur/menu`: `Pagination`-komponenten fungerer nå som den skal for alle side-antall. Sorry for litt dårlig kvalitetskontroll på sist release 🤦‍♂️
-- 💄 `@entur/button`: `SecondaryButton` har nå gjennomsiktig bakgrunn istedenfor hvit bakgrunn. Sjekk at kontrastene er OK i forhold til WCAG-krav om du bruker denne knappen på en ikke-hvit bakgrunn.
-- ✨ `@entur/button`: `FloatingButton` har nå fått hover effekt OG en ny prop: `size`. `size` kan settes til `"small"` for gjøre den mindre enn default-verdien.
-- ✨ `@entur/typography`: Font-familien vår (med fallbacks) er nå tilgjengelig som en css custom property - `--eds-font-family`.
+<Feature pck="datepicker">
+  To nye komponenter `TimePicker` og `NativeTimePicker`! Nå kan du velge
+  tidspunkt! Designet på `DatePicker` er også oppdatert en smule.
+</Feature>
+
+<Bug pck="menu">
+  Pagination-komponenten fungerer nå som den skal for alle side-antall.
+</Bug>
+
+<Styling pck="button">
+  SecondaryButton har nå gjennomsiktig bakgrunn istedenfor hvit bakgrunn. Sjekk
+  at kontrastene er OK i forhold til WCAG-krav om du bruker denne knappen på en
+  ikke-hvit bakgrunn.
+</Styling>
+
+<Feature pck="button">
+  FloatingButton har nå fått hover effekt OG en ny prop: `size`. `size` kan
+  settes til `"small"` for gjøre den mindre enn default-verdien.
+</Feature>
+
+<Feature pck="typography">
+  Font-familien vår (med fallbacks) er nå tilgjengelig som en css custom
+  property - `--eds-font-family`.
+</Feature>
 
 ### 2020-01-14
 
@@ -301,7 +379,11 @@ Changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/4
 
 **TL;DR:**
 
-- ✨ `@entur/icons` har fått et nytt byggsystem, er 4 kb mindre (min+gzip), og eksponerer nå ikoner for React Native! Importer dem fra `@entur/icons/native`, og bruk som før. Merk at denne featuren er i litt åpen beta-testing - there may be ogres!
+<Feature pck="icons">
+  Ikonene har fått et nytt byggsystem, er 4 kb mindre (min+gzip), og eksponerer
+  nå ikoner for React Native! Importer dem fra `@entur/icons/native`, og bruk
+  som før. Merk at denne featuren er i litt åpen beta-testing!
+</Feature>
 
 ### 2020-01-13
 
@@ -323,7 +405,8 @@ Changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/4
 Changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/af54ee3149f8b3867555d5fdd68699821d5b8fae
 
 **TL;DR:**
-Idag kom det litt bugfixes for bl.a. Datepicker og Typography
+
+<Bug>Idag kom det litt bugfixes for bl.a. Datepicker og Typography</Bug>
 
 ### 2020-01-10
 
@@ -338,9 +421,15 @@ Changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/d
 
 **TL;DR**
 
-- Ny pakke `@entur/travel` som foreløpig inneholder to komponenter `TravelHeader` og `TravelTag`. Denne pakken vil inneholde komponenter som hjelper med å visualisere reiser
-- `Dropdown` støtter nå bruk av `className`
-- `CheckBox` spreader nå styles og har riktig focus-styling
+<Feature pck="travel">
+  Ny pakke `@entur/travel` som foreløpig inneholder to komponenter
+  `TravelHeader` og `TravelTag`. Denne pakken vil inneholde komponenter som
+  hjelper med å visualisere reiser
+</Feature>
+
+<Bug pck="dropdown">`Dropdown` støtter nå bruk av `className`</Bug>
+
+<Styling>`CheckBox` spreader nå styles og har riktig focus-styling</Styling>
 
 ### 2020-01-08
 
@@ -367,8 +456,15 @@ Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/comm
 
 **TL;DR:**
 
-- ✨ Nå får du en advarsel i consolen når du utvikler, og har glemt å inkludere CSS-en til en gitt pakke.
-- ✨ Vi har laget en ny pakke, `@entur/utils`, som i utgangspunktet skal brukes for å dele interne verktøy i designsystemet.
+<Feature>
+  Nå får du en advarsel i consolen når du utvikler, og har glemt å inkludere
+  CSS-en til en gitt pakke.
+</Feature>
+
+<Feature pck="utils">
+  Vi har laget en ny pakke, `@entur/utils`, som i utgangspunktet skal brukes for
+  å dele interne verktøy i designsystemet.
+</Feature>
 
 ### 2020-01-06
 
@@ -395,17 +491,54 @@ Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/comm
 
 **TL;DR:**
 
-- ✨ `@entur/button`: Ny knapp `FloatingButton`! Perfekt for når du trenger en knapp på toppen av UIet ditt.
-- ✨ `@entur/menu`: Nye komponenter `BreadcrumbNavigation` og `BreadcrumbItem`! Disse kan du sette sammen til å lage en brødsmulesti - helt a11y-compliant!
-- ✨ `@entur/typography`: Nye komponenter for lister - `UnorderedList`, `NumberedList` og `ListItem`. Perfekt for opplisting av både sortert og usortert informasjon.
-- ✨ `@entur/expand`: Nå eksponerer vi bare knappen fra `ExpandableText` som `ExpandableTextButton`. Dette er perfekt for om du ønsker å styre hvordan DOM-rekkefølgen skal være. Bare husk å ivareta a11y på egenhånd med `aria-controls` eller lignende!
-- ✨ `@entur/form`. Nå støtter `Checkbox`-komponenten propen `checked="indeterminate"`. Denne tilstanden brukes når man bruker en checkbox til å velge flere checkboxes, men bare et subsett av disse er valgt.
-- 💄 `@entur/dropdown`: Resultatlisten til dropdownen får nå en makshøyde.
-- 💄 `@entur/typography`: Ny styling for preformattert og inline kodetekst (`PreformattedText`- og `CodeText`-komponentene).
-- 🐛 `@entur/dropdown`: Hent data initielt for søkbare dropdowns også.
-- 🐛 `@entur/alert`: Fikset issue med TypeScript-typings i `ToastProvider`
-- 🐛 `@entur/icons`: `VerticalDotsIcon` og `SubtractIcon` er nå riktig vei! Om du har korrigert for dette selv, så må du fjerne disse korrigeringene.
-- 🐛 `@entur/menu`: Fikser en bug der `Pagination`-komponentens forrige- og neste-knapper fikk veldig små ikoner på iOS Safari. Også går det ikke lenger an å velge teksten inni en side, som ofte kunne skje ved et uhell.
+<Feature pck="button">
+  Ny knapp `FloatingButton`! Perfekt for når du trenger en knapp på toppen av
+  UIet ditt.
+</Feature>
+
+<Feature pck="menu">
+  Nye komponenter `BreadcrumbNavigation` og `BreadcrumbItem`! Disse kan du sette
+  sammen til å lage en brødsmulesti - helt a11y-compliant!
+</Feature>
+
+<Feature pck="typography">
+  Nye komponenter for lister - `UnorderedList`, `NumberedList` og `ListItem`.
+  Perfekt for opplisting av både sortert og usortert informasjon.
+</Feature>
+
+<Feature pck="expand">
+  Nå eksponerer vi bare knappen fra `ExpandableText` som `ExpandableTextButton`.
+  Dette er perfekt for om du ønsker å styre hvordan DOM-rekkefølgen skal være.
+  Bare husk å ivareta a11y på egenhånd med `aria-controls` eller lignende!
+</Feature>
+
+<Feature pck="form">
+  Nå støtter `Checkbox`-komponenten propen `checked="indeterminate"`. Denne
+  tilstanden brukes når man bruker en checkbox til å velge flere checkboxes, men
+  bare et subsett av disse er valgt.
+</Feature>
+
+<Styling>Resultatlisten til dropdownen får nå en makshøyde.</Styling>
+
+<Styling>
+  Ny styling for preformattert og inline kodetekst (`PreformattedText`- og
+  `CodeText`-komponentene).
+</Styling>
+
+<Bug>Hent data initielt for søkbare dropdowns også.</Bug>
+
+<Bug>Fikset issue med TypeScript-typings i `ToastProvider`</Bug>
+
+<Bug>
+  `VerticalDotsIcon` og `SubtractIcon` er nå riktig vei! Om du har korrigert for
+  dette selv, så må du fjerne disse korrigeringene.
+</Bug>
+
+<Bug>
+  Fikser en bug der `Pagination`-komponentens forrige- og neste-knapper fikk
+  veldig små ikoner på iOS Safari. Også går det ikke lenger an å velge teksten
+  inni en side, som ofte kunne skje ved et uhell.
+</Bug>
 
 ### 2019-12-20
 
@@ -417,9 +550,21 @@ Hele changelogen kan leses i to deler denne gangen: https://bitbucket.org/entura
 
 **TL;DR:**
 
-- 📦 Ny pakke: `@entur/datepicker`! Endelig en universelt utformet datepicket som ser ut slik den skal. Sjekk [dokumentasjonen](design.entur.org/komponenter/skjemaelementer/datepicker) for hvordan den brukes.
-- ✨ Ny komponent i `@entur/menu`: `Pagination`! Her kan du velge mellom sider i lange resultatlister på null komma niks.
-- ✨ `Dropdown`-komponenten i `@entur/dropdown` har nå støtte for en ganske selvforklarende `openOnFocus`-prop. Takk til Mats Byrkjeland for både feature request og pull request!
+<Feature pck="datepicker">
+  Ny pakke: `@entur/datepicker`! Endelig en universelt utformet datepicket som
+  ser ut slik den skal. Sjekk dokumentasjonen for hvordan den brukes.
+</Feature>
+
+<Feature pck="menu">
+  Ny komponent i `@entur/menu`: `Pagination`! Her kan du velge mellom sider i
+  lange resultatlister på null komma niks.
+</Feature>
+
+<Feature pck="dropdown">
+  `Dropdown`-komponenten i `@entur/dropdown` har nå støtte for en ganske
+  selvforklarende `openOnFocus`-prop. Takk til Mats Byrkjeland for både feature
+  request og pull request!
+</Feature>
 
 ### 2019-12-17
 
@@ -430,13 +575,24 @@ Hele changelogen kan leses i to deler denne gangen: https://bitbucket.org/entura
 - [@entur/form@2.0.2](https://npmjs.com/package/@entur/form)
 
 Hele changelogen kan leses her: https://bitbucket.org/enturas/design-system/commits/0f15997d0016b44dd292965fb5e19435f3d842fe
-
+`
 **TL;DR:**
 
-- ✨ `@entur/dropdown` har fått en revamp, og har nå støtte for "typeahead"-modus med asynkron henting av items, mulighet for å velge når man tæbber ut, og en egen `NativeDropdown`-komponent for når du trenger en pen, men vanlig `<select />`.
-- 🐛 `@entur/a11y` sin `VisuallyHidden` fikk fiksa en bug der `as`-propen var påkrevd istedenfor optional. Sorry! 😬
-- 🎨 `@entur/button` sin danger-variant har nå riktige farger i kontrast-seksjoner.
-- 🎨 `@entur/form` sin `Checkbox` har nå fått seg et penere og animert ikon!
+<Feature pck="dropdown">
+  Har fått en revamp, og har nå støtte for "typeahead"-modus med asynkron henting av items, mulighet for å velge når man tæbber ut, og en egen `NativeDropdown`-komponent for når du trenger en pen, men vanlig `select`.
+</Feature>
+ 
+<Bug pck="a11y">
+  `VisuallyHidden` fikk fiksa en bug der `as`-propen var påkrevd istedenfor optional.
+</Bug>
+
+<Styling pck="button">
+  Button sin danger-variant har nå riktige farger i kontrast-seksjoner.
+</Styling>
+
+<Styling pck="form">
+  Checkbox har nå fått seg et penere og animert ikon!
+</Styling>
 
 ### 2019-12-10 (pt 2)
 

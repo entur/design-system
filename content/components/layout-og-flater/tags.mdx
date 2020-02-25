@@ -1,0 +1,41 @@
+---
+name: Tags
+description: Tags er en komponent som brukes for å klassifisere objekter.
+parent: Komponenter
+route: /komponenter/layout-og-flater/tags
+menu: Layout & Flater
+npmPackage: layout
+tags: tag, knagg,
+---
+
+import { Tag } from '@entur/layout';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import { ClockIcon } from '@entur/icons';
+
+<PageHeader />
+
+<Playground>
+  {() => {
+    const time = new Date().getHours() + 1 + ':' + new Date().getMinutes();
+    return (
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Tag>Kollektiv</Tag>
+        <Tag>For alle</Tag>
+        <Tag>
+          <ClockIcon inline /> {time}
+        </Tag>
+        <Tag>
+          <ClockIcon inline />
+        </Tag>
+      </div>
+    );
+  }}
+</Playground>
+
+### Tag
+
+<ImportStatement imports="Tag" />
+<Props of={Tag} />
