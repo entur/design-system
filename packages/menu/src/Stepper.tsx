@@ -31,12 +31,14 @@ export const Stepper: React.FC<StepperProps> = ({
           <div
             key={step}
             onClick={() => onStepClick(i)}
-            className="stepper-item-container"
+            className="eds-stepper__item__container"
           >
             <Label
               className={classNames(
-                isActive ? 'active' : 'inactive',
-                'stepper-item',
+                isActive
+                  ? 'eds-stepper__item__label--active'
+                  : 'eds-stepper__item__label--inactive',
+                'eds-stepper__item__label',
               )}
             >
               {i + 1}. {step}
