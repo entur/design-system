@@ -30,6 +30,8 @@ export type TravelSwitchProps = {
     | 'train'
     | 'ferry'
     | 'bike'
+    | 'airportBus'
+    | 'airportTrain'
     | 'scooter';
   /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
