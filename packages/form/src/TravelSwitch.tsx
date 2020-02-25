@@ -127,6 +127,6 @@ function modeCalc(mode: string) {
         contrast: colors.transport.contrast.plane,
       };
     default:
-      throw Error('Plese select a transport for the TravelSwitch.');
+      throw Error('Please select a transport for the TravelSwitch.');
   }
 }
