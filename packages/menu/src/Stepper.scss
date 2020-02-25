@@ -9,6 +9,11 @@
     flex-grow: 1;
     flex-basis: 0;
     flex-direction: column;
+    margin-left: $space-extra-small2;
+  }
+
+  .stepper-item-container:first-child {
+    margin-left: 0;
   }
 
   .active {
@@ -31,14 +36,9 @@
   .stepper-item {
     cursor: pointer;
     flex-grow: 1;
-    margin-left: $space-extra-small2;
     flex-direction: column;
     text-align: center;
     font-size: $font-sizes-medium;
     padding: $space-extra-small2 $space-medium;
-  }
-
-  .stepper-item:first-child {
-    margin-left: 0;
   }
 }
