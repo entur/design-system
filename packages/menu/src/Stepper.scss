@@ -13,7 +13,7 @@
 
   .active {
     color: inherit;
-    border-top: 8px solid $colors-brand-blue;
+    border-top: $space-extra-small solid $colors-brand-blue;
     .eds-contrast & {
       border-color: $colors-brand-lavender;
     }
@@ -21,7 +21,7 @@
 
   .inactive {
     color: $colors-blues-blue40;
-    border-top: 8px solid $colors-blues-blue80;
+    border-top: $space-extra-small solid $colors-blues-blue80;
     .eds-contrast & {
       color: $colors-brand-lavender;
       border-color: $colors-blues-blue20;
@@ -31,11 +31,11 @@
   .stepper-item {
     cursor: pointer;
     flex-grow: 1;
-    margin-left: 4px;
+    margin-left: $space-extra-small2;
     flex-direction: column;
     text-align: center;
-    font-size: 0.875rem;
-    padding: $space-extra-small2 1rem;
+    font-size: $font-sizes-medium;
+    padding: $space-extra-small2 $space-medium;
   }
 
   .stepper-item:first-child {
