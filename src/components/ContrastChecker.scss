@@ -1,0 +1,97 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+
+.contrast-checker {
+  &__container {
+    margin-top: $space-extra-large;
+  }
+  &__calculator {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include for-large-desktop {
+      grid-template-columns: 3fr 1fr;
+    }
+    grid-gap: $space-large;
+    margin-bottom: $space-extra-large4;
+  }
+  &__ratio {
+    border-width: $border-widths-medium;
+    border-style: solid;
+    padding: $space-extra-large2;
+    &-header {
+      font-size: $font-sizes-extra-large;
+      text-align: center;
+    }
+    &-ratio {
+      font-weight: $font-weights-heading;
+      font-size: $font-sizes-extra-large4;
+      line-height: $line-heights-extra-large7;
+      text-align: center;
+    }
+  }
+}
+
+.color-picker__switch-button {
+  align-self: start;
+  margin-top: $space-large;
+}
+
+.color-pickers-container {
+  display: grid;
+  grid-gap: $space-medium;
+  grid-template-columns: auto 2.75rem auto;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.contrast-preview {
+  &__container {
+    display: grid;
+    grid-gap: $space-medium;
+    grid-template-columns: 3fr 1fr;
+    margin-top: $space-large;
+  }
+  &__small-text {
+    padding: $space-large;
+  }
+  &__large-text {
+    font-size: $font-sizes-extra-large;
+    font-weight: $font-weights-heading;
+    padding: $space-large;
+  }
+  &__graphics-object {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.125rem;
+    font-size: 3.75rem;
+  }
+}
+
+.color-values {
+  &__wrapper {
+    display: flex;
+  }
+  &__names {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: $space-extra-small;
+    border-right: $colors-greys-grey20 1px solid;
+    font-size: $font-sizes-medium;
+    margin-top: $space-large;
+    line-height: $line-heights-medium;
+    padding-right: $space-medium;
+    margin-right: $space-medium;
+    color: $colors-blues-blue40;
+    align-items: center;
+  }
+  &__values {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: $space-extra-small;
+    margin-top: $space-large;
+  }
+}

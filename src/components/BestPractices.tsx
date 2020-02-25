@@ -10,6 +10,7 @@ type BestPracticesExampleProps = {
   src?: string;
   alt?: string;
   type: 'do' | 'dont';
+  subText?: string;
 };
 
 export const Example: React.FC<BestPracticesExampleProps> = ({
@@ -17,6 +18,7 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
   children,
   src,
   type,
+  subText,
 }) => {
   const Icon = type === 'do' ? ValidationCheckIcon : ValidationErrorIcon;
   return (
@@ -29,6 +31,7 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
         {src && <img src={src} alt={alt} className="best-practices__image" />}
       </div>
       {children && <div className="best-practices__content">{children}</div>}
+      {subText && subText}
     </article>
   );
 };
