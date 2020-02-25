@@ -7,11 +7,21 @@ type TabListProps = {
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
   as?: keyof JSX.IntrinsicElements | any;
+  width?: 'fluid';
   [key: string]: any;
 };
 
-export const TabList: React.FC<TabListProps> = ({ className, ...rest }) => {
+export const TabList: React.FC<TabListProps> = ({
+  className,
+  width,
+  ...rest
+}) => {
   return (
-    <ReachTabList className={classNames('eds-tab-list', className)} {...rest} />
+    <ReachTabList
+      className={classNames('eds-tab-list', className, {
+        'eds-tab-list--width-fluid': width === 'fluid',
+      })}
+      {...rest}
+    />
   );
 };

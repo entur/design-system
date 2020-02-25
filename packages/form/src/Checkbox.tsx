@@ -17,7 +17,7 @@ export const Checkbox: React.RefForwardingComponent<
   CheckboxProps
 > = React.forwardRef(
   (
-    { checked, className, width, children, style, ...rest },
+    { checked, className, width, children, style, disabled = false, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     // Trick to allow using a ref locally, while still allowing for ref forwarding
@@ -34,20 +34,27 @@ export const Checkbox: React.RefForwardingComponent<
 
     return (
       <label
-        className={cx('eds-form-component--checkbox__container', className)}
+        className={cx('eds-checkbox__container', className, {
+          'eds-checkbox--disabled': disabled,
+        })}
         style={style}
       >
         <input
           type="checkbox"
           ref={innerRef}
           checked={isControlled ? checked === true : undefined}
+          disabled={disabled}
           {...rest}
         />
-        <span className="eds-form-component--checkbox__icon">
+        <span
+          className={cx('eds-checkbox__icon', {
+            'eds-checkbox__icon--disabled': disabled,
+          })}
+        >
           <CheckboxIcon indeterminate={isIndeterminate} />
         </span>
         {children && (
-          <Paragraph margin="none" as="span">
+          <Paragraph className="eds-checkbox__label" margin="none" as="span">
             {children}
           </Paragraph>
         )}

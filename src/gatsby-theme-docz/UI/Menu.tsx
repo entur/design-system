@@ -7,9 +7,9 @@ import { SiteSidebar } from '~/components/SiteSidebar';
 import SettingsPanel from '~/components/SettingsPanel';
 import './Menu.scss';
 
-export default function Menus() {
+const Menu: React.FC<{ className: string }> = ({ className }) => {
   return (
-    <>
+    <div className={className}>
       <nav className="top-navigation" aria-label="Navigasjon, hovedseksjoner">
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
         <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
@@ -19,9 +19,9 @@ export default function Menus() {
       </nav>
       <SiteSidebar />
       <TocNavigation />
-    </>
+    </div>
   );
-}
+};
 
 type NavItemProps = {
   to: string;
@@ -43,3 +43,5 @@ const NavItem: React.FC<NavItemProps> = props => {
     </Location>
   );
 };
+
+export default Menu;

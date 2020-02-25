@@ -9,6 +9,7 @@ import {
 } from '@entur/menu';
 import { SearchBar } from '~/components/SearchBar';
 import logoSVG from './logo.svg';
+import classNames from 'classnames';
 import './SiteSidebar.scss';
 
 const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
@@ -66,7 +67,10 @@ const hasSameParentCategory = (
   );
 };
 
-export const SiteSidebar: React.FC = () => {
+export const SiteSidebar: React.FC<{
+  className?: string;
+  mobile?: boolean;
+}> = props => {
   const currentDoc = useCurrentDoc();
   const menuItems =
     useMenus({
@@ -74,14 +78,19 @@ export const SiteSidebar: React.FC = () => {
     }) || [];
 
   return (
-    <Contrast as="nav" className="site-sidebar-wrapper">
-      <Link to="/" className="site-sidebar__logo">
-        <img
-          src={logoSVG}
-          alt="Entur logo"
-          className="site-sidebar__logo-svg"
-        />
-      </Link>
+    <Contrast
+      as="nav"
+      className={classNames('site-sidebar-wrapper', props.className)}
+    >
+      {!props.mobile && (
+        <Link to="/" className="site-sidebar__logo">
+          <img
+            src={logoSVG}
+            alt="Entur logo"
+            className="site-sidebar__logo-svg"
+          />
+        </Link>
+      )}
 
       <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
         <Location>
@@ -92,7 +101,11 @@ export const SiteSidebar: React.FC = () => {
                 menuItems={menuItems}
               />
             ) : (
-              <SimpleSideNavigation location={location} menuItems={menuItems} />
+              <SimpleSideNavigation
+                location={location}
+                menuItems={menuItems}
+                mobile={props.mobile}
+              />
             )
           }
         </Location>
@@ -104,10 +117,12 @@ export const SiteSidebar: React.FC = () => {
 type SimpleSideNavigationProps = {
   menuItems: MenuItem[];
   location: WindowLocation;
+  mobile?: boolean;
 };
 const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   menuItems,
   location,
+  mobile = false,
 }) => {
   function compare(a: MenuItem, b: MenuItem) {
     // Use toUpperCase() to ignore character casing
@@ -124,8 +139,9 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   }
   menuItems.sort(compare);
 
+  let topMargin = mobile ? '0rem' : '1.5rem';
   return (
-    <SideNavigation style={{ marginTop: '1.5rem' }}>
+    <SideNavigation style={{ marginTop: topMargin }}>
       {menuItems.map(menuItem => (
         <SideNavigationItem
           key={menuItem.id}

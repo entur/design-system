@@ -6,6 +6,7 @@ export type TableBodyProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 
 export const TableBody: React.FC<TableBodyProps> = ({ className, ...rest }) => (

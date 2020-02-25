@@ -8,6 +8,7 @@ export type InlineSpinnerType = {
   className?: string;
   /** Tekst for skjermlesere */
   children: string;
+  [key: string]: any;
 };
 export const InlineSpinner: React.FC<InlineSpinnerType> = ({
   className,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading3, Paragraph } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
 import classNames from 'classnames';
 import { ForwardIcon } from '@entur/icons';
 import { BaseCard } from './BaseCard';
@@ -48,13 +48,7 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}
-      <Heading3
-        className="eds-navigation-card__title"
-        as="span"
-        margin={compact ? 'none' : 'both'}
-      >
-        {title}
-      </Heading3>
+      <span className="eds-navigation-card__title">{title}</span>
       {!compact && <Paragraph>{children}</Paragraph>}
       <ForwardIcon
         inline={compact}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch } from './Switch';
-// import classNames from 'classnames';
 import { colors } from '@entur/tokens';
 import {
   BusIcon,
@@ -30,6 +29,8 @@ export type TravelSwitchProps = {
     | 'train'
     | 'ferry'
     | 'bike'
+    | 'airportBus'
+    | 'airportTrain'
     | 'scooter';
   /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -112,7 +113,19 @@ function modeCalc(mode: string) {
         color: colors.transport.default.mobility,
         contrast: colors.transport.contrast.mobility,
       };
+    case 'airportBus':
+      return {
+        Icon: BusIcon,
+        color: colors.transport.default.plane,
+        contrast: colors.transport.contrast.plane,
+      };
+    case 'airportTrain':
+      return {
+        Icon: TrainIcon,
+        color: colors.transport.default.plane,
+        contrast: colors.transport.contrast.plane,
+      };
     default:
-      throw Error('Plese select a transport for the TravelSwitch.');
+      throw Error('Please select a transport for the TravelSwitch.');
   }
 }

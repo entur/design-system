@@ -1,9 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .design-tools {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: $space-extra-large3;
+  grid-template-columns: 1fr 1fr;
+  @include for-large-desktop {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
   &-presenter {
     display: flex;
     flex-direction: column;

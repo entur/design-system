@@ -11,7 +11,7 @@
 
   align-items: center;
   background-color: $colors-greys-grey40;
-  border-radius: $border-radiuses-default;
+  border-radius: $border-radiuses-medium;
   color: $colors-brand-blue;
   display: flex;
   position: relative;
@@ -35,11 +35,14 @@
 
   &::before {
     border: $border-widths-default solid transparent;
+    border-radius: $border-radiuses-medium;
     top: 0;
   }
 
   &::after {
     border-bottom: $border-widths-default solid var(--border-color);
+    border-bottom-left-radius: $border-radiuses-medium;
+    border-bottom-right-radius: $border-radiuses-medium;
   }
 
   &:hover::after {
@@ -48,11 +51,17 @@
   .eds-contrast &:hover::before {
     border-color: var(--border-color-hover);
   }
+  .eds-contrast &:hover::after {
+    opacity: 0;
+  }
 
   &:focus-within {
     &::before,
     &::after {
       border-color: var(--border-color);
+    }
+    &::after {
+      opacity: 0;
     }
   }
 

@@ -49,25 +49,6 @@ Tabellen viser hvilke størrelser og linjeavstander vi skal bruke når vi design
 
 <Props of={Heading1} title="Props, alle typografikomponenter" />
 
-## Installasjon
-
-Det er et par steg å følge ved førstegangs oppsett av typografi-pakken.
-
-Først må man legge til både `@entur/typography` og `@entur/fonts` som avhengigheter i `package.json`. `@entur/fonts` er litt spesiell grunnet rettighetsstyring, og legges til med en link til Bitbucket-repositoryet.
-
-```sh
-npm install @entur/typography ssh://git@bitbucket.org:enturas/entur-fonts.git#master
-```
-
-> Om dette feiler, så kan det hende at du må registrere SSH-nøkkelen din i Bitbucket. Her er en [guide](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html) til hvordan du får til det.
-
-Til slutt må du også inkludere CSSen til både `@entur/fonts`- og `@entur/typography`-pakkene i koden din via CSS eller JavaScript.
-
-```scss
-@import '~@entur/fonts/index.css';
-@import '~@entur/typography/dist/styles.css';
-```
-
 ## Overskrifter
 
 Vi har egne komponenter for hver overskriftstype - en for hvert av de 6 nivåene vi støtter.

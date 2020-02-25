@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.14](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.13...@entur/table@0.3.14) (2020-02-20)
+
+**Note:** Version bump only for package @entur/table
+
+## [0.3.13](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.12...@entur/table@0.3.13) (2020-02-14)
+
+### Bug Fixes
+
+- remove hover effect for tables ([7a23e4b](https://bitbucket.org/enturas/design-system/commits/7a23e4b1fb8a537b2cb89889f095c636cef63646))
+
+## [0.3.12](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.11...@entur/table@0.3.12) (2020-02-12)
+
+### Bug Fixes
+
+- fix missing type for spreading of props ([0e5beba](https://bitbucket.org/enturas/design-system/commits/0e5beba82ea7dde39915cd626e665aa6c15dafbf))
+
 ## [0.3.11](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.10...@entur/table@0.3.11) (2020-02-05)
 
 ### Bug Fixes

@@ -26,17 +26,11 @@ import { ImportStatement } from '~/components/ImportStatement';
     <TextField variant="error" placeholder="Feil" />
     <TextField variant="none" placeholder="Søk..." />
     <TextField
-      width="fluid"
-      placeholder="Bilde Fluid og ikon som prepend"
+      placeholder="Her er et ikon som prepend"
       prepend={<ImageIcon inline />}
     />
     <div style={{ width: '15rem' }}>
-      <TextField
-        width="fluid"
-        placeholder="Kortere input med fluid"
-        prepend="Fra"
-        append="Kroner"
-      />
+      <TextField placeholder="Kortere input" prepend="Fra" append="Kroner" />
     </div>
   </div>
 </Playground>

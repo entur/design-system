@@ -14,6 +14,8 @@ export type SegmentedControlProps = {
   selectedValue: SelectedValue;
   /** Callback for når det gjøres et valg */
   onChange: (value: SelectedValue) => void;
+  /** Størrelsen på SegmentedChoice-komponentene */
+  size?: 'medium' | 'large';
   [key: string]: any;
 };
 
@@ -23,6 +25,7 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
   name,
   onChange,
   selectedValue,
+  size = 'medium',
   ...rest
 }) => {
   return (
@@ -31,6 +34,7 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
       selectedValue={selectedValue}
       onChange={onChange}
       multiple={false}
+      size={size}
     >
       <Label as="div">{label}</Label>
       <div className="eds-segmented-control" {...rest}>

@@ -6,6 +6,7 @@ type TableRowProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  [key: string]: any;
 };
 
 export const TableRow: React.FC<TableRowProps> = ({ className, ...rest }) => (

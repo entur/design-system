@@ -98,7 +98,23 @@ test('handles all sorts of items', () => {
   );
 });
 
-test('handles items prop when a sync function', async () => {
+test('renders a clearable dropdown, and dropdown is cleared on click on clear-button', () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, queryAllByRole } = render(
+    <Dropdown items={testItems} placeholder="Velg noe" onChange={changeSpy} />,
+  );
+
+  const triggerButton = getByText('Velg noe');
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+
+  fireEvent.click(triggerButton);
+  expect(queryByText('Oslo')).toBeInTheDocument();
+
+  fireEvent.click(queryAllByRole('button')[0]); //clearable-button
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+});
+
+test('handles items prop it is a synchronous function', async () => {
   const { getAllByRole, queryAllByRole, getByText } = render(
     <Dropdown items={() => testItems} placeholder="Velg noe" />,
   );
@@ -113,7 +129,7 @@ test('handles items prop when a sync function', async () => {
   expect(getAllByRole('option')).toHaveLength(testItems.length);
 });
 
-test('handles items prop when an async function', async () => {
+test('handles items prop it is an asynchronous function', async () => {
   const { queryAllByRole, getAllByRole, getByText } = render(
     <Dropdown items={async () => testItems} placeholder="Velg noe" />,
   );
@@ -185,6 +201,76 @@ test('lets the user select the highlighted index on tab', async () => {
   // Finally, we tab out of the component, which should call our onChange handler with Bergen
   fireEvent.keyDown(inputField, { key: 'Tab' });
 
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Bergen',
+      label: 'Bergen',
+    },
+    expect.anything(),
+  );
+});
+
+test('auto-highlights first item if the highlightFirstItemOnOpen prop is set', async () => {
+  const changeSpy = jest.fn();
+  const { getByPlaceholderText } = render(
+    <Dropdown
+      highlightFirstItemOnOpen
+      openOnFocus
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+  // The menu is opened automatically as the field gains focus. The first item is also highlighted.
+  fireEvent.focus(inputField);
+  // Because the selectOnTab prop is true, pressing tab immediately selects the first item
+  fireEvent.keyDown(inputField, { key: 'Enter' });
+
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Oslo',
+      label: 'Oslo',
+    },
+    expect.anything(),
+  );
+});
+
+test('auto-highlights first item if the highlightFirstItemOnOpen prop is set in the typeahead case', async () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, getByPlaceholderText } = render(
+    <Dropdown
+      highlightFirstItemOnOpen
+      openOnFocus
+      items={inputValue =>
+        Promise.resolve(testItems.filter(item => item.includes(inputValue)))
+      }
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+      loadingText="2 sek"
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+  expect(queryByText('Bergen')).not.toBeInTheDocument();
+
+  act(() => {
+    fireEvent.focus(inputField);
+    fireEvent.change(inputField, { target: { value: 'er' } });
+  });
+
+  await wait(() => getByText('Bergen'));
+
+  expect(queryByText('2 sek')).not.toBeInTheDocument();
+
+  expect(getByText('Bergen')).toBeInTheDocument();
+  expect(getByText('Stavanger')).toBeInTheDocument();
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+
+  fireEvent.keyDown(inputField, { key: 'Enter' });
   expect(changeSpy).toHaveBeenCalledWith(
     {
       value: 'Bergen',

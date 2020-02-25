@@ -41,12 +41,21 @@ type DropdownProps = {
   openOnFocus?: boolean;
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
   debounceTimeout?: number;
+  /** Om man skal ha muliget for å nullstille Dropdownen
+   * @default false
+   */
+  clearable?: boolean;
   /** Ekstra klassenavn */
   className?: string;
+  /** Marker første valgmulighet automatisk */
+  highlightFirstItemOnOpen?: boolean;
+  /** Styling som sendes ned til Dropdown-lista */
+  listStyle?: { [key: string]: any };
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
 export const Dropdown: React.FC<DropdownProps> = ({
+  highlightFirstItemOnOpen,
   debounceTimeout,
   disabled,
   feedback,
@@ -62,8 +71,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
   openOnFocus,
   variant,
   value,
+  clearable = false,
   className,
   style,
+  listStyle,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -81,6 +92,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       onInputValueChange={fetchItems}
       onChange={onChange}
       value={value}
+      highlightFirstItemOnOpen={highlightFirstItemOnOpen}
       {...rest}
     >
       <DropdownInputGroup
@@ -100,6 +112,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
           prepend={prepend}
           selectOnTab={selectOnTab}
           openOnFocus={openOnFocus}
+          listStyle={listStyle}
+          clearable={clearable}
         />
       </DropdownInputGroup>
     </DownshiftProvider>

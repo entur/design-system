@@ -3,6 +3,9 @@
 
 a.eds-button {
   padding: 0.5rem 0;
+  &--size-large {
+    padding: 1rem 0;
+  }
 }
 
 .eds-button {
@@ -183,10 +186,10 @@ a.eds-button {
   &--variant-tertiary {
     font-size: $font-sizes-medium;
     border: $border-widths-small solid $colors-brand-blue;
-    border-radius: $border-radiuses-small;
+    border-radius: $border-radiuses-medium;
     background: transparent;
     color: $colors-brand-blue;
-    height: 1.5rem;
+    height: 2rem;
     padding: 0 $space-small;
     min-width: 7.5rem;
     &:hover {

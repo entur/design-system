@@ -6,7 +6,6 @@
   border: $border-widths-small solid $colors-blues-blue70;
   border-radius: 1rem;
   color: inherit;
-  cursor: pointer;
   font-family: inherit;
   font-size: $font-sizes-medium;
   height: 2rem;
@@ -17,7 +16,7 @@
   justify-content: center;
   align-items: center;
   svg {
-    font-size: 1rem;
+    font-size: $font-sizes-medium;
   }
 
   .eds-contrast & {

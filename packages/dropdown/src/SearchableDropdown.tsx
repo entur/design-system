@@ -14,6 +14,9 @@ type SearchableDropdownProps = {
   readOnly?: boolean;
   selectOnTab?: boolean;
   openOnFocus?: boolean;
+  listStyle?: { [key: string]: any };
+  clearable: boolean;
+  [key: string]: any;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   disabled = false,
@@ -25,6 +28,8 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   prepend,
   selectOnTab = false,
   openOnFocus = false,
+  listStyle,
+  clearable,
   ...rest
 }) => {
   const {
@@ -51,6 +56,8 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       loading={loading}
       loadingText={loadingText}
       prepend={prepend}
+      listStyle={listStyle}
+      clearable={clearable}
     >
       <input
         {...getInputProps({

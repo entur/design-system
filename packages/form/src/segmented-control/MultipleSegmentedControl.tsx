@@ -26,6 +26,7 @@ export const MultipleSegmentedControl: React.FC<
       selectedValue={selectedValue}
       onChange={onChange}
       multiple={true}
+      size="medium"
     >
       <Label as="div">{label}</Label>
       <div className="eds-segmented-control" {...rest}>

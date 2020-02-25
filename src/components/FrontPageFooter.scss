@@ -1,4 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .front-page {
   &-footer {
@@ -10,11 +11,14 @@
     appearance: none;
     &__grid {
       width: 64rem;
-      margin: auto;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: $space-large;
       padding-bottom: 4.5rem;
+      margin: 0 $space-large;
+      @include for-desktop {
+        margin: auto;
+      }
     }
     &__logo-container {
       grid-column: 1 / 4;
