@@ -30,7 +30,7 @@ export type TravelSwitchProps = {
     | 'ferry'
     | 'bike'
     | 'airportLinkBus'
-    | 'airportLinkTrain'
+    | 'airportLinkRail'
     | 'scooter';
   /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -119,7 +119,7 @@ function modeCalc(mode: string) {
         color: colors.transport.default.plane,
         contrast: colors.transport.contrast.plane,
       };
-    case 'airportLinkTrain':
+    case 'airportLinkRail':
       return {
         Icon: TrainIcon,
         color: colors.transport.default.plane,
