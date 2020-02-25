@@ -112,6 +112,18 @@ function modeCalc(mode: string) {
         color: colors.transport.default.mobility,
         contrast: colors.transport.contrast.mobility,
       };
+    case 'airportBus':
+      return {
+        Icon: BusIcon,
+        color: colors.transport.default.plane,
+        contrast: colors.transport.contrast.plane,
+      };
+    case 'airportTrain':
+      return {
+        Icon: TrainIcon,
+        color: colors.transport.default.plane,
+        contrast: colors.transport.contrast.plane,
+      };
     default:
       throw Error('Plese select a transport for the TravelSwitch.');
   }
