@@ -112,7 +112,7 @@ function ContrastChecker() {
             <ColorValues
               color={backgroundColor.label}
               hex={backgroundColor.value}
-            ></ColorValues>
+            />
           </div>
         </div>
         <div
