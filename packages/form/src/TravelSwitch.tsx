@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch } from './Switch';
-// import classNames from 'classnames';
 import { colors } from '@entur/tokens';
 import {
   BusIcon,
