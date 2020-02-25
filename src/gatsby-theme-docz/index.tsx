@@ -10,8 +10,18 @@ import SEO from '~/gatsby-theme-docz/base/Seo';
 import Props from '~/components/Props';
 import Menu from './UI/Menu';
 import FrontPageMenu from './UI/FrontPageMenu';
-
+import MobileMenu from './UI/MobileMenu';
+import classNames from 'classnames';
+import { createMedia } from '@artsy/fresnel';
+import { breakpoints } from '@entur/tokens';
 import './index.scss';
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    desktop: breakpoints.large,
+  },
+});
 
 const componentMap = {
   h1: typography.Heading1,
@@ -30,36 +40,64 @@ const componentMap = {
 
 const App: React.FC = ({ children }) => {
   const isFrontPage = useCurrentDoc().frontpage;
+  const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
   return (
     <SettingsProvider>
       <ToastProvider>
-        <ComponentsProvider components={componentMap}>
-          <SkipToContent mainId="site-content">
-            Gå til hovedinnhold
-          </SkipToContent>
-          {isFrontPage ? (
-            <>
-              <SEO title="Velkommen" />
-              <FrontPageMenu />
-              <div className="blueback">
-                <div className="oi" />
-                <main id="site-content" className="frontpage-site-content">
-                  {children}
-                </main>
-              </div>
-              <FrontPageFooter />
-            </>
-          ) : (
-            <>
-              <SEO />
-              <Menu />
-              <div className="site-content">
-                <main id="site-content">{children}</main>
-                <SiteFooter />
-              </div>
-            </>
-          )}
-        </ComponentsProvider>
+        <MediaContextProvider>
+          <ComponentsProvider components={componentMap}>
+            <SkipToContent mainId="site-content">
+              Gå til hovedinnhold
+            </SkipToContent>
+            {isFrontPage ? (
+              <>
+                <SEO title="Velkommen" />
+                <Media at="mobile">
+                  <MobileMenu
+                    className="ui-menu--mobile"
+                    openMenu={setOpenMobileMenu}
+                    frontPage
+                  />
+                </Media>
+                <Media greaterThanOrEqual="desktop">
+                  <FrontPageMenu className="ui-menu--desktop" />
+                </Media>
+                <div
+                  className={classNames('frontpage__site-content-wrapper', {
+                    'frontpage__site-content-wrapper--hidden': openMobileMenu,
+                  })}
+                >
+                  <div className="frontpage-blue-backer" />
+                  <main id="site-content" className="frontpage-site-content">
+                    {children}
+                  </main>
+                  <FrontPageFooter />
+                </div>
+              </>
+            ) : (
+              <>
+                <SEO />
+                <Media at="mobile">
+                  <MobileMenu
+                    className="ui-menu--mobile"
+                    openMenu={setOpenMobileMenu}
+                  />
+                </Media>
+                <Media greaterThanOrEqual="desktop">
+                  <Menu className="ui-menu--desktop" />
+                </Media>
+                <div
+                  className={classNames('site-content', {
+                    'site-content--hidden': openMobileMenu,
+                  })}
+                >
+                  <main id="site-content">{children}</main>
+                  <SiteFooter />
+                </div>
+              </>
+            )}
+          </ComponentsProvider>
+        </MediaContextProvider>
       </ToastProvider>
     </SettingsProvider>
   );

@@ -1,31 +1,53 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .settings-panel {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-right: 1rem;
+  @include for-desktop {
+    flex-grow: unset;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding-right: 2.5rem;
+  }
   &__icon {
     font-size: $font-sizes-extra-large;
     margin-right: $space-extra-small2;
   }
+  &__container {
+    display: none;
+    @include for-large-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 .settings-trigger {
   appearance: none;
-  background: $colors-brand-white;
+  background: inherit;
   border: 0;
   border-radius: 50%;
-  box-shadow: rgba(black, 0.2) 0 2px 4px 2px;
-  color: $colors-brand-blue;
+  color: inherit;
   cursor: pointer;
+  font-size: $font-sizes-extra-large;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: inherit;
-  margin-left: $space-large;
   padding: $space-default;
-  transition: background-color $timings-fast ease-out;
-  &:hover {
-    background-color: $colors-brand-lavender;
+  @include for-desktop {
+    color: $colors-brand-blue;
+    font-size: inherit;
+    background: $colors-brand-white;
+    transition: background-color $timings-fast ease-out;
+    box-shadow: rgba(black, 0.2) 0 2px 4px 2px;
+    margin-left: $space-large;
+    &:hover {
+      background-color: $colors-brand-lavender;
+    }
   }
 
   &:focus {

@@ -1,0 +1,71 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.mobile-nav-bar {
+  &__menu {
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+    &--menu {
+      appearance: none;
+      background-color: inherit;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: $font-sizes-extra-large;
+      padding: $space-extra-small $space-large;
+      &:focus {
+        box-shadow: $shadows-focus;
+      }
+    }
+    &--settings {
+      color: inherit;
+      padding: $space-extra-small;
+      font-size: $font-sizes-extra-large;
+      flex-grow: 1;
+      &:focus {
+        box-shadow: $shadows-focus;
+      }
+    }
+  }
+  &__links {
+    border-bottom: $border-widths-small solid $colors-greys-grey20;
+    display: flex;
+    overflow-x: auto;
+    .eds-contrast & {
+      border-bottom: $border-widths-small solid $colors-blues-blue20;
+    }
+  }
+}
+.mobile-nav-item {
+  padding: $space-medium $space-large;
+  word-break: keep-all;
+  display: flex;
+  color: inherit;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  &--active {
+    &:after {
+      border-bottom: $border-widths-medium solid $colors-brand-coral;
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.sidebar-mobile {
+  position: absolute;
+  top: 8.5rem;
+  left: -100%;
+  transition: left $timings-slow ease-in-out;
+  z-index: $z-indexes-popover;
+  height: 100%;
+  &--show {
+    left: 0;
+  }
+}
