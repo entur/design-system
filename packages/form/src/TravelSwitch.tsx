@@ -21,7 +21,7 @@ export type TravelSwitchProps = {
   /** Label for TravelSwitchen, som vises ved høyre side. */
   children?: React.ReactNode;
   /** Hvilken type reise som skal vises rikig ikon og farge for */
-  transport:
+  transport:  // When adding a new submode, check https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/825393529/Norwegian+submodes+and+their+definitions for names
     | 'bus'
     | 'metro'
     | 'plane'
@@ -29,8 +29,8 @@ export type TravelSwitchProps = {
     | 'train'
     | 'ferry'
     | 'bike'
-    | 'airportBus'
-    | 'airportTrain'
+    | 'airportLinkBus'
+    | 'airportLinkTrain'
     | 'scooter';
   /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -113,13 +113,13 @@ function modeCalc(mode: string) {
         color: colors.transport.default.mobility,
         contrast: colors.transport.contrast.mobility,
       };
-    case 'airportBus':
+    case 'airportLinkBus':
       return {
         Icon: BusIcon,
         color: colors.transport.default.plane,
         contrast: colors.transport.contrast.plane,
       };
-    case 'airportTrain':
+    case 'airportLinkTrain':
       return {
         Icon: TrainIcon,
         color: colors.transport.default.plane,
