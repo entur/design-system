@@ -1,0 +1,46 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-stepper {
+  display: flex;
+  flex-direction: row;
+
+  &__item {
+    &__container {
+      display: flex;
+      flex-grow: 1;
+      flex-basis: 0;
+      flex-direction: column;
+      margin-left: $space-extra-small2;
+    }
+
+    &__container:first-child {
+      margin-left: 0;
+    }
+
+    &__label {
+      cursor: pointer;
+      flex-grow: 1;
+      flex-direction: column;
+      text-align: center;
+      font-size: $font-sizes-medium;
+      padding: $space-extra-small2 $space-medium;
+
+      &--active {
+        color: inherit;
+        border-top: $space-extra-small solid $colors-brand-blue;
+        .eds-contrast & {
+          border-color: $colors-brand-lavender;
+        }
+      }
+
+      &--inactive {
+        color: $colors-blues-blue40;
+        border-top: $space-extra-small solid $colors-blues-blue80;
+        .eds-contrast & {
+          color: $colors-brand-lavender;
+          border-color: $colors-blues-blue20;
+        }
+      }
+    }
+  }
+}
