@@ -9,3 +9,4 @@ export * from './NavigationCard';
 export * from './BaseCard';
 export * from './MediaCard';
 export * from './Badge';
+export * from './Tag';

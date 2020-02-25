@@ -1,0 +1,17 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-tag {
+  background: $colors-greys-grey20;
+  color: $colors-brand-blue;
+  display: inline-block;
+  min-width: $space-extra-large;
+  padding: $space-extra-small2 $space-extra-small;
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-large;
+  &--leading-icon .eds-icon {
+    margin-right: $space-extra-small;
+  }
+  &--trailing-icon .eds-icon {
+    margin-left: $space-extra-small;
+  }
+}
