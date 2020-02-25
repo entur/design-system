@@ -1,0 +1,40 @@
+---
+name: Stepper
+description: En stepper tar deg stegvis gjennom et visst løp.
+route: /komponenter/navigasjon/stepper
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: stepper
+---
+
+import { Props } from 'docz';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+import { Playground } from '~/components/Playground';
+import { Stepper } from '@entur/menu';
+
+<PageHeader />
+
+<Playground>
+  {() => {
+    let [activeIndex, setActiveIndex] = React.useState(0);
+    const steps = ['Om linjen', 'Journey patterns', 'Bestillingsinformasjon'];
+    return (
+      <Stepper
+        steps={steps}
+        activeIndex={activeIndex}
+        onStepClick={setActiveIndex}
+      />
+    );
+  }}
+</Playground>
+
+## Komponenter
+
+### Stepper
+
+<ImportStatement imports="Stepper" />
+<Props of={Stepper} />
+
+`<Stepper />`-komponenten skal brukes til skjemaer som krever trinnvis utfylling. Det skal i utgangspunktet ikke være mulig å hoppe _framover_ i skjemaet uten å ha fylt inn de foregående stegene først.
