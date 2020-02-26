@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading3, Paragraph } from '@entur/typography';
+import { Paragraph } from '@entur/typography';
 import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
@@ -30,18 +30,13 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   style,
   ...rest
 }) => {
-  const classList = classNames(
-    'eds-base-card',
-    'eds-base-card--red-line',
-    'eds-media-card',
-    className,
-  );
+  const classList = classNames('eds-base-card', 'eds-media-card', className);
   const Element = as;
   return (
     <BaseCard as="div" className={classList} style={style}>
       <div className="eds-media-card__media">{children}</div>
       <Element className="eds-media-card__text" {...rest}>
-        <Heading3>{title}</Heading3>
+        <div className="eds-media-card__title">{title}</div>
         <Paragraph>{description}</Paragraph>
         <ForwardIcon className="eds-media-card__arrow-icon" />
       </Element>
