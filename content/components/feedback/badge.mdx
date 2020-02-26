@@ -1,15 +1,16 @@
 ---
 name: Badge
-description: Badge brukes hihihi
+description: Badge brukes for å vise tilstanden eller mengden av noe, plassert relativt nært til den relevante informasjonen.
 route: /komponenter/feedback/badge
 parent: Komponenter
 menu: Feedback
-npmPackage: tooltip
+npmPackage: layout
 tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
 import { Badge } from '@entur/layout';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import { SecondarySquareButton, NegativeButton } from '@entur/button';
 import { Heading3, Paragraph } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 import { InputGroup, TextField, TextArea } from '@entur/form';
@@ -17,47 +18,69 @@ import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { SubtractIcon } from '@entur/icons';
 
 <PageHeader />
 
 <Playground>
-  <Tabs>
-    <TabList>
-      <Badge content={3} variant="primary" as={Tab}>
-        Priser
-      </Badge>
-      <Tab>Detaljer</Tab>
-      <Tab disabled>Disabled</Tab>
-      <Tab>Tom fane</Tab>
-    </TabList>
-    <TabPanels>
-      <TabPanel>
-        <Heading3>Informasjon</Heading3>
-        <Paragraph>
-          Et tab-panel kan inneholde masse informasjon, sortert og gruppert
-          etter kategori.
-        </Paragraph>
-        <Paragraph>
-          Man kan ha langt innhold eller kort innhold, og tab-panelet vil
-          tilpasse seg underveis.
-        </Paragraph>
-      </TabPanel>
-      <TabPanel>
-        <Heading3>Priser</Heading3>
-        <InputGroup label="Pris">
-          <TextField defaultValue="99,00" />
-        </InputGroup>
-        <InputGroup style={{ marginBottom: '1rem' }}>
-          <TextArea defaultValue="Prisen er inkludert MVA" />
-        </InputGroup>
-        <PrimaryButton>Lagre</PrimaryButton>
-      </TabPanel>
-      <TabPanel />
-      <TabPanel>
-        <Heading3>Denne er tom</Heading3>
-      </TabPanel>
-    </TabPanels>
-  </Tabs>
+  {() => {
+    const [inbox, setInbox] = React.useState(2);
+    const [outbox, setOutbox] = React.useState(11);
+    return (
+      <div>
+        <div>
+          <Tabs>
+            <TabList>
+              <Tab style={{ position: 'relative' }}>
+                Innboks
+                <Badge
+                  variant="success"
+                  style={{ position: 'absolute', top: 0 }}
+                  showZero
+                >
+                  {inbox}
+                </Badge>
+              </Tab>
+              <Tab style={{ position: 'relative' }}>
+                Utboks
+                <Badge
+                  variant="danger"
+                  style={{ position: 'absolute', top: 0 }}
+                  max={10}
+                >
+                  {outbox}
+                </Badge>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                Meldingene dine
+                <br />
+                <NegativeButton onClick={() => setInbox(0)}>
+                  Slett meldinger
+                </NegativeButton>
+              </TabPanel>
+              <TabPanel>
+                Utboksen din
+                <br />
+                <NegativeButton onClick={() => setOutbox(0)}>
+                  Slett utboks
+                </NegativeButton>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </div>
+        <PrimaryButton
+          onClick={() => {
+            setInbox(3);
+            setOutbox(11);
+          }}
+        >
+          Oppdater meldinger
+        </PrimaryButton>
+      </div>
+    );
+  }}
 </Playground>
 
 ## Komponenter
