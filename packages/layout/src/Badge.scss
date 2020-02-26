@@ -1,0 +1,49 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  font-weight: $font-weights-body;
+  font-size: $font-sizes-small;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  width: fit-content;
+  line-height: 1rem;
+  padding: 2px 8px;
+  border-radius: 0.75rem;
+  top: 0;
+  right: 0;
+  transform: scale(1);
+  color: $colors-brand-white;
+  transition: ease-in-out $timings-medium transform;
+  &--invisible {
+    transform: scale(0);
+  }
+  &--variant-primary {
+    background-color: $colors-brand-blue;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-brand-lavender;
+    }
+  }
+  &--variant-success {
+    background-color: $colors-validation-mint;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-validation-mint-contrast;
+    }
+  }
+  &--variant-warning {
+    background-color: $colors-validation-canary;
+    color: $colors-brand-blue;
+  }
+  &--variant-danger {
+    background-color: $colors-validation-lava;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-validation-lava-contrast;
+    }
+  }
+}

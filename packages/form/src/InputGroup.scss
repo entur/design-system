@@ -10,8 +10,4 @@
       color: $colors-brand-lavender;
     }
   }
-
-  & + & {
-    margin-top: $space-default;
-  }
 }

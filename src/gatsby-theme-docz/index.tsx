@@ -35,6 +35,9 @@ const componentMap = {
   pre: typography.PreformattedText,
   strong: typography.StrongText,
   inlineCode: typography.CodeText,
+  ul: typography.UnorderedList,
+  li: typography.ListItem,
+  ol: typography.NumberedList,
   props: Props,
 };
 
