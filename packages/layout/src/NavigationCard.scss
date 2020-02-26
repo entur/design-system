@@ -14,10 +14,24 @@
     line-height: $line-heights-extra-large3;
     font-weight: $font-weights-heading;
     margin: 1.5rem 0 0.5rem;
+    &:after {
+      content: '';
+      display: block;
+      bottom: $space-default;
+      height: 0.1875rem; // 3px in rem
+      width: $space-extra-large;
+      margin: 0 auto;
+      opacity: var(--show-active-line);
+      background: $colors-brand-coral;
+      transition: width $timings-medium ease-in-out;
+    }
   }
 
   &:hover {
     transform: translateY(-$space-extra-small2);
+    .eds-navigation-card__title:after {
+      width: 100%;
+    }
   }
 
   &__title-icon {
@@ -38,11 +52,14 @@
     justify-content: space-between;
     padding: $space-default $space-extra-large2;
     &:hover {
-      transform: none;
+      // transform: none;
     }
     .eds-navigation-card__title {
       margin: 0;
       padding: 1rem 0;
+      &:after {
+        display: none;
+      }
     }
     .eds-navigation-card__arrow-icon {
       margin-top: 0rem;

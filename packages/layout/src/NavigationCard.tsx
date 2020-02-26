@@ -36,10 +36,10 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
 }) => {
   const classList = classNames(
     'eds-base-card',
-    'eds-base-card--red-line',
     'eds-navigation-card',
     className,
     {
+      'eds-base-card--red-line': compact,
       'eds-navigation-card--compact': compact,
     },
   );
