@@ -12,16 +12,8 @@ import Menu from './UI/Menu';
 import FrontPageMenu from './UI/FrontPageMenu';
 import MobileMenu from './UI/MobileMenu';
 import classNames from 'classnames';
-import { createMedia } from '@artsy/fresnel';
-import { breakpoints } from '@entur/tokens';
+import { MediaContextProvider, Media } from '~/utils/MediaBreakpoint';
 import './index.scss';
-
-const { MediaContextProvider, Media } = createMedia({
-  breakpoints: {
-    mobile: 0,
-    desktop: breakpoints.large,
-  },
-});
 
 const componentMap = {
   h1: typography.Heading1,

@@ -21,7 +21,7 @@ import {
 import { PrimaryButton, SecondaryButton, ButtonGroup } from '@entur/button';
 import { Contrast } from '@entur/layout';
 import { NavigationCard } from '@entur/layout';
-import { colors } from '@entur/tokens';
+import { colors, space } from '@entur/tokens';
 import {
   ColorPickerIcon,
   SourceCodeIcon,
@@ -32,6 +32,7 @@ import {
 } from '@entur/icons';
 import { Link } from 'docz';
 import Changelog from '~/components/FrontPageChangelog';
+import { Media } from '~/utils/MediaBreakpoint';
 import './index.scss';
 
 <div>
@@ -48,59 +49,120 @@ import './index.scss';
   <img src={forsidebilde} style={{ width: '100%' }} />
 </div>
 
-<div className="front-page--card-box-container">
+<Media at="mobile">
+  <div style={{display: "grid", gridGap:space.medium, marginTop: space.extraLarge}}>
   <NavigationCard
     title="Kom i gang"
     titleIcon={<RulesIcon />}
     as={Link}
+    compact
     to="/kom-i-gang"
   >
-    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
-    ta identiteten i bruk.
+.
   </NavigationCard>
   <NavigationCard
     title="Visuell identitet"
     titleIcon={<ColorPickerIcon />}
     as={Link}
+    compact
     to="/visuell-identitet"
   >
-    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
-    ta identiteten i bruk.
+
   </NavigationCard>
   <NavigationCard
     title="Komponenter"
     titleIcon={<SourceCodeIcon />}
     as={Link}
+    compact
     to="/komponenter"
   >
-    Komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer for
-    bruk.
+
   </NavigationCard>
   <NavigationCard
-    title="Personlighet & stemme"
+    title="Personlighet og stemme"
     titleIcon={<EditIcon />}
     as={Link}
+    compact
     to="/design-prinsipper/personlighet-og-stemme"
   >
-    Hvem snakker vi til? <br /> Lær om hvordan vi bruker språket til å
-    kommunisere med brukerne våre.
+
   </NavigationCard>
   <NavigationCard
     title="Ikonbibliotek"
     titleIcon={<GridViewIcon />}
     as={Link}
     to="/komponenter/ressurser/ikoner"
+    compact
   >
-    Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
-    ta identiteten i bruk.
+
   </NavigationCard>
   <NavigationCard
     title="Vil du bidra?"
     titleIcon={<UsersIcon />}
     as={Link}
     to="/kom-i-gang/bidra"
+    compact
   >
-    Om du har en feature, bug report eller vil bidra til dokumentasjonen, ta en
-    titt på bidra-siden vår.
+
   </NavigationCard>
-</div>
+  </div>
+</Media>
+
+<Media greaterThanOrEqual="desktop">
+  <div className="front-page--card-box-container">
+    <NavigationCard
+      title="Kom i gang"
+      titleIcon={<RulesIcon />}
+      as={Link}
+      to="/kom-i-gang"
+    >
+      Les mer om hvem Entur er, vår arbeidskultur, designprosess og verktøyene
+      vi bruker.
+    </NavigationCard>
+    <NavigationCard
+      title="Visuell identitet"
+      titleIcon={<ColorPickerIcon />}
+      as={Link}
+      to="/visuell-identitet"
+    >
+      Bli kjent med vår merkevare. Veiledning og retningslinjer til deg som skal
+      ta identiteten i bruk.
+    </NavigationCard>
+    <NavigationCard
+      title="Komponenter"
+      titleIcon={<SourceCodeIcon />}
+      as={Link}
+      to="/komponenter"
+    >
+      Komponentbibliotek med forhåndsvisninger, kildekode og retningslinjer for
+      bruk.
+    </NavigationCard>
+    <NavigationCard
+      title="Personlighet og stemme"
+      titleIcon={<EditIcon />}
+      as={Link}
+      to="/design-prinsipper/personlighet-og-stemme"
+    >
+      Hvem snakker vi til? <br /> Lær om hvordan vi bruker språket til å
+      kommunisere med brukerne våre.
+    </NavigationCard>
+    <NavigationCard
+      title="Ikonbibliotek"
+      titleIcon={<GridViewIcon />}
+      as={Link}
+      to="/komponenter/ressurser/ikoner"
+    >
+      En oversikt over alle våre ikoner. Søk i oversikten og velg ikonet du
+      trenger for din applikasjon.
+    </NavigationCard>
+    <NavigationCard
+      title="Vil du bidra?"
+      titleIcon={<UsersIcon />}
+      as={Link}
+      to="/kom-i-gang/bidra"
+    >
+      Om du har en feature, bug report eller vil bidra til dokumentasjonen, ta
+      en titt på bidra-siden vår.
+    </NavigationCard>
+  </div>
+</Media>
