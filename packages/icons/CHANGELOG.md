@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.10.0...@entur/icons@0.11.0) (2020-02-26)
+
+### Features
+
+- add icon for UK ([f896e51](https://bitbucket.org/enturas/design-system/commits/f896e5164db7f70dd9bc74429eebd3df4d536c08))
+
 # [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.9.0...@entur/icons@0.10.0) (2020-02-20)
 
 ### Features

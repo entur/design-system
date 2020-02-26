@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.5...@entur/form@2.4.0) (2020-02-26)
+
+### Bug Fixes
+
+- removed vertical padding for inputgroups next to each other ([a164ceb](https://bitbucket.org/enturas/design-system/commits/a164ceb66e56965862d467508f5258e0f42d6012))
+- **form:** add airportTrain and airportBus to transport type ([7ccbbb4](https://bitbucket.org/enturas/design-system/commits/7ccbbb4d61cbe5a491187f8aa95f1ade891568e5))
+- **form:** correct airportLinkTrain to airportLinkRail ([86a0e1f](https://bitbucket.org/enturas/design-system/commits/86a0e1f622c814ebdb193a9d7e001131d2bd7df2))
+- **form:** netex-ify English names for flybuss and flytog ([865f10d](https://bitbucket.org/enturas/design-system/commits/865f10debab6a29b0f38e5b68eae5eb0c0f38fef))
+
+### Features
+
+- **form:** add airportBus and airportTrain to TravelSwitch ([91e2d4e](https://bitbucket.org/enturas/design-system/commits/91e2d4ef67589e61a6f168bad43c8bfb52975ab7))
+
 ## [2.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.3.4...@entur/form@2.3.5) (2020-02-20)
 
 **Note:** Version bump only for package @entur/form

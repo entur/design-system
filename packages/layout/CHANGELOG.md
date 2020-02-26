@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.4...@entur/layout@1.3.0) (2020-02-26)
+
+### Bug Fixes
+
+- readjust hover effect for cards ([1f09cb7](https://bitbucket.org/enturas/design-system/commits/1f09cb7242fcec9c0c0927c951c7f76a47e4e0fa))
+
+### Features
+
+- adding the tag component ([213edb6](https://bitbucket.org/enturas/design-system/commits/213edb6bcaec751f4eff7a024e87c974d90202ba))
+- **badge:** adding the badge component ([f88f222](https://bitbucket.org/enturas/design-system/commits/f88f22221f66c2376b01773de2245d079014ccd8))
+
 ## [1.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.3...@entur/layout@1.2.4) (2020-02-20)
 
 ### Bug Fixes

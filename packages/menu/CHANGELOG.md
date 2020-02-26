@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.11...@entur/menu@1.3.0) (2020-02-26)
+
+### Features
+
+- **stepper:** add stepper ([e07ffed](https://bitbucket.org/enturas/design-system/commits/e07ffedafb3a83dbf34fae45f32ae3f3b62c655a))
+
 ## [1.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.10...@entur/menu@1.2.11) (2020-02-20)
 
 **Note:** Version bump only for package @entur/menu
