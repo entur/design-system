@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './Badge.scss';
 
 export type BadgeProps = {
-  /** Elementet som wrapper badgen og children
+  /** Elementet som wrapper badgen
    * @default "span"
    */
   as?: 'span' | React.ElementType;
@@ -11,9 +11,16 @@ export type BadgeProps = {
   className?: string;
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
+  /** Hvilken type badge man vil ha */
   variant: 'primary' | 'success' | 'warning' | 'danger';
-  content: number | string;
+  /** Om 0 skal vises
+   * @default false
+   */
   showZero?: boolean;
+  /** Hva som er høyeste tallet før det legges på "+"
+   * @default ++
+   */
+  max?: number;
   [key: string]: any;
 };
 
@@ -21,26 +28,25 @@ export const Badge: React.FC<BadgeProps> = ({
   as: Element = 'span',
   children,
   className,
-  content,
   max = 99,
   variant,
-  showZero,
-  invisible: invisibleProp = null,
+  showZero = false,
+  invisible: invisibleProp = false,
   ...rest
 }) => {
   let invisible = invisibleProp;
-
   if (
-    invisibleProp == null &&
-    ((content === 0 && !showZero) || content == null)
+    invisibleProp === false &&
+    ((children === 0 && !showZero) || children == null)
   ) {
     invisible = true;
   }
+
   let displayValue;
-  if (typeof content === 'number') {
-    displayValue = content > max ? `${max}+` : content;
+  if (typeof children === 'number') {
+    displayValue = children > max ? `${max}+` : children;
   } else {
-    displayValue = content;
+    displayValue = children;
   }
 
   const classList = classNames(
@@ -50,9 +56,8 @@ export const Badge: React.FC<BadgeProps> = ({
   );
 
   return (
-    <Element className="eds-badge__wrapper" {...rest}>
-      {children}
-      <span className={classList}>{displayValue}</span>
-    </Element>
+    <span className={classList} {...rest}>
+      {displayValue}
+    </span>
   );
 };
