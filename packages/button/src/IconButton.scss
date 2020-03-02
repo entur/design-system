@@ -1,0 +1,25 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/color-utils.scss';
+
+.eds-icon-button {
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-sizes-medium;
+  padding: $space-extra-small2;
+  &:hover {
+    background-color: $colors-greys-grey20;
+    .eds-contrast & {
+      background-color: $colors-blues-blue30;
+    }
+  }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
