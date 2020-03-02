@@ -9,6 +9,8 @@ export type SwitchProps = {
   className?: string;
   /** Label for Switchen, som vises ved høyre side. */
   children?: React.ReactNode;
+  /** Om switchen er checked eller ikke */
+  checked?: boolean;
   /** Ikonet som skal stå inne i sirkelen på Switchen */
   icon?: React.ReactNode;
   /** Farge som settes på ikon og bakgrunnen når Switchen er "checked". Default er mint-contrast
