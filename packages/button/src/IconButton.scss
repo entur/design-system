@@ -10,8 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: $font-sizes-medium;
-  padding: $space-extra-small2;
+  font-size: $font-sizes-large;
+  padding: $space-extra-small;
   &:hover {
     background-color: $colors-greys-grey20;
     .eds-contrast & {
