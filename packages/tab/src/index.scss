@@ -138,6 +138,7 @@
 
   &:focus {
     outline: none;
+    box-shadow: $shadows-focus;
   }
 }
 
@@ -148,6 +149,5 @@
 .eds-tab-panel {
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
   }
 }
