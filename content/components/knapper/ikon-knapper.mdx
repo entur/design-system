@@ -19,12 +19,46 @@ import {
   HeaderCell,
   DataCell,
 } from '@entur/table';
-import { AddIcon, VerticalDotsIcon } from '@entur/icons';
+import {
+  AddIcon,
+  VerticalDotsIcon,
+  MenuIcon,
+  EditIcon,
+  CloseIcon,
+} from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
+
+<Playground>
+  <div style={{ display: 'flex' }}>
+    <IconButton>
+      <AddIcon />
+    </IconButton>
+    <IconButton>
+      <MenuIcon />
+    </IconButton>
+    <IconButton>
+      <EditIcon />
+    </IconButton>
+    <IconButton>
+      <CloseIcon />
+    </IconButton>
+  </div>
+</Playground>
+
+## Komponenter
+
+### IconButton
+
+<ImportStatement imports="IconButton" />
+<Props of={IconButton} />
+
+## Eksempler
+
+### Tabell
 
 <Playground>
   <Table>
@@ -70,10 +104,3 @@ import { ImportStatement } from '~/components/ImportStatement';
     </TableBody>
   </Table>
 </Playground>
-
-## Komponenter
-
-### IconButton
-
-<ImportStatement imports="IconButton" />
-<Props of={IconButton} />
