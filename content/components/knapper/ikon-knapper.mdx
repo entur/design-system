@@ -1,0 +1,79 @@
+---
+name: Ikonknapper
+description: Ikonknapper brukes gjerne for mindre handlinger i tabeller eller andre lignende steder
+route: /komponenter/knapper/ikon-knapper
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+tags: ikonknapp, ikon
+---
+
+import { IconButton } from '@entur/button';
+import { Props } from 'docz';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableFooter,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
+import { AddIcon, VerticalDotsIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader />
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Fra</HeaderCell>
+        <HeaderCell>Avgang</HeaderCell>
+        <HeaderCell>Til</HeaderCell>
+        <HeaderCell>Meny</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>10.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>
+          <IconButton>
+            <VerticalDotsIcon />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>11.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>
+          <IconButton>
+            <VerticalDotsIcon />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>12.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>
+          <IconButton>
+            <VerticalDotsIcon />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
+## Komponenter
+
+### IconButton
+
+<ImportStatement imports="IconButton" />
+<Props of={IconButton} />
