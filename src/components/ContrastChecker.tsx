@@ -12,7 +12,12 @@ import {
   HeaderCell,
   DataCell,
 } from '@entur/table';
-import { CheckIcon, CloseIcon, SwitchIcon, TicketIcon } from '@entur/icons';
+import {
+  CheckIcon,
+  CloseIcon,
+  SwitchIcon,
+  ValidTicketIcon,
+} from '@entur/icons';
 import { Heading4, CodeText } from '@entur/typography/dist';
 import { CopyButton } from './CopyButton';
 import './ContrastChecker.scss';
@@ -195,7 +200,7 @@ function ContrastChecker() {
               background: backgroundColor.value,
             }}
           >
-            <TicketIcon />
+            <ValidTicketIcon />
           </div>
         </div>
       </div>
