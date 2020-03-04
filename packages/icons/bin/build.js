@@ -29,7 +29,6 @@ function createSvgrConfig(native = false) {
   const config = {
     icon: true,
     replaceAttrValues: {
-      // switch out currentColor on native?
       '#181E53': 'currentColor',
       '#181C56': 'currentColor',
     },
@@ -37,6 +36,14 @@ function createSvgrConfig(native = false) {
     plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
     native,
   };
+
+  if (native) {
+    config.svgProps = {
+      color: '{(props.color || "#181C56")}',
+      width: '{(props.size || 16)}',
+      height: '{(props.size || 16)}',
+    };
+  }
 
   if (!native) {
     config.svgProps = {
