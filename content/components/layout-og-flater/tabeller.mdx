@@ -99,6 +99,9 @@ Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre 
 
 `<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.
 
+<ImportStatement imports="useSortableData" />
+<Props of={useSortableData} />
+
 ## Eksempler
 
 ### Sortering av tabell
@@ -106,11 +109,11 @@ Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre 
 <Playground>
   {() => {
     const data = [
-      { name: 'Alf', age: 33 },
-      { name: 'Bjørn', age: 13 },
-      { name: 'Dal', age: 5 },
+      { name: 'Hund', age: 13 },
+      { name: 'Katt', age: 10 },
+      { name: 'Spurv', age: 5 },
       { name: 'Elefant', age: 69 },
-      { name: 'Fredriksen', age: 50 },
+      { name: 'Skilpadde', age: 50 },
     ];
     const {
       sortedData,
@@ -144,3 +147,13 @@ Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre 
 
 Her brukes hooken `useSortableData` med dataen man vil ha i tabellen som output.
 Merk bruken av `getSortableHeaderProps` hvor man må sende inn en verdi for `name` som tilsvarer den i datasettet du bruker.
+
+Obs for Typescript: getSortableData benytter seg av generic-types, dermed ville den i eksemplet over sett ut slikt:
+
+```js
+const {
+    sortedData,
+    getSortableHeaderProps,
+    getSortableTableProps,
+  } = useSortable<{name:string; age:number }>(data);
+```

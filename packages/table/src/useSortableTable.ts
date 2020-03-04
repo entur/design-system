@@ -1,24 +1,22 @@
 import React from 'react';
 
-export type useSortableDataProps = {
-  rawData: object[];
-  externalSortConfig: {
-    /**
-     * @default ""
-     */
-    key: string;
-    /** @default "none" */
-    order: 'ascending' | 'descending' | 'none';
-  };
+export type ExternalSortConfig = {
+  /**
+   * @default ""
+   */
+  key: string;
+  /** @default "none" */
+  order: 'ascending' | 'descending' | 'none';
 };
 
-export function useSortableData(
-  rawData: object[],
-  externalSortConfig: {
-    key: string;
-    order: 'ascending' | 'descending' | 'none';
-  } = { key: '', order: 'none' },
-) {
+export function useSortableData<T>(
+  rawData: T[],
+  externalSortConfig: ExternalSortConfig = { key: '', order: 'none' },
+): {
+  sortedData: T[];
+  getSortableHeaderProps: SortableHeaderProps;
+  getSortableTableProps: SortableTableProps;
+} {
   const [sortConfig, setSortConfig] = React.useState(externalSortConfig);
   const tableCopy = rawData.slice();
 
@@ -29,7 +27,7 @@ export function useSortableData(
     });
   }, [externalSortConfig.key, externalSortConfig.order]);
 
-  const sortedData = React.useMemo(() => {
+  const sortedData: T[] = React.useMemo(() => {
     if (sortConfig.order === 'none') {
       return tableCopy;
     }
@@ -59,14 +57,10 @@ export function useSortableData(
     name,
     sortable = true,
     ...props
-  }: {
-    name: string;
-    sortable?: boolean;
-    [key: string]: any;
-  }) => ({
-    onClick: () => onSortRequested(name),
-    sortable,
+  }: SortableHeaderProps) => ({
     name,
+    sortable,
+    onClick: () => onSortRequested(name),
     sortConfig: sortConfig,
     ...props,
   });
@@ -74,10 +68,7 @@ export function useSortableData(
   const getSortableTableProps = ({
     sortable = true,
     ...props
-  }: {
-    sortable?: boolean;
-    [key: string]: any;
-  }) => ({
+  }: SortableTableProps) => ({
     sortable,
     sortConfig: sortConfig,
     ...props,
@@ -85,3 +76,18 @@ export function useSortableData(
 
   return { sortedData, getSortableHeaderProps, getSortableTableProps };
 }
+
+export type SortableHeaderProps = {
+  /** Navnet headeren skal se etter i forhold til sortering av items */
+  name: string;
+  /** Om headeren skal være sorterbar eller ikke
+   * @default true */
+  sortable?: boolean;
+  [key: string]: any;
+};
+
+export type SortableTableProps = {
+  /** @default true */
+  sortable?: boolean;
+  [key: string]: any;
+};
