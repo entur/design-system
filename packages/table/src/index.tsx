@@ -10,3 +10,4 @@ export * from './TableFooter';
 export * from './TableRow';
 export * from './DataCell';
 export * from './HeaderCell';
+export * from './useSortableTable';

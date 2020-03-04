@@ -1,0 +1,33 @@
+@import '~@entur/tokens/dist/styles';
+
+.eds-table__header-cell {
+  color: $colors-blues-blue40;
+  font-size: $font-sizes-medium;
+  font-weight: $font-weights-body;
+  text-align: left;
+
+  .eds-contrast & {
+    color: $colors-brand-lavender;
+  }
+
+  &-button {
+    appearance: none;
+    border: none;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    height: 100%;
+    padding: 0;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    &-icon {
+      position: absolute;
+      top: 0.125em;
+      margin-left: $space-extra-small2;
+    }
+  }
+}

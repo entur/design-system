@@ -17,6 +17,7 @@ import {
   TableRow,
   HeaderCell,
   DataCell,
+  useSortableData,
 } from '@entur/table';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -97,3 +98,59 @@ Om du ønsker en mer kompakt tabell, så kan du spesifisere `compact`-propen.
 Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre for en rad.
 
 `<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.
+
+## Eksempler
+
+### Sortering av tabell
+
+<Playground>
+  {() => {
+    const data = [
+      { name: 'Hund', age: 13 },
+      { name: 'Katt', age: 10 },
+      { name: 'Spurv', age: 5 },
+      { name: 'Elefant', age: 69 },
+      { name: 'Skilpadde', age: 50 },
+    ];
+    const {
+      sortedData,
+      getSortableHeaderProps,
+      getSortableTableProps,
+    } = useSortableData(data);
+    return (
+      <Table {...getSortableTableProps}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell {...getSortableHeaderProps({ name: 'name' })}>
+              Navn
+            </HeaderCell>
+            <HeaderCell {...getSortableHeaderProps({ name: 'age' })}>
+              Alder
+            </HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {sortedData.map(item => (
+            <TableRow key={item.name}>
+              <DataCell>{item.name}</DataCell>
+              <DataCell>{item.age}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }}
+</Playground>
+
+Her brukes hooken `useSortableData` med dataen man vil ha i tabellen som output.
+Merk bruken av `getSortableHeaderProps` hvor man må sende inn en verdi for `name` som tilsvarer den i datasettet du bruker.
+
+Obs for Typescript: getSortableData benytter seg av generic-types, dermed ville den i eksemplet over sett ut slikt:
+
+```js
+const {
+    sortedData,
+    getSortableHeaderProps,
+    getSortableTableProps,
+  } = useSortable<{name:string; age:number }>(data);
+```

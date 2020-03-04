@@ -20,15 +20,19 @@ export const Table: React.FC<TableProps> = ({
   className,
   fixed = false,
   compact = false,
+  sortable = false,
   ...rest
-}) => (
-  <table
-    className={classNames(
-      'eds-table',
-      { 'eds-table--fixed': fixed },
-      { 'eds-table--compact': compact },
-      className,
-    )}
-    {...rest}
-  />
-);
+}) => {
+  return (
+    <table
+      className={classNames(
+        'eds-table',
+        { 'eds-table--fixed': fixed },
+        { 'eds-table--compact': compact },
+        { 'eds-table--sortable': sortable },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

@@ -12,17 +12,6 @@
     table-layout: fixed;
   }
 
-  &__header-cell {
-    color: $colors-blues-blue40;
-    font-size: $font-sizes-medium;
-    font-weight: $font-weights-body;
-    text-align: left;
-
-    .eds-contrast & {
-      color: $colors-brand-lavender;
-    }
-  }
-
   &__data-cell,
   &__header-cell {
     border-bottom: $border-widths-default solid $colors-greys-grey20;
