@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Icon/Arrows/Redo</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icon/Arrows/Redo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M9.4,2 L8.09333333,3.26388889 L11.8266667,6.875 L6.6,6.875 C3.52,6.875 1,9.3125 1,12.2916667 L1,15 L2.86666667,15 L2.86666667,12.2916667 C2.86666667,10.3055556 4.54666667,8.68055556 6.6,8.68055556 L11.8266667,8.68055556 L8.09333333,12.2916667 L9.4,13.5555556 L14.72,8.40972222 C15.0933333,8.04861111 15.0933333,7.50694444 14.72,7.14583333 L9.4,2 Z" id="Icon-Fill" fill="#181C56"></path>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<path id="Icon-Fill" fill-rule="evenodd" clip-rule="evenodd" fill="#181C56" d="M11.7833099,1.6992542l3.030303,3.030303
+	l0.0670996,0.0788784c0.1789312,0.2486777,0.1565647,0.5974121-0.0670996,0.8210759l0,0l-3.030303,3.0303035l-0.8999538-0.8999543
+	l1.9436436-1.9446063L5.878788,5.8158979L5.6988087,5.8203111C3.7908466,5.9140916,2.2727273,7.4907331,2.2727273,9.4219589
+	c0,1.9915762,1.6144843,3.60606,3.6060607,3.60606l0,0h4.242424v1.272727H5.878788l-0.1962228-0.0038738
+	C3.0790517,14.1938915,1,12.050724,1,9.4219589c0-2.6944847,2.1843035-4.8787885,4.878788-4.8787885l0,0l6.9472122-0.000916
+	l-1.9426441-1.9430461L11.7833099,1.6992542z"/>
 </svg>

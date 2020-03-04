@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-<title>Icon/Arrows/Switch</title>
-<desc>Created with Sketch.</desc>
-<g id="Icon_x2F_Arrows_x2F_Switch">
-	<g id="Icon-Fill">
-		<path id="path-1_1_" fill="#181C56" d="M10.9126997,0.9997854L14.3427,4.4957852l-3.4309998,3.4970002l-1.217-1.2080002
-			l1.3909998-1.415H1.9997V3.6207855H11.0857l-1.4020004-1.427L10.9126997,0.9997854z M2,11.4946861l3.4299998-3.4960008
-			l1.2290001,1.1960006l-1.402,1.4250002h9.0860004v1.75H5.257l1.3909998,1.4139996l-1.2169995,1.2080002L2,11.4946861z"/>
-	</g>
-</g>
+<path id="Icon-Fill" fill-rule="evenodd" clip-rule="evenodd" fill="#181C56" d="M12.2681589,8.1636362l2.545454,2.545455
+	c0.2236643,0.2236633,0.2460308,0.5723982,0.0670996,0.8210754l-0.0670996,0.0788784l-2.545454,2.545454l-0.8999538-0.8999538
+	l1.459795-1.4595451L4.818182,11.7954311v-1.272727l8.0088177-0.0007038L11.3682051,9.06359L12.2681589,8.1636362z M3.7318411,1.8
+	L4.6317954,2.699954L3.171,4.1589999l8.6471825,0.0000682v1.272727L3.171,5.4310002l1.4607954,1.459909L3.7318411,7.790863
+	L1.1863866,5.2454085C0.9627227,5.0217447,0.9403563,4.6730103,1.1192874,4.4243326l0.0670992-0.0788779L3.7318411,1.8z"/>
 </svg>
