@@ -1,0 +1,40 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-grid {
+  &__container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+  }
+  &__item {
+    box-sizing: border-box;
+    margin: 0;
+    grid-column: auto 2;
+  }
+  &--justify {
+    &-flex-start {
+      justify-content: flex-start;
+    }
+    &-flex-end {
+      justify-content: flex-end;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-space-around {
+      justify-content: space-around;
+    }
+    &-space-between {
+      justify-content: space-between;
+    }
+  }
+  &--direction {
+    &-row {
+      flex-direction: row;
+    }
+    &-column {
+      flex-direction: column;
+    }
+  }
+}
