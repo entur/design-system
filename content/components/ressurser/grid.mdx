@@ -1,0 +1,27 @@
+---
+name: Grid
+description: Grid hjelper deg.
+parent: Komponenter
+route: /komponenter/ressurser/grid
+menu: Ressurser
+npmPackage: grid
+tags: grid
+---
+
+import { Link, Props } from 'docz';
+import { Grid } from '@entur/grid';
+import PageHeader from '~/components/PageHeader';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader />
+
+<Playground>
+  <Grid container>
+    <Grid item>Hei</Grid>
+    <Grid item>Hei</Grid>
+    <Grid item>Hei</Grid>
+  </Grid>
+</Playground>
+
+## Komponenter
