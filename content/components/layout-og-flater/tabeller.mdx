@@ -103,14 +103,20 @@ Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre 
 
 ### Sortering av tabell
 
+Sorteringsfunksjonene er plassert i kolonneoverskriftene. Ved å klikke på en kolonneoverskrift sorteres tabellen basert på dataene innen - alfabetisk, numerisk, dato osv.
+En sortert tabell har tre tilstander: usortert, sortert etter stigende rekkefølge (pilikon - opp) eller sortert etter synkende rekkefølge (pilikon - ned).
+Ikonene indikerer gjeldende sortert tilstand og vises bare hvis sortering er aktivert. Det er kun kolonnen som blir sortert som skal vise et ikon,
+usorterte ikoner er bare synlige ved “hover”.
+
 <Playground>
   {() => {
     const data = [
       { name: 'Hund', age: 13 },
       { name: 'Katt', age: 10 },
       { name: 'Spurv', age: 5 },
-      { name: 'Elefant', age: 69 },
+      { name: 'Elefant', age: 60 },
       { name: 'Skilpadde', age: 50 },
+      { name: 'Løve', age: 25 },
     ];
     const {
       sortedData,
