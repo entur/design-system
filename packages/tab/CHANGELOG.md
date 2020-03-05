@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.2...@entur/tab@0.4.3) (2020-03-05)
+
+### Bug Fixes
+
+- fix focus bug inside tabpanel ([f09a866](https://bitbucket.org/enturas/design-system/commits/f09a866393d3a60aadfd793f4a0f22d186bbeb30))
+
 ## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.1...@entur/tab@0.4.2) (2020-02-20)
 
 **Note:** Version bump only for package @entur/tab

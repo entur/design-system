@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.11.0...@entur/icons@1.0.0) (2020-03-05)
+
+### Bug Fixes
+
+- remove unused icon ([bced335](https://bitbucket.org/enturas/design-system/commits/bced335fac86c7be383468ca30adcfb6b02ed515))
+- remove unused icons ([1199864](https://bitbucket.org/enturas/design-system/commits/1199864b81188338aa8ad4d8bdda98ffdd5096c7))
+
+### Features
+
+- adding new validation icons ([854644a](https://bitbucket.org/enturas/design-system/commits/854644a5dfb27d475681aa6a3a1c5f3bcc44999d))
+- supports setting size for native icons ([74a7855](https://bitbucket.org/enturas/design-system/commits/74a7855710ab9157489615bf114ce4558e62f1aa))
+- **icons:** changing all icons to outline styling ([2a346d0](https://bitbucket.org/enturas/design-system/commits/2a346d0873c690569d473c7f21f1a454bc088bc6))
+
+### BREAKING CHANGES
+
+- Removed icons: company, fineticket, periode, rescue, sanntid, salesplace, and location
+- **icons:** Name changes for icon (old-new): standard-expand, teddy-playroom, company-city, ticket-validticket
+
+ISSUES CLOSED: DS-269
+
 # [0.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.10.0...@entur/icons@0.11.0) (2020-02-26)
 
 ### Features

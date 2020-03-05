@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.14...@entur/table@0.4.0) (2020-03-05)
+
+### Features
+
+- **sorting:** add useSortableTable hook to sort tables ([77be21e](https://bitbucket.org/enturas/design-system/commits/77be21e1de51b8e17ed4b45fc89e8d9ad9b8ad48))
+
 ## [0.3.14](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.3.13...@entur/table@0.3.14) (2020-02-20)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.1.4...@entur/button@2.2.0) (2020-03-05)
+
+### Bug Fixes
+
+- fix square button focus styling ([803ffd1](https://bitbucket.org/enturas/design-system/commits/803ffd139faaea4cc222cf0a6ae163f1d646c7d6))
+
+### Features
+
+- **iconbutton:** add iconbutton component ([81e966f](https://bitbucket.org/enturas/design-system/commits/81e966f3be5cac8605a26abe7f558aeb3682aa1c))
+
 ## [2.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.1.3...@entur/button@2.1.4) (2020-02-20)
 
 **Note:** Version bump only for package @entur/button

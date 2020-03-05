@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.3.0...@entur/menu@1.3.1) (2020-03-05)
+
+### Bug Fixes
+
+- fix padding for nested menu items ([8019a13](https://bitbucket.org/enturas/design-system/commits/8019a13dad1728e491dbd637373d01acf8b1229b))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.2.11...@entur/menu@1.3.0) (2020-02-26)
 
 ### Features
