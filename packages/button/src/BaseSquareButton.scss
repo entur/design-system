@@ -39,7 +39,9 @@
 
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
+    .eds-square-button__icon {
+      box-shadow: $shadows-focus;
+    }
   }
 }
 
