@@ -3,4 +3,5 @@ import './index.scss';
 
 warnAboutMissingStyles('grid');
 
-export * from './Grid';
+export * from './GridItem';
+export * from './GridContainer';

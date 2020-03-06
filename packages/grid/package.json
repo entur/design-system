@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@entur/tokens": "^1.2.1",
-    "@entur/utils": "^0.2.0",
+    "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
