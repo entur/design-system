@@ -16,7 +16,7 @@ export type GridItemProps = {
   /** Innholdet til Grid containeren/item */
   children?: React.ReactNode;
   /** Ekstra klassenavn */
-  className?: 'string';
+  className?: string;
   [key: string]: any;
 };
 export const GridItem: React.FC<GridItemProps> = ({

@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import './Grid.scss';
 
 export type GridProps = {
-  /** Settes
+  /** Om det er en GridContainer
    * @default false
    */
   container?: boolean;
-  /** Settes
+  /** Om det er et GridItem
    * @default false
    */
   item?: boolean;
@@ -46,7 +46,7 @@ export type GridProps = {
   /** Innholdet til Grid containeren/item */
   children?: React.ReactNode;
   /** Ekstra klassenavn */
-  className?: 'string';
+  className?: string;
   [key: string]: any;
 };
 

@@ -30,7 +30,7 @@ export type GridContainerProps = {
   /** Innholdet til Grid-containeren */
   children?: React.ReactNode;
   /** Ekstra klassenavn */
-  className?: 'string';
+  className?: string;
   [key: string]: any;
 };
 
