@@ -1,0 +1,10 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.grid-demo-item {
+  background: $colors-greys-grey20;
+  text-align: center;
+  padding: $space-extra-small;
+  .eds-contrast & {
+    background: $colors-blues-blue30;
+  }
+}
