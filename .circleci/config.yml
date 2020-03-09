@@ -15,9 +15,9 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - node-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - node-v1-{{ .Branch }}-
-            - node-v1-
+            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-v1-{{ .Branch }}-
+            - yarn-v1-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -27,7 +27,7 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: node-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run:
@@ -48,9 +48,9 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - node-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - node-v1-{{ .Branch }}-
-            - node-v1-
+            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-v1-{{ .Branch }}-
+            - yarn-v1-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -60,7 +60,7 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: node-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run:
