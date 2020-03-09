@@ -43,6 +43,14 @@
       box-shadow: $shadows-focus;
     }
   }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+    &.eds-square-button--loading {
+      opacity: 1;
+    }
+  }
 }
 
 .eds-square-button__icon {
@@ -59,12 +67,17 @@
   text-align: center;
   text-decoration: none;
   vertical-align: top;
+  position: relative;
   width: 2.75rem;
 }
 
 .eds-square-button--secondary {
   --icon-background: transparent;
   --border-color: #{$colors-brand-lavender};
+  .eds-button__spinner {
+    border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+    border-right-color: $colors-brand-blue;
+  }
 
   &:hover {
     --icon-background: #{$colors-brand-lavender};
@@ -82,11 +95,19 @@
       --icon-background: #{$colors-brand-lavender};
       --icon-color: #{$colors-brand-blue};
     }
+    .eds-button__spinner {
+      border: $border-widths-large solid rgba($colors-brand-white, 0.5);
+      border-right-color: $colors-brand-white;
+    }
   }
 }
 
 .eds-square-button--success {
   --icon-background: #{$colors-validation-mint-contrast};
+  .eds-button__spinner {
+    border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
+    border-right-color: $colors-brand-blue;
+  }
 
   &:hover {
     --icon-background: #{tint($colors-validation-mint-contrast, 10%)};
