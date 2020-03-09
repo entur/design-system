@@ -8,7 +8,7 @@ jobs:
     parallelism: 1
     resource_class: large
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - checkout
 
