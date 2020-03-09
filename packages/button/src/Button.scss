@@ -171,17 +171,6 @@ a.eds-button {
       }
     }
   }
-  .eds-button__spinner {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    animation: 1s infinite linear spin;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
 
   &--variant-tertiary {
     font-size: $font-sizes-medium;
@@ -230,11 +219,5 @@ a.eds-button {
       border-color: $colors-blues-blue40;
       color: $colors-blues-blue60;
     }
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
