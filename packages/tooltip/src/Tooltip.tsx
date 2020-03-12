@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { cloneElement } from 'react';
+import { useTooltip, TooltipPopup } from '@reach/tooltip';
+
 import classNames from 'classnames';
 
 export type TooltipProps = {
@@ -15,7 +17,7 @@ export type TooltipProps = {
   /** Innholdet i tooltip-boksen */
   content: string;
   /** Elementet som skal ha tooltip-funksjonalitet */
-  children: React.ReactNode;
+  children: React.ReactElement;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
@@ -27,33 +29,33 @@ export const Tooltip: React.FC<TooltipProps> = ({
   className,
   ...rest
 }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+  // get the props from useTooltip
+  const [trigger, tooltip] = useTooltip();
+  // destructure off what we need to position the triangle
+  // const { isVisible, triggerRect } = tooltip;
+
+  // const [showTooltip, setShowTooltip] = useState(false);
   return (
-    <div
-      className="eds-tooltip-wrapper"
-      onMouseLeave={() => setShowTooltip(false)}
-    >
+    <>
+      {cloneElement(children, trigger)}
       <div
-        className={classNames(
-          'eds-tooltip',
-          className,
-          `eds-tooltip--${placement}`,
-        )}
-        role="tooltip"
-        aria-hidden={!showTooltip}
-        {...rest}
+        className="eds-tooltip-wrapper"
+        // onMouseLeave={() => setShowTooltip(false)}
       >
-        {content}
+        <TooltipPopup
+          className={classNames(
+            'eds-tooltip',
+            className,
+            `eds-tooltip--${placement}`,
+          )}
+          role="tooltip"
+          // aria-hidden={!showTooltip}
+          {...tooltip}
+          label={content}
+          // position={placement}
+          {...rest}
+        ></TooltipPopup>
       </div>
-      <span
-        className="eds-tooltip--trigger"
-        onMouseOver={() => setShowTooltip(true)}
-        onFocus={() => setShowTooltip(true)}
-        onBlur={() => setShowTooltip(false)}
-        aria-describedby={content}
-      >
-        {children}
-      </span>
-    </div>
+    </>
   );
 };

@@ -30,6 +30,7 @@
     "@entur/tokens": "^1.2.1"
   },
   "dependencies": {
-    "@entur/utils": "^0.2.3"
+    "@entur/utils": "^0.2.3",
+    "@reach/tooltip": "^0.8.6"
   }
 }
