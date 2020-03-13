@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './BaseSquareButton.scss';
+import './LoadingSpinner.scss';
 
 export type BaseSquareButtonProps = {
   /** Tekst og ikon */
@@ -13,6 +14,10 @@ export type BaseSquareButtonProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
+  loading?: boolean;
   /** HTML-elementet eller React-komponenten som lager knappen
    * @default 'button'
    */
@@ -26,6 +31,7 @@ export const BaseSquareButton: React.FC<BaseSquareButtonProps> = ({
   className,
   variant,
   disabled = false,
+  loading = false,
   as = 'button',
   ...rest
 }) => {
@@ -37,15 +43,23 @@ export const BaseSquareButton: React.FC<BaseSquareButtonProps> = ({
         'eds-square-button',
         { 'eds-square-button--success': variant === 'success' },
         { 'eds-square-button--secondary': variant === 'secondary' },
+        { 'eds-square-button--loading': loading },
         className,
       )}
+      aria-busy={loading}
+      disabled={disabled}
+      aria-disabled={disabled}
       {...rest}
     >
       {React.Children.map(children, child => {
         if (typeof child === 'string') {
           return <span className="eds-square-button__label">{child}</span>;
         }
-        return <span className="eds-square-button__icon">{child}</span>;
+        return (
+          <span className="eds-square-button__icon">
+            {loading ? <div className="eds-button__spinner" /> : child}
+          </span>
+        );
       })}
     </Element>
   );

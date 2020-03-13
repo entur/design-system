@@ -6,6 +6,18 @@ export type SuccessSquareButtonProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /** Deaktivering av knappen
+   * @default false
+   */
+  disabled?: boolean;
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
+  loading?: boolean;
+  /** HTML-elementet eller React-komponenten som lager knappen
+   * @default 'button'
+   */
+  as?: 'a' | 'button' | React.ElementType;
   [key: string]: any;
 };
 

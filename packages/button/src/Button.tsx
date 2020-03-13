@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import './Button.scss';
+import './LoadingSpinner.scss';
 
 export type ButtonProps = {
   /** Farge og uttrykk på knappen */
