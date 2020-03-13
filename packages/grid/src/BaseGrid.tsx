@@ -16,23 +16,23 @@ export type GridProps = {
    */
   spacing?:
     | 'none'
-    | 'xsmall2'
-    | 'xsmall'
+    | 'extraSmall2'
+    | 'extraSmall'
     | 'small'
     | 'medium'
     | 'large'
-    | 'xlarge';
+    | 'extraLarge';
   /** Vertikalt mellomrom for hver GridItem
    * @default Verdien til spacing
    */
   rowSpacing?:
     | 'none'
-    | 'xsmall2'
-    | 'xsmall'
+    | 'extraSmall2'
+    | 'extraSmall'
     | 'small'
     | 'medium'
     | 'large'
-    | 'xlarge';
+    | 'extraLarge';
   /** Antall kolonner en Item bruker på små flater (og oppover)
    * @default 1
    */

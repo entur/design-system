@@ -15,10 +15,10 @@
     grid-auto-rows: auto;
   }
   &--spacing {
-    &-xsmall2 {
+    &-extraSmall2 {
       gap: $space-extra-small2;
     }
-    &-xsmall {
+    &-extraSmall {
       gap: $space-extra-small;
     }
     &-small {
@@ -30,14 +30,14 @@
     &-large {
       gap: $space-large;
     }
-    &-xlarge {
+    &-extraLarge {
       gap: $space-extra-large;
     }
     &-row {
-      &-xsmall2 {
+      &-extraSmall2 {
         row-gap: $space-extra-small2;
       }
-      &-xsmall {
+      &-extraSmall {
         row-gap: $space-extra-small;
       }
       &-small {
@@ -49,7 +49,7 @@
       &-large {
         row-gap: $space-large;
       }
-      &-xlarge {
+      &-extraLarge {
         row-gap: $space-extra-large;
       }
     }

@@ -8,23 +8,23 @@ export type GridContainerProps = {
    */
   spacing?:
     | 'none'
-    | 'xsmall2'
-    | 'xsmall'
+    | 'extraSmall2'
+    | 'extraSmall'
     | 'small'
     | 'medium'
     | 'large'
-    | 'xlarge';
+    | 'extraLarge';
   /** Mellomrom mellom hver rad
    * @default Verdien til spacing
    */
   rowSpacing?:
     | 'none'
-    | 'xsmall2'
-    | 'xsmall'
+    | 'extraSmall2'
+    | 'extraSmall'
     | 'small'
     | 'medium'
     | 'large'
-    | 'xlarge';
+    | 'extraLarge';
   /** HTML-elementet eller React-komponenten som lager Grid-elementet*/
   as?: 'div' | React.ElementType;
   /** Innholdet til Grid-containeren */
