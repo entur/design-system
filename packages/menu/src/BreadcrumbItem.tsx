@@ -5,7 +5,7 @@ import { Link as LinkText } from '@entur/typography';
 
 export type BreadcrumbItemProps = {
   /** Komponenten som rendres */
-  as?: 'a' | React.ComponentType;
+  as?: 'a' | React.ElementType;
   /** Teksten som vises */
   children: React.ReactNode;
   /** Ekstra klassenavn */
