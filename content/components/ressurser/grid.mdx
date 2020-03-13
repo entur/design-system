@@ -82,7 +82,7 @@ import './grid.scss';
 
 Vår grid går etter prinsippet om 12 kolonner. Hver GridContainer har 12 kolonner, og hver GridItem tar opp så mange kolonner man skulle ønske.
 
-Grid baserer seg på tre forskjellige breakpoints: small, medium og large. Disse fungerer dra fra og med en skjermbredde og oppover. Det vil si, hvis ingen large eller medium verdi er satt, så ser Grid etter hvilken small verdi som er satt.
+Grid baserer seg på tre forskjellige breakpoints: small, medium og large, som utledes fra breakpoints-tokens i.e. 800px og 1200px. Disse fungerer dra fra og med en skjermbredde og oppover. Det vil si, hvis ingen large eller medium verdi er satt, så ser Grid etter hvilken small verdi som er satt.
 Så om du ikke skal bruke de responsive funksjonene til Grid, benytt `small` når du setter størrelser på GridItem'er.
 
 Navngivningen til spacing-verdiene følger samme konvensjon som spacing-tokens.
@@ -93,6 +93,10 @@ Det vil si f.eks. extraSmall2 for xxs (tskjorte)
 ### Responsivitet
 
 Endre bredden på browser-vinduet for å teste responsiviteten.
+
+- **Small** er vinduer mellom 0-800 piksler i bredden.
+- **Medium** er vinduer mellom 800-1200 piksler.
+- **Large** er vinduer over 1200 piksler.
 
 <Playground>
   <GridContainer spacing="medium">
