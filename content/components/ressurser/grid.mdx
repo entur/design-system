@@ -22,7 +22,7 @@ import './grid.scss';
 
 <Playground>
   {() => {
-    const [value, setValue] = React.useState('xsmall');
+    const [value, setValue] = React.useState('extraSmall');
     return (
       <>
         <GridContainer spacing={value}>
@@ -56,12 +56,12 @@ import './grid.scss';
           style={{ marginTop: '1.5rem' }}
         >
           <ChoiceChip value="none">none</ChoiceChip>
-          <ChoiceChip value="xsmall2">xsmall2</ChoiceChip>
-          <ChoiceChip value="xsmall">xsmall</ChoiceChip>
+          <ChoiceChip value="extraSmall2">extraSmall2</ChoiceChip>
+          <ChoiceChip value="extraSmall">extraSmall</ChoiceChip>
           <ChoiceChip value="small">small</ChoiceChip>
           <ChoiceChip value="medium">medium</ChoiceChip>
           <ChoiceChip value="large">large</ChoiceChip>
-          <ChoiceChip value="xlarge">xlarge</ChoiceChip>
+          <ChoiceChip value="extraLarge">extraLarge</ChoiceChip>
         </ChoiceChipGroup>
       </>
     );
@@ -84,6 +84,9 @@ Vår grid går etter prinsippet om 12 kolonner. Hver GridContainer har 12 kolonn
 
 Grid baserer seg på tre forskjellige breakpoints: small, medium og large. Disse fungerer dra fra og med en skjermbredde og oppover. Det vil si, hvis ingen large eller medium verdi er satt, så ser Grid etter hvilken small verdi som er satt.
 Så om du ikke skal bruke de responsive funksjonene til Grid, benytt `small` når du setter størrelser på GridItem'er.
+
+Navngivningen til spacing-verdiene følger samme konvensjon som spacing-tokens.
+Det vil si f.eks. extraSmall2 for xxs (tskjorte)
 
 ## Eksempler
 
@@ -117,7 +120,7 @@ Endre bredden på browser-vinduet for å teste responsiviteten.
 ### Forskjellig spacing på kolonner og rader
 
 <Playground>
-  <GridContainer spacing="xsmall" rowSpacing="large">
+  <GridContainer spacing="extraSmall" rowSpacing="large">
     <GridItem small={12} className="grid-demo-item">
       small=12
     </GridItem>
