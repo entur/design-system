@@ -3,6 +3,7 @@ const path = require('path');
 const toCase = require('case');
 const babel = require('@babel/core');
 const svgr = require('@svgr/core').default;
+const { colors } = require('@entur/tokens');
 
 /** Traverses a directory
  * returns an array of all file paths
@@ -29,8 +30,7 @@ function createSvgrConfig(native = false) {
   const config = {
     icon: true,
     replaceAttrValues: {
-      '#181E53': 'currentColor',
-      '#181C56': 'currentColor',
+      [`${colors.brand.blue.toUpperCase()}`]: 'currentColor',
     },
     expandProps: 'start',
     plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
@@ -42,6 +42,16 @@ function createSvgrConfig(native = false) {
       color: '{(props.color || "#181C56")}',
       width: '{(props.size || 16)}',
       height: '{(props.size || 16)}',
+    };
+
+    config.replaceAttrValues = {
+      [`${colors.brand.blue.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.bus.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.metro.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.tram.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.train.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.ferry.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
     };
   }
 
