@@ -28,8 +28,8 @@ const webConfig = {
 const nativeConfig = {
   input: 'tmp/native/index.js',
   output: {
-    file: './native/index.js',
-    format: 'cjs',
+    file: pkg['react-native'],
+    format: 'esm',
   },
   external: ['react', 'react-native-svg'],
   plugins: sharedPlugins,
