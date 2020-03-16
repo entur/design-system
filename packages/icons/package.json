@@ -4,6 +4,7 @@
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "react-native": "dist/index.esm.native.js",
   "typings": "types/index.d.ts",
   "files": [
     "dist",
