@@ -15,7 +15,7 @@
 }
 
 .eds-tooltip {
-  color: $colors-brand-white; // IE
+  color: $colors-brand-white;
   background: $colors-brand-blue;
   border-radius: $border-radiuses-medium;
   box-shadow: 0 0.125rem 0.3125rem 0 var(--primary-border-color);
@@ -28,13 +28,6 @@
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
-  }
-
-  &[aria-hidden='true'] {
-    display: none;
-  }
-  &[aria-hidden='false'] {
-    display: inline-block;
   }
 
   &::after {
@@ -51,9 +44,9 @@
   }
 
   &--top {
-    bottom: calc(100% + 0.625rem);
-    left: 50%;
-    transform: translateX(-50%);
+    // bottom: calc(100% + 0.625rem);
+    // left: 50%;
+    // transform: translateX(-50%);
 
     &::after {
       bottom: -0.2rem;
@@ -62,8 +55,8 @@
   }
 
   &--top-left {
-    bottom: calc(100% + 0.625rem);
-    right: calc(100% - 1.25rem);
+    // bottom: calc(100% + 0.625rem);
+    // right: calc(100% - 1.25rem);
 
     &::after {
       bottom: -0.2rem;
@@ -72,8 +65,8 @@
   }
 
   &--top-right {
-    bottom: calc(100% + 0.625rem);
-    left: calc(100% - 1.25rem);
+    // bottom: calc(100% + 0.625rem);
+    // left: calc(100% - 1.25rem);
 
     &::after {
       bottom: -0.375rem;
@@ -104,9 +97,9 @@
   }
 
   &--bottom {
-    left: 50%;
-    top: calc(100% + 0.625rem);
-    transform: translateX(-50%);
+    // left: 50%;
+    // top: calc(100% + 0.625rem);
+    // transform: translateX(-50%);
 
     &::after {
       left: calc(50% - 0.3125rem);
