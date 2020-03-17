@@ -1,9 +1,9 @@
 {
-  "name": "@entur/{package-name}",
+  "name": "@entur/grid",
   "version": "0.1.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
-  "module": "dist/{package-name}.esm.js",
+  "module": "dist/grid.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "https://bitbucket.org/enturas/design-system.git",
-    "directory": "packages/{package-name}"
+    "directory": "packages/grid"
   },
   "publishConfig": {
     "access": "public"
@@ -23,7 +23,9 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/utils": "^0.2.0"
+    "@entur/tokens": "^1.2.1",
+    "@entur/utils": "^0.2.3",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
