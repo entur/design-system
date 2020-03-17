@@ -12,7 +12,7 @@ export type RadioGroupProps = {
   /** Radioknappene sendes inn som children */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en radioknapp klikkes på  */
-  onChange: (e: React.ChangeEvent) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
 };
 

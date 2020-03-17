@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.1...@entur/form@2.4.2) (2020-03-17)
+
+### Bug Fixes
+
+- **RadioGroup**: Specified onChange to be of type `React.ChangeEvent<HTMLInputElement>`
+- **Checkbox**: Specified onChange to be of type `React.ChangeEvent<HTMLInputElement>`
+
 ## [2.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.0...@entur/form@2.4.1) (2020-03-05)
 
 **Note:** Version bump only for package @entur/form
