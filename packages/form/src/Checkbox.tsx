@@ -9,6 +9,7 @@ export type CheckboxProps = {
   /** Label for checkboxen, som vises ved høyre side. */
   children?: React.ReactNode;
   checked?: boolean | 'indeterminate';
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
 };
 

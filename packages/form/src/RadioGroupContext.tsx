@@ -2,7 +2,7 @@ import React from 'react';
 
 type RadioGroupContextProps = {
   name: string;
-  onChange: (e: React.ChangeEvent) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
 };
 
