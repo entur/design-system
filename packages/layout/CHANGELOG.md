@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.3.0...@entur/layout@1.3.1) (2020-03-18)
+
+### Bug Fixes
+
+- update styling for card components ([5505e22](https://bitbucket.org/enturas/design-system/commits/5505e224b778d1793a8ec3a56f06eb6aec1b17bc))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.2.4...@entur/layout@1.3.0) (2020-02-26)
 
 ### Bug Fixes

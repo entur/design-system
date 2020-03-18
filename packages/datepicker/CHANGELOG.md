@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.11](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.10...@entur/datepicker@0.3.11) (2020-03-18)
+
+### Bug Fixes
+
+- update to use new shadow tokens ([37dfe1c](https://bitbucket.org/enturas/design-system/commits/37dfe1c887cbb0357609bbc482ee8a306ba91d20))
+
 ## [0.3.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.9...@entur/datepicker@0.3.10) (2020-03-05)
 
 **Note:** Version bump only for package @entur/datepicker

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.0.0...@entur/icons@1.1.0) (2020-03-18)
+
+### Bug Fixes
+
+- change the tram icon to have correct color according to tokens ([251dacc](https://bitbucket.org/enturas/design-system/commits/251daccb629a7e7a6a8cbd953e681e4bf9a3429a))
+- use currentColor for transport colors for native ([7358f14](https://bitbucket.org/enturas/design-system/commits/7358f148bda0ce8e7cba479cb650e5be39707f48))
+
+### Features
+
+- **channel icon:** and update settings and timeline icon ([dcb80b4](https://bitbucket.org/enturas/design-system/commits/dcb80b431a9738c315ddc0b705c7b3fd8328fd17))
+- changed import module for native config ([d9c3c5f](https://bitbucket.org/enturas/design-system/commits/d9c3c5f99b0e2e76fccea3847958660f12c3bd42))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@0.11.0...@entur/icons@1.0.0) (2020-03-05)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.1...@entur/form@2.4.3) (2020-03-18)
+
+### Bug Fixes
+
+- add type to onChange for radiogroup and checkbox ([c46e5dd](https://bitbucket.org/enturas/design-system/commits/c46e5dd45edf580d7f620fd573467029651f88e1))
+
 ## [2.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.1...@entur/form@2.4.2) (2020-03-17)
 
 ### Bug Fixes

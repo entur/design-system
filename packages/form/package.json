@@ -1,6 +1,6 @@
 {
   "name": "@entur/form",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/form.esm.js",
@@ -27,9 +27,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "^1.0.0",
-    "@entur/tokens": "^1.2.1",
-    "@entur/typography": "^1.1.1",
+    "@entur/icons": "^1.1.0",
+    "@entur/tokens": "^1.2.2",
+    "@entur/typography": "^1.1.2",
     "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"
   }
