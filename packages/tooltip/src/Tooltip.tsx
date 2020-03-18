@@ -21,7 +21,7 @@ export type TooltipProps = {
   children: React.ReactElement;
   /** Om tooltipen skal vises */
   isOpen?: boolean;
-  /** Ekstra klassenavn */
+  /** Ekstra klassenavn for tooltip */
   className?: string;
   [key: string]: any;
 };
