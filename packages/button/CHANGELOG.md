@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.0...@entur/button@2.2.1) (2020-03-18)
+
+### Bug Fixes
+
+- add support for loading and disabled to square buttons ([b25ffa0](https://bitbucket.org/enturas/design-system/commits/b25ffa0d9e692e8c7e0d3ba961fa67a0a840835a))
+- update to use new shadow tokens ([37dfe1c](https://bitbucket.org/enturas/design-system/commits/37dfe1c887cbb0357609bbc482ee8a306ba91d20))
+
 # [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.1.4...@entur/button@2.2.0) (2020-03-05)
 
 ### Bug Fixes

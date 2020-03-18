@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.3.1...@entur/menu@1.3.2) (2020-03-18)
+
+### Bug Fixes
+
+- react elementtype on breadcrumb item "as" prop ([fbb869c](https://bitbucket.org/enturas/design-system/commits/fbb869c4ffb9a53e246dc4c18270deb11a4d4999))
+
 ## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.3.0...@entur/menu@1.3.1) (2020-03-05)
 
 ### Bug Fixes

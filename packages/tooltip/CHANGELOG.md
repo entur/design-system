@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.10...@entur/tooltip@2.0.0) (2020-03-18)
+
+### Bug Fixes
+
+- improve api and functionality of tooltip ([4923622](https://bitbucket.org/enturas/design-system/commits/4923622747e59215faa67113a35e5da92a74c771))
+- rework tooltip component to increase usability ([6b27444](https://bitbucket.org/enturas/design-system/commits/6b27444fbc18b975b721ee8a17936aa846b61baf))
+- update styling of tooltips ([66f4863](https://bitbucket.org/enturas/design-system/commits/66f48632340c31a20cbd82f46180b3e62183d722))
+
+### Features
+
+- improve tooltip ([879f0ce](https://bitbucket.org/enturas/design-system/commits/879f0ce3d80facd3ace5e05fb5c06b26db987d3b))
+
+### BREAKING CHANGES
+
+- children must now be wrapped in an element to ensure accesibility
+
 ## [1.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@1.1.9...@entur/tooltip@1.1.10) (2020-02-20)
 
 **Note:** Version bump only for package @entur/tooltip
