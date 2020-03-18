@@ -18,7 +18,10 @@
   color: $colors-brand-white;
   background: $colors-brand-blue;
   border-radius: $border-radiuses-medium;
-  box-shadow: 0 0.125rem 0.3125rem 0 var(--primary-border-color);
+  box-shadow: $shadows-card-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: 1rem;
   min-width: 11.125rem;
   padding: 0.3125rem 0.625rem;
@@ -28,6 +31,19 @@
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
+    box-shadow: 0px 1px 3px 0px rgba(209, 211, 211, 0.7);
+  }
+
+  &__close-button {
+    float: right;
+    &:hover {
+      background: $colors-blues-blue30;
+    }
+    .eds-contrast & {
+      &:hover {
+        background-color: $colors-greys-grey20;
+      }
+    }
   }
 
   &::after {
@@ -44,41 +60,13 @@
   }
 
   &--top {
-    // bottom: calc(100% + 0.625rem);
-    // left: 50%;
-    // transform: translateX(-50%);
-
     &::after {
       bottom: -0.2rem;
       left: calc(50% - 0.3125rem);
     }
   }
 
-  &--top-left {
-    // bottom: calc(100% + 0.625rem);
-    // right: calc(100% - 1.25rem);
-
-    &::after {
-      bottom: -0.2rem;
-      right: 0.25rem;
-    }
-  }
-
-  &--top-right {
-    // bottom: calc(100% + 0.625rem);
-    // left: calc(100% - 1.25rem);
-
-    &::after {
-      bottom: -0.375rem;
-      left: 0.25rem;
-    }
-  }
-
   &--left {
-    right: calc(100% + 0.625rem);
-    top: 50%;
-    transform: translateY(-50%);
-
     &::after {
       bottom: calc(50% - 0.3125rem);
       left: calc(100% - 0.25rem);
@@ -86,44 +74,29 @@
   }
 
   &--right {
-    left: calc(100% + 0.625rem);
-    top: 50%;
-    transform: translateY(-50%);
-
     &::after {
       bottom: calc(50% - 0.3125rem);
-      right: calc(100% - 0.3125rem);
+      right: calc(100% - 0.45rem);
     }
   }
 
   &--bottom {
-    // left: 50%;
-    // top: calc(100% + 0.625rem);
-    // transform: translateX(-50%);
-
     &::after {
       left: calc(50% - 0.3125rem);
       top: -0.4rem;
     }
   }
 
-  &--bottom-left {
-    right: calc(100% - 1.25rem);
-    top: calc(100% + 0.625rem);
-
+  &--bottom-start {
     &::after {
       bottom: calc(100% - 0.25rem);
-      left: calc(100% - 1rem);
     }
   }
 
-  &--bottom-right {
-    left: calc(100% + -1.25rem);
-    top: calc(100% + 0.625rem);
-
+  &--bottom-end {
     &::after {
       bottom: calc(100% - 0.25rem);
-      right: calc(100% - 1rem);
+      left: calc(100% - 1rem);
     }
   }
 }

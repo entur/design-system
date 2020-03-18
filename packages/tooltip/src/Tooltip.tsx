@@ -2,14 +2,14 @@ import React, { cloneElement, useState } from 'react';
 import { Manager, Reference, Popper } from 'react-popper';
 import classNames from 'classnames';
 import { useRandomId } from '@entur/utils';
-import { Placement } from 'popper.js';
+import { Placement as PopperPlacementProps } from 'popper.js';
+import { CloseIcon } from '@entur/icons';
+import { IconButton } from '@entur/button';
 
 export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement:
-    | 'top-left' // top-start
     | 'top'
-    | 'top-right' // top-end
     | 'left'
     | 'right'
     | 'bottom-left' // bottom-start
@@ -19,6 +19,8 @@ export type TooltipProps = {
   content: React.ReactNode;
   /** Elementet som skal ha tooltip-funksjonalitet */
   children: React.ReactElement;
+  /** Om tooltipen skal vises */
+  isOpen?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
@@ -29,41 +31,62 @@ export const Tooltip: React.FC<TooltipProps> = ({
   content,
   children,
   className,
+  isOpen = false,
   ...rest
 }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(isOpen || false);
   const tooltipId = useRandomId('eds-tooltip');
-  console.log(showTooltip);
+  React.useEffect(() => {
+    setShowTooltip(isOpen);
+  }, [isOpen]);
+
+  let popperPlacement = placement as PopperPlacementProps;
   if (placement.includes('-')) {
     if (placement.includes('right')) {
-      placement.replace('right', 'end');
+      popperPlacement = placement.replace(
+        'right',
+        'end',
+      ) as PopperPlacementProps;
     }
     if (placement.includes('left')) {
-      placement.replace('left', 'start');
+      popperPlacement = placement.replace(
+        'left',
+        'start',
+      ) as PopperPlacementProps;
     }
   }
-  const popperPlacement = placement as Placement;
+
+  const childProps: {
+    'aria-describedby': string;
+    onMouseLeave?: () => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
+    onMouseEnter?: () => void;
+  } = {
+    'aria-describedby': tooltipId,
+  };
+  if (!isOpen) {
+    childProps.onMouseLeave = () => setShowTooltip(false);
+    childProps.onMouseEnter = () => setShowTooltip(true);
+    childProps.onFocus = () => setShowTooltip(true);
+    childProps.onBlur = () => setShowTooltip(false);
+  }
+
   return (
     <Manager>
       <Reference>
         {({ ref }) =>
           cloneElement(children, {
             ref: ref,
-            onMouseLeave: () => setShowTooltip(false),
-            onMouseEnter: () => setShowTooltip(true),
-            'aria-describedby': tooltipId,
-            onFocus: setShowTooltip(true),
-            onBlur: setShowTooltip(false),
+            ...childProps,
           })
         }
       </Reference>
-      {true && (
+      {showTooltip && (
         <Popper
           modifiers={{
             arrow: { enabled: false },
-            offset: { offset: '0, 8' },
-            // computeStyle: { enabled: false },
-            // applyStyle: { enabled: false },
+            offset: { offset: '0, 10' },
           }}
           placement={popperPlacement}
         >
@@ -82,6 +105,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
               {...rest}
             >
               {content}
+              {isOpen && (
+                <IconButton
+                  className="eds-tooltip__close-button"
+                  onClick={() => setShowTooltip(false)}
+                >
+                  <CloseIcon />
+                </IconButton>
+              )}
             </div>
           )}
         </Popper>
