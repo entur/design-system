@@ -34,15 +34,10 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
   className,
   ...rest
 }) => {
-  const classList = classNames(
-    'eds-base-card',
-    'eds-navigation-card',
-    className,
-    {
-      'eds-base-card--red-line': compact,
-      'eds-navigation-card--compact': compact,
-    },
-  );
+  const classList = classNames('eds-navigation-card', className, {
+    'eds-base-card--red-line': compact,
+    'eds-navigation-card--compact': compact,
+  });
   return (
     <BaseCard as={as} className={classList} {...rest}>
       {!compact && titleIcon && (
