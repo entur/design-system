@@ -7,21 +7,19 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   const content = 'tooltipcontent';
   const children = 'Tooltip children';
 
-  const { getByText } = render(
-    <Tooltip content={content} placement="top" className="testerclass">
-      {children}
+  const { getByText, queryByText } = render(
+    <Tooltip content={content} className="tester" placement="bottom">
+      <span>{children}</span>
     </Tooltip>,
   );
 
-  const tooltipdiv = getByText(content);
-  expect(tooltipdiv).toHaveAttribute('aria-hidden', 'true');
+  const tooltipdiv = getByText(children);
 
-  fireEvent.mouseOver(getByText(children));
-  expect(tooltipdiv).toHaveAttribute('aria-hidden', 'false');
-  expect(tooltipdiv).toHaveClass('testerclass');
+  expect(queryByText(content)).not.toBeInTheDocument();
+  fireEvent.mouseOver(tooltipdiv);
 
-  expect(tooltipdiv).toHaveClass('eds-tooltip--top');
+  expect(queryByText(content)).toBeInTheDocument();
+
+  expect(getByText(content)).toHaveClass('tester');
   fireEvent.mouseLeave(getByText(children));
-
-  expect(tooltipdiv).toHaveAttribute('aria-hidden', 'true');
 });

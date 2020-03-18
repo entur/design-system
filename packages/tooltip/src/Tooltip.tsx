@@ -1,59 +1,122 @@
-import React, { useState } from 'react';
+import React, { cloneElement, useState } from 'react';
+import { Manager, Reference, Popper } from 'react-popper';
 import classNames from 'classnames';
+import { useRandomId } from '@entur/utils';
+import { Placement as PopperPlacementProps } from 'popper.js';
+import { CloseIcon } from '@entur/icons';
+import { IconButton } from '@entur/button';
 
 export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement:
-    | 'top-left'
     | 'top'
-    | 'top-right'
     | 'left'
     | 'right'
-    | 'bottom-left'
+    | 'bottom-left' // bottom-start
     | 'bottom'
-    | 'bottom-right';
+    | 'bottom-right'; // bottom-end
   /** Innholdet i tooltip-boksen */
-  content: string;
+  content: React.ReactNode;
   /** Elementet som skal ha tooltip-funksjonalitet */
-  children: React.ReactNode;
+  children: React.ReactElement;
+  /** Om tooltipen skal vises */
+  isOpen?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
 };
+
 export const Tooltip: React.FC<TooltipProps> = ({
   placement,
   content,
   children,
   className,
+  isOpen = false,
   ...rest
 }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(isOpen || false);
+  const tooltipId = useRandomId('eds-tooltip');
+  React.useEffect(() => {
+    setShowTooltip(isOpen);
+  }, [isOpen]);
+
+  let popperPlacement = placement as PopperPlacementProps;
+  if (placement.includes('-')) {
+    if (placement.includes('right')) {
+      popperPlacement = placement.replace(
+        'right',
+        'end',
+      ) as PopperPlacementProps;
+    }
+    if (placement.includes('left')) {
+      popperPlacement = placement.replace(
+        'left',
+        'start',
+      ) as PopperPlacementProps;
+    }
+  }
+
+  const childProps: {
+    'aria-describedby': string;
+    onMouseLeave?: () => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
+    onMouseEnter?: () => void;
+  } = {
+    'aria-describedby': tooltipId,
+  };
+  if (!isOpen) {
+    childProps.onMouseLeave = () => setShowTooltip(false);
+    childProps.onMouseEnter = () => setShowTooltip(true);
+    childProps.onFocus = () => setShowTooltip(true);
+    childProps.onBlur = () => setShowTooltip(false);
+  }
+
   return (
-    <div
-      className="eds-tooltip-wrapper"
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      <div
-        className={classNames(
-          'eds-tooltip',
-          className,
-          `eds-tooltip--${placement}`,
-        )}
-        role="tooltip"
-        aria-hidden={!showTooltip}
-        {...rest}
-      >
-        {content}
-      </div>
-      <span
-        className="eds-tooltip--trigger"
-        onMouseOver={() => setShowTooltip(true)}
-        onFocus={() => setShowTooltip(true)}
-        onBlur={() => setShowTooltip(false)}
-        aria-describedby={content}
-      >
-        {children}
-      </span>
-    </div>
+    <Manager>
+      <Reference>
+        {({ ref }) =>
+          cloneElement(children, {
+            ref: ref,
+            ...childProps,
+          })
+        }
+      </Reference>
+      {showTooltip && (
+        <Popper
+          modifiers={{
+            arrow: { enabled: false },
+            offset: { offset: '0, 10' },
+          }}
+          placement={popperPlacement}
+        >
+          {({ ref, style, placement: popperPlacement }) => (
+            <div
+              className={classNames(
+                'eds-tooltip',
+                className,
+                `eds-tooltip--${popperPlacement}`,
+              )}
+              ref={ref}
+              style={style}
+              role="tooltip"
+              id={tooltipId}
+              data-placement={popperPlacement}
+              {...rest}
+            >
+              {content}
+              {isOpen && (
+                <IconButton
+                  className="eds-tooltip__close-button"
+                  onClick={() => setShowTooltip(false)}
+                >
+                  <CloseIcon />
+                </IconButton>
+              )}
+            </div>
+          )}
+        </Popper>
+      )}
+    </Manager>
   );
 };

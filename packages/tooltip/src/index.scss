@@ -5,7 +5,6 @@
 }
 
 .eds-tooltip-wrapper {
-  --primary-border-color: #{$colors-greys-grey20};
   display: inline-block;
   position: relative;
   .eds-contrast & {
@@ -16,128 +15,88 @@
 }
 
 .eds-tooltip {
-  color: $colors-brand-white; // IE
-  color: var(--primary-text-color);
-  background-color: var(--primary-background-color);
-  border: $border-widths-default solid var(--primary-border-color);
-  border-radius: $border-radiuses-default;
-  box-shadow: 0 0.125rem 0.3125rem 0 var(--primary-border-color);
+  color: $colors-brand-white;
+  background: $colors-brand-blue;
+  border-radius: $border-radiuses-medium;
+  box-shadow: $shadows-card-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: 1rem;
   min-width: 11.125rem;
   padding: 0.3125rem 0.625rem;
   position: absolute;
   z-index: $z-indexes-popover;
 
-  &[aria-hidden='true'] {
-    display: none;
+  .eds-contrast & {
+    background: $colors-brand-white;
+    color: $colors-brand-blue;
+    box-shadow: 0px 1px 3px 0px rgba(209, 211, 211, 0.7);
   }
-  &[aria-hidden='false'] {
-    display: inline-block;
+
+  &__close-button {
+    float: right;
+    &:hover {
+      background: $colors-blues-blue30;
+    }
+    .eds-contrast & {
+      &:hover {
+        background-color: $colors-greys-grey20;
+      }
+    }
   }
 
   &::after {
-    background: var(--primary-background-color);
-    border-color: var(--primary-border-color);
-    border-style: solid;
-    border-width: 0 $border-widths-default $border-widths-default 0;
+    background: $colors-brand-blue;
     content: '';
     height: 0.625rem;
     position: absolute;
     transform: rotate(45deg) translateY(0.125rem);
     width: 0.625rem;
     z-index: $z-indexes-behind;
+    .eds-contrast & {
+      background: $colors-brand-white;
+    }
   }
 
   &--top {
-    bottom: calc(100% + 0.625rem);
-    left: 50%;
-    transform: translateX(-50%);
-
     &::after {
-      bottom: -0.375rem;
+      bottom: -0.2rem;
       left: calc(50% - 0.3125rem);
     }
   }
 
-  &--top-left {
-    bottom: calc(100% + 0.625rem);
-    right: calc(100% - 1.25rem);
-
-    &::after {
-      bottom: -0.375rem;
-      right: 0.375rem;
-    }
-  }
-
-  &--top-right {
-    bottom: calc(100% + 0.625rem);
-    left: calc(100% - 1.25rem);
-
-    &::after {
-      bottom: -0.375rem;
-      left: 0.375rem;
-    }
-  }
-
   &--left {
-    right: calc(100% + 0.625rem);
-    top: 50%;
-    transform: translateY(-50%);
-
     &::after {
-      border-width: $border-widths-default $border-widths-default 0 0;
       bottom: calc(50% - 0.3125rem);
       left: calc(100% - 0.25rem);
     }
   }
 
   &--right {
-    left: calc(100% + 0.625rem);
-    top: 50%;
-    transform: translateY(-50%);
-
     &::after {
-      border-width: 0 0 $border-widths-default $border-widths-default;
       bottom: calc(50% - 0.3125rem);
-      right: calc(100% - 0.3125rem);
+      right: calc(100% - 0.45rem);
     }
   }
 
   &--bottom {
-    left: 50%;
-    top: calc(100% + 0.625rem);
-    transform: translateX(-50%);
-
     &::after {
-      border-width: $border-widths-default 0 0 $border-widths-default;
       left: calc(50% - 0.3125rem);
-      top: -0.625rem;
+      top: -0.4rem;
     }
   }
 
-  &--bottom-left {
-    right: calc(100% - 1.25rem);
-    top: calc(100% + 0.625rem);
-
+  &--bottom-start {
     &::after {
-      border-width: $border-widths-default 0 0 $border-widths-default;
+      bottom: calc(100% - 0.25rem);
+    }
+  }
+
+  &--bottom-end {
+    &::after {
       bottom: calc(100% - 0.25rem);
       left: calc(100% - 1rem);
     }
   }
-
-  &--bottom-right {
-    left: calc(100% + -1.25rem);
-    top: calc(100% + 0.625rem);
-
-    &::after {
-      border-width: $border-widths-default 0 0 $border-widths-default;
-      bottom: calc(100% - 0.25rem);
-      right: calc(100% - 1rem);
-    }
-  }
-}
-
-.eds-tooltip--trigger {
-  display: inline-block;
 }
