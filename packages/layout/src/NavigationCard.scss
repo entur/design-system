@@ -7,13 +7,13 @@
   text-align: center;
   padding: $space-large;
   position: relative;
-  // overflow: hidden;
+  overflow: hidden;
   transition: transform $timings-medium ease-in-out;
   &__title {
     font-size: $font-sizes-extra-large;
     line-height: $line-heights-extra-large3;
     font-weight: $font-weights-heading;
-    margin: 0.5rem 0 1rem;
+    margin: $space-extra-small 0 $space-medium;
     &:after {
       content: '';
       display: block;
@@ -60,7 +60,7 @@
     padding: $space-small;
   }
   &__arrow-icon {
-    margin-top: 0.5rem;
+    margin-top: $space-extra-small;
   }
   &--compact {
     flex-direction: row;
@@ -68,7 +68,7 @@
     padding: $space-default $space-extra-large2;
     .eds-navigation-card__title {
       margin: 0;
-      padding: 1rem 0;
+      padding: $space-medium 0;
       &:after {
         display: none;
       }
