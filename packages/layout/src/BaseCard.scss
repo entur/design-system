@@ -10,26 +10,6 @@
   color: inherit;
   .eds-contrast & {
     background-color: $colors-blues-blue10;
-  }
-  &--red-line {
-    &:after {
-      background-color: $colors-brand-coral;
-      border-bottom-left-radius: $border-radiuses-medium;
-      border-bottom-right-radius: $border-radiuses-medium;
-      bottom: -$space-small;
-      content: '';
-      display: block;
-      height: $border-widths-large;
-      opacity: 0;
-      position: absolute;
-      right: 0;
-      transition: bottom $timings-medium ease-in-out,
-        opacity $timings-medium ease-in-out;
-      width: 100%;
-    }
-    &:hover:after {
-      bottom: 0;
-      opacity: 1;
-    }
+    box-shadow: $shadows-card-shadow-contrast;
   }
 }

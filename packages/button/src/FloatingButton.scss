@@ -39,7 +39,7 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
-
+    box-shadow: $shadows-card-shadow-contrast;
     &:hover {
       background-color: tint($colors-brand-lavender, 10%);
     }

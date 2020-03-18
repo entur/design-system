@@ -91,7 +91,10 @@ export const colors = {
 
 export const shadows = {
   focus: `0 0 0.125rem 0.125rem ${colors.misc.focus}`,
-  cardShadow: '0 0.125rem 0.25rem 0.125rem rgba(0, 0, 0, 0.2)',
+  cardShadow: `0 0.125rem 0.1875 0 ${colors.greys.grey10}`,
+  cardShadowHover: `0 0.125rem 1rem 0 ${colors.greys.grey10}`,
+  cardShadowContrast: `0 0.125rem 0.1875 0 ${colors.blues.blue20}`,
+  cardShadowHoverContrast: `0 0.125rem 1rem 0 ${colors.blues.blue20}`,
 };
 
 // Dimensions
