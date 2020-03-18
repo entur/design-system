@@ -19,7 +19,13 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <Playground>
   <Tooltip content="Her er tooltipen" placement="top">
-    Denne teksten har en tooltip
+    <span>Denne teksten har en tooltip</span>
+  </Tooltip>
+  <br />
+  <br />
+  <br />
+  <Tooltip content="Her er tooltipen" placement="bottom-right" isOpen>
+    <span>Denne teksten har en tooltip</span>
   </Tooltip>
 </Playground>
 
@@ -32,16 +38,16 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 Du wrapper `<Tooltip />` rundt elementet du ønsker at skal ha en tooltip.
 
+Om man sender med `isOpen` så får Tooltip en lukkeknapp for å håndtere situasjoner hvor man ønsker kontrollere visningen av Tooltip.
+
 ## Retningslinjer
 
-Man må _unngå_ å legge nødvendig og kritisk informasjon i tooltip'en.
+_Unngå_ å legge nødvendig og kritisk informasjon i tooltip'en.
 
-Ettersom tooltip _skal_ brukes på fokuserbare elementer, så vises også tooltip om knappen/linken etc er fokusert
+Ettersom tooltip _helst skal_ brukes på fokuserbare elementer, så vises også tooltip om knappen/linken etc er fokusert
 
 <Playground>
   <Tooltip content="Tooltip til knappen" placement="top">
     <PrimaryButton>Knapp med tooltip</PrimaryButton>
   </Tooltip>
 </Playground>
-
-Tooltip-teksten vil også bli lagt til i trigger-elementet som en aria-label.
