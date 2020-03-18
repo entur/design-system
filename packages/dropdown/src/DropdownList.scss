@@ -12,6 +12,9 @@
   overflow-y: auto;
   width: 100%;
   z-index: $z-indexes-popover;
+  .eds-contrast & {
+    box-shadow: $shadows-card-shadow-contrast;
+  }
 
   &--open {
     // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!

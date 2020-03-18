@@ -26,6 +26,9 @@
 .react-datepicker {
   border: $border-widths-default solid $colors-greys-grey20;
   box-shadow: $shadows-card-shadow;
+  .eds-contrast & {
+    box-shadow: $shadows-card-shadow-contrast;
+  }
 
   &-wrapper {
     width: 100%;
