@@ -14,7 +14,6 @@
 
   &__data-cell,
   &__header-cell {
-    border-bottom: $border-widths-default solid $colors-greys-grey20;
     padding: $space-default ($space-default + $space-extra-small2);
 
     .eds-contrast & {
@@ -23,6 +22,36 @@
 
     .eds-table--compact & {
       padding: $space-extra-small ($space-default + $space-extra-small2);
+    }
+  }
+  &__head {
+    border-bottom: $border-widths-default solid $colors-greys-grey20;
+    .eds-contrast &  {
+      border-color: $colors-blues-blue20;
+    }
+  }
+  &__body {
+    .eds-table__row {
+      border-bottom: $border-widths-default solid $colors-greys-grey20;
+      .eds-contrast &  {
+        border-color: $colors-blues-blue20;
+      }
+      &--hover {
+        &:hover {
+          background: $colors-greys-grey30;
+          .eds-contrast &  {
+            background: $colors-blues-blue10;
+          }
+        }
+      }
+      &--active {
+        background: $colors-blues-blue80;
+        border: $border-widths-medium solid $colors-blues-blue70;
+        .eds-contrast &  {
+          border-color: $colors-blues-blue20;
+          background: $colors-blues-blue20;
+        }
+      }
     }
   }
 }

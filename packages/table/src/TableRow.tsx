@@ -6,9 +6,24 @@ type TableRowProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /**Hvis satt, så vil tabellraden endre fargen ved hover */
+  hover?: boolean;
+  /** Om raden er klikkbar, så vil raden endre farge, og musepekeren vil symbolisere interaktivitet */
+  active?: boolean;
   [key: string]: any;
 };
 
-export const TableRow: React.FC<TableRowProps> = ({ className, ...rest }) => (
-  <tr className={classNames('eds-table__row', className)} {...rest} />
+export const TableRow: React.FC<TableRowProps> = ({
+  className,
+  hover = false,
+  active = false,
+  ...rest
+}) => (
+  <tr
+    className={classNames('eds-table__row', className, {
+      'eds-table__row--hover': hover,
+      'eds-table__row--active': active,
+    })}
+    {...rest}
+  />
 );

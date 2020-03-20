@@ -22,4 +22,8 @@
     outline: none;
     box-shadow: $shadows-focus;
   }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
