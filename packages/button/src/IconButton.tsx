@@ -29,7 +29,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
   const Element = disabled ? 'button' : as;
 
   return (
-    <Element className={classNames('eds-icon-button', className)} {...rest}>
+    <Element
+      className={classNames('eds-icon-button', className, {
+        'eds-icon-button--disabled': disabled,
+      })}
+      {...rest}
+    >
       {children}
     </Element>
   );
