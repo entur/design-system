@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.4.1...@entur/table@0.5.0) (2020-03-20)
+
+### Features
+
+- add hover and active props for tablerow ([0e5e90a](https://bitbucket.org/enturas/design-system/commits/0e5e90aedff1e1fd2f927de51133356b41eae58c))
+
 ## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.4.0...@entur/table@0.4.1) (2020-03-18)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.2.2...@entur/tokens@1.2.3) (2020-03-20)
+
+### Bug Fixes
+
+- fix of broken shadow tokens ([690c172](https://bitbucket.org/enturas/design-system/commits/690c172c159d1d9e9da69adde7dea4d379a7558e))
+
 ## [1.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.2.1...@entur/tokens@1.2.2) (2020-03-18)
 
 ### Bug Fixes

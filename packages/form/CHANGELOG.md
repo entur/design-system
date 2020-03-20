@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.3...@entur/form@2.5.0) (2020-03-20)
+
+### Bug Fixes
+
+- **inputgroup:** add dependency to tooltip ([03fa516](https://bitbucket.org/enturas/design-system/commits/03fa5161afabcaecda8e277b5194d7a47dde8902))
+
+### Features
+
+- **inputgroup:** add a label tooltip ([ecf4523](https://bitbucket.org/enturas/design-system/commits/ecf4523e03b035b9e44581822a03012a54fd512d))
+
 ## [2.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.4.1...@entur/form@2.4.3) (2020-03-18)
 
 ### Bug Fixes
