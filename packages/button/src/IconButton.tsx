@@ -33,6 +33,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
       className={classNames('eds-icon-button', className, {
         'eds-icon-button--disabled': disabled,
       })}
+      disabled={disabled}
+      aria-disabled={disabled}
       {...rest}
     >
       {children}
