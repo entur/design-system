@@ -1,5 +1,7 @@
 import React from 'react';
 import { Label } from '@entur/typography';
+import { QuestionIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
 import classNames from 'classnames';
 import { FeedbackText } from './FeedbackText';
 import { VariantType, VariantProvider } from './VariantProvider';
@@ -10,6 +12,8 @@ export type InputGroupProps = {
   className?: string;
   /** Tekst/label over en form-komponent */
   label?: string;
+  /** Tooltip for labelen */
+  labelTooltip?: string;
   /** Varselmelding, som vil komme under form-komponenten */
   feedback?: string;
   /** Hvilken variant varselmeldingen skal ha */
@@ -22,6 +26,7 @@ export type InputGroupProps = {
 export const InputGroup: React.FC<InputGroupProps> = ({
   className,
   label,
+  labelTooltip,
   feedback,
   variant,
   children,
@@ -31,7 +36,16 @@ export const InputGroup: React.FC<InputGroupProps> = ({
     <VariantProvider variant={variant}>
       <div className={classNames('eds-input-group', className)} {...rest}>
         <Label style={{ display: 'block' }}>
-          <span className="eds-input-group__label">{label}</span>
+          <span className="eds-input-group__label">
+            {label}
+            {labelTooltip && (
+              <Tooltip content={labelTooltip} placement="right">
+                <span className="eds-input-group__label-tooltip-icon">
+                  <QuestionIcon />
+                </span>
+              </Tooltip>
+            )}
+          </span>
           {children}
         </Label>
         {feedback && variant && (

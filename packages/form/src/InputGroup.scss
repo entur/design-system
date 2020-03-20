@@ -5,9 +5,19 @@
   display: block;
 
   &__label {
-    display: block;
+    display: flex;
     .eds-contrast & {
       color: $colors-brand-lavender;
     }
+  }
+
+  &__label-tooltip-icon {
+    color: $colors-validation-sky;
+    padding-left: $space-extra-small2;
+    padding-right: $space-extra-small2;
+    display: flex;
+    align-items: center;
+    cursor: help;
+    font-size: 1rem;
   }
 }
