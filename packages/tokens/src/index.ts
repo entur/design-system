@@ -12,6 +12,7 @@
   It's the source of truth of our design system, and any change here should be 
   made in sync with our design team.
 */
+import hexRgb from 'hex-rgb';
 export const colors = {
   brand: {
     blue: '#181c56',
@@ -89,12 +90,18 @@ export const colors = {
   },
 };
 
+const grey10Rgb = hexRgb(colors.greys.grey10, { format: 'array' })
+  .toString()
+  .slice(0, -2);
+const blue20Rgb = hexRgb(colors.blues.blue20, { format: 'array' })
+  .toString()
+  .slice(0, -2);
 export const shadows = {
   focus: `0 0 0.125rem 0.125rem ${colors.misc.focus}`,
-  cardShadow: `0 0.125rem 0.1875 0 ${colors.greys.grey10}`,
-  cardShadowHover: `0 0.125rem 1rem 0 ${colors.greys.grey10}`,
-  cardShadowContrast: `0 0.125rem 0.1875 0 ${colors.blues.blue20}`,
-  cardShadowHoverContrast: `0 0.125rem 1rem 0 ${colors.blues.blue20}`,
+  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${grey10Rgb}, 0.7)`,
+  cardShadowHover: `0 0.125rem 1rem 0 rgba(${grey10Rgb}, 0.7)`,
+  cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,
+  cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 0.7)`,
 };
 
 // Dimensions

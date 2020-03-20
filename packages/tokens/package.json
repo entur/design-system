@@ -29,5 +29,8 @@
     "flat": "^5.0.0",
     "fs-extra": "^8.1.0",
     "ts-node": "^8.3.0"
+  },
+  "dependencies": {
+    "hex-rgb": "^4.1.0"
   }
 }
