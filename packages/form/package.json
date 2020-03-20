@@ -31,6 +31,7 @@
     "@entur/tokens": "^1.2.2",
     "@entur/typography": "^1.1.2",
     "@entur/utils": "^0.2.3",
+    "@entur/tooltip": "^2.0.0",
     "classnames": "^2.2.6"
   }
 }
