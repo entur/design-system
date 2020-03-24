@@ -30,6 +30,8 @@
     "@entur/a11y": "^0.2.17",
     "@entur/form": "^2.5.0",
     "@entur/tokens": "^1.2.3",
+    "@entur/tooltip": "^2.0.1",
+    "@entur/icons": "^1.1.0",
     "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6",
     "downshift": "^4.0.1"

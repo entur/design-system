@@ -19,6 +19,8 @@ type DropdownProps = {
   searchable?: boolean;
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
+  /** Tooltip for labelen */
+  labelTooltip?: string;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
@@ -61,6 +63,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   feedback,
   items,
   label,
+  labelTooltip,
   loadingText,
   onChange = () => {},
   placeholder,
@@ -98,6 +101,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <DropdownInputGroup
         className={className}
         label={label}
+        labelTooltip={labelTooltip}
         feedback={feedback}
         variant={variant}
         style={style}
