@@ -20,10 +20,25 @@
       border-bottom-color: $colors-blues-blue20;
     }
 
-    .eds-table--compact & {
-      padding: $space-extra-small ($space-default + $space-extra-small2);
+    .eds-table--middle & {
+      padding: $space-extra-small ($space-default);
+    }
+    .eds-table--small & {
+      padding: $space-extra-small2 0.75rem;
     }
   }
+
+  &__data-cell {
+    &--padding-checkbox {
+      width: 48px;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+    }
+    &--padding-radio {
+      width: 48px;
+      padding: 1rem 0 1rem 1.25rem;
+    }
+  }
+
   &__head {
     border-bottom: $border-widths-default solid $colors-greys-grey20;
     .eds-contrast &  {
