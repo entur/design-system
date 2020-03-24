@@ -15,7 +15,7 @@ type BaseExpandablePanelProps = {
   id: string;
   /** Prop for om innholdet er åpent */
   open: boolean;
-  /** Funksjonen som styrer åpningen av ExpandablePanel */
+  /** Funksjonen som styrer åpningen av BaseExpandablePanel */
   onToggle: () => void;
   [key: string]: any;
 };

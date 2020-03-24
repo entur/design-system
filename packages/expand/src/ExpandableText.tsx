@@ -26,13 +26,14 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
-  const [open, setOpen] = React.useState(defaultOpen);
+  const [isOpen, setOpen] = React.useState(defaultOpen);
 
   return (
     <>
       <ExpandableTextButton
         aria-controls={randomId}
-        onClick={() => setOpen(prev => !prev)}
+        open={isOpen}
+        onToggle={() => setOpen(prev => !prev)}
         {...rest}
       >
         {title}
@@ -40,7 +41,8 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
       <BaseExpand
         className="eds-expandable-text__content"
         id={randomId}
-        open={open}
+        open={isOpen}
+        {...rest}
       >
         {children}
       </BaseExpand>
