@@ -21,6 +21,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   value,
   children,
   onChange,
+  label,
   ...rest
 }) => {
   const contextValue = React.useMemo(() => ({ name, value, onChange }), [
@@ -30,7 +31,13 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   ]);
   return (
     <RadioGroupContextProvider value={contextValue}>
-      <Fieldset {...rest}>{children}</Fieldset>
+      {label ? (
+        <Fieldset label={label} {...rest}>
+          {children}
+        </Fieldset>
+      ) : (
+        children
+      )}
     </RadioGroupContextProvider>
   );
 };
