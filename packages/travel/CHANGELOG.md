@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@0.3.11...@entur/travel@2.0.0) (2020-03-25)
+
+### Bug Fixes
+
+- adjust spacing in traveltag ([d844ec1](https://bitbucket.org/enturas/design-system/commits/d844ec1eb3fc2c8f95a94382d998402bd43bb9e5))
+- improve contrast support for traveltag ([5178e0e](https://bitbucket.org/enturas/design-system/commits/5178e0e3735dcd879a4a9af0485e154e5287813b))
+
+### Features
+
+- add alert prop for traveltag ([6b8925c](https://bitbucket.org/enturas/design-system/commits/6b8925ce693a58db64b943099ffbd47e0b8a42ad))
+
+### BREAKING CHANGES
+
+- traveltags no longer need the inline prop on icons
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@0.3.11...@entur/travel@1.0.0) (2020-03-25)
 
 ### Bug Fixes

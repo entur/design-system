@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.0...@entur/form@2.5.2) (2020-03-25)
+
+### Bug Fixes
+
+- adjust segmentedChoice size=medium and fontsize increase ([e72684e](https://bitbucket.org/enturas/design-system/commits/e72684e658a4bee8915dee2f7f0f87d3d70612b5))
+- remove fieldset for radiogroup if no label is given ([a1abcfc](https://bitbucket.org/enturas/design-system/commits/a1abcfcbce2b2009483cd42c1b0145749999ea33))
+- update design for radio buttons ([1b49dcf](https://bitbucket.org/enturas/design-system/commits/1b49dcf3eaaf235e39bf67888a68a2a0e0020809))
+
 ## [2.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.0...@entur/form@2.5.1) (2020-03-25)
 
 ### Bug Fixes

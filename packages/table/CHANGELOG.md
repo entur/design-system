@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.5.0...@entur/table@2.0.0) (2020-03-25)
+
+### Features
+
+- add middle and small table density ([18e71a6](https://bitbucket.org/enturas/design-system/commits/18e71a683c5dd67bf6e744742ace106da25ca321))
+- add padding capabilities needed for checkbox and radio tables ([79a729c](https://bitbucket.org/enturas/design-system/commits/79a729c58052e901bd4d6f8d9ee51120db3a0c31))
+
+### BREAKING CHANGES
+
+- the compact prop is now deprecated, use density="middle" instead
+
+ISSUES CLOSED: DS-295 DS-296 DS-298
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@0.5.0...@entur/table@1.0.0) (2020-03-25)
 
 ### Features

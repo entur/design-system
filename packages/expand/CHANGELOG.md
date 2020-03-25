@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.15...@entur/expand@3.0.0) (2020-03-25)
+
+### Features
+
+- fix onToggle for ExpandableText ([ff15631](https://bitbucket.org/enturas/design-system/commits/ff15631e89e38519aebf0292c9479a57eda88b80))
+
+### BREAKING CHANGES
+
+- ExpandableTextButton now takes in onToggle instead of using onClick directly
+
+ISSUES CLOSED: ETU-1853
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.15...@entur/expand@2.0.0) (2020-03-25)
 
 ### Features
