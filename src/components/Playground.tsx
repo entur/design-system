@@ -84,7 +84,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
           </SubLabel> */}
           <ExpandableTextButton
             open={isShowingEditor}
-            onClick={() => setShowingEditor(prev => !prev)}
+            onToggle={() => setShowingEditor(prev => !prev)}
           >
             Kode
           </ExpandableTextButton>
