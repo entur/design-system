@@ -1,6 +1,6 @@
 {
   "name": "@entur/alert",
-  "version": "0.5.16",
+  "version": "0.5.17",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/alert.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "^1.1.0",
+    "@entur/icons": "^1.2.0",
     "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"
   },

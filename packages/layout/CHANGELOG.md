@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.3.2...@entur/layout@1.3.3) (2020-03-25)
+
+### Bug Fixes
+
+- add thin border to navigationcards ([b4be3e7](https://bitbucket.org/enturas/design-system/commits/b4be3e71f5146f55f5ab383b9e344b15a2e8f0ab))
+
 ## [1.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.3.1...@entur/layout@1.3.2) (2020-03-20)
 
 ### Bug Fixes
