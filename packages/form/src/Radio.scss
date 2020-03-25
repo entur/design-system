@@ -11,11 +11,18 @@
     width: fit-content;
     user-select: none;
     :hover ~ .eds-form-component--radio__radio {
-      background-color: $colors-blues-blue30;
+      border-color: $colors-blues-blue30;
+      .eds-form-component--radio__circle {
+        background-color: $colors-blues-blue30;
+      }
       .eds-contrast & {
-        background-color: $colors-blues-blue50;
+        border-color: $colors-blues-blue50;
+        .eds-form-component--radio__circle {
+          background-color: $colors-blues-blue50;
+        }
       }
     }
+
     input {
       position: absolute;
       opacity: 0;
@@ -25,11 +32,8 @@
       &:checked
         ~ .eds-form-component--radio__radio
         .eds-form-component--radio__circle {
-        transform: scale((8/16));
-        .eds-contrast & {
-          background-color: white;
-          transition: background-color $timings-fast ease-out;
-        }
+        height: 0.625rem;
+        width: 0.625rem;
       }
       &:focus ~ .eds-form-component--radio__radio {
         box-shadow: $shadows-focus;
@@ -37,26 +41,29 @@
     }
     .eds-form-component--radio__radio {
       position: relative;
-      height: 1.25rem;
-      width: 1.25rem;
+      height: ($space-medium + $space-extra-small2);
+      width: ($space-medium + $space-extra-small2);
       margin-right: $space-default;
-      background-color: $colors-brand-blue;
+      background-color: $colors-brand-white;
+      border: $border-widths-medium solid $colors-brand-blue;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       .eds-contrast & {
-        background-color: $colors-blues-blue30;
+        background-color: $colors-brand-blue;
+        border-color: $colors-brand-lavender;
       }
       .eds-form-component--radio__circle {
         display: block;
-        width: $space-default;
-        height: $space-default;
+        width: 0;
+        height: 0;
         border-radius: 50%;
-        background-color: $colors-brand-white;
-        transition: transform $timings-fast ease-out;
+        background-color: $colors-brand-blue;
+        transition: width $timings-fast ease-in-out,
+          height $timings-fast ease-in-out;
         .eds-contrast & {
-          background-color: $colors-brand-blue;
+          background-color: $colors-brand-lavender;
         }
       }
     }
