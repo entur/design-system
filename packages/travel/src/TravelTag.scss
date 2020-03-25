@@ -2,16 +2,26 @@
 
 .eds-travel-tag {
   background-color: $colors-greys-grey20;
+  border-radius: $border-widths-small;
   color: inherit;
-  display: inline-block;
+  display: inline-flex;
   font-size: $font-sizes-medium;
+  line-height: $space-large;
+  height: $space-extra-large;
   min-width: $space-extra-large;
   padding: $space-extra-small2 $space-extra-small;
+  position: relative;
+  &--alert {
+    padding-right: $space-small;
+  }
+  &--icon-and-text > .eds-icon {
+    margin-right: $space-extra-small;
+  }
   .eds-contrast & {
     background-color: $colors-blues-blue20;
   }
-  .eds-icon {
-    font-size: $font-sizes-large;
+  > .eds-icon {
+    font-size: $font-sizes-extra-large;
   }
   &__close-button {
     appearance: none;
@@ -32,6 +42,41 @@
     :focus-within {
       outline: none;
       box-shadow: $shadows-focus;
+    }
+  }
+  &__alert {
+    background: $colors-brand-white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: $font-sizes-large;
+    height: ($space-default + $border-widths-medium);
+    width: ($space-default + $border-widths-medium);
+    position: absolute;
+    top: ($space-extra-large - ($space-default + $border-widths-medium))/2;
+    right: -($space-default + $border-widths-medium)/2;
+    .eds-contrast & {
+      background: $colors-brand-blue;
+    }
+    &-exclamation-icon {
+      color: $colors-validation-sky;
+      .eds-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
+    }
+    &-error-icon {
+      color: $colors-validation-lava;
+      .eds-contrast & {
+        color: $colors-validation-lava-contrast;
+      }
+    }
+    &-info-icon {
+      color: $colors-validation-sky;
+      .eds-contrast & {
+        color: $colors-validation-sky-contrast;
+      }
     }
   }
 }

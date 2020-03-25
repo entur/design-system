@@ -4,10 +4,10 @@ import classNames from 'classnames';
 export type TableProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Lager en mer kompakt tabell. Typisk for sider med høy informasjonstetthet
-   * @default false
+  /** Setter tettheten mellom rader og kolonner. Bruk gjerne middle og small for for sider med høy informasjonstetthet
+   * @default "default"
    */
-  compact?: boolean;
+  density?: 'default' | 'middle' | 'small';
   /** Setter kolonne-layout til å være uavhengig av innhold
    * @default false
    */
@@ -19,7 +19,7 @@ export type TableProps = {
 export const Table: React.FC<TableProps> = ({
   className,
   fixed = false,
-  compact = false,
+  density = 'default',
   sortable = false,
   ...rest
 }) => {
@@ -28,7 +28,8 @@ export const Table: React.FC<TableProps> = ({
       className={classNames(
         'eds-table',
         { 'eds-table--fixed': fixed },
-        { 'eds-table--compact': compact },
+        { 'eds-table--middle': density === 'middle' },
+        { 'eds-table--small': density === 'small' },
         { 'eds-table--sortable': sortable },
         className,
       )}

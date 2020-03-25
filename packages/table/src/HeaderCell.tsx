@@ -8,6 +8,7 @@ export type HeaderCellProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  padding?: 'default' | 'checkbox' | 'radio';
   [key: string]: any;
 };
 
@@ -18,6 +19,7 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
   name,
   sortable = false,
   sortConfig,
+  padding = 'default',
   ...rest
 }) => {
   const [isCurrentlySorted, setIsCurrentlySorted] = React.useState<boolean>(
@@ -31,6 +33,8 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
     <th
       className={classNames('eds-table__header-cell', className, {
         'eds-table__header-cell--sortable': sortable,
+        'eds-table__header-cell--padding-radio': padding === 'radio',
+        'eds-table__header-cell--padding-checkbox': padding === 'checkbox',
       })}
       aria-sort={ariaSort}
       {...rest}

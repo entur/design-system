@@ -19,6 +19,19 @@ import {
   DataCell,
   useSortableData,
 } from '@entur/table';
+import {
+  Checkbox,
+  Radio,
+  RadioGroup,
+  SegmentedChoice,
+  SegmentedControl,
+} from '@entur/form';
+import {
+  RowHeightDefaultIcon,
+  RowHeightMiddleIcon,
+  RowHeightSmallIcon,
+} from '@entur/icons';
+import { CheckIcon } from './CheckIcon';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -71,7 +84,7 @@ En tabell settes sammen av flere forskjellige komponenter. Rekkefølgen er vikti
 
 Du kan spesifisere `fixed`-propen for å ha like kolonnestørrelser.
 
-Om du ønsker en mer kompakt tabell, så kan du spesifisere `compact`-propen.
+Om du ønsker en mer kompakt tabell, så kan du spesifisere `middle`-propen.
 
 ### TableHead, TableBody og TableFooter
 
@@ -99,9 +112,7 @@ Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre 
 
 `<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.
 
-## Eksempler
-
-### Sortering av tabell
+## Sortering av tabell
 
 Sorteringsfunksjonene er plassert i kolonneoverskriftene. Ved å klikke på en kolonneoverskrift sorteres tabellen basert på dataene innen - alfabetisk, numerisk, dato osv.
 En sortert tabell har tre tilstander: usortert, sortert etter stigende rekkefølge (pilikon - opp) eller sortert etter synkende rekkefølge (pilikon - ned).
@@ -160,3 +171,265 @@ const {
     getSortableTableProps,
   } = useSortable<{name:string; age:number }>(data);
 ```
+
+## Table density
+
+Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillater brukeren å veksle mellom ulike radhøyder for brukstilfeller der økt tetthet foredrer brukeropplevelsen.
+
+<Playground>
+  {() => {
+    const [density, setDensity] = React.useState('default');
+    return (
+      <div>
+        <div style={{ width: '15%', float: 'right' }}>
+          <SegmentedControl
+            label="Densitet"
+            onChange={selectedValue => setDensity(selectedValue)}
+            selectedValue={density}
+          >
+            <SegmentedChoice value="default">
+              <RowHeightDefaultIcon inline />
+            </SegmentedChoice>
+            <SegmentedChoice value="middle">
+              <RowHeightMiddleIcon inline />
+            </SegmentedChoice>
+            <SegmentedChoice value="small">
+              <RowHeightSmallIcon inline />
+            </SegmentedChoice>
+          </SegmentedControl>
+        </div>
+        <Table density={density}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Passasjerkategori</HeaderCell>
+              <HeaderCell>Type</HeaderCell>
+              <HeaderCell>Vogn</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <DataCell>Voksen</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>3</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Voksen</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>4</DataCell>
+              <DataCell>22</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Barn 0-5 år</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>4</DataCell>
+              <DataCell>44</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }}
+</Playground>
+
+## Checkbox-tabell
+
+**Checkbox:** Tabeller med valgbare rader som inneholder en Checkbox brukes i tilfeller der det er en liste over alternativer og brukeren kan velge ett eller flere alternativer. I tillegg brukes en global checkbox i tabelloverskriften for å kunne raskt velge eller fjerne markeringen av alle radene i tabellen.
+
+Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
+
+<Playground>
+  {() => {
+    // Her er et minimalt eksempel på hvordan Checkbox kan bli brukt i en tabell
+    const [selectedItems, setSelectedItems] = React.useState([
+      {
+        selected: false,
+        fra: 'Majorstua',
+        til: 'Østerås',
+        avgang: '10.00',
+      },
+      { selected: false, fra: 'Oslo S', til: 'Røa', avgang: '11.30' },
+      {
+        selected: false,
+        fra: 'Sofies Plass',
+        til: 'Helsfyr',
+        avgang: '12.11',
+      },
+    ]);
+    const isEverythingSelected = Object.values(selectedItems).every(
+      value => value.selected,
+    );
+    const isNothingSelected = Object.values(selectedItems).every(
+      value => !value.selected,
+    );
+    const isSomeSelected = !isEverythingSelected && !isNothingSelected;
+    const handleAllOrNothingChange = () => {
+      setSelectedItems(prev =>
+        prev.map(prevItem =>
+          isEverythingSelected
+            ? { ...prevItem, selected: false }
+            : { ...prevItem, selected: true },
+        ),
+      );
+    };
+    const handleRegularChange = fra => {
+      setSelectedItems(prev =>
+        prev.map(prevItem =>
+          prevItem.fra === fra
+            ? { ...prevItem, selected: !prevItem.selected }
+            : prevItem,
+        ),
+      );
+    };
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <HeaderCell padding="checkbox">
+              <Checkbox
+                name="all"
+                checked={
+                  isSomeSelected ? 'indeterminate' : isEverythingSelected
+                }
+                onChange={handleAllOrNothingChange}
+              />
+            </HeaderCell>
+            <HeaderCell>Fra</HeaderCell>
+            <HeaderCell>Til</HeaderCell>
+            <HeaderCell>Avgang</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {selectedItems.map((item, index) => (
+            <TableRow key={index}>
+              <DataCell padding="checkbox">
+                <Checkbox
+                  name={item.fra}
+                  checked={item.selected}
+                  onChange={() => handleRegularChange(item.fra)}
+                />
+              </DataCell>
+              <DataCell>{item.fra}</DataCell>
+              <DataCell>{item.til}</DataCell>
+              <DataCell>{item.avgang}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }}
+</Playground>
+
+## Radio-tabell
+
+**Radio:** Tabeller med valgbare rader som inneholder Radio knapper brukes i tilfeller der brukeren kun kan velge ett alternativ.
+
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState('');
+    const selectedItems = [
+      {
+        fra: 'Majorstua',
+        til: 'Østerås',
+        avgang: '10.00',
+      },
+      { fra: 'Oslo S', til: 'Røa', avgang: '11.30' },
+      {
+        fra: 'Sofies Plass',
+        til: 'Helsfyr',
+        avgang: '12.11',
+      },
+    ];
+    const handleChange = e => {
+      setValue(e.target.value);
+    };
+    return (
+      <Table>
+        <RadioGroup name="row" onChange={handleChange} value={value}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell padding="radio"></HeaderCell>
+              <HeaderCell>Fra</HeaderCell>
+              <HeaderCell>Til</HeaderCell>
+              <HeaderCell>Avgang</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {selectedItems.map((item, index) => (
+              <TableRow key={index}>
+                <DataCell padding="radio">
+                  <Radio value={item.fra} />
+                </DataCell>
+                <DataCell>{item.fra}</DataCell>
+                <DataCell>{item.til}</DataCell>
+                <DataCell>{item.avgang}</DataCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </RadioGroup>
+      </Table>
+    );
+  }}
+</Playground>
+
+## Sammenligningstabell
+
+En sammenligningstabell er godt egnet til å visualisere og sammenligne data for produkter eller tjenester.
+Den gir mulighet for rask og enkel sammenligning mellom hvert produkts funksjoner og egenskaper.
+Alle kolonner skal være sorterte i enten stigende eller synkende rekkefølge fra høyre eller venstre,
+slik at alle likheter samles henholdsvis til høyre eller venstre.
+
+<Playground>
+
+  <Table fixed>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Valør</HeaderCell>
+        <HeaderCell>Reisebillett</HeaderCell>
+        <HeaderCell>Plass</HeaderCell>
+        <HeaderCell>Sovekupé</HeaderCell>
+        <HeaderCell>Oppgradering</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Platinum</DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Gull</DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell></DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Sølv</DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell><CheckIcon/></DataCell>
+        <DataCell></DataCell>
+        <DataCell></DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>

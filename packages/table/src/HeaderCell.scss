@@ -10,6 +10,14 @@
     color: $colors-brand-lavender;
   }
 
+  &--padding-checkbox {
+    width: 48px;
+    padding: 0rem 0 0rem 1.25rem;
+  }
+  &--padding-radio {
+    width: 48px;
+    padding: 1rem 0 1rem 1.25rem;
+  }
   &-button {
     appearance: none;
     border: none;

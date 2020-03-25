@@ -1,6 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { CloseIcon } from '@entur/icons';
+import {
+  CloseIcon,
+  ValidationInfoIcon,
+  ValidationErrorIcon,
+  ValidationExclamationIcon,
+} from '@entur/icons';
 import './TravelTag.scss';
 
 export type TravelTagProps = {
@@ -12,6 +17,10 @@ export type TravelTagProps = {
   children: React.ReactNode;
   /**Ekstra klassenavn */
   className?: string;
+  /** Legger til et Valideringsikon i TravelTagen for å signalisere avvik, informasjon e.l.
+   * @default "none"
+   */
+  alert?: 'none' | 'error' | 'warning' | 'info';
   [key: string]: any;
 };
 
@@ -19,13 +28,18 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   onClose = undefined,
   children,
   className,
+  alert = 'none',
   ...rest
 }) => {
   let isClosable = onClose ? true : false;
+  const numberOfChildren = React.Children.count(children);
+
   return (
     <div
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
+        'eds-travel-tag--alert': alert !== 'none',
+        'eds-travel-tag--icon-and-text': numberOfChildren > 1,
       })}
       {...rest}
     >
@@ -34,6 +48,19 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         <button onClick={onClose} className="eds-travel-tag__close-button">
           <CloseIcon inline />
         </button>
+      )}
+      {alert !== 'none' && (
+        <span className="eds-travel-tag__alert">
+          {alert === 'info' && (
+            <ValidationInfoIcon className="eds-travel-tag__alert-info-icon" />
+          )}
+          {alert === 'error' && (
+            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
+          )}
+          {alert === 'warning' && (
+            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
+          )}
+        </span>
       )}
     </div>
   );

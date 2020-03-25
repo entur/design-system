@@ -21,17 +21,32 @@ import './traveltag.css';
 <Playground>
   <div className="even-spacing-travel-tag">
     <TravelTag>
-      <BusIcon inline /> Oslo
+      <BusIcon /> Oslo
     </TravelTag>
   </div>
   <div className="even-spacing-travel-tag">
     <TravelTag>
-      <BicycleIcon inline />
+      <BicycleIcon />
     </TravelTag>
   </div>
   <div className="even-spacing-travel-tag">
     <TravelTag onClose={() => alert('Lukkes')}>
-      <BicycleIcon inline /> Bergen
+      <BicycleIcon /> Bergen
+    </TravelTag>
+  </div>
+  <div className="even-spacing-travel-tag">
+    <TravelTag alert="info">
+      <BusIcon /> 11
+    </TravelTag>
+  </div>
+  <div className="even-spacing-travel-tag">
+    <TravelTag alert="warning">
+      <BusIcon /> 23
+    </TravelTag>
+  </div>
+  <div className="even-spacing-travel-tag">
+    <TravelTag alert="error">
+      <BusIcon /> 13
     </TravelTag>
   </div>
 </Playground>

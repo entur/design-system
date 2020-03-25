@@ -132,7 +132,7 @@ function ContrastChecker() {
           <div className="contrast-checker__ratio-ratio">{score}:1</div>
         </div>
       </div>
-      <Table compact>
+      <Table density="middle">
         <TableHead>
           <TableRow>
             <HeaderCell>Navn</HeaderCell>
