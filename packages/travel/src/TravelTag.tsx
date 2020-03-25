@@ -18,7 +18,7 @@ export type TravelTagProps = {
   /**Ekstra klassenavn */
   className?: string;
   /** Legger til et Valideringsikon i TravelTagen for å signalisere avvik, informasjon e.l.
-   * "none"
+   * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
   [key: string]: any;
@@ -32,11 +32,14 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   ...rest
 }) => {
   let isClosable = onClose ? true : false;
+  const numberOfChildren = React.Children.count(children);
+
   return (
     <div
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
         'eds-travel-tag--alert': alert !== 'none',
+        'eds-travel-tag--icon-and-text': numberOfChildren > 1,
       })}
       {...rest}
     >
