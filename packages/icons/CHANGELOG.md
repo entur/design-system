@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.1.0...@entur/icons@1.2.0) (2020-03-25)
+
+### Features
+
+- adding row-height icons ([ccca7ed](https://bitbucket.org/enturas/design-system/commits/ccca7eda14df5fb1a9182c36bfe359fcc885b27b))
+
 # [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.0.0...@entur/icons@1.1.0) (2020-03-18)
 
 ### Bug Fixes

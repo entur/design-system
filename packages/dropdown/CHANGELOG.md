@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.7.4...@entur/dropdown@0.8.0) (2020-03-25)
+
+### Features
+
+- **dropdown:** add tooltip support to dropdowns ([fbe81d3](https://bitbucket.org/enturas/design-system/commits/fbe81d3d8daf65cba1d815afe1d5efa2d14be291))
+
 ## [0.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.7.3...@entur/dropdown@0.7.4) (2020-03-20)
 
 **Note:** Version bump only for package @entur/dropdown
