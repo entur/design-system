@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useRandomId } from '@entur/utils';
 import { BaseExpandablePanel } from './BaseExpandablePanel';
 
@@ -13,10 +13,13 @@ export type ExpandablePanelProps = {
   defaultOpen?: boolean;
   /** Funksjonen som styrer åpningen av ExpandablePanel */
   onToggle?: () => void;
+  /** Styling som sendes til innholdet av ExpandablePanel */
+  contentStyle?: CSSProperties;
   [key: string]: any;
 };
 export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
   defaultOpen = false,
+  contentStyle,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable');
@@ -28,6 +31,7 @@ export const ExpandablePanel: React.FC<ExpandablePanelProps> = ({
       id={randomId}
       open={isOpen}
       onToggle={() => setOpen(prev => !prev)}
+      contentStyle={contentStyle}
       {...rest}
     />
   );
