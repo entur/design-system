@@ -1,7 +1,14 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-warnAboutMissingStyles('menu', 'expand', 'icons', 'typography');
+warnAboutMissingStyles(
+  'menu',
+  'expand',
+  'icons',
+  'typography',
+  'button',
+  'layout',
+);
 
 export * from './BreadcrumbNavigation';
 export * from './BreadcrumbItem';
@@ -11,3 +18,4 @@ export * from './SideNavigationGroup';
 export * from './TopNavigationItem';
 export * from './Pagination';
 export * from './Stepper';
+export * from './OverflowMenu';
