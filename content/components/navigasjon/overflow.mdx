@@ -1,0 +1,87 @@
+---
+name: Overflow meny
+description: Overflow menyer brukes .
+route: /komponenter/navigasjon/overflow
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: dropdown
+---
+
+import { Props, Link } from 'docz';
+import { OverflowMenu, OverflowMenuItem, OverflowMenuLink } from '@entur/menu';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import { Contrast } from '@entur/layout';
+import {
+  ValidationInfoIcon,
+  DeleteIcon,
+  EditIcon,
+  FileIcon,
+} from '@entur/icons';
+
+<PageHeader />
+
+<Playground>
+  <div>
+    <OverflowMenu>
+      <OverflowMenuItem onSelect={() => {}}>Info</OverflowMenuItem>
+      <OverflowMenuItem onSelect={() => {}}>Rediger</OverflowMenuItem>
+      <OverflowMenuItem onSelect={() => {}}>Slett</OverflowMenuItem>
+    </OverflowMenu>
+    <br />
+    <OverflowMenu>
+      <OverflowMenuItem onSelect={() => {}}>
+        <ValidationInfoIcon inline />
+        Info
+      </OverflowMenuItem>
+      <OverflowMenuItem onSelect={() => {}}>
+        <FileIcon inline /> Last ned fil
+      </OverflowMenuItem>
+      <OverflowMenuItem onSelect={() => {}}>
+        <EditIcon inline /> Rediger
+      </OverflowMenuItem>
+      <OverflowMenuItem onSelect={() => {}}>
+        <DeleteIcon inline /> Slett
+      </OverflowMenuItem>
+    </OverflowMenu>
+  </div>
+</Playground>
+
+## Komponenter
+
+### OverflowMenu
+
+<ImportStatement imports="OverflowMenu" />
+<Props of={OverflowMenu} />
+
+Denne komponenten støtter keyboard-events, som kan sees her: https://reacttraining.com/reach-ui/menu-button#keyboard-accessibility
+
+**Obs angående `button`-prop:**
+
+Generelt sett er dette en meny som skal ligge bak en `IconButton` med `VerticalDotsIcon`,
+men man også sende inn sin egen knapp om det skulle være ønskelig å endre denne.
+Denne knappen **må** støtte en `as` prop for å riktig bli integrert inn i menyen.
+Alle knappene i designsystemet støtter denne propen
+
+### OverflowMenuItem
+
+<ImportStatement imports="OverflowMenuItem" />
+<Props of={OverflowMenuItem} />
+
+Pass på bruk av onClick på denne (og `OverflowMenuLink`), da den eventen potensielt ikke vil skje i den rekkefølgen man forventer.
+Les mer om det her: https://reacttraining.com/reach-ui/menu-button#events
+
+### OverflowMenuLink
+
+<ImportStatement imports="OverflowMenuLink" />
+<Props of={OverflowMenuLink} />
+
+På grunn av den semantiske forskjellen mellom knapper og linker,
+så krever denne komponenten en split mellom en tradisjonell `OverflowMenuItem` og `OverflowMenuLink`.
+
+## Retningslinjer
+
+- Når man bruker ikoner i menypunktene, så må disse plasseres til venstre.
+- En OverflowMenu _bør_ ha minst 3 menypunkter. Hvis den ikke har det, prøv og finne en alternativ måte å vise handlingene på.
