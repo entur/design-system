@@ -30,7 +30,13 @@ import {
   RowHeightDefaultIcon,
   RowHeightMiddleIcon,
   RowHeightSmallIcon,
+  ValidationInfoIcon,
+  FileIcon,
+  EditIcon,
+  DeleteIcon,
 } from '@entur/icons';
+import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
+import { IconButton } from '@entur/button';
 import { CheckIcon } from './CheckIcon';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -429,6 +435,170 @@ slik at alle likheter samles henholdsvis til høyre eller venstre.
         <DataCell><CheckIcon/></DataCell>
         <DataCell></DataCell>
         <DataCell></DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
+## Table actions
+
+Handlinger som en bruker kan utføre fra en enkel tabellrad vises i kolonnen helt til høyre og er synlige ved hover.
+Hvis tabellraden har mer en tre alternativer bruker vi en `OverflowMenu` som inneholder handlinger relatert til
+den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell padding="overflow-menu"></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoIcon inline />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoIcon inline />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoIcon inline />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
+Inneholder over-flow menyen mindre enn tre alternativer, vis handlingene på linje som ikonknapper i stedet.
+Dette reduserer 1 klikk og gjør tilgjengelige handlinger synlige for brukerne med en gang.
+
+Eksempler på handlingsikoner er info ikon for å vise mer detaljert informasjon,
+pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette en tabellrad.
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon />
+          </IconButton>
+        </DataCell>
       </TableRow>
     </TableBody>
   </Table>
