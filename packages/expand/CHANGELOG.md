@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.0.0...@entur/expand@3.1.0) (2020-04-08)
+
+### Features
+
+- add contentStyle prop for all expandable components ([efaac0f](https://bitbucket.org/enturas/design-system/commits/efaac0fb1822a4e38137e96c73f1f76cf41b3416))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.15...@entur/expand@3.0.0) (2020-03-25)
 
 ### Features

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.3.0...@entur/icons@1.4.0) (2020-04-08)
+
+### Features
+
+- add quit icon ([7311322](https://bitbucket.org/enturas/design-system/commits/73113222eaff3c89d89e032aab4583a03d52bfa0))
+- adding partner icons ([84501ea](https://bitbucket.org/enturas/design-system/commits/84501ea98c109a897c643fc0faf9df3f4203b4d6))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.0.0...@entur/icons@1.3.0) (2020-03-25)
 
 ### Bug Fixes

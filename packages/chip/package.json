@@ -1,6 +1,6 @@
 {
   "name": "@entur/chip",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/chip.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^2.5.2",
+    "@entur/form": "^2.5.3",
     "@entur/tokens": "^1.2.3",
     "@entur/utils": "^0.2.3",
     "classnames": "^2.2.6"

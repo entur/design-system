@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.4...@entur/button@2.2.5) (2020-04-08)
+
+### Bug Fixes
+
+- adding forward referencing for iconbutton ([472dac0](https://bitbucket.org/enturas/design-system/commits/472dac0ad13b7e886cedec8a3a4fe8f88295d8b3))
+
 ## [2.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.2...@entur/button@2.2.4) (2020-03-25)
 
 ### Bug Fixes
