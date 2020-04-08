@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.3.4...@entur/layout@1.3.5) (2020-04-08)
+
+### Bug Fixes
+
+- fix border color for cards in contrast ([564aa85](https://bitbucket.org/enturas/design-system/commits/564aa85014b63bda47159fb7782a4a71577e9a7d))
+
 ## [1.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.3.2...@entur/layout@1.3.4) (2020-03-25)
 
 ### Bug Fixes
