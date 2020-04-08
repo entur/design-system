@@ -1,0 +1,28 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-popover {
+  background: $colors-blues-blue80;
+  box-shadow: $shadows-card-shadow;
+  border-radius: $border-radiuses-default;
+  border: $border-widths-small solid $colors-greys-grey10;
+  z-index: $z-indexes-popover;
+
+  &::before {
+    background: $colors-blues-blue80;
+    border: $border-widths-small solid $colors-greys-grey10;
+    content: '';
+    height: 0.625rem;
+    position: absolute;
+    transform: rotate(45deg) translateY(0.125rem);
+    width: 0.625rem;
+    z-index: $z-indexes-behind;
+  }
+  &--top::before {
+    bottom: -0.2rem;
+    left: calc(50% - 0.3125rem);
+  }
+  &--bottom::before {
+    left: calc(50% - 0.3125rem);
+    top: -0.4rem;
+  }
+}
