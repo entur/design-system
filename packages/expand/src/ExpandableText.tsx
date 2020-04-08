@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
 import { BaseExpand } from './BaseExpand';
@@ -17,12 +17,15 @@ export type ExpandableTextProps = {
   open?: boolean;
   /** Funksjonen som styrer åpningen av ExpandableText */
   onToggle?: () => void;
+  /**Styling som sendes til innholdet av ExpandableText */
+  contentStyle?: CSSProperties;
   [key: string]: any;
 };
 export const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,
   children,
   defaultOpen = false,
+  contentStyle,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
@@ -42,6 +45,7 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
         className="eds-expandable-text__content"
         id={randomId}
         open={isOpen}
+        style={contentStyle}
         {...rest}
       >
         {children}

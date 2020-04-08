@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
 import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
@@ -17,6 +17,8 @@ type BaseExpandablePanelProps = {
   open: boolean;
   /** Funksjonen som styrer åpningen av BaseExpandablePanel */
   onToggle: () => void;
+  /** Styling som sendes til innholdet av BaseExpandablePanel */
+  contentStyle?: CSSProperties;
   [key: string]: any;
 };
 export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
@@ -26,6 +28,7 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
   id,
   open,
   onToggle,
+  contentStyle,
   ...rest
 }) => {
   return (
@@ -52,7 +55,12 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
           </div>
         </div>
       </button>
-      <BaseExpand className="eds-expandable-panel__content" id={id} open={open}>
+      <BaseExpand
+        className="eds-expandable-panel__content"
+        id={id}
+        open={open}
+        style={contentStyle}
+      >
         {children}
       </BaseExpand>
     </div>

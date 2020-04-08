@@ -8,7 +8,7 @@ export type HeaderCellProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  padding?: 'default' | 'checkbox' | 'radio';
+  padding?: 'default' | 'checkbox' | 'radio' | 'overflow-menu';
   [key: string]: any;
 };
 
@@ -35,6 +35,8 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
         'eds-table__header-cell--sortable': sortable,
         'eds-table__header-cell--padding-radio': padding === 'radio',
         'eds-table__header-cell--padding-checkbox': padding === 'checkbox',
+        'eds-table__header-cell--padding-overflow-menu':
+          padding === 'overflow-menu',
       })}
       aria-sort={ariaSort}
       {...rest}

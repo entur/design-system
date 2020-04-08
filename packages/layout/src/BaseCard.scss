@@ -11,6 +11,7 @@
   color: inherit;
   .eds-contrast & {
     background-color: $colors-blues-blue10;
+    border-color: $colors-blues-blue30;
     box-shadow: $shadows-card-shadow-contrast;
   }
 }

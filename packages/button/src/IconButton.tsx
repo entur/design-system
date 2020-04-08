@@ -18,26 +18,28 @@ export type IconButtonProps = {
   [key: string]: any;
 };
 
-export const IconButton: React.FC<IconButtonProps> = ({
-  children,
-  className,
-  variant,
-  disabled = false,
-  as = 'button',
-  ...rest
-}) => {
-  const Element = disabled ? 'button' : as;
+export const IconButton: React.RefForwardingComponent<
+  HTMLButtonElement,
+  IconButtonProps
+> = React.forwardRef(
+  (
+    { children, className, variant, disabled = false, as = 'button', ...rest },
+    ref: React.Ref<HTMLButtonElement>,
+  ) => {
+    const Element = disabled ? 'button' : as;
 
-  return (
-    <Element
-      className={classNames('eds-icon-button', className, {
-        'eds-icon-button--disabled': disabled,
-      })}
-      disabled={disabled}
-      aria-disabled={disabled}
-      {...rest}
-    >
-      {children}
-    </Element>
-  );
-};
+    return (
+      <Element
+        className={classNames('eds-icon-button', className, {
+          'eds-icon-button--disabled': disabled,
+        })}
+        disabled={disabled}
+        aria-disabled={disabled}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </Element>
+    );
+  },
+);
