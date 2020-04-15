@@ -395,6 +395,53 @@ Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
   }}
 </Playground>
 
+## Statustabell
+
+En tabell kan vise ulike status via en statusindikator som vises i tabellradene.
+Statusindikatorene hjelper brukeren med å se hvilke rader som kan kreve spesiell oppmerksomhet.
+I dette eksemplet kan brukeren identifisere hvilke samtykker som er
+publisert (grønn), hvilke som er kladd (grå) og hvilke som er utløpt (rød).
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Beskrivelse</HeaderCell>
+        <HeaderCell>Status</HeaderCell>
+        <HeaderCell>Publisering start og slutt</HeaderCell>
+        <HeaderCell>Opprettet av</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody style={{ verticalAlign: 'top' }}>
+      {/** Merk bruken av denne når datacellene går over flere rader */}
+      <TableRow>
+        <DataCell>Kan Entur vise reklame i mobilappen?</DataCell>
+        <DataCell status="positive">Publisert</DataCell>
+        <DataCell>
+          01.04.2020 -<br />
+          01.01.2022
+        </DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Kan Entur sende deg tilbud og nyheter på e-post?</DataCell>
+        <DataCell status="neutral">Kladd</DataCell>
+        <DataCell></DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          Kan Kringom sende deg e-post med <br />
+          kvitteringer og billetter?
+        </DataCell>
+        <DataCell status="negative">Utløpt</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Kringom</DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
 ## Sammenligningstabell
 
 En sammenligningstabell er godt egnet til å visualisere og sammenligne data for produkter eller tjenester.
@@ -403,7 +450,6 @@ Alle kolonner skal være sorterte i enten stigende eller synkende rekkefølge fr
 slik at alle likheter samles henholdsvis til høyre eller venstre.
 
 <Playground>
-
   <Table fixed>
     <TableHead>
       <TableRow>
@@ -417,22 +463,40 @@ slik at alle likheter samles henholdsvis til høyre eller venstre.
     <TableBody>
       <TableRow>
         <DataCell>Platinum</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Gull</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
         <DataCell></DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Sølv</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
         <DataCell></DataCell>
         <DataCell></DataCell>
       </TableRow>
