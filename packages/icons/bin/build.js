@@ -40,8 +40,8 @@ function createSvgrConfig(native = false) {
   if (native) {
     config.svgProps = {
       color: '{(props.color || "#181C56")}',
-      width: '{(props.width || props.size || "1em")}',
-      height: '{(props.height || props.size || "1em")}',
+      width: '{(props.width || props.size || 16)}',
+      height: '{(props.height || props.size || 16)}',
     };
 
     config.replaceAttrValues = {
