@@ -51,14 +51,18 @@ Dette brukes først og fremst internt i komponenter som bruker komponenter, men 
 ### React Native
 
 Ikoner er også støttet for React Native, ved å importere fra `@entur/icons`. Props som er støttet er `color` og `size`.
+Det er også lagt inn støtte for `width` og `height for å sette riktig størrelse på ikoner som ikke er kvadratiske (eks. Ruter-ikonet).
 
-Slik:
+Width og height vil bli prioritert før size om du sender inn begge.
+
+Eksempel:
 
 ```
-import { SeatIcon } from '@entur/icons'
+import { SeatIcon, RuterIcon } from '@entur/icons'
 
 <View>
     <SeatIcon color="181c56" size={ 20 } />
+    <RuterIcon color="ffffff" width={ 60 } height={16} />
 </View>
 ```
 
