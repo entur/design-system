@@ -40,8 +40,8 @@ function createSvgrConfig(native = false) {
   if (native) {
     config.svgProps = {
       color: '{(props.color || "#181C56")}',
-      width: '{(props.size || 16)}',
-      height: '{(props.size || 16)}',
+      width: '{(props.width || props.size || "1em")}',
+      height: '{(props.height || props.size || "1em")}',
     };
 
     config.replaceAttrValues = {
@@ -53,10 +53,10 @@ function createSvgrConfig(native = false) {
       [`${colors.transport.default.ferry.toUpperCase()}`]: 'currentColor',
       [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
     };
-  }
-
-  if (!native) {
+  } else {
     config.svgProps = {
+      width: '{(props.width || props.size || "1em")}',
+      height: '{(props.height || props.size || "1em")}',
       className:
         '{"eds-icon " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}',
       inline: '{undefined}',
