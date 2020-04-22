@@ -7,6 +7,6 @@
       "@entur/*": ["../*/dist"]
     },
     "baseUrl": "..",
-    "rootDir": "."
+    "rootDir": "./src"
   }
 }
