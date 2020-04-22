@@ -71,6 +71,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   nextPageLabel = 'Gå til neste side',
   ...rest
 }) => {
+  const isContrast = useContrast();
   if (pageCount < 1) {
     return null;
   }
@@ -127,7 +128,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                     className={classNames(
                       'eds-pagination-menu__menu-list',
                       'eds-overflow-menu__menu-list',
-                      { 'eds-contrast': useContrast() },
+                      { 'eds-contrast': isContrast },
                     )}
                   >
                     {resultsPerPageOptions.map(
