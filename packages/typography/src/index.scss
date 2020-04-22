@@ -192,7 +192,11 @@ html {
   }
 
   &:focus {
-    outline-color: $colors-misc-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
   }
 
   @include for-desktop {
