@@ -39,6 +39,13 @@
       background: $colors-blues-blue30;
     }
   }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
+  }
 }
 
 .eds-expandable-panel__icon-container {
