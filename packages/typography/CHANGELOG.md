@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.3...@entur/typography@1.1.4) (2020-04-23)
+
+### Bug Fixes
+
+- update link with new focus styling ([a95361f](https://bitbucket.org/enturas/design-system/commits/a95361fe075b9fa8e7f7af7ed0fcc03dd7eed3d7))
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.2...@entur/typography@1.1.3) (2020-03-20)
 
 **Note:** Version bump only for package @entur/typography

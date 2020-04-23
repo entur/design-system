@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.1.0...@entur/expand@3.1.1) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.0.0...@entur/expand@3.1.0) (2020-04-08)
 
 ### Features
