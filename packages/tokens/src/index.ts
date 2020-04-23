@@ -96,8 +96,12 @@ const grey10Rgb = hexRgb(colors.greys.grey10, { format: 'array' })
 const blue20Rgb = hexRgb(colors.blues.blue20, { format: 'array' })
   .toString()
   .slice(0, -2);
+const whiteRgb = hexRgb(colors.brand.white, { format: 'array' })
+  .toString()
+  .slice(0, -2);
 export const shadows = {
-  focus: `0 0 0.125rem 0.125rem ${colors.misc.focus}`,
+  focus: `0 0 0 0.25rem ${colors.misc.focus}`,
+  focusContrast: `0 0 0 0.25rem rgba(${whiteRgb}, 0.3)`,
   cardShadow: `0 0.125rem 0.1875rem 0 rgba(${grey10Rgb}, 0.7)`,
   cardShadowHover: `0 0.125rem 1rem 0 rgba(${grey10Rgb}, 0.7)`,
   cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,

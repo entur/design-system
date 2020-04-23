@@ -35,7 +35,8 @@ import {
   EditIcon,
   DeleteIcon,
 } from '@entur/icons';
-import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
+import testdata from './testdata';
+import { OverflowMenu, OverflowMenuItem, Pagination } from '@entur/menu';
 import { IconButton } from '@entur/button';
 import { CheckIcon } from './CheckIcon';
 import { Playground } from '~/components/Playground';
@@ -395,6 +396,53 @@ Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
   }}
 </Playground>
 
+## Statustabell
+
+En tabell kan vise ulike status via en statusindikator som vises i tabellradene.
+Statusindikatorene hjelper brukeren med å se hvilke rader som kan kreve spesiell oppmerksomhet.
+I dette eksemplet kan brukeren identifisere hvilke samtykker som er
+publisert (grønn), hvilke som er kladd (grå) og hvilke som er utløpt (rød).
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Beskrivelse</HeaderCell>
+        <HeaderCell>Status</HeaderCell>
+        <HeaderCell>Publisering start og slutt</HeaderCell>
+        <HeaderCell>Opprettet av</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody style={{ verticalAlign: 'top' }}>
+      {/** Merk bruken av denne når datacellene går over flere rader */}
+      <TableRow>
+        <DataCell>Kan Entur vise reklame i mobilappen?</DataCell>
+        <DataCell status="positive">Publisert</DataCell>
+        <DataCell>
+          01.04.2020 -<br />
+          01.01.2022
+        </DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Kan Entur sende deg tilbud og nyheter på e-post?</DataCell>
+        <DataCell status="neutral">Kladd</DataCell>
+        <DataCell></DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          Kan Kringom sende deg e-post med <br />
+          kvitteringer og billetter?
+        </DataCell>
+        <DataCell status="negative">Utløpt</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Kringom</DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
+
 ## Sammenligningstabell
 
 En sammenligningstabell er godt egnet til å visualisere og sammenligne data for produkter eller tjenester.
@@ -403,7 +451,6 @@ Alle kolonner skal være sorterte i enten stigende eller synkende rekkefølge fr
 slik at alle likheter samles henholdsvis til høyre eller venstre.
 
 <Playground>
-
   <Table fixed>
     <TableHead>
       <TableRow>
@@ -417,22 +464,40 @@ slik at alle likheter samles henholdsvis til høyre eller venstre.
     <TableBody>
       <TableRow>
         <DataCell>Platinum</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Gull</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
         <DataCell></DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Sølv</DataCell>
-        <DataCell><CheckIcon/></DataCell>
-        <DataCell><CheckIcon/></DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
+        <DataCell>
+          <CheckIcon />
+        </DataCell>
         <DataCell></DataCell>
         <DataCell></DataCell>
       </TableRow>
@@ -602,4 +667,68 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
       </TableRow>
     </TableBody>
   </Table>
+</Playground>
+
+## Pagination
+
+Paginering i tabeller fungerer ved å presentere et sett antall rader i en visning,
+med mulighet til å navigere til et annet sett. Brukes for å hjelpe brukerne å analysere
+et stort antall elementer når det er for mange resultater til å vises samtidig,
+slik at de ikke blir overveldet av for mye informasjon. Tabeller med mer enn 20 elementer
+bør inkludere paginering som alltid ligger under eller både over og under tabellen.
+Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og indikerer at flere sider eksisterer.
+
+**Kontrollene som støttes er:**
+
+- Rader per side: Viser antall resultater slik at brukeren kan tilpasse hvor mye de ønsker å se.
+- Venstre og høyre pil: Lar brukeren navigere til neste eller forrige side.
+- Gå til side: Lar brukeren hoppe direkte til en ønsket side.
+
+<Playground>
+  {() => {
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    return (
+      <>
+        <Pagination
+          pageCount={(10 * 10) / results}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+        <Table fixed>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {testdata.map(
+              (item, index) =>
+                index < currentPage * results &&
+                index > (currentPage - 1) * results + 1 && (
+                  <TableRow key={index}>
+                    <DataCell>{item.name}</DataCell>
+                    <DataCell>{item.date}</DataCell>
+                    <DataCell>{item.category}</DataCell>
+                    <DataCell>{item.receiver}</DataCell>
+                  </TableRow>
+                ),
+            )}
+          </TableBody>
+        </Table>
+        <Pagination
+          pageCount={(10 * 10) / results}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+      </>
+    );
+  }}
 </Playground>

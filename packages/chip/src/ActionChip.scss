@@ -4,6 +4,9 @@
   &:focus {
     box-shadow: $shadows-focus;
     outline: none;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
   }
   &:hover {
     border-color: $colors-brand-blue;

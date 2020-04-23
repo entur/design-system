@@ -38,7 +38,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
                   highlightedIndex === index,
                 'eds-dropdown-list__item--selected': selectedItem === item,
               })}
-              {...getItemProps({ key: item.value, item, index })}
+              {...getItemProps({ key: `${index}${item.value}`, item, index })}
             >
               <span>{item.label}</span>
               {item.icons && (

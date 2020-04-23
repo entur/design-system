@@ -108,7 +108,8 @@
   top: $space-medium;
 
   &:focus {
-    outline-color: $colors-misc-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
   }
 
   @include for-desktop {

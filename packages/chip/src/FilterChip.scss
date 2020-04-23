@@ -24,6 +24,9 @@
   }
   &:focus-within {
     box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
   }
   &:hover {
     border-color: $colors-brand-blue;

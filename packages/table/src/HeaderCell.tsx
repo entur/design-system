@@ -8,6 +8,7 @@ export type HeaderCellProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /** Størrelse som settes for HeaderCell for ulikt innhold av komponenter */
   padding?: 'default' | 'checkbox' | 'radio' | 'overflow-menu';
   [key: string]: any;
 };

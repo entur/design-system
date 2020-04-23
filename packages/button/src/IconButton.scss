@@ -13,14 +13,23 @@
   font-size: $font-sizes-large;
   padding: $space-extra-small;
   &:hover {
-    background-color: $colors-greys-grey20;
+    background-color: $colors-blues-blue70;
     .eds-contrast & {
       background-color: $colors-blues-blue30;
+    }
+  }
+  &:active {
+    background: $colors-blues-blue60;
+    .eds-contrast & {
+      background: $colors-blues-blue10;
     }
   }
   &:focus {
     outline: none;
     box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
   }
   &--disabled {
     opacity: 0.5;
