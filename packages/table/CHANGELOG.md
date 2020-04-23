@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@2.0.1...@entur/table@2.1.0) (2020-04-23)
+
+### Features
+
+- add status prop for datacells ([996288b](https://bitbucket.org/enturas/design-system/commits/996288b4c1b3d95d5fc0fa6dc621c366c2d37cea))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@2.0.0...@entur/table@2.0.1) (2020-04-08)
 
 ### Bug Fixes

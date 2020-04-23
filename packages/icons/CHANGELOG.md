@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.4.0...@entur/icons@1.5.0) (2020-04-23)
+
+### Bug Fixes
+
+- change 1em to 16 for native icons ([a97b97d](https://bitbucket.org/enturas/design-system/commits/a97b97d8669bfd2f6a885a4985c0e858debe0f18))
+
+### Features
+
+- add purpose icon ([7b02c4e](https://bitbucket.org/enturas/design-system/commits/7b02c4e36c6428958a8ff775a2003bb92f36c2df))
+- add value icon ([324b918](https://bitbucket.org/enturas/design-system/commits/324b918d344dd38ff51aea65a0c1174eb408616f))
+- add vertical switch icon ([dd3eec3](https://bitbucket.org/enturas/design-system/commits/dd3eec34413d525c029ad3281af7c6e7a3212a08))
+- add width and height props for icons ([8881baa](https://bitbucket.org/enturas/design-system/commits/8881baaabd96e41294b186cee248016057313ecc))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.3.0...@entur/icons@1.4.0) (2020-04-08)
 
 ### Features

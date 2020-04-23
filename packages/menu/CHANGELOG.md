@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.4.0...@entur/menu@1.5.0) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
+### Features
+
+- add results functionality for pagination component ([b6fe497](https://bitbucket.org/enturas/design-system/commits/b6fe497ade85aec18307bf4a7cb5fa7281b0be46))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.3.5...@entur/menu@1.4.0) (2020-04-08)
 
 ### Features
