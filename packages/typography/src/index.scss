@@ -185,10 +185,24 @@ html {
     color: inherit; // ie fallback
     color: var(--primary-text-color);
     font-size: inherit;
+    text-decoration: none;
+    position: relative;
+    &:before {
+      background: $colors-brand-blue;
+      bottom: -0.125rem;
+      content: '';
+      display: block;
+      left: 0;
+      height: 0.125rem;
+      width: 100%;
+      position: absolute;
+    }
   }
 
   &:hover {
-    color: $colors-brand-lavender;
+    &:before {
+      animation: lineExpand ease-in-out 0.3s;
+    }
   }
 
   &:focus {
@@ -292,5 +306,14 @@ html {
 
   .eds-list-item:first-of-type {
     margin: none;
+  }
+}
+
+@keyframes lineExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
   }
 }
