@@ -4,21 +4,27 @@
   flex-grow: 1;
 
   mask-image: url('./pattern/line.svg');
+  -webkit-mask-image: url('./pattern/line.svg');
   mask-position: center;
+  -webkit-mask-position: center;
   &--dotted {
     mask-image: url('./pattern/dotted.svg');
+    -webkit-mask-image: url('./pattern/dotted.svg');
   }
 
   &--vertical {
     mask-repeat: repeat-y;
+    -webkit-mask-repeat: repeat-y;
     width: 1rem;
 
     &.eds-leg-line--dashed {
       mask-image: url('./pattern/dashed-vertical.svg');
+      -webkit-mask-image: url('./pattern/dashed-vertical.svg');
     }
 
     &.eds-leg-line--wave {
       mask-image: url('./pattern/wave-vertical.svg');
+      -webkit-mask-image: url('./pattern/wave-vertical.svg');
     }
   }
 
@@ -29,10 +35,12 @@
 
     &.eds-leg-line--dashed {
       mask-image: url('./pattern/dashed-horizontal.svg');
+      -webkit-mask-image: url('./pattern/dashed-horizontal.svg');
     }
 
     &.eds-leg-line--wave {
       mask-image: url('./pattern/wave-horizontal.svg');
+      -webkit-mask-image: url('./pattern/wave-horizontal.svg');
     }
   }
 }
