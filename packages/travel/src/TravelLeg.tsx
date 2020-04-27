@@ -12,11 +12,11 @@ export type TravelLegProps = {
     | 'metro'
     | 'plane'
     | 'tram'
-    | 'train'
-    | 'ferry'
+    | 'rail'
+    | 'water'
     | 'bike'
     | 'scooter'
-    | 'walk';
+    | 'foot';
   /** Retningen på komponenten */
   direction: 'horizontal' | 'vertical';
   [key: string]: any;
@@ -74,13 +74,13 @@ function modeCalc(mode: string): modeCalcResult {
         contrast: colors.transport.contrast.tram,
         pattern: 'line',
       };
-    case 'train':
+    case 'rail':
       return {
         color: colors.transport.default.train,
         contrast: colors.transport.contrast.train,
         pattern: 'line',
       };
-    case 'ferry':
+    case 'water':
       return {
         color: colors.transport.default.ferry,
         contrast: colors.transport.contrast.ferry,
@@ -98,7 +98,7 @@ function modeCalc(mode: string): modeCalcResult {
         contrast: colors.transport.contrast.mobility,
         pattern: 'line',
       };
-    case 'walk':
+    case 'foot':
       return {
         color: colors.transport.default.walk,
         contrast: colors.transport.contrast.walk,
