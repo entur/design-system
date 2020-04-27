@@ -38,7 +38,6 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
     ) {
       return;
     }
-    console.log(changes);
     if ('selectedItem' in changes) {
       onChange(changes.selectedItem, stateAndHelpers);
     } else if ('inputValue' in changes) {
@@ -56,8 +55,6 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
         return { ...changes, highlightedIndex: 0 };
       }
     }
-    console.log(changes);
-
     return changes;
   };
 
