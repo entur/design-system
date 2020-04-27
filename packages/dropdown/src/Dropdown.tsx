@@ -13,8 +13,8 @@ import {
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
   items: PotentiallyAsyncDropdownItemType;
-  /** Valgt verdi */
-  value?: string;
+  /** Valgt verdi. Bruk null for ingen verdi. */
+  value?: string | null;
   /** Om man skal kunne søke i dropdownen eller ikke */
   searchable?: boolean;
   /** Beskrivende tekst som forklarer feltet */
@@ -85,7 +85,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
     debounceTimeout,
   );
 
-  const selectedItem = normalizedItems.find(item => value === item.value);
+  const selectedItem =
+    value === undefined
+      ? undefined
+      : normalizedItems.find(item => value === item.value) || null;
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
 
