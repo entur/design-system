@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.5.0...@entur/icons@1.5.1) (2020-04-27)
+
+### Bug Fixes
+
+- fix coloring of kolumbus icon ([fa5876e](https://bitbucket.org/enturas/design-system/commits/fa5876e18e19e934afb700f86446108af7fd85c9))
+
 # [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.4.0...@entur/icons@1.5.0) (2020-04-23)
 
 ### Bug Fixes
