@@ -5,20 +5,26 @@
 
   mask-image: url('./pattern/line.svg');
   mask-position: center;
+  -webkit-mask-image: url('./pattern/line.svg');
+  -webkit-mask-position: center;
   &--dotted {
     mask-image: url('./pattern/dotted.svg');
+    -webkit-mask-image: url('./pattern/dotted.svg');
   }
 
   &--vertical {
     mask-repeat: repeat-y;
     width: 1rem;
+    -webkit-mask-repeat: repeat-y;
 
     &.eds-leg-line--dashed {
       mask-image: url('./pattern/dashed-vertical.svg');
+      -webkit-mask-image: url('./pattern/dashed-vertical.svg');
     }
 
     &.eds-leg-line--wave {
       mask-image: url('./pattern/wave-vertical.svg');
+      -webkit-mask-image: url('./pattern/wave-vertical.svg');
     }
   }
 
@@ -26,13 +32,16 @@
     height: 1rem;
     mask-repeat: repeat-x;
     min-width: 6.25rem;
+    -webkit-mask-repeat: repeat-x;
 
     &.eds-leg-line--dashed {
       mask-image: url('./pattern/dashed-horizontal.svg');
+      -webkit-mask-image: url('./pattern/dashed-horizontal.svg');
     }
 
     &.eds-leg-line--wave {
       mask-image: url('./pattern/wave-horizontal.svg');
+      -webkit-mask-image: url('./pattern/wave-horizontal.svg');
     }
   }
 }

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@2.0.2...@entur/travel@3.0.0) (2020-04-27)
+
+### Code Refactoring
+
+- **travelleg:** follow the netex standard ([1424edc](https://bitbucket.org/enturas/design-system/commits/1424edc181d2b8519ffafc5c13f4a1640c4b4a9b))
+
+### BREAKING CHANGES
+
+- **travelleg:** transport options in travelleg: train, ferry and walk renamed to rail, water and foot to follow the
+  netex standard
+
+## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/travel@2.0.1...@entur/travel@2.0.2) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
+## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/travel@2.0.0...@entur/travel@2.0.1) (2020-04-08)
+
+**Note:** Version bump only for package @entur/travel
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@0.3.11...@entur/travel@2.0.0) (2020-03-25)
 
 ### Bug Fixes

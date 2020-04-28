@@ -32,6 +32,12 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
     changes: any,
     stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
   ) => {
+    if (
+      changes.type ===
+      Downshift.stateChangeTypes.controlledPropUpdatedSelectedItem
+    ) {
+      return;
+    }
     if ('selectedItem' in changes) {
       onChange(changes.selectedItem, stateAndHelpers);
     } else if ('inputValue' in changes) {

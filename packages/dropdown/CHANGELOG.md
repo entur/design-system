@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.9.2...@entur/dropdown@1.0.0) (2020-04-27)
+
+### Bug Fixes
+
+- fix for controllable dropdown component ([408c627](https://bitbucket.org/enturas/design-system/commits/408c627fd8b78881f404d733ec78367192eec2b1))
+
+### BREAKING CHANGES
+
+- new internal handling of null and undefined, meaning if you used null or undefined earlier, this may
+  break your setup. null is now "no item" and undefined is reserved for uncontrolled behaviour
+
+## [0.9.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.9.1...@entur/dropdown@0.9.2) (2020-04-23)
+
+### Bug Fixes
+
+- fix potential key uniqueness bug ([bebf25e](https://bitbucket.org/enturas/design-system/commits/bebf25e19a342c558d192f02a3929f03cfbff242))
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
+## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.9.0...@entur/dropdown@0.9.1) (2020-04-08)
+
+**Note:** Version bump only for package @entur/dropdown
+
 # [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.7.4...@entur/dropdown@0.9.0) (2020-03-25)
 
 ### Features

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.4...@entur/typography@1.1.5) (2020-04-27)
+
+### Bug Fixes
+
+- restyle link underline, with hover animation ([4f103c3](https://bitbucket.org/enturas/design-system/commits/4f103c3a78a0913cd0c22f4a3c1c76173fd9e16d))
+
+## [1.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.3...@entur/typography@1.1.4) (2020-04-23)
+
+### Bug Fixes
+
+- update link with new focus styling ([a95361f](https://bitbucket.org/enturas/design-system/commits/a95361fe075b9fa8e7f7af7ed0fcc03dd7eed3d7))
+
 ## [1.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.2...@entur/typography@1.1.3) (2020-03-20)
 
 **Note:** Version bump only for package @entur/typography

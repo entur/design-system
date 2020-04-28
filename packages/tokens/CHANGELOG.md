@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.3.0...@entur/tokens@1.3.1) (2020-04-27)
+
+**Note:** Version bump only for package @entur/tokens
+
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.2.3...@entur/tokens@1.3.0) (2020-04-23)
+
+### Features
+
+- new focus styling and focus styling for contrast ([b05d79a](https://bitbucket.org/enturas/design-system/commits/b05d79ae762459c9926f4e43c150c3ce0db5ddfa))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.2.2...@entur/tokens@1.2.3) (2020-03-20)
 
 ### Bug Fixes

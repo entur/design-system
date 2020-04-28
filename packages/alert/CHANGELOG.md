@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.21](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.20...@entur/alert@0.5.21) (2020-04-27)
+
+**Note:** Version bump only for package @entur/alert
+
+## [0.5.20](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.19...@entur/alert@0.5.20) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
+## [0.5.19](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.18...@entur/alert@0.5.19) (2020-04-08)
+
+**Note:** Version bump only for package @entur/alert
+
 ## [0.5.18](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.16...@entur/alert@0.5.18) (2020-03-25)
 
 **Note:** Version bump only for package @entur/alert

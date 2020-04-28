@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.5.0...@entur/icons@1.5.1) (2020-04-27)
+
+### Bug Fixes
+
+- fix coloring of kolumbus icon ([fa5876e](https://bitbucket.org/enturas/design-system/commits/fa5876e18e19e934afb700f86446108af7fd85c9))
+
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.4.0...@entur/icons@1.5.0) (2020-04-23)
+
+### Bug Fixes
+
+- change 1em to 16 for native icons ([a97b97d](https://bitbucket.org/enturas/design-system/commits/a97b97d8669bfd2f6a885a4985c0e858debe0f18))
+
+### Features
+
+- add purpose icon ([7b02c4e](https://bitbucket.org/enturas/design-system/commits/7b02c4e36c6428958a8ff775a2003bb92f36c2df))
+- add value icon ([324b918](https://bitbucket.org/enturas/design-system/commits/324b918d344dd38ff51aea65a0c1174eb408616f))
+- add vertical switch icon ([dd3eec3](https://bitbucket.org/enturas/design-system/commits/dd3eec34413d525c029ad3281af7c6e7a3212a08))
+- add width and height props for icons ([8881baa](https://bitbucket.org/enturas/design-system/commits/8881baaabd96e41294b186cee248016057313ecc))
+
+# [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.3.0...@entur/icons@1.4.0) (2020-04-08)
+
+### Features
+
+- add quit icon ([7311322](https://bitbucket.org/enturas/design-system/commits/73113222eaff3c89d89e032aab4583a03d52bfa0))
+- adding partner icons ([84501ea](https://bitbucket.org/enturas/design-system/commits/84501ea98c109a897c643fc0faf9df3f4203b4d6))
+
 # [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.0.0...@entur/icons@1.3.0) (2020-03-25)
 
 ### Bug Fixes

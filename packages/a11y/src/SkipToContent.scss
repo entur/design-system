@@ -20,5 +20,6 @@
   }
   &:focus {
     transform: none;
+    box-shadow: $shadows-focus;
   }
 }

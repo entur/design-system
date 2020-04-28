@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.1.1...@entur/expand@3.1.2) (2020-04-27)
+
+**Note:** Version bump only for package @entur/expand
+
+## [3.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.1.0...@entur/expand@3.1.1) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.0.0...@entur/expand@3.1.0) (2020-04-08)
+
+### Features
+
+- add contentStyle prop for all expandable components ([efaac0f](https://bitbucket.org/enturas/design-system/commits/efaac0fb1822a4e38137e96c73f1f76cf41b3416))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@1.1.15...@entur/expand@3.0.0) (2020-03-25)
 
 ### Features

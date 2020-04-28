@@ -3,15 +3,57 @@
 .eds-pagination {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  &__results {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  &__controls {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  &__results:first-of-type:last-of-type,
+  &__controls:first-of-type:last-of-type {
+    margin: 0 auto;
+  }
+}
+
+.eds-pagination-menu {
+  &__menu-button {
+    appearance: none;
+    background: transparent;
+    border: $border-widths-small solid $colors-greys-grey10;
+    border-radius: $border-radiuses-medium;
+    color: inherit;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: $space-extra-large;
+    margin-left: $space-extra-small2;
+    margin-right: $space-medium;
+    width: 3.5rem;
+    &--open {
+      border-color: currentColor;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: $shadows-focus;
+    }
+  }
+  &__menu-list {
+    width: 3.5rem;
+  }
 }
 
 .eds-pagination__page {
   align-items: center;
   appearance: none;
   background: transparent;
-  border: $border-widths-small solid transparent;
-  border-radius: 50%;
+  border: $border-widths-small solid $colors-greys-grey10;
+  border-radius: $border-radiuses-medium;
   color: inherit;
   cursor: pointer;
   display: flex;
@@ -19,21 +61,26 @@
   font-size: $font-sizes-medium;
   height: $space-extra-large;
   justify-content: center;
-  margin: 0 $border-widths-small;
+  margin: 0 $border-widths-medium;
   padding: 0;
   transition: all $timings-fast ease-out;
   user-select: none;
   width: $space-extra-large;
 
+  .eds-contrast & {
+    border-color: $colors-blues-blue30;
+  }
   &--selected {
-    border-color: currentColor;
+    border-color: $colors-brand-blue;
     color: inherit;
     opacity: 1;
     pointer-events: none;
+    .eds-contrast & {
+      border-color: $colors-brand-white;
+    }
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $colors-blues-blue70;
     border-color: $colors-blues-blue70;
 
@@ -49,7 +96,7 @@
 }
 
 .eds-pagination__ellipsis {
-  align-items: center;
+  align-items: baseline;
   cursor: default;
   display: flex;
   font-size: $font-sizes-extra-large;
@@ -75,9 +122,10 @@
 .eds-pagination__input-field {
   appearance: none;
   background: transparent;
-  border: $border-widths-default solid $colors-brand-lavender;
-  border-radius: 0;
+  border: $border-widths-small solid $colors-greys-grey10;
+  border-radius: $border-radiuses-medium;
   color: inherit;
+  font-family: inherit;
   font-size: $font-sizes-medium;
   height: $space-extra-large;
   text-align: center;

@@ -14,6 +14,13 @@
   &:hover {
     text-decoration: underline;
   }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
+  }
 }
 
 .eds-expandable-text__content {

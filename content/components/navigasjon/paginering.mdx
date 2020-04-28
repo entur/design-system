@@ -19,18 +19,22 @@ import { ImportStatement } from '~/components/ImportStatement';
 <Playground>
   {() => {
     const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
     return (
       <React.Fragment>
         <Pagination
           pageCount={10}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
+          showInput
         />
+        <br />
         <Pagination
-          pageCount={10}
+          pageCount={(10 * 10) / results}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
-          showInput
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
         />
       </React.Fragment>
     );
@@ -52,3 +56,6 @@ Du kan også spesifisere `showInput` for å vise et input-felt, der man kan skri
 datasett, men bør kun brukes der det er behov.
 
 Om du ønsker flerspråklig støtte, har du tilgang på flere props: `pageLabel`, `previousPageLabel`, `nextPageLabel`, og eventuelt `inputLabel` om det trengs.
+
+For visning av resultat per side, og muligheten for å endre dette, bruk `resultsPerPage` og `onResultsPerPageChange`.
+Bruk så enten 10, 25 eller 50 resultater per side.

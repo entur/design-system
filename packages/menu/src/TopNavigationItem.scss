@@ -16,6 +16,14 @@
   font-size: $font-sizes-large;
   font-weight: $font-weights-heading;
 
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+    .eds-contrast & {
+      box-shadow: $shadows-focus-contrast;
+    }
+  }
+
   &--active {
     --show-active-line: 1;
   }

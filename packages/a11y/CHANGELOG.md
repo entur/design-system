@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.19](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.18...@entur/a11y@0.2.19) (2020-04-27)
+
+**Note:** Version bump only for package @entur/a11y
+
+## [0.2.18](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.17...@entur/a11y@0.2.18) (2020-04-23)
+
+### Bug Fixes
+
+- updated to use new focus styling where applicable ([d0a52c0](https://bitbucket.org/enturas/design-system/commits/d0a52c096b673c6647070a90dd79bef9003ee0ad))
+
 ## [0.2.17](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.16...@entur/a11y@0.2.17) (2020-03-20)
 
 **Note:** Version bump only for package @entur/a11y

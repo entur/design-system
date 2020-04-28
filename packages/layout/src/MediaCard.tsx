@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paragraph } from '@entur/typography';
+import { Paragraph, Label } from '@entur/typography';
 import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
@@ -14,6 +14,8 @@ export type MediaCardProps = {
   title: string;
   /** Teksten under tittelen i MediaCard */
   description?: React.ReactNode;
+  /** Kategori (eller lignende) som vises over tittelen */
+  category?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Det du skulle ønske som media (f.eks. bilder eller video) */
@@ -27,6 +29,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   description,
   children,
   className,
+  category,
   style,
   ...rest
 }) => {
@@ -36,6 +39,9 @@ export const MediaCard: React.FC<MediaCardProps> = ({
     <BaseCard as="div" className={classList} style={style}>
       <div className="eds-media-card__media">{children}</div>
       <Element className="eds-media-card__text" {...rest}>
+        {category && (
+          <Label className="eds-media-card__category">{category}</Label>
+        )}
         <div className="eds-media-card__title">{title}</div>
         <Paragraph>{description}</Paragraph>
         <ForwardIcon className="eds-media-card__arrow-icon" />
