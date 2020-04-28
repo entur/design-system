@@ -46,22 +46,19 @@ function FrontPageFooter() {
               Hvordan bidra?
             </DoczLinkWrapper>
           </Heading4>
-          <Heading4
-            as={Link}
-            margin="none"
-            href="https://share.goabstract.com/ecd2091b-ba8a-4fe6-9997-622265c6db64?sha=94121e0337062ce5a223384edef977dd0dfd22a5"
-          >
-            Sketch UI-Library
+          <Heading4 margin="none">
+            <Link href="https://share.goabstract.com/ecd2091b-ba8a-4fe6-9997-622265c6db64?sha=94121e0337062ce5a223384edef977dd0dfd22a5">
+              Sketch UI-Library
+            </Link>
           </Heading4>
           <Heading4
-            as={Link}
             margin="none"
             href="https://bitbucket.org/enturas/design-system/src/master/"
           >
-            Bitbucket
+            <Link>Bitbucket</Link>
           </Heading4>
-          <Heading4 margin="none" as={Link} href="https://entur.no/">
-            Entur.no
+          <Heading4 margin="none">
+            <Link href="https://entur.no/">Entur.no</Link>
           </Heading4>
           <div style={{ marginTop: '2rem', display: 'flex' }}>
             <a

@@ -25,33 +25,7 @@
       justify-content: center;
     }
   }
-}
-.settings-trigger {
-  appearance: none;
-  background: inherit;
-  border: 0;
-  border-radius: 50%;
-  color: inherit;
-  cursor: pointer;
-  font-size: $font-sizes-extra-large;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: $space-default;
-  @include for-desktop {
-    color: $colors-brand-blue;
-    font-size: inherit;
-    background: $colors-brand-white;
-    transition: background-color $timings-fast ease-out;
-    box-shadow: rgba(black, 0.2) 0 2px 4px 2px;
+  .settings-trigger {
     margin-left: $space-large;
-    &:hover {
-      background-color: $colors-brand-lavender;
-    }
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0.25rem $colors-misc-focus;
   }
 }

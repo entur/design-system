@@ -1,7 +1,7 @@
 import React from 'react';
 import { SettingsIcon, ViewIcon } from '@entur/icons';
 import { Paragraph } from '@entur/typography';
-import { PrimaryButton } from '@entur/button';
+import { PrimaryButton, FloatingButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import {
   useSettings,
@@ -32,14 +32,13 @@ const SettingsPanel: React.FC = () => {
             Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
           </Paragraph>
         </div>
-        <button
+        <FloatingButton
           aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
           className="settings-trigger"
           onClick={() => setOpen(prev => !prev)}
-          type="button"
         >
           <SettingsIcon />
-        </button>
+        </FloatingButton>
       </div>
       <Modal
         open={isOpen}
