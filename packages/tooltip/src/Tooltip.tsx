@@ -85,7 +85,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       {showTooltip && (
         <Popper
           modifiers={[
-            { name: 'arrow', options: { enabled: false } },
+            { name: 'arrow', enabled: false },
             {
               name: 'offset',
               options: { offset: [0, 10] },
