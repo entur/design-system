@@ -1,0 +1,17 @@
+# Fileupload
+
+This package contains the different Fileupload components.
+
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/)?
+
+## Installation
+
+```sh
+npm install @entur/fileupload
+# or if you are using Yarn:
+yarn add @entur/fileupload
+```
+
+## Usage
+
+Please refer to the [documentation](https://design.entur.org/komponenter/) for usage information.

@@ -1,0 +1,32 @@
+---
+name: Filopplasting
+description: Fileopplasting en komponent for å ta imot tekst fra brukeren.
+route: /komponenter/skjemaelementer/fileupload
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: opplasting, fil, filer
+---
+
+import { Props } from 'docz';
+import { FileUpload } from '@entur/fileupload';
+import { ImageIcon } from '@entur/icons';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader />
+
+ok
+b
+
+<Playground>
+  <FileUpload variant="success" />
+</Playground>
+
+## Komponenter
+
+### TextField
+
+<ImportStatement imports="FileUpload" />
+<Props of={FileUpload} />
