@@ -1,0 +1,39 @@
+---
+name: Popover
+description: Popover kan brukes for å gi ekstra informasjon til brukeren ved hover eller fokus.
+route: /komponenter/feedback/popover
+parent: Komponenter
+menu: Feedback
+npmPackage: tooltip
+tags: hjelpetekst, tooltip, verktøyhjelp, popover
+---
+
+import { Popover, PopoverTrigger, PopoverContent } from '@entur/tooltip';
+import { PrimaryButton } from '@entur/button';
+import { Props } from 'docz';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+<PageHeader></PageHeader>
+
+{}
+
+<Playground>
+  <Popover>
+    <PopoverTrigger>
+      <PrimaryButton>ok</PrimaryButton>
+    </PopoverTrigger>
+    <PopoverContent>
+      Se her ja
+      <PrimaryButton>inside</PrimaryButton>
+    </PopoverContent>
+  </Popover>
+</Playground>
+
+## Komponenter
+
+### Tooltip
+
+<ImportStatement imports="Popover" />
+<Props of={Popover} />

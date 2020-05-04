@@ -5,7 +5,14 @@
   box-shadow: $shadows-card-shadow;
   border-radius: $border-radiuses-default;
   border: $border-widths-small solid $colors-greys-grey10;
+  color: inherit;
   z-index: $z-indexes-popover;
+  &--hidden {
+    display: none;
+  }
+  &:focus {
+    outline: 5px solid red;
+  }
 
   &::before {
     background: $colors-blues-blue80;
