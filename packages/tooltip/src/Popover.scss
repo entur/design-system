@@ -6,30 +6,15 @@
   border-radius: $border-radiuses-default;
   border: $border-widths-small solid $colors-greys-grey10;
   color: inherit;
+  font-family: inherit;
   z-index: $z-indexes-popover;
+  .eds-contrast & {
+    background: $colors-blues-blue10;
+  }
   &--hidden {
     display: none;
   }
   &:focus {
     outline: 5px solid red;
-  }
-
-  &::before {
-    background: $colors-blues-blue80;
-    border: $border-widths-small solid $colors-greys-grey10;
-    content: '';
-    height: 0.625rem;
-    position: absolute;
-    transform: rotate(45deg) translateY(0.125rem);
-    width: 0.625rem;
-    z-index: $z-indexes-behind;
-  }
-  &--top::before {
-    bottom: -0.2rem;
-    left: calc(50% - 0.3125rem);
-  }
-  &--bottom::before {
-    left: calc(50% - 0.3125rem);
-    top: -0.4rem;
   }
 }

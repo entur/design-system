@@ -1,6 +1,6 @@
 ---
 name: Popover
-description: Popover kan brukes for å gi ekstra informasjon til brukeren ved hover eller fokus.
+description: Popover kan brukes for å gi en flytende boks for ekstra funksjonalitet.
 route: /komponenter/feedback/popover
 parent: Komponenter
 menu: Feedback
@@ -8,8 +8,17 @@ npmPackage: tooltip
 tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
-import { Popover, PopoverTrigger, PopoverContent } from '@entur/tooltip';
-import { PrimaryButton } from '@entur/button';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverCloseButton,
+} from '@entur/tooltip';
+import { Heading4, Label } from '@entur/typography';
+import { GridContainer, GridItem } from '@entur/grid';
+import { Checkbox } from '@entur/form';
+import { SecondaryButton, IconButton } from '@entur/button';
+import { AdjustmentsIcon, CloseIcon } from '@entur/icons';
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -17,23 +26,61 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader></PageHeader>
 
-{}
-
 <Playground>
   <Popover>
     <PopoverTrigger>
-      <PrimaryButton>ok</PrimaryButton>
+      <SecondaryButton>
+        <AdjustmentsIcon />
+        Filter
+      </SecondaryButton>
     </PopoverTrigger>
     <PopoverContent>
-      Se her ja
-      <PrimaryButton>inside</PrimaryButton>
+      <div style={{ padding: ' 1rem' }}>
+        <Heading4 margin="none" style={{ display: 'inline-block' }}>
+          Filter
+        </Heading4>
+        <PopoverCloseButton style={{ float: 'right', display: 'inline-block' }}>
+          <IconButton>
+            <CloseIcon />
+          </IconButton>
+        </PopoverCloseButton>
+        <GridContainer>
+          <GridItem small={3}>
+            <Label>Status</Label>
+          </GridItem>
+          <GridItem small={4}>
+            <Checkbox>Kladd</Checkbox>
+          </GridItem>
+          <GridItem small={5}>
+            <Checkbox>Publisert</Checkbox>
+          </GridItem>
+        </GridContainer>
+        <GridContainer style={{ marginBottom: '1rem' }}>
+          <GridItem small={3}>
+            <Label>Kategori</Label>
+          </GridItem>
+          <GridItem small={4}>
+            <Checkbox>App</Checkbox>
+          </GridItem>
+          <GridItem small={5}>
+            <Checkbox>Entur Sørvis</Checkbox>
+          </GridItem>
+          <GridItem small={3}></GridItem>
+          <GridItem small={4}>
+            <Checkbox>Web</Checkbox>
+          </GridItem>
+          <GridItem small={5}>
+            <Checkbox>Mobilterminal</Checkbox>
+          </GridItem>
+        </GridContainer>
+      </div>
     </PopoverContent>
   </Popover>
 </Playground>
 
 ## Komponenter
 
-### Tooltip
+### Popover
 
 <ImportStatement imports="Popover" />
 <Props of={Popover} />

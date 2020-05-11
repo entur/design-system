@@ -1,17 +1,18 @@
 import React, { cloneElement, createContext, useContext } from 'react';
 import { usePopper } from 'react-popper';
+import { Placement } from '@popperjs/core';
 import classNames from 'classnames';
 import './Popover.scss';
 
 type PopoverContextProps = {
   showPopover: boolean;
-  referenceElement: React.RefObject<HTMLButtonElement>;
-  popperElement: React.RefObject<HTMLDivElement>;
-  arrowElement: React.RefObject<HTMLDivElement>;
+  triggerElement: React.RefObject<HTMLButtonElement>;
+  contentElement: React.RefObject<HTMLDivElement>;
   styles: { [key: string]: React.CSSProperties };
   attributes: { [key: string]: { [key: string]: string } };
   buttonProps: {};
   contentProps: {};
+  closeButtonProps: {};
 };
 
 const PopoverContext = createContext<PopoverContextProps | undefined>(
@@ -25,63 +26,60 @@ const usePopoverContext = () => {
   return context;
 };
 
-type PopoverProps = {
-  /** Innholdet i Popover'en */
+export type PopoverProps = {
+  /** Innholdet i Popover */
   children: React.ReactNode;
+  /** Plasseringen av Popover
+   * @default "bottom-start"
+   */
+  placement?: Placement;
 };
 
-export const Popover: React.FC<PopoverProps> = ({ children }) => {
+export const Popover: React.FC<PopoverProps> = ({
+  children,
+  placement = 'bottom-start',
+}) => {
   const [showPopover, setShowPopover] = React.useState(false);
-
   const triggerElement = React.useRef(null);
   const contentElement = React.useRef(null);
-  const arrowElement = React.useRef(null);
-  console.log(contentElement);
 
   const { styles, attributes } = usePopper(
     triggerElement.current,
     contentElement.current,
     {
       modifiers: [
-        { name: 'arrow', options: { element: arrowElement.current } },
-        { name: 'placement', options: { placement: 'bottom' } },
+        { name: 'arrow', enabled: false },
         {
           name: 'offset',
           options: {
-            offset: [0, 10],
+            offset: [0, 8],
           },
         },
       ],
+      placement: placement,
     },
   );
 
   const buttonProps = {
     onClick: () => {
-      setShowPopover(!showPopover);
-      //@ts-ignore
-      contentElement.current.focus();
+      setShowPopover(prev => !prev);
     },
     'aria-haspopup': 'dialog',
     'aria-expanded': showPopover,
   };
 
-  const handleBlur = (event: React.FocusEventHandler<HTMLElement>) => {
-    if (
-      showPopover &&
-      contentElement.current &&
-      //@ts-ignore
-      !triggerElement.current.contains(event.relatedTarget) &&
-      //@ts-ignore
-      !contentElement.current.contains(event.relatedTarget)
-    ) {
+  useOnClickOutside(contentElement, triggerElement, () =>
+    setShowPopover(false),
+  );
+  const closeButtonProps = {
+    onClick: () => {
       setShowPopover(false);
-    }
+    },
   };
 
   const contentProps = {
     role: 'dialog',
     'aria-modal': 'false',
-    onBlur: handleBlur,
     ref: contentElement,
     onKeyDown: (event: React.KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -91,13 +89,13 @@ export const Popover: React.FC<PopoverProps> = ({ children }) => {
   };
   const contextValue = {
     showPopover,
-    referenceElement: triggerElement,
-    popperElement: contentElement,
-    arrowElement: arrowElement,
+    triggerElement,
+    contentElement,
     styles,
     attributes,
     buttonProps,
     contentProps,
+    closeButtonProps,
   };
   return (
     <PopoverContext.Provider value={contextValue}>
@@ -106,25 +104,39 @@ export const Popover: React.FC<PopoverProps> = ({ children }) => {
   );
 };
 
-export const PopoverTrigger: React.FC<{ children: React.ReactElement }> = ({
+export type PopoverTriggerProps = {
+  /** Knapp som skal brukes for å åpne Popover */
+  children: React.ReactElement;
+};
+
+export const PopoverTrigger: React.FC<PopoverTriggerProps> = ({ children }) => {
+  const { buttonProps, triggerElement } = usePopoverContext();
+  return cloneElement(children, { ref: triggerElement, ...buttonProps });
+};
+
+export type PopoverCloseButtonProps = {
+  /** En valgfri knapp som kan legges inn for å lukke Popover */
+  children: React.ReactElement;
+};
+
+export const PopoverCloseButton: React.FC<PopoverCloseButtonProps> = ({
   children,
+  ...rest
 }) => {
-  const { buttonProps, referenceElement } = usePopoverContext();
-  return cloneElement(children, { ref: referenceElement, ...buttonProps });
+  const { closeButtonProps } = usePopoverContext();
+  return cloneElement(children, { ...closeButtonProps, ...rest });
+};
+
+export type PopoverContentProps = {
+  /**Innholdet til Popover */
+  children: React.ReactNode;
 };
 
 export const PopoverContent: React.RefForwardingComponent<
   HTMLDivElement,
-  { children: React.ReactNode }
+  PopoverContentProps
 > = React.forwardRef(({ children }, ref: React.Ref<HTMLDivElement>) => {
-  const {
-    showPopover,
-    attributes,
-    arrowElement,
-    styles,
-    contentProps,
-  } = usePopoverContext();
-
+  const { showPopover, attributes, styles, contentProps } = usePopoverContext();
   return (
     <div
       className={classNames('eds-popover', {
@@ -137,7 +149,35 @@ export const PopoverContent: React.RefForwardingComponent<
       {...contentProps}
     >
       {children}
-      <div ref={arrowElement} style={styles.arrow}></div>
     </div>
   );
 });
+
+function useOnClickOutside(
+  ref: React.RefObject<HTMLDivElement>,
+  buttonRef: React.RefObject<HTMLButtonElement>,
+  handler: () => void,
+) {
+  React.useEffect(() => {
+    const listener = (event: any) => {
+      if (
+        !ref.current ||
+        ref.current.contains(event.target) ||
+        !buttonRef.current ||
+        buttonRef.current.contains(event.target)
+      ) {
+        return;
+      }
+
+      handler();
+    };
+
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, buttonRef, handler]);
+}
