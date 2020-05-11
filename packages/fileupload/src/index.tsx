@@ -3,4 +3,4 @@ import './index.scss';
 
 warnAboutMissingStyles('fileupload');
 
-export * from './Fileupload';
+export * from './FileUpload';

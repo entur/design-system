@@ -1,0 +1,65 @@
+@import '~@entur/tokens/dist/styles.scss';
+.eds-file-upload {
+  &__wrapper {
+    display: inline-block;
+  }
+  &__input {
+    min-width: 13.75rem;
+    &:focus {
+      outline: none;
+      .eds-file-upload__dropzone {
+        box-shadow: $shadows-focus;
+      }
+    }
+  }
+  &__dropzone {
+    border: $border-widths-medium $colors-greys-grey10 dashed;
+    display: inline-block;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    height: 2.75rem;
+    padding: $space-extra-small;
+    text-align: center;
+    width: 100%;
+    .eds-contrast & {
+      border-color: $colors-blues-blue30;
+    }
+    &--success {
+      border-color: $colors-validation-mint;
+      border-style: solid;
+      .eds-contrast & {
+        border-color: $colors-validation-mint-contrast;
+      }
+    }
+    &--error {
+      border-color: $colors-validation-lava;
+      border-style: solid;
+      .eds-contrast & {
+        border-color: $colors-validation-lava-contrast;
+      }
+    }
+    &--active {
+      border-color: $colors-brand-blue;
+      .eds-contrast & {
+        border-color: $colors-brand-lavender;
+      }
+    }
+    &--reject {
+      background: $colors-greys-grey20;
+      border-color: $colors-validation-lava;
+      opacity: 0.5;
+    }
+  }
+  &__file-list {
+  }
+  &__file-name {
+    display: flex;
+    align-items: center;
+
+    font-size: $font-sizes-medium;
+    > svg {
+      margin-right: $space-extra-small2;
+    }
+  }
+}
