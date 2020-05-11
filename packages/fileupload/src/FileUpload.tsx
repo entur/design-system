@@ -78,8 +78,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         </span>
       </div>
       <div className="eds-file-upload__file-list">
-        {files.map((file: any) => (
-          <div className="eds-file-upload__file-name" key={file.path}>
+        {files.map((file: any, index) => (
+          <div className="eds-file-upload__file-name" key={index}>
             <FileIcon className="eds-field-upload__file-name-icon" />
             {file.path} - {convertSizeToHuman(file.size)}{' '}
             <IconButton onClick={() => onDelete(file)}>
