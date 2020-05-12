@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-@keyframes back-and-forth {
+@keyframes eds-back-and-forth {
   from {
     transform: none;
   }
@@ -47,7 +47,7 @@
   }
 
   &--indeterminate {
-    animation: 1s back-and-forth alternate infinite ease-in-out;
+    animation: 1s eds-back-and-forth alternate infinite ease-in-out;
     border: none;
     will-change: transform;
 
