@@ -49,11 +49,12 @@
   font-size: inherit;
   line-height: inherit;
   margin: 0;
-  min-width: 10rem;
+  min-width: 8rem;
   padding: $space-extra-small $space-default;
   position: relative;
   .eds-tab-list--width-fluid & {
     flex-grow: 1;
+    min-width: 0;
   }
   .eds-contrast & {
     background-color: $colors-blues-blue30;
@@ -122,6 +123,9 @@
       left: 0;
       right: 0;
     }
+  }
+  &--remove-active-line[aria-selected='true']::before {
+    background: transparent;
   }
 
   &[disabled] {
