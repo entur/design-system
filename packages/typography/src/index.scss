@@ -187,21 +187,33 @@ html {
     font-size: inherit;
     text-decoration: none;
     position: relative;
-    &:before {
-      background: $colors-brand-blue;
-      bottom: -0.125rem;
-      content: '';
-      display: block;
-      left: 0;
-      height: 0.125rem;
-      width: 100%;
-      position: absolute;
-    }
+
+    background-image: linear-gradient(
+      120deg,
+      $colors-brand-blue 0%,
+      $colors-brand-blue 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 0.125rem;
+    background-position: 0 88%;
+  }
+  &:hover {
+    animation: eds-link-underline 0.5s ease-in;
   }
 
-  &:hover {
-    &:before {
-      animation: lineExpand ease-in-out 0.3s;
+  .eds-contrast & {
+    background-image: linear-gradient(
+      120deg,
+      $colors-brand-white 0%,
+      $colors-brand-white 100%
+    );
+  }
+  @keyframes eds-link-underline {
+    from {
+      background-size: 0% 0.125rem;
+    }
+    to {
+      background-size: 100% 0.125rem;
     }
   }
 
