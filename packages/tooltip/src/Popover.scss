@@ -1,0 +1,20 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-popover {
+  background: $colors-blues-blue80;
+  box-shadow: $shadows-card-shadow;
+  border-radius: $border-radiuses-default;
+  border: $border-widths-small solid $colors-greys-grey10;
+  color: inherit;
+  font-family: inherit;
+  z-index: $z-indexes-popover;
+  .eds-contrast & {
+    background: $colors-blues-blue10;
+  }
+  &--hidden {
+    display: none;
+  }
+  &:focus {
+    outline: 5px solid red;
+  }
+}

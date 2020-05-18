@@ -84,10 +84,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
       </Reference>
       {showTooltip && (
         <Popper
-          modifiers={{
-            arrow: { enabled: false },
-            offset: { offset: '0, 10' },
-          }}
+          modifiers={[
+            { name: 'arrow', enabled: false },
+            {
+              name: 'offset',
+              options: { offset: [0, 10] },
+            },
+          ]}
           placement={popperPlacement}
         >
           {({ ref, style, placement: popperPlacement }) => (
