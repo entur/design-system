@@ -10,7 +10,7 @@ export type TravelLegProps = {
   transport:
     | 'bus'
     | 'metro'
-    | 'plane'
+    | 'air'
     | 'tram'
     | 'rail'
     | 'water'
@@ -62,7 +62,7 @@ function modeCalc(mode: string): modeCalcResult {
         contrast: colors.transport.contrast.metro,
         pattern: 'line',
       };
-    case 'plane':
+    case 'air':
       return {
         color: colors.transport.default.plane,
         contrast: colors.transport.contrast.plane,
