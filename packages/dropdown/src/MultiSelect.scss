@@ -1,0 +1,17 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-multi-select {
+  &__selected-items  {
+    display: flex;
+    height: 2.75rem;
+    align-items: center;
+    &-tag {
+      margin-left: $space-extra-small2;
+      white-space: nowrap;
+      .eds-contrast & {
+        background: $colors-brand-white;
+        color: $colors-brand-blue;
+      }
+    }
+  }
+}
