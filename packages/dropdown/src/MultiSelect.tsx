@@ -137,7 +137,7 @@ export const MultiSelect: React.FC<
 
   React.useEffect(() => {
     onChange(selectedItems);
-  }, [selectedItems]);
+  }, [selectedItems, onChange]);
 
   const areItemsSelected = selectedItems.length !== 0;
 
