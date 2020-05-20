@@ -19,7 +19,7 @@ import { CloseIcon, DownArrowIcon } from '@entur/icons';
 import './MultiSelect.scss';
 
 type MultiSelectProps = {
-  /** Tilgjengelige valg i dropdownen */
+  /** Tilgjengelige valg i MultiSelect */
   items: PotentiallyAsyncDropdownItemType;
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
@@ -27,7 +27,7 @@ type MultiSelectProps = {
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Tekst eller ikon som kommer før dropdownen */
+  /** Tekst eller ikon som kommer før MultiSelect */
   prepend?: React.ReactNode;
   /** Deaktiver dropdownen */
   disabled?: boolean;
@@ -47,7 +47,7 @@ type MultiSelectProps = {
   debounceTimeout?: number;
   /** Ekstra klassenavn */
   className?: string;
-  /** Styling som sendes ned til Dropdown-lista */
+  /** Styling som sendes ned til MultiSelect-lista */
   listStyle?: { [key: string]: any };
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
@@ -90,7 +90,6 @@ export const MultiSelect: React.FC<
   const {
     getSelectedItemProps,
     getDropdownProps,
-    // addSelectedItem,
     selectedItems,
     removeSelectedItem,
     reset,
@@ -150,6 +149,7 @@ export const MultiSelect: React.FC<
         <BaseFormControl
           prepend={prepend}
           dark
+          disabled={disabled}
           append={
             <Appendix
               loading={loading}
