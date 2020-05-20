@@ -16,6 +16,7 @@ type SearchableDropdownProps = {
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
   clearable: boolean;
+  regex?: ((input: string) => RegExp) | false;
   [key: string]: any;
 };
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
@@ -39,11 +40,14 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     openMenu,
   } = useDownshift();
 
+  function escapeRegex(string: string) {
+    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
   const filteredItems = React.useMemo(() => {
     if (!inputValue) {
       return items;
     }
-    const inputRegex = new RegExp(inputValue, 'i');
+    const inputRegex = new RegExp(escapeRegex(inputValue), 'i');
     return items.filter(item => inputRegex.test(item.label));
   }, [inputValue, items]);
 
