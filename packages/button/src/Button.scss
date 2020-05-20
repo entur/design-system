@@ -2,9 +2,9 @@
 @import '~@entur/utils/dist/color-utils.scss';
 
 a.eds-button {
-  padding: 0.5rem 0;
+  padding: $space-extra-small $space-default;
   &--size-large {
-    padding: 1rem 0;
+    padding: $space-default;
   }
 }
 
