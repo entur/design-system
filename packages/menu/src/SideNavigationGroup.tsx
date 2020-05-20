@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { BaseExpand } from '@entur/expand';
-import { DownArrowIcon } from '@entur/icons';
+import { BaseExpand, ExpandArrow } from '@entur/expand';
 
 export type SideNavigationGroupProps = {
   /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert
@@ -68,10 +67,9 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
         className="eds-side-navigation-group__trigger"
       >
         <span>{title}</span>
-        <DownArrowIcon
-          className={classNames('eds-side-navigation-group__icon', {
-            'eds-side-navigation-group__icon--open': isOpen,
-          })}
+        <ExpandArrow
+          open={isOpen}
+          className="eds-side-navigation-group__icon"
         />
       </button>
       <BaseExpand open={isOpen}>{children}</BaseExpand>

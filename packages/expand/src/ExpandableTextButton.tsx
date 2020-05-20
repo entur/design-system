@@ -1,7 +1,6 @@
 import React from 'react';
-import classNames from 'classnames';
-import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
+import { ExpandArrow } from './ExpandArrow';
 
 export type ExandableTextButtonProps = {
   children: React.ReactNode;
@@ -27,12 +26,7 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
       {...rest}
     >
       <Heading4 as="span">{children}</Heading4>
-      <DownArrowIcon
-        inline
-        className={classNames('eds-expandable-text__arrow', {
-          'eds-expandable-text__arrow--open': open,
-        })}
-      />
+      <ExpandArrow open={open} className="eds-expandable-text__arrow" inline />
     </button>
   );
 };

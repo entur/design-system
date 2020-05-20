@@ -133,9 +133,5 @@
 }
 
 .eds-side-navigation-group__icon {
-  transition: transform $timings-fast ease-out;
   margin-right: $space-large;
-  &--open {
-    transform: rotateZ(180deg);
-  }
 }

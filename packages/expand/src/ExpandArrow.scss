@@ -1,0 +1,8 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-expandable-arrow {
+  transition: ($timings-fast + $timings-fast) transform ease-out;
+  &--open {
+    transform: rotate(-180deg);
+  }
+}
