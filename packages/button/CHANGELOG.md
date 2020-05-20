@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.7...@entur/button@2.2.8) (2020-05-20)
+
+### Bug Fixes
+
+- fix padding bug for link buttons ([119e33a](https://bitbucket.org/enturas/design-system/commits/119e33a8d2c9c649e16328378b7e95ce9aa7d3bb))
+
 ## [2.2.7](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.6...@entur/button@2.2.7) (2020-04-27)
 
 **Note:** Version bump only for package @entur/button

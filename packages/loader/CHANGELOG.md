@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.18](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.17...@entur/loader@0.3.18) (2020-05-20)
+
+### Bug Fixes
+
+- add namespace to back-and-forth keyframe ([b6abe6a](https://bitbucket.org/enturas/design-system/commits/b6abe6abf65cce851bfca176c4497b9c8fa8cb27))
+
 ## [0.3.17](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.16...@entur/loader@0.3.17) (2020-04-27)
 
 **Note:** Version bump only for package @entur/loader

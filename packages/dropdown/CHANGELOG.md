@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.0.0...@entur/dropdown@1.1.0) (2020-05-20)
+
+### Bug Fixes
+
+- fix crash on special characters in searchable dropdown ([2149d9a](https://bitbucket.org/enturas/design-system/commits/2149d9a4efddfa8dde1e73e6cfb43a878b3cc136))
+- reduce internal dropdown padding ([fa081c9](https://bitbucket.org/enturas/design-system/commits/fa081c96220f1c8cab6ee5db2fb39575869d6afa))
+
+### Features
+
+- add the multiselect dropdown component ([7863395](https://bitbucket.org/enturas/design-system/commits/786339586a90a7f75c17115837b824a9d4981bcf))
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@0.9.2...@entur/dropdown@1.0.0) (2020-04-27)
 
 ### Bug Fixes

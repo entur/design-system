@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@3.0.0...@entur/travel@4.0.0) (2020-05-20)
+
+### Code Refactoring
+
+- **travelleg:** update plane to air ([a297451](https://bitbucket.org/enturas/design-system/commits/a29745104ee8f4a8285659ecba2e864bf21a25c7))
+
+### BREAKING CHANGES
+
+- **travelleg:** plane -> air to follow the netex standard
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@2.0.2...@entur/travel@3.0.0) (2020-04-27)
 
 ### Code Refactoring

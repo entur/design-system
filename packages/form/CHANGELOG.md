@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.5...@entur/form@3.0.0) (2020-05-20)
+
+### Bug Fixes
+
+- fix focus styling for segmented control ([855bda0](https://bitbucket.org/enturas/design-system/commits/855bda0c78479dd9d30393fe1874c3f5265e5673))
+
+### Code Refactoring
+
+- netex naming for travelswitch ([c5424e3](https://bitbucket.org/enturas/design-system/commits/c5424e3793264d8432816bdefcb4c557d1dbe607))
+
+### BREAKING CHANGES
+
+- updated naming of transport modes to follow netex standard
+
 ## [2.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.4...@entur/form@2.5.5) (2020-04-27)
 
 **Note:** Version bump only for package @entur/form

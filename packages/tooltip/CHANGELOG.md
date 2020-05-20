@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.0.6...@entur/tooltip@2.1.0) (2020-05-20)
+
+### Bug Fixes
+
+- reduce tooltip min width ([69f1188](https://bitbucket.org/enturas/design-system/commits/69f118809747cade635c2cfa1b6e62eeece2f607))
+- update tooltip component for breaking change in dependency ([1601ab7](https://bitbucket.org/enturas/design-system/commits/1601ab79945a0a049ab25fa7d429a019ad454dee))
+
+### Features
+
+- **popover:** add popover component ([b692c95](https://bitbucket.org/enturas/design-system/commits/b692c95c08cfc20368e9eda082bcb235339718d2))
+
 ## [2.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.0.5...@entur/tooltip@2.0.6) (2020-04-27)
 
 **Note:** Version bump only for package @entur/tooltip
