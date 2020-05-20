@@ -15,6 +15,7 @@ import {
   BaseExpand,
   ExpandableText,
   ExpandableTextButton,
+  ExpandArrow,
 } from '@entur/expand';
 import { Heading2, Heading3, Paragraph } from '@entur/typography';
 
@@ -117,6 +118,11 @@ Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en acco
   </Accordion>
 </Playground>
 
+### ExpandableTextButton
+
+<ImportStatement imports="ExpandableTextButton" />
+<Props of={ExpandableTextButton} />
+
 ### BaseExpand
 
 <ImportStatement imports="BaseExpand" />
@@ -124,7 +130,9 @@ Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en acco
 
 ExpandablePanel, AccordionItem (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.
 
-### ExpandableTextButton
+### ExpandArrow
 
-<ImportStatement imports="ExpandableTextButton" />
-<Props of={ExpandableTextButton} />
+<ImportStatement imports="ExpandArrow" />
+<Props of={ExpandArrow} />
+
+Hvis man bruker `BaseExpand`, så kan man bruke `ExpandArrow` samtidig for å få den roterende pila som brukes i alle expandable-komponenter i designsystemet.
