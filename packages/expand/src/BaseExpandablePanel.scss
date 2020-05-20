@@ -54,13 +54,6 @@
   justify-content: flex-end;
 }
 
-.eds-expandable-panel__arrow {
-  transition: ($timings-fast + $timings-fast) transform ease-out;
-  &--open {
-    transform: rotate(-180deg);
-  }
-}
-
 .eds-expandable-panel__content {
   overflow: auto;
   padding: $space-default $space-default $space-default $space-large;

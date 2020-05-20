@@ -1,0 +1,37 @@
+---
+name: MultiSelect
+description: Multiselect lar deg velge mellom mange valg
+route: /komponenter/skjemaelementer/multi-select
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: dropdown
+tags: multi, dropdown, select, autocomplete, autosuggest, dropdown, nedtrekksmeny
+---
+
+import { Props } from 'docz';
+import { MultiSelect } from '@entur/dropdown';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+import dropdownItems from './dropdownItems';
+
+<PageHeader />
+
+<Playground>
+  <MultiSelect
+    items={dropdownItems}
+    label="Søk etter stoppesteder"
+    placeholder="F.eks. Bislett"
+  />
+</Playground>
+
+## Komponenter
+
+### Dropdown
+
+<ImportStatement imports="MultiSelect" />
+
+<Props of={MultiSelect} />
+
+`MultiSelect` inkludering props som er tilgjengelig via downshift.
+Les om disse her https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#advanced-props.

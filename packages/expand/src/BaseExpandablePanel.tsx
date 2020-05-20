@@ -1,10 +1,10 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
-import { DownArrowIcon } from '@entur/icons';
 import { Heading4 } from '@entur/typography';
 import { BaseExpand } from './BaseExpand';
 
 import './BaseExpandablePanel.scss';
+import { ExpandArrow } from './ExpandArrow';
 
 type BaseExpandablePanelProps = {
   /** Teksten som skal stå i panelet */
@@ -45,13 +45,8 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
           <Heading4 margin="none" as="div">
             {title}
           </Heading4>
-
           <div className="eds-expandable-panel__icon-container">
-            <DownArrowIcon
-              className={classNames('eds-expandable-panel__arrow', {
-                'eds-expandable-panel__arrow--open': open,
-              })}
-            />
+            <ExpandArrow open={open} />
           </div>
         </div>
       </button>
