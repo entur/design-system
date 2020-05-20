@@ -5,3 +5,4 @@ warnAboutMissingStyles('dropdown', 'form', 'a11y');
 
 export * from './Dropdown';
 export * from './NativeDropdown';
+export * from './MultiSelect';

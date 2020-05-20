@@ -14,25 +14,29 @@ export type TagChipProps = {
   [key: string]: any;
 };
 
-export const TagChip: React.FC<TagChipProps> = ({
-  children,
-  className,
-  onClose,
-  ...rest
-}) => {
-  return (
-    <div
-      className={classNames('eds-chip', 'eds-tag-chip', className)}
-      {...rest}
-    >
-      {children}
-      <button
-        className="eds-tag-chip__close-button"
-        type="button"
-        onClick={onClose}
+export const TagChip: React.RefForwardingComponent<
+  HTMLButtonElement,
+  TagChipProps
+> = React.forwardRef(
+  (
+    { children, className, onClose, ...rest },
+    ref: React.Ref<HTMLButtonElement>,
+  ) => {
+    return (
+      <div
+        className={classNames('eds-chip', 'eds-tag-chip', className)}
+        {...rest}
       >
-        <CloseIcon />
-      </button>
-    </div>
-  );
-};
+        {children}
+        <button
+          className="eds-tag-chip__close-button"
+          type="button"
+          onClick={onClose}
+          ref={ref}
+        >
+          <CloseIcon />
+        </button>
+      </div>
+    );
+  },
+);

@@ -1,0 +1,20 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-multi-select {
+  &__selected-items {
+    display: flex;
+    height: 2.75rem;
+    align-items: center;
+    &-tag.eds-tag-chip {
+      margin-left: $space-extra-small2;
+      white-space: nowrap;
+      .eds-contrast & {
+        background: $colors-brand-white;
+        color: $colors-brand-blue;
+        .eds-tag-chip__close-button:hover {
+          background-color: $colors-blues-blue70;
+        }
+      }
+    }
+  }
+}
