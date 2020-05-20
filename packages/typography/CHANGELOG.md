@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.5...@entur/typography@1.1.6) (2020-05-20)
+
+### Bug Fixes
+
+- fix underline bug for link ([634950e](https://bitbucket.org/enturas/design-system/commits/634950e4879c3623e5a92a6c3fa4b5fb2250226f))
+
 ## [1.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.4...@entur/typography@1.1.5) (2020-04-27)
 
 ### Bug Fixes

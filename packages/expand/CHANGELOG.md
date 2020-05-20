@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.1.2...@entur/expand@3.2.0) (2020-05-20)
+
+### Bug Fixes
+
+- use the expand arrow component instead of icon ([44e955a](https://bitbucket.org/enturas/design-system/commits/44e955a636f0c42b72e19029c75c6324f90c5ac3))
+
+### Features
+
+- add expand arrow as its own component ([5fc6bea](https://bitbucket.org/enturas/design-system/commits/5fc6bea21d2568ced1af0c0f976df4b2efbff539))
+
 ## [3.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.1.1...@entur/expand@3.1.2) (2020-04-27)
 
 **Note:** Version bump only for package @entur/expand

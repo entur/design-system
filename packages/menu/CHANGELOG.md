@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.1...@entur/menu@1.5.2) (2020-05-20)
+
+### Bug Fixes
+
+- use the expand arrow component instead of icon ([44e955a](https://bitbucket.org/enturas/design-system/commits/44e955a636f0c42b72e19029c75c6324f90c5ac3))
+
 ## [1.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.0...@entur/menu@1.5.1) (2020-04-27)
 
 **Note:** Version bump only for package @entur/menu

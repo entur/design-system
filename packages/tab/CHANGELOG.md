@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.7...@entur/tab@0.4.8) (2020-05-20)
+
+### Bug Fixes
+
+- prop to remove active line, and min width adjustments for tab ([45e4e1b](https://bitbucket.org/enturas/design-system/commits/45e4e1b4c60e0e94828c0144b9c16473e315eb54))
+
 ## [0.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.6...@entur/tab@0.4.7) (2020-04-27)
 
 **Note:** Version bump only for package @entur/tab
