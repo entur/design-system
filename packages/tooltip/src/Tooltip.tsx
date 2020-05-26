@@ -5,6 +5,7 @@ import { useRandomId } from '@entur/utils';
 import { Placement as PopperPlacementProps } from 'popper.js';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
+import './Tooltip.scss';
 
 export type TooltipProps = {
   /** Plassering av tooltip-en */
