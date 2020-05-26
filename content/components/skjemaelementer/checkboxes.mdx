@@ -1,7 +1,7 @@
 ---
-name: Checkboxes
-description: Checkboxes lar deg velge ett eller flere binære valg
-route: /komponenter/skjemaelementer/checkboxes
+name: Checkbox
+description: Checkboxes lar brukerne velge ett eller flere alternativer fra en liste over valg.
+route: /komponenter/skjemaelementer/checkbox
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: form
@@ -13,18 +13,19 @@ import { Link } from '@entur/typography';
 import { Checkbox, Fieldset } from '@entur/form';
 import { ImportStatement } from '~/components/ImportStatement';
 import { Playground } from '~/components/Playground';
+import { BestPractices, Example } from '~/components/BestPractices';
+import doPic from './CheckboxDo.png';
+import dontPic from './CheckboxDont.png';
 import PageHeader from '~/components/PageHeader';
 
 <PageHeader />
 
-<Playground>
-  <Checkbox>
-    Jeg godtar <Link href="#">bruksvilkårene</Link> for denne tjenesten
-  </Checkbox>
-  <Checkbox>
-    Jeg godtar <Link href="#">cookies</Link> for denne tjenesten
-  </Checkbox>
-  <Checkbox>Jeg godtar alt.</Checkbox>
+<Playground style={{ display: 'flex', justifyContent: 'center' }}>
+  <Fieldset label="Hvilke sparkesykler vil du se i kartet?">
+    <Checkbox>Tier</Checkbox>
+    <Checkbox>Voi</Checkbox>
+    <Checkbox>Zvipp</Checkbox>
+  </Fieldset>
 </Playground>
 
 ## Komponenter
@@ -41,24 +42,14 @@ import PageHeader from '~/components/PageHeader';
 
 Brukes for å gruppere valg sammen.
 
-## Retningslinjer
+## Retningslinjer for bruk
 
-Checkboxen kan brukes for binære valg (f.eks. ja/nei) der man bekrefter valget med en sekundær interaksjon (f.eks. klikk på "lagre"). Om du ønsker at valget blir gjenspeilet / lagret med en gang, bruk en toggle switch istedenfor.
+Brukes i tilfeller der det er en liste over alternativer, og brukeren kan velge ett eller flere
+alternativer. En checkbox skal være venstrejustert i skjemaer. Den skal alltid stå foran
+tilhørende label tekst, og bør aldri stå alene.
 
-Om brukeren skal velge en eller flere valg, så bør du bruke checkboxes istedenfor.
-
-<Playground>
-  <Fieldset label="Jeg vil gjerne reise med">
-    <Checkbox>Buss</Checkbox>
-    <Checkbox>Tog</Checkbox>
-    <Checkbox>Båt</Checkbox>
-    <Checkbox>Fly</Checkbox>
-    <Checkbox>Sykkel</Checkbox>
-    <Checkbox>Sparkesykkel</Checkbox>
-  </Fieldset>
-</Playground>
-
-For flere retningslinjer rundt toggles vs checkboxes vennligst ta en titt på [denne artikkelen](https://uxplanet.org/checkbox-vs-toggle-switch-7fc6e83f10b8).
+Hvis brukerne bare kan velge ett alternativ fra listen, er det mer passende å bruke Radioknapper.
+Om du ønsker at valget blir gjenspeilet eller lagret med en gang, bruk heller en Switch istedenfor.
 
 ### Indeterminate
 
@@ -120,3 +111,16 @@ Her har du et eksempel hvor det brukes. Prøv å velg ingen, alle eller en bland
     );
   }}
 </Playground>
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do" src={doPic}>
+    Dersom det er mange checkboxes, bør du liste dem under hverandre i en
+    kolonnegruppe slikt at det gjør det enkelt for brukeren å skanne raskt
+    gjennom listen.
+  </Example>
+  <Example type="dont" src={dontPic}>
+    Du bør unngå å plassere checkboxes i flere kolonner.
+  </Example>
+</BestPractices>

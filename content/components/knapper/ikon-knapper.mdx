@@ -1,7 +1,7 @@
 ---
-name: Ikonknapper
-description: Ikonknapper brukes gjerne for mindre handlinger i tabeller eller andre lignende steder
-route: /komponenter/knapper/ikon-knapper
+name: Icon button
+description: Ikonknapper har bare et ikon uten label og lar brukerne gjøre handlinger og ta valg med et enkelt klikk.
+route: /komponenter/knapper/icon-button
 parent: Komponenter
 menu: Knapper
 npmPackage: button
@@ -26,27 +26,40 @@ import {
   EditIcon,
   CloseIcon,
 } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
 
-<Playground>
-  <div style={{ display: 'flex' }}>
+<Playground
+  style={{
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    margin: '0 35%',
+  }}
+>
+  <Tooltip placement="bottom" content="Legg til">
     <IconButton>
       <AddIcon />
     </IconButton>
+  </Tooltip>
+  <Tooltip placement="bottom" content="Meny">
     <IconButton>
       <MenuIcon />
     </IconButton>
+  </Tooltip>
+  <Tooltip placement="bottom" content="Rediger">
     <IconButton>
       <EditIcon />
     </IconButton>
+  </Tooltip>
+  <Tooltip placement="bottom" content="Lukk">
     <IconButton>
       <CloseIcon />
     </IconButton>
-  </div>
+  </Tooltip>
 </Playground>
 
 ## Komponenter
@@ -56,9 +69,19 @@ import { ImportStatement } from '~/components/ImportStatement';
 <ImportStatement imports="IconButton" />
 <Props of={IconButton} />
 
+## Retningslinjer for bruk
+
+Ikonknapper har ingen label og er bare et ikon. Tooltips er derfor nødvendige når de brukes alene.
+Ved å hovre på ikonknappen, vil det dukke opp en tooltip med en tekstbeskrivelse som forklarer
+handlingen brukeren kan utføre.
+
+Siden de ikke har en label sparer de også mye plass i et grensesnitt.
+Ikonknapper lar deg ha andre ikonknapper ved siden av dem på en liten plass.
+Tommelfingerregelen å bare ha ikonknapper, er kun aktuelt for ikoner som man anser som globalt forståelige.
+
 ## Eksempler
 
-### Tabell
+Ikonknapper brukes ofte som inline-handlinger i tabellrader og verktøylinjer.
 
 <Playground>
   <Table>

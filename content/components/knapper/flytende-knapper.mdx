@@ -1,7 +1,7 @@
 ---
-name: Flytende knapper
-description: Flytende knapper er ikonknapper med eller uten tekst, og brukes for å trigge hovedfunksjonaliteten på en side.
-route: /komponenter/knapper/flytende-knapper
+name: Floating action button
+description: En flytende handlingsknapp (FAB) er en sirkulær form med et ikon i midten som flyter over brukergrensesnittet.
+route: /komponenter/knapper/floating-action-button
 parent: Komponenter
 menu: Knapper
 npmPackage: button
@@ -10,35 +10,45 @@ tags: flytende, knapp, funksjonsknapp, tabellknapp, button, fab, floating, actio
 
 import { FloatingButton } from '@entur/button';
 import { Label } from '@entur/typography';
+import { space } from '@entur/tokens';
 import { Props } from 'docz';
-import { AddIcon, CheckIcon, RightArrowIcon } from '@entur/icons';
+import { AddIcon, CheckIcon, RightArrowIcon, ForwardIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { BestPractices, Example } from '~/components/BestPractices';
+import FabExample from './FabExample.png';
+import FabDo from './FabDo.png';
+import FabDont from './FabDont.png';
 
 <PageHeader />
 
-<Playground>
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    }}
+<Playground
+  style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0 10%',
+  }}
+>
+  <FloatingButton
+    aria-label="Legg til"
+    onClick={() => {}}
+    style={{ marginRight: space.large }}
   >
-    <FloatingButton size="small" aria-label="Legg til" onClick={() => {}}>
-      <AddIcon />
-    </FloatingButton>
-    <FloatingButton aria-label="Legg til" onClick={() => {}}>
-      <AddIcon />
-    </FloatingButton>
-    <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
-      <CheckIcon /> Favoritt
-    </FloatingButton>
-    <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
-      Favoritt <RightArrowIcon />
-    </FloatingButton>
-  </div>
+    <ForwardIcon />
+  </FloatingButton>
+  <FloatingButton
+    size="small"
+    aria-label="Legg til"
+    onClick={() => {}}
+    style={{ marginRight: space.large }}
+  >
+    <ForwardIcon />
+  </FloatingButton>
+  <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
+    Neste side <ForwardIcon />
+  </FloatingButton>
 </Playground>
 
 ## Komponenter
@@ -60,3 +70,34 @@ Denne typen knapp bør være "sticky" på toppen av eksisterende innhold, men de
 ```
 
 Du bør ha en eller _maks_ to av disse på en side, siden de er veldig dominerende.
+
+## Retningslinjer for bruk
+
+Funksjonelt representerer den flytende handlingsknappen (FAB) den mest relevante
+eller vanligste brukerhandlingen i grensesnittet. Den flyter over alt innhold på
+skjermen, vanligvis i en sirkulær form med et ikon i midten. FABs kommer i tre varianter:
+default, mini og extended.
+
+Extended FAB er bredere og inneholder en tekst. I motsetning til default FABs, krever ikke extended FAB et ikon.
+
+Det er innafor å bruke bare ikoner i FABs, men bare hvis man sørger for at de er
+kontekstrelevante, intuitive og tydelig illustrerer handlingene for brukerne.
+En FAB skal ikke inneholde handlinger som finnes andre steder på skjermen.
+
+### Eksempel
+
+Her er et eksempel med FABs som ligger over kartet i reiseplanleggeren, hvor man fremhever de handlingene som er mest relevant og oftest brukt i denne applikasjonen.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do" src={FabDo}>
+    Bruk FABs for primære, positive handlinger som for eksempel søk, legg til,
+    rediger, innstillinger, favoritt, dele, chat osv.
+  </Example>
+  <Example type="dont" src={FabDont}>
+    Unngå å bruk en FAB for mindre, uklare eller begrensede handlinger som for
+    eksempel arkiver/søppel, varsler/feil, kontroller for å justere tekst,
+    klipp/lim eller skriftfarge som hører hjemme i en verktøylinje.
+  </Example>
+</BestPractices>

@@ -1,7 +1,7 @@
 ---
-name: Input groups
-description: Input groups brukes for å dekorere et skjemaelement med en label og feedback-tekst.
-route: /komponenter/skjemaelementer/input-groups
+name: Input group
+description: Input Groups gir oss en universelt utformet måte å legge til label, variant-stiler og validering til skjemaelementer.
+route: /komponenter/skjemaelementer/input-group
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: form
@@ -23,8 +23,21 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
 
-<Playground>
-  <InputGroup label="Togdestinasjon" feedback="Gratulerer" variant="success">
+<Playground style={{ margin: '0 33%' }}>
+  <InputGroup
+    label="Brukernavn"
+    labelTooltip="Brukernavnet kan ikke inneholde tall"
+  >
+    <TextField placeholder="Lag et brukernavn" />
+  </InputGroup>
+  <InputGroup
+    label="Brukernavn"
+    feedback="Du kan bruke bokstaver og tall"
+    variant="info"
+  >
+    <TextArea placeholder="Informasjon" />
+  </InputGroup>
+  <InputGroup label="Brukern" feedback="Gratulerer" variant="success">
     <TextField placeholder="Oslo" />
   </InputGroup>
   <InputGroup
@@ -36,23 +49,6 @@ import { ImportStatement } from '~/components/ImportStatement';
   </InputGroup>
   <InputGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
     <TextField placeholder="Advarsel" />
-  </InputGroup>
-  <InputGroup
-    label="Togdestinasjon"
-    feedback="Denne informasjonen hjelper deg"
-    variant="info"
-  >
-    <TextField placeholder="Informasjon" />
-  </InputGroup>
-  <InputGroup
-    label="Togdestinasjon"
-    feedback="Denne informasjonen hjelper deg"
-    variant="info"
-  >
-    <TextArea placeholder="Informasjon" />
-  </InputGroup>
-  <InputGroup label="Togdestinasjon" labelTooltip="Her er det en hjelpetekst">
-    <TextField placeholder="Label med hjelpetekst" />
   </InputGroup>
 </Playground>
 
@@ -90,3 +86,19 @@ const CustomInputGroup = props => (
   <VariantProvider variant={props.variant}>{props.children}</VariantProvider>
 );
 ```
+
+## Retningslinjer for bruk
+
+### Varianter
+
+**Info om ledeteksten (Spørsmålstegn-ikon)**: En hjelpetekst som forklarer hva brukeren skal fylle inn bør alltid være synlig i ledeteksten der det er mulig. For kompleks hjelpetekst, kan du bruke et spørsmålstegn-ikon ved siden av ledeteksten. Ved å klikke på den, trigger brukeren opp en Tooltip med informasjonen. Du kan også vurdere å plassere hjelpeteksten ved siden av tekstfeltet
+
+**Inline hjelpetekst (Infomelding)**: Gir kontekst og ekstra veiledning om tekstfeltet, for hvordan det skal brukes. Teksten bør være kort og konsis og være synlig med en gang. Den kan for eksempel brukes for å informere brukeren om at tekstfeltet har en grense på max antall tegn man kan fylle inn.
+
+### validering
+
+**Tekstfelt med feil validering (Feilmelding)**: Når brukerne gjør feil eller ikke har fylt ut det de skal riktig, må de forstå hva disse feilene er, slik at de kan rette dem og sende inn skjemaet på nytt. Et eksempel kan være hvis brukeren har oppgitt et telefonnummer som er feil. Feilmeldinger vises under tekstfeltet, og erstatter hjelpeteksten til den er løst.
+
+**Tekstfelt med suksess validering (Suksessmelding)**: Indikerer at detaljene brukeren har fylt inn i skjemaet er godkjent/vellykket.
+
+Validering av felter skjer underveis i skjema, men først når man går ut av feltet. Hvis man ikke går inn i feltet vil validering først komme når man validerer siden.
