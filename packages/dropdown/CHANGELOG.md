@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.1.0...@entur/dropdown@1.1.1) (2020-05-26)
+
+### Bug Fixes
+
+- completely remove inner right padding in dropdowns ([3f3d086](https://bitbucket.org/enturas/design-system/commits/3f3d0860f6f9a0f385182045dfeea7a5eb6ede3e))
+
 # [1.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.0.0...@entur/dropdown@1.1.0) (2020-05-20)
 
 ### Bug Fixes

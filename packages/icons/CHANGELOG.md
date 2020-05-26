@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.5.2...@entur/icons@1.6.0) (2020-05-26)
+
+### Features
+
+- new icon for partner: farte ([52b991b](https://bitbucket.org/enturas/design-system/commits/52b991ba4c59ab50d7752d324ffbeb8a4f9bf324))
+
 ## [1.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.5.1...@entur/icons@1.5.2) (2020-05-20)
 
 **Note:** Version bump only for package @entur/icons

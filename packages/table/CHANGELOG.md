@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@2.1.2...@entur/table@3.0.0) (2020-05-26)
+
+### Bug Fixes
+
+- table: prop name change from density to spacing ([b05f03e](https://bitbucket.org/enturas/design-system/commits/b05f03e77ac29965caa8866a5626aef318887e21))
+
+### BREAKING CHANGES
+
+- prop name change density --> spacing in Table
+
 ## [2.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@2.1.1...@entur/table@2.1.2) (2020-05-20)
 
 **Note:** Version bump only for package @entur/table

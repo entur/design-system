@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.0...@entur/form@3.0.1) (2020-05-26)
+
+### Bug Fixes
+
+- readjust fieldset to use label instead of heading4 ([feafc73](https://bitbucket.org/enturas/design-system/commits/feafc73cfc6a9e08342c9e2c41001d78eef4f182))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.5...@entur/form@3.0.0) (2020-05-20)
 
 ### Bug Fixes
