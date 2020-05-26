@@ -1,4 +1,3 @@
-import './styles.scss';
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 

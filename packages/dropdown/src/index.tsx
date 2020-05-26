@@ -1,7 +1,7 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
 
-warnAboutMissingStyles('dropdown', 'form', 'a11y');
+warnAboutMissingStyles('dropdown', 'form', 'a11y', 'chip');
 
 export * from './Dropdown';
 export * from './NativeDropdown';

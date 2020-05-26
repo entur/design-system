@@ -6,6 +6,7 @@ import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
+import { IconButton } from '@entur/button';
 
 import './Drawer.scss';
 
@@ -70,14 +71,14 @@ export const Drawer: React.FC<DrawerProps> = ({
             </Heading3>
             {children}
           </div>
-          <button
+          <IconButton
             className="eds-drawer__close-button"
             onClick={onDismiss}
             type="button"
           >
             <CloseIcon aria-hidden />
             <VisuallyHidden>{closeLabel}</VisuallyHidden>
-          </button>
+          </IconButton>
         </div>
       </Wrapper>
     </MoveFocusInside>

@@ -7,7 +7,7 @@ export type TableProps = {
   /** Setter tettheten mellom rader og kolonner. Bruk gjerne middle og small for for sider med høy informasjonstetthet
    * @default "default"
    */
-  density?: 'default' | 'middle' | 'small';
+  spacing?: 'default' | 'middle' | 'small';
   /** Setter kolonne-layout til å være uavhengig av innhold
    * @default false
    */

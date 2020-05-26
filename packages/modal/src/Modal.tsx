@@ -2,6 +2,7 @@ import React from 'react';
 import { CloseIcon } from '@entur/icons';
 import { ModalOverlay } from './ModalOverlay';
 import { ModalContent } from './ModalContent';
+import './Modal.scss';
 
 export type ModalProps = {
   /** Innholdet i modalen */
