@@ -2,8 +2,8 @@
 @import '~@entur/utils/dist/color-utils.scss';
 
 .eds-icon-button {
-  border: none;
-  border-radius: 50%;
+  border: $border-widths-small solid transparent;
+  border-radius: $border-radiuses-medium;
   background: none;
   color: inherit;
   cursor: pointer;
@@ -15,7 +15,7 @@
   &:hover {
     background-color: $colors-blues-blue70;
     .eds-contrast & {
-      background-color: $colors-blues-blue30;
+      background-color: $colors-blues-blue20;
     }
   }
   &:active {
@@ -26,9 +26,11 @@
   }
   &:focus {
     outline: none;
+    border: $border-widths-small solid $colors-brand-blue;
     box-shadow: $shadows-focus;
     .eds-contrast & {
       box-shadow: $shadows-focus-contrast;
+      border: $border-widths-small solid $colors-brand-white;
     }
   }
   &--disabled {
