@@ -1,6 +1,6 @@
 ---
-name: Segmented control
-description: Komponenter for å tilby tett gruppert radio- og checkbox funksjonalitet
+name: Segmented Control
+description: Segmented Controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning. De består av et sett med to eller flere knappsegmenter, der alle segmentene innen en gruppe har lik bredde.
 route: /komponenter/skjemaelementer/segmented-control
 parent: Komponenter
 menu: Skjemaelementer
@@ -16,8 +16,11 @@ import {
   InputGroup,
   TextField,
 } from '@entur/form';
+import { GridContainer, GridItem } from '@entur/grid';
 import { BannerAlertBox } from '@entur/alert';
+import { DatePicker, TimePicker } from '@entur/datepicker';
 import { Playground } from '~/components/Playground';
+import { Dropdown } from '@entur/dropdown';
 import { ImportStatement } from '~/components/ImportStatement';
 import { CodeText } from '@entur/typography';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
@@ -103,3 +106,100 @@ Det er lettere for brukeren å “tappe” bredere segmenter.
 
 Bruk kun en Segmented Control når alternativene er forhåndsdefinerte. Hold segmentinnholdet kort og konsistent.
 Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
+
+### Eksempler
+
+#### Eksempel 1
+
+<Playground style={{ width: '40%' }}>
+  {() => {
+    const [homeTown, setHomeTown] = React.useState(null);
+    const [date, setDate] = React.useState(Date.now());
+    const [time, setTime] = React.useState(Date.now());
+    return (
+      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
+        <GridItem small={12}>
+          <SegmentedControl
+            label="Velg reisetidspunkt"
+            onChange={selectedValue => setHomeTown(selectedValue)}
+            selectedValue={homeTown}
+          >
+            <SegmentedChoice value="nå">Nå</SegmentedChoice>
+            <SegmentedChoice value="avreise">Avreise</SegmentedChoice>
+            <SegmentedChoice value="ankomst">Ankomst</SegmentedChoice>
+          </SegmentedControl>
+        </GridItem>
+        <GridItem small={12} large={8}>
+          <InputGroup label="Reisedato">
+            <DatePicker selectedDate={date} onChange={date => setDate(date)} />
+          </InputGroup>
+        </GridItem>
+        <GridItem small={12} large={4}>
+          <InputGroup label="Klokkeslett">
+            <TimePicker
+              placeholder="Tid"
+              selectedTime={time}
+              onChange={time => setTime(time)}
+            />
+          </InputGroup>
+        </GridItem>
+      </GridContainer>
+    );
+  }}
+</Playground>
+
+#### Eksempel 2
+
+<Playground style={{ width: '33%' }}>
+  {() => {
+    const [type, setType] = React.useState(null);
+    return (
+      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
+        <GridItem small={12}>
+          <SegmentedControl
+            label="Velg påslag eller avlslag"
+            onChange={selectedValue => setType(selectedValue)}
+            selectedValue={type}
+          >
+            <SegmentedChoice value="percent">%</SegmentedChoice>
+            <SegmentedChoice value="kroner">Kr</SegmentedChoice>
+          </SegmentedControl>
+        </GridItem>
+        <GridItem small={12}>
+          <TextField placeholder="Pris" />
+        </GridItem>
+      </GridContainer>
+    );
+  }}
+</Playground>
+
+#### Eksempel 3
+
+<Playground style={{ width: '50%' }}>
+  {() => {
+    const [type, setType] = React.useState(null);
+    const items = ['Entur 1', 'Entur 2'];
+    return (
+      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
+        <GridItem small={10}>
+          <SegmentedControl
+            label="Velg billettype"
+            onChange={selectedValue => setType(selectedValue)}
+            selectedValue={type}
+          >
+            <SegmentedChoice value="sone">Sone</SegmentedChoice>
+            <SegmentedChoice value="strekning">Strekning</SegmentedChoice>
+          </SegmentedControl>
+        </GridItem>
+        <GridItem small={2} />
+        <GridItem small={12}>
+          <Dropdown
+            label="Reisetilbyder"
+            placeholder="Velg selskap"
+            items={items}
+          ></Dropdown>
+        </GridItem>
+      </GridContainer>
+    );
+  }}
+</Playground>

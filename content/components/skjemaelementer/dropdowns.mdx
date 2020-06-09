@@ -8,7 +8,7 @@ npmPackage: dropdown
 tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
 ---
 
-import { Props } from 'docz';
+import { Props, Link } from 'docz';
 import { Dropdown, NativeDropdown } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -17,6 +17,7 @@ import dropdownItems from './dropdownItems';
 import { BestPractices, Example } from '~/components/BestPractices';
 import doPic from './DropdownDo.png';
 import dontPic from './DropdownDont.png';
+import { Link as LinkText } from '@entur/typography';
 
 <PageHeader />
 
@@ -115,8 +116,8 @@ Dropdowns presenterer en liste over alternativer som kan brukes til å filtrere 
 
 #### Det finnes to varianter av dropdowns:
 
-- **Single select**: Når brukerne klikker på dropdown feltet, får de opp en liste over mulige alternativer. Brukeren kan deretter velge ett enkelt alternativ fra denne listen. Hvis du har færre enn 5 valg, bør du vurdere å bruke Radio eller Choice Chips.
-- **Multi select**: Gir brukerne mulighet til å velge flere alternativer fra listen på en gang. Færre enn 5 alternativer, bruk Checkboxes eller Selector Chips i stedet.
+- **Single select**: Når brukerne klikker på dropdown feltet, får de opp en liste over mulige alternativer. Brukeren kan deretter velge ett enkelt alternativ fra denne listen. Hvis du har færre enn 5 valg, bør du vurdere å bruke <LinkText as={Link} to="/komponenter/skjemaelementer/radio-button">Radio</LinkText> eller <LinkText as={Link} to="/komponenter/skjemaelementer/chips">Choice Chips</LinkText>.
+- **Multi select**: Gir brukerne mulighet til å velge flere alternativer fra listen på en gang. Færre enn 5 alternativer, bruk <LinkText as={Link} to="/komponenter/skjemaelementer/checkbox">Checkboxes</LinkText> eller <LinkText as={Link} to="/komponenter/skjemaelementer/chips">Filter Chips</LinkText> i stedet. Les mer om denne multi select <LinkText as={Link} to="/komponenter/skjemaelementer/multi-select/">her.</LinkText>
 
 ### Prinsipper
 

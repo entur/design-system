@@ -1,0 +1,58 @@
+---
+name: Travel Switch
+description: Travel Switch er en variant av Switch for å skru av/på modaliteter.
+route: /komponenter/reise/travelswitch
+parent: Komponenter
+menu: reise
+npmPackage: form
+tags: switch, travelswitch
+---
+
+import { Props, Link } from 'docz';
+import { TravelSwitch } from '@entur/form';
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+import './traveltag.css';
+
+<PageHeader />
+
+<Playground style={{ width: '40%', margin: 'auto' }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div>
+      <TravelSwitch transport="bus" />
+      <TravelSwitch transport="rail" />
+      <TravelSwitch transport="water" />
+      <TravelSwitch transport="air" />
+      <TravelSwitch transport="tram" />
+      <TravelSwitch transport="bike" />
+      <TravelSwitch transport="metro" />
+      <TravelSwitch transport="scooter" />
+      <TravelSwitch transport="airportLinkRail">Flytog</TravelSwitch>
+      <TravelSwitch transport="airportLinkBus">Flybuss</TravelSwitch>
+    </div>
+    <div>
+      <TravelSwitch transport="bus" size="large" />
+      <TravelSwitch transport="rail" size="large" />
+      <TravelSwitch transport="water" size="large" />
+      <TravelSwitch transport="air" size="large" />
+      <TravelSwitch transport="tram" size="large" />
+      <TravelSwitch transport="bike" size="large" />
+      <TravelSwitch transport="metro" size="large" />
+      <TravelSwitch transport="scooter" size="large" />
+      <TravelSwitch transport="airportLinkRail" size="large">
+        Flytog
+      </TravelSwitch>
+      <TravelSwitch transport="airportLinkBus" size="large">
+        Flybuss
+      </TravelSwitch>
+    </div>
+  </div>
+</Playground>
+
+## Komponenter
+
+### TravelSwitch
+
+<ImportStatement imports="TravelSwitch" />
+<Props of={TravelSwitch} />

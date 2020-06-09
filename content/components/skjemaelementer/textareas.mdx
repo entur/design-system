@@ -8,26 +8,18 @@ npmPackage: form
 tags: tekstområde, textarea
 ---
 
-import { Props } from 'docz';
+import { Props, Link } from 'docz';
 import { TextArea } from '@entur/form';
 import { ImageIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
+import { Link as LinkText } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
 
-<Playground>
-  <div
-    style={{
-      display: 'grid',
-      rowGap: '1em',
-    }}
-  >
-    <TextArea placeholder="Suksess" variant="success" />
-    <TextArea placeholder="Feil" variant="error" />
-    <TextArea placeholder="Info" variant="info" />
-  </div>
+<Playground style={{ margin: '0 28%' }}>
+  <TextArea placeholder="Hva vil du fortelle oss?" />
 </Playground>
 
 ## Komponenter
@@ -36,3 +28,16 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <ImportStatement imports="TextArea" />
 <Props of={TextArea} />
+
+## Retningslinjer for bruk
+
+Text areas er lange tekstfelt som lar brukeren skrive tekst over flere linjer. Tekstfeltet kan justeres i høyden. Bør benyttes med label og eventuelt variant-stiler og validering fra Input Groups. Hvis tekststyling er nødvendig, bruk Rich Text Editor for å støtte dette.
+
+<div>
+  For tekst som er på en enkelt linje og som ikke overskrider lengden på
+  tekstfeltet, bruk heller{' '}
+  <LinkText as={Link} to="/komponenter/skjemaelementer/textfield">
+    Text Fields
+  </LinkText>
+  .
+</div>

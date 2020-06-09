@@ -1,6 +1,6 @@
 ---
 name: Switch
-description: Switch er en knapp som enten er av eller på, og hvor tilstanden er viktig å vise tydelig.
+description: Switch fungerer som en fysisk bryter som lar brukerne slå på eller av en funksjon.
 route: /komponenter/skjemaelementer/switch
 parent: Komponenter
 menu: Skjemaelementer
@@ -9,48 +9,22 @@ tags: slideswitch, toggle, toggleswitch, bryter, av, på
 ---
 
 import { Props } from 'docz';
-import { Switch, TravelSwitch } from '@entur/form';
+import { Switch } from '@entur/form';
+import { Label } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import { BusIcon, FerryIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
+import { BestPractices, Example } from '~/components/BestPractices';
+import doPic from './SwitchDo.png';
+import dontPic from './SwitchDont.png';
 
 <PageHeader />
 
-<Playground>
-  <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-    <div>
-      <Switch>Barnevogn</Switch>
-      <TravelSwitch transport="bus" />
-      <TravelSwitch transport="rail" />
-      <TravelSwitch transport="water" />
-      <TravelSwitch transport="air" />
-      <TravelSwitch transport="tram" />
-      <TravelSwitch transport="bike" />
-      <TravelSwitch transport="metro" />
-      <TravelSwitch transport="scooter" />
-      <TravelSwitch transport="airportLinkRail">Flytog</TravelSwitch>
-      <TravelSwitch transport="airportLinkBus">Flybuss</TravelSwitch>
-    </div>
-    <div>
-      <Switch size="large">Barnevogn</Switch>
-      <TravelSwitch transport="bus" size="large" />
-      <TravelSwitch transport="rail" size="large" />
-      <TravelSwitch transport="water" size="large" />
-      <TravelSwitch transport="air" size="large" />
-      <TravelSwitch transport="tram" size="large" />
-      <TravelSwitch transport="bike" size="large" />
-      <TravelSwitch transport="metro" size="large" />
-      <TravelSwitch transport="scooter" size="large" />
-      <TravelSwitch transport="airportLinkRail" size="large">
-        Flytog
-      </TravelSwitch>
-      <TravelSwitch transport="airportLinkBus" size="large">
-        Flybuss
-      </TravelSwitch>
-    </div>
-  </div>
+<Playground style={{ width: '30%', margin: 'auto' }}>
+  <Label>Ønsker du å motta nyhetsbrev?</Label>
+  <Switch />
 </Playground>
 
 ## Komponenter
@@ -60,7 +34,24 @@ import PageHeader from '~/components/PageHeader';
 <ImportStatement imports="Switch" />
 <Props of={Switch} />
 
-### TravelSwitch
+## Retningslinjer for bruk
 
-<ImportStatement imports="TravelSwitch" />
-<Props of={TravelSwitch} />
+Switch er en kontroll som lar brukerne veksle mellom to mulige tilstander (av eller på).
+Switch brukes kun for binære handlinger som aktiveres eller deaktiveres umiddelbart etter at brukeren har slått på eller av bryteren.
+Det vil si at endring i tilstanden ikke skal kreve bekreftelse eller lagring. Switch bør ha en ledetekst som forteller hva brukeren slår av og på.
+
+For handlinger der brukeren må bekrefte valget sitt, bruk Checkboxes istedenfor.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do" src={doPic}>
+    Bruk switch til å slå på eller av en funksjon/innstilling som gir automatisk
+    oppdatering eller automatisk lagring.
+  </Example>
+  <Example type="dont" src={dontPic}>
+    Unngå å bruk radioknapper for å slå innstillinger av eller på. Radioknapper
+    indikerer at bare en kan velges om gangen og krever et ekstra steg for
+    lagring.
+  </Example>
+</BestPractices>
