@@ -63,12 +63,12 @@ import {
 
 ## Komponenter
 
-### Lokale varsler
+### BannerAlertBox
 
 <ImportStatement imports="BannerAlertBox" />
 <Props of={BannerAlertBox} />
 
-### Toast-varsler
+### ToastAlertBox og ToastProvider
 
 <ImportStatement imports="ToastAlertBox" />
 <Props of={ToastAlertBox} />
@@ -172,7 +172,7 @@ Toasts vil lukkes automatisk etter 6 sekunder, med mindre du flytter musepekeren
 <ToastProvider delay={10000} />
 ```
 
-### Små varsler
+### SmallAlertBox
 
 <ImportStatement imports="SmallAlertBox" />
 <Props of={SmallAlertBox} />
@@ -225,7 +225,11 @@ Advarselen er gul og brukes for å advare brukeren om viktig informasjon som tre
 
 Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. For eksempel skjemaet kunne ikke lagres fordi det mangler data på noen felter.
 
-### Global alerts
+### BannerAlertBox
+
+`BannerAlertBox` har to spesifikke bruksområder: _globale varsler_ og _lokale varsler_.
+
+#### Globale varsler
 
 Globale varsler brukes når man ønsker å meddele informasjon på tvers av en applikasjon.
 Eksempler kan være cookie-info, et API som er nede eller generalstreik som påvirker alt og alle.
@@ -235,7 +239,7 @@ De skal dekke hele toppen av siden, og skyver ned sidens innhold.
 De har vanligvis muligheten til å bli lukket, slik at brukerne kan fjerne den.
 Beskjeden bør dukke opp igjen neste gang man laster siden, men dette er opp til konsumenten.
 
-### Local alerts
+#### Lokale varsler
 
 Lokale varsler brukes for å vise informasjon om en underside, en seksjon eller et skjema.
 Oppsummering av valideringsfeil, advarsel om manglende tariffkoder og generell avgangsinformasjon kan være gode brukseksempler.
@@ -259,7 +263,9 @@ Et godt eksempel kan være at brukeren er oppdatert, eller at en annen bruker ha
 Toast-varsler skal ikke plasseres over kritisk funksjonalitet, som knapper, navigasjon og andre funksjoner.
 De dukker opp nedenfra på små flater, og ligger øverst i høyre hjørne på store flater.
 
-### Contextual alerts
+### SmallAlertBox
+
+`SmallAlertBox` brukes som _kontekstuelle varsler_ i grensesnittet.
 
 Kontekstuelle varsler finnes i alle typer og vises i direkte tilknytning til innholdet det omtaler.
 De brukes ofte for å supplere innhold med ekstra informasjon.
