@@ -4,6 +4,7 @@ const toCase = require('case');
 const babel = require('@babel/core');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
+var sass = require('node-sass');
 
 /** Traverses a directory
  * returns an array of all file paths
@@ -26,7 +27,7 @@ function traverse(directory, dirEnt = '') {
 }
 
 /** Create the correct SVGR config based on its environment */
-function createSvgrConfig(native = false) {
+function createSvgrConfig(native = false, componentName) {
   const config = {
     icon: true,
     replaceAttrValues: {
@@ -54,11 +55,20 @@ function createSvgrConfig(native = false) {
       [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
     };
   } else {
+    /** Get icon-name, and if it has a transport color, add it as class to component */
+    const lowerCaseName = componentName
+      .substring(0, componentName.length - 4)
+      .toLowerCase();
+    let className =
+      '{"eds-icon " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}';
+    if (componentName && colors.transport.contrast[lowerCaseName]) {
+      className = `{"eds-icon eds-icon__${lowerCaseName} " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}`;
+    }
+
     config.svgProps = {
       width: '{(props.width || props.size || "1em")}',
       height: '{(props.height || props.size || "1em")}',
-      className:
-        '{"eds-icon " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}',
+      className: className,
       inline: '{undefined}',
     };
   }
@@ -81,9 +91,14 @@ for (let svgPath of allSvgPaths) {
   // Read the SVG, optimize it with SVGO, and transpile it to React components
   // for both the web and React Native
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-  const webCode = svgr.sync(rawSvgText, createSvgrConfig(false), {
-    componentName,
-  });
+
+  const webCode = svgr.sync(
+    rawSvgText,
+    createSvgrConfig(false, componentName),
+    {
+      componentName,
+    },
+  );
   const nativeCode = svgr.sync(rawSvgText, createSvgrConfig(true), {
     componentName,
   });
@@ -107,4 +122,17 @@ fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
 
 // finally, let's copy over the static assets if you need those directly
 fs.ensureDirSync('./dist');
-fs.copyFileSync('./src/index.css', './dist/styles.css');
+// fs.copyFileSync('./src/index.css', './dist/styles.css');
+sass.render(
+  {
+    file: './src/index.scss',
+  },
+  function (err, result) {
+    // console.log(result.css);
+    if (!err) {
+      fs.outputFileSync('./dist/styles.css', result.css);
+    } else {
+      throw 'Icon-Build Failed';
+    }
+  },
+);
