@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.0...@entur/table@3.0.1) (2020-05-27)
+
+### Bug Fixes
+
+- fix naming change of density->spacing ([5f5c447](https://bitbucket.org/enturas/design-system/commits/5f5c447f6a34167b87899579ea48ed76ec91c03c))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@2.1.2...@entur/table@3.0.0) (2020-05-26)
 
 ### Bug Fixes
