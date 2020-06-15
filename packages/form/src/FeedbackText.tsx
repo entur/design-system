@@ -7,6 +7,7 @@ import {
 } from '@entur/icons';
 import { SmallText } from '@entur/typography';
 import { VariantType } from './VariantProvider';
+import classNames from 'classnames';
 import './FeedbackText.scss';
 
 const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
@@ -32,14 +33,19 @@ export type FeedbackTextProps = {
   hideIcon?: boolean;
   /** Feedbackvarianten */
   variant: VariantType;
+  /** Ekstra klassenavn */
+  className?: string;
+  [key: string]: any;
 };
 export const FeedbackText: React.FC<FeedbackTextProps> = ({
   children,
   hideIcon = false,
   variant,
+  className,
+  ...rest
 }) => {
   return (
-    <SmallText className="eds-feedback-text">
+    <SmallText className={classNames('eds-feedback-text', className)} {...rest}>
       {!hideIcon && <AlertIcon variant={variant} />}
       {children}
     </SmallText>
