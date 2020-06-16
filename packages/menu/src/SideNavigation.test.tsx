@@ -128,7 +128,6 @@ test('forceExpandSubMenus works as expected without active items', () => {
   expect(getByTestId('active-sub-menu-item')).toBeInTheDocument();
   rerender(
     <SideNavigation size="small">
-      >
       <SideNavigationItem forceExpandSubMenus={false} href="#first">
         Sub-menu trigger
         <SideNavigation>
