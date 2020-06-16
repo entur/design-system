@@ -60,9 +60,9 @@ function createSvgrConfig(native = false, componentName) {
       .substring(0, componentName.length - 4)
       .toLowerCase();
     let className =
-      '{"eds-icon " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}';
+      '{"eds-icon " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}';
     if (componentName && colors.transport.contrast[lowerCaseName]) {
-      className = `{"eds-icon eds-icon__${lowerCaseName} " + (props.className ? props.className : "") + (props.inline ? " eds-icon--inline" : "")}`;
+      className = `{"eds-icon eds-icon__${lowerCaseName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
     }
 
     config.svgProps = {
@@ -122,13 +122,11 @@ fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
 
 // finally, let's copy over the static assets if you need those directly
 fs.ensureDirSync('./dist');
-// fs.copyFileSync('./src/index.css', './dist/styles.css');
 sass.render(
   {
     file: './src/index.scss',
   },
   function (err, result) {
-    // console.log(result.css);
     if (!err) {
       fs.outputFileSync('./dist/styles.css', result.css);
     } else {
