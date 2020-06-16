@@ -18,10 +18,7 @@ export type ChoiceChipProps = {
   [key: string]: any;
 };
 
-export const ChoiceChip: React.RefForwardingComponent<
-  HTMLInputElement,
-  ChoiceChipProps
-> = React.forwardRef(
+export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
   (
     { className, children, value, disabled = false, style, ...rest },
     ref: React.Ref<HTMLInputElement>,

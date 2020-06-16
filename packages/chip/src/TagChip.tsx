@@ -14,10 +14,7 @@ export type TagChipProps = {
   [key: string]: any;
 };
 
-export const TagChip: React.RefForwardingComponent<
-  HTMLButtonElement,
-  TagChipProps
-> = React.forwardRef(
+export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
   (
     { children, className, onClose, ...rest },
     ref: React.Ref<HTMLButtonElement>,

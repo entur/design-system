@@ -11,10 +11,7 @@ export type ActionChipProps = {
   [key: string]: any;
 };
 
-export const ActionChip: React.RefForwardingComponent<
-  HTMLButtonElement,
-  ActionChipProps
-> = React.forwardRef(
+export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
   ({ children, className, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
     const childrenArray = React.Children.toArray(children);
     const hasLeadingIcon =

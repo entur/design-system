@@ -8,24 +8,22 @@ export type NativeTimePickerProps = {
   [key: string]: any;
 };
 
-export const NativeTimePicker: React.RefForwardingComponent<
+export const NativeTimePicker = React.forwardRef<
   HTMLInputElement,
   NativeTimePickerProps
-> = React.forwardRef(
-  ({ className, style, ...rest }, ref: React.Ref<HTMLInputElement>) => {
-    return (
-      <BaseFormControl
-        style={style}
-        className={className}
-        prepend={<ClockIcon inline />}
-      >
-        <input
-          ref={ref}
-          type="time"
-          className="eds-form-control eds-native-date-picker"
-          {...rest}
-        />
-      </BaseFormControl>
-    );
-  },
-);
+>(({ className, style, ...rest }, ref: React.Ref<HTMLInputElement>) => {
+  return (
+    <BaseFormControl
+      style={style}
+      className={className}
+      prepend={<ClockIcon inline />}
+    >
+      <input
+        ref={ref}
+        type="time"
+        className="eds-form-control eds-native-date-picker"
+        {...rest}
+      />
+    </BaseFormControl>
+  );
+});
