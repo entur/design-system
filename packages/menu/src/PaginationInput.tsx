@@ -45,7 +45,7 @@ export const PaginationInput: React.FC<PaginationInputProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit} noValidate aria-label="form">
       <label>
         <span className="eds-pagination__input-label">{label}</span>
         <input

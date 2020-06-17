@@ -29,9 +29,7 @@ export type PrimaryButtonProps = {
   [key: string]: any;
 };
 
-export const PrimaryButton: React.RefForwardingComponent<
+export const PrimaryButton = React.forwardRef<
   HTMLButtonElement,
   PrimaryButtonProps
-> = React.forwardRef((props, ref) => (
-  <Button {...props} ref={ref} variant="primary" />
-));
+>((props, ref) => <Button {...props} ref={ref} variant="primary" />);

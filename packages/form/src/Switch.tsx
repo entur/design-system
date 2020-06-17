@@ -28,10 +28,7 @@ export type SwitchProps = {
   [key: string]: any;
 };
 
-export const Switch: React.RefForwardingComponent<
-  HTMLInputElement,
-  SwitchProps
-> = React.forwardRef(
+export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
       className,

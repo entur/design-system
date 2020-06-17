@@ -29,9 +29,7 @@ export type SuccessButtonProps = {
   [key: string]: any;
 };
 
-export const SuccessButton: React.RefForwardingComponent<
+export const SuccessButton = React.forwardRef<
   HTMLButtonElement,
   SuccessButtonProps
-> = React.forwardRef((props, ref) => (
-  <Button {...props} ref={ref} variant="success" />
-));
+>((props, ref) => <Button {...props} ref={ref} variant="success" />);

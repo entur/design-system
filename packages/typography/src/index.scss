@@ -195,7 +195,7 @@ html {
     );
     background-repeat: no-repeat;
     background-size: 100% 0.125rem;
-    background-position: 0 88%;
+    background-position: 0 100%;
   }
   &:hover {
     animation: eds-link-underline 0.3s ease-in;
@@ -318,6 +318,23 @@ html {
 
   .eds-list-item:first-of-type {
     margin: none;
+  }
+}
+
+.eds-blockquote  {
+  border-left: $border-widths-large solid $colors-blues-blue60;
+  font-family: inherit;
+  font-size: 1.25rem;
+  line-height: $line-heights-extra-large3;
+  margin: 0;
+  padding: $space-extra-small;
+  padding-left: $space-extra-large;
+  &__footer {
+    font-size: $font-sizes-medium;
+    line-height: $line-heights-large;
+    letter-spacing: 1px;
+    margin-top: $space-large;
+    text-transform: uppercase;
   }
 }
 
