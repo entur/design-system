@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.2...@entur/tooltip@2.1.3) (2020-06-17)
+
+### Bug Fixes
+
+- fix wrong definition of forward referencing ([e5cad92](https://bitbucket.org/enturas/design-system/commits/e5cad92c59bc6453ab4dbe9a18c4c7e42dd7e00d))
+
+## [2.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.1...@entur/tooltip@2.1.2) (2020-05-27)
+
+**Note:** Version bump only for package @entur/tooltip
+
+## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.0...@entur/tooltip@2.1.1) (2020-05-26)
+
+### Bug Fixes
+
+- fix missing styling for tooltip ([360a09d](https://bitbucket.org/enturas/design-system/commits/360a09d1fa4d112922514f5e72db1bae82f9f6d7))
+
 # [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.0.6...@entur/tooltip@2.1.0) (2020-05-20)
 
 ### Bug Fixes

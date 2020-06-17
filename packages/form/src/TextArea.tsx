@@ -15,10 +15,7 @@ export type TextAreaProps = {
   [key: string]: any;
 };
 
-export const TextArea: React.RefForwardingComponent<
-  HTMLTextAreaElement,
-  TextAreaProps
-> = React.forwardRef(
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     { variant, disabled = false, readOnly = false, className, style, ...rest },
     ref: React.Ref<HTMLTextAreaElement>,

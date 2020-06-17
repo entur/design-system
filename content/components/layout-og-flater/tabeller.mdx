@@ -185,14 +185,14 @@ Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillat
 
 <Playground>
   {() => {
-    const [density, setDensity] = React.useState('default');
+    const [spacing, setSpacing] = React.useState('default');
     return (
       <div>
         <div style={{ width: '15%', float: 'right' }}>
           <SegmentedControl
             label="Densitet"
-            onChange={selectedValue => setDensity(selectedValue)}
-            selectedValue={density}
+            onChange={selectedValue => setSpacing(selectedValue)}
+            selectedValue={spacing}
           >
             <SegmentedChoice value="default">
               <RowHeightDefaultIcon inline />
@@ -205,7 +205,7 @@ Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillat
             </SegmentedChoice>
           </SegmentedControl>
         </div>
-        <Table density={density}>
+        <Table spacing={spacing}>
           <TableHead>
             <TableRow>
               <HeaderCell>Passasjerkategori</HeaderCell>

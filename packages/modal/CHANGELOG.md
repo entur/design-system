@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.19](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.18...@entur/modal@1.1.19) (2020-06-17)
+
+### Bug Fixes
+
+- use iconbutton in modal window ([0ec8929](https://bitbucket.org/enturas/design-system/commits/0ec8929a339d76fcbb6c1af6d6b39796b0554d11))
+
+## [1.1.18](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.17...@entur/modal@1.1.18) (2020-05-27)
+
+**Note:** Version bump only for package @entur/modal
+
+## [1.1.17](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.16...@entur/modal@1.1.17) (2020-05-26)
+
+### Bug Fixes
+
+- fix extraSmall prop for modal ([1aeba26](https://bitbucket.org/enturas/design-system/commits/1aeba2662d6fcd179b6f959676b6370e6cd4ef63))
+- fix size=extraLarge not rendering properly for modal ([1ce2056](https://bitbucket.org/enturas/design-system/commits/1ce2056438dcb9c80f3357ddf1289a7523e5b51c))
+- use iconbutton directly in drawer ([adcab79](https://bitbucket.org/enturas/design-system/commits/adcab79fd967741467ed5956a4463fbf199c2ed8))
+
 ## [1.1.16](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.15...@entur/modal@1.1.16) (2020-05-20)
 
 **Note:** Version bump only for package @entur/modal

@@ -33,10 +33,7 @@ export type ButtonProps = {
   [key: string]: any;
 };
 
-export const Button: React.RefForwardingComponent<
-  HTMLButtonElement,
-  ButtonProps
-> = React.forwardRef(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant,

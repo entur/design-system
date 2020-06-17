@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.8...@entur/utils@0.2.9) (2020-06-17)
+
+**Note:** Version bump only for package @entur/utils
+
+## [0.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.7...@entur/utils@0.2.8) (2020-05-27)
+
+**Note:** Version bump only for package @entur/utils
+
+## [0.2.7](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.6...@entur/utils@0.2.7) (2020-05-26)
+
+**Note:** Version bump only for package @entur/utils
+
 ## [0.2.6](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.5...@entur/utils@0.2.6) (2020-05-20)
 
 **Note:** Version bump only for package @entur/utils

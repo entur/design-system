@@ -41,7 +41,7 @@ const Props: React.FC<PropsProps> = ({
       defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
     >
       {Object.keys(props).length > 0 ? (
-        <Table fixed density="middle">
+        <Table fixed spacing="middle">
           <TableHead>
             <TableRow>
               <HeaderCell>Navn</HeaderCell>

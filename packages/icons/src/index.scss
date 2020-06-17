@@ -1,0 +1,57 @@
+@import '../../tokens/dist/styles.scss';
+:root {
+  --eds-icons: 1;
+}
+
+.eds-icon.eds-icon--inline,
+p .eds-icon {
+  position: relative;
+  top: 0.2em;
+}
+
+.eds-contrast {
+  .eds-icon__bicycle g,
+  .eds-icon__bicycle path {
+    fill: $colors-transport-contrast-bicycle;
+  }
+  .eds-icon__bus g,
+  .eds-icon__bus path {
+    fill: $colors-transport-contrast-bus;
+  }
+  .eds-icon__cableway g,
+  .eds-icon__cableway path {
+    fill: $colors-transport-contrast-cableway;
+  }
+  .eds-icon__carferry g,
+  .eds-icon__carferry path {
+    fill: $colors-transport-contrast-carferry;
+  }
+  .eds-icon__ferry g,
+  .eds-icon__ferry path {
+    fill: $colors-transport-contrast-ferry;
+  }
+  .eds-icon__funicular g,
+  .eds-icon__funicular path {
+    fill: $colors-transport-contrast-funicular;
+  }
+  .eds-icon__helicopter g,
+  .eds-icon__helicopter path {
+    fill: $colors-transport-contrast-helicopter;
+  }
+  .eds-icon__plane g,
+  .eds-icon__plane path {
+    fill: $colors-transport-contrast-plane;
+  }
+  .eds-icon__taxi g,
+  .eds-icon__taxi path {
+    fill: $colors-transport-contrast-taxi;
+  }
+  .eds-icon__train g,
+  .eds-icon__train path {
+    fill: $colors-transport-contrast-train;
+  }
+  .eds-icon__tram g,
+  .eds-icon__tram path {
+    fill: $colors-transport-contrast-tram;
+  }
+}

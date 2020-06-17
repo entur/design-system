@@ -27,6 +27,9 @@
       padding: $space-extra-small2 $space-default;
     }
   }
+  &__header-cell {
+    padding-top: 0;
+  }
 
   &__data-cell {
     &--padding-checkbox {

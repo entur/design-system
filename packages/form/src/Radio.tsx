@@ -14,10 +14,7 @@ export type RadioProps = {
   [key: string]: any;
 };
 
-export const Radio: React.RefForwardingComponent<
-  HTMLInputElement,
-  RadioProps
-> = React.forwardRef(
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (
     { className, children, value, ...rest },
     ref: React.Ref<HTMLInputElement>,

@@ -19,10 +19,10 @@ export type SegmentedChoiceProps = {
   [key: string]: any;
 };
 
-export const SegmentedChoice: React.RefForwardingComponent<
+export const SegmentedChoice = React.forwardRef<
   HTMLInputElement,
   SegmentedChoiceProps
-> = React.forwardRef(
+>(
   (
     { children, className, style, value, name, onChange = () => {}, ...rest },
     ref: React.Ref<HTMLInputElement>,

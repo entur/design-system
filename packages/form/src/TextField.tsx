@@ -18,10 +18,7 @@ export type TextFieldProps = {
   [key: string]: any;
 };
 
-export const TextField: React.RefForwardingComponent<
-  HTMLInputElement,
-  TextFieldProps
-> = React.forwardRef(
+export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       prepend,

@@ -9,4 +9,7 @@
 .eds-dropdown option {
   color: $colors-brand-blue;
   background-color: $colors-brand-white;
+  .eds-contrast & {
+    color: $colors-brand-blue;
+  }
 }

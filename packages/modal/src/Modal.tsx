@@ -2,6 +2,8 @@ import React from 'react';
 import { CloseIcon } from '@entur/icons';
 import { ModalOverlay } from './ModalOverlay';
 import { ModalContent } from './ModalContent';
+import { IconButton } from '@entur/button';
+import './Modal.scss';
 
 export type ModalProps = {
   /** Innholdet i modalen */
@@ -39,13 +41,13 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <ModalContent size={size} {...rest}>
         {showCloseButton && (
-          <button
+          <IconButton
             className="eds-modal__close"
             aria-label={closeLabel}
             onClick={onDismiss}
           >
             <CloseIcon />
-          </button>
+          </IconButton>
         )}
         {children}
       </ModalContent>

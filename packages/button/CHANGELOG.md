@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.10...@entur/button@2.2.11) (2020-06-17)
+
+### Bug Fixes
+
+- fix wrong definition of forward referencing ([e5cad92](https://bitbucket.org/enturas/design-system/commits/e5cad92c59bc6453ab4dbe9a18c4c7e42dd7e00d))
+
+## [2.2.10](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.9...@entur/button@2.2.10) (2020-05-27)
+
+**Note:** Version bump only for package @entur/button
+
+## [2.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.8...@entur/button@2.2.9) (2020-05-26)
+
+### Bug Fixes
+
+- new styling for iconbutton ([84fe6b8](https://bitbucket.org/enturas/design-system/commits/84fe6b8bca8ecd76303995d0b9804cc1517845c5))
+
 ## [2.2.8](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.7...@entur/button@2.2.8) (2020-05-20)
 
 ### Bug Fixes

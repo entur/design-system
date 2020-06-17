@@ -13,10 +13,7 @@ export type CheckboxProps = {
   [key: string]: any;
 };
 
-export const Checkbox: React.RefForwardingComponent<
-  HTMLInputElement,
-  CheckboxProps
-> = React.forwardRef(
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
     { checked, className, width, children, style, disabled = false, ...rest },
     ref: React.Ref<HTMLInputElement>,

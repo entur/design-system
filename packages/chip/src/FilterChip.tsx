@@ -13,10 +13,7 @@ export type FilterChipProps = {
   [key: string]: any;
 };
 
-export const FilterChip: React.RefForwardingComponent<
-  HTMLInputElement,
-  FilterChipProps
-> = React.forwardRef(
+export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
   (
     { className, children, value, disabled = false, name, style, ...rest },
     ref: React.Ref<HTMLInputElement>,

@@ -21,6 +21,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   selectOnTab = false,
   openOnFocus = false,
   listStyle,
+  items,
   ...rest
 }) => {
   const {
@@ -28,9 +29,17 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
     selectedItem,
     selectHighlightedItem,
     openMenu,
+    isOpen,
+    highlightedIndex,
+    setHighlightedIndex,
   } = useDownshift();
   return (
-    <BaseDropdown disabled={disabled} listStyle={listStyle} {...rest}>
+    <BaseDropdown
+      disabled={disabled}
+      listStyle={listStyle}
+      items={items}
+      {...rest}
+    >
       <button
         {...getToggleButtonProps({
           className: 'eds-form-control eds-dropdown__selected-item',
@@ -40,6 +49,29 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
+            }
+
+            if (isOpen) {
+              const keyDownValue = e.key;
+              const matchedItems = items
+                .map((item, index) => ({ ...item, index }))
+                .filter(item => {
+                  const firstCharacter = item.label
+                    .trim()
+                    .charAt(0)
+                    .toLowerCase();
+                  return firstCharacter === keyDownValue;
+                });
+
+              const nextHighlightItem = matchedItems.find(
+                item => item.index > (highlightedIndex ?? 0),
+              );
+
+              if (nextHighlightItem) {
+                setHighlightedIndex(nextHighlightItem.index);
+              } else if (matchedItems.length > 0) {
+                setHighlightedIndex(matchedItems[0].index);
+              }
             }
           },
           onFocus: () => {

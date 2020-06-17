@@ -17,9 +17,7 @@ export type TertiaryButtonProps = {
   [key: string]: any;
 };
 
-export const TertiaryButton: React.RefForwardingComponent<
+export const TertiaryButton = React.forwardRef<
   HTMLButtonElement,
   TertiaryButtonProps
-> = React.forwardRef((props, ref) => (
-  <Button {...props} ref={ref} variant="tertiary" />
-));
+>((props, ref) => <Button {...props} ref={ref} variant="tertiary" />);

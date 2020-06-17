@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.2...@entur/form@3.0.3) (2020-06-17)
+
+### Bug Fixes
+
+- avoid resizing feedback icon bug ([8d15688](https://bitbucket.org/enturas/design-system/commits/8d1568881bd10a142412d9d290842471ad4949a4))
+- classname prop, and prop spreading for feedbacktext ([e794b3a](https://bitbucket.org/enturas/design-system/commits/e794b3acb9e249dff3e62c5f4023433b6a306f77))
+- fix wrong definition of forward referencing ([e5cad92](https://bitbucket.org/enturas/design-system/commits/e5cad92c59bc6453ab4dbe9a18c4c7e42dd7e00d))
+
+## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.1...@entur/form@3.0.2) (2020-05-27)
+
+**Note:** Version bump only for package @entur/form
+
+## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.0...@entur/form@3.0.1) (2020-05-26)
+
+### Bug Fixes
+
+- readjust fieldset to use label instead of heading4 ([feafc73](https://bitbucket.org/enturas/design-system/commits/feafc73cfc6a9e08342c9e2c41001d78eef4f182))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@2.5.5...@entur/form@3.0.0) (2020-05-20)
 
 ### Bug Fixes

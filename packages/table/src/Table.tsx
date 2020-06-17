@@ -7,7 +7,7 @@ export type TableProps = {
   /** Setter tettheten mellom rader og kolonner. Bruk gjerne middle og small for for sider med høy informasjonstetthet
    * @default "default"
    */
-  density?: 'default' | 'middle' | 'small';
+  spacing?: 'default' | 'middle' | 'small';
   /** Setter kolonne-layout til å være uavhengig av innhold
    * @default false
    */
@@ -19,7 +19,7 @@ export type TableProps = {
 export const Table: React.FC<TableProps> = ({
   className,
   fixed = false,
-  density = 'default',
+  spacing = 'default',
   sortable = false,
   ...rest
 }) => {
@@ -28,8 +28,8 @@ export const Table: React.FC<TableProps> = ({
       className={classNames(
         'eds-table',
         { 'eds-table--fixed': fixed },
-        { 'eds-table--middle': density === 'middle' },
-        { 'eds-table--small': density === 'small' },
+        { 'eds-table--middle': spacing === 'middle' },
+        { 'eds-table--small': spacing === 'small' },
         { 'eds-table--sortable': sortable },
         className,
       )}

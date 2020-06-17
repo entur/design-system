@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.10...@entur/tab@0.4.11) (2020-06-17)
+
+**Note:** Version bump only for package @entur/tab
+
+## [0.4.10](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.9...@entur/tab@0.4.10) (2020-05-27)
+
+**Note:** Version bump only for package @entur/tab
+
+## [0.4.9](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.8...@entur/tab@0.4.9) (2020-05-26)
+
+### Bug Fixes
+
+- fix insufficient prop in Tabs ([53fbecd](https://bitbucket.org/enturas/design-system/commits/53fbecd33569294b09c4f57a0254a59e171a59f0))
+
 ## [0.4.8](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.7...@entur/tab@0.4.8) (2020-05-20)
 
 ### Bug Fixes

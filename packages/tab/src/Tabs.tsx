@@ -6,7 +6,7 @@ type TabsProps = {
   /** Overskriften til taben */
   children: React.ReactNode;
   /** Kalles når taben endres */
-  onChange?: () => void;
+  onChange?: (index: number) => void;
   /** Hvilken tab som skal være åpen by default */
   defaultIndex?: number;
   /** Den åpne indexen */
