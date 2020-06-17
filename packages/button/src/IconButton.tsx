@@ -18,10 +18,7 @@ export type IconButtonProps = {
   [key: string]: any;
 };
 
-export const IconButton: React.RefForwardingComponent<
-  HTMLButtonElement,
-  IconButtonProps
-> = React.forwardRef(
+export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     { children, className, variant, disabled = false, as = 'button', ...rest },
     ref: React.Ref<HTMLButtonElement>,

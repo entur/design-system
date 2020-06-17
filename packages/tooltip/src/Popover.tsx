@@ -132,10 +132,10 @@ export type PopoverContentProps = {
   children: React.ReactNode;
 };
 
-export const PopoverContent: React.RefForwardingComponent<
+export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
-> = React.forwardRef(({ children }, ref: React.Ref<HTMLDivElement>) => {
+>(({ children }, ref: React.Ref<HTMLDivElement>) => {
   const { showPopover, attributes, styles, contentProps } = usePopoverContext();
   return (
     <div

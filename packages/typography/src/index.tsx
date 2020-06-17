@@ -3,6 +3,7 @@ import './index.scss';
 
 warnAboutMissingStyles('typography');
 
+export * from './Blockquote';
 export * from './CodeText';
 export * from './EmphasizedText';
 export * from './Heading1';

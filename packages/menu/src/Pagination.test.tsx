@@ -133,16 +133,17 @@ test('renders the currentPage as selected', () => {
 
 test('page input works as expected', () => {
   const pageChangeSpy = jest.fn();
-  const { getByRole } = render(
+  const { getByRole, getByLabelText } = render(
     <Pagination
       pageCount={5}
       currentPage={3}
       onPageChange={pageChangeSpy}
       showInput
+      inputLabel="testlabel"
     />,
   );
 
-  const input = getByRole('textbox');
+  const input = getByLabelText('testlabel', { selector: 'input' });
   const form = getByRole('form');
   fireEvent.change(input, { target: { value: '2' } });
   expect(pageChangeSpy).not.toHaveBeenCalled();

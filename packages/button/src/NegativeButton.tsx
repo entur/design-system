@@ -29,9 +29,7 @@ export type NegativeButtonProps = {
   [key: string]: any;
 };
 
-export const NegativeButton: React.RefForwardingComponent<
+export const NegativeButton = React.forwardRef<
   HTMLButtonElement,
   NegativeButtonProps
-> = React.forwardRef((props, ref) => (
-  <Button {...props} ref={ref} variant="negative" />
-));
+>((props, ref) => <Button {...props} ref={ref} variant="negative" />);
