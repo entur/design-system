@@ -279,3 +279,48 @@ test('auto-highlights first item if the highlightFirstItemOnOpen prop is set in 
     expect.anything(),
   );
 });
+test('highlight matched items on letter keydown', async () => {
+  const changeSpy = jest.fn();
+  const { getByText } = render(
+    <Dropdown
+      items={[...testItems, 'Brønnøysund', 'Brumunddal']}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+    />,
+  );
+
+  const inputField = getByText('Velg noe');
+
+  fireEvent.click(inputField);
+
+  // Set highlighed item to second item that start with b
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'Enter' });
+
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Brønnøysund',
+      label: 'Brønnøysund',
+    },
+    expect.anything(),
+  );
+
+  fireEvent.click(inputField);
+
+  // Check that we return to first higlighted item
+  // if we have exhausted all other matches
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'b' });
+  fireEvent.keyDown(inputField, { key: 'Enter' });
+
+  expect(changeSpy).toHaveBeenCalledWith(
+    {
+      value: 'Bergen',
+      label: 'Bergen',
+    },
+    expect.anything(),
+  );
+});
