@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.4...@entur/menu@1.5.5) (2020-06-17)
+
+### Bug Fixes
+
+- add aria label to pagination input ([545a25e](https://bitbucket.org/enturas/design-system/commits/545a25e84e960ebc3365ac3e938f86d1a2f49b71))
+
 ## [1.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.3...@entur/menu@1.5.4) (2020-05-27)
 
 **Note:** Version bump only for package @entur/menu

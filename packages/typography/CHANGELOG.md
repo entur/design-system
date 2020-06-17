@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.8...@entur/typography@1.2.0) (2020-06-17)
+
+### Bug Fixes
+
+- fix styling of link underline ([76a29d9](https://bitbucket.org/enturas/design-system/commits/76a29d92ee9099aba7457a8f845b254434d01ad5))
+
+### Features
+
+- add blockquote and blockquote footer component ([b0c4b10](https://bitbucket.org/enturas/design-system/commits/b0c4b1097c6ed6911f5d0d1a82dbba1de21e4c0c))
+
 ## [1.1.8](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.1.7...@entur/typography@1.1.8) (2020-05-27)
 
 **Note:** Version bump only for package @entur/typography

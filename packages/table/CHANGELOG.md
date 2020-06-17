@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.1...@entur/table@3.0.2) (2020-06-17)
+
+### Bug Fixes
+
+- remove top padding from header-row in tables ([2b3167f](https://bitbucket.org/enturas/design-system/commits/2b3167fb44b73d8af13f2a11f7f76f760d549601))
+
 ## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.0...@entur/table@3.0.1) (2020-05-27)
 
 ### Bug Fixes

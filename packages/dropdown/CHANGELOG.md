@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.1.2...@entur/dropdown@1.2.0) (2020-06-17)
+
+### Bug Fixes
+
+- fix contrast styling for nativedropdown ([b8d0ffd](https://bitbucket.org/enturas/design-system/commits/b8d0ffd99b5382a807515b5d291a767d9338171b))
+
+### Features
+
+- highlight items that matches keypress key ([d8f5c26](https://bitbucket.org/enturas/design-system/commits/d8f5c261c236cf089eced9d5b5aebe3397a64262))
+
 ## [1.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.1.1...@entur/dropdown@1.1.2) (2020-05-27)
 
 **Note:** Version bump only for package @entur/dropdown

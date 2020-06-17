@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.6.1...@entur/icons@1.7.0) (2020-06-17)
+
+### Features
+
+- add contrast support for travel icons ([4c1c56a](https://bitbucket.org/enturas/design-system/commits/4c1c56a4d12aee4b6a2a7a9054075335bf2a4495))
+
 ## [1.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.6.0...@entur/icons@1.6.1) (2020-05-27)
 
 **Note:** Version bump only for package @entur/icons

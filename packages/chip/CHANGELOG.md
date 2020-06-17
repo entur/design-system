@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.16](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.15...@entur/chip@0.3.16) (2020-06-17)
+
+### Bug Fixes
+
+- fix wrong definition of forward referencing ([e5cad92](https://bitbucket.org/enturas/design-system/commits/e5cad92c59bc6453ab4dbe9a18c4c7e42dd7e00d))
+
 ## [0.3.15](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.14...@entur/chip@0.3.15) (2020-05-27)
 
 **Note:** Version bump only for package @entur/chip

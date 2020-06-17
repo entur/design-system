@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.21](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.20...@entur/datepicker@0.3.21) (2020-06-17)
+
+### Bug Fixes
+
+- fix readonly styling for datepicker ([f0ed1e5](https://bitbucket.org/enturas/design-system/commits/f0ed1e50a3e0c576e717df3faf4604e74f694d62))
+- fix wrong definition of forward referencing ([e5cad92](https://bitbucket.org/enturas/design-system/commits/e5cad92c59bc6453ab4dbe9a18c4c7e42dd7e00d))
+
 ## [0.3.20](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.19...@entur/datepicker@0.3.20) (2020-05-27)
 
 **Note:** Version bump only for package @entur/datepicker

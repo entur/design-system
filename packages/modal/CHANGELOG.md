@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.19](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.18...@entur/modal@1.1.19) (2020-06-17)
+
+### Bug Fixes
+
+- use iconbutton in modal window ([0ec8929](https://bitbucket.org/enturas/design-system/commits/0ec8929a339d76fcbb6c1af6d6b39796b0554d11))
+
 ## [1.1.18](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.17...@entur/modal@1.1.18) (2020-05-27)
 
 **Note:** Version bump only for package @entur/modal
