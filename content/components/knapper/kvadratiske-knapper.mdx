@@ -1,7 +1,7 @@
 ---
-name: Kvadratiske knapper
-description: Kvadratiske knapper brukes med ikoner for å trigge en handling
-route: /komponenter/knapper/kvadratiske-knapper
+name: Square button
+description: Kvadratiske knapper består av et ikon og et tilhørende label. Knappen kan benyttes for eksempel til; Legg til, Last ned, Last opp osv.
+route: /komponenter/knapper/square-button
 parent: Komponenter
 menu: Knapper
 npmPackage: button
@@ -75,3 +75,12 @@ Du kan ikke plassere teksten inni en `<span />` eller lignende, da komponenten d
   <RandomIkon /> <span>En label-tekst</span>
 </SecondarySquareButton>
 ```
+
+## Retningslinjer for bruk
+
+Fungerer som handlingsknapper som består av av et ikon.
+Ikonet skal være selvforklarende for handlingen samt ha en Tooltip med en beskrivende tekst ved hover.
+Denne knappen skal benyttes i f.eks disse tilfellene; Legge til, laste ned, laste opp osv.
+
+Kvadratiske knapper skal alltid ha ett ikon, og kan ha en label på enten venstre eller høyre side.
+Du kan også bruke dem uten label, men bør da sende inn en alternativ beskrivelse med aria-label.

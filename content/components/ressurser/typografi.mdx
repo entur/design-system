@@ -1,14 +1,14 @@
 ---
-name: Typografi
+name: Typography
 description: Oversikt over Entur sine typografiske komponenter
-route: /komponenter/ressurser/typografi
+route: /komponenter/ressurser/typography
 parent: Komponenter
 menu: Ressurser
 npmPackage: typography
-tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link
+tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link, sitat, blockquote
 ---
 
-import { Link, Props } from 'docz';
+import { Link as DoczLink, Props } from 'docz';
 import {
   Heading1,
   Heading2,
@@ -24,12 +24,14 @@ import {
   SmallText,
   StrongText,
   EmphasizedText,
-  Link as LinkText,
+  Link,
   PreformattedText,
   CodeText,
   UnorderedList,
   NumberedList,
   ListItem,
+  Blockquote,
+  BlockquoteFooter,
 } from '@entur/typography';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -37,9 +39,9 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader>
   Retningslinjer for bruk av typografi står beskrevet under{' '}
-  <LinkText as={Link} to="/visuell-identitet">
+  <Link as={DoczLink} to="/visuell-identitet">
     Visuell identitet
-  </LinkText>
+  </Link>
   .
 </PageHeader>
 
@@ -137,6 +139,23 @@ Du har to forskjellige listetyper - usortert og nummerert.
   </NumberedList>
 </Playground>
 
+## Andre typografiske elementer
+
+### Blockquote
+
+<Playground>
+  <Blockquote cite="">
+    Entur gjør det enklere å reise kollektivt
+    <BlockquoteFooter>Ola Nordmann, Entur</BlockquoteFooter>
+  </Blockquote>
+</Playground>
+
+### Link
+
+<Playground>
+  <Link href="https://entur.no/">Reiseplanleggeren til Entur</Link>
+</Playground>
+
 ## CSS properties
 
 Vi eksponerer noen CSS-properties fra denne pakken, som kan brukes på tvers av andre komponenter. Disse er:
@@ -199,7 +218,7 @@ De vil bli dokumentert bedre etterhvert, men vil være de aktuelle hovedfargene 
 ### Link
 
 <ImportStatement imports="Link" />
-<Props of={LinkText} />
+<Props of={Link} />
 
 ### PreformattedText
 

@@ -1,23 +1,27 @@
 ---
-name: Dropdowns
-description: Dropdowns lar deg velge mellom mange valg
-route: /komponenter/skjemaelementer/dropdowns
+name: Dropdown
+description: Dropdowns presenterer en liste over alternativer som kan brukes til å filtrere eller sortere eksisterende innhold.
+route: /komponenter/skjemaelementer/dropdown
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: dropdown
 tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
 ---
 
-import { Props } from 'docz';
+import { Props, Link } from 'docz';
 import { Dropdown, NativeDropdown } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 import dropdownItems from './dropdownItems';
+import { BestPractices, Example } from '~/components/BestPractices';
+import doPic from './DropdownDo.png';
+import dontPic from './DropdownDont.png';
+import { Link as LinkText } from '@entur/typography';
 
 <PageHeader />
 
-<Playground>
+<Playground style={{ margin: '0 33%' }}>
   <Dropdown items={dropdownItems} label="Stoppesteder" />
   <Dropdown
     items={dropdownItems}
@@ -105,3 +109,25 @@ Den har ikke støtte for søk, men godtar en (asynkron) funksjon for å hente da
 <Playground>
   <NativeDropdown items={dropdownItems} />
 </Playground>
+
+## Retningslinjer for bruk
+
+Dropdowns presenterer en liste over alternativer som kan brukes til å filtrere eller sortere eksisterende innhold. Komponenten lar brukerne velge en handling eller verdier fra en liste med valg. Den brukes vanligvis når du har over 5 elementer å velge mellom. Skriv kortfattede og beskrivende labels for å informere brukerne om hva de kan forvente i en dropdown slik at brukerne forstår formålet. Label teksten bør begrenses til en enkelt tekstlinje.
+
+#### Det finnes to varianter av dropdowns:
+
+- **Single select**: Når brukerne klikker på dropdown feltet, får de opp en liste over mulige alternativer. Brukeren kan deretter velge ett enkelt alternativ fra denne listen. Hvis du har færre enn 5 valg, bør du vurdere å bruke <LinkText as={Link} to="/komponenter/skjemaelementer/radio-button">Radio</LinkText> eller <LinkText as={Link} to="/komponenter/skjemaelementer/chips">Choice Chips</LinkText>.
+- **Multi select**: Gir brukerne mulighet til å velge flere alternativer fra listen på en gang. Færre enn 5 alternativer, bruk <LinkText as={Link} to="/komponenter/skjemaelementer/checkbox">Checkboxes</LinkText> eller <LinkText as={Link} to="/komponenter/skjemaelementer/chips">Filter Chips</LinkText> i stedet. Les mer om denne multi select <LinkText as={Link} to="/komponenter/skjemaelementer/multi-select/">her.</LinkText>
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do" src={doPic}>
+    Anbefalt bredde størrelse på dropdowns er minimum 170 px og maximum 350 px.
+  </Example>
+  <Example type="dont" src={dontPic}>
+    Tekst som strekker seg utover elementet konkatineres, og gjør det vanskelig
+    for brukeren å lese. Unngå derfor for lange tekstbeskrivelser, og prøv
+    heller å korte ned på teksten.
+  </Example>
+</BestPractices>

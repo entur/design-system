@@ -1,6 +1,6 @@
 ---
-name: TravelHeader
-description: TravelHeader viser en reise med fra- og tildestinasjon
+name: Travel header
+description: Travel header viser destinasjonene som man reiser fra og til på en visuell måte. Vi benytter den røde streken fra logoen for å understreke identiteten til Entur.
 route: /komponenter/reise/reiseskrift
 parent: Komponenter
 menu: reise
@@ -13,12 +13,14 @@ import { TravelHeader } from '@entur/travel';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { colors } from '@entur/tokens';
+import ex1 from './TravelHeaderExample.png';
 
 <PageHeader />
 
-<Playground>
-  <TravelHeader from="Leknes" to="Oslo" />
-  <TravelHeader from="Leknes" to="Oslo" size="medium" />
+<Playground style={{ width: '40%', margin: 'auto' }}>
+  <TravelHeader from="Bergen" to="Oslo" />
+  <TravelHeader from="Bergen" to="Oslo" size="medium" />
 </Playground>
 
 ## Komponenter
@@ -28,3 +30,15 @@ import { ImportStatement } from '~/components/ImportStatement';
 <ImportStatement imports="TravelHeader" />
 
 <Props of={TravelHeader} />
+
+## Retningslinjer for bruk
+
+Destinasjonene skal alltid stå på hver sin linje, og ‘til’-destinasjon står alltid med et innrykk etter streken på linje to.
+Hvis det er så lange stedsnavn at de ikke får plass, benyttes ‘…’ isteden for å brekke til ny rad.
+‘Fra’ iog ‘Til’ er alltid stoppesteder, men på billetter kan også soner benyttes.
+
+### Eksempel
+
+Her er et eksempel på hvordan man har tatt i bruk travel header i reiseplanleggeren til Entur.
+
+<img src={ex1} style={{ border: `2px solid  ${colors.greys.grey30}` }} />

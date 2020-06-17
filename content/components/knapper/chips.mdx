@@ -39,14 +39,14 @@ import PageHeader from '~/components/PageHeader';
           <Label>ChoiceChips</Label>
           <ChoiceChipGroup
             name="city"
-            label="Velg din hjemby"
+            label="Velg setekategori"
             onChange={e => setValue(e.target.value)}
             value={value}
           >
-            <ChoiceChip value="Oslo">Oslo</ChoiceChip>
-            <ChoiceChip value="Leknes">Leknes</ChoiceChip>
-            <ChoiceChip value="Bergen" disabled>
-              Bergen
+            <ChoiceChip value="standard">Standard</ChoiceChip>
+            <ChoiceChip value="premium">Premium</ChoiceChip>
+            <ChoiceChip value="sove" disabled>
+              Sove (utsolgt)
             </ChoiceChip>
           </ChoiceChipGroup>
         </div>
@@ -57,9 +57,6 @@ import PageHeader from '~/components/PageHeader';
             <ActionChip style={{ marginRight: '1rem' }}>
               Legg til <AddIcon />
             </ActionChip>
-            <ActionChip>
-              <CarIcon /> Kjør da
-            </ActionChip>
           </div>
         </div>
         <div>
@@ -68,7 +65,7 @@ import PageHeader from '~/components/PageHeader';
         </div>
         <div>
           <Label>FilterChip</Label>
-          <FilterChip>Mandag</FilterChip>
+          <FilterChip value="mandag">Mandag</FilterChip>
         </div>
       </div>
     );

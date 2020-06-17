@@ -18,10 +18,10 @@
 
 .best-practices__heading {
   background-color: $colors-greys-grey40;
-  border-bottom: $border-widths-large solid currentColor;
+  outline: $border-widths-medium solid $colors-greys-grey30;
   font-weight: $font-weights-heading;
   padding: $space-large;
-
+  border-bottom: $border-widths-large solid currentColor;
   &--do {
     color: $colors-validation-mint;
   }

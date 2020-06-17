@@ -1,5 +1,5 @@
 ---
-name: Text fields
+name: Text field
 description: TextField en komponent for å ta imot tekst fra brukeren.
 route: /komponenter/skjemaelementer/textfield
 parent: Komponenter
@@ -8,31 +8,35 @@ npmPackage: form
 tags: textfield, input, tekstfelt
 ---
 
-import { Props } from 'docz';
+import { Props, Link } from 'docz';
+import { Link as LinkText } from '@entur/typography';
 import { TextField } from '@entur/form';
-import { ImageIcon } from '@entur/icons';
+import { GridItem, GridContainer } from '@entur/grid';
+import { SearchIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
 
-<Playground>
-  <div style={{ display: 'grid', rowGap: '1em' }}>
-    <TextField placeholder="Skriv her..." />
-    <TextField disabled placeholder="Disabled" />
-    <TextField readOnly value="Read-only modus" />
-    <TextField variant="success" placeholder="Suksess" />
-    <TextField variant="error" placeholder="Feil" />
-    <TextField variant="none" placeholder="Søk..." />
-    <TextField
-      placeholder="Her er et ikon som prepend"
-      prepend={<ImageIcon inline />}
-    />
-    <div style={{ width: '15rem' }}>
-      <TextField placeholder="Kortere input" prepend="Fra" append="Kroner" />
-    </div>
-  </div>
+<Playground style={{ width: '50%', margin: 'auto' }}>
+  <GridContainer spacing="medium">
+    <GridItem small={12}>
+      <TextField placeholder="Skriv her..." />
+    </GridItem>
+    <GridItem small={12}>
+      <TextField readOnly value="Read-only modus" />
+    </GridItem>
+    <GridItem small={12}>
+      <TextField
+        placeholder="Her er et ikon som prepend"
+        prepend={<SearchIcon inline />}
+      />
+    </GridItem>
+    <GridItem small={12} style={{ width: '15rem' }}>
+      <TextField prepend="Fra" append="Kroner" />
+    </GridItem>
+  </GridContainer>
 </Playground>
 
 ## Komponenter
@@ -41,3 +45,32 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <ImportStatement imports="TextField" />
 <Props of={TextField} />
+
+`TextField` er en stylet wrapper for et `<input>`-element.
+Dette innebærer at eventuelle props du ønsker bruke fra det grunnleggende HTML-elementet blir videresendt.
+
+Les mer om disse her:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes
+
+## Retningslinjer for bruk
+
+<div>
+  Tekstfelt lar brukerne legge inn og redigere tekst i et brukergrensesnitt.
+  Tekstfelt brukes normalt i et skjema, man kan også være del av for eksempel
+  modal eller søk. Bør benyttes med en kort og tydelig ledetekst som forklarer
+  hva brukeren skal oppgi i feltet. Hvis det er nødvendig med mer veiledning for
+  å hjelpe brukerens utfylling av skjemaet, kan du legge til hint, hjelpetekst
+  og validering. Se{' '}
+  <LinkText as={Link} to="/komponenter/skjemaelementer/input-groups">
+    Input groups
+  </LinkText>{' '}
+  for å legge dette til skjemaelementene.
+</div>
+<br />
+<div>
+  For tekst som går over flere linjer, bruk heller{' '}
+  <LinkText as={Link} to="/komponenter/skjemaelementer/textareas">
+    Text areas
+  </LinkText>
+  .
+</div>

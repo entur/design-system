@@ -1,6 +1,6 @@
 ---
-name: Reiselinjer
-route: /komponenter/reise/reiselinjer
+name: Travel leg
+route: /komponenter/reise/travel-leg
 parent: Komponenter
 menu: reise
 npmPackage: travel
@@ -12,29 +12,34 @@ import { LegLine, LegBone, TravelLeg } from '@entur/travel';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { GridContainer, GridItem } from '@entur/grid';
+import { colors } from '@entur/tokens';
+import ex1 from './LegsExample1.png';
+import ex2 from './LegsExample2.png';
 
 <PageHeader>
-  Reiselinjer brukes for å illustrere mellom to destinasjoner
+  Travel leg benyttes til å illustrere reisestrekningen mellom to destinasjoner,
+  og benytter transportfargen og Enturs mønster til det aktuelle
+  transportmidlet.
 </PageHeader>
 
-<Playground>
-  <div>
-    <LegBone
-      direction="horizontal"
-      pattern="line"
-      color="black"
-      style={{ width: '10rem' }}
-    />
-    <div style={{ height: '5rem', display: 'flex' }}>
-      <TravelLeg transport="bus" direction="vertical" />
-      <TravelLeg transport="rail" direction="vertical" />
-      <TravelLeg transport="air" direction="vertical" />
-      <TravelLeg transport="water" direction="vertical" />
-      <TravelLeg transport="foot" direction="vertical" />
-      <TravelLeg transport="metro" direction="vertical" />
-    </div>
-    <LegLine color="blue" pattern="wave" />
-  </div>
+<Playground
+  style={{
+    display: 'grid',
+    gridGap: '1rem',
+    gridTemplateColumns: 'repeat(7, 1fr)',
+    height: '8rem',
+    width: '45%',
+    margin: 'auto',
+  }}
+>
+  <TravelLeg transport="bus" direction="vertical" />
+  <TravelLeg transport="water" direction="vertical" />
+  <TravelLeg transport="air" direction="vertical" />
+  <TravelLeg transport="metro" direction="vertical" />
+  <TravelLeg transport="rail" direction="vertical" />
+  <TravelLeg transport="tram" direction="vertical" />
+  <TravelLeg transport="foot" direction="vertical" />
 </Playground>
 
 ## Komponenter
@@ -59,3 +64,20 @@ Disse tar også hensyn til om man er i en Kontrast-seksjon eller ikke.
 <ImportStatement imports="LegLine" />
 
 <Props of={LegLine} />
+
+## Retningslinjer for bruk
+
+Travel leg benyttes oftest vertikalt, men kan også benyttes horisontalt i grensesnitt der dette passer bedre.
+
+### Eksempel
+
+Her er et eksempel på hvordan man har tatt i bruk travel legs på reisedetaljer siden i reiseplanleggeren til Entur.
+
+<GridContainer spacing="large">
+  <GridItem snall={12} medium={6} large={4}>
+    <img src={ex1} style={{ border: `2px solid  ${colors.greys.grey30}` }} />
+  </GridItem>
+  <GridItem small={12} medium={6} large={4}>
+    <img src={ex2} style={{ border: `2px solid  ${colors.greys.grey30}` }} />
+  </GridItem>
+</GridContainer>

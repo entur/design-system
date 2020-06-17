@@ -14,6 +14,7 @@ type PlaygroundProps = {
   hideContrastOption?: boolean;
   children: React.ReactNode;
   language?: Language;
+  style?: React.CSSProperties;
   // These props are injected by MDX
   __code: string;
   __scope: Record<string, any>;
@@ -24,6 +25,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
   defaultContrast = false,
   defaultShowEditor = false,
   hideContrastOption = false,
+  style,
   __code,
   __scope,
   language,
@@ -59,7 +61,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
           <Contrast className="playground">{children}</Contrast>
         )}
       >
-        <LivePreview />
+        <LivePreview style={{ ...style }} />
       </ConditionalWrapper>
       <div className="playground__controls">
         {hideContrastOption ? (
