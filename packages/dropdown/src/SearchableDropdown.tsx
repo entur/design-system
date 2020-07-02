@@ -16,9 +16,19 @@ type SearchableDropdownProps = {
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
   clearable: boolean;
-  regex?: ((input: string) => RegExp) | false;
+  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
   [key: string]: any;
 };
+
+function escapeRegex(item: NormalizedDropdownItemType, input: string | null) {
+  if (!input) {
+    return true;
+  }
+  const inputWater = input.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const inputRegex = new RegExp(inputWater, 'i');
+  return inputRegex.test(item.label);
+}
+
 export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   disabled = false,
   className,
@@ -31,6 +41,8 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   openOnFocus = false,
   listStyle,
   clearable,
+  itemFilter = (item: NormalizedDropdownItemType, inputValue: string | null) =>
+    escapeRegex(item, inputValue),
   ...rest
 }) => {
   const {
@@ -40,15 +52,8 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     openMenu,
   } = useDownshift();
 
-  function escapeRegex(string: string) {
-    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  }
   const filteredItems = React.useMemo(() => {
-    if (!inputValue) {
-      return items;
-    }
-    const inputRegex = new RegExp(escapeRegex(inputValue), 'i');
-    return items.filter(item => inputRegex.test(item.label));
+    return items.filter(item => itemFilter(item, inputValue));
   }, [inputValue, items]);
 
   return (
