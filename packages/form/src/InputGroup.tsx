@@ -20,6 +20,10 @@ export type InputGroupProps = {
   variant?: VariantType;
   /** En form-komponent */
   children: React.ReactNode;
+  /** Om feltet er påkrevd
+   * @default false
+   */
+  required?: boolean;
   [key: string]: any;
 };
 
@@ -30,6 +34,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({
   feedback,
   variant,
   children,
+  required = false,
   ...rest
 }) => {
   return (
@@ -37,7 +42,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({
       <div className={classNames('eds-input-group', className)} {...rest}>
         <Label style={{ display: 'block' }}>
           <span className="eds-input-group__label">
-            {label}
+            {label} {required && <span>*</span>}
             {labelTooltip && (
               <Tooltip content={labelTooltip} placement="right">
                 <span className="eds-input-group__label-tooltip-icon">
