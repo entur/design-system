@@ -63,6 +63,11 @@
     font-size: 2rem;
     padding: $space-small;
   }
+  &__title-icon-compact {
+    position: relative;
+    top: 0.1em;
+    margin-right: $space-large;
+  }
   &__arrow-icon {
     margin-top: $space-extra-small;
   }

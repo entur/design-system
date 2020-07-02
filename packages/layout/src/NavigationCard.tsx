@@ -43,12 +43,18 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}
-      <span className="eds-navigation-card__title">{title}</span>
+      <span className="eds-navigation-card__title">
+        {compact && titleIcon && (
+          <span className="eds-navigation-card__title-icon-compact">
+            {titleIcon}
+          </span>
+        )}
+        {title}
+      </span>
       {!compact && <Paragraph>{children}</Paragraph>}
-      <ForwardIcon
-        inline={compact}
-        className="eds-navigation-card__arrow-icon"
-      />
+      {compact && (
+        <ForwardIcon inline className="eds-navigation-card__arrow-icon" />
+      )}
     </BaseCard>
   );
 };
