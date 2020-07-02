@@ -6,6 +6,17 @@
 
   &__item {
     &__container {
+      font-family: inherit; /* 1 */
+      margin: 0; /* 2 */
+      text-transform: none;
+      -webkit-appearance: button;
+      appearance: none;
+      background: none;
+      border: none;
+      margin: 0;
+      padding: 0;
+      align-items: inherit;
+
       display: flex;
       flex-grow: 1;
       flex-basis: 0;
@@ -24,21 +35,65 @@
       text-align: center;
       font-size: $font-sizes-medium;
       padding: $space-extra-small2 $space-medium;
-
+    }
+    &__label.eds-stepper__item__label--active {
+      color: $colors-brand-blue;
+      .eds-contrast & {
+        color: $colors-brand-white;
+      }
+    }
+    &__square {
+      height: $space-extra-small;
       &--active {
         color: inherit;
-        border-top: $space-extra-small solid $colors-brand-blue;
+        background: $colors-greys-grey20;
+        position: relative;
+        &:before {
+          content: '';
+          position: absolute;
+          right: calc(50% + #{$space-extra-small});
+          bottom: 0;
+          width: 0;
+          height: 0;
+          border-left: $space-extra-small/2 solid $colors-brand-blue;
+          border-top: $space-extra-small/2 solid transparent;
+          border-bottom: $space-extra-small/2 solid transparent;
+          .eds-contrast & {
+            border-left-color: $colors-brand-lavender;
+            border-left-color: $colors-brand-lavender;
+          }
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 50%;
+          height: $space-extra-small;
+          background: $colors-brand-blue;
+          .eds-contrast & {
+            background: $colors-brand-lavender;
+          }
+        }
         .eds-contrast & {
-          border-color: $colors-brand-lavender;
+          background: $colors-brand-lavender;
+          background: $colors-blues-blue20;
         }
       }
 
       &--inactive {
         color: $colors-blues-blue40;
-        border-top: $space-extra-small solid $colors-blues-blue80;
+        background: $colors-greys-grey20;
         .eds-contrast & {
           color: $colors-brand-lavender;
-          border-color: $colors-blues-blue20;
+          background: $colors-blues-blue20;
+        }
+      }
+      &--has-been {
+        color: inherit;
+        background: $colors-brand-blue;
+        .eds-contrast & {
+          background: $colors-brand-lavender;
         }
       }
     }

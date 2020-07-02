@@ -27,23 +27,29 @@ export const Stepper: React.FC<StepperProps> = ({
     <div className={classNames('eds-stepper', className)} {...rest}>
       {steps.map((step, i) => {
         const isActive = i === activeIndex;
+        const hasBeenActive = activeIndex > i;
         return (
-          <div
+          <button
             key={step}
             onClick={() => onStepClick(i)}
             className="eds-stepper__item__container"
           >
-            <Label
+            <div
               className={classNames(
-                isActive
-                  ? 'eds-stepper__item__label--active'
-                  : 'eds-stepper__item__label--inactive',
-                'eds-stepper__item__label',
+                'eds-stepper__item__square',
+                { 'eds-stepper__item__square--active': isActive },
+                { 'eds-stepper__item__square--inactive': activeIndex < i },
+                { 'eds-stepper__item__square--has-been': hasBeenActive },
               )}
+            ></div>
+            <Label
+              className={classNames('eds-stepper__item__label', {
+                'eds-stepper__item__label--active': hasBeenActive,
+              })}
             >
               {i + 1}. {step}
             </Label>
-          </div>
+          </button>
         );
       })}
     </div>
