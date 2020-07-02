@@ -51,7 +51,7 @@
         &:before {
           content: '';
           position: absolute;
-          right: calc(50% + #{$space-extra-small});
+          right: calc(50% - 0.2rem);
           bottom: 0;
           width: 0;
           height: 0;
