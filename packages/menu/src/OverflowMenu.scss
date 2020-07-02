@@ -17,7 +17,7 @@
     text-align: left;
     padding: $space-extra-small $space-medium;
     .eds-contrast & {
-      background: $colors-blues-blue10;
+      color: $colors-brand-blue;
     }
 
     .eds-icon {
@@ -28,17 +28,11 @@
     &:focus,
     &[data-selected] {
       background: $colors-blues-blue70;
-      .eds-contrast & {
-        background: $colors-blues-blue30;
-      }
     }
   }
 }
 .eds-overflow-menu__item + .eds-overflow-menu__item {
   border-top: $border-widths-small solid $colors-greys-grey20;
-  .eds-contrast & {
-    border-color: $colors-blues-blue30;
-  }
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
   border: $border-widths-small solid $colors-greys-grey20;
@@ -49,7 +43,6 @@
     outline: none;
   }
   &.eds-contrast {
-    border-color: $colors-blues-blue30;
     box-shadow: $shadows-card-shadow-contrast;
   }
 }
