@@ -116,6 +116,10 @@
     font-size: $font-sizes-extra-large;
     right: $space-large;
     top: $space-large;
+    .eds-alert-box--toast & {
+      right: $space-medium;
+      top: $space-medium;
+    }
   }
 }
 
