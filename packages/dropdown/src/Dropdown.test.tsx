@@ -33,6 +33,21 @@ test('renders a regular dropdown', () => {
     expect.anything(),
   );
 });
+
+test('applies className to outer div', () => {
+  const changeSpy = jest.fn();
+  const { container } = render(
+    <Dropdown
+      items={testItems}
+      placeholder="Velg noe"
+      className="custom-class"
+      onChange={changeSpy}
+    />,
+  );
+
+  expect(container.firstChild).toHaveClass('custom-class');
+});
+
 test('renders a searchable dropdown', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
