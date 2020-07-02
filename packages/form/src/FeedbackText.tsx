@@ -5,7 +5,7 @@ import {
   ValidationExclamationIcon,
   ValidationInfoIcon,
 } from '@entur/icons';
-import { SmallText } from '@entur/typography';
+import { SubLabel } from '@entur/typography';
 import { VariantType } from './VariantProvider';
 import classNames from 'classnames';
 import './FeedbackText.scss';
@@ -45,9 +45,9 @@ export const FeedbackText: React.FC<FeedbackTextProps> = ({
   ...rest
 }) => {
   return (
-    <SmallText className={classNames('eds-feedback-text', className)} {...rest}>
+    <SubLabel className={classNames('eds-feedback-text', className)} {...rest}>
       {!hideIcon && <AlertIcon variant={variant} />}
       {children}
-    </SmallText>
+    </SubLabel>
   );
 };
