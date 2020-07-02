@@ -6,6 +6,11 @@
 
   &__item {
     &__container {
+      cursor: pointer;
+
+      &--non-interactive {
+        cursor: default;
+      }
       font-family: inherit; /* 1 */
       margin: 0; /* 2 */
       text-transform: none;
@@ -22,6 +27,14 @@
       flex-basis: 0;
       flex-direction: column;
       margin-left: $space-extra-small2;
+
+      &:focus {
+        outline: none;
+        box-shadow: $shadows-focus;
+        .eds-contrast & {
+          box-shadow: $shadows-focus-contrast;
+        }
+      }
     }
 
     &__container:first-child {
@@ -29,14 +42,23 @@
     }
 
     &__label {
-      cursor: pointer;
+      cursor: inherit;
       flex-grow: 1;
       flex-direction: column;
       text-align: center;
       font-size: $font-sizes-medium;
       padding: $space-extra-small2 $space-medium;
+      &--active {
+        font-weight: $font-weights-heading;
+      }
     }
     &__label.eds-stepper__item__label--active {
+      color: $colors-brand-blue;
+      .eds-contrast & {
+        color: $colors-brand-white;
+      }
+    }
+    &__label.eds-stepper__item__label--has-been {
       color: $colors-brand-blue;
       .eds-contrast & {
         color: $colors-brand-white;
