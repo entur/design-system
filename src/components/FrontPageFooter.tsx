@@ -51,11 +51,10 @@ function FrontPageFooter() {
               Sketch UI-Library
             </Link>
           </Heading4>
-          <Heading4
-            margin="none"
-            href="https://bitbucket.org/enturas/design-system/src/master/"
-          >
-            <Link>Bitbucket</Link>
+          <Heading4 margin="none">
+            <Link href="https://bitbucket.org/enturas/design-system/src/master/">
+              Bitbucket
+            </Link>
           </Heading4>
           <Heading4 margin="none">
             <Link href="https://entur.no/">Entur.no</Link>
