@@ -20,15 +20,18 @@ type SearchableDropdownProps = {
   [key: string]: any;
 };
 
-function escapeRegex(item: NormalizedDropdownItemType, input: string | null) {
+function LowerCaseFilterTest(
+  item: NormalizedDropdownItemType,
+  input: string | null,
+) {
   if (!input) {
     return true;
   }
-  const sanitizedEscapeCharacters = input.replace(
+  const sanitizeEscapeCharacters = input.replace(
     /[-\/\\^$*+?.()|[\]{}]/g,
     '\\$&',
   );
-  const inputRegex = new RegExp(sanitizedEscapeCharacters, 'i');
+  const inputRegex = new RegExp(sanitizeEscapeCharacters, 'i');
   return inputRegex.test(item.label);
 }
 
@@ -45,7 +48,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   listStyle,
   clearable,
   itemFilter = (item: NormalizedDropdownItemType, inputValue: string | null) =>
-    escapeRegex(item, inputValue),
+    LowerCaseFilterTest(item, inputValue),
   ...rest
 }) => {
   const {
@@ -57,7 +60,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
 
   const filteredItems = React.useMemo(() => {
     return items.filter(item => itemFilter(item, inputValue));
-  }, [inputValue, items]);
+  }, [inputValue, items, itemFilter]);
 
   return (
     <BaseDropdown
