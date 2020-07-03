@@ -24,8 +24,11 @@ function escapeRegex(item: NormalizedDropdownItemType, input: string | null) {
   if (!input) {
     return true;
   }
-  const inputWater = input.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  const inputRegex = new RegExp(inputWater, 'i');
+  const sanitizedEscapeCharacters = input.replace(
+    /[-\/\\^$*+?.()|[\]{}]/g,
+    '\\$&',
+  );
+  const inputRegex = new RegExp(sanitizedEscapeCharacters, 'i');
   return inputRegex.test(item.label);
 }
 
