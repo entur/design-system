@@ -5,6 +5,7 @@ import Downshift, {
   StateChangeOptions,
 } from 'downshift';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
+import classNames from 'classnames';
 
 const DownshiftContext = React.createContext<ControllerStateAndHelpers<
   NormalizedDropdownItemType
@@ -19,6 +20,8 @@ export type DownshiftProviderProps = {
   inputValue?: string;
   initialSelectedItem?: NormalizedDropdownItemType;
   highlightFirstItemOnOpen?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
   [key: string]: any;
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
@@ -26,6 +29,8 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   onChange = () => {},
   onInputValueChange = () => {},
   highlightFirstItemOnOpen = false,
+  className,
+  style,
   ...rest
 }) => {
   const handleStateChange = (
@@ -66,7 +71,7 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
       {...rest}
     >
       {args => (
-        <div className="eds-input-group">
+        <div className={classNames('eds-input-group', className)} style={style}>
           {/* This div is required by Downshift */}
           <DownshiftContext.Provider value={args}>
             {children}

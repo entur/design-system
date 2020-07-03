@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { RightArrowIcon } from '@entur/icons';
-import { Link as LinkText } from '@entur/typography';
 
 export type BreadcrumbItemProps = {
   /** Komponenten som rendres */
@@ -24,8 +23,7 @@ export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
   return (
     <>
       <li className={classNames('eds-breadcrumb__item', className)}>
-        <LinkText
-          as={Element}
+        <Element
           aria-current={isCurrent ? 'page' : undefined}
           className={classNames('eds-breadcrumb__link', {
             'eds-breadcrumb__link--current': isCurrent,

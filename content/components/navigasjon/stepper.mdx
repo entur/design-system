@@ -16,10 +16,10 @@ import { Stepper } from '@entur/menu';
 
 <PageHeader />
 
-<Playground>
+<Playground style={{ margin: '0 20%' }}>
   {() => {
     let [activeIndex, setActiveIndex] = React.useState(0);
-    const steps = ['Om linjen', 'Journey patterns', 'Bestillingsinformasjon'];
+    const steps = ['Betaling', 'Kvittering', 'Billettering'];
     return (
       <Stepper
         steps={steps}
@@ -38,3 +38,17 @@ import { Stepper } from '@entur/menu';
 <Props of={Stepper} />
 
 `<Stepper />`-komponenten skal brukes til skjemaer som krever trinnvis utfylling. Det skal i utgangspunktet ikke være mulig å hoppe _framover_ i skjemaet uten å ha fylt inn de foregående stegene først.
+
+## Retningslinjer for bruk
+
+Stepper er en visuell fremstilling av brukerens fremgang gjennom et sett med trinn.
+En trinnliste som fungerer som en veiviser for å hjelpe brukerne med å fullføre en spesifikk oppgave i
+en arbeidsflyt bestående av et antall trinn. Den gir brukeren en raskt måte å se hvor de er i løpet og
+hva de skal jobbe med videre. Vis trinnene i rekkefølge fra venstre mot høyre.
+Brukeren kan navigere seg bakover ved å klikke på overskriften på et fullført trinn.
+
+### Trinnstatus
+
+- **Fullført**: Vises når trinnet er utført og brukeren oppnår det som kreves for å fortsette til neste trinn.
+- **Aktiv**: Viser det nåværende trinnet, men ikke fullført enda.
+- **Inaktiv**: Viser trinnene som ikke er nådd enda.

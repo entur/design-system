@@ -57,7 +57,7 @@ export const colors = {
   transport: {
     default: {
       metro: '#de8108',
-      bus: '#dd5415',
+      bus: '#c5044e',
       plane: '#800664',
       helicopter: '#800664',
       tram: '#642e88',
@@ -73,7 +73,7 @@ export const colors = {
     },
     contrast: {
       metro: '#f08901',
-      bus: '#ff5974',
+      bus: '#eb1053',
       plane: '#e258c3',
       helicopter: '#e258c3',
       tram: '#a476e5',

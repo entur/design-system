@@ -21,6 +21,7 @@ export type SuccessSquareButtonProps = {
   [key: string]: any;
 };
 
-export const SuccessSquareButton: React.FC<
+export const SuccessSquareButton = React.forwardRef<
+  HTMLButtonElement,
   SuccessSquareButtonProps
-> = props => <BaseSquareButton {...props} variant="success" />;
+>((props, ref) => <BaseSquareButton ref={ref} {...props} variant="success" />);

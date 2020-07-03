@@ -25,43 +25,47 @@ type BaseSideNavigationItemProps = {
   subMenu?: React.ReactNode;
   [key: string]: any;
 };
-const BaseSideNavigationItem: React.FC<BaseSideNavigationItemProps> = ({
-  className,
-  active = false,
-  as: Element = 'a',
-  subMenu,
-  ...rest
-}) => {
-  return (
-    <li className={classNames('eds-side-navigation__item', className)}>
-      <Element
-        className={classNames('eds-side-navigation__click-target', {
-          'eds-side-navigation__click-target--active': active,
-        })}
-        {...rest}
-      />
-      {subMenu}
-    </li>
-  );
-};
+const BaseSideNavigationItem = React.forwardRef<
+  HTMLAnchorElement,
+  BaseSideNavigationItemProps
+>(
+  (
+    { className, active = false, as: Element = 'a', subMenu, ...rest },
+    ref: React.Ref<HTMLAnchorElement>,
+  ) => {
+    return (
+      <li className={classNames('eds-side-navigation__item', className)}>
+        <Element
+          className={classNames('eds-side-navigation__click-target', {
+            'eds-side-navigation__click-target--active': active,
+          })}
+          ref={ref}
+          {...rest}
+        />
+        {subMenu}
+      </li>
+    );
+  },
+);
 
 type DisabledSideNavigationItemProps = {
   children: React.ReactNode;
   [key: string]: any;
 };
-const DisabledSideNavigationItem: React.FC<DisabledSideNavigationItemProps> = ({
-  children,
-  ...rest
-}) => (
+const DisabledSideNavigationItem = React.forwardRef<
+  HTMLAnchorElement,
+  DisabledSideNavigationItemProps
+>(({ children, ...rest }, ref: React.Ref<HTMLAnchorElement>) => (
   <BaseSideNavigationItem
     as="button"
     disabled={true}
     aria-disabled={true}
+    ref={ref}
     {...rest}
   >
     {children}
   </BaseSideNavigationItem>
-);
+));
 
 export type SideNavigationItemProps = {
   /** Om meny-elementet er det som er aktivt */
@@ -78,46 +82,52 @@ export type SideNavigationItemProps = {
   forceExpandSubMenus?: boolean;
   [key: string]: any;
 };
-export const SideNavigationItem: React.FC<SideNavigationItemProps> = ({
-  active,
-  disabled,
-  children,
-  forceExpandSubMenus,
-  ...rest
-}) => {
-  const childrenArray = React.Children.toArray(children);
-  const subMenu = childrenArray.find(
-    (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
-  );
-  const label = subMenu
-    ? childrenArray.filter(child => child !== subMenu)
-    : children;
-
-  if (disabled) {
-    return (
-      <DisabledSideNavigationItem {...rest}>{label}</DisabledSideNavigationItem>
+export const SideNavigationItem = React.forwardRef<
+  HTMLAnchorElement,
+  SideNavigationItemProps
+>(
+  (
+    { active, disabled, children, forceExpandSubMenus, ...rest },
+    ref: React.Ref<HTMLAnchorElement>,
+  ) => {
+    const childrenArray = React.Children.toArray(children);
+    const subMenu = childrenArray.find(
+      (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
     );
-  }
+    const label = subMenu
+      ? childrenArray.filter(child => child !== subMenu)
+      : children;
 
-  if (!subMenu) {
+    if (disabled) {
+      return (
+        <DisabledSideNavigationItem ref={ref} {...rest}>
+          {label}
+        </DisabledSideNavigationItem>
+      );
+    }
+
+    if (!subMenu) {
+      return (
+        <BaseSideNavigationItem active={active} ref={ref} {...rest}>
+          {label}
+        </BaseSideNavigationItem>
+      );
+    }
+
+    const isExpanded =
+      forceExpandSubMenus ||
+      isActiveRecursively({ props: { children, active } });
+
     return (
-      <BaseSideNavigationItem active={active} {...rest}>
+      <BaseSideNavigationItem
+        active={active}
+        subMenu={isExpanded && subMenu}
+        aria-expanded={isExpanded}
+        ref={ref}
+        {...rest}
+      >
         {label}
       </BaseSideNavigationItem>
     );
-  }
-
-  const isExpanded =
-    forceExpandSubMenus || isActiveRecursively({ props: { children, active } });
-
-  return (
-    <BaseSideNavigationItem
-      active={active}
-      subMenu={isExpanded && subMenu}
-      aria-expanded={isExpanded}
-      {...rest}
-    >
-      {label}
-    </BaseSideNavigationItem>
-  );
-};
+  },
+);

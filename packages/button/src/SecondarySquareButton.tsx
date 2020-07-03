@@ -21,6 +21,9 @@ export type SecondarySquareButtonProps = {
   [key: string]: any;
 };
 
-export const SecondarySquareButton: React.FC<
+export const SecondarySquareButton = React.forwardRef<
+  HTMLButtonElement,
   SecondarySquareButtonProps
-> = props => <BaseSquareButton {...props} variant="secondary" />;
+>((props, ref: React.Ref<HTMLButtonElement>) => (
+  <BaseSquareButton ref={ref} {...props} variant="secondary" />
+));

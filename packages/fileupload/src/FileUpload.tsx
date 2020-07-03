@@ -2,6 +2,7 @@ import React, { EffectCallback } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
 import { FileIcon, CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
+import { Label } from '@entur/typography';
 import classNames from 'classnames';
 import './FileUpload.scss';
 
@@ -30,6 +31,8 @@ type FileUploadProps = DropzoneOptions & {
   accept?: string | string[];
   /** Filene som er aktive i komponenten */
   files: File[];
+  /** Beskrivende tekst som forklarer feltet */
+  label?: string;
   [key: string]: any;
 };
 
@@ -43,6 +46,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   accept = '',
   files = [],
   options = {},
+  label,
   style,
   ...rest
 }) => {
@@ -62,6 +66,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   return (
     <div className="eds-file-upload__wrapper" {...style}>
       <div className="eds-file-upload__input" {...getRootProps()}>
+        {label && <Label style={{ display: 'flex' }}>{label}</Label>}
         <input {...getInputProps()} />
         <span
           className={classNames(

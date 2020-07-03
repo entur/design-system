@@ -53,6 +53,10 @@ type DropdownProps = {
   highlightFirstItemOnOpen?: boolean;
   /** Styling som sendes ned til Dropdown-lista */
   listStyle?: { [key: string]: any };
+  /** Filtreringen som blir brukt dersom man har en searchable Dropdown
+   * @default Enkel tekstsammenligning
+   */
+  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
@@ -78,6 +82,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   className,
   style,
   listStyle,
+  itemFilter,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -91,7 +96,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       : normalizedItems.find(item => value === item.value) || null;
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
-
+  const searchAbleProps = searchable ? { itemFilter: itemFilter } : {};
   return (
     <DownshiftProvider
       selectedItem={selectedItem}
@@ -99,15 +104,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
       onChange={onChange}
       value={value}
       highlightFirstItemOnOpen={highlightFirstItemOnOpen}
+      className={className}
+      style={style}
       {...rest}
     >
       <DropdownInputGroup
-        className={className}
         label={label}
         labelTooltip={labelTooltip}
         feedback={feedback}
         variant={variant}
-        style={style}
       >
         <RenderedDropdown
           items={normalizedItems}
@@ -121,6 +126,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           openOnFocus={openOnFocus}
           listStyle={listStyle}
           clearable={clearable}
+          {...searchAbleProps}
         />
       </DropdownInputGroup>
     </DownshiftProvider>

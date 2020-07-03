@@ -33,6 +33,21 @@ test('renders a regular dropdown', () => {
     expect.anything(),
   );
 });
+
+test('applies className to outer div', () => {
+  const changeSpy = jest.fn();
+  const { container } = render(
+    <Dropdown
+      items={testItems}
+      placeholder="Velg noe"
+      className="custom-class"
+      onChange={changeSpy}
+    />,
+  );
+
+  expect(container.firstChild).toHaveClass('custom-class');
+});
+
 test('renders a searchable dropdown', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
@@ -61,6 +76,63 @@ test('renders a searchable dropdown', async () => {
   fireEvent.click(getByText('Bergen'));
   expect(changeSpy).toHaveBeenCalled();
 });
+
+test('renders a searchable dropdown, with no filtering', async () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, getByPlaceholderText } = render(
+    <Dropdown
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+      itemFilter={() => true}
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+
+  act(() => {
+    fireEvent.focus(inputField);
+    fireEvent.change(inputField, { target: { value: 'er' } });
+  });
+
+  await wait(() => getByText('Bergen'));
+
+  expect(getByText('Bergen')).toBeInTheDocument();
+  expect(getByText('Stavanger')).toBeInTheDocument();
+  expect(queryByText('Oslo')).toBeInTheDocument();
+});
+
+test('renders a searchable dropdown, with strict filter', async () => {
+  const changeSpy = jest.fn();
+  const { queryByText, getByText, getByPlaceholderText } = render(
+    <Dropdown
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+      searchable
+      itemFilter={item => item.label === 'Bergen'}
+    />,
+  );
+
+  const inputField = getByPlaceholderText('Velg noe');
+  expect(queryByText('Bergen')).not.toBeInTheDocument();
+
+  act(() => {
+    fireEvent.focus(inputField);
+    fireEvent.change(inputField, { target: { value: 'Berg' } });
+  });
+
+  await wait(() => getByText('Bergen'));
+
+  expect(getByText('Bergen')).toBeInTheDocument();
+  expect(queryByText('Stavanger')).not.toBeInTheDocument();
+  expect(queryByText('Oslo')).not.toBeInTheDocument();
+
+  fireEvent.click(getByText('Bergen'));
+  expect(changeSpy).toHaveBeenCalled();
+});
+
 test('handles all sorts of items', () => {
   const spy = jest.fn();
   const MockIcon = () => <svg />;

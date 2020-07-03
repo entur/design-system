@@ -16,6 +16,7 @@
 
 .eds-breadcrumb__link {
   text-decoration: none;
+  color: inherit;
 
   &--current {
     font-weight: $font-weights-heading;

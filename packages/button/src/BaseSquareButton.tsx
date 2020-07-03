@@ -26,41 +26,50 @@ export type BaseSquareButtonProps = {
   [key: string]: any;
 };
 
-export const BaseSquareButton: React.FC<BaseSquareButtonProps> = ({
-  children,
-  className,
-  variant,
-  disabled = false,
-  loading = false,
-  as = 'button',
-  ...rest
-}) => {
-  const Element = disabled ? 'button' : as;
+export const BaseSquareButton = React.forwardRef<
+  HTMLButtonElement,
+  BaseSquareButtonProps
+>(
+  (
+    {
+      children,
+      className,
+      variant,
+      disabled = false,
+      loading = false,
+      as = 'button',
+      ...rest
+    },
+    ref: React.Ref<HTMLButtonElement>,
+  ) => {
+    const Element = disabled ? 'button' : as;
 
-  return (
-    <Element
-      className={classNames(
-        'eds-square-button',
-        { 'eds-square-button--success': variant === 'success' },
-        { 'eds-square-button--secondary': variant === 'secondary' },
-        { 'eds-square-button--loading': loading },
-        className,
-      )}
-      aria-busy={loading}
-      disabled={disabled}
-      aria-disabled={disabled}
-      {...rest}
-    >
-      {React.Children.map(children, child => {
-        if (typeof child === 'string') {
-          return <span className="eds-square-button__label">{child}</span>;
-        }
-        return (
-          <span className="eds-square-button__icon">
-            {loading ? <div className="eds-button__spinner" /> : child}
-          </span>
-        );
-      })}
-    </Element>
-  );
-};
+    return (
+      <Element
+        className={classNames(
+          'eds-square-button',
+          { 'eds-square-button--success': variant === 'success' },
+          { 'eds-square-button--secondary': variant === 'secondary' },
+          { 'eds-square-button--loading': loading },
+          className,
+        )}
+        aria-busy={loading}
+        disabled={disabled}
+        aria-disabled={disabled}
+        ref={ref}
+        {...rest}
+      >
+        {React.Children.map(children, child => {
+          if (typeof child === 'string') {
+            return <span className="eds-square-button__label">{child}</span>;
+          }
+          return (
+            <span className="eds-square-button__icon">
+              {loading ? <div className="eds-button__spinner" /> : child}
+            </span>
+          );
+        })}
+      </Element>
+    );
+  },
+);

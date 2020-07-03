@@ -13,6 +13,11 @@ export type StepperProps = {
   steps: string[];
   /** Ekstra klassenavn. */
   className?: string;
+  /** Om stepperen skal være et interaktivt-navigasjonselement eller ikke
+   * @default true
+   */
+  interactive?: boolean;
+  as?: 'button' | React.ElementType;
   [key: string]: any;
 };
 
@@ -21,29 +26,44 @@ export const Stepper: React.FC<StepperProps> = ({
   onStepClick,
   steps,
   activeIndex,
+  interactive = true,
   ...rest
 }) => {
+  const Element = interactive ? 'button' : 'div';
   return (
     <div className={classNames('eds-stepper', className)} {...rest}>
       {steps.map((step, i) => {
         const isActive = i === activeIndex;
+        const hasBeenActive = activeIndex > i;
+        const props = interactive ? { onClick: () => onStepClick(i) } : {};
         return (
-          <div
+          <Element
             key={step}
-            onClick={() => onStepClick(i)}
             className="eds-stepper__item__container"
+            {...props}
           >
+            <div
+              className={classNames(
+                'eds-stepper__item__square',
+                { 'eds-stepper__item__square--active': isActive },
+                { 'eds-stepper__item__square--inactive': activeIndex < i },
+                { 'eds-stepper__item__square--has-been': hasBeenActive },
+              )}
+            ></div>
             <Label
               className={classNames(
-                isActive
-                  ? 'eds-stepper__item__label--active'
-                  : 'eds-stepper__item__label--inactive',
                 'eds-stepper__item__label',
+                {
+                  'eds-stepper__item__label--has-been': hasBeenActive,
+                },
+                {
+                  'eds-stepper__item__label--active': isActive,
+                },
               )}
             >
               {i + 1}. {step}
             </Label>
-          </div>
+          </Element>
         );
       })}
     </div>
