@@ -28,7 +28,7 @@ function LowerCaseFilterTest(
     return true;
   }
   const sanitizeEscapeCharacters = input.replace(
-    /[-\/\\^$*+?.()|[\]{}]/g,
+    /[-/\\^$*+?.()|[\]{}]/g,
     '\\$&',
   );
   const inputRegex = new RegExp(sanitizeEscapeCharacters, 'i');
