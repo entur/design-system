@@ -1,6 +1,6 @@
 ---
 name: Breadcrumbs
-description: Breadcrumbs er en måte å navigere mellom forskjellige sider i en dyp sidestruktur på.
+description: Breadcrumbs er en navigasjonskomponent som viser hvor man er i navigasjonshierarkiet, og hvordan man navigerer seg tilbake.
 route: /komponenter/navigasjon/breadcrumbs
 parent: Komponenter
 menu: Navigasjon
@@ -47,3 +47,7 @@ Merk at du kun kan sende inn `<BreadcrumbItem />`s som `children` til denne komp
 <Props of={BreadcrumbItem} />
 
 `<BreadcrumbItem />` lager en lenke i brødsmulestien. Du sender inn navnet på siden som `children`, og lenken som `href`. For å fungere som forventet må de wrappes inne i en `<BreadcrumbNavigation />`-komponent.
+
+## Retningslinjer for bruk
+
+Breadcrumbs er en navigasjonskomponent som viser hvor man er i navigasjonshierarkiet. Bruk breadcrumbs når applikasjonen din har flere nivåer i navigasjonshierarkiet. Med denne komponenten kan du hjelpe brukerne med å navigere raskt mellom disse nivåene. Breadcrumbs er ikke nødvendig hvis applikasjonen din kun har ett navigasjonsnivå.

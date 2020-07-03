@@ -1,6 +1,6 @@
 ---
 name: Loader
-description: Loaders brukes for å indikere at en prosess er i gang, og eventuelt hvor langt denne prosessen har kommet.
+description: Loader er en visuell tilbakemelding som indikerer at lasting av innhold og data er i prosess.
 route: /komponenter/feedback/loader
 parent: Komponenter
 menu: Feedback
@@ -25,7 +25,7 @@ import { Loader } from '@entur/loader';
     const [progress, setProgress] = React.useState(0);
     return (
       <>
-        <Loader>Vennligst vent</Loader>
+        <Loader>Behandler</Loader>
         <Loader progress={20}>Laster opp fil</Loader>
         <Loader progress={progress}>
           <SecondaryButton
@@ -46,10 +46,20 @@ import { Loader } from '@entur/loader';
 <ImportStatement imports="Loader" />
 <Props of={Loader} />
 
-Loader-komponenten kan brukes på to forskjellige måter - til filopplastning og til å vise at "noe skjer".
+## Retningslinjer for bruk
+
+**Loader:**
+
+Loader er en visuell tilbakemelding som indikerer at lasting av innhold og data er i prosess. Denne komponenten brukes som en global loader for innhold som lastes inn på en hel side, innhold i en modal eller i en arbeidsflyt der neste trinn lastes inn.
+
+Brukerne våre forventer at man kan raskt utføre oppgaver eller se informasjon, men noen ganger tar det litt tid. Derfor er det viktig å vise en laste indikator, for å varsle og forsikre brukerne om at systemet fungerer og handlingene deres blir behandlet, men systemet trenger tid på å hente inn data, vise informasjon eller fullføre enn oppgave. En beskjed som beskriverer lasteelementets tilstand bør inkluderes, f.eks ‘Laster inn’, ‘Behandler’, ‘Aktiverer’, ‘Lagrer’ etc.
+
+**Progressbar:**
+
+Progressbar viser fremdriftsstatusen til en handling eller prosess. Brukes for å gi brukerne beskjed om at en prosess er i gang, og eventuelt hvor lang tid denne prosessen tar eller har kommet. Bruk en progessbar for eksempel til: opplasting, nedlasting, importering av filer/dokumenter eller eksportere en rapport.
 
 Ved filopplastning kan du sende inn et tall til `progress`-propen - du vil da få en ramme rundt loading-indikatoren.
 
 Hvis du ikke spesifiserer en `progress`-prop, defaulter den til "indeterminate" - det vil si at den viser en vente-animasjon for å vise brukeren at siden er opptatt med å hente data, kalkulere priser osv.
 
-Du kan sende inn en tekstlig beskrivelse som `children`, som gir brukeren en indikasjon på hva som skjer. Dette bør være i størrelsesorden 1-2 ord.
+Du kan sende inn en tekstlig beskrivelse som children, som gir brukeren en indikasjon på hva som skjer. Dette bør være i størrelsesorden 1-2 ord.

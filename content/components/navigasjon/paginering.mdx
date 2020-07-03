@@ -1,6 +1,6 @@
 ---
 name: Pagination
-description: Paginering lar deg navigere mellom sider i et resultatsett.
+description: Pagination brukes for å fordele innhold på over flere sider, for å unngå for mange elementer i én og samme visning.
 route: /komponenter/navigasjon/pagination
 parent: Komponenter
 menu: Navigasjon
@@ -12,7 +12,19 @@ import { Props, Link } from 'docz';
 import { Pagination } from '@entur/menu';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
+import { Paragraph, Link as LinkText } from '@entur/typography';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableFooter,
+  TableRow,
+  HeaderCell,
+  DataCell,
+  useSortableData,
+} from '@entur/table';
 import { ImportStatement } from '~/components/ImportStatement';
+import testdata from '../layout-og-flater/testdata';
 
 <PageHeader />
 
@@ -59,3 +71,74 @@ Om du ønsker flerspråklig støtte, har du tilgang på flere props: `pageLabel`
 
 For visning av resultat per side, og muligheten for å endre dette, bruk `resultsPerPage` og `onResultsPerPageChange`.
 Bruk så enten 10, 25 eller 50 resultater per side.
+
+## Retningslinjer for bruk
+
+<Paragraph>
+  Pagination brukes for å fordele innhold på over flere sider, for å unngå for
+  mange elementer i én og samme visning. Komponenten brukes for eksempel i{' '}
+  <LinkText as={Link} to="/komponenter/layout-og-flater/table">
+    Tabeller
+  </LinkText>{' '}
+  der man presenterer et sett antall rader, med mulighet til å navigere seg til
+  et annet sett.
+</Paragraph>
+
+Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og indikerer at flere sider eksisterer.
+
+**Kontrollene som støttes er:**
+
+- Rader per side: Viser antall resultater slik at brukeren kan tilpasse hvor mye de ønsker å se.
+- Venstre og høyre pil: Lar brukeren navigere til neste eller forrige side.
+- Gå til side: Lar brukeren hoppe direkte til en ønsket side.
+
+## Eksempel
+
+<Playground>
+  {() => {
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    return (
+      <>
+        <Pagination
+          pageCount={(10 * 10) / results}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+        <Table fixed style={{ margin: '1.5rem 0' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {testdata.map(
+              (item, index) =>
+                index < currentPage * results &&
+                index > (currentPage - 1) * results + 1 && (
+                  <TableRow key={index}>
+                    <DataCell>{item.name}</DataCell>
+                    <DataCell>{item.date}</DataCell>
+                    <DataCell>{item.category}</DataCell>
+                    <DataCell>{item.receiver}</DataCell>
+                  </TableRow>
+                ),
+            )}
+          </TableBody>
+        </Table>
+        <Pagination
+          pageCount={(10 * 10) / results}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+      </>
+    );
+  }}
+</Playground>

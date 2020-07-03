@@ -1,6 +1,6 @@
 ---
 name: Overflow menu
-description: Overflowmenyer brukes for å vise ekstra handlinger man kan ta relativt til f.eks. en tabellrad.
+description: Overflow menu består av en ikonknapp for meny som utløser en liste over handlinger når man klikker på den.
 route: /komponenter/navigasjon/overflow-menu
 parent: Komponenter
 menu: Navigasjon
@@ -15,6 +15,16 @@ import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { Contrast } from '@entur/layout';
 import {
+  Table,
+  TableHead,
+  TableBody,
+  TableFooter,
+  TableRow,
+  HeaderCell,
+  DataCell,
+  useSortableData,
+} from '@entur/table';
+import {
   ValidationInfoIcon,
   DeleteIcon,
   EditIcon,
@@ -23,7 +33,7 @@ import {
 
 <PageHeader />
 
-<Playground>
+<Playground style={{ display: 'flex', justifyContent: 'center' }}>
   <div>
     <OverflowMenu>
       <OverflowMenuItem onSelect={() => {}}>Info</OverflowMenuItem>
@@ -33,17 +43,28 @@ import {
     <br />
     <OverflowMenu>
       <OverflowMenuItem onSelect={() => {}}>
-        <ValidationInfoIcon inline />
+        <span aria-hidden>
+          <ValidationInfoIcon inline />
+        </span>
         Info
       </OverflowMenuItem>
       <OverflowMenuItem onSelect={() => {}}>
-        <FileIcon inline /> Last ned fil
+        <span aria-hidden>
+          <FileIcon inline />
+        </span>
+        Last ned fil
       </OverflowMenuItem>
       <OverflowMenuItem onSelect={() => {}}>
-        <EditIcon inline /> Rediger
+        <span aria-hidden>
+          <EditIcon inline />
+        </span>
+        Rediger
       </OverflowMenuItem>
       <OverflowMenuItem onSelect={() => {}}>
-        <DeleteIcon inline /> Slett
+        <span aria-hidden>
+          <DeleteIcon inline />
+        </span>
+        Slett
       </OverflowMenuItem>
     </OverflowMenu>
   </div>
@@ -71,6 +92,7 @@ Alle knappene i designsystemet støtter denne propen
 <Props of={OverflowMenuItem} />
 
 Pass på bruk av onClick på denne (og `OverflowMenuLink`), da den eventen potensielt ikke vil skje i den rekkefølgen man forventer.
+Om du bruker ikoner, husk og wrap den i en tag som er `aria-hidden`.
 Les mer om det her: https://reacttraining.com/reach-ui/menu-button#events
 
 ### OverflowMenuLink
@@ -81,7 +103,127 @@ Les mer om det her: https://reacttraining.com/reach-ui/menu-button#events
 På grunn av den semantiske forskjellen mellom knapper og linker,
 så krever denne komponenten en split mellom en tradisjonell `OverflowMenuItem` og `OverflowMenuLink`.
 
-## Retningslinjer
+## Retningslinjer for bruk
 
-- Når man bruker ikoner i menypunktene, så må disse plasseres til venstre.
-- En OverflowMenu _bør_ ha minst 3 menypunkter. Hvis den ikke har det, prøv og finne en alternativ måte å vise handlingene på.
+Overflow menu består av en ikonknapp for meny som utløser en liste over handlinger når man klikker på den. Brukes for eksempel som en kontekstuell meny i en tabellrad der flere handlinger er tilgjengelig for brukeren. Teksten på menyelementer bør være kort og direkte slik at brukerne raskt kan bestemme seg for en handling. Ikoner kan også hjelpe brukeren å forstå konteksten raskere. Hvis du skal bruke ikoner i menyelementene, må disse være venstrejustert og oppleves relevant for de handlingene de brukes til.
+Avhengig av hvor den vises i brukergrensesnittet, kan en overflow menu vises i retning venstre eller høyre slik at den alltid er synlig for brukeren. En overflow menu bør ha minst 3 menyelementer. Hvis den ikke har det, vurder heller å vis handlingene ved å bruke Icon button.
+
+## Eksempler
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell padding="overflow-menu"></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <ValidationInfoIcon inline />
+              </span>
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <FileIcon inline />
+              </span>
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <EditIcon inline />
+              </span>
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <DeleteIcon inline />
+              </span>
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <ValidationInfoIcon inline />
+              </span>
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <FileIcon inline />
+              </span>
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <EditIcon inline />
+              </span>
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <DeleteIcon inline />
+              </span>
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <ValidationInfoIcon inline />
+              </span>
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <FileIcon inline />
+              </span>
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <EditIcon inline />
+              </span>
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <span aria-hidden>
+                <DeleteIcon inline />
+              </span>
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>
