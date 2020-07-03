@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.7.0...@entur/icons@1.8.0) (2020-07-03)
+
+### Bug Fixes
+
+- update BusIcon with new BusIcon color ([46e3448](https://bitbucket.org/enturas/design-system/commits/46e34489965f93c81eb1b8b986df3f61fd0b07bd))
+
+### Features
+
+- add database icon ([d96d016](https://bitbucket.org/enturas/design-system/commits/d96d016ced80e4ab5e57b04b17d6a1676c5c4f4d))
+- add linkedin icon ([8fd0488](https://bitbucket.org/enturas/design-system/commits/8fd04880866ceefff2fde49a67c1ce67d457289f))
+- add power icon ([a4b75cd](https://bitbucket.org/enturas/design-system/commits/a4b75cdd3dd48a116f7d0c7f2287134ee0f858b0))
+- add select and hand pointer icons ([d1fd1d1](https://bitbucket.org/enturas/design-system/commits/d1fd1d16c0502fc7a837f4495c4fc4e3d391b65f))
+- add standard and quiet hearing icon ([d525ac7](https://bitbucket.org/enturas/design-system/commits/d525ac792d64811f9887cc1e879bcc381cfffd72))
+
 # [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.6.1...@entur/icons@1.7.0) (2020-06-17)
 
 ### Features

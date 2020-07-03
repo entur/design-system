@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.11...@entur/button@2.3.0) (2020-07-03)
+
+### Features
+
+- add forwardref for squarebuttons ([bb118a1](https://bitbucket.org/enturas/design-system/commits/bb118a15f07706773273ca2009bb6e338d599d27))
+
 ## [2.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.10...@entur/button@2.2.11) (2020-06-17)
 
 ### Bug Fixes

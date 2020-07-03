@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.5...@entur/menu@1.6.0) (2020-07-03)
+
+### Bug Fixes
+
+- fix link styling for breadcrumb ([94d2115](https://bitbucket.org/enturas/design-system/commits/94d2115213867144388c26c86e6612e026b4532b))
+- fix offset arrow in stepper ([db8d790](https://bitbucket.org/enturas/design-system/commits/db8d7907de4618eb92f3c7f7502a5d4d64cdb16b))
+- new styling and implementation of stepper component ([ff72140](https://bitbucket.org/enturas/design-system/commits/ff72140dd8848a9bd1db353ad9137b8a9d3151d9))
+- overflowmenu contrast styling similar to normal styling ([6d671ed](https://bitbucket.org/enturas/design-system/commits/6d671ed9ee456c72475dfa266f037423b4a93c13))
+- update dependency for overflowmenu ([fd9f1cb](https://bitbucket.org/enturas/design-system/commits/fd9f1cb09a97bbde33a0088c55c26c252429a675))
+
+### Features
+
+- add forwardref for sidenavigationitem ([26d0a17](https://bitbucket.org/enturas/design-system/commits/26d0a17aaccd9b11146ee2247bdedfa30b82de32))
+- add interactive prop to stepper ([6f0b0f8](https://bitbucket.org/enturas/design-system/commits/6f0b0f800a7104133c9d665181ec89cf37abbc2c))
+
 ## [1.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.4...@entur/menu@1.5.5) (2020-06-17)
 
 ### Bug Fixes

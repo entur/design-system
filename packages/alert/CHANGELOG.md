@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.26](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.25...@entur/alert@0.5.26) (2020-07-03)
+
+### Bug Fixes
+
+- fix close button position on toast alerts ([75bfc76](https://bitbucket.org/enturas/design-system/commits/75bfc7662fd99dca5d525dae6d93a8f3817b9c6c))
+
 ## [0.5.25](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.24...@entur/alert@0.5.25) (2020-06-17)
 
 **Note:** Version bump only for package @entur/alert

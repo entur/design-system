@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.3...@entur/form@3.1.0) (2020-07-03)
+
+### Bug Fixes
+
+- fix typogragphy element for feedbacktext ([0ee5ede](https://bitbucket.org/enturas/design-system/commits/0ee5edee7ea9788287a75bbd0944c286caf30ec8))
+
+### Features
+
+- add required prop for inputgroups ([5e07a9c](https://bitbucket.org/enturas/design-system/commits/5e07a9cb56c0f6d73eed99cd77662f544bee756d))
+
 ## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.0.2...@entur/form@3.0.3) (2020-06-17)
 
 ### Bug Fixes

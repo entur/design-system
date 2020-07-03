@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.4.4...@entur/layout@1.5.0) (2020-07-03)
+
+### Features
+
+- titleicon for compact navcard, and simplified design ([ae0d2e4](https://bitbucket.org/enturas/design-system/commits/ae0d2e4e0e00d65c7edf119d96ef024b9f8eb101))
+
 ## [1.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.4.3...@entur/layout@1.4.4) (2020-06-17)
 
 **Note:** Version bump only for package @entur/layout

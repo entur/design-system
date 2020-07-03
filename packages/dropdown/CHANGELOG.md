@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.2.0...@entur/dropdown@1.3.0) (2020-07-03)
+
+### Bug Fixes
+
+- fix classname and styling for outer div of dropdown ([799b8c6](https://bitbucket.org/enturas/design-system/commits/799b8c6de07ddf8186ab7828f7db0490832b6b49))
+
+### Features
+
+- add itemfilter prop ([02daaf8](https://bitbucket.org/enturas/design-system/commits/02daaf8d2863936d47c2165fb39bf799f624286a))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.1.2...@entur/dropdown@1.2.0) (2020-06-17)
 
 ### Bug Fixes
