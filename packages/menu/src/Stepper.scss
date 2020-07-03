@@ -11,10 +11,8 @@
       &--non-interactive {
         cursor: default;
       }
-      font-family: inherit; /* 1 */
-      margin: 0; /* 2 */
+      font-family: inherit;
       text-transform: none;
-      -webkit-appearance: button;
       appearance: none;
       background: none;
       border: none;
