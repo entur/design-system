@@ -2,9 +2,10 @@
 .eds-file-upload {
   &__wrapper {
     display: inline-block;
+    min-width: 13.75rem;
   }
   &__input {
-    min-width: 13.75rem;
+    width: 100%;
     &:focus {
       outline: none;
       .eds-file-upload__dropzone {
@@ -52,14 +53,28 @@
     }
   }
   &__file-list {
+    width: 100%;
   }
   &__file-name {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-
     font-size: $font-sizes-medium;
-    > svg {
+    > .eds-file-upload__file-name-icon {
+      align-self: flex-start;
+      color: $colors-blues-blue40;
+      margin: $space-extra-small 0;
       margin-right: $space-extra-small2;
+      .eds-contrast & {
+        color: $colors-brand-lavender;
+      }
+    }
+    &-path {
+      word-break: break-word;
+    }
+    .eds-icon-button {
+      align-self: flex-start;
+      margin-left: $space-small;
     }
   }
 }

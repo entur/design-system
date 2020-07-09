@@ -1,6 +1,6 @@
 import React, { EffectCallback } from 'react';
 import { useDropzone, DropzoneOptions } from 'react-dropzone';
-import { FileIcon, CloseIcon } from '@entur/icons';
+import { FileIcon, DeleteIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Label } from '@entur/typography';
 import classNames from 'classnames';
@@ -33,6 +33,12 @@ type FileUploadProps = DropzoneOptions & {
   files: File[];
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
+  /** Mulighet for å laste opp flere filer */
+  multiple?: boolean;
+  /**Minste filstørrelse */
+  minSize?: number;
+  /**Største filstørrelse */
+  maxSize?: number;
   [key: string]: any;
 };
 
@@ -85,10 +91,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       <div className="eds-file-upload__file-list">
         {files.map((file: any, index) => (
           <div className="eds-file-upload__file-name" key={index}>
-            <FileIcon className="eds-field-upload__file-name-icon" />
-            {file.path} - {convertSizeToHuman(file.size)}{' '}
+            <FileIcon className="eds-file-upload__file-name-icon" />
+            <span className="eds-field-upload__file-name-path">
+              {file.path} - {convertSizeToHuman(file.size)}{' '}
+            </span>
             <IconButton onClick={() => onDelete(file)}>
-              <CloseIcon />
+              <DeleteIcon />
             </IconButton>
           </div>
         ))}
