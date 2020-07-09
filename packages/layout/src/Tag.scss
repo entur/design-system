@@ -5,7 +5,7 @@
   color: $colors-brand-blue;
   display: inline-block;
   min-width: $space-extra-large;
-  padding: $space-extra-small2 $space-extra-small;
+  padding: $space-extra-small2 $space-small;
   font-size: $font-sizes-medium;
   line-height: $line-heights-large;
   &--leading-icon .eds-icon {
@@ -13,5 +13,17 @@
   }
   &--trailing-icon .eds-icon {
     margin-left: $space-extra-small;
+  }
+  &--compact {
+    font-size: $font-sizes-small;
+    padding: $space-extra-small2/2 $space-extra-small;
+    line-height: $line-heights-medium;
+    height: 1.5rem;
+    &.eds-tag--leading-icon .eds-icon {
+      margin-right: $space-extra-small2;
+    }
+    &.eds-tag--trailing-icon .eds-icon {
+      margin-left: $space-extra-small2;
+    }
   }
 }

@@ -8,6 +8,10 @@ export type TagProps = {
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
+  /**Mindre og mer kompakt Tag, til f.eks. tabellbruk
+   * @default false
+   */
+  compact?: boolean;
   children: React.ReactNode;
   [key: string]: any;
 };
@@ -16,6 +20,7 @@ export const Tag: React.FC<TagProps> = ({
   as: Element = 'div',
   className,
   children,
+  compact,
   ...rest
 }) => {
   const childrenArray = React.Children.toArray(children);
@@ -30,6 +35,7 @@ export const Tag: React.FC<TagProps> = ({
       className={classNames('eds-tag', className, {
         'eds-tag--leading-icon': hasLeadingIcon,
         'eds-tag--trailing-icon': hasTrailingIcon,
+        'eds-tag--compact': compact,
       })}
       {...rest}
     >
