@@ -125,13 +125,20 @@
 
 .eds-toast-container {
   position: fixed;
-  bottom: $space-default;
-  right: $space-default;
-  left: $space-default;
   z-index: $z-indexes-toast;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  &--bottom-right {
+    bottom: $space-large;
+    right: $space-large;
+    left: $space-large;
+  }
+  &--top-right {
+    top: $space-large;
+    right: $space-large;
+    left: $space-large;
+  }
 
   > * + * {
     margin-top: $space-default;
@@ -140,4 +147,11 @@
   @include for-desktop {
     left: initial;
   }
+}
+.my-enter {
+  opacity: 0;
+}
+
+.my-enter-active {
+  opacity: 1;
 }

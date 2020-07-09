@@ -1,5 +1,6 @@
 import React from 'react';
 import { ToastAlertBox } from './ToastAlertBox';
+import classNames from 'classnames';
 
 type ToastId = string;
 
@@ -40,10 +41,7 @@ const toastReducer = (
   }
 };
 
-const createUniqueId = () =>
-  Math.random()
-    .toString()
-    .substring(2);
+const createUniqueId = () => Math.random().toString().substring(2);
 
 const createToast = (toast: AddToastPayload, id: ToastId): ToastType => {
   if (typeof toast === 'string') {
@@ -58,11 +56,16 @@ export type ToastProviderProps = {
    * @default 6000
    */
   delay?: number;
+  /** Plasseringen av toasts
+   * @default "bottom-right"
+   */
+  position?: 'bottom-right' | 'top-right';
 };
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
   delay = 6000,
   children,
+  position = 'bottom-right',
 }) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
   const [hoveringId, setHovering] = React.useState<string>();
@@ -118,7 +121,12 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   return (
     <ToastContext.Provider value={contextValue}>
       {toasts.length > 0 && (
-        <div className="eds-toast-container">
+        <div
+          className={classNames(
+            'eds-toast-container',
+            `eds-toast-container--${position}`,
+          )}
+        >
           {toasts.slice(0, 3).map(toastToShow => (
             <ToastAlertBox
               variant={toastToShow.variant}
