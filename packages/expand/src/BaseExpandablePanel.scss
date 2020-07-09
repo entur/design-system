@@ -16,7 +16,7 @@
   appearance: none;
   background: $colors-greys-grey20;
   border: none;
-  border-radius: 0;
+  border-radius: $border-radiuses-medium;
   color: inherit;
   cursor: pointer;
   font-family: inherit;
