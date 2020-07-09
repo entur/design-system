@@ -139,9 +139,13 @@ export const PopoverContent = React.forwardRef<
   const { showPopover, attributes, styles, contentProps } = usePopoverContext();
   return (
     <div
-      className={classNames('eds-popover', {
-        'eds-popover--hidden': !showPopover,
-      })}
+      className={classNames(
+        'eds-popover',
+        {
+          'eds-popover--hidden': !showPopover,
+        },
+        'eds-contrast',
+      )}
       ref={ref}
       style={styles.popper}
       aria-hidden={!showPopover}
