@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.0...@entur/fileupload@0.3.1) (2020-07-09)
+
+### Bug Fixes
+
+- fix styling bugs for fileupload ([c194c71](https://bitbucket.org/enturas/design-system/commits/c194c71b55cc1e6511959f063928dfbec1c00b47))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.2.3...@entur/fileupload@0.3.0) (2020-07-03)
 
 ### Features

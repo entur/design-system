@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.0...@entur/button@2.3.1) (2020-07-09)
+
+### Bug Fixes
+
+- lock height and width of icon button ([fa74a1b](https://bitbucket.org/enturas/design-system/commits/fa74a1baaa1e9bbae7fb8a7758e405ae548e3f2e))
+
 # [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.2.11...@entur/button@2.3.0) (2020-07-03)
 
 ### Features

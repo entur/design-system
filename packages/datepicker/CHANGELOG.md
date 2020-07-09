@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.23](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.22...@entur/datepicker@0.3.23) (2020-07-09)
+
+### Bug Fixes
+
+- lock datepicker dependancy to avoid focus lock ([8ae96e9](https://bitbucket.org/enturas/design-system/commits/8ae96e9d58c7a2441447c93a607f4f9e33d04f06))
+
 ## [0.3.22](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.21...@entur/datepicker@0.3.22) (2020-07-03)
 
 **Note:** Version bump only for package @entur/datepicker

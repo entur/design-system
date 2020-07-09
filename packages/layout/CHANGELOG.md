@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.5.0...@entur/layout@1.6.0) (2020-07-09)
+
+### Features
+
+- add compact prop for tag component ([fe271c1](https://bitbucket.org/enturas/design-system/commits/fe271c11beed22641379cc90634eb54a55d42b6a))
+
 # [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.4.4...@entur/layout@1.5.0) (2020-07-03)
 
 ### Features

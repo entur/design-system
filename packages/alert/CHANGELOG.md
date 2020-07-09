@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.26...@entur/alert@0.6.0) (2020-07-09)
+
+### Features
+
+- add position prop for toastprovider ([3127173](https://bitbucket.org/enturas/design-system/commits/3127173522c00fde06ff88892d216fda35ded362))
+
 ## [0.5.26](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.5.25...@entur/alert@0.5.26) (2020-07-03)
 
 ### Bug Fixes

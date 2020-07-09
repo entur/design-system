@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.3...@entur/table@3.1.0) (2020-07-09)
+
+### Features
+
+- add editable cell component ([57ffbb4](https://bitbucket.org/enturas/design-system/commits/57ffbb42cb48d06c4768670f31b19f95168a6e59))
+
 ## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.2...@entur/table@3.0.3) (2020-07-03)
 
 **Note:** Version bump only for package @entur/table

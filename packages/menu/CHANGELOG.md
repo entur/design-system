@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.6.0...@entur/menu@1.6.1) (2020-07-09)
+
+### Bug Fixes
+
+- remove cursor pointer if stepper is non interactive ([b966b6c](https://bitbucket.org/enturas/design-system/commits/b966b6c61286707ab29058a21b8dd0ebaead6bd5))
+
 # [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.5.5...@entur/menu@1.6.0) (2020-07-03)
 
 ### Bug Fixes
