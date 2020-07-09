@@ -1,8 +1,8 @@
 ---
-name: Accessibility
+name: Tilgjengelighet
 description: Komponenter som forenkler utvikling av universelt utformede applikasjoner.
 parent: Komponenter
-route: /komponenter/ressurser/accessibility
+route: /komponenter/tilgjengelighet
 menu: Ressurser
 npmPackage: a11y
 tags: accessibility, uu, universell utforming, a11y, visuallyhidden, skiptocontent
@@ -26,6 +26,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 ### SkipToContent
 
 <ImportStatement imports="SkipToContent" />
+
 <Props of={SkipToContent} />
 
 `SkipToContent` er en snarvei for brukere av tastaturnavigasjon for å forenkle veien til sidens hovedinnhold. Den synes ikke for vanlige brukere, men vil vises med en gang man trykker "tab" for å navigere seg nedover siden.
@@ -37,6 +38,7 @@ Vi bruker den på denne siden også - test den ut med å trykke "tab"!
 ### VisuallyHidden
 
 <ImportStatement imports="VisuallyHidden" />
+
 <Props of={VisuallyHidden} />
 
 `VisuallyHidden` brukes for å gi skjermlesere en tekstlig beskrivelse av et visuelt element. Det er den logiske motsetningen til `aria-hidden="true"`, og brukes ofte for å gi informasjon til skjermlesere der man ikke kan (eller vil) vise denne informasjonen til alle brukere.

@@ -95,7 +95,7 @@ export const SiteSidebar: React.FC<{
       <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
         <Location>
           {({ location }) =>
-            currentDoc.parent === 'Komponenter' ? (
+            currentDoc.parent !== 'Universell utforming' ? (
               <ComponentsSideNavigation
                 location={location}
                 menuItems={menuItems}
@@ -119,24 +119,24 @@ type SimpleSideNavigationProps = {
   location: WindowLocation;
   mobile?: boolean;
 };
+function compare(a: MenuItem, b: MenuItem) {
+  // Use toUpperCase() to ignore character casing
+  const menuItemAOrder = a.order ? a.order : 1000;
+  const menuItemBOrder = b.order ? b.order : 1000;
+
+  let comparison = 0;
+  if (menuItemAOrder > menuItemBOrder) {
+    comparison = 1;
+  } else if (menuItemAOrder < menuItemBOrder) {
+    comparison = -1;
+  }
+  return comparison;
+}
 const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   menuItems,
   location,
   mobile = false,
 }) => {
-  function compare(a: MenuItem, b: MenuItem) {
-    // Use toUpperCase() to ignore character casing
-    const menuItemAOrder = a.order ? a.order : 1000;
-    const menuItemBOrder = b.order ? b.order : 1000;
-
-    let comparison = 0;
-    if (menuItemAOrder > menuItemBOrder) {
-      comparison = 1;
-    } else if (menuItemAOrder < menuItemBOrder) {
-      comparison = -1;
-    }
-    return comparison;
-  }
   menuItems.sort(compare);
 
   let topMargin = mobile ? '0rem' : '1.5rem';
@@ -179,10 +179,26 @@ const componentsMenuSortOrder = {
   'Layout & Flater': 5,
   Feedback: 6,
 } as any;
-const sortComponentMenus = (a: MenuItem, b: MenuItem) => {
-  const aSortOrder = componentsMenuSortOrder[a.name] || 10;
-  const bSortOrder = componentsMenuSortOrder[b.name] || 10;
+const komIGangMenuSortOrder = {
+  Introduksjon: 1,
+  'For designere': 2,
+  'For utviklere': 3,
+} as any;
+const visuellIdentitetMenuSortOrder = {
+  Introduksjon: 1,
+  Verktøykassen: 2,
+  Maler: 3,
+} as any;
+const sortComponentMenus = (a: MenuItem, b: MenuItem, sortOrder: any) => {
+  const aSortOrder = sortOrder[a.name] || 10;
+  const bSortOrder = sortOrder[b.name] || 10;
   return aSortOrder - bSortOrder;
+};
+const sorters: { [sorter: string]: any } = {
+  // @ts-ignore
+  'Kom i gang': komIGangMenuSortOrder,
+  'Visuell identitet': visuellIdentitetMenuSortOrder,
+  Komponenter: componentsMenuSortOrder,
 };
 
 type ComponentsSideNavigationProps = {
@@ -199,7 +215,9 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
     () => filterMenuItems(menuItems, searchText),
     [menuItems, searchText],
   );
-
+  const sortBy = menuItems?.[0].menu?.[0].parent
+    ? sorters[menuItems[0].menu[0].parent]
+    : componentsMenuSortOrder;
   return (
     <>
       <SearchBar
@@ -209,7 +227,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
       />
       {filteredMenuItems
         .filter(topLevelMenu => topLevelMenu.menu)
-        .sort(sortComponentMenus)
+        .sort((a, b) => sortComponentMenus(a, b, sortBy))
         .map(topLevelMenu => (
           <SideNavigationGroup
             defaultOpen={true}
@@ -219,7 +237,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
             className="site-sidebar__group"
           >
             <SideNavigation size="small">
-              {topLevelMenu.menu!.map(menuItem => (
+              {topLevelMenu.menu!.sort(compare).map(menuItem => (
                 <SideNavigationItem
                   key={menuItem.id}
                   as={Link}

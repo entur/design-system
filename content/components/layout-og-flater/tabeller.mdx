@@ -18,6 +18,7 @@ import {
   HeaderCell,
   DataCell,
   useSortableData,
+  EditableCell,
 } from '@entur/table';
 import {
   Checkbox,
@@ -667,6 +668,46 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
       </TableRow>
     </TableBody>
   </Table>
+</Playground>
+
+## Inline editing
+
+I noen tilfeller ønsker man å endre informasjonen som står i tabellene.
+Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sammenlignet med regnearksprogrammer som f.eks. Excel.
+
+**Obs:** bruk `hover`-propen for å symbolisere at cellene i raden er redigerbare.
+
+<Playground>
+  {() => {
+    const [firstname, setFirstname] = React.useState('Ola');
+    const [lastname, setLastname] = React.useState('Nordmann');
+    return (
+      <Table fixed>
+        <TableHead>
+          <TableRow>
+            <HeaderCell>Fornavn</HeaderCell>
+            <HeaderCell>Etternavn</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow hover>
+            <EditableCell
+              value={firstname}
+              onChange={e => setFirstname(e.target.value)}
+            ></EditableCell>
+            <EditableCell
+              value={lastname}
+              onChange={e => setLastname(e.target.value)}
+            ></EditableCell>
+          </TableRow>
+          <TableRow>
+            <DataCell>Kari</DataCell>
+            <DataCell>Nordmann</DataCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+  }}
 </Playground>
 
 ## Pagination

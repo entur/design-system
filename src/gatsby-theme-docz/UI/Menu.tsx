@@ -12,9 +12,10 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
     <div className={className}>
       <nav className="top-navigation" aria-label="Navigasjon, hovedseksjoner">
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
-        <NavItem to="/design-prinsipper">Designprinsipper</NavItem>
         <NavItem to="/visuell-identitet">Visuell identitet</NavItem>
         <NavItem to="/komponenter">Komponenter</NavItem>
+        <NavItem to="/stil-og-tone">Stil og tone</NavItem>
+        <NavItem to="/universell-utforming">Universell utforming</NavItem>
         <SettingsPanel />
       </nav>
       <SiteSidebar />

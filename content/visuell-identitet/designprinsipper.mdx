@@ -1,0 +1,93 @@
+---
+name: Designprinsipper
+description: De 6 designprinsippene skal alltid brukes som retningslinjer for det kreative arbeidet.
+route: /visuell-identitet/designprinsipper
+parent: Visuell identitet
+menu: Introduksjon
+order: 1
+---
+
+import PageHeader from '~/components/PageHeader';
+import { BannerAlertBox } from '@entur/alert';
+import { VisuallyHidden } from '@entur/a11y';
+import { GridItem, GridContainer } from '@entur/grid';
+import { Paragraph, StrongText } from '@entur/typography';
+import prinsipp1 from './designprinsipper/prinsipp1.png';
+import prinsipp2 from './designprinsipper/prinsipp2.png';
+import prinsipp3 from './designprinsipper/prinsipp3.png';
+import prinsipp4 from './designprinsipper/prinsipp4.png';
+import prinsipp5 from './designprinsipper/prinsipp5.png';
+import prinsipp6 from './designprinsipper/prinsipp6.png';
+import * as tokens from '@entur/tokens';
+
+<PageHeader />
+
+<GridContainer
+  spacing="extraLarge"
+  rowSpacing="large"
+  style={{ marginTop: '2.5rem' }}
+>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp1} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>1. Ydmyk for oppdraget</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Vi vet at ved å samarbeide med andre, og spille på hverandres styrker, kan
+      vi nå lengre.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp2} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>2. Innholdet er helten</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Vi løfter frem innholdet ved å synliggjøre og spille tilbyderne gode. Vi
+      har ikke behov for å hevde oss og setter andre før oss selv.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp3} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>3. Flere enn en</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Det som gjør tjenestene våre unike er mangfoldigheten og helheten. Derfor
+      skal vi alltid søke etter å tilrettelegge og inkludere våre
+      samarbeidspartnere, og vise verdien av å bidra.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp4} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>4. Enkel og skalerbar</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Identiteten vår er bygget på enkle, tydelige verktøy. Ved å bruke
+      verktøykassen på en smart måte, skaper vi et fleksibelt og gjenkjennelig
+      uttrykk.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp5} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>5. Tydelige kontraster</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Vi tydeliggjør historiefortellingen vår ved å spille på kontraster i
+      farger, typografi og layout. Dermed gjør vi det enklere for de reisende å
+      forstå.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <img src={prinsipp6} width="100%" style={{ marginBottom: '1rem' }} />
+    <Paragraph margin="none">
+      <StrongText>6. Lett og leken</StrongText>
+    </Paragraph>
+    <Paragraph>
+      Vi gjør det enklere for de reisende å velge kollektivt og identiteten vår
+      skal alltid uttrykke dette.
+    </Paragraph>
+  </GridItem>
+</GridContainer>

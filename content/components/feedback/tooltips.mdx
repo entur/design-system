@@ -37,6 +37,8 @@ import { ImportStatement } from '~/components/ImportStatement';
 <Props of={Tooltip} />
 
 Du wrapper `<Tooltip />` rundt elementet du ønsker at skal ha en tooltip.
+**Obs:** Plasseringen av tooltip baserer seg på `ref`,
+så pass derfor på at komponenten som wrappes støtter `forwardRef`. Les mer om dette [her](https://reactjs.org/docs/forwarding-refs.html).
 
 Om man sender med `isOpen` så får Tooltip en lukkeknapp for å håndtere situasjoner hvor man ønsker kontrollere visningen av Tooltip.
 
