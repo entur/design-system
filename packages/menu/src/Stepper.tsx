@@ -39,7 +39,9 @@ export const Stepper: React.FC<StepperProps> = ({
         return (
           <Element
             key={step}
-            className="eds-stepper__item__container"
+            className={classNames('eds-stepper__item__container', {
+              'eds-stepper__item__container--non-interactive': !interactive,
+            })}
             {...props}
           >
             <div
