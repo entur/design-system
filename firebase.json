@@ -1,6 +1,12 @@
 {
   "hosting": {
     "public": ".docz/public",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/404-finnes-ikke/index.html"
+      }
+    ]
   }
 }

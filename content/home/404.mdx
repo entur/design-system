@@ -1,0 +1,23 @@
+---
+name: Ikke funnet
+description: Denne siden finnes ikke
+route: /404-finnes-ikke
+parent: Komponenter
+index: true
+---
+
+import PageHeader from '~/components/PageHeader';
+import notFoundImage from './notFoundImage.jpg';
+import { Paragraph, Heading1, Link } from '@entur/typography';
+import { PrimaryButton } from '@entur/button';
+
+<PageHeader></PageHeader>
+
+<img src={notFoundImage} />
+
+<Paragraph>
+  Addressen kan være feil, eller siden du ser etter har blitt flyttet på
+</Paragraph>
+<Link href="/">
+  <PrimaryButton>Gå til forsiden</PrimaryButton>
+</Link>
