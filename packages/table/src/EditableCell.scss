@@ -1,0 +1,70 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-editable-cell {
+  padding: $space-extra-small $space-small;
+  .eds-table--middle & {
+    padding: calc(#{$space-extra-small} / 2) calc(#{$space-default}/ 2);
+  }
+  .eds-table--small & {
+    padding: 0.125rem $space-extra-small;
+  }
+  &__cell {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-medium;
+    margin: 0;
+    text-transform: none;
+    color: inherit;
+    background: none;
+    text-align: inherit;
+    border: none;
+
+    padding: $space-extra-small calc(#{$space-small} - #{$border-widths-small});
+    margin: 0 0;
+    width: 100%;
+    border: $border-widths-small solid transparent;
+    border-radius: $border-radiuses-medium;
+    line-height: $line-heights-extra-large;
+    min-height: 24px;
+    &:hover,
+    &:active {
+      .eds-contrast & {
+        color: $colors-brand-blue;
+      }
+    }
+    .eds-table--middle & {
+      padding: $space-extra-small2
+        calc(#{$space-extra-small} - #{$border-widths-small});
+    }
+    .eds-table--small & {
+      padding: calc(#{$space-extra-small2} - 0.125rem)
+        calc(#{$space-extra-small} - #{$border-widths-small});
+    }
+  }
+  &__activate-button {
+    .eds-table__row:hover & {
+      border-color: $colors-greys-grey10;
+      background: $colors-brand-white;
+      .eds-contrast &  {
+        border-color: $colors-blues-blue20;
+        color: $colors-brand-blue;
+      }
+    }
+  }
+  &__input {
+    background: $colors-brand-white;
+    color: inherit;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+    }
+    &:focus {
+      outline: none;
+      border: $border-widths-small solid $colors-brand-blue;
+      border-radius: $border-radiuses-medium;
+      .eds-contrast & {
+        border-color: $colors-brand-lavender;
+      }
+    }
+  }
+}

@@ -14,7 +14,8 @@
 
   &__data-cell,
   &__header-cell {
-    padding: $space-default ($space-default + $space-extra-small2);
+    height: 3.75rem;
+    padding: $space-default ($space-default + $space-extra-small);
 
     .eds-contrast & {
       border-bottom-color: $colors-blues-blue20;
@@ -22,9 +23,11 @@
 
     .eds-table--middle & {
       padding: $space-extra-small $space-default;
+      height: 2.75rem;
     }
     .eds-table--small & {
       padding: $space-extra-small2 $space-default;
+      height: $space-extra-large;
     }
   }
   &__header-cell {
