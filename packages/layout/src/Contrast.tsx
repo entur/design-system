@@ -11,17 +11,22 @@ export type ContrastProps = {
   [key: string]: any;
 };
 
-export const Contrast: React.FC<ContrastProps> = ({
-  as: Element = 'div',
-  className,
-  ...rest
-}) => {
-  return (
-    <ContrastContext.Provider value={true}>
-      <Element className={classNames('eds-contrast', className)} {...rest} />
-    </ContrastContext.Provider>
-  );
-};
+export const Contrast = React.forwardRef<HTMLDivElement, ContrastProps>(
+  (
+    { as: Element = 'div', className, ...rest },
+    ref: React.Ref<HTMLDivElement>,
+  ) => {
+    return (
+      <ContrastContext.Provider value={true}>
+        <Element
+          className={classNames('eds-contrast', className)}
+          ref={ref}
+          {...rest}
+        />
+      </ContrastContext.Provider>
+    );
+  },
+);
 
 const ContrastContext = React.createContext<boolean>(false);
 
