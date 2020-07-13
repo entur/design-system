@@ -218,6 +218,8 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
   const sortBy = menuItems?.[0].menu?.[0].parent
     ? sorters[menuItems[0].menu[0].parent]
     : componentsMenuSortOrder;
+  const isComponents = sortBy === componentsMenuSortOrder;
+  const menuSize: 'small' | 'medium' = isComponents ? 'small' : 'medium';
   return (
     <>
       <SearchBar
@@ -236,7 +238,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
             key={topLevelMenu.id}
             className="site-sidebar__group"
           >
-            <SideNavigation size="small">
+            <SideNavigation size={menuSize}>
               {topLevelMenu.menu!.sort(compare).map(menuItem => (
                 <SideNavigationItem
                   key={menuItem.id}
