@@ -12,7 +12,7 @@ export type BadgeProps = {
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
   /** Hvilken type badge man vil ha */
-  variant: 'primary' | 'success' | 'warning' | 'danger';
+  variant: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
   /** Om 0 skal vises
    * @default false
    */

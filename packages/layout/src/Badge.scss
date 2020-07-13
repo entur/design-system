@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   font-family: inherit;
-  font-weight: $font-weights-body;
+  font-weight: $font-weights-heading;
   font-size: $font-sizes-small;
   min-width: 1.5rem;
   height: 1.5rem;
@@ -44,6 +44,21 @@
     .eds-contrast & {
       color: $colors-brand-blue;
       background-color: $colors-validation-lava-contrast;
+    }
+  }
+  &--variant-info {
+    background-color: $colors-validation-sky;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background-color: $colors-validation-sky-contrast;
+    }
+  }
+  &--variant-neutral {
+    background-color: $colors-greys-grey20;
+    color: $colors-brand-blue;
+    .eds-contrast & {
+      color: $colors-brand-white;
+      background-color: $colors-blues-blue30;
     }
   }
 }
