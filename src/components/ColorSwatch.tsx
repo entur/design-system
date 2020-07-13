@@ -4,6 +4,7 @@ import { StrongText } from '@entur/typography';
 import { formatVariable } from '~/utils/formatVariable';
 import { useSettings } from './SettingsContext';
 import { DataCell, TableRow } from '@entur/table';
+import { CopyButton } from './CopyButton';
 import hexrgb from 'hex-rgb';
 import './ColorSwatch.scss';
 
@@ -45,7 +46,9 @@ const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
       <DataCell>{type}</DataCell>
       <DataCell>{variableName}</DataCell>
 
-      <DataCell>{backgroundColor}</DataCell>
+      <DataCell>
+        <CopyButton textToCopy={backgroundColor}>{backgroundColor}</CopyButton>
+      </DataCell>
       <DataCell>
         {rgb[0]}, {rgb[1]}, {rgb[2]}{' '}
       </DataCell>
