@@ -24,6 +24,18 @@ export type TooltipProps = {
   isOpen?: boolean;
   /** Ekstra klassenavn for tooltip */
   className?: string;
+  /** Åpner ikke tooltip ved hover-events
+   * @default false
+   */
+  disableHoverListener?: boolean;
+  /** Åpner ikke tooltip ved focus-events
+   * @default false
+   */
+  disableFocusListener?: boolean;
+  /** Viser en lukkeknapp om man kontrollerer åpningen av Tooltip vha `isOpen`
+   * @default true
+   */
+  showClosebutton?: boolean;
   [key: string]: any;
 };
 
@@ -33,9 +45,26 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
   className,
   isOpen = false,
+  disableHoverListener = false,
+  disableFocusListener = false,
+  showCloseButton = true,
   ...rest
 }) => {
   const [showTooltip, setShowTooltip] = useState(isOpen || false);
+  let hoverTimer: NodeJS.Timeout;
+
+  const handleOpen: (event: React.MouseEvent) => void = event => {
+    event.persist();
+    hoverTimer = setTimeout(() => {
+      setShowTooltip(true);
+    }, 150);
+  };
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(hoverTimer);
+    };
+  });
+
   const tooltipId = useRandomId('eds-tooltip');
   React.useEffect(() => {
     setShowTooltip(isOpen);
@@ -58,19 +87,20 @@ export const Tooltip: React.FC<TooltipProps> = ({
   }
 
   const childProps: {
-    'aria-describedby': string;
+    'aria-describedby'?: string;
     onMouseLeave?: () => void;
     onFocus?: () => void;
     onBlur?: () => void;
-    onMouseEnter?: () => void;
-  } = {
-    'aria-describedby': tooltipId,
-  };
-  if (!isOpen) {
-    childProps.onMouseLeave = () => setShowTooltip(false);
-    childProps.onMouseEnter = () => setShowTooltip(true);
+    onMouseEnter?: (e: React.MouseEvent) => void;
+  } = {};
+  childProps['aria-describedby'] = tooltipId;
+  if (!disableFocusListener) {
     childProps.onFocus = () => setShowTooltip(true);
     childProps.onBlur = () => setShowTooltip(false);
+  }
+  if (!disableHoverListener) {
+    childProps.onMouseLeave = () => setShowTooltip(false);
+    childProps.onMouseEnter = e => handleOpen(e);
   }
 
   return (
@@ -109,7 +139,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               {...rest}
             >
               {content}
-              {isOpen && (
+              {isOpen && showCloseButton && (
                 <IconButton
                   className="eds-tooltip__close-button"
                   onClick={() => setShowTooltip(false)}
