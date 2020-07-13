@@ -18,8 +18,11 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   expect(queryByText(content)).not.toBeInTheDocument();
   fireEvent.mouseOver(tooltipdiv);
 
-  expect(queryByText(content)).toBeInTheDocument();
+  setTimeout(() => {
+    expect(queryByText(content)).toBeInTheDocument();
 
-  expect(getByText(content)).toHaveClass('tester');
-  fireEvent.mouseLeave(getByText(children));
+    expect(getByText(content)).toHaveClass('tester');
+    fireEvent.mouseLeave(getByText(children));
+    expect(queryByText(content)).not.toBeInTheDocument();
+  }, 151); // Take hover delay into account
 });
