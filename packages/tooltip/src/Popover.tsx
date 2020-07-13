@@ -2,6 +2,7 @@ import React, { cloneElement, createContext, useContext } from 'react';
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
 import classNames from 'classnames';
+import { Contrast } from '@entur/layout';
 import './Popover.scss';
 
 type PopoverContextProps = {
@@ -138,7 +139,7 @@ export const PopoverContent = React.forwardRef<
 >(({ children }, ref: React.Ref<HTMLDivElement>) => {
   const { showPopover, attributes, styles, contentProps } = usePopoverContext();
   return (
-    <div
+    <Contrast
       className={classNames(
         'eds-popover',
         {
@@ -153,7 +154,7 @@ export const PopoverContent = React.forwardRef<
       {...contentProps}
     >
       {children}
-    </div>
+    </Contrast>
   );
 });
 
