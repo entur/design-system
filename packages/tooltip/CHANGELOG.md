@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.5...@entur/tooltip@2.2.0) (2020-07-13)
+
+### Bug Fixes
+
+- fix contrast usage in popover component ([44b12bd](https://bitbucket.org/enturas/design-system/commits/44b12bd6a43a620b392b24a369a6670dc30395a4))
+
+### Features
+
+- add new props for better controlability of tooltip ([decd962](https://bitbucket.org/enturas/design-system/commits/decd962ef5c326fcbe5decdd4f3f0132b6e6930e))
+
 ## [2.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.4...@entur/tooltip@2.1.5) (2020-07-09)
 
 ### Bug Fixes

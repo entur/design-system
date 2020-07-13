@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.6.0...@entur/layout@1.7.0) (2020-07-13)
+
+### Features
+
+- add forward referencing to Contrast ([63ebcb8](https://bitbucket.org/enturas/design-system/commits/63ebcb8b865b8aa71cfb85331d74292457cb2a13))
+- add info and neutral variant for badge ([d187808](https://bitbucket.org/enturas/design-system/commits/d187808627cd3186b52d6293cd626374ef96fa58))
+
 # [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.5.0...@entur/layout@1.6.0) (2020-07-09)
 
 ### Features
