@@ -1,6 +1,6 @@
 ---
-name: Media card
-description: MediaCard er en komponent for å vise noe valgfri medie sammen med lenke kapabilitet.
+name: MediaCard
+description: MediaCard er en skyggefull boks som gir et kort sammendrag av innnhold og som støtter video, bilde eller grafikk for å forsterke innholdet.
 parent: Komponenter
 route: /komponenter/layout-og-flater/media-card
 menu: Layout & Flater
@@ -14,28 +14,18 @@ import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { DesktopIcon } from '@entur/icons';
+import mediacard from './MediaCard.png';
 
 <PageHeader />
 
 <Playground>
   <MediaCard
-    title="Velkommen til Entur"
-    description="Entur samler hele Norge til et samlet kollektiv med buss og tog."
+    title="Hva gjør Entur?"
+    description="Entur eier og styrer salgssystemet for togbilletter og samler data om kollektivtrafikken i Norge, slik at det blir enklere å velge en bærekraftig reise."
     href="https://www.entur.no"
-    style={{ width: '21rem' }}
+    style={{ width: '31rem' }}
   >
-    <video
-      id="promo-video"
-      controls
-      controlsList="nodownload"
-      poster="https://www.entur.org/wp-content/uploads/2018/02/omentur-2.jpg"
-      style={{ height: '9.75rem', width: '100%' }}
-    >
-      <source
-        src="https://www.entur.org/wp-content/uploads/2018/04/frontpage-video.mp4"
-        type="video/mp4"
-      />
-    </video>
+    <img style={{ width: '31rem' }} src={mediacard} />
   </MediaCard>
 </Playground>
 
@@ -46,4 +36,13 @@ import { DesktopIcon } from '@entur/icons';
 <ImportStatement imports="MediaCard" />
 <Props of={MediaCard} />
 
-MediaCard, har
+## Retningslinjer for bruk
+
+Card Media er en skyggefull boks som viser innhold og handling om et emne.
+I motsetnings til et vanlig Card, kan Card Media inneholde video, bilde og grafikk for å forsterke innholdet.
+Card Media gir et kort sammendrag av innholdet, og lenker videre til en ny side med ytterligere detaljer.
+Den skal være enkel å skanne etter relevant informasjon.
+
+Card Media kan for eksempel brukes som navigasjon til en artikkel eller bloggpost.
+Komponenten skal ha en beskrivende tekst under tittelen.
+Teksten bør være kort og konsis, på max 3 linjer.

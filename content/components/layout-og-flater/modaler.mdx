@@ -1,6 +1,6 @@
 ---
 name: Modal
-description: Modaler lar oss legge innhold på toppen av siden.
+description: Modal benyttes ofte til spørsmål som brukeren må ta stilling til før han kan gå videre, de avbryter flyten men beholder konteksten delvis. De kan også vise tilleggsinfo som brukeren har etterspurt på en fokusert måte.
 parent: Komponenter
 route: /komponenter/layout-og-flater/modal
 menu: Layout & Flater
@@ -77,6 +77,20 @@ Våre modaler baserer seg på [Reach UI sin Dialog](https://reacttraining.com/re
 
 Om du trenger litt mer fleksibilitet i designet av din modal, så kan du sette sammen din egen ved hjelp av de to komponentene `<ModalOverlay />` og `<ModalContent />`. `<Modal />`-komponenten gjør egentlig ikke noe mer fancy enn å neste disse to inni hverandre, slik at det blir lettere å bruke.
 
-## Retningslinjer
+## Retningslinjer for bruk
 
-Modaler skal brukes svært sparsommelig i flatene våre, og kun der det ikke gir mening å vise informasjonen i den eksisterende konteksten. Modaler avbryter brukerens eksisterende visuelle kontekst, og lager en ny.
+### Når skal komponenten brukes?
+
+Modaler benyttes hovedsakelig i to ulike ulike situasjoner; for å tilby et lite knippe funksjoner (f.eks. filter eller datovelger) eller til å gi informasjon (ren tekst, uten funksjon) som er for omfattende til å vise i en tooltip eller pop-over. Modaler skal alltid ha en lukkefunksjon, og man må kunne benytte ‘Esc’ til å lukke. Klikk utenfor modalen skal behandles likt som klikk på ‘lukk’ (kryss eller knapp). Ettersom modaler lett kan lukkes bør de ikke inneholde for mange funksjoner eller kritisk innhold. I slike tilfeller bør en egen side vurderes. Funksjonelle prosesser over flere steg må aldri legges i en modal.
+
+#### Informasjonsmodaler
+
+Modaler med informasjon benyttes egentlig i samme øyemed som tooltip eller pop-over, men i større format og med plass til mer tekst. Teksten er ofte midtstilt, men kan også være venstrestilt i større modaler med mye tekst. Ved større informasjonsmengder og der man heller ikke vil skjule noe av konteksten, bør bruk av drawer vurderes. Modalen lukes med kryss supplert med ‘Lukk’-tekst og/eller knapp med ‘Ok’. Informasjonsmodaler kan inneholde flere steg, men bør da ha knapper både for ‘Neste’ og for ‘Avbryt’.
+
+#### Funksjonsmodaler
+
+Modaler med funksjon skal benyttes sparsommelig, og kun til enkle funksjoner som f.eks. innlogging, modusvalg, filter eller dato/tidsvelger. Komplekse skjemaer med flere ulike typer data/inputs bør heller vises på egen side alternativt som ekspanderende skjema ved behov. Funksjonsmodalene har gjerne primærknapp for videre handling og sekundærknapp for ‘Avbryt’ (her har vi gjort et unntak for de nye modalene i app som benytter gesture nedoverswipe for lukk/avbryt). Knappene skal plasseres midtstilt i mindre modaler, og høyrestilt i større modaler. Knappen lengst til høyre skal være primærknappen som appliserer funksjonen. Funksjonsmodaler bør lukkes med ‘Avbryt’, da kun lukkekryss gjør at det fremstår som utydelig om de funksjonelle valgene blir applisert eller ikke.
+
+### Varianter
+
+Modaler skal ha faste størrelser, ikke prosentvis, og finnes i størrelsene XXS, XS, S, M og L. Innholdsmengden avgjører hvilken størrelse man velger. Man bør helst ikke benytte mange ulike størrelser på modal i de samme løsningen. XXS og XS finnes i variant med midtstilt og venstrestilt innhold, de større fra S og opp finnes kun med venstrestilt innhold.

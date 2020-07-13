@@ -1,6 +1,6 @@
 ---
 name: Card
-description: Cards er komponenter for å vise tekst i en annen flate.
+description: Cards er flater som viser innhold og handlinger om et emne som man ønsker å fremheve på en side.
 parent: Komponenter
 route: /komponenter/layout-og-flater/card
 menu: Layout & Flater
@@ -13,7 +13,7 @@ import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
-import { BanknoteIcon, DesktopIcon, FileIcon } from '@entur/icons';
+import { RSSIcon, MapPinIcon, InterrailIcon } from '@entur/icons';
 
 <PageHeader />
 
@@ -21,42 +21,21 @@ import { BanknoteIcon, DesktopIcon, FileIcon } from '@entur/icons';
   <div
     style={{
       display: 'grid',
-      gridGap: '1.5rem',
       gridTemplateColumns: '1fr 1fr 1fr',
+      gap: '1.5rem',
     }}
   >
-    <NavigationCard title="Data" titleIcon={<DesktopIcon />} href="#">
-      Se all dataen vår
+    <NavigationCard title="I nærheten" titleIcon={<MapPinIcon />} href="#">
+      Se avgangstider fra stoppesteder, eller finn sparkesykler og bysykler i
+      nærheten
     </NavigationCard>
-    <NavigationCard title="Bestilling" titleIcon={<BanknoteIcon />} href="#">
-      Se dine bestillinger
+    <NavigationCard title="Tavla" titleIcon={<RSSIcon />} href="#">
+      Sjekk ut vår sanntidstavle med avganger fra dine utvalgte stoppesteder.
     </NavigationCard>
-    <NavigationCard title="Oppsummering" titleIcon={<FileIcon />} href="#">
-      Oppsummering av all fakta
+    <NavigationCard title="Gruppereiser" titleIcon={<InterrailIcon />} href="#">
+      Les mer om hele Norges reiseplanlegger, som du kan ha tilgjengelig rett i
+      lomma.
     </NavigationCard>
-  </div>
-  <br />
-  <div
-    style={{
-      display: 'grid',
-      gridGap: '1rem',
-      gridTemplateRows: '1fr 1fr 1fr',
-    }}
-  >
-    <NavigationCard compact titleIcon={<FileIcon />} title="Data" href="#" />
-    <NavigationCard compact title="Bestilling" href="#" />
-    <NavigationCard compact title="Oppsummering" href="#" />
-  </div>
-  <div style={{ margin: '1rem 0rem' }}>
-    <BaseCard
-      style={{ display: 'flex', flexDirection: 'column', width: '10rem' }}
-    >
-      <div style={{ fontWeight: '600' }}>Card</div>
-      <div>
-        Man kan også benytte seg av komponenten Card, for å få en ikke-klikkbar
-        boks for å ha innhold i.
-      </div>
-    </BaseCard>
   </div>
 </Playground>
 
@@ -73,9 +52,20 @@ Bruk helst eksempelet over, og ha 1.5rem/24px mellom hvert NavigationCard.
 `NavigationCard` med `compact`-propen kan brukes på samme måte, men heller om man vil bruke mindre plass, eller ikke har en beskrivende tekst til tittelen.
 Ettersom denne ikke har forflyttning ved hover, så kan du bruke lavere verdier for spacing mellom boksene.
 
-### Card
+### BaseCard
 
 <ImportStatement imports="BaseCard" />
 <Props of={BaseCard} />
 
 `BaseCard` er komponenten som `NavigationCard` bygger seg oppå, og kan også brukes direkte, om man skulle ha behov stylingen som `BaseCard` er "kjent" for.
+
+## Retningslinjer for bruk
+
+Cards er flater som viser innhold og handlinger om et emne som man ønsker å fremheve på en side.
+Card gir et kort sammendrag av innholdet, og lenker videre til en ny side med ytterligere detaljer.
+Den skal være enkel å skanne etter relevant informasjon. Card kan for eksempel brukes som navigasjon
+til et underliggende nivå, der man gjør et uttrekk av innholdet fra menyen som presenteres på en landingsside.
+
+NavigationCard skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på max 3 linjer.
+Ikon i et card er valgfritt, men bruker du ikoner, bør de være selvforklarende.
+NavigationCard med compact-propen kan brukes på samme måte, men heller om man vil bruke mindre plass eller ikke har en beskrivende tekst til tittelen.

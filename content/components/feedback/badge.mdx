@@ -1,6 +1,6 @@
 ---
 name: Badge
-description: Badge brukes for å vise tilstanden eller mengden av noe, plassert relativt nært til den relevante informasjonen.
+description: Badge brukes for å indikere status eller informere om elementer som kan kreve brukerens oppmerksomhet og som de bør ta hensyn til.
 route: /komponenter/feedback/badge
 parent: Komponenter
 menu: Feedback
@@ -22,65 +22,38 @@ import { SubtractIcon } from '@entur/icons';
 
 <PageHeader />
 
-<Playground>
-  {() => {
-    const [inbox, setInbox] = React.useState(2);
-    const [outbox, setOutbox] = React.useState(11);
-    return (
-      <div>
-        <div>
-          <Tabs>
-            <TabList>
-              <Tab style={{ position: 'relative' }}>
-                Innboks
-                <Badge
-                  variant="success"
-                  style={{ position: 'absolute', top: 0 }}
-                  showZero
-                >
-                  {inbox}
-                </Badge>
-              </Tab>
-              <Tab style={{ position: 'relative' }}>
-                Utboks
-                <Badge
-                  variant="danger"
-                  style={{ position: 'absolute', top: 0 }}
-                  max={10}
-                >
-                  {outbox}
-                </Badge>
-              </Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-                Meldingene dine
-                <br />
-                <NegativeButton onClick={() => setInbox(0)}>
-                  Slett meldinger
-                </NegativeButton>
-              </TabPanel>
-              <TabPanel>
-                Utboksen din
-                <br />
-                <NegativeButton onClick={() => setOutbox(0)}>
-                  Slett utboks
-                </NegativeButton>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </div>
-        <PrimaryButton
-          onClick={() => {
-            setInbox(3);
-            setOutbox(11);
-          }}
-        >
-          Oppdater meldinger
-        </PrimaryButton>
-      </div>
-    );
-  }}
+<Playground style={{ display: 'flex', justifyContent: 'center' }}>
+  <div
+    style={{
+      display: 'inline-flex',
+      marginRight: '1rem',
+    }}
+  >
+    <Badge style={{ marginRight: '0.75rem' }} variant="primary">
+      Primary
+    </Badge>
+    <Badge style={{ marginRight: '0.75rem' }} variant="success">
+      Success
+    </Badge>
+    <Badge style={{ marginRight: '0.75rem' }} variant="warning">
+      Warning
+    </Badge>
+    <Badge style={{ marginRight: '0.75rem' }} variant="danger">
+      Danger
+    </Badge>
+    <Badge style={{ marginRight: '0.75rem' }} variant="info">
+      Info
+    </Badge>
+    <Badge style={{ marginRight: '0.75rem' }} variant="neutral">
+      Neutral
+    </Badge>
+  </div>
+  <div style={{ display: 'grid', gridAutoFlow: 'column', gap: '0.75rem' }}>
+    <Badge variant="primary">1</Badge>
+    <Badge variant="success">1</Badge>
+    <Badge variant="warning">1</Badge>
+    <Badge variant="danger">1</Badge>
+  </div>
 </Playground>
 
 ## Komponenter
@@ -89,3 +62,48 @@ import { SubtractIcon } from '@entur/icons';
 
 <ImportStatement imports="Badge" />
 <Props of={Badge} />
+
+## Retningslinjer for bruker
+
+Badge brukes for å indikere status eller informere om elementer som kan kreve brukerens oppmerksomhet og som de bør ta hensyn til.
+
+Badges kan gi melding om advarsler, bekreftelser eller om noe er feil. Vi kan for eksempel bruke badges for å indikere at en billett er utløpt,
+et forfalt eller betalt beløp, utdatert oppgjør eller avvik i en liste eller tabell etc.
+
+### Eksempel
+
+<Playground >
+      <div>
+        <div>
+          <Tabs>
+            <TabList>
+              <Tab style={{ position: 'relative' , minWidth:"12rem"}}>
+                Ordre
+              </Tab>
+              <Tab style={{ position: 'relative', minWidth:"12rem" }}>
+                Historikk
+              </Tab>
+              <Tab style={{ position: 'relative', minWidth:"12rem" }}>
+                Merknader
+                <Badge
+                  variant="primary"
+                  style={{ position: 'absolute', top: 0 }}
+                  max={10}
+                >
+                  1
+                </Badge>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+              </TabPanel>
+              <TabPanel>
+              </TabPanel>
+              <TabPanel>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </div>
+      </div>
+
+</Playground>

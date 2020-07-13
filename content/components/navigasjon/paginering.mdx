@@ -33,22 +33,13 @@ import testdata from '../layout-og-flater/testdata';
     const [currentPage, setPage] = React.useState(1);
     const [results, setResults] = React.useState(10);
     return (
-      <React.Fragment>
-        <Pagination
-          pageCount={10}
-          currentPage={currentPage}
-          onPageChange={page => setPage(page)}
-          showInput
-        />
-        <br />
-        <Pagination
-          pageCount={(10 * 10) / results}
-          currentPage={currentPage}
-          onPageChange={page => setPage(page)}
-          resultsPerPage={results}
-          onResultsPerPageChange={e => setResults(e)}
-        />
-      </React.Fragment>
+      <Pagination
+        pageCount={(10 * 10) / results}
+        currentPage={currentPage}
+        onPageChange={page => setPage(page)}
+        resultsPerPage={results}
+        onResultsPerPageChange={e => setResults(e)}
+      />
     );
   }}
 </Playground>

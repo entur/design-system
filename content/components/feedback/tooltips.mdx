@@ -1,6 +1,6 @@
 ---
 name: Tooltip
-description: Tooltip kan brukes for å gi ekstra informasjon til brukeren ved hover eller fokus.
+description: Tooltip brukes for å beskrive eller legge til tilleggsinformasjon til brukeren ved hover eller fokus på elementer.
 route: /komponenter/feedback/tooltip
 parent: Komponenter
 menu: Feedback
@@ -14,18 +14,16 @@ import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { ValidationInfoIcon } from '@entur/icons';
+import { BestPractices, Example } from '~/components/BestPractices';
 
 <PageHeader />
 
-<Playground>
-  <Tooltip content="Her er tooltipen" placement="top">
-    <span>Denne teksten har en tooltip</span>
-  </Tooltip>
-  <br />
-  <br />
-  <br />
-  <Tooltip content="Her er tooltipen" placement="bottom-right" isOpen>
-    <span>Denne teksten har en tooltip</span>
+<Playground style={{ display: 'flex', justifyContent: 'center' }}>
+  <Tooltip content="Tooltip på toppen" placement="top">
+    <PrimaryButton>
+      <ValidationInfoIcon inline /> Denne knappen har en tilleggsinformasjon
+    </PrimaryButton>
   </Tooltip>
 </Playground>
 
@@ -42,14 +40,51 @@ så pass derfor på at komponenten som wrappes støtter `forwardRef`. Les mer om
 
 Om man sender med `isOpen` så får Tooltip en lukkeknapp for å håndtere situasjoner hvor man ønsker kontrollere visningen av Tooltip.
 
-## Retningslinjer
+## Retningslinjer for bruk
 
-_Unngå_ å legge nødvendig og kritisk informasjon i tooltip'en.
+Tooltip brukes for å beskrive eller legge til tilleggsinformasjon når brukeren hovrer eller fokuserer på
+interaktive elementer som knapper, lenker, ikonknapper eller ikke-interaktive elementer som ikoner og tekst.
+En tooltip bør kun ha en kortfattet setning på en enkelt tekstlinje.
 
-Ettersom tooltip _helst skal_ brukes på fokuserbare elementer, så vises også tooltip om knappen/linken etc er fokusert
+På mobile flater vises en tooltip først når en bruker klikker på elementet.
+Den blir borte hvis brukeren klikker utenfor tooltip’en. Siden tooltips skjuler informasjonen,
+så bør det brukes sparsommelig. For kompleks informasjon og setninger som går over flere tekstlinjer, bruk heller Popover eller Drawer.
 
-<Playground>
-  <Tooltip content="Tooltip til knappen" placement="top">
-    <PrimaryButton>Knapp med tooltip</PrimaryButton>
-  </Tooltip>
-</Playground>
+### Prinsipper
+
+<BestPractices>
+  <Example type="do">
+    <ul>
+      <li>
+        Bruk hvis du vil gi et lite hint om hvordan eller hva et element på
+        siden gjør.
+      </li>
+      <li>Bruk tooltip sparsomt, og hold det kort og konsists,</li>
+      <li>
+        Bruk hvis et interaktivt element (knapp, label, ikon) har ingen
+        beskrivende tekst og dette elementet trenger en kort forklaring.
+      </li>
+      <li>
+        Bruk hvis det er lite plass, for mye informasjon til å ha det inline og
+        hvis det skaper for mye rot å vise den med en gang.
+      </li>
+    </ul>
+  </Example>
+  <Example type="dont">
+    <ul>
+      <li>
+        Unngå bruk av interaktive elementer som lenker elle rknapper i en
+        tooltip. Vurder heller å bruke en Popover
+      </li>
+      <li>
+        Unngå tooltip for å kommunisere og varsle om viktig og kritisk
+        informasjon eller feilmeldinger i skjemaer. Vurder å bruk Modaler eller
+        Alerts.
+      </li>
+      <li>
+        Ikke overdriv bruken av tooltips. For mange vil enten overvelde eller
+        irritere brukeren.
+      </li>
+    </ul>
+  </Example>
+</BestPractices>

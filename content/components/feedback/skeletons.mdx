@@ -1,6 +1,6 @@
 ---
 name: Skeleton
-description: Skeleton brukes for å vise et omriss av innhold som blir lastet.
+description: Skeletons er placeholdere som visuelt kommuniserer at deler av innholdet er i ferd med å laste inn og hvordan innholdsoppsettet vil se ut.
 route: /komponenter/feedback/skeleton
 parent: Komponenter
 menu: Feedback
@@ -12,6 +12,7 @@ import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
+import { BestPractices, Example } from '~/components/BestPractices';
 
 import { ImportStatement } from '~/components/ImportStatement';
 
@@ -55,3 +56,49 @@ Elementene har litt marigin seg i mellom per default.
 <Props of={SkeletonWrapper} />
 
 Det ytterste elementet som `Skeleton` og `SkeletonCircle` pakkes inn i. Brukes for å gi nødvendige aria-labels o.l.
+
+## Retningslinjer for bruk
+
+Skeletons er placeholdere som visuelt kommuniserer at deler av innholdet er i ferd med å laste inn og hvordan innholdsoppsettet vil se ut.
+Brukes når seksjoner på siden gradvis fylles med innhold, for eksempel tekst og bilder eller data i tabeller som dukker opp etter
+hvert som de blir tilgjengelige. På denne måten gir vi brukerne en idé og forventning om hva slags innhold som skal komme,
+i tillegg for å skape en oppfatning av redusert ventetid. Skeletons blir borte og erstattes med innhold så snart dataene er tilgjengelig.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do">
+    <ul>
+      <li>
+        Bruk skeletons hvis data hentes fra baksystemer som har lang ventetid og
+        er ikke umiddelbart tilgjengelige.
+      </li>
+      <li>
+        Bruk skeletons hvis det laster inn mer enn ett element samtidig som
+        krever en indikator.
+      </li>
+      <li>
+        Bruk skeletons når innholdet har en fast størrelse og oppsettet er
+        forutsigbart.
+      </li>
+    </ul>
+  </Example>
+  <Example type="dont">
+    <ul>
+      <li>
+        Unngå å bruk skeletons hvis det er en langvarig prosess, f.eks
+        importering av data eller opplasting av en fil. Bruk Progressbar i
+        stedet.
+      </li>
+      <li>
+        Unngå skeletons hvis det er en rask prosess som tar mindre enn 300 ms.
+        Vurderer å bruk en vanlig Loader eller om du i det hele tatt trenger en
+        lastetilstand.
+      </li>
+      <li>
+        For en liten, inline handling som f.eks klikket på en knapp der
+        handlingen kan ta tid, bruker vi en lastespinner i knappen istedet.
+      </li>
+    </ul>
+  </Example>
+</BestPractices>

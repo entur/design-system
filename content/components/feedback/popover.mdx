@@ -1,6 +1,6 @@
 ---
 name: Popover
-description: Popover kan brukes for å gi en flytende boks for ekstra funksjonalitet.
+description: Popover er en flytende boks for å vise ekstra kontekstuell informasjon, interaksjoner eller innhold på flere linjer.
 route: /komponenter/feedback/popover
 parent: Komponenter
 menu: Feedback
@@ -18,6 +18,7 @@ import { Heading4, Label } from '@entur/typography';
 import { GridContainer, GridItem } from '@entur/grid';
 import { Checkbox } from '@entur/form';
 import { SecondaryButton, IconButton } from '@entur/button';
+import { BestPractices, Example } from '~/components/BestPractices';
 import { AdjustmentsIcon, CloseIcon } from '@entur/icons';
 import { Props } from 'docz';
 import { Playground } from '~/components/Playground';
@@ -84,3 +85,49 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <ImportStatement imports="Popover" />
 <Props of={Popover} />
+
+## Retningslinjer for bruk
+
+Popover er en ikke-modal dialog, men en flytende boks for å vise ekstra kontekstuell informasjon,
+interaksjoner eller innhold på flere linjer, når brukerne hovrer eller fokuserer på et interaktivt element.
+I motsetning til en vanlig Tooltip, kan en bruker samhandle med popover-inholdet, for eksempel med enkle handlinger som klikk på lenker og knapper.
+
+Popover kan brukes som en hjelpeguide når det er første gangen brukeren skal bruke en applikasjon
+eller hvis man trenger å introdusere en ny funksjonalitet.
+Popover kan også brukes til avanserte funksjoner som filterkontroll som kombinerer flere
+formkontrolller som Radio, Checkbox, Datapicker og Dropdown.
+
+### Prinsipper
+
+<BestPractices>
+  <Example type="do">
+    <ul>
+      <li>Bruk en handlingsknapp for å utløse en popover.</li>
+      <li>Minst et interaktiv element skal være inne i en popover.</li>
+      <li>
+        Bruk hvis det er lite plass på siden, for mye informasjon til å ha det
+        inline og hvis det skaper for mye rot å vise innholdet med en gang.
+      </li>
+      <li>
+        Bruk en popover hvis du trenger at innholdet skal forbli åpent, uten å
+        måtte hovre på elementet slik som Tooltip.
+      </li>
+    </ul>
+  </Example>
+  <Example type="dont">
+    <ul>
+      <li>
+        Hvis det bare er en tekst som ikke er interaktiv, vurder å bruk en
+        Tooltip istedet.
+      </li>
+      <li>
+        Unngå å bruk en popover for skjemaer eller medieinnhold som video, bilde
+        og grafikk. Vurder heller å bruke en Modal.
+      </li>
+      <li>
+        Unngå å bruk popover når brukerne ikke trenger å se resten av innholdet
+        på skjermen. Vurder heller en Modal.
+      </li>
+    </ul>
+  </Example>
+</BestPractices>

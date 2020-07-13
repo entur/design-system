@@ -1,6 +1,6 @@
 ---
 name: Top navigation
-description: Toppmenyen lar brukeren navigere mellom forskjellige seksjoner av en applikasjon.
+description: Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen av en side eller applikasjon.
 route: /komponenter/navigasjon/top-navigation
 parent: Komponenter
 menu: Navigasjon
@@ -31,5 +31,13 @@ import { ImportStatement } from '~/components/ImportStatement';
 <ImportStatement imports="TopNavigationItem" />
 <Props of={TopNavigationItem} />
 
-`TopNavigationItem` bruker som en horisontal navigasjonsmeny på toppen av en applikasjon, ved å vise alle tilgjengelige undersider i applikasjonen.
+## Retningslinjer for bruk
+
+Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen av en side eller applikasjon.
+Sammenlignet med Side navigation, støtter Top navigation kun et nivå av navigasjon.
+Hvis du har færre enn 3 menypunkter i navigasjonshierarkiet, er det denne komponenten du bør bruke.
+Menypunktene vises direkte og er alltid tilgjengelig i headeren for å hjelpe brukeren å finne det de trenger.
 `active` brukes for å vise hvilken underside man er inne på for øyeblikket, og maks én skal være det til enhver tid.
+
+Bruk Tabs hvis brukeren kan bytte visninger i samme kontekst.
+Hvis det er mer enn 6 menyelementer, eller hvis du trenger å gruppere elementer, vurder å bruk Side navigation istedenfor.

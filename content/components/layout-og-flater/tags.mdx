@@ -1,6 +1,6 @@
 ---
 name: Tags
-description: Tags er en komponent som brukes for å klassifisere objekter.
+description: Tags brukes for å kategorisere eller organisere elementer ved hjelp av nøkkelord som beskriver dem.
 parent: Komponenter
 route: /komponenter/layout-og-flater/tags
 menu: Layout & Flater
@@ -22,14 +22,13 @@ import { ClockIcon } from '@entur/icons';
     const time = new Date().getHours() + 1 + ':' + new Date().getMinutes();
     return (
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Tag>Kollektiv</Tag>
-        <Tag>For alle</Tag>
+        <Tag>
+          <ClockIcon />
+        </Tag>
         <Tag>
           <ClockIcon inline /> {time}
         </Tag>
-        <Tag>
-          <ClockIcon inline />
-        </Tag>
+        <Tag>Kollektivselskap</Tag>
       </div>
     );
   }}
@@ -39,3 +38,8 @@ import { ClockIcon } from '@entur/icons';
 
 <ImportStatement imports="Tag" />
 <Props of={Tag} />
+
+## Retningslinjer for bruk
+
+Tags brukes for å kategorisere eller organisere elementer ved hjelp av nøkkelord som beskriver dem. Bruk tags når innholdet har mange kategorier, og brukeren trenger en måte å skille mellom dem. For enkel skanning av de ulike, bør teksten ikke være på mer enn to ord.
+For filtrering der brukeren kan filtrere data og bare se elementer innenfor ønsket kategori kan du bruke Filter Chips eller Tags Chips komponenten.
