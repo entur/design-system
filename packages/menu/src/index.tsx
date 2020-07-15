@@ -19,3 +19,4 @@ export * from './TopNavigationItem';
 export * from './Pagination';
 export * from './Stepper';
 export * from './OverflowMenu';
+export * from './CollapsibleSideNavigation';
