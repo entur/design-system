@@ -9,7 +9,7 @@ tags: contrast, midnight, kontrast
 ---
 
 import { Props } from 'docz';
-import { Contrast } from '@entur/layout';
+import { Contrast, useContrast } from '@entur/layout';
 import { LeadParagraph, Paragraph } from '@entur/typography';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -42,6 +42,13 @@ import PageHeader from '~/components/PageHeader';
 
 <ImportStatement imports="Contrast" />
 <Props of={Contrast} />
+
+### UseContrast
+
+<ImportStatement imports="useContrast" />
+<Props of={useContrast} />
+
+Returnerer `true` om man er wrappet av en `Contrast`.
 
 ## Retningslinjer for bruk
 
