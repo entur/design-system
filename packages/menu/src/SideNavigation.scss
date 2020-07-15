@@ -7,6 +7,19 @@
   --primary-text-color: #{$colors-brand-white};
 }
 
+.eds-side-navigation svg {
+  color: $colors-brand-lavender;
+  margin-right: $space-medium;
+  display: inline-flex;
+  align-self: center;
+  position: relative;
+  top: 0.075em;
+}
+
+.eds-side-navigation [disabled] svg {
+  color: $colors-blues-blue40;
+}
+
 .eds-side-navigation {
   --padding-vertical: #{$space-medium};
   --padding-horizontal: #{$space-extra-large2};
@@ -15,6 +28,33 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  position: relative;
+  transition: max-width ease-in-out $timings-medium;
+  &__collapse-button {
+    position: absolute;
+    right: 0 - 0.75rem;
+
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background: $colors-blues-blue20;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: $z-indexes-sticky;
+    svg {
+      margin: 0;
+      top: 0;
+      color: $colors-brand-white;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: $shadows-focus-contrast;
+    }
+  }
 
   @include for-desktop {
     max-width: 26rem;
@@ -28,19 +68,9 @@
   & & {
     background-color: $colors-blues-blue10;
   }
-}
-
-.eds-side-navigation svg {
-  color: $colors-blues-blue50;
-  margin-right: $space-medium;
-  display: inline-flex;
-  align-self: center;
-  position: relative;
-  top: 0.075em;
-}
-
-.eds-side-navigation [disabled] svg {
-  color: $colors-blues-blue40;
+  &--collapsed {
+    max-width: 80px;
+  }
 }
 
 .eds-side-navigation {
@@ -68,11 +98,15 @@
   font-size: inherit;
   font-weight: $font-weights-body;
   line-height: inherit;
-  padding: var(--padding-vertical) var(--padding-horizontal);
+  padding: var(--padding-vertical) $space-extra-large2;
+  padding-left: $space-extra-large2;
+  transition: padding $timings-medium ease-in-out;
   text-align: left;
   text-decoration: none;
   width: 100%;
-
+  .eds-side-navigation--collapsed & {
+    padding-left: $space-extra-large;
+  }
   &--active {
     box-shadow: inset $border-widths-large 0 0 $colors-brand-coral;
   }
@@ -127,11 +161,13 @@
   margin: 0;
   text-transform: uppercase;
   width: 100%;
+  .eds-side-navigation-group__icon {
+    margin-right: $space-large;
+  }
+  .eds-side-navigation--collapsed & {
+    padding-left: $space-extra-large;
+  }
   &:focus {
     outline: 4px solid $colors-misc-focus;
   }
-}
-
-.eds-side-navigation-group__icon {
-  margin-right: $space-large;
 }

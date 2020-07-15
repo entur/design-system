@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './SideNavigation.scss';
+import { Contrast } from '@entur/layout';
 
 export type SideNavigationProps = {
   /** Ekstra klassenavn */
@@ -26,7 +27,8 @@ export const SideNavigation: React.FC<SideNavigationProps> & InternalMarker = ({
     return null;
   }
   return (
-    <ul
+    <Contrast
+      as="ul"
       className={classNames(
         'eds-side-navigation',
         { 'eds-side-navigation--small': size === 'small' },
@@ -35,7 +37,7 @@ export const SideNavigation: React.FC<SideNavigationProps> & InternalMarker = ({
       {...rest}
     >
       {children}
-    </ul>
+    </Contrast>
   );
 };
 
