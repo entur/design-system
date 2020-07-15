@@ -1,6 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { BaseExpand, ExpandArrow } from '@entur/expand';
+import { useSideNavigationContext } from './CollapsibleSideNavigation';
+import { useShowDelayedLabel } from './useShowDelayedLabel';
+import { useControllableProp } from './useControllableProp';
 
 export type SideNavigationGroupProps = {
   /** Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert
@@ -17,29 +20,9 @@ export type SideNavigationGroupProps = {
   children: React.ReactNode;
   /** Overskriften til menyen */
   title: React.ReactNode;
+  icon?: React.ReactNode;
   [key: string]: any;
 };
-
-export type UseControllablePropType<T> = {
-  prop?: T;
-  updater?: (value?: T) => void;
-  defaultValue: T;
-};
-function useControllableProp<T>({
-  prop,
-  updater = () => {},
-  defaultValue,
-}: UseControllablePropType<T>): [T, Function] {
-  const [internalState, setInternalState] = React.useState<T>(defaultValue);
-  React.useEffect(() => {
-    if (prop !== undefined) {
-      setInternalState(prop);
-    }
-  }, [prop]);
-  return prop === undefined
-    ? [internalState, setInternalState]
-    : [prop, updater];
-}
 
 export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
   defaultOpen = false,
@@ -48,6 +31,7 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
   className,
   children,
   title,
+  icon,
   ...rest
 }) => {
   const [isOpen, setOpen] = useControllableProp({
@@ -55,6 +39,20 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
     updater: onToggle,
     defaultValue: defaultOpen,
   });
+  const { isCollapsed, setIsCollapsed } = useSideNavigationContext();
+
+  const [showLabel] = useShowDelayedLabel(isCollapsed);
+  React.useEffect(() => {
+    if (isOpen) {
+      setIsCollapsed(false);
+    }
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    if (isCollapsed) {
+      setOpen(false);
+    }
+  }, [isCollapsed]);
 
   return (
     <div
@@ -66,11 +64,16 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
         type="button"
         className="eds-side-navigation-group__trigger"
       >
-        <span>{title}</span>
-        <ExpandArrow
-          open={isOpen}
-          className="eds-side-navigation-group__icon"
-        />
+        <span>
+          {icon}
+          {showLabel && title}
+        </span>
+        {showLabel && (
+          <ExpandArrow
+            open={isOpen}
+            className="eds-side-navigation-group__icon"
+          />
+        )}
       </button>
       <BaseExpand open={isOpen}>{children}</BaseExpand>
     </div>
