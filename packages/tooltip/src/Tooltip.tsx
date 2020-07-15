@@ -35,7 +35,7 @@ export type TooltipProps = {
   /** Viser en lukkeknapp om man kontrollerer åpningen av Tooltip vha `isOpen`
    * @default true
    */
-  showClosebutton?: boolean;
+  showCloseButton?: boolean;
   [key: string]: any;
 };
 
