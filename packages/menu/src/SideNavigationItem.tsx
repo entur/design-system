@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useSideNavigationContext } from './CollapsibleSideNavigation';
+import { useShowDelayedLabel } from './useShowDelayedLabel';
 
 function isActiveRecursively(child: any): boolean {
   if (!child.props) {
@@ -21,6 +23,7 @@ type BaseSideNavigationItemProps = {
   active?: boolean;
   as?: 'a' | 'button' | React.ElementType;
   className?: string;
+  icon?: React.ReactNode;
   children: React.ReactNode;
   subMenu?: React.ReactNode;
   [key: string]: any;
@@ -30,9 +33,19 @@ const BaseSideNavigationItem = React.forwardRef<
   BaseSideNavigationItemProps
 >(
   (
-    { className, active = false, as: Element = 'a', subMenu, ...rest },
+    {
+      className,
+      active = false,
+      as: Element = 'a',
+      subMenu,
+      icon,
+      children,
+      ...rest
+    },
     ref: React.Ref<HTMLAnchorElement>,
   ) => {
+    const { isCollapsed } = useSideNavigationContext();
+    const [showLabel] = useShowDelayedLabel(isCollapsed);
     return (
       <li className={classNames('eds-side-navigation__item', className)}>
         <Element
@@ -41,7 +54,10 @@ const BaseSideNavigationItem = React.forwardRef<
           })}
           ref={ref}
           {...rest}
-        />
+        >
+          {icon}
+          {showLabel && children}
+        </Element>
         {subMenu}
       </li>
     );
@@ -80,6 +96,7 @@ export type SideNavigationItemProps = {
   onClick?: (e: React.MouseEvent) => any;
   /** Sett til true om du vil tvinge alle sub-menus til å rendre barna sine. Typisk for å vise søkeresultater */
   forceExpandSubMenus?: boolean;
+  icon?: React.ReactNode;
   [key: string]: any;
 };
 export const SideNavigationItem = React.forwardRef<
