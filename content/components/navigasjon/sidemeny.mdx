@@ -13,9 +13,19 @@ import {
   SideNavigation,
   SideNavigationItem,
   SideNavigationGroup,
+  CollapsibleSideNavigation,
 } from '@entur/menu';
 import { LeadParagraph, Paragraph, Link as LinkText } from '@entur/typography';
-import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import {
+  UserIcon,
+  StatsIcon,
+  SettingsIcon,
+  RSSIcon,
+  AddIcon,
+  MenuIcon,
+  CalenderIcon,
+} from '@entur/icons';
+import {} from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -224,6 +234,31 @@ import { ImportStatement } from '~/components/ImportStatement';
     </SideNavigation>
   </SideNavigationGroup>
 </Playground>
+
+### Collapsible side nagivation
+
+<Playground>
+  <CollapsibleSideNavigation collapsible>
+    <SideNavigationItem icon={<AddIcon />} href="#bruker">
+      Opprett bruker
+    </SideNavigationItem>
+    <SideNavigationItem icon={<RSSIcon />} href="#nettverk">
+      Nettverk
+    </SideNavigationItem>
+    <SideNavigationItem icon={<SettingsIcon />} href="#innstillinger">
+      Innstillinger
+    </SideNavigationItem>
+    <SideNavigationGroup title="Andre alternativer" icon={<MenuIcon />}>
+      <SideNavigationItem icon={<CalenderIcon />} href="#kalender">
+        Kalender
+      </SideNavigationItem>
+    </SideNavigationGroup>
+  </CollapsibleSideNavigation>
+</Playground>
+
+Bruk `collapisibleButtonPosition` for plasseringen av collapse-knappen ift toppen av sidemenyen. Eksempel `2rem`, `25%` og lignende.
+
+**Obs:** Husk og inkluder `icon`-propen for alle menypunktene.
 
 ## Retningslinjer for bruk
 
