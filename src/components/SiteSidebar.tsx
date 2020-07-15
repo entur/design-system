@@ -227,18 +227,18 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
         searchText={searchText}
         onSearchTextChange={setSearchText}
       />
-      {filteredMenuItems
-        .filter(topLevelMenu => topLevelMenu.menu)
-        .sort((a, b) => sortComponentMenus(a, b, sortBy))
-        .map(topLevelMenu => (
-          <SideNavigationGroup
-            defaultOpen={true}
-            open={searchText !== '' ? true : undefined}
-            title={topLevelMenu.name}
-            key={topLevelMenu.id}
-            className="site-sidebar__group"
-          >
-            <SideNavigation size={menuSize}>
+      <SideNavigation size={menuSize}>
+        {filteredMenuItems
+          .filter(topLevelMenu => topLevelMenu.menu)
+          .sort((a, b) => sortComponentMenus(a, b, sortBy))
+          .map(topLevelMenu => (
+            <SideNavigationGroup
+              defaultOpen={true}
+              open={searchText !== '' ? true : undefined}
+              title={topLevelMenu.name}
+              key={topLevelMenu.id}
+              className="site-sidebar__group"
+            >
               {topLevelMenu.menu!.sort(compare).map(menuItem => (
                 <SideNavigationItem
                   key={menuItem.id}
@@ -249,9 +249,9 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
                   {menuItem.name}
                 </SideNavigationItem>
               ))}
-            </SideNavigation>
-          </SideNavigationGroup>
-        ))}
+            </SideNavigationGroup>
+          ))}
+      </SideNavigation>
     </>
   );
 };
