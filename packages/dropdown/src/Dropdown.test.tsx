@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Dropdown } from '.';
 import { act } from 'react-dom/test-utils';
 
@@ -67,7 +67,7 @@ test('renders a searchable dropdown', async () => {
     fireEvent.change(inputField, { target: { value: 'er' } });
   });
 
-  await wait(() => getByText('Bergen'));
+  await waitFor(() => getByText('Bergen'));
 
   expect(getByText('Bergen')).toBeInTheDocument();
   expect(getByText('Stavanger')).toBeInTheDocument();
@@ -96,7 +96,7 @@ test('renders a searchable dropdown, with no filtering', async () => {
     fireEvent.change(inputField, { target: { value: 'er' } });
   });
 
-  await wait(() => getByText('Bergen'));
+  await waitFor(() => getByText('Bergen'));
 
   expect(getByText('Bergen')).toBeInTheDocument();
   expect(getByText('Stavanger')).toBeInTheDocument();
@@ -123,7 +123,7 @@ test('renders a searchable dropdown, with strict filter', async () => {
     fireEvent.change(inputField, { target: { value: 'Berg' } });
   });
 
-  await wait(() => getByText('Bergen'));
+  await waitFor(() => getByText('Bergen'));
 
   expect(getByText('Bergen')).toBeInTheDocument();
   expect(queryByText('Stavanger')).not.toBeInTheDocument();
@@ -196,7 +196,7 @@ test('handles items prop it is a synchronous function', async () => {
 
   fireEvent.click(triggerButton);
 
-  await wait(() => getAllByRole('option'));
+  await waitFor(() => getAllByRole('option'));
 
   expect(getAllByRole('option')).toHaveLength(testItems.length);
 });
@@ -211,7 +211,7 @@ test('handles items prop it is an asynchronous function', async () => {
 
   fireEvent.click(triggerButton);
 
-  await wait(() => getAllByRole('option'));
+  await waitFor(() => getAllByRole('option'));
 
   expect(getAllByRole('option')).toHaveLength(testItems.length);
 });
@@ -238,7 +238,7 @@ test('handles typeahead case', async () => {
     fireEvent.change(inputField, { target: { value: 'er' } });
   });
 
-  await wait(() => getByText('Bergen'));
+  await waitFor(() => getByText('Bergen'));
 
   expect(queryByText('2 sek')).not.toBeInTheDocument();
 
@@ -334,7 +334,7 @@ test('auto-highlights first item if the highlightFirstItemOnOpen prop is set in 
     fireEvent.change(inputField, { target: { value: 'er' } });
   });
 
-  await wait(() => getByText('Bergen'));
+  await waitFor(() => getByText('Bergen'));
 
   expect(queryByText('2 sek')).not.toBeInTheDocument();
 
