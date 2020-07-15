@@ -79,6 +79,10 @@
     &::after {
       display: none;
     }
+    .eds-contrast & {
+      background: $colors-greys-grey20;
+      color: $colors-blues-blue40;
+    }
   }
 
   &--readonly {
