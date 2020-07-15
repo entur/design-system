@@ -1,0 +1,83 @@
+import React from 'react';
+import { SideNavigationProps } from './SideNavigation';
+import { useControllableProp } from './useControllableProp';
+import { Contrast } from '@entur/layout';
+import classNames from 'classnames';
+import { LeftArrowIcon, MenuIcon } from '@entur/icons';
+
+type CollapsibleSideNavigationProps = SideNavigationProps & {
+  /**Tilstand til menyen
+   * @default false
+   */
+  collapsed?: boolean;
+  /** Kalles når menyen åpnes eller lukkes  */
+  onCollapseToggle?: (e: any) => void;
+  /** Posisjonen til Collapsible-knappen, målt fra toppen (som CSS-enhet)
+   *  @default 50%
+   */
+  collapsibleButtonPosition?: string;
+};
+
+export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps> = ({
+  className,
+  children,
+  size,
+  collapsed: collapsible,
+  onCollapseToggle,
+  collapsibleButtonPosition = '50%',
+  ...rest
+}) => {
+  const [collapsedMenu, setCollapsedMenu] = useControllableProp({
+    prop: collapsible,
+    defaultValue: false,
+    updater: onCollapseToggle,
+  });
+
+  return (
+    <SideNavigationContext.Provider
+      value={{
+        isCollapsed: collapsedMenu,
+        setIsCollapsed: (e: boolean) => setCollapsedMenu(e),
+      }}
+    >
+      <Contrast
+        as="ul"
+        className={classNames(
+          'eds-side-navigation',
+          { 'eds-side-navigation--small': size === 'small' },
+          { 'eds-side-navigation--collapsed': collapsedMenu },
+          className,
+        )}
+        {...rest}
+      >
+        {children}
+        <button
+          className="eds-side-navigation__collapse-button"
+          onClick={() => setCollapsedMenu(!collapsedMenu)}
+          style={{ top: `${collapsibleButtonPosition}` }}
+        >
+          {collapsedMenu ? <MenuIcon /> : <LeftArrowIcon />}
+        </button>
+      </Contrast>
+    </SideNavigationContext.Provider>
+  );
+};
+
+const SideNavigationContext = React.createContext<{
+  isCollapsed: boolean;
+  setIsCollapsed: (e: boolean) => void;
+}>({
+  isCollapsed: false,
+  setIsCollapsed: () => {},
+});
+
+export const useSideNavigationContext = () => {
+  const context = React.useContext(SideNavigationContext);
+  if (!context) {
+    throw new Error(
+      'You need to wrap your component in a SettingsProvider component in ' +
+        'order to use the useSettings hook',
+    );
+  }
+  return context;
+};
