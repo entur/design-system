@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 
 import { Tooltip } from '.';
 
-test('Tooltip renders with content and children, and is displayed on mouse-over', () => {
+test('Tooltip renders with content and children, and is displayed on mouse-over', async () => {
   const content = 'tooltipcontent';
   const children = 'Tooltip children';
 
@@ -18,11 +18,11 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   expect(queryByText(content)).not.toBeInTheDocument();
   fireEvent.mouseOver(tooltipdiv);
 
-  setTimeout(() => {
+  await waitFor(() => {
     expect(queryByText(content)).toBeInTheDocument();
 
     expect(getByText(content)).toHaveClass('tester');
     fireEvent.mouseLeave(getByText(children));
     expect(queryByText(content)).not.toBeInTheDocument();
-  }, 151); // Take hover delay into account
+  });
 });
