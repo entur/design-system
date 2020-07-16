@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.1.0...@entur/table@3.1.1) (2020-07-16)
+
+### Bug Fixes
+
+- improve styling hierarchy for tables ([2f50425](https://bitbucket.org/enturas/design-system/commits/2f50425e18ef5171fabcf16c8f6f54fd88284159))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.0.3...@entur/table@3.1.0) (2020-07-09)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.8.0...@entur/icons@1.9.0) (2020-07-16)
+
+### Features
+
+- color prop for icons works with transport icons ([1baa125](https://bitbucket.org/enturas/design-system/commits/1baa125039ef2f430fe5ea18cc9f3ea0e53031ab))
+
 # [1.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.7.0...@entur/icons@1.8.0) (2020-07-03)
 
 ### Bug Fixes

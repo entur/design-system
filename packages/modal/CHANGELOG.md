@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.23](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.22...@entur/modal@1.1.23) (2020-07-16)
+
+### Bug Fixes
+
+- update modal dependency ([bab3f74](https://bitbucket.org/enturas/design-system/commits/bab3f74d5b379a801eaa057bad2880006e1d32eb))
+
 ## [1.1.22](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.21...@entur/modal@1.1.22) (2020-07-13)
 
 **Note:** Version bump only for package @entur/modal

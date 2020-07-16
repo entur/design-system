@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.0...@entur/tooltip@2.2.1) (2020-07-16)
+
+### Bug Fixes
+
+- fix typo in tooltip prop ([abbfc0b](https://bitbucket.org/enturas/design-system/commits/abbfc0bcc6323e5baad2522e0b75b495c32bb121))
+- improve internal handling of refs ([cbc2c29](https://bitbucket.org/enturas/design-system/commits/cbc2c2957025618fcf692da4a894ff86765ed70e))
+
 # [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.1.5...@entur/tooltip@2.2.0) (2020-07-13)
 
 ### Bug Fixes

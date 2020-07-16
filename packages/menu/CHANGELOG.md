@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.6.2...@entur/menu@2.0.0) (2020-07-16)
+
+### Bug Fixes
+
+- add collapsible behaviour in navigationgroup ([02cfe8e](https://bitbucket.org/enturas/design-system/commits/02cfe8ebd6f30b7dfe2303e37d7c33d003c72f07))
+- optimize styling for collapsible side navigation ([f2a83f8](https://bitbucket.org/enturas/design-system/commits/f2a83f8e500aa92c0b7b796a3e0669e8ac932d62))
+
+### Features
+
+- add collapsibleSideNavigation component ([4c59dc1](https://bitbucket.org/enturas/design-system/commits/4c59dc187345a768c3f9037d1819e523fb9bd188))
+- add icon prop for sidenavigationitem ([a82f0c3](https://bitbucket.org/enturas/design-system/commits/a82f0c3333df8147ab454a513c8d8fd881982992))
+- sidenavigation is white by default ([b7a880d](https://bitbucket.org/enturas/design-system/commits/b7a880d8bd8ec126fe2f0ce8dfc9a5a90c483be2))
+
+### BREAKING CHANGES
+
+- is now non-contrast by default. wrap sidenavigation in Contrast to get "old" styling
+
 ## [1.6.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.6.1...@entur/menu@1.6.2) (2020-07-13)
 
 **Note:** Version bump only for package @entur/menu

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.1.2...@entur/form@3.1.3) (2020-07-16)
+
+### Bug Fixes
+
+- fix disabled forms styling when disabled ([6edbaab](https://bitbucket.org/enturas/design-system/commits/6edbaabb21767ae024a4c2a068187e3816b8ad0e))
+
 ## [3.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.1.1...@entur/form@3.1.2) (2020-07-13)
 
 **Note:** Version bump only for package @entur/form
