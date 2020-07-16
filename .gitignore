@@ -22,3 +22,7 @@ coverage
 # IDE
 .vscode
 .idea
+
+## Local test environment
+src/components/TestBench.tsx
+content/components/testin.mdx
