@@ -1,7 +1,6 @@
 import React from 'react';
 import { SideNavigationProps } from './SideNavigation';
 import { useControllableProp } from './useControllableProp';
-import { Contrast } from '@entur/layout';
 import classNames from 'classnames';
 import { LeftArrowIcon, MenuIcon } from '@entur/icons';
 
@@ -40,8 +39,7 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
         setIsCollapsed: (e: boolean) => setCollapsedMenu(e),
       }}
     >
-      <Contrast
-        as="ul"
+      <ul
         className={classNames(
           'eds-side-navigation',
           { 'eds-side-navigation--small': size === 'small' },
@@ -58,7 +56,7 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
         >
           {collapsedMenu ? <MenuIcon /> : <LeftArrowIcon />}
         </button>
-      </Contrast>
+      </ul>
     </SideNavigationContext.Provider>
   );
 };

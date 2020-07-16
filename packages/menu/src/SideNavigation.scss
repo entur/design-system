@@ -3,17 +3,24 @@
 
 .eds-side-navigation,
 .eds-side-navigation-group {
-  --primary-background-color: #{$colors-brand-blue};
-  --primary-text-color: #{$colors-brand-white};
+  --primary-background-color: #{$colors-greys-grey40};
+  --primary-text-color: #{$colors-brand-blue};
+  .eds-contrast & {
+    --primary-background-color: #{$colors-brand-blue};
+    --primary-text-color: #{colors-brand-white};
+  }
 }
 
 .eds-side-navigation svg {
-  color: $colors-brand-lavender;
   margin-right: $space-medium;
+  color: $colors-blues-blue40;
   display: inline-flex;
   align-self: center;
   position: relative;
   top: 0.075em;
+  .eds-contrast & {
+    color: $colors-brand-lavender;
+  }
 }
 
 .eds-side-navigation [disabled] svg {
@@ -38,21 +45,35 @@
     width: 1.5rem;
     border-radius: 50%;
     cursor: pointer;
-    background: $colors-blues-blue20;
+    background: $colors-brand-white;
+    box-shadow: $shadows-card-shadow;
+    border: $border-widths-small solid $colors-greys-grey10;
+    color: inherit;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     z-index: $z-indexes-sticky;
+    .eds-contrast & {
+      background: $colors-blues-blue20;
+      box-shadow: $shadows-card-shadow-contrast;
+      border-color: transparent;
+    }
     svg {
       margin: 0;
       top: 0;
-      color: $colors-brand-white;
+      color: $colors-brand-blue;
+      .eds-contrast & {
+        color: $colors-brand-white;
+      }
     }
     &:focus {
       outline: none;
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: $colors-misc-focus;
+      .eds-contrast & {
+        box-shadow: $shadows-focus-contrast;
+      }
     }
   }
 
@@ -66,7 +87,10 @@
 
   // Nested sub menus
   & & {
-    background-color: $colors-blues-blue10;
+    background-color: $colors-greys-grey30;
+    .eds-contrast &  {
+      background-color: $colors-blues-blue10;
+    }
   }
   &--collapsed {
     max-width: 80px;
@@ -76,11 +100,13 @@
 .eds-side-navigation {
   // Nested items
   & & .eds-side-navigation__click-target {
-    border-left-color: transparent;
     padding-left: $space-extra-large4;
-
+    box-shadow: none;
     &--active {
-      background-color: $colors-blues-blue50;
+      background-color: $colors-blues-blue70;
+      .eds-contrast & {
+        background-color: $colors-blues-blue30;
+      }
     }
   }
 }
@@ -89,14 +115,14 @@
   appearance: none;
   background: none;
   border: 0;
-  border-top: $border-widths-small solid $colors-blues-blue10;
+  border-top: $border-widths-medium solid $colors-greys-grey20;
   border-radius: 0;
-  color: inherit;
+  color: var(--primary-text-color);
   cursor: pointer;
   display: block;
   font-family: inherit;
   font-size: inherit;
-  font-weight: $font-weights-body;
+  font-weight: $font-weights-heading;
   line-height: inherit;
   padding: var(--padding-vertical) $space-extra-large2;
   padding-left: $space-extra-large2;
@@ -104,11 +130,18 @@
   text-align: left;
   text-decoration: none;
   width: 100%;
+
+  .eds-contrast & {
+    border-color: $colors-blues-blue10;
+  }
   .eds-side-navigation--collapsed & {
     padding-left: $space-extra-large;
   }
   &--active {
-    box-shadow: inset $border-widths-large 0 0 $colors-brand-coral;
+    box-shadow: inset $border-widths-large 0 0 $colors-brand-blue;
+    .eds-contrast & {
+      box-shadow: inset $border-widths-large 0 0 $colors-brand-coral;
+    }
   }
 
   &[disabled] {
@@ -118,13 +151,19 @@
 
   &:not([disabled]) {
     &:hover {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-blues-blue70;
+      .eds-contrast & {
+        background-color: $colors-blues-blue20;
+      }
     }
 
     &:active,
     &:focus {
-      background-color: $colors-blues-blue30;
       outline: none;
+      background: $colors-blues-blue80;
+      .eds-contrast &  {
+        background-color: $colors-blues-blue30;
+      }
     }
   }
 }
@@ -148,7 +187,7 @@
   background: none;
   border: none;
   border-radius: 0;
-  color: $colors-brand-lavender;
+  color: $colors-blues-blue40;
   cursor: pointer;
   display: flex;
   font-size: $font-sizes-medium;
@@ -161,6 +200,9 @@
   margin: 0;
   text-transform: uppercase;
   width: 100%;
+  .eds-contrast & {
+    color: $colors-brand-lavender;
+  }
   .eds-side-navigation-group__icon {
     margin-right: $space-large;
   }
