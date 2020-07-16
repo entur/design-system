@@ -32,9 +32,11 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <PageHeader />
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigation>
-    <SideNavigationItem href="#menyer">Toppen</SideNavigationItem>
+    <SideNavigationItem href="#menyer" active>
+      Toppen
+    </SideNavigationItem>
     <SideNavigationItem
       as="button"
       type="button"
@@ -78,11 +80,16 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 `<SideNavigationGroup />` brukes til å gruppere deler av menyen sammen.
 
+### CollapsibleSideNavigation
+
+<ImportStatement imports="CollapsibleSideNavigation" />
+<Props of={CollapsibleSideNavigation} />
+
 ## Variasjoner
 
 ### Meny med ikoner
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigation>
     <SideNavigationItem active={true} href="#">
       <UserIcon /> Min konto
@@ -98,7 +105,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 ### Compact side navigation
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigation size="small">
     <SideNavigationItem href="#menyer" active={true}>
       Toppen
@@ -123,7 +130,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 ### Compact side navigation med ikoner
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigation size="small">
     <SideNavigationItem active={true} href="#">
       <UserIcon /> Min konto
@@ -139,7 +146,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 ### Gruppert meny
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigationGroup title="En gruppe">
     <SideNavigation>
       <SideNavigationItem href="#menyer" active={true}>
@@ -188,7 +195,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 ### Gruppert kompakt meny
 
-<Playground hideContrastOption={true}>
+<Playground>
   <SideNavigationGroup title="En gruppe" defaultOpen={true}>
     <SideNavigation size="small">
       <SideNavigationItem href="#menyer" active={true}>
@@ -238,7 +245,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 ### Collapsible side nagivation
 
 <Playground>
-  <CollapsibleSideNavigation collapsible>
+  <CollapsibleSideNavigation>
     <SideNavigationItem icon={<AddIcon />} href="#bruker">
       Opprett bruker
     </SideNavigationItem>
