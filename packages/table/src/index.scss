@@ -97,14 +97,8 @@
     }
   }
 
-  &__head {
-    border-bottom: $border-widths-default solid $colors-greys-grey20;
-    .eds-contrast &  {
-      border-color: $colors-blues-blue20;
-    }
-  }
   &__body {
-    .eds-table__row {
+    > .eds-table__row {
       border-bottom: $border-widths-default solid $colors-greys-grey20;
       .eds-contrast &  {
         border-color: $colors-blues-blue20;
@@ -125,6 +119,12 @@
           background: $colors-blues-blue20;
         }
       }
+    }
+  }
+  &__head {
+    border-bottom: $border-widths-default solid $colors-greys-grey20;
+    .eds-contrast &  {
+      border-color: $colors-blues-blue20;
     }
   }
 }
