@@ -5,15 +5,20 @@ import classNames from 'classnames';
 import { Contrast } from '@entur/layout';
 import './Popover.scss';
 
+type PopoverContentCallbackProps = {
+  ref: React.Ref<HTMLDivElement>;
+};
+
 type PopoverContextProps = {
   showPopover: boolean;
-  triggerElement: React.RefObject<HTMLButtonElement>;
+  triggerElement?: React.RefObject<HTMLButtonElement>;
   contentElement: React.RefObject<HTMLDivElement>;
   styles: { [key: string]: React.CSSProperties };
   attributes: { [key: string]: { [key: string]: string } };
-  buttonProps: {};
-  contentProps: {};
   closeButtonProps: {};
+  popoverContentProps: (e: PopoverContentCallbackProps) => {};
+  triggerProps: () => {};
+  [key: string]: any;
 };
 
 const PopoverContext = createContext<PopoverContextProps | undefined>(
@@ -44,7 +49,13 @@ export const Popover: React.FC<PopoverProps> = ({
   const triggerElement = React.useRef(null);
   const contentElement = React.useRef(null);
 
-  const { styles, attributes } = usePopper(
+  React.useEffect(() => {
+    if (forceUpdate) {
+      forceUpdate();
+    }
+  }, [showPopover]);
+
+  const { styles, attributes, forceUpdate } = usePopper(
     triggerElement.current,
     contentElement.current,
     {
@@ -61,13 +72,17 @@ export const Popover: React.FC<PopoverProps> = ({
     },
   );
 
-  const buttonProps = {
-    onClick: () => {
-      setShowPopover(prev => !prev);
-    },
-    'aria-haspopup': 'dialog',
-    'aria-expanded': showPopover,
-  };
+  const triggerProps = React.useCallback(() => {
+    const buttonProps = {
+      onClick: () => {
+        setShowPopover(prev => !prev);
+      },
+      'aria-haspopup': 'dialog',
+      'aria-expanded': showPopover,
+      ref: triggerElement,
+    };
+    return buttonProps;
+  }, [triggerElement]);
 
   useOnClickOutside(contentElement, triggerElement, () =>
     setShowPopover(false),
@@ -77,26 +92,28 @@ export const Popover: React.FC<PopoverProps> = ({
       setShowPopover(false);
     },
   };
-
-  const contentProps = {
-    role: 'dialog',
-    'aria-modal': 'false',
-    ref: contentElement,
-    onKeyDown: (event: React.KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        showPopover && setShowPopover(false);
-      }
-    },
-  };
+  const popoverContentProps = React.useCallback(() => {
+    const contentProps = {
+      role: 'dialog',
+      'aria-modal': 'false',
+      ref: contentElement,
+      onKeyDown: (event: React.KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          showPopover && setShowPopover(false);
+        }
+      },
+    };
+    return contentProps;
+  }, [contentElement]);
   const contextValue = {
     showPopover,
     triggerElement,
     contentElement,
     styles,
     attributes,
-    buttonProps,
-    contentProps,
+    popoverContentProps,
     closeButtonProps,
+    triggerProps,
   };
   return (
     <PopoverContext.Provider value={contextValue}>
@@ -111,8 +128,9 @@ export type PopoverTriggerProps = {
 };
 
 export const PopoverTrigger: React.FC<PopoverTriggerProps> = ({ children }) => {
-  const { buttonProps, triggerElement } = usePopoverContext();
-  return cloneElement(children, { ref: triggerElement, ...buttonProps });
+  const { triggerProps } = usePopoverContext();
+  const child = React.Children.only(children) as React.ReactElement<any>;
+  return cloneElement(child, triggerProps());
 };
 
 export type PopoverCloseButtonProps = {
@@ -137,7 +155,13 @@ export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
 >(({ children }, ref: React.Ref<HTMLDivElement>) => {
-  const { showPopover, attributes, styles, contentProps } = usePopoverContext();
+  const {
+    showPopover,
+    attributes,
+    styles,
+    popoverContentProps,
+  } = usePopoverContext();
+  const props = popoverContentProps({ ref });
   return (
     <Contrast
       className={classNames(
@@ -147,11 +171,10 @@ export const PopoverContent = React.forwardRef<
         },
         'eds-contrast',
       )}
-      ref={ref}
       style={styles.popper}
       aria-hidden={!showPopover}
       {...attributes.styles}
-      {...contentProps}
+      {...props}
     >
       {children}
     </Contrast>
