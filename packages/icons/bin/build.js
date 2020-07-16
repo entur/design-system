@@ -61,8 +61,10 @@ function createSvgrConfig(native = false, componentName) {
       .toLowerCase();
     let className =
       '{"eds-icon " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}';
+    let color = `{(props.color || "currentColor")}`;
     if (componentName && colors.transport.contrast[lowerCaseName]) {
-      className = `{"eds-icon eds-icon__${lowerCaseName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
+      className = `{(!props.color ? "eds-icon eds-icon__${lowerCaseName} " : "eds-icon") + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
+      color = `{(props.color || "${colors.transport.default[lowerCaseName]}")}`;
     }
 
     config.svgProps = {
@@ -70,6 +72,7 @@ function createSvgrConfig(native = false, componentName) {
       height: '{(props.height || props.size || "1em")}',
       className: className,
       inline: '{undefined}',
+      color: color,
     };
   }
   return config;

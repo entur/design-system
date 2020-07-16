@@ -9,6 +9,11 @@ p .eds-icon {
   top: 0.2em;
 }
 
+.eds-icon g,
+.eds-icon path {
+  fill: currentColor;
+}
+
 .eds-contrast {
   .eds-icon__bicycle g,
   .eds-icon__bicycle path {
