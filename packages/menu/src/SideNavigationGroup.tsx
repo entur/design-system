@@ -46,13 +46,13 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
     if (isOpen) {
       setIsCollapsed(false);
     }
-  }, [isOpen]);
+  }, [isOpen, setIsCollapsed]);
 
   React.useEffect(() => {
     if (isCollapsed) {
       setOpen(false);
     }
-  }, [isCollapsed]);
+  }, [isCollapsed, setOpen]);
 
   return (
     <div

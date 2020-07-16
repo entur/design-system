@@ -49,12 +49,6 @@ export const Popover: React.FC<PopoverProps> = ({
   const triggerElement = React.useRef(null);
   const contentElement = React.useRef(null);
 
-  React.useEffect(() => {
-    if (forceUpdate) {
-      forceUpdate();
-    }
-  }, [showPopover]);
-
   const { styles, attributes, forceUpdate } = usePopper(
     triggerElement.current,
     contentElement.current,
@@ -72,6 +66,12 @@ export const Popover: React.FC<PopoverProps> = ({
     },
   );
 
+  React.useEffect(() => {
+    if (forceUpdate) {
+      forceUpdate();
+    }
+  }, [showPopover, forceUpdate]);
+
   const triggerProps = React.useCallback(() => {
     const buttonProps = {
       onClick: () => {
@@ -82,7 +82,7 @@ export const Popover: React.FC<PopoverProps> = ({
       ref: triggerElement,
     };
     return buttonProps;
-  }, [triggerElement]);
+  }, [triggerElement, showPopover]);
 
   useOnClickOutside(contentElement, triggerElement, () =>
     setShowPopover(false),
@@ -104,7 +104,7 @@ export const Popover: React.FC<PopoverProps> = ({
       },
     };
     return contentProps;
-  }, [contentElement]);
+  }, [contentElement, showPopover]);
   const contextValue = {
     showPopover,
     triggerElement,
