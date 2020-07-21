@@ -21,6 +21,7 @@ export const PaginationInput: React.FC<PaginationInputProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     let pageNumber = Number(input);
     if (pageNumber === currentPage) {
       return;
