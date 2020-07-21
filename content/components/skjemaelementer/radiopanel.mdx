@@ -1,0 +1,61 @@
+---
+name: Radio panel
+description: Radio panel fungerer som radio button, men med en større trykkflate, og muligheter for å vise ekstra informasjon.
+route: /komponenter/skjemaelementer/radio-panel
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: panel
+---
+
+import { Props } from 'docz';
+import { RadioPanel, RadioGroup } from '@entur/form';
+import { Playground } from '~/components/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+import { VyIcon } from '@entur/icons';
+import { Label } from '@entur/typography';
+
+<PageHeader />
+
+<Playground style={{ margin: '5% 30%' }}>
+  {() => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <div style={{width:"20rem"}}>       
+        <RadioGroup
+          name="ticket-type"
+          onChange={e => setValue(e.target.value)}
+          value={value}
+        >
+          <RadioPanel title="249,-" value="non-flexi" size="large">
+            <div>Ikke fleksibel</div>
+          </RadioPanel>
+          <RadioPanel
+            title="349,-"
+            value="flexi"
+            secondaryLabel={<VyIcon size="2rem" />}
+            size="large"
+          >
+            <div>Fleksibel billett</div>
+            {value === 'flexi' && (
+              <div>
+                <Label>
+                Billetten kan refunderes ved et senere tidspunkt
+                </Label>
+              </div>
+            )}
+          </RadioPanel>
+        </RadioGroup>
+      </div>
+    );
+}}
+
+</Playground>
+
+## Komponenter
+
+### RadioPanel
+
+<ImportStatement imports="RadioPanel" />
+<Props of={RadioPanel} />
