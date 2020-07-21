@@ -11,6 +11,9 @@
   margin-right: -$space-small;
   padding: $space-extra-small;
 
+  display: flex;
+  justify-content: center;
+
   &--open svg {
     transform: rotate(180deg);
   }
