@@ -729,13 +729,15 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
   {() => {
     const [currentPage, setPage] = React.useState(1);
     const [results, setResults] = React.useState(10);
+    const numberOfResults = testdata.length;
     return (
       <>
         <Pagination
-          pageCount={(10 * 10) / results}
+          pageCount={Math.ceil(numberOfResults / results)}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
           resultsPerPage={results}
+          results={numberOfResults}
           onResultsPerPageChange={e => setResults(e)}
         />
         <Table fixed style={{ margin: '1.5rem 0' }}>
@@ -750,8 +752,8 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
           <TableBody>
             {testdata.map(
               (item, index) =>
-                index < currentPage * results &&
-                index > (currentPage - 1) * results + 1 && (
+                index + 1 <= currentPage * results &&
+                index + 1 >= (currentPage - 1) * results && (
                   <TableRow key={index}>
                     <DataCell>{item.name}</DataCell>
                     <DataCell>{item.date}</DataCell>
@@ -763,9 +765,10 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
           </TableBody>
         </Table>
         <Pagination
-          pageCount={(10 * 10) / results}
+          pageCount={Math.ceil(testdata.length / results)}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
+          results={testdata.length}
           resultsPerPage={results}
           onResultsPerPageChange={e => setResults(e)}
         />
