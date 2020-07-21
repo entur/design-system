@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { RightArrowIcon } from '@entur/icons';
+import './BreadcrumbNavigation.scss';
 
 export type BreadcrumbItemProps = {
   /** Komponenten som rendres */
@@ -33,7 +34,7 @@ export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
       </li>
       {!isCurrent && (
         <RightArrowIcon
-          className="eds-breadcrumbs__separator"
+          className="eds-breadcrumb__separator"
           inline
           role="presentation"
         />
