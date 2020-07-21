@@ -45,11 +45,15 @@ export type PaginationProps = {
    */
   inputLabel?: string;
 
+  /** Hvor mange resultater man har totalt */
+  nubmerOfResults?: number;
+  /** Hvor mange resultater som vises per side */
   resultsPerPage?: number;
   /**
    * @default [10,25,50]
    */
   resultsPerPageOptions?: number[];
+  /** Callback for når resultater per side oppdateres */
   onResultsPerPageChange?: (e: number) => void;
   [key: string]: any;
 };
@@ -64,6 +68,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   previousPageLabel = 'Gå til forrige side',
   showInput,
 
+  numberOfResults,
   resultsPerPage,
   resultsPerPageOptions = [10, 25, 50],
   onResultsPerPageChange,
@@ -109,7 +114,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className={classNames('eds-pagination', className)} {...rest}>
-      {resultsPerPage && (
+      {resultsPerPage && numberOfResults && (
         <div className="eds-pagination__results">
           {onResultsPerPageChange && (
             <Menu>
@@ -148,7 +153,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           )}
           <Label>
             Viser resultat {(currentPage - 1) * resultsPerPage + 1} -{' '}
-            {currentPage * resultsPerPage} av {pageCount * resultsPerPage}
+            {currentPage * resultsPerPage} av {numberOfResults}
           </Label>
         </div>
       )}
