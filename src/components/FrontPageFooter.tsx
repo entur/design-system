@@ -42,7 +42,7 @@ function FrontPageFooter() {
             </DoczLinkWrapper>
           </Heading4>
           <Heading4 margin="none">
-            <DoczLinkWrapper to="/kom-i-gang/bidra">
+            <DoczLinkWrapper to="/kom-i-gang/for-utviklere/bidra">
               Hvordan bidra?
             </DoczLinkWrapper>
           </Heading4>
