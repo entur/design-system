@@ -10,6 +10,7 @@ export * from './Fieldset';
 export * from './InputGroup';
 export * from './Radio';
 export * from './RadioGroup';
+export * from './RadioPanel';
 export * from './Switch';
 export * from './TravelSwitch';
 export * from './TextArea';
