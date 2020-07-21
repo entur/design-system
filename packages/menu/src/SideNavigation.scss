@@ -11,7 +11,7 @@
   }
 }
 
-.eds-side-navigation svg {
+.eds-side-navigation__click-target svg {
   margin-right: $space-medium;
   color: $colors-blues-blue40;
   display: inline-flex;
@@ -23,7 +23,7 @@
   }
 }
 
-.eds-side-navigation [disabled] svg {
+.eds-side-navigation__click-target[disabled] svg {
   color: $colors-blues-blue40;
 }
 
