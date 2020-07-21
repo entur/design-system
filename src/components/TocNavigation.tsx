@@ -3,20 +3,23 @@ import classNames from 'classnames';
 import { debounce } from '@entur/utils';
 import { useCurrentDoc, Entry } from 'docz';
 import './TocNavigation.scss';
-import { Heading3 } from '@entur/typography';
+import { Heading4 } from '@entur/typography';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const findActiveHeading = debounce(() => {
-      for (let nextElement of headingElements) {
-        if (!nextElement) {
+      for (let i in headingElements) {
+        if (!headingElements[i]) {
           continue;
         }
-        const nextTop = nextElement.getBoundingClientRect().top;
-        if (nextTop >= 0) {
-          setActiveHeading(nextElement.id);
+        const thisTop = headingElements[i].getBoundingClientRect().top;
+        const nextTop = headingElements[Number(i) + 1]?.getBoundingClientRect()
+          .top;
+
+        if (thisTop + nextTop >= 0 || thisTop >= 0) {
+          setActiveHeading(headingElements[i].id);
           break;
         }
       }
@@ -52,7 +55,7 @@ export const TocNavigation: React.FC = () => {
   }
   return (
     <nav className="table-of-content-container">
-      <Heading3 style={{ margin: 0 }}>Innhold</Heading3>
+      <Heading4 style={{ margin: 0 }}>Innhold</Heading4>
       <ul className="table-of-content">
         {headings.map(heading => (
           <li
