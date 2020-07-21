@@ -3,11 +3,18 @@
 .eds-multi-select {
   &__selected-items {
     display: flex;
-    height: 2.75rem;
+    // height: 2.75rem;
     align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    flex: 1 1 0%;
+    padding: $space-extra-small2;
     &-tag.eds-tag-chip {
       margin-left: $space-extra-small2;
       white-space: nowrap;
+      &:focus {
+        outline: none;
+      }
       .eds-contrast & {
         background: $colors-brand-white;
         color: $colors-brand-blue;
@@ -16,5 +23,16 @@
         }
       }
     }
+  }
+  &__input {
+    flex: 1 1;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  &__placeholder {
+    padding-left: $space-large;
+    line-height: $line-heights-large;
+    font-size: $font-sizes-large;
   }
 }

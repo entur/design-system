@@ -57,6 +57,8 @@ const MultiSelectContext = React.createContext<{
   isOpen: boolean;
   reset: () => void;
   getToggleButtonProps: any;
+  openMenu: () => void;
+  openOnFocus?: boolean;
 } | null>(null);
 const useMultiSelectContext = () => {
   const context = React.useContext(MultiSelectContext);
@@ -142,7 +144,7 @@ export const MultiSelect: React.FC<
 
   return (
     <MultiSelectContext.Provider
-      value={{ isOpen, reset, getToggleButtonProps }}
+      value={{ isOpen, reset, getToggleButtonProps, openMenu, openOnFocus }}
     >
       <div className={classNames('eds-dropdown-wrapper', className)}>
         {label && <Label {...getLabelProps()}>{label}</Label>}
@@ -159,39 +161,39 @@ export const MultiSelect: React.FC<
             />
           }
         >
-          <div className="eds-multi-select__selected-items">
-            {selectedItems.map((selectedItem, index) => (
-              <TagChip
-                className="eds-multi-select__selected-items-tag"
-                key={`selected-item-${index}`}
-                onClose={(e: React.MouseEvent) => {
-                  e.stopPropagation();
-                  removeSelectedItem(selectedItem);
-                }}
-                {...getSelectedItemProps({ selectedItem, index })}
-              >
-                {selectedItem.label}
-              </TagChip>
-            ))}
-          </div>
-          <button
+          <div
+            className="eds-multi-select__input"
             {...getToggleButtonProps(
               getDropdownProps({
-                preventKeyAction: isOpen,
-                style: { textAlign: 'left' },
                 disabled,
                 type: 'button',
-                className: 'eds-form-control eds-dropdown___selectedItem',
-                onFocus: () => {
-                  if (openOnFocus) {
-                    openMenu();
-                  }
-                },
+                role: 'button',
               }),
             )}
           >
-            {areItemsSelected ? '' : placeholder}
-          </button>
+            {areItemsSelected && (
+              <div className="eds-multi-select__selected-items">
+                {selectedItems.map((selectedItem, index) => (
+                  <TagChip
+                    className="eds-multi-select__selected-items-tag"
+                    key={`selected-item-${selectedItem.label}${selectedItem.value}`}
+                    onClose={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      removeSelectedItem(selectedItem);
+                    }}
+                    {...getSelectedItemProps({ selectedItem, index })}
+                  >
+                    {selectedItem.label}
+                  </TagChip>
+                ))}
+              </div>
+            )}
+            {!areItemsSelected && (
+              <span className="eds-multi-select__placeholder">
+                {placeholder}
+              </span>
+            )}
+          </div>
         </BaseFormControl>
 
         <ul
@@ -282,15 +284,24 @@ const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
 };
 
 const DropdownToggleButton = () => {
-  const { getToggleButtonProps, isOpen } = useMultiSelectContext();
+  const {
+    getToggleButtonProps,
+    isOpen,
+    openMenu,
+    openOnFocus,
+  } = useMultiSelectContext();
   return (
     <button
       {...getToggleButtonProps({
         className: classNames('eds-dropdown__toggle-button', {
           'eds-dropdown__toggle-button--open': isOpen,
         }),
+        onFocus: () => {
+          if (openOnFocus) {
+            openMenu();
+          }
+        },
       })}
-      tabIndex="-1"
     >
       <DownArrowIcon />
     </button>
