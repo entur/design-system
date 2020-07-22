@@ -55,6 +55,30 @@ function createSvgrConfig(native = false, componentName) {
       [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
     };
   } else {
+    // Should always be white
+    const partnerIcons = [
+      'BrakarIcon',
+      'FarteIcon',
+      'GOAIcon',
+      'InnlandstrafikkIcon',
+      'KolumbusIcon',
+      'OstfoldIcon',
+      'RuterIcon',
+      'SJIcon',
+      'VKTIcon',
+      'VyIcon',
+    ];
+    // Icons with "special colors", so no color exchange for those
+    const outliers = [
+      'NorwayIcon',
+      'UKIcon',
+      'SwedenIcon',
+      'DenmarkIcon',
+      'LogoNegativeIcon',
+      'LogoPositiveIcon',
+      ...partnerIcons,
+    ];
+
     /** Get icon-name, and if it has a transport color, add it as class to component */
     const lowerCaseName = componentName
       .substring(0, componentName.length - 4)
@@ -62,6 +86,10 @@ function createSvgrConfig(native = false, componentName) {
     let className =
       '{"eds-icon " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}';
     let color = `{(props.color || "currentColor")}`;
+
+    if (outliers.includes(componentName)) {
+      className = `{"eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
+    }
     if (componentName && colors.transport.contrast[lowerCaseName]) {
       className = `{(!props.color ? "eds-icon eds-icon__${lowerCaseName} " : "eds-icon") + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
       color = `{(props.color || "${colors.transport.default[lowerCaseName]}")}`;
