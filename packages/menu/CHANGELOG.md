@@ -18,7 +18,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-- **pagination:** resultsPerPage is now required if you are using resultsPerPage functionality of Pagination
+- **pagination:** numberOfResults is now required if you are using resultsPerPage functionality of Pagination
 
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.6.2...@entur/menu@2.0.0) (2020-07-16)
 
