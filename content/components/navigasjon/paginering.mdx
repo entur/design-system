@@ -36,7 +36,7 @@ import testdata from '../layout-og-flater/testdata';
     return (
       <Pagination
         pageCount={Math.round(numberOfResults / results)}
-        results={numberOfResults}
+        numberOfResults={numberOfResults}
         currentPage={currentPage}
         onPageChange={page => setPage(page)}
         resultsPerPage={results}
@@ -92,14 +92,15 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
     const [currentPage, setPage] = React.useState(1);
     const [results, setResults] = React.useState(10);
     const numberOfResults = testdata.length;
+    const pageCount = Math.ceil(numberOfResults / results);
     return (
       <>
         <Pagination
-          pageCount={Math.ceil(numberOfResults / results)}
+          pageCount={pageCount}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
           resultsPerPage={results}
-          results={numberOfResults}
+          numberOfResults={numberOfResults}
           onResultsPerPageChange={e => setResults(e)}
         />
         <Table fixed style={{ margin: '1.5rem 0' }}>
@@ -112,25 +113,27 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
             </TableRow>
           </TableHead>
           <TableBody>
-            {testdata.map(
-              (item, index) =>
-                index + 1 <= currentPage * results &&
-                index + 1 >= (currentPage - 1) * results && (
-                  <TableRow key={index}>
-                    <DataCell>{item.name}</DataCell>
-                    <DataCell>{item.date}</DataCell>
-                    <DataCell>{item.category}</DataCell>
-                    <DataCell>{item.receiver}</DataCell>
-                  </TableRow>
-                ),
-            )}
+            {testdata
+              .filter(
+                (item, index) =>
+                  index + 1 >= (currentPage - 1) * results + 1 &&
+                  index + 1 <= currentPage * results,
+              )
+              .map((item, index) => (
+                <TableRow key={index}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.date}</DataCell>
+                  <DataCell>{item.category}</DataCell>
+                  <DataCell>{item.receiver}</DataCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         <Pagination
-          pageCount={Math.ceil(testdata.length / results)}
+          pageCount={Math.ceil(numberOfResults / results)}
           currentPage={currentPage}
           onPageChange={page => setPage(page)}
-          results={testdata.length}
+          numberOfResults={numberOfResults}
           resultsPerPage={results}
           onResultsPerPageChange={e => setResults(e)}
         />

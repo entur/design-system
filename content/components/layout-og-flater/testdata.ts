@@ -1,7 +1,7 @@
 export default [
   {
     name: 'Statusrapport Entur',
-    date: '01.01.2000',
+    date: '01.01.2020',
     category: 'Transaksjonsstatistikk',
     receiver: 'Entur Alle',
   },
@@ -595,13 +595,13 @@ export default [
   },
   {
     name: 'Statusrapport Entur',
-    date: '15.04.2020',
+    date: '10.01.2020',
     category: 'Transaksjonsstatistikk',
     receiver: 'Entur Alle',
   },
   {
     name: 'Statusrapport Vy',
-    date: '25.05.2020',
+    date: '10.01.2020',
     category: 'Transaksjonsstatistikk',
     receiver: 'Vy alle',
   },
