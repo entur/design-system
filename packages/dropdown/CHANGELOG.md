@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.3...@entur/dropdown@1.3.4) (2020-07-22)
+
+### Bug Fixes
+
+- **dropdown:** center dropdown toggle icon ([9865382](https://bitbucket.org/enturas/design-system/commits/9865382689bbcd3b4f79b8d8ac651097607b346e))
+- **multiselect:** rework internal logic, and wrapping of multiple items ([fccfc96](https://bitbucket.org/enturas/design-system/commits/fccfc96f86dfc007f0d69527eac2186b27cceeae))
+
 ## [1.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.2...@entur/dropdown@1.3.3) (2020-07-16)
 
 **Note:** Version bump only for package @entur/dropdown

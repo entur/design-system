@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.9.0...@entur/icons@1.9.1) (2020-07-22)
+
+### Bug Fixes
+
+- avoid color change on icons with special colors ([f227105](https://bitbucket.org/enturas/design-system/commits/f2271051e74c137cc536b27ad0d9fcc67caa5d64))
+- center norway flag icon position ([fff28b3](https://bitbucket.org/enturas/design-system/commits/fff28b317eed0e2628b0d798e3c158f663f0cffb))
+- use differential and not white fill ([9ae8221](https://bitbucket.org/enturas/design-system/commits/9ae8221888ecdfa35b5ee32f452df60c726df9d9))
+
 # [1.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.8.0...@entur/icons@1.9.0) (2020-07-16)
 
 ### Features

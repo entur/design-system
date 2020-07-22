@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@2.0.0...@entur/menu@3.0.0) (2020-07-22)
+
+### Bug Fixes
+
+- **breadcrumb:** fix padding between breadcrumb items ([357625a](https://bitbucket.org/enturas/design-system/commits/357625a4f2a321df247e240590f3bd5a2be4ef45))
+- **pagination:** fix event bubbling on submit in pagination input ([2823526](https://bitbucket.org/enturas/design-system/commits/2823526ef5e2899f664bc6e92b64a336d223f2c6))
+- **pagination:** fix last page result count ([d49974d](https://bitbucket.org/enturas/design-system/commits/d49974de499008235a89a1cfb1a6f4942e8230a5))
+- **sidenavigation:** fix unwanted margin on svgs in sidenavigation ([1c2ccdd](https://bitbucket.org/enturas/design-system/commits/1c2ccdde654e2865a56874c08edf1eedba8079ae))
+
+### Features
+
+- **pagination:** add numberOfResults prop ([e723b09](https://bitbucket.org/enturas/design-system/commits/e723b0927ea5459a28bfba9fcc3ee40dedb7875d))
+
+### BREAKING CHANGES
+
+- **pagination:** resultsPerPage is now required if you are using resultsPerPage functionality of Pagination
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@1.6.2...@entur/menu@2.0.0) (2020-07-16)
 
 ### Bug Fixes

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.1.3...@entur/form@3.2.0) (2020-07-22)
+
+### Bug Fixes
+
+- **formcontrol:** set min height to a proper value ([2a58ef6](https://bitbucket.org/enturas/design-system/commits/2a58ef6f11ff919669cbc50b8c6c5e08ed44f403))
+
+### Features
+
+- **radiopanel:** add new component, radiopanel ([6519377](https://bitbucket.org/enturas/design-system/commits/65193779a5fdf0304951d0285f084654a617a783))
+
 ## [3.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.1.2...@entur/form@3.1.3) (2020-07-16)
 
 ### Bug Fixes
