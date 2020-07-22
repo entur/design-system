@@ -153,7 +153,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           )}
           <Label>
             Viser resultat {(currentPage - 1) * resultsPerPage + 1} -{' '}
-            {currentPage * resultsPerPage} av {numberOfResults}
+            {currentPage * resultsPerPage > numberOfResults
+              ? numberOfResults
+              : currentPage * resultsPerPage}{' '}
+            av {numberOfResults}
           </Label>
         </div>
       )}
