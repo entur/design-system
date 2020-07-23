@@ -4,11 +4,12 @@
 .site-sidebar-wrapper {
   width: 100%;
   transition: max-width $timings-fast ease-out;
+  background: $colors-greys-grey30;
   @include for-desktop {
     max-width: 18rem;
     height: 100vh;
     left: 0;
-    top: 0;
+    top: 7rem;
     padding-bottom: 10rem;
     overflow-y: scroll;
     position: fixed;

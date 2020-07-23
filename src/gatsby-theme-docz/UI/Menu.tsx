@@ -5,12 +5,16 @@ import { TopNavigationItem } from '@entur/menu';
 import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
 import SettingsPanel from '~/components/SettingsPanel';
+import logo from '~/components/logoDark.svg';
 import './Menu.scss';
 
 const Menu: React.FC<{ className: string }> = ({ className }) => {
   return (
     <div className={className}>
       <nav className="top-navigation" aria-label="Navigasjon, hovedseksjoner">
+        <Link to="/">
+          <img src={logo} height="32px" width="102px" alt="Entur logo" />
+        </Link>
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
         <NavItem to="/visuell-identitet">Visuell identitet</NavItem>
         <NavItem to="/komponenter">Komponenter</NavItem>

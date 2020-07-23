@@ -1,8 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
-.front-page {
-  &-footer {
-    background: $colors-greys-grey40;
-  }
+.content-margin {
+  max-width: 1328px;
+  margin: 0 auto;
 }

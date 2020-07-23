@@ -3,19 +3,16 @@
 
 .top-navigation {
   display: flex;
-  background-color: $colors-greys-grey40;
   overflow-x: scroll;
+  border-bottom: $border-widths-small solid $colors-greys-grey20;
   width: 100%;
   padding: 1rem 1rem 0rem;
   transition: margin-left $timings-fast ease-out;
+  height: 7rem;
 
   @include for-desktop {
     overflow-x: initial;
-    padding: $space-large 0 $space-large 11rem;
-    margin-left: 9rem;
+    padding: $space-large 0 $space-large 1rem;
     justify-content: flex-start;
-  }
-  @include for-large-desktop {
-    margin-left: 18rem;
   }
 }
