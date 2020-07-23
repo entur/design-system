@@ -24,40 +24,45 @@ export type BadgeProps = {
   [key: string]: any;
 };
 
-export const Badge: React.FC<BadgeProps> = ({
-  as: Element = 'span',
-  children,
-  className,
-  max = 99,
-  variant,
-  showZero = false,
-  invisible: invisibleProp = false,
-  ...rest
-}) => {
-  let invisible = invisibleProp;
-  if (
-    invisibleProp === false &&
-    ((children === 0 && !showZero) || children == null)
-  ) {
-    invisible = true;
-  }
+export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    {
+      as: Element = 'span',
+      children,
+      className,
+      max = 99,
+      variant,
+      showZero = false,
+      invisible: invisibleProp = false,
+      ...rest
+    },
+    ref: React.Ref<HTMLSpanElement>,
+  ) => {
+    let invisible = invisibleProp;
+    if (
+      invisibleProp === false &&
+      ((children === 0 && !showZero) || children == null)
+    ) {
+      invisible = true;
+    }
 
-  let displayValue;
-  if (typeof children === 'number') {
-    displayValue = children > max ? `${max}+` : children;
-  } else {
-    displayValue = children;
-  }
+    let displayValue;
+    if (typeof children === 'number') {
+      displayValue = children > max ? `${max}+` : children;
+    } else {
+      displayValue = children;
+    }
 
-  const classList = classNames(
-    'eds-badge',
-    { 'eds-badge--invisible': invisible, 'eds-badge--show-zero': showZero },
-    `eds-badge--variant-${variant}`,
-  );
+    const classList = classNames(
+      'eds-badge',
+      { 'eds-badge--invisible': invisible, 'eds-badge--show-zero': showZero },
+      `eds-badge--variant-${variant}`,
+    );
 
-  return (
-    <span className={classList} {...rest}>
-      {displayValue}
-    </span>
-  );
-};
+    return (
+      <span className={classList} ref={ref} {...rest}>
+        {displayValue}
+      </span>
+    );
+  },
+);
