@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.0...@entur/layout@1.7.1) (2020-07-24)
+
+### Bug Fixes
+
+- add forwardref to badge component ([7a2532e](https://bitbucket.org/enturas/design-system/commits/7a2532eda6ed564f0267d918d4ba2ceca3887a9b))
+
 # [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.6.0...@entur/layout@1.7.0) (2020-07-13)
 
 ### Features
