@@ -85,6 +85,9 @@ export const Popover: React.FC<PopoverProps> = ({
     return buttonProps;
   }, [triggerElement, showPopover]);
 
+  useOnClickOutside(contentElement, triggerElement, () =>
+    setShowPopover(false),
+  );
   const closeButtonProps = {
     onClick: (e: React.MouseEvent) => {
       e.preventDefault();
