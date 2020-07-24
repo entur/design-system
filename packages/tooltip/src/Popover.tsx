@@ -74,7 +74,8 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const triggerProps = React.useCallback(() => {
     const buttonProps = {
-      onClick: () => {
+      onClick: (e: React.MouseEvent) => {
+        e.preventDefault();
         setShowPopover(prev => !prev);
       },
       'aria-haspopup': 'dialog',
@@ -84,11 +85,9 @@ export const Popover: React.FC<PopoverProps> = ({
     return buttonProps;
   }, [triggerElement, showPopover]);
 
-  useOnClickOutside(contentElement, triggerElement, () =>
-    setShowPopover(false),
-  );
   const closeButtonProps = {
-    onClick: () => {
+    onClick: (e: React.MouseEvent) => {
+      e.preventDefault();
       setShowPopover(false);
     },
   };
