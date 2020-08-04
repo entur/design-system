@@ -16,7 +16,8 @@ export type TravelLegProps = {
     | 'water'
     | 'bike'
     | 'scooter'
-    | 'foot';
+    | 'foot'
+    | 'car';
   /** Retningen på komponenten */
   direction: 'horizontal' | 'vertical';
   [key: string]: any;
@@ -103,6 +104,12 @@ function modeCalc(mode: string): modeCalcResult {
         color: colors.transport.default.walk,
         contrast: colors.transport.contrast.walk,
         pattern: 'dotted',
+      };
+    case 'car':
+      return {
+        color: colors.transport.default.taxi,
+        contrast: colors.transport.contrast.taxi,
+        pattern: 'dashed',
       };
     default:
       throw Error('Plese select a valid transport for the TravelLeg.');
