@@ -74,10 +74,10 @@ export const colors = {
     },
     contrast: {
       metro: '#f08901',
-      bus: '#eb1053',
-      plane: '#e258c3',
+      bus: '#ff6392',
+      plane: '#fbafea',
       helicopter: '#e258c3',
-      tram: '#a476e5',
+      tram: '#b482fb',
       funicular: '#a476e5',
       cableway: '#a476e5',
       taxi: '#ffffff',
