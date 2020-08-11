@@ -102,7 +102,13 @@ export const MultiSelect: React.FC<
 
   const { items } = useResolvedItems(input, debounceTimeout);
   const getFilteredItems = () =>
-    items.filter(item => selectedItems.indexOf(item) < 0);
+    items.filter(
+      item =>
+        !selectedItems.some(
+          el => el.label === item.label && el.value === item.value,
+        ),
+    );
+
   const {
     isOpen,
     openMenu,

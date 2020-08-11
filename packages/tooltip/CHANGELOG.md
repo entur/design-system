@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.2...@entur/tooltip@2.2.3) (2020-07-24)
+
+### Bug Fixes
+
+- **popover:** add prevent default on button clicks ([0072ccd](https://bitbucket.org/enturas/design-system/commits/0072ccd9f8dd2d4db158c4781eb7f35dd2cab163))
+
 ## [2.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.1...@entur/tooltip@2.2.2) (2020-07-22)
 
 **Note:** Version bump only for package @entur/tooltip

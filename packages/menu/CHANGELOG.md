@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.0...@entur/menu@3.0.1) (2020-07-24)
+
+### Bug Fixes
+
+- **pagination:** improve prop description ([64e7cd4](https://bitbucket.org/enturas/design-system/commits/64e7cd47381f99715b0ab95deb6a4a1ce4836a1e))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@2.0.0...@entur/menu@3.0.0) (2020-07-22)
 
 ### Bug Fixes

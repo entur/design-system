@@ -13,7 +13,7 @@ import { useContrast } from '@entur/layout';
 export type PaginationProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Sidenummeret som er aktivt nå */
+  /** Sidenummeret som er aktivt nå (1-indeksert) */
   currentPage: number;
   /** Callback for når man ønsker å gå til en ny side */
   onPageChange: (requestedPage: number) => void;

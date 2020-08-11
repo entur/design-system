@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.4...@entur/dropdown@1.3.5) (2020-07-24)
+
+### Bug Fixes
+
+- **multiselect:** improve internal filtering for selected item ([ad706e4](https://bitbucket.org/enturas/design-system/commits/ad706e4afdb8a137aed30873735a95d8acb8d713))
+
 ## [1.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.3...@entur/dropdown@1.3.4) (2020-07-22)
 
 ### Bug Fixes
