@@ -20,6 +20,9 @@ export type BaseFormControlProps = {
   append?: React.ReactNode;
   /** Valideringsvariant */
   variant?: VariantType;
+  /**Størrelsen på skjemaelementet
+   * @default "medium"
+   */
   [key: string]: any;
 };
 
@@ -32,19 +35,25 @@ export const BaseFormControl: React.FC<BaseFormControlProps> = ({
   variant,
   prepend,
   append,
+  size = 'medium',
   ...rest
 }) => {
   const contextVariant = useVariant();
   const currentVariant = variant || contextVariant;
   return (
     <div
-      className={classNames('eds-form-control-wrapper', className, {
-        'eds-form-control-wrapper--success': currentVariant === 'success',
-        'eds-form-control-wrapper--error': currentVariant === 'error',
-        'eds-form-control-wrapper--dark': dark,
-        'eds-form-control-wrapper--disabled': disabled,
-        'eds-form-control-wrapper--readonly': readOnly,
-      })}
+      className={classNames(
+        'eds-form-control-wrapper',
+        className,
+        `eds-form-control-wrapper--size-${size}`,
+        {
+          'eds-form-control-wrapper--success': currentVariant === 'success',
+          'eds-form-control-wrapper--error': currentVariant === 'error',
+          'eds-form-control-wrapper--dark': dark,
+          'eds-form-control-wrapper--disabled': disabled,
+          'eds-form-control-wrapper--readonly': readOnly,
+        },
+      )}
       {...rest}
     >
       {prepend && <div className="eds-form-control__prepend">{prepend}</div>}
