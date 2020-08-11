@@ -15,6 +15,10 @@ export type TextFieldProps = {
   disabled?: boolean;
   /** Setter inputfeltet i read-only modus */
   readOnly?: boolean;
+  /** Størrelsen på TextField
+   * @default "medium"
+   */
+  size?: 'medium' | 'large';
   [key: string]: any;
 };
 
@@ -28,6 +32,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       readOnly = false,
       className,
       style,
+      size = 'medium',
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -41,6 +46,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         append={append}
         className={className}
         style={style}
+        size={size}
       >
         <input
           aria-invalid={variant === 'error'}

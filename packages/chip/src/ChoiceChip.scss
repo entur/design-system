@@ -59,13 +59,12 @@
   }
   .eds-chip {
     &--disabled {
-      background-color: transparent;
-      border-color: $colors-blues-blue80;
+      opacity: 0.5;
       border-style: dashed;
-      color: $colors-blues-blue70;
       cursor: not-allowed;
 
       .eds-contrast & {
+        opacity: 1;
         border-color: $colors-blues-blue50;
         color: $colors-blues-blue60;
       }

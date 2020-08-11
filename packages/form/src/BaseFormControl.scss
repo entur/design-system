@@ -96,6 +96,10 @@
     }
   }
 
+  &--size-large {
+    min-height: 4.25rem;
+  }
+
   // Validation modes changes the border colors
   &--success {
     --border-color: #{$colors-validation-mint};

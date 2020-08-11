@@ -122,7 +122,7 @@
   display: block;
   font-family: inherit;
   font-size: inherit;
-  font-weight: $font-weights-heading;
+  font-weight: $font-weights-body;
   line-height: inherit;
   padding: var(--padding-vertical) $space-extra-large2;
   padding-left: $space-extra-large2;
@@ -139,6 +139,7 @@
   }
   &--active {
     box-shadow: inset $border-widths-large 0 0 $colors-brand-blue;
+    font-weight: $font-weights-heading;
     .eds-contrast & {
       box-shadow: inset $border-widths-large 0 0 $colors-brand-coral;
     }
@@ -204,7 +205,7 @@
     color: $colors-brand-lavender;
   }
   .eds-side-navigation-group__icon {
-    margin-right: $space-large;
+    margin-right: $space-extra-large2;
   }
   .eds-side-navigation--collapsed & {
     padding-left: $space-extra-large;
