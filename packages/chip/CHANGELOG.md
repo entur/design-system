@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.23](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.22...@entur/chip@0.3.23) (2020-08-11)
+
+### Bug Fixes
+
+- adjust disabled choicechip styling ([713a2ab](https://bitbucket.org/enturas/design-system/commits/713a2abfc0285f0d78ee4c990e6bd2ee0c2b5e08))
+
 ## [0.3.22](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.21...@entur/chip@0.3.22) (2020-07-24)
 
 **Note:** Version bump only for package @entur/chip

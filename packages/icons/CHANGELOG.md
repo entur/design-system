@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.9.1...@entur/icons@1.10.0) (2020-08-11)
+
+### Features
+
+- add new icons for travel and misc ([fbb4074](https://bitbucket.org/enturas/design-system/commits/fbb40741aa9e68f16e0d725ca210cfc2aee52bf0))
+
 ## [1.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.9.0...@entur/icons@1.9.1) (2020-07-22)
 
 ### Bug Fixes

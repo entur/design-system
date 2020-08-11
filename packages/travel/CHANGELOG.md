@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.0.9...@entur/travel@4.0.10) (2020-08-11)
+
+### Bug Fixes
+
+- **travelleg:** support for for TravelLeg view of transport=car ([e9edda4](https://bitbucket.org/enturas/design-system/commits/e9edda49a875a9aace13ad8d5596deb34fe80e2e))
+
 ## [4.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.0.8...@entur/travel@4.0.9) (2020-07-24)
 
 **Note:** Version bump only for package @entur/travel

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.3.6...@entur/tokens@1.4.0) (2020-08-11)
+
+### Bug Fixes
+
+- update some transport contrast colors ([6697fc5](https://bitbucket.org/enturas/design-system/commits/6697fc5211b7c5ae35e5bf36c6e03041ac3b6bee))
+
+### Features
+
+- add new color blue90 ([365e440](https://bitbucket.org/enturas/design-system/commits/365e4409c0ef948604947d174d54b4c7d196a343))
+
 ## [1.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.3.5...@entur/tokens@1.3.6) (2020-07-03)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.2.1...@entur/form@3.3.0) (2020-08-11)
+
+### Features
+
+- **textfield:** add size prop to textfield ([3389e0d](https://bitbucket.org/enturas/design-system/commits/3389e0db294b41cd71b6f8b62b8340ffe16d64d9))
+
 ## [3.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.2.0...@entur/form@3.2.1) (2020-07-24)
 
 **Note:** Version bump only for package @entur/form

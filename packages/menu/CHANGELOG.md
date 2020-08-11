@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.1...@entur/menu@3.0.2) (2020-08-11)
+
+### Bug Fixes
+
+- **sidenavigation:** adjust fontweight and margin for sidenavigation ([8f9618b](https://bitbucket.org/enturas/design-system/commits/8f9618b4ba82edc6d53dff62ae6a07128594d757))
+
 ## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.0...@entur/menu@3.0.1) (2020-07-24)
 
 ### Bug Fixes

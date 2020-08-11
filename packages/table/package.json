@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -31,6 +31,6 @@
     "classnames": "^2.2.6"
   },
   "devDependencies": {
-    "@entur/tokens": "^1.3.6"
+    "@entur/tokens": "^1.4.0"
   }
 }
