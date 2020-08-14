@@ -16,8 +16,14 @@ export type RadioPanelProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
+  /**Skjuler checkbox-en i RadioPanel
+   * @default false
+   */
+  hideCheckbox?: boolean;
   /** Ekstra klassenavn */
   className?: string;
+  /** */
+  style?: React.CSSProperties;
   [key: string]: any;
 };
 
@@ -30,6 +36,8 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       title,
       secondaryLabel,
       size = 'medium',
+      hideCheckbox = false,
+      style,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -52,14 +60,16 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
           onChange={onChange}
           {...rest}
         />
-        <div className={classList}>
+        <div className={classList} style={style}>
           <div className="eds-radio-panel__title-wrapper">
             <div className="eds-radio-panel__title">{title}</div>
             <div className="eds-radio-panel__label">
               {secondaryLabel && <span>{secondaryLabel}</span>}
-              <span className="eds-radio-panel__check">
-                <RadioPanelCheck />
-              </span>
+              {!hideCheckbox && (
+                <span className="eds-radio-panel__check">
+                  <RadioPanelCheck />
+                </span>
+              )}
             </div>
           </div>
           {children && (

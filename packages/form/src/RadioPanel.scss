@@ -89,13 +89,17 @@
       font-size: $font-sizes-large;
       font-weight: $font-weights-body;
     }
-    .eds-radio-panel__container {
+    &.eds-radio-panel__container {
+      padding-bottom: $space-medium;
       min-height: 3.75rem;
     }
   }
   &--large {
-    .eds-radio-panel__container {
+    &.eds-radio-panel__container {
       min-height: 6.5rem;
+    }
+    .eds-radio-panel__title-wrapper {
+      height: 2rem;
     }
     .eds-radio-panel__title {
       font-size: $font-sizes-extra-large;
