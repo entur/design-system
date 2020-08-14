@@ -32,6 +32,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           className="eds-form-control eds-textarea"
           ref={ref}
           readOnly={readOnly}
+          disabled={disabled}
           {...rest}
         />
       </BaseFormControl>
