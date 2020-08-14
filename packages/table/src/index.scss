@@ -119,6 +119,10 @@
           background: $colors-blues-blue20;
         }
       }
+      &--error {
+        background: $colors-validation-lava-tint;
+        border-color: $colors-validation-lava-contrast;
+      }
     }
   }
   &__head {
