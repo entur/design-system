@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.3.0...@entur/form@3.4.0) (2020-08-14)
+
+### Bug Fixes
+
+- **text area:** fix disabled not being applied to text area ([2dc5529](https://bitbucket.org/enturas/design-system/commits/2dc5529f979e87058d7c9827a529fffaa3a26524))
+- **text field:** increase font size on text field when size=large ([682ff1a](https://bitbucket.org/enturas/design-system/commits/682ff1aeb5739336cea8b66ba58f76bc9f8ef90f))
+
+### Features
+
+- **radio panel:** add hideCheckbox prop ([b485311](https://bitbucket.org/enturas/design-system/commits/b4853115c01597c2e299905061c07415b50fae6f))
+
 # [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.2.1...@entur/form@3.3.0) (2020-08-11)
 
 ### Features

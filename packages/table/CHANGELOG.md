@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.1.2...@entur/table@3.2.0) (2020-08-14)
+
+### Features
+
+- **table row:** add error prop to table row ([69907ec](https://bitbucket.org/enturas/design-system/commits/69907ecd9e062ca3f0ea701a0704343f9fc85094))
+
 ## [3.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.1.1...@entur/table@3.1.2) (2020-08-11)
 
 **Note:** Version bump only for package @entur/table
