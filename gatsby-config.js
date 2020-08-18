@@ -7,5 +7,13 @@ module.exports = {
         trackingId: 'UA-146928642-1',
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `changelogs`,
+        path: `${__dirname}/changelogs/`,
+      },
+    },
+    'gatsby-transformer-remark',
   ],
 };

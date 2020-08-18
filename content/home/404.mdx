@@ -8,16 +8,20 @@ index: true
 
 import PageHeader from '~/components/PageHeader';
 import notFoundImage from './notFoundImage.jpg';
-import { Paragraph, Heading1, Link } from '@entur/typography';
+import { Paragraph, Heading2, Link } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 
-<PageHeader></PageHeader>
-
+<div style={{textAlign:"center"}}>
 <img src={notFoundImage} />
 
+<Heading2>Bomtur</Heading2>
+
 <Paragraph>
-  Addressen kan være feil, eller siden du ser etter har blitt flyttet på
+  Adressen du forsøkte å gå til finnes ikke
+  <br />
+  Eller så har siden blitt flyttet til et anent sted.
 </Paragraph>
 <Link href="/">
   <PrimaryButton>Gå til forsiden</PrimaryButton>
 </Link>
+</div>

@@ -42,10 +42,12 @@ const SettingsPanel: React.FC = () => {
         >
           <SettingsIcon />
         </FloatingButton>
-        <Switch
-          checked={theme === 'dark'}
-          onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        ></Switch>
+        {false && (
+          <Switch
+            checked={theme === 'dark'}
+            onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          ></Switch>
+        )}
       </div>
       <Modal
         open={isOpen}

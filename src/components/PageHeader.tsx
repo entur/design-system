@@ -36,6 +36,12 @@ const PageHeader: React.FC<Props> = ({
         </Label>
       )}
       <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
+      {npmPackage && userType === 'developer' && (
+        <img
+          alt="npm"
+          src={`https://img.shields.io/npm/v/@entur/${npmPackage}?color=181c56&style=flat-square`}
+        ></img>
+      )}
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <div>

@@ -12,13 +12,13 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
   return (
     <div className={className}>
       <nav className="top-navigation" aria-label="Navigasjon, hovedseksjoner">
-        <Link to="/">
+        <Link to="/" className="top-navigation__logo">
           <img src={logo} height="32px" width="102px" alt="Entur logo" />
         </Link>
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
+        <NavItem to="/stil-og-tone">Stil og tone</NavItem>
         <NavItem to="/visuell-identitet">Visuell identitet</NavItem>
         <NavItem to="/komponenter">Komponenter</NavItem>
-        <NavItem to="/stil-og-tone">Stil og tone</NavItem>
         <NavItem to="/universell-utforming">Universell utforming</NavItem>
         <SettingsPanel />
       </nav>

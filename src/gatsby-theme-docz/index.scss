@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
-  margin-top: $space-extra-large;
+  margin-top: 10rem;
   transition: max-width $timings-fast ease-out,
     margin-left $timings-fast ease-out;
 
