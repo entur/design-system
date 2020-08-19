@@ -302,12 +302,20 @@ html {
   position: relative;
 
   &::before {
-    content: counter(eds-numbered-list-counter) '. ';
+    content: counter(eds-numbered-list-counter);
     color: inherit; // ie fallback
     color: var(--primary-text-color);
     position: absolute;
     font-weight: $font-weights-heading;
-    left: -$space-large;
+    left: -$space-extra-large2;
+    border: $border-widths-medium solid $colors-brand-lavender;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -0.25rem;
   }
 }
 
