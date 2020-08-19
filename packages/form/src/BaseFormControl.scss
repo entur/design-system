@@ -97,8 +97,10 @@
   }
 
   &--size-large {
-    font-size: $font-sizes-extra-large;
     min-height: 4.25rem;
+    .eds-form-control {
+      font-size: $font-sizes-extra-large;
+    }
   }
 
   // Validation modes changes the border colors
