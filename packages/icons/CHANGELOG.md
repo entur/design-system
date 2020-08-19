@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.10.0...@entur/icons@1.11.0) (2020-08-19)
+
+### Bug Fixes
+
+- **validation error icon:** adjust internal padding in svg ([608f45e](https://bitbucket.org/enturas/design-system/commits/608f45ed7bd00fd241e3134b2f8b32c9851a1cbe))
+
+### Features
+
+- add baby icon ([4ece207](https://bitbucket.org/enturas/design-system/commits/4ece207c25e096a0731d8db0ce67b62cc0854f39))
+
 # [1.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.9.1...@entur/icons@1.10.0) (2020-08-11)
 
 ### Features

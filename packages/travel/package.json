@@ -1,6 +1,6 @@
 {
   "name": "@entur/travel",
-  "version": "4.0.10",
+  "version": "4.0.11",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/travel.esm.js",
@@ -23,8 +23,8 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/icons": "^1.10.0",
-    "@entur/layout": "^1.7.2",
+    "@entur/icons": "^1.11.0",
+    "@entur/layout": "^1.7.3",
     "@entur/tokens": "^1.4.0",
     "@entur/utils": "^0.2.9",
     "classnames": "^2.2.6"
