@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-<path fill-rule="evenodd" clip-rule="evenodd" fill="#181C56" d="M8,1C4.1500244,1,1,4.1500244,1,8s3.1500244,7,7,7s7-3.1500244,7-7
-	S11.8499756,1,8,1z M11.0404053,10.0504761l-0.9899292,0.9899292L7.9995728,8.9885864l-2.0500488,2.0518188l-0.9899292-0.9899292
-	l2.0499878-2.0509033L4.9595947,5.9495239l0.9899292-0.9899292l2.0500488,2.0499878l2.0509033-2.0499878l0.9899292,0.9899292
-	L8.9885864,7.9995728L11.0404053,10.0504761z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" enable-background="new 0 0 16 16" version="1.1" viewBox="0 0 16 16" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<path d="m8 0c-4.4 0-8 3.6-8 8 0 4.4 3.6 8 8 8 4.4 0 8-3.6 8-8 0-4.4-3.6-8-8-8zm3.4747 10.343-1.1313 1.1313-2.3439-2.3449-2.3429 2.3449-1.1313-1.1313 2.3428-2.3439-2.3428-2.3429 1.1313-1.1313 2.3429 2.3428 2.3439-2.3428 1.1313 1.1313-2.3449 2.3429z" clip-rule="evenodd" fill="#181c56" fill-rule="evenodd" stroke-width="1.1429"/>
 </svg>
