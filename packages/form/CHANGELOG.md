@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.1...@entur/form@3.4.2) (2020-08-20)
+
+### Bug Fixes
+
+- **textfield:** fix fontsize for append/prepend on size=large ([354d47c](https://bitbucket.org/enturas/design-system/commits/354d47c2da6230087c0f2270496f6b4b2dd1e636))
+
 ## [3.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.0...@entur/form@3.4.1) (2020-08-19)
 
 ### Bug Fixes
