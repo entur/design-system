@@ -35,13 +35,19 @@ const PageHeader: React.FC<Props> = ({
           {categoryToShow.toUpperCase()}
         </Label>
       )}
-      <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
-      {npmPackage && userType === 'developer' && (
-        <img
-          alt="npm"
-          src={`https://img.shields.io/npm/v/@entur/${npmPackage}?color=181c56&style=flat-square`}
-        ></img>
-      )}
+      <Heading1 style={{ marginTop: '0.3em' }}>
+        {titleToShow}
+        {npmPackage && userType === 'developer' && (
+          <>
+            <button style={{ float: 'right' }}>changelog</button>
+            <img
+              alt="npm"
+              style={{ float: 'right' }}
+              src={`https://img.shields.io/npm/v/@entur/${npmPackage}?color=181c56&style=flat-square`}
+            ></img>
+          </>
+        )}
+      </Heading1>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <div>
