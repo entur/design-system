@@ -26,6 +26,7 @@ import {
   RadioGroup,
   SegmentedChoice,
   SegmentedControl,
+  TextField,
 } from '@entur/form';
 import {
   RowHeightDefaultIcon,
@@ -691,14 +692,15 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
         </TableHead>
         <TableBody>
           <TableRow hover>
-            <EditableCell
-              value={firstname}
-              onChange={e => setFirstname(e.target.value)}
-            ></EditableCell>
+            <EditableCell>
+              <TextField></TextField>
+            </EditableCell>
             <EditableCell
               value={lastname}
               onChange={e => setLastname(e.target.value)}
-            ></EditableCell>
+            >
+              <TextField />
+            </EditableCell>
           </TableRow>
           <TableRow>
             <DataCell>Kari</DataCell>

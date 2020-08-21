@@ -8,7 +8,19 @@
   .eds-table--small & {
     padding: 0.125rem $space-extra-small;
   }
-  &__cell {
+  &__cell.eds-form-control-wrapper {
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+    &--error {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  &__cell .eds-form-control {
     cursor: pointer;
     font-family: inherit;
     font-size: $font-sizes-large;
@@ -18,7 +30,7 @@
     color: inherit;
     background: none;
     text-align: inherit;
-    border: none;
+    // border: none;
 
     padding: $space-extra-small calc(#{$space-small} - #{$border-widths-small});
     margin: 0 0;
@@ -27,6 +39,11 @@
     border-radius: $border-radiuses-medium;
     line-height: $line-heights-extra-large;
     min-height: 24px;
+    background: $colors-brand-white;
+    color: inherit;
+    .eds-contrast & {
+      color: $colors-brand-blue;
+    }
     &:hover,
     &:active {
       .eds-contrast & {
@@ -41,8 +58,6 @@
       padding: calc(#{$space-extra-small2} - 0.125rem)
         calc(#{$space-extra-small} - #{$border-widths-small});
     }
-  }
-  &__activate-button {
     .eds-table__row:hover & {
       border-color: $colors-greys-grey10;
       background: $colors-brand-white;
@@ -51,14 +66,9 @@
         color: $colors-brand-blue;
       }
     }
-  }
-  &__input {
-    background: $colors-brand-white;
-    color: inherit;
-    .eds-contrast & {
-      color: $colors-brand-blue;
-    }
-    &:focus {
+
+    &:active,
+    &:focus-within {
       outline: none;
       border: $border-widths-small solid $colors-brand-blue;
       border-radius: $border-radiuses-medium;
