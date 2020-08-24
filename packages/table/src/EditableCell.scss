@@ -8,7 +8,8 @@
   .eds-table--small & {
     padding: 0.125rem $space-extra-small;
   }
-  &__cell.eds-form-control-wrapper {
+  .eds-form-control-wrapper {
+    background: $colors-brand-white;
     &::before,
     &::after {
       opacity: 0;
@@ -20,7 +21,33 @@
       }
     }
   }
-  &__cell .eds-form-control {
+  .eds-form-control-wrapper {
+    .eds-table__row:hover & {
+      border-color: $colors-greys-grey10;
+      background: $colors-brand-white;
+      &:active,
+      &:focus {
+        outline: none;
+        border: $border-widths-small solid $colors-brand-blue;
+        border-radius: $border-radiuses-medium;
+        .eds-contrast & {
+          border-color: $colors-brand-lavender;
+        }
+      }
+      .eds-contrast &  {
+        border-color: $colors-blues-blue20;
+        color: $colors-brand-blue;
+      }
+    }
+    &:active,
+    &:focus {
+      outline: none;
+      border: $border-widths-small solid $colors-brand-blue;
+      border-radius: $border-radiuses-medium;
+      .eds-contrast & {
+        border-color: $colors-brand-lavender;
+      }
+    }
     cursor: pointer;
     font-family: inherit;
     font-size: $font-sizes-large;
@@ -31,8 +58,7 @@
     background: none;
     text-align: inherit;
     // border: none;
-
-    padding: $space-extra-small calc(#{$space-small} - #{$border-widths-small});
+    // padding: $space-extra-small calc(#{$space-small} - #{$border-widths-small});
     margin: 0 0;
     width: 100%;
     border: $border-widths-small solid transparent;
@@ -57,24 +83,6 @@
     .eds-table--small & {
       padding: calc(#{$space-extra-small2} - 0.125rem)
         calc(#{$space-extra-small} - #{$border-widths-small});
-    }
-    .eds-table__row:hover & {
-      border-color: $colors-greys-grey10;
-      background: $colors-brand-white;
-      .eds-contrast &  {
-        border-color: $colors-blues-blue20;
-        color: $colors-brand-blue;
-      }
-    }
-
-    &:active,
-    &:focus-within {
-      outline: none;
-      border: $border-widths-small solid $colors-brand-blue;
-      border-radius: $border-radiuses-medium;
-      .eds-contrast & {
-        border-color: $colors-brand-lavender;
-      }
     }
   }
 }
