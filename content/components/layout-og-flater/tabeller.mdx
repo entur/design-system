@@ -33,6 +33,7 @@ import {
   RowHeightMiddleIcon,
   RowHeightSmallIcon,
   ValidationInfoIcon,
+  ValidationErrorIcon,
   FileIcon,
   EditIcon,
   DeleteIcon,
@@ -44,6 +45,8 @@ import { CheckIcon } from './CheckIcon';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { DatePicker } from '@entur/datepicker';
+import { colors } from '@entur/tokens';
 
 <PageHeader />
 
@@ -680,30 +683,39 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
 
 <Playground>
   {() => {
-    const [firstname, setFirstname] = React.useState('Ola');
-    const [lastname, setLastname] = React.useState('Nordmann');
+    const [date, setDate] = React.useState();
     return (
-      <Table fixed>
+      <Table>
         <TableHead>
           <TableRow>
-            <HeaderCell>Fornavn</HeaderCell>
-            <HeaderCell>Etternavn</HeaderCell>
+            <HeaderCell>Navn</HeaderCell>
+            <HeaderCell>Dato</HeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow hover>
-            <EditableCell>
-              <TextField></TextField>
+            <EditableCell variant="error" feedback="Navn mangler">
+              <TextField
+                append={
+                  <ValidationErrorIcon inline color={colors.validation.lava} />
+                }
+              ></TextField>
             </EditableCell>
-            <EditableCell
-              value={lastname}
-              onChange={e => setLastname(e.target.value)}
-            >
-              <TextField />
+            <EditableCell>
+              <DatePicker
+                selectedDate={date}
+                onChange={date => setDate(date)}
+              ></DatePicker>
             </EditableCell>
           </TableRow>
           <TableRow>
-            <DataCell>Kari</DataCell>
+            <EditableCell>
+              <TextField></TextField>
+            </EditableCell>
+            <DataCell>Nordmann</DataCell>
+          </TableRow>
+          <TableRow>
+            <DataCell>Ola</DataCell>
             <DataCell>Nordmann</DataCell>
           </TableRow>
         </TableBody>
