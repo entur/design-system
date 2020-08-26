@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.2.0...@entur/table@4.0.0) (2020-08-26)
+
+### Bug Fixes
+
+- **datacell:** forward referencing for datacell ([e7b1340](https://bitbucket.org/enturas/design-system/commits/e7b1340e18fc0359d6a4f9797ab4bdc222c5b8b9))
+- **editable cell:** remove value and onchange props ([7aef4ee](https://bitbucket.org/enturas/design-system/commits/7aef4ee3c66fcf1a33fe89f4245798030af89d22))
+- **editable cell:** rework editable cell api ([3f6efee](https://bitbucket.org/enturas/design-system/commits/3f6efeed5c26a9112dbf2f91edc67be72a25c914))
+
+### Features
+
+- **editable cell:** add variant and feedback prop ([4ff9752](https://bitbucket.org/enturas/design-system/commits/4ff975286e241b3ed7877c71234880a8e4a31bd5))
+
+### BREAKING CHANGES
+
+- **editable cell:** must use a input component as children to function
+- **editable cell:** will be breaking for editable cell users | use input components directly (see documentation),
+  instead of value prop
+
 # [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@3.1.2...@entur/table@3.2.0) (2020-08-14)
 
 ### Features

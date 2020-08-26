@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.2...@entur/form@3.4.3) (2020-08-26)
+
+### Bug Fixes
+
+- **baseformcontrol:** forwardreferncing for baseformcontrol ([0350f52](https://bitbucket.org/enturas/design-system/commits/0350f5213d98ac8d71748d391fa06d5f3ab9ee1e))
+- **textfield:** adjust size large styling further ([6e053e2](https://bitbucket.org/enturas/design-system/commits/6e053e28714b5d6d881cd42e5cd5a0567ca38f24))
+- **textfield:** fix aria-invalid bug ([348fbb1](https://bitbucket.org/enturas/design-system/commits/348fbb12031d5b97407f2a1a46512e5f1bbe6b99))
+
 ## [3.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.1...@entur/form@3.4.2) (2020-08-20)
 
 ### Bug Fixes

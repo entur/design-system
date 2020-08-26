@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.5...@entur/tooltip@2.3.0) (2020-08-26)
+
+### Features
+
+- **tooltip:** add error variant for tooltip ([20a91e2](https://bitbucket.org/enturas/design-system/commits/20a91e269344805c1cf0e64fb405009e2a297430))
+
 ## [2.2.5](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.4...@entur/tooltip@2.2.5) (2020-08-19)
 
 **Note:** Version bump only for package @entur/tooltip

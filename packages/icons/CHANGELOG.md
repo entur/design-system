@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.11.0...@entur/icons@1.12.0) (2020-08-26)
+
+### Bug Fixes
+
+- **extend icon:** rename new icon from expand to extend ([a592d49](https://bitbucket.org/enturas/design-system/commits/a592d49baabe9daa3a6fc9171411578e88b1ddb9))
+
+### Features
+
+- **icons:** add expand and minimize icons ([709daea](https://bitbucket.org/enturas/design-system/commits/709daea5bccd77aa7581ce023949bd891be4a441))
+- **new icon:** add icon for draggable ([e356e60](https://bitbucket.org/enturas/design-system/commits/e356e6007b59aab0ab38edc23d8d35d347dc75df))
+
 # [1.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.10.0...@entur/icons@1.11.0) (2020-08-19)
 
 ### Bug Fixes
