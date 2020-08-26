@@ -1,35 +1,48 @@
 import classNames from 'classnames';
 import React from 'react';
 import { DataCell } from './DataCell';
-import { VariantProvider, FeedbackText } from '@entur/form';
+import { VariantProvider, VariantType } from '@entur/form';
+import { Tooltip } from '@entur/tooltip';
 import './EditableCell.scss';
 
 type EditableCellProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** En callback som blir kalles hver gang innholdet endres  */
-  onChange?: (e: React.ChangeEvent) => void;
+  /** Inputelementet som skal være i tabellcellen */
   children: React.ReactElement;
+  /** Valideringsvariant for EditableCell */
+  variant?: VariantType;
+  /** Varselmelding, som vil komme som en Tooltip under EditableCell */
+  feedback?: string;
   [key: string]: any;
 };
 
 export const EditableCell: React.FC<EditableCellProps> = ({
   children,
   className,
-  name,
   feedback,
   variant,
-
   ...rest
 }) => {
-  return (
-    <DataCell className={classNames('eds-editable-cell', className)} {...rest}>
-      <VariantProvider variant={variant}>
+  return feedback ? (
+    <VariantProvider variant={variant}>
+      <DataCell
+        className={classNames('eds-editable-cell', className)}
+        {...rest}
+      >
+        <Tooltip placement="bottom" content={feedback} variant="error">
+          {children}
+        </Tooltip>
+      </DataCell>
+    </VariantProvider>
+  ) : (
+    <VariantProvider variant={variant}>
+      <DataCell
+        className={classNames('eds-editable-cell', className)}
+        {...rest}
+      >
         {children}
-        {feedback && variant && (
-          <FeedbackText variant={variant}>{feedback}</FeedbackText>
-        )}
-      </VariantProvider>
-    </DataCell>
+      </DataCell>
+    </VariantProvider>
   );
 };
