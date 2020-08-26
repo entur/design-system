@@ -36,6 +36,8 @@ export type TooltipProps = {
    * @default true
    */
   showCloseButton?: boolean;
+  /** Valideringsvariant for Tooltip */
+  variant?: 'error';
   [key: string]: any;
 };
 
@@ -48,6 +50,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   disableHoverListener = false,
   disableFocusListener = false,
   showCloseButton = true,
+  variant,
   ...rest
 }) => {
   const [showTooltip, setShowTooltip] = useState(isOpen || false);
@@ -130,6 +133,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
                 'eds-tooltip',
                 className,
                 `eds-tooltip--${popperPlacement}`,
+                { 'eds-tooltip--error': variant === 'error' },
               )}
               ref={ref}
               style={style}
