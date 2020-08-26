@@ -1,5 +1,5 @@
 import React from 'react';
-import { VariantType } from './VariantProvider';
+import { VariantType, useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
 
 export type TextFieldProps = {
@@ -37,6 +37,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const contextVariant = useVariant();
+    const currentVariant = variant || contextVariant;
+
     return (
       <BaseFormControl
         disabled={disabled}
@@ -49,7 +52,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         size={size}
       >
         <input
-          aria-invalid={variant === 'error'}
+          aria-invalid={currentVariant === 'error'}
           className="eds-form-control"
           disabled={disabled}
           readOnly={readOnly}
