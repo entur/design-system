@@ -26,43 +26,49 @@ export type DatePickerProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
-export const DatePicker: React.FC<DatePickerProps> = ({
-  selectedDate = null,
-  onChange,
-  placeholder = 'Velg dato',
-  className,
-  style,
-  readOnly,
-  ...rest
-}) => {
-  return (
-    <BaseFormControl
-      style={style}
-      dark
-      prepend={<DateIcon inline />}
-      readOnly={readOnly}
-    >
-      <ReactDatepicker
-        className={classNames('eds-form-control', className)}
-        calendarClassName="eds-datepicker__calender"
-        selected={selectedDate}
-        onChange={onChange}
-        showWeekNumbers={true}
-        weekLabel="uke"
-        locale={nb}
-        dateFormat="dd.MM.yyyy"
-        showPopperArrow={false}
-        placeholderText={placeholder}
-        popperClassName="eds-datepicker__popper"
+export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
+  (
+    {
+      selectedDate = null,
+      onChange,
+      placeholder = 'Velg dato',
+      className,
+      style,
+      readOnly,
+      ...rest
+    },
+    ref: React.Ref<HTMLDivElement>,
+  ) => {
+    return (
+      <BaseFormControl
+        style={style}
+        dark
+        prepend={<DateIcon inline />}
         readOnly={readOnly}
-        popperModifiers={{
-          offset: {
-            enabled: true,
-            offset: '-32, 0',
-          },
-        }}
-        {...rest}
-      />
-    </BaseFormControl>
-  );
-};
+        ref={ref}
+      >
+        <ReactDatepicker
+          className={classNames('eds-form-control', className)}
+          calendarClassName="eds-datepicker__calender"
+          selected={selectedDate}
+          onChange={onChange}
+          showWeekNumbers={true}
+          weekLabel="uke"
+          locale={nb}
+          dateFormat="dd.MM.yyyy"
+          showPopperArrow={false}
+          placeholderText={placeholder}
+          popperClassName="eds-datepicker__popper"
+          readOnly={readOnly}
+          popperModifiers={{
+            offset: {
+              enabled: true,
+              offset: '-32, 0',
+            },
+          }}
+          {...rest}
+        />
+      </BaseFormControl>
+    );
+  },
+);
