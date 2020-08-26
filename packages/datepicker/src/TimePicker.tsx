@@ -26,38 +26,48 @@ export type TimePickerProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
-export const TimePicker: React.FC<TimePickerProps> = ({
-  selectedTime = null,
-  onChange,
-  placeholder = 'Velg tid',
-  className,
-  style,
-  ...rest
-}) => {
-  return (
-    <BaseFormControl style={style} dark prepend={<ClockIcon inline />}>
-      <ReactDatepicker
-        className={classNames('eds-form-control', className)}
-        calendarClassName="eds-timepicker"
-        selected={selectedTime}
-        onChange={onChange}
-        showWeekNumbers={true}
-        locale={nb}
-        dateFormat="HH:mm"
-        timeFormat="HH:mm"
-        showTimeSelect
-        showTimeSelectOnly
-        showPopperArrow={false}
-        placeholderText={placeholder}
-        popperClassName="eds-datepicker__popper"
-        popperModifiers={{
-          offset: {
-            enabled: true,
-            offset: '-32, 0',
-          },
-        }}
-        {...rest}
-      />
-    </BaseFormControl>
-  );
-};
+export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
+  (
+    {
+      selectedTime = null,
+      onChange,
+      placeholder = 'Velg tid',
+      className,
+      style,
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <BaseFormControl
+        style={style}
+        dark
+        prepend={<ClockIcon inline />}
+        ref={ref}
+      >
+        <ReactDatepicker
+          className={classNames('eds-form-control', className)}
+          calendarClassName="eds-timepicker"
+          selected={selectedTime}
+          onChange={onChange}
+          showWeekNumbers={true}
+          locale={nb}
+          dateFormat="HH:mm"
+          timeFormat="HH:mm"
+          showTimeSelect
+          showTimeSelectOnly
+          showPopperArrow={false}
+          placeholderText={placeholder}
+          popperClassName="eds-datepicker__popper"
+          popperModifiers={{
+            offset: {
+              enabled: true,
+              offset: '-32, 0',
+            },
+          }}
+          {...rest}
+        />
+      </BaseFormControl>
+    );
+  },
+);
