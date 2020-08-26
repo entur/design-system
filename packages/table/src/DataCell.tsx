@@ -13,20 +13,24 @@ export type DataCellProps = {
   [key: string]: any;
 };
 
-export const DataCell: React.FC<DataCellProps> = ({
-  className,
-  padding = 'default',
-  status = undefined,
-  ...rest
-}) => (
-  <td
-    className={classNames('eds-table__data-cell', className, {
-      [`eds-table__data-cell--status-${status}`]: status,
-      'eds-table__data-cell--padding-checkbox': padding === 'checkbox',
-      'eds-table__data-cell--padding-radio': padding === 'radio',
-      'eds-table__data-cell--padding-overflow-menu':
-        padding === 'overflow-menu',
-    })}
-    {...rest}
-  />
+export const DataCell = React.forwardRef<
+  HTMLTableDataCellElement,
+  DataCellProps
+>(
+  (
+    { className, padding = 'default', status = undefined, ...rest },
+    ref: React.Ref<HTMLTableDataCellElement>,
+  ) => (
+    <td
+      ref={ref}
+      className={classNames('eds-table__data-cell', className, {
+        [`eds-table__data-cell--status-${status}`]: status,
+        'eds-table__data-cell--padding-checkbox': padding === 'checkbox',
+        'eds-table__data-cell--padding-radio': padding === 'radio',
+        'eds-table__data-cell--padding-overflow-menu':
+          padding === 'overflow-menu',
+      })}
+      {...rest}
+    />
+  ),
 );
