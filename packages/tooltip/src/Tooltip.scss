@@ -15,6 +15,7 @@
   background: $colors-brand-blue;
   border-radius: $border-radiuses-medium;
   box-shadow: $shadows-card-shadow;
+  font-size: $font-sizes-medium;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,7 +56,39 @@
     }
   }
 
+  &--error {
+    background: $colors-validation-lava-tint;
+    border: solid $border-widths-medium $colors-validation-lava-contrast;
+    color: $colors-brand-blue;
+    &::after {
+      background: $colors-validation-lava-tint;
+    }
+
+    &::before {
+      background: $colors-validation-lava-contrast;
+      content: '';
+      height: 0.625rem + $border-widths-medium;
+      position: absolute;
+      transform: rotate(45deg) translateY(0.125rem);
+      width: 0.625rem + $border-widths-medium;
+      z-index: $z-indexes-behind;
+    }
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      background: $colors-validation-lava-tint;
+      border: solid $border-widths-medium $colors-validation-lava-contrast;
+      box-shadow: $shadows-card-shadow-contrast;
+      &::after {
+        background: $colors-validation-lava-tint;
+      }
+    }
+  }
+
   &--top {
+    &::before {
+      left: calc(50% - 0.375rem);
+      bottom: calc(-0.5rem + #{$border-widths-small});
+    }
     &::after {
       bottom: -0.2rem;
       left: calc(50% - 0.3125rem);
@@ -77,6 +110,10 @@
   }
 
   &--bottom {
+    &::before {
+      left: calc(50% - 6px);
+      top: calc(-0.5rem - #{$border-widths-small});
+    }
     &::after {
       left: calc(50% - 0.3125rem);
       top: -0.4rem;

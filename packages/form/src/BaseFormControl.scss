@@ -97,7 +97,12 @@
   }
 
   &--size-large {
-    min-height: 4.25rem;
+    min-height: 4rem;
+    padding: 0 $space-extra-small;
+    &::before,
+    &::after {
+      border-width: $border-widths-large;
+    }
     .eds-form-control,
     .eds-form-control__append,
     .eds-form-control__prepend {

@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import { DataCell } from './DataCell';
 import classNames from 'classnames';
+import React from 'react';
+import { DataCell } from './DataCell';
+import { VariantProvider, VariantType } from '@entur/form';
+import { Tooltip } from '@entur/tooltip';
 import './EditableCell.scss';
 
 type EditableCellProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** En callback som blir kalles hver gang innholdet endres  */
-  onChange?: (e: React.ChangeEvent) => void;
-  /** Verdien til cellen */
-  value: string;
+  /** Inputelementet som skal være i tabellcellen */
+  children: React.ReactElement;
+  /** Valideringsvariant for EditableCell */
+  variant?: VariantType;
+  /** Varselmelding, som vil komme som en Tooltip under EditableCell */
+  feedback?: string;
   [key: string]: any;
 };
 
 export const EditableCell: React.FC<EditableCellProps> = ({
-  value,
-  onChange,
+  children,
   className,
-  name,
+  feedback,
+  variant,
   ...rest
 }) => {
-  const [editing, setEditing] = useState(rest.open ? true : false);
-
-  return (
-    <DataCell className={classNames('eds-editable-cell', className)} {...rest}>
-      {editing ? (
-        <input
-          type="text"
-          className="eds-editable-cell__cell eds-editable-cell__input"
-          value={value}
-          autoFocus
-          onBlur={() => setEditing(false)}
-          onChange={onChange}
-          name={name}
-        />
-      ) : (
-        <button
-          className="eds-editable-cell__cell eds-editable-cell__activate-button"
-          onClick={() => setEditing(true)}
-          onFocus={() => setEditing(true)}
-        >
-          {value}
-        </button>
-      )}
-    </DataCell>
+  return feedback ? (
+    <VariantProvider variant={variant}>
+      <DataCell
+        className={classNames('eds-editable-cell', className)}
+        {...rest}
+      >
+        <Tooltip placement="bottom" content={feedback} variant="error">
+          {children}
+        </Tooltip>
+      </DataCell>
+    </VariantProvider>
+  ) : (
+    <VariantProvider variant={variant}>
+      <DataCell
+        className={classNames('eds-editable-cell', className)}
+        {...rest}
+      >
+        {children}
+      </DataCell>
+    </VariantProvider>
   );
 };

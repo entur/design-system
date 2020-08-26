@@ -1,15 +1,64 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-editable-cell {
-  padding: $space-extra-small $space-small;
+  padding: $space-extra-small2 $space-small;
   .eds-table--middle & {
     padding: calc(#{$space-extra-small} / 2) calc(#{$space-default}/ 2);
   }
   .eds-table--small & {
     padding: 0.125rem $space-extra-small;
   }
-  &__cell {
-    cursor: pointer;
+  .eds-form-control-wrapper {
+    background: $colors-brand-white;
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+
+    .eds-table__row:hover & {
+      border-color: $colors-greys-grey10;
+      background: $colors-brand-white;
+      &:active,
+      &:focus-within {
+        outline: none;
+        border: $border-widths-small solid $colors-brand-blue;
+        border-radius: $border-radiuses-medium;
+        .eds-contrast & {
+          border-color: $colors-brand-lavender;
+        }
+      }
+      .eds-contrast &  {
+        border-color: $colors-blues-blue20;
+        color: $colors-brand-blue;
+      }
+    }
+    &:active,
+    &:focus-within {
+      outline: none;
+      border: $border-widths-small solid $colors-brand-blue;
+      border-radius: $border-radiuses-medium;
+      .eds-contrast & {
+        border-color: $colors-brand-lavender;
+        background: $colors-brand-white;
+        color: $colors-brand-blue;
+      }
+    }
+    &--error {
+      .eds-table__row:hover & {
+        &:active,
+        &:focus-within {
+          border-color: transparent;
+        }
+      }
+      &:active,
+      &:focus-within {
+        border-color: transparent;
+      }
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
     font-family: inherit;
     font-size: $font-sizes-large;
     line-height: $line-heights-medium;
@@ -18,52 +67,34 @@
     color: inherit;
     background: none;
     text-align: inherit;
-    border: none;
-
-    padding: $space-extra-small calc(#{$space-small} - #{$border-widths-small});
     margin: 0 0;
     width: 100%;
     border: $border-widths-small solid transparent;
     border-radius: $border-radiuses-medium;
     line-height: $line-heights-extra-large;
     min-height: 24px;
-    &:hover,
-    &:active {
-      .eds-contrast & {
-        color: $colors-brand-blue;
-      }
-    }
-    .eds-table--middle & {
-      padding: $space-extra-small2
-        calc(#{$space-extra-small} - #{$border-widths-small});
-    }
-    .eds-table--small & {
-      padding: calc(#{$space-extra-small2} - 0.125rem)
-        calc(#{$space-extra-small} - #{$border-widths-small});
-    }
-  }
-  &__activate-button {
-    .eds-table__row:hover & {
-      border-color: $colors-greys-grey10;
-      background: $colors-brand-white;
-      .eds-contrast &  {
-        border-color: $colors-blues-blue20;
-        color: $colors-brand-blue;
-      }
-    }
-  }
-  &__input {
     background: $colors-brand-white;
     color: inherit;
     .eds-contrast & {
-      color: $colors-brand-blue;
+      color: $colors-brand-white;
+      background: transparent;
+      transition: background ease-in-out $timings-fast;
     }
-    &:focus {
-      outline: none;
-      border: $border-widths-small solid $colors-brand-blue;
-      border-radius: $border-radiuses-medium;
-      .eds-contrast & {
-        border-color: $colors-brand-lavender;
+    .eds-form-control {
+      padding: $space-small;
+      &:hover,
+      &:active {
+        .eds-contrast & {
+          color: $colors-brand-blue;
+        }
+      }
+      .eds-table--middle & {
+        padding: $space-extra-small2
+          calc(#{$space-extra-small} - #{$border-widths-small});
+      }
+      .eds-table--small & {
+        padding: calc(#{$space-extra-small2} - 0.125rem)
+          calc(#{$space-extra-small} - #{$border-widths-small});
       }
     }
   }
