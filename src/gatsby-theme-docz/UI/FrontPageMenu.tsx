@@ -20,11 +20,9 @@ const FrontPageMenu: React.FC<{ className?: string }> = ({ className }) => {
         <TopNavigationItem as={Link} to="/kom-i-gang">
           Kom i gang
         </TopNavigationItem>
-        <TopNavigationItem as={Link} to="/stil-og-tone">
-          Stil og tone
-        </TopNavigationItem>
-        <TopNavigationItem as={Link} to="/visuell-identitet">
-          Visuell identitet
+
+        <TopNavigationItem as={Link} to="/identitet">
+          Identitet
         </TopNavigationItem>
         <TopNavigationItem as={Link} to="/komponenter">
           Komponenter

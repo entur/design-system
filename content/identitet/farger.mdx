@@ -1,0 +1,29 @@
+---
+name: Farger
+description: Fargepaletten er et viktig grafisk virkemiddel i identiteten vår.
+route: /identitet/farger
+parent: Identitet
+menu: Verktøykassen
+order: 2
+---
+
+import { borderWidths, colors } from '@entur/tokens';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  HeaderCell,
+  TableBody,
+} from '@entur/table';
+import { GridContainer } from '@entur/grid';
+import Colors from '~/components/Colors';
+import PageHeader from '~/components/PageHeader';
+import TransportColors from '~/components/TransportColors';
+
+<PageHeader>
+  Fargepaletten er et viktig grafisk virkemiddel i identiteten vår. Det er
+  viktig at fargene brukes riktig og med omhu, for å oppnå et gjenkjennelig
+  uttrykk.
+</PageHeader>
+
+<Colors />

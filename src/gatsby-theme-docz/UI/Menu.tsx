@@ -16,8 +16,7 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
           <img src={logo} height="32px" width="102px" alt="Entur logo" />
         </Link>
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
-        <NavItem to="/stil-og-tone">Stil og tone</NavItem>
-        <NavItem to="/visuell-identitet">Visuell identitet</NavItem>
+        <NavItem to="/identitet">Identitet</NavItem>
         <NavItem to="/komponenter">Komponenter</NavItem>
         <NavItem to="/universell-utforming">Universell utforming</NavItem>
         <SettingsPanel />

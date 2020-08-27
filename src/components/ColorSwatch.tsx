@@ -7,6 +7,8 @@ import { DataCell, TableRow } from '@entur/table';
 import { CopyButton } from './CopyButton';
 import hexrgb from 'hex-rgb';
 import './ColorSwatch.scss';
+import { NavigationCard, MediaCard, BaseCard } from '@entur/layout';
+import { GridItem } from '@entur/grid';
 
 function getColorFromPath(path: string) {
   return path
@@ -22,6 +24,7 @@ type Props = {
   path: string;
   type: string;
   style?: any;
+  children: string;
 };
 
 const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
@@ -31,28 +34,18 @@ const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
   return (
-    <TableRow className="color-swatch">
-      <DataCell>
+    <GridItem small={6} medium={4}>
+      <BaseCard className="color-swatch" as="button">
         <div
           className="color-square"
           style={{ backgroundColor: backgroundColor, ...style }}
         />
-      </DataCell>
-      <DataCell>
-        <StrongText style={{ textTransform: 'capitalize' }}>
-          {children}
-        </StrongText>
-      </DataCell>
-      <DataCell>{type}</DataCell>
-      <DataCell>{variableName}</DataCell>
-
-      <DataCell>
-        <CopyButton textToCopy={backgroundColor}>{backgroundColor}</CopyButton>
-      </DataCell>
-      <DataCell>
-        {rgb[0]}, {rgb[1]}, {rgb[2]}{' '}
-      </DataCell>
-    </TableRow>
+        <div className="color-description">
+          <div>{children}</div>
+          <div>{backgroundColor}</div>
+        </div>
+      </BaseCard>
+    </GridItem>
   );
 };
 

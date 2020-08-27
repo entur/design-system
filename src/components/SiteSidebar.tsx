@@ -184,7 +184,7 @@ const sortComponentMenus = (a: MenuItem, b: MenuItem, sortOrder: any) => {
 const sorters: { [sorter: string]: any } = {
   // @ts-ignore
   'Kom i gang': komIGangMenuSortOrder,
-  'Visuell identitet': visuellIdentitetMenuSortOrder,
+  Identitet: visuellIdentitetMenuSortOrder,
   Komponenter: componentsMenuSortOrder,
 };
 
