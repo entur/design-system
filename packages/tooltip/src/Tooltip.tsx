@@ -2,7 +2,7 @@ import React, { cloneElement, useState } from 'react';
 import { Manager, Reference, Popper } from 'react-popper';
 import classNames from 'classnames';
 import { useRandomId } from '@entur/utils';
-import { Placement as PopperPlacementProps } from 'popper.js';
+import { Placement as PopperPlacementProps } from '@popperjs/core';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import './Tooltip.scss';
