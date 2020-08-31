@@ -1,16 +1,15 @@
 import React from 'react';
 import { colors } from '@entur/tokens';
-import { StrongText } from '@entur/typography';
 import { formatVariable } from '~/utils/formatVariable';
 import { useSettings } from './SettingsContext';
-import { DataCell, TableRow } from '@entur/table';
-import { CopyButton } from './CopyButton';
 import hexrgb from 'hex-rgb';
 import './ColorSwatch.scss';
-import { NavigationCard, MediaCard, BaseCard } from '@entur/layout';
+import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
+import { useColorContext } from './Colors';
+import { Heading4 } from '@entur/typography';
 
-function getColorFromPath(path: string) {
+export function getColorFromPath(path: string) {
   return path
     .split('.')
     .reduce(
@@ -33,16 +32,29 @@ const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
   const variableName = formatVariable(`colors.${path}`, variableFormat);
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
+  const { setChosenColor } = useColorContext();
+
   return (
     <GridItem small={6} medium={4}>
-      <BaseCard className="color-swatch" as="button">
+      <BaseCard
+        className="color-swatch"
+        as="button"
+        onClick={() =>
+          setChosenColor!({
+            name: children,
+            hex: backgroundColor,
+            variable: variableName,
+            rgb: rgb.toString(),
+          })
+        }
+      >
         <div
           className="color-square"
           style={{ backgroundColor: backgroundColor, ...style }}
         />
         <div className="color-description">
-          <div>{children}</div>
-          <div>{backgroundColor}</div>
+          <Heading4 margin="none">{children}</Heading4>
+          <div style={{ textTransform: 'uppercase' }}>{backgroundColor}</div>
         </div>
       </BaseCard>
     </GridItem>
