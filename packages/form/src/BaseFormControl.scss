@@ -96,6 +96,14 @@
     }
   }
 
+  &--size-medium {
+    .eds-form-control,
+    .eds-form-control__append,
+    .eds-form-control__prepend {
+      font-size: $font-sizes-large;
+      line-height: $line-heights-medium;
+    }
+  }
   &--size-large {
     min-height: 4rem;
     padding: 0 $space-extra-small;
