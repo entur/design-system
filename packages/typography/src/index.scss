@@ -67,7 +67,7 @@ html {
   line-height: $line-heights-extra-large5;
   margin: 0 0 $space-default;
   @include for-desktop {
-    font-size: $font-sizes-extra-large4;
+    font-size: $font-sizes-extra-large5;
     line-height: $line-heights-extra-large7;
   }
 }
@@ -76,7 +76,7 @@ html {
   line-height: $line-heights-extra-large4;
   margin: $space-extra-large 0 $space-small;
   @include for-desktop {
-    font-size: $font-sizes-extra-large3;
+    font-size: $font-sizes-extra-large4;
     line-height: $line-heights-extra-large6;
   }
 }
@@ -85,7 +85,7 @@ html {
   line-height: $line-heights-extra-large;
   margin: $space-large 0 $space-extra-small;
   @include for-desktop {
-    font-size: $font-sizes-extra-large;
+    font-size: $font-sizes-extra-large2;
     line-height: $line-heights-extra-large4;
   }
 }
@@ -94,8 +94,8 @@ html {
   line-height: $line-heights-large;
   margin: $space-large 0 0;
   @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
+    font-size: $font-sizes-extra-large;
+    line-height: $line-heights-extra-large3;
   }
 }
 .eds-h5 {
@@ -103,7 +103,8 @@ html {
   line-height: $line-heights-medium;
   margin: $space-large 0 0;
   @include for-desktop {
-    line-height: $line-heights-large;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-extra-large;
   }
 }
 
@@ -111,6 +112,10 @@ html {
   font-size: $font-sizes-small;
   line-height: $line-heights-medium;
   margin: $space-large 0 0;
+  @include for-desktop {
+    font-size: $font-sizes-medium;
+    line-height: $line-heights-large;
+  }
 }
 
 // Body text and inline element styling
