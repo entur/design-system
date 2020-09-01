@@ -11,7 +11,7 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: $font-sizes-extra-large;
+      font-size: $font-sizes-extra-large2;
       padding: $space-extra-small $space-large;
       &:focus {
         box-shadow: $shadows-focus;
@@ -20,7 +20,7 @@
     &--settings {
       color: inherit;
       padding: $space-extra-small;
-      font-size: $font-sizes-extra-large;
+      font-size: $font-sizes-extra-large2;
       flex-grow: 1;
       &:focus {
         box-shadow: $shadows-focus;
