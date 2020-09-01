@@ -69,15 +69,21 @@
         background: $colors-greys-grey20;
         position: relative;
         &:before {
+          background: $colors-brand-blue;
           content: '';
           position: absolute;
           right: calc(50% - 0.2rem);
-          bottom: 0;
-          width: 0;
-          height: 0;
-          border-left: $space-extra-small/2 solid $colors-brand-blue;
-          border-top: $space-extra-small/2 solid transparent;
-          border-bottom: $space-extra-small/2 solid transparent;
+          border-radius: $border-radiuses-small;
+          bottom: $border-widths-small;
+
+          //Approximate pixel perfect adjustments in size
+          width: calc(
+            #{$space-extra-small} - #{$border-widths-medium} - 0.01rem
+          );
+          height: calc(
+            #{$space-extra-small} - #{$border-widths-medium} - 0.01rem
+          );
+          transform: rotate(45deg);
           .eds-contrast & {
             border-left-color: $colors-brand-lavender;
             border-left-color: $colors-brand-lavender;
