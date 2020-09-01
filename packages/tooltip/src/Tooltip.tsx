@@ -62,6 +62,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
       setShowTooltip(true);
     }, 150);
   };
+  const onMouseExit: () => void = () => {
+    clearTimeout(hoverTimer);
+  };
   React.useEffect(() => {
     return () => {
       clearTimeout(hoverTimer);
@@ -91,10 +94,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   const childProps: {
     'aria-describedby'?: string;
-    onMouseLeave?: () => void;
     onFocus?: () => void;
     onBlur?: () => void;
     onMouseEnter?: (e: React.MouseEvent) => void;
+    onMouseLeave?: () => void;
   } = {};
   childProps['aria-describedby'] = tooltipId;
   if (!disableFocusListener) {
@@ -104,6 +107,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   if (!disableHoverListener) {
     childProps.onMouseLeave = () => setShowTooltip(false);
     childProps.onMouseEnter = e => handleOpen(e);
+    childProps.onMouseLeave = () => onMouseExit();
   }
 
   return (
