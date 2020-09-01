@@ -17,6 +17,10 @@ export type StepperProps = {
    * @default true
    */
   interactive?: boolean;
+  /** Om stepper skal vise indeksering av hvilket trinn man er på
+   * @default true
+   */
+  showStepperIndex?: boolean;
   as?: 'button' | React.ElementType;
   [key: string]: any;
 };
@@ -27,6 +31,7 @@ export const Stepper: React.FC<StepperProps> = ({
   steps,
   activeIndex,
   interactive = true,
+  showStepperIndex = true,
   ...rest
 }) => {
   const Element = interactive ? 'button' : 'div';
@@ -63,7 +68,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 },
               )}
             >
-              {i + 1}. {step}
+              {showStepperIndex && i + 1 + '.'} {step}
             </Label>
           </Element>
         );
