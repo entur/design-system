@@ -114,7 +114,7 @@
   }
 
   @include for-desktop {
-    font-size: $font-sizes-extra-large;
+    font-size: $font-sizes-extra-large2;
     right: $space-large;
     top: $space-large;
     .eds-alert-box--toast & {
