@@ -3,6 +3,9 @@
 
 a.eds-button {
   padding: $space-extra-small $space-default;
+  &--variant-tertiary {
+    padding: $space-extra-small2 $space-default;
+  }
   &--size-large {
     padding: $space-default;
   }
