@@ -62,10 +62,10 @@
   height: $space-extra-large;
   justify-content: center;
   margin: 0 $border-widths-medium;
-  padding: 0;
+  padding: 0 $space-extra-small2;
   transition: all $timings-fast ease-out;
   user-select: none;
-  width: $space-extra-large;
+  min-width: $space-extra-large;
 
   .eds-contrast & {
     border-color: $colors-blues-blue30;
