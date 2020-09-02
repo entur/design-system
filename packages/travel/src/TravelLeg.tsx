@@ -112,6 +112,10 @@ function modeCalc(mode: string): modeCalcResult {
         pattern: 'dashed',
       };
     default:
-      throw Error('Plese select a valid transport for the TravelLeg.');
+      return {
+        color: colors.brand.blue,
+        contrast: colors.brand.white,
+        pattern: 'line',
+      };
   }
 }
