@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.0.12...@entur/travel@4.1.0) (2020-09-02)
+
+### Bug Fixes
+
+- **travel header:** shift font size for new token ([d4602e7](https://bitbucket.org/enturas/design-system/commits/d4602e7817cadd574a3dfc4895145bfd389f9932))
+- **travel leg:** add error message in console if no transport ([e60c74d](https://bitbucket.org/enturas/design-system/commits/e60c74df18cccc10602387501716ac888a435fdf))
+- **travel leg:** remove strict error if undefined transport ([b00a11c](https://bitbucket.org/enturas/design-system/commits/b00a11c14d479337f0cdb1c5022b87f9ed6fef29))
+- **travel tag:** make transport prop optional ([64b7140](https://bitbucket.org/enturas/design-system/commits/64b71409fa5ab9fc496a54430d81ebf4428e1e03))
+- **travel tag:** shift font size for new token ([0ecfd78](https://bitbucket.org/enturas/design-system/commits/0ecfd78dfb25cba3a924dd88186885722e1c830d))
+
+### Features
+
+- **travel tag:** add transport prop for travel tag ([3b32a13](https://bitbucket.org/enturas/design-system/commits/3b32a130f4bb91cbef05385b7c1d11b9aa8b8575))
+
 ## [4.0.12](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.0.11...@entur/travel@4.0.12) (2020-08-26)
 
 **Note:** Version bump only for package @entur/travel

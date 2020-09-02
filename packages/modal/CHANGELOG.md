@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.29](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.28...@entur/modal@1.1.29) (2020-09-02)
+
+### Bug Fixes
+
+- **modal:** adjust modal backdrop color ([ba08fdc](https://bitbucket.org/enturas/design-system/commits/ba08fdca717b88a588023e0467d14a8220ef9d5b))
+
 ## [1.1.28](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.27...@entur/modal@1.1.28) (2020-08-26)
 
 **Note:** Version bump only for package @entur/modal

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.3...@entur/form@3.4.4) (2020-09-02)
+
+### Bug Fixes
+
+- **baseformcontrol:** shift font size for new token ([0f64d35](https://bitbucket.org/enturas/design-system/commits/0f64d357f16abedbd7d40b31d9c25c1f4f6afe23))
+- **radiopanel:** shift font size for new token ([21ecdd4](https://bitbucket.org/enturas/design-system/commits/21ecdd4c36193e2f1167b5165319e279d03218fb))
+- fix font size for prepend and append ([8335cbf](https://bitbucket.org/enturas/design-system/commits/8335cbf0f7bb79b1e5bd1257e7350ed53b324ea4))
+
 ## [3.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.2...@entur/form@3.4.3) (2020-08-26)
 
 ### Bug Fixes

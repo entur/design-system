@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.4.0...@entur/tokens@2.0.0) (2020-09-02)
+
+### Features
+
+- **font sizes:** add new font size, and extra large sizes are shifted ([bcb99cf](https://bitbucket.org/enturas/design-system/commits/bcb99cf175340294c277a5278f9cfa38a9d57894))
+
+### BREAKING CHANGES
+
+- **font sizes:**
+- **font sizes:** if you are using extralarge or larger for font size | shift font size one size up to
+  remedy this. e.g. extralarge -> extralarge2
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.3.6...@entur/tokens@1.4.0) (2020-08-11)
 
 ### Bug Fixes

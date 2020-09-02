@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.5...@entur/alert@0.6.6) (2020-09-02)
+
+### Bug Fixes
+
+- **alert box:** shift font size for new token ([6c46880](https://bitbucket.org/enturas/design-system/commits/6c46880b2fcf5cc0ff9115dc2b9f00a3a58320b8))
+- **alertbox:** cursor pointer for close button ([4da18df](https://bitbucket.org/enturas/design-system/commits/4da18dfbde9176f6c1788edafdfd7b4af15ddb07))
+
 ## [0.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.4...@entur/alert@0.6.5) (2020-08-26)
 
 **Note:** Version bump only for package @entur/alert

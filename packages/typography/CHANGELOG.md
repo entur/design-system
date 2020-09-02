@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.2.3...@entur/typography@1.3.0) (2020-09-02)
+
+### Features
+
+- **heading4 to 6:** increase font size on heading 4 to 6 ([a84479c](https://bitbucket.org/enturas/design-system/commits/a84479c849ac0458a3cc26b4460e871f6df532fa))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.2.2...@entur/typography@1.2.3) (2020-08-19)
 
 ### Bug Fixes

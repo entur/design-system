@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.3...@entur/layout@1.7.4) (2020-09-02)
+
+### Bug Fixes
+
+- **media card:** shift font size for new token ([3185b6a](https://bitbucket.org/enturas/design-system/commits/3185b6a474f1ef8c369f6aba53c2b2c28c0fa140))
+- **navigation card:** shift font size for new token ([ed39b1e](https://bitbucket.org/enturas/design-system/commits/ed39b1ecc15b8a06fa40d85c467e2ffd8693b15c))
+
 ## [1.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.2...@entur/layout@1.7.3) (2020-08-19)
 
 **Note:** Version bump only for package @entur/layout

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.5...@entur/menu@3.1.0) (2020-09-02)
+
+### Bug Fixes
+
+- **pagination:** fix width for pagination with high pagecount ([d01d44d](https://bitbucket.org/enturas/design-system/commits/d01d44d7a64032f476adeb5c2d8e6de2d857d59a))
+- **pagination:** shift font size for new token ([5538ff3](https://bitbucket.org/enturas/design-system/commits/5538ff30ed226e123fee5be6b2c036499b824f3c))
+- **stepper:** fix stepper arrow edge ([0e37499](https://bitbucket.org/enturas/design-system/commits/0e37499bdd7da55d768f9f4f6e5ea720c0530713))
+
+### Features
+
+- **stepper:** add prop showstepperindex ([48b3f25](https://bitbucket.org/enturas/design-system/commits/48b3f256691e377b719ae1250b76af16f12b6445))
+
 ## [3.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.4...@entur/menu@3.0.5) (2020-08-26)
 
 **Note:** Version bump only for package @entur/menu

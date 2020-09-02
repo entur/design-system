@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.3.0...@entur/tooltip@2.3.1) (2020-09-02)
+
+### Bug Fixes
+
+- **tooltip:** fix tooltip not closing after mouse exit ([c85af1f](https://bitbucket.org/enturas/design-system/commits/c85af1fe7d8a38fab32d9b813fdb206e417f2428))
+- **tooltip:** simplify mouse exit code, and improve tests ([1ad44c7](https://bitbucket.org/enturas/design-system/commits/1ad44c729584ed9d7ce04aab9f71689d0d31f40b))
+
 # [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.2.5...@entur/tooltip@2.3.0) (2020-08-26)
 
 ### Features
