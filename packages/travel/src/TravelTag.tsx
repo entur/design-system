@@ -21,7 +21,7 @@ export type TravelTagProps = {
    * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
-  transport:
+  transport?:
     | 'bus'
     | 'metro'
     | 'air'
