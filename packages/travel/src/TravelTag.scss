@@ -2,7 +2,7 @@
 
 .eds-travel-tag {
   background-color: $colors-greys-grey20;
-  border-radius: $border-widths-small;
+  border-radius: $border-radiuses-medium;
   color: inherit;
   display: inline-flex;
   font-size: $font-sizes-medium;
@@ -44,6 +44,81 @@
       box-shadow: $shadows-focus;
       .eds-contrast & {
         box-shadow: $shadows-focus-contrast;
+      }
+    }
+  }
+  &--transport {
+    &-bus {
+      background: $colors-transport-default-bus;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-bus;
+        color: $colors-brand-blue;
+      }
+    }
+    &-metro {
+      background: $colors-transport-default-metro;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-metro;
+        color: $colors-brand-blue;
+      }
+    }
+    &-air {
+      background: $colors-transport-default-plane;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-plane;
+        color: $colors-brand-blue;
+      }
+    }
+    &-tram {
+      background: $colors-transport-default-tram;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-tram;
+        color: $colors-brand-blue;
+      }
+    }
+    &-rail {
+      background: $colors-transport-default-train;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-train;
+        color: $colors-brand-blue;
+      }
+    }
+    &-water {
+      background: $colors-transport-default-ferry;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-ferry;
+        color: $colors-brand-blue;
+      }
+    }
+    &-bike,
+    &-scooter {
+      background: $colors-transport-default-mobility;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-mobility;
+        color: $colors-brand-blue;
+      }
+    }
+    &-foot {
+      background: $colors-transport-default-walk;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-walk;
+        color: $colors-brand-blue;
+      }
+    }
+    &-car {
+      background: $colors-transport-default-taxi;
+      color: $colors-brand-white;
+      .eds-contrast & {
+        background: $colors-transport-contrast-taxi;
+        color: $colors-brand-blue;
       }
     }
   }

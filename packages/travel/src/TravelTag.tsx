@@ -21,6 +21,17 @@ export type TravelTagProps = {
    * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
+  transport:
+    | 'bus'
+    | 'metro'
+    | 'air'
+    | 'tram'
+    | 'rail'
+    | 'water'
+    | 'bike'
+    | 'scooter'
+    | 'foot'
+    | 'car';
   [key: string]: any;
 };
 
@@ -29,6 +40,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   children,
   className,
   alert = 'none',
+  transport,
   ...rest
 }) => {
   let isClosable = onClose ? true : false;
@@ -40,6 +52,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         'eds-travel-tag--closable': isClosable,
         'eds-travel-tag--alert': alert !== 'none',
         'eds-travel-tag--icon-and-text': numberOfChildren > 1,
+        [`eds-travel-tag--transport-${transport}`]: transport,
       })}
       {...rest}
     >
