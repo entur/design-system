@@ -112,6 +112,9 @@ function modeCalc(mode: string): modeCalcResult {
         pattern: 'dashed',
       };
     default:
+      console.error(
+        'No transport modality was chosen. There is likely an error in your usage of TravelLeg.',
+      );
       return {
         color: colors.brand.blue,
         contrast: colors.brand.white,
