@@ -63,6 +63,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     }, 150);
   };
   const onMouseExit: () => void = () => {
+    setShowTooltip(false);
     clearTimeout(hoverTimer);
   };
   React.useEffect(() => {
@@ -105,7 +106,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
     childProps.onBlur = () => setShowTooltip(false);
   }
   if (!disableHoverListener) {
-    childProps.onMouseLeave = () => setShowTooltip(false);
     childProps.onMouseEnter = e => handleOpen(e);
     childProps.onMouseLeave = () => onMouseExit();
   }

@@ -16,13 +16,13 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
   const tooltipdiv = getByText(children);
 
   expect(queryByText(content)).not.toBeInTheDocument();
-  fireEvent.mouseOver(tooltipdiv);
+  fireEvent.mouseEnter(tooltipdiv);
 
   await waitFor(() => {
     expect(queryByText(content)).toBeInTheDocument();
 
     expect(getByText(content)).toHaveClass('tester');
-    fireEvent.mouseLeave(getByText(children));
+    fireEvent.mouseLeave(tooltipdiv);
     expect(queryByText(content)).not.toBeInTheDocument();
   });
 });
