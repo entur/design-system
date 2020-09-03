@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
-import { Heading4 } from '@entur/typography';
+import { Heading5 } from '@entur/typography';
 import { BaseExpand } from './BaseExpand';
 
 import './BaseExpandablePanel.scss';
@@ -42,9 +42,9 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         {...rest}
       >
         <div className="eds-expandable-panel__grid">
-          <Heading4 margin="none" as="div">
+          <Heading5 margin="none" as="div">
             {title}
-          </Heading4>
+          </Heading5>
           <div className="eds-expandable-panel__icon-container">
             <ExpandArrow open={open} />
           </div>
