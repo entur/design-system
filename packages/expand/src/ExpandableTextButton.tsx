@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading4 } from '@entur/typography';
+import { Heading5 } from '@entur/typography';
 import { ExpandArrow } from './ExpandArrow';
 
 export type ExandableTextButtonProps = {
@@ -25,7 +25,7 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
       onClick={onToggle}
       {...rest}
     >
-      <Heading4 as="span">{children}</Heading4>
+      <Heading5 as="span">{children}</Heading5>
       <ExpandArrow open={open} className="eds-expandable-text__arrow" inline />
     </button>
   );
