@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Heading4, SmallText } from '@entur/typography';
+import { Heading5, SmallText } from '@entur/typography';
 
 export type LoaderProps = {
   /** Tekst som beskriver prosessen */
@@ -36,7 +36,7 @@ export const Loader: React.FC<LoaderProps> = ({
       {...rest}
     >
       {children && (
-        <Heading4 className="eds-loader__label">{children}</Heading4>
+        <Heading5 className="eds-loader__label">{children}</Heading5>
       )}
       <div
         className={classNames('eds-loader__bar', {
