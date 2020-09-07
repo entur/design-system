@@ -14,6 +14,13 @@ module.exports = {
         path: `${__dirname}/changelogs/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `downloads`,
+        path: `${__dirname}/src/gatsby-theme-docz/downloads/`,
+      },
+    },
     'gatsby-transformer-remark',
   ],
 };

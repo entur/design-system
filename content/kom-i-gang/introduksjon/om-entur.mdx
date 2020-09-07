@@ -8,6 +8,9 @@ order: 1
 ---
 
 import PageHeader from '~/components/PageHeader';
+import Bus from './Bus.png';
+import City from './City.png';
+import Daglige from './Dagligeruter.png';
 import './om-entur.scss';
 
 <PageHeader />
@@ -18,45 +21,51 @@ Entur bearbeider denne informasjonen, og syr den sammen slik at alle kan få til
 
 <div className="stats-wrapper">
   <div className="stats-box">
-    <div className="stats-box__number">58 9238</div>
-    <div className="stats-box__line"></div>
+    <div className="stats-box__image">
+      <img src={City} width="100%" />
+    </div>
+    <div className="stats-box__number">58 239</div>
     <div className="stats-box__text">stoppesteder</div>
   </div>
   <div className="stats-box">
+    <div className="stats-box__image">
+      <img src={Bus} width="100%" />
+    </div>
     <div className="stats-box__number">57</div>
-    <div className="stats-box__line"></div>
     <div className="stats-box__text">kollektivselskaper</div>
   </div>
   <div className="stats-box">
+    <div className="stats-box__image">
+      <img src={Daglige} width="100%" />
+    </div>
     <div className="stats-box__number">4000</div>
-    <div className="stats-box__line"></div>
     <div className="stats-box__text">daglige ruter</div>
   </div>
 </div>
 
-## Kundegrupper
+## Våre kunder
 
-Slik gjør Entur det enklere å tilby, vise fem og reise med kollektiv transport for våre ulike kundegrupper:
+Slik gjør Entur det enklere å reise kollektivt for:
 
-### 1. Kollektivreisende
+### Kollektivreisende
 
 Planlegg hele reisen fra ett sted — uansett hvor du skal. For de reisende tilbyr Entur en nasjonal reiseplanlegger, der man får oppdaterte reiseforslag for alle kollektivreiser i Norge. Denne løsningen er gratis å bruke og konkurransenøytral. Uansett om reisen består av flere delstrekninger, vil Entur gjøre det mulig å kjøpe billetter til hele reisen med ett tastetrykk. Dette gjelder selv om man må bytte mellom tog og buss, eller reise på tvers av fylkesgrenser.
 
 I fremtiden vil flere og flere tilby reiseinformasjon som en del av sine tjenester. Blant annet bruker Google, Finn, Gule Sider og Bing data fra oss i dag.
 
-### 2. Databrukere
+### Databrukere
 
 Et samlet kollektiv-Norge gir muligheter — for store og små. Vi gjør reisedata standardiserte og enkelt integrerbare. Dette er kostnadseffektivt for samfunnet, og åpner opp nye bruksområder for kollektivinformasjon. Når Entur samler og formidler kollektivdata på ett sted, kan selv små kollektivselskaper nå ut med sin ruteinformasjon til reisende fra hele landet.
 
 Rutedata er ikke lenger forbeholdt kollektivbransjen. Vi deler gratis ut alt vi samler inn til de som ønsker å tilby reiseinformasjon som en del av sine tjenester. Vi er overbevist om at informasjon om kollektivtrafikk er nyttig for mange som lager digitale tjenester. Yr ga folket været, Entur vil gi folket hele landets kollektivreiser.
 
-### 3. Kollektivselskaper
+### 3ollektivselskaper
 
 Entur henter inn og tilgjengeliggjør rute- og reisedata for all kollektivtrafikk i Norge. Dette gjør det enklere og billigere for kollektivselskapene, siden de ikke trenger å lage og vedlikeholde egne databaser og systemer for sine data. Dessuten får de også muligheten til å bruke data fra andre selskaper, slik at de gi kundene sine god informasjon om reiser som går utover de strekningene de selv betjener.
 
 Å reise kollektivt blir virkelig enkelt idet man også kan kjøpe alle billettene man trenger på ett sted. For å legge til rette for enkelt billettkjøp, jobber Entur med å utvide samarbeidet på tvers av kollektivselskaper. Entur har et kompetent fagmiljø med tett kontakt til Samferdselsdepartementet. Vi tror at økt samarbeid mellom kollektivselskapene gjør det enklere for enda flere å reise kollektivt.
 
-### 4. Togselskaper
+### Togselskaper
 
 Entur driver billettsystem, kundesenter og stasjonenes salg og service på vegne av jernbanen i Norge. Jernbanereformen kan føre til at vi får flere togselskaper på norske skinner. Entur har fått oppgaven med å forvalter salg og distribusjon av billetter på vegne av alle togselskapene.
 Entur har også ansvar for salg av utenlandsbilletter, og forvalter personalbillettordningen på vegne av Jernbanedirektoratet.

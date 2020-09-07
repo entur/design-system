@@ -14,7 +14,10 @@
     @include for-desktop {
       grid-row-start: 1;
     }
-    padding: 0 $space-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   &-wide-grid {
     @include for-desktop {
@@ -26,13 +29,26 @@
   }
   &-grey-box {
     background-color: $colors-greys-grey30;
-    padding-bottom: $space-default;
-    @include for-desktop {
-      padding-bottom: 0;
+    padding: $space-extra-large $space-extra-large2;
+  }
+}
+.lofter {
+  padding: 1rem 2rem 0 0rem;
+  display: block;
+  .eds-h3 {
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      display: block;
+      background: $colors-brand-coral;
+      height: 4px;
+      width: 32px;
     }
   }
-  &-lofter {
-    padding-bottom: $space-medium;
-    display: block;
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: $space-large;
   }
 }

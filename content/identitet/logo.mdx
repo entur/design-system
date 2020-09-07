@@ -1,6 +1,6 @@
 ---
 name: Logo
-description: Hvordan Entur bruker logoen sin, og hva den symboliserer.
+description: Streken i logoen setter fokus på EN og det som gjør oss unike. Streken er et symbol på innholdet i sin mest minimalistiske form.
 parent: Identitet
 route: /identitet/logo
 menu: Verktøykassen
@@ -17,35 +17,17 @@ import farger from './logo/farger.png';
 import rotering from './logo/rotering.png';
 import oppsett from './logo/oppsett.png';
 import bakgrunn from './logo/bakgrunn.png';
+import LogoPreview from '~/gatsby-theme-docz/components/LogoPreview';
 import './logo.scss';
 
-<PageHeader>
-  Streken i logoen setter fokus på EN og det som gjør oss unike. Streken er et
-  symbol på innholdet i sin mest minimalistiske form.
-</PageHeader>
+<PageHeader></PageHeader>
 
 Logoen er vår signatur, og skal være tilstede på alle uttak. Vi har utarbeidet en rekke retningslinjer for bruk av logo, og endel eksempler på bruk som skal unngås. Det er viktig at du følger disse, så vi oppnår et konsekvent uttrykk.
 
-<div className="logo-display-wrapper">
-  <div className="logo-display">
-    <div className="logo-display-background">
-      <img src={positive} alt="Entur sin logo med mørk tekst" />
-    </div>
-    <div className="logo-display-text">
-      <div className="logo-display-text__heading">Entur Logo Blue</div>
-      Brukes på lyse bakgrunner og rolige bilder.
-    </div>
-  </div>
-  <div className="logo-display">
-    <div className="logo-display-background logo-display-background--dark">
-      <img src={negative} alt="Entur sin logo med hvit tekst" />
-    </div>
-    <div className="logo-display-text">
-      <div className="logo-display-text__heading">Entur Logo White</div>
-      Brukes på mørke bakgrunner og bilder med rolige, mørke toner.
-    </div>
-  </div>
-</div>
+Vi har laget ulike logopakker som passer til alle formål, og som kan lastes ned her på siden.
+RGB er til digitalt bruk, og CMYK til trykk.
+
+<LogoPreview></LogoPreview>
 
 ## Retningslinjer for bruk
 

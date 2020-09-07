@@ -8,7 +8,8 @@ order: 2
 ---
 
 import PageHeader from '~/components/PageHeader';
-import { Heading3 } from '@entur/typography';
+import { Heading3, Heading4, Paragraph } from '@entur/typography';
+import { PurposeIcon, ViewIcon, ValueIcon } from '@entur/icons';
 import './merkevareplattform.scss';
 
 <PageHeader title="Merkevareplattform" />
@@ -17,36 +18,39 @@ import './merkevareplattform.scss';
 
 <div className="designprinsipper-top-grid">
   <div className="designprinsipper-grey-box designprinsipper-three-grid">
-    <Heading3>Formål</Heading3>
-    Kobler kollektiv-Norge sammen slik at det blir enkelt å planlegge, kjøpe og reise
-    kollektivt.
+    <PurposeIcon size="48" />
+    <Heading4>Formål</Heading4>
+    <Paragraph>
+      Kobler kollektiv-Norge sammen slik at det blir enkelt å planlegge, kjøpe
+      og reise kollektivt.
+    </Paragraph>
   </div>
   <div className="designprinsipper-grey-box designprinsipper-three-grid">
-    <Heading3>Vision</Heading3>I samarbeid om enkle, bærekraftige reiser.
+    <ViewIcon size="48" />
+    <Heading4>Visjon</Heading4>
+    <Paragraph>I samarbeid om enkle, bærekraftige reiser.</Paragraph>
   </div>
   <div className="designprinsipper-grey-box designprinsipper-three-grid">
-    <Heading3>Verdier</Heading3>
-    <ul>
-      <li>Tilstede</li>
-      <li>Utforskende</li>
-      <li>Raus</li>
-      <li>Nyttig</li>
-      <li>Med integritet</li>
-    </ul>
+    <ValueIcon size="48" />
+    <Heading4>Verdier</Heading4>
+    <Paragraph>Tilstede, utforskende, raus, nyttig og med integritet</Paragraph>
   </div>
-  <div className="designprinsipper-grey-box designprinsipper-wide-grid">
-    <Heading3>Våre løfter</Heading3>
-    <div className="designprinsipper-lofter">
-      For de reisende skal vi gjøre det
-      <strong> enklere å velge kollektivt</strong>.
-    </div>
-    <div className="designprinsipper-lofter">
-      For reisetilbydere skal vi levere
-      <strong> en konkurransedyktig plattform for deres vediskapning</strong>.
-    </div>
-    <div className="designprinsipper-lofter">
-      For samfunnet skal vi få <strong>flere til å reise kollektivt</strong>.
-    </div>
+</div>
+
+<div className="lofter-wrapper">
+  <div className="lofter">
+    <Heading3>For de reisende</Heading3>
+    <Paragraph> skal vi gjøre det enklere å velge kollektivt.</Paragraph>
+  </div>
+  <div className="lofter">
+    <Heading3>For reisetilbydere</Heading3>
+    <Paragraph>
+      skal vi levere en konkurransedyktig plattform for deres vediskapning.
+    </Paragraph>
+  </div>
+  <div className="lofter">
+    <Heading3>For samfunnet</Heading3>
+    <Paragraph>skal vi få flere til å reise kollektivt.</Paragraph>
   </div>
 </div>
 
