@@ -1,5 +1,44 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+.blackwhite-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: $space-default;
+}
+
+.ds-logo {
+  .best-practices__heading {
+    min-height: 15rem;
+    img {
+      width: 50%;
+      margin: 2.5rem auto 0;
+    }
+  }
+  .endre-oppsett {
+    .best-practices__heading {
+      img {
+        width: 25%;
+      }
+    }
+  }
+  .logo-pa-bakgrunn {
+    .best-practices__heading {
+      background: none;
+      position: relative;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        z-index: $z-indexes-behind;
+      }
+    }
+  }
+}
+
 .logo-display {
   &-wrapper {
     display: grid;

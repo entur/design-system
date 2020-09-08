@@ -8,16 +8,22 @@ order: 1
 ---
 
 import PageHeader from '~/components/PageHeader';
-import positive from './logo/Positive.svg';
-import negative from './logo/Negative.svg';
 
-import proporsjoner from './logo/proporsjoner.png';
-import effekter from './logo/effekter.png';
-import farger from './logo/farger.png';
-import rotering from './logo/rotering.png';
-import oppsett from './logo/oppsett.png';
-import bakgrunn from './logo/bakgrunn.png';
 import LogoPreview from '~/gatsby-theme-docz/components/LogoPreview';
+import EnLogoDownload from '~/gatsby-theme-docz/components/EnLogoDownload';
+import BW1 from './Logo/Sortoghvit_Positiv.png';
+import BW2 from './Logo/Sortoghvit_Negativ.png';
+import Free1 from './Logo/Logo_frisone.png';
+import Free2 from './Logo/Logo_minimumstr.png';
+import Frisone from './Logo/App_ikon_frisone.png';
+import { Heading5, Paragraph } from '@entur/typography';
+import { BestPractices, Example } from '~/components/BestPractices';
+import Proporsjoner from './Logo/Proposjoner.png';
+import Ikkeroter from './Logo/Ikkeroter.png';
+import SkifteFarge from './Logo/Skiftefarge.png';
+import Effekter from './Logo/Effekter.png';
+import Endreoppsett from './Logo/Endreoppsett.png';
+import Logobakgrunn from './Logo/Logobakgrunn.png';
 import './logo.scss';
 
 <PageHeader></PageHeader>
@@ -29,41 +35,101 @@ RGB er til digitalt bruk, og CMYK til trykk.
 
 <LogoPreview></LogoPreview>
 
+## Svart-hvitt logo
+
+Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i sort/hvite uttak. Hvis nødvendig settes logoen i fargen som gir best kontrast mot bakgrunnen.
+
+<div className="blackwhite-wrapper">
+  <div>
+    <img src={BW1} width="100%" />
+  </div>
+  <div>
+    <img src={BW2} width="100%" />
+  </div>
+</div>
+
+## Frisone og minimum størrelse
+
+<div className="blackwhite-wrapper">
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <img src={Free1} width="100%" />
+    <Heading5>Frisone rundt logo</Heading5>
+    <Paragraph>
+      For at lesbarheten til logoen skal være tydelig er det viktig å respektere
+      frisonen, så logoen ikke blir forstyrret. Unngå å plassere tekst, bilder
+      eller annet i dette området. Plasseres logoen i et hjørne av et format, er
+      dette absolutte minste avstand den bør ha til formatets kanter.
+    </Paragraph>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <img src={Free2} width="100%" />
+    <Heading5>Minimum størrelse</Heading5>
+    <Paragraph>
+      Når logoen skal representeres i små størrelser er det viktig at høyden
+      ikke blir lavere enn 25 px på digitalt eller 6 mm på trykk.
+    </Paragraph>
+  </div>
+</div>
+
 ## Retningslinjer for bruk
 
-Endre, forvrenge eller behandle logoen galt kan føre til uklar kommunikasjon.
-Aldri forsøk å lage logoen selv, i en annen font, eller endre størrelsen eller proporsjoner.
-Under er et par eksempler på hva du skal unngå.
+Endre, forvrenge eller behandle logoen galt kan føre til uklar kommunikasjon. Aldri forsøk å lage logoen selv, i en annen font, eller endre størrelsen eller proporsjoner. Under er et par eksempler på hva du skal unngå.
 
-<div className="guidelines-logo-wrapper">
-  <div>
-    <img className="guidelines-logo__image" src={proporsjoner} alt="" />
-    <div className="guidelines-logo__heading">Proporsjoner</div>
-    Logoen skal aldri dras ut av de opprinnelige pro-porsjonene.
-  </div>
-  <div>
-    <img className="guidelines-logo__image" src={effekter} alt="" />
-    <div className="guidelines-logo__heading">Effekter</div>
-    Legg aldri en effekt på logoen.
-  </div>
-  <div>
-    <img className="guidelines-logo__image" src={farger} alt="" />
-    <div className="guidelines-logo__heading">Skifte farge</div>
-    Logoen skal ikke brukes i andre farger enn det som er oppgitt.
-  </div>
-  <div>
-    <img className="guidelines-logo__image" src={rotering} alt="" />
-    <div className="guidelines-logo__heading">Ikke rotér</div>
-    Roter, skru eller vend aldri på logoen.
-  </div>
-  <div>
-    <img className="guidelines-logo__image" src={oppsett} alt="" />
-    <div className="guidelines-logo__heading">Endre oppsett</div>
-    Flytt aldri på bokstavene eller streken i logoen.
-  </div>
-  <div>
-    <img className="guidelines-logo__image" src={bakgrunn} alt="" />
-    <div className="guidelines-logo__heading">Logo på bakgrunn</div>
-    Sett aldri logoen på en bakgrunn som ikke gir nok kontrast.
-  </div>
+<BestPractices className="ds-logo">
+  <Example type="dont" src={Proporsjoner}>
+    <Heading5>Proporsjoner</Heading5>
+    <Paragraph>
+      Logoen skal aldri dras ut av de opprinnelige proporsjonene.
+    </Paragraph>
+  </Example>
+  <Example type="dont" src={Effekter}>
+    <Heading5>Effekter</Heading5>
+    <Paragraph>Legg aldri en effekt på logoen.</Paragraph>
+  </Example>
+</BestPractices>
+<BestPractices className="ds-logo">
+  <Example type="dont" src={SkifteFarge}>
+    <Heading5>Skifte farge</Heading5>
+    <Paragraph>
+      Logoen skal ikke brukes i andre farger enn det som er oppgitt.
+    </Paragraph>
+  </Example>
+  <Example type="dont" src={Ikkeroter}>
+    <Heading5>Ikke rotér</Heading5>
+    <Paragraph>Roter, skru eller vend aldri på logoen.</Paragraph>
+  </Example>
+</BestPractices>
+<BestPractices className="ds-logo">
+  <Example type="dont" src={Endreoppsett} className="endre-oppsett">
+    <Heading5>Endre oppsett</Heading5>
+    <Paragraph>Flytt aldri på bokstavene eller streken i logoen.</Paragraph>
+  </Example>
+  <Example type="dont" src={Logobakgrunn} className="logo-pa-bakgrunn">
+    <Heading5>Logo på bakgrunn</Heading5>
+    <Paragraph>
+      Sett aldri logoen på en bakgrunn som ikke gir nok kontrast.
+    </Paragraph>
+  </Example>
+</BestPractices>
+
+## EN-logo
+
+<EnLogoDownload></EnLogoDownload>
+
+Denne logo varianten skal kun benyttes som app-ikon for iOS, Android og AppGallery. I tillegg til Favicon.
+
+<div
+  style={{
+    width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '2.5rem',
+  }}
+>
+  <img width="100%" src={Frisone} />
+  <Heading5>Frisone rundt app-ikon</Heading5>
+  <Paragraph>
+    Plasseres ikonet i et hjørne av et format, er dette absolutte minste avstand
+    den bør ha til formatets kanter.
+  </Paragraph>
 </div>
