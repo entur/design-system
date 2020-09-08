@@ -71,7 +71,7 @@ const LogoPreview = () => {
             <DownloadIcon />
             Entur Logoer RGB
           </TertiaryButton>
-          <TertiaryButton as="a" href={files[0].node.publicURL} download>
+          <TertiaryButton as="a" href={files[1].node.publicURL} download>
             <DownloadIcon />
             Entur Logoer CMYK
           </TertiaryButton>

@@ -2,30 +2,38 @@ import React from 'react';
 import cx from 'classnames';
 import './TypographyDisplay.scss';
 type TypographyDisplayProps = {
-  bold?: boolean;
+  weight: 300 | 400 | 500 | 600;
 };
 
-function TypographyDisplay({ bold }: TypographyDisplayProps) {
+function TypographyDisplay({ weight }: TypographyDisplayProps) {
+  function FontName() {
+    switch (weight) {
+      case 300:
+        return 'Light';
+      case 400:
+        return 'Regular';
+      case 500:
+        return 'Medium';
+      case 600:
+        return 'DemiBold';
+    }
+  }
   return (
     <>
-      <div className="typography-display-header">
-        Nationale {bold ? 'DemiBold' : 'Medium'}{' '}
-      </div>
+      <div className="typography-display-header">Nationale {FontName()} </div>
       <div className="typography-display">
         <div className="typography-display-presenter">
-          <TypographyAlphabet bold={bold} />
-          <TypographyAlphabet bold={bold} italic />
+          <TypographyAlphabet weight={weight} />
+          <TypographyAlphabet weight={weight} italic />
         </div>
         <div className="typography-display-information">
           <div className="typography-display-information__text">
-            <div style={{ fontWeight: 'bold' }}>
-              Nationale {bold ? 'DemiBold' : 'Medium'} Normal
-            </div>
+            <div style={{ fontWeight: 'bold' }}>Nationale {FontName()}</div>
             <div>
               <span className="typography-display-information__text-title">
                 Weight:{' '}
               </span>
-              {bold ? '600' : '500'}
+              {weight}
             </div>
             <div>
               <span className="typography-display-information__text-title">
@@ -36,13 +44,13 @@ function TypographyDisplay({ bold }: TypographyDisplayProps) {
           </div>
           <div className="typography-display-information__text">
             <div style={{ fontWeight: 'bold' }}>
-              Nationale {bold ? 'DemiBold' : 'Medium'} Italic
+              Nationale {FontName()} Italic
             </div>
             <div>
               <span className="typography-display-information__text-title">
                 Weight:{' '}
               </span>
-              {bold ? '600' : '500'}
+              {weight}
             </div>
             <div>
               <span className="typography-display-information__text-title">
@@ -59,16 +67,16 @@ function TypographyDisplay({ bold }: TypographyDisplayProps) {
 
 type TypographyAlphabetProps = {
   italic?: boolean;
-  bold?: boolean;
+  weight: 300 | 400 | 500 | 600;
 };
 
-function TypographyAlphabet({ italic, bold }: TypographyAlphabetProps) {
+function TypographyAlphabet({ italic, weight }: TypographyAlphabetProps) {
   const classList = cx([
     'typography-alphabet-wrapper',
     {
-      'typography-alphabet--bold': bold,
       'typography-alphabet--italic': italic,
     },
+    [`typography-alphabet--weight-${weight}`],
   ]);
 
   return (

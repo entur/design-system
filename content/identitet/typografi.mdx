@@ -12,7 +12,7 @@ import TypographyDisplay from '~/components/TypographyDisplay';
 import TypoEksempel from './Typo_eksempel.png';
 import { BannerAlertBox } from '@entur/alert';
 import { Link } from 'docz';
-import { LinkText } from '@entur/typography';
+import { Link as LinkText } from '@entur/typography';
 
 <PageHeader />
 
@@ -35,9 +35,10 @@ I digitale flater skal fonten brukes kun i to vekter, medium for ingress og løp
   her.
 </BannerAlertBox>
 
-<TypographyDisplay />
-
-<TypographyDisplay bold />
+<TypographyDisplay weight={300} />
+<TypographyDisplay weight={400} />
+<TypographyDisplay weight={500} />
+<TypographyDisplay weight={600} />
 
 ## Lisens
 
