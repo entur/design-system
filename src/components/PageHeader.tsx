@@ -3,6 +3,7 @@ import { useCurrentDoc } from 'docz';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { CopyablePreformattedText } from '~/components/CopyablePreformattedText';
 import { useSettings } from './SettingsContext';
+import { PackageChangelog } from '../gatsby-theme-docz/components/PackageChangelog';
 import './PageHeader.scss';
 
 type Props = {
@@ -31,23 +32,26 @@ const PageHeader: React.FC<Props> = ({
   return (
     <header>
       {categoryToShow && (
-        <Label as="div" style={{ letterSpacing: '1px' }}>
+        <Label
+          as="div"
+          style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
+        >
           {categoryToShow.toUpperCase()}
         </Label>
       )}
-      <Heading1 style={{ marginTop: '0.3em' }}>
-        {titleToShow}
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Heading1 margin="none">{titleToShow}</Heading1>
         {npmPackage && userType === 'developer' && (
-          <>
-            <button style={{ float: 'right' }}>changelog</button>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
             <img
+              style={{ marginRight: '0.5rem' }}
               alt="npm"
-              style={{ float: 'right' }}
               src={`https://img.shields.io/npm/v/@entur/${npmPackage}?color=181c56&style=flat-square`}
             ></img>
-          </>
+            <PackageChangelog packageName={npmPackage}></PackageChangelog>
+          </span>
         )}
-      </Heading1>
+      </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <div>

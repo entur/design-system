@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Modal } from '@entur/modal/dist';
-import { PrimaryButton } from '@entur/button';
-import { GridContainer, GridItem } from '@entur/grid';
+import { TertiaryButton } from '@entur/button';
 import ReactMarkdown from 'markdown-to-jsx';
 import {
-  Heading1,
-  Heading2,
   Heading3,
   Heading4,
   Heading5,
@@ -14,13 +11,12 @@ import {
   Link,
 } from '@entur/typography';
 
-/**Must be in this (gastby-theme-docz/components) for graphql query to run */
-const Changelog = () => {
+export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const [openModal, setOpenModal] = useState(false);
   const [packageChangelog, setPackageChangelog] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const query = useStaticQuery(graphql`
-    query ChangelogsQuery {
+    query PackageChangelog {
       allMarkdownRemark {
         edges {
           node {
@@ -36,24 +32,23 @@ const Changelog = () => {
       }
     }
   `);
+  const changelog = query.allMarkdownRemark.edges.filter(
+    k => k.node.parent.name === packageName,
+  );
+  console.log(changelog);
 
   return (
-    <div>
-      <GridContainer spacing="medium">
-        {query.allMarkdownRemark.edges.map(changelog => (
-          <GridItem small={6} medium={4} key={changelog.node.parent.name}>
-            <PrimaryButton
-              onClick={() => {
-                setPackageChangelog(changelog.node.rawMarkdownBody);
-                setModalTitle(changelog.node.parent.name);
-                setOpenModal(true);
-              }}
-            >
-              {changelog.node.parent.name}
-            </PrimaryButton>
-          </GridItem>
-        ))}
-      </GridContainer>
+    <>
+      <TertiaryButton
+        onClick={() => {
+          setPackageChangelog(changelog[0].node.rawMarkdownBody);
+          setModalTitle(changelog[0].node.parent.name);
+          setOpenModal(true);
+        }}
+      >
+        Changelog
+        {/* {changelog[0].node.parent.name} */}
+      </TertiaryButton>
 
       <Modal
         onDismiss={() => setOpenModal(false)}
@@ -89,8 +84,6 @@ const Changelog = () => {
           {packageChangelog}
         </ReactMarkdown>
       </Modal>
-    </div>
+    </>
   );
 };
-
-export default Changelog;

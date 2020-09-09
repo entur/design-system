@@ -24,6 +24,7 @@ import { hex } from 'wcag-contrast';
 import ColorSwatch from './ColorSwatch';
 import { CopyablePreformattedText } from './CopyablePreformattedText';
 import TransportColors from './TransportColors';
+import convert from 'color-convert';
 
 type ColorObject = {
   name: string;
@@ -167,7 +168,6 @@ const ColorDrawer: React.FC<{ color: ColorObject; description?: string }> = ({
   color,
   description,
 }) => {
-  console.log(color);
   return (
     <div>
       <div
@@ -187,6 +187,11 @@ const ColorDrawer: React.FC<{ color: ColorObject; description?: string }> = ({
       <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
         {color.rgb}
       </CopyablePreformattedText>
+      <Label>CMYK</Label>
+      <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
+        {convert.hex.cmyk(color.hex).toString()}
+      </CopyablePreformattedText>
+
       <Heading4>Kontrast</Heading4>
       <Paragraph>
         Lær mer om{' '}
