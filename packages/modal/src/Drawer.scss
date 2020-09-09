@@ -23,6 +23,7 @@
   min-width: 20rem;
   width: 25vw;
   z-index: $z-indexes-modal;
+  overflow-y: auto;
 
   .eds-contrast & {
     background: $colors-blues-blue10;
