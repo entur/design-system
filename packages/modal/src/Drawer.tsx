@@ -31,6 +31,8 @@ export type DrawerProps = {
   open?: boolean;
   /** Tittel på toppen av draweren */
   title: string;
+  /** Styling som sendes til Drawer */
+  style?: React.CSSProperties;
 };
 
 export const Drawer: React.FC<DrawerProps> = ({
@@ -41,6 +43,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   open = true,
   onDismiss,
   title,
+  style,
 }) => {
   const titleId = useRandomId('eds-drawer');
 
@@ -64,6 +67,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           aria-labelledby={titleId}
           className={classNames('eds-drawer', className)}
           onKeyDown={handleKeyDown}
+          style={style}
         >
           <div className="eds-drawer__content">
             <Heading3 as="h2" id={titleId}>
