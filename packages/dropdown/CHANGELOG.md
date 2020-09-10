@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.12](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.11...@entur/dropdown@1.3.12) (2020-09-10)
+
+### Bug Fixes
+
+- **dropdown:** adjust placeholder color ([2a555d8](https://bitbucket.org/enturas/design-system/commits/2a555d8494979cf47608bb5d93a9a552031770b9))
+
 ## [1.3.11](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.10...@entur/dropdown@1.3.11) (2020-09-02)
 
 **Note:** Version bump only for package @entur/dropdown

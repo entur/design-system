@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.13](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.12...@entur/expand@3.2.13) (2020-09-10)
+
+### Bug Fixes
+
+- **expandable panel:** adjust font size ([5e9080d](https://bitbucket.org/enturas/design-system/commits/5e9080dd9dfc438b4e2d6c8cfae9bff3f918b3e3))
+- **expandable text button:** adjust heading size ([40d3064](https://bitbucket.org/enturas/design-system/commits/40d3064e34badaa76497cbbc84de6e4ddd43a401))
+
 ## [3.2.12](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.11...@entur/expand@3.2.12) (2020-09-02)
 
 **Note:** Version bump only for package @entur/expand

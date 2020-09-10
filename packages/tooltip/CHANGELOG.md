@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.3.1...@entur/tooltip@2.4.0) (2020-09-10)
+
+### Features
+
+- **tooltip:** add poppermodifiers prop ([72d47d8](https://bitbucket.org/enturas/design-system/commits/72d47d8a4c37443ef736abbe6e7abca649e0dcb7))
+
 ## [2.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.3.0...@entur/tooltip@2.3.1) (2020-09-02)
 
 ### Bug Fixes

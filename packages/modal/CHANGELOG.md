@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.29...@entur/modal@1.2.0) (2020-09-10)
+
+### Bug Fixes
+
+- **drawer:** add overflow-y:auto for drawer ([687cea7](https://bitbucket.org/enturas/design-system/commits/687cea7ac5f3451951930a5a882ffbb3ad3a8615))
+
+### Features
+
+- **drawer:** add style prop support ([77fbf0d](https://bitbucket.org/enturas/design-system/commits/77fbf0d74450930ca9359b51ca1c09dbe1070fc0))
+
 ## [1.1.29](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.28...@entur/modal@1.1.29) (2020-09-02)
 
 ### Bug Fixes

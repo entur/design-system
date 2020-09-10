@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.1.0...@entur/menu@3.1.1) (2020-09-10)
+
+### Bug Fixes
+
+- **collapsiblesidenavigation:** improve collapse functionality ([619f352](https://bitbucket.org/enturas/design-system/commits/619f3523396ecc09ec0099eae2322a662978eda9))
+- **sidenavigation:** adjust border-color and position ([63a151a](https://bitbucket.org/enturas/design-system/commits/63a151a54ac98cd458c07d1cefcf21eabfb6275a))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.0.5...@entur/menu@3.1.0) (2020-09-02)
 
 ### Bug Fixes
