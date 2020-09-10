@@ -32,11 +32,15 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
     updater: onCollapseToggle,
   });
 
+  const openCollapsedMenu = () => {
+    setCollapsedMenu(false);
+  };
+
   return (
     <SideNavigationContext.Provider
       value={{
         isCollapsed: collapsedMenu,
-        setIsCollapsed: (e: boolean) => setCollapsedMenu(e),
+        openCollapsedMenu: () => openCollapsedMenu(),
       }}
     >
       <ul
@@ -63,18 +67,17 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
 
 const SideNavigationContext = React.createContext<{
   isCollapsed: boolean;
-  setIsCollapsed: (e: boolean) => void;
+  openCollapsedMenu: () => void;
 }>({
   isCollapsed: false,
-  setIsCollapsed: () => {},
+  openCollapsedMenu: () => {},
 });
 
 export const useSideNavigationContext = () => {
   const context = React.useContext(SideNavigationContext);
   if (!context) {
-    throw new Error(
-      'You need to wrap your component in a SettingsProvider component in ' +
-        'order to use the useSettings hook',
+    console.error(
+      'Error reading SideNavigationContext. Please contact maintainer of @entur/menu',
     );
   }
   return context;
