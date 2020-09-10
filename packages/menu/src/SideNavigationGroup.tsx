@@ -39,14 +39,15 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
     updater: onToggle,
     defaultValue: defaultOpen,
   });
-  const { isCollapsed, setIsCollapsed } = useSideNavigationContext();
+  const { isCollapsed, openCollapsedMenu } = useSideNavigationContext();
 
   const [showLabel] = useShowDelayedLabel(isCollapsed);
+
   React.useEffect(() => {
     if (isOpen) {
-      setIsCollapsed(false);
+      openCollapsedMenu();
     }
-  }, [isOpen, setIsCollapsed]);
+  }, [isOpen]);
 
   React.useEffect(() => {
     if (isCollapsed) {
@@ -65,13 +66,17 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
         className="eds-side-navigation-group__trigger"
       >
         <span>
-          {icon}
+          {icon && (
+            <span className="eds-side-navigation-group__trigger-icon">
+              {icon}
+            </span>
+          )}
           {showLabel && title}
         </span>
         {showLabel && (
           <ExpandArrow
             open={isOpen}
-            className="eds-side-navigation-group__icon"
+            className="eds-side-navigation-group__expand-icon"
           />
         )}
       </button>
