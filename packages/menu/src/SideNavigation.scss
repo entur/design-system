@@ -115,7 +115,7 @@
   appearance: none;
   background: none;
   border: 0;
-  border-top: $border-widths-medium solid $colors-greys-grey20;
+  border-bottom: $border-widths-medium solid $colors-greys-grey20;
   border-radius: 0;
   color: var(--primary-text-color);
   cursor: pointer;
@@ -188,6 +188,7 @@
   background: none;
   border: none;
   border-radius: 0;
+  border-bottom: $border-widths-medium solid $colors-greys-grey20;
   color: $colors-blues-blue40;
   cursor: pointer;
   display: flex;
@@ -200,11 +201,16 @@
   padding: $space-small 0 $space-small $space-extra-large2;
   margin: 0;
   text-transform: uppercase;
+  transition: padding $timings-medium ease-in-out;
   width: 100%;
   .eds-contrast & {
     color: $colors-brand-lavender;
+    border-color: $colors-blues-blue10;
   }
-  .eds-side-navigation-group__icon {
+  &-icon {
+    margin-right: $space-small;
+  }
+  .eds-side-navigation-group__expand-icon {
     margin-right: $space-extra-large2;
   }
   .eds-side-navigation--collapsed & {
