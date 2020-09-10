@@ -40,6 +40,10 @@ så pass derfor på at komponenten som wrappes støtter `forwardRef`. Les mer om
 
 Om man sender med `isOpen` så får Tooltip en lukkeknapp for å håndtere situasjoner hvor man ønsker kontrollere visningen av Tooltip.
 
+Tooltip-komponenten vår bygger seg på rammeverket Popper. Om du krever f.eks. ytterligere offset for posisjonen av Tooltip'en din,
+så kan du benytte deg av `popperModifiers`, og overskrive dette.
+Les mer om hvilke modifiers som finnes i Popper [her](https://popper.js.org/docs/v2/modifiers/).
+
 ## Retningslinjer for bruk
 
 Tooltip brukes for å beskrive eller legge til tilleggsinformasjon når brukeren hovrer eller fokuserer på
