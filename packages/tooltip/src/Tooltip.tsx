@@ -7,6 +7,16 @@ import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import './Tooltip.scss';
 
+type Modifier = {
+  name: string;
+  enabled?: boolean;
+  requires?: Array<string>;
+  requiresIfExists?: Array<string>;
+  options?: {};
+  data?: {};
+  [key: string]: any;
+};
+
 export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement:
@@ -38,6 +48,10 @@ export type TooltipProps = {
   showCloseButton?: boolean;
   /** Valideringsvariant for Tooltip */
   variant?: 'error';
+  /** En array av modifiers som sendes til Popper, rammeverket som brukes til plassering av Tooltip
+   * @default [{ name: 'offset', options: { offset: [0, 10]} }]
+   */
+  popperModifiers?: Modifier[];
   [key: string]: any;
 };
 
@@ -51,6 +65,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
   disableFocusListener = false,
   showCloseButton = true,
   variant,
+  popperModifiers = [
+    {
+      name: 'offset',
+      options: { offset: [0, 10] },
+    },
+  ],
   ...rest
 }) => {
   const [showTooltip, setShowTooltip] = useState(isOpen || false);
@@ -122,13 +142,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       </Reference>
       {showTooltip && (
         <Popper
-          modifiers={[
-            { name: 'arrow', enabled: false },
-            {
-              name: 'offset',
-              options: { offset: [0, 10] },
-            },
-          ]}
+          modifiers={[{ name: 'arrow', enabled: false }, ...popperModifiers]}
           placement={popperPlacement}
         >
           {({ ref, style, placement: popperPlacement }) => (
