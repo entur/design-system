@@ -9,6 +9,8 @@ import { useRandomId } from '@entur/utils';
 import { IconButton } from '@entur/button';
 
 import './Drawer.scss';
+import { ModalOverlay } from './ModalOverlay';
+import { DialogContent } from '@reach/dialog';
 
 export type DrawerProps = {
   /** Innholdet. Typisk tekst, lenker eller knapper */
@@ -33,6 +35,8 @@ export type DrawerProps = {
   title: string;
   /** Styling som sendes til Drawer */
   style?: React.CSSProperties;
+  /** Legger på et overlay over resten av siden */
+  overlay?: boolean;
 };
 
 export const Drawer: React.FC<DrawerProps> = ({
@@ -44,6 +48,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   onDismiss,
   title,
   style,
+  overlay = false,
 }) => {
   const titleId = useRandomId('eds-drawer');
 
@@ -59,32 +64,47 @@ export const Drawer: React.FC<DrawerProps> = ({
   };
 
   const Wrapper = contrast ? Contrast : React.Fragment;
-
   return (
-    <MoveFocusInside>
-      <Wrapper>
-        <div
-          aria-labelledby={titleId}
-          className={classNames('eds-drawer', className)}
-          onKeyDown={handleKeyDown}
-          style={style}
-        >
-          <div className="eds-drawer__content">
-            <Heading3 as="h2" id={titleId}>
-              {title}
-            </Heading3>
-            {children}
-          </div>
-          <IconButton
-            className="eds-drawer__close-button"
-            onClick={onDismiss}
-            type="button"
+    <ConditionalWrapper
+      condition={overlay}
+      wrapper={(children: React.ReactNode) => (
+        <ModalOverlay open={open} onDismiss={onDismiss}>
+          {children}
+        </ModalOverlay>
+      )}
+    >
+      <MoveFocusInside>
+        <Wrapper>
+          <DialogContent
+            aria-labelledby={titleId}
+            className={classNames('eds-drawer', className)}
+            onKeyDown={handleKeyDown}
+            style={style}
           >
-            <CloseIcon aria-hidden />
-            <VisuallyHidden>{closeLabel}</VisuallyHidden>
-          </IconButton>
-        </div>
-      </Wrapper>
-    </MoveFocusInside>
+            <div className="eds-drawer__content">
+              <Heading3 as="h2" id={titleId}>
+                {title}
+              </Heading3>
+              {children}
+            </div>
+            <IconButton
+              className="eds-drawer__close-button"
+              onClick={onDismiss}
+              type="button"
+            >
+              <CloseIcon aria-hidden />
+              <VisuallyHidden>{closeLabel}</VisuallyHidden>
+            </IconButton>
+          </DialogContent>
+        </Wrapper>
+      </MoveFocusInside>
+    </ConditionalWrapper>
   );
 };
+
+const ConditionalWrapper: React.FC<{
+  condition: boolean;
+  wrapper: (child: JSX.Element) => JSX.Element;
+  children: React.ReactElement;
+}> = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children;
