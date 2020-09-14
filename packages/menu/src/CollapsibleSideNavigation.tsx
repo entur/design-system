@@ -32,15 +32,10 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
     updater: onCollapseToggle,
   });
 
-  const openCollapsedMenu = () => {
-    setCollapsedMenu(false);
-  };
-
   return (
     <SideNavigationContext.Provider
       value={{
         isCollapsed: collapsedMenu,
-        openCollapsedMenu: () => openCollapsedMenu(),
       }}
     >
       <ul
@@ -67,10 +62,8 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
 
 const SideNavigationContext = React.createContext<{
   isCollapsed: boolean;
-  openCollapsedMenu: () => void;
 }>({
   isCollapsed: false,
-  openCollapsedMenu: () => {},
 });
 
 export const useSideNavigationContext = () => {
