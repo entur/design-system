@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.2.0...@entur/modal@1.3.0) (2020-09-14)
+
+### Bug Fixes
+
+- **drawer:** improve automatic focus within in drawer ([f4efa2f](https://bitbucket.org/enturas/design-system/commits/f4efa2f2ad3d09cf7806d26e0d0526041ac463f7))
+
+### Features
+
+- **drawer:** add overlay prop, for optional overlay ([8577478](https://bitbucket.org/enturas/design-system/commits/85774782d653138073af2ad73c0924347d80e1aa))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.1.29...@entur/modal@1.2.0) (2020-09-10)
 
 ### Bug Fixes

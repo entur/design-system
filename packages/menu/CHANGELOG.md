@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.1.1...@entur/menu@3.1.2) (2020-09-14)
+
+### Bug Fixes
+
+- **collapsiblesidenavigation:** remove auto closing of menu group ([180081e](https://bitbucket.org/enturas/design-system/commits/180081e22f8b872fb9902849d37835c4e2f463fc))
+
 ## [3.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.1.0...@entur/menu@3.1.1) (2020-09-10)
 
 ### Bug Fixes
