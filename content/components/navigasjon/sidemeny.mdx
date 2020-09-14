@@ -246,8 +246,8 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 <Playground>
   {() => {
-    const [isCollapsedMenu, setIsCollapsedMenu] = useState(false);
-    const [isOpenMenuGroup, setIsOpenMenuGroup] = useState(true);
+    const [isCollapsedMenu, setIsCollapsedMenu] = React.useState(false);
+    const [isOpenMenuGroup, setIsOpenMenuGroup] = React.useState(true);
     React.useEffect(() => {
       if (isCollapsedMenu) {
         setIsOpenMenuGroup(false);
