@@ -8,13 +8,29 @@ export type LeadParagraphProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
+  /** Hvor du vil ha marginer
+   * @default "both"
+   */
+  margin?: 'top' | 'bottom' | 'both' | 'none';
   [key: string]: any;
 };
 
 export const LeadParagraph: React.FC<LeadParagraphProps> = ({
   as: Element = 'p',
   className,
+  margin = 'both',
   ...rest
 }) => (
-  <Element className={classNames('eds-lead-paragraph', className)} {...rest} />
+  <Element
+    className={classNames(
+      'eds-lead-paragraph',
+      {
+        [`eds-lead-paragraph--margin-top`]: margin === 'top',
+        [`eds-lead-paragraph--margin-bottom`]: margin === 'bottom',
+        [`eds-lead-paragraph--margin-none`]: margin === 'none',
+      },
+      className,
+    )}
+    {...rest}
+  />
 );

@@ -8,7 +8,9 @@ export type ParagraphProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
-  /** Hvor du vil ha marginer */
+  /** Hvor du vil ha marginer
+   * @default "bottom"
+   */
   margin?: 'bottom' | 'none';
   [key: string]: any;
 };

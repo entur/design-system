@@ -8,7 +8,9 @@ export type Heading5Props = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
-  /** Hvor du vil ha marginer */
+  /** Hvor du vil ha marginer
+   * @default "both"
+   */
   margin?: 'top' | 'bottom' | 'both' | 'none';
   [key: string]: any;
 };

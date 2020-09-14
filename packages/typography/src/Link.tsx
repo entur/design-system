@@ -8,11 +8,29 @@ export type LinkProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
+  /** Hvor du vil ha marginer
+   * @default "both"
+   */
+  margin?: 'top' | 'bottom' | 'both' | 'none';
   [key: string]: any;
 };
 
 export const Link: React.FC<LinkProps> = ({
   as: Element = 'a',
   className,
+  margin = 'both',
   ...rest
-}) => <Element className={classNames('eds-link', className)} {...rest} />;
+}) => (
+  <Element
+    className={classNames(
+      'eds-link',
+      {
+        [`eds-link--margin-top`]: margin === 'top',
+        [`eds-link--margin-bottom`]: margin === 'bottom',
+        [`eds-link--margin-none`]: margin === 'none',
+      },
+      className,
+    )}
+    {...rest}
+  />
+);

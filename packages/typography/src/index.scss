@@ -136,7 +136,15 @@ html {
 .eds-h4,
 .eds-h5,
 .eds-h6,
-.eds-paragraph {
+.eds-paragraph,
+.eds-lead-paragraph,
+.eds-sub-paragraph,
+.eds-emphasized-text,
+.eds-label,
+.eds-sub-label,
+.eds-small-text,
+.eds-strong-text,
+.eds-link {
   &--margin-top {
     margin-bottom: 0;
   }
