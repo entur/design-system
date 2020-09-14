@@ -64,6 +64,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   };
 
   const Wrapper = contrast ? Contrast : React.Fragment;
+  const ContentContainer = overlay ? DialogContent : 'div';
   return (
     <ConditionalWrapper
       condition={overlay}
@@ -73,14 +74,14 @@ export const Drawer: React.FC<DrawerProps> = ({
         </ModalOverlay>
       )}
     >
-      <MoveFocusInside>
-        <Wrapper>
-          <DialogContent
-            aria-labelledby={titleId}
-            className={classNames('eds-drawer', className)}
-            onKeyDown={handleKeyDown}
-            style={style}
-          >
+      <Wrapper>
+        <ContentContainer
+          aria-labelledby={titleId}
+          className={classNames('eds-drawer', className)}
+          onKeyDown={handleKeyDown}
+          style={style}
+        >
+          <MoveFocusInside>
             <div className="eds-drawer__content">
               <Heading3 as="h2" id={titleId}>
                 {title}
@@ -95,9 +96,9 @@ export const Drawer: React.FC<DrawerProps> = ({
               <CloseIcon aria-hidden />
               <VisuallyHidden>{closeLabel}</VisuallyHidden>
             </IconButton>
-          </DialogContent>
-        </Wrapper>
-      </MoveFocusInside>
+          </MoveFocusInside>
+        </ContentContainer>
+      </Wrapper>
     </ConditionalWrapper>
   );
 };
