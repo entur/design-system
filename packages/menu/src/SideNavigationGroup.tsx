@@ -13,7 +13,7 @@ export type SideNavigationGroupProps = {
   /** Er menyen åpen? */
   open?: boolean;
   /** Kalles når menygruppen åpnes eller lukkes */
-  onToggle?: () => void;
+  onToggle?: (e?: boolean) => void;
   /** Ekstra klassenavn */
   className?: string;
   /** Menyen som skal grupperes */
@@ -39,21 +39,9 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
     updater: onToggle,
     defaultValue: defaultOpen,
   });
-  const { isCollapsed, openCollapsedMenu } = useSideNavigationContext();
+  const { isCollapsed } = useSideNavigationContext();
 
   const [showLabel] = useShowDelayedLabel(isCollapsed);
-
-  React.useEffect(() => {
-    if (isOpen) {
-      openCollapsedMenu();
-    }
-  }, [isOpen]);
-
-  React.useEffect(() => {
-    if (isCollapsed) {
-      setOpen(false);
-    }
-  }, [isCollapsed, setOpen]);
 
   return (
     <div
