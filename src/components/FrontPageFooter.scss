@@ -3,42 +3,14 @@
 
 .front-page {
   &-footer {
-    width: 100vw;
-    background: $colors-greys-grey30;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    appearance: none;
-    &__grid {
-      width: 64rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: $space-large;
-      padding-bottom: 4.5rem;
-      margin: 0 $space-large;
-      @include for-desktop {
-        margin: auto;
-      }
+    background: $colors-greys-grey40;
+    &__grid-container {
+      max-width: 1328px;
+      margin: 0 auto;
+      padding-top: 4.5rem;
     }
-    &__logo-container {
-      grid-column: 1 / 4;
-      padding: 5rem 0 3rem;
-    }
-    &__structure {
-      display: flex;
-      flex-direction: column;
-    }
-    &__circular-icon {
-      appearance: none;
-      color: $colors-brand-white;
-      background: $colors-brand-blue;
-      margin-right: $space-small;
-      display: flex;
-      border-radius: 50%;
-      padding: $space-extra-small;
-      &:hover {
-        background-color: $colors-brand-lavender;
-      }
+    &__link {
+      margin-bottom: 1rem;
     }
   }
 }

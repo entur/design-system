@@ -7,13 +7,16 @@ import * as chip from '@entur/chip';
 import * as datepicker from '@entur/datepicker';
 import * as dropdown from '@entur/dropdown';
 import * as expand from '@entur/expand';
+import * as fileupload from '@entur/fileupload';
 import * as form from '@entur/form';
+import * as grid from '@entur/grid';
 import * as layout from '@entur/layout';
 import * as loader from '@entur/loader';
 import * as menu from '@entur/menu';
 import * as modal from '@entur/modal';
 import * as tab from '@entur/tab';
 import * as table from '@entur/table';
+import * as travel from '@entur/travel';
 import * as tooltip from '@entur/tooltip';
 import * as typography from '@entur/typography';
 
@@ -25,13 +28,16 @@ const allComponentsByPackage = {
   datepicker,
   dropdown,
   expand,
+  fileupload,
   form,
+  grid,
   layout,
   loader,
   menu,
   modal,
   tab,
   table,
+  travel,
   tooltip,
   typography,
 };

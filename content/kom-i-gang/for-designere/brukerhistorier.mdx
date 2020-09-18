@@ -1,6 +1,6 @@
 ---
 name: Brukerhistorier
-description: Brukerhistorier er et format for å beskrive oppgaver som vektlegger dens verdi og kriterier for ferdigstillelse av leveranse. De vil gi designere, produkteiere, utviklere og testere en felles forståelse av oppgaven og sikre flyt i utvikling.
+description: Brukerhistorier er et format for å beskrive oppgaver som vektlegger oppgavens verdi og akseptkriterier. De vil gi designere, produkteiere, utviklere og testere en felles forståelse av oppgaven.
 route: /kom-i-gang/for-designere/brukerhistorier
 parent: Kom i gang
 menu: For designere
@@ -24,41 +24,35 @@ En brukerhistorie består av tre deler:
 
 1.  **Selve brukerhistorien (verdiforslaget)**
 
-<div style={{marginLeft:'2.5rem'}}>
-
-<div style={{ marginBottom: '2rem' }}>
-  Brukerhistorien skrives etter et fast format for å få frem verdien og hvem som
-  skal få den verdien. Hensikten med å skrive verdiforslaget etter dette faste
-  formatet er at det tilrettelegger for at en raskt kan få et overblikk over hva
-  historien løser (En skal slippe å måtte lese gjennom hele historien som å
-  oppfatte verdiforsalget). Dette er verdifullt når man vurderer flere oppgaver
-  i fellesmøter, prioriteringsmøter og under standup.
-</div>
-
-<strong>Formatet:</strong>
-
-<div className="brukerhistorier-custom-code">
-  Som en <strong> [bruker]</strong>
-  <br />
-  Ønsker jeg en <strong>[funksjon]</strong>
-  <br />
-  Slik at jeg <strong>[oppnår en verdi]</strong>
-</div>
-
-{' '}
-<div>
-  Når man beskriver brukeren holder det noen ganger med standardkategoriene:
-  <ul>
-    <li>‘som en klient’,</li>
-    <li>‘som en kundebehandler’</li>
-    <li>’som en reisende’</li>
-  </ul>
-</div>
-Man må gjerne bruke spisset situasjonsbehov (se eksempel her ‘lenke til siden om
-brukergrupper’) i formulering av brukerhistorier, i steden for personas. I
-tilfeller hvor det for eksempel er nyttig å presisere behovet kan ‘som en
-reisende’ bli til ‘som en togpendler’.
-
+<div style={{ marginLeft: '2.5rem' }}>
+  <div style={{ marginBottom: '2rem' }}>
+    Brukerhistorien skrives etter et fast format for å få frem verdien og hvem
+    som skal få den verdien. Hensikten med å skrive verdiforslaget etter dette
+    faste formatet er at det tilrettelegger for at en raskt kan få et overblikk
+    over hva historien løser (En skal slippe å måtte lese gjennom hele historien
+    som å oppfatte verdiforsalget). Dette er verdifullt når man vurderer flere
+    oppgaver i fellesmøter, prioriteringsmøter og under standup.
+  </div>
+  <strong>Formatet:</strong>
+  <div className="brukerhistorier-custom-code">
+    Som en <strong> [bruker]</strong>
+    <br />
+    Ønsker jeg en <strong>[funksjon]</strong>
+    <br />
+    Slik at jeg <strong>[oppnår en verdi]</strong>
+  </div>
+  <div>
+    Når man beskriver brukeren holder det noen ganger med standardkategoriene:
+    <ul>
+      <li>‘som en klient’,</li>
+      <li>‘som en kundebehandler’</li>
+      <li>’som en reisende’</li>
+    </ul>
+  </div>
+  Man må gjerne bruke spisset situasjonsbehov (se eksempel her ‘lenke til siden
+  om brukergrupper’) i formulering av brukerhistorier, i steden for personas. I
+  tilfeller hvor det for eksempel er nyttig å presisere behovet kan ‘som en
+  reisende’ bli til ‘som en togpendler’.
 </div>
 
 2. **Løsningsbeskrivelse**
@@ -167,3 +161,9 @@ Brukerhistorien består av tre deler; selve historien, løsningsbeskrivelsen og 
     (Følgende profiler skal filtreres vekk for Ruter; Militær, Barn 0-5 år).
   </ol>
 </div>
+
+## Bugs
+
+Det anbefales å bruke en annen mal for bugs, ikke brukerhistorieformat. Om Bugen er relatert til oppgaver som er under arbeid, er det viktig at den knyttes til samme Epic slik at den prioriteres opp mot de andre oppgavene i Epicen. Da vil også brukerhistoriene på Epic og oppgaver gi bedre oversikt over kontekst. Om det oppdages bugs på funksjonalitet som allerede er løst så gir det ikke alltid verdi å relatere buggen til den ferdige Epicen.
+
+Les mer om [bugsformatet på Confluence](https://enturas.atlassian.net/wiki/spaces/EDT/pages/915472680/Feil+Bug).

@@ -41,8 +41,19 @@
     flex-direction: column;
     font-size: $font-sizes-medium;
   }
-  &--bold {
-    font-weight: $font-weights-heading;
+  &--weight {
+    &-300 {
+      font-weight: 300;
+    }
+    &-400 {
+      font-weight: 400;
+    }
+    &-500 {
+      font-weight: 500;
+    }
+    &-600 {
+      font-weight: 600;
+    }
   }
   &--italic {
     font-style: italic;

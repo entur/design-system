@@ -62,25 +62,22 @@ const App: React.FC = ({ children }) => {
                     'frontpage__site-content-wrapper--hidden': openMobileMenu,
                   })}
                 >
-                  <div className="frontpage-blue-backer" />
-                  <main id="site-content" className="frontpage-site-content">
-                    {children}
-                  </main>
+                  <main>{children}</main>
                   <FrontPageFooter />
                 </div>
               </>
             ) : (
               <>
                 <SEO />
-                <Media at="mobile">
-                  <MobileMenu
+                {/* <Media at="mobile"> */}
+                {/* <MobileMenu
                     className="ui-menu--mobile"
                     openMenu={setOpenMobileMenu}
-                  />
-                </Media>
-                <Media greaterThanOrEqual="desktop">
-                  <Menu className="ui-menu--desktop" />
-                </Media>
+                  /> */}
+                {/* </Media> */}
+                {/* <Media greaterThanOrEqual="desktop"> */}
+                <Menu className="ui-menu--desktop" />
+                {/* </Media> */}
                 <div
                   className={classNames('site-content', {
                     'site-content--hidden': openMobileMenu,
@@ -97,4 +94,5 @@ const App: React.FC = ({ children }) => {
     </SettingsProvider>
   );
 };
+
 export default theme({})(App);

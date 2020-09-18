@@ -3,6 +3,10 @@
 .brukertesting {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  .brukertesting-overskrift {
+    margin-top: 0;
+    margin-bottom: $space-small;
+  }
   &-fordeler,
   &-ulemper {
     background-color: $colors-greys-grey30;
@@ -10,9 +14,5 @@
   }
   &-fordeler {
     margin-right: $space-large;
-  }
-  &-overskrift {
-    margin-bottom: $space-small;
-    font-weight: $font-weights-heading;
   }
 }

@@ -1,12 +1,25 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .color-swatch {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  background: $colors-brand-white;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .color-square {
-  height: 3rem;
-  width: 3rem;
+  height: 10rem;
+  width: 100%;
   border-radius: $border-radiuses-medium;
+}
+.color-description {
+  padding: 1rem;
+  font-family: inherit;
+  font-size: $font-sizes-large;
 }
 .color-swatch__details {
   display: flex;

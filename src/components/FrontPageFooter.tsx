@@ -1,78 +1,102 @@
 import React from 'react';
-import { Heading3, Heading4, SubParagraph, Link } from '@entur/typography';
+import {
+  Heading3,
+  Heading4,
+  SubParagraph,
+  Link,
+  Label,
+  LeadParagraph,
+} from '@entur/typography';
 import { Link as DoczLink } from 'docz';
-import { FacebookIcon, TwitterIcon } from '@entur/icons';
+import {
+  FacebookIcon,
+  TwitterIcon,
+  InstagramIcon,
+  LinkedinIcon,
+} from '@entur/icons';
+import { GridContainer, GridItem } from '@entur/grid';
 import logo from './EnturLogo.svg';
 import './FrontPageFooter.scss';
+import Divider from './Divider';
+import { IconButton } from '@entur/button';
 
 function FrontPageFooter() {
   return (
     <div className="front-page-footer">
-      <div className="front-page-footer__grid">
-        <div className="front-page-footer__logo-container">
-          <img src={logo} height="32" alt="Entur logo"></img>
-        </div>
-
-        <div>
-          <Heading3>Entur AS</Heading3>
-          <SubParagraph>
-            Rådhusgate 5, 0151 Oslo <br />
-            Postboks 1554 Vika, 0117 Oslo
-            <br />
-            <br />
-            <Link as="a" href="mailto:post@entur.org">
-              post@entur.org
-            </Link>
-          </SubParagraph>
-        </div>
-        <div>
-          <Heading3>Kontakt</Heading3>
-          <SubParagraph>
-            Slack (#talk-designsystem) <br />
-            <Link as="a" href="mailto:long.ngo@entur.org">
-              Kontakt designansvarlig
-            </Link>
-          </SubParagraph>
-        </div>
-        <div className="front-page-footer__structure">
+      <GridContainer
+        spacing="extraLarge"
+        className="front-page-footer__grid-container"
+      >
+        <GridItem small={3}>
+          <LeadParagraph>
+            Entur leverer digitale <br /> tjenester til Norges <br />
+            kollektivtransport.
+          </LeadParagraph>
+        </GridItem>
+        <GridItem small={3}>
           <Heading3>Sidestruktur</Heading3>
-          <Heading4 margin="none">
-            <DoczLinkWrapper to="/kom-i-gang/om-entur">
-              Om Entur
-            </DoczLinkWrapper>
-          </Heading4>
-          <Heading4 margin="none">
-            <DoczLinkWrapper to="/kom-i-gang/for-utviklere/bidra">
-              Hvordan bidra?
-            </DoczLinkWrapper>
-          </Heading4>
-          <Heading4 margin="none">
-            <Link href="https://share.goabstract.com/ecd2091b-ba8a-4fe6-9997-622265c6db64?sha=94121e0337062ce5a223384edef977dd0dfd22a5">
-              Sketch UI-Library
-            </Link>
-          </Heading4>
-          <Heading4 margin="none">
-            <Link href="https://bitbucket.org/enturas/design-system/src/master/">
-              Bitbucket
-            </Link>
-          </Heading4>
-          <Heading4 margin="none">
-            <Link href="https://entur.no/">Entur.no</Link>
-          </Heading4>
-          <div style={{ marginTop: '2rem', display: 'flex' }}>
-            <a
-              href="https://www.facebook.com/entur.org/"
-              className="front-page-footer__circular-icon"
-            >
-              <FacebookIcon />
-            </a>
-            <a
-              href="https://twitter.com/Entur_AS"
-              className="front-page-footer__circular-icon"
-            >
-              <TwitterIcon />
-            </a>
+          <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/kom-i-gang">Kom i gang</DoczLinkWrapper>
           </div>
+          <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/stil-og-tone">Stil og tone</DoczLinkWrapper>
+          </div>
+          <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/visuell-identitet">
+              Visuell identitet
+            </DoczLinkWrapper>
+          </div>
+          <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/komponenter">Komponenter</DoczLinkWrapper>
+          </div>
+          <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/universell-utforming">
+              Universell utforming
+            </DoczLinkWrapper>
+          </div>
+        </GridItem>
+        <GridItem small={3}>
+          <Heading3>Kontakt</Heading3>
+          <div className="front-page-footer__link">
+            <Link href="">#talk-designsystem på Slack</Link>
+          </div>
+          <div className="front-page-footer__link">
+            <Link href="">Send oss en email</Link>
+          </div>
+        </GridItem>
+        <GridItem small={3}>
+          <Heading3>Følg oss på</Heading3>
+          <div style={{ display: 'flex' }}>
+            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+              <FacebookIcon size="24" />
+            </IconButton>
+            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+              <InstagramIcon size="24" />
+            </IconButton>
+            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+              <TwitterIcon size="24" />
+            </IconButton>
+            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+              <LinkedinIcon size="24" />
+            </IconButton>
+          </div>
+        </GridItem>
+      </GridContainer>
+      <Divider></Divider>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          maxWidth: '1328px',
+          margin: '0 auto',
+        }}
+      >
+        <div style={{ padding: '2rem 0' }}>
+          <img src={logo} width="104px" />
+        </div>
+        <div style={{ float: 'right', padding: '2rem 0' }}>
+          <Label>Entur.no</Label>
+          <Label>© 2020 Entur AS</Label>
         </div>
       </div>
     </div>

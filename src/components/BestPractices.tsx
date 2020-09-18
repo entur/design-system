@@ -1,9 +1,12 @@
 import React from 'react';
 import { ValidationCheckIcon, ValidationErrorIcon } from '@entur/icons';
+import classNames from 'classnames';
 import './BestPractices.scss';
 
-export const BestPractices: React.FC = props => (
-  <section className="best-practices">{props.children}</section>
+export const BestPractices: React.FC<{ className?: string }> = props => (
+  <section className={classNames('best-practices', props.className)}>
+    {props.children}
+  </section>
 );
 
 type BestPracticesExampleProps = {
@@ -11,6 +14,7 @@ type BestPracticesExampleProps = {
   alt?: string;
   type: 'do' | 'dont';
   subText?: string;
+  className?: string;
 };
 
 export const Example: React.FC<BestPracticesExampleProps> = ({
@@ -19,10 +23,11 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
   src,
   type,
   subText,
+  className,
 }) => {
   const Icon = type === 'do' ? ValidationCheckIcon : ValidationErrorIcon;
   return (
-    <article className="best-practices__example">
+    <article className={classNames('best-practices__example', className)}>
       <div
         className={`best-practices__heading best-practices__heading--${type}`}
       >

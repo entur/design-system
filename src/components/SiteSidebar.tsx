@@ -78,20 +78,7 @@ export const SiteSidebar: React.FC<{
     }) || [];
 
   return (
-    <Contrast
-      as="nav"
-      className={classNames('site-sidebar-wrapper', props.className)}
-    >
-      {!props.mobile && (
-        <Link to="/" className="site-sidebar__logo">
-          <img
-            src={logoSVG}
-            alt="Entur logo"
-            className="site-sidebar__logo-svg"
-          />
-        </Link>
-      )}
-
+    <div className={classNames('site-sidebar-wrapper', props.className)}>
       <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
         <Location>
           {({ location }) =>
@@ -110,7 +97,7 @@ export const SiteSidebar: React.FC<{
           }
         </Location>
       </nav>
-    </Contrast>
+    </div>
   );
 };
 
@@ -197,7 +184,7 @@ const sortComponentMenus = (a: MenuItem, b: MenuItem, sortOrder: any) => {
 const sorters: { [sorter: string]: any } = {
   // @ts-ignore
   'Kom i gang': komIGangMenuSortOrder,
-  'Visuell identitet': visuellIdentitetMenuSortOrder,
+  Identitet: visuellIdentitetMenuSortOrder,
   Komponenter: componentsMenuSortOrder,
 };
 

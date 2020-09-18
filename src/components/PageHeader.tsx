@@ -3,7 +3,9 @@ import { useCurrentDoc } from 'docz';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { CopyablePreformattedText } from '~/components/CopyablePreformattedText';
 import { useSettings } from './SettingsContext';
+import { PackageChangelog } from '../gatsby-theme-docz/components/PackageChangelog';
 import './PageHeader.scss';
+import { NpmTag } from '../gatsby-theme-docz/components/NpmTag';
 
 type Props = {
   category?: string;
@@ -31,24 +33,42 @@ const PageHeader: React.FC<Props> = ({
   return (
     <header>
       {categoryToShow && (
-        <Label as="div" style={{ letterSpacing: '1px' }}>
-          {categoryToShow.toUpperCase()}
-        </Label>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Label
+            as="div"
+            style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
+          >
+            {categoryToShow.toUpperCase()}
+          </Label>
+          {npmPackage && userType === 'developer' && (
+            <span style={{ float: 'right' }}>
+              <PackageChangelog packageName={npmPackage}></PackageChangelog>
+            </span>
+          )}
+        </div>
       )}
-      <Heading1 style={{ marginTop: '0.3em' }}>{titleToShow}</Heading1>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Heading1 margin="none" style={{ marginRight: '1rem' }}>
+          {titleToShow}
+        </Heading1>
+        {npmPackage && userType === 'developer' && (
+          <NpmTag packageName={npmPackage}></NpmTag>
+        )}
+      </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
-        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-          <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
-            {installText}
-          </CopyablePreformattedText>
-          <CopyablePreformattedText successMessage="CSS-importen ble kopiert til utklippstavla.">
-            {cssImport}
-          </CopyablePreformattedText>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+            <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
+              {installText}
+            </CopyablePreformattedText>
+            <CopyablePreformattedText successMessage="CSS-importen ble kopiert til utklippstavla.">
+              {cssImport}
+            </CopyablePreformattedText>
+          </div>
         </div>
       )}
     </header>
   );
 };
-
 export default PageHeader;

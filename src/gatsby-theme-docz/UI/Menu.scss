@@ -3,19 +3,23 @@
 
 .top-navigation {
   display: flex;
-  background-color: $colors-greys-grey40;
+  align-items: center;
   overflow-x: scroll;
+  background-color: $colors-brand-white;
+  border-bottom: $border-widths-small solid $colors-greys-grey20;
   width: 100%;
   padding: 1rem 1rem 0rem;
   transition: margin-left $timings-fast ease-out;
+  height: 7rem;
+  z-index: $z-indexes-popover;
 
   @include for-desktop {
+    position: fixed;
     overflow-x: initial;
-    padding: $space-large 0 $space-large 11rem;
-    margin-left: 9rem;
+    padding: $space-extra-large2 0 $space-extra-large2 $space-extra-large2;
     justify-content: flex-start;
-  }
-  @include for-large-desktop {
-    margin-left: 18rem;
+    &__logo {
+      margin-right: 3rem;
+    }
   }
 }

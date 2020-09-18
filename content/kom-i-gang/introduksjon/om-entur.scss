@@ -10,25 +10,22 @@
     }
   }
   &-box {
-    @include for-large-desktop {
-      align-items: flex-start;
-    }
     align-items: center;
-    background: $colors-greys-grey30;
     padding: $space-extra-large4 $space-extra-large2;
     display: flex;
     flex-direction: column;
     &__number {
+      text-align: center;
       font-size: $font-sizes-extra-large4;
+      line-height: $line-heights-extra-large6;
       font-weight: $font-weights-heading;
     }
-    &__line {
-      content: '';
-      display: block;
-      height: 0.1875rem;
-      margin: $space-extra-small 0 $space-extra-small2;
-      background-color: $colors-brand-coral;
-      width: 3rem;
+    &__image {
+      height: 13rem;
+      width: 13rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

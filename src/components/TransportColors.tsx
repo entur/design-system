@@ -10,32 +10,35 @@ import {
 } from '@entur/table';
 import ColorSwatch from '~/components/ColorSwatch';
 import { Switch } from '@entur/form';
+import { GridContainer } from '@entur/grid';
+import { Heading2, Paragraph } from '@entur/typography';
 
 const TransportColors: React.FC = () => {
   const [isContrast, setContrast] = React.useState(false);
   const pathName = isContrast ? 'contrast' : 'default';
   const Wrapper = isContrast ? Contrast : 'div';
   return (
-    <Wrapper
-      style={{
-        boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
-      }}
-    >
-      <Switch onChange={() => setContrast(prev => !prev)} checked={isContrast}>
-        Vis kontrastfarger
-      </Switch>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <HeaderCell>Eksempel</HeaderCell>
-            <HeaderCell>Navn</HeaderCell>
-            <HeaderCell>Type</HeaderCell>
-            <HeaderCell>CSS-Variabel</HeaderCell>
-            <HeaderCell>Hex</HeaderCell>
-            <HeaderCell>RGB</HeaderCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <>
+      <Heading2>Transportfarger</Heading2>
+      <Paragraph>
+        De ulike transportmidlene har hver sin representative farge for å skille
+        de fra hverandre. Vanngående transport har for eksempel alltid lyseblå
+        farge og er derfor også markert med den fargen på ikoner (ferje,
+        bilferje, cruise osv.) og på reiselinjer. Transportmiddelfargene finnes
+        også for Contrast seksjoner.
+      </Paragraph>
+      <Wrapper
+        style={{
+          boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
+        }}
+      >
+        <Switch
+          onChange={() => setContrast(prev => !prev)}
+          checked={isContrast}
+        >
+          Vis kontrastfarger
+        </Switch>
+        <GridContainer spacing="large">
           <ColorSwatch type="UX" path={`transport.${pathName}.metro`}>
             Metro
           </ColorSwatch>
@@ -82,9 +85,9 @@ const TransportColors: React.FC = () => {
           <ColorSwatch type="UX" path={`transport.${pathName}.mobility`}>
             Mobility
           </ColorSwatch>
-        </TableBody>
-      </Table>
-    </Wrapper>
+        </GridContainer>
+      </Wrapper>
+    </>
   );
 };
 

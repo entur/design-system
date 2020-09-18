@@ -20,6 +20,7 @@ function usePersistedState<Type>(key: string, initialState: Type) {
 export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
 export type PackageManager = 'yarn' | 'npm';
+export type Theme = 'light' | 'dark';
 type Context = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;
@@ -27,6 +28,8 @@ type Context = {
   setUserType: React.Dispatch<React.SetStateAction<UserType>>;
   packageManager: PackageManager;
   setPackageManager: React.Dispatch<React.SetStateAction<PackageManager>>;
+  theme: Theme;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 };
 
 const SettingsContext = React.createContext<Context | null>(null);
@@ -46,6 +49,8 @@ export const SettingsProvider: React.FC = props => {
     'npm',
   );
 
+  const [theme, setTheme] = usePersistedState<Theme>('theme', 'light');
+
   const contextValue = React.useMemo(
     () => ({
       variableFormat,
@@ -54,6 +59,8 @@ export const SettingsProvider: React.FC = props => {
       setUserType,
       packageManager,
       setPackageManager,
+      theme,
+      setTheme,
     }),
     [
       variableFormat,
@@ -62,6 +69,8 @@ export const SettingsProvider: React.FC = props => {
       setUserType,
       packageManager,
       setPackageManager,
+      theme,
+      setTheme,
     ],
   );
 

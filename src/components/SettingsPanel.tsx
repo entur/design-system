@@ -11,6 +11,7 @@ import {
 } from './SettingsContext';
 import { Modal } from '@entur/modal';
 import './SettingsPanel.scss';
+import { Switch } from '@entur/form';
 
 const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
@@ -21,6 +22,8 @@ const SettingsPanel: React.FC = () => {
     setUserType,
     packageManager,
     setPackageManager,
+    theme,
+    setTheme,
   } = useSettings();
 
   return (
@@ -39,6 +42,12 @@ const SettingsPanel: React.FC = () => {
         >
           <SettingsIcon />
         </FloatingButton>
+        {false && (
+          <Switch
+            checked={theme === 'dark'}
+            onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          ></Switch>
+        )}
       </div>
       <Modal
         open={isOpen}

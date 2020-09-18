@@ -4,14 +4,16 @@
   display: flex;
   align-items: center;
   background-color: var(--primary-background-color);
+  padding-top: $space-extra-large2;
+  padding-left: $space-extra-large2;
+  padding-bottom: $space-extra-large2;
 }
 .frontpage-header__logo {
-  width: 100%;
-  padding: $space-extra-large2 $space-extra-large2 0 $space-extra-large2;
+  // padding: $space-large 0 0 $space-extra-large;
 }
 .frontpage-header__navigation {
   display: flex;
   margin-right: 5rem;
-  padding: $space-large;
+  // padding: $space-large;
   padding-left: 3rem;
 }

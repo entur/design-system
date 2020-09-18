@@ -10,8 +10,8 @@ import './FrontPageMenu.scss';
 const FrontPageMenu: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <Contrast as="header" className={classNames('frontpage-header', className)}>
-      <span style={{ width: '26rem', alignSelf: 'flex-start' }}>
-        <img src={logo} alt="Entur logo" className="frontpage-header__logo" />
+      <span className="frontpage-header__logo">
+        <img src={logo} height="32px" width="102px" alt="Entur logo" />
       </span>
       <nav
         className="frontpage-header__navigation"
@@ -20,14 +20,12 @@ const FrontPageMenu: React.FC<{ className?: string }> = ({ className }) => {
         <TopNavigationItem as={Link} to="/kom-i-gang">
           Kom i gang
         </TopNavigationItem>
-        <TopNavigationItem as={Link} to="/visuell-identitet">
-          Visuell identitet
+
+        <TopNavigationItem as={Link} to="/identitet">
+          Identitet
         </TopNavigationItem>
         <TopNavigationItem as={Link} to="/komponenter">
           Komponenter
-        </TopNavigationItem>
-        <TopNavigationItem as={Link} to="/stil-og-tone">
-          Stil og tone
         </TopNavigationItem>
         <TopNavigationItem as={Link} to="/universell-utforming">
           Universell utforming
