@@ -1,0 +1,22 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.ds-npm-tag {
+  border: 1px solid $colors-blues-blue70;
+  border-radius: $border-radiuses-small;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+
+  // height: 24px;
+  &__npm {
+    background: $colors-blues-blue70;
+  }
+  &__npm,
+  &__version {
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    padding: 2px 8px;
+    // height: 20px;
+  }
+}

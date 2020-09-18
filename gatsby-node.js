@@ -1,5 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
+const fetch = require(`node-fetch`);
+const crypto = require('crypto');
 
 exports.onCreateWebpackConfig = args => {
   args.actions.setWebpackConfig({
@@ -42,5 +44,29 @@ exports.onPreBootstrap = ({}) => {
       path.resolve(`../packages/${packages[package]}/CHANGELOG.md`),
       `${__dirname}/changelogs/${packages[package]}.md`,
     );
+  }
+};
+
+exports.sourceNodes = async ({ actions: { createNode } }) => {
+  // get data from GitHub API at build time
+  for (package in packages) {
+    const data = await fetch(
+      `https://registry.npmjs.org/@entur/${packages[package]}`,
+    );
+    const result = await data.json();
+    createNode({
+      name: packages[package],
+      parent: `__SOURCE__`,
+      children: [],
+      id: packages[package] + package,
+      version: result['dist-tags'].latest,
+      internal: {
+        type: 'NpmPackage',
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(packages[package])
+          .digest(`hex`),
+      },
+    });
   }
 };

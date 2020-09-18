@@ -3,5 +3,22 @@
 
 .content-margin {
   max-width: 1328px;
-  margin: 0 auto;
+  padding: 0 1rem;
+  @include for-desktop {
+    margin: 0 auto;
+  }
+}
+
+.front-page__top-image {
+  @include for-desktop {
+    width: 51%;
+    display: block;
+  }
+  @include for-large-desktop {
+    width: 66%;
+  }
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  display: none;
 }

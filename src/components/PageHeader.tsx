@@ -5,6 +5,7 @@ import { CopyablePreformattedText } from '~/components/CopyablePreformattedText'
 import { useSettings } from './SettingsContext';
 import { PackageChangelog } from '../gatsby-theme-docz/components/PackageChangelog';
 import './PageHeader.scss';
+import { NpmTag } from '../gatsby-theme-docz/components/NpmTag';
 
 type Props = {
   category?: string;
@@ -32,24 +33,26 @@ const PageHeader: React.FC<Props> = ({
   return (
     <header>
       {categoryToShow && (
-        <Label
-          as="div"
-          style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
-        >
-          {categoryToShow.toUpperCase()}
-        </Label>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Label
+            as="div"
+            style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
+          >
+            {categoryToShow.toUpperCase()}
+          </Label>
+          {npmPackage && userType === 'developer' && (
+            <span style={{ float: 'right' }}>
+              <PackageChangelog packageName={npmPackage}></PackageChangelog>
+            </span>
+          )}
+        </div>
       )}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Heading1 margin="none">{titleToShow}</Heading1>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Heading1 margin="none" style={{ marginRight: '1rem' }}>
+          {titleToShow}
+        </Heading1>
         {npmPackage && userType === 'developer' && (
-          <span style={{ display: 'flex', alignItems: 'center' }}>
-            <img
-              style={{ marginRight: '0.5rem' }}
-              alt="npm"
-              src={`https://img.shields.io/npm/v/@entur/${npmPackage}?color=181c56&style=flat-square`}
-            ></img>
-            <PackageChangelog packageName={npmPackage}></PackageChangelog>
-          </span>
+          <NpmTag packageName={npmPackage}></NpmTag>
         )}
       </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
@@ -68,5 +71,4 @@ const PageHeader: React.FC<Props> = ({
     </header>
   );
 };
-
 export default PageHeader;

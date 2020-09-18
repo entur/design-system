@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Modal } from '@entur/modal/dist';
-import { TertiaryButton } from '@entur/button';
-import ReactMarkdown from 'markdown-to-jsx';
-import {
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-  Link,
-} from '@entur/typography';
+import { MarkdownParser } from './MarkdownParser';
+import { ActionChip } from '@entur/chip/dist';
+import { ExternalIcon } from '@entur/icons';
 
 export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -35,20 +29,19 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const changelog = query.allMarkdownRemark.edges.filter(
     k => k.node.parent.name === packageName,
   );
-  console.log(changelog);
 
   return (
     <>
-      <TertiaryButton
+      <ActionChip
         onClick={() => {
           setPackageChangelog(changelog[0].node.rawMarkdownBody);
-          setModalTitle(changelog[0].node.parent.name);
+          setModalTitle(`@entur/${changelog[0].node.parent.name}`);
           setOpenModal(true);
         }}
       >
         Changelog
-        {/* {changelog[0].node.parent.name} */}
-      </TertiaryButton>
+        <ExternalIcon />
+      </ActionChip>
 
       <Modal
         onDismiss={() => setOpenModal(false)}
@@ -56,33 +49,7 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
         size="large"
         open={openModal}
       >
-        <ReactMarkdown
-          options={{
-            overrides: {
-              h1: {
-                component: Heading3,
-              },
-
-              h2: {
-                component: Heading4,
-              },
-              h3: {
-                component: Heading5,
-              },
-              h4: {
-                component: Heading6,
-              },
-              h5: {
-                component: Heading6,
-              },
-              a: {
-                component: Link,
-              },
-            },
-          }}
-        >
-          {packageChangelog}
-        </ReactMarkdown>
+        <MarkdownParser>{packageChangelog}</MarkdownParser>
       </Modal>
     </>
   );

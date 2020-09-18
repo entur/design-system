@@ -16,7 +16,8 @@
     flex-direction: column;
     &__number {
       text-align: center;
-      font-size: $font-sizes-extra-large3;
+      font-size: $font-sizes-extra-large4;
+      line-height: $line-heights-extra-large6;
       font-weight: $font-weights-heading;
     }
     &__image {

@@ -4,5 +4,13 @@
 .front-page {
   &-footer {
     background: $colors-greys-grey40;
+    &__grid-container {
+      max-width: 1328px;
+      margin: 0 auto;
+      padding-top: 4.5rem;
+    }
+    &__link {
+      margin-bottom: 1rem;
+    }
   }
 }

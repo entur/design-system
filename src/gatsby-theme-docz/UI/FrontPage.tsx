@@ -15,6 +15,7 @@ import {
 } from '@entur/icons';
 import { PrimaryButton } from '@entur/button/dist';
 import Kontakt from './Kontakt.jpg';
+import FrontPageImage from './FrontpageImage.png';
 import './FrontPage.scss';
 
 export const FrontPage = () => {
@@ -22,20 +23,27 @@ export const FrontPage = () => {
     <>
       <Contrast>
         <div className="content-margin">
-          <div style={{ paddingTop: '6rem' }}>
-            <Heading1>Entur Designsystem</Heading1>
-            <ShiftingHeader />
-          </div>
-          <div
-            style={{
-              paddingTop: '2.5rem',
-              width: '218px',
-              paddingBottom: '12rem',
-            }}
-          >
-            <PrimaryButton as={Link} to="/kom-i-gang" width="fluid">
-              Kom i gang
-            </PrimaryButton>
+          <div style={{ position: 'relative' }}>
+            <div>
+              <div style={{ paddingTop: '6rem' }}>
+                <Heading1>Entur Designsystem</Heading1>
+                <ShiftingHeader />
+              </div>
+              <div
+                style={{
+                  paddingTop: '2.5rem',
+                  width: '218px',
+                  paddingBottom: '12rem',
+                }}
+              >
+                <PrimaryButton as={Link} to="/kom-i-gang" width="fluid">
+                  Kom i gang
+                </PrimaryButton>
+              </div>
+            </div>
+            <div className="front-page__top-image" style={{}}>
+              <img src={FrontPageImage} width="100%" />
+            </div>
           </div>
         </div>
         <div style={{ background: colors.blues.blue10 }}>
@@ -83,7 +91,7 @@ export const FrontPage = () => {
           </Paragraph>
         </div>
         <GridContainer spacing="large">
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Stil og tone"
               titleIcon={<EditIcon />}
@@ -95,7 +103,7 @@ export const FrontPage = () => {
               brukerne våre.
             </NavigationCard>
           </GridItem>
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Visuell identitet"
               titleIcon={<ColorPickerIcon />}
@@ -106,7 +114,7 @@ export const FrontPage = () => {
               retningslinjer til deg som skal ta identiteten i bruk.
             </NavigationCard>
           </GridItem>
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Komponenter"
               titleIcon={<SourceCodeIcon />}
@@ -117,7 +125,7 @@ export const FrontPage = () => {
               kildekode og retningslinjer for bruk.
             </NavigationCard>
           </GridItem>
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Universell utforming"
               titleIcon={<ViewIcon />}
@@ -128,7 +136,7 @@ export const FrontPage = () => {
               henhold til lovverket for universell utforming.
             </NavigationCard>
           </GridItem>
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Tokens"
               titleIcon={<UsersIcon />}
@@ -139,7 +147,7 @@ export const FrontPage = () => {
               komponenter som følger Entur sin visuelle identitet.
             </NavigationCard>
           </GridItem>
-          <GridItem medium={4}>
+          <GridItem small={6} medium={4}>
             <NavigationCard
               title="Ikonbibliotek"
               titleIcon={<GridViewIcon />}
