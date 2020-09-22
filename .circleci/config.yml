@@ -40,8 +40,7 @@ jobs:
           command: yarn build
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key:
-            - docz-cache-v1-{{ .Branch }}-{{ epoch }}
+          key: docz-cache-v1-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/.docz/.cache
       - run:
@@ -83,8 +82,7 @@ jobs:
           command: yarn deploy-docs --token=$FIREBASE_TOKEN --non-interactive
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key:
-            - docz-cache-v1-{{ .Branch }}-{{ epoch }}
+          key: docz-cache-v1-{{ .Branch }}-{{ epoch }}
           paths:
             - ~/.docz/.cache
 workflows:
