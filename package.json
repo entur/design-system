@@ -100,6 +100,7 @@
     "wcag-contrast": "^3.0.0"
   },
   "resolutions": {
+    "babel-plugin-remove-graphql-queries": "2.9.14",
     "gatsby-plugin-mdx": "1.2.4"
   }
 }
