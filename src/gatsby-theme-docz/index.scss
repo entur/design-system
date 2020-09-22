@@ -33,11 +33,12 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
-  margin-top: 10rem;
+  margin-top: 2.5rem;
   transition: max-width $timings-fast ease-out,
     margin-left $timings-fast ease-out;
 
   @include for-desktop {
+    margin-top: 10rem;
     margin-left: 21rem;
     max-width: 60rem;
   }

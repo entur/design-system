@@ -45,9 +45,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <div className="mobile-nav-bar__links">
         <MobileNavItem to="/">Hjem</MobileNavItem>
         <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
-        <MobileNavItem to="/visuell-identitet">Visuell identitet</MobileNavItem>
+        <MobileNavItem to="/identitet">Identitet</MobileNavItem>
         <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
-        <MobileNavItem to="/stil-og-tone">Stil og tone</MobileNavItem>
         <MobileNavItem to="/universell-utforming">
           Universell utforming
         </MobileNavItem>

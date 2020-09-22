@@ -27,13 +27,13 @@ function FrontPageFooter() {
         spacing="extraLarge"
         className="front-page-footer__grid-container"
       >
-        <GridItem small={3}>
+        <GridItem small={6} medium={3}>
           <LeadParagraph>
             Entur leverer digitale <br /> tjenester til Norges <br />
             kollektivtransport.
           </LeadParagraph>
         </GridItem>
-        <GridItem small={3}>
+        <GridItem small={6} medium={3}>
           <Heading3>Sidestruktur</Heading3>
           <div className="front-page-footer__link">
             <DoczLinkWrapper to="/kom-i-gang">Kom i gang</DoczLinkWrapper>
@@ -55,7 +55,7 @@ function FrontPageFooter() {
             </DoczLinkWrapper>
           </div>
         </GridItem>
-        <GridItem small={3}>
+        <GridItem small={6} medium={3}>
           <Heading3>Kontakt</Heading3>
           <div className="front-page-footer__link">
             <Link href="">#talk-designsystem på Slack</Link>
@@ -64,7 +64,7 @@ function FrontPageFooter() {
             <Link href="">Send oss en email</Link>
           </div>
         </GridItem>
-        <GridItem small={3}>
+        <GridItem small={6} medium={3}>
           <Heading3>Følg oss på</Heading3>
           <div style={{ display: 'flex' }}>
             <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>

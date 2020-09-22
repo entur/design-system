@@ -2,20 +2,10 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import './NpmTag.scss';
 import { SmallText } from '@entur/typography';
+import { useGetNpmVersion } from './useGetNpmVersion';
 
 export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
-  const query = useStaticQuery(graphql`
-    query NpmVersion {
-      allNpmPackage {
-        edges {
-          node {
-            version
-            name
-          }
-        }
-      }
-    }
-  `);
+  const query = useGetNpmVersion();
 
   const npmV = query.allNpmPackage.edges.filter(
     item => item.node.name === packageName,

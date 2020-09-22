@@ -5,29 +5,14 @@ import { GridContainer, GridItem } from '@entur/grid';
 import { MarkdownParser } from './MarkdownParser';
 import { NavigationCard } from '@entur/layout';
 import './Changelog.scss';
+import { useGetChangelog } from './useGetChangelog';
 
 /**Must be in this (gastby-theme-docz/components) for graphql query to run */
 const Changelog = () => {
   const [openModal, setOpenModal] = useState(false);
   const [packageChangelog, setPackageChangelog] = useState('');
   const [modalTitle, setModalTitle] = useState('');
-  const query = useStaticQuery(graphql`
-    query ChangelogsQuery {
-      allMarkdownRemark {
-        edges {
-          node {
-            html
-            rawMarkdownBody
-            parent {
-              ... on File {
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const query = useGetChangelog();
 
   return (
     <div>

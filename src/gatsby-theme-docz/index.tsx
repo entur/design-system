@@ -69,15 +69,15 @@ const App: React.FC = ({ children }) => {
             ) : (
               <>
                 <SEO />
-                {/* <Media at="mobile"> */}
-                {/* <MobileMenu
+                <Media at="mobile">
+                  <MobileMenu
                     className="ui-menu--mobile"
                     openMenu={setOpenMobileMenu}
-                  /> */}
-                {/* </Media> */}
-                {/* <Media greaterThanOrEqual="desktop"> */}
-                <Menu className="ui-menu--desktop" />
-                {/* </Media> */}
+                  />
+                </Media>
+                <Media greaterThanOrEqual="desktop">
+                  <Menu className="ui-menu--desktop" />
+                </Media>
                 <div
                   className={classNames('site-content', {
                     'site-content--hidden': openMobileMenu,

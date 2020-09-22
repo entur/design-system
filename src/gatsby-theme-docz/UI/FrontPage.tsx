@@ -52,7 +52,7 @@ export const FrontPage = () => {
             style={{ paddingTop: '6rem', paddingBottom: '6rem' }}
           >
             <GridContainer spacing="large">
-              <GridItem medium={6}>
+              <GridItem small={6}>
                 <MediaCard
                   title="For designere"
                   description="Onboarding for deg som bruker designsystemt for første gang.
@@ -63,7 +63,7 @@ export const FrontPage = () => {
                   style={{ background: colors.blues.blue20 }}
                 ></MediaCard>
               </GridItem>
-              <GridItem medium={6}>
+              <GridItem small={6}>
                 <MediaCard
                   title="For utviklere"
                   description="En onboardingsside med introduksjon om hvordan du kommer i

@@ -20,18 +20,19 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
     <ReactMarkdown
       options={{
         createElement(type, props, children) {
-          console.log(children);
           if (children.includes('Bug Fixes')) {
-            return React.createElement(type, props, [
-              <BugIcon inline></BugIcon>,
-              children,
-            ]);
+            return React.createElement(
+              type,
+              [props],
+              [<BugIcon inline {...props}></BugIcon>, children],
+            );
           }
           if (children.includes('Features')) {
-            return React.createElement(type, props, [
-              <NewIcon inline></NewIcon>,
-              children,
-            ]);
+            return React.createElement(
+              type,
+              [props],
+              [<NewIcon inline {...props}></NewIcon>, children],
+            );
           }
           return React.createElement(type, props, children);
         },
