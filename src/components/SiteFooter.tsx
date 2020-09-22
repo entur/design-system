@@ -1,12 +1,13 @@
-import React from 'react';
-import { useCurrentDoc, useMenus } from 'docz';
-import Divider from '~/components/Divider';
-import { Link } from '@entur/typography';
 import { EditIcon } from '@entur/icons';
+import { Link } from '@entur/typography';
+import { useCurrentDoc } from 'docz';
+import React from 'react';
+import Divider from '~/components/Divider';
 import './SiteFooter.scss';
 
 const SiteFooter: React.FC = () => {
   const { filepath, name } = useCurrentDoc();
+  // WIP
   // const entries = useMenus();
   // const currentIndex = entries?.findIndex(entry => entry.name == name);
   // const nextPage = findNextPage(entries, useCurrentDoc());

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Modal } from '@entur/modal/dist';
 import { GridContainer, GridItem } from '@entur/grid';
-import { MarkdownParser } from './MarkdownParser';
 import { NavigationCard } from '@entur/layout';
+import { Modal } from '@entur/modal/dist';
+import React, { useState } from 'react';
 import './Changelog.scss';
+import { MarkdownParser } from './MarkdownParser';
 import { useGetChangelog } from './useGetChangelog';
 
 /**Must be in this (gastby-theme-docz/components) for graphql query to run */

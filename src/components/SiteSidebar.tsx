@@ -1,15 +1,13 @@
-import React from 'react';
-import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
-import { Location, WindowLocation } from '@reach/router';
-import { Contrast } from '@entur/layout';
 import {
   SideNavigation,
-  SideNavigationItem,
   SideNavigationGroup,
+  SideNavigationItem,
 } from '@entur/menu';
-import { SearchBar } from '~/components/SearchBar';
-import logoSVG from './logo.svg';
+import { Location, WindowLocation } from '@reach/router';
 import classNames from 'classnames';
+import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
+import React from 'react';
+import { SearchBar } from '~/components/SearchBar';
 import './SiteSidebar.scss';
 
 const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {

@@ -1,17 +1,10 @@
-import React from 'react';
-import { colors } from '@entur/tokens';
-import { Contrast } from '@entur/layout';
-import {
-  Table,
-  TableHead,
-  TableRow,
-  HeaderCell,
-  TableBody,
-} from '@entur/table';
-import ColorSwatch from '~/components/ColorSwatch';
 import { Switch } from '@entur/form';
 import { GridContainer } from '@entur/grid';
+import { Contrast } from '@entur/layout';
+import { colors } from '@entur/tokens';
 import { Heading2, Paragraph } from '@entur/typography';
+import React from 'react';
+import ColorSwatch from '~/components/ColorSwatch';
 
 const TransportColors: React.FC = () => {
   const [isContrast, setContrast] = React.useState(false);

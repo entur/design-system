@@ -1,24 +1,17 @@
-import React from 'react';
-import {
-  Heading3,
-  Heading4,
-  SubParagraph,
-  Link,
-  Label,
-  LeadParagraph,
-} from '@entur/typography';
-import { Link as DoczLink } from 'docz';
+import { IconButton } from '@entur/button';
+import { GridContainer, GridItem } from '@entur/grid';
 import {
   FacebookIcon,
-  TwitterIcon,
   InstagramIcon,
   LinkedinIcon,
+  TwitterIcon,
 } from '@entur/icons';
-import { GridContainer, GridItem } from '@entur/grid';
+import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
+import { Link as DoczLink } from 'docz';
+import React from 'react';
+import Divider from './Divider';
 import logo from './EnturLogo.svg';
 import './FrontPageFooter.scss';
-import Divider from './Divider';
-import { IconButton } from '@entur/button';
 
 function FrontPageFooter() {
   return (
