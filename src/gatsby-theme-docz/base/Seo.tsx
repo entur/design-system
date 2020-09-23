@@ -26,7 +26,7 @@ const SEO: React.FC<SeoProps> = props => {
     <Location>
       {({ location }) => (
         <Helmet>
-          <html lang="nb-no" />
+          <html lang="nb" />
           <link rel="shortcut icon" type="image/png" href={favicon} />
           <title>{currentDoc.name || title} | Entur Designsystem</title>
           <meta name="description" content={description} />
