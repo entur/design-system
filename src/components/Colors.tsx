@@ -31,6 +31,8 @@ type ColorObject = {
   rgb: string;
   variable: string;
   hex: string;
+  cmyk?: string;
+  children?: React.ReactNode;
 };
 
 const ColorsContext = React.createContext<{
@@ -45,6 +47,7 @@ const Colors = () => {
     rgb: '',
     variable: '',
     hex: '',
+    children: undefined,
   });
   return (
     <ColorsContext.Provider value={{ setChosenColor }}>
@@ -52,32 +55,59 @@ const Colors = () => {
         <Drawer
           title={chosenColor.name}
           open={chosenColor.name !== ''}
+          overlay
           onDismiss={() =>
-            setChosenColor({ name: '', rgb: '', variable: '', hex: '' })
+            setChosenColor({
+              name: '',
+              rgb: '',
+              variable: '',
+              hex: '',
+              cmyk: '',
+              children: undefined,
+            })
           }
         >
-          <ColorDrawer color={chosenColor}></ColorDrawer>
+          <ColorDrawer
+            color={chosenColor}
+            description={chosenColor?.children}
+          ></ColorDrawer>
         </Drawer>
         <Heading2>Profilfarger</Heading2>
         <GridContainer spacing="large">
-          <ColorSwatch type="Profil" path="brand.blue">
-            Blue
-          </ColorSwatch>
-          <ColorSwatch type="Profil" path="brand.lavender">
-            Lavender
-          </ColorSwatch>
-          <ColorSwatch type="Profil" path="brand.coral">
-            Coral
-          </ColorSwatch>
-          <ColorSwatch type="Profil" path="brand.peach">
-            Peach
+          <ColorSwatch title="Blue" path="brand.blue" cmyk="100, 95, 0, 45">
+            Blue er primær fargen til Entur og skal være gjennomgående i vår
+            visuelle profil. Den varme, mørkeblå fargen hentyder til den
+            statlige, trygge aktøren. Brukes i logo, typografi, bakgrunn
+            (contrast tema) og enkelte elementer som bærer av vår identitet.
           </ColorSwatch>
           <ColorSwatch
-            type="Profil"
-            path="brand.white"
-            style={{ border: '0.125rem solid #e9e9e9' }}
+            title="Lavender"
+            cmyk="23, 19, 0, 11"
+            path="brand.lavender"
           >
-            White
+            Lavender brukes som støttefarge for å gi et mykere og varmere
+            uttrykk. En mer subtil og nøytral blåfarge som skaper en visuell
+            harmoni i layouten.
+          </ColorSwatch>
+          <ColorSwatch title="Coral" path="brand.coral" cmyk="0, 80, 60, 0">
+            Coral er Enturs aksentfarge. Fargen er vektet lavt, men er viktig og
+            brukes ofte til mindre detaljer. Den korallrøde står for
+            effektiviteten, tydeligheten og den lille detaljen som binder det
+            hele sammen.
+          </ColorSwatch>
+          <ColorSwatch title="Peach" path="brand.peach" cmyk="0, 30, 40, 0">
+            Peach brukes for å få et ekstra lekent uttrykk. I likhet med coral
+            skal også denne fargen vektes lavt, og brukes minimalt i designet.
+          </ColorSwatch>
+          <ColorSwatch
+            path="brand.white"
+            cmyk="0, 0, 0, 0"
+            style={{ border: '0.125rem solid #e9e9e9' }}
+            title="White"
+          >
+            White brukes ofte som standard bakgrunnsfarge og typografi for
+            ‘Contrast’. Bruken av mye hvitt og whitespace i tillegg til de andre
+            fargene gjør at profilen fremstår lys, luftig og dynamisk.
           </ColorSwatch>
         </GridContainer>
         <Heading2>Systemfarger</Heading2>
@@ -90,45 +120,40 @@ const Colors = () => {
         </Paragraph>
         <Heading3>Infomelding farger</Heading3>
         <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
-          <ColorSwatch type="UX" path="validation.sky">
-            Sky
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.skyContrast">
-            Sky Contrast
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.skyTint">
-            Sky Tint
-          </ColorSwatch>
+          <ColorSwatch title="Sky" path="validation.sky"></ColorSwatch>
+          <ColorSwatch
+            title="Sky Contrast"
+            path="validation.skyContrast"
+          ></ColorSwatch>
+          <ColorSwatch title="Sky Tint" path="validation.skyTint"></ColorSwatch>
         </GridContainer>
         <Heading3>Suksessmelding farger</Heading3>
         <GridContainer spacing="large">
-          <ColorSwatch type="UX" path="validation.mint">
-            Mint
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.mintContrast">
-            Mint Contrast
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.mintTint">
-            Mint Tint
-          </ColorSwatch>
+          <ColorSwatch title="Mint" path="validation.mint"></ColorSwatch>
+          <ColorSwatch
+            title="Mint Contrast"
+            path="validation.mintContrast"
+          ></ColorSwatch>
+          <ColorSwatch
+            title="Mint Tint"
+            path="validation.mintTint"
+          ></ColorSwatch>
         </GridContainer>
         <Heading3>Feilmelding farger</Heading3>
         <GridContainer spacing="large">
-          <ColorSwatch type="UX" path="validation.lava">
-            Lava
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.lavaContrast">
-            Lava Contrast
-          </ColorSwatch>
-          <ColorSwatch type="UX" path="validation.lavaTint">
-            Lava Tint
-          </ColorSwatch>
+          <ColorSwatch title="Lava" path="validation.lava"></ColorSwatch>
+          <ColorSwatch
+            title="Lava Contrast"
+            path="validation.lavaContrast"
+          ></ColorSwatch>
+          <ColorSwatch
+            title="Lava Tint"
+            path="validation.lavaTint"
+          ></ColorSwatch>
         </GridContainer>
         <Heading3>Advarsel- og avviksmelding farge</Heading3>
         <GridContainer spacing="large">
-          <ColorSwatch type="UX" path="validation.canary">
-            Canary
-          </ColorSwatch>
+          <ColorSwatch title="Canary" path="validation.canary"></ColorSwatch>
         </GridContainer>
         <Heading2>Blåtoner</Heading2>
         <Paragraph>
@@ -136,12 +161,14 @@ const Colors = () => {
           Contrast seksjoner og enkelte elementer i designet som for eksempel
           borders og dividers.
         </Paragraph>
-        <GridContainer style={{ marginBottom: '3rem' }}>
+        <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
           <React.Fragment>
             {Object.keys(colors.blues).map(color => (
-              <ColorSwatch type="UX" key={color} path={`blues.${color}`}>
-                {color}
-              </ColorSwatch>
+              <ColorSwatch
+                key={color}
+                title={color}
+                path={`blues.${color}`}
+              ></ColorSwatch>
             ))}
           </React.Fragment>
         </GridContainer>
@@ -151,11 +178,13 @@ const Colors = () => {
           Brukes hovedsakelig som bakgrunnsfarger for å få frem det lyse og
           luftige ved layouten i designet.
         </Paragraph>
-        <GridContainer style={{ marginBottom: '3rem' }}>
+        <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
           {Object.keys(colors.greys).map(color => (
-            <ColorSwatch type="UX" key={color} path={`greys.${color}`}>
-              {color}
-            </ColorSwatch>
+            <ColorSwatch
+              key={color}
+              title={color}
+              path={`greys.${color}`}
+            ></ColorSwatch>
           ))}
         </GridContainer>
         <TransportColors />
@@ -164,16 +193,16 @@ const Colors = () => {
   );
 };
 
-const ColorDrawer: React.FC<{ color: ColorObject; description?: string }> = ({
-  color,
-  description,
-}) => {
+const ColorDrawer: React.FC<{
+  color: ColorObject;
+  description?: React.ReactNode;
+}> = ({ color, description }) => {
   return (
     <div>
       <div
         style={{ background: color.hex, width: '100%', height: '160px' }}
       ></div>
-      {description && <div>{description}</div>}
+      {description && <div style={{ marginTop: '1.5rem' }}>{description}</div>}
       <Heading4>Fargerverdier</Heading4>
       <Label>Variabel</Label>
       <CopyablePreformattedText successMessage={`Kopiert til utklippstavle`}>
@@ -187,10 +216,16 @@ const ColorDrawer: React.FC<{ color: ColorObject; description?: string }> = ({
       <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
         {color.rgb}
       </CopyablePreformattedText>
-      <Label>CMYK</Label>
-      <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
-        {convert.hex.cmyk(color.hex).toString()}
-      </CopyablePreformattedText>
+      {color.cmyk && (
+        <>
+          <Label>CMYK</Label>
+          <CopyablePreformattedText
+            successMessage={'Kopiert til utklippstavle'}
+          >
+            {color.cmyk}
+          </CopyablePreformattedText>
+        </>
+      )}
 
       <Heading4>Kontrast</Heading4>
       <Paragraph>

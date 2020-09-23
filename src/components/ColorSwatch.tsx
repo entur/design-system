@@ -21,12 +21,19 @@ export function getColorFromPath(path: string) {
 
 type Props = {
   path: string;
-  type: string;
   style?: any;
-  children: string;
+  children?: string;
+  cmyk?: string;
+  title: string;
 };
 
-const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
+const ColorSwatch: React.FC<Props> = ({
+  children,
+  path,
+  style,
+  cmyk,
+  title,
+}) => {
   const backgroundColor = getColorFromPath(path);
   const { variableFormat } = useSettings();
   const variableName = formatVariable(`colors.${path}`, variableFormat);
@@ -41,10 +48,12 @@ const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
         as="button"
         onClick={() =>
           setChosenColor!({
-            name: children,
+            name: title,
+            children: children,
             hex: backgroundColor,
             variable: variableName,
             rgb: rgb.toString(),
+            cmyk: cmyk,
           })
         }
       >
@@ -53,7 +62,7 @@ const ColorSwatch: React.FC<Props> = ({ children, path, type, style }) => {
           style={{ backgroundColor: backgroundColor, ...style }}
         />
         <div className="color-description">
-          <Heading4 margin="none">{children}</Heading4>
+          <Heading4 margin="none">{title}</Heading4>
           <div style={{ textTransform: 'uppercase' }}>{backgroundColor}</div>
         </div>
       </BaseCard>

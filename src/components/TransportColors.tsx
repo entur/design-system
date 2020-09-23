@@ -32,52 +32,66 @@ const TransportColors: React.FC = () => {
           Vis kontrastfarger
         </Switch>
         <GridContainer spacing="large">
-          <ColorSwatch type="UX" path={`transport.${pathName}.metro`}>
-            Metro
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.bus`}>
-            Bus
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.plane`}>
-            Plane
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.helicopter`}>
-            Helicopter
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.tram`}>
-            Tram
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.funicular`}>
-            Funicular
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.cableway`}>
-            Cableway
-          </ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.metro`}
+            title="Metro"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.bus`}
+            title="Bus"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.plane`}
+            title="Plane"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.helicopter`}
+            title="Helicopter"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.tram`}
+            title="Tram"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.funicular`}
+            title="Funicular"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.cableway`}
+            title="Cableway"
+          ></ColorSwatch>
 
-          <ColorSwatch type="UX" path={`transport.${pathName}.taxi`}>
-            Taxi
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.bicycle`}>
-            Bicycle
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.walk`}>
-            Walk
-          </ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.taxi`}
+            title="Taxi"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.bicycle`}
+            title="Bicycle"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.walk`}
+            title="Walk"
+          ></ColorSwatch>
 
-          <ColorSwatch type="UX" path={`transport.${pathName}.train`}>
-            Train
-          </ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.train`}
+            title="Train"
+          ></ColorSwatch>
 
-          <ColorSwatch type="UX" path={`transport.${pathName}.ferry`}>
-            Ferry
-          </ColorSwatch>
-          <ColorSwatch type="UX" path={`transport.${pathName}.carferry`}>
-            Carferry
-          </ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.ferry`}
+            title="Ferry"
+          ></ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.carferry`}
+            title="Carferry"
+          ></ColorSwatch>
 
-          <ColorSwatch type="UX" path={`transport.${pathName}.mobility`}>
-            Mobility
-          </ColorSwatch>
+          <ColorSwatch
+            path={`transport.${pathName}.mobility`}
+            title="Mobility"
+          ></ColorSwatch>
         </GridContainer>
       </Wrapper>
     </>
