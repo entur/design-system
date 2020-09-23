@@ -12,11 +12,11 @@ import {
 import { colors } from '@entur/tokens';
 import {
   Heading2,
+  Heading3,
   Heading4,
   Label,
   Link as LinkText,
   Paragraph,
-  Heading3,
 } from '@entur/typography';
 import { Link } from 'docz';
 import React from 'react';
@@ -24,7 +24,6 @@ import { hex } from 'wcag-contrast';
 import ColorSwatch from './ColorSwatch';
 import { CopyablePreformattedText } from './CopyablePreformattedText';
 import TransportColors from './TransportColors';
-import convert from 'color-convert';
 
 type ColorObject = {
   name: string;

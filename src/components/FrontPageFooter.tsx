@@ -1,3 +1,4 @@
+import { VisuallyHidden } from '@entur/a11y/dist';
 import { IconButton } from '@entur/button';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
@@ -60,16 +61,36 @@ function FrontPageFooter() {
         <GridItem small={6} medium={3}>
           <Heading3>Følg oss på</Heading3>
           <div style={{ display: 'flex' }}>
-            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+            <IconButton
+              as="a"
+              style={{ width: 'unset', height: 'unset' }}
+              href="https://www.facebook.com/entur.org/"
+            >
+              <VisuallyHidden>Link til Facebook</VisuallyHidden>
               <FacebookIcon size="24" />
             </IconButton>
-            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+            <IconButton
+              as="a"
+              style={{ width: 'unset', height: 'unset' }}
+              href="https://www.instagram.com/entur_as/"
+            >
+              <VisuallyHidden>Link til Instagram</VisuallyHidden>
               <InstagramIcon size="24" />
             </IconButton>
-            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+            <IconButton
+              as="a"
+              style={{ width: 'unset', height: 'unset' }}
+              href="https://twitter.com/entur_as"
+            >
+              <VisuallyHidden>Link til Twitter</VisuallyHidden>
               <TwitterIcon size="24" />
             </IconButton>
-            <IconButton as="a" style={{ width: 'unset', height: 'unset' }}>
+            <IconButton
+              as="a"
+              style={{ width: 'unset', height: 'unset' }}
+              href="https://www.linkedin.com/company/entur-as"
+            >
+              <VisuallyHidden>Link til LinkedIn</VisuallyHidden>
               <LinkedinIcon size="24" />
             </IconButton>
           </div>
@@ -85,7 +106,7 @@ function FrontPageFooter() {
         }}
       >
         <div style={{ padding: '2rem 0' }}>
-          <img src={logo} width="104px" />
+          <img src={logo} width="104px" alt="Entur sin logo" />
         </div>
         <div style={{ float: 'right', padding: '2rem 0' }}>
           <Label>Entur.no</Label>

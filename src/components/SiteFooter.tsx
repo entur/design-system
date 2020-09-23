@@ -59,12 +59,12 @@ function findNextPage(entries, current) {
 
   return currentMenuPages
     .filter(collection => {
-      return collection.name == menu;
+      return collection.name === menu;
     })[0]
     .menu?.filter(page => {
       // console.log(page.order, order, page.parent, parent);
 
-      return page.order == order + 1 && page.parent === parent;
+      return page.order === order + 1 && page.parent === parent;
     });
 }
 

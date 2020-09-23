@@ -42,7 +42,11 @@ export const FrontPage = () => {
               </div>
             </div>
             <div className="front-page__top-image" style={{}}>
-              <img src={FrontPageImage} width="100%" />
+              <img
+                src={FrontPageImage}
+                width="100%"
+                alt="Tegning av en by med kollektivtrafikk"
+              />
             </div>
           </div>
         </div>
@@ -61,6 +65,8 @@ export const FrontPage = () => {
                   digitale løsninger."
                   category="Kom i gang"
                   style={{ background: colors.blues.blue20 }}
+                  as={Link}
+                  to="/kom-i-gang/for-designere/designprosess"
                 ></MediaCard>
               </GridItem>
               <GridItem small={6}>
@@ -71,6 +77,8 @@ export const FrontPage = () => {
                   hvordan du kan bidra til designssytemet."
                   category="Kom i gang"
                   style={{ background: colors.blues.blue20 }}
+                  as={Link}
+                  to="/kom-i-gang/for-utviklere/komponentbibliotek"
                 ></MediaCard>
               </GridItem>
             </GridContainer>
@@ -167,7 +175,11 @@ export const FrontPage = () => {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={Kontakt} width="377px" />
+            <img
+              src={Kontakt}
+              width="377px"
+              alt="En mann som vinker til en dame gjennom chattebobler"
+            />
           </div>
           <Heading2>Vil du bidra?</Heading2>
           <Paragraph>
@@ -185,6 +197,8 @@ export const FrontPage = () => {
             compact
             title="Se hvordan du kan bidra"
             style={{ marginTop: '3rem' }}
+            as={Link}
+            to="/kom-i-gang/for-utviklere/bidra"
           />
         </div>
       </div>

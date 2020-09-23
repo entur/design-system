@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import { Modal } from '@entur/modal/dist';
 import { MarkdownParser } from './MarkdownParser';
 import { ActionChip } from '@entur/chip/dist';
