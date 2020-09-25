@@ -27,6 +27,7 @@ import {
   SegmentedChoice,
   SegmentedControl,
   TextField,
+  InputGroup,
 } from '@entur/form';
 import {
   RowHeightDefaultIcon,
@@ -37,6 +38,7 @@ import {
   FileIcon,
   EditIcon,
   DeleteIcon,
+  SearchIcon,
 } from '@entur/icons';
 import testdata from './testdata';
 import { OverflowMenu, OverflowMenuItem, Pagination } from '@entur/menu';
@@ -791,5 +793,123 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
         />
       </>
     );
+  }}
+</Playground>
+
+## Filter tables
+
+Tabeller med filtrering hjelper til med å begrense søkeresultatene,
+slik at brukeren kan finne mer nøyaktige resultater de leter etter,
+få ulik innsikt og gjøre sammenligninger.
+Det er tre typer filter-kontroller tilgjengelig:
+
+### Tabellsøk
+
+Ved å benytte et søkefelt som begrenser resultatene som er vist basert på hva brukeren taster inn.
+
+<Playground>
+  {() => {
+    const [filterSearch, setFilterSearch] = React.useState('');
+    const data = [
+      {
+        name: 'Rolf Svendsen',
+        id: '87374061',
+        place: 'Oslo S',
+        channel: 'MT',
+        open: '28.04.20',
+        closed: 'Åpent',
+      },
+      {
+        name: 'Robert Jensen',
+        id: '21837127',
+        place: 'Entur admin',
+        channel: 'Entur Sørvis',
+        open: '18.10.20',
+        closed: '20.10.20',
+      },
+      {
+        name: 'Ola Nordmann',
+        id: '66162613',
+        place: 'Oslo S',
+        channel: 'MT',
+        open: '12.10.20',
+        closed: '20.10.20',
+      },
+    ];
+    const textSearchRegex = new RegExp(filterSearch, 'i');
+    return (
+      <div>
+        <InputGroup label="Søk på Navn eller ID" style={{ width: '15rem' }}>
+          <TextField
+            prepend={<SearchIcon inline />}
+            value={filterSearch}
+            placeholder="Kari Nordmann"
+            onChange={e => setFilterSearch(e.target.value)}
+          />
+        </InputGroup>
+        <Table style={{ marginTop: '2rem' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Kassepunkt ID</HeaderCell>
+              <HeaderCell>Salgssted</HeaderCell>
+              <HeaderCell>Salgskanal</HeaderCell>
+              <HeaderCell>Åpnet</HeaderCell>
+              <HeaderCell>Lukket</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data
+              .filter(
+                item =>
+                  textSearchRegex.test(item.name) ||
+                  textSearchRegex.test(item.id) ||
+                  filterSearch === '',
+              )
+              .map(item => (
+                <TableRow key={item.name}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.id}</DataCell>
+                  <DataCell>{item.place}</DataCell>
+                  <DataCell>{item.channel}</DataCell>
+                  <DataCell>{item.open}</DataCell>
+                  <DataCell>{item.closed}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }}
+</Playground>
+
+### Enkelt filter
+
+Ved å presentere multi-select dropdowns med predefinerte valg og søkefunksjon,
+som lar brukerne velge kategorier de ønsker å filtrere etter.
+Når brukeren velger en kategori, vises bare radene som tilhører den valgte kategorien.
+For eksempel kan brukeren filtrere etter størrelse, dato, mottaker osv.
+Denne metoden for filtrering gir brukeren umiddelbare oppdateringer og
+resultater etter at hvert enkelt valg er gjort.
+De valgte filtrene dukker opp som Tag Chips under skjemaet, for å la brukerne se det de har valgt.
+Ved å klikke på krysset til et valgt filter, fjernes den enkelt og siden oppdateres automatisk.
+
+<Playground>
+  {() => {
+    return <div />;
+  }}
+</Playground>
+
+### Avansert filter
+
+Ved å bruke en avansert filterkontroll som kombinerer flere filterkontroller i en popover-meny.
+Den kan bestå av hvilken som helst formkontroll som Radio, Checkbox, DatePicker og Dropdowns.
+Brukerne kan velge ett eller flere filtre og aktivere dem ved å klikke “Bruk filter”.
+Siden oppdateres for å vise resultatene som samsvarer med filtrene.
+De valgte filtrene er også merket med Tags Chips over tabellen.
+
+<Playground>
+  {() => {
+    return <div />;
   }}
 </Playground>
