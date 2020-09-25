@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.0.3...@entur/table@4.0.4) (2020-09-25)
+
+### Bug Fixes
+
+- **header cell:** improve sort arrow position ([2bfa956](https://bitbucket.org/enturas/design-system/commits/2bfa956a96959ead6f208ab865c3c0f9861272e2))
+- **use sortable table:** fix broken typing for sort hook ([efbb272](https://bitbucket.org/enturas/design-system/commits/efbb272b4f4cedfcdf99d88ea76eff684fc70455))
+
 ## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.0.2...@entur/table@4.0.3) (2020-09-14)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.12.2...@entur/icons@1.13.0) (2020-09-25)
+
+### Features
+
+- **@entur/icons:** add GitHub icon ([fa47eee](https://bitbucket.org/enturas/design-system/commits/fa47eeef111f0c3a1a4d0a71d58e8f834d84f198))
+
 ## [1.12.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.12.1...@entur/icons@1.12.2) (2020-09-14)
 
 ### Bug Fixes

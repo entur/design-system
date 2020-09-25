@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.6...@entur/form@3.4.7) (2020-09-25)
+
+### Bug Fixes
+
+- **radiopanel:** add divider on contrast radio panel ([d7dd956](https://bitbucket.org/enturas/design-system/commits/d7dd956d0bb1b9ebec1669e67734e63f3d13834a))
+
 ## [3.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.5...@entur/form@3.4.6) (2020-09-14)
 
 **Note:** Version bump only for package @entur/form

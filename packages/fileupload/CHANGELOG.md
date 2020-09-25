@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.9](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.8...@entur/fileupload@0.3.9) (2020-09-25)
+
+**Note:** Version bump only for package @entur/fileupload
+
 ## [0.3.8](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.7...@entur/fileupload@0.3.8) (2020-09-14)
 
 **Note:** Version bump only for package @entur/fileupload

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.8](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.7...@entur/alert@0.6.8) (2020-09-25)
+
+### Bug Fixes
+
+- **small alert box:** adjust font size down from 16 to 14 ([7349397](https://bitbucket.org/enturas/design-system/commits/7349397d7e47694d22ab20a0dffe133c27104516))
+
 ## [0.6.7](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.6...@entur/alert@0.6.7) (2020-09-14)
 
 **Note:** Version bump only for package @entur/alert

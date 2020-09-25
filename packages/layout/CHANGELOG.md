@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.5...@entur/layout@1.8.0) (2020-09-25)
+
+### Features
+
+- **navigation card:** add externallink prop ([37a66de](https://bitbucket.org/enturas/design-system/commits/37a66de4e02022e8a54df3ea68205a05ad5ace6d))
+
 ## [1.7.5](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.4...@entur/layout@1.7.5) (2020-09-14)
 
 **Note:** Version bump only for package @entur/layout
