@@ -14,8 +14,10 @@ export function useSortableData<T>(
   externalSortConfig: ExternalSortConfig = { key: '', order: 'none' },
 ): {
   sortedData: T[];
-  getSortableHeaderProps: SortableHeaderProps;
-  getSortableTableProps: SortableTableProps;
+  getSortableHeaderProps: (
+    args: SortableHeaderProps,
+  ) => SortableHeaderReturnProps;
+  getSortableTableProps: (args: SortableTableProps) => SortableTableReturnProps;
 } {
   const [sortConfig, setSortConfig] = React.useState(externalSortConfig);
   const tableCopy = rawData.slice();
@@ -53,26 +55,30 @@ export function useSortableData<T>(
     setSortConfig({ key, order });
   };
 
-  const getSortableHeaderProps = ({
+  function getSortableHeaderProps({
     name,
     sortable = true,
     ...props
-  }: SortableHeaderProps) => ({
-    name,
-    sortable,
-    onClick: () => onSortRequested(name),
-    sortConfig: sortConfig,
-    ...props,
-  });
+  }: SortableHeaderProps): SortableHeaderReturnProps {
+    return {
+      name,
+      sortable,
+      onClick: () => onSortRequested(name),
+      sortConfig: sortConfig,
+      ...props,
+    };
+  }
 
-  const getSortableTableProps = ({
+  function getSortableTableProps({
     sortable = true,
     ...props
-  }: SortableTableProps) => ({
-    sortable,
-    sortConfig: sortConfig,
-    ...props,
-  });
+  }: SortableTableProps): SortableTableReturnProps {
+    return {
+      sortable,
+      sortConfig: sortConfig,
+      ...props,
+    };
+  }
 
   return { sortedData, getSortableHeaderProps, getSortableTableProps };
 }
@@ -86,8 +92,23 @@ export type SortableHeaderProps = {
   [key: string]: any;
 };
 
+export type SortableHeaderReturnProps = {
+  name: string;
+  sortable: boolean;
+  onClick: () => void;
+  sortConfig: ExternalSortConfig;
+  [key: string]: any;
+};
+
 export type SortableTableProps = {
   /** @default true */
   sortable?: boolean;
+  [key: string]: any;
+};
+
+export type SortableTableReturnProps = {
+  /** @default true */
+  sortable?: boolean;
+  sortConfig: ExternalSortConfig;
   [key: string]: any;
 };
