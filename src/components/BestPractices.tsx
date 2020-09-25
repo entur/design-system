@@ -2,6 +2,7 @@ import React from 'react';
 import { ValidationCheckIcon, ValidationErrorIcon } from '@entur/icons';
 import classNames from 'classnames';
 import './BestPractices.scss';
+import { Contrast } from '@entur/layout';
 
 export const BestPractices: React.FC<{ className?: string }> = props => (
   <section className={classNames('best-practices', props.className)}>
@@ -15,6 +16,7 @@ type BestPracticesExampleProps = {
   type: 'do' | 'dont';
   subText?: string;
   className?: string;
+  contrast?: boolean;
 };
 
 export const Example: React.FC<BestPracticesExampleProps> = ({
@@ -24,17 +26,19 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
   type,
   subText,
   className,
+  contrast = false,
 }) => {
   const Icon = type === 'do' ? ValidationCheckIcon : ValidationErrorIcon;
+  const Element = contrast ? Contrast : 'div';
   return (
     <article className={classNames('best-practices__example', className)}>
-      <div
+      <Element
         className={`best-practices__heading best-practices__heading--${type}`}
       >
         <Icon inline={true} />{' '}
         <span>{type === 'do' ? 'Innafor' : 'Uttafor'}</span>
         {src && <img src={src} alt={alt} className="best-practices__image" />}
-      </div>
+      </Element>
       {children && <div className="best-practices__content">{children}</div>}
       {subText && subText}
     </article>

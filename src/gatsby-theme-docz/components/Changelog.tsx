@@ -23,6 +23,7 @@ const Changelog = () => {
               compact
               as="button"
               className="changelog-navigation-card"
+              externalLink
               style={{
                 height: '5rem',
                 width: '100%',
