@@ -1,5 +1,11 @@
 @import '~@entur/tokens/dist/styles.scss';
 
+.eds-contrast .eds-radio-panel__wrapper + .eds-radio-panel__wrapper {
+  .eds-radio-panel__container {
+    border-top: $border-widths-medium solid $colors-blues-blue20;
+  }
+}
+
 .eds-radio-panel {
   &__wrapper {
     input {
