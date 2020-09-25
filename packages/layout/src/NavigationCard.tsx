@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paragraph } from '@entur/typography';
 import classNames from 'classnames';
-import { ForwardIcon } from '@entur/icons';
+import { ForwardIcon, ExternalIcon } from '@entur/icons';
 import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
 
@@ -22,6 +22,10 @@ export type NavigationCardProps = {
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;
+  /** Legger til et ikon for å symbolisere at kortet har en ekstern lenke
+   * @default false
+   */
+  externalLink?: boolean;
   [key: string]: any;
 };
 
@@ -32,6 +36,7 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
   titleIcon,
   compact = false,
   className,
+  externalLink = false,
   ...rest
 }) => {
   const classList = classNames('eds-navigation-card', className, {
@@ -51,9 +56,18 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
         )}
         {title}
       </span>
-      {!compact && <Paragraph>{children}</Paragraph>}
-      {compact && (
-        <ForwardIcon inline className="eds-navigation-card__arrow-icon" />
+      {!compact && (
+        <>
+          <Paragraph>{children}</Paragraph>
+          {externalLink && (
+            <ExternalIcon className="eds-navigation-card__external--not-compact" />
+          )}
+        </>
+      )}
+      {compact && externalLink ? (
+        <ExternalIcon className="eds-navigattion-card__icon eds-navigation-card__external--compact" />
+      ) : (
+        <ForwardIcon className="eds-navigattion-card__icon eds-navigation-card__arrow-icon" />
       )}
     </BaseCard>
   );

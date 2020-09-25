@@ -86,4 +86,21 @@
       margin-top: 0rem;
     }
   }
+  &__compact-icon {
+    position: absolute;
+    right: $space-extra-large;
+    top: $space-extra-large;
+    font-size: 1rem;
+  }
+  &__external {
+    &--not-compact {
+      position: absolute;
+      top: $space-medium + $space-extra-small2;
+      right: $space-medium + $space-extra-small2;
+      color: $colors-blues-blue40;
+    }
+    &--compact {
+      font-size: 1rem;
+    }
+  }
 }
