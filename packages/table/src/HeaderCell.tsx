@@ -50,10 +50,16 @@ export const HeaderCell: React.FC<HeaderCellProps> = ({
         >
           {children}
           {isCurrentlySorted && sortConfig.order === 'ascending' && (
-            <UpArrowIcon className="eds-table__header-cell-button-icon" />
+            <UpArrowIcon
+              size="16px"
+              className="eds-table__header-cell-button-icon"
+            />
           )}
           {isCurrentlySorted && sortConfig.order === 'descending' && (
-            <DownArrowIcon className="eds-table__header-cell-button-icon" />
+            <DownArrowIcon
+              size="16px"
+              className="eds-table__header-cell-button-icon"
+            />
           )}
         </button>
       ) : (
