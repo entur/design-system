@@ -28,6 +28,10 @@
     }
   }
 
+  &--small {
+    font-size: $font-sizes-medium;
+  }
+
   &--fit-content {
     width: fit-content;
   }
