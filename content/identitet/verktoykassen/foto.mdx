@@ -1,0 +1,96 @@
+---
+name: Foto
+description: Dette er vår overordnet bildestil som skal kommunisere våre verdier og Enturs personlighet.
+route: /identitet/verktoykassen/foto
+parent: Identitet
+menu: Verktøykassen
+order: 6
+---
+
+import { GridContainer, GridItem } from '@entur/grid';
+import { colors } from '@entur/tokens';
+import { StrongText, Paragraph } from '@entur/typography';
+import bilde1 from './foto/bilde1.jpg';
+import bilde2 from './foto/bilde2.jpg';
+import bilde3 from './foto/bilde3.jpg';
+import bilde4 from './foto/bilde4.jpg';
+import PageHeader from '~/components/PageHeader';
+
+<PageHeader></PageHeader>
+
+<img src={bilde1} style={{ width: '100%' }} />
+
+## Eksempler på motiver
+
+### Tilbyderne og transportmidlene
+
+For eksempel: Infrastrukturen - Stasjoner og holdeplasser - Detaljer fra transportmidlene - Nettverket - Trafikk
+
+<GridContainer spacing="large">
+  <GridItem small={6} medium={4}>
+    <img src={bilde2} style={{ width: '100%' }} />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <img src={bilde3} style={{ width: '100%' }} />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <img src={bilde4} style={{ width: '100%' }} />
+  </GridItem>
+</GridContainer>
+
+## Prinsipper
+
+### Sammen er vi bedre - Vi kommer lenger sammen.
+
+Vi synliggjør mulighetene og potensialet i et samlet kollektiv-Norge, og verdien det har for de reisende.
+Vi løfter frem mangfoldigheten i infrastrukturen og landet vårt, og alle de ulike turene det inviterer til.
+Vi spiller på kontraster; fra nord til sør, det store toget og den lille lokale fergen.
+
+### Den røde tråden
+
+Vi bygger identitet i bildene, ofte med motiver med tydelige horisontale linjer.
+Linjene går til kant; de starter og stopper utenfor rammen.
+Det gir bildene et dynamisk uttrykk og kobler dem til en større sammenheng.
+Det grafiske virkemiddelet skaper et rent uttrykk, strammer og skaper ro i komposisjonen.
+Det gir også muligheten til å binde flere foto sammen med en, uavbrutt linje eller horisont.
+Det er ikke i alle foto at dette grepet er mulig. Vi forsøker i det lengste å binde disse fotoene sammen med den fine, røde tråden.
+Reisen som går uavbrutt gjennom motivene.
+
+### Lett og leken
+
+Bildene uttrykker en følelse av mestring hos brukerne, og viser en sømløs integrering av teknologi i hverdagen.
+Bildene uttrykker liv og bevegelse og har en positiv stemning.
+Vi viser mennesker i bevegelse, og teknologien i bruk.
+
+## Prinsipper
+
+<div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: '1fr' }}>
+  <div style={{ background: colors.greys.grey40, padding: '1.5rem' }}>
+    <StrongText>Naturlig lys</StrongText>
+    <Paragraph margin="none">
+      Bildene har et lett, nordisk uttrykk med mye blåstikk. Foto tas i naturlig
+      lys. Ta gjerne bilder utendørs.
+    </Paragraph>
+  </div>
+  <div style={{ background: colors.greys.grey40, padding: '1.5rem' }}>
+    <StrongText>Ekte farger</StrongText>
+    <Paragraph margin="none">
+      Fargene er naturlige og avspeiler virkeligheten. God kontrast underbygger
+      det grafiske uttrykket.
+    </Paragraph>
+  </div>
+  <div style={{ background: colors.greys.grey40, padding: '1.5rem' }}>
+    <StrongText>I bevegelse</StrongText>
+    <Paragraph margin="none">
+      Vi skaper et livlig uttrykk ved å fokusere på personer i bevegelse eller
+      transportmidler og teknologi i bruk.
+    </Paragraph>
+  </div>
+  <div style={{ background: colors.greys.grey40, padding: '1.5rem' }}>
+    <StrongText>Rett på</StrongText>
+    <Paragraph margin="none">
+      Vi forsøker å være rett på der det er mulig. Ved å ta bildene rett på
+      skaper vi et rent, grafisk og ærlig uttrykk.
+    </Paragraph>
+  </div>
+</div>

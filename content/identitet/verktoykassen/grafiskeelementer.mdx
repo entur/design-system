@@ -1,0 +1,138 @@
+---
+name: Grafiske elementer
+description: Typografi, strek og mønster er de bærende grafiske elementene i identiteten.
+parent: Identitet
+route: /identitet/vektoykassen/grafiske-elementer
+menu: Verktøykassen
+order: 7
+---
+
+import PageHeader from '~/components/PageHeader';
+import { Paragraph, Heading5 } from '@entur/typography';
+import { GridContainer, GridItem } from '@entur/grid';
+import { BannerAlertBox } from '@entur/alert';
+import farge1 from './Grafiske_elementer/Typo-steder-korall-kaviar.png';
+import farge2 from './Grafiske_elementer/Typo-steder-korall.png';
+import farge3 from './Grafiske_elementer/Typo-steder.png';
+import farge4 from './Grafiske_elementer/Typo-steder-blue.png';
+import linjeavstand from './Grafiske_elementer/Typo-linjeavstand.png';
+import strek1 from './Grafiske_elementer/EN_strek_typer.png';
+import strek2 from './Grafiske_elementer/EN_strek_patterns.png';
+import strek3 from './Grafiske_elementer/EN_strek_linjeavstand.png';
+import strek4 from './Grafiske_elementer/EN_strek_forhold.png';
+import strek5 from './Grafiske_elementer/EN_strek_plassering.png';
+import strek6 from './Grafiske_elementer/EN_strek_str.png';
+
+<PageHeader />
+
+## Typografi
+
+Typografi er et av de bærende grafiske elementene i identiteten. Gjennom bruk av ulike vekter gjør vi innholdet til helten og skaper et lekent og variert uttrykk. Oppsettet tilfører bevegelse og dynamikk til identiteten, og understøtter mangfoldigheten og kontrastene i alle de forskjellige turene Entur tilrettelegger for.
+
+### Fargekombinasjoner
+
+<GridContainer spacing="large">
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={farge1} width="100%" />
+    <Paragraph>Korall og lys korall på blå bakgrunn.</Paragraph>
+  </GridItem>
+
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={farge2} width="100%" />
+    <Paragraph>Korall på lys bakgrunn.</Paragraph>
+  </GridItem>
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={farge3} width="100%" />
+    <Paragraph>Farget på lys bakgrunn.</Paragraph>
+  </GridItem>
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={farge4} width="100%" />
+    <Paragraph>Farget på blå bakgrunn.</Paragraph>
+  </GridItem>
+</GridContainer>
+
+### Linjeavstand
+
+<GridContainer spacing="large">
+  <GridItem small={12} medium={8}>
+    <img src={linjeavstand} width="100%" />
+  </GridItem>
+  <GridItem small={12} medium={4}>
+    <Paragraph>Mellom ord skal avstanden bestå av mellomrom x 2.</Paragraph>
+    <Paragraph>
+      Mellom linjene skal avstanden være 1.1 x punkt størrelsen.
+    </Paragraph>
+  </GridItem>
+</GridContainer>
+
+## Strek og mønster
+
+<img src={strek1} width="100%" />
+
+Den røde streken er hentet fra logoen, og danner grunnlaget for strekstilen i Entur.
+De forskjellige strekene symboliserer de ulike transportmidlene.
+Strekene brukes for seg, i tillegg til sammen med stedsnavn/ulike typer transportmidler.
+
+Strekene er lagret som brushes i en .ai fil og kan lastes ned her:
+
+<img src={strek2} width="100%" />
+
+<BannerAlertBox variant="warning" style={{ margin: '2.5rem 0' }}>
+  NB! I markedsmateriell, skal strekene kun brukes i korall.
+</BannerAlertBox>
+
+<GridContainer spacing="large">
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={strek3} width="100%" />
+    <Heading5>Linjeavstand</Heading5>
+    <Paragraph>Avstanden mellom linjene er 2,5 ganger høyden av stedsnavnet. </Paragraph>
+  </GridItem>
+
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={strek4} width="100%" />
+    <Heading5>Linjeavstand</Heading5>
+    <Paragraph>20 px avstand mellom linjene i 100 px bredde. 4 enheter pr. 100 px bredde.</Paragraph>
+  </GridItem>
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={strek5} width="100%" />
+    <Heading5>Plassering</Heading5>
+    <Paragraph>I kombinasjon med linjer skal stedsnavn ikke stå over hverandre. Dette for å skape balanse i mønsteret og for å unngå at linjeavstanden ser ubalansert ut. </Paragraph>
+  </GridItem>
+  <GridItem
+    small={12}
+    medium={6}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+    <img src={strek6} width="100%" />
+    <Heading5>Strektykkelse</Heading5>
+    <Paragraph>Strekenes tykkelse samsarer med linjetykkelsen til vertikalene i Nationale Medium.</Paragraph>
+  </GridItem>
+</GridContainer>

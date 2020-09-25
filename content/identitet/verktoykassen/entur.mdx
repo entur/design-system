@@ -1,0 +1,127 @@
+---
+name: EN......TUR
+description: Vi åpner logoen for å gi plass til innholdet.
+route: /identitet/verktoykassen/entur
+parent: Identitet
+menu: Verktøykassen
+order: 8
+---
+
+import PageHeader from '~/components/PageHeader';
+import bilde1 from './entur/Logo_aapne.png';
+import bilde2 from './entur/Typo_turer.png';
+import bilde3 from './entur/Typo_dont_1.png';
+import bilde4 from './entur/Typo_dont_2.png';
+import bilde5 from './entur/Typo_dont_3.png';
+import bilde6 from './entur/Typo_dont_4.png';
+import bilde7 from './entur/Typo_dont_5.png';
+import bilde8 from './entur/Typo_dont_6.png';
+import bilde9 from './entur/EN---TUR_foto-1.png';
+import bilde10 from './entur/EN---TUR_foto-2.png';
+import bilde11 from './entur/EN---TUR_foto-3.png';
+import bilde12 from './entur/EN---TUR_foto-4.png';
+import { BestPractices, Example } from '~/components/BestPractices';
+import { GridContainer, GridItem } from '@entur/grid';
+import {
+  UnorderedList,
+  ListItem,
+  StrongText,
+  Paragraph,
+  Heading3,
+} from '@entur/typography';
+import './entur.scss';
+
+<PageHeader></PageHeader>
+
+## Prinsipper for bevegelse
+
+Typografi er et av de bærende grafiske elementene i identiteten.
+Gjennom bruk av ulike vekter gjør vi innholdet til helten og skaper et lekent og variert uttrykk.
+Oppsettet tilfører bevegelse og dynamikk til identiteten, og understøtter mangfoldigheten og kontrastene i alle de forskjellige turene Entur tilrettelegger for.
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={12} medium={8}>
+    <img src={bilde1} style={{ width: '100%' }} />
+  </GridItem>
+  <GridItem small={12} medium={4}>
+    <div>
+      EN og TUR kan åpne seg på tre ulike måter for å vise innhold, som
+      forholder seg til formatet det er satt opp på. EN og TUR beveger seg på én
+      av tre måter:
+    </div>
+    <UnorderedList>
+      <ListItem>Langs horisontalen av formatet.</ListItem>
+      <ListItem>Langs vertikalen av formatet.</ListItem>
+      <ListItem>
+        Langs diagonalen av formatet, men kun fra øvre venstre til nedre høyre
+        hjørne.
+      </ListItem>
+    </UnorderedList>
+  </GridItem>
+</GridContainer>
+
+## Bruk med Typografi
+
+<img src={bilde2} style={{ width: '100%' }} />
+
+### Unngå...
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={6}>
+    <Example contrast type="dont" src={bilde3} className="ds-en-tur-overlay">
+      <StrongText>...at innholdet står i annet enn korall</StrongText>
+      <Paragraph>
+        Innholdet mellom EN og TUR skal alltid stå i korallrød.
+      </Paragraph>
+    </Example>
+  </GridItem>
+  <GridItem small={6}>
+    <Example contrast type="dont" src={bilde4} className="ds-en-tur-overlay">
+      <StrongText>...for liten tekst</StrongText>
+      <Paragraph>
+        Innholdet mellom EN og TUR skal alltid stå i korallrød.
+      </Paragraph>
+    </Example>
+  </GridItem> <GridItem small={6}>
+    <Example contrast type="dont" src={bilde5} className="ds-en-tur-overlay">
+      <StrongText>...små bokstaver</StrongText>
+      <Paragraph>Innholdet står alltid i versaler.</Paragraph>
+    </Example>
+  </GridItem> <GridItem small={6}>
+    <Example contrast type="dont" src={bilde6} className="ds-en-tur-overlay">
+      <StrongText>...tilfeldig plassering av EN og TUR</StrongText>
+      <Paragraph>
+        EN og TUR forholder seg alltid til de tre retningene som beskrevet over.
+      </Paragraph>
+    </Example>
+  </GridItem> <GridItem small={6}>
+    <Example contrast type="dont" src={bilde7} className="ds-en-tur-overlay">
+      <StrongText>...ulik størrelse på EN og TUR</StrongText>
+      <Paragraph> EN og TUR står alltid i samme størrelse.</Paragraph>
+    </Example>
+  </GridItem> <GridItem small={6}>
+    <Example contrast type="dont" src={bilde8} className="ds-en-tur-overlay">
+      <StrongText>...plassering av EN og TUR bakvendt</StrongText>
+      <Paragraph> Legg aldri en effekt på logoen. </Paragraph>
+    </Example>
+  </GridItem>
+</GridContainer>
+
+## Bruk med foto
+
+<img src={bilde9} style={{ width: '100%' }} />
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={6} medium={4}>
+    <Heading3>Horisontal</Heading3>
+    <img src={bilde10} style={{ width: '100%' }} />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <Heading3>Vertikal</Heading3>
+    <img src={bilde11} style={{ width: '100%' }} />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <Heading3>Diagonal</Heading3>
+    <img src={bilde12} style={{ width: '100%' }} />
+  </GridItem>
+</GridContainer>

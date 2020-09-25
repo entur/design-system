@@ -1,0 +1,53 @@
+---
+name: Typografi
+description: Typografi er en essensiell del av Enturs identitet og brukergrensesnitt for sikre god lesbarhet og skape gode brukeropplevelser.
+parent: Identitet
+route: /identitet/verktoykassen/typografi
+menu: Verktøykassen
+order: 5
+---
+
+import PageHeader from '~/components/PageHeader';
+import TypographyDisplay from '~/components/TypographyDisplay';
+import TypoEksempel from './Typo_eksempel.png';
+import { BannerAlertBox } from '@entur/alert';
+import { Link } from 'docz';
+import { Link as LinkText } from '@entur/typography';
+
+<PageHeader />
+
+<img src={TypoEksempel} width="100%" />
+
+Primærfonten til Entur heter Nationale. Nationale er en moderne og geometrisk skrifttype med meget god lesbarhert både digitalt og på trykk. Nationale brukes til alle typografiske nivåer: både til titler, ingress og i løpende brødtekst.
+
+Fonten er tilgjengelig i fire vekter: Light, Regular, Medium og Demibold. I tillegg finnes den i kursiv. Ved å kombinere ulike vekter på en god måte, kan vi skape et tydelig hierarki som gjør det enklere for leseren å forstå tekstene våre. Særegenheten i typografien ligger i måten vi bruker den på.
+
+I digitale flater skal fonten brukes kun i to vekter, medium for ingress og løpende brødtekst og demibold for overskrifter og utheving av tekst. Les mer om hvordan vi bruker ulike fontstørrelser for å skape typografisk hierarki i teksten på denne siden.
+
+<BannerAlertBox
+  variant="info"
+  title="Typografi som grafisk element"
+  closable={true}
+  style={{ marginBottom: '1em' }}
+>
+  I identiteten brukes typografi også som et bærende grafisk element for å
+  understøtte kontrastene og mangfoldigheten. Les mer om dette og se eksempler
+  her.
+</BannerAlertBox>
+
+<TypographyDisplay weight={300} />
+<TypographyDisplay weight={400} />
+<TypographyDisplay weight={500} />
+<TypographyDisplay weight={600} />
+
+## Lisens
+
+For å installere Nationale på din datamaskin, trenger du en lisens.
+Entur har selv noen lisenser, men alle samarbeidspartnere må ha egen lisens.
+Fonten kan kjøpes direkte hos Playtype [her](https://playtype.com/index.php?q=font/nationale).
+
+## Støttefont
+
+Nationale er lisensbelagt, og brukes dermed normalt kun av designere.
+Derfor skal de aller fleste bruke støttefonten Arial, som er en systemfont som støttes av alle operativsystemer.
+Som støttefont brukes systemfonten Arial i f.eks Office-maler og Power Point slik at alle skal kunne ha tilgang til samme font.

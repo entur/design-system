@@ -1,0 +1,21 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.ds-en-tur-overlay .best-practices__heading {
+  background: none;
+  position: relative;
+  min-height: 15.5rem;
+  border-color: $colors-validation-lava;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    z-index: $z-indexes-behind;
+  }
+  .eds-icon {
+    color: $colors-validation-lava-contrast;
+    fill: $colors-validation-lava-contrast;
+  }
+}
