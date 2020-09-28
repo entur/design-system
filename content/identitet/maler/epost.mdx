@@ -1,0 +1,37 @@
+---
+name: E-post signatur
+description: Her ser du hvordan signaturer skal se ut i e-postutsendelser.
+route: /identitet/maler/epost
+parent: Identitet
+menu: Maler
+order: 12
+---
+
+import PageHeader from '~/components/PageHeader';
+import { DownloadEpostSignature } from '~/gatsby-theme-docz/components/DownloadEpostSignature';
+import { Paragraph, StrongText } from '@entur/typography';
+import { colors } from '@entur/tokens';
+import EmailBilde from './Email_signatur.png';
+
+<PageHeader></PageHeader>
+
+For å endre din signatur i Outlook, gå til: **Fil > Alternativer > E-post > Signaturer > Ny > Gi navn > Lagre.**
+
+<DownloadEpostSignature></DownloadEpostSignature>
+
+<img src={EmailBilde} width="100%" />
+
+<div
+  style={{
+    padding: '1.5rem',
+    marginTop: '3rem',
+    background: colors.greys.grey40,
+  }}
+>
+  <StrongText>Oppsett</StrongText>
+  <Paragraph margin="none">
+    Skrifttype: Arial <br />
+    Størrelse: 11 pt navn i bold / 9 pt brødtekst <br />
+    Farge: Blue #181C56
+  </Paragraph>
+</div>

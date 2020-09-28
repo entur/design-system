@@ -12,7 +12,12 @@ import { StrongText, Paragraph } from '@entur/typography';
 const LogoPreview = () => {
   const query = useStaticQuery(graphql`
     query LogoFiles {
-      allFile(filter: { sourceInstanceName: { eq: "downloads" } }) {
+      allFile(
+        filter: {
+          sourceInstanceName: { eq: "downloads" }
+          name: { glob: "Entur_Logoer*" }
+        }
+      ) {
         edges {
           node {
             extension
