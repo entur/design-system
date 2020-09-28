@@ -300,6 +300,22 @@ html {
   margin: $space-default 0;
 }
 
+.eds-unordered-list {
+  list-style: none;
+  .eds-list-item {
+    &:before {
+      content: '';
+      background: $colors-brand-lavender;
+      display: block;
+      height: $border-widths-medium;
+      left: -1.75rem;
+      top: 0.75rem;
+      position: relative;
+      width: $space-small;
+    }
+  }
+}
+
 .eds-numbered-list {
   counter-reset: eds-numbered-list-counter;
   list-style: none;
