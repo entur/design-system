@@ -11,7 +11,7 @@ tags: grid
 import { Link, Props } from 'docz';
 import { GridContainer, GridItem } from '@entur/grid';
 import { ChoiceChip, ChoiceChipGroup } from '@entur/chip';
-import { TextField, InputGroup } from '@entur/form';
+import { TextField } from '@entur/form';
 import { PrimaryButton } from '@entur/button';
 import PageHeader from '~/components/PageHeader';
 import { Playground } from '~/components/Playground';
@@ -157,14 +157,10 @@ Endre bredden på browser-vinduet for å teste responsiviteten.
     return (
       <GridContainer spacing="medium" rowSpacing="large">
         <GridItem small={6}>
-          <InputGroup label="Fra">
-            <TextField />
-          </InputGroup>
+          <TextField label="Fra" />
         </GridItem>
         <GridItem small={6}>
-          <InputGroup label="Til">
-            <TextField />
-          </InputGroup>
+          <TextField label="Til" />
         </GridItem>
         <GridItem small={12}>
           <ChoiceChipGroup

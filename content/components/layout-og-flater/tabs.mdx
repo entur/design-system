@@ -12,7 +12,7 @@ import { Props } from 'docz';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 import { Heading3, Paragraph } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
-import { InputGroup, TextField, TextArea } from '@entur/form';
+import { TextField, TextArea } from '@entur/form';
 import { BannerAlertBox } from '@entur/alert';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -42,12 +42,11 @@ import { ImportStatement } from '~/components/ImportStatement';
       </TabPanel>
       <TabPanel>
         <Heading3>Priser</Heading3>
-        <InputGroup label="Pris">
-          <TextField defaultValue="99,00" />
-        </InputGroup>
-        <InputGroup style={{ marginBottom: '1rem' }}>
-          <TextArea defaultValue="Prisen er inkludert MVA" />
-        </InputGroup>
+        <TextField defaultValue="99,00" label="Pris" />
+        <TextArea
+          defaultValue="Prisen er inkludert MVA"
+          style={{ marginBottom: '1rem' }}
+        />
         <PrimaryButton>Lagre</PrimaryButton>
       </TabPanel>
       <TabPanel />

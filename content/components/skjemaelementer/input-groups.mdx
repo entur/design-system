@@ -9,7 +9,6 @@ tags: skjemagruppe, gruppe, input-gruppe, inputgroup, feedbacktext, variant
 ---
 
 import {
-  InputGroup,
   FeedbackText,
   VariantProvider,
   useVariant,
@@ -24,40 +23,45 @@ import { ImportStatement } from '~/components/ImportStatement';
 <PageHeader />
 
 <Playground style={{ margin: '0 33%' }}>
-  <InputGroup
+  <TextField
     label="Brukernavn"
     labelTooltip="Brukernavnet kan ikke inneholde tall"
-  >
-    <TextField placeholder="Lag et brukernavn" />
-  </InputGroup>
-  <InputGroup
+    placeholder="Lag et brukernavn"
+  />
+  <TextArea
+    placeholder="Informasjon"
     label="Brukernavn"
     feedback="Du kan bruke bokstaver og tall"
     variant="info"
-  >
-    <TextArea placeholder="Informasjon" />
-  </InputGroup>
-  <InputGroup label="Brukeren" feedback="Gratulerer" variant="success">
-    <TextField placeholder="Oslo" />
-  </InputGroup>
-  <InputGroup
+  />
+  <TextField
+    label="Brukeren"
+    feedback="Gratulerer"
+    variant="success"
+    placeholder="Oslo"
+  />
+  <TextField
+    placeholder="Gjøvik"
+    width="fluid"
     label="Togdestinasjon"
     feedback="Oisann, noe galt skjedde her"
     variant="error"
-  >
-    <TextField placeholder="Gjøvik" width="fluid" />
-  </InputGroup>
-  <InputGroup label="Togdestinasjon" feedback="Pass på her" variant="warning">
-    <TextField placeholder="Advarsel" />
-  </InputGroup>
+  />
+  <TextField
+    placeholder="Advarsel"
+    label="Togdestinasjon"
+    feedback="Pass på her"
+    variant="warning"
+  />
 </Playground>
 
 ## Komponenter
 
 ### InputGroup
 
-<ImportStatement imports="InputGroup" />
-<Props of={InputGroup} />
+{/\* <ImportStatement imports="InputGroup" />
+
+<Props of={InputGroup} /> */}
 
 `<InputGroup />` gir oss en universelt utformet måte å legge til label, validering og variant-stiler til skjemaelementer.
 `Dropdown` støtter ikke wrapping av InputGroup, så bruk heller f.eks. `label`-propen direkte fra Dropdown.

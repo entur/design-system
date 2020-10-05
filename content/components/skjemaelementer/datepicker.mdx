@@ -10,7 +10,6 @@ tags: dato, date, time, tid, picker
 
 import { Props } from 'docz';
 import { DatePicker, NativeDatePicker } from '@entur/datepicker';
-import { InputGroup } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
@@ -23,13 +22,12 @@ import { addDays } from 'date-fns';
   {() => {
     const [date, setDate] = React.useState();
     return (
-      <InputGroup>
-        <DatePicker
-          style={{ width: '15rem' }}
-          selectedDate={date}
-          onChange={date => setDate(date)}
-        />
-      </InputGroup>
+      <DatePicker
+        style={{ width: '15rem' }}
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        label="Velg dato"
+      />
     );
   }}
 </Playground>

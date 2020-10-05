@@ -22,19 +22,20 @@ import { ImportStatement } from '~/components/ImportStatement';
 <Playground style={{ width: '50%', margin: 'auto' }}>
   <GridContainer spacing="medium">
     <GridItem small={12}>
-      <TextField placeholder="Skriv her..." />
+      <TextField label="Skriv her..." />
     </GridItem>
     <GridItem small={12}>
-      <TextField readOnly value="Read-only modus" />
+      <TextField label="Kan ikke redigeres" readOnly value="Read-only modus" />
     </GridItem>
     <GridItem small={12}>
       <TextField
-        placeholder="Her er et ikon som prepend"
+        label="Ikon som prepend"
         prepend={<SearchIcon inline />}
+        placeholder="Og placeholder støttes fortsatt"
       />
     </GridItem>
     <GridItem small={12} style={{ width: '15rem' }}>
-      <TextField prepend="Fra" append="Kroner" />
+      <TextField prepend="Fra" append="Kroner" label="Label" />
     </GridItem>
   </GridContainer>
 </Playground>

@@ -22,7 +22,11 @@ import { Link as LinkText } from '@entur/typography';
 <PageHeader />
 
 <Playground style={{ margin: '0 33%' }}>
-  <Dropdown items={dropdownItems} label="Stoppesteder" />
+  <Dropdown
+    items={dropdownItems}
+    label="Stoppesteder"
+    style={{ marginBottom: '2rem' }}
+  />
   <Dropdown
     items={dropdownItems}
     searchable

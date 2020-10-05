@@ -11,7 +11,6 @@ tags: timepicker, tidvelger, tid
 import { Props } from 'docz';
 import { addDays, addWeeks } from 'date-fns';
 import { TimePicker, NativeTimePicker } from '@entur/datepicker';
-import { InputGroup } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
@@ -22,13 +21,11 @@ import PageHeader from '~/components/PageHeader';
   {() => {
     const [date, setDate] = React.useState();
     return (
-      <InputGroup>
-        <TimePicker
-          style={{ width: '10rem' }}
-          selectedTime={date}
-          onChange={date => setDate(date)}
-        />
-      </InputGroup>
+      <TimePicker
+        style={{ width: '10rem' }}
+        selectedTime={date}
+        onChange={date => setDate(date)}
+      />
     );
   }}
 </Playground>
