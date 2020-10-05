@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
-import { TextField, InputGroup } from '@entur/form';
+import { TextField } from '@entur/form';
 import { SearchIcon, ReportsIcon } from '@entur/icons';
 import { useToast } from '@entur/alert';
 import matchSorter from 'match-sorter';
@@ -42,20 +42,16 @@ const IconList: React.FC<IconListProps> = props => {
   };
   return (
     <div>
-      <InputGroup
+      <TextField
         label="Søk etter ikon"
         feedback={feedbackText}
         variant={noHits ? 'error' : 'info'}
-      >
-        <TextField
-          placeholder="eks. bicycle"
-          value={filterString}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setFilterString(e.target.value)
-          }
-          prepend={<SearchIcon />}
-        />
-      </InputGroup>
+        value={filterString}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setFilterString(e.target.value)
+        }
+        prepend={<SearchIcon />}
+      />
       {!noHits && (
         <>
           <Heading4>Filter</Heading4>
