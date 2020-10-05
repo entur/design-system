@@ -63,7 +63,7 @@
   border-radius: $border-radiuses-medium;
   color: var(--icon-color);
   display: inline-flex;
-  height: 2.75rem;
+  height: $space-extra-large3;
   justify-content: center;
   line-height: $line-heights-extra-large;
   padding: 0;
@@ -71,7 +71,7 @@
   text-decoration: none;
   vertical-align: top;
   position: relative;
-  width: 2.75rem;
+  width: $space-extra-large3;
 }
 
 .eds-square-button--secondary {
