@@ -1,11 +1,9 @@
-import React from 'react';
 import { Label } from '@entur/typography';
-import { QuestionIcon } from '@entur/icons';
-import { Tooltip } from '@entur/tooltip';
 import classNames from 'classnames';
+import React from 'react';
 import { FeedbackText } from './FeedbackText';
-import { VariantType, VariantProvider } from './VariantProvider';
-import './InputGroup.scss';
+import { InputGroupContextProvider } from './InputGroupContext';
+import { VariantProvider, VariantType } from './VariantProvider';
 
 export type InputGroupProps = {
   /** Ekstra klassenavn */
@@ -27,6 +25,7 @@ export type InputGroupProps = {
   [key: string]: any;
 };
 
+/** @deprecated Bruk inputkomponenter direkte, med props label, variant og feedback */
 export const InputGroup: React.FC<InputGroupProps> = ({
   className,
   label,
@@ -39,24 +38,14 @@ export const InputGroup: React.FC<InputGroupProps> = ({
 }) => {
   return (
     <VariantProvider variant={variant}>
-      <div className={classNames('eds-input-group', className)} {...rest}>
-        <Label style={{ display: 'block' }}>
-          <span className="eds-input-group__label">
-            {label} {required && <span>*</span>}
-            {labelTooltip && (
-              <Tooltip content={labelTooltip} placement="right">
-                <span className="eds-input-group__label-tooltip-icon">
-                  <QuestionIcon />
-                </span>
-              </Tooltip>
-            )}
-          </span>
-          {children}
-        </Label>
-        {feedback && variant && (
-          <FeedbackText variant={variant}>{feedback}</FeedbackText>
-        )}
-      </div>
+      <InputGroupContextProvider>
+        <div className={classNames('eds-input-group', className)} {...rest}>
+          <Label style={{ display: 'block' }}>{children}</Label>
+          {feedback && variant && (
+            <FeedbackText variant={variant}>{feedback}</FeedbackText>
+          )}
+        </div>
+      </InputGroupContextProvider>
     </VariantProvider>
   );
 };
