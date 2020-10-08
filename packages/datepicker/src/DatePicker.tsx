@@ -12,6 +12,7 @@ import {
 import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
+import { useRandomId } from '@entur/utils';
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
@@ -52,6 +53,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     },
     ref,
   ) => {
+    const datepickerId = useRandomId('eds-datepicker');
     return (
       <BaseFormControl
         style={style}
@@ -59,6 +61,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         prepend={<DateIcon inline />}
         readOnly={readOnly}
         label={label}
+        labelId={datepickerId}
         feedback={feedback}
         variant={variant}
         ref={ref}
@@ -69,6 +72,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           onChange={onChange}
           placeholder={placeholder}
           readOnly={readOnly}
+          id={datepickerId}
           {...rest}
         />
       </BaseFormControl>
@@ -99,6 +103,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   placeholder,
   className,
   readOnly,
+  id,
   ...rest
 }) => {
   const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
@@ -134,6 +139,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
       readOnly={readOnly}
+      id={id}
       popperModifiers={{
         offset: {
           enabled: true,
