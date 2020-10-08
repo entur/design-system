@@ -70,7 +70,6 @@ export const BaseFormControl = React.forwardRef<
   ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
-    console.log(currentVariant, feedback);
 
     return (
       <InputGroupContextProvider>

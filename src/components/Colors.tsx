@@ -265,10 +265,7 @@ const ContrastRow = ({ color, testColor }) => {
   function score(testColor) {
     return Number(hex(color, testColor)).toFixed(1).toString();
   }
-  console.log(color, testColor);
-
   const contrastScore = score(testColor);
-  console.log(contrastScore);
 
   return (
     <TableRow>
