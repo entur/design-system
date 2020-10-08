@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BaseFormControl } from './BaseFormControl';
-import { InputGroup } from './InputGroup';
 
 test('renders a nice looking component', () => {
   const { getByTestId } = render(
