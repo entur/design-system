@@ -21,7 +21,7 @@
     }
     &--large {
       line-height: $line-heights-medium;
-      padding: 0.625rem $space-small;
+      padding: $space-small;
     }
   }
   &:hover input:not(:checked) + .eds-base-segmented {
