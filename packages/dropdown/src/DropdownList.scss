@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-dropdown-list {
-  border-radius: $border-radiuses-default;
+  border-radius: $border-radiuses-medium;
   box-shadow: $shadows-card-shadow;
   display: none;
   list-style: none;
@@ -33,6 +33,8 @@
   align-items: center;
   background-color: $colors-greys-grey40;
   border-bottom: $border-widths-default solid $colors-greys-grey20;
+  border-left: $border-widths-default solid $colors-greys-grey20;
+  border-right: $border-widths-default solid $colors-greys-grey20;
   color: $colors-brand-blue;
   display: flex;
   justify-content: space-between;
@@ -41,11 +43,17 @@
   line-height: $line-heights-medium;
   padding: $space-small $space-default;
   width: 100%;
+  &:first-child {
+    border-top: $border-widths-default solid $colors-greys-grey20;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
 
   .eds-contrast & {
     color: $colors-brand-white;
     background-color: $colors-blues-blue10;
-    border-bottom-color: rgba($colors-brand-white, 0.05);
+    border-color: rgba($colors-brand-white, 0.05);
   }
 
   &--highlighted  {

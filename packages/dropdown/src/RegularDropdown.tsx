@@ -13,6 +13,7 @@ type RegularDropdownProps = {
   selectOnTab?: boolean;
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
+  labelId: string;
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -22,6 +23,8 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   openOnFocus = false,
   listStyle,
   items,
+  label,
+  labelId,
   ...rest
 }) => {
   const {
@@ -38,6 +41,8 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       disabled={disabled}
       listStyle={listStyle}
       items={items}
+      label={label}
+      isFilled
       {...rest}
     >
       <button
@@ -46,6 +51,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           style: { textAlign: 'left' },
           disabled,
           type: 'button',
+          'aria-labelledby': labelId,
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();

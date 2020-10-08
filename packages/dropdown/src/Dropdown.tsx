@@ -9,6 +9,7 @@ import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
+import { useRandomId } from '@entur/utils';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
@@ -97,6 +98,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
   const searchAbleProps = searchable ? { itemFilter: itemFilter } : {};
+  const dropdownId = useRandomId('eds-textarea');
   return (
     <DownshiftProvider
       selectedItem={selectedItem}
@@ -109,12 +111,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {...rest}
     >
       <DropdownInputGroup
-        label={label}
         labelTooltip={labelTooltip}
         feedback={feedback}
         variant={variant}
+        labelId={dropdownId}
       >
         <RenderedDropdown
+          label={label}
           items={normalizedItems}
           loading={loading}
           loadingText={loadingText}
@@ -126,6 +129,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           openOnFocus={openOnFocus}
           listStyle={listStyle}
           clearable={clearable}
+          labelId={dropdownId}
           {...searchAbleProps}
         />
       </DropdownInputGroup>

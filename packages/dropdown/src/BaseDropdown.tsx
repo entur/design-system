@@ -7,6 +7,7 @@ import { InlineSpinner } from './InlineSpinner';
 import { CloseIcon } from '@entur/icons';
 import './BaseDropdown.scss';
 import { useDownshift } from './DownshiftProvider';
+import { space } from '@entur/tokens';
 
 type BaseDropdownProps = {
   className?: string;
@@ -17,6 +18,7 @@ type BaseDropdownProps = {
   placeholder?: string;
   style?: { [key: string]: any };
   listStyle?: { [key: string]: any };
+  isFilled?: boolean;
   [key: string]: any;
 };
 export const BaseDropdown: React.FC<BaseDropdownProps> = ({
@@ -29,8 +31,11 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   style,
   listStyle,
   clearable,
+  label,
+  isFilled = false,
   ...rest
 }) => {
+  const { getLabelProps } = useDownshift();
   return (
     <div className="eds-dropdown-wrapper">
       <BaseFormControl
@@ -44,13 +49,20 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
         }
         className={className}
         dark
+        label={label}
+        isFilled={isFilled}
+        labelProps={getLabelProps()}
         {...rest}
       >
         {children}
       </BaseFormControl>
       <DropdownList
         items={items}
-        style={{ position: 'absolute', top: '100%', ...listStyle }}
+        style={{
+          position: 'absolute',
+          top: `${space.extraLarge3 + space.extraSmall}px`,
+          ...listStyle,
+        }}
         {...rest}
       />
     </div>
