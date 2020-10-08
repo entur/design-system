@@ -57,6 +57,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     getInputProps,
     inputValue,
     selectHighlightedItem,
+    isOpen,
     openMenu,
     selectedItem,
   } = useDownshift();
@@ -92,7 +93,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu();
+              !isOpen && openMenu();
             }
           },
           ...rest,

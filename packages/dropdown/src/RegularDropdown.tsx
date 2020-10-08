@@ -82,7 +82,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu();
+              !isOpen && openMenu();
             }
           },
         })}
