@@ -1,0 +1,64 @@
+@import '~@entur/tokens/dist/styles.scss';
+// Input group OLD
+$label-top: 0.125rem;
+
+.eds-input-group {
+  color: inherit;
+  display: block;
+  position: relative;
+
+  &__label {
+    color: $colors-blues-blue40;
+    display: flex;
+    .eds-form-control-wrapper--is-filled & {
+      top: $label-top;
+      font-size: $font-sizes-small;
+      padding: 0;
+      padding-left: $space-default;
+    }
+    .eds-contrast & {
+      color: $colors-blues-blue40;
+    }
+    .eds-form-control-wrapper--dark & {
+      .eds-contrast & {
+        color: $colors-brand-lavender;
+      }
+    }
+    font-size: $font-sizes-large;
+    position: absolute;
+    line-height: $font-sizes-large;
+    height: $space-extra-large3;
+    padding: $space-default;
+    top: -$border-widths-medium;
+    transition: top $timings-medium ease-in-out,
+      font-size $timings-medium ease-in-out, padding $timings-medium ease-in-out;
+
+    user-select: none;
+    pointer-events: none;
+    &--filled {
+      top: $label-top;
+      font-size: $font-sizes-small;
+      padding: 0;
+      padding-left: $space-default;
+    }
+  }
+
+  &__label-tooltip-icon {
+    color: $colors-validation-sky;
+    padding-left: $space-extra-small2;
+    padding-right: $space-extra-small2;
+    display: flex;
+    align-items: center;
+    cursor: help;
+    font-size: 1rem;
+  }
+}
+
+.eds-form-control-wrapper:focus-within {
+  & .eds-input-group__label {
+    top: $label-top;
+    font-size: $font-sizes-small;
+    padding: 0;
+    padding-left: $space-default;
+  }
+}
