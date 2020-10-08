@@ -22,9 +22,10 @@ import PageHeader from '~/components/PageHeader';
     const [date, setDate] = React.useState();
     return (
       <TimePicker
-        style={{ width: '10rem' }}
+        style={{ width: '13rem' }}
         selectedTime={date}
         onChange={date => setDate(date)}
+        label="Velg klokkeslett"
       />
     );
   }}

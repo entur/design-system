@@ -32,10 +32,11 @@ import { ImportStatement } from '~/components/ImportStatement';
         label="Ikon som prepend"
         prepend={<SearchIcon inline />}
         placeholder="Og placeholder støttes fortsatt"
+        variant="success"
       />
     </GridItem>
-    <GridItem small={12} style={{ width: '15rem' }}>
-      <TextField prepend="Fra" append="Kroner" label="Label" />
+    <GridItem small={12}>
+      <TextField append="Kroner" label="Pris" variant="error" />
     </GridItem>
   </GridContainer>
 </Playground>
