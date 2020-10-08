@@ -106,20 +106,23 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   id,
   ...rest
 }) => {
-  const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+  const {
+    isFilled: isDatepickerFilled,
+    setFilled: setFiller,
+  } = useInputGroupContext();
 
   React.useEffect(() => {
     // Check if filled on first render
     if (selectedDate) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isDatepickerFilled && setFiller(true);
     }
   }, []);
 
   const handleChange = (date: any, event: any) => {
     if (date) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isDatepickerFilled && setFiller(true);
     } else {
-      setFiller && k && setFiller(false);
+      setFiller && isDatepickerFilled && setFiller(false);
     }
     if (onChange) {
       onChange(date, event);

@@ -61,18 +61,21 @@ const NativeTimePickerBase = React.forwardRef<
 >(({ onChange, id, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = rest.variant || contextVariant;
-  const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+  const {
+    isFilled: isTimepickerFilled,
+    setFilled: setFiller,
+  } = useInputGroupContext();
 
   React.useEffect(() => {
     // Check if filled on first render
-    setFiller && !k && setFiller(true);
+    setFiller && !isTimepickerFilled && setFiller(true);
   }, []);
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isTimepickerFilled && setFiller(true);
     } else {
-      setFiller && k && setFiller(false);
+      setFiller && isTimepickerFilled && setFiller(false);
     }
     if (onChange) {
       rest.onChange(event);

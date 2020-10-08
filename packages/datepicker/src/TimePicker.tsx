@@ -99,20 +99,23 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   placeholder,
   ...rest
 }) => {
-  const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+  const {
+    isFilled: isTimepickerFilled,
+    setFilled: setFiller,
+  } = useInputGroupContext();
 
   React.useEffect(() => {
     // Check if filled on first render
     if (selectedTime) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isTimepickerFilled && setFiller(true);
     }
   }, []);
 
   const handleChange = (date: any, event: any) => {
     if (date) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isTimepickerFilled && setFiller(true);
     } else {
-      setFiller && k && setFiller(false);
+      setFiller && isTimepickerFilled && setFiller(false);
     }
     if (onChange) {
       onChange(date, event);

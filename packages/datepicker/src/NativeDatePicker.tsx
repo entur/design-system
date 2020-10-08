@@ -62,18 +62,21 @@ const NativeDatePickerBase = React.forwardRef<
 >(({ onChange, id, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = rest.variant || contextVariant;
-  const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+  const {
+    isFilled: isDatepickerFilled,
+    setFilled: setFiller,
+  } = useInputGroupContext();
 
   React.useEffect(() => {
     // Check if filled on first render
-    setFiller && !k && setFiller(true);
+    setFiller && !isDatepickerFilled && setFiller(true);
   }, []);
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {
-      setFiller && !k && setFiller(true);
+      setFiller && !isDatepickerFilled && setFiller(true);
     } else {
-      setFiller && k && setFiller(false);
+      setFiller && isDatepickerFilled && setFiller(false);
     }
     if (rest.onChange) {
       rest.onChange(event);
