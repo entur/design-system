@@ -1,6 +1,6 @@
 import React from 'react';
 import { DownArrowIcon } from '@entur/icons';
-import { BaseFormControl, VariantType, InputGroup } from '@entur/form';
+import { BaseFormControl, VariantType } from '@entur/form';
 import { InlineSpinner } from './InlineSpinner';
 import {
   useResolvedItems,
@@ -61,29 +61,30 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   }
 
   return (
-    <InputGroup label={label} feedback={feedback} variant={variant}>
-      <BaseFormControl
-        dark={true}
-        disabled={disabled}
-        readOnly={readOnly}
-        prepend={prepend}
-        append={rightSideIcon}
-        className={className}
-        style={style}
+    <BaseFormControl
+      dark={true}
+      disabled={disabled}
+      readOnly={readOnly}
+      prepend={prepend}
+      append={rightSideIcon}
+      className={className}
+      style={style}
+      label={label}
+      variant={variant}
+      feedback={feedback}
+    >
+      <select
+        aria-invalid={variant === 'error'}
+        className="eds-form-control eds-dropdown"
+        disabled={disabled || readOnly}
+        {...rest}
       >
-        <select
-          aria-invalid={variant === 'error'}
-          className="eds-form-control eds-dropdown"
-          disabled={disabled || readOnly}
-          {...rest}
-        >
-          {normalizedItems.map(item => (
-            <option key={item.value} value={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </select>
-      </BaseFormControl>
-    </InputGroup>
+        {normalizedItems.map(item => (
+          <option key={item.value} value={item.value}>
+            {item.label}
+          </option>
+        ))}
+      </select>
+    </BaseFormControl>
   );
 };
