@@ -5,7 +5,7 @@ import { InputGroup } from './InputGroup';
 
 test('renders a nice looking component', () => {
   const { getByTestId } = render(
-    <BaseFormControl>
+    <BaseFormControl id="testId">
       <input data-testid="input" />
     </BaseFormControl>,
   );
@@ -15,7 +15,7 @@ test('renders a nice looking component', () => {
 
 test('renders variants correctly', () => {
   const { getByTestId, rerender } = render(
-    <BaseFormControl variant="error" data-testid="wrapper">
+    <BaseFormControl id="testId" variant="error" data-testid="wrapper">
       <input />
     </BaseFormControl>,
   );
@@ -25,7 +25,7 @@ test('renders variants correctly', () => {
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl variant="success" data-testid="wrapper">
+    <BaseFormControl id="testId" variant="success" data-testid="wrapper">
       <input />
     </BaseFormControl>,
   );
@@ -47,11 +47,9 @@ test('renders variants correctly', () => {
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <InputGroup variant="success">
-      <BaseFormControl data-testid="wrapper">
-        <input />
-      </BaseFormControl>
-    </InputGroup>,
+    <BaseFormControl variant="success" data-testid="wrapper">
+      <input />
+    </BaseFormControl>,
   );
 
   wrapper = getByTestId('wrapper');
@@ -60,11 +58,9 @@ test('renders variants correctly', () => {
   expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <InputGroup variant="success">
-      <BaseFormControl variant="error" data-testid="wrapper">
-        <input />
-      </BaseFormControl>
-    </InputGroup>,
+    <BaseFormControl variant="error" data-testid="wrapper">
+      <input />
+    </BaseFormControl>,
   );
 
   wrapper = getByTestId('wrapper');
