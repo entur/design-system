@@ -4,7 +4,11 @@ import {
   ReactDatePickerProps,
 } from 'react-datepicker';
 import classNames from 'classnames';
-import { BaseFormControl } from '@entur/form';
+import {
+  BaseFormControl,
+  useInputGroupContext,
+  VariantType,
+} from '@entur/form';
 import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
@@ -23,6 +27,12 @@ export type DatePickerProps = {
   placeholder?: string;
   /** Ekstra klassenavn */
   className?: string;
+  /** Label over DatePicker */
+  label: string;
+  /** Varselmelding, som vil komme under TextArea */
+  feedback?: string;
+  /** Valideringsvariant */
+  variant?: VariantType;
   [key: string]: any;
 } & ReactDatePickerProps;
 
@@ -35,9 +45,12 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       className,
       style,
       readOnly,
+      label,
+      feedback,
+      variant,
       ...rest
     },
-    ref: React.Ref<HTMLDivElement>,
+    ref,
   ) => {
     return (
       <BaseFormControl
@@ -45,30 +58,89 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         dark
         prepend={<DateIcon inline />}
         readOnly={readOnly}
+        label={label}
+        feedback={feedback}
+        variant={variant}
         ref={ref}
       >
-        <ReactDatepicker
-          className={classNames('eds-form-control', className)}
-          calendarClassName="eds-datepicker__calender"
-          selected={selectedDate}
+        <DatePickerBase
+          className={className}
+          selectedDate={selectedDate}
           onChange={onChange}
-          showWeekNumbers={true}
-          weekLabel="uke"
-          locale={nb}
-          dateFormat="dd.MM.yyyy"
-          showPopperArrow={false}
-          placeholderText={placeholder}
-          popperClassName="eds-datepicker__popper"
+          placeholder={placeholder}
           readOnly={readOnly}
-          popperModifiers={{
-            offset: {
-              enabled: true,
-              offset: '-32, 0',
-            },
-          }}
           {...rest}
         />
       </BaseFormControl>
     );
   },
 );
+
+type DatePickerBaseProps = {
+  /** Hva som er den valgte datoen */
+  selectedDate: Date | null;
+  /** Kalles når datoen/tiden endres */
+  onChange: (
+    date: Date | null,
+    event: React.SyntheticEvent<any, Event>,
+  ) => void;
+  /** Placeholder om ingen dato er valgt
+   * @default "Velg dato"
+   */
+  placeholder?: string;
+  /** Ekstra klassenavn */
+  className?: string;
+  [key: string]: any;
+} & ReactDatePickerProps;
+
+const DatePickerBase: React.FC<DatePickerBaseProps> = ({
+  selectedDate,
+  onChange,
+  placeholder,
+  className,
+  readOnly,
+  ...rest
+}) => {
+  const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+
+  React.useEffect(() => {
+    // Check if filled on first render
+    if (selectedDate) {
+      setFiller && !k && setFiller(true);
+    }
+  }, []);
+
+  const handleChange = (date: any, event: any) => {
+    if (date) {
+      setFiller && !k && setFiller(true);
+    } else {
+      setFiller && k && setFiller(false);
+    }
+    if (onChange) {
+      onChange(date, event);
+    }
+  };
+  return (
+    <ReactDatepicker
+      className={classNames('eds-form-control', className)}
+      calendarClassName="eds-datepicker__calender"
+      selected={selectedDate}
+      onChange={handleChange}
+      showWeekNumbers={true}
+      weekLabel="uke"
+      locale={nb}
+      dateFormat="dd.MM.yyyy"
+      showPopperArrow={false}
+      placeholderText={placeholder}
+      popperClassName="eds-datepicker__popper"
+      readOnly={readOnly}
+      popperModifiers={{
+        offset: {
+          enabled: true,
+          offset: '-32, 0',
+        },
+      }}
+      {...rest}
+    />
+  );
+};
