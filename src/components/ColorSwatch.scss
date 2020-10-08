@@ -9,6 +9,10 @@
   background: $colors-brand-white;
   cursor: pointer;
   font-family: inherit;
+  transition: box-shadow $timings-medium ease-in-out;
+  &:hover {
+    box-shadow: $shadows-card-shadow-hover;
+  }
 }
 
 .color-square {
