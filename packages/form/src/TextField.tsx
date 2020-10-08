@@ -91,20 +91,23 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
   ({ disabled, readOnly, placeholder, onChange, ...rest }, ref) => {
     const contextVariant = useVariant();
     const currentVariant = rest.variant || contextVariant;
-    const { isFilled: k, setFilled: setFiller } = useInputGroupContext();
+    const {
+      isFilled: isInputFilled,
+      setFilled: setFiller,
+    } = useInputGroupContext();
 
     React.useEffect(() => {
       // Check if filled on first render
       if (rest.value) {
-        setFiller && !k && setFiller(true);
+        setFiller && !isInputFilled && setFiller(true);
       }
     }, []);
 
     const handleChange = (event: any) => {
       if (isFilled(event.target)) {
-        setFiller && !k && setFiller(true);
+        setFiller && !isInputFilled && setFiller(true);
       } else {
-        setFiller && k && setFiller(false);
+        setFiller && isInputFilled && setFiller(false);
       }
       if (rest.onChange) {
         rest.onChange(event);
