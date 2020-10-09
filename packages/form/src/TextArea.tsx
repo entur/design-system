@@ -77,7 +77,6 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
     } = useInputGroupContext();
 
     useOnMount(() => {
-      // Check if filled on first render
       if (rest.value) {
         setFiller && !isInputFilled && setFiller(true);
       }
