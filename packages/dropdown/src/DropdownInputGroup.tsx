@@ -5,7 +5,6 @@ import {
   VariantType,
 } from '@entur/form';
 import React from 'react';
-import classNames from 'classnames';
 import { useDownshift } from './DownshiftProvider';
 
 export type DropdownInputGroupProps = {
@@ -30,10 +29,7 @@ export const DropdownInputGroup: React.FC<DropdownInputGroupProps> = ({
   const { getLabelProps } = useDownshift();
   return (
     <VariantProvider variant={variant}>
-      <div
-        className={classNames('eds-form-control-wrappe', className)}
-        style={style}
-      >
+      <div className={className} style={style}>
         {label && (
           <InputGroupLabel
             label={label}
