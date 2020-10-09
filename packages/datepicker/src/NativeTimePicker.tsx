@@ -67,7 +67,6 @@ const NativeTimePickerBase = React.forwardRef<
   } = useInputGroupContext();
 
   useOnMount(() => {
-    // Check if filled on first render
     setFiller && !isTimepickerFilled && setFiller(true);
   });
 

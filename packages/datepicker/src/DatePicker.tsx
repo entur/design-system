@@ -119,7 +119,6 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   } = useInputGroupContext();
 
   useOnMount(() => {
-    // Check if filled on first render
     if (selectedDate) {
       setFiller && !isDatepickerFilled && setFiller(true);
     }

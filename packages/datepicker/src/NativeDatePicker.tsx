@@ -68,7 +68,6 @@ const NativeDatePickerBase = React.forwardRef<
   } = useInputGroupContext();
 
   useOnMount(() => {
-    // Check if filled on first render
     setFiller && !isDatepickerFilled && setFiller(true);
   });
 
