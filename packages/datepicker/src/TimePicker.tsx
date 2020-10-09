@@ -93,6 +93,13 @@ type TimePickerBaseProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
+const POPPEER_MODIFIERS = {
+  offset: {
+    enabled: true,
+    offset: '-32, 0',
+  },
+};
+
 const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   className,
   onChange,
@@ -106,7 +113,6 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   } = useInputGroupContext();
 
   useOnMount(() => {
-    // Check if filled on first render
     if (selectedTime) {
       setFiller && !isTimepickerFilled && setFiller(true);
     }
@@ -136,12 +142,7 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       showPopperArrow={false}
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
-      popperModifiers={{
-        offset: {
-          enabled: true,
-          offset: '-32, 0',
-        },
-      }}
+      popperModifiers={POPPEER_MODIFIERS}
       {...rest}
     />
   );
