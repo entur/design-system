@@ -1,4 +1,4 @@
-import { useRandomId } from '@entur/utils';
+import { useRandomId, useOnMount } from '@entur/utils';
 import React from 'react';
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
@@ -96,12 +96,11 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
       setFilled: setFiller,
     } = useInputGroupContext();
 
-    React.useEffect(() => {
-      // Check if filled on first render
+    useOnMount(() => {
       if (rest.value) {
         setFiller && !isInputFilled && setFiller(true);
       }
-    }, []);
+    });
 
     const handleChange = (event: any) => {
       if (isFilled(event.target)) {

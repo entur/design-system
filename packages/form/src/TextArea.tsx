@@ -4,7 +4,7 @@ import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
 import { isFilled } from './utils';
 import { useInputGroupContext } from './InputGroupContext';
-import { useRandomId } from '@entur/utils';
+import { useRandomId, useOnMount } from '@entur/utils';
 
 export type TextAreaProps = {
   /** Ekstra klassenavn */
@@ -76,12 +76,12 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
       setFilled: setFiller,
     } = useInputGroupContext();
 
-    React.useEffect(() => {
+    useOnMount(() => {
       // Check if filled on first render
       if (rest.value) {
         setFiller && !isInputFilled && setFiller(true);
       }
-    }, []);
+    });
 
     const handleChange = (event: any) => {
       if (isFilled(event.target)) {

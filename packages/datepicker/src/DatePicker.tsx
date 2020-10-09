@@ -12,7 +12,7 @@ import {
 import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
-import { useRandomId } from '@entur/utils';
+import { useOnMount, useRandomId } from '@entur/utils';
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
@@ -97,6 +97,13 @@ type DatePickerBaseProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
+const POPPER_MODIFIERS = {
+  offset: {
+    enabled: true,
+    offset: '-32, 0',
+  },
+};
+
 const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   selectedDate,
   onChange,
@@ -111,12 +118,12 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
     setFilled: setFiller,
   } = useInputGroupContext();
 
-  React.useEffect(() => {
+  useOnMount(() => {
     // Check if filled on first render
     if (selectedDate) {
       setFiller && !isDatepickerFilled && setFiller(true);
     }
-  }, []);
+  });
 
   const handleChange = (date: any, event: any) => {
     if (date) {
@@ -143,12 +150,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       popperClassName="eds-datepicker__popper"
       readOnly={readOnly}
       id={id}
-      popperModifiers={{
-        offset: {
-          enabled: true,
-          offset: '-32, 0',
-        },
-      }}
+      popperModifiers={POPPER_MODIFIERS}
       {...rest}
     />
   );

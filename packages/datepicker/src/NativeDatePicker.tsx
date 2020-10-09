@@ -7,7 +7,7 @@ import {
   VariantType,
 } from '@entur/form';
 import { DateIcon } from '@entur/icons';
-import { useRandomId } from '@entur/utils';
+import { useOnMount, useRandomId } from '@entur/utils';
 
 export type NativeDatePickerProps = {
   /** Ekstra klassenavn */
@@ -67,10 +67,10 @@ const NativeDatePickerBase = React.forwardRef<
     setFilled: setFiller,
   } = useInputGroupContext();
 
-  React.useEffect(() => {
+  useOnMount(() => {
     // Check if filled on first render
     setFiller && !isDatepickerFilled && setFiller(true);
-  }, []);
+  });
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {

@@ -7,7 +7,7 @@ import {
   VariantType,
 } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
-import { useRandomId } from '@entur/utils';
+import { useOnMount, useRandomId } from '@entur/utils';
 
 export type NativeTimePickerProps = {
   /** Ekstra klassenavn */
@@ -66,10 +66,10 @@ const NativeTimePickerBase = React.forwardRef<
     setFilled: setFiller,
   } = useInputGroupContext();
 
-  React.useEffect(() => {
+  useOnMount(() => {
     // Check if filled on first render
     setFiller && !isTimepickerFilled && setFiller(true);
-  }, []);
+  });
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {

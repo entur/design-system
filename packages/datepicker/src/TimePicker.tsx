@@ -12,6 +12,7 @@ import {
 import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './TimePicker.scss';
+import { useOnMount } from '@entur/utils';
 
 export type TimePickerProps = {
   /** Hva som er den valgte datoen */
@@ -104,12 +105,12 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
     setFilled: setFiller,
   } = useInputGroupContext();
 
-  React.useEffect(() => {
+  useOnMount(() => {
     // Check if filled on first render
     if (selectedTime) {
       setFiller && !isTimepickerFilled && setFiller(true);
     }
-  }, []);
+  });
 
   const handleChange = (date: any, event: any) => {
     if (date) {
