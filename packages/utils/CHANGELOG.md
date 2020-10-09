@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.9...@entur/utils@0.3.0) (2020-10-09)
+
+### Features
+
+- add useOnMount hook ([0f1fc26](https://bitbucket.org/enturas/design-system/commits/0f1fc2658a1263179be80b656828cf6373834702))
+
 ## [0.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.8...@entur/utils@0.2.9) (2020-06-17)
 
 **Note:** Version bump only for package @entur/utils

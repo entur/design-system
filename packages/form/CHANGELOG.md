@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.7...@entur/form@4.0.0) (2020-10-09)
+
+### Bug Fixes
+
+- **baseformcontrol:** update to accomadate deprecation of inputgroup ([aded2ac](https://bitbucket.org/enturas/design-system/commits/aded2ac6099ae3848d3fcbce3473c0fa2493b35e))
+- **input components:** add new styling for variants and hover ([7913aae](https://bitbucket.org/enturas/design-system/commits/7913aae2ba93c7b4667204ba984e17fad25f09e5))
+- **inputgroup:** deprecate inputgroup ([d6e7c11](https://bitbucket.org/enturas/design-system/commits/d6e7c11ec43fe331482061b8d047eb2ec2d845de))
+- **segmented control:** adjust height to accomadate new input fields ([1a1bd68](https://bitbucket.org/enturas/design-system/commits/1a1bd684c0f1ab601a1b0f0b18af7fae53457a81))
+
+### Features
+
+- **textarea:** add inputgroup props to textarea ([a7b6ff3](https://bitbucket.org/enturas/design-system/commits/a7b6ff30d26de1daa8a97bea35fc540641caefff))
+- **textfield:** add inputgroup props to textfield ([b7059f7](https://bitbucket.org/enturas/design-system/commits/b7059f78f09eef2a57b6ba07597757c1b23613db))
+
+### BREAKING CHANGES
+
+- **textarea:** label is now required prop for textarea
+- **textfield:** label is now a required prop for textfields to ensure a11y
+- **inputgroup:** inputgroup may not function as intended as it is now deprecated in favor of using input components
+  directly
+
 ## [3.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@3.4.6...@entur/form@3.4.7) (2020-09-25)
 
 ### Bug Fixes

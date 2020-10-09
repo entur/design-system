@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.36...@entur/datepicker@0.4.0) (2020-10-09)
+
+### Bug Fixes
+
+- **datepicker:** improve a11y ([9035970](https://bitbucket.org/enturas/design-system/commits/903597084f8b110d07c3550a5e3782422c27abd7))
+
+### Features
+
+- **datepicker:** add inputgroup props to component ([81f0fec](https://bitbucket.org/enturas/design-system/commits/81f0fec76b089e13a5d781a7af82ea3201ef9a62))
+- **nativedatepicker:** add input group props to nativedatepicker ([6f09ad3](https://bitbucket.org/enturas/design-system/commits/6f09ad3fc09d976d0807bf2abc91f0763f02b654))
+- **nativetimepicker:** add input group props to native time picker ([20d773f](https://bitbucket.org/enturas/design-system/commits/20d773f63d5e2163f2091e1174490cbb2830386a))
+- **timepicker:** add inputgroup props to timepicker ([41004ca](https://bitbucket.org/enturas/design-system/commits/41004ca9d7ba8df2928486a73f699c6f475ad0bf))
+
+### BREAKING CHANGES
+
+- **nativedatepicker:** label is required
+- **nativetimepicker:** label is required
+- **timepicker:** label is required
+- **datepicker:** label prop is required
+
 ## [0.3.36](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.3.35...@entur/datepicker@0.3.36) (2020-09-25)
 
 **Note:** Version bump only for package @entur/datepicker

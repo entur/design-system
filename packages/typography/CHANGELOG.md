@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.4.0...@entur/typography@1.4.1) (2020-10-09)
+
+### Bug Fixes
+
+- **unordered list:** add new list item styling ([f12383f](https://bitbucket.org/enturas/design-system/commits/f12383fb2835e2089517476efa6b5f36f0932ebe))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.3.0...@entur/typography@1.4.0) (2020-09-14)
 
 ### Features

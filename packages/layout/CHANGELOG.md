@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.8.0...@entur/layout@1.8.1) (2020-10-09)
+
+### Bug Fixes
+
+- **badge:** decrease font weight ([9b7bf2f](https://bitbucket.org/enturas/design-system/commits/9b7bf2f4f6676268cdc33c7461b75b56e6bdc640))
+
 # [1.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.7.5...@entur/layout@1.8.0) (2020-09-25)
 
 ### Features

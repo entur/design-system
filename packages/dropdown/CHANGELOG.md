@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.15](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.14...@entur/dropdown@1.3.15) (2020-10-09)
+
+### Bug Fixes
+
+- **dropdown:** fix openonfocus bug ([dc53cc9](https://bitbucket.org/enturas/design-system/commits/dc53cc9cc4be4bee5252ef908e193198acab751a))
+- **dropdown:** update dropdown to new input styling ([fde0958](https://bitbucket.org/enturas/design-system/commits/fde095895ef2d6f0954bcafb94bea9deacd33d7d))
+- **nativedropdown:** update internal logic for new inputfield design ([ba742c6](https://bitbucket.org/enturas/design-system/commits/ba742c6f151dfd451ef951ebaf3260f9e9ed8dc2))
+
 ## [1.3.14](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.13...@entur/dropdown@1.3.14) (2020-09-25)
 
 **Note:** Version bump only for package @entur/dropdown

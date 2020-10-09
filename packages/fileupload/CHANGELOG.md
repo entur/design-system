@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.10](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.9...@entur/fileupload@0.3.10) (2020-10-09)
+
+### Bug Fixes
+
+- **fileupload:** adjust size to accomadate new input fields ([640ab33](https://bitbucket.org/enturas/design-system/commits/640ab33d45b11a325d03e2328eb1b1752a9d47d2))
+
 ## [0.3.9](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.8...@entur/fileupload@0.3.9) (2020-09-25)
 
 **Note:** Version bump only for package @entur/fileupload

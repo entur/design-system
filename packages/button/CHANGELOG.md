@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.3...@entur/button@2.3.4) (2020-10-09)
+
+### Bug Fixes
+
+- **button:** increase button height to accomodate for new inputs ([7ebd5a9](https://bitbucket.org/enturas/design-system/commits/7ebd5a9f914a6306c88d1ac8273c31514e93c45b))
+
 ## [2.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.2...@entur/button@2.3.3) (2020-09-02)
 
 ### Bug Fixes
