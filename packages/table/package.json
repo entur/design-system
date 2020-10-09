@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^4.0.0",
+    "@entur/form": "^4.0.1",
     "@entur/utils": "^0.3.0",
     "classnames": "^2.2.6"
   },
