@@ -46,6 +46,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       required,
       labelTooltip,
       feedback,
+      onChange,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -72,6 +73,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           readOnly={readOnly}
           ref={ref}
           aria-labelledby={textFieldId}
+          onChange={onChange}
           {...rest}
         />
       </BaseFormControl>
@@ -108,8 +110,8 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
       } else {
         setFiller && isInputFilled && setFiller(false);
       }
-      if (rest.onChange) {
-        rest.onChange(event);
+      if (onChange) {
+        onChange(event);
       }
     };
 
