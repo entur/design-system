@@ -20,7 +20,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   onSearchTextChange,
   className,
 }) => {
-  let inputRef = React.useRef<HTMLInputElement>();
+  let inputRef = React.useRef<HTMLInputElement>(null);
   let previousFocusRef = React.useRef<HTMLElement>();
   // This little trick lets the user tap '/' to focus the search field
   React.useEffect(() => {
@@ -57,9 +57,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         prepend={<SearchIcon inline />}
         label="Søk..."
         value={searchText}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          onSearchTextChange(e.target.value)
-        }
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          onSearchTextChange(e.target.value);
+          console.log('change', e);
+        }}
         width="fluid"
         ref={inputRef}
       />
