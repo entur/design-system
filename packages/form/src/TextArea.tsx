@@ -35,6 +35,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       label,
       feedback,
       labelTooltip,
+      onChange,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -56,6 +57,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           ref={ref}
           aria-labelledby={textAreaId}
+          onChange={onChange}
           {...rest}
         />
       </BaseFormControl>
@@ -70,7 +72,7 @@ type TextAreaBaseProps = {
 };
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
-  ({ readOnly, disabled, ...rest }, ref) => {
+  ({ readOnly, disabled, onChange, ...rest }, ref) => {
     const {
       isFilled: isInputFilled,
       setFilled: setFiller,
@@ -88,8 +90,8 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
       } else {
         setFiller && isInputFilled && setFiller(false);
       }
-      if (rest.onChange) {
-        rest.onChange();
+      if (onChange) {
+        onChange();
       }
     };
     return (
