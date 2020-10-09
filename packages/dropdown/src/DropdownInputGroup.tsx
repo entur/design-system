@@ -1,8 +1,10 @@
+import {
+  FeedbackText,
+  InputGroupLabel,
+  VariantProvider,
+  VariantType,
+} from '@entur/form';
 import React from 'react';
-import { Label } from '@entur/typography';
-import { Tooltip } from '@entur/tooltip';
-import { QuestionIcon } from '@entur/icons';
-import { FeedbackText, VariantType, VariantProvider } from '@entur/form';
 import { useDownshift } from './DownshiftProvider';
 
 export type DropdownInputGroupProps = {
@@ -11,6 +13,7 @@ export type DropdownInputGroupProps = {
   feedback?: string;
   variant?: VariantType;
   className?: string;
+  labelId: string;
   style?: { [key: string]: any };
 };
 export const DropdownInputGroup: React.FC<DropdownInputGroupProps> = ({
@@ -21,22 +24,19 @@ export const DropdownInputGroup: React.FC<DropdownInputGroupProps> = ({
   variant,
   className,
   style,
+  labelId,
 }) => {
   const { getLabelProps } = useDownshift();
   return (
     <VariantProvider variant={variant}>
       <div className={className} style={style}>
         {label && (
-          <Label {...getLabelProps()} style={{ display: 'flex' }}>
-            {label}
-            {labelTooltip && (
-              <Tooltip content={labelTooltip} placement="right">
-                <span className="eds-input-group__label-tooltip-icon">
-                  <QuestionIcon />
-                </span>
-              </Tooltip>
-            )}
-          </Label>
+          <InputGroupLabel
+            label={label}
+            labelTooltip={labelTooltip}
+            labelId={labelId}
+            {...getLabelProps}
+          />
         )}
         {children}
         {feedback && variant && (

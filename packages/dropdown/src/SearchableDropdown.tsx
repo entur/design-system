@@ -49,13 +49,17 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   clearable,
   itemFilter = (item: NormalizedDropdownItemType, inputValue: string | null) =>
     LowerCaseFilterTest(item, inputValue),
+  label,
+  labelId,
   ...rest
 }) => {
   const {
     getInputProps,
     inputValue,
     selectHighlightedItem,
+    isOpen,
     openMenu,
+    selectedItem,
   } = useDownshift();
 
   const filteredItems = React.useMemo(() => {
@@ -73,12 +77,15 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       prepend={prepend}
       listStyle={listStyle}
       clearable={clearable}
+      label={label}
+      isFilled={selectedItem ? true : false}
     >
       <input
         {...getInputProps({
           disabled,
           readOnly,
           className: 'eds-form-control eds-dropdown__input',
+          'aria-labelledby': labelId,
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
@@ -86,7 +93,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           },
           onFocus: () => {
             if (openOnFocus) {
-              openMenu();
+              !isOpen && openMenu();
             }
           },
           ...rest,

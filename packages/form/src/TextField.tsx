@@ -1,6 +1,9 @@
+import { useRandomId, useOnMount } from '@entur/utils';
 import React from 'react';
-import { VariantType, useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
+import { useInputGroupContext } from './InputGroupContext';
+import { isFilled } from './utils';
+import { useVariant, VariantType } from './VariantProvider';
 
 export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -9,6 +12,12 @@ export type TextFieldProps = {
   append?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /** Label over TextField */
+  label: React.ReactNode;
+  /** En tooltip som forklarer labelen til inputfeltet */
+  labelTooltip: React.ReactNode;
+  /** Varselmelding, som vil komme under TextField */
+  feedback?: string;
   /** Hvilken valideringsfarge som vises */
   variant?: VariantType;
   /** Deaktiver inputfeltet */
@@ -33,13 +42,15 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       className,
       style,
       size = 'medium',
+      label,
+      required,
+      labelTooltip,
+      feedback,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const contextVariant = useVariant();
-    const currentVariant = variant || contextVariant;
-
+    const textFieldId = useRandomId('eds-textfield');
     return (
       <BaseFormControl
         disabled={disabled}
@@ -50,16 +61,69 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         className={className}
         style={style}
         size={size}
+        label={label}
+        required={required}
+        labelTooltip={labelTooltip}
+        labelId={textFieldId}
+        feedback={feedback}
       >
-        <input
-          aria-invalid={currentVariant === 'error'}
-          className="eds-form-control"
+        <TextFieldBase
           disabled={disabled}
           readOnly={readOnly}
           ref={ref}
+          aria-labelledby={textFieldId}
           {...rest}
         />
       </BaseFormControl>
+    );
+  },
+);
+
+type TextFieldBaseProps = {
+  /** Deaktiver inputfeltet */
+  disabled?: boolean;
+  /** Setter inputfeltet i read-only modus */
+  readOnly?: boolean;
+  [key: string]: any;
+};
+
+const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
+  ({ disabled, readOnly, placeholder, onChange, ...rest }, ref) => {
+    const contextVariant = useVariant();
+    const currentVariant = rest.variant || contextVariant;
+    const {
+      isFilled: isInputFilled,
+      setFilled: setFiller,
+    } = useInputGroupContext();
+
+    useOnMount(() => {
+      if (rest.value) {
+        setFiller && !isInputFilled && setFiller(true);
+      }
+    });
+
+    const handleChange = (event: any) => {
+      if (isFilled(event.target)) {
+        setFiller && !isInputFilled && setFiller(true);
+      } else {
+        setFiller && isInputFilled && setFiller(false);
+      }
+      if (rest.onChange) {
+        rest.onChange(event);
+      }
+    };
+
+    return (
+      <input
+        aria-invalid={currentVariant === 'error'}
+        className="eds-form-control"
+        disabled={disabled}
+        readOnly={readOnly}
+        ref={ref}
+        placeholder={placeholder}
+        onChange={handleChange}
+        {...rest}
+      />
     );
   },
 );

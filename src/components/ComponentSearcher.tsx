@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, TextField } from '@entur/form';
+import { TextField } from '@entur/form';
 import { space } from '@entur/tokens';
 import {
   allComponentsAlphabetically,
@@ -29,18 +29,14 @@ export const ComponentSearcher: React.FC<ComponentSearcherProps> = ({
 
   return (
     <div>
-      <InputGroup
+      <TextField
         label="Søk etter komponenter"
         style={{ maxWidth: '20rem', marginBottom: space.extraLarge }}
-      >
-        <TextField
-          value={query}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setQuery(e.target.value)
-          }
-          placeholder="f.eks. SideNavigationItem"
-        />
-      </InputGroup>
+        value={query}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setQuery(e.target.value)
+        }
+      />
       <Heading3 as="p">
         {searchResults.length ? searchResults.length : 'Ingen'} treff
       </Heading3>

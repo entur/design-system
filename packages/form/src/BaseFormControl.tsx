@@ -1,7 +1,12 @@
-import React from 'react';
+import { Tooltip } from '@entur/tooltip';
 import classNames from 'classnames';
-import { VariantType, useVariant } from './VariantProvider';
+import React from 'react';
 import './BaseFormControl.scss';
+import { FeedbackText } from './FeedbackText';
+import { InputGroupContextProvider } from './InputGroupContext';
+import { InputGroupLabel } from './InputGroupLabel';
+import { useVariant, VariantType } from './VariantProvider';
+import { QuestionIcon } from '@entur/icons';
 
 export type BaseFormControlProps = {
   /** Et skjemaelement med `eds-form-control`-klassen */
@@ -23,6 +28,17 @@ export type BaseFormControlProps = {
   /**Størrelsen på skjemaelementet
    * @default "medium"
    */
+  size?: 'medium' | 'large';
+  /** Label til inputfeltet */
+  label: string;
+  /** En tooltip som forklarer labelen til inputfeltet */
+  labelTooltip: React.ReactNode;
+  /** Illustrerer om inputfeltet er påkrevd eller ikke */
+  required?: boolean;
+  /** ID som settes på labelen til inputfeltet */
+  labelId: string;
+  /** Varselmelding, som vil komme under form-komponenten */
+  feedback?: string;
   [key: string]: any;
 };
 
@@ -41,33 +57,64 @@ export const BaseFormControl = React.forwardRef<
       prepend,
       append,
       size = 'medium',
+      isFilled,
+      label,
+      required,
+      labelTooltip,
+      feedback,
+      labelId,
+      labelProps,
       ...rest
     },
-    ref: React.Ref<HTMLDivElement>,
+    ref,
   ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
+
     return (
-      <div
-        className={classNames(
-          'eds-form-control-wrapper',
-          className,
-          `eds-form-control-wrapper--size-${size}`,
-          {
-            'eds-form-control-wrapper--success': currentVariant === 'success',
-            'eds-form-control-wrapper--error': currentVariant === 'error',
-            'eds-form-control-wrapper--dark': dark,
-            'eds-form-control-wrapper--disabled': disabled,
-            'eds-form-control-wrapper--readonly': readOnly,
-          },
+      <InputGroupContextProvider>
+        <div
+          className={classNames(
+            'eds-form-control-wrapper',
+            className,
+            `eds-form-control-wrapper--size-${size}`,
+            {
+              'eds-form-control-wrapper--success': currentVariant === 'success',
+              'eds-form-control-wrapper--error': currentVariant === 'error',
+              'eds-form-control-wrapper--dark': dark,
+              'eds-form-control-wrapper--disabled': disabled,
+              'eds-form-control-wrapper--readonly': readOnly,
+              'eds-form-control-wrapper--is-filled': isFilled,
+            },
+          )}
+          ref={ref}
+          {...rest}
+        >
+          {prepend && (
+            <div className="eds-form-control__prepend">{prepend}</div>
+          )}
+          <InputGroupLabel
+            label={label}
+            required={required}
+            labelId={labelId}
+            {...labelProps}
+          />
+          {children}
+          {append && <div className="eds-form-control__append">{append}</div>}
+          {labelTooltip && (
+            <div className="eds-form-control__append">
+              <Tooltip content={labelTooltip} placement="right">
+                <span className="eds-input-group__label-tooltip-icon">
+                  <QuestionIcon />
+                </span>
+              </Tooltip>
+            </div>
+          )}
+        </div>
+        {feedback && currentVariant && (
+          <FeedbackText variant={currentVariant}>{feedback}</FeedbackText>
         )}
-        ref={ref}
-        {...rest}
-      >
-        {prepend && <div className="eds-form-control__prepend">{prepend}</div>}
-        {children}
-        {append && <div className="eds-form-control__append">{append}</div>}
-      </div>
+      </InputGroupContextProvider>
     );
   },
 );

@@ -22,19 +22,21 @@ import { ImportStatement } from '~/components/ImportStatement';
 <Playground style={{ width: '50%', margin: 'auto' }}>
   <GridContainer spacing="medium">
     <GridItem small={12}>
-      <TextField placeholder="Skriv her..." />
+      <TextField label="Skriv her..." />
     </GridItem>
     <GridItem small={12}>
-      <TextField readOnly value="Read-only modus" />
+      <TextField label="Kan ikke redigeres" readOnly value="Read-only modus" />
     </GridItem>
     <GridItem small={12}>
       <TextField
-        placeholder="Her er et ikon som prepend"
+        label="Ikon som prepend"
         prepend={<SearchIcon inline />}
+        placeholder="Placeholder tekst vises ved klikk"
+        variant="success"
       />
     </GridItem>
-    <GridItem small={12} style={{ width: '15rem' }}>
-      <TextField prepend="Fra" append="Kroner" />
+    <GridItem small={12}>
+      <TextField append="Kroner" label="Pris" variant="error" />
     </GridItem>
   </GridContainer>
 </Playground>
@@ -60,11 +62,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes
   modal eller søk. Bør benyttes med en kort og tydelig ledetekst som forklarer
   hva brukeren skal oppgi i feltet. Hvis det er nødvendig med mer veiledning for
   å hjelpe brukerens utfylling av skjemaet, kan du legge til hint, hjelpetekst
-  og validering. Se{' '}
-  <LinkText as={Link} to="/komponenter/skjemaelementer/input-group">
-    Input groups
-  </LinkText>{' '}
-  for å legge dette til skjemaelementene.
+  og validering.
 </div>
 <br />
 <div>

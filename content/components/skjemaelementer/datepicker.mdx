@@ -10,7 +10,6 @@ tags: dato, date, time, tid, picker
 
 import { Props } from 'docz';
 import { DatePicker, NativeDatePicker } from '@entur/datepicker';
-import { InputGroup } from '@entur/form';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
@@ -23,13 +22,12 @@ import { addDays } from 'date-fns';
   {() => {
     const [date, setDate] = React.useState();
     return (
-      <InputGroup>
-        <DatePicker
-          style={{ width: '15rem' }}
-          selectedDate={date}
-          onChange={date => setDate(date)}
-        />
-      </InputGroup>
+      <DatePicker
+        style={{ width: '15rem' }}
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        label="Velg dato"
+      />
     );
   }}
 </Playground>
@@ -52,7 +50,8 @@ Eksempelvis `addWeeks` for å sette en maksgrense på én uker man kan velge dat
     const [date, setDate] = React.useState();
     return (
       <DatePicker
-        style={{ width: '10em' }}
+        label="Velg dato innen én uke"
+        style={{ width: '15rem' }}
         selectedDate={date}
         onChange={date => setDate(date)}
         minDate={new Date()} //Mindate, Fra og med
@@ -66,5 +65,5 @@ For deg som ønsker å støtte mobil, så eksisterer det også en `NativeDatePic
 Den wrapper en `input` hvor `type="date"`, som i noen sammenhenger kan være og foretrekke.
 
 <Playground>
-  <NativeDatePicker style={{ width: '15rem' }} />
+  <NativeDatePicker style={{ width: '15rem' }} label="Native datovelger" />
 </Playground>

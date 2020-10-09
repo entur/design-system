@@ -27,7 +27,6 @@ import {
   SegmentedChoice,
   SegmentedControl,
   TextField,
-  InputGroup,
 } from '@entur/form';
 import {
   RowHeightDefaultIcon,
@@ -839,14 +838,14 @@ Ved å benytte et søkefelt som begrenser resultatene som er vist basert på hva
     const textSearchRegex = new RegExp(filterSearch, 'i');
     return (
       <div>
-        <InputGroup label="Søk på Navn eller ID" style={{ width: '15rem' }}>
-          <TextField
-            prepend={<SearchIcon inline />}
-            value={filterSearch}
-            placeholder="Kari Nordmann"
-            onChange={e => setFilterSearch(e.target.value)}
-          />
-        </InputGroup>
+        <TextField
+          label="Søk på Navn eller ID"
+          style={{ width: '15rem' }}
+          prepend={<SearchIcon inline />}
+          value={filterSearch}
+          placeholder="Kari Nordmann"
+          onChange={e => setFilterSearch(e.target.value)}
+        />
         <Table style={{ marginTop: '2rem' }}>
           <TableHead>
             <TableRow>

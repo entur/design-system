@@ -7,62 +7,25 @@
   .eds-contrast & {
     --border-color: #{$colors-brand-lavender};
     background-color: $colors-brand-white;
+    border-color: $colors-blues-blue30;
   }
 
   align-items: center;
-  background-color: $colors-greys-grey40;
+  background-color: $colors-brand-white;
   border-radius: $border-radiuses-medium;
+  border: $border-widths-medium solid $colors-greys-grey10;
   color: $colors-brand-blue;
   display: flex;
   position: relative;
   width: 100%;
-  min-height: 2.75rem;
+  min-height: 3rem;
+  transition: border-color $timings-fast ease-in-out;
 
-  /* 
-  We use pseudo elements to create the border design we need.
-  The `before` element is a complete border, while the `after` is only the bottom border.
-  */
-  &::before,
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    transition: all $timings-fast ease-out;
-  }
-
-  &::before {
-    border: $border-widths-default solid transparent;
-    border-radius: $border-radiuses-medium;
-    top: 0;
-  }
-
-  &::after {
-    border-bottom: $border-widths-default solid var(--border-color);
-    border-bottom-left-radius: $border-radiuses-medium;
-    border-bottom-right-radius: $border-radiuses-medium;
-  }
-
-  &:hover::after {
-    border-bottom-color: var(--border-color-hover);
-  }
-  .eds-contrast &:hover::before {
-    border-color: var(--border-color-hover);
-  }
-  .eds-contrast &:hover::after {
-    opacity: 0;
-  }
-
-  &:focus-within {
-    &::before,
-    &::after {
-      border-color: var(--border-color);
-    }
-    &::after {
-      opacity: 0;
+  &:focus-within,
+  &:hover {
+    border-color: $colors-brand-blue;
+    .eds-contrast & {
+      border-color: $colors-brand-lavender;
     }
   }
 
@@ -74,6 +37,7 @@
   &--disabled {
     background-color: $colors-greys-grey20;
     color: $colors-blues-blue40;
+    border-color: transparent;
     pointer-events: none;
 
     &::before,
@@ -81,14 +45,22 @@
       display: none;
     }
     .eds-contrast & {
-      background: $colors-greys-grey20;
-      color: $colors-blues-blue40;
+      background: $colors-blues-blue10;
+      border-color: transparent;
+      color: $colors-blues-blue50;
     }
   }
 
   &--readonly {
     pointer-events: none;
     cursor: default;
+    border-color: transparent;
+
+    .eds-contrast &  {
+      background: $colors-brand-blue;
+      color: $colors-brand-white;
+      border-color: transparent;
+    }
 
     &::before,
     &::after {
@@ -121,25 +93,41 @@
 
   // Validation modes changes the border colors
   &--success {
-    --border-color: #{$colors-validation-mint};
-    --border-color-hover: #{$colors-validation-mint-contrast};
+    border-color: $colors-validation-mint;
+    &:hover {
+      border-color: $colors-validation-mint-contrast;
+    }
+    &:focus-within {
+      border-color: $colors-validation-mint;
+    }
 
     .eds-contrast & {
-      --border-color: #{$colors-validation-mint};
-      &--dark {
-        --border-color: #{$colors-validation-mint-contrast};
+      border-color: $colors-validation-mint-contrast;
+      &:hover {
+        border-color: $colors-validation-mint;
+      }
+      &:focus-within {
+        border-color: $colors-validation-mint-contrast;
       }
     }
   }
 
   &--error {
-    --border-color: #{$colors-validation-lava};
-    --border-color-hover: #{$colors-validation-lava-contrast};
+    border-color: $colors-validation-lava;
+    &:hover {
+      border-color: $colors-validation-lava-contrast;
+    }
+    &:focus-within {
+      border-color: $colors-validation-lava;
+    }
 
     .eds-contrast & {
-      --border-color: #{$colors-validation-lava};
-      &--dark {
-        --border-color: #{$colors-validation-lava-contrast};
+      border-color: $colors-validation-lava-contrast;
+      &:hover {
+        border-color: $colors-validation-lava;
+      }
+      &:focus-within {
+        border-color: $colors-validation-lava-contrast;
       }
     }
   }
@@ -150,18 +138,19 @@
   */
   .eds-contrast & {
     &--dark {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-brand-blue;
       color: $colors-brand-white;
       ::placeholder {
-        color: $colors-blues-blue60;
+        color: $colors-brand-lavender;
       }
 
       &:hover {
-        background-color: $colors-blues-blue30;
-
-        &::before {
-          border-color: transparent;
-        }
+        // background-color: $colors-blues-blue30;
+        border-color: $colors-brand-lavender;
+      }
+      &:focus-within {
+        background-color: $colors-blues-blue10;
+        border-color: $colors-brand-lavender;
       }
 
       * {
@@ -186,11 +175,18 @@
   font-family: inherit;
   line-height: $line-heights-medium;
   font-size: $font-sizes-large;
-  padding: $space-small $space-default;
+  padding: 20px $space-default $space-extra-small2;
   width: 100%;
 
+  &::placeholder {
+    opacity: 0;
+    transition: opacity $timings-medium ease-in-out;
+  }
   &:focus {
     outline: none;
+    &::placeholder {
+      opacity: 1;
+    }
   }
 
   &__prepend,

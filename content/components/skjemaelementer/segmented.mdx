@@ -13,7 +13,6 @@ import {
   SegmentedControl,
   MultipleSegmentedControl,
   SegmentedChoice,
-  InputGroup,
   TextField,
 } from '@entur/form';
 import { GridContainer, GridItem } from '@entur/grid';
@@ -130,18 +129,19 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
           </SegmentedControl>
         </GridItem>
         <GridItem small={12} large={8}>
-          <InputGroup label="Reisedato">
-            <DatePicker selectedDate={date} onChange={date => setDate(date)} />
-          </InputGroup>
+          <DatePicker
+            label="Reisedato"
+            selectedDate={date}
+            onChange={date => setDate(date)}
+          />
         </GridItem>
         <GridItem small={12} large={4}>
-          <InputGroup label="Klokkeslett">
-            <TimePicker
-              placeholder="Tid"
-              selectedTime={time}
-              onChange={time => setTime(time)}
-            />
-          </InputGroup>
+          <TimePicker
+            label="Klokkeslett"
+            placeholder="Tid"
+            selectedTime={time}
+            onChange={time => setTime(time)}
+          />
         </GridItem>
       </GridContainer>
     );
