@@ -127,7 +127,6 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       calendarClassName="eds-timepicker"
       selected={selectedTime}
       onChange={handleChange}
-      showWeekNumbers={true}
       locale={nb}
       dateFormat="HH:mm"
       timeFormat="HH:mm"
