@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "react-native": "dist/index.esm.native.js",
-  "typings": "types/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "native",
