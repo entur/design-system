@@ -1,0 +1,20 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-expand-row-button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: $space-extra-small2;
+  &:focus {
+    outline: none;
+  }
+  &--open {
+    .eds-expand-row-button__icon {
+      transform: rotate(90deg);
+    }
+  }
+  &__icon {
+    transition: transform ease-in-out $timings-medium;
+  }
+}
