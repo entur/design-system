@@ -39,12 +39,15 @@ const packages = [
 
 exports.onPreBootstrap = ({}) => {
   fs.ensureDirSync(`${__dirname}/changelogs/`);
-  for (package in packages) {
+  fs.ensureDirSync(`${__dirname}/icons/`);
+  for (let changelogPackage in packages) {
     fs.copyFileSync(
-      path.resolve(`../packages/${packages[package]}/CHANGELOG.md`),
-      `${__dirname}/changelogs/${packages[package]}.md`,
+      path.resolve(`../packages/${packages[changelogPackage]}/CHANGELOG.md`),
+      `${__dirname}/changelogs/${packages[changelogPackage]}.md`,
     );
   }
+  fs.ensureDirSync('../../src/gatsby-theme-docz/svgs');
+  fs.copySync('../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
 
 exports.sourceNodes = async ({ actions: { createNode } }) => {

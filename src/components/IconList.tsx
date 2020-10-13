@@ -1,14 +1,15 @@
-import React from 'react';
+import { useToast } from '@entur/alert';
+import { IconButton } from '@entur/button';
+import { Switch, TextField } from '@entur/form';
+import { DownloadIcon, SearchIcon, ReportsIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
+import { Heading4, Label } from '@entur/typography';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
-import { TextField } from '@entur/form';
-import { SearchIcon, ReportsIcon } from '@entur/icons';
-import { useToast } from '@entur/alert';
 import matchSorter from 'match-sorter';
+import React from 'react';
+import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
 import './IconList.scss';
-import { Switch } from '@entur/form';
-import { Heading4 } from '@entur/typography';
-import { TertiaryButton } from '@entur/button';
 
 type IconListProps = {
   icons: {
@@ -40,6 +41,8 @@ const IconList: React.FC<IconListProps> = props => {
       content: 'Du finner det i utklippstavla',
     });
   };
+
+  const iconsQuery = useGetIcons();
   return (
     <div>
       <TextField
@@ -68,13 +71,31 @@ const IconList: React.FC<IconListProps> = props => {
           >
             {filteredIcons.map(([iconName, Icon]: any) => (
               <li className="icon-list__item" key={iconName}>
-                <Icon style={{ width: '2em', height: '2em' }} />
-                <TertiaryButton
+                <button
+                  className="icon-list__item-name"
                   onClick={handleIconClick(iconName)}
-                  className="icon-list__name"
                 >
-                  {iconName} <ReportsIcon inline={true} />
-                </TertiaryButton>
+                  <Label>{iconName}</Label>
+                  <ReportsIcon />
+                </button>
+                <Icon style={{ width: '2em', height: '2em' }} />
+                <div className="icon-list__item-buttons">
+                  <Tooltip content="Last ned SVG" placement="top">
+                    <IconButton
+                      as="a"
+                      download
+                      href={iconsQuery
+                        .filter(
+                          icon =>
+                            icon.node.name.split(' ').join('') + 'Icon' ===
+                            iconName,
+                        )
+                        .map(node => node.node.publicURL)}
+                    >
+                      <DownloadIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
               </li>
             ))}
           </ul>
