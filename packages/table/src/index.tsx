@@ -12,3 +12,5 @@ export * from './DataCell';
 export * from './HeaderCell';
 export * from './useSortableTable';
 export * from './EditableCell';
+export * from './ExpandableRow';
+export * from './ExpandRowButton';
