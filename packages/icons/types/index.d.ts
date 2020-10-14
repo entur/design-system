@@ -21,4 +21,5 @@ export declare type IconProps = {
   height?: string;
   /** Overskriver fargen til ikonet */
   color?: string;
+  [key: string]: any;
 };
