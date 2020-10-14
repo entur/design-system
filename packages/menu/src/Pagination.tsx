@@ -55,6 +55,14 @@ export type PaginationProps = {
   resultsPerPageOptions?: number[];
   /** Callback for når resultater per side oppdateres */
   onResultsPerPageChange?: (e: number) => void;
+  /** Brukes for å skjule "neste side"-knappen
+   * @default false
+   */
+  hideNextButton?: boolean;
+  /** Brukes for å skjule "forrige side"-knappen
+   * @default false
+   */
+  hidePrevButton?: boolean;
   [key: string]: any;
 };
 
@@ -74,6 +82,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   onResultsPerPageChange,
 
   nextPageLabel = 'Gå til neste side',
+  hideNextButton = false,
+  hidePrevButton = false,
   ...rest
 }) => {
   const isContrast = useContrast();
@@ -161,7 +171,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         </div>
       )}
       <div className="eds-pagination__controls">
-        {!isFirstPostSelected && (
+        {!isFirstPostSelected && !hidePrevButton && (
           <PaginationPage
             onClick={() => onPageChange(currentPage - 1)}
             aria-label={previousPageLabel}
@@ -183,7 +193,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             </PaginationPage>
           ),
         )}
-        {!isLastPostSelected && (
+        {!isLastPostSelected && !hideNextButton && (
           <PaginationPage
             onClick={() => onPageChange(currentPage + 1)}
             aria-label={nextPageLabel}
