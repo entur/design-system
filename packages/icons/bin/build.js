@@ -78,6 +78,7 @@ function createSvgrConfig(native = false, componentName) {
       'LogoPositiveIcon',
       'MastercardIcon',
       'VippsIcon',
+      'VippsLogoIcon',
       'VisaIcon',
       ...partnerIcons,
     ];
