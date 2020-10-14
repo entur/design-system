@@ -1,9 +1,9 @@
 import { useToast } from '@entur/alert';
 import { IconButton } from '@entur/button';
 import { Switch, TextField } from '@entur/form';
-import { DownloadIcon, SearchIcon, ReportsIcon } from '@entur/icons';
+import { DownloadIcon, ReportsIcon, SearchIcon } from '@entur/icons';
 import { Tooltip } from '@entur/tooltip';
-import { Heading4, Label } from '@entur/typography';
+import { Heading4, SubLabel } from '@entur/typography';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
 import matchSorter from 'match-sorter';
@@ -64,20 +64,22 @@ const IconList: React.FC<IconListProps> = props => {
           >
             Kontrast
           </Switch>
-          <ul
-            className={classNames('icon-list', {
-              'eds-contrast': isContrast,
-            })}
-          >
+          <ul className="icon-list">
             {filteredIcons.map(([iconName, Icon]: any) => (
-              <li className="icon-list__item" key={iconName}>
-                <button
+              <li
+                className={classNames('icon-list__item', {
+                  'eds-contrast': isContrast,
+                })}
+                key={iconName}
+              >
+                <SubLabel
+                  as="button"
                   className="icon-list__item-name"
                   onClick={handleIconClick(iconName)}
                 >
-                  <Label>{iconName}</Label>
+                  {iconName}
                   <ReportsIcon />
-                </button>
+                </SubLabel>
                 <Icon style={{ width: '2em', height: '2em' }} />
                 <div className="icon-list__item-buttons">
                   <Tooltip content="Last ned SVG" placement="top">
