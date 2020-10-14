@@ -36,7 +36,9 @@ export const Loader: React.FC<LoaderProps> = ({
       {...rest}
     >
       {children && (
-        <Heading5 className="eds-loader__label">{children}</Heading5>
+        <Heading5 as="div" className="eds-loader__label">
+          {children}
+        </Heading5>
       )}
       <div
         className={classNames('eds-loader__bar', {
