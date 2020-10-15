@@ -21,6 +21,13 @@ module.exports = {
         path: `${__dirname}/src/gatsby-theme-docz/downloads/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `icons`,
+        path: `${__dirname}/icons/`,
+      },
+    },
     'gatsby-transformer-remark',
   ],
 };

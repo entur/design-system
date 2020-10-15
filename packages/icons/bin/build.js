@@ -144,19 +144,24 @@ for (let svgPath of allSvgPaths) {
   componentNames.push(componentName);
 }
 
+fs.ensureDirSync('./dist');
 // Create index files for both the web and RN components
 let indexFile = '';
+let typingsFile = '';
+let typingsTemplate = fs.readFileSync('./types/index.d.ts').toString();
+typingsFile += `${typingsTemplate}\n`;
 for (let componentName of componentNames) {
   indexFile += `export { default as ${componentName} } from './${componentName}';\n`;
+  typingsFile += `export declare const ${componentName}: React.FC<IconProps>;\n`;
 }
 fs.outputFileSync(`./tmp/web/index.js`, indexFile);
 fs.outputFileSync(`./tmp/native/index.js`, indexFile);
+fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
 
 // create a default index as well, which exposes the web interface by default
 fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
 
 // finally, let's copy over the static assets if you need those directly
-fs.ensureDirSync('./dist');
 sass.render(
   {
     file: './src/index.scss',

@@ -15,12 +15,55 @@
 
 .icon-list__item {
   border: $border-widths-small solid $colors-greys-grey20;
+  border-radius: $border-radiuses-medium;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
-  padding: $space-large 0;
+  height: 7.5rem;
   text-align: center;
+  &.eds-contrast {
+    border-color: $colors-blues-blue50;
+  }
+  &:hover {
+    .icon-list__item-buttons {
+      display: block;
+    }
+  }
+  &-name {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    padding: $space-small;
+    font-family: inherit;
+    .eds-icon {
+      margin-left: 0.25rem;
+      opacity: 0;
+      transition-delay: $timings-medium;
+      transition: opacity 10 ease-in-out;
+    }
+    .eds-label {
+      cursor: pointer;
+    }
+    &:hover {
+      .eds-icon {
+        opacity: 1;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &-buttons {
+    align-self: flex-end;
+    display: none;
+    padding-right: $space-extra-small;
+  }
 
   .eds-contrast & {
     border-color: $colors-blues-blue40;
