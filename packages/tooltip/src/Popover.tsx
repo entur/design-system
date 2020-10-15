@@ -183,18 +183,39 @@ export const PopoverContent = React.forwardRef<
   );
 });
 
+function elementContainsEventTarget(element: HTMLElement | null, event: Event) {
+  if (!element) {
+    return false;
+  }
+
+  if (element.contains(event.target as Node)) {
+    return true;
+  }
+
+  // For elements inside a Shadow DOM we need to check the composedPath
+  if (event.composed && event.composedPath) {
+    const contains = event.composedPath().find(target => {
+      if (target === window) {
+        return false;
+      }
+      return element.contains(target as Node);
+    });
+    return contains ? true : false;
+  }
+
+  return false;
+}
+
 function useOnClickOutside(
   ref: React.RefObject<HTMLDivElement>,
   buttonRef: React.RefObject<HTMLButtonElement>,
   handler: () => void,
 ) {
   React.useEffect(() => {
-    const listener = (event: any) => {
+    const listener = (event: Event) => {
       if (
-        !ref.current ||
-        ref.current.contains(event.target) ||
-        !buttonRef.current ||
-        buttonRef.current.contains(event.target)
+        elementContainsEventTarget(ref.current, event) ||
+        elementContainsEventTarget(buttonRef.current, event)
       ) {
         return;
       }
