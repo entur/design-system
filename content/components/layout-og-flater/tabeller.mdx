@@ -19,6 +19,8 @@ import {
   DataCell,
   useSortableData,
   EditableCell,
+  ExpandableRow,
+  ExpandRowButton,
 } from '@entur/table';
 import {
   Checkbox,
@@ -124,6 +126,15 @@ Om du ønsker en mer kompakt tabell, så kan du spesifisere `middle`-propen.
 Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre for en rad.
 
 `<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.
+
+### ExpandableRow og ExpandableRowButton
+
+<ImportStatement imports="ExpandableRow, ExpandableRowButton" />
+<Props of={ExpandableRow} title="Props, ExpandableRow" />
+<Props of={ExpandRowButton} title="Props, ExpandRowButton" />
+
+Merk `colSpan`-propen til ExpandableRow. Denne må settes til antallet kolonner du har i tabellen,
+for at innholdet som ekspanderes skal vises til hele bredden av tabellen. Se eksempelet under for hvordan dette kan gjøres.
 
 ## Sortering av tabell
 
@@ -343,6 +354,125 @@ Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
               <DataCell>{item.til}</DataCell>
               <DataCell>{item.avgang}</DataCell>
             </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }}
+</Playground>
+
+## Expandable tabell
+
+En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare tabeller er nyttig for å presentere store datamengder på et lite sted.
+
+<Playground>
+  {() => {
+    const mockData = [
+      {
+        pay: 'Faktura',
+        sum: '20 487',
+        transactions: [
+          { time: '08:25', id: 'EN48123', sum: '3 331' },
+          { time: '11:37', id: 'EN48159', sum: '6 368' },
+          { time: '14:12', id: 'EN48053', sum: '1 331' },
+          { time: '17:12', id: 'EN48141', sum: '749' },
+          { time: '15:12', id: 'EN48178', sum: '2 721' },
+          { time: '16:12', id: 'EN48158', sum: '3 768' },
+        ],
+      },
+      {
+        pay: 'Kort',
+        sum: '4 487',
+        transactions: [
+          { time: '21:50', id: 'EN41123', sum: '931' },
+          { time: '11:55', id: 'EN48239', sum: '1 681' },
+          { time: '14:12', id: 'EN48375', sum: '425' },
+          { time: '14:39', id: 'EN48222', sum: '2 651' },
+        ],
+      },
+      {
+        pay: 'Kontant',
+        sum: '13 487',
+        transactions: [
+          { time: '19:03', id: 'EN41168', sum: '10 931' },
+          { time: '14:04', id: 'EN48289', sum: '1 681' },
+          { time: '12:24', id: 'EN48470', sum: '1 425' },
+        ],
+      },
+    ];
+    // Hjelpe-komponent for å håndtere en rad og innholdet til raden under
+    const ExpRow = ({ data, children }) => {
+      const [open, setopen] = React.useState(false);
+      return (
+        <React.Fragment>
+          <TableRow>
+            <DataCell>
+              <ExpandRowButton onClick={() => setopen(!open)} open={open} />
+            </DataCell>
+            <DataCell>
+              {data.pay} ({data.transactions.length})
+            </DataCell>
+            <DataCell align="right">{data.sum},-</DataCell>
+          </TableRow>
+          {/* Tabellen i eksemplet har 3 kolonner, derav colSpan={3} */}
+          <ExpandableRow colSpan={3} open={open}>
+            {children}
+          </ExpandableRow>
+        </React.Fragment>
+      );
+    };
+    // Hjelpekomponent for innholdet inne i den ekspanderte raden
+    const SummaryTable = ({ data }) => {
+      return (
+        <div style={{ paddingTop: '0.5rem' }}>
+          <Table spacing="middle">
+            <TableHead>
+              <TableRow>
+                <HeaderCell style={{ paddingLeft: '4.5rem' }}>
+                  Tidspunkt
+                </HeaderCell>
+                <HeaderCell>Ordrenummer</HeaderCell>
+                <HeaderCell
+                  style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                >
+                  Pris
+                </HeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map(field => (
+                <TableRow>
+                  <DataCell style={{ paddingLeft: '4.5rem' }}>
+                    {field.time}
+                  </DataCell>
+                  <DataCell>{field.id}</DataCell>
+                  <DataCell
+                    style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                  >
+                    {field.sum},-
+                  </DataCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      );
+    };
+    return (
+      <Table fixed>
+        <TableHead>
+          <TableRow>
+            {/* Bruker padding="radio" her for å "enkelt" sette en god verdi for paddingen til venstre-kolonnen */}
+            <HeaderCell padding="radio">{''}</HeaderCell>
+            <HeaderCell>Betalingsmåte</HeaderCell>
+            <HeaderCell style={{ textAlign: 'right' }}>Salgssum</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {mockData.map(field => (
+            <ExpRow data={field}>
+              <SummaryTable data={field.transactions}></SummaryTable>
+            </ExpRow>
           ))}
         </TableBody>
       </Table>
