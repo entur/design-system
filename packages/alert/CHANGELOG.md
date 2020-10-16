@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.9...@entur/alert@0.7.0) (2020-10-16)
+
+### Bug Fixes
+
+- **basealertbox:** upgrade title prop from string to react node ([263c0a6](https://bitbucket.org/enturas/design-system/commits/263c0a6b43ce9bcc7694b53943579aae6e67bbac))
+
+### Features
+
+- add expandable small and banner AlertBox ([3dcc2ed](https://bitbucket.org/enturas/design-system/commits/3dcc2edfc08ae7761a1e3d7b0de60e1eaf88ba85))
+
 ## [0.6.9](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.8...@entur/alert@0.6.9) (2020-10-09)
 
 **Note:** Version bump only for package @entur/alert

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.0.6...@entur/table@4.1.0) (2020-10-16)
+
+### Bug Fixes
+
+- **expandablerow:** improve props of expandable row ([ff53994](https://bitbucket.org/enturas/design-system/commits/ff539943eefb01e3beb996fd61dbde849904731d))
+- **expandrowbutton:** improve typing of expandRowButton ([6554213](https://bitbucket.org/enturas/design-system/commits/6554213db245e2abb2c7fd2f76a3f669440ca8f8))
+- **table:** adjust height of middle density table ([a4304c9](https://bitbucket.org/enturas/design-system/commits/a4304c9e4cea0a04c5ff92b5f7a52867a8a2c885))
+
+### Features
+
+- **expandable row:** add expand row button component ([ac712ae](https://bitbucket.org/enturas/design-system/commits/ac712ae14e1199710e4c7cd13e926d9f18743fb8))
+- **expandable row:** add expandable row component ([a0400c0](https://bitbucket.org/enturas/design-system/commits/a0400c0a6c62cf3a0781348a089c9a5d96d7f2d2))
+
 ## [4.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.0.5...@entur/table@4.0.6) (2020-10-09)
 
 **Note:** Version bump only for package @entur/table

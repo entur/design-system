@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.16](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.15...@entur/tab@0.4.16) (2020-10-16)
+
+### Bug Fixes
+
+- **tabs:** adjust height of tab buttons ([bc744f1](https://bitbucket.org/enturas/design-system/commits/bc744f14d259ebf0bbd4a063f3350d90d7e6730b))
+
 ## [0.4.15](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.14...@entur/tab@0.4.15) (2020-10-09)
 
 **Note:** Version bump only for package @entur/tab

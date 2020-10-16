@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.13.1...@entur/icons@1.14.0) (2020-10-16)
+
+### Bug Fixes
+
+- **types:** add prop spread fix in typings ([58d08f4](https://bitbucket.org/enturas/design-system/commits/58d08f40897ebeac3876feb756d356ce69344dd8))
+- fix colors for payment icons ([63a90db](https://bitbucket.org/enturas/design-system/commits/63a90db49d347e434c4a46faf08e6516edaf6569))
+
+### Features
+
+- add vippslogo icon ([a703253](https://bitbucket.org/enturas/design-system/commits/a703253ba99e812be2d838bf7d9c063de3b39a12))
+- **icons:** add typings for all icons ([e55d644](https://bitbucket.org/enturas/design-system/commits/e55d644c1f961e8655b2817fd1347b5289c0b652))
+- add animalfree icon ([a3fabde](https://bitbucket.org/enturas/design-system/commits/a3fabdeacd6fe2d91802a2d52ee429a8c08cb1b0))
+- add mastercard icon ([3404b64](https://bitbucket.org/enturas/design-system/commits/3404b64163783bb081ac61e91307ae1c4a03095a))
+- add vipps icon ([fc068db](https://bitbucket.org/enturas/design-system/commits/fc068dbda207722e323229975227f8d6340e68d8))
+- add visa icon ([b2689d7](https://bitbucket.org/enturas/design-system/commits/b2689d70ff9fb1f086dcc0d7ccf7829dbf1c133b))
+
 ## [1.13.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.13.0...@entur/icons@1.13.1) (2020-10-09)
 
 **Note:** Version bump only for package @entur/icons

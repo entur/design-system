@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.29](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.28...@entur/loader@0.3.29) (2020-10-16)
+
+### Bug Fixes
+
+- **loader:** set loader label as div with h5 styling ([7395638](https://bitbucket.org/enturas/design-system/commits/73956385b5bdfca5f7c0a2ebf46bb4a13b3c0722))
+
 ## [0.3.28](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.27...@entur/loader@0.3.28) (2020-10-09)
 
 **Note:** Version bump only for package @entur/loader
