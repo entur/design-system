@@ -34,7 +34,7 @@ type BaseAlertBoxProps = {
    */
   closable?: boolean;
   /** Tittel på boksen - oppsummer virkning */
-  title?: string;
+  title?: React.ReactNode;
   /** Farge og uttrykk på alert-boksen */
   variant: 'success' | 'info' | 'warning' | 'error';
   /** Typen boks (internt bruk) */
