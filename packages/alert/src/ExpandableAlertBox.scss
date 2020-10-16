@@ -1,0 +1,30 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+
+.eds-expandable-alert-box {
+  .eds-alert-box__content {
+    width: 100%;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__button {
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: $line-heights-extra-large;
+    padding: 0 $space-extra-small2;
+    &:focus {
+      outline: none;
+    }
+    .eds-icon {
+      font-size: $font-sizes-large;
+      padding-left: $space-extra-small2;
+    }
+  }
+}
