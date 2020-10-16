@@ -21,6 +21,7 @@ import {
   ToastProvider,
   SmallAlertBox,
   useToast,
+  SmallExpandableAlertBox,
 } from '@entur/alert';
 
 <PageHeader />
@@ -202,6 +203,24 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
 </Playground>
 
 Default så opptar disse varslene full bredde. Om ønskelig kan du sette `width="fit-content"` for å la dem ta størrelsen til innholdet.
+
+### ExpandableAlertBox
+
+<ImportStatement imports="SmallExpandableAlertBox, BannerExpandableAlertBox" />
+<Props of={SmallExpandableAlertBox} />
+
+Av og til vil du vise meldinger som gjerne inneholder mer informasjon, som du ikke alltid har behov for å vise.
+Da kan man bruke `SmallExpandableAlertBox` eller `BannerExpandableAlertBox` for å vise en tittel, og ekstra informasjon skjult bak en ekspanderbart seksjon.
+
+<Playground style={{ width: '62%', margin: '0 auto' }}>
+  <SmallExpandableAlertBox
+    variant="error"
+    title="Kjøpet kunne ikke gjennomføres!"
+  >
+    Vi har et teknisk problem akkurat nå. Kjøpsløsningen for billetter fungerer
+    ikke.
+  </SmallExpandableAlertBox>
+</Playground>
 
 ## Retningslinjer
 
