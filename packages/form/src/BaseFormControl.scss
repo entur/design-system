@@ -55,9 +55,10 @@
     pointer-events: none;
     cursor: default;
     border-color: transparent;
+    background: $colors-greys-grey40;
 
     .eds-contrast &  {
-      background: $colors-brand-blue;
+      background: $colors-blues-blue10;
       color: $colors-brand-white;
       border-color: transparent;
     }
