@@ -17,6 +17,34 @@
 .eds-breadcrumb__link {
   text-decoration: none;
   color: inherit;
+  background-image: linear-gradient(
+    120deg,
+    $colors-brand-blue 0%,
+    $colors-brand-blue 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.125rem;
+  background-position: 0 100%;
+  .eds-contrast & {
+    background-image: linear-gradient(
+      120deg,
+      $colors-brand-white 0%,
+      $colors-brand-white 100%
+    );
+  }
+
+  &:hover {
+    animation: eds-breadcrumb-underline 0.3s ease-in;
+  }
+
+  @keyframes eds-breadcrumb-underline {
+    from {
+      background-size: 0% 0.125rem;
+    }
+    to {
+      background-size: 100% 0.125rem;
+    }
+  }
 
   &--current {
     font-weight: $font-weights-heading;
