@@ -6,10 +6,20 @@ export type NumberedListProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
-  [key: string]: any;
-};
+} & React.OlHTMLAttributes<HTMLOListElement>;
 
 export const NumberedList: React.FC<NumberedListProps> = ({
   className,
+  type = '1',
   ...rest
-}) => <ol className={classNames('eds-numbered-list', className)} {...rest} />;
+}) => (
+  <ol
+    className={classNames(
+      'eds-numbered-list',
+      { [`eds-numbered-list--type-${type}`]: type },
+      className,
+    )}
+    type={type}
+    {...rest}
+  />
+);

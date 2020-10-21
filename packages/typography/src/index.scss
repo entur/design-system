@@ -319,6 +319,43 @@ html {
 .eds-numbered-list {
   counter-reset: eds-numbered-list-counter;
   list-style: none;
+  &--type {
+    &-a {
+      & > .eds-list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, lower-alpha);
+        }
+      }
+    }
+    &-A {
+      & > .eds-list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, upper-alpha);
+        }
+      }
+    }
+    &-1 {
+      & > .eds-list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, decimal);
+        }
+      }
+    }
+    &-i {
+      & > .eds-list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, lower-roman);
+        }
+      }
+    }
+    &-I {
+      & > .eds-list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, upper-roman);
+        }
+      }
+    }
+  }
 }
 
 .eds-list-item {
@@ -331,7 +368,6 @@ html {
   position: relative;
 
   &::before {
-    content: counter(eds-numbered-list-counter);
     color: inherit; // ie fallback
     color: var(--primary-text-color);
     position: absolute;
