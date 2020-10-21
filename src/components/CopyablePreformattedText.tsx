@@ -20,20 +20,25 @@ export const CopyablePreformattedText: React.FC<Props> = ({
   isDrawer = false,
 }) => {
   const { addToast } = useToast();
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
-    !isDrawer && copy(children);
+    !isDrawer &&
+      copy(children) &&
+      addToast({ title: 'Kopiert!', content: successMessage });
+
     isDrawer &&
+      buttonRef.current &&
       copy(children, {
-        target: document.body.children[3].children[2]
-          .firstElementChild as HTMLElement,
-      });
-    addToast({ title: 'Kopiert!', content: successMessage });
+        target: buttonRef.current,
+      }) &&
+      addToast({ title: 'Kopiert!', content: successMessage });
   };
   return (
     <button
       className="copyable-preformatted-text"
       type="button"
       onClick={handleClick}
+      ref={buttonRef}
     >
       <PreformattedText>{children}</PreformattedText>
       <ReportsIcon

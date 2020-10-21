@@ -46,8 +46,6 @@ const IconList: React.FC<IconListProps> = props => {
     return matchSorter(iconEntries, filterString, { keys: ['0'] });
   }, [filterString, props.icons]);
 
-  function filterIcons(icons: object[]) {}
-
   const noHits = filteredIcons.length === 0;
   const feedbackText =
     filterString.length > 0
@@ -71,8 +69,6 @@ const IconList: React.FC<IconListProps> = props => {
     .map(icon => icon.node.absolutePath.split('/').splice(-2, 1).toString())
     .filter(unique)
     .sort();
-  console.log(categories);
-  console.log(iconsQuery);
 
   return (
     <div>
@@ -96,7 +92,7 @@ const IconList: React.FC<IconListProps> = props => {
             >
               Kontrast
             </Switch>
-            <Dropdown
+            {/* <Dropdown
               items={iconSizes}
               value={iconSize?.value}
               onChange={e => setIconSize(e)}
@@ -108,7 +104,7 @@ const IconList: React.FC<IconListProps> = props => {
               label="Kategori"
               items={categories}
               clearable
-            />
+            /> */}
           </div>
           <ul className="icon-list">
             {filteredIcons.map(([iconName, Icon]: any) => (
