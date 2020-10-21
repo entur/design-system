@@ -3,7 +3,6 @@ import {
   ValidationCheckIcon,
   ValidationErrorIcon,
   ValidationExclamationIcon,
-  ValidationInfoIcon,
 } from '@entur/icons';
 import { SubLabel } from '@entur/typography';
 import { VariantType } from './VariantProvider';
@@ -18,7 +17,7 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
     case 'error':
       return <ValidationErrorIcon className={iconClass} />;
     case 'info':
-      return <ValidationInfoIcon className={iconClass} />;
+      return null;
     case 'warning':
       return <ValidationExclamationIcon className={iconClass} />;
     default:
@@ -45,7 +44,14 @@ export const FeedbackText: React.FC<FeedbackTextProps> = ({
   ...rest
 }) => {
   return (
-    <SubLabel className={classNames('eds-feedback-text', className)} {...rest}>
+    <SubLabel
+      className={classNames(
+        'eds-feedback-text',
+        { 'eds-feedback-text--info': variant === 'info' },
+        className,
+      )}
+      {...rest}
+    >
       {!hideIcon && <AlertIcon variant={variant} />}
       {children}
     </SubLabel>

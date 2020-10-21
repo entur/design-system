@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   margin-top: $space-extra-small2;
+  &--info {
+    padding-left: calc(#{$space-medium} + #{$border-widths-medium});
+  }
 }
 
 .eds-feedback-text__icon {
