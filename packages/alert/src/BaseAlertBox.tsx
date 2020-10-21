@@ -88,7 +88,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
           'eds-alert-box__content--no-title': !title,
         })}
       >
-        {title && <p className="eds-alert-box__title">{title}</p>}
+        {title && <div className="eds-alert-box__title">{title}</div>}
         {children}
       </div>
     </div>
