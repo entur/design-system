@@ -13,5 +13,5 @@ export const useGetIcons = () => {
       }
     }
   `);
-  return query.allFile.edges;
+  return query.allFile.edges as object[];
 };

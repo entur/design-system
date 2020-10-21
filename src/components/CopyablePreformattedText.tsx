@@ -11,15 +11,22 @@ type Props = {
   children: string;
   /** Config is directly passed to addToast */
   successMessage: string;
+  isDrawer?: boolean;
 };
 
 export const CopyablePreformattedText: React.FC<Props> = ({
   children,
   successMessage,
+  isDrawer = false,
 }) => {
   const { addToast } = useToast();
   const handleClick = () => {
-    copy(children);
+    !isDrawer && copy(children);
+    isDrawer &&
+      copy(children, {
+        target: document.body.children[3].children[2]
+          .firstElementChild as HTMLElement,
+      });
     addToast({ title: 'Kopiert!', content: successMessage });
   };
   return (

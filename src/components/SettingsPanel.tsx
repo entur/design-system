@@ -58,6 +58,7 @@ const SettingsPanel: React.FC = () => {
         <form onSubmit={() => setOpen(false)}>
           <Dropdown
             label="Hva slags bruker er du?"
+            style={{ marginBottom: '1rem', marginTop: '0.5rem;' }}
             onChange={selectedItem =>
               setUserType(
                 selectedItem ? (selectedItem.value as UserType) : 'developer',
@@ -81,6 +82,7 @@ const SettingsPanel: React.FC = () => {
               }
               items={['yarn', 'npm']}
               value={packageManager}
+              style={{ marginBottom: '1rem' }}
             />
           )}
           <Dropdown

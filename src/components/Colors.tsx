@@ -204,21 +204,31 @@ const ColorDrawer: React.FC<{
       {description && <div style={{ marginTop: '1.5rem' }}>{description}</div>}
       <Heading4>Fargerverdier</Heading4>
       <Label>Variabel</Label>
-      <CopyablePreformattedText successMessage={`Kopiert til utklippstavle`}>
+      <CopyablePreformattedText
+        isDrawer
+        successMessage={`Kopiert til utklippstavle`}
+      >
         {color.variable}
       </CopyablePreformattedText>
       <Label>Hex</Label>
-      <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
+      <CopyablePreformattedText
+        isDrawer
+        successMessage={'Kopiert til utklippstavle'}
+      >
         {color.hex}
       </CopyablePreformattedText>
       <Label>RGB</Label>
-      <CopyablePreformattedText successMessage={'Kopiert til utklippstavle'}>
+      <CopyablePreformattedText
+        isDrawer
+        successMessage={'Kopiert til utklippstavle'}
+      >
         {color.rgb}
       </CopyablePreformattedText>
       {color.cmyk && (
         <>
           <Label>CMYK</Label>
           <CopyablePreformattedText
+            isDrawer
             successMessage={'Kopiert til utklippstavle'}
           >
             {color.cmyk}
