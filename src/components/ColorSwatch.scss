@@ -13,12 +13,18 @@
   &:hover {
     box-shadow: $shadows-card-shadow-hover;
   }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
 }
 
 .color-square {
   height: 10rem;
   width: 100%;
   border-radius: $border-radiuses-medium;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .color-description {
   padding: 1rem;

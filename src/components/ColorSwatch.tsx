@@ -62,7 +62,9 @@ const ColorSwatch: React.FC<Props> = ({
           style={{ backgroundColor: backgroundColor, ...style }}
         />
         <div className="color-description">
-          <Heading4 margin="none">{title}</Heading4>
+          <Heading4 margin="none" style={{ textTransform: 'capitalize' }}>
+            {title}
+          </Heading4>
           <div style={{ textTransform: 'uppercase' }}>{backgroundColor}</div>
         </div>
       </BaseCard>
