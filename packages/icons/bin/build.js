@@ -65,6 +65,7 @@ function createSvgrConfig(native = false, componentName) {
       'OstfoldIcon',
       'RuterIcon',
       'SJIcon',
+      'SkyssIcon',
       'VKTIcon',
       'VyIcon',
     ];
