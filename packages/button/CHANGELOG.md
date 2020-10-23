@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.4...@entur/button@2.3.5) (2020-10-23)
+
+### Bug Fixes
+
+- **iconbutton:** adjust size to 32px ([45dabc8](https://bitbucket.org/enturas/design-system/commits/45dabc8670fd3420088de8c523686fde86298cfd))
+
 ## [2.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.3...@entur/button@2.3.4) (2020-10-09)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.2...@entur/form@4.0.3) (2020-10-23)
+
+### Bug Fixes
+
+- **baseformcontrol:** adjust background color for readonly inputs ([94be935](https://bitbucket.org/enturas/design-system/commits/94be93517bda29e9dab2dea104ef0400a3c23de9))
+- **feedback text:** remove info icon if variant is info ([0d99020](https://bitbucket.org/enturas/design-system/commits/0d9902039b8795a696fae425eb72d33520e4ea84))
+
 ## [4.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.1...@entur/form@4.0.2) (2020-10-16)
 
 **Note:** Version bump only for package @entur/form

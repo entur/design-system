@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.0...@entur/alert@0.7.1) (2020-10-23)
+
+### Bug Fixes
+
+- **expandable alert box:** fix div descendant of p warning of title ([5581a87](https://bitbucket.org/enturas/design-system/commits/5581a870dc5fa0e9c793e9ee72b49ce55cb5effd))
+
 # [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.6.9...@entur/alert@0.7.0) (2020-10-16)
 
 ### Bug Fixes

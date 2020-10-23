@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.2.0...@entur/menu@3.3.0) (2020-10-23)
+
+### Bug Fixes
+
+- **breadcrumb:** add underline for breadcrumb items ([b9012cd](https://bitbucket.org/enturas/design-system/commits/b9012cdd3780b825858e3a9e5fec938c8b7fbe48))
+
+### Features
+
+- **paginnation:** add showingresultslabel prop ([63cf5a1](https://bitbucket.org/enturas/design-system/commits/63cf5a14f79020e47f7395aa87fc182ba4a4136e))
+
 # [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.1.4...@entur/menu@3.2.0) (2020-10-16)
 
 ### Bug Fixes
