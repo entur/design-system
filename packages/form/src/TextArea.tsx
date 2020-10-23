@@ -91,7 +91,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         setFiller && isInputFilled && setFiller(false);
       }
       if (onChange) {
-        onChange();
+        onChange(event);
       }
     };
     return (
