@@ -63,6 +63,14 @@ export type PaginationProps = {
    * @default false
    */
   hidePrevButton?: boolean;
+  /** Teksten som vises for hvilke resultater av sideantallet man viser.
+   * @default `Viser resultat ${minPage} - ${maxPage} av ${pageCount}`
+   */
+  showingResultsLabel?: (
+    minPage: number,
+    maxPage: number,
+    pageCount: number,
+  ) => string;
   [key: string]: any;
 };
 
@@ -82,6 +90,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   onResultsPerPageChange,
 
   nextPageLabel = 'Gå til neste side',
+  showingResultsLabel = (minPage, maxPage, pageCount) =>
+    `Viser resultat ${minPage} - ${maxPage} av ${pageCount}`,
   hideNextButton = false,
   hidePrevButton = false,
   ...rest
@@ -162,11 +172,13 @@ export const Pagination: React.FC<PaginationProps> = ({
             </Menu>
           )}
           <Label>
-            Viser resultat {(currentPage - 1) * resultsPerPage + 1} -{' '}
-            {currentPage * resultsPerPage > numberOfResults
-              ? numberOfResults
-              : currentPage * resultsPerPage}{' '}
-            av {numberOfResults}
+            {showingResultsLabel(
+              (currentPage - 1) * resultsPerPage + 1,
+              currentPage * resultsPerPage > numberOfResults
+                ? numberOfResults
+                : currentPage * resultsPerPage,
+              numberOfResults,
+            )}
           </Label>
         </div>
       )}

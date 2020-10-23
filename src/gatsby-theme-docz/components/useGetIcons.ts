@@ -13,5 +13,13 @@ export const useGetIcons = () => {
       }
     }
   `);
-  return query.allFile.edges as object[];
+  return query.allFile.edges as iconsQueryType[];
+};
+
+export type iconsQueryType = {
+  node: {
+    publicURL: string;
+    name: string;
+    absolutePath: string;
+  };
 };
