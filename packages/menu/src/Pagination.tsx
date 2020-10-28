@@ -71,6 +71,10 @@ export type PaginationProps = {
     maxPage: number,
     pageCount: number,
   ) => string;
+  /** Teksten som vises før "resultsPerPage"-velgeren
+   * @default "Vis"
+   */
+  showNumberOfResultsLabel?: string;
   [key: string]: any;
 };
 
@@ -89,6 +93,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   resultsPerPageOptions = [10, 25, 50],
   onResultsPerPageChange,
 
+  showNumberOfResultsLabel = 'Vis',
   nextPageLabel = 'Gå til neste side',
   showingResultsLabel = (minPage, maxPage, pageCount) =>
     `Viser resultat ${minPage} - ${maxPage} av ${pageCount}`,
@@ -140,7 +145,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             <Menu>
               {({ isOpen }) => (
                 <>
-                  <Label>Vis</Label>
+                  <Label>{showNumberOfResultsLabel}</Label>
                   <MenuButton
                     className={classNames('eds-pagination-menu__menu-button', {
                       'eds-pagination-menu__menu-button--open': isOpen,
