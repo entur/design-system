@@ -11,26 +11,18 @@ tags: dato, date, time, tid, picker
 import { Props } from 'docz';
 import { DatePicker, NativeDatePicker } from '@entur/datepicker';
 import { Playground } from '~/components/Playground';
+import { AdvancedPlayground } from '~/components/AdvancedPlayground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
 import { addDays } from 'date-fns';
+import { datepicker } from './props';
 
 <PageHeader />
 
-<Playground>
-  {() => {
-    const [date, setDate] = React.useState();
-    return (
-      <DatePicker
-        style={{ width: '15rem' }}
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        label="Velg dato"
-      />
-    );
-  }}
-</Playground>
+<AdvancedPlayground props={datepicker}>
+  <DatePicker />
+</AdvancedPlayground>
 
 ## Komponenter
 
