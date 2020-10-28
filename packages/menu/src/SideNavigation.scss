@@ -82,7 +82,7 @@
   }
 
   &--small {
-    --padding-vertical: #{$space-extra-small};
+    --padding-vertical: calc(#{$space-extra-small} + 0.1875rem);
   }
 
   // Nested sub menus
@@ -195,6 +195,7 @@
   font-size: $font-sizes-medium;
   font-family: inherit;
   font-weight: $font-weights-body;
+  height: $space-extra-large3;
   justify-content: space-between;
   letter-spacing: 1px;
   line-height: $line-heights-medium;
