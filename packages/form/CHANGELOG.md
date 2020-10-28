@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.3...@entur/form@4.0.4) (2020-10-28)
+
+### Bug Fixes
+
+- **textarea:** fix onchange bug where event is undefined ([7ca8c03](https://bitbucket.org/enturas/design-system/commits/7ca8c03cc16936f634fbc44cd1ea386461b106ae))
+
 ## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.2...@entur/form@4.0.3) (2020-10-23)
 
 ### Bug Fixes

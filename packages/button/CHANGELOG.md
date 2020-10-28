@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.5...@entur/button@2.3.6) (2020-10-28)
+
+### Bug Fixes
+
+- **floatingbutton:** adjust height of floating buttons ([6e983a9](https://bitbucket.org/enturas/design-system/commits/6e983a99fd9650a60262e173e1fd785291bd7dc2))
+
 ## [2.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.4...@entur/button@2.3.5) (2020-10-23)
 
 ### Bug Fixes

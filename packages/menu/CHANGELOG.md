@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.3.0...@entur/menu@3.4.0) (2020-10-28)
+
+### Bug Fixes
+
+- **sidenavigationitem:** adjust height ([cc3c7d8](https://bitbucket.org/enturas/design-system/commits/cc3c7d85ff1e87fbf650d1dfc70efd8a7d025afc))
+
+### Features
+
+- **pagination:** add prop for resultsPerPage label ([b58f936](https://bitbucket.org/enturas/design-system/commits/b58f93634a04216d4d2a278b3e21a648ec154e00))
+
 # [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.2.0...@entur/menu@3.3.0) (2020-10-23)
 
 ### Bug Fixes
