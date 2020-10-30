@@ -32,6 +32,12 @@
       width: 1.75rem;
     }
   }
+  .eds-switch__switch {
+    svg g, // This is to colorize every type of icon that will potentially be included
+    path {
+      fill: $colors-greys-grey;
+    }
+  }
   &__switch {
     margin-right: $space-small;
     position: relative;
@@ -42,12 +48,6 @@
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
-
-    svg g, // This is to colorize every type of icon that will potentially be included
-    path {
-      fill: $colors-greys-grey;
-    }
-
     :checked + & {
       background-color: var(--eds-switch-color);
       .eds-switch__circle {
