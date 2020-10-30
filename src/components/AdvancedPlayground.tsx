@@ -36,6 +36,7 @@ type AdvancedProps = BooleanVariant | MultiVariant | StringVariant;
 type AdvancedPlaygroundProps = {
   children: React.ReactElement;
   props: AdvancedProps[];
+  [key: string]: any;
 };
 
 function capitalize(s: string) {
@@ -144,14 +145,24 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   );
 };
 
+type ControllerProps = {
+  name: string;
+  label: string;
+  value: string;
+  setPlaygroundState: (name: string, item: string) => void;
+};
+
+type DropdownControllerProps = {
+  items: string[];
+};
 const DropdownController = ({
   name,
   label,
   items,
   value,
   setPlaygroundState,
-}) => {
-  const [item, setItem] = React.useState(value);
+}: ControllerProps & DropdownControllerProps) => {
+  const [item, setItem] = React.useState<string | null>(value);
   React.useEffect(() => {
     setPlaygroundState(name, item);
   }, [item]);
@@ -160,12 +171,17 @@ const DropdownController = ({
       label={label}
       items={items}
       value={item}
-      onChange={e => setItem(e?.value)}
+      onChange={e => setItem(e ? e.value : null)}
     ></Dropdown>
   );
 };
 
-const SwitchController = ({ name, label, value, setPlaygroundState }) => {
+const SwitchController = ({
+  name,
+  label,
+  value,
+  setPlaygroundState,
+}: ControllerProps) => {
   const [checked, setChecked] = React.useState(value);
 
   React.useEffect(() => {
@@ -183,7 +199,12 @@ const SwitchController = ({ name, label, value, setPlaygroundState }) => {
   );
 };
 
-const TextController = ({ name, label, value, setPlaygroundState }) => {
+const TextController = ({
+  name,
+  label,
+  value,
+  setPlaygroundState,
+}: ControllerProps) => {
   const [state, setState] = React.useState(value);
   React.useEffect(() => {
     setPlaygroundState(name, state);
@@ -197,13 +218,17 @@ const TextController = ({ name, label, value, setPlaygroundState }) => {
   );
 };
 
+type SegmentedControllerProps = {
+  options: string[];
+};
+
 const SegmentedController = ({
   name,
   label,
   value,
   options,
   setPlaygroundState,
-}) => {
+}: ControllerProps & SegmentedControllerProps) => {
   const [state, setstate] = React.useState(value);
   React.useEffect(() => {
     setPlaygroundState(name, state);
