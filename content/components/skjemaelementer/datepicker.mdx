@@ -11,7 +11,6 @@ tags: dato, date, time, tid, picker
 import { Props } from 'docz';
 import { DatePicker, NativeDatePicker } from '@entur/datepicker';
 import { Playground } from '~/components/Playground';
-import { AdvancedPlayground } from '~/components/AdvancedPlayground';
 import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
@@ -20,9 +19,13 @@ import { datepicker } from './props';
 
 <PageHeader />
 
-<AdvancedPlayground props={datepicker}>
-  <DatePicker />
-</AdvancedPlayground>
+<Playground
+  advanced
+  props={datepicker}
+  style={{ width: '50%', margin: '0 auto' }}
+>
+  <DatePicker></DatePicker>
+</Playground>
 
 ## Komponenter
 

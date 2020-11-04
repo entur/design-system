@@ -14,7 +14,6 @@ import { space } from '@entur/tokens';
 import { Props } from 'docz';
 import { AddIcon, CheckIcon, RightArrowIcon, ForwardIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
-import { AdvancedPlayground } from '~/components/AdvancedPlayground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -25,9 +24,9 @@ import { flytendeknapper } from './props';
 
 <PageHeader />
 
-<AdvancedPlayground props={flytendeknapper}>
+<Playground advanced props={flytendeknapper}>
   <FloatingButton></FloatingButton>
-</AdvancedPlayground>
+</Playground>
 
 ## Komponenter
 

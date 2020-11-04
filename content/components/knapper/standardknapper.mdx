@@ -24,7 +24,6 @@ import { ImportStatement } from '~/components/ImportStatement';
 import ComponentPresenter from '~/components/ComponentPresenter';
 import ComponentRuler from '~/components/ComponentRuler';
 import { Playground } from '~/components/Playground';
-import { AdvancedPlayground } from '~/components/AdvancedPlayground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
@@ -32,9 +31,9 @@ import { standardknapper } from './props';
 
 <PageHeader />
 
-<AdvancedPlayground props={standardknapper}>
+<Playground props={standardknapper} advanced>
   <Button></Button>
-</AdvancedPlayground>
+</Playground>
 
 ## Komponenter
 

@@ -19,7 +19,7 @@ export const standardknapper = [
   },
   {
     name: 'size',
-    options: ['small', 'medium'],
+    options: ['medium', 'large'],
     defaultValue: 'medium',
     type: 'dropdown',
   },
