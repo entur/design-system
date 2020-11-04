@@ -1,13 +1,18 @@
 import { Dropdown } from '@entur/dropdown';
+import { BaseExpand } from '@entur/expand';
 import {
   SegmentedChoice,
   SegmentedControl,
   Switch,
   TextField,
 } from '@entur/form';
+import { SourceCodeIcon } from '@entur/icons';
+import { BaseCard } from '@entur/layout';
 import { Heading5 } from '@entur/typography';
 import classNames from 'classnames';
 import React from 'react';
+import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
+import prismTheme from '~/components/prism-theme';
 import './AdvancedPlayground.scss';
 
 type BooleanVariant = {
@@ -34,7 +39,6 @@ type StringVariant = {
 type AdvancedProps = BooleanVariant | MultiVariant | StringVariant;
 
 type AdvancedPlaygroundProps = {
-  children: React.ReactElement;
   props: AdvancedProps[];
   [key: string]: any;
 };
@@ -44,15 +48,20 @@ function capitalize(s: string) {
 }
 
 export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
-  children,
   props,
+  code: __code,
+  scope,
 }) => {
+  const componentName = /([A-Z][a-z]+)+/.exec(__code)[0];
+
   const [isContrast, setContrast] = React.useState(false);
+  const [code, setCode] = React.useState<string>(__code);
+  const [showCode, setShowCode] = React.useState(false);
   const [propState, setPropState] = React.useState(
     props.map(p => {
       let name = p.name;
       let df = p.defaultValue;
-      return { [name]: { [name]: df } };
+      return { [name]: df };
     }),
   );
 
@@ -60,88 +69,154 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
     let prevState = propState;
     setPropState(
       prevState.map(prev => {
-        return Object.keys(prev)[0] === name
-          ? { [name]: { [name]: value } }
-          : prev;
+        return Object.keys(prev)[0] === name ? { [name]: value } : prev;
       }),
     );
   };
 
+  React.useEffect(() => {
+    const FormatChildren = (code: string) => {
+      // Regex for alle typer innhold til children
+      const childrenRegex = new RegExp(`>(([A-Za-z0-9\\s\\S])+)?<`);
+      const childrenContent = propState.find(prop => prop['children']);
+      return code.replace(
+        childrenRegex,
+        `>${childrenContent?.children ? childrenContent.children : ''}<`,
+      );
+    };
+    // eslint-disable-next-line no-useless-escape
+    const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>)`;
+    const componentPropsRegex = new RegExp(pattern);
+    const propString = Object.entries(props)
+      .reduce((accumulator, [_, value]) => {
+        if (value.name === 'children') {
+          return accumulator;
+        }
+        const thisone = propState.find(prop => {
+          return prop[value.name];
+        });
+
+        if (value.type === 'boolean' && thisone !== undefined) {
+          return `${accumulator} ${value.name}`;
+        }
+        if (thisone !== undefined) {
+          return `${accumulator} ${value.name}="${thisone[value.name]}"`;
+        }
+        return accumulator;
+      }, '')
+      .concat('');
+
+    setCode(prev => {
+      const codeWithProps = prev.replace(
+        componentPropsRegex,
+        `<${componentName}${propString}>`,
+      );
+
+      return FormatChildren(codeWithProps);
+    });
+  }, [propState]);
+
+  const transformCode = (codeToTransform: string) => {
+    if (codeToTransform.startsWith('()') || codeToTransform.startsWith('class'))
+      return codeToTransform;
+    return `<React.Fragment>${codeToTransform}</React.Fragment>`;
+  };
+
   return (
-    <div className="eds-advanced__wrapper">
-      <div
-        className={classNames('eds-advanced__playground', {
-          'eds-contrast': isContrast,
-        })}
-      >
-        {React.cloneElement(
-          children,
-          Object.assign(
-            ...propState.map(props => props[Object.keys(props)[0]]),
-          ),
-        )}
+    <LiveProvider
+      scope={scope}
+      code={code}
+      transformCode={transformCode}
+      theme={prismTheme}
+    >
+      <div className="eds-advanced__wrapper">
+        <div
+          className={classNames('eds-advanced__playground', {
+            'eds-contrast': isContrast,
+          })}
+        >
+          <LivePreview className="eds-advanced__playground-live-preview"></LivePreview>
+        </div>
+        <Switch
+          className={classNames('eds-advanced__contrast-switch', {
+            'eds-contrast': isContrast,
+          })}
+          name="contrast"
+          checked={isContrast}
+          onChange={() => setContrast(prev => !prev)}
+        >
+          Contrast
+        </Switch>
+        <div className="eds-advanced__props">
+          <Heading5 as="div" margin="bottom">
+            Props
+          </Heading5>
+          {props.map(p => {
+            if (p.type === 'string') {
+              return (
+                <TextController
+                  key={p.name}
+                  name={p.name}
+                  label={p.label ? p.label : p.name}
+                  value={p.defaultValue}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            } else if (p.type === 'boolean') {
+              return (
+                <SwitchController
+                  key={p.name}
+                  name={p.name}
+                  label={p.label ? p.label : capitalize(p.name)}
+                  value={p.defaultValue}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            } else if (p.type === 'dropdown') {
+              return (
+                <DropdownController
+                  key={p.name}
+                  name={p.name}
+                  items={p.options}
+                  label={p.label ? p.label : capitalize(p.name)}
+                  value={p.defaultValue}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            } else if (p.type === 'segmented') {
+              return (
+                <SegmentedController
+                  key={p.name}
+                  name={p.name}
+                  options={p.options}
+                  value={p.defaultValue}
+                  label={p.label ? p.label : capitalize(p.name)}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            }
+          })}
+        </div>
       </div>
-      <Switch
-        className={classNames('eds-advanced__contrast-switch', {
-          'eds-contrast': isContrast,
-        })}
-        name="contrast"
-        checked={isContrast}
-        onChange={() => setContrast(prev => !prev)}
-      >
-        Contrast
-      </Switch>
-      <div className="eds-advanced__props">
-        <Heading5 as="div" margin="bottom">
-          Props
-        </Heading5>
-        {props.map(p => {
-          if (p.type === 'string') {
-            return (
-              <TextController
-                key={p.name}
-                name={p.name}
-                label={p.label ? p.label : p.name}
-                value={p.defaultValue}
-                setPlaygroundState={handleChange}
-              />
-            );
-          } else if (p.type === 'boolean') {
-            return (
-              <SwitchController
-                key={p.name}
-                name={p.name}
-                label={p.label ? p.label : capitalize(p.name)}
-                value={p.defaultValue}
-                setPlaygroundState={handleChange}
-              />
-            );
-          } else if (p.type === 'dropdown') {
-            return (
-              <DropdownController
-                key={p.name}
-                name={p.name}
-                items={p.options}
-                label={p.label ? p.label : capitalize(p.name)}
-                value={p.defaultValue}
-                setPlaygroundState={handleChange}
-              />
-            );
-          } else if (p.type === 'segmented') {
-            return (
-              <SegmentedController
-                key={p.name}
-                name={p.name}
-                options={p.options}
-                value={p.defaultValue}
-                label={p.label ? p.label : capitalize(p.name)}
-                setPlaygroundState={handleChange}
-              />
-            );
-          }
-        })}
+      <div className="eds-advanced__show-code-wrapper">
+        <BaseCard className="eds-advanced__show-code">
+          <button
+            className="eds-advanced__show-code-button"
+            onClick={() => setShowCode(prev => !prev)}
+          >
+            <SourceCodeIcon /> Vis kode
+          </button>
+          <div style={{ width: '100%' }}>
+            <BaseExpand open={showCode}>
+              <LiveEditor
+                className="eds-advanced__code"
+                onChange={updatedCode => setCode(updatedCode)}
+              ></LiveEditor>
+            </BaseExpand>
+          </div>
+        </BaseCard>
       </div>
-    </div>
+    </LiveProvider>
   );
 };
 
@@ -240,7 +315,9 @@ const SegmentedController = ({
       selectedValue={state}
     >
       {options.map(option => (
-        <SegmentedChoice value={option}>{option}</SegmentedChoice>
+        <SegmentedChoice key={option + label} value={option}>
+          {option}
+        </SegmentedChoice>
       ))}
     </SegmentedControl>
   );
