@@ -19,12 +19,18 @@ import { datepicker } from './props';
 
 <PageHeader />
 
-<Playground
-  advanced
-  props={datepicker}
-  style={{ width: '50%', margin: '0 auto' }}
->
-  <DatePicker></DatePicker>
+<Playground style={{ width: '50%', margin: '0 auto' }}>
+  {() => {
+    const [date, setDate] = React.useState();
+    return (
+      <DatePicker
+        style={{ width: '15rem' }}
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        label="Velg dato"
+      />
+    );
+  }}
 </Playground>
 
 ## Komponenter
