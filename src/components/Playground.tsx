@@ -95,7 +95,12 @@ export const Playground: React.FC<PlaygroundProps> = ({
     );
   } else {
     return (
-      <AdvancedPlayground code={__code} scope={__scope} props={props}>
+      <AdvancedPlayground
+        code={__code}
+        scope={__scope}
+        props={props}
+        style={style}
+      >
         <Button></Button>
       </AdvancedPlayground>
     );

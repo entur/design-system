@@ -51,6 +51,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   props,
   code: __code,
   scope,
+  style,
 }) => {
   const componentName = /([A-Z][a-z]+)+/.exec(__code)[0];
 
@@ -76,13 +77,17 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
 
   React.useEffect(() => {
     const FormatChildren = (code: string) => {
-      // Regex for alle typer innhold til children
-      const childrenRegex = new RegExp(`>(([A-Za-z0-9\\s\\S])+)?<`);
       const childrenContent = propState.find(prop => prop['children']);
-      return code.replace(
-        childrenRegex,
-        `>${childrenContent?.children ? childrenContent.children : ''}<`,
-      );
+      if (childrenContent) {
+        // Regex for alle typer innhold til children
+        const childrenRegex = new RegExp(`>(([A-Za-z0-9\\s\\S])+)?<`);
+        return code.replace(
+          childrenRegex,
+          `>${childrenContent?.children ? childrenContent.children : ''}<`,
+        );
+      } else {
+        return code;
+      }
     };
     // eslint-disable-next-line no-useless-escape
     const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>)`;
@@ -135,7 +140,10 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
             'eds-contrast': isContrast,
           })}
         >
-          <LivePreview className="eds-advanced__playground-live-preview"></LivePreview>
+          <LivePreview
+            style={style}
+            className="eds-advanced__playground-live-preview"
+          ></LivePreview>
         </div>
         <Switch
           className={classNames('eds-advanced__contrast-switch', {
