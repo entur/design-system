@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { BaseSkeleton } from './BaseSkeleton';
 export type SkeletonRectangleProps = {
@@ -7,11 +7,11 @@ export type SkeletonRectangleProps = {
   /** Bredden til komponenten. Er 100% som default.
    * @default '100%'
    */
-  width?: CSSProperties;
+  width?: string | number;
   /** Høyden til komponenten. 1rem som default.
    * @default '1rem'
    */
-  height?: CSSProperties;
+  height?: string | number;
   [key: string]: any;
 };
 
