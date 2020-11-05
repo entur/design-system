@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.0...@entur/icons@1.15.1) (2020-11-05)
+
+### Bug Fixes
+
+- **typings:** add number as possibility for size, width and height props ([a22081f](https://bitbucket.org/enturas/design-system/commits/a22081fdc6360be9d98649586d4e94573dc8c235))
+
 # [1.15.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.14.0...@entur/icons@1.15.0) (2020-10-23)
 
 ### Features

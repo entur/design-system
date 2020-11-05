@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.31](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.30...@entur/loader@0.3.31) (2020-11-05)
+
+### Bug Fixes
+
+- **baseskeleton:** declare style as a required prop ([fd58ebd](https://bitbucket.org/enturas/design-system/commits/fd58ebda5987c3c0b92282942c16325159e71fc7))
+- **skeletoncircle:** improve typings for size prop ([be80713](https://bitbucket.org/enturas/design-system/commits/be8071346a55b9311c2dcdfd5141ae6c13f3619e))
+- **skeletonrectangle:** improve typings for props width and height ([3c92baa](https://bitbucket.org/enturas/design-system/commits/3c92baa2e6b8c55227bc6db974a736f53d33a595))
+
 ## [0.3.30](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.29...@entur/loader@0.3.30) (2020-10-23)
 
 **Note:** Version bump only for package @entur/loader

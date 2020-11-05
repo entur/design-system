@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.4...@entur/form@4.0.5) (2020-11-05)
+
+### Bug Fixes
+
+- **switch:** improve css specificity to avoid icon color bug ([63a984f](https://bitbucket.org/enturas/design-system/commits/63a984f21f223b8f24f03b54a9bec433a6a005ed))
+
 ## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.3...@entur/form@4.0.4) (2020-10-28)
 
 ### Bug Fixes
