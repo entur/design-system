@@ -15,10 +15,11 @@ import { ImportStatement } from '~/components/ImportStatement';
 import { addWeeks } from 'date-fns';
 import PageHeader from '~/components/PageHeader';
 import { addDays } from 'date-fns';
+import { datepicker } from './props';
 
 <PageHeader />
 
-<Playground>
+<Playground style={{ width: '50%', margin: '0 auto' }}>
   {() => {
     const [date, setDate] = React.useState();
     return (

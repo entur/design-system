@@ -27,36 +27,12 @@ import { Playground } from '~/components/Playground';
 import doPic from './ButtonDo.png';
 import dontPic from './ButtonDont.png';
 import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
+import { standardknapper } from './props';
 
 <PageHeader />
 
-<Playground>
-  {() => {
-    const [loading, setLoading] = React.useState(null);
-    const getLoadingProps = name => ({
-      loading: loading === name,
-      onClick: () => setLoading(prev => (prev === name ? null : name)),
-    });
-    return (
-      <ButtonGroup
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <PrimaryButton {...getLoadingProps('primary')}>Lagre</PrimaryButton>
-        <SecondaryButton {...getLoadingProps('secondary')}>
-          Avbryt
-        </SecondaryButton>
-        <SuccessButton {...getLoadingProps('success')}>Kjøp</SuccessButton>
-        <NegativeButton {...getLoadingProps('negative')}>
-          Slett konto
-        </NegativeButton>
-        <TertiaryButton>Legg til</TertiaryButton>
-      </ButtonGroup>
-    );
-  }}
+<Playground props={standardknapper} advanced>
+  <Button></Button>
 </Playground>
 
 ## Komponenter

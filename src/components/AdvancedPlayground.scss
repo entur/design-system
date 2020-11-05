@@ -1,0 +1,71 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-advanced {
+  &__wrapper {
+    display: flex;
+    height: max-content;
+    position: relative;
+  }
+  &__playground {
+    border: $border-widths-medium solid $colors-greys-grey30;
+    width: 70%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: $space-extra-small;
+    &-live-preview {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // prevents chrome from moving page around the component
+      overflow-anchor: none;
+    }
+  }
+  &__props {
+    width: 30%;
+    height: 100%;
+    background: $colors-greys-grey30;
+    padding: $space-large;
+    .eds-h5 {
+      margin-bottom: $space-large;
+    }
+    > div {
+      margin-bottom: $space-small;
+    }
+  }
+  &__contrast-switch {
+    position: absolute;
+    top: $space-medium;
+    left: $space-large;
+  }
+  &__show-code {
+    &-wrapper {
+      margin-top: $space-extra-small;
+    }
+    display: flex;
+    flex-direction: column;
+    &-button {
+      appearance: none;
+      background: none;
+      border: none;
+      color: $colors-brand-blue;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: $font-sizes-large;
+      padding: $space-default;
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+      &:focus {
+        outline: none;
+        box-shadow: $shadows-focus;
+      }
+    }
+  }
+  &__code {
+    border-top: $border-widths-small solid $colors-greys-grey20;
+    width: 100%;
+  }
+}

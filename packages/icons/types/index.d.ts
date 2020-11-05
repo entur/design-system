@@ -13,12 +13,12 @@ export declare type IconProps = {
    * @default false
    */
   inline?: boolean;
-  /**Størrelse til ikonet. Trumfer `width` og `size`  */
-  size?: string;
-  /** Bredde til ikonet (i px, em o.l.) */
-  width?: string;
-  /** Høden til ikonet (i px, em o.l.) */
-  height?: string;
+  /**Størrelse til ikonet. Trumfer `width` og `height`  */
+  size?: string | number;
+  /** Bredde til ikonet. Streng tar CSS-verdier, tall blir kalkulert som pixler */
+  width?: string | number;
+  /** Høyden til ikonet. Streng tar CSS-verdier, tall blir kalkulert som pixler */
+  height?: string | number;
   /** Overskriver fargen til ikonet */
   color?: string;
   [key: string]: any;

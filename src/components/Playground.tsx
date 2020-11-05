@@ -7,6 +7,8 @@ import { Contrast } from '@entur/layout';
 import prismTheme from '~/components/prism-theme';
 import './Playground.scss';
 import { ExpandableTextButton, BaseExpand } from '@entur/expand/src';
+import { AdvancedPlayground } from './AdvancedPlayground';
+import { Button } from '@entur/button';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -29,6 +31,8 @@ export const Playground: React.FC<PlaygroundProps> = ({
   __code,
   __scope,
   language,
+  advanced = false,
+  props,
 }) => {
   const [isContrast, setContrast] = React.useState(defaultContrast);
   const [isShowingEditor, setShowingEditor] = React.useState(defaultShowEditor);
@@ -47,54 +51,58 @@ export const Playground: React.FC<PlaygroundProps> = ({
       <div className="playground">{children}</div>
     );
 
-  return (
-    <LiveProvider
-      code={__code}
-      scope={__scope}
-      language={language}
-      transformCode={transformCode}
-      theme={prismTheme}
-    >
-      <ConditionalWrapper
-        condition={isContrast}
-        wrapper={(children: React.ReactNode) => (
-          <Contrast className="playground">{children}</Contrast>
-        )}
+  if (!advanced) {
+    return (
+      <LiveProvider
+        code={__code}
+        scope={__scope}
+        language={language}
+        transformCode={transformCode}
+        theme={prismTheme}
       >
-        <LivePreview style={{ ...style }} />
-      </ConditionalWrapper>
-      <div className="playground__controls">
-        {hideContrastOption ? (
-          <div />
-        ) : (
-          <Switch
-            checked={isContrast}
-            onChange={() => setContrast(prev => !prev)}
-          >
-            <Label as="span">Kontrast</Label>
-          </Switch>
-        )}
-        <div>
-          {/* <SubLabel
-            className="playground__control"
-            as="button"
-            type="button"
-            onClick={() => setShowingEditor(prev => !prev)}
-          >
-            <SourceCodeIcon inline={true} /> {isShowingEditor ? 'Skjul' : 'Vis'}{' '}
-            kode
-          </SubLabel> */}
-          <ExpandableTextButton
-            open={isShowingEditor}
-            onToggle={() => setShowingEditor(prev => !prev)}
-          >
-            Kode
-          </ExpandableTextButton>
+        <ConditionalWrapper
+          condition={isContrast}
+          wrapper={(children: React.ReactNode) => (
+            <Contrast className="playground">{children}</Contrast>
+          )}
+        >
+          <LivePreview style={{ ...style }} />
+        </ConditionalWrapper>
+        <div className="playground__controls">
+          {hideContrastOption ? (
+            <div />
+          ) : (
+            <Switch
+              checked={isContrast}
+              onChange={() => setContrast(prev => !prev)}
+            >
+              <Label as="span">Kontrast</Label>
+            </Switch>
+          )}
+          <div>
+            <ExpandableTextButton
+              open={isShowingEditor}
+              onToggle={() => setShowingEditor(prev => !prev)}
+            >
+              Kode
+            </ExpandableTextButton>
+          </div>
         </div>
-      </div>
-      <BaseExpand open={isShowingEditor}>
-        <LiveEditor className="playground__editor" />
-      </BaseExpand>
-    </LiveProvider>
-  );
+        <BaseExpand open={isShowingEditor}>
+          <LiveEditor className="playground__editor" />
+        </BaseExpand>
+      </LiveProvider>
+    );
+  } else {
+    return (
+      <AdvancedPlayground
+        code={__code}
+        scope={__scope}
+        props={props}
+        style={style}
+      >
+        <Button></Button>
+      </AdvancedPlayground>
+    );
+  }
 };

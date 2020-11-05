@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { BaseSkeleton } from './BaseSkeleton';
 
@@ -8,7 +8,7 @@ export type SkeletonCircleProps = {
   /** Høyde og bredde av sirkelen. 1rem som default
    * @default '1rem'
    */
-  size: CSSProperties;
+  size: string | number;
   [key: string]: any;
 };
 

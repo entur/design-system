@@ -20,35 +20,12 @@ import { BestPractices, Example } from '~/components/BestPractices';
 import FabExample from './FabExample.png';
 import FabDo from './FabDo.png';
 import FabDont from './FabDont.png';
+import { flytendeknapper } from './props';
 
 <PageHeader />
 
-<Playground
-  style={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '0 10%',
-  }}
->
-  <FloatingButton
-    aria-label="Legg til"
-    onClick={() => {}}
-    style={{ marginRight: space.large }}
-  >
-    <ForwardIcon />
-  </FloatingButton>
-  <FloatingButton
-    size="small"
-    aria-label="Legg til"
-    onClick={() => {}}
-    style={{ marginRight: space.large }}
-  >
-    <ForwardIcon />
-  </FloatingButton>
-  <FloatingButton aria-label="Lage favoritt" onClick={() => {}}>
-    Neste side <ForwardIcon />
-  </FloatingButton>
+<Playground advanced props={flytendeknapper}>
+  <FloatingButton></FloatingButton>
 </Playground>
 
 ## Komponenter
