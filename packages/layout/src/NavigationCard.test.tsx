@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { NavigationCard } from '.';
+import { NavigationCard } from './NavigationCard';
 
 test('CardBox renders properly, and takes additional class and parameters', () => {
   const testUrl = 'https://www.entur.org/';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Contrast } from '.';
+import { Contrast } from './Contrast';
 
 test('Contrast component adds the eds-contrast class', () => {
   const { container } = render(
