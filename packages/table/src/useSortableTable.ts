@@ -1,4 +1,5 @@
 import React from 'react';
+import get from 'lodash.get';
 
 export type ExternalSortConfig = {
   /**
@@ -34,9 +35,9 @@ export function useSortableData<T>(
       return tableCopy;
     }
     return [...rawData].sort((a: any, b: any) => {
-      if (a[sortConfig.key] < b[sortConfig.key]) {
+      if (get(a, sortConfig.key) < get(b, sortConfig.key)) {
         return sortConfig.order === 'ascending' ? -1 : 1;
-      } else if (a[sortConfig.key] > b[sortConfig.key]) {
+      } else if (get(a, sortConfig.key) > get(b, sortConfig.key)) {
         return sortConfig.order === 'ascending' ? 1 : -1;
       } else {
         return 0;
