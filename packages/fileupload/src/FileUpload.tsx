@@ -1,5 +1,10 @@
 import React, { EffectCallback } from 'react';
-import { useDropzone, DropzoneOptions } from 'react-dropzone';
+import {
+  useDropzone,
+  DropzoneOptions,
+  FileRejection,
+  DropEvent,
+} from 'react-dropzone';
 import { FileIcon, DeleteIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Label } from '@entur/typography';
@@ -24,7 +29,11 @@ type FileUploadProps = DropzoneOptions & {
    */
   errorUpload?: boolean;
   /** Callback for når en fil legges til */
-  onDrop: EffectCallback;
+  onDrop?<T extends File>(
+    acceptedFiles: T[],
+    fileRejections: FileRejection[],
+    event: DropEvent,
+  ): void;
   /** Callback for når en fil slettes fra lista */
   onDelete: (file: File) => void;
   /** Hvilken filtyper som skal aksepteres */
