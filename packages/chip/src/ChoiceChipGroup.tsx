@@ -9,7 +9,7 @@ export type ChoiceChipGroupProps = {
   /** ChoiceChip-komponentene sendes inn som children */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en ChoiceChip klikkes på  */
-  onChange: (e: React.ChangeEvent) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
 };
 
