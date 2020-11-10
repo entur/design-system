@@ -64,7 +64,10 @@ exports.sourceNodes = async ({ actions: { createNode } }) => {
         version: result['dist-tags'].latest,
         internal: {
           type: 'NpmPackage',
-          contentDigest: crypto.createHash(`md5`).update(package).digest(`hex`),
+          contentDigest: crypto
+            .createHash(`md5`)
+            .update(result['dist-tags'].latest)
+            .digest(`hex`),
         },
       });
     }),
