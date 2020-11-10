@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.1.3...@entur/table@4.2.0) (2020-11-10)
+
+### Features
+
+- **sortable data:** add support for nested object in sort key ([41c108d](https://bitbucket.org/enturas/design-system/commits/41c108dc378faefa9b65d3fbc24a0738c42404ec))
+
 ## [4.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.1.2...@entur/table@4.1.3) (2020-11-05)
 
 **Note:** Version bump only for package @entur/table

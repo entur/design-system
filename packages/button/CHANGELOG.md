@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.7](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.6...@entur/button@2.3.7) (2020-11-10)
+
+### Bug Fixes
+
+- **floating button:** adjust horizontal padding ([857bdee](https://bitbucket.org/enturas/design-system/commits/857bdee64bbfcf13bd1ee6dc0eee39da1c4995d1))
+
 ## [2.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.5...@entur/button@2.3.6) (2020-10-28)
 
 ### Bug Fixes

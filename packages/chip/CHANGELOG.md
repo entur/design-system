@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.38](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.37...@entur/chip@0.3.38) (2020-11-10)
+
+### Bug Fixes
+
+- **choice chip:** improve typing of onchange prop ([e790234](https://bitbucket.org/enturas/design-system/commits/e79023473e27c2c21016cb6394070a2ce8cd6f89))
+
 ## [0.3.37](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.36...@entur/chip@0.3.37) (2020-11-05)
 
 **Note:** Version bump only for package @entur/chip

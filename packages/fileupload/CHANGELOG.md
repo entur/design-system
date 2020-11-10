@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.15](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.14...@entur/fileupload@0.3.15) (2020-11-10)
+
+### Bug Fixes
+
+- **fileupload:** improve typing for onDrop prop ([29005c0](https://bitbucket.org/enturas/design-system/commits/29005c0a37dd2ad2c539072a0b22741ab98b6a3c))
+
 ## [0.3.14](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.13...@entur/fileupload@0.3.14) (2020-11-05)
 
 **Note:** Version bump only for package @entur/fileupload
