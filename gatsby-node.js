@@ -50,17 +50,18 @@ exports.onPreBootstrap = ({}) => {
   fs.copySync('../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
 
-exports.sourceNodes = async ({ actions: { createNode } }) => {
+exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
   // get data from GitHub API at build time
   await Promise.all(
     packages.map(async (package, index) => {
       const data = await fetch(`https://registry.npmjs.org/@entur/${package}`);
       const result = await data.json();
+      console.log(createNodeId(package));
       createNode({
         name: package,
         parent: `__SOURCE__`,
         children: [],
-        id: package + index,
+        id: createNodeId(package),
         version: result['dist-tags'].latest,
         internal: {
           type: 'NpmPackage',
