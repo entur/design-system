@@ -56,7 +56,6 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
     packages.map(async (package, index) => {
       const data = await fetch(`https://registry.npmjs.org/@entur/${package}`);
       const result = await data.json();
-      console.log(createNodeId(package));
       createNode({
         name: package,
         parent: `__SOURCE__`,
