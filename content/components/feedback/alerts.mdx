@@ -22,44 +22,14 @@ import {
   SmallAlertBox,
   useToast,
   SmallExpandableAlertBox,
+  BannerExpandableAlertBox,
 } from '@entur/alert';
+import { bannerAlerts } from './props';
 
 <PageHeader />
 
-<Playground>
-  <BannerAlertBox
-    variant="info"
-    title="Vi bruker informasjonskapsler"
-    closable={true}
-    style={{ marginBottom: '1em' }}
-  >
-    Ved å bruke denne siden godtar du at vi bruker informasjonskapsler.
-  </BannerAlertBox>
-  <BannerAlertBox
-    variant="success"
-    title="Systemene våre er oppe igjen!"
-    closable={true}
-    style={{ marginBottom: '1em' }}
-  >
-    Etter planlagt nedetid, er systemene våre igjen 100 % operasjonelle!
-  </BannerAlertBox>
-  <BannerAlertBox
-    variant="warning"
-    title="Buss for trikk"
-    closable={true}
-    style={{ marginBottom: '1em' }}
-  >
-    Gjelder mellom Holbergsplass og Jernbanetorget.
-  </BannerAlertBox>
-  <BannerAlertBox
-    variant="error"
-    title="Kjøp kan ikke gjennomføres nå"
-    closable={true}
-    style={{ marginBottom: '1em' }}
-  >
-    Vi har et teknisk problem akkurat nå. Kjøpsløsningen for billetter fungerer
-    ikke.
-  </BannerAlertBox>
+<Playground advanced props={bannerAlerts}>
+  <BannerAlertBox></BannerAlertBox>
 </Playground>
 
 ## Komponenter
@@ -213,13 +183,13 @@ Av og til vil du vise meldinger som gjerne inneholder mer informasjon, som du ik
 Da kan man bruke `SmallExpandableAlertBox` eller `BannerExpandableAlertBox` for å vise en tittel, og ekstra informasjon skjult bak en ekspanderbart seksjon.
 
 <Playground style={{ width: '62%', margin: '0 auto' }}>
-  <SmallExpandableAlertBox
+  <BannerExpandableAlertBox
     variant="error"
     title="Kjøpet kunne ikke gjennomføres!"
   >
     Vi har et teknisk problem akkurat nå. Kjøpsløsningen for billetter fungerer
     ikke.
-  </SmallExpandableAlertBox>
+  </BannerExpandableAlertBox>
 </Playground>
 
 ## Retningslinjer
