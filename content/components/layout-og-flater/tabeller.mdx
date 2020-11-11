@@ -50,6 +50,10 @@ import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { DatePicker } from '@entur/datepicker';
 import { colors } from '@entur/tokens';
+import { useState } from 'react';
+import { TertiaryButton } from '@entur/button';
+import { Dropdown } from '@entur/dropdown';
+import { GridContainer, GridItem } from '@entur/grid';
 
 <PageHeader />
 
@@ -1025,8 +1029,147 @@ Ved å klikke på krysset til et valgt filter, fjernes den enkelt og siden oppda
 
 <Playground>
   {() => {
-    return <div />;
-  }}
+  const data = [
+    {
+      nameId: 'Kari Nordmann',
+      checkpointId: '21739427',
+      location: 'Entur admin',
+      channel: 'MT',
+      open: '16.04.20',
+      closed: 'Åpen',
+    },
+    {
+      nameId: 'Rolf Svendsen',
+      checkpointId: '95739438',
+      location: 'Oslo S',
+      channel: 'Entur Sørvis',
+      open: '12.04.20',
+      closed: '20.10.20',
+    },
+    {
+      nameId: 'Robert Jensen',
+      checkpointId: '62129459',
+      location: 'Oslo S',
+      channel: 'Entur Sørvis',
+      open: '19.04.20',
+      closed: '06.08.20',
+    },
+    {
+      nameId: 'Karl Jacobsen',
+      checkpointId: '41423492',
+      location: 'Trondheim S',
+      channel: 'Entur Sørvis',
+      open: '25.03.20',
+      closed: 'Åpen',
+    },
+    {
+      nameId: 'Leonora Sivertsen',
+      checkpointId: '22857411',
+      location: 'Entur Admin',
+      channel: 'MT',
+      open: '08.02.20',
+      closed: '13.10.20',
+    },
+    {
+      nameId: 'Anne Johnsen',
+      checkpointId: '84793913',
+      location: 'Oslo S',
+      channel: 'MT',
+      open: '10.06.20',
+      closed: 'Åpen',
+    },
+  ];
+  const [nameId, setNameId] = useState('');
+  const [saleLocation, setSaleLocation] = useState(null);
+  const [channel, setChannel] = useState(null);
+  const [filteredData, setFilteredData] = useState(data);
+
+  const resetFilters = () => {
+    setNameId('');
+    setSaleLocation(null);
+    setChannel(null);
+  };
+  const rowFilter = row => {
+    const nameFilter = nameId === '' || row.name === nameId;
+    const saleLocationFilter =
+      saleLocation === null || row.location === saleLocation;
+    const channelFilter = channel === null || row.channel === saleLocation;
+    return nameFilter && saleLocationFilter && channelFilter;
+  };
+  React.useEffect(() => {
+    const filtered = data.filter(row => rowFilter(row));
+    console.log(filtered);
+
+    setFilteredData(filtered);
+  }, [nameId, saleLocation, channel]);
+  return (
+    <div>
+      <GridContainer spacing="small">
+        <GridItem small={3}>
+          <TextField
+            label="Søk på navn"
+            value={nameId}
+            onChange={e => setNameId(e.target.value)}
+          />
+        </GridItem>
+        <GridItem small={3}>
+          <Dropdown
+            value={saleLocation}
+            items={['Entur Admin', 'Oslo S', 'Trondheim S']}
+            onChange={e => setSaleLocation(e.value)}
+            label="Velg salgssted"
+            clearable
+          />
+        </GridItem>
+        <GridItem small={3}>
+          <Dropdown
+            value={channel}
+            items={['Entur Sørvis', 'MT']}
+            onChange={e => setChannel(e.value)}
+            clearable
+            label="Velg salgskanal"
+          />
+        </GridItem>
+        <GridItem
+          small={3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <TertiaryButton onClick={() => resetFilters()}>
+            Nullstill
+          </TertiaryButton>
+        </GridItem>
+      </GridContainer>
+      <Table style={{ marginTop: '2rem' }}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell>Intern ID</HeaderCell>
+            <HeaderCell>Kassepunkt ID</HeaderCell>
+            <HeaderCell>Salgssted</HeaderCell>
+            <HeaderCell>Salgskanal</HeaderCell>
+            <HeaderCell>Åpnet</HeaderCell>
+            <HeaderCell>Lukket</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {filteredData.map(item => (
+            <TableRow>
+              <DataCell>{item.nameId}</DataCell>
+              <DataCell>{item.checkpointId}</DataCell>
+              <DataCell>{item.location}</DataCell>
+              <DataCell>{item.channel}</DataCell>
+              <DataCell>{item.open}</DataCell>
+              <DataCell>{item.closed}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}}
 </Playground>
 
 ### Avansert filter
@@ -1041,4 +1184,4 @@ De valgte filtrene er også merket med Tags Chips over tabellen.
   {() => {
     return <div />;
   }}
-</Playground> -->
+</Playground>{' '} -->
