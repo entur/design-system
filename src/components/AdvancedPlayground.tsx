@@ -6,7 +6,12 @@ import {
   Switch,
   TextField,
 } from '@entur/form';
-import { SourceCodeIcon } from '@entur/icons';
+import {
+  SourceCodeIcon,
+  AddIcon,
+  BellIcon,
+  DestinationIcon,
+} from '@entur/icons';
 import { BaseCard } from '@entur/layout';
 import { Heading5 } from '@entur/typography';
 import classNames from 'classnames';
@@ -36,7 +41,19 @@ type StringVariant = {
   label?: string;
 };
 
-type AdvancedProps = BooleanVariant | MultiVariant | StringVariant;
+type IconVariant = {
+  name: string;
+  type: 'icon';
+  label?: string;
+  defaultValue: 'BellIcon';
+  options: ['AddIcon', 'BellIcon', 'DestinationIcon'];
+};
+
+export type AdvancedProps =
+  | BooleanVariant
+  | MultiVariant
+  | StringVariant
+  | IconVariant;
 
 type AdvancedPlaygroundProps = {
   props: AdvancedProps[];
@@ -101,6 +118,9 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
           return prop[value.name];
         });
 
+        if (value.type === 'icon' && thisone !== undefined) {
+          return `${accumulator} ${value.name}={<${thisone[value.name]}/>}`;
+        }
         if (value.type === 'boolean' && thisone !== undefined) {
           return `${accumulator} ${value.name}`;
         }
@@ -127,9 +147,10 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
 
+  const icons = { AddIcon, BellIcon, DestinationIcon };
   return (
     <LiveProvider
-      scope={scope}
+      scope={{ ...scope, ...icons }}
       code={code}
       transformCode={transformCode}
       theme={prismTheme}
@@ -199,6 +220,17 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
                   options={p.options}
                   value={p.defaultValue}
                   label={p.label ? p.label : capitalize(p.name)}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            } else if (p.type === 'icon') {
+              return (
+                <DropdownController
+                  key={p.name}
+                  name={p.name}
+                  items={['AddIcon', 'BellIcon', 'DestinationIcon']}
+                  label={p.label ? p.label : capitalize(p.name)}
+                  value={p.defaultValue}
                   setPlaygroundState={handleChange}
                 />
               );
