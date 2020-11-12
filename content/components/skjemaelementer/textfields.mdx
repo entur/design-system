@@ -16,29 +16,16 @@ import { SearchIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { textfield } from './props';
 
 <PageHeader />
 
-<Playground style={{ width: '50%', margin: 'auto' }}>
-  <GridContainer spacing="medium">
-    <GridItem small={12}>
-      <TextField label="Skriv her..." />
-    </GridItem>
-    <GridItem small={12}>
-      <TextField label="Kan ikke redigeres" readOnly value="Read-only modus" />
-    </GridItem>
-    <GridItem small={12}>
-      <TextField
-        label="Ikon som prepend"
-        prepend={<SearchIcon inline />}
-        placeholder="Placeholder tekst vises ved klikk"
-        variant="success"
-      />
-    </GridItem>
-    <GridItem small={12}>
-      <TextField append="Kroner" label="Pris" variant="error" />
-    </GridItem>
-  </GridContainer>
+<Playground
+  advanced
+  props={textfield}
+  style={{ width: '66%', display: 'block' }}
+>
+  <TextField></TextField>
 </Playground>
 
 ## Komponenter

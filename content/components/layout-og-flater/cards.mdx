@@ -14,29 +14,12 @@ import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { RSSIcon, MapPinIcon, InterrailIcon } from '@entur/icons';
+import { cards } from './props';
 
 <PageHeader />
 
-<Playground>
-  <div
-    style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
-      gap: '1.5rem',
-    }}
-  >
-    <NavigationCard title="I nærheten" titleIcon={<MapPinIcon />} href="#">
-      Se avgangstider fra stoppesteder, eller finn sparkesykler og bysykler i
-      nærheten
-    </NavigationCard>
-    <NavigationCard title="Tavla" titleIcon={<RSSIcon />} href="#">
-      Sjekk ut vår sanntidstavle med avganger fra dine utvalgte stoppesteder.
-    </NavigationCard>
-    <NavigationCard title="Gruppereiser" titleIcon={<InterrailIcon />} href="#">
-      Les mer om hele Norges reiseplanlegger, som du kan ha tilgjengelig rett i
-      lomma.
-    </NavigationCard>
-  </div>
+<Playground advanced props={cards} style={{ width: '60%' }}>
+  <NavigationCard></NavigationCard>
 </Playground>
 
 ## Komponenter

@@ -1,4 +1,4 @@
-export const bannerAlerts = [
+export const banner = [
   {
     name: 'title',
     defaultValue: 'Buss for trikk',
@@ -14,7 +14,7 @@ export const bannerAlerts = [
 
   {
     name: 'variant',
-    options: ['success', 'info', 'warning', 'error'],
+    options: ['info', 'success', 'warning', 'error'],
     defaultValue: 'info',
     type: 'dropdown',
   },
@@ -22,5 +22,20 @@ export const bannerAlerts = [
     name: 'closable',
     defaultValue: false,
     type: 'boolean',
+  },
+];
+
+export const badgeprops = [
+  {
+    name: 'children',
+    defaultValue: '1',
+    type: 'string',
+    label: 'Innhold',
+  },
+  {
+    name: 'variant',
+    options: ['primary', 'success', 'warning', 'danger', 'info', 'neutral'],
+    defaultValue: 'primary',
+    type: 'dropdown',
   },
 ];

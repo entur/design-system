@@ -1,0 +1,40 @@
+import { AdvancedProps } from '../../../src/components/AdvancedPlayground';
+export const cards: AdvancedProps = [
+  {
+    name: 'title',
+    type: 'string',
+    defaultValue: 'Reiseplanleggeren',
+    label: 'Tittel',
+  },
+  // Disabled until regex is fixed in advancedplayground
+  // {
+  //   name: 'titleIcon',
+  //   type: 'icon',
+  //   label: 'Tittel',
+  // },
+  {
+    name: 'href',
+    type: 'string',
+    defaultValue: 'https://om.entur.no/reisende/reiseplanleggeren/',
+    label: 'Link',
+  },
+  {
+    name: 'children',
+    type: 'string',
+    defaultValue:
+      'Les mer om hele Norges reiseplanlegger, som du kan ha tilgjengelig rett i lomma',
+    label: 'Innhold',
+  },
+  {
+    name: 'compact',
+    type: 'boolean',
+    defaultValue: false,
+    label: 'Kompakt',
+  },
+  {
+    name: 'externalLink',
+    type: 'boolean',
+    defaultValue: false,
+    label: 'Ekstern lenke',
+  },
+];
