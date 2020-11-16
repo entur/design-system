@@ -8,7 +8,7 @@ import {
 } from '@entur/form';
 import {
   SourceCodeIcon,
-  AddIcon,
+  AdjustmentsIcon,
   BellIcon,
   DestinationIcon,
 } from '@entur/icons';
@@ -45,8 +45,8 @@ type IconVariant = {
   name: string;
   type: 'icon';
   label?: string;
-  defaultValue: 'BellIcon';
-  options: ['AddIcon', 'BellIcon', 'DestinationIcon'];
+  defaultValue: 'AdjustmentsIcon';
+  options: ['AdjustmentsIcon', 'BellIcon', 'DestinationIcon'];
 };
 
 export type AdvancedProps =
@@ -95,9 +95,13 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   React.useEffect(() => {
     const FormatChildren = (code: string) => {
       const childrenContent = propState.find(prop => prop['children']);
+      console.log(childrenContent);
+
       if (childrenContent) {
         // Regex for alle typer innhold til children
-        const childrenRegex = new RegExp(`>(([A-Za-z0-9\\s\\S])+)?<`);
+        const childrenRegex = new RegExp(`>(?!\})(([\\W\\w\\s])+)?<`);
+        // console.log(childrenRegex.exec(code));
+
         return code.replace(
           childrenRegex,
           `>${childrenContent?.children ? childrenContent.children : ''}<`,
@@ -107,7 +111,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
       }
     };
     // eslint-disable-next-line no-useless-escape
-    const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>)`;
+    const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`;
     const componentPropsRegex = new RegExp(pattern);
     const propString = Object.entries(props)
       .reduce((accumulator, [_, value]) => {
@@ -136,7 +140,6 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
         componentPropsRegex,
         `<${componentName}${propString}>`,
       );
-
       return FormatChildren(codeWithProps);
     });
   }, [propState]);
@@ -147,7 +150,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
 
-  const icons = { AddIcon, BellIcon, DestinationIcon };
+  const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
   return (
     <LiveProvider
       scope={{ ...scope, ...icons }}
@@ -228,7 +231,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
                 <DropdownController
                   key={p.name}
                   name={p.name}
-                  items={['AddIcon', 'BellIcon', 'DestinationIcon']}
+                  items={p.options}
                   label={p.label ? p.label : capitalize(p.name)}
                   value={p.defaultValue}
                   setPlaygroundState={handleChange}

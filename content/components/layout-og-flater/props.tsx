@@ -6,12 +6,13 @@ export const cards: AdvancedProps = [
     defaultValue: 'Reiseplanleggeren',
     label: 'Tittel',
   },
-  // Disabled until regex is fixed in advancedplayground
-  // {
-  //   name: 'titleIcon',
-  //   type: 'icon',
-  //   label: 'Tittel',
-  // },
+  {
+    name: 'titleIcon',
+    type: 'icon',
+    label: 'Ikon',
+    defaultValue: 'AdjustmentsIcon',
+    options: ['AdjustmentsIcon', 'BellIcon', 'DestinationIcon'],
+  },
   {
     name: 'href',
     type: 'string',
