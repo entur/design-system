@@ -6,7 +6,12 @@ import {
   Switch,
   TextField,
 } from '@entur/form';
-import { SourceCodeIcon } from '@entur/icons';
+import {
+  SourceCodeIcon,
+  AdjustmentsIcon,
+  BellIcon,
+  DestinationIcon,
+} from '@entur/icons';
 import { BaseCard } from '@entur/layout';
 import { Heading5 } from '@entur/typography';
 import classNames from 'classnames';
@@ -36,7 +41,19 @@ type StringVariant = {
   label?: string;
 };
 
-type AdvancedProps = BooleanVariant | MultiVariant | StringVariant;
+type IconVariant = {
+  name: string;
+  type: 'icon';
+  label?: string;
+  defaultValue: 'AdjustmentsIcon';
+  options: ['AdjustmentsIcon', 'BellIcon', 'DestinationIcon'];
+};
+
+export type AdvancedProps =
+  | BooleanVariant
+  | MultiVariant
+  | StringVariant
+  | IconVariant;
 
 type AdvancedPlaygroundProps = {
   props: AdvancedProps[];
@@ -78,9 +95,13 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   React.useEffect(() => {
     const FormatChildren = (code: string) => {
       const childrenContent = propState.find(prop => prop['children']);
+      console.log(childrenContent);
+
       if (childrenContent) {
         // Regex for alle typer innhold til children
-        const childrenRegex = new RegExp(`>(([A-Za-z0-9\\s\\S])+)?<`);
+        const childrenRegex = new RegExp(`>(?!\})(([\\W\\w\\s])+)?<`);
+        // console.log(childrenRegex.exec(code));
+
         return code.replace(
           childrenRegex,
           `>${childrenContent?.children ? childrenContent.children : ''}<`,
@@ -90,7 +111,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
       }
     };
     // eslint-disable-next-line no-useless-escape
-    const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>)`;
+    const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`;
     const componentPropsRegex = new RegExp(pattern);
     const propString = Object.entries(props)
       .reduce((accumulator, [_, value]) => {
@@ -101,6 +122,9 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
           return prop[value.name];
         });
 
+        if (value.type === 'icon' && thisone !== undefined) {
+          return `${accumulator} ${value.name}={<${thisone[value.name]}/>}`;
+        }
         if (value.type === 'boolean' && thisone !== undefined) {
           return `${accumulator} ${value.name}`;
         }
@@ -116,7 +140,6 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
         componentPropsRegex,
         `<${componentName}${propString}>`,
       );
-
       return FormatChildren(codeWithProps);
     });
   }, [propState]);
@@ -127,9 +150,10 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
 
+  const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
   return (
     <LiveProvider
-      scope={scope}
+      scope={{ ...scope, ...icons }}
       code={code}
       transformCode={transformCode}
       theme={prismTheme}
@@ -199,6 +223,17 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
                   options={p.options}
                   value={p.defaultValue}
                   label={p.label ? p.label : capitalize(p.name)}
+                  setPlaygroundState={handleChange}
+                />
+              );
+            } else if (p.type === 'icon') {
+              return (
+                <DropdownController
+                  key={p.name}
+                  name={p.name}
+                  items={p.options}
+                  label={p.label ? p.label : capitalize(p.name)}
+                  value={p.defaultValue}
                   setPlaygroundState={handleChange}
                 />
               );

@@ -19,41 +19,12 @@ import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { SubtractIcon } from '@entur/icons';
+import { badgeprops } from './props';
 
 <PageHeader />
 
-<Playground style={{ display: 'flex', justifyContent: 'center' }}>
-  <div
-    style={{
-      display: 'inline-flex',
-      marginRight: '1rem',
-    }}
-  >
-    <Badge style={{ marginRight: '0.75rem' }} variant="primary">
-      Primary
-    </Badge>
-    <Badge style={{ marginRight: '0.75rem' }} variant="success">
-      Success
-    </Badge>
-    <Badge style={{ marginRight: '0.75rem' }} variant="warning">
-      Warning
-    </Badge>
-    <Badge style={{ marginRight: '0.75rem' }} variant="danger">
-      Danger
-    </Badge>
-    <Badge style={{ marginRight: '0.75rem' }} variant="info">
-      Info
-    </Badge>
-    <Badge style={{ marginRight: '0.75rem' }} variant="neutral">
-      Neutral
-    </Badge>
-  </div>
-  <div style={{ display: 'grid', gridAutoFlow: 'column', gap: '0.75rem' }}>
-    <Badge variant="primary">1</Badge>
-    <Badge variant="success">1</Badge>
-    <Badge variant="warning">1</Badge>
-    <Badge variant="danger">1</Badge>
-  </div>
+<Playground advanced props={badgeprops}>
+  <Badge variant="primary">1</Badge>
 </Playground>
 
 ## Komponenter
@@ -72,38 +43,32 @@ et forfalt eller betalt beløp, utdatert oppgjør eller avvik i en liste eller t
 
 ### Eksempel
 
-<Playground >
-      <div>
-        <div>
-          <Tabs>
-            <TabList>
-              <Tab style={{ position: 'relative' , minWidth:"12rem"}}>
-                Ordre
-              </Tab>
-              <Tab style={{ position: 'relative', minWidth:"12rem" }}>
-                Historikk
-              </Tab>
-              <Tab style={{ position: 'relative', minWidth:"12rem" }}>
-                Merknader
-                <Badge
-                  variant="primary"
-                  style={{ position: 'absolute', top: 0 }}
-                  max={10}
-                >
-                  1
-                </Badge>
-              </Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel>
-              </TabPanel>
-              <TabPanel>
-              </TabPanel>
-              <TabPanel>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </div>
-      </div>
-
+<Playground>
+  <div>
+    <div>
+      <Tabs>
+        <TabList>
+          <Tab style={{ position: 'relative', minWidth: '12rem' }}>Ordre</Tab>
+          <Tab style={{ position: 'relative', minWidth: '12rem' }}>
+            Historikk
+          </Tab>
+          <Tab style={{ position: 'relative', minWidth: '12rem' }}>
+            Merknader
+            <Badge
+              variant="primary"
+              style={{ position: 'absolute', top: 0 }}
+              max={10}
+            >
+              1
+            </Badge>
+          </Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+        </TabPanels>
+      </Tabs>
+    </div>
+  </div>
 </Playground>

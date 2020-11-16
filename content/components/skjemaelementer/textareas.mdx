@@ -15,11 +15,16 @@ import { Playground } from '~/components/Playground';
 import { Link as LinkText } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { textarea } from './props';
 
 <PageHeader />
 
-<Playground style={{ margin: '0 28%' }}>
-  <TextArea label="Hva vil du fortelle oss?" />
+<Playground
+  advanced
+  props={textarea}
+  style={{ width: '66%', display: 'block' }}
+>
+  <TextArea></TextArea>
 </Playground>
 
 ## Komponenter

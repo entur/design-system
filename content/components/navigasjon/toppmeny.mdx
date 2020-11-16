@@ -16,12 +16,12 @@ import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { topnavigation } from './props';
 
 <PageHeader />
 
-<Playground>
-  <TopNavigationItem>Kom i gang</TopNavigationItem>
-  <TopNavigationItem active>Komponenter</TopNavigationItem>
+<Playground advanced props={topnavigation}>
+  <TopNavigationItem></TopNavigationItem>
 </Playground>
 
 ## Komponenter
