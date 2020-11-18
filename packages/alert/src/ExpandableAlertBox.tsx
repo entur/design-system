@@ -86,7 +86,11 @@ const ExpandableAlertBoxTitle: React.FC<ExpandableAlertBoxTitleProps> = ({
   return (
     <div className="eds-expandable-alert-box__title">
       <div>{title}</div>
-      <button className="eds-expandable-alert-box__button" onClick={onClick}>
+      <button
+        className="eds-expandable-alert-box__button"
+        onClick={onClick}
+        type="button"
+      >
         {open ? closeLabel : openLabel}
         <ExpandArrow open={open} inline />
       </button>
