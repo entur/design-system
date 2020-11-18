@@ -308,6 +308,7 @@ const DropdownToggleButton = () => {
           }
         },
       })}
+      type="button"
     >
       <DownArrowIcon />
     </button>
