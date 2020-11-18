@@ -14,6 +14,7 @@ export const DropdownToggleButton = () => {
         }),
       })}
       tabIndex="-1"
+      type="button"
     >
       <DownArrowIcon />
     </button>
