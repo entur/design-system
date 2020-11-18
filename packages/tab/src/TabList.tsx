@@ -2,7 +2,7 @@ import React from 'react';
 import { TabList as ReachTabList } from '@reach/tabs';
 import classNames from 'classnames';
 
-type TabListProps = {
+export type TabListProps = {
   /** Tab-komponenter */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */

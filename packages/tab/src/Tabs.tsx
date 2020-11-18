@@ -2,7 +2,7 @@ import React from 'react';
 import { Tabs as ReachTabs } from '@reach/tabs';
 import classNames from 'classnames';
 
-type TabsProps = {
+export type TabsProps = {
   /** Overskriften til taben */
   children: React.ReactNode;
   /** Kalles når taben endres */

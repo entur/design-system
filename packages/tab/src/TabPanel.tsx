@@ -2,7 +2,7 @@ import React from 'react';
 import { TabPanel as ReachTabPanel } from '@reach/tabs';
 import classNames from 'classnames';
 
-type TabPanelProps = {
+export type TabPanelProps = {
   /** Overskriften til taben */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager komponenten */
