@@ -26,7 +26,6 @@ export type SuccessButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const SuccessButton = React.forwardRef<
