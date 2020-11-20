@@ -26,7 +26,6 @@ export type PrimaryButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const PrimaryButton = React.forwardRef<
