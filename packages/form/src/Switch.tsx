@@ -25,8 +25,7 @@ export type SwitchProps = {
   size?: 'medium' | 'large';
   /** Callback for når verdien endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
   (
