@@ -14,7 +14,6 @@ export type TertiaryButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const TertiaryButton = React.forwardRef<
