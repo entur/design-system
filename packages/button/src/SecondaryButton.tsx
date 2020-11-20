@@ -26,7 +26,6 @@ export type SecondaryButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const SecondaryButton = React.forwardRef<
