@@ -26,7 +26,6 @@ export type NegativeButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const NegativeButton = React.forwardRef<
