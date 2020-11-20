@@ -30,7 +30,6 @@ export type ButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
