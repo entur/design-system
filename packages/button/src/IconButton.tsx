@@ -15,12 +15,11 @@ export type IconButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
-    { children, className, variant, disabled = false, as = 'button', ...rest },
+    { children, className, disabled = false, as = 'button', ...rest },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const Element = disabled ? 'button' : as;
