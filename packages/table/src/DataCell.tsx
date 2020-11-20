@@ -10,8 +10,7 @@ export type DataCellProps = {
   padding?: 'default' | 'checkbox' | 'radio' | 'overflow-menu';
   /** Viser en status-sirkel for DataCell */
   status?: 'positive' | 'negative' | 'neutral';
-  [key: string]: any;
-};
+} & React.TableHTMLAttributes<HTMLTableDataCellElement>;
 
 export const DataCell = React.forwardRef<
   HTMLTableDataCellElement,
