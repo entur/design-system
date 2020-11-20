@@ -34,7 +34,8 @@ export type TimePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
-  [key: string]: any;
+  style?: React.CSSProperties;
+  labelTooltip?: React.ReactNode;
 } & ReactDatePickerProps;
 
 export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
