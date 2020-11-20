@@ -8,7 +8,6 @@ export type ContrastProps = {
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
 };
 
 export const Contrast = React.forwardRef<HTMLDivElement, ContrastProps>(
