@@ -18,8 +18,7 @@ export type NativeDatePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeDatePicker = React.forwardRef<
   HTMLInputElement,
@@ -44,6 +43,7 @@ export const NativeDatePicker = React.forwardRef<
           onChange={onChange}
           id={nativedatepickerId}
           ref={ref}
+          variant={variant}
           {...rest}
         />
       </BaseFormControl>
@@ -53,15 +53,16 @@ export const NativeDatePicker = React.forwardRef<
 
 type NativeDatePickerBaseProps = {
   onChange?: any;
-  [key: string]: any;
+  variant?: VariantType;
+  id: string;
 };
 
 const NativeDatePickerBase = React.forwardRef<
   HTMLInputElement,
   NativeDatePickerBaseProps
->(({ onChange, id, ...rest }, ref) => {
+>(({ onChange, id, variant, ...rest }, ref) => {
   const contextVariant = useVariant();
-  const currentVariant = rest.variant || contextVariant;
+  const currentVariant = variant || contextVariant;
   const {
     isFilled: isDatepickerFilled,
     setFilled: setFiller,
@@ -77,8 +78,8 @@ const NativeDatePickerBase = React.forwardRef<
     } else {
       setFiller && isDatepickerFilled && setFiller(false);
     }
-    if (rest.onChange) {
-      rest.onChange(event);
+    if (onChange) {
+      onChange(event);
     }
   };
   return (
