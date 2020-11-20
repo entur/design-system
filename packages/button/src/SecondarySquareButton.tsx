@@ -18,7 +18,6 @@ export type SecondarySquareButtonProps = {
    * @default 'button'
    */
   as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
 export const SecondarySquareButton = React.forwardRef<
