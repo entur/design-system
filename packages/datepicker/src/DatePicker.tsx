@@ -34,7 +34,7 @@ export type DatePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
-  [key: string]: any;
+  style?: React.CSSProperties;
 } & ReactDatePickerProps;
 
 export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
