@@ -25,12 +25,8 @@ test('Radio buttons works nicely', () => {
 
   rerender(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
-      <Radio label="Oslo" value="Oslo">
-        Oslo
-      </Radio>
-      <Radio label="Bergen" value="Bergen">
-        Bergen
-      </Radio>
+      <Radio value="Oslo">Oslo</Radio>
+      <Radio value="Bergen">Bergen</Radio>
     </RadioGroup>,
   );
 
@@ -52,12 +48,8 @@ test('Removes fieldset if label is not set', () => {
   expect(container.firstChild!.nodeName).toBe('LABEL');
   rerender(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
-      <Radio label="Oslo" value="Oslo">
-        Oslo
-      </Radio>
-      <Radio label="Bergen" value="Bergen">
-        Bergen
-      </Radio>
+      <Radio value="Oslo">Oslo</Radio>
+      <Radio value="Bergen">Bergen</Radio>
     </RadioGroup>,
   );
   expect(container.firstChild!.nodeName).toBe('FIELDSET');
