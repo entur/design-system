@@ -156,7 +156,6 @@ export const MultiSelect: React.FC<
         {label && <Label {...getLabelProps()}>{label}</Label>}
         <BaseFormControl
           prepend={prepend}
-          dark
           disabled={disabled}
           append={
             <Appendix
