@@ -56,7 +56,6 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        dark
         prepend={<ClockIcon inline />}
         ref={ref}
         label={label}

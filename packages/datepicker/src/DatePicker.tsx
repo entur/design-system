@@ -57,7 +57,6 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        dark
         prepend={<DateIcon inline />}
         readOnly={readOnly}
         label={label}
