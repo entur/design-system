@@ -1,6 +1,6 @@
 {
   "name": "@entur/tab",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tab.esm.js",

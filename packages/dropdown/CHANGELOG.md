@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.22](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.21...@entur/dropdown@1.3.22) (2020-11-26)
+
+### Bug Fixes
+
+- **dropdown:** type=button on expand arrow ([614a1e8](https://bitbucket.org/enturas/design-system/commits/614a1e8b9327b91f81655f1f185ab81effa0d046))
+- **dropdowns:** make all dropdowns light in contrast mode ([fa293a9](https://bitbucket.org/enturas/design-system/commits/fa293a9840613aebdad0a5a88613774b9e65ec33))
+- **multiselect:** type=button on expand arrow ([59e1261](https://bitbucket.org/enturas/design-system/commits/59e12612469ee1f1e1a0c0a4248ce0a61c1294bd))
+
 ## [1.3.21](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.20...@entur/dropdown@1.3.21) (2020-11-10)
 
 **Note:** Version bump only for package @entur/dropdown

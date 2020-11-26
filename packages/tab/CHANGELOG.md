@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.17](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.16...@entur/tab@0.4.17) (2020-11-26)
+
+### Bug Fixes
+
+- **tabs:** export typings for tab-components ([e245963](https://bitbucket.org/enturas/design-system/commits/e2459634af621c3d2af90c0ecabdeb6d4b9eecb5))
+
 ## [0.4.16](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.15...@entur/tab@0.4.16) (2020-10-16)
 
 ### Bug Fixes

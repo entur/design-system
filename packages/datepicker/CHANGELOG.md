@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.6...@entur/datepicker@0.4.7) (2020-11-26)
+
+### Bug Fixes
+
+- **date/timepicker:** make lighter in contrast mode ([02d2ee8](https://bitbucket.org/enturas/design-system/commits/02d2ee8074a4b7cd25839c00bf48afcb99de86da))
+
 ## [0.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.5...@entur/datepicker@0.4.6) (2020-11-10)
 
 **Note:** Version bump only for package @entur/datepicker

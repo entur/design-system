@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.3...@entur/alert@0.7.4) (2020-11-26)
+
+### Bug Fixes
+
+- **expandablealertbox:** type=button on expandarrow ([a03b3bd](https://bitbucket.org/enturas/design-system/commits/a03b3bdb4ba0a9789b531b4ac6cbaa16c5a85772))
+
 ## [0.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.2...@entur/alert@0.7.3) (2020-11-10)
 
 **Note:** Version bump only for package @entur/alert

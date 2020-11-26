@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.6...@entur/form@4.0.7) (2020-11-26)
+
+### Bug Fixes
+
+- **textarea:** labeltooltip prop is optional ([d27757a](https://bitbucket.org/enturas/design-system/commits/d27757a022395bb723da6ec7f7469b0f4eea0d1a))
+
 ## [4.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.5...@entur/form@4.0.6) (2020-11-10)
 
 **Note:** Version bump only for package @entur/form
