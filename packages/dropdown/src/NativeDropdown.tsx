@@ -62,7 +62,6 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
 
   return (
     <BaseFormControl
-      dark={true}
       disabled={disabled}
       readOnly={readOnly}
       prepend={prepend}

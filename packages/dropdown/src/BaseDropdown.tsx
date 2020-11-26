@@ -48,7 +48,6 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
           />
         }
         className={className}
-        dark
         label={label}
         isFilled={isFilled}
         labelProps={getLabelProps()}
