@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Tag.scss';
-export type TagProps = {
+import { Box, PolymorphicComponentProps } from '@entur/utils';
+
+export type TagOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
    * @default 'div'
    */
@@ -13,16 +15,21 @@ export type TagProps = {
    */
   compact?: boolean;
   children: React.ReactNode;
-  [key: string]: any;
 };
 
-export const Tag: React.FC<TagProps> = ({
-  as: Element = 'div',
+export type TagProps<E extends React.ElementType> = PolymorphicComponentProps<
+  E,
+  TagOwnProps
+>;
+
+const defaultElement = 'div';
+
+export const Tag = <E extends React.ElementType = typeof defaultElement>({
   className,
   children,
   compact,
   ...rest
-}) => {
+}: TagProps<E>): JSX.Element => {
   const childrenArray = React.Children.toArray(children);
   const hasLeadingIcon =
     childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
@@ -31,7 +38,8 @@ export const Tag: React.FC<TagProps> = ({
     typeof childrenArray[childrenArray.length - 1] !== 'string';
 
   return (
-    <Element
+    <Box
+      as={defaultElement}
       className={classNames('eds-tag', className, {
         'eds-tag--leading-icon': hasLeadingIcon,
         'eds-tag--trailing-icon': hasTrailingIcon,
@@ -40,6 +48,6 @@ export const Tag: React.FC<TagProps> = ({
       {...rest}
     >
       {children}
-    </Element>
+    </Box>
   );
 };
