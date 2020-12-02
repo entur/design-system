@@ -1,10 +1,4 @@
 import React from 'react';
-declare module '*.svg' {
-  const content: any;
-  export default content;
-}
-
-declare module '@entur/icons';
 
 export declare type IconProps = {
   /**Ekstra klassenavn */
