@@ -31,7 +31,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   title,
   ...rest
 }) => {
-  const Heading = headingsMap[size] || Heading2;
+  const Heading: React.ElementType = headingsMap[size] || Heading2;
   const randomId = useRandomId('eds-modal');
   return (
     <DialogContent
