@@ -1,8 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 import './Grid.scss';
 
-export type GridProps = {
+export type BaseGridOwnProps = {
   /** Om det er en GridContainer
    * @default false
    */
@@ -47,13 +48,17 @@ export type GridProps = {
   children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
 };
 
-export const BaseGrid: React.FC<GridProps> = ({
+export type BaseGridProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, BaseGridOwnProps>;
+
+const defaultElement = 'div';
+
+export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
   item = false,
   container = false,
-  as: Component = 'div',
   children,
   className,
   spacing = 'none',
@@ -62,7 +67,7 @@ export const BaseGrid: React.FC<GridProps> = ({
   medium,
   large,
   ...rest
-}) => {
+}: BaseGridProps<E>): JSX.Element => {
   const classList = classnames([
     'eds-grid',
     className,
@@ -75,8 +80,8 @@ export const BaseGrid: React.FC<GridProps> = ({
     { [`eds-grid--large-${large}`]: large && item },
   ]);
   return (
-    <Component className={classList} {...rest}>
+    <Box as={defaultElement} className={classList} {...rest}>
       {children}
-    </Component>
+    </Box>
   );
 };
