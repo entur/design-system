@@ -18,7 +18,7 @@ export type TextAreaProps = {
   /** Label over TextArea */
   label: string;
   /** En tooltip som forklarer labelen til inputfeltet */
-  labelTooltip: React.ReactNode;
+  labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextArea */
   feedback?: string;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
