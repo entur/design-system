@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type LabelProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type LabelOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "label"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,22 @@ export type LabelProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const Label: React.FC<LabelProps> = ({
-  as: Element = 'label',
+export type LabelProps<E extends React.ElementType> = PolymorphicComponentProps<
+  E,
+  LabelOwnProps
+>;
+
+const defaultElement = 'label';
+
+export const Label = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: LabelProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-label',
       {

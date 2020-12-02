@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type ParagraphProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type ParagraphOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "p"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,21 @@ export type ParagraphProps = {
    * @default "bottom"
    */
   margin?: 'bottom' | 'none';
-  [key: string]: any;
 };
 
-export const Paragraph: React.FC<ParagraphProps> = ({
-  as: Element = 'p',
+export type ParagraphProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, ParagraphOwnProps>;
+
+const defaultElement = 'p';
+
+export const Paragraph = <E extends React.ElementType = typeof defaultElement>({
   margin = 'bottom',
   className,
   ...rest
-}) => (
-  <Element
+}: ParagraphProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-paragraph',
       {

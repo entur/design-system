@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type LeadParagraphProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type LeadParagraphOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "p"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,23 @@ export type LeadParagraphProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const LeadParagraph: React.FC<LeadParagraphProps> = ({
-  as: Element = 'p',
+export type LeadParagraphProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, LeadParagraphOwnProps>;
+
+const defaultElement = 'p';
+
+export const LeadParagraph = <
+  E extends React.ElementType = typeof defaultElement
+>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: LeadParagraphProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-lead-paragraph',
       {
