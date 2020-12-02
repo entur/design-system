@@ -228,7 +228,7 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
                 <SideNavigationItem
                   key={menuItem.id}
                   as={Link}
-                  to={menuItem.route}
+                  to={menuItem.route ? menuItem.route : '/'}
                   active={isActive(menuItem.route, location)}
                 >
                   {menuItem.name}
