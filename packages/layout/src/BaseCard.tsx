@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 import './BaseCard.scss';
 
-export type BaseCardProps = {
+export type BaseCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager Card
    * @default "div"
    */
@@ -12,16 +13,21 @@ export type BaseCardProps = {
   [key: string]: any;
 };
 
-export const BaseCard: React.FC<BaseCardProps> = ({
-  as: Element = 'div',
+export type BaseCardProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, BaseCardOwnProps>;
+
+const defaultElement = 'div';
+
+export const BaseCard = <E extends React.ElementType = typeof defaultElement>({
   children,
   className,
   ...rest
-}) => {
+}: BaseCardProps<E>): JSX.Element => {
   const classList = classNames('eds-base-card', className);
   return (
-    <Element className={classList} {...rest}>
+    <Box as={defaultElement} className={classList} {...rest}>
       {children}
-    </Element>
+    </Box>
   );
 };
