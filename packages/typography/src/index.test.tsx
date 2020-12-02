@@ -5,7 +5,7 @@ import * as components from '.';
 afterEach(cleanup);
 
 test('renders its children', () => {
-  Object.values(components).forEach(Component => {
+  Object.values(components).forEach((Component: React.ElementType) => {
     const { getByText } = render(<Component>Hello world</Component>);
     expect(getByText('Hello world')).toBeTruthy();
     cleanup();
@@ -13,7 +13,7 @@ test('renders its children', () => {
 });
 
 test('passes on all props', () => {
-  Object.values(components).forEach(Component => {
+  Object.values(components).forEach((Component: React.ElementType) => {
     const { getByLabelText } = render(
       <Component aria-label="one hundred" className="custom-class">
         one hunned
