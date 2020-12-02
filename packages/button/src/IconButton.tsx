@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 import './IconButton.scss';
 
-export type IconButtonProps = {
+export type IconButtonBaseProps = {
   /** Ikonet som du vil ha inne i knappen */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -14,18 +15,24 @@ export type IconButtonProps = {
   /** HTML-elementet eller React-komponenten som lager knappen
    * @default 'button'
    */
-  as?: 'a' | 'button' | React.ElementType;
 };
 
-export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  (
-    { children, className, disabled = false, as = 'button', ...rest },
-    ref: React.Ref<HTMLButtonElement>,
-  ) => {
-    const Element = disabled ? 'button' : as;
+const defaultElement = 'button';
 
+export type IconButtonProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, IconButtonBaseProps>;
+
+export const IconButton: <E extends React.ElementType = typeof defaultElement>(
+  props: IconButtonProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    { children, className, disabled = false, ...rest }: IconButtonProps<E>,
+    ref: typeof rest.ref,
+  ) => {
     return (
-      <Element
+      <Box
+        as={defaultElement}
         className={classNames('eds-icon-button', className, {
           'eds-icon-button--disabled': disabled,
         })}
@@ -35,7 +42,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         {...rest}
       >
         {children}
-      </Element>
+      </Box>
     );
   },
 );

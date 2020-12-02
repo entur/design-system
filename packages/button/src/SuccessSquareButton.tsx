@@ -1,7 +1,8 @@
 import React from 'react';
 import { BaseSquareButton } from './BaseSquareButton';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type SuccessSquareButtonProps = {
+type SuccessSquareButtonBaseProps = {
   /** Tekst og ikon, ikon og tekst, eller bare ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -14,13 +15,26 @@ export type SuccessSquareButtonProps = {
    * @default false
    */
   loading?: boolean;
-  /** HTML-elementet eller React-komponenten som lager knappen
-   * @default 'button'
-   */
-  as?: 'a' | 'button' | React.ElementType;
 };
 
-export const SuccessSquareButton = React.forwardRef<
-  HTMLButtonElement,
-  SuccessSquareButtonProps
->((props, ref) => <BaseSquareButton ref={ref} {...props} variant="success" />);
+export type SuccessSquareButtonProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SuccessSquareButtonBaseProps>;
+
+const defaultElement = 'button';
+
+export const SuccessSquareButton: <E extends React.ElementType = typeof defaultElement>(
+  props: SuccessSquareButtonProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    props: SuccessSquareButtonProps<E>,
+    ref: typeof props.ref,
+  ) => (
+    <BaseSquareButton
+      as={defaultElement}
+      ref={ref}
+      {...props}
+      variant="success"
+    />
+  ),
+);

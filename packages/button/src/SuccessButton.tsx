@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from './Button';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type SuccessButtonProps = {
+type SuccessButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
@@ -22,13 +23,19 @@ export type SuccessButtonProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager knappen
-   * @default 'button'
-   */
-  as?: 'a' | 'button' | React.ElementType;
 };
 
-export const SuccessButton = React.forwardRef<
-  HTMLButtonElement,
-  SuccessButtonProps
->((props, ref) => <Button {...props} ref={ref} variant="success" />);
+export type SuccessButtonProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SuccessButtonBaseProps>;
+
+const defaultElement = 'button';
+
+export const SuccessButton: <E extends React.ElementType = typeof defaultElement>(
+  props: SuccessButtonProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    props: SuccessButtonProps<E>,
+    ref: typeof props.ref,
+  ) => <Button as={defaultElement} {...props} ref={ref} variant="success" />,
+);
