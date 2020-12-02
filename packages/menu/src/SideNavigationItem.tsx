@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSideNavigationContext } from './CollapsibleSideNavigation';
 import { useShowDelayedLabel } from './useShowDelayedLabel';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 
 function isActiveRecursively(child: any): boolean {
   if (!child.props) {
@@ -19,7 +20,7 @@ function isActiveRecursively(child: any): boolean {
   );
 }
 
-type BaseSideNavigationItemProps = {
+type BaseSideNavigationItemOwnProps = {
   active?: boolean;
   as?: 'a' | 'button' | React.ElementType;
   className?: string;
@@ -28,27 +29,33 @@ type BaseSideNavigationItemProps = {
   subMenu?: React.ReactNode;
   [key: string]: any;
 };
-const BaseSideNavigationItem = React.forwardRef<
-  HTMLAnchorElement,
-  BaseSideNavigationItemProps
->(
-  (
+
+export type BaseSideNavigationItemProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, BaseSideNavigationItemOwnProps>;
+
+const defaultElementBaseItem = 'a';
+
+const BaseSideNavigationItem: <E extends React.ElementType = typeof defaultElementBaseItem>(
+  props: BaseSideNavigationItemProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElementBaseItem>(
     {
       className,
       active = false,
-      as: Element = 'a',
       subMenu,
       icon,
       children,
       ...rest
-    },
-    ref: React.Ref<HTMLAnchorElement>,
+    }: BaseSideNavigationItemProps<E>,
+    ref: typeof rest.ref,
   ) => {
     const { isCollapsed } = useSideNavigationContext();
     const [showLabel] = useShowDelayedLabel(isCollapsed);
     return (
       <li className={classNames('eds-side-navigation__item', className)}>
-        <Element
+        <Box
+          as={defaultElementBaseItem}
           className={classNames('eds-side-navigation__click-target', {
             'eds-side-navigation__click-target--active': active,
           })}
@@ -57,7 +64,7 @@ const BaseSideNavigationItem = React.forwardRef<
         >
           {icon}
           {showLabel && children}
-        </Element>
+        </Box>
         {subMenu}
       </li>
     );
@@ -69,9 +76,9 @@ type DisabledSideNavigationItemProps = {
   [key: string]: any;
 };
 const DisabledSideNavigationItem = React.forwardRef<
-  HTMLAnchorElement,
+  HTMLButtonElement,
   DisabledSideNavigationItemProps
->(({ children, ...rest }, ref: React.Ref<HTMLAnchorElement>) => (
+>(({ children, ...rest }, ref: React.Ref<HTMLButtonElement>) => (
   <BaseSideNavigationItem
     as="button"
     disabled={true}
@@ -83,7 +90,7 @@ const DisabledSideNavigationItem = React.forwardRef<
   </BaseSideNavigationItem>
 ));
 
-export type SideNavigationItemProps = {
+export type SideNavigationItemOwnProps = {
   /** Om meny-elementet er det som er aktivt */
   active?: boolean;
   /** HTML-elementet eller React-komponenten som rendres */
@@ -99,13 +106,25 @@ export type SideNavigationItemProps = {
   icon?: React.ReactNode;
   [key: string]: any;
 };
-export const SideNavigationItem = React.forwardRef<
-  HTMLAnchorElement,
-  SideNavigationItemProps
->(
-  (
-    { active, disabled, children, forceExpandSubMenus, ...rest },
-    ref: React.Ref<HTMLAnchorElement>,
+
+export type SideNavigationItemProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SideNavigationItemOwnProps>;
+
+const defaultElementItem = 'a';
+
+export const SideNavigationItem: <E extends React.ElementType = typeof defaultElementItem>(
+  props: SideNavigationItemProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElementItem>(
+    {
+      active,
+      disabled,
+      children,
+      forceExpandSubMenus,
+      ...rest
+    }: SideNavigationItemProps<E>,
+    ref: typeof rest.ref,
   ) => {
     const childrenArray = React.Children.toArray(children);
     const subMenu = childrenArray.find(
@@ -125,7 +144,12 @@ export const SideNavigationItem = React.forwardRef<
 
     if (!subMenu) {
       return (
-        <BaseSideNavigationItem active={active} ref={ref} {...rest}>
+        <BaseSideNavigationItem
+          as={defaultElementItem}
+          active={active}
+          ref={ref}
+          {...rest}
+        >
           {label}
         </BaseSideNavigationItem>
       );
@@ -140,6 +164,7 @@ export const SideNavigationItem = React.forwardRef<
         active={active}
         subMenu={isExpanded && subMenu}
         aria-expanded={isExpanded}
+        as={defaultElementItem}
         ref={ref}
         {...rest}
       >
