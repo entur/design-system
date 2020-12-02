@@ -12,3 +12,16 @@ test('Contrast component adds the eds-contrast class', () => {
     'Hello world',
   );
 });
+
+test('Contrast component as-prop in use', () => {
+  const hrefLink = '#testerLink';
+  const { getByTestId } = render(
+    <Contrast as="a" href={hrefLink} data-testid="contrastId">
+      cool
+    </Contrast>,
+  );
+  const contrastComponent = getByTestId('contrastId');
+
+  expect(contrastComponent.nodeName).toBe('A');
+  expect(contrastComponent).toHaveAttribute('href', hrefLink);
+});
