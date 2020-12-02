@@ -1,23 +1,29 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from 'react-polymorphic-box';
 
-export type ContrastProps = {
-  /** HTML-elementet eller React-komponenten som rendres
-   * @default 'div'
-   */
-  as?: string | React.ElementType;
+export type ContrastBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
 };
 
-export const Contrast = React.forwardRef<HTMLDivElement, ContrastProps>(
-  (
-    { as: Element = 'div', className, ...rest },
-    ref: React.Ref<HTMLDivElement>,
+export type ContrastProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, ContrastBaseProps>;
+
+const defaultElement = 'div';
+
+export const Contrast: <E extends React.ElementType = typeof defaultElement>(
+  props: ContrastProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    { className, ...rest }: ContrastProps<E>,
+    ref: typeof rest.ref,
   ) => {
     return (
       <ContrastContext.Provider value={true}>
-        <Element
+        <Box
+          as={defaultElement}
           className={classNames('eds-contrast', className)}
           ref={ref}
           {...rest}
