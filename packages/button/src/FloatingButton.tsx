@@ -16,7 +16,7 @@ export type FloatingButtonProps = {
    */
   size?: 'medium' | 'small';
   [key: string]: any;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const FloatingButton: React.FC<FloatingButtonProps> = ({
   className,

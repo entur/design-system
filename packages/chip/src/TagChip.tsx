@@ -11,7 +11,6 @@ export type TagChipProps = {
   className?: string;
   /** Callback for når man klikker på krysset */
   onClose: () => void;
-  [key: string]: any;
 };
 
 export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(

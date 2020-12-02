@@ -25,12 +25,8 @@ test('ChoiceChip and ChoiceChipGroup works together', () => {
 
   rerender(
     <ChoiceChipGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
-      <ChoiceChip label="Oslo" value="Oslo">
-        Oslo
-      </ChoiceChip>
-      <ChoiceChip label="Bergen" value="Bergen">
-        Bergen
-      </ChoiceChip>
+      <ChoiceChip value="Oslo">Oslo</ChoiceChip>
+      <ChoiceChip value="Bergen">Bergen</ChoiceChip>
     </ChoiceChipGroup>,
   );
 

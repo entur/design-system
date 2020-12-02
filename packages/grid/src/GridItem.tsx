@@ -1,8 +1,9 @@
 import React from 'react';
 import { BaseGrid } from './BaseGrid';
+import { PolymorphicComponentProps } from '@entur/utils';
 import './Grid.scss';
 
-export type GridItemProps = {
+export type GridItemOwnProps = {
   /** Antall kolonner en Item bruker på små flater (og oppover)
    * @default 1
    */
@@ -17,21 +18,26 @@ export type GridItemProps = {
   children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
 };
-export const GridItem: React.FC<GridItemProps> = ({
-  as,
+
+export type GridItemProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, GridItemOwnProps>;
+
+const defaultElement = 'div';
+
+export const GridItem = <E extends React.ElementType = typeof defaultElement>({
   children,
   className,
   small,
   medium,
   large,
   ...rest
-}) => {
+}: GridItemProps<E>): JSX.Element => {
   return (
     <BaseGrid
       item
-      as={as}
+      as={defaultElement}
       className={className}
       small={small}
       medium={medium}

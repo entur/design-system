@@ -8,8 +8,7 @@ export type ActionChipProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
   ({ children, className, ...rest }, ref: React.Ref<HTMLButtonElement>) => {

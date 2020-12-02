@@ -10,8 +10,7 @@ export type FilterChipProps = {
   children?: React.ReactNode;
   /** Verdien til FilterChip */
   value: string;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
   (

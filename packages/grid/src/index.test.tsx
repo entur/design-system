@@ -38,3 +38,27 @@ test('GridContainer renders GridItem as child, and GridItem has several props se
     'eds-grid--large-4',
   );
 });
+
+test('Grid works with as-prop set to anchor tag', () => {
+  const hrefLink = '#testerHref';
+  const { getByTestId } = render(
+    <GridContainer
+      spacing="medium"
+      as="a"
+      href={hrefLink}
+      data-testid="container"
+    >
+      <GridItem as="a" href={hrefLink} small={12} data-testid="item">
+        Cool
+      </GridItem>
+    </GridContainer>,
+  );
+
+  const testerContainer = getByTestId('container');
+  expect(testerContainer.nodeName).toBe('A');
+  expect(testerContainer).toHaveAttribute('href', hrefLink);
+
+  const testerItem = getByTestId('item');
+  expect(testerItem.nodeName).toBe('A');
+  expect(testerItem).toHaveAttribute('href', hrefLink);
+});

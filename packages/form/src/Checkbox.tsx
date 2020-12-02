@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Paragraph } from '@entur/typography';
 import cx from 'classnames';
 import './Checkbox.scss';
 
-export type CheckboxProps = {
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Label for checkboxen, som vises ved høyre side. */
-  children?: React.ReactNode;
-  checked?: boolean | 'indeterminate';
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  [key: string]: any;
-};
+export type CheckboxProps =
+  | {
+      /** Ekstra klassenavn */
+      className?: string;
+      /** Label for checkboxen, som vises ved høyre side. */
+      children?: React.ReactNode;
+      checked?: 'indeterminate' | boolean;
+      onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+      /** Om checkboxen er disabled eller ikke
+       * @default false
+       */
+      disabled?: boolean;
+      style?: CSSProperties;
+    }
+  | React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { checked, className, width, children, style, disabled = false, ...rest },
+    { checked, className, children, style, disabled = false, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     // Trick to allow using a ref locally, while still allowing for ref forwarding

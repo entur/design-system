@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from './Button';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type PrimaryButtonProps = {
+export type PrimaryButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
@@ -22,14 +23,19 @@ export type PrimaryButtonProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager knappen
-   * @default 'button'
-   */
-  as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
-export const PrimaryButton = React.forwardRef<
-  HTMLButtonElement,
-  PrimaryButtonProps
->((props, ref) => <Button {...props} ref={ref} variant="primary" />);
+export type PrimaryButtonProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, PrimaryButtonBaseProps>;
+
+const defaultElement = 'button';
+
+export const PrimaryButton: <E extends React.ElementType = typeof defaultElement>(
+  props: PrimaryButtonProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    props: PrimaryButtonProps<E>,
+    ref: typeof props.ref,
+  ) => <Button as={defaultElement} {...props} ref={ref} variant="primary" />,
+);

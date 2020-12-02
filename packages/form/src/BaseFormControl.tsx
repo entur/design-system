@@ -39,6 +39,10 @@ export type BaseFormControlProps = {
   labelId: string;
   /** Varselmelding, som vil komme under form-komponenten */
   feedback?: string;
+  /** Om inputfeltet er fylt med data. Brukes for plassering av label */
+  isFilled?: boolean;
+  /**Ekstra props som sendes til label */
+  labelProps: { [key: string]: any };
   [key: string]: any;
 };
 

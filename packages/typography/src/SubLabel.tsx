@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type SubLabelProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type SubLabelOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "span"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,21 @@ export type SubLabelProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const SubLabel: React.FC<SubLabelProps> = ({
-  as: Element = 'span',
+export type SubLabelProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SubLabelOwnProps>;
+
+const defaultElement = 'span';
+
+export const SubLabel = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: SubLabelProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-sub-label',
       {

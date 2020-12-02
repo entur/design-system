@@ -18,8 +18,7 @@ export type NativeTimePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeTimePicker = React.forwardRef<
   HTMLInputElement,
