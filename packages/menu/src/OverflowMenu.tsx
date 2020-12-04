@@ -5,6 +5,9 @@ import {
   MenuButton,
   MenuItem,
   MenuLink,
+  MenuItemProps,
+  MenuLinkProps,
+  MenuButtonProps,
 } from '@reach/menu-button';
 import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
@@ -21,8 +24,7 @@ export type OverflowMenuProps = {
   button?: React.ReactElement;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & MenuButtonProps;
 
 export const OverflowMenu: React.FC<OverflowMenuProps> = ({
   children,
@@ -71,8 +73,7 @@ export type OverflowMenuItemProps = {
   className?: string;
   /** Det som skjer når elementet er valgt, enten ved museklikk eller Enter-klikk */
   onSelect: () => void;
-  [key: string]: any;
-};
+} & MenuItemProps;
 
 export const OverflowMenuItem: React.FC<OverflowMenuItemProps> = ({
   children,
@@ -104,8 +105,7 @@ export type OverflowMenuLinkProps = {
   className?: string;
   /** Det som skjer når elementet er valgt, enten ved museklikk eller Enter-klikk */
   onSelect: () => void;
-  [key: string]: any;
-};
+} & MenuLinkProps;
 
 export const OverflowMenuLink: React.FC<OverflowMenuItemProps> = ({
   children,
