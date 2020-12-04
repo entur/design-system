@@ -31,7 +31,8 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
     tokenKey,
   ]);
   const { variableFormat } = useSettings();
-
+  // Outlier, should not be treated as rem/px value
+  const isZIndex = tokenKey.startsWith('zIndex');
   return (
     <Table>
       <TableHead>
@@ -55,7 +56,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
               </CopyButton>
             </DataCell>
             <DataCell>
-              <CodeText>{formatValue(value)}</CodeText>
+              <CodeText>{!isZIndex ? formatValue(value) : value}</CodeText>
             </DataCell>
             {Example && (
               <DataCell>
