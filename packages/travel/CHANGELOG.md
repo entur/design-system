@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.7](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.6...@entur/travel@4.1.7) (2020-12-04)
+
+### Bug Fixes
+
+- **travel header:** more inclusive typing for to and from ([35bd772](https://bitbucket.org/enturas/design-system/commits/35bd772812fe0e8c7a7310ff5191a89de4709a29))
+
 ## [4.1.6](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.5...@entur/travel@4.1.6) (2020-11-05)
 
 **Note:** Version bump only for package @entur/travel

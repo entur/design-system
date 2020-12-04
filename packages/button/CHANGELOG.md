@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.7...@entur/button@2.4.0) (2020-12-04)
+
+### Bug Fixes
+
+- **basesquarebutton:** improve typings ([3f17a89](https://bitbucket.org/enturas/design-system/commits/3f17a8988504ad88b73007b2e96bceda018aa3ee))
+- **button:** improve typings ([4d16703](https://bitbucket.org/enturas/design-system/commits/4d16703d58e7a64d731890c637248be108463c7b))
+- **iconbutton:** improve typings ([0039ca4](https://bitbucket.org/enturas/design-system/commits/0039ca4e9ec23a6cc98d497694c21e8a36c397f9))
+- **negativebutton:** improve typings ([b91041f](https://bitbucket.org/enturas/design-system/commits/b91041f071a05f53b3915d6ec748aa244ed963c2))
+- **primarybutton:** improve typings ([d01819e](https://bitbucket.org/enturas/design-system/commits/d01819ec82b0a4056c10a787ce3eff29ce44c520))
+- **secondarybutton:** improve typings ([e5eff74](https://bitbucket.org/enturas/design-system/commits/e5eff74afcc6657023641096813a1702bfe218e9))
+- **secondarysquarebutton:** improve typings ([10c9765](https://bitbucket.org/enturas/design-system/commits/10c97655dfb33f8aca553598a2956b0134ba1ffc))
+- **successbutton:** improve typings ([06b297f](https://bitbucket.org/enturas/design-system/commits/06b297ffaf35169bc201786521c110325c9b6121))
+- **successsquarebutton:** improve typings ([7359728](https://bitbucket.org/enturas/design-system/commits/73597283dbddf078df744c4e061e630a9dc4c05d))
+- **tertiarybutton:** improve typings ([4ba1abd](https://bitbucket.org/enturas/design-system/commits/4ba1abd61ba4f143c5ee39b195780abe2120bbc8))
+
+### Features
+
+- **buttons:** add support for polymorphic component typings ([ed3c66b](https://bitbucket.org/enturas/design-system/commits/ed3c66b074a6afb39f7b32bef4f7aac9aa019325))
+
 ## [2.3.7](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.3.6...@entur/button@2.3.7) (2020-11-10)
 
 ### Bug Fixes

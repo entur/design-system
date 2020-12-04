@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.4.2...@entur/menu@3.5.0) (2020-12-04)
+
+### Bug Fixes
+
+- **overflowmenu:** improve typings ([3a96a84](https://bitbucket.org/enturas/design-system/commits/3a96a843c3cc74a510f9b4ff8e3e83cb7f9c18ed))
+- **overflowmenu:** increase z index ([5493a9f](https://bitbucket.org/enturas/design-system/commits/5493a9fcadf73522dab5d1c2900d52ea11b7f965))
+
+### Features
+
+- **breadcrumb:** add support for polymorphic component typing ([ebea507](https://bitbucket.org/enturas/design-system/commits/ebea507f73d37055151731ca4ca55d345a43a160))
+- **sidenavigation:** add support for polymorphic component typing ([4913760](https://bitbucket.org/enturas/design-system/commits/491376061de45dd03fb0be3568cce63b700a39a2))
+- **topnavigationitem:** add support for polymorphic typings ([b188349](https://bitbucket.org/enturas/design-system/commits/b18834915b5b8dd4f7859749fc4229aad3e11937))
+
 ## [3.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.4.1...@entur/menu@3.4.2) (2020-11-10)
 
 **Note:** Version bump only for package @entur/menu

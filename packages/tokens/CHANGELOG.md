@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@2.0.0...@entur/tokens@2.0.1) (2020-12-04)
+
+### Bug Fixes
+
+- **zindex:** change typing from string to number ([87491c6](https://bitbucket.org/enturas/design-system/commits/87491c668ceba7b1ec75983c85968ffce6638890))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@1.4.0...@entur/tokens@2.0.0) (2020-09-02)
 
 ### Features

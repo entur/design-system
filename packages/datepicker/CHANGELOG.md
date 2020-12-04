@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.7...@entur/datepicker@0.4.8) (2020-12-04)
+
+### Bug Fixes
+
+- **datepicker:** improve typings ([f591482](https://bitbucket.org/enturas/design-system/commits/f591482f637515b3326769e0ab63a274a369de40))
+- **nativedatepicker:** improve typings ([540a727](https://bitbucket.org/enturas/design-system/commits/540a72746bf2904549ad9d0c5f9f3ddc0834823c))
+- **nativetimepicker:** improve typings ([65ce080](https://bitbucket.org/enturas/design-system/commits/65ce0804e934ae06196de9281b2d32a741350bbc))
+- **timepicker:** improve typings ([75515c7](https://bitbucket.org/enturas/design-system/commits/75515c750683e094a543bc158ee02048a08216ad))
+
 ## [0.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.6...@entur/datepicker@0.4.7) (2020-11-26)
 
 ### Bug Fixes

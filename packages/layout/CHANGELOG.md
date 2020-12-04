@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.8.3...@entur/layout@1.9.0) (2020-12-04)
+
+### Bug Fixes
+
+- **contrast:** improve typings ([160c495](https://bitbucket.org/enturas/design-system/commits/160c4955687a3a072fd8b806799a27228153f8a9))
+
+### Features
+
+- **badge:** add support for polymorphic component typings ([b6aaba5](https://bitbucket.org/enturas/design-system/commits/b6aaba5c9a3424798d5ab94c4d32269fd53576c2))
+- **cards:** add support for polymorphic component typings ([7531e31](https://bitbucket.org/enturas/design-system/commits/7531e31222f924576f8b03d0ebc90fae517e400a))
+- **contrast:** add support for polymorphic component typings ([b2639ad](https://bitbucket.org/enturas/design-system/commits/b2639ad289a30e9dabc213dfb92e9f12b06377d6))
+- **tag:** add support for polymorphic component typings ([a9a4bf0](https://bitbucket.org/enturas/design-system/commits/a9a4bf018543d57951a34284e3721380684dddb4))
+
 ## [1.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.8.2...@entur/layout@1.8.3) (2020-11-05)
 
 **Note:** Version bump only for package @entur/layout

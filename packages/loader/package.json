@@ -1,6 +1,6 @@
 {
   "name": "@entur/loader",
-  "version": "0.3.31",
+  "version": "0.3.32",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/loader.esm.js",
@@ -27,9 +27,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^2.0.0",
-    "@entur/typography": "^1.5.0",
-    "@entur/utils": "^0.3.0",
+    "@entur/tokens": "^2.0.1",
+    "@entur/typography": "^1.6.0",
+    "@entur/utils": "^0.4.0",
     "classnames": "^2.2.6"
   }
 }

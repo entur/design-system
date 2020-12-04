@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.3.0...@entur/utils@0.4.0) (2020-12-04)
+
+### Features
+
+- add polymorphic component dependecy as export ([5384642](https://bitbucket.org/enturas/design-system/commits/53846421f66f4b6193238d0d6cced8b09658d3b6))
+
 # [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.2.9...@entur/utils@0.3.0) (2020-10-09)
 
 ### Features

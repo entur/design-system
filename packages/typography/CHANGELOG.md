@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.5.0...@entur/typography@1.6.0) (2020-12-04)
+
+### Features
+
+- **typography:** add support for polymorphic component typings ([12f52e9](https://bitbucket.org/enturas/design-system/commits/12f52e937bc02d8cf9566162df96bec739c1b724))
+
 # [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.4.1...@entur/typography@1.5.0) (2020-10-23)
 
 ### Features

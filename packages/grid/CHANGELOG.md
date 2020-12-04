@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.2.11...@entur/grid@0.3.0) (2020-12-04)
+
+### Features
+
+- **grid:** add support for polymorphic component typings ([627406f](https://bitbucket.org/enturas/design-system/commits/627406f1390338c82cd5bdfa9cfd15f023f51221))
+
 ## [0.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.2.10...@entur/grid@0.2.11) (2020-10-09)
 
 **Note:** Version bump only for package @entur/grid

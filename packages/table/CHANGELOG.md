@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.2.1...@entur/table@4.2.2) (2020-12-04)
+
+### Bug Fixes
+
+- **datacell:** improve typings ([d1eac68](https://bitbucket.org/enturas/design-system/commits/d1eac685c4ec51a3d7b6e8e7cdf04198a2149ac4))
+
 ## [4.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.2.0...@entur/table@4.2.1) (2020-11-26)
 
 **Note:** Version bump only for package @entur/table

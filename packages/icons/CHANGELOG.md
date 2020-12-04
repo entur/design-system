@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.1...@entur/icons@1.15.2) (2020-12-04)
+
+### Bug Fixes
+
+- remove unused typings ([156a31d](https://bitbucket.org/enturas/design-system/commits/156a31d8015de3c88291f6620bafeb3d200f16f1))
+
 ## [1.15.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.0...@entur/icons@1.15.1) (2020-11-05)
 
 ### Bug Fixes

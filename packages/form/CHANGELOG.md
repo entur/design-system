@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.7...@entur/form@4.0.8) (2020-12-04)
+
+### Bug Fixes
+
+- **baseformcontrol:** improve typings ([a147e27](https://bitbucket.org/enturas/design-system/commits/a147e275460c79d67595d3a7d44fde94c3db5504))
+- **checkbox:** improve typings ([fdf9447](https://bitbucket.org/enturas/design-system/commits/fdf94478e208b13969477b1d18e87eb2a79cea02))
+- **radio:** improve typings ([9985231](https://bitbucket.org/enturas/design-system/commits/9985231c29900caa2fd0f8a0d9b46e6713a5377a))
+- **radiopanel:** improve typings ([c6b4d41](https://bitbucket.org/enturas/design-system/commits/c6b4d41792826546f9c6a67aab6189a194d3f803))
+- **switch:** improve typings ([3c28dc9](https://bitbucket.org/enturas/design-system/commits/3c28dc95d473d673136ace4782064b74e82b7c2c))
+- **textarea:** improve typings ([5cf3b05](https://bitbucket.org/enturas/design-system/commits/5cf3b0524cd5dcf51c91c20bc49d58e2a9e10994))
+- **textarea:** make labeltooltip prop typings optional ([211e939](https://bitbucket.org/enturas/design-system/commits/211e939a13d93a25c4b438043840c5623f156961))
+- **textfield:** improve typings ([a331093](https://bitbucket.org/enturas/design-system/commits/a33109379346671ab48e4003b4561997e1aef296))
+- **travelswitch:** improve typings ([8441b96](https://bitbucket.org/enturas/design-system/commits/8441b96563ebbe808c4c6f77a3154286f30b7025))
+
 ## [4.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.6...@entur/form@4.0.7) (2020-11-26)
 
 ### Bug Fixes
