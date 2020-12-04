@@ -21,8 +21,7 @@ export type TextAreaProps = {
   labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextArea */
   feedback?: string;
-  [key: string]: any;
-};
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (

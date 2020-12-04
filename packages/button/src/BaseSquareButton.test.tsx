@@ -24,12 +24,7 @@ test('Button renders as an <a> tag, with an href-property', () => {
   let children = 'Button children';
   const hrefLink = '#coolLinkAddresss';
   const { getByTestId } = render(
-    <SecondarySquareButton
-      variant="primary"
-      as="a"
-      href={hrefLink}
-      data-testid="testerButton2"
-    >
+    <SecondarySquareButton as="a" href={hrefLink} data-testid="testerButton2">
       {children}
     </SecondarySquareButton>,
   );

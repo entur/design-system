@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-type BaseHeadingProps = {
+type BaseHeadingOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres */
   as: string | React.ElementType;
   /** Ekstra klassenavn */
@@ -12,20 +13,27 @@ type BaseHeadingProps = {
   margin: 'top' | 'bottom' | 'both' | 'none';
   /** Nivået på overskriften  */
   level: 1 | 2 | 3 | 4 | 5 | 6;
-  [key: string]: any;
 };
 
-export const BaseHeading: React.FC<BaseHeadingProps> = ({
-  as: Element = 'h1',
+export type BaseHeadingProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, BaseHeadingOwnProps>;
+
+const defaultElement = 'h1';
+
+export const BaseHeading = <
+  E extends React.ElementType = typeof defaultElement
+>({
   className,
   level,
   margin,
   ...rest
-}) => {
+}: BaseHeadingProps<E>): JSX.Element => {
   const baseClass = `eds-h${level}`;
 
   return (
-    <Element
+    <Box
+      as={defaultElement}
       className={classNames(
         baseClass,
         {

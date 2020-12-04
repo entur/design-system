@@ -81,120 +81,29 @@
     }
   }
   &--small {
-    &-1 {
-      grid-column: span 1;
-    }
-    &-2 {
-      grid-column: span 2;
-    }
-    &-3 {
-      grid-column: span 3;
-    }
-    &-4 {
-      grid-column: span 4;
-    }
-    &-5 {
-      grid-column: span 5;
-    }
-    &-6 {
-      grid-column: span 6;
-    }
-    &-7 {
-      grid-column: span 7;
-    }
-    &-8 {
-      grid-column: span 8;
-    }
-    &-9 {
-      grid-column: span 9;
-    }
-    &-10 {
-      grid-column: span 10;
-    }
-    &-11 {
-      grid-column: span 11;
-    }
-    &-12 {
-      grid-column: span 12;
+    @for $i from 1 through 12 {
+      &-#{$i} {
+        grid-column: span #{$i};
+      }
     }
   }
   @include for-desktop {
     &--medium {
-      &-1 {
-        grid-column: span 1;
-      }
-      &-2 {
-        grid-column: span 2;
-      }
-      &-3 {
-        grid-column: span 3;
-      }
-      &-4 {
-        grid-column: span 4;
-      }
-      &-5 {
-        grid-column: span 5;
-      }
-      &-6 {
-        grid-column: span 6;
-      }
-      &-7 {
-        grid-column: span 7;
-      }
-      &-8 {
-        grid-column: span 8;
-      }
-      &-9 {
-        grid-column: span 9;
-      }
-      &-10 {
-        grid-column: span 10;
-      }
-      &-11 {
-        grid-column: span 11;
-      }
-      &-12 {
-        grid-column: span 12;
+      @for $i from 1 through 12 {
+        &-#{$i} {
+          grid-column: span #{$i};
+        }
       }
     }
   }
   @include for-large-desktop {
     &--large {
-      &-1 {
-        grid-column: span 1;
-      }
-      &-2 {
-        grid-column: span 2;
-      }
-      &-3 {
-        grid-column: span 3;
-      }
-      &-4 {
-        grid-column: span 4;
-      }
-      &-5 {
-        grid-column: span 5;
-      }
-      &-6 {
-        grid-column: span 6;
-      }
-      &-7 {
-        grid-column: span 7;
-      }
-      &-8 {
-        grid-column: span 8;
-      }
-      &-9 {
-        grid-column: span 9;
-      }
-      &-10 {
-        grid-column: span 10;
-      }
-      &-11 {
-        grid-column: span 11;
-      }
-      &-12 {
-        grid-column: span 12;
+      &--medium {
+        @for $i from 1 through 12 {
+          &-#{$i} {
+            grid-column: span #{$i};
+          }
+        }
       }
     }
   }

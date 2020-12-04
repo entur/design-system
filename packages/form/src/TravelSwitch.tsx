@@ -38,14 +38,13 @@ export type TravelSwitchProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   className,
   children,
   transport,
-  size = 'medium',
+  size,
   ...rest
 }) => {
   const { color, contrast, Icon } = modeCalc(transport);

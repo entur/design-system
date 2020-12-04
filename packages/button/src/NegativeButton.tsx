@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from './Button';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type NegativeButtonProps = {
+export type NegativeButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
@@ -22,14 +23,19 @@ export type NegativeButtonProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
-  /** HTML-elementet eller React-komponenten som lager knappen
-   * @default 'button'
-   */
-  as?: 'a' | 'button' | React.ElementType;
-  [key: string]: any;
 };
 
-export const NegativeButton = React.forwardRef<
-  HTMLButtonElement,
-  NegativeButtonProps
->((props, ref) => <Button {...props} ref={ref} variant="negative" />);
+export type NegativeButtonProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, NegativeButtonBaseProps>;
+
+const defaultElement = 'button';
+
+export const NegativeButton: <E extends React.ElementType = typeof defaultElement>(
+  props: NegativeButtonProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
+    props: NegativeButtonProps<E>,
+    ref: typeof props.ref,
+  ) => <Button as={defaultElement} {...props} ref={ref} variant="negative" />,
+);

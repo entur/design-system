@@ -4,8 +4,9 @@ import classNames from 'classnames';
 import { ForwardIcon, ExternalIcon } from '@entur/icons';
 import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type NavigationCardProps = {
+export type NavigationCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager NavigationCard
    * @default 'a'
    */
@@ -26,11 +27,17 @@ export type NavigationCardProps = {
    * @default false
    */
   externalLink?: boolean;
-  [key: string]: any;
 };
 
-export const NavigationCard: React.FC<NavigationCardProps> = ({
-  as = 'a',
+export type NavigationCardProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, NavigationCardOwnProps>;
+
+const defaultElement = 'a';
+
+export const NavigationCard = <
+  E extends React.ElementType = typeof defaultElement
+>({
   title,
   children,
   titleIcon,
@@ -38,13 +45,13 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
   className,
   externalLink = false,
   ...rest
-}) => {
+}: NavigationCardProps<E>): JSX.Element => {
   const classList = classNames('eds-navigation-card', className, {
     'eds-base-card--red-line': compact,
     'eds-navigation-card--compact': compact,
   });
   return (
-    <BaseCard as={as} className={classList} {...rest}>
+    <BaseCard as={defaultElement} className={classList} {...rest}>
       {!compact && titleIcon && (
         <div className="eds-navigation-card__title-icon">{titleIcon}</div>
       )}

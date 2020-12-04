@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type SubParagraphProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type SubParagraphOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "p"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,23 @@ export type SubParagraphProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const SubParagraph: React.FC<SubParagraphProps> = ({
-  as: Element = 'p',
+export type SubParagraphProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SubParagraphOwnProps>;
+
+const defaultElement = 'p';
+
+export const SubParagraph = <
+  E extends React.ElementType = typeof defaultElement
+>({
   className,
   margin,
   ...rest
-}) => (
-  <Element
+}: SubParagraphProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-sub-paragraph',
       {

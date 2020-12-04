@@ -1,8 +1,9 @@
 import React from 'react';
 import { BaseGrid } from './BaseGrid';
+import { PolymorphicComponentProps } from '@entur/utils';
 import './Grid.scss';
 
-export type GridContainerProps = {
+export type GridContainerOwnProps = {
   /** Mellomromet mellom hver GridItem, basert på spacing-tokens
    * @default none
    */
@@ -31,21 +32,27 @@ export type GridContainerProps = {
   children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
 };
 
-export const GridContainer: React.FC<GridContainerProps> = ({
-  as,
+export type GridContainerProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, GridContainerOwnProps>;
+
+const defaultElement = 'div';
+
+export const GridContainer = <
+  E extends React.ElementType = typeof defaultElement
+>({
   children,
   className,
   spacing,
   rowSpacing,
   ...rest
-}) => {
+}: GridContainerProps<E>): JSX.Element => {
   return (
     <BaseGrid
       container
-      as={as}
+      as={defaultElement}
       className={className}
       spacing={spacing}
       rowSpacing={rowSpacing}

@@ -1,8 +1,11 @@
 import React from 'react';
 import { BaseHeading } from './BaseHeading';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type Heading2Props = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type Heading2OwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "h2"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,11 +15,20 @@ export type Heading2Props = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const Heading2: React.FC<Heading2Props> = ({
-  as = 'h2',
+export type Heading2Props<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, Heading2OwnProps>;
+
+const defaultElement = 'h2';
+
+export const Heading2 = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
+  children,
   ...rest
-}) => <BaseHeading as={as} margin={margin} {...rest} level={2} />;
+}: Heading2Props<E>): JSX.Element => (
+  <BaseHeading as={defaultElement} margin={margin} {...rest} level={2}>
+    {children}
+  </BaseHeading>
+);

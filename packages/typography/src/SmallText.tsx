@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type SmallTextProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type SmallTextOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "span"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,21 @@ export type SmallTextProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const SmallText: React.FC<SmallTextProps> = ({
-  as: Element = 'span',
+export type SmallTextProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, SmallTextOwnProps>;
+
+const defaultElement = 'span';
+
+export const SmallText = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: SmallTextProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-small-text',
       {

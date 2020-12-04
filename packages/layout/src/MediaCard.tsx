@@ -4,8 +4,9 @@ import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
 import './MediaCard.scss';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 
-export type MediaCardProps = {
+export type MediaCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager bunnen (under media) av MediaCard
    * @default 'a'
    */
@@ -20,11 +21,15 @@ export type MediaCardProps = {
   className?: string;
   /** Det du skulle ønske som media (f.eks. bilder eller video) */
   children?: React.ReactNode;
-  [key: string]: any;
 };
 
-export const MediaCard: React.FC<MediaCardProps> = ({
-  as = 'a',
+export type MediaCardProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, MediaCardOwnProps>;
+
+const defaultElement = 'a';
+
+export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   title,
   description,
   children,
@@ -32,20 +37,19 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   category,
   style,
   ...rest
-}) => {
+}: MediaCardProps<E>): JSX.Element => {
   const classList = classNames('eds-base-card', 'eds-media-card', className);
-  const Element = as;
   return (
     <BaseCard as="div" className={classList} style={style}>
       <div className="eds-media-card__media">{children}</div>
-      <Element className="eds-media-card__text" {...rest}>
+      <Box as={defaultElement} className="eds-media-card__text" {...rest}>
         {category && (
           <Label className="eds-media-card__category">{category}</Label>
         )}
         <div className="eds-media-card__title">{title}</div>
         <Paragraph>{description}</Paragraph>
         <ForwardIcon className="eds-media-card__arrow-icon" />
-      </Element>
+      </Box>
     </BaseCard>
   );
 };

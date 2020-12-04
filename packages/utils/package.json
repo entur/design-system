@@ -27,6 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "react-polymorphic-box": "^3.0.2",
     "tiny-warning": "^1.0.3"
   }
 }

@@ -24,8 +24,7 @@ export type RadioPanelProps = {
   className?: string;
   /** */
   style?: React.CSSProperties;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
   (

@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Badge.scss';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 
-export type BadgeProps = {
+export type BadgeOwnProps = {
   /** Elementet som wrapper badgen
    * @default "span"
    */
@@ -21,13 +22,20 @@ export type BadgeProps = {
    * @default ++
    */
   max?: number;
-  [key: string]: any;
 };
 
-export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  (
+export type BadgeProps<E extends React.ElementType> = PolymorphicComponentProps<
+  E,
+  BadgeOwnProps
+>;
+
+const defaultElement = 'span';
+
+export const Badge: <E extends React.ElementType = typeof defaultElement>(
+  props: BadgeProps<E>,
+) => React.ReactElement | null = React.forwardRef(
+  <E extends React.ElementType = typeof defaultElement>(
     {
-      as: Element = 'span',
       children,
       className,
       max = 99,
@@ -35,8 +43,8 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       showZero = false,
       invisible: invisibleProp = false,
       ...rest
-    },
-    ref: React.Ref<HTMLSpanElement>,
+    }: BadgeProps<E>,
+    ref: typeof rest.ref,
   ) => {
     let invisible = invisibleProp;
     if (
@@ -60,9 +68,9 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     );
 
     return (
-      <span className={classList} ref={ref} {...rest}>
+      <Box as={defaultElement} className={classList} ref={ref} {...rest}>
         {displayValue}
-      </span>
+      </Box>
     );
   },
 );

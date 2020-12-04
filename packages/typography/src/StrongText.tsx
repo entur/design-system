@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentProps, Box } from '@entur/utils';
 
-export type StrongTextProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type StrongTextOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "strong"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,23 @@ export type StrongTextProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const StrongText: React.FC<StrongTextProps> = ({
-  as: Element = 'strong',
+export type StrongTextProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, StrongTextOwnProps>;
+
+const defaultElement = 'strong';
+
+export const StrongText = <
+  E extends React.ElementType = typeof defaultElement
+>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: StrongTextProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-strong-text',
       {

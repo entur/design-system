@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Box, PolymorphicComponentProps } from '@entur/utils';
 
-export type EmphasizedTextProps = {
-  /** HTML-elementet eller React-komponenten som rendres */
+export type EmphasizedTextOwnProps = {
+  /** HTML-elementet eller React-komponenten som rendres
+   * @default "em"
+   */
   as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
@@ -12,16 +15,23 @@ export type EmphasizedTextProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
-  [key: string]: any;
 };
 
-export const EmphasizedText: React.FC<EmphasizedTextProps> = ({
-  as: Element = 'em',
+export type EmphasizedTextProps<
+  E extends React.ElementType
+> = PolymorphicComponentProps<E, EmphasizedTextOwnProps>;
+
+const defaultElement = 'em';
+
+export const EmphasizedText = <
+  E extends React.ElementType = typeof defaultElement
+>({
   className,
   margin = 'both',
   ...rest
-}) => (
-  <Element
+}: EmphasizedTextProps<E>): JSX.Element => (
+  <Box
+    as={defaultElement}
     className={classNames(
       'eds-emphasized-text',
       {

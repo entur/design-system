@@ -11,8 +11,7 @@ export type RadioProps = {
   children?: React.ReactNode;
   /** Verdien til radioknappen */
   value: string;
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (

@@ -15,7 +15,7 @@ export type TextFieldProps = {
   /** Label over TextField */
   label: React.ReactNode;
   /** En tooltip som forklarer labelen til inputfeltet */
-  labelTooltip: React.ReactNode;
+  labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextField */
   feedback?: string;
   /** Hvilken valideringsfarge som vises */
@@ -28,8 +28,7 @@ export type TextFieldProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
-  [key: string]: any;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   (

@@ -140,7 +140,8 @@ test('forceExpandSubMenus works as expected without active items', () => {
         Active sub-menu trigger
         <SideNavigation>
           <SideNavigationItem
-            href="#second"
+            as="button"
+            onClick={() => console.log('ok')}
             data-testid="active-sub-menu-item"
             active={true}
           >
