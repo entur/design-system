@@ -188,7 +188,7 @@ export const borderRadiuses = {
 };
 
 // Z-indexes
-const zIndexScale = ['-1', '0', '10', '20', '30', '40', '50'];
+const zIndexScale = [-1, 0, 10, 20, 30, 40, 50];
 export const zIndexes = {
   behind: zIndexScale[0],
   default: zIndexScale[1],
