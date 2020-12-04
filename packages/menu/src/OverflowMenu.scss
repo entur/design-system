@@ -30,16 +30,21 @@
     &[data-selected] {
       background: $colors-blues-blue70;
     }
+    &:focus {
+      outline: none;
+    }
   }
 }
 .eds-overflow-menu__item + .eds-overflow-menu__item {
   border-top: $border-widths-small solid $colors-greys-grey20;
+  // z-index: $z-indexes-overlay;
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
   border: $border-widths-small solid $colors-greys-grey20;
   border-radius: $border-radiuses-medium;
   box-shadow: $shadows-card-shadow;
   overflow: hidden;
+  z-index: $z-indexes-overlay;
   &:focus {
     outline: none;
   }
