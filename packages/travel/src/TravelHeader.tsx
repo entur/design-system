@@ -4,9 +4,9 @@ import './TravelHeader.scss';
 
 export type TravelHeaderProps = {
   /** Destinasjonen man reiser fra */
-  from: string;
+  from: React.ReactNode;
   /** Destinasjonen man reiser til */
-  to: string;
+  to: React.ReactNode;
   /**Størrelsen på komponenten
    * @default 'large'
    */
