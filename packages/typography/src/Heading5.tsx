@@ -21,7 +21,7 @@ export type Heading5Props<
   E extends React.ElementType
 > = PolymorphicComponentProps<E, Heading5OwnProps>;
 
-const defaultElement = 'h1';
+const defaultElement = 'h5';
 
 export const Heading5 = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
