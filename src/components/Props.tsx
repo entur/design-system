@@ -16,7 +16,10 @@ import { useSettings } from './SettingsContext';
 import './Props.scss';
 
 function skipUndefinedType(type: string) {
-  return type.replace(/\| undefined/g, '');
+  return type.replace(
+    /((\| undefined)?(\| ComponentProps<E>\[string\])?)/g,
+    '',
+  );
 }
 
 type PropsProps = PropsComponentProps & {
