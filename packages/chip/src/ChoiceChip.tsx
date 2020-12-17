@@ -15,7 +15,13 @@ export type ChoiceChipProps = {
   children?: React.ReactNode;
   /** Verdien til ChoiceChip */
   value: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & Omit<
+  React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >,
+  'value'
+>;
 
 export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
   (
