@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
 import React from 'react';
 import { SearchBar } from '~/components/SearchBar';
+import { usePersistedState } from './SettingsContext';
 import './SiteSidebar.scss';
 
 const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
@@ -65,18 +66,63 @@ const hasSameParentCategory = (
   );
 };
 
+function useSideMenuScroll<Type>(page: string) {
+  const [currentPage, setCurrentPage] = usePersistedState('currentScroll', '');
+
+  const useStateResult = React.useState<Type>(() => {
+    if (typeof window === 'undefined') {
+      // Server side
+      return 0;
+    }
+
+    if (page !== '' && page !== currentPage) {
+      return 0;
+    }
+    return JSON.parse(localStorage.getItem('scroll') as string) || 0;
+  });
+  const [state] = useStateResult;
+  React.useEffect(() => {
+    localStorage.setItem('scroll', JSON.stringify(state));
+  }, [page, state]);
+
+  React.useEffect(() => {
+    if (page && page !== currentPage) {
+      localStorage.setItem('scroll', '0');
+      setCurrentPage(page);
+    }
+  }, [page]);
+  return useStateResult;
+}
+
 export const SiteSidebar: React.FC<{
   className?: string;
   mobile?: boolean;
 }> = props => {
+  const menuRef = React.useRef<HTMLDivElement>(null);
   const currentDoc = useCurrentDoc();
+  const [scrollPosition, setScrollPosition] = useSideMenuScroll<number>(
+    currentDoc.parent,
+  );
+
   const menuItems =
     useMenus({
       filter: item => hasSameParentCategory(item, currentDoc) && !item.index,
     }) || [];
 
+  React.useEffect(() => {
+    menuRef?.current?.scrollTo(0, scrollPosition);
+  }, [menuRef, scrollPosition, currentDoc]);
+
+  const handleScroll = () => {
+    setScrollPosition(menuRef?.current?.scrollTop ?? 0);
+  };
+
   return (
-    <div className={classNames('site-sidebar-wrapper', props.className)}>
+    <div
+      onScroll={handleScroll}
+      ref={menuRef}
+      className={classNames('site-sidebar-wrapper', props.className)}
+    >
       <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
         <Location>
           {({ location }) =>
@@ -131,7 +177,7 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
         <SideNavigationItem
           key={menuItem.id}
           as={Link}
-          to={menuItem.route}
+          to={menuItem.route ?? ''}
           active={isActive(menuItem.route, location)}
         >
           {menuItem.name}
