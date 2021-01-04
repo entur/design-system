@@ -11,6 +11,9 @@
     height: $space-extra-large;
     user-select: none;
     width: fit-content;
+    &--reduced-click-area {
+      height: fit-content;
+    }
 
     input {
       position: absolute;
@@ -92,6 +95,9 @@
     border-radius: $border-radiuses-default;
     background-color: transparent;
     color: $colors-brand-white;
+    &--reduced-click-area {
+      margin-right: 0;
+    }
     .eds-contrast & {
       border-color: $colors-blues-blue30;
     }

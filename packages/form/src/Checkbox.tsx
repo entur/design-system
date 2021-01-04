@@ -3,25 +3,38 @@ import { Paragraph } from '@entur/typography';
 import cx from 'classnames';
 import './Checkbox.scss';
 
-export type CheckboxProps =
-  | {
-      /** Ekstra klassenavn */
-      className?: string;
-      /** Label for checkboxen, som vises ved høyre side. */
-      children?: React.ReactNode;
-      checked?: 'indeterminate' | boolean;
-      onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-      /** Om checkboxen er disabled eller ikke
-       * @default false
-       */
-      disabled?: boolean;
-      style?: CSSProperties;
-    }
-  | React.InputHTMLAttributes<HTMLInputElement>;
+export type CheckboxProps = {
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Label for checkboxen, som vises ved høyre side. */
+  children?: React.ReactNode;
+  /** Om Checkbox er avmerket, eller om den  */
+  checked?: 'indeterminate' | boolean;
+  /** Callback for Checkbox */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Om checkboxen er disabled eller ikke
+   * @default false
+   */
+  disabled?: boolean;
+  /**Ekstra styling til komponenten */
+  style?: CSSProperties;
+  /** Reduserer klikkflaten for Checkbox'en
+   * @default false
+   */
+  reduceClickArea?: boolean;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'checked'>;
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { checked, className, children, style, disabled = false, ...rest },
+    {
+      checked,
+      className,
+      children,
+      style,
+      disabled = false,
+      reduceClickArea,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     // Trick to allow using a ref locally, while still allowing for ref forwarding
@@ -40,6 +53,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       <label
         className={cx('eds-checkbox__container', className, {
           'eds-checkbox--disabled': disabled,
+          'eds-checkbox__container--reduced-click-area': reduceClickArea,
         })}
         style={style}
       >
@@ -53,6 +67,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           className={cx('eds-checkbox__icon', {
             'eds-checkbox__icon--disabled': disabled,
+            'eds-checkbox__icon--reduced-click-area': reduceClickArea,
           })}
         >
           <CheckboxIcon indeterminate={isIndeterminate} />
