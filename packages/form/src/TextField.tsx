@@ -28,7 +28,7 @@ export type TextFieldProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   (
