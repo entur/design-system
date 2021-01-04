@@ -445,7 +445,7 @@ En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare t
             </TableHead>
             <TableBody>
               {data.map(field => (
-                <TableRow>
+                <TableRow key={field.id}>
                   <DataCell style={{ paddingLeft: '4.5rem' }}>
                     {field.time}
                   </DataCell>
@@ -473,8 +473,8 @@ En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare t
           </TableRow>
         </TableHead>
         <TableBody>
-          {mockData.map(field => (
-            <ExpRow data={field}>
+          {mockData.map((field, i) => (
+            <ExpRow data={field} key={i}>
               <SummaryTable data={field.transactions}></SummaryTable>
             </ExpRow>
           ))}
@@ -843,8 +843,8 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
               ></DatePicker>
             </EditableCell>
           </TableRow>
-          <TableRow>
-            <EditableCell>
+          <TableRow hover>
+            <EditableCell outlined>
               <TextField></TextField>
             </EditableCell>
             <DataCell>Nordmann</DataCell>
