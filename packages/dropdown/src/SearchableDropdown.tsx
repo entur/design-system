@@ -78,6 +78,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       listStyle={listStyle}
       clearable={clearable}
       label={label}
+      labelId={labelId}
       isFilled={selectedItem ? true : false}
     >
       <input

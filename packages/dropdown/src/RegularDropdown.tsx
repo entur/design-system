@@ -42,6 +42,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       listStyle={listStyle}
       items={items}
       label={label}
+      labelId={labelId}
       isFilled
       {...rest}
     >

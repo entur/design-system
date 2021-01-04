@@ -98,7 +98,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
   const searchAbleProps = searchable ? { itemFilter: itemFilter } : {};
-  const dropdownId = useRandomId('eds-textarea');
+  const dropdownId = useRandomId('eds-dropdown');
   return (
     <DownshiftProvider
       selectedItem={selectedItem}

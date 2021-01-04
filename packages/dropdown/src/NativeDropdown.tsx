@@ -1,12 +1,13 @@
-import React from 'react';
-import { DownArrowIcon } from '@entur/icons';
 import { BaseFormControl, VariantType } from '@entur/form';
+import { DownArrowIcon } from '@entur/icons';
+import { useRandomId } from '@entur/utils';
+import React from 'react';
 import { InlineSpinner } from './InlineSpinner';
-import {
-  useResolvedItems,
-  PotentiallyAsyncDropdownItemType,
-} from './useResolvedItems';
 import './NativeDropdown.scss';
+import {
+  PotentiallyAsyncDropdownItemType,
+  useResolvedItems,
+} from './useResolvedItems';
 
 export type NativeDropdownProps = {
   /** Ekstra klassenavn */
@@ -21,7 +22,7 @@ export type NativeDropdownProps = {
   /** Alle valg for dropdownen å ha */
   items: PotentiallyAsyncDropdownItemType;
   /** Beskrivende tekst som forklarer feltet */
-  label?: string;
+  label: string;
   /** En callback for endringer av value */
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   /** Tekst eller ikon som kommer før dropdownen */
@@ -59,7 +60,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   } else if (loading) {
     rightSideIcon = <InlineSpinner>{loadingText}</InlineSpinner>;
   }
-
+  const nativeDropdownId = useRandomId('eds-native-dropdown');
   return (
     <BaseFormControl
       disabled={disabled}
@@ -71,6 +72,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
       label={label}
       variant={variant}
       feedback={feedback}
+      labelId={nativeDropdownId}
     >
       <select
         aria-invalid={variant === 'error'}
