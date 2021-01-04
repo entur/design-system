@@ -50,6 +50,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         label={label}
         labelId={textAreaId}
         feedback={feedback}
+        labelTooltip={labelTooltip}
       >
         <TextAreaBase
           readOnly={readOnly}
