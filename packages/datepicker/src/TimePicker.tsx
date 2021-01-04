@@ -12,7 +12,7 @@ import {
 import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './TimePicker.scss';
-import { useOnMount } from '@entur/utils';
+import { useOnMount, useRandomId } from '@entur/utils';
 
 export type TimePickerProps = {
   /** Hva som er den valgte datoen */
@@ -54,12 +54,14 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
     },
     ref,
   ) => {
+    const timepickerId = useRandomId('eds-timepicker');
     return (
       <BaseFormControl
         style={style}
         prepend={<ClockIcon inline />}
         ref={ref}
         label={label}
+        labelId={timepickerId}
         labelTooltip={labelTooltip}
         variant={variant}
         feedback={feedback}
