@@ -4,7 +4,7 @@ import { useInputGroupContext } from './InputGroupContext';
 import './InputGroupLabel.scss';
 
 export const InputGroupLabel: React.FC<{
-  label?: string;
+  label?: React.ReactNode;
   required?: boolean;
   labelTooltip?: string;
   labelId: string;
