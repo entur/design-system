@@ -8,6 +8,17 @@
   .eds-table--small & {
     padding: 0.125rem $space-extra-small;
   }
+
+  &.eds-editable-cell--outlined {
+    .eds-form-control-wrapper {
+      border-color: $colors-greys-grey10;
+      background: $colors-brand-white;
+      .eds-contrast &  {
+        border-color: $colors-blues-blue20;
+        color: $colors-brand-blue;
+      }
+    }
+  }
   .eds-form-control-wrapper {
     background: $colors-brand-white;
     &::before,
