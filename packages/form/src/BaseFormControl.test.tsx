@@ -4,7 +4,7 @@ import { BaseFormControl } from './BaseFormControl';
 
 test('renders a nice looking component', () => {
   const { getByTestId } = render(
-    <BaseFormControl id="testId">
+    <BaseFormControl label="test" labelId="testId">
       <input data-testid="input" />
     </BaseFormControl>,
   );
@@ -14,7 +14,12 @@ test('renders a nice looking component', () => {
 
 test('renders variants correctly', () => {
   const { getByTestId, rerender } = render(
-    <BaseFormControl id="testId" variant="error" data-testid="wrapper">
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant="error"
+      data-testid="wrapper"
+    >
       <input />
     </BaseFormControl>,
   );
@@ -24,7 +29,12 @@ test('renders variants correctly', () => {
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl id="testId" variant="success" data-testid="wrapper">
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant="success"
+      data-testid="wrapper"
+    >
       <input />
     </BaseFormControl>,
   );
@@ -35,7 +45,7 @@ test('renders variants correctly', () => {
   expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl data-testid="wrapper">
+    <BaseFormControl label="test" labelId="testId" data-testid="wrapper">
       <input />
     </BaseFormControl>,
   );
@@ -46,7 +56,12 @@ test('renders variants correctly', () => {
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl variant="success" data-testid="wrapper">
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant="success"
+      data-testid="wrapper"
+    >
       <input />
     </BaseFormControl>,
   );
@@ -57,7 +72,12 @@ test('renders variants correctly', () => {
   expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
-    <BaseFormControl variant="error" data-testid="wrapper">
+    <BaseFormControl
+      label="test"
+      labelId="testId"
+      variant="error"
+      data-testid="wrapper"
+    >
       <input />
     </BaseFormControl>,
   );
@@ -70,7 +90,7 @@ test('renders variants correctly', () => {
 
 test('renders prepend- and append-containers', () => {
   const { container, rerender } = render(
-    <BaseFormControl>
+    <BaseFormControl label="test" labelId="testId">
       <input />
     </BaseFormControl>,
   );
@@ -83,7 +103,7 @@ test('renders prepend- and append-containers', () => {
   ).not.toBeInTheDocument();
 
   rerender(
-    <BaseFormControl prepend="Fra" append="kr">
+    <BaseFormControl label="test" labelId="testId" prepend="Fra" append="kr">
       <input />
     </BaseFormControl>,
   );
