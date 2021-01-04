@@ -154,6 +154,7 @@ export const MultiSelect: React.FC<
     >
       <div className={classNames('eds-dropdown-wrapper', className)}>
         {label && <Label {...getLabelProps()}>{label}</Label>}
+        {/** @ts-ignore Ignored for now, until component is updated */}
         <BaseFormControl
           prepend={prepend}
           disabled={disabled}
