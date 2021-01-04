@@ -30,9 +30,9 @@ export type BaseFormControlProps = {
    */
   size?: 'medium' | 'large';
   /** Label til inputfeltet */
-  label: string;
+  label: React.ReactNode;
   /** En tooltip som forklarer labelen til inputfeltet */
-  labelTooltip: React.ReactNode;
+  labelTooltip?: React.ReactNode;
   /** Illustrerer om inputfeltet er påkrevd eller ikke */
   required?: boolean;
   /** ID som settes på labelen til inputfeltet */
@@ -42,8 +42,9 @@ export type BaseFormControlProps = {
   /** Om inputfeltet er fylt med data. Brukes for plassering av label */
   isFilled?: boolean;
   /**Ekstra props som sendes til label */
-  labelProps: { [key: string]: any };
-  [key: string]: any;
+  labelProps?: { [key: string]: any };
+  /** Ekstra styling */
+  style?: React.CSSProperties;
 };
 
 export const BaseFormControl = React.forwardRef<
@@ -68,6 +69,7 @@ export const BaseFormControl = React.forwardRef<
       feedback,
       labelId,
       labelProps,
+      style,
       ...rest
     },
     ref,
@@ -92,6 +94,7 @@ export const BaseFormControl = React.forwardRef<
             },
           )}
           ref={ref}
+          style={style}
           {...rest}
         >
           {prepend && (
