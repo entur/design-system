@@ -1,6 +1,6 @@
 import React from 'react';
 
-function usePersistedState<Type>(key: string, initialState: Type) {
+export function usePersistedState<Type>(key: string, initialState: Type) {
   const useStateResult = React.useState<Type>(() => {
     if (typeof window === 'undefined') {
       // Server side
