@@ -68,8 +68,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 type TextAreaBaseProps = {
   readOnly?: boolean;
   disabled?: boolean;
-  [key: string]: any;
-};
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
   ({ readOnly, disabled, onChange, ...rest }, ref) => {
@@ -79,7 +78,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
     } = useInputGroupContext();
 
     useOnMount(() => {
-      if (rest.value) {
+      if (rest.value || rest.defaultValue) {
         setFiller && !isInputFilled && setFiller(true);
       }
     });
