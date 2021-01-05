@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.0...@entur/typography@1.6.1) (2021-01-05)
+
+### Bug Fixes
+
+- **heading 3-5:** fix wrong html element for headings ([905d947](https://bitbucket.org/enturas/design-system/commits/905d9474dc19edea4f83cd3d5b02c1e02693c1ae))
+
 # [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.5.0...@entur/typography@1.6.0) (2020-12-04)
 
 ### Features

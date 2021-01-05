@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.24](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.23...@entur/dropdown@1.3.24) (2021-01-05)
+
+### Bug Fixes
+
+- **dropdown:** improve internal id to enhance a11y ([ca7b730](https://bitbucket.org/enturas/design-system/commits/ca7b730a8685356735b1eb4fd5052247016be313))
+
 ## [1.3.23](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.22...@entur/dropdown@1.3.23) (2020-12-04)
 
 **Note:** Version bump only for package @entur/dropdown

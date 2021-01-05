@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.41](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.40...@entur/chip@0.3.41) (2021-01-05)
+
+### Bug Fixes
+
+- **actionchip:** improved typings ([66b3acc](https://bitbucket.org/enturas/design-system/commits/66b3accad09a69a2c9cd0f8cd1221f2b32931489))
+- **choicechip:** improve typings ([c839400](https://bitbucket.org/enturas/design-system/commits/c839400ca651020bc685840d7a18a5d382d907b0))
+
 ## [0.3.40](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.39...@entur/chip@0.3.40) (2020-12-04)
 
 ### Bug Fixes

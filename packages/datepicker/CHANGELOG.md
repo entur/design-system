@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.8...@entur/datepicker@0.4.9) (2021-01-05)
+
+### Bug Fixes
+
+- **timepicker:** improve internal labelId usage ([3a799a3](https://bitbucket.org/enturas/design-system/commits/3a799a3b30d09ac563df3c121801888bc2eb03fe))
+
 ## [0.4.8](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.7...@entur/datepicker@0.4.8) (2020-12-04)
 
 ### Bug Fixes

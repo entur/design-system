@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.9.0...@entur/layout@1.9.1) (2021-01-05)
+
+**Note:** Version bump only for package @entur/layout
+
 # [1.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.8.3...@entur/layout@1.9.0) (2020-12-04)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.5...@entur/alert@0.7.6) (2021-01-05)
+
+### Bug Fixes
+
+- **expandablealertbox:** fix expand button bug for long titles ([52ccfe9](https://bitbucket.org/enturas/design-system/commits/52ccfe9188a8757f84f179e7a68f9a240aa0d68c))
+
 ## [0.7.5](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.4...@entur/alert@0.7.5) (2020-12-04)
 
 **Note:** Version bump only for package @entur/alert

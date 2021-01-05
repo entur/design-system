@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.2.2...@entur/table@4.3.0) (2021-01-05)
+
+### Features
+
+- **editablecell:** add outlined prop ([467b272](https://bitbucket.org/enturas/design-system/commits/467b2728b5a2206c7ab1c5fa3592458bb212872e))
+
 ## [4.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.2.1...@entur/table@4.2.2) (2020-12-04)
 
 ### Bug Fixes

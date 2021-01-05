@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.8...@entur/form@4.1.0) (2021-01-05)
+
+### Bug Fixes
+
+- **baseformcontrol:** improve typings on internal component ([8ef826a](https://bitbucket.org/enturas/design-system/commits/8ef826ac2d8733ced354b3a954ba5bcb34ec623c))
+- **inputgrouplabel:** upgrade label props from string to reactnode ([46421d5](https://bitbucket.org/enturas/design-system/commits/46421d538d4d8a5b49b163f0a41325aa5b390be7))
+- **radiopanel:** fix improper typing for size and title prop ([37e9419](https://bitbucket.org/enturas/design-system/commits/37e9419c17adec4560c2d9c18183e6d9f0307bfa))
+- **textarea:** fix text pos when defaultValue is used ([79d9780](https://bitbucket.org/enturas/design-system/commits/79d978079bac0da12664e0b83f14407c033906d3))
+- **textarea:** update internal prop usage ([351727e](https://bitbucket.org/enturas/design-system/commits/351727e3016434e13abd2b8b0f70e2e6ebe64f6b))
+- **textfield:** fix label pos when defaultvalue is used ([c117037](https://bitbucket.org/enturas/design-system/commits/c1170370988742ecd6f49cab327a5d31353ff5ba))
+- **textfield:** improve typings of rest props ([df5f460](https://bitbucket.org/enturas/design-system/commits/df5f4604368f6dd0667ba4c715463b6c18adcdb7))
+
+### Features
+
+- **checkbox:** add reduceclickarea prop ([449845f](https://bitbucket.org/enturas/design-system/commits/449845f966121103dd589d4d4bb18e2b4c16fb94))
+
 ## [4.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.7...@entur/form@4.0.8) (2020-12-04)
 
 ### Bug Fixes
