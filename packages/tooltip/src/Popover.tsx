@@ -14,7 +14,7 @@ type PopoverContextProps = {
   triggerElement?: React.RefObject<HTMLButtonElement>;
   contentElement: React.RefObject<HTMLDivElement>;
   styles: { [key: string]: React.CSSProperties };
-  attributes: { [key: string]: { [key: string]: string } };
+  attributes: { [key: string]: { [key: string]: string } | undefined };
   closeButtonProps: {};
   popoverContentProps: (e: PopoverContentCallbackProps) => {};
   triggerProps: () => {};
@@ -99,6 +99,7 @@ export const Popover: React.FC<PopoverProps> = ({
       role: 'dialog',
       'aria-modal': 'false',
       ref: contentElement,
+      onBlur: (e: React.FocusEvent) => console.log(e),
       onKeyDown: (event: React.KeyboardEvent) => {
         if (event.key === 'Escape') {
           showPopover && setShowPopover(false);
@@ -107,7 +108,7 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     return contentProps;
   }, [contentElement, showPopover]);
-  const contextValue = {
+  const contextValue: PopoverContextProps = {
     showPopover,
     triggerElement,
     contentElement,
