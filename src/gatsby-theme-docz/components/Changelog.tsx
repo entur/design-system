@@ -16,7 +16,7 @@ const Changelog = () => {
   return (
     <div>
       <GridContainer spacing="medium">
-        {query.allMarkdownRemark.edges.map(changelog => (
+        {query.allMarkdownRemark.edges.sort().map(changelog => (
           <GridItem small={6} medium={4} key={changelog.node.parent.name}>
             <NavigationCard
               title={`@entur/${changelog.node.parent.name}`}

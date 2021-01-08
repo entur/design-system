@@ -53,7 +53,7 @@ const LogoPreview = () => {
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          background: isContrast ? '' : colors.greys.grey30,
+          background: isContrast ? '' : colors.greys.grey80,
         }}
       >
         <img

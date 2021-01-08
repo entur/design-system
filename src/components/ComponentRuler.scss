@@ -30,7 +30,7 @@
 }
 
 .vertical-ruler-line {
-  background-color: $colors-greys-grey10;
+  background-color: $colors-greys-grey60;
   margin-top: 0.125rem;
   width: var(--ruler-line-width);
   display: flex;
@@ -40,7 +40,7 @@
   &::after {
     content: '';
     display: block;
-    background-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
     height: var(--ruler-end-length);
     width: var(--ruler-end-thickness);
     transform: rotate(90deg);
@@ -55,7 +55,7 @@
 }
 
 .horizontal-ruler-line {
-  background-color: $colors-greys-grey10;
+  background-color: $colors-greys-grey60;
   height: var(--ruler-line-width);
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@
   &::after {
     content: '';
     display: block;
-    background-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
     width: var(--ruler-end-length);
     height: var(--ruler-end-thickness);
     transform: rotate(90deg);
