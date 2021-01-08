@@ -12,14 +12,20 @@
     &-tag.eds-tag-chip {
       margin-left: $space-extra-small2;
       white-space: nowrap;
+      svg {
+        .eds-contrast & {
+          color: $colors-brand-blue;
+        }
+      }
       &:focus {
         outline: none;
       }
       .eds-contrast & {
-        background: $colors-brand-white;
         color: $colors-brand-blue;
+        background: $colors-blues-blue80;
+        border: $border-widths-small solid $colors-blues-blue70;
         .eds-tag-chip__close-button:hover {
-          background-color: $colors-blues-blue70;
+          background: $colors-blues-blue60;
         }
       }
     }
