@@ -24,7 +24,7 @@
   &__menu-button {
     appearance: none;
     background: transparent;
-    border: $border-widths-small solid $colors-greys-grey10;
+    border: $border-widths-small solid $colors-greys-grey60;
     border-radius: $border-radiuses-medium;
     color: inherit;
     font-family: inherit;
@@ -52,7 +52,7 @@
   align-items: center;
   appearance: none;
   background: transparent;
-  border: $border-widths-small solid $colors-greys-grey10;
+  border: $border-widths-small solid $colors-greys-grey60;
   border-radius: $border-radiuses-medium;
   color: inherit;
   cursor: pointer;
@@ -107,7 +107,7 @@
 }
 
 .eds-pagination__input-label {
-  border-left: $border-widths-small solid $colors-greys-grey10;
+  border-left: $border-widths-small solid $colors-greys-grey60;
   color: $colors-blues-blue40;
   font-size: $font-sizes-medium;
   margin-left: $space-extra-small;
@@ -122,7 +122,7 @@
 .eds-pagination__input-field {
   appearance: none;
   background: transparent;
-  border: $border-widths-small solid $colors-greys-grey10;
+  border: $border-widths-small solid $colors-greys-grey60;
   border-radius: $border-radiuses-medium;
   color: inherit;
   font-family: inherit;

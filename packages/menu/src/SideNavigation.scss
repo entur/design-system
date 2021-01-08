@@ -3,7 +3,7 @@
 
 .eds-side-navigation,
 .eds-side-navigation-group {
-  --primary-background-color: #{$colors-greys-grey40};
+  --primary-background-color: #{$colors-greys-grey90};
   --primary-text-color: #{$colors-brand-blue};
   .eds-contrast & {
     --primary-background-color: #{$colors-brand-blue};
@@ -47,7 +47,7 @@
     cursor: pointer;
     background: $colors-brand-white;
     box-shadow: $shadows-card-shadow;
-    border: $border-widths-small solid $colors-greys-grey10;
+    border: $border-widths-small solid $colors-greys-grey60;
     color: inherit;
     padding: 0;
     display: flex;
@@ -87,7 +87,7 @@
 
   // Nested sub menus
   & & {
-    background-color: $colors-greys-grey30;
+    background-color: $colors-greys-grey80;
     .eds-contrast &  {
       background-color: $colors-blues-blue10;
     }
@@ -115,7 +115,7 @@
   appearance: none;
   background: none;
   border: 0;
-  border-bottom: $border-widths-medium solid $colors-greys-grey20;
+  border-bottom: $border-widths-medium solid $colors-greys-grey70;
   border-radius: 0;
   color: var(--primary-text-color);
   cursor: pointer;
@@ -188,7 +188,7 @@
   background: none;
   border: none;
   border-radius: 0;
-  border-bottom: $border-widths-medium solid $colors-greys-grey20;
+  border-bottom: $border-widths-medium solid $colors-greys-grey70;
   color: $colors-blues-blue40;
   cursor: pointer;
   display: flex;

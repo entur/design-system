@@ -88,7 +88,7 @@
       }
       &-neutral {
         &:before {
-          background: $colors-greys-grey10;
+          background: $colors-greys-grey60;
           .eds-contrast & {
             background: $colors-blues-blue60;
           }
@@ -99,13 +99,13 @@
 
   &__body {
     > .eds-table__row {
-      border-bottom: $border-widths-default solid $colors-greys-grey20;
+      border-bottom: $border-widths-default solid $colors-greys-grey70;
       .eds-contrast &  {
         border-color: $colors-blues-blue20;
       }
       &--hover {
         &:hover {
-          background: $colors-greys-grey30;
+          background: $colors-greys-grey80;
           .eds-contrast &  {
             background: $colors-blues-blue10;
           }
@@ -126,7 +126,7 @@
     }
   }
   &__head {
-    border-bottom: $border-widths-default solid $colors-greys-grey20;
+    border-bottom: $border-widths-default solid $colors-greys-grey70;
     .eds-contrast &  {
       border-color: $colors-blues-blue20;
     }

@@ -14,7 +14,7 @@
     }
   }
   &__dropzone {
-    border: $border-widths-medium $colors-greys-grey10 dashed;
+    border: $border-widths-medium $colors-greys-grey60 dashed;
     display: inline-block;
     color: inherit;
     cursor: pointer;
@@ -47,7 +47,7 @@
       }
     }
     &--reject {
-      background: $colors-greys-grey20;
+      background: $colors-greys-grey70;
       border-color: $colors-validation-lava;
       opacity: 0.5;
     }

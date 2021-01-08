@@ -66,7 +66,7 @@
       height: $space-extra-small;
       &--active {
         color: inherit;
-        background: $colors-greys-grey20;
+        background: $colors-greys-grey70;
         position: relative;
         &:before {
           background: $colors-brand-blue;
@@ -109,7 +109,7 @@
 
       &--inactive {
         color: $colors-blues-blue40;
-        background: $colors-greys-grey20;
+        background: $colors-greys-grey70;
         .eds-contrast & {
           color: $colors-brand-lavender;
           background: $colors-blues-blue20;

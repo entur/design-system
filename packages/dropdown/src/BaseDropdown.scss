@@ -35,7 +35,7 @@
   line-height: 1rem;
   padding: 0.5rem;
   &:hover {
-    background: $colors-greys-grey30;
+    background: $colors-greys-grey80;
   }
   &:focus {
     outline: none;
@@ -49,7 +49,7 @@
 .eds-dropdown__divider {
   content: '';
   display: block;
-  background-color: $colors-greys-grey20;
+  background-color: $colors-greys-grey70;
   height: 1.5rem;
   width: 1px;
 }

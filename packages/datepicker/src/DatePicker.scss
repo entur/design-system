@@ -9,7 +9,7 @@
     }
   }
   &__day {
-    border: $colors-greys-grey20;
+    border: $colors-greys-grey70;
   }
 }
 
@@ -18,13 +18,13 @@
     border-bottom-color: $colors-brand-white;
 
     &::before {
-      border-bottom-color: $colors-greys-grey20;
+      border-bottom-color: $colors-greys-grey70;
       top: (0-$border-widths-default);
     }
   }
 }
 .react-datepicker {
-  border: $border-widths-default solid $colors-greys-grey20;
+  border: $border-widths-default solid $colors-greys-grey70;
   box-shadow: $shadows-card-shadow;
   .eds-contrast & {
     box-shadow: $shadows-card-shadow-contrast;
@@ -117,7 +117,7 @@
     line-height: $line-heights-extra-large4;
     vertical-align: middle;
     font-size: $font-sizes-medium;
-    outline: $border-widths-small solid $colors-greys-grey20;
+    outline: $border-widths-small solid $colors-greys-grey70;
     .eds-contrast .eds-form-control-wrapper--dark & {
       color: $colors-brand-blue;
     }
@@ -128,7 +128,7 @@
     &:hover {
       border-radius: 0;
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background-color: $colors-greys-grey30;
+        background-color: $colors-greys-grey80;
       }
     }
     &--outside-month {
@@ -138,13 +138,13 @@
       }
     }
     &--keyboard-selected {
-      background: $colors-greys-grey20;
+      background: $colors-greys-grey70;
       border-radius: 0;
       &:hover {
-        background: $colors-greys-grey30;
+        background: $colors-greys-grey80;
       }
       .eds-contrast .eds-form-control-wrapper--dark & {
-        background: $colors-greys-grey20;
+        background: $colors-greys-grey70;
       }
     }
     &--selected {
