@@ -195,6 +195,9 @@
     position: relative;
     margin: 0 $space-default;
     line-height: inherit;
+    &--tooltip {
+      position: static;
+    }
     svg {
       top: (0.125rem);
     }

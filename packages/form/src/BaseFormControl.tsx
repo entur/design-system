@@ -109,7 +109,7 @@ export const BaseFormControl = React.forwardRef<
           {children}
           {append && <div className="eds-form-control__append">{append}</div>}
           {labelTooltip && (
-            <div className="eds-form-control__append">
+            <div className="eds-form-control__append eds-form-control__append--tooltip">
               <Tooltip content={labelTooltip} placement="right">
                 <span className="eds-input-group__label-tooltip-icon">
                   <QuestionIcon />
