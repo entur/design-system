@@ -126,7 +126,7 @@ export const MultiSelect: React.FC<
       selectedItem,
     }: {
       type?: UseSelectStateChangeTypes;
-      selectedItem?: NormalizedDropdownItemType;
+      selectedItem?: NormalizedDropdownItemType | null;
     }) => {
       switch (type) {
         case useSelect.stateChangeTypes.MenuKeyDownEnter:
