@@ -99,7 +99,6 @@ export const Popover: React.FC<PopoverProps> = ({
       role: 'dialog',
       'aria-modal': 'false',
       ref: contentElement,
-      onBlur: (e: React.FocusEvent) => console.log(e),
       onKeyDown: (event: React.KeyboardEvent) => {
         if (event.key === 'Escape') {
           showPopover && setShowPopover(false);
