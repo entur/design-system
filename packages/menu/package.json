@@ -29,7 +29,7 @@
     "@entur/tokens": "^2.0.1",
     "@entur/typography": "^1.6.1",
     "@entur/utils": "^0.4.0",
-    "@reach/menu-button": "^0.10.5",
+    "@reach/menu-button": "^0.12.1",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
