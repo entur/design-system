@@ -3,6 +3,7 @@
 
 .eds-alert-box {
   border: $border-widths-small solid;
+  border-radius: $border-radiuses-medium;
   color: $colors-brand-blue;
   display: flex;
   padding: $space-small;
