@@ -5,7 +5,7 @@ export type ChoiceChipGroupProps = {
   /** Navnet til ChoiceChipsGroup */
   name: string;
   /** Verdien til den valgte ChoiceChipen */
-  value: string;
+  value: string | null;
   /** ChoiceChip-komponentene sendes inn som children */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en ChoiceChip klikkes på  */

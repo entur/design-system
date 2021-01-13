@@ -3,7 +3,7 @@ import React from 'react';
 type ChoiceChipGroupContextProps = {
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
+  value: string | null;
 };
 
 const ChoiceChipGroupContext = React.createContext<ChoiceChipGroupContextProps | null>(
