@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.0...@entur/table@4.3.1) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
 # [4.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.2.2...@entur/table@4.3.0) (2021-01-05)
 
 ### Features

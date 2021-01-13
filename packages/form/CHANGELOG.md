@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.1.0...@entur/form@4.2.0) (2021-01-13)
+
+### Bug Fixes
+
+- add support for static label in internal components ([010d767](https://bitbucket.org/enturas/design-system/commits/010d767a3759d5b927e0bc3c53f534957ebd0ad8))
+- fix overflow issues in label tooltip ([9c4537b](https://bitbucket.org/enturas/design-system/commits/9c4537bc9dbe78129598a9b8587cde6093b0e1e6))
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
+### Features
+
+- **textarea:** add disablelabelanimation prop ([d923a70](https://bitbucket.org/enturas/design-system/commits/d923a7076f4d7ee1a1d5f8748454eb0ed0e6d3c9))
+- **textfield:** add disablelabelanimation prop ([5be6c33](https://bitbucket.org/enturas/design-system/commits/5be6c3367c5f056281e653d35cdc97bf00048b93))
+
 # [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.0.8...@entur/form@4.1.0) (2021-01-05)
 
 ### Bug Fixes

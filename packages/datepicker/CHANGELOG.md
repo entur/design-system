@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.9...@entur/datepicker@0.5.0) (2021-01-13)
+
+### Bug Fixes
+
+- **nativetimepicker:** fix onchange bug ([c657561](https://bitbucket.org/enturas/design-system/commits/c65756127b3f7b4d5e515b6718d95f80fe5071eb))
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
+### Features
+
+- **datepicker:** add disable label animation prop ([118496c](https://bitbucket.org/enturas/design-system/commits/118496c6b291778d8e23c17e38a0f822708ef052))
+- **timepicker:** add disable label animation prop ([df55cae](https://bitbucket.org/enturas/design-system/commits/df55cae3fdd31d51909916171138a9502b43081e))
+
 ## [0.4.9](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.4.8...@entur/datepicker@0.4.9) (2021-01-05)
 
 ### Bug Fixes

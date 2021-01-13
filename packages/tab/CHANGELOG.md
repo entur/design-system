@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.19](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.18...@entur/tab@0.4.19) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+- update dependencies ([89d385f](https://bitbucket.org/enturas/design-system/commits/89d385f0900fd8dee36f46098620dc03d4ef998c))
+
 ## [0.4.18](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.17...@entur/tab@0.4.18) (2020-12-04)
 
 **Note:** Version bump only for package @entur/tab

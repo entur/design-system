@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.9](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.8...@entur/travel@4.1.9) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
 ## [4.1.8](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.7...@entur/travel@4.1.8) (2021-01-05)
 
 **Note:** Version bump only for package @entur/travel

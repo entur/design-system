@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.11](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.4.10...@entur/tooltip@2.4.11) (2021-01-13)
+
+### Bug Fixes
+
+- **tooltip:** set maxwidth for tooltip ([fc5eba0](https://bitbucket.org/enturas/design-system/commits/fc5eba02d44bf554505866e0367d779584cf53b4))
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+- update "attribute" typings for upgraded dependency ([0d5d661](https://bitbucket.org/enturas/design-system/commits/0d5d6614af3326ef8d75525cac38a6cddd8ab9d2))
+- update poppperjs dependency ([1ad19eb](https://bitbucket.org/enturas/design-system/commits/1ad19eb025929f9c9632eeaeed932b815d304f57))
+
 ## [2.4.10](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.4.9...@entur/tooltip@2.4.10) (2021-01-05)
 
 **Note:** Version bump only for package @entur/tooltip

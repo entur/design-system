@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.24...@entur/dropdown@1.4.0) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+- update downshift dependency ([90fdadc](https://bitbucket.org/enturas/design-system/commits/90fdadc7b673526fcc3b0def78d7803d0fe723c1))
+- **multiselect:** fix improper colors on chips in contrast ([d226c39](https://bitbucket.org/enturas/design-system/commits/d226c3981092ab1e9dcf16d52a66a88a1de6f55f))
+
+### Features
+
+- **dropdown:** add disable label animation prop ([fd0d040](https://bitbucket.org/enturas/design-system/commits/fd0d040079f22fb83a7656d295b9c2270f30b6aa))
+
 ## [1.3.24](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.23...@entur/dropdown@1.3.24) (2021-01-05)
 
 ### Bug Fixes

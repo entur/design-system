@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@2.0.1...@entur/tokens@3.0.0) (2021-01-13)
+
+### Features
+
+- **color:** extend grey color range with darker colors ([b4a7096](https://bitbucket.org/enturas/design-system/commits/b4a709670422e371155e3cabc3deba01417a0397))
+
+### BREAKING CHANGES
+
+- **color:** old values moved up - transpose greys by adding 50 - e.g. grey -> grey50 or grey20 -> grey70
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@2.0.0...@entur/tokens@2.0.1) (2020-12-04)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.7](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.6...@entur/alert@0.7.7) (2021-01-13)
+
+### Bug Fixes
+
+- **alerts:** set border radius on all alerts ([fd477df](https://bitbucket.org/enturas/design-system/commits/fd477dfe49fa414d87af793b3b19ca0fdbd42762))
+
 ## [0.7.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.5...@entur/alert@0.7.6) (2021-01-05)
 
 ### Bug Fixes

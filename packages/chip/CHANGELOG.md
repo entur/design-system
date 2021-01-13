@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.41...@entur/chip@0.4.0) (2021-01-13)
+
+### Features
+
+- **choicechip:** update value type with support for null ([0311c32](https://bitbucket.org/enturas/design-system/commits/0311c329f9a35a8d150c48e26d53bb902e4b3787))
+
 ## [0.3.41](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.40...@entur/chip@0.3.41) (2021-01-05)
 
 ### Bug Fixes

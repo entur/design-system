@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.1...@entur/menu@3.5.2) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+- update dependency ([ced744f](https://bitbucket.org/enturas/design-system/commits/ced744f939ad05d530a483340dc33f6085d100ec))
+
 ## [3.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.0...@entur/menu@3.5.1) (2021-01-05)
 
 **Note:** Version bump only for package @entur/menu

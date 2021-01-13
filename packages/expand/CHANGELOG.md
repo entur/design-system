@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.23](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.22...@entur/expand@3.2.23) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
 ## [3.2.22](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.21...@entur/expand@3.2.22) (2021-01-05)
 
 **Note:** Version bump only for package @entur/expand

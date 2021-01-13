@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.9.1...@entur/layout@1.9.2) (2021-01-13)
+
+### Bug Fixes
+
+- transpose grey colors for updated color tokens ([d6a444c](https://bitbucket.org/enturas/design-system/commits/d6a444c2c37339b9bac0702738ed52693367d344))
+
 ## [1.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.9.0...@entur/layout@1.9.1) (2021-01-05)
 
 **Note:** Version bump only for package @entur/layout

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.2...@entur/icons@1.16.0) (2021-01-13)
+
+### Bug Fixes
+
+- update delete icon look ([b939ffb](https://bitbucket.org/enturas/design-system/commits/b939ffb20cae652dd8ae3c92ceb9b12500df5c76))
+
+### Features
+
+- add admin and privacy icon ([b6c891d](https://bitbucket.org/enturas/design-system/commits/b6c891d7246f447fffaf351e1c6e376ab6f8d8d7))
+
 ## [1.15.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.1...@entur/icons@1.15.2) (2020-12-04)
 
 ### Bug Fixes
