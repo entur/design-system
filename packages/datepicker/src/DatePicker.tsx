@@ -35,6 +35,10 @@ export type DatePickerProps = {
   /** Valideringsvariant */
   variant?: VariantType;
   style?: React.CSSProperties;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & ReactDatePickerProps;
 
 export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
@@ -49,6 +53,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       label,
       feedback,
       variant,
+      disableLabelAnimation = false,
       ...rest
     },
     ref,
@@ -64,6 +69,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         feedback={feedback}
         variant={variant}
         ref={ref}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <DatePickerBase
           className={className}

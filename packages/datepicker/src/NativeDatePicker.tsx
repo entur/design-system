@@ -18,6 +18,10 @@ export type NativeDatePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeDatePicker = React.forwardRef<
@@ -25,7 +29,16 @@ export const NativeDatePicker = React.forwardRef<
   NativeDatePickerProps
 >(
   (
-    { className, style, label, onChange, feedback, variant, ...rest },
+    {
+      className,
+      style,
+      label,
+      onChange,
+      feedback,
+      variant,
+      disableLabelAnimation,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const nativedatepickerId = useRandomId('eds-nativetimepicker');
@@ -38,6 +51,7 @@ export const NativeDatePicker = React.forwardRef<
         feedback={feedback}
         variant={variant}
         labelId={nativedatepickerId}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <NativeDatePickerBase
           onChange={onChange}
