@@ -41,14 +41,14 @@ test('GridContainer renders GridItem as child, and GridItem has several props se
 
 test('Grid works with as-prop set to anchor tag', () => {
   const hrefLink = '#testerHref';
-  const { getByTestId } = render(
+  const { getByTestId, rerender } = render(
     <GridContainer
       spacing="medium"
       as="a"
       href={hrefLink}
       data-testid="container"
     >
-      <GridItem as="a" href={hrefLink} small={12} data-testid="item">
+      <GridItem small={12} data-testid="item">
         Cool
       </GridItem>
     </GridContainer>,
@@ -58,6 +58,13 @@ test('Grid works with as-prop set to anchor tag', () => {
   expect(testerContainer.nodeName).toBe('A');
   expect(testerContainer).toHaveAttribute('href', hrefLink);
 
+  rerender(
+    <GridContainer spacing="medium" data-testid="container">
+      <GridItem as="a" href={hrefLink} small={12} data-testid="item">
+        Cool
+      </GridItem>
+    </GridContainer>,
+  );
   const testerItem = getByTestId('item');
   expect(testerItem.nodeName).toBe('A');
   expect(testerItem).toHaveAttribute('href', hrefLink);
