@@ -263,7 +263,7 @@ const ColorDrawer: React.FC<{
             color={color.hex}
           ></ContrastRow>
           <ContrastRow
-            testColor={colors.greys.grey10}
+            testColor={colors.greys.grey60}
             color={color.hex}
           ></ContrastRow>
         </TableBody>

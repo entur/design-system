@@ -9,7 +9,7 @@
     font-size: $font-sizes-medium;
     font-family: inherit;
     color: var(--primary-text-color);
-    background: $colors-greys-grey40;
+    background: $colors-greys-grey90;
     display: block;
     height: $space-extra-large3;
     cursor: pointer;
@@ -36,10 +36,10 @@
   }
 }
 .eds-overflow-menu__item + .eds-overflow-menu__item {
-  border-top: $border-widths-small solid $colors-greys-grey20;
+  border-top: $border-widths-small solid $colors-greys-grey70;
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
-  border: $border-widths-small solid $colors-greys-grey20;
+  border: $border-widths-small solid $colors-greys-grey70;
   border-radius: $border-radiuses-medium;
   box-shadow: $shadows-card-shadow;
   overflow: hidden;

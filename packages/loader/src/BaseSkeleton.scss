@@ -14,8 +14,8 @@
     height: $space-default;
   }
   &--animate {
-    --background-color: #{$colors-greys-grey30};
-    --shimmer-highlight-color: #{rgba($colors-greys-grey30, 0.5)};
+    --background-color: #{$colors-greys-grey80};
+    --shimmer-highlight-color: #{rgba($colors-greys-grey80, 0.5)};
     animation: shimmer 2s infinite linear;
     background: linear-gradient(
       to right,

@@ -17,7 +17,7 @@
       &:checked {
         + .eds-radio-panel__container {
           border-color: $colors-brand-blue;
-          background: $colors-greys-grey40;
+          background: $colors-greys-grey90;
           .eds-contrast & {
             border-color: $colors-brand-lavender;
             background: $colors-blues-blue20;
@@ -45,7 +45,7 @@
   }
   &__container {
     background: $colors-brand-white;
-    border: $border-widths-medium solid $colors-greys-grey10;
+    border: $border-widths-medium solid $colors-greys-grey60;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@
     width: 2rem;
     margin-left: $space-medium;
     border-radius: 50%;
-    border: $border-widths-medium solid $colors-greys-grey20;
+    border: $border-widths-medium solid $colors-greys-grey70;
     display: flex;
     align-items: center;
     justify-content: center;

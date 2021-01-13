@@ -11,7 +11,7 @@
 
   &.eds-editable-cell--outlined {
     .eds-form-control-wrapper {
-      border-color: $colors-greys-grey10;
+      border-color: $colors-greys-grey60;
       background: $colors-brand-white;
       .eds-contrast &  {
         border-color: $colors-blues-blue20;
@@ -27,7 +27,7 @@
     }
 
     .eds-table__row:hover & {
-      border-color: $colors-greys-grey10;
+      border-color: $colors-greys-grey60;
       background: $colors-brand-white;
       &:active,
       &:focus-within {

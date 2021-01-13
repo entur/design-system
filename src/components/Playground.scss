@@ -1,12 +1,12 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .playground {
-  border: 0.1875rem solid $colors-greys-grey30; //3px
+  border: 0.1875rem solid $colors-greys-grey80; //3px
   padding: 1em;
 }
 
 .playground__controls {
-  background-color: $colors-greys-grey30;
+  background-color: $colors-greys-grey80;
   display: flex;
   justify-content: space-between;
   padding: $space-extra-small2 $space-default;

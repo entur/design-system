@@ -35,13 +35,13 @@
   .eds-switch__switch {
     svg g, // This is to colorize every type of icon that will potentially be included
     path {
-      fill: $colors-greys-grey;
+      fill: $colors-greys-grey50;
     }
   }
   &__switch {
     margin-right: $space-small;
     position: relative;
-    background-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
     content: '';
     display: block;
     transition: all $timings-fast ease-out;

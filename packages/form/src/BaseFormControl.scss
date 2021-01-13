@@ -13,7 +13,7 @@
   align-items: center;
   background-color: $colors-brand-white;
   border-radius: $border-radiuses-medium;
-  border: $border-widths-medium solid $colors-greys-grey10;
+  border: $border-widths-medium solid $colors-greys-grey60;
   color: $colors-brand-blue;
   display: flex;
   position: relative;
@@ -35,7 +35,7 @@
 
   // Variations
   &--disabled {
-    background-color: $colors-greys-grey20;
+    background-color: $colors-greys-grey70;
     color: $colors-blues-blue40;
     border-color: transparent;
     pointer-events: none;
@@ -55,7 +55,7 @@
     pointer-events: none;
     cursor: default;
     border-color: transparent;
-    background: $colors-greys-grey40;
+    background: $colors-greys-grey90;
 
     .eds-contrast &  {
       background: $colors-blues-blue10;

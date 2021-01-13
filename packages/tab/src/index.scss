@@ -19,7 +19,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
     display: block;
     height: $border-widths-default;
     width: inherit;
@@ -36,8 +36,8 @@
 
 .eds-tab {
   appearance: none;
-  background: $colors-greys-grey30;
-  border: $border-widths-default solid $colors-greys-grey30;
+  background: $colors-greys-grey80;
+  border: $border-widths-default solid $colors-greys-grey80;
   border-radius: $border-radiuses-medium $border-radiuses-medium 0 0;
   color: $colors-brand-blue;
   cursor: pointer;
@@ -59,8 +59,8 @@
     color: $colors-brand-white;
   }
   &:hover {
-    background-color: $colors-greys-grey10;
-    border-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
+    border-color: $colors-greys-grey60;
     .eds-contrast & {
       background-color: $colors-brand-lavender;
       border-color: $colors-brand-lavender;
@@ -79,7 +79,7 @@
     bottom: -$border-widths-default;
     left: -$border-widths-default;
     right: -$border-widths-default;
-    background-color: $colors-greys-grey10;
+    background-color: $colors-greys-grey60;
     display: block;
     height: $border-widths-default;
     .eds-contrast & {
@@ -89,7 +89,7 @@
 
   &[aria-selected='true'] {
     background-color: $colors-brand-white;
-    border-color: $colors-greys-grey10;
+    border-color: $colors-greys-grey60;
     color: $colors-brand-blue;
     font-weight: $font-weights-heading;
 
@@ -126,9 +126,9 @@
   }
 
   &[disabled] {
-    background: $colors-greys-grey40;
-    border-color: $colors-greys-grey40;
-    color: $colors-greys-grey10;
+    background: $colors-greys-grey90;
+    border-color: $colors-greys-grey90;
+    color: $colors-greys-grey60;
     pointer-events: none;
     .eds-contrast & {
       background: $colors-blues-blue10;

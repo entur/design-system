@@ -4,7 +4,7 @@
 .site-sidebar-wrapper {
   width: 100%;
   transition: max-width $timings-fast ease-out;
-  background: $colors-greys-grey40;
+  background: $colors-greys-grey90;
   @include for-desktop {
     max-width: 18rem;
     height: 100vh;

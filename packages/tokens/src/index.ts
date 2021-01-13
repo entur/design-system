@@ -33,11 +33,16 @@ export const colors = {
     blue90: '#f5f5f8',
   },
   greys: {
-    grey: '#949494',
-    grey10: '#d1d3d3',
-    grey20: '#e9e9e9',
-    grey30: '#f3f3f3',
-    grey40: '#f8f8f8',
+    grey: '#121212',
+    grey10: '#2a2a2a',
+    grey20: '#353535',
+    grey30: '#4d4d4d',
+    grey40: '#646464',
+    grey50: '#949494',
+    grey60: '#d1d3d3',
+    grey70: '#e9e9e9',
+    grey80: '#f3f3f3',
+    grey90: '#f8f8f8',
   },
   validation: {
     sky: '#0082b9',
@@ -91,7 +96,7 @@ export const colors = {
   },
 };
 
-const grey10Rgb = hexRgb(colors.greys.grey10, { format: 'array' })
+const grey60Rgb = hexRgb(colors.greys.grey60, { format: 'array' })
   .toString()
   .slice(0, -2);
 const blue20Rgb = hexRgb(colors.blues.blue20, { format: 'array' })
@@ -103,8 +108,8 @@ const whiteRgb = hexRgb(colors.brand.white, { format: 'array' })
 export const shadows = {
   focus: `0 0 0 0.25rem ${colors.misc.focus}`,
   focusContrast: `0 0 0 0.25rem rgba(${whiteRgb}, 0.3)`,
-  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${grey10Rgb}, 0.7)`,
-  cardShadowHover: `0 0.125rem 1rem 0 rgba(${grey10Rgb}, 0.7)`,
+  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${grey60Rgb}, 0.7)`,
+  cardShadowHover: `0 0.125rem 1rem 0 rgba(${grey60Rgb}, 0.7)`,
   cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,
   cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 0.7)`,
 };

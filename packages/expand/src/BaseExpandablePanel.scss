@@ -14,7 +14,7 @@
 
 .eds-expandable-panel__trigger {
   appearance: none;
-  background: $colors-greys-grey20;
+  background: $colors-greys-grey70;
   border: none;
   border-radius: $border-radiuses-medium;
   color: inherit;
@@ -34,7 +34,7 @@
   }
 
   &:hover {
-    background: $colors-greys-grey30;
+    background: $colors-greys-grey80;
     .eds-contrast & {
       background: $colors-blues-blue30;
     }
