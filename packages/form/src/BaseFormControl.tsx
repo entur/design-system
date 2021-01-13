@@ -45,6 +45,8 @@ export type BaseFormControlProps = {
   labelProps?: { [key: string]: any };
   /** Ekstra styling */
   style?: React.CSSProperties;
+  /** Plasserer labelen statisk på toppen av inputfeltet */
+  disableLabelAnimation?: boolean;
 };
 
 export const BaseFormControl = React.forwardRef<
@@ -70,6 +72,7 @@ export const BaseFormControl = React.forwardRef<
       labelId,
       labelProps,
       style,
+      disableLabelAnimation = false,
       ...rest
     },
     ref,
@@ -104,6 +107,7 @@ export const BaseFormControl = React.forwardRef<
             label={label}
             required={required}
             labelId={labelId}
+            staticAnimation={disableLabelAnimation}
             {...labelProps}
           />
           {children}
