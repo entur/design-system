@@ -76,7 +76,7 @@ const NativeTimePickerBase = React.forwardRef<
       setFiller && isTimepickerFilled && setFiller(false);
     }
     if (onChange) {
-      rest.onChange(event);
+      onChange(event);
     }
   };
   return (
