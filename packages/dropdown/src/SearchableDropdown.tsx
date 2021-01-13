@@ -17,6 +17,7 @@ type SearchableDropdownProps = {
   listStyle?: { [key: string]: any };
   clearable: boolean;
   itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  disableLabelAnimation?: boolean;
   [key: string]: any;
 };
 
@@ -51,6 +52,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     LowerCaseFilterTest(item, inputValue),
   label,
   labelId,
+  disableLabelAnimation,
   ...rest
 }) => {
   const {
@@ -80,6 +82,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       label={label}
       labelId={labelId}
       isFilled={selectedItem ? true : false}
+      disableLabelAnimation={disableLabelAnimation}
     >
       <input
         {...getInputProps({

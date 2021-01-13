@@ -14,6 +14,7 @@ type RegularDropdownProps = {
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
   labelId: string;
+  disableLabelAnimation?: boolean;
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -25,6 +26,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   items,
   label,
   labelId,
+  disableLabelAnimation,
   ...rest
 }) => {
   const {
@@ -44,6 +46,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       label={label}
       labelId={labelId}
       isFilled
+      disableLabelAnimation={disableLabelAnimation}
       {...rest}
     >
       <button

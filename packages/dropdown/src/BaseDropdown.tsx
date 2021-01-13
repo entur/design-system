@@ -20,6 +20,7 @@ type BaseDropdownProps = {
   listStyle?: { [key: string]: any };
   isFilled?: boolean;
   labelId: string;
+  disableLabelAnimation?: boolean;
   [key: string]: any;
 };
 export const BaseDropdown: React.FC<BaseDropdownProps> = ({
@@ -35,6 +36,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   label,
   isFilled = false,
   labelId,
+  disableLabelAnimation,
   ...rest
 }) => {
   const { getLabelProps } = useDownshift();
@@ -54,6 +56,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
         isFilled={isFilled}
         labelProps={getLabelProps()}
         labelId={labelId}
+        disableLabelAnimation={disableLabelAnimation}
         {...rest}
       >
         {children}

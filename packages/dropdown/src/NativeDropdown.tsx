@@ -36,6 +36,10 @@ export type NativeDropdownProps = {
   value?: string;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
   [key: string]: any;
 };
 
@@ -50,6 +54,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   label,
   variant,
   feedback,
+  disableLabelAnimation,
   ...rest
 }) => {
   const { items: normalizedItems, loading } = useResolvedItems(items);
@@ -73,6 +78,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
       variant={variant}
       feedback={feedback}
       labelId={nativeDropdownId}
+      disableLabelAnimation={disableLabelAnimation}
     >
       <select
         aria-invalid={variant === 'error'}

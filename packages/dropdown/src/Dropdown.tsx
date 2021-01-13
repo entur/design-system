@@ -58,6 +58,10 @@ type DropdownProps = {
    * @default Enkel tekstsammenligning
    */
   itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
@@ -84,6 +88,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   style,
   listStyle,
   itemFilter,
+  disableLabelAnimation,
   ...rest
 }) => {
   const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
@@ -130,6 +135,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           listStyle={listStyle}
           clearable={clearable}
           labelId={dropdownId}
+          disableLabelAnimation={disableLabelAnimation}
           {...searchAbleProps}
         />
       </DropdownInputGroup>
