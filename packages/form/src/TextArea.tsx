@@ -21,6 +21,10 @@ export type TextAreaProps = {
   labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextArea */
   feedback?: string;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -35,6 +39,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       feedback,
       labelTooltip,
       onChange,
+      disableLabelAnimation,
       ...rest
     },
     ref: React.Ref<HTMLTextAreaElement>,
@@ -51,6 +56,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelId={textAreaId}
         feedback={feedback}
         labelTooltip={labelTooltip}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <TextAreaBase
           readOnly={readOnly}
