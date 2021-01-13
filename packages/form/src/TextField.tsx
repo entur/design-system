@@ -28,6 +28,10 @@ export type TextFieldProps = {
    * @default "medium"
    */
   size?: 'medium' | 'large';
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -46,6 +50,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       labelTooltip,
       feedback,
       onChange,
+      disableLabelAnimation,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -66,6 +71,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         labelTooltip={labelTooltip}
         labelId={textFieldId}
         feedback={feedback}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <TextFieldBase
           disabled={disabled}
