@@ -36,6 +36,10 @@ export type TimePickerProps = {
   variant?: VariantType;
   style?: React.CSSProperties;
   labelTooltip?: React.ReactNode;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & ReactDatePickerProps;
 
 export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
@@ -50,6 +54,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       labelTooltip,
       feedback,
       variant,
+      disableLabelAnimation,
       ...rest
     },
     ref,
@@ -65,6 +70,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
         labelTooltip={labelTooltip}
         variant={variant}
         feedback={feedback}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <TimePickerBase
           selectedTime={selectedTime}

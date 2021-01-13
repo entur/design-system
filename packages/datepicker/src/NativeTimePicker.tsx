@@ -18,6 +18,10 @@ export type NativeTimePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeTimePicker = React.forwardRef<
@@ -25,7 +29,16 @@ export const NativeTimePicker = React.forwardRef<
   NativeTimePickerProps
 >(
   (
-    { className, style, onChange, label, feedback, variant, ...rest },
+    {
+      className,
+      style,
+      onChange,
+      label,
+      feedback,
+      variant,
+      disableLabelAnimation,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const nativetimepickerId = useRandomId('eds-nativetimepicker');
@@ -38,6 +51,7 @@ export const NativeTimePicker = React.forwardRef<
         feedback={feedback}
         variant={variant}
         labelId={nativetimepickerId}
+        disableLabelAnimation={disableLabelAnimation}
       >
         <NativeTimePickerBase
           onChange={onChange}
