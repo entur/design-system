@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type StrongTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type StrongTextOwnProps = {
 };
 
 export type StrongTextProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, StrongTextOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<StrongTextOwnProps, E>;
 
 const defaultElement = 'strong';
 
@@ -28,19 +28,22 @@ export const StrongText = <
 >({
   className,
   margin = 'both',
+  as,
   ...rest
-}: StrongTextProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-strong-text',
-      {
-        [`eds-strong-text--margin-top`]: margin === 'top',
-        [`eds-strong-text--margin-bottom`]: margin === 'bottom',
-        [`eds-strong-text--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: StrongTextProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-strong-text',
+        {
+          [`eds-strong-text--margin-top`]: margin === 'top',
+          [`eds-strong-text--margin-bottom`]: margin === 'bottom',
+          [`eds-strong-text--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

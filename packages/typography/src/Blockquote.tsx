@@ -4,10 +4,12 @@ import classNames from 'classnames';
 type BlockquoteProps = {
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.BlockquoteHTMLAttributes<HTMLElement>,
+  HTMLElement
+>;
 
-export const Blockquote: React.FC<BlockquoteProps> = ({
+export const Blockquote: React.FunctionComponent<BlockquoteProps> = ({
   className,
   ...rest
 }) => {
@@ -19,10 +21,9 @@ export const Blockquote: React.FC<BlockquoteProps> = ({
 type BlockquoteFooterProps = {
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
-export const BlockquoteFooter: React.FC<BlockquoteFooterProps> = ({
+export const BlockquoteFooter: React.FunctionComponent<BlockquoteFooterProps> = ({
   className,
   ...rest
 }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type SubLabelOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,27 +18,30 @@ export type SubLabelOwnProps = {
 };
 
 export type SubLabelProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SubLabelOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<SubLabelOwnProps, E>;
 
 const defaultElement = 'span';
 
 export const SubLabel = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
+  as,
   ...rest
-}: SubLabelProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-sub-label',
-      {
-        [`eds-sub-label--margin-top`]: margin === 'top',
-        [`eds-sub-label--margin-bottom`]: margin === 'bottom',
-        [`eds-sub-label--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: SubLabelProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-sub-label',
+        {
+          [`eds-sub-label--margin-top`]: margin === 'top',
+          [`eds-sub-label--margin-bottom`]: margin === 'bottom',
+          [`eds-sub-label--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

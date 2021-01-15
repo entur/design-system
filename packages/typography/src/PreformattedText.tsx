@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type PreformattedTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -15,7 +15,7 @@ export type PreformattedTextOwnProps = {
 
 export type PreformattedTextProps<
   E extends React.ElementType
-> = PolymorphicComponentProps<E, PreformattedTextOwnProps>;
+> = PolymorphicPropsWithoutRef<PreformattedTextOwnProps, E>;
 
 const defaultElement = 'pre';
 
@@ -23,11 +23,14 @@ export const PreformattedText = <
   E extends React.ElementType = typeof defaultElement
 >({
   className,
+  as,
   ...rest
-}: PreformattedTextProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames('eds-preformatted-text', className)}
-    {...rest}
-  />
-);
+}: PreformattedTextProps<E>): JSX.Element => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames('eds-preformatted-text', className)}
+      {...rest}
+    />
+  );
+};
