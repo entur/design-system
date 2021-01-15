@@ -26,9 +26,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
       className={classNames('eds-dropdown-list', {
         'eds-dropdown-list--open': isOpen,
       })}
-      {...getMenuProps({
-        ...rest,
-      })}
+      {...getMenuProps()}
+      {...rest}
     >
       {isOpen
         ? items.map((item, index) => (
