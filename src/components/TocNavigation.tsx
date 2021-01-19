@@ -41,15 +41,15 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
 
 export const TocNavigation: React.FC = () => {
   const currentDoc = useCurrentDoc() as Entry;
-  if (currentDoc.removeToc) {
-    return null;
-  }
   const headings = currentDoc
     ? currentDoc.headings.filter(
         heading => heading.depth > 1 && heading.depth < 4,
       )
     : [];
   const activeHeading = useCurrentActiveHeading(headings);
+  if (currentDoc.removeToc) {
+    return null;
+  }
   if (headings.length < 2) {
     return null;
   }
