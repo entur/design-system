@@ -1,6 +1,6 @@
 ---
 name: Universell utforming
-description: Universell utforming er et lovkrav for alle våre applikasjoner. Samtidig er det en selvfølge, da vi ønsker å tilby våre tjenester til flest mulig.
+description: Universell utforming (UU) bygger på tanken om at tjenester skal være tilgjengelige for alle, uavhengig av alder, funksjonsevne og utdanningsnivå.
 route: /universell-utforming/
 parent: Universell utforming
 index: true
@@ -11,19 +11,48 @@ import PageHeader from '~/components/PageHeader';
 
 <PageHeader></PageHeader>
 
-Universelt utformede løsninger sikrer at flest mulig forstår og kan bruke dem.
+Universelt utformede løsninger sikrer at flest mulig forstår og kan bruke dem, og Entur skal være gode på universell utforming. Det er en viktig designbeslutning å inkludere alle, ikke bare fordi vi må på grunn av lovkrav, men fordi det er det riktige å gjøre av humane årsaker.
 
-Alle produkter som vi leverer ut til noen som helst slags sluttbruker, skal oppfylle de grunnleggende kravene til universell utforming. Lovverket er tydelig på hvilke krav som må innfris, og at det gjelder alt vi leverer.
+Enturs samfunnsansvar er at kollektive reiser skal være førstevalget, og det skal være tilgjengelig for alle. Enturs digitale løsninger må innfri krav om universell utforming, og den informasjonen som vi samler inn og viser ut i våre egne flater - og formidler videre til andre aktører – skal også være tilpasset behovene til et bredt spekter av reisende.
 
-## Retningslinjer for å sikre universell utforming
+## Motivasjon
 
-Alle team bør ha som mål å alltid ha en eller to prioriterte oppgaver som går på enten:
+Det er god samfunnsøkonomi med selvhjulpne medborgere, og det er et viktig demokratisk prinsipp at alle kan delta i ulike digitale kanaler.
 
-- Forbedring av Voice-over, skalering av tekst, språkstøtte og annen funksjonalitet som er spesielt tilpasset ulike brukergrupper.
-- Designforbedringer som tydeligere grafisk utforming, bedre tekster - eller en iterasjon som resulterer i en bedre og mer universell måte å løse et problem på.
+I følge WCAG 2.0 skal alle nettsteder og apper som er omfattet av regelverket (koblet til internett) være universelt utformet fra 2021. Når EU’s webdirektiv (WAD) blir innført i Norge, kommer det flere krav.
+Det viktigste av de nye kravene er at virksomheter skal ha en tilgjengelighetserklæring for hvert nettsted og mobilapplikasjon som de har. Produkteier er ansvarlig for at dette er på plass.
 
-## Tips til verktøy
+WCAG 2.1 bygger på 2.0, men har tydeligere formulerte krav til apper og mobile flater. WCAG 2.1 er fortsatt ikke vedtatt i Norge, men det kommer trolig snart.
 
-- [Difi](https://uu.difi.no/)
-- [WCAG 2.0-standarden](https://uu.difi.no/krav-og-regelverk/wcag-20-standarden)
-- [Fargekontrastkalkulator](https://webaim.org/resources/contrastchecker/)
+## Ansvar og ressurspersoner i Entur
+
+Hvert team er ansvarlig for at de digitale produktene de lager oppfyller krav til universell utforming.
+
+- Produkteier har overordnet ansvar for at produktet innfrir og at oppgaver for god brukeropplevelse prioriteres i henhold til tilgjengelighetserklæringen.
+- UX-designer er ansvarlig for at designprinsipper ivaretar design for alle.
+- Grafisk designer er ansvarlig for at detaljert design utføres i henhold til kravene.
+- Utvikler er ansvarlig for god kodekvalitet som tilrettelegger for tilgjengelighet.
+
+Designsystemet er en ekstern ressurs som kan rådspørres hva gjelder utførselse. [Anne Bèrard-Andersen](mailto:anne.berard-andersen@entur.org) er ansvarlig for Universell utforming i Entur.
+
+## UU i korte trekk
+
+De viktigste temaene, som kan treffe absolutt alle våre brukere og som er aktuelle for alle våre applikasjoner, er kontraster, fontstørrelser og zoom, kognitiv belastning, tastaturnavigasjon og skjermleser.
+
+For å oppnå god UU på tvers av alle produktene til Entur, er det viktige at alle sitter på et likt grunnlag om hva som er viktig i designingen og utviklingen av et produkt.
+
+### For designere
+
+1. **Design for alle**: Legge til rette for at produktet skal være responsive, slik at alle elementene er tilpasset til flaten man benytter.Vi ønsker å tilby en god brukeropplevelse for alle, også de som har en temporær eller permanent funksjonsnedsettelse.
+2. **Språk**: Språket skal være enkelt å forstå, men presist nok til å være korrekt. Vi bør unngå internt språk og forkortelser. Mengde og type tekst skal alltid tilpasses tiltenkt målgruppe og situasjon.
+3. **Kontrast**: For å sikre god lesbarhet i våre applikasjoner er det viktig å opprettholde kontrastkrav for farger på nett.
+4. **Fontstørrelser**: Sikre at brukere kan overstyre tekststørrelser for å gjøre teksten lettere å lese.
+5. **Visuell feedback**: Relevant visuell feedback til brukeren, eksempelvis gode valideringstekster for skjemaer og input.
+6. **Klikkflate**: God trykkflate på interaktive elementer.
+
+### For utviklere
+
+1. **God semantisk HTML**: Eksempelvis `section`, `nav` og `main`, for henoldsvis seksjoner, navigering og hovedinnholdet i applikasjonen sin. [Les mer om semantisk html her](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML).
+2. **Tastaturnavigasjon**: Legge til rette for god tastaturnavigasjon med fokuserbarhet på relevante objekter.
+3. **Skjermleser**: Legge til rette for skjermleser. Alt-tekst på bilder, aria-labels. Teste med skjermleser for å sikre at alt i grensesnittet er tilgjengelig, og ligger i riktig rekkefølge.
+4. **Responsivitet**: Legge til rette for at produktet skal være responsive, slik at alle elementene er tilpasset til flaten man benytter.
