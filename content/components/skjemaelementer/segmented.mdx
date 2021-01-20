@@ -27,19 +27,19 @@ import PageHeader from '~/components/PageHeader';
 
 <PageHeader />
 
-<Playground>
+<Playground style={{width:"55%", margin:"0 auto"}}>
   {() => {
-    const [homeTown, setHomeTown] = React.useState(null);
+    const [traveltime, setTraveltime] = React.useState(null);
     return (
         <div style={{ marginBottom: '1rem' }}>
           <SegmentedControl
-            label="Velg din hjemby"
-            onChange={selectedValue => setHomeTown(selectedValue)}
-            selectedValue={homeTown}
+            label="Velg reisetidspunknt"
+            onChange={selectedValue => setTraveltime(selectedValue)}
+            selectedValue={traveltime}
           >
-            <SegmentedChoice value="Oslo">Oslo</SegmentedChoice>
-            <SegmentedChoice value="Bergen">Bergen</SegmentedChoice>
-            <SegmentedChoice value="Leknes">Leknes</SegmentedChoice>
+            <SegmentedChoice value="na">Nå</SegmentedChoice>
+            <SegmentedChoice value="avreise">Avreise</SegmentedChoice>
+            <SegmentedChoice value="ankomst">Ankomst</SegmentedChoice>
           </SegmentedControl>
         </div>
     );
