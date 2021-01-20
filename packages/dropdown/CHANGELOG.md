@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.0...@entur/dropdown@1.4.1) (2021-01-20)
+
+### Bug Fixes
+
+- **dropdown:** internal changes to avoid ref bug during tests ([df9eb46](https://bitbucket.org/enturas/design-system/commits/df9eb4608e88020bf80b55b87ace952e697ac307))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.24...@entur/dropdown@1.4.0) (2021-01-13)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.0...@entur/form@4.2.1) (2021-01-20)
+
+### Bug Fixes
+
+- **radiogroup:** allow null in typings for value ([946817a](https://bitbucket.org/enturas/design-system/commits/946817a1f4f8bd562807939b36ae68e8f2da6da2))
+- **radiopanel:** fix typings issues and improve a11y ([b966c5c](https://bitbucket.org/enturas/design-system/commits/b966c5cc5e1cf11cd0f42d9159aee238e84b50a7))
+- **segmentedcontrol:** updated styling for component ([5293045](https://bitbucket.org/enturas/design-system/commits/529304558541fd871e6d1a3f1f7707e58f610189))
+- **textarea:** fix label position on async value bug ([54a4d74](https://bitbucket.org/enturas/design-system/commits/54a4d747ab1fbd2ac5ef56b7fe3a7f31c095604e))
+- **textfield:** fix label position if size=large ([88fd29e](https://bitbucket.org/enturas/design-system/commits/88fd29e78895f4e8a34288194b3c1a35eb28ffda))
+- **textfield:** fix label position on async value bug ([25a23a3](https://bitbucket.org/enturas/design-system/commits/25a23a3df1889014cb665cdb831dc2f655b0778a))
+
 # [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.1.0...@entur/form@4.2.0) (2021-01-13)
 
 ### Bug Fixes
