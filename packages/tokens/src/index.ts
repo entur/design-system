@@ -58,7 +58,7 @@ export const colors = {
   },
   misc: {
     focus: 'rgba(68, 192, 255, 0.5)',
-    black: '#1a1a1a',
+    black: '#000000',
   },
   transport: {
     default: {
@@ -96,7 +96,7 @@ export const colors = {
   },
 };
 
-const grey60Rgb = hexRgb(colors.greys.grey60, { format: 'array' })
+const blackRgb = hexRgb(colors.misc.black, { format: 'array' })
   .toString()
   .slice(0, -2);
 const blue20Rgb = hexRgb(colors.blues.blue20, { format: 'array' })
@@ -108,8 +108,8 @@ const whiteRgb = hexRgb(colors.brand.white, { format: 'array' })
 export const shadows = {
   focus: `0 0 0 0.25rem ${colors.misc.focus}`,
   focusContrast: `0 0 0 0.25rem rgba(${whiteRgb}, 0.3)`,
-  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${grey60Rgb}, 0.7)`,
-  cardShadowHover: `0 0.125rem 1rem 0 rgba(${grey60Rgb}, 0.7)`,
+  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${blackRgb}, 0.25)`,
+  cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.2)`,
   cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,
   cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 0.7)`,
 };
