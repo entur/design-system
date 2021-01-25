@@ -6,6 +6,7 @@
   flex-direction: column;
   font-weight: $font-weights-heading;
   line-height: 1.5;
+  max-width: 100%;
   .eds-contrast & {
     color: $colors-brand-white;
   }
@@ -15,21 +16,33 @@
   &--medium {
     font-size: $font-sizes-large;
   }
-  &__line {
-    background-color: $colors-brand-coral;
-    content: ' ';
-    display: block;
-    height: $space-extra-small2;
-    margin-right: $space-small;
-    width: $space-extra-large;
-    .eds-travel-header--medium & {
-      height: 0.125rem;
-      margin-right: $space-extra-small;
-      width: $space-large;
+  &--no-wrap {
+    flex-direction: row;
+  }
+  &__from,
+  &__to {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__from {
+    .eds-travel-header--no-wrap & {
+      margin-right: 0.5em;
     }
   }
-  &__bottom {
-    align-items: center;
-    display: flex;
+  &__to {
+    padding-left: calc(4em / 3 + 0.5em);
+    position: relative;
+    &::before {
+      background-color: $colors-brand-coral;
+      content: '';
+      display: block;
+      height: calc(1em / 6);
+      left: 0;
+      position: absolute;
+      top: 0.65em;
+      width: calc(4em / 3);
+    }
   }
 }
