@@ -2,6 +2,7 @@ import React from 'react';
 import {
   default as ReactDatepicker,
   ReactDatePickerProps,
+  registerLocale,
 } from 'react-datepicker';
 import classNames from 'classnames';
 import {
@@ -13,6 +14,7 @@ import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { useOnMount, useRandomId } from '@entur/utils';
+registerLocale('nb', nb);
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
@@ -54,6 +56,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       feedback,
       variant,
       disableLabelAnimation = false,
+      locale = 'nb',
+      weekLabel = 'uke',
       ...rest
     },
     ref,
@@ -78,6 +82,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           placeholder={placeholder}
           readOnly={readOnly}
           id={datepickerId}
+          locale={locale}
+          weekLabel={weekLabel}
           {...rest}
         />
       </BaseFormControl>
@@ -146,8 +152,6 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       selected={selectedDate}
       onChange={handleChange}
       showWeekNumbers={true}
-      weekLabel="uke"
-      locale={nb}
       dateFormat="dd.MM.yyyy"
       showPopperArrow={false}
       placeholderText={placeholder}
