@@ -2,6 +2,7 @@ import React from 'react';
 import {
   default as ReactDatepicker,
   ReactDatePickerProps,
+  registerLocale,
 } from 'react-datepicker';
 import classNames from 'classnames';
 import {
@@ -13,6 +14,7 @@ import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './TimePicker.scss';
 import { useOnMount, useRandomId } from '@entur/utils';
+registerLocale('nb', nb);
 
 export type TimePickerProps = {
   /** Hva som er den valgte datoen */
@@ -55,6 +57,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       feedback,
       variant,
       disableLabelAnimation,
+      locale = 'nb',
       ...rest
     },
     ref,
@@ -77,6 +80,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
           onChange={onChange}
           placeholder={placeholder}
           className={className}
+          locale={locale}
           {...rest}
         />
       </BaseFormControl>
@@ -142,7 +146,6 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       calendarClassName="eds-timepicker"
       selected={selectedTime}
       onChange={handleChange}
-      locale={nb}
       dateFormat="HH:mm"
       timeFormat="HH:mm"
       showTimeSelect
