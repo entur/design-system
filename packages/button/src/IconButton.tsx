@@ -15,6 +15,11 @@ export type IconButtonBaseProps = {
   /** HTML-elementet eller React-komponenten som lager knappen
    * @default 'button'
    */
+  as?: React.ElementType;
+  /**Størrelsen på knappen
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
 const defaultElement = 'button';
@@ -27,15 +32,26 @@ export const IconButton: <E extends React.ElementType = typeof defaultElement>(
   props: IconButtonProps<E>,
 ) => React.ReactElement | null = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
-    { children, className, disabled = false, ...rest }: IconButtonProps<E>,
+    {
+      children,
+      className,
+      disabled = false,
+      size,
+      ...rest
+    }: IconButtonProps<E>,
     ref: typeof rest.ref,
   ) => {
     return (
       <Box
         as={defaultElement}
-        className={classNames('eds-icon-button', className, {
-          'eds-icon-button--disabled': disabled,
-        })}
+        className={classNames(
+          'eds-icon-button',
+          className,
+          {
+            'eds-icon-button--disabled': disabled,
+          },
+          `eds-icon-button--size-${size}`,
+        )}
         disabled={disabled}
         aria-disabled={disabled}
         ref={ref}
