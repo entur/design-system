@@ -71,12 +71,14 @@
     border-color: $colors-blues-blue30;
   }
   &--selected {
+    background: $colors-blues-blue70;
     border-color: $colors-brand-blue;
     color: inherit;
     opacity: 1;
     pointer-events: none;
     .eds-contrast & {
       border-color: $colors-brand-white;
+      background: $colors-blues-blue20;
     }
   }
 
