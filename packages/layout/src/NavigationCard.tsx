@@ -71,9 +71,10 @@ export const NavigationCard = <
           )}
         </>
       )}
-      {compact && externalLink ? (
+      {compact && externalLink && (
         <ExternalIcon className="eds-navigattion-card__icon eds-navigation-card__external--compact" />
-      ) : (
+      )}
+      {compact && !externalLink && (
         <ForwardIcon className="eds-navigattion-card__icon eds-navigation-card__arrow-icon" />
       )}
     </BaseCard>
