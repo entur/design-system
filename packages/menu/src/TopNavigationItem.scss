@@ -15,6 +15,18 @@
   font-family: inherit;
   font-size: $font-sizes-large;
   font-weight: $font-weights-heading;
+  &::after {
+    content: '';
+    display: block;
+    bottom: $space-default;
+    height: 0.1875rem; // 3px in rem
+    width: 0; //$space-extra-large;
+    margin: 0 auto;
+    opacity: var(--show-active-line);
+    background: $colors-brand-coral;
+    transition: width ease-in-out $timings-medium,
+      opacity ease-in-out $timings-medium;
+  }
 
   &:focus {
     outline: none;
@@ -23,19 +35,17 @@
       box-shadow: $shadows-focus-contrast;
     }
   }
+  &:hover {
+    --show-active-line: 1;
+    &::after {
+      width: $space-extra-large;
+    }
+  }
 
   &--active {
     --show-active-line: 1;
-  }
-
-  &::after {
-    content: '';
-    display: block;
-    bottom: $space-default;
-    height: 0.1875rem; // 3px in rem
-    width: $space-extra-large;
-    margin: 0 auto;
-    opacity: var(--show-active-line);
-    background: $colors-brand-coral;
+    &::after {
+      width: $space-extra-large;
+    }
   }
 }
