@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.5.1...@entur/datepicker@0.6.0) (2021-01-29)
+
+### Bug Fixes
+
+- **datepicker:** changed to correct z-index for date / time pickers ([9cdf145](https://bitbucket.org/enturas/design-system/commits/9cdf14549734a5592fc12782a191151b571721d0))
+- **datepicker:** fix label position bug for async values ([8902190](https://bitbucket.org/enturas/design-system/commits/8902190ead5725f0ca206262384fdc0b9007f43c))
+- **datepicker:** fix linting error ([f49ed6c](https://bitbucket.org/enturas/design-system/commits/f49ed6c1e3cf7cb571e992093a0de9f6d8192d96))
+- **nativedatepicker:** fix label position for async values ([bc1cfff](https://bitbucket.org/enturas/design-system/commits/bc1cfff98c11082bad99b438bc720b7f8085340b))
+- **nativetimepicker:** fix label position for async values ([88f3201](https://bitbucket.org/enturas/design-system/commits/88f320139d09e4cce231f53cc56aa65542a774e2))
+- **timepicker:** fix label position bug for async values ([8d34a3c](https://bitbucket.org/enturas/design-system/commits/8d34a3c6c387edd2f52f68f00e05c5c75754cfb8))
+- **timepicker:** fix linting error ([e984c47](https://bitbucket.org/enturas/design-system/commits/e984c4767da358c52395722466b9814ccd162b65))
+
+### Features
+
+- **datepicker:** add support to overwrite locale prop ([0874b2a](https://bitbucket.org/enturas/design-system/commits/0874b2a5d18f7d55e94f21d5717e07b41281e1e8))
+- **timepicker:** add support to overwrite default locale ([b7a4f46](https://bitbucket.org/enturas/design-system/commits/b7a4f4606544f72f9c45f01e2fcd364d64db70ee))
+
 ## [0.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.5.0...@entur/datepicker@0.5.1) (2021-01-20)
 
 **Note:** Version bump only for package @entur/datepicker

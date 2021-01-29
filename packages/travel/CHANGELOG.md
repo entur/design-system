@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.10...@entur/travel@4.2.0) (2021-01-29)
+
+### Bug Fixes
+
+- **travelheader:** fixed wrong spacing between from and to labels ([e5c15e5](https://bitbucket.org/enturas/design-system/commits/e5c15e5e3bd4480943c1220c303110482e530ee8))
+
+### Features
+
+- **travelheader:** added support for inline mode ([f779541](https://bitbucket.org/enturas/design-system/commits/f7795415c5004f9d4c143d77677684673c641906))
+
 ## [4.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.1.9...@entur/travel@4.1.10) (2021-01-20)
 
 **Note:** Version bump only for package @entur/travel

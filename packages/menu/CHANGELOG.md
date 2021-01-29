@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.3...@entur/menu@3.5.4) (2021-01-29)
+
+### Bug Fixes
+
+- **pagination:** update styling for active pagination page ([691dd0a](https://bitbucket.org/enturas/design-system/commits/691dd0af5ed6917398f2cb0b5453d5d97ec4a46d))
+- **topnavigationitem:** add styling for hover state ([f245e65](https://bitbucket.org/enturas/design-system/commits/f245e65ea5f53deb83460737c99582ed2c19d633))
+
 ## [3.5.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.2...@entur/menu@3.5.3) (2021-01-20)
 
 **Note:** Version bump only for package @entur/menu

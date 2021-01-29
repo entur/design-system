@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.1...@entur/form@4.2.2) (2021-01-29)
+
+### Bug Fixes
+
+- **segmentedcontrol:** fix classname overwrites bug ([73a1ede](https://bitbucket.org/enturas/design-system/commits/73a1ede991d570f25c4726a0e153bc00d278c304))
+- **textarea:** fix label position bug ([dcb6990](https://bitbucket.org/enturas/design-system/commits/dcb699058bda6d73a57f0737f5a1b71554e899f4))
+- **textfield:** fix label position bug ([40c1163](https://bitbucket.org/enturas/design-system/commits/40c11634d542b25a3360a438d7d90208c174b00f))
+
 ## [4.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.0...@entur/form@4.2.1) (2021-01-20)
 
 ### Bug Fixes

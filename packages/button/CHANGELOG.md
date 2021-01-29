@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.4.2...@entur/button@2.5.0) (2021-01-29)
+
+### Features
+
+- **iconbutton:** add size prop ([aa8b36a](https://bitbucket.org/enturas/design-system/commits/aa8b36a2ef5d3188b283df6f3963414671f1e9a9))
+
 ## [2.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.4.1...@entur/button@2.4.2) (2021-01-20)
 
 **Note:** Version bump only for package @entur/button

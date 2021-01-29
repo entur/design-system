@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.9.3...@entur/layout@1.10.0) (2021-01-29)
+
+### Bug Fixes
+
+- **navigationcard:** remove arrow icon on non compact cards ([e1d7134](https://bitbucket.org/enturas/design-system/commits/e1d713422adff6cb25b883630ea1a27d4408ca2d))
+
+### Features
+
+- **contrast:** export contrast react-context ([793fad7](https://bitbucket.org/enturas/design-system/commits/793fad790e81cc09e171e9226688711da93f8863))
+
 ## [1.9.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.9.2...@entur/layout@1.9.3) (2021-01-20)
 
 **Note:** Version bump only for package @entur/layout
