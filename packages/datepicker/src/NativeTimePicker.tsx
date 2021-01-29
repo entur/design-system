@@ -66,12 +66,15 @@ export const NativeTimePicker = React.forwardRef<
 
 type NativeTimePickerBaseProps = {
   [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 const NativeTimePickerBase = React.forwardRef<
   HTMLInputElement,
   NativeTimePickerBaseProps
->(({ onChange, id, ...rest }, ref) => {
+>(({ onChange, id, value, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = rest.variant || contextVariant;
   const {
@@ -82,6 +85,14 @@ const NativeTimePickerBase = React.forwardRef<
   useOnMount(() => {
     setFiller && !isTimepickerFilled && setFiller(true);
   });
+
+  React.useEffect(() => {
+    if (value) {
+      setFiller && !isTimepickerFilled && setFiller(true);
+    } else {
+      setFiller && isTimepickerFilled && setFiller(false);
+    }
+  }, [value, setFiller, isTimepickerFilled]);
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {
@@ -100,6 +111,7 @@ const NativeTimePickerBase = React.forwardRef<
       type="time"
       className="eds-form-control eds-native-date-picker"
       onChange={handleChange}
+      value={value}
       {...rest}
     />
   );
