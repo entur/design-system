@@ -4,6 +4,7 @@ import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
 import { useInputGroupContext } from './InputGroupContext';
 import { useRandomId, useOnMount } from '@entur/utils';
+import { isFilled } from './utils';
 
 export type TextAreaProps = {
   /** Ekstra klassenavn */
@@ -94,7 +95,18 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
       } else {
         setFiller && isInputFilled && setFiller(false);
       }
-    }, [value]);
+    }, [value, setFiller, isInputFilled]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      if (isFilled(event.target)) {
+        setFiller && !isInputFilled && setFiller(true);
+      } else {
+        setFiller && isInputFilled && setFiller(false);
+      }
+      if (onChange) {
+        onChange(event);
+      }
+    };
 
     return (
       <textarea
@@ -102,7 +114,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         ref={ref}
         readOnly={readOnly}
         disabled={disabled}
-        onChange={onChange}
+        onChange={handleChange}
         value={value}
         {...rest}
       />
