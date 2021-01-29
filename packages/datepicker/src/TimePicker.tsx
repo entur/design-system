@@ -136,7 +136,7 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
     } else {
       setFiller && isTimepickerFilled && setFiller(false);
     }
-  }, [selectedTime]);
+  }, [selectedTime, setFiller, isTimepickerFilled]);
 
   const handleChange = (date: any, event: any) => {
     if (date) {
