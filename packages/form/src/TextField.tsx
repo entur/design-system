@@ -3,6 +3,7 @@ import React from 'react';
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { useVariant, VariantType } from './VariantProvider';
+import { isFilled } from './utils';
 
 export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -120,7 +121,18 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
       } else {
         setFiller && isInputFilled && setFiller(false);
       }
-    }, [value]);
+    }, [value, setFiller, isInputFilled]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (isFilled(event.target)) {
+        setFiller && !isInputFilled && setFiller(true);
+      } else {
+        setFiller && isInputFilled && setFiller(false);
+      }
+      if (onChange) {
+        onChange(event);
+      }
+    };
 
     return (
       <input
@@ -130,7 +142,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         readOnly={readOnly}
         ref={ref}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleChange}
         value={value}
         {...rest}
       />
