@@ -135,6 +135,14 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
     }
   });
 
+  React.useEffect(() => {
+    if (selectedDate) {
+      setFiller && !isDatepickerFilled && setFiller(true);
+    } else {
+      setFiller && isDatepickerFilled && setFiller(false);
+    }
+  }, [selectedDate]);
+
   const handleChange = (date: any, event: any) => {
     if (date) {
       setFiller && !isDatepickerFilled && setFiller(true);
