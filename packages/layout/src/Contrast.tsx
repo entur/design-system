@@ -33,6 +33,6 @@ export const Contrast: <E extends React.ElementType = typeof defaultElement>(
   },
 );
 
-const ContrastContext = React.createContext<boolean>(false);
+export const ContrastContext = React.createContext<boolean>(false);
 
 export const useContrast = () => React.useContext(ContrastContext);
