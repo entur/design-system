@@ -22,6 +22,10 @@ export type NativeTimePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <ClockIcon />
+   */
+  prepend?: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeTimePicker = React.forwardRef<
@@ -37,6 +41,7 @@ export const NativeTimePicker = React.forwardRef<
       feedback,
       variant,
       disableLabelAnimation,
+      prepend = <ClockIcon />,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -46,7 +51,7 @@ export const NativeTimePicker = React.forwardRef<
       <BaseFormControl
         style={style}
         className={className}
-        prepend={<ClockIcon inline />}
+        prepend={prepend}
         label={label}
         feedback={feedback}
         variant={variant}

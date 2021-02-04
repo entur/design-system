@@ -42,6 +42,10 @@ export type TimePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <ClockIcon />
+   */
+  prepend?: React.ReactNode;
 } & ReactDatePickerProps;
 
 export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
@@ -58,6 +62,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       variant,
       disableLabelAnimation,
       locale = 'nb',
+      prepend = <ClockIcon />,
       ...rest
     },
     ref,
@@ -66,7 +71,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={<ClockIcon inline />}
+        prepend={prepend}
         ref={ref}
         label={label}
         labelId={timepickerId}
