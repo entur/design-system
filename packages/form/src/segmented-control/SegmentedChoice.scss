@@ -11,17 +11,20 @@
     margin: $space-extra-small2;
     color: inherit;
     cursor: pointer;
-    font-size: $font-sizes-large;
+    font-size: $font-sizes-medium;
     line-height: $line-heights-medium;
-    padding: $space-extra-small2 $space-small;
+    padding: calc(#{$space-extra-small2}/ 2) $space-small;
+    height: $space-large;
     text-align: center;
     user-select: none;
     .eds-contrast & {
       border-color: $colors-blues-blue20;
     }
     &--large {
-      line-height: $line-heights-medium;
-      padding: $space-small;
+      font-size: $font-sizes-large;
+      line-height: $line-heights-extra-large;
+      height: $space-extra-large2;
+      padding: $space-extra-small $space-small;
     }
   }
   &:hover input:not(:checked) + .eds-base-segmented {
