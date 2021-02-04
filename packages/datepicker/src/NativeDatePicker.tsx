@@ -22,6 +22,10 @@ export type NativeDatePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <DateIcon />
+   */
+  prepend?: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeDatePicker = React.forwardRef<
@@ -37,6 +41,7 @@ export const NativeDatePicker = React.forwardRef<
       feedback,
       variant,
       disableLabelAnimation,
+      prepend = <DateIcon inline />,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -46,7 +51,7 @@ export const NativeDatePicker = React.forwardRef<
       <BaseFormControl
         style={style}
         className={className}
-        prepend={<DateIcon inline />}
+        prepend={prepend}
         label={label}
         feedback={feedback}
         variant={variant}

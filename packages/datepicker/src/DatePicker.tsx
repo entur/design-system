@@ -41,7 +41,11 @@ export type DatePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
-} & ReactDatePickerProps;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <DateIcon />
+   */
+  prepend?: React.ReactNode;
+} & Omit<ReactDatePickerProps, 'selected'>;
 
 export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   (
@@ -58,6 +62,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       disableLabelAnimation = false,
       locale = 'nb',
       weekLabel = 'uke',
+      prepend = <DateIcon />,
       ...rest
     },
     ref,
@@ -66,7 +71,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={<DateIcon inline />}
+        prepend={prepend}
         readOnly={readOnly}
         label={label}
         labelId={datepickerId}
