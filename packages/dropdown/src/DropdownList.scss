@@ -51,16 +51,15 @@
   }
 
   .eds-contrast & {
-    color: $colors-brand-white;
-    background-color: $colors-blues-blue10;
-    border-color: rgba($colors-brand-white, 0.05);
+    color: $colors-brand-blue;
+    border-color: $colors-blues-blue30;
   }
 
   &--highlighted  {
     background-color: $colors-blues-blue70;
 
     .eds-contrast & {
-      background-color: $colors-blues-blue20;
+      background-color: $colors-blues-blue70;
     }
   }
 }
