@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.2...@entur/form@4.2.3) (2021-02-05)
+
+### Bug Fixes
+
+- **form components:** fix label and input position ([10dc3c2](https://bitbucket.org/enturas/design-system/commits/10dc3c2380d2d1ce4bd993678c70bab2077d20b4))
+- **multiplesegmentedcontrol:** add deprecation warning for component ([bf51d8c](https://bitbucket.org/enturas/design-system/commits/bf51d8c8b0cdc84ef6797e0808d29494ce6e8d45))
+- **segmentedchoice:** adjust height of component ([63b60a2](https://bitbucket.org/enturas/design-system/commits/63b60a21d6fb828e557c7257945d97be5c02f5de))
+- **segmentedchoice:** extend typings from html input element ([5fe70ba](https://bitbucket.org/enturas/design-system/commits/5fe70bab111b8d2cb9a37dda034c7d208b95fbfe))
+
 ## [4.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.1...@entur/form@4.2.2) (2021-01-29)
 
 ### Bug Fixes

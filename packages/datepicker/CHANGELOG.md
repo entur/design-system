@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.6.0...@entur/datepicker@0.7.0) (2021-02-05)
+
+### Bug Fixes
+
+- **timepicker:** adjust styling for timepicker list ([8327f50](https://bitbucket.org/enturas/design-system/commits/8327f5088a00e2ee8a0478db18656a4c5153ab8c))
+
+### Features
+
+- **datepicker:** add support for prepend prop ([6027030](https://bitbucket.org/enturas/design-system/commits/602703077e22bfe7b56d85388e4dbf55e7ad90fd))
+- **timepicker:** add support for prepend prop ([aab70fa](https://bitbucket.org/enturas/design-system/commits/aab70fa55e21de10bae4cff664ad4c526cab2cbb))
+
 # [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.5.1...@entur/datepicker@0.6.0) (2021-01-29)
 
 ### Bug Fixes
