@@ -100,7 +100,7 @@ const NativeDatePickerBase = React.forwardRef<
     } else {
       setFiller && isDatepickerFilled && setFiller(false);
     }
-  }, [value]);
+  }, [value, setFiller, isDatepickerFilled]);
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {
