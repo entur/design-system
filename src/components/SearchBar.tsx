@@ -57,7 +57,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className={classNames('searchbar-wrapper', className)}>
       <TextField
-        prepend={<SearchIcon inline />}
+        prepend={<SearchIcon />}
         label="Søk..."
         value={searchText}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
