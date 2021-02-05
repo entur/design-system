@@ -74,7 +74,7 @@
     .eds-form-control__append,
     .eds-form-control__prepend {
       font-size: $font-sizes-large;
-      line-height: $line-heights-medium;
+      line-height: $line-heights-small;
     }
   }
   &--size-large {
@@ -174,7 +174,7 @@
   color: inherit;
   display: block;
   font-family: inherit;
-  line-height: $line-heights-medium;
+  line-height: $line-heights-small;
   font-size: $font-sizes-large;
   padding: 20px $space-default $space-extra-small2;
   width: 100%;

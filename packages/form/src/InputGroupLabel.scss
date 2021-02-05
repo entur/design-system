@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 // Input group OLD
-$label-top: 0.125rem;
-$label-top-large: 0.25rem;
+$label-top: calc(0.5rem - 0.125rem);
+$label-top-large: 0.5rem;
 
 @mixin labelPositionTopLarge {
   top: $label-top-large;
@@ -14,6 +14,7 @@ $label-top-large: 0.25rem;
 @mixin labelPositionTop {
   top: $label-top;
   font-size: $font-sizes-small;
+  line-height: $font-sizes-small;
   padding: 0;
   padding-left: $space-default;
 }
@@ -54,7 +55,7 @@ $label-top-large: 0.25rem;
     pointer-events: none;
     .eds-form-control-wrapper--size-large & {
       font-size: $font-sizes-extra-large2;
-      line-height: $line-heights-extra-large3;
+      line-height: $line-heights-extra-large4;
       height: 4rem;
     }
     &--filled {
