@@ -19,6 +19,7 @@
 
 .eds-modal__content {
   background: var(--primary-background-color);
+  border-radius: $border-widths-large;
   color: var(--primary-text-color);
   margin: auto;
   padding: $space-large;
