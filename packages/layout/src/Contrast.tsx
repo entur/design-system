@@ -38,6 +38,6 @@ export const Contrast: PolymorphicForwardRefExoticComponent<
   );
 });
 
-const ContrastContext = React.createContext<boolean>(false);
+export const ContrastContext = React.createContext<boolean>(false);
 
 export const useContrast = () => React.useContext(ContrastContext);

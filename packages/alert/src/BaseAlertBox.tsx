@@ -18,7 +18,7 @@ const iconsMap = {
 
 type BaseAlertBoxProps = {
   /** Innholdet i alert-boksen */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
   /** Skjermleser-label for lukkeknappen, om den vises
@@ -86,10 +86,11 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
       <div
         className={classNames('eds-alert-box__content', {
           'eds-alert-box__content--no-title': !title,
+          'eds-alert-box__content--no-children': !children,
         })}
       >
         {title && <div className="eds-alert-box__title">{title}</div>}
-        {children}
+        {children && children}
       </div>
     </div>
   );

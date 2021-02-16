@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.17.0...@entur/icons@1.18.0) (2021-01-29)
+
+### Features
+
+- add bookmark icon ([97f3fc5](https://bitbucket.org/enturas/design-system/commits/97f3fc51e1d262b75884d067fe1bc8ce6703369d))
+
+# [1.17.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.16.0...@entur/icons@1.17.0) (2021-01-20)
+
+### Features
+
+- add cloud download icon ([7707066](https://bitbucket.org/enturas/design-system/commits/770706614fb07e4727d3ef29714ac64f0731e321))
+
 # [1.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.15.2...@entur/icons@1.16.0) (2021-01-13)
 
 ### Bug Fixes

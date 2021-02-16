@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.10](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.9...@entur/alert@0.7.10) (2021-02-05)
+
+### Bug Fixes
+
+- **toastalert:** center title if no children content ([78571b9](https://bitbucket.org/enturas/design-system/commits/78571b99feb458a46a9a39e096b8b3ab1b57576a))
+- **toastalert:** children props is optional ([75c5fd0](https://bitbucket.org/enturas/design-system/commits/75c5fd01015f757d54127aa72ede75f50166a84f))
+
+## [0.7.9](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.8...@entur/alert@0.7.9) (2021-01-29)
+
+**Note:** Version bump only for package @entur/alert
+
+## [0.7.8](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.7...@entur/alert@0.7.8) (2021-01-20)
+
+**Note:** Version bump only for package @entur/alert
+
 ## [0.7.7](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.6...@entur/alert@0.7.7) (2021-01-13)
 
 ### Bug Fixes

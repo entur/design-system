@@ -8,7 +8,7 @@ export type RadioGroupProps = {
   /** Overskrift over radiogruppen */
   label?: string;
   /** Verdien til den valgte radioknappen */
-  value: string;
+  value: string | null;
   /** Radioknappene sendes inn som children */
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en radioknapp klikkes på  */

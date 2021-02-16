@@ -2,9 +2,9 @@ import React from 'react';
 import { VariantType } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
-import { isFilled } from './utils';
 import { useInputGroupContext } from './InputGroupContext';
 import { useRandomId, useOnMount } from '@entur/utils';
+import { isFilled } from './utils';
 
 export type TextAreaProps = {
   /** Ekstra klassenavn */
@@ -77,19 +77,27 @@ type TextAreaBaseProps = {
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
-  ({ readOnly, disabled, onChange, ...rest }, ref) => {
+  ({ readOnly, disabled, onChange, value, ...rest }, ref) => {
     const {
       isFilled: isInputFilled,
       setFilled: setFiller,
     } = useInputGroupContext();
 
     useOnMount(() => {
-      if (rest.value || rest.defaultValue) {
+      if (value || rest.defaultValue) {
         setFiller && !isInputFilled && setFiller(true);
       }
     });
 
-    const handleChange = (event: any) => {
+    React.useEffect(() => {
+      if (value) {
+        setFiller && !isInputFilled && setFiller(true);
+      } else {
+        setFiller && isInputFilled && setFiller(false);
+      }
+    }, [value, setFiller, isInputFilled]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (isFilled(event.target)) {
         setFiller && !isInputFilled && setFiller(true);
       } else {
@@ -99,6 +107,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         onChange(event);
       }
     };
+
     return (
       <textarea
         className="eds-form-control eds-textarea"
@@ -106,6 +115,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         readOnly={readOnly}
         disabled={disabled}
         onChange={handleChange}
+        value={value}
         {...rest}
       />
     );

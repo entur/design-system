@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useRadioGroupContext } from './RadioGroupContext';
 import './RadioPanel.scss';
+import { useRandomId } from '@entur/utils';
 
 export type RadioPanelProps = {
   /** Verdien til RadioPanel */
@@ -11,7 +12,7 @@ export type RadioPanelProps = {
   /** Ektstra label som står høyrestilt mot Checkboxen */
   secondaryLabel?: React.ReactNode;
   /** Ekstra informasjon som legges nederst i RadioPanel */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Størrelse på RadioPanel
    * @default "medium"
    */
@@ -29,7 +30,7 @@ export type RadioPanelProps = {
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >,
-  'size' & 'title'
+  'title' | 'size'
 >;
 
 export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
@@ -43,6 +44,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       size = 'medium',
       hideCheckbox = false,
       style,
+      id,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -54,8 +56,10 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
     );
 
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
+    const randomId = useRandomId('eds-radiopanel');
+    const radioPanelId = id || randomId;
     return (
-      <label className="eds-radio-panel__wrapper">
+      <label className="eds-radio-panel__wrapper" htmlFor={radioPanelId}>
         <input
           type="radio"
           name={name}
@@ -63,6 +67,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
           value={value}
           checked={selectedValue === value}
           onChange={onChange}
+          id={radioPanelId}
           {...rest}
         />
         <div className={classList} style={style}>

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   default as ReactDatepicker,
   ReactDatePickerProps,
+  registerLocale,
 } from 'react-datepicker';
 import classNames from 'classnames';
 import {
@@ -13,6 +14,7 @@ import { DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { useOnMount, useRandomId } from '@entur/utils';
+registerLocale('nb', nb);
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
@@ -39,7 +41,11 @@ export type DatePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
-} & ReactDatePickerProps;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <DateIcon />
+   */
+  prepend?: React.ReactNode;
+} & Omit<ReactDatePickerProps, 'selected'>;
 
 export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   (
@@ -54,6 +60,9 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       feedback,
       variant,
       disableLabelAnimation = false,
+      locale = 'nb',
+      weekLabel = 'uke',
+      prepend = <DateIcon />,
       ...rest
     },
     ref,
@@ -62,7 +71,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={<DateIcon inline />}
+        prepend={prepend}
         readOnly={readOnly}
         label={label}
         labelId={datepickerId}
@@ -78,6 +87,8 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           placeholder={placeholder}
           readOnly={readOnly}
           id={datepickerId}
+          locale={locale}
+          weekLabel={weekLabel}
           {...rest}
         />
       </BaseFormControl>
@@ -129,6 +140,14 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
     }
   });
 
+  React.useEffect(() => {
+    if (selectedDate) {
+      setFiller && !isDatepickerFilled && setFiller(true);
+    } else {
+      setFiller && isDatepickerFilled && setFiller(false);
+    }
+  }, [selectedDate, setFiller, isDatepickerFilled]);
+
   const handleChange = (date: any, event: any) => {
     if (date) {
       setFiller && !isDatepickerFilled && setFiller(true);
@@ -146,8 +165,6 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       selected={selectedDate}
       onChange={handleChange}
       showWeekNumbers={true}
-      weekLabel="uke"
-      locale={nb}
       dateFormat="dd.MM.yyyy"
       showPopperArrow={false}
       placeholderText={placeholder}

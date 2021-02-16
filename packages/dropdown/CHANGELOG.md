@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.2...@entur/dropdown@1.4.3) (2021-02-05)
+
+### Bug Fixes
+
+- **dropdown:** add checkicon if item is selected ([2853763](https://bitbucket.org/enturas/design-system/commits/28537634e783b44ed6457f3c6a23637ef76c9526))
+- **dropdown:** adjust styling for dropdownlist in contrast ([e3aef6c](https://bitbucket.org/enturas/design-system/commits/e3aef6cd77c82050aeec495a4fb71ba2bc90a5ef))
+
+## [1.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.1...@entur/dropdown@1.4.2) (2021-01-29)
+
+**Note:** Version bump only for package @entur/dropdown
+
+## [1.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.0...@entur/dropdown@1.4.1) (2021-01-20)
+
+### Bug Fixes
+
+- **dropdown:** internal changes to avoid ref bug during tests ([df9eb46](https://bitbucket.org/enturas/design-system/commits/df9eb4608e88020bf80b55b87ace952e697ac307))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.3.24...@entur/dropdown@1.4.0) (2021-01-13)
 
 ### Bug Fixes

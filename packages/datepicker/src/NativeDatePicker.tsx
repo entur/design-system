@@ -22,6 +22,10 @@ export type NativeDatePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <DateIcon />
+   */
+  prepend?: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NativeDatePicker = React.forwardRef<
@@ -37,6 +41,7 @@ export const NativeDatePicker = React.forwardRef<
       feedback,
       variant,
       disableLabelAnimation,
+      prepend = <DateIcon inline />,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -46,7 +51,7 @@ export const NativeDatePicker = React.forwardRef<
       <BaseFormControl
         style={style}
         className={className}
-        prepend={<DateIcon inline />}
+        prepend={prepend}
         label={label}
         feedback={feedback}
         variant={variant}
@@ -69,12 +74,15 @@ type NativeDatePickerBaseProps = {
   onChange?: any;
   variant?: VariantType;
   id: string;
-};
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 const NativeDatePickerBase = React.forwardRef<
   HTMLInputElement,
   NativeDatePickerBaseProps
->(({ onChange, id, variant, ...rest }, ref) => {
+>(({ onChange, id, variant, value, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = variant || contextVariant;
   const {
@@ -85,6 +93,14 @@ const NativeDatePickerBase = React.forwardRef<
   useOnMount(() => {
     setFiller && !isDatepickerFilled && setFiller(true);
   });
+
+  React.useEffect(() => {
+    if (value) {
+      setFiller && !isDatepickerFilled && setFiller(true);
+    } else {
+      setFiller && isDatepickerFilled && setFiller(false);
+    }
+  }, [value, setFiller, isDatepickerFilled]);
 
   const handleChange = (event: any) => {
     if (isFilled(event.target)) {
@@ -104,6 +120,7 @@ const NativeDatePickerBase = React.forwardRef<
       className="eds-form-control eds-native-date-picker"
       onChange={handleChange}
       id={id}
+      value={value}
       {...rest}
     />
   );

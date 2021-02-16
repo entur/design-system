@@ -16,8 +16,10 @@ export type SegmentedChoiceProps = {
   className?: string;
   /** Callback som kalles når komponenten endres */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 export const SegmentedChoice = React.forwardRef<
   HTMLInputElement,

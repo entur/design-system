@@ -1,3 +1,10 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .eds-segmented-control {
   display: flex;
+  background: $colors-blues-blue70;
+  border-radius: $border-radiuses-medium;
+  .eds-contrast & {
+    background: $colors-blues-blue20;
+  }
 }

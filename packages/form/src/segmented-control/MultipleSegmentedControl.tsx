@@ -17,9 +17,17 @@ export type MultipleSegmentedControlProps = {
   [key: string]: any;
 };
 
-export const MultipleSegmentedControl: React.FC<
-  MultipleSegmentedControlProps
-> = ({ children, label, name, onChange, selectedValue, ...rest }) => {
+/**This component is not used by anyone, and is therefore deprecated
+ * @deprecated
+ */
+export const MultipleSegmentedControl: React.FC<MultipleSegmentedControlProps> = ({
+  children,
+  label,
+  name,
+  onChange,
+  selectedValue,
+  ...rest
+}) => {
   return (
     <SegmentedProvider
       name={name}

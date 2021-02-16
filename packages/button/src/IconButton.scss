@@ -10,10 +10,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
-  width: 2rem;
   font-size: $font-sizes-large;
   padding: $space-extra-small;
+  &--size-small {
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+  }
+  &--size-medium {
+    height: 2rem;
+    width: 2rem;
+  }
   &:hover {
     background-color: $colors-blues-blue70;
     .eds-contrast & {

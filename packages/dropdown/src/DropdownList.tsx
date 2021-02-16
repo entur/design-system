@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
+import { CheckIcon } from '@entur/icons';
 import './DropdownList.scss';
 
 export type DropdownListProps = {
@@ -26,9 +27,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
       className={classNames('eds-dropdown-list', {
         'eds-dropdown-list--open': isOpen,
       })}
-      {...getMenuProps({
-        ...rest,
-      })}
+      {...getMenuProps()}
+      {...rest}
     >
       {isOpen
         ? items.map((item, index) => (
@@ -52,6 +52,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
                   ))}
                 </span>
               )}
+              {selectedItem === item && <CheckIcon />}
             </li>
           ))
         : null}

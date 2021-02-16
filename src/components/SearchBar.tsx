@@ -28,7 +28,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       const hasFocus = inputRef.current === document.activeElement;
       switch (e.key) {
         case '/':
-          if (!hasFocus) {
+          if (
+            !hasFocus &&
+            !document.activeElement?.className.includes('code-editor')
+          ) {
             previousFocusRef.current = document.activeElement as HTMLElement;
             e.stopPropagation();
             inputRef.current!.focus(); // inputRef will always be set
@@ -54,7 +57,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className={classNames('searchbar-wrapper', className)}>
       <TextField
-        prepend={<SearchIcon inline />}
+        prepend={<SearchIcon />}
         label="Søk..."
         value={searchText}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

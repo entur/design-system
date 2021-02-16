@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.2...@entur/chip@0.4.3) (2021-02-05)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.1...@entur/chip@0.4.2) (2021-01-29)
+
+**Note:** Version bump only for package @entur/chip
+
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.0...@entur/chip@0.4.1) (2021-01-20)
+
+### Bug Fixes
+
+- **choicechipgroup:** add label prop explicitly to typings ([eace8d6](https://bitbucket.org/enturas/design-system/commits/eace8d6cd2a91dc79003b9a54042d007d8cd5a8c))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.3.41...@entur/chip@0.4.0) (2021-01-13)
 
 ### Features

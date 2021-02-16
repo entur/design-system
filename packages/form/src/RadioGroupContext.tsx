@@ -3,7 +3,7 @@ import React from 'react';
 type RadioGroupContextProps = {
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
+  value: string | null;
 };
 
 const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(

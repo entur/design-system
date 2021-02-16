@@ -19,7 +19,11 @@ export type IconButtonBaseProps = {
   /** HTML-elementet eller React-komponenten som lager knappen
    * @default 'button'
    */
-  as?: 'button' | React.ElementType;
+  as?: React.ElementType;
+  /**Størrelsen på knappen
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
 };
 
 const defaultElement = 'button';
@@ -37,6 +41,7 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
       children,
       className,
       disabled = false,
+      size,
       as,
       ...rest
     }: PolymorphicPropsWithoutRef<IconButtonBaseProps, E>,
@@ -45,9 +50,14 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
     const Element: React.ElementType = as || defaultElement;
     return (
       <Element
-        className={classNames('eds-icon-button', className, {
-          'eds-icon-button--disabled': disabled,
-        })}
+        className={classNames(
+          'eds-icon-button',
+          className,
+          {
+            'eds-icon-button--disabled': disabled,
+          },
+          `eds-icon-button--size-${size}`,
+        )}
         disabled={disabled}
         aria-disabled={disabled}
         ref={ref}

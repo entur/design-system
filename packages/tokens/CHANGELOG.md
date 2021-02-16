@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.0.0...@entur/tokens@3.0.1) (2021-01-20)
+
+### Bug Fixes
+
+- darken misc-black, and adjust card-shadow ([2ae046b](https://bitbucket.org/enturas/design-system/commits/2ae046b832f8134ad1196ce832480be551fafcd4))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@2.0.1...@entur/tokens@3.0.0) (2021-01-13)
 
 ### Features

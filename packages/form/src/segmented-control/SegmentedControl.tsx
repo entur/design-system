@@ -2,6 +2,7 @@ import React from 'react';
 import { Label } from '@entur/typography';
 import { SegmentedProvider, SelectedValue } from './SegmentedContext';
 import './SegmentedControl.scss';
+import classNames from 'classnames';
 
 export type SegmentedControlProps = {
   /** Navn på input-elementene */
@@ -16,6 +17,8 @@ export type SegmentedControlProps = {
   onChange: (value: SelectedValue) => void;
   /** Størrelsen på SegmentedChoice-komponentene */
   size?: 'medium' | 'large';
+  /** Ekstra klassenavn */
+  className?: string;
   [key: string]: any;
 };
 
@@ -26,6 +29,7 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
   onChange,
   selectedValue,
   size = 'medium',
+  className,
   ...rest
 }) => {
   return (
@@ -37,7 +41,7 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
       size={size}
     >
       <Label as="div">{label}</Label>
-      <div className="eds-segmented-control" {...rest}>
+      <div className={classNames('eds-segmented-control', className)} {...rest}>
         {children}
       </div>
     </SegmentedProvider>

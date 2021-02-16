@@ -2,8 +2,8 @@ import { useRandomId, useOnMount } from '@entur/utils';
 import React from 'react';
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
-import { isFilled } from './utils';
 import { useVariant, VariantType } from './VariantProvider';
+import { isFilled } from './utils';
 
 export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -91,25 +91,39 @@ type TextFieldBaseProps = {
   disabled?: boolean;
   /** Setter inputfeltet i read-only modus */
   readOnly?: boolean;
-  [key: string]: any;
-};
+  variant?: VariantType;
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
-  ({ disabled, readOnly, placeholder, onChange, ...rest }, ref) => {
+  (
+    { disabled, readOnly, placeholder, onChange, value, variant, ...rest },
+    ref,
+  ) => {
     const contextVariant = useVariant();
-    const currentVariant = rest.variant || contextVariant;
+    const currentVariant = variant || contextVariant;
     const {
       isFilled: isInputFilled,
       setFilled: setFiller,
     } = useInputGroupContext();
 
     useOnMount(() => {
-      if (rest.value || rest.defaultValue) {
+      if (value || rest.defaultValue) {
         setFiller && !isInputFilled && setFiller(true);
       }
     });
 
-    const handleChange = (event: any) => {
+    React.useEffect(() => {
+      if (value) {
+        setFiller && !isInputFilled && setFiller(true);
+      } else {
+        setFiller && isInputFilled && setFiller(false);
+      }
+    }, [value, setFiller, isInputFilled]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (isFilled(event.target)) {
         setFiller && !isInputFilled && setFiller(true);
       } else {
@@ -129,6 +143,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         ref={ref}
         placeholder={placeholder}
         onChange={handleChange}
+        value={value}
         {...rest}
       />
     );

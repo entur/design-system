@@ -3,7 +3,7 @@ import { BaseAlertBox } from './BaseAlertBox';
 
 export type ToastAlertBoxProps = {
   /** Innholdet i toasten */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
   /** Skjermleser-label for lukkeknappen, om den vises */

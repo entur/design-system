@@ -2,6 +2,7 @@ import React from 'react';
 import {
   default as ReactDatepicker,
   ReactDatePickerProps,
+  registerLocale,
 } from 'react-datepicker';
 import classNames from 'classnames';
 import {
@@ -13,6 +14,7 @@ import { ClockIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './TimePicker.scss';
 import { useOnMount, useRandomId } from '@entur/utils';
+registerLocale('nb', nb);
 
 export type TimePickerProps = {
   /** Hva som er den valgte datoen */
@@ -40,6 +42,10 @@ export type TimePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Tekst eller ikon som kommer før inputfelter
+   * @default <ClockIcon />
+   */
+  prepend?: React.ReactNode;
 } & ReactDatePickerProps;
 
 export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
@@ -55,6 +61,8 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       feedback,
       variant,
       disableLabelAnimation,
+      locale = 'nb',
+      prepend = <ClockIcon />,
       ...rest
     },
     ref,
@@ -63,7 +71,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={<ClockIcon inline />}
+        prepend={prepend}
         ref={ref}
         label={label}
         labelId={timepickerId}
@@ -77,6 +85,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
           onChange={onChange}
           placeholder={placeholder}
           className={className}
+          locale={locale}
           {...rest}
         />
       </BaseFormControl>
@@ -126,6 +135,14 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
     }
   });
 
+  React.useEffect(() => {
+    if (selectedTime) {
+      setFiller && !isTimepickerFilled && setFiller(true);
+    } else {
+      setFiller && isTimepickerFilled && setFiller(false);
+    }
+  }, [selectedTime, setFiller, isTimepickerFilled]);
+
   const handleChange = (date: any, event: any) => {
     if (date) {
       setFiller && !isTimepickerFilled && setFiller(true);
@@ -142,7 +159,6 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       calendarClassName="eds-timepicker"
       selected={selectedTime}
       onChange={handleChange}
-      locale={nb}
       dateFormat="HH:mm"
       timeFormat="HH:mm"
       showTimeSelect

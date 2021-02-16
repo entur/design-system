@@ -1,6 +1,23 @@
 @import '~@entur/tokens/dist/styles.scss';
 // Input group OLD
-$label-top: 0.125rem;
+$label-top: calc(0.5rem - 0.125rem);
+$label-top-large: 0.5rem;
+
+@mixin labelPositionTopLarge {
+  top: $label-top-large;
+  font-size: $font-sizes-medium;
+  line-height: $font-sizes-large;
+  padding: 0;
+  padding-left: $space-default;
+}
+
+@mixin labelPositionTop {
+  top: $label-top;
+  font-size: $font-sizes-small;
+  line-height: $font-sizes-small;
+  padding: 0;
+  padding-left: $space-default;
+}
 
 .eds-input-group {
   color: inherit;
@@ -11,10 +28,10 @@ $label-top: 0.125rem;
     color: $colors-blues-blue40;
     display: flex;
     .eds-form-control-wrapper--is-filled & {
-      top: $label-top;
-      font-size: $font-sizes-small;
-      padding: 0;
-      padding-left: $space-default;
+      @include labelPositionTop;
+      .eds-form-control-wrapper--size-large & {
+        @include labelPositionTopLarge;
+      }
     }
     .eds-contrast & {
       color: $colors-blues-blue40;
@@ -31,15 +48,21 @@ $label-top: 0.125rem;
     padding: $space-default;
     top: -$border-widths-medium;
     transition: top $timings-medium ease-in-out,
-      font-size $timings-medium ease-in-out, padding $timings-medium ease-in-out;
+      font-size $timings-medium ease-in-out, padding $timings-medium ease-in-out,
+      line-height ease-in-out $timings-medium;
 
     user-select: none;
     pointer-events: none;
+    .eds-form-control-wrapper--size-large & {
+      font-size: $font-sizes-extra-large2;
+      line-height: $line-heights-extra-large4;
+      height: 4rem;
+    }
     &--filled {
-      top: $label-top;
-      font-size: $font-sizes-small;
-      padding: 0;
-      padding-left: $space-default;
+      @include labelPositionTop;
+      .eds-form-control-wrapper--size-large & {
+        @include labelPositionTopLarge;
+      }
     }
   }
 
@@ -54,11 +77,13 @@ $label-top: 0.125rem;
   }
 }
 
-.eds-form-control-wrapper:focus-within {
-  & .eds-input-group__label {
-    top: $label-top;
-    font-size: $font-sizes-small;
-    padding: 0;
-    padding-left: $space-default;
+.eds-form-control-wrapper {
+  &:focus-within .eds-input-group__label {
+    @include labelPositionTop;
+  }
+  &--size-large:focus-within {
+    & .eds-input-group__label {
+      @include labelPositionTopLarge;
+    }
   }
 }

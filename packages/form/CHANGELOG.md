@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.2...@entur/form@4.2.3) (2021-02-05)
+
+### Bug Fixes
+
+- **form components:** fix label and input position ([10dc3c2](https://bitbucket.org/enturas/design-system/commits/10dc3c2380d2d1ce4bd993678c70bab2077d20b4))
+- **multiplesegmentedcontrol:** add deprecation warning for component ([bf51d8c](https://bitbucket.org/enturas/design-system/commits/bf51d8c8b0cdc84ef6797e0808d29494ce6e8d45))
+- **segmentedchoice:** adjust height of component ([63b60a2](https://bitbucket.org/enturas/design-system/commits/63b60a21d6fb828e557c7257945d97be5c02f5de))
+- **segmentedchoice:** extend typings from html input element ([5fe70ba](https://bitbucket.org/enturas/design-system/commits/5fe70bab111b8d2cb9a37dda034c7d208b95fbfe))
+
+## [4.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.1...@entur/form@4.2.2) (2021-01-29)
+
+### Bug Fixes
+
+- **segmentedcontrol:** fix classname overwrites bug ([73a1ede](https://bitbucket.org/enturas/design-system/commits/73a1ede991d570f25c4726a0e153bc00d278c304))
+- **textarea:** fix label position bug ([dcb6990](https://bitbucket.org/enturas/design-system/commits/dcb699058bda6d73a57f0737f5a1b71554e899f4))
+- **textfield:** fix label position bug ([40c1163](https://bitbucket.org/enturas/design-system/commits/40c11634d542b25a3360a438d7d90208c174b00f))
+
+## [4.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.0...@entur/form@4.2.1) (2021-01-20)
+
+### Bug Fixes
+
+- **radiogroup:** allow null in typings for value ([946817a](https://bitbucket.org/enturas/design-system/commits/946817a1f4f8bd562807939b36ae68e8f2da6da2))
+- **radiopanel:** fix typings issues and improve a11y ([b966c5c](https://bitbucket.org/enturas/design-system/commits/b966c5cc5e1cf11cd0f42d9159aee238e84b50a7))
+- **segmentedcontrol:** updated styling for component ([5293045](https://bitbucket.org/enturas/design-system/commits/529304558541fd871e6d1a3f1f7707e58f610189))
+- **textarea:** fix label position on async value bug ([54a4d74](https://bitbucket.org/enturas/design-system/commits/54a4d747ab1fbd2ac5ef56b7fe3a7f31c095604e))
+- **textfield:** fix label position if size=large ([88fd29e](https://bitbucket.org/enturas/design-system/commits/88fd29e78895f4e8a34288194b3c1a35eb28ffda))
+- **textfield:** fix label position on async value bug ([25a23a3](https://bitbucket.org/enturas/design-system/commits/25a23a3df1889014cb665cdb831dc2f655b0778a))
+
 # [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.1.0...@entur/form@4.2.0) (2021-01-13)
 
 ### Bug Fixes

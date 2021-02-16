@@ -10,6 +10,8 @@ export type ChoiceChipGroupProps = {
   children: React.ReactNode;
   /** En callback som blir kalles hver gang en ChoiceChip klikkes på  */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  /** Labelen til ChoiceChip-gruppen. */
+  label?: React.ReactNode;
   [key: string]: any;
 };
 
@@ -18,6 +20,7 @@ export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
   value,
   children,
   onChange,
+  label,
   ...rest
 }) => {
   const contextValue = React.useMemo(() => ({ name, value, onChange }), [
@@ -27,7 +30,7 @@ export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
   ]);
   return (
     <ChoiceChipGroupContextProvider value={contextValue}>
-      <Fieldset className="eds-choice-chips-group" {...rest}>
+      <Fieldset className="eds-choice-chips-group" label={label} {...rest}>
         {children}
       </Fieldset>
     </ChoiceChipGroupContextProvider>

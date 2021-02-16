@@ -7,27 +7,30 @@
   .eds-base-segmented {
     --background-color: transparent;
     background-color: var(--background-color);
-    border: $border-widths-default solid $colors-brand-lavender;
     border-radius: $border-radiuses-medium;
+    margin: $space-extra-small2;
     color: inherit;
     cursor: pointer;
-    font-size: $font-sizes-large;
+    font-size: $font-sizes-medium;
     line-height: $line-heights-medium;
-    padding: $space-extra-small2 $space-small;
+    padding: calc(#{$space-extra-small2}/ 2) $space-small;
+    height: $space-large;
     text-align: center;
     user-select: none;
     .eds-contrast & {
       border-color: $colors-blues-blue20;
     }
     &--large {
-      line-height: $line-heights-medium;
-      padding: $space-small;
+      font-size: $font-sizes-large;
+      line-height: $line-heights-extra-large;
+      height: $space-extra-large2;
+      padding: $space-extra-small $space-small;
     }
   }
   &:hover input:not(:checked) + .eds-base-segmented {
     --background-color: #{$colors-blues-blue80};
     .eds-contrast & {
-      --background-color: #{$colors-blues-blue10};
+      --background-color: #{$colors-blues-blue30};
     }
   }
 
@@ -38,9 +41,12 @@
     height: 0;
     width: 0;
     &:checked + .eds-base-segmented {
-      --background-color: #{$colors-brand-lavender};
+      --background-color: #{$colors-brand-white};
+      box-shadow: $shadows-card-shadow;
       .eds-contrast & {
-        --background-color: #{$colors-blues-blue20};
+        box-shadow: $shadows-card-shadow-contrast;
+        color: $colors-brand-blue;
+        --background-color: #{$colors-brand-white};
       }
     }
 
@@ -52,24 +58,9 @@
     }
   }
   &:hover input:checked + .eds-base-segmented {
-    --background-color: #{tint($colors-brand-lavender, 10)};
-    border-color: var(--background-color);
+    --background-color: #{$colors-blues-blue80};
     .eds-contrast & {
-      --background-color: #{tint($colors-blues-blue20, 10)};
-      border-color: var(--background-color);
+      --background-color: #{$colors-blues-blue70};
     }
-  }
-  &:not(:first-child):not(:last-child) .eds-base-segmented {
-    border-radius: 0;
-    border-left: none;
-  }
-  &:first-child:not(:last-child) .eds-base-segmented {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  &:last-child:not(:first-child) .eds-base-segmented {
-    border-left: none;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
   }
 }

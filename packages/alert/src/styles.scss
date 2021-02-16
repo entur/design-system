@@ -81,7 +81,8 @@
 
 .eds-alert-box__content {
   color: $colors-brand-blue;
-  &--no-title {
+  &--no-title,
+  &--no-children {
     display: flex;
     align-items: center;
   }

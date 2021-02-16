@@ -1,6 +1,9 @@
 @import '~@entur/tokens/dist/styles.scss';
+.react-datepicker-popper.eds-datepicker__popper {
+  width: 100%;
+}
 .react-datepicker.eds-timepicker.react-datepicker--time-only {
-  width: 7rem;
+  width: 100%;
   .react-datepicker__time-container {
     float: left;
     overflow-x: hidden;
@@ -29,10 +32,10 @@
       border-bottom: $border-widths-default solid $colors-greys-grey70;
       display: flex;
       font-size: $font-sizes-large;
-      height: $space-extra-large;
-      justify-content: flex-start;
+      height: $space-medium;
+      justify-content: center;
       line-height: $line-heights-medium;
-      padding: $space-extra-small2 $space-default;
+      padding: calc(#{$space-extra-small2}/ 2) $space-default;
       &:hover {
         background-color: $colors-brand-lavender;
       }
