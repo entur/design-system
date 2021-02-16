@@ -1263,6 +1263,14 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@entur/button@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@entur/button/-/button-2.5.0.tgz#bfa20c3770e109afa4d6c3b5f83cf03f379eaae9"
+  integrity sha512-O58c274KAQQdQYGQtF8C6jy3ZYiM1R7oqudtxeeigvloeTD7M/yYyI+9f6X5qC/iAwzp4Db+z8MIR3I9aXYVTg==
+  dependencies:
+    "@entur/utils" "^0.4.0"
+    classnames "^2.2.6"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
@@ -16653,11 +16661,6 @@ react-onclickoutside@^6.9.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.9.0.tgz#a54bc317ae8cf6131a5d78acea55a11067f37a1f"
   integrity sha512-8ltIY3bC7oGhj2nPAvWOGi+xGFybPNhJM0V1H8hY/whNcXgmDeaeoCMPPd8VatrpTsUWjb/vGzrmu6SrXVty3A==
-
-react-polymorphic-box@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-polymorphic-box/-/react-polymorphic-box-3.0.2.tgz#f7830deac08b0ae55226a85a2cc2bfa0af53e8f1"
-  integrity sha512-6nTfLUgYPuniGaosD2uDMmS/ZHh4xu2BtscNYZK6HMaVyDgdk4qo2grsEBreOR5CS9Lz4wS835DBKPZ53dFPXg==
 
 react-polymorphic-types@^1.0.3:
   version "1.0.3"
