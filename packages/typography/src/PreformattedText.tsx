@@ -25,7 +25,7 @@ export const PreformattedText = <
   className,
   as,
   ...rest
-}: PreformattedTextProps<E>): JSX.Element => {
+}: PreformattedTextProps<E>) => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

@@ -28,7 +28,7 @@ export const Paragraph = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: ParagraphProps<E>): JSX.Element => {
+}: ParagraphProps<E>) => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

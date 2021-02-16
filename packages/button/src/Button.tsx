@@ -1,6 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import cx from 'classnames';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicPropsWithoutRef,
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+} from '@entur/utils';
 import './Button.scss';
 import './LoadingSpinner.scss';
 
@@ -29,17 +33,19 @@ type ButtonBaseProps = {
   children: React.ReactNode;
 };
 
-export type ButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, ButtonBaseProps>;
-
 const defaultElement = 'button';
 
-export const Button: <E extends React.ElementType = typeof defaultElement>(
-  props: ButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
+export type ButtonProps<
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<ButtonBaseProps, T>;
+
+export const Button: PolymorphicForwardRefExoticComponent<
+  ButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
     {
+      as,
       variant,
       size = 'medium',
       loading,
@@ -48,9 +54,10 @@ export const Button: <E extends React.ElementType = typeof defaultElement>(
       disabled = false,
       width = 'auto',
       ...rest
-    }: ButtonProps<E>,
-    ref: typeof rest.ref,
+    }: PolymorphicPropsWithoutRef<ButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
   ) => {
+    const Element: React.ElementType = as || defaultElement;
     const childrenArray = React.Children.toArray(children);
     const hasLeadingIcon =
       childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
@@ -59,8 +66,7 @@ export const Button: <E extends React.ElementType = typeof defaultElement>(
       typeof childrenArray[childrenArray.length - 1] !== 'string';
 
     return (
-      <Box
-        as={defaultElement}
+      <Element
         className={cx(
           'eds-button',
           {
@@ -80,7 +86,7 @@ export const Button: <E extends React.ElementType = typeof defaultElement>(
         {...rest}
       >
         {loading ? <div className="eds-button__spinner" /> : children}
-      </Box>
+      </Element>
     );
   },
 );

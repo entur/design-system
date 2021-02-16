@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Badge.scss';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type BadgeOwnProps = {
   /** Elementet som wrapper badgen
@@ -24,10 +24,9 @@ export type BadgeOwnProps = {
   max?: number;
 };
 
-export type BadgeProps<E extends React.ElementType> = PolymorphicComponentProps<
-  E,
-  BadgeOwnProps
->;
+export type BadgeProps<
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<BadgeOwnProps, E>;
 
 const defaultElement = 'span';
 
@@ -42,10 +41,12 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
       variant,
       showZero = false,
       invisible: invisibleProp = false,
+      as,
       ...rest
     }: BadgeProps<E>,
     ref: typeof rest.ref,
   ) => {
+    const Element: React.ElementType = as || defaultElement;
     let invisible = invisibleProp;
     if (
       invisibleProp === false &&
@@ -68,9 +69,9 @@ export const Badge: <E extends React.ElementType = typeof defaultElement>(
     );
 
     return (
-      <Box as={defaultElement} className={classList} ref={ref} {...rest}>
+      <Element className={classList} ref={ref} {...rest}>
         {displayValue}
-      </Box>
+      </Element>
     );
   },
 );

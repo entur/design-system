@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSideNavigationContext } from './CollapsibleSideNavigation';
 import { useShowDelayedLabel } from './useShowDelayedLabel';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 function isActiveRecursively(child: any): boolean {
   if (!child.props) {
@@ -31,8 +31,8 @@ type BaseSideNavigationItemOwnProps = {
 };
 
 export type BaseSideNavigationItemProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, BaseSideNavigationItemOwnProps>;
+  E extends React.ElementType = typeof defaultElementBaseItem
+> = PolymorphicPropsWithoutRef<BaseSideNavigationItemOwnProps, E>;
 
 const defaultElementBaseItem = 'a';
 
@@ -46,16 +46,17 @@ const BaseSideNavigationItem: <E extends React.ElementType = typeof defaultEleme
       subMenu,
       icon,
       children,
+      as,
       ...rest
     }: BaseSideNavigationItemProps<E>,
     ref: typeof rest.ref,
   ) => {
+    const Element: React.ElementType = as || defaultElementBaseItem;
     const { isCollapsed } = useSideNavigationContext();
     const [showLabel] = useShowDelayedLabel(isCollapsed);
     return (
       <li className={classNames('eds-side-navigation__item', className)}>
-        <Box
-          as={defaultElementBaseItem}
+        <Element
           className={classNames('eds-side-navigation__click-target', {
             'eds-side-navigation__click-target--active': active,
           })}
@@ -64,7 +65,7 @@ const BaseSideNavigationItem: <E extends React.ElementType = typeof defaultEleme
         >
           {icon}
           {showLabel && children}
-        </Box>
+        </Element>
         {subMenu}
       </li>
     );
@@ -108,8 +109,8 @@ export type SideNavigationItemOwnProps = {
 };
 
 export type SideNavigationItemProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SideNavigationItemOwnProps>;
+  E extends React.ElementType = typeof defaultElementItem
+> = PolymorphicPropsWithoutRef<SideNavigationItemOwnProps, E>;
 
 const defaultElementItem = 'a';
 
@@ -122,10 +123,12 @@ export const SideNavigationItem: <E extends React.ElementType = typeof defaultEl
       disabled,
       children,
       forceExpandSubMenus,
+      as,
       ...rest
     }: SideNavigationItemProps<E>,
     ref: typeof rest.ref,
   ) => {
+    const Element: React.ElementType = as || defaultElementItem;
     const childrenArray = React.Children.toArray(children);
     const subMenu = childrenArray.find(
       (child: any) => child && child.type && child.type.__IS_ENTUR_MENU__,
@@ -145,7 +148,7 @@ export const SideNavigationItem: <E extends React.ElementType = typeof defaultEl
     if (!subMenu) {
       return (
         <BaseSideNavigationItem
-          as={defaultElementItem}
+          as={Element}
           active={active}
           ref={ref}
           {...rest}
@@ -164,7 +167,7 @@ export const SideNavigationItem: <E extends React.ElementType = typeof defaultEl
         active={active}
         subMenu={isExpanded && subMenu}
         aria-expanded={isExpanded}
-        as={defaultElementItem}
+        as={Element}
         ref={ref}
         {...rest}
       >

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicPropsWithoutRef,
+  PolymorphicPropsWithRef,
+  PolymorphicForwardRefExoticComponent,
+} from '@entur/utils';
 
 export type NegativeButtonBaseProps = {
   /** Størrelsen på knappen
@@ -23,19 +27,24 @@ export type NegativeButtonBaseProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
+  as?: 'button' | React.ElementType;
 };
 
 export type NegativeButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, NegativeButtonBaseProps>;
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<NegativeButtonBaseProps, T>;
 
 const defaultElement = 'button';
 
-export const NegativeButton: <E extends React.ElementType = typeof defaultElement>(
-  props: NegativeButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: NegativeButtonProps<E>,
-    ref: typeof props.ref,
-  ) => <Button as={defaultElement} {...props} ref={ref} variant="negative" />,
+export const NegativeButton: PolymorphicForwardRefExoticComponent<
+  NegativeButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
+    props: PolymorphicPropsWithoutRef<NegativeButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
+  ) => {
+    const Element: React.ElementType = props.as || defaultElement;
+    return <Button as={Element} {...props} ref={ref} variant="negative" />;
+  },
 );
