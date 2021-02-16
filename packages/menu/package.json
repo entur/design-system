@@ -23,6 +23,7 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
+    "@entur/button": "^2.5.0",
     "@entur/expand": "^3.2.23",
     "@entur/icons": "^1.16.0",
     "@entur/layout": "^1.9.2",
