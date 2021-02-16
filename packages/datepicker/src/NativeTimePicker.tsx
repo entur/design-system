@@ -60,7 +60,7 @@ export const NativeTimePicker = React.forwardRef<
       >
         <NativeTimePickerBase
           onChange={onChange}
-          id={nativetimepickerId}
+          aria-labelledby={nativetimepickerId}
           ref={ref}
           {...rest}
         />
@@ -70,7 +70,7 @@ export const NativeTimePicker = React.forwardRef<
 );
 
 type NativeTimePickerBaseProps = {
-  [key: string]: any;
+  variant?: VariantType;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement

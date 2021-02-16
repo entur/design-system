@@ -86,6 +86,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
           placeholder={placeholder}
           className={className}
           locale={locale}
+          ariaLabelledBy={timepickerId}
           {...rest}
         />
       </BaseFormControl>

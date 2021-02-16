@@ -60,7 +60,7 @@ export const NativeDatePicker = React.forwardRef<
       >
         <NativeDatePickerBase
           onChange={onChange}
-          id={nativedatepickerId}
+          aria-labelledby={nativedatepickerId}
           ref={ref}
           variant={variant}
           {...rest}
@@ -73,7 +73,6 @@ export const NativeDatePicker = React.forwardRef<
 type NativeDatePickerBaseProps = {
   onChange?: any;
   variant?: VariantType;
-  id: string;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -82,7 +81,7 @@ type NativeDatePickerBaseProps = {
 const NativeDatePickerBase = React.forwardRef<
   HTMLInputElement,
   NativeDatePickerBaseProps
->(({ onChange, id, variant, value, ...rest }, ref) => {
+>(({ onChange, variant, value, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = variant || contextVariant;
   const {
@@ -119,7 +118,6 @@ const NativeDatePickerBase = React.forwardRef<
       type="date"
       className="eds-form-control eds-native-date-picker"
       onChange={handleChange}
-      id={id}
       value={value}
       {...rest}
     />

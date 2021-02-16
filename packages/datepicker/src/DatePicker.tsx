@@ -86,7 +86,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           onChange={onChange}
           placeholder={placeholder}
           readOnly={readOnly}
-          id={datepickerId}
+          ariaLabelledBy={datepickerId}
           locale={locale}
           weekLabel={weekLabel}
           {...rest}
