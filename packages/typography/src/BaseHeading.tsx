@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 type BaseHeadingOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres */
@@ -14,12 +14,11 @@ type BaseHeadingOwnProps = {
   /** Nivået på overskriften  */
   level: 1 | 2 | 3 | 4 | 5 | 6;
 };
+const defaultElement = 'h1';
 
 export type BaseHeadingProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, BaseHeadingOwnProps>;
-
-const defaultElement = 'h1';
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<BaseHeadingOwnProps, T>;
 
 export const BaseHeading = <
   E extends React.ElementType = typeof defaultElement
@@ -27,13 +26,13 @@ export const BaseHeading = <
   className,
   level,
   margin,
+  as,
   ...rest
-}: BaseHeadingProps<E>): JSX.Element => {
+}: BaseHeadingProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   const baseClass = `eds-h${level}`;
-
   return (
-    <Box
-      as={defaultElement}
+    <Element
       className={classNames(
         baseClass,
         {

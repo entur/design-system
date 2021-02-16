@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseHeading } from './BaseHeading';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type Heading4OwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,17 +18,20 @@ export type Heading4OwnProps = {
 };
 
 export type Heading4Props<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, Heading4OwnProps>;
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<Heading4OwnProps, T>;
 
 const defaultElement = 'h4';
-
 export const Heading4 = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   children,
+  as,
   ...rest
-}: Heading4Props<E>): JSX.Element => (
-  <BaseHeading as={defaultElement} margin={margin} {...rest} level={4}>
-    {children}
-  </BaseHeading>
-);
+}: Heading4Props<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <BaseHeading as={Element} margin={margin} {...rest} level={4}>
+      {children}
+    </BaseHeading>
+  );
+};

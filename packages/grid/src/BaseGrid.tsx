@@ -1,9 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 import './Grid.scss';
 
-export type BaseGridOwnProps = {
+type BaseGridOwnProps = {
   /** Om det er en GridContainer
    * @default false
    */
@@ -42,32 +42,35 @@ export type BaseGridOwnProps = {
   medium?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   /** Antall kolonner en Item bruker på store flater. */
   large?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  /** HTML-elementet eller React-komponenten som lager Grid-elementet*/
-  as?: 'div' | React.ElementType;
-  /** Innholdet til Grid containeren/item */
-  children?: React.ReactNode;
+  /** HTML-elementet eller React-komponenten som lager Grid-elementet
+   * @default "div"
+   */
+  as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
+  /** Innholdet til Grid containeren/item */
+  children?: React.ReactNode;
 };
+const defaultElement = 'code';
 
 export type BaseGridProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, BaseGridOwnProps>;
-
-const defaultElement = 'div';
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<BaseGridOwnProps, T>;
 
 export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
-  item = false,
-  container = false,
+  item,
+  container,
   children,
   className,
-  spacing = 'none',
-  rowSpacing = spacing,
+  spacing,
+  rowSpacing,
   small = 1,
   medium,
   large,
+  as,
   ...rest
-}: BaseGridProps<E>): JSX.Element => {
+}: BaseGridProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   const classList = classnames([
     'eds-grid',
     className,
@@ -80,8 +83,8 @@ export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
     { [`eds-grid--large-${large}`]: large && item },
   ]);
   return (
-    <Box as={defaultElement} className={classList} {...rest}>
+    <Element className={classList} {...rest}>
       {children}
-    </Box>
+    </Element>
   );
 };

@@ -1,6 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import {
+  PolymorphicPropsWithoutRef,
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+} from '@entur/utils';
 import './BaseSquareButton.scss';
 import './LoadingSpinner.scss';
 
@@ -22,28 +26,30 @@ export type BaseSquareButtonBaseProps = {
 };
 
 export type BaseSquareButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, BaseSquareButtonBaseProps>;
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<BaseSquareButtonBaseProps, T>;
 
 const defaultElement = 'button';
 
-export const BaseSquareButton: <E extends React.ElementType = typeof defaultElement>(
-  props: BaseSquareButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
+export const BaseSquareButton: PolymorphicForwardRefExoticComponent<
+  BaseSquareButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
     {
       children,
       className,
       variant,
       disabled = false,
       loading = false,
+      as,
       ...rest
-    }: BaseSquareButtonProps<E>,
-    ref: typeof rest.ref,
+    }: PolymorphicPropsWithoutRef<BaseSquareButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
   ) => {
+    const Element: React.ElementType = as || defaultElement;
     return (
-      <Box
-        as={defaultElement}
+      <Element
         className={classNames(
           'eds-square-button',
           { 'eds-square-button--success': variant === 'success' },
@@ -67,7 +73,7 @@ export const BaseSquareButton: <E extends React.ElementType = typeof defaultElem
             </span>
           );
         })}
-      </Box>
+      </Element>
     );
   },
 );

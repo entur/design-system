@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { RightArrowIcon } from '@entur/icons';
 import './BreadcrumbNavigation.scss';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type BreadcrumbItemOwnProps = {
   /** Komponenten som rendres
@@ -18,8 +18,8 @@ export type BreadcrumbItemOwnProps = {
 };
 
 export type BreadcrumbItemProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, BreadcrumbItemOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<BreadcrumbItemOwnProps, E>;
 
 const defaultElement = 'a';
 
@@ -28,13 +28,14 @@ export const BreadcrumbItem = <
 >({
   className,
   isCurrent,
+  as,
   ...rest
-}: BreadcrumbItemProps<E>): JSX.Element => {
+}: BreadcrumbItemProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   return (
     <>
       <li className={classNames('eds-breadcrumb__item', className)}>
-        <Box
-          as={defaultElement}
+        <Element
           aria-current={isCurrent ? 'page' : undefined}
           className={classNames('eds-breadcrumb__link', {
             'eds-breadcrumb__link--current': isCurrent,

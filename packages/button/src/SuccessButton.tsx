@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicPropsWithoutRef,
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+} from '@entur/utils';
 
 type SuccessButtonBaseProps = {
   /** Størrelsen på knappen
@@ -26,16 +30,20 @@ type SuccessButtonBaseProps = {
 };
 
 export type SuccessButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SuccessButtonBaseProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<SuccessButtonBaseProps, E>;
 
 const defaultElement = 'button';
 
-export const SuccessButton: <E extends React.ElementType = typeof defaultElement>(
-  props: SuccessButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: SuccessButtonProps<E>,
-    ref: typeof props.ref,
-  ) => <Button as={defaultElement} {...props} ref={ref} variant="success" />,
+export const SuccessButton: PolymorphicForwardRefExoticComponent<
+  SuccessButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
+    props: PolymorphicPropsWithoutRef<SuccessButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
+  ) => {
+    const Element: React.ElementType = props.as || defaultElement;
+    return <Button as={Element} {...props} ref={ref} variant="success" />;
+  },
 );

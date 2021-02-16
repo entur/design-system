@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicPropsWithoutRef,
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+} from '@entur/utils';
 import './IconButton.scss';
 
 export type IconButtonBaseProps = {
@@ -25,25 +29,27 @@ export type IconButtonBaseProps = {
 const defaultElement = 'button';
 
 export type IconButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, IconButtonBaseProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<IconButtonBaseProps, E>;
 
-export const IconButton: <E extends React.ElementType = typeof defaultElement>(
-  props: IconButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
+export const IconButton: PolymorphicForwardRefExoticComponent<
+  IconButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
   <E extends React.ElementType = typeof defaultElement>(
     {
       children,
       className,
       disabled = false,
       size,
+      as,
       ...rest
-    }: IconButtonProps<E>,
-    ref: typeof rest.ref,
+    }: PolymorphicPropsWithoutRef<IconButtonBaseProps, E>,
+    ref: React.ForwardedRef<React.ElementRef<E>>,
   ) => {
+    const Element: React.ElementType = as || defaultElement;
     return (
-      <Box
-        as={defaultElement}
+      <Element
         className={classNames(
           'eds-icon-button',
           className,
@@ -58,7 +64,7 @@ export const IconButton: <E extends React.ElementType = typeof defaultElement>(
         {...rest}
       >
         {children}
-      </Box>
+      </Element>
     );
   },
 );

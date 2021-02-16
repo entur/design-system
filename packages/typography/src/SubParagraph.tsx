@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type SubParagraphOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type SubParagraphOwnProps = {
 };
 
 export type SubParagraphProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SubParagraphOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<SubParagraphOwnProps, E>;
 
 const defaultElement = 'p';
 
@@ -28,19 +28,22 @@ export const SubParagraph = <
 >({
   className,
   margin,
+  as,
   ...rest
-}: SubParagraphProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-sub-paragraph',
-      {
-        [`eds-sub-paragraph--margin-top`]: margin === 'top',
-        [`eds-sub-paragraph--margin-bottom`]: margin === 'bottom',
-        [`eds-sub-paragraph--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: SubParagraphProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-sub-paragraph',
+        {
+          [`eds-sub-paragraph--margin-top`]: margin === 'top',
+          [`eds-sub-paragraph--margin-bottom`]: margin === 'bottom',
+          [`eds-sub-paragraph--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

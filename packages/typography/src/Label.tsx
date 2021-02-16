@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type LabelOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,29 +17,31 @@ export type LabelOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type LabelProps<E extends React.ElementType> = PolymorphicComponentProps<
-  E,
-  LabelOwnProps
->;
+export type LabelProps<
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<LabelOwnProps, E>;
 
 const defaultElement = 'label';
 
 export const Label = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
+  as,
   ...rest
-}: LabelProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-label',
-      {
-        [`eds-label--margin-top`]: margin === 'top',
-        [`eds-label--margin-bottom`]: margin === 'bottom',
-        [`eds-label--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: LabelProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-label',
+        {
+          [`eds-label--margin-top`]: margin === 'top',
+          [`eds-label--margin-bottom`]: margin === 'bottom',
+          [`eds-label--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

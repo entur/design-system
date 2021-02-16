@@ -1,8 +1,12 @@
 import React from 'react';
 import { BaseSquareButton } from './BaseSquareButton';
-import { PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithoutRef,
+  PolymorphicPropsWithRef,
+} from '@entur/utils';
 
-type SecondarySquareButtonBaseProps = {
+export type SecondarySquareButtonBaseProps = {
   /** Tekst og ikon, ikon og tekst, eller bare ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -18,23 +22,22 @@ type SecondarySquareButtonBaseProps = {
 };
 
 export type SecondarySquareButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SecondarySquareButtonBaseProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<SecondarySquareButtonBaseProps, E>;
 
 const defaultElement = 'button';
 
-export const SecondarySquareButton: <E extends React.ElementType = typeof defaultElement>(
-  props: SecondarySquareButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: SecondarySquareButtonProps<E>,
-    ref: typeof props.ref,
-  ) => (
-    <BaseSquareButton
-      as={defaultElement}
-      ref={ref}
-      {...props}
-      variant="secondary"
-    />
-  ),
+export const SecondarySquareButton: PolymorphicForwardRefExoticComponent<
+  SecondarySquareButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
+    props: PolymorphicPropsWithoutRef<SecondarySquareButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
+  ) => {
+    const Element: React.ElementType = props.as || defaultElement;
+    return (
+      <BaseSquareButton as={Element} ref={ref} {...props} variant="secondary" />
+    );
+  },
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type SmallTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,27 +18,29 @@ export type SmallTextOwnProps = {
 };
 
 export type SmallTextProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SmallTextOwnProps>;
-
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<SmallTextOwnProps, T>;
 const defaultElement = 'span';
 
 export const SmallText = <E extends React.ElementType = typeof defaultElement>({
   className,
   margin = 'both',
+  as,
   ...rest
-}: SmallTextProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-small-text',
-      {
-        [`eds-small-text--margin-top`]: margin === 'top',
-        [`eds-small-text--margin-bottom`]: margin === 'bottom',
-        [`eds-small-text--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: SmallTextProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-small-text',
+        {
+          [`eds-small-text--margin-top`]: margin === 'top',
+          [`eds-small-text--margin-bottom`]: margin === 'bottom',
+          [`eds-small-text--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

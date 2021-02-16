@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type EmphasizedTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type EmphasizedTextOwnProps = {
 };
 
 export type EmphasizedTextProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, EmphasizedTextOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<EmphasizedTextOwnProps, E>;
 
 const defaultElement = 'em';
 
@@ -28,19 +28,22 @@ export const EmphasizedText = <
 >({
   className,
   margin = 'both',
+  as,
   ...rest
-}: EmphasizedTextProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames(
-      'eds-emphasized-text',
-      {
-        [`eds-emphasized-text--margin-top`]: margin === 'top',
-        [`eds-emphasized-text--margin-bottom`]: margin === 'bottom',
-        [`eds-emphasized-text--margin-none`]: margin === 'none',
-      },
-      className,
-    )}
-    {...rest}
-  />
-);
+}: EmphasizedTextProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element
+      className={classNames(
+        'eds-emphasized-text',
+        {
+          [`eds-emphasized-text--margin-top`]: margin === 'top',
+          [`eds-emphasized-text--margin-bottom`]: margin === 'bottom',
+          [`eds-emphasized-text--margin-none`]: margin === 'none',
+        },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};

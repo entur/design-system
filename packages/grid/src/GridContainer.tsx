@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseGrid } from './BaseGrid';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 import './Grid.scss';
 
 export type GridContainerOwnProps = {
@@ -35,8 +35,8 @@ export type GridContainerOwnProps = {
 };
 
 export type GridContainerProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, GridContainerOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<GridContainerOwnProps, E>;
 
 const defaultElement = 'div';
 
@@ -47,12 +47,14 @@ export const GridContainer = <
   className,
   spacing,
   rowSpacing,
+  as,
   ...rest
-}: GridContainerProps<E>): JSX.Element => {
+}: GridContainerProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   return (
     <BaseGrid
       container
-      as={defaultElement}
+      as={Element}
       className={className}
       spacing={spacing}
       rowSpacing={rowSpacing}

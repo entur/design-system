@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './TopNavigationItem.scss';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type TopNavigationItemOwnProps = {
   /** Om komponenten vises som valgt eller ikke
@@ -19,8 +19,8 @@ export type TopNavigationItemOwnProps = {
 };
 
 export type TopNavigationItemProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, TopNavigationItemOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<TopNavigationItemOwnProps, E>;
 
 const defaultElement = 'a';
 
@@ -29,11 +29,12 @@ export const TopNavigationItem = <
 >({
   active = false,
   className,
+  as,
   ...rest
-}: TopNavigationItemProps<E>): JSX.Element => {
+}: TopNavigationItemProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   return (
-    <Box
-      as={defaultElement}
+    <Element
       className={classNames([
         'eds-top-navigation-item',
         className,

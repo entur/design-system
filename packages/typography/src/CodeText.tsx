@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicComponentProps, Box } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type CodeTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -14,18 +14,18 @@ export type CodeTextOwnProps = {
 };
 
 export type CodeTextProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, CodeTextOwnProps>;
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<CodeTextOwnProps, E>;
 
 const defaultElement = 'code';
 
 export const CodeText = <E extends React.ElementType = typeof defaultElement>({
   className,
+  as,
   ...rest
-}: CodeTextProps<E>): JSX.Element => (
-  <Box
-    as={defaultElement}
-    className={classNames('eds-code-text', className)}
-    {...rest}
-  />
-);
+}: CodeTextProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
+  return (
+    <Element className={classNames('eds-code-text', className)} {...rest} />
+  );
+};

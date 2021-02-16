@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from './Button';
-import { PolymorphicComponentProps } from '@entur/utils';
+import {
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+  PolymorphicPropsWithoutRef,
+} from '@entur/utils';
 
 export type SecondaryButtonBaseProps = {
   /** Størrelsen på knappen
@@ -26,16 +30,20 @@ export type SecondaryButtonBaseProps = {
 };
 
 export type SecondaryButtonProps<
-  E extends React.ElementType
-> = PolymorphicComponentProps<E, SecondaryButtonBaseProps>;
+  T extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithRef<SecondaryButtonBaseProps, T>;
 
 const defaultElement = 'button';
 
-export const SecondaryButton: <E extends React.ElementType = typeof defaultElement>(
-  props: SecondaryButtonProps<E>,
-) => React.ReactElement | null = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
-    props: SecondaryButtonProps<E>,
-    ref: typeof props.ref,
-  ) => <Button as={defaultElement} {...props} ref={ref} variant="secondary" />,
+export const SecondaryButton: PolymorphicForwardRefExoticComponent<
+  SecondaryButtonBaseProps,
+  typeof defaultElement
+> = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
+    props: PolymorphicPropsWithoutRef<SecondaryButtonBaseProps, T>,
+    ref: React.ForwardedRef<React.ElementRef<T>>,
+  ) => {
+    const Element: React.ElementType = props.as || defaultElement;
+    return <Button as={Element} {...props} ref={ref} variant="secondary" />;
+  },
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Tag.scss';
-import { Box, PolymorphicComponentProps } from '@entur/utils';
+import { PolymorphicPropsWithoutRef } from '@entur/utils';
 
 export type TagOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,10 +17,9 @@ export type TagOwnProps = {
   children: React.ReactNode;
 };
 
-export type TagProps<E extends React.ElementType> = PolymorphicComponentProps<
-  E,
-  TagOwnProps
->;
+export type TagProps<
+  E extends React.ElementType = typeof defaultElement
+> = PolymorphicPropsWithoutRef<TagOwnProps, E>;
 
 const defaultElement = 'div';
 
@@ -28,8 +27,10 @@ export const Tag = <E extends React.ElementType = typeof defaultElement>({
   className,
   children,
   compact,
+  as,
   ...rest
-}: TagProps<E>): JSX.Element => {
+}: TagProps<E>) => {
+  const Element: React.ElementType = as || defaultElement;
   const childrenArray = React.Children.toArray(children);
   const hasLeadingIcon =
     childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
@@ -38,8 +39,7 @@ export const Tag = <E extends React.ElementType = typeof defaultElement>({
     typeof childrenArray[childrenArray.length - 1] !== 'string';
 
   return (
-    <Box
-      as={defaultElement}
+    <Element
       className={classNames('eds-tag', className, {
         'eds-tag--leading-icon': hasLeadingIcon,
         'eds-tag--trailing-icon': hasTrailingIcon,
@@ -48,6 +48,6 @@ export const Tag = <E extends React.ElementType = typeof defaultElement>({
       {...rest}
     >
       {children}
-    </Box>
+    </Element>
   );
 };
