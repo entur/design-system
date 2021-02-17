@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.3...@entur/typography@1.6.4) (2021-02-17)
+
+### Bug Fixes
+
+- **polymorphism:** update polymorphism dependency ([dc4c31d](https://bitbucket.org/enturas/design-system/commits/dc4c31d8e891a46c1f0c1fbd0a6a026c1638accc))
+- update to improved polymorphism dependency ([d7d4bbe](https://bitbucket.org/enturas/design-system/commits/d7d4bbe471a526cbdd3c9829ebb54bbcc850aae8))
+
 ## [1.6.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.2...@entur/typography@1.6.3) (2021-01-20)
 
 **Note:** Version bump only for package @entur/typography

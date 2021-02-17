@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.0...@entur/button@2.5.1) (2021-02-17)
+
+### Bug Fixes
+
+- **polymorphism:** update polymorphism dependency ([dc4c31d](https://bitbucket.org/enturas/design-system/commits/dc4c31d8e891a46c1f0c1fbd0a6a026c1638accc))
+
 # [2.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.4.2...@entur/button@2.5.0) (2021-01-29)
 
 ### Features

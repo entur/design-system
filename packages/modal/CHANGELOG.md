@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.13](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.3.12...@entur/modal@1.3.13) (2021-02-17)
+
+### Bug Fixes
+
+- **modal:** add border radius for modal windows ([8ed7468](https://bitbucket.org/enturas/design-system/commits/8ed7468ce9c2544f11ea7113415366236f12041e))
+
 ## [1.3.12](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.3.11...@entur/modal@1.3.12) (2021-01-29)
 
 **Note:** Version bump only for package @entur/modal

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.7.0...@entur/datepicker@0.7.1) (2021-02-17)
+
+### Bug Fixes
+
+- **date and timepicker:** fix usage of id and aria labelledby ([cc54924](https://bitbucket.org/enturas/design-system/commits/cc549240ff4f4580b58832a2c4cd6ce6dcc7db9b))
+- update styles from dependency to latest version ([eba5023](https://bitbucket.org/enturas/design-system/commits/eba5023a64c1bede02b30209ee3faa44c0f49058))
+- **datepicker:** lock dependency at newest version ([7461b71](https://bitbucket.org/enturas/design-system/commits/7461b7174bd265a7fdd9a44bcad98c2c413b62ed))
+- **datepicker:** update dependency for datepicker & timepicker ([51b3733](https://bitbucket.org/enturas/design-system/commits/51b3733dc7f474807634a8d76cdd14f6dec6c959))
+- **timepicker:** adjust height on timepicker list items ([a6ab9d0](https://bitbucket.org/enturas/design-system/commits/a6ab9d0893afee5ccefbbb9f1942945611bd136f))
+
 # [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.6.0...@entur/datepicker@0.7.0) (2021-02-05)
 
 ### Bug Fixes

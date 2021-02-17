@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.18.0...@entur/icons@1.19.0) (2021-02-17)
+
+### Features
+
+- add accessibility icon ([3c71aac](https://bitbucket.org/enturas/design-system/commits/3c71aac995d0912bc6ab0c85875ce89b0701924f))
+
 # [1.18.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.17.0...@entur/icons@1.18.0) (2021-01-29)
 
 ### Features

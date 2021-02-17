@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.0...@entur/utils@0.4.1) (2021-02-17)
+
+### Bug Fixes
+
+- **dependency:** remove old polymorphism from dependencies ([c170645](https://bitbucket.org/enturas/design-system/commits/c1706459b36048952e9ca14cc51148054bf12bdc))
+- **polymorphic:** add new polymorphism dependency ([7bf79cc](https://bitbucket.org/enturas/design-system/commits/7bf79cca1feccf7cfee11fc9f8ff1e5f1025a47f))
+- **polymorphic:** remove old dependency as exports ([eb5f431](https://bitbucket.org/enturas/design-system/commits/eb5f43171cdc8099f9479bd6a7210c0a5fa2daa4))
+
 # [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.3.0...@entur/utils@0.4.0) (2020-12-04)
 
 ### Features

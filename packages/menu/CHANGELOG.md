@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.4...@entur/menu@3.5.5) (2021-02-17)
+
+### Bug Fixes
+
+- **polymorphism:** update polymorphism dependency ([dc4c31d](https://bitbucket.org/enturas/design-system/commits/dc4c31d8e891a46c1f0c1fbd0a6a026c1638accc))
+- add entur button to dependencies ([5ed4e89](https://bitbucket.org/enturas/design-system/commits/5ed4e89fedc0c2a4f5ac4ff17f3cb0d091e345eb))
+
 ## [3.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.3...@entur/menu@3.5.4) (2021-01-29)
 
 ### Bug Fixes

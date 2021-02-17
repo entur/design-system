@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.2...@entur/grid@0.3.3) (2021-02-17)
+
+### Bug Fixes
+
+- **polymorphism:** update polymorphism dependency ([dc4c31d](https://bitbucket.org/enturas/design-system/commits/dc4c31d8e891a46c1f0c1fbd0a6a026c1638accc))
+- update grid components to new polymorphism dependency ([011b8a5](https://bitbucket.org/enturas/design-system/commits/011b8a5be61f27f8d4f6bcee65fcd42352d7a68e))
+
 ## [0.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.1...@entur/grid@0.3.2) (2021-01-20)
 
 **Note:** Version bump only for package @entur/grid
