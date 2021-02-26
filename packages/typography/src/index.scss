@@ -277,10 +277,11 @@ html {
 }
 
 .eds-preformatted-text {
-  background-color: $colors-greys-grey80;
-  border-radius: $border-radiuses-small;
-  color: inherit;
-  font-family: 'Dank Mono', monospace;
+  background-color: $colors-greys-grey90;
+  border: $border-widths-small solid $colors-greys-grey70;
+  border-radius: $border-radiuses-medium;
+  color: $colors-greys-grey40;
+  font-family: 'Monaco', monospace;
   font-size: $font-sizes-medium;
   padding: 1em;
   white-space: pre-wrap;
@@ -288,9 +289,11 @@ html {
 }
 
 .eds-code-text {
-  background-color: $colors-blues-blue80;
-  border-radius: $border-radiuses-small;
-  font-family: 'Dank Mono', monospace;
+  background-color: $colors-greys-grey90;
+  border: $border-widths-small solid $colors-greys-grey70;
+  border-radius: $border-radiuses-medium;
+  color: $colors-greys-grey40;
+  font-family: 'Monaco', monospace;
   font-size: $font-sizes-medium; // Slightly smaller than
   padding: ($space-extra-small2 / 2) $space-extra-small2;
 }
