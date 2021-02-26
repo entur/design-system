@@ -3,12 +3,13 @@ import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
-import { Contrast } from '@entur/layout';
+import { BaseCard, Contrast } from '@entur/layout';
 import prismTheme from '~/components/prism-theme';
 import './Playground.scss';
-import { ExpandableTextButton, BaseExpand } from '@entur/expand/src';
+import { BaseExpand } from '@entur/expand/src';
 import { AdvancedPlayground } from './AdvancedPlayground';
 import { Button } from '@entur/button';
+import { SourceCodeIcon } from '@entur/icons/dist';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -30,7 +31,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
   style,
   __code,
   __scope,
-  language,
+  language = 'jsx',
   advanced = false,
   props,
 }) => {
@@ -66,27 +67,28 @@ export const Playground: React.FC<PlaygroundProps> = ({
             <Contrast className="playground">{children}</Contrast>
           )}
         >
-          <LivePreview style={{ ...style }} />
-        </ConditionalWrapper>
-        <div className="playground__controls">
           {hideContrastOption ? (
             <div />
           ) : (
             <Switch
               checked={isContrast}
               onChange={() => setContrast(prev => !prev)}
+              className="playground__contrast-switch"
             >
               <Label as="span">Kontrast</Label>
             </Switch>
           )}
-          <div>
-            <ExpandableTextButton
-              open={isShowingEditor}
-              onToggle={() => setShowingEditor(prev => !prev)}
-            >
-              Kode
-            </ExpandableTextButton>
-          </div>
+          <LivePreview style={{ ...style }} />
+        </ConditionalWrapper>
+        <div className="playground__controls">
+          <BaseCard
+            className="playground__controls__card-button"
+            onClick={() => setShowingEditor(prev => !prev)}
+            as="button"
+          >
+            <SourceCodeIcon className="playground__controls__card-button-icon" />
+            Vis kode
+          </BaseCard>
         </div>
         <BaseExpand open={isShowingEditor}>
           <LiveEditor className="playground__editor" />
