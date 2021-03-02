@@ -23,6 +23,10 @@ export type RadioPanelProps = {
   hideCheckbox?: boolean;
   /** Ekstra klassenavn */
   className?: string;
+  /** Om RadioPanel er deaktivert eller ikke
+   * @default false
+   */
+  disabled?: boolean;
   /** */
   style?: React.CSSProperties;
 } & Omit<
@@ -45,6 +49,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       hideCheckbox = false,
       style,
       id,
+      disabled = false,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -53,6 +58,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
       className,
       'eds-radio-panel__container',
       `eds-radio-panel--${size}`,
+      { 'eds-radio-panel--disabled': disabled },
     );
 
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
@@ -68,6 +74,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
           checked={selectedValue === value}
           onChange={onChange}
           id={radioPanelId}
+          disabled={disabled}
           {...rest}
         />
         <div className={classList} style={style}>
@@ -75,7 +82,7 @@ export const RadioPanel = React.forwardRef<HTMLInputElement, RadioPanelProps>(
             <div className="eds-radio-panel__title">{title}</div>
             <div className="eds-radio-panel__label">
               {secondaryLabel && <span>{secondaryLabel}</span>}
-              {!hideCheckbox && (
+              {!(disabled || hideCheckbox) && (
                 <span className="eds-radio-panel__check">
                   <RadioPanelCheck />
                 </span>
