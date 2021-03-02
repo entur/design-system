@@ -50,11 +50,15 @@ export const OverflowMenu: React.FC<OverflowMenuProps> = ({
         })
       )}
       {useContrast() ? (
-        <Contrast className="eds-overflow-menu__menu-list" as={MenuList}>
+        <Contrast
+          className="eds-overflow-menu__menu-list"
+          as={MenuList}
+          portal={false}
+        >
           {[children]}
         </Contrast>
       ) : (
-        <MenuList className="eds-overflow-menu__menu-list">
+        <MenuList className="eds-overflow-menu__menu-list" portal={false}>
           {[children]}
         </MenuList>
       )}
