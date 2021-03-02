@@ -28,13 +28,13 @@ import { Label } from '@entur/typography';
           onChange={e => setValue(e.target.value)}
           value={value}
         >
-          <RadioPanel title="249,-" value="non-flexi" size="large">
-            <div>Ikke fleksibel</div>
-          </RadioPanel>
+        <div
+          style={{display:"grid", gridGap:"0.5rem"}}
+          >
+          <RadioPanel title="249,-" value="non-flexi" size="large">Ikke fleksibel</RadioPanel>
           <RadioPanel
             title="349,-"
             value="flexi"
-            secondaryLabel={<VyIcon size="2rem" />}
             size="large"
           >
             <div>Fleksibel billett</div>
@@ -46,6 +46,7 @@ import { Label } from '@entur/typography';
               </div>
             )}
           </RadioPanel>
+        </div>
         </RadioGroup>
       </div>
     );
