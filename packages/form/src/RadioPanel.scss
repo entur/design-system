@@ -1,10 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-contrast .eds-radio-panel__wrapper + .eds-radio-panel__wrapper {
-  .eds-radio-panel__container {
-    border-top: $border-widths-medium solid $colors-blues-blue20;
-  }
-}
+// .eds-contrast .eds-radio-panel__wrapper + .eds-radio-panel__wrapper {
+//   .eds-radio-panel__container {
+//     border-top: $border-widths-medium solid $colors-blues-blue20;
+//   }
+// }
 
 .eds-radio-panel {
   &__wrapper {
@@ -17,7 +17,7 @@
       &:checked {
         + .eds-radio-panel__container {
           border-color: $colors-brand-blue;
-          background: $colors-greys-grey90;
+          background: $colors-blues-blue90;
           .eds-contrast & {
             border-color: $colors-brand-lavender;
             background: $colors-blues-blue20;
@@ -46,13 +46,13 @@
   &__container {
     background: $colors-brand-white;
     border: $border-widths-medium solid $colors-greys-grey60;
-    cursor: pointer;
+    border-radius: $border-radiuses-medium;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     min-width: 20rem;
     position: relative;
-    padding: $space-medium $space-medium $space-large $space-large;
+    padding: $space-medium;
     user-select: none;
     width: fit-content;
     .eds-contrast & {
@@ -108,8 +108,19 @@
       height: 2rem;
     }
     .eds-radio-panel__title {
-      font-size: $font-sizes-extra-large2;
+      font-size: $font-sizes-extra-large;
       font-weight: $font-weights-heading;
+      line-height: $line-heights-extra-large3;
+    }
+  }
+  &--disabled {
+    background: $colors-greys-grey80;
+    border-color: $colors-greys-grey80;
+    color: $colors-blues-blue40;
+    .eds-contrast & {
+      background: $colors-brand-blue;
+      border-style: dashed;
+      border-color: $colors-blues-blue30;
     }
   }
 }
