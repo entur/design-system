@@ -45,7 +45,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       items={items}
       label={label}
       labelId={labelId}
-      isFilled
+      isFilled={selectedItem ? true : placeholder.length !== 0}
       disableLabelAnimation={disableLabelAnimation}
       {...rest}
     >
