@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.5...@entur/menu@3.5.6) (2021-03-02)
+
+### Bug Fixes
+
+- **overflowmenu:** remove portal usage ([b3353dc](https://bitbucket.org/enturas/design-system/commits/b3353dcb810df388a30a215e86995f1f3e33e297))
+
 ## [3.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.4...@entur/menu@3.5.5) (2021-02-17)
 
 ### Bug Fixes

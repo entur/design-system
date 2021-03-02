@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.4...@entur/typography@1.6.5) (2021-03-02)
+
+### Bug Fixes
+
+- updated styling for preformatted and code text ([e4db06b](https://bitbucket.org/enturas/design-system/commits/e4db06b135d90e5f337d252edc4654db8bb9565e))
+
 ## [1.6.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.3...@entur/typography@1.6.4) (2021-02-17)
 
 ### Bug Fixes

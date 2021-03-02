@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.5...@entur/table@4.3.6) (2021-03-02)
+
+### Bug Fixes
+
+- **datacell:** improve typing of rest props ([585aff2](https://bitbucket.org/enturas/design-system/commits/585aff2634d3b7f0c2c736c7b4c1a482fce8132e))
+
 ## [4.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.4...@entur/table@4.3.5) (2021-02-17)
 
 **Note:** Version bump only for package @entur/table

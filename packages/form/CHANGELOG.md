@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.4...@entur/form@4.3.0) (2021-03-02)
+
+### Bug Fixes
+
+- **radiopanel:** update styling ([0d3e698](https://bitbucket.org/enturas/design-system/commits/0d3e6985c07ca7cb39e85a44328c0c32867604c1))
+
+### Features
+
+- **radiopanel:** add support for disabled prop ([523526f](https://bitbucket.org/enturas/design-system/commits/523526fc2d50445318786841d6f4f1615045f8b6))
+
 ## [4.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.3...@entur/form@4.2.4) (2021-02-17)
 
 **Note:** Version bump only for package @entur/form
