@@ -108,8 +108,8 @@ const whiteRgb = hexRgb(colors.brand.white, { format: 'array' })
 export const shadows = {
   focus: `0 0 0 0.25rem ${colors.misc.focus}`,
   focusContrast: `0 0 0 0.25rem rgba(${whiteRgb}, 0.3)`,
-  cardShadow: `0 0.125rem 0.1875rem 0 rgba(${blackRgb}, 0.25)`,
-  cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.2)`,
+  cardShadow: `0 0.0625rem 0.1875rem 0 rgba(${blackRgb}, 0.12)`,
+  cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.1)`,
   cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,
   cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 0.7)`,
 };
