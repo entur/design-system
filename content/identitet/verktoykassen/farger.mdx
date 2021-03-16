@@ -41,24 +41,28 @@ import TransportColors from '~/components/TransportColors';
 Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for Entur. Hovedfargene er blå, hvit og rød, og disse burde alltid være med. Korallfargen er vektet lavt, men er viktig og skal alltid være tilstede i uttak. Den brukes ofte til detaljer, til tider så detaljert som bare i logo.
 
 <div style={{ padding: '0.25rem', border: `2px solid ${colors.greys.grey70}` }}>
-  <img src={balance} width="100%" />
+  <img
+    src={balance}
+    width="100%"
+    alt="Viser vektleggingen av profilfargene, Blue og white er størst, så lavender, coral og til slutt peach"
+  />
 </div>
 
 ### Prinsipper
 
 <BestPractices>
-  <Example type="dont" src={dont1}>
+  <Example type="dont" src={dont1} alt="">
     Unngå mørk tekst på blå bakgrunn
   </Example>
-  <Example type="dont" src={dont2}>
+  <Example type="dont" src={dont2} alt="">
     Unngå korallrød bakgrunn
   </Example>
 </BestPractices>
 <BestPractices>
-  <Example type="dont" src={dont3}>
+  <Example type="dont" src={dont3} alt="">
     Unngå identitetløst uttryk
   </Example>
-  <Example type="dont" src={dont4}>
+  <Example type="dont" src={dont4} alt="">
     Unngå lys tekst på lys bakgrunn
   </Example>
 </BestPractices>
