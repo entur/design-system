@@ -57,6 +57,21 @@
         background-color: $colors-brand-blue;
         border-color: $colors-brand-lavender;
       }
+      &.eds-form-component--radio__radio--disabled {
+        background: $colors-greys-grey60;
+        border-color: $colors-greys-grey60;
+        cursor: not-allowed;
+        &:hover {
+          border-color: $colors-greys-grey60;
+        }
+        .eds-contrast & {
+          background: $colors-greys-grey60;
+          border-color: $colors-greys-grey60;
+        }
+        & ~ .eds-form-component--radio__label {
+          color: $colors-blues-blue40;
+        }
+      }
       .eds-form-component--radio__circle {
         display: block;
         width: 0;

@@ -15,10 +15,12 @@ export type RadioProps = {
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (
-    { className, children, value, ...rest },
+    { className, children, value, disabled, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = cx(className, 'eds-form-component--radio__radio');
+    const classList = cx(className, 'eds-form-component--radio__radio', {
+      'eds-form-component--radio__radio--disabled': disabled,
+    });
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
     return (
       <label className="eds-form-component--radio__container">
@@ -29,13 +31,18 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           value={value}
           checked={selectedValue === value}
           onChange={onChange}
+          disabled={disabled}
           {...rest}
         />
         <span className={classList}>
           <span className="eds-form-component--radio__circle"></span>
         </span>
         {children && (
-          <Paragraph margin="none" as="span">
+          <Paragraph
+            margin="none"
+            as="span"
+            className="eds-form-component--radio__label"
+          >
             {children}
           </Paragraph>
         )}
