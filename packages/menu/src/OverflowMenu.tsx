@@ -84,13 +84,19 @@ export const OverflowMenuItem: React.FC<OverflowMenuItemProps> = ({
   as = 'button',
   className,
   onSelect,
+  disabled,
   ...rest
 }) => {
   return (
     <MenuItem
       as={as}
-      className={classNames('eds-overflow-menu__item', className)}
+      className={classNames(
+        'eds-overflow-menu__item',
+        { 'eds-overflow-menu__item--disabled': disabled },
+        className,
+      )}
       onSelect={onSelect}
+      disabled={disabled}
       {...rest}
     >
       {children}
@@ -116,13 +122,19 @@ export const OverflowMenuLink: React.FC<OverflowMenuItemProps> = ({
   as = 'a',
   className,
   onSelect,
+  disabled,
   ...rest
 }) => {
   return (
     <MenuLink
       as={as}
-      className={classNames('eds-overflow-menu__item', className)}
+      className={classNames(
+        'eds-overflow-menu__item',
+        { 'eds-overflow-menu__item--disabled': disabled },
+        className,
+      )}
       onSelect={onSelect}
+      disabled={disabled}
       {...rest}
     >
       {children}
