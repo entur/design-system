@@ -59,6 +59,11 @@ const LogoPreview = () => {
         <img
           src={isContrast ? LogoContrast : Logo}
           style={{ height: '5rem' }}
+          alt={
+            isContrast
+              ? 'Entur sin logo på mørk bakgrunn'
+              : 'Entur sin logo på lys bakgrunn'
+          }
         />
         <div
           style={{

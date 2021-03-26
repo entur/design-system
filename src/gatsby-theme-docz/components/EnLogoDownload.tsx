@@ -4,7 +4,11 @@ import EnIcon from './App_ikon.png';
 const EnLogoDownload = () => {
   return (
     <div>
-      <img src={EnIcon} width="100%" />
+      <img
+        src={EnIcon}
+        width="100%"
+        alt="Entur logoen som brukes for Entur-appen"
+      />
     </div>
   );
 };
