@@ -10,8 +10,9 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { ClockIcon } from '@entur/icons';
+import { ClockIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
+import { add, sub } from 'date-fns';
 import './TimePicker.scss';
 import { useOnMount, useRandomId } from '@entur/utils';
 registerLocale('nb', nb);
@@ -46,6 +47,17 @@ export type TimePickerProps = {
    * @default <ClockIcon />
    */
   prepend?: React.ReactNode;
+  /** Kalles ved klikk på pil venstre i TimePicker
+   * @default Trekker fra 30 minutter av den valgte tiden
+   */
+  onLeftArrowClick?: (selectedTime?: Date | null, e?: React.MouseEvent) => void;
+  /** Kalles ved klikk på pil høyre i TimePicker
+   * @default Legger til 30 minutter av den valgte tiden
+   */
+  onRightArrowClick?: (
+    selectedTime?: Date | null,
+    e?: React.MouseEvent,
+  ) => void;
 } & ReactDatePickerProps;
 
 export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
@@ -63,6 +75,10 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       disableLabelAnimation,
       locale = 'nb',
       prepend = <ClockIcon />,
+      onLeftArrowClick = (selectedTime, event) =>
+        selectedTime && onChange(sub(selectedTime, { minutes: 30 }), event),
+      onRightArrowClick = (selectedTime, event) =>
+        selectedTime && onChange(add(selectedTime, { minutes: 30 }), event),
       ...rest
     },
     ref,
@@ -71,7 +87,6 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={prepend}
         ref={ref}
         label={label}
         labelId={timepickerId}
@@ -79,6 +94,14 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
         variant={variant}
         feedback={feedback}
         disableLabelAnimation={disableLabelAnimation}
+        className="eds-timepicker-form-control"
+        prepend={
+          <TimePickerArrowButton
+            direction="left"
+            tabIndex={-1}
+            onClick={(e: React.MouseEvent) => onLeftArrowClick(selectedTime, e)}
+          />
+        }
       >
         <TimePickerBase
           selectedTime={selectedTime}
@@ -88,6 +111,11 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
           locale={locale}
           ariaLabelledBy={timepickerId}
           {...rest}
+        />
+        <TimePickerArrowButton
+          direction="right"
+          tabIndex={-1}
+          onClick={(e: React.MouseEvent) => onRightArrowClick(selectedTime, e)}
         />
       </BaseFormControl>
     );
@@ -123,6 +151,8 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   onChange,
   selectedTime,
   placeholder,
+  timeFormat = 'HH:mm',
+  dateFormat = ['HH:mm', 'HHmm'],
   ...rest
 }) => {
   const {
@@ -156,19 +186,42 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   };
   return (
     <ReactDatepicker
-      className={classNames('eds-form-control', className)}
+      className={classNames(
+        'eds-form-control',
+        'eds-timepicker__input',
+        className,
+      )}
       calendarClassName="eds-timepicker"
       selected={selectedTime}
       onChange={handleChange}
-      dateFormat="HH:mm"
-      timeFormat="HH:mm"
+      dateFormat={dateFormat}
+      timeFormat={timeFormat}
       showTimeSelect
       showTimeSelectOnly
       showPopperArrow={false}
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
       popperModifiers={POPPEER_MODIFIERS}
+      open={false}
       {...rest}
     />
+  );
+};
+
+type TimePickerArrowButtonProps = {
+  direction: 'left' | 'right';
+} & React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
+
+const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
+  direction,
+  ...rest
+}) => {
+  return (
+    <button className="eds-timepicker__arrowbutton" {...rest}>
+      {direction === 'left' ? <LeftArrowIcon /> : <RightArrowIcon />}
+    </button>
   );
 };
