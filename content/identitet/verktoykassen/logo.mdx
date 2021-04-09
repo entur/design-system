@@ -41,10 +41,18 @@ Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i s
 
 <div className="blackwhite-wrapper">
   <div>
-    <img src={BW1} width="100%" />
+    <img
+      src={BW1}
+      width="100%"
+      alt="Entur logo med svart tekst på hvit bakgrunn"
+    />
   </div>
   <div>
-    <img src={BW2} width="100%" />
+    <img
+      src={BW2}
+      width="100%"
+      alt="Entur logo med hvit tekst på svart bakgrunn"
+    />
   </div>
 </div>
 
@@ -52,7 +60,11 @@ Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i s
 
 <div className="blackwhite-wrapper">
   <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <img src={Free1} width="100%" />
+    <img
+      src={Free1}
+      width="100%"
+      alt="Entur-logo med frisone tilsvarende fontstørrelsen"
+    />
     <Heading5>Frisone rundt logo</Heading5>
     <Paragraph>
       For at lesbarheten til logoen skal være tydelig er det viktig å respektere
@@ -62,11 +74,15 @@ Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i s
     </Paragraph>
   </div>
   <div style={{ display: 'flex', flexDirection: 'column' }}>
-    <img src={Free2} width="100%" />
+    <img
+      src={Free2}
+      width="100%"
+      alt="Entur-logo med minimum størrelse på 20 piksler"
+    />
     <Heading5>Minimum størrelse</Heading5>
     <Paragraph>
       Når logoen skal representeres i små størrelser er det viktig at høyden
-      ikke blir lavere enn 25 px på digitalt eller 6 mm på trykk.
+      ikke blir lavere enn 20 px på digitalt eller 6 mm på trykk.
     </Paragraph>
   </div>
 </div>
@@ -76,35 +92,57 @@ Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i s
 Endre, forvrenge eller behandle logoen galt kan føre til uklar kommunikasjon. Aldri forsøk å lage logoen selv, i en annen font, eller endre størrelsen eller proporsjoner. Under er et par eksempler på hva du skal unngå.
 
 <BestPractices className="ds-logo">
-  <Example type="dont" src={Proporsjoner}>
+  <Example
+    type="dont"
+    src={Proporsjoner}
+    alt="Entur-logo som er strukket i vertikalen"
+  >
     <Heading5>Proporsjoner</Heading5>
     <Paragraph>
       Logoen skal aldri dras ut av de opprinnelige proporsjonene.
     </Paragraph>
   </Example>
-  <Example type="dont" src={Effekter}>
+  <Example type="dont" src={Effekter} alt="Entur-logo med pålagt skyggeeffekt">
     <Heading5>Effekter</Heading5>
     <Paragraph>Legg aldri en effekt på logoen.</Paragraph>
   </Example>
 </BestPractices>
 <BestPractices className="ds-logo">
-  <Example type="dont" src={SkifteFarge}>
+  <Example
+    type="dont"
+    src={SkifteFarge}
+    alt="Entur-logo i en blåfarge som ikke finnes i fargepaletten"
+  >
     <Heading5>Skifte farge</Heading5>
     <Paragraph>
       Logoen skal ikke brukes i andre farger enn det som er oppgitt.
     </Paragraph>
   </Example>
-  <Example type="dont" src={Ikkeroter}>
+  <Example
+    type="dont"
+    src={Ikkeroter}
+    alt="Entur-logo som er rotert cirka 30 grader"
+  >
     <Heading5>Ikke rotér</Heading5>
     <Paragraph>Roter, skru eller vend aldri på logoen.</Paragraph>
   </Example>
 </BestPractices>
 <BestPractices className="ds-logo">
-  <Example type="dont" src={Endreoppsett} className="endre-oppsett">
+  <Example
+    type="dont"
+    src={Endreoppsett}
+    className="endre-oppsett"
+    alt="Entur-logo hvor En og Tur er stablet i vertikalen"
+  >
     <Heading5>Endre oppsett</Heading5>
     <Paragraph>Flytt aldri på bokstavene eller streken i logoen.</Paragraph>
   </Example>
-  <Example type="dont" src={Logobakgrunn} className="logo-pa-bakgrunn">
+  <Example
+    type="dont"
+    src={Logobakgrunn}
+    className="logo-pa-bakgrunn"
+    alt="Hvit Entur-logo på et lyst bilde, som gjør logoen nesten usynlig"
+  >
     <Heading5>Logo på bakgrunn</Heading5>
     <Paragraph>
       Sett aldri logoen på en bakgrunn som ikke gir nok kontrast.
@@ -126,7 +164,11 @@ Denne logo varianten skal kun benyttes som app-ikon for iOS, Android og AppGalle
     marginTop: '2.5rem',
   }}
 >
-  <img width="100%" src={Frisone} />
+  <img
+    width="100%"
+    src={Frisone}
+    alt="Entur-appen sitt ikon, med frisonen rundt tilsvarende fontstørrelsen."
+  />
   <Heading5>Frisone rundt app-ikon</Heading5>
   <Paragraph>
     Plasseres ikonet i et hjørne av et format, er dette absolutte minste avstand

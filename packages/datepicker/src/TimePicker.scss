@@ -61,3 +61,30 @@
     }
   }
 }
+
+.eds-timepicker-form-control.eds-form-control-wrapper {
+  height: $space-extra-large;
+  .eds-timepicker__input {
+    padding-left: 0;
+  }
+  .eds-input-group__label {
+    padding-left: 0 !important;
+  }
+  .eds-form-control__prepend {
+    margin-left: 0;
+  }
+  .eds-timepicker__arrowbutton {
+    appearance: none;
+    border: none;
+    background: none;
+    color: $colors-brand-blue;
+    cursor: pointer;
+    display: flex;
+    font-size: $font-sizes-large;
+    padding: $space-medium;
+    margin: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+}
