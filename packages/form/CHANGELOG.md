@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.3.0...@entur/form@4.4.0) (2021-04-09)
+
+### Features
+
+- **radio:** add disabled prop ([c5769ea](https://bitbucket.org/enturas/design-system/commits/c5769ea1ee3c2f11ff72d69938560df9c8eef800))
+
 # [4.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.2.4...@entur/form@4.3.0) (2021-03-02)
 
 ### Bug Fixes

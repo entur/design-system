@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.6...@entur/menu@3.6.0) (2021-04-09)
+
+### Features
+
+- **overflowmenu:** add disabled prop ([34b1431](https://bitbucket.org/enturas/design-system/commits/34b1431d20019b9fc066494492b49b34a745edc1))
+
 ## [3.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.5...@entur/menu@3.5.6) (2021-03-02)
 
 ### Bug Fixes

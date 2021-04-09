@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.19.0...@entur/icons@1.20.0) (2021-04-09)
+
+### Features
+
+- add mobility partner icons ([9898249](https://bitbucket.org/enturas/design-system/commits/98982497ed78bdb61fd08d83fbe80008df443d92))
+
 # [1.19.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.18.0...@entur/icons@1.19.0) (2021-02-17)
 
 ### Features

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.7.2...@entur/datepicker@0.8.0) (2021-04-09)
+
+### Bug Fixes
+
+- update datepicker dependency ([2f57daf](https://bitbucket.org/enturas/design-system/commits/2f57daf567c9f665e5958b04311851c4aed4d74b))
+
+### Features
+
+- **timepicker:** remove dropdown and add time skip buttons ([59d7e55](https://bitbucket.org/enturas/design-system/commits/59d7e55a50a6b3d8157a6cb432876c6810bdcf31))
+
 ## [0.7.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.7.1...@entur/datepicker@0.7.2) (2021-03-02)
 
 **Note:** Version bump only for package @entur/datepicker
