@@ -19,7 +19,7 @@ import PageHeader from '~/components/PageHeader';
 
 <Playground style={{ display: 'flex', justifyContent: 'center' }}>
   {() => {
-    const [date, setDate] = React.useState();
+    const [date, setDate] = React.useState(Date.now());
     return (
       <TimePicker
         style={{ width: '13rem' }}
@@ -45,4 +45,4 @@ import PageHeader from '~/components/PageHeader';
 
 ## Retningslinjer for bruk
 
-Timepicker er en universell utformet komponent som lar brukerne velge et tidspunkt. Ved å klikke på tekstfeltet kan du enten skrive et ønsket tidspunkt eller velge fra en dropdown liste. Akkurat som Datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.
+Timepicker er en universell utformet komponent som lar brukerne velge et tidspunkt. Ved å klikke på tekstfeltet kan du enten skrive et ønsket tidspunkt eller hoppe fram og tilbake i tid med pilknappene. Akkurat som Datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.
