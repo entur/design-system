@@ -13,13 +13,13 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-indexes-popover;
+  z-index: $z-indexes-overlay;
 
   &:visited {
     color: inherit;
   }
   &:focus {
     transform: none;
-    box-shadow: $shadows-focus;
+    outline: $outlines-focus;
   }
 }
