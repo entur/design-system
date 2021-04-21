@@ -212,3 +212,13 @@ export const timings = {
   medium: timingScale[1],
   slow: timingScale[2],
 };
+
+export const outlines = {
+  focus: `${2}px solid ${colors.brand.blue}`,
+  focusContrast: `${2}px solid ${colors.brand.white} `,
+};
+
+const outlineOffsetsConstants = [2];
+export const outlineOffsets = {
+  focus: outlineOffsetsConstants[0],
+};
