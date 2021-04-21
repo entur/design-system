@@ -110,8 +110,10 @@ export const shadows = {
   focusContrast: `0 0 0 0.25rem rgba(${whiteRgb}, 0.3)`,
   cardShadow: `0 0.0625rem 0.1875rem 0 rgba(${blackRgb}, 0.12)`,
   cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.1)`,
-  cardShadowContrast: `0 0.125rem 0.1875rem 0 rgba(${blue20Rgb}, 0.7)`,
-  cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 0.7)`,
+  cardShadowContrast: `0 0.0625rem 0.1875rem 0 rgba(${blue20Rgb}, 1)`,
+  cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 1)`,
+  boxShadow: `0 0.0625rem 0.1875rem rgba(${blackRgb}, 0.25)`,
+  boxShadowContrast: `0 0.0625rem 0.1875rem rgba(${blue20Rgb}, 1)`,
 };
 
 // Dimensions
