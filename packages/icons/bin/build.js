@@ -68,6 +68,15 @@ function createSvgrConfig(native = false, componentName) {
       'SkyssIcon',
       'VKTIcon',
       'VyIcon',
+      // Mobility Partners
+      'BergenBysykkel',
+      'Bolt',
+      'KolumbusBysykkel',
+      'Lime',
+      'OsloBysykkel',
+      'Tier',
+      'TrondheimBysykkel',
+      'Voi',
     ];
     // Icons with "special colors", so no color exchange for those
     const outliers = [
