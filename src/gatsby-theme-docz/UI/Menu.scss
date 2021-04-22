@@ -21,6 +21,10 @@
     justify-content: flex-start;
     &__logo {
       margin-right: 3rem;
+      &:focus {
+        outline: $outlines-focus;
+        outline-offset: $outline-offsets-focus;
+      }
     }
   }
 }

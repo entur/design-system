@@ -21,8 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all $timings-fast ease-out;
-    box-shadow: $shadows-card-shadow;
+    transition: left $timings-fast ease-in-out,
+      background-color $timings-fast ease-in-out;
+    box-shadow: $shadows-box-shadow;
     background-color: $colors-brand-white;
     top: 0.125rem;
     left: 0.125rem;
@@ -36,6 +37,7 @@
     svg g, // This is to colorize every type of icon that will potentially be included
     path {
       fill: $colors-greys-grey50;
+      transition: fill ease-in-out $timings-fast;
     }
   }
   &__switch {
@@ -44,7 +46,7 @@
     background-color: $colors-greys-grey60;
     content: '';
     display: block;
-    transition: all $timings-fast ease-out;
+    transition: background-color $timings-fast ease-in-out;
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
@@ -65,9 +67,10 @@
       }
     }
     :focus + & {
-      box-shadow: $shadows-focus;
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        outline: $outlines-focus-contrast;
       }
     }
     .eds-contrast & {

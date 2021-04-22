@@ -14,7 +14,7 @@
   color: $colors-brand-white;
   background: $colors-brand-blue;
   border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   font-size: $font-sizes-medium;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
-    box-shadow: 0px 1px 3px 0px rgba(209, 211, 211, 0.7);
+    box-shadow: $shadows-box-shadow-contrast;
   }
 
   &__close-button {
@@ -77,7 +77,7 @@
       color: $colors-brand-blue;
       background: $colors-validation-lava-tint;
       border: solid $border-widths-medium $colors-validation-lava-contrast;
-      box-shadow: $shadows-card-shadow-contrast;
+      box-shadow: $shadows-box-shadow-contrast;
       &::after {
         background: $colors-validation-lava-tint;
       }

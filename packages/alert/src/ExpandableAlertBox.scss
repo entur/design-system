@@ -21,7 +21,8 @@
     padding: 0 $space-extra-small2;
     flex-shrink: 0;
     &:focus {
-      outline: none;
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
     }
     .eds-icon {
       font-size: $font-sizes-large;

@@ -31,7 +31,7 @@
       background: $colors-brand-white;
       &:active,
       &:focus-within {
-        outline: none;
+        outline-offset: $outline-offsets-focus;
         border: $border-widths-small solid $colors-brand-blue;
         border-radius: $border-radiuses-medium;
         .eds-contrast & {
@@ -45,7 +45,7 @@
     }
     &:active,
     &:focus-within {
-      outline: none;
+      outline-offset: $outline-offsets-focus;
       border: $border-widths-small solid $colors-brand-blue;
       border-radius: $border-radiuses-medium;
       .eds-contrast & {

@@ -2,7 +2,7 @@
 
 .eds-dropdown-list {
   border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   display: none;
   list-style: none;
   margin: 0;
@@ -13,7 +13,7 @@
   width: 100%;
   z-index: $z-indexes-popover;
   .eds-contrast & {
-    box-shadow: $shadows-card-shadow-contrast;
+    box-shadow: $shadows-box-shadow-contrast;
   }
 
   &--open {

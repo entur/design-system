@@ -30,10 +30,10 @@ a.eds-button {
   position: relative;
   vertical-align: top;
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline-offset: $outline-offsets-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
 

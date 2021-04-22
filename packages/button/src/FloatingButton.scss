@@ -12,7 +12,7 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
   background: $colors-brand-blue;
   border: 0;
   border-radius: ($default-height / 2);
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   color: $colors-brand-white;
   cursor: pointer;
   display: flex;
@@ -35,17 +35,17 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
   }
 
   &:focus {
-    outline: none;
-    box-shadow: $shadows-card-shadow, $shadows-focus;
+    outline-offset: $outline-offsets-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-card-shadow, $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
 
   .eds-contrast & {
     background: $colors-brand-white;
     color: $colors-brand-blue;
-    box-shadow: $shadows-card-shadow-contrast;
+    box-shadow: $shadows-box-shadow-contrast;
     &:hover {
       background-color: tint($colors-brand-lavender, 10%);
     }

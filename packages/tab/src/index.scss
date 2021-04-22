@@ -138,10 +138,9 @@
   }
 
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
 }
@@ -152,6 +151,7 @@
 
 .eds-tab-panel {
   &:focus {
-    outline: none;
+    outline: $outlines-focus;
+    outline-offset: $outline-offsets-focus;
   }
 }

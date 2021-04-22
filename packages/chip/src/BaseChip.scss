@@ -11,7 +11,7 @@
   height: 2rem;
   min-width: 3rem;
   padding: 0 $space-small;
-  transition: all $timings-fast ease-out;
+  transition: background $timings-fast ease-out, border $timings-fast ease-out;
   display: flex;
   justify-content: center;
   align-items: center;

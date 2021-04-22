@@ -8,6 +8,16 @@
 
 .eds-radio-panel {
   &__wrapper {
+    &:focus-within {
+      .eds-radio-panel__container {
+        border-color: $colors-brand-blue;
+      }
+      .eds-contrast & {
+        .eds-radio-panel__container {
+          border-color: $colors-brand-white;
+        }
+      }
+    }
     input {
       position: absolute;
       opacity: 0;

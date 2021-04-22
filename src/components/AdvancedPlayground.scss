@@ -59,8 +59,8 @@
       width: 100%;
       z-index: 1;
       &:focus {
-        outline: none;
-        box-shadow: $shadows-focus;
+        outline-offset: $outline-offsets-focus;
+        outline: $outlines-focus;
       }
     }
   }

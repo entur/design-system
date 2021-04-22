@@ -21,5 +21,6 @@
   &:focus {
     transform: none;
     outline: $outlines-focus;
+    outline-offset: $outline-offsets-focus;
   }
 }
