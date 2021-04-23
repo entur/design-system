@@ -35,6 +35,7 @@
   }
   &:focus {
     border: $border-widths-small solid $colors-brand-blue;
+    outline: none;
     .eds-contrast & {
       border: $border-widths-small solid $colors-brand-white;
     }
