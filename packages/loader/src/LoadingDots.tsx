@@ -3,18 +3,31 @@ import React from 'react';
 import './LoadingDots.scss';
 
 export type LoadingDotsProps = {
-  color: 'blue' | 'white';
-  size?: any;
-};
+  /** Valg av farge (brand-blue eller brand-white)
+   * @default "blue"
+   */
+  color?: 'blue' | 'white';
+  /**Ekstra klassenavn */
+  className?: string;
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
-export const LoadingDots = ({ color = 'blue', size = 16 }) => {
+export const LoadingDots: React.FC<LoadingDotsProps> = ({
+  color = 'blue',
+  className,
+  ...rest
+}) => {
   return (
     <div
       className={classNames(
         'eds-loading-dots',
         `eds-loading-dots--color-${color}`,
+        className,
       )}
-      style={{ fontSize: size }}
+      style={{ ...rest.style }}
+      {...rest}
     >
       <LoadingDot dotNumber="one" />
       <LoadingDot dotNumber="two" />

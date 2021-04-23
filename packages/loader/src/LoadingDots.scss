@@ -15,6 +15,12 @@
     border-radius: 50%;
     margin-right: 2px;
     transform: scale(1);
+    &--blue {
+      background-color: $colors-brand-blue;
+    }
+    &--white {
+      background-color: $colors-brand-white;
+    }
     &--one {
       -webkit-animation: dot 1s infinite;
       -webkit-animation-delay: 0s;
