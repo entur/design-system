@@ -197,6 +197,7 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       dateFormat={dateFormat}
       timeFormat={timeFormat}
       showTimeSelect
+      showTimeInput={true}
       showTimeSelectOnly
       showPopperArrow={false}
       placeholderText={placeholder}
