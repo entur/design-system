@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.37...@entur/loader@0.4.0) (2021-04-23)
+
+### Bug Fixes
+
+- **loadingdots:** improve typing of component ([1e5bd44](https://bitbucket.org/enturas/design-system/commits/1e5bd44b0c923ced3af82f7f425f95ba0572eee2))
+
+### Features
+
+- **loadingdots:** add new component loading dots ([0fc4d9a](https://bitbucket.org/enturas/design-system/commits/0fc4d9a7bffa5ef3bd711385bb5bd6d09402185a))
+
 ## [0.3.37](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.3.36...@entur/loader@0.3.37) (2021-03-02)
 
 **Note:** Version bump only for package @entur/loader

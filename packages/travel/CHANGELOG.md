@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.3...@entur/travel@4.2.4) (2021-04-23)
+
+### Bug Fixes
+
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [4.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.2...@entur/travel@4.2.3) (2021-04-09)
 
 **Note:** Version bump only for package @entur/travel

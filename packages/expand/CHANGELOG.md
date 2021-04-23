@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.29](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.28...@entur/expand@3.2.29) (2021-04-23)
+
+### Bug Fixes
+
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [3.2.28](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.27...@entur/expand@3.2.28) (2021-04-09)
 
 **Note:** Version bump only for package @entur/expand

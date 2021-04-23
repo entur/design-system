@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.20.0...@entur/icons@2.0.0) (2021-04-23)
+
+### Bug Fixes
+
+- change name for unvalid ticket icon ([8f5148f](https://bitbucket.org/enturas/design-system/commits/8f5148f06974236dc44cf7016990bd60762c747b))
+- use correct colors on mobility partner icons ([90b3408](https://bitbucket.org/enturas/design-system/commits/90b340885fce4cd803042965cbed162ce0cc53df))
+
+### BREAKING CHANGES
+
+- UnvalidTicketIcon -> InvalidTicketIcon
+
 # [1.20.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.19.0...@entur/icons@1.20.0) (2021-04-09)
 
 ### Features

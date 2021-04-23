@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.0...@entur/form@4.4.1) (2021-04-23)
+
+### Bug Fixes
+
+- **radiopanel:** fix contrast styling for unselected items ([6395cb5](https://bitbucket.org/enturas/design-system/commits/6395cb50ed425ffbc4241ddf0c3701ebefbb54be))
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 # [4.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.3.0...@entur/form@4.4.0) (2021-04-09)
 
 ### Features

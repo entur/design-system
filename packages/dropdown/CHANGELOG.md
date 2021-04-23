@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.6...@entur/dropdown@1.4.7) (2021-04-23)
+
+### Bug Fixes
+
+- utilize loading dots for dropdown components ([ffecc56](https://bitbucket.org/enturas/design-system/commits/ffecc56854b2a69e50e0f265fa0b71b6118f4565))
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [1.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.5...@entur/dropdown@1.4.6) (2021-04-09)
 
 **Note:** Version bump only for package @entur/dropdown

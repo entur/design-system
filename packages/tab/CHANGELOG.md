@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.22](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.21...@entur/tab@0.4.22) (2021-04-23)
+
+### Bug Fixes
+
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [0.4.21](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.20...@entur/tab@0.4.21) (2021-02-17)
 
 **Note:** Version bump only for package @entur/tab

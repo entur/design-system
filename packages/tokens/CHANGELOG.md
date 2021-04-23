@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.0.1...@entur/tokens@3.1.0) (2021-04-23)
+
+### Bug Fixes
+
+- **shadows:** update box shadow tokens ([5b10f8c](https://bitbucket.org/enturas/design-system/commits/5b10f8cae1c54bacd8ef47fdf52d380be772e91d))
+
+### Features
+
+- add box shadow tokens ([51365ad](https://bitbucket.org/enturas/design-system/commits/51365ad92641113c1a854f3a1a4b18631459c793))
+- add outline and outline offset tokens ([4c30d26](https://bitbucket.org/enturas/design-system/commits/4c30d2696c872aeac85ad33c5731652fa74a7253))
+
 ## [3.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.0.0...@entur/tokens@3.0.1) (2021-01-20)
 
 ### Bug Fixes

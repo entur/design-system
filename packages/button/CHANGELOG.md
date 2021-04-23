@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.1...@entur/button@2.5.2) (2021-04-23)
+
+### Bug Fixes
+
+- **button:** use loading dots component if button is loading ([ccf02da](https://bitbucket.org/enturas/design-system/commits/ccf02daf48e97211151c214898910eaa6669bacc))
+- **iconbutton:** fix focus style for iconbutton ([ebf0649](https://bitbucket.org/enturas/design-system/commits/ebf0649246da39ca5390cfc61b1c445fb7ca2d34))
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [2.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.0...@entur/button@2.5.1) (2021-02-17)
 
 ### Bug Fixes

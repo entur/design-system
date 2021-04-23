@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.0...@entur/datepicker@0.8.1) (2021-04-23)
+
+### Bug Fixes
+
+- **timepicker:** add type=button on timepicker arrow buttons ([aaa98a3](https://bitbucket.org/enturas/design-system/commits/aaa98a351c2aed5ff6cb45f0e808b53f0ad1ba4f))
+- **timepicker:** fix onblur not being called on blur ([bea36e1](https://bitbucket.org/enturas/design-system/commits/bea36e1fc358a823e73d8d3cf3e6149449df842a))
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 # [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.7.2...@entur/datepicker@0.8.0) (2021-04-09)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@entur/grid",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/grid.esm.js",
@@ -23,7 +23,7 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/tokens": "^3.0.1",
+    "@entur/tokens": "^3.1.0",
     "@entur/utils": "^0.4.1",
     "classnames": "^2.2.6"
   },

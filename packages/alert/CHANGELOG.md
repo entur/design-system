@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.14](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.13...@entur/alert@0.7.14) (2021-04-23)
+
+### Bug Fixes
+
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 ## [0.7.13](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.12...@entur/alert@0.7.13) (2021-04-09)
 
 **Note:** Version bump only for package @entur/alert

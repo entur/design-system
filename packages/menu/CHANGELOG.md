@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.0...@entur/menu@3.6.1) (2021-04-23)
+
+### Bug Fixes
+
+- utilize new focus tokens ([17113ef](https://bitbucket.org/enturas/design-system/commits/17113ef3f791c86fa6e19e71680fd5acdbae4990))
+
 # [3.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.5.6...@entur/menu@3.6.0) (2021-04-09)
 
 ### Features
