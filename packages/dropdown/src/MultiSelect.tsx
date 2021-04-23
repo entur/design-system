@@ -14,7 +14,7 @@ import {
 } from './useResolvedItems';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { TagChip } from '@entur/chip';
-import { InlineSpinner } from './InlineSpinner';
+import { DropdownLoadingDots } from './DropdownLoadingDots';
 import { CloseIcon, DownArrowIcon } from '@entur/icons';
 import './MultiSelect.scss';
 
@@ -256,7 +256,7 @@ const Appendix: React.FC<{
   hasSelected: boolean;
 }> = ({ loading, loadingText, readOnly, hasSelected }) => {
   if (loading) {
-    return <InlineSpinner>{loadingText}</InlineSpinner>;
+    return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
   }
   if (readOnly) {
     return null;

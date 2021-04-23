@@ -3,7 +3,7 @@ import { BaseFormControl } from '@entur/form';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { DropdownList } from './DropdownList';
 import { DropdownToggleButton } from './DropdownToggleButton';
-import { InlineSpinner } from './InlineSpinner';
+import { DropdownLoadingDots } from './DropdownLoadingDots';
 import { CloseIcon } from '@entur/icons';
 import './BaseDropdown.scss';
 import { useDownshift } from './DownshiftProvider';
@@ -101,7 +101,7 @@ const Appendix: React.FC<{
   readOnly: boolean;
 }> = ({ clearable, loading, loadingText, readOnly }) => {
   if (loading) {
-    return <InlineSpinner>{loadingText}</InlineSpinner>;
+    return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
   }
   if (readOnly) {
     return null;
