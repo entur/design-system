@@ -66,8 +66,8 @@
     user-select: none;
     width: fit-content;
     .eds-contrast & {
-      background: $colors-blues-blue10;
-      border-color: transparent;
+      background: $colors-brand-blue;
+      border-color: $colors-blues-blue30;
     }
   }
   &__title-wrapper {
@@ -92,7 +92,7 @@
     transition: background ease-in-out $timings-fast,
       border-color ease-in-out $timings-fast;
     .eds-contrast & {
-      background: $colors-blues-blue10;
+      background: $colors-brand-blue;
       border-color: $colors-blues-blue30;
     }
   }
@@ -131,6 +131,7 @@
       background: $colors-brand-blue;
       border-style: dashed;
       border-color: $colors-blues-blue30;
+      color: $colors-blues-blue60;
     }
   }
 }
