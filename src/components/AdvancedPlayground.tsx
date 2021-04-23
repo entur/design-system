@@ -95,7 +95,6 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   React.useEffect(() => {
     const FormatChildren = (code: string) => {
       const childrenContent = propState.find(prop => prop['children']);
-      console.log(childrenContent);
 
       if (childrenContent) {
         // Regex for alle typer innhold til children

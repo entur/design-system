@@ -2,13 +2,14 @@
 
 .eds-popover {
   background: $colors-brand-blue;
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   border-radius: $border-radiuses-default;
   border: $border-widths-small solid $colors-greys-grey60;
   font-family: inherit;
   z-index: $z-indexes-popover;
   .eds-contrast & {
     background: $colors-blues-blue10;
+    box-shadow: $shadows-box-shadow-contrast;
   }
   &--hidden {
     display: none;

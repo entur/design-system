@@ -18,7 +18,7 @@
         }
       }
       &:focus {
-        outline: none;
+        outline-offset: $outline-offsets-focus;
       }
       .eds-contrast & {
         color: $colors-brand-blue;

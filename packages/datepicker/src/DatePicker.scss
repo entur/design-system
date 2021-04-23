@@ -25,9 +25,9 @@
 }
 .react-datepicker {
   border: $border-widths-default solid $colors-greys-grey70;
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   .eds-contrast & {
-    box-shadow: $shadows-card-shadow-contrast;
+    box-shadow: $shadows-box-shadow-contrast;
   }
 
   &-wrapper {
@@ -38,6 +38,12 @@
     border: none;
     font-size: $font-sizes-large;
     line-height: 2.5rem;
+  }
+  &__navigation {
+    &:focus {
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
+    }
   }
 
   &__current-month {
@@ -123,7 +129,7 @@
     }
 
     &:focus {
-      box-shadow: $shadows-focus;
+      outline: $outlines-focus;
     }
     &:hover {
       border-radius: 0;

@@ -56,7 +56,8 @@
       }
     }
     &:focus {
-      outline: none;
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
     }
   }
   &-buttons {

@@ -46,7 +46,7 @@
     border-radius: 50%;
     cursor: pointer;
     background: $colors-brand-white;
-    box-shadow: $shadows-card-shadow;
+    box-shadow: $shadows-box-shadow;
     border: $border-widths-small solid $colors-greys-grey60;
     color: inherit;
     padding: 0;
@@ -57,7 +57,7 @@
     z-index: $z-indexes-sticky;
     .eds-contrast & {
       background: $colors-blues-blue20;
-      box-shadow: $shadows-card-shadow-contrast;
+      box-shadow: $shadows-box-shadow;
       border-color: transparent;
     }
     svg {
@@ -69,10 +69,9 @@
       }
     }
     &:focus {
-      outline: none;
-      box-shadow: $colors-misc-focus;
+      outline: $outlines-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        outline: $outlines-focus-contrast;
       }
     }
   }
@@ -160,10 +159,12 @@
 
     &:active,
     &:focus {
-      outline: none;
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
       background: $colors-blues-blue80;
       .eds-contrast &  {
         background-color: $colors-blues-blue30;
+        outline: $outlines-focus-contrast;
       }
     }
   }
@@ -218,6 +219,10 @@
     padding-left: $space-extra-large;
   }
   &:focus {
-    outline: 4px solid $colors-misc-focus;
+    outline: $outlines-focus;
+    outline-offset: $outline-offsets-focus;
+    .eds-contrast & {
+      outline: $outlines-focus-contrast;
+    }
   }
 }

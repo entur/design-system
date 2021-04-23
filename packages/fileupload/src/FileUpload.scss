@@ -8,8 +8,12 @@
     width: 100%;
     &:focus {
       outline: none;
+      outline-offset: $outline-offsets-focus;
       .eds-file-upload__dropzone {
-        box-shadow: $shadows-focus;
+        outline: $outlines-focus;
+        .eds-contrast & {
+          outline: $outlines-focus-contrast;
+        }
       }
     }
   }

@@ -32,6 +32,12 @@
   }
   &__header-cell {
     padding-top: 0;
+    &--sortable {
+      &:focus {
+        outline: $outlines-focus;
+        outline-offset: $outline-offsets-focus;
+      }
+    }
   }
 
   &__data-cell {

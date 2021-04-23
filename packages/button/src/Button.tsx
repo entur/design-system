@@ -5,8 +5,8 @@ import {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
 } from '@entur/utils';
+import { LoadingDots } from '@entur/loader';
 import './Button.scss';
-import './LoadingSpinner.scss';
 
 type ButtonBaseProps = {
   /** Farge og uttrykk på knappen */
@@ -85,7 +85,11 @@ export const Button: PolymorphicForwardRefExoticComponent<
         aria-disabled={disabled}
         {...rest}
       >
-        {loading ? <div className="eds-button__spinner" /> : children}
+        {loading ? (
+          <LoadingDots className="eds-button__loading-dots" />
+        ) : (
+          children
+        )}
       </Element>
     );
   },

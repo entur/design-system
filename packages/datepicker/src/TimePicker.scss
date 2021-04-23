@@ -84,7 +84,7 @@
     padding: $space-medium;
     margin: 0;
     &:focus {
-      outline: none;
+      outline-offset: none;
     }
   }
 }

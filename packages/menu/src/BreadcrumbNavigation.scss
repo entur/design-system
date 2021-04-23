@@ -37,6 +37,11 @@
     animation: eds-breadcrumb-underline 0.3s ease-in;
   }
 
+  &:focus {
+    outline: $outlines-focus;
+    outline-offset: $outline-offsets-focus;
+  }
+
   @keyframes eds-breadcrumb-underline {
     from {
       background-size: 0% 0.125rem;

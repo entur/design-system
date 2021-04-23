@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { VisuallyHidden } from '@entur/a11y';
+import { LoadingDots } from '@entur/loader';
 import './InlineSpinner.scss';
 
 export type InlineSpinnerType = {
@@ -10,13 +11,13 @@ export type InlineSpinnerType = {
   children: string;
   [key: string]: any;
 };
-export const InlineSpinner: React.FC<InlineSpinnerType> = ({
+export const DropdownLoadingDots: React.FC<InlineSpinnerType> = ({
   className,
   children,
   ...rest
 }) => (
   <div className={classNames('eds-inline-spinner', classNames)} {...rest}>
-    <span className="eds-inline-spinner__twirly-part" />
+    <LoadingDots />
     <VisuallyHidden>{children}</VisuallyHidden>
   </div>
 );

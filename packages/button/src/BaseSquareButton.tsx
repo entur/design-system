@@ -5,8 +5,8 @@ import {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
 } from '@entur/utils';
+import { LoadingDots } from '@entur/loader';
 import './BaseSquareButton.scss';
-import './LoadingSpinner.scss';
 
 export type BaseSquareButtonBaseProps = {
   /** Tekst og ikon */
@@ -69,7 +69,11 @@ export const BaseSquareButton: PolymorphicForwardRefExoticComponent<
           }
           return (
             <span className="eds-square-button__icon">
-              {loading ? <div className="eds-button__spinner" /> : child}
+              {loading ? (
+                <LoadingDots className="eds-square-button__loading-dots" />
+              ) : (
+                child
+              )}
             </span>
           );
         })}

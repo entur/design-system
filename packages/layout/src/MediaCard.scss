@@ -5,13 +5,13 @@
   overflow: hidden;
   position: relative;
   width: fit-content;
-  transition: transform $timings-medium ease-in-out;
+  transition: transform $timings-medium ease-in-out,
+    box-shadow $timings-medium ease-in-out;
   &:focus,
   &:focus-within {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
   .eds-contrast & {
@@ -31,6 +31,7 @@
   }
   &:hover {
     transform: translateY(-$space-extra-small2);
+    box-shadow: $shadows-card-shadow-hover;
   }
   &__text {
     appearance: none;

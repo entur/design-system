@@ -39,8 +39,8 @@
       border-color: currentColor;
     }
     &:focus {
-      outline: none;
-      box-shadow: $shadows-focus;
+      outline-offset: $outline-offsets-focus;
+      outline: $outlines-focus;
     }
   }
   &__menu-list {
@@ -92,8 +92,8 @@
     }
   }
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline-offset: $outline-offsets-focus;
+    outline: $outlines-focus;
   }
 }
 

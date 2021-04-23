@@ -2,7 +2,7 @@ import { BaseFormControl, VariantType } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { useRandomId } from '@entur/utils';
 import React from 'react';
-import { InlineSpinner } from './InlineSpinner';
+import { DropdownLoadingDots } from './DropdownLoadingDots';
 import './NativeDropdown.scss';
 import {
   PotentiallyAsyncDropdownItemType,
@@ -63,7 +63,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   if (disabled || readOnly) {
     rightSideIcon = null;
   } else if (loading) {
-    rightSideIcon = <InlineSpinner>{loadingText}</InlineSpinner>;
+    rightSideIcon = <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
   }
   const nativeDropdownId = useRandomId('eds-native-dropdown');
   return (

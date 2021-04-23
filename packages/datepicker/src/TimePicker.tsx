@@ -197,6 +197,7 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       dateFormat={dateFormat}
       timeFormat={timeFormat}
       showTimeSelect
+      showTimeInput={true}
       showTimeSelectOnly
       showPopperArrow={false}
       placeholderText={placeholder}
@@ -220,7 +221,7 @@ const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
   ...rest
 }) => {
   return (
-    <button className="eds-timepicker__arrowbutton" {...rest}>
+    <button className="eds-timepicker__arrowbutton" type="button" {...rest}>
       {direction === 'left' ? <LeftArrowIcon /> : <RightArrowIcon />}
     </button>
   );

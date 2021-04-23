@@ -6,7 +6,7 @@
     transform: translateX(100%);
   }
   to {
-    box-shadow: $shadows-card-shadow;
+    box-shadow: $shadows-box-shadow;
     transform: 0;
   }
 }
@@ -37,10 +37,10 @@
   right: $space-large;
 
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline-offset: $outline-offsets-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
 }

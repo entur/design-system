@@ -27,6 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@entur/loader": "^0.3.37",
     "@entur/utils": "^0.4.1",
     "classnames": "^2.2.6"
   },

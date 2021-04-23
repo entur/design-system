@@ -55,13 +55,13 @@
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
   border: $border-widths-small solid $colors-greys-grey70;
   border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-card-shadow;
+  box-shadow: $shadows-box-shadow;
   overflow: hidden;
   &:focus {
     outline: none;
   }
   &.eds-contrast {
-    box-shadow: $shadows-card-shadow-contrast;
+    box-shadow: $shadows-box-shadow-contrast;
   }
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list],

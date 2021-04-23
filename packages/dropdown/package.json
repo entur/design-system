@@ -31,6 +31,7 @@
     "@entur/chip": "^0.4.6",
     "@entur/form": "^4.4.0",
     "@entur/icons": "^1.20.0",
+    "@entur/loader": "^0.3.37",
     "@entur/tokens": "^3.0.1",
     "@entur/tooltip": "^2.4.16",
     "@entur/utils": "^0.4.1",

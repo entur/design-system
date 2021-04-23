@@ -115,8 +115,8 @@
   top: $space-medium;
 
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline-offset: $outline-offsets-focus;
+    outline: $outlines-focus;
   }
 
   @include for-desktop {

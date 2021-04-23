@@ -6,7 +6,8 @@
   text-align: center;
   padding: $space-large;
   position: relative;
-  transition: transform $timings-medium ease-in-out;
+  transition: transform $timings-medium ease-in-out,
+    box-shadow $timings-medium ease-in-out;
   &__title {
     font-size: $font-sizes-extra-large2;
     line-height: $line-heights-extra-large3;
@@ -51,10 +52,9 @@
     }
   }
   &:focus {
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline: $outlines-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      outline: $outlines-focus-contrast;
     }
   }
 
