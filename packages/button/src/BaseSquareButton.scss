@@ -78,9 +78,8 @@
 .eds-square-button--secondary {
   --icon-background: transparent;
   --border-color: #{$colors-brand-lavender};
-  .eds-button__spinner {
-    border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-    border-right-color: $colors-brand-blue;
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
   }
 
   &:hover {
@@ -99,18 +98,16 @@
       --icon-background: #{$colors-brand-lavender};
       --icon-color: #{$colors-brand-blue};
     }
-    .eds-button__spinner {
-      border: $border-widths-large solid rgba($colors-brand-white, 0.5);
-      border-right-color: $colors-brand-white;
+    .eds-square-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-white;
     }
   }
 }
 
 .eds-square-button--success {
   --icon-background: #{$colors-validation-mint-contrast};
-  .eds-button__spinner {
-    border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-    border-right-color: $colors-brand-blue;
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
   }
 
   &:hover {

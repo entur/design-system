@@ -29,6 +29,9 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
+  .eds-button__loading-dots {
+    width: 100%;
+  }
   &:focus {
     outline-offset: $outline-offsets-focus;
     outline: $outlines-focus;
@@ -63,9 +66,8 @@ a.eds-button {
   &--variant-primary {
     background-color: $colors-brand-blue;
     color: $colors-brand-white;
-    > .eds-button__spinner {
-      border: $border-widths-large solid rgba($colors-brand-white, 0.5);
-      border-right-color: $colors-brand-white;
+    > .eds-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-white;
     }
     &:hover {
       background-color: tint($colors-brand-blue, 10%);
@@ -76,9 +78,8 @@ a.eds-button {
     .eds-contrast & {
       background-color: $colors-brand-lavender;
       color: $colors-brand-blue;
-      > .eds-button__spinner {
-        border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-        border-right-color: $colors-brand-blue;
+      > .eds-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-blue;
       }
       &:hover {
         background-color: tint($colors-brand-lavender, 10%);
@@ -92,9 +93,8 @@ a.eds-button {
     background-color: transparent;
     border: $border-widths-default solid $colors-brand-lavender;
     color: $colors-brand-blue;
-    > .eds-button__spinner {
-      border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-      border-right-color: $colors-brand-blue;
+    > .eds-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-blue;
     }
     &:hover {
       background-color: $colors-brand-lavender;
@@ -108,9 +108,8 @@ a.eds-button {
       color: $colors-brand-white;
       border-color: $colors-brand-lavender;
 
-      > .eds-button__spinner {
-        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
-        border-right-color: $colors-brand-white;
+      > .eds-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-white;
       }
       &:hover {
         background-color: (rgba($color: $colors-brand-white, $alpha: 0.2));
@@ -118,9 +117,8 @@ a.eds-button {
       &:active {
         background: $colors-brand-lavender;
         color: $colors-brand-blue;
-        > .eds-button__spinner {
-          border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-          border-right-color: $colors-brand-blue;
+        > .eds-button__loading-dots .eds-loading-dots__dot {
+          background: $colors-brand-blue;
         }
       }
     }
@@ -129,9 +127,8 @@ a.eds-button {
   &--variant-success {
     background-color: $colors-validation-mint-contrast;
     color: $colors-brand-blue;
-    > .eds-button__spinner {
-      border: $border-widths-large solid rgba($colors-brand-blue, 0.5);
-      border-right-color: $colors-brand-blue;
+    > .eds-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-blue;
     }
 
     &:hover {
@@ -146,9 +143,8 @@ a.eds-button {
     background: transparent;
     color: $colors-validation-lava;
     border-color: $colors-validation-lava;
-    > .eds-button__spinner {
-      border: $border-widths-large solid rgba($colors-validation-lava, 0.5);
-      border-right-color: $colors-validation-lava;
+    > .eds-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-validation-lava;
     }
     &:hover {
       background-color: rgba($colors-validation-lava-tint, 0.6);
@@ -156,17 +152,15 @@ a.eds-button {
     &:active {
       background-color: $colors-validation-lava;
       color: $colors-brand-white;
-      > .eds-button__spinner {
-        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
-        border-right-color: $colors-brand-white;
+      > .eds-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-white;
       }
     }
     .eds-contrast & {
       color: $colors-brand-white;
       border-color: $colors-validation-lava-contrast;
-      > .eds-button__spinner {
-        border: $border-widths-large solid rgba($colors-brand-white, 0.5);
-        border-right-color: $colors-brand-white;
+      > .eds-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-white;
       }
       &:hover {
         background-color: tint($colors-blues-blue20, 10%);
@@ -203,6 +197,9 @@ a.eds-button {
     .eds-contrast & {
       color: $colors-brand-white;
       border-color: $colors-brand-white;
+      > .eds-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-white;
+      }
       &:hover {
         background-color: $colors-blues-blue20;
       }
