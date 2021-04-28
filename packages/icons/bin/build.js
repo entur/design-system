@@ -69,14 +69,14 @@ function createSvgrConfig(native = false, componentName) {
       'VKTIcon',
       'VyIcon',
       // Mobility Partners
-      'BergenBysykkel',
-      'Bolt',
-      'KolumbusBysykkel',
-      'Lime',
-      'OsloBysykkel',
-      'Tier',
-      'TrondheimBysykkel',
-      'Voi',
+      'BergenBysykkelIcon',
+      'BoltIcon',
+      'KolumbusBysykkelIcon',
+      'LimeIcon',
+      'OsloBysykkelIcon',
+      'TierIcon',
+      'TrondheimBysykkelIcon',
+      'VoiIcon',
     ];
     // Icons with "special colors", so no color exchange for those
     const outliers = [
@@ -102,6 +102,7 @@ function createSvgrConfig(native = false, componentName) {
     let color = `{(props.color || "currentColor")}`;
 
     if (outliers.includes(componentName)) {
+      console.log(componentName);
       className = `{"eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
     }
     if (componentName && colors.transport.contrast[lowerCaseName]) {
