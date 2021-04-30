@@ -5,6 +5,7 @@ import {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
 } from '@entur/utils';
+import { LoadingDots } from '@entur/loader';
 import './IconButton.scss';
 
 export type IconButtonBaseProps = {
@@ -24,6 +25,10 @@ export type IconButtonBaseProps = {
    * @default "medium"
    */
   size?: 'small' | 'medium';
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
+  loading?: boolean;
 };
 
 const defaultElement = 'button';
@@ -43,6 +48,7 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
       disabled = false,
       size,
       as,
+      loading,
       ...rest
     }: PolymorphicPropsWithoutRef<IconButtonBaseProps, E>,
     ref: React.ForwardedRef<React.ElementRef<E>>,
@@ -63,7 +69,7 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
         ref={ref}
         {...rest}
       >
-        {children}
+        {loading ? <LoadingDots /> : children}
       </Element>
     );
   },
