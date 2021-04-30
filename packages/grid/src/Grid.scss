@@ -98,11 +98,9 @@
   }
   @include for-large-desktop {
     &--large {
-      &--medium {
-        @for $i from 1 through 12 {
-          &-#{$i} {
-            grid-column: span #{$i};
-          }
+      @for $i from 1 through 12 {
+        &-#{$i} {
+          grid-column: span #{$i};
         }
       }
     }
