@@ -8,6 +8,10 @@ export type ExandableTextButtonProps = {
   open?: boolean;
   /** Funksjonen som styrer åpningen av ExpandableTextButton */
   onToggle: () => void;
+  /** Den typografiske komponenten for tittelen
+   * @default Heading5
+   */
+  as?: React.ElementType;
   [key: string]: any;
 };
 
@@ -15,6 +19,7 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
   children,
   open,
   onToggle,
+  as: Component = Heading5,
   ...rest
 }) => {
   return (
@@ -25,7 +30,7 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
       onClick={onToggle}
       {...rest}
     >
-      <Heading5 as="span">{children}</Heading5>
+      <Component as="span">{children}</Component>
       <ExpandArrow open={open} className="eds-expandable-text__arrow" inline />
     </button>
   );

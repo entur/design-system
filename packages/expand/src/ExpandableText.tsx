@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
 import { BaseExpand } from './BaseExpand';
+import { Heading5, Paragraph, SubParagraph } from '@entur/typography';
 import './ExpandableText.scss';
 
 export type ExpandableTextProps = {
@@ -19,17 +20,28 @@ export type ExpandableTextProps = {
   onToggle?: () => void;
   /**Styling som sendes til innholdet av ExpandableText */
   contentStyle?: CSSProperties;
+  /** Hvilket typografisk element tittelen er
+   * @default "Heading5"
+   */
+  titleElement?: 'Heading5' | 'Paragraph' | 'SubParagraph';
   [key: string]: any;
 };
+
 export const ExpandableText: React.FC<ExpandableTextProps> = ({
   title,
   children,
   defaultOpen = false,
   contentStyle,
+  titleElement = 'Heading5',
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
   const [isOpen, setOpen] = React.useState(defaultOpen);
+
+  const Element: React.ElementType = React.useMemo(
+    () => GetTypographyComponent(titleElement),
+    [titleElement],
+  );
 
   return (
     <>
@@ -37,6 +49,7 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
         aria-controls={randomId}
         open={isOpen}
         onToggle={() => setOpen(prev => !prev)}
+        as={Element}
         {...rest}
       >
         {title}
@@ -53,3 +66,18 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
     </>
   );
 };
+
+function GetTypographyComponent(
+  element: 'Heading5' | 'Paragraph' | 'SubParagraph',
+) {
+  switch (element) {
+    case 'Heading5':
+      return Heading5;
+    case 'Paragraph':
+      return Paragraph;
+    case 'SubParagraph':
+      return SubParagraph;
+    default:
+      return Heading5;
+  }
+}
