@@ -7,7 +7,10 @@ import {
 } from 'downshift';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { BaseFormControl, VariantType } from '@entur/form';
-import { PotentiallyAsyncDropdownItemType } from './useResolvedItems';
+import {
+  PotentiallyAsyncDropdownItemType,
+  useResolvedItems,
+} from './useResolvedItems';
 import { useRandomId } from '@entur/utils';
 import classNames from 'classnames';
 import { InlineSpinner } from './InlineSpinner';
@@ -83,14 +86,21 @@ type NewMultiProps = {
   className?: string;
   /** Styling som sendes ned til MultiSelect-lista */
   listStyle?: { [key: string]: any };
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon
+   * @default 250
+   */
+  debounceTimeout?: number;
+  /** Om man skal ha muliget for å nullstille Dropdownen
+   * @default false
+   */
   clearable?: boolean;
   loading?: boolean;
   style?: React.CSSProperties;
 } & UseSelectProps<NormalizedDropdownItemType>;
 
 export const NewMulti: React.FC<NewMultiProps> = ({
-  items,
-  itemsSelectedLabel = items => SelectedItemsLabel(items),
+  items: input,
+  itemsSelectedLabel = (items, s) => SelectedItemsLabel(items),
   label,
   feedback,
   variant,
@@ -104,11 +114,17 @@ export const NewMulti: React.FC<NewMultiProps> = ({
   openOnFocus = false,
   style,
   listStyle,
+  debounceTimeout,
   ...rest
 }) => {
+  const { items } = useResolvedItems(input, debounceTimeout);
   const [selectedItems, setSelectedItems] = useState<
     NormalizedDropdownItemType[]
   >([]);
+
+  const reset = React.useCallback(() => {
+    setSelectedItems([]);
+  }, []);
   const {
     isOpen,
     getToggleButtonProps,
@@ -116,9 +132,6 @@ export const NewMulti: React.FC<NewMultiProps> = ({
     getMenuProps,
     highlightedIndex,
     getItemProps,
-    reset = () => {
-      setSelectedItems([]);
-    },
     openMenu,
   } = useSelect<NormalizedDropdownItemType>({
     items,
@@ -147,7 +160,6 @@ export const NewMulti: React.FC<NewMultiProps> = ({
     ? itemsSelectedLabel(selectedItems)
     : '';
   const multiSelectId = useRandomId('eds-multiselect');
-  console.log(reset);
 
   return (
     <MultiSelectContext.Provider
@@ -218,6 +230,7 @@ export const NewMulti: React.FC<NewMultiProps> = ({
                   item,
                   index,
                 })}
+                style={{ display: 'flex' }}
               >
                 <span style={{ display: 'flex' }}>
                   <span
@@ -233,6 +246,17 @@ export const NewMulti: React.FC<NewMultiProps> = ({
                     {item.label}
                   </span>
                 </span>
+                {item.icons && (
+                  <span>
+                    {item.icons.map((Icon, index) => (
+                      <Icon
+                        key={index}
+                        inline
+                        className="eds-dropdown-list__item-icon"
+                      />
+                    ))}
+                  </span>
+                )}
               </li>
             ))}
         </ul>
@@ -325,5 +349,7 @@ const CheckboxIcon: React.FC<{}> = () => {
 };
 
 function SelectedItemsLabel(items: NormalizedDropdownItemType[]) {
-  return items.map(item => item.label).toString();
+  return items.length < 3
+    ? items.map(item => item.label).toString()
+    : `${items.length} elementer valgt`;
 }
