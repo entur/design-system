@@ -100,7 +100,7 @@ type MultiSelectProps = {
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
   items: input,
-  itemsSelectedLabel = (items, s) => SelectedItemsLabel(items),
+  itemsSelectedLabel = (items, _) => SelectedItemsLabel(items),
   label,
   feedback,
   variant,
