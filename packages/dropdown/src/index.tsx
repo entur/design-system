@@ -6,4 +6,4 @@ warnAboutMissingStyles('dropdown', 'form', 'a11y', 'chip');
 export * from './Dropdown';
 export * from './NativeDropdown';
 export * from './MultiSelect';
-export * from './NewMulti';
+export * from './MultiSelect';
