@@ -20,6 +20,10 @@ export type ModalProps = {
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
   title: string;
+  /** Om modalen skal lukkes når man klikker på utsiden av den
+   * @default true
+   */
+  closeOnClickOutside?: boolean;
   [key: string]: any;
 };
 
@@ -30,13 +34,19 @@ export const Modal: React.FC<ModalProps> = ({
   open,
   onDismiss,
   size,
+  closeOnClickOutside = true,
   ...rest
 }) => {
   const showCloseButton = ['medium', 'large', 'extraLarge'].includes(size);
+
+  let handleOnDismiss;
+  if (onDismiss && closeOnClickOutside) {
+    handleOnDismiss = onDismiss;
+  }
   return (
     <ModalOverlay
       open={open}
-      onDismiss={onDismiss}
+      onDismiss={handleOnDismiss}
       initialFocusRef={initialFocusRef}
     >
       <ModalContent size={size} {...rest}>
