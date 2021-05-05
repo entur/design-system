@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.2...@entur/button@2.6.0) (2021-05-05)
+
+### Features
+
+- **iconbutton:** add loading prop to iconbutton ([1738d37](https://bitbucket.org/enturas/design-system/commits/1738d375a18fbbabf818f5c612d1ab793eb87464))
+
 ## [2.5.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.1...@entur/button@2.5.2) (2021-04-23)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.29...@entur/expand@3.3.0) (2021-05-05)
+
+### Features
+
+- **expandable text:** add titleElement prop ([a8cdcdb](https://bitbucket.org/enturas/design-system/commits/a8cdcdb305308864e653a843fd3bd1964afc353f))
+
 ## [3.2.29](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.28...@entur/expand@3.2.29) (2021-04-23)
 
 ### Bug Fixes

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@2.0.0...@entur/icons@2.0.1) (2021-05-05)
+
+### Bug Fixes
+
+- **addcard:** update add card icon look ([4282657](https://bitbucket.org/enturas/design-system/commits/4282657e7a2343eb096cc54c52c887be38e2580d))
+- fix corrent colors for mobility partners ([c24c7ec](https://bitbucket.org/enturas/design-system/commits/c24c7ec4ab10ef7dfdd434e508a93a07501b5cb9))
+- update card icon ([6a8156b](https://bitbucket.org/enturas/design-system/commits/6a8156bc2a8572621c1a6bd0bad6bec4742804ca))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@1.20.0...@entur/icons@2.0.0) (2021-04-23)
 
 ### Bug Fixes

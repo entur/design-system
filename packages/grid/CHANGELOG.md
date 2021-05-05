@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.4...@entur/grid@0.3.5) (2021-05-05)
+
+### Bug Fixes
+
+- **griditem:** fix large prop not following grid ([fc09ab9](https://bitbucket.org/enturas/design-system/commits/fc09ab9555f7496601bd084cbcd39117dc51d717))
+
 ## [0.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.3...@entur/grid@0.3.4) (2021-04-23)
 
 **Note:** Version bump only for package @entur/grid

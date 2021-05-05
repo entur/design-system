@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.7...@entur/dropdown@2.0.0) (2021-05-05)
+
+### Bug Fixes
+
+- **multiselect:** finalize styling for new multiselect ([7b59c68](https://bitbucket.org/enturas/design-system/commits/7b59c68946dc9f0ae1dab5e19979d79def85a5c9))
+
+### Features
+
+- **multiselect:** update multiselect component ([665a14c](https://bitbucket.org/enturas/design-system/commits/665a14cd7f1a8f4482cb902eea592f81e86b2798))
+
+### BREAKING CHANGES
+
+- **multiselect:** full rewrite so may be some breaking changes
+
 ## [1.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.6...@entur/dropdown@1.4.7) (2021-04-23)
 
 ### Bug Fixes
