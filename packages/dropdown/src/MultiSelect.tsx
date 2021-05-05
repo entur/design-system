@@ -1,26 +1,65 @@
-import React from 'react';
-import classNames from 'classnames';
+import React, { useState } from 'react';
 import {
   useSelect,
-  useMultipleSelection,
-  UseSelectStateChangeTypes,
-  UseMultipleSelectionProps,
+  UseSelectProps,
+  //   StateChangeOptions,
+  //   UseSelectStateChangeOptions,
 } from 'downshift';
-import { Label } from '@entur/typography';
-import { VariantType, FeedbackText, BaseFormControl } from '@entur/form';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { BaseFormControl, VariantType } from '@entur/form';
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
 } from './useResolvedItems';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import { TagChip } from '@entur/chip';
 import { DropdownLoadingDots } from './DropdownLoadingDots';
+import { useRandomId } from '@entur/utils';
+import classNames from 'classnames';
 import { CloseIcon, DownArrowIcon } from '@entur/icons';
+import { space } from '@entur/tokens';
 import './MultiSelect.scss';
+import './DropdownList.scss';
 
+const MultiSelectContext = React.createContext<{
+  isOpen: boolean;
+  reset: () => void;
+  getToggleButtonProps: any;
+  openMenu: () => void;
+  openOnFocus?: boolean;
+} | null>(null);
+const useMultiSelectContext = () => {
+  const context = React.useContext(MultiSelectContext);
+  if (!context) {
+    throw new Error('You need to wrap your component in a DownshiftProvider');
+  }
+  return context;
+};
+
+function stateReducer(
+  state: any, //StateChangeOptions<NormalizedDropdownItemType>,
+  actionAndChanges: any, //UseSelectStateChangeOptions<NormalizedDropdownItemType>,
+) {
+  const { changes, type } = actionAndChanges;
+  switch (type) {
+    case useSelect.stateChangeTypes.MenuKeyDownEnter:
+    case useSelect.stateChangeTypes.MenuKeyDownSpaceButton:
+    case useSelect.stateChangeTypes.ItemClick:
+      return {
+        ...changes,
+        isOpen: true, // keep menu open after selection.
+        highlightedIndex: state.highlightedIndex,
+      };
+    default:
+      return changes;
+  }
+}
 type MultiSelectProps = {
   /** Tilgjengelige valg i MultiSelect */
   items: PotentiallyAsyncDropdownItemType;
+  /** Tekst som vises i boksen når elementer er valgt */
+  itemsSelectedLabel?: (
+    selectedItems: NormalizedDropdownItemType[],
+    numberOfItems?: number,
+  ) => string;
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
   /** Hvilken valideringsvariant som gjelder */
@@ -39,213 +78,208 @@ type MultiSelectProps = {
   loadingText?: string;
   /** Callback når brukeren endrer valg */
   onChange?: (e: any) => void;
-  /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
-  selectOnTab?: boolean;
-  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
+  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe
+   * @default false
+   */
   openOnFocus?: boolean;
-  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
-  debounceTimeout?: number;
   /** Ekstra klassenavn */
   className?: string;
   /** Styling som sendes ned til MultiSelect-lista */
   listStyle?: { [key: string]: any };
-  /** Alle ekstra props videresendes til Downshift */
-  [key: string]: any;
-};
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon
+   * @default 250
+   */
+  debounceTimeout?: number;
+  /** Om man skal ha muliget for å nullstille Dropdownen
+   * @default false
+   */
+  clearable?: boolean;
+  loading?: boolean;
+  style?: React.CSSProperties;
+} & UseSelectProps<NormalizedDropdownItemType>;
 
-const MultiSelectContext = React.createContext<{
-  isOpen: boolean;
-  reset: () => void;
-  getToggleButtonProps: any;
-  openMenu: () => void;
-  openOnFocus?: boolean;
-} | null>(null);
-const useMultiSelectContext = () => {
-  const context = React.useContext(MultiSelectContext);
-  if (!context) {
-    throw new Error('You need to wrap your component in a DownshiftProvider');
-  }
-  return context;
-};
-
-export const MultiSelect: React.FC<
-  MultiSelectProps & UseMultipleSelectionProps<NormalizedDropdownItemType>
-> = ({
-  label,
-  className,
-  debounceTimeout,
+export const MultiSelect: React.FC<MultiSelectProps> = ({
   items: input,
+  itemsSelectedLabel = (items, _) => SelectedItemsLabel(items),
+  label,
   feedback,
   variant,
   disabled,
-  placeholder = 'Vennligst velg',
-  selectOnTab = false,
-  openOnFocus = false,
-  onChange = () => {},
-  loading,
-  loadingText = 'Loading...',
   readOnly = false,
-  prepend,
+  onChange = () => {},
+  className,
+  clearable = false,
+  loading = false,
+  loadingText = '',
+  openOnFocus = false,
+  style,
   listStyle,
+  debounceTimeout,
   ...rest
 }) => {
-  const {
-    getSelectedItemProps,
-    getDropdownProps,
-    selectedItems,
-    removeSelectedItem,
-    reset,
-    addSelectedItem,
-  } = useMultipleSelection<NormalizedDropdownItemType>({
-    ...rest,
-  });
-
   const { items } = useResolvedItems(input, debounceTimeout);
-  const getFilteredItems = () =>
-    items.filter(
-      item =>
-        !selectedItems.some(
-          el => el.label === item.label && el.value === item.value,
-        ),
-    );
+  const [selectedItems, setSelectedItems] = useState<
+    NormalizedDropdownItemType[]
+  >([]);
 
+  const reset = React.useCallback(() => {
+    setSelectedItems([]);
+  }, []);
   const {
     isOpen,
-    openMenu,
-    selectedItem,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
-  } = useSelect({
-    selectedItem: undefined,
-    items: getFilteredItems(),
-    onStateChange: ({
-      type,
-      selectedItem,
-    }: {
-      type?: UseSelectStateChangeTypes;
-      selectedItem?: NormalizedDropdownItemType | null;
-    }) => {
-      switch (type) {
-        case useSelect.stateChangeTypes.MenuKeyDownEnter:
-        case useSelect.stateChangeTypes.MenuKeyDownSpaceButton:
-        case useSelect.stateChangeTypes.ItemClick:
-          if (selectedItem) {
-            addSelectedItem(selectedItem);
-          }
-          break;
-        default:
-          break;
+    openMenu,
+  } = useSelect<NormalizedDropdownItemType>({
+    items,
+    stateReducer,
+    selectedItem: null,
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (!selectedItem) {
+        return;
       }
+      const index = selectedItems.indexOf(selectedItem);
+      if (index > 0) {
+        setSelectedItems([
+          ...selectedItems.slice(0, index),
+          ...selectedItems.slice(index + 1),
+        ]);
+      } else if (index === 0) {
+        setSelectedItems([...selectedItems.slice(1)]);
+      } else {
+        setSelectedItems([...selectedItems, selectedItem]);
+      }
+      onChange(selectedItems);
     },
+    ...rest,
   });
-
-  React.useEffect(() => {
-    onChange(selectedItems);
-  }, [selectedItems, onChange]);
-
-  const areItemsSelected = selectedItems.length !== 0;
+  const buttonText = selectedItems.length
+    ? itemsSelectedLabel(selectedItems)
+    : '';
+  const multiSelectId = useRandomId('eds-multiselect');
 
   return (
     <MultiSelectContext.Provider
       value={{ isOpen, reset, getToggleButtonProps, openMenu, openOnFocus }}
     >
-      <div className={classNames('eds-dropdown-wrapper', className)}>
-        {label && <Label {...getLabelProps()}>{label}</Label>}
-        {/** @ts-ignore Ignored for now, until component is updated */}
+      <div
+        className={classNames(
+          'eds-multiselect',
+          'eds-dropdown-wrapper',
+          className,
+        )}
+        style={style}
+      >
         <BaseFormControl
-          prepend={prepend}
+          label={label}
+          labelId={multiSelectId}
+          labelProps={...getLabelProps()}
+          feedback={feedback}
+          variant={variant}
+          isFilled={selectedItems.length > 0 || isOpen}
           disabled={disabled}
+          readOnly={readOnly}
           append={
             <Appendix
+              hasSelected={clearable && selectedItems.length > 0}
               loading={loading}
               loadingText={loadingText}
               readOnly={readOnly}
-              hasSelected={areItemsSelected}
             />
           }
         >
-          <div
-            className="eds-multi-select__input"
-            {...getToggleButtonProps(
-              getDropdownProps({
-                disabled,
-                type: 'button',
-                role: 'button',
-              }),
-            )}
+          <button
+            {...getToggleButtonProps({
+              style: {
+                textAlign: 'left',
+              },
+              type: 'button',
+              className: 'eds-form-control eds-multiselect__button',
+            })}
           >
-            {areItemsSelected && (
-              <div className="eds-multi-select__selected-items">
-                {selectedItems.map((selectedItem, index) => (
-                  <TagChip
-                    className="eds-multi-select__selected-items-tag"
-                    key={`selected-item-${selectedItem.label}${selectedItem.value}`}
-                    onClose={(e: React.MouseEvent) => {
-                      e.stopPropagation();
-                      removeSelectedItem(selectedItem);
-                    }}
-                    {...getSelectedItemProps({ selectedItem, index })}
-                  >
-                    {selectedItem.label}
-                  </TagChip>
-                ))}
-              </div>
-            )}
-            {!areItemsSelected && (
-              <span className="eds-multi-select__placeholder">
-                {placeholder}
-              </span>
-            )}
-          </div>
+            {buttonText}
+          </button>
         </BaseFormControl>
-
         <ul
           className={classNames('eds-dropdown-list', {
             'eds-dropdown-list--open': isOpen,
           })}
           {...getMenuProps({
-            style: { position: 'absolute', top: '100%', ...listStyle },
+            style: {
+              position: 'absolute',
+              top: `${space.extraLarge3 + space.extraSmall}px`,
+              ...listStyle,
+            },
           })}
         >
-          {isOpen
-            ? getFilteredItems().map((item, index) => (
-                <li
-                  className={classNames('eds-dropdown-list__item', {
-                    'eds-dropdown-list__item--highlighted':
-                      highlightedIndex === index,
-                    'eds-dropdown-list__item--selected': selectedItem === item,
-                  })}
-                  {...getItemProps({
-                    key: `${index}${item.value}`,
+          {isOpen &&
+            items.map((item, index) => (
+              <li
+                className={classNames('eds-dropdown-list__item', {
+                  'eds-dropdown-list__item--highlighted':
+                    highlightedIndex === index,
+                  'eds-dropdown-list__item--selected': selectedItems.includes(
                     item,
-                    index,
-                  })}
-                  {...listStyle}
-                >
-                  <span>{item.label}</span>
-                  {item.icons && (
-                    <span>
-                      {item.icons.map((Icon, index) => (
-                        <Icon
-                          key={index}
-                          inline
-                          className="eds-dropdown-list__item-icon"
-                        />
-                      ))}
-                    </span>
-                  )}
-                </li>
-              ))
-            : null}
+                  ),
+                })}
+                key={`${item}${index}`}
+                {...getItemProps({
+                  item,
+                  index,
+                })}
+                style={{ display: 'flex' }}
+              >
+                <span style={{ display: 'flex' }}>
+                  <span
+                    className={classNames('eds-multiselect-checkbox', {
+                      'eds-multiselect-checkbox--checked': selectedItems.includes(
+                        item,
+                      ),
+                    })}
+                  >
+                    <CheckboxIcon />
+                  </span>
+                  <span className="eds-multiselect__item-label">
+                    {item.label}
+                  </span>
+                </span>
+                {item.icons && (
+                  <span>
+                    {item.icons.map((Icon, index) => (
+                      <Icon
+                        key={index}
+                        inline
+                        className="eds-dropdown-list__item-icon"
+                      />
+                    ))}
+                  </span>
+                )}
+              </li>
+            ))}
         </ul>
-        {feedback && variant && (
-          <FeedbackText variant={variant}>{feedback}</FeedbackText>
-        )}
       </div>
     </MultiSelectContext.Provider>
+  );
+};
+
+const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
+  const { reset } = useMultiSelectContext();
+  return (
+    <>
+      <button
+        className="eds-dropdown__clear-button"
+        type="button"
+        tabIndex={-1}
+        onClick={() => reset()}
+        {...props}
+      >
+        <CloseIcon />
+      </button>
+      <div className="eds-dropdown__divider"></div>
+    </>
   );
 };
 
@@ -268,24 +302,6 @@ const Appendix: React.FC<{
     </>
   ) : (
     <DropdownToggleButton />
-  );
-};
-
-const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
-  const { reset } = useMultiSelectContext();
-  return (
-    <>
-      <button
-        className="eds-dropdown__clear-button"
-        type="button"
-        tabIndex={-1}
-        onClick={() => reset()}
-        {...props}
-      >
-        <CloseIcon />
-      </button>
-      <div className="eds-dropdown__divider"></div>
-    </>
   );
 };
 
@@ -314,3 +330,26 @@ const DropdownToggleButton = () => {
     </button>
   );
 };
+
+const CheckboxIcon: React.FC<{}> = () => {
+  return (
+    <svg
+      className="eds-checkbox-icon"
+      width="11px"
+      height="9px"
+      viewBox="6 11 37 33"
+    >
+      <path
+        className="eds-checkbox-icon__path"
+        d="M14.1 27.2l7.1 7.2 14.6-14.8"
+        fill="none"
+      />
+    </svg>
+  );
+};
+
+function SelectedItemsLabel(items: NormalizedDropdownItemType[]) {
+  return items.length < 3
+    ? items.map(item => item.label).toString()
+    : `${items.length} elementer valgt`;
+}

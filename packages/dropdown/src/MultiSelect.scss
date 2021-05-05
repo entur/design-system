@@ -1,6 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-multi-select {
+  position: relative;
   &__selected-items {
     display: flex;
     // height: 2.75rem;
@@ -40,5 +41,56 @@
     padding-left: $space-large;
     line-height: $line-heights-large;
     font-size: $font-sizes-large;
+  }
+  &__item {
+    &-label {
+    }
+  }
+}
+
+.eds-checkbox-icon {
+  height: $space-default;
+  width: $space-default;
+  visibility: hidden;
+  &__path {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
+    stroke-dashoffset: 48;
+    stroke-width: 0.375rem;
+  }
+}
+.eds-multiselect {
+  position: relative;
+  &__button {
+    text-overflow: ellipsis;
+  }
+}
+.eds-multiselect-checkbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  margin-right: $space-small;
+  height: 1.25rem;
+  width: 1.25rem;
+  border: $border-widths-default solid $colors-brand-blue;
+  border-radius: $border-radiuses-default;
+  background-color: transparent;
+  color: $colors-brand-white;
+}
+.eds-multiselect-checkbox--checked {
+  background-color: $colors-brand-blue;
+  .eds-checkbox-icon {
+    visibility: visible;
+    &__path {
+      stroke: $colors-brand-white;
+      animation: stroke ease-in-out 0.2s 0.1s forwards;
+    }
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
   }
 }
