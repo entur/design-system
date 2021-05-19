@@ -143,16 +143,21 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       }
       const index = selectedItems.indexOf(selectedItem);
       if (index > 0) {
-        setSelectedItems([
+        let slicedItemList = [
           ...selectedItems.slice(0, index),
           ...selectedItems.slice(index + 1),
-        ]);
+        ];
+        setSelectedItems(slicedItemList);
+        onChange(slicedItemList);
       } else if (index === 0) {
-        setSelectedItems([...selectedItems.slice(1)]);
+        let slicedItemList = [...selectedItems.slice(1)];
+        setSelectedItems(slicedItemList);
+        onChange(slicedItemList);
       } else {
-        setSelectedItems([...selectedItems, selectedItem]);
+        let slicedItemList = [...selectedItems, selectedItem];
+        setSelectedItems(slicedItemList);
+        onChange(slicedItemList);
       }
-      onChange(selectedItems);
     },
     ...rest,
   });
