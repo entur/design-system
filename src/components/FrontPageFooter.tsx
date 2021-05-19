@@ -12,6 +12,7 @@ import { Link as DoczLink } from 'docz';
 import React from 'react';
 import Divider from './Divider';
 import logo from './EnturLogo.svg';
+import { Media } from '~/utils/MediaBreakpoint';
 import './FrontPageFooter.scss';
 
 function FrontPageFooter() {
@@ -21,14 +22,18 @@ function FrontPageFooter() {
         spacing="extraLarge"
         className="front-page-footer__grid-container"
       >
-        <GridItem small={6} medium={3}>
-          <LeadParagraph>
-            Entur leverer digitale <br /> tjenester til Norges <br />
-            kollektivtransport.
+        <GridItem small={12} className="front-page-footer__mobile-item">
+          <Media at="mobile">
+            <img src={logo} width="104px" alt="Entur sin logo" />
+          </Media>
+        </GridItem>
+        <GridItem small={12} medium={6} large={3}>
+          <LeadParagraph margin="none" className="front-page-footer__lead">
+            Entur leverer digitale tjenester til Norges kollektivtransport.
           </LeadParagraph>
         </GridItem>
-        <GridItem small={6} medium={3}>
-          <Heading3>Sidestruktur</Heading3>
+        <GridItem small={12} medium={6} large={3}>
+          <Heading3 margin="bottom">Sidestruktur</Heading3>
           <div className="front-page-footer__link">
             <DoczLinkWrapper to="/kom-i-gang">Kom i gang</DoczLinkWrapper>
           </div>
@@ -49,8 +54,8 @@ function FrontPageFooter() {
             </DoczLinkWrapper>
           </div>
         </GridItem>
-        <GridItem small={6} medium={3}>
-          <Heading3>Kontakt</Heading3>
+        <GridItem small={12} medium={3}>
+          <Heading3 margin="bottom">Kontakt</Heading3>
           <div className="front-page-footer__link">
             <Link href="">#talk-designsystem på Slack</Link>
           </div>
@@ -58,8 +63,8 @@ function FrontPageFooter() {
             <Link href="">Send oss en email</Link>
           </div>
         </GridItem>
-        <GridItem small={6} medium={3}>
-          <Heading3>Følg oss på</Heading3>
+        <GridItem small={12} medium={3}>
+          <Heading3 margin="bottom">Følg oss på</Heading3>
           <div style={{ display: 'flex' }}>
             <IconButton
               as="a"
@@ -96,23 +101,25 @@ function FrontPageFooter() {
           </div>
         </GridItem>
       </GridContainer>
-      <Divider></Divider>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          maxWidth: '1328px',
-          margin: '0 auto',
-        }}
-      >
-        <div style={{ padding: '2rem 0' }}>
-          <img src={logo} width="104px" alt="Entur sin logo" />
+      <Media greaterThanOrEqual="desktop">
+        <Divider></Divider>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            maxWidth: '1328px',
+            margin: '0 auto',
+          }}
+        >
+          <div style={{ padding: '2rem 0' }}>
+            <img src={logo} width="104px" alt="Entur sin logo" />
+          </div>
+          <div style={{ float: 'right', padding: '2rem 0' }}>
+            <Label>Entur.no</Label>
+            <Label>© 2020 Entur AS</Label>
+          </div>
         </div>
-        <div style={{ float: 'right', padding: '2rem 0' }}>
-          <Label>Entur.no</Label>
-          <Label>© 2020 Entur AS</Label>
-        </div>
-      </div>
+      </Media>
     </div>
   );
 }

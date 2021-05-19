@@ -3,8 +3,9 @@
 
 .content-margin {
   max-width: 1328px;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   @include for-desktop {
+    padding: 0 1rem;
     margin: 0 auto;
   }
 }
@@ -21,4 +22,24 @@
   top: 2rem;
   right: 0;
   display: none;
+}
+
+.front-page__second-intro {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  @include for-desktop {
+    text-align: center;
+    margin-top: 6.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.front-page__last-section {
+  max-width: 784px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  @include for-desktop {
+    margin-bottom: 12.5rem;
+  }
 }

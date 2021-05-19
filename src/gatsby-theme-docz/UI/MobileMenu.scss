@@ -13,6 +13,11 @@
       cursor: pointer;
       font-size: $font-sizes-extra-large2;
       padding: $space-extra-small $space-large;
+      &.eds-floating-button {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+      }
       &:focus {
         outline: $outlines-focus;
       }

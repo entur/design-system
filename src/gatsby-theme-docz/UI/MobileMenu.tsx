@@ -3,6 +3,7 @@ import { Link } from 'docz';
 import { Location } from '@reach/router';
 import { Contrast } from '@entur/layout/src';
 import { MenuIcon } from '@entur/icons';
+import { FloatingButton } from '@entur/button';
 import classNames from 'classnames';
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
@@ -23,41 +24,48 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const [sidemenu, showSidemenu] = React.useState(false);
   const Element = frontPage ? Contrast : 'div';
   return (
-    <Element as="header" className={className}>
-      <div className="mobile-nav-bar__menu">
-        <button
+    <>
+      <Element as="header" className={className}>
+        <div className="mobile-nav-bar__menu">
+          {frontPage ? (
+            <img src={logo} alt="Entur logo" />
+          ) : (
+            <Link to="/">
+              <img src={logoDark} alt="Entur logo" />
+            </Link>
+          )}
+          <SettingsPanel />
+        </div>
+        <div className="mobile-nav-bar__links">
+          <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
+          <MobileNavItem to="/identitet">Identitet</MobileNavItem>
+          <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
+          <MobileNavItem to="/universell-utforming">
+            Universell utforming
+          </MobileNavItem>
+        </div>
+        <SiteSidebar
+          className={classNames('sidebar-mobile', {
+            'sidebar-mobile--show': sidemenu,
+          })}
+          mobile
+        />
+      </Element>
+      {!frontPage && (
+        <FloatingButton
+          size="small"
           className="mobile-nav-bar__menu--menu"
           onClick={() => {
             showSidemenu(!sidemenu);
             rest.openMenu(!sidemenu);
           }}
           type="button"
+          aria-label="meny"
         >
           <MenuIcon />
-        </button>
-        {frontPage ? (
-          <img src={logo} alt="Entur logo" />
-        ) : (
-          <img src={logoDark} alt="Entur logo" />
-        )}
-        <SettingsPanel />
-      </div>
-      <div className="mobile-nav-bar__links">
-        <MobileNavItem to="/">Hjem</MobileNavItem>
-        <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
-        <MobileNavItem to="/identitet">Identitet</MobileNavItem>
-        <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
-        <MobileNavItem to="/universell-utforming">
-          Universell utforming
-        </MobileNavItem>
-      </div>
-      <SiteSidebar
-        className={classNames('sidebar-mobile', {
-          'sidebar-mobile--show': sidemenu,
-        })}
-        mobile
-      />
-    </Element>
+        </FloatingButton>
+      )}
+    </>
   );
 };
 

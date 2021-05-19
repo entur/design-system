@@ -17,6 +17,9 @@
     font-size: $font-sizes-extra-large2;
     margin-right: $space-extra-small2;
   }
+  &__modal.eds-modal__content {
+    overflow: visible;
+  }
   &__container {
     display: none;
     @include for-large-desktop {
