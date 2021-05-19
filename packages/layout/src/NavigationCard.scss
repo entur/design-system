@@ -1,4 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .eds-navigation-card {
   display: flex;
@@ -74,7 +75,10 @@
   &--compact {
     flex-direction: row;
     justify-content: space-between;
-    padding: $space-default $space-extra-large2;
+    padding: 0 $space-extra-large;
+    @include for-desktop {
+      padding: $space-default $space-extra-large2;
+    }
     .eds-navigation-card__title {
       margin: 0;
       padding: $space-medium 0;

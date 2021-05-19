@@ -2,6 +2,7 @@ import React from 'react';
 import { Paragraph } from '@entur/typography';
 import classNames from 'classnames';
 import { ForwardIcon, ExternalIcon } from '@entur/icons';
+import { Heading3 } from '@entur/typography';
 import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
 import { PolymorphicPropsWithoutRef } from '@entur/utils';
@@ -63,7 +64,7 @@ export const NavigationCard = <
             {titleIcon}
           </span>
         )}
-        {title}
+        <Heading3 as="span">{title}</Heading3>
       </span>
       {!compact && (
         <>
