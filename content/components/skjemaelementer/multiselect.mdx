@@ -12,17 +12,32 @@ import { Props } from 'docz';
 import { MultiSelect } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
+import { CodeText } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
-import dropdownItems from './dropdownItems';
+import { FILTERS } from './dropdownItems';
 
 <PageHeader />
 
 <Playground>
-  <MultiSelect
-    items={dropdownItems}
-    label="Søk etter stoppesteder"
-    placeholder="F.eks. Bislett"
-  />
+  {() => {
+    const [selectedItems, setSelectedItems] = React.useState([]);
+    return (
+      <>
+        <div style={{ width: '15rem' }}>
+          <MultiSelect
+            items={FILTERS}
+            onChange={e => setSelectedItems(e)}
+            label="Filtrer transport"
+          />
+        </div>
+        <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+          <CodeText>
+            Valgte elementer: {selectedItems.map(item => item.label + ' ')}
+          </CodeText>
+        </div>
+      </>
+    );
+  }}
 </Playground>
 
 ## Komponenter
