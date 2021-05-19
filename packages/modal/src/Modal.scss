@@ -4,17 +4,22 @@
   // Tell Reach that we're doing the styling ourselves
   --reach-dialog: 1;
 }
+$modal-animation-duration: $timings-medium;
 
 .eds-modal__overlay {
   background: rgba(black, 0.5);
   bottom: 0;
   display: flex;
   left: 0;
-  overflow: auto;
+  overflow: hidden;
   position: fixed;
   right: 0;
   top: 0;
   z-index: $z-indexes-overlay;
+
+  animation: fadeInOverlay;
+  animation-duration: $modal-animation-duration;
+  animation-timing-function: ease-in-out;
 }
 
 .eds-modal__content {
@@ -29,6 +34,10 @@
   max-height: 90vh;
   overflow: auto;
   z-index: $z-indexes-modal;
+
+  animation: slideInContent;
+  animation-duration: $modal-animation-duration;
+  animation-timing-function: ease-in-out;
 
   &--size-extraSmall {
     max-width: 21rem;
@@ -71,5 +80,27 @@
   &:focus {
     outline-offset: $outline-offsets-focus;
     outline: $outlines-focus;
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInContent {
+  from {
+    top: 5rem;
+    opacity: 0;
+  }
+
+  to {
+    top: 0%;
+    opacity: 1;
   }
 }
