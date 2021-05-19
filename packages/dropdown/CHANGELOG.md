@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.0...@entur/dropdown@2.0.1) (2021-05-19)
+
+### Bug Fixes
+
+- **multiselect:** fix onchange late callback bug ([5998355](https://bitbucket.org/enturas/design-system/commits/59983553e6ae68f80cfde356b48f748f837c7751))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@1.4.7...@entur/dropdown@2.0.0) (2021-05-05)
 
 ### Bug Fixes

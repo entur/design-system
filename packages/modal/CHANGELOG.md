@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.4.0...@entur/modal@1.5.0) (2021-05-19)
+
+### Features
+
+- **modal:** add animation on modal entry ([f0f0701](https://bitbucket.org/enturas/design-system/commits/f0f07019a9324b8a697165e5d902fee9cfb21815))
+
 # [1.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.3.16...@entur/modal@1.4.0) (2021-05-05)
 
 ### Features

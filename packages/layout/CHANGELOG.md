@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.10.3...@entur/layout@1.10.4) (2021-05-19)
+
+### Bug Fixes
+
+- **navigation card:** improve component styling on mobile ([4387991](https://bitbucket.org/enturas/design-system/commits/4387991d6f03531edab250f855de10c2aecfe60b))
+
 ## [1.10.3](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.10.2...@entur/layout@1.10.3) (2021-04-23)
 
 ### Bug Fixes
