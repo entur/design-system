@@ -28,10 +28,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <Element as="header" className={className}>
         <div className="mobile-nav-bar__menu">
           {frontPage ? (
-            <img src={logo} alt="Entur logo" />
+            <img src={logo} alt="Entur logo" style={{ paddingLeft: '24px' }} />
           ) : (
             <Link to="/">
-              <img src={logoDark} alt="Entur logo" />
+              <img
+                src={logoDark}
+                alt="Entur logo"
+                style={{ paddingLeft: '24px' }}
+              />
             </Link>
           )}
           <SettingsPanel />

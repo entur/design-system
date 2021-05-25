@@ -70,12 +70,12 @@ export const FrontPage = () => {
             </div>
           </Media>
         </div>
-        <div
-          style={{ background: colors.blues.blue10 }}
-          className="content-margin"
-        >
-          <Media greaterThanOrEqual="desktop">
-            <GridContainer spacing="large">
+        <div style={{ background: colors.blues.blue10 }}>
+          <Media className="content-margin" greaterThanOrEqual="desktop">
+            <GridContainer
+              spacing="large"
+              style={{ paddingTop: '6rem', paddingBottom: '6rem' }}
+            >
               {OpeningCards.map(openingCard => (
                 <GridItem small={6} key={openingCard.title + 'desktop'}>
                   <MediaCard
@@ -90,7 +90,7 @@ export const FrontPage = () => {
               ))}
             </GridContainer>
           </Media>
-          <Media at="mobile">
+          <Media at="mobile" className="content-margin">
             <GridContainer spacing="large" style={{ padding: '2rem 0' }}>
               {OpeningCards.map(openingCard => (
                 <GridItem small={12} key={openingCard.title + 'mobile'}>
