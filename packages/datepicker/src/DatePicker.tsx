@@ -126,6 +126,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   placeholder,
   className,
   readOnly,
+  dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
   id,
   ...rest
 }) => {
@@ -165,7 +166,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       selected={selectedDate}
       onChange={handleChange}
       showWeekNumbers={true}
-      dateFormat="dd.MM.yyyy"
+      dateFormat={dateFormat}
       showPopperArrow={false}
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
