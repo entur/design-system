@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.3...@entur/datepicker@0.8.4) (2021-05-26)
+
+### Bug Fixes
+
+- **datepicker:** improve defaults for dateformat prop ([da95ded](https://bitbucket.org/enturas/design-system/commits/da95ded77314aa1e929b550afaabc6dea4d3f37a))
+
 ## [0.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.2...@entur/datepicker@0.8.3) (2021-05-19)
 
 **Note:** Version bump only for package @entur/datepicker

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.11](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.10...@entur/table@4.3.11) (2021-05-26)
+
+### Bug Fixes
+
+- **header cell:** add support for forward ref ([e2a2eef](https://bitbucket.org/enturas/design-system/commits/e2a2eefc3c654b7f3038fdb5f74670b56c13f6fe))
+- **table:** add support for forward ref ([3d23e2a](https://bitbucket.org/enturas/design-system/commits/3d23e2afafd1b77d4f4d4e44296a6b98282b45c9))
+- **table body:** add support for forward ref ([b7b3721](https://bitbucket.org/enturas/design-system/commits/b7b37216eb105b48412575e6e1f03b0e6eee073e))
+- **table footer:** add support for forward ref ([794c1af](https://bitbucket.org/enturas/design-system/commits/794c1af48b0012fd5f726c6dca3d5b7d45771764))
+- **table head:** add support for forward ref ([b0a8941](https://bitbucket.org/enturas/design-system/commits/b0a8941aa88a009db1a19cf5871de5056c94cd60))
+- **table row:** add support for forward ref ([6fd802b](https://bitbucket.org/enturas/design-system/commits/6fd802be096294608d244bc2689a535622822977))
+
 ## [4.3.10](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.9...@entur/table@4.3.10) (2021-05-19)
 
 **Note:** Version bump only for package @entur/table
