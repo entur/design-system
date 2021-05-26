@@ -9,6 +9,13 @@ export type TableBodyProps = {
   [key: string]: any;
 };
 
-export const TableBody: React.FC<TableBodyProps> = ({ className, ...rest }) => (
-  <tbody className={classNames('eds-table__body', className)} {...rest} />
-);
+export const TableBody = React.forwardRef<
+  HTMLTableSectionElement,
+  TableBodyProps
+>(({ className, ...rest }, ref) => (
+  <tbody
+    className={classNames('eds-table__body', className)}
+    ref={ref}
+    {...rest}
+  />
+));
