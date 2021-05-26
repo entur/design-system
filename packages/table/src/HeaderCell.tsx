@@ -13,58 +13,67 @@ export type HeaderCellProps = {
   [key: string]: any;
 };
 
-export const HeaderCell: React.FC<HeaderCellProps> = ({
-  className,
-  children,
-  onClick,
-  name,
-  sortable = false,
-  sortConfig,
-  padding = 'default',
-  ...rest
-}) => {
-  const [isCurrentlySorted, setIsCurrentlySorted] = React.useState<boolean>(
-    false,
-  );
-  React.useEffect(() => {
-    setIsCurrentlySorted(sortConfig && name === sortConfig.key);
-  }, [sortConfig, name]);
-  let ariaSort = isCurrentlySorted ? sortConfig && sortConfig.order : 'none';
-  return (
-    <th
-      className={classNames('eds-table__header-cell', className, {
-        'eds-table__header-cell--sortable': sortable,
-        'eds-table__header-cell--padding-radio': padding === 'radio',
-        'eds-table__header-cell--padding-checkbox': padding === 'checkbox',
-        'eds-table__header-cell--padding-overflow-menu':
-          padding === 'overflow-menu',
-      })}
-      aria-sort={ariaSort}
-      {...rest}
-    >
-      {sortable ? (
-        <button
-          className="eds-table__header-cell-button"
-          type="button"
-          onClick={onClick}
-        >
-          {children}
-          {isCurrentlySorted && sortConfig.order === 'ascending' && (
-            <UpArrowIcon
-              size="16px"
-              className="eds-table__header-cell-button-icon"
-            />
-          )}
-          {isCurrentlySorted && sortConfig.order === 'descending' && (
-            <DownArrowIcon
-              size="16px"
-              className="eds-table__header-cell-button-icon"
-            />
-          )}
-        </button>
-      ) : (
-        children
-      )}
-    </th>
-  );
-};
+export const HeaderCell = React.forwardRef<
+  HTMLTableHeaderCellElement,
+  HeaderCellProps
+>(
+  (
+    {
+      className,
+      children,
+      onClick,
+      name,
+      sortable = false,
+      sortConfig,
+      padding = 'default',
+      ...rest
+    },
+    ref,
+  ) => {
+    const [isCurrentlySorted, setIsCurrentlySorted] = React.useState<boolean>(
+      false,
+    );
+    React.useEffect(() => {
+      setIsCurrentlySorted(sortConfig && name === sortConfig.key);
+    }, [sortConfig, name]);
+    let ariaSort = isCurrentlySorted ? sortConfig && sortConfig.order : 'none';
+    return (
+      <th
+        className={classNames('eds-table__header-cell', className, {
+          'eds-table__header-cell--sortable': sortable,
+          'eds-table__header-cell--padding-radio': padding === 'radio',
+          'eds-table__header-cell--padding-checkbox': padding === 'checkbox',
+          'eds-table__header-cell--padding-overflow-menu':
+            padding === 'overflow-menu',
+        })}
+        aria-sort={ariaSort}
+        ref={ref}
+        {...rest}
+      >
+        {sortable ? (
+          <button
+            className="eds-table__header-cell-button"
+            type="button"
+            onClick={onClick}
+          >
+            {children}
+            {isCurrentlySorted && sortConfig.order === 'ascending' && (
+              <UpArrowIcon
+                size="16px"
+                className="eds-table__header-cell-button-icon"
+              />
+            )}
+            {isCurrentlySorted && sortConfig.order === 'descending' && (
+              <DownArrowIcon
+                size="16px"
+                className="eds-table__header-cell-button-icon"
+              />
+            )}
+          </button>
+        ) : (
+          children
+        )}
+      </th>
+    );
+  },
+);
