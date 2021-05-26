@@ -16,24 +16,30 @@ export type TableProps = {
   children: React.ReactNode;
   [key: string]: any;
 };
-export const Table: React.FC<TableProps> = ({
-  className,
-  fixed = false,
-  spacing = 'default',
-  sortable = false,
-  ...rest
-}) => {
-  return (
-    <table
-      className={classNames(
-        'eds-table',
-        { 'eds-table--fixed': fixed },
-        { 'eds-table--middle': spacing === 'middle' },
-        { 'eds-table--small': spacing === 'small' },
-        { 'eds-table--sortable': sortable },
-        className,
-      )}
-      {...rest}
-    />
-  );
-};
+export const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  (
+    {
+      className,
+      fixed = false,
+      spacing = 'default',
+      sortable = false,
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <table
+        className={classNames(
+          'eds-table',
+          { 'eds-table--fixed': fixed },
+          { 'eds-table--middle': spacing === 'middle' },
+          { 'eds-table--small': spacing === 'small' },
+          { 'eds-table--sortable': sortable },
+          className,
+        )}
+        ref={ref}
+        {...rest}
+      />
+    );
+  },
+);
