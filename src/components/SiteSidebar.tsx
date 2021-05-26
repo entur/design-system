@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
 import React from 'react';
 import { SearchBar } from '~/components/SearchBar';
+import { Media } from '~/utils/MediaBreakpoint';
 import { usePersistedState } from './SettingsContext';
 import './SiteSidebar.scss';
 
@@ -97,6 +98,7 @@ function useSideMenuScroll<Type>(page: string) {
 export const SiteSidebar: React.FC<{
   className?: string;
   mobile?: boolean;
+  closeMenu?: () => void;
 }> = props => {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const currentDoc = useCurrentDoc();
@@ -118,30 +120,56 @@ export const SiteSidebar: React.FC<{
   };
 
   return (
-    <div
-      onScroll={handleScroll}
-      ref={menuRef}
-      className={classNames('site-sidebar-wrapper', props.className)}
-    >
-      <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
-        <Location>
-          {({ location }) =>
-            currentDoc.parent !== 'Universell utforming' ? (
-              <ComponentsSideNavigation
-                location={location}
-                menuItems={menuItems}
-              />
-            ) : (
-              <SimpleSideNavigation
-                location={location}
-                menuItems={menuItems}
-                mobile={props.mobile}
-              />
-            )
-          }
-        </Location>
-      </nav>
-    </div>
+    <>
+      <Media greaterThanOrEqual="desktop">
+        <div
+          onScroll={handleScroll}
+          ref={menuRef}
+          className={classNames('site-sidebar-wrapper', props.className)}
+        >
+          <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
+            <Location>
+              {({ location }) =>
+                currentDoc.parent !== 'Universell utforming' ? (
+                  <ComponentsSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                  />
+                ) : (
+                  <SimpleSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                    mobile={props.mobile}
+                  />
+                )
+              }
+            </Location>
+          </nav>
+        </div>
+      </Media>
+      <Media at="mobile">
+        <div className={classNames('site-sidebar-wrapper', props.className)}>
+          <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
+            <Location>
+              {({ location }) =>
+                currentDoc.parent !== 'Universell utforming' ? (
+                  <ComponentsSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                  />
+                ) : (
+                  <SimpleSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                    mobile={props.mobile}
+                  />
+                )
+              }
+            </Location>
+          </nav>
+        </div>
+      </Media>
+    </>
   );
 };
 

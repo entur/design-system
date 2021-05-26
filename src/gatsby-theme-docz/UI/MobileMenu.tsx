@@ -48,6 +48,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             Universell utforming
           </MobileNavItem>
         </div>
+        {!frontPage && (
+          <FloatingButton
+            size="medium"
+            className={classNames('mobile-nav-bar__menu--menu-button', {
+              'mobile-nav-bar__menu--menu-button-open': sidemenu,
+            })}
+            onClick={() => {
+              showSidemenu(!sidemenu);
+              rest.openMenu(!sidemenu);
+            }}
+            type="button"
+            aria-label="meny"
+          >
+            <MenuIcon />
+          </FloatingButton>
+        )}
         <SiteSidebar
           className={classNames('sidebar-mobile', {
             'sidebar-mobile--show': sidemenu,
@@ -55,20 +71,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           mobile
         />
       </Element>
-      {!frontPage && (
-        <FloatingButton
-          size="small"
-          className="mobile-nav-bar__menu--menu"
-          onClick={() => {
-            showSidemenu(!sidemenu);
-            rest.openMenu(!sidemenu);
-          }}
-          type="button"
-          aria-label="meny"
-        >
-          <MenuIcon />
-        </FloatingButton>
-      )}
     </>
   );
 };

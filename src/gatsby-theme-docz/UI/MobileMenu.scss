@@ -5,7 +5,7 @@
     display: flex;
     padding: 1rem 0;
     align-items: center;
-    &--menu {
+    &--menu-button {
       appearance: none;
       background-color: inherit;
       border: none;
@@ -13,10 +13,16 @@
       cursor: pointer;
       font-size: $font-sizes-extra-large2;
       padding: $space-extra-small $space-large;
+      transform: scale(1);
+      transition: transform $timings-medium ease-in-out;
+      &-open {
+        //Slide til venstre og opacity
+        transform: scale(0);
+      }
       &.eds-floating-button {
         position: absolute;
-        bottom: 1.5rem;
-        left: 1.5rem;
+        bottom: -75vh;
+        left: 2rem;
       }
       &:focus {
         outline: $outlines-focus;
@@ -65,7 +71,7 @@
 
 .sidebar-mobile {
   position: absolute;
-  top: 8.5rem;
+  top: 0;
   left: -100%;
   transition: left $timings-slow ease-in-out;
   z-index: $z-indexes-popover;

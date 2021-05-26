@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   min-height: 87vh;
   margin: $space-default;
-  margin-top: 2.5rem;
+  margin-top: 10rem;
   transition: max-width $timings-fast ease-out,
     margin-left $timings-fast ease-out;
 
@@ -63,6 +63,12 @@ body {
   }
   &--mobile {
     display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    &-not-frontpage {
+      background: white;
+    }
     @include for-desktop {
       display: none;
     }
