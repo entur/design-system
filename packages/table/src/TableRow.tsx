@@ -18,22 +18,24 @@ type TableRowProps = {
    * @default false
    */
   error?: boolean;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLTableRowElement>,
+  HTMLTableRowElement
+>;
 
-export const TableRow: React.FC<TableRowProps> = ({
-  className,
-  hover = false,
-  active = false,
-  error = false,
-  ...rest
-}) => (
-  <tr
-    className={classNames('eds-table__row', className, {
-      'eds-table__row--hover': hover,
-      'eds-table__row--active': active,
-      'eds-table__row--error': error,
-    })}
-    {...rest}
-  />
+export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
+  (
+    { className, hover = false, active = false, error = false, ...rest },
+    ref: React.Ref<HTMLTableRowElement>,
+  ) => (
+    <tr
+      className={classNames('eds-table__row', className, {
+        'eds-table__row--hover': hover,
+        'eds-table__row--active': active,
+        'eds-table__row--error': error,
+      })}
+      ref={ref}
+      {...rest}
+    />
+  ),
 );
