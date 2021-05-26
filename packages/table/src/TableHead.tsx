@@ -6,12 +6,18 @@ export type TableHeadProps = {
   children: React.ReactNode;
   /** Esktra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLTableSectionElement>,
+  HTMLTableSectionElement
+>;
 
-export const TableHead: React.FC<TableHeadProps> = props => (
+export const TableHead = React.forwardRef<
+  HTMLTableSectionElement,
+  TableHeadProps
+>(({ className, ...props }, ref) => (
   <thead
-    className={classNames('eds-table__head', props.className)}
+    className={classNames('eds-table__head', className)}
+    ref={ref}
     {...props}
   />
-);
+));
