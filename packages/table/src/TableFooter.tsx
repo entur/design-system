@@ -3,9 +3,12 @@ import React from 'react';
 export type TableFooterProps = {
   /** Tabellrader */
   children: React.ReactNode;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLTableSectionElement>,
+  HTMLTableSectionElement
+>;
 
-export const TableFooter: React.FC<TableFooterProps> = props => (
-  <tfoot {...props} />
-);
+export const TableFooter = React.forwardRef<
+  HTMLTableSectionElement,
+  TableFooterProps
+>(({ ...props }, ref) => <tfoot ref={ref} {...props} />);
