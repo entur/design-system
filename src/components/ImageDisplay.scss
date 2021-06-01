@@ -1,7 +1,8 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .border-wrapper {
-  border: $border-widths-default solid $colors-greys-grey70;
+  border: $border-widths-small solid $colors-greys-grey70;
+  border-radius: $border-widths-large;
   display: grid;
   gap: $space-default;
 }

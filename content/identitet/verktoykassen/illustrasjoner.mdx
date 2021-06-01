@@ -1,6 +1,6 @@
 ---
 name: Illustrasjoner
-description: Det er utviklet et eget illustrasjonsbibliotek for Entur i samarbeid med illustratør Sandra Blikås. Illustrasjonene skal kun brukes til Enturs offisielle produkter og er lisensert til bruk i våre digitale kanaler.
+description: Det er utviklet et eget illustrasjonsbibliotek for Entur i samarbeid med SDG. Illustrasjonene kan brukes på alle type flater i Entur.
 parent: Identitet
 route: /identitet/verktoykassen/illustrasjoner
 menu: Verktøykassen
@@ -8,40 +8,50 @@ order: 9
 ---
 
 import PageHeader from '~/components/PageHeader';
+import { GridContainer, GridItem } from '@entur/grid';
 import { ImageDisplay, BorderWrapper } from '~/components/ImageDisplay';
-import main from './illustrations/Hovedillustrasjon/Entur-onboarding.jpg';
+import main from './Illustrasjoner/Landskap/Main.png';
+import main2 from './Illustrasjoner/Landskap/Main_Frame.png';
 
-import landing1 from './illustrations/Landingssider/2250x580_Ruter & Tider.jpg';
-import landing2 from './illustrations/Landingssider/2250x580_Omsetning.jpg';
-import landing3 from './illustrations/Landingssider/2250x580_Statestikk og historikk.jpg';
-import landing4 from './illustrations/Landingssider/2250x580_Partner Dialog.jpg';
-import landing5 from './illustrations/Landingssider/2250x580_innstillinger og verktoy.jpg';
+import landing1 from './Illustrasjoner/Landskap/Landscape_1.png';
+import landing2 from './Illustrasjoner/Landskap/Landscape_2.png';
+import landing3 from './Illustrasjoner/Landskap/Landscape_3.png';
+import landing4 from './Illustrasjoner/Landskap/Landscape_4.png';
 
-import dyr1 from './illustrations/Ikoner/Sauer (Feil).jpg';
-import dyr2 from './illustrations/Ikoner/Piggsvin (Betaling).jpg';
-import dyr3 from './illustrations/Ikoner/Elg (404).jpg';
-import dyr4 from './illustrations/Ikoner/Ender.jpg';
-import dyr5 from './illustrations/Ikoner/Duer.jpg';
+import landing1frame from './Illustrasjoner/Landskap/Landscape_1_Frame.png';
+import landing2frame from './Illustrasjoner/Landskap/Landscape_2_Frame.png';
+import landing3frame from './Illustrasjoner/Landskap/Landscape_3_Frame.png';
+import landing4frame from './Illustrasjoner/Landskap/Landscape_4_Frame.png';
 
-import menneske1 from './illustrations/Ikoner/Snakkeboble gutt.jpg';
-import menneske2 from './illustrations/Ikoner/Snakkeboble jente.jpg';
-import menneske3 from './illustrations/Ikoner/Kontakt.jpg';
-import menneske4 from './illustrations/Ikoner/Vindu mann avis.jpg';
-import menneske5 from './illustrations/Ikoner/Vindu gutt.jpg';
-import menneske6 from './illustrations/Ikoner/Vindu dame.jpg';
-import menneske7 from './illustrations/Ikoner/Info.jpg';
-import menneske8 from './illustrations/Ikoner/Familie.jpg';
+import clock from './Illustrasjoner/Kvadrat/Clock.png';
+import doves from './Illustrasjoner/Kvadrat/Doves.png';
+import ducks from './Illustrasjoner/Kvadrat/Ducks.png';
+import goat from './Illustrasjoner/Kvadrat/Goat.png';
+import hedgehog from './Illustrasjoner/Kvadrat/Hedgehog.png';
+import leafs from './Illustrasjoner/Kvadrat/Leafs.png';
+import musk from './Illustrasjoner/Kvadrat/Musk.png';
+import sheep from './Illustrasjoner/Kvadrat/Sheep.png';
+import squirrel from './Illustrasjoner/Kvadrat/Squirrel.png';
 
-import landskap1 from './illustrations/Ikoner/Blader 1.jpg';
-import landskap2 from './illustrations/Ikoner/Blader 2 (Utsnitt).jpg';
-import landskap3 from './illustrations/Ikoner/Ballonger (Suksess).jpg';
-import landskap4 from './illustrations/Ikoner/Sikkerhet.jpg';
-import landskap5 from './illustrations/Ikoner/Check.jpg';
-import landskap6 from './illustrations/Ikoner/Posisjon.jpg';
+import clockCircle from './Illustrasjoner/Kvadrat/Clock-circle.png';
+import dovesCircle from './Illustrasjoner/Kvadrat/Doves-circle.png';
+import ducksCircle from './Illustrasjoner/Kvadrat/Ducks-circle.png';
+import goatCircle from './Illustrasjoner/Kvadrat/Goat-circle.png';
+import hedgehogCircle from './Illustrasjoner/Kvadrat/Hedgehog-circle.png';
+import leafsCircle from './Illustrasjoner/Kvadrat/Leafs-circle.png';
+import muskCircle from './Illustrasjoner/Kvadrat/Musk-circle.png';
+import sheepCircle from './Illustrasjoner/Kvadrat/Sheep-circle.png';
+import squirrelCircle from './Illustrasjoner/Kvadrat/Squirrel-circle.png';
 
 <PageHeader />
 
-Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge. Illustrasjonene er med på å menneskeliggjøre uttrykket til Enturs digitale flater. Illustrasjonsstilen tar utgangspunkt i norsk natur og landskap, og bygger videre på Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten.
+Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge.
+Illustrasjonsstilen tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten.
+Illustrasjonenes fremste oppgave er å myke opp og menneskeliggjøre uttrykket i våre digitale flater.
+
+Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
+Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt.
+Det er foreløpig ikke avklart om de animerte illustrasjonene skal legges ut her eller et annet sted.
 
 ## Hovedillustrasjon
 
@@ -51,54 +61,167 @@ Hovedillustrasjonen skal anvendes slik at det oppleves som brukerens første mø
   <ImageDisplay src={main} />
 </BorderWrapper>
 
-## Illustrasjon for landingssider
-
-Disse illustrasjonene kjennetegnes av et landskaps-format og brukes for å fremheve, visualisere og myke opp innholdet på en ellers teksttung side. Brukes hovedsakelig på landingssider på web. Disse skal helst dekke hele nettsidens fulle bredde og ikke settes inn i en to-kolonners grid.
+### Hovedillustrasjon med ramme
 
 <BorderWrapper>
-  <ImageDisplay src={landing1} />
-  <ImageDisplay src={landing2} />
-  <ImageDisplay src={landing3} />
-  <ImageDisplay src={landing4} />
-  <ImageDisplay src={landing5} />
+  <ImageDisplay src={main2} />
 </BorderWrapper>
 
-## Vignetter
+## Landskapsformat
+
+Disse illustrasjonene er spesielt tiltenkt landningssider på web.
+Illustrasjonene bidrar med å fremheve, visualisere og myke opp innholdet på en ellers teksttung side.
+Disse skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. i to-kolonners grid) skal det benyttes mindre utsnitt av landskapene.
+
+<GridContainer spacing="large">
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing1} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing2} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing3} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing4} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
+
+## Landskapsformat med ramme
+
+<GridContainer spacing="large">
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing1frame} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing2frame} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing3frame} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={12}>
+    <BorderWrapper>
+      <ImageDisplay src={landing4frame} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
+
+## Kvadratiske motiver
 
 De små illustrasjonene brukes primært på informasjonssider, modaler, infomeldinger, feilmeldinger og sider hvor det mangler innhold («empty states»).
 
-Vignettene brukes for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én vignett på en side bør de settes i en fler-kolonners grid.
+Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få.
+Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side bør de settes i et fler-kolonners grid.
 
-### Dyr
+<GridContainer spacing="extraLarge">
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={clock} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={doves} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={ducks} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={goat} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={hedgehog} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={leafs} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={musk} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={sheep} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={squirrel} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
 
-<BorderWrapper threeGrid>
-  <ImageDisplay src={dyr1} />
-  <ImageDisplay src={dyr2} />
-  <ImageDisplay src={dyr3} />
-  <ImageDisplay src={dyr4} />
-  <ImageDisplay src={dyr5} />
-</BorderWrapper>
+### Kvadratiske motiver med sirkelbakgrunn
 
-### Mennesker
-
-<BorderWrapper threeGrid>
-  <ImageDisplay src={menneske1} />
-  <ImageDisplay src={menneske2} />
-  <ImageDisplay src={menneske3} />
-  <ImageDisplay src={menneske4} />
-  <ImageDisplay src={menneske5} />
-  <ImageDisplay src={menneske6} />
-  <ImageDisplay src={menneske7} />
-  <ImageDisplay src={menneske8} />
-</BorderWrapper>
-
-### Landskap
-
-<BorderWrapper threeGrid>
-  <ImageDisplay src={landskap1} />
-  <ImageDisplay src={landskap2} />
-  <ImageDisplay src={landskap3} />
-  <ImageDisplay src={landskap4} />
-  <ImageDisplay src={landskap5} />
-  <ImageDisplay src={landskap6} />
-</BorderWrapper>
+<GridContainer spacing="extraLarge">
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={clockCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={dovesCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={ducksCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={goatCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={hedgehogCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={leafsCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={muskCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={sheepCircle} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={squirrelCircle} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
