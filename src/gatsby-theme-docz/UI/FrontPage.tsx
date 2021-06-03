@@ -14,7 +14,7 @@ import {
   UsersIcon,
 } from '@entur/icons';
 import { PrimaryButton } from '@entur/button/dist';
-import Kontakt from './Kontakt.jpg';
+import Kontakt from './Kontakt.png';
 import FrontPageImage from './FrontpageImage.png';
 import './FrontPage.scss';
 import { Media } from '~/utils/MediaBreakpoint';
@@ -22,7 +22,7 @@ import { Media } from '~/utils/MediaBreakpoint';
 export const FrontPage = () => {
   return (
     <>
-      <Contrast>
+      <Contrast className="front-page__top">
         <div className="content-margin">
           <Media greaterThanOrEqual="desktop">
             <div style={{ position: 'relative' }}>
@@ -70,85 +70,55 @@ export const FrontPage = () => {
             </div>
           </Media>
         </div>
-        <div style={{ background: colors.blues.blue10 }}>
-          <Media className="content-margin" greaterThanOrEqual="desktop">
-            <GridContainer
-              spacing="large"
-              style={{ paddingTop: '6rem', paddingBottom: '6rem' }}
-            >
-              {OpeningCards.map(openingCard => (
-                <GridItem small={6} key={openingCard.title + 'desktop'}>
-                  <MediaCard
-                    title={openingCard.title}
-                    description={openingCard.description}
-                    category={openingCard.category}
-                    style={{ background: colors.blues.blue20 }}
+      </Contrast>
+      <div className="front-page__blue-cards">
+        <div className="content-margin">
+          <div className="front-page__second-intro">
+            <Heading2 margin="top">Alt du trenger i ett system</Heading2>
+            <Paragraph>
+              Utforsk de mest populære verktøyene du kan bruke for ditt prosjekt
+            </Paragraph>
+          </div>
+          <Media greaterThanOrEqual="desktop">
+            <GridContainer spacing="large">
+              {OverviewCards.map(card => (
+                <GridItem
+                  small={12}
+                  medium={6}
+                  large={4}
+                  key={card.title + 'desktop'}
+                >
+                  <NavigationCard
+                    title={card.title}
+                    titleIcon={card.icon}
                     as={Link}
-                    to={openingCard.to}
-                  ></MediaCard>
+                    to={card.to}
+                    style={{ background: 'white' }}
+                  >
+                    {card.description}
+                  </NavigationCard>
                 </GridItem>
               ))}
             </GridContainer>
           </Media>
-          <Media at="mobile" className="content-margin">
-            <GridContainer spacing="large" style={{ padding: '2rem 0' }}>
-              {OpeningCards.map(openingCard => (
-                <GridItem small={12} key={openingCard.title + 'mobile'}>
+          <Media at="mobile">
+            <GridContainer spacing="large">
+              {OverviewCards.map(card => (
+                <GridItem small={12} key={card.title + 'mobile'}>
                   <NavigationCard
-                    title={openingCard.title}
-                    style={{ background: colors.blues.blue20 }}
+                    title={card.title}
                     as={Link}
-                    to={openingCard.to}
+                    to={card.to}
                     compact
+                    style={{ background: 'white' }}
                   ></NavigationCard>
                 </GridItem>
               ))}
             </GridContainer>
           </Media>
         </div>
-      </Contrast>
+      </div>
       <div className="content-margin">
-        <div className="front-page__second-intro">
-          <Heading2 margin="top">Alt du trenger i ett system</Heading2>
-          <Paragraph>
-            Utforsk de mest populære verktøyene du kan bruke for ditt prosjekt
-          </Paragraph>
-        </div>
-        <Media greaterThanOrEqual="desktop">
-          <GridContainer spacing="large">
-            {OverviewCards.map(card => (
-              <GridItem
-                small={12}
-                medium={6}
-                large={4}
-                key={card.title + 'desktop'}
-              >
-                <NavigationCard
-                  title={card.title}
-                  titleIcon={card.icon}
-                  as={Link}
-                  to={card.to}
-                >
-                  {card.description}
-                </NavigationCard>
-              </GridItem>
-            ))}
-          </GridContainer>
-        </Media>
-        <Media at="mobile">
-          <GridContainer spacing="large">
-            {OverviewCards.map(card => (
-              <GridItem small={12} key={card.title + 'mobile'}>
-                <NavigationCard
-                  title={card.title}
-                  as={Link}
-                  to={card.to}
-                  compact
-                ></NavigationCard>
-              </GridItem>
-            ))}
-          </GridContainer>
-        </Media>
         <div className="front-page__last-section">
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img src={Kontakt} width="377px" alt="" />
@@ -223,23 +193,6 @@ type FrontpageCards = {
   titleIcon?: React.ReactNode;
   [key: string]: any;
 };
-
-const OpeningCards: FrontpageCards[] = [
-  {
-    title: 'For designere',
-    description:
-      'Onboarding for deg som bruker designsystemt for første gang. Utforsk og lær om vår designprosess, brukergrupper, brukertesting og hvilke verktøy vi bruker for å designe digitale løsninger.',
-    category: 'Kom i gang',
-    to: '/kom-i-gang/for-utviklere/komponentbibliotek',
-  },
-  {
-    title: 'For utviklere',
-    description:
-      'En onboardingsside med introduksjon om hvordan du kommer i gang med å bruke komponentbiblioteket, installerer pakker og hvordan du kan bidra til designssytemet.',
-    category: 'Kom i gang',
-    to: '/kom-i-gang/for-designere/designprosess',
-  },
-];
 
 const OverviewCards: FrontpageCards[] = [
   {

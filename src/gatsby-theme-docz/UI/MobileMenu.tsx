@@ -26,27 +26,37 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <>
       <Element as="header" className={className}>
-        <div className="mobile-nav-bar__menu">
-          {frontPage ? (
-            <img src={logo} alt="Entur logo" style={{ paddingLeft: '24px' }} />
-          ) : (
-            <Link to="/">
+        <div
+          className={classNames('mobile-nav-bar', {
+            'mobile-nav-bar--not-frontpage': !frontPage,
+          })}
+        >
+          <div className="mobile-nav-bar__menu">
+            {frontPage ? (
               <img
-                src={logoDark}
+                src={logo}
                 alt="Entur logo"
                 style={{ paddingLeft: '24px' }}
               />
-            </Link>
-          )}
-          <SettingsPanel />
-        </div>
-        <div className="mobile-nav-bar__links">
-          <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
-          <MobileNavItem to="/identitet">Identitet</MobileNavItem>
-          <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
-          <MobileNavItem to="/universell-utforming">
-            Universell utforming
-          </MobileNavItem>
+            ) : (
+              <Link to="/">
+                <img
+                  src={logoDark}
+                  alt="Entur logo"
+                  style={{ paddingLeft: '24px' }}
+                />
+              </Link>
+            )}
+            <SettingsPanel />
+          </div>
+          <div className="mobile-nav-bar__links">
+            <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
+            <MobileNavItem to="/identitet">Identitet</MobileNavItem>
+            <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
+            <MobileNavItem to="/universell-utforming">
+              Universell utforming
+            </MobileNavItem>
+          </div>
         </div>
         {!frontPage && (
           <FloatingButton

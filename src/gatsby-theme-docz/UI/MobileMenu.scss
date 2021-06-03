@@ -1,6 +1,12 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .mobile-nav-bar {
+  position: absolute;
+  width: 100%;
+  background: $colors-brand-blue;
+  &--not-frontpage {
+    background: white;
+  }
   &__menu {
     display: flex;
     padding: 1rem 0;
@@ -76,6 +82,7 @@
   transition: left $timings-slow ease-in-out;
   z-index: $z-indexes-popover;
   height: 100%;
+  width: 80%;
   &--show {
     left: 0;
   }
