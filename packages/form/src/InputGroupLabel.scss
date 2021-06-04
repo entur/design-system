@@ -8,15 +8,23 @@ $label-top-large: 0.5rem;
   font-size: $font-sizes-medium;
   line-height: $font-sizes-large;
   padding: 0;
-  padding-left: $space-default;
+  margin-left: $space-default;
 }
 
 @mixin labelPositionTop {
   top: $label-top;
   font-size: $font-sizes-small;
   line-height: $font-sizes-small;
+  height: 10px;
   padding: 0;
-  padding-left: $space-default;
+  margin-left: $space-default;
+  .eds-textarea__label & {
+    box-shadow: 0px -1px 2px 4px $colors-brand-white;
+    background: $colors-brand-white;
+    width: calc(
+      100% - #{$space-default} - #{$space-default} - 4px
+    ); // ~36px = margin-left + scrollbar-width + box-shadow blur
+  }
 }
 
 .eds-input-group {
@@ -46,6 +54,8 @@ $label-top-large: 0.5rem;
     line-height: $font-sizes-large;
     height: $space-extra-large3;
     padding: $space-default;
+    padding-left: 0;
+    margin-left: $space-default;
     top: -$border-widths-medium;
     transition: top $timings-medium ease-in-out,
       font-size $timings-medium ease-in-out, padding $timings-medium ease-in-out,

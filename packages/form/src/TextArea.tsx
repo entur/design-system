@@ -56,6 +56,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelId={textAreaId}
         feedback={feedback}
         labelTooltip={labelTooltip}
+        labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
       >
         <TextAreaBase
