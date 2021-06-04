@@ -112,7 +112,17 @@ Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake serve
 Den har ikke støtte for søk, men godtar en (asynkron) funksjon for å hente data fra en ekstern kilde, slik som `<Dropdown />`.
 
 <Playground>
-  <NativeDropdown items={dropdownItems} />
+  {() => {
+    const [value, setValue] = React.useState();
+    return (
+      <NativeDropdown
+        label="Stoppesteder"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        items={dropdownItems}
+      />
+    );
+  }}
 </Playground>
 
 ## Retningslinjer for bruk
