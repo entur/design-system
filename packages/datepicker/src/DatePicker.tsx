@@ -63,6 +63,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       locale = 'nb',
       weekLabel = 'uke',
       prepend = <DateIcon />,
+      disabled,
       ...rest
     },
     ref,
@@ -78,6 +79,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         feedback={feedback}
         variant={variant}
         ref={ref}
+        disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
       >
         <DatePickerBase
@@ -89,6 +91,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
           ariaLabelledBy={datepickerId}
           locale={locale}
           weekLabel={weekLabel}
+          disabled={disabled}
           {...rest}
         />
       </BaseFormControl>
