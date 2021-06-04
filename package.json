@@ -109,5 +109,9 @@
     "gatsby-plugin-mdx": "1.2.4",
     "@types/react": "16.9.56"
   },
-  "relativeDependencies": {}
+  "relativeDependencies": {},
+  "volta": {
+    "node": "14.17.0",
+    "yarn": "1.22.0"
+  }
 }
