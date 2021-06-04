@@ -39,6 +39,9 @@
     font-size: $font-sizes-large;
     line-height: 2.5rem;
   }
+  &____input-container .eds-form-control {
+    padding-right: $space-extra-small;
+  }
   &__navigation {
     &:focus {
       outline: $outlines-focus;
