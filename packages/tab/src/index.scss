@@ -153,5 +153,8 @@
   &:focus {
     outline: $outlines-focus;
     outline-offset: $outline-offsets-focus;
+    .eds-contrast & {
+      outline: $outlines-focus-contrast;
+    }
   }
 }
