@@ -66,6 +66,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       selectedTime = null,
       onChange,
       placeholder = 'Velg tid',
+      disabled,
       className,
       style,
       label,
@@ -95,11 +96,13 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
         feedback={feedback}
         disableLabelAnimation={disableLabelAnimation}
         className="eds-timepicker-form-control"
+        disabled={disabled}
         prepend={
           <TimePickerArrowButton
             direction="left"
             tabIndex={-1}
             onClick={(e: React.MouseEvent) => onLeftArrowClick(selectedTime, e)}
+            disabled={disabled}
           />
         }
       >
@@ -110,12 +113,14 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
           className={className}
           locale={locale}
           ariaLabelledBy={timepickerId}
+          disabled={disabled}
           {...rest}
         />
         <TimePickerArrowButton
           direction="right"
           tabIndex={-1}
           onClick={(e: React.MouseEvent) => onRightArrowClick(selectedTime, e)}
+          disabled={disabled}
         />
       </BaseFormControl>
     );
