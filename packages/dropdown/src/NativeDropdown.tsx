@@ -79,6 +79,7 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
       feedback={feedback}
       labelId={nativeDropdownId}
       disableLabelAnimation={disableLabelAnimation}
+      isFilled={true}
     >
       <select
         aria-invalid={variant === 'error'}
