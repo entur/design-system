@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.1...@entur/dropdown@2.0.2) (2021-06-04)
+
+### Bug Fixes
+
+- **native dropdown:** fix label position bug ([b68fc8f](https://bitbucket.org/enturas/design-system/commits/b68fc8fffd94be986b3988cd2ff32b9c1a8268dd))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.0...@entur/dropdown@2.0.1) (2021-05-19)
 
 ### Bug Fixes

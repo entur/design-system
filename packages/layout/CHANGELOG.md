@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.10.4...@entur/layout@2.0.0) (2021-06-04)
+
+### Features
+
+- add new component notification badge ([738d1db](https://bitbucket.org/enturas/design-system/commits/738d1db64ed9bd99881aea76fcbf77624265eee8))
+- add new component status badge ([f9757ba](https://bitbucket.org/enturas/design-system/commits/f9757ba14e57ea5467c4770c06f4db30570de276))
+- **badge:** add type prop to component ([2aba830](https://bitbucket.org/enturas/design-system/commits/2aba830991cf8267534f8a2feaf89c903ac3b2e6))
+- **bullet badge:** add new component bullet badge ([c6d0bce](https://bitbucket.org/enturas/design-system/commits/c6d0bcea0558576b41829277fa5c2036fb2caaf0))
+
+### BREAKING CHANGES
+
+- **badge:** select type after your need, or use the new badge components directly
+
 ## [1.10.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.10.3...@entur/layout@1.10.4) (2021-05-19)
 
 ### Bug Fixes

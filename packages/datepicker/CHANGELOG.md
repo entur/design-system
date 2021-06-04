@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.4...@entur/datepicker@0.8.5) (2021-06-04)
+
+### Bug Fixes
+
+- **datepicker:** fix disabled prop ([13952f7](https://bitbucket.org/enturas/design-system/commits/13952f7ea1c7acdc922057ffd6011890fd78d4bb))
+- **datepicker:** reduce internal padding ([1b0d79c](https://bitbucket.org/enturas/design-system/commits/1b0d79cc1dd4ce5ca10c77af4e0635900bda4f54))
+- **timepicker:** fix disabled prop ([ea40de6](https://bitbucket.org/enturas/design-system/commits/ea40de6eaaa829ede67070e9504da376d0c41123))
+- **timepicker:** reduce internal padding ([0e19c8d](https://bitbucket.org/enturas/design-system/commits/0e19c8d58d8f88b7d7b1a7763b5c4c59fbb4d319))
+
 ## [0.8.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.3...@entur/datepicker@0.8.4) (2021-05-26)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.3...@entur/form@4.4.4) (2021-06-04)
+
+### Bug Fixes
+
+- **input group label:** spread additional props on label element ([7e356d4](https://bitbucket.org/enturas/design-system/commits/7e356d4dabeed0863f585f4d12384f9308b7d571))
+- **text area:** add white background on label ([57b9a6a](https://bitbucket.org/enturas/design-system/commits/57b9a6adfa32cf4cdcfd0048b20e3de991f2f0be))
+
 ## [4.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.2...@entur/form@4.4.3) (2021-05-19)
 
 **Note:** Version bump only for package @entur/form

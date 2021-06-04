@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.23](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.22...@entur/tab@0.4.23) (2021-06-04)
+
+### Bug Fixes
+
+- **tab:** fix tab panel focus styling in contrast ([001db19](https://bitbucket.org/enturas/design-system/commits/001db19c15d641a42cd5995b17005399acda513b))
+
 ## [0.4.22](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.21...@entur/tab@0.4.22) (2021-04-23)
 
 ### Bug Fixes
