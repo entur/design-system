@@ -8,10 +8,10 @@ npmPackage: layout
 tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
-import { Badge } from '@entur/layout';
+import { Badge, NotificationBadge, StatusBadge } from '@entur/layout';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 import { SecondarySquareButton, NegativeButton } from '@entur/button';
-import { Heading3, Paragraph } from '@entur/typography';
+import { Heading3, Heading2, Paragraph } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 import { TextField, TextArea } from '@entur/form';
 import { Props } from 'docz';
@@ -54,17 +54,20 @@ et forfalt eller betalt beløp, utdatert oppgjør eller avvik i en liste eller t
           </Tab>
           <Tab style={{ position: 'relative', minWidth: '12rem' }}>
             Merknader
-            <Badge
+            <NotificationBadge
               variant="primary"
               style={{ position: 'absolute', top: 0 }}
               max={10}
             >
               1
-            </Badge>
+            </NotificationBadge>
           </Tab>
         </TabList>
         <TabPanels>
-          <TabPanel></TabPanel>
+          <TabPanel>
+            <Heading2 as="span">Dine ordre</Heading2>
+            <StatusBadge variant="neutral">Ingen nye ordre</StatusBadge>
+          </TabPanel>
           <TabPanel></TabPanel>
           <TabPanel></TabPanel>
         </TabPanels>
