@@ -10,9 +10,11 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { DateIcon } from '@entur/icons';
+import { IconButton } from '@entur/button';
+import { CalenderIcon, DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
+import { Tooltip } from '@entur/tooltip';
 import { useOnMount, useRandomId } from '@entur/utils';
 registerLocale('nb', nb);
 
@@ -72,7 +74,7 @@ export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <BaseFormControl
         style={style}
-        prepend={prepend}
+        // prepend={prepend}
         readOnly={readOnly}
         label={label}
         labelId={datepickerId}
@@ -173,6 +175,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       onChange={handleChange}
       showWeekNumbers={true}
       dateFormat={dateFormat}
+      onInputClick={() => console.log('asdassd')}
       showPopperArrow={false}
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
@@ -180,7 +183,60 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       id={id}
       //@ts-ignore
       popperModifiers={POPPER_MODIFIERS}
+      customInput={<DatePickerButton />}
       {...rest}
     />
   );
 };
+
+type Props = {
+  onClick?: any;
+  value?: any;
+  [key: string]: any;
+};
+// Props fra customInput i react-datepicker
+// value: inputValue,
+// onBlur: this.handleBlur,
+// onChange: this.handleChange,
+// onClick: this.onInputClick,
+// onFocus: this.handleFocus,
+// onKeyDown: this.onInputKeyDown,
+// id: this.props.id,
+// name: this.props.name,
+// autoFocus: this.props.autoFocus,
+// placeholder: this.props.placeholderText,
+// disabled: this.props.disabled,
+// autoComplete: this.props.autoComplete,
+// className: classnames(customInput.props.className, className),
+// title: this.props.title,
+// readOnly: this.props.readOnly,
+// required: this.props.required,
+// tabIndex: this.props.tabIndex,
+// "aria-describedby": this.props.ariaDescribedBy,
+// "aria-invalid": this.props.ariaInvalid,
+// "aria-labelledby": this.props.ariaLabelledBy,
+// "aria-required": this.props.ariaRequired,
+
+const DatePickerButton = React.forwardRef<HTMLInputElement, Props>(
+  ({ value, onClick, onFocus, onKeyDown, ...rest }, ref) => {
+    console.log(onFocus);
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+        }}
+      >
+        {/* <span>{value}</span> */}
+        <input value={value} onClick={onClick} {...rest} ref={ref} />
+        <Tooltip placement="top" content="Åpne kalender">
+          <IconButton onKeyDown={onKeyDown} onClick={onClick}>
+            <CalenderIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
+    );
+  },
+);
