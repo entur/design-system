@@ -7,6 +7,9 @@
   &--not-frontpage {
     background: white;
   }
+  &--open-sidemenu {
+    position: fixed;
+  }
   &__menu {
     display: flex;
     padding: 1rem 0;
@@ -27,7 +30,7 @@
       }
       &.eds-floating-button {
         position: absolute;
-        bottom: -75vh;
+        bottom: -95vh;
         left: 2rem;
       }
       &:focus {

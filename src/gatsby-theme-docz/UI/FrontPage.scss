@@ -11,7 +11,10 @@
 }
 
 .front-page__top {
-  margin-top: 10rem;
+  margin-top: 8rem;
+  @include for-desktop {
+    margin-top: 0;
+  }
 }
 
 .front-page__top-image {

@@ -1,3 +1,5 @@
+import { FloatingButton } from '@entur/button/dist';
+import { LeftArrowIcon } from '@entur/icons/dist';
 import {
   SideNavigation,
   SideNavigationGroup,
@@ -99,6 +101,7 @@ export const SiteSidebar: React.FC<{
   className?: string;
   mobile?: boolean;
   closeMenu?: () => void;
+  sideMenu?: boolean;
 }> = props => {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const currentDoc = useCurrentDoc();
@@ -166,6 +169,15 @@ export const SiteSidebar: React.FC<{
                 )
               }
             </Location>
+            <FloatingButton
+              aria-label="Lukk sidemeny"
+              onClick={() => props.closeMenu && props.closeMenu()}
+              className={classNames('site-sidebar__close-menu', {
+                'site-sidebar__close-menu--open': props.sideMenu,
+              })}
+            >
+              <LeftArrowIcon />
+            </FloatingButton>
           </nav>
         </div>
       </Media>

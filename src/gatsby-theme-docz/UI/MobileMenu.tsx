@@ -29,6 +29,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         <div
           className={classNames('mobile-nav-bar', {
             'mobile-nav-bar--not-frontpage': !frontPage,
+            'mobile-nav-bar--open-sidemenu': sidemenu,
           })}
         >
           <div className="mobile-nav-bar__menu">
@@ -79,6 +80,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             'sidebar-mobile--show': sidemenu,
           })}
           mobile
+          sideMenu={sidemenu}
+          closeMenu={() => {
+            showSidemenu(false);
+            rest.openMenu(false);
+          }}
         />
       </Element>
     </>

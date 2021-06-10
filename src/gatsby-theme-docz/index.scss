@@ -66,8 +66,12 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: $z-indexes-sticky;
     &-not-frontpage {
       background: white;
+    }
+    &-open-sidemenu {
+      position: static;
     }
     @include for-desktop {
       display: none;
