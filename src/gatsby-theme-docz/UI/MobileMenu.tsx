@@ -3,7 +3,9 @@ import { Link } from 'docz';
 import { Location } from '@reach/router';
 import { Contrast } from '@entur/layout/src';
 import { MenuIcon } from '@entur/icons';
+import { FloatingButton } from '@entur/button';
 import classNames from 'classnames';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
 import './MobileMenu.scss';
@@ -22,42 +24,75 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const [sidemenu, showSidemenu] = React.useState(false);
   const Element = frontPage ? Contrast : 'div';
+  console.log(sidemenu, 'MobileMenu');
+
   return (
-    <Element as="header" className={className}>
-      <div className="mobile-nav-bar__menu">
-        <button
-          className="mobile-nav-bar__menu--menu"
-          onClick={() => {
-            showSidemenu(!sidemenu);
-            rest.openMenu(!sidemenu);
-          }}
-          type="button"
+    <>
+      <Element as="header" className={className}>
+        <div
+          className={classNames('mobile-nav-bar', {
+            'mobile-nav-bar--not-frontpage': !frontPage,
+            'mobile-nav-bar--open-sidemenu': sidemenu,
+          })}
         >
-          <MenuIcon />
-        </button>
-        {frontPage ? (
-          <img src={logo} alt="Entur logo" />
-        ) : (
-          <img src={logoDark} alt="Entur logo" />
+          <div className="mobile-nav-bar__menu">
+            {frontPage ? (
+              <img
+                src={logo}
+                alt="Entur logo"
+                style={{ paddingLeft: '24px' }}
+              />
+            ) : (
+              <Link to="/">
+                <img
+                  src={logoDark}
+                  alt="Entur logo"
+                  style={{ paddingLeft: '24px' }}
+                />
+              </Link>
+            )}
+            <SettingsPanel />
+          </div>
+          <div className="mobile-nav-bar__links">
+            <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
+            <MobileNavItem to="/identitet">Identitet</MobileNavItem>
+            <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
+            <MobileNavItem to="/universell-utforming">
+              Universell utforming
+            </MobileNavItem>
+          </div>
+        </div>
+        {!frontPage && (
+          <FloatingButton
+            size="medium"
+            className={classNames('mobile-nav-bar__menu--menu-button', {
+              'mobile-nav-bar__menu--menu-button-open': sidemenu,
+            })}
+            onClick={() => {
+              showSidemenu(true);
+              rest.openMenu(true);
+            }}
+            type="button"
+            aria-label="meny"
+          >
+            <MenuIcon />
+          </FloatingButton>
         )}
-        <SettingsPanel />
-      </div>
-      <div className="mobile-nav-bar__links">
-        <MobileNavItem to="/">Hjem</MobileNavItem>
-        <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
-        <MobileNavItem to="/identitet">Identitet</MobileNavItem>
-        <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
-        <MobileNavItem to="/universell-utforming">
-          Universell utforming
-        </MobileNavItem>
-      </div>
-      <SiteSidebar
-        className={classNames('sidebar-mobile', {
-          'sidebar-mobile--show': sidemenu,
-        })}
-        mobile
-      />
-    </Element>
+
+        <SiteSidebar
+          key={1}
+          className={classNames('sidebar-mobile', {
+            'sidebar-mobile--show': sidemenu,
+          })}
+          mobile
+          sideMenu={sidemenu}
+          closeMenu={() => {
+            showSidemenu(false);
+            rest.openMenu(false);
+          }}
+        />
+      </Element>
+    </>
   );
 };
 

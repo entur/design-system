@@ -1,14 +1,21 @@
+import { FloatingButton } from '@entur/button/dist';
+import { LeftArrowIcon } from '@entur/icons/dist';
 import {
   SideNavigation,
   SideNavigationGroup,
   SideNavigationItem,
 } from '@entur/menu';
+import { Heading2 } from '@entur/typography/dist';
 import { Location, WindowLocation } from '@reach/router';
 import classNames from 'classnames';
 import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
 import React from 'react';
 import { SearchBar } from '~/components/SearchBar';
+import { Media } from '~/utils/MediaBreakpoint';
 import { usePersistedState } from './SettingsContext';
+import logo from '~/components/logoDark.svg';
+import { motion, AnimatePresence } from 'framer-motion';
+import { colors, space } from '@entur/tokens';
 import './SiteSidebar.scss';
 
 const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
@@ -97,12 +104,23 @@ function useSideMenuScroll<Type>(page: string) {
 export const SiteSidebar: React.FC<{
   className?: string;
   mobile?: boolean;
+  closeMenu?: () => void;
+  sideMenu?: boolean;
 }> = props => {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const currentDoc = useCurrentDoc();
   const [scrollPosition, setScrollPosition] = useSideMenuScroll<number>(
     currentDoc.parent,
   );
+  const [openSidebar, setOpenSidebar] = React.useState(false);
+
+  React.useEffect(() => {
+    if (props.mobile && props.sideMenu) {
+      setScrollPosition(menuRef?.current?.scrollTop ?? 0);
+      window.scrollTo(0, 0);
+      setOpenSidebar(props.sideMenu);
+    }
+  }, [props.sideMenu]);
 
   const menuItems =
     useMenus({
@@ -118,30 +136,141 @@ export const SiteSidebar: React.FC<{
   };
 
   return (
-    <div
-      onScroll={handleScroll}
-      ref={menuRef}
-      className={classNames('site-sidebar-wrapper', props.className)}
-    >
-      <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
-        <Location>
-          {({ location }) =>
-            currentDoc.parent !== 'Universell utforming' ? (
-              <ComponentsSideNavigation
-                location={location}
-                menuItems={menuItems}
+    <>
+      <Media greaterThanOrEqual="desktop">
+        <div
+          onScroll={handleScroll}
+          ref={menuRef}
+          className={classNames('site-sidebar-wrapper', props.className)}
+        >
+          <nav aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}>
+            <Location>
+              {({ location }) =>
+                currentDoc.parent !== 'Universell utforming' ? (
+                  <ComponentsSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                  />
+                ) : (
+                  <SimpleSideNavigation
+                    location={location}
+                    menuItems={menuItems}
+                    mobile={props.mobile}
+                  />
+                )
+              }
+            </Location>
+          </nav>
+        </div>
+      </Media>
+      <Media at="mobile">
+        <AnimatePresence>
+          {openSidebar && (
+            <motion.div
+              variants={{
+                right: { opacity: 0 },
+                visible: { opacity: 1 },
+                left: { opacity: 0 },
+              }}
+              initial="left"
+              animate="visible"
+              exit="right"
+              transition={{ ease: 'easeOut', duration: 0.25 }}
+            >
+              <div
+                onClick={() => setOpenSidebar(false)}
+                className={classNames('site-sidebar__backdrop')}
               />
-            ) : (
-              <SimpleSideNavigation
-                location={location}
-                menuItems={menuItems}
-                mobile={props.mobile}
-              />
-            )
-          }
-        </Location>
-      </nav>
-    </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence
+          onExitComplete={() => {
+            props.closeMenu && props.closeMenu();
+          }}
+        >
+          {openSidebar && (
+            <motion.div
+              variants={{
+                right: { opacity: 1, x: '-80%' },
+                visible: { opacity: 1, x: 0 },
+                left: { opacity: 1, x: '-80%' },
+              }}
+              initial="left"
+              animate="visible"
+              exit="right"
+              transition={{ ease: 'easeOut', duration: 0.25 }}
+            >
+              <div
+                key={1}
+                className={classNames('site-sidebar-wrapper', props.className)}
+              >
+                <nav
+                  aria-label={`Navigasjon for seksjonen "${currentDoc.parent}"`}
+                >
+                  <Location>
+                    {({ location }) => (
+                      <div
+                        style={{
+                          paddingTop: space.extraLarge,
+                          paddingBottom: space.extraLarge,
+                          background: colors.greys.grey90,
+                        }}
+                      >
+                        <Link
+                          to="/"
+                          className="top-navigation__logo"
+                          style={{
+                            marginLeft: space.extraLarge,
+                          }}
+                        >
+                          <img
+                            src={logo}
+                            height="20px"
+                            width="64px"
+                            alt="Entur logo"
+                          />
+                        </Link>
+                        <Heading2
+                          margin="none"
+                          style={{
+                            marginLeft: space.extraLarge,
+                            marginTop: space.extraLarge2,
+                          }}
+                        >
+                          {currentDoc.parent}
+                        </Heading2>
+                        {currentDoc.parent !== 'Universell utforming' ? (
+                          <ComponentsSideNavigation
+                            location={location}
+                            menuItems={menuItems}
+                          />
+                        ) : (
+                          <SimpleSideNavigation
+                            location={location}
+                            menuItems={menuItems}
+                            mobile={props.mobile}
+                          />
+                        )}
+                      </div>
+                    )}
+                  </Location>
+                  <FloatingButton
+                    aria-label="Lukk sidemeny"
+                    onClick={() => setOpenSidebar(false)}
+                    className={classNames('site-sidebar__close-menu', {
+                      'site-sidebar__close-menu--open': props.sideMenu,
+                    })}
+                  >
+                    <LeftArrowIcon />
+                  </FloatingButton>
+                </nav>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </Media>
+    </>
   );
 };
 
@@ -253,11 +382,13 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
   const menuSize: 'small' | 'medium' = isComponents ? 'small' : 'medium';
   return (
     <>
-      <SearchBar
-        className="site-sitebar__searchbar"
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-      />
+      <Media greaterThanOrEqual="desktop">
+        <SearchBar
+          className="site-sitebar__searchbar"
+          searchText={searchText}
+          onSearchTextChange={setSearchText}
+        />
+      </Media>
       <SideNavigation size={menuSize}>
         {filteredMenuItems
           .filter(topLevelMenu => topLevelMenu.menu)

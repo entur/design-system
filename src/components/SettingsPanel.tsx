@@ -54,6 +54,7 @@ const SettingsPanel: React.FC = () => {
         onDismiss={() => setOpen(false)}
         title="Innstillinger"
         size="small"
+        className="settings-panel__modal"
       >
         <form onSubmit={() => setOpen(false)}>
           <Dropdown

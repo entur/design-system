@@ -1,8 +1,15 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
 .brukertesting {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  gap: 0;
+  row-gap: $space-small;
+  @include for-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-large;
+  }
   .brukertesting-overskrift {
     margin-top: 0;
     margin-bottom: $space-small;
@@ -11,8 +18,5 @@
   &-ulemper {
     background-color: $colors-greys-grey80;
     padding: $space-large;
-  }
-  &-fordeler {
-    margin-right: $space-large;
   }
 }

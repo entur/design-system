@@ -4,12 +4,35 @@
 .front-page {
   &-footer {
     background: $colors-greys-grey90;
+    &__mobile-item {
+      @include for-desktop {
+        display: none;
+      }
+    }
+    &__lead {
+      margin: 0 !important;
+      @include for-desktop {
+        width: 69%;
+      }
+    }
+
     &__grid-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding-top: 4.5rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      @include for-desktop {
+        padding-top: 4.5rem;
+        padding-bottom: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .eds-grid__container {
+        gap: 2rem;
+        @include for-desktop;
+      }
     }
     &__link {
       margin-bottom: 1rem;

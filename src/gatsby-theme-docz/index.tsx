@@ -46,7 +46,7 @@ const App: React.FC = ({ children }) => {
             </SkipToContent>
             {isFrontPage ? (
               <>
-                <SEO title="Velkommen" />
+                <SEO title="Velkommen til Enturs designsystem" />
                 <Media at="mobile">
                   <MobileMenu
                     className="ui-menu--mobile"
@@ -71,7 +71,12 @@ const App: React.FC = ({ children }) => {
                 <SEO />
                 <Media at="mobile">
                   <MobileMenu
-                    className="ui-menu--mobile"
+                    className={classNames(
+                      'ui-menu--mobile ui-menu--mobile-not-frontpage',
+                      {
+                        'ui-menu--mobile-open-sidemenu': openMobileMenu,
+                      },
+                    )}
                     openMenu={setOpenMobileMenu}
                   />
                 </Media>

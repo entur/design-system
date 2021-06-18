@@ -3,9 +3,18 @@
 
 .content-margin {
   max-width: 1328px;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   @include for-desktop {
+    padding: 0 1rem;
     margin: 0 auto;
+  }
+}
+
+.front-page__top {
+  margin-top: 8rem;
+  @include for-desktop {
+    margin-top: 0;
+    padding-bottom: 3rem;
   }
 }
 
@@ -15,10 +24,41 @@
     display: block;
   }
   @include for-large-desktop {
-    width: 66%;
+    width: 60%;
   }
   position: absolute;
-  top: 2rem;
-  right: 0;
+  top: 4rem;
+  right: 0rem;
   display: none;
+}
+
+.front-page__blue-cards {
+  background: $colors-blues-blue80;
+  padding-bottom: 3rem;
+  @include for-desktop {
+    padding-bottom: 7.5rem;
+  }
+}
+
+.front-page__second-intro {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  background: $colors-blues-blue80;
+  @include for-desktop {
+    text-align: center;
+    padding-top: 6.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.front-page__last-section {
+  max-width: 784px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  @include for-desktop {
+    margin-top: 8.5rem;
+    margin-bottom: 12.5rem;
+  }
 }

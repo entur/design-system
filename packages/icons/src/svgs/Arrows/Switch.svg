@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-<path id="Icon-Fill" fill-rule="evenodd" clip-rule="evenodd" fill="#181C56" d="M12.2681589,8.1636362l2.545454,2.545455
-	c0.2236643,0.2236633,0.2460308,0.5723982,0.0670996,0.8210754l-0.0670996,0.0788784l-2.545454,2.545454l-0.8999538-0.8999538
-	l1.459795-1.4595451L4.818182,11.7954311v-1.272727l8.0088177-0.0007038L11.3682051,9.06359L12.2681589,8.1636362z M3.7318411,1.8
-	L4.6317954,2.699954L3.171,4.1589999l8.6471825,0.0000682v1.272727L3.171,5.4310002l1.4607954,1.459909L3.7318411,7.790863
-	L1.1863866,5.2454085C0.9627227,5.0217447,0.9403563,4.6730103,1.1192874,4.4243326l0.0670992-0.0788779L3.7318411,1.8z"/>
+	 width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#181C56;}
+</style>
+<path class="st0" d="M12.3,14.2l-0.9-0.9l1.5-1.5l-8.6,0v-1.3l8.6,0l-1.5-1.5l0.9-0.9l2.5,2.5c0.2,0.2,0.2,0.6,0.1,0.8l-0.1,0.1
+	L12.3,14.2z"/>
+<path id="Icon-Fill" class="st0" d="M3.7,1.8l0.9,0.9L3.2,4.2l8.6,0v1.3l-8.6,0l1.5,1.5L3.7,7.8L1.2,5.2C1,5,0.9,4.7,1.1,4.4
+	l0.1-0.1L3.7,1.8z"/>
 </svg>
