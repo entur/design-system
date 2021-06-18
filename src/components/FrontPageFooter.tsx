@@ -14,8 +14,10 @@ import Divider from './Divider';
 import logo from './EnturLogo.svg';
 import { Media } from '~/utils/MediaBreakpoint';
 import './FrontPageFooter.scss';
+import { colors, space } from '@entur/tokens/dist';
 
 function FrontPageFooter() {
+  const year = new Date();
   return (
     <div className="front-page-footer">
       <GridContainer
@@ -102,21 +104,31 @@ function FrontPageFooter() {
         </GridItem>
       </GridContainer>
       <Media greaterThanOrEqual="desktop">
-        <Divider></Divider>
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             maxWidth: '1328px',
             margin: '0 auto',
+            borderTop: `1px solid ${colors.greys.grey70}`,
+            padding: '1rem 0',
           }}
         >
           <div style={{ padding: '2rem 0' }}>
             <img src={logo} width="104px" alt="Entur sin logo" />
           </div>
           <div style={{ float: 'right', padding: '2rem 0' }}>
-            <Label>Entur.no</Label>
-            <Label>© 2020 Entur AS</Label>
+            <Label
+              style={{
+                borderRight: `1px solid ${colors.greys.grey70}`,
+                paddingRight: space.small,
+              }}
+            >
+              Entur.no
+            </Label>
+            <Label style={{ paddingLeft: space.small }}>
+              © {year.getFullYear()} Entur AS
+            </Label>
           </div>
         </div>
       </Media>

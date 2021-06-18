@@ -4,15 +4,13 @@
 .front-page {
   &-footer {
     background: $colors-greys-grey90;
-    // max-width: 1328px;
-    // padding: 0 1.5rem;
     &__mobile-item {
       @include for-desktop {
         display: none;
       }
     }
     &__lead {
-      margin: none;
+      margin: 0 !important;
       @include for-desktop {
         width: 69%;
       }
@@ -27,7 +25,9 @@
       padding-bottom: 2rem;
       @include for-desktop {
         padding-top: 4.5rem;
-        padding-bottom: 0;
+        padding-bottom: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
       }
       .eds-grid__container {
         gap: 2rem;

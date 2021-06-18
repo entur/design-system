@@ -49,6 +49,7 @@ body {
   &--hidden {
     overflow: hidden;
     position: fixed;
+    z-index: -1;
   }
 }
 .site-content main {
@@ -67,6 +68,7 @@ body {
     top: 0;
     width: 100%;
     z-index: $z-indexes-sticky;
+    transition: position $timings-medium ease-in-out $timings-medium;
     &-not-frontpage {
       background: white;
     }

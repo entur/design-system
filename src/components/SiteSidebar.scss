@@ -33,11 +33,25 @@
   }
   &-wrapper .eds-floating-button.site-sidebar__close-menu {
     position: fixed !important;
-    top: 79vh;
-    right: 14%;
+    top: 90vh;
+    right: 0;
     opacity: 0;
+    transition: right $timings-slow ease-in-out,
+      opacity $timings-slow ease-in-out;
     &--open {
       opacity: 1;
+      right: calc(20% - 24px);
+    }
+  }
+  &__backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    opacity: 1;
+    transition: opacity $timings-medium ease-in-out;
+    &--inactive {
+      opacity: 0;
     }
   }
 }

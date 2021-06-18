@@ -5,6 +5,7 @@ import { Contrast } from '@entur/layout/src';
 import { MenuIcon } from '@entur/icons';
 import { FloatingButton } from '@entur/button';
 import classNames from 'classnames';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
 import './MobileMenu.scss';
@@ -23,6 +24,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const [sidemenu, showSidemenu] = React.useState(false);
   const Element = frontPage ? Contrast : 'div';
+  console.log(sidemenu, 'MobileMenu');
+
   return (
     <>
       <Element as="header" className={className}>
@@ -66,8 +69,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               'mobile-nav-bar__menu--menu-button-open': sidemenu,
             })}
             onClick={() => {
-              showSidemenu(!sidemenu);
-              rest.openMenu(!sidemenu);
+              showSidemenu(true);
+              rest.openMenu(true);
             }}
             type="button"
             aria-label="meny"
@@ -75,7 +78,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             <MenuIcon />
           </FloatingButton>
         )}
+
         <SiteSidebar
+          key={1}
           className={classNames('sidebar-mobile', {
             'sidebar-mobile--show': sidemenu,
           })}

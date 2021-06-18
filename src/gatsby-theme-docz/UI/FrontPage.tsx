@@ -121,7 +121,7 @@ export const FrontPage = () => {
       <div className="content-margin">
         <div className="front-page__last-section">
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={Kontakt} width="377px" alt="" />
+            <img src={Kontakt} width="66%" alt="" />
           </div>
           <Heading2>Vil du bidra?</Heading2>
           <Paragraph>
