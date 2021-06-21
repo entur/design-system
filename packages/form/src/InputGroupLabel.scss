@@ -19,7 +19,7 @@ $label-top-large: 0.5rem;
   padding: 0;
   margin-left: $space-default;
   .eds-textarea__label & {
-    box-shadow: 0px -1px 2px 4px $colors-brand-white;
+    box-shadow: 0px -2px 0px 4px $colors-brand-white;
     background: $colors-brand-white;
     width: calc(
       100% - #{$space-default} - #{$space-default} - 4px
