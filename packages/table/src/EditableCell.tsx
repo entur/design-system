@@ -29,7 +29,7 @@ export const EditableCell: React.FC<EditableCellProps> = ({
   outlined = false,
   ...rest
 }) => {
-  return feedback ? (
+  return (
     <VariantProvider variant={variant}>
       <DataCell
         className={classNames(
@@ -41,24 +41,15 @@ export const EditableCell: React.FC<EditableCellProps> = ({
         )}
         {...rest}
       >
-        <Tooltip placement="bottom" content={feedback} variant="error">
+        <Tooltip
+          disableHoverListener={!feedback}
+          disableFocusListener={!feedback}
+          placement="bottom"
+          content={feedback || undefined}
+          variant={feedback ? 'error' : undefined}
+        >
           {children}
         </Tooltip>
-      </DataCell>
-    </VariantProvider>
-  ) : (
-    <VariantProvider variant={variant}>
-      <DataCell
-        className={classNames(
-          'eds-editable-cell',
-          {
-            'eds-editable-cell--outlined': outlined,
-          },
-          className,
-        )}
-        {...rest}
-      >
-        {children}
       </DataCell>
     </VariantProvider>
   );
