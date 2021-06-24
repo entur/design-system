@@ -34,9 +34,9 @@
     "@entur/tokens": "^3.1.0",
     "@entur/typography": "^1.6.6",
     "@entur/utils": "^0.4.1",
-    "@reach/dialog": "^0.12.1",
-    "@types/reach__dialog": "^0.1.0",
-    "classnames": "^2.2.6",
-    "react-focus-lock": "^2.2.1"
+    "@reach/dialog": "^0.15.0",
+    "@types/reach__dialog": "^0.4.0",
+    "classnames": "^2.3.1",
+    "react-focus-lock": "^2.5.1"
   }
 }
