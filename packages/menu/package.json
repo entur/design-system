@@ -30,8 +30,8 @@
     "@entur/tokens": "^3.1.0",
     "@entur/typography": "^1.6.6",
     "@entur/utils": "^0.4.1",
-    "@reach/menu-button": "^0.12.1",
-    "classnames": "^2.2.6"
+    "@reach/menu-button": "^0.15.1",
+    "classnames": "^2.3.1"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
