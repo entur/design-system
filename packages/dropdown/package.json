@@ -35,7 +35,7 @@
     "@entur/tokens": "^3.1.0",
     "@entur/tooltip": "^2.4.20",
     "@entur/utils": "^0.4.1",
-    "classnames": "^2.2.6",
-    "downshift": "^6.0.13"
+    "classnames": "^2.3.1",
+    "downshift": "^6.1.3"
   }
 }
