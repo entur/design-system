@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@entur/utils": "^0.4.1",
-    "@types/classnames": "^2.2.9",
-    "classnames": "^2.2.6",
+    "@types/classnames": "^2.3.1",
+    "classnames": "^2.3.1",
     "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
