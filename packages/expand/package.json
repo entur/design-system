@@ -31,8 +31,8 @@
     "@entur/tokens": "^3.1.0",
     "@entur/typography": "^1.6.6",
     "@entur/utils": "^0.4.1",
-    "classnames": "^2.2.6",
-    "react-collapse": "^5.0.0"
+    "classnames": "^2.3.1",
+    "react-collapse": "^5.1.0"
   },
   "devDependencies": {
     "@types/react-collapse": "^5.0.0"
