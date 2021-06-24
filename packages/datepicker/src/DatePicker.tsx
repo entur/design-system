@@ -116,12 +116,15 @@ type DatePickerBaseProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
-const POPPER_MODIFIERS = {
-  offset: {
-    enabled: true,
-    offset: '-32, 0',
+const POPPER_MODIFIERS = [
+  {
+    name: 'offset',
+    options: {
+      enabled: true,
+      offset: [-32, 0],
+    },
   },
-};
+];
 
 const DatePickerBase: React.FC<DatePickerBaseProps> = ({
   selectedDate,
@@ -175,6 +178,7 @@ const DatePickerBase: React.FC<DatePickerBaseProps> = ({
       popperClassName="eds-datepicker__popper"
       readOnly={readOnly}
       id={id}
+      //@ts-ignore
       popperModifiers={POPPER_MODIFIERS}
       {...rest}
     />
