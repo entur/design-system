@@ -97,6 +97,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
     setShowTooltip(isOpen);
   }, [isOpen]);
 
+  React.useEffect(() => {
+    if (!content) {
+      setShowTooltip(false);
+    }
+  }, [content]);
+
   let popperPlacement = placement as PopperPlacementProps;
   if (placement.includes('-')) {
     if (placement.includes('right')) {
