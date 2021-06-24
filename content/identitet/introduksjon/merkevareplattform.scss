@@ -1,0 +1,37 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+
+.merkevare {
+  &__grid-container {
+    gap: 1rem;
+  }
+  &__blue-box {
+    background: $colors-blues-blue80;
+    padding: 48px 48px;
+  }
+  &__slogan {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .eds-h2::after {
+      content: '';
+      display: block;
+      bottom: $space-default;
+      height: 0.25rem; // 3px in rem
+      width: $space-extra-large2;
+      margin: 0 auto;
+      opacity: 1;
+      background: $colors-brand-coral;
+    }
+  }
+  &__lofte {
+    margin-left: 38px;
+    width: 50%;
+    padding-top: $space-large;
+    &--header {
+      font-weight: $font-weights-heading;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+---
+name: Hva vi gjør
+description: Entur er en nasjonal, konkurransenøytral aktør med tre spennende oppdrag.
+route: /kom-i-gang/hva-vi-gjor
+parent: Kom i gang
+menu: Introduksjon
+order: 2
+---
+
+import PageHeader from '~/components/PageHeader';
+import { HvaViGjor } from '~/components/HvaViGjor';
+import { GridItem, GridContainer } from '@entur/grid';
+import Regjeringen from './Regjeringen.png';
+import './hva-vi-gjor.scss';
+
+<PageHeader />
+
+<HvaViGjor></HvaViGjor>
+
+## Sektorpolitiske mål
+
+<GridContainer spacing="medium">
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-image"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    <img src={Regjeringen} height="56px" />
+  </GridItem>
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-text"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    Enklere reisehverdag og økt konkurranseevne for næringslivet
+  </GridItem>
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-text"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    Mer for pengene
+  </GridItem>
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-text"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    Effektiv bruk av ny teknologi
+  </GridItem>
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-text"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    Nullvisjon for drepte og hardt skadde
+  </GridItem>
+  <GridItem
+    className="hva-vi-gjor__goal hva-vi-gjor__goal-text"
+    small={6}
+    medium={4}
+    large={4}
+  >
+    Bidra til oppfyllelse av Norges klima- og miljømål
+  </GridItem>
+</GridContainer>
