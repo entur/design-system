@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "3.6.4",
+  "version": "3.6.5",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
@@ -23,13 +23,13 @@
     "lint": "tsdx lint"
   },
   "dependencies": {
-    "@entur/button": "^2.6.0",
-    "@entur/expand": "^3.3.0",
-    "@entur/icons": "^2.0.1",
-    "@entur/layout": "^2.0.0",
+    "@entur/button": "^2.6.1",
+    "@entur/expand": "^3.3.1",
+    "@entur/icons": "^2.0.2",
+    "@entur/layout": "^2.0.1",
     "@entur/tokens": "^3.1.0",
-    "@entur/typography": "^1.6.6",
-    "@entur/utils": "^0.4.1",
+    "@entur/typography": "^1.6.7",
+    "@entur/utils": "^0.4.2",
     "@reach/menu-button": "^0.15.1",
     "classnames": "^2.3.1"
   },

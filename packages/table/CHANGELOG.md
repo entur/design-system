@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.13](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.12...@entur/table@4.3.13) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([e5c719c](https://bitbucket.org/enturas/design-system/commits/e5c719cc9146d06acca1c7f286d093064f71d6cb))
+- **editablecell:** conditionally show tooltip instead of entire tree ([2b4a302](https://bitbucket.org/enturas/design-system/commits/2b4a302f7369944956569f5a5ec4d742d53b5eea))
+
 ## [4.3.12](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.11...@entur/table@4.3.12) (2021-06-04)
 
 **Note:** Version bump only for package @entur/table

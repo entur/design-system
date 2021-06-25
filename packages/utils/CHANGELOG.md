@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.1...@entur/utils@0.4.2) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([80b9175](https://bitbucket.org/enturas/design-system/commits/80b9175b193d1154aa4ee6977c765e2c19b73415))
+
 ## [0.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.0...@entur/utils@0.4.1) (2021-02-17)
 
 ### Bug Fixes

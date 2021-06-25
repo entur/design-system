@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.0.0...@entur/layout@2.0.1) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([8757f55](https://bitbucket.org/enturas/design-system/commits/8757f551ea84321b1fec788636cef6912ba42af8))
+
 # [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@1.10.4...@entur/layout@2.0.0) (2021-06-04)
 
 ### Features

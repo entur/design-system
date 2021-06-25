@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@2.0.1...@entur/icons@2.0.2) (2021-06-25)
+
+### Bug Fixes
+
+- **switch:** make icon symmetric ([057053c](https://bitbucket.org/enturas/design-system/commits/057053cbb816278e77882a589f6785428baf3f17))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@2.0.0...@entur/icons@2.0.1) (2021-05-05)
 
 ### Bug Fixes

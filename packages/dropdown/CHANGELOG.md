@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.2...@entur/dropdown@2.0.3) (2021-06-25)
+
+### Bug Fixes
+
+- **dropdown:** improve internal prop usage, better support for testing ([b4982a9](https://bitbucket.org/enturas/design-system/commits/b4982a933807382bc956fac4224e32306ef3ad61))
+- update dependencies ([0834b3a](https://bitbucket.org/enturas/design-system/commits/0834b3a1f4268460958d003926330e69af34c132))
+
 ## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.1...@entur/dropdown@2.0.2) (2021-06-04)
 
 ### Bug Fixes

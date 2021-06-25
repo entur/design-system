@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.3.12",
+  "version": "4.3.13",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -27,9 +27,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/expand": "^3.3.0",
-    "@entur/form": "^4.4.4",
-    "@entur/utils": "^0.4.1",
+    "@entur/expand": "^3.3.1",
+    "@entur/form": "^4.4.5",
+    "@entur/utils": "^0.4.2",
     "@types/lodash.get": "^4.4.6",
     "classnames": "^2.3.1",
     "lodash.get": "^4.4.2"

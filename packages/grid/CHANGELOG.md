@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.5...@entur/grid@0.3.6) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([a49ee42](https://bitbucket.org/enturas/design-system/commits/a49ee4289a6ad56a9b799e1c766ea461667ddced))
+
 ## [0.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.4...@entur/grid@0.3.5) (2021-05-05)
 
 ### Bug Fixes

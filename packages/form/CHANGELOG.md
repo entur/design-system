@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.4...@entur/form@4.4.5) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([d150f64](https://bitbucket.org/enturas/design-system/commits/d150f6439167f96a758902f45913cd9cc2b94db8))
+- **text area:** adjust label background placement ([3961dd7](https://bitbucket.org/enturas/design-system/commits/3961dd776e6a0c5443f59655c54fb61766a61c19))
+
 ## [4.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.3...@entur/form@4.4.4) (2021-06-04)
 
 ### Bug Fixes

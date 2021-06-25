@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.6.0...@entur/button@2.6.1) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([8b7e866](https://bitbucket.org/enturas/design-system/commits/8b7e8667a99df305ecbaefb0daebf7b8074f86e7))
+
 # [2.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.5.2...@entur/button@2.6.0) (2021-05-05)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.0...@entur/expand@3.3.1) (2021-06-25)
+
+### Bug Fixes
+
+- update dependencies ([a937757](https://bitbucket.org/enturas/design-system/commits/a9377575fed93796a626e50c753da1bb2283335b))
+
 # [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.2.29...@entur/expand@3.3.0) (2021-05-05)
 
 ### Features
