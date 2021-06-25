@@ -19,7 +19,6 @@ type BaseDropdownProps = {
   style?: { [key: string]: any };
   listStyle?: { [key: string]: any };
   isFilled?: boolean;
-  labelId: string;
   disableLabelAnimation?: boolean;
   [key: string]: any;
 };
@@ -42,6 +41,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   const { getLabelProps } = useDownshift();
   return (
     <div className="eds-dropdown-wrapper">
+      {/* @ts-ignore */}
       <BaseFormControl
         append={
           <Appendix
@@ -55,7 +55,6 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
         label={label}
         isFilled={isFilled}
         labelProps={getLabelProps()}
-        labelId={labelId}
         disableLabelAnimation={disableLabelAnimation}
         {...rest}
       >

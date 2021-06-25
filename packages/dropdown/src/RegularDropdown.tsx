@@ -13,7 +13,6 @@ type RegularDropdownProps = {
   selectOnTab?: boolean;
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
-  labelId: string;
   disableLabelAnimation?: boolean;
   [key: string]: any;
 };
@@ -25,8 +24,10 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   listStyle,
   items,
   label,
-  labelId,
   disableLabelAnimation,
+  loading,
+  loadingText,
+  className,
   ...rest
 }) => {
   const {
@@ -44,10 +45,11 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       listStyle={listStyle}
       items={items}
       label={label}
-      labelId={labelId}
       isFilled={selectedItem ? true : placeholder.length !== 0}
       disableLabelAnimation={disableLabelAnimation}
-      {...rest}
+      loading={loading}
+      loadingText={loadingText}
+      className={className}
     >
       <button
         {...getToggleButtonProps({
@@ -55,7 +57,6 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
           style: { textAlign: 'left' },
           disabled,
           type: 'button',
-          'aria-labelledby': labelId,
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
@@ -89,6 +90,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
               !isOpen && openMenu();
             }
           },
+          ...rest,
         })}
       >
         {selectedItem ? selectedItem.label : placeholder}

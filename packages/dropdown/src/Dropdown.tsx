@@ -9,7 +9,6 @@ import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
-import { useRandomId } from '@entur/utils';
 
 type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
@@ -72,7 +71,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   feedback,
   items,
   label,
-  labelTooltip,
   loadingText,
   onChange = () => {},
   placeholder,
@@ -102,8 +100,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
       : normalizedItems.find(item => value === item.value) || null;
 
   const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
-  const searchAbleProps = searchable ? { itemFilter: itemFilter } : {};
-  const dropdownId = useRandomId('eds-dropdown');
+  const searchAbleProps = searchable
+    ? { itemFilter: itemFilter, name: rest.name, 'data-cy': rest['data-cy'] }
+    : { name: rest.name, 'data-cy': rest['data-cy'] };
   return (
     <DownshiftProvider
       selectedItem={selectedItem}
@@ -115,12 +114,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       style={style}
       {...rest}
     >
-      <DropdownInputGroup
-        labelTooltip={labelTooltip}
-        feedback={feedback}
-        variant={variant}
-        labelId={dropdownId}
-      >
+      <DropdownInputGroup feedback={feedback} variant={variant}>
         <RenderedDropdown
           label={label}
           items={normalizedItems}
@@ -134,7 +128,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
           openOnFocus={openOnFocus}
           listStyle={listStyle}
           clearable={clearable}
-          labelId={dropdownId}
           disableLabelAnimation={disableLabelAnimation}
           {...searchAbleProps}
         />

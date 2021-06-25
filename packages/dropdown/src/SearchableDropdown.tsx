@@ -51,7 +51,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
   itemFilter = (item: NormalizedDropdownItemType, inputValue: string | null) =>
     LowerCaseFilterTest(item, inputValue),
   label,
-  labelId,
   disableLabelAnimation,
   ...rest
 }) => {
@@ -80,7 +79,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       listStyle={listStyle}
       clearable={clearable}
       label={label}
-      labelId={labelId}
       isFilled={selectedItem ? true : false}
       disableLabelAnimation={disableLabelAnimation}
     >
@@ -89,7 +87,6 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
           disabled,
           readOnly,
           className: 'eds-form-control eds-dropdown__input',
-          'aria-labelledby': labelId,
           onKeyDown: e => {
             if (selectOnTab && e.key === 'Tab') {
               selectHighlightedItem();
