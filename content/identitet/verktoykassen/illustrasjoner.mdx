@@ -43,6 +43,12 @@ import muskCircle from './Illustrasjoner/Kvadrat/Musk-circle.png';
 import sheepCircle from './Illustrasjoner/Kvadrat/Sheep-circle.png';
 import squirrelCircle from './Illustrasjoner/Kvadrat/Squirrel-circle.png';
 
+import City from './Illustrasjoner/Annet/City.png';
+import Humans from './Illustrasjoner/Annet/Humans.png';
+import Onboarding from './Illustrasjoner/Annet/Onboarding.png';
+import Train1 from './Illustrasjoner/Annet/Train1.png';
+import Train2 from './Illustrasjoner/Annet/Train2.png';
+
 <PageHeader />
 
 Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge.
@@ -121,12 +127,14 @@ Disse skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. 
   </GridItem>
 </GridContainer>
 
-## Kvadratiske motiver
+## Kvadratiske motiv
 
 De små illustrasjonene brukes primært på informasjonssider, modaler, infomeldinger, feilmeldinger og sider hvor det mangler innhold («empty states»).
 
 Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få.
 Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side bør de settes i et fler-kolonners grid.
+
+### Dyremotiv
 
 <GridContainer spacing="extraLarge">
   <GridItem small={6} medium={4}>
@@ -176,7 +184,7 @@ Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i 
   </GridItem>
 </GridContainer>
 
-### Kvadratiske motiver med sirkelbakgrunn
+### Dyremotiv med sirkelbakgrunn
 
 <GridContainer spacing="extraLarge">
   <GridItem small={6} medium={4}>
@@ -222,6 +230,41 @@ Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i 
   <GridItem small={6} medium={4}>
     <BorderWrapper>
       <ImageDisplay src={squirrelCircle} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
+
+### Landskapsmotiv
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={City} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={Onboarding} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={Train2} />
+    </BorderWrapper>
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={Humans} />
+    </BorderWrapper>
+  </GridItem>
+</GridContainer>
+
+### Transportmotiv
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={6} medium={4}>
+    <BorderWrapper>
+      <ImageDisplay src={Train1} />
     </BorderWrapper>
   </GridItem>
 </GridContainer>

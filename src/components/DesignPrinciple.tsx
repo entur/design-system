@@ -17,7 +17,12 @@ export const DesignPrinciple: React.FC<DesignPrincipleProps> = ({
   description,
 }) => {
   return (
-    <GridItem small={12} medium={4} className="design-principle__container">
+    <GridItem
+      small={12}
+      medium={6}
+      large={4}
+      className="design-principle__container"
+    >
       <div className="design-principle__number">{number}.</div>
       <div className="design-principle__icon">{icon}</div>
       <Heading3 className="design-principle__title">{title} </Heading3>

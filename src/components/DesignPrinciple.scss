@@ -6,6 +6,10 @@
     background: $colors-blues-blue80;
     padding: $space-large;
   }
+  &__number {
+    font-size: $font-sizes-extra-large2;
+    color: $colors-blues-blue40;
+  }
   &__icon {
     background: $colors-brand-white;
     border-radius: 50%;
