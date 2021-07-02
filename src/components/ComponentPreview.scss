@@ -1,0 +1,15 @@
+.component-preview {
+  &__image-wrapper {
+    padding: 1rem 1rem 0 1rem;
+    img {
+      width: 100%;
+      filter: grayscale(50%);
+      transition: filter ease-in-out 0.3s;
+    }
+  }
+  &:hover {
+    img {
+      filter: grayscale(0%);
+    }
+  }
+}
