@@ -121,6 +121,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         popperClassName="eds-datepicker__popper"
         readOnly={readOnly}
         id={id}
+        //@ts-ignore  improper typings from react-datepicker
         popperModifiers={POPPER_MODIFIERS}
         customInput={
           <DatePickerInput
