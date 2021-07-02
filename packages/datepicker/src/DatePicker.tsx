@@ -10,7 +10,6 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { IconButton } from '@entur/button';
 import { CalenderIcon, DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
@@ -48,76 +47,6 @@ export type DatePickerProps = {
    */
   prepend?: React.ReactNode;
 } & Omit<ReactDatePickerProps, 'selected'>;
-
-export const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
-  (
-    {
-      selectedDate = null,
-      onChange,
-      placeholder = 'Velg dato',
-      className,
-      style,
-      readOnly,
-      label,
-      feedback,
-      variant,
-      disableLabelAnimation = false,
-      locale = 'nb',
-      weekLabel = 'uke',
-      prepend = <DateIcon />,
-      disabled,
-      ...rest
-    },
-    ref,
-  ) => {
-    const datepickerId = useRandomId('eds-datepicker');
-    return (
-      <BaseFormControl
-        style={style}
-        // prepend={prepend}
-        readOnly={readOnly}
-        label={label}
-        labelId={datepickerId}
-        feedback={feedback}
-        variant={variant}
-        ref={ref}
-        disabled={disabled}
-        disableLabelAnimation={disableLabelAnimation}
-      >
-        <DatePickerBase
-          className={className}
-          selectedDate={selectedDate}
-          onChange={onChange}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          ariaLabelledBy={datepickerId}
-          locale={locale}
-          weekLabel={weekLabel}
-          disabled={disabled}
-          {...rest}
-        />
-      </BaseFormControl>
-    );
-  },
-);
-
-type DatePickerBaseProps = {
-  /** Hva som er den valgte datoen */
-  selectedDate: Date | null;
-  /** Kalles når datoen/tiden endres */
-  onChange: (
-    date: Date | null,
-    event: React.SyntheticEvent<any, Event>,
-  ) => void;
-  /** Placeholder om ingen dato er valgt
-   * @default "Velg dato"
-   */
-  placeholder?: string;
-  /** Ekstra klassenavn */
-  className?: string;
-  [key: string]: any;
-} & ReactDatePickerProps;
-
 const POPPER_MODIFIERS = [
   {
     name: 'offset',
@@ -128,66 +57,86 @@ const POPPER_MODIFIERS = [
   },
 ];
 
-const DatePickerBase: React.FC<DatePickerBaseProps> = ({
-  selectedDate,
-  onChange,
-  placeholder,
-  className,
-  readOnly,
-  dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
-  id,
-  ...rest
-}) => {
-  const {
-    isFilled: isDatepickerFilled,
-    setFilled: setFiller,
-  } = useInputGroupContext();
+export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
+  (
+    {
+      selectedDate = null,
+      onChange,
+      placeholder = 'Velg dato',
+      className,
+      style,
+      readOnly,
+      disableLabelAnimation = false,
+      locale = 'nb',
+      weekLabel = 'uke',
+      prepend = <DateIcon />,
+      disabled,
+      dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
+      variant,
+      label,
+      ...rest
+    },
+    ref,
+  ) => {
+    const id = useRandomId('eds-datepicker');
+    const {
+      isFilled: isDatepickerFilled,
+      setFilled: setFiller,
+    } = useInputGroupContext();
 
-  useOnMount(() => {
-    if (selectedDate) {
-      setFiller && !isDatepickerFilled && setFiller(true);
-    }
-  });
+    useOnMount(() => {
+      if (selectedDate) {
+        setFiller && !isDatepickerFilled && setFiller(true);
+      }
+    });
 
-  React.useEffect(() => {
-    if (selectedDate) {
-      setFiller && !isDatepickerFilled && setFiller(true);
-    } else {
-      setFiller && isDatepickerFilled && setFiller(false);
-    }
-  }, [selectedDate, setFiller, isDatepickerFilled]);
+    React.useEffect(() => {
+      if (selectedDate) {
+        setFiller && !isDatepickerFilled && setFiller(true);
+      } else {
+        setFiller && isDatepickerFilled && setFiller(false);
+      }
+    }, [selectedDate, setFiller, isDatepickerFilled]);
 
-  const handleChange = (date: any, event: any) => {
-    if (date) {
-      setFiller && !isDatepickerFilled && setFiller(true);
-    } else {
-      setFiller && isDatepickerFilled && setFiller(false);
-    }
-    if (onChange) {
-      onChange(date, event);
-    }
-  };
-  return (
-    <ReactDatepicker
-      className={classNames('eds-form-control', className)}
-      calendarClassName="eds-datepicker__calender"
-      selected={selectedDate}
-      onChange={handleChange}
-      showWeekNumbers={true}
-      dateFormat={dateFormat}
-      onInputClick={() => console.log('asdassd')}
-      showPopperArrow={false}
-      placeholderText={placeholder}
-      popperClassName="eds-datepicker__popper"
-      readOnly={readOnly}
-      id={id}
-      //@ts-ignore
-      popperModifiers={POPPER_MODIFIERS}
-      customInput={<DatePickerButton />}
-      {...rest}
-    />
-  );
-};
+    const handleChange = (date: any, event: any) => {
+      if (date) {
+        setFiller && !isDatepickerFilled && setFiller(true);
+      } else {
+        setFiller && isDatepickerFilled && setFiller(false);
+      }
+      if (onChange) {
+        onChange(date, event);
+      }
+    };
+    return (
+      <ReactDatepicker
+        className={classNames('eds-form-control', className)}
+        calendarClassName="eds-datepicker__calender"
+        selected={selectedDate}
+        onChange={handleChange}
+        showWeekNumbers={true}
+        dateFormat={dateFormat}
+        showPopperArrow={false}
+        placeholderText={placeholder}
+        popperClassName="eds-datepicker__popper"
+        readOnly={readOnly}
+        id={id}
+        popperModifiers={POPPER_MODIFIERS}
+        customInput={
+          <DatePickerInput
+            style={style}
+            readOnly={readOnly}
+            variant={variant}
+            datepickerId={id}
+            label={label}
+            ref={ref}
+          />
+        }
+        {...rest}
+      />
+    );
+  },
+);
 
 type Props = {
   onClick?: any;
@@ -217,26 +166,61 @@ type Props = {
 // "aria-labelledby": this.props.ariaLabelledBy,
 // "aria-required": this.props.ariaRequired,
 
-const DatePickerButton = React.forwardRef<HTMLInputElement, Props>(
-  ({ value, onClick, onFocus, onKeyDown, ...rest }, ref) => {
-    console.log(onFocus);
-
+const DatePickerInput = React.forwardRef<HTMLInputElement, Props>(
+  (
+    {
+      value,
+      onClick,
+      onFocus,
+      onKeyDown,
+      variant,
+      feedback,
+      style,
+      disableLabelAnimation,
+      disabled,
+      label,
+      readOnly,
+      datepickerId,
+      ...rest
+    },
+    ref,
+  ) => {
     return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'space-between',
-        }}
-      >
-        {/* <span>{value}</span> */}
-        <input value={value} onClick={onClick} {...rest} ref={ref} />
+      <span style={{ display: 'flex' }}>
+        <BaseFormControl
+          style={style}
+          className="eds-datepicker__form-control"
+          readOnly={readOnly}
+          label={label}
+          labelId={datepickerId}
+          feedback={feedback}
+          variant={variant}
+          ref={ref}
+          disabled={disabled}
+          disableLabelAnimation={disableLabelAnimation}
+          isFilled={value ? true : false}
+        >
+          <input
+            value={value}
+            onClick={onClick}
+            readOnly={readOnly}
+            disabled={disabled}
+            ref={ref}
+            {...rest}
+          />
+        </BaseFormControl>
         <Tooltip placement="top" content="Åpne kalender">
-          <IconButton onKeyDown={onKeyDown} onClick={onClick}>
+          <button
+            className={classNames('eds-datepicker__calendar-button', {
+              'eds-datepicker__calendar-button--open': true,
+            })}
+            onKeyDown={onKeyDown}
+            onClick={onClick}
+          >
             <CalenderIcon />
-          </IconButton>
+          </button>
         </Tooltip>
-      </div>
+      </span>
     );
   },
 );

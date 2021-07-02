@@ -11,6 +11,46 @@
   &__day {
     border: $colors-greys-grey70;
   }
+  &__form-control {
+    height: 3rem;
+  }
+
+  &__calendar-button {
+    appearance: none;
+    border: none;
+    border-left: $border-widths-medium solid $colors-greys-grey60;
+    border-right: $border-widths-medium solid transparent;
+    border-top-right-radius: $border-widths-large;
+    border-bottom-right-radius: $border-widths-large;
+    width: 3rem;
+    height: calc(3rem - #{$border-widths-medium} - #{$border-widths-medium});
+    margin: 0;
+
+    margin-left: -3rem;
+    margin-top: $border-widths-medium;
+    margin-bottom: $border-widths-medium;
+
+    color: inherit;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    z-index: 1;
+
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      border-left-color: $colors-blues-blue30;
+    }
+    &:hover,
+    &:focus {
+      border: $border-widths-medium solid $colors-brand-blue;
+      height: 3rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      .eds-contrast & {
+        background: $colors-brand-lavender;
+      }
+    }
+  }
 }
 
 .react-datepicker__triangle {
