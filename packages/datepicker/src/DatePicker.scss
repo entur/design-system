@@ -11,6 +11,51 @@
   &__day {
     border: $colors-greys-grey70;
   }
+  &__form-control {
+    height: 3rem;
+  }
+
+  &__calendar-button {
+    appearance: none;
+    border: none;
+    border-left: $border-widths-medium solid $colors-greys-grey60;
+    border-right: $border-widths-medium solid transparent;
+    border-top-right-radius: $border-widths-large;
+    border-bottom-right-radius: $border-widths-large;
+    width: 3rem;
+    height: calc(3rem - #{$border-widths-medium} - #{$border-widths-medium});
+    margin: 0;
+
+    margin-left: -3rem;
+    margin-top: $border-widths-medium;
+    margin-bottom: $border-widths-medium;
+
+    color: inherit;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    z-index: 1;
+
+    .eds-contrast & {
+      color: $colors-brand-blue;
+      border-left-color: $colors-blues-blue30;
+    }
+    &--disabled {
+      pointer-events: none;
+    }
+    &:hover,
+    &:focus {
+      outline: none;
+      border: $border-widths-medium solid $colors-brand-blue;
+      height: 3rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      .eds-contrast & {
+        background: $colors-brand-lavender;
+        border: $border-widths-medium solid $colors-blues-blue30;
+      }
+    }
+  }
 }
 
 .react-datepicker__triangle {
@@ -63,14 +108,25 @@
   }
   &__navigation {
     border-color: $colors-brand-blue;
+    border-radius: $border-radiuses-medium;
     border-width: $border-widths-default;
     border-bottom: none;
     border-right: none;
-    transform: rotate(135deg);
-    top: 1.5rem;
-
+    top: $space-small;
+    .react-datepicker__navigation-icon {
+      top: 0;
+      &--previous {
+        right: 3px;
+      }
+      &--next {
+        left: -6px;
+      }
+      &::before {
+        left: 0;
+        right: 0;
+      }
+    }
     &--previous {
-      transform: rotate(-45deg);
       left: $space-large;
     }
     &--next {
@@ -78,6 +134,7 @@
     }
     &:hover {
       border-color: $colors-brand-blue;
+      background-color: $colors-blues-blue70;
     }
   }
   &__month {

@@ -14,6 +14,7 @@ type RegularDropdownProps = {
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
   disableLabelAnimation?: boolean;
+  clearable?: boolean;
   [key: string]: any;
 };
 export const RegularDropdown: React.FC<RegularDropdownProps> = ({
@@ -28,6 +29,7 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
   loading,
   loadingText,
   className,
+  clearable,
   ...rest
 }) => {
   const {
@@ -50,6 +52,8 @@ export const RegularDropdown: React.FC<RegularDropdownProps> = ({
       loading={loading}
       loadingText={loadingText}
       className={className}
+      clearable={clearable}
+      {...rest}
     >
       <button
         {...getToggleButtonProps({
