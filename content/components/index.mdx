@@ -1,6 +1,6 @@
 ---
 name: Komponenter
-description: Full oversikt over alle Entur sine komponenter og hooks
+description: Entur sitt designsystem har et komplett komponentbibliotek, som lar deg lage brukergrensesnitt på en rask og universelt utformet måte.
 route: /komponenter/
 parent: Komponenter
 index: true
@@ -12,42 +12,371 @@ import { fontWeights } from '@entur/tokens';
 import { ExpandablePanel } from '@entur/expand';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
-import { ComponentSearcher } from '~/components/ComponentSearcher';
+import { ComponentPreview } from '~/components/ComponentPreview';
+import { GridContainer } from '@entur/grid';
 
-<PageHeader category="Introduksjon">
-  Entur sitt designsystem har et komplett komponentbibliotek, som lar deg lage
-  brukergrensesnitt på en rask og universelt utformet måte. Her kan du lære litt
-  mer om hva vi har.
-</PageHeader>
+import chips from './komponenterBilder/Chip.jpg';
+import button from './komponenterBilder/Button.jpg';
+import FAB from './komponenterBilder/FAB.jpg';
+import iconButton from './komponenterBilder/Icon button.jpg';
+import squareButton from './komponenterBilder/Square button.jpg';
 
-Du kan lese mer om hver komponent i menyen til venstre. Du kan også få full oversikt over alle komponentene våre i listen under.
+import Checkbox from './komponenterBilder/Checkbox.jpg';
+import Datepicker from './komponenterBilder/Datepicker.jpg';
+import Dropdown from './komponenterBilder/Dropdown.jpg';
+import FileUpload from './komponenterBilder/File upload.jpg';
+import MultiSelect from './komponenterBilder/Multi select.jpg';
+import Radio from './komponenterBilder/Radio.jpg';
+import RadioPanel from './komponenterBilder/Radio panel.jpg';
+import SegmentedControl from './komponenterBilder/Segmented control.jpg';
+import Switch from './komponenterBilder/Switch.jpg';
+import TextArea from './komponenterBilder/Text area.jpg';
+import TextField from './komponenterBilder/Text field.jpg';
+import Timepicker from './komponenterBilder/Timepicker.jpg';
 
-<ComponentSearcher>
-  {(component, index, allResults) => (
-    <ExpandablePanel
-      key={component.exportName}
-      title={
-        <span>
-          {component.exportName}{' '}
-          <Label as="span" style={{ fontWeight: fontWeights.body }}>
-            (@entur/{component.packageName})
-          </Label>
-        </span>
-      }
-    >
-      <Paragraph>
-        Fra pakken{' '}
-        <Link
-          href={`https://www.npmjs.com/package/@entur/${component.packageName}`}
-        >
-          @entur/{component.packageName}
-        </Link>
-      </Paragraph>
-      <ImportStatement
-        imports={component.exportName}
-        packageName={component.packageName}
-      />
-      <Props key={component.exportName} of={component.exportImpl} />
-    </ExpandablePanel>
-  )}
-</ComponentSearcher>
+import Breadcrumbs from './komponenterBilder/Breadcrumbs.jpg';
+import OverflowMenu from './komponenterBilder/Overflow menu.jpg';
+import Pagination from './komponenterBilder/Pagination.jpg';
+import SideNavigation from './komponenterBilder/Side navigation.jpg';
+import Stepper from './komponenterBilder/Stepper.jpg';
+import TopNavigation from './komponenterBilder/Top navigation.jpg';
+
+import Card from './komponenterBilder/Card.jpg';
+import Contrast from './komponenterBilder/Contrast.jpg';
+import Drawer from './komponenterBilder/Drawer.jpg';
+import Expandable from './komponenterBilder/Expandable.jpg';
+import MediaCard from './komponenterBilder/Media card.jpg';
+import Modal from './komponenterBilder/Modal.jpg';
+import Table from './komponenterBilder/Table.jpg';
+import Tabs from './komponenterBilder/Tabs.jpg';
+
+import Alert from './komponenterBilder/Alert.jpg';
+import Badge from './komponenterBilder/Badge.jpg';
+import Loader from './komponenterBilder/Loader.jpg';
+import Popover from './komponenterBilder/Popover.jpg';
+import Skeleton from './komponenterBilder/Skeleton.jpg';
+import Tooltip from './komponenterBilder/Tooltip.jpg';
+
+import TravelHeader from './komponenterBilder/Travel header.jpg';
+import TravelLeg from './komponenterBilder/Travel leg.jpg';
+import TravelSwitch from './komponenterBilder/Travel switch.jpg';
+import TravelTag from './komponenterBilder/Travel tag.jpg';
+
+<PageHeader category="Introduksjon"></PageHeader>
+
+## Knapper
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Chips"
+    description="Små avrundede knapper som eksisterer i ulike typer: action chip, choice chip, filter chip og tagchip."
+    to="/komponenter/skjemaelementer/chips"
+  >
+    <img src={chips} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Button"
+    description="Knapper lar brukerne gjøre handlinger og ta valg med et klikk. Knapper finnes i flere varianter og størrelser."
+    to="/komponenter/knapper/default-button"
+  >
+    <img src={button} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="FAB"
+    description="Flytende handlingsknapp i en sirkulær form. Finnes med kun ikon eller i en bredere variant med tekst i tillegg."
+    to="/komponenter/knapper/floating-action-button"
+  >
+    <img src={FAB} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Icon Button"
+    description="Ikonknapper har bare et ikon uten label og lar brukerne gjøre handlinger og ta valg med et enkelt klikk."
+    to="/komponenter/knapper/icon-button"
+  >
+    <img src={iconButton} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Square Button"
+    description="Kvadratiske knapper består av et ikon og en valgfri tilhørende label til høyre eller venstre for knappen."
+    to="/komponenter/knapper/square-button"
+  >
+    <img src={squareButton} />
+  </ComponentPreview>
+</GridContainer>
+
+## Skjemaelementer
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Checkbox"
+    description="Checkbox lar brukerne velge ett eller flere alternativer fra en liste over valg."
+    to="/komponenter/skjemaelementer/checkbox"
+  >
+    <img src={Checkbox} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Datepicker"
+    description="Datepicker og Native Datepicker er komponenter for å velge dato."
+    to="/komponenter/skjemaelementer/datepicker"
+  >
+    <img src={Datepicker} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Dropdown"
+    description="Dropdown presenterer en liste over alternativer som kan brukes til å filtrere eller sortere eksisterende innhold."
+    to="/komponenter/skjemaelementer/dropdown"
+  >
+    <img src={Dropdown} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="File upload"
+    description="Filopplaster brukes for å velge en eller flere filer som skal lastes opp til et bestemt sted."
+    to="/komponenter/skjemaelementer/fileupload"
+  >
+    <img src={FileUpload} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Multi select"
+    description="Multi select brukes for å velge opp til flere elementer til filtrering eller sortering i en liste."
+    to="/komponenter/skjemaelementer/multi-select"
+  >
+    <img src={MultiSelect} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Radio"
+    description="Radio buttons lar brukerne velge kun ett alternativ fra en liste over valg."
+    to="/komponenter/skjemaelementer/radio-button"
+  >
+    <img src={Radio} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Radio panel"
+    description="Fungerer som radio button, men med en større trykkflate, og muligheter for å vise ekstra informasjon."
+    to="/komponenter/skjemaelementer/radio-panel"
+  >
+    <img src={RadioPanel} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Segmented control"
+    description="Segmented controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning."
+    to="/komponenter/skjemaelementer/segmented-control"
+  >
+    <img src={SegmentedControl} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Switch"
+    description="Switch fungerer som en fysisk bryter for å slå på eller av en funksjon."
+    to="/komponenter/skjemaelementer/switch"
+  >
+    <img src={Switch} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Text area"
+    description="Text area brukes til å fylle inn lengre tekstinnhold som strekker seg over flere linjer."
+    to="/komponenter/skjemaelementer/textarea"
+  >
+    <img src={TextArea} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Text field"
+    description="Text field brukes til å skrive inn eller redigere kortfattet tekst."
+    to="/komponenter/skjemaelementer/textfield"
+  >
+    <img src={TextField} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Timepicker"
+    description="Timepicker er en komponent for å velge et tidspunkt."
+    to="/komponenter/skjemaelementer/timepicker"
+  >
+    <img src={Timepicker} />
+  </ComponentPreview>
+</GridContainer>
+
+## Navigasjon
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Breadcrumbs"
+    description="Breadcrumbs brukes for å vise hvor man er i navigasjonshierarkiet."
+    to="/komponenter/navigasjon/breadcrumbs"
+  >
+    <img src={Breadcrumbs} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Overflow menu"
+    description="Overflow menu består av en ikonknapp som viser en liste over handlinger når man klikker på den."
+    to="/komponenter/navigasjon/overflow-menu"
+  >
+    <img src={OverflowMenu} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Pagination"
+    description="Pagination brukes for å fordele innhold på over flere sider, for å unngå for mange elementer i samme visning."
+    to="/komponenter/navigasjon/pagination"
+  >
+    <img src={Pagination} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Side navigation"
+    description="Side navigation brukes som en global meny for å vise et navigasjons-hierarki med ett eller to nivåer."
+    to="/komponenter/navigasjon/side-navigation"
+  >
+    <img src={SideNavigation} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Stepper"
+    description="En stepper viser fremdriften gjennom en stegvis prosess."
+    to="/komponenter/navigasjon/stepper"
+  >
+    <img src={Stepper} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Top navigation"
+    description="Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen i grensesnittet."
+    to="/komponenter/navigasjon/top-navigation"
+  >
+    <img src={TopNavigation} />
+  </ComponentPreview>
+</GridContainer>
+
+## Layout og flater
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Card"
+    description="Cards er bokser som viser innhold og handlinger om et emne som man ønsker å fremheve på en side."
+    to="/komponenter/layout-og-flater/card"
+  >
+    <img src={Card} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Contrast"
+    description="Contrast er en invertert versjon av profilen vår og kan brukes til å skape et visuelt hierarki på siden."
+    to="/komponenter/layout-og-flater/contrast"
+  >
+    <img src={Contrast} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Drawer"
+    description="Drawer er et panel som glir inn fra siden. Benyttes til å gi tilleggsinformasjon, uten å avbryte flyten."
+    to="/komponenter/layout-og-flater/drawer"
+  >
+    <img src={Drawer} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Expandable"
+    description="Expandables er komponenter for å kollapse og ekspandere innhold."
+    to="/komponenter/layout-og-flater/expandable"
+  >
+    <img src={Expandable} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Media card"
+    description="Media card gir et kort sammendrag av innhold og støtter video, bilde eller grafikk."
+    to="/komponenter/layout-og-flater/media-card"
+  >
+    <img src={MediaCard} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Modal"
+    description="Modal er et vindu som legger seg over og toner ned øvrig innhold på siden, og tilbyr fokus på spørsmål eller info."
+    to="/komponenter/layout-og-flater/modal"
+  >
+    <img src={Modal} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Table"
+    description="Tables brukes for å vise frem strukturert datasett på tvers av rader og kolonner."
+    to="/komponenter/layout-og-flater/table"
+  >
+    <img src={Table} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Tabs"
+    description="Tabs brukes til å organisere og gruppere informasjon, og kan benyttes som lokal navigasjon på en side."
+    to="/komponenter/layout-og-flater/tabs"
+  >
+    <img src={Tabs} />
+  </ComponentPreview>
+</GridContainer>
+
+## Feedback
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Alert"
+    description="Alert brukes til å gi varsel om en handling eller for å fremheve viktig info som brukeren bør ta stilling til."
+    to="/komponenter/feedback/alert"
+  >
+    <img src={Alert} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Badge"
+    description="Badge er en visuell indikator som brukes til å varsle status til et element eller for å kategorisere et innhold."
+    to="/komponenter/feedback/badge"
+  >
+    <img src={Badge} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Loader"
+    description="Loader er en visuell tilbakemelding som indikerer at lasting av innhold og data er i prosess."
+    to="/komponenter/feedback/loader"
+  >
+    <img src={Loader} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Popover"
+    description="Popover er en boks med tilleggsinformasjon eller valg, som legger seg over annet innhold."
+    to="/komponenter/feedback/popover"
+  >
+    <img src={Popover} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Skeleton"
+    description="Skeleton er en placeholder som indikerer at deler av innholdet er i ferd med å laste inn."
+    to="/komponenter/feedback/skeleton"
+  >
+    <img src={Skeleton} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Tooltip"
+    description="Tooltip brukes for å beskrive eller gi tilleggsinformasjon ved hover eller fokus på elementet."
+    to="/komponenter/feedback/tooltip"
+  >
+    <img src={Tooltip} />
+  </ComponentPreview>
+</GridContainer>
+
+## Travel
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Travel switch"
+    description="Travel Switch er en variant av switch som brukes til filtrering av transportmidler."
+    to="/komponenter/reise/travelswitch"
+  >
+    <img src={TravelSwitch} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel header"
+    description="Travel header presenterer destinasjonene som man reiser fra og til. "
+    to="/komponenter/reise/reiseskrift"
+  >
+    <img src={TravelHeader} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel leg"
+    description="Travel leg benyttes til å visualisere reisestrekningen mellom to destinasjoner."
+    to="/komponenter/reise/travel-leg"
+  >
+    <img src={TravelLeg} />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel tag"
+    description="Travel tag brukes til å opplyse om transportmiddel og linjenummer til en avgang."
+    to="/komponenter/reise/traveltag"
+  >
+    <img src={TravelTag} />
+  </ComponentPreview>
+</GridContainer>
