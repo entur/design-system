@@ -4217,10 +4217,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-datepicker@3.1.8":
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-3.1.8.tgz#642b0d5f2c30f53d7940b1771d5fb11b646bb7fb"
-  integrity sha512-RFEg7++xhosMq02i2lsuaUPEbZGn66U3dxtvw9LU/ZRqLkBGr9Ft2LTz6vbeYYVtaBdOr0NcQatOLnlfUaS8kw==
+"@types/react-datepicker@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-4.1.1.tgz#6b363c12267ac1420450136f3c972eb80f9ff40e"
+  integrity sha512-sgEER91giihAaXff8n0rzQr360TXRRjK1jToIVWRoGA2XUJKl7uQye4W/0o4QfQ1ZMYzAUKekjsRtK+VfC9lgg==
   dependencies:
     "@types/react" "*"
     date-fns "^2.0.1"
