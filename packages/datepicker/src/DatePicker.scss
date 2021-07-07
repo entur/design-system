@@ -40,14 +40,19 @@
       color: $colors-brand-blue;
       border-left-color: $colors-blues-blue30;
     }
+    &--disabled {
+      pointer-events: none;
+    }
     &:hover,
     &:focus {
+      outline: none;
       border: $border-widths-medium solid $colors-brand-blue;
       height: 3rem;
       margin-top: 0;
       margin-bottom: 0;
       .eds-contrast & {
         background: $colors-brand-lavender;
+        border: $border-widths-medium solid $colors-blues-blue30;
       }
     }
   }
@@ -103,14 +108,25 @@
   }
   &__navigation {
     border-color: $colors-brand-blue;
+    border-radius: $border-radiuses-medium;
     border-width: $border-widths-default;
     border-bottom: none;
     border-right: none;
-    transform: rotate(135deg);
-    top: 1.5rem;
-
+    top: $space-small;
+    .react-datepicker__navigation-icon {
+      top: 0;
+      &--previous {
+        right: 3px;
+      }
+      &--next {
+        left: -6px;
+      }
+      &::before {
+        left: 0;
+        right: 0;
+      }
+    }
     &--previous {
-      transform: rotate(-45deg);
       left: $space-large;
     }
     &--next {
@@ -118,6 +134,7 @@
     }
     &:hover {
       border-color: $colors-brand-blue;
+      background-color: $colors-blues-blue70;
     }
   }
   &__month {

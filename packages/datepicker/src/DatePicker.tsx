@@ -15,6 +15,8 @@ import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
 import { useOnMount, useRandomId } from '@entur/utils';
+import * as Popper from '@popperjs/core';
+
 registerLocale('nb', nb);
 
 export type DatePickerProps = {
@@ -46,13 +48,15 @@ export type DatePickerProps = {
    * @default <DateIcon />
    */
   prepend?: React.ReactNode;
+  // For testing
+  'data-cy'?: any;
 } & Omit<ReactDatePickerProps, 'selected'>;
-const POPPER_MODIFIERS = [
+const POPPER_MODIFIERS: Popper.StrictModifiers[] = [
   {
     name: 'offset',
+    enabled: true,
     options: {
-      enabled: true,
-      offset: [-32, 0],
+      offset: [0, 0],
     },
   },
 ];
@@ -118,10 +122,10 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         dateFormat={dateFormat}
         showPopperArrow={false}
         placeholderText={placeholder}
-        popperClassName="eds-datepicker__popper"
         readOnly={readOnly}
         id={id}
-        //@ts-ignore  improper typings from react-datepicker
+        disabled={disabled}
+        // @ts-ignore
         popperModifiers={POPPER_MODIFIERS}
         customInput={
           <DatePickerInput
@@ -130,7 +134,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             variant={variant}
             datepickerId={id}
             label={label}
+            disabled={disabled}
             ref={ref}
+            data-cy={rest['data-cy']}
           />
         }
         {...rest}
@@ -139,7 +145,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
   },
 );
 
-type Props = {
+type DatePickerInputProps = {
   onClick?: any;
   value?: any;
   [key: string]: any;
@@ -167,7 +173,10 @@ type Props = {
 // "aria-labelledby": this.props.ariaLabelledBy,
 // "aria-required": this.props.ariaRequired,
 
-const DatePickerInput = React.forwardRef<HTMLInputElement, Props>(
+const DatePickerInput = React.forwardRef<
+  HTMLInputElement,
+  DatePickerInputProps
+>(
   (
     {
       value,
@@ -196,7 +205,6 @@ const DatePickerInput = React.forwardRef<HTMLInputElement, Props>(
           labelId={datepickerId}
           feedback={feedback}
           variant={variant}
-          ref={ref}
           disabled={disabled}
           disableLabelAnimation={disableLabelAnimation}
           isFilled={value ? true : false}
@@ -210,13 +218,20 @@ const DatePickerInput = React.forwardRef<HTMLInputElement, Props>(
             {...rest}
           />
         </BaseFormControl>
-        <Tooltip placement="top" content="Åpne kalender">
+        <Tooltip
+          placement="top"
+          content="Åpne kalender"
+          disableHoverListener={disabled}
+          disableFocusListener={disabled}
+        >
           <button
             className={classNames('eds-datepicker__calendar-button', {
               'eds-datepicker__calendar-button--open': true,
+              'eds-datepicker__calendar-button--disabled': disabled,
             })}
             onKeyDown={onKeyDown}
             onClick={onClick}
+            disabled={disabled}
           >
             <CalenderIcon />
           </button>
