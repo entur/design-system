@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.6...@entur/datepicker@0.9.0) (2021-07-07)
+
+### Bug Fixes
+
+- **datepicker:** add support for data cy ([b22129e](https://bitbucket.org/enturas/design-system/commits/b22129e402853e448890238cc2e60a61f834010f))
+- **datepicker:** improve internal structure and style ([30b411b](https://bitbucket.org/enturas/design-system/commits/30b411bdd969f47d8d4e3f08093cbfb7b1a3d9e5))
+- **datepicker:** update dependency for types ([b65a58e](https://bitbucket.org/enturas/design-system/commits/b65a58ecdf317888b19facc6b88a9592b99641cc))
+
+### Features
+
+- **datepicker:** datepicker with calendar button and styling overhaul ([c049398](https://bitbucket.org/enturas/design-system/commits/c049398cb6d96acbae3fcb0f12fd61f71a3c60a9))
+
 ## [0.8.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.5...@entur/datepicker@0.8.6) (2021-06-25)
 
 ### Bug Fixes

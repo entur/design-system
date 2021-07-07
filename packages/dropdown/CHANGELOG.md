@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.3...@entur/dropdown@2.0.4) (2021-07-07)
+
+### Bug Fixes
+
+- **dropdown:** fix clearable prop and warnings ([1f9a5ae](https://bitbucket.org/enturas/design-system/commits/1f9a5ae3ec0dd86188353c015926931ce645cb33))
+
 ## [2.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.2...@entur/dropdown@2.0.3) (2021-06-25)
 
 ### Bug Fixes

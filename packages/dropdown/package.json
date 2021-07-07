@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/dropdown.esm.js",
