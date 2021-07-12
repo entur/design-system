@@ -9,9 +9,11 @@
   background: $colors-brand-white;
   cursor: pointer;
   font-family: inherit;
-  transition: box-shadow $timings-medium ease-in-out;
+  transition: box-shadow $timings-medium ease-in-out,
+    transform $timings-medium ease-in-out;
   &:hover {
     box-shadow: $shadows-card-shadow-hover;
+    transform: translateY(-$space-extra-small2);
   }
   &:focus {
     outline-offset: $outline-offsets-focus;

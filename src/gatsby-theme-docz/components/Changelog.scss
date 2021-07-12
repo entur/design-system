@@ -1,5 +1,9 @@
+@import '~@entur/tokens/dist/styles.scss';
 .changelog-navigation-card {
   .eds-icon {
     // display: none;
+  }
+  .eds-navigation-card__title .eds-h3 {
+    font-size: $font-sizes-extra-large;
   }
 }

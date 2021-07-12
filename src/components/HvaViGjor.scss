@@ -19,6 +19,9 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      .eds-h4 {
+        font-weight: 500;
+      }
       .eds-contrast {
         text-align: center;
       }
@@ -50,5 +53,6 @@
   }
   &__red-text {
     color: $colors-brand-coral;
+    font-weight: 600;
   }
 }

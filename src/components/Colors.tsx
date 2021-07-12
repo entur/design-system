@@ -24,6 +24,7 @@ import { hex } from 'wcag-contrast';
 import ColorSwatch from './ColorSwatch';
 import { CopyablePreformattedText } from './CopyablePreformattedText';
 import TransportColors from './TransportColors';
+import './Colors.scss';
 
 type ColorObject = {
   name: string;
@@ -50,7 +51,7 @@ const Colors = () => {
   });
   return (
     <ColorsContext.Provider value={{ setChosenColor }}>
-      <div>
+      <div className="eds-color-list">
         <Drawer
           title={chosenColor.name}
           open={chosenColor.name !== ''}
@@ -151,7 +152,9 @@ const Colors = () => {
             path="validation.lavaTint"
           ></ColorSwatch>
         </GridContainer>
-        <Heading3>Advarsel- og avviksmelding farge</Heading3>
+        <Heading3 className="eds-color-list__normal-margin-h3">
+          Advarsel- og avviksmelding farge
+        </Heading3>
         <GridContainer spacing="large">
           <ColorSwatch title="Canary" path="validation.canary"></ColorSwatch>
         </GridContainer>

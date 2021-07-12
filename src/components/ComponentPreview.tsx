@@ -18,6 +18,7 @@ export const ComponentPreview: React.FC<{
         title={title}
         description={description}
         className="component-preview"
+        wholeCardAsElement
       >
         <div className="component-preview__image-wrapper">{children}</div>
       </MediaCard>

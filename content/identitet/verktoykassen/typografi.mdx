@@ -13,6 +13,7 @@ import TypoEksempel from './Typo_eksempel.png';
 import { BannerAlertBox } from '@entur/alert';
 import { Link } from 'docz';
 import { Link as LinkText } from '@entur/typography';
+import { space } from '@entur/tokens';
 
 <PageHeader />
 
@@ -20,6 +21,7 @@ import { Link as LinkText } from '@entur/typography';
   src={TypoEksempel}
   width="100%"
   alt="Eksempeltekst som viser fram Entur sin font: Nationale"
+  style={{ marginBottom: space.extraLarge }}
 />
 
 Primærfonten til Entur heter Nationale. Nationale er en moderne og geometrisk skrifttype med meget god lesbarhert både digitalt og på trykk. Nationale brukes til alle typografiske nivåer: både til titler, ingress og i løpende brødtekst.
@@ -31,12 +33,14 @@ I digitale flater skal fonten brukes kun i to vekter, medium for ingress og løp
 <BannerAlertBox
   variant="info"
   title="Typografi som grafisk element"
-  closable={true}
+  closable={false}
   style={{ marginBottom: '1em' }}
 >
   I identiteten brukes typografi også som et bærende grafisk element for å
-  understøtte kontrastene og mangfoldigheten. Les mer om dette og se eksempler
-  her.
+  understøtte kontrastene og mangfoldigheten.{' '}
+  <LinkText as={Link} to="/identitet/vektoykassen/grafiske-elementer">
+    Les mer om dette og se eksempler her.
+  </LinkText>
 </BannerAlertBox>
 
 <TypographyDisplay weight={300} />

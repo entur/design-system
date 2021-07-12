@@ -3,10 +3,10 @@
 .table-of-content-container {
   display: none;
 
-  @media screen and (min-width: 100rem) {
+  @media screen and (min-width: 104rem) {
     display: block;
     position: fixed;
-    left: 92rem;
+    left: 96rem;
     top: 9rem;
   }
 }

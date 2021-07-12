@@ -7,7 +7,7 @@ menu: Verktøykassen
 order: 4
 ---
 
-import { borderWidths, colors } from '@entur/tokens';
+import { borderWidths, colors, space } from '@entur/tokens';
 import {
   Table,
   TableHead,
@@ -40,7 +40,14 @@ import TransportColors from '~/components/TransportColors';
 
 Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for Entur. Hovedfargene er blå, hvit og rød, og disse burde alltid være med. Korallfargen er vektet lavt, men er viktig og skal alltid være tilstede i uttak. Den brukes ofte til detaljer, til tider så detaljert som bare i logo.
 
-<div style={{ padding: '0.25rem', border: `2px solid ${colors.greys.grey70}` }}>
+<div
+  style={{
+    padding: '0.25rem',
+    border: `2px solid ${colors.greys.grey70}`,
+    marginBottom: space.extraLarge3,
+    display: 'flex',
+  }}
+>
   <img
     src={balance}
     width="100%"
@@ -66,3 +73,5 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
     Unngå lys tekst på lys bakgrunn
   </Example>
 </BestPractices>
+
+Les mer om kontrastkrav for farger på [Universell utforming](/universell-utforming) siden og bruk vår [Color Contrast Checker](/universell-utforming/kontrast-sjekker) for å hjelpe deg med å bestemme lesbarheten til tekst og kontrasten til grafiske objekter.

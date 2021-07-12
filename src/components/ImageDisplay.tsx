@@ -24,10 +24,10 @@ type ImageDisplayProps = {
   src: string;
 };
 
-const ImageDisplay: React.FC<ImageDisplayProps> = ({ src }) => {
+const ImageDisplay: React.FC<ImageDisplayProps> = ({ src, ...rest }) => {
   return (
     <div className="image-display">
-      <div className="image-display__image">
+      <div className="image-display__image" {...rest}>
         <img src={src} alt="" />
       </div>
     </div>

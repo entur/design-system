@@ -1,7 +1,7 @@
 import { Switch } from '@entur/form';
 import { GridContainer } from '@entur/grid';
 import { Contrast } from '@entur/layout';
-import { colors } from '@entur/tokens';
+import { colors, space } from '@entur/tokens';
 import { Heading2, Paragraph } from '@entur/typography';
 import React from 'react';
 import ColorSwatch from '~/components/ColorSwatch';
@@ -20,17 +20,18 @@ const TransportColors: React.FC = () => {
         bilferje, cruise osv.) og på reiselinjer. Transportmiddelfargene finnes
         også for Contrast seksjoner.
       </Paragraph>
+      <Switch
+        style={{ marginBottom: space.extraLarge }}
+        onChange={() => setContrast(prev => !prev)}
+        checked={isContrast}
+      >
+        Vis kontrastfarger
+      </Switch>
       <Wrapper
         style={{
           boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
         }}
       >
-        <Switch
-          onChange={() => setContrast(prev => !prev)}
-          checked={isContrast}
-        >
-          Vis kontrastfarger
-        </Switch>
         <GridContainer spacing="large">
           <ColorSwatch
             path={`transport.${pathName}.metro`}

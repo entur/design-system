@@ -28,7 +28,9 @@ export const FrontPage = () => {
             <div style={{ position: 'relative' }}>
               <div>
                 <div style={{ paddingTop: '6rem' }}>
-                  <Heading1>Entur Designsystem</Heading1>
+                  <Heading1 style={{ fontWeight: 500 }}>
+                    Entur Designsystem
+                  </Heading1>
                   <ShiftingHeader />
                 </div>
                 <div
@@ -150,7 +152,7 @@ export const FrontPage = () => {
 
 function ShiftingHeader() {
   const words = [
-    'er til for å sikre visuell konsistens',
+    'sikrer visuell konsistens',
     'reduserer dobbeltarbeid',
     'oppnår raskere utviklingstid',
   ];
