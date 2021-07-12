@@ -23,6 +23,10 @@ export type MediaCardOwnProps = {
   children?: React.ReactNode;
   /** Styling som sendes til komponenten */
   style?: CSSProperties;
+  /** Gjør hele kortet til "as"-elementet. Default er kun tekstområdet. Anbefales hvis media er et bilde
+   * @default false
+   */
+  wholeCardAsElement?: boolean;
 };
 
 export type MediaCardProps<
@@ -39,21 +43,32 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   category,
   style,
   as,
+  wholeCardAsElement: whole,
   ...rest
 }: MediaCardProps<E>) => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-base-card', 'eds-media-card', className);
+
+  const wrapperElement = whole ? Element : 'div';
+  const wrapperProps = whole ? rest : {};
+  const innerProps = whole ? {} : rest;
+  const InnerElement = whole ? 'div' : Element;
   return (
-    <BaseCard as="div" className={classList} style={style}>
+    <BaseCard
+      as={wrapperElement}
+      className={classList}
+      style={style}
+      {...wrapperProps}
+    >
       <div className="eds-media-card__media">{children}</div>
-      <Element as={defaultElement} className="eds-media-card__text" {...rest}>
+      <InnerElement className="eds-media-card__text" {...innerProps}>
         {category && (
           <Label className="eds-media-card__category">{category}</Label>
         )}
         <div className="eds-media-card__title">{title}</div>
         <Paragraph>{description}</Paragraph>
         <ForwardIcon className="eds-media-card__arrow-icon" />
-      </Element>
+      </InnerElement>
     </BaseCard>
   );
 };
