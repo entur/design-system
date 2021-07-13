@@ -176,7 +176,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               )}
             </Menu>
           )}
-          <Label>
+          <Label className="eds-pagination__results-label">
             {showingResultsLabel(
               (currentPage - 1) * resultsPerPage + 1,
               currentPage * resultsPerPage > numberOfResults
