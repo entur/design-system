@@ -49,4 +49,9 @@
   background-color: $colors-greys-grey70;
   height: 1.5rem;
   width: 1px;
+  .eds-form-control-wrapper--disabled & {
+    .eds-contrast & {
+      background-color: $colors-blues-blue50;
+    }
+  }
 }
