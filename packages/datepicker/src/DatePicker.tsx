@@ -10,7 +10,7 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { CalenderIcon, DateIcon } from '@entur/icons';
+import { CalendarIcon, DateIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
@@ -233,7 +233,7 @@ const DatePickerInput = React.forwardRef<
             onClick={onClick}
             disabled={disabled}
           >
-            <CalenderIcon />
+            <CalendarIcon />
           </button>
         </Tooltip>
       </span>
