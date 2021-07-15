@@ -46,6 +46,8 @@ const ExpandableAlertBox: React.FC<ExpandableAlertBoxProps> = ({
   children,
   size,
   className,
+  openLabel,
+  closeLabel,
   ...rest
 }) => {
   const [open, setopen] = React.useState(false);
@@ -59,6 +61,8 @@ const ExpandableAlertBox: React.FC<ExpandableAlertBoxProps> = ({
           open={open}
           title={title}
           onClick={() => setopen(!open)}
+          openLabel={openLabel}
+          closeLabel={closeLabel}
         />
       }
       {...rest}
