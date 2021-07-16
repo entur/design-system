@@ -5,7 +5,6 @@ import { Contrast } from '@entur/layout/src';
 import { MenuIcon } from '@entur/icons';
 import { FloatingButton } from '@entur/button';
 import classNames from 'classnames';
-import { motion, AnimatePresence } from 'framer-motion';
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
 import './MobileMenu.scss';
