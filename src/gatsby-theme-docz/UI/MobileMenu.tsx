@@ -24,7 +24,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const [sidemenu, showSidemenu] = React.useState(false);
   const Element = frontPage ? Contrast : 'div';
-  console.log(sidemenu, 'MobileMenu');
 
   return (
     <>
