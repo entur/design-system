@@ -60,12 +60,18 @@ export type ToastProviderProps = {
    * @default "bottom-right"
    */
   position?: 'bottom-right' | 'top-right';
+  /** Ekstra klassenavn til ToastProvider-wrapperen */
+  className?: string;
+  /** Ekstra styling som sendes til ToastProvider-wrapperen */
+  style?: React.CSSProperties;
 };
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
   delay = 6000,
   children,
   position = 'bottom-right',
+  className,
+  style,
 }) => {
   const [toasts, dispatch] = React.useReducer(toastReducer, []);
   const [hoveringId, setHovering] = React.useState<string>();
@@ -125,7 +131,9 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
           className={classNames(
             'eds-toast-container',
             `eds-toast-container--${position}`,
+            className,
           )}
+          style={style}
         >
           {toasts.slice(0, 3).map(toastToShow => (
             <ToastAlertBox
