@@ -4,6 +4,8 @@ import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { useVariant, VariantType } from './VariantProvider';
 import { isFilled } from './utils';
+import { CloseIcon } from '@entur/icons';
+import './TextField.scss';
 
 export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -37,6 +39,12 @@ export type TextFieldProps = {
     React.LabelHTMLAttributes<HTMLLabelElement>,
     HTMLLabelElement
   >;
+  /** Om man skal ha muliget for å nullstille Dropdownen
+   * @default false
+   */
+  clearable?: boolean;
+  /** Callback for clearable */
+  onClear?: () => void;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -57,6 +65,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       onChange,
       disableLabelAnimation,
       labelProps,
+      clearable = false,
+      onClear,
+      value,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -71,7 +82,13 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         readOnly={readOnly}
         variant={variant}
         prepend={prepend}
-        append={append}
+        append={
+          clearable ? (
+            <ClearButton onClear={onClear} hasValue={value ? true : false} />
+          ) : (
+            append
+          )
+        }
         className={className}
         style={style}
         size={size}
@@ -89,6 +106,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           ref={ref}
           aria-labelledby={textFieldId}
           onChange={onChange}
+          value={value}
           {...rest}
         />
       </BaseFormControl>
@@ -157,3 +175,26 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
     );
   },
 );
+
+const ClearButton: React.FC<{
+  hasValue?: boolean;
+  onClear?: () => void;
+  [key: string]: any;
+}> = ({ onClear, hasValue, ...props }) => {
+  return (
+    <div className="eds-textfield__clear-button-wrapper">
+      {hasValue && <div className="eds-textfield__divider"></div>}
+      {hasValue && (
+        <button
+          className="eds-textfield__clear-button"
+          type="button"
+          tabIndex={-1}
+          onClick={onClear}
+          {...props}
+        >
+          <CloseIcon />
+        </button>
+      )}
+    </div>
+  );
+};
