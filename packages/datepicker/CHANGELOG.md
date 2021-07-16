@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.1...@entur/datepicker@0.9.2) (2021-07-16)
+
+### Bug Fixes
+
+- **datepicker:** open calendar button is now type="button" ([a778341](https://bitbucket.org/enturas/design-system/commits/a7783419045912e361506092a5e493c521789406))
+
 ## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.0...@entur/datepicker@0.9.1) (2021-07-16)
 
 ### Bug Fixes
