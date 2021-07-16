@@ -232,6 +232,7 @@ const DatePickerInput = React.forwardRef<
             onKeyDown={onKeyDown}
             onClick={onClick}
             disabled={disabled}
+            type="button"
           >
             <CalendarIcon />
           </button>
