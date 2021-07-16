@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.6](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.5...@entur/menu@3.6.6) (2021-07-16)
+
+### Bug Fixes
+
+- **pagination:** add small right margin to results label ([0a810c1](https://bitbucket.org/enturas/design-system/commits/0a810c1f134675713078643038df2caf88b39baa))
+
 ## [3.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.4...@entur/menu@3.6.5) (2021-06-25)
 
 ### Bug Fixes

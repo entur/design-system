@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.16...@entur/alert@0.8.0) (2021-07-16)
+
+### Bug Fixes
+
+- **expandable alert box:** fix icon position ([a1b5f55](https://bitbucket.org/enturas/design-system/commits/a1b5f555d867757b09de2968cecec6f10432e2cc))
+- **expandablealertbox:** fix close and open label props not being set ([f3b17d4](https://bitbucket.org/enturas/design-system/commits/f3b17d47c4afb08830ddf38c36af8c262ec01bc2))
+
+### Features
+
+- **toast:** add bounce in animation for toasts ([f85b6cc](https://bitbucket.org/enturas/design-system/commits/f85b6cc51ffd77256799d905fb8e9e3ea184b21e))
+- **toastprovider:** add classname and style prop ([db6227c](https://bitbucket.org/enturas/design-system/commits/db6227c6fd372b1beb9c0b53b7326a9808d6be1f))
+
 ## [0.7.16](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.7.15...@entur/alert@0.7.16) (2021-06-25)
 
 ### Bug Fixes

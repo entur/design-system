@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.5...@entur/form@4.4.6) (2021-07-16)
+
+### Bug Fixes
+
+- **inputgrouplabel:** fix label color in contrast ([f0e70fb](https://bitbucket.org/enturas/design-system/commits/f0e70fb361b0fd5e66abc692646e0895e9016cb4))
+
 ## [4.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.4...@entur/form@4.4.5) (2021-06-25)
 
 ### Bug Fixes

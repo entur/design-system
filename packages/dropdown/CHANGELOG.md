@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.4...@entur/dropdown@2.0.5) (2021-07-16)
+
+### Bug Fixes
+
+- **dropdown:** fix divider color in contrast ([6c9ac18](https://bitbucket.org/enturas/design-system/commits/6c9ac180c08387dfdcd75a463bb3bd9199fcbedc))
+
 ## [2.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.3...@entur/dropdown@2.0.4) (2021-07-07)
 
 ### Bug Fixes

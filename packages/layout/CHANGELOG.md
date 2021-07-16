@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.0.1...@entur/layout@2.1.0) (2021-07-16)
+
+### Features
+
+- **media card:** add wholeCardAsElement prop ([77bda47](https://bitbucket.org/enturas/design-system/commits/77bda475dad9f80d4e95d14cc88c225bb35c11db))
+
 ## [2.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.0.0...@entur/layout@2.0.1) (2021-06-25)
 
 ### Bug Fixes

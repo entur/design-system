@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.0...@entur/datepicker@0.9.1) (2021-07-16)
+
+### Bug Fixes
+
+- **datepicker:** adjust styling of dates in calendar ([1a68332](https://bitbucket.org/enturas/design-system/commits/1a68332ae769a2bc991f8a4d0e93cd5d903a5303))
+- **datepicker:** change calendar icon import name change ([d9ed6a1](https://bitbucket.org/enturas/design-system/commits/d9ed6a1339537a631cc4126e0f909eb2daa7e0f1))
+
 # [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.8.6...@entur/datepicker@0.9.0) (2021-07-07)
 
 ### Bug Fixes
