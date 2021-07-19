@@ -16,29 +16,31 @@ const Changelog = () => {
   return (
     <div>
       <GridContainer spacing="medium">
-        {query.allMarkdownRemark.edges.sort().map(changelog => (
-          <GridItem small={6} medium={4} key={changelog.node.parent.name}>
-            <NavigationCard
-              title={`@entur/${changelog.node.parent.name}`}
-              compact
-              as="button"
-              className="changelog-navigation-card"
-              externalLink
-              style={{
-                height: '5rem',
-                width: '100%',
-                fontFamily: 'inherit',
-                background: 'none',
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                setPackageChangelog(changelog.node.rawMarkdownBody);
-                setModalTitle(`@entur/${changelog.node.parent.name}`);
-                setOpenModal(true);
-              }}
-            ></NavigationCard>
-          </GridItem>
-        ))}
+        {query.allMarkdownRemark.edges
+          .sort((a, b) => a.node.parent.name.localeCompare(b.node.parent.name))
+          .map(changelog => (
+            <GridItem small={6} medium={4} key={changelog.node.parent.name}>
+              <NavigationCard
+                title={`@entur/${changelog.node.parent.name}`}
+                compact
+                as="button"
+                className="changelog-navigation-card"
+                externalLink
+                style={{
+                  height: '5rem',
+                  width: '100%',
+                  fontFamily: 'inherit',
+                  background: 'none',
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  setPackageChangelog(changelog.node.rawMarkdownBody);
+                  setModalTitle(`@entur/${changelog.node.parent.name}`);
+                  setOpenModal(true);
+                }}
+              ></NavigationCard>
+            </GridItem>
+          ))}
       </GridContainer>
 
       <Modal
