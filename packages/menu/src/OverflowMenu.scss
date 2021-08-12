@@ -82,4 +82,10 @@
 [data-reach-menu-popover] {
   position: absolute;
   z-index: $z-indexes-overlay;
+  .eds-overflow-menu__menu-list {
+    &--left {
+      position: relative;
+      right: calc(100% - 2rem); // List width - IconButton width
+    }
+  }
 }

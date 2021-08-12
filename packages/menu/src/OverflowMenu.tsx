@@ -1,13 +1,13 @@
 import React, { cloneElement } from 'react';
 import {
   Menu,
-  MenuList,
   MenuButton,
   MenuItem,
   MenuLink,
   MenuItemProps,
   MenuLinkProps,
   MenuButtonProps,
+  MenuList,
 } from '@reach/menu-button';
 import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
@@ -24,12 +24,17 @@ export type OverflowMenuProps = {
   button?: React.ReactElement;
   /** Ekstra klassenavn */
   className?: string;
+  /** Posisjoneringen av OverflowMenu-lista
+   * @default 'right'
+   */
+  position?: 'right' | 'left';
 } & MenuButtonProps;
 
 export const OverflowMenu: React.FC<OverflowMenuProps> = ({
   children,
   className,
   button,
+  position = 'right',
   ...rest
 }) => {
   return (
@@ -51,14 +56,19 @@ export const OverflowMenu: React.FC<OverflowMenuProps> = ({
       )}
       {useContrast() ? (
         <Contrast
-          className="eds-overflow-menu__menu-list"
+          className={classNames('eds-overflow-menu__menu-list')}
           as={MenuList}
           portal={false}
         >
           {[children]}
         </Contrast>
       ) : (
-        <MenuList className="eds-overflow-menu__menu-list" portal={false}>
+        <MenuList
+          className={classNames('eds-overflow-menu__menu-list', {
+            'eds-overflow-menu__menu-list--left': position === 'left',
+          })}
+          portal={false}
+        >
           {[children]}
         </MenuList>
       )}
