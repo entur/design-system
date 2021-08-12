@@ -13,6 +13,10 @@ export type TertiaryButtonBaseProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
+  loading?: boolean;
   /** Innholdet i knappen */
   children: React.ReactNode;
 };
