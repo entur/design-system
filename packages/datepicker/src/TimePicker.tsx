@@ -11,10 +11,11 @@ import {
   VariantType,
 } from '@entur/form';
 import { ClockIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
+import { useOnMount, useRandomId } from '@entur/utils';
 import { nb } from 'date-fns/locale';
 import { add, sub } from 'date-fns';
+import * as Popper from '@popperjs/core';
 import './TimePicker.scss';
-import { useOnMount, useRandomId } from '@entur/utils';
 registerLocale('nb', nb);
 
 export type TimePickerProps = {
@@ -144,13 +145,15 @@ type TimePickerBaseProps = {
   [key: string]: any;
 } & ReactDatePickerProps;
 
-const POPPEER_MODIFIERS = {
-  offset: {
+const POPPER_MODIFIERS: Popper.StrictModifiers[] = [
+  {
+    name: 'offset',
     enabled: true,
-    offset: '-32, 0',
+    options: {
+      offset: [0, 0],
+    },
   },
-};
-
+];
 const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   className,
   onChange,
@@ -207,7 +210,7 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
       showPopperArrow={false}
       placeholderText={placeholder}
       popperClassName="eds-datepicker__popper"
-      popperModifiers={POPPEER_MODIFIERS}
+      popperModifiers={POPPER_MODIFIERS}
       open={false}
       {...rest}
     />
