@@ -50,7 +50,7 @@ export type DatePickerProps = {
   prepend?: React.ReactNode;
   // For testing
   'data-cy'?: any;
-} & Omit<ReactDatePickerProps, 'selected'>;
+} & Omit<ReactDatePickerProps, 'selected' | 'customInput'>;
 const POPPER_MODIFIERS: Popper.StrictModifiers[] = [
   {
     name: 'offset',
@@ -72,7 +72,6 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       readOnly,
       disableLabelAnimation = false,
       locale = 'nb',
-      weekLabel = 'uke',
       prepend = <DateIcon />,
       disabled,
       dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
@@ -112,6 +111,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         onChange(date, event);
       }
     };
+
     return (
       <ReactDatepicker
         className={classNames('eds-form-control', className)}
@@ -125,8 +125,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         readOnly={readOnly}
         id={id}
         disabled={disabled}
-        // @ts-ignore
+        locale={locale}
         popperModifiers={POPPER_MODIFIERS}
+        {...rest}
         customInput={
           <DatePickerInput
             style={style}
@@ -139,7 +140,6 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             data-cy={rest['data-cy']}
           />
         }
-        {...rest}
       />
     );
   },
