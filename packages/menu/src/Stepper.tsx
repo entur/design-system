@@ -14,7 +14,7 @@ export type StepperProps = {
   /** Ekstra klassenavn. */
   className?: string;
   /** Om stepperen skal være et interaktivt-navigasjonselement eller ikke
-   * @default true
+   * @default false
    */
   interactive?: boolean;
   /** Om stepper skal vise indeksering av hvilket trinn man er på
@@ -30,7 +30,7 @@ export const Stepper: React.FC<StepperProps> = ({
   onStepClick,
   steps,
   activeIndex,
-  interactive = true,
+  interactive = false,
   showStepperIndex = true,
   ...rest
 }) => {
