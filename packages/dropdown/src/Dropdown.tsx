@@ -10,7 +10,7 @@ import {
   PotentiallyAsyncDropdownItemType,
 } from './useResolvedItems';
 
-type DropdownProps = {
+export type DropdownProps = {
   /** Tilgjengelige valg i dropdownen */
   items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi. Bruk null for ingen verdi. */
