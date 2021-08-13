@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.2...@entur/datepicker@0.9.3) (2021-08-13)
+
+### Bug Fixes
+
+- **datepicker:** fix issues with locale and weeklabel prop ([8a0ec92](https://bitbucket.org/enturas/design-system/commits/8a0ec92b7026a828b99d40dcdf6463555429b467))
+- **datepicker:** update datepicker dependency ([e58c5a5](https://bitbucket.org/enturas/design-system/commits/e58c5a51066d97fdd193708bd50dc1a344fc5265))
+
 ## [0.9.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.1...@entur/datepicker@0.9.2) (2021-07-16)
 
 ### Bug Fixes

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.6...@entur/menu@4.0.0) (2021-08-13)
+
+### Bug Fixes
+
+- **stepper:** make interactive prop false by default ([e6a89a3](https://bitbucket.org/enturas/design-system/commits/e6a89a33ae348f43e7fe2821f86159f0d6cfb09d))
+
+### Features
+
+- **overflow menu:** add position prop for component ([58254ab](https://bitbucket.org/enturas/design-system/commits/58254ab10b1385a175318ebc4ed5cf829b5dbd95))
+
+### BREAKING CHANGES
+
+- **stepper:** interactive prop has flipped is default state.
+  if not provided, add interactive={true} to your component
+
 ## [3.6.6](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.5...@entur/menu@3.6.6) (2021-07-16)
 
 ### Bug Fixes
