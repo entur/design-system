@@ -10,6 +10,7 @@ import { BaseExpand } from '@entur/expand/src';
 import { AdvancedPlayground } from './AdvancedPlayground';
 import { Button } from '@entur/button';
 import { SourceCodeIcon } from '@entur/icons/dist';
+import classNames from 'classnames';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -46,11 +47,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
   };
 
   const ConditionalWrapper = ({ condition, wrapper, children }: any) =>
-    condition ? (
-      wrapper(children)
-    ) : (
-      <div className="playground">{children}</div>
-    );
+    condition ? wrapper(children) : <div>{children}</div>;
 
   if (!advanced) {
     return (
@@ -61,25 +58,31 @@ export const Playground: React.FC<PlaygroundProps> = ({
         transformCode={transformCode}
         theme={prismTheme}
       >
-        <ConditionalWrapper
-          condition={isContrast}
-          wrapper={(children: React.ReactNode) => (
-            <Contrast className="playground">{children}</Contrast>
-          )}
+        <div
+          className={classNames('playground', { 'eds-contrast': isContrast })}
         >
-          {hideContrastOption ? (
-            <div />
-          ) : (
-            <Switch
-              checked={isContrast}
-              onChange={() => setContrast(prev => !prev)}
-              className="playground__contrast-switch"
-            >
-              <Label as="span">Kontrast</Label>
-            </Switch>
-          )}
-          <LivePreview style={{ ...style }} />
-        </ConditionalWrapper>
+          <div>
+            {hideContrastOption ? (
+              <div />
+            ) : (
+              <Switch
+                checked={isContrast}
+                onChange={() => setContrast(prev => !prev)}
+                className="playground__contrast-switch"
+              >
+                <Label as="span">Kontrast</Label>
+              </Switch>
+            )}
+          </div>
+          <ConditionalWrapper
+            condition={isContrast}
+            wrapper={(children: React.ReactNode) => (
+              <Contrast>{children}</Contrast>
+            )}
+          >
+            <LivePreview style={{ ...style }} />
+          </ConditionalWrapper>
+        </div>
         <div className="playground__controls">
           <BaseCard
             className="playground__controls__card-button"
