@@ -35,6 +35,6 @@
     "react-collapse": "^5.1.0"
   },
   "devDependencies": {
-    "@types/react-collapse": "^5.0.0"
+    "@types/react-collapse": "^5.0.1"
   }
 }
