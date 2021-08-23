@@ -73,6 +73,7 @@ function createSvgrConfig(native = false, componentName) {
       'BoltIcon',
       'KolumbusBysykkelIcon',
       'LimeIcon',
+      'MoveAboutIcon',
       'OsloBysykkelIcon',
       'TierIcon',
       'TrondheimBysykkelIcon',
@@ -102,7 +103,6 @@ function createSvgrConfig(native = false, componentName) {
     let color = `{(props.color || "currentColor")}`;
 
     if (outliers.includes(componentName)) {
-      console.log(componentName);
       className = `{"eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
     }
     if (componentName && colors.transport.contrast[lowerCaseName]) {
