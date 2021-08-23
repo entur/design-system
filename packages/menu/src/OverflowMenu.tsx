@@ -4,15 +4,18 @@ import {
   MenuButton,
   MenuItem,
   MenuLink,
+  MenuList,
+} from '@reach/menu-button';
+import type {
+  MenuButtonProps,
   MenuItemProps,
   MenuLinkProps,
-  MenuButtonProps,
-  MenuList,
 } from '@reach/menu-button';
 import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
 import { Contrast, useContrast } from '@entur/layout';
 import classNames from 'classnames';
+import type * as Polymorphic from '@reach/utils/polymorphic';
 import './OverflowMenu.scss';
 
 export type OverflowMenuProps = {
@@ -89,65 +92,56 @@ export type OverflowMenuItemProps = {
   onSelect: () => void;
 } & MenuItemProps;
 
-export const OverflowMenuItem: React.FC<OverflowMenuItemProps> = ({
-  children,
-  as = 'button',
-  className,
-  onSelect,
-  disabled,
-  ...rest
-}) => {
-  return (
-    <MenuItem
-      as={as}
-      className={classNames(
-        'eds-overflow-menu__item',
-        { 'eds-overflow-menu__item--disabled': disabled },
-        className,
-      )}
-      onSelect={onSelect}
-      disabled={disabled}
-      {...rest}
-    >
-      {children}
-    </MenuItem>
-  );
-};
+export const OverflowMenuItem = React.forwardRef(
+  ({ children, className, onSelect, disabled, as = 'div', ...rest }, ref) => {
+    return (
+      <MenuItem
+        className={classNames(
+          'eds-overflow-menu__item',
+          { 'eds-overflow-menu__item--disabled': disabled },
+          className,
+        )}
+        onSelect={onSelect}
+        disabled={disabled}
+        ref={ref}
+        as={as}
+        {...rest}
+      >
+        {children}
+      </MenuItem>
+    );
+  },
+) as Polymorphic.ForwardRefComponent<'div', OverflowMenuItemProps>;
 
 export type OverflowMenuLinkProps = {
   /** Innholdet til OverflowMenuLink */
   children: React.ReactNode;
   /** HTML-elementet eller React-komponenten som lager elementet
-   * @defaul "a"
+   * @default "a"
    */
-  as?: 'a' | 'button' | React.ElementType;
+  as?: string | React.ReactElement;
   /** Ekstra klassenavn */
   className?: string;
   /** Det som skjer når elementet er valgt, enten ved museklikk eller Enter-klikk */
   onSelect: () => void;
 } & MenuLinkProps;
 
-export const OverflowMenuLink: React.FC<OverflowMenuItemProps> = ({
-  children,
-  as = 'a',
-  className,
-  onSelect,
-  disabled,
-  ...rest
-}) => {
-  return (
-    <MenuLink
-      as={as}
-      className={classNames(
-        'eds-overflow-menu__item',
-        { 'eds-overflow-menu__item--disabled': disabled },
-        className,
-      )}
-      onSelect={onSelect}
-      disabled={disabled}
-      {...rest}
-    >
-      {children}
-    </MenuLink>
-  );
-};
+export const OverflowMenuLink = React.forwardRef(
+  ({ children, as = 'a', className, onSelect, disabled, ...rest }) => {
+    return (
+      <MenuLink
+        as={as}
+        className={classNames(
+          'eds-overflow-menu__item',
+          { 'eds-overflow-menu__item--disabled': disabled },
+          className,
+        )}
+        onSelect={onSelect}
+        disabled={disabled}
+        {...rest}
+      >
+        {children}
+      </MenuLink>
+    );
+  },
+) as Polymorphic.ForwardRefComponent<'a', OverflowMenuLinkProps>;
