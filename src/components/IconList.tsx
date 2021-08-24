@@ -9,7 +9,7 @@ import { GridContainer, GridItem } from '@entur/grid';
 import { Heading4, SubLabel } from '@entur/typography';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
-import matchSorter from 'match-sorter';
+import { matchSorter } from 'match-sorter';
 import React from 'react';
 import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
 import './IconList.scss';
