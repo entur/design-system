@@ -6,7 +6,7 @@ import { PrimaryButton } from './PrimaryButton';
 import { SecondaryButton } from './SecondaryButton';
 
 test('Button renders and is clickable', () => {
-  let children = 'Button children';
+  const children = 'Button children';
   const testClass = 'longtesterclassname';
   const spy = jest.fn();
 
@@ -30,7 +30,7 @@ test('Button renders and is clickable', () => {
 });
 
 test('Button renders as an <a> tag, with an href-property', () => {
-  let children = 'Button children';
+  const children = 'Button children';
   const hrefLink = '#coolLinkAddresss';
   const { getByTestId } = render(
     <Button
