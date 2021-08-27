@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { ActionChip } from '.';
 
 test('ActionChip renders and is clickable', () => {
-  let children = 'Action Chip';
+  const children = 'Action Chip';
   const testClass = 'TestClass';
   const spy = jest.fn();
 
