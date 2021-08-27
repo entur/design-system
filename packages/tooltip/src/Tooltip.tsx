@@ -12,8 +12,8 @@ type Modifier = {
   enabled?: boolean;
   requires?: Array<string>;
   requiresIfExists?: Array<string>;
-  options?: {};
-  data?: {};
+  options?: Record<string, unknown>;
+  data?: Record<string, unknown>;
   [key: string]: any;
 };
 

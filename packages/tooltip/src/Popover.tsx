@@ -15,9 +15,11 @@ type PopoverContextProps = {
   contentElement: React.RefObject<HTMLDivElement>;
   styles: { [key: string]: React.CSSProperties };
   attributes: { [key: string]: { [key: string]: string } | undefined };
-  closeButtonProps: {};
-  popoverContentProps: (e: PopoverContentCallbackProps) => {};
-  triggerProps: () => {};
+  closeButtonProps: Record<string, unknown>;
+  popoverContentProps: (
+    e: PopoverContentCallbackProps,
+  ) => Record<string, unknown>;
+  triggerProps: () => Record<string, unknown>;
   [key: string]: any;
 };
 
@@ -157,12 +159,8 @@ export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
 >(({ children }, ref: React.Ref<HTMLDivElement>) => {
-  const {
-    showPopover,
-    attributes,
-    styles,
-    popoverContentProps,
-  } = usePopoverContext();
+  const { showPopover, attributes, styles, popoverContentProps } =
+    usePopoverContext();
   const props = popoverContentProps({ ref });
   return (
     <Contrast
