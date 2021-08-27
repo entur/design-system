@@ -16,8 +16,15 @@ test('renders a drawer that closes when it should', () => {
 });
 
 test('does not render anything when open = false', () => {
+  const dismissal = jest.fn();
   const { queryByText, rerender } = render(
-    <Drawer title="En skuff" onDismiss={() => {}} open={true}>
+    <Drawer
+      title="En skuff"
+      onDismiss={() => {
+        dismissal();
+      }}
+      open={true}
+    >
       Innholdet i skuffen
     </Drawer>,
   );
@@ -25,7 +32,13 @@ test('does not render anything when open = false', () => {
   expect(queryByText('Innholdet i skuffen')).toBeInTheDocument();
 
   rerender(
-    <Drawer title="En skuff" onDismiss={() => {}} open={false}>
+    <Drawer
+      title="En skuff"
+      onDismiss={() => {
+        dismissal();
+      }}
+      open={false}
+    >
       Innholdet i skuffen
     </Drawer>,
   );
