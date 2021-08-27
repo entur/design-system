@@ -13,9 +13,8 @@ export type CodeTextOwnProps = {
   children: React.ReactNode;
 };
 
-export type CodeTextProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<CodeTextOwnProps, E>;
+export type CodeTextProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<CodeTextOwnProps, E>;
 
 const defaultElement = 'code';
 
@@ -23,7 +22,7 @@ export const CodeText = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: CodeTextProps<E>) => {
+}: CodeTextProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element className={classNames('eds-code-text', className)} {...rest} />

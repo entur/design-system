@@ -17,9 +17,8 @@ export type Heading2OwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type Heading2Props<
-  T extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<Heading2OwnProps, T>;
+export type Heading2Props<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<Heading2OwnProps, T>;
 
 const defaultElement = 'h2';
 
@@ -28,7 +27,7 @@ export const Heading2 = <E extends React.ElementType = typeof defaultElement>({
   children,
   as,
   ...rest
-}: Heading2Props<E>) => {
+}: Heading2Props<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseHeading as={Element} margin={margin} {...rest} level={2}>

@@ -17,9 +17,8 @@ export type Heading5OwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type Heading5Props<
-  T extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<Heading5OwnProps, T>;
+export type Heading5Props<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<Heading5OwnProps, T>;
 
 const defaultElement = 'h5';
 
@@ -28,7 +27,7 @@ export const Heading5 = <E extends React.ElementType = typeof defaultElement>({
   children,
   as,
   ...rest
-}: Heading5Props<E>) => {
+}: Heading5Props<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseHeading as={Element} margin={margin} {...rest} level={5}>

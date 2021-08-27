@@ -13,19 +13,18 @@ export type PreformattedTextOwnProps = {
   children: React.ReactNode;
 };
 
-export type PreformattedTextProps<
-  E extends React.ElementType
-> = PolymorphicPropsWithoutRef<PreformattedTextOwnProps, E>;
+export type PreformattedTextProps<E extends React.ElementType> =
+  PolymorphicPropsWithoutRef<PreformattedTextOwnProps, E>;
 
 const defaultElement = 'pre';
 
 export const PreformattedText = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   as,
   ...rest
-}: PreformattedTextProps<E>) => {
+}: PreformattedTextProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

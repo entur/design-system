@@ -18,19 +18,19 @@ export type SubParagraphOwnProps = {
 };
 
 export type SubParagraphProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<SubParagraphOwnProps, E>;
 
 const defaultElement = 'p';
 
 export const SubParagraph = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   margin,
   as,
   ...rest
-}: SubParagraphProps<E>) => {
+}: SubParagraphProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

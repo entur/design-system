@@ -18,7 +18,7 @@ export type ParagraphOwnProps = {
 };
 
 export type ParagraphProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<ParagraphOwnProps, E>;
 
 const defaultElement = 'p';
@@ -28,7 +28,7 @@ export const Paragraph = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: ParagraphProps<E>) => {
+}: ParagraphProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

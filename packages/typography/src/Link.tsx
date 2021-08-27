@@ -17,9 +17,8 @@ export type LinkOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type LinkProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<LinkOwnProps, E>;
+export type LinkProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<LinkOwnProps, E>;
 
 const defaultElement = 'a';
 
@@ -28,7 +27,7 @@ export const Link = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: LinkProps<E>) => {
+}: LinkProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

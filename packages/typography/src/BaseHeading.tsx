@@ -17,18 +17,18 @@ type BaseHeadingOwnProps = {
 const defaultElement = 'h1';
 
 export type BaseHeadingProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<BaseHeadingOwnProps, T>;
 
 export const BaseHeading = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   level,
   margin,
   as,
   ...rest
-}: BaseHeadingProps<E>) => {
+}: BaseHeadingProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const baseClass = `eds-h${level}`;
   return (

@@ -17,9 +17,8 @@ export type SubLabelOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type SubLabelProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<SubLabelOwnProps, E>;
+export type SubLabelProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<SubLabelOwnProps, E>;
 
 const defaultElement = 'span';
 
@@ -28,7 +27,7 @@ export const SubLabel = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: SubLabelProps<E>) => {
+}: SubLabelProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

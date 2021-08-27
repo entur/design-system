@@ -17,9 +17,8 @@ export type LabelOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type LabelProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<LabelOwnProps, E>;
+export type LabelProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<LabelOwnProps, E>;
 
 const defaultElement = 'label';
 
@@ -28,7 +27,7 @@ export const Label = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: LabelProps<E>) => {
+}: LabelProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

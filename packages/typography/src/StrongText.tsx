@@ -18,19 +18,19 @@ export type StrongTextOwnProps = {
 };
 
 export type StrongTextProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<StrongTextOwnProps, E>;
 
 const defaultElement = 'strong';
 
 export const StrongText = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   margin = 'both',
   as,
   ...rest
-}: StrongTextProps<E>) => {
+}: StrongTextProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

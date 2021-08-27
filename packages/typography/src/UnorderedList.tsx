@@ -6,8 +6,10 @@ export type UnorderedListProps = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLUListElement>,
+  HTMLUListElement
+>;
 
 export const UnorderedList: React.FC<UnorderedListProps> = ({
   className,

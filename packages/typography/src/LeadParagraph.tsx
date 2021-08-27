@@ -18,19 +18,19 @@ export type LeadParagraphOwnProps = {
 };
 
 export type LeadParagraphProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<LeadParagraphOwnProps, E>;
 
 const defaultElement = 'p';
 
 export const LeadParagraph = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   margin = 'both',
   as,
   ...rest
-}: LeadParagraphProps<E>) => {
+}: LeadParagraphProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

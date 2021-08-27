@@ -18,19 +18,19 @@ export type EmphasizedTextOwnProps = {
 };
 
 export type EmphasizedTextProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<EmphasizedTextOwnProps, E>;
 
 const defaultElement = 'em';
 
 export const EmphasizedText = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   margin = 'both',
   as,
   ...rest
-}: EmphasizedTextProps<E>) => {
+}: EmphasizedTextProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

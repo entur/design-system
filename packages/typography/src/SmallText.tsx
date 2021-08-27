@@ -18,7 +18,7 @@ export type SmallTextOwnProps = {
 };
 
 export type SmallTextProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<SmallTextOwnProps, T>;
 const defaultElement = 'span';
 
@@ -27,7 +27,7 @@ export const SmallText = <E extends React.ElementType = typeof defaultElement>({
   margin = 'both',
   as,
   ...rest
-}: SmallTextProps<E>) => {
+}: SmallTextProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element
