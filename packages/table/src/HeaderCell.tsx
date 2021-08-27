@@ -30,13 +30,14 @@ export const HeaderCell = React.forwardRef<
     },
     ref,
   ) => {
-    const [isCurrentlySorted, setIsCurrentlySorted] = React.useState<boolean>(
-      false,
-    );
+    const [isCurrentlySorted, setIsCurrentlySorted] =
+      React.useState<boolean>(false);
     React.useEffect(() => {
       setIsCurrentlySorted(sortConfig && name === sortConfig.key);
     }, [sortConfig, name]);
-    let ariaSort = isCurrentlySorted ? sortConfig && sortConfig.order : 'none';
+    const ariaSort = isCurrentlySorted
+      ? sortConfig && sortConfig.order
+      : 'none';
     return (
       <th
         className={classNames('eds-table__header-cell', className, {
