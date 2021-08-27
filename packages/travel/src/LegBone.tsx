@@ -32,8 +32,10 @@ export type LegBoneProps = {
   showStop?: boolean;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 export const LegBone: React.FC<LegBoneProps> = ({
   direction,

@@ -32,8 +32,10 @@ export type TravelTagProps = {
     | 'scooter'
     | 'foot'
     | 'car';
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 export const TravelTag: React.FC<TravelTagProps> = ({
   onClose = undefined,
@@ -43,7 +45,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   transport,
   ...rest
 }) => {
-  let isClosable = onClose ? true : false;
+  const isClosable = onClose ? true : false;
   const numberOfChildren = React.Children.count(children);
 
   return (
@@ -53,6 +55,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         'eds-travel-tag--alert': alert !== 'none',
         'eds-travel-tag--icon-and-text': numberOfChildren > 1,
         [`eds-travel-tag--transport-${transport}`]: transport,
+        className,
       })}
       {...rest}
     >

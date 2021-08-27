@@ -20,8 +20,10 @@ export type TravelLegProps = {
     | 'car';
   /** Retningen på komponenten */
   direction: 'horizontal' | 'vertical';
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 export const TravelLeg: React.FC<TravelLegProps> = ({
   className,

@@ -11,8 +11,10 @@ export type LegLineProps = {
   pattern: 'line' | 'dashed' | 'dotted' | 'wave';
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 export const LegLine: React.FC<LegLineProps> = ({
   color,
