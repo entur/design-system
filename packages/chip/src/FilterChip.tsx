@@ -27,6 +27,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
           name={name}
           ref={ref}
           value={value}
+          disabled={disabled}
           {...rest}
         />
         <span className="eds-filter-chip__icon">
