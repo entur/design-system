@@ -9,7 +9,7 @@ import { GridItem } from '@entur/grid';
 import { useColorContext } from './Colors';
 import { Heading4 } from '@entur/typography';
 
-export function getColorFromPath(path: string) {
+export function getColorFromPath(path: string): string {
   return path
     .split('.')
     .reduce(
@@ -47,7 +47,8 @@ const ColorSwatch: React.FC<Props> = ({
         className="color-swatch"
         as="button"
         onClick={() =>
-          setChosenColor!({
+          setChosenColor &&
+          setChosenColor({
             name: title,
             children: children,
             hex: backgroundColor,

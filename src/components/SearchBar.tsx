@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@entur/form';
+import { Switch, TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
 import classNames from 'classnames';
 import './SearchBar.scss';
@@ -20,8 +20,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   onSearchTextChange,
   className,
 }) => {
-  let inputRef = React.useRef<HTMLInputElement>(null);
-  let previousFocusRef = React.useRef<HTMLElement>();
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const previousFocusRef = React.useRef<HTMLElement>();
   // This little trick lets the user tap '/' to focus the search field
   React.useEffect(() => {
     function handleKeyUp(e: KeyboardEvent) {
@@ -34,7 +34,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           ) {
             previousFocusRef.current = document.activeElement as HTMLElement;
             e.stopPropagation();
-            inputRef.current!.focus(); // inputRef will always be set
+            inputRef.current && inputRef.current.focus(); // inputRef will always be set
           }
           break;
         case 'Escape':
@@ -67,6 +67,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         width="fluid"
         ref={inputRef}
       />
+      <Switch size=""></Switch>
       {enableEasterEgg && (
         <React.Suspense fallback="">
           <LazyEasterEgg />

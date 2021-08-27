@@ -9,7 +9,7 @@ type ComponentRulerProps = {
   yNumber: string;
 };
 
-function ComponentRuler(props: ComponentRulerProps) {
+function ComponentRuler(props: ComponentRulerProps): React.ReactNode {
   return (
     <div className="component-ruler-container">
       <div className="vertical-ruler-wrapper">

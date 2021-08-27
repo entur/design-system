@@ -5,8 +5,12 @@ type TypographyDisplayProps = {
   weight: 300 | 400 | 500 | 600;
 };
 
-function TypographyDisplay({ weight }: TypographyDisplayProps) {
-  function FontName() {
+type TypographyWeights = 'Light' | 'Regular' | 'Medium' | 'DemiBold';
+
+function TypographyDisplay({
+  weight,
+}: TypographyDisplayProps): React.ReactNode {
+  function FontName(): TypographyWeights {
     switch (weight) {
       case 300:
         return 'Light';

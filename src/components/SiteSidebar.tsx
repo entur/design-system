@@ -299,7 +299,7 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
 }) => {
   menuItems.sort(compare);
 
-  let topMargin = mobile ? '0rem' : '1.5rem';
+  const topMargin = mobile ? '0rem' : '1.5rem';
   return (
     <SideNavigation style={{ marginTop: topMargin }}>
       {menuItems.map(menuItem => (
@@ -355,7 +355,6 @@ const sortComponentMenus = (a: MenuItem, b: MenuItem, sortOrder: any) => {
   return aSortOrder - bSortOrder;
 };
 const sorters: { [sorter: string]: any } = {
-  // @ts-ignore
   'Kom i gang': komIGangMenuSortOrder,
   Identitet: visuellIdentitetMenuSortOrder,
   Komponenter: componentsMenuSortOrder,
@@ -401,16 +400,17 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
               key={topLevelMenu.id}
               className="site-sidebar__group"
             >
-              {topLevelMenu.menu!.sort(compare).map(menuItem => (
-                <SideNavigationItem
-                  key={menuItem.id}
-                  as={Link}
-                  to={menuItem.route ? menuItem.route : '/'}
-                  active={isActive(menuItem.route, location)}
-                >
-                  {menuItem.name}
-                </SideNavigationItem>
-              ))}
+              {topLevelMenu.menu &&
+                topLevelMenu.menu.sort(compare).map(menuItem => (
+                  <SideNavigationItem
+                    key={menuItem.id}
+                    as={Link}
+                    to={menuItem.route ? menuItem.route : '/'}
+                    active={isActive(menuItem.route, location)}
+                  >
+                    {menuItem.name}
+                  </SideNavigationItem>
+                ))}
             </SideNavigationGroup>
           ))}
       </SideNavigation>

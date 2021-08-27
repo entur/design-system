@@ -3,7 +3,7 @@ import { Heading4 } from '@entur/typography';
 import React from 'react';
 import './HvaViGjor.scss';
 
-export const HvaViGjor = () => {
+export const HvaViGjor: React.ReactNode = () => {
   return (
     <div className="hva-vi-gjor__grid">
       <div className="hva-vi-gjor__grid-item hva-vi-gjor__grid-item-first">

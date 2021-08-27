@@ -6,7 +6,7 @@ import invision from './images/Invision.png';
 import sketch from './images/Sketch.png';
 import './DesignTools.scss';
 
-function DesignTools() {
+function DesignTools(): React.ReactNode {
   return (
     <div className="design-tools">
       <div className="design-tools-presenter">

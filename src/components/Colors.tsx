@@ -39,9 +39,13 @@ const ColorsContext = React.createContext<{
   setChosenColor?: React.Dispatch<React.SetStateAction<ColorObject>>;
 }>({});
 
-export const useColorContext = () => React.useContext(ColorsContext);
+export const useColorContext: () => {
+  setChosenColor?:
+    | React.Dispatch<React.SetStateAction<ColorObject>>
+    | undefined;
+} = () => React.useContext(ColorsContext);
 
-const Colors = () => {
+const Colors: () => React.ReactNode = () => {
   const [chosenColor, setChosenColor] = React.useState<ColorObject>({
     name: '',
     rgb: '',

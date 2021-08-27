@@ -86,7 +86,7 @@ const IconList: React.FC<IconListProps> = props => {
     const filteredOnCategory =
       isCategorySelected &&
       iconEntries.filter(icon => {
-        let k = grouped.get(category.value);
+        const k = grouped.get(category.value);
         return k.some(l => l.name === icon[0]);
       });
     const returnIcons = isCategorySelected ? filteredOnCategory : iconEntries;
@@ -100,13 +100,13 @@ const IconList: React.FC<IconListProps> = props => {
   const noHits = filteredIcons.length === 0;
   const feedbackText =
     filterString.length > 0
-      ? `${filteredIcons.length} treff på søket ditt`
+      ? `${filteredIcons.length}\u00A0treff på søket ditt`
       : undefined;
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
     addToast({
-      title: `"${iconName}" kopiert!`,
+      title: `"${iconName}"\u00A0kopiert!`,
       content: 'Du finner det i utklippstavla',
     });
   };

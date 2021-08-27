@@ -10,13 +10,12 @@ import {
 import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { Link as DoczLink } from 'docz';
 import React from 'react';
-import Divider from './Divider';
 import logo from './EnturLogo.svg';
 import { Media } from '~/utils/MediaBreakpoint';
 import './FrontPageFooter.scss';
 import { colors, space } from '@entur/tokens/dist';
 
-function FrontPageFooter() {
+function FrontPageFooter(): React.ReactNode {
   const year = new Date();
   return (
     <div className="front-page-footer">

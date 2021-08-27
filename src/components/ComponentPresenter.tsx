@@ -6,7 +6,7 @@ type ComponentPresenterProps = {
   variantHeader?: string;
   presentationHeader?: string;
 };
-function ComponentPresenter(props: ComponentPresenterProps) {
+function ComponentPresenter(props: ComponentPresenterProps): React.ReactNode {
   return (
     <div className="variant-presenter">
       <div className="presenter-header-wrapper presenter-grid">

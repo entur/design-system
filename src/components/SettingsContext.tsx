@@ -1,6 +1,9 @@
 import React from 'react';
 
-export function usePersistedState<Type>(key: string, initialState: Type) {
+export function usePersistedState<Type>(
+  key: string,
+  initialState: Type,
+): [Type, React.Dispatch<React.SetStateAction<Type>>] {
   const useStateResult = React.useState<Type>(() => {
     if (typeof window === 'undefined') {
       // Server side
@@ -21,7 +24,7 @@ export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
 export type PackageManager = 'yarn' | 'npm';
 export type Theme = 'light' | 'dark';
-type Context = {
+type SettingsContext = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;
   userType: UserType;
@@ -32,7 +35,7 @@ type Context = {
   setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 };
 
-const SettingsContext = React.createContext<Context | null>(null);
+const SettingsContext = React.createContext<SettingsContext | null>(null);
 
 export const SettingsProvider: React.FC = props => {
   const [variableFormat, setVariableFormat] = usePersistedState<VariableFormat>(
@@ -77,7 +80,7 @@ export const SettingsProvider: React.FC = props => {
   return <SettingsContext.Provider value={contextValue} {...props} />;
 };
 
-export const useSettings = () => {
+export const useSettings: () => SettingsContext = () => {
   const context = React.useContext(SettingsContext);
   if (!context) {
     throw new Error(

@@ -77,14 +77,14 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   const [showCode, setShowCode] = React.useState(false);
   const [propState, setPropState] = React.useState(
     props.map(p => {
-      let name = p.name;
-      let df = p.defaultValue;
+      const name = p.name;
+      const df = p.defaultValue;
       return { [name]: df };
     }),
   );
 
   const handleChange = (name, value) => {
-    let prevState = propState;
+    const prevState = propState;
     setPropState(
       prevState.map(prev => {
         return Object.keys(prev)[0] === name ? { [name]: value } : prev;
@@ -98,7 +98,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
 
       if (childrenContent) {
         // Regex for alle typer innhold til children
-        const childrenRegex = new RegExp(`>(?!\})(([\\W\\w\\s])+)?<`);
+        const childrenRegex = new RegExp(`>(?!})(([\\W\\w\\s])+)?<`);
         // console.log(childrenRegex.exec(code));
 
         return code.replace(
@@ -113,7 +113,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
     const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`;
     const componentPropsRegex = new RegExp(pattern);
     const propString = Object.entries(props)
-      .reduce((accumulator, [_, value]) => {
+      .reduce((accumulator, [, value]) => {
         if (value.name === 'children') {
           return accumulator;
         }

@@ -6,7 +6,10 @@ import Divider from '~/components/Divider';
 import './SiteFooter.scss';
 
 const SiteFooter: React.FC = () => {
-  const { filepath, name } = useCurrentDoc();
+  const {
+    filepath,
+    //name
+  } = useCurrentDoc();
   // WIP
   // const entries = useMenus();
   // const currentIndex = entries?.findIndex(entry => entry.name == name);
@@ -40,32 +43,32 @@ const SiteFooter: React.FC = () => {
   );
 };
 
-function findNextPage(entries, current) {
-  const { order, index, menu, parent, name } = current;
-  // console.log(name, menu, parent);
+// function findNextPage(entries, current) {
+//   const { order, index, menu, parent, name } = current;
+//   // console.log(name, menu, parent);
 
-  const currentMenuPages = entries.filter(entry => {
-    return entry.menu?.find(e => {
-      return e.parent === parent;
-    });
-  });
-  // console.log(currentMenuPages);
+//   const currentMenuPages = entries.filter(entry => {
+//     return entry.menu?.find(e => {
+//       return e.parent === parent;
+//     });
+//   });
+//   // console.log(currentMenuPages);
 
-  if (index) {
-    return currentMenuPages[0].menu.filter(
-      page => page.order === 1 && page.parent === parent,
-    );
-  }
+//   if (index) {
+//     return currentMenuPages[0].menu.filter(
+//       page => page.order === 1 && page.parent === parent,
+//     );
+//   }
 
-  return currentMenuPages
-    .filter(collection => {
-      return collection.name === menu;
-    })[0]
-    .menu?.filter(page => {
-      // console.log(page.order, order, page.parent, parent);
+//   return currentMenuPages
+//     .filter(collection => {
+//       return collection.name === menu;
+//     })[0]
+//     .menu?.filter(page => {
+//       // console.log(page.order, order, page.parent, parent);
 
-      return page.order === order + 1 && page.parent === parent;
-    });
-}
+//       return page.order === order + 1 && page.parent === parent;
+//     });
+// }
 
 export default SiteFooter;

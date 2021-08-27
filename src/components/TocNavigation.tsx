@@ -10,13 +10,13 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
 
   React.useEffect(() => {
     const findActiveHeading = debounce(() => {
-      for (let i in headingElements) {
+      for (const i in headingElements) {
         if (!headingElements[i]) {
           continue;
         }
         const thisTop = headingElements[i].getBoundingClientRect().top;
-        const nextTop = headingElements[Number(i) + 1]?.getBoundingClientRect()
-          .top;
+        const nextTop =
+          headingElements[Number(i) + 1]?.getBoundingClientRect().top;
 
         if (thisTop + nextTop >= 0 || thisTop >= 0) {
           setActiveHeading(headingElements[i].id);

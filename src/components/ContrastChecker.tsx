@@ -22,18 +22,17 @@ import { Heading4, CodeText } from '@entur/typography/dist';
 import { CopyButton } from './CopyButton';
 import './ContrastChecker.scss';
 
-function ContrastChecker() {
+function ContrastChecker(): React.ReactNode {
   const flattenedColorMap = flatten(colors);
   const colorList = [];
-  for (let [key, value] of Object.entries(flattenedColorMap)) {
+  for (const [key, value] of Object.entries(flattenedColorMap)) {
     if (value in colorList === false) {
       colorList.push({ label: key, value: value });
     }
   }
   const [textColor, setTextColor] = React.useState(colorList[0]);
   const [backgroundColor, setBackgroundColor] = React.useState(colorList[1]);
-  let score: string;
-  score = Number(hex(textColor.value, backgroundColor.value))
+  const score = Number(hex(textColor.value, backgroundColor.value))
     .toFixed(1)
     .toString();
 
@@ -90,7 +89,7 @@ function ContrastChecker() {
               label="Forgrunn"
               items={colorList}
               onChange={item =>
-                setTextColor({ value: item!.value, label: item!.label })
+                item && setTextColor({ value: item.value, label: item.label })
               }
               placeholder={textColor.label}
             />
@@ -110,7 +109,8 @@ function ContrastChecker() {
               items={colorList}
               label="Bakgrunn"
               onChange={item =>
-                setBackgroundColor({ value: item!.value, label: item!.label })
+                item &&
+                setBackgroundColor({ value: item.value, label: item.label })
               }
               placeholder={backgroundColor.label}
             />
