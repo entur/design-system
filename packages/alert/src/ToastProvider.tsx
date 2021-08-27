@@ -155,7 +155,9 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   );
 };
 
-export const useToast = () => {
+export const useToast: () => {
+  addToast: (payload: AddToastPayload) => void;
+} = () => {
   const context = React.useContext(ToastContext);
   if (!context) {
     throw new Error(

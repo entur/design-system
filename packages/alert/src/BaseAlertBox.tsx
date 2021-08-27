@@ -48,7 +48,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
   closable = false,
   closeButtonLabel = 'Lukk',
   variant,
-  onClose = () => {},
+  onClose = () => ({}),
   size,
   title,
   ...rest
