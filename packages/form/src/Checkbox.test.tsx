@@ -21,7 +21,7 @@ test('Checkbox renders with appropriate label and is clickable, and state is set
 
 test('checkboxes can be indeterminate', () => {
   const { getByLabelText, rerender } = render(
-    <Checkbox checked="indeterminate" onChange={() => {}}>
+    <Checkbox checked="indeterminate" onChange={() => undefined}>
       All
     </Checkbox>,
   );
@@ -29,7 +29,7 @@ test('checkboxes can be indeterminate', () => {
   expect(getByLabelText('All')).toHaveProperty('checked', false);
 
   rerender(
-    <Checkbox checked={true} onChange={() => {}}>
+    <Checkbox checked={true} onChange={() => undefined}>
       All
     </Checkbox>,
   );

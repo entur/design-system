@@ -45,14 +45,15 @@ test('Removes fieldset if label is not set', () => {
   );
   expect(getByLabelText('Oslo')).toHaveProperty('checked', true);
   expect(container.nodeName).toBe('DIV');
-  expect(container.firstChild!.nodeName).toBe('LABEL');
+  container.firstChild && expect(container.firstChild.nodeName).toBe('LABEL');
   rerender(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
       <Radio value="Oslo">Oslo</Radio>
       <Radio value="Bergen">Bergen</Radio>
     </RadioGroup>,
   );
-  expect(container.firstChild!.nodeName).toBe('FIELDSET');
+  container.firstChild &&
+    expect(container.firstChild.nodeName).toBe('FIELDSET');
 });
 
 expect.extend(toHaveNoViolations);
