@@ -10,7 +10,7 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { ClockIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
+import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { useOnMount, useRandomId } from '@entur/utils';
 import { nb } from 'date-fns/locale';
 import { add, sub } from 'date-fns';
@@ -44,10 +44,6 @@ export type TimePickerProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
-  /** Tekst eller ikon som kommer før inputfelter
-   * @default <ClockIcon />
-   */
-  prepend?: React.ReactNode;
   /** Kalles ved klikk på pil venstre i TimePicker
    * @default Trekker fra 30 minutter av den valgte tiden
    */
@@ -76,7 +72,6 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       variant,
       disableLabelAnimation,
       locale = 'nb',
-      prepend = <ClockIcon />,
       onLeftArrowClick = (selectedTime, event) =>
         selectedTime && onChange(sub(selectedTime, { minutes: 30 }), event),
       onRightArrowClick = (selectedTime, event) =>
@@ -163,10 +158,8 @@ const TimePickerBase: React.FC<TimePickerBaseProps> = ({
   dateFormat = ['HH:mm', 'HHmm'],
   ...rest
 }) => {
-  const {
-    isFilled: isTimepickerFilled,
-    setFilled: setFiller,
-  } = useInputGroupContext();
+  const { isFilled: isTimepickerFilled, setFilled: setFiller } =
+    useInputGroupContext();
 
   useOnMount(() => {
     if (selectedTime) {
