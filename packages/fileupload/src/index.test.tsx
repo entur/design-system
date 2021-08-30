@@ -34,10 +34,13 @@ test('invoke onDragEnter when dragenter event occurs', async () => {
     />,
   );
   const deleteButton = container.querySelector('button');
-  fireEvent.click(deleteButton!);
+  deleteButton && fireEvent.click(deleteButton);
   expect(onDelete).toHaveBeenCalled();
-  //@ts-ignore
-  function flushPromises(ui, container) {
+
+  function flushPromises(
+    ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>,
+    container: HTMLElement,
+  ) {
     return new Promise(resolve =>
       setImmediate(() => {
         render(ui, { container });
@@ -46,20 +49,17 @@ test('invoke onDragEnter when dragenter event occurs', async () => {
     );
   }
 
-  //@ts-ignore
-  function dispatchEvt(node, type, data) {
+  function dispatchEvt(node: any, type: string, data: any) {
     const event = new Event(type, { bubbles: true });
     Object.assign(event, data);
     fireEvent(node, event);
   }
 
-  //@ts-ignore
-  function mockData(files) {
+  function mockData(files: File[]) {
     return {
       dataTransfer: {
         files,
-        //@ts-ignore
-        items: files.map(file => ({
+        items: files.map((file: File) => ({
           kind: 'file',
           type: file.type,
           getAsFile: () => file,
