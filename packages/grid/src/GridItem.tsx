@@ -20,9 +20,8 @@ export type GridItemOwnProps = {
   className?: string;
 };
 
-export type GridItemProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<GridItemOwnProps, E>;
+export type GridItemProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<GridItemOwnProps, E>;
 
 const defaultElement = 'div';
 
@@ -34,7 +33,7 @@ export const GridItem = <E extends React.ElementType = typeof defaultElement>({
   large,
   as,
   ...rest
-}: GridItemProps<E>) => {
+}: GridItemProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseGrid

@@ -35,13 +35,13 @@ export type GridContainerOwnProps = {
 };
 
 export type GridContainerProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<GridContainerOwnProps, E>;
 
 const defaultElement = 'div';
 
 export const GridContainer = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   children,
   className,
@@ -49,7 +49,7 @@ export const GridContainer = <
   rowSpacing,
   as,
   ...rest
-}: GridContainerProps<E>) => {
+}: GridContainerProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <BaseGrid

@@ -53,9 +53,8 @@ type BaseGridOwnProps = {
 };
 const defaultElement = 'code';
 
-export type BaseGridProps<
-  T extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<BaseGridOwnProps, T>;
+export type BaseGridProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<BaseGridOwnProps, T>;
 
 export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
   item,
@@ -69,7 +68,7 @@ export const BaseGrid = <E extends React.ElementType = typeof defaultElement>({
   large,
   as,
   ...rest
-}: BaseGridProps<E>) => {
+}: BaseGridProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classnames([
     'eds-grid',
