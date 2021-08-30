@@ -60,21 +60,16 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   onDelete = file => console.log(file),
   accept = '',
   files = [],
-  options = {},
   label,
   style,
   ...rest
 }) => {
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragReject,
-  } = useDropzone({
-    onDrop,
-    accept: accept,
-    ...rest,
-  });
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      onDrop,
+      accept: accept,
+      ...rest,
+    });
 
   const success = files.length > 0;
 
