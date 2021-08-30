@@ -7,7 +7,7 @@ type InputGroupContextType = {
 
 const InputGroupContext = React.createContext<InputGroupContextType>({
   isFilled: false,
-  setFilled: () => {},
+  setFilled: () => null,
 });
 
 export const InputGroupContextProvider: React.FC<{
@@ -23,4 +23,5 @@ export const InputGroupContextProvider: React.FC<{
   );
 };
 
-export const useInputGroupContext = () => React.useContext(InputGroupContext);
+export const useInputGroupContext: () => InputGroupContextType = () =>
+  React.useContext(InputGroupContext);

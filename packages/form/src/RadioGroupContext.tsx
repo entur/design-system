@@ -12,7 +12,7 @@ const RadioGroupContext = React.createContext<RadioGroupContextProps | null>(
 
 export const RadioGroupContextProvider = RadioGroupContext.Provider;
 
-export const useRadioGroupContext = () => {
+export const useRadioGroupContext: () => RadioGroupContextProps = () => {
   const context = React.useContext(RadioGroupContext);
   if (!context) {
     throw new Error(

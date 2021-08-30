@@ -40,13 +40,16 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     // Trick to allow using a ref locally, while still allowing for ref forwarding
     // Read more at https://reactjs.org/docs/hooks-reference.html#useimperativehandle
     const innerRef = React.useRef<HTMLInputElement>(null);
+    //eslint-disable-next-line
     React.useImperativeHandle(ref, () => innerRef.current!);
 
     const isIndeterminate = checked === 'indeterminate';
     const isControlled = checked !== undefined;
 
     React.useEffect(() => {
-      innerRef!.current!.indeterminate = isIndeterminate;
+      if (innerRef && innerRef.current) {
+        innerRef.current.indeterminate = isIndeterminate;
+      }
     }, [isIndeterminate]);
 
     return (

@@ -18,7 +18,7 @@ export const VariantProvider: React.FC<VariantProviderProps> = ({
   );
 };
 
-export const useVariant = () => {
+export const useVariant: () => VariantType | null = () => {
   const context = React.useContext(VariantContext);
   return context;
 };
