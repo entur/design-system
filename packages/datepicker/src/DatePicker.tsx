@@ -10,7 +10,7 @@ import {
   useInputGroupContext,
   VariantType,
 } from '@entur/form';
-import { CalendarIcon, DateIcon } from '@entur/icons';
+import { CalendarIcon } from '@entur/icons';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
@@ -35,7 +35,7 @@ export type DatePickerProps = {
   className?: string;
   /** Label over DatePicker */
   label: string;
-  /** Varselmelding, som vil komme under TextArea */
+  /** Varselmelding, som vil komme under DatePicker */
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
@@ -72,7 +72,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       readOnly,
       disableLabelAnimation = false,
       locale = 'nb',
-      prepend = <DateIcon />,
+      prepend,
       disabled,
       dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
       variant,
@@ -82,10 +82,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     ref,
   ) => {
     const id = useRandomId('eds-datepicker');
-    const {
-      isFilled: isDatepickerFilled,
-      setFilled: setFiller,
-    } = useInputGroupContext();
+    const { isFilled: isDatepickerFilled, setFilled: setFiller } =
+      useInputGroupContext();
 
     useOnMount(() => {
       if (selectedDate) {
@@ -114,7 +112,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
     return (
       <ReactDatepicker
-        className={classNames('eds-form-control', className)}
+        className={classNames(className)}
         calendarClassName="eds-datepicker__calender"
         selected={selectedDate}
         onChange={handleChange}
@@ -133,11 +131,12 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             style={style}
             readOnly={readOnly}
             variant={variant}
-            datepickerId={id}
             label={label}
             disabled={disabled}
             ref={ref}
             data-cy={rest['data-cy']}
+            disableLabelAnimation={disableLabelAnimation}
+            prepend={prepend}
           />
         }
       />
@@ -148,6 +147,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 type DatePickerInputProps = {
   onClick?: any;
   value?: any;
+  disableLabelAnimation?: boolean;
+  className?: string;
   [key: string]: any;
 };
 // Props fra customInput i react-datepicker
@@ -181,6 +182,8 @@ const DatePickerInput = React.forwardRef<
     {
       value,
       onClick,
+      // Capture onFocus prop from react-datepicker, but doesn't use it
+      // eslint-disable-next-line
       onFocus,
       onKeyDown,
       variant,
@@ -190,24 +193,27 @@ const DatePickerInput = React.forwardRef<
       disabled,
       label,
       readOnly,
-      datepickerId,
+      id,
+      prepend,
+      className,
       ...rest
     },
     ref,
   ) => {
     return (
-      <span style={{ display: 'flex' }}>
+      <span style={{ display: 'flex' }} className={className}>
         <BaseFormControl
           style={style}
           className="eds-datepicker__form-control"
           readOnly={readOnly}
           label={label}
-          labelId={datepickerId}
+          labelId={id}
           feedback={feedback}
           variant={variant}
           disabled={disabled}
           disableLabelAnimation={disableLabelAnimation}
           isFilled={value ? true : false}
+          prepend={prepend}
         >
           <input
             value={value}
@@ -215,6 +221,8 @@ const DatePickerInput = React.forwardRef<
             readOnly={readOnly}
             disabled={disabled}
             ref={ref}
+            aria-labelledby={id}
+            className="eds-form-control"
             {...rest}
           />
         </BaseFormControl>
