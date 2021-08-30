@@ -20,7 +20,10 @@ type UseAccordionArgs = {
   defaultOpen?: boolean;
 };
 
-export const useAccordion = ({ id, defaultOpen }: UseAccordionArgs) => {
+export const useAccordion: ({ id, defaultOpen }: UseAccordionArgs) => {
+  isOpen: boolean;
+  toggle: () => void;
+} = ({ id, defaultOpen }: UseAccordionArgs) => {
   const contextValue = React.useContext(AccordionContext);
   if (!contextValue) {
     throw new Error('You need to wrap your AccordionItem inside an Accordion');
