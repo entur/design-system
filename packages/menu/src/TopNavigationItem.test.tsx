@@ -4,13 +4,12 @@ import { render, fireEvent } from '@testing-library/react';
 import { TopNavigationItem } from '.';
 
 test('Renders a TopNavigationItem with additional classes, and working selected attribute', () => {
-  let tester = false;
   const spy = jest.fn();
   const { getByTestId, rerender } = render(
     <TopNavigationItem
       className="additionalClass"
       data-testid="testid"
-      active={tester}
+      active={false}
       onClick={spy}
     >
       Click me

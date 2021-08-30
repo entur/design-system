@@ -2,19 +2,21 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Pagination, PaginationProps } from './Pagination';
 
-const createWithDefaults = (
-  defaults: PaginationProps,
-  getAllRenderUtils = false,
-) => (props: Partial<PaginationProps> = {}) => {
-  const renderUtils = render(<Pagination {...defaults} {...props} />);
-  return getAllRenderUtils ? renderUtils : renderUtils.container;
-};
+const createWithDefaults =
+  (defaults: PaginationProps, getAllRenderUtils = false) =>
+  (props: Partial<PaginationProps> = {}) => {
+    const renderUtils = render(<Pagination {...defaults} {...props} />);
+    return getAllRenderUtils ? renderUtils : renderUtils.container;
+  };
 
 test('renders the correct items for large pageCounts', () => {
+  const pageChange = jest.fn();
   const renderWithProps = createWithDefaults({
     pageCount: 100,
     currentPage: 1,
-    onPageChange: () => {},
+    onPageChange: () => {
+      pageChange();
+    },
   });
   expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('123…100');
   expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234…100');
@@ -37,10 +39,13 @@ test('renders the correct items for large pageCounts', () => {
 });
 
 test('renders the correct items for small pageCounts', () => {
+  const pageChange = jest.fn();
   const renderWithProps = createWithDefaults({
     pageCount: 7,
     currentPage: 1,
-    onPageChange: () => {},
+    onPageChange: () => {
+      pageChange();
+    },
   });
   expect(renderWithProps()).toHaveTextContent('1234567');
   expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234567');
@@ -116,15 +121,29 @@ test('clicking the buttons calls the callback with the correct number', () => {
   expect(pageChangeSpy).toHaveBeenLastCalledWith(5);
 });
 test('the selected element is disabled', () => {
+  const pageChange = jest.fn();
   const { getByText } = render(
-    <Pagination pageCount={5} currentPage={3} onPageChange={() => {}} />,
+    <Pagination
+      pageCount={5}
+      currentPage={3}
+      onPageChange={() => {
+        pageChange();
+      }}
+    />,
   );
 
   expect(getByText('3')).toBeDisabled();
 });
 test('renders the currentPage as selected', () => {
+  const pageChange = jest.fn();
   const { getByText } = render(
-    <Pagination pageCount={5} currentPage={3} onPageChange={() => {}} />,
+    <Pagination
+      pageCount={5}
+      currentPage={3}
+      onPageChange={() => {
+        pageChange();
+      }}
+    />,
   );
 
   expect(getByText('3')).toHaveAttribute('aria-current', 'page');
