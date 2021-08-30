@@ -100,13 +100,13 @@ type MultiSelectProps = {
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
   items: input,
-  itemsSelectedLabel = (items, _) => SelectedItemsLabel(items),
+  itemsSelectedLabel = items => SelectedItemsLabel(items),
   label,
   feedback,
   variant,
   disabled,
   readOnly = false,
-  onChange = () => {},
+  onChange = () => undefined,
   className,
   clearable = false,
   loading = false,
@@ -143,18 +143,18 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       }
       const index = selectedItems.indexOf(selectedItem);
       if (index > 0) {
-        let slicedItemList = [
+        const slicedItemList = [
           ...selectedItems.slice(0, index),
           ...selectedItems.slice(index + 1),
         ];
         setSelectedItems(slicedItemList);
         onChange(slicedItemList);
       } else if (index === 0) {
-        let slicedItemList = [...selectedItems.slice(1)];
+        const slicedItemList = [...selectedItems.slice(1)];
         setSelectedItems(slicedItemList);
         onChange(slicedItemList);
       } else {
-        let slicedItemList = [...selectedItems, selectedItem];
+        const slicedItemList = [...selectedItems, selectedItem];
         setSelectedItems(slicedItemList);
         onChange(slicedItemList);
       }
@@ -226,9 +226,8 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 className={classNames('eds-dropdown-list__item', {
                   'eds-dropdown-list__item--highlighted':
                     highlightedIndex === index,
-                  'eds-dropdown-list__item--selected': selectedItems.includes(
-                    item,
-                  ),
+                  'eds-dropdown-list__item--selected':
+                    selectedItems.includes(item),
                 })}
                 key={`${item}${index}`}
                 {...getItemProps({
@@ -240,9 +239,8 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 <span style={{ display: 'flex' }}>
                   <span
                     className={classNames('eds-multiselect-checkbox', {
-                      'eds-multiselect-checkbox--checked': selectedItems.includes(
-                        item,
-                      ),
+                      'eds-multiselect-checkbox--checked':
+                        selectedItems.includes(item),
                     })}
                   >
                     <CheckboxIcon />
@@ -311,12 +309,8 @@ const Appendix: React.FC<{
 };
 
 const DropdownToggleButton = () => {
-  const {
-    getToggleButtonProps,
-    isOpen,
-    openMenu,
-    openOnFocus,
-  } = useMultiSelectContext();
+  const { getToggleButtonProps, isOpen, openMenu, openOnFocus } =
+    useMultiSelectContext();
   return (
     <button
       {...getToggleButtonProps({
@@ -336,7 +330,7 @@ const DropdownToggleButton = () => {
   );
 };
 
-const CheckboxIcon: React.FC<{}> = () => {
+const CheckboxIcon: React.FC = () => {
   return (
     <svg
       className="eds-checkbox-icon"

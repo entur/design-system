@@ -72,7 +72,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   items,
   label,
   loadingText,
-  onChange = () => {},
+  onChange = () => undefined,
   placeholder,
   prepend,
   readOnly,
@@ -89,10 +89,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
   disableLabelAnimation,
   ...rest
 }) => {
-  const { items: normalizedItems, loading, fetchItems } = useResolvedItems(
-    items,
-    debounceTimeout,
-  );
+  const {
+    items: normalizedItems,
+    loading,
+    fetchItems,
+  } = useResolvedItems(items, debounceTimeout);
 
   const selectedItem =
     value === undefined

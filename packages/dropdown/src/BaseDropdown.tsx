@@ -28,19 +28,20 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
   items,
   loading = false,
   loadingText = 'Loading...',
+  //eslint-disable-next-line
   placeholder,
   style,
   listStyle,
   clearable,
   label,
   isFilled = false,
-  labelId,
   disableLabelAnimation,
   ...rest
 }) => {
   const { getLabelProps } = useDownshift();
   return (
-    <div className="eds-dropdown-wrapper">
+    <div className="eds-dropdown-wrapper" style={style}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <BaseFormControl
         append={

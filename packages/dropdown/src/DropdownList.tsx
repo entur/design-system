@@ -14,13 +14,8 @@ export const DropdownList: React.FC<DropdownListProps> = ({
   items,
   ...rest
 }) => {
-  const {
-    highlightedIndex,
-    isOpen,
-    selectedItem,
-    getItemProps,
-    getMenuProps,
-  } = useDownshift();
+  const { highlightedIndex, isOpen, selectedItem, getItemProps, getMenuProps } =
+    useDownshift();
 
   return (
     <ul
@@ -32,6 +27,7 @@ export const DropdownList: React.FC<DropdownListProps> = ({
     >
       {isOpen
         ? items.map((item, index) => (
+            // eslint-disable-next-line react/jsx-key
             <li
               className={classNames('eds-dropdown-list__item', {
                 'eds-dropdown-list__item--highlighted':

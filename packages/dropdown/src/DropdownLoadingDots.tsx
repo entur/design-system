@@ -16,7 +16,7 @@ export const DropdownLoadingDots: React.FC<InlineSpinnerType> = ({
   children,
   ...rest
 }) => (
-  <div className={classNames('eds-inline-spinner', classNames)} {...rest}>
+  <div className={classNames('eds-inline-spinner', className)} {...rest}>
     <LoadingDots />
     <VisuallyHidden>{children}</VisuallyHidden>
   </div>

@@ -7,9 +7,10 @@ import Downshift, {
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import classNames from 'classnames';
 
-const DownshiftContext = React.createContext<ControllerStateAndHelpers<
-  NormalizedDropdownItemType
-> | null>(null);
+const DownshiftContext =
+  React.createContext<ControllerStateAndHelpers<NormalizedDropdownItemType> | null>(
+    null,
+  );
 
 export type DownshiftProviderProps = {
   onChange?: (
@@ -26,8 +27,8 @@ export type DownshiftProviderProps = {
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   children,
-  onChange = () => {},
-  onInputValueChange = () => {},
+  onChange = () => undefined,
+  onInputValueChange = () => undefined,
   highlightFirstItemOnOpen = false,
   className,
   style,
@@ -82,10 +83,11 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   );
 };
 
-export const useDownshift = () => {
-  const context = React.useContext(DownshiftContext);
-  if (!context) {
-    throw new Error('You need to wrap your component in a DownshiftProvider');
-  }
-  return context;
-};
+export const useDownshift: () => ControllerStateAndHelpers<NormalizedDropdownItemType> =
+  () => {
+    const context = React.useContext(DownshiftContext);
+    if (!context) {
+      throw new Error('You need to wrap your component in a DownshiftProvider');
+    }
+    return context;
+  };

@@ -4,7 +4,7 @@ import { DownArrowIcon } from '@entur/icons';
 import { useDownshift } from './DownshiftProvider';
 import './DropdownToggleButton.scss';
 
-export const DropdownToggleButton = () => {
+export const DropdownToggleButton: () => JSX.Element = () => {
   const { getToggleButtonProps, isOpen } = useDownshift();
   return (
     <button
