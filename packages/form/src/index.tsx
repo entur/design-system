@@ -7,7 +7,6 @@ export * from './BaseFormControl';
 export * from './Checkbox';
 export * from './FeedbackText';
 export * from './Fieldset';
-export * from './InputGroup';
 export * from './InputGroupLabel';
 export * from './InputGroupContext';
 export * from './Radio';
