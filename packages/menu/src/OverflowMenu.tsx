@@ -127,7 +127,7 @@ export type OverflowMenuLinkProps = {
 } & MenuLinkProps;
 
 export const OverflowMenuLink = React.forwardRef(
-  ({ children, as = 'a', className, onSelect, disabled, ...rest }) => {
+  ({ children, as = 'a', className, onSelect, disabled, ...rest }, ref) => {
     return (
       <MenuLink
         as={as}
@@ -138,6 +138,7 @@ export const OverflowMenuLink = React.forwardRef(
         )}
         onSelect={onSelect}
         disabled={disabled}
+        ref={ref}
         {...rest}
       >
         {children}

@@ -19,19 +19,19 @@ export type TopNavigationItemOwnProps = {
 };
 
 export type TopNavigationItemProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<TopNavigationItemOwnProps, E>;
 
 const defaultElement = 'a';
 
 export const TopNavigationItem = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   active = false,
   className,
   as,
   ...rest
-}: TopNavigationItemProps<E>) => {
+}: TopNavigationItemProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <Element

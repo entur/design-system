@@ -18,19 +18,19 @@ export type BreadcrumbItemOwnProps = {
 };
 
 export type BreadcrumbItemProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<BreadcrumbItemOwnProps, E>;
 
 const defaultElement = 'a';
 
 export const BreadcrumbItem = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   className,
   isCurrent,
   as,
   ...rest
-}: BreadcrumbItemProps<E>) => {
+}: BreadcrumbItemProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   return (
     <>
