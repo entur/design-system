@@ -31,13 +31,13 @@ export type NavigationCardOwnProps = {
 };
 
 export type NavigationCardProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<NavigationCardOwnProps, E>;
 
 const defaultElement = 'a';
 
 export const NavigationCard = <
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 >({
   title,
   children,
@@ -47,7 +47,7 @@ export const NavigationCard = <
   externalLink = false,
   as,
   ...rest
-}: NavigationCardProps<E>) => {
+}: NavigationCardProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-navigation-card', className, {
     'eds-base-card--red-line': compact,

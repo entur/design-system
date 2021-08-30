@@ -17,9 +17,8 @@ export type TagOwnProps = {
   children: React.ReactNode;
 };
 
-export type TagProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<TagOwnProps, E>;
+export type TagProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<TagOwnProps, E>;
 
 const defaultElement = 'div';
 
@@ -29,7 +28,7 @@ export const Tag = <E extends React.ElementType = typeof defaultElement>({
   compact,
   as,
   ...rest
-}: TagProps<E>) => {
+}: TagProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const childrenArray = React.Children.toArray(children);
   const hasLeadingIcon =

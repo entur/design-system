@@ -11,9 +11,8 @@ export type ContrastBaseProps = {
   className?: string;
 };
 
-export type ContrastProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithRef<ContrastBaseProps, E>;
+export type ContrastProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithRef<ContrastBaseProps, E>;
 
 const defaultElement = 'div';
 
@@ -21,11 +20,11 @@ export const Contrast: PolymorphicForwardRefExoticComponent<
   ContrastBaseProps,
   typeof defaultElement
 > = React.forwardRef(function Contrast<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 >(
   { className, as, ...rest }: PolymorphicPropsWithoutRef<ContrastBaseProps, T>,
   ref: React.ForwardedRef<React.ElementRef<T>>,
-) {
+): JSX.Element {
   const Element: React.ElementType = as || defaultElement;
   return (
     <ContrastContext.Provider value={true}>
@@ -40,4 +39,5 @@ export const Contrast: PolymorphicForwardRefExoticComponent<
 
 export const ContrastContext = React.createContext<boolean>(false);
 
-export const useContrast = () => React.useContext(ContrastContext);
+export const useContrast: () => boolean = () =>
+  React.useContext(ContrastContext);

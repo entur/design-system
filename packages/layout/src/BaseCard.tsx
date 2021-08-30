@@ -13,9 +13,8 @@ export type BaseCardOwnProps = {
   children?: React.ReactNode;
 };
 
-export type BaseCardProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithoutRef<BaseCardOwnProps, E>;
+export type BaseCardProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithoutRef<BaseCardOwnProps, E>;
 
 const defaultElement = 'div';
 
@@ -24,7 +23,7 @@ export const BaseCard = <E extends React.ElementType = typeof defaultElement>({
   className,
   as,
   ...rest
-}: BaseCardProps<E>) => {
+}: BaseCardProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-base-card', className);
   return (

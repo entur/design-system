@@ -30,7 +30,7 @@ export type MediaCardOwnProps = {
 };
 
 export type MediaCardProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<MediaCardOwnProps, E>;
 
 const defaultElement = 'a';
@@ -45,7 +45,7 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   as,
   wholeCardAsElement: whole,
   ...rest
-}: MediaCardProps<E>) => {
+}: MediaCardProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
   const classList = classNames('eds-base-card', 'eds-media-card', className);
 
