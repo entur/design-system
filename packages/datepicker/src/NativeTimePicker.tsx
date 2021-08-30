@@ -79,13 +79,11 @@ type NativeTimePickerBaseProps = {
 const NativeTimePickerBase = React.forwardRef<
   HTMLInputElement,
   NativeTimePickerBaseProps
->(({ onChange, id, value, ...rest }, ref) => {
+>(({ onChange, value, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = rest.variant || contextVariant;
-  const {
-    isFilled: isTimepickerFilled,
-    setFilled: setFiller,
-  } = useInputGroupContext();
+  const { isFilled: isTimepickerFilled, setFilled: setFiller } =
+    useInputGroupContext();
 
   useOnMount(() => {
     setFiller && !isTimepickerFilled && setFiller(true);
