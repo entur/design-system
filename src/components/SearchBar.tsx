@@ -67,7 +67,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         width="fluid"
         ref={inputRef}
       />
-      <Switch size=""></Switch>
       {enableEasterEgg && (
         <React.Suspense fallback="">
           <LazyEasterEgg />
