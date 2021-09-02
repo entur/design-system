@@ -112,6 +112,6 @@
   "relativeDependencies": {},
   "volta": {
     "node": "14.17.0",
-    "yarn": "1.22.0"
+    "yarn": "1.18.0"
   }
 }
