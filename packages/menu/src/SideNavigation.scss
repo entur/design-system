@@ -69,9 +69,10 @@
       }
     }
     &:focus {
-      outline: $outlines-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
       .eds-contrast & {
-        outline: $outlines-focus-contrast;
+        box-shadow: $shadows-focus-contrast;
       }
     }
   }
@@ -159,12 +160,13 @@
 
     &:active,
     &:focus {
-      outline: $outlines-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
       outline-offset: $outline-offsets-focus;
       background: $colors-blues-blue80;
       .eds-contrast &  {
         background-color: $colors-blues-blue30;
-        outline: $outlines-focus-contrast;
+        box-shadow: $shadows-focus-contrast;
       }
     }
   }
@@ -219,10 +221,11 @@
     padding-left: $space-extra-large;
   }
   &:focus {
-    outline: $outlines-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
     outline-offset: $outline-offsets-focus;
     .eds-contrast & {
-      outline: $outlines-focus-contrast;
+      box-shadow: $shadows-focus-contrast;
     }
   }
 }

@@ -9,9 +9,10 @@
     box-shadow $timings-medium ease-in-out;
   &:focus,
   &:focus-within {
-    outline: $outlines-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
     .eds-contrast & {
-      outline: $outlines-focus-contrast;
+      box-shadow: $shadows-focus-contrast;
     }
   }
   .eds-contrast & {
@@ -41,6 +42,9 @@
     flex-direction: column;
     text-decoration: none;
     padding: 1.25rem $space-extra-large 0;
+    &:focus {
+      outline: none;
+    }
   }
   &__arrow-icon {
     align-self: flex-end;

@@ -10,9 +10,10 @@
       outline: none;
       outline-offset: $outline-offsets-focus;
       .eds-file-upload__dropzone {
-        outline: $outlines-focus;
+        outline: none;
+        box-shadow: $shadows-focus;
         .eds-contrast & {
-          outline: $outlines-focus-contrast;
+          box-shadow: $shadows-focus-contrast;
         }
       }
     }

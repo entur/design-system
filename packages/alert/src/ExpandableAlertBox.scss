@@ -33,7 +33,8 @@
     padding: 0 $space-extra-small2;
     flex-shrink: 0;
     &:focus {
-      outline: $outlines-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
       outline-offset: $outline-offsets-focus;
     }
     .eds-icon {
