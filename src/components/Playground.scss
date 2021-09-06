@@ -26,7 +26,8 @@
     width: 100%;
     &:focus {
       outline-offset: $outline-offsets-focus;
-      outline: $outlines-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
     }
     &-icon {
       margin-right: $space-small;

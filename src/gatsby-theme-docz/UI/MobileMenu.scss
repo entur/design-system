@@ -35,7 +35,8 @@
         left: 2rem;
       }
       &:focus {
-        outline: $outlines-focus;
+        outline: none;
+        box-shadow: $shadows-focus;
       }
     }
     &--settings {
@@ -44,7 +45,8 @@
       font-size: $font-sizes-extra-large2;
       flex-grow: 1;
       &:focus {
-        outline: $outlines-focus;
+        outline: none;
+        box-shadow: $shadows-focus;
       }
     }
   }
