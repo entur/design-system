@@ -3629,6 +3629,11 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
+"@popperjs/core@^2.10.1":
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
+  integrity sha512-HnUhk1Sy9IuKrxEMdIRCxpIqPw6BFsbYSEUO9p/hNw5sMld/+3OLMWQP80F8/db9qsv3qUjs7ZR5bS/R+iinXw==
+
 "@popperjs/core@^2.9.2":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
@@ -4475,14 +4480,15 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-datepicker@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-4.1.4.tgz#085d62234e51f99313b9c0bffab4914f1153e6c5"
-  integrity sha512-7M+rLLRVIq4tnrupI/wZn8BQEVIawjVItsOQGgZTYE/L9oTJ9rzmu4im6BNr5meWehXvNWbM4DOeuciaz6exWg==
+"@types/react-datepicker@^4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-4.1.6.tgz#be051309254519e5e7762655ba63242ea6d4eaa3"
+  integrity sha512-OCm1d2qJuClev4yBrbMiPhKRrT65RbzngFdMwDfzmSWco4SNXBFuH7eVOh871ccBHLHhhyg7nrfn+/VAFE+hYQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/react" "*"
     date-fns "^2.0.1"
+    react-popper "^2.2.5"
 
 "@types/react-dom@^16.9.0":
   version "16.9.8"
@@ -19624,10 +19630,10 @@ react-confetti@^6.0.1:
   dependencies:
     tween-functions "^1.2.0"
 
-react-datepicker@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.2.0.tgz#3b23dac8f8e09fc6186787601388bed5690c9fc7"
-  integrity sha512-TR6vqqnGP2DDqrAtSrLseoN4fjkcQEOChwmMITpU45TiPey8eUhvI1TiGf4PFPQ1hvZshljH48De6nJMmiTf9g==
+react-datepicker@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.2.1.tgz#72caf5055bc7c4eb0279c1f6d7624ded053edc4c"
+  integrity sha512-0gcvHMnX8rS1fV90PjjsB7MQdsWNU77JeVHf6bbwK9HnFxgwjVflTx40ebKmHV+leqe+f+FgUP9Nvqbe5RGyfA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     classnames "^2.2.6"
