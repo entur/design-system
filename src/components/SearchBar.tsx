@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, TextField } from '@entur/form';
+import { TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
 import classNames from 'classnames';
 import './SearchBar.scss';
