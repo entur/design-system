@@ -24,7 +24,7 @@ export const FrontPage = () => {
     <>
       <Contrast className="front-page__top">
         <div className="content-margin">
-          <Media greaterThanOrEqual="desktop">
+          <Media greaterThanOrEqual="desktop" className="front-page__desktop">
             <div style={{ position: 'relative' }}>
               <div>
                 <div style={{ paddingTop: '6rem' }}>
@@ -54,7 +54,7 @@ export const FrontPage = () => {
               </div>
             </div>
           </Media>
-          <Media at="mobile">
+          <Media at="mobile" className="front-page__mobile">
             <div style={{ paddingTop: '2rem', paddingBottom: '1.5rem' }}>
               <Heading1>
                 Velkommen til <br /> Entur Designsystem
