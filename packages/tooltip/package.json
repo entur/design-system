@@ -34,7 +34,7 @@
     "@entur/icons": "^3.0.0",
     "@entur/layout": "^2.1.0",
     "@entur/utils": "^0.4.2",
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.10.1",
     "react-popper": "^2.2.5"
   }
 }
