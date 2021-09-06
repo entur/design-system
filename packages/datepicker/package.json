@@ -32,8 +32,8 @@
     "@entur/tokens": "^3.1.0",
     "@entur/typography": "^1.6.7",
     "@entur/utils": "^0.4.2",
-    "@types/react-datepicker": "^4.1.4",
+    "@types/react-datepicker": "^4.1.6",
     "classnames": "^2.3.1",
-    "react-datepicker": "4.2.0"
+    "react-datepicker": "4.2.1"
   }
 }

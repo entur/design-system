@@ -16,6 +16,7 @@ import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
 import { useOnMount, useRandomId } from '@entur/utils';
 import * as Popper from '@popperjs/core';
+import { Modifier } from 'react-popper';
 
 registerLocale('nb', nb);
 
