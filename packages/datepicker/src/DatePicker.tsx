@@ -48,6 +48,10 @@ export type DatePickerProps = {
    * @default <DateIcon />
    */
   prepend?: React.ReactNode;
+  /** Skjuler knapp for åpning av kalender
+   * @default false
+   */
+  hideCalendarButton?: boolean;
   // For testing
   'data-cy'?: any;
 } & Omit<ReactDatePickerProps, 'selected' | 'customInput'>;
@@ -77,6 +81,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
       variant,
       label,
+      hideCalendarButton = false,
       ...rest
     },
     ref,
@@ -137,6 +142,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             data-cy={rest['data-cy']}
             disableLabelAnimation={disableLabelAnimation}
             prepend={prepend}
+            hideCalendarButton={hideCalendarButton}
           />
         }
       />
@@ -149,6 +155,7 @@ type DatePickerInputProps = {
   value?: any;
   disableLabelAnimation?: boolean;
   className?: string;
+  hideCalendarButton?: boolean;
   [key: string]: any;
 };
 // Props fra customInput i react-datepicker
@@ -196,6 +203,7 @@ const DatePickerInput = React.forwardRef<
       id,
       prepend,
       className,
+      hideCalendarButton,
       ...rest
     },
     ref,
@@ -226,25 +234,27 @@ const DatePickerInput = React.forwardRef<
             {...rest}
           />
         </BaseFormControl>
-        <Tooltip
-          placement="top"
-          content="Åpne kalender"
-          disableHoverListener={disabled}
-          disableFocusListener={disabled}
-        >
-          <button
-            className={classNames('eds-datepicker__calendar-button', {
-              'eds-datepicker__calendar-button--open': true,
-              'eds-datepicker__calendar-button--disabled': disabled,
-            })}
-            onKeyDown={onKeyDown}
-            onClick={onClick}
-            disabled={disabled}
-            type="button"
+        {!hideCalendarButton && (
+          <Tooltip
+            placement="top"
+            content="Åpne kalender"
+            disableHoverListener={disabled}
+            disableFocusListener={disabled}
           >
-            <CalendarIcon />
-          </button>
-        </Tooltip>
+            <button
+              className={classNames('eds-datepicker__calendar-button', {
+                'eds-datepicker__calendar-button--open': true,
+                'eds-datepicker__calendar-button--disabled': disabled,
+              })}
+              onKeyDown={onKeyDown}
+              onClick={onClick}
+              disabled={disabled}
+              type="button"
+            >
+              <CalendarIcon />
+            </button>
+          </Tooltip>
+        )}
       </span>
     );
   },
