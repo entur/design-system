@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.7.0...@entur/button@2.7.1) (2021-09-07)
+
+### Bug Fixes
+
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+- **button:** adjust styling for disabled buttons ([edbae0e](https://bitbucket.org/enturas/design-system/commits/edbae0edc8285352c11e402ca9c0d78d0a91bcd8))
+- **button:** fix styling on disabled buttons in contrast ([951ed83](https://bitbucket.org/enturas/design-system/commits/951ed83b2ae0194179cf307f069b9588c68150ec))
+
 # [2.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.6.1...@entur/button@2.7.0) (2021-08-13)
 
 ### Features

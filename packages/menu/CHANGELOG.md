@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.0...@entur/menu@4.0.1) (2021-09-07)
+
+### Bug Fixes
+
+- fix lint warnings ([c4d620e](https://bitbucket.org/enturas/design-system/commits/c4d620ebc008527beb22dd2cd553799cb053960c))
+- update dependencies ([3dfc73e](https://bitbucket.org/enturas/design-system/commits/3dfc73eaf90d0fccdb041adfe98c8a26ada0c47a))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 # [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@3.6.6...@entur/menu@4.0.0) (2021-08-13)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.39](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.38...@entur/a11y@0.2.39) (2021-09-07)
+
+### Bug Fixes
+
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [0.2.38](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.37...@entur/a11y@0.2.38) (2021-06-25)
 
 **Note:** Version bump only for package @entur/a11y

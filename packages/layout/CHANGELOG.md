@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.0...@entur/layout@2.1.1) (2021-09-07)
+
+### Bug Fixes
+
+- fix lint warnings ([fecb950](https://bitbucket.org/enturas/design-system/commits/fecb95073921975c0c2eaea313afb63235a63589))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 # [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.0.1...@entur/layout@2.1.0) (2021-07-16)
 
 ### Features

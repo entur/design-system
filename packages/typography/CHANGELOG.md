@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.8](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.7...@entur/typography@1.6.8) (2021-09-07)
+
+### Bug Fixes
+
+- fix lint warnings and improve typings ([cc3d14c](https://bitbucket.org/enturas/design-system/commits/cc3d14c279d3cf82361ab49d04be5d0dd53675ed))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [1.6.7](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.6...@entur/typography@1.6.7) (2021-06-25)
 
 ### Bug Fixes

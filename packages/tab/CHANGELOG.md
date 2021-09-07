@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.25](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.24...@entur/tab@0.4.25) (2021-09-07)
+
+### Bug Fixes
+
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [0.4.24](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.23...@entur/tab@0.4.24) (2021-06-25)
 
 ### Bug Fixes

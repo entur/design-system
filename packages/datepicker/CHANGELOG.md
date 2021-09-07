@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.3...@entur/datepicker@0.10.0) (2021-09-07)
+
+### Bug Fixes
+
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+- **datepicker:** fix classname prop ([6e85e91](https://bitbucket.org/enturas/design-system/commits/6e85e916b25bab0264871b22182a9a5c4079dce9))
+- **datepicker:** update dependencies ([58ce892](https://bitbucket.org/enturas/design-system/commits/58ce89230a339178c557680138bb5801e65780e8))
+- **timepicker:** remove prepend prop ([fb8ad76](https://bitbucket.org/enturas/design-system/commits/fb8ad7667cedf97b1f7bdf0d7bb59c4e1ab10b84))
+
+### Features
+
+- **datepicker:** add hideCalendarButton prop ([5228910](https://bitbucket.org/enturas/design-system/commits/5228910eff6ce09632ecd466bda326014f576fe9))
+
+### BREAKING CHANGES
+
+- **timepicker:** prepend prop is no longer supported for timepicker
+
 ## [0.9.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.2...@entur/datepicker@0.9.3) (2021-08-13)
 
 ### Bug Fixes

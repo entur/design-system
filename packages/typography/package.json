@@ -1,6 +1,6 @@
 {
   "name": "@entur/typography",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "license": "SEE LICENSE IN README.md",
   "main": "dist/index.js",
   "module": "dist/typography.esm.js",
@@ -33,6 +33,6 @@
     "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.1.0"
+    "@entur/tokens": "^3.2.0"
   }
 }

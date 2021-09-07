@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.14](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.13...@entur/chip@0.4.14) (2021-09-07)
+
+### Bug Fixes
+
+- improve typings ([423e06a](https://bitbucket.org/enturas/design-system/commits/423e06a1048731509fe0d3d6606e3fe390a868e1))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [0.4.13](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.12...@entur/chip@0.4.13) (2021-08-13)
 
 **Note:** Version bump only for package @entur/chip

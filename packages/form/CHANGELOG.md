@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.7...@entur/form@5.0.0) (2021-09-07)
+
+### Bug Fixes
+
+- **feedback text:** adjust font color for feedback text ([f3ca6d4](https://bitbucket.org/enturas/design-system/commits/f3ca6d4b063fbc8ab40a5f81b2db77f972326499))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+- **base form control:** add new focus styling for all input components ([46334f1](https://bitbucket.org/enturas/design-system/commits/46334f16a712f77861a1817ae8c46908e34e5f5f))
+- **inputgroup:** remove inputgroup component ([e3577cc](https://bitbucket.org/enturas/design-system/commits/e3577cc91f4b5f414043018ac382cdf00f3a0867))
+- fix lint warnings ([88598f2](https://bitbucket.org/enturas/design-system/commits/88598f2b4ece751eadf84540243ac4f6bce3cdeb))
+- **switch:** fix typings for size prop ([5971864](https://bitbucket.org/enturas/design-system/commits/5971864fc1b65d39171495c7d40efb992be5c19b))
+
+### BREAKING CHANGES
+
+- **inputgroup:** removed inputgroup component
+
 ## [4.4.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.6...@entur/form@4.4.7) (2021-08-13)
 
 **Note:** Version bump only for package @entur/form

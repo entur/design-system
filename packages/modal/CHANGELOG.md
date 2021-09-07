@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.4...@entur/modal@1.5.5) (2021-09-07)
+
+### Bug Fixes
+
+- update dependencies ([c76a03c](https://bitbucket.org/enturas/design-system/commits/c76a03ca6e15951c40b032f618617380dc8f15d1))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [1.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.3...@entur/modal@1.5.4) (2021-08-13)
 
 **Note:** Version bump only for package @entur/modal

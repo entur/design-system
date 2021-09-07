@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.6...@entur/dropdown@2.0.7) (2021-09-07)
+
+### Bug Fixes
+
+- improve typing and fix lint warnings ([6f0b0a8](https://bitbucket.org/enturas/design-system/commits/6f0b0a8710e2353777547304ca101029a3f5d335))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+- **dropdown:** update dependencies ([1dc8971](https://bitbucket.org/enturas/design-system/commits/1dc89716c46b8fc4c22d4426c2c583ad277f2e58))
+
 ## [2.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.5...@entur/dropdown@2.0.6) (2021-08-13)
 
 ### Bug Fixes

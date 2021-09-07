@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.6...@entur/grid@0.3.7) (2021-09-07)
+
+### Bug Fixes
+
+- fix lint warnings ([6007bac](https://bitbucket.org/enturas/design-system/commits/6007bac502253a1a81f803f511d7e87097822528))
+
 ## [0.3.6](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.5...@entur/grid@0.3.6) (2021-06-25)
 
 ### Bug Fixes

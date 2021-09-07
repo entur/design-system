@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.1.0...@entur/tokens@3.2.0) (2021-09-07)
+
+### Bug Fixes
+
+- update shadow-focus token to match outline focus ([0882c3c](https://bitbucket.org/enturas/design-system/commits/0882c3c8ea265c58f4e8e0c386ae6f58be382fab))
+
+### Features
+
+- **color:** add canary contrast and canary tint ([c2a22dc](https://bitbucket.org/enturas/design-system/commits/c2a22dc2168971edb3763641ebb64d2a8efbb4e7))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.0.1...@entur/tokens@3.1.0) (2021-04-23)
 
 ### Bug Fixes

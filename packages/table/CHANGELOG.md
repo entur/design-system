@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.16](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.15...@entur/table@4.3.16) (2021-09-07)
+
+### Bug Fixes
+
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+- **headercell:** fix lint warning ([45e0c2f](https://bitbucket.org/enturas/design-system/commits/45e0c2fc2fcdf6cc037c1e4a30acf93d00b92deb))
+
 ## [4.3.15](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.14...@entur/table@4.3.15) (2021-08-13)
 
 **Note:** Version bump only for package @entur/table

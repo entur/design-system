@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.29](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.28...@entur/fileupload@0.3.29) (2021-09-07)
+
+### Bug Fixes
+
+- fix lint warning ([6d8d06e](https://bitbucket.org/enturas/design-system/commits/6d8d06e7f2a088d2e857d41d52aa08f4ab50a49f))
+- update dependencies ([d99dbde](https://bitbucket.org/enturas/design-system/commits/d99dbde566107589902f7f19bde3286a7195a600))
+- utilize reworked focus token ([586758f](https://bitbucket.org/enturas/design-system/commits/586758fc86eb5aa52116c63c14ef033eb2e8b12f))
+
 ## [0.3.28](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.27...@entur/fileupload@0.3.28) (2021-08-13)
 
 **Note:** Version bump only for package @entur/fileupload

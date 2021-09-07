@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.0.0...@entur/icons@3.1.0) (2021-09-07)
+
+### Features
+
+- **weather:** add weather icons ([1e7c585](https://bitbucket.org/enturas/design-system/commits/1e7c5856a4387578a046b8959662d96a40a05566))
+- add MoveAbout icon ([e336ddb](https://bitbucket.org/enturas/design-system/commits/e336ddb443a402e8de4f41ec8d777b2ff12f4d0e))
+
 # [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@2.0.2...@entur/icons@3.0.0) (2021-07-16)
 
 ### Bug Fixes
