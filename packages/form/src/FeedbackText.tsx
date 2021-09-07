@@ -53,7 +53,7 @@ export const FeedbackText: React.FC<FeedbackTextProps> = ({
       {...rest}
     >
       {!hideIcon && <AlertIcon variant={variant} />}
-      {children}
+      <span className="eds-feedback-text__text">{children}</span>
     </SubLabel>
   );
 };

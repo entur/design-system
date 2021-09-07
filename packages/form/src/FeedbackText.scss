@@ -7,6 +7,12 @@
   &--info {
     padding-left: calc(#{$space-medium} + #{$border-widths-medium});
   }
+  &__text {
+    color: $colors-brand-blue;
+    .eds-contrast & {
+      color: $colors-brand-white;
+    }
+  }
 }
 
 .eds-feedback-text__icon {
