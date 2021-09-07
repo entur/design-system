@@ -54,7 +54,9 @@ export const colors = {
     mint: '#1a8e60',
     mintContrast: '#5ac39a',
     mintTint: '#d0f1e3', // The best name
-    canary: '#efd358',
+    canary: '#ffca28',
+    canaryContrast: '#ffe082',
+    canaryTint: '#fff4cd',
   },
   misc: {
     focus: 'rgba(68, 192, 255, 0.5)',
