@@ -36,9 +36,10 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
 
   &:focus {
     outline-offset: $outline-offsets-focus;
-    outline: $outlines-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
     .eds-contrast & {
-      outline: $outlines-focus-contrast;
+      box-shadow: $shadows-focus-contrast;
     }
   }
 

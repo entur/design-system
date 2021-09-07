@@ -89,7 +89,8 @@
   }
   &__navigation {
     &:focus {
-      outline: $outlines-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
       outline-offset: $outline-offsets-focus;
     }
   }
@@ -200,8 +201,9 @@
     }
 
     &:focus {
-      outline: $outlines-focus;
       z-index: 1;
+      outline: none;
+      box-shadow: $shadows-focus;
     }
     &:hover {
       border-radius: 0;

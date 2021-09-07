@@ -14,6 +14,7 @@
   background-color: $colors-brand-white;
   border-radius: $border-radiuses-medium;
   border: $border-widths-medium solid $colors-greys-grey60;
+  box-shadow: 0 0 0 transparent;
   color: $colors-brand-blue;
   display: flex;
   position: relative;
@@ -24,8 +25,19 @@
   &:focus-within,
   &:hover {
     border-color: $colors-brand-blue;
+  }
+  &:hover {
     .eds-contrast & {
       border-color: $colors-brand-lavender;
+      background: $colors-blues-blue80;
+    }
+  }
+  &:focus-within {
+    box-shadow: inset 0 0 0 1px var(--border-color);
+    .eds-contrast & {
+      border-color: $colors-brand-blue;
+      --border-color: #{$colors-brand-lavender};
+      box-shadow: 0 0 0 $border-widths-medium var(--border-color);
     }
   }
 
@@ -95,6 +107,7 @@
   // Validation modes changes the border colors
   &--success {
     border-color: $colors-validation-mint;
+    --border-color: #{$colors-validation-mint};
     &:hover {
       border-color: $colors-validation-mint-contrast;
     }
@@ -104,17 +117,20 @@
 
     .eds-contrast & {
       border-color: $colors-validation-mint-contrast;
+      --border-color: #{$colors-validation-mint-contrast};
       &:hover {
         border-color: $colors-validation-mint;
       }
       &:focus-within {
-        border-color: $colors-validation-mint-contrast;
+        --border-color: #{$colors-validation-mint-contrast};
+        border-color: $colors-brand-blue;
       }
     }
   }
 
   &--error {
     border-color: $colors-validation-lava;
+    --border-color: #{$colors-validation-lava};
     &:hover {
       border-color: $colors-validation-lava-contrast;
     }
@@ -124,11 +140,13 @@
 
     .eds-contrast & {
       border-color: $colors-validation-lava-contrast;
+      --border-color: #{$colors-validation-lava-contrast};
       &:hover {
         border-color: $colors-validation-lava;
       }
       &:focus-within {
-        border-color: $colors-validation-lava-contrast;
+        border-color: $colors-brand-blue;
+        --border-color: #{$colors-validation-lava-contrast};
       }
     }
   }

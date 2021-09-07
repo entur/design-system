@@ -2,10 +2,11 @@
 .eds-action-chip {
   cursor: pointer;
   &:focus {
-    outline: $outlines-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
     outline-offset: $outline-offsets-focus;
     .eds-contrast & {
-      outline: $outlines-focus-contrast;
+      box-shadow: $shadows-focus-contrast;
     }
   }
   &:hover {
