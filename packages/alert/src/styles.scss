@@ -46,17 +46,17 @@
   }
   &--info {
     background-color: $colors-validation-sky-tint;
-    border-color: $colors-validation-sky;
+    border-color: $colors-validation-sky-contrast;
     color: $colors-validation-sky;
   }
   &--warning {
-    background-color: $colors-validation-canary;
-    border-color: $colors-validation-canary;
+    background-color: $colors-validation-canary-tint;
+    border-color: $colors-validation-canary-contrast;
     color: $colors-brand-blue;
   }
   &--error {
     background-color: $colors-validation-lava-tint;
-    border-color: $colors-validation-lava;
+    border-color: $colors-validation-lava-contrast;
     color: $colors-validation-lava;
   }
 }
@@ -66,6 +66,7 @@
   flex: 0 0 1em;
   font-size: 1.2rem; // Required since the icons are a tiny bit too small
   margin-right: 0.5em;
+  margin-top: -$space-extra-small2;
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
