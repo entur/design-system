@@ -95,7 +95,7 @@
     "markdown-to-jsx": "^6.11.4",
     "match-sorter": "^6.3.0",
     "node-sass": "^4.14.1",
-    "playroom": "^0.27.0",
+    "playroom": "0.24.0",
     "react": "^16.11.0",
     "react-confetti": "^6.0.1",
     "react-dom": "^16.11.0",
