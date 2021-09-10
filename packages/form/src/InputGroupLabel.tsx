@@ -3,18 +3,24 @@ import React from 'react';
 import { useInputGroupContext } from './InputGroupContext';
 import './InputGroupLabel.scss';
 
-export const InputGroupLabel: React.FC<
-  {
-    label?: React.ReactNode;
-    required?: boolean;
-    labelTooltip?: string;
-    labelId: string;
-    staticAnimation?: boolean;
-  } & React.DetailedHTMLProps<
-    React.LabelHTMLAttributes<HTMLLabelElement>,
-    HTMLLabelElement
-  >
-> = ({ label, required, labelId, staticAnimation = false, ...rest }) => {
+export type InputGroupLabelProps = {
+  label?: React.ReactNode;
+  required?: boolean;
+  labelTooltip?: string;
+  labelId: string;
+  staticAnimation?: boolean;
+} & React.DetailedHTMLProps<
+  React.LabelHTMLAttributes<HTMLLabelElement>,
+  HTMLLabelElement
+>;
+
+export const InputGroupLabel: React.FC<InputGroupLabelProps> = ({
+  label,
+  required,
+  labelId,
+  staticAnimation = false,
+  ...rest
+}) => {
   const { isFilled } = useInputGroupContext();
   const filler = staticAnimation || isFilled;
   return (
