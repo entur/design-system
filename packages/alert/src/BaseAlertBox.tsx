@@ -2,18 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 import {
   CloseIcon,
-  ValidationCheckIcon,
-  ValidationExclamationIcon,
-  ValidationInfoIcon,
-  ValidationErrorIcon,
+  OutlinedValidationCheckIcon,
+  OutlinedValidationExclamationIcon,
+  OutlinedValidationInfoIcon,
+  OutlinedValidationErrorIcon,
 } from '@entur/icons';
 import './styles.scss';
 
 const iconsMap = {
-  success: ValidationCheckIcon,
-  info: ValidationInfoIcon,
-  warning: ValidationExclamationIcon,
-  error: ValidationErrorIcon,
+  success: OutlinedValidationCheckIcon,
+  info: OutlinedValidationInfoIcon,
+  warning: OutlinedValidationExclamationIcon,
+  error: OutlinedValidationErrorIcon,
 };
 
 type BaseAlertBoxProps = {
