@@ -24,7 +24,7 @@ $modal-animation-duration: $timings-medium;
 
 .eds-modal__content {
   background: var(--primary-background-color);
-  border-radius: $border-widths-large;
+  border-radius: 0.75rem;
   color: var(--primary-text-color);
   margin: auto;
   padding: $space-large;
