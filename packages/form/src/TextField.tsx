@@ -32,6 +32,11 @@ export type TextFieldProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
+  /** Ekstra props som sendes til label-elementet */
+  labelProps?: React.DetailedHTMLProps<
+    React.LabelHTMLAttributes<HTMLLabelElement>,
+    HTMLLabelElement
+  >;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -51,11 +56,15 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       feedback,
       onChange,
       disableLabelAnimation,
+      labelProps,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const textFieldId = useRandomId('eds-textfield');
+    const textFieldId =
+      labelProps && labelProps.id
+        ? labelProps.id
+        : useRandomId('eds-textfield');
     return (
       <BaseFormControl
         disabled={disabled}
@@ -72,6 +81,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         labelId={textFieldId}
         feedback={feedback}
         disableLabelAnimation={disableLabelAnimation}
+        labelProps={labelProps}
       >
         <TextFieldBase
           disabled={disabled}
@@ -104,10 +114,8 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
   ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
-    const {
-      isFilled: isInputFilled,
-      setFilled: setFiller,
-    } = useInputGroupContext();
+    const { isFilled: isInputFilled, setFilled: setFiller } =
+      useInputGroupContext();
 
     useOnMount(() => {
       if (value || rest.defaultValue) {
