@@ -4,7 +4,7 @@ import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { DropdownList } from './DropdownList';
 import { DropdownToggleButton } from './DropdownToggleButton';
 import { DropdownLoadingDots } from './DropdownLoadingDots';
-import { CloseIcon } from '@entur/icons';
+import { CloseSmallIcon } from '@entur/icons';
 import './BaseDropdown.scss';
 import { useDownshift } from './DownshiftProvider';
 import { space } from '@entur/tokens';
@@ -86,7 +86,7 @@ const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
           onClick={() => clearSelection()}
           {...props}
         >
-          <CloseIcon />
+          <CloseSmallIcon />
         </button>
       )}
       {selectedItem && <div className="eds-dropdown__divider"></div>}
