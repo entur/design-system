@@ -1,0 +1,39 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-textfield__clear-button {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1rem;
+  padding: $space-extra-small;
+  margin-right: -$space-small;
+  &:hover {
+    background: $colors-greys-grey80;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
+
+.eds-textfield__divider {
+  content: '';
+  display: block;
+  background-color: $colors-greys-grey70;
+  height: 1.5rem;
+  width: 1px;
+  .eds-form-control-wrapper--disabled & {
+    .eds-contrast & {
+      background-color: $colors-blues-blue50;
+    }
+  }
+}
