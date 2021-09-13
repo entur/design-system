@@ -14,9 +14,9 @@
     height: $space-extra-large3;
     cursor: pointer;
     width: 100%;
-    line-height: $line-heights-medium;
+    line-height: $line-heights-large;
     text-align: left;
-    padding: $space-extra-small $space-medium;
+    padding: $space-small $space-medium;
     opacity: 1;
     .eds-contrast & {
       color: $colors-brand-blue;
