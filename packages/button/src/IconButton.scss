@@ -12,6 +12,11 @@
   align-items: center;
   font-size: $font-sizes-large;
   padding: $space-extra-small;
+  .eds-contrast & {
+    > .eds-loading-dots .eds-loading-dots__dot {
+      background-color: $colors-brand-white;
+    }
+  }
   &--size-small {
     height: 1.5rem;
     width: 1.5rem;
