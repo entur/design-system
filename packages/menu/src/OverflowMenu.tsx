@@ -41,41 +41,43 @@ export const OverflowMenu: React.FC<OverflowMenuProps> = ({
   ...rest
 }) => {
   return (
-    <Menu>
-      {!button ? (
-        <IconButton
-          as={MenuButton}
-          className={classNames(className, 'eds-overflow-menu__menu-button')}
-          {...rest}
-        >
-          <VerticalDotsIcon />
-        </IconButton>
-      ) : (
-        cloneElement(button, {
-          as: MenuButton,
-          className: classNames(className, 'eds-overflow-menu__menu-button'),
-          ...rest,
-        })
-      )}
-      {useContrast() ? (
-        <Contrast
-          className={classNames('eds-overflow-menu__menu-list')}
-          as={MenuList}
-          portal={false}
-        >
-          {[children]}
-        </Contrast>
-      ) : (
-        <MenuList
-          className={classNames('eds-overflow-menu__menu-list', {
-            'eds-overflow-menu__menu-list--left': position === 'left',
-          })}
-          portal={false}
-        >
-          {[children]}
-        </MenuList>
-      )}
-    </Menu>
+    <div>
+      <Menu>
+        {!button ? (
+          <IconButton
+            as={MenuButton}
+            className={classNames(className, 'eds-overflow-menu__menu-button')}
+            {...rest}
+          >
+            <VerticalDotsIcon />
+          </IconButton>
+        ) : (
+          cloneElement(button, {
+            as: MenuButton,
+            className: classNames(className, 'eds-overflow-menu__menu-button'),
+            ...rest,
+          })
+        )}
+        {useContrast() ? (
+          <Contrast
+            className={classNames('eds-overflow-menu__menu-list')}
+            as={MenuList}
+            portal={false}
+          >
+            {[children]}
+          </Contrast>
+        ) : (
+          <MenuList
+            className={classNames('eds-overflow-menu__menu-list', {
+              'eds-overflow-menu__menu-list--left': position === 'left',
+            })}
+            portal={false}
+          >
+            {[children]}
+          </MenuList>
+        )}
+      </Menu>
+    </div>
   );
 };
 
