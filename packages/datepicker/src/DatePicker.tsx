@@ -80,6 +80,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       disabled,
       dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
       variant,
+      feedback,
       label,
       hideCalendarButton = false,
       ...rest
@@ -136,6 +137,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             style={style}
             readOnly={readOnly}
             variant={variant}
+            feedback={feedback}
             label={label}
             disabled={disabled}
             ref={ref}
@@ -156,6 +158,7 @@ type DatePickerInputProps = {
   disableLabelAnimation?: boolean;
   className?: string;
   hideCalendarButton?: boolean;
+  feedback?: string;
   [key: string]: any;
 };
 // Props fra customInput i react-datepicker
