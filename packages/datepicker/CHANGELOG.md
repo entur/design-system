@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.0...@entur/datepicker@0.10.1) (2021-09-13)
+
+### Bug Fixes
+
+- **datepicker:** fix feedback prop not rendering text ([620ccfd](https://bitbucket.org/enturas/design-system/commits/620ccfd578d7acaa2e47738fe56f42a26de094e0))
+
 # [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.9.3...@entur/datepicker@0.10.0) (2021-09-07)
 
 ### Bug Fixes

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.1...@entur/menu@4.0.2) (2021-09-13)
+
+### Bug Fixes
+
+- **overflowmenu:** fix position bug in flex-box environments ([a244c91](https://bitbucket.org/enturas/design-system/commits/a244c91547ec227db97675d60936b3de81925a5d))
+- **overflowmenu item:** center align content properly ([fba5b6f](https://bitbucket.org/enturas/design-system/commits/fba5b6f10fde5aa82eec992d8a4f4e70c3f8d8b3))
+
 ## [4.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.0...@entur/menu@4.0.1) (2021-09-07)
 
 ### Bug Fixes

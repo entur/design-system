@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.1...@entur/alert@0.8.2) (2021-09-13)
+
+### Bug Fixes
+
+- **alertbox:** adjust border colors for alertbox ([9650c53](https://bitbucket.org/enturas/design-system/commits/9650c53aad246959bf107b4600648df536a70fe6))
+- **alertbox:** use new outlined icons in alertbox ([ff0e256](https://bitbucket.org/enturas/design-system/commits/ff0e256162a677dc68ca5f57652db48680063a0d))
+
 ## [0.8.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.0...@entur/alert@0.8.1) (2021-09-07)
 
 ### Bug Fixes

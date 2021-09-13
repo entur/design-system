@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.1.0...@entur/icons@3.2.0) (2021-09-13)
+
+### Features
+
+- add CloseSmallIcon ([c606324](https://bitbucket.org/enturas/design-system/commits/c606324e3800fa99605c6ff818bd4120adf3e89e))
+- add outlined validation icons ([403622c](https://bitbucket.org/enturas/design-system/commits/403622c9750e955b8bb8140e75266df6b9c8e973))
+
 # [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.0.0...@entur/icons@3.1.0) (2021-09-07)
 
 ### Features

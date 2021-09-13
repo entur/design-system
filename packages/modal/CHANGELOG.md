@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.5...@entur/modal@1.5.6) (2021-09-13)
+
+### Bug Fixes
+
+- **modal:** increase border radius on modals ([8d321aa](https://bitbucket.org/enturas/design-system/commits/8d321aa3e0e83a410a285763182db22c7b1c96be))
+
 ## [1.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.4...@entur/modal@1.5.5) (2021-09-07)
 
 ### Bug Fixes

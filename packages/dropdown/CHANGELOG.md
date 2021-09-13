@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.7...@entur/dropdown@2.0.8) (2021-09-13)
+
+### Bug Fixes
+
+- **dropdown:** change to close small icon if closeable ([96d6e11](https://bitbucket.org/enturas/design-system/commits/96d6e11bc27ed722f9bbb1623691de16612e432c))
+
 ## [2.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.6...@entur/dropdown@2.0.7) (2021-09-07)
 
 ### Bug Fixes

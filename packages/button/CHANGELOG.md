@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.7.1...@entur/button@2.7.2) (2021-09-13)
+
+### Bug Fixes
+
+- **iconbutton:** fix loading dots in contrast ([f0e4a46](https://bitbucket.org/enturas/design-system/commits/f0e4a462ddb1bbd7f022b7528feea68627fc8da9))
+- **tertiary button:** reduce min width of button ([a241d93](https://bitbucket.org/enturas/design-system/commits/a241d9308488eb8a9a1d95ff400c2afe09e11143))
+
 ## [2.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.7.0...@entur/button@2.7.1) (2021-09-07)
 
 ### Bug Fixes

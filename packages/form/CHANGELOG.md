@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.0.0...@entur/form@5.1.0) (2021-09-13)
+
+### Bug Fixes
+
+- **textfield:** adjust clearable button style ([2cf3fd6](https://bitbucket.org/enturas/design-system/commits/2cf3fd6d7d84bb5063d0caba89b4ab4289028a4a))
+- **travel switch:** fix typing for size prop ([f30c02d](https://bitbucket.org/enturas/design-system/commits/f30c02dcc83b19e99dd7accee746a5dfbe211187))
+
+### Features
+
+- **textfield:** add clearable and onClear prop to component ([7469da6](https://bitbucket.org/enturas/design-system/commits/7469da65c191ec76ba556ac2c0128d1e48244495))
+- **textfield:** add labelProps prop ([d4d7b50](https://bitbucket.org/enturas/design-system/commits/d4d7b501bddc66ebd4cb1c87a4c907e35d3c6f49))
+
 # [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@4.4.7...@entur/form@5.0.0) (2021-09-07)
 
 ### Bug Fixes
