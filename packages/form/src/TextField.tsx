@@ -4,7 +4,7 @@ import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
 import { useVariant, VariantType } from './VariantProvider';
 import { isFilled } from './utils';
-import { CloseIcon } from '@entur/icons';
+import { CloseSmallIcon } from '@entur/icons';
 import './TextField.scss';
 
 export type TextFieldProps = {
@@ -192,7 +192,7 @@ const ClearButton: React.FC<{
           onClick={onClear}
           {...props}
         >
-          <CloseIcon />
+          <CloseSmallIcon />
         </button>
       )}
     </div>

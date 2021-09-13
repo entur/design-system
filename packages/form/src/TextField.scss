@@ -20,8 +20,8 @@
     background: $colors-greys-grey80;
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
-    outline: $outlines-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
   }
 }
 
