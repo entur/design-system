@@ -32,6 +32,9 @@
 
   &--small {
     font-size: $font-sizes-medium;
+    .eds-alert-box__icon {
+      margin-top: 0;
+    }
   }
 
   &--fit-content {
