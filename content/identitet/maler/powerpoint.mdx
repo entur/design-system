@@ -1,6 +1,6 @@
 ---
 name: Powerpoint
-description: Kommer...
+description: Her finner du Entur's powerpointmal som skal brukes til presentasjoner i Entur.
 route: /identitet/maler/powerpoint
 parent: Identitet
 menu: Maler
@@ -8,5 +8,13 @@ order: 11
 ---
 
 import PageHeader from '~/components/PageHeader';
+import { DownloadPowerpoint } from '~/gatsby-theme-docz/components/DownloadPowerpoint';
 
 <PageHeader></PageHeader>
+
+I Powerpoint-malen kan du endre bilde ved å klikke på ikonet.
+Malen velger automatisk utsnitt, og skalerer opp bildet dersom det kreves.
+Om utsnittet ikke er slik du ønsker, kan du høyreklikke på bildet og velge "Beskjær".
+Dra bildet slik at utsnittet blir etter ditt ønske.
+
+<DownloadPowerpoint></DownloadPowerpoint>
