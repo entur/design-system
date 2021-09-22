@@ -11,7 +11,8 @@
   overflow-x: scroll;
   display: flex;
   scrollbar-width: none;
-  padding-top: 2px;
+  padding-top: $space-extra-small2;
+  margin-top: -$space-extra-small2;
   z-index: $z-indexes-default;
   &::after {
     content: '';
