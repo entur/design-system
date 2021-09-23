@@ -1,6 +1,6 @@
 {
   "name": "@entur/icons",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -45,7 +45,7 @@
     "rollup-plugin-babel": "4.4.0"
   },
   "dependencies": {
-    "@entur/tokens": "^3.2.0",
+    "@entur/tokens": "^3.2.1",
     "@entur/utils": "^0.4.2"
   }
 }

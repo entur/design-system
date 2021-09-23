@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.2.0...@entur/icons@3.3.0) (2021-09-23)
+
+### Bug Fixes
+
+- **switch:** fix switchicon color bug ([e41f8a9](https://bitbucket.org/enturas/design-system/commits/e41f8a9721a648c2a49e674cbf8b65b1329e7558))
+
+### Features
+
+- add couchette icon ([7c6c6a3](https://bitbucket.org/enturas/design-system/commits/7c6c6a3ba5712b9f7546c9d20cc9451e1a0372fc))
+- add WaterTapIcon ([80d9439](https://bitbucket.org/enturas/design-system/commits/80d9439b0f6f759f42f2c99a2e0fc8812ba81cd7))
+- add ZvippIcon (mobility partner) ([9e9374c](https://bitbucket.org/enturas/design-system/commits/9e9374c22b806ab549430ff3ee9b123cb6a4210c))
+
 # [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.1.0...@entur/icons@3.2.0) (2021-09-13)
 
 ### Features

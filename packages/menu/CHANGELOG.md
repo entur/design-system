@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.2...@entur/menu@4.0.3) (2021-09-23)
+
+### Bug Fixes
+
+- **sidenavigation:** fix focus styling for components ([755ddf8](https://bitbucket.org/enturas/design-system/commits/755ddf8393020eaadacaddcb33077d573365e652))
+
 ## [4.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.1...@entur/menu@4.0.2) (2021-09-13)
 
 ### Bug Fixes

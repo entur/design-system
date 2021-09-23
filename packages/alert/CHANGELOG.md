@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.2...@entur/alert@0.8.3) (2021-09-23)
+
+### Bug Fixes
+
+- **expandablealertbox:** fix focus styling for expand button ([7c0c604](https://bitbucket.org/enturas/design-system/commits/7c0c604b39066498d833234cdaa919049569f6f2))
+- **smallalertbox:** fix icon position ([e53eb11](https://bitbucket.org/enturas/design-system/commits/e53eb110df787725342d8004621fc8940a4f7744))
+
 ## [0.8.2](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.1...@entur/alert@0.8.2) (2021-09-13)
 
 ### Bug Fixes

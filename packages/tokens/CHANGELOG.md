@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.2.0...@entur/tokens@3.2.1) (2021-09-23)
+
+### Bug Fixes
+
+- **shadows:** adjust width of focus token ([41aae61](https://bitbucket.org/enturas/design-system/commits/41aae61108873cca0d928af0368e2b693f355777))
+
 # [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.1.0...@entur/tokens@3.2.0) (2021-09-07)
 
 ### Bug Fixes
