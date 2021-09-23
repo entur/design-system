@@ -14,3 +14,4 @@ export * from './useSortableTable';
 export * from './EditableCell';
 export * from './ExpandableRow';
 export * from './ExpandRowButton';
+export * from './useTableKeyboardNavigation';
