@@ -78,6 +78,7 @@ function createSvgrConfig(native = false, componentName) {
       'TierIcon',
       'TrondheimBysykkelIcon',
       'VoiIcon',
+      'ZvippIcon',
     ];
     // Icons with "special colors", so no color exchange for those
     const outliers = [
