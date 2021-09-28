@@ -114,6 +114,8 @@
   color: $colors-brand-blue;
   cursor: pointer;
   font-size: $font-sizes-large;
+  height: $space-large;
+  width: $space-large;
   padding: 0;
   position: absolute;
   right: $space-medium;
@@ -121,14 +123,15 @@
 
   &:focus {
     outline-offset: $outline-offsets-focus;
-    outline: none;
-    box-shadow: $shadows-focus;
+    outline: $outlines-focus;
   }
 
   @include for-desktop {
     font-size: $font-sizes-extra-large2;
     right: $space-large;
     top: $space-large;
+    height: $space-large;
+    width: $space-large;
     .eds-alert-box--toast & {
       right: $space-medium;
       top: $space-medium;
