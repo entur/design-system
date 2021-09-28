@@ -27,10 +27,12 @@
     appearance: none;
     background: none;
     border: none;
-    border-radius: 0;
+    border-radius: 50%;
     cursor: pointer;
     margin: 0 0 0 $space-small;
     padding: 0;
+    height: $space-large;
+    width: $space-large;
     .eds-icon {
       color: $colors-brand-blue;
       font-size: $font-sizes-medium;

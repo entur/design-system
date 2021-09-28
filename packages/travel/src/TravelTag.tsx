@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import {
-  CloseIcon,
+  CloseSmallIcon,
   ValidationInfoIcon,
   ValidationErrorIcon,
   ValidationExclamationIcon,
@@ -62,7 +62,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       {children}
       {isClosable && (
         <button onClick={onClose} className="eds-travel-tag__close-button">
-          <CloseIcon inline />
+          <CloseSmallIcon inline />
         </button>
       )}
       {alert !== 'none' && (
