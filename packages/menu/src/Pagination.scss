@@ -42,7 +42,6 @@
       border-color: currentColor;
     }
     &:focus {
-      outline-offset: $outline-offsets-focus;
       outline: none;
       box-shadow: $shadows-focus;
     }
@@ -57,6 +56,7 @@
   appearance: none;
   background: transparent;
   border: $border-widths-small solid $colors-greys-grey60;
+  border-color: $colors-greys-grey60;
   border-radius: $border-radiuses-medium;
   color: inherit;
   cursor: pointer;
@@ -67,7 +67,8 @@
   justify-content: center;
   margin: 0 $border-widths-medium;
   padding: 0 $space-extra-small2;
-  transition: all $timings-fast ease-out;
+  transition: background $timings-fast ease-out,
+    border-color $timings-fast ease-out;
   user-select: none;
   min-width: $space-extra-large;
 
@@ -96,9 +97,11 @@
     }
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    border-color: $colors-brand-blue;
+    .eds-contrast & {
+      border-color: $colors-brand-white;
+    }
   }
 }
 
