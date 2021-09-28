@@ -81,6 +81,9 @@
     font-size: $font-sizes-large;
     padding: $space-medium;
     margin: 0;
+    &:hover {
+      background-color: $colors-blues-blue70;
+    }
     &:focus {
       outline-offset: none;
     }
