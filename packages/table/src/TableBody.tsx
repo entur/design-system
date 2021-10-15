@@ -6,8 +6,11 @@ export type TableBodyProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  [key: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLTableSectionElement>;
+} & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLTableSectionElement>,
+  HTMLTableSectionElement
+>;
 
 export const TableBody = React.forwardRef<
   HTMLTableSectionElement,
