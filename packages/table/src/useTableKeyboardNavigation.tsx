@@ -1,101 +1,95 @@
 import React, { useState } from 'react';
-
-// https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html
+import { TableBodyProps, TableRowProps } from './index';
 
 function onTableKeypress(
   event: React.KeyboardEvent,
-  currentCell: number[],
-  row?: number,
-  col?: number,
-  maxRow?: number,
-  maxCol?: number,
+  currentRow: number,
+  maxRow: number,
   allowWrap?: boolean,
 ) {
   const keyPress = event.key;
-  console.log(keyPress);
-
-  console.log(row, col, maxRow, maxCol, allowWrap);
-
   switch (keyPress) {
     case 'ArrowUp':
+      event.preventDefault();
       if (allowWrap) {
-        return [currentCell[0] - 1, currentCell[1]];
+        return currentRow === 0 ? maxRow - 1 : currentRow - 1;
       } else {
-        return currentCell[0] > 0
-          ? [currentCell[0] - 1, currentCell[1]]
-          : currentCell;
+        return currentRow > 0 ? currentRow - 1 : 0;
       }
     case 'ArrowDown':
-      return [currentCell[0] + 1, currentCell[1]];
-    case 'ArrowLeft':
-      return [currentCell[0], currentCell[1] - 1];
-    case 'ArrowRight':
-      return [currentCell[0], currentCell[1] + 1];
+      event.preventDefault();
+      if (allowWrap) {
+        return currentRow === maxRow - 1 ? 0 : currentRow + 1;
+      } else {
+        return currentRow < maxRow - 1 ? currentRow + 1 : currentRow;
+      }
     default:
-      break;
+      return currentRow;
   }
-  return [0, 0];
 }
 
-type useTableKeyboardNavigationProps = {
-  /**Antall rader i tabellen */
-  numberOfRows: number;
-  /** Antall kolonner */
-  numberOfColumns: number;
-  allowWrap?: boolean;
+export type useTableKeyboardNavigationProps = (
+  /** Antall rader i tabellen */
+  numberOfRows: number,
+  /** Tillate at man kan navigere sirkulært
+   * @default false
+   */
+  allowWrap?: boolean,
+) => {
+  getTableRowNavigationProps: (
+    /** Raden i tabellen (0-indeksert) */
+    row: number,
+  ) => Partial<TableRowProps>;
+  getTableBodyNavigationProps: () => Partial<TableBodyProps>;
 };
 
-export const useTableKeyboardNavigation: (
-  e: useTableKeyboardNavigationProps,
-) => any = ({ numberOfRows, numberOfColumns, allowWrap = true }) => {
-  const [currentCell, setCurrentCell] = useState([0, 0]); // row, column
-  const tableBodyRef = React.useRef<HTMLTableElement>();
+export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
+  numberOfRows = 0,
+  allowWrap = true,
+) => {
+  const [currentRow, setCurrentRow] = useState(numberOfRows);
+  const [maxRow, setMaxRow] = useState(0);
+
+  const tableBodyRef = React.useRef<HTMLTableSectionElement>(null);
   const tableHasFocus = tableBodyRef?.current?.contains(document.activeElement);
-  console.log(numberOfRows);
 
   React.useEffect(() => {
     tableBodyRef &&
       tableBodyRef.current &&
       tableHasFocus &&
-      tableBodyRef.current.childNodes[currentCell[0]].childNodes[
-        currentCell[1]
+      tableBodyRef.current.childNodes[
+        currentRow
       ].childNodes[0].parentElement?.focus();
-  }, [currentCell]);
+  }, [currentRow]);
 
-  function getTableBodyNavigationProps() {
-    return { ref: tableBodyRef };
-  }
-
-  function getDataCellNavigationProps(
-    row: number,
-    column: number,
-  ): Partial<
-    React.DetailedHTMLProps<
-      React.TdHTMLAttributes<HTMLTableDataCellElement>,
-      HTMLTableDataCellElement
-    >
-  > {
-    let tabIndex = -1;
-    row === currentCell[0] && column === currentCell[1]
-      ? (tabIndex = 0)
-      : undefined;
+  function getTableBodyNavigationProps(...rest: any): Partial<TableBodyProps> {
     return {
-      tabIndex,
-      onClick: () => setCurrentCell([row, column]),
-      onKeyDown: (e: React.KeyboardEvent) => {
-        const newCell = onTableKeypress(
-          e,
-          currentCell,
-          row,
-          column,
-          numberOfRows,
-          numberOfColumns,
-          allowWrap,
-        );
-        setCurrentCell(newCell);
-      },
+      ref: tableBodyRef,
+      ...rest,
     };
   }
 
-  return { getDataCellNavigationProps, getTableBodyNavigationProps };
+  function getTableRowNavigationProps(
+    row: number,
+    ...rest: any
+  ): Partial<TableRowProps> {
+    React.useEffect(() => {
+      row >= maxRow && setMaxRow(row + 1);
+    }, []);
+    const tableRowRef = React.useRef<HTMLTableRowElement>(null);
+
+    let tabIndex = -1;
+    row === currentRow ? (tabIndex = 0) : undefined;
+    return {
+      tabIndex,
+      ref: tableRowRef,
+      onClick: () => setCurrentRow(row),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        const newCell = onTableKeypress(e, currentRow, numberOfRows, allowWrap);
+        setCurrentRow(newCell);
+      },
+      ...rest,
+    };
+  }
+  return { getTableRowNavigationProps, getTableBodyNavigationProps };
 };

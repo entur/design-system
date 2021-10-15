@@ -110,6 +110,9 @@
       .eds-contrast &  {
         border-color: $colors-blues-blue20;
       }
+      &:focus {
+        outline: $outlines-focus;
+      }
       &--hover {
         &:hover {
           background: $colors-greys-grey80;
