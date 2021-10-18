@@ -24,10 +24,18 @@
     .eds-table--middle & {
       padding: $space-extra-small $space-default;
       height: $space-extra-large3;
+
+      .eds-table__header-cell-button-icon {
+        top: $space-extra-small;
+      }
     }
     .eds-table--small & {
       padding: $space-extra-small2 $space-default;
       height: $space-extra-large;
+
+      .eds-table__header-cell-button-icon {
+        top: $space-extra-small2;
+      }
     }
   }
   &__header-cell {
