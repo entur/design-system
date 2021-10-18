@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.13](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.12...@entur/travel@4.2.13) (2021-10-18)
+
+### Bug Fixes
+
+- **travel tag:** fix focus styling for close button ([d9ec26e](https://bitbucket.org/enturas/design-system/commits/d9ec26ea68ba9962a233291eb5e58920efab99b1))
+
 ## [4.2.12](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.11...@entur/travel@4.2.12) (2021-09-23)
 
 **Note:** Version bump only for package @entur/travel

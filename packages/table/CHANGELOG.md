@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.18...@entur/table@4.4.0) (2021-10-18)
+
+### Bug Fixes
+
+- **sortable table:** fix sort icon position on small and middle table ([f57062f](https://bitbucket.org/enturas/design-system/commits/f57062f6753df1cdba8cd3ba1290e5b1b1f6c724))
+- improve useTableKeyboardNavigation ([2d112cf](https://bitbucket.org/enturas/design-system/commits/2d112cf263a73f9c4ad9dcbaa20db6be27829702))
+- **expand row button:** fix focus styling ([9d94b9c](https://bitbucket.org/enturas/design-system/commits/9d94b9c0bb7b44f881cd769694491d294874988c))
+- **tablebody:** improve typings ([729f69d](https://bitbucket.org/enturas/design-system/commits/729f69d733df82f75bbc010a35757f5bd6c9af06))
+- **tablerow:** export props for component ([8119df0](https://bitbucket.org/enturas/design-system/commits/8119df03209d33603335fd744866bfbee6b0d4c7))
+
+### Features
+
+- add hook for enabling keyboard navigation in tables ([cd7ef12](https://bitbucket.org/enturas/design-system/commits/cd7ef12474810aa813a275804e2356b26814c56f))
+
 ## [4.3.18](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.17...@entur/table@4.3.18) (2021-09-23)
 
 **Note:** Version bump only for package @entur/table

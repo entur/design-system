@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.3...@entur/menu@4.0.4) (2021-10-18)
+
+### Bug Fixes
+
+- **pagination:** improve focus styling ([0e42eca](https://bitbucket.org/enturas/design-system/commits/0e42eca9f5afcf94c7d4170b0d0df50ce8540ffc))
+
 ## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.2...@entur/menu@4.0.3) (2021-09-23)
 
 ### Bug Fixes

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.3...@entur/alert@0.9.0) (2021-10-18)
+
+### Bug Fixes
+
+- **alert box:** adjust close button focus styling ([b163918](https://bitbucket.org/enturas/design-system/commits/b1639187829e5f8d8ae971ea68f80ad0d7115c88))
+
+### Features
+
+- **smallalertbox:** add closable prop ([f07bba6](https://bitbucket.org/enturas/design-system/commits/f07bba67ecb0829cd13f81ddb425771129efda33))
+
 ## [0.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.2...@entur/alert@0.8.3) (2021-09-23)
 
 ### Bug Fixes

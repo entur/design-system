@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.1...@entur/form@5.1.2) (2021-10-18)
+
+### Bug Fixes
+
+- **segmented control:** adjust focus styling ([6a20996](https://bitbucket.org/enturas/design-system/commits/6a209962ca2d265e0b6a01e5dcbf0666eda55cee))
+
 ## [5.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.0...@entur/form@5.1.1) (2021-09-23)
 
 **Note:** Version bump only for package @entur/form

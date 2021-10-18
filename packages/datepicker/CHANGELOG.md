@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.2...@entur/datepicker@0.10.3) (2021-10-18)
+
+### Bug Fixes
+
+- **datepicker:** adjust month button color ([f043577](https://bitbucket.org/enturas/design-system/commits/f043577e981ba00fc6df48529b5687e8c6a20085))
+- **datepicker:** improve id prop usage ([4a5bca9](https://bitbucket.org/enturas/design-system/commits/4a5bca9064f2623a038a86a414ca5494fc246f59))
+- **timepicker:** add hover-styling for arrow buttons ([960bdff](https://bitbucket.org/enturas/design-system/commits/960bdffc1af52af92d549b4b514209f04f7c8c36))
+
 ## [0.10.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.1...@entur/datepicker@0.10.2) (2021-09-23)
 
 **Note:** Version bump only for package @entur/datepicker
