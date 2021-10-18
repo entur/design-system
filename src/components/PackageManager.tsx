@@ -2,7 +2,7 @@ import React from 'react';
 import { useSettings } from '~/components/SettingsContext';
 import { CodeText } from '@entur/typography';
 
-export const PackageManager = () => {
+export const PackageManager = (): React.ReactNode => {
   const { packageManager } = useSettings();
   return (
     <div>
