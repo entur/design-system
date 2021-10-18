@@ -9,6 +9,10 @@ export type SmallAlertBoxProps = {
   className?: string;
   /** Skjermleser-label for lukkeknappen, om den vises */
   closeButtonLabel?: string;
+  /** Om denne er true, vil boksen få en lukkeknapp i høyre hjørne
+   * @default false
+   */
+  closable?: boolean;
   /** Callback som kalles når man lukker boksen */
   onClose?: () => void;
   /** Tittel på boksen - oppsummer virkning */
@@ -23,6 +27,9 @@ export type SmallAlertBoxProps = {
 export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
   className,
   width,
+  onClose,
+  closeable = false,
+  closeButtonLabel,
   ...rest
 }) => (
   <BaseAlertBox
@@ -30,7 +37,9 @@ export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
       'eds-alert-box--fit-content': width === 'fit-content',
     })}
     {...rest}
-    closable={false}
+    onClose={onClose}
+    closeable={closeable}
+    closeButtonLabel={closeButtonLabel}
     size="small"
   />
 );
