@@ -9,6 +9,7 @@ removeToc: true
 ---
 
 import PageHeader from '~/components/PageHeader';
+import { PackageManager } from '~/components/PackageManager';
 
 <PageHeader>
   Designsystemet gjør det enklere for deg som utvikler å lage gode, universelt
@@ -22,21 +23,22 @@ Designsystemet er delt opp i et knippe forskjellige pakker, som lastes ned enkel
 
 Du kan bruke `yarn` eller `npm` til å innstallere pakkene - det er opp til prosjektet ditt. Har prosjektet ditt en `yarn.lock`, bruker du `yarn add`, og har du `package-lock.json`, så bruker du `npm`.
 
+Velg gjerne det du bruker i prosjektet ditt i innstillingsmenyen oppe i høyre hjørne.
+
 ### Hvilke pakker trenger jeg?
 
 Det avhenger av hva du skal lage, men en god start kan være disse:
 
-```sh
-npm install @entur/tokens @entur/typography @entur/layout @entur/button @entur/form
-```
+<PackageManager></PackageManager>
 
 ### Hvorfor ikke bare én pakke?
 
-Når man har én pakke, har man også bare én versjon å forholde seg til - og det kan skape noen utfordringer etterhvert som designsystemet modnes. Ved å dele opp i flere pakker med uavhengige versjonering, kan man få oppgradert en bugfiks på knappene sine, uten at man trenger å oppgradere andre eventuelle breaking changes som har skjedd siden sist du oppdaterte avhengigheten din.
+Når man har én pakke, har man også bare én versjon å forholde seg til - og det kan skape noen utfordringer etterhvert som designsystemet modnes.
+Ved å dele opp i flere pakker med uavhengige versjonering, kan man få oppgradert en bugfiks på knappene sine, uten at man trenger å oppgradere andre eventuelle breaking changes som har skjedd siden sist du oppdaterte avhengigheten din.
 
-En annen fordel er at man ikke inkluderer mer kode enn man trenger, som kan ha en positiv effekt på mengden JavaScript og CSS vi sender til brukerne våre.
+En annen fordel er at man ikke inkluderer mer kode enn man trenger, som kan ha en positiv effekt på mengden JavaScript og CSS ved å kun ha de komponentenene og den stylingen man behøver.
 
-Det er litt mer arbeid å komme i gang med nye prosjekter, men vedlikeholdet av applikasjonene våre blir enklere.
+Det er litt mer arbeid å komme i gang med nye prosjekter, men vedlikeholdet av applikasjonene blir enklere.
 
 ## Inkluder CSS
 
@@ -56,19 +58,15 @@ import '@entur/button/dist/styles.css';
 
 ## React-komponenter
 
-Hver av pakkene kommer med sine egne universelt utformede React-komponenter, som gjør det enkelt for React-utviklere å lage komplette apper på null komma niks. Du vil finne API-dokumentasjonen under [`/komponenter`](/komponenter).
-
-## Hva med `<insert-rammeverk-her>`?
-
-Selv om vi i dag bare støtter React, er vi åpne for å støtte andre rammeverk i fremtiden. Vi ser for oss at man da importerer fra `@entur/pakkenavn/vue` eller `@entur/pakkenavn/native`, og bruker APIer som ser så like ut som mulig det vi har for React.
-
-Vi har ikke gjort noe arbeid her enda, fordi det ikke er flere teams internt som bruker andre rammeverk enn React. Det ville bare vært en omvei for app-teamet, dersom de måtte gjøre endringene sine i designsystemet for at det bare er de selv som skal konsumere det. Når vi får flere konsumenter av disse alternative rammeverkene, kan vi begynne å implementere komponenter for disse også.
+Hver av pakkene kommer med sine egne universelt utformede React-komponenter, som gjør det enkelt for React-utviklere å lage komplette apper. ['Du finner API-dokumentasjonen for alle komponentene her'](/komponenter).
 
 ## Typer
 
-Per i dag leveres alle pakker med komplette TypeScript typings. Vi vil prøve å få på plass Flow-types og vanlige prop types også på sikt, slik at dere får best mulig utvikleropplevelse uansett hvilket typesystem dere bruker.
+Per i dag leveres alle pakker med komplette TypeScript-typings.
 
-Alle typer er eksportert på toppnivå, og kan importeres for å brukes videre i egen kode.
+Typene for alle komponentene er eksportert på toppnivå, og kan importeres for å brukes videre i egen kode.
+
+De er på formen `KomponentnavnProps`, så eksempelvis så har komponenten `Dropdown` typene eksponert via `DropdownProps`.
 
 ## Exports
 
@@ -78,11 +76,11 @@ Designsystemets pakker benytter seg kun av [named exports](https://developer.moz
 import { EnKomponent, useEnHook } from '@entur/en-pakke';
 ```
 
-Du vil med andre ord _aldri_ se default exports. Vi gjør dette så du slipper å gjette hva nettopp _denne_ pakken bruker.
+Du vil med andre ord _aldri_ se default exports.
 
 ## Spørsmål?
 
-Hvis du har spørsmål, eller sitter fast, ta kontakt på #talk-designsystem på Slack - vi er som regel raske til å svare. Hvis du mangler tilgang til dokumentasjon/skisser i Figma, kontakt [Sara Johansson](mailto:sara.johansson@entur.org).
+Hvis du har spørsmål, ta kontakt på #talk-designsystem på Slack. Hvis du mangler tilgang til dokumentasjon (skisser og collections) i Figma, kontakt [Sara Johansson](mailto:sara.johansson@entur.org).
 
 ## Kom i gang med å bidra!
 
