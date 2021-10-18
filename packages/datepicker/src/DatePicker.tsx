@@ -83,11 +83,12 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       feedback,
       label,
       hideCalendarButton = false,
+      id,
       ...rest
     },
     ref,
   ) => {
-    const id = useRandomId('eds-datepicker');
+    const datepickerId = useRandomId('eds-datepicker');
     const { isFilled: isDatepickerFilled, setFilled: setFiller } =
       useInputGroupContext();
 
@@ -127,7 +128,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         showPopperArrow={false}
         placeholderText={placeholder}
         readOnly={readOnly}
-        id={id}
+        id={datepickerId}
+        ariaLabelledBy={datepickerId}
         disabled={disabled}
         locale={locale}
         popperModifiers={POPPER_MODIFIERS}
@@ -145,6 +147,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             disableLabelAnimation={disableLabelAnimation}
             prepend={prepend}
             hideCalendarButton={hideCalendarButton}
+            inputId={id}
           />
         }
       />
@@ -159,6 +162,7 @@ type DatePickerInputProps = {
   className?: string;
   hideCalendarButton?: boolean;
   feedback?: string;
+  inputId?: string;
   [key: string]: any;
 };
 // Props fra customInput i react-datepicker
@@ -207,12 +211,13 @@ const DatePickerInput = React.forwardRef<
       prepend,
       className,
       hideCalendarButton,
+      inputId,
       ...rest
     },
     ref,
   ) => {
     return (
-      <span style={{ display: 'flex' }} className={className}>
+      <span className={className}>
         <BaseFormControl
           style={style}
           className="eds-datepicker__form-control"
@@ -232,32 +237,33 @@ const DatePickerInput = React.forwardRef<
             readOnly={readOnly}
             disabled={disabled}
             ref={ref}
-            aria-labelledby={id}
+            // aria-labelledby={id}
             className="eds-form-control"
+            id={inputId}
             {...rest}
           />
-        </BaseFormControl>
-        {!hideCalendarButton && (
-          <Tooltip
-            placement="top"
-            content="Åpne kalender"
-            disableHoverListener={disabled}
-            disableFocusListener={disabled}
-          >
-            <button
-              className={classNames('eds-datepicker__calendar-button', {
-                'eds-datepicker__calendar-button--open': true,
-                'eds-datepicker__calendar-button--disabled': disabled,
-              })}
-              onKeyDown={onKeyDown}
-              onClick={onClick}
-              disabled={disabled}
-              type="button"
+          {!hideCalendarButton && (
+            <Tooltip
+              placement="top"
+              content="Åpne kalender"
+              disableHoverListener={disabled}
+              disableFocusListener={disabled}
             >
-              <CalendarIcon />
-            </button>
-          </Tooltip>
-        )}
+              <button
+                className={classNames('eds-datepicker__calendar-button', {
+                  'eds-datepicker__calendar-button--open': true,
+                  'eds-datepicker__calendar-button--disabled': disabled,
+                })}
+                onKeyDown={onKeyDown}
+                onClick={onClick}
+                disabled={disabled}
+                type="button"
+              >
+                <CalendarIcon />
+              </button>
+            </Tooltip>
+          )}
+        </BaseFormControl>
       </span>
     );
   },
