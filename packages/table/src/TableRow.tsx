@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type TableRowProps = {
+export type TableRowProps = {
   /** Tabellceller */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -18,6 +18,7 @@ type TableRowProps = {
    * @default false
    */
   error?: boolean;
+  ref?: React.Ref<HTMLTableRowElement>;
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLTableRowElement>,
   HTMLTableRowElement

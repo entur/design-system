@@ -24,10 +24,18 @@
     .eds-table--middle & {
       padding: $space-extra-small $space-default;
       height: $space-extra-large3;
+
+      .eds-table__header-cell-button-icon {
+        top: $space-extra-small;
+      }
     }
     .eds-table--small & {
       padding: $space-extra-small2 $space-default;
       height: $space-extra-large;
+
+      .eds-table__header-cell-button-icon {
+        top: $space-extra-small2;
+      }
     }
   }
   &__header-cell {
@@ -109,6 +117,9 @@
       border-bottom: $border-widths-default solid $colors-greys-grey70;
       .eds-contrast &  {
         border-color: $colors-blues-blue20;
+      }
+      &:focus {
+        outline: $outlines-focus;
       }
       &--hover {
         &:hover {
