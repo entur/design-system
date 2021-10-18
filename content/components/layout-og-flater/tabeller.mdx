@@ -21,6 +21,7 @@ import {
   EditableCell,
   ExpandableRow,
   ExpandRowButton,
+  useTableKeyboardNavigation,
 } from '@entur/table';
 import {
   Checkbox,
@@ -157,11 +158,8 @@ usorterte ikoner er bare synlige ved “hover”.
       { name: 'Skilpadde', age: 50 },
       { name: 'Løve', age: 25 },
     ];
-    const {
-      sortedData,
-      getSortableHeaderProps,
-      getSortableTableProps,
-    } = useSortableData(data);
+    const { sortedData, getSortableHeaderProps, getSortableTableProps } =
+      useSortableData(data);
     return (
       <Table {...getSortableTableProps}>
         <TableHead>
@@ -924,6 +922,52 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
           resultsPerPage={results}
           onResultsPerPageChange={e => setResults(e)}
         />
+      </>
+    );
+  }}
+</Playground>
+
+## Tastaturnavigering i tabell
+
+Hvis du ønsker tastaturnavigering i tabell, så kan man benytte seg av hooken `useTableKeyboardNavigation`. Én tabellrad vil da være fokuserbar.
+Man navigerer seg deretter i tabellen ved bruk av pil opp og pil ned.
+
+Prøv på eksempelet under ved å klikke på en rad, og deretter endre rad med piltastene.
+
+<Playground>
+  {() => {
+    const { getTableRowNavigationProps, getTableBodyNavigationProps } =
+      useTableKeyboardNavigation(10, true);
+    // Første paramter er antall rader som er i tabellen,
+    // Andre paramterer er om det skal være sirkulær navigering, dvs. at pil ned på siste rad sender deg til toppen av tabellen.
+    return (
+      <>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody {...getTableBodyNavigationProps()}>
+            {testdata
+              .filter((item, index) => index < 10)
+              .map((item, index) => (
+                <TableRow
+                  {...getTableRowNavigationProps(index)} // Index sendes inn her for intern state-håndtering
+                  hover
+                  key={item.name}
+                >
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.date}</DataCell>
+                  <DataCell>{item.category}</DataCell>
+                  <DataCell>{item.receiver}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
       </>
     );
   }}
