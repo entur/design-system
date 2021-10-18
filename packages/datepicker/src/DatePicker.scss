@@ -30,6 +30,9 @@
     margin-top: $border-widths-medium;
     margin-bottom: $border-widths-medium;
 
+    position: absolute;
+    right: -$border-widths-medium;
+
     color: inherit;
     padding: 0;
     background: none;
@@ -125,6 +128,7 @@
       &::before {
         left: 0;
         right: 0;
+        border-color: $colors-brand-blue;
       }
     }
     &--previous {
