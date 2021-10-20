@@ -96,7 +96,8 @@ type MultiSelectProps = {
   clearable?: boolean;
   loading?: boolean;
   style?: React.CSSProperties;
-} & UseSelectProps<NormalizedDropdownItemType>;
+  initialSelectedItems?: NormalizedDropdownItemType[];
+} & Omit<UseSelectProps<NormalizedDropdownItemType>, 'initialSelectedItem'>;
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
   items: input,
@@ -114,13 +115,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   openOnFocus = false,
   style,
   listStyle,
+  initialSelectedItems = [],
   debounceTimeout,
   ...rest
 }) => {
   const { items } = useResolvedItems(input, debounceTimeout);
-  const [selectedItems, setSelectedItems] = useState<
-    NormalizedDropdownItemType[]
-  >([]);
+  const [selectedItems, setSelectedItems] =
+    useState<NormalizedDropdownItemType[]>(initialSelectedItems);
 
   const reset = React.useCallback(() => {
     setSelectedItems([]);
