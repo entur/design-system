@@ -9,26 +9,121 @@ removeToc: true
 ---
 
 import PageHeader from '~/components/PageHeader';
-import DesignTools from '~/components/DesignTools';
+import { GridItem, GridContainer } from '@entur/grid';
+import { colors } from '@entur/tokens';
+import { Paragraph, Heading3, Heading5 } from '@entur/typography';
+import FigmaLogo from './images/FigmaLogo.png';
+import MuralLogo from './images/MuralLogo.png';
+import SlackLogo from './images/SlackLogo.png';
 
 <PageHeader>
   I denne guiden viser vi deg vår designprosess og hvordan vi jobber med
   følgende verktøy når vi designer til digitale flater.
 </PageHeader>
 
+Før du begynner å designe løsninger for Entur, bør du bli kjent med merkevaren og vår [visuelle identitet](/identitet) for å lære mer om Enturs mål, visjon, løfter og designprinsipper.
+
 ## Verktøy
 
-<DesignTools />
+<GridContainer spacing="extraLarge">
+  <GridItem small={12} medium={6}>
+    <Heading3>Figma</Heading3>
+    <Paragraph>
+      For å komme i gang med å designe for digitale flater i Entur trenger du
+      tilgang til Figma. Dette verktøyet bruker vi for å lage design skisser,
+      samarbeide, gi tilbakemelding, utvikle prototyper til brukertesting og
+      versjonshåndtering. Vi bruker også Figma for å vedlikeholde UI-biblioteket
+      med verktøykassen og gjenbrukbare komponenter.
+    </Paragraph>
+    <Paragraph>
+      Generelt sett så er designerne som har editor-rolle i Figma, men
+      produkteiere og utviklere kan få view-status til å kommentere direkte i
+      verktøyet, samt få tilgang på kodespesfikasjoner. For å få tilgang til
+      Enturs Figma, kontakt oss på Slack på #talk-designsystem.
+    </Paragraph>
+  </GridItem>
+  <GridItem
+    small={12}
+    medium={6}
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: colors.greys.grey90,
+      minHeight: '10rem',
+    }}
+  >
+    <img height={96} src={FigmaLogo} />
+  </GridItem>
+</GridContainer>
 
-## Tilganger
+### Hva er UI-biblioteket?
 
-For å komme i gang med å designe for digitale flater i Entur trenger du programvaren Sketch. Dette verktøyet bruker vi for å designe skisser og for å vedlikeholde UI-biblioteket med verktøykassen og gjenbrukbare elementer. Du må også laste ned Abstract som vi bruker for lagring av Sketch-filer, samarbeid og deling av specs til utviklere. For å få tilgang til Abstract og UI-biblioteket, kontakt oss på Slack på #talk-designsystem.
+Enturs UI-bibilotek i Figma er en fil med alle våre UI-komponenter som er klare til bruk. Disse komponentene skal brukes til å designe produktsider og funksjoner.
+Ved å koble seg til biblioteket får du tilgang til universale komponenter som farger, typografi, knapper, inputfelter, navigasjon og lignende.
+Slik kommer du raskt og effektivt i gang med å sette opp brukergrensensitt for din applikasjon.
+Alle komponenter sorteres i tydelige kategorier som du kan velge mellom når du importerer biblioteket til din arbeidsfil i Figma.
 
-#### UX-møter
+Gå igjennom styleguiden i Figma-biblioteket eller [komponenter-sidene](/komponenter) for å se dokumentasjonen, lese retningslinjer og bli kjent med eksemplene. Dette biblioteket er tilgjengelig for alle som jobber med å videreutvikle Entur.
+
+#### Vedlikehold av UI-biblioteket
+
+Siden designsystemet er et levende produkt vil dette biblioteket bli kontinuerlig oppdatert i henhold til vår grafiske profil og vedlikeholdt basert på tilbakemeldinger.
+
+Det er derfor viktig å holde din Figma-fil og UI-biblioteket synkronisert.
+Dette er en av de viktigste fordelene ved å ha det, for å sikre at eventuelle endringer eller nye komponenter kommer med.
+Når UI-biblioteket oppdateres vil det dukke opp et varsel nede i høyre hjørne.
+Ved å klikke på varselet får man se hvilke komponenter som er endret og deretter muligheten til å oppdatere disse i sin egen fil.
+
+### Andre verktøy
+
+<GridContainer spacing="extraLarge">
+  <GridItem small={12} medium={6}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: colors.greys.grey90,
+        height: '15rem',
+      }}
+    >
+      <img height={48} src={SlackLogo} />
+    </div>
+    <Heading5 as="h4">Slack</Heading5>
+    <Paragraph>
+      I Entur bruker vi Slack for å samarbeide på tvers av team. Designerne har
+      to egne kanaler på tvers av team; #work-ux-design for det administrative,
+      og #work-ux-skisser for deling av arbeidsskisser for innspill,
+      tilbakemeldinger, støtte og hjelp.
+    </Paragraph>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: colors.greys.grey90,
+        height: '15rem',
+      }}
+    >
+      <img height={48} src={MuralLogo} />
+    </div>
+    <Heading5 as="h4">Mural</Heading5>
+    <Paragraph>
+      Mural er et online samhandlingsverktøy vi bruker for å samarbeide. Det
+      benyttes til retro, felles planlegging, idemyldring og fasilitering av
+      digitale workshops.
+    </Paragraph>
+  </GridItem>
+</GridContainer>
+
+## UX-møter
 
 For å for å sikre brukeropplevelse på tvers av flater har vi følgende tiltak i Entur:
 
-- En kjapp designsnakk på 20 min med alle designere og designsystemteamet hver mandag. Dette er et kort statusmøte og fot i bakken på om det skjer spesielle ting for noen av oss, hvis ikke møtes vi bare for å si hei og for å avgjøre agenda til denne ukens UX-lounge.
-- De som har behov, synes annonsert tema er interessant eller har tid til å bidra med innspill til andre møtes i ukens fast avsatte samhandlingstid i UX-loungen. Det kommer påminnelse om dette møtet i vår felles Slack kanal #work-ux-design fredagen før, slik at alle kan melde inn problemstillinger de vil at skal diskuteres. Mellom disse møtene oppfordrer vi alle å dele skisser underveis for innspill fra de andre UX’erne på #work-ux-skisser.
-- Ved behov setter vi opp workshops/arbeidsmøter på aktuelle tema, eller til hjelp med videreutvikling av Enturs Designsystem.
+- En fast avsatt tid til ‘Designlounge’ hver uke med alle designere og designsystemteamet. Vi har dialog i forkant rundt tema og innhold i ukens møte på Slack i kanalen #work-ux-design. Her kan alle melde inn problemstillinger de vil at skal diskuteres. Første del av møtet fungerer som et kort statusmøte og fot i bakken på om det skjer noe spesielt i teamene som er interessant for andre å vite om. De som har tid blir igjen i møterommet for sparring og diskusjon.
+- Ved behov setter vi opp egne workshops/arbeidsmøter på aktuelle tema, eller til hjelp med videreutvikling av Enturs Designsystem.
+- Mellom disse møtene oppfordrer vi alle å dele skisser underveis for innspill fra de andre UX’erne på #work-ux-skisser.
 - Det er også mulig å be om bistand til fasilitering eller deltakelse ved brukertesting, designsprint, designdiskusjon, demo eller retrospektiv, for den som måtte ønske det.

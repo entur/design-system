@@ -11,6 +11,11 @@ removeToc: true
 import PageHeader from '~/components/PageHeader';
 import reisebehov from './images/reisebehov.png';
 import Brukergrupper from './Brukergrupper.png';
+import SituasjonsBehov from './images/SituasjonsBehov.png';
+import { GridContainer, GridItem } from '@entur/grid';
+import { TrainIcon, BusIcon, MobileIcon, StandingIcon } from '@entur/icons';
+import { Paragraph } from '@entur/typography';
+import { VisuallyHidden } from '@entur/a11y';
 
 <PageHeader>
   Enturs tjenester har to hovedbrukergrupper; reisetilbydere på den ene siden og
@@ -33,12 +38,72 @@ Fylkeskommuner er ofte små aktører med få resieruter, avgaganger og billetti
 Nasjonale selskaper er ofte store aktører med mange behov. De kan tilby mange ulike typer ruter som kan inkludere tog, buss og båt, ha stort rutetilbud og kompliserte produkter.
 Aktørene som drifter tog benytter seg av Entur sin løsning for mobil terminal (lar konduktør selge billetter på tog) og løsning som lar konduktørleder følge opp deler av regnskapet til deres konduktører.
 
-### Reisende
+## Utviklere
+
+Entur er en nasjonal leverandør av API’er som
+
+- Tilgjengeliggjør informasjon relevant for reiseplanlegging
+- Tilbyr operatører, mobiltetsleverandører og tredjeparter datautveksling og funksjonalitet som synliggjøring av det totale mobilitetstilbudet
+- Tilgjengeliggjør funksjoner for håndtering av salg, plass og antallskontroll, billettering, betaling, kontroll og kundedata
+
+Disse tjenestene skal være enkle å bruke både for store og små aktører. Brukergruppen her består i stor grad av utviklere. Denne brukergruppen kan igjen deles inn i flere undergrupper.
+**De eksterne brukerene deles inn i fire segmenter med litt ulike behov:**
+
+<GridContainer spacing="large">
+  <GridItem small={6} medium={3}>
+    <TrainIcon></TrainIcon>
+    <Paragraph>1. Togselskaper</Paragraph>
+  </GridItem>
+  <GridItem small={6} medium={3}>
+    <BusIcon></BusIcon>
+    <Paragraph>2. Andre kollektivselskaper</Paragraph>
+  </GridItem>
+  <GridItem small={6} medium={3}>
+    <MobileIcon></MobileIcon>
+    <Paragraph>3. Kommersielle tjenesteutviklere</Paragraph>
+  </GridItem>
+  <GridItem small={6} medium={3}>
+    <StandingIcon></StandingIcon>
+    <Paragraph>4. Privatpersoner</Paragraph>
+  </GridItem>
+</GridContainer>
+
+Interne brukere er våre egne team, både backendteam og klientteam. De er viktige kvalitetssikringsinstanser for oss.
+
+Grensesnittet ut mot disse brukerne er [Enturs Utviklerportal](https://developer.entur.org/).
+
+## Reisende
 
 Entur skal levere tjenester som gjør det enkelt å planlegge, sammenligne og kjøpe sømløse reiser på tvers av alle reisetilbydere i Norge.
 
-De reisende er ikke en homogen gruppe, og enkeltindidiver vil heller ikke kunne deles inn i tradisjonell måte med personas og personavhengige behov - vi har siden lengst slått fast at det er situasjonen man er i, og ikke personen som man er, som avgjører hvilke behov man har.
+De reisende er ikke en homogen gruppe, og enkeltindidiver vil heller ikke kunne deles inn på tradisjonell måte i personas med personavhengige behov. Det er situasjonen man er i, og ikke personen som man er, som avgjører hvilke behov man har.
 
-### Interne brukere
+### Situasjonsbestemte behov
 
-Mange av systemene vi lager i Entur benyttes av våre egne ansatte, f.eks. Sørvis som benyttes av kundebehandlere på Enturs Kundesenter og på betjente stasjoner. Her er likhet med kundeflatene i app og på web viktig, slik at en kundebehandler enkelt kan hjelpe kunder med reiser og billetter. Også systemer som Entur Partner har en intern brukergruppe, når folk hos oss hjelper reisetilbydere med dataforvaltning. Gjenbrukbare produkter (widget, SDK’er, API’er) sikrer funksjonslikhet og gjenkjennbarhet på tvers av systemer og gir trygghet og forståelse.
+<VisuallyHidden>
+  Brukere har forskjellige behov basert på hvor godt de kan systemet, og hvor
+  mye støtte de har behov for. Planleggeren og den rutinerte er brukere som kan
+  systemet godt, men planleggeren har behov for mer støtte enn den rutinerte.
+  Den rutinerte vet nøyaktig hvilke reisemåter hen tar og vil bare ha rask
+  tilgang til billett og varsler om avvik. Planleggeren derimot vil gjerne
+  sammenligne reisemåter og velge reiser basert på de forskjellige
+  alternativene. På den andre siden av skalaen har man de som har behov for
+  støtte i systemet: nybegynneren og av-og-til'eren. Nybegynneren vil se reisen
+  i kartet, har behov for støtte underveis i reisen og trenger ekstra
+  informasjon om hvordan og hvor man kjøper billett. Av-og-til'eren vil ha en
+  behagelig reise med tydelig informasjon om priser, og velger å få reiseforslag
+  som er kombinert med bilkjøring.
+</VisuallyHidden>
+
+<img
+  src={SituasjonsBehov}
+  width="100%"
+  alt="Viser hvordan behov til brukere endres etter mengden støtte de trenger og hvor godt de kan reisen"
+/>
+
+## Interne brukere
+
+Mange av systemene vi lager i Entur benyttes av våre egne ansatte, f.eks. Sørvis som benyttes av kundebehandlere på Enturs Kundesenter og på betjente stasjoner.
+Her er likhet med kundeflatene i app og på web viktig, slik at en kundebehandler enkelt kan hjelpe kunder med reiser og billetter.
+Også systemer som Entur Partner har en intern brukergruppe, når folk hos oss hjelper reisetilbydere med dataforvaltning.
+Gjenbrukbare produkter (widget, SDK’er, API’er) sikrer funksjonslikhet og gjenkjennbarhet på tvers av systemer og gir trygghet og felles forståelse av det vi leverer.
