@@ -10,12 +10,13 @@ removeToc: true
 
 import PageHeader from '~/components/PageHeader';
 import reisebehov from './images/reisebehov.png';
-import Brukergrupper from './Brukergrupper.png';
+import Brukergrupper from './images/Brukergrupper.png';
 import SituasjonsBehov from './images/SituasjonsBehov.png';
 import { GridContainer, GridItem } from '@entur/grid';
 import { TrainIcon, BusIcon, MobileIcon, StandingIcon } from '@entur/icons';
 import { Paragraph } from '@entur/typography';
 import { VisuallyHidden } from '@entur/a11y';
+import './brukergrupper.scss';
 
 <PageHeader>
   Enturs tjenester har to hovedbrukergrupper; reisetilbydere på den ene siden og
@@ -49,20 +50,20 @@ Entur er en nasjonal leverandør av API’er som
 Disse tjenestene skal være enkle å bruke både for store og små aktører. Brukergruppen her består i stor grad av utviklere. Denne brukergruppen kan igjen deles inn i flere undergrupper.
 **De eksterne brukerene deles inn i fire segmenter med litt ulike behov:**
 
-<GridContainer spacing="large">
-  <GridItem small={6} medium={3}>
+<GridContainer spacing="large" className="brukergrupper__brukere-wrapper">
+  <GridItem small={6} medium={3} className="brukergrupper__brukere">
     <TrainIcon></TrainIcon>
     <Paragraph>1. Togselskaper</Paragraph>
   </GridItem>
-  <GridItem small={6} medium={3}>
+  <GridItem small={6} medium={3} className="brukergrupper__brukere">
     <BusIcon></BusIcon>
     <Paragraph>2. Andre kollektivselskaper</Paragraph>
   </GridItem>
-  <GridItem small={6} medium={3}>
+  <GridItem small={6} medium={3} className="brukergrupper__brukere">
     <MobileIcon></MobileIcon>
     <Paragraph>3. Kommersielle tjenesteutviklere</Paragraph>
   </GridItem>
-  <GridItem small={6} medium={3}>
+  <GridItem small={6} medium={3} className="brukergrupper__brukere">
     <StandingIcon></StandingIcon>
     <Paragraph>4. Privatpersoner</Paragraph>
   </GridItem>

@@ -1,0 +1,25 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.brukergrupper {
+  &__brukere {
+    &-wrapper {
+      margin-bottom: $space-extra-large;
+    }
+    min-height: 10rem;
+    background: $colors-greys-grey80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .eds-icon {
+      color: $colors-brand-blue;
+      font-size: $font-sizes-extra-large5;
+      margin-top: $space-large;
+    }
+    .eds-paragraph {
+      text-align: center;
+      margin-top: $space-large;
+      max-width: 10rem;
+    }
+  }
+}
