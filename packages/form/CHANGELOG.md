@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.2...@entur/form@5.1.3) (2021-10-25)
+
+### Bug Fixes
+
+- **radiopanel:** adjust font weight on title ([ba40113](https://bitbucket.org/enturas/design-system/commits/ba40113a00c7c60c504801e81bcf796070926935))
+
 ## [5.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.1...@entur/form@5.1.2) (2021-10-18)
 
 ### Bug Fixes

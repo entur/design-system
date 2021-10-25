@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.10...@entur/dropdown@2.1.0) (2021-10-25)
+
+### Features
+
+- **multiselect:** add support for initialSelectedItems ([40f14d7](https://bitbucket.org/enturas/design-system/commits/40f14d7ccbba43d1da42834839246d294e289a7f))
+
 ## [2.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.9...@entur/dropdown@2.0.10) (2021-10-18)
 
 **Note:** Version bump only for package @entur/dropdown

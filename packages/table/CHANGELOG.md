@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.4.0...@entur/table@4.4.1) (2021-10-25)
+
+### Bug Fixes
+
+- **tablebody:** fix typing for ref prop ([fe133f2](https://bitbucket.org/enturas/design-system/commits/fe133f25f882d39b682baf6fb3b214305ac75dfc))
+
 # [4.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.3.18...@entur/table@4.4.0) (2021-10-18)
 
 ### Bug Fixes
