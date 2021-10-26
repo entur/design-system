@@ -28,7 +28,7 @@ export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
   className,
   width,
   onClose,
-  closeable = false,
+  closable = false,
   closeButtonLabel,
   ...rest
 }) => (
@@ -38,7 +38,7 @@ export const SmallAlertBox: React.FC<SmallAlertBoxProps> = ({
     })}
     {...rest}
     onClose={onClose}
-    closeable={closeable}
+    closable={closable}
     closeButtonLabel={closeButtonLabel}
     size="small"
   />
