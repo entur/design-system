@@ -1,8 +1,7 @@
 import { Switch } from '@entur/form';
 import { GridContainer } from '@entur/grid';
 import { Contrast } from '@entur/layout';
-import { colors, space } from '@entur/tokens';
-import { Heading2, Paragraph } from '@entur/typography';
+import { colors, space, borderRadiuses } from '@entur/tokens';
 import React from 'react';
 import ColorSwatch from '~/components/ColorSwatch';
 
@@ -12,14 +11,6 @@ const TransportColors: React.FC = () => {
   const Wrapper = isContrast ? Contrast : 'div';
   return (
     <>
-      <Heading2>Transportfarger</Heading2>
-      <Paragraph>
-        De ulike transportmidlene har hver sin representative farge for å skille
-        de fra hverandre. Vanngående transport har for eksempel alltid lyseblå
-        farge og er derfor også markert med den fargen på ikoner (ferje,
-        bilferje, cruise osv.) og på reiselinjer. Transportmiddelfargene finnes
-        også for Contrast seksjoner.
-      </Paragraph>
       <Switch
         style={{ marginBottom: space.extraLarge }}
         onChange={() => setContrast(prev => !prev)}
@@ -30,6 +21,7 @@ const TransportColors: React.FC = () => {
       <Wrapper
         style={{
           boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
+          borderRadius: borderRadiuses.small,
         }}
       >
         <GridContainer spacing="large">
@@ -61,7 +53,6 @@ const TransportColors: React.FC = () => {
             path={`transport.${pathName}.cableway`}
             title="Cableway"
           ></ColorSwatch>
-
           <ColorSwatch
             path={`transport.${pathName}.taxi`}
             title="Taxi"
@@ -74,12 +65,10 @@ const TransportColors: React.FC = () => {
             path={`transport.${pathName}.walk`}
             title="Walk"
           ></ColorSwatch>
-
           <ColorSwatch
             path={`transport.${pathName}.train`}
             title="Train"
           ></ColorSwatch>
-
           <ColorSwatch
             path={`transport.${pathName}.ferry`}
             title="Ferry"
