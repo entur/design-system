@@ -11,7 +11,6 @@ import {
 } from '@entur/table';
 import { colors } from '@entur/tokens';
 import {
-  Heading2,
   Heading3,
   Heading4,
   Label,
@@ -23,8 +22,9 @@ import React from 'react';
 import { hex } from 'wcag-contrast';
 import ColorSwatch from './ColorSwatch';
 import { CopyablePreformattedText } from './CopyablePreformattedText';
-import TransportColors from './TransportColors';
+import TransportColors from './ColorsTransport';
 import './Colors.scss';
+import ColorsDataVisualisation from './ColorsDataVisualisation';
 
 type ColorObject = {
   name: string;
@@ -45,7 +45,7 @@ export const useColorContext: () => {
     | undefined;
 } = () => React.useContext(ColorsContext);
 
-const Colors: () => React.ReactNode = () => {
+export const ColorsProvider: React.FC = ({ children }) => {
   const [chosenColor, setChosenColor] = React.useState<ColorObject>({
     name: '',
     rgb: '',
@@ -53,32 +53,51 @@ const Colors: () => React.ReactNode = () => {
     hex: '',
     children: undefined,
   });
+  const colorValue = React.useMemo(
+    () => ({
+      chosenColor,
+      setChosenColor,
+    }),
+    [chosenColor, setChosenColor],
+  );
   return (
-    <ColorsContext.Provider value={{ setChosenColor }}>
-      <div className="eds-color-list">
-        <Drawer
-          title={chosenColor.name}
-          open={chosenColor.name !== ''}
-          overlay
-          style={{ background: colors.brand.white }}
-          onDismiss={() =>
-            setChosenColor({
-              name: '',
-              rgb: '',
-              variable: '',
-              hex: '',
-              cmyk: '',
-              children: undefined,
-            })
-          }
+    <ColorsContext.Provider value={colorValue}>
+      <Drawer
+        title={chosenColor.name}
+        open={chosenColor.name !== ''}
+        overlay
+        style={{ background: colors.brand.white }}
+        onDismiss={() =>
+          setChosenColor({
+            name: '',
+            rgb: '',
+            variable: '',
+            hex: '',
+            cmyk: '',
+            children: undefined,
+          })
+        }
+      >
+        <ColorDrawer
+          color={chosenColor}
+          description={chosenColor?.children}
+        ></ColorDrawer>
+      </Drawer>
+      {children}
+    </ColorsContext.Provider>
+  );
+};
+
+const Colors: React.FC<{
+  colorType: 'brand' | 'blues' | 'greys' | 'validation' | 'transport' | 'data';
+}> = ({ colorType }) => {
+  return (
+    <div>
+      {colorType === 'brand' && (
+        <GridContainer
+          className="eds-colors-group__large-space"
+          spacing="large"
         >
-          <ColorDrawer
-            color={chosenColor}
-            description={chosenColor?.children}
-          ></ColorDrawer>
-        </Drawer>
-        <Heading2>Profilfarger</Heading2>
-        <GridContainer spacing="large">
           <ColorSwatch title="Blue" path="brand.blue" cmyk="100, 95, 0, 45">
             Blue er primær fargen til Entur og skal være gjennomgående i vår
             visuelle profil. Den varme, mørkeblå fargen hentyder til den
@@ -115,60 +134,80 @@ const Colors: () => React.ReactNode = () => {
             fargene gjør at profilen fremstår lys, luftig og dynamisk.
           </ColorSwatch>
         </GridContainer>
-        <Heading2>Systemfarger</Heading2>
-        <Paragraph>
-          Systemfargene er ikke direkte knyttet til identiteten til Entur, men
-          brukes hovedsakelig som UI-farger for spesifikke funksjoner i
-          systemet. Systemfarger kan for eksempel brukes til varselmeldinger og
-          validering i skjemaelementer i grensesnittet. Disse fargene er ikke
-          ment som dekorasjon, og skal derfor kun brukes der de gir verdi.
-        </Paragraph>
-        <Heading3>Infomelding farger</Heading3>
-        <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
-          <ColorSwatch title="Sky" path="validation.sky"></ColorSwatch>
-          <ColorSwatch
-            title="Sky Contrast"
-            path="validation.skyContrast"
-          ></ColorSwatch>
-          <ColorSwatch title="Sky Tint" path="validation.skyTint"></ColorSwatch>
-        </GridContainer>
-        <Heading3>Suksessmelding farger</Heading3>
-        <GridContainer spacing="large">
-          <ColorSwatch title="Mint" path="validation.mint"></ColorSwatch>
-          <ColorSwatch
-            title="Mint Contrast"
-            path="validation.mintContrast"
-          ></ColorSwatch>
-          <ColorSwatch
-            title="Mint Tint"
-            path="validation.mintTint"
-          ></ColorSwatch>
-        </GridContainer>
-        <Heading3>Feilmelding farger</Heading3>
-        <GridContainer spacing="large">
-          <ColorSwatch title="Lava" path="validation.lava"></ColorSwatch>
-          <ColorSwatch
-            title="Lava Contrast"
-            path="validation.lavaContrast"
-          ></ColorSwatch>
-          <ColorSwatch
-            title="Lava Tint"
-            path="validation.lavaTint"
-          ></ColorSwatch>
-        </GridContainer>
-        <Heading3 className="eds-color-list__normal-margin-h3">
-          Advarsel- og avviksmelding farge
-        </Heading3>
-        <GridContainer spacing="large">
-          <ColorSwatch title="Canary" path="validation.canary"></ColorSwatch>
-        </GridContainer>
-        <Heading2>Blåtoner</Heading2>
-        <Paragraph>
-          Disse blå fargenyansene brukes hovedsakelig som bakgrunnsfarger for
-          Contrast seksjoner og enkelte elementer i designet som for eksempel
-          borders og dividers.
-        </Paragraph>
-        <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
+      )}
+
+      {colorType === 'validation' && (
+        <>
+          <Heading3>Infomelding farger</Heading3>
+          <GridContainer
+            spacing="large"
+            style={{ marginBottom: '3rem' }}
+            className="eds-colors-small-space"
+          >
+            <ColorSwatch title="Sky" path="validation.sky"></ColorSwatch>
+            <ColorSwatch
+              title="Sky Contrast"
+              path="validation.skyContrast"
+            ></ColorSwatch>
+            <ColorSwatch
+              title="Sky Tint"
+              path="validation.skyTint"
+            ></ColorSwatch>
+          </GridContainer>
+          <Heading3>Suksessmelding farger</Heading3>
+          <GridContainer
+            spacing="large"
+            className="eds-colors-group__small-space"
+          >
+            <ColorSwatch title="Mint" path="validation.mint"></ColorSwatch>
+            <ColorSwatch
+              title="Mint Contrast"
+              path="validation.mintContrast"
+            ></ColorSwatch>
+            <ColorSwatch
+              title="Mint Tint"
+              path="validation.mintTint"
+            ></ColorSwatch>
+          </GridContainer>
+          <Heading3>Feilmelding farger</Heading3>
+          <GridContainer
+            spacing="large"
+            className="eds-colors-group__small-space"
+          >
+            <ColorSwatch title="Lava" path="validation.lava"></ColorSwatch>
+            <ColorSwatch
+              title="Lava Contrast"
+              path="validation.lavaContrast"
+            ></ColorSwatch>
+            <ColorSwatch
+              title="Lava Tint"
+              path="validation.lavaTint"
+            ></ColorSwatch>
+          </GridContainer>
+          <Heading3 className="eds-color-list__normal-margin-h3">
+            Advarsel- og avviksmelding farge
+          </Heading3>
+          <GridContainer
+            spacing="large"
+            className="eds-colors-group__large-space"
+          >
+            <ColorSwatch title="Canary" path="validation.canary"></ColorSwatch>
+            <ColorSwatch
+              title="Canary Contrast"
+              path="validation.canaryContrast"
+            ></ColorSwatch>
+            <ColorSwatch
+              title="Canary Tint"
+              path="validation.canaryTint"
+            ></ColorSwatch>
+          </GridContainer>
+        </>
+      )}
+      {colorType === 'blues' && (
+        <GridContainer
+          spacing="large"
+          className="eds-colors-group__large-space"
+        >
           <React.Fragment>
             {Object.keys(colors.blues).map(color => (
               <ColorSwatch
@@ -179,13 +218,12 @@ const Colors: () => React.ReactNode = () => {
             ))}
           </React.Fragment>
         </GridContainer>
-        <Heading2>Gråtoner</Heading2>
-        <Paragraph>
-          Gråtonene symboliserer det tekniske og robuste i plattformen vår.
-          Brukes hovedsakelig som bakgrunnsfarger for å få frem det lyse og
-          luftige ved layouten i designet.
-        </Paragraph>
-        <GridContainer spacing="large" style={{ marginBottom: '3rem' }}>
+      )}
+      {colorType === 'greys' && (
+        <GridContainer
+          spacing="large"
+          className="eds-colors-group__large-space"
+        >
           {Object.keys(colors.greys).map(color => (
             <ColorSwatch
               key={color}
@@ -194,9 +232,10 @@ const Colors: () => React.ReactNode = () => {
             ></ColorSwatch>
           ))}
         </GridContainer>
-        <TransportColors />
-      </div>
-    </ColorsContext.Provider>
+      )}
+      {colorType === 'transport' && <TransportColors />}
+      {colorType === 'data' && <ColorsDataVisualisation />}
+    </div>
   );
 };
 

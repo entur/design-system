@@ -7,7 +7,7 @@ import './ColorSwatch.scss';
 import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
 import { useColorContext } from './Colors';
-import { Heading4 } from '@entur/typography';
+import { Heading4, Label } from '@entur/typography';
 
 export function getColorFromPath(path: string): string {
   return path
@@ -25,6 +25,7 @@ type Props = {
   children?: string;
   cmyk?: string;
   title: string;
+  topLabel?: string;
 };
 
 const ColorSwatch: React.FC<Props> = ({
@@ -33,6 +34,7 @@ const ColorSwatch: React.FC<Props> = ({
   style,
   cmyk,
   title,
+  topLabel,
 }) => {
   const backgroundColor = getColorFromPath(path);
   const { variableFormat } = useSettings();
@@ -43,6 +45,7 @@ const ColorSwatch: React.FC<Props> = ({
 
   return (
     <GridItem small={6} medium={4}>
+      {topLabel && <Label>{topLabel}</Label>}
       <BaseCard
         className="color-swatch"
         as="button"

@@ -3,6 +3,7 @@ import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import { SkipToContent } from '@entur/a11y';
+import { ColorsProvider } from '~/components/Colors';
 import SiteFooter from '~/components/SiteFooter';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
@@ -40,60 +41,62 @@ const App: React.FC = ({ children }) => {
     <SettingsProvider>
       <ToastProvider>
         <MediaContextProvider>
-          <ComponentsProvider components={componentMap}>
-            <SkipToContent mainId="site-content">
-              Gå til hovedinnhold
-            </SkipToContent>
-            {isFrontPage ? (
-              <>
-                <SEO title="Velkommen til Enturs designsystem" />
-                <Media at="mobile">
-                  <MobileMenu
-                    className="ui-menu--mobile"
-                    openMenu={setOpenMobileMenu}
-                    frontPage
-                  />
-                </Media>
-                <Media greaterThanOrEqual="desktop">
-                  <FrontPageMenu className="ui-menu--desktop" />
-                </Media>
-                <div
-                  className={classNames('frontpage__site-content-wrapper', {
-                    'frontpage__site-content-wrapper--hidden': openMobileMenu,
-                  })}
-                >
-                  <main>{children}</main>
-                  <FrontPageFooter />
-                </div>
-              </>
-            ) : (
-              <>
-                <SEO />
-                <Media at="mobile">
-                  <MobileMenu
-                    className={classNames(
-                      'ui-menu--mobile ui-menu--mobile-not-frontpage',
-                      {
-                        'ui-menu--mobile-open-sidemenu': openMobileMenu,
-                      },
-                    )}
-                    openMenu={setOpenMobileMenu}
-                  />
-                </Media>
-                <Media greaterThanOrEqual="desktop">
-                  <Menu className="ui-menu--desktop" />
-                </Media>
-                <div
-                  className={classNames('site-content', {
-                    'site-content--hidden': openMobileMenu,
-                  })}
-                >
-                  <main id="site-content">{children}</main>
-                  <SiteFooter />
-                </div>
-              </>
-            )}
-          </ComponentsProvider>
+          <ColorsProvider>
+            <ComponentsProvider components={componentMap}>
+              <SkipToContent mainId="site-content">
+                Gå til hovedinnhold
+              </SkipToContent>
+              {isFrontPage ? (
+                <>
+                  <SEO title="Velkommen til Enturs designsystem" />
+                  <Media at="mobile">
+                    <MobileMenu
+                      className="ui-menu--mobile"
+                      openMenu={setOpenMobileMenu}
+                      frontPage
+                    />
+                  </Media>
+                  <Media greaterThanOrEqual="desktop">
+                    <FrontPageMenu className="ui-menu--desktop" />
+                  </Media>
+                  <div
+                    className={classNames('frontpage__site-content-wrapper', {
+                      'frontpage__site-content-wrapper--hidden': openMobileMenu,
+                    })}
+                  >
+                    <main>{children}</main>
+                    <FrontPageFooter />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <SEO />
+                  <Media at="mobile">
+                    <MobileMenu
+                      className={classNames(
+                        'ui-menu--mobile ui-menu--mobile-not-frontpage',
+                        {
+                          'ui-menu--mobile-open-sidemenu': openMobileMenu,
+                        },
+                      )}
+                      openMenu={setOpenMobileMenu}
+                    />
+                  </Media>
+                  <Media greaterThanOrEqual="desktop">
+                    <Menu className="ui-menu--desktop" />
+                  </Media>
+                  <div
+                    className={classNames('site-content', {
+                      'site-content--hidden': openMobileMenu,
+                    })}
+                  >
+                    <main id="site-content">{children}</main>
+                    <SiteFooter />
+                  </div>
+                </>
+              )}
+            </ComponentsProvider>
+          </ColorsProvider>
         </MediaContextProvider>
       </ToastProvider>
     </SettingsProvider>

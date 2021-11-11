@@ -1,17 +1,10 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-color-list {
-  .eds-h2 {
-    margin-top: $space-extra-large5;
-    &:first-child {
-      margin-top: 0;
-    }
+.eds-colors-group {
+  &__large-space {
+    margin-bottom: $space-extra-large5;
   }
-  .eds-h3 {
-    margin-top: $space-extra-large3;
-
-    &.eds-color-list__normal-margin-h3 {
-      margin-top: $space-large;
-    }
+  &__small-space {
+    margin-bottom: $space-extra-large2;
   }
 }
