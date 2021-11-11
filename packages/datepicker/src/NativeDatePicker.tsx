@@ -57,6 +57,7 @@ export const NativeDatePicker = React.forwardRef<
         variant={variant}
         labelId={nativedatepickerId}
         disableLabelAnimation={disableLabelAnimation}
+        isFilled
       >
         <NativeDatePickerBase
           onChange={onChange}
@@ -84,10 +85,8 @@ const NativeDatePickerBase = React.forwardRef<
 >(({ onChange, variant, value, ...rest }, ref) => {
   const contextVariant = useVariant();
   const currentVariant = variant || contextVariant;
-  const {
-    isFilled: isDatepickerFilled,
-    setFilled: setFiller,
-  } = useInputGroupContext();
+  const { isFilled: isDatepickerFilled, setFilled: setFiller } =
+    useInputGroupContext();
 
   useOnMount(() => {
     setFiller && !isDatepickerFilled && setFiller(true);
