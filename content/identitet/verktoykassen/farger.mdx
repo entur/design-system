@@ -24,7 +24,6 @@ import dont4 from './farger/Dont4.png';
 import balance from './farger/ColorBalance.png';
 import Colors from '~/components/Colors';
 import PageHeader from '~/components/PageHeader';
-import TransportColors from '~/components/TransportColors';
 
 <PageHeader>
   Fargepaletten er et viktig grafisk virkemiddel i identiteten vår. Det er
@@ -32,11 +31,56 @@ import TransportColors from '~/components/TransportColors';
   uttrykk.
 </PageHeader>
 
-<Colors />
+## Profilfarger
+
+Når det er snakk om kjernekommunikasjon, skal vi prøve å forholde oss til disse hovedfargene.
+
+<Colors colorType="brand"></Colors>
+
+## Funksjonsfarger
+
+Disse fargene er ikke direkte knyttet til identiteten til Entur,
+men brukes til spesifikke funksjoner i grensesnittet som varselmeldinger, statusmeldinger eller validering i skjemaelementer.
+Disse fargene er ikke ment som dekorasjon, og skal kun brukes til å formidle et budskap.
+
+<Colors colorType="validation" />
+
+## Blåtoner
+
+Disse blå fargenyansene brukes hovedsakelig som bakgrunnsfarger for
+Contrast seksjoner og enkelte elementer i designet som for eksempel
+borders og dividers.
+
+<Colors colorType="blues" />
+
+## Gråtoner
+
+Gråtonene symboliserer det tekniske og robuste i plattformen vår. Brukes
+hovedsakelig som bakgrunnsfarger for å få frem det lyse og luftige ved
+layouten i designet.
+
+<Colors colorType="greys" />
+
+## Transportfarger
+
+De ulike transportmidlene har hver sin representative farge for å skille
+de fra hverandre. Vanngående transport har for eksempel alltid lyseblå
+farge og er derfor også markert med den fargen på ikoner (ferje,
+bilferje, cruise osv.) og på reiselinjer. Transportmiddelfargene finnes
+også for Contrast seksjoner.
+
+<Colors colorType="transport" />
+
+## Farger for datavisualisering
+
+Vi har også en egen fargepalett som skal benyttes ved visualisering av data, i forskjellige typer grafer og andre visualiseringer av informasjon.
+[Les mer om farger for datavisualisering her.](/identitet/verktoykassen/datavisualisering)
+
+<Colors colorType="data" />
 
 ## Retningslinjer for bruk
 
-### Vekting av farger
+### Vekting av profilfarger
 
 Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for Entur. Hovedfargene er blå, hvit og rød, og disse burde alltid være med. Korallfargen er vektet lavt, men er viktig og skal alltid være tilstede i uttak. Den brukes ofte til detaljer, til tider så detaljert som bare i logo.
 

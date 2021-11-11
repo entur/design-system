@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors } from '@entur/tokens';
+import { colors, space } from '@entur/tokens';
 import { formatVariable } from '~/utils/formatVariable';
 import { useSettings } from './SettingsContext';
 import hexrgb from 'hex-rgb';
@@ -49,6 +49,7 @@ const ColorSwatch: React.FC<Props> = ({
       <BaseCard
         className="color-swatch"
         as="button"
+        style={{ marginTop: space.medium }}
         onClick={() =>
           setChosenColor &&
           setChosenColor({

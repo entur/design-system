@@ -6,17 +6,43 @@
   grid-template-columns: 1fr;
   gap: 0;
   row-gap: $space-small;
+  margin-top: $space-large;
+  margin-bottom: $space-extra-large3;
   @include for-desktop {
     grid-template-columns: 1fr 1fr;
     gap: $space-large;
   }
-  .brukertesting-overskrift {
-    margin-top: 0;
-    margin-bottom: $space-small;
+  .eds-icon {
+    margin-right: $space-extra-small;
   }
-  &-fordeler,
-  &-ulemper {
-    background-color: $colors-greys-grey80;
-    padding: $space-large;
+  &__box {
+    border: $border-widths-medium solid $colors-blues-blue10;
+    padding: $space-extra-large;
+    padding-right: $space-extra-large3;
+    min-height: 10rem;
+    .eds-h4 {
+      margin-bottom: $space-small;
+    }
+    &--red {
+      border-color: $colors-brand-coral;
+    }
+    &--mint {
+      border-color: $colors-data-default-jungle;
+    }
+    &--azure {
+      border-color: $colors-data-default-azure;
+    }
+    &--orange {
+      border-color: #e8734b;
+    }
+    &--lavender {
+      border-color: $colors-data-default-lavender;
+    }
+    &--green {
+      border-color: $colors-data-default-spring;
+    }
+    &--lilac {
+      border-color: $colors-data-default-lilac;
+    }
   }
 }

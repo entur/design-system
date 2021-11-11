@@ -1,68 +1,224 @@
 ---
 name: Brukertesting
-description: Forskjellige måter Entur utfører brukertesting på.
+description: Hvordan skal man finne ut hva som virkelig betyr noe – og gjør en forskjell i ulike situasjoner - for de som anvender ens produkt?
 route: /kom-i-gang/for-designere/brukertesting
 parent: Kom i gang
 menu: For designere
 order: 4
-removeToc: true
 ---
 
 import PageHeader from '~/components/PageHeader';
 import * as tokens from '@entur/tokens';
 import { AddIcon, SubtractIcon } from '@entur/icons';
 import { Heading4, Paragraph } from '@entur/typography';
-import VisualiseringsBilde from './images/brukertesting.svg';
+import brukertestingVerktoy from './images/brukertestingVerktoy.png';
 import './brukertesting.scss';
 
-<PageHeader>
-  Hvordan skal man finne ut hva som virkelig betyr noe – og gjør en forskjell i
-  ulike situasjoner - for de som anvender ens produkt?
-</PageHeader>
+<PageHeader></PageHeader>
 
-Presis som at kundegruppene varierer, så vil også verktøyene som egner seg til innsikt i kundenes behov variere. Verktøykassen vi bruker spenner fra kvantitativ til kvalitativ. Noen av tiltakene gjennomføres sjeldent, andre regelmessig og hyppig og noen er kontinuerlig insats.
+På samme måte som at kundegruppene varierer, så vil også verktøyene som egner seg til innsikt i kundenes behov variere.
+Ved all type brukertesting er det viktig at hele teamet involveres i prosess og resultat.
+Det er ikke bare opp til designere å brukerteste, men også utviklere, produkteiere og partneransvarlige.
 
-Generelt kan man si at alle metoder for kundeinnsikt overlapper og utfyller hverandre. Mange ganger må vi hente innsikt fra flere kilder for å kunne forstå problemene og fastsette behovet for tiltak. Her er et eksempel på verktøy som kan benyttes til kundeinvolvering:
+## Husk på dette
+
+Her er noen tips og triks som er viktig å huske på når det brukertestes:
+
+- Det er løsingen som testes, ikke testpersonens evner eller forståelse.
+- Hvis brukeren har et problem, er det vårt problem. Det finnes ingen dumme brukere eller dårlige spørsmål, og vi skal være takknemlige for tilbakemeldinger som gjør oss i stand til å forbedre det vi har laget.
+- Bruk et skjema med oppgaver eller spørsmål som rettesnor, men vær åpen for at ting testpersonen forteller kanskje ikke passer inn i skjema.
+- Unngå å styre testpersonen ved å bekrefte eller svare på spørsmål, da de helst skal finne ut av alt de trenger på egen hånd. Unntaket er bugs som gjør at de må få help for å klare å komme seg videre i selve testen.
+- Noter ned alle svar. Hvis du selv styrer over samtalen kan det være vanskelig å få med seg alt, så vurder om du kan få hjelp til av en kollega, enten ved at den tar notater der og da, eller via overføring av video i et annet rom. Hvis det ikke passer i den situasjonen du tester i, bør du ta opp video eller lydopptak av intervjuet, slik at du kan finne interessante kommentarer i ettertid.
+- Noter ned egne tanker og idéer du får når du observerer, men skill dette fra faktisk observasjon sånn at de ikker blander seg med brukerens kommentarer av feil.
+
+## Ulik type brukertesting til ulike formål
+
+De fleste metodene for kundeinnsikt overlapper og utfyller hverandre.
+Mange ganger må vi hente innsikt fra flere kilder for å kunne forstå problemene og fastsette behovet for tiltak.
+Noen av metodene gjennomføres sjeldent, andre regelmessig og hyppig og noen er kontinuerlig innsats.
+
+Verktøykassen vi bruker spenner fra skriptet/hypotetisk bruk til naturlig bruk i reell kontekst.
+Spesielt innen reiseplanlegging betyr kontekst og situasjon mye for hvilken svar man får.
+Den andre aksen spenner mellom å få kvalitative eller kvantitative svar.
+Her er eksempel på verktøy som vi benytter til brukertesting i Entur:
 
 <img
-  alt="Visualisering av verktøy vi bruker for kundeinvolvering"
+  src={brukertestingVerktoy}
   width="100%"
-  src={VisualiseringsBilde}
+  alt="Viser forskjellige måter for brukertesting basert på hvilke type data man trenger."
 />
 
 ## Direkte tilbakemeldinger
 
-I app og web har vi lagt tilrette for at folk skal kunne melde inn direkte i flatene våre via et tilbakemeldingsskjema. Kundesenteret sorterer feedback, svarer tilbake og stiller flere spørsmål hvis det er nødvendig - og melder saken inn i Jira til riktig team. Vi samler også de anonyme meldingene i en Slack-kanal. De vanligste meldingene er feil i rutetider, mangel på konkrete reiseforslag, ønsker om nye funksjoner og billettprodukter samt bugs. Vi er takknemlig for denne typen feedback, da den fanger opp ting vi ikke ville ha oppdaget ellers.
+I flere av løsningene til Entur har vi lagt tilrette for at folk skal kunne melde inn problemer eller ønsker direkte via et tilbakemeldingsskjema.
+Kundesenteret sorterer feedback, svarer tilbake og stiller flere spørsmål hvis det er nødvendig - og melder saken inn i Jira til riktig team.
+
+### Enkle spørsmål
+
+Enkle spørsmål som “Fant du det du lette etter?” kan legges inn i kontekst der det er relevant.
+Spørsmålet kan også suppleres med mulighet til å gi en kommentar for å forklare problemet i mer detalj.
+Enkle spørsmål kan gjerne kobles mot OKR’er, der vi følger med på om justeringer i design eller innhold gir en forbedring over tid.
+
+### Skriftlige tilbakemeldinger
+
+Vi samler disse inn via skjema direkte i løsningen.
+Vi kan også benytte spørreundersøkesler med mulighet for å skrive kommentarer rundt hva man synes og fortelle mer om hva som er probemet.
+Mange tilbakemeldinger går rett inn i en Slack-kanal der alle kan følge med, for å få et forhold til hva kundene mener og raskt fange opp problemer i våre kundeflater.
+De vanligste meldingene er feil i rutetider, mangel på konkrete reiseforslag, problemer med personalbillett og betaling og rene bugs.
+Vi er takknemlig for denne typen feedback, da den fanger opp ting vi ikke ville ha oppdaget ellers.
+En annen stor kategori er klager på bussjåfør eller ønsker om nye billettprodukter, som vi videreformidler til selskapene.
+Vi får også inn ønsker om nye funksjoner, som viser at folk er engasjerte og at det at vi jobber med kontinuerlige forbedringer på produktene har stor betydning for noen.
 
 <div className="brukertesting">
-  <div className="brukertesting-fordeler">
-    <Heading4 className="brukertesting-overskrift">
+  <div className="brukertesting__box brukertesting__box--red">
+    <Heading4 margin="bottom">
       <AddIcon inline /> Fordeler
     </Heading4>
-    Vi kan teste i produksjon, med reelle data og på faktiske brukersituasjoner.
-    Vi kan se kontekst for meldingen hvis meldingen kommer fra en resultatside, da
-    vi lenker til søket. Det gir kvalitetssikring av produktet i ulike caser og kombinasjoner.
+    <Paragraph>
+      Vi kan teste i produksjon, med reelle data og på faktiske
+      brukersituasjoner. Vi kan se kontekst for meldingen hvis meldingen kommer
+      fra en resultatside, da vi lenker til søket. Det gir kvalitetssikring av
+      produktet i ulike caser og kombinasjoner.
+    </Paragraph>
   </div>
-  <div className="brukertesting-ulemper">
-    <Heading4 className="brukertesting-overskrift">
+  <div className="brukertesting__box brukertesting__box--red">
+    <Heading4 margin="bottom">
       <SubtractIcon inline /> Ulemper
     </Heading4>
-    Mange mennesker kan oppleve feil og mangler uten å melde fra, så vi kan ikke
-    stole på dette som eneste kilde. De fleste melder fra om feil og bugs, det er
-    vanskeligere å melde om ’småsaker’ og å formulere diffuse ønsker til forbedret
-    brukeropplevelse.
+    <Paragraph>
+      Mange mennesker kan oppleve feil og mangler uten å melde fra, så vi kan
+      ikke stole på dette som eneste kilde. De fleste melder fra om feil og
+      bugs, det er vanskeligere å melde om ’småsaker’ og å formulere diffuse
+      ønsker til forbedret brukeropplevelse.
+    </Paragraph>
+  </div>
+</div>
+
+## Analyseverktøy
+
+Flere team har verktøy for å følge med og måle hvordan løsningene fungerer, gjennom alt fra automatiske varsler i systemene til analysetall i Datastudio og Amplitude.
+
+### Hypotesedrevet utvikling
+
+Dette er en metode for å kunne måle at det vi lager er nyttig for folk.
+Hypotesedrevet produktutvikling handler om å bekrefte eller avkrefte hypotesene/antakelsene vi har rundt brukeradferd gjennom å teste design og konkludere på grunnlag av data.
+Ved større justeringer eller helt ny funksjonalitet, formulerer vi hypoteser i en egen type mal i Jira.
+Våre antakelser skal testes og gjennomføres, før vi konkluderer med data som grunnlag og reagerer med å gjøre designjusteringer/utviklingsoppgaver i etterkant.
+Konklusjonen og lærdommen settes inn i et læringskort som er basert på testkortet.
+[Les mer om hypotesedrevet utvikling på Confluence.](https://enturas.atlassian.net/wiki/spaces/DK/pages/1630503233/Hypotesedrevet+utvikling)
+
+Vi kan også benytte A/B-testing for å få svar på om våre justeringer gjør ting bedre, f.eks. ved å måle responstid og måloppnåelse.
+Det er ressurskrevende å sette opp og finne testcaser, da de passer til ganske ‘snevre’ hypoteser.
+A/B testing kan ikke alltid benyttes i spørsmål der svarene er mer komplekse enn **JA** eller **NEI**.
+Bør brukes med omhu fordi det er lett å legge for mye i resultatene.
+
+<div className="brukertesting">
+  <div className="brukertesting__box brukertesting__box--mint">
+    <Heading4 margin="bottom">
+      <AddIcon inline /> Fordeler
+    </Heading4>
+    <Paragraph>
+      Vi tester i produksjon, med reelle data, på faktiske brukere og i store
+      kvanta. Hvis testing av en hypotese leder frem til nye justeringer kan vi
+      måle forbedringer over tid. Dette gir oss et langsiktig perspektiv på
+      kjernefunksjonene i våre løsninger.
+    </Paragraph>
+  </div>
+  <div className="brukertesting__box brukertesting__box--mint">
+    <Heading4 margin="bottom">
+      <SubtractIcon inline /> Ulemper
+    </Heading4>
+    <Paragraph>
+      Vi måler adferd, men det er vanskeligere å måle tilfredshet og kvalitet.
+      Er brukeren fornøyd med det hen får, og helt forsynt når hen faller av? Vi
+      kan ikke vite eller kontrollere hvilken type bruker eller brukssituasjon
+      som testes, derfor er testene bedre til å fange opp tendenser eller
+      forbedringer over tid.
+    </Paragraph>
+  </div>
+</div>
+
+## Deltakende design
+
+For noen av tjenestene våre trenger vi enda tettere kontakt med brukerne.
+Spesialistfunksjonalitet er utfordrende å teste på “vanlige folk” som ikke kjenner oppgavene og arbeidshverdagen til brukerne.
+Vi må gjøre det enkelt for ekspertbrukerne å evaluere det vi lager, og å samarbeide med oss om løsning.
+
+Tidlig i prosessen er dette vel så mye en metode for innsikt og behovskartlegging, samt research på hvordan ting fungerer i dag.
+Deltakerne i et slikt ‘brukerpanel’ involveres i workshops og evaluerer skisser.
+Det er ofte tett kontakt mellom brukere og utviklingsteam, alt fra daglig til ukentlig.
+Lenger ut i løpet vil panelet kunne bidra i brukertester eller bli eksponert for gradvis utrulling av nye funksjoner som de kan gi tilbakemelding på.
+
+<div className="brukertesting">
+  <div className="brukertesting__box brukertesting__box--azure">
+    <Heading4 margin="bottom">
+      <AddIcon inline /> Fordeler
+    </Heading4>
+    <Paragraph>
+      Høy verdi når brukergruppen er eksperter av noe slag. Enket å samle inn
+      kontinuerlig feedback når oppsettet vel er etablert.
+    </Paragraph>
+  </div>
+  <div className="brukertesting__box brukertesting__box--azure">
+    <Heading4 margin="bottom">
+      <SubtractIcon inline /> Ulemper
+    </Heading4>
+    <Paragraph>
+      Oppstartskonstnad for å sette opp og etablere. Risiko når svar begrenses
+      til noen få faste deltakere, og risiko for at svarene formes mye av
+      hvordan dagens system fungerer.
+    </Paragraph>
+  </div>
+</div>
+
+## Adoptivtesting
+
+Dette er en metode som vi utviklet da vi begynte å jobbe med multimodal reiseplanlegging.
+Adoptivtesting er regelmessig testing på faste personer.
+Vi har videreutviklet metoden til ulike kanaler/produkter og med flere ulike team.
+Kanskje er dette noe flere gjør, og eventuelt kaller noe annet?
+
+Metoden kan ofte bekrefte tidligere innsikt.
+For oss er det ofte adoptivtesting som bekrefter at det er dags å trekke frem og prioritere fra backloggen.
+Tilbakemeldingene fra de faste testpersonene blir ekstra påtakelig for alle som er med og tester eller deltar på oppsummeringssesjonen.
+
+<div className="brukertesting">
+  <div className="brukertesting__box brukertesting__box--orange">
+    <Heading4 margin="bottom">
+      <AddIcon inline /> Fordeler
+    </Heading4>
+    <Paragraph>
+      Personene reiser kollektivt og bruker produktet til vanlig. Vi tester på
+      faktiske situasjoner og i reelle caser. Når vi følger de samme folkene
+      over tid, lærer vi dem å kjenne sånn at vi bedre vet hvorfor de svarer
+      slik de gjør. Ypperlig supplement og avsjekk etter direkte
+      tilbakemeldinger – eller som kvalitetssikring rett før vi pusher ut en ny
+      funksjon.
+    </Paragraph>
+  </div>
+  <div className="brukertesting__box brukertesting__box--orange">
+    <Heading4 margin="bottom">
+      <SubtractIcon inline /> Ulemper
+    </Heading4>
+    <Paragraph>
+      Få testpersoner kan gi lite variasjon i svarene. Vi tester på samme
+      personer, og når ikke alltid de som trenger akkurat den funksjonen som
+      skal testes mest.
+    </Paragraph>
   </div>
 </div>
 
 ## Geriljatesting
 
-I app og web har vi lagt tilrette for at folk skal kunne melde inn direkte i flatene våre via et tilbakemeldingsskjema. Kundesenteret sorterer feedback, svarer tilbake og stiller flere spørsmål hvis det er nødvendig - og melder saken inn i Jira til riktig team. Vi samler også de anonyme meldingene i en Slack-kanal. De vanligste meldingene er feil i rutetider, mangel på konkrete reiseforslag, ønsker om nye funksjoner og billettprodukter samt bugs. Vi er takknemlig for denne typen feedback, da den fanger opp ting vi ikke ville ha oppdaget ellers.
+Mange av oss kjenner sikkert til Gerlijatesting, som er kjapp testing ute på gata eller der hvor man kan be tilfeldige folk om deres synspunkter.
+Ofte tar vi med oss papirskisser ut, eller en enkel prototype.
+En sjelden gang geriljatester vi direkte i aplikasjonen.
+Testing av mindre detaljer i grensesnitt fungerer veldig fint med geriljatesting.
 
 <div className="brukertesting">
-  <div className="brukertesting-fordeler">
-    <Heading4 className="brukertesting-overskrift" margin="bottom">
-      <AddIcon inline />
-      Fordeler
+  <div className="brukertesting__box brukertesting__box--lavender">
+    <Heading4 margin="bottom">
+      <AddIcon inline /> Fordeler
     </Heading4>
     <Paragraph>
       Enkelt å gjennomføre, og kan med fordel utføres av flere i teamet. Man kan
@@ -70,38 +226,76 @@ I app og web har vi lagt tilrette for at folk skal kunne melde inn direkte i fla
       raskeste tilbakemelding på nye funksjoner.
     </Paragraph>
   </div>
-  <div className="brukertesting-ulemper">
-    <Heading4 className="brukertesting-overskrift" margin="bottom">
+  <div className="brukertesting__box brukertesting__box--lavender">
+    <Heading4 margin="bottom">
       <SubtractIcon inline /> Ulemper
     </Heading4>
-    Kan gi litt impulsive svar, eller mangle dybde. Kvaliteten på svarene varierer
-    ut fra om testpersonen kan relatere til testcasen eller ikke. Kan være vanskelig
-    å treffe relevante testpersoner.
+    <Paragraph>
+      Kan gi litt impulsive svar, eller mangle dybde. Kvaliteten på svarene
+      varierer ut fra om testpersonen kan relatere til testcasen eller ikke. Kan
+      være vanskelig å treffe relevante testpersoner.
+    </Paragraph>
   </div>
 </div>
 
-## Adoptivtesting
+## Intervju
 
-Dette er en metode som vi utviklet da vi begynte å jobbe med multimodal reiseplanlegging. Adoptivtesting er regelmessig testing på faste personer. Vi har videreutviklet metoden til ulike kanaler/produkter og med flere ulike team. Kanskje er dette noe flere gjør, og eventuelt kaller noe annet?
-
-Metoden kan ofte bekrefte tidligere innsikt. For oss er det ofte adoptivtesting som bekrefter at det er dags å trekke frem og prioritere fra backloggen. Tilbakemeldingene fra de faste testpersonene blir ekstra påtakelig for alle som er med.
+Intervju eller samtale er en løs form for test, ofte rundt tema som man ønsker å utforske eller et ‘umoderert’ utgangspunkt i helt naturlige situasjoner.
+Observasjon som inngangsmetode kan ofte kombineres med intervju, f.eks. av reisende som benytter billettautomater, eller ‘medlytt’ med servicepersonell på kundesenteret.
+Intervju kan også benyttes som en del av en vanlig brukertest eller geriljatest.
 
 <div className="brukertesting">
-  <div className="brukertesting-fordeler">
-    <Heading4 className="brukertesting-overskrift" margin="bottom">
+  <div className="brukertesting__box brukertesting__box--green">
+    <Heading4 margin="bottom">
       <AddIcon inline /> Fordeler
     </Heading4>
-    Personene reiser kollektivt og bruker produktet til vanlig. Vi tester på faktiske
-    situasjoner og i reelle caser. Når vi følger de samme folkene over tid, lærer
-    vi dem å kjenne sånn at vi bedre vet hvorfor hvorfor de svarer slik de gjør.
-    Ypperlig som supplement og avsjekk etter annen testing eller direktemeldinger
-    – eller som kvalitetssikring rett før vi pusher en ny funksjon ut i applikasjonen.
+    <Paragraph>
+      Spontane tilbakemeldinger fra reelle brukere i faktisk situasjon. Fin
+      metode for å få mest mulig innsikt tidlig i prosessen.
+    </Paragraph>
   </div>
-  <div className="brukertesting-ulemper">
-    <Heading4 className="brukertesting-overskrift" margin="bottom">
+  <div className="brukertesting__box brukertesting__box--green">
+    <Heading4 margin="bottom">
       <SubtractIcon inline /> Ulemper
     </Heading4>
-    Få testpersoner kan gi lite variasjon i svarene. Vi tester på samme personer,
-    og når ikke alltid de som trenger akkurat den funksjonen som skal testes mest.
+    <Paragraph>
+      Tidkrevende og gir ikke alltid svar på akkurat det man ønsker der og da.
+    </Paragraph>
+  </div>
+</div>
+
+## Brukertesting i lab
+
+Som en avsluttende aktivitet etter en større endring, eller i slutten av en designsprint.
+Teste på faktisk utviklet løsning eller på skisser.
+Ved rekruttering av testpersoner skal man alltid prøve å få tak i en så pass representativ brukermasse som mulig.
+Gjerne med ulik erfaring, bakgrunn, alder og/eller funksjonshemming, for å få best mulig perspektiver fra “vanlige folk”.
+Vi skal unngå å teste på “ekspertbrukere” som ligner oss selv for mye, og bør derfor helst unngå å rekruttere internt i egen bedrift.
+Familiemedlemmer går fint.
+
+Brukertesting kan også utføres med spesielle verktøy som VoiceOver.
+Det beste er å få spesialister på slike verktøy til å teste for oss, for å sikre at verktøyene brukes korrekt og at vi følger konvensjoner og tilbyr de snarveier som folk er vant ved.
+
+<div className="brukertesting">
+  <div className="brukertesting__box brukertesting__box--lilac">
+    <Heading4 margin="bottom">
+      <AddIcon inline /> Fordeler
+    </Heading4>
+    <Paragraph>
+      Labstest er oft en større begivenhet som er godt planlagt. Både prosess og
+      resultat kan med fordel observeres og deles med flere på teamet eller i
+      organisasjonen, og derfor en god metode til å øke bevissthet rundt
+      brukerbehov generelt.
+    </Paragraph>
+  </div>
+  <div className="brukertesting__box brukertesting__box--lilac">
+    <Heading4 margin="bottom">
+      <SubtractIcon inline /> Ulemper
+    </Heading4>
+    <Paragraph>
+      Krever en del planlegging i forkant og analyse i etterkant. Ikke alltid
+      relevante brukertyper, da noen folk har gjort brukertesting til et eget
+      ‘yrke’. Oppgavepreget, det blir stort fokus på hva som funker og ikke.
+    </Paragraph>
   </div>
 </div>
