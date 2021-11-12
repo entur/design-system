@@ -49,7 +49,7 @@ const ColorSwatch: React.FC<Props> = ({
       <BaseCard
         className="color-swatch"
         as="button"
-        style={{ marginTop: space.medium }}
+        style={{ marginTop: space.small }}
         onClick={() =>
           setChosenColor &&
           setChosenColor({
