@@ -96,6 +96,28 @@ export const colors = {
       mobility: '#00db9b',
     },
   },
+  data: {
+    default: {
+      blue: '#181c56',
+      coral: '#ff5959',
+      jungle: '#0ea2a8',
+      azure: '#2f98fa',
+      lavender: '#8692ca',
+      peach: '#ca825b',
+      spring: '#57a257',
+      lilac: '#8e57e3',
+    },
+    contrast: {
+      blue: '#6466aa',
+      coral: '#ff5959',
+      jungle: '#0fc2b3',
+      azure: '#64b2fb',
+      lavender: '#aeb7e2',
+      peach: '#ffbf9e',
+      spring: '#7bc00b',
+      lilac: '#ea8bea',
+    },
+  },
 };
 
 const blackRgb = hexRgb(colors.misc.black, { format: 'array' })
