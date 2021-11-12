@@ -39,7 +39,7 @@ export type TextFieldProps = {
     React.LabelHTMLAttributes<HTMLLabelElement>,
     HTMLLabelElement
   >;
-  /** Om man skal ha muliget for å nullstille Dropdownen
+  /** Om man skal ha muliget for å nullstille TextField. Viser lukkekryss hvis feltet er fylt.
    * @default false
    */
   clearable?: boolean;
