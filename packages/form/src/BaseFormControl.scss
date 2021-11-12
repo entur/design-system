@@ -22,6 +22,8 @@
   min-height: 3rem;
   transition: border-color $timings-fast ease-in-out;
 
+  --textarea-label-background: $colors-brand-white;
+
   &:focus-within,
   &:hover {
     border-color: $colors-brand-blue;
@@ -68,9 +70,11 @@
     cursor: default;
     border-color: transparent;
     background: $colors-greys-grey90;
+    --textarea-label-background: $colors-greys-grey90;
 
     .eds-contrast &  {
       background: $colors-blues-blue10;
+      --textarea-label-background: $colors-blues-blue10;
       color: $colors-brand-white;
       border-color: transparent;
     }
