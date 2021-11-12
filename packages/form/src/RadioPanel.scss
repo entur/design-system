@@ -11,10 +11,12 @@
     &:focus-within {
       .eds-radio-panel__container {
         border-color: $colors-brand-blue;
+        box-shadow: $shadows-focus;
       }
       .eds-contrast & {
         .eds-radio-panel__container {
           border-color: $colors-brand-white;
+          box-shadow: $shadows-focus-contrast;
         }
       }
     }
