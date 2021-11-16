@@ -222,7 +222,14 @@ const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
   ...rest
 }) => {
   return (
-    <button className="eds-timepicker__arrowbutton" type="button" {...rest}>
+    <button
+      className={classNames(
+        'eds-timepicker__arrowbutton',
+        `eds-timepicker__arrowbutton--${direction}`,
+      )}
+      type="button"
+      {...rest}
+    >
       {direction === 'left' ? <LeftArrowIcon /> : <RightArrowIcon />}
     </button>
   );

@@ -74,13 +74,19 @@
   .eds-timepicker__arrowbutton {
     appearance: none;
     border: none;
-    background: none;
+    border-radius: $border-radiuses-small;
+    background: $colors-brand-white;
     color: $colors-brand-blue;
     cursor: pointer;
     display: flex;
     font-size: $font-sizes-large;
-    padding: $space-medium;
-    margin: 0;
+    padding: calc(#{$space-medium} - #{$border-widths-large});
+    margin: $border-widths-large;
+    margin-left: $border-widths-medium;
+    &--right {
+      margin-right: $border-widths-medium;
+      margin-left: $border-widths-large;
+    }
     &:hover {
       background-color: $colors-blues-blue70;
     }
