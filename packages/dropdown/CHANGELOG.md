@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.1.0...@entur/dropdown@2.1.1) (2021-11-17)
+
+### Bug Fixes
+
+- change dropdown background to white in contrast mode ([7064988](https://bitbucket.org/enturas/design-system/commits/7064988fd7690e500c08f74fee82d88566730ee1))
+
 # [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.0.10...@entur/dropdown@2.1.0) (2021-10-25)
 
 ### Features

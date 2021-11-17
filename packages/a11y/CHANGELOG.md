@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.41](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.40...@entur/a11y@0.2.41) (2021-11-17)
+
+**Note:** Version bump only for package @entur/a11y
+
 ## [0.2.40](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.39...@entur/a11y@0.2.40) (2021-09-23)
 
 **Note:** Version bump only for package @entur/a11y

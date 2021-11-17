@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.9.0...@entur/alert@0.9.1) (2021-11-17)
+
+### Bug Fixes
+
+- **smallalertbox:** fix closable prop warning ([7808494](https://bitbucket.org/enturas/design-system/commits/780849470227e2e1edf847b3d58c1b81b5b70c1c))
+
 # [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.8.3...@entur/alert@0.9.0) (2021-10-18)
 
 ### Bug Fixes

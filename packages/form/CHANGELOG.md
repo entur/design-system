@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.3...@entur/form@5.1.4) (2021-11-17)
+
+### Bug Fixes
+
+- **radiopanel:** add focus styling for radiopanel ([e462bf4](https://bitbucket.org/enturas/design-system/commits/e462bf41db886a12edc26164c2895b2313658369))
+- **textarea:** fix label background color bug ([d0ad582](https://bitbucket.org/enturas/design-system/commits/d0ad58209cfe9d28440d2d8937d10570645b2e1b))
+- **textarea:** fix label position bug on uncontrolled components ([4a1e134](https://bitbucket.org/enturas/design-system/commits/4a1e134e23ad24f54a86f74e9e9ba1ab2348a6e1))
+- **textfield:** fix label position bug on uncontrolled components ([695412d](https://bitbucket.org/enturas/design-system/commits/695412d345aabec9b55432c9bd8b8eeecbdfb146))
+- **textfield:** update props descriptioin ([8a7ddad](https://bitbucket.org/enturas/design-system/commits/8a7ddadc0ecc0f472dedee19aa057fead28cf796))
+
 ## [5.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.2...@entur/form@5.1.3) (2021-10-25)
 
 ### Bug Fixes

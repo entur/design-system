@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.2.1...@entur/tokens@3.3.0) (2021-11-17)
+
+### Features
+
+- **colors:** add data colors ([86fef07](https://bitbucket.org/enturas/design-system/commits/86fef07d5cfd18cb376094cce9258a7861c5826c))
+
 ## [3.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.2.0...@entur/tokens@3.2.1) (2021-09-23)
 
 ### Bug Fixes

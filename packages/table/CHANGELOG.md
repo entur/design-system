@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.4.1...@entur/table@4.5.0) (2021-11-17)
+
+### Bug Fixes
+
+- **headercell:** improve typings of props ([f8fff33](https://bitbucket.org/enturas/design-system/commits/f8fff33a6a94d1932d9d21df946ee62702ba6690))
+- **useSortableTable:** apply focus styling for sortable HeaderCells ([cf481eb](https://bitbucket.org/enturas/design-system/commits/cf481eb8528c056e3e07ab8e37b94e374d1ca5d7))
+
+### Features
+
+- **usesortabletable:** add buttonProps to getSortableeHeaderProps ([a5f3d48](https://bitbucket.org/enturas/design-system/commits/a5f3d48518f2ab729a91df0c58e367279fbdaa69))
+
 ## [4.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.4.0...@entur/table@4.4.1) (2021-10-25)
 
 ### Bug Fixes

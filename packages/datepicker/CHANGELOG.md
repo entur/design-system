@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.4...@entur/datepicker@0.10.5) (2021-11-17)
+
+### Bug Fixes
+
+- **nativedatepicker:** fix label position bug ([dfa18f4](https://bitbucket.org/enturas/design-system/commits/dfa18f4cbac6e19a2e093f04d447c25b6956bf6d))
+- **timepicker:** adjust styling of arrow buttons ([4f23bbc](https://bitbucket.org/enturas/design-system/commits/4f23bbc0b7907e59bad8679a98ea0be622423658))
+
 ## [0.10.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.3...@entur/datepicker@0.10.4) (2021-10-25)
 
 **Note:** Version bump only for package @entur/datepicker

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.3.0...@entur/icons@3.4.0) (2021-11-17)
+
+### Features
+
+- add correspondence icon ([ee07d31](https://bitbucket.org/enturas/design-system/commits/ee07d31857ccfe0ce57be30556a2a8377bc8eb53))
+- add ZoneIcon ([e52f648](https://bitbucket.org/enturas/design-system/commits/e52f64831b3b3a311cb85b12bce5d01b794a75b5))
+
 # [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.2.0...@entur/icons@3.3.0) (2021-09-23)
 
 ### Bug Fixes
