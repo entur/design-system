@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { DownArrowIcon, UpArrowIcon } from '@entur/icons';
 import './HeaderCell.scss';
+import { ExternalSortConfig } from '.';
 
 export type HeaderCellProps = {
   /** Kolonneoverskrift */
@@ -10,22 +11,39 @@ export type HeaderCellProps = {
   className?: string;
   /** Størrelse som settes for HeaderCell for ulikt innhold av komponenter */
   padding?: 'default' | 'checkbox' | 'radio' | 'overflow-menu';
-  [key: string]: any;
-};
+
+  /** Ekstra props som kan sendes til sorteringsknappelementet. Benyttes via useSortableTable */
+  sortableButtonProps?: React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
+
+  /** Om komponenten brukes til sortering. Benytt via useSortableTable
+   * @default false
+   */
+  sortable?: boolean;
+  /** Konfigurering og rekkefølgen på sortering. Benyttes via useSortableTable */
+  sortConfig?: ExternalSortConfig;
+  /** Navnet det skal sorteres på. Benyttes via useSortableTable */
+  name?: string;
+} & React.DetailedHTMLProps<
+  React.ThHTMLAttributes<HTMLTableCellElement>,
+  HTMLTableCellElement
+>;
 
 export const HeaderCell = React.forwardRef<
-  HTMLTableHeaderCellElement,
+  HTMLTableCellElement,
   HeaderCellProps
 >(
   (
     {
       className,
       children,
-      onClick,
       name,
       sortable = false,
       sortConfig,
       padding = 'default',
+      sortableButtonProps,
       ...rest
     },
     ref,
@@ -33,11 +51,14 @@ export const HeaderCell = React.forwardRef<
     const [isCurrentlySorted, setIsCurrentlySorted] =
       React.useState<boolean>(false);
     React.useEffect(() => {
-      setIsCurrentlySorted(sortConfig && name === sortConfig.key);
+      sortConfig &&
+        name &&
+        setIsCurrentlySorted(sortConfig && name === sortConfig.key);
     }, [sortConfig, name]);
     const ariaSort = isCurrentlySorted
       ? sortConfig && sortConfig.order
       : 'none';
+
     return (
       <th
         className={classNames('eds-table__header-cell', className, {
@@ -51,26 +72,14 @@ export const HeaderCell = React.forwardRef<
         ref={ref}
         {...rest}
       >
-        {sortable ? (
-          <button
-            className="eds-table__header-cell-button"
-            type="button"
-            onClick={onClick}
+        {sortable && sortConfig && sortableButtonProps ? (
+          <SortableHeaderCellButton
+            sortableButtonProps={sortableButtonProps}
+            sortConfig={sortConfig}
+            isCurrentlySorted={isCurrentlySorted}
           >
             {children}
-            {isCurrentlySorted && sortConfig.order === 'ascending' && (
-              <UpArrowIcon
-                size="16px"
-                className="eds-table__header-cell-button-icon"
-              />
-            )}
-            {isCurrentlySorted && sortConfig.order === 'descending' && (
-              <DownArrowIcon
-                size="16px"
-                className="eds-table__header-cell-button-icon"
-              />
-            )}
-          </button>
+          </SortableHeaderCellButton>
         ) : (
           children
         )}
@@ -78,3 +87,42 @@ export const HeaderCell = React.forwardRef<
     );
   },
 );
+
+type SortableHeaderCellButtonProps = {
+  sortConfig: ExternalSortConfig;
+  isCurrentlySorted: boolean;
+  sortableButtonProps: React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
+};
+
+const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
+  sortConfig,
+  sortableButtonProps,
+  isCurrentlySorted,
+  children,
+}) => {
+  const { className, ...rest } = sortableButtonProps;
+  return (
+    <button
+      className={classNames('eds-table__header-cell-button', className)}
+      type="button"
+      {...rest}
+    >
+      {children}
+      {isCurrentlySorted && sortConfig.order === 'ascending' && (
+        <UpArrowIcon
+          size="16px"
+          className="eds-table__header-cell-button-icon"
+        />
+      )}
+      {isCurrentlySorted && sortConfig.order === 'descending' && (
+        <DownArrowIcon
+          size="16px"
+          className="eds-table__header-cell-button-icon"
+        />
+      )}
+    </button>
+  );
+};
