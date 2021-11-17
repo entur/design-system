@@ -128,7 +128,7 @@ type TextFieldBaseProps = {
 const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
   (
     { disabled, readOnly, placeholder, onChange, value, variant, ...rest },
-    ref,
+    forwardRef,
   ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
@@ -140,14 +140,6 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         setFiller && !isInputFilled && setFiller(true);
       }
     });
-
-    React.useEffect(() => {
-      if (value) {
-        setFiller && !isInputFilled && setFiller(true);
-      } else {
-        setFiller && isInputFilled && setFiller(false);
-      }
-    }, [value, setFiller, isInputFilled]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (isFilled(event.target)) {
@@ -166,7 +158,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         className="eds-form-control"
         disabled={disabled}
         readOnly={readOnly}
-        ref={ref}
+        ref={forwardRef}
         placeholder={placeholder}
         onChange={handleChange}
         value={value}
