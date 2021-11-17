@@ -59,13 +59,17 @@ export function useSortableData<T>(
   function getSortableHeaderProps({
     name,
     sortable = true,
+    buttonProps,
     ...props
   }: SortableHeaderProps): SortableHeaderReturnProps {
     return {
       name,
       sortable,
-      onClick: () => onSortRequested(name),
       sortConfig: sortConfig,
+      sortableButtonProps: {
+        onClick: () => onSortRequested(name),
+        ...buttonProps,
+      },
       ...props,
     };
   }
@@ -90,13 +94,20 @@ export type SortableHeaderProps = {
   /** Om headeren skal være sorterbar eller ikke
    * @default true */
   sortable?: boolean;
+  /** Props som sendes til knapp-elementet  */
+  buttonProps?: Omit<
+    React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    'type' | 'onClick'
+  >;
   [key: string]: any;
 };
 
 export type SortableHeaderReturnProps = {
   name: string;
   sortable: boolean;
-  onClick: () => void;
   sortConfig: ExternalSortConfig;
   [key: string]: any;
 };
