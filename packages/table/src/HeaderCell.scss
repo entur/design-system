@@ -41,5 +41,11 @@
       top: $space-small;
       margin-left: $space-extra-small2;
     }
+    &:focus {
+      outline: $outlines-focus;
+      .eds-contrast & {
+        outline: $outlines-focus-contrast;
+      }
+    }
   }
 }
