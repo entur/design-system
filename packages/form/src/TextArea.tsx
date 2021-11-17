@@ -79,24 +79,14 @@ type TextAreaBaseProps = {
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
   ({ readOnly, disabled, onChange, value, ...rest }, ref) => {
-    const {
-      isFilled: isInputFilled,
-      setFilled: setFiller,
-    } = useInputGroupContext();
+    const { isFilled: isInputFilled, setFilled: setFiller } =
+      useInputGroupContext();
 
     useOnMount(() => {
       if (value || rest.defaultValue) {
         setFiller && !isInputFilled && setFiller(true);
       }
     });
-
-    React.useEffect(() => {
-      if (value) {
-        setFiller && !isInputFilled && setFiller(true);
-      } else {
-        setFiller && isInputFilled && setFiller(false);
-      }
-    }, [value, setFiller, isInputFilled]);
 
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (isFilled(event.target)) {
