@@ -12,17 +12,22 @@ import ColorsDataVisualisation, {
   DataIllustrations,
 } from '~/components/ColorsDataVisualisation';
 import Vektlegging from './DatavisualiseringVektlegging.png';
+import { BestPractices, Example } from '~/components/BestPractices';
+import dataDont1 from './dataDont1.png';
+import dataDont2 from './dataDont2.png';
 
 <PageHeader></PageHeader>
 
-I Entur så har vi en egen palett for farger som skal benyttes for visualisering av data.
-Datavisualiseringfargene våre må innfri litt andre krav enn de andre fargene våre gjør.
-For det første så må de være såpass distinkte at dataen som skal visualiseres har høy lesbarhet,
-slik at man ved enkelt hvilken farge som tilhører hvilken data.
-I tillegg, er de er utviklet for at denne lesbarheten også skal gjelde for personer med fargeblindhet.
+Entur har en egen palett for farger som skal benyttes til visualisering av data.
+Datavisualiseringfargene våre må innfri andre krav enn de andre fargene våre gjør.
+For det første så må de være såpass distinkte at data som skal visualiseres har høy lesbarhet, slik at man enkelt kan se hvilken farge som tilhører hvilken data.
+Denne lesbarheten skal også, så godt det lar seg gjøre, gjelde for personer med fargeblindhet.
+I tillegg skal fargene, og måten vi bruker dem på, fortsatt formidle Enturs identitet.
+Derfor er det viktig å benytte dem i riktig rekkefølge og mengde.
 
-Fargene er også utviklet for å oppnå kontrastkravet for grafiske elementer i forhold til WCAG-kravene.
-[Les mer om kontrastkrav til farger her](/universell-utforming/kontrast-sjekker).
+Fargene innfrir kontrastkrav 3:1 for grafiske elementer i WCAG-kravene.[Les mer om kontrastkrav til farger her](/universell-utforming/kontrast-sjekker).
+
+Fargene har også en tilhørende token, og [alle tokens for fargene i Entur kan sees her.](/komponenter/ressurser/tokens#farger)
 
 ## Fargepalett
 
@@ -35,11 +40,11 @@ og [alle tokens for fargene i Entur kan sees her](https://design.entur.org/kompo
 
 ## Retningslinjer for bruk
 
-Når man benytter seg av denne fargepaletten så er det viktig at vektingen av fargene opprettholder den visuelle profilen til Entur.
-Derfor er rekkefølgen på fargene over en rangering på hvor mye av hver farge det burde være også.
-Det vil si, bruk først og fremst `Blue` og `Coral`, og minst av `Spring` og `Lilac`.
-
 ### Vektlegging av datavisualiseringfarger
+
+Når man benytter seg av denne fargepaletten så er det viktig at vektingen av fargene opprettholder den visuelle profilen til Entur.
+Derfor er rekkefølgen på fargene over også en rangering på hvor mye av hver farge det burde være.
+Det vil si bruk mest av `Blue` og `Coral`, og minst av `Spring` og `Lilac`.
 
 <img
   src={Vektlegging}
@@ -49,16 +54,16 @@ Det vil si, bruk først og fremst `Blue` og `Coral`, og minst av `Spring` og `Li
 
 ### Eksempel 1
 
-Her er et søylediagram med kun to dataverdier.
-Da benytter vi `Blue` og `Coral`, fordi dette er de to viktigste fargene i fargepaletten.
+I dette søylediagtrammet er det kun to dataverdier,
+og disse bruker forholdsvis `Blue` og `Coral`, fordi dette er de to viktigste fargene i fargepaletten.
 
 <DataIllustrations illustration="1"></DataIllustrations>
 
 ### Eksempel 2
 
-Her er et kakediagram mer flere enn to typer data.
-Derfor prøver man å benytte fargene slik at `Blue` og `Coral` ligger i overvekt sammenlignet med de andre fargene.
-`Jungle` og `Azure` blir her brukt som supplerende farger, da de er henholdsvis nummer 3 og 4 i rekkefølgen i paletten.
+Her er et kakediagram som inneholder flere typer data.
+Da prøver man å benytte fargene slik at det er overvekt av `Blue` og `Coral` sammenlignet med de andre fargene.
+`Jungle` og `Azure` blir her brukt som supplerende farger, da de kommer som farge 3 og farge 4 i paletten.
 
 <DataIllustrations illustration="2"></DataIllustrations>
 
@@ -71,9 +76,20 @@ Vi benytter fortsatt fargene i den oppsatte rekkefølgen.
 
 ### Eksempel 4
 
-Her er et søylediagram med mengden av dataverdiene endres fra søyle til søyle.
-Alle fargene må benyttes her, men ettersom datamengden varierer er det vanskeligere å vektlegge `Blue` og `Coral` her.
-Vi har valgt å benytte fargene i den oppsatte rekkefølgen.
-Om mulig så er det foretrukket at man benytter mer av `Blue` og `Coral` enn i dette eksempelet, men det er ikke alltid mulig for mer intrikate datasett.
+I noen søylediagrammer vil mengden av dataverdiene variere fra søyle til søyle.
+Mange ulike kategorier gjør at vi må benytte alle fargene i paletten, men ettersom datamengden varierer i de ulike søylene er det vanskelig å vektlegge Blue og Coral.
+Vi har valgt å benytte fargene i den oppsatte rekkefølgen, men her er det best å teste seg frem.
+Det er anbefalt å benytte mest av `Blue` og `Coral`, men det er ikke alltid mulig for mer intrikate datasett.
 
 <DataIllustrations illustration="3"></DataIllustrations>
+
+### Prinsipper
+
+<BestPractices className="ds-logo">
+  <Example type="dont" src={dataDont1} alt="Søylediagram med tekst på søylene">
+    <Paragraph>Unngå tekst oppå former i diagrammet</Paragraph>
+  </Example>
+  <Example type="dont" src={dataDont2} alt="Søylediagram med ">
+    <Paragraph>Unngå å benytte mest av de lavest prioriterte fargene</Paragraph>
+  </Example>
+</BestPractices>
