@@ -1,8 +1,8 @@
 # Entur Design System Monorepo
 
-This is the monorepo containing all packages in the Entur Design System, as well as the documentation site.
+This is the monorepo containing all packages in the Entur Design System, as well as the [documentation site](design.entur.org).
 
-You'll find all the code in the `packages/` folder. The documentation site is found in the `packages/docs/` folder.
+You'll find all the code in the `packages/` folder. The documentation site is found in the `content/` folder.
 
 ## Requirements
 
@@ -38,12 +38,18 @@ The docs are currently available at [design.entur.org](https://design.entur.org)
 
 In order to deploy the docs locally, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Nicolai Fredriksen](mailto:nicolai.fredriksen@entur.org) to be granted the correct access rights.
 
-### The actual deploying part
+### Deploying the site locally
 
 To deploy the documentation website, run `yarn deploy-docs`. This will build the Gatsby site, and deploy it via the Firebase CLI.
+
+#### CircleCI deployment
+
+The site is also deployed automatically on the `master` branch via CircleCI.
 
 ## Contributing
 
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.
 
 We have added a tool called `commitizen` that helps you with following this standard. Simply write `git commit`, and you'll be guided through a UI that creates nice commit messages that contain all the info we need. If that does not work, you may instead write `npx git-cz`
+
+A more thorough explanation can also be found [here](https://design.entur.org/kom-i-gang/for-utviklere/bidra) (in norwegian only).
