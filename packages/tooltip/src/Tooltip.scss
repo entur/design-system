@@ -95,6 +95,19 @@
     }
   }
 
+  &--top-start {
+    &::after {
+      bottom: -0.2rem;
+    }
+  }
+
+  &--top-end {
+    &::after {
+      bottom: -0.2rem;
+      right: 0.35rem;
+    }
+  }
+
   &--left {
     &::after {
       bottom: calc(50% - 0.3125rem);
