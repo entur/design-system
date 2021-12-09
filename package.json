@@ -4,6 +4,7 @@
   "license": "EUPL-1.2",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "setup": "yarn && yarn build:packages",
     "build": "yarn build:packages && yarn build:docz",
     "build:packages": "lerna run build",
     "build:docz": "docz build",
