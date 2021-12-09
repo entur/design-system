@@ -21,6 +21,8 @@ export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement:
     | 'top'
+    | 'top-left'
+    | 'top-right'
     | 'left'
     | 'right'
     | 'bottom-left' // bottom-start
