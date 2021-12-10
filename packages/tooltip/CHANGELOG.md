@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.4.27...@entur/tooltip@2.5.0) (2021-12-10)
+
+### Features
+
+- **tooltip:** add 'top-left' and 'top-right' option to placement prop ([6d62bf2](https://bitbucket.org/enturas/design-system/commits/6d62bf2152418c380a4a0a12db1744c0ca65ed95))
+
 ## [2.4.27](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.4.26...@entur/tooltip@2.4.27) (2021-11-17)
 
 **Note:** Version bump only for package @entur/tooltip

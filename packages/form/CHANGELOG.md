@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.4...@entur/form@5.1.5) (2021-12-10)
+
+### Bug Fixes
+
+- **textfield:** consistent rendering of clearbutton if clearable ([87a42ba](https://bitbucket.org/enturas/design-system/commits/87a42baadebfffbc07c8636db26aa2be6203d523))
+
 ## [5.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.3...@entur/form@5.1.4) (2021-11-17)
 
 ### Bug Fixes
