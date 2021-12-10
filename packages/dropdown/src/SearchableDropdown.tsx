@@ -2,6 +2,7 @@ import React from 'react';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
+import './SearchableDropdown.scss';
 
 type SearchableDropdownProps = {
   className?: string;
@@ -82,6 +83,11 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
       isFilled={selectedItem ? true : false}
       disableLabelAnimation={disableLabelAnimation}
     >
+      {selectedItem && !inputValue && (
+        <span className="eds-dropdown__searchable-selected-item">
+          {selectedItem.label}
+        </span>
+      )}
       <input
         {...getInputProps({
           disabled,

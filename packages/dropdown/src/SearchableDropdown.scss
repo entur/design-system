@@ -1,0 +1,9 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown__searchable-selected-item {
+  display: block;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-small;
+  padding: 20px 1rem 0.25rem;
+  font-family: inherit;
+}
