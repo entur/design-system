@@ -1,6 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-segmented-control {
+  margin-top: $space-extra-small2;
   display: flex;
   background: $colors-blues-blue70;
   border-radius: $border-radiuses-medium;
