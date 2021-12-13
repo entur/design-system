@@ -53,6 +53,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
         'eds-travel-tag--alert': alert !== 'none',
+        'eds-travel-tag--alert--error': alert === 'error',
         'eds-travel-tag--icon-and-text': numberOfChildren > 1,
         [`eds-travel-tag--transport-${transport}`]: transport,
         className,
@@ -71,10 +72,10 @@ export const TravelTag: React.FC<TravelTagProps> = ({
             <ValidationInfoIcon className="eds-travel-tag__alert-info-icon" />
           )}
           {alert === 'error' && (
-            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
+            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
           )}
           {alert === 'warning' && (
-            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
+            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
           )}
         </span>
       )}
