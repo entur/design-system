@@ -168,4 +168,32 @@
       }
     }
   }
+  &__wrapper {
+    display: inline-flex;
+    &--label-position-right {
+      flex-direction: row;
+      align-items: center;
+    }
+    &--label-position-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__label {
+    color: $colors-brand-blue;
+    font-size: $font-sizes-large;
+    .eds-contrast & {
+      color: $colors-brand-white;
+    }
+    &--right {
+      margin-left: $space-extra-small;
+      &--with-alert {
+        margin-left: $space-default;
+      }
+    }
+    &--bottom {
+      margin-top: $space-extra-small2/2;
+      font-size: $font-sizes-medium;
+    }
+  }
 }

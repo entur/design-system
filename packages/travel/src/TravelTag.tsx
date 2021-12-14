@@ -21,6 +21,7 @@ export type TravelTagProps = {
    * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
+  /** Legger til farger tilpasset valgt transportmiddel */
   transport?:
     | 'bus'
     | 'metro'
@@ -32,6 +33,12 @@ export type TravelTagProps = {
     | 'scooter'
     | 'foot'
     | 'car';
+  /** Element ved siden av eller under TravelTag.  */
+  label?: React.ReactNode;
+  /** Posisjonen til label-en i forhold til TravelTag-en
+   * @default "right"
+   */
+  labelPlacement?: 'bottom' | 'right';
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -43,12 +50,14 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   className,
   alert = 'none',
   transport,
+  label,
+  labelPlacement = 'right',
   ...rest
 }) => {
   const isClosable = onClose ? true : false;
   const numberOfChildren = React.Children.count(children);
 
-  return (
+  const TravelTagWithoutLabel: JSX.Element = (
     <div
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
@@ -81,4 +90,31 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       )}
     </div>
   );
+
+  const Label: JSX.Element = (
+    <div
+      className={classNames('eds-travel-tag__label', {
+        [`eds-travel-tag__label--${labelPlacement}`]: label,
+        [`eds-travel-tag__label--${labelPlacement}--with-alert`]:
+          label && alert !== 'none',
+      })}
+    >
+      {label}
+    </div>
+  );
+
+  if (label) {
+    return (
+      <div
+        className={classNames('eds-travel-tag__wrapper', {
+          [`eds-travel-tag__wrapper--label-position-${labelPlacement}`]: label,
+        })}
+      >
+        {TravelTagWithoutLabel}
+        {Label}
+      </div>
+    );
+  }
+
+  return TravelTagWithoutLabel;
 };
