@@ -14,41 +14,13 @@ import { TravelTag } from '@entur/travel';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
+import { traveltag } from './props';
 import './traveltag.css';
 
 <PageHeader />
 
-<Playground>
-  <div className="even-spacing-travel-tag">
-    <TravelTag>
-      <BusIcon /> Oslo
-    </TravelTag>
-  </div>
-  <div className="even-spacing-travel-tag">
-    <TravelTag>
-      <BicycleIcon />
-    </TravelTag>
-  </div>
-  <div className="even-spacing-travel-tag">
-    <TravelTag onClose={() => alert('Lukkes')}>
-      <BicycleIcon /> Bergen
-    </TravelTag>
-  </div>
-  <div className="even-spacing-travel-tag">
-    <TravelTag alert="info">
-      <BusIcon /> 11
-    </TravelTag>
-  </div>
-  <div className="even-spacing-travel-tag">
-    <TravelTag alert="warning">
-      <BusIcon /> 23
-    </TravelTag>
-  </div>
-  <div className="even-spacing-travel-tag">
-    <TravelTag alert="error">
-      <BusIcon /> 13
-    </TravelTag>
-  </div>
+<Playground advanced props={traveltag}>
+  <TravelTag transport="bus">32</TravelTag>
 </Playground>
 
 ## Komponenter
