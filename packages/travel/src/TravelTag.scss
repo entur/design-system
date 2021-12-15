@@ -18,7 +18,7 @@
       .eds-contrast &.eds-travel-tag {
         box-shadow: none;
         background-color: rgba(0, 0, 0, 0);
-        border: 2px dashed $colors-blues-blue30;
+        border: $border-widths-default dashed $colors-blues-blue30;
       }
     }
   }

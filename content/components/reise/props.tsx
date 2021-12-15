@@ -77,4 +77,49 @@ export const travelleg = [
   },
 ];
 
-export const traveltag = [];
+export const traveltag = [
+  {
+    name: 'children',
+    defaultValue: '32',
+    type: 'string',
+    label: 'Content',
+  },
+  {
+    name: 'alert',
+    defaultValue: 'none',
+    options: ['none', 'info', 'warning', 'error'],
+    type: 'dropdown',
+  },
+  {
+    name: 'transport',
+    defaultValue: 'bus',
+    options: [
+      '',
+      'bus',
+      'metro',
+      'air',
+      'tram',
+      'rail',
+      'water',
+      'carferry',
+      'bike',
+      'scooter',
+      'foot',
+      'car',
+      'taxi',
+    ],
+    type: 'dropdown',
+  },
+  {
+    name: 'label',
+    default: '',
+    type: 'string',
+    label: 'Label',
+  },
+  {
+    name: 'labelPlacement',
+    defaultValue: 'right',
+    options: ['right', 'bottom'],
+    type: 'segmented',
+  },
+];
