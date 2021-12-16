@@ -4,6 +4,7 @@
   display: block;
   font-size: $font-sizes-large;
   line-height: $line-heights-small;
+  margin-right: -$space-medium;
   padding: calc(#{$space-medium} + #{$space-extra-small2}) 0 $space-extra-small2
     $space-medium;
   font-family: inherit;
