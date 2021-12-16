@@ -1,30 +1,23 @@
-import { BusIcon, SubwayIcon, TramIcon, TrainIcon } from '@entur/icons';
+import {
+  DenmarkIcon,
+  NorwayIcon,
+  PrioritySeatSeniorsIcon,
+  SwedenIcon,
+  UKIcon,
+} from '@entur/icons';
 
 export default [
-  'Rikshospitalet',
-  'Gaustadalléen',
-  {
-    value: 'Forskningsparken',
-    label: 'Forskningsparken',
-    icons: [SubwayIcon, TramIcon],
-  },
-  'Universitetet Blindern',
-  'John Colletts Plass',
-  'Ullevål Sykehus',
-  'Adamstuen',
-  'Stensgata',
-  { value: 'Bislett', label: 'Bislett', icons: [TramIcon, BusIcon] },
-  'Dalsbergstien',
-  'Frydenlund',
-  'Holbergsplass',
-  'Tullinløkka',
-  'Tinghuset',
-  'Stortorvet',
-  {
-    value: 'Jernbanetorget',
-    label: 'Jernbanetorget',
-    icons: [TramIcon, BusIcon, TrainIcon],
-  },
+  'Voksen',
+  'Barn',
+  { label: 'Honnør', value: 'honnor', icon: PrioritySeatSeniorsIcon },
+  'Militær',
+];
+
+export const countries = [
+  { label: 'Danmark', value: 'danmark', icon: DenmarkIcon },
+  { label: 'England', value: 'england', icon: UKIcon },
+  { label: 'Norge', value: 'norge', icon: NorwayIcon },
+  { label: 'Sverige', value: 'sverige', icon: SwedenIcon },
 ];
 
 export const FILTERS = [
