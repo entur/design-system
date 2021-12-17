@@ -1,9 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-switch {
-  align-items: center;
   cursor: pointer;
-  display: flex;
   user-select: none;
   padding: 0.5rem 0;
   width: fit-content;
@@ -11,6 +9,16 @@
     opacity: 0;
     pointer-events: none;
     position: absolute;
+  }
+  &--right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &--bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__circle {
@@ -41,7 +49,6 @@
     }
   }
   &__switch {
-    margin-right: $space-small;
     position: relative;
     background-color: $colors-greys-grey60;
     content: '';
@@ -50,6 +57,9 @@
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
+    .eds-switch--right & {
+      margin-right: $space-small;
+    }
     :checked + & {
       background-color: var(--eds-switch-color);
       .eds-switch__circle {
@@ -86,6 +96,24 @@
         .eds-switch__circle {
           left: 1.875rem; //30px
         }
+      }
+    }
+  }
+  &__label {
+    &--large {
+      &--right {
+        font-size: $font-sizes-large;
+      }
+      &--bottom {
+        font-size: $font-sizes-medium;
+      }
+    }
+    &--medium {
+      &--right {
+        font-size: $font-sizes-medium;
+      }
+      &--bottom {
+        font-size: $font-sizes-small;
       }
     }
   }
