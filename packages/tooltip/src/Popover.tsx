@@ -106,6 +106,25 @@ export const Popover: React.FC<PopoverProps> = ({
           showPopover && setShowPopover(false);
         }
       },
+      onBlur: (event: React.FocusEvent) => {
+        const elementReceivingFocus = event.relatedTarget as HTMLElement;
+        // The check for 'tabindex=-1' is a special case for focus handling in Docz
+        if (
+          !elementReceivingFocus ||
+          elementReceivingFocus.getAttribute('tabindex') === '-1'
+        )
+          return;
+        const focusElementIsPopover = elementContainsElement(
+          contentElement.current,
+          elementReceivingFocus,
+        );
+        const focusElementIsTrigger = elementContainsElement(
+          triggerElement.current,
+          elementReceivingFocus,
+        );
+        const isValidBlur = !focusElementIsPopover && !focusElementIsTrigger;
+        if (showPopover && isValidBlur) setShowPopover(false);
+      },
     };
     return contentProps;
   }, [contentElement, showPopover]);
@@ -202,6 +221,14 @@ function elementContainsEventTarget(element: HTMLElement | null, event: Event) {
   }
 
   return false;
+}
+
+function elementContainsElement(
+  parent: HTMLElement | null,
+  child: HTMLElement,
+) {
+  if (!parent) return false;
+  return parent === child || parent.contains(child);
 }
 
 function useOnClickOutside(
