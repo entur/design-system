@@ -18,8 +18,12 @@ export type TravelSwitchProps = {
   className?: string;
   /** Om switchen er checked eller ikke */
   checked?: boolean;
-  /** Label for TravelSwitchen, som vises ved høyre side. */
+  /** Label for TravelSwitch-en. */
   children?: React.ReactNode;
+  /** Posisjonen til label for TravelSwitch-en.
+   * @default "right"
+   */
+  labelPlacement?: 'right' | 'bottom';
   /** Hvilken type reise som skal vises rikig ikon og farge for */
   transport: // When adding a new submode, check https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/825393529/Norwegian+submodes+and+their+definitions for names
   | 'bus'
@@ -43,6 +47,7 @@ export type TravelSwitchProps = {
 export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   className,
   children,
+  labelPlacement = 'right',
   transport,
   size,
   ...rest
@@ -51,6 +56,7 @@ export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   return (
     <Switch
       className={className}
+      labelPlacement={labelPlacement}
       color={color}
       contrastColor={contrast}
       icon={<Icon />}
