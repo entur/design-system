@@ -53,6 +53,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
     LowerCaseFilterTest(item, inputValue),
   label,
   disableLabelAnimation,
+  placeholder,
   ...rest
 }) => {
   const {
@@ -103,6 +104,7 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> = ({
               !isOpen && openMenu();
             }
           },
+          placeholder: selectedItem ? undefined : placeholder,
           ...rest,
         })}
       />
