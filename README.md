@@ -30,7 +30,7 @@ Run `yarn cleanStart` to clear the cache before starting the development server 
 
 ### Developing components
 
-In `packages/` you'll find all packages with its React-components. These components are accessible to other developers through [npm](https://www.npmjs.com/org/entur).
+In `packages/` you'll find all packages with their React-components. These components are accessible to other developers through [npm](https://www.npmjs.com/org/entur).
 
 When developing components it is recommended to do so with the use of the aforementioned `TestBench.tsx`-file, which can be viewed with `yarn playroom`.
 In addition to this, one has to run `yarn start` in the corresponding package where changes are made.
