@@ -11,7 +11,6 @@ module.exports = {
   paramType: 'search', // default is 'hash'
   exampleCode: `
     <div>
-      <TestBench />
     </div>
   `,
   baseUrl: '/playroom/',

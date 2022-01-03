@@ -2,7 +2,8 @@
 
 This is the monorepo containing all packages in the Entur Design System, as well as the [documentation site](design.entur.org).
 
-You'll find all the code in the `packages/` folder. The documentation site is found in the `content/` folder.
+The repository consists of two main parts, the components and the documentation.
+You'll find the code for all the components in the `packages/` folder. The documentation site is found in the `content/` folder.
 
 ## Requirements
 
@@ -13,12 +14,32 @@ You may use [Volta](https://docs.volta.sh/guide/) to manage your js command-line
 
 ## Developing
 
-To develop, please clone the project, and run `yarn` to install all dependencies.
+### First time setup
 
-To build all packages, run `yarn build`
+If it is your first time developing in the repository, please run `yarn setup`. It will install dependencies, and build all components.
+Also, create the file `TestBench.tsx` in `src/components`. This file will be your testing ground for developing design system components.
 
-To start a development server, run `yarn start`
-PS: For first time setup, you will have to run `yarn build` at least once for the development server to function.
+#### Other commands
+
+To build all packages _and_ the documentation, run `yarn build`
+
+To start a development server for the documentation, run `yarn start`
+PS: For first time setup, you will have to run `yarn build:packages` at least once for the development server to function (this is already handled if you ran `yarn setup`).
+
+Run `yarn cleanStart` to clear the cache before starting the development server for the documentation.
+
+### Developing components
+
+In `packages/` you'll find all packages with their React-components. These components are accessible to other developers through [npm](https://www.npmjs.com/org/entur).
+
+When developing components it is recommended to do so with the use of the aforementioned `TestBench.tsx`-file, which can be viewed with `yarn playroom`.
+In addition to this, one has to run `yarn start` in the corresponding package where changes are made.
+
+In short:
+
+1. At root, run `yarn playroom`.
+2. Make your changes in `packages/package-name`.
+3. `cd packages/package-name` and run `yarn start` to watch for changes.
 
 ## Adding new packages
 
@@ -28,27 +49,28 @@ You can also specify the name of the new package if you want - like `yarn new-pa
 
 Once this function is done, you'll want to visit the `packages/<your-new-package>/src` folder, and start implementing.
 
-You will document the component via an MDX file in the `docs`-folder. This will also let you get some visual feedback while developing your component.
+## Releasing packages
 
-## Deploying the docs
+To release packages, first check that you're a part of the [Entur organization](https://www.npmjs.com/org/entur) on npm, and then you'll need to login to npm in your terminal (run `npm whoami` to see if you're logged in with the correct account).
+You'll also have to activate two-factor authentication for authorization and publishing on your npm-account.
+
+0. Be logged in to a appropriate npm-account
+1. `git checkout master`
+2. `git pull`
+3. `yarn test && yarn lint` to make sure everything is good for release
+4. `yarn lerna:publish`
+5. Select `Y` when prompted, wait a couple of seconds as it hangs on "skipping releases", then press CTRL+C _once_. (See issue [here](https://github.com/lerna/lerna/issues/2664))
+6. Wait
+
+## Deploying the documentation
 
 The docs are currently available at [design.entur.org](https://design.entur.org).
 
-### Setting up and logging in to Firebase
-
-In order to deploy the docs locally, you need to have the `firebase-tools` CLI installed globally. You can do that by running `npm install -g firebase-tools` or `yarn global add firebase-tools`. Once installed, you need to log in with `firebase login`. Remember to use a user with access to the `entur-design-system` library. If you don't have access, please reach out to [Nicolai Fredriksen](mailto:nicolai.fredriksen@entur.org) to be granted the correct access rights.
-
-### Deploying the site locally
-
-To deploy the documentation website, run `yarn deploy-docs`. This will build the Gatsby site, and deploy it via the Firebase CLI.
-
-#### CircleCI deployment
-
-The site is also deployed automatically on the `master` branch via CircleCI.
+It is deployed automatically on the `master` branch via CircleCI.
 
 ## Contributing
 
-This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and change logs based on commit messages, instead of spending time on doing it manually.
+This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) specification. This lets us create new version numbers and changelogs based on commit messages, instead of spending time on doing it manually.
 
 We have added a tool called `commitizen` that helps you with following this standard. Simply write `git commit`, and you'll be guided through a UI that creates nice commit messages that contain all the info we need. If that does not work, you may instead write `npx git-cz`
 

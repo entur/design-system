@@ -21,8 +21,8 @@ jobs:
       - restore_cache:
           name: Restore Docz/Gatsby Cache
           keys:
-            - v03-docz-cache-{{ .Branch }}
-            - v03-docz-cache-
+            - v04-docz-cache-{{ .Branch }}
+            - v04-docz-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -40,7 +40,7 @@ jobs:
           command: yarn build
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key: v03-docz-cache-{{ .Branch }}-{{ epoch }}
+          key: v04-docz-cache-{{ .Branch }}-{{ epoch }}
           paths:
             - .docz/.cache
             - .docz/public
@@ -64,8 +64,8 @@ jobs:
       - restore_cache:
           name: Restore Docz/Gatsby Cache
           keys:
-            - v03-docz-cache-{{ .Branch }}
-            - v03-docz-cache-
+            - v04-docz-cache-{{ .Branch }}
+            - v04-docz-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -83,7 +83,7 @@ jobs:
           command: yarn deploy-docs --token=$FIREBASE_TOKEN --non-interactive
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key: v03-docz-cache-{{ .Branch }}-{{ epoch }}
+          key: v04-docz-cache-{{ .Branch }}-{{ epoch }}
           paths:
             - .docz/.cache
             - .docz/public

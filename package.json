@@ -4,6 +4,7 @@
   "license": "EUPL-1.2",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "setup": "yarn && yarn build:packages",
     "build": "yarn build:packages && yarn build:docz",
     "build:packages": "lerna run build",
     "build:docz": "docz build",
@@ -16,7 +17,7 @@
     "deploy-docs": "firebase deploy",
     "new-package": "./bin/new-package.js",
     "superClean": "rm -rf node_modules .docz packages/*/dist packages/*/node_modules packages/*/.rts2*",
-    "prepublishOnly": "yarn build && yarn lint && yarn test:single-run",
+    "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "lerna:publish": "lerna publish --conventional-commits",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
     "playroom": "playroom start",
