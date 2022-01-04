@@ -5,22 +5,35 @@ import {
   ValidationInfoIcon,
   ValidationErrorIcon,
   ValidationExclamationIcon,
+  BicycleIcon,
+  BusIcon,
+  FerryIcon,
+  PlaneIcon,
+  ScooterIcon,
+  SubwayIcon,
+  TrainIcon,
+  TramIcon,
+  WalkingIcon,
+  CarIcon,
+  TaxiIcon,
+  CarferryIcon,
 } from '@entur/icons';
 import './TravelTag.scss';
 
 export type TravelTagProps = {
-  /** Callback som kalles for når man skal lukke TravelTagen
+  /** Callback som kalles for når man skal lukke TravelTag-en
    * @default undefined
    */
   onClose?: () => void;
-  /** Innholdet til TravelTagen */
-  children: React.ReactNode;
+  /** Innholdet inne i TravelTag-en */
+  children?: React.ReactNode;
   /**Ekstra klassenavn */
   className?: string;
   /** Legger til et Valideringsikon i TravelTagen for å signalisere avvik, informasjon e.l.
    * @default "none"
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
+  /** Legger til farge og ikon tilpasset valgt transportmiddel */
   transport?:
     | 'bus'
     | 'metro'
@@ -28,10 +41,18 @@ export type TravelTagProps = {
     | 'tram'
     | 'rail'
     | 'water'
+    | 'carferry'
     | 'bike'
     | 'scooter'
     | 'foot'
-    | 'car';
+    | 'car'
+    | 'taxi';
+  /** Element ved siden av eller under TravelTag.  */
+  label?: React.ReactNode;
+  /** Posisjonen til label-en i forhold til TravelTag-en
+   * @default "right"
+   */
+  labelPlacement?: 'bottom' | 'right';
 } & React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -43,22 +64,28 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   className,
   alert = 'none',
   transport,
+  label,
+  labelPlacement = 'right',
   ...rest
 }) => {
   const isClosable = onClose ? true : false;
   const numberOfChildren = React.Children.count(children);
+  const TransportIcon = modeCalc(transport) ?? <></>;
 
-  return (
+  const TravelTagWithoutLabel: JSX.Element = (
     <div
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
         'eds-travel-tag--alert': alert !== 'none',
-        'eds-travel-tag--icon-and-text': numberOfChildren > 1,
+        'eds-travel-tag--alert--error': alert === 'error',
+        'eds-travel-tag--icon-and-text':
+          numberOfChildren > 1 || (transport && numberOfChildren > 0),
         [`eds-travel-tag--transport-${transport}`]: transport,
         className,
       })}
       {...rest}
     >
+      {transport && TransportIcon}
       {children}
       {isClosable && (
         <button onClick={onClose} className="eds-travel-tag__close-button">
@@ -71,13 +98,71 @@ export const TravelTag: React.FC<TravelTagProps> = ({
             <ValidationInfoIcon className="eds-travel-tag__alert-info-icon" />
           )}
           {alert === 'error' && (
-            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
+            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
           )}
           {alert === 'warning' && (
-            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
+            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
           )}
         </span>
       )}
     </div>
   );
+
+  const Label: JSX.Element = (
+    <div
+      className={classNames('eds-travel-tag__label', {
+        [`eds-travel-tag__label--${labelPlacement}`]: label,
+        [`eds-travel-tag__label--${labelPlacement}--with-alert`]:
+          label && alert !== 'none',
+      })}
+    >
+      {label}
+    </div>
+  );
+
+  if (label) {
+    return (
+      <div
+        className={classNames('eds-travel-tag__wrapper', {
+          [`eds-travel-tag__wrapper--label-position-${labelPlacement}`]: label,
+        })}
+      >
+        {TravelTagWithoutLabel}
+        {Label}
+      </div>
+    );
+  }
+
+  return TravelTagWithoutLabel;
+};
+
+const modeCalc = (mode: string | undefined) => {
+  switch (mode) {
+    case 'bus':
+      return <BusIcon />;
+    case 'metro':
+      return <SubwayIcon />;
+    case 'air':
+      return <PlaneIcon />;
+    case 'tram':
+      return <TramIcon />;
+    case 'rail':
+      return <TrainIcon />;
+    case 'water':
+      return <FerryIcon />;
+    case 'carferry':
+      return <CarferryIcon />;
+    case 'bike':
+      return <BicycleIcon />;
+    case 'scooter':
+      return <ScooterIcon />;
+    case 'foot':
+      return <WalkingIcon />;
+    case 'car':
+      return <CarIcon />;
+    case 'taxi':
+      return <TaxiIcon />;
+    default:
+      return <></>;
+  }
 };

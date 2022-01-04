@@ -13,11 +13,20 @@
   position: relative;
   &--alert {
     padding-right: $space-small;
+    &--error {
+      box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.5); // adds 50% white overlay
+      .eds-contrast &.eds-travel-tag {
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0);
+        border: $border-widths-default dashed $colors-blues-blue30;
+      }
+    }
   }
   &--icon-and-text > .eds-icon {
     margin-right: $space-extra-small;
   }
   .eds-contrast & {
+    align-items: center;
     background-color: $colors-blues-blue20;
   }
   > .eds-icon {
@@ -54,74 +63,68 @@
     &-bus {
       background: $colors-transport-default-bus;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-bus;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-metro {
       background: $colors-transport-default-metro;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-metro;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
+      }
+      .eds-contrast & > .eds-icon {
+        color: $colors-transport-contrast-metro;
       }
     }
     &-air {
       background: $colors-transport-default-plane;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-plane;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-tram {
       background: $colors-transport-default-tram;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-tram;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-rail {
       background: $colors-transport-default-train;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-train;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-water {
       background: $colors-transport-default-ferry;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-ferry;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-bike,
     &-scooter {
       background: $colors-transport-default-mobility;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-mobility;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-foot {
       background: $colors-transport-default-walk;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-walk;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
     &-car {
       background: $colors-transport-default-taxi;
       color: $colors-brand-white;
-      .eds-contrast & {
-        background: $colors-transport-contrast-taxi;
-        color: $colors-brand-blue;
+      > .eds-icon {
+        color: $colors-brand-white;
       }
     }
   }
@@ -137,19 +140,24 @@
     width: ($space-default + $border-widths-medium);
     position: absolute;
     top: ($space-extra-large - ($space-default + $border-widths-medium))/2;
-    right: -($space-default + $border-widths-medium)/2;
+    right: -($space-default - $border-widths-medium)/2 - $space-extra-small2;
     .eds-contrast & {
       background: $colors-brand-blue;
+      &--error-icon {
+        top: ($space-extra-large - ($font-sizes-medium))/2;
+      }
     }
     &-exclamation-icon {
-      color: $colors-validation-sky;
+      color: $colors-validation-canary;
       .eds-contrast & {
-        color: $colors-validation-sky-contrast;
+        color: $colors-validation-canary-contrast;
       }
     }
     &-error-icon {
+      font-size: $font-sizes-medium;
       color: $colors-validation-lava;
       .eds-contrast & {
+        margin-bottom: $space-extra-small2;
         color: $colors-validation-lava-contrast;
       }
     }
@@ -158,6 +166,34 @@
       .eds-contrast & {
         color: $colors-validation-sky-contrast;
       }
+    }
+  }
+  &__wrapper {
+    display: inline-flex;
+    &--label-position-right {
+      flex-direction: row;
+      align-items: center;
+    }
+    &--label-position-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__label {
+    color: $colors-brand-blue;
+    font-size: $font-sizes-large;
+    .eds-contrast & {
+      color: $colors-brand-white;
+    }
+    &--right {
+      margin-left: $space-extra-small;
+      &--with-alert {
+        margin-left: $space-default;
+      }
+    }
+    &--bottom {
+      margin-top: $space-extra-small2/2;
+      font-size: $font-sizes-medium;
     }
   }
 }
