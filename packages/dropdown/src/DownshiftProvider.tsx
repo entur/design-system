@@ -23,6 +23,7 @@ export type DownshiftProviderProps = {
   highlightFirstItemOnOpen?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  searchable?: boolean;
   [key: string]: any;
 };
 export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
@@ -32,6 +33,7 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   highlightFirstItemOnOpen = false,
   className,
   style,
+  searchable = false,
   ...rest
 }) => {
   const handleStateChange = (
@@ -55,13 +57,42 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
     _: DownshiftState<NormalizedDropdownItemType>,
     changes: StateChangeOptions<NormalizedDropdownItemType>,
   ): Partial<StateChangeOptions<NormalizedDropdownItemType>> => {
-    if (highlightFirstItemOnOpen) {
-      const wasJustOpened = 'isOpen' in changes && changes.isOpen;
-      if (wasJustOpened) {
-        return { ...changes, highlightedIndex: 0 };
+    const highlightFirstOnOpen =
+      highlightFirstItemOnOpen && 'isOpen' in changes && changes.isOpen;
+    const highlightFirstItemIndex: Partial<
+      StateChangeOptions<NormalizedDropdownItemType>
+    > = highlightFirstOnOpen ? { highlightedIndex: 0 } : {};
+
+    if (searchable) {
+      const { type } = changes;
+
+      switch (type) {
+        case '__autocomplete_change_input__':
+          return {
+            // return normal changes.
+            ...changes,
+            ...highlightFirstItemIndex,
+          };
+        case '__autocomplete_click_item__':
+        case '__autocomplete_keydown_enter__':
+        case '__autocomplete_blur_input__':
+        case '__autocomplete_mouseup__':
+          return {
+            ...changes,
+            // if we had an item highlighted in the previous state.
+            // we will reset input field value to blank
+            inputValue: '',
+            ...highlightFirstItemIndex,
+          };
+        default:
+          return {
+            ...changes,
+            ...highlightFirstItemIndex,
+          };
       }
+    } else {
+      return { ...changes, ...highlightFirstItemIndex };
     }
-    return changes;
   };
 
   return (

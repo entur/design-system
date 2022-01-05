@@ -13,7 +13,7 @@ import { Dropdown, NativeDropdown } from '@entur/dropdown';
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
-import dropdownItems from './dropdownItems';
+import dropdownItems, { countries } from './dropdownItems';
 import { BestPractices, Example } from '~/components/BestPractices';
 import doPic from './DropdownDo.png';
 import dontPic from './DropdownDont.png';
@@ -24,14 +24,14 @@ import { Link as LinkText } from '@entur/typography';
 <Playground style={{ margin: '0 33%' }}>
   <Dropdown
     items={dropdownItems}
-    label="Stoppesteder"
+    label="Reisende"
     style={{ marginBottom: '2rem' }}
   />
   <Dropdown
-    items={dropdownItems}
+    items={countries}
     searchable
-    label="Søk etter stoppesteder"
-    placeholder="F.eks. Bislett"
+    label="Land"
+    placeholder="F.eks. Norge"
   />
 </Playground>
 
@@ -86,7 +86,7 @@ Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake serve
         timeoutId = setTimeout(
           () =>
             resolve(
-              dropdownItems.filter(item => queryRegex.test(item.label || item)),
+              countries.filter(item => queryRegex.test(item.label || item)),
             ),
           Math.max(Math.random() * 1000, 100), // Et tilfeldig delay per søk
         );
@@ -97,7 +97,7 @@ Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake serve
         searchable
         openOnFocus
         items={fetchItems}
-        placeholder="Søk asynkront"
+        placeholder="Søk asynkront på land"
         label="Stoppesteder"
       />
     );
@@ -118,7 +118,7 @@ Den har ikke støtte for søk, men godtar en (asynkron) funksjon for å hente da
     const [value, setValue] = React.useState();
     return (
       <NativeDropdown
-        label="Stoppesteder"
+        label="Reisende"
         value={value}
         onChange={e => setValue(e.target.value)}
         items={dropdownItems}

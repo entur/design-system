@@ -113,6 +113,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       highlightFirstItemOnOpen={highlightFirstItemOnOpen}
       className={className}
       style={style}
+      searchable={searchable}
       {...rest}
     >
       <DropdownInputGroup feedback={feedback} variant={variant}>
