@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.0...@entur/tooltip@2.5.1) (2022-01-05)
+
+### Bug Fixes
+
+- **popover:** popover will now close if focus is lost from a tab event ([d6991e3](https://bitbucket.org/enturas/design-system/commits/d6991e37a1d129df84851d6634f8751cddea7aec))
+
 # [2.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.4.27...@entur/tooltip@2.5.0) (2021-12-10)
 
 ### Features

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.14...@entur/travel@5.0.0) (2022-01-05)
+
+### Bug Fixes
+
+- **travel tag:** fix 'warning' and 'error' alert prop being swapped, and colors in contrast ([0a08fb3](https://bitbucket.org/enturas/design-system/commits/0a08fb37ec70b0a19cea2fd96a2a5b39295fe5e5))
+
+### Features
+
+- **travel tag:** add label and labelPlacement props ([8f63a0b](https://bitbucket.org/enturas/design-system/commits/8f63a0bc23c16523fc976a1566ec3c8dec22dd48))
+- **travel tag:** add transport icon automatically based on transport prop ([42a191a](https://bitbucket.org/enturas/design-system/commits/42a191a2962f34696f2cfcb42c943e60c2738f4b))
+
+### BREAKING CHANGES
+
+- **travel tag:** If both an icon and transport prop is provided in previous code, you will now get two icos. Remove
+  the child Icon to fix
+- **travel tag:** alert prop options 'warning' and 'error' has been swapped and will now display the correct icon
+
 ## [4.2.14](https://bitbucket.org/enturas/design-system/compare/@entur/travel@4.2.13...@entur/travel@4.2.14) (2021-11-17)
 
 **Note:** Version bump only for package @entur/travel

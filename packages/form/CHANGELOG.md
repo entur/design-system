@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.5...@entur/form@5.2.0) (2022-01-05)
+
+### Bug Fixes
+
+- **form:** added space between label and segmented control ([dea5a1a](https://bitbucket.org/enturas/design-system/commits/dea5a1ac5e18d118d546d35f4195293cf1e395f0))
+
+### Features
+
+- **switch:** add 'labelPlacement' prop with 'right' or 'bottom' choice to Switch ([97d8933](https://bitbucket.org/enturas/design-system/commits/97d8933e8644a633ef5c48471bc04a5392bdd2ba))
+- **travel switch:** update TravelSwitch to use new 'labelPlacement' prop in 'Switch' ([5676ef8](https://bitbucket.org/enturas/design-system/commits/5676ef89dbc25e73a227224f7d0738fce4d3cc2c))
+
 ## [5.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.4...@entur/form@5.1.5) (2021-12-10)
 
 ### Bug Fixes

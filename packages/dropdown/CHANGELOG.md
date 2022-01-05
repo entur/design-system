@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.1.2...@entur/dropdown@2.2.0) (2022-01-05)
+
+### Bug Fixes
+
+- **searchable:** adjust position of selected item ([0abed8d](https://bitbucket.org/enturas/design-system/commits/0abed8d3767dead4161d915a71ad94a8f64f600a))
+- **searchable:** align selectedItem with input field ([527e4f4](https://bitbucket.org/enturas/design-system/commits/527e4f4afea961a0f877e81a5b92f4ec0d44f97c))
+- **searchable:** hide placeholder if item is selected ([933a6cb](https://bitbucket.org/enturas/design-system/commits/933a6cb1b4f84346d737b23f36fc9c4252e7ea46))
+
+### Features
+
+- **searchable:** improve usability of searchable dropdown ([eb3038f](https://bitbucket.org/enturas/design-system/commits/eb3038fb6fc6db7a55d3cc65541ab1d40a6e87af))
+
 ## [2.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.1.1...@entur/dropdown@2.1.2) (2021-12-10)
 
 **Note:** Version bump only for package @entur/dropdown
