@@ -82,7 +82,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         readOnly={readOnly}
         variant={variant}
         prepend={prepend}
-        append={clearable ? <ClearButton onClear={onClear} /> : append}
+        append={
+          clearable && onClear ? <ClearButton onClear={onClear} /> : append
+        }
         className={className}
         style={style}
         size={size}
@@ -134,6 +136,11 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         setFiller && !isInputFilled && setFiller(true);
       }
     });
+    React.useEffect(() => {
+      if (value && setFiller && !isInputFilled) {
+        setFiller(true);
+      }
+    }, [value, setFiller, isInputFilled]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (isFilled(event.target)) {
@@ -163,10 +170,10 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
 );
 
 const ClearButton: React.FC<{
-  onClear?: () => void;
+  onClear: () => void;
   [key: string]: any;
 }> = ({ onClear, ...props }) => {
-  const { isFilled: hasValue } = useInputGroupContext();
+  const { isFilled: hasValue, setFilled } = useInputGroupContext();
   return (
     <div className="eds-textfield__clear-button-wrapper">
       {hasValue && <div className="eds-textfield__divider"></div>}
@@ -175,7 +182,10 @@ const ClearButton: React.FC<{
           className="eds-textfield__clear-button"
           type="button"
           tabIndex={-1}
-          onClick={onClear}
+          onClick={() => {
+            setFilled(false);
+            onClear();
+          }}
           {...props}
         >
           <CloseSmallIcon />
