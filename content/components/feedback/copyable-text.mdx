@@ -1,0 +1,60 @@
+---
+name: Copyable text
+description: Copyable text er en knapp som kopierer innholdet dens til utklippstavlen.
+route: /komponenter/feedback/copyable-text
+parent: Komponenter
+menu: Feedback
+npmPackage: alert
+tags: toast, alert, varsel, varsler, kopier, tekst, text, copy
+---
+
+import { Props, Link as DoczLink } from 'docz';
+
+import { Playground } from '~/components/Playground';
+import PageHeader from '~/components/PageHeader';
+import { ImportStatement } from '~/components/ImportStatement';
+
+import { CopyableText } from '@entur/alert';
+import { Paragraph, PreformattedText, Link } from '@entur/typography';
+
+<PageHeader />
+
+<Playground>
+  <CopyableText>#181c56</CopyableText>
+  <CopyableText
+    successHeading="Kommando kopiert!"
+    successMessage="Lim den inn i terminalen."
+  >
+    npm install @entur/alert
+  </CopyableText>
+</Playground>
+
+## Komponenter
+
+### CopyableText
+
+<ImportStatement imports="CopyableText" />
+<Props of={CopyableText} />
+
+## OBS: Hvordan bruke komponent med toast
+
+Denne komponenten benytter toast-varsling og vil ikke fungere uten en
+`ToastProvider`-wrapper.
+
+<Paragraph>
+  Les mer om hvordan du bruker ToastProvider og toast generelt under{' '}
+  <Link as={DoczLink} to="/komponenter/feedback/alert">
+    Alert sin dokumentasjonside.
+  </Link>
+</Paragraph>
+
+## Retningslinjer for bruk
+
+Copyable text passer fint i situasjoner der brukeren
+trenger tilgang på kommandoer eller tokens fra Entur i eget arbeid og
+det er sannsynlig at bruker ellers ville kopiert innholdet til utklippstavlen manuelt.
+
+Dette vil sannsynligvis være mest nyttig i utviklerportalen o.l. der brukeren kan ha
+nytte av ulike innstallasjonskommandoer – slik man også finner her på
+dokumentasjonsiden for designsystemet. Visse tilfeller kan likevel tilfalle vanlige sluttbrukere,
+eksempelvis hvis brukeren trenger å bruke en lengre tekstlig kode.
