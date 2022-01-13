@@ -87,6 +87,11 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         setFiller && !isInputFilled && setFiller(true);
       }
     });
+    React.useEffect(() => {
+      if (value && setFiller && !isInputFilled) {
+        setFiller(true);
+      }
+    }, [value, setFiller, isInputFilled]);
 
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       if (isFilled(event.target)) {
