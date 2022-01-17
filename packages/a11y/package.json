@@ -17,9 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch --noClean",
-    "build": "tsdx build",
-    "lint": "tsdx lint"
+    "start": "dts watch --noClean",
+    "build": "dts build",
+    "lint": "dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch --noClean",
-    "build": "tsdx build && cp src/*.scss dist",
-    "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "start": "dts watch --noClean",
+    "build": "dts build && cp src/*.scss dist",
+    "test": "dts test --env=jsdom",
+    "lint": "dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
