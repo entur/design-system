@@ -90,7 +90,6 @@
     "copy-text-to-clipboard": "^3.0.1",
     "docz": "2.3.3-alpha.0",
     "framer-motion": "^4.1.17",
-    "gatsby-plugin-google-analytics": "^2.1.29",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-transformer-remark": "^2.8.28",
     "hex-rgb": "^5.0.0",
