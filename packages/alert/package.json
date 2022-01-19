@@ -29,10 +29,16 @@
   "dependencies": {
     "@entur/expand": "^3.3.6",
     "@entur/icons": "^3.4.0",
+    "@entur/typography": "^1.6.10",
     "@entur/utils": "^0.4.2",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "copy-text-to-clipboard": "2.2"
   },
   "devDependencies": {
     "@entur/tokens": "^3.3.0"
+  },
+  "volta": {
+    "node": "14.17.0",
+    "yarn": "1.18.0"
   }
 }
