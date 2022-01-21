@@ -42,10 +42,10 @@ test('invoke onDragEnter when dragenter event occurs', async () => {
     container: HTMLElement,
   ) {
     return new Promise(resolve =>
-      setImmediate(() => {
+      setTimeout(() => {
         render(ui, { container });
         resolve(container);
-      }),
+      }, 0),
     );
   }
 
