@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.2.0...@entur/form@5.2.1) (2022-01-21)
+
+### Bug Fixes
+
+- **textarea:** fix label position bug in textarea ([cbc07cd](https://bitbucket.org/enturas/design-system/commits/cbc07cdbc8201f89bfc455e7965ecaee80d00a2a))
+- **textfield:** fix label position bug on textfield ([76a2cdf](https://bitbucket.org/enturas/design-system/commits/76a2cdf7878f32bd1c5a9c7f4f8d8918b8e09344))
+
 # [5.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.1.5...@entur/form@5.2.0) (2022-01-05)
 
 ### Bug Fixes

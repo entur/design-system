@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.9.1...@entur/alert@0.10.0) (2022-01-21)
+
+### Features
+
+- **copyable text:** add new CopyableText component ([b793604](https://bitbucket.org/enturas/design-system/commits/b7936040b0fe054e061af4d6a0b56279b3e6ed1c))
+
 ## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.9.0...@entur/alert@0.9.1) (2021-11-17)
 
 ### Bug Fixes
