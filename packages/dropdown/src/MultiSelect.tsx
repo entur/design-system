@@ -142,16 +142,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       if (!selectedItem) {
         return;
       }
-      const index = selectedItems.indexOf(selectedItem);
-      if (index > 0) {
-        const slicedItemList = [
-          ...selectedItems.slice(0, index),
-          ...selectedItems.slice(index + 1),
-        ];
-        setSelectedItems(slicedItemList);
-        onChange(slicedItemList);
-      } else if (index === 0) {
-        const slicedItemList = [...selectedItems.slice(1)];
+      const itemIsfound = selectedItems.some(
+        item => item.value === selectedItem.value,
+      );
+      if (itemIsfound) {
+        const slicedItemList = selectedItems.filter(
+          item => item.value !== selectedItem.value,
+        );
         setSelectedItems(slicedItemList);
         onChange(slicedItemList);
       } else {
@@ -227,10 +224,11 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 className={classNames('eds-dropdown-list__item', {
                   'eds-dropdown-list__item--highlighted':
                     highlightedIndex === index,
-                  'eds-dropdown-list__item--selected':
-                    selectedItems.includes(item),
+                  'eds-dropdown-list__item--selected': selectedItems.some(
+                    selected => selected.value === item.value,
+                  ),
                 })}
-                key={`${item}${index}`}
+                key={`${item.value}${index}`}
                 {...getItemProps({
                   item,
                   index,
@@ -240,8 +238,9 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 <span style={{ display: 'flex' }}>
                   <span
                     className={classNames('eds-multiselect-checkbox', {
-                      'eds-multiselect-checkbox--checked':
-                        selectedItems.includes(item),
+                      'eds-multiselect-checkbox--checked': selectedItems.some(
+                        selected => selected.value === item.value,
+                      ),
                     })}
                   >
                     <CheckboxIcon />
