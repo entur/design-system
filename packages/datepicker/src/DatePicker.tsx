@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   default as ReactDatepicker,
   ReactDatePickerProps,
@@ -11,6 +11,7 @@ import {
   VariantType,
 } from '@entur/form';
 import { CalendarIcon } from '@entur/icons';
+import { parse, isValid } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
@@ -28,16 +29,20 @@ export type DatePickerProps = {
     event: React.SyntheticEvent<any, Event>,
   ) => void;
   /** Placeholder om ingen dato er valgt
-   * @default "Velg dato"
+   * @default "dd.mm.yyyy"
    */
   placeholder?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Label over DatePicker */
   label: string;
-  /** Varselmelding, som vil komme under DatePicker */
+  /** Varselmelding, som vil komme under DatePicker
+   * @default "Ugyldig dato"
+   */
   feedback?: string;
-  /** Valideringsvariant */
+  /** Valideringsvariant
+   * @default "error"
+   */
   variant?: VariantType;
   style?: React.CSSProperties;
   /** Plasserer labelen statisk på toppen av inputfeltet
@@ -52,6 +57,14 @@ export type DatePickerProps = {
    * @default false
    */
   hideCalendarButton?: boolean;
+  /** Skjuler tilbakemeldingsteksten ved feil dato-input
+   * @default false
+   */
+  hideFeedback?: boolean;
+  /** Skjuler kalender-GUI-et
+   * @default false
+   */
+  hideCalendar?: boolean;
   // For testing
   'data-cy'?: any;
 } & Omit<ReactDatePickerProps, 'selected' | 'customInput'>;
@@ -70,7 +83,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     {
       selectedDate = null,
       onChange,
-      placeholder = 'Velg dato',
+      placeholder = 'dd.mm.yyyy',
       className,
       style,
       readOnly,
@@ -78,16 +91,21 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       locale = 'nb',
       prepend,
       disabled,
-      dateFormat = ['dd.MM.yyyy', 'ddMMyyyy'],
-      variant,
-      feedback,
+      variant = 'error',
+      feedback = 'Ugyldig dato',
       label,
       hideCalendarButton = false,
+      hideCalendar = false,
+      hideFeedback = false,
       id,
       ...rest
     },
     ref,
   ) => {
+    const [showFeedback, setShowFeedback] = useState(false);
+    const [currentValue, setCurrentValue] = useState('');
+    const [lastValidValue, setLastValidValue] = useState('');
+
     const datepickerId = useRandomId('eds-datepicker');
     const { isFilled: isDatepickerFilled, setFilled: setFiller } =
       useInputGroupContext();
@@ -106,7 +124,10 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       }
     }, [selectedDate, setFiller, isDatepickerFilled]);
 
-    const handleChange = (date: any, event: any) => {
+    const handleChange = (
+      date: any,
+      event: React.SyntheticEvent<any> | undefined,
+    ) => {
       if (date) {
         setFiller && !isDatepickerFilled && setFiller(true);
       } else {
@@ -114,6 +135,51 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       }
       if (onChange) {
         onChange(date, event);
+        const dateString = date?.toLocaleDateString('no-NO', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+        });
+        setCurrentValue(dateString ?? '');
+        setLastValidValue(dateString ?? '');
+      }
+    };
+
+    const handleChangeRaw = (event: React.FocusEvent<HTMLInputElement>) => {
+      setShowFeedback(false);
+      setCurrentValue(event.target.value);
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+      if (showFeedback) {
+        setShowFeedback(false);
+      } else {
+        const inputValue = event.target.value;
+        if (inputValue) validateInput(inputValue);
+      }
+    };
+
+    const handleKeyDownInput = (
+      event: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+      if (event.key === 'Enter') validateInput(currentValue);
+    };
+
+    const validateInput = (inputValue: string) => {
+      const parsedDate = parse(inputValue, 'dd.MM.yyyy', new Date(), {
+        locale: nb,
+      });
+
+      const yearIsFourCharacters =
+        currentValue.slice(currentValue.lastIndexOf('.') + 1).length === 4;
+      const isValidDate = isValid(parsedDate) && yearIsFourCharacters;
+
+      if (!isValidDate) {
+        setShowFeedback(true);
+        setCurrentValue(lastValidValue);
+      } else {
+        setShowFeedback(false);
+        setLastValidValue(currentValue);
       }
     };
 
@@ -124,7 +190,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         selected={selectedDate}
         onChange={handleChange}
         showWeekNumbers={true}
-        dateFormat={dateFormat}
+        dateFormat={['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy']}
         showPopperArrow={false}
         placeholderText={placeholder}
         readOnly={readOnly}
@@ -133,13 +199,18 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         disabled={disabled}
         locale={locale}
         popperModifiers={POPPER_MODIFIERS}
+        onBlur={handleBlur}
+        onChangeRaw={handleChangeRaw}
+        onCalendarOpen={() => setShowFeedback(false)}
+        value={currentValue}
+        open={hideCalendar === true ? false : rest.open}
         {...rest}
         customInput={
           <DatePickerInput
             style={style}
             readOnly={readOnly}
-            variant={variant}
-            feedback={feedback}
+            variant={!hideFeedback && showFeedback ? variant : ''}
+            feedback={!hideFeedback && showFeedback ? feedback : ''}
             label={label}
             disabled={disabled}
             ref={ref}
@@ -148,6 +219,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             prepend={prepend}
             hideCalendarButton={hideCalendarButton}
             inputId={id}
+            onKeyDownInput={handleKeyDownInput}
+            onBlurInput={handleBlur}
           />
         }
       />
@@ -212,12 +285,14 @@ const DatePickerInput = React.forwardRef<
       className,
       hideCalendarButton,
       inputId,
+      onKeyDownInput,
+      onBlurInput,
       ...rest
     },
     ref,
   ) => {
     return (
-      <span className={className}>
+      <span className={className} onBlur={onBlurInput}>
         <BaseFormControl
           style={style}
           className="eds-datepicker__form-control"
@@ -240,6 +315,7 @@ const DatePickerInput = React.forwardRef<
             // aria-labelledby={id}
             className="eds-form-control"
             id={inputId}
+            onKeyDown={onKeyDownInput}
             {...rest}
           />
           {!hideCalendarButton && (
