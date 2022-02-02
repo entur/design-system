@@ -49,7 +49,7 @@ jobs:
           command: yarn test
   deploy:
     parallelism: 1
-    resource_class: large
+    resource_class: xlarge
     docker:
       - image: cimg/node:14.17.0
     steps:
