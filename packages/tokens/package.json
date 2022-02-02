@@ -18,9 +18,9 @@
   },
   "scripts": {
     "build": "yarn build:tokens && yarn build:css",
-    "build:tokens": "tsdx build",
+    "build:tokens": "dts build",
     "build:css": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts",
-    "test": "tsdx test"
+    "test": "dts test"
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",

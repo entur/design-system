@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "start": "tsdx watch --noClean",
-    "build": "tsdx build",
-    "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint"
+    "start": "dts watch --noClean",
+    "build": "dts build",
+    "test": "dts test --env=jsdom",
+    "lint": "dts lint"
   },
   "dependencies": {
     "@entur/utils": "^0.2.0"

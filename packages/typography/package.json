@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdx build && cp -r fonts dist/fonts",
-    "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint",
-    "start": "tsdx watch --noClean"
+    "build": "dts build && cp -r fonts dist/fonts",
+    "test": "dts test --env=jsdom",
+    "lint": "dts lint",
+    "start": "dts watch --noClean"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

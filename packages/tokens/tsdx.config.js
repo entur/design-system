@@ -1,1 +1,1 @@
-module.exports = require('../../tsdx.config');
+module.exports = require('../../dts.config');
