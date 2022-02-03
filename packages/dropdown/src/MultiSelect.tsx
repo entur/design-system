@@ -126,6 +126,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   const reset = React.useCallback(() => {
     setSelectedItems([]);
   }, []);
+
+  function isSelected(selectedCheckboxItem: NormalizedDropdownItemType) {
+    return selectedItems.some(
+      selected => selected.value === selectedCheckboxItem.value,
+    );
+  }
+
   const {
     isOpen,
     getToggleButtonProps,
@@ -142,10 +149,8 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
       if (!selectedItem) {
         return;
       }
-      const itemIsfound = selectedItems.some(
-        item => item.value === selectedItem.value,
-      );
-      if (itemIsfound) {
+      const itemIsFound = isSelected(selectedItem);
+      if (itemIsFound) {
         const slicedItemList = selectedItems.filter(
           item => item.value !== selectedItem.value,
         );
@@ -224,9 +229,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 className={classNames('eds-dropdown-list__item', {
                   'eds-dropdown-list__item--highlighted':
                     highlightedIndex === index,
-                  'eds-dropdown-list__item--selected': selectedItems.some(
-                    selected => selected.value === item.value,
-                  ),
+                  'eds-dropdown-list__item--selected': isSelected(item),
                 })}
                 key={`${item.value}${index}`}
                 {...getItemProps({
@@ -238,9 +241,7 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
                 <span style={{ display: 'flex' }}>
                   <span
                     className={classNames('eds-multiselect-checkbox', {
-                      'eds-multiselect-checkbox--checked': selectedItems.some(
-                        selected => selected.value === item.value,
-                      ),
+                      'eds-multiselect-checkbox--checked': isSelected(item),
                     })}
                   >
                     <CheckboxIcon />
