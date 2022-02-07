@@ -21,14 +21,25 @@ import { datepicker } from './props';
 
 <Playground style={{ width: '50%', margin: '0 auto' }}>
   {() => {
-    const [date, setDate] = React.useState();
+    const [date1, setDate1] = React.useState();
+    const [date2, setDate2] = React.useState();
     return (
-      <DatePicker
-        style={{ width: '15rem' }}
-        selectedDate={date}
-        onChange={date => setDate(date)}
-        label="Velg dato"
-      />
+      <>
+        <DatePicker
+          style={{ width: '15rem' }}
+          selectedDate={date1}
+          onChange={date => setDate1(date)}
+          label="Velg dato"
+        />
+        <DatePicker
+          style={{ width: '15rem', marginTop: '1rem' }}
+          selectedDate={date2}
+          onChange={date => setDate2(date)}
+          label="Velg dato"
+          hideCalendarButton
+          hideCalendar
+        />
+      </>
     );
   }}
 </Playground>
@@ -58,6 +69,34 @@ Eksempelvis `addWeeks` for å sette en maksgrense på én uker man kan velge dat
         minDate={new Date()} //Mindate, Fra og med
         maxDate={addWeeks(new Date(), 1)} // Til og med
       />
+    );
+  }}
+</Playground>
+
+Komponenten kan også brukes som kun kalender uten input eller motsatt. For kun kalender benytter man `inline`-propen og for kun input uten kalender bruker man `hideCalendar`-propen.
+
+<Playground>
+  {() => {
+    const [date, setDate] = React.useState();
+    const [date2, setDate2] = React.useState();
+    return (
+      <>
+        <DatePicker
+          inline // Gjør at kun kalender vises
+          label="Velg dato"
+          style={{ width: '15rem' }}
+          selectedDate={date}
+          onChange={date => setDate(date)}
+        />
+        <DatePicker
+          hideCalendar // Gjør at kun input vises
+          hideCalendarButton
+          style={{ width: '15rem', marginTop: '1rem' }}
+          selectedDate={date2}
+          onChange={date => setDate2(date)}
+          label="Velg dato"
+        />
+      </>
     );
   }}
 </Playground>
