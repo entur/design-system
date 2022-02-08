@@ -70,6 +70,10 @@ jobs:
       - add_ssh_keys: *ssh-fingerprint
 
       - run:
+          name: Save token to a file
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.prod.json
+
+      - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile
 
@@ -80,7 +84,7 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Deploy to production
-          command: yarn deploy-docs --token=$FIREBASE_TOKEN --non-interactive
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
       - save_cache:
           name: Save Docz/Gatsby Cache
           key: v06-docz-cache-{{ .Branch }}-{{ epoch }}
