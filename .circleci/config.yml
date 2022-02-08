@@ -2,6 +2,11 @@ aliases:
   - &ssh-fingerprint
     fingerprints:
       - '02:85:42:40:c5:08:04:66:58:80:10:2f:60:97:38:c2'
+commands:
+  setup-service-accounts:
+    steps:
+      - run: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.prod.json
+
 version: 2
 jobs:
   build:
@@ -69,6 +74,8 @@ jobs:
 
       - add_ssh_keys: *ssh-fingerprint
 
+      - setup-service-accounts
+
       - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile
@@ -80,7 +87,7 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Deploy to production
-          command: yarn deploy-docs --token=$FIREBASE_TOKEN --non-interactive
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=design-system
       - save_cache:
           name: Save Docz/Gatsby Cache
           key: v06-docz-cache-{{ .Branch }}-{{ epoch }}
