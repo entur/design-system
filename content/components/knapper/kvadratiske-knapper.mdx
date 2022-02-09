@@ -9,7 +9,11 @@ tags: firkant, knapp, funksjonsknapp, tabellknapp
 ---
 
 import { Props } from 'docz';
-import { SecondarySquareButton, SuccessSquareButton } from '@entur/button';
+import {
+  SecondarySquareButton,
+  SuccessSquareButton,
+  TertiarySquareButton,
+} from '@entur/button';
 import { AddIcon, CheckIcon } from '@entur/icons';
 import { Playground } from '~/components/Playground';
 import PageHeader from '~/components/PageHeader';
@@ -38,7 +42,9 @@ import { ImportStatement } from '~/components/ImportStatement';
       <AddIcon /> Legg til
     </SecondarySquareButton>
   </div>
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
     <SuccessSquareButton>
       Lagre <CheckIcon />
     </SuccessSquareButton>
@@ -46,19 +52,35 @@ import { ImportStatement } from '~/components/ImportStatement';
       <CheckIcon /> Lagre
     </SuccessSquareButton>
   </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <TertiarySquareButton>
+      Lagre <CheckIcon />
+    </TertiarySquareButton>
+    <TertiarySquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </TertiarySquareButton>
+  </div>
 </Playground>
 
 Kvadratiske knapper skal alltid ha ett ikon, og _kan_ ha en label på enten venstre eller høyre side. Du kan også bruke dem uten label, men bør da sende inn en alternativ beskrivelse med `aria-label`.
 
 ## Komponenter
 
-### SuccessSquareButton og SecondarySquareButton
+### SuccessSquareButton
 
-<ImportStatement imports="SuccessSquareButton, SecondarySquareButton" />
+<ImportStatement imports="SuccessSquareButton" />
+
+### SecondarySquareButton
+
+<ImportStatement imports="SecondarySquareButton" />
+
+### TertiarySquareButton
+
+<ImportStatement imports="TertiarySquareButton" />
 
 <Props of={SuccessSquareButton} />
 
-Disse to komponentene har samme API, og brukes på samme måte. Se på "standardknapper"-siden for retningslinjer om når du burde bruke Success vs Secondary.
+Alle tre komponentene har samme API, og brukes på samme måte. Se på "standardknapper"-siden for retningslinjer om når du burde bruke Success, Secondary eller Tertiary.
 
 Knappen regner med at du sender inn label-teksten som en ren string, og ikonet som en komponent. Med andre ord på denne måten:
 

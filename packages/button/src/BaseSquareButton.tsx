@@ -14,7 +14,7 @@ export type BaseSquareButtonBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** En type knapp */
-  variant: 'success' | 'secondary';
+  variant: 'success' | 'secondary' | 'tertiary';
   /** Deaktivering av knappen
    * @default false
    */
@@ -26,7 +26,7 @@ export type BaseSquareButtonBaseProps = {
 };
 
 export type BaseSquareButtonProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<BaseSquareButtonBaseProps, T>;
 
 const defaultElement = 'button';
@@ -54,6 +54,7 @@ export const BaseSquareButton: PolymorphicForwardRefExoticComponent<
           'eds-square-button',
           { 'eds-square-button--success': variant === 'success' },
           { 'eds-square-button--secondary': variant === 'secondary' },
+          { 'eds-square-button--tertiary': variant === 'tertiary' },
           { 'eds-square-button--loading': loading },
           className,
         )}

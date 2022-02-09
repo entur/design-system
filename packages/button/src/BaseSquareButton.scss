@@ -127,3 +127,55 @@
 .eds-square-button__icon + .eds-square-button__label {
   margin-left: $space-default;
 }
+
+.eds-square-button--tertiary {
+  --icon-background: transparent;
+  --border-color: #{$colors-brand-blue};
+
+  font-size: $font-sizes-medium;
+
+  .eds-square-button__label + .eds-square-button__icon,
+  .eds-square-button__icon + .eds-square-button__label {
+    margin-left: $space-small;
+  }
+
+  .eds-square-button__icon {
+    height: $space-extra-large;
+    width: $space-extra-large;
+    border-width: $border-widths-small;
+  }
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
+  }
+
+  &:hover {
+    --icon-background: #{$colors-blues-blue70};
+  }
+  &:active {
+    --icon-background: #{$colors-brand-blue};
+    --icon-color: #{$colors-brand-white};
+
+    .eds-square-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-white;
+    }
+  }
+
+  .eds-contrast & {
+    --border-color: #{$colors-brand-white};
+
+    &:hover {
+      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+    }
+    &:active {
+      --icon-background: #{$colors-brand-white};
+      --icon-color: #{$colors-brand-blue};
+
+      .eds-square-button__loading-dots .eds-loading-dots__dot {
+        background: $colors-brand-blue;
+      }
+    }
+    .eds-square-button__loading-dots .eds-loading-dots__dot {
+      background: $colors-brand-white;
+    }
+  }
+}
