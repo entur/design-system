@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.1...@entur/dropdown@2.2.2) (2022-02-09)
+
+### Bug Fixes
+
+- **multiselect:** fix checkboxes bug in multiselect ([5b26980](https://bitbucket.org/enturas/design-system/commits/5b26980596e461621956551ae916bca0e670f695))
+- **multiselect:** fix checkboxes bug in multiselect ([9c59723](https://bitbucket.org/enturas/design-system/commits/9c5972387d693cc83ac8361ee3ace643d9f60959))
+
 ## [2.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.0...@entur/dropdown@2.2.1) (2022-01-21)
 
 **Note:** Version bump only for package @entur/dropdown

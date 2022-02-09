@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.7.4...@entur/button@2.8.0) (2022-02-09)
+
+### Features
+
+- **square button:** add tertiary square button style ([fe083e3](https://bitbucket.org/enturas/design-system/commits/fe083e3603cb3e037456f9485d5c71d4364d20ee))
+
 ## [2.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.7.3...@entur/button@2.7.4) (2021-11-17)
 
 **Note:** Version bump only for package @entur/button

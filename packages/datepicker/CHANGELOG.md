@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.8...@entur/datepicker@0.11.0) (2022-02-09)
+
+### Features
+
+- **date picker:** add visual date validation to date picker and hideCalendar prop ([aae7cbf](https://bitbucket.org/enturas/design-system/commits/aae7cbfe4e02c1e5ebc676c1e083f74c54bafbbb))
+
+### BREAKING CHANGES
+
+- **date picker:** - Validation icon introduces visual changes. Use hideFeedback to remove.
+
+* dateFormat prop removed
+
 ## [0.10.8](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.10.7...@entur/datepicker@0.10.8) (2022-01-21)
 
 **Note:** Version bump only for package @entur/datepicker
