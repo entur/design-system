@@ -113,6 +113,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     useOnMount(() => {
       if (selectedDate) {
         setFiller && !isDatepickerFilled && setFiller(true);
+        handleChange(selectedDate, undefined);
       }
     });
 
