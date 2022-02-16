@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.2...@entur/dropdown@2.2.3) (2022-02-16)
+
+### Bug Fixes
+
+- **dropdown:** add missing styling for truncating searchable dropdown input ([c628982](https://bitbucket.org/enturas/design-system/commits/c628982588035720aab68745c2fbe6f612ec4fde))
+
 ## [2.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.1...@entur/dropdown@2.2.2) (2022-02-09)
 
 ### Bug Fixes
