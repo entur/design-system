@@ -8,4 +8,8 @@
   padding: calc(#{$space-medium} + #{$space-extra-small2}) 0 $space-extra-small2
     $space-medium;
   font-family: inherit;
+
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
