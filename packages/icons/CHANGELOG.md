@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.4.1...@entur/icons@3.5.0) (2022-03-01)
+
+### Features
+
+- **icons:** add new CityBike icon ([ec8288e](https://bitbucket.org/enturas/design-system/commits/ec8288ed5d9dc122361e95362a6dab5f18acad7b))
+
 ## [3.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.4.0...@entur/icons@3.4.1) (2022-02-09)
 
 **Note:** Version bump only for package @entur/icons
