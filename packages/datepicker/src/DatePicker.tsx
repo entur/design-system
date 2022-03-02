@@ -28,6 +28,10 @@ export type DatePickerProps = {
     date: Date | null,
     event: React.SyntheticEvent<any, Event>,
   ) => void;
+  /**
+   * Kalles når innholdet i inputfeltet endres
+   */
+  onChangeInput?: (value: string) => void;
   /** Placeholder om ingen dato er valgt
    * @default "dd.mm.yyyy"
    */
@@ -36,14 +40,21 @@ export type DatePickerProps = {
   className?: string;
   /** Label over DatePicker */
   label: string;
-  /** Varselmelding, som vil komme under DatePicker
-   * @default "Ugyldig dato"
+  /**
+   * Varselmelding, som vil komme under DatePicker
    */
   feedback?: string;
   /** Valideringsvariant
-   * @default "error"
    */
   variant?: VariantType;
+  /** Varselmelding for når datoen er på feil format
+   * @default "Ugyldig dato"
+   */
+  validationFeedback?: string;
+  /** Valideringsvariant for melding om feil datoformat
+   * @default "error"
+   */
+  validationVariant?: VariantType;
   style?: React.CSSProperties;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
@@ -60,14 +71,14 @@ export type DatePickerProps = {
   /** Skjuler tilbakemeldingsteksten ved feil dato-input
    * @default false
    */
-  hideFeedback?: boolean;
+  hideValidationFeedback?: boolean;
   /** Skjuler kalender-GUI-et
    * @default false
    */
   hideCalendar?: boolean;
   // For testing
   'data-cy'?: any;
-} & Omit<ReactDatePickerProps, 'selected' | 'customInput'>;
+} & Omit<ReactDatePickerProps, 'selected' | 'customInput' | 'onChangeRaw'>;
 const POPPER_MODIFIERS: Popper.StrictModifiers[] = [
   {
     name: 'offset',
@@ -83,6 +94,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     {
       selectedDate = null,
       onChange,
+      onChangeInput,
       placeholder = 'dd.mm.yyyy',
       className,
       style,
@@ -91,18 +103,20 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       locale = 'nb',
       prepend,
       disabled,
-      variant = 'error',
-      feedback = 'Ugyldig dato',
+      variant,
+      validationVariant = 'error',
+      feedback,
+      validationFeedback = 'Ugyldig dato',
       label,
       hideCalendarButton = false,
       hideCalendar = false,
-      hideFeedback = false,
+      hideValidationFeedback = false,
       id,
       ...rest
     },
     ref,
   ) => {
-    const [showFeedback, setShowFeedback] = useState(false);
+    const [showValidationFeedback, setShowValidationFeedback] = useState(false);
     const [currentValue, setCurrentValue] = useState('');
     const [lastValidValue, setLastValidValue] = useState('');
 
@@ -147,13 +161,14 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     };
 
     const handleChangeRaw = (event: React.FocusEvent<HTMLInputElement>) => {
-      setShowFeedback(false);
+      setShowValidationFeedback(false);
       setCurrentValue(event.target.value);
+      if (onChangeInput) onChangeInput(event.target.value);
     };
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-      if (showFeedback) {
-        setShowFeedback(false);
+      if (showValidationFeedback) {
+        setShowValidationFeedback(false);
       } else {
         const inputValue = event.target.value;
         if (inputValue) validateInput(inputValue);
@@ -176,12 +191,26 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       const isValidDate = isValid(parsedDate) && yearIsFourCharacters;
 
       if (!isValidDate) {
-        setShowFeedback(true);
+        setShowValidationFeedback(true);
         setCurrentValue(lastValidValue);
       } else {
-        setShowFeedback(false);
+        setShowValidationFeedback(false);
         setLastValidValue(currentValue);
       }
+    };
+
+    const displayedFeedback = (): string => {
+      if (feedback) return feedback;
+      if (!hideValidationFeedback && showValidationFeedback)
+        return validationFeedback;
+      return '';
+    };
+
+    const displayedVariant = (): string | undefined => {
+      if (feedback && variant) return variant;
+      if (!hideValidationFeedback && showValidationFeedback)
+        return validationVariant;
+      return undefined;
     };
 
     return (
@@ -202,7 +231,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         popperModifiers={POPPER_MODIFIERS}
         onBlur={handleBlur}
         onChangeRaw={handleChangeRaw}
-        onCalendarOpen={() => setShowFeedback(false)}
+        onCalendarOpen={() => setShowValidationFeedback(false)}
         value={currentValue}
         open={hideCalendar === true ? false : rest.open}
         {...rest}
@@ -210,8 +239,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
           <DatePickerInput
             style={style}
             readOnly={readOnly}
-            variant={!hideFeedback && showFeedback ? variant : ''}
-            feedback={!hideFeedback && showFeedback ? feedback : ''}
+            variant={displayedVariant()}
+            feedback={displayedFeedback()}
             label={label}
             disabled={disabled}
             ref={ref}
@@ -222,6 +251,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
             inputId={id}
             onKeyDownInput={handleKeyDownInput}
             onBlurInput={handleBlur}
+            onChangeInput={onChangeInput}
           />
         }
       />
@@ -286,6 +316,7 @@ const DatePickerInput = React.forwardRef<
       className,
       hideCalendarButton,
       inputId,
+      onChangeInput,
       onKeyDownInput,
       onBlurInput,
       ...rest
@@ -317,6 +348,7 @@ const DatePickerInput = React.forwardRef<
             className="eds-form-control"
             id={inputId}
             onKeyDown={onKeyDownInput}
+            onChange={onChangeInput}
             {...rest}
           />
           {!hideCalendarButton && (
