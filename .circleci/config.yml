@@ -44,9 +44,51 @@ jobs:
           paths:
             - .docz/.cache
             - .docz/public
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
+
+
+  deploy-to-test: 
+    resource_class: xlarge
+    docker:
+      - image: cimg/node:14.17.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Save token to a file
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
+      - run:
+          name: Deploy to staging
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
+
+  test:
+    resource_class: xlarge
+    docker:
+      - image: cimg/node:14.17.0
+    steps:
+      - checkout
+
+      - add_ssh_keys: *ssh-fingerprint
+
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-v1-{{ .Branch }}-
+            - yarn-v1-
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - run:
+          name: build packages
+          command: yarn build:packages
       - run:
           name: test
-          command: yarn test
+          command: yarn test && yarn lint
+
   deploy:
     parallelism: 1
     resource_class: xlarge
@@ -99,7 +141,20 @@ workflows:
           filters:
             branches:
               ignore:
+                - master        
+      - test:
+          filters:
+            branches:
+              ignore:
                 - master
+      - deploy-to-test:
+          requires:
+            - build
+            - test
+          filters:
+              branches:
+                ignore:
+                  - master
       - deploy:
           filters:
             branches:
