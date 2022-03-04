@@ -49,8 +49,7 @@ jobs:
           paths:
             - '*'
 
-
-  deploy-to-test: 
+  deploy-to-preview-channel:
     resource_class: xlarge
     docker:
       - image: cimg/node:14.17.0
@@ -61,13 +60,14 @@ jobs:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
       - run:
-          name: Deploy to staging
+          name: Deploy to preview channel
           command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
 
   test:
     resource_class: xlarge
     docker:
       - image: cimg/node:14.17.0
+    parallelism: 5
     steps:
       - checkout
 
@@ -85,9 +85,12 @@ jobs:
       - run:
           name: build packages
           command: yarn build:packages
+      - run: |
+          TESTFILES=$(circleci tests glob "packages/**/*.test.tsx" | circleci tests split --split-by=timings)
+          CI=true yarn test:ci $TESTFILES
       - run:
-          name: test
-          command: yarn test && yarn lint
+          name: linter test
+          command: yarn lint
 
   deploy:
     parallelism: 1
@@ -141,20 +144,20 @@ workflows:
           filters:
             branches:
               ignore:
-                - master        
+                - master
       - test:
           filters:
             branches:
               ignore:
                 - master
-      - deploy-to-test:
+      - deploy-to-preview-channel:
           requires:
             - build
             - test
           filters:
-              branches:
-                ignore:
-                  - master
+            branches:
+              ignore:
+                - master
       - deploy:
           filters:
             branches:
