@@ -10,11 +10,38 @@
 .image-display {
   width: 100%;
   position: relative;
-}
 
-.image-display__image {
-  width: 100%;
-  & > img {
+  &__image {
     width: 100%;
+    & > img {
+      width: 100%;
+    }
+  }
+  &:hover {
+    .eds-icon {
+      opacity: 1;
+
+      &-button {
+        background-color: rgba($colors-blues-blue70, 0.4);
+        &:hover {
+          background-color: rgba($colors-blues-blue70, 1);
+        }
+      }
+    }
+  }
+  &__download {
+    position: absolute;
+    bottom: $space-small;
+    right: $space-small;
+
+    &:focus {
+      .eds-icon {
+        opacity: 1;
+      }
+    }
+
+    .eds-icon {
+      opacity: 0;
+    }
   }
 }
