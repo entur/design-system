@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { LoadingDots } from '@entur/loader';
 import './BaseChip.scss';
 import './ActionChip.scss';
 
@@ -8,13 +9,20 @@ export type ActionChipProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
+  /** Om chip-en er opptatt, f.eks med å oppdatere informasjon
+   * @default false
+   */
+  loading?: boolean;
 } & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
 
 export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
-  ({ children, className, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
+  (
+    { children, className, loading = false, ...rest },
+    ref: React.Ref<HTMLButtonElement>,
+  ) => {
     const childrenArray = React.Children.toArray(children);
     const hasLeadingIcon =
       childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
@@ -37,7 +45,11 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
         type="button"
         {...rest}
       >
-        {children}
+        {loading ? (
+          <LoadingDots className="eds-action-chip__loading-dots" />
+        ) : (
+          children
+        )}
       </button>
     );
   },
