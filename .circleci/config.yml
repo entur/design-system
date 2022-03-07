@@ -2,6 +2,14 @@ aliases:
   - &ssh-fingerprint
     fingerprints:
       - '02:85:42:40:c5:08:04:66:58:80:10:2f:60:97:38:c2'
+  - &filter-only-master
+    branches:
+      only:
+        - master
+  - &filter-ignore-master
+    branches:
+      ignore:
+        - master
 version: 2
 jobs:
   build:
@@ -49,20 +57,6 @@ jobs:
           paths:
             - '*'
 
-  deploy-to-preview-channel:
-    resource_class: xlarge
-    docker:
-      - image: cimg/node:14.17.0
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: Save token to a file
-          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
-      - run:
-          name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
-
   test:
     resource_class: xlarge
     docker:
@@ -92,7 +86,21 @@ jobs:
           name: linter test
           command: yarn lint
 
-  deploy:
+  deploy-to-preview-channel:
+    resource_class: xlarge
+    docker:
+      - image: cimg/node:14.17.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Save token to a file
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
+      - run:
+          name: Deploy to preview channel
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
+
+  deploy-to-production:
     parallelism: 1
     resource_class: xlarge
     docker:
@@ -136,30 +144,19 @@ jobs:
           paths:
             - .docz/.cache
             - .docz/public
+
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - build:
-          filters:
-            branches:
-              ignore:
-                - master
+          filters: *filter-ignore-master
       - test:
-          filters:
-            branches:
-              ignore:
-                - master
+          filters: *filter-ignore-master
       - deploy-to-preview-channel:
           requires:
             - build
             - test
-          filters:
-            branches:
-              ignore:
-                - master
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
+          filters: *filter-ignore-master
+      - deploy-to-production:
+          filters: *filter-only-master
