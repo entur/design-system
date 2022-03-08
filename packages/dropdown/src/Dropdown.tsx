@@ -64,76 +64,85 @@ export type DropdownProps = {
   /** Alle ekstra props videresendes til Downshift */
   [key: string]: any;
 };
-export const Dropdown: React.FC<DropdownProps> = ({
-  highlightFirstItemOnOpen,
-  debounceTimeout,
-  disabled,
-  feedback,
-  items,
-  label,
-  loadingText,
-  onChange = () => undefined,
-  placeholder,
-  prepend,
-  readOnly,
-  searchable,
-  selectOnTab,
-  openOnFocus,
-  variant,
-  value,
-  clearable = false,
-  className,
-  style,
-  listStyle,
-  itemFilter,
-  disableLabelAnimation,
-  ...rest
-}) => {
-  const {
-    items: normalizedItems,
-    loading,
-    fetchItems,
-  } = useResolvedItems(items, debounceTimeout);
+export const Dropdown: React.FC<DropdownProps> = React.forwardRef<
+  HTMLInputElement | HTMLButtonElement,
+  DropdownProps
+>(
+  (
+    {
+      highlightFirstItemOnOpen,
+      debounceTimeout,
+      disabled,
+      feedback,
+      items,
+      label,
+      loadingText,
+      onChange = () => undefined,
+      placeholder,
+      prepend,
+      readOnly,
+      searchable,
+      selectOnTab,
+      openOnFocus,
+      variant,
+      value,
+      clearable = false,
+      className,
+      style,
+      listStyle,
+      itemFilter,
+      disableLabelAnimation,
+      ...rest
+    },
+    ref,
+  ) => {
+    const {
+      items: normalizedItems,
+      loading,
+      fetchItems,
+    } = useResolvedItems(items, debounceTimeout);
 
-  const selectedItem =
-    value === undefined
-      ? undefined
-      : normalizedItems.find(item => value === item.value) || null;
+    const selectedItem =
+      value === undefined
+        ? undefined
+        : normalizedItems.find(item => value === item.value) || null;
 
-  const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
-  const searchAbleProps = searchable
-    ? { itemFilter: itemFilter, name: rest.name, 'data-cy': rest['data-cy'] }
-    : { name: rest.name, 'data-cy': rest['data-cy'] };
-  return (
-    <DownshiftProvider
-      selectedItem={selectedItem}
-      onInputValueChange={fetchItems}
-      onChange={onChange}
-      value={value}
-      highlightFirstItemOnOpen={highlightFirstItemOnOpen}
-      className={className}
-      style={style}
-      searchable={searchable}
-      {...rest}
-    >
-      <DropdownInputGroup feedback={feedback} variant={variant}>
-        <RenderedDropdown
-          label={label}
-          items={normalizedItems}
-          loading={loading}
-          loadingText={loadingText}
-          disabled={disabled}
-          readOnly={readOnly}
-          placeholder={placeholder}
-          prepend={prepend}
-          selectOnTab={selectOnTab}
-          openOnFocus={openOnFocus}
-          listStyle={listStyle}
-          clearable={clearable}
-          disableLabelAnimation={disableLabelAnimation}
-          {...searchAbleProps}
-        />
-      </DropdownInputGroup>
-    </DownshiftProvider>
-  );
-};
+    const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
+    const searchAbleProps = searchable
+      ? { itemFilter: itemFilter, name: rest.name, 'data-cy': rest['data-cy'] }
+      : { name: rest.name, 'data-cy': rest['data-cy'] };
+    return (
+      <DownshiftProvider
+        selectedItem={selectedItem}
+        onInputValueChange={fetchItems}
+        onChange={onChange}
+        value={value}
+        highlightFirstItemOnOpen={highlightFirstItemOnOpen}
+        className={className}
+        style={style}
+        searchable={searchable}
+        {...rest}
+      >
+        <DropdownInputGroup feedback={feedback} variant={variant}>
+          <RenderedDropdown
+            label={label}
+            items={normalizedItems}
+            loading={loading}
+            loadingText={loadingText}
+            disabled={disabled}
+            readOnly={readOnly}
+            placeholder={placeholder}
+            prepend={prepend}
+            selectOnTab={selectOnTab}
+            openOnFocus={openOnFocus}
+            listStyle={listStyle}
+            clearable={clearable}
+            disableLabelAnimation={disableLabelAnimation}
+            ref={ref}
+            {...searchAbleProps}
+          />
+        </DropdownInputGroup>
+      </DownshiftProvider>
+    );
+  },
+);
