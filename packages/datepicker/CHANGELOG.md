@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.2...@entur/datepicker@0.11.3) (2022-03-08)
+
+### Bug Fixes
+
+- **datepicker:** change feedback and variant prop to work as in 0.10.8 ([af84259](https://bitbucket.org/enturas/design-system/commits/af842597395c4279bc502b04de9e84cc3a2db3ab))
+
+### Reverts
+
+- Revert "chore(release): publish" ([cb0b756](https://bitbucket.org/enturas/design-system/commits/cb0b75692eeb5614317b333dc0b0437e68a6b6cf))
+
 ## [0.11.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.1...@entur/datepicker@0.11.2) (2022-03-01)
 
 **Note:** Version bump only for package @entur/datepicker
