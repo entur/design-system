@@ -23,4 +23,10 @@
       border-color: $colors-blues-blue10;
     }
   }
+
+  &__loading-dots .eds-loading-dots__dot {
+    .eds-contrast & {
+      background-color: $colors-brand-white;
+    }
+  }
 }
