@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
@@ -72,6 +72,8 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
         selectedItem,
       } = useDownshift();
 
+      const inputRef = useRef<HTMLInputElement>(null);
+
       const filteredItems = React.useMemo(() => {
         return items.filter(item => itemFilter(item, inputValue));
       }, [inputValue, items, itemFilter]);
@@ -92,8 +94,13 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
           disableLabelAnimation={disableLabelAnimation}
         >
           {selectedItem && !inputValue && (
-            <span className="eds-dropdown__searchable-selected-item">
-              {selectedItem.label}
+            <span className="eds-dropdown__searchable-selected-item__wrapper">
+              <span
+                className="eds-dropdown__searchable-selected-item"
+                onClick={() => inputRef.current?.focus()}
+              >
+                {selectedItem.label}
+              </span>
             </span>
           )}
           <input
@@ -114,9 +121,21 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
               placeholder: selectedItem ? undefined : placeholder,
               ...rest,
             })}
-            ref={ref}
+            ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
           />
         </BaseDropdown>
       );
     },
   );
+
+const mergeRefs = <T extends HTMLElement>(
+  ...refs: React.MutableRefObject<T>[] | React.ForwardedRef<T>[]
+) => {
+  return (node: T) => {
+    for (const ref of refs) {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) ref.current = node;
+    }
+  };
+};

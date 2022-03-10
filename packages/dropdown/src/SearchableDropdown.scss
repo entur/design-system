@@ -12,4 +12,8 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &__wrapper {
+    max-width: 50%;
+  }
 }
