@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { colors } from '@entur/tokens';
+import { CheckIcon, CloseSmallIcon } from '@entur/icons';
 import './Switch.scss';
 
 export type SwitchProps = {
@@ -12,17 +13,21 @@ export type SwitchProps = {
    * @default "right"
    */
   labelPlacement?: 'right' | 'bottom';
-  /** Om switchen er checked eller ikke */
+  /** Om switch-en er checked eller ikke */
   checked?: boolean;
-  /** Ikonet som skal stå inne i sirkelen på Switchen */
+  /** Ikonet som skal stå inne i sirkelen på Switch-en */
   icon?: React.ReactNode;
-  /** Farge som settes på ikon og bakgrunnen når Switchen er "checked". Default er mint-contrast
+  /** Skjul ikonet inne i sikrelen på Switch-en
+   * @default false
+   */
+  hideIcon?: boolean;
+  /** Farge som settes på ikon og bakgrunnen når Switch-en er "checked". Default er mint-contrast
    * @default colors.validation .mintContrast
    */
   color?: string;
-  /** Lik som color, men når Switchen står i en kontrast seksjon. Default er samme farge som color. */
+  /** Lik som color, men når Switch-en står i en kontrast seksjon. Default er samme farge som color. */
   contrastColor?: string;
-  /** Størrelsen på Switchen
+  /** Størrelsen på Switch-en
    * @default "medium"
    */
   size?: 'medium' | 'large';
@@ -37,6 +42,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       children,
       labelPlacement = 'right',
       icon,
+      hideIcon = false,
       color = colors.validation.mintContrast,
       contrastColor,
       size = 'medium',
@@ -45,6 +51,10 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const chosenContrastColor = (contrastColor && contrastColor) || color;
+    const displayedIcon = () => {
+      if (icon) return icon;
+      return rest.checked ? <CheckIcon /> : <CloseSmallIcon />;
+    };
     return (
       <label
         className={classNames(
@@ -67,7 +77,9 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
             } as React.CSSProperties
           }
         >
-          <span className="eds-switch__circle">{icon && icon}</span>
+          <span className="eds-switch__circle">
+            {!hideIcon && displayedIcon()}
+          </span>
         </span>
         {children && (
           <span
