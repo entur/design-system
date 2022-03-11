@@ -12,7 +12,7 @@ aliases:
         - master
 version: 2
 jobs:
-  build:
+  build-test-and-deploy-to-preview:
     parallelism: 1
     resource_class: xlarge
     docker:
@@ -52,47 +52,9 @@ jobs:
           paths:
             - .docz/.cache
             - .docz/public
-      - persist_to_workspace:
-          root: .
-          paths:
-            - '*'
-
-  test:
-    resource_class: xlarge
-    docker:
-      - image: cimg/node:14.17.0
-    parallelism: 5
-    steps:
-      - checkout
-
-      - add_ssh_keys: *ssh-fingerprint
-
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-v1-{{ .Branch }}-
-            - yarn-v1-
       - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile
-      - run:
-          name: build packages
-          command: yarn build:packages
-      - run: |
-          TESTFILES=$(circleci tests glob "packages/**/*.test.tsx" | circleci tests split --split-by=timings)
-          CI=true yarn test:ci $TESTFILES
-      - run:
-          name: linter test
-          command: yarn lint
-
-  deploy-to-preview-channel:
-    resource_class: xlarge
-    docker:
-      - image: cimg/node:14.17.0
-    steps:
-      - attach_workspace:
-          at: .
+          name: linter and test
+          command: yarn test && yarn lint
       - run:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
@@ -100,7 +62,7 @@ jobs:
           name: Deploy to preview channel
           command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
 
-  deploy-to-production:
+  build-and-deploy-to-production:
     parallelism: 1
     resource_class: xlarge
     docker:
@@ -149,14 +111,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build:
+      - build-test-and-deploy-to-preview:
           filters: *filter-ignore-master
-      - test:
-          filters: *filter-ignore-master
-      - deploy-to-preview-channel:
-          requires:
-            - build
-            - test
-          filters: *filter-ignore-master
-      - deploy-to-production:
+      - build-and-deploy-to-production:
           filters: *filter-only-master
