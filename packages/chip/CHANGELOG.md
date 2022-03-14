@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.24...@entur/chip@0.5.0) (2022-03-14)
+
+### Features
+
+- **action chip:** add loading state to action chip ([290e709](https://bitbucket.org/enturas/design-system/commits/290e709baef2c7513fc3b85e834fabb34697842e))
+
 ## [0.4.24](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.4.23...@entur/chip@0.4.24) (2022-03-01)
 
 **Note:** Version bump only for package @entur/chip

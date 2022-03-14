@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.3...@entur/datepicker@0.11.4) (2022-03-14)
+
+**Note:** Version bump only for package @entur/datepicker
+
 ## [0.11.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.2...@entur/datepicker@0.11.3) (2022-03-08)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.2.3...@entur/form@5.3.0) (2022-03-14)
+
+### Features
+
+- **switch:** add state icon to switch by default. Hide using hideIcon or change using icon prop ([a785c76](https://bitbucket.org/enturas/design-system/commits/a785c760bfd7b3f7aa45887a08b97c83656eb69e))
+
 ## [5.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.2.2...@entur/form@5.2.3) (2022-03-01)
 
 **Note:** Version bump only for package @entur/form

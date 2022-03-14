@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.4...@entur/dropdown@2.3.0) (2022-03-14)
+
+### Features
+
+- **dropdown:** add ref forwarding to dropdown and searchable dropdown ([af4cae7](https://bitbucket.org/enturas/design-system/commits/af4cae7bb5fe83c5d1c2f58462c3ba6e77f2e1b8))
+
 ## [2.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.3...@entur/dropdown@2.2.4) (2022-03-01)
 
 **Note:** Version bump only for package @entur/dropdown
