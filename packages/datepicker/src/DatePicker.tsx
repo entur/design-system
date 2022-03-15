@@ -15,7 +15,7 @@ import { parse, isValid } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
-import { useOnMount, useRandomId } from '@entur/utils';
+import { useRandomId } from '@entur/utils';
 import * as Popper from '@popperjs/core';
 
 registerLocale('nb', nb);
@@ -124,19 +124,13 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const { isFilled: isDatepickerFilled, setFilled: setFiller } =
       useInputGroupContext();
 
-    useOnMount(() => {
-      if (selectedDate) {
-        setFiller && !isDatepickerFilled && setFiller(true);
-        handleChange(selectedDate, undefined);
-      }
-    });
-
     React.useEffect(() => {
       if (selectedDate) {
         setFiller && !isDatepickerFilled && setFiller(true);
       } else {
         setFiller && isDatepickerFilled && setFiller(false);
       }
+      handleChange(selectedDate, undefined);
     }, [selectedDate, setFiller, isDatepickerFilled]);
 
     const handleChange = (
@@ -178,7 +172,11 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const handleKeyDownInput = (
       event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
-      if (event.key === 'Enter') validateInput(currentValue);
+      const inputValue = event.currentTarget.value;
+      if (event.key === 'Enter') {
+        if (inputValue) validateInput(currentValue);
+        else setShowValidationFeedback(false);
+      }
     };
 
     const validateInput = (inputValue: string) => {
@@ -190,12 +188,12 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
         currentValue.slice(currentValue.lastIndexOf('.') + 1).length === 4;
       const isValidDate = isValid(parsedDate) && yearIsFourCharacters;
 
-      if (!isValidDate) {
-        setShowValidationFeedback(true);
-        setCurrentValue(lastValidValue);
-      } else {
+      if (isValidDate) {
         setShowValidationFeedback(false);
         setLastValidValue(currentValue);
+      } else {
+        setShowValidationFeedback(true);
+        setCurrentValue(lastValidValue);
       }
     };
 
