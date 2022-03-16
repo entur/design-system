@@ -12,6 +12,7 @@
     height: 0;
     position: absolute;
     width: 0;
+    -webkit-appearance: none;
     ~ .eds-chip {
       background-color: transparent;
       .eds-contrast & {
