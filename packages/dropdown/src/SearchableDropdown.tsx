@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
@@ -69,8 +69,12 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
         selectHighlightedItem,
         isOpen,
         openMenu,
+        closeMenu,
         selectedItem,
       } = useDownshift();
+
+      const [hideSelectedItem, setHideSelectedItem] = useState(false);
+      const inputRef = useRef<HTMLInputElement>(null);
 
       const filteredItems = React.useMemo(() => {
         return items.filter(item => itemFilter(item, inputValue));
@@ -91,9 +95,14 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
           isFilled={selectedItem ? true : false}
           disableLabelAnimation={disableLabelAnimation}
         >
-          {selectedItem && !inputValue && (
-            <span className="eds-dropdown__searchable-selected-item">
-              {selectedItem.label}
+          {!hideSelectedItem && selectedItem && !inputValue && (
+            <span className="eds-dropdown__searchable-selected-item__wrapper">
+              <span
+                className="eds-dropdown__searchable-selected-item"
+                onClick={() => inputRef.current?.focus()}
+              >
+                {selectedItem.label}
+              </span>
             </span>
           )}
           <input
@@ -102,21 +111,34 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
               readOnly,
               className: 'eds-form-control eds-dropdown__input',
               onKeyDown: e => {
-                if (selectOnTab && e.key === 'Tab') {
-                  selectHighlightedItem();
-                }
+                if (selectOnTab && e.key === 'Tab') selectHighlightedItem();
               },
               onFocus: () => {
-                if (openOnFocus) {
-                  !isOpen && openMenu();
-                }
+                if (!isOpen && openOnFocus) openMenu();
+                setHideSelectedItem(true);
               },
-              placeholder: selectedItem ? undefined : placeholder,
+              placeholder: selectedItem ? selectedItem.label : placeholder,
               ...rest,
             })}
-            ref={ref}
+            onBlur={() => {
+              setHideSelectedItem(false);
+              closeMenu();
+            }}
+            ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
           />
         </BaseDropdown>
       );
     },
   );
+
+const mergeRefs = <T extends HTMLElement>(
+  ...refs: React.MutableRefObject<T>[] | React.ForwardedRef<T>[]
+) => {
+  return (node: T) => {
+    for (const ref of refs) {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) ref.current = node;
+    }
+  };
+};

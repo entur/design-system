@@ -12,4 +12,14 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &__wrapper {
+    max-width: 65%;
+  }
+}
+
+.eds-form-control.eds-dropdown__input {
+  &::placeholder {
+    transition: none;
+  }
 }
