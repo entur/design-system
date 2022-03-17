@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.4...@entur/datepicker@0.11.5) (2022-03-17)
+
+### Bug Fixes
+
+- **datepicker:** fix visuals not updating when changing selectedDate prop ([c6882ad](https://bitbucket.org/enturas/design-system/commits/c6882ad4629282797faf16f597e26c18284440af))
+
 ## [0.11.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.3...@entur/datepicker@0.11.4) (2022-03-14)
 
 **Note:** Version bump only for package @entur/datepicker

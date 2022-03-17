@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.3.0...@entur/dropdown@3.0.0) (2022-03-17)
+
+### Bug Fixes
+
+- **dropdown:** fix text truncate shortening words which don't need shortening ([4072480](https://bitbucket.org/enturas/design-system/commits/40724805af543369513d61c8d8d5b2461c48cc2f))
+
+### Features
+
+- **dropdown:** improve usability of input field in searchable dropdown ([9f24e4b](https://bitbucket.org/enturas/design-system/commits/9f24e4b27b64b7f637914be6715a1ff4af7c0b77))
+
+### BREAKING CHANGES
+
+- **dropdown:** - Visuals and interaction method have changed
+
 # [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@2.2.4...@entur/dropdown@2.3.0) (2022-03-14)
 
 ### Features
