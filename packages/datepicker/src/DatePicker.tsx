@@ -11,7 +11,7 @@ import {
   VariantType,
 } from '@entur/form';
 import { CalendarIcon } from '@entur/icons';
-import { parse, isValid } from 'date-fns';
+import { parse, isSameDay } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import './DatePicker.scss';
 import { Tooltip } from '@entur/tooltip';
@@ -26,7 +26,7 @@ export type DatePickerProps = {
   /** Kalles når datoen/tiden endres */
   onChange: (
     date: Date | null,
-    event: React.SyntheticEvent<any, Event>,
+    event: React.SyntheticEvent<any, Event> | undefined,
   ) => void;
   /**
    * Kalles når innholdet i inputfeltet endres
@@ -78,7 +78,10 @@ export type DatePickerProps = {
   hideCalendar?: boolean;
   // For testing
   'data-cy'?: any;
-} & Omit<ReactDatePickerProps, 'selected' | 'customInput' | 'onChangeRaw'>;
+} & Omit<
+  ReactDatePickerProps,
+  'selected' | 'customInput' | 'onChangeRaw' | 'onChange'
+>;
 const POPPER_MODIFIERS: Popper.StrictModifiers[] = [
   {
     name: 'offset',
@@ -121,75 +124,64 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const [lastValidValue, setLastValidValue] = useState('');
 
     const datepickerId = useRandomId('eds-datepicker');
-    const { isFilled: isDatepickerFilled, setFilled: setFiller } =
-      useInputGroupContext();
+    const { isFilled, setFilled } = useInputGroupContext();
 
     React.useEffect(() => {
-      if (selectedDate) {
-        setFiller && !isDatepickerFilled && setFiller(true);
-      } else {
-        setFiller && isDatepickerFilled && setFiller(false);
-      }
+      setFilled(!!selectedDate);
       handleChange(selectedDate, undefined);
-    }, [selectedDate, setFiller, isDatepickerFilled]);
+    }, [selectedDate, setFilled, isFilled]);
 
     const handleChange = (
-      date: any,
+      date: Date | [Date | null, Date | null] | /* for selectsRange */ null,
       event: React.SyntheticEvent<any> | undefined,
     ) => {
-      if (date) {
-        setFiller && !isDatepickerFilled && setFiller(true);
-      } else {
-        setFiller && isDatepickerFilled && setFiller(false);
-      }
+      // The return value from reactDatePicker can potentially be a range of dates, this however is not supported.
+      // To circumvent this we create simply pick the first selected value in that case.
+      const newDate = [date].flat()[0];
+      setFilled(!!newDate);
+      const dateString = newDate?.toLocaleDateString('no-NO', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      });
+      setCurrentValue(dateString ?? '');
+      setLastValidValue(dateString ?? '');
       if (onChange) {
-        onChange(date, event);
-        const dateString = date?.toLocaleDateString('no-NO', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
-        });
-        setCurrentValue(dateString ?? '');
-        setLastValidValue(dateString ?? '');
+        onChange(newDate, event);
       }
     };
 
     const handleChangeRaw = (event: React.FocusEvent<HTMLInputElement>) => {
       setShowValidationFeedback(false);
-      setCurrentValue(event.target.value);
-      if (onChangeInput) onChangeInput(event.target.value);
+      const inputValue = event.target.value;
+      setCurrentValue(inputValue);
+      if (onChangeInput) onChangeInput(inputValue);
     };
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-      if (showValidationFeedback) {
-        setShowValidationFeedback(false);
-      } else {
-        const inputValue = event.target.value;
-        if (inputValue) validateInput(inputValue);
-      }
+      validateInput(event.target.value);
     };
 
     const handleKeyDownInput = (
       event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
-      const inputValue = event.currentTarget.value;
       if (event.key === 'Enter') {
-        if (inputValue) validateInput(currentValue);
-        else setShowValidationFeedback(false);
+        validateInput(event.currentTarget.value);
       }
     };
 
-    const validateInput = (inputValue: string) => {
+    const validateInput = (inputValue: string | undefined) => {
+      setShowValidationFeedback(false);
+      if (!inputValue) {
+        return;
+      }
       const parsedDate = parse(inputValue, 'dd.MM.yyyy', new Date(), {
         locale: nb,
       });
 
-      const yearIsFourCharacters =
-        currentValue.slice(currentValue.lastIndexOf('.') + 1).length === 4;
-      const isValidDate = isValid(parsedDate) && yearIsFourCharacters;
-
-      if (isValidDate) {
-        setShowValidationFeedback(false);
+      const selectedDateIsTheSameAsParsedDateFromInput =
+        selectedDate && isSameDay(parsedDate, selectedDate);
+      if (selectedDateIsTheSameAsParsedDateFromInput) {
         setLastValidValue(currentValue);
       } else {
         setShowValidationFeedback(true);
@@ -333,7 +325,7 @@ const DatePickerInput = React.forwardRef<
           variant={variant}
           disabled={disabled}
           disableLabelAnimation={disableLabelAnimation}
-          isFilled={value ? true : false}
+          isFilled={!!value}
           prepend={prepend}
         >
           <input
