@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.5...@entur/datepicker@0.11.6) (2022-03-24)
+
+### Bug Fixes
+
+- **datepicker:** manual input should respect validation with regards to minDate and maxDate ([cb2eecd](https://bitbucket.org/enturas/design-system/commits/cb2eecd71a962494a0414ce68a544d03bbccfbca))
+
 ## [0.11.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.4...@entur/datepicker@0.11.5) (2022-03-17)
 
 ### Bug Fixes
