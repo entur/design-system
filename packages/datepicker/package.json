@@ -32,8 +32,12 @@
     "@entur/tokens": "^3.3.1",
     "@entur/typography": "^1.6.11",
     "@entur/utils": "^0.4.3",
-    "@types/react-datepicker": "^4.1.6",
+    "@types/react-datepicker": "^4.3.4",
     "classnames": "^2.3.1",
-    "react-datepicker": "4.6.0"
+    "react-datepicker": "^4.7.0"
+  },
+  "volta": {
+    "node": "14.17.0",
+    "yarn": "1.18.0"
   }
 }
