@@ -5,13 +5,15 @@ import {
   ReactDatePickerProps,
   registerLocale,
 } from 'react-datepicker';
-import { VariantType } from '@entur/form';
 import { nb } from 'date-fns/locale';
+
+import { VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
-import './DatePicker.scss';
 import { IconButton } from '@entur/button';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
+
+import './DatePicker.scss';
 
 registerLocale('nb', nb);
 
@@ -84,10 +86,23 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     return (
       <ReactDatepicker
         selected={chosenDate}
+        calendarClassName="eds-datepicker__calender -tost"
+        className="only-classname-tost"
+        dayClassName={() => 'eds-datepicker__day -tost'}
+        weekDayClassName={() => 'eds-datepicker__day-name -tost'}
+        timeClassName={() => 'time-classname -tost'}
+        popperClassName="popper-classname -tost"
+        monthClassName={() => 'month-classname-tost'}
+        wrapperClassName="wrapper-classname-tost"
         onChange={date => setChosenDate(date as Date)}
         id={datepickerId}
         showWeekNumbers
         showPopperArrow={false}
+        locale={nb}
+        highlightDates={[
+          { 'eds-datepicker__day--today': [new Date()] },
+          { 'eds-datepicker__day--selected': [chosenDate] },
+        ]}
         renderCustomHeader={({
           date,
           changeYear,
@@ -133,27 +148,23 @@ const DatePickerHeader = ({
 }: Partial<ReactDatePickerCustomHeaderProps>) => {
   const monthNames = getMonthList();
   return (
-    <div
-      style={{
-        margin: '0 0.4rem',
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
+    <div className="eds-datepicker__header">
       <IconButton
-        style={{ marginRight: 'auto' }}
+        className="eds-datepicker__header__month-button--left"
         onClick={decreaseMonth}
         disabled={prevMonthButtonDisabled}
       >
         <LeftArrowIcon />
       </IconButton>
-      <Heading3 style={{ margin: '0 0.25rem' }}>
+      <Heading3 className="eds-datepicker__header__month-text">
         {monthNames[date?.getMonth() ?? 0]}
       </Heading3>
-      <Heading3 style={{ margin: '0 0.25rem' }}>{date?.getFullYear()}</Heading3>
+      <Heading3 className="eds-datepicker__header__month-text">
+        {date?.getFullYear()}
+      </Heading3>
 
       <IconButton
-        style={{ marginLeft: 'auto' }}
+        className="eds-datepicker__header__month-button--right"
         onClick={increaseMonth}
         disabled={nextMonthButtonDisabled}
       >
