@@ -47,9 +47,11 @@ module.exports = {
               },
               {
                 test: /\.css$/,
-                exclude: [
-                  /node_modules\/(?!(@entur.+)\/).*/,
-                  /node_modules(\/|\\)(?!(@entur.+)(\/|\\)).*/,
+                include: [
+                  /src\/.*/,
+                  /playroom\/.*/,
+                  /packages\/.*/,
+                  /node_modules\/react-datepicker\/.*/,
                 ],
                 use: [
                   require.resolve('style-loader'),
