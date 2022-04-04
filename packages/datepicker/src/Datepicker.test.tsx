@@ -5,7 +5,12 @@ import { DatePicker } from '.';
 test('renders a datepicker', () => {
   const spy = jest.fn();
   const { queryByText } = render(
-    <DatePicker label="TestLabel" onChange={spy} placeholder="placeholder">
+    <DatePicker
+      selectedDate={new Date()}
+      label="TestLabel"
+      onChange={spy}
+      placeholder="placeholder"
+    >
       Inside the datepicker
     </DatePicker>,
   );

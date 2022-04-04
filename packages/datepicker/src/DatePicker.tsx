@@ -5,7 +5,9 @@ import ReactDatePicker, {
   ReactDatePickerProps,
   registerLocale,
 } from 'react-datepicker';
+import { parse, isSameDay } from 'date-fns';
 import { nb } from 'date-fns/locale';
+import classNames from 'classnames';
 
 import { TextField, VariantType } from '@entur/form';
 import { Tooltip } from '@entur/tooltip';
@@ -21,18 +23,26 @@ registerLocale('nb', nb);
 
 export type DatePickerProps = {
   /** Hva som er den valgte datoen */
-  selectedDate?: Date;
+  selectedDate: Date | null;
   /** Kalles når datoen/tiden endres */
   onChange: (
     date: Date | null,
     event: React.SyntheticEvent<any, Event> | undefined,
   ) => void;
   /**
-   * Kalles når innholdet i inputfeltet endres
+   * Kalles når en tast trykkes i inputfeltet
    */
-  onChangeInput?: (value: string) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
+  /**
+   * Datoformater som skal støttes. Første i listen er formatet alt input omgjøres til.
+   * Format-valg tilgjengelig her: https://date-fns.org/v2.28.0/docs/format
+   * OBS: Noen kombinasjoner av datoformater kan gi rar og uønsket oppførsel,
+   * test nøye ved endring
+   * @default "['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy', 'ddMMyy']"
+   */
+  dateFormats?: string[];
   /** Placeholder om ingen dato er valgt
-   * @default "dd/mm/yyyy"
+   * @default "dd.mm.yyyy"
    */
   placeholder?: string;
   /** Ekstra klassenavn */
@@ -70,7 +80,7 @@ export type DatePickerProps = {
   /** Skjuler tilbakemeldingsteksten ved feil dato-input
    * @default false
    */
-  hideValidationFeedback?: boolean;
+  hideValidation?: boolean;
   /** Skjuler kalender-GUI-et
    * @default false
    */
@@ -81,149 +91,284 @@ export type DatePickerProps = {
   inline?: boolean;
   // For testing
   'data-cy'?: any;
-} & Omit<ReactDatePickerProps, 'selected' | 'customInput' | 'onChangeRaw'>;
+} & Omit<
+  ReactDatePickerProps,
+  'selected' | 'customInput' | 'onChangeRaw' | 'dateFormat'
+>;
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
-  ({
-    label,
-    onChange,
-    style,
-    minDate,
-    maxDate,
-    inline = false,
-    disabled,
-    prepend,
-    disableLabelAnimation = false,
-    hideCalendarButton = false,
-    hideCalendar = false,
-    open,
-  }) => {
+  (
+    {
+      style,
+      className,
+      selectedDate,
+      label,
+      placeholder = 'dd.mm.yyyy',
+      onChange,
+      onKeyDown = () => null,
+      dateFormats = ['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy', 'ddMMyy'],
+      minDate,
+      maxDate,
+      inline = false,
+      disabled,
+      prepend,
+      feedback = '',
+      variant,
+      validationFeedback = 'Ugyldig dato',
+      validationVariant = 'error',
+      disableLabelAnimation = false,
+      hideCalendarButton = false,
+      hideCalendar = false,
+      hideValidation = false,
+      weekLabel = 'uke',
+      open,
+      ...rest
+    },
+    ref,
+  ) => {
     const datepickerId = useRandomId('eds-datepicker');
 
-    const [chosenDate, setChosenDate] = useState<Date | null>(new Date());
+    const [showValidation, setShowValidation] = useState(false);
 
     const datepickerRef = useRef<ReactDatePicker>(null);
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
-    const handleOnChange = (
-      date: Date | null,
-      event: React.SyntheticEvent<any, Event> | undefined,
-    ) => {
-      setChosenDate(date);
-      onChange(date, event);
+    React.useEffect(() => validateInput(), [selectedDate]);
+
+    const handleOnKeyDown = (event: KeyboardEvent) => {
+      const calendarIsClosed = !datepickerRef.current?.isCalendarOpen();
+
+      setShowValidation(false);
+      if (event.key === 'Enter') {
+        validateInput();
+        focusAndSelectInputField();
+        forceUpdateInputFormat();
+      } else if (event.key === 'Tab' && calendarIsClosed) {
+        validateInput();
+        forceUpdateInputFormat();
+      }
+      onKeyDown(event);
     };
 
-    const handleOnKeyDown = (
-      event: React.KeyboardEventHandler<HTMLInputElement> | undefined,
-    ) => {
-      console.log('keydown', event);
+    const validateInput = () => {
+      setShowValidation(false);
+      const inputValue = inputRef.current?.value;
+      if (!inputValue) return;
+
+      const inputValueParsedWithAllDateFormats = dateFormats.map(format =>
+        parse(inputValue, format, new Date(), {
+          locale: nb,
+        }),
+      );
+
+      const parsedDateFromInputIsTheSameAsSelectedDate =
+        selectedDate &&
+        inputValueParsedWithAllDateFormats.some(dateFormat =>
+          isSameDay(dateFormat, selectedDate),
+        );
+
+      if (parsedDateFromInputIsTheSameAsSelectedDate) {
+        // valid date inputted
+        setShowValidation(false);
+      } else {
+        // invalid date inputted
+        setShowValidation(true);
+      }
     };
+
+    const getFeedbackAndVariant = (): {
+      feedback: string;
+      variant: VariantType | undefined;
+    } => {
+      if (feedback) return { feedback, variant };
+      if (!hideValidation && showValidation)
+        return { feedback: validationFeedback, variant: validationVariant };
+      return { feedback: '', variant: undefined };
+    };
+
+    const focusAndSelectInputField = () =>
+      setTimeout(() => {
+        inputRef.current?.select();
+      }, 5);
+
+    const forceUpdateInputFormat = () =>
+      datepickerRef.current?.setState({ inputValue: null });
+
+    const toggleCalendarGUI = () =>
+      datepickerRef.current?.setOpen(!datepickerRef.current?.isCalendarOpen());
 
     return (
-      <ReactDatepicker
-        selected={chosenDate}
-        calendarClassName="eds-datepicker__calender"
-        dayClassName={() => 'eds-datepicker__calender__day'}
-        weekDayClassName={() => 'eds-datepicker__calender__day-name'}
-        className="eds-datepicker__input"
-        dateFormat={['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy']}
-        onChange={handleOnChange}
-        // onChangeRaw={event => console.log(event.currentTarget.value)}
-        onBlur={() => {
-          datepickerRef.current?.setState({ inputValue: null });
-          console.log('blur');
-        }}
-        id={datepickerId}
-        showWeekNumbers
-        showPopperArrow={false}
-        locale={nb}
-        minDate={minDate}
-        maxDate={maxDate}
-        inline={inline}
-        disabled={disabled}
-        preventOpenOnFocus={true}
-        open={hideCalendar ? false : open}
-        ref={datepickerRef}
-        highlightDates={[
-          { 'eds-datepicker__calender__day--today': [new Date()] },
-          {
-            'eds-datepicker__calender__day--selected': chosenDate
-              ? [chosenDate]
-              : [],
-          },
-        ]}
-        renderCustomHeader={({
-          date,
-          changeYear,
-          changeMonth,
-          decreaseMonth,
-          increaseMonth,
-          prevMonthButtonDisabled,
-          nextMonthButtonDisabled,
-        }) => (
-          <DatePickerHeader
-            date={date}
-            changeYear={changeYear}
-            changeMonth={changeMonth}
-            increaseMonth={increaseMonth}
-            decreaseMonth={decreaseMonth}
-            prevMonthButtonDisabled={prevMonthButtonDisabled}
-            nextMonthButtonDisabled={nextMonthButtonDisabled}
-          />
-        )}
-        customInput={
-          <DatePickerInput
-            label={label}
-            style={style}
-            onFocus={undefined}
-            prepend={prepend}
-            onKeyDown={() => console.log('test')}
-            disableLabelAnimation={disableLabelAnimation}
-            hideCalendarButton={hideCalendarButton}
-          />
-        }
-      />
+      <>
+        <ReactDatepicker
+          selected={selectedDate}
+          minDate={minDate}
+          maxDate={maxDate}
+          dateFormat={dateFormats}
+          showWeekNumbers
+          weekLabel={weekLabel}
+          onChange={onChange}
+          onClickOutside={validateInput}
+          id={datepickerId}
+          ariaLabelledBy={datepickerId}
+          showPopperArrow={false}
+          locale={nb}
+          inline={inline}
+          disabled={disabled}
+          preventOpenOnFocus={true}
+          open={hideCalendar ? false : open}
+          ref={datepickerRef}
+          calendarClassName="eds-datepicker__calender"
+          dayClassName={() => 'eds-datepicker__calender__day'}
+          weekDayClassName={() => 'eds-datepicker__calender__day-name'}
+          className={classNames(className, 'eds-datepicker__input')}
+          highlightDates={[
+            { 'eds-datepicker__calender__day--today': [new Date()] },
+            {
+              'eds-datepicker__calender__day--selected': selectedDate
+                ? [selectedDate]
+                : [],
+            },
+          ]}
+          renderCustomHeader={({
+            date,
+            changeYear,
+            changeMonth,
+            decreaseMonth,
+            increaseMonth,
+            prevMonthButtonDisabled,
+            nextMonthButtonDisabled,
+          }) => (
+            <DatePickerHeader
+              date={date}
+              changeYear={changeYear}
+              changeMonth={changeMonth}
+              increaseMonth={increaseMonth}
+              decreaseMonth={decreaseMonth}
+              prevMonthButtonDisabled={prevMonthButtonDisabled}
+              nextMonthButtonDisabled={nextMonthButtonDisabled}
+            />
+          )}
+          customInput={
+            <DatePickerInput
+              style={style}
+              label={label}
+              inputPlaceholder={placeholder}
+              prepend={prepend}
+              feedback={getFeedbackAndVariant().feedback}
+              variant={getFeedbackAndVariant().variant}
+              inputRef={inputRef}
+              forwardRef={ref}
+              onKeyDownInput={handleOnKeyDown}
+              onBlurInput={() =>
+                !datepickerRef.current?.isCalendarOpen() && validateInput()
+              }
+              onFocus={undefined}
+              toggleCalendarGUI={toggleCalendarGUI}
+              disableLabelAnimation={disableLabelAnimation}
+              hideCalendarButton={hideCalendarButton}
+              selectedDate={selectedDate}
+            />
+          }
+          {...rest}
+        />
+      </>
     );
   },
 );
 
 type DatePickerInputProps = {
-  label: string;
   style?: React.CSSProperties;
+  label: string;
+  inputPlaceholder: string;
   prepend?: React.ReactNode;
+  feedback?: string;
+  variant?: VariantType;
   disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disableLabelAnimation?: boolean;
+  hideCalendarButton?: boolean;
+  inputRef: React.RefObject<HTMLInputElement>;
+  forwardRef: React.ForwardedRef<HTMLInputElement>;
+  toggleCalendarGUI: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
+  onKeyDownInput: (event: KeyboardEvent) => any;
+  onBlurInput: (event: FocusEvent) => any;
+  onFocus: undefined; // To prevent open on focus
+  selectedDate: Date | null; // Necessary to update component on state change
+  placeholder?: null; // override react-datepickers placeholder prop
 };
 
-const DatePickerInput = React.forwardRef<HTMLInputElement>(
-  ({ children, ...props }, ref) => {
-    // test om du kan finne ut når enter trykkes gjennom ref
-    const inputRef = React.useRef<HTMLInputElement>(null);
+const DatePickerInput = React.forwardRef<
+  HTMLInputElement,
+  DatePickerInputProps
+>(
+  (
+    {
+      style,
+      label,
+      inputPlaceholder,
+      prepend,
+      feedback,
+      variant,
+      disabled,
+      hideCalendarButton,
+      disableLabelAnimation,
+      inputRef,
+      forwardRef,
+      toggleCalendarGUI,
+      onKeyDownInput,
+      onBlurInput,
+      selectedDate,
+      placeholder = null, // eslint-disable-line
+      ...rest
+    },
+    ref,
+  ) => {
+    React.useEffect(() => {
+      inputRef.current?.addEventListener('keydown', handleOnKeyDown);
+      inputRef.current?.addEventListener('blur', handleOnBlur);
+      inputRef.current?.addEventListener('focus', handleOnFocus);
+      return () => {
+        inputRef.current?.removeEventListener('keydown', handleOnKeyDown);
+        inputRef.current?.removeEventListener('blur', handleOnBlur);
+        inputRef.current?.removeEventListener('focus', handleOnFocus);
+      };
+    }, [inputRef, selectedDate]);
 
-    // React.useEffect(() => {
-    //   inputRef.current.onB
-    // }, []);
+    function handleOnKeyDown(this: HTMLElement, event: KeyboardEvent) {
+      onKeyDownInput(event);
+    }
+    function handleOnBlur(this: HTMLElement, event: FocusEvent) {
+      onBlurInput(event);
+    }
+    function handleOnFocus() {
+      setTimeout(() => inputRef.current?.select(), 5);
+    }
 
     return (
       <TextField
-        label={props.label}
-        style={props.style}
-        prepend={props.prepend}
-        ref={mergeRefs(ref, inputRef)}
-        {...props}
+        style={style}
+        label={label}
+        placeholder={inputPlaceholder}
+        prepend={prepend}
+        feedback={feedback}
+        variant={variant}
+        disableLabelAnimation={disableLabelAnimation}
+        ref={mergeRefs(ref, inputRef, forwardRef)}
         append={
-          !props.hideCalendarButton && (
+          !hideCalendarButton && (
             <Tooltip
               placement="top"
               content="Åpne&nbsp;kalender"
-              disableHoverListener={props.disabled}
-              disableFocusListener={props.disabled}
+              disableHoverListener={disabled}
+              disableFocusListener={disabled}
             >
-              <IconButton onClick={props.onClick}>
+              <IconButton type="button" onClick={toggleCalendarGUI}>
                 <CalendarIcon />
               </IconButton>
             </Tooltip>
           )
         }
+        {...rest}
       />
     );
   },
