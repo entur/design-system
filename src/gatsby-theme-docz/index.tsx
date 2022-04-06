@@ -85,13 +85,15 @@ const App: React.FC = ({ children }) => {
                   <Media greaterThanOrEqual="desktop">
                     <Menu className="ui-menu--desktop" />
                   </Media>
-                  <div
-                    className={classNames('site-content', {
-                      'site-content--hidden': openMobileMenu,
-                    })}
-                  >
-                    <main id="site-content">{children}</main>
-                    <SiteFooter />
+                  <div className={'page'}>
+                    <div
+                      className={classNames('site-content', {
+                        'site-content--hidden': openMobileMenu,
+                      })}
+                    >
+                      <main id="site-content">{children}</main>
+                      <SiteFooter />
+                    </div>
                   </div>
                 </>
               )}

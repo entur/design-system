@@ -2,7 +2,7 @@
 
 .table-of-content-container {
   display: none;
-
+  z-index: 1;
   @media screen and (min-width: 104rem) {
     display: block;
     position: fixed;
