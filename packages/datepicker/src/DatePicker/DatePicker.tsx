@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import ReactDatePicker, {
   default as ReactDatepicker,
-  ReactDatePickerCustomHeaderProps,
   ReactDatePickerProps,
   registerLocale,
 } from 'react-datepicker';
@@ -9,15 +8,13 @@ import { parse, isSameDay } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import classNames from 'classnames';
 
-import { TextField, VariantType } from '@entur/form';
-import { Tooltip } from '@entur/tooltip';
+import { VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
-import { IconButton } from '@entur/button';
-import { CalendarIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
-import { Heading3 } from '@entur/typography';
 
 import './DatePicker.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+import { DatePickerHeader } from './DatePickerHeader';
+import { DatePickerInput } from './DatePickerInput';
 
 registerLocale('nb', nb);
 
@@ -73,6 +70,10 @@ export type DatePickerProps = {
    * @default <DateIcon />
    */
   prepend?: React.ReactNode;
+  /**
+   * Tekst som vises ved hover på «Åpne kalender»-knappen
+   */
+  calendarButtonTooltip?: string;
   /** Skjuler knapp for åpning av kalender
    * @default false
    */
@@ -117,10 +118,12 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       validationFeedback = 'Ugyldig dato',
       validationVariant = 'error',
       disableLabelAnimation = false,
+      calendarButtonTooltip = 'Åpne\xa0kalender',
       hideCalendarButton = false,
       hideCalendar = false,
       hideValidation = false,
       weekLabel = 'uke',
+      locale = 'nb',
       open,
       ...rest
     },
@@ -211,7 +214,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
           id={datepickerId}
           ariaLabelledBy={datepickerId}
           showPopperArrow={false}
-          locale={nb}
+          locale={locale}
           inline={inline}
           disabled={disabled}
           preventOpenOnFocus={true}
@@ -253,6 +256,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               style={style}
               label={label}
               inputPlaceholder={placeholder}
+              calendarButtonTooltip={calendarButtonTooltip}
               prepend={prepend}
               feedback={getFeedbackAndVariant().feedback}
               variant={getFeedbackAndVariant().variant}
@@ -275,160 +279,3 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     );
   },
 );
-
-type DatePickerInputProps = {
-  style?: React.CSSProperties;
-  label: string;
-  inputPlaceholder: string;
-  prepend?: React.ReactNode;
-  feedback?: string;
-  variant?: VariantType;
-  disabled?: boolean;
-  disableLabelAnimation?: boolean;
-  hideCalendarButton?: boolean;
-  inputRef: React.RefObject<HTMLInputElement>;
-  forwardRef: React.ForwardedRef<HTMLInputElement>;
-  toggleCalendarGUI: () => void;
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
-  onKeyDownInput: (event: KeyboardEvent) => any;
-  onBlurInput: (event: FocusEvent) => any;
-  onFocus: undefined; // To prevent open on focus
-  selectedDate: Date | null; // Necessary to update component on state change
-  placeholder?: null; // override react-datepickers placeholder prop
-};
-
-const DatePickerInput = React.forwardRef<
-  HTMLInputElement,
-  DatePickerInputProps
->(
-  (
-    {
-      style,
-      label,
-      inputPlaceholder,
-      prepend,
-      feedback,
-      variant,
-      disabled,
-      hideCalendarButton,
-      disableLabelAnimation,
-      inputRef,
-      forwardRef,
-      toggleCalendarGUI,
-      onKeyDownInput,
-      onBlurInput,
-      selectedDate,
-      placeholder = null, // eslint-disable-line
-      ...rest
-    },
-    ref,
-  ) => {
-    React.useEffect(() => {
-      inputRef.current?.addEventListener('keydown', handleOnKeyDown);
-      inputRef.current?.addEventListener('blur', handleOnBlur);
-      inputRef.current?.addEventListener('focus', handleOnFocus);
-      return () => {
-        inputRef.current?.removeEventListener('keydown', handleOnKeyDown);
-        inputRef.current?.removeEventListener('blur', handleOnBlur);
-        inputRef.current?.removeEventListener('focus', handleOnFocus);
-      };
-    }, [inputRef, selectedDate]);
-
-    function handleOnKeyDown(this: HTMLElement, event: KeyboardEvent) {
-      onKeyDownInput(event);
-    }
-    function handleOnBlur(this: HTMLElement, event: FocusEvent) {
-      onBlurInput(event);
-    }
-    function handleOnFocus() {
-      setTimeout(() => inputRef.current?.select(), 5);
-    }
-
-    return (
-      <TextField
-        style={style}
-        label={label}
-        placeholder={inputPlaceholder}
-        prepend={prepend}
-        feedback={feedback}
-        variant={variant}
-        disableLabelAnimation={disableLabelAnimation}
-        ref={mergeRefs(ref, inputRef, forwardRef)}
-        append={
-          !hideCalendarButton && (
-            <Tooltip
-              placement="top"
-              content="Åpne&nbsp;kalender"
-              disableHoverListener={disabled}
-              disableFocusListener={disabled}
-            >
-              <IconButton type="button" onClick={toggleCalendarGUI}>
-                <CalendarIcon />
-              </IconButton>
-            </Tooltip>
-          )
-        }
-        {...rest}
-      />
-    );
-  },
-);
-
-const DatePickerHeader = ({
-  date,
-  decreaseMonth,
-  increaseMonth,
-  prevMonthButtonDisabled,
-  nextMonthButtonDisabled,
-}: Partial<ReactDatePickerCustomHeaderProps>) => {
-  const monthNames = getMonthList();
-  return (
-    <div className="eds-datepicker__calender__header">
-      <IconButton
-        className="eds-datepicker__calender__header__month-button--left"
-        onClick={decreaseMonth}
-        disabled={prevMonthButtonDisabled}
-      >
-        <LeftArrowIcon />
-      </IconButton>
-      <Heading3 className="eds-datepicker__calender__header__month-text">
-        {monthNames[date?.getMonth() ?? 0]}
-      </Heading3>
-      <Heading3 className="eds-datepicker__calender__header__month-text">
-        {date?.getFullYear()}
-      </Heading3>
-
-      <IconButton
-        className="eds-datepicker__calender__header__month-button--right"
-        onClick={increaseMonth}
-        disabled={nextMonthButtonDisabled}
-      >
-        <RightArrowIcon />
-      </IconButton>
-    </div>
-  );
-};
-
-function getMonthList(locale = 'nb') {
-  const year = new Date().getFullYear();
-  const monthList = Array(12).keys();
-  const formatter = new Intl.DateTimeFormat(locale, {
-    month: 'long',
-  });
-  const getMonthName = (monthIndex: number) =>
-    formatter.format(new Date(year, monthIndex));
-
-  return Array.from(monthList, getMonthName);
-}
-
-const mergeRefs = <T extends HTMLElement>(
-  ...refs: React.MutableRefObject<T>[] | React.ForwardedRef<T>[]
-) => {
-  return (node: T) => {
-    for (const ref of refs) {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) ref.current = node;
-    }
-  };
-};
