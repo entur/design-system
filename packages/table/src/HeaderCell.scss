@@ -6,8 +6,17 @@
   font-weight: $font-weights-body;
   text-align: left;
 
+  height: $space-extra-large3;
+  padding: 0 ($space-default + $space-extra-small);
+
+  .eds-table--middle &,
+  .eds-table--small & {
+    padding: 0 $space-default;
+  }
+
   .eds-contrast & {
     color: $colors-brand-lavender;
+    border-bottom-color: $colors-blues-blue20;
   }
 
   &--padding-checkbox {
@@ -22,23 +31,29 @@
     width: $space-extra-large3;
     padding: $space-medium $space-small;
   }
+  &--sortable {
+    &:focus {
+      outline: none;
+      box-shadow: $shadows-focus;
+      outline-offset: $outline-offsets-focus;
+    }
+  }
   &-button {
+    position: relative;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
     appearance: none;
     border: none;
     background: none;
     color: inherit;
-    cursor: pointer;
     font-size: inherit;
     font-weight: inherit;
     font-family: inherit;
-    height: 100%;
-    padding: 0;
-    text-align: left;
-    position: relative;
-    width: 100%;
     &-icon {
       position: absolute;
-      top: $space-small;
       margin-left: $space-extra-small2;
     }
     &:focus {

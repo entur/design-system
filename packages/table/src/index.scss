@@ -12,8 +12,7 @@
     table-layout: fixed;
   }
 
-  &__data-cell,
-  &__header-cell {
+  &__data-cell {
     height: 3.75rem;
     padding: $space-default ($space-default + $space-extra-small);
 
@@ -24,32 +23,12 @@
     .eds-table--middle & {
       padding: $space-extra-small $space-default;
       height: $space-extra-large3;
-
-      .eds-table__header-cell-button-icon {
-        top: $space-extra-small;
-      }
     }
     .eds-table--small & {
       padding: $space-extra-small2 $space-default;
       height: $space-extra-large;
-
-      .eds-table__header-cell-button-icon {
-        top: $space-extra-small2;
-      }
     }
-  }
-  &__header-cell {
-    padding-top: 0;
-    &--sortable {
-      &:focus {
-        outline: none;
-        box-shadow: $shadows-focus;
-        outline-offset: $outline-offsets-focus;
-      }
-    }
-  }
 
-  &__data-cell {
     &--padding-checkbox {
       width: $space-extra-large3;
       padding: $space-extra-small 0 $space-small
