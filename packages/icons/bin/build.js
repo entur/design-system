@@ -53,6 +53,7 @@ function createSvgrConfig(native = false, componentName) {
       [`${colors.transport.default.train.toUpperCase()}`]: 'currentColor',
       [`${colors.transport.default.ferry.toUpperCase()}`]: 'currentColor',
       [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
+      [`${colors.transport.default.cableway.toUpperCase()}`]: 'currentColor',
     };
   } else {
     // Should always be white
