@@ -28,28 +28,33 @@ body {
   margin: 0;
 }
 
-.site-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 87vh;
-  margin: $space-default;
-  margin-top: 10rem;
-  transition: max-width $timings-fast ease-out,
-    margin-left $timings-fast ease-out;
-
+.page {
+  margin-top: 7rem;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
   @include for-desktop {
-    margin-top: 10rem;
-    margin-left: 21rem;
-    max-width: 60rem;
+    position: fixed;
+    margin-left: 18rem;
   }
   @include for-large-desktop {
-    margin-left: 30rem;
-    max-width: 60rem;
-  }
-  &--hidden {
-    overflow: hidden;
     position: fixed;
-    z-index: -1;
+    margin-left: 26rem;
+  }
+  .site-content {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 7rem);
+    padding: 3rem $space-default $space-default 4rem;
+    transition: max-width $timings-fast ease-out,
+      margin-left $timings-fast ease-out;
+
+    &--hidden {
+      overflow: hidden;
+      position: fixed;
+      z-index: -1;
+    }
   }
 }
 .site-content main {
