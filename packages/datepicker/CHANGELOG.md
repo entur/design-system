@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.6...@entur/datepicker@1.0.0) (2022-04-13)
+
+### Features
+
+- **datepicker:** add custom header to datepicker ([6c9c863](https://bitbucket.org/enturas/design-system/commits/6c9c8636a4eec59b86db928aceb9e4e01c1fa07e))
+- **datepicker:** rewrite custom input in datepicker to use TextField component ([3cc2e51](https://bitbucket.org/enturas/design-system/commits/3cc2e51948080f21b0ec343c06e886b8d285ffbc))
+- **datepicker:** rewrite styling for datepicker calendar popover ([3f10c85](https://bitbucket.org/enturas/design-system/commits/3f10c85aceb02f46d93035ee6b7a9f9e8b26d024))
+- **datepicker:** rewrite validation logic for datepicker ([db25f30](https://bitbucket.org/enturas/design-system/commits/db25f30f009c32018d3707ac53cca2c6f30e9f0a))
+
+### BREAKING CHANGES
+
+- **datepicker:** - selectedDate is now a required prop
+
+* Complete rewrite of component may have introduced unnoticed bugs
+
+- **datepicker:** - Calendar button design has changed
+
+* Complete rewrite of component may have introduced unnoticed bugs
+
+- **datepicker:** Complete rewrite of component may have introduced unnoticed bugs
+- **datepicker:** Complete rewrite of component may have introduced unnoticed bugs
+
 ## [0.11.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.5...@entur/datepicker@0.11.6) (2022-03-24)
 
 ### Bug Fixes
