@@ -4,17 +4,18 @@ import ReactDatePicker, {
   ReactDatePickerProps,
   registerLocale,
 } from 'react-datepicker';
-import { parse, isSameDay } from 'date-fns';
+import { parse, isSameDay, Locale } from 'date-fns';
 import { nb } from 'date-fns/locale';
 import classNames from 'classnames';
 
 import { VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
 
-import './DatePicker.scss';
-import 'react-datepicker/dist/react-datepicker.css';
 import { DatePickerHeader } from './DatePickerHeader';
 import { DatePickerInput } from './DatePickerInput';
+
+import './DatePicker.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 registerLocale('nb', nb);
 
@@ -38,6 +39,11 @@ export type DatePickerProps = {
    * @default "['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy', 'ddMMyy']"
    */
   dateFormats?: string[];
+  /**
+   * Locale fra date-fns som brukes av Datepicker-en
+   * @default nb
+   */
+  locale?: Locale;
   /** Placeholder om ingen dato er valgt
    * @default "dd.mm.yyyy"
    */
@@ -94,7 +100,7 @@ export type DatePickerProps = {
   'data-cy'?: any;
 } & Omit<
   ReactDatePickerProps,
-  'selected' | 'customInput' | 'onChangeRaw' | 'dateFormat'
+  'selected' | 'customInput' | 'onChangeRaw' | 'dateFormat' | 'locale'
 >;
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
@@ -123,7 +129,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       hideCalendar = false,
       hideValidation = false,
       weekLabel = 'uke',
-      locale = 'nb',
+      locale = nb,
       open,
       ...rest
     },
@@ -160,7 +166,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
       const inputValueParsedWithAllDateFormats = dateFormats.map(format =>
         parse(inputValue, format, new Date(), {
-          locale: nb,
+          locale: locale,
         }),
       );
 
