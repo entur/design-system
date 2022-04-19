@@ -1,6 +1,6 @@
 {
   "name": "@entur/expand",
-  "version": "3.3.8",
+  "version": "3.3.9",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/expand.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "^3.5.0",
+    "@entur/icons": "^4.0.0",
     "@entur/tokens": "^3.3.1",
     "@entur/typography": "^1.6.11",
     "@entur/utils": "^0.4.3",

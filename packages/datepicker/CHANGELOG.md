@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@1.0.0...@entur/datepicker@2.0.0) (2022-04-19)
+
+### Bug Fixes
+
+- **datepicker:** fix validation in datepicker breaking if other locale than nb is used ([aa13c15](https://bitbucket.org/enturas/design-system/commits/aa13c15ff76afe8946aec40c87992e564626dcdb))
+
+### BREAKING CHANGES
+
+- **datepicker:** locale prop is changed to only accept a date-fns Locale object, previously a string was also
+  accepted
+
 # [1.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@0.11.6...@entur/datepicker@1.0.0) (2022-04-13)
 
 ### Features

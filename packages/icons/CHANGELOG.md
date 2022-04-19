@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.5.0...@entur/icons@4.0.0) (2022-04-19)
+
+### Bug Fixes
+
+- **cableway icon:** fix color of cableway icon, and fix color prop in native package ([73cc942](https://bitbucket.org/enturas/design-system/commits/73cc942cf85bce77f8815e208853d64983e96d4d))
+- **cableway icon:** update cableway icon to more correct size ([e0007e4](https://bitbucket.org/enturas/design-system/commits/e0007e471e2382be36390b0aa8caa39babf815fd))
+
+### BREAKING CHANGES
+
+- **cableway icon:** Icon is visualy larger, but not physically, watch out for unintended visual effect caused by this
+
 # [3.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.4.1...@entur/icons@3.5.0) (2022-03-01)
 
 ### Features

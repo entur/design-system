@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.7](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.6...@entur/table@4.5.7) (2022-04-19)
+
+### Bug Fixes
+
+- **table:** fix incorrect header padding in table ([0efe315](https://bitbucket.org/enturas/design-system/commits/0efe315f5a508e3a9eecfe6b992e8a6a7083555b))
+
 ## [4.5.6](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.5...@entur/table@4.5.6) (2022-03-14)
 
 **Note:** Version bump only for package @entur/table

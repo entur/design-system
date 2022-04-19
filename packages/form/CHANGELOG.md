@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.0...@entur/form@5.3.1) (2022-04-19)
+
+**Note:** Version bump only for package @entur/form
+
 # [5.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.2.3...@entur/form@5.3.0) (2022-03-14)
 
 ### Features
