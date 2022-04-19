@@ -1,5 +1,5 @@
 import { Switch } from '@entur/form';
-import { GridContainer, GridItem } from '@entur/grid';
+import { GridContainer } from '@entur/grid';
 import { Contrast } from '@entur/layout';
 import { colors, space } from '@entur/tokens';
 import React from 'react';
