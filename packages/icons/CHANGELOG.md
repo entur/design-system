@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.0.0...@entur/icons@4.1.0) (2022-04-20)
+
+### Features
+
+- **icons:** add conductor and calculator icon ([2efc907](https://bitbucket.org/enturas/design-system/commits/2efc9074f769575a31a94fbc4f2b9eb1f2e29d47))
+
 # [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@3.5.0...@entur/icons@4.0.0) (2022-04-19)
 
 ### Bug Fixes
