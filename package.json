@@ -22,8 +22,7 @@
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "lerna:publish": "lerna publish --conventional-commits",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
-    "playroom": "playroom start",
-    "prepare": "relative-deps"
+    "playroom": "playroom start"
   },
   "workspaces": [
     "packages/*"
@@ -107,7 +106,6 @@
     "react-dom": "^16.11.0",
     "react-helmet-async": "^1.0.4",
     "react-live": "^2.3.0",
-    "relative-deps": "^1.0.7",
     "wcag-contrast": "^3.0.0"
   },
   "resolutions": {
@@ -115,7 +113,6 @@
     "gatsby-plugin-mdx": "1.2.4",
     "@types/react": "16.9.56"
   },
-  "relativeDependencies": {},
   "volta": {
     "node": "14.17.0",
     "yarn": "1.18.0"
