@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# NOTE: $HUSKY_GIT_PARAMS is no longer available
+# See https://typicode.github.io/husky/#/?id=husky_git_params-ie-commitlint-
+commitlint --edit $2
