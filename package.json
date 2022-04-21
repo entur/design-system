@@ -22,7 +22,8 @@
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "lerna:publish": "lerna publish --conventional-commits",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
-    "playroom": "playroom start"
+    "playroom": "playroom start",
+    "prepare": "husky install"
   },
   "workspaces": [
     "packages/*"
@@ -52,7 +53,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "firebase-tools": "^10.0.0",
-    "husky": "^3.0.5",
+    "husky": "^7.0.0",
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
     "jest-axe": "^4.0.0",
@@ -77,14 +78,6 @@
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.ts"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "pretty-quick --staged",
-      "pre-push": "yarn lint && yarn test:single-run",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
   },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
