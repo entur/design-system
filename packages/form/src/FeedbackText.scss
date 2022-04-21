@@ -42,9 +42,18 @@
     }
   }
   &--warning {
-    color: $colors-validation-sky;
-    .eds-contrast & {
-      color: $colors-validation-sky-contrast;
+    &.eds-icon__ValidationExclamationIcon {
+      color: $colors-validation-canary;
+      circle {
+        color: $colors-brand-blue;
+        fill-opacity: 1;
+      }
+      .eds-contrast & {
+        color: $colors-validation-canary-contrast;
+        circle {
+          fill-opacity: 0;
+        }
+      }
     }
   }
 }
