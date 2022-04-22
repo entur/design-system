@@ -32,6 +32,7 @@
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "@svgr/core": "^5.0.1",
     "@svgr/plugin-jsx": "^5.0.1",
@@ -41,8 +42,7 @@
     "case": "^1.6.2",
     "fs-extra": "9.0.0",
     "rimraf": "3.0.2",
-    "rollup": "2.6.1",
-    "rollup-plugin-babel": "4.4.0"
+    "rollup": "2.6.1"
   },
   "dependencies": {
     "@entur/tokens": "^3.3.1",
