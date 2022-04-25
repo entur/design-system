@@ -42,13 +42,16 @@ body {
     margin-left: 26rem;
   }
   .site-content {
-    max-width: 60rem;
     display: flex;
     flex-direction: column;
     height: calc(100% - 7rem);
     padding: 3rem $space-default $space-default 4rem;
     transition: max-width $timings-fast ease-out,
       margin-left $timings-fast ease-out;
+
+    @include for-desktop {
+      max-width: Min(65%, 60rem);
+    }
 
     &--hidden {
       overflow: hidden;
