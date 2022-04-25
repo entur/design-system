@@ -63,6 +63,22 @@ $modal-animation-duration: $timings-medium;
     max-width: 78.75rem;
     padding: $space-extra-large3;
   }
+
+  &::-webkit-scrollbar {
+    width: 16px;
+  }
+  &::-webkit-scrollbar-track {
+    margin-block: $space-extra-small;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: lightgrey;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+    &:hover {
+      background-color: grey;
+    }
+  }
 }
 
 .eds-modal__close {
