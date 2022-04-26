@@ -32,9 +32,6 @@
 
   &--small {
     font-size: $font-sizes-medium;
-    .eds-alert-box__icon {
-      margin-top: 0;
-    }
   }
 
   &--fit-content {
@@ -69,12 +66,13 @@
   flex: 0 0 1em;
   font-size: 1.2rem; // Required since the icons are a tiny bit too small
   margin-right: 0.5em;
-  margin-top: -$space-extra-small2;
+  margin-top: 0;
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
     @include for-desktop {
       font-size: $space-extra-large; // standalone icon size
+      margin-top: -$space-extra-small2;
     }
   }
 }
