@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.4...@entur/layout@2.1.5) (2022-04-27)
+
+**Note:** Version bump only for package @entur/layout
+
 ## [2.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.3...@entur/layout@2.1.4) (2022-02-09)
 
 **Note:** Version bump only for package @entur/layout

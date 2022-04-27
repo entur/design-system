@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.5](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.10.4...@entur/alert@0.10.5) (2022-04-27)
+
+### Bug Fixes
+
+- **small alertbox:** fix alert icon not being centered on text on smaller screen sizes ([050b393](https://bitbucket.org/enturas/design-system/commits/050b3932866ef8ba73565335f88aa10ccdcee48d))
+
 ## [0.10.4](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.10.3...@entur/alert@0.10.4) (2022-04-20)
 
 **Note:** Version bump only for package @entur/alert
