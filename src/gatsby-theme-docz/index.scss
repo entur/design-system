@@ -1,3 +1,5 @@
+@import './variables';
+
 @import '~@entur/icons/dist/styles.css';
 @import '~@entur/layout/dist/styles.css';
 
@@ -29,12 +31,13 @@ body {
 }
 
 .page {
-  margin-top: 7rem;
+  margin-top: $navbar-height;
   height: 100%;
   width: 100%;
   overflow-y: auto;
   @include for-desktop {
     position: fixed;
+    height: calc(100% - #{$navbar-height});
     margin-left: 18rem;
   }
   @include for-large-desktop {
@@ -44,7 +47,7 @@ body {
   .site-content {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 7rem);
+    height: 100%;
     padding: 3rem $space-default $space-default 4rem;
     transition: max-width $timings-fast ease-out,
       margin-left $timings-fast ease-out;
@@ -58,11 +61,13 @@ body {
       position: fixed;
       z-index: -1;
     }
+
+    main {
+      flex: 1;
+    }
   }
 }
-.site-content main {
-  flex: 1;
-}
+
 .ui-menu {
   &--desktop {
     display: none;

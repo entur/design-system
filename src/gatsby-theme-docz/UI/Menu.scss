@@ -1,3 +1,5 @@
+@import '../variables';
+
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
@@ -10,7 +12,7 @@
   width: 100%;
   padding: 1rem 1rem 0rem;
   transition: margin-left $timings-fast ease-out;
-  height: 7rem;
+  height: $navbar-height;
   z-index: $z-indexes-popover;
 
   @include for-desktop {
