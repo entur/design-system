@@ -1,3 +1,5 @@
+@import '../gatsby-theme-docz/variables';
+
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
@@ -9,7 +11,7 @@
     max-width: 18rem;
     height: 100vh;
     left: 0;
-    top: 7rem;
+    top: $navbar-height;
     padding-bottom: 10rem;
     overflow-y: scroll;
     position: fixed;
@@ -35,6 +37,7 @@
     position: fixed !important;
     top: 86vh;
     right: 0;
+    margin-top: -$navbar-height;
     opacity: 0;
     transition: right $timings-slow ease-in-out,
       opacity $timings-slow ease-in-out;
@@ -48,6 +51,7 @@
     height: 100%;
     width: 100%;
     position: fixed;
+    margin-top: -$navbar-height;
     opacity: 1;
     transition: opacity $timings-medium ease-in-out;
     &--inactive {

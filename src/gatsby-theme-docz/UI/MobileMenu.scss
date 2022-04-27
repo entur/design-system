@@ -1,3 +1,5 @@
+@import '../variables';
+
 @import '~@entur/tokens/dist/styles.scss';
 
 .mobile-nav-bar {
@@ -10,6 +12,7 @@
   }
   &--open-sidemenu {
     position: fixed;
+    margin-top: -$navbar-height;
   }
   &__menu {
     display: flex;
@@ -88,4 +91,5 @@
   z-index: $z-indexes-popover;
   height: 100%;
   width: 80%;
+  margin-top: -$navbar-height;
 }
