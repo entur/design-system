@@ -18,24 +18,28 @@ test('renders the correct items for large pageCounts', () => {
       pageChange();
     },
   });
-  expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('123…100');
-  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('1234…100');
+  expect(renderWithProps({ currentPage: 1 })).toHaveTextContent('12345…100');
+  expect(renderWithProps({ currentPage: 2 })).toHaveTextContent('12345…100');
   expect(renderWithProps({ currentPage: 3 })).toHaveTextContent('12345…100');
-  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('123456…100');
-  expect(renderWithProps({ currentPage: 5 })).toHaveTextContent('1234567…100');
-  expect(renderWithProps({ currentPage: 6 })).toHaveTextContent('1…45678…100');
+  expect(renderWithProps({ currentPage: 4 })).toHaveTextContent('12345…100');
+  expect(renderWithProps({ currentPage: 5 })).toHaveTextContent('1…456…100');
+  expect(renderWithProps({ currentPage: 6 })).toHaveTextContent('1…567…100');
 
   expect(renderWithProps({ currentPage: 96 })).toHaveTextContent(
-    '1…949596979899100',
+    '1…959697…100',
   );
   expect(renderWithProps({ currentPage: 97 })).toHaveTextContent(
-    '1…9596979899100',
+    '1…96979899100',
   );
   expect(renderWithProps({ currentPage: 98 })).toHaveTextContent(
     '1…96979899100',
   );
-  expect(renderWithProps({ currentPage: 99 })).toHaveTextContent('1…979899100');
-  expect(renderWithProps({ currentPage: 100 })).toHaveTextContent('1…9899100');
+  expect(renderWithProps({ currentPage: 99 })).toHaveTextContent(
+    '1…96979899100',
+  );
+  expect(renderWithProps({ currentPage: 100 })).toHaveTextContent(
+    '1…96979899100',
+  );
 });
 
 test('renders the correct items for small pageCounts', () => {
@@ -69,8 +73,8 @@ test('Previous and next buttons work as expected', () => {
       nextPageLabel="Next page"
     />,
   );
-  expect(queryByLabelText('Previous page')).not.toBeInTheDocument();
-  expect(getByLabelText('Next page')).toBeInTheDocument();
+  expect(queryByLabelText('Previous page')).toBeDisabled();
+  expect(getByLabelText('Next page')).not.toBeDisabled();
 
   fireEvent.click(getByLabelText('Next page'));
   expect(pageChangeSpy).toHaveBeenLastCalledWith(2);
@@ -85,8 +89,8 @@ test('Previous and next buttons work as expected', () => {
     />,
   );
 
-  expect(getByLabelText('Previous page')).toBeInTheDocument();
-  expect(getByLabelText('Next page')).toBeInTheDocument();
+  expect(getByLabelText('Previous page')).not.toBeDisabled();
+  expect(getByLabelText('Next page')).not.toBeDisabled();
 
   fireEvent.click(getByLabelText('Next page'));
   expect(pageChangeSpy).toHaveBeenLastCalledWith(3);
@@ -101,8 +105,8 @@ test('Previous and next buttons work as expected', () => {
     />,
   );
 
-  expect(getByLabelText('Previous page')).toBeInTheDocument();
-  expect(queryByLabelText('Next page')).not.toBeInTheDocument();
+  expect(getByLabelText('Previous page')).not.toBeDisabled();
+  expect(queryByLabelText('Next page')).toBeDisabled();
 
   fireEvent.click(getByLabelText('Previous page'));
   expect(pageChangeSpy).toHaveBeenLastCalledWith(2);

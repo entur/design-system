@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
-import { PaginationPage } from './PaginationPage';
-import './Pagination.scss';
 import { Menu, MenuList, MenuButton } from '@reach/menu-button';
-import { DownArrowIcon, UpArrowIcon } from '@entur/icons';
-import { PaginationInput } from './PaginationInput';
+
+import {
+  LeftArrowIcon,
+  RightArrowIcon,
+  DownArrowIcon,
+  UpArrowIcon,
+} from '@entur/icons';
 import { Label } from '@entur/typography';
-import { OverflowMenuItem } from './OverflowMenu';
 import { useContrast } from '@entur/layout';
+
+import { PaginationPage } from './PaginationPage';
+import { PaginationInput } from './PaginationInput';
+import { OverflowMenuItem } from './OverflowMenu';
+
+import './Pagination.scss';
 
 export type PaginationProps = {
   /** Ekstra klassenavn */
@@ -106,36 +113,46 @@ export const Pagination: React.FC<PaginationProps> = ({
     return null;
   }
 
+  const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
+
   const isFirstPostSelected = currentPage === 1;
   const isLastPostSelected = currentPage === pageCount;
-  const showLeadingEllipsis = currentPage > 5 && pageCount > 7;
-  const showTrailingEllipsis = pageCount - currentPage > 4 && pageCount > 7;
+  const noEllipsis = pageCount <= 7;
+  const onlyLeadingEllipsis = !noEllipsis && currentPage < 5;
+  const onlyTrailingEllipsis = !noEllipsis && pageCount - currentPage <= 3;
 
-  let entries: Array<number | '…'> = Array(pageCount)
-    .fill(null)
-    .map((_, i) => i + 1);
-
-  if (showLeadingEllipsis) {
-    entries = [
-      1,
-      '…',
-      currentPage - 2,
-      currentPage - 1,
-      currentPage,
-      ...entries.slice(currentPage),
-    ];
-  }
-  if (showTrailingEllipsis) {
-    const currentPageIndex = entries.indexOf(currentPage);
-    entries = [
-      ...entries.slice(0, currentPageIndex),
-      currentPage,
-      currentPage + 1,
-      currentPage + 2,
-      '…',
-      pageCount,
-    ];
-  }
+  useEffect(() => {
+    if (noEllipsis) {
+      setListedEntries(
+        Array(pageCount)
+          .fill(null)
+          .map((_, i) => i + 1),
+      );
+    } else if (onlyLeadingEllipsis) {
+      setListedEntries([1, 2, 3, 4, 5, '…', pageCount]);
+    } else if (onlyTrailingEllipsis) {
+      setListedEntries([
+        1,
+        '…',
+        pageCount - 4,
+        pageCount - 3,
+        pageCount - 2,
+        pageCount - 1,
+        pageCount,
+      ]);
+    } else {
+      // leading and trailing ellipsis
+      setListedEntries([
+        1,
+        '…',
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        '…',
+        pageCount,
+      ]);
+    }
+  }, [currentPage, pageCount]);
 
   return (
     <div className={classNames('eds-pagination', className)} {...rest}>
@@ -188,15 +205,16 @@ export const Pagination: React.FC<PaginationProps> = ({
         </div>
       )}
       <div className="eds-pagination__controls">
-        {!isFirstPostSelected && !hidePrevButton && (
+        {!hidePrevButton && (
           <PaginationPage
             onClick={() => onPageChange(currentPage - 1)}
             aria-label={previousPageLabel}
+            disabled={isFirstPostSelected}
           >
             <LeftArrowIcon />
           </PaginationPage>
         )}
-        {entries.map((entry, index) =>
+        {listedEntries.map((entry, index) =>
           entry === '…' ? (
             <Ellipsis key={`ellipsis-${index}`} />
           ) : (
@@ -210,10 +228,11 @@ export const Pagination: React.FC<PaginationProps> = ({
             </PaginationPage>
           ),
         )}
-        {!isLastPostSelected && !hideNextButton && (
+        {!hideNextButton && (
           <PaginationPage
             onClick={() => onPageChange(currentPage + 1)}
             aria-label={nextPageLabel}
+            disabled={isLastPostSelected}
           >
             <RightArrowIcon />
           </PaginationPage>
