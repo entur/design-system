@@ -16,6 +16,7 @@ export const DatePickerHeader = ({
   return (
     <div className="eds-datepicker__calender__header">
       <IconButton
+        type="button"
         className="eds-datepicker__calender__header__month-button--left"
         onClick={decreaseMonth}
         disabled={prevMonthButtonDisabled}
@@ -30,6 +31,7 @@ export const DatePickerHeader = ({
       </Heading3>
 
       <IconButton
+        type="button"
         className="eds-datepicker__calender__header__month-button--right"
         onClick={increaseMonth}
         disabled={nextMonthButtonDisabled}
