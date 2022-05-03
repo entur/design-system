@@ -5,7 +5,7 @@ module.exports = {
   // Optional:
   title: 'TestBench',
   frameComponent: './playroom/FrameComponent.tsx',
-  widths: [700],
+  widths: [1200, 700, 500, 350],
   port: 9000,
   openBrowser: true,
   paramType: 'search', // default is 'hash'
@@ -96,5 +96,5 @@ module.exports = {
       },
     };
   },
-  iframeSandbox: 'allow-scripts',
+  iframeSandbox: 'allow-scripts allow-forms',
 };

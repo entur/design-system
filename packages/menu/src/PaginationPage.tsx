@@ -8,6 +8,8 @@ export type PaginationPageProps = {
   className?: string;
   /** Viser siden som aktiv */
   selected?: boolean;
+  /** Viser knappen som inaktiv */
+  disabled?: boolean;
   /** Callback for når man trykker på siden */
   onClick: () => void;
   /** Tekst for skjermlesere */
@@ -17,6 +19,7 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
   children,
   className,
   selected,
+  disabled,
   onClick,
   'aria-label': ariaLabel,
 }) => (
@@ -24,9 +27,10 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
     className={classNames(
       'eds-pagination__page',
       { 'eds-pagination__page--selected': selected },
+      { 'eds-pagination__page--disabled': disabled },
       className,
     )}
-    disabled={selected}
+    disabled={selected || disabled}
     type="button"
     onClick={onClick}
     aria-label={ariaLabel}
