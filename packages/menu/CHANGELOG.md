@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.10...@entur/menu@4.1.0) (2022-05-04)
+
+### Features
+
+- **pagination:** change how page entries are displayed and make pagination wrap on smaller screens ([ce27211](https://bitbucket.org/enturas/design-system/commits/ce27211aa2970f517eac3127a926215485236c5e))
+
 ## [4.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.9...@entur/menu@4.0.10) (2022-04-27)
 
 **Note:** Version bump only for package @entur/menu

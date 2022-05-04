@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.3...@entur/form@5.3.4) (2022-05-04)
+
+### Bug Fixes
+
+- **validation exclamation icon:** fix incorrect exclamation mark color for non-contrast validation ([22deff9](https://bitbucket.org/enturas/design-system/commits/22deff9cac4f867a26a14ec51197f1c3be13d403))
+
 ## [5.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.2...@entur/form@5.3.3) (2022-04-27)
 
 **Note:** Version bump only for package @entur/form

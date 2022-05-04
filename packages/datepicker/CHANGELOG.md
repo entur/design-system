@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.2...@entur/datepicker@2.0.3) (2022-05-04)
+
+### Bug Fixes
+
+- **datepicker:** fix form being submitted on clicking month change buttons ([6c3a32d](https://bitbucket.org/enturas/design-system/commits/6c3a32de335a07c0ebbe06e2c7107a9c08cc7135))
+
 ## [2.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.1...@entur/datepicker@2.0.2) (2022-04-27)
 
 **Note:** Version bump only for package @entur/datepicker

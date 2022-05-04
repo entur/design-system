@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.13...@entur/modal@1.6.0) (2022-05-04)
+
+### Features
+
+- **modal:** add custom scrollbar to modal to preserve rounded corners ([22f967f](https://bitbucket.org/enturas/design-system/commits/22f967faed103dda79491dd0ffa7fbad1039dd56))
+
 ## [1.5.13](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.5.12...@entur/modal@1.5.13) (2022-04-27)
 
 **Note:** Version bump only for package @entur/modal

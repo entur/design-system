@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.1.1...@entur/icons@4.1.2) (2022-05-04)
+
+### Bug Fixes
+
+- **validation exclamation icon:** fix incorrect exclamation mark color for non-contrast validation ([22deff9](https://bitbucket.org/enturas/design-system/commits/22deff9cac4f867a26a14ec51197f1c3be13d403))
+
 ## [4.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.1.0...@entur/icons@4.1.1) (2022-04-27)
 
 **Note:** Version bump only for package @entur/icons

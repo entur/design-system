@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.5...@entur/travel@5.0.6) (2022-05-04)
+
+### Bug Fixes
+
+- **validation exclamation icon:** fix incorrect exclamation mark color for non-contrast validation ([22deff9](https://bitbucket.org/enturas/design-system/commits/22deff9cac4f867a26a14ec51197f1c3be13d403))
+
 ## [5.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.4...@entur/travel@5.0.5) (2022-04-27)
 
 **Note:** Version bump only for package @entur/travel
