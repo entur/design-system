@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'docz';
 import { Location } from '@reach/router';
 import { TopNavigationItem } from '@entur/menu';
-import { TocNavigation } from '~/components/TocNavigation';
 import { SiteSidebar } from '~/components/SiteSidebar';
 import SettingsPanel from '~/components/SettingsPanel';
 import logo from '~/components/logoDark.svg';
@@ -22,7 +21,6 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
         <SettingsPanel />
       </nav>
       <SiteSidebar />
-      <TocNavigation />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
+import classNames from 'classnames';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
 import { SkipToContent } from '@entur/a11y';
@@ -7,12 +8,12 @@ import { ColorsProvider } from '~/components/Colors';
 import SiteFooter from '~/components/SiteFooter';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
+import { TocNavigation } from '~/components/TocNavigation';
 import SEO from '~/gatsby-theme-docz/base/Seo';
 import Props from '~/components/Props';
 import Menu from './UI/Menu';
 import FrontPageMenu from './UI/FrontPageMenu';
 import MobileMenu from './UI/MobileMenu';
-import classNames from 'classnames';
 import { MediaContextProvider, Media } from '~/utils/MediaBreakpoint';
 import './index.scss';
 
@@ -82,16 +83,17 @@ const App: React.FC = ({ children }) => {
                       openMenu={setOpenMobileMenu}
                     />
                   </Media>
-                  <Media greaterThanOrEqual="desktop">
-                    <Menu className="ui-menu--desktop" />
-                  </Media>
                   <div className={'page'}>
+                    <Media greaterThanOrEqual="desktop">
+                      <Menu className="ui-menu--desktop" />
+                    </Media>
                     <div
                       className={classNames('site-content', {
                         'site-content--hidden': openMobileMenu,
                       })}
                     >
                       <main id="site-content">{children}</main>
+                      <TocNavigation />
                       <SiteFooter />
                     </div>
                   </div>
