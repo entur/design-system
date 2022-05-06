@@ -51,6 +51,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
   onClose = () => ({}),
   size,
   title,
+  toastIsBeingRemoved,
   ...rest
 }) => {
   const [isClosed, setClosed] = React.useState(false);
@@ -68,6 +69,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
         'eds-alert-box',
         `eds-alert-box--${size}`,
         `eds-alert-box--${variant}`,
+        { 'eds-alert-box--toast--exit-animation': toastIsBeingRemoved },
         className,
       )}
       {...rest}
