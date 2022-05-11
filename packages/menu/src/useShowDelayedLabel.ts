@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useShowDelayedLabel = (isCollapsed: boolean) => {
+export const useShowDelayedLabel = (isCollapsed: boolean): [boolean] => {
   const [showLabel, setShowLabel] = useState(true);
   const hideDelay = 50;
   const showDelay = 200;
@@ -15,7 +15,7 @@ export const useShowDelayedLabel = (isCollapsed: boolean) => {
         setShowLabel(true);
       }, showDelay);
     }
-    return () => {};
+    return () => undefined;
   }, [isCollapsed]);
   return [showLabel];
 };

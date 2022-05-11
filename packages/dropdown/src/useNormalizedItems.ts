@@ -10,7 +10,9 @@ export type NormalizedDropdownItemType = {
 export type DropdownItemType =
   | { value?: string; label: string; icons?: React.ComponentType<any>[] }
   | string;
-export const useNormalizedItems = (items: DropdownItemType[]) =>
+export const useNormalizedItems = (
+  items: DropdownItemType[],
+): NormalizedDropdownItemType[] =>
   React.useMemo(
     () =>
       items.map(item => {

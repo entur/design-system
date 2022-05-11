@@ -6,9 +6,9 @@ export type UseControllablePropType<T> = {
 };
 export function useControllableProp<T>({
   prop,
-  updater = () => {},
+  updater = () => undefined,
   defaultValue,
-}: UseControllablePropType<T>): [T, Function] {
+}: UseControllablePropType<T>): [T, (arg: T) => void] {
   const [internalState, setInternalState] = useState<T>(defaultValue);
   useEffect(() => {
     if (prop !== undefined) {
