@@ -109,10 +109,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   ...rest
 }) => {
   const isContrast = useContrast();
-  if (pageCount < 1) {
-    return null;
-  }
-
   const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
 
   const isFirstPostSelected = currentPage === 1;
@@ -122,6 +118,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const onlyTrailingEllipsis = !noEllipsis && pageCount - currentPage <= 3;
 
   useEffect(() => {
+    if (pageCount < 1) return;
     if (noEllipsis) {
       setListedEntries(
         Array(pageCount)
@@ -152,7 +149,17 @@ export const Pagination: React.FC<PaginationProps> = ({
         pageCount,
       ]);
     }
-  }, [currentPage, pageCount]);
+  }, [
+    noEllipsis,
+    onlyLeadingEllipsis,
+    onlyTrailingEllipsis,
+    currentPage,
+    pageCount,
+  ]);
+
+  if (pageCount < 1) {
+    return null;
+  }
 
   return (
     <div className={classNames('eds-pagination', className)} {...rest}>
