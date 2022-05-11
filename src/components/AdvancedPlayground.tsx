@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Dropdown } from '@entur/dropdown';
 import { BaseExpand } from '@entur/expand';
 import {
