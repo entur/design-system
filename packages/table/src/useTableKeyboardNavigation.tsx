@@ -60,6 +60,7 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
       tableBodyRef.current.childNodes[
         currentRow
       ].childNodes[0].parentElement?.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRow]);
 
   function getTableBodyNavigationProps(...rest: any): Partial<TableBodyProps> {
@@ -73,9 +74,12 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
     row: number,
     ...rest: any
   ): Partial<TableRowProps> {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       row >= maxRow && setMaxRow(row + 1);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const tableRowRef = React.useRef<HTMLTableRowElement>(null);
 
     let tabIndex = -1;
