@@ -130,32 +130,6 @@ html {
     line-height: $line-heights-extra-large;
   }
 }
-.eds-h1,
-.eds-h2,
-.eds-h3,
-.eds-h4,
-.eds-h5,
-.eds-h6,
-.eds-paragraph,
-.eds-lead-paragraph,
-.eds-sub-paragraph,
-.eds-emphasized-text,
-.eds-label,
-.eds-sub-label,
-.eds-small-text,
-.eds-strong-text,
-.eds-link {
-  &--margin-top {
-    margin-bottom: 0;
-  }
-  &--margin-bottom {
-    margin-top: 0;
-  }
-  &--margin-none {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
 
 .eds-lead-paragraph {
   color: inherit; // ie fallback
@@ -412,6 +386,33 @@ html {
     letter-spacing: 1px;
     margin-top: $space-large;
     text-transform: uppercase;
+  }
+}
+
+.eds-h1,
+.eds-h2,
+.eds-h3,
+.eds-h4,
+.eds-h5,
+.eds-h6,
+.eds-paragraph,
+.eds-lead-paragraph,
+.eds-sub-paragraph,
+.eds-emphasized-text,
+.eds-label,
+.eds-sub-label,
+.eds-small-text,
+.eds-strong-text,
+.eds-link {
+  &--margin-top {
+    margin-bottom: 0;
+  }
+  &--margin-bottom {
+    margin-top: 0;
+  }
+  &--margin-none {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
