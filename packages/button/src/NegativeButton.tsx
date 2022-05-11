@@ -31,7 +31,7 @@ export type NegativeButtonBaseProps = {
 };
 
 export type NegativeButtonProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<NegativeButtonBaseProps, T>;
 
 const defaultElement = 'button';

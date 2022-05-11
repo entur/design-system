@@ -22,7 +22,7 @@ type SuccessSquareButtonBaseProps = {
 };
 
 export type SuccessSquareButtonProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<SuccessSquareButtonBaseProps, E>;
 
 const defaultElement = 'button';

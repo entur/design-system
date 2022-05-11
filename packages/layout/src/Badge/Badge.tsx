@@ -31,9 +31,8 @@ export type BadgeOwnProps = {
   type?: BadgeTypes;
 };
 
-export type BadgeProps<
-  E extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithRef<BadgeOwnProps, E>;
+export type BadgeProps<E extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithRef<BadgeOwnProps, E>;
 
 const defaultElement = 'span';
 

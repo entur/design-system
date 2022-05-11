@@ -30,7 +30,7 @@ export type PrimaryButtonBaseProps = {
 };
 
 export type PrimaryButtonProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<PrimaryButtonBaseProps, T>;
 
 const defaultElement = 'button';

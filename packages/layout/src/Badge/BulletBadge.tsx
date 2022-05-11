@@ -20,7 +20,7 @@ type BulletBadgeBaseProps = {
 };
 
 export type BulletBadgeProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<BulletBadgeBaseProps, T>;
 
 const defaultElement = 'span';
