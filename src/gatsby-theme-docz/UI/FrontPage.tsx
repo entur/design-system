@@ -151,11 +151,14 @@ export const FrontPage = () => {
 };
 
 function ShiftingHeader() {
-  const words = [
-    'sikrer visuell konsistens',
-    'reduserer dobbeltarbeid',
-    'oppnår raskere utviklingstid',
-  ];
+  const words = React.useMemo(
+    () => [
+      'sikrer visuell konsistens',
+      'reduserer dobbeltarbeid',
+      'oppnår raskere utviklingstid',
+    ],
+    [],
+  );
   const [currentIndex, setIndex] = React.useState(0);
 
   React.useEffect(() => {

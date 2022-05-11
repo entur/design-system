@@ -60,8 +60,7 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
       tableBodyRef.current.childNodes[
         currentRow
       ].childNodes[0].parentElement?.focus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRow]);
+  }, [currentRow, tableHasFocus]);
 
   function getTableBodyNavigationProps(...rest: any): Partial<TableBodyProps> {
     return {
@@ -70,20 +69,15 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
     };
   }
 
+  const tableRowRef = React.useRef<HTMLTableRowElement>(null);
   function getTableRowNavigationProps(
     row: number,
     ...rest: any
   ): Partial<TableRowProps> {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      row >= maxRow && setMaxRow(row + 1);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const tableRowRef = React.useRef<HTMLTableRowElement>(null);
-
-    let tabIndex = -1;
-    row === currentRow ? (tabIndex = 0) : undefined;
+    if (row >= maxRow) {
+      setMaxRow(row + 1);
+    }
+    const tabIndex = currentRow ? 0 : -1;
     return {
       tabIndex,
       ref: tableRowRef,

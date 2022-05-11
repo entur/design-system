@@ -20,26 +20,20 @@ export type MultipleSegmentedControlProps = {
 /**This component is not used by anyone, and is therefore deprecated
  * @deprecated
  */
-export const MultipleSegmentedControl: React.FC<MultipleSegmentedControlProps> = ({
-  children,
-  label,
-  name,
-  onChange,
-  selectedValue,
-  ...rest
-}) => {
-  return (
-    <SegmentedProvider
-      name={name}
-      selectedValue={selectedValue}
-      onChange={onChange}
-      multiple={true}
-      size="medium"
-    >
-      <Label as="div">{label}</Label>
-      <div className="eds-segmented-control" {...rest}>
-        {children}
-      </div>
-    </SegmentedProvider>
-  );
-};
+export const MultipleSegmentedControl: React.FC<MultipleSegmentedControlProps> =
+  ({ children, label, name, onChange, selectedValue, ...rest }) => {
+    return (
+      <SegmentedProvider
+        name={name}
+        selectedValue={selectedValue}
+        onChange={onChange}
+        multiple={true}
+        size="medium"
+      >
+        <Label as="div">{label}</Label>
+        <div className="eds-segmented-control" {...rest}>
+          {children}
+        </div>
+      </SegmentedProvider>
+    );
+  };

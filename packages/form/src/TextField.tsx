@@ -76,7 +76,6 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const randomId = useRandomId('eds-textfield');
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
-
     return (
       <BaseFormControl
         disabled={disabled}

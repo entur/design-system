@@ -24,11 +24,10 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   label,
   ...rest
 }) => {
-  const contextValue = React.useMemo(() => ({ name, value, onChange }), [
-    name,
-    value,
-    onChange,
-  ]);
+  const contextValue = React.useMemo(
+    () => ({ name, value, onChange }),
+    [name, value, onChange],
+  );
   return (
     <RadioGroupContextProvider value={contextValue}>
       {label ? (

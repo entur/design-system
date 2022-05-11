@@ -41,7 +41,7 @@ export type SegmentedProviderProps =
 
 export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
   name,
-  onChange = () => {},
+  onChange = () => undefined,
   selectedValue,
   multiple,
   size,
@@ -61,7 +61,7 @@ export const SegmentedProvider: React.FC<SegmentedProviderProps> = ({
   return <SegmentedContext.Provider value={contextValue} {...rest} />;
 };
 
-export const useSegmentedContext = () => {
+export const useSegmentedContext = (): SegmentedContextProps => {
   const context = React.useContext(SegmentedContext);
   if (!context) {
     throw new Error(
