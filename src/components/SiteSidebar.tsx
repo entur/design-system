@@ -97,6 +97,7 @@ function useSideMenuScroll<Type>(page: string) {
       localStorage.setItem('scroll', '0');
       setCurrentPage(page);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   return useStateResult;
 }
@@ -120,6 +121,7 @@ export const SiteSidebar: React.FC<{
       window.scrollTo(0, 0);
       setOpenSidebar(props.sideMenu);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.sideMenu]);
 
   const menuItems =
