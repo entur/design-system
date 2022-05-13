@@ -18,6 +18,7 @@
   @include for-desktop {
     position: fixed;
     top: 0;
+    left: 0;
     overflow-x: initial;
     padding: $space-extra-large2 0 $space-extra-large2 $space-extra-large2;
     justify-content: flex-start;
