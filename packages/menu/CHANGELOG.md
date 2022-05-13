@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.0...@entur/menu@4.1.1) (2022-05-13)
+
+### Bug Fixes
+
+- **pagination:** fix lint errors for react hooks ([937c18e](https://bitbucket.org/enturas/design-system/commits/937c18ea4e595b520024af7d42944d612b5b471d))
+
 # [4.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.0.10...@entur/menu@4.1.0) (2022-05-04)
 
 ### Features

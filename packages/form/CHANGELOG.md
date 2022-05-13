@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.4...@entur/form@5.3.5) (2022-05-13)
+
+### Bug Fixes
+
+- **text field:** fix linter errors for react hooks ([fbf1011](https://bitbucket.org/enturas/design-system/commits/fbf10116cef7abb943e1404be2194886bdacba66))
+
 ## [5.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.3...@entur/form@5.3.4) (2022-05-04)
 
 ### Bug Fixes

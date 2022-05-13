@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.13](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.12...@entur/typography@1.6.13) (2022-05-13)
+
+### Bug Fixes
+
+- **text elements:** fix margin prop values being overwritten be default value for margin on all text ([ce7b980](https://bitbucket.org/enturas/design-system/commits/ce7b980a0bb874dbcaa46c9ceb0cfdb7b5ef8f5a))
+
 ## [1.6.12](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.6.11...@entur/typography@1.6.12) (2022-04-27)
 
 **Note:** Version bump only for package @entur/typography

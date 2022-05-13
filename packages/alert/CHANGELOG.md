@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.10.6...@entur/alert@0.11.0) (2022-05-13)
+
+### Features
+
+- **toast:** add exit animation for toast alert ([0e29579](https://bitbucket.org/enturas/design-system/commits/0e29579bea29d3b591752dd479e33989d8c8bcf1))
+
 ## [0.10.6](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.10.5...@entur/alert@0.10.6) (2022-05-04)
 
 **Note:** Version bump only for package @entur/alert
