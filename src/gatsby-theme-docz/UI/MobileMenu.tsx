@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'docz';
+import classNames from 'classnames';
+
 import { Location } from '@reach/router';
 import { Contrast } from '@entur/layout/src';
 import { MenuIcon } from '@entur/icons';
 import { FloatingButton } from '@entur/button';
-import classNames from 'classnames';
-import logo from '~/components/logo.svg';
-import logoDark from '~/components/logoDark.svg';
-import './MobileMenu.scss';
+
 import SettingsPanel from '~/components/SettingsPanel';
 import { SiteSidebar } from '~/components/SiteSidebar';
+
+import './MobileMenu.scss';
+
+import logo from '~/components/logo.svg';
+import logoDark from '~/components/logoDark.svg';
 
 type MobileMenuProps = {
   frontPage?: boolean;
@@ -51,7 +55,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             )}
             <SettingsPanel />
           </div>
-          <div className="mobile-nav-bar__links">
+          <div
+            className={`mobile-nav-bar__links mobile-nav-bar__links__scroll-gradient${
+              !frontPage ? '--not-frontpage' : ''
+            }`}
+          >
             <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
             <MobileNavItem to="/identitet">Identitet</MobileNavItem>
             <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
