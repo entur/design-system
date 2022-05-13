@@ -28,6 +28,10 @@
       min-width: 12rem;
       width: fit-content;
     }
+
+    &--exit-animation {
+      animation: $timings-slow ease-in-out 0s 1 bounceOutRight;
+    }
   }
 
   &--small {
@@ -192,5 +196,17 @@
 
   to {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0) scaleX(0.9);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0) scaleX(2);
   }
 }

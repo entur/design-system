@@ -11,6 +11,7 @@ type ToastType = {
   content: React.ReactNode;
   id: ToastId;
   variant: ToastVariants;
+  isBeingRemoved: boolean;
 };
 
 type ToastContextType = {
@@ -25,7 +26,10 @@ type AddToastPayload =
 
 type ToastAction =
   | { type: 'ADD_TOAST'; payload: ToastType }
-  | { type: 'REMOVE_TOAST'; payload: ToastId };
+  | { type: 'REMOVE_TOAST'; payload: ToastId }
+  | { type: 'PLAY_EXIT_ANIMATION'; payload: ToastId };
+
+const EXIT_ANIMATION_TIME = 400;
 
 const ToastContext = React.createContext<ToastContextType | null>(null);
 
@@ -36,6 +40,12 @@ const toastReducer = (
   switch (action.type) {
     case 'ADD_TOAST':
       return [action.payload, ...prevToasts];
+    case 'PLAY_EXIT_ANIMATION':
+      return prevToasts.map(toast => {
+        if (toast.id === action.payload)
+          return { ...toast, isBeingRemoved: true };
+        return toast;
+      });
     case 'REMOVE_TOAST':
       return prevToasts.filter(toast => toast.id !== action.payload);
   }
@@ -45,9 +55,9 @@ const createUniqueId = () => Math.random().toString().substring(2);
 
 const createToast = (toast: AddToastPayload, id: ToastId): ToastType => {
   if (typeof toast === 'string') {
-    return { id, content: toast, variant: 'success' };
+    return { id, content: toast, variant: 'success', isBeingRemoved: false };
   } else {
-    return { id, variant: 'success', ...toast };
+    return { id, variant: 'success', isBeingRemoved: false, ...toast };
   }
 };
 
@@ -83,34 +93,49 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     delete timeoutIdRefs.current[id];
   }, []);
 
-  const addToast = React.useCallback(
-    (toast: AddToastPayload) => {
-      const id = createUniqueId();
-      const payload = createToast(toast, id);
-      dispatch({ type: 'ADD_TOAST', payload });
+  const playExitAnimation = React.useCallback((id: ToastId) => {
+    window.clearTimeout(timeoutIdRefs.current[id + 'animation']);
+    dispatch({ type: 'PLAY_EXIT_ANIMATION', payload: id });
+    delete timeoutIdRefs.current[id + 'animation'];
+  }, []);
+
+  const removeToastWithAnimationAfterDelay = React.useCallback(
+    (id: ToastId, delay: number) => {
+      timeoutIdRefs.current[id + 'animation'] = window.setTimeout(
+        () => playExitAnimation(id),
+        delay - EXIT_ANIMATION_TIME,
+      );
       timeoutIdRefs.current[id] = window.setTimeout(
         () => removeToast(id),
         delay,
       );
     },
-    [delay, removeToast],
+    [timeoutIdRefs, playExitAnimation, removeToast],
   );
 
-  const handleMouseEnter = (toastId: ToastId) => () => {
-    setHovering(toastId);
-    Object.values(timeoutIdRefs.current).forEach(timeoutId =>
-      window.clearTimeout(timeoutId),
-    );
+  const addToast = React.useCallback(
+    (toast: AddToastPayload) => {
+      const id = createUniqueId();
+      const payload = createToast(toast, id);
+      dispatch({ type: 'ADD_TOAST', payload });
+      removeToastWithAnimationAfterDelay(id, delay);
+    },
+    [delay, removeToastWithAnimationAfterDelay],
+  );
+
+  const handleMouseEnter = (toast: ToastType) => () => {
+    if (toast.isBeingRemoved) return;
+    setHovering(toast.id);
+    Object.values(timeoutIdRefs.current).forEach(timeoutId => {
+      window.clearTimeout(timeoutId);
+    });
     timeoutIdRefs.current = {};
   };
 
   const handleMouseLeave = () => {
     setHovering(undefined);
     toasts.forEach(toast => {
-      timeoutIdRefs.current[toast.id] = window.setTimeout(
-        () => removeToast(toast.id),
-        delay,
-      );
+      removeToastWithAnimationAfterDelay(toast.id, delay);
     });
   };
 
@@ -140,9 +165,10 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
               variant={toastToShow.variant}
               title={toastToShow.title}
               onClose={handleClose(toastToShow.id)}
-              onMouseEnter={handleMouseEnter(toastToShow.id)}
+              onMouseEnter={handleMouseEnter(toastToShow)}
               onMouseLeave={handleMouseLeave}
               closable={hoveringId === toastToShow.id}
+              toastIsBeingRemoved={toastToShow.isBeingRemoved}
               key={toastToShow.id}
             >
               {toastToShow.content}
