@@ -188,14 +188,14 @@ usorterte ikoner er bare synlige ved “hover”.
 Her brukes hooken `useSortableData` med dataen man vil ha i tabellen som output.
 Merk bruken av `getSortableHeaderProps` hvor man må sende inn en verdi for `name` som tilsvarer den i datasettet du bruker.
 
-Obs for Typescript: getSortableData benytter seg av generic-types, dermed ville den i eksemplet over sett ut slikt:
+Obs for Typescript: useSortableData benytter seg av generic-types, dermed ville den i eksemplet over sett ut slikt:
 
 ```js
 const {
     sortedData,
     getSortableHeaderProps,
     getSortableTableProps,
-  } = useSortable<{name:string; age:number }>(data);
+  } = useSortableData<{name:string; age:number }>(data);
 ```
 
 ## Table density
