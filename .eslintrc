@@ -13,6 +13,14 @@
     "ecmaVersion": 2015
   },
   "rules": {
+    "no-warning-comments": [
+      /*
+       * Use comments that contain certain strings to note changes and todos that need to be fixed before releasing.
+       * https://www.executeprogram.com/blog/the-code-is-the-to-do-list
+       */
+      "error",
+      { "terms": ["todo", "xxx"], "location": "anywhere" }
+    ],
     "react/prop-types": "off",
     "react/display-name": "off",
     "@typescript-eslint/no-explicit-any": "off"
