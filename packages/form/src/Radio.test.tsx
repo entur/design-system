@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { toHaveNoViolations, axe } from 'jest-axe';
 import { Radio, RadioGroup } from './';
+expect.extend(toHaveNoViolations);
 
 test('Radio buttons works nicely', () => {
   const spy = jest.fn();
@@ -56,8 +57,7 @@ test('Removes fieldset if label is not set', () => {
     expect(container.firstChild.nodeName).toBe('FIELDSET');
 });
 
-expect.extend(toHaveNoViolations);
-test('Radio and RadioGoup is accessible', async () => {
+test('Radio and RadioGroup should not have basic accessibility issues', async () => {
   const spy = jest.fn();
   const { container } = render(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>

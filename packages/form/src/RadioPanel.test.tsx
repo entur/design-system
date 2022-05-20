@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { RadioPanel, RadioGroup } from './';
 import { toHaveNoViolations, axe } from 'jest-axe';
+expect.extend(toHaveNoViolations);
 
 test('RadioPanels works nicely', () => {
   const spy = jest.fn();
@@ -42,12 +43,12 @@ test('RadioPanels works nicely', () => {
   expect(secondOption).toHaveProperty('checked', true);
 });
 
-expect.extend(toHaveNoViolations);
-const spy = jest.fn();
-test('RadioPanel to be accessible', async () => {
+test('RadioPanel should not have basic accessibility issues', async () => {
+  const spy = jest.fn();
   const { container } = render(
     <RadioGroup name="city" label="Velg by" value="Bergen" onChange={spy}>
-      <RadioPanel title="Bergen" value="Bergen" />)
+      <RadioPanel title="Oslo" value="Oslo" />
+      <RadioPanel title="Bergen" value="Bergen" />
     </RadioGroup>,
   );
   const results = await axe(container);
