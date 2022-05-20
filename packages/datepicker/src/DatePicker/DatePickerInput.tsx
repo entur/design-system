@@ -17,11 +17,17 @@ type DatePickerInputProps = {
   calendarButtonTooltip: string;
   hideCalendarButton?: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
+  calendarButtonId: string;
   forwardRef: React.ForwardedRef<HTMLInputElement>;
   toggleCalendarGUI: () => void;
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLInputElement>;
+  setFocusToCalendarGUI: () => void;
+  setShouldFocusOnCalendarButtonAfterSelect: React.Dispatch<
+    React.SetStateAction<boolean>
+  >;
   onKeyDownInput: (event: KeyboardEvent) => any;
   onBlurInput: (event: FocusEvent) => any;
+  calendarGUIIsOpen: () => boolean | undefined;
+  onClick?: React.MouseEventHandler<HTMLInputElement>; // react-datepicker's onClick prop
   onFocus: undefined; // To prevent open on focus
   selectedDate: Date | null; // Necessary to update component on state change
   placeholder?: null; // override react-datepickers placeholder prop
@@ -44,12 +50,17 @@ export const DatePickerInput = React.forwardRef<
       hideCalendarButton,
       disableLabelAnimation,
       inputRef,
+      calendarButtonId,
       forwardRef,
       toggleCalendarGUI,
       onKeyDownInput,
       onBlurInput,
       selectedDate,
+      setFocusToCalendarGUI,
+      setShouldFocusOnCalendarButtonAfterSelect,
+      calendarGUIIsOpen,
       placeholder, // eslint-disable-line
+      onClick,
       ...rest // forwarded props from react-datepicker
     },
     ref,
@@ -63,6 +74,7 @@ export const DatePickerInput = React.forwardRef<
         inputRef.current?.removeEventListener('blur', handleOnBlur);
         inputRef.current?.removeEventListener('focus', handleOnFocus);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputRef, selectedDate]);
 
     function handleOnKeyDown(this: HTMLElement, event: KeyboardEvent) {
@@ -71,9 +83,21 @@ export const DatePickerInput = React.forwardRef<
     function handleOnBlur(this: HTMLElement, event: FocusEvent) {
       onBlurInput(event);
     }
-    function handleOnFocus() {
-      setTimeout(() => inputRef.current?.select(), 5);
-    }
+    const handleOnFocus = () =>
+      requestAnimationFrame(() => inputRef.current?.select());
+
+    const handleOnClickInputField = (
+      event: React.MouseEvent<HTMLInputElement, MouseEvent>,
+    ) => {
+      setShouldFocusOnCalendarButtonAfterSelect(false);
+      onClick && onClick(event);
+    };
+
+    const handleOnClickCalendarButton = () => {
+      toggleCalendarGUI();
+      setFocusToCalendarGUI();
+      setShouldFocusOnCalendarButtonAfterSelect(true);
+    };
 
     return (
       <TextField
@@ -85,6 +109,7 @@ export const DatePickerInput = React.forwardRef<
         variant={variant}
         disableLabelAnimation={disableLabelAnimation}
         ref={mergeRefs(ref, inputRef, forwardRef)}
+        onClick={handleOnClickInputField}
         append={
           !hideCalendarButton && (
             <Tooltip
@@ -93,7 +118,12 @@ export const DatePickerInput = React.forwardRef<
               disableHoverListener={disabled}
               disableFocusListener={disabled}
             >
-              <IconButton type="button" onClick={toggleCalendarGUI}>
+              <IconButton
+                id={calendarButtonId}
+                type="button"
+                onClick={handleOnClickCalendarButton}
+                tabIndex={calendarGUIIsOpen() ? -1 : 0}
+              >
                 <CalendarIcon />
               </IconButton>
             </Tooltip>
