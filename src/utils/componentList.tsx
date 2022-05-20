@@ -48,14 +48,13 @@ export type ComponentRepresentationType = {
   packageName: string;
 };
 
-export const allComponentsAlphabetically: ComponentRepresentationType[] = Object.entries(
-  allComponentsByPackage,
-)
-  .flatMap(([packageName, theExports]) =>
-    Object.entries(theExports).map(([exportName, exportImpl]) => ({
-      exportName,
-      exportImpl,
-      packageName,
-    })),
-  )
-  .sort((a, b) => a.exportName.localeCompare(b.exportName));
+export const allComponentsAlphabetically: ComponentRepresentationType[] =
+  Object.entries(allComponentsByPackage)
+    .flatMap(([packageName, theExports]) =>
+      Object.entries(theExports).map(([exportName, exportImpl]) => ({
+        exportName,
+        exportImpl,
+        packageName,
+      })),
+    )
+    .sort((a, b) => a.exportName.localeCompare(b.exportName));

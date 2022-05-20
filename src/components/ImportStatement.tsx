@@ -15,8 +15,9 @@ export const ImportStatement: React.FC<Props> = ({ imports, packageName }) => {
   if (userType !== 'developer') {
     return null;
   }
-  const importText = `import { ${imports} } from '@entur/${packageName ||
-    npmPackage}';`;
+  const importText = `import { ${imports} } from '@entur/${
+    packageName || npmPackage
+  }';`;
   return (
     <CopyablePreformattedText successMessage="Import-statementet ble kopiert til utklippstavla.">
       {importText}
