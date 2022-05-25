@@ -36,24 +36,27 @@ body {
   width: 100%;
   overflow-y: auto;
   @include for-desktop {
-    position: fixed;
-    height: calc(100% - #{$navbar-height});
-    margin-left: 18rem;
+    position: absolute;
+    top: $navbar-height;
+    left: $site-sidebar-width--desktop;
+    margin-top: 0;
+    height: calc(100vh - #{$navbar-height});
+    width: calc(100% - #{$site-sidebar-width--desktop});
   }
   @include for-large-desktop {
-    position: fixed;
-    margin-left: 26rem;
+    left: $site-sidebar-width--large-desktop;
+    width: calc(100% - #{$site-sidebar-width--large-desktop});
   }
   .site-content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 3rem $space-default $space-default 4rem;
+    margin: 3rem $space-extra-large $space-default;
     transition: max-width $timings-fast ease-out,
       margin-left $timings-fast ease-out;
 
-    @include for-desktop {
-      max-width: Min(65%, 60rem);
+    @include for-large-desktop {
+      max-width: Min(100%, 65rem);
     }
 
     &--hidden {

@@ -8,7 +8,7 @@
   transition: max-width $timings-fast ease-out;
   background: $colors-greys-grey90;
   @include for-desktop {
-    max-width: 18rem;
+    max-width: $site-sidebar-width--desktop;
     height: 100vh;
     left: 0;
     top: $navbar-height;
@@ -18,7 +18,7 @@
     z-index: $z-indexes-sticky;
   }
   @include for-large-desktop {
-    max-width: 26rem;
+    max-width: $site-sidebar-width--large-desktop;
   }
 }
 
