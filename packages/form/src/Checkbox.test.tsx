@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { Checkbox } from './';
+import { Checkbox, Fieldset } from './';
+expect.extend(toHaveNoViolations);
 
 test('Checkbox renders with appropriate label and is clickable, and state is set on click.', () => {
   const spy = jest.fn();
@@ -38,12 +39,14 @@ test('checkboxes can be indeterminate', () => {
   expect(getByLabelText('All')).toHaveProperty('checked', true);
 });
 
-expect.extend(toHaveNoViolations);
-test('Checkbox is accessible', async () => {
-  const { container, rerender } = render(<Checkbox>a11y</Checkbox>);
+test('Checkbox should not have basic accessibility issues', async () => {
+  const { container } = render(
+    <Fieldset label="Field with three checkboxes">
+      <Checkbox reduceClickArea>1</Checkbox>
+      <Checkbox>2</Checkbox>
+      <Checkbox>3</Checkbox>
+    </Fieldset>,
+  );
   const results = await axe(container);
-  expect(results).toHaveNoViolations();
-  rerender(<Checkbox reduceClickArea></Checkbox>);
-
   expect(results).toHaveNoViolations();
 });
