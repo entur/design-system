@@ -137,26 +137,58 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
   ) => {
     const datepickerId = useRandomId('eds-datepicker');
 
-    const [showValidation, setShowValidation] = useState(false);
-
     const datepickerRef = useRef<ReactDatePicker>(null);
     const inputRef = React.useRef<HTMLInputElement>(null);
+    const calendarButton = document.getElementById(datepickerId + '-button');
 
+    const [showValidation, setShowValidation] = useState(false);
+    const [
+      shouldFocusOnCalendarButtonAfterSelect,
+      setShouldFocusOnCalendarButtonAfterSelect,
+    ] = useState(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(() => validateInput(), [selectedDate]);
 
-    const handleOnKeyDown = (event: KeyboardEvent) => {
-      const calendarIsClosed = !datepickerRef.current?.isCalendarOpen();
+    const handleOnChange = (
+      date: Date | null,
+      event: React.SyntheticEvent<any, Event> | undefined,
+    ): void => {
+      if (shouldFocusOnCalendarButtonAfterSelect && !hideCalendarButton) {
+        calendarButton?.focus();
+        setShouldFocusOnCalendarButtonAfterSelect(false);
+      } else inputRef.current?.focus();
 
+      onChange(date, event);
+    };
+
+    const handleOnKeyDown = (event: KeyboardEvent) => {
       setShowValidation(false);
+
       if (event.key === 'Enter') {
-        validateInput();
+        if (!datePickerGUIIsOpen()) {
+          // onBlurInput will validate if calendar is open
+          validateInput();
+          forceUpdateInputFormat();
+        }
         focusAndSelectInputField();
+      } else if (event.key === 'Tab' && datePickerGUIIsOpen()) {
         forceUpdateInputFormat();
-      } else if (event.key === 'Tab' && calendarIsClosed) {
-        validateInput();
+      } else if (event.key === 'Escape') {
         forceUpdateInputFormat();
+        focusAndSelectInputField();
+        if (datePickerGUIIsOpen()) toggleCalendarGUI();
       }
       onKeyDown(event);
+    };
+
+    const handleOnClickOutside = () =>
+      setShouldFocusOnCalendarButtonAfterSelect(false);
+
+    const handleOnBlurInput = () => {
+      if (datePickerGUIIsOpen()) return;
+      validateInput();
+      forceUpdateInputFormat();
     };
 
     const validateInput = () => {
@@ -196,15 +228,33 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     };
 
     const focusAndSelectInputField = () =>
-      setTimeout(() => {
-        inputRef.current?.select();
-      }, 5);
+      requestAnimationFrame(() => inputRef.current?.select());
 
     const forceUpdateInputFormat = () =>
       datepickerRef.current?.setState({ inputValue: null });
 
     const toggleCalendarGUI = () =>
-      datepickerRef.current?.setOpen(!datepickerRef.current?.isCalendarOpen());
+      datepickerRef.current?.setOpen(!datePickerGUIIsOpen());
+
+    // this focus function will fail if both an inline and a non-inline calendar is present in the same document
+    const setFocusToCalendarGUI = () => {
+      if (inline || hideCalendar || datePickerGUIIsOpen()) return;
+      // 1 frame delay to allow calendar to spawn
+      requestAnimationFrame(() => {
+        const dateToSetFocusTo = selectedDate
+          ? (document.getElementsByClassName(
+              'eds-datepicker__calender__day--selected',
+            )[0] as HTMLElement | null)
+          : (document.getElementsByClassName(
+              'eds-datepicker__calender__day--today',
+            )[0] as HTMLElement | null);
+        if (dateToSetFocusTo !== null) dateToSetFocusTo.focus();
+      });
+      setShouldFocusOnCalendarButtonAfterSelect(true);
+      setShowValidation(false);
+    };
+
+    const datePickerGUIIsOpen = () => datepickerRef.current?.isCalendarOpen();
 
     return (
       <>
@@ -215,8 +265,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
           dateFormat={dateFormats}
           showWeekNumbers
           weekLabel={weekLabel}
-          onChange={onChange}
-          onClickOutside={validateInput}
+          onChange={handleOnChange}
+          onClickOutside={handleOnClickOutside}
           id={datepickerId}
           ariaLabelledBy={datepickerId}
           showPopperArrow={false}
@@ -267,13 +317,17 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               feedback={getFeedbackAndVariant().feedback}
               variant={getFeedbackAndVariant().variant}
               inputRef={inputRef}
+              calendarButtonId={datepickerId + '-button'}
               forwardRef={ref}
               onKeyDownInput={handleOnKeyDown}
-              onBlurInput={() =>
-                !datepickerRef.current?.isCalendarOpen() && validateInput()
-              }
+              onBlurInput={handleOnBlurInput}
               onFocus={undefined}
               toggleCalendarGUI={toggleCalendarGUI}
+              setFocusToCalendarGUI={setFocusToCalendarGUI}
+              setShouldFocusOnCalendarButtonAfterSelect={
+                setShouldFocusOnCalendarButtonAfterSelect
+              }
+              calendarGUIIsOpen={datePickerGUIIsOpen}
               disableLabelAnimation={disableLabelAnimation}
               hideCalendarButton={hideCalendarButton}
               selectedDate={selectedDate}
