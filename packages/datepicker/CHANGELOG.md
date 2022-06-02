@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.4...@entur/datepicker@2.0.5) (2022-06-02)
+
+### Bug Fixes
+
+- **datepicker:** make keyboard navigation in datepicker more accessible ([ec7be40](https://bitbucket.org/enturas/design-system/commits/ec7be4018bfbdab9da48b996e83968297c6d4f4b))
+
 ## [2.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.3...@entur/datepicker@2.0.4) (2022-05-13)
 
 **Note:** Version bump only for package @entur/datepicker

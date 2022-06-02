@@ -1,6 +1,6 @@
 {
   "name": "@entur/button",
-  "version": "2.8.2",
+  "version": "2.8.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/button.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/loader": "^0.4.7",
+    "@entur/loader": "^0.4.8",
     "@entur/utils": "^0.4.3",
     "classnames": "^2.3.1"
   },
