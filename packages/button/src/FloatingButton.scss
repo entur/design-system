@@ -33,6 +33,9 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
   &:hover {
     background-color: tint($colors-brand-blue, 10%);
   }
+  &:active {
+    background-color: shade($colors-brand-blue, 10%);
+  }
 
   &:focus {
     outline-offset: $outline-offsets-focus;
@@ -49,6 +52,9 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
     box-shadow: $shadows-box-shadow-contrast;
     &:hover {
       background-color: tint($colors-brand-lavender, 10%);
+    }
+    &:active {
+      background-color: shade($colors-brand-white, 10%);
     }
   }
 
