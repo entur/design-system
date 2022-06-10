@@ -11,6 +11,8 @@ import './IconButton.scss';
 export type IconButtonBaseProps = {
   /** Ikonet som du vil ha inne i knappen */
   children: React.ReactNode;
+  /** Tekst som forklarer knappens handling. MÅ være satt hvis du ikke har en forklarende tooltip på knappen */
+  'aria-label'?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Deaktivering av knappen
@@ -34,7 +36,7 @@ export type IconButtonBaseProps = {
 const defaultElement = 'button';
 
 export type IconButtonProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<IconButtonBaseProps, E>;
 
 export const IconButton: PolymorphicForwardRefExoticComponent<
@@ -54,7 +56,8 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
     ref: React.ForwardedRef<React.ElementRef<E>>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
-    return (
+
+    const iconButtonElement = (
       <Element
         className={classNames(
           'eds-icon-button',
@@ -66,11 +69,21 @@ export const IconButton: PolymorphicForwardRefExoticComponent<
         )}
         disabled={disabled}
         aria-disabled={disabled}
+        aria-busy={loading}
         ref={ref}
         {...rest}
       >
         {loading ? <LoadingDots /> : children}
       </Element>
     );
+
+    if (disabled) {
+      return (
+        <div className="eds-icon-button--disabled__wrapper">
+          {iconButtonElement}
+        </div>
+      );
+    }
+    return <>{iconButtonElement}</>;
   },
 );
