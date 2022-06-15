@@ -137,6 +137,16 @@ for (let svgPath of allSvgPaths) {
     .replace(/\s/g, '');
   componentName = toCase.pascal(componentName);
 
+  // Check for .DS_Store to clarify confusing error message
+  if (componentName === 'DSStore') {
+    // eslint-disable-next-line no-undef
+    console.error(
+      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+      svgPath,
+      '\n',
+    );
+  }
+
   // Read the SVG, optimize it with SVGO, and transpile it to React components
   // for both the web and React Native
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
