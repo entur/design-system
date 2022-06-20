@@ -59,6 +59,7 @@ function createSvgrConfig(native = false, componentName) {
     // Should always be white
     const partnerIcons = [
       'BrakarIcon',
+      'BrakarNoTextIcon',
       'FarteIcon',
       'GOAIcon',
       'InnlandstrafikkIcon',
@@ -136,6 +137,16 @@ for (let svgPath of allSvgPaths) {
     .replace('.svg', 'Icon')
     .replace(/\s/g, '');
   componentName = toCase.pascal(componentName);
+
+  // Check for .DS_Store to clarify confusing error message
+  if (componentName === 'DSStore') {
+    // eslint-disable-next-line no-undef
+    console.error(
+      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+      svgPath,
+      '\n',
+    );
+  }
 
   // Read the SVG, optimize it with SVGO, and transpile it to React components
   // for both the web and React Native
