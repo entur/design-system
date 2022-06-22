@@ -30,6 +30,16 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       childrenArray.length > 1 &&
       typeof childrenArray[childrenArray.length - 1] !== 'string';
 
+    const ariaLabelValue = () => {
+      if (rest['aria-label']) return rest['aria-label'];
+      if (loading) return ariaLabelWhenLoading;
+      return undefined;
+    };
+
+    const ariaLabelWhenLoading = childrenArray
+      .filter(child => typeof child === 'string')
+      .join(' ');
+
     const actionChip = (
       <button
         className={classNames(
@@ -43,6 +53,8 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
           className,
         )}
         ref={ref}
+        aria-busy={loading}
+        aria-label={ariaLabelValue()}
         type="button"
         {...rest}
       >
