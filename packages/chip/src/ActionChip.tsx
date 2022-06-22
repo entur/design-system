@@ -30,7 +30,7 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       childrenArray.length > 1 &&
       typeof childrenArray[childrenArray.length - 1] !== 'string';
 
-    return (
+    const actionChip = (
       <button
         className={classNames(
           'eds-chip',
@@ -38,6 +38,7 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
           {
             'eds-chip--leading-icon': hasLeadingIcon,
             'eds-chip--trailing-icon': hasTrailingIcon,
+            'eds-action-chip--disabled': rest.disabled,
           },
           className,
         )}
@@ -52,5 +53,12 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
         )}
       </button>
     );
+
+    if (rest.disabled) {
+      return (
+        <div className="eds-action-chip--disabled__wrapper">{actionChip}</div>
+      );
+    }
+    return <>{actionChip}</>;
   },
 );
