@@ -96,5 +96,5 @@ module.exports = {
       },
     };
   },
-  iframeSandbox: 'allow-scripts allow-forms',
+  iframeSandbox: 'allow-scripts allow-forms allow-same-origin',
 };
