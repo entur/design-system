@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.1.2...@entur/icons@4.2.0) (2022-06-24)
+
+### Features
+
+- **icons:** update Brakar logo icon and add Brakar without text icon ([1ccd821](https://bitbucket.org/enturas/design-system/commits/1ccd821d5ee9684573ee25e008f95e1d14ec0bce))
+
 ## [4.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.1.1...@entur/icons@4.1.2) (2022-05-04)
 
 ### Bug Fixes

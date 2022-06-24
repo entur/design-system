@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.8.3...@entur/button@2.9.0) (2022-06-24)
+
+### Features
+
+- **floating button:** add visual indication for active state ([c794e4f](https://bitbucket.org/enturas/design-system/commits/c794e4f831096da1a9ab4e25e62f4329e25e48ff))
+- **icon button:** add cursor not-allowed to disabled icon button and add aria-label prop descriptio ([d7ab051](https://bitbucket.org/enturas/design-system/commits/d7ab051d9a32a2879e243aee9e4620f3e23cb525))
+
 ## [2.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.8.2...@entur/button@2.8.3) (2022-06-02)
 
 **Note:** Version bump only for package @entur/button
