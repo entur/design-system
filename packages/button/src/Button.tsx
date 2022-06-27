@@ -31,13 +31,16 @@ type ButtonBaseProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
+  /**
+   * Tekst som leses opp på skjermleser (nødvendig når knappetekst mangler)
+   */
+  'aria-label'?: string;
 };
 
 const defaultElement = 'button';
 
-export type ButtonProps<
-  T extends React.ElementType = typeof defaultElement
-> = PolymorphicPropsWithRef<ButtonBaseProps, T>;
+export type ButtonProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicPropsWithRef<ButtonBaseProps, T>;
 
 export const Button: PolymorphicForwardRefExoticComponent<
   ButtonBaseProps,
@@ -53,6 +56,7 @@ export const Button: PolymorphicForwardRefExoticComponent<
       children,
       disabled = false,
       width = 'auto',
+      'aria-label': ariaLabel,
       ...rest
     }: PolymorphicPropsWithoutRef<ButtonBaseProps, T>,
     ref: React.ForwardedRef<React.ElementRef<T>>,
@@ -64,6 +68,16 @@ export const Button: PolymorphicForwardRefExoticComponent<
     const hasTrailingIcon =
       childrenArray.length > 1 &&
       typeof childrenArray[childrenArray.length - 1] !== 'string';
+
+    const ariaLabelWhenLoading = childrenArray
+      .filter(child => typeof child === 'string')
+      .join(' ');
+
+    const ariaLabelValue = () => {
+      if (ariaLabel) return ariaLabel;
+      if (loading) return ariaLabelWhenLoading;
+      return undefined;
+    };
 
     return (
       <Element
@@ -83,6 +97,7 @@ export const Button: PolymorphicForwardRefExoticComponent<
         aria-busy={loading}
         disabled={disabled}
         aria-disabled={disabled}
+        aria-label={ariaLabelValue()}
         {...rest}
       >
         {loading ? (
