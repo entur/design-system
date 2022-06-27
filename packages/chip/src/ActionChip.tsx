@@ -30,7 +30,17 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       childrenArray.length > 1 &&
       typeof childrenArray[childrenArray.length - 1] !== 'string';
 
-    return (
+    const ariaLabelValue = () => {
+      if (rest['aria-label']) return rest['aria-label'];
+      if (loading) return ariaLabelWhenLoading;
+      return undefined;
+    };
+
+    const ariaLabelWhenLoading = childrenArray
+      .filter(child => typeof child === 'string')
+      .join(' ');
+
+    const actionChip = (
       <button
         className={classNames(
           'eds-chip',
@@ -38,10 +48,13 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
           {
             'eds-chip--leading-icon': hasLeadingIcon,
             'eds-chip--trailing-icon': hasTrailingIcon,
+            'eds-action-chip--disabled': rest.disabled,
           },
           className,
         )}
         ref={ref}
+        aria-busy={loading}
+        aria-label={ariaLabelValue()}
         type="button"
         {...rest}
       >
@@ -52,5 +65,12 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
         )}
       </button>
     );
+
+    if (rest.disabled) {
+      return (
+        <div className="eds-action-chip--disabled__wrapper">{actionChip}</div>
+      );
+    }
+    return <>{actionChip}</>;
   },
 );

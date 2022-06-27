@@ -23,6 +23,15 @@
       border-color: $colors-blues-blue10;
     }
   }
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+
+    &__wrapper {
+      cursor: not-allowed;
+      width: fit-content;
+    }
+  }
 
   &__loading-dots .eds-loading-dots__dot {
     .eds-contrast & {
