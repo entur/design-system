@@ -11,13 +11,18 @@ export type TagChipProps = {
   className?: string;
   /** Callback for når man klikker på krysset */
   onClose: () => void;
+  /** Skjermlesertekst for X-knappen */
+  closeButtonAriaLabel?: string;
 };
 
 export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
   (
-    { children, className, onClose, ...rest },
+    { children, className, onClose, closeButtonAriaLabel, ...rest },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
+    const selectedCloseLabel =
+      closeButtonAriaLabel ?? 'Fjern ' + children?.toString();
+
     return (
       <div
         className={classNames('eds-chip', 'eds-tag-chip', className)}
@@ -28,6 +33,7 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
           className="eds-tag-chip__close-button"
           type="button"
           onClick={onClose}
+          aria-label={selectedCloseLabel}
           ref={ref}
         >
           <CloseIcon />
