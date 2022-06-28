@@ -1,6 +1,6 @@
 {
   "name": "@entur/datepicker",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/datepicker.esm.js",
@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^5.3.7",
+    "@entur/form": "^5.3.8",
     "@entur/icons": "^4.2.0",
     "@entur/tokens": "^3.3.2",
     "@entur/typography": "^1.6.14",

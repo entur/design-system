@@ -1,6 +1,6 @@
 {
   "name": "@entur/tooltip",
-  "version": "2.5.10",
+  "version": "2.5.11",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tooltip.esm.js",
@@ -30,7 +30,7 @@
     "@entur/tokens": "^3.3.2"
   },
   "dependencies": {
-    "@entur/button": "^2.9.0",
+    "@entur/button": "^2.10.0",
     "@entur/icons": "^4.2.0",
     "@entur/layout": "^2.1.7",
     "@entur/utils": "^0.4.3",

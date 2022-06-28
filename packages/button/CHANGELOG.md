@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.9.0...@entur/button@2.10.0) (2022-06-28)
+
+### Features
+
+- **button:** add aria-label to button when loading ([50f325b](https://bitbucket.org/enturas/design-system/commits/50f325be55954b2d9411178d5430c202adc078c9))
+
 # [2.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.8.3...@entur/button@2.9.0) (2022-06-24)
 
 ### Features
