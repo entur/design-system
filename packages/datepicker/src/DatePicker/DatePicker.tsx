@@ -77,9 +77,13 @@ export type DatePickerProps = {
    */
   prepend?: React.ReactNode;
   /**
-   * Tekst som vises ved hover på «Åpne kalender»-knappen
+   * Tekst som vises når kalender ikke er åpen på «Åpne/Lukk kalender»-knappen ved hover
    */
-  calendarButtonTooltip?: string;
+  calendarButtonTooltipOpen?: string;
+  /**
+   * Tekst som vises når kalender er åpen på «Åpne/Lukk kalender»-knappen ved hover
+   */
+  calendarButtonTooltipClose?: string;
   /** Skjuler knapp for åpning av kalender
    * @default false
    */
@@ -96,6 +100,19 @@ export type DatePickerProps = {
    * @default false
    */
   inline?: boolean;
+  /** Skjermlesertekst for forrige måned-knapen
+   * @default "Forrige måned"
+   */
+  prevMonthAriaLabel?: string;
+  /** Skjermlesertekst for neste måned-knapen
+   * @default "Neste måned"
+   */
+  nextMonthAriaLabel?: string;
+  /**
+   * Skjermlesertekst som leses før dato i kalenderGUI-et
+   * @default "Velg"
+   */
+  chooseDayAriaLabelPrefix?: string;
   // For testing
   'data-cy'?: any;
 } & Omit<
@@ -124,11 +141,15 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       validationFeedback = 'Ugyldig dato',
       validationVariant = 'error',
       disableLabelAnimation = false,
-      calendarButtonTooltip = 'Åpne\xa0kalender',
+      calendarButtonTooltipOpen = 'Åpne\xa0kalender',
+      calendarButtonTooltipClose = 'Lukk\xa0kalender',
       hideCalendarButton = false,
       hideCalendar = false,
       hideValidation = false,
       weekLabel = 'uke',
+      chooseDayAriaLabelPrefix = 'Velg',
+      prevMonthAriaLabel = 'Forrige måned',
+      nextMonthAriaLabel = 'Neste måned',
       locale = nb,
       open,
       ...rest
@@ -274,6 +295,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
           inline={inline}
           disabled={disabled}
           preventOpenOnFocus={true}
+          chooseDayAriaLabelPrefix={chooseDayAriaLabelPrefix}
           open={hideCalendar ? false : open}
           ref={datepickerRef}
           calendarClassName="eds-datepicker__calender"
@@ -305,6 +327,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               decreaseMonth={decreaseMonth}
               prevMonthButtonDisabled={prevMonthButtonDisabled}
               nextMonthButtonDisabled={nextMonthButtonDisabled}
+              prevMonthAriaLabel={prevMonthAriaLabel}
+              nextMonthAriaLabel={nextMonthAriaLabel}
             />
           )}
           customInput={
@@ -312,7 +336,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               style={style}
               label={label}
               inputPlaceholder={placeholder}
-              calendarButtonTooltip={calendarButtonTooltip}
+              calendarButtonTooltipOpen={calendarButtonTooltipOpen}
+              calendarButtonTooltipClose={calendarButtonTooltipClose}
               prepend={prepend}
               feedback={getFeedbackAndVariant().feedback}
               variant={getFeedbackAndVariant().variant}

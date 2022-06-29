@@ -5,13 +5,20 @@ import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { IconButton } from '@entur/button';
 
+type DatePickerHeaderProps = {
+  nextMonthAriaLabel: string;
+  prevMonthAriaLabel: string;
+} & Partial<ReactDatePickerCustomHeaderProps>;
+
 export const DatePickerHeader = ({
   date,
   decreaseMonth,
   increaseMonth,
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
-}: Partial<ReactDatePickerCustomHeaderProps>) => {
+  nextMonthAriaLabel,
+  prevMonthAriaLabel,
+}: DatePickerHeaderProps) => {
   const monthNames = getMonthList();
   return (
     <div className="eds-datepicker__calender__header">
@@ -20,6 +27,7 @@ export const DatePickerHeader = ({
         className="eds-datepicker__calender__header__month-button--left"
         onClick={decreaseMonth}
         disabled={prevMonthButtonDisabled}
+        aria-label={prevMonthAriaLabel}
       >
         <LeftArrowIcon />
       </IconButton>
@@ -35,6 +43,7 @@ export const DatePickerHeader = ({
         className="eds-datepicker__calender__header__month-button--right"
         onClick={increaseMonth}
         disabled={nextMonthButtonDisabled}
+        aria-label={nextMonthAriaLabel}
       >
         <RightArrowIcon />
       </IconButton>

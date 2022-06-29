@@ -14,7 +14,8 @@ type DatePickerInputProps = {
   variant?: VariantType;
   disabled?: boolean;
   disableLabelAnimation?: boolean;
-  calendarButtonTooltip: string;
+  calendarButtonTooltipOpen: string;
+  calendarButtonTooltipClose: string;
   hideCalendarButton?: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
   calendarButtonId: string;
@@ -46,7 +47,8 @@ export const DatePickerInput = React.forwardRef<
       feedback,
       variant,
       disabled,
-      calendarButtonTooltip,
+      calendarButtonTooltipOpen,
+      calendarButtonTooltipClose,
       hideCalendarButton,
       disableLabelAnimation,
       inputRef,
@@ -114,7 +116,11 @@ export const DatePickerInput = React.forwardRef<
           !hideCalendarButton && (
             <Tooltip
               placement="top"
-              content={calendarButtonTooltip}
+              content={
+                calendarGUIIsOpen()
+                  ? calendarButtonTooltipClose
+                  : calendarButtonTooltipOpen
+              }
               disableHoverListener={disabled}
               disableFocusListener={disabled}
             >
