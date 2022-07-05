@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.9...@entur/travel@5.0.10) (2022-07-05)
+
+### Bug Fixes
+
+- **validation exclamation icon:** fix icon colours for validation exclamation icon in react native ([4e64eb8](https://bitbucket.org/enturas/design-system/commits/4e64eb86fd1b98731b47ac040ce578e8ee0aa956))
+
 ## [5.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.8...@entur/travel@5.0.9) (2022-06-24)
 
 **Note:** Version bump only for package @entur/travel

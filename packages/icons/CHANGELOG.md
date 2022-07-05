@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.2.0...@entur/icons@4.3.0) (2022-07-05)
+
+### Bug Fixes
+
+- **validation exclamation icon:** fix icon colours for validation exclamation icon in react native ([4e64eb8](https://bitbucket.org/enturas/design-system/commits/4e64eb86fd1b98731b47ac040ce578e8ee0aa956))
+
+### Features
+
+- **icons:** add seat capacity icons to facility group ([25265da](https://bitbucket.org/enturas/design-system/commits/25265da52f929a9e830419b98f28f2fd22617612))
+
 # [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.1.2...@entur/icons@4.2.0) (2022-06-24)
 
 ### Features
