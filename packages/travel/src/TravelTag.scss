@@ -150,14 +150,10 @@
     &-exclamation-icon {
       color: $colors-validation-canary;
       circle {
-        color: $colors-brand-blue;
-        fill-opacity: 1;
+        fill: $colors-brand-blue;
       }
       .eds-contrast & {
         color: $colors-validation-canary-contrast;
-        circle {
-          fill-opacity: 0;
-        }
       }
     }
     &-error-icon {
