@@ -47,6 +47,8 @@ export type BaseFormControlProps = {
   style?: React.CSSProperties;
   /** Plasserer labelen statisk på toppen av inputfeltet */
   disableLabelAnimation?: boolean;
+  /** Setter feedbackText sin rolle til "alert" */
+  ariaAlertOnFeedback?: boolean;
 };
 
 export const BaseFormControl = React.forwardRef<
@@ -73,6 +75,7 @@ export const BaseFormControl = React.forwardRef<
       labelProps,
       style,
       disableLabelAnimation = false,
+      ariaAlertOnFeedback = false,
       ...rest
     },
     ref,
@@ -123,7 +126,12 @@ export const BaseFormControl = React.forwardRef<
           )}
         </div>
         {feedback && currentVariant && (
-          <FeedbackText variant={currentVariant}>{feedback}</FeedbackText>
+          <FeedbackText
+            variant={currentVariant}
+            role={ariaAlertOnFeedback ? 'alert' : undefined}
+          >
+            {feedback}
+          </FeedbackText>
         )}
       </InputGroupContextProvider>
     );
