@@ -13,6 +13,9 @@
   made in sync with our design team.
 */
 import hexRgb from 'hex-rgb';
+
+const pxToRem = (pxValue: number) => pxValue / 16;
+
 export const colors = {
   brand: {
     blue: '#181c56',
@@ -157,6 +160,26 @@ export const space = {
   extraLarge7: spaceScale[12],
   extraLarge8: spaceScale[13],
   extraLarge9: spaceScale[14],
+
+  rem: {
+    none: pxToRem(spaceScale[0]),
+    default: pxToRem(spaceScale[4]),
+
+    extraSmall2: pxToRem(spaceScale[1]),
+    extraSmall: pxToRem(spaceScale[2]),
+    small: pxToRem(spaceScale[3]),
+    medium: pxToRem(spaceScale[4]),
+    large: pxToRem(spaceScale[5]),
+    extraLarge: pxToRem(spaceScale[6]),
+    extraLarge2: pxToRem(spaceScale[7]),
+    extraLarge3: pxToRem(spaceScale[8]),
+    extraLarge4: pxToRem(spaceScale[9]),
+    extraLarge5: pxToRem(spaceScale[10]),
+    extraLarge6: pxToRem(spaceScale[11]),
+    extraLarge7: pxToRem(spaceScale[12]),
+    extraLarge8: pxToRem(spaceScale[13]),
+    extraLarge9: pxToRem(spaceScale[14]),
+  },
 };
 
 // Typography
@@ -175,6 +198,18 @@ export const fontSizes = {
   extraLarge3: fontSizeScale[6],
   extraLarge4: fontSizeScale[7],
   extraLarge5: fontSizeScale[8],
+
+  rem: {
+    extraSmall: pxToRem(fontSizeScale[0]),
+    small: pxToRem(fontSizeScale[1]),
+    medium: pxToRem(fontSizeScale[2]),
+    large: pxToRem(fontSizeScale[3]),
+    extraLarge: pxToRem(fontSizeScale[4]),
+    extraLarge2: pxToRem(fontSizeScale[5]),
+    extraLarge3: pxToRem(fontSizeScale[6]),
+    extraLarge4: pxToRem(fontSizeScale[7]),
+    extraLarge5: pxToRem(fontSizeScale[8]),
+  },
 };
 const lineHeightScale = [14, 16, 20, 22, 24, 28, 30, 36, 42, 48, 60];
 export const lineHeights = {
@@ -189,12 +224,30 @@ export const lineHeights = {
   extraLarge5: lineHeightScale[8],
   extraLarge6: lineHeightScale[9],
   extraLarge7: lineHeightScale[10],
+
+  rem: {
+    extraSmall: pxToRem(lineHeightScale[0]),
+    small: pxToRem(lineHeightScale[1]),
+    medium: pxToRem(lineHeightScale[2]),
+    large: pxToRem(lineHeightScale[3]),
+    extraLarge: pxToRem(lineHeightScale[4]),
+    extraLarge2: pxToRem(lineHeightScale[5]),
+    extraLarge3: pxToRem(lineHeightScale[6]),
+    extraLarge4: pxToRem(lineHeightScale[7]),
+    extraLarge5: pxToRem(lineHeightScale[8]),
+    extraLarge6: pxToRem(lineHeightScale[9]),
+    extraLarge7: pxToRem(lineHeightScale[10]),
+  },
 };
 
 // Responsivity
 export const breakpoints = {
   large: 800,
   extraLarge: 1200,
+  rem: {
+    large: pxToRem(800),
+    extraLarge: pxToRem(1200),
+  },
 };
 
 // Borders
@@ -205,6 +258,14 @@ export const borderWidths = {
   small: borderWidthScale[0],
   medium: borderWidthScale[1],
   large: borderWidthScale[2],
+
+  rem: {
+    default: pxToRem(borderWidthScale[1]),
+
+    small: pxToRem(borderWidthScale[0]),
+    medium: pxToRem(borderWidthScale[1]),
+    large: pxToRem(borderWidthScale[2]),
+  },
 };
 
 const borderRadiusScale = [1, 4];
@@ -213,6 +274,13 @@ export const borderRadiuses = {
 
   small: borderRadiusScale[0],
   medium: borderRadiusScale[1],
+
+  rem: {
+    default: pxToRem(borderRadiusScale[0]),
+
+    small: pxToRem(borderRadiusScale[0]),
+    medium: pxToRem(borderRadiusScale[1]),
+  },
 };
 
 // Z-indexes
@@ -242,4 +310,8 @@ export const outlines = {
 const outlineOffsetsConstants = [2];
 export const outlineOffsets = {
   focus: outlineOffsetsConstants[0],
+
+  rem: {
+    focus: pxToRem(outlineOffsetsConstants[0]),
+  },
 };

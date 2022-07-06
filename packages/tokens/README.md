@@ -93,3 +93,7 @@ StyleSheet.create({
   },
 });
 ```
+
+#### px vs rem
+
+These values are mainly provided in pixels. If you need the values in rem instead, add a `.rem` after the token name, e.g. `space.rem.large` for rem value and `space.large` for pixel value.

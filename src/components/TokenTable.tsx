@@ -27,9 +27,10 @@ const formatValue = (value: string | number) => {
 };
 
 export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
-  const flattenedTokens = React.useMemo(() => flatten(allTokens[tokenKey]), [
-    tokenKey,
-  ]);
+  const flattenedTokens = React.useMemo(
+    () => flatten(allTokens[tokenKey]),
+    [tokenKey],
+  );
   const { variableFormat } = useSettings();
   // Outlier, should not be treated as rem/px value
   const isZIndex = tokenKey.startsWith('zIndex');
@@ -43,28 +44,30 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {Object.entries(flattenedTokens).map(([key, value]) => (
-          <TableRow key={key}>
-            <DataCell>
-              <CopyButton
-                textToCopy={formatVariable(
-                  `${tokenKey}.${key}`,
-                  variableFormat,
-                )}
-              >
-                {formatVariable(`${tokenKey}.${key}`, variableFormat)}
-              </CopyButton>
-            </DataCell>
-            <DataCell>
-              <CodeText>{!isZIndex ? formatValue(value) : value}</CodeText>
-            </DataCell>
-            {Example && (
+        {Object.entries(flattenedTokens)
+          .filter(obj => !obj[0].includes('rem.')) // Exclude duplicate rem value from list
+          .map(([key, value]) => (
+            <TableRow key={key}>
               <DataCell>
-                <Example value={value} />
+                <CopyButton
+                  textToCopy={formatVariable(
+                    `${tokenKey}.${key}`,
+                    variableFormat,
+                  )}
+                >
+                  {formatVariable(`${tokenKey}.${key}`, variableFormat)}
+                </CopyButton>
               </DataCell>
-            )}
-          </TableRow>
-        ))}
+              <DataCell>
+                <CodeText>{!isZIndex ? formatValue(value) : value}</CodeText>
+              </DataCell>
+              {Example && (
+                <DataCell>
+                  <Example value={value} />
+                </DataCell>
+              )}
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );

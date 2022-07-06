@@ -17,6 +17,7 @@ function format(value: string | number, key: string) {
 const flatTokens: { [key: string]: string } = flatten(tokens);
 function createVariablesWithPrefix(prefix: string) {
   return Object.entries(flatTokens)
+    .filter(obj => !obj[0].includes('.rem.'))
     .map(([key, value]: [string, any]) => {
       return `${prefix}${toCase.kebab(toCase.camel(key))}: ${format(
         value,
