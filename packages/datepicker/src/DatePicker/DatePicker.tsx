@@ -257,19 +257,25 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const toggleCalendarGUI = () =>
       datepickerRef.current?.setOpen(!datePickerGUIIsOpen());
 
-    // this focus function will fail if both an inline and a non-inline calendar is present in the same document
     const setFocusToCalendarGUI = () => {
       if (inline || hideCalendar || datePickerGUIIsOpen()) return;
       // 1 frame delay to allow calendar to spawn
       requestAnimationFrame(() => {
+        const datepickerGUIWrapper =
+          // @ts-expect-error .calendar does actually exist in ReactDatePicker ref
+          datepickerRef.current?.calendar.componentNode;
+
         const dateToSetFocusTo = selectedDate
-          ? (document.getElementsByClassName(
-              'eds-datepicker__calender__day--selected',
-            )[0] as HTMLElement | null)
-          : (document.getElementsByClassName(
+          ? (datepickerGUIWrapper.querySelector(
+              '.react-datepicker__day[tabindex="0"]',
+            ) as HTMLElement | null)
+          : (datepickerGUIWrapper.querySelector(
               'eds-datepicker__calender__day--today',
-            )[0] as HTMLElement | null);
-        if (dateToSetFocusTo !== null) dateToSetFocusTo.focus();
+            ) as HTMLElement | null);
+        if (dateToSetFocusTo !== null) {
+          datepickerRef.current?.setBlur();
+          dateToSetFocusTo.focus({ preventScroll: true });
+        }
       });
       setShouldFocusOnCalendarButtonAfterSelect(true);
       setShowValidation(false);
