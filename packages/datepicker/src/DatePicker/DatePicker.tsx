@@ -103,7 +103,7 @@ export type DatePickerProps = {
   /** Skjermlesertekst for forrige måned-knapen
    * @default "Forrige måned"
    */
-  prevMonthAriaLabel?: string;
+  previousMonthAriaLabel?: string;
   /** Skjermlesertekst for neste måned-knapen
    * @default "Neste måned"
    */
@@ -117,7 +117,13 @@ export type DatePickerProps = {
   'data-cy'?: any;
 } & Omit<
   ReactDatePickerProps,
-  'selected' | 'customInput' | 'onChangeRaw' | 'dateFormat' | 'locale'
+  | 'selected'
+  | 'customInput'
+  | 'onChangeRaw'
+  | 'dateFormat'
+  | 'locale'
+  | 'previousMonthAriaLabel'
+  | 'nextMonthAriaLabel'
 >;
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
@@ -148,7 +154,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       hideValidation = false,
       weekLabel = 'uke',
       chooseDayAriaLabelPrefix = 'Velg',
-      prevMonthAriaLabel = 'Forrige måned',
+      previousMonthAriaLabel = 'Forrige måned',
       nextMonthAriaLabel = 'Neste måned',
       locale = nb,
       open,
@@ -333,8 +339,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               decreaseMonth={decreaseMonth}
               prevMonthButtonDisabled={prevMonthButtonDisabled}
               nextMonthButtonDisabled={nextMonthButtonDisabled}
-              prevMonthAriaLabel={prevMonthAriaLabel}
+              previousMonthAriaLabel={previousMonthAriaLabel}
               nextMonthAriaLabel={nextMonthAriaLabel}
+              locale={locale}
             />
           )}
           customInput={

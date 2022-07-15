@@ -7,7 +7,8 @@ import { IconButton } from '@entur/button';
 
 type DatePickerHeaderProps = {
   nextMonthAriaLabel: string;
-  prevMonthAriaLabel: string;
+  previousMonthAriaLabel: string;
+  locale: globalThis.Locale;
 } & Partial<ReactDatePickerCustomHeaderProps>;
 
 export const DatePickerHeader = ({
@@ -17,9 +18,10 @@ export const DatePickerHeader = ({
   prevMonthButtonDisabled,
   nextMonthButtonDisabled,
   nextMonthAriaLabel,
-  prevMonthAriaLabel,
+  previousMonthAriaLabel,
+  locale,
 }: DatePickerHeaderProps) => {
-  const monthNames = getMonthList();
+  const currentMonthIndex = date?.getMonth() ?? 0;
   return (
     <div className="eds-datepicker__calender__header">
       <IconButton
@@ -27,12 +29,16 @@ export const DatePickerHeader = ({
         className="eds-datepicker__calender__header__month-button--left"
         onClick={decreaseMonth}
         disabled={prevMonthButtonDisabled}
-        aria-label={prevMonthAriaLabel}
+        aria-label={`${previousMonthAriaLabel} (${getMonthName(
+          currentMonthIndex - 1,
+          locale,
+        )})`}
       >
         <LeftArrowIcon />
       </IconButton>
+
       <Heading3 className="eds-datepicker__calender__header__month-text">
-        {monthNames[date?.getMonth() ?? 0]}
+        {getMonthName(currentMonthIndex, locale)}
       </Heading3>
       <Heading3 className="eds-datepicker__calender__header__month-text">
         {date?.getFullYear()}
@@ -43,7 +49,10 @@ export const DatePickerHeader = ({
         className="eds-datepicker__calender__header__month-button--right"
         onClick={increaseMonth}
         disabled={nextMonthButtonDisabled}
-        aria-label={nextMonthAriaLabel}
+        aria-label={`${nextMonthAriaLabel} (${getMonthName(
+          currentMonthIndex + 1,
+          locale,
+        )})`}
       >
         <RightArrowIcon />
       </IconButton>
@@ -51,14 +60,10 @@ export const DatePickerHeader = ({
   );
 };
 
-function getMonthList(locale = 'nb') {
+function getMonthName(monthIndex: number, locale: globalThis.Locale) {
   const year = new Date().getFullYear();
-  const monthList = Array(12).keys();
-  const formatter = new Intl.DateTimeFormat(locale, {
+  const formatter = new Intl.DateTimeFormat(locale.code, {
     month: 'long',
   });
-  const getMonthName = (monthIndex: number) =>
-    formatter.format(new Date(year, monthIndex));
-
-  return Array.from(monthList, getMonthName);
+  return formatter.format(new Date(year, monthIndex));
 }

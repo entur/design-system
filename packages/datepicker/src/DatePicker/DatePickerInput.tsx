@@ -32,6 +32,7 @@ type DatePickerInputProps = {
   onFocus: undefined; // To prevent open on focus
   selectedDate: Date | null; // Necessary to update component on state change
   placeholder?: null; // override react-datepickers placeholder prop
+  'aria-labelledby'?: string;
 };
 
 export const DatePickerInput = React.forwardRef<
@@ -63,6 +64,7 @@ export const DatePickerInput = React.forwardRef<
       calendarGUIIsOpen,
       placeholder, // eslint-disable-line
       onClick,
+      'aria-labelledby': ariaLabelledBy, // eslint-disable-line @typescript-eslint/no-unused-vars
       ...rest // forwarded props from react-datepicker
     },
     ref,
@@ -110,6 +112,8 @@ export const DatePickerInput = React.forwardRef<
         : 'Ingen dato valgt';
       return `${buttonStateText}, ${currentSelectionText}`;
     };
+
+    console.log('rest', rest);
 
     return (
       <TextField
