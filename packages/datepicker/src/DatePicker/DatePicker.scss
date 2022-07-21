@@ -22,6 +22,9 @@
       }
       &__day--outside-month {
         opacity: 0.4;
+        &.eds-datepicker__calender__day--selected {
+          opacity: 1;
+        }
       }
       &__day--disabled {
         opacity: 0.4;
@@ -75,8 +78,6 @@
         outline: none;
         border-radius: 0;
         box-shadow: $shadows-focus;
-        position: relative;
-        z-index: 1;
         &:hover {
           box-shadow: $shadows-focus;
           background-color: $colors-greys-grey80;
@@ -89,19 +90,16 @@
       }
 
       &--today {
-        $today-marker: inset 0 #{-$border-widths-large} 0 $colors-brand-coral;
-
         position: relative;
-        box-shadow: $today-marker;
-
-        &:focus {
-          box-shadow: $shadows-focus, $today-marker;
-          &:hover {
-            box-shadow: $shadows-focus, $today-marker;
-          }
-        }
-        &:hover {
-          box-shadow: inset 0 0 0px 1px $colors-brand-blue, $today-marker;
+        &::after {
+          position: absolute;
+          display: block;
+          content: '';
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background: $colors-brand-coral;
+          height: $border-widths-large;
         }
       }
       &--selected {

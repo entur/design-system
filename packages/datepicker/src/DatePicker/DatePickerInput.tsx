@@ -113,8 +113,6 @@ export const DatePickerInput = React.forwardRef<
       return `${buttonStateText}, ${currentSelectionText}`;
     };
 
-    console.log('rest', rest);
-
     return (
       <TextField
         style={style}
