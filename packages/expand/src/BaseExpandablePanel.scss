@@ -2,8 +2,13 @@
 
 .eds-expandable-panel {
   width: 100%;
+  position: relative;
   & + & {
     margin-top: $border-widths-default;
+  }
+  &:focus,
+  &:focus-within {
+    z-index: 2;
   }
 }
 
