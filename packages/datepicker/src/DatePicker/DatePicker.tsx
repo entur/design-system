@@ -273,10 +273,10 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
         const dateToSetFocusTo = selectedDate
           ? (datepickerGUIWrapper.querySelector(
-              '.react-datepicker__day[tabindex="0"]',
+              '.eds-datepicker__calender__day[tabindex="0"]',
             ) as HTMLElement | null)
           : (datepickerGUIWrapper.querySelector(
-              'eds-datepicker__calender__day--today',
+              '.eds-datepicker__calender__day[aria-current="date"]',
             ) as HTMLElement | null);
         if (dateToSetFocusTo !== null) {
           datepickerRef.current?.setBlur();
