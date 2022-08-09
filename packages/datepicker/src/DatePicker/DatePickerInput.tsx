@@ -14,7 +14,8 @@ type DatePickerInputProps = {
   variant?: VariantType;
   disabled?: boolean;
   disableLabelAnimation?: boolean;
-  calendarButtonTooltip: string;
+  calendarButtonTooltipOpen: string;
+  calendarButtonTooltipClose: string;
   hideCalendarButton?: boolean;
   inputRef: React.RefObject<HTMLInputElement>;
   calendarButtonId: string;
@@ -31,6 +32,7 @@ type DatePickerInputProps = {
   onFocus: undefined; // To prevent open on focus
   selectedDate: Date | null; // Necessary to update component on state change
   placeholder?: null; // override react-datepickers placeholder prop
+  'aria-labelledby'?: string;
 };
 
 export const DatePickerInput = React.forwardRef<
@@ -46,7 +48,8 @@ export const DatePickerInput = React.forwardRef<
       feedback,
       variant,
       disabled,
-      calendarButtonTooltip,
+      calendarButtonTooltipOpen,
+      calendarButtonTooltipClose,
       hideCalendarButton,
       disableLabelAnimation,
       inputRef,
@@ -61,6 +64,7 @@ export const DatePickerInput = React.forwardRef<
       calendarGUIIsOpen,
       placeholder, // eslint-disable-line
       onClick,
+      'aria-labelledby': ariaLabelledBy, // eslint-disable-line @typescript-eslint/no-unused-vars
       ...rest // forwarded props from react-datepicker
     },
     ref,
@@ -99,6 +103,16 @@ export const DatePickerInput = React.forwardRef<
       setShouldFocusOnCalendarButtonAfterSelect(true);
     };
 
+    const calendarButtonAriaLabel = () => {
+      const buttonStateText = calendarGUIIsOpen()
+        ? calendarButtonTooltipClose
+        : calendarButtonTooltipOpen;
+      const currentSelectionText = selectedDate
+        ? `${inputRef.current?.value} valgt`
+        : 'Ingen dato valgt';
+      return `${buttonStateText}, ${currentSelectionText}`;
+    };
+
     return (
       <TextField
         style={style}
@@ -110,11 +124,16 @@ export const DatePickerInput = React.forwardRef<
         disableLabelAnimation={disableLabelAnimation}
         ref={mergeRefs(ref, inputRef, forwardRef)}
         onClick={handleOnClickInputField}
+        ariaAlertOnFeedback
         append={
           !hideCalendarButton && (
             <Tooltip
               placement="top"
-              content={calendarButtonTooltip}
+              content={
+                calendarGUIIsOpen()
+                  ? calendarButtonTooltipClose
+                  : calendarButtonTooltipOpen
+              }
               disableHoverListener={disabled}
               disableFocusListener={disabled}
             >
@@ -123,6 +142,7 @@ export const DatePickerInput = React.forwardRef<
                 type="button"
                 onClick={handleOnClickCalendarButton}
                 tabIndex={calendarGUIIsOpen() ? -1 : 0}
+                aria-label={calendarButtonAriaLabel()}
               >
                 <CalendarIcon />
               </IconButton>

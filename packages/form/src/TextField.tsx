@@ -45,6 +45,7 @@ export type TextFieldProps = {
   clearable?: boolean;
   /** Callback for clearable */
   onClear?: () => void;
+  ariaAlertOnFeedback?: boolean;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'label'>;
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -68,6 +69,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       clearable = false,
       onClear,
       value,
+      ariaAlertOnFeedback = false,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -94,6 +96,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         feedback={feedback}
         disableLabelAnimation={disableLabelAnimation}
         labelProps={labelProps}
+        ariaAlertOnFeedback={ariaAlertOnFeedback}
       >
         <TextFieldBase
           disabled={disabled}

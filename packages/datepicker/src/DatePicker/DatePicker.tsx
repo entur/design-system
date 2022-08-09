@@ -77,9 +77,13 @@ export type DatePickerProps = {
    */
   prepend?: React.ReactNode;
   /**
-   * Tekst som vises ved hover på «Åpne kalender»-knappen
+   * Tekst som vises når kalender ikke er åpen på «Åpne/Lukk kalender»-knappen ved hover
    */
-  calendarButtonTooltip?: string;
+  calendarButtonTooltipOpen?: string;
+  /**
+   * Tekst som vises når kalender er åpen på «Åpne/Lukk kalender»-knappen ved hover
+   */
+  calendarButtonTooltipClose?: string;
   /** Skjuler knapp for åpning av kalender
    * @default false
    */
@@ -96,11 +100,30 @@ export type DatePickerProps = {
    * @default false
    */
   inline?: boolean;
+  /** Skjermlesertekst for forrige måned-knapen
+   * @default "Forrige måned"
+   */
+  previousMonthAriaLabel?: string;
+  /** Skjermlesertekst for neste måned-knapen
+   * @default "Neste måned"
+   */
+  nextMonthAriaLabel?: string;
+  /**
+   * Skjermlesertekst som leses før dato i kalenderGUI-et
+   * @default "Velg"
+   */
+  chooseDayAriaLabelPrefix?: string;
   // For testing
   'data-cy'?: any;
 } & Omit<
   ReactDatePickerProps,
-  'selected' | 'customInput' | 'onChangeRaw' | 'dateFormat' | 'locale'
+  | 'selected'
+  | 'customInput'
+  | 'onChangeRaw'
+  | 'dateFormat'
+  | 'locale'
+  | 'previousMonthAriaLabel'
+  | 'nextMonthAriaLabel'
 >;
 
 export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
@@ -124,11 +147,15 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       validationFeedback = 'Ugyldig dato',
       validationVariant = 'error',
       disableLabelAnimation = false,
-      calendarButtonTooltip = 'Åpne\xa0kalender',
+      calendarButtonTooltipOpen = 'Åpne\xa0kalender',
+      calendarButtonTooltipClose = 'Lukk\xa0kalender',
       hideCalendarButton = false,
       hideCalendar = false,
       hideValidation = false,
       weekLabel = 'uke',
+      chooseDayAriaLabelPrefix = 'Velg',
+      previousMonthAriaLabel = 'Forrige måned',
+      nextMonthAriaLabel = 'Neste måned',
       locale = nb,
       open,
       ...rest
@@ -236,19 +263,25 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const toggleCalendarGUI = () =>
       datepickerRef.current?.setOpen(!datePickerGUIIsOpen());
 
-    // this focus function will fail if both an inline and a non-inline calendar is present in the same document
     const setFocusToCalendarGUI = () => {
       if (inline || hideCalendar || datePickerGUIIsOpen()) return;
       // 1 frame delay to allow calendar to spawn
       requestAnimationFrame(() => {
+        const datepickerGUIWrapper =
+          // @ts-expect-error .calendar does actually exist in ReactDatePicker ref
+          datepickerRef.current?.calendar.componentNode;
+
         const dateToSetFocusTo = selectedDate
-          ? (document.getElementsByClassName(
-              'eds-datepicker__calender__day--selected',
-            )[0] as HTMLElement | null)
-          : (document.getElementsByClassName(
-              'eds-datepicker__calender__day--today',
-            )[0] as HTMLElement | null);
-        if (dateToSetFocusTo !== null) dateToSetFocusTo.focus();
+          ? (datepickerGUIWrapper.querySelector(
+              '.eds-datepicker__calender__day[tabindex="0"]',
+            ) as HTMLElement | null)
+          : (datepickerGUIWrapper.querySelector(
+              '.eds-datepicker__calender__day[aria-current="date"]',
+            ) as HTMLElement | null);
+        if (dateToSetFocusTo !== null) {
+          datepickerRef.current?.setBlur();
+          dateToSetFocusTo.focus({ preventScroll: true });
+        }
       });
       setShouldFocusOnCalendarButtonAfterSelect(true);
       setShowValidation(false);
@@ -274,6 +307,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
           inline={inline}
           disabled={disabled}
           preventOpenOnFocus={true}
+          chooseDayAriaLabelPrefix={chooseDayAriaLabelPrefix}
           open={hideCalendar ? false : open}
           ref={datepickerRef}
           calendarClassName="eds-datepicker__calender"
@@ -305,6 +339,9 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               decreaseMonth={decreaseMonth}
               prevMonthButtonDisabled={prevMonthButtonDisabled}
               nextMonthButtonDisabled={nextMonthButtonDisabled}
+              previousMonthAriaLabel={previousMonthAriaLabel}
+              nextMonthAriaLabel={nextMonthAriaLabel}
+              locale={locale}
             />
           )}
           customInput={
@@ -312,7 +349,8 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               style={style}
               label={label}
               inputPlaceholder={placeholder}
-              calendarButtonTooltip={calendarButtonTooltip}
+              calendarButtonTooltipOpen={calendarButtonTooltipOpen}
+              calendarButtonTooltipClose={calendarButtonTooltipClose}
               prepend={prepend}
               feedback={getFeedbackAndVariant().feedback}
               variant={getFeedbackAndVariant().variant}
