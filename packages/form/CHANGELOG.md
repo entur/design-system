@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.10...@entur/form@5.4.0) (2022-08-09)
+
+### Features
+
+- **datepicker:** add alert for screenreader when invalid date is inputed ([f21a0d9](https://bitbucket.org/enturas/design-system/commits/f21a0d9a50eb83ce8e7ae0acc876d2a465ea42d0))
+
 ## [5.3.10](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.9...@entur/form@5.3.10) (2022-08-09)
 
 **Note:** Version bump only for package @entur/form

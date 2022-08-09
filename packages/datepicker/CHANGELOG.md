@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.9...@entur/datepicker@2.1.0) (2022-08-09)
+
+### Bug Fixes
+
+- **datepicker:** fix current date read wrong on screen reader for mac ([2162571](https://bitbucket.org/enturas/design-system/commits/21625715db0b121c977cdd36e60a014af91f3a01))
+- **datepicker:** fix focus change to calendar not working when no date is selected ([a429843](https://bitbucket.org/enturas/design-system/commits/a4298437d344a36e77eb1ee6a34af7b04c61e036))
+- **datepicker:** fix focus handling for screen readers when using calendar GUI ([be698b3](https://bitbucket.org/enturas/design-system/commits/be698b317748d9f9d6b2da0a9ba5d0a68c2e7a48))
+- **datepicker:** fix selected date outside of month colour ([36bd1c0](https://bitbucket.org/enturas/design-system/commits/36bd1c041867e8959702ce257d515c149a67b2e9))
+- **datepicker:** misc fixes for datepicker when using screen reader ([d076cff](https://bitbucket.org/enturas/design-system/commits/d076cffb01ac2b04369aff2f8abb6c3a27bcd3cc))
+
+### Features
+
+- **datepicker:** add alert for screenreader when invalid date is inputed ([f21a0d9](https://bitbucket.org/enturas/design-system/commits/f21a0d9a50eb83ce8e7ae0acc876d2a465ea42d0))
+- **datepicker:** add screen reader labels and props for the labels ([da0617f](https://bitbucket.org/enturas/design-system/commits/da0617f829e4ada05ff0b85f1eb4e8e8950e9fe5))
+
 ## [2.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.0.8...@entur/datepicker@2.0.9) (2022-08-09)
 
 **Note:** Version bump only for package @entur/datepicker
