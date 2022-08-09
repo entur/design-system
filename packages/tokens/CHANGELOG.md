@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.3.2...@entur/tokens@3.4.0) (2022-08-09)
+
+### Features
+
+- **js tokens:** add rem version for all relevant js tokens ([4f03069](https://bitbucket.org/enturas/design-system/commits/4f030697c0d6534e39659f87551119aeac27e349))
+
 ## [3.3.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.3.1...@entur/tokens@3.3.2) (2022-04-27)
 
 **Note:** Version bump only for package @entur/tokens

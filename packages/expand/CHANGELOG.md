@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.17](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.16...@entur/expand@3.3.17) (2022-08-09)
+
+### Bug Fixes
+
+- **Base Expandable Panel:** remove redundant CSS property ([062072f](https://bitbucket.org/enturas/design-system/commits/062072f5e301f51bd411625e19d647033fa926c7))
+- **Expandable panel:** make BaseExpandablePanel focus stackable ([5770334](https://bitbucket.org/enturas/design-system/commits/57703343a80ff067b49cb0ec2aabda74d391d080))
+
 ## [3.3.16](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.15...@entur/expand@3.3.16) (2022-07-05)
 
 **Note:** Version bump only for package @entur/expand
