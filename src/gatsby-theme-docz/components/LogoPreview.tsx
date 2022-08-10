@@ -29,7 +29,7 @@ const LogoPreview = () => {
     }
   `);
   const [logoView, setLogoView] = useState<string | null>('normal');
-  let Wrapper = logoView === 'contrast' ? Contrast : 'div';
+  const Wrapper = logoView === 'contrast' ? Contrast : 'div';
   const isContrast = logoView === 'contrast';
   const files = query.allFile.edges;
   return (
