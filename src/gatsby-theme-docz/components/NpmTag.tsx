@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import './NpmTag.scss';
 import { SmallText } from '@entur/typography';
 import { useGetNpmVersion } from './useGetNpmVersion';

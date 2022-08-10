@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heading1, Heading2, Paragraph } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import { GridContainer, GridItem } from '@entur/grid/dist';
-import { NavigationCard, Contrast, MediaCard } from '@entur/layout';
+import { NavigationCard, Contrast } from '@entur/layout';
 import { Link } from 'docz';
 import {
-  ViewIcon,
   ColorPickerIcon,
   SourceCodeIcon,
   EditIcon,

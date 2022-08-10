@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import {
-  Heading1,
-  Heading2,
   Heading3,
   Heading4,
-  Heading5,
   Heading6,
   Link,
   UnorderedList,
