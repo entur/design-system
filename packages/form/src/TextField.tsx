@@ -105,6 +105,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           aria-labelledby={textFieldId}
           onChange={onChange}
           value={value}
+          variant={variant}
           {...rest}
         />
       </BaseFormControl>
