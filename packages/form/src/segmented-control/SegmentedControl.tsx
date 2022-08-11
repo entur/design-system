@@ -1,8 +1,8 @@
 import React from 'react';
-import { Label } from '@entur/typography';
 import { SegmentedProvider, SelectedValue } from './SegmentedContext';
-import './SegmentedControl.scss';
+import { Fieldset } from '../Fieldset';
 import classNames from 'classnames';
+import './SegmentedControl.scss';
 
 export type SegmentedControlProps = {
   /** Navn på input-elementene */
@@ -40,10 +40,14 @@ export const SegmentedControl: React.FC<SegmentedControlProps> = ({
       multiple={false}
       size={size}
     >
-      <Label as="div">{label}</Label>
-      <div className={classNames('eds-segmented-control', className)} {...rest}>
-        {children}
-      </div>
+      <Fieldset label={label}>
+        <div
+          className={classNames('eds-segmented-control', className)}
+          {...rest}
+        >
+          {children}
+        </div>
+      </Fieldset>
     </SegmentedProvider>
   );
 };
