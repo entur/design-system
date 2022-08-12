@@ -1,5 +1,5 @@
 import React from 'react';
-import { VariantType } from './VariantProvider';
+import { useVariant, VariantType } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
 import { useInputGroupContext } from './InputGroupContext';
@@ -65,6 +65,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           ref={ref}
           aria-labelledby={textAreaId}
           onChange={onChange}
+          variant={variant}
           {...rest}
         />
       </BaseFormControl>
@@ -75,10 +76,13 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 type TextAreaBaseProps = {
   readOnly?: boolean;
   disabled?: boolean;
+  variant?: VariantType;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
-  ({ readOnly, disabled, onChange, value, ...rest }, ref) => {
+  ({ readOnly, disabled, onChange, value, variant, ...rest }, ref) => {
+    const contextVariant = useVariant();
+    const currentVariant = variant || contextVariant;
     const { isFilled: isInputFilled, setFilled: setFiller } =
       useInputGroupContext();
 
@@ -112,6 +116,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         disabled={disabled}
         onChange={handleChange}
         value={value}
+        aria-invalid={currentVariant === 'error'}
         {...rest}
       />
     );
