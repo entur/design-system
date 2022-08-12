@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.12](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.11...@entur/dropdown@3.0.12) (2022-08-12)
+
+**Note:** Version bump only for package @entur/dropdown
+
 ## [3.0.11](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.10...@entur/dropdown@3.0.11) (2022-08-09)
 
 **Note:** Version bump only for package @entur/dropdown

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.0...@entur/form@5.4.1) (2022-08-12)
+
+### Bug Fixes
+
+- **segmented control:** fix screen readers not reading label for segmented control ([4f64203](https://bitbucket.org/enturas/design-system/commits/4f64203fada486a569781fa7d22027cd59935af5))
+- **text area:** add missing aria-invalid to text area ([c64ebda](https://bitbucket.org/enturas/design-system/commits/c64ebda1e593fdc60e8dfc786aa3dc2c24eb3524))
+- **text field:** fix check for if input should be aria-invalid ([2ca938b](https://bitbucket.org/enturas/design-system/commits/2ca938b538e9688f42d9cb6e9ae13e130a0b1b95))
+
 # [5.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.3.10...@entur/form@5.4.0) (2022-08-09)
 
 ### Features
