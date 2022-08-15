@@ -1,4 +1,5 @@
-export function hasValue(value: any) {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types -- disabled during Yarn upgrade
+export function hasValue(value: any): boolean {
   return value != null && !(Array.isArray(value) && value.length === 0);
 }
 
@@ -9,7 +10,8 @@ export function hasValue(value: any) {
 // @param SSR
 // @returns {boolean} False when not present or empty string.
 //                    True when any number or string with length.
-export function isFilled(obj: any, SSR = false) {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types -- disabled during Yarn upgrade
+export function isFilled(obj: any, SSR = false): boolean {
   return (
     obj &&
     ((hasValue(obj.value) && obj.value !== '') ||

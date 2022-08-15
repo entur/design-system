@@ -9,16 +9,18 @@ import { SmallAlertBoxProps } from './SmallAlertBox';
 export type SmallExpandableAlertBoxProps = ExpandableAlertBoxProps &
   SmallAlertBoxProps;
 
-export const SmallExpandableAlertBox: React.FC<SmallExpandableAlertBoxProps> = props => {
-  return <ExpandableAlertBox size="small" {...props} />;
-};
+export const SmallExpandableAlertBox: React.FC<SmallExpandableAlertBoxProps> =
+  props => {
+    return <ExpandableAlertBox size="small" {...props} />;
+  };
 
 export type BannerExpandableAlertBoxProps = ExpandableAlertBoxProps &
   BannerAlertBoxProps;
 
-export const BannerExpandableAlertBox: React.FC<BannerExpandableAlertBoxProps> = props => {
-  return <ExpandableAlertBox size="banner" {...props} />;
-};
+export const BannerExpandableAlertBox: React.FC<BannerExpandableAlertBoxProps> =
+  props => {
+    return <ExpandableAlertBox size="banner" {...props} />;
+  };
 
 type ExpandableAlertBoxProps = {
   /**Farge og uttrykk på alert-boksen */

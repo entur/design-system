@@ -11,7 +11,7 @@ export const flatten = (
   current?: string,
   result: any = {},
 ): { [key: string]: string } => {
-  for (let key in obj) {
+  for (const key in obj) {
     const value = obj[key];
     const newKey = current ? `${current}.${key}` : key;
     if (value && typeof value === 'object') {

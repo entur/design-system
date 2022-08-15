@@ -14,7 +14,7 @@ module.exports = {
     </div>
   `,
   baseUrl: '/playroom/',
-  webpackConfig: conf => {
+  webpackConfig: () => {
     return {
       module: {
         rules: [

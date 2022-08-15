@@ -1,7 +1,11 @@
 #!/usr/bin/env node
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const inquirer = require('inquirer');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const fs = require('fs-extra');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const toCase = require('case');
 
 async function run() {

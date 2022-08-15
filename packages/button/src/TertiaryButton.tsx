@@ -22,7 +22,7 @@ export type TertiaryButtonBaseProps = {
 };
 
 export type TertiaryButtonProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<TertiaryButtonBaseProps, E>;
 
 const defaultElement = 'button';

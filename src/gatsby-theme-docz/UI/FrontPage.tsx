@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heading1, Heading2, Paragraph } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import { GridContainer, GridItem } from '@entur/grid/dist';
-import { NavigationCard, Contrast, MediaCard } from '@entur/layout';
+import { NavigationCard, Contrast } from '@entur/layout';
 import { Link } from 'docz';
 import {
-  ViewIcon,
   ColorPickerIcon,
   SourceCodeIcon,
   EditIcon,
@@ -150,21 +149,22 @@ export const FrontPage = () => {
   );
 };
 
+const SHIFTING_HEADER_WORDS = [
+  'sikrer visuell konsistens',
+  'reduserer dobbeltarbeid',
+  'oppnår raskere utviklingstid',
+];
+
 function ShiftingHeader() {
-  const words = [
-    'sikrer visuell konsistens',
-    'reduserer dobbeltarbeid',
-    'oppnår raskere utviklingstid',
-  ];
   const [currentIndex, setIndex] = React.useState(0);
 
   React.useEffect(() => {
     const id = setInterval(
-      () => setIndex(prev => (prev + 1) % words.length),
+      () => setIndex(prev => (prev + 1) % SHIFTING_HEADER_WORDS.length),
       5000,
     );
     return () => clearInterval(id);
-  }, [words]);
+  }, []);
   return (
     <AnimatePresence exitBeforeEnter>
       <motion.div
@@ -177,10 +177,10 @@ function ShiftingHeader() {
         animate="visible"
         exit="down"
         transition={{ ease: 'easeOut' }}
-        key={words[currentIndex]}
+        key={SHIFTING_HEADER_WORDS[currentIndex]}
       >
         <Heading1 style={{ fontWeight: 600, color: colors.brand.coral }}>
-          {words[currentIndex]}
+          {SHIFTING_HEADER_WORDS[currentIndex]}
         </Heading1>
       </motion.div>
     </AnimatePresence>

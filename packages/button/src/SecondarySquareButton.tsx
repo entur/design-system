@@ -22,7 +22,7 @@ export type SecondarySquareButtonBaseProps = {
 };
 
 export type SecondarySquareButtonProps<
-  E extends React.ElementType = typeof defaultElement
+  E extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<SecondarySquareButtonBaseProps, E>;
 
 const defaultElement = 'button';

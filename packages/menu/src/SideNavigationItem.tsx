@@ -31,12 +31,14 @@ type BaseSideNavigationItemOwnProps = {
 };
 
 export type BaseSideNavigationItemProps<
-  E extends React.ElementType = typeof defaultElementBaseItem
+  E extends React.ElementType = typeof defaultElementBaseItem,
 > = PolymorphicPropsWithoutRef<BaseSideNavigationItemOwnProps, E>;
 
 const defaultElementBaseItem = 'a';
 
-const BaseSideNavigationItem: <E extends React.ElementType = typeof defaultElementBaseItem>(
+const BaseSideNavigationItem: <
+  E extends React.ElementType = typeof defaultElementBaseItem,
+>(
   props: BaseSideNavigationItemProps<E>,
 ) => React.ReactElement | null = React.forwardRef(
   <E extends React.ElementType = typeof defaultElementBaseItem>(
@@ -109,12 +111,14 @@ export type SideNavigationItemOwnProps = {
 };
 
 export type SideNavigationItemProps<
-  E extends React.ElementType = typeof defaultElementItem
+  E extends React.ElementType = typeof defaultElementItem,
 > = PolymorphicPropsWithoutRef<SideNavigationItemOwnProps, E>;
 
 const defaultElementItem = 'a';
 
-export const SideNavigationItem: <E extends React.ElementType = typeof defaultElementItem>(
+export const SideNavigationItem: <
+  E extends React.ElementType = typeof defaultElementItem,
+>(
   props: SideNavigationItemProps<E>,
 ) => React.ReactElement | null = React.forwardRef(
   <E extends React.ElementType = typeof defaultElementItem>(

@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'markdown-to-jsx';
 import {
-  Heading1,
-  Heading2,
   Heading3,
   Heading4,
-  Heading5,
   Heading6,
   Link,
   UnorderedList,
@@ -24,6 +21,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
             return React.createElement(
               type,
               [props],
+              // eslint-disable-next-line react/jsx-key -- disabled when we turned on linting for all files in the project
               [<BugIcon inline {...props}></BugIcon>, children],
             );
           }
@@ -31,6 +29,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
             return React.createElement(
               type,
               [props],
+              // eslint-disable-next-line react/jsx-key -- disabled when we turned on linting for all files in the project
               [<NewIcon inline {...props}></NewIcon>, children],
             );
           }

@@ -1,6 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const fs = require('fs-extra');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const fetch = require(`node-fetch`);
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 
 exports.onCreateWebpackConfig = args => {
@@ -37,7 +41,7 @@ const packages = [
   'typography',
 ];
 
-exports.onPreBootstrap = ({}) => {
+exports.onPreBootstrap = () => {
   fs.ensureDirSync(`${__dirname}/changelogs/`);
   fs.ensureDirSync(`${__dirname}/icons/`);
   for (let changelogPackage in packages) {
@@ -53,14 +57,16 @@ exports.onPreBootstrap = ({}) => {
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
   // get data from GitHub API at build time
   await Promise.all(
-    packages.map(async (package, index) => {
-      const data = await fetch(`https://registry.npmjs.org/@entur/${package}`);
+    packages.map(async thePackage => {
+      const data = await fetch(
+        `https://registry.npmjs.org/@entur/${thePackage}`,
+      );
       const result = await data.json();
       createNode({
-        name: package,
+        name: thePackage,
         parent: `__SOURCE__`,
         children: [],
-        id: createNodeId(package),
+        id: createNodeId(thePackage),
         version: result['dist-tags'].latest,
         internal: {
           type: 'NpmPackage',

@@ -28,7 +28,7 @@ type NotificationBadgeBaseProps = {
 };
 
 export type NotificationBadgePropsProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<NotificationBadgeBaseProps, T>;
 
 const defaultElement = 'span';

@@ -4,7 +4,8 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "plugins": ["react"],
   "parserOptions": {
@@ -16,5 +17,28 @@
     "react/display-name": "off",
     "@typescript-eslint/no-explicit-any": "off"
   },
-  "settings": { "react": { "version": "detect" } }
+  "settings": { "react": { "version": "detect" } },
+  "overrides": [
+    {
+      "files": ["*.{ts,tsx}"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": ["./*.js", "*.cjs", "bin/**/*.js", "__mocks__/**/*.js"],
+      "parserOptions": {
+        // Needed to parse dangling commas: https://stackoverflow.com/questions/54299264/eslint-parse-error-on-comma-dangle-in-functions
+        "ecmaVersion": 8
+      },
+      "env": {
+        "node": true,
+        "es6": true
+      }
+    }
+  ]
 }

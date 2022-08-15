@@ -110,7 +110,6 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
         return code;
       }
     };
-    // eslint-disable-next-line no-useless-escape
     const pattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`;
     const componentPropsRegex = new RegExp(pattern);
     const propString = Object.entries(props)

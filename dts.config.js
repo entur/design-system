@@ -1,5 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const sass = require('rollup-plugin-sass');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const postcss = require('postcss');
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {

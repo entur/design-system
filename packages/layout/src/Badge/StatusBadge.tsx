@@ -20,7 +20,7 @@ type StatusBadgeBaseProps = {
 };
 
 export type StatusBadgeProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<StatusBadgeBaseProps, T>;
 
 const defaultElement = 'span';

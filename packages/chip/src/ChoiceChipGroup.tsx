@@ -23,11 +23,10 @@ export const ChoiceChipGroup: React.FC<ChoiceChipGroupProps> = ({
   label,
   ...rest
 }) => {
-  const contextValue = React.useMemo(() => ({ name, value, onChange }), [
-    name,
-    value,
-    onChange,
-  ]);
+  const contextValue = React.useMemo(
+    () => ({ name, value, onChange }),
+    [name, value, onChange],
+  );
   return (
     <ChoiceChipGroupContextProvider value={contextValue}>
       <Fieldset className="eds-choice-chips-group" label={label} {...rest}>

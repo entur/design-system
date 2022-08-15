@@ -1,6 +1,10 @@
 import React from 'react';
 import { debounce } from '@entur/utils';
-import { DropdownItemType, useNormalizedItems } from './useNormalizedItems';
+import {
+  DropdownItemType,
+  NormalizedDropdownItemType,
+  useNormalizedItems,
+} from './useNormalizedItems';
 
 const useIsMounted = () => {
   const isMountedRef = React.useRef(true);
@@ -46,8 +50,12 @@ export const useResolvedItems = (
   /** The list of items, or an async function that resolves the list of items */
   itemsOrItemsResolver: PotentiallyAsyncDropdownItemType,
   /** The time to wait after the input changes to the fetchItems method is called */
-  debounceTimeout: number = 250,
-) => {
+  debounceTimeout = 250,
+): {
+  fetchItems: (arg: string) => void;
+  loading: boolean;
+  items: NormalizedDropdownItemType[];
+} => {
   const isItemsFunction = typeof itemsOrItemsResolver === 'function';
 
   // Here, we normalize the itemsResolver argument to an async function, so we

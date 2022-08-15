@@ -26,7 +26,15 @@ export const SegmentedChoice = React.forwardRef<
   SegmentedChoiceProps
 >(
   (
-    { children, className, style, value, name, onChange = () => {}, ...rest },
+    {
+      children,
+      className,
+      style,
+      value,
+      name,
+      onChange = () => undefined,
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const {
