@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { mergeRefs } from '@entur/utils';
 import { NormalizedDropdownItemType } from './useNormalizedItems';
 import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
@@ -130,15 +131,3 @@ export const SearchableDropdown: React.FC<SearchableDropdownProps> =
       );
     },
   );
-
-const mergeRefs = <T extends HTMLElement>(
-  ...refs: React.MutableRefObject<T>[] | React.ForwardedRef<T>[]
-) => {
-  return (node: T) => {
-    for (const ref of refs) {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) ref.current = node;
-    }
-  };
-};

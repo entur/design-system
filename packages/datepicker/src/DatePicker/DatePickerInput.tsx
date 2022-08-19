@@ -4,6 +4,7 @@ import { TextField, VariantType } from '@entur/form';
 import { Tooltip } from '@entur/tooltip';
 import { IconButton } from '@entur/button';
 import { CalendarIcon } from '@entur/icons';
+import { mergeRefs } from '@entur/utils';
 
 type DatePickerInputProps = {
   style?: React.CSSProperties;
@@ -154,15 +155,3 @@ export const DatePickerInput = React.forwardRef<
     );
   },
 );
-
-const mergeRefs = <T extends HTMLElement>(
-  ...refs: React.MutableRefObject<T>[] | React.ForwardedRef<T>[]
-) => {
-  return (node: T) => {
-    for (const ref of refs) {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) ref.current = node;
-    }
-  };
-};
