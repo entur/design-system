@@ -34,7 +34,12 @@
     "@entur/utils": "^0.4.5",
     "@types/react-datepicker": "^4.3.4",
     "classnames": "^2.3.1",
-    "react-datepicker": "^4.7.0"
+    "react-datepicker": "^4.7.0",
+    "@react-aria/datepicker": "3.1.1",
+    "@react-aria/i18n": "3.6.0",
+    "@react-stately/datepicker": "^3.0.2",
+    "@internationalized/date": "^3.0.1",
+    "@react-types/datepicker": "3.1.1"
   },
   "volta": {
     "node": "14.17.0",

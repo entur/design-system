@@ -1,0 +1,58 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-timepicker__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  .eds-timepicker {
+    justify-content: center;
+    padding: $space-none $space-extra-large3;
+
+    .eds-input-group__label,
+    .eds-input-group__label--filled {
+      margin-left: $space-none !important;
+    }
+
+    &__arrowbutton {
+      &--left {
+        position: absolute;
+        left: 0.35rem;
+        z-index: 1;
+      }
+      &--right {
+        position: relative;
+        right: 2.5rem;
+      }
+
+      // for counter-acting contrast mode
+      color: $colors-brand-blue;
+      &:hover {
+        background-color: $colors-blues-blue70;
+      }
+    }
+
+    &__segment {
+      margin-top: $space-medium;
+      padding: 0 2px;
+      font-variant-numeric: tabular-nums;
+      text-align: end;
+
+      &--placeholder {
+        color: grey;
+      }
+
+      &:focus {
+        background: $colors-misc-focus;
+        outline: none;
+        border-radius: $border-radiuses-default;
+      }
+    }
+  }
+
+  .eds-feedback-text {
+    position: absolute;
+    top: $space-extra-large4;
+  }
+}
