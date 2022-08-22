@@ -1,0 +1,8 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-native-timepicker {
+  input[type='time']::-webkit-calendar-picker-indicator {
+    position: relative;
+    top: -0.5rem;
+  }
+}
