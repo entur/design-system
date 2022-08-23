@@ -4,11 +4,15 @@ import {
   DropzoneOptions,
   FileRejection,
   DropEvent,
+  FileWithPath,
 } from 'react-dropzone';
+import classNames from 'classnames';
+
 import { FileIcon, DeleteIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Label } from '@entur/typography';
-import classNames from 'classnames';
+import { VisuallyHidden } from '@entur/a11y';
+
 import './FileUpload.scss';
 
 type FileUploadProps = DropzoneOptions & {
@@ -35,7 +39,7 @@ type FileUploadProps = DropzoneOptions & {
     event: DropEvent,
   ): void;
   /** Callback for når en fil slettes fra lista */
-  onDelete: (file: File) => void;
+  onDelete: (file: FileWithPath) => void;
   /** Hvilken filtyper som skal aksepteres */
   accept?: string | string[];
   /** Filene som er aktive i komponenten */
@@ -48,6 +52,10 @@ type FileUploadProps = DropzoneOptions & {
   minSize?: number;
   /**Største filstørrelse */
   maxSize?: number;
+  /**Tekst som leses opp av skjermleser på søppelbøtte-ikonet
+   * @default "Fjern fil"
+   */
+  removeFileButtonDescription?: string;
   [key: string]: any;
 };
 
@@ -61,6 +69,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   accept = '',
   files = [],
   label,
+  removeFileButtonDescription = 'Fjern fil',
   style,
   ...rest
 }) => {
@@ -86,20 +95,23 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             },
             { 'eds-file-upload__dropzone--active': isDragActive },
             { 'eds-file-upload__dropzone--reject': isDragReject },
-            { 'eds-file-uploadg__dropzone--error': errorUpload },
+            { 'eds-file-upload__dropzone--error': errorUpload },
           )}
         >
           {success ? successText : errorUpload ? errorText : standbyText}
         </span>
       </div>
       <div className="eds-file-upload__file-list">
-        {files.map((file: any, index) => (
+        {files.map((file: FileWithPath, index) => (
           <div className="eds-file-upload__file-name" key={index}>
             <FileIcon className="eds-file-upload__file-name-icon" />
             <span className="eds-field-upload__file-name-path">
               {file.path} - {convertSizeToHuman(file.size)}{' '}
             </span>
             <IconButton onClick={() => onDelete(file)}>
+              <VisuallyHidden>
+                {removeFileButtonDescription}, {file.name}
+              </VisuallyHidden>
               <DeleteIcon />
             </IconButton>
           </div>
