@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.31](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.30...@entur/tab@0.4.31) (2022-08-24)
+
+### Bug Fixes
+
+- **tab panel:** remove unwanted tabindex=0 from tab panel ([21dc2ff](https://bitbucket.org/enturas/design-system/commits/21dc2ffa96e1e8569fa36e6635e31db033089b58))
+
 ## [0.4.30](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.29...@entur/tab@0.4.30) (2022-08-09)
 
 **Note:** Version bump only for package @entur/tab

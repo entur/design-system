@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.19](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.18...@entur/table@4.5.19) (2022-08-24)
+
+### Bug Fixes
+
+- fix lint errors, mostly related to hooks ([f753806](https://bitbucket.org/enturas/design-system/commits/f75380657d95357f89917ddd7a2bce6f5e04b490))
+
 ## [4.5.18](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.17...@entur/table@4.5.18) (2022-08-12)
 
 **Note:** Version bump only for package @entur/table

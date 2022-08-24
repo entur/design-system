@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.3...@entur/utils@0.4.4) (2022-08-24)
+
+### Bug Fixes
+
+- add parameter and return types ([861b878](https://bitbucket.org/enturas/design-system/commits/861b8782b1fae34242d64371a8af7887ac545df6))
+
 ## [0.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.2...@entur/utils@0.4.3) (2022-02-09)
 
 **Note:** Version bump only for package @entur/utils

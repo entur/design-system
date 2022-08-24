@@ -1,6 +1,6 @@
 {
   "name": "@entur/a11y",
-  "version": "0.2.46",
+  "version": "0.2.47",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/a11y.esm.js",
@@ -26,8 +26,8 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^3.4.0",
-    "@entur/typography": "^1.6.15",
-    "@entur/utils": "^0.4.3"
+    "@entur/tokens": "^3.4.1",
+    "@entur/typography": "^1.6.16",
+    "@entur/utils": "^0.4.4"
   }
 }
