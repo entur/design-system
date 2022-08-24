@@ -8,8 +8,10 @@ import {
   DownArrowIcon,
   UpArrowIcon,
 } from '@entur/icons';
-import { Label } from '@entur/typography';
+import { VisuallyHidden } from '@entur/a11y';
 import { useContrast } from '@entur/layout';
+import { Label } from '@entur/typography';
+import { useRandomId } from '@entur/utils';
 
 import { PaginationPage } from './PaginationPage';
 import { PaginationInput } from './PaginationInput';
@@ -41,6 +43,10 @@ export type PaginationProps = {
    * @default pageNumber => `Gå til side ${pageNumber}`,
    */
   pageLabel?: (pageNumber: number) => string;
+  /**
+   * @default "Nåværende side:"
+   */
+  currentPageLabelForScreenreader?: string;
   /** Vis et felt til høyre for pagineringen hvor man kan angi siden man
    * ønsker å vise i et tekstfelt.
    *
@@ -93,6 +99,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   pageCount,
   pageLabel = pageNumber => `Gå til side ${pageNumber}`,
   previousPageLabel = 'Gå til forrige side',
+  currentPageLabelForScreenreader = 'Nåværende side:',
   showInput,
 
   numberOfResults,
@@ -110,6 +117,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const isContrast = useContrast();
   const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
+  const paginationId = useRandomId('eds-pagination');
 
   const isFirstPostSelected = currentPage === 1;
   const isLastPostSelected = currentPage === pageCount;
@@ -175,6 +183,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                       'eds-pagination-menu__menu-button--open': isOpen,
                     })}
                   >
+                    <VisuallyHidden>{showNumberOfResultsLabel} </VisuallyHidden>
                     {resultsPerPage}
                     {isOpen ? <UpArrowIcon /> : <DownArrowIcon />}
                   </MenuButton>
@@ -216,6 +225,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <PaginationPage
             onClick={() => onPageChange(currentPage - 1)}
             aria-label={previousPageLabel}
+            aria-describedby={paginationId}
             disabled={isFirstPostSelected}
           >
             <LeftArrowIcon />
@@ -239,6 +249,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           <PaginationPage
             onClick={() => onPageChange(currentPage + 1)}
             aria-label={nextPageLabel}
+            aria-describedby={paginationId}
             disabled={isLastPostSelected}
           >
             <RightArrowIcon />
@@ -253,6 +264,9 @@ export const Pagination: React.FC<PaginationProps> = ({
           />
         )}
       </div>
+      <VisuallyHidden id={paginationId}>
+        {currentPageLabelForScreenreader} {currentPage}
+      </VisuallyHidden>
     </div>
   );
 };

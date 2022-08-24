@@ -14,6 +14,7 @@ export type PaginationPageProps = {
   onClick: () => void;
   /** Tekst for skjermlesere */
   'aria-label': string;
+  'aria-describedby'?: string;
 };
 export const PaginationPage: React.FC<PaginationPageProps> = ({
   children,
@@ -22,6 +23,7 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
   disabled,
   onClick,
   'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedby,
 }) => (
   <button
     className={classNames(
@@ -34,6 +36,7 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
     type="button"
     onClick={onClick}
     aria-label={ariaLabel}
+    aria-describedby={ariaDescribedby}
     aria-current={selected ? 'page' : false}
   >
     {children}
