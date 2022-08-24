@@ -15,6 +15,7 @@ export const TabPanel: React.FC<TabPanelProps> = ({ className, ...rest }) => {
     <ReachTabPanel
       className={classNames('eds-tab-panel', className)}
       {...rest}
+      tabIndex={undefined}
     />
   );
 };
