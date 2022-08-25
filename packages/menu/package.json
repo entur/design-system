@@ -23,6 +23,7 @@
     "lint": "dts lint"
   },
   "dependencies": {
+    "@entur/a11y": "0.2.47",
     "@entur/button": "^2.10.2",
     "@entur/expand": "^3.3.18",
     "@entur/icons": "^4.3.2",
