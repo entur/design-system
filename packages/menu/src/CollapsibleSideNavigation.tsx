@@ -15,6 +15,14 @@ type CollapsibleSideNavigationProps = SideNavigationProps & {
    *  @default 50%
    */
   collapsibleButtonPosition?: string;
+  /** Aria-label for knappen som åpner menyen
+   * @default "Åpne sidemeny"
+   */
+  openSideMenuAriaLabel?: string;
+  /** Aria-label for knappen som lukker menyen
+   * @default "Lukk sidemeny"
+   */
+  closeSideMenuAriaLabel?: string;
 };
 
 export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps> =
@@ -25,6 +33,8 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
     collapsed: collapsible,
     onCollapseToggle,
     collapsibleButtonPosition = '50%',
+    openSideMenuAriaLabel = 'Åpne sidemeny',
+    closeSideMenuAriaLabel = 'Lukk sidemeny',
     ...rest
   }) => {
     const [collapsedMenu, setCollapsedMenu] = useControllableProp({
@@ -54,7 +64,11 @@ export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps>
             onClick={() => setCollapsedMenu(!collapsedMenu)}
             style={{ top: `${collapsibleButtonPosition}` }}
           >
-            {collapsedMenu ? <MenuIcon /> : <LeftArrowIcon />}
+            {collapsedMenu ? (
+              <MenuIcon aria-label={openSideMenuAriaLabel} />
+            ) : (
+              <LeftArrowIcon aria-label={closeSideMenuAriaLabel} />
+            )}
           </button>
         </ul>
       </SideNavigationContext.Provider>
