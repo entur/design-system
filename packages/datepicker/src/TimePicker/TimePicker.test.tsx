@@ -1,12 +1,20 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Time, ZonedDateTime } from '@internationalized/date';
+import {
+  parseAbsolute,
+  parseDateTime,
+  parseTime,
+  Time,
+  ZonedDateTime,
+} from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { TimePicker } from '.';
+import { TimePicker, nativeDateToTimeValue, timeValueToNativeDate } from '.';
+// import { TimePicker, nativeDateToTimeValue } from '.';
 
 expect.extend(toHaveNoViolations);
 
 // Locale is added on all tests to ensure a static testing basis
+// Time zone is set globally for Jest as UTC in ~/global-setup.js
 
 test('renders a timepicker', () => {
   const spy = jest.fn();
@@ -135,4 +143,87 @@ test("Doesn't violate basic accessibility requirements", async () => {
   );
   const results = await axe(container);
   expect(results).toHaveNoViolations();
+});
+
+test('Timezones should always be UTC', () => {
+  expect(new Date().getTimezoneOffset()).toBe(0);
+});
+
+test('Util function correctly converts JS Date to TimeVale', () => {
+  const dateObject = new Date(1997, 6, 10, 10, 0);
+  const timeZone = 'America/Los_Angeles';
+  const customOffset = -14400000;
+
+  const dateWithTimeZoneAndOffset = nativeDateToTimeValue(
+    dateObject,
+    false,
+    timeZone,
+    customOffset,
+  );
+  const dateWithTimeZoneOnly = nativeDateToTimeValue(
+    dateObject,
+    false,
+    timeZone,
+  );
+  const withTimeOnly = nativeDateToTimeValue(dateObject, true);
+  const dateWithoutTimeZone = nativeDateToTimeValue(dateObject);
+
+  expect(dateWithTimeZoneAndOffset.toString()).toEqual(
+    '1997-07-10T10:00:00-04:00[America/Los_Angeles]',
+  );
+  expect(dateWithTimeZoneOnly.toString()).toEqual(
+    '1997-07-10T03:00:00-07:00[America/Los_Angeles]',
+  );
+  expect(withTimeOnly.toString()).toEqual('10:00:00');
+  expect(dateWithoutTimeZone.toString()).toEqual('1997-07-10T10:00:00');
+});
+
+test('util function correctly converts from any TimeValue to JS Date', () => {
+  const dateString = '1997-07-10';
+  const timeString = '10:00:00';
+  const timeZone = 'America/Los_Angeles';
+
+  const zonedDateTime = parseAbsolute(`${dateString}T${timeString}Z`, timeZone);
+  const calendarDateTime = parseDateTime(
+    `${dateString}T${timeString.substring(0, 5)}`,
+  );
+  const time = parseTime(timeString.substring(0, 5));
+
+  expect(timeValueToNativeDate(zonedDateTime).toISOString()).toEqual(
+    '1997-07-10T10:00:00.000Z',
+  );
+  expect(timeValueToNativeDate(calendarDateTime).toISOString()).toEqual(
+    '1997-07-10T10:00:00.000Z',
+  );
+  expect(
+    timeValueToNativeDate(calendarDateTime, timeZone).toISOString(),
+  ).toEqual('1997-07-10T17:00:00.000Z');
+  expect(timeValueToNativeDate(time).toLocaleTimeString()).toEqual(
+    '10:00:00 AM',
+  );
+
+  // timeZone should not impact result for ZonedDateTime and Time
+  expect(timeValueToNativeDate(zonedDateTime, timeZone).toISOString()).toEqual(
+    '1997-07-10T10:00:00.000Z',
+  );
+  expect(timeValueToNativeDate(time, timeZone).toLocaleTimeString()).toEqual(
+    '10:00:00 AM',
+  );
+});
+
+test('util function converts from Date to TimeValue and back again correctly', () => {
+  const dateObject = new Date(1997, 6, 10, 10, 0);
+  const timeZone = 'America/Los_Angeles';
+
+  expect(
+    timeValueToNativeDate(nativeDateToTimeValue(dateObject, false, timeZone)),
+  ).toEqual(dateObject);
+  expect(timeValueToNativeDate(nativeDateToTimeValue(dateObject))).toEqual(
+    dateObject,
+  );
+  expect(
+    timeValueToNativeDate(
+      nativeDateToTimeValue(dateObject, true),
+    ).toLocaleTimeString(),
+  ).toEqual(dateObject.toLocaleTimeString());
 });

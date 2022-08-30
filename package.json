@@ -80,7 +80,8 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.ts"
-    ]
+    ],
+    "globalSetup": "./global-setup.js"
   },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
