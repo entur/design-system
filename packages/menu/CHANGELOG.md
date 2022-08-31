@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.8](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.7...@entur/menu@4.1.8) (2022-08-31)
+
+### Bug Fixes
+
+- **pagination:** add more descriptive screen reader texts to pagintion ([7673059](https://bitbucket.org/enturas/design-system/commits/7673059920e94c75ff4e15c24feced7557a59676))
+
 ## [4.1.7](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.6...@entur/menu@4.1.7) (2022-08-24)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.46](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.45...@entur/fileupload@0.3.46) (2022-08-31)
+
+### Bug Fixes
+
+- **file upload:** add descriptive screen reader text to remove file button ([42c37d1](https://bitbucket.org/enturas/design-system/commits/42c37d131e2db5f712b1ce7cf3336b6d536cadd2))
+
 ## [0.3.45](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.44...@entur/fileupload@0.3.45) (2022-08-24)
 
 **Note:** Version bump only for package @entur/fileupload
