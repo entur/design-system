@@ -62,6 +62,8 @@ const BaseSideNavigationItem: <
           className={classNames('eds-side-navigation__click-target', {
             'eds-side-navigation__click-target--active': active,
           })}
+          aria-label={icon ? children : undefined}
+          aria-current={active ? 'page' : undefined}
           ref={ref}
           {...rest}
         >

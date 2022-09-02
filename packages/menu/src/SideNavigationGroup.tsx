@@ -52,6 +52,7 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
         onClick={() => setOpen(!isOpen)}
         type="button"
         className="eds-side-navigation-group__trigger"
+        aria-label={`${title}, utvidbar meny, ${isOpen ? 'åpen' : 'lukket'}`}
       >
         <span>
           {icon && (

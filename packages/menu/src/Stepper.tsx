@@ -47,6 +47,10 @@ export const Stepper: React.FC<StepperProps> = ({
             className={classNames('eds-stepper__item__container', {
               'eds-stepper__item__container--non-interactive': !interactive,
             })}
+            aria-current={isActive ? 'step' : undefined}
+            aria-label={`Steg ${i + 1} av ${steps.length}, ${step} ${
+              hasBeenActive ? ', fullført' : ''
+            }`}
             {...props}
           >
             <div
@@ -56,7 +60,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 { 'eds-stepper__item__square--inactive': activeIndex < i },
                 { 'eds-stepper__item__square--has-been': hasBeenActive },
               )}
-            ></div>
+            />
             <Label
               className={classNames(
                 'eds-stepper__item__label',
@@ -68,7 +72,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 },
               )}
             >
-              {showStepperIndex && i + 1 + '.'} {step}
+              {showStepperIndex && i + 1 + '. ' + step}
             </Label>
           </Element>
         );
