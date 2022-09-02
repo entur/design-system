@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.9...@entur/menu@4.1.10) (2022-09-02)
+
+### Bug Fixes
+
+- **collapsible side navigation:** add descriptive aria-label to open/close side navigation button ([a6a5faf](https://bitbucket.org/enturas/design-system/commits/a6a5faf697123ca350e2c6df8e12bb4f27fdc7ad))
+- **side navigation:** add descriptive label for side navigation group ([bd35115](https://bitbucket.org/enturas/design-system/commits/bd351153e651e042aff04c7616ac2af4cc18901d))
+- **side navigation item:** add aria-current=page to active side navigation item ([6b8f499](https://bitbucket.org/enturas/design-system/commits/6b8f499184ee69c6d5dc1505a8dc866691ee577a))
+- **side navigation item:** add descriptive aria-label to side navigation item when icon is used ([0757134](https://bitbucket.org/enturas/design-system/commits/0757134121d9e78e401b3a05c277e7da67280486))
+- **side navigation item:** add not-allowed cursor style to disabled navigation items ([a071782](https://bitbucket.org/enturas/design-system/commits/a07178257a9ce41b37f162314b48674f77351197))
+- **Stepper:** add more descriptive labels for screenreaders ([5077da7](https://bitbucket.org/enturas/design-system/commits/5077da73d4add7e244641026dab49ba4f49d1125))
+
 ## [4.1.9](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.8...@entur/menu@4.1.9) (2022-08-31)
 
 **Note:** Version bump only for package @entur/menu
