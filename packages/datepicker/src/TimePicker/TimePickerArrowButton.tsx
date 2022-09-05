@@ -22,12 +22,13 @@ export const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
       className={classNames(
         'eds-timepicker__arrowbutton',
         `eds-timepicker__arrowbutton--${direction}`,
+        { 'eds-timepicker__arrowbutton--disabled': disabled },
       )}
       type="button"
       tabIndex={-1}
       onClick={onClick}
-      disabled={disabled}
       aria-label={ariaLabel}
+      disabled={disabled}
     >
       {direction === 'left' ? <LeftArrowIcon /> : <RightArrowIcon />}
     </IconButton>

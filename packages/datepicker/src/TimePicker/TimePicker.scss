@@ -22,8 +22,13 @@
         z-index: 1;
       }
       &--right {
-        position: relative;
-        right: 2.5rem;
+        position: absolute;
+        right: 0.4rem;
+      }
+      &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        visibility: hidden;
       }
 
       // for counter-acting contrast mode
@@ -49,6 +54,15 @@
         border-radius: $border-radiuses-default;
       }
     }
+
+    .eds-form-control__append--tooltip {
+      margin-top: 0.75rem;
+      margin-right: -0.25rem;
+    }
+  }
+
+  .eds-icon-button--disabled__wrapper {
+    display: none;
   }
 
   .eds-feedback-text {
