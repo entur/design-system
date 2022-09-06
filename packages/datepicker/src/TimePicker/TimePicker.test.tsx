@@ -1,6 +1,8 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import {
+  getLocalTimeZone,
+  now,
   parseAbsolute,
   parseDateTime,
   parseTime,
@@ -128,6 +130,40 @@ test('adds custom minutes on button click', () => {
 
   expect(newHour === 4).toBeTruthy();
   expect(newMinute === 35).toBeTruthy();
+});
+
+test('sets time to current time on button click when selected time is undefined', () => {
+  const spy = jest.fn();
+  const currentTime = now(getLocalTimeZone());
+
+  const { container } = render(
+    <TimePicker
+      label="TestLabel"
+      selectedTime={undefined}
+      onChange={spy}
+      minuteIncrementForArrowButtons={500}
+      locale="no-NB"
+    />,
+  );
+
+  const addTimeButton = container.getElementsByClassName(
+    'eds-timepicker__arrowbutton--right',
+  )[0];
+  fireEvent(
+    addTimeButton,
+    new MouseEvent('click', {
+      bubbles: true,
+    }),
+  );
+
+  const clickResult = spy.mock.calls;
+  const newHour = clickResult[0][0].hour;
+  const newMinute = clickResult[0][0].minute;
+
+  expect(newHour).toEqual(
+    currentTime.minute >= 30 ? currentTime.hour + 1 : currentTime.hour,
+  );
+  expect(newMinute).toEqual(0);
 });
 
 test("Doesn't violate basic accessibility requirements", async () => {
