@@ -20,7 +20,7 @@ import './TimePicker.scss';
 
 export type TimePickerProps = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
-  selectedTime?: TimeValue;
+  selectedTime: TimeValue | null;
   /** Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format */
   onChange: (value: TimeValue) => void;
   /** Label til TimePicker */
@@ -76,7 +76,6 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       minuteIncrementForArrowButtons = 30,
       leftArrowButtonAriaLabel = `Trekk fra ${minuteIncrementForArrowButtons} minutter`,
       rightArrowButtonAriaLabel = `Legg til ${minuteIncrementForArrowButtons} minutter`,
-      children,
       ...rest
     },
     ref,
@@ -86,20 +85,24 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
 
     const state = useTimeFieldState({
       onChange,
-      label,
+      label: label,
       locale,
-      value: selectedTime,
+      value: selectedTime === null ? undefined : selectedTime,
       hideTimeZone: !showTimeZone,
       isDisabled: disabled,
       ...rest,
     });
     const timeFieldRef = useRef(null);
-    const { labelProps, fieldProps } = useTimeField(rest, state, timeFieldRef);
+    const { labelProps, fieldProps } = useTimeField(
+      { ...rest, label: label },
+      state,
+      timeFieldRef,
+    );
     const id = useRandomId('timepicker');
 
     const handleOnClickArrowButton = (minutes: number) => {
       if (someSegmentIsUndefined) {
-        setToCurrentHour();
+        setTimeToNearestMinuteIncrement();
       } else {
         addMinutesToSelectedTime(minutes);
       }
@@ -109,27 +112,23 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
       segment => segment.text === '––',
     );
 
-    const setToCurrentHour = () => {
+    const setTimeToNearestMinuteIncrement = () => {
       const currentTime = now(getLocalTimeZone());
-      const currentHour =
-        currentTime.minute >= 30 ? currentTime.hour + 1 : currentTime.hour;
-      state.setSegment('minute', 0); // this gets overridden but still needed
-      state.setSegment('hour', currentHour);
+      const roundedMinute =
+        Math.floor(currentTime.minute / minuteIncrementForArrowButtons) *
+        minuteIncrementForArrowButtons;
+      const newTime = currentTime.set({ minute: roundedMinute });
+      onChange(newTime);
     };
 
     const addMinutesToSelectedTime = (minutes: number) => {
       state.value &&
         state.setValue(
-          state.value &&
-            state.value.add({
-              minutes: minutes,
-            }),
+          state.value?.add({
+            minutes: minutes,
+          }),
         );
     };
-
-    const isAmPm = state.segments.some(
-      segment => segment.text === 'AM' || segment.text === 'PM',
-    );
 
     return (
       <I18nProvider locale={locale}>
@@ -157,13 +156,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
             feedback={feedback}
           >
             {state.segments.map((segment, i) => (
-              <TimeSegment
-                segment={segment}
-                state={state}
-                isAmPm={isAmPm}
-                index={i}
-                key={i}
-              />
+              <TimeSegment segment={segment} state={state} key={i} />
             ))}
           </BaseFormControl>
           <TimePickerArrowButton

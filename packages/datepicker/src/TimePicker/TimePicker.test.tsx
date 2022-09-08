@@ -11,27 +11,36 @@ import {
 } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
 import { TimePicker, nativeDateToTimeValue, timeValueToNativeDate } from '.';
-// import { TimePicker, nativeDateToTimeValue } from '.';
 
 expect.extend(toHaveNoViolations);
 
 // Locale is added on all tests to ensure a static testing basis
 // Time zone is set globally for Jest as UTC in ~/global-setup.js
 
+/* For some reason, locale='no-NO' does not change the aria-label language in jest tests. This works outside jest 
+   and for other locals than no-NO in jest. Tests should be updated to use locale no-NO if the reason for this is solved.
+   In the mean time, locale="en-GB" is used, as this one is correctly applied and ensures stability no mater where the
+   test is run */
+
 test('renders a timepicker', () => {
   const spy = jest.fn();
   const currentTime = new Time(19, 1);
-  const { queryByText } = render(
+  const { getByRole, queryAllByLabelText } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
-      locale="no-NB"
+      locale="en-GB"
     />,
   );
-  expect(queryByText('19')).toBeInTheDocument();
-  expect(queryByText('01')).toBeInTheDocument();
-  expect(queryByText('TestLabel')).toBeInTheDocument();
+
+  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent(
+    '19',
+  );
+  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
+    '01',
+  );
+  expect(queryAllByLabelText('test')[0]).toBeInTheDocument();
 });
 
 test('correct time zone is applied', () => {
@@ -40,33 +49,42 @@ test('correct time zone is applied', () => {
     // should be 04:35 in Los Angeles
     new ZonedDateTime(2022, 8, 25, 'America/Los_Angeles', -28800, 11, 35);
 
-  const { queryByText } = render(
+  const { getByRole } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
-      locale="no-NB"
+      locale="en-GB"
     />,
   );
-  expect(queryByText('04')).toBeInTheDocument();
-  expect(queryByText('35')).toBeInTheDocument();
+
+  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent(
+    '04',
+  );
+  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
+    '35',
+  );
 });
 
 test('locale is respected', () => {
   const spy = jest.fn();
   const currentTime = new Time(20, 15);
 
-  const { queryByText } = render(
+  const { getByRole } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
       locale="en-US"
     />,
   );
-  expect(queryByText('8')).toBeInTheDocument();
-  expect(queryByText('15')).toBeInTheDocument();
-  expect(queryByText('PM')).toBeInTheDocument();
+  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent('8');
+  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
+    '15',
+  );
+  expect(getByRole('spinbutton', { name: 'test AM/PM' })).toHaveTextContent(
+    'PM',
+  );
 });
 
 test('adds default minutes on button click', () => {
@@ -75,10 +93,10 @@ test('adds default minutes on button click', () => {
 
   const { container } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
-      locale="no-NB"
+      locale="en-GB"
     />,
   );
 
@@ -106,11 +124,11 @@ test('adds custom minutes on button click', () => {
 
   const { container } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
       minuteIncrementForArrowButtons={500}
-      locale="no-NB"
+      locale="en-GB"
     />,
   );
 
@@ -135,14 +153,15 @@ test('adds custom minutes on button click', () => {
 test('sets time to current time on button click when selected time is undefined', () => {
   const spy = jest.fn();
   const currentTime = now(getLocalTimeZone());
+  const minuteIncrement = 15;
 
   const { container } = render(
     <TimePicker
-      label="TestLabel"
-      selectedTime={undefined}
+      label="test"
+      selectedTime={null}
       onChange={spy}
-      minuteIncrementForArrowButtons={500}
-      locale="no-NB"
+      minuteIncrementForArrowButtons={minuteIncrement}
+      locale="en-GB"
     />,
   );
 
@@ -160,10 +179,10 @@ test('sets time to current time on button click when selected time is undefined'
   const newHour = clickResult[0][0].hour;
   const newMinute = clickResult[0][0].minute;
 
-  expect(newHour).toEqual(
-    currentTime.minute >= 30 ? currentTime.hour + 1 : currentTime.hour,
+  expect(newHour).toEqual(currentTime.hour);
+  expect(newMinute).toEqual(
+    Math.floor(currentTime.minute / minuteIncrement) * minuteIncrement,
   );
-  expect(newMinute).toEqual(0);
 });
 
 test("Doesn't violate basic accessibility requirements", async () => {
@@ -171,10 +190,10 @@ test("Doesn't violate basic accessibility requirements", async () => {
   const currentTime = new Time(20, 15);
   const { container } = render(
     <TimePicker
-      label="TestLabel"
+      label="test"
       selectedTime={currentTime}
       onChange={spy}
-      locale="no-NB"
+      locale="en-GB"
     />,
   );
   const results = await axe(container);
@@ -185,16 +204,16 @@ test('Timezones should always be UTC', () => {
   expect(new Date().getTimezoneOffset()).toBe(0);
 });
 
-test('Util function correctly converts JS Date to TimeVale', () => {
+test('Util function correctly converts JS Date to TimeValue', () => {
   const dateObject = new Date(1997, 6, 10, 10, 0);
   const timeZone = 'America/Los_Angeles';
-  const customOffset = -14400000;
+  const fourHoursExampleOffset = -14400000;
 
   const dateWithTimeZoneAndOffset = nativeDateToTimeValue(
     dateObject,
     false,
     timeZone,
-    customOffset,
+    fourHoursExampleOffset,
   );
   const dateWithTimeZoneOnly = nativeDateToTimeValue(
     dateObject,
