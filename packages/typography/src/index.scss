@@ -124,7 +124,7 @@ html {
   color: var(--primary-text-color);
   font-size: $font-sizes-large;
   line-height: $line-heights-extra-large;
-  margin: 0 0 $space-default;
+  margin: 0 0 $space-extra-large;
   @include for-desktop {
     font-size: $font-sizes-large;
     line-height: $line-heights-extra-large;
@@ -264,6 +264,9 @@ html {
 }
 
 .eds-code-text {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
   background-color: $colors-greys-grey90;
   border: $border-widths-small solid $colors-greys-grey70;
   border-radius: $border-radiuses-medium;

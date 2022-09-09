@@ -42,7 +42,7 @@ export const NativeTimePicker = React.forwardRef<
         feedback={feedback}
         variant={variant}
         labelId={nativetimepickerId}
-        disableLabelAnimation={true}
+        disableLabelAnimation
       >
         <NativeTimePickerBase
           onChange={onChange}

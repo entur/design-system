@@ -1,12 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '../gatsby-theme-docz/variables';
 
 .table-of-content-container {
   display: none;
   z-index: 1;
-  @media screen and (min-width: 104rem) {
+  @media screen and (min-width: $show-toc-min-width) {
     display: block;
     position: fixed;
-    left: 96rem;
+    left: $toc-left-position;
     top: 9rem;
   }
 }
