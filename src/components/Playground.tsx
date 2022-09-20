@@ -1,16 +1,20 @@
 import React from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
+import classNames from 'classnames';
+
 import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
-import { BaseCard, Contrast } from '@entur/layout';
-import prismTheme from '~/components/prism-theme';
-import './Playground.scss';
+import { Contrast } from '@entur/layout';
+import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand/src';
-import { AdvancedPlayground } from './AdvancedPlayground';
-import { Button } from '@entur/button';
 import { SourceCodeIcon } from '@entur/icons/dist';
-import classNames from 'classnames';
+
+// @ts-expect-error mangler typer for theme-fil
+import theme from '~/components/themeForPlayground';
+import { AdvancedPlayground } from './AdvancedPlayground';
+
+import './Playground.scss';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -56,24 +60,33 @@ export const Playground: React.FC<PlaygroundProps> = ({
         scope={__scope}
         language={language}
         transformCode={transformCode}
-        theme={prismTheme}
+        theme={theme}
       >
-        <div
-          className={classNames('playground', { 'eds-contrast': isContrast })}
-        >
-          <div>
-            {hideContrastOption ? (
-              <div />
-            ) : (
+        <div style={{ display: 'flex', marginTop: '1rem' }}>
+          {!hideContrastOption && (
+            <div className="playground__contrast-switch">
+              <Label as="span">Kontrast</Label>
               <Switch
                 checked={isContrast}
                 onChange={() => setContrast(prev => !prev)}
-                className="playground__contrast-switch"
-              >
-                <Label as="span">Kontrast</Label>
-              </Switch>
-            )}
-          </div>
+              ></Switch>
+            </div>
+          )}
+          {!defaultShowEditor && (
+            <SecondarySquareButton
+              className="playground__code-button"
+              onClick={() => setShowingEditor(prev => !prev)}
+            >
+              {isShowingEditor ? 'Skjul kode' : 'Vis kode'} <SourceCodeIcon />
+            </SecondarySquareButton>
+          )}
+        </div>
+        <div
+          className={classNames('playground', {
+            'eds-contrast': isContrast,
+            'playground--open': isShowingEditor,
+          })}
+        >
           <ConditionalWrapper
             condition={isContrast}
             wrapper={(children: React.ReactNode) => (
@@ -83,18 +96,11 @@ export const Playground: React.FC<PlaygroundProps> = ({
             <LivePreview style={{ ...style }} />
           </ConditionalWrapper>
         </div>
-        <div className="playground__controls">
-          <BaseCard
-            className="playground__controls__card-button"
-            onClick={() => setShowingEditor(prev => !prev)}
-            as="button"
-          >
-            <SourceCodeIcon className="playground__controls__card-button-icon" />
-            Vis kode
-          </BaseCard>
-        </div>
         <BaseExpand open={isShowingEditor}>
-          <LiveEditor className="playground__editor" />
+          <LiveEditor
+            style={{ overflowX: 'scroll' }}
+            className="playground__editor"
+          />
         </BaseExpand>
       </LiveProvider>
     );
@@ -105,9 +111,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
         scope={__scope}
         props={props}
         style={style}
-      >
-        <Button></Button>
-      </AdvancedPlayground>
+      />
     );
   }
 };

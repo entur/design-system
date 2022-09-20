@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropsComponentProps } from 'docz';
 import { CodeText, Paragraph } from '@entur/typography';
-import { CheckIcon } from '@entur/icons';
 import {
   Table,
   TableHead,
@@ -11,7 +10,6 @@ import {
   DataCell,
 } from '@entur/table';
 import { ExpandableText } from '@entur/expand';
-import { colors } from '@entur/tokens';
 import { useSettings } from './SettingsContext';
 import './Props.scss';
 
@@ -49,7 +47,6 @@ const Props: React.FC<PropsProps> = ({
             <TableRow>
               <HeaderCell>Navn</HeaderCell>
               <HeaderCell>Type</HeaderCell>
-              <HeaderCell>Påkrevd?</HeaderCell>
               {hasAnyDefaultValues && <HeaderCell>Default-verdi</HeaderCell>}
               <HeaderCell>Beskrivelse</HeaderCell>
             </TableRow>
@@ -58,17 +55,16 @@ const Props: React.FC<PropsProps> = ({
             {Object.entries(props).map(([propName, details]) => (
               <TableRow key={propName}>
                 <DataCell>
-                  <CodeText>{propName}</CodeText>
+                  <CodeText>{`${propName}${
+                    details.required ? '' : '?'
+                  }`}</CodeText>
                 </DataCell>
                 <DataCell>
                   <CodeText className="props-table__type">
-                    {skipUndefinedType(details.type.name)}
+                    {propName === 'as'
+                      ? 'string | React.ElementType'
+                      : skipUndefinedType(details.type.name)}
                   </CodeText>
-                </DataCell>
-                <DataCell>
-                  {details.required && (
-                    <CheckIcon style={{ color: colors.validation.mint }} />
-                  )}
                 </DataCell>
                 {hasAnyDefaultValues && (
                   <DataCell>

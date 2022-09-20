@@ -34,7 +34,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "10.4.6",
+    "@testing-library/react": "^10.4.9",
     "@types/jest": "^27.4.0",
     "@types/jest-axe": "^3.5.3",
     "@types/react": "^16.9.56",
@@ -80,12 +80,14 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.ts"
-    ]
+    ],
+    "globalSetup": "./global-setup.js"
   },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
     "@emotion/core": "10.0.28",
     "@reach/router": "^1.2.1",
+    "@types/react-syntax-highlighter": "^15.5.5",
     "classnames": "^2.3.1",
     "copy-text-to-clipboard": "^3.0.1",
     "docz": "2.4.0",
@@ -102,6 +104,7 @@
     "react-dom": "^16.11.0",
     "react-helmet-async": "^1.0.4",
     "react-live": "^2.3.0",
+    "react-syntax-highlighter": "^15.5.0",
     "wcag-contrast": "^3.0.0"
   },
   "resolutions": {

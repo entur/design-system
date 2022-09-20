@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import {
   BaseFormControl,
   isFilled,
@@ -6,8 +7,9 @@ import {
   useVariant,
   VariantType,
 } from '@entur/form';
-import { ClockIcon } from '@entur/icons';
 import { useOnMount, useRandomId } from '@entur/utils';
+
+import './NativeTimePicker.scss';
 
 export type NativeTimePickerProps = {
   /** Ekstra klassenavn */
@@ -18,13 +20,7 @@ export type NativeTimePickerProps = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
-  /** Plasserer labelen statisk på toppen av inputfeltet
-   * @default false
-   */
-  disableLabelAnimation?: boolean;
-  /** Tekst eller ikon som kommer før inputfelter
-   * @default <ClockIcon />
-   */
+  /** Tekst eller ikon som kommer før inputfelter */
   prepend?: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -33,30 +29,20 @@ export const NativeTimePicker = React.forwardRef<
   NativeTimePickerProps
 >(
   (
-    {
-      className,
-      style,
-      onChange,
-      label,
-      feedback,
-      variant,
-      disableLabelAnimation,
-      prepend = <ClockIcon />,
-      ...rest
-    },
+    { className, style, onChange, label, feedback, variant, prepend, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const nativetimepickerId = useRandomId('eds-nativetimepicker');
+    const nativetimepickerId = useRandomId('eds-native-timepicker');
     return (
       <BaseFormControl
         style={style}
-        className={className}
+        className={classNames(className, 'eds-native-timepicker')}
         prepend={prepend}
         label={label}
         feedback={feedback}
         variant={variant}
         labelId={nativetimepickerId}
-        disableLabelAnimation={disableLabelAnimation}
+        disableLabelAnimation
       >
         <NativeTimePickerBase
           onChange={onChange}
@@ -112,7 +98,7 @@ const NativeTimePickerBase = React.forwardRef<
       ref={ref}
       aria-invalid={currentVariant === 'error'}
       type="time"
-      className="eds-form-control eds-native-date-picker"
+      className="eds-form-control"
       onChange={handleChange}
       value={value}
       {...rest}

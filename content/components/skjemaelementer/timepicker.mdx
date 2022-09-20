@@ -9,40 +9,156 @@ tags: timepicker, tidvelger, tid
 ---
 
 import { Props } from 'docz';
-import { addDays, addWeeks } from 'date-fns';
-import { TimePicker, NativeTimePicker } from '@entur/datepicker';
+import { now } from '@internationalized/date';
+
+import {
+  TimePicker,
+  NativeTimePicker,
+  nativeDateToTimeValue,
+  timeValueToNativeDate,
+} from '@entur/datepicker';
+
 import { Playground } from '~/components/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
+import { CodeBlock } from '~/components/CodeBlock';
 
 <PageHeader />
 
-<Playground style={{ display: 'flex', justifyContent: 'center' }}>
+<Playground
+  defaultShowEditor
+  style={{ display: 'flex', justifyContent: 'center' }}
+>
   {() => {
-    const [date, setDate] = React.useState(Date.now());
+    const [time, setTime] = React.useState(now('Europe/Oslo'));
     return (
       <TimePicker
-        style={{ width: '13rem' }}
-        selectedTime={date}
-        onChange={date => setDate(date)}
         label="Tid"
+        selectedTime={time}
+        onChange={time => setTime(time)}
       />
     );
   }}
 </Playground>
 
+## Bruk
+
+TimePicker hjelper brukeren med å velge et tidspunkt. Den bruker pakken [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/) til håndtering av dato og tid, inkludert tidssoner.
+TimePicker-en har også støtte for ulike locals og språk. `react-aria` brukes i bakgrunnen, [les mer her](https://react-spectrum.adobe.com/react-aria/useTimeField.html).
+
+### Språk og locale
+
+Språk og locals er støttet gjennom to metoder: All automatisk tilpassing av språk skjer gjennom prop-en `locale` eller [react-aria](https://react-spectrum.adobe.com/react-aria/I18nProvider.html) sin `<I18nProvider />`.
+`locale` støtter strenger på BCP 47-formatet, eks. `no-NO` for norsk. Her finner du en [liste over BCP 47-koder](https://www.techonthenet.com/js/language_tags.php).
+
+I tillegg er det noen ledetekster og `aria-label`-er som må sendes inn manuelt. Dette gjelder `leftArrowButtonAriaLabel` og `rightArrowButtonAriaLabel`.
+
+#### TimePicker tilpasset USA
+
+<Playground defaultShowEditor hideContrastOption>
+  {() => {
+    const [time, setTime] = React.useState(now('Europe/Oslo'));
+    return (
+      <TimePicker
+        label="Time"
+        selectedTime={time}
+        onChange={time => setTime(time)}
+        locale="en-US"
+        leftArrowButtonAriaLabel="Subtract 30 minutes"
+        rightArrowButtonAriaLabel="Add 30 minutes"
+      />
+    );
+  }}
+</Playground>
+
+### Tidssoner
+
+TimePicker støtter tidssonehåndtering for å sikre lik opplevelse på tvers av tidssoner. Dette håndteres ved `@internationalized/date` sitt `ZonedDateTime`-objekt, [les mer om hvordan opprette og bruke tidssonefunksjonalitet her](https://react-spectrum.adobe.com/internationalized/date/ZonedDateTime.html).
+
+### Bruk sammen DatePicker / Bruk med JS Date
+
+Hvis du skal bruke samme tidsobjekt på både TimePicker og DatePicker, eller ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToTimeValue` og `timeValueToNativeDate`.
+Disse konverterer mellom `@internationalized/date` sine tre tidstyper: `ZonedDateTime`, `CalendarDateTime` og `Time` (`TimeValue` er en samling av disse tre) og Javascript sin `Date`. Se api under, nærmere beskrivelse finnes i JSDocs for funksjonene:
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`nativeDateToTimeValue: (date: Date, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime;
+timeValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: string | undefined) => Date;`}
+</CodeBlock>
+
+#### Eksempel på felles tidsobjekt for TimePicker og DatePicker
+
+<CodeBlock asExpandable expandableLabel="@Internationalized/date-eksempel">
+  {`const [time, setTime] = useState(now('Europe/Oslo'));
+  return (
+    <>
+      <DatePicker
+        label="Choose date"
+        selectedDate={timeValueToNativeDate(time)}
+        onChange={t => {
+          setTime(nativeDateToTimeValue(t, false, 'Europe/Oslo'));
+        }}
+      />
+      <TimePicker
+        label={'Choose time'}
+        selectedTime={time}
+        onChange={t => setTime(t)}
+      />
+    </>
+  );`}
+</CodeBlock>
+<CodeBlock asExpandable expandableLabel="JS Date-eksempel">
+  {`const [dateTime, setDateTime] = useState(new Date());
+return (
+  <>
+    <DatePicker
+      label="Choose date"
+      selectedDate={dateTime}
+      onChange={t => setDateTime(t)}
+    />
+    <TimePicker
+      label={'Choose time'}
+      selectedTime={nativeDateToTimeValue(dateTime)}
+      onChange={t => setDateTime(timeValueToNativeDate(t))}
+    />
+  </>
+);`}
+
+</CodeBlock>
+
+### Bruk på mobile enheter
+
+TimePicker er fungerer like bra på mobile enheter også, men ønsker man en OS-spesifikk opplevelse på mobilen kan `<NativeTimePicker />` benyttes. Her må dubenytte `Date`-objektet til Javascript eller [konvertere et TimeValue-objekt](#bruk-sammen-datepicker--bruk-med-js-date).
+
+<Playground defaultShowEditor hideContrastOption>
+  {() => {
+    const [nativeTime, setNativeTime] = React.useState(new Date());
+    return (
+      <NativeTimePicker
+        label="Tid"
+        style={{ width: '15rem' }}
+        value="10:30:00"
+      />
+    );
+  }}
+</Playground>
+
+### Universell utforming
+
+TimePicker bruker [react-aria](https://react-spectrum.adobe.com/react-aria/useTimeField.html) i bakgrunnen somsørger for gjennomgående støtte for universell utforming.
+Hvert tidssegment er tilgjengelig med tastaturet og alle interagerbare elementer har aria-beskrivelser.
+
+#### Hvordan oppfylle UU-krav
+
+Hvis du endrer `locale` (dvs. språk) må du sende inn verdier på riktig språk til `leftArrowButtonAriaLabel`- og `rightArrowButtonAriaLabel`-props-ene.
+
 ## Komponenter
 
-### TimePicker
+### <TimePicker /\>
 
 <ImportStatement imports="TimePicker" />
 <Props of={TimePicker} />
 
-### NativeTimePicker
+### <NativeTimePicker /\>
 
 <ImportStatement imports="NativeTimePicker" />
 <Props of={NativeTimePicker} />
-
-## Retningslinjer for bruk
-
-Timepicker er en universell utformet komponent som lar brukerne velge et tidspunkt. Ved å klikke på tekstfeltet kan du enten skrive et ønsket tidspunkt eller hoppe fram og tilbake i tid med pilknappene. Akkurat som Datepicker, så anbefales det å bruke NativeTimePicker dersom du skal vise en timepicker for mobile enheter.

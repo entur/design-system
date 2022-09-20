@@ -56,7 +56,8 @@ body {
       margin-left $timings-fast ease-out;
 
     @include for-large-desktop {
-      max-width: Min(100%, 65rem);
+      max-width: 45rem;
+      margin: 3rem 2rem 1rem Min(8%, 15rem);
     }
 
     &--hidden {
@@ -67,6 +68,20 @@ body {
 
     main {
       flex: 1;
+      // these selectors apply more space above headers
+      // except when two headers are adjacent
+      & > {
+        [class^='eds-h'] {
+          margin-top: 2rem;
+
+          & + [class^='eds-h'] {
+            margin-top: inherit;
+          }
+        }
+        h3.eds-h3 {
+          margin-top: 3rem;
+        }
+      }
     }
   }
 }
