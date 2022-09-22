@@ -7,3 +7,4 @@ export * from './Dropdown';
 export * from './NativeDropdown';
 export * from './MultiSelect';
 export * from './MultiSelect';
+export * from './beta';
