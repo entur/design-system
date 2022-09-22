@@ -1,0 +1,96 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-searchable-dropdown__selected-item {
+  display: block;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-small;
+  margin-right: -$space-medium;
+  padding: calc(#{$space-medium} + #{$space-extra-small2}) 0 $space-extra-small2
+    $space-medium;
+  font-family: inherit;
+
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &__wrapper {
+    max-width: 65%;
+  }
+}
+
+.eds-dropdown-list {
+  border-radius: $border-radiuses-medium;
+  box-shadow: $shadows-box-shadow;
+  display: none;
+  list-style: none;
+  margin: 0;
+  max-height: 50vh;
+  padding: 0;
+  position: relative;
+  overflow-y: auto;
+  width: 100%;
+  z-index: $z-indexes-popover;
+  .eds-contrast & {
+    box-shadow: $shadows-box-shadow-contrast;
+  }
+
+  &--open {
+    // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
+    display: inline-block;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @media all and (min-width: $breakpoints-large) {
+    max-height: 30vh;
+  }
+}
+.eds-dropdown-list__item {
+  align-items: center;
+  background-color: $colors-greys-grey90;
+  border-bottom: $border-widths-default solid $colors-greys-grey70;
+  border-left: $border-widths-default solid $colors-greys-grey70;
+  border-right: $border-widths-default solid $colors-greys-grey70;
+  color: $colors-brand-blue;
+  display: flex;
+  justify-content: space-between;
+  font-family: inherit;
+  font-size: $font-sizes-large;
+  line-height: $line-heights-medium;
+  padding: $space-small $space-default;
+  width: 100%;
+  &:first-child {
+    border-top: $border-widths-default solid $colors-greys-grey70;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &-icon {
+    margin-left: $space-small;
+  }
+
+  .eds-contrast & {
+    color: $colors-brand-blue;
+    border-color: $colors-blues-blue30;
+    background-color: $colors-brand-white;
+  }
+
+  &--highlighted  {
+    background-color: $colors-blues-blue70;
+
+    .eds-contrast & {
+      background-color: $colors-blues-blue70;
+    }
+  }
+}
+
+.eds-form-control.eds-searchable-dropdown__input {
+  &::placeholder {
+    transition: none;
+    position: relative;
+    bottom: 1px;
+  }
+}
