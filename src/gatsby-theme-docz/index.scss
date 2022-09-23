@@ -68,18 +68,22 @@ body {
 
     main {
       flex: 1;
-      // these selectors apply more space above headers
-      // except when two headers are adjacent
+      // custom paragraph spacing for documentation site
       & > {
-        [class^='eds-h'] {
-          margin-top: 2rem;
-
-          & + [class^='eds-h'] {
-            margin-top: inherit;
-          }
+        h2,
+        h3 {
+          margin-top: 10rem;
         }
-        h3.eds-h3 {
-          margin-top: 3rem;
+        h2:first-of-type {
+          margin-top: 4rem;
+        }
+        h4 {
+          margin-top: 4rem;
+        }
+
+        // two adjacent headers
+        [class^='eds-h'] + [class^='eds-h'] {
+          margin-top: 2rem;
         }
       }
     }

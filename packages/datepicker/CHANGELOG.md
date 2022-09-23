@@ -3,25 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.0.0-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.1.3...@entur/datepicker@3.0.0-alpha.1) (2022-09-06)
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.1.3...@entur/datepicker@3.0.0-alpha.1) (2022-09-06)
 
 ### Bug Fixes
 
 - **timepicker:** fix bugs with disabled state in new TimePicker ([b82a9ca](https://bitbucket.org/enturas/design-system/commits/b82a9ca2bfb9611b07c8f244035a5309438555e2))
-
-### Features
-
-- **native time picker:** update native timepicker with small tweaks ([9d72bf7](https://bitbucket.org/enturas/design-system/commits/9d72bf79951aed9b236fb55a007fc96d019b9c46))
-- **timepicker:** add new timepicker component using react-aria ([cd90a09](https://bitbucket.org/enturas/design-system/commits/cd90a092de72ebf1cf1cef61147ada5f42fb67b4))
-- **timepicker utils:** add utility functions for converting between TimeValue and JS Date ([f5ee77e](https://bitbucket.org/enturas/design-system/commits/f5ee77e9b3666816bda82b7e0deceaf27672f536))
-
-### BREAKING CHANGES
-
-- **native time picker:** disableLabelAnimation prop has been removed (is always true now)
-- **timepicker:** This is a complete rewrite. Changes in the API will need to be accounted for when using this new
-  version
-
-# [3.0.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@2.1.3...@entur/datepicker@3.0.0-alpha.0) (2022-09-02)
 
 ### Features
 
