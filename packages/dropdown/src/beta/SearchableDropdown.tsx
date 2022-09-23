@@ -26,24 +26,28 @@ function lowerCaseFilterTest(
 
 export type SearchableDropdownProps = {
   items: NormalizedDropdownItemType[];
-  value: NormalizedDropdownItemType;
+  selectedItem: NormalizedDropdownItemType | null;
   onChange: (value: NormalizedDropdownItemType | undefined | null) => void;
   label: string;
   placeholder?: string;
   clearable?: boolean;
   openOnFocus?: boolean;
   className?: string;
+  style?: { [key: string]: any };
+  listStyle?: { [key: string]: any };
 };
 
+// TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
 export const SearchableDropdownBeta = ({
   items,
-  value,
+  selectedItem: value,
   onChange,
   label = '!MANGLER LABEL!',
   placeholder,
   clearable = false,
   openOnFocus = false,
   className,
+  listStyle,
   ...rest
 }: SearchableDropdownProps) => {
   const [filteredItems, setFilteredItems] = React.useState(items);
@@ -91,7 +95,8 @@ export const SearchableDropdownBeta = ({
     },
     items: filteredItems,
     itemToString(item) {
-      return item ? item.value : '';
+      if (item) return item.value;
+      return '';
     },
     stateReducer,
 
@@ -101,6 +106,7 @@ export const SearchableDropdownBeta = ({
     ...rest,
   });
 
+  // TODO Husk å generelt legge inn støtte for typeof value === string
   useEffect(() => {
     if (
       inputValue.toLowerCase() === value?.label.toLowerCase() ||
@@ -110,7 +116,7 @@ export const SearchableDropdownBeta = ({
   }, [value]);
 
   return (
-    <div>
+    <div className="eds-searchable-dropdown__wrapper">
       <BaseFormControl
         append={
           <Appendix
@@ -149,29 +155,30 @@ export const SearchableDropdownBeta = ({
               if (!isOpen && openOnFocus) openMenu();
               setHideSelectedItem(true);
             },
+            onBlur: () => {
+              setHideSelectedItem(false);
+            },
+            ref: inputRef,
           })}
-          onBlur={() => {
-            setHideSelectedItem(false);
-          }}
-          ref={inputRef}
         />
       </BaseFormControl>
 
       <ul
-        className={classNames('eds-dropdown-list', {
-          'eds-dropdown-list--open': isOpen,
+        className={classNames('eds-searchable-dropdown__list', {
+          'eds-searchable-dropdown__list--open': isOpen,
         })}
         {...getMenuProps()}
-        {...rest}
+        style={{ ...rest.style, ...listStyle }}
       >
         {isOpen
           ? filteredItems.map((item, index) => (
               // eslint-disable-next-line react/jsx-key
               <li
-                className={classNames('eds-dropdown-list__item', {
-                  'eds-dropdown-list__item--highlighted':
+                className={classNames('eds-searchable-dropdown__list__item', {
+                  'eds-searchable-dropdown__list__item--highlighted':
                     highlightedIndex === index,
-                  'eds-dropdown-list__item--selected': selectedItem === item,
+                  'eds-searchable-dropdown__list__item--selected':
+                    selectedItem === item,
                 })}
                 {...getItemProps({ key: `${index}${item.value}`, item, index })}
               >
@@ -182,7 +189,7 @@ export const SearchableDropdownBeta = ({
                       <Icon
                         key={index}
                         inline
-                        className="eds-dropdown-list__item-icon"
+                        className="eds-searchable-dropdown__list__item-icon"
                       />
                     ))}
                   </span>
@@ -228,20 +235,20 @@ const Appendix: React.FC<{
       {clearable && selectedItem && (
         <>
           <button
-            className="eds-dropdown__clear-button"
+            className="eds-searchable-dropdown__clear-button"
             type="button"
             tabIndex={-1}
             onClick={() => onChange(null)}
           >
             <CloseSmallIcon />
           </button>
-          <div className="eds-dropdown__divider" />
+          <div className="eds-searchable-dropdown__divider" />
         </>
       )}
       <button
         {...getToggleButtonProps({
-          className: classNames('eds-dropdown__toggle-button', {
-            'eds-dropdown__toggle-button--open': isOpen,
+          className: classNames('eds-searchable-dropdown__toggle-button', {
+            'eds-searchable-dropdown__toggle-button--open': isOpen,
           }),
         })}
         tabIndex="-1"

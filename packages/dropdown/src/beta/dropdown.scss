@@ -1,88 +1,169 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-searchable-dropdown__selected-item {
-  display: block;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-small;
-  margin-right: -$space-medium;
-  padding: calc(#{$space-medium} + #{$space-extra-small2}) 0 $space-extra-small2
-    $space-medium;
-  font-family: inherit;
-
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
+.eds-searchable-dropdown {
   &__wrapper {
-    max-width: 65%;
-  }
-}
-
-.eds-dropdown-list {
-  border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-box-shadow;
-  display: none;
-  list-style: none;
-  margin: 0;
-  max-height: 50vh;
-  padding: 0;
-  position: relative;
-  overflow-y: auto;
-  width: 100%;
-  z-index: $z-indexes-popover;
-  .eds-contrast & {
-    box-shadow: $shadows-box-shadow-contrast;
+    position: relative;
   }
 
-  &--open {
-    // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
-    display: inline-block;
+  &__selected-item {
+    display: block;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-small;
+    margin-right: -$space-medium;
+    padding: calc(#{$space-medium} + #{$space-extra-small2}) 0
+      $space-extra-small2 $space-medium;
+    font-family: inherit;
+
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &__wrapper {
+      max-width: 65%;
+    }
   }
 
-  &:focus {
-    outline: none;
+  &__clear-button {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+    &:hover {
+      background: $colors-greys-grey80;
+    }
+    &:focus {
+      outline-offset: $outline-offsets-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
+    }
   }
 
-  @media all and (min-width: $breakpoints-large) {
-    max-height: 30vh;
-  }
-}
-.eds-dropdown-list__item {
-  align-items: center;
-  background-color: $colors-greys-grey90;
-  border-bottom: $border-widths-default solid $colors-greys-grey70;
-  border-left: $border-widths-default solid $colors-greys-grey70;
-  border-right: $border-widths-default solid $colors-greys-grey70;
-  color: $colors-brand-blue;
-  display: flex;
-  justify-content: space-between;
-  font-family: inherit;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-medium;
-  padding: $space-small $space-default;
-  width: 100%;
-  &:first-child {
-    border-top: $border-widths-default solid $colors-greys-grey70;
-  }
-  &:last-child {
-    border-bottom: none;
+  &__divider {
+    content: '';
+    display: block;
+    background-color: $colors-greys-grey70;
+    height: 1.5rem;
+    width: 1px;
+    .eds-form-control-wrapper--disabled & {
+      .eds-contrast & {
+        background-color: $colors-blues-blue50;
+      }
+    }
   }
 
-  &-icon {
-    margin-left: $space-small;
+  &__toggle-button {
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    margin-right: -$space-small;
+    margin-left: 0.25rem;
+
+    padding: $space-extra-small;
+
+    display: flex;
+    justify-content: center;
+
+    svg {
+      transition: transform ease-in-out $timings-fast;
+    }
+
+    &--open svg {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      background: $colors-greys-grey80;
+    }
+    &:focus {
+      outline-offset: $outline-offsets-focus;
+      outline: none;
+      box-shadow: $shadows-focus;
+      .eds-contrast & {
+        box-shadow: $shadows-focus-contrast;
+      }
+    }
   }
 
-  .eds-contrast & {
-    color: $colors-brand-blue;
-    border-color: $colors-blues-blue30;
-    background-color: $colors-brand-white;
-  }
+  &__list {
+    position: absolute;
+    top: $space-extra-large3;
 
-  &--highlighted  {
-    background-color: $colors-blues-blue70;
+    border-radius: $border-radiuses-medium;
+    box-shadow: $shadows-box-shadow;
+    display: none;
+    list-style: none;
+    margin: 0;
+    max-height: 50vh;
+    padding: 0;
+    overflow-y: auto;
+    width: 100%;
+    z-index: $z-indexes-popover;
+    // .eds-contrast & {
+    //   box-shadow: $shadows-box-shadow-contrast;
+    // }
 
-    .eds-contrast & {
-      background-color: $colors-blues-blue70;
+    &--open {
+      // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
+      display: inline-block;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @media all and (min-width: $breakpoints-large) {
+      max-height: 30vh;
+    }
+
+    &__item {
+      align-items: center;
+      background-color: $colors-greys-grey90;
+      border-bottom: $border-widths-default solid $colors-greys-grey70;
+      border-left: $border-widths-default solid $colors-greys-grey70;
+      border-right: $border-widths-default solid $colors-greys-grey70;
+      color: $colors-brand-blue;
+      display: flex;
+      justify-content: space-between;
+      font-family: inherit;
+      font-size: $font-sizes-large;
+      line-height: $line-heights-medium;
+      padding: $space-small $space-default;
+      width: 100%;
+      &:first-child {
+        border-top: $border-widths-default solid $colors-greys-grey70;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &-icon {
+        margin-left: $space-small;
+      }
+
+      // .eds-contrast & {
+      //   color: $colors-brand-blue;
+      //   border-color: $colors-blues-blue30;
+      //   background-color: $colors-brand-white;
+      // }
+
+      &--highlighted  {
+        background-color: $colors-blues-blue70;
+
+        .eds-contrast & {
+          background-color: $colors-blues-blue70;
+        }
+      }
     }
   }
 }
