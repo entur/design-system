@@ -23,74 +23,76 @@
     }
   }
 
-  &__clear-button {
-    background: none;
-    border: none;
-    border-radius: 50%;
-    color: inherit;
-    cursor: pointer;
-    display: flex;
-    font: inherit;
-    font-size: 1rem;
-    line-height: 1rem;
-    padding: 0.5rem;
-    margin-right: 0.25rem;
-    &:hover {
-      background: $colors-greys-grey80;
-    }
-    &:focus {
-      outline-offset: $outline-offsets-focus;
-      outline: none;
-      box-shadow: $shadows-focus;
-    }
-  }
-
-  &__divider {
-    content: '';
-    display: block;
-    background-color: $colors-greys-grey70;
-    height: 1.5rem;
-    width: 1px;
-    .eds-form-control-wrapper--disabled & {
-      .eds-contrast & {
-        background-color: $colors-blues-blue50;
+  &-appendix {
+    &__clear-button {
+      background: none;
+      border: none;
+      border-radius: 50%;
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1rem;
+      padding: 0.5rem;
+      margin-right: 0.25rem;
+      &:hover {
+        background: $colors-greys-grey80;
+      }
+      &:focus {
+        outline-offset: $outline-offsets-focus;
+        outline: none;
+        box-shadow: $shadows-focus;
       }
     }
-  }
 
-  &__toggle-button {
-    appearance: none;
-    background: none;
-    border: none;
-    border-radius: 50%;
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
-    margin-right: -$space-small;
-    margin-left: 0.25rem;
-
-    padding: $space-extra-small;
-
-    display: flex;
-    justify-content: center;
-
-    svg {
-      transition: transform ease-in-out $timings-fast;
+    &__divider {
+      content: '';
+      display: block;
+      background-color: $colors-greys-grey70;
+      height: 1.5rem;
+      width: 1px;
+      .eds-form-control-wrapper--disabled & {
+        .eds-contrast & {
+          background-color: $colors-blues-blue50;
+        }
+      }
     }
 
-    &--open svg {
-      transform: rotate(180deg);
-    }
+    &__toggle-button {
+      appearance: none;
+      background: none;
+      border: none;
+      border-radius: 50%;
+      color: inherit;
+      font-size: inherit;
+      font-family: inherit;
+      margin-right: -$space-small;
+      margin-left: 0.25rem;
 
-    &:hover {
-      background: $colors-greys-grey80;
-    }
-    &:focus {
-      outline-offset: $outline-offsets-focus;
-      outline: none;
-      box-shadow: $shadows-focus;
-      .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+      padding: $space-extra-small;
+
+      display: flex;
+      justify-content: center;
+
+      &--open svg {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        background: $colors-greys-grey80;
+      }
+      &:focus {
+        outline-offset: $outline-offsets-focus;
+        outline: none;
+        box-shadow: $shadows-focus;
+        .eds-contrast & {
+          box-shadow: $shadows-focus-contrast;
+        }
+      }
+
+      svg {
+        transition: transform ease-in-out $timings-fast;
       }
     }
   }
