@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.0-beta.1...@entur/dropdown@4.0.0-beta.2) (2022-09-30)
+
+### Features
+
+- **searchable dropdown:** fixes from beta testing ([c460e94](https://bitbucket.org/enturas/design-system/commits/c460e947b2f39fd486b79d433d43a4ac3cdc9bdc))
+
 # [4.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.15...@entur/dropdown@4.0.0-beta.1) (2022-09-27)
 
 ### Features
