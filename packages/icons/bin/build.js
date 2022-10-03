@@ -127,6 +127,7 @@ function createSvgrConfig(native = false, componentName) {
 // Get all SVGs
 const allSvgPaths = traverse('src/svgs');
 const componentNames = [];
+const deprecatedIcons = [{ icon: 'ReportsIcon', replacement: 'CopyIcon' }];
 
 for (let svgPath of allSvgPaths) {
   // Get a PascalCased version of the file name to use as the component name,
@@ -161,7 +162,28 @@ for (let svgPath of allSvgPaths) {
   const nativeCode = svgr.sync(rawSvgText, createSvgrConfig(true), {
     componentName,
   });
-  fs.outputFileSync(`./tmp/web/${componentName}.js`, webCode);
+
+  // If the icon is deprecated, we add a warning to the component code
+  if (deprecatedIcons.map(e => e.icon).includes(componentName)) {
+    const replacement = deprecatedIcons.filter(e => e.icon === componentName)[0]
+      .replacement;
+    const webCodeList = webCode.split(`\n`);
+    const WebCodeWithDeprecation = [
+      ...webCodeList.slice(0, 2),
+      `console.warn("Design system warning: ${componentName} is deprecated! ${
+        replacement ? `Use ${replacement} instead.` : ''
+      }");`,
+      `/**
+* @deprecated This icon is deprecated
+*/`,
+      ...webCodeList.slice(2),
+    ].join(`\n`);
+    fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
+  } // If not deprecated, we create the component without changes
+  else {
+    fs.outputFileSync(`./tmp/web/${componentName}.js`, webCode);
+  }
+
   fs.outputFileSync(`./tmp/native/${componentName}.js`, nativeCode);
 
   // Save the component name in an array for use below
