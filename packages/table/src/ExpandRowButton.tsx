@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { RightArrowIcon } from '@entur/icons';
+import { DownArrowIcon } from '@entur/icons';
+import { IconButton } from '@entur/button';
 import './ExpandRowButton.scss';
 
 export type ExpandRowButtonProps = {
@@ -14,14 +15,15 @@ export const ExpandRowButton: React.FC<ExpandRowButtonProps> = ({
   ...rest
 }) => {
   return (
-    <button
+    <IconButton
       className={classNames('eds-expand-row-button', {
         'eds-expand-row-button--open': open,
       })}
       onClick={onClick}
+      aria-label={open ? 'Lukk tabellrad' : 'Utvid tabellrad'}
       {...rest}
     >
-      <RightArrowIcon className="eds-expand-row-button__icon" />
-    </button>
+      <DownArrowIcon className="eds-expand-row-button__icon" />
+    </IconButton>
   );
 };
