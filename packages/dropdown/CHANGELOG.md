@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.0-beta.1...@entur/dropdown@4.0.0-beta.2) (2022-09-30)
+
+### Features
+
+- **searchable dropdown:** fixes from beta testing ([c460e94](https://bitbucket.org/enturas/design-system/commits/c460e947b2f39fd486b79d433d43a4ac3cdc9bdc))
+
+# [4.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.15...@entur/dropdown@4.0.0-beta.1) (2022-09-27)
+
+### Features
+
+- **searchable dropdown:** fixes from beta testing ([f88405f](https://bitbucket.org/enturas/design-system/commits/f88405fd45353163bcd0b202b538a470d86e5d8c))
+- **searchable dropdown:** mvp new controlled searchable dropdown component (alpha) ([b8b2d05](https://bitbucket.org/enturas/design-system/commits/b8b2d051461406de0544b92b5169b066c91386ce))
+
 ## [3.0.14](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.13...@entur/dropdown@3.0.14) (2022-08-31)
 
 **Note:** Version bump only for package @entur/dropdown
