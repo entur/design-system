@@ -118,18 +118,21 @@ const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
         <UnsortedIcon
           size="16px"
           className="eds-table__header-cell-button-icon"
+          aria-label="usortert kolonne"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'ascending' && (
         <UpArrowIcon
           size="16px"
           className="eds-table__header-cell-button-icon"
+          aria-label="stigende sortert kolonne"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'descending' && (
         <DownArrowIcon
           size="16px"
           className="eds-table__header-cell-button-icon"
+          aria-label="synkende sortert kolonne"
         />
       )}
     </button>
