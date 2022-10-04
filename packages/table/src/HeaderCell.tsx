@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { DownArrowIcon, UpArrowIcon } from '@entur/icons';
-import './HeaderCell.scss';
+
+import { DownArrowIcon, UpArrowIcon, UnsortedIcon } from '@entur/icons';
+
 import { ExternalSortConfig } from '.';
+
+import './HeaderCell.scss';
 
 export type HeaderCellProps = {
   /** Kolonneoverskrift */
@@ -111,6 +114,12 @@ const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
       {...rest}
     >
       {children}
+      {(!isCurrentlySorted || sortConfig.order === 'none') && (
+        <UnsortedIcon
+          size="16px"
+          className="eds-table__header-cell-button-icon"
+        />
+      )}
       {isCurrentlySorted && sortConfig.order === 'ascending' && (
         <UpArrowIcon
           size="16px"
