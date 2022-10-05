@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.12](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.11...@entur/menu@4.1.12) (2022-10-05)
+
+### Bug Fixes
+
+- **menu:** add missing warning about styles from @entur/a11y ([bd7265f](https://bitbucket.org/enturas/design-system/commits/bd7265feab5a96039847b72728e203ae92f7e9a2))
+
 ## [4.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.9...@entur/menu@4.1.10) (2022-09-02)
 
 ### Bug Fixes

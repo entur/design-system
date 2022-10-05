@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.17](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.16...@entur/dropdown@3.0.17) (2022-10-05)
+
+### Bug Fixes
+
+- **dropdown:** make label required ([68cdd12](https://bitbucket.org/enturas/design-system/commits/68cdd12ebb41998868acb18abb2a1faa47157449))
+
 # [3.0.16](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.15...@entur/dropdown@4.0.0-beta.1) (2022-09-27)
 
 ### Features

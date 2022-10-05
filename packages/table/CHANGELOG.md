@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.22](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.21...@entur/table@4.5.22) (2022-10-05)
+
+### Bug Fixes
+
+- **expandable table button:** change expandable table button to reflect icon button styling ([1814f1c](https://bitbucket.org/enturas/design-system/commits/1814f1ca0bbaa4025e6ba9f1d8dda295aba08523))
+
 ## [4.5.20](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.19...@entur/table@4.5.20) (2022-08-31)
 
 **Note:** Version bump only for package @entur/table
