@@ -11,14 +11,14 @@ import {
 } from './useResolvedItems';
 
 export type DropdownProps = {
+  /** Beskrivende tekst som forklarer feltet */
+  label: string;
   /** Tilgjengelige valg i dropdownen */
   items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi. Bruk null for ingen verdi. */
   value?: string | null;
   /** Om man skal kunne søke i dropdownen eller ikke */
   searchable?: boolean;
-  /** Beskrivende tekst som forklarer feltet */
-  label?: string;
   /** Tooltip for labelen */
   labelTooltip?: string;
   /** Hvilken valideringsvariant som gjelder */

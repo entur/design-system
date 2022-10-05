@@ -15,7 +15,12 @@ const testItems = [
 test('renders a regular dropdown', () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText } = render(
-    <Dropdown items={testItems} placeholder="Velg noe" onChange={changeSpy} />,
+    <Dropdown
+      label="test"
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+    />,
   );
 
   const triggerButton = getByText('Velg noe');
@@ -38,6 +43,7 @@ test('applies className to outer div', () => {
   const changeSpy = jest.fn();
   const { container } = render(
     <Dropdown
+      label="test"
       items={testItems}
       placeholder="Velg noe"
       className="custom-class"
@@ -52,6 +58,7 @@ test('renders a searchable dropdown', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       items={testItems}
       placeholder="Velg noe"
       onChange={changeSpy}
@@ -81,6 +88,7 @@ test('renders a searchable dropdown, with no filtering', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       items={testItems}
       placeholder="Velg noe"
       onChange={changeSpy}
@@ -107,6 +115,7 @@ test('renders a searchable dropdown, with strict filter', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       items={testItems}
       placeholder="Velg noe"
       onChange={changeSpy}
@@ -149,6 +158,7 @@ test('handles all sorts of items', () => {
   ];
   const { getAllByRole, getByRole } = render(
     <Dropdown
+      label="test"
       items={diverseListOfItems}
       placeholder="Velg noe"
       searchable
@@ -173,7 +183,12 @@ test('handles all sorts of items', () => {
 test('renders a clearable dropdown, and dropdown is cleared on click on clear-button', () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, queryAllByRole } = render(
-    <Dropdown items={testItems} placeholder="Velg noe" onChange={changeSpy} />,
+    <Dropdown
+      label="test"
+      items={testItems}
+      placeholder="Velg noe"
+      onChange={changeSpy}
+    />,
   );
 
   const triggerButton = getByText('Velg noe');
@@ -188,7 +203,7 @@ test('renders a clearable dropdown, and dropdown is cleared on click on clear-bu
 
 test('handles items prop it is a synchronous function', async () => {
   const { getAllByRole, queryAllByRole, getByText } = render(
-    <Dropdown items={() => testItems} placeholder="Velg noe" />,
+    <Dropdown label="test" items={() => testItems} placeholder="Velg noe" />,
   );
 
   const triggerButton = getByText('Velg noe');
@@ -203,7 +218,11 @@ test('handles items prop it is a synchronous function', async () => {
 
 test('handles items prop it is an asynchronous function', async () => {
   const { queryAllByRole, getAllByRole, getByText } = render(
-    <Dropdown items={async () => testItems} placeholder="Velg noe" />,
+    <Dropdown
+      label="test"
+      items={async () => testItems}
+      placeholder="Velg noe"
+    />,
   );
 
   const triggerButton = getByText('Velg noe');
@@ -220,6 +239,7 @@ test('handles typeahead case', async () => {
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       items={inputValue =>
         Promise.resolve(testItems.filter(item => item.includes(inputValue)))
       }
@@ -254,6 +274,7 @@ test('lets the user select the highlighted index on tab', async () => {
   const changeSpy = jest.fn();
   const { getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       items={testItems}
       placeholder="Velg noe"
       onChange={changeSpy}
@@ -286,6 +307,7 @@ test('auto-highlights first item if the highlightFirstItemOnOpen prop is set', a
   const changeSpy = jest.fn();
   const { getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       highlightFirstItemOnOpen
       openOnFocus
       items={testItems}
@@ -314,6 +336,7 @@ test('auto-highlights first item if the highlightFirstItemOnOpen prop is set in 
   const changeSpy = jest.fn();
   const { queryByText, getByText, getByPlaceholderText } = render(
     <Dropdown
+      label="test"
       highlightFirstItemOnOpen
       openOnFocus
       items={inputValue =>
@@ -355,6 +378,7 @@ test('highlight matched items on letter keydown', async () => {
   const changeSpy = jest.fn();
   const { getByText } = render(
     <Dropdown
+      label="test"
       items={[...testItems, 'Brønnøysund', 'Brumunddal']}
       placeholder="Velg noe"
       onChange={changeSpy}
