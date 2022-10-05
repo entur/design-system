@@ -8,6 +8,7 @@ warnAboutMissingStyles(
   'typography',
   'button',
   'layout',
+  'a11y',
 );
 
 export * from './BreadcrumbNavigation';
