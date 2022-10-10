@@ -2,7 +2,7 @@ import { useToast } from '@entur/alert';
 import { IconButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
 import { Switch, TextField } from '@entur/form';
-import { DownloadIcon, ReportsIcon, SearchIcon } from '@entur/icons';
+import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
@@ -172,7 +172,7 @@ const IconList: React.FC<IconListProps> = props => {
                   onClick={handleIconClick(iconName)}
                 >
                   {iconName}
-                  <ReportsIcon />
+                  <CopyIcon />
                 </SubLabel>
                 <Icon
                   style={{ width: iconSize?.value, height: iconSize?.value }}

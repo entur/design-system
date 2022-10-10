@@ -1,6 +1,6 @@
 import React from 'react';
 import copy from 'copy-text-to-clipboard';
-import { ReportsIcon } from '@entur/icons';
+import { CopyIcon } from '@entur/icons';
 import { PreformattedText } from '@entur/typography';
 import { useToast } from '@entur/alert';
 
@@ -41,7 +41,7 @@ export const CopyablePreformattedText: React.FC<Props> = ({
       ref={buttonRef}
     >
       <PreformattedText>{children}</PreformattedText>
-      <ReportsIcon
+      <CopyIcon
         className="copyable-preformatted-text__icon"
         aria-label="Kopier innhold"
       />
