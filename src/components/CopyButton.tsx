@@ -2,7 +2,7 @@ import React from 'react';
 import { useToast } from '@entur/alert';
 import copy from 'copy-text-to-clipboard';
 import { TertiaryButton } from '@entur/button';
-import { ReportsIcon } from '@entur/icons';
+import { CopyIcon } from '@entur/icons';
 
 type Props = {
   textToCopy: string;
@@ -31,7 +31,7 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
         });
       }}
     >
-      {children} <ReportsIcon />
+      {children} <CopyIcon />
     </TertiaryButton>
   );
 };

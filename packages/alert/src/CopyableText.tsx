@@ -3,7 +3,7 @@ import React from 'react';
 import copy from 'copy-text-to-clipboard';
 
 import { useToast } from './ToastProvider';
-import { ReportsIcon } from '@entur/icons';
+import { CopyIcon } from '@entur/icons';
 import { PreformattedText } from '@entur/typography';
 
 import './CopyableText.scss';
@@ -46,7 +46,7 @@ export const CopyableText = ({
       {...rest}
     >
       <PreformattedText>{children}</PreformattedText>
-      <ReportsIcon className="copyable-text__icon" />
+      <CopyIcon className="copyable-text__icon" />
     </button>
   );
 };
