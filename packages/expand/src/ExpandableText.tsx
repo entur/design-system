@@ -46,9 +46,9 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   return (
     <>
       <ExpandableTextButton
-        aria-controls={randomId}
         open={isOpen}
         onToggle={() => setOpen(prev => !prev)}
+        aria-controls={isOpen ? randomId : undefined}
         as={Element}
         {...rest}
       >

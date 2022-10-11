@@ -38,7 +38,7 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         className="eds-expandable-panel__trigger"
         onClick={onToggle}
         aria-expanded={open}
-        aria-controls={id}
+        aria-controls={open ? id : undefined}
         {...rest}
       >
         <div className="eds-expandable-panel__grid">
