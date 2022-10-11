@@ -41,14 +41,14 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
         aria-controls={open ? id : undefined}
         {...rest}
       >
-        <div className="eds-expandable-panel__grid">
-          <Heading5 margin="none" as="div">
+        <span className="eds-expandable-panel__grid">
+          <Heading5 margin="none" as="span">
             {title}
           </Heading5>
-          <div className="eds-expandable-panel__icon-container">
+          <span className="eds-expandable-panel__icon-container">
             <ExpandArrow open={open} />
-          </div>
-        </div>
+          </span>
+        </span>
       </button>
       <BaseExpand
         className="eds-expandable-panel__content"
