@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.21](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.20...@entur/expand@3.3.21) (2022-10-12)
+
+### Bug Fixes
+
+- **expand:** change divs in button to be span ([29a238e](https://bitbucket.org/enturas/design-system/commits/29a238e698457bea8244cbdc3aceaf4f18892568))
+- **expand:** make aria-controls not refere to unmounted element id ([92b0b4a](https://bitbucket.org/enturas/design-system/commits/92b0b4a4ff3b5be56d9ae1559cb61c800897a08f))
+
 ## [3.3.19](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.18...@entur/expand@3.3.19) (2022-08-31)
 
 **Note:** Version bump only for package @entur/expand

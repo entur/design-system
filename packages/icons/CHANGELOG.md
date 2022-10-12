@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.3.3...@entur/icons@5.0.0) (2022-10-12)
+
+### Bug Fixes
+
+- **ReportsIcon:** add deprecation warning for ReportsIcon. Icon is replaced with CopyIcon ([4f996fc](https://bitbucket.org/enturas/design-system/commits/4f996fc455613ebd98abdb44b7f2562d3a6e9228))
+- **ReportsIcon, CopyIcon:** change copy icon to look like reportsicon and rename existing copy icon ([4adbd49](https://bitbucket.org/enturas/design-system/commits/4adbd4917caabbfc6c4fdb1538470b52b03c67c1))
+- **sortable table:** add icon to indicate that a column is sortable ([5b3c164](https://bitbucket.org/enturas/design-system/commits/5b3c1645ba70b85cd4fc5bc2c2ca8c429430182a))
+
+### BREAKING CHANGES
+
+- **ReportsIcon, CopyIcon:** If you used CopyIcon then the icon will change to look like ReportsIcon
+- **ReportsIcon:** ReportsIcon is now deprecated in favor of the new name CopyIcon
+
 ## [4.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.3.2...@entur/icons@4.3.3) (2022-08-31)
 
 **Note:** Version bump only for package @entur/icons

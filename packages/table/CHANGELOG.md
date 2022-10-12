@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.23](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.22...@entur/table@4.5.23) (2022-10-12)
+
+### Bug Fixes
+
+- **sortable table:** add aria-label to indicate sorting status for column ([e5e265c](https://bitbucket.org/enturas/design-system/commits/e5e265cce215e01976f7dc03a352101eceb74dfa))
+- **sortable table:** add icon to indicate that a column is sortable ([5b3c164](https://bitbucket.org/enturas/design-system/commits/5b3c1645ba70b85cd4fc5bc2c2ca8c429430182a))
+
 ## [4.5.22](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.21...@entur/table@4.5.22) (2022-10-05)
 
 ### Bug Fixes
