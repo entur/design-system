@@ -7,12 +7,6 @@ const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
 const outdent = require('outdent');
 
-const deprecationMessage = outdent`
-  /**
-   * @deprecated This icon is deprecated
-   */
-`;
-
 /** Traverses a directory
  * returns an array of all file paths
  */
@@ -134,8 +128,12 @@ function createSvgrConfig(native = false, componentName) {
 // Get all SVGs
 const allSvgPaths = traverse('src/svgs');
 const componentNames = [];
-const deprecatedIcons = [{ icon: 'ReportsIcon', replacement: 'CopyIcon' }];
-const deprecatedIconNames = new Set(deprecatedIcons.map(e => e.icon));
+/**
+ * Deprecated icons, mapped to its possible replacements.
+ * If the icon is deprecated without a replacement, it is mapped to no value,
+ * but you can still check for deprecation using `deprecatedIcons.has(iconName)`.
+ */
+const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
 
 for (let svgPath of allSvgPaths) {
   // Get a PascalCased version of the file name to use as the component name,
@@ -172,16 +170,18 @@ for (let svgPath of allSvgPaths) {
   });
 
   // If the icon is deprecated, we add a warning to the component code
-  if (deprecatedIconNames.has(componentName)) {
-    const replacement = deprecatedIcons.filter(e => e.icon === componentName)[0]
-      .replacement;
+  const isDeprecated = deprecatedIcons.has(componentName);
+  if (isDeprecated) {
+    const replacement = deprecatedIcons.get(componentName);
     const webCodeList = webCode.split(`\n`);
+    const deprecationMessage = getDeprecationMessage(
+      componentName,
+      replacement,
+    );
     const WebCodeWithDeprecation = [
       ...webCodeList.slice(0, 2),
-      `console.warn("Design system warning: ${componentName} is deprecated! ${
-        replacement ? `Use ${replacement} instead.` : ''
-      }");`,
-      deprecationMessage,
+      `console.warn("Design system warning: ${deprecationMessage}");`,
+      createDeprecatedJsdocComment(deprecationMessage),
       ...webCodeList.slice(2),
     ].join(`\n`);
     fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
@@ -212,8 +212,15 @@ fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
 const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
 const componentTypeLines = componentNames.flatMap(componentName => {
   const typeDeclaration = `export declare const ${componentName}: React.FC<IconProps>;`;
-  if (deprecatedIconNames.has(componentName)) {
-    return [deprecationMessage, typeDeclaration];
+  const isDeprecated = deprecatedIcons.has(componentName);
+  if (isDeprecated) {
+    const replacement = deprecatedIcons.get(componentName);
+    const deprecationMessage = getDeprecationMessage(
+      componentName,
+      replacement,
+    );
+    const jsdocComment = createDeprecatedJsdocComment(deprecationMessage);
+    return [jsdocComment, typeDeclaration];
   }
   return typeDeclaration;
 });
@@ -233,3 +240,16 @@ sass.render(
     }
   },
 );
+
+/** Constructs human-readable deprecation message, reffering to a possible replacement if one exists */
+function getDeprecationMessage(name, replacement) {
+  if (replacement) {
+    return `${name} is deprecated; use ${replacement} instead`;
+  }
+  return `${name} is deprecated`;
+}
+
+/** Creates a JSdoc comment with a single deprecation message */
+function createDeprecatedJsdocComment(explanation) {
+  return `/** @deprecated ${explanation} */`;
+}
