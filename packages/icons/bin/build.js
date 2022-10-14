@@ -6,8 +6,6 @@ const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
 
-const allSvgPaths = traverse('src/svgs');
-
 /**
  * Deprecated icons, mapped to their possible replacements.
  * If an icon is deprecated without a replacement, it is mapped to no value,
@@ -15,31 +13,23 @@ const allSvgPaths = traverse('src/svgs');
  */
 const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
 
-const components = new Map(
-  allSvgPaths.map(svgPath => {
-    const name = getComponentNameFromSvgPath(svgPath);
-    // Check for .DS_Store to clarify confusing error message
-    if (name === 'DSStore') {
-      // eslint-disable-next-line no-undef
-      console.error(
-        '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
-        components.get('DSStore'),
-        '\n',
-      );
-    }
-    return [
-      name,
-      {
-        name,
-        svgPath,
-        isDeprecated: deprecatedIcons.has(name),
-        replacement: deprecatedIcons.get(name),
-      },
-    ];
-  }),
-);
+const components = traverse('src/svgs').map(svgPath => {
+  const name = getComponentNameFromSvgPath(svgPath);
+  // Check for .DS_Store to clarify confusing error message
+  if (name === 'DSStore') {
+    // eslint-disable-next-line no-undef
+    console.error(
+      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+      components.get('DSStore'),
+      '\n',
+    );
+  }
+  const isDeprecated = deprecatedIcons.has(name);
+  const replacement = deprecatedIcons.get(name);
+  return { name, svgPath, isDeprecated, replacement };
+});
 
-for (const component of components.values()) {
+for (const component of components) {
   // Read the SVG, optimize it with SVGO, and transpile it to React components
   // for both the web and React Native
   outputWebCode(component);
@@ -82,7 +72,7 @@ function outputNativeCode({ name: componentName, svgPath }) {
 }
 
 function createIndexFiles(components) {
-  const indexFile = [...components.values()]
+  const indexFile = components
     .map(({ name }) => `export { default as ${name} } from './${name}';`)
     .join('\n');
   fs.outputFileSync(`./tmp/web/index.js`, indexFile);
@@ -93,7 +83,7 @@ function createIndexFiles(components) {
 
 function createTypeDeclaration(components) {
   const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
-  const componentTypeLines = [...components.values()].flatMap(
+  const componentTypeLines = components.flatMap(
     ({ name, isDeprecated, replacement }) => {
       const typeDeclaration = `export declare const ${name}: React.FC<IconProps>;`;
       if (isDeprecated) {
