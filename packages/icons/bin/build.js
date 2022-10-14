@@ -50,11 +50,12 @@ function outputWebCode({ name, svgPath, isDeprecated, replacement }) {
   if (isDeprecated) {
     const webCodeList = webCode.split(`\n`);
     const deprecationMessage = getDeprecationMessage(name, replacement);
+    const splitPoint = 2;
     const WebCodeWithDeprecation = [
-      ...webCodeList.slice(0, 2),
+      ...webCodeList.slice(0, splitPoint),
       `console.warn("Design system warning: ${deprecationMessage}");`,
       createDeprecatedJsdocComment(deprecationMessage),
-      ...webCodeList.slice(2),
+      ...webCodeList.slice(splitPoint),
     ].join(`\n`);
     fs.outputFileSync(`./tmp/web/${name}.js`, WebCodeWithDeprecation);
   } // If not deprecated, we create the component without changes
