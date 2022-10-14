@@ -14,16 +14,16 @@ var sass = require('node-sass');
 const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
 
 const components = traverse('src/svgs').map(svgPath => {
-  const name = getComponentNameFromSvgPath(svgPath);
   // Check for .DS_Store to clarify confusing error message
-  if (name === 'DSStore') {
+  if (svgPath.endsWith('.DS_Store')) {
     // eslint-disable-next-line no-undef
     console.error(
       '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
-      components.get('DSStore'),
+      svgPath,
       '\n',
     );
   }
+  const name = getComponentNameFromSvgPath(svgPath);
   const isDeprecated = deprecatedIcons.has(name);
   const replacement = deprecatedIcons.get(name);
   return { name, svgPath, isDeprecated, replacement };
