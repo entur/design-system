@@ -1,7 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
 const toCase = require('case');
-const babel = require('@babel/core');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
