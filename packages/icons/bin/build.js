@@ -5,6 +5,7 @@ const babel = require('@babel/core');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
+const outdent = require('outdent');
 
 /** Traverses a directory
  * returns an array of all file paths
@@ -174,9 +175,11 @@ for (let svgPath of allSvgPaths) {
       `console.warn("Design system warning: ${componentName} is deprecated! ${
         replacement ? `Use ${replacement} instead.` : ''
       }");`,
-      `/**
-* @deprecated This icon is deprecated
-*/`,
+      outdent`
+        /**
+         * @deprecated This icon is deprecated
+         */
+      `,
       ...webCodeList.slice(2),
     ].join(`\n`);
     fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
