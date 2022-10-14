@@ -7,6 +7,134 @@ const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
 const outdent = require('outdent');
 
+const allSvgPaths = traverse('src/svgs');
+const componentNames = [];
+
+/**
+ * Deprecated icons, mapped to their possible replacements.
+ * If an icon is deprecated without a replacement, it is mapped to no value,
+ * and you can still check for deprecation using `deprecatedIcons.has(iconName)`.
+ */
+const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
+
+for (let svgPath of allSvgPaths) {
+  // Get a PascalCased version of the file name to use as the component name,
+  // and suffix it with "Icon"
+  let componentName = path
+    .basename(svgPath)
+    .replace('.svg', 'Icon')
+    .replace(/\s/g, '');
+  componentName = toCase.pascal(componentName);
+
+  // Check for .DS_Store to clarify confusing error message
+  if (componentName === 'DSStore') {
+    // eslint-disable-next-line no-undef
+    console.error(
+      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+      svgPath,
+      '\n',
+    );
+  }
+
+  // Read the SVG, optimize it with SVGO, and transpile it to React components
+  // for both the web and React Native
+  const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
+  outputWebCode(rawSvgText, componentName, deprecatedIcons);
+  outputNativeCode(rawSvgText, componentName);
+
+  // Save the component name in an array for use below
+  componentNames.push(componentName);
+}
+
+// Create index files for both the web and RN components
+createIndexFiles(componentNames);
+createTypeDeclaration(componentNames, deprecatedIcons);
+createStyleFiles();
+
+function outputWebCode(rawSvgText, componentName, deprecatedIcons) {
+  const webCode = svgr.sync(
+    rawSvgText,
+    createSvgrConfig(false, componentName),
+    {
+      componentName,
+    },
+  );
+
+  // If the icon is deprecated, we add a warning to the component code
+  const isDeprecated = deprecatedIcons.has(componentName);
+  if (isDeprecated) {
+    const replacement = deprecatedIcons.get(componentName);
+    const webCodeList = webCode.split(`\n`);
+    const deprecationMessage = getDeprecationMessage(
+      componentName,
+      replacement,
+    );
+    const WebCodeWithDeprecation = [
+      ...webCodeList.slice(0, 2),
+      `console.warn("Design system warning: ${deprecationMessage}");`,
+      createDeprecatedJsdocComment(deprecationMessage),
+      ...webCodeList.slice(2),
+    ].join(`\n`);
+    fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
+  } // If not deprecated, we create the component without changes
+  else {
+    fs.outputFileSync(`./tmp/web/${componentName}.js`, webCode);
+  }
+}
+
+function outputNativeCode(rawSvgText, componentName) {
+  const nativeCode = svgr.sync(rawSvgText, createSvgrConfig(true), {
+    componentName,
+  });
+  fs.outputFileSync(`./tmp/native/${componentName}.js`, nativeCode);
+}
+
+function createIndexFiles(componentNames) {
+  const indexFile = componentNames
+    .map(
+      componentName =>
+        `export { default as ${componentName} } from './${componentName}';`,
+    )
+    .join('\n');
+  fs.outputFileSync(`./tmp/web/index.js`, indexFile);
+  fs.outputFileSync(`./tmp/native/index.js`, indexFile);
+  // create a default index as well, which exposes the web interface by default
+  fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
+}
+
+function createTypeDeclaration(componentNames, deprecatedIcons) {
+  const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
+  const componentTypeLines = componentNames.flatMap(componentName => {
+    const typeDeclaration = `export declare const ${componentName}: React.FC<IconProps>;`;
+    const isDeprecated = deprecatedIcons.has(componentName);
+    if (isDeprecated) {
+      const replacement = deprecatedIcons.get(componentName);
+      const deprecationMessage = getDeprecationMessage(
+        componentName,
+        replacement,
+      );
+      const jsdocComment = createDeprecatedJsdocComment(deprecationMessage);
+      return [jsdocComment, typeDeclaration];
+    }
+    return typeDeclaration;
+  });
+  const typingsFile = [typingsPreamble, ...componentTypeLines].join('\n');
+  fs.ensureDirSync('./dist');
+  fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
+}
+
+function createStyleFiles() {
+  fs.ensureDirSync('./dist');
+  // finally, let's copy over the static assets if you need those directly
+  sass.render({ file: './src/index.scss' }, (err, result) => {
+    if (!err) {
+      fs.outputFileSync('./dist/styles.css', result.css);
+    } else {
+      throw 'Icon-Build Failed';
+    }
+  });
+}
+
 /** Traverses a directory
  * returns an array of all file paths
  */
@@ -124,122 +252,6 @@ function createSvgrConfig(native = false, componentName) {
   }
   return config;
 }
-
-// Get all SVGs
-const allSvgPaths = traverse('src/svgs');
-const componentNames = [];
-/**
- * Deprecated icons, mapped to its possible replacements.
- * If the icon is deprecated without a replacement, it is mapped to no value,
- * but you can still check for deprecation using `deprecatedIcons.has(iconName)`.
- */
-const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
-
-for (let svgPath of allSvgPaths) {
-  // Get a PascalCased version of the file name to use as the component name,
-  // and suffix it with "Icon"
-  let componentName = path
-    .basename(svgPath)
-    .replace('.svg', 'Icon')
-    .replace(/\s/g, '');
-  componentName = toCase.pascal(componentName);
-
-  // Check for .DS_Store to clarify confusing error message
-  if (componentName === 'DSStore') {
-    // eslint-disable-next-line no-undef
-    console.error(
-      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
-      svgPath,
-      '\n',
-    );
-  }
-
-  // Read the SVG, optimize it with SVGO, and transpile it to React components
-  // for both the web and React Native
-  const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-
-  const webCode = svgr.sync(
-    rawSvgText,
-    createSvgrConfig(false, componentName),
-    {
-      componentName,
-    },
-  );
-  const nativeCode = svgr.sync(rawSvgText, createSvgrConfig(true), {
-    componentName,
-  });
-
-  // If the icon is deprecated, we add a warning to the component code
-  const isDeprecated = deprecatedIcons.has(componentName);
-  if (isDeprecated) {
-    const replacement = deprecatedIcons.get(componentName);
-    const webCodeList = webCode.split(`\n`);
-    const deprecationMessage = getDeprecationMessage(
-      componentName,
-      replacement,
-    );
-    const WebCodeWithDeprecation = [
-      ...webCodeList.slice(0, 2),
-      `console.warn("Design system warning: ${deprecationMessage}");`,
-      createDeprecatedJsdocComment(deprecationMessage),
-      ...webCodeList.slice(2),
-    ].join(`\n`);
-    fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
-  } // If not deprecated, we create the component without changes
-  else {
-    fs.outputFileSync(`./tmp/web/${componentName}.js`, webCode);
-  }
-
-  fs.outputFileSync(`./tmp/native/${componentName}.js`, nativeCode);
-
-  // Save the component name in an array for use below
-  componentNames.push(componentName);
-}
-
-fs.ensureDirSync('./dist');
-// Create index files for both the web and RN components
-const indexFile = componentNames
-  .map(
-    componentName =>
-      `export { default as ${componentName} } from './${componentName}';`,
-  )
-  .join('\n');
-fs.outputFileSync(`./tmp/web/index.js`, indexFile);
-fs.outputFileSync(`./tmp/native/index.js`, indexFile);
-// create a default index as well, which exposes the web interface by default
-fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
-
-const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
-const componentTypeLines = componentNames.flatMap(componentName => {
-  const typeDeclaration = `export declare const ${componentName}: React.FC<IconProps>;`;
-  const isDeprecated = deprecatedIcons.has(componentName);
-  if (isDeprecated) {
-    const replacement = deprecatedIcons.get(componentName);
-    const deprecationMessage = getDeprecationMessage(
-      componentName,
-      replacement,
-    );
-    const jsdocComment = createDeprecatedJsdocComment(deprecationMessage);
-    return [jsdocComment, typeDeclaration];
-  }
-  return typeDeclaration;
-});
-const typingsFile = [typingsPreamble, ...componentTypeLines].join('\n');
-fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
-
-// finally, let's copy over the static assets if you need those directly
-sass.render(
-  {
-    file: './src/index.scss',
-  },
-  function (err, result) {
-    if (!err) {
-      fs.outputFileSync('./dist/styles.css', result.css);
-    } else {
-      throw 'Icon-Build Failed';
-    }
-  },
-);
 
 /** Constructs human-readable deprecation message, reffering to a possible replacement if one exists */
 function getDeprecationMessage(name, replacement) {
