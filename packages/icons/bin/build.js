@@ -118,17 +118,14 @@ function traverse(directory, dirEnt = '') {
   const entryName = dirEnt ? dirEnt.name : '';
   const completePath = path.resolve(directory, entryName);
   if (dirEnt && dirEnt.isFile()) {
-    return [completePath];
+    return completePath;
   }
   const directoryContent = fs.readdirSync(completePath, {
     withFileTypes: true,
   });
-  return directoryContent
-    .map(nextDirEnt => traverse(completePath, nextDirEnt))
-    .reduce(
-      (acc, next) => (Array.isArray(next) ? [...acc, ...next] : [...acc, next]),
-      [],
-    );
+  return directoryContent.flatMap(nextDirEnt =>
+    traverse(completePath, nextDirEnt),
+  );
 }
 
 /** Create the correct SVGR config based on its environment */
