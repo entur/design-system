@@ -128,6 +128,7 @@ function createSvgrConfig(native = false, componentName) {
 const allSvgPaths = traverse('src/svgs');
 const componentNames = [];
 const deprecatedIcons = [{ icon: 'ReportsIcon', replacement: 'CopyIcon' }];
+const deprecatedIconNames = new Set(deprecatedIcons.map(e => e.icon));
 
 for (let svgPath of allSvgPaths) {
   // Get a PascalCased version of the file name to use as the component name,
@@ -164,7 +165,7 @@ for (let svgPath of allSvgPaths) {
   });
 
   // If the icon is deprecated, we add a warning to the component code
-  if (deprecatedIcons.map(e => e.icon).includes(componentName)) {
+  if (deprecatedIconNames.has(componentName)) {
     const replacement = deprecatedIcons.filter(e => e.icon === componentName)[0]
       .replacement;
     const webCodeList = webCode.split(`\n`);
