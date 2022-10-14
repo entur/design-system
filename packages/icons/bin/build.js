@@ -18,6 +18,15 @@ const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
 const components = new Map(
   allSvgPaths.map(svgPath => {
     const name = getComponentNameFromSvgPath(svgPath);
+    // Check for .DS_Store to clarify confusing error message
+    if (name === 'DSStore') {
+      // eslint-disable-next-line no-undef
+      console.error(
+        '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+        components.get('DSStore'),
+        '\n',
+      );
+    }
     return [
       name,
       {
@@ -29,16 +38,6 @@ const components = new Map(
     ];
   }),
 );
-
-// Check for .DS_Store to clarify confusing error message
-if (components.has('DSStore')) {
-  // eslint-disable-next-line no-undef
-  console.error(
-    '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
-    components.get('DSStore'),
-    '\n',
-  );
-}
 
 for (const component of components.values()) {
   // Read the SVG, optimize it with SVGO, and transpile it to React components
