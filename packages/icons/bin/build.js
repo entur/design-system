@@ -148,14 +148,14 @@ function createSvgrConfig(native = false, componentName) {
     };
 
     config.replaceAttrValues = {
-      [`${colors.brand.blue.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.bus.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.metro.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.tram.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.train.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.ferry.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.plane.toUpperCase()}`]: 'currentColor',
-      [`${colors.transport.default.cableway.toUpperCase()}`]: 'currentColor',
+      [colors.brand.blue.toUpperCase()]: 'currentColor',
+      [colors.transport.default.bus.toUpperCase()]: 'currentColor',
+      [colors.transport.default.metro.toUpperCase()]: 'currentColor',
+      [colors.transport.default.tram.toUpperCase()]: 'currentColor',
+      [colors.transport.default.train.toUpperCase()]: 'currentColor',
+      [colors.transport.default.ferry.toUpperCase()]: 'currentColor',
+      [colors.transport.default.plane.toUpperCase()]: 'currentColor',
+      [colors.transport.default.cableway.toUpperCase()]: 'currentColor',
     };
   } else {
     // Should always be white
