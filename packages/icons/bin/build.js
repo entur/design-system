@@ -7,6 +7,12 @@ const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
 const outdent = require('outdent');
 
+const deprecationMessage = outdent`
+  /**
+   * @deprecated This icon is deprecated
+   */
+`;
+
 /** Traverses a directory
  * returns an array of all file paths
  */
@@ -175,11 +181,7 @@ for (let svgPath of allSvgPaths) {
       `console.warn("Design system warning: ${componentName} is deprecated! ${
         replacement ? `Use ${replacement} instead.` : ''
       }");`,
-      outdent`
-        /**
-         * @deprecated This icon is deprecated
-         */
-      `,
+      deprecationMessage,
       ...webCodeList.slice(2),
     ].join(`\n`);
     fs.outputFileSync(`./tmp/web/${componentName}.js`, WebCodeWithDeprecation);
@@ -208,10 +210,13 @@ fs.outputFileSync(`./tmp/native/index.js`, indexFile);
 fs.outputFileSync(`./tmp/index.js`, "export * from './web';\n");
 
 const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
-const componentTypeLines = componentNames.map(
-  componentName =>
-    `export declare const ${componentName}: React.FC<IconProps>;`,
-);
+const componentTypeLines = componentNames.flatMap(componentName => {
+  const typeDeclaration = `export declare const ${componentName}: React.FC<IconProps>;`;
+  if (deprecatedIconNames.has(componentName)) {
+    return [deprecationMessage, typeDeclaration];
+  }
+  return typeDeclaration;
+});
 const typingsFile = [typingsPreamble, ...componentTypeLines].join('\n');
 fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
 
