@@ -5,7 +5,6 @@ const babel = require('@babel/core');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
-const outdent = require('outdent');
 
 const allSvgPaths = traverse('src/svgs');
 const componentNames = [];
