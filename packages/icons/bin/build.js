@@ -253,7 +253,7 @@ function createSvgrConfig(native = false, componentName) {
   return config;
 }
 
-/** Constructs human-readable deprecation message, reffering to a possible replacement if one exists */
+/** Constructs human-readable deprecation message, referring to a possible replacement if one exists */
 function getDeprecationMessage(name, replacement) {
   if (replacement) {
     return `${name} is deprecated; use ${replacement} instead`;
