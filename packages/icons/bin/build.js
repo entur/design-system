@@ -7,7 +7,6 @@ const { colors } = require('@entur/tokens');
 var sass = require('node-sass');
 
 const allSvgPaths = traverse('src/svgs');
-const componentNames = [];
 
 /**
  * Deprecated icons, mapped to their possible replacements.
@@ -16,36 +15,38 @@ const componentNames = [];
  */
 const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
 
-for (let svgPath of allSvgPaths) {
-  // Get a PascalCased version of the file name to use as the component name,
-  // and suffix it with "Icon"
-  let componentName = path
-    .basename(svgPath)
-    .replace('.svg', 'Icon')
-    .replace(/\s/g, '');
-  componentName = toCase.pascal(componentName);
+const components = new Map(
+  allSvgPaths.map(svgPath => {
+    // Get a PascalCased version of the file name to use as the component name,
+    // and suffix it with "Icon"
+    let componentName = path
+      .basename(svgPath)
+      .replace('.svg', 'Icon')
+      .replace(/\s/g, '');
+    componentName = toCase.pascal(componentName);
+    return [componentName, svgPath];
+  }),
+);
 
-  // Check for .DS_Store to clarify confusing error message
-  if (componentName === 'DSStore') {
-    // eslint-disable-next-line no-undef
-    console.error(
-      '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
-      svgPath,
-      '\n',
-    );
-  }
+// Check for .DS_Store to clarify confusing error message
+if (components.has('DSStore')) {
+  // eslint-disable-next-line no-undef
+  console.error(
+    '\nWARNING: You have a .DS_Store file among your svgs, please remove it. Path:',
+    components.get('DSStore'),
+    '\n',
+  );
+}
 
+for (const [componentName, svgPath] of components.entries()) {
   // Read the SVG, optimize it with SVGO, and transpile it to React components
   // for both the web and React Native
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
   outputWebCode(rawSvgText, componentName, deprecatedIcons);
   outputNativeCode(rawSvgText, componentName);
-
-  // Save the component name in an array for use below
-  componentNames.push(componentName);
 }
 
-// Create index files for both the web and RN components
+const componentNames = [...components.keys()];
 createIndexFiles(componentNames);
 createTypeDeclaration(componentNames, deprecatedIcons);
 createStyleFiles();
