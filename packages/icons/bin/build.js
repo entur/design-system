@@ -40,28 +40,32 @@ createIndexFiles(components);
 createTypeDeclaration(components);
 createStyleFiles();
 
-function outputWebCode({ name, svgPath, isDeprecated, replacement }) {
+function outputWebCode(component) {
+  const { name, svgPath } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
   const webCode = svgr.sync(rawSvgText, createSvgrConfig(false, name), {
     componentName: name,
   });
+  const afterPossibleDeprecations = addDeprecationWarnings(webCode, component);
+  fs.outputFileSync(`./tmp/web/${name}.js`, afterPossibleDeprecations);
+}
 
-  // If the icon is deprecated, we add a warning to the component code
+/** Add deprecation warnings if an icon is deprecated */
+function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
   if (isDeprecated) {
     const webCodeList = webCode.split(`\n`);
     const deprecationMessage = getDeprecationMessage(name, replacement);
-    const splitPoint = 2;
-    const WebCodeWithDeprecation = [
-      ...webCodeList.slice(0, splitPoint),
-      `console.warn("Design system warning: ${deprecationMessage}");`,
+    const jsdocInsertionPoint = 2;
+    const consoleLogInsertionPoint = 3;
+    return [
+      ...webCodeList.slice(0, jsdocInsertionPoint),
       createDeprecatedJsdocComment(deprecationMessage),
-      ...webCodeList.slice(splitPoint),
+      ...webCodeList.slice(jsdocInsertionPoint, consoleLogInsertionPoint),
+      `console.warn('Design system warning: ${deprecationMessage}');`,
+      ...webCodeList.slice(consoleLogInsertionPoint),
     ].join(`\n`);
-    fs.outputFileSync(`./tmp/web/${name}.js`, WebCodeWithDeprecation);
-  } // If not deprecated, we create the component without changes
-  else {
-    fs.outputFileSync(`./tmp/web/${name}.js`, webCode);
   }
+  return webCode;
 }
 
 function outputNativeCode({ name: componentName, svgPath }) {
