@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import { useDateSegment } from '@react-aria/datepicker';
 import { DateSegment, DateFieldState } from '@react-stately/datepicker';
 
+import './FieldSegment.scss';
+
 type TimeSegmentProps = {
   segment: DateSegment;
   state: DateFieldState;
 };
 
-export const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
+export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
 
@@ -27,8 +29,9 @@ export const TimeSegment = ({ segment, state }: TimeSegmentProps) => {
     <div
       {...segmentProps}
       ref={ref}
-      className={classNames('eds-timepicker__segment', {
-        'eds-timepicker__segment--placeholder': segment.isPlaceholder,
+      className={classNames('eds-date-and-time-field__segment', {
+        'eds-date-and-time-field__segment--placeholder': segment.isPlaceholder,
+        'eds-date-and-time-field__segment--dot-separator': segment.text === '.',
       })}
     >
       {segmentDisplayText()}

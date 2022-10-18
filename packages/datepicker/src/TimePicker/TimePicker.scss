@@ -38,23 +38,6 @@
       }
     }
 
-    &__segment {
-      margin-top: $space-medium;
-      padding: 0 2px;
-      font-variant-numeric: tabular-nums;
-      text-align: end;
-
-      &--placeholder {
-        color: grey;
-      }
-
-      &:focus {
-        background: $colors-misc-focus;
-        outline: none;
-        border-radius: $border-radiuses-default;
-      }
-    }
-
     .eds-form-control__append--tooltip {
       margin-top: 0.75rem;
       margin-right: -0.25rem;
