@@ -1,8 +1,12 @@
 import React, { cloneElement, createContext, useContext } from 'react';
+
 import { usePopper } from 'react-popper';
 import { Placement } from '@popperjs/core';
 import classNames from 'classnames';
+
 import { Contrast } from '@entur/layout';
+import { useOnClickOutside } from '@entur/utils';
+
 import './Popover.scss';
 
 type PopoverContentCallbackProps = {
@@ -87,7 +91,7 @@ export const Popover: React.FC<PopoverProps> = ({
     return buttonProps;
   }, [triggerElement, showPopover]);
 
-  useOnClickOutside(contentElement, triggerElement, () =>
+  useOnClickOutside([contentElement, triggerElement], () =>
     setShowPopover(false),
   );
   const closeButtonProps = {
@@ -200,60 +204,10 @@ export const PopoverContent = React.forwardRef<
   );
 });
 
-function elementContainsEventTarget(element: HTMLElement | null, event: Event) {
-  if (!element) {
-    return false;
-  }
-
-  if (element.contains(event.target as Node)) {
-    return true;
-  }
-
-  // For elements inside a Shadow DOM we need to check the composedPath
-  if (event.composed && event.composedPath) {
-    const contains = event.composedPath().find(target => {
-      if (target === window) {
-        return false;
-      }
-      return element.contains(target as Node);
-    });
-    return contains ? true : false;
-  }
-
-  return false;
-}
-
 function elementContainsElement(
   parent: HTMLElement | null,
   child: HTMLElement,
 ) {
   if (!parent) return false;
   return parent === child || parent.contains(child);
-}
-
-function useOnClickOutside(
-  ref: React.RefObject<HTMLDivElement>,
-  buttonRef: React.RefObject<HTMLButtonElement>,
-  handler: () => void,
-) {
-  React.useEffect(() => {
-    const listener = (event: Event) => {
-      if (
-        elementContainsEventTarget(ref.current, event) ||
-        elementContainsEventTarget(buttonRef.current, event)
-      ) {
-        return;
-      }
-
-      handler();
-    };
-
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
-
-    return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
-    };
-  }, [ref, buttonRef, handler]);
 }
