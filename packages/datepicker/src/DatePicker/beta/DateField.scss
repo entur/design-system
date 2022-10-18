@@ -4,4 +4,13 @@
   div:first-of-type.eds-date-and-time-field__segment {
     margin-left: 1rem;
   }
+  &.eds-form-control-wrapper--disabled {
+    &:focus-within {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    .eds-date-and-time-field__segment:focus {
+      background: none;
+    }
+  }
 }
