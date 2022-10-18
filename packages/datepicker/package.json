@@ -32,14 +32,20 @@
     "@entur/tokens": "^3.4.1",
     "@entur/typography": "^1.7.0",
     "@entur/utils": "^0.4.5",
+    "@entur/button": "2.10.4",
     "@internationalized/date": "^3.0.1",
     "@react-aria/datepicker": "^3.1.1",
+    "@react-aria/calendar": "3.0.3",
+    "@react-aria/button": "3.6.2",
     "@react-aria/i18n": "^3.6.0",
     "@react-stately/datepicker": "^3.0.2",
+    "@react-stately/calendar": "3.0.3",
     "@react-types/datepicker": "^3.1.1",
-    "@types/react-datepicker": "^4.3.4",
     "classnames": "^2.3.1",
-    "react-datepicker": "^4.7.0"
+    "react-datepicker": "^4.7.0",
+    "@types/react-datepicker": "^4.3.4",
+    "@floating-ui/react-dom": "^1.0.0",
+    "react-focus-lock": "^2.9.1"
   },
   "volta": {
     "node": "14.17.0",
