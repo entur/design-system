@@ -1,0 +1,38 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-datepicker {
+  position: relative;
+  width: fit-content;
+
+  &__open-calendar-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.45rem;
+
+    // This is done to remove contrast specific styling
+    &.eds-icon-button {
+      color: $colors-brand-blue;
+      &:hover {
+        background-color: $colors-blues-blue70;
+      }
+      &:focus {
+        border: $border-widths-small solid $colors-brand-blue;
+      }
+      &:active {
+        background-color: $colors-blues-blue60;
+      }
+    }
+  }
+
+  &__datefield {
+    padding-right: 4rem;
+    &--disabled {
+      padding-right: 1rem;
+    }
+
+    &__wrapper {
+      display: flex;
+      position: relative;
+    }
+  }
+}
