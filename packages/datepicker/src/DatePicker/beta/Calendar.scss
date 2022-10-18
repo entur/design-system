@@ -1,0 +1,98 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-datepicker__calendar,
+.eds-contrast .eds-datepicker__calendar {
+  width: fit-content;
+  padding: $space-large;
+  padding-top: $space-small;
+
+  background-color: $colors-brand-white;
+  color: $colors-brand-blue;
+  border-radius: 4px;
+  box-shadow: $shadows-box-shadow;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: $font-sizes-large;
+      font-weight: $font-weights-heading;
+    }
+
+    // This is done to remove contrast specific styling
+    .eds-icon-button {
+      &:hover {
+        background-color: $colors-blues-blue70;
+      }
+      &:focus {
+        border: $border-widths-small solid $colors-brand-blue;
+      }
+      &:active {
+        background-color: $colors-blues-blue60;
+      }
+    }
+  }
+
+  &__grid {
+    position: relative;
+    border-spacing: 0px;
+    border-collapse: collapse;
+
+    thead tr th {
+      color: $colors-blues-blue30;
+      font-size: $font-sizes-small;
+    }
+
+    &__cell {
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-sizes-medium;
+      cursor: default;
+
+      &__td {
+        position: relative;
+        padding: 0;
+        border: 1px solid $colors-greys-grey70;
+
+        &:focus-within {
+          z-index: 2;
+        }
+      }
+
+      &:hover {
+        background-color: $colors-blues-blue60;
+      }
+
+      &:focus {
+        box-shadow: $shadows-focus;
+        outline: 1px solid $colors-greys-grey70;
+      }
+
+      &--selected {
+        background-color: $colors-brand-blue;
+        color: $colors-brand-white;
+
+        &:hover {
+          background-color: $colors-blues-blue20;
+        }
+      }
+
+      &--disabled {
+        color: transparent;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      &--today {
+        border-bottom: 2px solid $colors-brand-coral;
+      }
+    }
+  }
+}
