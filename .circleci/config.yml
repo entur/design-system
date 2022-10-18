@@ -28,8 +28,8 @@ jobs:
       - restore_cache:
           name: Restore Docz/Gatsby Cache
           keys:
-            - v07-docz-cache-{{ .Branch }}
-            - v07-docz-cache-
+            - v08-docz-cache-{{ .Branch }}
+            - v08-docz-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -53,7 +53,7 @@ jobs:
           command: yarn build:documentation --scripts-prepend-node-path
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key: v07-docz-cache-{{ .Branch }}-{{ epoch }}
+          key: v08-docz-cache-{{ .Branch }}-{{ epoch }}
           paths:
             - .docz/.cache
             - .docz/public
@@ -80,8 +80,8 @@ jobs:
       - restore_cache:
           name: Restore Docz/Gatsby Cache
           keys:
-            - v07-docz-cache-{{ .Branch }}
-            - v07-docz-cache-
+            - v08-docz-cache-{{ .Branch }}
+            - v08-docz-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -103,7 +103,7 @@ jobs:
           command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
       - save_cache:
           name: Save Docz/Gatsby Cache
-          key: v07-docz-cache-{{ .Branch }}-{{ epoch }}
+          key: v08-docz-cache-{{ .Branch }}-{{ epoch }}
           paths:
             - .docz/.cache
             - .docz/public
