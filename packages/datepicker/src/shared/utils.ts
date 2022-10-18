@@ -5,6 +5,7 @@ import {
   parseAbsolute,
 } from '@internationalized/date';
 import { TimeValue } from '@react-types/datepicker';
+import { Calendar, GregorianCalendar } from '@internationalized/date';
 
 /**
  * Tar inn et JS Date-objekt og returnerer et av TimeValue-objektene fra @internationalized/date-pakken
@@ -90,4 +91,22 @@ export const timeValueToNativeDate = (
 
   // @ts-expect-error .toDate() does not exist in type Time or CalendarDateTime
   return time.toDate();
+};
+
+export const createCalendar = (identifier: string): Calendar => {
+  switch (identifier) {
+    case 'gregory':
+      return new GregorianCalendar();
+    default:
+      throw new Error(`Unsupported calendar ${identifier}`);
+  }
+};
+
+export const ariaLabelIfNorwegian = (
+  norwegianAriaLabel: string,
+  locale: string,
+  propsCollection: any,
+) => {
+  if (locale !== 'no-NO') return propsCollection['aria-label'];
+  return norwegianAriaLabel;
 };
