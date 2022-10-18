@@ -1,0 +1,25 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-date-and-time-field {
+  &__segment {
+    margin-top: $space-medium;
+    padding: 0 2px;
+    font-variant-numeric: tabular-nums;
+    text-align: end;
+
+    &--placeholder {
+      color: $colors-greys-grey40;
+    }
+
+    &--dot-separator {
+      margin-left: -0.1rem;
+      margin-right: -0.2rem;
+    }
+
+    &:focus {
+      background: $colors-misc-focus;
+      outline: none;
+      border-radius: $border-radiuses-default;
+    }
+  }
+}

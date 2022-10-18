@@ -13,7 +13,7 @@ import type {
 import { BaseFormControl, VariantType } from '@entur/form';
 import { useRandomId, mergeRefs } from '@entur/utils';
 
-import { TimeSegment } from './TimeSegment';
+import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
 
 import './TimePicker.scss';
@@ -156,7 +156,7 @@ export const TimePicker = React.forwardRef<HTMLDivElement, TimePickerProps>(
             feedback={feedback}
           >
             {state.segments.map((segment, i) => (
-              <TimeSegment segment={segment} state={state} key={i} />
+              <FieldSegment segment={segment} state={state} key={i} />
             ))}
           </BaseFormControl>
           <TimePickerArrowButton
