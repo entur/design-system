@@ -69,11 +69,11 @@ export const DatePickerBeta = ({
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
 
+  // TODO SE PÅ OM VERDIER I USE...STATE BURDE VÆRE I USE... I STEDET
   const state = useDatePickerState({
     value,
     onChange,
     label,
-    isDisabled: disabled,
     ...rest,
   });
   const {
@@ -83,7 +83,11 @@ export const DatePickerBeta = ({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker({ value, label: label, ...rest }, state, datePickerRef);
+  } = useDatePicker(
+    { value, label: label, isDisabled: disabled, ...rest },
+    state,
+    datePickerRef,
+  );
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({

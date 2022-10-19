@@ -88,12 +88,14 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
 
     const dateFieldRef = useRef(null);
     const { labelProps, fieldProps } = useDateField(
-      { ...rest, label: label },
+      { ...rest, label: label, isDisabled: disabled },
       state,
       dateFieldRef,
     );
 
     const id = useRandomId('datefield');
+
+    console.log('disabled field', state);
 
     return (
       <I18nProvider locale={locale}>

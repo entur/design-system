@@ -25,6 +25,8 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
     return segment.text;
   };
 
+  console.log('disabled seg', state.isDisabled);
+
   return (
     <div
       {...segmentProps}
@@ -33,6 +35,7 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
         'eds-date-and-time-field__segment--placeholder': segment.isPlaceholder,
         'eds-date-and-time-field__segment--dot-separator': segment.text === '.',
       })}
+      tabIndex={state.isDisabled ? -1 : segmentProps.tabIndex}
     >
       {segmentDisplayText()}
     </div>
