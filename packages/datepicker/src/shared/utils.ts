@@ -93,7 +93,7 @@ export const timeValueToNativeDate = (
   return time.toDate();
 };
 
-export const createCalendar = (identifier: string): Calendar => {
+export const createCalendar = (identifier = 'gregory'): Calendar => {
   switch (identifier) {
     case 'gregory':
       return new GregorianCalendar();
