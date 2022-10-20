@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.5...@entur/utils@0.4.6-alpha.0) (2022-10-20)
+
+### Bug Fixes
+
+- **locale:** wip fix for locale not working ([0ff0912](https://bitbucket.org/enturas/design-system/commits/0ff0912405e015abb50c9cb6103c5f9827d8bd7b))
+
 ## [0.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.4...@entur/utils@0.4.5) (2022-08-31)
 
 **Note:** Version bump only for package @entur/utils

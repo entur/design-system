@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.0.0...@entur/icons@5.0.1-alpha.0) (2022-10-20)
+
+### Bug Fixes
+
+- **unsorted icon:** fix error in unsorted icon svg file ([2dbe52b](https://bitbucket.org/enturas/design-system/commits/2dbe52b0b7b039c8bd0b2f133bf2ef84bd3e16e6))
+
 # [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.3.3...@entur/icons@5.0.0) (2022-10-12)
 
 ### Bug Fixes
