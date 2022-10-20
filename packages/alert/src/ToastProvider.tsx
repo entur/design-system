@@ -74,6 +74,8 @@ export type ToastProviderProps = {
   className?: string;
   /** Ekstra styling som sendes til ToastProvider-wrapperen */
   style?: React.CSSProperties;
+  /** Innholdet */
+  children: React.ReactNode;
 };
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
