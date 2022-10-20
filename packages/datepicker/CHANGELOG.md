@@ -34,6 +34,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@3.0.3) (2022-10-20)
 
 **Note:** Version bump only for package @entur/datepicker
+# [4.0.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@4.0.0-alpha.0) (2022-10-20)
+
+### Bug Fixes
+
+- **locale:** wip fix for locale not working ([0ff0912](https://bitbucket.org/enturas/design-system/commits/0ff0912405e015abb50c9cb6103c5f9827d8bd7b))
+
+### Features
+
+- **calendar:** add new calendar component ([6cd168c](https://bitbucket.org/enturas/design-system/commits/6cd168caf3d2e634fc2248abe728ab6a91e44ef8))
+- **date field:** add new date field component ([3f1348d](https://bitbucket.org/enturas/design-system/commits/3f1348d53e0d7dc5381f613633791bcd7565689e))
+- **datepicker:** add new datepicker component ([7d53075](https://bitbucket.org/enturas/design-system/commits/7d5307509bfc3f7d6bf00d47be80eef6550404fb))
+
+### BREAKING CHANGES
+
+- **datepicker:** rewrite
 
 ## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.1...@entur/datepicker@3.0.2) (2022-10-12)
 

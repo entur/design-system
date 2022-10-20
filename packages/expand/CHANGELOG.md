@@ -32,6 +32,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/expand
 
 ## [3.3.22](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.21...@entur/expand@3.3.22) (2022-10-20)
+## [3.3.22-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.21...@entur/expand@3.3.22-alpha.0) (2022-10-20)
 
 **Note:** Version bump only for package @entur/expand
 

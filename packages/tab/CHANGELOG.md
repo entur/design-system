@@ -16,6 +16,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/tab
 
 ## [0.4.33](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.32...@entur/tab@0.4.33) (2022-10-31)
+## [0.4.33-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.32...@entur/tab@0.4.33-alpha.0) (2022-10-20)
 
 **Note:** Version bump only for package @entur/tab
 

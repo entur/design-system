@@ -19,6 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/layout
 
 ## [2.1.12](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.11...@entur/layout@2.1.12) (2022-10-31)
+## [2.1.12-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.11...@entur/layout@2.1.12-alpha.0) (2022-10-20)
 
 **Note:** Version bump only for package @entur/layout
 

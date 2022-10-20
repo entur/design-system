@@ -36,6 +36,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [1.6.11](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.10...@entur/modal@1.6.11) (2022-10-20)
 
 **Note:** Version bump only for package @entur/modal
+## [1.6.11-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.10...@entur/modal@1.6.11-alpha.0) (2022-10-20)
+
+### Performance Improvements
+
+- **react-focus-lock:** update react-focus-lock package to newest version ([a827d1b](https://bitbucket.org/enturas/design-system/commits/a827d1b79872ea648ac794675cb5602df2cec56a))
 
 ## [1.6.10](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.9...@entur/modal@1.6.10) (2022-10-12)
 
