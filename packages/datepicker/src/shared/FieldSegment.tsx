@@ -25,8 +25,6 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
     return segment.text;
   };
 
-  console.log('disabled seg', state.isDisabled);
-
   return (
     <div
       {...segmentProps}

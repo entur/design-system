@@ -9,19 +9,10 @@ import { CalendarCell } from './CalendarCell';
 
 type CalendarGridProps = {
   state: CalendarState;
-  /** BCP47-språkkoden til locale-en du ønsker å bruke.
-   * @default Brukerenhetens selvvalgte locale
-   */
-  locale?: string;
 };
 
-export const CalendarGrid = ({
-  state,
-  locale: customLocale,
-  ...rest
-}: CalendarGridProps) => {
-  let { locale } = useLocale();
-  if (customLocale) locale = customLocale;
+export const CalendarGrid = ({ state, ...rest }: CalendarGridProps) => {
+  const { locale } = useLocale();
 
   const { gridProps, headerProps, weekDays } = useCalendarGrid(rest, state);
 

@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 
 import { useDatePickerState } from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
-import { useLocale } from '@react-aria/i18n';
 import { useFloating, offset, flip, shift } from '@floating-ui/react-dom';
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
@@ -51,30 +50,22 @@ type DatePickerProps = {
 export const DatePickerBeta = ({
   selectedDate: value,
   onChange,
-  label,
-  locale: customLocale,
-  showTimeZone,
-  showTime,
-  disabled,
+  disabled: isDisabled,
   className,
   style,
   variant,
   feedback,
   ...rest
 }: DatePickerProps) => {
-  let { locale } = useLocale();
-  if (customLocale) locale = customLocale;
-
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
 
   // TODO SE PÅ OM VERDIER I USE...STATE BURDE VÆRE I USE... I STEDET
   const state = useDatePickerState({
+    ...rest,
     value,
     onChange,
-    label,
-    ...rest,
   });
   const {
     groupProps,
@@ -83,11 +74,7 @@ export const DatePickerBeta = ({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker(
-    { value, label: label, isDisabled: disabled, ...rest },
-    state,
-    datePickerRef,
-  );
+  } = useDatePicker({ isDisabled, ...rest }, state, datePickerRef);
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
@@ -140,22 +127,17 @@ export const DatePickerBeta = ({
       >
         <DateField
           {...fieldProps}
-          selectedDate={value}
-          onChange={onChange}
-          label={label}
+          selectedDate={state.value}
+          label={rest.label}
           labelProps={labelProps}
-          locale={locale}
-          showTimeZone={showTimeZone}
-          showTime={showTime}
           ref={dateFieldRef}
-          disabled={disabled}
           className={classNames('eds-datepicker__datefield', {
-            'eds-datepicker__datefield--disabled': disabled,
+            'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
           })}
           variant={variant}
           feedback={feedback}
         />
-        {!disabled && (
+        {!fieldProps.isDisabled && (
           <CalendarButton
             {...buttonProps}
             onPress={() => state.setOpen(!state.isOpen)}
@@ -169,13 +151,11 @@ export const DatePickerBeta = ({
         <Calendar
           {...dialogProps}
           {...calendarProps}
-          selectedDate={value}
           onChange={(dateValue: DateValue) => {
             onChange(dateValue);
             state.setOpen(false);
           }}
-          locale={locale}
-          disabled={disabled}
+          disabled={calendarProps.isDisabled}
           ref={node => {
             calendarRef.current = node;
             floating(node);
