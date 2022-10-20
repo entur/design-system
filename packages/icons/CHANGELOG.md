@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.0.0...@entur/icons@5.1.0) (2022-10-20)
+
+### Bug Fixes
+
+- **unsorted icon:** fix error in unsorted icon svg file ([2dbe52b](https://bitbucket.org/enturas/design-system/commits/2dbe52b0b7b039c8bd0b2f133bf2ef84bd3e16e6))
+
+### Features
+
+- **icons:** add sami flag icon ([ff84edf](https://bitbucket.org/enturas/design-system/commits/ff84edf6626deb77b608d6ab99280f6cbecb8f47))
+
 # [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@4.3.3...@entur/icons@5.0.0) (2022-10-12)
 
 ### Bug Fixes

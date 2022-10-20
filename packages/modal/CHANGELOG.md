@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.11](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.10...@entur/modal@1.6.11) (2022-10-20)
+
+**Note:** Version bump only for package @entur/modal
+
 ## [1.6.10](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.9...@entur/modal@1.6.10) (2022-10-12)
 
 **Note:** Version bump only for package @entur/modal
