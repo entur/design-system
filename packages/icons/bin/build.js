@@ -88,6 +88,7 @@ function createSvgrConfig(native = false, componentName) {
       'UKIcon',
       'SwedenIcon',
       'DenmarkIcon',
+      'SamiIcon',
       'LogoNegativeIcon',
       'LogoPositiveIcon',
       'MastercardIcon',
