@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.25](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.24...@entur/table@4.5.25) (2022-10-20)
+
+**Note:** Version bump only for package @entur/table
+
 ## [4.5.24](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.23...@entur/table@4.5.24) (2022-10-20)
 
 **Note:** Version bump only for package @entur/table
