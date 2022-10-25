@@ -15,7 +15,7 @@ type CalendarCellProps = {
   date: CalendarDate;
 };
 
-export const CalendarCell = ({ state, date }: CalendarCellProps) => {
+export const CalendarCell = ({ state, date, ...rest }: CalendarCellProps) => {
   const cellRef = useRef(null);
 
   const {
@@ -42,6 +42,7 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
             now(state.timeZone ?? getLocalTimeZone()),
           ),
         })}
+        {...rest}
       >
         {formattedDate}
       </div>

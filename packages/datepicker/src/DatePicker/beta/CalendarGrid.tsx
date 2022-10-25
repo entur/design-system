@@ -5,13 +5,22 @@ import { useCalendarGrid } from '@react-aria/calendar';
 import { CalendarState } from '@react-stately/calendar';
 import { getWeeksInMonth } from '@internationalized/date';
 
+import { useRandomId } from '@entur/utils';
+import { VisuallyHidden } from '@entur/a11y';
+
 import { CalendarCell } from './CalendarCell';
 
 type CalendarGridProps = {
   state: CalendarState;
+  navigationDescription?: string;
 };
 
-export const CalendarGrid = ({ state, ...rest }: CalendarGridProps) => {
+export const CalendarGrid = ({
+  state,
+  navigationDescription,
+  ...rest
+}: CalendarGridProps) => {
+  const calendarGridId = useRandomId('eds-calendar');
   const { locale } = useLocale();
 
   const { gridProps, headerProps, weekDays } = useCalendarGrid(rest, state);
@@ -27,34 +36,51 @@ export const CalendarGrid = ({ state, ...rest }: CalendarGridProps) => {
     return weekDays.map(day => day.toLowerCase());
   };
 
+  const getNavigationDescription = () => {
+    if (navigationDescription) return navigationDescription;
+    if (locale.toLowerCase().includes('en'))
+      return 'Use the arrow keys to navigate between dates';
+    return 'Bruk piltastene til å navigere mellom datoer';
+  };
+
   return (
-    <table
-      {...gridProps}
-      cellSpacing="0"
-      className="eds-datepicker__calendar__grid"
-    >
-      <thead {...headerProps}>
-        <tr>
-          {weekDaysMapped().map((day, index) => (
-            <th key={index}>{day}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {weeksArray.map(weekIndex => (
-          <tr key={weekIndex}>
-            {state
-              .getDatesInWeek(weekIndex)
-              .map((date, i) =>
-                date ? (
-                  <CalendarCell key={i} state={state} date={date} />
-                ) : (
-                  <td key={i} />
-                ),
-              )}
+    <>
+      <table
+        {...gridProps}
+        cellSpacing="0"
+        className="eds-datepicker__calendar__grid"
+      >
+        <thead {...headerProps}>
+          <tr>
+            {weekDaysMapped().map((day, index) => (
+              <th key={index}>{day}</th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {weeksArray.map(weekIndex => (
+            <tr key={weekIndex}>
+              {state
+                .getDatesInWeek(weekIndex)
+                .map((date, i) =>
+                  date ? (
+                    <CalendarCell
+                      key={i}
+                      state={state}
+                      date={date}
+                      aria-describedBy={calendarGridId + 'description'}
+                    />
+                  ) : (
+                    <td key={i} />
+                  ),
+                )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <VisuallyHidden id={calendarGridId + 'description'}>
+        {getNavigationDescription()}
+      </VisuallyHidden>
+    </>
   );
 };
