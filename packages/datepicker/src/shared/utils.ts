@@ -107,6 +107,6 @@ export const ariaLabelIfNorwegian = (
   locale: string,
   propsCollection: any,
 ) => {
-  if (locale !== 'no-NO') return propsCollection['aria-label'];
+  if (locale.toLowerCase() !== 'no-no') return propsCollection['aria-label'];
   return norwegianAriaLabel;
 };

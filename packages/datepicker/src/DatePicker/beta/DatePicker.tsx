@@ -44,6 +44,10 @@ type DatePickerProps = {
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
+  /** Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.
+   * @default 'Bruk piltastene til å navigere mellom datoer'
+   */
+  navigationDescription?: string;
   [key: string]: any;
 };
 
@@ -55,6 +59,7 @@ export const DatePickerBeta = ({
   style,
   variant,
   feedback,
+  navigationDescription,
   ...rest
 }: DatePickerProps) => {
   const datePickerRef = useRef<HTMLDivElement | null>(null);
@@ -76,6 +81,15 @@ export const DatePickerBeta = ({
     calendarProps,
   } = useDatePicker({ isDisabled, ...rest }, state, datePickerRef);
 
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') state.setOpen(false);
+    };
+    calendarRef.current?.addEventListener('keydown', keyDownHandler);
+    return () =>
+      calendarRef.current?.removeEventListener('keydown', keyDownHandler);
+  }, [calendarRef.current]);
+
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
     placement: 'bottom-start',
@@ -86,8 +100,20 @@ export const DatePickerBeta = ({
     ],
   });
 
-  // set focus to selected date or today if available on open calendar
-  useEffect(() => {
+  useOnClickOutside([calendarRef], () => {
+    state.setOpen(false);
+  });
+
+  const handleCalendarButtonOnClick = (calendarIsOpen: boolean) => {
+    if (!calendarIsOpen) {
+      state.setOpen(true);
+      setFocusToRelevantDate();
+    } else {
+      state.setOpen(false);
+    }
+  };
+
+  const setFocusToRelevantDate = () => {
     const gridCellPrefix = 'eds-datepicker__calendar__grid__cell';
 
     const selectedCell = calendarRef.current?.getElementsByClassName(
@@ -99,21 +125,7 @@ export const DatePickerBeta = ({
 
     if (selectedCell) selectedCell.focus();
     else if (todayCell) todayCell.focus();
-  }, [state.isOpen]);
-
-  useOnClickOutside([calendarRef], () => {
-    state.setOpen(false);
-  });
-
-  useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') state.setOpen(false);
-    };
-    calendarRef.current?.addEventListener('keydown', keyDownHandler);
-    return () =>
-      calendarRef.current?.removeEventListener('keydown', keyDownHandler);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   return (
     <div className={classNames('eds-datepicker', className)}>
@@ -140,7 +152,7 @@ export const DatePickerBeta = ({
         {!fieldProps.isDisabled && (
           <CalendarButton
             {...buttonProps}
-            onPress={() => state.setOpen(!state.isOpen)}
+            onPress={() => handleCalendarButtonOnClick(state.isOpen)}
             className="eds-datepicker__open-calendar-button"
           >
             <CalendarIcon />
@@ -160,6 +172,7 @@ export const DatePickerBeta = ({
             calendarRef.current = node;
             floating(node);
           }}
+          navigationDescription={navigationDescription}
           // styling for floating-UI popover
           style={{
             display: state.isOpen ? 'block' : 'none',

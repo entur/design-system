@@ -15,22 +15,34 @@ import './Calendar.scss';
 
 type CalendarProps = {
   selectedDate: DateValue;
+  onChange: (SelectedDate: DateValue) => void;
+  navigationDescription?: string;
   style?: React.CSSProperties;
   [key: string]: any;
 };
 
 export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
-  ({ selectedDate: value, style, children: _, ...rest }, ref) => {
+  (
+    {
+      selectedDate: value,
+      onChange,
+      style,
+      children: _,
+      navigationDescription,
+      ...rest
+    },
+    ref,
+  ) => {
     const { locale } = useLocale();
 
     const state = useCalendarState({
       ...rest,
+      onChange,
       locale,
       createCalendar,
     });
     const { calendarProps, prevButtonProps, nextButtonProps, title } =
       useCalendar(rest, state);
-    // const monthAndYear = title.split(' ');
 
     return (
       <div
@@ -50,7 +62,6 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           >
             <LeftArrowIcon size={20} />
           </CalendarButton>
-          {/* <h2>{getTitle(monthAndYear, locale)}</h2> */}
           <h2>{title}</h2>
           <CalendarButton
             {...nextButtonProps}
@@ -63,36 +74,11 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             <RightArrowIcon size={20} />
           </CalendarButton>
         </div>
-        <CalendarGrid state={state} />
+        <CalendarGrid
+          state={state}
+          navigationDescription={navigationDescription}
+        />
       </div>
     );
   },
 );
-
-// const getTitle = (monthYearList: string[], locale: string) => {
-//   const month = monthYearList[0];
-//   const year = monthYearList[1];
-
-//   if (locale.toLowerCase() !== 'no-no' && locale.toLowerCase() !== 'no')
-//     return month + ' ' + year;
-//   switch (month.toLowerCase()) {
-//     case 'january':
-//       return 'januar ' + year;
-//     case 'february':
-//       return 'februar ' + year;
-//     case 'march':
-//       return 'mars ' + year;
-//     case 'may':
-//       return 'mai ' + year;
-//     case 'june':
-//       return 'juni ' + year;
-//     case 'july':
-//       return 'juli ' + year;
-//     case 'october':
-//       return 'oktober ' + year;
-//     case 'december':
-//       return 'desember ' + year;
-//     default:
-//       return month.toLowerCase() + ' ' + year.toLowerCase();
-//   }
-// };
