@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.5-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.5-alpha.0...@entur/button@2.10.5-alpha.1) (2022-10-26)
+
+**Note:** Version bump only for package @entur/button
+
 ## [2.10.5-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.4...@entur/button@2.10.5-alpha.0) (2022-10-20)
 
 **Note:** Version bump only for package @entur/button

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-alpha.0...@entur/datepicker@4.0.0-alpha.1) (2022-10-26)
+
+### Bug Fixes
+
+- **datepicker:** fix locale issues ([8c325b8](https://bitbucket.org/enturas/design-system/commits/8c325b86088feb9f8a7d4ad538a18ec6d78e202d))
+
+### Features
+
+- **datepicker:** add i18y-wrapper to components for locale ([aed14fb](https://bitbucket.org/enturas/design-system/commits/aed14fb32e789159b4021c8b740a8101b83228fa))
+- **datepicker:** add modal view for calendar when using small screen widths ([05d9325](https://bitbucket.org/enturas/design-system/commits/05d9325a83dbc8d7d2e62050e7d6bbecbe2f665e))
+
 # [4.0.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@4.0.0-alpha.0) (2022-10-20)
 
 ### Bug Fixes
