@@ -31,6 +31,7 @@
     "@entur/button": "^2.10.8",
     "@entur/form": "^5.4.13",
     "@entur/icons": "^5.4.1",
+    "@entur/modal": "1.6.12",
     "@entur/tokens": "^3.4.4",
     "@entur/tooltip": "^2.6.0",
     "@entur/typography": "^1.7.4",

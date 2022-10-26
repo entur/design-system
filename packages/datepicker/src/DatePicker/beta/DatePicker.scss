@@ -35,4 +35,11 @@
       position: relative;
     }
   }
+
+  &__calendar-modal.eds-modal__content {
+    padding: unset;
+    width: inherit;
+    background-color: unset;
+    overflow: visible;
+  }
 }
