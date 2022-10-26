@@ -24,18 +24,26 @@ Denne guiden viser deg hvordan du kan bidra med features, bug fixes, forbedring 
 Først må du klone ned dette repositoryet:
 
 ```sh
-$ git clone git@bitbucket.org:enturas/design-system.git
+git clone git@bitbucket.org:enturas/design-system.git
 ```
 
-For konsistent versjonering av yarn og node, så benyttes Volta. Dette må innstalleres før du fortsetter. [Les mer om innstallering av Volta her](https://volta.sh/).
+Vi bruker [versjonshåndtereren `asdf`](https://asdf-vm.com).
+Dette verktøyet gjør at datamaskinen din automatisk velger den rette versjonen av Node og Yarn å bruke i prosjektmappen og dens undermapper.
+[Installer verktøyet i henhold til instruksjonene](https://asdf-vm.com/guide/getting-started.html).
 
-Gå inn i den nye mappen `design-system`, og installer dependencies med `yarn`:
+Gå inn i den nye mappen `design-system`. Installer `asdf`-pluginene for Node og Yarn hvis du ikke allerede har gjort det.
+
+```shell
+asdf plugin add nodejs
+asdf plugin add yarn
+asdf install
+```
+
+Installer alle avhengigheter med `yarn`:
 
 ```sh
-$ yarn
+yarn install
 ```
-
-**Merk at vi bruker `yarn` og ikke `npm` i dette prosjektet**. Det er fordi vi bruker en yarn-only feature - workspaces - som letter utvikling i såkalte monorepos. For å innstallere `yarn` på din maskin, kjør `npm install --global yarn`.
 
 Siste steg i prosessen er å bygge alle pakkene. Dette gjør du med `yarn build:packages`.
 
@@ -152,10 +160,10 @@ Du kan starte opp en dev-versjon av dokumentasjonssiden med `yarn start` på rot
 Så om du utvikler en komponent for `@entur/a11y`-pakken, gjør du følgende:
 
 ```sh
-$ ~/design-system: yarn start
+~/design-system: yarn start
 # så, i en annen terminal
-$ ~/design-system: cd packages/a11y
-$ ~/design-system/packages/a11y: yarn start
+~/design-system: cd packages/a11y
+~/design-system/packages/a11y: yarn start
 ```
 
 Så går du til dokumentasjonssiden for den featuren du jobber på, og ser at alt oppfører seg som forventet.

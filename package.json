@@ -107,9 +107,5 @@
     "babel-plugin-remove-graphql-queries": "2.9.14",
     "gatsby-plugin-mdx": "1.2.4",
     "@types/react": "16.9.56"
-  },
-  "volta": {
-    "node": "14.17.0",
-    "yarn": "3.2.4"
   }
 }

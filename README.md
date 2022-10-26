@@ -7,10 +7,17 @@ You'll find the code for all the components in the `packages/` folder. The docum
 
 ## Requirements
 
-- Node.JS 14.17.0
-- yarn 1.18.0
+We use [the `asdf` version manager](https://asdf-vm.com).
+This tool makes your computer automatically select the right version Node and Yarn to use within the project folder and its sub-folders.
+[Install `asdf` according to the instructions](https://asdf-vm.com/guide/getting-started.html). Then install the necessary plugins and install the right versions of Node and Yarn by running the following script somewhere within the project.
 
-You may use [Volta](https://docs.volta.sh/guide/) to manage your js command-line tools. Versions are pinned in `package.json` for seamless, per-project version [switching](https://docs.volta.sh/guide/understanding#managing-your-project).
+```shell
+asdf plugin add nodejs
+asdf plugin add yarn
+asdf install
+```
+
+Look in the file `.tool-versions` to see which versions we use.
 
 ## Developing
 
