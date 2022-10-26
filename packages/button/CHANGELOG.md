@@ -18,6 +18,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/button
 
 ## [2.10.5](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.4...@entur/button@2.10.5) (2022-10-31)
+## [2.10.5-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.5-alpha.0...@entur/button@2.10.5-alpha.1) (2022-10-26)
 
 **Note:** Version bump only for package @entur/button
 
