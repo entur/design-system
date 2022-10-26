@@ -68,7 +68,7 @@ export const CalendarGrid = ({
                       key={i}
                       state={state}
                       date={date}
-                      aria-describedBy={calendarGridId + 'description'}
+                      aria-describedby={calendarGridId + 'description'}
                     />
                   ) : (
                     <td key={i} />
