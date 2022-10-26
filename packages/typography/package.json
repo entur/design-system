@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "dts build && cp -r fonts dist/fonts",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint",
-    "start": "dts watch --noClean"
+    "build": "yarn run dts build && cp -r fonts dist/fonts",
+    "test": "yarn run dts test --env=jsdom",
+    "lint": "yarn run dts lint",
+    "start": "yarn run dts watch --noClean"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -32,6 +32,9 @@
     "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.1"
+    "@entur/tokens": "^3.4.1",
+    "dts-cli": "^1.1.6",
+    "jest-watch-typeahead": "^2.2.0",
+    "ts-jest": "^27.0.0"
   }
 }

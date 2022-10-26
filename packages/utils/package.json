@@ -17,10 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build && cp src/*.scss dist",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build && cp src/*.scss dist",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -29,5 +28,8 @@
   "dependencies": {
     "react-polymorphic-types": "^1.1.0",
     "tiny-warning": "^1.0.3"
+  },
+  "devDependencies": {
+    "dts-cli": "^1.1.6"
   }
 }

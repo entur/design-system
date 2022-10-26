@@ -17,9 +17,9 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -29,5 +29,8 @@
     "@entur/tokens": "^3.4.1",
     "@entur/typography": "^1.7.1",
     "@entur/utils": "^0.4.6"
+  },
+  "devDependencies": {
+    "dts-cli": "^1.1.6"
   }
 }

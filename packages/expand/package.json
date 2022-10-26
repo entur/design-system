@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build",
+    "test": "yarn run dts test --env=jsdom",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -35,6 +35,9 @@
     "react-collapse": "^5.1.0"
   },
   "devDependencies": {
-    "@types/react-collapse": "^5.0.1"
+    "@types/react-collapse": "^5.0.1",
+    "dts-cli": "^1.1.6",
+    "jest-watch-typeahead": "^2.2.0",
+    "ts-jest": "^27.0.0"
   }
 }

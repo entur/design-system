@@ -18,19 +18,20 @@
   },
   "scripts": {
     "build": "yarn build:tokens && yarn build:css",
-    "build:tokens": "dts build",
-    "build:css": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts",
-    "test": "dts test"
+    "build:tokens": "yarn run dts build",
+    "build:css": "yarn run ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts"
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",
     "@types/fs-extra": "^8.0.0",
     "case": "^1.6.2",
+    "dts-cli": "^1.1.6",
     "flat": "^5.0.1",
     "fs-extra": "^8.1.0",
     "ts-node": "^8.3.0"
   },
   "dependencies": {
-    "hex-rgb": "^4.1.0"
+    "hex-rgb": "^4.1.0",
+    "typescript": "^4.6.3"
   }
 }

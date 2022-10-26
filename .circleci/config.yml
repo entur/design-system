@@ -36,13 +36,13 @@ jobs:
 
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn install --immutable
 
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - .yarn/cache
       - run:
           name: build
           command: yarn build
@@ -90,13 +90,13 @@ jobs:
 
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn install --immutable
 
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
+            - .yarn/cache
       - run:
           name: Deploy to production
           command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system

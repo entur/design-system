@@ -3,35 +3,35 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "setup": "yarn && yarn build:packages",
-    "build": "yarn build:packages && yarn build:docz",
-    "build:packages": "lerna run build",
-    "build:docz": "docz build",
+    "setup": "yarn install && yarn build:packages",
+    "build": "yarn run build:packages && yarn run build:docz",
+    "build:packages": "yarn run lerna run build",
+    "build:docz": "yarn run docz build",
     "lint": "yarn run lint:non-packages && yarn run lint:packages",
-    "lint:non-packages": "eslint . --ext js,ts,tsx,jsx,cjs,mjs --report-unused-disable-directives",
-    "lint:packages": "lerna run lint",
+    "lint:non-packages": "yarn run eslint . --ext js,ts,tsx,jsx,cjs,mjs --report-unused-disable-directives",
+    "lint:packages": "yarn run lerna run lint",
     "cleanStart": "rm -rf .docz && yarn start",
-    "start": "docz dev",
-    "test": "dts test --env=jest-environment-jsdom packages --runInBand --logHeapUsage",
-    "test:parallel": "dts test --env=jest-environment-jsdom packages",
-    "test:watch": "dts test --env=jest-environment-jsdom --watch",
+    "start": "yarn run docz dev",
+    "test": "yarn run dts test --env=jest-environment-jsdom packages --runInBand --logHeapUsage",
+    "test:parallel": "yarn run dts test --env=jest-environment-jsdom packages",
+    "test:watch": "yarn run dts test --env=jest-environment-jsdom --watch",
     "test:single-run": "cross-env CI=true yarn test",
-    "predeploy-docs": "yarn build",
-    "deploy-docs": "firebase deploy",
-    "new-package": "./bin/new-package.js",
+    "deploy-docs": "yarn run build && yarn run firebase deploy",
+    "new-package": "yarn node ./bin/new-package.js",
     "superClean": "rm -rf node_modules .docz packages/*/dist packages/*/node_modules packages/*/.rts2*",
-    "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
-    "lerna:publish": "lerna publish --conventional-commits",
-    "lerna:prerelease": "lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
-    "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
-    "playroom": "playroom start",
-    "prepare": "husky install"
+    "prepublish": "yarn run lint:packages && yarn run test",
+    "prepack": "yarn run build:packages",
+    "lerna:publish": "yarn run lerna publish --conventional-commits",
+    "lerna:prerelease": "yarn run lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
+    "prettier-everything": "yarn run prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
+    "playroom": "yarn run playroom start",
+    "postinstall": "yarn run husky install"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
+    "@babel/core": "^7.8.0",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@testing-library/jest-dom": "^5.16.1",
@@ -42,6 +42,7 @@
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^27.4.6",
     "case": "^1.6.2",
     "commitizen": "^4.2.4",
@@ -51,12 +52,15 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "2.24.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "firebase-tools": "^10.0.0",
+    "gatsby": "2.24.10",
+    "gatsby-source-filesystem": "2.3.22",
     "husky": "^7.0.0",
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
@@ -67,6 +71,7 @@
     "prettier": "2.3.2",
     "pretty-quick": "^3.1.1",
     "rollup-plugin-sass": "^1.2.2",
+    "sass": "^1.55.0",
     "tslib": "^2.3.1",
     "typescript": "^4.2.4"
   },
@@ -74,15 +79,6 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.ts"
-    ],
-    "globalSetup": "./global-setup.js"
   },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
@@ -98,7 +94,6 @@
     "hex-rgb": "^5.0.0",
     "markdown-to-jsx": "^6.11.4",
     "match-sorter": "^6.3.0",
-    "node-sass": "^4.14.1",
     "playroom": "0.24.0",
     "react": "^16.11.0",
     "react-confetti": "^6.0.1",
@@ -115,6 +110,6 @@
   },
   "volta": {
     "node": "14.17.0",
-    "yarn": "1.18.0"
+    "yarn": "3.2.4"
   }
 }
