@@ -39,9 +39,5 @@
   "devDependencies": {
     "@entur/tokens": "^3.4.1",
     "dts-cli": "^1.1.6"
-  },
-  "volta": {
-    "node": "14.17.0",
-    "yarn": "1.18.0"
   }
 }
