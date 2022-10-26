@@ -20,9 +20,7 @@
     "build": "yarn build:tokens && yarn build:css",
     "build:tokens": "yarn run dts build",
     "build:css": "yarn run ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts",
-    "prepack": "yarn run build",
-    "prepublish": "yarn run test",
-    "test": "yarn run dts test"
+    "prepack": "yarn run build"
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",

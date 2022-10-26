@@ -20,8 +20,7 @@
     "start": "yarn run dts watch --noClean",
     "build": "yarn run dts build && cp src/*.scss dist",
     "prepack": "yarn run build",
-    "prepublish": "yarn run test && yarn run lint",
-    "test": "yarn run dts test --env=jsdom",
+    "prepublish": "yarn run lint",
     "lint": "yarn run dts lint"
   },
   "peerDependencies": {
