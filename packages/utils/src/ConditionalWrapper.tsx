@@ -1,4 +1,13 @@
 import React from 'react';
 
-export const ConditionalWrapper = ({ condition, wrapper, children }: any) =>
-  condition ? wrapper(children) : <>{children}</>;
+type ConditionalWrapperType = {
+  condition: boolean;
+  wrapper: any;
+  children: any;
+};
+
+export const ConditionalWrapper = ({
+  condition,
+  wrapper,
+  children,
+}: ConditionalWrapperType) => (condition ? wrapper(children) : <>{children}</>);

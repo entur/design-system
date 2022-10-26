@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 
 import { useDateFieldState } from '@react-stately/datepicker';
 import { useDateField } from '@react-aria/datepicker';
-import { useLocale } from '@react-aria/i18n';
+import { I18nProvider, useLocale } from '@react-aria/i18n';
 import classNames from 'classnames';
 
 import type {
@@ -11,7 +11,7 @@ import type {
 } from '@react-types/datepicker';
 
 import { BaseFormControl, VariantType } from '@entur/form';
-import { mergeRefs, useRandomId } from '@entur/utils';
+import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
 
 import { FieldSegment } from '../../shared/FieldSegment';
 import { createCalendar } from '../../shared/utils';
@@ -54,6 +54,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
     {
       selectedDate: value,
       label,
+      locale: customLocale,
       showTimeZone,
       showTime,
       granularity = 'day',
@@ -73,7 +74,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
 
     const state = useDateFieldState({
       ...rest,
-      locale,
+      locale: customLocale ?? locale,
       createCalendar: createCalendar,
       value: value === null ? undefined : value,
       hideTimeZone: !showTimeZone,
@@ -90,25 +91,32 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
     const id = useRandomId('datefield');
 
     return (
-      <BaseFormControl
-        style={style}
-        className={classNames('eds-datefield', className)}
-        labelId={id}
-        ref={mergeRefs(dateFieldRef, ref)}
-        disabled={state.isDisabled}
-        disableLabelAnimation
-        label={label}
-        labelTooltip={labelTooltip}
-        labelProps={parentLabelProps ?? labelProps}
-        {...fieldProps}
-        variant={variant}
-        feedback={feedback}
-        append={append}
+      <ConditionalWrapper
+        condition={customLocale !== undefined}
+        wrapper={(child: ReactNode) => (
+          <I18nProvider locale={customLocale}>{child}</I18nProvider>
+        )}
       >
-        {state.segments.map((segment, i) => (
-          <FieldSegment segment={segment} state={state} key={i} />
-        ))}
-      </BaseFormControl>
+        <BaseFormControl
+          style={style}
+          className={classNames('eds-datefield', className)}
+          labelId={id}
+          ref={mergeRefs(dateFieldRef, ref)}
+          disabled={state.isDisabled}
+          disableLabelAnimation
+          label={label}
+          labelTooltip={labelTooltip}
+          labelProps={parentLabelProps ?? labelProps}
+          {...fieldProps}
+          variant={variant}
+          feedback={feedback}
+          append={append}
+        >
+          {state.segments.map((segment, i) => (
+            <FieldSegment segment={segment} state={state} key={i} />
+          ))}
+        </BaseFormControl>
+      </ConditionalWrapper>
     );
   },
 );
