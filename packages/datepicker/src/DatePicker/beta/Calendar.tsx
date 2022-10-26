@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import { useLocale } from '@react-aria/i18n';
+import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { useCalendar } from '@react-aria/calendar';
 import { useCalendarState } from '@react-stately/calendar';
 import { DateValue } from '@internationalized/date';
 
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
+import { ConditionalWrapper } from '@entur/utils';
 
 import { ariaLabelIfNorwegian, createCalendar } from '../../shared/utils';
 import { CalendarButton } from '../../shared/CalendarButton';
@@ -26,6 +27,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     {
       selectedDate: value,
       onChange,
+      locale: customLocale,
       style,
       children: _,
       navigationDescription,
@@ -38,47 +40,54 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     const state = useCalendarState({
       ...rest,
       onChange,
-      locale,
+      locale: customLocale ?? locale,
       createCalendar,
     });
     const { calendarProps, prevButtonProps, nextButtonProps, title } =
       useCalendar(rest, state);
 
     return (
-      <div
-        {...calendarProps}
-        ref={ref}
-        className="eds-datepicker__calendar"
-        style={style}
+      <ConditionalWrapper
+        condition={customLocale}
+        wrapper={(child: ReactNode) => (
+          <I18nProvider locale={customLocale}>{child}</I18nProvider>
+        )}
       >
-        <div className="eds-datepicker__calendar__header">
-          <CalendarButton
-            {...prevButtonProps}
-            aria-label={ariaLabelIfNorwegian(
-              'Forrige måned',
-              locale,
-              prevButtonProps,
-            )}
-          >
-            <LeftArrowIcon size={20} />
-          </CalendarButton>
-          <h2>{title}</h2>
-          <CalendarButton
-            {...nextButtonProps}
-            aria-label={ariaLabelIfNorwegian(
-              'Neste måned',
-              locale,
-              nextButtonProps,
-            )}
-          >
-            <RightArrowIcon size={20} />
-          </CalendarButton>
+        <div
+          {...calendarProps}
+          ref={ref}
+          className="eds-datepicker__calendar"
+          style={style}
+        >
+          <div className="eds-datepicker__calendar__header">
+            <CalendarButton
+              {...prevButtonProps}
+              aria-label={ariaLabelIfNorwegian(
+                'Forrige måned',
+                locale,
+                prevButtonProps,
+              )}
+            >
+              <LeftArrowIcon size={20} />
+            </CalendarButton>
+            <h2>{title}</h2>
+            <CalendarButton
+              {...nextButtonProps}
+              aria-label={ariaLabelIfNorwegian(
+                'Neste måned',
+                locale,
+                nextButtonProps,
+              )}
+            >
+              <RightArrowIcon size={20} />
+            </CalendarButton>
+          </div>
+          <CalendarGrid
+            state={state}
+            navigationDescription={navigationDescription}
+          />
         </div>
-        <CalendarGrid
-          state={state}
-          navigationDescription={navigationDescription}
-        />
-      </div>
+      </ConditionalWrapper>
     );
   },
 );

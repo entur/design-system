@@ -1,14 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
 import { useDatePickerState } from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
+import { I18nProvider } from '@react-aria/i18n';
 import { useFloating, offset, flip, shift } from '@floating-ui/react-dom';
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
 import type { DateValue } from '@react-types/datepicker';
 
-import { useOnClickOutside, useWindowDimensions } from '@entur/utils';
+import {
+  ConditionalWrapper,
+  useOnClickOutside,
+  useWindowDimensions,
+} from '@entur/utils';
 import { space } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { VariantType } from '@entur/form';
@@ -42,6 +47,10 @@ type DatePickerProps = {
   /** Valideringsvariant */
   variant?: VariantType;
   disabled?: boolean;
+  /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
+   *  @default false
+   */
+  disableModal?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
@@ -55,15 +64,17 @@ type DatePickerProps = {
 export const DatePickerBeta = ({
   selectedDate: value,
   onChange,
+  locale,
   disabled: isDisabled,
   className,
   style,
   variant,
   feedback,
+  disableModal = false,
   navigationDescription,
   ...rest
 }: DatePickerProps) => {
-  const ACTIVATE_MODAL_SCREEN_WIDTH = 1000;
+  const CALENDAR_MODAL_MAX_SCREEN_WIDTH = 1000;
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
@@ -91,7 +102,8 @@ export const DatePickerBeta = ({
     calendarRef.current?.addEventListener('keydown', keyDownHandler);
     return () =>
       calendarRef.current?.removeEventListener('keydown', keyDownHandler);
-  }, [calendarRef.current]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
@@ -181,38 +193,47 @@ export const DatePickerBeta = ({
   );
 
   return (
-    <div className={classNames('eds-datepicker', className)}>
-      <div
-        {...groupProps}
-        ref={node => {
-          datePickerRef.current = node;
-          reference(node);
-        }}
-        className="eds-datepicker__datefield__wrapper"
-      >
-        <DateField
-          {...fieldProps}
-          selectedDate={state.value}
-          label={rest.label}
-          labelProps={labelProps}
-          ref={dateFieldRef}
-          className={classNames('eds-datepicker__datefield', {
-            'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
-          })}
-          variant={variant}
-          feedback={feedback}
-        />
-        {!fieldProps.isDisabled && (
-          <CalendarButton
-            {...buttonProps}
-            onPress={() => handleCalendarButtonOnClick(state.isOpen)}
-            className="eds-datepicker__open-calendar-button"
-          >
-            <CalendarIcon />
-          </CalendarButton>
-        )}
-        {width < ACTIVATE_MODAL_SCREEN_WIDTH ? modalCalendar : popoverCalendar}
+    <ConditionalWrapper
+      condition={locale !== undefined}
+      wrapper={(child: ReactNode) => (
+        <I18nProvider locale={locale}>{child}</I18nProvider>
+      )}
+    >
+      <div className={classNames('eds-datepicker', className)}>
+        <div
+          {...groupProps}
+          ref={node => {
+            datePickerRef.current = node;
+            reference(node);
+          }}
+          className="eds-datepicker__datefield__wrapper"
+        >
+          <DateField
+            {...fieldProps}
+            selectedDate={state.value}
+            label={rest.label}
+            labelProps={labelProps}
+            ref={dateFieldRef}
+            className={classNames('eds-datepicker__datefield', {
+              'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
+            })}
+            variant={variant}
+            feedback={feedback}
+          />
+          {!fieldProps.isDisabled && (
+            <CalendarButton
+              {...buttonProps}
+              onPress={() => handleCalendarButtonOnClick(state.isOpen)}
+              className="eds-datepicker__open-calendar-button"
+            >
+              <CalendarIcon />
+            </CalendarButton>
+          )}
+          {width > CALENDAR_MODAL_MAX_SCREEN_WIDTH || disableModal
+            ? popoverCalendar
+            : modalCalendar}
+        </div>
       </div>
-    </div>
+    </ConditionalWrapper>
   );
 };
