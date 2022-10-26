@@ -17,17 +17,20 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build",
+    "test": "yarn run dts test --env=jsdom",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run test && yarn run lint",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.1"
+    "@entur/tokens": "^3.4.1",
+    "dts-cli": "^1.1.6"
   },
   "dependencies": {
     "@entur/button": "^2.10.4",

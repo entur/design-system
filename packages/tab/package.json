@@ -17,9 +17,11 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run test && yarn run lint",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -30,5 +32,8 @@
     "@entur/utils": "^0.4.5",
     "@reach/tabs": "^0.15.0",
     "classnames": "^2.3.1"
+  },
+  "devDependencies": {
+    "dts-cli": "^1.1.6"
   }
 }

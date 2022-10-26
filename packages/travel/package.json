@@ -17,10 +17,12 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build && cp -r src/pattern dist/pattern",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build && cp -r src/pattern dist/pattern",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run test && yarn run lint",
+    "test": "yarn run dts test --env=jsdom",
+    "lint": "yarn run dts lint"
   },
   "dependencies": {
     "@entur/icons": "^5.1.1",
@@ -34,6 +36,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
+    "dts-cli": "^1.1.6",
     "rollup-plugin-sass": "^1.2.2"
   }
 }

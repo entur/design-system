@@ -17,10 +17,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "dts build",
-    "start": "dts watch --noClean",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "build": "yarn run dts build",
+    "start": "yarn run dts watch --noClean",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run test && yarn run lint",
+    "test": "yarn run dts test --env=jsdom",
+    "lint": "yarn run dts lint"
   },
   "dependencies": {
     "@entur/a11y": "^0.2.49",
@@ -32,10 +34,14 @@
     "@entur/typography": "^1.7.0",
     "@entur/utils": "^0.4.5",
     "@reach/menu-button": "^0.16.1",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "react-is": "^16.8.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "dts-cli": "^1.1.6"
   }
 }

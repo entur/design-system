@@ -17,10 +17,12 @@
     "access": "public"
   },
   "scripts": {
-    "start": "dts watch --noClean",
-    "build": "dts build",
-    "test": "dts test --env=jsdom",
-    "lint": "dts lint"
+    "start": "yarn run dts watch --noClean",
+    "build": "yarn run dts build",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run test && yarn run lint",
+    "test": "yarn run dts test --env=jsdom",
+    "lint": "yarn run dts lint"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -37,5 +39,8 @@
     "@reach/dialog": "^0.16.0",
     "classnames": "^2.3.1",
     "react-focus-lock": "^2.5.2"
+  },
+  "devDependencies": {
+    "dts-cli": "^1.1.6"
   }
 }
