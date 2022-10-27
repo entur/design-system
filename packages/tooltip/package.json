@@ -27,16 +27,16 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.1",
+    "@entur/tokens": "workspace:^",
     "dts-cli": "^1.1.6",
     "jest-watch-typeahead": "^2.2.0",
     "ts-jest": "^27.0.0"
   },
   "dependencies": {
-    "@entur/button": "^2.10.5",
-    "@entur/icons": "^5.2.2",
-    "@entur/layout": "^2.1.12",
-    "@entur/utils": "^0.4.6",
+    "@entur/button": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/layout": "workspace:^",
+    "@entur/utils": "workspace:^",
     "@popperjs/core": "^2.10.1",
     "react-popper": "^2.2.5"
   }

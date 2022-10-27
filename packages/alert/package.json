@@ -27,15 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/expand": "^3.3.26",
-    "@entur/icons": "^5.2.2",
-    "@entur/typography": "^1.7.1",
-    "@entur/utils": "^0.4.6",
+    "@entur/expand": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/typography": "workspace:^",
+    "@entur/utils": "workspace:^",
     "classnames": "^2.3.1",
     "copy-text-to-clipboard": "2.2"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.1",
+    "@entur/tokens": "workspace:^",
     "dts-cli": "^1.1.6",
     "jest-watch-typeahead": "^2.2.0",
     "ts-jest": "^27.0.0"

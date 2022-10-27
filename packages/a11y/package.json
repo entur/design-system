@@ -26,9 +26,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^3.4.1",
-    "@entur/typography": "^1.7.1",
-    "@entur/utils": "^0.4.6"
+    "@entur/tokens": "workspace:^",
+    "@entur/typography": "workspace:^",
+    "@entur/utils": "workspace:^"
   },
   "devDependencies": {
     "dts-cli": "^1.1.6"

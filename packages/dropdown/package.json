@@ -27,14 +27,14 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.50",
-    "@entur/chip": "^0.6.13",
-    "@entur/form": "^5.4.10",
-    "@entur/icons": "^5.2.2",
-    "@entur/loader": "^0.4.13",
-    "@entur/tokens": "^3.4.1",
-    "@entur/tooltip": "^2.5.22",
-    "@entur/utils": "^0.4.6",
+    "@entur/a11y": "workspace:^",
+    "@entur/chip": "workspace:^",
+    "@entur/form": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/loader": "workspace:^",
+    "@entur/tokens": "workspace:^",
+    "@entur/tooltip": "workspace:^",
+    "@entur/utils": "workspace:^",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7"
   },
