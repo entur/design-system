@@ -1,7 +1,7 @@
 {
   "//": "Some more garbage, so that I can publish a new version",
   "name": "@entur/tokens",
-  "version": "3.4.2-beta.0",
+  "version": "3.4.2-beta.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tokens.esm.js",

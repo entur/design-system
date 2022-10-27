@@ -1,6 +1,6 @@
 {
   "name": "@entur/chip",
-  "version": "0.6.11-beta.1",
+  "version": "0.6.11-beta.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/chip.esm.js",
