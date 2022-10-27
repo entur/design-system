@@ -46,7 +46,7 @@
     "rollup": "2.6.1"
   },
   "dependencies": {
-    "@entur/tokens": "^3.4.1",
-    "@entur/utils": "^0.4.5"
+    "@entur/tokens": "workspace:^",
+    "@entur/utils": "workspace:^"
   }
 }

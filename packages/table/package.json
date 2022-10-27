@@ -29,16 +29,16 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/button": "^2.10.4",
-    "@entur/expand": "^3.3.23",
-    "@entur/form": "^5.4.7",
-    "@entur/utils": "^0.4.5",
+    "@entur/button": "workspace:^",
+    "@entur/expand": "workspace:^",
+    "@entur/form": "workspace:^",
+    "@entur/utils": "workspace:^",
     "@types/lodash.get": "^4.4.6",
     "classnames": "^2.3.1",
     "lodash.get": "^4.4.2"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.1",
+    "@entur/tokens": "workspace:^",
     "dts-cli": "^1.1.6",
     "jest-watch-typeahead": "^2.2.0",
     "ts-jest": "^27.0.0"

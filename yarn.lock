@@ -4812,13 +4812,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@entur/a11y@^0.2.49, @entur/a11y@workspace:packages/a11y":
+"@entur/a11y@workspace:^, @entur/a11y@workspace:packages/a11y":
   version: 0.0.0-use.local
   resolution: "@entur/a11y@workspace:packages/a11y"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     dts-cli: ^1.1.6
   peerDependencies:
     react: ">=16.8.0"
@@ -4830,11 +4830,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/alert@workspace:packages/alert"
   dependencies:
-    "@entur/expand": ^3.3.23
-    "@entur/icons": ^5.1.1
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/expand": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     copy-text-to-clipboard: 2.2
     dts-cli: ^1.1.6
@@ -4846,13 +4846,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/button@^2.10.4, @entur/button@workspace:packages/button":
+"@entur/button@workspace:^, @entur/button@workspace:packages/button":
   version: 0.0.0-use.local
   resolution: "@entur/button@workspace:packages/button"
   dependencies:
-    "@entur/loader": ^0.4.12
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/loader": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -4863,13 +4863,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/chip@^0.6.10, @entur/chip@workspace:packages/chip":
+"@entur/chip@workspace:^, @entur/chip@workspace:packages/chip":
   version: 0.0.0-use.local
   resolution: "@entur/chip@workspace:packages/chip"
   dependencies:
-    "@entur/form": ^5.4.7
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/form": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -4884,11 +4884,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/datepicker@workspace:packages/datepicker"
   dependencies:
-    "@entur/form": ^5.4.7
-    "@entur/icons": ^5.1.1
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@internationalized/date": ^3.0.1
     "@react-aria/datepicker": ^3.1.1
     "@react-aria/i18n": ^3.6.0
@@ -4910,14 +4910,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/dropdown@workspace:packages/dropdown"
   dependencies:
-    "@entur/a11y": ^0.2.49
-    "@entur/chip": ^0.6.10
-    "@entur/form": ^5.4.7
-    "@entur/icons": ^5.1.1
-    "@entur/loader": ^0.4.12
-    "@entur/tokens": ^3.4.1
-    "@entur/tooltip": ^2.5.19
-    "@entur/utils": ^0.4.5
+    "@entur/a11y": "workspace:^"
+    "@entur/chip": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/loader": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     downshift: ^6.1.7
     dts-cli: ^1.1.6
@@ -4929,14 +4929,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/expand@^3.3.23, @entur/expand@workspace:packages/expand":
+"@entur/expand@workspace:^, @entur/expand@workspace:packages/expand":
   version: 0.0.0-use.local
   resolution: "@entur/expand@workspace:packages/expand"
   dependencies:
-    "@entur/icons": ^5.1.1
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@types/react-collapse": ^5.0.1
     classnames: ^2.3.1
     dts-cli: ^1.1.6
@@ -4953,12 +4953,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/fileupload@workspace:packages/fileupload"
   dependencies:
-    "@entur/a11y": ^0.2.49
-    "@entur/button": ^2.10.4
-    "@entur/icons": ^5.1.1
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -4970,15 +4970,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/form@^5.4.7, @entur/form@workspace:packages/form":
+"@entur/form@workspace:^, @entur/form@workspace:packages/form":
   version: 0.0.0-use.local
   resolution: "@entur/form@workspace:packages/form"
   dependencies:
-    "@entur/icons": ^5.1.1
-    "@entur/tokens": ^3.4.1
-    "@entur/tooltip": ^2.5.19
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -4993,8 +4993,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/grid@workspace:packages/grid"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5005,15 +5005,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/icons@^5.1.1, @entur/icons@workspace:packages/icons":
+"@entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@entur/icons@workspace:packages/icons"
   dependencies:
     "@babel/core": ^7.7.7
     "@babel/preset-env": ^7.7.7
     "@babel/preset-react": ^7.7.4
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@rollup/plugin-babel": ^5.3.1
     "@rollup/plugin-node-resolve": ^7.0.0
     "@svgr/core": ^5.0.1
@@ -5033,13 +5033,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/layout@^2.1.11, @entur/layout@workspace:packages/layout":
+"@entur/layout@workspace:^, @entur/layout@workspace:packages/layout":
   version: 0.0.0-use.local
   resolution: "@entur/layout@workspace:packages/layout"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5050,13 +5050,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/loader@^0.4.12, @entur/loader@workspace:packages/loader":
+"@entur/loader@workspace:^, @entur/loader@workspace:packages/loader":
   version: 0.0.0-use.local
   resolution: "@entur/loader@workspace:packages/loader"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5071,14 +5071,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/menu@workspace:packages/menu"
   dependencies:
-    "@entur/a11y": ^0.2.49
-    "@entur/button": ^2.10.4
-    "@entur/expand": ^3.3.23
-    "@entur/icons": ^5.1.1
-    "@entur/layout": ^2.1.11
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@reach/menu-button": ^0.16.1
     classnames: ^2.3.1
     dts-cli: ^1.1.6
@@ -5095,13 +5095,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/modal@workspace:packages/modal"
   dependencies:
-    "@entur/a11y": ^0.2.49
-    "@entur/button": ^2.10.4
-    "@entur/icons": ^5.1.1
-    "@entur/layout": ^2.1.11
-    "@entur/tokens": ^3.4.1
-    "@entur/typography": ^1.7.0
-    "@entur/utils": ^0.4.5
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@reach/dialog": ^0.16.0
     classnames: ^2.3.1
     dts-cli: ^1.1.6
@@ -5118,8 +5118,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/tab@workspace:packages/tab"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@reach/tabs": ^0.15.0
     classnames: ^2.3.1
     dts-cli: ^1.1.6
@@ -5133,11 +5133,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/table@workspace:packages/table"
   dependencies:
-    "@entur/button": ^2.10.4
-    "@entur/expand": ^3.3.23
-    "@entur/form": ^5.4.7
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/button": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@types/lodash.get": ^4.4.6
     classnames: ^2.3.1
     dts-cli: ^1.1.6
@@ -5150,7 +5150,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tokens@^3.4.1, @entur/tokens@workspace:packages/tokens":
+"@entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:
@@ -5166,15 +5166,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tooltip@^2.5.19, @entur/tooltip@workspace:packages/tooltip":
+"@entur/tooltip@workspace:^, @entur/tooltip@workspace:packages/tooltip":
   version: 0.0.0-use.local
   resolution: "@entur/tooltip@workspace:packages/tooltip"
   dependencies:
-    "@entur/button": ^2.10.4
-    "@entur/icons": ^5.1.1
-    "@entur/layout": ^2.1.11
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@popperjs/core": ^2.10.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5190,10 +5190,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/travel@workspace:packages/travel"
   dependencies:
-    "@entur/icons": ^5.1.1
-    "@entur/layout": ^2.1.11
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5205,12 +5205,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/typography@^1.7.0, @entur/typography@workspace:packages/typography":
+"@entur/typography@workspace:^, @entur/typography@workspace:packages/typography":
   version: 0.0.0-use.local
   resolution: "@entur/typography@workspace:packages/typography"
   dependencies:
-    "@entur/tokens": ^3.4.1
-    "@entur/utils": ^0.4.5
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: ^2.3.1
     dts-cli: ^1.1.6
     jest-watch-typeahead: ^2.2.0
@@ -5222,7 +5222,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/utils@^0.4.5, @entur/utils@workspace:packages/utils":
+"@entur/utils@workspace:^, @entur/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@entur/utils@workspace:packages/utils"
   dependencies:
