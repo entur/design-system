@@ -83,6 +83,14 @@
       }
 
       &--disabled {
+        opacity: 0.5;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      &--outside-month {
         color: transparent;
 
         &:hover {

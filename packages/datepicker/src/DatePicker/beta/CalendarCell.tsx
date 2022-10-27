@@ -35,8 +35,10 @@ export const CalendarCell = ({ state, date, ...rest }: CalendarCellProps) => {
         hidden={isOutsideVisibleRange}
         className={classNames('eds-datepicker__calendar__grid__cell', {
           'eds-datepicker__calendar__grid__cell--selected': isSelected,
-          'eds-datepicker__calendar__grid__cell--disabled': isDisabled,
-          'eds-datepicker__calendar__grid__cell--unavailable': isUnavailable,
+          'eds-datepicker__calendar__grid__cell--disabled':
+            isDisabled || isUnavailable,
+          'eds-datepicker__calendar__grid__cell--outside-month':
+            isOutsideVisibleRange,
           'eds-datepicker__calendar__grid__cell--today': isEqualDay(
             date,
             now(state.timeZone ?? getLocalTimeZone()),
