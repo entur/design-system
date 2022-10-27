@@ -8,10 +8,12 @@ import {
   NumberedList,
   Paragraph,
   UnorderedList,
+  Blockquote,
+  Heading2,
+  LeadParagraph,
 } from '.';
 import { SmallText } from './SmallText';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Blockquote, Heading2, LeadParagraph } from '../dist';
 import { StrongText } from './StrongText';
 import { EmphasizedText } from './EmphasizedText';
 import { Link } from './Link';
