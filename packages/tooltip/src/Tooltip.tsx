@@ -76,10 +76,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
   ...rest
 }) => {
   const [showTooltip, setShowTooltip] = useState(isOpen || false);
-  let hoverTimer: NodeJS.Timeout;
+  let hoverTimer: number;
 
   const handleOpen: (event: React.MouseEvent) => void = event => {
     event.persist();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Typescript interprets this differently depending on whether it's run in Jest or not
+    // @ts-ignore -- for some reason, the type checker thinks that this setTimeout is run in node; it is not, because it is run in the browser
     hoverTimer = setTimeout(() => {
       setShowTooltip(true);
     }, 150);

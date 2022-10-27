@@ -42,6 +42,8 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "dts-cli": "^1.1.6"
+    "dts-cli": "^1.1.6",
+    "jest-watch-typeahead": "^2.2.0",
+    "ts-jest": "^27.0.0"
   }
 }

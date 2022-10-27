@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "dts-cli": "^1.1.6",
-    "rollup-plugin-sass": "^1.2.2"
+    "jest-watch-typeahead": "^2.2.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "ts-jest": "^27.0.0"
   }
 }

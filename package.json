@@ -77,15 +77,6 @@
       "path": "./node_modules/cz-lerna-changelog"
     }
   },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.ts"
-    ],
-    "globalSetup": "./global-setup.js"
-  },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
     "@emotion/core": "10.0.28",
