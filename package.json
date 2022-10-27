@@ -20,7 +20,6 @@
     "deploy-docs": "yarn run firebase deploy",
     "new-package": "yarn node ./bin/new-package.js",
     "superClean": "rm -rf node_modules .docz packages/*/dist packages/*/node_modules packages/*/.rts2*",
-    "prepublish": "yarn run build:packages && yarn lint && yarn test:single-run",
     "lerna:publish": "yarn run lerna publish --conventional-commits",
     "lerna:prerelease": "yarn run lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
     "prettier": "yarn run prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
