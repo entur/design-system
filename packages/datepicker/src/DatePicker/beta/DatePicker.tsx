@@ -7,7 +7,11 @@ import { useFloating, offset, flip, shift } from '@floating-ui/react-dom';
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
-import type { DateValue } from '@react-types/datepicker';
+import type { CalendarDate } from '@internationalized/date';
+import type {
+  DateValue,
+  SpectrumDatePickerProps,
+} from '@react-types/datepicker';
 
 import {
   ConditionalWrapper,
@@ -16,8 +20,9 @@ import {
 } from '@entur/utils';
 import { space } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
-import { VariantType } from '@entur/form';
 import { Modal } from '@entur/modal';
+
+import type { VariantType } from '@entur/form';
 
 import { DateField } from './DateField';
 import { Calendar } from './Calendar';
@@ -40,37 +45,72 @@ type DatePickerProps = {
    * @default false
    */
   showTimeZone?: boolean;
-  /** Viser tidspunkt i tillegg til dato hvis det er tilgjengelig */
+  /** Viser tidspunkt i tillegg til dato.
+   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
+   */
   showTime?: boolean;
+  /** Tidligste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
+  minValue?: CalendarDate;
+  /** Seneste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil det være til, men ikke med denne datoen */
+  maxValue?: CalendarDate;
+  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
+   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
+  isDateUnavailable?: (date: DateValue) => boolean;
   /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
+  /** Varselmelding som forteller om ugyldig dato
+   * @default "Ugyldig dato"
+   */
+  validationFeedback?: string;
+  /** Valideringsvariant for melding om ugyldig dato
+   * @default "error"
+   */
+  validationVariant?: VariantType;
   disabled?: boolean;
   /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
    *  @default false
    */
   disableModal?: boolean;
-  /** Ekstra klassenavn */
-  className?: string;
-  style?: React.CSSProperties;
+  labelTooltip?: React.ReactNode;
   /** Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.
    * @default 'Bruk piltastene til å navigere mellom datoer'
    */
   navigationDescription?: string;
-  [key: string]: any;
-};
+  /** Ekstra klassenavn */
+  className?: string;
+  style?: React.CSSProperties;
+} & Omit<
+  SpectrumDatePickerProps<DateValue>,
+  | 'value'
+  | 'onChange'
+  | 'label'
+  | 'hideTimeZone'
+  | 'placeholder'
+  | 'minValue'
+  | 'maxValue'
+>;
 
 export const DatePickerBeta = ({
   selectedDate: value,
   onChange,
   locale,
   disabled: isDisabled,
+  showTime,
+  showTimeZone = false,
   className,
   style,
   variant,
   feedback,
+  validationVariant,
+  validationFeedback,
   disableModal = false,
+  labelTooltip,
   navigationDescription,
   ...rest
 }: DatePickerProps) => {
@@ -213,12 +253,17 @@ export const DatePickerBeta = ({
             selectedDate={state.value}
             label={rest.label}
             labelProps={labelProps}
+            showTime={showTime}
+            showTimeZone={showTimeZone}
             ref={dateFieldRef}
+            variant={variant}
+            feedback={feedback}
+            validationVariant={validationVariant}
+            validationFeedback={validationFeedback}
+            labelTooltip={labelTooltip}
             className={classNames('eds-datepicker__datefield', {
               'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
             })}
-            variant={variant}
-            feedback={feedback}
           />
           {!fieldProps.isDisabled && (
             <CalendarButton

@@ -9,6 +9,7 @@ import type {
   SpectrumDateFieldProps,
   DateValue,
 } from '@react-types/datepicker';
+import type { CalendarDate } from '@internationalized/date';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
@@ -34,10 +35,23 @@ export type DateFieldProps = {
    */
   showTimeZone?: boolean;
   showTime?: boolean;
+  /** Tidligste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone */
+  minValue?: CalendarDate;
+  /** Seneste gyldige datovalg. (se minValue) */
+  maxValue?: CalendarDate;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
+  /** Varselmelding som forteller om ugyldig dato
+   * @default "Ugyldig dato"
+   */
+  validationFeedback?: string;
+  /** Valideringsvariant for melding om ugyldig dato
+   * @default "error"
+   */
+  validationVariant?: VariantType;
   labelTooltip?: React.ReactNode;
   disabled?: boolean;
   /** Ekstra klassenavn */
@@ -46,7 +60,13 @@ export type DateFieldProps = {
   [key: string]: any;
 } & Omit<
   SpectrumDateFieldProps<DateValue>,
-  'onChange' | 'label' | 'hideTimeZone' | 'placeholder'
+  | 'value'
+  | 'onChange'
+  | 'label'
+  | 'hideTimeZone'
+  | 'placeholder'
+  | 'minValue'
+  | 'maxValue'
 >;
 
 export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
@@ -61,6 +81,8 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       disabled,
       variant,
       feedback,
+      validationVariant = 'error',
+      validationFeedback = 'Ugyldig dato',
       labelTooltip,
       style,
       className,
@@ -108,9 +130,18 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
           labelTooltip={labelTooltip}
           labelProps={parentLabelProps ?? labelProps}
           {...fieldProps}
-          variant={variant}
-          feedback={feedback}
+          variant={
+            variant ?? state.validationState === 'invalid'
+              ? validationVariant
+              : undefined
+          }
+          feedback={
+            feedback ?? state.validationState === 'invalid'
+              ? validationFeedback
+              : undefined
+          }
           append={append}
+          ariaAlertOnFeedback
         >
           {state.segments.map((segment, i) => (
             <FieldSegment segment={segment} state={state} key={i} />
