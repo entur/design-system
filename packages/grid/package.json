@@ -1,6 +1,6 @@
 {
   "name": "@entur/grid",
-  "version": "0.3.14",
+  "version": "0.3.15-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/grid.esm.js",
