@@ -20,8 +20,6 @@
     "build": "yarn run dts build && cp -r fonts dist/fonts",
     "test": "yarn run dts test --env=jsdom",
     "lint": "yarn run dts lint",
-    "prepack": "yarn run build",
-    "prepublish": "yarn run test && yarn run lint",
     "start": "yarn run dts watch --noClean"
   },
   "peerDependencies": {

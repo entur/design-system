@@ -19,8 +19,6 @@
   "scripts": {
     "start": "yarn run dts watch --noClean",
     "build": "yarn run dts build",
-    "prepack": "yarn run build",
-    "prepublish": "yarn run lint",
     "lint": "yarn run dts lint"
   },
   "peerDependencies": {

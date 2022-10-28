@@ -20,8 +20,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn run rimraf dist native tmp && node bin/build.js && rollup -c && yarn run rimraf tmp",
-    "prepack": "yarn run build"
+    "build": "yarn run rimraf dist native tmp && node bin/build.js && rollup -c && yarn run rimraf tmp"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

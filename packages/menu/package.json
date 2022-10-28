@@ -19,8 +19,6 @@
   "scripts": {
     "build": "yarn run dts build",
     "start": "yarn run dts watch --noClean",
-    "prepack": "yarn run build",
-    "prepublish": "yarn run test && yarn run lint",
     "test": "yarn run dts test --env=jsdom",
     "lint": "yarn run dts lint"
   },
