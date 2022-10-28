@@ -3,7 +3,7 @@ const path = require('path');
 const toCase = require('case');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
-const sass = require('node-sass');
+const sass = require('sass');
 
 /**
  * Deprecated icons, mapped to their possible replacements.

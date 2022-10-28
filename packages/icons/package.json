@@ -41,9 +41,9 @@
     "case": "^1.6.2",
     "dts-cli": "^1.1.6",
     "fs-extra": "9.0.0",
-    "node-sass": "^7.0.3",
     "rimraf": "3.0.2",
-    "rollup": "2.6.1"
+    "rollup": "2.6.1",
+    "sass": "^1.55.0"
   },
   "dependencies": {
     "@entur/tokens": "workspace:^",

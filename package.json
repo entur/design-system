@@ -22,7 +22,7 @@
     "superClean": "rm -rf node_modules .docz packages/*/dist packages/*/node_modules packages/*/.rts2*",
     "lerna:publish": "yarn run lerna publish --conventional-commits",
     "lerna:prerelease": "yarn run lerna --concurrency=1 publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
-    "prettier": "yarn run prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
+    "prettier-everything": "yarn run prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
     "playroom": "yarn run playroom start",
     "postinstall": "yarn run husky install"
   },
@@ -60,6 +60,8 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "firebase-tools": "^10.0.0",
+    "gatsby": "2.24.10",
+    "gatsby-source-filesystem": "2.3.22",
     "husky": "^7.0.0",
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
@@ -69,6 +71,7 @@
     "prettier": "2.3.2",
     "pretty-quick": "^3.1.1",
     "rollup-plugin-sass": "^1.2.2",
+    "sass": "^1.55.0",
     "tslib": "^2.3.1",
     "typescript": "^4.2.4"
   },
@@ -91,7 +94,6 @@
     "hex-rgb": "^5.0.0",
     "markdown-to-jsx": "^6.11.4",
     "match-sorter": "^6.3.0",
-    "node-sass": "^4.14.1",
     "playroom": "0.24.0",
     "react": "^16.11.0",
     "react-confetti": "^6.0.1",
