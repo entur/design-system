@@ -32,6 +32,9 @@
       &:active {
         background-color: $colors-blues-blue60;
       }
+      &--disabled__wrapper {
+        visibility: hidden;
+      }
     }
   }
 
