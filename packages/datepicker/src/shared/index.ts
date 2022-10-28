@@ -1,1 +1,4 @@
-export { timeValueToNativeDate, nativeDateToTimeValue } from './utils';
+export {
+  timeOrDateValueToNativeDate,
+  nativeDateToTimeOrDateValue,
+} from './utils';
