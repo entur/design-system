@@ -35,6 +35,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @entur/datepicker
 
+# [4.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.0...@entur/datepicker@4.0.0-beta.1) (2022-10-28)
+
+### Bug Fixes
+
+- **datepicker:** hide next and previous month button when disabled ([1ae7037](https://bitbucket.org/enturas/design-system/commits/1ae70371fb5622b1fbfc593c9c0becd83f665531))
+
 # [4.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-alpha.1...@entur/datepicker@4.0.0-beta.0) (2022-10-27)
 
 ### Bug Fixes
