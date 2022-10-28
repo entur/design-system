@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.33-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.33-beta.2...@entur/tab@0.4.33-beta.3) (2022-10-28)
+
+**Note:** Version bump only for package @entur/tab
+
 ## [0.4.33-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.33-beta.1...@entur/tab@0.4.33-beta.2) (2022-10-27)
 
 **Note:** Version bump only for package @entur/tab
