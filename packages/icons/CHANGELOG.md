@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.1.1...@entur/icons@5.2.0) (2022-10-31)
+
+### Bug Fixes
+
+- **unsorted icon:** fix visual bug in unsorted icon ([26184f0](https://bitbucket.org/enturas/design-system/commits/26184f06d119e8ed292ffcda663ec14f7b190e68))
+- add deprecation comments to @entur/icons type declarations ([e1e1b14](https://bitbucket.org/enturas/design-system/commits/e1e1b14e1efed95c8ab4a5246fed84b8b2d34835))
+
+### Features
+
+- **icons:** add Cabin, Gym, Mountain, Playground and University icon ([d73da01](https://bitbucket.org/enturas/design-system/commits/d73da01c158edcd6015f93e343146cffbd8ff8f4))
+
 ## [5.1.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.1.0...@entur/icons@5.1.1) (2022-10-20)
 
 ### Bug Fixes
