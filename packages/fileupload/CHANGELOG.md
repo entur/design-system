@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.54](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.53...@entur/fileupload@0.3.54) (2022-10-31)
+
+### Bug Fixes
+
+- **file upload:** set onDelete type to be optional as it actually is ([1248b59](https://bitbucket.org/enturas/design-system/commits/1248b597c795459c484d788c077d9c3a58f0a1a2))
+
 ## [0.3.53](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.52...@entur/fileupload@0.3.53) (2022-10-31)
 
 **Note:** Version bump only for package @entur/fileupload
