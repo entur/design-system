@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.5...@entur/utils@0.4.6) (2022-10-31)
+
+### Bug Fixes
+
+- **style import warning:** remove ~ from import warning since it is deprecated ([c6a25fd](https://bitbucket.org/enturas/design-system/commits/c6a25fde98ec2f2821f678c6175c797ad10b7185))
+
 ## [0.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.4...@entur/utils@0.4.5) (2022-08-31)
 
 **Note:** Version bump only for package @entur/utils
