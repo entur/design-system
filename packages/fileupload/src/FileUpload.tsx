@@ -39,7 +39,7 @@ type FileUploadProps = DropzoneOptions & {
     event: DropEvent,
   ): void;
   /** Callback for når en fil slettes fra lista */
-  onDelete: (file: FileWithPath) => void;
+  onDelete?: (file: FileWithPath) => void;
   /** Hvilken filtyper som skal aksepteres */
   accept?: string | string[];
   /** Filene som er aktive i komponenten */
