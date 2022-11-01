@@ -7,7 +7,8 @@
     "build": "yarn run build:packages && yarn run build:docz",
     "build:packages": "yarn workspaces foreach --parallel --topological --verbose --exclude='root' run build",
     "build:docz": "yarn run docz build",
-    "lint": "yarn run lint:non-packages && yarn run lint:packages",
+    "check-for-duplicates": "yarn dedupe --check",
+    "lint": "yarn run lint:non-packages && yarn run lint:packages && yarn run check-for-duplicates",
     "lint:non-packages": "yarn run eslint . --ext js,ts,tsx,jsx,cjs,mjs --report-unused-disable-directives",
     "lint:packages": "yarn workspaces foreach --parallel --topological --verbose --exclude='root' run lint",
     "cleanStart": "rm -rf .docz && yarn start",
@@ -31,6 +32,7 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.19.4",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@lerna-lite/cli": "^1.12.0",
