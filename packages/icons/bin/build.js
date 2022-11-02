@@ -53,9 +53,17 @@ function outputWebCode(component) {
 function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
   if (isDeprecated) {
     const webCodeList = webCode.split(`\n`);
+
+    const functionDeclarationLine = webCodeList.findIndex(line =>
+      /^function/.test(line),
+    );
+
     const deprecationMessage = getDeprecationMessage(name, replacement);
-    const jsdocInsertionPoint = 2;
-    const consoleLogInsertionPoint = 3;
+    const jsdocInsertionPoint = functionDeclarationLine;
+    const numberOfLinesThatTheFunctionDeclarationTakesUp = 1;
+    const consoleLogInsertionPoint =
+      functionDeclarationLine + numberOfLinesThatTheFunctionDeclarationTakesUp;
+
     return [
       ...webCodeList.slice(0, jsdocInsertionPoint),
       createDeprecatedJsdocComment(deprecationMessage),
