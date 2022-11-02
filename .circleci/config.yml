@@ -45,7 +45,7 @@ jobs:
             - .yarn/cache
       - run:
           name: build
-          command: yarn build
+          command: yarn run build
       - save_cache:
           name: Save Docz/Gatsby Cache
           key: v07-docz-cache-{{ .Branch }}-{{ epoch }}
@@ -54,13 +54,13 @@ jobs:
             - .docz/public
       - run:
           name: linter and test
-          command: yarn test --ci && yarn lint
+          command: yarn run test --ci && yarn run lint
       - run:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
       - run:
           name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn run firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
 
   build-and-deploy-to-production:
     parallelism: 1
@@ -99,7 +99,7 @@ jobs:
             - .yarn/cache
       - run:
           name: Deploy to production
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn run deploy-docs --project=entur-design-system
       - save_cache:
           name: Save Docz/Gatsby Cache
           key: v07-docz-cache-{{ .Branch }}-{{ epoch }}
