@@ -54,7 +54,7 @@ jobs:
             - .docz/public
       - run:
           name: linter and test
-          command: yarn test && yarn lint
+          command: yarn test --ci && yarn lint
       - run:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
