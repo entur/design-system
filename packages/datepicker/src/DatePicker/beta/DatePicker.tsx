@@ -51,12 +51,12 @@ type DatePickerProps = {
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
-  minValue?: CalendarDate;
+  minDate?: CalendarDate;
   /** Seneste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone
    *
    * OBS: Hvis du bruker dato med tid vil det være til, men ikke med denne datoen */
-  maxValue?: CalendarDate;
+  maxDate?: CalendarDate;
   /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
    * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
   isDateUnavailable?: (date: DateValue) => boolean;
@@ -112,6 +112,8 @@ export const DatePickerBeta = ({
   disableModal = false,
   labelTooltip,
   navigationDescription,
+  minDate: minValue,
+  maxDate: maxValue,
   ...rest
 }: DatePickerProps) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = 1000;
@@ -123,6 +125,8 @@ export const DatePickerBeta = ({
 
   const state = useDatePickerState({
     ...rest,
+    minValue,
+    maxValue,
     value,
     onChange,
   });
@@ -133,7 +137,11 @@ export const DatePickerBeta = ({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker({ isDisabled, ...rest }, state, datePickerRef);
+  } = useDatePicker(
+    { isDisabled, minValue, maxValue, ...rest },
+    state,
+    datePickerRef,
+  );
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
