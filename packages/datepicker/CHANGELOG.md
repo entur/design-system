@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.2...@entur/datepicker@4.0.0-beta.3) (2022-11-08)
+
+### Bug Fixes
+
+- **datepicker:** change min- and maxValue to min- and maxDate ([f5bfb88](https://bitbucket.org/enturas/design-system/commits/f5bfb885bbbd253f150756f36550b07ed848fdc3))
+- **datepicker:** fix page jumping when opening datepicker popover ([4629f2c](https://bitbucket.org/enturas/design-system/commits/4629f2c6f134f622cab7546b3f6d3980c9ed913a))
+
 # [4.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.1...@entur/datepicker@4.0.0-beta.2) (2022-10-31)
 
 ### Features
