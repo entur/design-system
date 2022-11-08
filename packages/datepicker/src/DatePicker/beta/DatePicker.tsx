@@ -18,7 +18,7 @@ import {
   useOnClickOutside,
   useWindowDimensions,
 } from '@entur/utils';
-import { space } from '@entur/tokens';
+import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
@@ -183,30 +183,33 @@ export const DatePickerBeta = ({
   };
 
   const popoverCalendar = (
-    <FocusLock disabled={!state.isOpen} returnFocus>
-      <Calendar
-        {...dialogProps}
-        {...calendarProps}
-        onChange={(dateValue: DateValue) => {
-          onChange(dateValue);
-          state.setOpen(false);
-        }}
-        disabled={calendarProps.isDisabled}
-        ref={node => {
-          calendarRef.current = node;
-          floating(node);
-        }}
-        navigationDescription={navigationDescription}
-        // styling for floating-UI popover
-        style={{
-          display: state.isOpen ? 'block' : 'none',
-          position: strategy,
-          top: y ?? 0,
-          left: x ?? 0,
-          zIndex: 10,
-        }}
-      />
-    </FocusLock>
+    <>
+      {state.isOpen && (
+        <FocusLock disabled={!state.isOpen} returnFocus>
+          <Calendar
+            {...dialogProps}
+            {...calendarProps}
+            onChange={(dateValue: DateValue) => {
+              onChange(dateValue);
+              state.setOpen(false);
+            }}
+            disabled={calendarProps.isDisabled}
+            ref={node => {
+              calendarRef.current = node;
+              floating(node);
+            }}
+            navigationDescription={navigationDescription}
+            // styling for floating-UI popover
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              zIndex: zIndexes.popover,
+            }}
+          />
+        </FocusLock>
+      )}
+    </>
   );
 
   const modalCalendar = (
