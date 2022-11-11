@@ -30,7 +30,7 @@ import { CalendarButton } from '../../shared/CalendarButton';
 
 import './DatePicker.scss';
 
-type DatePickerProps = {
+type DatePickerBetaProps = {
   /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
   selectedDate: DateValue;
   /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
@@ -115,7 +115,7 @@ export const DatePickerBeta = ({
   minDate: minValue,
   maxDate: maxValue,
   ...rest
-}: DatePickerProps) => {
+}: DatePickerBetaProps) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = 1000;
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
