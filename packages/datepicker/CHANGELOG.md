@@ -35,6 +35,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @entur/datepicker
 
+# [4.0.0-beta.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.3...@entur/datepicker@4.0.0-beta.5) (2022-11-11)
+
+### Bug Fixes
+
+- **DatePicker:** change DatePickerProps to DatePickerBeta to avoid ts-errors when bundeling ([f1efb0a](https://bitbucket.org/enturas/design-system/commits/f1efb0a9b509cfcf6975e9f26034fc5b5a4bba97))
+
 # [4.0.0-beta.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.3...@entur/datepicker@4.0.0-beta.4) (2022-11-11)
 
 ### Bug Fixes
