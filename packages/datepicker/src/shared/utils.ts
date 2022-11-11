@@ -17,7 +17,7 @@ import { Calendar, GregorianCalendar } from '@internationalized/date';
  * @param {boolean} noTimeOnlyDate Hvis tidspunktet er irrelevant kan denne settes til true, da får man et CalendarDate-objekt uten tidspunkt tilbake
  * @param {string} timeZone Tidssonen på IANA-formatet som tidpunktet skal konverteres til. Utelates denne får man et tidspunkt uten tidssone. Kan brukes med og uten en UTC-offset Vær obs på annen oppførsel med offset, les mer på beskrivelsen av offset
  * @param {number} offset UTC-offset i millisekunder, må brukes med en tidssone. Ved å legge på en offset lager du en variant av en tidssone. Det betyr at tidspunktet ikke endres (time, minutt, sekund uendret), men tidssonen, med tilhørende offset, tidspunktet er i endres.
- * @returns {Time | CalendarDateTime | ZonedDateTime | CalendarDate} et av TimeValue-objektene med verdier fra date
+ * @returns {Time | CalendarDateTime | ZonedDateTime | CalendarDate} et av Time- eller DateValue-objektene med verdier fra date
  */
 export const nativeDateToTimeOrDateValue = (
   date: Date,
@@ -65,7 +65,7 @@ export const nativeDateToTimeOrDateValue = (
  * @param {string} timeZoneForCalendarDateTime Tidssonen value er i. Fungerer kun med typen er CalendarDateTime
  * @returns {Date} et Date-objekt med verdier fra time
  */
-// This function uses a lot of @ts-expect-error to make it work with all TimeValue types. Sorry ...
+// This function uses a lot of @ts-expect-error to make it work with all Date- and TimeValue types. Sorry ...
 export const timeOrDateValueToNativeDate = (
   value: TimeValue | DateValue,
   timeZoneForCalendarDateTime?: string,
