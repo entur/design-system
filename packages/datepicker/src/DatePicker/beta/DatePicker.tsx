@@ -30,7 +30,7 @@ import { CalendarButton } from '../../shared/CalendarButton';
 
 import './DatePicker.scss';
 
-type DatePickerBetaProps = {
+export type DatePickerBetaProps = {
   /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
   selectedDate: DateValue;
   /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
