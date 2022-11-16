@@ -1,9 +1,15 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useRef } from 'react';
 
 import { useDatePickerState } from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
 import { I18nProvider } from '@react-aria/i18n';
-import { useFloating, offset, flip, shift } from '@floating-ui/react-dom';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  autoUpdate,
+} from '@floating-ui/react-dom';
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
@@ -77,6 +83,10 @@ export type DatePickerBetaProps = {
    *  @default false
    */
   disableModal?: boolean;
+  /** Maxbredden til viewport-en for at modal skal vises
+   *  @default 1000
+   */
+  modalTreshold?: number;
   labelTooltip?: React.ReactNode;
   /** Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.
    * @default 'Bruk piltastene til å navigere mellom datoer'
@@ -114,9 +124,10 @@ export const DatePickerBeta = ({
   navigationDescription,
   minDate: minValue,
   maxDate: maxValue,
+  modalTreshold = 1000,
   ...rest
 }: DatePickerBetaProps) => {
-  const CALENDAR_MODAL_MAX_SCREEN_WIDTH = 1000;
+  const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
@@ -138,23 +149,14 @@ export const DatePickerBeta = ({
     dialogProps,
     calendarProps,
   } = useDatePicker(
-    { isDisabled, minValue, maxValue, ...rest },
+    { isDisabled, minValue, maxValue, autoFocus: true, ...rest },
     state,
     datePickerRef,
   );
 
-  useEffect(() => {
-    const keyDownHandler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') state.setOpen(false);
-    };
-    calendarRef.current?.addEventListener('keydown', keyDownHandler);
-    return () =>
-      calendarRef.current?.removeEventListener('keydown', keyDownHandler);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
+    whileElementsMounted: autoUpdate,
     placement: 'bottom-start',
     middleware: [
       offset(space.extraSmall),
@@ -167,57 +169,43 @@ export const DatePickerBeta = ({
     state.setOpen(false);
   });
 
-  const handleCalendarButtonOnClick = (calendarIsOpen: boolean) => {
-    if (!calendarIsOpen) {
-      state.setOpen(true);
-      setFocusToRelevantDate();
-    } else {
+  const onSelectDateInCalendar = (dateValue: DateValue) => {
+    onChange(dateValue);
+    // necessary to avoid state update in unmounted component
+    requestAnimationFrame(() => {
       state.setOpen(false);
-    }
+    });
   };
 
-  const setFocusToRelevantDate = () => {
-    const gridCellPrefix = 'eds-datepicker__calendar__grid__cell';
-
-    const selectedCell = calendarRef.current?.getElementsByClassName(
-      gridCellPrefix + '--selected',
-    )[0] as HTMLElement | undefined;
-    const todayCell = calendarRef.current?.getElementsByClassName(
-      gridCellPrefix + '--today',
-    )[0] as HTMLElement | undefined;
-
-    if (selectedCell) selectedCell.focus();
-    else if (todayCell) todayCell.focus();
+  const calendarSharedProps = {
+    ...dialogProps,
+    ...calendarProps,
+    onChange: onSelectDateInCalendar,
+    disabled: calendarProps.isDisabled,
+    navigationDescription: navigationDescription,
   };
 
-  const popoverCalendar = (
-    <>
-      {state.isOpen && (
-        <FocusLock disabled={!state.isOpen} returnFocus>
-          <Calendar
-            {...dialogProps}
-            {...calendarProps}
-            onChange={(dateValue: DateValue) => {
-              onChange(dateValue);
-              state.setOpen(false);
-            }}
-            disabled={calendarProps.isDisabled}
-            ref={node => {
-              calendarRef.current = node;
-              floating(node);
-            }}
-            navigationDescription={navigationDescription}
-            // styling for floating-UI popover
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              zIndex: zIndexes.popover,
-            }}
-          />
-        </FocusLock>
-      )}
-    </>
+  const useModal = width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH && !disableModal;
+
+  const popoverCalendar = state.isOpen ? (
+    <FocusLock disabled={!state.isOpen} returnFocus>
+      <Calendar
+        {...calendarSharedProps}
+        ref={node => {
+          calendarRef.current = node;
+          floating(node);
+        }}
+        // styling for floating-UI popover
+        style={{
+          position: strategy,
+          top: y ?? 0,
+          left: x ?? 0,
+          zIndex: zIndexes.popover,
+        }}
+      />
+    </FocusLock>
+  ) : (
+    <></>
   );
 
   const modalCalendar = (
@@ -229,17 +217,7 @@ export const DatePickerBeta = ({
       closeOnClickOutside
       className="eds-datepicker__calendar-modal"
     >
-      <Calendar
-        {...dialogProps}
-        {...calendarProps}
-        onChange={(dateValue: DateValue) => {
-          onChange(dateValue);
-          state.setOpen(false);
-        }}
-        disabled={calendarProps.isDisabled}
-        ref={calendarRef}
-        navigationDescription={navigationDescription}
-      />
+      <Calendar {...calendarSharedProps} />
     </Modal>
   );
 
@@ -279,15 +257,13 @@ export const DatePickerBeta = ({
           {!fieldProps.isDisabled && (
             <CalendarButton
               {...buttonProps}
-              onPress={() => handleCalendarButtonOnClick(state.isOpen)}
+              onPress={() => state.setOpen(!state.isOpen)}
               className="eds-datepicker__open-calendar-button"
             >
               <CalendarIcon />
             </CalendarButton>
           )}
-          {width > CALENDAR_MODAL_MAX_SCREEN_WIDTH || disableModal
-            ? popoverCalendar
-            : modalCalendar}
+          {useModal ? modalCalendar : popoverCalendar}
         </div>
       </div>
     </ConditionalWrapper>
