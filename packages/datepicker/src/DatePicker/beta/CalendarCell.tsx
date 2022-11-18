@@ -19,7 +19,9 @@ type CalendarCellProps = {
 export const CalendarCell = ({
   state,
   date,
-  onSelectedCellClick = () => {},
+  onSelectedCellClick = () => {
+    return;
+  },
   ...rest
 }: CalendarCellProps) => {
   const cellRef = useRef(null);

@@ -22,6 +22,7 @@ import type {
 import {
   ConditionalWrapper,
   useOnClickOutside,
+  useOnEscape,
   useWindowDimensions,
 } from '@entur/utils';
 import { space, zIndexes } from '@entur/tokens';
@@ -129,7 +130,7 @@ export const DatePickerBeta = ({
 }: DatePickerBetaProps) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
   const datePickerRef = useRef<HTMLDivElement | null>(null);
-  const calendarPopoverRef = useRef<HTMLDivElement | null>(null);
+  const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
 
   const { width } = useWindowDimensions();
@@ -165,16 +166,20 @@ export const DatePickerBeta = ({
     ],
   });
 
-  useOnClickOutside([calendarPopoverRef], () => {
-    state.setOpen(false);
-  });
-
   const onChangeCalendar = (newSelectedDate: DateValue) => {
     // Necessary to avoid state update on unmounted component
     requestAnimationFrame(() => {
       calendarProps.onChange && calendarProps.onChange(newSelectedDate);
     });
   };
+
+  useOnClickOutside([calendarRef], () => {
+    state.setOpen(false);
+  });
+
+  useOnEscape(calendarRef, () => {
+    state.setOpen(false);
+  });
 
   const calendarSharedProps = {
     ...dialogProps,
@@ -198,11 +203,12 @@ export const DatePickerBeta = ({
       }}
       ref={node => {
         floating(node);
-        calendarPopoverRef.current = node;
       }}
     >
       <FocusLock disabled={!state.isOpen || useModal} returnFocus>
-        {state.isOpen && <Calendar {...calendarSharedProps} />}
+        {state.isOpen && (
+          <Calendar {...calendarSharedProps} ref={calendarRef} />
+        )}
       </FocusLock>
     </div>
   );

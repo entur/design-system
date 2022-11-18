@@ -32,7 +32,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       style,
       children: _,
       navigationDescription,
-      onSelectedCellClick = () => {},
+      onSelectedCellClick = () => {
+        return;
+      },
       ...rest
     },
     ref,

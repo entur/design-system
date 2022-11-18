@@ -19,7 +19,9 @@ type CalendarGridProps = {
 export const CalendarGrid = ({
   state,
   navigationDescription,
-  onSelectedCellClick = () => {},
+  onSelectedCellClick = () => {
+    return;
+  },
   ...rest
 }: CalendarGridProps) => {
   const calendarGridId = useRandomId('eds-calendar');
