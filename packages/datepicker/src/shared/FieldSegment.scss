@@ -17,7 +17,8 @@
     }
 
     &:focus {
-      background: $colors-misc-focus;
+      background-color: $colors-blues-blue40;
+      color: $colors-brand-white;
       outline: none;
       border-radius: $border-radiuses-default;
     }
