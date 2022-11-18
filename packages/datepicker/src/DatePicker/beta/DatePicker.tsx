@@ -22,6 +22,7 @@ import type {
 import {
   ConditionalWrapper,
   useOnClickOutside,
+  useOnEscape,
   useWindowDimensions,
 } from '@entur/utils';
 import { space, zIndexes } from '@entur/tokens';
@@ -165,52 +166,56 @@ export const DatePickerBeta = ({
     ],
   });
 
+  const onChangeCalendar = (newSelectedDate: DateValue) => {
+    // Necessary to avoid state update on unmounted component
+    requestAnimationFrame(() => {
+      calendarProps.onChange && calendarProps.onChange(newSelectedDate);
+    });
+  };
+
   useOnClickOutside([calendarRef], () => {
     state.setOpen(false);
   });
 
-  const onSelectDateInCalendar = (dateValue: DateValue) => {
-    onChange(dateValue);
-    // necessary to avoid state update in unmounted component
-    requestAnimationFrame(() => {
-      state.setOpen(false);
-    });
-  };
+  useOnEscape(calendarRef, () => {
+    state.setOpen(false);
+  });
 
   const calendarSharedProps = {
     ...dialogProps,
     ...calendarProps,
-    onChange: onSelectDateInCalendar,
     disabled: calendarProps.isDisabled,
     navigationDescription: navigationDescription,
+    onSelectedCellClick: () => state.setOpen(false),
+    onChange: onChangeCalendar,
   };
 
   const useModal = width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH && !disableModal;
 
-  const popoverCalendar = state.isOpen ? (
-    <FocusLock disabled={!state.isOpen} returnFocus>
-      <Calendar
-        {...calendarSharedProps}
-        ref={node => {
-          calendarRef.current = node;
-          floating(node);
-        }}
-        // styling for floating-UI popover
-        style={{
-          position: strategy,
-          top: y ?? 0,
-          left: x ?? 0,
-          zIndex: zIndexes.popover,
-        }}
-      />
-    </FocusLock>
-  ) : (
-    <></>
+  const popoverCalendar = (
+    <div
+      // styling for floating-UI popover
+      style={{
+        position: strategy,
+        top: y ?? 0,
+        left: x ?? 0,
+        zIndex: zIndexes.popover,
+      }}
+      ref={node => {
+        floating(node);
+      }}
+    >
+      <FocusLock disabled={!state.isOpen || useModal} returnFocus>
+        {state.isOpen && (
+          <Calendar {...calendarSharedProps} ref={calendarRef} />
+        )}
+      </FocusLock>
+    </div>
   );
 
   const modalCalendar = (
     <Modal
-      size={'small'}
+      size="small"
       title=""
       open={state.isOpen}
       onDismiss={() => state.setOpen(false)}
@@ -235,6 +240,7 @@ export const DatePickerBeta = ({
             datePickerRef.current = node;
             reference(node);
           }}
+          id={undefined}
           className="eds-datepicker__datefield__wrapper"
         >
           <DateField

@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { CalendarDate, ZonedDateTime } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
 import { DatePickerBeta } from '.';
@@ -103,7 +104,7 @@ test('locale is respected', () => {
   expect(getByRole('spinbutton', { name: 'dutch jaar' })).toBeInTheDocument();
 });
 
-test('Focus is set on calendar button click and returned on date click', () => {
+test('Focus is set to selected date on calendar button click', () => {
   const spy = jest.fn();
   const currentDate = new CalendarDate(1997, 7, 10);
 
@@ -131,15 +132,72 @@ test('Focus is set on calendar button click and returned on date click', () => {
     'eds-datepicker__calendar__grid__cell--selected',
   )[0];
   expect(selectedDateInCalendar).toHaveFocus();
+});
+
+test('Focus lock is working on popover calendar', async () => {
+  const spy = jest.fn();
+  const currentDate = new CalendarDate(1997, 7, 10);
+
+  const { container } = render(
+    <DatePickerBeta
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+    />,
+  );
+
+  const openCalendarButton = container.getElementsByClassName(
+    'eds-datepicker__open-calendar-button',
+  )[0];
 
   fireEvent(
-    selectedDateInCalendar,
+    openCalendarButton,
     new MouseEvent('click', {
       bubbles: true,
     }),
   );
 
-  expect(openCalendarButton).toHaveFocus();
+  await userEvent.tab();
+  await userEvent.tab();
+  await userEvent.tab();
+
+  const selectedDateInCalendar = container.getElementsByClassName(
+    'eds-datepicker__calendar__grid__cell--selected',
+  )[0];
+  expect(selectedDateInCalendar).toHaveFocus();
+});
+
+test('Escape closes calendar popover', () => {
+  const spy = jest.fn();
+  const currentDate = new CalendarDate(1997, 7, 10);
+
+  const { container } = render(
+    <DatePickerBeta
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+    />,
+  );
+
+  const openCalendarButton = container.getElementsByClassName(
+    'eds-datepicker__open-calendar-button',
+  )[0];
+
+  fireEvent(
+    openCalendarButton,
+    new MouseEvent('click', {
+      bubbles: true,
+    }),
+  );
+
+  const selectedDateInCalendar = container.getElementsByClassName(
+    'eds-datepicker__calendar__grid__cell--selected',
+  )[0];
+
+  fireEvent.keyDown(selectedDateInCalendar, { key: 'Escape', code: 'Escape' });
+  expect(selectedDateInCalendar).not.toBeInTheDocument();
 });
 
 test("Doesn't violate basic accessibility requirements", async () => {

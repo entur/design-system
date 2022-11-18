@@ -4,6 +4,7 @@ export * from './useRandomId';
 export * from './useOnMount';
 export * from './mergeRefs';
 export * from './useOnClickOutside';
+export * from './useOnEscape';
 export * from './useWindowDimensions';
 export * from './ConditionalWrapper';
 export * from './warnAboutMissingStyles';

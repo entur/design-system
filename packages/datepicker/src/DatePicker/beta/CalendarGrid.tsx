@@ -13,11 +13,15 @@ import { CalendarCell } from './CalendarCell';
 type CalendarGridProps = {
   state: CalendarState;
   navigationDescription?: string;
+  onSelectedCellClick?: () => void;
 };
 
 export const CalendarGrid = ({
   state,
   navigationDescription,
+  onSelectedCellClick = () => {
+    return;
+  },
   ...rest
 }: CalendarGridProps) => {
   const calendarGridId = useRandomId('eds-calendar');
@@ -69,6 +73,7 @@ export const CalendarGrid = ({
                       state={state}
                       date={date}
                       aria-describedby={calendarGridId + 'description'}
+                      onSelectedCellClick={onSelectedCellClick}
                     />
                   ) : (
                     <td key={i} />
