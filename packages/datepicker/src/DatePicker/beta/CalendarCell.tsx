@@ -13,9 +13,15 @@ import classNames from 'classnames';
 type CalendarCellProps = {
   state: CalendarState;
   date: CalendarDate;
+  onSelectedCellClick?: () => void;
 };
 
-export const CalendarCell = ({ state, date, ...rest }: CalendarCellProps) => {
+export const CalendarCell = ({
+  state,
+  date,
+  onSelectedCellClick = () => {},
+  ...rest
+}: CalendarCellProps) => {
   const cellRef = useRef(null);
 
   const {
@@ -45,6 +51,10 @@ export const CalendarCell = ({ state, date, ...rest }: CalendarCellProps) => {
           ),
         })}
         {...rest}
+        onClick={e => {
+          buttonProps.onClick && buttonProps.onClick(e);
+          isSelected && onSelectedCellClick();
+        }}
       >
         {formattedDate}
       </div>

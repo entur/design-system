@@ -19,6 +19,7 @@ type CalendarProps = {
   onChange: (SelectedDate: DateValue) => void;
   navigationDescription?: string;
   style?: React.CSSProperties;
+  onSelectedCellClick?: () => void;
   [key: string]: any;
 };
 
@@ -31,6 +32,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       style,
       children: _,
       navigationDescription,
+      onSelectedCellClick = () => {},
       ...rest
     },
     ref,
@@ -85,6 +87,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
           <CalendarGrid
             state={state}
             navigationDescription={navigationDescription}
+            onSelectedCellClick={onSelectedCellClick}
           />
         </div>
       </ConditionalWrapper>
