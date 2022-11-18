@@ -13,13 +13,14 @@
     &.eds-icon-button {
       color: $colors-brand-blue;
       &:hover {
-        background-color: $colors-blues-blue70;
+        background-color: $colors-blues-blue40;
+        color: $colors-brand-white;
       }
       &:focus {
         border: $border-widths-small solid $colors-brand-blue;
       }
       &:active {
-        background-color: $colors-blues-blue60;
+        background-color: $colors-blues-blue50;
       }
     }
   }

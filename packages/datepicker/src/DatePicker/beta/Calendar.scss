@@ -68,7 +68,12 @@
       }
 
       &:hover {
-        background-color: $colors-blues-blue60;
+        background-color: $colors-blues-blue40;
+        color: $colors-brand-white;
+      }
+
+      &:active {
+        background-color: $colors-blues-blue50;
       }
 
       &:focus {
@@ -83,6 +88,10 @@
         &:hover {
           background-color: $colors-blues-blue20;
         }
+
+        &:active {
+          background-color: $colors-blues-blue10;
+        }
       }
 
       &--disabled {
@@ -90,6 +99,8 @@
 
         &:hover {
           background-color: transparent;
+          color: $colors-brand-blue;
+          cursor: not-allowed;
         }
       }
 
@@ -98,6 +109,8 @@
 
         &:hover {
           background-color: transparent;
+          color: transparent;
+          cursor: default;
         }
       }
 
