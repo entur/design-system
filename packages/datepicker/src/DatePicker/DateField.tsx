@@ -14,8 +14,8 @@ import type { CalendarDate } from '@internationalized/date';
 import { BaseFormControl, VariantType } from '@entur/form';
 import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
 
-import { FieldSegment } from '../../shared/FieldSegment';
-import { createCalendar } from '../../shared/utils';
+import { FieldSegment } from '../shared/FieldSegment';
+import { createCalendar } from '../shared/utils';
 
 import './DateField.scss';
 

@@ -8,8 +8,8 @@ import { DateValue } from '@internationalized/date';
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { ConditionalWrapper } from '@entur/utils';
 
-import { ariaLabelIfNorwegian, createCalendar } from '../../shared/utils';
-import { CalendarButton } from '../../shared/CalendarButton';
+import { ariaLabelIfNorwegian, createCalendar } from '../shared/utils';
+import { CalendarButton } from '../shared/CalendarButton';
 import { CalendarGrid } from './CalendarGrid';
 
 import './Calendar.scss';
