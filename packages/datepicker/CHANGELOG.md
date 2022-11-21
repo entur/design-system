@@ -32,6 +32,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/datepicker
 
 ## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@3.0.3) (2022-10-20)
+# [4.0.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-RC.0...@entur/datepicker@4.0.0-RC.1) (2022-11-21)
+
+**Note:** Version bump only for package @entur/datepicker
+
 # [4.0.0-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.5...@entur/datepicker@4.0.0-RC.0) (2022-11-21)
 
 **Note:** Version bump only for package @entur/datepicker

@@ -32,6 +32,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/dropdown
 
 ## [3.0.19](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.18...@entur/dropdown@3.0.19) (2022-10-20)
+## [3.0.19-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.19-RC.0...@entur/dropdown@3.0.19-RC.1) (2022-11-21)
+
+**Note:** Version bump only for package @entur/dropdown
+
 ## [3.0.19-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.19-alpha.1...@entur/dropdown@3.0.19-RC.0) (2022-11-21)
 
 **Note:** Version bump only for package @entur/dropdown
