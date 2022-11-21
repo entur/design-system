@@ -1,379 +1,277 @@
-import React, { useRef, useState } from 'react';
-import ReactDatePicker, {
-  default as ReactDatepicker,
-  ReactDatePickerProps,
-  registerLocale,
-} from 'react-datepicker';
-import { parse, isSameDay, Locale } from 'date-fns';
-import { nb } from 'date-fns/locale';
+import React, { ReactNode, useRef } from 'react';
+
+import { useDatePickerState } from '@react-stately/datepicker';
+import { useDatePicker } from '@react-aria/datepicker';
+import { I18nProvider } from '@react-aria/i18n';
+import {
+  useFloating,
+  offset,
+  flip,
+  shift,
+  autoUpdate,
+} from '@floating-ui/react-dom';
+import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
-import { VariantType } from '@entur/form';
-import { useRandomId } from '@entur/utils';
+import type { CalendarDate } from '@internationalized/date';
+import type {
+  DateValue,
+  SpectrumDatePickerProps,
+} from '@react-types/datepicker';
 
-import { DatePickerHeader } from './DatePickerHeader';
-import { DatePickerInput } from './DatePickerInput';
+import {
+  ConditionalWrapper,
+  useOnClickOutside,
+  useOnEscape,
+  useWindowDimensions,
+} from '@entur/utils';
+import { space, zIndexes } from '@entur/tokens';
+import { CalendarIcon } from '@entur/icons';
+import { Modal } from '@entur/modal';
+
+import type { VariantType } from '@entur/form';
+
+import { DateField } from './DateField';
+import { Calendar } from './Calendar';
+import { CalendarButton } from '../shared/CalendarButton';
 
 import './DatePicker.scss';
-import 'react-datepicker/dist/react-datepicker.css';
-
-registerLocale('nb', nb);
 
 export type DatePickerProps = {
-  /** Hva som er den valgte datoen */
-  selectedDate: Date | null;
-  /** Kalles når datoen/tiden endres */
-  onChange: (
-    date: Date | null,
-    event: React.SyntheticEvent<any, Event> | undefined,
-  ) => void;
-  /**
-   * Kalles når en tast trykkes i inputfeltet
-   */
-  onKeyDown?: (event: KeyboardEvent) => void;
-  /**
-   * Datoformater som skal støttes. Første i listen er formatet alt input omgjøres til.
-   * Format-valg tilgjengelig her: https://date-fns.org/v2.28.0/docs/format
-   * OBS: Noen kombinasjoner av datoformater kan gi rar og uønsket oppførsel,
-   * test nøye ved endring
-   * @default "['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy', 'ddMMyy']"
-   */
-  dateFormats?: string[];
-  /**
-   * Locale fra date-fns som brukes av Datepicker-en
-   * @default nb
-   */
-  locale?: Locale;
-  /** Placeholder om ingen dato er valgt
-   * @default "dd.mm.yyyy"
-   */
-  placeholder?: string;
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Label over DatePicker */
+  /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
+  selectedDate: DateValue;
+  /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
+  onChange: (date: DateValue) => void;
+  /** Ledetekst for inputfeltet til DatePicker */
   label: string;
-  /**
-   * Varselmelding, som vil komme under DatePicker
+  /** BCP47-språkkoden til locale-en du ønsker å bruke.
+   * @default Brukerenhetens selvvalgte locale
    */
+  locale?: string;
+  /** Viser den gjeldende tidssonen hvis en er valgt (krever at tid også vises)
+   * @default false
+   */
+  showTimeZone?: boolean;
+  /** Viser tidspunkt i tillegg til dato.
+   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
+   */
+  showTime?: boolean;
+  /** Tidligste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
+  minDate?: CalendarDate;
+  /** Seneste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil det være til, men ikke med denne datoen */
+  maxDate?: CalendarDate;
+  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
+   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
+  isDateUnavailable?: (date: DateValue) => boolean;
+  /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
   feedback?: string;
-  /** Valideringsvariant
-   */
+  /** Valideringsvariant */
   variant?: VariantType;
-  /** Varselmelding for når datoen er på feil format
+  /** Varselmelding som forteller om ugyldig dato
    * @default "Ugyldig dato"
    */
   validationFeedback?: string;
-  /** Valideringsvariant for melding om feil datoformat
+  /** Valideringsvariant for melding om ugyldig dato
    * @default "error"
    */
   validationVariant?: VariantType;
+  disabled?: boolean;
+  /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
+   *  @default false
+   */
+  disableModal?: boolean;
+  /** Maxbredden til viewport-en for at modal skal vises
+   *  @default 1000
+   */
+  modalTreshold?: number;
+  labelTooltip?: React.ReactNode;
+  /** Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.
+   * @default 'Bruk piltastene til å navigere mellom datoer'
+   */
+  navigationDescription?: string;
+  /** Ekstra klassenavn */
+  className?: string;
   style?: React.CSSProperties;
-  /** Plasserer labelen statisk på toppen av inputfeltet
-   * @default false
-   */
-  disableLabelAnimation?: boolean;
-  /** Tekst eller ikon som kommer før inputfelter
-   * @default <DateIcon />
-   */
-  prepend?: React.ReactNode;
-  /**
-   * Tekst som vises når kalender ikke er åpen på «Åpne/Lukk kalender»-knappen ved hover
-   */
-  calendarButtonTooltipOpen?: string;
-  /**
-   * Tekst som vises når kalender er åpen på «Åpne/Lukk kalender»-knappen ved hover
-   */
-  calendarButtonTooltipClose?: string;
-  /** Skjuler knapp for åpning av kalender
-   * @default false
-   */
-  hideCalendarButton?: boolean;
-  /** Skjuler tilbakemeldingsteksten ved feil dato-input
-   * @default false
-   */
-  hideValidation?: boolean;
-  /** Skjuler kalender-GUI-et
-   * @default false
-   */
-  hideCalendar?: boolean;
-  /** Viser kun kalender-popover-en
-   * @default false
-   */
-  inline?: boolean;
-  /** Skjermlesertekst for forrige måned-knapen
-   * @default "Forrige måned"
-   */
-  previousMonthAriaLabel?: string;
-  /** Skjermlesertekst for neste måned-knapen
-   * @default "Neste måned"
-   */
-  nextMonthAriaLabel?: string;
-  /**
-   * Skjermlesertekst som leses før dato i kalenderGUI-et
-   * @default "Velg"
-   */
-  chooseDayAriaLabelPrefix?: string;
-  // For testing
-  'data-cy'?: any;
 } & Omit<
-  ReactDatePickerProps,
-  | 'selected'
-  | 'customInput'
-  | 'onChangeRaw'
-  | 'dateFormat'
-  | 'locale'
-  | 'previousMonthAriaLabel'
-  | 'nextMonthAriaLabel'
+  SpectrumDatePickerProps<DateValue>,
+  | 'value'
+  | 'onChange'
+  | 'label'
+  | 'hideTimeZone'
+  | 'placeholder'
+  | 'minValue'
+  | 'maxValue'
 >;
 
-export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
-  (
-    {
-      style,
-      className,
-      selectedDate,
-      label,
-      placeholder = 'dd.mm.yyyy',
-      onChange,
-      onKeyDown = () => null,
-      dateFormats = ['dd.MM.yyyy', 'ddMMyyyy', 'dd/MM/yyyy', 'ddMMyy'],
-      minDate,
-      maxDate,
-      inline = false,
-      disabled,
-      prepend,
-      feedback = '',
-      variant,
-      validationFeedback = 'Ugyldig dato',
-      validationVariant = 'error',
-      disableLabelAnimation = false,
-      calendarButtonTooltipOpen = 'Åpne\xa0kalender',
-      calendarButtonTooltipClose = 'Lukk\xa0kalender',
-      hideCalendarButton = false,
-      hideCalendar = false,
-      hideValidation = false,
-      weekLabel = 'uke',
-      chooseDayAriaLabelPrefix = 'Velg',
-      previousMonthAriaLabel = 'Forrige måned',
-      nextMonthAriaLabel = 'Neste måned',
-      locale = nb,
-      open,
-      ...rest
-    },
-    ref,
-  ) => {
-    const datepickerId = useRandomId('eds-datepicker');
+export const DatePicker = ({
+  selectedDate: value,
+  onChange,
+  locale,
+  disabled: isDisabled,
+  showTime,
+  showTimeZone = false,
+  className,
+  style,
+  variant,
+  feedback,
+  validationVariant,
+  validationFeedback,
+  disableModal = false,
+  labelTooltip,
+  navigationDescription,
+  minDate: minValue,
+  maxDate: maxValue,
+  modalTreshold = 1000,
+  ...rest
+}: DatePickerProps) => {
+  const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
+  const datePickerRef = useRef<HTMLDivElement | null>(null);
+  const calendarRef = useRef<HTMLDivElement | null>(null);
+  const dateFieldRef = useRef<HTMLDivElement | null>(null);
 
-    const datepickerRef = useRef<ReactDatePicker>(null);
-    const inputRef = React.useRef<HTMLInputElement>(null);
-    const calendarButton = document.getElementById(datepickerId + '-button');
+  const { width } = useWindowDimensions();
 
-    const [showValidation, setShowValidation] = useState(false);
-    const [
-      shouldFocusOnCalendarButtonAfterSelect,
-      setShouldFocusOnCalendarButtonAfterSelect,
-    ] = useState(false);
+  const state = useDatePickerState({
+    ...rest,
+    minValue,
+    maxValue,
+    value,
+    onChange,
+  });
+  const {
+    groupProps,
+    labelProps,
+    fieldProps,
+    buttonProps,
+    dialogProps,
+    calendarProps,
+  } = useDatePicker(
+    { isDisabled, minValue, maxValue, autoFocus: true, ...rest },
+    state,
+    datePickerRef,
+  );
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    React.useEffect(() => validateInput(), [selectedDate]);
+  // calculations for floating-UI popover position
+  const { x, y, reference, floating, strategy } = useFloating({
+    whileElementsMounted: autoUpdate,
+    placement: 'bottom-start',
+    middleware: [
+      offset(space.extraSmall),
+      flip(),
+      shift({ padding: space.extraSmall }),
+    ],
+  });
 
-    const handleOnChange = (
-      date: Date | null,
-      event: React.SyntheticEvent<any, Event> | undefined,
-    ): void => {
-      if (shouldFocusOnCalendarButtonAfterSelect && !hideCalendarButton) {
-        calendarButton?.focus();
-        setShouldFocusOnCalendarButtonAfterSelect(false);
-      } else inputRef.current?.focus();
+  const onChangeCalendar = (newSelectedDate: DateValue) => {
+    // Necessary to avoid state update on unmounted component
+    requestAnimationFrame(() => {
+      calendarProps.onChange && calendarProps.onChange(newSelectedDate);
+    });
+  };
 
-      onChange(date, event);
-    };
+  useOnClickOutside([calendarRef], () => {
+    state.setOpen(false);
+  });
 
-    const handleOnKeyDown = (event: KeyboardEvent) => {
-      setShowValidation(false);
+  useOnEscape(calendarRef, () => {
+    state.setOpen(false);
+  });
 
-      if (event.key === 'Enter') {
-        if (!datePickerGUIIsOpen()) {
-          // onBlurInput will validate if calendar is open
-          validateInput();
-          forceUpdateInputFormat();
-        }
-        focusAndSelectInputField();
-      } else if (event.key === 'Tab' && datePickerGUIIsOpen()) {
-        forceUpdateInputFormat();
-      } else if (event.key === 'Escape') {
-        forceUpdateInputFormat();
-        focusAndSelectInputField();
-        if (datePickerGUIIsOpen()) toggleCalendarGUI();
-      }
-      onKeyDown(event);
-    };
+  const calendarSharedProps = {
+    ...dialogProps,
+    ...calendarProps,
+    disabled: calendarProps.isDisabled,
+    navigationDescription: navigationDescription,
+    onSelectedCellClick: () => state.setOpen(false),
+    onChange: onChangeCalendar,
+  };
 
-    const handleOnClickOutside = () =>
-      setShouldFocusOnCalendarButtonAfterSelect(false);
+  const useModal = width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH && !disableModal;
 
-    const handleOnBlurInput = () => {
-      if (datePickerGUIIsOpen()) return;
-      validateInput();
-      forceUpdateInputFormat();
-    };
+  const popoverCalendar = (
+    <div
+      // styling for floating-UI popover
+      style={{
+        position: strategy,
+        top: y ?? 0,
+        left: x ?? 0,
+        zIndex: zIndexes.popover,
+      }}
+      ref={node => {
+        floating(node);
+      }}
+    >
+      <FocusLock disabled={!state.isOpen || useModal} returnFocus>
+        {state.isOpen && (
+          <Calendar {...calendarSharedProps} ref={calendarRef} />
+        )}
+      </FocusLock>
+    </div>
+  );
 
-    const validateInput = () => {
-      setShowValidation(false);
-      const inputValue = inputRef.current?.value;
-      if (!inputValue) return;
+  const modalCalendar = (
+    <Modal
+      size="small"
+      title=""
+      open={state.isOpen}
+      onDismiss={() => state.setOpen(false)}
+      closeOnClickOutside
+      className="eds-datepicker__calendar-modal"
+    >
+      <Calendar {...calendarSharedProps} />
+    </Modal>
+  );
 
-      const inputValueParsedWithAllDateFormats = dateFormats.map(format =>
-        parse(inputValue, format, new Date(), {
-          locale: locale,
-        }),
-      );
-
-      const parsedDateFromInputIsTheSameAsSelectedDate =
-        selectedDate &&
-        inputValueParsedWithAllDateFormats.some(dateFormat =>
-          isSameDay(dateFormat, selectedDate),
-        );
-
-      if (parsedDateFromInputIsTheSameAsSelectedDate) {
-        // valid date inputted
-        setShowValidation(false);
-      } else {
-        // invalid date inputted
-        setShowValidation(true);
-      }
-    };
-
-    const getFeedbackAndVariant = (): {
-      feedback: string;
-      variant: VariantType | undefined;
-    } => {
-      if (feedback) return { feedback, variant };
-      if (!hideValidation && showValidation)
-        return { feedback: validationFeedback, variant: validationVariant };
-      return { feedback: '', variant: undefined };
-    };
-
-    const focusAndSelectInputField = () =>
-      requestAnimationFrame(() => inputRef.current?.select());
-
-    const forceUpdateInputFormat = () =>
-      datepickerRef.current?.setState({ inputValue: null });
-
-    const toggleCalendarGUI = () =>
-      datepickerRef.current?.setOpen(!datePickerGUIIsOpen());
-
-    const setFocusToCalendarGUI = () => {
-      if (inline || hideCalendar || datePickerGUIIsOpen()) return;
-      // 1 frame delay to allow calendar to spawn
-      requestAnimationFrame(() => {
-        const datepickerGUIWrapper =
-          // @ts-expect-error .calendar does actually exist in ReactDatePicker ref
-          datepickerRef.current?.calendar.componentNode;
-
-        const dateToSetFocusTo = selectedDate
-          ? (datepickerGUIWrapper.querySelector(
-              '.eds-datepicker__calender__day[tabindex="0"]',
-            ) as HTMLElement | null)
-          : (datepickerGUIWrapper.querySelector(
-              '.eds-datepicker__calender__day[aria-current="date"]',
-            ) as HTMLElement | null);
-        if (dateToSetFocusTo !== null) {
-          datepickerRef.current?.setBlur();
-          dateToSetFocusTo.focus({ preventScroll: true });
-        }
-      });
-      setShouldFocusOnCalendarButtonAfterSelect(true);
-      setShowValidation(false);
-    };
-
-    const datePickerGUIIsOpen = () => datepickerRef.current?.isCalendarOpen();
-
-    return (
-      <>
-        <ReactDatepicker
-          selected={selectedDate}
-          minDate={minDate}
-          maxDate={maxDate}
-          dateFormat={dateFormats}
-          showWeekNumbers
-          weekLabel={weekLabel}
-          onChange={handleOnChange}
-          onClickOutside={handleOnClickOutside}
-          id={datepickerId}
-          ariaLabelledBy={datepickerId}
-          showPopperArrow={false}
-          locale={locale}
-          inline={inline}
-          disabled={disabled}
-          preventOpenOnFocus={true}
-          chooseDayAriaLabelPrefix={chooseDayAriaLabelPrefix}
-          open={hideCalendar ? false : open}
-          ref={datepickerRef}
-          calendarClassName="eds-datepicker__calender"
-          dayClassName={() => 'eds-datepicker__calender__day'}
-          weekDayClassName={() => 'eds-datepicker__calender__day-name'}
-          className={classNames(className, 'eds-datepicker__input')}
-          highlightDates={[
-            { 'eds-datepicker__calender__day--today': [new Date()] },
-            {
-              'eds-datepicker__calender__day--selected': selectedDate
-                ? [selectedDate]
-                : [],
-            },
-          ]}
-          renderCustomHeader={({
-            date,
-            changeYear,
-            changeMonth,
-            decreaseMonth,
-            increaseMonth,
-            prevMonthButtonDisabled,
-            nextMonthButtonDisabled,
-          }) => (
-            <DatePickerHeader
-              date={date}
-              changeYear={changeYear}
-              changeMonth={changeMonth}
-              increaseMonth={increaseMonth}
-              decreaseMonth={decreaseMonth}
-              prevMonthButtonDisabled={prevMonthButtonDisabled}
-              nextMonthButtonDisabled={nextMonthButtonDisabled}
-              previousMonthAriaLabel={previousMonthAriaLabel}
-              nextMonthAriaLabel={nextMonthAriaLabel}
-              locale={locale}
-            />
+  return (
+    <ConditionalWrapper
+      condition={locale !== undefined}
+      wrapper={(child: ReactNode) => (
+        <I18nProvider locale={locale}>{child}</I18nProvider>
+      )}
+    >
+      <div className={classNames('eds-datepicker', className)}>
+        <div
+          {...groupProps}
+          ref={node => {
+            datePickerRef.current = node;
+            reference(node);
+          }}
+          id={undefined}
+          className="eds-datepicker__datefield__wrapper"
+        >
+          <DateField
+            {...fieldProps}
+            selectedDate={state.value}
+            label={rest.label}
+            labelProps={labelProps}
+            showTime={showTime}
+            showTimeZone={showTimeZone}
+            ref={dateFieldRef}
+            variant={variant}
+            feedback={feedback}
+            validationVariant={validationVariant}
+            validationFeedback={validationFeedback}
+            labelTooltip={labelTooltip}
+            className={classNames('eds-datepicker__datefield', {
+              'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
+            })}
+          />
+          {!fieldProps.isDisabled && (
+            <CalendarButton
+              {...buttonProps}
+              onPress={() => state.setOpen(!state.isOpen)}
+              className="eds-datepicker__open-calendar-button"
+            >
+              <CalendarIcon />
+            </CalendarButton>
           )}
-          customInput={
-            <DatePickerInput
-              style={style}
-              label={label}
-              inputPlaceholder={placeholder}
-              calendarButtonTooltipOpen={calendarButtonTooltipOpen}
-              calendarButtonTooltipClose={calendarButtonTooltipClose}
-              prepend={prepend}
-              feedback={getFeedbackAndVariant().feedback}
-              variant={getFeedbackAndVariant().variant}
-              inputRef={inputRef}
-              calendarButtonId={datepickerId + '-button'}
-              forwardRef={ref}
-              onKeyDownInput={handleOnKeyDown}
-              onBlurInput={handleOnBlurInput}
-              onFocus={undefined}
-              toggleCalendarGUI={toggleCalendarGUI}
-              setFocusToCalendarGUI={setFocusToCalendarGUI}
-              setShouldFocusOnCalendarButtonAfterSelect={
-                setShouldFocusOnCalendarButtonAfterSelect
-              }
-              calendarGUIIsOpen={datePickerGUIIsOpen}
-              disableLabelAnimation={disableLabelAnimation}
-              hideCalendarButton={hideCalendarButton}
-              selectedDate={selectedDate}
-            />
-          }
-          {...rest}
-        />
-      </>
-    );
-  },
-);
+          {useModal ? modalCalendar : popoverCalendar}
+        </div>
+      </div>
+    </ConditionalWrapper>
+  );
+};

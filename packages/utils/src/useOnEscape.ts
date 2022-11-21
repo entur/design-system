@@ -6,8 +6,6 @@ export const useOnEscape = (
 ) => {
   useEffect(() => {
     const runIfKeyIsEscape = (event: KeyboardEvent) => {
-      console.log('lol');
-
       if (event.key === 'Escape') handler();
     };
 

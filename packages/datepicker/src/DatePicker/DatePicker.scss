@@ -1,143 +1,45 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-datepicker {
-  &__calender {
-    font-family: var(--eds-font-family);
-    box-shadow: $shadows-box-shadow;
-    border: none;
+  position: relative;
+  width: fit-content;
 
-    .react-datepicker {
-      &__header {
-        background-color: $colors-brand-white;
-        border-bottom: none;
-      }
-      &__day-name {
-        color: $colors-blues-blue40;
-        &__day--keyboard-selected {
-          background: none;
-          &:focus {
-            background: $colors-greys-grey70;
-          }
-        }
-      }
-      &__day--outside-month {
-        opacity: 0.4;
-        &.eds-datepicker__calender__day--selected {
-          opacity: 1;
-        }
-      }
-      &__day--disabled {
-        opacity: 0.4;
-        pointer-events: none;
-      }
-      &__week-number {
-        color: $colors-blues-blue40;
-        margin-right: $space-small;
-      }
-      &__month-container {
-        margin: $space-small;
-      }
-    }
+  &__open-calendar-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.45rem;
 
-    & &__header {
-      display: flex;
-      align-items: center;
-      margin: 0 0.4rem;
-      background-color: $colors-brand-white;
-
-      &__month-button {
-        &--left {
-          margin-right: auto;
-        }
-        &--right {
-          margin-left: auto;
-        }
-        &--left.eds-icon-button:hover,
-        &--right.eds-icon-button:hover {
-          background-color: $colors-blues-blue70;
-        }
-      }
-
-      &__month-text {
-        color: $colors-brand-blue;
-        margin: 0 0.25rem;
-      }
-    }
-
-    & &__day {
-      border: $border-widths-small solid $colors-greys-grey70;
+    // This is done to remove contrast specific styling
+    &.eds-icon-button {
       color: $colors-brand-blue;
-      background-color: transparent;
-      font-size: $font-sizes-medium;
-      font-weight: $font-weights-body;
-      width: $space-extra-large2;
-      line-height: $space-extra-large2;
-      margin: -0.5px;
-
-      &:focus {
-        outline: none;
-        border-radius: 0;
-        box-shadow: $shadows-focus;
-        position: relative;
-        z-index: 1;
-        &:hover {
-          box-shadow: $shadows-focus;
-          background-color: $colors-greys-grey80;
-        }
-      }
       &:hover {
-        background: $colors-brand-white;
-        border-radius: 0;
-        box-shadow: inset 0 0 0px 1px $colors-brand-blue;
-      }
-
-      &--today {
-        $today-marker: inset 0 #{-$border-widths-large} 0 $colors-brand-coral;
-
-        position: relative;
-        box-shadow: $today-marker;
-        border-radius: 0;
-
-        &:focus {
-          box-shadow: $shadows-focus, $today-marker;
-          &:hover {
-            box-shadow: $shadows-focus, $today-marker;
-          }
-        }
-        &:hover {
-          box-shadow: inset 0 0 0px 1px $colors-brand-blue, $today-marker;
-        }
-      }
-      &--selected {
-        border-radius: 0;
-        background: $colors-brand-blue;
+        background-color: $colors-blues-blue40;
         color: $colors-brand-white;
-        &:hover,
-        &:focus:hover {
-          background: $colors-blues-blue10;
-        }
       }
-    }
-    & &__day-name {
-      width: $space-extra-large2;
-      line-height: $space-extra-large2;
-      margin: -0.5px;
-    }
-  }
-  &__input {
-    .eds-icon-button {
-      position: relative;
-      left: $space-extra-small;
-      .eds-contrast &:hover {
-        background-color: $colors-blues-blue60;
+      &:focus {
+        border: $border-widths-small solid $colors-brand-blue;
       }
-      .eds-contrast &:focus {
-        border-color: $colors-brand-blue;
+      &:active {
+        background-color: $colors-blues-blue50;
       }
     }
   }
-}
 
-.eds-native-date-picker {
-  height: 2.75rem;
+  &__datefield {
+    padding-right: 4rem;
+    &--disabled {
+      padding-right: 1rem;
+    }
+
+    &__wrapper {
+      position: relative;
+    }
+  }
+
+  &__calendar-modal.eds-modal__content {
+    padding: unset;
+    width: inherit;
+    background-color: unset;
+    overflow: visible;
+  }
 }
