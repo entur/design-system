@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.0-RC.1...@entur/utils@0.5.0-RC.2) (2022-11-22)
+
+### Bug Fixes
+
+- **useOnEscape:** commit for force updating utils-packages for publishing ([4c1082c](https://bitbucket.org/enturas/design-system/commits/4c1082c872a546c6c848aed2e2ae80e2d4599d11))
+
 # [0.5.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.0-RC.0...@entur/utils@0.5.0-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/utils
