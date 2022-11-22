@@ -34,6 +34,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/tooltip
 
 ## [2.5.18](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.17...@entur/tooltip@2.5.18) (2022-10-20)
+## [2.5.18-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.18-RC.1...@entur/tooltip@2.5.18-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/tooltip
+
 ## [2.5.18-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.18-RC.0...@entur/tooltip@2.5.18-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/tooltip

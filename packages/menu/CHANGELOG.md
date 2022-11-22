@@ -40,6 +40,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/menu
 
 ## [4.1.14](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.13...@entur/menu@4.1.14) (2022-10-20)
+## [4.1.14-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.14-RC.1...@entur/menu@4.1.14-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/menu
+
 ## [4.1.14-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.14-RC.0...@entur/menu@4.1.14-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/menu

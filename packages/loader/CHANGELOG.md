@@ -16,6 +16,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/loader
 
 ## [0.4.13](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.12...@entur/loader@0.4.13) (2022-10-31)
+## [0.4.13-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.13-RC.1...@entur/loader@0.4.13-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/loader
+
 ## [0.4.13-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.13-RC.0...@entur/loader@0.4.13-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/loader

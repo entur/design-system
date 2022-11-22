@@ -32,6 +32,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/chip
 
 ## [0.6.9](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.8...@entur/chip@0.6.9) (2022-10-20)
+## [0.6.9-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.9-RC.1...@entur/chip@0.6.9-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/chip
+
 ## [0.6.9-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.9-RC.0...@entur/chip@0.6.9-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/chip

@@ -37,6 +37,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - add children to toast provider ([162766b](https://bitbucket.org/enturas/design-system/commits/162766bb46e9798e9da267e927b62339feb310f2))
 
+## [0.11.9-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-RC.1...@entur/alert@0.11.9-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/alert
+
 ## [0.11.9-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-RC.0...@entur/alert@0.11.9-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/alert

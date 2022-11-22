@@ -32,6 +32,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/form
 
 ## [5.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.5...@entur/form@5.4.6) (2022-10-20)
+## [5.4.6-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.6-RC.1...@entur/form@5.4.6-RC.2) (2022-11-22)
+
+**Note:** Version bump only for package @entur/form
+
 ## [5.4.6-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.6-RC.0...@entur/form@5.4.6-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/form

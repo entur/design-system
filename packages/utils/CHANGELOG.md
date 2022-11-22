@@ -26,6 +26,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **style import warning:** remove ~ from import warning since it is deprecated ([c6a25fd](https://bitbucket.org/enturas/design-system/commits/c6a25fde98ec2f2821f678c6175c797ad10b7185))
+# [0.5.0-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.0-RC.1...@entur/utils@0.5.0-RC.2) (2022-11-22)
+
+### Bug Fixes
+
+- **useOnEscape:** commit for force updating utils-packages for publishing ([4c1082c](https://bitbucket.org/enturas/design-system/commits/4c1082c872a546c6c848aed2e2ae80e2d4599d11))
+
 # [0.5.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.0-RC.0...@entur/utils@0.5.0-RC.1) (2022-11-21)
 
 **Note:** Version bump only for package @entur/utils
