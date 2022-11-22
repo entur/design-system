@@ -150,7 +150,7 @@ export const DatePicker = ({
     dialogProps,
     calendarProps,
   } = useDatePicker(
-    { isDisabled, minValue, maxValue, autoFocus: true, ...rest },
+    { isDisabled, minValue, maxValue, ...rest },
     state,
     datePickerRef,
   );
