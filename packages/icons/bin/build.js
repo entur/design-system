@@ -172,6 +172,7 @@ function createSvgrConfig(native = false, componentName) {
   } else {
     // Should always be white
     const partnerIcons = [
+      'AKTIcon',
       'BrakarIcon',
       'BrakarNoTextIcon',
       'FarteIcon',
