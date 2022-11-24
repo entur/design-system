@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/layout.esm.js",
