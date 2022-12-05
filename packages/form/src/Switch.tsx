@@ -85,6 +85,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               '--eds-switch-contrast-color': contrastColor,
             } as React.CSSProperties
           }
+          aria-hidden="true"
         >
           <span className="eds-switch__circle">
             {!hideIcon && displayedIcon()}
