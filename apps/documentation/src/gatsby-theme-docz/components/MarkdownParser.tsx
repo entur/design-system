@@ -22,7 +22,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
               type,
               [props],
               // eslint-disable-next-line react/jsx-key -- disabled when we turned on linting for all files in the project
-              [<BugIcon inline {...props}></BugIcon>, children],
+              [<BugIcon inline aria-hidden="true" {...props} />, children],
             );
           }
           if (children.includes('Features')) {
@@ -30,7 +30,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
               type,
               [props],
               // eslint-disable-next-line react/jsx-key -- disabled when we turned on linting for all files in the project
-              [<NewIcon inline {...props}></NewIcon>, children],
+              [<NewIcon inline aria-hidden="true" {...props} />, children],
             );
           }
           return React.createElement(type, props, children);
@@ -66,6 +66,7 @@ export const MarkdownParser: React.FC<{ children: any }> = ({ children }) => {
           },
         },
       }}
+      lang="en"
     >
       {children}
     </ReactMarkdown>
