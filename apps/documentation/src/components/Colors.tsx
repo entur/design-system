@@ -284,7 +284,7 @@ const ColorDrawer: React.FC<{
       <Table>
         <TableHead>
           <TableRow>
-            <HeaderCell>Farge</HeaderCell>
+            <HeaderCell>Bakgrunn</HeaderCell>
             <HeaderCell>Kontrast</HeaderCell>
             <HeaderCell>AA</HeaderCell>
             <HeaderCell>AAA</HeaderCell>
@@ -318,7 +318,11 @@ const ContrastRow = ({ color, testColor }) => {
   return (
     <TableRow>
       <DataCell>
-        <div style={{ background: testColor, height: '100%' }}></div>
+        <div
+          role="img"
+          style={{ background: testColor, height: '100%' }}
+          aria-label={'Farge: ' + testColor}
+        />
       </DataCell>
       <DataCell>{contrastScore}:1</DataCell>
       <DataCell>
@@ -346,11 +350,23 @@ function WCAGTest(score: any, wcagType: string) {
   }
 }
 function Innafor() {
-  return <CheckIcon inline style={{ color: colors.validation.mint }} />;
+  return (
+    <CheckIcon
+      inline
+      style={{ color: colors.validation.mint }}
+      aria-label="Innfrir kontrastkravet"
+    />
+  );
 }
 
 function Uttafor() {
-  return <CloseIcon inline style={{ color: colors.validation.lava }} />;
+  return (
+    <CloseIcon
+      inline
+      style={{ color: colors.validation.lava }}
+      aria-label="Bryter kontrastkravet"
+    />
+  );
 }
 
 export default Colors;
