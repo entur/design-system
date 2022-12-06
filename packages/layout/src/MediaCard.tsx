@@ -67,7 +67,10 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
         )}
         <div className="eds-media-card__title">{title}</div>
         <Paragraph>{description}</Paragraph>
-        <ForwardIcon className="eds-media-card__arrow-icon" />
+        <ForwardIcon
+          className="eds-media-card__arrow-icon"
+          aria-hidden="true"
+        />
       </InnerElement>
     </BaseCard>
   );
