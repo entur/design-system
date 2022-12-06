@@ -12,7 +12,7 @@ export type ModalContentProps = {
   /** Størrelsen på modalen */
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
-  title: string;
+  title?: string;
   [key: string]: any;
 };
 
@@ -43,9 +43,11 @@ export const ModalContent: React.FC<ModalContentProps> = ({
       aria-labelledby={randomId}
       {...rest}
     >
-      <Heading margin="bottom" as="h2" id={randomId}>
-        {title}
-      </Heading>
+      {title && (
+        <Heading margin="bottom" as="h2" id={randomId}>
+          {title}
+        </Heading>
+      )}
       {children}
     </DialogContent>
   );
