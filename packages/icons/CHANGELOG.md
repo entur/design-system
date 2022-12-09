@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.2.1...@entur/icons@5.4.0) (2022-12-09)
+
+### Features
+
+- **icons:** add AKT icon ([302741a](https://bitbucket.org/enturas/design-system/commits/302741a3570cb075debe6305d49fc28057878f6e))
+
 # [5.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.2.2...@entur/icons@5.3.0) (2022-11-24)
 
 ### Features

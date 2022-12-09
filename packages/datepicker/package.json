@@ -1,6 +1,6 @@
 {
   "name": "@entur/datepicker",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/datepicker.esm.js",
@@ -27,11 +27,11 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^5.4.10",
-    "@entur/icons": "^5.2.2",
-    "@entur/tokens": "^3.4.1",
-    "@entur/typography": "^1.7.1",
-    "@entur/utils": "^0.4.6",
+    "@entur/form": "^5.4.12",
+    "@entur/icons": "^5.4.0",
+    "@entur/tokens": "^3.4.3",
+    "@entur/typography": "^1.7.3",
+    "@entur/utils": "^0.4.8",
     "@internationalized/date": "^3.0.1",
     "@react-aria/datepicker": "^3.1.1",
     "@react-aria/i18n": "^3.6.0",
