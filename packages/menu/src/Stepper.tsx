@@ -72,7 +72,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 },
               )}
             >
-              {showStepperIndex && i + 1 + '. ' + step}
+              {showStepperIndex && i + 1 + '.'} {step}
             </Label>
           </Element>
         );
