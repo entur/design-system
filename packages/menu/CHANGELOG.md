@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.21](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.20...@entur/menu@4.1.21) (2022-12-14)
+
+### Bug Fixes
+
+- **stepper:** fix broken showStepperIndex prop ([b85a9a2](https://bitbucket.org/enturas/design-system/commits/b85a9a2cfd05caab60ba6f242ee488f5db71ad81))
+
 ## [4.1.20](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.17...@entur/menu@4.1.20) (2022-12-09)
 
 **Note:** Version bump only for package @entur/menu
