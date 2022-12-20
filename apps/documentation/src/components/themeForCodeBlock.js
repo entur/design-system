@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+/* eslint-disable */
 export default {
   "code[class*=\"language-\"]": {
     "color": "#9CDCFE",
@@ -152,5 +152,5 @@ export default {
   },
   "italic": {
     "fontStyle": "italic",
-  }
-}
+  },
+};

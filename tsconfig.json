@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["jest.setup.ts", "src"],
+  "include": ["jest.setup.ts"],
   "exclude": [
     "node_modules",
     "packages/**/node_modules",
