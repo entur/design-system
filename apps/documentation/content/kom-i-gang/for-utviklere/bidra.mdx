@@ -53,7 +53,7 @@ Dette er generelt sett den anbefalte metoden for utvikling av komponenter da det
 
 Du kan kjøre alle testene med `yarn test` og starte en test watcher med `yarn test --watch`.
 
-Du kan bygge hele prosjektet med `yarn build`. Dette kan ta noen minutter, men kan være smart å gjøre før du lager et pull request, så ikke CI-prosessen kræsjer.
+Du kan bygge hele prosjektet med `yarn build:all`. Dette kan ta noen minutter, men kan være smart å gjøre før du lager en pull request, så ikke CI-prosessen krasjer.
 
 Om du har de rette tilgangene, kan du også bygge og publisere nye versjoner med `yarn lerna:publish`. **Kun kjør denne om du har de riktige tilgangene i npm! Ellers blir det masse rot med git tags og slikt.** For å få tilgang spør på `#talk-admin` på Slack.
 
@@ -64,17 +64,18 @@ Designsystemet er et såkalt "monorepo". Det vil si at alle de forskjellige NPM-
 Prosjektet er strukturert på følgende måte:
 
 ```
-- src
-  - components
-  - gatsby-theme-docz
-  - utils
+- apps/documentation
+  - src
+    - components
+    - gatsby-theme-docz
+    - utils
+  - content
+    - designprinsipper
+    - kom-i-gang
+    - ...
 - packages
   - package-name
   - another-package-name
-  - ...
-- content
-  - designprinsipper
-  - kom-i-gang
   - ...
 - bin
 ```

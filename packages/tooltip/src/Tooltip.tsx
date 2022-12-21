@@ -76,7 +76,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   ...rest
 }) => {
   const [showTooltip, setShowTooltip] = useState(isOpen || false);
-  let hoverTimer: NodeJS.Timeout;
+  let hoverTimer: ReturnType<typeof setTimeout>;
 
   const handleOpen: (event: React.MouseEvent) => void = event => {
     event.persist();

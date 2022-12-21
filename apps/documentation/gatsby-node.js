@@ -46,12 +46,13 @@ exports.onPreBootstrap = () => {
   fs.ensureDirSync(`${__dirname}/icons/`);
   for (let changelogPackage in packages) {
     fs.copyFileSync(
-      path.resolve(`../packages/${packages[changelogPackage]}/CHANGELOG.md`),
+      path.resolve(
+        `../../../packages/${packages[changelogPackage]}/CHANGELOG.md`,
+      ),
       `${__dirname}/changelogs/${packages[changelogPackage]}.md`,
     );
   }
-  fs.ensureDirSync('../../src/gatsby-theme-docz/svgs');
-  fs.copySync('../packages/icons/src/svgs', `${__dirname}/icons/`);
+  fs.copySync('../../../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
 
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {

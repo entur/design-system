@@ -23,8 +23,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-v1-{{ .Branch }}-
+            - yarn-v1-{{ checksum "yarn.lock" }}
             - yarn-v1-
       - restore_cache:
           name: Restore Docz/Gatsby Cache
@@ -40,12 +39,18 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-v1-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run:
-          name: build
-          command: yarn build
+          name: build packages
+          command: yarn build:packages
+      - run:
+          name: linter and test
+          command: yarn test --runInBand && yarn lint
+      - run:
+          name: build documentation
+          command: yarn build:documentation --scripts-prepend-node-path
       - save_cache:
           name: Save Docz/Gatsby Cache
           key: v07-docz-cache-{{ .Branch }}-{{ epoch }}
@@ -53,14 +58,11 @@ jobs:
             - .docz/.cache
             - .docz/public
       - run:
-          name: linter and test
-          command: yarn test && yarn lint
-      - run:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
       - run:
           name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn firebase hosting:channel:deploy $CIRCLE_BRANCH --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview $CIRCLE_BRANCH --project=entur-design-system
 
   build-and-deploy-to-production:
     parallelism: 1

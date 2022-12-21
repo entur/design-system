@@ -5,22 +5,23 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "setup": "yarn && yarn build:packages",
-    "build": "yarn build:packages && yarn build:docz",
-    "build:packages": "lerna run build",
-    "build:docz": "docz build",
-    "lint": "yarn run lint:non-packages && yarn run lint:packages",
-    "lint:non-packages": "eslint . --ext js,ts,tsx,jsx,cjs,mjs --report-unused-disable-directives",
-    "lint:packages": "lerna run lint",
-    "cleanStart": "rm -rf .docz && yarn start",
-    "start": "docz dev",
-    "test": "dts test --env=jest-environment-jsdom packages --runInBand --logHeapUsage",
-    "test:parallel": "dts test --env=jest-environment-jsdom packages",
+    "build": "node -e \"console.warn('UNAVAILABLE: use yarn build:packages to build all design-system packages')\"",
+    "build:all": "yarn build:packages && yarn build:documentation",
+    "build:packages": "lerna run build --no-private",
+    "build:documentation": "lerna exec --scope @entur/documentation -- yarn build",
+    "lint": "lerna run lint",
+    "lint:documentation": "lerna exec --scope @entur/documentation -- yarn lint --report-unused-disable-directives",
+    "lint:packages": "lerna run lint --no-private",
+    "start": "lerna exec --scope @entur/documentation -- yarn start",
+    "cleanStart": "lerna exec --scope @entur/documentation -- yarn cleanStart",
+    "test": "dts test --env=jest-environment-jsdom packages",
     "test:watch": "dts test --env=jest-environment-jsdom --watch",
     "test:single-run": "cross-env CI=true yarn test",
-    "predeploy-docs": "yarn build",
-    "deploy-docs": "firebase deploy",
+    "predeploy-docs": "yarn build:all",
+    "deploy-docs": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
+    "deploy-docs:preview": "lerna exec --scope @entur/documentation -- yarn deploy-docs:preview",
     "new-package": "./bin/new-package.js",
-    "superClean": "rm -rf node_modules .docz packages/*/dist packages/*/node_modules packages/*/.rts2*",
+    "superClean": "rm -rf node_modules apps/documentation/.docz apps/*/node_modules packages/*/dist packages/*/node_modules packages/*/.rts2*",
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "lerna:publish": "lerna publish --conventional-commits",
     "lerna:prerelease": "lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
@@ -29,8 +30,19 @@
     "prepare": "husky install"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
+  "dependencies": {
+    "@emotion/core": "10.0.28",
+    "classnames": "^2.3.1",
+    "copy-text-to-clipboard": "^3.0.1",
+    "hex-rgb": "^5.0.0",
+    "node-sass": "^4.14.1",
+    "playroom": "0.24.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
@@ -56,7 +68,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "firebase-tools": "^10.0.0",
     "husky": "^7.0.0",
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
@@ -69,6 +80,11 @@
     "rollup-plugin-sass": "^1.2.2",
     "tslib": "^2.3.1",
     "typescript": "^4.2.4"
+  },
+  "resolutions": {
+    "babel-plugin-remove-graphql-queries": "2.9.14",
+    "gatsby-plugin-mdx": "1.2.4",
+    "@types/react": "16.9.56"
   },
   "config": {
     "commitizen": {
@@ -83,35 +99,6 @@
       "<rootDir>/jest.setup.ts"
     ],
     "globalSetup": "./global-setup.js"
-  },
-  "dependencies": {
-    "@artsy/fresnel": "^1.9.0",
-    "@emotion/core": "10.0.28",
-    "@reach/router": "^1.2.1",
-    "@types/react-syntax-highlighter": "^15.5.5",
-    "classnames": "^2.3.1",
-    "copy-text-to-clipboard": "^3.0.1",
-    "docz": "2.4.0",
-    "framer-motion": "^4.1.17",
-    "gatsby-plugin-sass": "^2.3.12",
-    "gatsby-transformer-remark": "^2.8.28",
-    "hex-rgb": "^5.0.0",
-    "markdown-to-jsx": "^6.11.4",
-    "match-sorter": "^6.3.0",
-    "node-sass": "^4.14.1",
-    "playroom": "0.24.0",
-    "react": "^16.11.0",
-    "react-confetti": "^6.0.1",
-    "react-dom": "^16.11.0",
-    "react-helmet-async": "^1.0.4",
-    "react-live": "^2.3.0",
-    "react-syntax-highlighter": "^15.5.0",
-    "wcag-contrast": "^3.0.0"
-  },
-  "resolutions": {
-    "babel-plugin-remove-graphql-queries": "2.9.14",
-    "gatsby-plugin-mdx": "1.2.4",
-    "@types/react": "16.9.56"
   },
   "volta": {
     "node": "14.17.0",
