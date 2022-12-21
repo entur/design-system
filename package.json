@@ -33,6 +33,16 @@
     "packages/*",
     "apps/*"
   ],
+  "dependencies": {
+    "@emotion/core": "10.0.28",
+    "classnames": "^2.3.1",
+    "copy-text-to-clipboard": "^3.0.1",
+    "hex-rgb": "^5.0.0",
+    "node-sass": "^4.14.1",
+    "playroom": "0.24.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
@@ -58,7 +68,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "firebase-tools": "^10.0.0",
     "husky": "^7.0.0",
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
@@ -71,6 +80,11 @@
     "rollup-plugin-sass": "^1.2.2",
     "tslib": "^2.3.1",
     "typescript": "^4.2.4"
+  },
+  "resolutions": {
+    "babel-plugin-remove-graphql-queries": "2.9.14",
+    "gatsby-plugin-mdx": "1.2.4",
+    "@types/react": "16.9.56"
   },
   "config": {
     "commitizen": {
@@ -85,20 +99,6 @@
       "<rootDir>/jest.setup.ts"
     ],
     "globalSetup": "./global-setup.js"
-  },
-  "dependencies": {
-    "@emotion/core": "10.0.28",
-    "classnames": "^2.3.1",
-    "hex-rgb": "^5.0.0",
-    "node-sass": "^4.14.1",
-    "playroom": "0.24.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
-  },
-  "resolutions": {
-    "babel-plugin-remove-graphql-queries": "2.9.14",
-    "gatsby-plugin-mdx": "1.2.4",
-    "@types/react": "16.9.56"
   },
   "volta": {
     "node": "14.17.0",
