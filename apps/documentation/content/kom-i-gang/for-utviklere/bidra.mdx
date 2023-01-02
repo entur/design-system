@@ -45,7 +45,7 @@ Når du har kommet hit, burde du være klar for å starte arbeidet ditt.
 
 Du har en rekke scripts tilgjengelig via `yarn`:
 
-Du kan starte en utviklingsversjon av dokumentasjonssiden ved å kjøre `yarn start` på rotnivå. Du kan starte en byggprosess for hver pakke også ved å gå inn i hver pakke (`cd packages/buttons` for eksempel), og kjøre `yarn start` der også.
+Du kan starte en utviklingsversjon av dokumentasjonssiden ved å kjøre `yarn start:documentation` på rotnivå. Du kan starte en byggprosess for hver pakke også ved å gå inn i hver pakke (`cd packages/buttons` for eksempel), og kjøre `yarn start` der også.
 
 Alternativt kan man benytte seg av Playroom som et minimalt utviklingsmiljø hvis man ikke trenger å se endringene på dokumentasjonssiden med en gang.
 [Les mer om Playroom her](/kom-i-gang/for-utviklere/bidra#playroom).
@@ -84,7 +84,7 @@ Prosjektet er strukturert på følgende måte:
 
 `packages` inneholder en mappe for hver pakke. Det vil si at `@entur/typography`-pakken ligger i `packages/typography`.
 
-Om du vil utvikle på en slik pakke, kan du kjøre `yarn start` for å slippe å bygge manuelt etter hver endring.
+Om du vil utvikle på en slik pakke, kan du kjøre `yarn start` i mappen til pakken for å slippe å bygge manuelt etter hver endring.
 
 Hver av pakkene inneholder omtrentlig den samme strukturen:
 
@@ -101,9 +101,9 @@ Hver av pakkene inneholder omtrentlig den samme strukturen:
 
 Vi bruker `scss` til styling, og `react-testing-library` og Jest for testing.
 
-### `content`: dokumentasjonen
+### `apps/documentation/content`: dokumentasjonen
 
-All dokumentasjonen vår finner du i `content`-mappa. Vi har lagt dem i mapper basert på hvilken del av siden den tilhører, og hver av filene er i såkalt `mdx`-format.
+All dokumentasjonen vår finner du i `content`-mappa til `documentation`under `apps`-workspace-et. Vi har lagt dem i mapper basert på hvilken del av siden den tilhører, og hver av filene er i såkalt `mdx`-format.
 
 `MDX` er Markdown med JSX-støtte i seg. Det betyr at du kan bruke React-komponenter for å lage dokumentasjonen din. Med andre ord kan du dokumentere komponenten ved hjelp av den faktiske React-komponenten. Du kan lese mer om det på [dokumentasjonssiden deres](https://mdxjs.com/).
 
@@ -127,7 +127,7 @@ tags: søkbare, ord (kun relevant for komponenter-siden)
 
 Det finnes et par andre også (`index`, `frontpage` etc), men de trenger du mest sannsynligvis aldri å bry deg om. Om i tvil, ta en titt på kildekoden.
 
-### `src`: dokumentasjonssiden
+### `apps/documentation/src`: dokumentasjonssiden
 
 Trenger du å endre noe på selve dokumentasjonssiden, eller lage noen spesielle komponenter for å dokumentere noe, så kan du legge dem inn i denne mappen. Dette er nemlig koden som bygger opp selve dokumentasjonssiden!
 
@@ -149,11 +149,11 @@ Det gjør det enklere for deg å utvikle, og for de som skal verifisere pull req
 Neste steg er å faktisk skrive koden som fikser bugen eller implementererer featuren. Sjekk at testen passerer!
 
 Det kan jo være greit å se en versjon av komponenten din mens du utvikler.
-Du kan starte opp en dev-versjon av dokumentasjonssiden med `yarn start` på rotnivå, og en lokal file watcher som rekompilerer filene dine med `yarn start` i mappen der pakken du jobber på ligger.
+Du kan starte opp en dev-versjon av dokumentasjonssiden med `yarn start:documentation` på rotnivå, og en lokal file watcher som rekompilerer filene dine med `yarn start` i mappen der pakken du jobber på ligger.
 Så om du utvikler en komponent for `@entur/a11y`-pakken, gjør du følgende:
 
 ```sh
-$ ~/design-system: yarn start
+$ ~/design-system: yarn start:documentation
 # så, i en annen terminal
 $ ~/design-system: cd packages/a11y
 $ ~/design-system/packages/a11y: yarn start
@@ -172,8 +172,16 @@ Når den spør om "scope", skriv opp navne(t|ne) på komponenten(e) du har endre
 ### Playroom
 
 Hvis man vil spare tid på utviklingsprosessen, så benyttes også (Playroom)[https://github.com/seek-oss/playroom] som et alternativ for utvikling og videreutvikling.
-Så endrer du `TestBench.tsx` under `src/components/` og innholdet der vil vises i et minimalt miljø når man kjører `yarn playroom`. Denne filen trackes ikke av git, og vil og skal dermed ikke oppdateres i git-historikken.
+Opprett filen `TestBench.tsx` under `apps/code-playground/src`. Innholdet i denne filen vil vises i et minimalt miljø når man kjører `yarn start:code-playground`. Denne filen trackes ikke av git, og vil og skal dermed ikke oppdateres i git-historikken.
 Playroom tillater også å gjøre kodeendringer rett i nettleseren, men for ekstra Typescript-støtte o.l. så er endringer direkte i `TestBench` anbefalt
+
+```jsx
+import React from 'react';
+
+export const TestBench = () => {
+  return <div>{/* Komponenter man ønsker å teste her */}</div>;
+};
+```
 
 **Merk:** `TestBench.tsx` er lagt til i `.gitignore` og vil derfor aldri være inkludert i git-historikken.
 
