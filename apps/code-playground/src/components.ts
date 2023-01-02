@@ -22,4 +22,4 @@ export * from '@entur/travel';
 export * from '@entur/typography';
 export * from '@entur/utils';
 
-export { TestBench } from '../src/components/TestBench';
+export { TestBench } from './TestBench';

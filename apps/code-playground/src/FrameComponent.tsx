@@ -1,11 +1,15 @@
 import React from 'react';
-import { TestBench } from '../src/components/TestBench';
+import { TestBench } from './TestBench';
 import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
 import { Contrast } from '@entur/layout';
 import { ToastProvider } from '@entur/alert';
 
-const FrameComponent = ({ children }) => {
+type FrameComponentProps = {
+  children: React.ReactNode;
+};
+
+const FrameComponent = ({ children }: FrameComponentProps) => {
   const [contrast, setContrast] = React.useState(false);
   const Element = contrast ? Contrast : 'div';
   return (

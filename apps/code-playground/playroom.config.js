@@ -1,10 +1,10 @@
 module.exports = {
-  components: './playroom/components.ts',
-  outputPath: './dist/playroom',
+  components: './src/components.ts',
+  outputPath: './dist',
 
   // Optional:
   title: 'TestBench',
-  frameComponent: './playroom/FrameComponent.tsx',
+  frameComponent: './src/FrameComponent.tsx',
   widths: [1200, 700, 500, 350],
   port: 9000,
   openBrowser: true,
@@ -13,7 +13,7 @@ module.exports = {
     <div>
     </div>
   `,
-  baseUrl: '/playroom/',
+  baseUrl: '/',
   webpackConfig: () => {
     return {
       module: {
@@ -24,23 +24,17 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: require.resolve('babel-loader'),
+                  loader: 'babel-loader',
                   options: {
                     presets: [
-                      require.resolve('@babel/preset-env'),
-                      require.resolve('@babel/preset-react'),
-                      require.resolve('@babel/preset-typescript'),
+                      '@babel/preset-env',
+                      '@babel/preset-react',
+                      '@babel/preset-typescript',
                     ],
                     plugins: [
-                      require.resolve(
-                        '@babel/plugin-proposal-class-properties',
-                      ),
-                      require.resolve(
-                        '@babel/plugin-proposal-optional-chaining',
-                      ),
-                      require.resolve(
-                        '@babel/plugin-proposal-nullish-coalescing-operator',
-                      ),
+                      '@babel/plugin-proposal-class-properties',
+                      '@babel/plugin-proposal-optional-chaining',
+                      '@babel/plugin-proposal-nullish-coalescing-operator',
                     ],
                   },
                 },
@@ -53,25 +47,22 @@ module.exports = {
                   /packages\/.*/,
                   /node_modules\/react-datepicker\/.*/,
                 ],
-                use: [
-                  require.resolve('style-loader'),
-                  require.resolve('css-loader'),
-                ],
+                use: ['style-loader', 'css-loader'],
               },
 
               {
                 test: /\.scss$/,
                 use: [
-                  require.resolve('style-loader'),
+                  'style-loader',
                   {
-                    loader: require.resolve('css-loader'),
+                    loader: 'css-loader',
                     options: {
                       importLoaders: 3,
                       sourceMap: true,
                     },
                   },
                   {
-                    loader: require.resolve('sass-loader'),
+                    loader: 'sass-loader',
                     options: {
                       sourceMap: true,
                     },
@@ -80,7 +71,7 @@ module.exports = {
                 sideEffects: true,
               },
               {
-                loader: require.resolve('file-loader'),
+                loader: 'file-loader',
                 exclude: [
                   /node_modules\/(?!(@entur.+)\/).*/,
                   /node_modules(\/|\\)(?!(@entur.+)(\/|\\)).*/,

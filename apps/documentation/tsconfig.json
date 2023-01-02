@@ -1,5 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["src", "content"],
-  "exclude": ["node_modules", ".docz"]
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@entur/*": ["../../packages/*/dist"],
+      "~*": ["src/*"],
+      "src/*": ["src/*"]
+    }
+  }
 }
