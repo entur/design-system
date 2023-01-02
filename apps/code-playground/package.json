@@ -1,0 +1,23 @@
+{
+  "name": "@entur/code-playground",
+  "version": "1.0.0",
+  "private": true,
+  "license": "EUPL-1.2",
+  "scripts": {
+    "start": "playroom start",
+    "build": "playroom build"
+  },
+  "devDependencies": {
+    "playroom": "0.24.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.2.4"
+  },
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "volta": {
+    "node": "14.17.0",
+    "yarn": "1.18.0"
+  }
+}
