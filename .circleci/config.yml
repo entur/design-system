@@ -75,8 +75,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-v1-{{ .Branch }}-
+            - yarn-v1-{{ checksum "yarn.lock" }}
             - yarn-v1-
       - restore_cache:
           name: Restore Docz/Gatsby Cache
@@ -96,7 +95,7 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-v1-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
       - run:
