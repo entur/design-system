@@ -25,5 +25,5 @@ coverage
 .idea
 
 ## Local test environment
-src/components/TestBench.tsx
+TestBench.tsx
 content/components/testin.mdx
