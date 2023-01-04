@@ -3,14 +3,9 @@
 import type {
   PolymorphicPropsWithoutRef,
   PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
 } from 'react-polymorphic-types';
 
-export {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-};
+export { PolymorphicPropsWithoutRef, PolymorphicPropsWithRef };
 
 import React from 'react';
 

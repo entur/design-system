@@ -1,10 +1,6 @@
 import React from 'react';
 import { Badge } from './Badge';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 type BulletBadgeBaseProps = {
   /** Elementet som wrapper badgen
@@ -19,21 +15,24 @@ type BulletBadgeBaseProps = {
   variant: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 };
 
-export type BulletBadgeProps<
+export type BulletBadgeProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, BulletBadgeBaseProps>;
+
+export type BulletBadgeComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<BulletBadgeBaseProps, T>;
+>(
+  props: BulletBadgeProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'span';
 
-export const BulletBadge: PolymorphicForwardRefExoticComponent<
-  BulletBadgeBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const BulletBadge: BulletBadgeComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<BulletBadgeBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: BulletBadgeProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BadgeOwnProps
     return <Badge as={Element} {...props} ref={ref} type="bullet" />;
   },
 );

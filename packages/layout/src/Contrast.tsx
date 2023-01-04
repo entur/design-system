@@ -1,29 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 export type ContrastBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
 };
 
-export type ContrastProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithRef<ContrastBaseProps, E>;
+export type ContrastProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, ContrastBaseProps>;
+
+export type ContrastComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: ContrastProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'div';
 
-export const Contrast: PolymorphicForwardRefExoticComponent<
-  ContrastBaseProps,
-  typeof defaultElement
-> = React.forwardRef(function Contrast<
+export const Contrast: ContrastComponent = React.forwardRef(function Contrast<
   T extends React.ElementType = typeof defaultElement,
 >(
-  { className, as, ...rest }: PolymorphicPropsWithoutRef<ContrastBaseProps, T>,
-  ref: React.ForwardedRef<React.ElementRef<T>>,
+  { className, as, ...rest }: ContrastProps<T>,
+  ref: PolymorphicRef<T>,
 ): JSX.Element {
   const Element: React.ElementType = as || defaultElement;
   return (
