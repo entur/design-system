@@ -1,10 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './BaseSquareButton.scss';
 
@@ -25,16 +21,18 @@ export type BaseSquareButtonBaseProps = {
   loading?: boolean;
 };
 
-export type BaseSquareButtonProps<
+export type BaseSquareButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, BaseSquareButtonBaseProps>;
+
+export type BaseSquareButtonComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<BaseSquareButtonBaseProps, T>;
+>(
+  props: BaseSquareButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const BaseSquareButton: PolymorphicForwardRefExoticComponent<
-  BaseSquareButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const BaseSquareButton: BaseSquareButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
     {
       children,
@@ -44,8 +42,8 @@ export const BaseSquareButton: PolymorphicForwardRefExoticComponent<
       loading = false,
       as,
       ...rest
-    }: PolymorphicPropsWithoutRef<BaseSquareButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    }: BaseSquareButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
     return (

@@ -1,12 +1,8 @@
 import React from 'react';
 import { BaseSquareButton } from './BaseSquareButton';
-import {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
-export type SecondarySquareButtonBaseProps = {
+type SecondarySquareButtonBaseProps = {
   /** Tekst og ikon, ikon og tekst, eller bare ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -21,23 +17,32 @@ export type SecondarySquareButtonBaseProps = {
   loading?: boolean;
 };
 
-export type SecondarySquareButtonProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<SecondarySquareButtonBaseProps, E>;
+export type SecondarySquareButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, SecondarySquareButtonBaseProps>;
+
+export type SecondarySquareButtonComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: SecondarySquareButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const SecondarySquareButton: PolymorphicForwardRefExoticComponent<
-  SecondarySquareButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
-  <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<SecondarySquareButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
-  ) => {
-    const Element: React.ElementType = props.as || defaultElement;
-    return (
-      <BaseSquareButton as={Element} ref={ref} {...props} variant="secondary" />
-    );
-  },
-);
+export const SecondarySquareButton: SecondarySquareButtonComponent =
+  React.forwardRef(
+    <T extends React.ElementType = typeof defaultElement>(
+      props: SecondarySquareButtonProps<T>,
+      ref: PolymorphicRef<T>,
+    ) => {
+      const Element: React.ElementType = props.as || defaultElement;
+      return (
+        // @ts-expect-error type error due to props not being BaseButtonProps
+        <BaseSquareButton
+          as={Element}
+          ref={ref}
+          {...props}
+          variant="secondary"
+        />
+      );
+    },
+  );

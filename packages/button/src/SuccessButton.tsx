@@ -1,12 +1,8 @@
 import React from 'react';
 import { Button } from './Button';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
-type SuccessButtonBaseProps = {
+export type SuccessButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
@@ -21,7 +17,7 @@ type SuccessButtonBaseProps = {
    * @default false
    */
   disabled?: boolean;
-  /** Bredden på knappen
+  /** Bredden på knappen.
    * @default 'auto'
    */
   width?: 'fluid' | 'auto';
@@ -29,21 +25,24 @@ type SuccessButtonBaseProps = {
   children: React.ReactNode;
 };
 
-export type SuccessButtonProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<SuccessButtonBaseProps, E>;
+export type SuccessButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, SuccessButtonBaseProps>;
+
+export type SuccessButtonComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: SuccessButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const SuccessButton: PolymorphicForwardRefExoticComponent<
-  SuccessButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const SuccessButton: SuccessButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<SuccessButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: SuccessButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BaseButtonProps
     return <Button as={Element} {...props} ref={ref} variant="success" />;
   },
 );
