@@ -1,11 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import './Badge.scss';
-import {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
 
 export type BadgeTypes = 'status' | 'bullet' | 'notification';
 
@@ -31,16 +27,19 @@ export type BadgeOwnProps = {
   type?: BadgeTypes;
 };
 
-export type BadgeProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithRef<BadgeOwnProps, E>;
+export type BadgeProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, BadgeOwnProps>;
+
+export type BadgeComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: BadgeProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'span';
 
-export const Badge: PolymorphicForwardRefExoticComponent<
-  BadgeOwnProps,
-  typeof defaultElement
-> = React.forwardRef(
-  <E extends React.ElementType = typeof defaultElement>(
+export const Badge: BadgeComponent = React.forwardRef(
+  <T extends React.ElementType = typeof defaultElement>(
     {
       children,
       className,
@@ -51,8 +50,8 @@ export const Badge: PolymorphicForwardRefExoticComponent<
       as,
       type = 'status',
       ...rest
-    }: PolymorphicPropsWithoutRef<BadgeOwnProps, E>,
-    ref: React.ForwardedRef<React.ElementRef<E>>,
+    }: BadgeProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
     let invisible = invisibleProp;

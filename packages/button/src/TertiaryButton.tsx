@@ -1,41 +1,48 @@
 import React from 'react';
 import { Button } from './Button';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 export type TertiaryButtonBaseProps = {
+  /** Størrelsen på knappen
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
+   * @default false
+   */
+  loading?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   /** Deaktivering av knappen
    * @default false
    */
   disabled?: boolean;
-  /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
-   * @default false
+  /** Bredden på knappen.
+   * @default 'auto'
    */
-  loading?: boolean;
+  width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
 };
 
-export type TertiaryButtonProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<TertiaryButtonBaseProps, E>;
+export type TertiaryButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, TertiaryButtonBaseProps>;
+
+export type TertiaryButtonComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: TertiaryButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const TertiaryButton: PolymorphicForwardRefExoticComponent<
-  TertiaryButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const TertiaryButton: TertiaryButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<TertiaryButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: TertiaryButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BaseButtonProps
     return <Button as={Element} {...props} ref={ref} variant="tertiary" />;
   },
 );

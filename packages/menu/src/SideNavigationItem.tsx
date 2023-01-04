@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { useSideNavigationContext } from './CollapsibleSideNavigation';
 import { useShowDelayedLabel } from './useShowDelayedLabel';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 function isActiveRecursively(child: any): boolean {
   if (!child.props) {
@@ -31,8 +31,8 @@ type BaseSideNavigationItemOwnProps = {
 };
 
 export type BaseSideNavigationItemProps<
-  E extends React.ElementType = typeof defaultElementBaseItem,
-> = PolymorphicPropsWithoutRef<BaseSideNavigationItemOwnProps, E>;
+  T extends React.ElementType = typeof defaultElementBaseItem,
+> = PolymorphicComponentProps<T, BaseSideNavigationItemOwnProps>;
 
 const defaultElementBaseItem = 'a';
 
@@ -113,8 +113,8 @@ export type SideNavigationItemOwnProps = {
 };
 
 export type SideNavigationItemProps<
-  E extends React.ElementType = typeof defaultElementItem,
-> = PolymorphicPropsWithoutRef<SideNavigationItemOwnProps, E>;
+  T extends React.ElementType = typeof defaultElementItem,
+> = PolymorphicComponentProps<T, SideNavigationItemOwnProps>;
 
 const defaultElementItem = 'a';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type SubLabelOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,8 +17,8 @@ export type SubLabelOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type SubLabelProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<SubLabelOwnProps, E>;
+export type SubLabelProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, SubLabelOwnProps>;
 
 const defaultElement = 'span';
 

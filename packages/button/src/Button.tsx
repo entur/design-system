@@ -1,10 +1,6 @@
 import * as React from 'react';
 import cx from 'classnames';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './Button.scss';
 
@@ -39,27 +35,30 @@ type ButtonBaseProps = {
 
 const defaultElement = 'button';
 
-export type ButtonProps<T extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithRef<ButtonBaseProps, T>;
+export type ButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, ButtonBaseProps>;
 
-export const Button: PolymorphicForwardRefExoticComponent<
-  ButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export type ButtonComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: ButtonProps<T>,
+) => React.ReactElement | null;
+
+export const Button: ButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
     {
       as,
+      children,
       variant,
       size = 'medium',
       loading,
       className,
-      children,
       disabled = false,
       width = 'auto',
       'aria-label': ariaLabel,
       ...rest
-    }: PolymorphicPropsWithoutRef<ButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    }: ButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
     const childrenArray = React.Children.toArray(children);

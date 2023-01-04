@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type ParagraphOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type ParagraphOwnProps = {
 };
 
 export type ParagraphProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<ParagraphOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, ParagraphOwnProps>;
 
 const defaultElement = 'p';
 

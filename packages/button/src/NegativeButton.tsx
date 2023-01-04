@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 export type NegativeButtonBaseProps = {
   /** Størrelsen på knappen
@@ -27,24 +23,26 @@ export type NegativeButtonBaseProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
-  as?: 'button' | React.ElementType;
 };
 
-export type NegativeButtonProps<
+export type NegativeButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, NegativeButtonBaseProps>;
+
+export type NegativeButtonComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<NegativeButtonBaseProps, T>;
+>(
+  props: NegativeButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const NegativeButton: PolymorphicForwardRefExoticComponent<
-  NegativeButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const NegativeButton: NegativeButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<NegativeButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: NegativeButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BaseButtonProps
     return <Button as={Element} {...props} ref={ref} variant="negative" />;
   },
 );

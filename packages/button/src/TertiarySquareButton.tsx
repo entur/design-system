@@ -1,12 +1,8 @@
 import React from 'react';
 import { BaseSquareButton } from './BaseSquareButton';
-import {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
-export type TertiarySquareButtonBaseProps = {
+type TertiarySquareButtonBaseProps = {
   /** Tekst og ikon, ikon og tekst, eller bare ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -21,23 +17,32 @@ export type TertiarySquareButtonBaseProps = {
   loading?: boolean;
 };
 
-export type TertiarySquareButtonProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<TertiarySquareButtonBaseProps, E>;
+export type TertiarySquareButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, TertiarySquareButtonBaseProps>;
+
+export type TertiarySquareButtonComponent = <
+  T extends React.ElementType = typeof defaultElement,
+>(
+  props: TertiarySquareButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const TertiarySquareButton: PolymorphicForwardRefExoticComponent<
-  TertiarySquareButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
-  <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<TertiarySquareButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
-  ) => {
-    const Element: React.ElementType = props.as || defaultElement;
-    return (
-      <BaseSquareButton as={Element} ref={ref} {...props} variant="tertiary" />
-    );
-  },
-);
+export const TertiarySquareButton: TertiarySquareButtonComponent =
+  React.forwardRef(
+    <T extends React.ElementType = typeof defaultElement>(
+      props: TertiarySquareButtonProps<T>,
+      ref: PolymorphicRef<T>,
+    ) => {
+      const Element: React.ElementType = props.as || defaultElement;
+      return (
+        // @ts-expect-error type error due to props not being BaseButtonProps
+        <BaseSquareButton
+          as={Element}
+          ref={ref}
+          {...props}
+          variant="tertiary"
+        />
+      );
+    },
+  );

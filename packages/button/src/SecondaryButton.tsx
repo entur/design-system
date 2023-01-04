@@ -1,10 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-import {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-  PolymorphicPropsWithoutRef,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 export type SecondaryButtonBaseProps = {
   /** Størrelsen på knappen
@@ -21,7 +17,7 @@ export type SecondaryButtonBaseProps = {
    * @default false
    */
   disabled?: boolean;
-  /** Bredden på knappen
+  /** Bredden på knappen.
    * @default 'auto'
    */
   width?: 'fluid' | 'auto';
@@ -29,21 +25,24 @@ export type SecondaryButtonBaseProps = {
   children: React.ReactNode;
 };
 
-export type SecondaryButtonProps<
+export type SecondaryButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, SecondaryButtonBaseProps>;
+
+export type SecondaryButtonComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<SecondaryButtonBaseProps, T>;
+>(
+  props: SecondaryButtonProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const SecondaryButton: PolymorphicForwardRefExoticComponent<
-  SecondaryButtonBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const SecondaryButton: SecondaryButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<SecondaryButtonBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: SecondaryButtonProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BaseButtonProps
     return <Button as={Element} {...props} ref={ref} variant="secondary" />;
   },
 );

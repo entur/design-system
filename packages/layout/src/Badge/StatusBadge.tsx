@@ -1,10 +1,6 @@
 import React from 'react';
 import { Badge } from './Badge';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 type StatusBadgeBaseProps = {
   /** Elementet som wrapper badgen
@@ -19,21 +15,24 @@ type StatusBadgeBaseProps = {
   variant: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 };
 
-export type StatusBadgeProps<
+export type StatusBadgeProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, StatusBadgeBaseProps>;
+
+export type StatusBadgeComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<StatusBadgeBaseProps, T>;
+>(
+  props: StatusBadgeProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'span';
 
-export const StatusBadge: PolymorphicForwardRefExoticComponent<
-  StatusBadgeBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const StatusBadge: StatusBadgeComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<StatusBadgeBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: StatusBadgeProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BadgeOwnProps
     return <Badge as={Element} {...props} ref={ref} type="status" />;
   },
 );

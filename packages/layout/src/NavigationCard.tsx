@@ -5,7 +5,7 @@ import { ForwardIcon, ExternalIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type NavigationCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager NavigationCard
@@ -31,8 +31,8 @@ export type NavigationCardOwnProps = {
 };
 
 export type NavigationCardProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<NavigationCardOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, NavigationCardOwnProps>;
 
 const defaultElement = 'a';
 

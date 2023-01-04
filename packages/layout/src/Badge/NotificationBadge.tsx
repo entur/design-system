@@ -1,10 +1,6 @@
 import React from 'react';
 import { Badge } from './Badge';
-import {
-  PolymorphicPropsWithoutRef,
-  PolymorphicPropsWithRef,
-  PolymorphicForwardRefExoticComponent,
-} from '@entur/utils';
+import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 type NotificationBadgeBaseProps = {
   /** Elementet som wrapper badgen
@@ -27,21 +23,24 @@ type NotificationBadgeBaseProps = {
   max?: number;
 };
 
-export type NotificationBadgePropsProps<
+export type NotificationBadgeProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, NotificationBadgeBaseProps>;
+
+export type NotificationBadgeComponent = <
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithRef<NotificationBadgeBaseProps, T>;
+>(
+  props: NotificationBadgeProps<T>,
+) => React.ReactElement | null;
 
 const defaultElement = 'span';
 
-export const NotificationBadge: PolymorphicForwardRefExoticComponent<
-  NotificationBadgeBaseProps,
-  typeof defaultElement
-> = React.forwardRef(
+export const NotificationBadge: NotificationBadgeComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
-    props: PolymorphicPropsWithoutRef<NotificationBadgeBaseProps, T>,
-    ref: React.ForwardedRef<React.ElementRef<T>>,
+    props: NotificationBadgeProps<T>,
+    ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
+    // @ts-expect-error type error due to props not being BadgeOwnProps
     return <Badge as={Element} {...props} ref={ref} type="notification" />;
   },
 );
