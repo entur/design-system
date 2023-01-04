@@ -1,3 +1,7 @@
+/** These polymorphic types are derrived from Ben Ilegbodu's article available at the following link:
+ * https://www.benmvp.com/blog/forwarding-refs-polymorphic-react-component-typescript/
+ */
+
 import React from 'react';
 
 // Source: https://github.com/emotion-js/emotion/blob/master/packages/styled-base/types/helper.d.ts
