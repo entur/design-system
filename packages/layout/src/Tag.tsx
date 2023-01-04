@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Tag.scss';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type TagOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,8 +17,8 @@ export type TagOwnProps = {
   children: React.ReactNode;
 };
 
-export type TagProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<TagOwnProps, E>;
+export type TagProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, TagOwnProps>;
 
 const defaultElement = 'div';
 

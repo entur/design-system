@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type LabelOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,8 +17,8 @@ export type LabelOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type LabelProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<LabelOwnProps, E>;
+export type LabelProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, LabelOwnProps>;
 
 const defaultElement = 'label';
 

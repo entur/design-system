@@ -22820,11 +22820,6 @@ react-onclickoutside@^6.12.0:
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.12.1.tgz#92dddd28f55e483a1838c5c2930e051168c1e96b"
   integrity sha512-a5Q7CkWznBRUWPmocCvE8b6lEYw1s6+opp/60dCunhO+G6E4tDTO2Sd2jKE+leEnnrLAE2Wj5DlDHNqj5wPv1Q==
 
-react-polymorphic-types@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-polymorphic-types/-/react-polymorphic-types-1.1.0.tgz#5d7062e2991d12187c67a3e8001492c5c1b39018"
-  integrity sha512-RMHYMdiukpyNFeiWEay10e4kiwIlk1VSiIfvVzrimSJ9KVg9B2iNsd6lw2QPG31S2335YuAPnWPalE2w2eh64w==
-
 react-popper@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-2.2.5.tgz#1214ef3cec86330a171671a4fbcbeeb65ee58e96"

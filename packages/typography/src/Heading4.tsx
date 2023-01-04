@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseHeading } from './BaseHeading';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type Heading4OwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,7 +18,7 @@ export type Heading4OwnProps = {
 };
 
 export type Heading4Props<T extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<Heading4OwnProps, T>;
+  PolymorphicComponentProps<T, Heading4OwnProps>;
 
 const defaultElement = 'h4';
 export const Heading4 = <E extends React.ElementType = typeof defaultElement>({

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type EmphasizedTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type EmphasizedTextOwnProps = {
 };
 
 export type EmphasizedTextProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<EmphasizedTextOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, EmphasizedTextOwnProps>;
 
 const defaultElement = 'em';
 

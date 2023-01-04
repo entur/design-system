@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
 import './MediaCard.scss';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type MediaCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager bunnen (under media) av MediaCard
@@ -30,8 +30,8 @@ export type MediaCardOwnProps = {
 };
 
 export type MediaCardProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<MediaCardOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, MediaCardOwnProps>;
 
 const defaultElement = 'a';
 

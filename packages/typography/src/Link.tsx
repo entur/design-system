@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type LinkOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -17,8 +17,8 @@ export type LinkOwnProps = {
   margin?: 'top' | 'bottom' | 'both' | 'none';
 };
 
-export type LinkProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<LinkOwnProps, E>;
+export type LinkProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, LinkOwnProps>;
 
 const defaultElement = 'a';
 

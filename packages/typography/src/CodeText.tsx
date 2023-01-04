@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type CodeTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -13,8 +13,8 @@ export type CodeTextOwnProps = {
   children: React.ReactNode;
 };
 
-export type CodeTextProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<CodeTextOwnProps, E>;
+export type CodeTextProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, CodeTextOwnProps>;
 
 const defaultElement = 'code';
 

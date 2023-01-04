@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type PreformattedTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -13,8 +13,8 @@ export type PreformattedTextOwnProps = {
   children: React.ReactNode;
 };
 
-export type PreformattedTextProps<E extends React.ElementType> =
-  PolymorphicPropsWithoutRef<PreformattedTextOwnProps, E>;
+export type PreformattedTextProps<T extends React.ElementType> =
+  PolymorphicComponentProps<T, PreformattedTextOwnProps>;
 
 const defaultElement = 'pre';
 

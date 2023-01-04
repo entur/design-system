@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseGrid } from './BaseGrid';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 import './Grid.scss';
 
 export type GridContainerOwnProps = {
@@ -35,8 +35,8 @@ export type GridContainerOwnProps = {
 };
 
 export type GridContainerProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<GridContainerOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, GridContainerOwnProps>;
 
 const defaultElement = 'div';
 

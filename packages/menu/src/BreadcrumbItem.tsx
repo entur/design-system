@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { RightArrowIcon } from '@entur/icons';
 import './BreadcrumbNavigation.scss';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type BreadcrumbItemOwnProps = {
   /** Komponenten som rendres
@@ -18,8 +18,8 @@ export type BreadcrumbItemOwnProps = {
 };
 
 export type BreadcrumbItemProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<BreadcrumbItemOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, BreadcrumbItemOwnProps>;
 
 const defaultElement = 'a';
 

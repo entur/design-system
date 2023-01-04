@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type StrongTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -18,8 +18,8 @@ export type StrongTextOwnProps = {
 };
 
 export type StrongTextProps<
-  E extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<StrongTextOwnProps, E>;
+  T extends React.ElementType = typeof defaultElement,
+> = PolymorphicComponentProps<T, StrongTextOwnProps>;
 
 const defaultElement = 'strong';
 

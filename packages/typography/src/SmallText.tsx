@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
 export type SmallTextOwnProps = {
   /** HTML-elementet eller React-komponenten som rendres
@@ -19,7 +19,7 @@ export type SmallTextOwnProps = {
 
 export type SmallTextProps<
   T extends React.ElementType = typeof defaultElement,
-> = PolymorphicPropsWithoutRef<SmallTextOwnProps, T>;
+> = PolymorphicComponentProps<T, SmallTextOwnProps>;
 const defaultElement = 'span';
 
 export const SmallText = <E extends React.ElementType = typeof defaultElement>({

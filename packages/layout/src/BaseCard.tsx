@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { PolymorphicPropsWithoutRef } from '@entur/utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 import './BaseCard.scss';
 
 export type BaseCardOwnProps = {
@@ -13,8 +13,8 @@ export type BaseCardOwnProps = {
   children?: React.ReactNode;
 };
 
-export type BaseCardProps<E extends React.ElementType = typeof defaultElement> =
-  PolymorphicPropsWithoutRef<BaseCardOwnProps, E>;
+export type BaseCardProps<T extends React.ElementType = typeof defaultElement> =
+  PolymorphicComponentProps<T, BaseCardOwnProps>;
 
 const defaultElement = 'div';
 
