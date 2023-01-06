@@ -19,7 +19,7 @@
   "scripts": {
     "start": "dts watch --noClean",
     "build": "dts build && cp src/*.scss dist",
-    "test": "dts test --env=jsdom",
+    "test": "dts test",
     "lint": "dts lint"
   },
   "peerDependencies": {

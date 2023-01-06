@@ -19,7 +19,7 @@
   "scripts": {
     "build": "dts build",
     "start": "dts watch --noClean",
-    "test": "dts test --env=jsdom",
+    "test": "dts test",
     "lint": "dts lint"
   },
   "dependencies": {

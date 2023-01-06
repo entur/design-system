@@ -19,8 +19,8 @@
     "start:documentation": "lerna exec --scope @entur/documentation -- yarn start",
     "start:code-playground": "lerna exec --scope @entur/code-playground -- yarn start",
     "cleanStart": "lerna exec --scope @entur/documentation -- yarn cleanStart",
-    "test": "dts test --env=jest-environment-jsdom packages",
-    "test:watch": "dts test --env=jest-environment-jsdom --watch",
+    "test": "dts test packages",
+    "test:watch": "dts test --watch",
     "test:single-run": "cross-env CI=true yarn test",
     "predeploy-docs": "yarn build:all",
     "deploy-docs": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
@@ -93,15 +93,6 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.ts"
-    ],
-    "globalSetup": "./global-setup.js"
   },
   "volta": {
     "node": "14.17.0",

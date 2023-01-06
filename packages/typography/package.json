@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "dts build && cp -r fonts dist/fonts",
-    "test": "dts test --env=jsdom",
+    "test": "dts test",
     "lint": "dts lint",
     "start": "dts watch --noClean"
   },
