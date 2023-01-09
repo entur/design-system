@@ -26,13 +26,11 @@
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
-  "devDependencies": {
-    "@entur/tokens": "^3.4.3"
-  },
   "dependencies": {
     "@entur/button": "^2.10.7",
     "@entur/icons": "^5.4.0",
     "@entur/layout": "^2.1.14",
+    "@entur/tokens": "^3.4.3",
     "@entur/utils": "^0.4.8",
     "@popperjs/core": "^2.10.1",
     "react-popper": "^2.2.5"

@@ -15,7 +15,7 @@ import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
 import { Contrast, useContrast } from '@entur/layout';
 import classNames from 'classnames';
-import type * as Polymorphic from '@reach/utils/polymorphic';
+import type * as Polymorphic from '@reach/polymorphic';
 import './OverflowMenu.scss';
 
 export type OverflowMenuProps = {

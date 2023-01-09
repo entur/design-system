@@ -32,6 +32,7 @@
     "@entur/typography": "^1.7.3",
     "@entur/utils": "^0.4.8",
     "@reach/menu-button": "^0.16.1",
+    "@reach/polymorphic": "0.18.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {

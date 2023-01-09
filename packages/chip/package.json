@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@entur/form": "^5.4.12",
+    "@entur/icons": "5.4.0",
+    "@entur/loader": "0.4.15",
     "@entur/tokens": "^3.4.3",
     "@entur/utils": "^0.4.8",
     "classnames": "^2.3.1"

@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@entur/a11y": "^0.2.52",
+    "@entur/button": "2.10.7",
     "@entur/chip": "^0.6.15",
     "@entur/form": "^5.4.12",
     "@entur/icons": "^5.4.0",
