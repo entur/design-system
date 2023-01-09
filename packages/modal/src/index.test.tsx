@@ -1,11 +1,10 @@
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
 import { render, fireEvent } from '@testing-library/react';
 import { Modal } from '.';
 
 // Needed to silence Reach's styling warning
 jest.mock('@reach/utils', () => ({
-  ...jest.requireActual('@reach/utils'),
+  ...(jest.requireActual('@reach/utils') as object),
   checkStyles: jest.fn(),
 }));
 
