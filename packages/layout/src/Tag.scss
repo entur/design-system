@@ -16,7 +16,7 @@
   }
   &--compact {
     font-size: $font-sizes-small;
-    padding: $space-extra-small2/2 $space-extra-small;
+    padding: calc(#{$space-extra-small2} / 2) $space-extra-small;
     line-height: $line-heights-medium;
     height: 1.5rem;
     &.eds-tag--leading-icon .eds-icon {
