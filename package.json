@@ -88,7 +88,8 @@
   },
   "resolutions": {
     "babel-plugin-remove-graphql-queries": "2.9.14",
-    "gatsby-plugin-mdx": "1.2.4"
+    "gatsby-plugin-mdx": "1.2.4",
+    "@types/react": "16.9.56"
   },
   "config": {
     "commitizen": {
