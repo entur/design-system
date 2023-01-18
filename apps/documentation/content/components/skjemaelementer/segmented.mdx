@@ -9,6 +9,7 @@ tags: radio, checkbox
 ---
 
 import { Props } from 'docz';
+import { now } from '@internationalized/date';
 import {
   SegmentedControl,
   MultipleSegmentedControl,
@@ -24,6 +25,7 @@ import { ImportStatement } from '~/components/ImportStatement';
 import { CodeText } from '@entur/typography';
 import { BoldIcon, ItalicIcon, UnderlineIcon } from '@entur/icons';
 import PageHeader from '~/components/PageHeader';
+import { CodeBlock } from '~/components/CodeBlock';
 
 <PageHeader />
 
@@ -112,16 +114,15 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
 
 <Playground style={{ width: '40%' }}>
   {() => {
-    const [homeTown, setHomeTown] = React.useState(null);
-    const [date, setDate] = React.useState(Date.now());
-    const [time, setTime] = React.useState(Date.now());
+    const [type, setType] = React.useState(null);
+    const [dateTime, setDateTime] = React.useState(now('Europe/Oslo'));
     return (
       <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
         <GridItem small={12}>
           <SegmentedControl
             label="Velg reisetidspunkt"
-            onChange={selectedValue => setHomeTown(selectedValue)}
-            selectedValue={homeTown}
+            onChange={selectedValue => setType(selectedValue)}
+            selectedValue={type}
           >
             <SegmentedChoice value="nå">Nå</SegmentedChoice>
             <SegmentedChoice value="avreise">Avreise</SegmentedChoice>
@@ -131,16 +132,15 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
         <GridItem small={12} large={8}>
           <DatePicker
             label="Reisedato"
-            selectedDate={date}
-            onChange={date => setDate(date)}
+            selectedDate={dateTime}
+            onChange={date => setDateTime(date)}
           />
         </GridItem>
         <GridItem small={12} large={4}>
           <TimePicker
             label="Klokkeslett"
-            placeholder="Tid"
-            selectedTime={time}
-            onChange={time => setTime(time)}
+            selectedTime={dateTime}
+            onChange={time => setDateTime(time)}
           />
         </GridItem>
       </GridContainer>
@@ -166,7 +166,7 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
           </SegmentedControl>
         </GridItem>
         <GridItem small={12}>
-          <TextField placeholder="Pris" />
+          <TextField label="Pris" />
         </GridItem>
       </GridContainer>
     );
