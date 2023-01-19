@@ -37,9 +37,9 @@ export type DateFieldProps = {
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone */
-  minValue?: CalendarDate;
+  minDate?: CalendarDate;
   /** Seneste gyldige datovalg. (se minValue) */
-  maxValue?: CalendarDate;
+  maxDate?: CalendarDate;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant */
@@ -84,6 +84,8 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       validationVariant = 'error',
       validationFeedback = 'Ugyldig dato',
       labelTooltip,
+      minDate: minValue,
+      maxDate: maxValue,
       style,
       className,
       labelProps: parentLabelProps,
@@ -101,6 +103,8 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       value: value === null ? undefined : value,
       hideTimeZone: !showTimeZone,
       granularity: showTime ? 'minute' : granularity,
+      minValue,
+      maxValue,
     });
 
     const dateFieldRef = useRef(null);
