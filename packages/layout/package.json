@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "2.1.14",
+  "version": "2.1.15",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/layout.esm.js",
@@ -27,12 +27,12 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/icons": "5.4.0",
-    "@entur/typography": "^1.7.3",
-    "@entur/utils": "^0.4.8",
+    "@entur/icons": "^5.4.1",
+    "@entur/typography": "^1.7.4",
+    "@entur/utils": "^0.4.9",
     "classnames": "^2.3.1"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.3"
+    "@entur/tokens": "^3.4.4"
   }
 }

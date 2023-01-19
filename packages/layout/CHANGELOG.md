@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.15](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.14...@entur/layout@2.1.15) (2023-01-19)
+
+### Performance Improvements
+
+- **layout:** remove usage of react-polymorphic-types in favor of own implementation in layout packa ([b7ada6d](https://bitbucket.org/enturas/design-system/commits/b7ada6d7b9776cce86dea51f58c4b7ea0300451b))
+- **packages:** remove all referenves to react-polymorphic-types npm-package ([e47a304](https://bitbucket.org/enturas/design-system/commits/e47a304d87eb77adae5dd002e89f03026c7eadce))
+
 ## [2.1.14](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.11...@entur/layout@2.1.14) (2022-12-09)
 
 **Note:** Version bump only for package @entur/layout

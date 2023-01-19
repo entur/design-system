@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.18](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.17...@entur/grid@0.3.18) (2023-01-19)
+
+### Performance Improvements
+
+- **packages:** remove all referenves to react-polymorphic-types npm-package ([e47a304](https://bitbucket.org/enturas/design-system/commits/e47a304d87eb77adae5dd002e89f03026c7eadce))
+
 ## [0.3.17](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.14...@entur/grid@0.3.17) (2022-12-09)
 
 **Note:** Version bump only for package @entur/grid

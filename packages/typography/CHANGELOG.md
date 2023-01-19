@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.3...@entur/typography@1.7.4) (2023-01-19)
+
+### Performance Improvements
+
+- **packages:** remove all referenves to react-polymorphic-types npm-package ([e47a304](https://bitbucket.org/enturas/design-system/commits/e47a304d87eb77adae5dd002e89f03026c7eadce))
+
 ## [1.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.0...@entur/typography@1.7.3) (2022-12-09)
 
 **Note:** Version bump only for package @entur/typography

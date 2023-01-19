@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.8](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.7...@entur/button@2.10.8) (2023-01-19)
+
+### Performance Improvements
+
+- **button:** remove usage of react-polymorphic-types in favor of own implementation in button packa ([d15d852](https://bitbucket.org/enturas/design-system/commits/d15d85245d7f7273f0700fafcef3201d4fa2e0ff))
+
 ## [2.10.7](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.4...@entur/button@2.10.7) (2022-12-09)
 
 **Note:** Version bump only for package @entur/button

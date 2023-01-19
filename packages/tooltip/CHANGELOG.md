@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.24...@entur/tooltip@2.6.0) (2023-01-19)
+
+### Features
+
+- **popover:** add possibility to provide own state to popover component for semi-controlled functio ([8546735](https://bitbucket.org/enturas/design-system/commits/854673585c6d3d0bca09950643fa8db7f33dc148))
+
 ## [2.5.24](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.5.21...@entur/tooltip@2.5.24) (2022-12-09)
 
 **Note:** Version bump only for package @entur/tooltip

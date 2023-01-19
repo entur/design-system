@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.8...@entur/utils@0.4.9) (2023-01-19)
+
+### Performance Improvements
+
+- **button:** remove usage of react-polymorphic-types in favor of own implementation in button packa ([d15d852](https://bitbucket.org/enturas/design-system/commits/d15d85245d7f7273f0700fafcef3201d4fa2e0ff))
+- **layout:** remove usage of react-polymorphic-types in favor of own implementation in layout packa ([b7ada6d](https://bitbucket.org/enturas/design-system/commits/b7ada6d7b9776cce86dea51f58c4b7ea0300451b))
+- **packages:** remove all referenves to react-polymorphic-types npm-package ([e47a304](https://bitbucket.org/enturas/design-system/commits/e47a304d87eb77adae5dd002e89f03026c7eadce))
+
 ## [0.4.8](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.4.5...@entur/utils@0.4.8) (2022-12-09)
 
 ### Bug Fixes
