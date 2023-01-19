@@ -34,6 +34,16 @@ const usePopoverContext = () => {
   return context;
 };
 
+const useCustomState = (
+  state?: boolean,
+  setState?: React.Dispatch<React.SetStateAction<boolean>>,
+): [boolean, React.Dispatch<React.SetStateAction<boolean>>, boolean] => {
+  const [internalState, setInternalState] = React.useState<boolean>(false);
+  const controlled = state !== undefined && setState !== undefined;
+  if (controlled) return [state, setState, controlled];
+  return [internalState, setInternalState, controlled];
+};
+
 export type PopoverProps = {
   /** Innholdet i Popover */
   children: React.ReactNode;
@@ -41,13 +51,22 @@ export type PopoverProps = {
    * @default "bottom-start"
    */
   placement?: Placement;
+  /** Hvis du ønsker å styre state selv kan du sende inn state her */
+  showPopover?: boolean;
+  /** Hvis du ønsker å styre state selv kan du sende inn setState her */
+  setShowPopover?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
   children,
   placement = 'bottom-start',
+  showPopover: controlledState,
+  setShowPopover: setControlledState,
 }) => {
-  const [showPopover, setShowPopover] = React.useState(false);
+  const [showPopover, setShowPopover, controlled] = useCustomState(
+    controlledState,
+    setControlledState,
+  );
   const triggerElement = React.useRef(null);
   const contentElement = React.useRef(null);
 
@@ -76,16 +95,18 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const triggerProps = React.useCallback(() => {
     const buttonProps = {
-      onClick: (e: React.MouseEvent) => {
-        e.preventDefault();
-        setShowPopover(prev => !prev);
-      },
       'aria-haspopup': 'dialog',
       'aria-expanded': showPopover,
       ref: triggerElement,
     };
-    return buttonProps;
-  }, [triggerElement, showPopover]);
+    const buttonOnClick = {
+      onClick: (e: React.MouseEvent) => {
+        e.preventDefault();
+        setShowPopover(prev => !prev);
+      },
+    };
+    return controlled ? buttonProps : { ...buttonProps, ...buttonOnClick };
+  }, [triggerElement, showPopover, setShowPopover, controlled]);
 
   useOnClickOutside(contentElement, triggerElement, () =>
     setShowPopover(false),
@@ -127,7 +148,7 @@ export const Popover: React.FC<PopoverProps> = ({
       },
     };
     return contentProps;
-  }, [contentElement, showPopover]);
+  }, [contentElement, showPopover, setShowPopover]);
   const contextValue: PopoverContextProps = {
     showPopover,
     triggerElement,
