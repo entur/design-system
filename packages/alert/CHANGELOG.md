@@ -37,28 +37,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - add children to toast provider ([162766b](https://bitbucket.org/enturas/design-system/commits/162766bb46e9798e9da267e927b62339feb310f2))
 
-## [0.11.9-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-RC.1...@entur/alert@0.11.9-RC.2) (2022-11-22)
-
-**Note:** Version bump only for package @entur/alert
-
-## [0.11.9-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-RC.0...@entur/alert@0.11.9-RC.1) (2022-11-21)
-
-**Note:** Version bump only for package @entur/alert
-
-## [0.11.9-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-alpha.1...@entur/alert@0.11.9-RC.0) (2022-11-21)
-
-**Note:** Version bump only for package @entur/alert
-
-## [0.11.9-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.9-alpha.0...@entur/alert@0.11.9-alpha.1) (2022-10-26)
-
-**Note:** Version bump only for package @entur/alert
-
-## [0.11.9-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.8...@entur/alert@0.11.9-alpha.0) (2022-10-20)
-
-### Bug Fixes
-
-- add children to toast provider ([162766b](https://bitbucket.org/enturas/design-system/commits/162766bb46e9798e9da267e927b62339feb310f2))
-
 ## [0.11.8](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.7...@entur/alert@0.11.8) (2022-10-12)
 
 **Note:** Version bump only for package @entur/alert

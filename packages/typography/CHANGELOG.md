@@ -18,23 +18,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 **Note:** Version bump only for package @entur/typography
 
 ## [1.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.0...@entur/typography@1.7.1) (2022-10-31)
-## [1.7.1-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.1-RC.1...@entur/typography@1.7.1-RC.2) (2022-11-22)
-
-**Note:** Version bump only for package @entur/typography
-
-## [1.7.1-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.1-RC.0...@entur/typography@1.7.1-RC.1) (2022-11-21)
-
-**Note:** Version bump only for package @entur/typography
-
-## [1.7.1-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.1-alpha.1...@entur/typography@1.7.1-RC.0) (2022-11-21)
-
-**Note:** Version bump only for package @entur/typography
-
-## [1.7.1-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.1-alpha.0...@entur/typography@1.7.1-alpha.1) (2022-10-26)
-
-**Note:** Version bump only for package @entur/typography
-
-## [1.7.1-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.0...@entur/typography@1.7.1-alpha.0) (2022-10-20)
 
 **Note:** Version bump only for package @entur/typography
 

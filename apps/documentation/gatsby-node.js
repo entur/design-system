@@ -7,14 +7,16 @@ const fetch = require(`node-fetch`);
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 
-exports.onCreateWebpackConfig = args => {
-  args.actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '~': path.resolve(__dirname, '../src/'),
-      },
-    },
-  });
+exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+  const oldConfig = getConfig();
+  const editedConfig = getConfig();
+
+  editedConfig.resolve.alias = {
+    ...editedConfig.resolve.alias,
+    '~': path.resolve(__dirname, '../src/'),
+  };
+
+  actions.replaceWebpackConfig({ ...oldConfig, ...editedConfig });
 };
 
 const packages = [

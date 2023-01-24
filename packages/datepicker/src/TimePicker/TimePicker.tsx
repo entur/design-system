@@ -5,10 +5,7 @@ import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { useTimeFieldState } from '@react-stately/datepicker';
 import { getLocalTimeZone, now } from '@internationalized/date';
 
-import type {
-  TimePickerProps as ReactAriaTimePickerProps,
-  TimeValue,
-} from '@react-types/datepicker';
+import type { TimeValue, AriaTimeFieldProps } from '@react-types/datepicker';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 import { useRandomId, mergeRefs } from '@entur/utils';
@@ -55,7 +52,7 @@ export type TimePickerProps = {
   className?: string;
   style?: React.CSSProperties;
 } & Omit<
-  ReactAriaTimePickerProps<TimeValue>,
+  AriaTimeFieldProps<TimeValue>,
   'onChange' | 'label' | 'hideTimeZone' | 'placeholder'
 >;
 

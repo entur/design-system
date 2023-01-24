@@ -11,6 +11,10 @@
     "deploy-docs:preview": "firebase hosting:channel:deploy",
     "cleanStart": "rm -rf .docz && yarn start"
   },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",
     "@emotion/core": "10.0.28",
@@ -19,8 +23,8 @@
     "copy-text-to-clipboard": "^3.0.1",
     "docz": "2.4.0",
     "framer-motion": "^4.1.17",
-    "gatsby-plugin-sass": "^2.3.12",
-    "gatsby-transformer-remark": "^2.8.28",
+    "gatsby-plugin-sass": "2.3.12",
+    "gatsby-transformer-remark": "2.8.28",
     "hex-rgb": "^5.0.0",
     "markdown-to-jsx": "^6.11.4",
     "match-sorter": "^6.3.0",
@@ -38,10 +42,6 @@
     "firebase-tools": "^10.0.0",
     "tslib": "^2.3.1",
     "typescript": "^4.2.4"
-  },
-  "peerDependencies": {
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
   },
   "volta": {
     "node": "14.17.0",

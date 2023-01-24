@@ -13,11 +13,7 @@ import {
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
-import type { CalendarDate } from '@internationalized/date';
-import type {
-  DateValue,
-  SpectrumDatePickerProps,
-} from '@react-types/datepicker';
+import type { DateValue, AriaDatePickerProps } from '@react-types/datepicker';
 
 import {
   ConditionalWrapper,
@@ -58,12 +54,12 @@ export type DatePickerProps = {
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
-  minDate?: CalendarDate;
+  minDate?: DateValue;
   /** Seneste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone
    *
    * OBS: Hvis du bruker dato med tid vil det være til, men ikke med denne datoen */
-  maxDate?: CalendarDate;
+  maxDate?: DateValue;
   /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
    * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
   isDateUnavailable?: (date: DateValue) => boolean;
@@ -97,7 +93,7 @@ export type DatePickerProps = {
   className?: string;
   style?: React.CSSProperties;
 } & Omit<
-  SpectrumDatePickerProps<DateValue>,
+  AriaDatePickerProps<DateValue>,
   | 'value'
   | 'onChange'
   | 'label'

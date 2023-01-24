@@ -9,7 +9,6 @@ import type {
   SpectrumDateFieldProps,
   DateValue,
 } from '@react-types/datepicker';
-import type { CalendarDate } from '@internationalized/date';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
@@ -37,9 +36,9 @@ export type DateFieldProps = {
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone */
-  minDate?: CalendarDate;
+  minDate?: DateValue;
   /** Seneste gyldige datovalg. (se minValue) */
-  maxDate?: CalendarDate;
+  maxDate?: DateValue;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant */
@@ -99,7 +98,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
     const state = useDateFieldState({
       ...rest,
       locale: customLocale ?? locale,
-      createCalendar: createCalendar,
+      createCalendar,
       value: value === null ? undefined : value,
       hideTimeZone: !showTimeZone,
       granularity: showTime ? 'minute' : granularity,

@@ -7,7 +7,7 @@ import {
 import { nativeDateToTimeOrDateValue, timeOrDateValueToNativeDate } from '.';
 
 // Locale is added on all tests to ensure a static testing basis
-// Time zone is set globally for Jest as UTC in ~/global-setup.js
+// Time zone is set globally for Jest as UTC in ~/jest.global.setup.js
 
 test('Timezones should always be UTC', () => {
   expect(new Date().getTimezoneOffset()).toBe(0);
