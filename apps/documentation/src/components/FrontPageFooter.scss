@@ -26,8 +26,6 @@
       @include for-desktop {
         padding-top: 4.5rem;
         padding-bottom: 2.5rem;
-        padding-left: 0;
-        padding-right: 0;
       }
       .eds-grid__container {
         gap: 2rem;
@@ -36,6 +34,14 @@
     }
     &__link {
       margin-bottom: 1rem;
+    }
+    &__entur-banner {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1328px;
+      margin: 0 auto;
+      border-top: 1px solid $colors-greys-grey70;
+      padding: 1rem 1.5rem;
     }
   }
 }
