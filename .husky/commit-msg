@@ -1,7 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# NOTE: $HUSKY_GIT_PARAMS is no longer available
-# See https://typicode.github.io/husky/#/?id=husky_git_params-ie-commitlint-
-
-yarn commitlint --edit $2
+# If we are on the master branch we lint the commit
+# If it does not follow conventional-commits standards, it will be aborted with a warning
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$branch" = "master" ]; then
+    yarn commitlint --edit $2
+fi

@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Before a commit, the staged code is ran through prettier and restaged
 yarn pretty-quick --staged

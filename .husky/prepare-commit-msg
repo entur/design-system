@@ -1,4 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-exec < /dev/tty && yarn cz commit --hook || true
+# If we are on the master branch, commitizen is ran to ensure proper commits
+# On other branches, commitizen is available trough 'yarn gc:format'
+branch="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$branch" = "master" ]; then
+    exec < /dev/tty && yarn cz commit --hook || true
+fi

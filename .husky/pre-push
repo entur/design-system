@@ -1,5 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint
-yarn test:single-run
+# This hook lints all commits made on the current branch
+# If at least on of them does not adhere to conventional-commits standard, it will abort the push
+branch="$(git rev-parse --abbrev-ref HEAD)"
+commitCountOnBranch=$(git rev-list --count $branch --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$branch"))
+yarn commitlint --from=HEAD~$commitCountOnBranch --to=HEAD
+
+# If we are on the master branch, the code needs to pass linting and tests to be pushed
+if [ "$branch" = "master" ]; then
+    yarn lint
+    yarn test
+fi

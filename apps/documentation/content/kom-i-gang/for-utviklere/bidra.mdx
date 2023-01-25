@@ -165,9 +165,13 @@ Du kan tweake på komponenten så mye du vil i en Playground, eller bare rendre 
 Mens vi snakker om dokumentasjon - trenger du å dokumentere endringen din?
 Neste steg er i så fall å legge til eller endre det som skal til på dokumentasjonssiden. Dokumentér heller for mye enn for lite!
 
-Til slutt committer du endringen din. Vi bruker et verktøy som heter `commitizen` for å standardisere commit-meldinger.
+Til slutt committer du endringen din med `git commit …` eller `yarn gc:format`. Vi bruker et verktøy som heter `commitizen` for å standardisere commit-meldinger.
+`commitizen` aktiveres automatisk hvis du er i `master`-branch-en og kan ellers aktiveres med `yarn gc:format` («gc» står for git commit).
 Følg brukergrensesnittet så godt du kan, så burde du komme ganske godt i mål.
 Når den spør om "scope", skriv opp navne(t|ne) på komponenten(e) du har endret, eller bare hopp over.
+
+Ved push av endrigene dine vil en commit-linter sjekke om du har fulgt `conventional-commits`-stilen. Ved bruk av `yarn gc:format` sikrer du at
+du alltid følger denne konvensjonen.
 
 ### Playroom
 
