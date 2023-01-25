@@ -4,5 +4,6 @@ export const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
     mobile: 0,
     desktop: breakpoints.large,
+    wideDesktop: breakpoints.extraLarge,
   },
 });
