@@ -33,10 +33,14 @@ export const CalendarGrid = ({
   const weeksArray = Array.from(Array(weeksInMonth).keys());
 
   const weekDaysMapped = () => {
-    if (locale.toLowerCase() === 'no-no' || locale.toLowerCase() === 'no')
+    if (locale.toLowerCase().includes('no'))
       return ['ma', 'ti', 'on', 'to', 'fr', 'lø', 'sø'];
-    if (weekDays.toString() === 'M,T,W,T,F,S,S')
-      return ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+    if (locale.toLowerCase().includes('en')) {
+      if (weekDays[0] === 'M')
+        return ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+      if (weekDays[0] === 'S')
+        return ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    }
     return weekDays.map(day => day.toLowerCase());
   };
 
