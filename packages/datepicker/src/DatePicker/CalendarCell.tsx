@@ -57,6 +57,11 @@ export const CalendarCell = ({
           buttonProps.onClick && buttonProps.onClick(e);
           isSelected && onSelectedCellClick();
         }}
+        onKeyDown={e => {
+          buttonProps.onKeyDown && buttonProps.onKeyDown(e);
+          if (e.key === 'Enter' || e.key === ' ')
+            isSelected && onSelectedCellClick();
+        }}
       >
         {formattedDate}
       </div>
