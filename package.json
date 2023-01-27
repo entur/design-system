@@ -29,8 +29,8 @@
     "new-package": "./bin/new-package.js",
     "superClean": "rm -rf node_modules apps/documentation/.docz apps/*/node_modules apps/*/dist packages/*/dist packages/*/node_modules packages/*/.rts2*",
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
-    "lerna:publish": "lerna publish --conventional-commits",
-    "lerna:prerelease": "lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
+    "lerna:publish": "HUSKY=0 lerna publish --conventional-commits",
+    "lerna:prerelease": "HUSKY=0 lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
     "prepare": "husky install"
   },
