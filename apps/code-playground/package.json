@@ -1,6 +1,6 @@
 {
   "name": "@entur/code-playground",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -8,9 +8,9 @@
     "build": "playroom build"
   },
   "dependencies": {
-    "playroom": "0.24.0",
+    "babel-loader": "8.2.2",
     "file-loader": "^1.1.11",
-    "babel-loader": "8.2.2"
+    "playroom": "0.24.0"
   },
   "devDependencies": {
     "tslib": "^2.3.1",
