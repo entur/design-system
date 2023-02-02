@@ -20,7 +20,7 @@
     "start": "dts watch --noClean",
     "build": "dts build",
     "test": "dts test",
-    "lint": "dts lint"
+    "lint": "dts lint src"
   },
   "dependencies": {
     "@entur/tokens": "^3.4.4",

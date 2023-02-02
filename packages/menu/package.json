@@ -20,7 +20,7 @@
     "build": "dts build",
     "start": "dts watch --noClean",
     "test": "dts test",
-    "lint": "dts lint"
+    "lint": "dts lint src"
   },
   "dependencies": {
     "@entur/a11y": "^0.2.54",

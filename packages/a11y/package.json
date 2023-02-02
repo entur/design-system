@@ -19,7 +19,7 @@
   "scripts": {
     "start": "dts watch --noClean",
     "build": "dts build",
-    "lint": "dts lint"
+    "lint": "dts lint src"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

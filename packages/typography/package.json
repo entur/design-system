@@ -19,7 +19,7 @@
   "scripts": {
     "build": "dts build && cp -r fonts dist/fonts",
     "test": "dts test",
-    "lint": "dts lint",
+    "lint": "dts lint src",
     "start": "dts watch --noClean"
   },
   "peerDependencies": {

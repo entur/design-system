@@ -20,7 +20,7 @@
     "start": "dts watch --noClean",
     "build": "dts build && cp -r src/pattern dist/pattern",
     "test": "dts test",
-    "lint": "dts lint"
+    "lint": "dts lint src"
   },
   "dependencies": {
     "@entur/icons": "^5.4.2",
