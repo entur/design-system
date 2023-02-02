@@ -67,7 +67,7 @@ export const colors = {
   },
   transport: {
     default: {
-      metro: '#de8108',
+      metro: '#bf5826',
       bus: '#c5044e',
       plane: '#800664',
       helicopter: '#800664',
@@ -78,7 +78,7 @@ export const colors = {
       bicycle: '#181c56',
       walk: '#181c56',
       train: '#00367f',
-      ferry: '#0497bc',
+      ferry: '#0c6693',
       carferry: '#0497bc',
       mobility: '#388f76',
     },
