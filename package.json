@@ -39,10 +39,6 @@
     "apps/*"
   ],
   "dependencies": {
-    "@emotion/core": "10.0.28",
-    "classnames": "^2.3.1",
-    "copy-text-to-clipboard": "^3.0.1",
-    "hex-rgb": "^5.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
@@ -56,8 +52,8 @@
     "@types/jest": "^27.4.0",
     "@types/jest-axe": "3.5.5",
     "@testing-library/user-event": "14.4.3",
-    "@types/react": "^16.9.56",
-    "@types/react-dom": "^16.9.0",
+    "@types/react": "16.9.56",
+    "@types/react-dom": "16.9.5",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "babel-jest": "^27.4.6",
@@ -91,7 +87,7 @@
     "babel-plugin-remove-graphql-queries": "2.9.14",
     "gatsby-plugin-mdx": "1.2.4",
     "@types/react": "16.9.56",
-    "@types/react-dom": "^16.9.5"
+    "@types/react-dom": "16.9.5"
   },
   "config": {
     "commitizen": {

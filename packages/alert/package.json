@@ -32,7 +32,7 @@
     "@entur/typography": "^1.7.5",
     "@entur/utils": "^0.5.0",
     "classnames": "^2.3.1",
-    "copy-text-to-clipboard": "2.2"
+    "copy-text-to-clipboard": "^2.2"
   },
   "devDependencies": {
     "@entur/tokens": "^3.4.4"
