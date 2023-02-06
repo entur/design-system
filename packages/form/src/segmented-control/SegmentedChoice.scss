@@ -1,37 +1,58 @@
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/color-utils.scss';
 
+/// Create inset focus
+/// @access public
+/// @param {Color} $color-focus - focus color
+/// @param {Color} $color-bg - background color
+/// @return {Box-shadow}
+@function inset-focus($color-focus, $color-bg) {
+  @return inset 0 0 0 $border-widths-small $color-bg,
+    inset 0 0 0 calc(#{$border-widths-medium} + #{$border-widths-small})
+      $color-focus;
+}
+
 .eds-segmented-choice {
   display: block;
   flex: 1 1 0px;
   .eds-base-segmented {
     --background-color: transparent;
+
     background-color: var(--background-color);
-    border-radius: $border-radiuses-medium;
-    border: $border-widths-small solid transparent;
-    margin: $space-extra-small2;
+    border-radius: $border-widths-large;
     color: inherit;
     cursor: pointer;
     font-size: $font-sizes-medium;
-    line-height: $line-heights-medium;
-    padding: calc(#{$space-extra-small2}/ 2) $space-small;
     height: $space-large;
+    line-height: $line-heights-medium;
+    margin: $space-extra-small2;
+    outline-color: transparent;
+    padding: calc(#{$space-extra-small2}/ 2) $space-small;
     text-align: center;
     user-select: none;
-    .eds-contrast & {
-      border-color: $colors-blues-blue20;
-    }
+
     &--large {
       font-size: $font-sizes-large;
-      line-height: $line-heights-extra-large;
       height: $space-extra-large2;
+      line-height: $line-heights-extra-large;
       padding: $space-extra-small $space-small;
     }
   }
-  &:hover input:not(:checked) + .eds-base-segmented {
-    --background-color: #{$colors-blues-blue80};
-    .eds-contrast & {
-      --background-color: #{$colors-blues-blue30};
+
+  &:hover input {
+    &:not(:checked) + .eds-base-segmented {
+      --background-color: #{$colors-blues-blue80};
+
+      .eds-contrast & {
+        --background-color: #{$colors-blues-blue30};
+      }
+    }
+    &:checked + .eds-base-segmented {
+      --background-color: #{$colors-blues-blue80};
+
+      .eds-contrast & {
+        --background-color: #{$colors-blues-blue70};
+      }
     }
   }
 
@@ -41,28 +62,37 @@
     opacity: 0;
     height: 0;
     width: 0;
+
     &:checked + .eds-base-segmented {
       --background-color: #{$colors-brand-white};
+
       box-shadow: $shadows-box-shadow;
+
       .eds-contrast & {
+        --background-color: #{$colors-brand-white};
+
         box-shadow: $shadows-box-shadow-contrast;
         color: $colors-brand-blue;
-        --background-color: #{$colors-brand-white};
       }
     }
 
-    &:focus + .eds-base-segmented {
-      outline: none;
-      border: $border-widths-small solid $colors-brand-blue;
-      .eds-contrast & {
-        border: $border-widths-small solid $colors-brand-lavender;
+    &:focus {
+      &:not(:checked) + .eds-base-segmented {
+        box-shadow: #{inset-focus($colors-brand-blue, $colors-blues-blue70)};
+
+        .eds-contrast & {
+          box-shadow: #{inset-focus($colors-brand-white, $colors-blues-blue20)};
+        }
       }
-    }
-  }
-  &:hover input:checked + .eds-base-segmented {
-    --background-color: #{$colors-blues-blue80};
-    .eds-contrast & {
-      --background-color: #{$colors-blues-blue70};
+      &:checked + .eds-base-segmented {
+        box-shadow: $shadows-box-shadow,
+          #{inset-focus($colors-brand-blue, $colors-brand-white)};
+
+        .eds-contrast & {
+          box-shadow: $shadows-box-shadow-contrast,
+            #{inset-focus($colors-brand-blue, $colors-brand-white)};
+        }
+      }
     }
   }
 }
