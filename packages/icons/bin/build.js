@@ -3,7 +3,7 @@ const path = require('path');
 const toCase = require('case');
 const svgr = require('@svgr/core').default;
 const { colors } = require('@entur/tokens');
-const sass = require('node-sass');
+const sass = require('sass');
 
 /**
  * Deprecated icons, mapped to their possible replacements.
@@ -111,16 +111,15 @@ function createTypeDeclaration(components) {
   fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
 }
 
-function createStyleFiles() {
+async function createStyleFiles() {
   fs.ensureDirSync('./dist');
   // finally, let's copy over the static assets if you need those directly
-  sass.render({ file: './src/index.scss' }, (err, result) => {
-    if (!err) {
-      fs.outputFileSync('./dist/styles.css', result.css);
-    } else {
-      throw 'Icon-Build Failed';
-    }
-  });
+  try {
+    const result = sass.renderSync({ file: './src/index.scss' });
+    fs.outputFileSync('./dist/styles.css', result.css);
+  } catch {
+    throw 'Icon-Build Failed';
+  }
 }
 
 /** Traverses a directory
