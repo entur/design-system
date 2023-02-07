@@ -129,16 +129,6 @@ const blackRgb = hexRgb(colors.misc.black, { format: 'array' })
 const blue20Rgb = hexRgb(colors.blues.blue20, { format: 'array' })
   .toString()
   .slice(0, -2);
-export const shadows = {
-  focus: `0 0 0 0.125rem ${colors.brand.white}, 0 0 0 0.25rem ${colors.brand.blue}`,
-  focusContrast: `0 0 0 0.125rem ${colors.brand.blue}, 0 0 0 0.25rem ${colors.brand.white}`,
-  cardShadow: `0 0.0625rem 0.1875rem 0 rgba(${blackRgb}, 0.12)`,
-  cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.1)`,
-  cardShadowContrast: `0 0.0625rem 0.1875rem 0 rgba(${blue20Rgb}, 1)`,
-  cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 1)`,
-  boxShadow: `0 0.0625rem 0.1875rem rgba(${blackRgb}, 0.25)`,
-  boxShadowContrast: `0 0.0625rem 0.1875rem rgba(${blue20Rgb}, 1)`,
-};
 
 // Dimensions
 const spaceScale = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96];
@@ -268,19 +258,32 @@ export const borderWidths = {
   },
 };
 
-const borderRadiusScale = [1, 4];
+const borderRadiusScale = [1, 4, 8];
 export const borderRadiuses = {
   default: borderRadiusScale[0],
 
   small: borderRadiusScale[0],
   medium: borderRadiusScale[1],
+  large: borderRadiusScale[2],
 
   rem: {
     default: pxToRem(borderRadiusScale[0]),
 
     small: pxToRem(borderRadiusScale[0]),
     medium: pxToRem(borderRadiusScale[1]),
+    large: pxToRem(borderRadiusScale[2]),
   },
+};
+
+export const shadows = {
+  focus: `0 0 0 0.125rem ${colors.brand.white}, 0 0 0 0.25rem ${colors.brand.blue}`,
+  focusContrast: `0 0 0 0.125rem ${colors.brand.blue}, 0 0 0 0.25rem ${colors.brand.white}`,
+  cardShadow: `0 0.0625rem 0.1875rem 0 rgba(${blackRgb}, 0.12)`,
+  cardShadowHover: `0 0.125rem 1rem 0 rgba(${blackRgb}, 0.1)`,
+  cardShadowContrast: `0 0.0625rem 0.1875rem 0 rgba(${blue20Rgb}, 1)`,
+  cardShadowHoverContrast: `0 0.125rem 1rem 0 rgba(${blue20Rgb}, 1)`,
+  boxShadow: `0 0.0625rem 0.1875rem rgba(${blackRgb}, 0.25)`,
+  boxShadowContrast: `0 0.0625rem 0.1875rem rgba(${blue20Rgb}, 1)`,
 };
 
 // Z-indexes

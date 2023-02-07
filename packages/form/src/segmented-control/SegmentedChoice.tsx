@@ -63,9 +63,7 @@ export const SegmentedChoice = React.forwardRef<
 
     return (
       <label
-        className={classNames('eds-segmented-choice', className, {
-          'eds-segmented-choide--large': size === 'large',
-        })}
+        className={classNames('eds-segmented-choice', className)}
         style={style}
       >
         <input
