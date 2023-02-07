@@ -23,7 +23,6 @@
     "test": "dts test packages",
     "test:watch": "dts test --watch",
     "test:single-run": "cross-env CI=true yarn test",
-    "predeploy-docs": "yarn build:all",
     "deploy-docs": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
     "deploy-docs:preview": "lerna exec --scope @entur/documentation -- yarn deploy-docs:preview",
     "new-package": "./bin/new-package.js",
