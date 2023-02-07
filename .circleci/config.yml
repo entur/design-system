@@ -46,13 +46,17 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - 'project'
+            - 'project/packages/*/dist'
+            - 'project/packages/*/node_modules'
+            - 'project/node_modules'
 
   lint:
     working_directory: ~/project
     docker:
       - image: cimg/node:14.20.0
     steps:
+      - checkout
+
       - attach_workspace:
           at: ~/
 
@@ -65,6 +69,8 @@ jobs:
     docker:
       - image: cimg/node:14.20.0
     steps:
+      - checkout
+
       - attach_workspace:
           at: ~/
 
@@ -78,6 +84,8 @@ jobs:
     docker:
       - image: cimg/node:14.20.0
     steps:
+      - checkout
+
       - attach_workspace:
           at: ~/
 
@@ -101,13 +109,15 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - 'project'
+            - 'project/apps/documentation/.docz'
 
   deploy-documentation-to-preview-channel:
     working_directory: ~/project
     docker:
       - image: cimg/node:14.20.0
     steps:
+      - checkout
+
       - attach_workspace:
           at: ~/
 
@@ -124,6 +134,8 @@ jobs:
     docker:
       - image: cimg/node:14.20.0
     steps:
+      - checkout
+
       - attach_workspace:
           at: ~/
 
@@ -141,24 +153,28 @@ workflows:
     jobs:
       - build-packages
       - lint:
+          filters: *filter-ignore-master
           requires:
             - build-packages
       - test:
+          filters: *filter-ignore-master
           requires:
             - build-packages
       - build-documentation:
           requires:
-            - lint
-            - test
-      - hold:
+            - build-packages
+      - Approve-to-deploy:
+          filters: *filter-ignore-master
           type: approval
           requires:
+            - lint
+            - test
             - build-documentation
       - deploy-documentation-to-preview-channel:
           filters: *filter-ignore-master
           requires:
-            - hold
+            - Approve-to-deploy
       - deploy-documentation-to-production:
           filters: *filter-only-master
           requires:
-            - hold
+            - build-documentation
