@@ -10,10 +10,11 @@ aliases:
     branches:
       ignore:
         - master
+
 version: 2
 jobs:
-  build-test-and-deploy-to-preview:
-    parallelism: 1
+  build-packages:
+    working_directory: ~/project
     resource_class: xlarge
     docker:
       - image: cimg/node:14.20.0
@@ -25,94 +26,155 @@ jobs:
           keys:
             - yarn-v1-{{ checksum "yarn.lock" }}
             - yarn-v1-
-      - restore_cache:
-          name: Restore Docz/Gatsby Cache
-          keys:
-            - v09-docz-cache-{{ .Branch }}
-            - v09-docz-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
       - run:
           name: Install Dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
 
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-v1-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+
       - run:
           name: build packages
           command: yarn build:packages
-      - run:
-          name: linter and test
-          command: yarn test --runInBand && yarn lint
-      - run:
-          name: build documentation
-          command: yarn build:documentation --scripts-prepend-node-path
-      - save_cache:
-          name: Save Docz/Gatsby Cache
-          key: v09-docz-cache-{{ .Branch }}-{{ epoch }}
-          paths:
-            - .docz/.cache
-            - .docz/public
-      - run:
-          name: Save token to a file
-          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
-      - run:
-          name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview $CIRCLE_BRANCH --project=entur-design-system
 
-  build-and-deploy-to-production:
-    parallelism: 1
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - 'project/packages/*/dist'
+            - 'project/packages/*/node_modules'
+            - 'project/node_modules'
+
+  lint:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:14.20.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/
+
+      - run:
+          name: lint code
+          command: yarn lint
+
+  test:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:14.20.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/
+
+      - run:
+          name: test code
+          command: yarn test --runInBand
+
+  build-documentation:
+    working_directory: ~/project
     resource_class: xlarge
     docker:
       - image: cimg/node:14.20.0
     steps:
       - checkout
 
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-v1-{{ checksum "yarn.lock" }}
-            - yarn-v1-
+      - attach_workspace:
+          at: ~/
+
       - restore_cache:
           name: Restore Docz/Gatsby Cache
           keys:
             - v09-docz-cache-{{ .Branch }}
             - v09-docz-cache-
 
-      - add_ssh_keys: *ssh-fingerprint
+      - run:
+          name: build documentation site
+          command: yarn build:documentation --scripts-prepend-node-path
+
+      - save_cache:
+          name: Save Docz/Gatsby Cache
+          key: v09-docz-cache-{{ .Branch }}-{{ epoch }}
+          paths:
+            - apps/documentation/.docz/.cache
+            - apps/documentation/.docz/public
+
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - 'project/apps/documentation/.docz'
+
+  deploy-documentation-to-preview-channel:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:14.20.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/
+
+      - run:
+          name: Save token to a file
+          command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.preview.json
+
+      - run:
+          name: Deploy to preview channel
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview $CIRCLE_BRANCH --project=entur-design-system
+
+  deploy-documentation-to-production:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:14.20.0
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/
 
       - run:
           name: Save token to a file
           command: echo $GOOGLE_APPLICATION_CREDENTIALS > /tmp/serviceaccount.prod.json
 
       - run:
-          name: Install Dependencies
-          command: yarn install --frozen-lockfile
-
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-v1-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run:
           name: Deploy to production
           command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
-      - save_cache:
-          name: Save Docz/Gatsby Cache
-          key: v09-docz-cache-{{ .Branch }}-{{ epoch }}
-          paths:
-            - .docz/.cache
-            - .docz/public
 
 workflows:
   version: 2
-  build-and-deploy:
+  build-test-and-approval-deploy:
     jobs:
-      - build-test-and-deploy-to-preview:
+      - build-packages
+      - lint:
           filters: *filter-ignore-master
-      - build-and-deploy-to-production:
+          requires:
+            - build-packages
+      - test:
+          filters: *filter-ignore-master
+          requires:
+            - build-packages
+      - build-documentation:
+          requires:
+            - build-packages
+      - Approve-to-deploy:
+          filters: *filter-ignore-master
+          type: approval
+          requires:
+            - lint
+            - test
+            - build-documentation
+      - deploy-documentation-to-preview-channel:
+          filters: *filter-ignore-master
+          requires:
+            - Approve-to-deploy
+      - deploy-documentation-to-production:
           filters: *filter-only-master
+          requires:
+            - build-documentation
