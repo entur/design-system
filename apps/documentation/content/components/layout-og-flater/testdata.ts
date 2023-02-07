@@ -1,4 +1,4 @@
-export default [
+const testdata = [
   {
     name: 'Statusrapport Entur',
     date: '01.01.2020',
@@ -612,3 +612,5 @@ export default [
     receiver: 'Entur Ledelse',
   },
 ];
+
+export default testdata;

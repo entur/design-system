@@ -6,7 +6,7 @@ import {
   UKIcon,
 } from '@entur/icons';
 
-export default [
+export const dropdownItems = [
   'Voksen',
   'Barn',
   { label: 'Honnør', value: 'honnor', icon: PrioritySeatSeniorsIcon },

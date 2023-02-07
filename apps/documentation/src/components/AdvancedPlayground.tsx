@@ -236,6 +236,8 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
                   setPlaygroundState={handleChange}
                 />
               );
+            } else {
+              return <></>;
             }
           })}
         </div>

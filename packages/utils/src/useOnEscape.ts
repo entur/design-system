@@ -9,8 +9,9 @@ export const useOnEscape = (
       if (event.key === 'Escape') handler();
     };
 
-    ref.current?.addEventListener('keydown', runIfKeyIsEscape);
+    const currentRef = ref.current;
+    currentRef?.addEventListener('keydown', runIfKeyIsEscape);
 
-    return () => ref.current?.removeEventListener('keydown', runIfKeyIsEscape);
+    return () => currentRef?.removeEventListener('keydown', runIfKeyIsEscape);
   }, [ref, handler]);
 };

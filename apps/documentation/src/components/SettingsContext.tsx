@@ -24,7 +24,7 @@ export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
 export type PackageManager = 'yarn' | 'npm';
 export type Theme = 'light' | 'dark';
-type SettingsContext = {
+type SettingsContextType = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;
   userType: UserType;
@@ -35,7 +35,7 @@ type SettingsContext = {
   setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 };
 
-const SettingsContext = React.createContext<SettingsContext | null>(null);
+const SettingsContext = React.createContext<SettingsContextType | null>(null);
 
 export const SettingsProvider: React.FC = props => {
   const [variableFormat, setVariableFormat] = usePersistedState<VariableFormat>(
@@ -80,7 +80,7 @@ export const SettingsProvider: React.FC = props => {
   return <SettingsContext.Provider value={contextValue} {...props} />;
 };
 
-export const useSettings: () => SettingsContext = () => {
+export const useSettings: () => SettingsContextType = () => {
   const context = React.useContext(SettingsContext);
   if (!context) {
     throw new Error(
