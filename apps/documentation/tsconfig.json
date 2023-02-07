@@ -5,7 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@entur/*": ["../../packages/*/dist"],
+      "@entur/*": ["../../node_modules/@entur/*/dist"],
       "~*": ["src/*"],
       "src/*": ["src/*"]
     }
