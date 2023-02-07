@@ -67,8 +67,8 @@ test('util function correctly converts from any Date or TimeValue to JS Date', (
   expect(
     timeOrDateValueToNativeDate(calendarDateTime, timeZone).toISOString(),
   ).toEqual('1997-07-10T17:00:00.000Z');
-  expect(timeOrDateValueToNativeDate(time).toLocaleTimeString()).toEqual(
-    '10:00:00 AM',
+  expect(timeOrDateValueToNativeDate(time).toLocaleTimeString('no-NO')).toEqual(
+    '10:00:00',
   );
   expect(timeOrDateValueToNativeDate(calendarDate).toISOString()).toEqual(
     '1997-07-10T00:00:00.000Z',
@@ -103,6 +103,6 @@ test('util function converts from Date to TimeValue and back again correctly', (
   expect(
     timeOrDateValueToNativeDate(
       nativeDateToTimeOrDateValue(dateObject, true),
-    ).toLocaleTimeString(),
-  ).toEqual(dateObject.toLocaleTimeString());
+    ).toLocaleTimeString('no-NO'),
+  ).toEqual(dateObject.toLocaleTimeString('no-NO'));
 });

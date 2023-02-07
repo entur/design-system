@@ -16,7 +16,7 @@ jobs:
     parallelism: 1
     resource_class: xlarge
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:14.20.0
     steps:
       - checkout
 
@@ -68,7 +68,7 @@ jobs:
     parallelism: 1
     resource_class: xlarge
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:14.20.0
     steps:
       - checkout
 
