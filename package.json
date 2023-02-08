@@ -45,6 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@nrwl/nx-cloud": "^15.0.3",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "14.4.3",
