@@ -5,6 +5,7 @@ export default {
   title: 'Entur Designsystem',
   ignore: ['README.md', 'CHANGELOG.md', '../../packages/*/node_modules'],
   src: 'content',
+  dest: 'dist',
   docgenConfig: {
     propFilter: prop => {
       return prop.declarations[0].fileName.includes('@entur');

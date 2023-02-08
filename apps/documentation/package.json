@@ -9,7 +9,7 @@
     "lint": "dts lint src content",
     "deploy-docs": "firebase deploy",
     "deploy-docs:preview": "firebase hosting:channel:deploy",
-    "cleanStart": "rm -rf .docz && yarn start"
+    "cleanStart": "rm -rf dist && yarn start"
   },
   "peerDependencies": {
     "sass": "^1.58.0",
