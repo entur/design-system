@@ -98,7 +98,7 @@ jobs:
 
       - run:
           name: build documentation site
-          command: yarn build:documentation --scripts-prepend-node-path
+          command: yarn build:documentation
 
       - save_cache:
           name: Save Docz/Gatsby Cache
@@ -128,7 +128,7 @@ jobs:
 
       - run:
           name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview $CIRCLE_BRANCH --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview -- $CIRCLE_BRANCH --project=entur-design-system
 
   deploy-documentation-to-production:
     working_directory: ~/project
@@ -146,7 +146,7 @@ jobs:
 
       - run:
           name: Deploy to production
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs -- --project=entur-design-system
 
 workflows:
   version: 2
