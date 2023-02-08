@@ -52,6 +52,7 @@ jobs:
 
   lint:
     working_directory: ~/project
+    resource_class: xlarge
     docker:
       - image: cimg/node:16.17.0
     steps:
