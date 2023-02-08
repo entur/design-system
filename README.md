@@ -7,7 +7,7 @@ You'll find the code for all the components in the `packages/` folder. The docum
 
 ## Requirements
 
-- Node.JS 14.20.0
+- Node.JS 16.17.0
 - yarn 1.22.19
 
 You may use [Volta](https://docs.volta.sh/guide/) to manage your js command-line tools. Versions are pinned in `package.json` for seamless, per-project version [switching](https://docs.volta.sh/guide/understanding#managing-your-project).
