@@ -73,7 +73,7 @@
     "inquirer": "^8.1.2",
     "jest": "^27.4.7",
     "jest-axe": "^7.0.0",
-    "lerna": "^3.16.4",
+    "lerna": "^6.4.1",
     "postcss": "^8.4.12",
     "postcss-preset-env": "^7.4.3",
     "prettier": "2.3.2",
