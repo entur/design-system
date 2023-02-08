@@ -90,27 +90,14 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - restore_cache:
-          name: Restore Docz/Gatsby Cache
-          keys:
-            - v09-docz-cache-{{ .Branch }}
-            - v09-docz-cache-
-
       - run:
           name: build documentation site
           command: yarn build:documentation
 
-      - save_cache:
-          name: Save Docz/Gatsby Cache
-          key: v09-docz-cache-{{ .Branch }}-{{ epoch }}
-          paths:
-            - apps/documentation/.docz/.cache
-            - apps/documentation/.docz/public
-
       - persist_to_workspace:
           root: ~/
           paths:
-            - 'project/apps/documentation/.docz'
+            - 'project/apps/documentation/dist'
 
   deploy-documentation-to-preview-channel:
     working_directory: ~/project
