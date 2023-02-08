@@ -52,6 +52,7 @@ jobs:
 
   lint:
     working_directory: ~/project
+    resource_class: xlarge
     docker:
       - image: cimg/node:16.17.0
     steps:
@@ -89,27 +90,14 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      - restore_cache:
-          name: Restore Docz/Gatsby Cache
-          keys:
-            - v09-docz-cache-{{ .Branch }}
-            - v09-docz-cache-
-
       - run:
           name: build documentation site
-          command: yarn build:documentation --scripts-prepend-node-path
-
-      - save_cache:
-          name: Save Docz/Gatsby Cache
-          key: v09-docz-cache-{{ .Branch }}-{{ epoch }}
-          paths:
-            - apps/documentation/.docz/.cache
-            - apps/documentation/.docz/public
+          command: yarn build:documentation
 
       - persist_to_workspace:
           root: ~/
           paths:
-            - 'project/apps/documentation/.docz'
+            - 'project/apps/documentation/dist'
 
   deploy-documentation-to-preview-channel:
     working_directory: ~/project
@@ -127,7 +115,7 @@ jobs:
 
       - run:
           name: Deploy to preview channel
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview $CIRCLE_BRANCH --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.preview.json yarn deploy-docs:preview -- $CIRCLE_BRANCH --project=entur-design-system
 
   deploy-documentation-to-production:
     working_directory: ~/project
@@ -145,7 +133,7 @@ jobs:
 
       - run:
           name: Deploy to production
-          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs --project=entur-design-system
+          command: GOOGLE_APPLICATION_CREDENTIALS=/tmp/serviceaccount.prod.json yarn deploy-docs -- --project=entur-design-system
 
 workflows:
   version: 2
