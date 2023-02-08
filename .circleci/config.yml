@@ -17,15 +17,15 @@ jobs:
     working_directory: ~/project
     resource_class: xlarge
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-v1-{{ checksum "yarn.lock" }}
-            - yarn-v1-
+            - v1-yarn-cache-{{ checksum "yarn.lock" }}
+            - v1-yarn-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -35,7 +35,7 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: yarn-v1-{{ checksum "yarn.lock" }}
+          key: v1-yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
@@ -53,7 +53,7 @@ jobs:
   lint:
     working_directory: ~/project
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
@@ -67,7 +67,7 @@ jobs:
   test:
     working_directory: ~/project
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
@@ -82,7 +82,7 @@ jobs:
     working_directory: ~/project
     resource_class: xlarge
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
@@ -114,7 +114,7 @@ jobs:
   deploy-documentation-to-preview-channel:
     working_directory: ~/project
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
@@ -132,7 +132,7 @@ jobs:
   deploy-documentation-to-production:
     working_directory: ~/project
     docker:
-      - image: cimg/node:14.20.0
+      - image: cimg/node:16.17.0
     steps:
       - checkout
 
