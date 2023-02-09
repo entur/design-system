@@ -3,16 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.4...@entur/tokens@3.4.5) (2023-02-02)
+# [3.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.5...@entur/tokens@3.5.0) (2023-02-09)
 
+### Features
+
+- add new borderRadiuses.large token ([8d84dfd](https://bitbucket.org/enturas/design-system/commits/8d84dfdb336701d69ffbde5a054675307b8c9130))
+
+## [3.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.4...@entur/tokens@3.4.5) (2023-02-02)
 
 ### Bug Fixes
 
-* **icons:** update default metro and ferry colour due to WCAG issues ([d69d78f](https://bitbucket.org/enturas/design-system/commits/d69d78f77137efe34d7a704e1658f4f4bd67a7df))
-
-
-
-
+- **icons:** update default metro and ferry colour due to WCAG issues ([d69d78f](https://bitbucket.org/enturas/design-system/commits/d69d78f77137efe34d7a704e1658f4f4bd67a7df))
 
 ## [3.4.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.3...@entur/tokens@3.4.4) (2023-01-19)
 
