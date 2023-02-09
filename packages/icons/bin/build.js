@@ -1,9 +1,10 @@
+const svgr = require('@svgr/core').default;
+const toCase = require('case');
 const fs = require('fs-extra');
 const path = require('path');
-const toCase = require('case');
-const svgr = require('@svgr/core').default;
-const { colors } = require('@entur/tokens');
 const sass = require('sass');
+
+const { colors } = require('@entur/tokens');
 
 /**
  * Deprecated icons, mapped to their possible replacements.

@@ -28,10 +28,8 @@
   },
   "dependencies": {
     "@entur/loader": "^0.4.19",
+    "@entur/tokens": "^3.5.0",
     "@entur/utils": "^0.5.2",
     "classnames": "^2.3.1"
-  },
-  "devDependencies": {
-    "@entur/tokens": "^3.5.0"
   }
 }
