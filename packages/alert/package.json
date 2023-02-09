@@ -1,6 +1,6 @@
 {
   "name": "@entur/alert",
-  "version": "0.11.18",
+  "version": "0.11.19",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/alert.esm.js",
@@ -27,15 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/expand": "^3.3.31",
-    "@entur/icons": "^5.4.3",
-    "@entur/typography": "^1.7.6",
-    "@entur/utils": "^0.5.1",
+    "@entur/expand": "^3.3.32",
+    "@entur/icons": "^5.5.0",
+    "@entur/typography": "^1.7.7",
+    "@entur/utils": "^0.5.2",
     "classnames": "^2.3.1",
     "copy-text-to-clipboard": "^2.2"
   },
   "devDependencies": {
-    "@entur/tokens": "^3.4.5"
+    "@entur/tokens": "^3.5.0"
   },
   "volta": {
     "node": "16.17.0",

@@ -3,13 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.4.3...@entur/icons@5.5.0) (2023-02-09)
+
+### Features
+
+- **icons:** add new filter icon ([875e409](https://bitbucket.org/enturas/design-system/commits/875e409579c67cd0c5c46eb520d333aee0a547f6))
+
+### Performance Improvements
+
+- **sass:** change from node-sass to dart-sass ([390a77f](https://bitbucket.org/enturas/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
+
 ## [5.4.3](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.4.2...@entur/icons@5.4.3) (2023-02-02)
 
 **Note:** Version bump only for package @entur/icons
-
-
-
-
 
 ## [5.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.4.0...@entur/icons@5.4.1) (2023-01-19)
 

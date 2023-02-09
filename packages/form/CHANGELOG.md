@@ -3,13 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.16](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.15...@entur/form@5.4.16) (2023-02-09)
+
+### Bug Fixes
+
+- **segmented control:** fix non-wcag compliant focus styling in segmented control ([95bd725](https://bitbucket.org/enturas/design-system/commits/95bd7251e681ca349edd9165634ed15ebb33b9c0))
+
 ## [5.4.15](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.14...@entur/form@5.4.15) (2023-02-02)
 
 **Note:** Version bump only for package @entur/form
-
-
-
-
 
 ## [5.4.13](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.12...@entur/form@5.4.13) (2023-01-19)
 
