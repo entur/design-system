@@ -13,6 +13,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @entur/datepicker
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.10...@entur/datepicker@4.0.0) (2022-10-26)
+
+### Features
+
+- **datepicker:** add modal view for calendar when using small screen widths ([05d9325](https://bitbucket.org/enturas/design-system/commits/05d9325a83dbc8d7d2e62050e7d6bbecbe2f665e))
+- **calendar:** add new calendar component ([6cd168c](https://bitbucket.org/enturas/design-system/commits/6cd168caf3d2e634fc2248abe728ab6a91e44ef8))
+- **date field:** add new date field component ([3f1348d](https://bitbucket.org/enturas/design-system/commits/3f1348d53e0d7dc5381f613633791bcd7565689e))
+- **datepicker:** add new datepicker component ([7d53075](https://bitbucket.org/enturas/design-system/commits/7d5307509bfc3f7d6bf00d47be80eef6550404fb))
+
+### BREAKING CHANGES
+
+- **datepicker:** complete rewrite
+
 ## [3.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.9...@entur/datepicker@3.0.10) (2023-01-19)
 
 **Note:** Version bump only for package @entur/datepicker
@@ -43,87 +56,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [3.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@3.0.3) (2022-10-20)
 
-# [4.0.0-RC.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-RC.2...@entur/datepicker@4.0.0-RC.3) (2022-11-22)
-
 **Note:** Version bump only for package @entur/datepicker
-
-# [4.0.0-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-RC.1...@entur/datepicker@4.0.0-RC.2) (2022-11-22)
-
-### Bug Fixes
-
-- **datepicker:** fix modal not being scrollable when larger than screen due to zoom ([0a75d57](https://bitbucket.org/enturas/design-system/commits/0a75d577b95521fd12fadb0f3e0258687aaba1cb))
-
-# [4.0.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-RC.0...@entur/datepicker@4.0.0-RC.1) (2022-11-21)
-
-**Note:** Version bump only for package @entur/datepicker
-
-# [4.0.0-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.5...@entur/datepicker@4.0.0-RC.0) (2022-11-21)
-
-**Note:** Version bump only for package @entur/datepicker
-
-# [4.0.0-beta.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.3...@entur/datepicker@4.0.0-beta.5) (2022-11-11)
-
-### Bug Fixes
-
-- **DatePicker:** change DatePickerProps to DatePickerBeta to avoid ts-errors when bundeling ([f1efb0a](https://bitbucket.org/enturas/design-system/commits/f1efb0a9b509cfcf6975e9f26034fc5b5a4bba97))
-
-# [4.0.0-beta.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.3...@entur/datepicker@4.0.0-beta.4) (2022-11-11)
-
-### Bug Fixes
-
-- **DatePicker:** change DatePickerProps to DatePickerBeta to avoid ts-errors when bundeling ([f1efb0a](https://bitbucket.org/enturas/design-system/commits/f1efb0a9b509cfcf6975e9f26034fc5b5a4bba97))
-
-# [4.0.0-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.2...@entur/datepicker@4.0.0-beta.3) (2022-11-08)
-
-### Bug Fixes
-
-- **datepicker:** change min- and maxValue to min- and maxDate ([f5bfb88](https://bitbucket.org/enturas/design-system/commits/f5bfb885bbbd253f150756f36550b07ed848fdc3))
-- **datepicker:** fix page jumping when opening datepicker popover ([4629f2c](https://bitbucket.org/enturas/design-system/commits/4629f2c6f134f622cab7546b3f6d3980c9ed913a))
-
-# [4.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.1...@entur/datepicker@4.0.0-beta.2) (2022-10-31)
-
-### Features
-
-- **datepicker utils:** update utils to work with CalendarDate values ([d5993f2](https://bitbucket.org/enturas/design-system/commits/d5993f22c2abcc53e932cc58e960accb979182c3))
-
-# [4.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-beta.0...@entur/datepicker@4.0.0-beta.1) (2022-10-28)
-
-### Bug Fixes
-
-- **datepicker:** hide next and previous month button when disabled ([1ae7037](https://bitbucket.org/enturas/design-system/commits/1ae70371fb5622b1fbfc593c9c0becd83f665531))
-
-# [4.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-alpha.1...@entur/datepicker@4.0.0-beta.0) (2022-10-27)
-
-### Bug Fixes
-
-- **datepicker:** final touches to datepicker and supcomponents ([8c21915](https://bitbucket.org/enturas/design-system/commits/8c21915cea21346444bfdf2b66bfe10de1c9fcba))
-
-# [4.0.0-alpha.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.0-alpha.0...@entur/datepicker@4.0.0-alpha.1) (2022-10-26)
-
-### Bug Fixes
-
-- **datepicker:** fix locale issues ([8c325b8](https://bitbucket.org/enturas/design-system/commits/8c325b86088feb9f8a7d4ad538a18ec6d78e202d))
-
-### Features
-
-- **datepicker:** add i18y-wrapper to components for locale ([aed14fb](https://bitbucket.org/enturas/design-system/commits/aed14fb32e789159b4021c8b740a8101b83228fa))
-- **datepicker:** add modal view for calendar when using small screen widths ([05d9325](https://bitbucket.org/enturas/design-system/commits/05d9325a83dbc8d7d2e62050e7d6bbecbe2f665e))
-
-# [4.0.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.2...@entur/datepicker@4.0.0-alpha.0) (2022-10-20)
-
-### Bug Fixes
-
-- **locale:** wip fix for locale not working ([0ff0912](https://bitbucket.org/enturas/design-system/commits/0ff0912405e015abb50c9cb6103c5f9827d8bd7b))
-
-### Features
-
-- **calendar:** add new calendar component ([6cd168c](https://bitbucket.org/enturas/design-system/commits/6cd168caf3d2e634fc2248abe728ab6a91e44ef8))
-- **date field:** add new date field component ([3f1348d](https://bitbucket.org/enturas/design-system/commits/3f1348d53e0d7dc5381f613633791bcd7565689e))
-- **datepicker:** add new datepicker component ([7d53075](https://bitbucket.org/enturas/design-system/commits/7d5307509bfc3f7d6bf00d47be80eef6550404fb))
-
-### BREAKING CHANGES
-
-- **datepicker:** rewrite
 
 ## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@3.0.1...@entur/datepicker@3.0.2) (2022-10-12)
 
