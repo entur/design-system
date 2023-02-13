@@ -23,8 +23,15 @@ import dontPic from './SwitchDont.png';
 <PageHeader />
 
 <Playground style={{ width: '30%', margin: 'auto' }}>
-  <Label>Ønsker du å motta nyhetsbrev?</Label>
-  <Switch />
+  {() => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <>
+        <Label>Ønsker du å motta nyhetsbrev?</Label>
+        <Switch checked={checked} onChange={() => setChecked(!checked)} />
+      </>
+    );
+  }}
 </Playground>
 
 ## Komponenter
