@@ -32,8 +32,5 @@
     "@entur/tokens": "^3.5.0",
     "@entur/utils": "^0.5.2",
     "classnames": "^2.3.1"
-  },
-  "devDependencies": {
-    "rollup-plugin-sass": "^1.2.2"
   }
 }

@@ -5,6 +5,7 @@ import pkg from './package.json';
 const sharedPlugins = [
   babel({
     exclude: 'node_modules/**',
+    babelHelpers: 'bundled',
   }),
   resolve(),
 ];
