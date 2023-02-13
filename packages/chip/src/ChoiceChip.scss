@@ -45,18 +45,18 @@
       }
     }
     &:checked:hover ~ .eds-chip {
-      background-color: tint($colors-brand-blue, 15);
-      border-color: tint($colors-brand-blue, 15);
+      background-color: tint($colors-brand-blue, 15%);
+      border-color: tint($colors-brand-blue, 15%);
       .eds-contrast & {
-        background-color: tint($colors-brand-lavender, 15);
-        border-color: tint($colors-brand-lavender, 15);
+        background-color: tint($colors-brand-lavender, 15%);
+        border-color: tint($colors-brand-lavender, 15%);
       }
     }
     &:active ~ .eds-chip {
       background-color: $colors-blues-blue70;
       border-color: $colors-blues-blue70;
       .eds-contrast & {
-        background: shade($colors-blues-blue20, 10);
+        background: shade($colors-blues-blue20, 10%);
       }
     }
   }

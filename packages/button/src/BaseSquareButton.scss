@@ -1,22 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-/// Slightly darken a color
-/// @access public
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 .eds-square-button {
   --icon-color: var(--primary-text-color);
@@ -93,7 +76,7 @@
 
   .eds-contrast & {
     &:hover {
-      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+      --icon-background: #{rgba($color: $colors-brand-white, $alpha: 0.2)};
     }
     &:active {
       --icon-background: #{$colors-brand-lavender};
@@ -164,7 +147,7 @@
     --border-color: #{$colors-brand-white};
 
     &:hover {
-      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+      --icon-background: #{rgba($color: $colors-brand-white, $alpha: 0.2)};
     }
     &:active {
       --icon-background: #{$colors-brand-white};
