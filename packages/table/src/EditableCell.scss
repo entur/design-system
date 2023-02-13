@@ -3,7 +3,7 @@
 .eds-editable-cell {
   padding: $space-extra-small2 $space-small;
   .eds-table--middle & {
-    padding: calc(#{$space-extra-small} / 2) calc(#{$space-default}/ 2);
+    padding: calc($space-extra-small / 2) calc($space-default / 2);
   }
   .eds-table--small & {
     padding: 0.125rem $space-extra-small;

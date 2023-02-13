@@ -273,7 +273,7 @@ html {
   color: $colors-greys-grey40;
   font-family: 'Monaco', monospace;
   font-size: $font-sizes-medium; // Slightly smaller than
-  padding: ($space-extra-small2 / 2) $space-extra-small2;
+  padding: calc($space-extra-small2 / 2) $space-extra-small2;
 }
 
 .eds-unordered-list,
