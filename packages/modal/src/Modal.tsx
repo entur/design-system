@@ -19,7 +19,7 @@ export type ModalProps = {
   /** Størrelsen på modalen */
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
-  title: string;
+  title?: string;
   /** Om modalen skal lukkes når man klikker på utsiden av den
    * @default true
    */
