@@ -33,6 +33,7 @@
     "@entur/tokens": "^3.5.0",
     "@entur/utils": "^0.5.2",
     "@popperjs/core": "^2.10.1",
+    "classnames": "^2.3.1",
     "react-popper": "^2.2.5"
   }
 }

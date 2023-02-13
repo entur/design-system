@@ -1,9 +1,10 @@
+const svgr = require('@svgr/core').default;
+const toCase = require('case');
 const fs = require('fs-extra');
 const path = require('path');
-const toCase = require('case');
-const svgr = require('@svgr/core').default;
-const { colors } = require('@entur/tokens');
 const sass = require('sass');
+
+const { colors } = require('@entur/tokens');
 
 /**
  * Deprecated icons, mapped to their possible replacements.
@@ -111,14 +112,18 @@ function createTypeDeclaration(components) {
   fs.outputFileSync(`./dist/index.d.ts`, typingsFile);
 }
 
-async function createStyleFiles() {
+function createStyleFiles() {
   fs.ensureDirSync('./dist');
   // finally, let's copy over the static assets if you need those directly
   try {
-    const result = sass.renderSync({ file: './src/index.scss' });
+    const result = sass.compile('./src/index.scss');
     fs.outputFileSync('./dist/styles.css', result.css);
-  } catch {
-    throw 'Icon-Build Failed';
+  } catch (e) {
+    console.error(
+      '\u001b[31mERROR: Icon build failed.\n------------------\u001b[0m\n',
+      e,
+    );
+    throw '@entur/icons failed!';
   }
 }
 

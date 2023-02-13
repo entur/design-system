@@ -3,15 +3,15 @@
 
 $default-height: $space-extra-large3;
 $small-height: $space-extra-large;
-$default-padding: ((44rem - 14rem) / 2 / 16);
-$small-padding: ((36rem - 14rem) / 2 / 16);
+$default-padding: calc((44rem - 14rem) / 2 / 16);
+$small-padding: calc((36rem - 14rem) / 2 / 16);
 
 .eds-floating-button {
   align-items: center;
   appearance: none;
   background: $colors-brand-blue;
   border: 0;
-  border-radius: ($default-height / 2);
+  border-radius: calc($default-height / 2);
   box-shadow: $shadows-box-shadow;
   color: $colors-brand-white;
   cursor: pointer;
@@ -59,7 +59,7 @@ $small-padding: ((36rem - 14rem) / 2 / 16);
   }
 
   &--small {
-    border-radius: ($small-height / 2);
+    border-radius: calc($small-height / 2);
     height: $small-height;
     padding: 0 $space-extra-small;
     min-width: $small-height;

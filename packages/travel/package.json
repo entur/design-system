@@ -22,18 +22,15 @@
     "test": "dts test",
     "lint": "dts lint src"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "dependencies": {
     "@entur/icons": "^5.5.0",
     "@entur/layout": "^2.1.18",
     "@entur/tokens": "^3.5.0",
     "@entur/utils": "^0.5.2",
     "classnames": "^2.3.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "devDependencies": {
-    "rollup-plugin-sass": "^1.2.2"
   }
 }

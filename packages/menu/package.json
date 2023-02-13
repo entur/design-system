@@ -22,6 +22,10 @@
     "test": "dts test",
     "lint": "dts lint src"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "dependencies": {
     "@entur/a11y": "^0.2.56",
     "@entur/button": "^2.10.11",
@@ -34,9 +38,5 @@
     "@reach/menu-button": "^0.16.1",
     "@reach/polymorphic": "0.18.0",
     "classnames": "^2.3.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
   }
 }

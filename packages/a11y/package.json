@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@entur/tokens": "^3.5.0",
-    "@entur/typography": "^1.7.7",
     "@entur/utils": "^0.5.2"
   }
 }
