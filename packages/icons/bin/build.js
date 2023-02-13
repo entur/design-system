@@ -11,7 +11,11 @@ const { colors } = require('@entur/tokens');
  * If an icon is deprecated without a replacement, it is mapped to no value,
  * and you can still check for deprecation using `deprecatedIcons.has(iconName)`.
  */
-const deprecatedIcons = new Map([['ReportsIcon', 'CopyIcon']]);
+const deprecatedIcons = new Map([
+  ['ReportsIcon', 'CopyIcon'],
+  ['SubwayIcon', 'MetroIcon'],
+  ['ScooterIcon', 'MobilityIcon'],
+]);
 
 const components = traverse('src/svgs').map(svgPath => {
   // Check for .DS_Store to clarify confusing error message
