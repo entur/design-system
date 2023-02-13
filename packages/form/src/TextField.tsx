@@ -134,12 +134,12 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
       useInputGroupContext();
 
     useOnMount(() => {
-      if (value || rest.defaultValue) {
+      if (value?.toString() || rest.defaultValue) {
         setFiller && !isInputFilled && setFiller(true);
       }
     });
     React.useEffect(() => {
-      if (value && setFiller && !isInputFilled) {
+      if (value?.toString() && setFiller && !isInputFilled) {
         setFiller(true);
       }
     }, [value, setFiller, isInputFilled]);
