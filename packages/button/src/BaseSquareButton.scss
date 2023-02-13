@@ -1,22 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
-
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-/// Slightly darken a color
-/// @access public
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+@import '~@entur/utils/dist/color-utils.scss';
 
 .eds-square-button {
   --icon-color: var(--primary-text-color);
@@ -78,26 +61,26 @@
 
 .eds-square-button--secondary {
   --icon-background: transparent;
-  --border-color: #{$colors-brand-lavender};
+  --border-color: $colors-brand-lavender;
   .eds-square-button__loading-dots .eds-loading-dots__dot {
     background: $colors-brand-blue;
   }
 
   &:hover {
-    --icon-background: #{$colors-brand-lavender};
+    --icon-background: $colors-brand-lavender;
   }
   &:active {
-    --icon-background: #{shade($colors-brand-lavender, 10%)};
-    --border-color: #{shade($colors-brand-lavender, 10%)};
+    --icon-background: shade($colors-brand-lavender, 10%);
+    --border-color: shade($colors-brand-lavender, 10%);
   }
 
   .eds-contrast & {
     &:hover {
-      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+      --icon-background: rgba($color: $colors-brand-white, $alpha: 0.2);
     }
     &:active {
-      --icon-background: #{$colors-brand-lavender};
-      --icon-color: #{$colors-brand-blue};
+      --icon-background: $colors-brand-lavender;
+      --icon-color: $colors-brand-blue;
     }
     .eds-square-button__loading-dots .eds-loading-dots__dot {
       background: $colors-brand-white;
@@ -106,16 +89,16 @@
 }
 
 .eds-square-button--success {
-  --icon-background: #{$colors-validation-mint-contrast};
+  --icon-background: $colors-validation-mint-contrast;
   .eds-square-button__loading-dots .eds-loading-dots__dot {
     background: $colors-brand-blue;
   }
 
   &:hover {
-    --icon-background: #{tint($colors-validation-mint-contrast, 10%)};
+    --icon-background: tint($colors-validation-mint-contrast, 10%);
   }
   &:active {
-    --icon-background: #{shade($colors-validation-mint-contrast, 5%)};
+    --icon-background: shade($colors-validation-mint-contrast, 5%);
   }
 }
 
@@ -130,7 +113,7 @@
 
 .eds-square-button--tertiary {
   --icon-background: transparent;
-  --border-color: #{$colors-brand-blue};
+  --border-color: $colors-brand-blue;
 
   font-size: $font-sizes-medium;
 
@@ -149,11 +132,11 @@
   }
 
   &:hover {
-    --icon-background: #{$colors-blues-blue70};
+    --icon-background: $colors-blues-blue70;
   }
   &:active {
-    --icon-background: #{$colors-brand-blue};
-    --icon-color: #{$colors-brand-white};
+    --icon-background: $colors-brand-blue;
+    --icon-color: $colors-brand-white;
 
     .eds-square-button__loading-dots .eds-loading-dots__dot {
       background: $colors-brand-white;
@@ -161,14 +144,14 @@
   }
 
   .eds-contrast & {
-    --border-color: #{$colors-brand-white};
+    --border-color: $colors-brand-white;
 
     &:hover {
-      --icon-background: #{(rgba($color: $colors-brand-white, $alpha: 0.2))};
+      --icon-background: rgba($color: $colors-brand-white, $alpha: 0.2);
     }
     &:active {
-      --icon-background: #{$colors-brand-white};
-      --icon-color: #{$colors-brand-blue};
+      --icon-background: $colors-brand-white;
+      --icon-color: $colors-brand-blue;
 
       .eds-square-button__loading-dots .eds-loading-dots__dot {
         background: $colors-brand-blue;
