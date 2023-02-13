@@ -10,54 +10,45 @@ p .eds-icon {
   top: 0.2em;
 }
 
-.eds-icon g,
-.eds-icon path {
+.eds-icon :where(g, path) {
   fill: currentColor;
 }
 
-.eds-contrast {
-  .eds-icon__bicycle g,
-  .eds-icon__bicycle path {
+.eds-contrast .eds-icon {
+  &__bicycle :where(g, path) {
     fill: $colors-transport-contrast-bicycle;
   }
-  .eds-icon__bus g,
-  .eds-icon__bus path {
+  &__bus :where(g, path) {
     fill: $colors-transport-contrast-bus;
   }
-  .eds-icon__cableway g,
-  .eds-icon__cableway path {
+  &__cableway :where(g, path) {
     fill: $colors-transport-contrast-cableway;
   }
-  .eds-icon__carferry g,
-  .eds-icon__carferry path {
+  &__carferry :where(g, path) {
     fill: $colors-transport-contrast-carferry;
   }
-  .eds-icon__ferry g,
-  .eds-icon__ferry path {
+  &__ferry :where(g, path) {
     fill: $colors-transport-contrast-ferry;
   }
-  .eds-icon__funicular g,
-  .eds-icon__funicular path {
+  &__funicular :where(g, path) {
     fill: $colors-transport-contrast-funicular;
   }
-  .eds-icon__helicopter g,
-  .eds-icon__helicopter path {
+  &__helicopter :where(g, path) {
     fill: $colors-transport-contrast-helicopter;
   }
-  .eds-icon__plane g,
-  .eds-icon__plane path {
+  &__metro :where(g, path) {
+    fill: $colors-transport-contrast-metro;
+  }
+  &__plane :where(g, path) {
     fill: $colors-transport-contrast-plane;
   }
-  .eds-icon__taxi g,
-  .eds-icon__taxi path {
+  &__taxi :where(g, path) {
     fill: $colors-transport-contrast-taxi;
   }
-  .eds-icon__train g,
-  .eds-icon__train path {
+  &__train :where(g, path) {
     fill: $colors-transport-contrast-train;
   }
-  .eds-icon__tram g,
-  .eds-icon__tram path {
+  &__tram :where(g, path) {
     fill: $colors-transport-contrast-tram;
   }
 }

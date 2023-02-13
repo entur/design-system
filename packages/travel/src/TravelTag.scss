@@ -139,12 +139,16 @@
     height: ($space-default + $border-widths-medium);
     width: ($space-default + $border-widths-medium);
     position: absolute;
-    top: ($space-extra-large - ($space-default + $border-widths-medium))/2;
-    right: -($space-default - $border-widths-medium)/2 - $space-extra-small2;
+    top: calc(
+      ($space-extra-large - ($space-default + $border-widths-medium)) / 2
+    );
+    right: calc(
+      -1 * ($space-default - $border-widths-medium) / 2 - $space-extra-small2
+    );
     .eds-contrast & {
       background: $colors-brand-blue;
       &--error-icon {
-        top: ($space-extra-large - ($font-sizes-medium))/2;
+        top: calc(($space-extra-large - ($font-sizes-medium)) / 2);
       }
     }
     &-exclamation-icon {
@@ -195,7 +199,7 @@
       }
     }
     &--bottom {
-      margin-top: $space-extra-small2/2;
+      margin-top: calc($space-extra-small2 / 2);
       font-size: $font-sizes-medium;
     }
   }
