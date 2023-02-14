@@ -15,6 +15,7 @@ const deprecatedIcons = new Map([
   ['ReportsIcon', 'CopyIcon'],
   ['SubwayIcon', 'MetroIcon'],
   ['ScooterIcon', 'MobilityIcon'],
+  ['WalkingIcon', 'WalkIcon'],
 ]);
 
 const components = traverse('src/svgs').map(svgPath => {
