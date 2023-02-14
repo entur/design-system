@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from './Switch';
+import { Switch } from '@entur/form';
 import { colors } from '@entur/tokens';
 import {
   BusIcon,
@@ -11,7 +11,7 @@ import {
   ScooterIcon,
   SubwayIcon,
 } from '@entur/icons';
-import './Switch.scss';
+import './TravelSwitch.scss';
 
 export type TravelSwitchProps = {
   /** Ekstra klassenavn */

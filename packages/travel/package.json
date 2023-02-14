@@ -27,6 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
+    "@entur/form": "^5.4.16",
     "@entur/icons": "^5.8.1",
     "@entur/layout": "^2.1.22",
     "@entur/tokens": "^3.8.0",
