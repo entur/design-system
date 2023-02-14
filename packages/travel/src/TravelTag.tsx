@@ -1,23 +1,17 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import {
   CloseSmallIcon,
   ValidationInfoIcon,
   ValidationErrorIcon,
   ValidationExclamationIcon,
-  BicycleIcon,
-  BusIcon,
-  FerryIcon,
-  PlaneIcon,
-  ScooterIcon,
-  SubwayIcon,
-  TrainIcon,
-  TramIcon,
-  WalkingIcon,
-  CarIcon,
-  TaxiIcon,
-  CarferryIcon,
 } from '@entur/icons';
+import { useContrast } from '@entur/layout';
+
+import { getTransportStyle } from './utils';
+
+import type { Transport } from './utils';
+
 import './TravelTag.scss';
 
 export type TravelTagProps = {
@@ -34,19 +28,7 @@ export type TravelTagProps = {
    */
   alert?: 'none' | 'error' | 'warning' | 'info';
   /** Legger til farge og ikon tilpasset valgt transportmiddel */
-  transport?:
-    | 'bus'
-    | 'metro'
-    | 'air'
-    | 'tram'
-    | 'rail'
-    | 'water'
-    | 'carferry'
-    | 'bike'
-    | 'scooter'
-    | 'foot'
-    | 'car'
-    | 'taxi';
+  transport?: Transport;
   /** Element ved siden av eller under TravelTag.  */
   label?: React.ReactNode;
   /** Posisjonen til label-en i forhold til TravelTag-en
@@ -59,40 +41,66 @@ export type TravelTagProps = {
 >;
 
 export const TravelTag: React.FC<TravelTagProps> = ({
-  onClose = undefined,
   children,
   className,
   alert = 'none',
-  transport,
+  transport = 'none',
   label,
   labelPlacement = 'right',
+  onClose = undefined,
   ...rest
 }) => {
+  const isContrast = useContrast();
   const isClosable = onClose ? true : false;
+  const transportIsSet = transport !== 'none';
+  const alertIsSet = alert !== 'none';
+  const tagRef = useRef<HTMLDivElement>(null);
   const numberOfChildren = React.Children.count(children);
-  const TransportIcon = modeCalc(transport) ?? <></>;
+  const {
+    Icon,
+    contrastBackgroundColor,
+    contrastTextColor,
+    backgroundColor,
+    textColor,
+  } = getTransportStyle(transport);
+
+  useEffect(() => {
+    console.log(Icon.name, contrastBackgroundColor, backgroundColor);
+
+    if (transportIsSet) {
+      tagRef.current?.style.setProperty(
+        '--background-color',
+        isContrast ? contrastBackgroundColor : backgroundColor,
+      );
+      tagRef.current?.style.setProperty(
+        '--text-color',
+        isContrast ? contrastTextColor : textColor,
+      );
+    }
+  }, [tagRef.current, backgroundColor, textColor]);
 
   const TravelTagWithoutLabel: JSX.Element = (
     <div
       className={classNames('eds-travel-tag', {
         'eds-travel-tag--closable': isClosable,
-        'eds-travel-tag--alert': alert !== 'none',
+        'eds-travel-tag--alert': alertIsSet,
         'eds-travel-tag--alert--error': alert === 'error',
+        'eds-travel-tag--transport': transportIsSet,
         'eds-travel-tag--icon-and-text':
-          numberOfChildren > 1 || (transport && numberOfChildren > 0),
-        [`eds-travel-tag--transport-${transport}`]: transport,
+          numberOfChildren > 1 || (transportIsSet && numberOfChildren > 0),
         className,
       })}
+      ref={tagRef}
       {...rest}
     >
-      {transport && TransportIcon}
+      <Icon />
       {children}
       {isClosable && (
         <button onClick={onClose} className="eds-travel-tag__close-button">
           <CloseSmallIcon inline />
         </button>
       )}
-      {alert !== 'none' && (
+      {alertIsSet && (
         <span className="eds-travel-tag__alert">
           {alert === 'info' && (
             <ValidationInfoIcon className="eds-travel-tag__alert-info-icon" />
@@ -113,7 +121,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       className={classNames('eds-travel-tag__label', {
         [`eds-travel-tag__label--${labelPlacement}`]: label,
         [`eds-travel-tag__label--${labelPlacement}--with-alert`]:
-          label && alert !== 'none',
+          label && alertIsSet,
       })}
     >
       {label}
@@ -134,35 +142,4 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   }
 
   return TravelTagWithoutLabel;
-};
-
-const modeCalc = (mode: string | undefined) => {
-  switch (mode) {
-    case 'bus':
-      return <BusIcon />;
-    case 'metro':
-      return <SubwayIcon />;
-    case 'air':
-      return <PlaneIcon />;
-    case 'tram':
-      return <TramIcon />;
-    case 'rail':
-      return <TrainIcon />;
-    case 'water':
-      return <FerryIcon />;
-    case 'carferry':
-      return <CarferryIcon />;
-    case 'bike':
-      return <BicycleIcon />;
-    case 'scooter':
-      return <ScooterIcon />;
-    case 'foot':
-      return <WalkingIcon />;
-    case 'car':
-      return <CarIcon />;
-    case 'taxi':
-      return <TaxiIcon />;
-    default:
-      return <></>;
-  }
 };

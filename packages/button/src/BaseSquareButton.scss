@@ -62,9 +62,6 @@
 .eds-square-button--secondary {
   --icon-background: transparent;
   --border-color: #{$colors-brand-lavender};
-  .eds-square-button__loading-dots .eds-loading-dots__dot {
-    background: $colors-brand-blue;
-  }
 
   &:hover {
     --icon-background: #{$colors-brand-lavender};
@@ -82,23 +79,29 @@
       --icon-background: #{$colors-brand-lavender};
       --icon-color: #{$colors-brand-blue};
     }
+
     .eds-square-button__loading-dots .eds-loading-dots__dot {
       background: $colors-brand-white;
     }
+  }
+
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
   }
 }
 
 .eds-square-button--success {
   --icon-background: #{$colors-validation-mint-contrast};
-  .eds-square-button__loading-dots .eds-loading-dots__dot {
-    background: $colors-brand-blue;
-  }
 
   &:hover {
     --icon-background: #{tint($colors-validation-mint-contrast, 10%)};
   }
   &:active {
     --icon-background: #{shade($colors-validation-mint-contrast, 5%)};
+  }
+
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
   }
 }
 
@@ -116,20 +119,6 @@
   --border-color: #{$colors-brand-blue};
 
   font-size: $font-sizes-medium;
-
-  .eds-square-button__label + .eds-square-button__icon,
-  .eds-square-button__icon + .eds-square-button__label {
-    margin-left: $space-small;
-  }
-
-  .eds-square-button__icon {
-    height: $space-extra-large;
-    width: $space-extra-large;
-    border-width: $border-widths-small;
-  }
-  .eds-square-button__loading-dots .eds-loading-dots__dot {
-    background: $colors-brand-blue;
-  }
 
   &:hover {
     --icon-background: #{$colors-blues-blue70};
@@ -157,8 +146,24 @@
         background: $colors-brand-blue;
       }
     }
+
     .eds-square-button__loading-dots .eds-loading-dots__dot {
       background: $colors-brand-white;
     }
+  }
+
+  .eds-square-button__label + .eds-square-button__icon,
+  .eds-square-button__icon + .eds-square-button__label {
+    margin-left: $space-small;
+  }
+
+  .eds-square-button__icon {
+    height: $space-extra-large;
+    width: $space-extra-large;
+    border-width: $border-widths-small;
+  }
+
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: $colors-brand-blue;
   }
 }

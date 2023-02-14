@@ -1,9 +1,11 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-travel-tag {
-  background-color: $colors-greys-grey70;
+  --background-color: #{$colors-greys-grey70};
+  --text-color: inherit;
+  background-color: var(--background-color);
+  color: var(--text-color);
   border-radius: $border-radiuses-medium;
-  color: inherit;
   display: inline-flex;
   font-size: $font-sizes-medium;
   line-height: $space-large;
@@ -11,6 +13,11 @@
   min-width: $space-extra-large;
   padding: $space-extra-small2 $space-extra-small;
   position: relative;
+
+  .eds-contrast & {
+    background-color: $colors-blues-blue20;
+  }
+
   &--alert {
     padding-right: $space-small;
     &--error {
@@ -25,13 +32,16 @@
   &--icon-and-text > .eds-icon {
     margin-right: $space-extra-small;
   }
-  .eds-contrast & {
-    align-items: center;
-    background-color: $colors-blues-blue20;
-  }
+
   > .eds-icon {
     font-size: $font-sizes-extra-large2;
+    color: $colors-brand-white;
+
+    .eds-contrast & :where(g, path) {
+      fill: var(--background-color);
+    }
   }
+
   &__close-button {
     appearance: none;
     background: none;
@@ -59,75 +69,7 @@
       }
     }
   }
-  &--transport {
-    &-bus {
-      background: $colors-transport-default-bus;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-metro {
-      background: $colors-transport-default-metro;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-      .eds-contrast & > .eds-icon {
-        color: $colors-transport-contrast-metro;
-      }
-    }
-    &-air {
-      background: $colors-transport-default-plane;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-tram {
-      background: $colors-transport-default-tram;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-rail {
-      background: $colors-transport-default-train;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-water {
-      background: $colors-transport-default-ferry;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-bike,
-    &-scooter {
-      background: $colors-transport-default-mobility;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-foot {
-      background: $colors-transport-default-walk;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-    &-car {
-      background: $colors-transport-default-taxi;
-      color: $colors-brand-white;
-      > .eds-icon {
-        color: $colors-brand-white;
-      }
-    }
-  }
+
   &__alert {
     background: $colors-brand-white;
     border-radius: 50%;
@@ -136,8 +78,8 @@
     justify-content: center;
 
     font-size: $font-sizes-large;
-    height: ($space-default + $border-widths-medium);
-    width: ($space-default + $border-widths-medium);
+    height: calc($space-default + $border-widths-medium);
+    width: calc($space-default + $border-widths-medium);
     position: absolute;
     top: calc(
       ($space-extra-large - ($space-default + $border-widths-medium)) / 2
@@ -151,6 +93,7 @@
         top: calc(($space-extra-large - ($font-sizes-medium)) / 2);
       }
     }
+
     &-exclamation-icon {
       color: $colors-validation-canary;
       circle {
@@ -175,6 +118,7 @@
       }
     }
   }
+
   &__wrapper {
     display: inline-flex;
     &--label-position-right {
@@ -186,6 +130,7 @@
       align-items: flex-start;
     }
   }
+
   &__label {
     color: $colors-brand-blue;
     font-size: $font-sizes-large;
