@@ -79,7 +79,7 @@ export const colors = {
       walk: '#181c56',
       train: '#00367f',
       ferry: '#0c6693',
-      carferry: '#0497bc',
+      carferry: '#0c6693',
       mobility: '#388f76',
     },
     contrast: {
