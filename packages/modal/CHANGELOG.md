@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.23](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.20...@entur/modal@1.6.23) (2023-02-15)
+
+### Bug Fixes
+
+- **modal:** make title type optional as it actually is ([69ebfab](https://bitbucket.org/enturas/design-system/commits/69ebfab1996f65943475620c5898cc9b96d0ad4b))
+
+## [1.6.22](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.20...@entur/modal@1.6.22) (2023-02-15)
+
+### Bug Fixes
+
+- **modal:** make title type optional as it actually is ([69ebfab](https://bitbucket.org/enturas/design-system/commits/69ebfab1996f65943475620c5898cc9b96d0ad4b))
+
 ## [1.6.21](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.20...@entur/modal@1.6.21) (2023-02-09)
 
 **Note:** Version bump only for package @entur/modal
