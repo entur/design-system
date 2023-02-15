@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "3.0.29",
+  "version": "3.0.30",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/dropdown.esm.js",
@@ -27,15 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.56",
-    "@entur/button": "^2.10.11",
-    "@entur/chip": "^0.6.19",
-    "@entur/form": "^5.4.16",
-    "@entur/icons": "^5.5.0",
-    "@entur/loader": "^0.4.19",
-    "@entur/tokens": "^3.5.0",
-    "@entur/tooltip": "^2.6.3",
-    "@entur/utils": "^0.5.2",
+    "@entur/a11y": "^0.2.57",
+    "@entur/button": "^2.10.12",
+    "@entur/chip": "^0.6.20",
+    "@entur/form": "^5.4.17",
+    "@entur/icons": "^5.6.0",
+    "@entur/loader": "^0.4.20",
+    "@entur/tokens": "^3.6.0",
+    "@entur/tooltip": "^2.6.4",
+    "@entur/utils": "^0.5.3",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7"
   }
