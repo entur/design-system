@@ -7,6 +7,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @entur/table
 
+## [4.5.35](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.33...@entur/table@4.5.35) (2023-02-15)
+
+**Note:** Version bump only for package @entur/table
+
 ## [4.5.34](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.33...@entur/table@4.5.34) (2023-02-09)
 
 **Note:** Version bump only for package @entur/table
