@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.3...@entur/code-playground@1.0.6) (2023-02-15)
+
+### Performance Improvements
+
+- **sass:** change from node-sass to dart-sass ([390a77f](https://bitbucket.org/enturas/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
+
 ## [1.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.3...@entur/code-playground@1.0.5) (2023-02-15)
 
 ### Performance Improvements

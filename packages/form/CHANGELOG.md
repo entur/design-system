@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.17](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.15...@entur/form@5.4.17) (2023-02-15)
+
+### Bug Fixes
+
+- **segmented control:** fix non-wcag compliant focus styling in segmented control ([95bd725](https://bitbucket.org/enturas/design-system/commits/95bd7251e681ca349edd9165634ed15ebb33b9c0))
+- **textfield & textarea:** fix bug where the number 0 as input does not register as a filled input ([e79ffc6](https://bitbucket.org/enturas/design-system/commits/e79ffc6ec1d3e3c3d743a957b8f15649d906a36f))
+
 ## [5.4.16](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.15...@entur/form@5.4.16) (2023-02-09)
 
 ### Bug Fixes

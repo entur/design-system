@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.5...@entur/tokens@3.7.0) (2023-02-15)
+
+### Bug Fixes
+
+- **icons:** fix transport colors ([ecf6707](https://bitbucket.org/enturas/design-system/commits/ecf67074baa286b47337d3d4d92b1318578515fb))
+
+### Features
+
+- add new borderRadiuses.large token ([8d84dfd](https://bitbucket.org/enturas/design-system/commits/8d84dfdb336701d69ffbde5a054675307b8c9130))
+
 # [3.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.4.5...@entur/tokens@3.6.0) (2023-02-15)
 
 ### Bug Fixes
