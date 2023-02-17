@@ -15,6 +15,7 @@ import theme from '~/components/themeForPlayground';
 import { AdvancedPlayground } from './AdvancedPlayground';
 
 import './Playground.scss';
+import { ConditionalWrapper } from '@entur/utils';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -49,9 +50,6 @@ export const Playground: React.FC<PlaygroundProps> = ({
       return codeToTransform;
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
-
-  const ConditionalWrapper = ({ condition, wrapper, children }: any) =>
-    condition ? wrapper(children) : <div>{children}</div>;
 
   if (!advanced) {
     return (

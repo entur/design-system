@@ -64,7 +64,7 @@
   textarea {
     left: 3rem !important;
     white-space: inherit !important;
-    width: #{'Calc(100% - 3rem)'} !important;
+    width: #{'Calc(100% + 3rem)'} !important;
     outline: transparent;
   }
 }
