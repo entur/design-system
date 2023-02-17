@@ -1,4 +1,4 @@
-import { AdvancedProps } from '../../../src/components/AdvancedPlayground';
+import { AdvancedProps } from '../../../src/components/playground/AdvancedPlayground';
 export const cards: AdvancedProps = [
   {
     name: 'title',

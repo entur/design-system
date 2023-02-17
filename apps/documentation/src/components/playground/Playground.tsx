@@ -11,7 +11,7 @@ import { BaseExpand } from '@entur/expand/src';
 import { SourceCodeIcon } from '@entur/icons/dist';
 
 // @ts-expect-error mangler typer for theme-fil
-import theme from '~/components/themeForPlayground';
+import theme from './themeForPlayground';
 import { AdvancedPlayground } from './AdvancedPlayground';
 
 import './Playground.scss';
