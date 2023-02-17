@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.6](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.5...@entur/tooltip@2.6.6) (2023-02-17)
+
+### Bug Fixes
+
+- **tooltip:** prevent use react-popper >=2.3 to avoid react 18 related error ([9a866f8](https://bitbucket.org/enturas/design-system/commits/9a866f81ff2ea6282a3b135abeada0aa48920891))
+
 ## [2.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.2...@entur/tooltip@2.6.5) (2023-02-17)
 
 **Note:** Version bump only for package @entur/tooltip
