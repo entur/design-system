@@ -2,7 +2,7 @@
 
 This package contains the button component
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/knapper/standardknapper)?
+> 💡 Looking for the [documentation](https://design.entur.org/komponenter/knapper/button)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/button
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/knapper/standardknapper) for further usage information.
+Please refer to the [documentation](https://design.entur.org/komponenter/knapper/button) for further usage information.
