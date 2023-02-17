@@ -21,7 +21,7 @@ const SiteFooter: React.FC = () => {
       <div style={{ margin: '4rem 0 0' }}>
         <EditIcon inline={true} />{' '}
         <Link
-          href={`https://bitbucket.org/enturas/design-system/src/master/${filepath.substring(
+          href={`https://bitbucket.org/enturas/design-system/src/master/apps/documentation/${filepath.substring(
             8,
           )}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
         >
