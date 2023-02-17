@@ -1,6 +1,6 @@
 {
   "name": "@entur/icons",
-  "version": "5.7.0",
+  "version": "5.8.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -46,6 +46,6 @@
     "rollup": "2.6.1"
   },
   "dependencies": {
-    "@entur/tokens": "^3.7.0"
+    "@entur/tokens": "^3.8.0"
   }
 }

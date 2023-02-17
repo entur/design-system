@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.22](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.18...@entur/alert@0.11.22) (2023-02-17)
+
+### Performance Improvements
+
+- **sass:** change from node-sass to dart-sass ([390a77f](https://bitbucket.org/enturas/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
+
 ## [0.11.21](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.18...@entur/alert@0.11.21) (2023-02-15)
 
 ### Performance Improvements

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.4.3...@entur/icons@5.8.0) (2023-02-17)
+
+### Bug Fixes
+
+- **icons:** change SubwayIcon and ScooterIcon to MetroIcon and MobilityIcon ([54b2732](https://bitbucket.org/enturas/design-system/commits/54b2732d0799cd883acf444116611fd92bfbc747))
+- **icons:** fix transport colors ([dcfbe09](https://bitbucket.org/enturas/design-system/commits/dcfbe097a81816d2fb0cf9872c4a3447f0b6a1ed))
+
+### Features
+
+- **icons:** add new filter icon ([9ad4f3d](https://bitbucket.org/enturas/design-system/commits/9ad4f3de1b885d843e3c4e3cc04533c81db5817e))
+
+### Performance Improvements
+
+- **sass:** change from node-sass to dart-sass ([390a77f](https://bitbucket.org/enturas/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
+
 # [5.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.4.3...@entur/icons@5.7.0) (2023-02-15)
 
 ### Bug Fixes

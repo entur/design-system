@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.1...@entur/utils@0.5.5) (2023-02-17)
+
+### Bug Fixes
+
+- **color utils:** fix scss function warning due to deprecation ([9b12004](https://bitbucket.org/enturas/design-system/commits/9b1200409667e0a70a0b841867f2f06258ade61e))
+
 ## [0.5.4](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.1...@entur/utils@0.5.4) (2023-02-15)
 
 ### Bug Fixes

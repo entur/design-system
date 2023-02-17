@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.1...@entur/datepicker@4.0.4) (2023-02-17)
+
+### Performance Improvements
+
+- **sass:** change from node-sass to dart-sass ([390a77f](https://bitbucket.org/enturas/design-system/commits/390a77f0c28e9da56642d80dded2293d86ab65b2))
+
 ## [4.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.1...@entur/datepicker@4.0.3) (2023-02-15)
 
 ### Performance Improvements
