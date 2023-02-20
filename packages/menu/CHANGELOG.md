@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.29](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.28...@entur/menu@4.1.29) (2023-02-20)
+
+### Bug Fixes
+
+- **menu:** fix broken styling for side navigation in contrast mode ([7664009](https://bitbucket.org/enturas/design-system/commits/76640091f48a41734e87d5dfee272c2532f3ef27))
+
 ## [4.1.28](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.24...@entur/menu@4.1.28) (2023-02-17)
 
 **Note:** Version bump only for package @entur/menu
