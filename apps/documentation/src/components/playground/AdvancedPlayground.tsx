@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import classNames from 'classnames';
 import { LiveEditor, LivePreview, LiveProvider } from 'react-live';
@@ -13,46 +12,47 @@ import {
 import { BaseCard, Contrast } from '@entur/layout';
 import { Heading5 } from '@entur/typography';
 import {
-  AdvancedProps,
-  PropsList,
   useAdvancedPlaygroundCode,
+  wrapCodeInFragmentIfNecessary,
 } from './playground-utils';
+import { PropsList } from './PropsList';
 // @ts-expect-error mangler typer for theme-fil
 import theme from './themeForPlayground';
+import type { AdvancedProps } from './playground-utils';
+
 import './AdvancedPlayground.scss';
 
 type AdvancedPlaygroundProps = {
+  code: string;
+  scope: Record<string, any>;
   props: AdvancedProps[];
   [key: string]: any;
 };
 
 export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   props,
-  code: __code,
+  code: codeFromMDXInjection,
   scope,
   style,
 }) => {
   const [isContrast, setContrast] = React.useState(false);
   const [showCode, setShowCode] = React.useState(false);
 
-  const { code, setCode, handleChange } = useAdvancedPlaygroundCode(
-    __code,
-    props,
-  );
+  const {
+    codeWithUpdatedProps,
+    setCodeWithUpdatedProps,
+    propsState,
+    updatePropState,
+  } = useAdvancedPlaygroundCode(codeFromMDXInjection, props);
 
-  const transformCode = (codeToTransform: string) => {
-    if (codeToTransform.startsWith('()') || codeToTransform.startsWith('class'))
-      return codeToTransform;
-    return `<React.Fragment>${codeToTransform}</React.Fragment>`;
-  };
-
+  // Icons need to be included in scope to be accessible in LivePreview
   const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
   const Element = isContrast ? Contrast : 'div';
   return (
     <LiveProvider
-      code={code}
+      code={codeWithUpdatedProps}
       scope={{ ...scope, ...icons }}
-      transformCode={transformCode}
+      transformCode={wrapCodeInFragmentIfNecessary}
       theme={theme}
     >
       <div className="eds-advanced__wrapper">
@@ -76,7 +76,10 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
           <Heading5 as="div" margin="bottom">
             Props
           </Heading5>
-          <PropsList props={props} handleChange={handleChange} />
+          <PropsList
+            propsState={propsState}
+            updatePropState={updatePropState}
+          />
         </div>
       </div>
       <div className="eds-advanced__show-code-wrapper">
@@ -91,7 +94,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
             <BaseExpand open={showCode}>
               <LiveEditor
                 className="eds-advanced__code"
-                onChange={updatedCode => setCode(updatedCode)}
+                onChange={updatedCode => setCodeWithUpdatedProps(updatedCode)}
               ></LiveEditor>
             </BaseExpand>
           </div>

@@ -1,292 +1,87 @@
-import React, { useEffect } from 'react';
-import { Dropdown } from '@entur/dropdown';
-import {
-  Switch,
-  TextField,
-  SegmentedControl,
-  SegmentedChoice,
-} from '@entur/form';
+import { useEffect, useState } from 'react';
 
-type ControllerProps = {
+export type AdvancedProps = {
+  type: 'icon' | 'boolean' | 'segmented' | 'string' | 'dropdown' | 'children';
   name: string;
-  label: string;
-  value: string;
-  setPlaygroundState: (name: string, item: string) => void;
-};
-
-type DropdownControllerProps = {
-  items: string[];
-};
-export const DropdownController = ({
-  name,
-  label,
-  items,
-  value,
-  setPlaygroundState,
-}: ControllerProps & DropdownControllerProps) => {
-  const [item, setItem] = React.useState<string | null>(value);
-  React.useEffect(() => {
-    setPlaygroundState(name, item);
-  }, [item]);
-  return (
-    <Dropdown
-      label={label}
-      items={items}
-      value={item}
-      onChange={e => setItem(e ? e.value : null)}
-    ></Dropdown>
-  );
-};
-
-export const SwitchController = ({
-  name,
-  label,
-  value,
-  setPlaygroundState,
-}: ControllerProps) => {
-  const [checked, setChecked] = React.useState(value);
-
-  React.useEffect(() => {
-    setPlaygroundState(name, checked);
-  }, [checked]);
-
-  return (
-    <Switch
-      value={checked}
-      checked={checked}
-      onChange={e => setChecked(e.target.checked)}
-    >
-      <div className="eds-advanced__switch-label">{label}</div>
-    </Switch>
-  );
-};
-
-export const TextController = ({
-  name,
-  label,
-  value,
-  setPlaygroundState,
-}: ControllerProps) => {
-  const [state, setState] = React.useState(value);
-  React.useEffect(() => {
-    setPlaygroundState(name, state);
-  }, [state]);
-  return (
-    <TextField
-      label={label}
-      value={state}
-      onChange={e => setState(e.target.value)}
-    ></TextField>
-  );
-};
-
-type SegmentedControllerProps = {
-  options: string[];
-};
-
-export const SegmentedController = ({
-  name,
-  label,
-  value,
-  options,
-  setPlaygroundState,
-}: ControllerProps & SegmentedControllerProps) => {
-  const [state, setstate] = React.useState(value);
-  React.useEffect(() => {
-    setPlaygroundState(name, state);
-  }, [state]);
-  return (
-    <SegmentedControl
-      label={label}
-      onChange={selectedValue => setstate(selectedValue)}
-      selectedValue={state}
-    >
-      {options.map(option => (
-        <SegmentedChoice key={option + label} value={option}>
-          {option}
-        </SegmentedChoice>
-      ))}
-    </SegmentedControl>
-  );
-};
-
-type BooleanVariant = {
-  name: string;
-  defaultValue: true | false;
-  type: 'boolean';
+  value: string | boolean;
+  defaultValue: string | boolean;
   label?: string;
+  options?: string[];
 };
-
-type MultiVariant = {
-  name: string;
-  options: string[];
-  defaultValue: string;
-  type: 'dropdown' | 'segmented';
-  label?: string;
-};
-type StringVariant = {
-  name: string;
-  defaultValue: string;
-  type: 'string';
-  label?: string;
-};
-
-type IconVariant = {
-  name: string;
-  type: 'icon';
-  label?: string;
-  defaultValue: 'AdjustmentsIcon';
-  options: ['AdjustmentsIcon', 'BellIcon', 'DestinationIcon'];
-};
-
-export type AdvancedProps =
-  | BooleanVariant
-  | MultiVariant
-  | StringVariant
-  | IconVariant;
-
-export const PropsList = ({ props, handleChange }) => {
-  return (
-    <>
-      {props.map(p => {
-        if (p.type === 'string') {
-          return (
-            <TextController
-              key={p.name}
-              name={p.name}
-              label={p.label ? p.label : p.name}
-              value={p.defaultValue}
-              setPlaygroundState={handleChange}
-            />
-          );
-        } else if (p.type === 'boolean') {
-          return (
-            <SwitchController
-              key={p.name}
-              name={p.name}
-              label={p.label ? p.label : capitalize(p.name)}
-              value={p.defaultValue}
-              setPlaygroundState={handleChange}
-            />
-          );
-        } else if (p.type === 'dropdown') {
-          return (
-            <DropdownController
-              key={p.name}
-              name={p.name}
-              items={p.options}
-              label={p.label ? p.label : capitalize(p.name)}
-              value={p.defaultValue}
-              setPlaygroundState={handleChange}
-            />
-          );
-        } else if (p.type === 'segmented') {
-          return (
-            <SegmentedController
-              key={p.name}
-              name={p.name}
-              options={p.options}
-              value={p.defaultValue}
-              label={p.label ? p.label : capitalize(p.name)}
-              setPlaygroundState={handleChange}
-            />
-          );
-        } else if (p.type === 'icon') {
-          return (
-            <DropdownController
-              key={p.name}
-              name={p.name}
-              items={p.options}
-              label={p.label ? p.label : capitalize(p.name)}
-              value={p.defaultValue}
-              setPlaygroundState={handleChange}
-            />
-          );
-        } else {
-          return <></>;
-        }
-      })}
-    </>
-  );
-};
-
-function capitalize(s: string) {
-  return s && s[0].toUpperCase() + s.slice(1);
-}
 
 export const useAdvancedPlaygroundCode = (
-  __code: any,
-  props: AdvancedProps[],
+  codeFromMDXInjection: string,
+  initialProps: AdvancedProps[],
 ) => {
-  const [code, setCode] = React.useState<string>(__code);
-  const [propState, setPropState] = React.useState(
-    props.map(p => {
-      const name = p.name;
-      const df = p.defaultValue;
-      return { [name]: df };
+  const [codeWithUpdatedProps, setCodeWithUpdatedProps] =
+    useState<string>(codeFromMDXInjection);
+  const [propsState, setPropsState] = useState(
+    initialProps.map(prop => {
+      return { ...prop, value: prop.defaultValue };
     }),
   );
+  const componentName = /([A-Z][a-z]+)+/.exec(codeFromMDXInjection)?.[0];
 
-  const componentName = /([A-Z][a-z]+)+/.exec(__code)[0];
-
-  const handleChange = (name: string, value: string | boolean) => {
-    const prevState = propState;
-    setPropState(
-      prevState.map(prev => {
-        return Object.keys(prev)[0] === name ? { [name]: value } : prev;
-      }),
+  const updatePropState = (name: string, value: string | boolean) => {
+    setPropsState(
+      propsState.map(prev => (prev.name === name ? { ...prev, value } : prev)),
     );
   };
 
   useEffect(() => {
-    const FormatChildren = (code: string) => {
-      const childrenContent = propState.find(prop => prop['children']);
+    const componentPropsRegex = new RegExp(
+      `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`,
+    );
 
-      if (childrenContent) {
-        // Regex for alle typer innhold til children
-        const childrenRegex = new RegExp(`>(?!})(([\\W\\w\\s])+)?<`);
-        // console.log(childrenRegex.exec(code));
+    const propStringToInject = propsState
+      .map(prop => {
+        if (prop.name === 'children' || !prop.value) return '';
 
-        return code.replace(
-          childrenRegex,
-          `>${childrenContent?.children ? childrenContent.children : ''}<`,
-        );
-      } else {
-        return code;
-      }
+        switch (prop.type) {
+          case 'icon':
+            return ` ${prop.name}={<${prop.value}/>}`;
+          case 'boolean':
+            return ` ${prop.name}`;
+          default:
+            return ` ${prop.name}="${prop.value}"`;
+        }
+      })
+      .join('');
+
+    const addChildContentIfAvailable = (codeToFormat: string) => {
+      const childrenContent = propsState.find(
+        prop => prop.name === 'children',
+      )?.value;
+
+      if (!childrenContent) return codeToFormat;
+
+      const regexForChildContent = new RegExp(`>(?!})(([\\W\\w\\s])+)?<`);
+      return codeToFormat.replace(regexForChildContent, `>${childrenContent}<`);
     };
-    const componentPropsPattern = `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`;
-    const componentPropsRegex = new RegExp(componentPropsPattern);
-    const propString = Object.entries(props)
-      .reduce((accumulator, [, value]) => {
-        if (value.name === 'children') {
-          return accumulator;
-        }
-        const thisone = propState.find(prop => {
-          return prop[value.name];
-        });
 
-        if (value.type === 'icon' && thisone !== undefined) {
-          return `${accumulator} ${value.name}={<${thisone[value.name]}/>}`;
-        }
-        if (value.type === 'boolean' && thisone !== undefined) {
-          return `${accumulator} ${value.name}`;
-        }
-        if (thisone !== undefined) {
-          return `${accumulator} ${value.name}="${thisone[value.name]}"`;
-        }
-        return accumulator;
-      }, '')
-      .concat('');
-
-    setCode(prev => {
+    setCodeWithUpdatedProps(prev => {
       const codeWithProps = prev.replace(
         componentPropsRegex,
-        `<${componentName}${propString}>`,
+        `<${componentName}${propStringToInject}>`,
       );
-      return FormatChildren(codeWithProps);
+      return addChildContentIfAvailable(codeWithProps);
     });
-  }, [propState]);
+  }, [propsState, componentName]);
 
-  return { code, setCode, handleChange };
+  return {
+    codeWithUpdatedProps,
+    setCodeWithUpdatedProps,
+    propsState,
+    updatePropState,
+  };
+};
+
+export const capitalize = (s: string) => {
+  return s && s[0].toUpperCase() + s.slice(1);
+};
+
+export const wrapCodeInFragmentIfNecessary = (codeToWrap: string) => {
+  if (codeToWrap.startsWith('()') || codeToWrap.startsWith('class'))
+    return codeToWrap;
+  return `<>${codeToWrap}</>`;
 };
