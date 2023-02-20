@@ -10,7 +10,7 @@ import {
   BellIcon,
   DestinationIcon,
 } from '@entur/icons';
-import { BaseCard } from '@entur/layout';
+import { BaseCard, Contrast } from '@entur/layout';
 import { Heading5 } from '@entur/typography';
 import { AdvancedProps, PropsList } from './playground-utils';
 // @ts-expect-error mangler typer for theme-fil
@@ -107,6 +107,7 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
   };
 
   const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
+  const Element = isContrast ? Contrast : 'div';
   return (
     <LiveProvider
       code={code}
@@ -115,16 +116,12 @@ export const AdvancedPlayground: React.FC<AdvancedPlaygroundProps> = ({
       theme={theme}
     >
       <div className="eds-advanced__wrapper">
-        <div
-          className={classNames('eds-advanced__playground', {
-            'eds-contrast': isContrast,
-          })}
-        >
+        <Element className="eds-advanced__playground">
           <LivePreview
             style={style}
             className="eds-advanced__playground-live-preview"
           ></LivePreview>
-        </div>
+        </Element>
         <Switch
           className={classNames('eds-advanced__contrast-switch', {
             'eds-contrast': isContrast,

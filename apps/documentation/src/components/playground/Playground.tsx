@@ -10,12 +10,10 @@ import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand/src';
 import { SourceCodeIcon } from '@entur/icons/dist';
 
-// @ts-expect-error mangler typer for theme-fil
 import theme from './themeForPlayground';
 import { AdvancedPlayground } from './AdvancedPlayground';
 
 import './Playground.scss';
-import { ConditionalWrapper } from '@entur/utils';
 
 type PlaygroundProps = {
   defaultContrast?: boolean;
@@ -51,6 +49,8 @@ export const Playground: React.FC<PlaygroundProps> = ({
     return `<React.Fragment>${codeToTransform}</React.Fragment>`;
   };
 
+  const Element = isContrast ? Contrast : 'div';
+
   if (!advanced) {
     return (
       <LiveProvider
@@ -79,21 +79,13 @@ export const Playground: React.FC<PlaygroundProps> = ({
             </SecondarySquareButton>
           )}
         </div>
-        <div
+        <Element
           className={classNames('playground', {
-            'eds-contrast': isContrast,
             'playground--open': isShowingEditor,
           })}
         >
-          <ConditionalWrapper
-            condition={isContrast}
-            wrapper={(children: React.ReactNode) => (
-              <Contrast>{children}</Contrast>
-            )}
-          >
-            <LivePreview style={{ ...style }} />
-          </ConditionalWrapper>
-        </div>
+          <LivePreview style={{ ...style }} />
+        </Element>
         <BaseExpand open={isShowingEditor}>
           <LiveEditor
             style={{ overflowX: 'scroll' }}
