@@ -11,12 +11,12 @@ export type AdvancedProps = {
 
 export const useAdvancedPlaygroundCode = (
   codeFromMDXInjection: string,
-  initialProps: AdvancedProps[],
+  initialProps?: AdvancedProps[],
 ) => {
   const [codeWithUpdatedProps, setCodeWithUpdatedProps] =
     useState<string>(codeFromMDXInjection);
-  const [propsState, setPropsState] = useState(
-    initialProps.map(prop => {
+  const [propsState, setPropsState] = useState<AdvancedProps[] | undefined>(
+    initialProps?.map(prop => {
       return { ...prop, value: prop.defaultValue };
     }),
   );
@@ -24,17 +24,18 @@ export const useAdvancedPlaygroundCode = (
 
   const updatePropState = (name: string, value: string | boolean) => {
     setPropsState(
-      propsState.map(prev => (prev.name === name ? { ...prev, value } : prev)),
+      propsState?.map(prev => (prev.name === name ? { ...prev, value } : prev)),
     );
   };
 
   useEffect(() => {
+    if (!initialProps) return;
     const componentPropsRegex = new RegExp(
       `<([A-Z][a-z]+)+(\\s?>|\\s[\\s\\S]*?>(?!}))`,
     );
 
     const propStringToInject = propsState
-      .map(prop => {
+      ?.map(prop => {
         if (prop.name === 'children' || !prop.value) return '';
 
         switch (prop.type) {
@@ -49,7 +50,7 @@ export const useAdvancedPlaygroundCode = (
       .join('');
 
     const addChildContentIfAvailable = (codeToFormat: string) => {
-      const childrenContent = propsState.find(
+      const childrenContent = propsState?.find(
         prop => prop.name === 'children',
       )?.value;
 
@@ -66,13 +67,14 @@ export const useAdvancedPlaygroundCode = (
       );
       return addChildContentIfAvailable(codeWithProps);
     });
-  }, [propsState, componentName]);
+  }, [propsState, componentName, initialProps]);
 
   return {
     codeWithUpdatedProps,
     setCodeWithUpdatedProps,
     propsState,
     updatePropState,
+    componentName,
   };
 };
 

@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
-import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
+import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
 import classNames from 'classnames';
 
-import { Label } from '@entur/typography';
+import { Heading5, Label } from '@entur/typography';
 import { Switch } from '@entur/form';
 import { Contrast } from '@entur/layout';
 import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand';
-import { SourceCodeIcon } from '@entur/icons';
+import { ConditionalWrapper } from '@entur/utils';
+import {
+  AdjustmentsIcon,
+  BellIcon,
+  DestinationIcon,
+  SourceCodeIcon,
+} from '@entur/icons';
 
-import { AdvancedPlayground } from './AdvancedPlayground';
 import {
   AdvancedProps,
+  useAdvancedPlaygroundCode,
   wrapCodeInFragmentIfNecessary,
 } from './playground-utils';
+import { PropsList } from './PropsList';
+// @ts-expect-error No types for theme exists
 import theme from './themeForPlayground';
 
 import './Playground.scss';
@@ -33,8 +41,8 @@ type PlaygroundProps = {
 };
 
 export const Playground: React.FC<PlaygroundProps> = ({
-  __code,
-  __scope,
+  __code: codeFromMDXInjection,
+  __scope: scopeFromMDXInjection,
   language = 'jsx',
   props,
   style,
@@ -42,37 +50,45 @@ export const Playground: React.FC<PlaygroundProps> = ({
   defaultShowEditor = false,
   hideContrastOption = false,
 }) => {
-  const [isContrast, setContrast] = React.useState(defaultContrast);
-  const [isShowingEditor, setShowingEditor] = React.useState(defaultShowEditor);
+  const [isContrast, setContrast] = useState(defaultContrast);
+  const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
+
+  const {
+    codeWithUpdatedProps,
+    setCodeWithUpdatedProps,
+    propsState,
+    updatePropState,
+    componentName,
+  } = useAdvancedPlaygroundCode(codeFromMDXInjection, props);
 
   const Element = isContrast ? Contrast : 'div';
 
-  if (props) {
-    return (
-      <AdvancedPlayground
-        code={__code}
-        scope={__scope}
-        props={props}
-        style={style}
-      />
-    );
-  }
+  // Icons need to be included in scope to be accessible in LivePreview
+  const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
+
+  // Different code and scope if props selector panel is available
+  const code = codeWithUpdatedProps;
+  const scope = propsState
+    ? { ...scopeFromMDXInjection, ...icons }
+    : scopeFromMDXInjection;
+
   return (
     <LiveProvider
-      code={__code}
-      scope={__scope}
+      code={code}
+      scope={scope}
       language={language}
       transformCode={wrapCodeInFragmentIfNecessary}
       theme={theme}
+      className="playground"
     >
-      <div style={{ display: 'flex', marginTop: '1rem' }}>
+      <div className="playground__header">
         {!hideContrastOption && (
           <div className="playground__contrast-switch">
             <Label as="span">Kontrast</Label>
             <Switch
               checked={isContrast}
               onChange={() => setContrast(prev => !prev)}
-            ></Switch>
+            />
           </div>
         )}
         {!defaultShowEditor && (
@@ -84,17 +100,40 @@ export const Playground: React.FC<PlaygroundProps> = ({
           </SecondarySquareButton>
         )}
       </div>
-      <Element
-        className={classNames('playground', {
-          'playground--open': isShowingEditor,
-        })}
+      <ConditionalWrapper
+        condition={propsState !== undefined}
+        wrapper={(children: React.ReactNode) => (
+          <div className="playground__live-preview-and-props-wrapper">
+            {children}
+          </div>
+        )}
       >
-        <LivePreview style={{ ...style }} />
-      </Element>
+        <Element
+          className={classNames('playground__live-preview-container', {
+            'playground__live-preview-container--code-closed': !isShowingEditor,
+          })}
+        >
+          <LivePreview
+            className="playground__live-preview"
+            style={{ ...style }}
+          />
+        </Element>
+        {propsState !== undefined && (
+          <div className="playground__props-selector">
+            <Heading5 as="h2" margin="bottom" style={{ height: '2rem' }}>
+              {`${componentName}-props`}
+            </Heading5>
+            <PropsList
+              propsState={propsState}
+              updatePropState={updatePropState}
+            />
+          </div>
+        )}
+      </ConditionalWrapper>
       <BaseExpand open={isShowingEditor}>
         <LiveEditor
-          style={{ overflowX: 'scroll' }}
           className="playground__editor"
+          onChange={updatedCode => setCodeWithUpdatedProps(updatedCode)}
         />
       </BaseExpand>
     </LiveProvider>

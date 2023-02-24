@@ -8,6 +8,8 @@ import {
 } from '@entur/form';
 import { AdvancedProps, capitalize } from './playground-utils';
 
+import './Playground.scss';
+
 export const PropsList = ({
   propsState,
   updatePropState,
@@ -46,6 +48,7 @@ const PropsController = ({
           items={propState.options ?? ['-mangler valg-']}
           value={propState.value as string}
           onChange={e => updatePropState(propState.name, e ? e.value : '')}
+          className="playground__props-selector__prop"
         />
       );
     case 'string':
@@ -54,6 +57,7 @@ const PropsController = ({
           label={propState.label}
           value={propState.value as string}
           onChange={e => updatePropState(propState.name, e.target.value)}
+          className="playground__props-selector__prop"
         />
       );
     case 'boolean':
@@ -62,17 +66,18 @@ const PropsController = ({
           checked={propState.value as boolean}
           onChange={e => updatePropState(propState.name, e.target.checked)}
         >
-          <div className="eds-advanced__switch-label">{propState.label}</div>
+          {propState.label ?? capitalize(propState.name)}
         </Switch>
       );
     case 'segmented':
       return (
         <SegmentedControl
-          label={propState.label}
+          label={propState.label ?? capitalize(propState.name)}
           selectedValue={propState.value as string}
           onChange={selectedValue =>
             updatePropState(propState.name, selectedValue as string)
           }
+          className="playground__props-selector__prop"
         >
           {propState.options?.map(option => (
             <SegmentedChoice key={option + propState.label} value={option}>
