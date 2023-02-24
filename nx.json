@@ -8,13 +8,26 @@
       }
     }
   },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"]
+  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/dts.config.js",
+        "{workspaceRoot}/tsconfig*.json",
+        "{workspaceRoot}/package.json",
+        "!{projectRoot}/*.md"
+      ],
       "outputs": ["{projectRoot}/dist"]
     },
     "start": {
       "dependsOn": ["^build"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc"]
     }
   }
 }
