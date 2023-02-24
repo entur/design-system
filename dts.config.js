@@ -12,10 +12,15 @@ module.exports = {
         output: 'dist/styles.css',
         processor: css =>
           postcss([postcssPresetEnv])
-            .process(css, { from: undefined })
-            .then(result => result.css),
+            // Having multiple @charset in bundle causes syntax errors so we remove them
+            .process(cssWithoutCharset(css), { from: undefined })
+            .then(result => result.css + '\n'),
       }),
     );
     return config;
   },
 };
+
+function cssWithoutCharset(css) {
+  return css.replace('@charset "UTF-8";', '');
+}
