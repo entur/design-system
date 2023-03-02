@@ -10,7 +10,7 @@ tags: toast, alert, varsel, varsler, kopier, tekst, text, copy
 
 import { Props, Link as DoczLink } from 'docz';
 
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 
@@ -19,7 +19,7 @@ import { Paragraph, PreformattedText, Link } from '@entur/typography';
 
 <PageHeader />
 
-<Playground>
+<Playground style={{ padding: '1.5rem 20% 0' }}>
   <CopyableText>#181c56</CopyableText>
   <CopyableText
     successHeading="Kommando kopiert!"

@@ -9,7 +9,7 @@ tags: leg, legs, legbone, leglines
 
 import { Props, Link } from 'docz';
 import { LegLine, LegBone, TravelLeg } from '@entur/travel';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { GridContainer, GridItem } from '@entur/grid';
@@ -24,12 +24,10 @@ import { travelleg } from './props';
   transportmidlet.
 </PageHeader>
 
-<Playground
-advanced props={travelleg}
-style={{height:"10rem", alignItems:"normal", padding:"1rem"}}
->
-  <TravelLeg transport="bus" direction="vertical"></TravelLeg>
-
+<Playground props={travelleg}>
+  <div style={{ display: 'flex', height: '10rem' }}>
+    <TravelLeg transport="bus" direction="vertical"></TravelLeg>
+  </div>
 </Playground>
 
 ## Komponenter

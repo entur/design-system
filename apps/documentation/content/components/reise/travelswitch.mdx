@@ -10,7 +10,7 @@ tags: switch, travelswitch
 
 import { Props, Link } from 'docz';
 import { TravelSwitch } from '@entur/form';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { travelswitch } from './props';
@@ -18,7 +18,7 @@ import './traveltag.css';
 
 <PageHeader />
 
-<Playground advanced props={travelswitch}>
+<Playground props={travelswitch}>
   <TravelSwitch transport="bus">Buss</TravelSwitch>
 </Playground>
 

@@ -10,18 +10,19 @@ tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
 
 import { Props, Link } from 'docz';
 import { Dropdown, NativeDropdown } from '@entur/dropdown';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 import { dropdownItems, countries } from './dropdownItems';
 import { BestPractices, Example } from '~/components/BestPractices';
+import { CodeBlock } from '~/components/CodeBlock';
 import doPic from './DropdownDo.png';
 import dontPic from './DropdownDont.png';
 import { Link as LinkText } from '@entur/typography';
 
 <PageHeader />
 
-<Playground style={{ margin: '0 33%' }}>
+<Playground style={{ overflow: 'visible' }}>
   <Dropdown
     items={dropdownItems}
     label="Reisende"
@@ -46,8 +47,8 @@ import { Link as LinkText } from '@entur/typography';
 
 `<Dropdown />` er en fleksibel komponent for å lage nedtrekkslister. Du sender inn en liste med valg, som kan være en string, eller objekter med verdi og label - eller en blanding av disse. Du kan også sende med en liste med ikoner, som vises til høyre:
 
-```js
-const items = [
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`const items = [
   'Bislett',
   { value: 'OsloMet', label: 'Holbergsplass' },
   {
@@ -55,10 +56,10 @@ const items = [
     label: 'Oslo Sentralstasjon',
     icons: [BusIcon, TrainIcon, MetroIcon],
   },
-];
-```
+];`}
+</CodeBlock>
 
-By default så fungerer Dropdown som en vanlig select-boks - men den har også støtte for å være søkbar. Da sender du med propertyen `searchable`.
+By default så fungerer Dropdown som en vanlig select-boks, men den har også støtte for å være søkbar. Da sender du med propertyen `searchable`.
 
 Om man vil at dropdown-lista skal forskyve innholdet under kan man benytte seg av prop'en `listStyle` og sende med f.eks. `listStyle={{position:"relative", top:"8px"}}`
 

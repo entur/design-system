@@ -10,7 +10,7 @@ tags: tag, knagg,
 
 import { Tag } from '@entur/layout';
 import { Props } from 'docz';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { ClockIcon } from '@entur/icons';
@@ -21,7 +21,7 @@ import { ClockIcon } from '@entur/icons';
   {() => {
     const time = new Date().getHours() + 1 + ':' + new Date().getMinutes();
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex', gap: '2rem' }}>
         <Tag>
           <ClockIcon />
         </Tag>

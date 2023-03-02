@@ -4,19 +4,22 @@
 .table-of-content-container {
   display: none;
   z-index: 1;
+
   @media screen and (min-width: $show-toc-min-width) {
     display: block;
     position: fixed;
     left: $toc-left-position;
-    top: 9rem;
+    top: ($navbar-height + 2rem);
     bottom: 0rem;
-    overflow-y: scroll;
+    overflow-y: auto;
+
+    height: calc(100% - 9rem);
   }
 }
 .table-of-content {
   list-style: none;
   padding: 0;
-  max-width: 10rem;
+  max-width: 15rem;
   padding-left: 1rem;
   border-left: $border-widths-medium solid $colors-greys-grey70;
 }

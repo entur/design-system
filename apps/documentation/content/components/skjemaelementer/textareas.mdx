@@ -11,7 +11,7 @@ tags: tekstområde, textarea
 import { Props, Link } from 'docz';
 import { TextArea } from '@entur/form';
 import { ImageIcon } from '@entur/icons';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import { Link as LinkText } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -19,11 +19,7 @@ import { textarea } from './props';
 
 <PageHeader />
 
-<Playground
-  advanced
-  props={textarea}
-  style={{ width: '66%', display: 'block' }}
->
+<Playground props={textarea}>
   <TextArea></TextArea>
 </Playground>
 
