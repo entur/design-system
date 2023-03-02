@@ -94,7 +94,7 @@
   &__body {
     > .eds-table__row {
       border-bottom: $border-widths-default solid $colors-greys-grey70;
-      .eds-contrast &  {
+      .eds-contrast & {
         border-color: $colors-blues-blue20;
       }
       &:focus {
@@ -103,7 +103,7 @@
       &--hover {
         &:hover {
           background: $colors-greys-grey80;
-          .eds-contrast &  {
+          .eds-contrast & {
             background: $colors-blues-blue10;
           }
         }
@@ -111,7 +111,7 @@
       &--active {
         background: $colors-blues-blue80;
         border: $border-widths-medium solid $colors-blues-blue70;
-        .eds-contrast &  {
+        .eds-contrast & {
           border-color: $colors-blues-blue20;
           background: $colors-blues-blue20;
         }
@@ -124,7 +124,7 @@
   }
   &__head {
     border-bottom: $border-widths-default solid $colors-greys-grey70;
-    .eds-contrast &  {
+    .eds-contrast & {
       border-color: $colors-blues-blue20;
     }
   }
