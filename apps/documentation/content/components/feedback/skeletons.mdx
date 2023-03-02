@@ -9,7 +9,7 @@ tags: skjelett, content loader, last, placeloader, placeholder
 ---
 
 import { Props } from 'docz';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -25,7 +25,7 @@ import {
 <PageHeader />
 
 <Playground>
-  <SkeletonWrapper>
+  <SkeletonWrapper style={{ width: '100%' }}>
     <SkeletonCircle size="5rem" />
     <SkeletonRectangle width="30%" />
     <SkeletonRectangle width="70%" />

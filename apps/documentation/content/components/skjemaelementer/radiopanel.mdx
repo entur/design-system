@@ -10,7 +10,7 @@ tags: panel
 
 import { Props } from 'docz';
 import { RadioPanel, RadioGroup } from '@entur/form';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 import { VyIcon } from '@entur/icons';
@@ -18,7 +18,7 @@ import { Label } from '@entur/typography';
 
 <PageHeader />
 
-<Playground style={{ margin: '5% 30%' }}>
+<Playground style={{ margin: '5% 0' }}>
   {() => {
     const [value, setValue] = React.useState(null);
     return (

@@ -9,7 +9,7 @@ tags: loader, spinner, wait, vent, indikator, opplasting, last opp
 ---
 
 import { Props } from 'docz';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
 
@@ -24,7 +24,7 @@ import { Loader } from '@entur/loader';
   {() => {
     const [progress, setProgress] = React.useState(0);
     return (
-      <>
+      <div style={{ width: '60%' }}>
         <Loader>Behandler</Loader>
         <Loader progress={20}>Laster opp fil</Loader>
         <Loader progress={progress}>
@@ -34,7 +34,7 @@ import { Loader } from '@entur/loader';
             Gå videre &rarr;
           </SecondaryButton>
         </Loader>
-      </>
+      </div>
     );
   }}
 </Playground>

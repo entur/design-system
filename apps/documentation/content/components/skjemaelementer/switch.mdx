@@ -13,7 +13,7 @@ import { Switch } from '@entur/form';
 import { Label } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import { BusIcon, FerryIcon } from '@entur/icons';
-import { Playground } from '~/components/Playground';
+import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -22,14 +22,16 @@ import dontPic from './SwitchDont.png';
 
 <PageHeader />
 
-<Playground style={{ width: '30%', margin: 'auto' }}>
+<Playground style={{ width: '30%' }}>
   {() => {
     const [checked, setChecked] = React.useState(false);
     return (
-      <>
+      <div>
         <Label>Ønsker du å motta nyhetsbrev?</Label>
-        <Switch checked={checked} onChange={() => setChecked(!checked)} />
-      </>
+        <Switch checked={checked} onChange={() => setChecked(!checked)}>
+          Ja takk
+        </Switch>
+      </div>
     );
   }}
 </Playground>
