@@ -28,43 +28,44 @@
   @media all and (min-width: $breakpoints-large) {
     max-height: 30vh;
   }
-}
-.eds-dropdown-list__item {
-  align-items: center;
-  background-color: $colors-greys-grey90;
-  border-bottom: $border-widths-default solid $colors-greys-grey70;
-  border-left: $border-widths-default solid $colors-greys-grey70;
-  border-right: $border-widths-default solid $colors-greys-grey70;
-  color: $colors-brand-blue;
-  display: flex;
-  justify-content: space-between;
-  font-family: inherit;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-medium;
-  padding: $space-small $space-default;
-  width: 100%;
-  &:first-child {
-    border-top: $border-widths-default solid $colors-greys-grey70;
-  }
-  &:last-child {
-    border-bottom: none;
-  }
 
-  .eds-contrast & {
+  &__item {
+    align-items: center;
+    background-color: $colors-greys-grey90;
+    border-bottom: $border-widths-default solid $colors-greys-grey70;
+    border-left: $border-widths-default solid $colors-greys-grey70;
+    border-right: $border-widths-default solid $colors-greys-grey70;
     color: $colors-brand-blue;
-    border-color: $colors-blues-blue30;
-    background-color: $colors-brand-white;
-  }
-
-  &--highlighted  {
-    background-color: $colors-blues-blue70;
+    display: flex;
+    justify-content: space-between;
+    font-family: inherit;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-medium;
+    padding: $space-small $space-default;
+    width: 100%;
+    &:first-child {
+      border-top: $border-widths-default solid $colors-greys-grey70;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
 
     .eds-contrast & {
+      color: $colors-brand-blue;
+      border-color: $colors-blues-blue30;
+      background-color: $colors-brand-white;
+    }
+
+    &--highlighted {
       background-color: $colors-blues-blue70;
+
+      .eds-contrast & {
+        background-color: $colors-blues-blue70;
+      }
     }
   }
-}
 
-.eds-dropdown-list__item-icon {
-  margin-left: $space-small;
+  &-icon {
+    margin-left: $space-small;
+  }
 }

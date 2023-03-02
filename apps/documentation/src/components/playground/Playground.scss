@@ -65,10 +65,9 @@
         margin-bottom: 0rem;
       }
 
-      &:has(+ .ReactCollapse--collapse) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        margin-bottom: 0rem;
+      &.eds-contrast {
+        border: $border-widths-small solid $colors-brand-blue;
+        border-bottom-color: $colors-blues-blue30;
       }
 
       &.eds-contrast {
