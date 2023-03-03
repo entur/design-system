@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.33](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.32...@entur/dropdown@3.0.33) (2023-03-03)
+
+### Bug Fixes
+
+- **dropdown:** fix hover highlight not working in dropdown list ([edb684a](https://bitbucket.org/enturas/design-system/commits/edb684a98e7e99f3761812417a1c8f4dad87af0f))
+- remove more non-break space that mess up stylesheets ([58148b0](https://bitbucket.org/enturas/design-system/commits/58148b0c3fdaa25a64820263d26b5e49b7ddc96e))
+
 ## [3.0.32](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.31...@entur/dropdown@3.0.32) (2023-02-17)
 
 **Note:** Version bump only for package @entur/dropdown

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.38](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.37...@entur/table@4.5.38) (2023-03-03)
+
+### Bug Fixes
+
+- remove more non-break space that mess up stylesheets ([58148b0](https://bitbucket.org/enturas/design-system/commits/58148b0c3fdaa25a64820263d26b5e49b7ddc96e))
+
 ## [4.5.37](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.36...@entur/table@4.5.37) (2023-02-17)
 
 **Note:** Version bump only for package @entur/table

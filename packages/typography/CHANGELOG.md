@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.11](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.10...@entur/typography@1.7.11) (2023-03-03)
+
+### Bug Fixes
+
+- **typography:** fix blockquote styling not being applied ([396f876](https://bitbucket.org/enturas/design-system/commits/396f8768536e4de500404a92d52bf40be255921a))
+
 ## [1.7.10](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.6...@entur/typography@1.7.10) (2023-02-17)
 
 **Note:** Version bump only for package @entur/typography
