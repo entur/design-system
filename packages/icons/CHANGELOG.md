@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.8.1...@entur/icons@6.0.0) (2023-03-07)
+
+### Features
+
+- **icons:** add new AmericanExpressIcon ([5c90986](https://bitbucket.org/enturas/design-system/commits/5c90986b30ba584dcfee1402ca056dba3fcbefba))
+- **travel components:** add missing transport types and change transport names to match tokens ([ea24598](https://bitbucket.org/enturas/design-system/commits/ea2459832d39a0d625e2d2419c3b57a4c94d46fe))
+
+### BREAKING CHANGES
+
+- **travel components:** tranpsort types 'scooter', 'bike', 'car' and 'foot' are deprecated and replaced with 'mobility',
+  'bicycle', 'taxi' and 'walk'
+
 ## [5.8.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@5.8.0...@entur/icons@5.8.1) (2023-03-03)
 
 **Note:** Version bump only for package @entur/icons

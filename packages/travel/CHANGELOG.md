@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.30...@entur/travel@6.0.0) (2023-03-07)
+
+### Code Refactoring
+
+- **travel switch:** move travel switch from @entur/form to @entur/travel ([92e5d46](https://bitbucket.org/enturas/design-system/commits/92e5d46d71ee7614e0b4ae02b5792e47abfae296))
+
+### Features
+
+- **travel components:** add missing transport types and change transport names to match tokens ([ea24598](https://bitbucket.org/enturas/design-system/commits/ea2459832d39a0d625e2d2419c3b57a4c94d46fe))
+
+### BREAKING CHANGES
+
+- **travel components:** tranpsort types 'scooter', 'bike', 'car' and 'foot' are deprecated and replaced with 'mobility',
+  'bicycle', 'taxi' and 'walk'
+- **travel switch:** travelSwitch is no longer exported from @entur/form. You need to change the import to @entur/travel
+  to continue using travelSwitch
+
 ## [5.0.30](https://bitbucket.org/enturas/design-system/compare/@entur/travel@5.0.29...@entur/travel@5.0.30) (2023-03-03)
 
 **Note:** Version bump only for package @entur/travel

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@1.0.11...@entur/documentation@2.0.0) (2023-03-07)
+
+### Bug Fixes
+
+- fix datepicker and multiselect overflow issue in playground preview ([fbf7408](https://bitbucket.org/enturas/design-system/commits/fbf74081397117631f75389d0d88080149e40e39))
+
+### Code Refactoring
+
+- **travel switch:** move travel switch from @entur/form to @entur/travel ([92e5d46](https://bitbucket.org/enturas/design-system/commits/92e5d46d71ee7614e0b4ae02b5792e47abfae296))
+
+### BREAKING CHANGES
+
+- **travel switch:** travelSwitch is no longer exported from @entur/form. You need to change the import to @entur/travel
+  to continue using travelSwitch
+
 ## [1.0.11](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@1.0.10...@entur/documentation@1.0.11) (2023-03-03)
 
 **Note:** Version bump only for package @entur/documentation

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.15...@entur/button@3.0.0) (2023-03-07)
+
+### Features
+
+- **travel components:** add missing transport types and change transport names to match tokens ([ea24598](https://bitbucket.org/enturas/design-system/commits/ea2459832d39a0d625e2d2419c3b57a4c94d46fe))
+
+### BREAKING CHANGES
+
+- **travel components:** tranpsort types 'scooter', 'bike', 'car' and 'foot' are deprecated and replaced with 'mobility',
+  'bicycle', 'taxi' and 'walk'
+
 ## [2.10.15](https://bitbucket.org/enturas/design-system/compare/@entur/button@2.10.14...@entur/button@2.10.15) (2023-03-03)
 
 **Note:** Version bump only for package @entur/button

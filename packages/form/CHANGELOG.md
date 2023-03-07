@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.20...@entur/form@6.0.0) (2023-03-07)
+
+### Code Refactoring
+
+- **travel switch:** move travel switch from @entur/form to @entur/travel ([92e5d46](https://bitbucket.org/enturas/design-system/commits/92e5d46d71ee7614e0b4ae02b5792e47abfae296))
+
+### BREAKING CHANGES
+
+- **travel switch:** travelSwitch is no longer exported from @entur/form. You need to change the import to @entur/travel
+  to continue using travelSwitch
+
 ## [5.4.20](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.19...@entur/form@5.4.20) (2023-03-03)
 
 ### Bug Fixes
