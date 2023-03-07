@@ -215,6 +215,7 @@ function createSvgrConfig(native = false, componentName) {
       'SamiIcon',
       'LogoNegativeIcon',
       'LogoPositiveIcon',
+      'AmericanExpressIcon',
       'MastercardIcon',
       'VippsIcon',
       'VippsLogoIcon',
