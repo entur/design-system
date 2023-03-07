@@ -30,7 +30,7 @@ import { datepicker } from './props';
 
 <Playground
   defaultShowEditor
-  style={{ display: 'flex', justifyContent: 'center' }}
+  style={{ display: 'flex', justifyContent: 'center', overflow: 'visible' }}
 >
   {() => {
     const [date, setDate] = React.useState(now('Europe/Oslo'));
@@ -61,7 +61,11 @@ Ledeteksten (label), og `navigationDescription`\* må sende inn manuell oversett
 
 #### DatePicker tilpasset USA
 
-<Playground defaultShowEditor hideContrastOption>
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+>
   {() => {
     const [date, setDate] = React.useState(now('Europe/Oslo'));
     return (
@@ -99,7 +103,11 @@ Hvis du ønsker å begrense tilgjengelige datoer for brukeren, samt gi en tilbak
 
 Følgende eksempel godtar datoer fra og med i dag til og med en måned frem:
 
-<Playground defaultShowEditor hideContrastOption>
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+>
   {() => {
     const [date, setDate] = React.useState(
       today('Europe/Oslo').add({ months: 2 }),
@@ -122,7 +130,11 @@ Følgende eksempel godtar datoer fra og med i dag til og med en måned frem:
 
 Følgende eksempel godtar datoer som ikke er en helg.
 
-<Playground defaultShowEditor hideContrastOption>
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+>
   {() => {
     const [date, setDate] = React.useState(now('Europe/Oslo'));
     return (
@@ -254,19 +266,19 @@ Hvis du endrer `locale` (dvs. språk) til noe annet enn norsk og engelsk må du 
 ### <DatePicker /\>
 
 <ImportStatement imports="DatePicker" />
-{/* <Props of={DatePicker} /> */}
+<Props of={DatePicker} />
 
 ### <DateField /\>
 
 <ImportStatement imports="DateField" />
-{/* <Props of={DateField} /> */}
+<Props of={DateField} />
 
 ### <Calendar /\>
 
 <ImportStatement imports="Calendar" />
-{/* <Props of={Calendar} /> */}
+<Props of={Calendar} />
 
 ### <NativeDatePicker /\>
 
 <ImportStatement imports="NativeDatePicker" />
-{/* <Props of={NativeDatePicker} /> */}
+<Props of={NativeDatePicker} />
