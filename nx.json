@@ -10,7 +10,6 @@
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "!{projectRoot}/*.md"],
-    "production": ["{projectRoot}/dist"],
     "configs": [
       "{workspaceRoot}/dts.config.js",
       "{workspaceRoot}/tsconfig*.json",
@@ -21,7 +20,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["default", "configs", "^production"],
+      "inputs": ["default", "^default", "configs"],
       "outputs": ["{projectRoot}/dist"]
     },
     "start": {
