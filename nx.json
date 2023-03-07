@@ -9,25 +9,26 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*"]
+    "default": ["{projectRoot}/**/*", "!{projectRoot}/*.md"],
+    "production": ["{projectRoot}/dist"],
+    "configs": [
+      "{workspaceRoot}/dts.config.js",
+      "{workspaceRoot}/tsconfig*.json",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/.eslintrc"
+    ]
   },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": [
-        "default",
-        "{workspaceRoot}/dts.config.js",
-        "{workspaceRoot}/tsconfig*.json",
-        "{workspaceRoot}/package.json",
-        "!{projectRoot}/*.md"
-      ],
+      "inputs": ["default", "configs", "^production"],
       "outputs": ["{projectRoot}/dist"]
     },
     "start": {
       "dependsOn": ["^build"]
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc"]
+      "inputs": ["default", "configs"]
     }
   }
 }

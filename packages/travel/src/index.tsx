@@ -8,3 +8,4 @@ export * from './TravelTag';
 export * from './LegLine';
 export * from './LegBone';
 export * from './TravelLeg';
+export * from './TravelSwitch';
