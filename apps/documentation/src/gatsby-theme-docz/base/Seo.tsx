@@ -33,9 +33,9 @@ const SEO: React.FC<SeoProps> = props => {
       <meta property="og:type" content="website" />
       <meta
         property="og:url"
-        content={`https://design.entur.org${location.pathname}`}
+        content={`https://design.entur.no${location.pathname}`}
       />
-      <meta property="og:image" content={`https://design.entur.org${image}`} />
+      <meta property="og:image" content={`https://design.entur.no${image}`} />
       <meta property="og:description" content={description} />
       <meta property="og:locale" content="nb_NO" />
       <meta name="twitter:card" content="summary" />

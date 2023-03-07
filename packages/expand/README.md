@@ -2,7 +2,7 @@
 
 This package contains the different Expand components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/expandable-sections)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/expandable-sections)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/expand
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/expandable-sections) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/expandable-sections) for usage information.

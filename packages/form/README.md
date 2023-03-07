@@ -2,7 +2,7 @@
 
 This package contains all the common form-components
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/inputs/textfields)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/inputs/textfields)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/form
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/inputs/textfields) for further usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/inputs/textfields) for further usage information.

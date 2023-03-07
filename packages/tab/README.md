@@ -2,7 +2,7 @@
 
 This package contains the different Tab components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/tabs)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/tabs)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/tab
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/tabs) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/tabs) for usage information.

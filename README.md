@@ -1,6 +1,6 @@
 # Entur Design System Monorepo
 
-This is the monorepo containing all packages in the Entur Design System, as well as the [documentation site](design.entur.org).
+This is the monorepo containing all packages in the Entur Design System, as well as the [documentation site](design.entur.no).
 
 The repository consists of two main parts, the components and the documentation.
 You'll find the code for all the components in the `packages/` folder. The documentation site is found in the `content/` folder.
@@ -64,7 +64,7 @@ You'll also have to activate two-factor authentication for authorization and pub
 
 ## Deploying the documentation
 
-The docs are currently available at [design.entur.org](https://design.entur.org).
+The docs are currently available at [design.entur.no](https://design.entur.no).
 
 It is deployed automatically on the `master` branch via CircleCI.
 
@@ -74,4 +74,4 @@ This project follows the [Conventional Commits](https://www.conventionalcommits.
 
 We have added a tool called `commitizen` that helps you with following this standard. Simply write `git commit`, and you'll be guided through a UI that creates nice commit messages that contain all the info we need. If that does not work, you may instead write `npx git-cz`
 
-A more thorough explanation can also be found [here](https://design.entur.org/kom-i-gang/for-utviklere/bidra) (in norwegian only).
+A more thorough explanation can also be found [here](https://design.entur.no/kom-i-gang/for-utviklere/bidra) (in norwegian only).

@@ -2,7 +2,7 @@
 
 This package contains the different Modal components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/modals)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/modals)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/modal
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/modals) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/modals) for usage information.

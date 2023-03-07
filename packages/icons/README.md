@@ -2,7 +2,7 @@
 
 This package contains the icon components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/resources/icons)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/resources/icons)?
 
 ## Installation
 
@@ -20,7 +20,7 @@ import { AddIcon } from '@entur/icons'; // Import specific icon
 <AddIcon />;
 ```
 
-Please refer to the [documentation](https://design.entur.org/komponenter/resources/icons) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/resources/icons) for usage information.
 
 ## Development
 

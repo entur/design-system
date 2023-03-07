@@ -2,7 +2,7 @@
 
 This package contains the different layout components, and the powerful Contrast wrapper
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/contrast-sections)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/contrast-sections)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/layout
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/layout-and-surfaces/alert-boxes) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/layout-and-surfaces/alert-boxes) for usage information.

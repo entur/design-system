@@ -2,7 +2,7 @@
 
 This package contains the different AlertBox components.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/feedback/alert-boxes)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/feedback/alert-boxes)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/alert
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/feedback/alert-boxes) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/feedback/alert-boxes) for usage information.

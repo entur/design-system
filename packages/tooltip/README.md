@@ -2,7 +2,7 @@
 
 This package contains the tooltip component.
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/feedback/tooltips)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/feedback/tooltips)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/tooltip
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/feedback/tooltips) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/feedback/tooltips) for usage information.

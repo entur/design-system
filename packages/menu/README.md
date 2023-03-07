@@ -2,7 +2,7 @@
 
 This package contains the navigation components
 
-> 💡 Looking for the [documentation](https://design.entur.org/komponenter/navigation/top-navigation)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/navigation/top-navigation)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/menu
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.org/komponenter/navigation/top-navigation) for further usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/navigation/top-navigation) for further usage information.
