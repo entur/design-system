@@ -21,11 +21,13 @@ export type SwitchProps = {
    * @default false
    */
   hideIcon?: boolean;
-  /** Farge som settes på ikon og bakgrunnen når Switch-en er "checked". Default er mint-contrast
-   * @default colors.validation .mintContrast
+  /** Farge som settes på ikon og bakgrunn når Switch-en er "checked"
+   * @default colors.validation.mint
    */
   color?: string;
-  /** Lik som color, men når Switch-en står i en kontrast seksjon. Default er samme farge som color. */
+  /** Farge på bakgrunn når Switch-en er "checked" og står i en kontrast-seksjon
+   * @default colors.validation.mintContrast
+   */
   contrastColor?: string;
   /** Størrelsen på Switch-en
    * @default "medium"
@@ -43,18 +45,25 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       labelPlacement = 'right',
       icon,
       hideIcon = false,
-      color = colors.validation.mintContrast,
-      contrastColor,
+      color = colors.validation.mint,
+      contrastColor = colors.validation.mintContrast,
       size = 'medium',
+      checked,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const chosenContrastColor = (contrastColor && contrastColor) || color;
     const displayedIcon = () => {
       if (icon) return icon;
-      return rest.checked ? <CheckIcon /> : <CloseSmallIcon />;
+      if (checked === undefined) return <></>;
+      const iconSize = size === 'large' ? 23 : undefined;
+      return checked ? (
+        <CheckIcon size={iconSize} />
+      ) : (
+        <CloseSmallIcon size={iconSize} />
+      );
     };
+
     return (
       <label
         className={classNames(
@@ -64,7 +73,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         )}
         style={{ ...rest.style }}
       >
-        <input type="checkbox" ref={ref} {...rest} />
+        <input type="checkbox" ref={ref} checked={checked} {...rest} />
         <span
           className={classNames(
             'eds-switch__switch',
@@ -73,7 +82,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           style={
             {
               '--eds-switch-color': color,
-              '--eds-switch-contrast-color': chosenContrastColor,
+              '--eds-switch-contrast-color': contrastColor,
             } as React.CSSProperties
           }
         >
