@@ -40,26 +40,40 @@
       height: 1.75rem;
       width: 1.75rem;
     }
-  }
-  .eds-switch__switch {
-    svg g, // This is to colorize every type of icon that will potentially be included
-    path {
-      fill: $colors-greys-grey50;
-      transition: fill ease-in-out $timings-fast;
+
+    .eds-contrast & {
+      box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
     }
   }
   &__switch {
     position: relative;
-    background-color: $colors-greys-grey60;
+    background-color: $colors-greys-grey50;
     content: '';
     display: block;
     transition: background-color $timings-fast ease-in-out;
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
+    box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
+
+    .eds-contrast & {
+      background-color: $colors-blues-blue50;
+    }
+
     .eds-switch--right & {
       margin-right: $space-small;
     }
+
+    svg g, // This is to colorize every type of icon that will potentially be included
+    path {
+      fill: $colors-greys-grey40;
+      transition: fill ease-in-out $timings-fast;
+
+      .eds-contrast & {
+        fill: $colors-brand-blue;
+      }
+    }
+
     :checked + & {
       background-color: var(--eds-switch-color);
       .eds-switch__circle {
@@ -67,9 +81,6 @@
         svg g,
         path {
           fill: var(--eds-switch-color);
-          .eds-contrast & {
-            fill: var(--eds-switch-color);
-          }
         }
       }
       .eds-contrast & {
@@ -84,9 +95,6 @@
         box-shadow: $shadows-focus-contrast;
       }
     }
-    .eds-contrast & {
-      background-color: $colors-blues-blue30;
-    }
 
     &--large {
       width: 3.75rem;
@@ -97,8 +105,13 @@
           left: 1.875rem; //30px
         }
       }
+      & svg {
+        position: relative;
+        right: 0.05rem;
+      }
     }
   }
+
   &__label {
     &--large {
       &--right {
