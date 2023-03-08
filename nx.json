@@ -24,7 +24,9 @@
       "outputs": ["{projectRoot}/dist"]
     },
     "start": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["^default", "configs"],
+      "outputs": ["{projectRoot}/dist"]
     },
     "lint": {
       "inputs": ["default", "configs"]
