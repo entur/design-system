@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.38](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.37...@entur/expand@3.3.38) (2023-03-13)
+
+**Note:** Version bump only for package @entur/expand
+
 ## [3.3.37](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.36...@entur/expand@3.3.37) (2023-03-07)
 
 **Note:** Version bump only for package @entur/expand

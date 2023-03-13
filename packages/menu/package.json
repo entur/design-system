@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "4.1.31",
+  "version": "4.1.32",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
@@ -27,13 +27,13 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.59",
-    "@entur/button": "^3.0.0",
-    "@entur/expand": "^3.3.37",
-    "@entur/icons": "^6.0.0",
-    "@entur/layout": "^2.1.23",
-    "@entur/tokens": "^3.8.0",
-    "@entur/typography": "^1.7.11",
+    "@entur/a11y": "^0.2.60",
+    "@entur/button": "^3.0.1",
+    "@entur/expand": "^3.3.38",
+    "@entur/icons": "^6.0.1",
+    "@entur/layout": "^2.1.24",
+    "@entur/tokens": "^3.8.1",
+    "@entur/typography": "^1.7.12",
     "@entur/utils": "^0.5.5",
     "@reach/menu-button": "^0.16.1",
     "@reach/polymorphic": "0.18.0",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@6.0.0...@entur/form@6.0.1) (2023-03-13)
+
+### Bug Fixes
+
+- **switch:** make colours in switch component WCAG-compliant ([12f54d8](https://bitbucket.org/enturas/design-system/commits/12f54d8ee0a83d4e92c5105c2e51aac19177a497))
+
 # [6.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@5.4.20...@entur/form@6.0.0) (2023-03-07)
 
 ### Code Refactoring
