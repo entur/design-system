@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -35,7 +35,7 @@
     "@entur/menu": "^4.1.32",
     "@entur/modal": "^1.6.27",
     "@entur/tab": "^0.4.43",
-    "@entur/table": "^4.5.40",
+    "@entur/table": "^4.5.41",
     "@entur/tokens": "^3.8.1",
     "@entur/tooltip": "^2.6.9",
     "@entur/travel": "^6.0.1",
