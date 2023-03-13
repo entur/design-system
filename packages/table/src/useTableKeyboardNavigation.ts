@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef, KeyboardEvent } from 'react';
 import { TableBodyProps, TableRowProps } from './index';
 
 function onTableKeypress(
-  event: React.KeyboardEvent,
+  event: KeyboardEvent,
   currentRow: number,
   maxRow: number,
   allowWrap?: boolean,
@@ -50,10 +50,10 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
   const [currentRow, setCurrentRow] = useState(numberOfRows);
   const [maxRow, setMaxRow] = useState(0);
 
-  const tableBodyRef = React.useRef<HTMLTableSectionElement>(null);
+  const tableBodyRef = useRef<HTMLTableSectionElement>(null);
   const tableHasFocus = tableBodyRef?.current?.contains(document.activeElement);
 
-  React.useEffect(() => {
+  useEffect(() => {
     tableBodyRef &&
       tableBodyRef.current &&
       tableHasFocus &&
@@ -69,7 +69,7 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
     };
   }
 
-  const tableRowRef = React.useRef<HTMLTableRowElement>(null);
+  const tableRowRef = useRef<HTMLTableRowElement>(null);
   function getTableRowNavigationProps(
     row: number,
     ...rest: any
@@ -82,7 +82,7 @@ export const useTableKeyboardNavigation: useTableKeyboardNavigationProps = (
       tabIndex,
       ref: tableRowRef,
       onClick: () => setCurrentRow(row),
-      onKeyDown: (e: React.KeyboardEvent) => {
+      onKeyDown: (e: KeyboardEvent) => {
         const newCell = onTableKeypress(e, currentRow, numberOfRows, allowWrap);
         setCurrentRow(newCell);
       },

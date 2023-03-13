@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import get from 'lodash.get';
 
 export type ExternalSortConfig = {
@@ -11,7 +11,7 @@ export type ExternalSortConfig = {
 };
 
 export function useSortableData<T>(
-  rawData: T[],
+  tableData: T[],
   externalSortConfig: ExternalSortConfig = { key: '', order: 'none' },
 ): {
   sortedData: T[];
@@ -20,48 +20,50 @@ export function useSortableData<T>(
   ) => SortableHeaderReturnProps;
   getSortableTableProps: (args: SortableTableProps) => SortableTableReturnProps;
 } {
-  const [sortConfig, setSortConfig] = React.useState(externalSortConfig);
-  const tableCopy = rawData.slice();
-
-  React.useEffect(() => {
-    setSortConfig({
-      key: externalSortConfig.key,
-      order: externalSortConfig.order,
-    });
-  }, [externalSortConfig.key, externalSortConfig.order]);
-
-  const sortedData: T[] = React.useMemo(() => {
-    if (sortConfig.order === 'none') {
-      return tableCopy;
-    }
-    return [...rawData].sort((a: any, b: any) => {
-      if (get(a, sortConfig.key) < get(b, sortConfig.key)) {
-        return sortConfig.order === 'ascending' ? -1 : 1;
-      } else if (get(a, sortConfig.key) > get(b, sortConfig.key)) {
-        return sortConfig.order === 'ascending' ? 1 : -1;
-      } else {
-        return 0;
-      }
-    });
-  }, [rawData, tableCopy, sortConfig]);
+  const [sortConfig, setSortConfig] = useState(externalSortConfig);
 
   const onSortRequested = (key: string) => {
-    let order: 'ascending' | 'descending' | 'none' = 'ascending';
-    if (sortConfig.key === key && sortConfig.order === 'ascending') {
-      order = 'descending';
-    } else if (sortConfig.key === key && sortConfig.order === 'descending') {
-      order = 'none';
-    }
-
-    setSortConfig({ key, order });
+    const sortingNewColumn = key !== sortConfig.key;
+    if (sortingNewColumn || sortConfig.order === 'none')
+      return setSortConfig({ key, order: 'ascending' });
+    if (sortConfig.order === 'ascending')
+      return setSortConfig({ key, order: 'descending' });
+    if (sortConfig.order === 'descending')
+      return setSortConfig({ key, order: 'none' });
   };
 
-  function getSortableHeaderProps({
+  const tableSortedAscending = [...tableData].sort((a: any, b: any) => {
+    const valueOfA = get(a, sortConfig.key, a);
+    const valueOfB = get(b, sortConfig.key, b);
+
+    const comparableAValue =
+      typeof valueOfA === 'string' ? valueOfA.toLowerCase() : valueOfA;
+    const comparableBValue =
+      typeof valueOfB === 'string' ? valueOfB.toLowerCase() : valueOfB;
+
+    if (comparableAValue < comparableBValue) return -1;
+    if (comparableAValue > comparableBValue) return 1;
+    return 0;
+  });
+
+  const getSortedData: () => T[] = () => {
+    if (sortConfig.order === 'none') {
+      return tableData;
+    }
+    if (sortConfig.order === 'descending') {
+      return [...tableSortedAscending].reverse();
+    }
+    return tableSortedAscending;
+  };
+
+  const sortedData = getSortedData();
+
+  const getSortableHeaderProps = ({
     name,
     sortable = true,
     buttonProps,
     ...props
-  }: SortableHeaderProps): SortableHeaderReturnProps {
+  }: SortableHeaderProps): SortableHeaderReturnProps => {
     return {
       name,
       sortable,
@@ -72,18 +74,18 @@ export function useSortableData<T>(
       },
       ...props,
     };
-  }
+  };
 
-  function getSortableTableProps({
+  const getSortableTableProps = ({
     sortable = true,
     ...props
-  }: SortableTableProps): SortableTableReturnProps {
+  }: SortableTableProps): SortableTableReturnProps => {
     return {
       sortable,
       sortConfig: sortConfig,
       ...props,
     };
-  }
+  };
 
   return { sortedData, getSortableHeaderProps, getSortableTableProps };
 }
@@ -96,8 +98,8 @@ export type SortableHeaderProps = {
   sortable?: boolean;
   /** Props som sendes til knapp-elementet  */
   buttonProps?: Omit<
-    React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
       HTMLButtonElement
     >,
     'type' | 'onClick'
