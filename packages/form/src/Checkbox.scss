@@ -8,9 +8,9 @@
     position: relative;
     appearance: none;
     cursor: pointer;
-    height: $space-extra-large;
     user-select: none;
     width: fit-content;
+    margin: $space-extra-small 0;
     &--reduced-click-area {
       height: fit-content;
     }
@@ -26,40 +26,69 @@
         background-color: $colors-brand-blue;
         .eds-checkbox-icon {
           visibility: visible;
-          &__path {
+
+          path {
             stroke: $colors-brand-white;
-            animation: stroke ease-in-out 0.2s 0.1s forwards;
+            animation: stroke ease-in-out $timings-medium $timings-fast forwards;
+          }
+          rect {
+            fill: $colors-brand-white;
           }
         }
         &--disabled {
           opacity: 0.5;
-          .eds-checkbox-icon__path {
+
+          :is(path, rect) {
             opacity: 0.5;
           }
         }
         .eds-contrast & {
-          background: $colors-blues-blue30;
+          background-color: $colors-brand-lavender;
+          path {
+            stroke: $colors-brand-blue;
+          }
+          rect {
+            fill: $colors-brand-blue;
+          }
         }
       }
     }
     &:hover {
       input + .eds-checkbox__icon {
-        border-color: $colors-blues-blue30;
-        background: $colors-greys-grey80;
+        border-color: $colors-blues-blue10;
+        background-color: $colors-blues-blue70;
+
         .eds-contrast & {
-          border-color: $colors-blues-blue40;
-          background: $colors-blues-blue10;
+          border-color: tint($colors-brand-lavender, 10%);
+          background-color: rgba($color: $colors-brand-lavender, $alpha: 0.2);
         }
       }
 
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
-        border-color: $colors-blues-blue30;
+        border-color: transparent;
         background-color: $colors-blues-blue30;
 
         .eds-contrast & {
-          background: $colors-blues-blue50;
-          border-color: $colors-blues-blue50;
+          background-color: tint($colors-brand-lavender, 10%);
+        }
+      }
+    }
+    &:active {
+      input + .eds-checkbox__icon {
+        border-color: shade($colors-brand-blue, 10%);
+
+        .eds-contrast & {
+          border-color: shade($colors-brand-lavender, 10%);
+        }
+      }
+
+      input:checked + .eds-checkbox__icon,
+      input:indeterminate + .eds-checkbox__icon {
+        background-color: shade($colors-brand-blue, 10%);
+
+        .eds-contrast & {
+          background-color: shade($colors-brand-lavender, 10%);
         }
       }
     }
@@ -85,6 +114,7 @@
     }
   }
   &__icon {
+    box-sizing: border-box;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -94,20 +124,22 @@
     height: 1.25rem;
     width: 1.25rem;
     border: $border-widths-default solid $colors-brand-blue;
-    border-radius: $border-radiuses-default;
+    border-radius: calc($border-radiuses-medium / 2);
     background-color: transparent;
     color: $colors-brand-white;
+    transition: border-color $timings-fast ease-in-out,
+      background-color $timings-fast ease-in-out;
     &--reduced-click-area {
       margin-right: 0;
     }
     .eds-contrast & {
-      border-color: $colors-blues-blue30;
+      border-color: $colors-brand-lavender;
     }
     .eds-checkbox-icon {
       height: $space-default;
       width: $space-default;
       visibility: hidden;
-      &__path {
+      path {
         transform-origin: 50% 50%;
         stroke-dasharray: 48; // This and offset is approximate to the "length" of the path
         stroke-dashoffset: 48;

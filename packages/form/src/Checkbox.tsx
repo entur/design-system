@@ -98,11 +98,7 @@ const CheckboxIcon: React.FC<{ indeterminate: boolean }> = ({
       {indeterminate ? (
         <rect x="10" y="25" width="28" height="5" fill="white" />
       ) : (
-        <path
-          className="eds-checkbox-icon__path"
-          d="M14.1 27.2l7.1 7.2 14.6-14.8"
-          fill="none"
-        />
+        <path d="M14.1 27.2l7.1 7.2 14.6-14.8" fill="none" />
       )}
     </svg>
   );

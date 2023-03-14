@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Label } from '@entur/typography';
+import { Heading5 } from '@entur/typography';
 import './Fieldset.scss';
 
 export type FieldsetProps = {
@@ -20,11 +20,7 @@ export const Fieldset: React.FC<FieldsetProps> = ({
   ...rest
 }) => (
   <fieldset className={classNames('eds-fieldset', className)} {...rest}>
-    {label && (
-      <Label as="legend" className="eds-legend">
-        {label}
-      </Label>
-    )}
+    {label && <Heading5 as="legend">{label}</Heading5>}
     {children}
   </fieldset>
 );
