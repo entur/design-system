@@ -24,11 +24,12 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const childrenArray = React.Children.toArray(children);
+    const isIcon = (child: any) =>
+      child?.type?.toString().toLowerCase().includes('icon');
     const hasLeadingIcon =
-      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+      childrenArray.length > 1 && isIcon(childrenArray.at(0));
     const hasTrailingIcon =
-      childrenArray.length > 1 &&
-      typeof childrenArray[childrenArray.length - 1] !== 'string';
+      childrenArray.length > 1 && isIcon(childrenArray.at(-1));
 
     const ariaLabelValue = () => {
       if (rest['aria-label']) return rest['aria-label'];
