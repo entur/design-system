@@ -24,10 +24,10 @@
     border-color: transparent;
   }
 
-  &--leading-icon .eds-icon {
+  &--leading-icon .eds-icon:first-of-type {
     margin-right: $space-extra-small;
   }
-  &--trailing-icon .eds-icon {
+  &--trailing-icon .eds-icon:last-of-type {
     margin-left: $space-extra-small;
   }
 }
