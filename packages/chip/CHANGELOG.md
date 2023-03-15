@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.26](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.25...@entur/chip@0.6.26) (2023-03-15)
+
+### Bug Fixes
+
+- **chip:** fix incorrect padding calculation for leading and trailing icon inside chip ([2225215](https://bitbucket.org/enturas/design-system/commits/22252156dbe3e41705780453060802a1b4cb6bbf))
+
 ## [0.6.25](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.24...@entur/chip@0.6.25) (2023-03-13)
 
 **Note:** Version bump only for package @entur/chip

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@6.0.1...@entur/form@6.1.0) (2023-03-15)
+
+### Features
+
+- **checkbox group:** update legend / label styling for checkbox group ([352c267](https://bitbucket.org/enturas/design-system/commits/352c2671f620ec4e3d351cf91766b63b893c8725))
+
 ## [6.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@6.0.0...@entur/form@6.0.1) (2023-03-13)
 
 ### Bug Fixes

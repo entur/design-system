@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.42](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.40...@entur/table@4.5.42) (2023-03-15)
+
+### Bug Fixes
+
+- **useSortableTable:** removed case sensitivity from table sorting ([10d9a27](https://bitbucket.org/enturas/design-system/commits/10d9a27be010b6dbf0d39bff435e18616bfeb21e))
+
 ## [4.5.41](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.40...@entur/table@4.5.41) (2023-03-13)
 
 ### Bug Fixes
