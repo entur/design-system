@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { RadioPanel, RadioGroup } from './';
+import { RadioPanel } from './';
+import { RadioGroup } from '../';
 import { toHaveNoViolations, axe } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 

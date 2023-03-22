@@ -1,6 +1,8 @@
 import React, { CSSProperties } from 'react';
-import { Paragraph } from '@entur/typography';
 import cx from 'classnames';
+import { Paragraph } from '@entur/typography';
+import { mergeRefs } from '@entur/utils';
+
 import './Checkbox.scss';
 
 export type CheckboxProps = {
@@ -37,18 +39,14 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    // Trick to allow using a ref locally, while still allowing for ref forwarding
-    // Read more at https://reactjs.org/docs/hooks-reference.html#useimperativehandle
-    const innerRef = React.useRef<HTMLInputElement>(null);
-    //eslint-disable-next-line
-    React.useImperativeHandle(ref, () => innerRef.current!);
+    const inputRef = React.useRef<HTMLInputElement>(null);
 
     const isIndeterminate = checked === 'indeterminate';
     const isControlled = checked !== undefined;
 
     React.useEffect(() => {
-      if (innerRef && innerRef.current) {
-        innerRef.current.indeterminate = isIndeterminate;
+      if (inputRef && inputRef.current) {
+        inputRef.current.indeterminate = isIndeterminate;
       }
     }, [isIndeterminate]);
 
@@ -62,7 +60,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       >
         <input
           type="checkbox"
-          ref={innerRef}
+          ref={mergeRefs(ref, inputRef)}
           checked={isControlled ? checked === true : undefined}
           disabled={disabled}
           {...rest}

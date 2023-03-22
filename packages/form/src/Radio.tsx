@@ -22,15 +22,16 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       'eds-form-component--radio__radio--disabled': disabled,
     });
     const { name, value: selectedValue, onChange } = useRadioGroupContext();
+
     return (
       <label className="eds-form-component--radio__container">
         <input
           type="radio"
-          name={name}
+          name={rest.name ?? name}
           ref={ref}
           value={value}
-          checked={selectedValue === value}
-          onChange={onChange}
+          checked={rest.checked ?? selectedValue === value}
+          onChange={rest.onChange ?? onChange}
           disabled={disabled}
           {...rest}
         />
