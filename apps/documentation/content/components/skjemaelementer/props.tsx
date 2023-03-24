@@ -25,6 +25,48 @@ export const datepicker = [
   },
 ];
 
+export const inputpanel = [
+  {
+    name: 'size',
+    defaultValue: 'medium',
+    options: ['medium', 'large'],
+    type: 'segmented',
+  },
+  {
+    name: 'title',
+    defaultValue: 'Standardbillett',
+    type: 'string',
+    label: 'Title',
+  },
+  {
+    name: 'secondaryLabel',
+    defaultValue: '99,-',
+    type: 'string',
+    label: 'Secondary label',
+  },
+  {
+    name: 'children',
+    defaultValue: 'Denne billetten er ikke refunderbar',
+    type: 'string',
+    label: 'Additional content',
+  },
+  {
+    name: 'checked',
+    defaultValue: false,
+    type: 'boolean',
+  },
+  {
+    name: 'hideCheckbox',
+    defaultValue: false,
+    type: 'boolean',
+  },
+  {
+    name: 'disabled',
+    defaultValue: false,
+    type: 'boolean',
+  },
+];
+
 export const textfield = [
   {
     name: 'size',

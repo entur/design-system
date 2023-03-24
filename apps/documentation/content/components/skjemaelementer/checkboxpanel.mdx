@@ -1,0 +1,88 @@
+---
+name: Checkbox panel
+description: Checkbox panel fungerer som checkbox button, men med en større trykkflate og muligheter for å vise ekstra informasjon.
+route: /komponenter/skjemaelementer/checkbox-panel
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: panel
+---
+
+import { Props } from 'docz';
+import { CheckboxPanel, Fieldset } from '@entur/form';
+import { PrimaryButton } from '@entur/button';
+import { ForwardIcon } from '@entur/icons';
+import { Label } from '@entur/typography';
+import { Playground } from '~/components/playground/Playground';
+import { ImportStatement } from '~/components/ImportStatement';
+import PageHeader from '~/components/PageHeader';
+
+import { inputpanel } from './props';
+
+<PageHeader />
+<ImportStatement imports="CheckboxPanel" />
+
+<Playground>
+  <Fieldset name="ticket-type" label="Velg tilleggsprodukter:">
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        width: '20rem',
+      }}
+    >
+      <CheckboxPanel title="Setereservasjon" value="seat" />
+      <CheckboxPanel title="Hund" value="dog" />
+      <CheckboxPanel title="Sykkel" value="flexi">
+        <Label as="span">Plass til sykkelen kan ikke garanteres</Label>
+      </CheckboxPanel>
+      <PrimaryButton>
+        Gå videre <ForwardIcon inline />
+      </PrimaryButton>
+    </div>
+  </Fieldset>
+</Playground>
+
+## Bruk
+
+### Rettningslinjer
+
+`CheckboxPanel` brukes i tilfeller der du har en liste over alternativer og brukeren kan velge ett eller flere alternativer.
+Den er mest nyttig hvis man ønsker å legge til ekstra informasjon for hvert element, vil fremheve listen eller ønsker å øke
+trykkflaten. Ellers kan det hende vanlig [Checkbox](https://design.entur.no/komponenter/skjemaelementer/checkbox) fungerer bedre.
+Merk at `CheckboxPanel` ikke støtter indeterminate-tisltanden slik
+[Checkbox](https://design.entur.no/komponenter/skjemaelementer/checkbox) gjør.
+
+Hvis brukerne bare kan velge ett alternativ fra listen, er det mer passende å bruke
+[RadioPanel](https://design.entur.no/komponenter/skjemaelementer/radio-panel). Om du ønsker at valget gjenspeiles eller lagres
+med en gang bør du heller bruke en [Switch](https://design.entur.no/komponenter/skjermaelementer/switch).
+Det anbefales å _ikke_ ha et forhåndsvalgt alternativ når du bruker checkbox panel. Alternaltivene bør vises i en logisk rekkefølge.
+
+### Test ut props
+
+<Playground props={inputpanel}>
+  <CheckboxPanel title="249,-" value="non-flexi" size="large">
+    Ikke fleksibel
+  </CheckboxPanel>
+</Playground>
+
+### Fieldset
+
+<ImportStatement imports="Fieldset" />
+
+`Fieldset` lar deg gruppere flere `CheckboxPanel`-er sammmen under en overskrift. Du kan sette en ledetekst/overskrift med `label`-propen.
+
+Les mer om hvordan du bruker html-taggen `fieldset` på sidene til [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset);
+
+## Komponenter
+
+### <CheckboxPanel /\>
+
+<ImportStatement imports="CheckboxPanel" />
+<Props of={CheckboxPanel} />
+
+### <Fieldset /\>
+
+<ImportStatement imports="Fieldset" />
+<Props of={Fieldset} />
