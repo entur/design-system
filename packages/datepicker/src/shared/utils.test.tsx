@@ -4,7 +4,11 @@ import {
   parseDateTime,
   parseTime,
 } from '@internationalized/date';
-import { nativeDateToTimeOrDateValue, timeOrDateValueToNativeDate } from '.';
+import {
+  nativeDateToDateValue,
+  nativeDateToTimeValue,
+  timeOrDateValueToNativeDate,
+} from '.';
 
 // Locale is added on all tests to ensure a static testing basis
 // Time zone is set globally for Jest as UTC in ~/jest.global.setup.js
@@ -18,22 +22,20 @@ test('Util function correctly converts JS Date to Date- and TimeValues', () => {
   const timeZone = 'America/Los_Angeles';
   const fourHoursExampleOffset = -14400000;
 
-  const dateWithTimeZoneAndOffset = nativeDateToTimeOrDateValue(
+  const dateWithTimeZoneAndOffset = nativeDateToDateValue(
     dateObject,
-    false,
     false,
     timeZone,
     fourHoursExampleOffset,
   );
-  const dateWithTimeZoneOnly = nativeDateToTimeOrDateValue(
+  const dateWithTimeZoneOnly = nativeDateToDateValue(
     dateObject,
-    false,
     false,
     timeZone,
   );
-  const withTimeOnly = nativeDateToTimeOrDateValue(dateObject, true);
-  const withDateOnly = nativeDateToTimeOrDateValue(dateObject, false, true);
-  const dateWithoutTimeZone = nativeDateToTimeOrDateValue(dateObject);
+  const withTimeOnly = nativeDateToTimeValue(dateObject, true);
+  const withDateOnly = nativeDateToDateValue(dateObject, true);
+  const dateWithoutTimeZone = nativeDateToDateValue(dateObject);
 
   expect(dateWithTimeZoneAndOffset.toString()).toEqual(
     '1997-07-10T10:00:00-04:00[America/Los_Angeles]',
@@ -94,15 +96,15 @@ test('util function converts from Date to TimeValue and back again correctly', (
 
   expect(
     timeOrDateValueToNativeDate(
-      nativeDateToTimeOrDateValue(dateObject, false, false, timeZone),
+      nativeDateToDateValue(dateObject, false, timeZone),
     ),
   ).toEqual(dateObject);
   expect(
-    timeOrDateValueToNativeDate(nativeDateToTimeOrDateValue(dateObject)),
+    timeOrDateValueToNativeDate(nativeDateToDateValue(dateObject)),
   ).toEqual(dateObject);
   expect(
     timeOrDateValueToNativeDate(
-      nativeDateToTimeOrDateValue(dateObject, true),
+      nativeDateToTimeValue(dateObject, true),
     ).toLocaleTimeString('no-NO'),
   ).toEqual(dateObject.toLocaleTimeString('no-NO'));
 });
