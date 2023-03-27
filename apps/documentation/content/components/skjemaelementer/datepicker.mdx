@@ -16,9 +16,12 @@ import {
   DateField,
   Calendar,
   NativeDatePicker,
-  nativeDateToTimeOrDateValue,
+  nativeDateToDateValue,
+  nativeDateToTimeValue,
   timeOrDateValueToNativeDate,
 } from '@entur/datepicker';
+import { SmallAlertBox } from '@entur/alert';
+import { CodeText } from '@entur/typography';
 
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -49,6 +52,16 @@ import { datepicker } from './props';
 
 DatePicker hjelper brukeren å velge en dato – og evt. et tidspunkt. Den bruker pakken @internationalized/date i bakgrunnen til håndtering av dato-objektet, inkludert tidssoner – dette er tilsvarende i TimePicker.
 DatePicker støtter også ulike locals og språk. DatePicker bygger på react-aria og støtter det meste av funksjonalitet du finner der, [les mer her](https://react-spectrum.adobe.com/react-aria/useDatePicker.html).
+
+<SmallAlertBox variant="info">
+  <div>
+    <strong>OBS:</strong> hjelpefunksjoner fra{' '}
+    <CodeText>@internationalized/date</CodeText> (typ.{' '}
+    <CodeText>now()</CodeText> og <CodeText>isWeekend()</CodeText>) er ikke
+    inkludert i <CodeText>@entur/datepicker</CodeText>, legg til{' '}
+    <CodeText>@internationalized/date</CodeText> i repo ditt for å bruke dem.
+  </div>
+</SmallAlertBox>
 
 ### Språk og locale
 
@@ -152,15 +165,12 @@ Følgende eksempel godtar datoer som ikke er en helg.
 
 ### Bruke JS Date i stedet for @internationalized/date
 
-Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToTimeValue` og `timeValueToNativeDate`. Disse konverterer
-mellom `@internationalized/date` sine fire dato/tidstyper: `ZonedDateTime`, `CalendarDateTime`, `CalendarDate` og `Time` (`TimeValue` er en samling av de tre typene med Time
-i navnet og DateValue er tilsvarende for de med Date i navnet) og Javascript sin `Date`. Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
-
-OBS: Disse funksjonene kan gi typefeil når de brukes i `DatePicker`. Dette skjer f.eks når man brukes `NativeDateToTimeOrDateValue` siden navnte funksjon kan i teorien
-returnere `Time` som er en type `DatePicker` ikke godtar. Brukes konverteringsfunksjonen korrekt vil dog dette problemet aldri faktisk oppstå.
+Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToDateValue` og `timeValueToNativeDate`. Disse konverterer
+mellom `@internationalized/date` sine tre dato-typer: `ZonedDateTime`, `CalendarDateTime` og `CalendarDate` (`DateValue` er en samling av disse tre typene) og Javascript sin `Date`.
+Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-  {`nativeDateToTimeOrDateValue: (date: Date, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime | CalendarDate;
+  {`nativeDateToDateValue: (date: Date, noTimeOnlyDate?: boolean, timeZone?: string | undefined, offset?: number | undefined) => CalendarDateTime | ZonedDateTime | CalendarDate;
 timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: string | undefined) => Date;`}
 </CodeBlock>
 
@@ -171,7 +181,7 @@ timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: str
   return (
     <DatePicker
       label="Choose date"
-      selectedDate={nativeDateToTimeOrDateValue(date) as DateValue}
+      selectedDate={nativeDateToDateValue(date)}
       onChange={d => setDate(timeOrDateValueToNativeDate(d))}
     />
   );`}
@@ -183,12 +193,11 @@ timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: str
       <DatePicker
         label="Choose date"
         selectedDate={
-          nativeDateToTimeOrDateValue(
+          nativeDateToDateValue(
             date,
             false,
-            false,
             'Europe/Oslo',
-          ) as DateValue
+          )
         }
         onChange={d => setDate(timeOrDateValueToNativeDate(d))}
       />
