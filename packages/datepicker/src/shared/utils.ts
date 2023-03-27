@@ -10,19 +10,8 @@ import {
 import { TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
 
-/**
- * Tar inn et JS Date-objekt og returnerer et av Date- eller TimeValue-objektene fra @internationalized/date-pakken
- * @param {Date} date JS Date-objekt som ønskes konvertert til et Date- eller TimeValue-objekt
- * @param {boolean} noDateOnlyTime Hvis datoen er irrelevant kan denne settes til true, da får man et Time-objekt uten dato tilbake
- * @param {boolean} noTimeOnlyDate Hvis tidspunktet er irrelevant kan denne settes til true, da får man et CalendarDate-objekt uten tidspunkt tilbake
- * @param {string} timeZone Tidssonen på IANA-formatet som tidpunktet skal konverteres til. Utelates denne får man et tidspunkt uten tidssone. Kan brukes med og uten en UTC-offset Vær obs på annen oppførsel med offset, les mer på beskrivelsen av offset
- * @param {number} offset UTC-offset i millisekunder, må brukes med en tidssone. Ved å legge på en offset lager du en variant av en tidssone. Det betyr at tidspunktet ikke endres (time, minutt, sekund uendret), men tidssonen, med tilhørende offset, tidspunktet er i endres.
- * @returns {Time | CalendarDateTime | ZonedDateTime | CalendarDate} et av Time- eller DateValue-objektene med verdier fra date
- */
-export const nativeDateToTimeOrDateValue = (
+const nativeDateToDateTime = (
   date: Date,
-  noDateOnlyTime = false,
-  noTimeOnlyDate = false,
   timeZone?: string,
   offset?: number,
 ) => {
@@ -41,14 +30,6 @@ export const nativeDateToTimeOrDateValue = (
     }
     return parseAbsolute(date.toISOString(), timeZone);
   }
-  if (noDateOnlyTime)
-    return new Time(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
-  if (noTimeOnlyDate)
-    return new CalendarDate(
-      date.getFullYear(),
-      date.getMonth() + 1,
-      date.getDate(),
-    );
   return new CalendarDateTime(
     date.getFullYear(),
     date.getMonth() + 1,
@@ -57,6 +38,50 @@ export const nativeDateToTimeOrDateValue = (
     date.getMinutes(),
     date.getSeconds(),
   );
+};
+
+/**
+ * Tar inn et JS Date-objekt og returnerer et av DateValue-objektene fra @internationalized/date-pakken
+ * @param {Date} date JS Date-objekt som ønskes konvertert til et DateValue-objekt
+ * @param {boolean} noTimeOnlyDate Hvis tidspunktet er irrelevant kan denne settes til true, da får man et CalendarDate-objekt uten tidspunkt tilbake
+ * @param {string} timeZone Tidssonen på IANA-formatet som tidpunktet skal konverteres til. Utelates denne får man et tidspunkt uten tidssone. Kan brukes med og uten en UTC-offset Vær obs på annen oppførsel med offset, les mer på beskrivelsen av offset
+ * @param {number} offset UTC-offset i millisekunder, må brukes med en tidssone. Ved å legge på en offset lager du en variant av en tidssone. Det betyr at tidspunktet ikke endres (time, minutt, sekund uendret), men tidssonen, med tilhørende offset, tidspunktet er i endres.
+ * @returns {CalendarDateTime | ZonedDateTime | CalendarDate} et av DateValue-objektene med verdier fra date
+ */
+export const nativeDateToDateValue = (
+  date: Date,
+  noTimeOnlyDate = false,
+  timeZone?: string,
+  offset?: number,
+) => {
+  if (noTimeOnlyDate)
+    return new CalendarDate(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      date.getDate(),
+    );
+
+  return nativeDateToDateTime(date, timeZone, offset);
+};
+
+/**
+ * Tar inn et JS Date-objekt og returnerer et av TimeValue-objektene fra @internationalized/date-pakken
+ * @param {Date} date JS Date-objekt som ønskes konvertert til et TimeValue-objekt
+ * @param {boolean} noDateOnlyTime Hvis datoen er irrelevant kan denne settes til true, da får man et Time-objekt uten dato tilbake
+ * @param {string} timeZone Tidssonen på IANA-formatet som tidpunktet skal konverteres til. Utelates denne får man et tidspunkt uten tidssone. Kan brukes med og uten en UTC-offset Vær obs på annen oppførsel med offset, les mer på beskrivelsen av offset
+ * @param {number} offset UTC-offset i millisekunder, må brukes med en tidssone. Ved å legge på en offset lager du en variant av en tidssone. Det betyr at tidspunktet ikke endres (time, minutt, sekund uendret), men tidssonen, med tilhørende offset, tidspunktet er i endres.
+ * @returns {Time | CalendarDateTime | ZonedDateTime} et av TimeValue-objektene med verdier fra date
+ */
+export const nativeDateToTimeValue = (
+  date: Date,
+  noDateOnlyTime = false,
+  timeZone?: string,
+  offset?: number,
+) => {
+  if (noDateOnlyTime)
+    return new Time(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+
+  return nativeDateToDateTime(date, timeZone, offset);
 };
 
 /**
