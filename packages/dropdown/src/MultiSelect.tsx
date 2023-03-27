@@ -97,7 +97,10 @@ type MultiSelectProps = {
   loading?: boolean;
   style?: React.CSSProperties;
   initialSelectedItems?: NormalizedDropdownItemType[];
-} & Omit<UseSelectProps<NormalizedDropdownItemType>, 'initialSelectedItem'>;
+} & Omit<
+  UseSelectProps<NormalizedDropdownItemType>,
+  'initialSelectedItem' | 'items'
+>;
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
   items: input,
