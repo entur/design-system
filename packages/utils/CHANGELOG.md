@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.5...@entur/utils@0.6.0) (2023-03-27)
+
+### Features
+
+- add useForceUpdate-hook ([02ddebf](https://bitbucket.org/enturas/design-system/commits/02ddebf6bdd744132fd701b26b13b17dade9ff7c))
+
 ## [0.5.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.5.1...@entur/utils@0.5.5) (2023-02-17)
 
 ### Bug Fixes

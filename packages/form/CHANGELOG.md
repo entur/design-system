@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@6.1.0...@entur/form@7.0.0) (2023-03-27)
+
+### Features
+
+- **radio panel:** rewrite radioPanel component and add checkboxPanel component ([bebe034](https://bitbucket.org/enturas/design-system/commits/bebe0340750bc3c29870cb9e023f15659964529c))
+
+### BREAKING CHANGES
+
+- **radio panel:** - "hideCheckbox" -> "hideRadioButton" in RadioPanel |
+
+* Complete rewrite may lead to breakting changes |
+* Visual changes
+
 # [6.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@6.0.1...@entur/form@6.1.0) (2023-03-15)
 
 ### Features

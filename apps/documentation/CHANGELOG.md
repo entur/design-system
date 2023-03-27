@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@2.0.3...@entur/documentation@3.0.0) (2023-03-27)
+
+### Features
+
+- **radio panel:** rewrite radioPanel component and add checkboxPanel component ([bebe034](https://bitbucket.org/enturas/design-system/commits/bebe0340750bc3c29870cb9e023f15659964529c))
+
+### BREAKING CHANGES
+
+- **radio panel:** - "hideCheckbox" -> "hideRadioButton" in RadioPanel |
+
+* Complete rewrite may lead to breakting changes |
+* Visual changes
+
 ## [2.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@2.0.1...@entur/documentation@2.0.3) (2023-03-15)
 
 **Note:** Version bump only for package @entur/documentation
