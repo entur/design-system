@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.10...@entur/datepicker@5.0.0) (2023-03-27)
+
+### Features
+
+- add exported types from @internationalized/date ([1c73071](https://bitbucket.org/enturas/design-system/commits/1c73071d95da12029f8a56172b4ec370b44fcb38))
+- **datepicker utils:** split js date util function into separate functions for date and time conver ([d4c06a4](https://bitbucket.org/enturas/design-system/commits/d4c06a4647305ffccb96c2704a75e4aa50da451b))
+
+### BREAKING CHANGES
+
+- **datepicker utils:** the function names as well as their api has changed and requires manual changes to work
+
 ## [4.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@4.0.9...@entur/datepicker@4.0.10) (2023-03-27)
 
 **Note:** Version bump only for package @entur/datepicker
