@@ -14,9 +14,11 @@ import { now } from '@internationalized/date';
 import {
   TimePicker,
   NativeTimePicker,
-  nativeDateToTimeOrDateValue,
+  nativeDateToTimeValue,
+  nativeDateToDateValue,
   timeOrDateValueToNativeDate,
 } from '@entur/datepicker';
+import { SmallAlertBox } from '@entur/alert';
 
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -45,6 +47,18 @@ import { CodeBlock } from '~/components/CodeBlock';
 
 TimePicker hjelper brukeren med å velge et tidspunkt. Den bruker pakken [@internationalized/date](https://react-spectrum.adobe.com/internationalized/date/) til håndtering av dato og tid, inkludert tidssoner.
 TimePicker-en har også støtte for ulike locals og språk. `react-aria` brukes i bakgrunnen, [les mer her](https://react-spectrum.adobe.com/react-aria/useTimeField.html).
+
+<SmallAlertBox variant="info">
+  <div>
+    <strong>OBS:</strong> hjelpefunksjoner fra{' '}
+    <code className="eds-code-text">@internationalized/date</code> (typ.{' '}
+    <code className="eds-code-text">now()</code> og{' '}
+    <code className="eds-code-text">isWeekend()</code>) er ikke inkludert i{' '}
+    <code className="eds-code-text">@entur/datepicker</code>, legg til{' '}
+    <code className="eds-code-text">@internationalized/date</code> i repo ditt
+    for å bruke dem.
+  </div>
+</SmallAlertBox>
 
 ### Språk og locale
 
@@ -77,15 +91,12 @@ TimePicker støtter tidssonehåndtering for å sikre lik opplevelse på tvers av
 
 ### Bruke JS Date i stedet for @internationalized/date
 
-Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToTimeValue` og `timeValueToNativeDate`. Disse konverterer
-mellom `@internationalized/date` sine fire dato/tidstyper: `ZonedDateTime`, `CalendarDateTime`, `CalendarDate` og `Time` (`TimeValue` er en samling av de tre typene med Time
-i navnet og DateValue er tilsvarende for de med Date i navnet) og Javascript sin `Date`. Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
-
-OBS: Disse funksjonene kan gi typefeil når de brukes i `Timeicker`. Dette skjer f.eks når man brukes `NativeDateToTimeOrDateValue` siden navnte funksjon kan i teorien
-returnere `CalendarDate` som er en type `TimePicker` ikke godtar. Brukes konverteringsfunksjonen korrekt vil dog dette problemet aldri faktisk oppstå.
+Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToTimeValue` og `timeValueToNativeDate`. Disse konverterer
+mellom `@internationalized/date` sine tre tidstyper: `ZonedDateTime`, `CalendarDateTime` og `Time` (`TimeValue` er en samling av disse tre typene) og Javascript sin `Date`.
+Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-  {`nativeDateToTimeOrDateValue: (date: Date, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime | CalendarDate;
+  {`nativeDateToTimeValue: (date: Date, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime;
 timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: string | undefined) => Date;`}
 </CodeBlock>
 
@@ -96,7 +107,7 @@ timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: str
   return (
     <TimePicker
       label="Choose time"
-      selectedTime={nativeDateToTimeOrDateValue(time) as TimeValue}
+      selectedTime={nativeDateToTimeValue(time)}
       onChange={t => setTime(timeOrDateValueToNativeDate(t))}
     />
   );`}
@@ -108,12 +119,11 @@ timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: str
     <TimePicker
       label="Choose time"
       selectedTime={
-        nativeDateToTimeOrDateValue(
+        nativeDateToTimeValue(
           time,
           false,
-          false,
           'Europe/Oslo',
-        ) as TimeValue
+        )
       }
       onChange={t => setTime(timeOrDateValueToNativeDate(t))}
     />

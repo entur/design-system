@@ -1,4 +1,5 @@
 export {
   timeOrDateValueToNativeDate,
-  nativeDateToTimeOrDateValue,
+  nativeDateToDateValue,
+  nativeDateToTimeValue,
 } from './utils';
