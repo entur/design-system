@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
-import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
+import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
 import classNames from 'classnames';
 
 import { Heading5, Label } from '@entur/typography';

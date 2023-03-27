@@ -46,8 +46,8 @@
     }
     .eds-form-component--radio__radio {
       position: relative;
-      height: ($space-medium + $space-extra-small2);
-      width: ($space-medium + $space-extra-small2);
+      height: calc($space-medium + $space-extra-small2);
+      width: calc($space-medium + $space-extra-small2);
       margin-right: $space-default;
       background-color: $colors-brand-white;
       border: $border-widths-medium solid $colors-brand-blue;

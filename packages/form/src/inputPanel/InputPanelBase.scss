@@ -1,0 +1,195 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/color-utils.scss';
+
+.eds-input-panel {
+  &:focus-within {
+    .eds-input-panel__container {
+      border-color: $colors-brand-blue;
+      box-shadow: $shadows-focus;
+    }
+    .eds-contrast & {
+      .eds-input-panel__container {
+        border-color: $colors-brand-white;
+        box-shadow: $shadows-focus-contrast;
+      }
+    }
+  }
+
+  > input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      + .eds-input-panel__container {
+        border-color: $colors-brand-blue;
+        background: $colors-blues-blue90;
+
+        .eds-contrast & {
+          border-color: $colors-brand-lavender;
+          background: $colors-blues-blue20;
+        }
+
+        .eds-form-component--radio__circle {
+          width: 0.75rem;
+          height: 0.75rem;
+
+          .eds-contrast & {
+            background-color: $colors-brand-white;
+          }
+        }
+
+        &:hover {
+          background-color: $colors-blues-blue80;
+          border: $border-widths-medium solid $colors-blues-blue60;
+
+          .eds-contrast & {
+            background: $colors-blues-blue30;
+          }
+
+          /* The following styling is needed to sync the inner checkbox/radiobutton's
+               hover state styling with the inputPanel container */
+          .eds-form-component--radio__radio {
+            background-color: $colors-blues-blue70;
+            border-color: $colors-blues-blue10;
+
+            .eds-contrast & {
+              background-color: rgba($colors-brand-lavender, 0.2);
+              border-color: tint($colors-brand-lavender, 10%);
+            }
+
+            .eds-form-component--radio__circle {
+              background-color: $colors-blues-blue10;
+
+              .eds-contrast & {
+                background-color: $colors-brand-white;
+              }
+            }
+          }
+
+          .eds-checkbox__icon {
+            background-color: $colors-blues-blue10;
+            border-color: transparent;
+
+            .eds-contrast & {
+              background-color: tint($colors-brand-lavender, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__container {
+    background: $colors-brand-white;
+    border: $border-widths-medium solid $colors-blues-blue60;
+    border-radius: $border-radiuses-medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 20rem;
+    position: relative;
+    padding: $space-medium;
+    user-select: none;
+    width: fit-content;
+    transition: background ease-in-out $timings-fast,
+      border-color ease-in-out $timings-fast;
+
+    .eds-contrast & {
+      background-color: transparent;
+      border-color: $colors-brand-lavender;
+    }
+
+    &:hover {
+      background-color: $colors-blues-blue80;
+
+      .eds-contrast & {
+        background-color: $colors-blues-blue30;
+      }
+
+      /* The following styling is needed to sync the inner checkbox/radiobutton's
+      hover state styling with the inputPanel container */
+      .eds-checkbox__icon,
+      .eds-form-component--radio__radio {
+        border-color: $colors-blues-blue10;
+        background-color: $colors-blues-blue70;
+
+        .eds-contrast & {
+          border-color: tint($colors-brand-lavender, 10%);
+          background-color: rgba($colors-brand-lavender, 0.2);
+        }
+      }
+    }
+
+    input:disabled + & {
+      background: $colors-greys-grey80;
+      border-color: $colors-greys-grey80;
+      color: $colors-blues-blue40;
+      pointer-events: none;
+
+      .eds-contrast & {
+        background: $colors-brand-blue;
+        border-style: dashed;
+        border-color: $colors-blues-blue30;
+        color: $colors-blues-blue60;
+      }
+    }
+
+    .eds-checkbox__icon,
+    .eds-checkbox__icon .eds-checkbox__icon,
+    .eds-form-component--radio__radio {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0;
+    }
+  }
+
+  &--medium {
+    .eds-input-panel__title {
+      font-size: $font-sizes-large;
+      font-weight: $font-weights-body;
+    }
+    &.eds-input-panel__container {
+      padding-bottom: $space-medium;
+      min-height: 3.75rem;
+    }
+  }
+
+  &--large {
+    &.eds-input-panel__container {
+      min-height: 6rem;
+    }
+    .eds-input-panel__title-wrapper {
+      height: 2rem;
+    }
+    .eds-input-panel__title {
+      font-size: $font-sizes-extra-large;
+      font-weight: $font-weights-body;
+      line-height: $line-heights-extra-large3;
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__secondary-label-and-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+
+    .eds-checkbox__container {
+      margin: 0;
+    }
+  }
+
+  &__additional-content {
+    margin-top: $space-extra-small2;
+    word-wrap: break-word;
+  }
+}

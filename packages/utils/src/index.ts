@@ -3,6 +3,7 @@ export * from './PolymorphicComponent';
 export * from './useRandomId';
 export * from './useOnMount';
 export * from './mergeRefs';
+export * from './useForceUpdate';
 export * from './useOnClickOutside';
 export * from './useOnEscape';
 export * from './useWindowDimensions';
