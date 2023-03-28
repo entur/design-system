@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.37...@entur/dropdown@4.0.0) (2023-03-28)
+
+### Bug Fixes
+
+- **multiselect:** fix incorrect type for 'items' in Multiselect ([51fc20a](https://bitbucket.org/enturas/design-system/commits/51fc20acb406de2693398642eabee3d392dcd166))
+
+### BREAKING CHANGES
+
+- **multiselect:** Previous type was incorrect, so technically not breaking, but type change may lead to TS-errrors
+
 ## [3.0.37](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@3.0.36...@entur/dropdown@3.0.37) (2023-03-27)
 
 **Note:** Version bump only for package @entur/dropdown
