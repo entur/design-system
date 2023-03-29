@@ -1,3 +1,4 @@
+/* eslint-disable  no-warning-comments */
 import React, { useRef, useState } from 'react';
 import { useCombobox, UseComboboxGetToggleButtonPropsOptions } from 'downshift';
 import classNames from 'classnames';

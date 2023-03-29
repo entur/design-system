@@ -1,4 +1,3 @@
-// TODO: Implement some tests!
 import React from 'react';
 import { render } from '@testing-library/react';
 import { GridItem, GridContainer } from '.';
