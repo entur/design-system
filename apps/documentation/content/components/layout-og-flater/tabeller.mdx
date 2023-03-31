@@ -23,6 +23,8 @@ import {
   ExpandRowButton,
   useTableKeyboardNavigation,
 } from '@entur/table';
+import { SmallAlertBox } from '@entur/alert';
+import { CodeText } from '@entur/typography';
 import {
   Checkbox,
   Radio,
@@ -98,11 +100,15 @@ En tabell settes sammen av flere forskjellige komponenter. Rekkefølgen er vikti
 ### Table
 
 <ImportStatement imports="Table" />
+<SmallAlertBox variant="warning" width="fit-content">
+  <CodeText>Table</CodeText> sine props vises ikke pga en bug. De viktigste er
+  nevnt under.
+</SmallAlertBox>
 <Props of={Table} />
 
 `<Table />` er grunnkomponenten til en tabell. Den wrapper man rundt en eller flere seksjonskomponenter (se `<TableHead />`, `<TableBody />` og `<TableFooter />`), for å lage en tabell. Du kan også sende inn en `<caption />` for å gi en tittel til tabellen din. `<caption />` må i så fall være første barneelement.
 
-Du kan spesifisere `fixed`-propen for å ha like kolonnestørrelser.
+Du kan spesifisere `fixed`-propen for å ha like kolonnestørrelser. For å endre på tettheten mellom radnene kan du bruke `spacing`-propen.
 
 Om du ønsker en mer kompakt tabell, så kan du spesifisere `middle`-propen.
 
@@ -273,6 +279,81 @@ Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillat
       </div>
     );
   }}
+</Playground>
+
+## Sticky header
+
+Ønsker du en såkalt «sticky header», altså en topp-rad som forblir synlig på skjermen når man skroller i tabellen, kan du bruke `stickyHeader`-propen.
+
+<Playground>
+  <div style={{ width: '100%', height: '25rem', overflowY: 'scroll' }}>
+    <Table stickyHeader>
+      <TableHead>
+        <TableRow>
+          <HeaderCell>Passasjerkategori</HeaderCell>
+          <HeaderCell>Type</HeaderCell>
+          <HeaderCell>Vogn</HeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <DataCell>Barn 0-5 år</DataCell>
+          <DataCell>Komfort</DataCell>
+          <DataCell>1</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Barn 6-10 år</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>2</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Barn 11-15 år</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>2</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Barn 16-20 år</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>3</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Barn 21-25 år</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>4</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Gammelt barn</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>4</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Ung voksen</DataCell>
+          <DataCell>Komfort</DataCell>
+          <DataCell>5</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Voksen</DataCell>
+          <DataCell>Komfort</DataCell>
+          <DataCell>5</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Gammel Voksen</DataCell>
+          <DataCell>Komfort</DataCell>
+          <DataCell>6</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Ung senior</DataCell>
+          <DataCell>Standard</DataCell>
+          <DataCell>6</DataCell>
+        </TableRow>
+        <TableRow>
+          <DataCell>Gammel senior</DataCell>
+          <DataCell>Fleksi</DataCell>
+          <DataCell>7</DataCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </div>
 </Playground>
 
 ## Checkbox-tabell
