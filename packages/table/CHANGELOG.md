@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.43...@entur/table@4.6.0) (2023-03-31)
+
+### Features
+
+- **table:** add sticky header option to table ([70dc0e3](https://bitbucket.org/enturas/design-system/commits/70dc0e356102595a52c38fddd00efa77629a958c))
+
 ## [4.5.43](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.5.42...@entur/table@4.5.43) (2023-03-27)
 
 **Note:** Version bump only for package @entur/table
