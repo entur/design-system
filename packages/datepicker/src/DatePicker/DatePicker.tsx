@@ -13,7 +13,11 @@ import {
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
-import type { DateValue, AriaDatePickerProps } from '@react-types/datepicker';
+import type {
+  DateValue,
+  AriaDatePickerProps,
+  MappedDateValue,
+} from '@react-types/datepicker';
 
 import {
   ConditionalWrapper,
@@ -33,11 +37,11 @@ import { CalendarButton } from '../shared/CalendarButton';
 
 import './DatePicker.scss';
 
-export type DatePickerProps = {
+export type DatePickerProps<DateType extends DateValue> = {
   /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
-  selectedDate: DateValue;
+  selectedDate: DateType | null;
   /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
-  onChange: (date: DateValue) => void;
+  onChange: (value: MappedDateValue<DateType> | null) => void;
   /** Ledetekst for inputfeltet til DatePicker */
   label: string;
   /** BCP47-språkkoden til locale-en du ønsker å bruke.
@@ -93,7 +97,7 @@ export type DatePickerProps = {
   className?: string;
   style?: React.CSSProperties;
 } & Omit<
-  AriaDatePickerProps<DateValue>,
+  AriaDatePickerProps<DateType>,
   | 'value'
   | 'onChange'
   | 'label'
@@ -103,7 +107,7 @@ export type DatePickerProps = {
   | 'maxValue'
 >;
 
-export const DatePicker = ({
+export const DatePicker = <DateType extends DateValue>({
   selectedDate: value,
   onChange,
   locale,
@@ -123,7 +127,7 @@ export const DatePicker = ({
   maxDate: maxValue,
   modalTreshold = 1000,
   ...rest
-}: DatePickerProps) => {
+}: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -135,8 +139,9 @@ export const DatePicker = ({
     ...rest,
     minValue,
     maxValue,
-    value,
+    value: value === null ? undefined : value,
     onChange,
+    granularity: showTime ? 'minute' : rest.granularity,
   });
   const {
     groupProps,
@@ -184,6 +189,7 @@ export const DatePicker = ({
     navigationDescription: navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
     onChange: onChangeCalendar,
+    granularity: showTime ? 'minute' : rest.granularity,
   };
 
   const useModal = width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH && !disableModal;
