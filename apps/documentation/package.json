@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -23,7 +23,7 @@
     "@entur/alert": "^0.11.27",
     "@entur/button": "^3.0.2",
     "@entur/chip": "^0.6.28",
-    "@entur/datepicker": "^5.0.1",
+    "@entur/datepicker": "^5.0.2",
     "@entur/dropdown": "^4.0.2",
     "@entur/expand": "^3.3.40",
     "@entur/fileupload": "^0.3.69",

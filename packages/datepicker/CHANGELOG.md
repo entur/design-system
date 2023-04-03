@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@5.0.1...@entur/datepicker@5.0.2) (2023-04-03)
+
+### Bug Fixes
+
+- **datepicker:** fix crash when initial value is null with showTime and a date is selected from cale ([a918719](https://bitbucket.org/enturas/design-system/commits/a9187196cd3156f0cb0a731b305db3f2d661ed6f))
+
 ## [5.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@5.0.0...@entur/datepicker@5.0.1) (2023-04-03)
 
 **Note:** Version bump only for package @entur/datepicker
