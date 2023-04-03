@@ -190,6 +190,7 @@ function createSvgrConfig(native = false, componentName) {
       'KolumbusIcon',
       'OstfoldIcon',
       'RuterIcon',
+      'RuterNoTextIcon',
       'SJIcon',
       'SkyssIcon',
       'VKTIcon',
@@ -232,7 +233,8 @@ function createSvgrConfig(native = false, componentName) {
     let color = `{(props.color || "currentColor")}`;
 
     if (outliers.includes(componentName)) {
-      className = `{"eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
+      className = `{(props.color ? "eds-icon " : "") + "eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
+      color = `{(props.color)}`;
     }
     if (componentName && colors.transport.contrast[lowerCaseName]) {
       className = `{(!props.color ? "eds-icon eds-icon__${lowerCaseName} " : "eds-icon") + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
