@@ -17,11 +17,11 @@ import {
   Link as LinkText,
   Paragraph,
 } from '@entur/typography';
+import { CopyableText } from '@entur/alert';
 import { Link } from 'docz';
 import React from 'react';
 import { hex } from 'wcag-contrast';
 import ColorSwatch from './ColorSwatch';
-import { CopyablePreformattedText } from './CopyablePreformattedText';
 import TransportColors from './ColorsTransport';
 import './Colors.scss';
 import ColorsDataVisualisation from './ColorsDataVisualisation';
@@ -251,35 +251,26 @@ const ColorDrawer: React.FC<{
       {description && <div style={{ marginTop: '1.5rem' }}>{description}</div>}
       <Heading4>Fargerverdier</Heading4>
       <Label>Variabel</Label>
-      <CopyablePreformattedText
-        isDrawer
-        successMessage={`Kopiert til utklippstavle`}
-      >
+      <CopyableText successMessage={`Kopiert til utklippstavle`}>
         {color.variable}
-      </CopyablePreformattedText>
+      </CopyableText>
       <Label>Hex</Label>
-      <CopyablePreformattedText
-        isDrawer
+      <CopyableText
+        textToCopy={color.hex.replace('#', '')}
         successMessage={'Kopiert til utklippstavle'}
       >
         {color.hex}
-      </CopyablePreformattedText>
+      </CopyableText>
       <Label>RGB</Label>
-      <CopyablePreformattedText
-        isDrawer
-        successMessage={'Kopiert til utklippstavle'}
-      >
+      <CopyableText successMessage={'Kopiert til utklippstavle'}>
         {color.rgb}
-      </CopyablePreformattedText>
+      </CopyableText>
       {color.cmyk && (
         <>
           <Label>CMYK</Label>
-          <CopyablePreformattedText
-            isDrawer
-            successMessage={'Kopiert til utklippstavle'}
-          >
+          <CopyableText successMessage={'Kopiert til utklippstavle'}>
             {color.cmyk}
-          </CopyablePreformattedText>
+          </CopyableText>
         </>
       )}
 
