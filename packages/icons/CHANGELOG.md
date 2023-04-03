@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.1.0...@entur/icons@6.2.0) (2023-04-03)
+
+### Features
+
+- add new terminal icons ([d0aef4f](https://bitbucket.org/enturas/design-system/commits/d0aef4f9ce55aa883987ac7774ef5b2350be3477))
+
 # [6.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.0.1...@entur/icons@6.1.0) (2023-04-03)
 
 ### Features
