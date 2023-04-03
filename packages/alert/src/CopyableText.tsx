@@ -13,6 +13,9 @@ export type CopyableTextProps = {
   className?: string;
   /** Tekstinnhold som vises og kopieres */
   children: string;
+  /** Hvis du ønsker å kopiere noe annet enn
+   * innholdet i children kan du legge det inn her */
+  textToCopy?: string;
   /** Overskrift i toast-varselet */
   successHeading?: string;
   /** Bekreftelsesmelding i toast-varselet */
@@ -23,6 +26,7 @@ export const CopyableText = ({
   children,
   successHeading = 'Kopiert!',
   successMessage = 'Innholdet ble kopiert til utklippstavlen.',
+  textToCopy,
   className,
   ...rest
 }: CopyableTextProps): JSX.Element => {
@@ -30,7 +34,7 @@ export const CopyableText = ({
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = () => {
     buttonRef.current &&
-      copy(children, {
+      copy(textToCopy !== undefined ? textToCopy : children, {
         target: buttonRef.current,
       }) &&
       addToast({ title: successHeading, content: successMessage });
