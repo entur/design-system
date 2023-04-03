@@ -15,8 +15,8 @@ import { CalendarGrid } from './CalendarGrid';
 import './Calendar.scss';
 
 type CalendarProps = {
-  selectedDate: DateValue;
-  onChange: (SelectedDate: DateValue) => void;
+  selectedDate: DateValue | null;
+  onChange: (SelectedDate: DateValue | null) => void;
   navigationDescription?: string;
   style?: React.CSSProperties;
   onSelectedCellClick?: () => void;
