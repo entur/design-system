@@ -65,8 +65,6 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   } = getTransportStyle(transport);
 
   useEffect(() => {
-    console.log(Icon.name, contrastBackgroundColor, backgroundColor);
-
     if (transportIsSet) {
       tagRef.current?.style.setProperty(
         '--background-color',
