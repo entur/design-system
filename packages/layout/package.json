@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "2.1.27",
+  "version": "2.1.28",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/layout.esm.js",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@entur/icons": "^6.2.0",
     "@entur/tokens": "^3.8.1",
-    "@entur/typography": "^1.7.13",
-    "@entur/utils": "^0.6.0",
+    "@entur/typography": "^1.7.14",
+    "@entur/utils": "^0.7.0",
     "classnames": "^2.3.1"
   }
 }

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@5.0.3...@entur/datepicker@6.0.0) (2023-04-04)
+
+### Bug Fixes
+
+- **timepicker:** fix typings for selectedTime and onChange-props ([a29cd4c](https://bitbucket.org/enturas/design-system/commits/a29cd4c9f8ac0115a48fac1ff85a072d3a3393d5))
+
+### BREAKING CHANGES
+
+- **timepicker:** ref prop has changed name to inputProp
+
 ## [5.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@5.0.2...@entur/datepicker@5.0.3) (2023-04-03)
 
 **Note:** Version bump only for package @entur/datepicker
