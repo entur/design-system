@@ -31,6 +31,7 @@
     "superClean": "rm -rf node_modules apps/*/dist apps/*/.docz apps/*/node_modules packages/*/dist packages/*/node_modules packages/*/.rts2*",
     "prepublishOnly": "yarn build:packages && yarn lint && yarn test:single-run",
     "publish-packages": "HUSKY=0 lerna publish --conventional-commits",
+    "publish-packages-after-failed-attempt": "HUSKY=0 lerna publish from-package --conventional-commits",
     "prerelease-packages": "HUSKY=0 lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
     "prepare": "husky install"
