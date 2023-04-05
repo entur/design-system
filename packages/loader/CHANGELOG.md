@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.27](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.25...@entur/loader@0.4.27) (2023-04-05)
+
+**Note:** Version bump only for package @entur/loader
+
 ## [0.4.26](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.25...@entur/loader@0.4.26) (2023-04-04)
 
 **Note:** Version bump only for package @entur/loader
