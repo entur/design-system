@@ -92,6 +92,7 @@ const CheckboxIcon: React.FC<{ indeterminate: boolean }> = ({
       width="11px"
       height="9px"
       viewBox="6 11 37 33"
+      aria-hidden={true}
     >
       {indeterminate ? (
         <rect x="10" y="25" width="28" height="5" fill="white" />
