@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.29](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.27...@entur/grid@0.3.29) (2023-04-05)
+
+**Note:** Version bump only for package @entur/grid
+
 ## [0.3.28](https://bitbucket.org/enturas/design-system/compare/@entur/grid@0.3.27...@entur/grid@0.3.28) (2023-04-04)
 
 **Note:** Version bump only for package @entur/grid

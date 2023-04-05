@@ -1,6 +1,6 @@
 {
   "name": "@entur/expand",
-  "version": "3.3.42",
+  "version": "3.3.43",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/expand.esm.js",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@entur/icons": "^6.2.0",
     "@entur/tokens": "^3.8.1",
-    "@entur/typography": "^1.7.14",
-    "@entur/utils": "^0.7.0",
+    "@entur/typography": "^1.7.15",
+    "@entur/utils": "^0.8.0",
     "classnames": "^2.3.1",
     "react-collapse": "^5.1.0"
   },
