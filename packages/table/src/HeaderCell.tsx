@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { DownArrowIcon, UpArrowIcon, UnsortedIcon } from '@entur/icons';
@@ -6,6 +6,7 @@ import { DownArrowIcon, UpArrowIcon, UnsortedIcon } from '@entur/icons';
 import { ExternalSortConfig } from '.';
 
 import './HeaderCell.scss';
+import { VisuallyHidden } from '@entur/a11y';
 
 export type HeaderCellProps = {
   /** Kolonneoverskrift */
@@ -29,6 +30,8 @@ export type HeaderCellProps = {
   sortConfig?: ExternalSortConfig;
   /** Navnet det skal sorteres på. Benyttes via useSortableTable */
   name?: string;
+  sortedAscendingAriaLabel?: string;
+  sortedDescendingAriaLabel?: string;
 } & React.DetailedHTMLProps<
   React.ThHTMLAttributes<HTMLTableCellElement>,
   HTMLTableCellElement
@@ -47,6 +50,8 @@ export const HeaderCell = React.forwardRef<
       sortConfig,
       padding = 'default',
       sortableButtonProps,
+      sortedAscendingAriaLabel = ', sortert stigende',
+      sortedDescendingAriaLabel = ', sortert synkende',
       ...rest
     },
     ref,
@@ -60,7 +65,7 @@ export const HeaderCell = React.forwardRef<
     }, [sortConfig, name]);
     const ariaSort = isCurrentlySorted
       ? sortConfig && sortConfig.order
-      : 'none';
+      : undefined;
 
     return (
       <th
@@ -80,6 +85,9 @@ export const HeaderCell = React.forwardRef<
             sortableButtonProps={sortableButtonProps}
             sortConfig={sortConfig}
             isCurrentlySorted={isCurrentlySorted}
+            ariaSort={ariaSort}
+            sortedAscendingAriaLabel={sortedAscendingAriaLabel}
+            sortedDescendingAriaLabel={sortedDescendingAriaLabel}
           >
             {children}
           </SortableHeaderCellButton>
@@ -98,6 +106,9 @@ type SortableHeaderCellButtonProps = {
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   >;
+  ariaSort?: 'none' | 'ascending' | 'descending' | 'other' | undefined;
+  sortedAscendingAriaLabel?: string;
+  sortedDescendingAriaLabel?: string;
 };
 
 const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
@@ -105,36 +116,61 @@ const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
   sortableButtonProps,
   isCurrentlySorted,
   children,
+  ariaSort,
+  sortedAscendingAriaLabel,
+  sortedDescendingAriaLabel,
 }) => {
+  const [sortedAriaInfo, setSortedAriaInfo] = useState<string | undefined>('');
+
   const { className, ...rest } = sortableButtonProps;
+
+  const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+  useEffect(() => {
+    const DISMISS_SORT_INFO_TIME = 3000;
+    if (sortConfig.order == 'ascending') {
+      setSortedAriaInfo(sortedAscendingAriaLabel);
+    } else if (sortConfig.order == 'descending') {
+      setSortedAriaInfo(sortedDescendingAriaLabel);
+    }
+    const dismissAriaTimer = setTimeout(() => {
+      setSortedAriaInfo('');
+      if (isFirefox) setSortedAriaInfo(', sort ' + sortConfig.order);
+    }, DISMISS_SORT_INFO_TIME);
+
+    return () => clearTimeout(dismissAriaTimer);
+  }, [sortConfig.order]);
+
   return (
     <button
       className={classNames('eds-table__header-cell-button', className)}
       type="button"
+      aria-sort={ariaSort}
       {...rest}
     >
       {children}
       {(!isCurrentlySorted || sortConfig.order === 'none') && (
         <UnsortedIcon
-          size="16px"
+          size="1rem"
           className="eds-table__header-cell-button-icon"
-          aria-label="usortert kolonne"
+          aria-hidden="true"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'ascending' && (
         <UpArrowIcon
-          size="16px"
+          size="1rem"
           className="eds-table__header-cell-button-icon"
-          aria-label="stigende sortert kolonne"
+          aria-hidden="true"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'descending' && (
         <DownArrowIcon
-          size="16px"
+          size="1rem"
           className="eds-table__header-cell-button-icon"
-          aria-label="synkende sortert kolonne"
+          aria-hidden="true"
         />
       )}
+      <VisuallyHidden>{isCurrentlySorted && sortedAriaInfo}</VisuallyHidden>
     </button>
   );
 };
