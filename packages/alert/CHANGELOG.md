@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.28...@entur/alert@0.14.0) (2023-04-13)
+
+### Bug Fixes
+
+- **alert box:** add missing description to icon in alert box ([61bc6d9](https://bitbucket.org/enturas/design-system/commits/61bc6d9e4282ef59ae1fae4042369415a721bc6e))
+
+### Features
+
+- **copyable text:** add textToCopy prop for when copying different text than is displayed ([0ed985e](https://bitbucket.org/enturas/design-system/commits/0ed985e34219d03c5b6715c5a6f5371cfbd192e0))
+
 # [0.13.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.11.28...@entur/alert@0.13.0) (2023-04-05)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.44](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.41...@entur/expand@3.3.44) (2023-04-13)
+
+### Bug Fixes
+
+- **expandable:** hide visual arrow icon from screen readers ([1f065df](https://bitbucket.org/enturas/design-system/commits/1f065df0e0161b9d2813230d726bb86866e30f0e))
+
 ## [3.3.43](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.41...@entur/expand@3.3.43) (2023-04-05)
 
 **Note:** Version bump only for package @entur/expand

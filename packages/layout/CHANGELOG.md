@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.30](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.27...@entur/layout@2.1.30) (2023-04-13)
+
+### Bug Fixes
+
+- **media card:** hide arrow icon for screen readers in media card ([729ba87](https://bitbucket.org/enturas/design-system/commits/729ba87757cd4845cce3118859dbc15158b193db))
+- **navigation card:** hide decorative icon for screen readers in navigation card ([ce4a1bc](https://bitbucket.org/enturas/design-system/commits/ce4a1bc312c4735d616b66af2bf6a3d2300f9120))
+
 ## [2.1.29](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.27...@entur/layout@2.1.29) (2023-04-05)
 
 **Note:** Version bump only for package @entur/layout

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.3...@entur/dropdown@4.0.6) (2023-04-13)
+
+### Bug Fixes
+
+- **native dropdown:** hide visual arrow icon from screen readers and add missing connection between ([7a4454e](https://bitbucket.org/enturas/design-system/commits/7a4454e655881d18a4dc5434f260ff831fa1700a))
+
 ## [4.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.3...@entur/dropdown@4.0.5) (2023-04-05)
 
 **Note:** Version bump only for package @entur/dropdown

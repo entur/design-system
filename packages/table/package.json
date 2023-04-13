@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.6.4",
+  "version": "4.6.5",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -28,13 +28,13 @@
   },
   "dependencies": {
     "@entur/a11y": "0.2.51",
-    "@entur/button": "^3.0.4",
-    "@entur/expand": "^3.3.43",
-    "@entur/form": "^7.0.4",
+    "@entur/button": "^3.0.5",
+    "@entur/expand": "^3.3.44",
+    "@entur/form": "^7.0.5",
     "@entur/icons": "^6.2.0",
     "@entur/tokens": "^3.8.1",
-    "@entur/tooltip": "^2.6.14",
-    "@entur/utils": "^0.8.0",
+    "@entur/tooltip": "^2.6.15",
+    "@entur/utils": "^0.9.0",
     "@types/lodash.get": "^4.4.6",
     "classnames": "^2.3.1",
     "lodash.get": "^4.4.2"

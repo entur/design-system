@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.2...@entur/table@4.6.5) (2023-04-13)
+
+### Bug Fixes
+
+- **sortable table:** fix screen reader interaction with sortable columns ([1db4c83](https://bitbucket.org/enturas/design-system/commits/1db4c834fe20fcc4783945e31a3e29a27e85164d))
+
 ## [4.6.4](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.2...@entur/table@4.6.4) (2023-04-05)
 
 **Note:** Version bump only for package @entur/table

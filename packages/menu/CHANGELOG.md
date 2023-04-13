@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.38](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.35...@entur/menu@4.1.38) (2023-04-13)
+
+### Bug Fixes
+
+- **pagination:** fix duplicate word and indicate when on last page for screen readers ([f290181](https://bitbucket.org/enturas/design-system/commits/f2901815ad41329117d0451c26ef2753d839b5ef))
+
 ## [4.1.37](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.35...@entur/menu@4.1.37) (2023-04-05)
 
 **Note:** Version bump only for package @entur/menu

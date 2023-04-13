@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.6.0...@entur/utils@0.9.0) (2023-04-13)
+
+### Bug Fixes
+
+- **timepicker:** fix typings for selectedTime and onChange-props ([5c247f9](https://bitbucket.org/enturas/design-system/commits/5c247f952d8dc00b2a17bc7a1ef83dcbcc4c7c71))
+
+### BREAKING CHANGES
+
+- **timepicker:** ref prop has changed name to inputProp
+
 # [0.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.6.0...@entur/utils@0.8.0) (2023-04-05)
 
 ### Bug Fixes

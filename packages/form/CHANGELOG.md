@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.2...@entur/form@7.0.5) (2023-04-13)
+
+### Bug Fixes
+
+- **checkbox:** remove checkbox svg icon from accessibility tree ([0ab4b6a](https://bitbucket.org/enturas/design-system/commits/0ab4b6a11f655b617ade9adb78738ef1e2c2bdf4))
+- **switch:** hide visual icon from screen readers since all neccessary information already comes fro ([4253801](https://bitbucket.org/enturas/design-system/commits/4253801d394972ad0cb456662257ba634b8a3b61))
+
 ## [7.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.2...@entur/form@7.0.4) (2023-04-05)
 
 ### Bug Fixes
