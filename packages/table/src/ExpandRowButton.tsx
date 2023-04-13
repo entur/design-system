@@ -23,7 +23,7 @@ export const ExpandRowButton: React.FC<ExpandRowButtonProps> = ({
       aria-label={open ? 'Lukk tabellrad' : 'Utvid tabellrad'}
       {...rest}
     >
-      <DownArrowIcon className="eds-expand-row-button__icon" />
+      <DownArrowIcon aria-hidden className="eds-expand-row-button__icon" />
     </IconButton>
   );
 };
