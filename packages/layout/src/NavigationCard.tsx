@@ -56,7 +56,9 @@ export const NavigationCard = <
   return (
     <BaseCard as={Element} className={classList} {...rest}>
       {!compact && titleIcon && (
-        <div className="eds-navigation-card__title-icon">{titleIcon}</div>
+        <div className="eds-navigation-card__title-icon" aria-hidden="true">
+          {titleIcon}
+        </div>
       )}
       <span className="eds-navigation-card__title">
         {compact && titleIcon && (

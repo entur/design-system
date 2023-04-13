@@ -100,6 +100,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   pageLabel = pageNumber => `Gå til side ${pageNumber}`,
   previousPageLabel = 'Gå til forrige side',
   currentPageLabelForScreenreader = 'Nåværende side:',
+  lastPageLabelForScreenreader = ', siste side',
   showInput,
 
   numberOfResults,
@@ -110,7 +111,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   showNumberOfResultsLabel = 'Vis',
   nextPageLabel = 'Gå til neste side',
   showingResultsLabel = (minPage, maxPage, pageCount) =>
-    `Viser resultat ${minPage} - ${maxPage} av ${pageCount}`,
+    `Viser resultat ${minPage}–${maxPage} av ${pageCount}`,
   hideNextButton = false,
   hidePrevButton = false,
   ...rest
@@ -170,14 +171,20 @@ export const Pagination: React.FC<PaginationProps> = ({
   }
 
   return (
-    <div className={classNames('eds-pagination', className)} {...rest}>
+    <nav
+      className={classNames('eds-pagination', className)}
+      aria-label="Paginering"
+      {...rest}
+    >
       {resultsPerPage && numberOfResults && (
         <div className="eds-pagination__results">
           {onResultsPerPageChange && (
             <Menu>
               {({ isOpen }) => (
                 <>
-                  <Label>{showNumberOfResultsLabel}</Label>
+                  <Label as="p" aria-hidden="true">
+                    {showNumberOfResultsLabel}
+                  </Label>
                   <MenuButton
                     className={classNames('eds-pagination-menu__menu-button', {
                       'eds-pagination-menu__menu-button--open': isOpen,
@@ -209,7 +216,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               )}
             </Menu>
           )}
-          <Label className="eds-pagination__results-label">
+          <Label as="p" className="eds-pagination__results-label">
             {showingResultsLabel(
               (currentPage - 1) * resultsPerPage + 1,
               currentPage * resultsPerPage > numberOfResults
@@ -238,7 +245,12 @@ export const Pagination: React.FC<PaginationProps> = ({
             <PaginationPage
               selected={entry === currentPage}
               onClick={() => onPageChange(entry)}
-              aria-label={pageLabel(entry)}
+              aria-label={`${pageLabel(entry)}${
+                entry === pageCount ? lastPageLabelForScreenreader : ''
+              }`}
+              aria-describedby={
+                entry !== currentPage ? paginationId : undefined
+              }
               key={entry}
             >
               {entry}
@@ -267,7 +279,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       <VisuallyHidden id={paginationId}>
         {currentPageLabelForScreenreader} {currentPage}
       </VisuallyHidden>
-    </div>
+    </nav>
   );
 };
 

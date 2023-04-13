@@ -59,11 +59,17 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
 }) => {
   const { items: normalizedItems, loading } = useResolvedItems(items);
 
-  let rightSideIcon: JSX.Element | null = <DownArrowIcon inline={true} />;
+  let rightSideIcon: JSX.Element | null = (
+    <DownArrowIcon inline={true} aria-hidden="true" />
+  );
   if (disabled || readOnly) {
     rightSideIcon = null;
   } else if (loading) {
-    rightSideIcon = <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
+    rightSideIcon = (
+      <DropdownLoadingDots aria-hidden="true">
+        {loadingText}
+      </DropdownLoadingDots>
+    );
   }
   const nativeDropdownId = useRandomId('eds-native-dropdown');
   return (
@@ -75,14 +81,16 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
       className={className}
       style={style}
       label={label}
+      labelId={nativeDropdownId}
       variant={variant}
       feedback={feedback}
-      labelId={nativeDropdownId}
       disableLabelAnimation={disableLabelAnimation}
       isFilled={true}
     >
       <select
         aria-invalid={variant === 'error'}
+        aria-labelledby={nativeDropdownId}
+        aria-busy={loading}
         className="eds-form-control eds-dropdown"
         disabled={disabled || readOnly}
         {...rest}

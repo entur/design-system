@@ -35,7 +35,7 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
       <Element
         className={`best-practices__heading best-practices__heading--${type}`}
       >
-        <Icon inline={true} />{' '}
+        <Icon inline={true} aria-hidden="true" />{' '}
         <span>{type === 'do' ? 'Innafor' : 'Uttafor'}</span>
         {src && <img src={src} alt={alt} className="best-practices__image" />}
       </Element>

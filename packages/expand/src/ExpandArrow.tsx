@@ -24,6 +24,7 @@ export const ExpandArrow: React.FC<ExpandArrowProps> = ({
         'eds-expandable-arrow--open': open,
       })}
       {...rest}
+      aria-hidden="true"
     />
   );
 };

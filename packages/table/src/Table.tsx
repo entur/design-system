@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { mergeRefs } from '@entur/utils';
+import { useRandomId, mergeRefs } from '@entur/utils';
+import { VisuallyHidden } from '@entur/a11y';
 
 export type TableProps = {
   /** Ekstra klassenavn */
@@ -28,11 +29,14 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
       fixed = false,
       spacing = 'default',
       sortable = false,
+      changeSortDescription = 'Tabelloverskrifter med knapper kan trykkes på for å endre sortering,',
       stickyHeader = false,
       ...rest
     },
     ref,
   ) => {
+    const sortableHeaderId = useRandomId('sortable-header');
+
     const tableRef = useRef<HTMLTableElement>(null);
 
     useEffect(() => {
@@ -65,22 +69,30 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           observerElement.remove();
         };
       }
-    }, []);
+    }, [stickyHeader]);
 
     return (
-      <table
-        className={classNames(
-          'eds-table',
-          { 'eds-table--fixed': fixed },
-          { 'eds-table--middle': spacing === 'middle' },
-          { 'eds-table--small': spacing === 'small' },
-          { 'eds-table--sortable': sortable },
-          { 'eds-table--sticky-header': stickyHeader },
-          className,
+      <>
+        <table
+          className={classNames(
+            'eds-table',
+            { 'eds-table--fixed': fixed },
+            { 'eds-table--middle': spacing === 'middle' },
+            { 'eds-table--small': spacing === 'small' },
+            { 'eds-table--sortable': sortable },
+            { 'eds-table--sticky-header': stickyHeader },
+            className,
+          )}
+          ref={mergeRefs(ref, tableRef)}
+          aria-describedby={sortable ? sortableHeaderId : undefined}
+          {...rest}
+        />
+        {sortable && (
+          <VisuallyHidden id={sortableHeaderId}>
+            {changeSortDescription}
+          </VisuallyHidden>
         )}
-        ref={mergeRefs(ref, tableRef)}
-        {...rest}
-      />
+      </>
     );
   },
 );

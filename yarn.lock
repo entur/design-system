@@ -3929,6 +3929,22 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@entur/a11y@0.2.51":
+  version "0.2.51"
+  resolved "https://registry.yarnpkg.com/@entur/a11y/-/a11y-0.2.51.tgz#24920b6f177ad1c7c31ba49e74d15303942bb38a"
+  integrity sha512-h0fzaTSbZh7cYT5d8xATHp7Fy6YrtbBI00J41H8J9NZUMBPSE5K+KxsHXUyKQf8IXcXHolhWFTE6Rwqsz2An0w==
+  dependencies:
+    "@entur/tokens" "^3.4.2"
+    "@entur/typography" "^1.7.2"
+    "@entur/utils" "^0.4.7"
+
+"@entur/utils@^0.4.7":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@entur/utils/-/utils-0.4.9.tgz#3547c32e1343b39eb34aa88d305040ad9c6c7d03"
+  integrity sha512-dyXs26JzboR9TlV3gVRFi8HzAXEvvCMnTnGbRrK7RzujXcUqLO1QzzL7dh7iLtFGcvkSGNU36tmVsPXPqhkNIw==
+  dependencies:
+    tiny-warning "^1.0.3"
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"

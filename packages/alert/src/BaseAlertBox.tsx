@@ -10,10 +10,16 @@ import {
 import './styles.scss';
 
 const iconsMap = {
-  success: OutlinedValidationCheckIcon,
-  info: OutlinedValidationInfoIcon,
-  warning: OutlinedValidationExclamationIcon,
-  error: OutlinedValidationErrorIcon,
+  success: {
+    icon: OutlinedValidationCheckIcon,
+    description: 'Suksessmelding',
+  },
+  info: { icon: OutlinedValidationInfoIcon, description: 'Infomelding' },
+  warning: {
+    icon: OutlinedValidationExclamationIcon,
+    description: 'Varselmelding',
+  },
+  error: { icon: OutlinedValidationErrorIcon, description: 'Feilmelding' },
 };
 
 type BaseAlertBoxProps = {
@@ -62,7 +68,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
     setClosed(true);
     onClose();
   };
-  const Icon = iconsMap[variant];
+  const Icon = iconsMap[variant].icon;
   return (
     <div
       className={classNames(
@@ -84,7 +90,11 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
           <CloseIcon />
         </button>
       )}
-      <Icon className="eds-alert-box__icon" />
+      <Icon
+        role="img"
+        className="eds-alert-box__icon"
+        aria-label={iconsMap[variant].description}
+      />
       <div
         className={classNames('eds-alert-box__content', {
           'eds-alert-box__content--no-title': !title,

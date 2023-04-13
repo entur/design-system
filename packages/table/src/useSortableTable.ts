@@ -18,7 +18,9 @@ export function useSortableData<T>(
   getSortableHeaderProps: (
     args: SortableHeaderProps,
   ) => SortableHeaderReturnProps;
-  getSortableTableProps: (args: SortableTableProps) => SortableTableReturnProps;
+  getSortableTableProps: (
+    args?: SortableTableProps,
+  ) => SortableTableReturnProps;
 } {
   const [sortConfig, setSortConfig] = useState(externalSortConfig);
 
@@ -79,7 +81,7 @@ export function useSortableData<T>(
   const getSortableTableProps = ({
     sortable = true,
     ...props
-  }: SortableTableProps): SortableTableReturnProps => {
+  }: SortableTableProps = {}): SortableTableReturnProps => {
     return {
       sortable,
       sortConfig: sortConfig,

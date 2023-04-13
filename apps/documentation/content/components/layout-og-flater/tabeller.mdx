@@ -150,9 +150,8 @@ for at innholdet som ekspanderes skal vises til hele bredden av tabellen. Se eks
 ## Sortering av tabell
 
 Sorteringsfunksjonene er plassert i kolonneoverskriftene. Ved å klikke på en kolonneoverskrift sorteres tabellen basert på dataene innen - alfabetisk, numerisk, dato osv.
-En sortert tabell har tre tilstander: usortert, sortert etter stigende rekkefølge (pilikon - opp) eller sortert etter synkende rekkefølge (pilikon - ned).
-Ikonene indikerer gjeldende sortert tilstand og vises bare hvis sortering er aktivert. Det er kun kolonnen som blir sortert som skal vise et ikon,
-usorterte ikoner er bare synlige ved “hover”.
+En sortert tabell har tre tilstander: usortert (pilikon – opp og ned), sortert etter stigende rekkefølge (pilikon – opp) eller sortert etter synkende rekkefølge (pilikon – ned).
+Ikonene indikerer gjeldende sortert tilstand og vises bare på kolonner der `useSortableData` sine props er tatt i bruk.
 
 <Playground>
   {() => {
@@ -167,7 +166,7 @@ usorterte ikoner er bare synlige ved “hover”.
     const { sortedData, getSortableHeaderProps, getSortableTableProps } =
       useSortableData(data);
     return (
-      <Table {...getSortableTableProps}>
+      <Table {...getSortableTableProps()}>
         <TableHead>
           <TableRow>
             <HeaderCell {...getSortableHeaderProps({ name: 'name' })}>
