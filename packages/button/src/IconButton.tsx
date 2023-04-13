@@ -55,6 +55,14 @@ export const IconButton: IconButtonComponent = React.forwardRef(
   ) => {
     const Element: React.ElementType = as || defaultElement;
 
+    const IconWithAriaHidden = React.Children.map(children, child => {
+      if (React.isValidElement(child)) {
+        // @ts-expect-error aria-hidden does, in fact, exist
+        return React.cloneElement(child, { 'aria-hidden': true });
+      }
+      return child;
+    });
+
     const iconButtonElement = (
       <Element
         className={classNames(
@@ -71,7 +79,7 @@ export const IconButton: IconButtonComponent = React.forwardRef(
         ref={ref}
         {...rest}
       >
-        {loading ? <LoadingDots /> : children}
+        {loading ? <LoadingDots /> : <>{IconWithAriaHidden}</>}
       </Element>
     );
 
