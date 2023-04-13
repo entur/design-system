@@ -128,7 +128,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
     onMouseEnter?: (e: React.MouseEvent) => void;
     onMouseLeave?: () => void;
   } = {};
-  childProps['aria-describedby'] = tooltipId;
+  childProps['aria-describedby'] = showTooltip ? tooltipId : undefined;
+
   if (!disableFocusListener) {
     childProps.onFocus = () => setShowTooltip(true);
     childProps.onBlur = () => setShowTooltip(false);
