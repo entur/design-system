@@ -23,9 +23,18 @@ export const DesignPrinciple: React.FC<DesignPrincipleProps> = ({
       large={4}
       className="design-principle__container"
     >
-      <div className="design-principle__number">{number}.</div>
-      <div className="design-principle__icon">{icon}</div>
-      <Heading3 className="design-principle__title">{title} </Heading3>
+      <div aria-hidden="true" className="design-principle__number">
+        {number}.
+      </div>
+      <div aria-hidden="true" className="design-principle__icon">
+        {icon}
+      </div>
+      <Heading3
+        aria-label={`${number}. ${title}`}
+        className="design-principle__title"
+      >
+        {title}
+      </Heading3>
       <Paragraph className="design-principle__description">
         {description}{' '}
       </Paragraph>
