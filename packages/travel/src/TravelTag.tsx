@@ -62,6 +62,7 @@ export const TravelTag: React.FC<TravelTagProps> = ({
     contrastTextColor,
     backgroundColor,
     textColor,
+    ariaLabel,
   } = getTransportStyle(transport);
 
   useEffect(() => {
@@ -90,8 +91,12 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       })}
       ref={tagRef}
       {...rest}
+      aria-label={
+        rest['aria-label'] ?? ariaLabel + (alertIsSet ? ` ${alert}` : '')
+      }
+      role="img"
     >
-      <Icon />
+      <Icon aria-hidden />
       {children}
       {isClosable && (
         <button onClick={onClose} className="eds-travel-tag__close-button">
@@ -101,13 +106,22 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       {alertIsSet && (
         <span className="eds-travel-tag__alert">
           {alert === 'info' && (
-            <ValidationInfoIcon className="eds-travel-tag__alert-info-icon" />
+            <ValidationInfoIcon
+              aria-hidden
+              className="eds-travel-tag__alert-info-icon"
+            />
           )}
           {alert === 'error' && (
-            <ValidationErrorIcon className="eds-travel-tag__alert-error-icon" />
+            <ValidationErrorIcon
+              aria-hidden
+              className="eds-travel-tag__alert-error-icon"
+            />
           )}
           {alert === 'warning' && (
-            <ValidationExclamationIcon className="eds-travel-tag__alert-exclamation-icon" />
+            <ValidationExclamationIcon
+              aria-hidden
+              className="eds-travel-tag__alert-exclamation-icon"
+            />
           )}
         </span>
       )}
