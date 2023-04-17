@@ -45,7 +45,8 @@ Her er eksempel på verktøy som vi benytter til brukertesting i Entur:
 <img
   src={brukertestingVerktoy}
   width="100%"
-  alt="Viser forskjellige måter for brukertesting basert på hvilke type data man trenger."
+  alt="Viser en graf der x-aksen går fra «Skriptet bruk i hypotetiske situasjoner» til «Naturlig bruk i reelle situasjoner» og y-aksen går fra «Kvalitativ» til «Kvantitativ». 
+Midt på grafen finner vi «Deltakende design». Ned mot «Kvalitativ» ligger «Adoptivtesting». Herfra mot «Skriptet» ligger «Geriljatest». Lengst mot «Kvalitativ» fra dette punkt ligger «Brukertest i lab». Krysser vi litt over mot «Naturlig bruk»-siden på x-aksen og går litt mot «Kvantitativ» finner vi «Intervju». Fra dette punkt og nesten maks mot «Kvantitativ» finner vi «Direkte tilbakemeldinger». Litt lenger mot «Kvalitativ» og «Naturlig bruk» finner vi til slutt «Analyseverktøy»."
 />
 
 ## Direkte tilbakemeldinger
@@ -72,7 +73,7 @@ Vi får også inn ønsker om nye funksjoner, som viser at folk er engasjerte og 
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--red">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Vi kan teste i produksjon, med reelle data og på faktiske
@@ -83,7 +84,7 @@ Vi får også inn ønsker om nye funksjoner, som viser at folk er engasjerte og 
   </div>
   <div className="brukertesting__box brukertesting__box--red">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Mange mennesker kan oppleve feil og mangler uten å melde fra, så vi kan
@@ -115,7 +116,7 @@ Bør brukes med omhu fordi det er lett å legge for mye i resultatene.
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--mint">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Vi tester i produksjon, med reelle data, på faktiske brukere og i store
@@ -126,7 +127,7 @@ Bør brukes med omhu fordi det er lett å legge for mye i resultatene.
   </div>
   <div className="brukertesting__box brukertesting__box--mint">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Vi måler adferd, men det er vanskeligere å måle tilfredshet og kvalitet.
@@ -152,7 +153,7 @@ Lenger ut i løpet vil panelet kunne bidra i brukertester eller bli eksponert fo
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--azure">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Høy verdi når brukergruppen er eksperter av noe slag. Enket å samle inn
@@ -161,7 +162,7 @@ Lenger ut i løpet vil panelet kunne bidra i brukertester eller bli eksponert fo
   </div>
   <div className="brukertesting__box brukertesting__box--azure">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Oppstartskonstnad for å sette opp og etablere. Risiko når svar begrenses
@@ -185,7 +186,7 @@ Tilbakemeldingene fra de faste testpersonene blir ekstra påtakelig for alle som
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--orange">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Personene reiser kollektivt og bruker produktet til vanlig. Vi tester på
@@ -198,7 +199,7 @@ Tilbakemeldingene fra de faste testpersonene blir ekstra påtakelig for alle som
   </div>
   <div className="brukertesting__box brukertesting__box--orange">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Få testpersoner kan gi lite variasjon i svarene. Vi tester på samme
@@ -218,7 +219,7 @@ Testing av mindre detaljer i grensesnitt fungerer veldig fint med geriljatesting
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--lavender">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Enkelt å gjennomføre, og kan med fordel utføres av flere i teamet. Man kan
@@ -228,7 +229,7 @@ Testing av mindre detaljer i grensesnitt fungerer veldig fint med geriljatesting
   </div>
   <div className="brukertesting__box brukertesting__box--lavender">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Kan gi litt impulsive svar, eller mangle dybde. Kvaliteten på svarene
@@ -247,7 +248,7 @@ Intervju kan også benyttes som en del av en vanlig brukertest eller geriljatest
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--green">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Spontane tilbakemeldinger fra reelle brukere i faktisk situasjon. Fin
@@ -256,7 +257,7 @@ Intervju kan også benyttes som en del av en vanlig brukertest eller geriljatest
   </div>
   <div className="brukertesting__box brukertesting__box--green">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Tidkrevende og gir ikke alltid svar på akkurat det man ønsker der og da.
@@ -279,7 +280,7 @@ Det beste er å få spesialister på slike verktøy til å teste for oss, for å
 <div className="brukertesting">
   <div className="brukertesting__box brukertesting__box--lilac">
     <Heading4 margin="bottom">
-      <AddIcon inline /> Fordeler
+      <AddIcon inline aria-hidden="true" /> Fordeler
     </Heading4>
     <Paragraph>
       Labstest er oft en større begivenhet som er godt planlagt. Både prosess og
@@ -290,7 +291,7 @@ Det beste er å få spesialister på slike verktøy til å teste for oss, for å
   </div>
   <div className="brukertesting__box brukertesting__box--lilac">
     <Heading4 margin="bottom">
-      <SubtractIcon inline /> Ulemper
+      <SubtractIcon inline aria-hidden="true" /> Ulemper
     </Heading4>
     <Paragraph>
       Krever en del planlegging i forkant og analyse i etterkant. Ikke alltid

@@ -58,13 +58,13 @@ const FrontPageFooter = () => {
           <div className="front-page-footer__link">
             <Link href="https://entur.slack.com/archives/C899QSPB7">
               #talk-designsystem på Slack&nbsp;
-              <ExternalIcon />
+              <ExternalIcon aria-label="(ekstern lenke)" />
             </Link>
           </div>
           <div className="front-page-footer__link">
             <Link href="https://uustatus.no/nb/erklaringer/publisert/7c5b8f79-7c24-4144-8084-afde897edded">
               Tilgjengelighetserklæring&nbsp;
-              <ExternalIcon />
+              <ExternalIcon aria-label="(ekstern lenke)" />
             </Link>
           </div>
         </GridItem>
@@ -110,32 +110,32 @@ const SocialMediaLinks = ({ style }: { style?: React.CSSProperties }) => {
           as="a"
           style={{ width: 'unset', height: 'unset' }}
           href="https://www.facebook.com/entur.org/"
+          aria-label="Entur på Facebook (ekstern lenke)"
         >
-          <VisuallyHidden>Link til Facebook</VisuallyHidden>
           <FacebookIcon size="24" />
         </IconButton>
         <IconButton
           as="a"
           style={{ width: 'unset', height: 'unset' }}
           href="https://www.instagram.com/entur_as/"
+          aria-label="Entur på Instagram (ekstern lenke)"
         >
-          <VisuallyHidden>Link til Instagram</VisuallyHidden>
           <InstagramIcon size="24" />
         </IconButton>
         <IconButton
           as="a"
           style={{ width: 'unset', height: 'unset' }}
           href="https://twitter.com/entur_as"
+          aria-label="Entur på Twitter (ekstern lenke)"
         >
-          <VisuallyHidden>Link til Twitter</VisuallyHidden>
           <TwitterIcon size="24" />
         </IconButton>
         <IconButton
           as="a"
           style={{ width: 'unset', height: 'unset' }}
           href="https://www.linkedin.com/company/entur-as"
+          aria-label="Entur på LinkedIn (ekstern lenke)"
         >
-          <VisuallyHidden>Link til LinkedIn</VisuallyHidden>
           <LinkedinIcon size="24" />
         </IconButton>
       </div>

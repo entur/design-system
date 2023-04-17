@@ -23,10 +23,10 @@ import { ClockIcon } from '@entur/icons';
     return (
       <div style={{ display: 'flex', gap: '2rem' }}>
         <Tag>
-          <ClockIcon />
+          <ClockIcon aria-label="Klokke" />
         </Tag>
         <Tag>
-          <ClockIcon inline /> {time}
+          <ClockIcon inline aria-label="Tidspunkt:" /> {time}
         </Tag>
         <Tag>Kollektivselskap</Tag>
       </div>

@@ -214,18 +214,18 @@ Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillat
       <div style={{ width: '100%' }}>
         <div style={{ float: 'left' }}>
           <SegmentedControl
-            label="Densitet"
+            label="Tetthet"
             onChange={selectedValue => setSpacing(selectedValue)}
             selectedValue={spacing}
           >
             <SegmentedChoice value="default">
-              <RowHeightDefaultIcon inline />
+              <RowHeightDefaultIcon inline aria-label='"default" tetthet' />
             </SegmentedChoice>
             <SegmentedChoice value="middle">
-              <RowHeightMiddleIcon inline />
+              <RowHeightMiddleIcon inline aria-label='"middle" tetthet' />
             </SegmentedChoice>
             <SegmentedChoice value="small">
-              <RowHeightSmallIcon inline />
+              <RowHeightSmallIcon inline aria-label='"small" tetthet' />
             </SegmentedChoice>
           </SegmentedControl>
         </div>
@@ -683,38 +683,38 @@ slik at alle likheter samles henholdsvis til høyre eller venstre.
       <TableRow>
         <DataCell>Platinum</DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Gull</DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell></DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Sølv</DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell>
-          <CheckIcon />
+          <CheckIcon inline aria-label="inkludert" />
         </DataCell>
         <DataCell></DataCell>
         <DataCell></DataCell>
@@ -749,17 +749,17 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline />
+              <ValidationInfoIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <FileIcon inline /> Last ned fil
+              <FileIcon inline aria-hidden="true" /> Last ned fil
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <EditIcon inline /> Rediger
+              <EditIcon inline aria-hidden="true" /> Rediger
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <DeleteIcon inline /> Slett
+              <DeleteIcon inline aria-hidden="true" /> Slett
             </OverflowMenuItem>
           </OverflowMenu>
         </DataCell>
@@ -772,17 +772,17 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline />
+              <ValidationInfoIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <FileIcon inline /> Last ned fil
+              <FileIcon inline aria-hidden="true" /> Last ned fil
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <EditIcon inline /> Rediger
+              <EditIcon inline aria-hidden="true" /> Rediger
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <DeleteIcon inline /> Slett
+              <DeleteIcon inline aria-hidden="true" /> Slett
             </OverflowMenuItem>
           </OverflowMenu>
         </DataCell>
@@ -795,17 +795,17 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline />
+              <ValidationInfoIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <FileIcon inline /> Last ned fil
+              <FileIcon inline aria-hidden="true" /> Last ned fil
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <EditIcon inline /> Rediger
+              <EditIcon inline aria-hidden="true" /> Rediger
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
-              <DeleteIcon inline /> Slett
+              <DeleteIcon inline aria-hidden="true" /> Slett
             </OverflowMenuItem>
           </OverflowMenu>
         </DataCell>
@@ -839,13 +839,13 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon />
+            <ValidationInfoIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <EditIcon />
+            <EditIcon aria-label="Rediger" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <DeleteIcon />
+            <DeleteIcon aria-label="Slett" />
           </IconButton>
         </DataCell>
       </TableRow>
@@ -856,13 +856,13 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon />
+            <ValidationInfoIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <EditIcon />
+            <EditIcon aria-label="Rediger" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <DeleteIcon />
+            <DeleteIcon aria-label="Slett" />
           </IconButton>
         </DataCell>
       </TableRow>
@@ -873,13 +873,13 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon />
+            <ValidationInfoIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <EditIcon />
+            <EditIcon aria-label="Rediger" />
           </IconButton>
           <IconButton onClick={() => {}}>
-            <DeleteIcon />
+            <DeleteIcon aria-label="Slett" />
           </IconButton>
         </DataCell>
       </TableRow>
@@ -909,13 +909,19 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
           <TableRow hover>
             <EditableCell variant="error" feedback="Navn mangler">
               <TextField
+                aria-label="Navn"
                 append={
-                  <ValidationErrorIcon inline color={colors.validation.lava} />
+                  <ValidationErrorIcon
+                    inline
+                    color={colors.validation.lava}
+                    aria-hidden="true"
+                  />
                 }
               ></TextField>
             </EditableCell>
             <EditableCell>
               <DatePicker
+                aria-label="Dato"
                 selectedDate={date}
                 onChange={date => setDate(date)}
               ></DatePicker>
@@ -923,7 +929,7 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
           </TableRow>
           <TableRow hover>
             <EditableCell outlined>
-              <TextField></TextField>
+              <TextField aria-label="Navn"></TextField>
             </EditableCell>
             <DataCell>Nordmann</DataCell>
           </TableRow>

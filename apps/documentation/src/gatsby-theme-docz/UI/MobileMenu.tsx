@@ -48,7 +48,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               <Link to="/">
                 <img
                   src={logoDark}
-                  alt="Entur logo"
+                  alt="Entur logo, klikk for å gå til startsiden"
                   style={{ paddingLeft: '24px' }}
                 />
               </Link>

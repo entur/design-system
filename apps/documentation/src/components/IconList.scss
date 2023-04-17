@@ -25,9 +25,10 @@
   &.eds-contrast {
     border-color: $colors-blues-blue50;
   }
-  &:hover {
+  &:hover,
+  &:focus-within {
     .icon-list__item-buttons {
-      display: block;
+      opacity: 1;
     }
   }
   &-name {
@@ -50,7 +51,8 @@
     .eds-label {
       cursor: pointer;
     }
-    &:hover {
+    &:hover,
+    &:focus {
       .eds-icon {
         opacity: 1;
       }
@@ -63,7 +65,7 @@
   }
   &-buttons {
     align-self: flex-end;
-    display: none;
+    opacity: 0;
     padding-right: $space-extra-small;
   }
 

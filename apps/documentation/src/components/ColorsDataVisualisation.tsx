@@ -92,8 +92,12 @@ export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
 
   return (
     <>
-      <Switch onChange={() => setContrast(prev => !prev)} checked={isContrast}>
-        Vis i Contrast
+      <Switch
+        aria-hidden="true"
+        onChange={() => setContrast(prev => !prev)}
+        checked={isContrast}
+      >
+        <span aria-hidden="true">Vis i Contrast</span>
       </Switch>
       <Wrapper
         style={{
@@ -101,30 +105,18 @@ export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
           padding: space.extraLarge3,
         }}
       >
-        {illustration === '1' &&
-          (!isContrast ? (
-            <img src={ex1} alt="" width="100%" />
-          ) : (
-            <img src={ex1Contrast} alt="" width="100%" />
-          ))}
-        {illustration === '2' &&
-          (!isContrast ? (
-            <img src={ex2} alt="" width="100%" />
-          ) : (
-            <img src={ex2Contrast} alt="" width="100%" />
-          ))}
-        {illustration === '3' &&
-          (!isContrast ? (
-            <img src={ex3} alt="" width="100%" />
-          ) : (
-            <img src={ex3Contrast} alt="" width="100%" />
-          ))}
-        {illustration === '4' &&
-          (!isContrast ? (
-            <img src={ex4} alt="" width="100%" />
-          ) : (
-            <img src={ex4Contrast} alt="" width="100%" />
-          ))}
+        {illustration === '1' && (
+          <img src={isContrast ? ex1Contrast : ex1} alt="" width="100%" />
+        )}
+        {illustration === '2' && (
+          <img src={isContrast ? ex2Contrast : ex2} alt="" width="100%" />
+        )}
+        {illustration === '3' && (
+          <img src={isContrast ? ex3Contrast : ex3} alt="" width="100%" />
+        )}
+        {illustration === '4' && (
+          <img src={isContrast ? ex4Contrast : ex4} alt="" width="100%" />
+        )}
       </Wrapper>
     </>
   );

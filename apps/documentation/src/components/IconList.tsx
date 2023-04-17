@@ -83,12 +83,12 @@ const IconList: React.FC<IconListProps> = props => {
   const filteredIcons = React.useMemo(() => {
     const isCategorySelected = category !== null && category?.value !== '';
     const iconEntries = Object.entries(props.icons);
-    const filteredOnCategory =
-      isCategorySelected &&
-      iconEntries.filter(icon => {
-        const k = grouped.get(category.value);
-        return k.some(l => l.name === icon[0]);
-      });
+    const filteredOnCategory = isCategorySelected
+      ? iconEntries.filter(icon => {
+          const k = grouped.get(category.value);
+          return k.some(l => l.name === icon[0]);
+        })
+      : [];
     const returnIcons = isCategorySelected ? filteredOnCategory : iconEntries;
     if (filterString === '') {
       return returnIcons;
@@ -126,7 +126,7 @@ const IconList: React.FC<IconListProps> = props => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setFilterString(e.target.value)
             }
-            prepend={<SearchIcon />}
+            prepend={<SearchIcon aria-hidden="true" />}
           />
         </GridItem>
         <GridItem small={6} medium={3}>
@@ -172,23 +172,31 @@ const IconList: React.FC<IconListProps> = props => {
                   onClick={handleIconClick(iconName)}
                 >
                   {iconName}
-                  <CopyIcon />
+                  <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
                 </SubLabel>
                 <Icon
                   style={{ width: iconSize?.value, height: iconSize?.value }}
+                  aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
                 />
                 <div className="icon-list__item-buttons">
-                  <Tooltip content="Last ned SVG" placement="top">
+                  <Tooltip
+                    aria-hidden="true"
+                    content="Last ned SVG"
+                    placement="top"
+                  >
                     <IconButton
                       as="a"
+                      aria-label={`Last ned ${iconName}.svg`}
                       download
-                      href={iconsQuery
-                        .filter(
-                          icon =>
-                            icon.node.name.split(' ').join('') + 'Icon' ===
-                            iconName,
-                        )
-                        .map(node => node.node.publicURL)}
+                      href={
+                        iconsQuery
+                          .filter(
+                            icon =>
+                              icon.node.name.split(' ').join('') + 'Icon' ===
+                              iconName,
+                          )
+                          .map(node => node.node.publicURL)[0]
+                      }
                     >
                       <DownloadIcon />
                     </IconButton>

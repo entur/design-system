@@ -30,7 +30,7 @@ const SettingsPanel: React.FC = () => {
     <>
       <div className="settings-panel">
         <div className="settings-panel__container">
-          <ViewIcon className="settings-panel__icon" />
+          <ViewIcon aria-hidden="true" className="settings-panel__icon" />
           <Paragraph margin="none">
             Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
           </Paragraph>
@@ -40,7 +40,7 @@ const SettingsPanel: React.FC = () => {
           className="settings-trigger"
           onClick={() => setOpen(prev => !prev)}
         >
-          <SettingsIcon />
+          <SettingsIcon aria-hidden="true" />
         </FloatingButton>
         {false && (
           <Switch

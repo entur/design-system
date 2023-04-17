@@ -8,6 +8,8 @@ npmPackage: layout
 tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
+import { Props } from 'docz';
+
 import {
   Badge,
   NotificationBadge,
@@ -15,15 +17,25 @@ import {
   BulletBadge,
 } from '@entur/layout';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
+import { VisuallyHidden } from '@entur/a11y';
 import { SecondarySquareButton, NegativeButton } from '@entur/button';
 import { Heading3, Heading2, Paragraph } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
 import { TextField, TextArea } from '@entur/form';
-import { Props } from 'docz';
+
 import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { SubtractIcon } from '@entur/icons';
+
 import { badgeprops } from './props';
 
 <PageHeader />
@@ -31,23 +43,6 @@ import { badgeprops } from './props';
 <Playground props={badgeprops}>
   <Badge variant="primary">1</Badge>
 </Playground>
-
-## Komponenter
-
-### BulletBadge
-
-<ImportStatement imports="BulletBadge" />
-<Props of={BulletBadge} />
-
-### StatusBadge
-
-<ImportStatement imports="StatusBadge" />
-<Props of={StatusBadge} />
-
-### NotificationBadge
-
-<ImportStatement imports="NotificationBadge" />
-<Props of={NotificationBadge} />
 
 ## Retningslinjer for bruk
 
@@ -146,7 +141,7 @@ Unngå å bruk komponenten alene.
               style={{ position: 'absolute', top: 0 }}
               max={10}
             >
-              1
+              1 <VisuallyHidden>notifikasjon</VisuallyHidden>
             </NotificationBadge>
           </Tab>
         </TabList>
@@ -162,3 +157,20 @@ Unngå å bruk komponenten alene.
     </div>
   </div>
 </Playground>
+
+## Komponenter
+
+### BulletBadge
+
+<ImportStatement imports="BulletBadge" />
+<Props of={BulletBadge} />
+
+### StatusBadge
+
+<ImportStatement imports="StatusBadge" />
+<Props of={StatusBadge} />
+
+### NotificationBadge
+
+<ImportStatement imports="NotificationBadge" />
+<Props of={NotificationBadge} />
