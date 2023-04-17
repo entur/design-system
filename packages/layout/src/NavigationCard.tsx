@@ -62,7 +62,10 @@ export const NavigationCard = <
       )}
       <span className="eds-navigation-card__title">
         {compact && titleIcon && (
-          <span className="eds-navigation-card__title-icon-compact">
+          <span
+            className="eds-navigation-card__title-icon-compact"
+            aria-hidden="true"
+          >
             {titleIcon}
           </span>
         )}
@@ -72,15 +75,24 @@ export const NavigationCard = <
         <>
           <Paragraph>{children}</Paragraph>
           {externalLink && (
-            <ExternalIcon className="eds-navigation-card__external--not-compact" />
+            <ExternalIcon
+              aria-label="Ekstern lenke"
+              className="eds-navigation-card__external--not-compact"
+            />
           )}
         </>
       )}
       {compact && externalLink && (
-        <ExternalIcon className="eds-navigattion-card__icon eds-navigation-card__external--compact" />
+        <ExternalIcon
+          aria-label="Ekstern lenke"
+          className="eds-navigattion-card__icon eds-navigation-card__external--compact"
+        />
       )}
       {compact && !externalLink && (
-        <ForwardIcon className="eds-navigattion-card__icon eds-navigation-card__arrow-icon" />
+        <ForwardIcon
+          className="eds-navigattion-card__icon eds-navigation-card__arrow-icon"
+          aria-hidden="true"
+        />
       )}
     </BaseCard>
   );
