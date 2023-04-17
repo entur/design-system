@@ -46,6 +46,7 @@ const CheckboxIcon: React.FC = () => {
       width="11px"
       height="9px"
       viewBox="6 11 37 33"
+      aria-hidden
     >
       <path
         className="eds-filter-chip-icon__path"

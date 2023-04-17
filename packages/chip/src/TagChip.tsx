@@ -36,7 +36,7 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
           aria-label={selectedCloseLabel}
           ref={ref}
         >
-          <CloseIcon />
+          <CloseIcon aria-hidden />
         </button>
       </div>
     );

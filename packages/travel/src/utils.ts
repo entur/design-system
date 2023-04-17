@@ -48,6 +48,7 @@ type transportStyleResult = {
   contrastBackgroundColor: string;
   contrastTextColor: string;
   pattern: 'line' | 'wave' | 'dashed' | 'dotted';
+  ariaLabel: string;
 };
 
 export const getTransportStyle = (mode: string): transportStyleResult => {
@@ -60,6 +61,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.metro,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'T-bane',
       };
     case 'bus':
       return {
@@ -69,6 +71,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.bus,
         contrastTextColor: colors.brand.white,
         pattern: 'dashed',
+        ariaLabel: 'Buss',
       };
     case 'plane':
     case 'air':
@@ -79,6 +82,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.plane,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Fly',
       };
     case 'helicopter':
       return {
@@ -88,6 +92,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.helicopter,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Helikopter',
       };
     case 'tram':
       return {
@@ -97,6 +102,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.tram,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Trikk',
       };
     case 'funicular':
       return {
@@ -106,6 +112,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.funicular,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Taubane',
       };
     case 'cableway':
       return {
@@ -115,6 +122,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.cableway,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Gondol',
       };
     case 'taxi':
       return {
@@ -124,6 +132,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.taxi,
         contrastTextColor: colors.brand.white,
         pattern: 'dashed',
+        ariaLabel: 'Taxi',
       };
     case 'bicycle':
       return {
@@ -133,6 +142,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.bicycle,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Sykkel',
       };
     case 'walk':
       return {
@@ -142,6 +152,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.walk,
         contrastTextColor: colors.brand.white,
         pattern: 'dotted',
+        ariaLabel: 'Gange',
       };
     case 'train':
     case 'rail':
@@ -152,6 +163,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.train,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Tog',
       };
     case 'ferry':
     case 'water':
@@ -162,6 +174,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.ferry,
         contrastTextColor: colors.brand.white,
         pattern: 'wave',
+        ariaLabel: 'Ferge',
       };
     case 'carferry':
       return {
@@ -171,6 +184,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.carferry,
         contrastTextColor: colors.brand.white,
         pattern: 'wave',
+        ariaLabel: 'Bilferge',
       };
     case 'mobility':
       return {
@@ -180,6 +194,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.mobility,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'El-sparkesykkel',
       };
     case 'airportLinkBus':
       return {
@@ -189,6 +204,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.plane,
         contrastTextColor: colors.brand.white,
         pattern: 'dashed',
+        ariaLabel: 'Flybuss',
       };
     case 'airportLinkRail':
       return {
@@ -198,6 +214,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.transport.contrast.plane,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: 'Flytog',
       };
     case 'none':
       return {
@@ -207,6 +224,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         contrastBackgroundColor: colors.brand.white,
         contrastTextColor: colors.brand.white,
         pattern: 'line',
+        ariaLabel: '',
       };
     case 'scooter':
       throw Error(

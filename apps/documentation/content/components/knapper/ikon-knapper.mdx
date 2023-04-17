@@ -41,23 +41,23 @@ import { ImportStatement } from '~/components/ImportStatement';
     paddingBottom: '2rem',
   }}
 >
-  <Tooltip placement="bottom" content="Legg til">
-    <IconButton>
+  <Tooltip aria-hidden placement="bottom" content="Legg til">
+    <IconButton aria-label="Legg til">
       <AddIcon />
     </IconButton>
   </Tooltip>
-  <Tooltip placement="bottom" content="Meny">
-    <IconButton>
+  <Tooltip aria-hidden placement="bottom" content="Meny">
+    <IconButton aria-label="Meny">
       <MenuIcon />
     </IconButton>
   </Tooltip>
-  <Tooltip placement="bottom" content="Rediger">
-    <IconButton>
+  <Tooltip aria-hidden placement="bottom" content="Rediger">
+    <IconButton aria-label="Rediger">
       <EditIcon />
     </IconButton>
   </Tooltip>
-  <Tooltip placement="bottom" content="Lukk">
-    <IconButton>
+  <Tooltip aria-hidden placement="bottom" content="Lukk">
+    <IconButton aira-label="Lukk">
       <CloseIcon />
     </IconButton>
   </Tooltip>
@@ -72,13 +72,21 @@ import { ImportStatement } from '~/components/ImportStatement';
 
 ## Retningslinjer for bruk
 
-Ikonknapper har ingen label og er bare et ikon. Tooltips er derfor nødvendige når de brukes alene.
-Ved å hovre på ikonknappen, vil det dukke opp en tooltip med en tekstbeskrivelse som forklarer
+Siden ikonknapper bare et ikon er et [Tooltip](https://design.entur.no/komponenter/feedback/tooltip) nødvendig når de brukes uten en label.
+Ved å hovre eller fokusere på ikonknappen vil det da dukke opp et tooltip med en tekstbeskrivelse som forklarer
 handlingen brukeren kan utføre.
 
-Siden de ikke har en label sparer de også mye plass i et grensesnitt.
-Ikonknapper lar deg ha andre ikonknapper ved siden av dem på en liten plass.
-Tommelfingerregelen å bare ha ikonknapper, er kun aktuelt for ikoner som man anser som globalt forståelige.
+Siden de ikke har en label sparer disse knappene mye plass i et grensesnitt.
+Ikonknapper lar deg ha flere ikonknapper ved siden av hverandre på et liten plassområde.
+Tommelfingerregelen for ikonknapper er å kun bruke dem mde ikoner som man anser som globalt forståelige.
+
+### Hvordan oppnå god UU
+
+Det er viktig at knappen er tilgjenglig og forstålig for alle, for å sikre dette må du bruke en `aria-label` på knappen som beskriver hva den gjør. For å
+unngå dobbel-opplesing i skjermleseren når du bruker Tooltip er det anbefalt å gjøre som i eksempelet før og sette en `aria-hidden` på selve Tooltip-en.
+
+En annen løsning, som vil være enda mer tilgjengelig, er å ha en label til knappen – pass da på at label-en er koblet korrekt til knappen eller skjult med aria-hidden for å unngå dobbel-opplesing.
+Knappen har per i dag ingen prop for label, si fra på [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7) hvis dette ønskes.
 
 ## Eksempler
 
@@ -89,40 +97,46 @@ Ikonknapper brukes ofte som inline-handlinger i tabellrader og verktøylinjer.
     <TableHead>
       <TableRow>
         <HeaderCell>Fra</HeaderCell>
-        <HeaderCell>Avgang</HeaderCell>
         <HeaderCell>Til</HeaderCell>
-        <HeaderCell>Meny</HeaderCell>
+        <HeaderCell>Avgang</HeaderCell>
+        <HeaderCell>Rediger</HeaderCell>
       </TableRow>
     </TableHead>
     <TableBody>
       <TableRow>
         <DataCell>Majorstua</DataCell>
+        <DataCell>Østerås</DataCell>
         <DataCell>10.00</DataCell>
-        <DataCell>Østerås</DataCell>
         <DataCell>
-          <IconButton>
-            <VerticalDotsIcon />
-          </IconButton>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aira-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
         </DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Majorstua</DataCell>
+        <DataCell>Østerås</DataCell>
         <DataCell>11.00</DataCell>
-        <DataCell>Østerås</DataCell>
         <DataCell>
-          <IconButton>
-            <VerticalDotsIcon />
-          </IconButton>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aira-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
         </DataCell>
       </TableRow>
       <TableRow>
         <DataCell>Majorstua</DataCell>
-        <DataCell>12.00</DataCell>
         <DataCell>Østerås</DataCell>
+        <DataCell>12.00</DataCell>
         <DataCell>
-          <IconButton>
-            <VerticalDotsIcon />
-          </IconButton>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aira-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
         </DataCell>
       </TableRow>
     </TableBody>
