@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.9...@entur/documentation@3.0.10) (2023-04-17)
+
+### Bug Fixes
+
+- **chips:** hide icons from screen readers ([2041a0a](https://bitbucket.org/enturas/design-system/commits/2041a0a593e0cc9fefaf35d229012541a6be57ca))
+
 ## [3.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.6...@entur/documentation@3.0.9) (2023-04-13)
 
 ### Bug Fixes

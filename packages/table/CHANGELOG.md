@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.6](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.5...@entur/table@4.6.6) (2023-04-17)
+
+### Bug Fixes
+
+- **expandable table:** hide visual icon from screen readers ([ef7bc41](https://bitbucket.org/enturas/design-system/commits/ef7bc4179cdbbd36bce6aa298581bdb14645e2c7))
+
 ## [4.6.5](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.2...@entur/table@4.6.5) (2023-04-13)
 
 ### Bug Fixes

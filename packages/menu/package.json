@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "4.1.38",
+  "version": "4.1.39",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@entur/a11y": "^0.2.64",
-    "@entur/button": "^3.0.5",
+    "@entur/button": "^3.0.6",
     "@entur/expand": "^3.3.44",
     "@entur/icons": "^6.2.0",
     "@entur/layout": "^2.1.30",

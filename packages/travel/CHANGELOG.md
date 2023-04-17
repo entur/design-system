@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.0.8...@entur/travel@6.0.9) (2023-04-17)
+
+### Bug Fixes
+
+- **travel tag:** add missing aria label to TravelTag ([346e5ce](https://bitbucket.org/enturas/design-system/commits/346e5ce1eecfcfce2181c3e7d756ee608fc4ffea))
+
 ## [6.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.0.5...@entur/travel@6.0.8) (2023-04-13)
 
 ### Bug Fixes

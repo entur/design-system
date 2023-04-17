@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.0.5...@entur/button@3.0.6) (2023-04-17)
+
+### Bug Fixes
+
+- **icon button:** hide icon in icon buttton from screen readers ([97aa171](https://bitbucket.org/enturas/design-system/commits/97aa17131eb31049b178fc5472dd89b03779d8d0))
+
 ## [3.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.0.2...@entur/button@3.0.5) (2023-04-13)
 
 **Note:** Version bump only for package @entur/button

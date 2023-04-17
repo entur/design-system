@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.16](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.15...@entur/tooltip@2.6.16) (2023-04-17)
+
+### Bug Fixes
+
+- **tooltip:** fix aria-describedby pointing to non-existant element when tooltip is hidden ([a4e25ab](https://bitbucket.org/enturas/design-system/commits/a4e25ab7cc2f078af57a87c99946574a8b394f8e))
+
 ## [2.6.15](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.12...@entur/tooltip@2.6.15) (2023-04-13)
 
 **Note:** Version bump only for package @entur/tooltip

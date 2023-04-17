@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.29](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.28...@entur/loader@0.4.29) (2023-04-17)
+
+### Bug Fixes
+
+- **skeleton:** add loading message for screen readers to skeleton wrapper ([b69cb47](https://bitbucket.org/enturas/design-system/commits/b69cb47526d6531c6926e153c3cb8a45d1caf63d))
+
 ## [0.4.28](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.25...@entur/loader@0.4.28) (2023-04-13)
 
 **Note:** Version bump only for package @entur/loader
