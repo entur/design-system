@@ -12,7 +12,12 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
     <div className={className}>
       <nav className="top-navigation" aria-label="Navigasjon, hovedseksjoner">
         <Link to="/" className="top-navigation__logo">
-          <img src={logo} height="32px" width="102px" alt="Entur logo" />
+          <img
+            src={logo}
+            height="32px"
+            width="102px"
+            alt="Entur logo, klikk for å gå til startsiden"
+          />
         </Link>
         <NavItem to="/kom-i-gang">Kom i gang</NavItem>
         <NavItem to="/identitet">Identitet</NavItem>

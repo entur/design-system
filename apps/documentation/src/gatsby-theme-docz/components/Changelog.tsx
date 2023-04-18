@@ -1,10 +1,13 @@
-import { GridContainer, GridItem } from '@entur/grid';
-import { NavigationCard } from '@entur/layout';
-import { Modal } from '@entur/modal/dist';
 import React, { useState } from 'react';
-import './Changelog.scss';
+
+import { GridContainer, GridItem } from '@entur/grid';
+import { Modal } from '@entur/modal';
+import { Link } from '@entur/typography';
+
 import { MarkdownParser } from './MarkdownParser';
 import { useGetChangelog } from './useGetChangelog';
+
+import './Changelog.scss';
 
 /**Must be in this (gastby-theme-docz/components) for graphql query to run */
 const Changelog = () => {
@@ -20,25 +23,17 @@ const Changelog = () => {
           .sort((a, b) => a.node.parent.name.localeCompare(b.node.parent.name))
           .map(changelog => (
             <GridItem small={6} medium={4} key={changelog.node.parent.name}>
-              <NavigationCard
-                title={`@entur/${changelog.node.parent.name}`}
-                compact
+              <Link
                 as="button"
-                className="changelog-navigation-card"
-                externalLink
-                style={{
-                  height: '5rem',
-                  width: '100%',
-                  fontFamily: 'inherit',
-                  background: 'none',
-                  cursor: 'pointer',
-                }}
+                className="changelog-link"
                 onClick={() => {
                   setPackageChangelog(changelog.node.rawMarkdownBody);
                   setModalTitle(`@entur/${changelog.node.parent.name}`);
                   setOpenModal(true);
                 }}
-              ></NavigationCard>
+              >
+                {`@entur/${changelog.node.parent.name}`}
+              </Link>
             </GridItem>
           ))}
       </GridContainer>

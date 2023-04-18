@@ -43,12 +43,19 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({
         <img src={src} alt={alt} />
       </div>
       {download && (
-        <Tooltip content="Last ned illustrasjon" placement="top">
+        <Tooltip
+          aria-hidden="true"
+          content="Last ned illustrasjon"
+          placement="top"
+        >
           <IconButton
             as="a"
             download
             href={src}
             className="image-display__download"
+            aria-label={`Last ned illustrasjon ${
+              src.match(/([^/]+$)/)?.[0].match(/(^[^-]*)/)?.[0]
+            }`}
           >
             <DownloadIcon />
           </IconButton>
