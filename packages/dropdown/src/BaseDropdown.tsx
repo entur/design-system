@@ -84,6 +84,7 @@ const ClearButton: React.FC<{ [key: string]: any }> = ({ ...props }) => {
           type="button"
           tabIndex={-1}
           onClick={() => clearSelection()}
+          aria-label="Trykk for å fjerne valg"
           {...props}
         >
           <CloseSmallIcon />
