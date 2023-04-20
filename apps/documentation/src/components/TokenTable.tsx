@@ -40,7 +40,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
         <TableRow>
           <HeaderCell>Navn</HeaderCell>
           <HeaderCell>Verdi</HeaderCell>
-          {Example && <HeaderCell>Eksempel</HeaderCell>}
+          {Example && <HeaderCell aria-hidden="true">Eksempel</HeaderCell>}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -62,7 +62,7 @@ export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
                 <CodeText>{!isZIndex ? formatValue(value) : value}</CodeText>
               </DataCell>
               {Example && (
-                <DataCell>
+                <DataCell aria-hidden="true">
                   <Example value={value} />
                 </DataCell>
               )}

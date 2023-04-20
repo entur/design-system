@@ -31,7 +31,7 @@ import { ImportStatement } from '~/components/ImportStatement';
   <Popover>
     <PopoverTrigger>
       <SecondaryButton>
-        <AdjustmentsIcon />
+        <AdjustmentsIcon aria-hidden="true" />
         Filter
       </SecondaryButton>
     </PopoverTrigger>
@@ -41,8 +41,8 @@ import { ImportStatement } from '~/components/ImportStatement';
           Filter
         </Heading4>
         <PopoverCloseButton style={{ float: 'right', display: 'inline-block' }}>
-          <IconButton>
-            <CloseIcon />
+          <IconButton aria-label="Lukk popover">
+            <CloseIcon aria-hidden="true" />
           </IconButton>
         </PopoverCloseButton>
         <GridContainer>

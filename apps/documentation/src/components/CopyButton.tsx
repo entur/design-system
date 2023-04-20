@@ -31,7 +31,8 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
         });
       }}
     >
-      {children} <CopyIcon />
+      {children}{' '}
+      <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
     </TertiaryButton>
   );
 };

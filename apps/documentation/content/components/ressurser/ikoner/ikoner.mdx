@@ -37,12 +37,13 @@ Dette brukes først og fremst internt i komponenter som bruker komponenter, men 
 
 <Playground>
   <div>
-    Se dette ikoner ligger inline med teksten <AddIcon inline />
-    <br /> i motsetning til dette som ligger litt for høyt opp <AddIcon />
+    Se dette ikoner ligger inline med teksten{' '}
+    <AddIcon inline aria-label="(ikoneksempel som ligger på linje)" />
+    <br /> i motsetning til dette som ligger litt for høyt opp <AddIcon aria-label="(ikoneksempel som ligger litt for høyt)" />
     <br />
     <br />
     <PrimaryButton>
-      Legg til <AddIcon />
+      Legg til <AddIcon aria-hidden="true" />
     </PrimaryButton>
   </div>
 </Playground>

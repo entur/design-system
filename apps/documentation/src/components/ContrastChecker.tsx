@@ -62,6 +62,7 @@ function ContrastChecker(): React.ReactNode {
         <CheckIcon
           inline
           style={{ color: colors.validation.mint, marginRight: '0.5rem' }}
+          aria-hidden="true"
         />
         Innafor
       </>
@@ -74,6 +75,7 @@ function ContrastChecker(): React.ReactNode {
         <CloseIcon
           inline
           style={{ color: colors.validation.lava, marginRight: '0.5rem' }}
+          aria-hidden="true"
         />
         Uttafor
       </>
@@ -102,7 +104,7 @@ function ContrastChecker(): React.ReactNode {
             onClick={SwitchColors}
             className="color-picker__switch-button"
           >
-            <SwitchIcon />
+            <SwitchIcon aria-label="Bytt forgrunn- og bakgrunnfarge" />
           </SecondarySquareButton>
           <div className="color-picker-wrapper">
             <Dropdown
@@ -168,7 +170,7 @@ function ContrastChecker(): React.ReactNode {
           </TableRow>
         </TableBody>
       </Table>
-      <div className="contrast-preview__container">
+      <div aria-hidden="true" className="contrast-preview__container">
         <div>
           <Heading4>Normal tekst</Heading4>
           <div
