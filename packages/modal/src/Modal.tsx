@@ -1,8 +1,13 @@
 import React from 'react';
+
 import { CloseIcon } from '@entur/icons';
-import { ModalOverlay } from './ModalOverlay';
-import { ModalContent } from './ModalContent';
 import { IconButton } from '@entur/button';
+import { Heading2 } from '@entur/typography';
+import { useRandomId } from '@entur/utils';
+
+import { ModalOverlay } from './ModalOverlay';
+import { ModalContent, headingsMap } from './ModalContent';
+
 import './Modal.scss';
 
 export type ModalProps = {
@@ -18,6 +23,10 @@ export type ModalProps = {
   onDismiss?: () => void;
   /** Størrelsen på modalen */
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
+  /** Hvordan innholdet skal plasseres i modalen
+   * @default 'start'
+   */
+  align?: 'start' | 'center' | 'end';
   /** Tittelen som vises i modalen */
   title?: string;
   /** Om modalen skal lukkes når man klikker på utsiden av den
@@ -34,9 +43,13 @@ export const Modal: React.FC<ModalProps> = ({
   open,
   onDismiss,
   size,
+  align = 'start',
+  title,
   closeOnClickOutside = true,
   ...rest
 }) => {
+  const randomId = useRandomId('eds-modal');
+  const Heading: React.ElementType = headingsMap[size] || Heading2;
   const showCloseButton = ['medium', 'large', 'extraLarge'].includes(size);
 
   let handleOnDismiss;
@@ -49,7 +62,7 @@ export const Modal: React.FC<ModalProps> = ({
       onDismiss={handleOnDismiss}
       initialFocusRef={initialFocusRef}
     >
-      <ModalContent size={size} {...rest}>
+      <ModalContent size={size} align={align} {...rest}>
         {showCloseButton && (
           <IconButton
             className="eds-modal__close"
@@ -58,6 +71,11 @@ export const Modal: React.FC<ModalProps> = ({
           >
             <CloseIcon />
           </IconButton>
+        )}
+        {title && (
+          <Heading margin="bottom" as="h2" id={randomId}>
+            {title}
+          </Heading>
         )}
         {children}
       </ModalContent>

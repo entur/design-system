@@ -39,6 +39,20 @@ $modal-animation-duration: $timings-medium;
   animation-duration: $modal-animation-duration;
   animation-timing-function: ease-in-out;
 
+  &--align {
+    &-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-end {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+  }
+
   &--size-extraSmall {
     max-width: 21rem;
     padding: $space-large;
