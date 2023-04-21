@@ -28,7 +28,7 @@ export type ModalProps = {
    */
   align?: 'start' | 'center' | 'end';
   /** Tittelen som vises i modalen */
-  title?: string;
+  title?: React.ReactNode;
   /** Om modalen skal lukkes når man klikker på utsiden av den
    * @default true
    */

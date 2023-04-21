@@ -12,7 +12,7 @@ export type ModalContentProps = {
   /** Størrelsen på modalen */
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
-  title?: string;
+  title?: React.ReactNode;
   /** Hvordan innholdet skal plasseres i modalen
    * @default 'start'
    */
