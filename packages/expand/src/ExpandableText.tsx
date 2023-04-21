@@ -7,7 +7,7 @@ import './ExpandableText.scss';
 
 export type ExpandableTextProps = {
   /** Teksten som skal "vises" */
-  title: string;
+  title: React.ReactNode;
   /** Innholdet som skal vises under linken */
   children: React.ReactNode;
   /** Hvilken tilstand ExpandableText skal ha som default (med mindre den er kontrollert)
