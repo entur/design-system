@@ -1,19 +1,13 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-form-control-wrapper {
-  --border-color: #{$colors-brand-blue};
+  --border-color: #{$colors-blues-blue45};
   --border-color-hover: #{$colors-brand-lavender};
-
-  .eds-contrast & {
-    --border-color: #{$colors-brand-lavender};
-    background-color: $colors-brand-white;
-    border-color: $colors-blues-blue30;
-  }
 
   align-items: center;
   background-color: $colors-brand-white;
   border-radius: $border-radiuses-medium;
-  border: $border-widths-medium solid $colors-greys-grey60;
+  border: $border-widths-medium solid var(--border-color);
   box-shadow: 0 0 0 transparent;
   color: $colors-brand-blue;
   display: flex;
@@ -26,20 +20,18 @@
 
   &:focus-within,
   &:hover {
-    border-color: $colors-brand-blue;
+    --border-color: #{$colors-brand-blue};
   }
   &:hover {
     .eds-contrast & {
-      border-color: $colors-brand-lavender;
-      background: $colors-blues-blue80;
+      --border-color: #{$colors-brand-lavender};
     }
   }
   &:focus-within {
     box-shadow: inset 0 0 0 1px var(--border-color);
     .eds-contrast & {
-      border-color: $colors-brand-blue;
-      --border-color: #{$colors-brand-lavender};
-      box-shadow: 0 0 0 $border-widths-medium var(--border-color);
+      --border-color: #{$colors-brand-blue};
+      box-shadow: 0 0 0 $border-widths-medium $colors-brand-lavender;
     }
   }
 
@@ -49,34 +41,42 @@
 
   // Variations
   &--disabled {
+    --border-color: transparent;
     background-color: $colors-greys-grey70;
-    color: $colors-blues-blue40;
-    border-color: transparent;
     pointer-events: none;
+    color: $colors-greys-grey40;
+    .eds-input-group__label {
+      color: $colors-greys-grey40;
+    }
+
+    .eds-contrast & {
+      background: $colors-blues-blue10;
+      color: $colors-blues-blue50;
+      .eds-input-group__label {
+        color: $colors-blues-blue50;
+      }
+    }
 
     &::before,
     &::after {
       display: none;
     }
-    .eds-contrast & {
-      background: $colors-blues-blue10;
-      border-color: transparent;
-      color: $colors-blues-blue50;
-    }
   }
 
   &--readonly {
+    --border-color: transparent;
+    --textarea-label-background: $colors-greys-grey90;
     pointer-events: none;
     cursor: default;
-    border-color: transparent;
     background: $colors-greys-grey90;
-    --textarea-label-background: $colors-greys-grey90;
 
     .eds-contrast & {
-      background: $colors-blues-blue10;
       --textarea-label-background: $colors-blues-blue10;
+      background: $colors-blues-blue10;
       color: $colors-brand-white;
-      border-color: transparent;
+      .eds-input-group__label {
+        color: $colors-brand-lavender;
+      }
     }
 
     &::before,
