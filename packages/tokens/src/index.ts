@@ -29,6 +29,7 @@ export const colors = {
     blue20: '#393d79',
     blue30: '#54568c',
     blue40: '#656782',
+    blue45: '#7C7F9F',
     blue50: '#8285a8',
     blue60: '#babbcf',
     blue70: '#d1d4e3',
