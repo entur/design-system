@@ -41,9 +41,6 @@ $label-top-large: 0.5rem;
         @include labelPositionTopLarge;
       }
     }
-    .eds-contrast & {
-      color: $colors-blues-blue50;
-    }
     .eds-form-control-wrapper--dark & {
       .eds-contrast & {
         color: $colors-brand-lavender;
