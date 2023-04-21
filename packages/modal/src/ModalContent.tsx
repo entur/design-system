@@ -13,10 +13,14 @@ export type ModalContentProps = {
   size: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
   /** Tittelen som vises i modalen */
   title?: string;
+  /** Hvordan innholdet skal plasseres i modalen
+   * @default 'start'
+   */
+  align?: 'start' | 'center' | 'end';
   [key: string]: any;
 };
 
-const headingsMap = {
+export const headingsMap = {
   extraSmall: Heading4,
   small: Heading3,
   medium: Heading2,
@@ -29,6 +33,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
   className,
   size,
   title,
+  align = 'start',
   ...rest
 }) => {
   const Heading: React.ElementType = headingsMap[size] || Heading2;
@@ -38,6 +43,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
       className={classNames(
         'eds-modal__content',
         `eds-modal__content--size-${size}`,
+        `eds-modal__content--align-${align}`,
         className,
       )}
       aria-labelledby={randomId}
