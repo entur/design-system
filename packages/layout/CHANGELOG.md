@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.31](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.30...@entur/layout@2.1.31) (2023-04-21)
+
+### Bug Fixes
+
+- **card:** hide icons not needed from screen readers ([19c1e74](https://bitbucket.org/enturas/design-system/commits/19c1e746947219f4348d9a5fdfd5a96e6ffa8283))
+
 ## [2.1.30](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.27...@entur/layout@2.1.30) (2023-04-13)
 
 ### Bug Fixes

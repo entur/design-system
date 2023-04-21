@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.6...@entur/form@7.0.7) (2023-04-21)
+
+### Bug Fixes
+
+- **input form:** update border styling to comply with wcag standards ([8c57013](https://bitbucket.org/enturas/design-system/commits/8c57013821a0582cf85b4d99e679cad8380b2bd5))
+
 ## [7.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.5...@entur/form@7.0.6) (2023-04-17)
 
 **Note:** Version bump only for package @entur/form

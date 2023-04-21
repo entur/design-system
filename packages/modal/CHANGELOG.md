@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.34...@entur/modal@1.7.0) (2023-04-21)
+
+### Bug Fixes
+
+- **modal:** allow icons (react elements) in title ([850a995](https://bitbucket.org/enturas/design-system/commits/850a9951c00665727a6d73f4a0f56d293bc0d61f))
+
+### Features
+
+- **modal:** add align prop ([58f7391](https://bitbucket.org/enturas/design-system/commits/58f7391ca73fa3d3411df61aece176cb8bf6198d))
+
 ## [1.6.34](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.33...@entur/modal@1.6.34) (2023-04-17)
 
 **Note:** Version bump only for package @entur/modal

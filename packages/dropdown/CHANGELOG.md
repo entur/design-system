@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.7...@entur/dropdown@4.0.8) (2023-04-21)
+
+### Bug Fixes
+
+- **dropdown:** add missing aria label to clearable button ([46240a9](https://bitbucket.org/enturas/design-system/commits/46240a92e34ecab79a323ad3a8846cabe2b8c19a))
+
 ## [4.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.6...@entur/dropdown@4.0.7) (2023-04-17)
 
 **Note:** Version bump only for package @entur/dropdown

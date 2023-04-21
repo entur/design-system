@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.8.1...@entur/tokens@3.9.0) (2023-04-21)
+
+### Features
+
+- **tokens:** add blue45 color token ([3370d42](https://bitbucket.org/enturas/design-system/commits/3370d42617ef18fc9efc7b94e4f232676cb52500))
+
 ## [3.8.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.8.0...@entur/tokens@3.8.1) (2023-03-13)
 
 **Note:** Version bump only for package @entur/tokens

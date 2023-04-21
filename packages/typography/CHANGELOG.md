@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.17](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.16...@entur/typography@1.7.17) (2023-04-21)
+
+**Note:** Version bump only for package @entur/typography
+
 ## [1.7.16](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.13...@entur/typography@1.7.16) (2023-04-13)
 
 **Note:** Version bump only for package @entur/typography
