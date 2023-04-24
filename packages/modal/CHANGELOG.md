@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.0...@entur/modal@1.7.1) (2023-04-24)
+
+### Bug Fixes
+
+- **modal:** change from align-items: end to flex-end ([b05a201](https://bitbucket.org/enturas/design-system/commits/b05a20114d1b8fd2f762e5b2a35b5ac39fe977aa))
+
 # [1.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.6.34...@entur/modal@1.7.0) (2023-04-21)
 
 ### Bug Fixes

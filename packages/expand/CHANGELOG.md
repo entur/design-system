@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.45...@entur/expand@3.4.0) (2023-04-24)
+
+### Features
+
+- **expandable text:** add support for ReactNode in expandable text title ([dd7c215](https://bitbucket.org/enturas/design-system/commits/dd7c215ed4c17caa51800461f32c64827e7d4005))
+
 ## [3.3.45](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.3.44...@entur/expand@3.3.45) (2023-04-21)
 
 **Note:** Version bump only for package @entur/expand
