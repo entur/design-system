@@ -49,7 +49,7 @@ $modal-animation-duration: $timings-medium;
     &-end {
       display: flex;
       flex-direction: column;
-      align-items: end;
+      align-items: flex-end;
     }
   }
 
