@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -23,7 +23,7 @@
     "@entur/alert": "^0.14.2",
     "@entur/button": "^3.0.7",
     "@entur/chip": "^0.6.35",
-    "@entur/datepicker": "^8.0.3",
+    "@entur/datepicker": "^8.0.4",
     "@entur/dropdown": "^4.0.9",
     "@entur/expand": "^3.4.0",
     "@entur/fileupload": "^0.3.76",
@@ -33,7 +33,7 @@
     "@entur/layout": "^2.1.32",
     "@entur/loader": "^0.4.30",
     "@entur/menu": "^4.1.41",
-    "@entur/modal": "^1.7.1",
+    "@entur/modal": "^1.7.2",
     "@entur/tab": "^0.4.48",
     "@entur/table": "^4.6.8",
     "@entur/tokens": "^3.9.0",

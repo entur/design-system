@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.1...@entur/modal@1.7.2) (2023-04-28)
+
+### Bug Fixes
+
+- **modal:** fix text not center aligned when align="center" is set ([cc9fa96](https://bitbucket.org/enturas/design-system/commits/cc9fa962632861c01f74af89125066f6d2c1bfa2))
+
 ## [1.7.1](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.0...@entur/modal@1.7.1) (2023-04-24)
 
 ### Bug Fixes
