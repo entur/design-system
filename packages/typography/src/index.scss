@@ -186,6 +186,7 @@ html {
   }
   &:hover {
     animation: eds-link-underline 0.3s ease-in;
+    cursor: pointer;
   }
 
   .eds-contrast & {
@@ -216,6 +217,14 @@ html {
   @include for-desktop {
     font-size: $font-sizes-large;
     line-height: $line-heights-extra-large;
+  }
+
+  &--ext-icon {
+    margin-left: $space-extra-small2;
+
+    p & {
+      top: 0;
+    }
   }
 }
 
