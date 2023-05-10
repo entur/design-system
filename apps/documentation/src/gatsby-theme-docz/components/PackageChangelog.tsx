@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '@entur/modal/dist';
 import { MarkdownParser } from './MarkdownParser';
 import { ActionChip } from '@entur/chip/dist';
-import { ExternalIcon } from '@entur/icons';
+import { ListViewIcon } from '@entur/icons';
 import { useGetChangelog } from './useGetChangelog';
 
 export const PackageChangelog = ({ packageName }: { packageName: string }) => {
@@ -24,7 +24,7 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
         }}
       >
         Changelog
-        <ExternalIcon />
+        <ListViewIcon />
       </ActionChip>
 
       <Modal
