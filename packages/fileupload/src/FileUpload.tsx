@@ -4,7 +4,6 @@ import {
   DropzoneOptions,
   FileRejection,
   DropEvent,
-  FileWithPath,
 } from 'react-dropzone';
 import classNames from 'classnames';
 
@@ -39,7 +38,7 @@ type FileUploadProps = DropzoneOptions & {
     event: DropEvent,
   ): void;
   /** Callback for når en fil slettes fra lista */
-  onDelete?: (file: FileWithPath) => void;
+  onDelete?: (file: File) => void;
   /** Hvilken filtyper som skal aksepteres */
   accept?: string | string[];
   /** Filene som er aktive i komponenten */
@@ -102,11 +101,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         </span>
       </div>
       <div className="eds-file-upload__file-list">
-        {files.map((file: FileWithPath, index) => (
+        {files.map((file, index) => (
           <div className="eds-file-upload__file-name" key={index}>
             <FileIcon className="eds-file-upload__file-name-icon" />
             <span className="eds-field-upload__file-name-path">
-              {file.path} - {convertSizeToHuman(file.size)}{' '}
+              {file.name} - {convertSizeToHuman(file.size)}{' '}
             </span>
             <IconButton onClick={() => onDelete(file)}>
               <VisuallyHidden>
