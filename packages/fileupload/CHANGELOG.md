@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.77](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.76...@entur/fileupload@0.3.77) (2023-05-11)
+
+### Bug Fixes
+
+- **fileupload:** change onDelete type back to correct type File ([3596196](https://bitbucket.org/enturas/design-system/commits/35961960ec44c756223e93a27260b5a35963bad8))
+
 ## [0.3.76](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.75...@entur/fileupload@0.3.76) (2023-04-24)
 
 **Note:** Version bump only for package @entur/fileupload

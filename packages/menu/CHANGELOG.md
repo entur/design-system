@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.42](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.41...@entur/menu@4.1.42) (2023-05-11)
+
+**Note:** Version bump only for package @entur/menu
+
 ## [4.1.41](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.40...@entur/menu@4.1.41) (2023-04-24)
 
 **Note:** Version bump only for package @entur/menu

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.17...@entur/typography@1.8.0) (2023-05-11)
+
+### Features
+
+- **link:** add prop for indicating when a link is to an external site ([02f375e](https://bitbucket.org/enturas/design-system/commits/02f375e853af8a312bb2039b5bea36b15cf9a34d))
+
 ## [1.7.17](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.7.16...@entur/typography@1.7.17) (2023-04-21)
 
 **Note:** Version bump only for package @entur/typography
