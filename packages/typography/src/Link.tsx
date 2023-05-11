@@ -1,8 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
+import { ExternalIcon } from '@entur/icons';
 
 export type LinkOwnProps = {
+  external?: boolean;
   /** HTML-elementet eller React-komponenten som rendres
    * @default "a"
    */
@@ -23,8 +25,11 @@ export type LinkProps<T extends React.ElementType = typeof defaultElement> =
 const defaultElement = 'a';
 
 export const Link = <E extends React.ElementType = typeof defaultElement>({
+  external = false,
+  ariaLabelExternalIcon = '(ekstern lenke)',
   className,
   margin = 'both',
+  children,
   as,
   ...rest
 }: LinkProps<E>): JSX.Element => {
@@ -41,6 +46,16 @@ export const Link = <E extends React.ElementType = typeof defaultElement>({
         className,
       )}
       {...rest}
-    />
+    >
+      {children}
+      {external ? (
+        <ExternalIcon
+          className="eds-link--ext-icon"
+          aria-label={ariaLabelExternalIcon}
+        />
+      ) : (
+        <></>
+      )}
+    </Element>
   );
 };

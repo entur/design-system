@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link as DoczLink } from 'docz';
 
-import { VisuallyHidden } from '@entur/a11y/dist';
 import { IconButton } from '@entur/button';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
@@ -9,7 +8,6 @@ import {
   InstagramIcon,
   LinkedinIcon,
   TwitterIcon,
-  ExternalIcon,
 } from '@entur/icons';
 import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
@@ -56,15 +54,16 @@ const FrontPageFooter = () => {
         <GridItem small={12} medium={3} large={3}>
           <Heading3 margin="bottom">Informasjon</Heading3>
           <div className="front-page-footer__link">
-            <Link href="https://entur.slack.com/archives/C899QSPB7">
-              #talk-designsystem på Slack&nbsp;
-              <ExternalIcon aria-label="(ekstern lenke)" />
+            <Link external href="https://entur.slack.com/archives/C899QSPB7">
+              #talk-designsystem på Slack
             </Link>
           </div>
           <div className="front-page-footer__link">
-            <Link href="https://uustatus.no/nb/erklaringer/publisert/7c5b8f79-7c24-4144-8084-afde897edded">
-              Tilgjengelighetserklæring&nbsp;
-              <ExternalIcon aria-label="(ekstern lenke)" />
+            <Link
+              external
+              href="https://uustatus.no/nb/erklaringer/publisert/7c5b8f79-7c24-4144-8084-afde897edded"
+            >
+              Tilgjengelighetserklæring
             </Link>
           </div>
         </GridItem>
