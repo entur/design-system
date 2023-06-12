@@ -20,10 +20,19 @@ import './Dropdown.scss';
 export type SearchableDropdownProps = {
   /** Tilgjengelige valg i dropdown-en */
   items: PotentiallyAsyncDropdownItemType;
-  /** Valgt element. Bruk null for ingen verdi. */
+  /** Valgt element. Bruk null for ingen verdi.
+   * Det er denne som skal oppdateres av onChange
+   */
   selectedItem: NormalizedDropdownItemType | null;
   /** Callback for når brukeren endrer valg */
   onChange: (value: NormalizedDropdownItemType | null) => void;
+  /** Filtreringen som blir brukt dersom man har en searchable Dropdown
+   * @default Enkel tekstsammenligning
+   */
+  itemFilter?: (
+    item: NormalizedDropdownItemType,
+    inputValue: string | undefined,
+  ) => boolean;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** Placeholder-tekst når ingenting er satt */
@@ -36,10 +45,17 @@ export type SearchableDropdownProps = {
    * @default false
    */
   openOnFocus?: boolean;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
+  disableLabelAnimation?: boolean;
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
+  debounceTimeout?: number;
   /** Gjør dropdown-en til å kun kunne leses
    * @default false
    */
   readonly?: boolean;
+  selectOnBlur?: boolean;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
@@ -48,26 +64,34 @@ export type SearchableDropdownProps = {
   style?: { [key: string]: any };
   /** Style som kun påføres listeelementet */
   listStyle?: { [key: string]: any };
-  [key: string]: any;
 };
 
 // TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
 // TODO Husk å generelt legge inn støtte for typeof value === string
 
 export const SearchableDropdownBeta = ({
-  items: initialItems,
-  selectedItem: value,
-  onChange,
-  label,
-  placeholder,
-  clearable = false,
-  openOnFocus = false,
-  selectOnBlur = false,
-  readonly = false,
-  feedback,
-  variant = 'info',
   className,
+  clearable = false,
+  debounceTimeout,
+  // disabled = false,
+  disableLabelAnimation = false,
+  feedback,
+  // highlightFirstItemOnOpen,
+  itemFilter = lowerCaseFilterTest,
+  items: initialItems,
+  label,
   listStyle,
+  // loadingText,
+  onChange,
+  openOnFocus = false,
+  placeholder,
+  // prepend,
+  readonly = false,
+  selectedItem: value,
+  selectOnBlur = false,
+  // selectOnTab = false,
+  // style,
+  variant = 'info',
   ...rest
 }: SearchableDropdownProps) => {
   const [hideSelectedItem, setHideSelectedItem] = useState(false);
@@ -77,18 +101,16 @@ export const SearchableDropdownBeta = ({
     items: normalizedItems,
     loading,
     fetchItems,
-  } = useResolvedItems(initialItems);
+  } = useResolvedItems(initialItems, debounceTimeout);
 
   const [listItems, setListItems] = React.useState(normalizedItems);
 
   const filterListItems = ({ inputValue }: { inputValue: string }) =>
-    setListItems(
-      normalizedItems.filter(item => lowerCaseFilterTest(item, inputValue)),
-    );
+    setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
 
   React.useEffect(() => {
     filterListItems({ inputValue });
-  }, [normalizedItems]);
+  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const stateReducer = React.useCallback(
     (
@@ -102,13 +124,14 @@ export const SearchableDropdownBeta = ({
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.InputBlur:
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
           filterListItems({ inputValue: '' });
           return {
             ...changes,
             inputValue: '', // reset input value to show placeholder on focus
           };
-        case useCombobox.stateChangeTypes.InputChange:
+        }
+        case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
           if (changes.inputValue?.match(leadingWhitespaceTest))
             setInputValue(
@@ -119,11 +142,12 @@ export const SearchableDropdownBeta = ({
             filterListItems({ inputValue: changes.inputValue ?? '' });
           }
           return changes;
+        }
         default:
           return changes;
       }
     },
-    [],
+    [fetchItems, filterListItems], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const {
@@ -149,7 +173,7 @@ export const SearchableDropdownBeta = ({
         // @ts-expect-error This falltrough is wanted
         case useCombobox.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
           onChange(clickedItem ?? null);
       }
@@ -178,6 +202,7 @@ export const SearchableDropdownBeta = ({
             getToggleButtonProps={getToggleButtonProps}
           />
         }
+        disableLabelAnimation={disableLabelAnimation}
         className={classNames('eds-dropdown', className)}
         label={label}
         isFilled={selectedItem || inputValue !== ''}

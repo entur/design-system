@@ -82,7 +82,6 @@ export const useResolvedItems = (
   // the input value changes
   const fetchItems = React.useCallback(
     async (inputValue: string) => {
-      console.log('fetch items called with input', inputValue);
       if (!isMounted) {
         return;
       }
@@ -99,11 +98,9 @@ export const useResolvedItems = (
   React.useEffect(() => {
     // Let's fetch the list initially if it's specified
     if (isItemsFunction) {
-      console.log('initial or clear fetch items');
-
       fetchItems('');
     }
-  }, [isItemsFunction]);
+  }, [isItemsFunction]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     items: normalizedItems,
