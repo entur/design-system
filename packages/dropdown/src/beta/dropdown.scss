@@ -1,6 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 
-.eds-searchable-dropdown {
+.eds-dropdown {
   &__wrapper {
     position: relative;
   }
@@ -14,6 +14,9 @@
       $space-extra-small2 $space-medium;
     font-family: inherit;
 
+    position: relative;
+    top: 2px;
+
     overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -23,7 +26,53 @@
     }
   }
 
+  &__selected-items-and-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 0.5rem;
+
+    &--filled {
+      padding: 20px 1rem 0.25rem;
+
+      .eds-dropdown__input {
+        padding: unset;
+      }
+
+      .eds-tag-chip {
+        &:focus {
+          box-shadow: $shadows-focus;
+        }
+      }
+    }
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 10%;
+
+    &.eds-form-control {
+      // small adjustment to line up input placeholder and selectedValue placeholder
+      &::placeholder {
+        transition: none;
+        position: relative;
+        bottom: 0px;
+      }
+    }
+  }
+
+  &.eds-form-control-wrapper {
+    align-items: start;
+
+    .eds-form-control__append {
+      top: 0.3rem;
+    }
+  }
+
   &-appendix {
+    display: flex;
+    align-items: center;
+
     &__clear-button {
       padding: $space-extra-small;
       margin-right: $space-extra-small2;
@@ -81,71 +130,5 @@
         }
       }
     }
-  }
-
-  &__list {
-    position: absolute;
-    top: $space-extra-large3;
-
-    display: none;
-    list-style: none;
-    border-radius: $border-radiuses-medium;
-    border: 0.125rem solid #d1d3d3;
-    box-shadow: $shadows-box-shadow;
-    padding: 0;
-    margin: 0;
-    margin-top: $space-extra-small;
-    max-height: 50vh;
-    overflow-y: auto;
-    width: 100%;
-    z-index: $z-indexes-popover;
-
-    &--open {
-      // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
-      display: inline-block;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    @media all and (min-width: $breakpoints-large) {
-      max-height: 30vh;
-    }
-
-    &__item {
-      align-items: center;
-      background-color: $colors-greys-grey90;
-      border-bottom: $border-widths-default solid $colors-greys-grey60;
-      color: $colors-brand-blue;
-      display: flex;
-      justify-content: space-between;
-      font-family: inherit;
-      font-size: $font-sizes-large;
-      line-height: $line-heights-medium;
-      padding: $space-small $space-default;
-      width: 100%;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      &-icon {
-        margin-left: $space-small;
-      }
-
-      &--highlighted {
-        background-color: $colors-blues-blue70;
-      }
-    }
-  }
-}
-
-.eds-form-control.eds-searchable-dropdown__input {
-  // small adjustment to line up input placeholder and selectedValue placeholder
-  &::placeholder {
-    transition: none;
-    position: relative;
-    bottom: 1px;
   }
 }
