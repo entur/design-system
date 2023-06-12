@@ -216,6 +216,9 @@ export const MultiSelectBeta = ({
             onClear={() => {
               onChange([]);
               setInputValue('');
+              inputRef.current?.focus();
+              if (typeof initialItems === 'function')
+                fetchItems(inputValue ?? '');
             }}
             getToggleButtonProps={getToggleButtonProps}
           />

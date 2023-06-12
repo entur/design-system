@@ -64,9 +64,34 @@
   &.eds-form-control-wrapper {
     align-items: start;
 
+    &.eds-dropdown--not-filled .eds-input-group__label {
+      font-size: $font-sizes-large;
+      position: absolute;
+      line-height: $font-sizes-large;
+      height: $space-extra-large3;
+      padding: $space-default;
+      padding-left: 0;
+      margin-left: $space-default;
+      top: -$border-widths-medium;
+      transition: top $timings-medium ease-in-out,
+        font-size $timings-medium ease-in-out,
+        padding $timings-medium ease-in-out,
+        line-height ease-in-out $timings-medium;
+    }
+
     .eds-form-control__append {
       top: 0.3rem;
+
+      .eds-loading-dots {
+        height: 2rem;
+      }
     }
+  }
+
+  &__selected-item-button {
+    flex: 1;
+    padding: 1.25rem 1rem 0.25rem;
+    min-height: 2.75rem;
   }
 
   &-appendix {
