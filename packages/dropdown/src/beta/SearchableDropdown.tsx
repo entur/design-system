@@ -1,31 +1,17 @@
 /* eslint-disable  no-warning-comments */
 import React, { useRef, useState } from 'react';
-import { useCombobox, UseComboboxGetToggleButtonPropsOptions } from 'downshift';
+import { useCombobox } from 'downshift';
 import classNames from 'classnames';
 
-import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
 import { BaseFormControl, VariantType } from '@entur/form';
-import { IconButton } from '@entur/button';
 
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
-import { DropdownList } from './DropdownList';
+import { DropdownList } from './components/DropdownList';
 
-import './dropdown.scss';
+import { itemToString, lowerCaseFilterTest } from './utils';
+import { FieldAppend } from './components/FieldComponents';
 
-function lowerCaseFilterTest(
-  item: NormalizedDropdownItemType,
-  input: string | undefined,
-) {
-  if (!input) {
-    return true;
-  }
-  const sanitizeEscapeCharacters = input.replace(
-    /[-/\\^$*+?.()|[\]{}]/g,
-    '\\$&',
-  );
-  const inputRegex = new RegExp(sanitizeEscapeCharacters, 'i');
-  return inputRegex.test(item.label);
-}
+import './Dropdown.scss';
 
 export type SearchableDropdownProps = {
   /** Tilgjengelige valg i dropdown-en */
@@ -72,6 +58,7 @@ export const SearchableDropdownBeta = ({
   placeholder,
   clearable = false,
   openOnFocus = false,
+  selectOnBlur = false,
   readonly = false,
   feedback,
   variant = 'info',
@@ -83,9 +70,7 @@ export const SearchableDropdownBeta = ({
   const [hideSelectedItem, setHideSelectedItem] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const stateReducer = React.useCallback((_, actionAndChanges) => {
-    const { type, changes } = actionAndChanges;
-
+  const stateReducer = React.useCallback((_, { type, changes }) => {
     switch (type) {
       case useCombobox.stateChangeTypes.ItemClick:
       case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -94,9 +79,7 @@ export const SearchableDropdownBeta = ({
         return {
           ...changes,
           // reset input value to show placeholder on focus
-          ...(changes.selectedItem && {
-            inputValue: '',
-          }),
+          inputValue: '',
         };
       default:
         return changes;
@@ -105,6 +88,8 @@ export const SearchableDropdownBeta = ({
 
   const {
     isOpen,
+    openMenu,
+    closeMenu,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
@@ -113,44 +98,58 @@ export const SearchableDropdownBeta = ({
     highlightedIndex,
     getItemProps,
     selectedItem,
-    openMenu,
     inputValue,
+    setInputValue,
   } = useCombobox({
-    onInputValueChange({ inputValue }) {
-      setFilteredItems(
-        items.filter(item => lowerCaseFilterTest(item, inputValue)),
-      );
-    },
     items: filteredItems,
-    itemToString(item) {
-      if (item) return item.value;
-      return '';
-    },
-    stateReducer,
     selectedItem: value,
-    onSelectedItemChange: ({ selectedItem: newSelectedItem }) =>
-      onChange(newSelectedItem ?? null),
+    itemToString,
+    stateReducer,
+    onInputValueChange({ inputValue }) {
+      if (inputValue === ' ') {
+        const wasOpen = isOpen;
+        setInputValue('');
+        if (!wasOpen) closeMenu();
+      } else {
+        setFilteredItems(
+          items.filter(item => lowerCaseFilterTest(item, inputValue)),
+        );
+      }
+    },
+    onStateChange({ type, selectedItem: clickedItem }) {
+      switch (type) {
+        // @ts-expect-error This falltrough is wanted
+        case useCombobox.stateChangeTypes.InputBlur:
+          if (!selectOnBlur) break;
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.ItemClick:
+          onChange(clickedItem ?? null);
+      }
+    },
     ...rest,
   });
 
   return (
-    <div className="eds-searchable-dropdown__wrapper">
+    <div className="eds-dropdown__wrapper">
       <BaseFormControl
         append={
-          <Appendix
-            selectedItem={selectedItem}
+          <FieldAppend
+            selectedItems={[selectedItem]}
             isOpen={isOpen}
             clearable={clearable}
             loading={false}
             loadingText={''}
             readOnly={readonly}
-            onChange={onChange}
+            onClear={() => {
+              onChange(null);
+              setInputValue('');
+            }}
             getToggleButtonProps={getToggleButtonProps}
           />
         }
-        className={classNames('eds-searchable-dropdown', className)}
+        className={classNames('eds-dropdown', className)}
         label={label}
-        isFilled={selectedItem ? true : false}
+        isFilled={selectedItem || inputValue !== ''}
         feedback={feedback}
         variant={variant}
         readOnly={readonly}
@@ -159,9 +158,9 @@ export const SearchableDropdownBeta = ({
         {...rest}
       >
         {!hideSelectedItem && selectedItem && !inputValue && (
-          <span className="eds-searchable-dropdown__selected-item__wrapper">
+          <span className="eds-dropdown__selected-item__wrapper">
             <span
-              className="eds-searchable-dropdown__selected-item"
+              className="eds-dropdown__selected-item"
               onClick={() => inputRef.current?.focus()}
             >
               {selectedItem.label}
@@ -170,7 +169,7 @@ export const SearchableDropdownBeta = ({
         )}
         <input
           placeholder={selectedItem?.label ?? placeholder}
-          className="eds-searchable-dropdown__input eds-form-control"
+          className="eds-dropdown__input eds-form-control"
           {...getInputProps({
             onFocus: () => {
               if (!isOpen && openOnFocus) openMenu();
@@ -184,73 +183,14 @@ export const SearchableDropdownBeta = ({
         />
       </BaseFormControl>
       <DropdownList
-        selectedItem={selectedItem}
+        selectedItems={selectedItem !== null ? [selectedItem] : []}
         isOpen={isOpen}
-        filteredItems={filteredItems}
+        listItems={filteredItems}
         highlightedIndex={highlightedIndex}
         listStyle={listStyle}
         getMenuProps={getMenuProps}
         getItemProps={getItemProps}
       />
-    </div>
-  );
-};
-
-const Appendix: React.FC<{
-  selectedItem: NormalizedDropdownItemType | null;
-  isOpen: boolean;
-  clearable: boolean;
-  loading: boolean;
-  loadingText: string;
-  readOnly: boolean;
-  onChange: (value: NormalizedDropdownItemType | null) => void;
-  getToggleButtonProps: (
-    options?: UseComboboxGetToggleButtonPropsOptions | undefined,
-  ) => any;
-}> = ({
-  clearable,
-  readOnly,
-  getToggleButtonProps,
-  selectedItem,
-  isOpen,
-  onChange,
-}) => {
-  // TODO implement loading / async
-  // if (loading) {
-  //   return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
-  // }
-  if (readOnly) {
-    return null;
-  }
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      {clearable && selectedItem && (
-        <>
-          <IconButton
-            className="eds-searchable-dropdown-appendix__clear-button"
-            type="button"
-            tabIndex={-1}
-            onClick={() => onChange(null)}
-          >
-            <CloseSmallIcon />
-          </IconButton>
-          <div className="eds-searchable-dropdown-appendix__divider" />
-        </>
-      )}
-      <IconButton
-        {...getToggleButtonProps({
-          className: classNames(
-            'eds-searchable-dropdown-appendix__toggle-button',
-            {
-              'eds-searchable-dropdown-appendix__toggle-button--open': isOpen,
-            },
-          ),
-        })}
-        tabIndex={-1}
-        type="button"
-      >
-        <DownArrowIcon />
-      </IconButton>
     </div>
   );
 };
