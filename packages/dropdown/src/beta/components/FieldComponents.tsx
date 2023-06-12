@@ -54,7 +54,10 @@ export const FieldAppend: React.FC<{
   clearable: boolean;
   loading?: boolean;
   loadingText?: string;
+  ariaLabelClearItems?: string;
+  clearSelectedItemsLabel?: string;
   readOnly: boolean;
+  focusable?: boolean;
   onClear: () => void;
   getToggleButtonProps: (
     options?: UseComboboxGetToggleButtonPropsOptions | undefined,
@@ -66,8 +69,11 @@ export const FieldAppend: React.FC<{
   selectedItems,
   loading = false,
   loadingText = 'Laster resultater …',
+  ariaLabelClearItems,
+  clearSelectedItemsLabel,
   isOpen,
   onClear,
+  focusable = false,
 }) => {
   if (loading) {
     return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
@@ -77,15 +83,21 @@ export const FieldAppend: React.FC<{
   }
   return (
     <div className="eds-dropdown-appendix">
-      {clearable && selectedItems?.length > 0 && (
+      {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
         <>
-          <ClearableButton onClear={onClear} />
+          <ClearableButton
+            onClear={onClear}
+            focusable={focusable}
+            clearSelectedItemsLabel={clearSelectedItemsLabel}
+            ariaLabelClearItems={ariaLabelClearItems}
+          />
           <div className="eds-dropdown-appendix__divider" />
         </>
       )}
       <ToggleButton
         getToggleButtonProps={getToggleButtonProps}
         isOpen={isOpen}
+        focusable={focusable}
       />
     </div>
   );
@@ -94,9 +106,13 @@ export const FieldAppend: React.FC<{
 const ClearableButton = ({
   onClear,
   clearSelectedItemsLabel = 'Fjern valgte',
+  ariaLabelClearItems = 'Fjern valgte',
+  focusable = false,
 }: {
   onClear: () => void;
   clearSelectedItemsLabel?: string;
+  focusable?: boolean;
+  ariaLabelClearItems?: string;
 }) => {
   return (
     <Tooltip
@@ -107,9 +123,9 @@ const ClearableButton = ({
       <IconButton
         className="eds-dropdown-appendix__clear-button"
         type="button"
-        tabIndex={-1}
+        tabIndex={focusable ? 0 : 1}
         onClick={onClear}
-        aria-label={clearSelectedItemsLabel}
+        aria-label={ariaLabelClearItems}
       >
         <CloseSmallIcon aria-hidden="true" />
       </IconButton>
@@ -122,6 +138,7 @@ const ToggleButton = ({
   isOpen,
   closeAriaLabel = 'Lukk liste med valg',
   openAriaLabel = 'Åpne liste med valg',
+  focusable = false,
 }: {
   getToggleButtonProps: (
     options?: UseComboboxGetToggleButtonPropsOptions | undefined,
@@ -129,6 +146,7 @@ const ToggleButton = ({
   isOpen: boolean;
   closeAriaLabel?: string;
   openAriaLabel?: string;
+  focusable?: boolean;
 }) => {
   return (
     <IconButton
@@ -138,7 +156,7 @@ const ToggleButton = ({
         }),
       })}
       aria-label={isOpen ? closeAriaLabel : openAriaLabel}
-      tabIndex={-1}
+      tabIndex={focusable ? 0 : 1}
       type="button"
     >
       <DownArrowIcon aria-hidden="true" />
