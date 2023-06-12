@@ -1,6 +1,10 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import { useMultipleSelection, useCombobox } from 'downshift';
+import {
+  useMultipleSelection,
+  useCombobox,
+  UseComboboxStateChangeOptions,
+} from 'downshift';
 
 import { BaseFormControl } from '@entur/form';
 import { useRandomId } from '@entur/utils';
@@ -101,9 +105,15 @@ export const MultiSelectBeta = ({
     });
 
   const stateReducer = React.useCallback(
-    (_, { changes, type }) => {
-      if (changes?.highlightedIndex >= 0)
-        setLastHighlightedIndex(changes.highlightedIndex);
+    (
+      _,
+      {
+        changes,
+        type,
+      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
+    ) => {
+      if (changes?.highlightedIndex && changes?.highlightedIndex >= 0)
+        setLastHighlightedIndex(changes?.highlightedIndex);
 
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
@@ -128,9 +138,9 @@ export const MultiSelectBeta = ({
           }
 
           if (typeof initialItems === 'function')
-            fetchItems(changes.inputValue); // fetch items only if user provides a function as items
+            fetchItems(changes.inputValue ?? ''); // fetch items only if user provides a function as items
 
-          filterListItems({ inputValue: changes.inputValue });
+          filterListItems({ inputValue: changes.inputValue ?? '' });
           return changes;
         case useCombobox.stateChangeTypes.InputBlur:
           return {

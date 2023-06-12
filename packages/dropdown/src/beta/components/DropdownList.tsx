@@ -31,6 +31,7 @@ type DropdownListProps = {
   loadingText?: string;
   selectedItemAriaLabel?: string;
   loading?: boolean;
+  selectAllItem?: NormalizedDropdownItemType;
   [key: string]: any;
 };
 
@@ -52,10 +53,13 @@ export const DropdownList = ({
   selectedItemAriaLabel = ', valgt element',
   ...rest
 }: DropdownListProps) => {
+  const isMultiselect = selectAllItem !== undefined;
   const isNoMatches =
     !loading &&
     (listItems.length == 0 ||
-      (listItems.length == 1 && listItems[0].value == selectAllItem.value));
+      (listItems.length == 1 && listItems[0].value == selectAllItem?.value));
+  const itemIsSelected = (item: NormalizedDropdownItemType) =>
+    selectedItems.some(selectedItem => selectedItem.value === item.value);
 
   const selectAllListItemContent = () => (
     <>
@@ -67,22 +71,17 @@ export const DropdownList = ({
         }}
       />
       <span className="eds-dropdown__list__item-text">
-        {selectAllItem.label}
+        {selectAllItem?.label}
       </span>
     </>
   );
 
   const listItemContent = (item: NormalizedDropdownItemType) => {
-    const itemIsSelected = selectedItems.some(
-      selectedItem => selectedItem.value === item.value,
-    );
     return (
       <>
         <Checkbox
-          style={
-            !selectAllItem && !itemIsSelected ? { visibility: 'hidden' } : {}
-          }
-          checked={itemIsSelected}
+          style={!isMultiselect ? { display: 'none' } : {}}
+          checked={itemIsSelected(item)}
           aria-hidden="true"
           onChange={() => {
             return;
@@ -119,7 +118,7 @@ export const DropdownList = ({
       {isOpen &&
         listItems.length > 0 &&
         listItems.map((item, index) => {
-          const itemIsSelectAll = item.value === selectAllItem.value;
+          const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return;
 
           return (
@@ -129,6 +128,8 @@ export const DropdownList = ({
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
                   highlightedIndex === index,
+                'eds-dropdown__list__item--selected':
+                  !isMultiselect && itemIsSelected(item),
               })}
               {...getItemProps({
                 key: `${index}${item.value}`,
