@@ -1,0 +1,61 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown__list {
+  position: absolute;
+
+  display: none;
+  list-style: none;
+  border-radius: $border-radiuses-medium;
+  border: 0.125rem solid #d1d3d3;
+  box-shadow: $shadows-box-shadow;
+  padding: 0;
+  margin: 0;
+  margin-top: $space-extra-small;
+  max-height: 50vh;
+  overflow-y: auto;
+  width: 100%;
+  z-index: $z-indexes-popover;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--open {
+    // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
+    display: inline-block;
+  }
+
+  @media all and (min-width: $breakpoints-large) {
+    max-height: 30vh;
+  }
+
+  &__item {
+    background-color: $colors-greys-grey90;
+    border-bottom: $border-widths-default solid $colors-greys-grey60;
+    color: $colors-brand-blue;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: inherit;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-medium;
+    padding: $space-small $space-default;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &-text {
+      flex: 1;
+    }
+
+    &-icon {
+      margin-left: $space-small;
+    }
+
+    &--highlighted {
+      background-color: $colors-blues-blue70;
+    }
+  }
+}
