@@ -6,7 +6,10 @@ import classNames from 'classnames';
 import { BaseFormControl, VariantType } from '@entur/form';
 
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
-import { useResolvedItems } from '../useResolvedItems';
+import {
+  PotentiallyAsyncDropdownItemType,
+  useResolvedItems,
+} from '../useResolvedItems';
 import { DropdownList } from './components/DropdownList';
 
 import { itemToString, lowerCaseFilterTest } from './utils';
@@ -16,7 +19,7 @@ import './Dropdown.scss';
 
 export type SearchableDropdownProps = {
   /** Tilgjengelige valg i dropdown-en */
-  items: NormalizedDropdownItemType[];
+  items: PotentiallyAsyncDropdownItemType;
   /** Valgt element. Bruk null for ingen verdi. */
   selectedItem: NormalizedDropdownItemType | null;
   /** Callback for når brukeren endrer valg */
@@ -168,6 +171,9 @@ export const SearchableDropdownBeta = ({
             onClear={() => {
               onChange(null);
               setInputValue('');
+              inputRef.current?.focus();
+              if (typeof initialItems === 'function')
+                fetchItems(inputValue ?? '');
             }}
             getToggleButtonProps={getToggleButtonProps}
           />
