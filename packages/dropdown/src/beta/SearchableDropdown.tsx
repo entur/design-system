@@ -1,11 +1,12 @@
 /* eslint-disable  no-warning-comments */
 import React, { useRef, useState } from 'react';
-import { useCombobox } from 'downshift';
+import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { useResolvedItems } from '../useResolvedItems';
 import { DropdownList } from './components/DropdownList';
 
 import { itemToString, lowerCaseFilterTest } from './utils';
@@ -51,7 +52,7 @@ export type SearchableDropdownProps = {
 // TODO Husk å generelt legge inn støtte for typeof value === string
 
 export const SearchableDropdownBeta = ({
-  items,
+  items: initialItems,
   selectedItem: value,
   onChange,
   label,
@@ -66,30 +67,65 @@ export const SearchableDropdownBeta = ({
   listStyle,
   ...rest
 }: SearchableDropdownProps) => {
-  const [filteredItems, setFilteredItems] = React.useState(items);
   const [hideSelectedItem, setHideSelectedItem] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const stateReducer = React.useCallback((_, { type, changes }) => {
-    switch (type) {
-      case useCombobox.stateChangeTypes.ItemClick:
-      case useCombobox.stateChangeTypes.InputKeyDownEnter:
-      case useCombobox.stateChangeTypes.InputBlur:
-      case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-        return {
-          ...changes,
-          // reset input value to show placeholder on focus
-          inputValue: '',
-        };
-      default:
-        return changes;
-    }
-  }, []);
+  const {
+    items: normalizedItems,
+    loading,
+    fetchItems,
+  } = useResolvedItems(initialItems);
+
+  const [listItems, setListItems] = React.useState(normalizedItems);
+
+  const filterListItems = ({ inputValue }: { inputValue: string }) =>
+    setListItems(
+      normalizedItems.filter(item => lowerCaseFilterTest(item, inputValue)),
+    );
+
+  React.useEffect(() => {
+    filterListItems({ inputValue });
+  }, [normalizedItems]);
+
+  const stateReducer = React.useCallback(
+    (
+      _,
+      {
+        type,
+        changes,
+      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
+    ) => {
+      switch (type) {
+        case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.InputBlur:
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+          filterListItems({ inputValue: '' });
+          return {
+            ...changes,
+            inputValue: '', // reset input value to show placeholder on focus
+          };
+        case useCombobox.stateChangeTypes.InputChange:
+          const leadingWhitespaceTest = /^\s+/g;
+          if (changes.inputValue?.match(leadingWhitespaceTest))
+            setInputValue(
+              changes.inputValue.replace(leadingWhitespaceTest, ''),
+            );
+          else {
+            fetchItems(changes.inputValue ?? '');
+            filterListItems({ inputValue: changes.inputValue ?? '' });
+          }
+          return changes;
+        default:
+          return changes;
+      }
+    },
+    [],
+  );
 
   const {
     isOpen,
     openMenu,
-    closeMenu,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
@@ -101,21 +137,10 @@ export const SearchableDropdownBeta = ({
     inputValue,
     setInputValue,
   } = useCombobox({
-    items: filteredItems,
+    items: listItems,
     selectedItem: value,
     itemToString,
     stateReducer,
-    onInputValueChange({ inputValue }) {
-      if (inputValue === ' ') {
-        const wasOpen = isOpen;
-        setInputValue('');
-        if (!wasOpen) closeMenu();
-      } else {
-        setFilteredItems(
-          items.filter(item => lowerCaseFilterTest(item, inputValue)),
-        );
-      }
-    },
     onStateChange({ type, selectedItem: clickedItem }) {
       switch (type) {
         // @ts-expect-error This falltrough is wanted
@@ -185,11 +210,12 @@ export const SearchableDropdownBeta = ({
       <DropdownList
         selectedItems={selectedItem !== null ? [selectedItem] : []}
         isOpen={isOpen}
-        listItems={filteredItems}
+        listItems={listItems}
         highlightedIndex={highlightedIndex}
         listStyle={listStyle}
         getMenuProps={getMenuProps}
         getItemProps={getItemProps}
+        loading={loading}
       />
     </div>
   );

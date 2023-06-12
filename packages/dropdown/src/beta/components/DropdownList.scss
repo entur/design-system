@@ -6,7 +6,7 @@
   display: none;
   list-style: none;
   border-radius: $border-radiuses-medium;
-  border: 0.125rem solid #d1d3d3;
+  border: 0.125rem solid $colors-blues-blue45;
   box-shadow: $shadows-box-shadow;
   padding: 0;
   margin: 0;
@@ -31,7 +31,6 @@
 
   &__item {
     background-color: $colors-greys-grey90;
-    border-bottom: $border-widths-default solid $colors-greys-grey60;
     color: $colors-brand-blue;
     display: flex;
     align-items: center;
@@ -56,6 +55,11 @@
 
     &--highlighted {
       background-color: $colors-blues-blue70;
+    }
+
+    &--selected {
+      background-color: $colors-blues-blue30;
+      color: $colors-brand-white;
     }
   }
 }
