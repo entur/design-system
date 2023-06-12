@@ -11,6 +11,8 @@ import { DropdownLoadingDots } from '../../DropdownLoadingDots';
 import { NormalizedDropdownItemType } from '../../useNormalizedItems';
 import React from 'react';
 
+import './FieldComponents.scss';
+
 export const SelectedElementsTag = ({
   getSelectedItemProps,
   removeSelectedItem,
@@ -32,6 +34,7 @@ export const SelectedElementsTag = ({
   });
   return (
     <TagChip
+      className={classNames('eds-dropdown__selected-element-tag')}
       {...selectedItemProps}
       onClose={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
