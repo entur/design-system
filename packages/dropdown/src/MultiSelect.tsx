@@ -103,23 +103,23 @@ type MultiSelectProps = {
 >;
 
 export const MultiSelect: React.FC<MultiSelectProps> = ({
+  className,
+  clearable = false,
+  debounceTimeout,
+  disabled,
+  feedback,
+  initialSelectedItems = [],
   items: input,
   itemsSelectedLabel = items => SelectedItemsLabel(items),
   label,
-  feedback,
-  variant,
-  disabled,
-  readOnly = false,
-  onChange = () => undefined,
-  className,
-  clearable = false,
+  listStyle,
   loading = false,
   loadingText = '',
+  onChange = () => undefined,
   openOnFocus = false,
+  readOnly = false,
   style,
-  listStyle,
-  initialSelectedItems = [],
-  debounceTimeout,
+  variant,
   ...rest
 }) => {
   const { items } = useResolvedItems(input, debounceTimeout);
