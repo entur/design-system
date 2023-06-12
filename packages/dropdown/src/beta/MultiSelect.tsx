@@ -6,7 +6,7 @@ import {
   UseComboboxStateChangeOptions,
 } from 'downshift';
 
-import { BaseFormControl } from '@entur/form';
+import { BaseFormControl, VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
 
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
@@ -25,29 +25,84 @@ import {
 import './Dropdown.scss';
 
 export type MultiSelectBetaProps = {
+  /** Tilgjengelige valg i MultiSelect */
   items: PotentiallyAsyncDropdownItemType;
+  /** Elementer som er valgt blant 'items'.
+   *  Denne skal oppdateres av onChange.
+   */
   selectedItems: NormalizedDropdownItemType[];
-  onChange: (value: NormalizedDropdownItemType[]) => void;
-  [key: string]: any;
+  /** Callback med alle valgte verdier.
+   *  Bruk denne til å oppdatere selectedItems-listen */
+  onChange: (selectedItems: NormalizedDropdownItemType[]) => void;
+  /** Beskrivende tekst som forklarer feltet */
+  label?: string;
+  /** Hvilken valideringsvariant som gjelder */
+  variant?: VariantType;
+  /** Valideringsmelding, brukes sammen med `variant` */
+  feedback?: string;
+  /** Tekst eller ikon som kommer før MultiSelect */
+  prepend?: React.ReactNode;
+  /** Om dropdown-en er deaktivert */
+  disabled?: boolean;
+  /** Om dropdown-en er i read-only modus */
+  readOnly?: boolean;
+  /** Placeholder-tekst når ingenting er satt */
+  placeholder?: string;
+  /** En tekst som beskriver hva som skjer når man venter på items */
+  loadingText?: string;
+  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe
+   * @default false
+   */
+  openOnFocus?: boolean;
+  /** Skjuler «Velg alle» fra listen med valg
+   * @default false
+   */
+  hideSelectAll?: boolean;
+  /** Teksten som vises for «Velg alle»-elementet i listen
+   * @default "Velg alle"
+   */
+  selectAllLabel?: string;
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Tekst for skjemleser på knapper for å fjerne valgt element
+   * @default "trykk for å fjerne valg"
+   */
+  ariaLabelRemoveSelected?: string;
+  /** Styling som sendes ned til MultiSelect-lista */
+  listStyle?: { [key: string]: any };
+  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon
+   * @default 250
+   */
+  debounceTimeout?: number;
+  /** Om en knapp for å fjerne alle valg skal vises
+   * @default false
+   */
+  clearable?: boolean;
+  selectOnBlur?: boolean;
+  readonly?: boolean;
+  loading?: boolean;
+  style?: React.CSSProperties;
 };
 
 export const MultiSelectBeta = ({
-  items: initialItems,
-  selectedItems,
-  onChange,
-  label,
-  placeholder,
-  clearable = false,
-  openOnFocus = false,
-  selectOnBlur = false,
-  hideSelectAll = false,
-  readonly = false,
-  feedback,
-  variant = 'info',
-  selectAllLabel = 'Velg alle',
-  className,
-  listStyle,
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
+  className,
+  clearable = false,
+  debounceTimeout,
+  feedback,
+  hideSelectAll = false,
+  items: initialItems,
+  label,
+  listStyle,
+  onChange,
+  openOnFocus = false,
+  placeholder,
+  readonly = false,
+  selectAllLabel = 'Velg alle',
+  selectedItems,
+  selectOnBlur = false,
+  style,
+  variant = 'info',
   ...rest
 }: MultiSelectBetaProps) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
@@ -77,8 +132,7 @@ export const MultiSelectBeta = ({
 
   React.useEffect(() => {
     filterListItems({ inputValue });
-  }, [normalizedItems]);
-
+  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
   const {
     addClickedItemToSelectedItems,
     allListItemsAreSelected,
@@ -151,7 +205,7 @@ export const MultiSelectBeta = ({
           return changes;
       }
     },
-    [hideSelectAll, normalizedItems],
+    [hideSelectAll, normalizedItems, filterListItems, initialItems], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
   const {
@@ -173,14 +227,14 @@ export const MultiSelectBeta = ({
     selectedItem: null,
     stateReducer,
     onStateChange({ type, selectedItem: clickedItem }) {
-      // clickedItem means item just chosen either via mouse or keyboard
+      // clickedItem means item chosen either via mouse or keyboard
       if (!clickedItem) return;
 
       switch (type) {
         // @ts-expect-error This falltrough is wanted
         case useCombobox.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
           if (clickedItemIsSelectAll(clickedItem)) {
             if (allListItemsAreSelected) {
@@ -229,6 +283,7 @@ export const MultiSelectBeta = ({
         feedback={feedback}
         variant={variant}
         readOnly={readonly}
+        style={style}
         labelProps={{
           'aria-label': `${label}, multiselect, ${selectedItems.length} valgte elementer`,
           ...getLabelProps(),
@@ -241,7 +296,7 @@ export const MultiSelectBeta = ({
             'eds-dropdown__selected-items-and-input--filled': hasSelectedItems,
           })}
           onClick={(e: React.MouseEvent) => {
-            if (e.target == e.currentTarget) inputRef.current?.focus();
+            if (e.target === e.currentTarget) inputRef.current?.focus();
           }}
         >
           {selectedItems.map((selectedItem, index) => (
@@ -257,7 +312,7 @@ export const MultiSelectBeta = ({
           <input
             placeholder={placeholder}
             className="eds-dropdown__input eds-form-control"
-            role="combobox"
+            role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
             {...getInputProps(
               getDropdownProps({
                 preventKeyAction: isOpen,

@@ -18,14 +18,12 @@ import { FieldAppend } from './components/FieldComponents';
 import './Dropdown.scss';
 
 export type DropdownBetaProps = {
-  /** Beskrivende tekst som forklarer feltet */
-  label: string;
   /** Tilgjengelige valg i dropdown-en */
   items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi. Bruk null for ingen verdi. */
-  value?: string | null;
-  /** Om man skal kunne søke i dropdown-en eller ikke */
-  searchable?: boolean;
+  selectedItem: NormalizedDropdownItemType | null;
+  /** Beskrivende tekst som forklarer feltet */
+  label: string;
   /** Tooltip for labelen */
   labelTooltip?: string;
   /** Hvilken valideringsvariant som gjelder */
@@ -44,7 +42,7 @@ export type DropdownBetaProps = {
   loadingText?: string;
   /** Callback når brukeren endrer valg */
   onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
-  /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnTab?: boolean;
   /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
   openOnFocus?: boolean;
@@ -60,10 +58,6 @@ export type DropdownBetaProps = {
   highlightFirstItemOnOpen?: boolean;
   /** Styling som sendes ned til Dropdown-lista */
   listStyle?: { [key: string]: any };
-  /** Filtreringen som blir brukt dersom man har en searchable Dropdown
-   * @default Enkel tekstsammenligning
-   */
-  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
@@ -72,26 +66,34 @@ export type DropdownBetaProps = {
   [key: string]: any;
 };
 
-// TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
-// TODO Husk å generelt legge inn støtte for typeof value === string
-
 export const DropdownBeta = ({
-  items: initialItems,
-  selectedItem,
-  onChange,
-  label,
-  placeholder,
-  clearable = false,
-  openOnFocus = false,
-  selectOnBlur = false,
-  readonly = false,
-  feedback,
-  variant = 'info',
   className,
+  clearable = false,
+  debounceTimeout,
+  // disabled,
+  // disableLabelAnimation,
+  feedback,
+  items: initialItems,
+  label,
   listStyle,
+  // loadingText,
+  onChange,
+  openOnFocus = false,
+  placeholder,
+  // prepend,
+  readonly = false,
+  // searchable,
+  selectedItem,
+  selectOnBlur = false,
+  selectOnTab = false,
+  // value,
+  variant = 'info',
   ...rest
 }: DropdownBetaProps) => {
-  const { items: normalizedItems, loading } = useResolvedItems(initialItems);
+  const { items: normalizedItems, loading } = useResolvedItems(
+    initialItems,
+    debounceTimeout,
+  );
 
   const {
     isOpen,
@@ -104,26 +106,17 @@ export const DropdownBeta = ({
     items: normalizedItems,
     selectedItem,
     onStateChange({ type, selectedItem: clickedItem }) {
-      // clickedItem means item just chosen either via mouse or keyboard
-      console.log('click', clickedItem, 'type', type);
-
-      //   if (clickedItem === undefined) return;
-
       switch (type) {
         // @ts-expect-error This falltrough is wanted
         case useSelect.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
-        case useSelect.stateChangeTypes.MenuKeyDownEnter:
+        case useSelect.stateChangeTypes.MenuKeyDownEnter: // eslint-disable-line no-fallthrough
         case useSelect.stateChangeTypes.ItemClick:
           onChange?.(clickedItem !== undefined ? clickedItem : null);
       }
     },
     itemToString,
   });
-
-  React.useEffect(() => {
-    console.log(selectedItem);
-  }, [selectedItem]);
 
   return (
     <div className="eds-dropdown__wrapper">

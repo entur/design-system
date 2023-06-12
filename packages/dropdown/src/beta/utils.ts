@@ -37,7 +37,7 @@ export const useMultiselectUtils = ({
 
   const allListItemsAreSelected =
     listItemsWithoutSelectAll.filter(item => !selectedItems.includes(item))
-      .length == 0;
+      .length === 0;
 
   const someListItemsAreSelected = listItemsWithoutSelectAll.some(item =>
     selectedItems.includes(item),
