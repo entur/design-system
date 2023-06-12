@@ -56,8 +56,8 @@ export const DropdownList = ({
   const isMultiselect = selectAllItem !== undefined;
   const isNoMatches =
     !loading &&
-    (listItems.length == 0 ||
-      (listItems.length == 1 && listItems[0].value == selectAllItem?.value));
+    (listItems.length === 0 ||
+      (listItems.length === 1 && listItems[0].value === selectAllItem?.value));
   const itemIsSelected = (item: NormalizedDropdownItemType) =>
     selectedItems.some(selectedItem => selectedItem.value === item.value);
 
@@ -119,7 +119,7 @@ export const DropdownList = ({
         listItems.length > 0 &&
         listItems.map((item, index) => {
           const itemIsSelectAll = item.value === selectAllItem?.value;
-          if (itemIsSelectAll && listItems.length <= 2) return;
+          if (itemIsSelectAll && listItems.length <= 2) return <></>;
 
           return (
             <li
