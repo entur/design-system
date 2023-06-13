@@ -23,6 +23,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @entur/dropdown
 
+# [5.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.9...@entur/dropdown@5.0.0-beta.0) (2023-06-13)
+
+### Features
+
+- **dropdown:** new dropdown component ([a63a987](https://bitbucket.org/enturas/design-system/commits/a63a987d1e91747f85eba56d6307f7b2de310304))
+- **multiselect tag:** add new compact tag design for selected elements ([ecda2a7](https://bitbucket.org/enturas/design-system/commits/ecda2a7cc1f6be89c5832c33ea3fec4b3da7bebd))
+- **multiselect:** new multiselect component ([f92ba9e](https://bitbucket.org/enturas/design-system/commits/f92ba9e4277883e23a3d3012d38f8372f2b8f678))
+- **searchable dropdown:** new searchable dropdown component ([25f6af6](https://bitbucket.org/enturas/design-system/commits/25f6af68ab312b5cccf537aa13e5c716a276e9e7))
+
+### BREAKING CHANGES
+
+- **dropdown:** searchable prop is removed. SearchableDropdown is now a separate component. | - is now only
+  available as a controlled component. 'value' is switched for 'selectedItem' and 'onChange' is
+  required
+- **searchable dropdown:** is now a separate component instead of a prop in dropdown. | - is now only available asa controlled
+  component. 'value' is changed to 'selectedItem' and 'onChange' is required.
+- **multiselect:** the component is now only available as controlled. 'value' has been replaced be 'selectedItems' and
+  'onChange' is required
+
 ## [4.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.8...@entur/dropdown@4.0.9) (2023-04-24)
 
 **Note:** Version bump only for package @entur/dropdown
