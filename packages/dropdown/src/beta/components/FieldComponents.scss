@@ -1,3 +1,5 @@
+@import '~@entur/tokens/dist/styles.scss';
+
 .eds-dropdown {
   &__selected-element-tag {
     height: 1.5rem;
@@ -16,6 +18,21 @@
 
       > svg {
         font-size: 0.6rem;
+      }
+    }
+
+    // revert contrast styling since dropdown field always is light
+    .eds-contrast & {
+      background: $colors-blues-blue80;
+      border: $border-widths-small solid $colors-blues-blue70;
+      color: $colors-brand-blue;
+
+      .eds-tag-chip__close-button {
+        color: $colors-brand-blue;
+
+        &:hover {
+          background-color: $colors-blues-blue60;
+        }
       }
     }
   }

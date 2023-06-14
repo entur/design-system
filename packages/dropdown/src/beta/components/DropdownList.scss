@@ -25,10 +25,6 @@
     display: inline-block;
   }
 
-  @media all and (min-width: $breakpoints-large) {
-    max-height: 30vh;
-  }
-
   &__item {
     background-color: $colors-greys-grey90;
     color: $colors-brand-blue;
@@ -45,21 +41,61 @@
       border-bottom: none;
     }
 
-    &-text {
+    &__text {
       flex: 1;
     }
 
-    &-icon {
+    &__icon {
       margin-left: $space-small;
+    }
+
+    &__checkbox {
+      // revert contrast styling since dropdownList always is light
+      .eds-contrast & {
+        &.eds-checkbox__container {
+          > input + .eds-checkbox__icon {
+            border-color: $colors-brand-blue;
+          }
+          > input:checked,
+          > input:indeterminate {
+            + .eds-checkbox__icon {
+              background-color: $colors-brand-blue;
+              path {
+                stroke: $colors-brand-white;
+              }
+              rect {
+                fill: $colors-brand-white;
+              }
+            }
+          }
+        }
+      }
     }
 
     &--highlighted {
       background-color: $colors-blues-blue70;
+
+      // change to hover style for checkbox when list is hovered
+      .eds-dropdown__list__item__checkbox.eds-checkbox__container,
+      .eds-dropdown__list__item__checkbox.eds-checkbox__container:hover {
+        > input:checked + .eds-checkbox__icon,
+        > input:indeterminate + .eds-checkbox__icon {
+          background-color: $colors-blues-blue30;
+          border-color: transparent;
+        }
+        > input + .eds-checkbox__icon {
+          border-color: $colors-blues-blue30;
+        }
+      }
     }
 
     &--selected {
       background-color: $colors-blues-blue30;
       color: $colors-brand-white;
     }
+  }
+
+  @media all and (min-width: $breakpoints-large) {
+    max-height: 30vh;
   }
 }
