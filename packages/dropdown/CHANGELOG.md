@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.0...@entur/dropdown@5.0.0-beta.1) (2023-06-14)
+
+### Bug Fixes
+
+- **dropdown:** revert default contrast styling in light areas of dropdown components ([a168797](https://bitbucket.org/enturas/design-system/commits/a168797d1a77c4b8150886bf526692c576326071))
+
 ## [4.0.11](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.10...@entur/dropdown@4.0.11) (2023-07-18)
 
 **Note:** Version bump only for package @entur/dropdown
