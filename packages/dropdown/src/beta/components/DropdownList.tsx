@@ -64,13 +64,14 @@ export const DropdownList = ({
   const selectAllListItemContent = () => (
     <>
       <Checkbox
+        className="eds-dropdown__list__item__checkbox"
         checked={selectAllCheckboxState?.()}
         aria-hidden="true"
         onChange={() => {
           return;
         }}
       />
-      <span className="eds-dropdown__list__item-text">
+      <span className="eds-dropdown__list__item__text">
         {selectAllItem?.label}
       </span>
     </>
@@ -81,6 +82,7 @@ export const DropdownList = ({
       <>
         <Checkbox
           style={!isMultiselect ? { display: 'none' } : {}}
+          className="eds-dropdown__list__item__checkbox"
           checked={itemIsSelected(item)}
           aria-hidden="true"
           onChange={() => {
@@ -88,7 +90,7 @@ export const DropdownList = ({
           }}
         />
 
-        <span className="eds-dropdown__list__item-text">
+        <span className="eds-dropdown__list__item__text">
           {item.label}
           <VisuallyHidden>{selectedItemAriaLabel}</VisuallyHidden>
         </span>
@@ -98,7 +100,7 @@ export const DropdownList = ({
               <Icon
                 key={index}
                 inline
-                className="eds-dropdown__list__item-icon"
+                className="eds-dropdown__list__item__icon"
               />
             ))}
           </span>
