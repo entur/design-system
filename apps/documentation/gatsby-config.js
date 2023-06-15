@@ -37,6 +37,9 @@ module.exports = {
         head: true,
         // Dev tracking should be disabled when in prod
         isEnabledDevMode: true,
+        initOptions: {
+          persistence: 'memory',
+        },
       },
     },
   ],
