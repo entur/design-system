@@ -39,6 +39,7 @@ module.exports = {
         isEnabledDevMode: true,
         initOptions: {
           persistence: 'memory',
+          disable_session_recording: true,
         },
       },
     },
