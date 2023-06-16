@@ -13,22 +13,22 @@ import React from 'react';
 
 import './FieldComponents.scss';
 
-export const SelectedElementsTag = ({
+export const SelectedItemTag = ({
   getSelectedItemProps,
   removeSelectedItem,
   selectedItem,
   index,
   ariaLabelRemoveSelected,
 }: {
-  getSelectedItemProps: (
+  getSelectedItemProps?: (
     options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType>,
   ) => any;
   removeSelectedItem: (item: NormalizedDropdownItemType) => void;
   selectedItem: NormalizedDropdownItemType;
-  index: number;
+  index?: number;
   ariaLabelRemoveSelected: string;
 }) => {
-  const { tabIndex: _, ...selectedItemProps } = getSelectedItemProps({
+  const { tabIndex: _, ...selectedItemProps } = getSelectedItemProps?.({
     selectedItem,
     index,
   });
