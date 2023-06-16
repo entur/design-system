@@ -14,7 +14,7 @@ import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
 } from '../useResolvedItems';
-import { FieldAppend, SelectedElementsTag } from './components/FieldComponents';
+import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
 import {
   itemToString,
@@ -62,6 +62,14 @@ export type MultiSelectBetaProps = {
    * @default "Velg alle"
    */
   selectAllLabel?: string;
+  /** Teksten som vises for «Velg alle»-elementet i listen
+   * @default "Alle valgt"
+   */
+  allItemsSelectedLabel?: string;
+  /** Skjermleser-tekst som for å fjerne alle valg
+   * @default "Fjern valgte"
+   */
+  removeAllItemsAriaLabel?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Tekst for skjemleser på knapper for å fjerne valgt element
@@ -74,6 +82,7 @@ export type MultiSelectBetaProps = {
    * @default 250
    */
   debounceTimeout?: number;
+  maxTags?: number;
   /** Om en knapp for å fjerne alle valg skal vises
    * @default false
    */
@@ -94,11 +103,14 @@ export const MultiSelectBeta = ({
   items: initialItems,
   label,
   listStyle,
+  maxTags = 10,
   onChange,
   openOnFocus = false,
   placeholder,
   readonly = false,
   selectAllLabel = 'Velg alle',
+  allItemsSelectedLabel = 'Alle valgt',
+  removeAllItemsAriaLabel = 'Fjern valgte',
   selectedItems,
   selectOnBlur = false,
   style,
@@ -114,10 +126,23 @@ export const MultiSelectBeta = ({
     fetchItems,
   } = useResolvedItems(initialItems);
 
+  const isAllNonAsyncItemsSelected =
+    typeof initialItems !== 'function' &&
+    selectedItems.length === normalizedItems.length;
+
   const selectAll: NormalizedDropdownItemType = {
     value: useRandomId('select-all'),
     label: selectAllLabel,
   };
+  const summarySelectedItems: NormalizedDropdownItemType = React.useMemo(
+    () => ({
+      value: '',
+      label: isAllNonAsyncItemsSelected
+        ? allItemsSelectedLabel
+        : selectedItems.length + ' valgte',
+    }),
+    [isAllNonAsyncItemsSelected, selectedItems, normalizedItems],
+  );
 
   const [listItems, setListItems] = useState([
     ...(!hideSelectAll ? [selectAll] : []),
@@ -252,6 +277,13 @@ export const MultiSelectBeta = ({
     ...rest,
   });
 
+  const handleOnClear = () => {
+    onChange([]);
+    setInputValue('');
+    inputRef.current?.focus();
+    if (typeof initialItems === 'function') fetchItems(inputValue ?? '');
+  };
+
   // role=combobox leads to strange VoiceOver behavior and is therefor omitted
   // const { role: _, ...comboboxProps } = getComboboxProps();
   const { ...comboboxProps } = getComboboxProps();
@@ -264,16 +296,11 @@ export const MultiSelectBeta = ({
             selectedItems={selectedItems}
             isOpen={isOpen}
             clearable={clearable}
+            clearSelectedItemsLabel={removeAllItemsAriaLabel}
             loading={loading}
             loadingText={''}
             readOnly={readonly}
-            onClear={() => {
-              onChange([]);
-              setInputValue('');
-              inputRef.current?.focus();
-              if (typeof initialItems === 'function')
-                fetchItems(inputValue ?? '');
-            }}
+            onClear={handleOnClear}
             getToggleButtonProps={getToggleButtonProps}
           />
         }
@@ -299,16 +326,24 @@ export const MultiSelectBeta = ({
             if (e.target === e.currentTarget) inputRef.current?.focus();
           }}
         >
-          {selectedItems.map((selectedItem, index) => (
-            <SelectedElementsTag
-              index={index}
-              key={selectedItem.value}
-              getSelectedItemProps={getSelectedItemProps}
-              selectedItem={selectedItem}
-              removeSelectedItem={removeSelectedItem}
-              ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+          {selectedItems.length < maxTags ? (
+            selectedItems.map((selectedItem, index) => (
+              <SelectedItemTag
+                index={index}
+                key={selectedItem.value}
+                getSelectedItemProps={getSelectedItemProps}
+                selectedItem={selectedItem}
+                removeSelectedItem={removeSelectedItem}
+                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+              />
+            ))
+          ) : (
+            <SelectedItemTag
+              selectedItem={summarySelectedItems}
+              removeSelectedItem={handleOnClear}
+              ariaLabelRemoveSelected={removeAllItemsAriaLabel}
             />
-          ))}
+          )}
           <input
             placeholder={placeholder}
             className="eds-dropdown__input eds-form-control"
