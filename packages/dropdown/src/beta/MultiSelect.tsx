@@ -87,6 +87,7 @@ export type MultiSelectBetaProps = {
    * @default false
    */
   clearable?: boolean;
+  clearInputOnSelect?: boolean;
   selectOnBlur?: boolean;
   readonly?: boolean;
   loading?: boolean;
@@ -94,9 +95,11 @@ export type MultiSelectBetaProps = {
 };
 
 export const MultiSelectBeta = ({
+  allItemsSelectedLabel = 'Alle valgt',
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
   className,
   clearable = false,
+  clearInputOnSelect = false,
   debounceTimeout,
   feedback,
   hideSelectAll = false,
@@ -108,9 +111,8 @@ export const MultiSelectBeta = ({
   openOnFocus = false,
   placeholder,
   readonly = false,
-  selectAllLabel = 'Velg alle',
-  allItemsSelectedLabel = 'Alle valgt',
   removeAllItemsAriaLabel = 'Fjern valgte',
+  selectAllLabel = 'Velg alle',
   selectedItems,
   selectOnBlur = false,
   style,
@@ -141,7 +143,12 @@ export const MultiSelectBeta = ({
         ? allItemsSelectedLabel
         : selectedItems.length + ' valgte',
     }),
-    [isAllNonAsyncItemsSelected, selectedItems, normalizedItems],
+    [
+      isAllNonAsyncItemsSelected,
+      selectedItems,
+      normalizedItems,
+      allItemsSelectedLabel,
+    ],
   );
 
   const [listItems, setListItems] = useState([
@@ -154,6 +161,11 @@ export const MultiSelectBeta = ({
       ...(!hideSelectAll ? [selectAll] : []),
       ...normalizedItems.filter(item => lowerCaseFilterTest(item, inputValue)),
     ]);
+
+  const updateListItems = (inputValue?: string) => {
+    if (typeof initialItems === 'function') fetchItems(inputValue ?? ''); // fetch items only if user provides a function as items
+    filterListItems({ inputValue: inputValue ?? '' });
+  };
 
   React.useEffect(() => {
     filterListItems({ inputValue });
@@ -197,15 +209,22 @@ export const MultiSelectBeta = ({
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
+          if (clearInputOnSelect) {
+            updateListItems('');
+          }
           return {
             ...changes,
             isOpen: true, // keep the menu open after selection.
-            inputValue: inputRef?.current?.value ?? '', // don't reset input value on select
+            inputValue: clearInputOnSelect
+              ? ''
+              : inputRef?.current?.value ?? '',
           };
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
           return {
             ...changes,
-            inputValue: inputRef?.current?.value ?? '', // don't reset input value on select
+            inputValue: clearInputOnSelect
+              ? ''
+              : inputRef?.current?.value ?? '',
           };
         case useCombobox.stateChangeTypes.InputChange:
           if (changes.inputValue?.match(/^\s+/g)) {
@@ -216,10 +235,8 @@ export const MultiSelectBeta = ({
             };
           }
 
-          if (typeof initialItems === 'function')
-            fetchItems(changes.inputValue ?? ''); // fetch items only if user provides a function as items
+          updateListItems(changes.inputValue);
 
-          filterListItems({ inputValue: changes.inputValue ?? '' });
           return changes;
         case useCombobox.stateChangeTypes.InputBlur:
           return {
@@ -281,7 +298,7 @@ export const MultiSelectBeta = ({
     onChange([]);
     setInputValue('');
     inputRef.current?.focus();
-    if (typeof initialItems === 'function') fetchItems(inputValue ?? '');
+    updateListItems(inputValue);
   };
 
   // role=combobox leads to strange VoiceOver behavior and is therefor omitted
