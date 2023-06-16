@@ -28,10 +28,11 @@ export const SelectedItemTag = ({
   index?: number;
   ariaLabelRemoveSelected: string;
 }) => {
-  const { tabIndex: _, ...selectedItemProps } = getSelectedItemProps?.({
-    selectedItem,
-    index,
-  });
+  const { tabIndex: _, ...selectedItemProps } =
+    getSelectedItemProps?.({
+      selectedItem,
+      index,
+    }) ?? {};
   return (
     <TagChip
       className={classNames('eds-dropdown__selected-element-tag')}
