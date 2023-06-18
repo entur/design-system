@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.1...@entur/dropdown@5.0.0-beta.2) (2023-06-18)
+
+### Bug Fixes
+
+- **multiselect:** add possibility to reset input when selecting an item ([2256931](https://bitbucket.org/enturas/design-system/commits/2256931dcc85d566b000fb559b29d2ab4b5a1429))
+- **multiselect:** add summary selected item tag for when selectedItems > maxTags ([d9261d5](https://bitbucket.org/enturas/design-system/commits/d9261d5521a3ac3f4e2302990a4f0ac2c454af2b))
+
 # [5.0.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.0...@entur/dropdown@5.0.0-beta.1) (2023-06-14)
 
 ### Bug Fixes
