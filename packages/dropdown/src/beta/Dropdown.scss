@@ -92,11 +92,23 @@
     flex: 1;
     padding: 1.25rem 1rem 0.25rem;
     min-height: 2.75rem;
+
+    &__placeholder {
+      color: $colors-blues-blue30;
+
+      .eds-contrast & {
+        color: $colors-blues-blue40;
+        &--readonly {
+          color: $colors-brand-lavender;
+        }
+      }
+    }
   }
 
   &-appendix {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
 
     &__clear-button {
       padding: $space-extra-small;
@@ -138,6 +150,10 @@
         transform: rotate(180deg);
       }
 
+      &:focus {
+        border-color: transparent;
+      }
+
       svg {
         transition: transform ease-in-out $timings-fast;
       }
@@ -150,7 +166,7 @@
           background: $colors-greys-grey50;
         }
         &:focus {
-          border: 0.0625rem solid $colors-brand-blue;
+          border: none;
           outline: none;
         }
       }
