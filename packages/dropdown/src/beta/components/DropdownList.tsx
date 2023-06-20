@@ -64,12 +64,13 @@ export const DropdownList = ({
   const selectAllListItemContent = () => (
     <>
       <Checkbox
-        className="eds-dropdown__list__item__checkbox"
-        checked={selectAllCheckboxState?.()}
         aria-hidden="true"
+        checked={selectAllCheckboxState?.()}
+        className="eds-dropdown__list__item__checkbox"
         onChange={() => {
           return;
         }}
+        tabIndex={-1}
       />
       <span className="eds-dropdown__list__item__text">
         {selectAllItem?.label}
@@ -81,13 +82,14 @@ export const DropdownList = ({
     return (
       <>
         <Checkbox
-          style={!isMultiselect ? { display: 'none' } : {}}
-          className="eds-dropdown__list__item__checkbox"
-          checked={itemIsSelected(item)}
           aria-hidden="true"
+          checked={itemIsSelected(item)}
+          className="eds-dropdown__list__item__checkbox"
           onChange={() => {
             return;
           }}
+          style={!isMultiselect ? { display: 'none' } : {}}
+          tabIndex={-1}
         />
 
         <span className="eds-dropdown__list__item__text">
@@ -110,6 +112,7 @@ export const DropdownList = ({
   };
 
   return (
+    // use popover from @entur/tooltip when the package uses floating-ui
     <ul
       {...getMenuProps()}
       className={classNames('eds-dropdown__list', {

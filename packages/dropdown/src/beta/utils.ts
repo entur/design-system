@@ -1,5 +1,7 @@
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
 
+export const EMPTY_INPUT = '';
+
 export function lowerCaseFilterTest(
   item: NormalizedDropdownItemType,
   input: string | undefined,
@@ -58,6 +60,26 @@ export const useMultiselectUtils = ({
   const clickedItemIsSelectAll = (clickedItem: NormalizedDropdownItemType) =>
     clickedItem.value === selectAllValue;
 
+  const handleListItemClicked = ({
+    clickedItem,
+    onChange,
+  }: {
+    clickedItem: NormalizedDropdownItemType;
+    onChange: (value: NormalizedDropdownItemType[]) => void;
+  }) => {
+    if (clickedItemIsSelectAll(clickedItem)) {
+      if (allListItemsAreSelected) {
+        return unselectAllListItems(onChange);
+      }
+      return selectAllUnselectedItemsInListItems(onChange);
+    }
+
+    if (clickedItemIsInSelectedItems(clickedItem)) {
+      return removeClickedItemFromSelectedItems(clickedItem, onChange);
+    }
+    addClickedItemToSelectedItems(clickedItem, onChange);
+  };
+
   const removeClickedItemFromSelectedItems = (
     clickedItem: NormalizedDropdownItemType,
     onChange: (value: NormalizedDropdownItemType[]) => void,
@@ -98,6 +120,7 @@ export const useMultiselectUtils = ({
     allListItemsAreSelected,
     clickedItemIsInSelectedItems,
     clickedItemIsSelectAll,
+    handleListItemClicked,
     hasSelectedItems,
     listItemsWithoutSelectAll,
     removeClickedItemFromSelectedItems,
