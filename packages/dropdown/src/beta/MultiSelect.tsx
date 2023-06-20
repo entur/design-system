@@ -17,6 +17,7 @@ import {
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
 import {
+  EMPTY_INPUT,
   itemToString,
   lowerCaseFilterTest,
   useMultiselectUtils,
@@ -69,7 +70,7 @@ export type MultiSelectBetaProps = {
   /** Skjermleser-tekst som for å fjerne alle valg
    * @default "Fjern valgte"
    */
-  removeAllItemsAriaLabel?: string;
+  clearAllItemsAriaLabel?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Tekst for skjemleser på knapper for å fjerne valgt element
@@ -89,7 +90,6 @@ export type MultiSelectBetaProps = {
   clearable?: boolean;
   clearInputOnSelect?: boolean;
   selectOnBlur?: boolean;
-  readonly?: boolean;
   loading?: boolean;
   style?: React.CSSProperties;
 };
@@ -101,17 +101,19 @@ export const MultiSelectBeta = ({
   clearable = false,
   clearInputOnSelect = false,
   debounceTimeout,
+  disabled = false,
   feedback,
   hideSelectAll = false,
   items: initialItems,
   label,
   listStyle,
+  loadingText,
   maxTags = 10,
   onChange,
   openOnFocus = false,
   placeholder,
-  readonly = false,
-  removeAllItemsAriaLabel = 'Fjern valgte',
+  readOnly = false,
+  clearAllItemsAriaLabel = 'Fjern valgte',
   selectAllLabel = 'Velg alle',
   selectedItems,
   selectOnBlur = false,
@@ -138,17 +140,12 @@ export const MultiSelectBeta = ({
   };
   const summarySelectedItems: NormalizedDropdownItemType = React.useMemo(
     () => ({
-      value: '',
+      value: EMPTY_INPUT,
       label: isAllNonAsyncItemsSelected
         ? allItemsSelectedLabel
         : selectedItems.length + ' valgte',
     }),
-    [
-      isAllNonAsyncItemsSelected,
-      selectedItems,
-      normalizedItems,
-      allItemsSelectedLabel,
-    ],
+    [isAllNonAsyncItemsSelected, selectedItems, allItemsSelectedLabel],
   );
 
   const [listItems, setListItems] = useState([
@@ -162,29 +159,15 @@ export const MultiSelectBeta = ({
       ...normalizedItems.filter(item => lowerCaseFilterTest(item, inputValue)),
     ]);
 
-  const updateListItems = (inputValue?: string) => {
-    if (typeof initialItems === 'function') fetchItems(inputValue ?? ''); // fetch items only if user provides a function as items
-    filterListItems({ inputValue: inputValue ?? '' });
+  const updateListItems = ({ inputValue }: { inputValue?: string }) => {
+    if (typeof initialItems === 'function')
+      fetchItems(inputValue ?? EMPTY_INPUT); // fetch items only if user provides a function as items
+    filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
   };
 
   React.useEffect(() => {
     filterListItems({ inputValue });
   }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
-  const {
-    addClickedItemToSelectedItems,
-    allListItemsAreSelected,
-    clickedItemIsInSelectedItems,
-    clickedItemIsSelectAll,
-    hasSelectedItems,
-    removeClickedItemFromSelectedItems,
-    selectAllCheckboxState,
-    selectAllUnselectedItemsInListItems,
-    unselectAllListItems,
-  } = useMultiselectUtils({
-    listItems,
-    selectAllValue: selectAll.value,
-    selectedItems,
-  });
 
   const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
     useMultipleSelection({
@@ -195,6 +178,13 @@ export const MultiSelectBeta = ({
       },
     });
 
+  const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
+    useMultiselectUtils({
+      listItems,
+      selectAllValue: selectAll.value,
+      selectedItems,
+    });
+
   const stateReducer = React.useCallback(
     (
       _,
@@ -203,46 +193,65 @@ export const MultiSelectBeta = ({
         type,
       }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
     ) => {
-      if (changes?.highlightedIndex && changes?.highlightedIndex >= 0)
+      if (
+        changes.highlightedIndex !== undefined &&
+        changes?.highlightedIndex >= 0
+      ) {
         setLastHighlightedIndex(changes?.highlightedIndex);
+      }
 
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.ItemClick: {
           if (clearInputOnSelect) {
-            updateListItems('');
+            updateListItems({ inputValue: EMPTY_INPUT });
           }
           return {
             ...changes,
             isOpen: true, // keep the menu open after selection.
             inputValue: clearInputOnSelect
-              ? ''
-              : inputRef?.current?.value ?? '',
+              ? EMPTY_INPUT
+              : inputRef?.current?.value ?? EMPTY_INPUT,
           };
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+        }
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
           return {
             ...changes,
             inputValue: clearInputOnSelect
-              ? ''
-              : inputRef?.current?.value ?? '',
+              ? EMPTY_INPUT
+              : inputRef?.current?.value ?? EMPTY_INPUT,
           };
-        case useCombobox.stateChangeTypes.InputChange:
-          if (changes.inputValue?.match(/^\s+/g)) {
-            // remove leading whitespace if it exists
-            return {
-              ...changes,
-              inputValue: changes.inputValue.replace(/^\s+/g, '') ?? '',
-            };
+        }
+        case useCombobox.stateChangeTypes.InputChange: {
+          const leadingWhitespaceTest = /^\s+/g;
+          const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
+          if (changes.inputValue?.match(leadingWhitespaceTest)) {
+            setInputValue(
+              changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+            );
+
+            if (isSpacePressedOnEmptyInput) {
+              openMenu();
+
+              if (isOpen && changes.highlightedIndex) {
+                handleListItemClicked({
+                  clickedItem: listItems[changes.highlightedIndex],
+                  onChange,
+                });
+              }
+            }
+          } else {
+            updateListItems({ inputValue: changes.inputValue });
           }
 
-          updateListItems(changes.inputValue);
-
           return changes;
-        case useCombobox.stateChangeTypes.InputBlur:
+        }
+        case useCombobox.stateChangeTypes.InputBlur: {
           return {
             ...changes,
-            inputValue: '',
+            inputValue: EMPTY_INPUT,
           };
+        }
         default:
           return changes;
       }
@@ -278,17 +287,7 @@ export const MultiSelectBeta = ({
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
-          if (clickedItemIsSelectAll(clickedItem)) {
-            if (allListItemsAreSelected) {
-              return unselectAllListItems(onChange);
-            }
-            return selectAllUnselectedItemsInListItems(onChange);
-          }
-
-          if (clickedItemIsInSelectedItems(clickedItem)) {
-            return removeClickedItemFromSelectedItems(clickedItem, onChange);
-          }
-          addClickedItemToSelectedItems(clickedItem, onChange);
+          handleListItemClicked({ clickedItem, onChange });
       }
     },
     ...rest,
@@ -296,9 +295,9 @@ export const MultiSelectBeta = ({
 
   const handleOnClear = () => {
     onChange([]);
-    setInputValue('');
+    setInputValue(EMPTY_INPUT);
     inputRef.current?.focus();
-    updateListItems(inputValue);
+    updateListItems({ inputValue });
   };
 
   // role=combobox leads to strange VoiceOver behavior and is therefor omitted
@@ -313,25 +312,27 @@ export const MultiSelectBeta = ({
             selectedItems={selectedItems}
             isOpen={isOpen}
             clearable={clearable}
-            clearSelectedItemsLabel={removeAllItemsAriaLabel}
+            clearSelectedItemsLabel={clearAllItemsAriaLabel}
+            focusable={false}
             loading={loading}
-            loadingText={''}
-            readOnly={readonly}
+            loadingText={loadingText}
+            disabled={readOnly || disabled}
             onClear={handleOnClear}
             getToggleButtonProps={getToggleButtonProps}
           />
         }
         className={classNames('eds-dropdown', className)}
-        label={label}
-        isFilled={hasSelectedItems || inputValue !== ''}
+        disabled={disabled}
         feedback={feedback}
-        variant={variant}
-        readOnly={readonly}
-        style={style}
+        isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
+        label={label}
         labelProps={{
           'aria-label': `${label}, multiselect, ${selectedItems.length} valgte elementer`,
           ...getLabelProps(),
         }}
+        readOnly={readOnly}
+        style={style}
+        variant={variant}
         {...comboboxProps}
         {...rest}
       >
@@ -346,24 +347,29 @@ export const MultiSelectBeta = ({
           {selectedItems.length < maxTags ? (
             selectedItems.map((selectedItem, index) => (
               <SelectedItemTag
+                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                disabled={disabled}
+                getSelectedItemProps={getSelectedItemProps}
                 index={index}
                 key={selectedItem.value}
-                getSelectedItemProps={getSelectedItemProps}
-                selectedItem={selectedItem}
+                readOnly={readOnly}
                 removeSelectedItem={removeSelectedItem}
-                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                selectedItem={selectedItem}
               />
             ))
           ) : (
             <SelectedItemTag
-              selectedItem={summarySelectedItems}
+              ariaLabelRemoveSelected={clearAllItemsAriaLabel}
+              disabled={disabled}
+              readOnly={readOnly}
               removeSelectedItem={handleOnClear}
-              ariaLabelRemoveSelected={removeAllItemsAriaLabel}
+              selectedItem={summarySelectedItems}
             />
           )}
           <input
             placeholder={placeholder}
             className="eds-dropdown__input eds-form-control"
+            disabled={readOnly || disabled}
             role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
             {...getInputProps(
               getDropdownProps({
@@ -372,24 +378,25 @@ export const MultiSelectBeta = ({
                   if (!isOpen && openOnFocus) openMenu();
                 },
                 ref: inputRef,
-                value: inputValue ?? '',
+                value: inputValue ?? EMPTY_INPUT,
               }),
             )}
           />
         </div>
       </BaseFormControl>
       <DropdownList
-        listItems={listItems}
-        selectedItems={selectedItems}
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
         inputValue={inputValue}
         isOpen={isOpen}
-        highlightedIndex={highlightedIndex}
-        getMenuProps={getMenuProps}
-        getItemProps={getItemProps}
-        selectAllItem={selectAll}
-        selectAllCheckboxState={selectAllCheckboxState}
+        listItems={listItems}
         listStyle={listStyle}
         loading={loading}
+        loadingText={loadingText}
+        selectAllCheckboxState={selectAllCheckboxState}
+        selectAllItem={selectAll}
+        selectedItems={selectedItems}
       />
     </div>
   );

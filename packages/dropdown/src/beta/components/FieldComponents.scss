@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .eds-dropdown {
-  &__selected-element-tag {
+  &__selected-item-tag {
     height: 1.5rem;
     max-width: 40%;
     padding: 0;
@@ -33,6 +33,30 @@
         &:hover {
           background-color: $colors-blues-blue60;
         }
+      }
+    }
+
+    &--readonly,
+    &--disabled {
+      padding-right: 0.5rem;
+      .eds-tag-chip__close-button {
+        display: none;
+      }
+    }
+
+    &--readonly {
+      .eds-contrast & {
+        background-color: $colors-blues-blue50;
+        border-color: transparent;
+        color: $colors-brand-white;
+      }
+    }
+
+    &--disabled {
+      .eds-contrast & {
+        background-color: $colors-blues-blue30;
+        border-color: transparent;
+        color: $colors-blues-blue50;
       }
     }
   }
