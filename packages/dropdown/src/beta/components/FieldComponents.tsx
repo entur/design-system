@@ -1,32 +1,38 @@
-import { IconButton } from '@entur/button';
-import { TagChip } from '@entur/chip';
-import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
-import { Tooltip } from '@entur/tooltip';
+import React from 'react';
 import classNames from 'classnames';
 import {
   UseComboboxGetToggleButtonPropsOptions,
   UseMultipleSelectionGetSelectedItemPropsOptions,
 } from 'downshift';
+
+import { IconButton } from '@entur/button';
+import { TagChip } from '@entur/chip';
+import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
+
 import { DropdownLoadingDots } from '../../DropdownLoadingDots';
 import { NormalizedDropdownItemType } from '../../useNormalizedItems';
-import React from 'react';
 
 import './FieldComponents.scss';
 
 export const SelectedItemTag = ({
+  ariaLabelRemoveSelected,
+  disabled,
   getSelectedItemProps,
+  index,
+  readOnly,
   removeSelectedItem,
   selectedItem,
-  index,
-  ariaLabelRemoveSelected,
 }: {
+  ariaLabelRemoveSelected: string;
+  disabled?: boolean;
   getSelectedItemProps?: (
     options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType>,
   ) => any;
+  index?: number;
+  readOnly?: boolean;
   removeSelectedItem: (item: NormalizedDropdownItemType) => void;
   selectedItem: NormalizedDropdownItemType;
-  index?: number;
-  ariaLabelRemoveSelected: string;
 }) => {
   const { tabIndex: _, ...selectedItemProps } =
     getSelectedItemProps?.({
@@ -35,7 +41,10 @@ export const SelectedItemTag = ({
     }) ?? {};
   return (
     <TagChip
-      className={classNames('eds-dropdown__selected-element-tag')}
+      className={classNames('eds-dropdown__selected-item-tag', {
+        'eds-dropdown__selected-item-tag--readonly': readOnly,
+        'eds-dropdown__selected-item-tag--disabled': disabled,
+      })}
       {...selectedItemProps}
       onClose={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -50,56 +59,54 @@ export const SelectedItemTag = ({
 };
 
 export const FieldAppend: React.FC<{
-  selectedItems: (NormalizedDropdownItemType | null)[];
-  isOpen: boolean;
-  clearable: boolean;
-  loading?: boolean;
-  loadingText?: string;
-  ariaLabelClearItems?: string;
+  clearable?: boolean;
   clearSelectedItemsLabel?: string;
-  readOnly: boolean;
+  disabled?: boolean;
   focusable?: boolean;
-  onClear: () => void;
   getToggleButtonProps: (
     options?: UseComboboxGetToggleButtonPropsOptions | undefined,
   ) => any;
+  isOpen: boolean;
+  loading?: boolean;
+  loadingText?: string;
+  onClear: () => void;
+  selectedItems: (NormalizedDropdownItemType | null)[];
 }> = ({
-  clearable,
-  readOnly,
+  clearable = false,
+  clearSelectedItemsLabel,
+  disabled = false,
+  focusable = false,
   getToggleButtonProps,
-  selectedItems,
+  isOpen,
   loading = false,
   loadingText = 'Laster resultater …',
-  ariaLabelClearItems,
-  clearSelectedItemsLabel,
-  isOpen,
   onClear,
-  focusable = false,
+  selectedItems,
 }) => {
   if (loading) {
     return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
   }
-  if (readOnly) {
+  if (disabled) {
     return null;
   }
   return (
+    // to have a natural tab order, these elements are ordered opposite of how they are displayed
     <div className="eds-dropdown-appendix">
-      {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
-        <>
-          <ClearableButton
-            onClear={onClear}
-            focusable={focusable}
-            clearSelectedItemsLabel={clearSelectedItemsLabel}
-            ariaLabelClearItems={ariaLabelClearItems}
-          />
-          <div className="eds-dropdown-appendix__divider" />
-        </>
-      )}
       <ToggleButton
         getToggleButtonProps={getToggleButtonProps}
         isOpen={isOpen}
         focusable={focusable}
       />
+      {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
+        <>
+          <div className="eds-dropdown-appendix__divider" />
+          <ClearableButton
+            onClear={onClear}
+            focusable={true}
+            clearSelectedItemsLabel={clearSelectedItemsLabel}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -107,7 +114,6 @@ export const FieldAppend: React.FC<{
 const ClearableButton = ({
   onClear,
   clearSelectedItemsLabel = 'Fjern valgte',
-  ariaLabelClearItems = 'Fjern valgte',
   focusable = false,
 }: {
   onClear: () => void;
@@ -126,7 +132,7 @@ const ClearableButton = ({
         type="button"
         tabIndex={focusable ? 0 : 1}
         onClick={onClear}
-        aria-label={ariaLabelClearItems}
+        aria-label={clearSelectedItemsLabel}
       >
         <CloseSmallIcon aria-hidden="true" />
       </IconButton>
@@ -157,7 +163,7 @@ const ToggleButton = ({
         }),
       })}
       aria-label={isOpen ? closeAriaLabel : openAriaLabel}
-      tabIndex={focusable ? 0 : 1}
+      tabIndex={focusable ? 0 : -1}
       type="button"
     >
       <DownArrowIcon aria-hidden="true" />

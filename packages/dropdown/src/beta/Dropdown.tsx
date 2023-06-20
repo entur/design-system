@@ -43,65 +43,60 @@ export type DropdownBetaProps = {
   /** Callback når brukeren endrer valg */
   onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
   /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnTab?: boolean;
-  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
-  openOnFocus?: boolean;
-  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
-  debounceTimeout?: number;
+  selectOnBlur?: boolean;
+  // /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
+  // openOnFocus?: boolean;
   /** Om man skal ha mulighet for å nullstille Dropdown-en
    * @default false
    */
   clearable?: boolean;
   /** Ekstra klassenavn */
   className?: string;
-  /** Marker første valgmulighet automatisk */
-  highlightFirstItemOnOpen?: boolean;
   /** Styling som sendes ned til Dropdown-lista */
   listStyle?: { [key: string]: any };
+  /** Styling for Dropdown-en */
+  style?: { [key: string]: any };
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
   disableLabelAnimation?: boolean;
   /** Alle ekstra props videresendes til Downshift */
-  [key: string]: any;
 };
 
 export const DropdownBeta = ({
   className,
   clearable = false,
-  debounceTimeout,
-  // disabled,
-  // disableLabelAnimation,
+  disabled = false,
+  disableLabelAnimation,
   feedback,
   items: initialItems,
   label,
+  labelTooltip,
   listStyle,
-  // loadingText,
+  loadingText,
   onChange,
-  openOnFocus = false,
+  // openOnFocus = false, // Not implemented yet
   placeholder,
-  // prepend,
-  readonly = false,
-  // searchable,
+  prepend,
+  readOnly = false,
   selectedItem,
   selectOnBlur = false,
-  selectOnTab = false,
-  // value,
+  style,
   variant = 'info',
   ...rest
 }: DropdownBetaProps) => {
-  const { items: normalizedItems, loading } = useResolvedItems(
-    initialItems,
-    debounceTimeout,
-  );
+  // TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
+
+  const { items: normalizedItems, loading } = useResolvedItems(initialItems);
+  const isFilled = selectedItem !== null || placeholder !== undefined;
 
   const {
     isOpen,
-    getToggleButtonProps,
+    getItemProps,
     getLabelProps,
     getMenuProps,
+    getToggleButtonProps,
     highlightedIndex,
-    getItemProps,
   } = useSelect({
     items: normalizedItems,
     selectedItem,
@@ -123,50 +118,67 @@ export const DropdownBeta = ({
       <BaseFormControl
         append={
           <FieldAppend
-            selectedItems={[selectedItem]}
-            isOpen={isOpen}
             clearable={true}
+            clearSelectedItemsLabel="Fjern valgt"
+            focusable
+            getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
             loading={loading}
-            loadingText={''}
-            readOnly={readonly}
+            loadingText={loadingText}
             onClear={() => {
               onChange?.(null);
             }}
-            getToggleButtonProps={getToggleButtonProps}
-            clearSelectedItemsLabel="Fjern valgt"
-            ariaLabelClearItems={`${selectedItem?.label} valgt, trykk for å fjerne valget`}
-            focusable
+            disabled={readOnly || disabled}
+            selectedItems={[selectedItem]}
           />
         }
         className={classNames('eds-dropdown', className, {
-          'eds-dropdown--not-filled': selectedItem === null,
+          'eds-dropdown--not-filled': !isFilled,
         })}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={isFilled}
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
-        disableLabelAnimation
-        isFilled={selectedItem !== null}
-        feedback={feedback}
+        labelTooltip={labelTooltip}
+        prepend={prepend}
+        readOnly={readOnly}
+        style={style}
         variant={variant}
-        readOnly={readonly}
         {...rest}
       >
         <div
           className="eds-dropdown__selected-item-button"
           {...getToggleButtonProps()}
         >
-          {selectedItem?.label ?? ''}
+          {selectedItem?.label ?? (
+              <span
+                className={classNames(
+                  'eds-dropdown__selected-item-button__placeholder',
+                  {
+                    'eds-dropdown__selected-item-button__placeholder--readonly':
+                      readOnly,
+                  },
+                )}
+              >
+                {placeholder}
+              </span>
+            ) ??
+            ''}
         </div>
       </BaseFormControl>
       <DropdownList
-        selectedItems={selectedItem !== null ? [selectedItem] : []}
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
         isOpen={isOpen}
         listItems={normalizedItems}
-        highlightedIndex={highlightedIndex}
         listStyle={listStyle}
-        getMenuProps={getMenuProps}
-        getItemProps={getItemProps}
         loading={loading}
+        loadingText={loadingText}
+        selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
     </div>
   );
