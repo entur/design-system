@@ -12,7 +12,7 @@ import {
 } from '../useResolvedItems';
 import { DropdownList } from './components/DropdownList';
 
-import { itemToString, lowerCaseFilterTest } from './utils';
+import { EMPTY_INPUT, itemToString, lowerCaseFilterTest } from './utils';
 import { FieldAppend } from './components/FieldComponents';
 
 import './Dropdown.scss';
@@ -51,10 +51,16 @@ export type SearchableDropdownProps = {
   disableLabelAnimation?: boolean;
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
   debounceTimeout?: number;
+  /** Deaktiver dropdown-en */
+  disabled?: boolean;
   /** Gjør dropdown-en til å kun kunne leses
    * @default false
    */
-  readonly?: boolean;
+  readOnly?: boolean;
+  /** Tekst eller ikon som kommer før dropdown-en */
+  prepend?: React.ReactNode;
+  /** En tekst som beskriver hva som skjer når man venter på items */
+  loadingText?: string;
   selectOnBlur?: boolean;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
@@ -66,35 +72,31 @@ export type SearchableDropdownProps = {
   listStyle?: { [key: string]: any };
 };
 
-// TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
-// TODO Husk å generelt legge inn støtte for typeof value === string
-
 export const SearchableDropdownBeta = ({
   className,
   clearable = false,
   debounceTimeout,
-  // disabled = false,
+  disabled = false,
   disableLabelAnimation = false,
   feedback,
-  // highlightFirstItemOnOpen,
   itemFilter = lowerCaseFilterTest,
   items: initialItems,
   label,
   listStyle,
-  // loadingText,
+  loadingText,
   onChange,
   openOnFocus = false,
   placeholder,
-  // prepend,
-  readonly = false,
+  prepend,
+  readOnly = false,
   selectedItem: value,
   selectOnBlur = false,
-  // selectOnTab = false,
-  // style,
+  style,
   variant = 'info',
   ...rest
 }: SearchableDropdownProps) => {
   const [hideSelectedItem, setHideSelectedItem] = useState(false);
+  const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -108,6 +110,12 @@ export const SearchableDropdownBeta = ({
   const filterListItems = ({ inputValue }: { inputValue: string }) =>
     setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
 
+  const updateListItems = ({ inputValue }: { inputValue?: string }) => {
+    if (typeof initialItems === 'function')
+      fetchItems(inputValue ?? EMPTY_INPUT); // fetch items only if user provides a function as items
+    filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
+  };
+
   React.useEffect(() => {
     filterListItems({ inputValue });
   }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -120,26 +128,41 @@ export const SearchableDropdownBeta = ({
         changes,
       }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
     ) => {
+      if (
+        changes.highlightedIndex !== undefined &&
+        changes?.highlightedIndex >= 0
+      ) {
+        setLastHighlightedIndex(changes?.highlightedIndex);
+      }
+
       switch (type) {
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.InputBlur:
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
-          filterListItems({ inputValue: '' });
+          filterListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
-            inputValue: '', // reset input value to show placeholder on focus
+            inputValue: EMPTY_INPUT, // reset input value to show placeholder on focus
           };
         }
         case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
-          if (changes.inputValue?.match(leadingWhitespaceTest))
+          const isSpacePressedOnEmptyInput = changes.inputValue == ' ';
+          if (changes.inputValue?.match(leadingWhitespaceTest)) {
             setInputValue(
-              changes.inputValue.replace(leadingWhitespaceTest, ''),
+              changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
             );
-          else {
-            fetchItems(changes.inputValue ?? '');
-            filterListItems({ inputValue: changes.inputValue ?? '' });
+
+            if (isSpacePressedOnEmptyInput) {
+              openMenu();
+
+              if (isOpen && changes.highlightedIndex !== undefined) {
+                onChange(listItems[changes.highlightedIndex]);
+              }
+            }
+          } else {
+            updateListItems({ inputValue: changes.inputValue });
           }
           return changes;
         }
@@ -164,9 +187,10 @@ export const SearchableDropdownBeta = ({
     inputValue,
     setInputValue,
   } = useCombobox({
+    defaultHighlightedIndex: lastHighlightedIndex,
     items: listItems,
-    selectedItem: value,
     itemToString,
+    selectedItem: value,
     stateReducer,
     onStateChange({ type, selectedItem: clickedItem }) {
       switch (type) {
@@ -181,35 +205,41 @@ export const SearchableDropdownBeta = ({
     ...rest,
   });
 
+  const handleOnClear = () => {
+    onChange(null);
+    setInputValue(EMPTY_INPUT);
+    inputRef.current?.focus();
+    updateListItems({ inputValue });
+  };
+
   return (
     <div className="eds-dropdown__wrapper">
       <BaseFormControl
         append={
           <FieldAppend
-            selectedItems={[selectedItem]}
-            isOpen={isOpen}
             clearable={clearable}
-            loading={false}
-            loadingText={''}
-            readOnly={readonly}
-            onClear={() => {
-              onChange(null);
-              setInputValue('');
-              inputRef.current?.focus();
-              if (typeof initialItems === 'function')
-                fetchItems(inputValue ?? '');
-            }}
+            clearSelectedItemsLabel="Fjern valgt"
+            disabled={readOnly || disabled}
+            focusable={false}
             getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
+            loading={loading}
+            loadingText={loadingText}
+            onClear={handleOnClear}
+            selectedItems={[selectedItem]}
           />
         }
-        disableLabelAnimation={disableLabelAnimation}
         className={classNames('eds-dropdown', className)}
-        label={label}
-        isFilled={selectedItem || inputValue !== ''}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
-        variant={variant}
-        readOnly={readonly}
+        isFilled={selectedItem || inputValue !== EMPTY_INPUT}
+        label={label}
         labelProps={getLabelProps()}
+        prepend={prepend}
+        readOnly={readOnly}
+        style={style}
+        variant={variant}
         {...getComboboxProps()}
         {...rest}
       >
@@ -224,29 +254,31 @@ export const SearchableDropdownBeta = ({
           </span>
         )}
         <input
-          placeholder={selectedItem?.label ?? placeholder}
           className="eds-dropdown__input eds-form-control"
+          disabled={readOnly || disabled}
+          placeholder={selectedItem?.label ?? placeholder}
           {...getInputProps({
+            onBlur: () => {
+              setHideSelectedItem(false);
+            },
             onFocus: () => {
               if (!isOpen && openOnFocus) openMenu();
               setHideSelectedItem(true);
-            },
-            onBlur: () => {
-              setHideSelectedItem(false);
             },
             ref: inputRef,
           })}
         />
       </BaseFormControl>
       <DropdownList
-        selectedItems={selectedItem !== null ? [selectedItem] : []}
         isOpen={isOpen}
         listItems={listItems}
-        highlightedIndex={highlightedIndex}
         listStyle={listStyle}
-        getMenuProps={getMenuProps}
-        getItemProps={getItemProps}
         loading={loading}
+        loadingText={loadingText}
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
+        selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
     </div>
   );
