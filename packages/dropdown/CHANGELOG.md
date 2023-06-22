@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.2...@entur/dropdown@5.0.0-beta.3) (2023-06-22)
+
+### Bug Fixes
+
+- **dropdowns:** add missing props and clean up code ([0f72a33](https://bitbucket.org/enturas/design-system/commits/0f72a330e2af34c706ec06764301739b8411517b))
+
 # [5.0.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.1...@entur/dropdown@5.0.0-beta.2) (2023-06-18)
 
 ### Bug Fixes
