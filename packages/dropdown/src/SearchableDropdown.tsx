@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { mergeRefs } from '@entur/utils';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { BaseDropdown } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
 import './SearchableDropdown.scss';

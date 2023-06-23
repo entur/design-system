@@ -5,12 +5,12 @@ import {
   //   StateChangeOptions,
   //   UseSelectStateChangeOptions,
 } from 'downshift';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { BaseFormControl, VariantType } from '@entur/form';
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
-} from './useResolvedItems';
+} from './beta/useResolvedItems';
 import { DropdownLoadingDots } from './DropdownLoadingDots';
 import { useRandomId } from '@entur/utils';
 import classNames from 'classnames';

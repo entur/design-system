@@ -158,6 +158,15 @@
         transition: transform ease-in-out $timings-fast;
       }
 
+      &--loading-dots {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin-right: 0;
+      }
+
       .eds-contrast & {
         &:hover {
           background: $colors-greys-grey60;
@@ -169,6 +178,22 @@
           border: none;
           outline: none;
         }
+      }
+    }
+  }
+
+  &--native {
+    + .eds-form-control__append {
+      margin-left: -2em;
+      pointer-events: none;
+    }
+
+    // Override for Windows
+    & option {
+      color: $colors-brand-blue;
+      background-color: $colors-brand-white;
+      .eds-contrast & {
+        color: $colors-brand-blue;
       }
     }
   }
