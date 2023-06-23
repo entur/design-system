@@ -8,10 +8,11 @@ import {
 import { IconButton } from '@entur/button';
 import { TagChip } from '@entur/chip';
 import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
+import { LoadingDots } from '@entur/loader';
 import { Tooltip } from '@entur/tooltip';
 
 import { DropdownLoadingDots } from '../../DropdownLoadingDots';
-import { NormalizedDropdownItemType } from '../../useNormalizedItems';
+import { NormalizedDropdownItemType } from '../useNormalizedItems';
 
 import './FieldComponents.scss';
 
@@ -84,7 +85,11 @@ export const FieldAppend: React.FC<{
   selectedItems,
 }) => {
   if (loading) {
-    return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
+    return (
+      <div className={'eds-dropdown-appendix__toggle-button--loading-dots'}>
+        <LoadingDots aria-label={loadingText} />
+      </div>
+    );
   }
   if (disabled) {
     return null;
@@ -169,4 +174,12 @@ const ToggleButton = ({
       <DownArrowIcon aria-hidden="true" />
     </IconButton>
   );
+};
+
+export type DropdownLoadingDots = {
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Tekst for skjermlesere */
+  children: string;
+  [key: string]: any;
 };

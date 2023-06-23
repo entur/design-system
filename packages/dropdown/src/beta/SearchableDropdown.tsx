@@ -5,15 +5,15 @@ import classNames from 'classnames';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { DropdownList } from './components/DropdownList';
+import { FieldAppend } from './components/FieldComponents';
+
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
-} from '../useResolvedItems';
-import { DropdownList } from './components/DropdownList';
-
+} from './useResolvedItems';
 import { EMPTY_INPUT, itemToString, lowerCaseFilterTest } from './utils';
-import { FieldAppend } from './components/FieldComponents';
 
 import './Dropdown.scss';
 
