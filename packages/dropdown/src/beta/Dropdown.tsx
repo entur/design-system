@@ -1,19 +1,18 @@
-/* eslint-disable  no-warning-comments */
 import React from 'react';
 import { useSelect } from 'downshift';
 import classNames from 'classnames';
 
 import { BaseFormControl, VariantType } from '@entur/form';
 
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { DropdownList } from './components/DropdownList';
+import { FieldAppend } from './components/FieldComponents';
+
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
-} from '../useResolvedItems';
-import { DropdownList } from './components/DropdownList';
-
+} from './useResolvedItems';
 import { itemToString } from './utils';
-import { FieldAppend } from './components/FieldComponents';
 
 import './Dropdown.scss';
 

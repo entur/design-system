@@ -1,6 +1,6 @@
 import React from 'react';
 import { VariantType } from '@entur/form';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { RegularDropdown } from './RegularDropdown';
 import { DownshiftProvider } from './DownshiftProvider';
 import { SearchableDropdown } from './SearchableDropdown';
@@ -8,7 +8,7 @@ import { DropdownInputGroup } from './DropdownInputGroup';
 import {
   useResolvedItems,
   PotentiallyAsyncDropdownItemType,
-} from './useResolvedItems';
+} from './beta/useResolvedItems';
 
 export type DropdownProps = {
   /** Beskrivende tekst som forklarer feltet */

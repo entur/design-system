@@ -1,5 +1,5 @@
 import React from 'react';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
 import { BaseDropdown } from './BaseDropdown';
 

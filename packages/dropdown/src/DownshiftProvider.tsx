@@ -4,7 +4,7 @@ import Downshift, {
   DownshiftState,
   StateChangeOptions,
 } from 'downshift';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import classNames from 'classnames';
 
 const DownshiftContext =

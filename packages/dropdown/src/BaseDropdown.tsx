@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseFormControl } from '@entur/form';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { DropdownList } from './DropdownList';
 import { DropdownToggleButton } from './DropdownToggleButton';
 import { DropdownLoadingDots } from './DropdownLoadingDots';
