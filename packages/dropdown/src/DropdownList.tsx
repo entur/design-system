@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
 import { CheckIcon } from '@entur/icons';
 import './DropdownList.scss';

@@ -1,4 +1,4 @@
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 
 export const EMPTY_INPUT = '';
 

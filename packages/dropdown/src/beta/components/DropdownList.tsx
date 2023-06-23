@@ -9,7 +9,7 @@ import {
 import { Checkbox } from '@entur/form';
 import { VisuallyHidden } from '@entur/a11y';
 
-import { NormalizedDropdownItemType } from '../../useNormalizedItems';
+import { NormalizedDropdownItemType } from '../useNormalizedItems';
 
 import './DropdownList.scss';
 

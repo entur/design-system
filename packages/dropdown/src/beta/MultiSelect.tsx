@@ -9,13 +9,14 @@ import {
 import { BaseFormControl, VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
 
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
+import { DropdownList } from './components/DropdownList';
+
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
-} from '../useResolvedItems';
-import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
-import { DropdownList } from './components/DropdownList';
+} from './useResolvedItems';
 import {
   EMPTY_INPUT,
   itemToString,
