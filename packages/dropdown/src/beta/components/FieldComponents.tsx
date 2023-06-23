@@ -11,7 +11,6 @@ import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
 import { Tooltip } from '@entur/tooltip';
 
-import { DropdownLoadingDots } from '../../DropdownLoadingDots';
 import { NormalizedDropdownItemType } from '../useNormalizedItems';
 
 import './FieldComponents.scss';
@@ -174,12 +173,4 @@ const ToggleButton = ({
       <DownArrowIcon aria-hidden="true" />
     </IconButton>
   );
-};
-
-export type DropdownLoadingDots = {
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Tekst for skjermlesere */
-  children: string;
-  [key: string]: any;
 };
