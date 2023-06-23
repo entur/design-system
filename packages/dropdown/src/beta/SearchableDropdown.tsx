@@ -148,7 +148,7 @@ export const SearchableDropdownBeta = ({
         }
         case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
-          const isSpacePressedOnEmptyInput = changes.inputValue == ' ';
+          const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
           if (changes.inputValue?.match(leadingWhitespaceTest)) {
             setInputValue(
               changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),

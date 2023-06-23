@@ -1,15 +1,15 @@
 import React from 'react';
 
-/** A dropdown item has a string label and a string value */
+export type DropdownItemType =
+  | { value?: string; label: string; icons?: React.ComponentType<any>[] }
+  | string;
+
 export type NormalizedDropdownItemType = {
   value: string;
   label: string;
   icons?: React.ComponentType<any>[];
 };
 
-export type DropdownItemType =
-  | { value?: string; label: string; icons?: React.ComponentType<any>[] }
-  | string;
 export const useNormalizedItems = (
   items: DropdownItemType[],
 ): NormalizedDropdownItemType[] =>
