@@ -59,7 +59,6 @@ export type DropdownBetaProps = {
    * @default false
    */
   disableLabelAnimation?: boolean;
-  /** Alle ekstra props videresendes til Downshift */
 };
 
 export const DropdownBeta = ({
@@ -84,8 +83,6 @@ export const DropdownBeta = ({
   variant = 'info',
   ...rest
 }: DropdownBetaProps) => {
-  // TODO Husk å @deprecate searchable-prop-en til Dropdown når denne komponenten skal ha official release
-
   const { items: normalizedItems, loading } = useResolvedItems(initialItems);
   const isFilled = selectedItem !== null || placeholder !== undefined;
 
