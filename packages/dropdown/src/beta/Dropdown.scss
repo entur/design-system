@@ -33,10 +33,11 @@
     gap: 0.5rem;
 
     &--filled {
-      padding: 20px 0rem 0.25rem 1rem;
+      padding: 1.25rem 0rem 0.25rem 1rem;
 
       .eds-dropdown__input {
         padding: unset;
+        min-height: 1.5rem;
       }
 
       .eds-tag-chip {
@@ -50,6 +51,7 @@
   &__input {
     flex: 1;
     min-width: 10%;
+    min-height: calc(1.5rem + 1.25rem + 0.25rem);
 
     &.eds-form-control {
       // small adjustment to line up input placeholder and selectedValue placeholder
