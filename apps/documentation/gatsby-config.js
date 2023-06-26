@@ -35,8 +35,6 @@ module.exports = {
         apiHost: 'https://eu.posthog.com',
         // Puts tracking script in the head instead of the body
         head: true,
-        // Dev tracking should be disabled when in prod
-        isEnabledDevMode: true,
         initOptions: {
           persistence: 'memory',
           disable_session_recording: true,
