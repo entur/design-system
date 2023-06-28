@@ -50,8 +50,9 @@ export const SelectedItemTag = ({
         e.stopPropagation();
         removeSelectedItem(selectedItem);
       }}
-      closeButtonAriaLabel={`${selectedItem.label}, ${ariaLabelRemoveSelected} `}
+      closeButtonAriaLabel={`${selectedItem.label} valgt, ${ariaLabelRemoveSelected} `}
       key={selectedItem.value}
+      aria-live="polite"
     >
       <span aria-hidden="true">{selectedItem.label}</span>
     </TagChip>
@@ -60,7 +61,7 @@ export const SelectedItemTag = ({
 
 export const FieldAppend: React.FC<{
   clearable?: boolean;
-  clearSelectedItemsLabel?: string;
+  labelClearSelectedItems?: string;
   disabled?: boolean;
   focusable?: boolean;
   getToggleButtonProps: (
@@ -73,7 +74,7 @@ export const FieldAppend: React.FC<{
   selectedItems: (NormalizedDropdownItemType | null)[];
 }> = ({
   clearable = false,
-  clearSelectedItemsLabel,
+  labelClearSelectedItems,
   disabled = false,
   focusable = false,
   getToggleButtonProps,
@@ -107,7 +108,7 @@ export const FieldAppend: React.FC<{
           <ClearableButton
             onClear={onClear}
             focusable={true}
-            clearSelectedItemsLabel={clearSelectedItemsLabel}
+            labelClearSelectedItems={labelClearSelectedItems}
           />
         </>
       )}
@@ -117,11 +118,11 @@ export const FieldAppend: React.FC<{
 
 const ClearableButton = ({
   onClear,
-  clearSelectedItemsLabel = 'Fjern valgte',
+  labelClearSelectedItems = 'Fjern valgte',
   focusable = false,
 }: {
   onClear: () => void;
-  clearSelectedItemsLabel?: string;
+  labelClearSelectedItems?: string;
   focusable?: boolean;
   ariaLabelClearItems?: string;
 }) => {
@@ -129,14 +130,14 @@ const ClearableButton = ({
     <Tooltip
       aria-hidden="true"
       placement="right"
-      content={clearSelectedItemsLabel}
+      content={labelClearSelectedItems}
     >
       <IconButton
         className="eds-dropdown-appendix__clear-button"
         type="button"
         tabIndex={focusable ? 0 : 1}
         onClick={onClear}
-        aria-label={clearSelectedItemsLabel}
+        aria-label={labelClearSelectedItems}
       >
         <CloseSmallIcon aria-hidden="true" />
       </IconButton>
@@ -147,16 +148,16 @@ const ClearableButton = ({
 const ToggleButton = ({
   getToggleButtonProps,
   isOpen,
-  closeAriaLabel = 'Lukk liste med valg',
-  openAriaLabel = 'Åpne liste med valg',
+  ariaLabelCloseList = 'Lukk liste med valg',
+  ariaLabelOpen = 'Åpne liste med valg',
   focusable = false,
 }: {
   getToggleButtonProps: (
     options?: UseComboboxGetToggleButtonPropsOptions | undefined,
   ) => any;
   isOpen: boolean;
-  closeAriaLabel?: string;
-  openAriaLabel?: string;
+  ariaLabelCloseList?: string;
+  ariaLabelOpen?: string;
   focusable?: boolean;
 }) => {
   return (
@@ -166,7 +167,7 @@ const ToggleButton = ({
           'eds-dropdown-appendix__toggle-button--open': isOpen,
         }),
       })}
-      aria-label={isOpen ? closeAriaLabel : openAriaLabel}
+      aria-label={isOpen ? ariaLabelCloseList : ariaLabelOpen}
       tabIndex={focusable ? 0 : -1}
       type="button"
     >

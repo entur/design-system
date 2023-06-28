@@ -15,7 +15,7 @@
     font-family: inherit;
 
     position: relative;
-    top: 2px;
+    top: 5px;
 
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -82,7 +82,7 @@
     }
 
     .eds-form-control__append {
-      top: 0.3rem;
+      top: 0.4rem;
 
       .eds-loading-dots {
         height: 2rem;
@@ -91,6 +91,20 @@
   }
 
   &__selected-item-button {
+    // start revert button styling
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 0;
+    text-align: inherit;
+    line-height: inherit;
+    font: inherit;
+    color: inherit;
+    font-size: inherit;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // end revert button styling
+
     flex: 1;
     padding: 1.25rem 1rem 0.25rem;
     min-height: 2.75rem;
