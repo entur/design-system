@@ -115,7 +115,7 @@ export const DropdownBeta = ({
         append={
           <FieldAppend
             clearable={true}
-            clearSelectedItemsLabel="Fjern valgt"
+            labelClearSelectedItems="Fjern valgt"
             focusable
             getToggleButtonProps={getToggleButtonProps}
             isOpen={isOpen}
@@ -137,7 +137,9 @@ export const DropdownBeta = ({
         isFilled={isFilled}
         label={label}
         labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
+        labelProps={getLabelProps({
+          'aria-hidden': true,
+        })}
         labelTooltip={labelTooltip}
         prepend={prepend}
         readOnly={readOnly}
@@ -145,7 +147,7 @@ export const DropdownBeta = ({
         variant={variant}
         {...rest}
       >
-        <div
+        <button
           className="eds-dropdown__selected-item-button"
           {...getToggleButtonProps()}
         >
@@ -163,7 +165,7 @@ export const DropdownBeta = ({
               </span>
             ) ??
             ''}
-        </div>
+        </button>
       </BaseFormControl>
       <DropdownList
         getItemProps={getItemProps}
