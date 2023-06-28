@@ -29,7 +29,7 @@ type DropdownListProps = {
   selectAllCheckboxState?: () => boolean | 'indeterminate';
   noMatchesText?: string;
   loadingText?: string;
-  selectedItemAriaLabel?: string;
+  ariaLabelSelectedItem?: string;
   loading?: boolean;
   selectAllItem?: NormalizedDropdownItemType;
   [key: string]: any;
@@ -50,7 +50,7 @@ export const DropdownList = ({
   listStyle,
   noMatchesText = 'Ingen treff for søket',
   loadingText = 'Laster inn …',
-  selectedItemAriaLabel = ', valgt element',
+  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   ...rest
 }: DropdownListProps) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -58,8 +58,22 @@ export const DropdownList = ({
     !loading &&
     (listItems.length === 0 ||
       (listItems.length === 1 && listItems[0].value === selectAllItem?.value));
-  const itemIsSelected = (item: NormalizedDropdownItemType) =>
+  const isItemSelected = (item: NormalizedDropdownItemType) =>
     selectedItems.some(selectedItem => selectedItem.value === item.value);
+
+  const ariaLabelSelectAll = () => {
+    switch (selectAllCheckboxState?.()) {
+      case 'indeterminate': {
+        return `${selectAllItem?.label}, delvis valgt`;
+      }
+      case true: {
+        return `${selectAllItem?.label}, valgt`;
+      }
+      default: {
+        return `${selectAllItem?.label}`;
+      }
+    }
+  };
 
   const selectAllListItemContent = () => (
     <>
@@ -72,7 +86,10 @@ export const DropdownList = ({
         }}
         tabIndex={-1}
       />
-      <span className="eds-dropdown__list__item__text">
+      <span
+        className="eds-dropdown__list__item__text"
+        aria-label={ariaLabelSelectAll()}
+      >
         {selectAllItem?.label}
       </span>
     </>
@@ -83,7 +100,7 @@ export const DropdownList = ({
       <>
         <Checkbox
           aria-hidden="true"
-          checked={itemIsSelected(item)}
+          checked={isItemSelected(item)}
           className="eds-dropdown__list__item__checkbox"
           onChange={() => {
             return;
@@ -94,7 +111,9 @@ export const DropdownList = ({
 
         <span className="eds-dropdown__list__item__text">
           {item.label}
-          <VisuallyHidden>{selectedItemAriaLabel}</VisuallyHidden>
+          <VisuallyHidden>
+            {isItemSelected(item) ? ariaLabelSelectedItem : ''}
+          </VisuallyHidden>
         </span>
         {item.icons && (
           <span>
@@ -112,7 +131,7 @@ export const DropdownList = ({
   };
 
   return (
-    // use popover from @entur/tooltip when the package uses floating-ui
+    // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
       {...getMenuProps()}
       className={classNames('eds-dropdown__list', {
@@ -120,8 +139,7 @@ export const DropdownList = ({
       })}
       style={{ ...rest.style, ...listStyle }}
     >
-      {isOpen &&
-        listItems.length > 0 &&
+      {listItems.length > 0 &&
         listItems.map((item, index) => {
           const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return <></>;
@@ -134,7 +152,7 @@ export const DropdownList = ({
                 'eds-dropdown__list__item--highlighted':
                   highlightedIndex === index,
                 'eds-dropdown__list__item--selected':
-                  !isMultiselect && itemIsSelected(item),
+                  !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
                 key: `${index}${item.value}`,
@@ -149,13 +167,11 @@ export const DropdownList = ({
           );
         })}
 
-      {isOpen && isNoMatches && (
+      {isNoMatches && (
         <li className="eds-dropdown__list__item">{noMatchesText}</li>
       )}
 
-      {isOpen && loading && (
-        <li className="eds-dropdown__list__item">{loadingText}</li>
-      )}
+      {loading && <li className="eds-dropdown__list__item">{loadingText}</li>}
     </ul>
   );
 };
