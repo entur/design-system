@@ -4,6 +4,7 @@ import {
   useMultipleSelection,
   useCombobox,
   UseComboboxStateChangeOptions,
+  A11yStatusMessageOptions,
 } from 'downshift';
 
 import { BaseFormControl, VariantType } from '@entur/form';
@@ -19,6 +20,10 @@ import {
 } from './useResolvedItems';
 import {
   EMPTY_INPUT,
+  getA11yRemovalMessage,
+  getA11ySelectionMessage,
+  getA11yStatusMessage,
+  isVoiceOverClick,
   itemToString,
   lowerCaseFilterTest,
   useMultiselectUtils,
@@ -71,7 +76,7 @@ export type MultiSelectBetaProps = {
   /** Skjermleser-tekst som for å fjerne alle valg
    * @default "Fjern valgte"
    */
-  clearAllItemsAriaLabel?: string;
+  ariaLabelClearAllItems?: string;
   /** Ekstra klassenavn */
   className?: string;
   /** Tekst for skjemleser på knapper for å fjerne valgt element
@@ -100,7 +105,7 @@ export const MultiSelectBeta = ({
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
   className,
   clearable = false,
-  clearAllItemsAriaLabel = 'Fjern valgte',
+  ariaLabelClearAllItems = 'Fjern valgte',
   clearInputOnSelect = false,
   debounceTimeout,
   disabled = false,
@@ -123,6 +128,9 @@ export const MultiSelectBeta = ({
   ...rest
 }: MultiSelectBetaProps) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
+  const [lastRemovedItem, setLastRemovedItem] = React.useState<
+    NormalizedDropdownItemType | undefined
+  >(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -170,21 +178,24 @@ export const MultiSelectBeta = ({
     filterListItems({ inputValue });
   }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const { getSelectedItemProps, getDropdownProps, removeSelectedItem } =
-    useMultipleSelection({
-      selectedItems,
-      itemToString,
-      onSelectedItemsChange(changes) {
-        onChange(changes.selectedItems ?? []);
-      },
-    });
-
   const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
     useMultiselectUtils({
       listItems,
-      selectAllValue: selectAll.value,
+      selectAll,
       selectedItems,
     });
+
+  const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
+    selectedItems,
+    itemToString,
+    // Accessibility
+    getA11yRemovalMessage: options =>
+      getA11yRemovalMessage({
+        ...options,
+        selectAllItem: selectAll,
+        removedItem: lastRemovedItem,
+      }),
+  });
 
   const stateReducer = React.useCallback(
     (
@@ -234,10 +245,11 @@ export const MultiSelectBeta = ({
             if (isSpacePressedOnEmptyInput) {
               openMenu();
 
-              if (isOpen && changes.highlightedIndex) {
+              if (isOpen && changes.highlightedIndex !== undefined) {
                 handleListItemClicked({
                   clickedItem: listItems[changes.highlightedIndex],
                   onChange,
+                  setLastRemovedItem,
                 });
               }
             }
@@ -287,10 +299,24 @@ export const MultiSelectBeta = ({
         case useCombobox.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
-        case useCombobox.stateChangeTypes.ItemClick:
-          handleListItemClicked({ clickedItem, onChange });
+        case useCombobox.stateChangeTypes.ItemClick: {
+          handleListItemClicked({ clickedItem, onChange, setLastRemovedItem });
+        }
       }
     },
+    // Accessibility
+    getA11yStatusMessage: function <Item>(
+      options: A11yStatusMessageOptions<Item>,
+    ) {
+      return getA11yStatusMessage<Item>({
+        ...options,
+        selectAllItemIncluded: !hideSelectAll,
+      });
+    },
+    // The following A11y-helper does not work due to a bug (https://github.com/downshift-js/downshift/issues/1227)
+    // but is left here for when it is fixed
+    getA11ySelectionMessage: options =>
+      getA11ySelectionMessage({ ...options, selectAllItem: selectAll }),
     ...rest,
   });
 
@@ -308,12 +334,13 @@ export const MultiSelectBeta = ({
   return (
     <div className="eds-dropdown__wrapper">
       <BaseFormControl
+        aria-labelledby={getLabelProps().id}
         append={
           <FieldAppend
             selectedItems={selectedItems}
             isOpen={isOpen}
             clearable={clearable}
-            clearSelectedItemsLabel={clearAllItemsAriaLabel}
+            labelClearSelectedItems={ariaLabelClearAllItems}
             focusable={false}
             loading={loading}
             loadingText={loadingText}
@@ -327,10 +354,10 @@ export const MultiSelectBeta = ({
         feedback={feedback}
         isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
         label={label}
-        labelProps={{
-          'aria-label': `${label}, multiselect, ${selectedItems.length} valgte elementer`,
-          ...getLabelProps(),
-        }}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps({
+          'aria-label': `${label}, ${selectedItems.length} valgte elementer`,
+        })}
         readOnly={readOnly}
         style={style}
         variant={variant}
@@ -354,13 +381,20 @@ export const MultiSelectBeta = ({
                 index={index}
                 key={selectedItem.value}
                 readOnly={readOnly}
-                removeSelectedItem={removeSelectedItem}
+                removeSelectedItem={() => {
+                  handleListItemClicked({
+                    clickedItem: selectedItem,
+                    onChange,
+                    setLastRemovedItem,
+                  });
+                  inputRef?.current?.focus();
+                }}
                 selectedItem={selectedItem}
               />
             ))
           ) : (
             <SelectedItemTag
-              ariaLabelRemoveSelected={clearAllItemsAriaLabel}
+              ariaLabelRemoveSelected={ariaLabelClearAllItems}
               disabled={disabled}
               readOnly={readOnly}
               removeSelectedItem={handleOnClear}
@@ -374,10 +408,13 @@ export const MultiSelectBeta = ({
             role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
             {...getInputProps(
               getDropdownProps({
-                preventKeyAction: isOpen,
+                onClick: (e: React.MouseEvent) => {
+                  if (!isOpen && isVoiceOverClick(e)) openMenu();
+                },
                 onFocus: () => {
                   if (!isOpen && openOnFocus) openMenu();
                 },
+                preventKeyAction: isOpen,
                 ref: inputRef,
                 value: inputValue ?? EMPTY_INPUT,
               }),

@@ -13,7 +13,14 @@ import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
 } from './useResolvedItems';
-import { EMPTY_INPUT, itemToString, lowerCaseFilterTest } from './utils';
+import {
+  EMPTY_INPUT,
+  getA11ySelectionMessage,
+  getA11yStatusMessage,
+  isVoiceOverClick,
+  itemToString,
+  lowerCaseFilterTest,
+} from './utils';
 
 import './Dropdown.scss';
 
@@ -158,7 +165,7 @@ export const SearchableDropdownBeta = ({
               openMenu();
 
               if (isOpen && changes.highlightedIndex !== undefined) {
-                onChange(listItems[changes.highlightedIndex]);
+                onChange(listItems[changes.highlightedIndex]); // select highlighted item with space key
               }
             }
           } else {
@@ -202,6 +209,11 @@ export const SearchableDropdownBeta = ({
           onChange(clickedItem ?? null);
       }
     },
+    // Accessibility
+    getA11yStatusMessage,
+    // The following A11y-helper does not work due to a bug (https://github.com/downshift-js/downshift/issues/1227)
+    // but is left here for when it is fixed
+    getA11ySelectionMessage: options => getA11ySelectionMessage(options),
     ...rest,
   });
 
@@ -215,10 +227,11 @@ export const SearchableDropdownBeta = ({
   return (
     <div className="eds-dropdown__wrapper">
       <BaseFormControl
+        aria-labelledby={getLabelProps().id}
         append={
           <FieldAppend
             clearable={clearable}
-            clearSelectedItemsLabel="Fjern valgt"
+            labelClearSelectedItems="Fjern valgt"
             disabled={readOnly || disabled}
             focusable={false}
             getToggleButtonProps={getToggleButtonProps}
@@ -235,16 +248,29 @@ export const SearchableDropdownBeta = ({
         feedback={feedback}
         isFilled={selectedItem || inputValue !== EMPTY_INPUT}
         label={label}
-        labelProps={getLabelProps()}
+        labelProps={getLabelProps({
+          'aria-label': `${label}${
+            selectedItem !== null ? ', ' + selectedItem.label + ' valgt' : ''
+          }`,
+        })}
         prepend={prepend}
         readOnly={readOnly}
         style={style}
         variant={variant}
-        {...getComboboxProps()}
+        {...getComboboxProps({
+          onClick: (e: React.MouseEvent) => {
+            console.log('click');
+
+            if (!isOpen && isVoiceOverClick(e)) openMenu();
+          },
+        })}
         {...rest}
       >
         {!hideSelectedItem && selectedItem && !inputValue && (
-          <span className="eds-dropdown__selected-item__wrapper">
+          <span
+            className="eds-dropdown__selected-item__wrapper"
+            aria-hidden="true"
+          >
             <span
               className="eds-dropdown__selected-item"
               onClick={() => inputRef.current?.focus()}
@@ -257,7 +283,11 @@ export const SearchableDropdownBeta = ({
           className="eds-dropdown__input eds-form-control"
           disabled={readOnly || disabled}
           placeholder={selectedItem?.label ?? placeholder}
+          role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
           {...getInputProps({
+            onClick: (e: React.MouseEvent) => {
+              if (!isOpen && isVoiceOverClick(e)) openMenu();
+            },
             onBlur: () => {
               setHideSelectedItem(false);
             },
