@@ -81,6 +81,10 @@
         line-height ease-in-out $timings-medium;
     }
 
+    .eds-form-control__prepend {
+      top: 1rem;
+    }
+
     .eds-form-control__append {
       top: 0.4rem;
 
@@ -103,6 +107,9 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    &:focus {
+      outline: transparent;
+    }
     // end revert button styling
 
     flex: 1;
@@ -124,7 +131,6 @@
   &-appendix {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
 
     &__clear-button {
       padding: $space-extra-small;
@@ -164,10 +170,6 @@
 
       &--open svg {
         transform: rotate(180deg);
-      }
-
-      &:focus {
-        border-color: transparent;
       }
 
       svg {

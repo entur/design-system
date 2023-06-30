@@ -14,43 +14,43 @@ import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import './DropdownList.scss';
 
 type DropdownListProps = {
-  selectedItems: NormalizedDropdownItemType[];
-  isOpen: boolean;
-  listItems: NormalizedDropdownItemType[];
-  highlightedIndex: number;
-  listStyle: { [key: string]: any } | undefined;
+  ariaLabelSelectedItem?: string;
+  getItemProps: (
+    options: UseComboboxGetItemPropsOptions<NormalizedDropdownItemType>,
+  ) => any;
   getMenuProps: (
     options?: UseComboboxGetMenuPropsOptions | undefined,
     otherOptions?: GetPropsCommonOptions | undefined,
   ) => any;
-  getItemProps: (
-    options: UseComboboxGetItemPropsOptions<NormalizedDropdownItemType>,
-  ) => any;
-  selectAllCheckboxState?: () => boolean | 'indeterminate';
-  noMatchesText?: string;
-  loadingText?: string;
-  ariaLabelSelectedItem?: string;
+  highlightedIndex: number;
+  isOpen: boolean;
+  listItems: NormalizedDropdownItemType[];
+  listStyle: { [key: string]: any } | undefined;
   loading?: boolean;
+  loadingText?: string;
+  noMatchesText?: string;
+  selectAllCheckboxState?: () => boolean | 'indeterminate';
   selectAllItem?: NormalizedDropdownItemType;
+  selectedItems: NormalizedDropdownItemType[];
   [key: string]: any;
 };
 
 export const DropdownList = ({
-  selectedItems,
-  listItems,
+  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
+  getItemProps,
+  getMenuProps,
   inputValue,
   isOpen,
-  getMenuProps,
-  getItemProps,
   highlightedIndex,
-  showSelectAllInList = false,
+  listItems,
+  listStyle,
   loading = false,
+  loadingText = 'Laster inn …',
+  noMatchesText = 'Ingen treff for søket',
   selectAllCheckboxState,
   selectAllItem,
-  listStyle,
-  noMatchesText = 'Ingen treff for søket',
-  loadingText = 'Laster inn …',
-  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
+  selectedItems,
+  showSelectAllInList = false,
   ...rest
 }: DropdownListProps) => {
   const isMultiselect = selectAllItem !== undefined;
