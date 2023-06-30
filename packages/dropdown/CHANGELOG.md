@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-beta.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.2...@entur/dropdown@5.0.0-beta.4) (2023-06-30)
+
+### Bug Fixes
+
+- **dropdown:** move things around ([cbc47d0](https://bitbucket.org/enturas/design-system/commits/cbc47d05991981ef8949fd69409b47394b8bf503))
+- **dropdowns:** add missing props and clean up code ([3fbc086](https://bitbucket.org/enturas/design-system/commits/3fbc08602a1c29db63b43c7984243439e631d086))
+- **dropdowns:** update to downshift v7, add missing aria props and clean up code ([e42160f](https://bitbucket.org/enturas/design-system/commits/e42160f6d3b82b32f67f67c9df0bab622313c02e))
+- **multiselect:** fix visual bug caused by input height ([193ead0](https://bitbucket.org/enturas/design-system/commits/193ead08b334a67d22c63d6234f7a009f9f3d359))
+
+### Features
+
+- improve accessibility for dropdown components ([e78c0a0](https://bitbucket.org/enturas/design-system/commits/e78c0a03c085eae13fd4e811caed5c44ea196e97))
+- **native dropdown:** update native dropdown to work better with NormalizedDropdownItemType ([7485f1e](https://bitbucket.org/enturas/design-system/commits/7485f1eb8ac0107c36e56c9be1633a888d72090d))
+
+### BREAKING CHANGES
+
+- **native dropdown:** onChange's arguments have changed to a object containing value, selectedItem and target
+
 # [5.0.0-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-beta.2...@entur/dropdown@5.0.0-beta.3) (2023-06-22)
 
 ### Bug Fixes
