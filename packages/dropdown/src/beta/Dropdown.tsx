@@ -21,59 +21,68 @@ export type DropdownBetaProps = {
   items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi. Bruk null for ingen verdi. */
   selectedItem: NormalizedDropdownItemType | null;
+  /** Callback som skal oppdatere selectedItem */
+  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
-  /** Tooltip for labelen */
-  labelTooltip?: string;
+  /** Placeholder-tekst når ingenting er satt */
+  placeholder?: string;
+  /** Om man skal ha mulighet for å nullstille Dropdown-en
+   * @default true
+   */
+  clearable?: boolean;
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnBlur?: boolean;
+  /** Deaktiver dropdown-en */
+  disabled?: boolean;
+  /** Setter dropdown-en i read-only modus */
+  readOnly?: boolean;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
   /** Tekst eller ikon som kommer før dropdown-en */
   prepend?: React.ReactNode;
-  /** Deaktiver dropdown-en */
-  disabled?: boolean;
-  /** Setter dropdown-en i read-only modus */
-  readOnly?: boolean;
-  /** Placeholder-tekst når ingenting er satt */
-  placeholder?: string;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  /** Callback når brukeren endrer valg */
-  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
-  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnBlur?: boolean;
-  // /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
-  // openOnFocus?: boolean;
   /** Om man skal ha mulighet for å nullstille Dropdown-en
+   * @default "fjern valgt"
+   */
+  labelClearSelectedItem?: string;
+  /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
-  clearable?: boolean;
+  disableLabelAnimation?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   /** Styling som sendes ned til Dropdown-lista */
   listStyle?: { [key: string]: any };
   /** Styling for Dropdown-en */
   style?: { [key: string]: any };
-  /** Plasserer labelen statisk på toppen av inputfeltet
-   * @default false
+  /** Tekst for skjemleser for knapp som lukker listen med valg
+   * @default "Lukk liste med valg"
    */
-  disableLabelAnimation?: boolean;
+  ariaLabelCloseList?: string;
+  /** Tekst for skjemleser for knapp som åpner listen med valg
+   * @default "Åpne liste med valg"
+   */
+  ariaLabelOpenList?: string;
 };
 
 export const DropdownBeta = ({
+  ariaLabelCloseList,
+  ariaLabelOpenList,
   className,
-  clearable = false,
+  clearable = true,
   disabled = false,
   disableLabelAnimation,
   feedback,
   items: initialItems,
   label,
-  labelTooltip,
+  labelClearSelectedItem = 'fjern valgt',
   listStyle,
   loadingText,
   onChange,
-  // openOnFocus = false, // Not implemented yet
   placeholder,
   prepend,
   readOnly = false,
@@ -95,13 +104,14 @@ export const DropdownBeta = ({
     highlightedIndex,
   } = useSelect({
     items: normalizedItems,
+    defaultHighlightedIndex: selectedItem ? undefined : 0,
     selectedItem,
     onStateChange({ type, selectedItem: clickedItem }) {
       switch (type) {
         // @ts-expect-error This falltrough is wanted
         case useSelect.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
-        case useSelect.stateChangeTypes.MenuKeyDownEnter: // eslint-disable-line no-fallthrough
+        case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
         case useSelect.stateChangeTypes.ItemClick:
           onChange?.(clickedItem !== undefined ? clickedItem : null);
       }
@@ -114,9 +124,12 @@ export const DropdownBeta = ({
       <BaseFormControl
         append={
           <FieldAppend
+            ariaHiddenToggleButton={true}
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
             clearable={true}
-            labelClearSelectedItems="Fjern valgt"
-            focusable
+            labelClearSelectedItems={labelClearSelectedItem}
+            focusable={false}
             getToggleButtonProps={getToggleButtonProps}
             isOpen={isOpen}
             loading={loading}
@@ -137,10 +150,7 @@ export const DropdownBeta = ({
         isFilled={isFilled}
         label={label}
         labelId={getLabelProps().id}
-        labelProps={getLabelProps({
-          'aria-hidden': true,
-        })}
-        labelTooltip={labelTooltip}
+        labelProps={getLabelProps()}
         prepend={prepend}
         readOnly={readOnly}
         style={style}

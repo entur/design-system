@@ -27,14 +27,12 @@ import './Dropdown.scss';
 export type SearchableDropdownProps = {
   /** Tilgjengelige valg i dropdown-en */
   items: PotentiallyAsyncDropdownItemType;
-  /** Valgt element. Bruk null for ingen verdi.
-   * Det er denne som skal oppdateres av onChange
-   */
+  /** Valgt element. Bruk null for ingen verdi */
   selectedItem: NormalizedDropdownItemType | null;
-  /** Callback for når brukeren endrer valg */
-  onChange: (value: NormalizedDropdownItemType | null) => void;
-  /** Filtreringen som blir brukt dersom man har en searchable Dropdown
-   * @default Enkel tekstsammenligning
+  /** Callback ved valg som skal brukes til å oppdatere selectedItem */
+  onChange?: (value: NormalizedDropdownItemType | null) => void;
+  /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
+   * @default Regex-test som sjekker om item.label inneholder input-teksten
    */
   itemFilter?: (
     item: NormalizedDropdownItemType,
@@ -45,21 +43,21 @@ export type SearchableDropdownProps = {
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
   /** Vis knapp for å nullstille Dropdown-en skal vises
-   * @default false
+   * @default true
    */
   clearable?: boolean;
-  /** Vis listen med valg skal vises på fokus av inputfeltet
-   * @default false
-   */
-  openOnFocus?: boolean;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
   disableLabelAnimation?: boolean;
-  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
+  /** Antall millisekunder man venter etter tekstinput før det gjøres kall for å oppdatere items
+   * Denne er kun relevant hvis du sender inn en funksjon som items.
+   */
   debounceTimeout?: number;
   /** Deaktiver dropdown-en */
   disabled?: boolean;
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnBlur?: boolean;
   /** Gjør dropdown-en til å kun kunne leses
    * @default false
    */
@@ -68,7 +66,6 @@ export type SearchableDropdownProps = {
   prepend?: React.ReactNode;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  selectOnBlur?: boolean;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
@@ -77,11 +74,25 @@ export type SearchableDropdownProps = {
   style?: { [key: string]: any };
   /** Style som kun påføres listeelementet */
   listStyle?: { [key: string]: any };
+  /** Tekst som beskriver at man fjerner valget sitt
+   * @default "fjern valgt"
+   */
+  labelClearSelectedItem?: string;
+  /** Tekst for skjemleser for knapp som lukker listen med valg
+   * @default "Lukk liste med valg"
+   */
+  ariaLabelCloseList?: string;
+  /** Tekst for skjemleser for knapp som åpner listen med valg
+   * @default "Åpne liste med valg"
+   */
+  ariaLabelOpenList?: string;
 };
 
 export const SearchableDropdownBeta = ({
+  ariaLabelCloseList,
+  ariaLabelOpenList,
   className,
-  clearable = false,
+  clearable = true,
   debounceTimeout,
   disabled = false,
   disableLabelAnimation = false,
@@ -89,10 +100,10 @@ export const SearchableDropdownBeta = ({
   itemFilter = lowerCaseFilterTest,
   items: initialItems,
   label,
+  labelClearSelectedItem = 'fjern valgt',
   listStyle,
   loadingText,
   onChange,
-  openOnFocus = false,
   placeholder,
   prepend,
   readOnly = false,
@@ -143,6 +154,7 @@ export const SearchableDropdownBeta = ({
       }
 
       switch (type) {
+        // empty input to show selected item and reset dropdown list on item selection
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.InputBlur:
@@ -150,9 +162,10 @@ export const SearchableDropdownBeta = ({
           filterListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
-            inputValue: EMPTY_INPUT, // reset input value to show placeholder on focus
+            inputValue: EMPTY_INPUT,
           };
         }
+        // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
         case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
           const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
@@ -165,7 +178,7 @@ export const SearchableDropdownBeta = ({
               openMenu();
 
               if (isOpen && changes.highlightedIndex !== undefined) {
-                onChange(listItems[changes.highlightedIndex]); // select highlighted item with space key
+                onChange?.(listItems[changes.highlightedIndex]);
               }
             }
           } else {
@@ -187,7 +200,6 @@ export const SearchableDropdownBeta = ({
     getLabelProps,
     getMenuProps,
     getInputProps,
-    getComboboxProps,
     highlightedIndex,
     getItemProps,
     selectedItem,
@@ -206,7 +218,7 @@ export const SearchableDropdownBeta = ({
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
-          onChange(clickedItem ?? null);
+          onChange?.(clickedItem ?? null);
       }
     },
     // Accessibility
@@ -218,7 +230,7 @@ export const SearchableDropdownBeta = ({
   });
 
   const handleOnClear = () => {
-    onChange(null);
+    onChange?.(null);
     setInputValue(EMPTY_INPUT);
     inputRef.current?.focus();
     updateListItems({ inputValue });
@@ -227,11 +239,12 @@ export const SearchableDropdownBeta = ({
   return (
     <div className="eds-dropdown__wrapper">
       <BaseFormControl
-        aria-labelledby={getLabelProps().id}
         append={
           <FieldAppend
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
             clearable={clearable}
-            labelClearSelectedItems="Fjern valgt"
+            labelClearSelectedItems={labelClearSelectedItem}
             disabled={readOnly || disabled}
             focusable={false}
             getToggleButtonProps={getToggleButtonProps}
@@ -246,24 +259,14 @@ export const SearchableDropdownBeta = ({
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
-        isFilled={selectedItem || inputValue !== EMPTY_INPUT}
+        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
         label={label}
-        labelProps={getLabelProps({
-          'aria-label': `${label}${
-            selectedItem !== null ? ', ' + selectedItem.label + ' valgt' : ''
-          }`,
-        })}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
         prepend={prepend}
         readOnly={readOnly}
         style={style}
         variant={variant}
-        {...getComboboxProps({
-          onClick: (e: React.MouseEvent) => {
-            console.log('click');
-
-            if (!isOpen && isVoiceOverClick(e)) openMenu();
-          },
-        })}
         {...rest}
       >
         {!hideSelectedItem && selectedItem && !inputValue && (
@@ -283,7 +286,6 @@ export const SearchableDropdownBeta = ({
           className="eds-dropdown__input eds-form-control"
           disabled={readOnly || disabled}
           placeholder={selectedItem?.label ?? placeholder}
-          role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
           {...getInputProps({
             onClick: (e: React.MouseEvent) => {
               if (!isOpen && isVoiceOverClick(e)) openMenu();
@@ -292,7 +294,6 @@ export const SearchableDropdownBeta = ({
               setHideSelectedItem(false);
             },
             onFocus: () => {
-              if (!isOpen && openOnFocus) openMenu();
               setHideSelectedItem(true);
             },
             ref: inputRef,
