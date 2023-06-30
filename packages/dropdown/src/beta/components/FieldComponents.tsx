@@ -17,6 +17,7 @@ import './FieldComponents.scss';
 
 export const SelectedItemTag = ({
   ariaLabelRemoveSelected,
+  ariaLabelChosen = 'valgt',
   disabled,
   getSelectedItemProps,
   index,
@@ -25,6 +26,7 @@ export const SelectedItemTag = ({
   selectedItem,
 }: {
   ariaLabelRemoveSelected: string;
+  ariaLabelChosen?: string;
   disabled?: boolean;
   getSelectedItemProps?: (
     options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType>,
@@ -50,7 +52,7 @@ export const SelectedItemTag = ({
         e.stopPropagation();
         removeSelectedItem(selectedItem);
       }}
-      closeButtonAriaLabel={`${selectedItem.label} valgt, ${ariaLabelRemoveSelected} `}
+      closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
       key={selectedItem.value}
       aria-live="polite"
     >
@@ -60,6 +62,9 @@ export const SelectedItemTag = ({
 };
 
 export const FieldAppend: React.FC<{
+  ariaHiddenToggleButton?: boolean;
+  ariaLabelCloseList?: string;
+  ariaLabelOpenList?: string;
   clearable?: boolean;
   labelClearSelectedItems?: string;
   disabled?: boolean;
@@ -73,6 +78,9 @@ export const FieldAppend: React.FC<{
   onClear: () => void;
   selectedItems: (NormalizedDropdownItemType | null)[];
 }> = ({
+  ariaHiddenToggleButton = false,
+  ariaLabelCloseList,
+  ariaLabelOpenList,
   clearable = false,
   labelClearSelectedItems,
   disabled = false,
@@ -95,23 +103,25 @@ export const FieldAppend: React.FC<{
     return null;
   }
   return (
-    // to have a natural tab order, these elements are ordered opposite of how they are displayed
     <div className="eds-dropdown-appendix">
-      <ToggleButton
-        getToggleButtonProps={getToggleButtonProps}
-        isOpen={isOpen}
-        focusable={focusable}
-      />
       {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
         <>
-          <div className="eds-dropdown-appendix__divider" />
           <ClearableButton
             onClear={onClear}
             focusable={true}
             labelClearSelectedItems={labelClearSelectedItems}
           />
+          <div className="eds-dropdown-appendix__divider" />
         </>
       )}
+      <ToggleButton
+        aria-hidden={ariaHiddenToggleButton}
+        ariaLabelCloseList={ariaLabelCloseList}
+        ariaLabelOpenList={ariaLabelOpenList}
+        getToggleButtonProps={getToggleButtonProps}
+        isOpen={isOpen}
+        focusable={focusable}
+      />
     </div>
   );
 };
@@ -148,16 +158,18 @@ const ClearableButton = ({
 const ToggleButton = ({
   getToggleButtonProps,
   isOpen,
+  'aria-hidden': ariaHidden = false,
   ariaLabelCloseList = 'Lukk liste med valg',
-  ariaLabelOpen = 'Åpne liste med valg',
+  ariaLabelOpenList = 'Åpne liste med valg',
   focusable = false,
 }: {
   getToggleButtonProps: (
     options?: UseComboboxGetToggleButtonPropsOptions | undefined,
   ) => any;
   isOpen: boolean;
+  'aria-hidden'?: boolean;
   ariaLabelCloseList?: string;
-  ariaLabelOpen?: string;
+  ariaLabelOpenList?: string;
   focusable?: boolean;
 }) => {
   return (
@@ -167,7 +179,8 @@ const ToggleButton = ({
           'eds-dropdown-appendix__toggle-button--open': isOpen,
         }),
       })}
-      aria-label={isOpen ? ariaLabelCloseList : ariaLabelOpen}
+      aria-hidden={ariaHidden}
+      aria-label={isOpen ? ariaLabelCloseList : ariaLabelOpenList}
       tabIndex={focusable ? 0 : -1}
       type="button"
     >
