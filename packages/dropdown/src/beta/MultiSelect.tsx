@@ -7,6 +7,7 @@ import {
   A11yStatusMessageOptions,
 } from 'downshift';
 
+import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl, VariantType } from '@entur/form';
 import { useRandomId } from '@entur/utils';
 
@@ -34,78 +35,96 @@ import './Dropdown.scss';
 export type MultiSelectBetaProps = {
   /** Tilgjengelige valg i MultiSelect */
   items: PotentiallyAsyncDropdownItemType;
-  /** Elementer som er valgt blant 'items'.
-   *  Denne skal oppdateres av onChange.
+  /** Elementer som er valgt blant 'items'. Bruk tom liste for ingen valgte
    */
   selectedItems: NormalizedDropdownItemType[];
   /** Callback med alle valgte verdier.
    *  Bruk denne til å oppdatere selectedItems-listen */
-  onChange: (selectedItems: NormalizedDropdownItemType[]) => void;
+  onChange?: (selectedItems: NormalizedDropdownItemType[]) => void;
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Tekst eller ikon som kommer før MultiSelect */
-  prepend?: React.ReactNode;
   /** Om dropdown-en er deaktivert */
   disabled?: boolean;
   /** Om dropdown-en er i read-only modus */
   readOnly?: boolean;
+  /** Om en knapp for å fjerne alle valg skal vises
+   * @default true
+   */
+  clearable?: boolean;
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe
-   * @default false
-   */
-  openOnFocus?: boolean;
   /** Skjuler «Velg alle» fra listen med valg
    * @default false
    */
   hideSelectAll?: boolean;
-  /** Teksten som vises for «Velg alle»-elementet i listen
-   * @default "Velg alle"
-   */
-  selectAllLabel?: string;
-  /** Teksten som vises for «Velg alle»-elementet i listen
-   * @default "Alle valgt"
-   */
-  allItemsSelectedLabel?: string;
-  /** Skjermleser-tekst som for å fjerne alle valg
-   * @default "Fjern valgte"
-   */
-  ariaLabelClearAllItems?: string;
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Tekst for skjemleser på knapper for å fjerne valgt element
-   * @default "trykk for å fjerne valg"
-   */
-  ariaLabelRemoveSelected?: string;
-  /** Styling som sendes ned til MultiSelect-lista */
-  listStyle?: { [key: string]: any };
   /** Antall millisekunder man venter før man kaller en potensiell items-funksjon
    * @default 250
    */
   debounceTimeout?: number;
+  /** Maks antall individuelle valgt-element-tags i MultiSelect-en før de blir til en samle-tag
+   * @default 10
+   */
   maxTags?: number;
-  /** Om en knapp for å fjerne alle valg skal vises
+  /** Tekst eller ikon som kommer før MultiSelect */
+  prepend?: React.ReactNode;
+  /** Resetter input etter at et element er valgt i listen
    * @default false
    */
-  clearable?: boolean;
   clearInputOnSelect?: boolean;
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnBlur?: boolean;
-  loading?: boolean;
   style?: React.CSSProperties;
+  /** Styling som sendes ned til MultiSelect-lista */
+  listStyle?: { [key: string]: any };
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Teksten som vises for «Velg alle»-elementet i listen
+   * @default "Velg alle"
+   */
+  labelSelectAll?: string;
+  /** Teksten som vises for «Velg alle»-elementet i listen
+   * @default "Alle valgt"
+   */
+  labelAllItemsSelected?: string;
+  /** Skjermleser-tekst som for å fjerne alle valg
+   * @default "Fjern valgte"
+   */
+  labelClearAllItems?: string;
+  /** Tekst for skjemleser på knapper for å fjerne valgt element
+   * @default "trykk for å fjerne valg"
+   */
+  ariaLabelRemoveSelected?: string;
+  /** Tekst for skjemleser for å indikere at et element er valgt
+   * @default "valgt"
+   */
+  ariaLabelChosenSingular?: string;
+  /** Tekst for skjemleser for å indikere at et element er valgt
+   * @default "valgte"
+   */
+  ariaLabelChosenPlural?: string;
+  /** Tekst for skjemleser for knapp som lukker listen med valg
+   * @default "Lukk liste med valg"
+   */
+  ariaLabelCloseList?: string;
+  /** Tekst for skjemleser for knapp som åpner listen med valg
+   * @default "Åpne liste med valg"
+   */
+  ariaLabelOpenList?: string;
+  /** Tekst for skjemleser for å hoppe til input-feltet
+   * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
+   */
+  ariaLabelJumpToInput?: string;
 };
 
 export const MultiSelectBeta = ({
-  allItemsSelectedLabel = 'Alle valgt',
-  ariaLabelRemoveSelected = 'trykk for å fjerne valg',
   className,
-  clearable = false,
-  ariaLabelClearAllItems = 'Fjern valgte',
+  clearable = true,
   clearInputOnSelect = false,
   debounceTimeout,
   disabled = false,
@@ -113,18 +132,25 @@ export const MultiSelectBeta = ({
   hideSelectAll = false,
   items: initialItems,
   label,
+  labelAllItemsSelected = 'Alle valgt',
+  labelClearAllItems = 'Fjern valgte',
+  labelSelectAll = 'Velg alle',
   listStyle,
   loadingText,
   maxTags = 10,
-  onChange,
-  openOnFocus = false,
+  onChange = () => undefined,
   placeholder,
   readOnly = false,
-  selectAllLabel = 'Velg alle',
   selectedItems,
   selectOnBlur = false,
   style,
   variant = 'info',
+  ariaLabelChosenSingular = 'valgt',
+  ariaLabelChosenPlural = 'valgte',
+  ariaLabelCloseList,
+  ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
+  ariaLabelOpenList,
+  ariaLabelRemoveSelected = 'trykk for å fjerne valg',
   ...rest
 }: MultiSelectBetaProps) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
@@ -143,18 +169,21 @@ export const MultiSelectBeta = ({
     typeof initialItems !== 'function' &&
     selectedItems.length === normalizedItems.length;
 
+  // special 'item' used as Select All entry in the dropdown list
   const selectAll: NormalizedDropdownItemType = {
     value: useRandomId('select-all'),
-    label: selectAllLabel,
+    label: labelSelectAll,
   };
+  // special 'item' used as a replacement selected item tag for when
+  // there are more selected element than maxTags
   const summarySelectedItems: NormalizedDropdownItemType = React.useMemo(
     () => ({
       value: EMPTY_INPUT,
       label: isAllNonAsyncItemsSelected
-        ? allItemsSelectedLabel
-        : selectedItems.length + ' valgte',
+        ? labelAllItemsSelected
+        : selectedItems.length + ' ' + ariaLabelChosenPlural,
     }),
-    [isAllNonAsyncItemsSelected, selectedItems, allItemsSelectedLabel],
+    [isAllNonAsyncItemsSelected, selectedItems, labelAllItemsSelected],
   );
 
   const [listItems, setListItems] = useState([
@@ -213,6 +242,7 @@ export const MultiSelectBeta = ({
       }
 
       switch (type) {
+        // keep menu open and edit input value on item selection
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick: {
           if (clearInputOnSelect) {
@@ -220,12 +250,13 @@ export const MultiSelectBeta = ({
           }
           return {
             ...changes,
-            isOpen: true, // keep the menu open after selection.
+            isOpen: true,
             inputValue: clearInputOnSelect
               ? EMPTY_INPUT
               : inputRef?.current?.value ?? EMPTY_INPUT,
           };
         }
+        // edit input value when selected items is updated outside component
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
           return {
             ...changes,
@@ -234,6 +265,7 @@ export const MultiSelectBeta = ({
               : inputRef?.current?.value ?? EMPTY_INPUT,
           };
         }
+        // remove leading whitespace, select item with spacebar if input is empty and filter list items
         case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
           const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
@@ -259,6 +291,7 @@ export const MultiSelectBeta = ({
 
           return changes;
         }
+        // reset input value when leaving input field
         case useCombobox.stateChangeTypes.InputBlur: {
           return {
             ...changes,
@@ -273,7 +306,6 @@ export const MultiSelectBeta = ({
   );
 
   const {
-    getComboboxProps,
     getInputProps,
     getItemProps,
     getLabelProps,
@@ -327,20 +359,17 @@ export const MultiSelectBeta = ({
     updateListItems({ inputValue });
   };
 
-  // role=combobox leads to strange VoiceOver behavior and is therefor omitted
-  // const { role: _, ...comboboxProps } = getComboboxProps();
-  const { ...comboboxProps } = getComboboxProps();
-
   return (
     <div className="eds-dropdown__wrapper">
       <BaseFormControl
-        aria-labelledby={getLabelProps().id}
         append={
           <FieldAppend
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
             selectedItems={selectedItems}
             isOpen={isOpen}
             clearable={clearable}
-            labelClearSelectedItems={ariaLabelClearAllItems}
+            labelClearSelectedItems={labelClearAllItems}
             focusable={false}
             loading={loading}
             loadingText={loadingText}
@@ -355,13 +384,10 @@ export const MultiSelectBeta = ({
         isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
         label={label}
         labelId={getLabelProps().id}
-        labelProps={getLabelProps({
-          'aria-label': `${label}, ${selectedItems.length} valgte elementer`,
-        })}
+        labelProps={getLabelProps()}
         readOnly={readOnly}
         style={style}
         variant={variant}
-        {...comboboxProps}
         {...rest}
       >
         <div
@@ -373,28 +399,39 @@ export const MultiSelectBeta = ({
           }}
         >
           {selectedItems.length < maxTags ? (
-            selectedItems.map((selectedItem, index) => (
-              <SelectedItemTag
-                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
-                disabled={disabled}
-                getSelectedItemProps={getSelectedItemProps}
-                index={index}
-                key={selectedItem.value}
-                readOnly={readOnly}
-                removeSelectedItem={() => {
-                  handleListItemClicked({
-                    clickedItem: selectedItem,
-                    onChange,
-                    setLastRemovedItem,
-                  });
-                  inputRef?.current?.focus();
-                }}
-                selectedItem={selectedItem}
-              />
-            ))
+            <>
+              {selectedItems.length > 1 ? (
+                <VisuallyHidden onClick={() => inputRef.current?.focus()}>
+                  {ariaLabelJumpToInput}
+                </VisuallyHidden>
+              ) : (
+                <></>
+              )}
+              {selectedItems.map((selectedItem, index) => (
+                <SelectedItemTag
+                  ariaLabelChosen={ariaLabelChosenSingular}
+                  ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                  disabled={disabled}
+                  getSelectedItemProps={getSelectedItemProps}
+                  index={index}
+                  key={selectedItem.value}
+                  readOnly={readOnly}
+                  removeSelectedItem={() => {
+                    handleListItemClicked({
+                      clickedItem: selectedItem,
+                      onChange,
+                      setLastRemovedItem,
+                    });
+                    inputRef?.current?.focus();
+                  }}
+                  selectedItem={selectedItem}
+                />
+              ))}
+            </>
           ) : (
             <SelectedItemTag
-              ariaLabelRemoveSelected={ariaLabelClearAllItems}
+              ariaLabelRemoveSelected={labelClearAllItems}
+              ariaLabelChosen=""
               disabled={disabled}
               readOnly={readOnly}
               removeSelectedItem={handleOnClear}
@@ -405,14 +442,10 @@ export const MultiSelectBeta = ({
             placeholder={placeholder}
             className="eds-dropdown__input eds-form-control"
             disabled={readOnly || disabled}
-            role="combobox" // eslint-disable-line jsx-a11y/role-has-required-aria-props
             {...getInputProps(
               getDropdownProps({
                 onClick: (e: React.MouseEvent) => {
                   if (!isOpen && isVoiceOverClick(e)) openMenu();
-                },
-                onFocus: () => {
-                  if (!isOpen && openOnFocus) openMenu();
                 },
                 preventKeyAction: isOpen,
                 ref: inputRef,

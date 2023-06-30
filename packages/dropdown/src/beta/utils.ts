@@ -66,7 +66,7 @@ export const useMultiselectUtils = ({
   const clickedItemIsSelectAll = (clickedItem: NormalizedDropdownItemType) =>
     clickedItem.value === selectAll.value;
 
-  const handleItemClicked = ({
+  const handleListItemClicked = ({
     clickedItem,
     onChange,
     setLastRemovedItem,
@@ -130,7 +130,7 @@ export const useMultiselectUtils = ({
     allListItemsAreSelected,
     clickedItemIsInSelectedItems,
     clickedItemIsSelectAll,
-    handleListItemClicked: handleItemClicked,
+    handleListItemClicked,
     hasSelectedItems,
     listItemsWithoutSelectAll,
     removeClickedItemFromSelectedItems,
