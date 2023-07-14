@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { DropdownBeta, DropdownItemType } from '..';
+import { SearchableDropdown, DropdownItemType } from '..';
 
 expect.extend(toHaveNoViolations);
 
-describe('Dropdown', () => {
+describe('SearchableDropdown', () => {
   const testItems = [
     'Oslo',
     'Bergen',
@@ -20,7 +20,11 @@ describe('Dropdown', () => {
 
   test('is displayed with label', () => {
     render(
-      <DropdownBeta label="test label" items={testItems} selectedItem={null} />,
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+      />,
     );
 
     expect(screen.queryAllByLabelText('test label')[0]).toBeInTheDocument();
@@ -30,7 +34,7 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -54,7 +58,7 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -62,9 +66,8 @@ describe('Dropdown', () => {
       />,
     );
 
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
-    toggleButton.focus();
-    await user.keyboard('{Enter}{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
+    screen.getByRole('combobox', { name: 'test label' }).focus();
+    await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
 
     expect(onChange).toHaveBeenCalledWith({
       value: 'Kristiansund',
@@ -76,7 +79,7 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -100,7 +103,7 @@ describe('Dropdown', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -109,39 +112,150 @@ describe('Dropdown', () => {
     );
 
     screen.getByRole('combobox', { name: 'test label' }).focus();
-
-    await user.keyboard('{Enter}');
     const dropdownList = screen.getByRole('listbox', { name: 'test label' });
 
-    // open and close on select with enter
+    // focus opens list
     expect(dropdownList).toBeVisible();
+
+    // close on select with enter
     await user.keyboard('{Enter}');
     expect(dropdownList).not.toBeVisible();
 
-    // open and close on select with space
+    // open and don't close on select with space
     await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
     await user.keyboard('{ }');
-    expect(dropdownList).not.toBeVisible();
+    expect(dropdownList).toBeVisible();
 
     // close on esc
-    await user.keyboard('{Enter}');
+    await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
 
     // close on tab
-    await user.keyboard('{Enter}');
+    await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
     await user.keyboard('{Tab}');
     expect(dropdownList).not.toBeVisible();
+  });
+
+  test('handles typeahead filter correctly', async () => {
+    const user = userEvent.setup();
+    const useResolvedItemsDebounceTimeout = 100;
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={inputValue => {
+          return new Promise<DropdownItemType[]>(resolve => {
+            if (!inputValue) resolve(['default']);
+            const queryRegex = new RegExp(inputValue, 'i');
+            setTimeout(
+              () => resolve(testItems.filter(item => queryRegex.test(item))),
+              400,
+            );
+          });
+        }}
+        selectedItem={null}
+        loadingText="loading"
+        debounceTimeout={useResolvedItemsDebounceTimeout}
+      />,
+    );
+
+    screen.getByRole('combobox', { name: 'test label' }).focus();
+
+    expect(
+      screen.queryByRole('option', { name: 'Bergen' }),
+    ).not.toBeInTheDocument();
+
+    // since we are updating state with typeahead we need to wrap this section in 'act'
+    await act(async () => {
+      await user.keyboard('{b}');
+
+      await new Promise(r => setTimeout(r, useResolvedItemsDebounceTimeout)); // wait out debounce for search to start loading new data
+
+      expect(screen.queryByText('loading')).toBeInTheDocument();
+
+      await waitFor(() => screen.getByRole('option', { name: 'Bergen' }));
+    });
+
+    expect(screen.queryByText('loading')).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByRole('option', { name: 'Bergen' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: 'Brønnøysund' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: 'Oslo' }),
+    ).not.toBeInTheDocument();
+  });
+
+  test('works with default itemFilter', async () => {
+    const user = userEvent.setup();
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+      />,
+    );
+
+    screen.getByRole('combobox', { name: 'test label' }).focus();
+
+    expect(
+      screen.queryByRole('option', { name: 'Kristiansund' }),
+    ).toBeInTheDocument();
+
+    await user.keyboard('{b}');
+
+    expect(
+      screen.queryByRole('option', { name: 'Bergen' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: 'Kristiansund' }),
+    ).not.toBeInTheDocument();
+  });
+
+  test('works with custom itemFilter', async () => {
+    const user = userEvent.setup();
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={null}
+        itemFilter={
+          (item, inputValue) =>
+            !new RegExp(inputValue ?? '', 'i').test(item.label) // filter out matches
+        }
+      />,
+    );
+
+    screen.getByRole('combobox', { name: 'test label' }).focus();
+
+    expect(
+      screen.queryByRole('option', { name: 'Kristiansund' }),
+    ).not.toBeInTheDocument();
+
+    await user.keyboard('{b}');
+
+    expect(
+      screen.queryByRole('option', { name: 'Kristiansund' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: 'Stavanger' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('option', { name: 'Bergen' }),
+    ).not.toBeInTheDocument();
   });
 
   test('selects item with tab when selectOnBlur is true', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -162,7 +276,7 @@ describe('Dropdown', () => {
   test('displays selected item', () => {
     const selectedItem = { label: 'selected', value: 'selected' };
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={selectedItem}
@@ -177,7 +291,7 @@ describe('Dropdown', () => {
     const selectedItem = { label: 'selected', value: 'selected' };
     const onChange = jest.fn();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={selectedItem}
@@ -209,7 +323,7 @@ describe('Dropdown', () => {
       },
     ];
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={mixedItems}
         selectedItem={null}
@@ -218,7 +332,6 @@ describe('Dropdown', () => {
     );
 
     screen.getByRole('combobox', { name: 'test label' }).focus();
-    await user.keyboard('{Enter}');
 
     expect(screen.getAllByRole('option')).toHaveLength(mixedItems.length);
 
@@ -233,7 +346,7 @@ describe('Dropdown', () => {
   test('works with items as a synchronous function', async () => {
     const user = userEvent.setup();
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={() => testItems}
         selectedItem={null}
@@ -254,7 +367,7 @@ describe('Dropdown', () => {
       });
     };
     render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={asyncItems}
         selectedItem={null}
@@ -269,34 +382,9 @@ describe('Dropdown', () => {
     expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
   });
 
-  test('highlights matched item on letter keydown', async () => {
-    const user = userEvent.setup();
-    const onChange = jest.fn();
-
-    render(
-      <DropdownBeta
-        label="test label"
-        items={testItems}
-        selectedItem={null}
-        onChange={onChange}
-      />,
-    );
-
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
-    toggleButton.focus();
-
-    // Set highlighted item to first item that start with 's'
-    await user.keyboard('{s}');
-    await user.keyboard('{Enter}');
-    expect(onChange).toHaveBeenCalledWith({
-      value: 'Stavanger',
-      label: 'Stavanger',
-    });
-  });
-
   test('applies className to eds-dropdown element', () => {
     const { container } = render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -311,7 +399,7 @@ describe('Dropdown', () => {
 
   test('applies listStyle to list element', () => {
     const { container } = render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={null}
@@ -327,7 +415,7 @@ describe('Dropdown', () => {
   test('does not violate basic accessibility', async () => {
     const selectedItem = { label: 'choice1', value: 'choice1' };
     const { container } = render(
-      <DropdownBeta
+      <SearchableDropdown
         label="test label"
         items={testItems}
         selectedItem={selectedItem}

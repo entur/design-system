@@ -1,148 +1,196 @@
 import React from 'react';
-import { VariantType } from '@entur/form';
-import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
-import { RegularDropdown } from './RegularDropdown';
-import { DownshiftProvider } from './DownshiftProvider';
-import { SearchableDropdown } from './SearchableDropdown';
-import { DropdownInputGroup } from './DropdownInputGroup';
+import { useSelect } from 'downshift';
+import classNames from 'classnames';
+
+import { BaseFormControl, VariantType } from '@entur/form';
+
+import { DropdownList } from './components/DropdownList';
+import { FieldAppend } from './components/FieldComponents';
+
+import { NormalizedDropdownItemType } from './useNormalizedItems';
 import {
-  useResolvedItems,
   PotentiallyAsyncDropdownItemType,
-} from './beta/useResolvedItems';
+  useResolvedItems,
+} from './useResolvedItems';
+import { itemToString } from './utils';
+
+import './Dropdown.scss';
 
 export type DropdownProps = {
-  /** Beskrivende tekst som forklarer feltet */
-  label: string;
-  /** Tilgjengelige valg i dropdownen */
+  /** Tilgjengelige valg i dropdown-en */
   items: PotentiallyAsyncDropdownItemType;
   /** Valgt verdi. Bruk null for ingen verdi. */
-  value?: string | null;
-  /** Om man skal kunne søke i dropdownen eller ikke */
-  searchable?: boolean;
-  /** Tooltip for labelen */
-  labelTooltip?: string;
+  selectedItem: NormalizedDropdownItemType | null;
+  /** Callback ved valg som skal oppdatere selectedItem */
+  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
+  /** Beskrivende tekst som forklarer feltet */
+  label: string;
+  /** Placeholder-tekst når ingenting er satt */
+  placeholder?: string;
+  /** Om man skal ha mulighet for å nullstille Dropdown-en
+   * @default true
+   */
+  clearable?: boolean;
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnBlur?: boolean;
+  /** Deaktiver dropdown-en */
+  disabled?: boolean;
+  /** Setter dropdown-en i read-only modus */
+  readOnly?: boolean;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Tekst eller ikon som kommer før dropdownen */
+  /** Tekst eller ikon som kommer før dropdown-en */
   prepend?: React.ReactNode;
-  /** Deaktiver dropdownen */
-  disabled?: boolean;
-  /** Setter dropdownen i read-only modus */
-  readOnly?: boolean;
-  /** Placeholder-tekst når ingenting er satt */
-  placeholder?: string;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  /** Callback når brukeren endrer valg */
-  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
-  /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
-  selectOnTab?: boolean;
-  /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
-  openOnFocus?: boolean;
-  /** Antall millisekunder man venter før man kaller en potensiell items-funksjon */
-  debounceTimeout?: number;
-  /** Om man skal ha muliget for å nullstille Dropdownen
-   * @default false
+  /** Om man skal ha mulighet for å nullstille Dropdown-en
+   * @default "fjern valgt"
    */
-  clearable?: boolean;
-  /** Ekstra klassenavn */
-  className?: string;
-  /** Marker første valgmulighet automatisk */
-  highlightFirstItemOnOpen?: boolean;
-  /** Styling som sendes ned til Dropdown-lista */
-  listStyle?: { [key: string]: any };
-  /** Filtreringen som blir brukt dersom man har en searchable Dropdown
-   * @default Enkel tekstsammenligning
-   */
-  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  labelClearSelectedItem?: string;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
   disableLabelAnimation?: boolean;
-  /** Alle ekstra props videresendes til Downshift */
-  [key: string]: any;
+  /** Ekstra klassenavn */
+  className?: string;
+  /** Styling som sendes ned til Dropdown-lista */
+  listStyle?: { [key: string]: any };
+  /** Styling for Dropdown-en */
+  style?: { [key: string]: any };
+  /** Tekst for skjemleser for knapp som lukker listen med valg
+   * @default "Lukk liste med valg"
+   */
+  ariaLabelCloseList?: string;
+  /** Tekst for skjemleser for knapp som åpner listen med valg
+   * @default "Åpne liste med valg"
+   */
+  ariaLabelOpenList?: string;
 };
-export const Dropdown: React.FC<DropdownProps> = React.forwardRef<
-  HTMLInputElement | HTMLButtonElement,
-  DropdownProps
->(
-  (
-    {
-      highlightFirstItemOnOpen,
-      debounceTimeout,
-      disabled,
-      feedback,
-      items,
-      label,
-      loadingText,
-      onChange = () => undefined,
-      placeholder,
-      prepend,
-      readOnly,
-      searchable,
-      selectOnTab,
-      openOnFocus,
-      variant,
-      value,
-      clearable = false,
-      className,
-      style,
-      listStyle,
-      itemFilter,
-      disableLabelAnimation,
-      ...rest
+
+export const Dropdown = ({
+  ariaLabelCloseList,
+  ariaLabelOpenList,
+  className,
+  clearable = true,
+  disabled = false,
+  disableLabelAnimation,
+  feedback,
+  items: initialItems,
+  label,
+  labelClearSelectedItem = 'fjern valgt',
+  listStyle,
+  loadingText,
+  onChange,
+  placeholder,
+  prepend,
+  readOnly = false,
+  selectedItem,
+  selectOnBlur = false,
+  style,
+  variant = 'info',
+  ...rest
+}: DropdownProps) => {
+  const { items: normalizedItems, loading } = useResolvedItems(initialItems);
+  const isFilled = selectedItem !== null || placeholder !== undefined;
+
+  const {
+    isOpen,
+    getItemProps,
+    getLabelProps,
+    getMenuProps,
+    getToggleButtonProps,
+    highlightedIndex,
+  } = useSelect({
+    items: normalizedItems,
+    defaultHighlightedIndex: selectedItem ? undefined : 0,
+    selectedItem,
+    onStateChange({ type, selectedItem: clickedItem }) {
+      switch (type) {
+        // @ts-expect-error This falltrough is wanted
+        case useSelect.stateChangeTypes.ToggleButtonBlur:
+          if (!selectOnBlur) break;
+        case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
+        case useSelect.stateChangeTypes.ItemClick: {
+          onChange?.(clickedItem !== undefined ? clickedItem : null);
+        }
+      }
     },
-    ref,
-  ) => {
-    const {
-      items: normalizedItems,
-      loading,
-      fetchItems,
-    } = useResolvedItems(items, debounceTimeout);
+    itemToString,
+  });
 
-    const selectedItem =
-      value === undefined
-        ? undefined
-        : normalizedItems.find(item => value === item.value) || null;
-
-    const RenderedDropdown = searchable ? SearchableDropdown : RegularDropdown;
-    const searchAbleProps = searchable
-      ? { itemFilter: itemFilter, name: rest.name, 'data-cy': rest['data-cy'] }
-      : { name: rest.name, 'data-cy': rest['data-cy'] };
-    return (
-      <DownshiftProvider
-        selectedItem={selectedItem}
-        onInputValueChange={fetchItems}
-        onChange={onChange}
-        value={value}
-        highlightFirstItemOnOpen={highlightFirstItemOnOpen}
-        className={className}
-        style={style}
-        searchable={searchable}
-        {...rest}
-      >
-        <DropdownInputGroup feedback={feedback} variant={variant}>
-          <RenderedDropdown
-            label={label}
-            items={normalizedItems}
+  return (
+    <div className="eds-dropdown__wrapper">
+      <BaseFormControl
+        append={
+          <FieldAppend
+            ariaHiddenToggleButton={true}
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
+            clearable={true}
+            labelClearSelectedItems={labelClearSelectedItem}
+            focusable={false}
+            getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
             loading={loading}
             loadingText={loadingText}
-            disabled={disabled}
-            readOnly={readOnly}
-            placeholder={placeholder}
-            prepend={prepend}
-            selectOnTab={selectOnTab}
-            openOnFocus={openOnFocus}
-            listStyle={listStyle}
-            clearable={clearable}
-            disableLabelAnimation={disableLabelAnimation}
-            ref={ref}
-            {...searchAbleProps}
+            onClear={() => {
+              onChange?.(null);
+            }}
+            disabled={readOnly || disabled}
+            selectedItems={[selectedItem]}
           />
-        </DropdownInputGroup>
-      </DownshiftProvider>
-    );
-  },
-);
+        }
+        className={classNames('eds-dropdown', className, {
+          'eds-dropdown--not-filled': !isFilled,
+        })}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={isFilled}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        prepend={prepend}
+        readOnly={readOnly}
+        style={style}
+        variant={variant}
+        {...rest}
+      >
+        <div
+          className="eds-dropdown__selected-item-button"
+          {...getToggleButtonProps({
+            id: undefined,
+          })}
+        >
+          {selectedItem?.label ?? (
+              <span
+                className={classNames(
+                  'eds-dropdown__selected-item-button__placeholder',
+                  {
+                    'eds-dropdown__selected-item-button__placeholder--readonly':
+                      readOnly,
+                  },
+                )}
+              >
+                {placeholder}
+              </span>
+            ) ??
+            ''}
+        </div>
+      </BaseFormControl>
+      <DropdownList
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
+        isOpen={isOpen}
+        listItems={normalizedItems}
+        listStyle={listStyle}
+        loading={loading}
+        loadingText={loadingText}
+        selectedItems={selectedItem !== null ? [selectedItem] : []}
+      />
+    </div>
+  );
+};

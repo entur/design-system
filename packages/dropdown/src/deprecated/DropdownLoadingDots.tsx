@@ -11,7 +11,7 @@ export type InlineSpinnerType = {
   children: string;
   [key: string]: any;
 };
-export const DropdownLoadingDots: React.FC<InlineSpinnerType> = ({
+export const DropdownDeprecatedLoadingDots: React.FC<InlineSpinnerType> = ({
   className,
   children,
   ...rest
