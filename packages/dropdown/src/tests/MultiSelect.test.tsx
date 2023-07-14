@@ -2,8 +2,7 @@ import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { MultiSelectBeta, DropdownItemType } from '..';
-import { NormalizedDropdownItemType } from '../../../dist/beta';
+import { MultiSelect, DropdownItemType, NormalizedDropdownItemType } from '..';
 
 expect.extend(toHaveNoViolations);
 
@@ -28,11 +27,7 @@ describe('MultiSelect', () => {
 
   test('is displayed with label', () => {
     render(
-      <MultiSelectBeta
-        label="test label"
-        items={testItems}
-        selectedItems={[]}
-      />,
+      <MultiSelect label="test label" items={testItems} selectedItems={[]} />,
     );
 
     expect(screen.queryAllByLabelText('test label')[0]).toBeInTheDocument();
@@ -48,7 +43,7 @@ describe('MultiSelect', () => {
       },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -88,7 +83,7 @@ describe('MultiSelect', () => {
       },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -121,7 +116,7 @@ describe('MultiSelect', () => {
       },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -158,7 +153,7 @@ describe('MultiSelect', () => {
       },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -182,7 +177,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -203,7 +198,7 @@ describe('MultiSelect', () => {
     const onChange = jest.fn();
     const selectedItems = [normalizedTestItems[0]];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={normalizedTestItems}
         selectedItems={selectedItems}
@@ -225,7 +220,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={normalizedTestItems}
         selectedItems={normalizedTestItems}
@@ -246,7 +241,7 @@ describe('MultiSelect', () => {
 
   test('hideSelectAll hides select all option', async () => {
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -267,7 +262,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -291,7 +286,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -326,7 +321,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const useResolvedItemsDebounceTimeout = 100;
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={inputValue => {
           return new Promise<DropdownItemType[]>(resolve => {
@@ -377,11 +372,7 @@ describe('MultiSelect', () => {
   test('works with default itemFilter', async () => {
     const user = userEvent.setup();
     render(
-      <MultiSelectBeta
-        label="test label"
-        items={testItems}
-        selectedItems={[]}
-      />,
+      <MultiSelect label="test label" items={testItems} selectedItems={[]} />,
     );
 
     screen.getByRole('combobox', { name: 'test label' }).focus();
@@ -403,7 +394,7 @@ describe('MultiSelect', () => {
   test('works with custom itemFilter', async () => {
     const user = userEvent.setup();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -437,7 +428,7 @@ describe('MultiSelect', () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -462,7 +453,7 @@ describe('MultiSelect', () => {
     ];
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -482,7 +473,7 @@ describe('MultiSelect', () => {
       { label: 'selected4', value: 'selected4' },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -496,7 +487,7 @@ describe('MultiSelect', () => {
 
   test('displays all-selected tag when all items are selected and total number of selected is larger than maxTags', () => {
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={normalizedTestItems}
@@ -514,7 +505,7 @@ describe('MultiSelect', () => {
     const selectedItems = [{ label: 'selected', value: 'selected' }];
     const onChange = jest.fn();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
@@ -546,7 +537,7 @@ describe('MultiSelect', () => {
       },
     ];
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={mixedItems}
         selectedItems={[]}
@@ -571,7 +562,7 @@ describe('MultiSelect', () => {
   test('works with items as a synchronous function', async () => {
     const user = userEvent.setup();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={() => testItems}
         selectedItems={[]}
@@ -592,11 +583,7 @@ describe('MultiSelect', () => {
       });
     };
     render(
-      <MultiSelectBeta
-        label="test label"
-        items={asyncItems}
-        selectedItems={[]}
-      />,
+      <MultiSelect label="test label" items={asyncItems} selectedItems={[]} />,
     );
 
     const inputField = screen.getByRole('combobox', { name: 'test label' });
@@ -610,7 +597,7 @@ describe('MultiSelect', () => {
   test('input is cleared when clearInputOnSelect is true', async () => {
     const user = userEvent.setup();
     render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -627,7 +614,7 @@ describe('MultiSelect', () => {
 
   test('applies className to eds-dropdown element', () => {
     const { container } = render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -642,7 +629,7 @@ describe('MultiSelect', () => {
 
   test('applies listStyle to list element', () => {
     const { container } = render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={[]}
@@ -658,7 +645,7 @@ describe('MultiSelect', () => {
   test('does not violate basic accessibility', async () => {
     const selectedItems = [{ label: 'choice1', value: 'choice1' }];
     const { container } = render(
-      <MultiSelectBeta
+      <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
