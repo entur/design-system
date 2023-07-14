@@ -1,16 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import { NormalizedDropdownItemType } from './beta/useNormalizedItems';
+import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
 import { CheckIcon } from '@entur/icons';
 import './DropdownList.scss';
 
-export type DropdownListProps = {
+export type DropdownListDeprecatedProps = {
   items: NormalizedDropdownItemType[];
   [key: string]: any;
 };
 
-export const DropdownList: React.FC<DropdownListProps> = ({
+export const DropdownListDeprecated: React.FC<DropdownListDeprecatedProps> = ({
   items,
   ...rest
 }) => {
