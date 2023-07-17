@@ -59,21 +59,24 @@ const SettingsPanel: React.FC = () => {
         <form onSubmit={() => setOpen(false)}>
           <Dropdown
             label="Hva slags bruker er du?"
-            style={{ marginBottom: '1rem', marginTop: '0.5rem;' }}
-            onChange={selectedItem =>
-              setUserType(
-                selectedItem ? (selectedItem.value as UserType) : 'developer',
-              )
-            }
             items={[
               { value: 'developer', label: 'Utvikler' },
               { value: 'designer', label: 'Designer' },
             ]}
-            value={userType}
+            selectedItem={{
+              label: userType === 'developer' ? 'Utvikler' : 'Designer',
+              value: userType,
+            }}
+            onChange={selectedItem =>
+              setUserType((selectedItem?.value as UserType) ?? 'developer')
+            }
+            style={{ marginBottom: '1rem', marginTop: '0.5rem;' }}
           />
           {userType === 'developer' && (
             <Dropdown
               label="Hvilket pakkehåndteringsverktøy bruker du?"
+              items={['yarn', 'npm']}
+              selectedItem={{ label: packageManager, value: packageManager }}
               onChange={selectedItem =>
                 setPackageManager(
                   selectedItem
@@ -81,26 +84,22 @@ const SettingsPanel: React.FC = () => {
                     : 'yarn',
                 )
               }
-              items={['yarn', 'npm']}
-              value={packageManager}
               style={{ marginBottom: '1rem' }}
             />
           )}
           <Dropdown
             className="eds-dropdown"
+            label="Hva slags variabler vil du se?"
             items={[
               { value: 'css', label: 'CSS' },
               { value: 'scss', label: 'SCSS' },
               { value: 'less', label: 'LESS' },
               { value: 'js', label: 'JavaScript' },
             ]}
-            label="Hva slags variabler vil du se?"
+            selectedItem={{ label: variableFormat, value: variableFormat }}
             onChange={selectedItem =>
-              setVariableFormat(
-                selectedItem ? (selectedItem.value as VariableFormat) : 'js',
-              )
+              setVariableFormat((selectedItem?.value as VariableFormat) ?? 'js')
             }
-            value={variableFormat}
           />
           <PrimaryButton width="fluid" style={{ marginTop: '1rem' }}>
             Lagre

@@ -9,7 +9,7 @@ tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
 ---
 
 import { Props, Link } from 'docz';
-import { Dropdown, NativeDropdown } from '@entur/dropdown';
+import { DropdownDeprecated, Dropdown, NativeDropdown } from '@entur/dropdown';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
@@ -23,12 +23,12 @@ import { Link as LinkText } from '@entur/typography';
 <PageHeader />
 
 <Playground style={{ overflow: 'visible' }}>
-  <Dropdown
+  <DropdownDeprecated
     items={dropdownItems}
     label="Reisende"
     style={{ marginBottom: '2rem' }}
   />
-  <Dropdown
+  <DropdownDeprecated
     items={countries}
     searchable
     label="Land"
@@ -94,7 +94,7 @@ Her er et interaktivt og komplett eksempel, som "henter" treff fra en fake serve
       });
     };
     return (
-      <Dropdown
+      <DropdownDeprecated
         searchable
         openOnFocus
         items={fetchItems}

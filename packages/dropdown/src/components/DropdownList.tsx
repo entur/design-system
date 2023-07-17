@@ -61,7 +61,10 @@ export const DropdownList = ({
     (listItems.length === 0 ||
       (listItems.length === 1 && listItems[0].value === selectAllItem?.value));
   const isItemSelected = (item: NormalizedDropdownItemType) =>
-    selectedItems.some(selectedItem => selectedItem.value === item.value);
+    selectedItems.some(
+      selectedItem =>
+        selectedItem.value === item.value && selectedItem.label === item.label,
+    );
 
   const ariaLabelSelectAll = () => {
     switch (selectAllCheckboxState?.()) {
@@ -150,7 +153,7 @@ export const DropdownList = ({
 
           return (
             <li
-              key={item.value}
+              key={item.label}
               className={classNames('eds-dropdown__list__item', {
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
@@ -159,7 +162,7 @@ export const DropdownList = ({
                   !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
-                key: item.value,
+                key: item.label,
                 item,
                 index,
               })}
