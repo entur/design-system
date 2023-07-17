@@ -1,6 +1,10 @@
 import { useToast } from '@entur/alert';
 import { IconButton } from '@entur/button';
-import { Dropdown } from '@entur/dropdown';
+import {
+  Dropdown,
+  NormalizedDropdownItemType,
+  SearchableDropdown,
+} from '@entur/dropdown';
 import { Switch, TextField } from '@entur/form';
 import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
@@ -51,17 +55,12 @@ const IconList: React.FC<IconListProps> = props => {
   const iconsQuery = useGetIcons();
   const [isContrast, setContrast] = React.useState(false);
   const [filterString, setFilterString] = React.useState('');
-  const [iconSize, setIconSize] = React.useState<{
-    label: string;
-    value: string;
-  } | null>({
+  const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>({
     label: '2XLarge',
     value: fontSizes.extraLarge2.toString(),
   });
-  const [category, setCategory] = React.useState<{
-    value: string;
-    label: string;
-  } | null>({ value: '', label: '' });
+  const [category, setCategory] =
+    React.useState<NormalizedDropdownItemType | null>(null);
 
   const categoriesMap = iconsQuery.map(icon => {
     return {
@@ -117,7 +116,7 @@ const IconList: React.FC<IconListProps> = props => {
         Filter
       </Heading4>
       <GridContainer spacing="medium">
-        <GridItem small={12} medium={6}>
+        <GridItem small={12} medium={4}>
           <TextField
             label="Søk etter ikon"
             feedback={feedbackText}
@@ -129,21 +128,20 @@ const IconList: React.FC<IconListProps> = props => {
             prepend={<SearchIcon aria-hidden="true" />}
           />
         </GridItem>
-        <GridItem small={6} medium={3}>
+        <GridItem small={6} medium={4}>
           <Dropdown
             items={ICON_SIZES}
-            value={iconSize?.value}
-            onChange={e => setIconSize(e)}
+            selectedItem={iconSize}
+            onChange={item => (item === null ? undefined : setIconSize(item))}
             label="Ikonstørrelse"
           />
         </GridItem>
-        <GridItem small={6} medium={3}>
-          <Dropdown
+        <GridItem small={6} medium={4}>
+          <SearchableDropdown
             label="Kategori"
             items={categories}
-            value={category?.value}
-            onChange={e => setCategory(e)}
-            clearable
+            selectedItem={category}
+            onChange={setCategory}
           />
         </GridItem>
       </GridContainer>

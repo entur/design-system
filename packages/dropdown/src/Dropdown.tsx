@@ -28,7 +28,7 @@ export type DropdownProps = {
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
   /** Om man skal ha mulighet for å nullstille Dropdown-en
-   * @default true
+   * @default false
    */
   clearable?: boolean;
   /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
@@ -73,7 +73,7 @@ export const Dropdown = ({
   ariaLabelCloseList,
   ariaLabelOpenList,
   className,
-  clearable = true,
+  clearable = false,
   disabled = false,
   disableLabelAnimation,
   feedback,
@@ -128,7 +128,7 @@ export const Dropdown = ({
             ariaHiddenToggleButton={true}
             ariaLabelCloseList={ariaLabelCloseList}
             ariaLabelOpenList={ariaLabelOpenList}
-            clearable={true}
+            clearable={clearable}
             labelClearSelectedItems={labelClearSelectedItem}
             focusable={false}
             getToggleButtonProps={getToggleButtonProps}
