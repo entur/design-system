@@ -36,6 +36,8 @@
     line-height: $line-heights-medium;
     padding: $space-small $space-default;
     width: 100%;
+    overflow-x: hidden;
+    word-break: break-word;
 
     &:last-child {
       border-bottom: none;

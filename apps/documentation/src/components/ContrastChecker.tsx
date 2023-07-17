@@ -1,7 +1,10 @@
 import React from 'react';
 import { hex } from 'wcag-contrast';
 import { colors } from '@entur/tokens';
-import { Dropdown } from '@entur/dropdown';
+import {
+  NormalizedDropdownItemType,
+  SearchableDropdown,
+} from '@entur/dropdown';
 import { SecondarySquareButton } from '@entur/button';
 import { flatten } from '~/utils/flatten';
 import {
@@ -24,14 +27,18 @@ import './ContrastChecker.scss';
 
 function ContrastChecker(): React.ReactNode {
   const flattenedColorMap = flatten(colors);
-  const colorList = [];
+  const colorList: NormalizedDropdownItemType[] = [];
   for (const [key, value] of Object.entries(flattenedColorMap)) {
     if (value in colorList === false) {
-      colorList.push({ label: key, value: value });
+      colorList.push({
+        label: key,
+        value: value,
+      } as NormalizedDropdownItemType);
     }
   }
   const [textColor, setTextColor] = React.useState(colorList[0]);
-  const [backgroundColor, setBackgroundColor] = React.useState(colorList[1]);
+  const [backgroundColor, setBackgroundColor] =
+    React.useState<NormalizedDropdownItemType>(colorList[1]);
   const score = Number(hex(textColor.value, backgroundColor.value))
     .toFixed(1)
     .toString();
@@ -87,13 +94,14 @@ function ContrastChecker(): React.ReactNode {
       <div className="contrast-checker__calculator">
         <div className="color-pickers-container">
           <div className="color-picker-wrapper">
-            <Dropdown
+            <SearchableDropdown
               label="Forgrunn"
               items={colorList}
+              selectedItem={textColor}
               onChange={item =>
                 item && setTextColor({ value: item.value, label: item.label })
               }
-              placeholder={textColor.label}
+              clearable={false}
             />
             <ColorValues
               color={textColor.label}
@@ -107,14 +115,14 @@ function ContrastChecker(): React.ReactNode {
             <SwitchIcon aria-label="Bytt forgrunn- og bakgrunnfarge" />
           </SecondarySquareButton>
           <div className="color-picker-wrapper">
-            <Dropdown
+            <SearchableDropdown
               items={colorList}
               label="Bakgrunn"
+              selectedItem={backgroundColor}
               onChange={item =>
-                item &&
-                setBackgroundColor({ value: item.value, label: item.label })
+                item === null ? undefined : setBackgroundColor(item)
               }
-              placeholder={backgroundColor.label}
+              clearable={false}
             />
             <ColorValues
               color={backgroundColor.label}
@@ -140,7 +148,7 @@ function ContrastChecker(): React.ReactNode {
             <HeaderCell>Navn</HeaderCell>
             <HeaderCell>Normal tekst</HeaderCell>
             <HeaderCell>Stor tekst (18pt +)</HeaderCell>
-            <HeaderCell>Grafisk objeckt</HeaderCell>
+            <HeaderCell>Grafisk objekt</HeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -1246,6 +1246,7 @@ Ved å klikke på krysset til et valgt filter, fjernes den enkelt og siden oppda
           <Dropdown
             value={saleLocation}
             items={['Entur Admin', 'Oslo S', 'Trondheim S']}
+            selectedItem={saleLocation}
             onChange={e => setSaleLocation(e.value)}
             label="Velg salgssted"
             clearable
@@ -1255,6 +1256,7 @@ Ved å klikke på krysset til et valgt filter, fjernes den enkelt og siden oppda
           <Dropdown
             value={channel}
             items={['Entur Sørvis', 'MT']}
+            selectedItem={channel}
             onChange={e => setChannel(e.value)}
             clearable
             label="Velg salgskanal"

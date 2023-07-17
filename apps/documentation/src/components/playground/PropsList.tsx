@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from '@entur/dropdown';
+import { Dropdown, NormalizedDropdownItemType } from '@entur/dropdown';
 import {
   Switch,
   TextField,
@@ -46,8 +46,15 @@ const PropsController = ({
         <Dropdown
           label={propState.label ?? capitalize(propState.name)}
           items={propState.options ?? ['-mangler valg-']}
-          value={propState.value as string}
-          onChange={e => updatePropState(propState.name, e ? e.value : '')}
+          selectedItem={
+            {
+              label: propState.value as string,
+              value: propState.value as string,
+            } as NormalizedDropdownItemType
+          }
+          onChange={selectedItem =>
+            updatePropState(propState.name, selectedItem?.value ?? '')
+          }
           className="playground__props-selector__prop"
         />
       );

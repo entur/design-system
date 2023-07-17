@@ -112,12 +112,15 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
 
 #### Eksempel 1
 
-<Playground style={{ width: '40%' }}>
+<Playground>
   {() => {
     const [type, setType] = React.useState(null);
     const [dateTime, setDateTime] = React.useState(now('Europe/Oslo'));
     return (
-      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
+      <GridContainer
+        spacing="medium"
+        style={{ marginBottom: '1rem', width: '65%' }}
+      >
         <GridItem small={12}>
           <SegmentedControl
             label="Velg reisetidspunkt"
@@ -129,14 +132,14 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
             <SegmentedChoice value="ankomst">Ankomst</SegmentedChoice>
           </SegmentedControl>
         </GridItem>
-        <GridItem small={12} large={8}>
+        <GridItem small={12} large={6}>
           <DatePicker
             label="Reisedato"
             selectedDate={dateTime}
             onChange={date => setDateTime(date)}
           />
         </GridItem>
-        <GridItem small={12} large={4}>
+        <GridItem small={12} large={6}>
           <TimePicker
             label="Klokkeslett"
             selectedTime={dateTime}
@@ -150,11 +153,14 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
 
 #### Eksempel 2
 
-<Playground style={{ width: '33%' }}>
+<Playground>
   {() => {
     const [type, setType] = React.useState(null);
     return (
-      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
+      <GridContainer
+        spacing="medium"
+        style={{ marginBottom: '1rem', width: '50%' }}
+      >
         <GridItem small={12}>
           <SegmentedControl
             label="Velg påslag eller avlslag"
@@ -175,29 +181,34 @@ Segmented Controls skal benyttes med kun tekst eller tegn, ikke ikon + tekst.
 
 #### Eksempel 3
 
-<Playground style={{ width: '50%' }}>
+<Playground>
   {() => {
     const [type, setType] = React.useState(null);
-    const items = ['Entur 1', 'Entur 2'];
+    const [provider, setProvider] = React.useState(null);
+    const items = ['Entur', 'Vy'];
     return (
-      <GridContainer spacing="medium" style={{ marginBottom: '1rem' }}>
-        <GridItem small={10}>
+      <GridContainer
+        spacing="medium"
+        style={{ marginBottom: '1rem', width: '50%' }}
+      >
+        <GridItem small={12}>
           <SegmentedControl
             label="Velg billettype"
-            onChange={selectedValue => setType(selectedValue)}
+            onChange={setType}
             selectedValue={type}
           >
             <SegmentedChoice value="sone">Sone</SegmentedChoice>
             <SegmentedChoice value="strekning">Strekning</SegmentedChoice>
           </SegmentedControl>
         </GridItem>
-        <GridItem small={2} />
         <GridItem small={12}>
           <Dropdown
             label="Reisetilbyder"
             placeholder="Velg selskap"
             items={items}
-          ></Dropdown>
+            selectedItem={provider}
+            onChange={setProvider}
+          />
         </GridItem>
       </GridContainer>
     );

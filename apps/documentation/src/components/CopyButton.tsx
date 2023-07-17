@@ -22,6 +22,7 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
   }, [isCopied]);
   return (
     <TertiaryButton
+      style={{ whiteSpace: 'nowrap' }}
       onClick={() => {
         copy(textToCopy);
         setCopied(true);
