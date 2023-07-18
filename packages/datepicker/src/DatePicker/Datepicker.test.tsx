@@ -136,6 +136,7 @@ test('Focus is set to selected date on calendar button click', () => {
 
 test('Focus lock is working on popover calendar', async () => {
   const spy = jest.fn();
+  const user = userEvent.setup();
   const currentDate = new CalendarDate(1997, 7, 10);
 
   const { container } = render(
@@ -151,16 +152,9 @@ test('Focus lock is working on popover calendar', async () => {
     'eds-datepicker__open-calendar-button',
   )[0];
 
-  fireEvent(
-    openCalendarButton,
-    new MouseEvent('click', {
-      bubbles: true,
-    }),
-  );
+  await user.click(openCalendarButton);
 
-  await userEvent.tab();
-  await userEvent.tab();
-  await userEvent.tab();
+  await user.keyboard('{Tab}{Tab}{Tab}');
 
   const selectedDateInCalendar = container.getElementsByClassName(
     'eds-datepicker__calendar__grid__cell--selected',
