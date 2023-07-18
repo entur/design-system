@@ -48,12 +48,11 @@ import { ImportStatement } from '~/components/ImportStatement';
   </ExpandablePanel>
 </Playground>
 
-## Komponenter
+## Bruk
 
 ### ExpandablePanel
 
 <ImportStatement imports="ExpandablePanel" />
-<Props of={ExpandablePanel} />
 
 `ExpandablePanel` kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
 ExpandablePanel skal i utgangspunktet ikke stå alene, dvs, det burde være minst _to_ ExpandablePanel ved siden av hverandre til ei hver tid.
@@ -96,8 +95,6 @@ ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til E
 ### Accordion og AccordionItem
 
 <ImportStatement imports="Accordion, AccordionItem" />
-<Props of={Accordion} title="Props, Accordion" />
-<Props of={AccordionItem} title="Props, AccordionItem" />
 
 Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du heller bruke `Accordion`- og `AccordionItem`-komponenter:
 
@@ -134,19 +131,16 @@ Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en acco
 ### ExpandableTextButton
 
 <ImportStatement imports="ExpandableTextButton" />
-<Props of={ExpandableTextButton} />
 
 ### BaseExpand
 
 <ImportStatement imports="BaseExpand" />
-<Props of={BaseExpand} />
 
 ExpandablePanel, AccordionItem (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.
 
 ### ExpandArrow
 
 <ImportStatement imports="ExpandArrow" />
-<Props of={ExpandArrow} />
 
 Hvis man bruker `BaseExpand`, så kan man bruke `ExpandArrow` samtidig for å få den roterende pila som brukes i alle expandable-komponenter i designsystemet.
 
@@ -173,3 +167,36 @@ ExpandableText brukes om man ønsker å skjule et innhold. I motsetning til Expa
 #### Accordion og AccordionItem
 
 Accordion er ett sett av collapsible, hvor man ekspanderer en og en panel om gangen. Om du ønsker å gruppere flere ExpandablePanel-komponenter sammen til en accordion, kan du heller bruke Accordion- og AccordionItem-komponenter:
+
+## Komponenter
+
+### ExpandablePanel
+
+<ImportStatement imports="ExpandablePanel" />
+<Props of={ExpandablePanel} />
+
+### ExpandableText
+
+<ImportStatement imports="ExpandableText" />
+<Props of={ExpandableText} />
+
+### Accordion og AccordionItem
+
+<ImportStatement imports="Accordion, AccordionItem" />
+<Props of={Accordion} title="Props, Accordion" />
+<Props of={AccordionItem} title="Props, AccordionItem" />
+
+### ExpandableTextButton
+
+<ImportStatement imports="ExpandableTextButton" />
+<Props of={ExpandableTextButton} />
+
+### BaseExpand
+
+<ImportStatement imports="BaseExpand" />
+<Props of={BaseExpand} />
+
+### ExpandArrow
+
+<ImportStatement imports="ExpandArrow" />
+<Props of={ExpandArrow} />
