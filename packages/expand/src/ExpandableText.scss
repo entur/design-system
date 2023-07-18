@@ -10,6 +10,13 @@
   color: inherit;
   background: inherit;
   font-size: inherit;
+  display: flex;
+  align-items: center;
+
+  > :is(h5, h4, h3, h2, p) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
   &:focus {
     outline-offset: $outline-offsets-focus;
