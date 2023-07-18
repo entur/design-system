@@ -109,11 +109,12 @@ export const DropdownBeta = ({
     onStateChange({ type, selectedItem: clickedItem }) {
       switch (type) {
         // @ts-expect-error This falltrough is wanted
-        case useSelect.stateChangeTypes.InputBlur:
+        case useSelect.stateChangeTypes.ToggleButtonBlur:
           if (!selectOnBlur) break;
         case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
-        case useSelect.stateChangeTypes.ItemClick:
+        case useSelect.stateChangeTypes.ItemClick: {
           onChange?.(clickedItem !== undefined ? clickedItem : null);
+        }
       }
     },
     itemToString,
@@ -157,9 +158,11 @@ export const DropdownBeta = ({
         variant={variant}
         {...rest}
       >
-        <button
+        <div
           className="eds-dropdown__selected-item-button"
-          {...getToggleButtonProps()}
+          {...getToggleButtonProps({
+            id: undefined,
+          })}
         >
           {selectedItem?.label ?? (
               <span
@@ -175,7 +178,7 @@ export const DropdownBeta = ({
               </span>
             ) ??
             ''}
-        </button>
+        </div>
       </BaseFormControl>
       <DropdownList
         getItemProps={getItemProps}
