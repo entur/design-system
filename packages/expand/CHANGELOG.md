@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.2](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.4.1...@entur/expand@3.4.2) (2023-07-18)
+
+### Bug Fixes
+
+- **expandable text:** make title of expandable text not wrap when title is ReactNode ([8c00782](https://bitbucket.org/enturas/design-system/commits/8c0078241f23b038426eaa06d63333a7c3a95c2b))
+
 ## [3.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.4.0...@entur/expand@3.4.1) (2023-05-11)
 
 **Note:** Version bump only for package @entur/expand

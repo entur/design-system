@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.14...@entur/documentation@3.1.0) (2023-07-18)
+
+### Bug Fixes
+
+- **posthog:** disable cookie usage in posthog ([3fa58a3](https://bitbucket.org/enturas/design-system/commits/3fa58a362b8b23705bf3c61d2e35a62eb40a1dd7))
+- **posthog:** disable session recordings ([8f83830](https://bitbucket.org/enturas/design-system/commits/8f83830db59b28a2e511bb15efe5bcb5e5d61be0))
+- **posthog:** remove tracking in dev mode ([5fb32d0](https://bitbucket.org/enturas/design-system/commits/5fb32d0dc0d5e8bb30f24c26103aef0a56b62af0))
+
+### Features
+
+- **documentation:** add posthog analytics to documentation site ([ef4cea9](https://bitbucket.org/enturas/design-system/commits/ef4cea9473161636fca7d131bc482aa8e795d2d0))
+
 ## [3.0.14](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13...@entur/documentation@3.0.14) (2023-05-11)
 
 **Note:** Version bump only for package @entur/documentation

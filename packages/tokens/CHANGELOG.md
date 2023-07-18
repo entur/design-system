@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.9.0...@entur/tokens@3.10.0) (2023-07-18)
+
+### Features
+
+- add grey45 token ([c21635d](https://bitbucket.org/enturas/design-system/commits/c21635d1daa3737de8eb5de7b83f6661cd1f311b))
+
 # [3.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.8.1...@entur/tokens@3.9.0) (2023-04-21)
 
 ### Features

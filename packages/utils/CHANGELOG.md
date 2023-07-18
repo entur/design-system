@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.0...@entur/utils@0.9.1) (2023-07-18)
+
+### Performance Improvements
+
+- **style warnings:** disable warning about missing styles when running Jest tests ([986be3f](https://bitbucket.org/enturas/design-system/commits/986be3f406082b3a19a4b9e4df4c66aecf51712d))
+
 # [0.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.6.0...@entur/utils@0.9.0) (2023-04-13)
 
 ### Bug Fixes
