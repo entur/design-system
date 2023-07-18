@@ -2,7 +2,14 @@ import React, { CSSProperties } from 'react';
 import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
 import { BaseExpand } from './BaseExpand';
-import { Heading5, Paragraph, SubParagraph } from '@entur/typography';
+import {
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Paragraph,
+  SubParagraph,
+} from '@entur/typography';
 import './ExpandableText.scss';
 
 export type ExpandableTextProps = {
@@ -68,11 +75,23 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
 };
 
 function GetTypographyComponent(
-  element: 'Heading5' | 'Paragraph' | 'SubParagraph',
+  element:
+    | 'Heading5'
+    | 'Heading4'
+    | 'Heading3'
+    | 'Heading2'
+    | 'Paragraph'
+    | 'SubParagraph',
 ) {
   switch (element) {
     case 'Heading5':
       return Heading5;
+    case 'Heading4':
+      return Heading4;
+    case 'Heading3':
+      return Heading3;
+    case 'Heading2':
+      return Heading2;
     case 'Paragraph':
       return Paragraph;
     case 'SubParagraph':

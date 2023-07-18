@@ -30,8 +30,8 @@ export const ExpandableTextButton: React.FC<ExandableTextButtonProps> = ({
       onClick={onToggle}
       {...rest}
     >
-      <Component as="span">{children}</Component>
-      <ExpandArrow open={open} className="eds-expandable-text__arrow" inline />
+      <Component>{children}</Component>
+      <ExpandArrow open={open} className="eds-expandable-text__arrow" />
     </button>
   );
 };
