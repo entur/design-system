@@ -41,6 +41,13 @@ export type MultiSelectBetaProps = {
   /** Callback med alle valgte verdier.
    *  Bruk denne til å oppdatere selectedItems-listen */
   onChange?: (selectedItems: NormalizedDropdownItemType[]) => void;
+  /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
+   * @default Regex-test som sjekker om item.label inneholder input-teksten
+   */
+  itemFilter?: (
+    item: NormalizedDropdownItemType,
+    inputValue: string | undefined,
+  ) => boolean;
   /** Beskrivende tekst som forklarer feltet */
   label?: string;
   /** Hvilken valideringsvariant som gjelder */
@@ -57,8 +64,14 @@ export type MultiSelectBetaProps = {
   clearable?: boolean;
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
-  /** En tekst som beskriver hva som skjer når man venter på items */
+  /** En tekst som beskriver hva som skjer når man venter på items
+   * @default "Laster inn …"
+   */
   loadingText?: string;
+  /** Tekst som kommer opp når det ikke er noe treff på filtreringsøket
+   * @default "Ingen treff for søket"
+   */
+  noMatchesText?: string;
   /** Skjuler «Velg alle» fra listen med valg
    * @default false
    */
@@ -120,6 +133,10 @@ export type MultiSelectBetaProps = {
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
+  /** Tekst for skjemleser for å indikere at et element i listen er valgt
+   * @default ", valgt element, trykk for å fjerne"
+   */
+  ariaLabelSelectedItem?: string;
 };
 
 export const MultiSelectBeta = ({
@@ -130,6 +147,7 @@ export const MultiSelectBeta = ({
   disabled = false,
   feedback,
   hideSelectAll = false,
+  itemFilter = lowerCaseFilterTest,
   items: initialItems,
   label,
   labelAllItemsSelected = 'Alle valgt',
@@ -138,6 +156,7 @@ export const MultiSelectBeta = ({
   listStyle,
   loadingText,
   maxTags = 10,
+  noMatchesText,
   onChange = () => undefined,
   placeholder,
   readOnly = false,
@@ -151,6 +170,7 @@ export const MultiSelectBeta = ({
   ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
   ariaLabelOpenList,
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
+  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   ...rest
 }: MultiSelectBetaProps) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
@@ -163,7 +183,7 @@ export const MultiSelectBeta = ({
     items: normalizedItems,
     loading,
     fetchItems,
-  } = useResolvedItems(initialItems);
+  } = useResolvedItems(initialItems, debounceTimeout);
 
   const isAllNonAsyncItemsSelected =
     typeof initialItems !== 'function' &&
@@ -183,7 +203,12 @@ export const MultiSelectBeta = ({
         ? labelAllItemsSelected
         : selectedItems.length + ' ' + ariaLabelChosenPlural,
     }),
-    [isAllNonAsyncItemsSelected, selectedItems, labelAllItemsSelected],
+    [
+      isAllNonAsyncItemsSelected,
+      selectedItems,
+      labelAllItemsSelected,
+      ariaLabelChosenPlural,
+    ],
   );
 
   const [listItems, setListItems] = useState([
@@ -194,7 +219,7 @@ export const MultiSelectBeta = ({
   const filterListItems = ({ inputValue }: { inputValue: string }) =>
     setListItems([
       ...(!hideSelectAll ? [selectAll] : []),
-      ...normalizedItems.filter(item => lowerCaseFilterTest(item, inputValue)),
+      ...normalizedItems.filter(item => itemFilter(item, inputValue)),
     ]);
 
   const updateListItems = ({ inputValue }: { inputValue?: string }) => {
@@ -456,6 +481,8 @@ export const MultiSelectBeta = ({
         </div>
       </BaseFormControl>
       <DropdownList
+        ariaLabelChosenSingular={ariaLabelChosenSingular}
+        ariaLabelSelectedItem={ariaLabelSelectedItem}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}

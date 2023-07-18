@@ -14,6 +14,7 @@ import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import './DropdownList.scss';
 
 type DropdownListProps = {
+  ariaLabelChosenSingular?: string;
   ariaLabelSelectedItem?: string;
   getItemProps: (
     options: UseComboboxGetItemPropsOptions<NormalizedDropdownItemType>,
@@ -36,6 +37,7 @@ type DropdownListProps = {
 };
 
 export const DropdownList = ({
+  ariaLabelChosenSingular = 'valgt',
   ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   getItemProps,
   getMenuProps,
@@ -67,7 +69,7 @@ export const DropdownList = ({
         return `${selectAllItem?.label}, delvis valgt`;
       }
       case true: {
-        return `${selectAllItem?.label}, valgt`;
+        return `${selectAllItem?.label}, ${ariaLabelChosenSingular}`;
       }
       default: {
         return `${selectAllItem?.label}`;
@@ -134,15 +136,17 @@ export const DropdownList = ({
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
       {...getMenuProps()}
-      className={classNames('eds-dropdown__list', {
-        'eds-dropdown__list--open': isOpen,
-      })}
-      style={{ ...rest.style, ...listStyle }}
+      className="eds-dropdown__list"
+      style={{
+        display: isOpen ? 'inline-block' : 'none',
+        ...rest.style,
+        ...listStyle,
+      }}
     >
       {listItems.length > 0 &&
         listItems.map((item, index) => {
           const itemIsSelectAll = item.value === selectAllItem?.value;
-          if (itemIsSelectAll && listItems.length <= 2) return <></>;
+          if (itemIsSelectAll && listItems.length <= 2) return null;
 
           return (
             <li
@@ -155,7 +159,7 @@ export const DropdownList = ({
                   !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
-                key: `${index}${item.value}`,
+                key: item.value,
                 item,
                 index,
               })}
@@ -168,10 +172,17 @@ export const DropdownList = ({
         })}
 
       {isNoMatches && (
-        <li className="eds-dropdown__list__item">{noMatchesText}</li>
+        <li key="dropdown-list-no-match" className="eds-dropdown__list__item">
+          {noMatchesText}
+        </li>
       )}
-
-      {loading && <li className="eds-dropdown__list__item">{loadingText}</li>}
+      {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
+          To solve this, the dropdownList needs to account or the debounce */}
+      {loading && (
+        <li key="dropdown-list-loading" className="eds-dropdown__list__item">
+          {loadingText}
+        </li>
+      )}
     </ul>
   );
 };

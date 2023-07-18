@@ -178,9 +178,12 @@ const ToggleButton = ({
         className: classNames('eds-dropdown-appendix__toggle-button', {
           'eds-dropdown-appendix__toggle-button--open': isOpen,
         }),
+        'aria-labelledby': undefined,
       })}
       aria-hidden={ariaHidden}
-      aria-label={isOpen ? ariaLabelCloseList : ariaLabelOpenList}
+      aria-label={
+        ariaHidden ? undefined : isOpen ? ariaLabelCloseList : ariaLabelOpenList
+      }
       tabIndex={focusable ? 0 : -1}
       type="button"
     >
