@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.12](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.11...@entur/form@7.0.12) (2023-07-19)
+
+**Note:** Version bump only for package @entur/form
+
 ## [7.0.11](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.10...@entur/form@7.0.11) (2023-07-19)
 
 **Note:** Version bump only for package @entur/form
