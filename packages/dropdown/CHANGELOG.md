@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-RC.0...@entur/dropdown@5.0.0-RC.1) (2023-07-19)
+
+### Bug Fixes
+
+- **dropdown:** move custom styling to be applied to wrapper element ([745174f](https://bitbucket.org/enturas/design-system/commits/745174fc3681b3b3b8e9513e878a38cc98fdb6ee))
+
 # [5.0.0-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.11...@entur/dropdown@5.0.0-RC.0) (2023-07-18)
 
 ### Bug Fixes
