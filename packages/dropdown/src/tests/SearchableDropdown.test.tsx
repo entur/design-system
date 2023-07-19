@@ -382,7 +382,7 @@ describe('SearchableDropdown', () => {
     expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
   });
 
-  test('applies className to eds-dropdown element', () => {
+  test('applies className to eds-dropdown__wrapper element', () => {
     const { container } = render(
       <SearchableDropdown
         label="test label"
@@ -392,8 +392,9 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    const edsDropdownElement =
-      container.getElementsByClassName('eds-dropdown')[0];
+    const edsDropdownElement = container.getElementsByClassName(
+      'eds-dropdown__wrapper',
+    )[0];
     expect(edsDropdownElement).toHaveClass('custom-class');
   });
 

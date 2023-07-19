@@ -385,7 +385,10 @@ export const MultiSelect = ({
   };
 
   return (
-    <div className="eds-dropdown__wrapper">
+    <div
+      className={classNames('eds-dropdown__wrapper', className)}
+      style={style}
+    >
       <BaseFormControl
         append={
           <FieldAppend
@@ -403,7 +406,7 @@ export const MultiSelect = ({
             getToggleButtonProps={getToggleButtonProps}
           />
         }
-        className={classNames('eds-dropdown', className)}
+        className="eds-dropdown"
         disabled={disabled}
         feedback={feedback}
         isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
@@ -411,7 +414,6 @@ export const MultiSelect = ({
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         readOnly={readOnly}
-        style={style}
         variant={variant}
         {...rest}
       >
