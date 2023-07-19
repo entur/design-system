@@ -9,7 +9,12 @@ tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
 ---
 
 import { Props, Link } from 'docz';
-import { Dropdown, SearchableDropdown, NativeDropdown } from '@entur/dropdown';
+import {
+  Dropdown,
+  SearchableDropdown,
+  MultiSelect,
+  NativeDropdown,
+} from '@entur/dropdown';
 import { BannerAlertBox } from '@entur/alert';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -90,3 +95,15 @@ Dette løser du ved å:
 ## Komponenter
 
 WIP
+
+### Dropdown
+
+<Props of={Dropdown} />
+
+### SearchableDropdown
+
+<Props of={SearchableDropdown} />
+
+### MultiSelect
+
+<Props of={MultiSelect} />
