@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.1...@entur/utils@0.9.2) (2023-07-19)
+
+### Bug Fixes
+
+- **style warnings:** fix process is undefined bug ([c2d2192](https://bitbucket.org/enturas/design-system/commits/c2d2192d398acad4df5724f1dcc92e50ef86fc3b))
+
 ## [0.9.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.0...@entur/utils@0.9.1) (2023-07-18)
 
 ### Performance Improvements
