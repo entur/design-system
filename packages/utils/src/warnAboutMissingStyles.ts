@@ -42,7 +42,7 @@ export function warnAboutMissingStyles(...namespaces: string[]): void {
   if (
     !__DEV__ ||
     typeof window === 'undefined' ||
-    process.env.JEST_WORKER_ID !== undefined
+    process?.env?.JEST_WORKER_ID !== undefined
   ) {
     return;
   }
