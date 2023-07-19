@@ -121,7 +121,10 @@ export const Dropdown = ({
   });
 
   return (
-    <div className="eds-dropdown__wrapper">
+    <div
+      className={classNames('eds-dropdown__wrapper', className)}
+      style={style}
+    >
       <BaseFormControl
         append={
           <FieldAppend
@@ -142,7 +145,7 @@ export const Dropdown = ({
             selectedItems={[selectedItem]}
           />
         }
-        className={classNames('eds-dropdown', className, {
+        className={classNames('eds-dropdown', {
           'eds-dropdown--not-filled': !isFilled,
         })}
         disabled={disabled}
@@ -154,7 +157,6 @@ export const Dropdown = ({
         labelProps={getLabelProps()}
         prepend={prepend}
         readOnly={readOnly}
-        style={style}
         variant={variant}
         {...rest}
       >

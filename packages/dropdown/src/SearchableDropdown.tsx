@@ -237,7 +237,10 @@ export const SearchableDropdown = ({
   };
 
   return (
-    <div className="eds-dropdown__wrapper">
+    <div
+      className={classNames('eds-dropdown__wrapper', className)}
+      style={style}
+    >
       <BaseFormControl
         append={
           <FieldAppend
@@ -255,7 +258,7 @@ export const SearchableDropdown = ({
             selectedItems={[selectedItem]}
           />
         }
-        className={classNames('eds-dropdown', className)}
+        className="eds-dropdown"
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
@@ -265,7 +268,6 @@ export const SearchableDropdown = ({
         labelProps={getLabelProps()}
         prepend={prepend}
         readOnly={readOnly}
-        style={style}
         variant={variant}
         {...rest}
       >
