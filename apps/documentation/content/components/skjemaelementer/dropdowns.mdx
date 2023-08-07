@@ -1,25 +1,21 @@
 ---
 name: Dropdown
-description: Dropdowns presenterer en liste over alternativer som kan brukes til å filtrere eller sortere eksisterende innhold.
+description: Dropdown presenterer en liste over valg der brukeren kan velge ett av dem.
 route: /komponenter/skjemaelementer/dropdown
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: dropdown
-tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny
+tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny, gardinmeny
 ---
 
 import { Props, Link } from 'docz';
-import {
-  Dropdown,
-  SearchableDropdown,
-  MultiSelect,
-  NativeDropdown,
-} from '@entur/dropdown';
-import { BannerAlertBox } from '@entur/alert';
+import { Dropdown, SearchableDropdown, NativeDropdown } from '@entur/dropdown';
+import { SmallExpandableAlertBox } from '@entur/alert';
+import { ExpandableText } from '@entur/expand';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
-import { dropdownItems, countries } from './dropdownItems';
+import { dropdownItems, countries, cities, fuzzyMatch } from './dropdownItems';
 import { BestPractices, Example } from '~/components/BestPractices';
 import { CodeBlock } from '~/components/CodeBlock';
 import doPic from './DropdownDo.png';
@@ -39,7 +35,7 @@ import { Link as LinkText, CodeText } from '@entur/typography';
           label="Reisende"
           selectedItem={selectedTraveler}
           onChange={setSelectedTraveler}
-          style={{ marginBottom: '2rem', width: '15.5rem' }}
+          style={{ marginBottom: '2rem' }}
         />
         <SearchableDropdown
           items={countries}
@@ -55,7 +51,7 @@ import { Link as LinkText, CodeText } from '@entur/typography';
 
 <br />
 
-<BannerAlertBox title="Migrering fra v4 -> v5" variant="info">
+<SmallExpandableAlertBox title="Migrering fra v4 -> v5" variant="info">
 Hvis du ikke ønsker å migrere alle <CodeText>Dropdown</CodeText>-er med en gang kan du:
 
 <ul>
@@ -90,11 +86,301 @@ Dette løser du ved å:
   </li>
 </ul>
 
-</BannerAlertBox>
+</SmallExpandableAlertBox>
 
-## Komponenter
+## Bruk
 
-WIP
+`Dropdown` og `SearchableDropdown` er komponenter som lar brukeren utføre ett valg blandt
+mange ulike valgalternaltiver. Skal flere valg være mulig på en gang må du bruke
+[MultiSelect](https://design.entur.no/komponenter/skjemaelementer/multi-select). Komponenten
+viser frem en liste med valg bassert på `items`-prop-en, der `items` kan være en string, eller
+objekter med `value`, `label` og `icons` - eller en blanding av disse. For å dekke situasjoner
+der tilgjenglige valgalternaltiver kommmer fra et API eller lignende støtter `items` også
+synkrone og asynkrone funksjoner som returnerer `DropdownItemType`.
+
+### Kom i gang
+
+Dropdown-ene har tre påkrevde props: `label`, `items` og `selectedItem`. I tillegg har den også
+`onChange` som ikke er påkrevd, men som er nødvendig for å gjøre komponenten interaktiv.
+
+`label` er feltets navn og beskriver hva du velger. `items` tar inn listen med valgalternaltiver,
+se [Liste med valgalternaltiver](#liste-med-valgalternaltiver) for mer info. `selectedItem` og `onChange` jobber sammen
+for å holde styr på state for valgt element. `selectedItem` skal være av typen
+`NormalizedDropdownItem` eller `null` og `onChange` skal være en funksjon som tar inn et valgt
+element og oppdaterer verdien på `selectedItem` til dette elementet. Se [Vanlig dropdown-](#vanlig-dropdown)
+og [Søkbar dropdown](#søkbar-dropdown-1)-eksemplene for å se dette i praksis.
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Definition of NormalizedDropdownItem
+type NormalizedDropdownItem = 
+      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+</CodeBlock>
+
+### Liste med valgalternaltiver
+
+Listen med valgalternaltiver sendes inn gjennom `items`-prop-en. `items` har typen `PotentiallyAsyncDropdownItems`
+som vil si den støtter tre typer input: liste med `DropdownItemType`, synkrone funksjoner og asynkrone
+funksjoner – de to siste kan du lese mer om under [Hente valgalternaltiver fra nettverkskall](#hente-valgalternaltiver-fra-nettverkskall).
+
+`DropdownItemType` er enten en `string` eller et objekt med `label`, `value` og et valgfritt `icons` – se under.
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Definition of DropdownItemType
+type DropdownItemType = 
+      string |
+      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+</CodeBlock>
+
+Disse kan også blandes slik at følgende også vil være et gyldig `items`-input:
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Valid mixed type items input
+const dropdownItems = [
+  "choice1",
+  { label: "Second choice", value: "choice2" },
+  { lable: "Third choice", value: "choice3", icons: [FunnyIcon1, FunnyIcon2] }
+]`}
+</CodeBlock>
+
+### Søkbar dropdown
+
+Dropdown-en er også tilgjenglig i en søkbar versjon kalt `SearchableDropdown`. Denne fungerer i utgangspunktet
+helt likt som `Dropdown`, men har i tillegg støtte for å filterer på de tilgjengelige valgmulighetene. Som standard
+er filtreringen bassert på en enkel regex som sjekker om input-et er en del av valgalternaltivet, ønsker du å endre
+denne kan du skrive din egen filtreringsfunksjon – se [Egendefinert filtreringsfunksjon](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
+
+Se et eksempel på hvordan du bruker `SearchableDropdown` under [Søkbar dropdown-eksempelet](#søkbar-dropdown-1).
+
+#### Egendefinert filtreringsfunksjon
+
+Du kan gi inn din egen filtreringsfunksjon til `SearchableDropdown` gjennom prop-en `itemFilter`. Dette kan være
+nyttig hvis du f.eks ønsker å implementere _fuzzy search_ eller ignorere noen tegn fra inputet når du filtrerer.
+`itemFilter` tar inn en funksjon med `item` (valgalternaltivet som skal sjekkes mot filtreringen) og `inputValue`
+(det bruker for øyeblikket har skrevet inn i inputfeltet) som input, og som skal returnere `true` eller `false`
+avhengig av om gjeldende `item` skal være med i listen over valg eller ikke.
+
+Se eksempel på dette under [Søkbar dropdown med egendefingert filtreringsfunksjon-eksempelet](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
+
+### Hente valgalternaltiver fra nettverkskall
+
+Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en funksjon til `items`
+i stedet for en liste med valg. Denne funksjonen kan enten være synkron eller asynkron og må enten returnere en
+liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`.
+
+For søkbare dropdowns kan funksjonen i `items` også bruke `inputValue`-verdien som sendes inn å gjøre en query mot
+et API-et f.eks. I dette tilfellet kan du også bruke prop-en `debounceTimeout` til å bestemme hvor lenge det skal
+ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
+
+Se eksempler på dette under [Dropdown med valg fra nettverkskall](#dropdown-med-valg-fra-nettverkskall).
+
+### Innebygd nettleser-dropdown med styling (NativeDropdown)
+
+Hvis du enten ønsker en veldig lettvektig dropdown eller en dropdown som bruker det innebygde grensesnittet til brukerens
+enhet kan du bruke `NativeDropdown`. Denne er style-et til å følge Entur sin merkevare, men når den trykkes på vil
+nettleseren sin egen dropdown åpnes i stedet. Denne varianten er mye simplere og vil, av sin natur, ikke se lik ut
+på tvers av enhetern når den åpnes. En slik løsning kan være praktisk i små, enkle løsninger eller, i noen tilfeller,
+mobil-grensesnitt.
+
+`NativeDropdown` er i bunn en HTML-select-input – se [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select)
+for mer info – og fungerer for det meste likt som den. Det er dog noen forskjeller, de viktigste er som følger:
+
+- i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
+- `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
+  {' '}
+  <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+    {`
+type onChange = (
+    value: string;
+    selectedItem: NormalizedDropdownItemType | null;
+    target: EventTarget & HTMLSelectElement;
+  ) => void;
+`}
+  </CodeBlock>
+- i stedet for `selectedItem` brukes `value`, dette på samme måte som i HTML sin select-input
+
+Se et eksempel på bruk av NativeDropdown under eksempelet [Native dropdown](#native-dropdown)
+
+## Universell utforming
+
+Kommer info om dette snart
+
+## Retningslinjer
+
+Kommer snart
+
+## Eksempler
+
+### Vanlig dropdown
+
+Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <Dropdown
+        label="Velg by"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown
+
+Her finner du en vanlig, søkbar dropdown med standard-props.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Velg by"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown med egendefinert filtreringsfunksjon
+
+I dette eksempelet brukes en fuzzyMatch-implementasjon til å utføre en mer tilgivende
+filtrering av de tilgjengelige valgene.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Fuzzy search filter"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+        itemFilter={(item, inputValue) =>
+          fuzzyMatch(inputValue, item.label) > 0.5
+        }
+      />
+    );
+  }}
+</Playground>
+
+### Dropdown med valg fra nettverkskall
+
+Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
+eksterne API-et listet opp når data-en er mottatt.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const fetchItems = async inputValue => {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/categories`,
+        );
+        const data = await response.json();
+        if (data.message !== undefined) return [data.message];
+        return data;
+      } catch {
+        console.error('noe galt');
+        return [];
+      }
+    };
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <Dropdown
+        label="Extenal API list"
+        items={fetchItems}
+        selectedItem={selected}
+        onChange={setSelected}
+        style={{ width: '30rem' }}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown med valg fra nettverkskall bassert på tekstinput
+
+Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn nåværende `inputValue`
+og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
+eksterne API-et listet opp med query bassert på det som skrives inn.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const fetchItems = async inputValue => {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
+        );
+        const data = await response.json();
+        if (data.message !== undefined) return [data.message];
+        const processedData = data.products.map(item => {
+          return { label: item.title, value: item.id };
+        });
+        return processedData;
+      } catch {
+        console.error('noe galt');
+        return [];
+      }
+    };
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Extenal API list"
+        items={fetchItems}
+        selectedItem={selected}
+        onChange={setSelected}
+        style={{ width: '30rem' }}
+      />
+    );
+  }}
+</Playground>
+
+### Native dropdown
+
+Her finner du en native dropdown med standard-props.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <NativeDropdown
+        label="Velg by"
+        items={cities}
+        value={selected}
+        onChange={({ value }) => setSelected(value)}
+      />
+    );
+  }}
+</Playground>
+
+## Tilgjengelige props
 
 ### Dropdown
 
@@ -104,6 +390,6 @@ WIP
 
 <Props of={SearchableDropdown} />
 
-### MultiSelect
+### NativeDropdown
 
-<Props of={MultiSelect} />
+<Props of={NativeDropdown} />
