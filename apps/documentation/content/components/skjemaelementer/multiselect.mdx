@@ -5,10 +5,10 @@ route: /komponenter/skjemaelementer/multi-select
 parent: Komponenter
 menu: Skjemaelementer
 npmPackage: dropdown
-tags: multi, dropdown, select, autocomplete, autosuggest, dropdown, nedtrekksmeny
+tags: multi, dropdown, select, autocomplete, autosuggest, dropdown, nedtrekksmeny, flervalg, filter
 ---
 
-import { Props } from 'docz';
+import { Props, Link } from 'docz';
 import { MultiSelect } from '@entur/dropdown';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -16,37 +16,327 @@ import { CodeText } from '@entur/typography';
 import PageHeader from '~/components/PageHeader';
 import { FILTERS } from './dropdownItems';
 
+import { SmallExpandableAlertBox } from '@entur/alert';
+import { ExpandableText } from '@entur/expand';
+import { dropdownItems, countries, cities, fuzzyMatch } from './dropdownItems';
+import { CodeBlock } from '~/components/CodeBlock';
+import { Link as LinkText } from '@entur/typography';
+
 <PageHeader />
 
 <Playground style={{ overflow: 'visible' }}>
   {() => {
-    const [selectedItems, setSelectedItems] = React.useState([]);
+    const [selectedTraveler, setSelectedTraveler] = React.useState(null);
+    const [selectedCountry, setSelectedCountry] = React.useState(null);
     return (
       <>
-        <div style={{ width: '15rem' }}>
-          <MultiSelect
-            items={FILTERS}
-            onChange={e => setSelectedItems(e)}
-            label="Filtrer transport"
-          />
-        </div>
-        <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
-          <CodeText>
-            Valgte elementer: {selectedItems.map(item => item.label + ' ')}
-          </CodeText>
-        </div>
+        <Dropdown
+          items={dropdownItems}
+          label="Reisende"
+          selectedItem={selectedTraveler}
+          onChange={setSelectedTraveler}
+          style={{ marginBottom: '2rem' }}
+        />
+        <SearchableDropdown
+          items={countries}
+          label="Land"
+          placeholder="F.eks. Norge"
+          selectedItem={selectedCountry}
+          onChange={setSelectedCountry}
+        />
       </>
     );
   }}
 </Playground>
 
-## Komponenter
+<br />
+
+<SmallExpandableAlertBox title="Migrering fra v4 -> v5" variant="info">
+Hvis du ikke ønsker å migrere alle <CodeText>Dropdown</CodeText>-er med en gang kan du:
+
+<ul>
+  <li>
+    Endre navn og import for eksisterende <CodeText>Dropdown</CodeText> til{' '}
+    <CodeText>DropdownDeprecated</CodeText>
+    <ul>
+      <li>
+        hvis den er søkbar endrer du til{' '}
+        <CodeText>SearchableDropdownDeprecated</CodeText>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+I v5 er dropdown kontrollert, så du må selv holde på state for valgt element.
+Dette løser du ved å:
+
+<ul>
+  <li>
+    Bruke <CodeText>React.useState</CodeText> eller lignende til lagring av
+    valgt element
+  </li>
+  <li>
+    Bytt ut <CodeText>value</CodeText> med <CodeText>selectedItem</CodeText>. Gi
+    inn verdi fra state her. Obs, typen på denne er nå kun{' '}
+    <CodeText>NormalizedDropdownItem</CodeText>
+  </li>
+  <li>
+    Sørg for at <CodeText>onChange</CodeText> oppdaterer state med det valgte
+    elementet send inn som argument
+  </li>
+</ul>
+
+</SmallExpandableAlertBox>
+
+## Bruk
+
+`Dropdown` og `SearchableDropdown` er komponenter som lar brukeren utføre ett valg blandt
+mange ulike valgalternaltiver. Komponenten viser frem en liste med valg bassert på `items`-prop-en,
+der `items` kan være en string, eller objekter med `value`, `label` og `icons` - eller en
+blanding av disse. For å dekke situasjoner der tilgjenglige valgalternaltiver kommmer fra et API
+eller lignende støtter `items` også synkrone og asynkrone funksjoner som returnerer `DropdownItemType`.
+
+### Kom i gang
+
+Dropdown-ene har tre påkrevde props: `label`, `items` og `selectedItem`. I tillegg har den også
+`onChange` som ikke er påkrevd, men som er nødvendig for å gjøre komponenten interaktiv.
+
+`label` er feltets navn og beskriver hva du velger. `items` tar inn listen med valgalternaltiver,
+se [Liste med valgalternaltiver](#liste-med-valgalternaltiver) for mer info. `selectedItem` og `onChange` jobber sammen
+for å holde styr på state for valgt element. `selectedItem` skal være av typen
+`NormalizedDropdownItem` eller `null` og `onChange` skal være en funksjon som tar inn et valgt
+element og oppdaterer verdien på `selectedItem` til dette elementet. Se [Vanlig dropdown-](#vanlig-dropdown)
+og [Søkbar dropdown](#søkbar-dropdown-1)-eksemplene for å se dette i praksis.
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Definition of NormalizedDropdownItem
+type NormalizedDropdownItem = 
+      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+</CodeBlock>
+
+### Liste med valgalternaltiver
+
+Listen med valgalternaltiver sendes inn gjennom `items`-prop-en. `items` har typen `PotentiallyAsyncDropdownItems`
+som vil si den støtter tre typer input: liste med `DropdownItemType`, synkrone funksjoner og asynkrone
+funksjoner – de to siste kan du lese mer om under [Hente valgalternaltiver fra nettverkskall](#hente-valgalternaltiver-fra-nettverkskall).
+
+`DropdownItemType` er enten en `string` eller et objekt med `label`, `value` og et valgfritt `icons` – se under.
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Definition of DropdownItemType
+type DropdownItemType = 
+      string |
+      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+</CodeBlock>
+
+Disse kan også blandes slik at følgende også vil være et gyldig `items`-input:
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// Valid mixed type items input
+const dropdownItems = [
+  "choice1",
+  { label: "Second choice", value: "choice2" },
+  { lable: "Third choice", value: "choice3", icons: [FunnyIcon1, FunnyIcon2] }
+]`}
+</CodeBlock>
+
+### Søkbar dropdown
+
+Dropdown-en er også tilgjenglig i en søkbar versjon kalt `SearchableDropdown`. Denne fungerer i utgangspunktet
+helt likt som `Dropdown`, men har i tillegg støtte for å filterer på de tilgjengelige valgmulighetene. Som standard
+er filtreringen bassert på en enkel regex som sjekker om input-et er en del av valgalternaltivet, ønsker du å endre
+denne kan du skrive din egen filtreringsfunksjon – se [Egendefinert filtreringsfunksjon](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
+
+Se et eksempel på hvordan du bruker `SearchableDropdown` under [Søkbar dropdown-eksempelet](#søkbar-dropdown-1).
+
+#### Egendefinert filtreringsfunksjon
+
+Du kan gi inn din egen filtreringsfunksjon til `SearchableDropdown` gjennom prop-en `itemFilter`. Dette kan være
+nyttig hvis du f.eks ønsker å implementere _fuzzy search_ eller ignorere noen tegn fra inputet når du filtrerer.
+`itemFilter` tar inn en funksjon med `item` (valgalternaltivet som skal sjekkes mot filtreringen) og `inputValue`
+(det bruker for øyeblikket har skrevet inn i inputfeltet) som input, og som skal returnere `true` eller `false`
+avhengig av om gjeldende `item` skal være med i listen over valg eller ikke.
+
+Se eksempel på dette under [Søkbar dropdown med egendefingert filtreringsfunksjon-eksempelet](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
+
+### Hente valgalternaltiver fra nettverkskall
+
+Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en funksjon til `items`
+i stedet for en liste med valg. Denne funksjonen kan enten være synkron eller asynkron og må enten returnere en
+liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`.
+
+For søkbare dropdowns kan funksjonen i `items` også bruke `inputValue`-verdien som sendes inn å gjøre en query mot
+et API-et f.eks. I dette tilfellet kan du også bruke prop-en `debounceTimeout` til å bestemme hvor lenge det skal
+ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
+
+Se eksempler på dette under [Dropdown med valg fra nettverkskall](#dropdown-med-valg-fra-nettverkskall).
+
+### Universell utforming
+
+Kommer snart
+
+## Retningslinjer
+
+Kommer snart
+
+## Eksempler
+
+### Vanlig dropdown
+
+Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <Dropdown
+        label="Velg by"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown
+
+Her finner du en vanlig, søkbar dropdown med standard-props.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Velg by"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown med egendefinert filtreringsfunksjon
+
+I dette eksempelet brukes en fuzzyMatch-implementasjon til å utføre en mer tilgivende
+filtrering av de tilgjengelige valgene.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Fuzzy search filter"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+        itemFilter={(item, inputValue) =>
+          fuzzyMatch(inputValue, item.label) > 0.5
+        }
+      />
+    );
+  }}
+</Playground>
+
+### Dropdown med valg fra nettverkskall
+
+Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
+eksterne API-et listet opp når data-en er mottatt.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const fetchItems = async inputValue => {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/categories`,
+        );
+        const data = await response.json();
+        if (data.message !== undefined) return [data.message];
+        return data;
+      } catch {
+        console.error('noe galt');
+        return [];
+      }
+    };
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <Dropdown
+        label="Extenal API list"
+        items={fetchItems}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+### Søkbar dropdown med valg fra nettverkskall bassert på tekstinput
+
+Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn nåværende `inputValue`
+og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
+eksterne API-et listet opp med query bassert på det som skrives inn.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const fetchItems = async inputValue => {
+      try {
+        const response = await fetch(
+          `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
+        );
+        const data = await response.json();
+        if (data.message !== undefined) return [data.message];
+        const processedData = data.products.map(item => {
+          return { label: item.title, value: item.id };
+        });
+        return processedData;
+      } catch {
+        console.error('noe galt');
+        return [];
+      }
+    };
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <SearchableDropdown
+        label="Extenal API list"
+        items={fetchItems}
+        selectedItem={selected}
+        onChange={setSelected}
+      />
+    );
+  }}
+</Playground>
+
+## Tilgjengelige props
+
+### Dropdown
+
+<Props of={Dropdown} />
+
+### SearchableDropdown
+
+<Props of={SearchableDropdown} />
 
 ### MultiSelect
 
-<ImportStatement imports="MultiSelect" />
-
 <Props of={MultiSelect} />
-
-`MultiSelect` inkludering props som er tilgjengelig via downshift.
-Les om disse her https://github.com/downshift-js/downshift/tree/master/src/hooks/useSelect#advanced-props.

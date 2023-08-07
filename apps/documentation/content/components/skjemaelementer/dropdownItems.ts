@@ -1,10 +1,13 @@
 import {
   DenmarkIcon,
   NorwayIcon,
+  SamiIcon,
   PrioritySeatSeniorsIcon,
   SwedenIcon,
   UKIcon,
 } from '@entur/icons';
+
+import { fuzzy } from 'fast-fuzzy';
 
 export const dropdownItems = [
   'Voksen',
@@ -13,11 +16,31 @@ export const dropdownItems = [
   'Militær',
 ];
 
+export const fuzzyMatch = fuzzy;
+
 export const countries = [
-  { label: 'Danmark', value: 'danmark', icon: DenmarkIcon },
-  { label: 'England', value: 'england', icon: UKIcon },
-  { label: 'Norge', value: 'norge', icon: NorwayIcon },
-  { label: 'Sverige', value: 'sverige', icon: SwedenIcon },
+  { label: 'Danmark', value: 'danmark', icons: [DenmarkIcon] },
+  { label: 'England', value: 'england', icons: [UKIcon] },
+  { label: 'Norge', value: 'norge', icons: [NorwayIcon] },
+  { label: 'Sápmi', value: 'sapmi', icons: [SamiIcon] },
+  { label: 'Sverige', value: 'sverige', icons: [SwedenIcon] },
+];
+
+export const cities = [
+  'Oslo',
+  'Bergen',
+  'Trondheim',
+  'Stavanger',
+  'kristiansand',
+  'kristiansund',
+  'Molde',
+  'Bodø',
+  'Hønefoss',
+  'Egersund',
+  'Haugesund',
+  'Leikanger',
+  'Hjerkinn',
+  'Steinkjer',
 ];
 
 export const FILTERS = [
