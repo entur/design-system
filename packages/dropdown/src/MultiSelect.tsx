@@ -242,6 +242,19 @@ export const MultiSelect = ({
   const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
     selectedItems,
     itemToString,
+    onStateChange({ selectedItems: newSelectedItems, type }) {
+      switch (type) {
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem: {
+          if (newSelectedItems !== undefined) onChange(newSelectedItems);
+          break;
+        }
+        default:
+          break;
+      }
+    },
     // Accessibility
     getA11yRemovalMessage: options =>
       getA11yRemovalMessage({
