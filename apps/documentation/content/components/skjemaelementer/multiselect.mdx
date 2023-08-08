@@ -1,6 +1,6 @@
 ---
 name: Multi select
-description: MultiSelect lar deg velge mellom mange valg
+description: MultiSelect lar brukeren velge ett eller flere elementer fra en liste med valg
 route: /komponenter/skjemaelementer/multi-select
 parent: Komponenter
 menu: Skjemaelementer
@@ -10,41 +10,33 @@ tags: multi, dropdown, select, autocomplete, autosuggest, dropdown, nedtrekksmen
 
 import { Props, Link } from 'docz';
 import { MultiSelect } from '@entur/dropdown';
+import { SmallExpandableAlertBox } from '@entur/alert';
+import { CodeText, Link as LinkText } from '@entur/typography';
+import { ExpandableText } from '@entur/expand';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
-import { CodeText } from '@entur/typography';
-import PageHeader from '~/components/PageHeader';
-import { FILTERS } from './dropdownItems';
-
-import { SmallExpandableAlertBox } from '@entur/alert';
-import { ExpandableText } from '@entur/expand';
-import { dropdownItems, countries, cities, fuzzyMatch } from './dropdownItems';
 import { CodeBlock } from '~/components/CodeBlock';
-import { Link as LinkText } from '@entur/typography';
+import PageHeader from '~/components/PageHeader';
+import {
+  FILTERS,
+  dropdownItems,
+  countries,
+  cities,
+  fuzzyMatch,
+} from './dropdownItems';
 
 <PageHeader />
 
 <Playground style={{ overflow: 'visible' }}>
   {() => {
-    const [selectedTraveler, setSelectedTraveler] = React.useState(null);
-    const [selectedCountry, setSelectedCountry] = React.useState(null);
+    const [selectedCities, setSelectedCities] = React.useState([]);
     return (
-      <>
-        <Dropdown
-          items={dropdownItems}
-          label="Reisende"
-          selectedItem={selectedTraveler}
-          onChange={setSelectedTraveler}
-          style={{ marginBottom: '2rem' }}
-        />
-        <SearchableDropdown
-          items={countries}
-          label="Land"
-          placeholder="F.eks. Norge"
-          selectedItem={selectedCountry}
-          onChange={setSelectedCountry}
-        />
-      </>
+      <MultiSelect
+        label="Velg fine byer"
+        items={cities}
+        selectedItems={selectedCities}
+        onChange={setSelectedCities}
+      />
     );
   }}
 </Playground>
@@ -52,28 +44,22 @@ import { Link as LinkText } from '@entur/typography';
 <br />
 
 <SmallExpandableAlertBox title="Migrering fra v4 -> v5" variant="info">
-Hvis du ikke ønsker å migrere alle <CodeText>Dropdown</CodeText>-er med en gang kan du:
+Hvis du ikke ønsker å migrere alle <CodeText>MultiSelect</CodeText>-er med en gang kan du:
 
 <ul>
   <li>
-    Endre navn og import for eksisterende <CodeText>Dropdown</CodeText> til{' '}
-    <CodeText>DropdownDeprecated</CodeText>
-    <ul>
-      <li>
-        hvis den er søkbar endrer du til{' '}
-        <CodeText>SearchableDropdownDeprecated</CodeText>
-      </li>
-    </ul>
+    Endre navn og import for eksisterende <CodeText>MultiSelect</CodeText> til{' '}
+    <CodeText>MultiSelectDeprecated</CodeText>
   </li>
 </ul>
 
-I v5 er dropdown kontrollert, så du må selv holde på state for valgt element.
+I v5 er MultiSelect kontrollert, så du må selv holde på state for valgte elementer.
 Dette løser du ved å:
 
 <ul>
   <li>
     Bruke <CodeText>React.useState</CodeText> eller lignende til lagring av
-    valgt element
+    valgte elementer
   </li>
   <li>
     Bytt ut <CodeText>value</CodeText> med <CodeText>selectedItem</CodeText>. Gi
@@ -90,27 +76,28 @@ Dette løser du ved å:
 
 ## Bruk
 
-`Dropdown` og `SearchableDropdown` er komponenter som lar brukeren utføre ett valg blandt
-mange ulike valgalternaltiver. Komponenten viser frem en liste med valg bassert på `items`-prop-en,
-der `items` kan være en string, eller objekter med `value`, `label` og `icons` - eller en
+`MultiSelect` er en komponent som lar brukeren velge ett eller flere elementer fra en liste. Komponenten viser frem en liste med valg
+bassert på `items`-prop-en, der `items` kan være en string, eller objekter med `value`, `label` og `icons` - eller en
 blanding av disse. For å dekke situasjoner der tilgjenglige valgalternaltiver kommmer fra et API
-eller lignende støtter `items` også synkrone og asynkrone funksjoner som returnerer `DropdownItemType`.
+eller lignende støtter `items` også synkrone og asynkrone funksjoner som returnerer `DropdownItemType`. Når brukeren velger noe
+dukker valget opp som en `Chip` i inputfeltet. `MultiSelect` tilbyr også et søkefelt for filtrering av valg, filtreringen her kan
+overstyres gjennom `itemFilter`-prop-en – se [Egendefinert filtreringsfunksjon](#egendefinert-filtreringsfunksjon) for mer info.
 
 ### Kom i gang
 
-Dropdown-ene har tre påkrevde props: `label`, `items` og `selectedItem`. I tillegg har den også
+MultiSelect har tre påkrevde props: `label`, `items` og `selectedItems`. I tillegg har den også
 `onChange` som ikke er påkrevd, men som er nødvendig for å gjøre komponenten interaktiv.
 
 `label` er feltets navn og beskriver hva du velger. `items` tar inn listen med valgalternaltiver,
-se [Liste med valgalternaltiver](#liste-med-valgalternaltiver) for mer info. `selectedItem` og `onChange` jobber sammen
-for å holde styr på state for valgt element. `selectedItem` skal være av typen
-`NormalizedDropdownItem` eller `null` og `onChange` skal være en funksjon som tar inn et valgt
-element og oppdaterer verdien på `selectedItem` til dette elementet. Se [Vanlig dropdown-](#vanlig-dropdown)
-og [Søkbar dropdown](#søkbar-dropdown-1)-eksemplene for å se dette i praksis.
+se [Liste med valgalternaltiver](#liste-med-valgalternaltiver) for mer info. `selectedItems` og `onChange` jobber sammen
+for å holde styr på state for valgte elementer. `selectedItems` skal være av typen
+`NormalizedDropdownItemType[]` (Obs: tom liste, _ikke_ `null` hvis ingen er valgt) og `onChange` skal være en funksjon som tar inn alle valgte
+elementer og oppdaterer verdien på `selectedItems` til denne listen. Se [Standard MultiSelect](#standard-multiselect)-eksemplet
+for å se dette i praksis.
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-  {`// Definition of NormalizedDropdownItem
-type NormalizedDropdownItem = 
+  {`// Definition of NormalizedDropdownItemType
+type NormalizedDropdownItemType = 
       { label: string, value: string, icons?: React.ComponentType<any>[] }`}
 </CodeBlock>
 
@@ -120,7 +107,7 @@ Listen med valgalternaltiver sendes inn gjennom `items`-prop-en. `items` har typ
 som vil si den støtter tre typer input: liste med `DropdownItemType`, synkrone funksjoner og asynkrone
 funksjoner – de to siste kan du lese mer om under [Hente valgalternaltiver fra nettverkskall](#hente-valgalternaltiver-fra-nettverkskall).
 
-`DropdownItemType` er enten en `string` eller et objekt med `label`, `value` og et valgfritt `icons` – se under.
+`DropdownItemType` er enten en `string` eller et objekt med `label`, `value` og valgfritt `icons` – se under.
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
   {`// Definition of DropdownItemType
@@ -140,38 +127,33 @@ const dropdownItems = [
 ]`}
 </CodeBlock>
 
-### Søkbar dropdown
-
-Dropdown-en er også tilgjenglig i en søkbar versjon kalt `SearchableDropdown`. Denne fungerer i utgangspunktet
-helt likt som `Dropdown`, men har i tillegg støtte for å filterer på de tilgjengelige valgmulighetene. Som standard
-er filtreringen bassert på en enkel regex som sjekker om input-et er en del av valgalternaltivet, ønsker du å endre
-denne kan du skrive din egen filtreringsfunksjon – se [Egendefinert filtreringsfunksjon](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
-
-Se et eksempel på hvordan du bruker `SearchableDropdown` under [Søkbar dropdown-eksempelet](#søkbar-dropdown-1).
-
 #### Egendefinert filtreringsfunksjon
 
-Du kan gi inn din egen filtreringsfunksjon til `SearchableDropdown` gjennom prop-en `itemFilter`. Dette kan være
-nyttig hvis du f.eks ønsker å implementere _fuzzy search_ eller ignorere noen tegn fra inputet når du filtrerer.
+Som standard er søkefiltreringen bassert på en enkel regex som sjekker om input-et er en del av valgalternaltivet, ønsker du å endre
+denne kan du skrive din egen filtreringsfunksjon til `MultiSelect` gjennom prop-en `itemFilter`. Dette kan være
+nyttig hvis du f.eks ønsker å implementere _fuzzy search_ eller ignorere noen tegn fra input-et når du filtrerer.
 `itemFilter` tar inn en funksjon med `item` (valgalternaltivet som skal sjekkes mot filtreringen) og `inputValue`
-(det bruker for øyeblikket har skrevet inn i inputfeltet) som input, og som skal returnere `true` eller `false`
+(det bruker for øyeblikket har skrevet inn i inputfeltet) som input. Funksjonen skal returnere `true` eller `false`
 avhengig av om gjeldende `item` skal være med i listen over valg eller ikke.
 
-Se eksempel på dette under [Søkbar dropdown med egendefingert filtreringsfunksjon-eksempelet](#søkbar-dropdown-med-egendefinert-filtreringsfunksjon).
+Se eksempel på dette under [MultiSelect med egendefingert filtreringsfunksjon-eksempelet](#multiselect-med-egendefinert-filtreringsfunksjon).
 
 ### Hente valgalternaltiver fra nettverkskall
 
 Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en funksjon til `items`
 i stedet for en liste med valg. Denne funksjonen kan enten være synkron eller asynkron og må enten returnere en
-liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`.
+liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`. `items`-funksjonen kan også bruke `inputValue`
+-verdien som sendes inn å gjøre f.eks en query mot et API-et. I disse tilfellene kan prop-en `debounceTimeout` være nyttig hvis du
+ønsker å øke eller minke tiden det ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
 
-For søkbare dropdowns kan funksjonen i `items` også bruke `inputValue`-verdien som sendes inn å gjøre en query mot
-et API-et f.eks. I dette tilfellet kan du også bruke prop-en `debounceTimeout` til å bestemme hvor lenge det skal
-ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
+Se eksempler på dette under [MultiSelect med valg fra nettverkskall](#multiselect-med-valg-fra-nettverkskall).
 
-Se eksempler på dette under [Dropdown med valg fra nettverkskall](#dropdown-med-valg-fra-nettverkskall).
+### Oppsummerings-chip når mange elementer er valgt
 
-### Universell utforming
+For å unngå at skjemaelementet blir for stort vil chip-ene som viser hva som er valgt samles til én felles oppsummerings-chip når antallet
+overstiger verdien satt i `maxChips` – denne er som standard satt til `10`. Se et eksempel på dette under [Endre når oppsummerings-chip vises](#endre-når-oppsummerings-chip-vises)
+
+## Universell utforming
 
 Kommer snart
 
@@ -181,31 +163,9 @@ Kommer snart
 
 ## Eksempler
 
-### Vanlig dropdown
+### Standard MultiSelect
 
-Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
-
-<Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
-  defaultShowEditor
-  hideContrastOption
->
-  {() => {
-    const [selected, setSelected] = React.useState(null);
-    return (
-      <Dropdown
-        label="Velg by"
-        items={cities}
-        selectedItem={selected}
-        onChange={setSelected}
-      />
-    );
-  }}
-</Playground>
-
-### Søkbar dropdown
-
-Her finner du en vanlig, søkbar dropdown med standard-props.
+Her finner du en MultiSelect med standard-props.
 
 <Playground
   style={{ overflow: 'visible', justifyContent: 'start' }}
@@ -213,19 +173,19 @@ Her finner du en vanlig, søkbar dropdown med standard-props.
   hideContrastOption
 >
   {() => {
-    const [selected, setSelected] = React.useState(null);
+    const [selected, setSelected] = React.useState([]);
     return (
-      <SearchableDropdown
+      <MultiSelect
         label="Velg by"
         items={cities}
-        selectedItem={selected}
+        selectedItems={selected}
         onChange={setSelected}
       />
     );
   }}
 </Playground>
 
-### Søkbar dropdown med egendefinert filtreringsfunksjon
+### MultiSelect med egendefinert filtreringsfunksjon
 
 I dette eksempelet brukes en fuzzyMatch-implementasjon til å utføre en mer tilgivende
 filtrering av de tilgjengelige valgene.
@@ -236,12 +196,12 @@ filtrering av de tilgjengelige valgene.
   hideContrastOption
 >
   {() => {
-    const [selected, setSelected] = React.useState(null);
+    const [selected, setSelected] = React.useState([]);
     return (
-      <SearchableDropdown
+      <MultiSelect
         label="Fuzzy search filter"
         items={cities}
-        selectedItem={selected}
+        selectedItems={selected}
         onChange={setSelected}
         itemFilter={(item, inputValue) =>
           fuzzyMatch(inputValue, item.label) > 0.5
@@ -251,7 +211,7 @@ filtrering av de tilgjengelige valgene.
   }}
 </Playground>
 
-### Dropdown med valg fra nettverkskall
+### MultiSelect med valg fra nettverkskall
 
 Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
 eksterne API-et listet opp når data-en er mottatt.
@@ -262,7 +222,7 @@ eksterne API-et listet opp når data-en er mottatt.
   hideContrastOption
 >
   {() => {
-    const fetchItems = async inputValue => {
+    const fetchItems = async () => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
@@ -275,12 +235,12 @@ eksterne API-et listet opp når data-en er mottatt.
         return [];
       }
     };
-    const [selected, setSelected] = React.useState(null);
+    const [selected, setSelected] = React.useState([]);
     return (
-      <Dropdown
+      <MultiSelect
         label="Extenal API list"
         items={fetchItems}
-        selectedItem={selected}
+        selectedItems={selected}
         onChange={setSelected}
       />
     );
@@ -291,7 +251,8 @@ eksterne API-et listet opp når data-en er mottatt.
 
 Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn nåværende `inputValue`
 og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
-eksterne API-et listet opp med query bassert på det som skrives inn.
+eksterne API-et listet opp med query bassert på det som skrives inn. Merk at `itemFilter` skrues av gjennom `() => true` slik
+at all filtrering skjer gjennom API-kallet.
 
 <Playground
   style={{ overflow: 'visible', justifyContent: 'start' }}
@@ -315,13 +276,65 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
         return [];
       }
     };
-    const [selected, setSelected] = React.useState(null);
+    const [selected, setSelected] = React.useState([]);
     return (
-      <SearchableDropdown
+      <MultiSelect
         label="Extenal API list"
         items={fetchItems}
-        selectedItem={selected}
+        selectedItems={selected}
         onChange={setSelected}
+        itemFilter={() => true}
+      />
+    );
+  }}
+</Playground>
+
+### Slett tekstinput etter valg
+
+For å slette tekstinput-et etter at et element er valgt kan du burke prop-en ´clearInputOnSelect´.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState([]);
+    return (
+      <MultiSelect
+        label="Reset input on select"
+        items={cities}
+        selectedItems={selected}
+        onChange={setSelected}
+        clearInputOnSelect
+      />
+    );
+  }}
+</Playground>
+
+### Endre når oppsummerings-chip vises
+
+Du kan endre hva som er maks antall valgte-elementer-chips som vises i inputfeltet med prop-en `maxChips`.
+
+<Playground
+  style={{ overflow: 'visible', justifyContent: 'start' }}
+  defaultShowEditor
+  hideContrastOption
+>
+  {() => {
+    const [selected, setSelected] = React.useState([
+      { label: 'Oslo', value: 'Oslo' },
+      { label: 'Bergen', value: 'Bergen' },
+      { label: 'Kristiansand', value: 'Kristiansand' },
+      { label: 'Kristiansund', value: 'Kristiansund' },
+    ]);
+    return (
+      <MultiSelect
+        label="Summery chip on 4 selected"
+        items={cities}
+        selectedItems={selected}
+        onChange={setSelected}
+        maxChips={3}
       />
     );
   }}
@@ -329,14 +342,7 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
 
 ## Tilgjengelige props
 
-### Dropdown
-
-<Props of={Dropdown} />
-
-### SearchableDropdown
-
-<Props of={SearchableDropdown} />
-
 ### MultiSelect
 
+<ImportStatement imports="MultiSelect" />
 <Props of={MultiSelect} />
