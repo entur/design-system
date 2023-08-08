@@ -3,7 +3,7 @@
 .eds-dropdown {
   &__wrapper {
     position: relative;
-    width: 20rem;
+    width: 22.5rem;
   }
 
   &__selected-item {
@@ -96,22 +96,7 @@
   }
 
   &__selected-item-button {
-    // start revert button styling
-    background-color: transparent;
-    border-color: transparent;
-    border-width: 0;
-    text-align: inherit;
-    line-height: inherit;
-    font: inherit;
-    color: inherit;
-    font-size: inherit;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    &:focus {
-      outline: transparent;
-    }
-    // end revert button styling
+    cursor: pointer;
 
     flex: 1;
     padding: 1.25rem 1rem 0.25rem;
@@ -148,6 +133,10 @@
           border: 0.0625rem solid $colors-brand-blue;
           outline: none;
         }
+      }
+
+      &__tooltip {
+        white-space: nowrap;
       }
     }
 

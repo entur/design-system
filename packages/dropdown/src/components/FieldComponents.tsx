@@ -139,8 +139,9 @@ const ClearableButton = ({
   return (
     <Tooltip
       aria-hidden="true"
-      placement="right"
+      placement="top"
       content={labelClearSelectedItems}
+      className="eds-dropdown-appendix__clear-button__tooltip"
     >
       <IconButton
         className="eds-dropdown-appendix__clear-button"
