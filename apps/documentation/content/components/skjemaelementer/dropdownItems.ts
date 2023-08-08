@@ -12,7 +12,7 @@ import { fuzzy } from 'fast-fuzzy';
 export const dropdownItems = [
   'Voksen',
   'Barn',
-  { label: 'Honnør', value: 'honnor', icon: PrioritySeatSeniorsIcon },
+  { label: 'Honnør', value: 'honnor', icons: [PrioritySeatSeniorsIcon] },
   'Militær',
 ];
 
@@ -41,6 +41,13 @@ export const cities = [
   'Leikanger',
   'Hjerkinn',
   'Steinkjer',
+  'Sandefjord',
+  'Lillesand',
+  'Røros',
+  'Ålesund',
+  'Førde',
+  'Hammerfest',
+  'Narvik',
 ];
 
 export const FILTERS = [
