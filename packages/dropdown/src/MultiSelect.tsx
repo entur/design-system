@@ -33,6 +33,8 @@ import {
 import './Dropdown.scss';
 
 export type MultiSelectProps = {
+  /** Beskrivende tekst som forklarer feltet */
+  label: string;
   /** Tilgjengelige valg i MultiSelect */
   items: PotentiallyAsyncDropdownItemType;
   /** Elementer som er valgt blant 'items'. Bruk tom liste for ingen valgte
@@ -48,8 +50,6 @@ export type MultiSelectProps = {
     item: NormalizedDropdownItemType,
     inputValue: string | undefined,
   ) => boolean;
-  /** Beskrivende tekst som forklarer feltet */
-  label?: string;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
   /** Valideringsmelding, brukes sammen med `variant` */
@@ -83,7 +83,7 @@ export type MultiSelectProps = {
   /** Maks antall individuelle valgt-element-tags i MultiSelect-en før de blir til en samle-tag
    * @default 10
    */
-  maxTags?: number;
+  maxChips?: number;
   /** Tekst eller ikon som kommer før MultiSelect */
   prepend?: React.ReactNode;
   /** Resetter input etter at et element er valgt i listen
@@ -155,7 +155,7 @@ export const MultiSelect = ({
   labelSelectAll = 'Velg alle',
   listStyle,
   loadingText,
-  maxTags = 10,
+  maxChips = 10,
   noMatchesText,
   onChange = () => undefined,
   placeholder,
@@ -195,7 +195,7 @@ export const MultiSelect = ({
     label: labelSelectAll,
   };
   // special 'item' used as a replacement selected item tag for when
-  // there are more selected element than maxTags
+  // there are more selected element than maxChips
   const summarySelectedItems: NormalizedDropdownItemType = React.useMemo(
     () => ({
       value: EMPTY_INPUT,
@@ -425,7 +425,7 @@ export const MultiSelect = ({
             if (e.target === e.currentTarget) inputRef.current?.focus();
           }}
         >
-          {selectedItems.length < maxTags ? (
+          {selectedItems.length < maxChips ? (
             <>
               {selectedItems.length > 1 ? (
                 <VisuallyHidden onClick={() => inputRef.current?.focus()}>

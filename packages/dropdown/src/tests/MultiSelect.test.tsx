@@ -465,7 +465,7 @@ describe('MultiSelect', () => {
     expect(screen.queryByText(selectedItems[1].label)).toBeInTheDocument();
   });
 
-  test('displays summary tag when more items than maxTags are selected', () => {
+  test('displays summary tag when more items than maxChips are selected', () => {
     const selectedItems = [
       { label: 'selected1', value: 'selected1' },
       { label: 'selected2', value: 'selected2' },
@@ -477,7 +477,7 @@ describe('MultiSelect', () => {
         label="test label"
         items={testItems}
         selectedItems={selectedItems}
-        maxTags={3}
+        maxChips={3}
         ariaLabelChosenPlural="chosen"
       />,
     );
@@ -485,13 +485,13 @@ describe('MultiSelect', () => {
     expect(screen.queryByText('4 chosen')).toBeInTheDocument();
   });
 
-  test('displays all-selected tag when all items are selected and total number of selected is larger than maxTags', () => {
+  test('displays all-selected tag when all items are selected and total number of selected is larger than maxChips', () => {
     render(
       <MultiSelect
         label="test label"
         items={testItems}
         selectedItems={normalizedTestItems}
-        maxTags={3}
+        maxChips={3}
         ariaLabelChosenPlural="chosen"
         labelAllItemsSelected="all selected"
       />,
