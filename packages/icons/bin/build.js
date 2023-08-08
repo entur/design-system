@@ -187,6 +187,7 @@ function createSvgrConfig(native = false, componentName) {
       'BrakarNoTextIcon',
       'FarteIcon',
       'GOAIcon',
+      'HykeIcon',
       'InnlandstrafikkIcon',
       'KolumbusIcon',
       'OstfoldIcon',
