@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.3.1...@entur/icons@6.4.0) (2023-08-09)
+
+### Features
+
+- **icons:** add Hyke partner icon ([98e9c82](https://bitbucket.org/enturas/design-system/commits/98e9c825b44e995fc88bb42cca51a6c538542001))
+
 ## [6.3.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.3.0...@entur/icons@6.3.1) (2023-07-18)
 
 **Note:** Version bump only for package @entur/icons
