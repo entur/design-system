@@ -1,5 +1,5 @@
 /* eslint-disable  no-warning-comments */
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
 
@@ -30,7 +30,9 @@ export type SearchableDropdownProps = {
   /** Valgt element. Bruk null for ingen verdi */
   selectedItem: NormalizedDropdownItemType | null;
   /** Callback ved valg som skal brukes til å oppdatere selectedItem */
-  onChange?: (value: NormalizedDropdownItemType | null) => void;
+  onChange?: (
+    selectedItem: NormalizedDropdownItemType | null,
+  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType | null>>;
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
    * @default Regex-test som sjekker om item.label inneholder input-teksten
    */

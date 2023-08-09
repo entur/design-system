@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import classNames from 'classnames';
 import {
   useMultipleSelection,
@@ -42,7 +42,9 @@ export type MultiSelectProps = {
   selectedItems: NormalizedDropdownItemType[];
   /** Callback med alle valgte verdier.
    *  Bruk denne til å oppdatere selectedItems-listen */
-  onChange?: (selectedItems: NormalizedDropdownItemType[]) => void;
+  onChange?: (
+    selectedItems: NormalizedDropdownItemType[],
+  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType[]>>;
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
    * @default Regex-test som sjekker om item.label inneholder input-teksten
    */

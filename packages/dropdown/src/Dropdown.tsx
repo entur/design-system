@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useSelect } from 'downshift';
 import classNames from 'classnames';
 
@@ -22,7 +22,9 @@ export type DropdownProps = {
   /** Valgt verdi. Bruk null for ingen verdi. */
   selectedItem: NormalizedDropdownItemType | null;
   /** Callback ved valg som skal oppdatere selectedItem */
-  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
+  onChange?: (
+    selectedItem: NormalizedDropdownItemType | null,
+  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType | null>>;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** Placeholder-tekst når ingenting er satt */
