@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@4.0.13...@entur/dropdown@5.0.0-RC.2) (2023-08-09)
+
+### Bug Fixes
+
+- **docs:** fixes to make new dropdowns work with documentation ([9b0f44e](https://bitbucket.org/enturas/design-system/commits/9b0f44ee30f073f7711504a72eaf7b16e3b8b74c))
+- **dropdown:** move custom styling to be applied to wrapper element ([5043631](https://bitbucket.org/enturas/design-system/commits/50436313930a41ea76f5633d970674c55316799a))
+- **dropdown:** move things around ([301d018](https://bitbucket.org/enturas/design-system/commits/301d018d109e6161a704eb810b57ad2ad7b328ad))
+- **dropdown:** revert default contrast styling in light areas of dropdown components ([bb61627](https://bitbucket.org/enturas/design-system/commits/bb61627b832d7f7282d5891f9cb195b5bef5c021))
+- **dropdowns:** add missing props and clean up code ([eb1970d](https://bitbucket.org/enturas/design-system/commits/eb1970d564d2cfd8e2c0b3735a48a2560a642adc))
+- **dropdowns:** fix onChange type and fix wrong cursor in dropdown list ([ffa12d9](https://bitbucket.org/enturas/design-system/commits/ffa12d9a9c59f56c5264c1910f75c3add8c94b18))
+- **dropdowns:** update to downshift v7, add missing aria props and clean up code ([ed2dd4b](https://bitbucket.org/enturas/design-system/commits/ed2dd4b9a3936279a5adbd1385646a9d9478b517))
+- **multiselect:** add fixes from feedback ([15de277](https://bitbucket.org/enturas/design-system/commits/15de277966a0667a65cd105267501740ae585b67))
+- **multiselect:** add possibility to reset input when selecting an item ([030bb10](https://bitbucket.org/enturas/design-system/commits/030bb10fea40740d78f0ccc75a3762abdab03967))
+- **multiselect:** add summary selected item tag for when selectedItems > maxTags ([d41f162](https://bitbucket.org/enturas/design-system/commits/d41f162b79029206401c005e35a11a321c5b2e09))
+- **multiselect:** fix visual bug caused by input height ([4c57cac](https://bitbucket.org/enturas/design-system/commits/4c57cac393a9cb3fb2e1501d280db7d91f98fb90))
+- **multiselect:** make label required and change maxTags to maxChips ([951701a](https://bitbucket.org/enturas/design-system/commits/951701ac0636ba38d3ebf7e261497526da5783bf))
+
+### Code Refactoring
+
+- **dropdown:** remove Beta from new components, add Deprecated to old components ([00c0743](https://bitbucket.org/enturas/design-system/commits/00c074390c734918a1691115c406ea15de8e91e2))
+
+### Features
+
+- **dropdown:** new dropdown component ([fd6b23f](https://bitbucket.org/enturas/design-system/commits/fd6b23fe4d37710540318a08bc3dd11aac138e48))
+- improve accessibility for dropdown components ([6612f53](https://bitbucket.org/enturas/design-system/commits/6612f53bed418ebb5e90a0af5355aebc0346495b))
+- **multiselect tag:** add new compact tag design for selected elements ([eb96dfd](https://bitbucket.org/enturas/design-system/commits/eb96dfd3adf170c65ae52ffc17110e18711ba094))
+- **multiselect:** new multiselect component ([03973e4](https://bitbucket.org/enturas/design-system/commits/03973e4086b70260e2d66977545e7a736d954bad))
+- **native dropdown:** update native dropdown to work better with NormalizedDropdownItemType ([9996975](https://bitbucket.org/enturas/design-system/commits/9996975edfb1205a1d76dd3465f6a9ab331aa07b))
+- **searchable dropdown:** new searchable dropdown component ([39474a9](https://bitbucket.org/enturas/design-system/commits/39474a9702a4bc2627f64a7b1f0251f292c8c60e))
+
+### BREAKING CHANGES
+
+- **dropdown:** to avoid updating dropdown api, change name from:
+  Dropdown -> DropdownOld
+  MultiSelect -> MultiSelectOld
+- **native dropdown:** onChange's arguments have changed to a object containing value, selectedItem and target
+- **dropdown:** searchable prop is removed. SearchableDropdown is now a separate component. | - is now only
+  available as a controlled component. 'value' is switched for 'selectedItem' and 'onChange' is
+  required
+- **searchable dropdown:** is now a separate component instead of a prop in dropdown. | - is now only available asa controlled
+  component. 'value' is changed to 'selectedItem' and 'onChange' is required.
+- **multiselect:** the component is now only available as controlled. 'value' has been replaced be 'selectedItems' and
+  'onChange' is required
+
 # [5.0.0-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.0-RC.0...@entur/dropdown@5.0.0-RC.1) (2023-07-19)
 
 ### Bug Fixes
