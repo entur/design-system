@@ -3,7 +3,6 @@
 .eds-dropdown__list {
   position: absolute;
 
-  display: none;
   list-style: none;
   border-radius: $border-radiuses-medium;
   border: 0.125rem solid $colors-blues-blue45;
@@ -18,11 +17,6 @@
 
   &:focus {
     outline: none;
-  }
-
-  &--open {
-    // Note that for accessibility reasons it's best if this element is always rendered. That's why we initially hide it!
-    display: inline-block;
   }
 
   &__item {

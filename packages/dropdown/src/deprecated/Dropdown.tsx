@@ -70,7 +70,7 @@ export type DropdownDeprecatedProps = {
  * New Dropdown available
  *
  * migration guide to new dropdown:
- * - change import from 'DropdownOld' to 'Dropdown'
+ * - change import from 'DropdownDeprecated' to 'Dropdown'
  *  + if 'searchable', switch to 'SearchableDropdown'
  * - change from 'value' to 'selectedItem'
  *  + type of 'selectedItem' is 'NormalizedDropdownType' and does not include 'string'

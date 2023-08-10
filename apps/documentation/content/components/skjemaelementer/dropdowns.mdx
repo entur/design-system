@@ -24,7 +24,7 @@ import { Link as LinkText, CodeText } from '@entur/typography';
 
 <PageHeader />
 
-<Playground style={{ overflow: 'visible' }}>
+<Playground style={{ overflow: 'visible', margin: 'auto', width: '50%' }}>
   {() => {
     const [selectedTraveler, setSelectedTraveler] = React.useState(null);
     const [selectedCountry, setSelectedCountry] = React.useState(null);
@@ -56,14 +56,8 @@ Hvis du ikke ønsker å migrere alle <CodeText>Dropdown</CodeText>-er med en gan
 
 <ul>
   <li>
-    Endre navn og import for eksisterende <CodeText>Dropdown</CodeText> til{' '}
-    <CodeText>DropdownDeprecated</CodeText>
-    <ul>
-      <li>
-        hvis den er søkbar endrer du til{' '}
-        <CodeText>SearchableDropdownDeprecated</CodeText>
-      </li>
-    </ul>
+    Endre navn og import for eksisterende <CodeText>Dropdown</CodeText> du ikke
+    vil migrere enda til <CodeText>DropdownDeprecated</CodeText>
   </li>
 </ul>
 
@@ -71,6 +65,10 @@ I v5 er dropdown kontrollert, så du må selv holde på state for valgt element.
 Dette løser du ved å:
 
 <ul>
+  <li>
+    Hvis Dropdown-en er søkbar fjerner du <CodeText>searchable</CodeText>
+    -prop-en og endrer import til <CodeText>SearchableDropdown</CodeText>
+  </li>
   <li>
     Bruke <CodeText>React.useState</CodeText> eller lignende til lagring av
     valgt element
@@ -187,8 +185,6 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 - i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
 - `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
   {' '}
-  {' '}
-  {' '}
   <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
     {`
 type onChange = (
@@ -217,7 +213,7 @@ Kommer snart
 Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -239,7 +235,7 @@ Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
 Her finner du en vanlig, søkbar dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -262,7 +258,7 @@ I dette eksempelet brukes en fuzzyMatch-implementasjon til å utføre en mer til
 filtrering av de tilgjengelige valgene.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -288,7 +284,7 @@ Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API.
 eksterne API-et listet opp når data-en er mottatt.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -313,7 +309,6 @@ eksterne API-et listet opp når data-en er mottatt.
         items={fetchItems}
         selectedItem={selected}
         onChange={setSelected}
-        style={{ width: '30rem' }}
       />
     );
   }}
@@ -326,7 +321,7 @@ og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn
 eksterne API-et listet opp med query bassert på det som skrives inn.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -354,7 +349,6 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
         items={fetchItems}
         selectedItem={selected}
         onChange={setSelected}
-        style={{ width: '30rem' }}
       />
     );
   }}
@@ -365,7 +359,7 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
 Her finner du en native dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start' }}
+  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >

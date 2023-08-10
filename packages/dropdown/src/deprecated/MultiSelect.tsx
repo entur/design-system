@@ -107,9 +107,9 @@ type MultiSelectDeprecatedProps = {
  * New MultiSelect available
  *
  * migration guide to new dropdown:
- * - change import from 'DropdownOld' to 'Dropdown'
- * - change from 'value' to 'selectedItem'
- *  + type of 'selectedItem' is 'NormalizedDropdownType' and does not include 'string'
+ * - change import from 'MultiSelectDeprecated' to 'MultiSelect'
+ * - add state containing selected items to 'selectedItems' prop
+ *  + type of 'selectedItems' is 'NormalizedDropdownType[]' and does not include 'string'
  * - 'onChange' must update value of 'selectedItem'
  */
 export const MultiSelectDeprecated: React.FC<MultiSelectDeprecatedProps> = ({

@@ -43,7 +43,7 @@ function LowerCaseFilterTest(
  * New SearchableDropdown available
  *
  * migration guide to new dropdown:
- * - change import from 'DropdownOld' to 'Dropdown'
+ * - change import from 'DropdownDeprecated' to 'Dropdown'
  * - change from 'value' to 'selectedItem'
  *  + type of 'selectedItem' is 'NormalizedDropdownType' and does not include 'string'
  * - 'onChange' must update value of 'selectedItem'
