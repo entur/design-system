@@ -4,6 +4,8 @@ import copy from 'copy-text-to-clipboard';
 import { TertiaryButton } from '@entur/button';
 import { CopyIcon } from '@entur/icons';
 
+import './CopyButton.scss';
+
 type Props = {
   textToCopy: string;
   children: React.ReactNode;
@@ -22,7 +24,6 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
   }, [isCopied]);
   return (
     <TertiaryButton
-      style={{ whiteSpace: 'nowrap' }}
       onClick={() => {
         copy(textToCopy);
         setCopied(true);
@@ -31,8 +32,9 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
           content: 'Tokenet ble kopiert til utklippstavla',
         });
       }}
+      className="eds-copy-button"
     >
-      {children}{' '}
+      <span>{children} </span>
       <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
     </TertiaryButton>
   );
