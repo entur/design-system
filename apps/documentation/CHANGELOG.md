@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.13](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.1.3...@entur/documentation@3.0.13) (2023-08-10)
+
+### Bug Fixes
+
+- **docs:** fixes to make new dropdowns work with documentation ([cb82783](https://bitbucket.org/enturas/design-system/commits/cb827838c8fe7ce68d4d2cdad287667842566576))
+- **dropdown:** add fixes from PR review ([2bb686c](https://bitbucket.org/enturas/design-system/commits/2bb686c421b944db3f647c0e0b5137ddad6412bc))
+
 ## [3.0.13-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.1.2...@entur/documentation@3.0.13-RC.2) (2023-08-09)
 
 ### Bug Fixes

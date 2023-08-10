@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.4.0...@entur/icons@6.4.1) (2023-08-10)
+
+### Bug Fixes
+
+- **icons:** make AtB icon white by default to match other partner icons ([1308130](https://bitbucket.org/enturas/design-system/commits/13081308e5c1c21044a1858c98be8a3548464e4d))
+
 # [6.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.3.1...@entur/icons@6.4.0) (2023-08-09)
 
 ### Features
