@@ -1,0 +1,249 @@
+import { A11yRemovalMessage, A11yStatusMessageOptions } from 'downshift';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
+import React from 'react';
+
+/* start general utils */
+export const EMPTY_INPUT = '';
+
+export function lowerCaseFilterTest(
+  item: NormalizedDropdownItemType,
+  input: string | undefined,
+) {
+  if (!input) {
+    return true;
+  }
+  const sanitizeEscapeCharacters = input.replace(
+    /[-/\\^$*+?.()|[\]{}]/g,
+    '\\$&',
+  );
+  const inputRegex = new RegExp(sanitizeEscapeCharacters, 'i');
+  return inputRegex.test(item.label);
+}
+
+export const itemToString = (item: NormalizedDropdownItemType | null) =>
+  item ? item.label : '';
+
+/* end general utils */
+/* start multiselect utils */
+
+type useMultiselectUtilsType = {
+  selectedItems: NormalizedDropdownItemType[];
+  listItems: NormalizedDropdownItemType[];
+  selectAll: NormalizedDropdownItemType;
+};
+
+export const useMultiselectUtils = ({
+  listItems,
+  selectedItems,
+  selectAll,
+}: useMultiselectUtilsType) => {
+  const hasSelectedItems = selectedItems.length > 0;
+
+  const listItemsWithoutSelectAll = listItems.filter(
+    item => item.value !== selectAll.value,
+  );
+
+  const allListItemsAreSelected =
+    listItemsWithoutSelectAll.filter(item => !selectedItems.includes(item))
+      .length === 0;
+
+  const someListItemsAreSelected = listItemsWithoutSelectAll.some(item =>
+    selectedItems.includes(item),
+  );
+
+  const addClickedItemToSelectedItems = (
+    clickedItem: NormalizedDropdownItemType,
+    onChange: (value: NormalizedDropdownItemType[]) => void,
+  ) => onChange([...selectedItems, clickedItem]);
+
+  const clickedItemIsInSelectedItems = (
+    clickedItem: NormalizedDropdownItemType,
+  ) =>
+    selectedItems.some(
+      selectedItem => selectedItem.value === clickedItem.value,
+    );
+
+  const clickedItemIsSelectAll = (clickedItem: NormalizedDropdownItemType) =>
+    clickedItem.value === selectAll.value;
+
+  const handleListItemClicked = ({
+    clickedItem,
+    onChange,
+    setLastRemovedItem,
+  }: {
+    clickedItem: NormalizedDropdownItemType;
+    onChange: (value: NormalizedDropdownItemType[]) => void;
+    setLastRemovedItem: any;
+  }) => {
+    if (clickedItemIsSelectAll(clickedItem)) {
+      if (allListItemsAreSelected) {
+        setLastRemovedItem(selectAll);
+        return unselectAllListItems(onChange);
+      }
+      return selectAllUnselectedItemsInListItems(onChange);
+    }
+
+    if (clickedItemIsInSelectedItems(clickedItem)) {
+      setLastRemovedItem(clickedItem);
+      return removeClickedItemFromSelectedItems(clickedItem, onChange);
+    }
+    addClickedItemToSelectedItems(clickedItem, onChange);
+  };
+
+  const removeClickedItemFromSelectedItems = (
+    clickedItem: NormalizedDropdownItemType,
+    onChange: (value: NormalizedDropdownItemType[]) => void,
+  ) =>
+    onChange(
+      selectedItems.filter(
+        selectedItem => selectedItem.value !== clickedItem.value,
+      ),
+    );
+
+  const selectAllCheckboxState = () => {
+    if (allListItemsAreSelected) return true;
+    if (someListItemsAreSelected) return 'indeterminate';
+    return false;
+  };
+
+  const selectAllUnselectedItemsInListItems = (
+    onChange: (value: NormalizedDropdownItemType[]) => void,
+  ) => {
+    onChange([
+      ...selectedItems,
+      ...listItemsWithoutSelectAll.filter(
+        item => !selectedItems.includes(item),
+      ),
+    ]);
+  };
+
+  const unselectAllListItems = (
+    onChange: (value: NormalizedDropdownItemType[]) => void,
+  ) => {
+    onChange(
+      selectedItems.filter(item => !listItemsWithoutSelectAll.includes(item)),
+    );
+  };
+
+  return {
+    addClickedItemToSelectedItems,
+    allListItemsAreSelected,
+    clickedItemIsInSelectedItems,
+    clickedItemIsSelectAll,
+    handleListItemClicked,
+    hasSelectedItems,
+    listItemsWithoutSelectAll,
+    removeClickedItemFromSelectedItems,
+    selectAllCheckboxState,
+    selectAllUnselectedItemsInListItems,
+    someListItemsAreSelected,
+    unselectAllListItems,
+  };
+};
+
+/* end multiselect utils */
+/* start a11y utils */
+type getA11yStatusMessageType<Item> = A11yStatusMessageOptions<Item> & {
+  selectAllItemIncluded?: boolean;
+  ariaLabelNoResults?: string;
+};
+
+export function getA11yStatusMessage<Item>(
+  options: getA11yStatusMessageType<Item>,
+): string {
+  const {
+    isOpen,
+    resultCount,
+    previousResultCount,
+    selectAllItemIncluded = false,
+    ariaLabelNoResults = 'Ingen resultater',
+  } = options;
+
+  if (!isOpen) {
+    return '';
+  }
+
+  const resultCountWithoutSelectAll = selectAllItemIncluded
+    ? resultCount - 1
+    : resultCount;
+
+  if (resultCountWithoutSelectAll === 0) {
+    return ariaLabelNoResults;
+  }
+
+  if (resultCount !== previousResultCount) {
+    return `${resultCountWithoutSelectAll} resultat${
+      resultCountWithoutSelectAll === 1 ? '' : 'er'
+    } tilgjengelig, naviger med pil opp eller ned, velg elementer med enter.`;
+  }
+
+  return '';
+}
+
+type getA11ySelectionMessageType<Item> = A11yStatusMessageOptions<Item> & {
+  selectAllItem?: NormalizedDropdownItemType;
+};
+
+export function getA11ySelectionMessage(
+  options: getA11ySelectionMessageType<NormalizedDropdownItemType>,
+) {
+  const {
+    selectedItem,
+    itemToString: itemToStringLocal,
+    selectAllItem,
+  } = options;
+
+  if (selectedItem?.value === selectAllItem?.value)
+    return 'Alle elementer i listen valgt.';
+
+  return selectedItem ? `${itemToStringLocal(selectedItem)} er valgt.` : '';
+}
+
+type getA11yRemovalMessageType<Item> = A11yRemovalMessage<Item> & {
+  selectAllItem?: NormalizedDropdownItemType;
+  removedItem?: NormalizedDropdownItemType;
+};
+
+export function getA11yRemovalMessage(
+  options: getA11yRemovalMessageType<NormalizedDropdownItemType>,
+) {
+  const { itemToString, selectAllItem, removedItem } = options;
+  if (removedItem === undefined) return '';
+  if (removedItem.value === selectAllItem?.value)
+    return 'Alle elementer i listen fjernet fra valgte.';
+
+  return `${itemToString(removedItem)} fjernet fra valgte.`;
+}
+
+/**A VoiceOver click is always preformed in the center of the clicked element.
+   This functions expolits that to check if the performed click likely is 
+   made by VoiceOver. */
+export const isVoiceOverClick = (clickEvent: React.MouseEvent) => {
+  const targetElementRect = clickEvent.currentTarget.getBoundingClientRect();
+  const targetElementMiddleX = Math.floor(
+    targetElementRect.x + targetElementRect.width / 2,
+  );
+  const targetElementMiddleY = Math.floor(
+    targetElementRect.y + targetElementRect.height / 2,
+  );
+
+  const clickPositionX = clickEvent.clientX;
+  const clickPositionY = clickEvent.clientY;
+
+  console.log(
+    'targetX:',
+    targetElementMiddleX,
+    'targetY:',
+    targetElementMiddleY,
+    'clickX:',
+    clickPositionX,
+    'clickY:',
+    clickPositionY,
+  );
+
+  return (
+    Math.abs(targetElementMiddleX - clickPositionX) <= 1 &&
+    Math.abs(targetElementMiddleY - clickPositionY) <= 1
+  );
+};
+/* end a11y utils */

@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "4.0.14",
+  "version": "5.0.0-RC.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/dropdown.esm.js",
@@ -37,6 +37,6 @@
     "@entur/tooltip": "^2.6.23",
     "@entur/utils": "^0.9.3",
     "classnames": "^2.3.1",
-    "downshift": "^6.1.7"
+    "downshift": "^7.6.1"
   }
 }

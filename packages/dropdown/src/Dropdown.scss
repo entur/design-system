@@ -1,0 +1,199 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown {
+  &__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__selected-item {
+    display: block;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-small;
+    margin-right: -$space-medium;
+    padding: calc(#{$space-medium} + #{$space-extra-small2}) 0
+      $space-extra-small2 $space-medium;
+    font-family: inherit;
+
+    position: relative;
+    top: 5px;
+
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &__wrapper {
+      max-width: 65%;
+    }
+  }
+
+  &__selected-items-and-input {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 0.5rem;
+
+    &--filled {
+      padding: 1.25rem 0rem 0.25rem 1rem;
+
+      .eds-dropdown__input {
+        padding: unset;
+        min-height: 1.5rem;
+      }
+
+      .eds-tag-chip {
+        &:focus {
+          box-shadow: $shadows-focus;
+        }
+      }
+    }
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 10%;
+    min-height: calc(1.5rem + 1.25rem + 0.25rem);
+  }
+
+  &.eds-form-control-wrapper {
+    align-items: start;
+
+    &.eds-dropdown--not-filled .eds-input-group__label {
+      font-size: $font-sizes-large;
+      position: absolute;
+      line-height: $font-sizes-large;
+      height: $space-extra-large3;
+      padding: $space-default;
+      padding-left: 0;
+      margin-left: $space-default;
+      top: -$border-widths-medium;
+      transition: top $timings-medium ease-in-out,
+        font-size $timings-medium ease-in-out,
+        padding $timings-medium ease-in-out,
+        line-height ease-in-out $timings-medium;
+    }
+
+    .eds-form-control__prepend {
+      top: 1rem;
+    }
+
+    .eds-form-control__append {
+      top: 0.4rem;
+
+      .eds-loading-dots {
+        height: 2rem;
+      }
+    }
+  }
+
+  &__selected-item-button {
+    cursor: pointer;
+
+    flex: 1;
+    padding: 1.25rem 1rem 0.25rem;
+    min-height: 2.75rem;
+
+    &__placeholder {
+      color: $colors-blues-blue30;
+
+      .eds-contrast & {
+        color: $colors-blues-blue40;
+        &--readonly {
+          color: $colors-brand-lavender;
+        }
+      }
+    }
+  }
+
+  &-appendix {
+    display: flex;
+    align-items: center;
+
+    &__clear-button {
+      padding: $space-extra-small;
+      margin-right: $space-extra-small2;
+
+      .eds-contrast & {
+        &:hover {
+          background: $colors-greys-grey60;
+        }
+        &:active {
+          background: $colors-greys-grey50;
+        }
+        &:focus {
+          border: 0.0625rem solid $colors-brand-blue;
+          outline: none;
+        }
+      }
+
+      &__tooltip {
+        white-space: nowrap;
+      }
+    }
+
+    &__divider {
+      content: '';
+      display: block;
+      background-color: $colors-greys-grey70;
+      height: 1.5rem;
+      width: 1px;
+      .eds-contrast .eds-form-control-wrapper--disabled & {
+        background-color: $colors-blues-blue50;
+      }
+      .eds-contrast & {
+        background-color: $colors-greys-grey60;
+      }
+    }
+
+    &__toggle-button {
+      margin-right: -$space-small;
+      margin-left: $space-extra-small2;
+
+      &--open svg {
+        transform: rotate(180deg);
+      }
+
+      svg {
+        transition: transform ease-in-out $timings-fast;
+      }
+
+      &--loading-dots {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .eds-contrast & {
+        &:hover {
+          background: $colors-greys-grey60;
+        }
+        &:active {
+          background: $colors-greys-grey50;
+        }
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &--native {
+    + .eds-form-control__append {
+      margin-left: -2em;
+      pointer-events: none;
+    }
+
+    // Override for Windows
+    & option {
+      color: $colors-brand-blue;
+      background-color: $colors-brand-white;
+      .eds-contrast & {
+        color: $colors-brand-blue;
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
 import React from 'react';
 import { BaseFormControl } from '@entur/form';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import { DropdownList } from './DropdownList';
-import { DropdownToggleButton } from './DropdownToggleButton';
-import { DropdownLoadingDots } from './DropdownLoadingDots';
+import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { DropdownListDeprecated } from './DropdownList';
+import { DropdownDeprecatedToggleButton } from './DropdownToggleButton';
+import { DropdownDeprecatedLoadingDots } from './DropdownLoadingDots';
 import { CloseSmallIcon } from '@entur/icons';
 import './BaseDropdown.scss';
 import { useDownshift } from './DownshiftProvider';
 import { space } from '@entur/tokens';
 
-type BaseDropdownProps = {
+type BaseDropdownDeprecatedProps = {
   className?: string;
   disabled?: boolean;
   items: NormalizedDropdownItemType[];
@@ -22,7 +22,7 @@ type BaseDropdownProps = {
   disableLabelAnimation?: boolean;
   [key: string]: any;
 };
-export const BaseDropdown: React.FC<BaseDropdownProps> = ({
+export const BaseDropdownDeprecated: React.FC<BaseDropdownDeprecatedProps> = ({
   children,
   className,
   items,
@@ -61,7 +61,7 @@ export const BaseDropdown: React.FC<BaseDropdownProps> = ({
       >
         {children}
       </BaseFormControl>
-      <DropdownList
+      <DropdownListDeprecated
         items={items}
         style={{
           position: 'absolute',
@@ -102,16 +102,20 @@ const Appendix: React.FC<{
   readOnly: boolean;
 }> = ({ clearable, loading, loadingText, readOnly }) => {
   if (loading) {
-    return <DropdownLoadingDots>{loadingText}</DropdownLoadingDots>;
+    return (
+      <DropdownDeprecatedLoadingDots>
+        {loadingText}
+      </DropdownDeprecatedLoadingDots>
+    );
   }
   if (readOnly) {
     return null;
   }
   return clearable ? (
     <>
-      <ClearButton></ClearButton> <DropdownToggleButton />
+      <ClearButton></ClearButton> <DropdownDeprecatedToggleButton />
     </>
   ) : (
-    <DropdownToggleButton />
+    <DropdownDeprecatedToggleButton />
   );
 };

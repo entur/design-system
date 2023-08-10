@@ -1,0 +1,63 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown {
+  &__selected-item-tag {
+    height: 1.5rem;
+    max-width: 50%;
+    padding: 0;
+
+    > span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+
+    .eds-tag-chip__close-button {
+      margin-right: 0.125rem;
+
+      > svg {
+        font-size: 0.6rem;
+      }
+    }
+
+    // revert contrast styling since dropdown field always is light
+    .eds-contrast & {
+      background: $colors-blues-blue80;
+      border: $border-widths-small solid $colors-blues-blue70;
+      color: $colors-brand-blue;
+
+      .eds-tag-chip__close-button {
+        color: $colors-brand-blue;
+
+        &:hover {
+          background-color: $colors-blues-blue60;
+        }
+      }
+    }
+
+    &--readonly,
+    &--disabled {
+      padding-right: 0.5rem;
+      .eds-tag-chip__close-button {
+        display: none;
+      }
+    }
+
+    &--readonly {
+      .eds-contrast & {
+        background-color: $colors-blues-blue50;
+        border-color: transparent;
+        color: $colors-brand-white;
+      }
+    }
+
+    &--disabled {
+      .eds-contrast & {
+        background-color: $colors-blues-blue30;
+        border-color: transparent;
+        color: $colors-blues-blue50;
+      }
+    }
+  }
+}

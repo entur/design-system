@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.13-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.1.2...@entur/documentation@3.0.13-RC.2) (2023-08-09)
+
+### Bug Fixes
+
+- **docs:** fixes to make new dropdowns work with documentation ([9b0f44e](https://bitbucket.org/enturas/design-system/commits/9b0f44ee30f073f7711504a72eaf7b16e3b8b74c))
+
+## [3.0.13-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13-RC.0...@entur/documentation@3.0.13-RC.1) (2023-07-19)
+
+**Note:** Version bump only for package @entur/documentation
+
+## [3.0.13-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.1.0...@entur/documentation@3.0.13-RC.0) (2023-07-18)
+
+### Bug Fixes
+
+- **docs:** fixes to make new dropdowns work with documentation ([ee370a7](https://bitbucket.org/enturas/design-system/commits/ee370a79be07db5b6910131076b105b20fb7f44d))
+
+## [3.0.13-beta.4](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13-beta.2...@entur/documentation@3.0.13-beta.4) (2023-06-30)
+
+**Note:** Version bump only for package @entur/documentation
+
+## [3.0.13-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13-beta.2...@entur/documentation@3.0.13-beta.3) (2023-06-22)
+
+**Note:** Version bump only for package @entur/documentation
+
+## [3.0.13-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13-beta.1...@entur/documentation@3.0.13-beta.2) (2023-06-18)
+
+**Note:** Version bump only for package @entur/documentation
+
+## [3.0.13-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.13-beta.0...@entur/documentation@3.0.13-beta.1) (2023-06-14)
+
+**Note:** Version bump only for package @entur/documentation
+
+## [3.0.13-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.12...@entur/documentation@3.0.13-beta.0) (2023-06-13)
+
+**Note:** Version bump only for package @entur/documentation
+
 ## [3.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.1.2...@entur/documentation@3.1.3) (2023-08-09)
 
 **Note:** Version bump only for package @entur/documentation

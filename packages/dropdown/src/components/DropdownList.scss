@@ -1,0 +1,99 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-dropdown__list {
+  position: absolute;
+
+  list-style: none;
+  border-radius: $border-radiuses-medium;
+  border: 0.125rem solid $colors-blues-blue45;
+  box-shadow: $shadows-box-shadow;
+  padding: 0;
+  margin: 0;
+  margin-top: $space-extra-small;
+  max-height: 50vh;
+  overflow-y: auto;
+  width: 100%;
+  z-index: $z-indexes-popover;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__item {
+    background-color: $colors-greys-grey90;
+    color: $colors-brand-blue;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: inherit;
+    font-size: $font-sizes-large;
+    line-height: $line-heights-medium;
+    padding: $space-small $space-default;
+    width: 100%;
+    overflow-x: hidden;
+    word-break: break-word;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &__text {
+      flex: 1;
+      cursor: default;
+    }
+
+    &__icon {
+      margin-left: $space-small;
+    }
+
+    &__checkbox {
+      pointer-events: none;
+      // revert contrast styling since dropdownList always is light
+      .eds-contrast & {
+        &.eds-checkbox__container {
+          > input + .eds-checkbox__icon {
+            border-color: $colors-brand-blue;
+          }
+          > input:checked,
+          > input:indeterminate {
+            + .eds-checkbox__icon {
+              background-color: $colors-brand-blue;
+              path {
+                stroke: $colors-brand-white;
+              }
+              rect {
+                fill: $colors-brand-white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--highlighted {
+      background-color: $colors-blues-blue70;
+
+      // change to hover style for checkbox when list is hovered
+      .eds-dropdown__list__item__checkbox.eds-checkbox__container,
+      .eds-dropdown__list__item__checkbox.eds-checkbox__container:hover {
+        > input:checked + .eds-checkbox__icon,
+        > input:indeterminate + .eds-checkbox__icon {
+          background-color: $colors-blues-blue30;
+          border-color: transparent;
+        }
+        > input + .eds-checkbox__icon {
+          border-color: $colors-blues-blue30;
+        }
+      }
+    }
+
+    &--selected {
+      background-color: $colors-blues-blue30;
+      color: $colors-brand-white;
+    }
+  }
+
+  @media all and (min-width: $breakpoints-large) {
+    max-height: 30vh;
+  }
+}

@@ -1,38 +1,58 @@
+import React from 'react';
 import { BaseFormControl, VariantType } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
+import { LoadingDots } from '@entur/loader';
 import { useRandomId } from '@entur/utils';
-import React from 'react';
-import { DropdownLoadingDots } from './DropdownLoadingDots';
-import './NativeDropdown.scss';
+
 import {
   PotentiallyAsyncDropdownItemType,
   useResolvedItems,
 } from './useResolvedItems';
+import { NormalizedDropdownItemType } from './useNormalizedItems';
+
+import './Dropdown.scss';
 
 export type NativeDropdownProps = {
   /** Ekstra klassenavn */
   className?: string;
   /**
-   * For å deaktivere dropdownen
+   * For å deaktivere dropdow-nen
    * @default false
    **/
   disabled?: boolean;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Alle valg for dropdownen å ha */
+  /** Alle valg for dropdown-en å ha */
   items: PotentiallyAsyncDropdownItemType;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
-  /** En callback for endringer av value */
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  /** Tekst eller ikon som kommer før dropdownen */
+  /** En callback for endringer av value
+   * Obs: merk at parameter her denne ikke er samme som i en HTML select.
+   * Bruk { target } hvis du trenger info om select-elementet som ble trykket på
+   */
+  onChange?: ({
+    value,
+    selectedItem,
+    target,
+  }: {
+    value: string;
+    selectedItem: NormalizedDropdownItemType | null;
+    target: EventTarget & HTMLSelectElement;
+  }) => void;
+  /** Tekst eller ikon som kommer før dropdown-en */
   prepend?: React.ReactNode;
   /**
-   * Setter dropdownen i read-only modus
+   * Setter dropdown-en i read-only modus
    * @default false
    **/
   readOnly?: boolean;
-  /** Den valgte verdien */
+  /** Den valgte verdien som NormalizedDropdownItemType
+   * (Brukes når komponenten er 'controlled')
+   */
+  selectedItem?: NormalizedDropdownItemType | null;
+  /** Den valgte verdien som sting
+   * (Brukes når komponenten er 'controlled)
+   */
   value?: string;
   /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType;
@@ -46,38 +66,35 @@ export type NativeDropdownProps = {
 export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   className,
   disabled = false,
-  readOnly = false,
-  items,
-  loadingText,
-  prepend,
-  style,
-  label,
-  variant,
-  feedback,
   disableLabelAnimation,
+  feedback,
+  items,
+  label,
+  loadingText,
+  onChange,
+  prepend,
+  readOnly = false,
+  selectedItem,
+  style,
+  value,
+  variant,
   ...rest
 }) => {
   const { items: normalizedItems, loading } = useResolvedItems(items);
+  const nativeDropdownId = useRandomId('eds-dropdown-native');
 
-  let rightSideIcon: JSX.Element | null = (
-    <DownArrowIcon inline={true} aria-hidden="true" />
-  );
-  if (disabled || readOnly) {
-    rightSideIcon = null;
-  } else if (loading) {
-    rightSideIcon = (
-      <DropdownLoadingDots aria-hidden="true">
-        {loadingText}
-      </DropdownLoadingDots>
-    );
-  }
-  const nativeDropdownId = useRandomId('eds-native-dropdown');
   return (
     <BaseFormControl
       disabled={disabled}
       readOnly={readOnly}
       prepend={prepend}
-      append={rightSideIcon}
+      append={
+        <FieldAppend
+          hidden={disabled || readOnly}
+          loading={loading}
+          loadingText={loadingText}
+        />
+      }
       className={className}
       style={style}
       label={label}
@@ -91,8 +108,18 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
         aria-invalid={variant === 'error'}
         aria-labelledby={nativeDropdownId}
         aria-busy={loading}
-        className="eds-form-control eds-dropdown"
+        className="eds-form-control eds-dropdown--native"
         disabled={disabled || readOnly}
+        onChange={event => {
+          onChange?.({
+            value: event.target.value,
+            selectedItem:
+              normalizedItems.find(item => item.value === event.target.value) ??
+              null,
+            target: event.target,
+          });
+        }}
+        value={value ?? selectedItem?.value ?? undefined}
         {...rest}
       >
         {normalizedItems.map(item => (
@@ -103,4 +130,26 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
       </select>
     </BaseFormControl>
   );
+};
+
+const FieldAppend = ({
+  loading,
+  loadingText,
+  hidden,
+}: {
+  loading: boolean;
+  loadingText?: string;
+  hidden: boolean;
+}) => {
+  if (loading) {
+    return (
+      <div className="eds-dropdown-native__loading-dots">
+        <LoadingDots aria-label={loadingText} />
+      </div>
+    );
+  }
+  if (hidden) {
+    return <></>;
+  }
+  return <DownArrowIcon inline />;
 };

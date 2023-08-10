@@ -1,133 +1,320 @@
-import React, { useRef, useState } from 'react';
-import { mergeRefs } from '@entur/utils';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import { BaseDropdown } from './BaseDropdown';
-import { useDownshift } from './DownshiftProvider';
-import './SearchableDropdown.scss';
+/* eslint-disable  no-warning-comments */
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
+import classNames from 'classnames';
 
-type SearchableDropdownProps = {
-  className?: string;
-  disabled?: boolean;
-  items: NormalizedDropdownItemType[];
-  loading?: boolean;
-  loadingText?: string;
+import { BaseFormControl, VariantType } from '@entur/form';
+
+import { DropdownList } from './components/DropdownList';
+import { FieldAppend } from './components/FieldComponents';
+
+import { NormalizedDropdownItemType } from './useNormalizedItems';
+import {
+  PotentiallyAsyncDropdownItemType,
+  useResolvedItems,
+} from './useResolvedItems';
+import {
+  EMPTY_INPUT,
+  getA11ySelectionMessage,
+  getA11yStatusMessage,
+  isVoiceOverClick,
+  itemToString,
+  lowerCaseFilterTest,
+} from './utils';
+
+import './Dropdown.scss';
+
+export type SearchableDropdownProps = {
+  /** Tilgjengelige valg i dropdown-en */
+  items: PotentiallyAsyncDropdownItemType;
+  /** Valgt element. Bruk null for ingen verdi */
+  selectedItem: NormalizedDropdownItemType | null;
+  /** Callback ved valg som skal brukes til å oppdatere selectedItem */
+  onChange?: (
+    selectedItem: NormalizedDropdownItemType | null,
+  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType | null>>;
+  /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
+   * @default Regex-test som sjekker om item.label inneholder input-teksten
+   */
+  itemFilter?: (
+    item: NormalizedDropdownItemType,
+    inputValue: string | undefined,
+  ) => boolean;
+  /** Beskrivende tekst som forklarer feltet */
+  label: string;
+  /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
-  prepend?: React.ReactNode;
-  readOnly?: boolean;
-  selectOnTab?: boolean;
-  openOnFocus?: boolean;
-  listStyle?: { [key: string]: any };
-  clearable: boolean;
-  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  /** Vis knapp for å nullstille Dropdown-en skal vises
+   * @default true
+   */
+  clearable?: boolean;
+  /** Plasserer labelen statisk på toppen av inputfeltet
+   * @default false
+   */
   disableLabelAnimation?: boolean;
-  [key: string]: any;
+  /** Antall millisekunder man venter etter tekstinput før det gjøres kall for å oppdatere items
+   * Denne er kun relevant hvis du sender inn en funksjon som items.
+   */
+  debounceTimeout?: number;
+  /** Deaktiver dropdown-en */
+  disabled?: boolean;
+  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnBlur?: boolean;
+  /** Gjør dropdown-en til å kun kunne leses
+   * @default false
+   */
+  readOnly?: boolean;
+  /** Tekst eller ikon som kommer før dropdown-en */
+  prepend?: React.ReactNode;
+  /** En tekst som beskriver hva som skjer når man venter på items */
+  loadingText?: string;
+  /** Hvilken valideringsvariant som gjelder */
+  variant?: VariantType;
+  /** Valideringsmelding, brukes sammen med `variant` */
+  feedback?: string;
+  className?: string;
+  style?: { [key: string]: any };
+  /** Style som kun påføres listeelementet */
+  listStyle?: { [key: string]: any };
+  /** Tekst som beskriver at man fjerner valget sitt
+   * @default "fjern valgt"
+   */
+  labelClearSelectedItem?: string;
+  /** Tekst for skjemleser for knapp som lukker listen med valg
+   * @default "Lukk liste med valg"
+   */
+  ariaLabelCloseList?: string;
+  /** Tekst for skjemleser for knapp som åpner listen med valg
+   * @default "Åpne liste med valg"
+   */
+  ariaLabelOpenList?: string;
 };
 
-function LowerCaseFilterTest(
-  item: NormalizedDropdownItemType,
-  input: string | null,
-) {
-  if (!input) {
-    return true;
-  }
-  const sanitizeEscapeCharacters = input.replace(
-    /[-/\\^$*+?.()|[\]{}]/g,
-    '\\$&',
-  );
-  const inputRegex = new RegExp(sanitizeEscapeCharacters, 'i');
-  return inputRegex.test(item.label);
-}
+export const SearchableDropdown = ({
+  ariaLabelCloseList,
+  ariaLabelOpenList,
+  className,
+  clearable = true,
+  debounceTimeout,
+  disabled = false,
+  disableLabelAnimation = false,
+  feedback,
+  itemFilter = lowerCaseFilterTest,
+  items: initialItems,
+  label,
+  labelClearSelectedItem = 'fjern valgt',
+  listStyle,
+  loadingText,
+  onChange,
+  placeholder,
+  prepend,
+  readOnly = false,
+  selectedItem: value,
+  selectOnBlur = false,
+  style,
+  variant = 'info',
+  ...rest
+}: SearchableDropdownProps) => {
+  const [hideSelectedItem, setHideSelectedItem] = useState(false);
+  const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-export const SearchableDropdown: React.FC<SearchableDropdownProps> =
-  React.forwardRef<HTMLInputElement, SearchableDropdownProps>(
+  const {
+    items: normalizedItems,
+    loading,
+    fetchItems,
+  } = useResolvedItems(initialItems, debounceTimeout);
+
+  const [listItems, setListItems] = React.useState(normalizedItems);
+
+  const filterListItems = ({ inputValue }: { inputValue: string }) =>
+    setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
+
+  const updateListItems = ({ inputValue }: { inputValue?: string }) => {
+    if (typeof initialItems === 'function')
+      fetchItems(inputValue ?? EMPTY_INPUT); // fetch items only if user provides a function as items
+    filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
+  };
+
+  React.useEffect(() => {
+    filterListItems({ inputValue });
+  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const stateReducer = React.useCallback(
     (
+      _,
       {
-        disabled = false,
-        className,
-        items,
-        loading,
-        loadingText,
-        readOnly = false,
-        prepend,
-        selectOnTab = false,
-        openOnFocus = false,
-        listStyle,
-        clearable,
-        itemFilter = (
-          item: NormalizedDropdownItemType,
-          inputValue: string | null,
-        ) => LowerCaseFilterTest(item, inputValue),
-        label,
-        disableLabelAnimation,
-        placeholder,
-        ...rest
-      },
-      ref,
+        type,
+        changes,
+      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
     ) => {
-      const {
-        getInputProps,
-        inputValue,
-        selectHighlightedItem,
-        isOpen,
-        openMenu,
-        closeMenu,
-        selectedItem,
-      } = useDownshift();
+      if (
+        changes.highlightedIndex !== undefined &&
+        changes?.highlightedIndex >= 0
+      ) {
+        setLastHighlightedIndex(changes?.highlightedIndex);
+      }
 
-      const [hideSelectedItem, setHideSelectedItem] = useState(false);
-      const inputRef = useRef<HTMLInputElement>(null);
+      switch (type) {
+        // empty input to show selected item and reset dropdown list on item selection
+        case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.InputBlur:
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
+          filterListItems({ inputValue: EMPTY_INPUT });
+          return {
+            ...changes,
+            inputValue: EMPTY_INPUT,
+          };
+        }
+        // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
+        case useCombobox.stateChangeTypes.InputChange: {
+          const leadingWhitespaceTest = /^\s+/g;
+          const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
+          if (changes.inputValue?.match(leadingWhitespaceTest)) {
+            setInputValue(
+              changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+            );
 
-      const filteredItems = React.useMemo(() => {
-        return items.filter(item => itemFilter(item, inputValue));
-      }, [inputValue, items, itemFilter]);
+            if (isSpacePressedOnEmptyInput) {
+              openMenu();
 
-      return (
-        <BaseDropdown
-          items={filteredItems}
-          disabled={disabled}
-          readOnly={readOnly}
-          className={className}
-          loading={loading}
-          loadingText={loadingText}
-          prepend={prepend}
-          listStyle={listStyle}
-          clearable={clearable}
-          label={label}
-          isFilled={selectedItem ? true : false}
-          disableLabelAnimation={disableLabelAnimation}
-        >
-          {!hideSelectedItem && selectedItem && !inputValue && (
-            <span className="eds-dropdown__searchable-selected-item__wrapper">
-              <span
-                className="eds-dropdown__searchable-selected-item"
-                onClick={() => inputRef.current?.focus()}
-              >
-                {selectedItem.label}
-              </span>
-            </span>
-          )}
-          <input
-            {...getInputProps({
-              disabled,
-              readOnly,
-              className: 'eds-form-control eds-dropdown__input',
-              onKeyDown: e => {
-                if (selectOnTab && e.key === 'Tab') selectHighlightedItem();
-              },
-              onFocus: () => {
-                if (!isOpen && openOnFocus) openMenu();
-                setHideSelectedItem(true);
-              },
-              placeholder: selectedItem ? selectedItem.label : placeholder,
-              ...rest,
-            })}
-            onBlur={() => {
-              setHideSelectedItem(false);
-              closeMenu();
-            }}
-            ref={mergeRefs<HTMLInputElement>(ref, inputRef)}
-          />
-        </BaseDropdown>
-      );
+              if (isOpen && changes.highlightedIndex !== undefined) {
+                onChange?.(listItems[changes.highlightedIndex]);
+              }
+            }
+          } else {
+            updateListItems({ inputValue: changes.inputValue });
+          }
+          return changes;
+        }
+        default:
+          return changes;
+      }
     },
+    [fetchItems, filterListItems], // eslint-disable-line react-hooks/exhaustive-deps
   );
+
+  const {
+    isOpen,
+    openMenu,
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    getInputProps,
+    highlightedIndex,
+    getItemProps,
+    selectedItem,
+    inputValue,
+    setInputValue,
+  } = useCombobox({
+    defaultHighlightedIndex: lastHighlightedIndex,
+    items: listItems,
+    itemToString,
+    selectedItem: value,
+    stateReducer,
+    onStateChange({ type, selectedItem: clickedItem }) {
+      switch (type) {
+        // @ts-expect-error This falltrough is wanted
+        case useCombobox.stateChangeTypes.InputBlur:
+          if (!selectOnBlur) break;
+        case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
+        case useCombobox.stateChangeTypes.ItemClick:
+          onChange?.(clickedItem ?? null);
+      }
+    },
+    // Accessibility
+    getA11yStatusMessage,
+    // The following A11y-helper does not work due to a bug (https://github.com/downshift-js/downshift/issues/1227)
+    // but is left here for when it is fixed
+    getA11ySelectionMessage: options => getA11ySelectionMessage(options),
+    ...rest,
+  });
+
+  const handleOnClear = () => {
+    onChange?.(null);
+    setInputValue(EMPTY_INPUT);
+    inputRef.current?.focus();
+    updateListItems({ inputValue });
+  };
+
+  return (
+    <div
+      className={classNames('eds-dropdown__wrapper', className)}
+      style={style}
+    >
+      <BaseFormControl
+        append={
+          <FieldAppend
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
+            clearable={clearable}
+            labelClearSelectedItems={labelClearSelectedItem}
+            disabled={readOnly || disabled}
+            focusable={false}
+            getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
+            loading={loading}
+            loadingText={loadingText}
+            onClear={handleOnClear}
+            selectedItems={[selectedItem]}
+          />
+        }
+        className="eds-dropdown"
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        prepend={prepend}
+        readOnly={readOnly}
+        variant={variant}
+        {...rest}
+      >
+        {!hideSelectedItem && selectedItem && !inputValue && (
+          <span
+            className="eds-dropdown__selected-item__wrapper"
+            aria-hidden="true"
+          >
+            <span
+              className="eds-dropdown__selected-item"
+              onClick={() => inputRef.current?.focus()}
+            >
+              {selectedItem.label}
+            </span>
+          </span>
+        )}
+        <input
+          className="eds-dropdown__input eds-form-control"
+          disabled={readOnly || disabled}
+          placeholder={selectedItem?.label ?? placeholder}
+          {...getInputProps({
+            onClick: (e: React.MouseEvent) => {
+              if (!isOpen && isVoiceOverClick(e)) openMenu();
+            },
+            onBlur: () => {
+              setHideSelectedItem(false);
+            },
+            onFocus: () => {
+              setHideSelectedItem(true);
+            },
+            ref: inputRef,
+          })}
+        />
+      </BaseFormControl>
+      <DropdownList
+        isOpen={isOpen}
+        listItems={listItems}
+        listStyle={listStyle}
+        loading={loading}
+        loadingText={loadingText}
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
+        selectedItems={selectedItem !== null ? [selectedItem] : []}
+      />
+    </div>
+  );
+};

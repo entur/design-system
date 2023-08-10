@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.29-RC.2](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.33...@entur/code-playground@1.0.29-RC.2) (2023-08-09)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.29-RC.0...@entur/code-playground@1.0.29-RC.1) (2023-07-19)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.31...@entur/code-playground@1.0.29-RC.0) (2023-07-18)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-beta.4](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.29-beta.2...@entur/code-playground@1.0.29-beta.4) (2023-06-30)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.29-beta.2...@entur/code-playground@1.0.29-beta.3) (2023-06-22)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.29-beta.1...@entur/code-playground@1.0.29-beta.2) (2023-06-18)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.29-beta.0...@entur/code-playground@1.0.29-beta.1) (2023-06-14)
+
+**Note:** Version bump only for package @entur/code-playground
+
+## [1.0.29-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.28...@entur/code-playground@1.0.29-beta.0) (2023-06-13)
+
+**Note:** Version bump only for package @entur/code-playground
+
 ## [1.0.34](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.0.33...@entur/code-playground@1.0.34) (2023-08-09)
 
 **Note:** Version bump only for package @entur/code-playground
