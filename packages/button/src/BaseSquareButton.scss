@@ -3,7 +3,7 @@
 
 .eds-square-button {
   --icon-color: var(--primary-text-color);
-  --icon-background: transparent;
+  --button-background: transparent;
   --border-color: transparent;
 
   align-items: center;
@@ -43,7 +43,7 @@
 
 .eds-square-button__icon {
   align-items: center;
-  background-color: var(--icon-background);
+  background-color: var(--button-background);
   border: $border-widths-default solid var(--border-color);
   border-radius: $border-radiuses-medium;
   color: var(--icon-color);
@@ -60,23 +60,24 @@
 }
 
 .eds-square-button--secondary {
-  --icon-background: transparent;
-  --border-color: #{$colors-brand-lavender};
+  --button-background: transparent;
+  --border-color: #{$colors-blues-blue30};
 
   &:hover {
-    --icon-background: #{$colors-brand-lavender};
+    --button-background: #{rgba($colors-brand-lavender, 0.4)};
   }
   &:active {
-    --icon-background: #{shade($colors-brand-lavender, 10%)};
-    --border-color: #{shade($colors-brand-lavender, 10%)};
+    --button-background: #{$colors-brand-lavender};
   }
 
   .eds-contrast & {
+    --border-color: #{$colors-brand-lavender};
+
     &:hover {
-      --icon-background: #{rgba($color: $colors-brand-white, $alpha: 0.2)};
+      --button-background: #{rgba($colors-brand-lavender, 0.2)};
     }
     &:active {
-      --icon-background: #{$colors-brand-lavender};
+      --button-background: #{$colors-brand-lavender};
       --icon-color: #{$colors-brand-blue};
     }
 
@@ -91,17 +92,23 @@
 }
 
 .eds-square-button--success {
-  --icon-background: #{$colors-validation-mint-contrast};
+  --button-background: #{$colors-validation-mint-contrast};
+  --border-color: #{$colors-blues-blue30};
 
   &:hover {
-    --icon-background: #{tint($colors-validation-mint-contrast, 10%)};
+    --button-background: #{tint($colors-validation-mint-contrast, 10%)};
   }
   &:active {
-    --icon-background: #{shade($colors-validation-mint-contrast, 5%)};
+    --button-background: #{shade($colors-validation-mint-contrast, 10%)};
   }
 
   .eds-square-button__loading-dots .eds-loading-dots__dot {
     background: $colors-brand-blue;
+  }
+
+  .eds-contrast & {
+    --border-color: transparent;
+    --icon-color: #{$colors-brand-blue};
   }
 }
 
@@ -115,36 +122,27 @@
 }
 
 .eds-square-button--tertiary {
-  --icon-background: transparent;
-  --border-color: #{$colors-brand-blue};
-
+  --button-background: transparent;
+  --border-color: #{$colors-blues-blue30};
   font-size: $font-sizes-medium;
 
   &:hover {
-    --icon-background: #{$colors-blues-blue70};
+    --button-background: #{rgba($colors-brand-lavender, 0.4)};
   }
   &:active {
-    --icon-background: #{$colors-brand-blue};
-    --icon-color: #{$colors-brand-white};
-
-    .eds-square-button__loading-dots .eds-loading-dots__dot {
-      background: $colors-brand-white;
-    }
+    --button-background: #{$colors-brand-lavender};
   }
 
   .eds-contrast & {
     --border-color: #{$colors-brand-white};
+    --border-color: #{$colors-brand-lavender};
 
     &:hover {
-      --icon-background: #{rgba($color: $colors-brand-white, $alpha: 0.2)};
+      --button-background: #{rgba($colors-brand-lavender, 0.2)};
     }
     &:active {
-      --icon-background: #{$colors-brand-white};
+      --button-background: #{$colors-brand-lavender};
       --icon-color: #{$colors-brand-blue};
-
-      .eds-square-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-blue;
-      }
     }
 
     .eds-square-button__loading-dots .eds-loading-dots__dot {
