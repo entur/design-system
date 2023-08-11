@@ -21,7 +21,7 @@ export const PropsList = ({
     <>
       {propsState.map(prop => (
         <PropsController
-          key={prop.name + prop.value}
+          key={prop.name}
           propState={prop}
           updatePropState={updatePropState}
         />
