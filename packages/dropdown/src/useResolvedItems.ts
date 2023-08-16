@@ -100,7 +100,7 @@ export const useResolvedItems = (
     if (isItemsFunction) {
       fetchItems('');
     }
-  }, [isItemsFunction]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isItemsFunction, fetchItems]);
 
   return {
     items: normalizedItems,
