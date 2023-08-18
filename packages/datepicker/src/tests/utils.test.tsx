@@ -8,7 +8,7 @@ import {
   nativeDateToDateValue,
   nativeDateToTimeValue,
   timeOrDateValueToNativeDate,
-} from '.';
+} from '../shared';
 
 // Locale is added on all tests to ensure a static testing basis
 // Time zone is set globally for Jest as UTC in ~/jest.global.setup.js

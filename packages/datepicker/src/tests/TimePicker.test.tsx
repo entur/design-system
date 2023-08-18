@@ -8,7 +8,7 @@ import {
   ZonedDateTime,
 } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { TimePicker } from '.';
+import { TimePicker } from '../TimePicker';
 
 expect.extend(toHaveNoViolations);
 
