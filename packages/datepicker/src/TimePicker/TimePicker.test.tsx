@@ -1,5 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {
   getLocalTimeZone,
   now,
@@ -19,182 +20,178 @@ expect.extend(toHaveNoViolations);
    In the mean time, locale="en-GB" is used, as this one is correctly applied and ensures stability no mater where the
    test is run */
 
-test('renders a timepicker', () => {
-  const spy = jest.fn();
-  const currentTime = new Time(19, 1);
-  const { getByRole, queryAllByLabelText } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      locale="en-GB"
-    />,
-  );
+describe('TimePicker', () => {
+  test('is rendered', () => {
+    const spy = jest.fn();
+    const currentTime = new Time(19, 1);
+    const { getByRole, queryAllByLabelText } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        locale="en-GB"
+      />,
+    );
 
-  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent(
-    '19',
-  );
-  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
-    '01',
-  );
-  expect(queryAllByLabelText('test')[0]).toBeInTheDocument();
-});
+    expect(getByRole('spinbutton', { name: 'hour, test' })).toHaveTextContent(
+      '19',
+    );
+    expect(getByRole('spinbutton', { name: 'minute, test' })).toHaveTextContent(
+      '01',
+    );
+    expect(queryAllByLabelText('test')[0]).toBeInTheDocument();
+  });
 
-test('correct time zone is applied', () => {
-  const spy = jest.fn();
-  const currentTime =
-    // should be 04:35 in Los Angeles
-    new ZonedDateTime(2022, 8, 25, 'America/Los_Angeles', -28800, 11, 35);
+  test('applies time zone correctly', () => {
+    const spy = jest.fn();
+    const currentTime =
+      // should be 04:35 in Los Angeles
+      new ZonedDateTime(2022, 8, 25, 'America/Los_Angeles', -28800, 11, 35);
 
-  const { getByRole } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      locale="en-GB"
-    />,
-  );
+    const { getByRole } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        locale="en-GB"
+      />,
+    );
 
-  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent(
-    '04',
-  );
-  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
-    '35',
-  );
-});
+    expect(getByRole('spinbutton', { name: 'hour, test' })).toHaveTextContent(
+      '04',
+    );
+    expect(getByRole('spinbutton', { name: 'minute, test' })).toHaveTextContent(
+      '35',
+    );
+  });
 
-test('locale is respected', () => {
-  const spy = jest.fn();
-  const currentTime = new Time(20, 15);
+  test('applies locale correctly', () => {
+    const spy = jest.fn();
+    const currentTime = new Time(20, 15);
 
-  const { getByRole } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      locale="en-US"
-    />,
-  );
-  expect(getByRole('spinbutton', { name: 'test hour' })).toHaveTextContent('8');
-  expect(getByRole('spinbutton', { name: 'test minute' })).toHaveTextContent(
-    '15',
-  );
-  expect(getByRole('spinbutton', { name: 'test AM/PM' })).toHaveTextContent(
-    'PM',
-  );
-});
+    const { getByRole } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        locale="en-US"
+      />,
+    );
+    expect(getByRole('spinbutton', { name: 'hour, test' })).toHaveTextContent(
+      '8',
+    );
+    expect(getByRole('spinbutton', { name: 'minute, test' })).toHaveTextContent(
+      '15',
+    );
+    expect(getByRole('spinbutton', { name: 'AM/PM, test' })).toHaveTextContent(
+      'PM',
+    );
+  });
 
-test('adds default minutes on button click', () => {
-  const spy = jest.fn();
-  const currentTime = new Time(20, 15);
+  test('adds default minutes on add time button click', () => {
+    const spy = jest.fn();
+    const currentTime = new Time(20, 15);
 
-  const { container } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      locale="en-GB"
-    />,
-  );
+    const { container } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        locale="en-GB"
+      />,
+    );
 
-  const addTimeButton = container.getElementsByClassName(
-    'eds-timepicker__arrowbutton--right',
-  )[0];
-  fireEvent(
-    addTimeButton,
-    new MouseEvent('click', {
-      bubbles: true,
-    }),
-  );
+    const addTimeButton = container.getElementsByClassName(
+      'eds-timepicker__arrowbutton--right',
+    )[0];
+    fireEvent(
+      addTimeButton,
+      new MouseEvent('click', {
+        bubbles: true,
+      }),
+    );
 
-  const clickResult = spy.mock.calls;
-  const newHour = clickResult[0][0].hour;
-  const newMinute = clickResult[0][0].minute;
+    const clickResult = spy.mock.calls;
+    const newHour = clickResult[0][0].hour;
+    const newMinute = clickResult[0][0].minute;
 
-  expect(newHour === 20).toBeTruthy();
-  expect(newMinute === 45).toBeTruthy();
-});
+    expect(newHour === 20).toBeTruthy();
+    expect(newMinute === 45).toBeTruthy();
+  });
 
-test('adds custom minutes on button click', () => {
-  const spy = jest.fn();
-  const currentTime = new Time(20, 15);
+  test('adds custom minutes on add time button click', async () => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const currentTime = new Time(20, 15);
 
-  const { container } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      minuteIncrementForArrowButtons={500}
-      locale="en-GB"
-    />,
-  );
+    const { container } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        minuteIncrementForArrowButtons={500}
+        locale="en-GB"
+      />,
+    );
 
-  const addTimeButton = container.getElementsByClassName(
-    'eds-timepicker__arrowbutton--right',
-  )[0];
-  fireEvent(
-    addTimeButton,
-    new MouseEvent('click', {
-      bubbles: true,
-    }),
-  );
+    const addTimeButton = container.getElementsByClassName(
+      'eds-timepicker__arrowbutton--right',
+    )[0];
+    await user.click(addTimeButton);
 
-  const clickResult = spy.mock.calls;
-  const newHour = clickResult[0][0].hour;
-  const newMinute = clickResult[0][0].minute;
+    const clickResult = spy.mock.calls;
+    const newHour = clickResult[0][0].hour;
+    const newMinute = clickResult[0][0].minute;
 
-  expect(newHour === 4).toBeTruthy();
-  expect(newMinute === 35).toBeTruthy();
-});
+    expect(newHour === 4).toBeTruthy();
+    expect(newMinute === 35).toBeTruthy();
+  });
 
-test('sets time to current time on button click when selected time is undefined', () => {
-  const spy = jest.fn();
-  const currentTime = now(getLocalTimeZone());
-  const minuteIncrement = 15;
+  test('sets time to current time on add time button click when selected time is undefined', async () => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const currentTime = now(getLocalTimeZone());
+    const minuteIncrement = 15;
 
-  const { container } = render(
-    <TimePicker
-      label="test"
-      selectedTime={null}
-      onChange={spy}
-      minuteIncrementForArrowButtons={minuteIncrement}
-      locale="en-GB"
-    />,
-  );
+    const { container } = render(
+      <TimePicker
+        label="test"
+        selectedTime={null}
+        onChange={spy}
+        minuteIncrementForArrowButtons={minuteIncrement}
+        locale="en-GB"
+      />,
+    );
 
-  const addTimeButton = container.getElementsByClassName(
-    'eds-timepicker__arrowbutton--right',
-  )[0];
-  fireEvent(
-    addTimeButton,
-    new MouseEvent('click', {
-      bubbles: true,
-    }),
-  );
+    const addTimeButton = container.getElementsByClassName(
+      'eds-timepicker__arrowbutton--right',
+    )[0];
+    await user.click(addTimeButton);
 
-  const clickResult = spy.mock.calls;
-  const newHour = clickResult[0][0].hour;
-  const newMinute = clickResult[0][0].minute;
+    const clickResult = spy.mock.calls;
+    const newHour = clickResult[0][0].hour;
+    const newMinute = clickResult[0][0].minute;
 
-  expect(newHour).toEqual(currentTime.hour);
-  expect(newMinute).toEqual(
-    Math.floor(currentTime.minute / minuteIncrement) * minuteIncrement,
-  );
-});
+    expect(newHour).toEqual(currentTime.hour);
+    expect(newMinute).toEqual(
+      Math.floor(currentTime.minute / minuteIncrement) * minuteIncrement,
+    );
+  });
 
-test("Doesn't violate basic accessibility requirements", async () => {
-  const spy = jest.fn();
-  const currentTime = new Time(20, 15);
-  const { container } = render(
-    <TimePicker
-      label="test"
-      selectedTime={currentTime}
-      onChange={spy}
-      locale="en-GB"
-    />,
-  );
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
+  test("doesn't violate basic accessibility requirements", async () => {
+    const spy = jest.fn();
+    const currentTime = new Time(20, 15);
+    const { container } = render(
+      <TimePicker
+        label="test"
+        selectedTime={currentTime}
+        onChange={spy}
+        locale="en-GB"
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });
 
 test('Timezones should always be UTC', () => {
