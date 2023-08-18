@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CalendarDate, ZonedDateTime } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { DatePicker } from '.';
+import { DatePicker } from '../DatePicker';
 jest.mock('@floating-ui/react-dom', () => ({
   useFloating: jest.fn(() => {
     return {
