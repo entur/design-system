@@ -32,6 +32,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 - **datepicker:** add check for window width being undefined ([6c608c9](https://bitbucket.org/enturas/design-system/commits/6c608c94593310053a590b96a1754ae27438cab8))
+# [8.1.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.11...@entur/datepicker@8.1.0-beta.0) (2023-08-21)
+
+### Features
+
+- **datepicker:** add new SimpleTimePicker component ([561a9a5](https://bitbucket.org/enturas/design-system/commits/561a9a5de79f33ad12eabfa766730c3bc0a64f17))
 
 ## [8.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.9...@entur/datepicker@8.0.10) (2023-08-10)
 
