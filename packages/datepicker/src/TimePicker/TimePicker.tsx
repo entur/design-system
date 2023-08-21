@@ -89,7 +89,6 @@ export const TimePicker = <TimeType extends TimeValue>({
   if (customLocale) locale = customLocale;
 
   const state = useTimeFieldState({
-    // @ts-expect-error Time should be assignable to MappedTime<TimeType>
     onChange,
     label: label,
     locale,

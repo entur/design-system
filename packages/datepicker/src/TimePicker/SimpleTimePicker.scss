@@ -1,0 +1,55 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.eds-simple-timepicker {
+  --padding-sides: #{$space-default};
+  --input-width: 4.75rem;
+
+  &--show-seconds {
+    --input-width: 6.5rem;
+  }
+
+  width: fit-content;
+
+  // START: overwrite styles in textfield to improve usability
+  .eds-form-control {
+    width: var(--input-width);
+    padding-left: var(--padding-sides);
+    padding-right: var(--padding-sides);
+  }
+
+  .eds-input-group__label,
+  .eds-input-group-label-wrapper--filled .eds-input-group__label--filled {
+    margin-left: var(--padding-sides);
+    width: var(--input-width);
+  }
+
+  .eds-form-control__append {
+    margin-top: 0.75rem;
+    margin-right: 0.5rem;
+    margin-left: -0.75rem;
+
+    &--tooltip {
+      margin-top: 1rem;
+      margin-right: 0.25rem;
+      margin-left: -1rem;
+    }
+  }
+
+  &--show-seconds .eds-form-control__append {
+    margin-left: -1rem;
+
+    &--tooltip {
+      margin-left: -1.25rem;
+    }
+
+    + .eds-form-control__append--tooltip {
+      margin-left: -0.5rem;
+    }
+  }
+
+  .eds-feedback-text {
+    position: absolute;
+    top: $space-extra-large4;
+  }
+  // END
+}
