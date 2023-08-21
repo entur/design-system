@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   getLocalTimeZone,
@@ -8,7 +8,7 @@ import {
   ZonedDateTime,
 } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { TimePicker } from '../TimePicker';
+import { SimpleTimePicker, TimePicker } from '../TimePicker';
 
 expect.extend(toHaveNoViolations);
 
@@ -88,7 +88,8 @@ describe('TimePicker', () => {
     );
   });
 
-  test('adds default minutes on add time button click', () => {
+  test('adds default minutes on add time button click', async () => {
+    const user = userEvent.setup();
     const spy = jest.fn();
     const currentTime = new Time(20, 15);
 
@@ -104,12 +105,7 @@ describe('TimePicker', () => {
     const addTimeButton = container.getElementsByClassName(
       'eds-timepicker__arrowbutton--right',
     )[0];
-    fireEvent(
-      addTimeButton,
-      new MouseEvent('click', {
-        bubbles: true,
-      }),
-    );
+    await user.click(addTimeButton);
 
     const clickResult = spy.mock.calls;
     const newHour = clickResult[0][0].hour;
@@ -191,6 +187,121 @@ describe('TimePicker', () => {
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('SimpleTimePicker', () => {
+  test('handles all allowed string inputs', async () => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const initialTime = new Time(20, 15);
+
+    render(
+      <SimpleTimePicker
+        label="test"
+        selectedTime={initialTime}
+        onChange={spy}
+      />,
+    );
+
+    const inputField = screen.getByDisplayValue('20:15');
+    await user.click(inputField);
+    await user.clear(inputField);
+    await user.keyboard('{Enter}');
+    const onChangeCallValue0 = spy.mock.calls[0][0];
+
+    await user.type(inputField, '945');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue1 = spy.mock.calls[1][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '0945');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue2 = spy.mock.calls[2][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '9:45');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue3 = spy.mock.calls[3][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '09:45');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue4 = spy.mock.calls[4][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '94500');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue5 = spy.mock.calls[5][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '094500');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue6 = spy.mock.calls[6][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '9:45:00');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue7 = spy.mock.calls[7][0];
+
+    await user.clear(inputField);
+    await user.type(inputField, '09:45:00');
+    await user.keyboard('{Enter}');
+    const onChangeCallValue8 = spy.mock.calls[8][0];
+
+    expect(onChangeCallValue0).toEqual(null);
+    expect(onChangeCallValue1).toEqual(new Time(9, 45));
+    expect(onChangeCallValue2).toEqual(new Time(9, 45));
+    expect(onChangeCallValue3).toEqual(new Time(9, 45));
+    expect(onChangeCallValue4).toEqual(new Time(9, 45));
+    expect(onChangeCallValue5).toEqual(new Time(9, 45));
+    expect(onChangeCallValue6).toEqual(new Time(9, 45));
+    expect(onChangeCallValue7).toEqual(new Time(9, 45));
+    expect(onChangeCallValue8).toEqual(new Time(9, 45));
+  });
+
+  test('does not fire onChange on invalid input', async () => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const initialTime = new Time(20, 15);
+
+    render(
+      <SimpleTimePicker
+        label="test"
+        selectedTime={initialTime}
+        onChange={spy}
+      />,
+    );
+
+    const inputField = screen.getByDisplayValue('20:15');
+    await user.clear(inputField);
+    await user.type(inputField, 'invalid');
+    await user.keyboard('{Enter}');
+    const numberOfOnChangeCalls = spy.mock.calls.length;
+
+    expect(numberOfOnChangeCalls).toBe(0);
+  });
+
+  test('does not fire onChange on unchanged value', async () => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const initialTime = new Time(20, 15);
+
+    render(
+      <SimpleTimePicker
+        label="test"
+        selectedTime={initialTime}
+        onChange={spy}
+      />,
+    );
+
+    const inputField = screen.getByDisplayValue('20:15');
+    await user.clear(inputField);
+    await user.type(inputField, '20:15');
+    await user.keyboard('{Enter}');
+    const numberOfOnChangeCalls = spy.mock.calls.length;
+
+    expect(numberOfOnChangeCalls).toBe(0);
   });
 });
 
