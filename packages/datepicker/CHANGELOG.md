@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.0-beta.0...@entur/datepicker@8.1.0-beta.1) (2023-08-22)
+
+### Bug Fixes
+
+- **simple time picker:** clean up props and add padding prop ([aaf7585](https://bitbucket.org/enturas/design-system/commits/aaf7585c6a8938daaa5102708674e7691ea6ce50))
+
 # [8.1.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.11...@entur/datepicker@8.1.0-beta.0) (2023-08-21)
 
 ### Features

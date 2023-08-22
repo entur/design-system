@@ -1,6 +1,6 @@
 {
   "name": "@entur/code-playground",
-  "version": "1.0.32-beta.0",
+  "version": "1.0.32-beta.1",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -12,7 +12,7 @@
     "@entur/alert": "^0.14.9",
     "@entur/button": "^3.1.0",
     "@entur/chip": "^0.6.42",
-    "@entur/datepicker": "^8.1.0-beta.0",
+    "@entur/datepicker": "^8.1.0-beta.1",
     "@entur/dropdown": "^5.0.2",
     "@entur/expand": "^3.4.7",
     "@entur/fileupload": "^0.3.83",
