@@ -1,6 +1,9 @@
 import React from 'react';
 import { ChoiceChipGroupContextProvider } from './ChoiceChipGroupContext';
 import { Fieldset } from '@entur/form';
+
+import './ChoiceChipGroup.scss';
+
 export type ChoiceChipGroupProps = {
   /** Navnet til ChoiceChipsGroup */
   name: string;

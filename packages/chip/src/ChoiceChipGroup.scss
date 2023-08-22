@@ -1,0 +1,7 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+:where(.eds-choice-chips-group) {
+  display: flex;
+  row-gap: $space-extra-small;
+  flex-wrap: wrap;
+}
