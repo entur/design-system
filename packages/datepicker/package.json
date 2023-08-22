@@ -1,6 +1,6 @@
 {
   "name": "@entur/datepicker",
-  "version": "8.1.0-beta.0",
+  "version": "8.1.0-beta.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/datepicker.esm.js",
