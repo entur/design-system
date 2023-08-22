@@ -8,6 +8,15 @@
     --input-width: 6.5rem;
   }
 
+  &--padding-large {
+    --padding-sides: #{$space-large};
+    --input-width: 6rem;
+
+    &.eds-simple-timepicker--show-seconds {
+      --input-width: 7.25rem;
+    }
+  }
+
   width: fit-content;
 
   // START: overwrite styles in textfield to improve usability
