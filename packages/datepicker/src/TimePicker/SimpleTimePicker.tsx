@@ -31,10 +31,6 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   ) => void | React.Dispatch<React.SetStateAction<TimeValue | null>>;
   /** Label til TimePicker */
   label: string;
-  /** Viser den gjeldende tidssonen hvis en er valgt
-   * @default false
-   */
-  showTimeZone?: boolean;
   /** Viser sekund i tillegg til time og minutt
    * @default false
    */
@@ -44,6 +40,10 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
    * @default false
    */
   showClockIcon?: boolean;
+  /** Velger hvor mye luft det skal være på sidene av klokkeslettet
+   * @default 'default'
+   */
+  padding?: 'default' | 'large';
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant */
@@ -65,6 +65,9 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   | 'minValue'
   | 'maxValue'
   | 'locale'
+  | 'isReadOnly'
+  | 'isDisabled'
+  | 'locale'
 >;
 
 export const SimpleTimePicker = <TimeType extends TimeValue>({
@@ -76,10 +79,10 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
   label,
   labelTooltip,
   onChange,
+  padding = 'default',
   readOnly,
   selectedTime,
   showSeconds,
-  showTimeZone,
   style,
   variant,
   ...rest
@@ -96,8 +99,9 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
     label: label,
     locale,
     value: selectedTime === null ? undefined : selectedTime,
-    hideTimeZone: !showTimeZone,
+    hideTimeZone: true,
     isDisabled: disabled,
+    isReadOnly: readOnly,
     ...rest,
   });
   const { labelProps, fieldProps } = useTimeField<TimeType>(
@@ -272,6 +276,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
           ) : undefined
         }
         className={classNames('eds-simple-timepicker', {
+          'eds-simple-timepicker--padding-large': padding === 'large',
           'eds-simple-timepicker--show-seconds': showSeconds,
         })}
         disabled={disabled}
