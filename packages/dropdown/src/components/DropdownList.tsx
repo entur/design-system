@@ -122,9 +122,9 @@ export const DropdownList = ({
         </span>
         {item.icons && (
           <span>
-            {item.icons.map((Icon, index) => (
+            {item.icons.map(Icon => (
               <Icon
-                key={index}
+                key={Icon.displayName}
                 inline
                 className="eds-dropdown__list__item__icon"
               />
@@ -153,7 +153,7 @@ export const DropdownList = ({
 
           return (
             <li
-              key={item.label}
+              key={item.label + item.value}
               className={classNames('eds-dropdown__list__item', {
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
@@ -162,7 +162,7 @@ export const DropdownList = ({
                   !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
-                key: item.label,
+                key: item.label + item.value,
                 item,
                 index,
               })}
@@ -180,7 +180,7 @@ export const DropdownList = ({
         </li>
       )}
       {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
-          To solve this, the dropdownList needs to account or the debounce */}
+          To solve this, the dropdownList needs to account for the debounce */}
       {loading && (
         <li key="dropdown-list-loading" className="eds-dropdown__list__item">
           {loadingText}
