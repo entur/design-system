@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.43](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.42...@entur/chip@0.6.43) (2023-08-24)
+
+### Bug Fixes
+
+- **choice chip group:** add gap between rows of choice chips in choice chip group on wrap ([9a17646](https://bitbucket.org/enturas/design-system/commits/9a17646f4973ccf6609a852001a2b76452bdd5d4))
+
 ## [0.6.41](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.40...@entur/chip@0.6.41) (2023-08-10)
 
 **Note:** Version bump only for package @entur/chip

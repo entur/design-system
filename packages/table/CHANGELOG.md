@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.16](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.15...@entur/table@4.6.16) (2023-08-24)
+
+### Bug Fixes
+
+- **table:** add missing caret to a11y dependency ([38ac34c](https://bitbucket.org/enturas/design-system/commits/38ac34c19ac897b9dcd1f83542ea115a13fed56d))
+
 ## [4.6.14](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.13...@entur/table@4.6.14) (2023-08-10)
 
 **Note:** Version bump only for package @entur/table
