@@ -27,7 +27,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "0.2.51",
+    "@entur/a11y": "^0.2.51",
     "@entur/button": "^3.1.0",
     "@entur/expand": "^3.4.7",
     "@entur/form": "^7.0.15",
