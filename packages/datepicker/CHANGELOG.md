@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.0-beta.1...@entur/datepicker@8.1.0-beta.2) (2023-08-25)
+
+### Bug Fixes
+
+- **simple time picker:** change width for field and add left adjustment option for clock icon ([c0e6fe3](https://bitbucket.org/enturas/design-system/commits/c0e6fe392eb33f3975db3e65152a514c58074982))
+
 # [8.1.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.0-beta.0...@entur/datepicker@8.1.0-beta.1) (2023-08-22)
 
 ### Bug Fixes
