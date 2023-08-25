@@ -39,7 +39,7 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
    * er en tidsvelger
    * @default false
    */
-  showClockIcon?: boolean;
+  showClockIcon?: boolean | 'right' | 'left';
   /** Velger hvor mye luft det skal være på sidene av klokkeslettet
    * @default 'default'
    */
@@ -52,6 +52,8 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   disabled?: boolean;
   readOnly?: boolean;
   inputRef?: React.ForwardedRef<HTMLInputElement>;
+  append?: boolean;
+  prepend?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
@@ -71,15 +73,17 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
 >;
 
 export const SimpleTimePicker = <TimeType extends TimeValue>({
+  append,
   className,
   disabled,
   feedback,
-  showClockIcon = false,
+  showClockIcon = 'right',
   inputRef,
   label,
   labelTooltip,
   onChange,
   padding = 'default',
+  prepend,
   readOnly,
   selectedTime,
   showSeconds,
@@ -271,13 +275,15 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
     <I18nProvider locale={locale}>
       <TextField
         append={
-          showClockIcon ? (
-            <ClockIcon inline onClick={() => timeFieldRef?.current?.focus()} />
-          ) : undefined
+          append ||
+          (showClockIcon === true || showClockIcon === 'right' ? (
+            <ClockIcon onClick={() => timeFieldRef?.current?.focus()} />
+          ) : undefined)
         }
         className={classNames('eds-simple-timepicker', {
           'eds-simple-timepicker--padding-large': padding === 'large',
           'eds-simple-timepicker--show-seconds': showSeconds,
+          'eds-simple-timepicker--hide-clock': !showClockIcon,
         })}
         disabled={disabled}
         disableLabelAnimation
@@ -301,6 +307,12 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
           if (key === 'Enter') handleChangeTime();
         }}
         placeholder={showSeconds ? '–– : –– : ––' : '–– : ––'}
+        prepend={
+          prepend ||
+          (showClockIcon === 'left' ? (
+            <ClockIcon onClick={() => timeFieldRef?.current?.focus()} />
+          ) : undefined)
+        }
         readOnly={readOnly}
         ref={mergeRefs(timeFieldRef, inputRef)}
         style={style}

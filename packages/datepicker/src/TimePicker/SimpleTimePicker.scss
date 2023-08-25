@@ -1,64 +1,23 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss';
 
 .eds-simple-timepicker {
-  --padding-sides: #{$space-default};
-  --input-width: 4.75rem;
+  --input-width: 7rem;
 
+  &--hide-clock {
+    --input-width: 5rem;
+  }
   &--show-seconds {
-    --input-width: 6.5rem;
-  }
+    --input-width: 8.5rem;
 
-  &--padding-large {
-    --padding-sides: #{$space-large};
-    --input-width: 6rem;
-
-    &.eds-simple-timepicker--show-seconds {
-      --input-width: 7.25rem;
+    &.eds-simple-timepicker--hide-clock {
+      --input-width: 6.5rem;
     }
   }
 
-  width: fit-content;
+  width: var(--input-width);
 
-  // START: overwrite styles in textfield to improve usability
-  .eds-form-control {
-    width: var(--input-width);
-    padding-left: var(--padding-sides);
-    padding-right: var(--padding-sides);
+  .eds-form-control__append--tooltip {
+    margin-top: -0.2rem;
+    margin-left: -0.5rem;
   }
-
-  .eds-input-group__label,
-  .eds-input-group-label-wrapper--filled .eds-input-group__label--filled {
-    margin-left: var(--padding-sides);
-    width: var(--input-width);
-  }
-
-  .eds-form-control__append {
-    margin-top: 0.75rem;
-    margin-right: 0.5rem;
-    margin-left: -0.75rem;
-
-    &--tooltip {
-      margin-top: 1rem;
-      margin-right: 0.25rem;
-      margin-left: -1rem;
-    }
-  }
-
-  &--show-seconds .eds-form-control__append {
-    margin-left: -1rem;
-
-    &--tooltip {
-      margin-left: -1.25rem;
-    }
-
-    + .eds-form-control__append--tooltip {
-      margin-left: -0.5rem;
-    }
-  }
-
-  .eds-feedback-text {
-    position: absolute;
-    top: $space-extra-large4;
-  }
-  // END
 }
