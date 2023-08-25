@@ -33,6 +33,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **datepicker:** add check for window width being undefined ([6c608c9](https://bitbucket.org/enturas/design-system/commits/6c608c94593310053a590b96a1754ae27438cab8))
 
+# [8.1.0-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.0-beta.1...@entur/datepicker@8.1.0-beta.2) (2023-08-25)
+
+### Bug Fixes
+
+- **simple time picker:** change width for field and add left adjustment option for clock icon ([c0e6fe3](https://bitbucket.org/enturas/design-system/commits/c0e6fe392eb33f3975db3e65152a514c58074982))
+
 # [8.1.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.0-beta.0...@entur/datepicker@8.1.0-beta.1) (2023-08-22)
 
 ### Bug Fixes
