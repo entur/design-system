@@ -192,7 +192,10 @@ export const DatePicker = <DateType extends DateValue>({
     granularity: showTime ? 'minute' : rest.granularity,
   };
 
-  const useModal = width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH && !disableModal;
+  const useModal =
+    typeof width !== 'undefined' &&
+    width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH &&
+    !disableModal;
 
   const popoverCalendar = (
     <div
