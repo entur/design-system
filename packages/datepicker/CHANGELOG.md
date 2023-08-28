@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.12](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.11...@entur/datepicker@8.0.12) (2023-08-28)
+
+### Bug Fixes
+
+- **datepicker:** add check for window width being undefined ([6c608c9](https://bitbucket.org/enturas/design-system/commits/6c608c94593310053a590b96a1754ae27438cab8))
+
 ## [8.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.9...@entur/datepicker@8.0.10) (2023-08-10)
 
 **Note:** Version bump only for package @entur/datepicker

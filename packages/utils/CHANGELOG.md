@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.3...@entur/utils@0.9.4) (2023-08-28)
+
+### Bug Fixes
+
+- **utils:** check for undefined window in useWindowDimensions ([5514833](https://bitbucket.org/enturas/design-system/commits/551483389dd6ff675351004035e7e45320e5f4b2))
+
 ## [0.9.3](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.2...@entur/utils@0.9.3) (2023-07-19)
 
 ### Reverts

@@ -1,6 +1,6 @@
 {
   "name": "@entur/travel",
-  "version": "6.0.18",
+  "version": "6.0.19",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/travel.esm.js",
@@ -27,11 +27,11 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/form": "^7.0.15",
+    "@entur/form": "^7.0.16",
     "@entur/icons": "^6.4.2",
-    "@entur/layout": "^2.1.39",
+    "@entur/layout": "^2.1.40",
     "@entur/tokens": "^3.10.0",
-    "@entur/utils": "^0.9.3",
+    "@entur/utils": "^0.9.4",
     "classnames": "^2.3.1"
   }
 }
