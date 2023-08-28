@@ -23,6 +23,7 @@
     white-space: nowrap;
 
     &__wrapper {
+      position: absolute;
       max-width: 65%;
     }
   }
