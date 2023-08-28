@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.5...@entur/dropdown@5.0.6) (2023-08-28)
+
+### Bug Fixes
+
+- **searchable dropdown:** fix dropdown changing width on selecting elements with width larger than f ([9d4b74e](https://bitbucket.org/enturas/design-system/commits/9d4b74e34bd63593d773b506d5018e4f2d7acbb2))
+
 ## [5.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.4...@entur/dropdown@5.0.5) (2023-08-28)
 
 **Note:** Version bump only for package @entur/dropdown
