@@ -25,6 +25,7 @@ export type BadgeOwnProps = {
    */
   max?: number;
   type?: BadgeTypes;
+  invisible?: boolean;
 };
 
 export type BadgeProps<T extends React.ElementType> =
