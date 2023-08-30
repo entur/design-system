@@ -6,15 +6,16 @@ type BlockquoteProps = {
   className?: string;
 } & React.DetailedHTMLProps<
   React.BlockquoteHTMLAttributes<HTMLElement>,
-  HTMLElement
+  HTMLQuoteElement
 >;
 
-export const Blockquote: React.FunctionComponent<BlockquoteProps> = ({
-  className,
-  ...rest
-}) => {
+export const Blockquote = ({ className, ref, ...rest }: BlockquoteProps) => {
   return (
-    <blockquote className={classNames('eds-blockquote', className)} {...rest} />
+    <blockquote
+      className={classNames('eds-blockquote', className)}
+      ref={ref}
+      {...rest}
+    />
   );
 };
 

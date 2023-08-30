@@ -41,8 +41,8 @@
     "apps/*"
   ],
   "dependencies": {
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.58.0"
   },
   "devDependencies": {
@@ -55,8 +55,8 @@
     "@types/jest": "^27.4.1",
     "@types/jest-axe": "3.5.5",
     "@types/node": "^14.14.31",
-    "@types/react": "16.9.56",
-    "@types/react-dom": "16.9.5",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "babel-jest": "^27.4.6",
@@ -64,7 +64,7 @@
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "cz-lerna-changelog": "^2.0.2",
-    "dts-cli": "1.6.1",
+    "dts-cli": "2.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^6.0.0",
@@ -75,8 +75,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^7.0.0",
     "inquirer": "^8.1.2",
-    "jest": "^27.4.7",
-    "jest-axe": "^7.0.0",
+    "jest-axe": "^8.0.0",
     "lerna": "^6.4.1",
     "postcss": "^8.4.12",
     "postcss-preset-env": "^7.4.3",
@@ -90,8 +89,8 @@
   "resolutions": {
     "babel-plugin-remove-graphql-queries": "2.9.14",
     "gatsby-plugin-mdx": "1.2.4",
-    "@types/react": "16.9.56",
-    "@types/react-dom": "16.9.5",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "sass": "1.58.0"
   },
   "config": {

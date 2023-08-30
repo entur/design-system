@@ -17,6 +17,7 @@ export type LinkOwnProps = {
    * @default "both"
    */
   margin?: 'top' | 'bottom' | 'both' | 'none';
+  ariaLabelExternalIcon?: string;
 };
 
 export type LinkProps<T extends React.ElementType = typeof defaultElement> =
