@@ -1,5 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 /// Create inset focus
 /// @access public
@@ -7,8 +6,8 @@
 /// @param {Color} $color-bg - background color
 /// @return {Box-shadow}
 @function inset-focus($color-focus, $color-bg) {
-  @return inset 0 0 0 $border-widths-small $color-bg,
-    inset 0 0 0 calc(#{$border-widths-medium} + #{$border-widths-small})
+  @return inset 0 0 0 t.$border-widths-small $color-bg,
+    inset 0 0 0 calc(#{t.$border-widths-medium} + #{t.$border-widths-small})
       $color-focus;
 }
 
@@ -19,39 +18,39 @@
     --background-color: transparent;
 
     background-color: var(--background-color);
-    border-radius: $border-widths-large;
+    border-radius: t.$border-widths-large;
     color: inherit;
     cursor: pointer;
-    font-size: $font-sizes-medium;
-    height: $space-large;
-    line-height: $line-heights-medium;
-    margin: $space-extra-small2;
+    font-size: t.$font-sizes-medium;
+    height: t.$space-large;
+    line-height: t.$line-heights-medium;
+    margin: t.$space-extra-small2;
     outline-color: transparent;
-    padding: calc(#{$space-extra-small2}/ 2) $space-small;
+    padding: calc(#{t.$space-extra-small2}/ 2) t.$space-small;
     text-align: center;
     user-select: none;
 
     &--large {
-      font-size: $font-sizes-large;
-      height: $space-extra-large2;
-      line-height: $line-heights-extra-large;
-      padding: $space-extra-small $space-small;
+      font-size: t.$font-sizes-large;
+      height: t.$space-extra-large2;
+      line-height: t.$line-heights-extra-large;
+      padding: t.$space-extra-small t.$space-small;
     }
   }
 
   &:hover input {
     &:not(:checked) + .eds-base-segmented {
-      --background-color: #{$colors-blues-blue80};
+      --background-color: #{t.$colors-blues-blue80};
 
       .eds-contrast & {
-        --background-color: #{$colors-blues-blue30};
+        --background-color: #{t.$colors-blues-blue30};
       }
     }
     &:checked + .eds-base-segmented {
-      --background-color: #{$colors-blues-blue80};
+      --background-color: #{t.$colors-blues-blue80};
 
       .eds-contrast & {
-        --background-color: #{$colors-blues-blue70};
+        --background-color: #{t.$colors-blues-blue70};
       }
     }
   }
@@ -64,33 +63,36 @@
     width: 0;
 
     &:checked + .eds-base-segmented {
-      --background-color: #{$colors-brand-white};
+      --background-color: #{t.$colors-brand-white};
 
-      box-shadow: $shadows-box-shadow;
+      box-shadow: t.$shadows-box-shadow;
 
       .eds-contrast & {
-        --background-color: #{$colors-brand-white};
+        --background-color: #{t.$colors-brand-white};
 
-        box-shadow: $shadows-box-shadow-contrast;
-        color: $colors-brand-blue;
+        box-shadow: t.$shadows-box-shadow-contrast;
+        color: t.$colors-brand-blue;
       }
     }
 
     &:focus {
       &:not(:checked) + .eds-base-segmented {
-        box-shadow: #{inset-focus($colors-brand-blue, $colors-blues-blue70)};
+        box-shadow: #{inset-focus(t.$colors-brand-blue, t.$colors-blues-blue70)};
 
         .eds-contrast & {
-          box-shadow: #{inset-focus($colors-brand-white, $colors-blues-blue20)};
+          box-shadow: #{inset-focus(
+              t.$colors-brand-white,
+              t.$colors-blues-blue20
+            )};
         }
       }
       &:checked + .eds-base-segmented {
-        box-shadow: $shadows-box-shadow,
-          #{inset-focus($colors-brand-blue, $colors-brand-white)};
+        box-shadow: t.$shadows-box-shadow,
+          #{inset-focus(t.$colors-brand-blue, t.$colors-brand-white)};
 
         .eds-contrast & {
-          box-shadow: $shadows-box-shadow-contrast,
-            #{inset-focus($colors-brand-blue, $colors-brand-white)};
+          box-shadow: t.$shadows-box-shadow-contrast,
+            #{inset-focus(t.$colors-brand-blue, t.$colors-brand-white)};
         }
       }
     }

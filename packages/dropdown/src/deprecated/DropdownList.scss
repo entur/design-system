@@ -1,8 +1,8 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown-list {
-  border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-box-shadow;
+  border-radius: t.$border-radiuses-medium;
+  box-shadow: t.$shadows-box-shadow;
   display: none;
   list-style: none;
   margin: 0;
@@ -11,9 +11,9 @@
   position: relative;
   overflow-y: auto;
   width: 100%;
-  z-index: $z-indexes-popover;
+  z-index: t.$z-indexes-popover;
   .eds-contrast & {
-    box-shadow: $shadows-box-shadow-contrast;
+    box-shadow: t.$shadows-box-shadow-contrast;
   }
 
   &--open {
@@ -25,47 +25,47 @@
     outline: none;
   }
 
-  @media all and (min-width: $breakpoints-large) {
+  @media all and (min-width: t.$breakpoints-large) {
     max-height: 30vh;
   }
 
   &__item {
     align-items: center;
-    background-color: $colors-greys-grey90;
-    border-bottom: $border-widths-default solid $colors-greys-grey70;
-    border-left: $border-widths-default solid $colors-greys-grey70;
-    border-right: $border-widths-default solid $colors-greys-grey70;
-    color: $colors-brand-blue;
+    background-color: t.$colors-greys-grey90;
+    border-bottom: t.$border-widths-default solid t.$colors-greys-grey70;
+    border-left: t.$border-widths-default solid t.$colors-greys-grey70;
+    border-right: t.$border-widths-default solid t.$colors-greys-grey70;
+    color: t.$colors-brand-blue;
     display: flex;
     justify-content: space-between;
     font-family: inherit;
-    font-size: $font-sizes-large;
-    line-height: $line-heights-medium;
-    padding: $space-small $space-default;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-medium;
+    padding: t.$space-small t.$space-default;
     width: 100%;
     &:first-child {
-      border-top: $border-widths-default solid $colors-greys-grey70;
+      border-top: t.$border-widths-default solid t.$colors-greys-grey70;
     }
     &:last-child {
       border-bottom: none;
     }
 
     .eds-contrast & {
-      color: $colors-brand-blue;
-      border-color: $colors-blues-blue30;
-      background-color: $colors-brand-white;
+      color: t.$colors-brand-blue;
+      border-color: t.$colors-blues-blue30;
+      background-color: t.$colors-brand-white;
     }
 
     &--highlighted {
-      background-color: $colors-blues-blue70;
+      background-color: t.$colors-blues-blue70;
 
       .eds-contrast & {
-        background-color: $colors-blues-blue70;
+        background-color: t.$colors-blues-blue70;
       }
     }
   }
 
   &-icon {
-    margin-left: $space-small;
+    margin-left: t.$space-small;
   }
 }

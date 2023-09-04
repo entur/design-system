@@ -1,41 +1,41 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-tag {
-  --background-color: #{$colors-greys-grey70};
+  --background-color: #{t.$colors-greys-grey70};
   --text-color: inherit;
   background-color: var(--background-color);
   color: var(--text-color);
-  border-radius: $border-radiuses-medium;
+  border-radius: t.$border-radiuses-medium;
   display: inline-flex;
-  font-size: $font-sizes-medium;
-  line-height: $space-large;
-  height: $space-extra-large;
-  min-width: $space-extra-large;
-  padding: $space-extra-small2 $space-extra-small;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$space-large;
+  height: t.$space-extra-large;
+  min-width: t.$space-extra-large;
+  padding: t.$space-extra-small2 t.$space-extra-small;
   position: relative;
 
   .eds-contrast & {
-    background-color: $colors-blues-blue20;
+    background-color: t.$colors-blues-blue20;
   }
 
   &--alert {
-    padding-right: $space-small;
+    padding-right: t.$space-small;
     &--error {
       box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.5); // adds 50% white overlay
       .eds-contrast &.eds-travel-tag {
         box-shadow: none;
         background-color: rgba(0, 0, 0, 0);
-        border: $border-widths-default dashed $colors-blues-blue30;
+        border: t.$border-widths-default dashed t.$colors-blues-blue30;
       }
     }
   }
   &--icon-and-text > .eds-icon {
-    margin-right: $space-extra-small;
+    margin-right: t.$space-extra-small;
   }
 
   > .eds-icon {
-    font-size: $font-sizes-extra-large2;
-    color: $colors-brand-white;
+    font-size: t.$font-sizes-extra-large2;
+    color: t.$colors-brand-white;
 
     .eds-contrast & :where(g, path) {
       fill: var(--background-color);
@@ -48,73 +48,73 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    margin: 0 0 0 $space-small;
+    margin: 0 0 0 t.$space-small;
     padding: 0;
-    height: $space-large;
-    width: $space-large;
+    height: t.$space-large;
+    width: t.$space-large;
     .eds-icon {
-      color: $colors-brand-blue;
-      font-size: $font-sizes-medium;
+      color: t.$colors-brand-blue;
+      font-size: t.$font-sizes-medium;
       .eds-contrast & {
-        color: $colors-brand-white;
+        color: t.$colors-brand-white;
       }
     }
     &:focus,
     :focus-within {
-      outline-offset: $outline-offsets-focus;
+      outline-offset: t.$outline-offsets-focus;
       outline: none;
-      box-shadow: $shadows-focus;
+      box-shadow: t.$shadows-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        box-shadow: t.$shadows-focus-contrast;
       }
     }
   }
 
   &__alert {
-    background: $colors-brand-white;
+    background: t.$colors-brand-white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: $font-sizes-large;
-    height: calc($space-default + $border-widths-medium);
-    width: calc($space-default + $border-widths-medium);
+    font-size: t.$font-sizes-large;
+    height: calc(t.$space-default + t.$border-widths-medium);
+    width: calc(t.$space-default + t.$border-widths-medium);
     position: absolute;
     top: calc(
-      ($space-extra-large - ($space-default + $border-widths-medium)) / 2
+      (t.$space-extra-large - (t.$space-default + t.$border-widths-medium)) / 2
     );
     right: calc(
-      -1 * ($space-default - $border-widths-medium) / 2 - $space-extra-small2
+      -1 * (t.$space-default - t.$border-widths-medium) / 2 - t.$space-extra-small2
     );
     .eds-contrast & {
-      background: $colors-brand-blue;
+      background: t.$colors-brand-blue;
       &--error-icon {
-        top: calc(($space-extra-large - ($font-sizes-medium)) / 2);
+        top: calc((t.$space-extra-large - (t.$font-sizes-medium)) / 2);
       }
     }
 
     &-exclamation-icon {
-      color: $colors-validation-canary;
+      color: t.$colors-validation-canary;
       circle {
-        fill: $colors-brand-blue;
+        fill: t.$colors-brand-blue;
       }
       .eds-contrast & {
-        color: $colors-validation-canary-contrast;
+        color: t.$colors-validation-canary-contrast;
       }
     }
     &-error-icon {
-      font-size: $font-sizes-medium;
-      color: $colors-validation-lava;
+      font-size: t.$font-sizes-medium;
+      color: t.$colors-validation-lava;
       .eds-contrast & {
-        margin-bottom: $space-extra-small2;
-        color: $colors-validation-lava-contrast;
+        margin-bottom: t.$space-extra-small2;
+        color: t.$colors-validation-lava-contrast;
       }
     }
     &-info-icon {
-      color: $colors-validation-sky;
+      color: t.$colors-validation-sky;
       .eds-contrast & {
-        color: $colors-validation-sky-contrast;
+        color: t.$colors-validation-sky-contrast;
       }
     }
   }
@@ -132,20 +132,20 @@
   }
 
   &__label {
-    color: $colors-brand-blue;
-    font-size: $font-sizes-large;
+    color: t.$colors-brand-blue;
+    font-size: t.$font-sizes-large;
     .eds-contrast & {
-      color: $colors-brand-white;
+      color: t.$colors-brand-white;
     }
     &--right {
-      margin-left: $space-extra-small;
+      margin-left: t.$space-extra-small;
       &--with-alert {
-        margin-left: $space-default;
+        margin-left: t.$space-default;
       }
     }
     &--bottom {
-      margin-top: calc($space-extra-small2 / 2);
-      font-size: $font-sizes-medium;
+      margin-top: calc(t.$space-extra-small2 / 2);
+      font-size: t.$font-sizes-medium;
     }
   }
 }

@@ -1,29 +1,29 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-navigation-card {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: $space-large;
+  padding: t.$space-large;
   position: relative;
-  transition: transform $timings-medium ease-in-out,
-    box-shadow $timings-medium ease-in-out;
+  transition: transform t.$timings-medium ease-in-out,
+    box-shadow t.$timings-medium ease-in-out;
   &__title {
-    font-size: $font-sizes-extra-large2;
-    line-height: $line-heights-extra-large3;
-    font-weight: $font-weights-heading;
-    margin: $space-extra-small 0 $space-medium;
+    font-size: t.$font-sizes-extra-large2;
+    line-height: t.$line-heights-extra-large3;
+    font-weight: t.$font-weights-heading;
+    margin: t.$space-extra-small 0 t.$space-medium;
     &:after {
       content: '';
       display: block;
-      bottom: $space-default;
+      bottom: t.$space-default;
       height: 0.1875rem; // 3px in rem
-      width: $space-extra-large;
+      width: t.$space-extra-large;
       margin: 0 auto;
       opacity: var(--show-active-line);
-      background: $colors-brand-coral;
-      transition: width $timings-medium ease-in-out;
+      background: t.$colors-brand-coral;
+      transition: width t.$timings-medium ease-in-out;
     }
   }
   &:before {
@@ -34,17 +34,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: $shadows-card-shadow-hover;
-    transition: opacity $timings-medium ease-in-out;
+    box-shadow: t.$shadows-card-shadow-hover;
+    transition: opacity t.$timings-medium ease-in-out;
     opacity: 0;
-    border-radius: $border-radiuses-medium;
+    border-radius: t.$border-radiuses-medium;
     .eds-contrast & {
-      box-shadow: $shadows-card-shadow-hover-contrast;
+      box-shadow: t.$shadows-card-shadow-hover-contrast;
     }
   }
 
   &:hover {
-    transform: translateY(-$space-extra-small2);
+    transform: translateY(-(t.$space-extra-small2));
     &:before {
       opacity: 1;
     }
@@ -54,35 +54,35 @@
   }
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 
   &__title-icon {
     display: flex;
     font-size: 2rem;
-    padding: $space-small;
+    padding: t.$space-small;
   }
   &__title-icon-compact {
     position: relative;
     top: 0.1em;
-    margin-right: $space-large;
+    margin-right: t.$space-large;
   }
   &__arrow-icon {
-    margin-top: $space-extra-small;
+    margin-top: t.$space-extra-small;
   }
   &--compact {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 $space-extra-large;
-    @include for-desktop {
-      padding: $space-default $space-extra-large2;
+    padding: 0 t.$space-extra-large;
+    @include breakpoint.for-desktop {
+      padding: t.$space-default t.$space-extra-large2;
     }
     .eds-navigation-card__title {
       margin: 0;
-      padding: $space-medium 0;
+      padding: t.$space-medium 0;
       &:after {
         display: none;
       }
@@ -93,16 +93,16 @@
   }
   &__compact-icon {
     position: absolute;
-    right: $space-extra-large;
-    top: $space-extra-large;
+    right: t.$space-extra-large;
+    top: t.$space-extra-large;
     font-size: 1rem;
   }
   &__external {
     &--not-compact {
       position: absolute;
-      top: $space-medium + $space-extra-small2;
-      right: $space-medium + $space-extra-small2;
-      color: $colors-blues-blue40;
+      top: t.$space-medium + t.$space-extra-small2;
+      right: t.$space-medium + t.$space-extra-small2;
+      color: t.$colors-blues-blue40;
     }
     &--compact {
       font-size: 1rem;

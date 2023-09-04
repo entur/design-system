@@ -1,14 +1,14 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-date-and-time-field {
   &__segment {
-    margin-top: $space-medium;
+    margin-top: t.$space-medium;
     padding: 0 2px;
     font-variant-numeric: tabular-nums;
     text-align: end;
 
     &--placeholder {
-      color: $colors-greys-grey40;
+      color: t.$colors-greys-grey40;
     }
 
     &--dot-separator {
@@ -17,10 +17,10 @@
     }
 
     &:focus {
-      background-color: $colors-blues-blue40;
-      color: $colors-brand-white;
+      background-color: t.$colors-blues-blue40;
+      color: t.$colors-brand-white;
       outline: none;
-      border-radius: $border-radiuses-default;
+      border-radius: t.$border-radiuses-default;
     }
   }
 }

@@ -43,7 +43,7 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sass": "^1.58.0"
+    "sass": "^1.65.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
@@ -91,7 +91,7 @@
     "gatsby-plugin-mdx": "1.2.4",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
-    "sass": "1.58.0"
+    "sass": "1.65.1"
   },
   "config": {
     "commitizen": {

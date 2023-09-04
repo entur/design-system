@@ -1,15 +1,15 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-popover {
-  background: $colors-brand-blue;
-  box-shadow: $shadows-box-shadow;
-  border-radius: $border-radiuses-default;
-  border: $border-widths-small solid $colors-greys-grey60;
+  background: t.$colors-brand-blue;
+  box-shadow: t.$shadows-box-shadow;
+  border-radius: t.$border-radiuses-default;
+  border: t.$border-widths-small solid t.$colors-greys-grey60;
   font-family: inherit;
-  z-index: $z-indexes-popover;
+  z-index: t.$z-indexes-popover;
   .eds-contrast & {
-    background: $colors-blues-blue10;
-    box-shadow: $shadows-box-shadow-contrast;
+    background: t.$colors-blues-blue10;
+    box-shadow: t.$shadows-box-shadow-contrast;
   }
   &--hidden {
     display: none;

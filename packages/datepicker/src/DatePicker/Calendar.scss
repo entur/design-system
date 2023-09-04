@@ -1,15 +1,15 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-datepicker__calendar,
 .eds-contrast .eds-datepicker__calendar {
   width: fit-content;
-  padding: $space-large;
-  padding-top: $space-small;
+  padding: t.$space-large;
+  padding-top: t.$space-small;
 
-  background-color: $colors-brand-white;
-  color: $colors-brand-blue;
+  background-color: t.$colors-brand-white;
+  color: t.$colors-brand-blue;
   border-radius: 4px;
-  box-shadow: $shadows-box-shadow;
+  box-shadow: t.$shadows-box-shadow;
 
   &__header {
     display: flex;
@@ -17,21 +17,21 @@
     align-items: center;
 
     h2 {
-      font-size: $font-sizes-large;
-      font-weight: $font-weights-heading;
+      font-size: t.$font-sizes-large;
+      font-weight: t.$font-weights-heading;
     }
 
     // This is done to remove contrast specific styling
     .eds-icon-button {
       &:hover {
-        background-color: $colors-blues-blue40;
-        color: $colors-brand-white;
+        background-color: t.$colors-blues-blue40;
+        color: t.$colors-brand-white;
       }
       &:focus {
-        border: $border-widths-small solid $colors-brand-blue;
+        border: t.$border-widths-small solid t.$colors-brand-blue;
       }
       &:active {
-        background-color: $colors-blues-blue50;
+        background-color: t.$colors-blues-blue50;
       }
       &--disabled__wrapper {
         visibility: hidden;
@@ -45,8 +45,8 @@
     border-collapse: collapse;
 
     thead tr th {
-      color: $colors-blues-blue30;
-      font-size: $font-sizes-small;
+      color: t.$colors-blues-blue30;
+      font-size: t.$font-sizes-small;
     }
 
     &__cell {
@@ -55,13 +55,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: $font-sizes-medium;
+      font-size: t.$font-sizes-medium;
       cursor: default;
 
       &__td {
         position: relative;
         padding: 0;
-        border: 1px solid $colors-greys-grey70;
+        border: 1px solid t.$colors-greys-grey70;
 
         &:focus-within {
           z-index: 2;
@@ -69,29 +69,29 @@
       }
 
       &:hover {
-        background-color: $colors-blues-blue40;
-        color: $colors-brand-white;
+        background-color: t.$colors-blues-blue40;
+        color: t.$colors-brand-white;
       }
 
       &:active {
-        background-color: $colors-blues-blue50;
+        background-color: t.$colors-blues-blue50;
       }
 
       &:focus {
-        box-shadow: $shadows-focus;
-        outline: 1px solid $colors-greys-grey70;
+        box-shadow: t.$shadows-focus;
+        outline: 1px solid t.$colors-greys-grey70;
       }
 
       &--selected {
-        background-color: $colors-brand-blue;
-        color: $colors-brand-white;
+        background-color: t.$colors-brand-blue;
+        color: t.$colors-brand-white;
 
         &:hover {
-          background-color: $colors-blues-blue20;
+          background-color: t.$colors-blues-blue20;
         }
 
         &:active {
-          background-color: $colors-blues-blue10;
+          background-color: t.$colors-blues-blue10;
         }
       }
 
@@ -100,7 +100,7 @@
 
         &:hover {
           background-color: transparent;
-          color: $colors-brand-blue;
+          color: t.$colors-brand-blue;
           cursor: not-allowed;
         }
       }
@@ -116,7 +116,7 @@
       }
 
       &--today {
-        border-bottom: 2px solid $colors-brand-coral;
+        border-bottom: 2px solid t.$colors-brand-coral;
       }
     }
   }

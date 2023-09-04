@@ -1,4 +1,4 @@
-@import '../../tokens/dist/styles.scss';
+@use '../../tokens/dist/styles.scss' as t;
 
 :root {
   --eds-icons: 1;
@@ -16,45 +16,45 @@ p .eds-icon {
 
 .eds-contrast .eds-icon {
   &__metro :where(g, path) {
-    fill: $colors-transport-contrast-metro;
+    fill: t.$colors-transport-contrast-metro;
   }
   &__bus :where(g, path) {
-    fill: $colors-transport-contrast-bus;
+    fill: t.$colors-transport-contrast-bus;
   }
   &__plane :where(g, path) {
-    fill: $colors-transport-contrast-plane;
+    fill: t.$colors-transport-contrast-plane;
   }
   &__helicopter :where(g, path) {
-    fill: $colors-transport-contrast-helicopter;
+    fill: t.$colors-transport-contrast-helicopter;
   }
   &__tram :where(g, path) {
-    fill: $colors-transport-contrast-tram;
+    fill: t.$colors-transport-contrast-tram;
   }
   &__funicular :where(g, path) {
-    fill: $colors-transport-contrast-funicular;
+    fill: t.$colors-transport-contrast-funicular;
   }
   &__cableway :where(g, path) {
-    fill: $colors-transport-contrast-cableway;
+    fill: t.$colors-transport-contrast-cableway;
   }
   &__taxi :where(g, path) {
-    fill: $colors-transport-contrast-taxi;
+    fill: t.$colors-transport-contrast-taxi;
   }
   &__bicycle :where(g, path) {
-    fill: $colors-transport-contrast-bicycle;
+    fill: t.$colors-transport-contrast-bicycle;
   }
   &__walk :where(g, path) {
-    fill: $colors-transport-contrast-walk;
+    fill: t.$colors-transport-contrast-walk;
   }
   &__train :where(g, path) {
-    fill: $colors-transport-contrast-train;
+    fill: t.$colors-transport-contrast-train;
   }
   &__ferry :where(g, path) {
-    fill: $colors-transport-contrast-ferry;
+    fill: t.$colors-transport-contrast-ferry;
   }
   &__carferry :where(g, path) {
-    fill: $colors-transport-contrast-carferry;
+    fill: t.$colors-transport-contrast-carferry;
   }
   &__mobility :where(g, path) {
-    fill: $colors-transport-contrast-mobility;
+    fill: t.$colors-transport-contrast-mobility;
   }
 }

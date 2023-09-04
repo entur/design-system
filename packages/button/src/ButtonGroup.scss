@@ -1,9 +1,9 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-button-group {
   .eds-button {
-    margin-right: $space-small;
-    margin-bottom: $space-small;
+    margin-right: t.$space-small;
+    margin-bottom: t.$space-small;
 
     &:only-child {
       margin: 0;

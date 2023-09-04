@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-textfield__clear-button {
   &-wrapper {
@@ -14,26 +14,26 @@
   font: inherit;
   font-size: 1rem;
   line-height: 1rem;
-  padding: $space-extra-small;
-  margin-right: -$space-small;
+  padding: t.$space-extra-small;
+  margin-right: -(t.$space-small);
   &:hover {
-    background: $colors-greys-grey80;
+    background: t.$colors-greys-grey80;
   }
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
   }
 }
 
 .eds-textfield__divider {
   content: '';
   display: block;
-  background-color: $colors-greys-grey70;
+  background-color: t.$colors-greys-grey70;
   height: 1.5rem;
   width: 1px;
   .eds-form-control-wrapper--disabled & {
     .eds-contrast & {
-      background-color: $colors-blues-blue50;
+      background-color: t.$colors-blues-blue50;
     }
   }
 }

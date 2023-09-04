@@ -1,17 +1,17 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-base-card {
   display: flex;
-  box-shadow: $shadows-card-shadow;
-  border: $border-widths-small solid $colors-greys-grey70;
-  border-radius: $border-radiuses-medium;
+  box-shadow: t.$shadows-card-shadow;
+  border: t.$border-widths-small solid t.$colors-greys-grey70;
+  border-radius: t.$border-radiuses-medium;
   align-items: center;
   appearance: none;
   text-decoration: none;
   color: inherit;
   .eds-contrast & {
-    background-color: $colors-blues-blue10;
-    border-color: $colors-blues-blue30;
-    box-shadow: $shadows-card-shadow-contrast;
+    background-color: t.$colors-blues-blue10;
+    border-color: t.$colors-blues-blue30;
+    box-shadow: t.$shadows-card-shadow-contrast;
   }
 }

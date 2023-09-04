@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-datepicker {
   position: relative;
@@ -11,16 +11,16 @@
 
     // This is done to remove contrast specific styling
     &.eds-icon-button {
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
       &:hover {
-        background-color: $colors-blues-blue40;
-        color: $colors-brand-white;
+        background-color: t.$colors-blues-blue40;
+        color: t.$colors-brand-white;
       }
       &:focus {
-        border: $border-widths-small solid $colors-brand-blue;
+        border: t.$border-widths-small solid t.$colors-brand-blue;
       }
       &:active {
-        background-color: $colors-blues-blue50;
+        background-color: t.$colors-blues-blue50;
       }
     }
   }

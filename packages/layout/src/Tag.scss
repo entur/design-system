@@ -1,29 +1,29 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-tag {
-  background: $colors-greys-grey70;
-  color: $colors-brand-blue;
+  background: t.$colors-greys-grey70;
+  color: t.$colors-brand-blue;
   display: inline-block;
-  min-width: $space-extra-large;
-  padding: $space-extra-small2 $space-small;
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-large;
+  min-width: t.$space-extra-large;
+  padding: t.$space-extra-small2 t.$space-small;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$line-heights-large;
   &--leading-icon .eds-icon {
-    margin-right: $space-extra-small;
+    margin-right: t.$space-extra-small;
   }
   &--trailing-icon .eds-icon {
-    margin-left: $space-extra-small;
+    margin-left: t.$space-extra-small;
   }
   &--compact {
-    font-size: $font-sizes-small;
-    padding: calc($space-extra-small2 / 2) $space-extra-small;
-    line-height: $line-heights-medium;
+    font-size: t.$font-sizes-small;
+    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small;
+    line-height: t.$line-heights-medium;
     height: 1.5rem;
     &.eds-tag--leading-icon .eds-icon {
-      margin-right: $space-extra-small2;
+      margin-right: t.$space-extra-small2;
     }
     &.eds-tag--trailing-icon .eds-icon {
-      margin-left: $space-extra-small2;
+      margin-left: t.$space-extra-small2;
     }
   }
 }

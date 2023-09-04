@@ -1,8 +1,8 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-skip-to-content {
-  background: $colors-validation-canary;
-  color: $colors-brand-blue;
+  background: t.$colors-validation-canary;
+  color: t.$colors-brand-blue;
   display: block;
   text-align: center;
   padding: 1em;
@@ -13,7 +13,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $z-indexes-overlay;
+  z-index: t.$z-indexes-overlay;
 
   &:visited {
     color: inherit;
@@ -21,7 +21,7 @@
   &:focus {
     transform: none;
     outline: none;
-    box-shadow: $shadows-focus;
-    outline-offset: $outline-offsets-focus;
+    box-shadow: t.$shadows-focus;
+    outline-offset: t.$outline-offsets-focus;
   }
 }

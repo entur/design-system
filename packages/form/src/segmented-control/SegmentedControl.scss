@@ -1,11 +1,11 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-segmented-control {
-  margin-top: $space-extra-small2;
+  margin-top: t.$space-extra-small2;
   display: flex;
-  background: $colors-blues-blue70;
-  border-radius: $border-radiuses-large;
+  background: t.$colors-blues-blue70;
+  border-radius: t.$border-radiuses-large;
   .eds-contrast & {
-    background: $colors-blues-blue20;
+    background: t.$colors-blues-blue20;
   }
 }

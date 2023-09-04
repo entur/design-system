@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-multi-select {
   position: relative;
@@ -9,24 +9,24 @@
     flex-wrap: wrap;
     position: relative;
     flex: 1 1 0%;
-    padding: $space-extra-small2;
+    padding: t.$space-extra-small2;
     &-tag.eds-tag-chip {
-      margin-left: $space-extra-small2;
+      margin-left: t.$space-extra-small2;
       white-space: nowrap;
       svg {
         .eds-contrast & {
-          color: $colors-brand-blue;
+          color: t.$colors-brand-blue;
         }
       }
       &:focus {
-        outline-offset: $outline-offsets-focus;
+        outline-offset: t.$outline-offsets-focus;
       }
       .eds-contrast & {
-        color: $colors-brand-blue;
-        background: $colors-blues-blue80;
-        border: $border-widths-small solid $colors-blues-blue70;
+        color: t.$colors-brand-blue;
+        background: t.$colors-blues-blue80;
+        border: t.$border-widths-small solid t.$colors-blues-blue70;
         .eds-tag-chip__close-button:hover {
-          background: $colors-blues-blue60;
+          background: t.$colors-blues-blue60;
         }
       }
     }
@@ -38,9 +38,9 @@
     align-items: center;
   }
   &__placeholder {
-    padding-left: $space-large;
-    line-height: $line-heights-large;
-    font-size: $font-sizes-large;
+    padding-left: t.$space-large;
+    line-height: t.$line-heights-large;
+    font-size: t.$font-sizes-large;
   }
   &__item {
     &-label {
@@ -49,8 +49,8 @@
 }
 
 .eds-checkbox-icon {
-  height: $space-default;
-  width: $space-default;
+  height: t.$space-default;
+  width: t.$space-default;
   visibility: hidden;
   &__path {
     transform-origin: 50% 50%;
@@ -71,20 +71,20 @@
   align-items: center;
   position: relative;
 
-  margin-right: $space-small;
+  margin-right: t.$space-small;
   height: 1.25rem;
   width: 1.25rem;
-  border: $border-widths-default solid $colors-brand-blue;
-  border-radius: $border-radiuses-default;
+  border: t.$border-widths-default solid t.$colors-brand-blue;
+  border-radius: t.$border-radiuses-default;
   background-color: transparent;
-  color: $colors-brand-white;
+  color: t.$colors-brand-white;
 }
 .eds-multiselect-checkbox--checked {
-  background-color: $colors-brand-blue;
+  background-color: t.$colors-brand-blue;
   .eds-checkbox-icon {
     visibility: visible;
     &__path {
-      stroke: $colors-brand-white;
+      stroke: t.$colors-brand-white;
       animation: stroke ease-in-out 0.2s 0.1s forwards;
     }
   }

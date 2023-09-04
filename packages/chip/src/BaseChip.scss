@@ -1,33 +1,33 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-chip {
-  background: $colors-blues-blue80;
-  border: $border-widths-small solid $colors-blues-blue70;
+  background: t.$colors-blues-blue80;
+  border: t.$border-widths-small solid t.$colors-blues-blue70;
   border-radius: 1rem;
   color: inherit;
   font-family: inherit;
-  font-size: $font-sizes-medium;
+  font-size: t.$font-sizes-medium;
   height: 2rem;
   min-width: 3rem;
-  padding: 0 $space-small;
-  transition: background $timings-fast ease-out, border $timings-fast ease-out;
+  padding: 0 t.$space-small;
+  transition: background t.$timings-fast ease-out,
+    border t.$timings-fast ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
   svg {
-    font-size: $font-sizes-medium;
+    font-size: t.$font-sizes-medium;
   }
 
   .eds-contrast & {
-    background-color: $colors-blues-blue20;
+    background-color: t.$colors-blues-blue20;
     border-color: transparent;
   }
 
   &--leading-icon .eds-icon:first-of-type {
-    margin-right: $space-extra-small;
+    margin-right: t.$space-extra-small;
   }
   &--trailing-icon .eds-icon:last-of-type {
-    margin-left: $space-extra-small;
+    margin-left: t.$space-extra-small;
   }
 }

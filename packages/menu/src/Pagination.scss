@@ -1,10 +1,10 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-pagination {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  row-gap: $space-small;
+  row-gap: t.$space-small;
   justify-content: space-between;
   &__results {
     align-items: center;
@@ -12,7 +12,7 @@
     flex: 1;
     justify-content: flex-start;
     &-label {
-      margin-right: $space-extra-small;
+      margin-right: t.$space-extra-small;
     }
   }
   &__controls {
@@ -30,23 +30,23 @@
   &__menu-button {
     appearance: none;
     background: transparent;
-    border: $border-widths-small solid $colors-greys-grey60;
-    border-radius: $border-radiuses-medium;
+    border: t.$border-widths-small solid t.$colors-greys-grey60;
+    border-radius: t.$border-radiuses-medium;
     color: inherit;
     font-family: inherit;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: $space-extra-large;
-    margin-left: $space-extra-small2;
-    margin-right: $space-medium;
+    height: t.$space-extra-large;
+    margin-left: t.$space-extra-small2;
+    margin-right: t.$space-medium;
     width: 3.5rem;
     &--open {
       border-color: currentColor;
     }
     &:focus {
       outline: none;
-      box-shadow: $shadows-focus;
+      box-shadow: t.$shadows-focus;
     }
   }
   &__menu-list {
@@ -58,35 +58,35 @@
   align-items: center;
   appearance: none;
   background: transparent;
-  border: $border-widths-small solid $colors-greys-grey60;
-  border-color: $colors-greys-grey60;
-  border-radius: $border-radiuses-medium;
+  border: t.$border-widths-small solid t.$colors-greys-grey60;
+  border-color: t.$colors-greys-grey60;
+  border-radius: t.$border-radiuses-medium;
   color: inherit;
   cursor: pointer;
   display: flex;
   font-family: inherit;
-  font-size: $font-sizes-medium;
-  height: $space-extra-large;
+  font-size: t.$font-sizes-medium;
+  height: t.$space-extra-large;
   justify-content: center;
-  margin: 0 $border-widths-medium;
-  padding: 0 $space-extra-small2;
-  transition: background $timings-fast ease-out,
-    border-color $timings-fast ease-out;
+  margin: 0 t.$border-widths-medium;
+  padding: 0 t.$space-extra-small2;
+  transition: background t.$timings-fast ease-out,
+    border-color t.$timings-fast ease-out;
   user-select: none;
-  min-width: $space-extra-large;
+  min-width: t.$space-extra-large;
 
   .eds-contrast & {
-    border-color: $colors-blues-blue30;
+    border-color: t.$colors-blues-blue30;
   }
   &--selected {
-    background: $colors-blues-blue70;
-    border-color: $colors-brand-blue;
+    background: t.$colors-blues-blue70;
+    border-color: t.$colors-brand-blue;
     color: inherit;
     opacity: 1;
     pointer-events: none;
     .eds-contrast & {
-      border-color: $colors-brand-white;
-      background: $colors-blues-blue20;
+      border-color: t.$colors-brand-white;
+      background: t.$colors-blues-blue20;
     }
   }
   &--disabled {
@@ -95,19 +95,19 @@
   }
 
   &:hover {
-    background-color: $colors-blues-blue70;
-    border-color: $colors-blues-blue70;
+    background-color: t.$colors-blues-blue70;
+    border-color: t.$colors-blues-blue70;
 
     .eds-contrast & {
-      background-color: $colors-blues-blue20;
-      border-color: $colors-blues-blue20;
+      background-color: t.$colors-blues-blue20;
+      border-color: t.$colors-blues-blue20;
     }
   }
   &:focus {
     outline: none;
-    border-color: $colors-brand-blue;
+    border-color: t.$colors-brand-blue;
     .eds-contrast & {
-      border-color: $colors-brand-white;
+      border-color: t.$colors-brand-white;
     }
   }
 }
@@ -116,11 +116,11 @@
   align-items: baseline;
   cursor: default;
   display: flex;
-  font-size: $font-sizes-extra-large2;
-  height: $space-extra-large;
+  font-size: t.$font-sizes-extra-large2;
+  height: t.$space-extra-large;
   justify-content: center;
   user-select: none;
-  width: $space-extra-large;
+  width: t.$space-extra-large;
   margin: 0 2px;
 }
 
@@ -129,29 +129,29 @@
     white-space: nowrap;
   }
   &-label {
-    border-left: $border-widths-small solid $colors-greys-grey60;
-    color: $colors-blues-blue40;
-    font-size: $font-sizes-medium;
-    margin-left: $space-extra-small;
-    padding: 0 $space-medium;
+    border-left: t.$border-widths-small solid t.$colors-greys-grey60;
+    color: t.$colors-blues-blue40;
+    font-size: t.$font-sizes-medium;
+    margin-left: t.$space-extra-small;
+    padding: 0 t.$space-medium;
 
     .eds-contrast & {
-      border-color: $colors-blues-blue20;
-      color: $colors-brand-lavender;
+      border-color: t.$colors-blues-blue20;
+      color: t.$colors-brand-lavender;
     }
   }
 
   &-field {
     appearance: none;
     background: transparent;
-    border: $border-widths-small solid $colors-greys-grey60;
-    border-radius: $border-radiuses-medium;
+    border: t.$border-widths-small solid t.$colors-greys-grey60;
+    border-radius: t.$border-radiuses-medium;
     color: inherit;
     font-family: inherit;
-    font-size: $font-sizes-medium;
-    height: $space-extra-large;
+    font-size: t.$font-sizes-medium;
+    height: t.$space-extra-large;
     text-align: center;
-    width: $space-extra-large;
+    width: t.$space-extra-large;
 
     // Removes those pesky increment and decrement buttons on input[type=number]
     &::-webkit-inner-spin-button,

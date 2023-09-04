@@ -1,21 +1,21 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-alert-box {
-  border: $border-widths-small solid;
-  border-radius: $border-radiuses-medium;
-  color: $colors-brand-blue;
+  border: t.$border-widths-small solid;
+  border-radius: t.$border-radiuses-medium;
+  color: t.$colors-brand-blue;
   display: flex;
-  padding: $space-small;
+  padding: t.$space-small;
   position: relative;
 
   // Size overrides
   &--banner {
-    padding: $space-medium;
+    padding: t.$space-medium;
     width: 100%;
 
-    @include for-desktop {
-      padding: $space-large;
+    @include breakpoint.for-desktop {
+      padding: t.$space-large;
     }
   }
 
@@ -23,19 +23,19 @@
     max-width: 22rem;
     width: 100%;
 
-    animation: $timings-slow ease-in-out 0s 1 bounceInRight;
-    @include for-desktop {
+    animation: t.$timings-slow ease-in-out 0s 1 bounceInRight;
+    @include breakpoint.for-desktop {
       min-width: 12rem;
       width: fit-content;
     }
 
     &--exit-animation {
-      animation: $timings-slow ease-in-out 0s 1 bounceOutRight;
+      animation: t.$timings-slow ease-in-out 0s 1 bounceOutRight;
     }
   }
 
   &--small {
-    font-size: $font-sizes-medium;
+    font-size: t.$font-sizes-medium;
   }
 
   &--fit-content {
@@ -44,24 +44,24 @@
 
   // Variants
   &--success {
-    background-color: $colors-validation-mint-tint;
-    border-color: $colors-validation-mint;
-    color: $colors-validation-mint;
+    background-color: t.$colors-validation-mint-tint;
+    border-color: t.$colors-validation-mint;
+    color: t.$colors-validation-mint;
   }
   &--info {
-    background-color: $colors-validation-sky-tint;
-    border-color: $colors-validation-sky-contrast;
-    color: $colors-validation-sky;
+    background-color: t.$colors-validation-sky-tint;
+    border-color: t.$colors-validation-sky-contrast;
+    color: t.$colors-validation-sky;
   }
   &--warning {
-    background-color: $colors-validation-canary-tint;
-    border-color: $colors-validation-canary-contrast;
-    color: $colors-brand-blue;
+    background-color: t.$colors-validation-canary-tint;
+    border-color: t.$colors-validation-canary-contrast;
+    color: t.$colors-brand-blue;
   }
   &--error {
-    background-color: $colors-validation-lava-tint;
-    border-color: $colors-validation-lava-contrast;
-    color: $colors-validation-lava;
+    background-color: t.$colors-validation-lava-tint;
+    border-color: t.$colors-validation-lava-contrast;
+    color: t.$colors-validation-lava;
   }
 }
 
@@ -74,20 +74,20 @@
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
-    @include for-desktop {
-      font-size: $space-extra-large; // standalone icon size
-      margin-top: -$space-extra-small2;
+    @include breakpoint.for-desktop {
+      font-size: t.$space-extra-large; // standalone icon size
+      margin-top: -(t.$space-extra-small2);
     }
   }
 }
 
 .eds-alert-box__title {
-  font-weight: $font-weights-heading;
+  font-weight: t.$font-weights-heading;
   margin: 0;
 }
 
 .eds-alert-box__content {
-  color: $colors-brand-blue;
+  color: t.$colors-brand-blue;
   &--no-title,
   &--no-children {
     display: flex;
@@ -96,7 +96,7 @@
 
   .eds-alert-box--banner &,
   .eds-alert-box--toast & {
-    margin-right: $space-extra-large;
+    margin-right: t.$space-extra-large;
   }
 
   & > *:first-child {
@@ -113,56 +113,56 @@
   background: none;
   border: 0;
   border-radius: none;
-  color: $colors-brand-blue;
+  color: t.$colors-brand-blue;
   cursor: pointer;
-  font-size: $font-sizes-large;
-  height: $space-large;
-  width: $space-large;
+  font-size: t.$font-sizes-large;
+  height: t.$space-large;
+  width: t.$space-large;
   padding: 0;
   position: absolute;
-  right: $space-medium;
-  top: $space-medium;
+  right: t.$space-medium;
+  top: t.$space-medium;
 
   &:focus {
-    outline-offset: $outline-offsets-focus;
-    outline: $outlines-focus;
+    outline-offset: t.$outline-offsets-focus;
+    outline: t.$outlines-focus;
   }
 
-  @include for-desktop {
-    font-size: $font-sizes-extra-large2;
-    right: $space-large;
-    top: $space-large;
-    height: $space-large;
-    width: $space-large;
+  @include breakpoint.for-desktop {
+    font-size: t.$font-sizes-extra-large2;
+    right: t.$space-large;
+    top: t.$space-large;
+    height: t.$space-large;
+    width: t.$space-large;
     .eds-alert-box--toast & {
-      right: $space-medium;
-      top: $space-medium;
+      right: t.$space-medium;
+      top: t.$space-medium;
     }
   }
 }
 
 .eds-toast-container {
   position: fixed;
-  z-index: $z-indexes-toast;
+  z-index: t.$z-indexes-toast;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   &--bottom-right {
-    bottom: $space-large;
-    right: $space-large;
-    left: $space-large;
+    bottom: t.$space-large;
+    right: t.$space-large;
+    left: t.$space-large;
   }
   &--top-right {
-    top: $space-large;
-    right: $space-large;
-    left: $space-large;
+    top: t.$space-large;
+    right: t.$space-large;
+    left: t.$space-large;
   }
 
   > * + * {
-    margin-top: $space-default;
+    margin-top: t.$space-default;
   }
 
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     left: initial;
   }
 }

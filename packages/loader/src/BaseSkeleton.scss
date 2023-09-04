@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-skeleton {
   display: block;
@@ -7,15 +7,15 @@
   width: 100%;
   &-circle {
     border-radius: 50%;
-    width: $space-default;
-    height: $space-default;
+    width: t.$space-default;
+    height: t.$space-default;
   }
   &-rectangle {
-    height: $space-default;
+    height: t.$space-default;
   }
   &--animate {
-    --background-color: #{$colors-greys-grey80};
-    --shimmer-highlight-color: #{rgba($colors-greys-grey80, 0.5)};
+    --background-color: #{t.$colors-greys-grey80};
+    --shimmer-highlight-color: #{rgba(t.$colors-greys-grey80, 0.5)};
     animation: shimmer 2s infinite linear;
     background: linear-gradient(
       to right,
@@ -25,8 +25,8 @@
     );
     background-size: 1000px 100%;
     .eds-contrast & {
-      --background-color: #{$colors-blues-blue10};
-      --shimmer-highlight-color: #{rgba($colors-blues-blue10, 0.5)};
+      --background-color: #{t.$colors-blues-blue10};
+      --shimmer-highlight-color: #{rgba(t.$colors-blues-blue10, 0.5)};
     }
   }
 }

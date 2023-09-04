@@ -1,10 +1,10 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 :root {
   // Tell Reach that we're doing the styling ourselves
   --reach-dialog: 1;
 }
-$modal-animation-duration: $timings-medium;
+$modal-animation-duration: t.$timings-medium;
 
 .eds-modal__overlay {
   background: rgba(black, 0.5);
@@ -15,7 +15,7 @@ $modal-animation-duration: $timings-medium;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: $z-indexes-overlay;
+  z-index: t.$z-indexes-overlay;
 
   animation: fadeInOverlay;
   animation-duration: $modal-animation-duration;
@@ -27,13 +27,13 @@ $modal-animation-duration: $timings-medium;
   border-radius: 0.75rem;
   color: var(--primary-text-color);
   margin: auto;
-  padding: $space-large;
+  padding: t.$space-large;
   position: relative;
-  outline-offset: $outline-offsets-focus;
+  outline-offset: t.$outline-offsets-focus;
   width: 100%;
   max-height: 90vh;
   overflow: auto;
-  z-index: $z-indexes-modal;
+  z-index: t.$z-indexes-modal;
 
   animation: slideInContent;
   animation-duration: $modal-animation-duration;
@@ -56,34 +56,34 @@ $modal-animation-duration: $timings-medium;
 
   &--size-extraSmall {
     max-width: 21rem;
-    padding: $space-large;
+    padding: t.$space-large;
   }
 
   &--size-small {
     max-width: 28.125rem;
-    padding: $space-extra-large2;
+    padding: t.$space-extra-large2;
   }
 
   &--size-medium {
     max-width: 45rem;
-    padding: $space-extra-large3;
+    padding: t.$space-extra-large3;
   }
 
   &--size-large {
     max-width: 56.25rem;
-    padding: $space-extra-large3;
+    padding: t.$space-extra-large3;
   }
 
   &--size-extraLarge {
     max-width: 78.75rem;
-    padding: $space-extra-large3;
+    padding: t.$space-extra-large3;
   }
 
   &::-webkit-scrollbar {
     width: 16px;
   }
   &::-webkit-scrollbar-track {
-    margin-block: $space-extra-small;
+    margin-block: t.$space-extra-small;
   }
   &::-webkit-scrollbar-thumb {
     background-color: lightgrey;
@@ -104,14 +104,14 @@ $modal-animation-duration: $timings-medium;
   font-size: inherit;
   color: inherit;
   position: absolute;
-  top: $space-medium;
-  right: $space-medium;
-  padding: $space-extra-small;
+  top: t.$space-medium;
+  right: t.$space-medium;
+  padding: t.$space-extra-small;
   cursor: pointer;
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
   }
 }
 

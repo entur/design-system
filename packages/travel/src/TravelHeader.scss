@@ -1,20 +1,20 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-header {
-  color: $colors-brand-blue;
+  color: t.$colors-brand-blue;
   display: flex;
   flex-direction: column;
-  font-weight: $font-weights-heading;
+  font-weight: t.$font-weights-heading;
   line-height: 1.5;
   max-width: 100%;
   .eds-contrast & {
-    color: $colors-brand-white;
+    color: t.$colors-brand-white;
   }
   &--large {
-    font-size: $font-sizes-extra-large2;
+    font-size: t.$font-sizes-extra-large2;
   }
   &--medium {
-    font-size: $font-sizes-large;
+    font-size: t.$font-sizes-large;
   }
   &--no-wrap {
     flex-direction: row;
@@ -35,7 +35,7 @@
     padding-left: calc(4em / 3 + 0.5em);
     position: relative;
     &::before {
-      background-color: $colors-brand-coral;
+      background-color: t.$colors-brand-coral;
       content: '';
       display: block;
       height: calc(1em / 6);

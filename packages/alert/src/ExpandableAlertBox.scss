@@ -1,5 +1,5 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-expandable-alert-box {
   .eds-alert-box__content {
@@ -7,13 +7,13 @@
   }
   &.eds-alert-box--banner .eds-alert-box__icon {
     margin-top: 0.0625rem; // 2px
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       margin-top: -0.375rem; // 6px
     }
   }
   &.eds-alert-box--small .eds-alert-box__icon {
     margin-top: 0.125rem; // 2px
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       margin-top: 0.125rem; // 2px
     }
   }
@@ -29,16 +29,16 @@
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
-    line-height: $line-heights-extra-large;
-    padding: 0 $space-extra-small2;
+    line-height: t.$line-heights-extra-large;
+    padding: 0 t.$space-extra-small2;
     flex-shrink: 0;
     &:focus {
-      outline: $outlines-focus;
-      outline-offset: $outline-offsets-focus;
+      outline: t.$outlines-focus;
+      outline-offset: t.$outline-offsets-focus;
     }
     .eds-icon {
-      font-size: $font-sizes-large;
-      padding-left: $space-extra-small2;
+      font-size: t.$font-sizes-large;
+      padding-left: t.$space-extra-small2;
     }
   }
 }

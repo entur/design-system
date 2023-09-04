@@ -4,8 +4,6 @@ import { getTransportStyle } from './utils';
 
 import type { Transport } from './utils';
 
-import './TravelSwitch.scss';
-
 export type TravelSwitchProps = {
   /** Ekstra klassenavn */
   className?: string;

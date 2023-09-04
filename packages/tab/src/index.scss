@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 :root {
   --reach-tabs: 1; // We want to do the styling ourselves
@@ -7,26 +7,26 @@
 
 .eds-tab-list {
   position: relative;
-  top: $border-widths-default;
+  top: t.$border-widths-default;
   overflow-x: scroll;
   display: flex;
   scrollbar-width: none;
-  padding-top: $space-extra-small2;
-  margin-top: -$space-extra-small2;
-  z-index: $z-indexes-default;
+  padding-top: t.$space-extra-small2;
+  margin-top: -(t.$space-extra-small2);
+  z-index: t.$z-indexes-default;
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: $colors-greys-grey60;
+    background-color: t.$colors-greys-grey60;
     display: block;
-    height: $border-widths-default;
+    height: t.$border-widths-default;
     width: inherit;
-    z-index: $z-indexes-behind;
+    z-index: t.$z-indexes-behind;
     .eds-contrast & {
-      background-color: $colors-brand-lavender;
+      background-color: t.$colors-brand-lavender;
     }
   }
 
@@ -37,75 +37,75 @@
 
 .eds-tab {
   appearance: none;
-  background: $colors-greys-grey80;
-  border: $border-widths-default solid $colors-greys-grey80;
-  border-radius: $border-radiuses-medium $border-radiuses-medium 0 0;
-  color: $colors-brand-blue;
+  background: t.$colors-greys-grey80;
+  border: t.$border-widths-default solid t.$colors-greys-grey80;
+  border-radius: t.$border-radiuses-medium t.$border-radiuses-medium 0 0;
+  color: t.$colors-brand-blue;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  height: $space-extra-large3;
+  height: t.$space-extra-large3;
   line-height: inherit;
   margin: 0;
   min-width: 8rem;
-  padding: $space-extra-small $space-default;
+  padding: t.$space-extra-small t.$space-default;
   position: relative;
   .eds-tab-list--width-fluid & {
     flex-grow: 1;
     min-width: 0;
   }
   .eds-contrast & {
-    background-color: $colors-blues-blue30;
-    border-color: $colors-blues-blue30;
-    color: $colors-brand-white;
+    background-color: t.$colors-blues-blue30;
+    border-color: t.$colors-blues-blue30;
+    color: t.$colors-brand-white;
   }
   &:hover {
-    background-color: $colors-greys-grey60;
-    border-color: $colors-greys-grey60;
+    background-color: t.$colors-greys-grey60;
+    border-color: t.$colors-greys-grey60;
     .eds-contrast & {
-      background-color: $colors-brand-lavender;
-      border-color: $colors-brand-lavender;
-      color: $colors-brand-blue;
+      background-color: t.$colors-brand-lavender;
+      border-color: t.$colors-brand-lavender;
+      color: t.$colors-brand-blue;
     }
   }
 
   & + & {
-    margin-left: $space-extra-small2;
+    margin-left: t.$space-extra-small2;
   }
 
   // This will work as the bottom border overlay
   &::after {
     content: '';
     position: absolute;
-    bottom: -$border-widths-default;
-    left: -$border-widths-default;
-    right: -$border-widths-default;
-    background-color: $colors-greys-grey60;
+    bottom: -(t.$border-widths-default);
+    left: -(t.$border-widths-default);
+    right: -(t.$border-widths-default);
+    background-color: t.$colors-greys-grey60;
     display: block;
-    height: $border-widths-default;
+    height: t.$border-widths-default;
     .eds-contrast & {
-      background-color: $colors-brand-lavender;
+      background-color: t.$colors-brand-lavender;
     }
   }
 
   &[aria-selected='true'] {
-    background-color: $colors-brand-white;
-    border-color: $colors-greys-grey60;
-    color: $colors-brand-blue;
-    font-weight: $font-weights-heading;
+    background-color: t.$colors-brand-white;
+    border-color: t.$colors-greys-grey60;
+    color: t.$colors-brand-blue;
+    font-weight: t.$font-weights-heading;
 
     .eds-contrast & {
-      background-color: $colors-brand-blue;
-      color: $colors-brand-white;
-      border-color: $colors-brand-lavender;
+      background-color: t.$colors-brand-blue;
+      color: t.$colors-brand-white;
+      border-color: t.$colors-brand-lavender;
     }
 
     &::after {
-      background-color: $colors-brand-white;
+      background-color: t.$colors-brand-white;
       left: 0;
       right: 0;
       .eds-contrast & {
-        background-color: $colors-brand-blue;
+        background-color: t.$colors-brand-blue;
       }
     }
 
@@ -113,11 +113,11 @@
       content: '';
       display: block;
       margin: 0 auto;
-      width: $space-extra-large;
+      width: t.$space-extra-large;
       height: 3px;
-      background: $colors-brand-coral;
+      background: t.$colors-brand-coral;
       position: absolute;
-      bottom: $space-extra-small2;
+      bottom: t.$space-extra-small2;
       left: 0;
       right: 0;
     }
@@ -127,37 +127,37 @@
   }
 
   &[disabled] {
-    background: $colors-greys-grey90;
-    border-color: $colors-greys-grey90;
-    color: $colors-greys-grey60;
+    background: t.$colors-greys-grey90;
+    border-color: t.$colors-greys-grey90;
+    color: t.$colors-greys-grey60;
     pointer-events: none;
     .eds-contrast & {
-      background: $colors-blues-blue10;
-      border-color: $colors-blues-blue10;
-      color: $colors-blues-blue60;
+      background: t.$colors-blues-blue10;
+      border-color: t.$colors-blues-blue10;
+      color: t.$colors-blues-blue60;
     }
   }
 
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 }
 
 .eds-tab-panels {
-  padding: $space-medium;
+  padding: t.$space-medium;
 }
 
 .eds-tab-panel {
   &:focus {
     outline: none;
-    box-shadow: $shadows-focus;
-    outline-offset: $outline-offsets-focus;
+    box-shadow: t.$shadows-focus;
+    outline-offset: t.$outline-offsets-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 }

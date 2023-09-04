@@ -1,30 +1,30 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/color-utils.scss' as util;
 
 a.eds-button {
-  padding: $space-extra-small $space-default;
+  padding: t.$space-extra-small t.$space-default;
   &--variant-tertiary {
-    padding: $space-extra-small2 $space-default;
+    padding: t.$space-extra-small2 t.$space-default;
   }
   &--size-large {
-    padding: $space-default;
+    padding: t.$space-default;
   }
 }
 
 .eds-button {
   min-width: 9.5rem;
-  border: $border-widths-default solid transparent;
-  border-radius: $border-radiuses-medium;
+  border: t.$border-widths-default solid transparent;
+  border-radius: t.$border-radiuses-medium;
   font-size: inherit;
   cursor: pointer;
   display: inline-block;
   appearance: none;
   text-decoration: none;
-  padding: 0 $space-default;
-  height: $space-extra-large3;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-extra-large;
-  font-weight: $font-weights-body;
+  padding: 0 t.$space-default;
+  height: t.$space-extra-large3;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-extra-large;
+  font-weight: t.$font-weights-body;
   text-align: center;
   font-family: inherit;
   position: relative;
@@ -33,11 +33,11 @@ a.eds-button {
     width: 100%;
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 
@@ -47,10 +47,10 @@ a.eds-button {
   }
 
   &--leading-icon .eds-icon {
-    margin-right: $space-small;
+    margin-right: t.$space-small;
   }
   &--trailing-icon .eds-icon {
-    margin-left: $space-small;
+    margin-left: t.$space-small;
   }
 
   // Size
@@ -65,163 +65,163 @@ a.eds-button {
 
   //Variant
   &--variant-primary {
-    background-color: $colors-brand-blue;
-    color: $colors-brand-white;
+    background-color: t.$colors-brand-blue;
+    color: t.$colors-brand-white;
     > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: $colors-brand-white;
+      background: t.$colors-brand-white;
     }
     &:hover {
-      background-color: tint($colors-brand-blue, 10%);
+      background-color: util.tint(t.$colors-brand-blue, 10%);
     }
     &:active {
-      background-color: shade($colors-brand-blue, 10%);
+      background-color: util.shade(t.$colors-brand-blue, 10%);
     }
     .eds-contrast & {
-      background-color: $colors-brand-lavender;
-      color: $colors-brand-blue;
+      background-color: t.$colors-brand-lavender;
+      color: t.$colors-brand-blue;
       > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-blue;
+        background: t.$colors-brand-blue;
       }
       &:hover {
-        background-color: tint($colors-brand-lavender, 10%);
+        background-color: util.tint(t.$colors-brand-lavender, 10%);
       }
       &:active {
-        background-color: shade($colors-brand-lavender, 10%);
+        background-color: util.shade(t.$colors-brand-lavender, 10%);
       }
     }
   }
   &--variant-secondary {
     background-color: transparent;
-    border: $border-widths-default solid $colors-blues-blue30;
-    color: $colors-brand-blue;
+    border: t.$border-widths-default solid t.$colors-blues-blue30;
+    color: t.$colors-brand-blue;
     > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: $colors-brand-blue;
+      background: t.$colors-brand-blue;
     }
     &:hover {
-      background-color: tint($colors-brand-lavender, 40%);
+      background-color: util.tint(t.$colors-brand-lavender, 40%);
     }
     &:active {
-      background-color: $colors-brand-lavender;
+      background-color: t.$colors-brand-lavender;
     }
     .eds-contrast & {
       background-color: transparent;
-      color: $colors-brand-white;
-      border-color: $colors-brand-lavender;
+      color: t.$colors-brand-white;
+      border-color: t.$colors-brand-lavender;
 
       > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-white;
+        background: t.$colors-brand-white;
       }
       &:hover {
-        background-color: rgba($colors-brand-lavender, 0.2);
+        background-color: rgba(t.$colors-brand-lavender, 0.2);
       }
       &:active {
-        background: $colors-brand-lavender;
-        color: $colors-brand-blue;
+        background: t.$colors-brand-lavender;
+        color: t.$colors-brand-blue;
         > .eds-button__loading-dots .eds-loading-dots__dot {
-          background: $colors-brand-blue;
+          background: t.$colors-brand-blue;
         }
       }
     }
   }
 
   &--variant-success {
-    background-color: $colors-validation-mint-contrast;
-    color: $colors-brand-blue;
-    border: $border-widths-default solid $colors-blues-blue30;
-    border-radius: $border-radiuses-medium;
+    background-color: t.$colors-validation-mint-contrast;
+    color: t.$colors-brand-blue;
+    border: t.$border-widths-default solid t.$colors-blues-blue30;
+    border-radius: t.$border-radiuses-medium;
     > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: $colors-brand-blue;
+      background: t.$colors-brand-blue;
     }
 
     &:hover {
-      background: rgba(tint($colors-validation-mint-contrast, 10%), 0.4);
+      background: rgba(util.tint(t.$colors-validation-mint-contrast, 10%), 0.4);
     }
     &:active {
-      background-color: shade($colors-validation-mint-contrast, 10%);
+      background-color: util.shade(t.$colors-validation-mint-contrast, 10%);
     }
 
     .eds-contrast & {
       border: none;
       &:hover {
-        background: tint($colors-validation-mint-contrast, 10%);
+        background: util.tint(t.$colors-validation-mint-contrast, 10%);
       }
       &:active {
-        background-color: shade($colors-validation-mint-contrast, 10%);
+        background-color: util.shade(t.$colors-validation-mint-contrast, 10%);
       }
     }
   }
 
   &--variant-negative {
     background: transparent;
-    color: $colors-validation-lava;
-    border-color: $colors-validation-lava;
+    color: t.$colors-validation-lava;
+    border-color: t.$colors-validation-lava;
     > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: $colors-validation-lava;
+      background: t.$colors-validation-lava;
     }
     &:hover {
-      background-color: rgba($colors-validation-lava, 0.2);
+      background-color: rgba(t.$colors-validation-lava, 0.2);
     }
     &:active {
-      background-color: $colors-validation-lava;
-      color: $colors-brand-white;
+      background-color: t.$colors-validation-lava;
+      color: t.$colors-brand-white;
       > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-white;
+        background: t.$colors-brand-white;
       }
     }
     .eds-contrast & {
-      color: $colors-brand-white;
-      border-color: $colors-validation-lava-contrast;
+      color: t.$colors-brand-white;
+      border-color: t.$colors-validation-lava-contrast;
       > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-white;
+        background: t.$colors-brand-white;
       }
       &:hover {
-        background-color: rgba($colors-validation-lava-contrast, 0.2);
+        background-color: rgba(t.$colors-validation-lava-contrast, 0.2);
       }
       &:active {
-        background-color: $colors-validation-lava-contrast;
-        color: $colors-brand-blue;
+        background-color: t.$colors-validation-lava-contrast;
+        color: t.$colors-brand-blue;
       }
     }
   }
 
   &--variant-tertiary {
-    font-size: $font-sizes-medium;
-    border: $border-widths-small solid $colors-blues-blue30;
-    border-radius: $border-radiuses-medium;
+    font-size: t.$font-sizes-medium;
+    border: t.$border-widths-small solid t.$colors-blues-blue30;
+    border-radius: t.$border-radiuses-medium;
     background-color: transparent;
-    color: $colors-brand-blue;
+    color: t.$colors-brand-blue;
     height: 2rem;
-    padding: 0 $space-small;
+    padding: 0 t.$space-small;
     min-width: 6rem;
     &:hover {
-      background-color: tint($colors-brand-lavender, 40%);
+      background-color: util.tint(t.$colors-brand-lavender, 40%);
     }
     &:active {
-      background-color: $colors-brand-lavender;
+      background-color: t.$colors-brand-lavender;
     }
 
     &.eds-button--leading-icon .eds-icon {
-      margin-right: $space-extra-small;
+      margin-right: t.$space-extra-small;
     }
     &.eds-button--trailing-icon .eds-icon {
-      margin-left: $space-extra-small;
+      margin-left: t.$space-extra-small;
     }
     .eds-contrast & {
       background-color: transparent;
-      color: $colors-brand-white;
-      border-color: $colors-brand-lavender;
+      color: t.$colors-brand-white;
+      border-color: t.$colors-brand-lavender;
 
       > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: $colors-brand-white;
+        background: t.$colors-brand-white;
       }
       &:hover {
-        background-color: rgba($colors-brand-lavender, 0.2);
+        background-color: rgba(t.$colors-brand-lavender, 0.2);
       }
       &:active {
-        background: $colors-brand-lavender;
-        color: $colors-brand-blue;
+        background: t.$colors-brand-lavender;
+        color: t.$colors-brand-blue;
         > .eds-button__loading-dots .eds-loading-dots__dot {
-          background: $colors-brand-blue;
+          background: t.$colors-brand-blue;
         }
       }
     }
@@ -234,15 +234,15 @@ a.eds-button {
   }
 
   &[disabled]:not(.eds-button--loading) {
-    background: $colors-greys-grey80;
-    border-color: $colors-greys-grey80;
-    color: $colors-blues-blue40;
+    background: t.$colors-greys-grey80;
+    border-color: t.$colors-greys-grey80;
+    color: t.$colors-blues-blue40;
     cursor: not-allowed;
 
     .eds-contrast & {
-      background-color: $colors-blues-blue20;
-      border-color: $colors-blues-blue20;
-      color: $colors-brand-lavender;
+      background-color: t.$colors-blues-blue20;
+      border-color: t.$colors-blues-blue20;
+      color: t.$colors-brand-lavender;
     }
   }
 }

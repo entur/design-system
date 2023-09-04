@@ -1,38 +1,38 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-media-card {
   flex-direction: column;
   overflow: hidden;
   position: relative;
   width: fit-content;
-  transition: transform $timings-medium ease-in-out,
-    box-shadow $timings-medium ease-in-out;
+  transition: transform t.$timings-medium ease-in-out,
+    box-shadow t.$timings-medium ease-in-out;
   &:focus,
   &:focus-within {
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
   .eds-contrast & {
-    background-color: $colors-blues-blue10;
+    background-color: t.$colors-blues-blue10;
   }
   &__media {
-    transition: transform $timings-medium ease-in-out;
+    transition: transform t.$timings-medium ease-in-out;
   }
   &__title {
-    font-size: $font-sizes-extra-large2;
-    line-height: $line-heights-extra-large3;
-    font-weight: $font-weights-heading;
+    font-size: t.$font-sizes-extra-large2;
+    line-height: t.$line-heights-extra-large3;
+    font-weight: t.$font-weights-heading;
     margin: 0.75rem 0 0.5rem;
     text-align: left;
     width: fit-content;
     position: relative;
   }
   &:hover {
-    transform: translateY(-$space-extra-small2);
-    box-shadow: $shadows-card-shadow-hover;
+    transform: translateY(-(t.$space-extra-small2));
+    box-shadow: t.$shadows-card-shadow-hover;
   }
   &__text {
     appearance: none;
@@ -41,13 +41,13 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    padding: 1.25rem $space-extra-large 0;
+    padding: 1.25rem t.$space-extra-large 0;
     &:focus {
       outline: none;
     }
   }
   &__arrow-icon {
     align-self: flex-end;
-    margin: $space-default 0 $space-large;
+    margin: t.$space-default 0 t.$space-large;
   }
 }

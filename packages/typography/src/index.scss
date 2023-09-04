@@ -1,19 +1,19 @@
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss';
+@use './fonts.scss';
 @import '~normalize-scss';
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
-@import 'fonts';
 
 @mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
+  @media screen and (min-width: #{t.$breakpoints-large}) {
     @content;
   }
 }
 
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
-  --primary-background-color: #{$colors-brand-white};
-  --primary-text-color: #{$colors-brand-blue};
-  --primary-label-color: #{$colors-blues-blue40};
+  --primary-background-color: #{t.$colors-brand-white};
+  --primary-text-color: #{t.$colors-brand-blue};
+  --primary-label-color: #{t.$colors-blues-blue40};
   --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     'Helvetica Neue', sans-serif;
@@ -26,19 +26,19 @@
 // Base styles
 // These styles will propagate across the project
 html {
-  background-color: $colors-brand-white;
+  background-color: t.$colors-brand-white;
   background-color: var(--primary-background-color);
   box-sizing: border-box;
-  color: $colors-brand-blue; // ie fallback
+  color: t.$colors-brand-blue; // ie fallback
   color: var(--primary-text-color);
   font-family: var(--eds-font-family);
-  font-weight: $font-weights-body;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-large;
+  font-weight: t.$font-weights-body;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-large;
 
   @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
   }
 }
 
@@ -58,63 +58,63 @@ html {
 .eds-h6 {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-weight: $font-weights-heading;
+  font-weight: t.$font-weights-heading;
   -webkit-font-smoothing: antialiased;
 }
 
 .eds-h1 {
-  font-size: $font-sizes-extra-large2;
-  line-height: $line-heights-extra-large5;
-  margin: 0 0 $space-default;
+  font-size: t.$font-sizes-extra-large2;
+  line-height: t.$line-heights-extra-large5;
+  margin: 0 0 t.$space-default;
   @include for-desktop {
-    font-size: $font-sizes-extra-large5;
-    line-height: $line-heights-extra-large7;
+    font-size: t.$font-sizes-extra-large5;
+    line-height: t.$line-heights-extra-large7;
   }
 }
 .eds-h2 {
-  font-size: $font-sizes-extra-large;
-  line-height: $line-heights-extra-large4;
-  margin: $space-extra-large 0 $space-small;
+  font-size: t.$font-sizes-extra-large;
+  line-height: t.$line-heights-extra-large4;
+  margin: t.$space-extra-large 0 t.$space-small;
   @include for-desktop {
-    font-size: $font-sizes-extra-large4;
-    line-height: $line-heights-extra-large6;
+    font-size: t.$font-sizes-extra-large4;
+    line-height: t.$line-heights-extra-large6;
   }
 }
 .eds-h3 {
-  font-size: $font-sizes-large;
-  line-height: $line-heights-extra-large;
-  margin: $space-large 0 $space-extra-small;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-extra-large;
+  margin: t.$space-large 0 t.$space-extra-small;
   @include for-desktop {
-    font-size: $font-sizes-extra-large2;
-    line-height: $line-heights-extra-large4;
+    font-size: t.$font-sizes-extra-large2;
+    line-height: t.$line-heights-extra-large4;
   }
 }
 .eds-h4 {
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-large;
-  margin: $space-large 0 0;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$line-heights-large;
+  margin: t.$space-large 0 0;
   @include for-desktop {
-    font-size: $font-sizes-extra-large;
-    line-height: $line-heights-extra-large3;
+    font-size: t.$font-sizes-extra-large;
+    line-height: t.$line-heights-extra-large3;
   }
 }
 .eds-h5 {
-  font-size: $font-sizes-small;
-  line-height: $line-heights-medium;
-  margin: $space-large 0 0;
+  font-size: t.$font-sizes-small;
+  line-height: t.$line-heights-medium;
+  margin: t.$space-large 0 0;
   @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
   }
 }
 
 .eds-h6 {
-  font-size: $font-sizes-small;
-  line-height: $line-heights-medium;
-  margin: $space-large 0 0;
+  font-size: t.$font-sizes-small;
+  line-height: t.$line-heights-medium;
+  margin: t.$space-large 0 0;
   @include for-desktop {
-    font-size: $font-sizes-medium;
-    line-height: $line-heights-large;
+    font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-large;
   }
 }
 
@@ -122,12 +122,12 @@ html {
 .eds-paragraph {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-size: $font-sizes-large;
-  line-height: $line-heights-extra-large;
-  margin: 0 0 $space-extra-large;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-extra-large;
+  margin: 0 0 t.$space-extra-large;
   @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
   }
 }
 
@@ -136,32 +136,32 @@ html {
   color: var(--primary-text-color);
   font-size: 1.25rem;
   line-height: 1.875rem;
-  margin: $space-large 0;
+  margin: t.$space-large 0;
   @include for-desktop {
-    font-size: $font-sizes-extra-large;
-    line-height: $line-heights-extra-large4;
+    font-size: t.$font-sizes-extra-large;
+    line-height: t.$line-heights-extra-large4;
   }
 }
 
 .eds-sub-paragraph {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-medium;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$line-heights-medium;
 
   @include for-desktop {
-    line-height: $line-heights-large;
+    line-height: t.$line-heights-large;
   }
 }
 
 .eds-small-text {
   color: inherit; // ie fallback
   color: var(--primary-text-color);
-  font-size: $font-sizes-extra-small;
-  line-height: $line-heights-small;
+  font-size: t.$font-sizes-extra-small;
+  line-height: t.$line-heights-small;
   @include for-desktop {
-    font-size: $font-sizes-small;
-    line-height: $line-heights-medium;
+    font-size: t.$font-sizes-small;
+    line-height: t.$line-heights-medium;
   }
 }
 
@@ -177,8 +177,8 @@ html {
 
     background-image: linear-gradient(
       120deg,
-      $colors-brand-blue 0%,
-      $colors-brand-blue 100%
+      t.$colors-brand-blue 0%,
+      t.$colors-brand-blue 100%
     );
     background-repeat: no-repeat;
     background-size: 100% 0.125rem;
@@ -192,8 +192,8 @@ html {
   .eds-contrast & {
     background-image: linear-gradient(
       120deg,
-      $colors-brand-white 0%,
-      $colors-brand-white 100%
+      t.$colors-brand-white 0%,
+      t.$colors-brand-white 100%
     );
   }
   @keyframes eds-link-underline {
@@ -206,21 +206,21 @@ html {
   }
 
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 
   @include for-desktop {
-    font-size: $font-sizes-large;
-    line-height: $line-heights-extra-large;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
   }
 
   &--ext-icon {
-    margin-left: $space-extra-small2;
+    margin-left: t.$space-extra-small2;
 
     p & {
       top: 0;
@@ -230,30 +230,30 @@ html {
 
 .eds-label,
 .eds-sub-label {
-  color: $colors-blues-blue40; // ie fallback
+  color: t.$colors-blues-blue40; // ie fallback
   color: var(--primary-label-color);
 }
 
 .eds-label {
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-medium;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$line-heights-medium;
 
   @include for-desktop {
-    line-height: $line-heights-large;
+    line-height: t.$line-heights-large;
   }
 }
 
 .eds-sub-label {
-  font-size: $font-sizes-small;
-  line-height: $line-heights-small;
+  font-size: t.$font-sizes-small;
+  line-height: t.$line-heights-small;
 
   @include for-desktop {
-    line-height: $line-heights-medium;
+    line-height: t.$line-heights-medium;
   }
 }
 
 .eds-strong-text {
-  font-weight: $font-weights-heading;
+  font-weight: t.$font-weights-heading;
 }
 
 .eds-emphasized-text {
@@ -261,12 +261,12 @@ html {
 }
 
 .eds-preformatted-text {
-  background-color: $colors-greys-grey90;
-  border: $border-widths-small solid $colors-greys-grey70;
-  border-radius: $border-radiuses-medium;
-  color: $colors-greys-grey40;
+  background-color: t.$colors-greys-grey90;
+  border: t.$border-widths-small solid t.$colors-greys-grey70;
+  border-radius: t.$border-radiuses-medium;
+  color: t.$colors-greys-grey40;
   font-family: 'Monaco', monospace;
-  font-size: $font-sizes-medium;
+  font-size: t.$font-sizes-medium;
   padding: 1em;
   white-space: pre-wrap;
   word-break: keep-all;
@@ -276,18 +276,18 @@ html {
   display: inline-block;
   word-wrap: break-word;
   overflow-wrap: anywhere;
-  background-color: $colors-greys-grey90;
-  border: $border-widths-small solid $colors-greys-grey70;
-  border-radius: $border-radiuses-medium;
-  color: $colors-greys-grey40;
+  background-color: t.$colors-greys-grey90;
+  border: t.$border-widths-small solid t.$colors-greys-grey70;
+  border-radius: t.$border-radiuses-medium;
+  color: t.$colors-greys-grey40;
   font-family: 'Monaco', monospace;
-  font-size: $font-sizes-medium; // Slightly smaller than
-  padding: calc($space-extra-small2 / 2) $space-extra-small2;
+  font-size: t.$font-sizes-medium; // Slightly smaller than
+  padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small2;
 }
 
 .eds-unordered-list,
 .eds-numbered-list {
-  margin: $space-default 0;
+  margin: t.$space-default 0;
 }
 
 .eds-unordered-list {
@@ -295,13 +295,13 @@ html {
   .eds-list-item {
     &:before {
       content: '';
-      background: $colors-brand-lavender;
+      background: t.$colors-brand-lavender;
       display: block;
-      height: $border-widths-medium;
+      height: t.$border-widths-medium;
       left: -1.75rem;
       top: 0.75rem;
       position: relative;
-      width: $space-small;
+      width: t.$space-small;
     }
   }
 }
@@ -349,21 +349,21 @@ html {
 }
 
 .eds-list-item {
-  padding-left: $space-extra-small;
+  padding-left: t.$space-extra-small;
 }
 
 .eds-numbered-list > .eds-list-item {
   counter-increment: eds-numbered-list-counter;
-  margin-top: $space-large;
+  margin-top: t.$space-large;
   position: relative;
 
   &::before {
     color: inherit; // ie fallback
     color: var(--primary-text-color);
     position: absolute;
-    font-weight: $font-weights-heading;
-    left: -$space-extra-large2;
-    border: $border-widths-medium solid $colors-brand-lavender;
+    font-weight: t.$font-weights-heading;
+    left: -(t.$space-extra-large2);
+    border: t.$border-widths-medium solid t.$colors-brand-lavender;
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -376,8 +376,8 @@ html {
 
 .eds-list-item__title {
   display: block;
-  font-weight: $font-weights-heading;
-  margin-bottom: $space-extra-small;
+  font-weight: t.$font-weights-heading;
+  margin-bottom: t.$space-extra-small;
 
   .eds-list-item:first-of-type {
     margin: none;
@@ -385,18 +385,18 @@ html {
 }
 
 .eds-blockquote {
-  border-left: $border-widths-large solid $colors-blues-blue60;
+  border-left: t.$border-widths-large solid t.$colors-blues-blue60;
   font-family: inherit;
   font-size: 1.25rem;
-  line-height: $line-heights-extra-large3;
+  line-height: t.$line-heights-extra-large3;
   margin: 0;
-  padding: $space-extra-small;
-  padding-left: $space-extra-large;
+  padding: t.$space-extra-small;
+  padding-left: t.$space-extra-large;
   &__footer {
-    font-size: $font-sizes-medium;
-    line-height: $line-heights-large;
+    font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-large;
     letter-spacing: 1px;
-    margin-top: $space-large;
+    margin-top: t.$space-large;
     text-transform: uppercase;
   }
 }

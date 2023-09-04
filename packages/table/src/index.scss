@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 :root {
   --eds-table: 1; // Register that the styles are loaded!
@@ -18,34 +18,34 @@
 
   &__data-cell {
     height: 3.75rem;
-    padding: $space-default ($space-default + $space-extra-small);
+    padding: t.$space-default (t.$space-default + t.$space-extra-small);
 
     .eds-contrast & {
-      border-bottom-color: $colors-blues-blue20;
+      border-bottom-color: t.$colors-blues-blue20;
     }
 
     .eds-table--middle & {
-      padding: $space-extra-small $space-default;
-      height: $space-extra-large3;
+      padding: t.$space-extra-small t.$space-default;
+      height: t.$space-extra-large3;
     }
     .eds-table--small & {
-      padding: $space-extra-small2 $space-default;
-      height: $space-extra-large;
+      padding: t.$space-extra-small2 t.$space-default;
+      height: t.$space-extra-large;
     }
 
     &--padding-checkbox {
-      width: $space-extra-large3;
-      padding: $space-extra-small 0 $space-small
-        ($space-medium + $space-extra-small2);
+      width: t.$space-extra-large3;
+      padding: t.$space-extra-small 0 t.$space-small
+        (t.$space-medium + t.$space-extra-small2);
     }
     &--padding-radio {
-      width: $space-extra-large3;
-      padding: $space-medium 0 $space-medium
-        ($space-medium + $space-extra-small2);
+      width: t.$space-extra-large3;
+      padding: t.$space-medium 0 t.$space-medium
+        (t.$space-medium + t.$space-extra-small2);
     }
     &--padding-overflow-menu {
-      width: $space-extra-large3;
-      padding: $space-medium $space-small;
+      width: t.$space-extra-large3;
+      padding: t.$space-medium t.$space-small;
     }
 
     &[class*='eds-table__data-cell--status'] {
@@ -53,42 +53,42 @@
       &:before {
         left: 0;
         // Vertical padding + half height of circle
-        top: calc($space-default + (0.625rem / 2));
+        top: calc(t.$space-default + (0.625rem / 2));
         content: '';
         position: absolute;
         height: 0.625rem; //10px
         width: 0.625rem;
         border-radius: 50%;
         .eds-table--small & {
-          top: calc($space-extra-small2 + (0.625rem / 2));
+          top: calc(t.$space-extra-small2 + (0.625rem / 2));
         }
         .eds-table--middle & {
-          top: calc($space-extra-small + (0.625rem / 2));
+          top: calc(t.$space-extra-small + (0.625rem / 2));
         }
       }
     }
     &--status {
       &-positive {
         &:before {
-          background: $colors-validation-mint;
+          background: t.$colors-validation-mint;
           .eds-contrast & {
-            background: $colors-validation-mint-contrast;
+            background: t.$colors-validation-mint-contrast;
           }
         }
       }
       &-negative {
         &:before {
-          background: $colors-validation-lava;
+          background: t.$colors-validation-lava;
           .eds-contrast & {
-            background: $colors-validation-lava-contrast;
+            background: t.$colors-validation-lava-contrast;
           }
         }
       }
       &-neutral {
         &:before {
-          background: $colors-greys-grey60;
+          background: t.$colors-greys-grey60;
           .eds-contrast & {
-            background: $colors-blues-blue60;
+            background: t.$colors-blues-blue60;
           }
         }
       }
@@ -97,39 +97,39 @@
 
   &__body {
     > .eds-table__row {
-      border-bottom: $border-widths-default solid $colors-greys-grey70;
+      border-bottom: t.$border-widths-default solid t.$colors-greys-grey70;
       .eds-contrast & {
-        border-color: $colors-blues-blue20;
+        border-color: t.$colors-blues-blue20;
       }
       &:focus {
-        outline: $outlines-focus;
+        outline: t.$outlines-focus;
       }
       &--hover {
         &:hover {
-          background: $colors-greys-grey80;
+          background: t.$colors-greys-grey80;
           .eds-contrast & {
-            background: $colors-blues-blue10;
+            background: t.$colors-blues-blue10;
           }
         }
       }
       &--active {
-        background: $colors-blues-blue80;
-        border: $border-widths-medium solid $colors-blues-blue70;
+        background: t.$colors-blues-blue80;
+        border: t.$border-widths-medium solid t.$colors-blues-blue70;
         .eds-contrast & {
-          border-color: $colors-blues-blue20;
-          background: $colors-blues-blue20;
+          border-color: t.$colors-blues-blue20;
+          background: t.$colors-blues-blue20;
         }
       }
       &--error {
-        background: $colors-validation-lava-tint;
-        border-color: $colors-validation-lava-contrast;
+        background: t.$colors-validation-lava-tint;
+        border-color: t.$colors-validation-lava-contrast;
       }
     }
   }
   &__head {
-    border-bottom: $border-widths-default solid $colors-greys-grey70;
+    border-bottom: t.$border-widths-default solid t.$colors-greys-grey70;
     .eds-contrast & {
-      border-color: $colors-blues-blue20;
+      border-color: t.$colors-blues-blue20;
     }
 
     .eds-table--sticky-header--active & {

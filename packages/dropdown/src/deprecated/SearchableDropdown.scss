@@ -1,12 +1,12 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown__searchable-selected-item {
   display: block;
-  font-size: $font-sizes-large;
-  line-height: $line-heights-small;
-  margin-right: -$space-medium;
-  padding: calc(#{$space-medium} + #{$space-extra-small2}) 0 $space-extra-small2
-    $space-medium;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-small;
+  margin-right: -(t.$space-medium);
+  padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0
+    t.$space-extra-small2 t.$space-medium;
   font-family: inherit;
 
   overflow-x: hidden;
