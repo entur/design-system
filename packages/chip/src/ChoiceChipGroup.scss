@@ -1,7 +1,7 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 :where(.eds-choice-chips-group) {
   display: flex;
-  row-gap: $space-extra-small;
+  row-gap: t.$space-extra-small;
   flex-wrap: wrap;
 }

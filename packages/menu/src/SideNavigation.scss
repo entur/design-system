@@ -1,42 +1,42 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-side-navigation,
 .eds-side-navigation-group {
-  --primary-background-color: #{$colors-greys-grey90};
-  --primary-text-color: #{$colors-brand-blue};
+  --primary-background-color: #{t.$colors-greys-grey90};
+  --primary-text-color: #{t.$colors-brand-blue};
   .eds-contrast & {
-    --primary-background-color: #{$colors-brand-blue};
+    --primary-background-color: #{t.$colors-brand-blue};
     --primary-text-color: #{colors-brand-white};
   }
 }
 
 .eds-side-navigation__click-target svg {
-  margin-right: $space-medium;
-  color: $colors-blues-blue40;
+  margin-right: t.$space-medium;
+  color: t.$colors-blues-blue40;
   display: inline-flex;
   align-self: center;
   position: relative;
   top: 0.075em;
   .eds-contrast & {
-    color: $colors-brand-lavender;
+    color: t.$colors-brand-lavender;
   }
 }
 
 .eds-side-navigation__click-target[disabled] svg {
-  color: $colors-blues-blue40;
+  color: t.$colors-blues-blue40;
 }
 
 .eds-side-navigation {
-  --padding-vertical: #{$space-medium};
-  --padding-horizontal: #{$space-extra-large2};
+  --padding-vertical: #{t.$space-medium};
+  --padding-horizontal: #{t.$space-extra-large2};
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   padding: 0;
   margin: 0;
   list-style: none;
   position: relative;
-  transition: max-width ease-in-out $timings-medium;
+  transition: max-width ease-in-out t.$timings-medium;
   &__collapse-button {
     position: absolute;
     right: 0 - 0.75rem;
@@ -45,50 +45,50 @@
     width: 1.5rem;
     border-radius: 50%;
     cursor: pointer;
-    background: $colors-brand-white;
-    box-shadow: $shadows-box-shadow;
-    border: $border-widths-small solid $colors-greys-grey60;
+    background: t.$colors-brand-white;
+    box-shadow: t.$shadows-box-shadow;
+    border: t.$border-widths-small solid t.$colors-greys-grey60;
     color: inherit;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    z-index: $z-indexes-sticky;
+    z-index: t.$z-indexes-sticky;
     .eds-contrast & {
-      background: $colors-blues-blue20;
-      box-shadow: $shadows-box-shadow;
+      background: t.$colors-blues-blue20;
+      box-shadow: t.$shadows-box-shadow;
       border-color: transparent;
     }
     svg {
       margin: 0;
       top: 0;
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
       .eds-contrast & {
-        color: $colors-brand-white;
+        color: t.$colors-brand-white;
       }
     }
     &:focus {
-      outline: $outlines-focus;
+      outline: t.$outlines-focus;
       .eds-contrast & {
-        outline: $outlines-focus-contrast;
+        outline: t.$outlines-focus-contrast;
       }
     }
   }
 
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     max-width: 26rem;
   }
 
   &--small {
-    --padding-vertical: calc(#{$space-extra-small} + 0.1875rem);
+    --padding-vertical: calc(#{t.$space-extra-small} + 0.1875rem);
   }
 
   // Nested sub menus
   & & {
-    background-color: $colors-greys-grey80;
+    background-color: t.$colors-greys-grey80;
     .eds-contrast & {
-      background-color: $colors-blues-blue10;
+      background-color: t.$colors-blues-blue10;
     }
   }
   &--collapsed {
@@ -99,12 +99,12 @@
 .eds-side-navigation {
   // Nested items
   & & .eds-side-navigation__click-target {
-    padding-left: $space-extra-large4;
+    padding-left: t.$space-extra-large4;
     box-shadow: none;
     &--active {
-      background-color: $colors-blues-blue70;
+      background-color: t.$colors-blues-blue70;
       .eds-contrast & {
-        background-color: $colors-blues-blue30;
+        background-color: t.$colors-blues-blue30;
       }
     }
   }
@@ -114,57 +114,57 @@
   appearance: none;
   background: none;
   border: 0;
-  border-bottom: $border-widths-medium solid $colors-greys-grey70;
+  border-bottom: t.$border-widths-medium solid t.$colors-greys-grey70;
   border-radius: 0;
   color: var(--primary-text-color);
   cursor: pointer;
   display: block;
   font-family: inherit;
   font-size: inherit;
-  font-weight: $font-weights-body;
+  font-weight: t.$font-weights-body;
   line-height: inherit;
-  padding: var(--padding-vertical) $space-extra-large2;
-  padding-left: $space-extra-large2;
-  transition: padding $timings-medium ease-in-out;
+  padding: var(--padding-vertical) t.$space-extra-large2;
+  padding-left: t.$space-extra-large2;
+  transition: padding t.$timings-medium ease-in-out;
   text-align: left;
   text-decoration: none;
   width: 100%;
 
   .eds-contrast & {
-    border-color: $colors-blues-blue10;
+    border-color: t.$colors-blues-blue10;
   }
   .eds-side-navigation--collapsed & {
-    padding-left: $space-extra-large;
+    padding-left: t.$space-extra-large;
   }
   &--active {
-    box-shadow: inset $border-widths-large 0 0 $colors-brand-blue;
-    font-weight: $font-weights-heading;
+    box-shadow: inset t.$border-widths-large 0 0 t.$colors-brand-blue;
+    font-weight: t.$font-weights-heading;
     .eds-contrast & {
-      box-shadow: inset $border-widths-large 0 0 $colors-brand-coral;
+      box-shadow: inset t.$border-widths-large 0 0 t.$colors-brand-coral;
     }
   }
 
   &[disabled] {
     cursor: not-allowed;
-    color: $colors-blues-blue40;
+    color: t.$colors-blues-blue40;
   }
 
   &:not([disabled]) {
     &:hover {
-      background-color: $colors-blues-blue70;
+      background-color: t.$colors-blues-blue70;
       .eds-contrast & {
-        background-color: $colors-blues-blue20;
+        background-color: t.$colors-blues-blue20;
       }
     }
 
     &:active,
     &:focus {
-      outline: $outlines-focus;
+      outline: t.$outlines-focus;
       outline-offset: -2px;
-      background: $colors-blues-blue80;
+      background: t.$colors-blues-blue80;
       .eds-contrast & {
-        background-color: $colors-blues-blue30;
-        outline: $outlines-focus-contrast;
+        background-color: t.$colors-blues-blue30;
+        outline: t.$outlines-focus-contrast;
       }
     }
   }
@@ -175,10 +175,10 @@
   color: var(--primary-text-color);
 
   & + & {
-    padding-top: $space-extra-small;
+    padding-top: t.$space-extra-small;
   }
 
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     max-width: 26rem;
   }
 }
@@ -189,39 +189,39 @@
   background: none;
   border: none;
   border-radius: 0;
-  border-bottom: $border-widths-medium solid $colors-greys-grey70;
-  color: $colors-blues-blue40;
+  border-bottom: t.$border-widths-medium solid t.$colors-greys-grey70;
+  color: t.$colors-blues-blue40;
   cursor: pointer;
   display: flex;
-  font-size: $font-sizes-medium;
+  font-size: t.$font-sizes-medium;
   font-family: inherit;
-  font-weight: $font-weights-body;
-  height: $space-extra-large3;
+  font-weight: t.$font-weights-body;
+  height: t.$space-extra-large3;
   justify-content: space-between;
   letter-spacing: 1px;
-  line-height: $line-heights-medium;
-  padding: $space-small 0 $space-small $space-extra-large2;
+  line-height: t.$line-heights-medium;
+  padding: t.$space-small 0 t.$space-small t.$space-extra-large2;
   margin: 0;
   text-transform: uppercase;
-  transition: padding $timings-medium ease-in-out;
+  transition: padding t.$timings-medium ease-in-out;
   width: 100%;
   .eds-contrast & {
-    color: $colors-brand-lavender;
-    border-color: $colors-blues-blue10;
+    color: t.$colors-brand-lavender;
+    border-color: t.$colors-blues-blue10;
   }
   &-icon {
-    margin-right: $space-small;
+    margin-right: t.$space-small;
   }
   .eds-side-navigation-group__expand-icon {
-    margin-right: $space-extra-large2;
+    margin-right: t.$space-extra-large2;
   }
   .eds-side-navigation--collapsed & {
-    padding-left: $space-extra-large;
+    padding-left: t.$space-extra-large;
   }
   &:focus {
-    outline: $outlines-focus;
+    outline: t.$outlines-focus;
     .eds-contrast & {
-      outline: $outlines-focus-contrast;
+      outline: t.$outlines-focus-contrast;
     }
   }
 }

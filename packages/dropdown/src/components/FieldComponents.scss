@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown {
   &__selected-item-tag {
@@ -23,15 +23,15 @@
 
     // revert contrast styling since dropdown field always is light
     .eds-contrast & {
-      background: $colors-blues-blue80;
-      border: $border-widths-small solid $colors-blues-blue70;
-      color: $colors-brand-blue;
+      background: t.$colors-blues-blue80;
+      border: t.$border-widths-small solid t.$colors-blues-blue70;
+      color: t.$colors-brand-blue;
 
       .eds-tag-chip__close-button {
-        color: $colors-brand-blue;
+        color: t.$colors-brand-blue;
 
         &:hover {
-          background-color: $colors-blues-blue60;
+          background-color: t.$colors-blues-blue60;
         }
       }
     }
@@ -46,17 +46,17 @@
 
     &--readonly {
       .eds-contrast & {
-        background-color: $colors-blues-blue50;
+        background-color: t.$colors-blues-blue50;
         border-color: transparent;
-        color: $colors-brand-white;
+        color: t.$colors-brand-white;
       }
     }
 
     &--disabled {
       .eds-contrast & {
-        background-color: $colors-blues-blue30;
+        background-color: t.$colors-blues-blue30;
         border-color: transparent;
-        color: $colors-blues-blue50;
+        color: t.$colors-blues-blue50;
       }
     }
   }

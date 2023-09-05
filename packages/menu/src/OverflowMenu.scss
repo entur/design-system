@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-overflow-menu {
   &__button {
@@ -6,43 +6,43 @@
   &__item {
     appearance: none;
     border: none;
-    font-size: $font-sizes-medium;
+    font-size: t.$font-sizes-medium;
     font-family: inherit;
     color: var(--primary-text-color);
-    background: $colors-greys-grey90;
+    background: t.$colors-greys-grey90;
     display: block;
-    height: $space-extra-large3;
+    height: t.$space-extra-large3;
     cursor: pointer;
     width: 100%;
-    line-height: $line-heights-large;
+    line-height: t.$line-heights-large;
     text-align: left;
-    padding: $space-small $space-medium;
+    padding: t.$space-small t.$space-medium;
     opacity: 1;
     .eds-contrast & {
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
     }
     &.eds-overflow-menu__item--disabled {
-      background: $colors-greys-grey70;
-      color: $colors-greys-grey50;
+      background: t.$colors-greys-grey70;
+      color: t.$colors-greys-grey50;
       .eds-contrast & {
-        background: $colors-greys-grey70;
-        color: $colors-greys-grey50;
+        background: t.$colors-greys-grey70;
+        color: t.$colors-greys-grey50;
       }
       &:hover {
         cursor: not-allowed;
-        background: $colors-greys-grey70;
-        color: $colors-greys-grey50;
+        background: t.$colors-greys-grey70;
+        color: t.$colors-greys-grey50;
       }
     }
 
     .eds-icon {
-      margin-right: $space-small;
+      margin-right: t.$space-small;
     }
 
     &:hover,
     &:focus,
     &[data-selected] {
-      background: $colors-blues-blue70;
+      background: t.$colors-blues-blue70;
     }
     &:focus {
       outline: none;
@@ -50,29 +50,29 @@
   }
 }
 .eds-overflow-menu__item + .eds-overflow-menu__item {
-  border-top: $border-widths-small solid $colors-greys-grey70;
+  border-top: t.$border-widths-small solid t.$colors-greys-grey70;
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
-  border: $border-widths-small solid $colors-greys-grey70;
-  border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-box-shadow;
+  border: t.$border-widths-small solid t.$colors-greys-grey70;
+  border-radius: t.$border-radiuses-medium;
+  box-shadow: t.$shadows-box-shadow;
   overflow: hidden;
   &:focus {
     outline: none;
   }
   &.eds-contrast {
-    box-shadow: $shadows-box-shadow-contrast;
+    box-shadow: t.$shadows-box-shadow-contrast;
   }
 }
 .eds-overflow-menu__menu-list[data-reach-menu-list],
 .eds-overflow-menu__menu-list[data-reach-menu-items] {
-  animation: slide-in $timings-medium ease-in-out;
+  animation: slide-in t.$timings-medium ease-in-out;
 }
 
 @keyframes slide-in {
   0% {
     opacity: 0;
-    transform: translateY($space-extra-small);
+    transform: translateY(t.$space-extra-small);
   }
   100% {
     opacity: 1;
@@ -81,7 +81,7 @@
 }
 [data-reach-menu-popover] {
   position: absolute;
-  z-index: $z-indexes-overlay;
+  z-index: t.$z-indexes-overlay;
   .eds-overflow-menu__menu-list {
     &--left {
       position: relative;

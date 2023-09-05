@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-form-component--radio {
   &__container {
@@ -7,18 +7,18 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    height: $space-extra-large;
+    height: t.$space-extra-large;
     width: fit-content;
     user-select: none;
     :hover ~ .eds-form-component--radio__radio {
-      border-color: $colors-blues-blue30;
+      border-color: t.$colors-blues-blue30;
       .eds-form-component--radio__circle {
-        background-color: $colors-blues-blue30;
+        background-color: t.$colors-blues-blue30;
       }
       .eds-contrast & {
-        border-color: $colors-blues-blue50;
+        border-color: t.$colors-blues-blue50;
         .eds-form-component--radio__circle {
-          background-color: $colors-blues-blue50;
+          background-color: t.$colors-blues-blue50;
         }
       }
     }
@@ -37,41 +37,41 @@
       }
       &:focus ~ .eds-form-component--radio__radio {
         outline: none;
-        box-shadow: $shadows-focus;
-        outline-offset: $outline-offsets-focus;
+        box-shadow: t.$shadows-focus;
+        outline-offset: t.$outline-offsets-focus;
         .eds-contrast & {
-          box-shadow: $shadows-focus-contrast;
+          box-shadow: t.$shadows-focus-contrast;
         }
       }
     }
     .eds-form-component--radio__radio {
       position: relative;
-      height: calc($space-medium + $space-extra-small2);
-      width: calc($space-medium + $space-extra-small2);
-      margin-right: $space-default;
-      background-color: $colors-brand-white;
-      border: $border-widths-medium solid $colors-brand-blue;
+      height: calc(t.$space-medium + t.$space-extra-small2);
+      width: calc(t.$space-medium + t.$space-extra-small2);
+      margin-right: t.$space-default;
+      background-color: t.$colors-brand-white;
+      border: t.$border-widths-medium solid t.$colors-brand-blue;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       .eds-contrast & {
-        background-color: $colors-brand-blue;
-        border-color: $colors-brand-lavender;
+        background-color: t.$colors-brand-blue;
+        border-color: t.$colors-brand-lavender;
       }
       &.eds-form-component--radio__radio--disabled {
-        background: $colors-greys-grey60;
-        border-color: $colors-greys-grey60;
+        background: t.$colors-greys-grey60;
+        border-color: t.$colors-greys-grey60;
         cursor: not-allowed;
         &:hover {
-          border-color: $colors-greys-grey60;
+          border-color: t.$colors-greys-grey60;
         }
         .eds-contrast & {
-          background: $colors-greys-grey60;
-          border-color: $colors-greys-grey60;
+          background: t.$colors-greys-grey60;
+          border-color: t.$colors-greys-grey60;
         }
         & ~ .eds-form-component--radio__label {
-          color: $colors-blues-blue40;
+          color: t.$colors-blues-blue40;
         }
       }
       .eds-form-component--radio__circle {
@@ -79,11 +79,11 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background-color: $colors-brand-blue;
-        transition: width $timings-fast ease-in-out,
-          height $timings-fast ease-in-out;
+        background-color: t.$colors-brand-blue;
+        transition: width t.$timings-fast ease-in-out,
+          height t.$timings-fast ease-in-out;
         .eds-contrast & {
-          background-color: $colors-brand-lavender;
+          background-color: t.$colors-brand-lavender;
         }
       }
     }

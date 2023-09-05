@@ -1,5 +1,5 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-grid {
   &__container {
@@ -16,41 +16,41 @@
   }
   &--spacing {
     &-extraSmall2 {
-      gap: $space-extra-small2;
+      gap: t.$space-extra-small2;
     }
     &-extraSmall {
-      gap: $space-extra-small;
+      gap: t.$space-extra-small;
     }
     &-small {
-      gap: $space-small;
+      gap: t.$space-small;
     }
     &-medium {
-      gap: $space-medium;
+      gap: t.$space-medium;
     }
     &-large {
-      gap: $space-large;
+      gap: t.$space-large;
     }
     &-extraLarge {
-      gap: $space-extra-large;
+      gap: t.$space-extra-large;
     }
     &-row {
       &-extraSmall2 {
-        row-gap: $space-extra-small2;
+        row-gap: t.$space-extra-small2;
       }
       &-extraSmall {
-        row-gap: $space-extra-small;
+        row-gap: t.$space-extra-small;
       }
       &-small {
-        row-gap: $space-small;
+        row-gap: t.$space-small;
       }
       &-medium {
-        row-gap: $space-medium;
+        row-gap: t.$space-medium;
       }
       &-large {
-        row-gap: $space-large;
+        row-gap: t.$space-large;
       }
       &-extraLarge {
-        row-gap: $space-extra-large;
+        row-gap: t.$space-extra-large;
       }
     }
   }
@@ -87,7 +87,7 @@
       }
     }
   }
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     &--medium {
       @for $i from 1 through 12 {
         &-#{$i} {
@@ -96,7 +96,7 @@
       }
     }
   }
-  @include for-large-desktop {
+  @include breakpoint.for-large-desktop {
     &--large {
       @for $i from 1 through 12 {
         &-#{$i} {

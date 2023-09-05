@@ -1,41 +1,41 @@
-@import '~@entur/tokens/dist/styles';
+@use '~@entur/tokens/dist/styles' as t;
 
 .eds-table__header-cell {
-  color: $colors-blues-blue40;
-  font-size: $font-sizes-medium;
-  font-weight: $font-weights-body;
+  color: t.$colors-blues-blue40;
+  font-size: t.$font-sizes-medium;
+  font-weight: t.$font-weights-body;
   text-align: left;
 
-  height: $space-extra-large3;
-  padding: 0 ($space-default + $space-extra-small);
+  height: t.$space-extra-large3;
+  padding: 0 (t.$space-default + t.$space-extra-small);
 
   .eds-table--middle &,
   .eds-table--small & {
-    padding: 0 $space-default;
+    padding: 0 t.$space-default;
   }
 
   .eds-contrast & {
-    color: $colors-brand-lavender;
-    border-bottom-color: $colors-blues-blue20;
+    color: t.$colors-brand-lavender;
+    border-bottom-color: t.$colors-blues-blue20;
   }
 
   &--padding-checkbox {
-    width: $space-extra-large3;
-    padding: 0 0 $space-medium ($space-medium + $space-extra-small2);
+    width: t.$space-extra-large3;
+    padding: 0 0 t.$space-medium (t.$space-medium + t.$space-extra-small2);
   }
   &--padding-radio {
-    width: $space-extra-large3;
-    padding: 0 0 $space-medium ($space-medium + $space-extra-small2);
+    width: t.$space-extra-large3;
+    padding: 0 0 t.$space-medium (t.$space-medium + t.$space-extra-small2);
   }
   &--padding-overflow-menu {
-    width: $space-extra-large3;
-    padding: $space-medium $space-small;
+    width: t.$space-extra-large3;
+    padding: t.$space-medium t.$space-small;
   }
   &--sortable {
     &:focus {
       outline: none;
-      box-shadow: $shadows-focus;
-      outline-offset: $outline-offsets-focus;
+      box-shadow: t.$shadows-focus;
+      outline-offset: t.$outline-offsets-focus;
     }
   }
   &-button {
@@ -54,23 +54,23 @@
     font-family: inherit;
     &-icon {
       position: absolute;
-      margin-left: $space-extra-small2;
+      margin-left: t.$space-extra-small2;
     }
     &:focus {
-      outline: $outlines-focus;
+      outline: t.$outlines-focus;
       .eds-contrast & {
-        outline: $outlines-focus-contrast;
+        outline: t.$outlines-focus-contrast;
       }
     }
   }
 
   .eds-table--sticky-header & {
-    background-color: $colors-brand-white;
+    background-color: t.$colors-brand-white;
     position: sticky;
     top: 0;
 
     .eds-contrast & {
-      background-color: $colors-brand-blue;
+      background-color: t.$colors-brand-blue;
     }
   }
 }

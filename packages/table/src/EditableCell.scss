@@ -1,57 +1,57 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-editable-cell {
-  padding: $space-extra-small2 $space-small;
+  padding: t.$space-extra-small2 t.$space-small;
   .eds-table--middle & {
-    padding: calc($space-extra-small / 2) calc($space-default / 2);
+    padding: calc(t.$space-extra-small / 2) calc(t.$space-default / 2);
   }
   .eds-table--small & {
-    padding: 0.125rem $space-extra-small;
+    padding: 0.125rem t.$space-extra-small;
   }
 
   &.eds-editable-cell--outlined {
     .eds-form-control-wrapper {
-      border-color: $colors-greys-grey60;
-      background: $colors-brand-white;
+      border-color: t.$colors-greys-grey60;
+      background: t.$colors-brand-white;
       .eds-contrast & {
-        border-color: $colors-blues-blue20;
-        color: $colors-brand-blue;
+        border-color: t.$colors-blues-blue20;
+        color: t.$colors-brand-blue;
       }
     }
   }
   .eds-form-control-wrapper {
-    background: $colors-brand-white;
+    background: t.$colors-brand-white;
     &::before,
     &::after {
       opacity: 0;
     }
 
     .eds-table__row:hover & {
-      border-color: $colors-greys-grey60;
-      background: $colors-brand-white;
+      border-color: t.$colors-greys-grey60;
+      background: t.$colors-brand-white;
       &:active,
       &:focus-within {
-        outline-offset: $outline-offsets-focus;
-        border: $border-widths-small solid $colors-brand-blue;
-        border-radius: $border-radiuses-medium;
+        outline-offset: t.$outline-offsets-focus;
+        border: t.$border-widths-small solid t.$colors-brand-blue;
+        border-radius: t.$border-radiuses-medium;
         .eds-contrast & {
-          border-color: $colors-brand-lavender;
+          border-color: t.$colors-brand-lavender;
         }
       }
       .eds-contrast & {
-        border-color: $colors-blues-blue20;
-        color: $colors-brand-blue;
+        border-color: t.$colors-blues-blue20;
+        color: t.$colors-brand-blue;
       }
     }
     &:active,
     &:focus-within {
-      outline-offset: $outline-offsets-focus;
-      border: $border-widths-small solid $colors-brand-blue;
-      border-radius: $border-radiuses-medium;
+      outline-offset: t.$outline-offsets-focus;
+      border: t.$border-widths-small solid t.$colors-brand-blue;
+      border-radius: t.$border-radiuses-medium;
       .eds-contrast & {
-        border-color: $colors-brand-lavender;
-        background: $colors-brand-white;
-        color: $colors-brand-blue;
+        border-color: t.$colors-brand-lavender;
+        background: t.$colors-brand-white;
+        color: t.$colors-brand-blue;
       }
     }
     &--error {
@@ -71,8 +71,8 @@
       }
     }
     font-family: inherit;
-    font-size: $font-sizes-large;
-    line-height: $line-heights-medium;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-medium;
     margin: 0;
     text-transform: none;
     color: inherit;
@@ -80,32 +80,32 @@
     text-align: inherit;
     margin: 0 0;
     width: 100%;
-    border: $border-widths-small solid transparent;
-    border-radius: $border-radiuses-medium;
-    line-height: $line-heights-extra-large;
+    border: t.$border-widths-small solid transparent;
+    border-radius: t.$border-radiuses-medium;
+    line-height: t.$line-heights-extra-large;
     min-height: 24px;
-    background: $colors-brand-white;
+    background: t.$colors-brand-white;
     color: inherit;
     .eds-contrast & {
-      color: $colors-brand-white;
+      color: t.$colors-brand-white;
       background: transparent;
-      transition: background ease-in-out $timings-fast;
+      transition: background ease-in-out t.$timings-fast;
     }
     .eds-form-control {
-      padding: $space-small;
+      padding: t.$space-small;
       &:hover,
       &:active {
         .eds-contrast & {
-          color: $colors-brand-blue;
+          color: t.$colors-brand-blue;
         }
       }
       .eds-table--middle & {
-        padding: $space-extra-small2
-          calc(#{$space-extra-small} - #{$border-widths-small});
+        padding: t.$space-extra-small2
+          calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }
       .eds-table--small & {
-        padding: calc(#{$space-extra-small2} - 0.125rem)
-          calc(#{$space-extra-small} - #{$border-widths-small});
+        padding: calc(#{t.$space-extra-small2} - 0.125rem)
+          calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }
     }
   }

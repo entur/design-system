@@ -1,13 +1,13 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 @mixin for-desktop {
-  @media screen and (min-width: #{$breakpoints-large}) {
+  @media screen and (min-width: #{t.$breakpoints-large}) {
     @content;
   }
 }
 
 @mixin for-large-desktop {
-  @media screen and (min-width: #{$breakpoints-extra-large}) {
+  @media screen and (min-width: #{t.$breakpoints-extra-large}) {
     @content;
   }
 }

@@ -1,16 +1,16 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-feedback-text {
   display: flex;
   align-items: center;
-  margin-top: $space-extra-small2;
+  margin-top: t.$space-extra-small2;
   &--info {
-    padding-left: calc(#{$space-medium} + #{$border-widths-medium});
+    padding-left: calc(#{t.$space-medium} + #{t.$border-widths-medium});
   }
   &__text {
-    color: $colors-brand-blue;
+    color: t.$colors-brand-blue;
     .eds-contrast & {
-      color: $colors-brand-white;
+      color: t.$colors-brand-white;
     }
   }
 }
@@ -24,30 +24,30 @@
   top: -0.1rem;
 
   &--success {
-    color: $colors-validation-mint;
+    color: t.$colors-validation-mint;
     .eds-contrast & {
-      color: $colors-validation-mint-contrast;
+      color: t.$colors-validation-mint-contrast;
     }
   }
   &--error {
-    color: $colors-validation-lava;
+    color: t.$colors-validation-lava;
     .eds-contrast & {
-      color: $colors-validation-lava-contrast;
+      color: t.$colors-validation-lava-contrast;
     }
   }
   &--info {
-    color: $colors-validation-sky;
+    color: t.$colors-validation-sky;
     .eds-contrast & {
-      color: $colors-validation-sky-contrast;
+      color: t.$colors-validation-sky-contrast;
     }
   }
   &--warning {
-    color: $colors-validation-canary;
+    color: t.$colors-validation-canary;
     circle {
-      fill: $colors-brand-blue;
+      fill: t.$colors-brand-blue;
     }
     .eds-contrast & {
-      color: $colors-validation-canary-contrast;
+      color: t.$colors-validation-canary-contrast;
     }
   }
 }

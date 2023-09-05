@@ -1,28 +1,28 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 // Input group OLD
 $label-top: calc(0.5rem - 0.125rem);
 $label-top-large: 0.5rem;
 
 @mixin labelPositionTopLarge {
   top: $label-top-large;
-  font-size: $font-sizes-medium;
-  line-height: $font-sizes-large;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$font-sizes-large;
   padding: 0;
-  margin-left: $space-default;
+  margin-left: t.$space-default;
 }
 
 @mixin labelPositionTop {
   top: $label-top;
-  font-size: $font-sizes-small;
-  line-height: $font-sizes-small;
+  font-size: t.$font-sizes-small;
+  line-height: t.$font-sizes-small;
   height: 10px;
   padding: 0;
-  margin-left: $space-default;
+  margin-left: t.$space-default;
   .eds-textarea__label & {
     box-shadow: 0px -2px 0px 4px var(--textarea-label-background);
     background: var(--textarea-label-background);
     width: calc(
-      100% - #{$space-default} - #{$space-default} - 4px
+      100% - #{t.$space-default} - #{t.$space-default} - 4px
     ); // ~36px = margin-left + scrollbar-width + box-shadow blur
   }
 }
@@ -33,7 +33,7 @@ $label-top-large: 0.5rem;
   position: relative;
 
   &__label {
-    color: $colors-blues-blue40;
+    color: t.$colors-blues-blue40;
     display: flex;
     .eds-form-control-wrapper--is-filled & {
       @include labelPositionTop;
@@ -43,26 +43,27 @@ $label-top-large: 0.5rem;
     }
     .eds-form-control-wrapper--dark & {
       .eds-contrast & {
-        color: $colors-brand-lavender;
+        color: t.$colors-brand-lavender;
       }
     }
-    font-size: $font-sizes-large;
+    font-size: t.$font-sizes-large;
     position: absolute;
-    line-height: $font-sizes-large;
-    height: $space-extra-large3;
-    padding: $space-default;
+    line-height: t.$font-sizes-large;
+    height: t.$space-extra-large3;
+    padding: t.$space-default;
     padding-left: 0;
-    margin-left: $space-default;
-    top: -$border-widths-medium;
-    transition: top $timings-medium ease-in-out,
-      font-size $timings-medium ease-in-out, padding $timings-medium ease-in-out,
-      line-height ease-in-out $timings-medium;
+    margin-left: t.$space-default;
+    top: -(t.$border-widths-medium);
+    transition: top t.$timings-medium ease-in-out,
+      font-size t.$timings-medium ease-in-out,
+      padding t.$timings-medium ease-in-out,
+      line-height ease-in-out t.$timings-medium;
 
     user-select: none;
     pointer-events: none;
     .eds-form-control-wrapper--size-large & {
-      font-size: $font-sizes-extra-large2;
-      line-height: $line-heights-extra-large4;
+      font-size: t.$font-sizes-extra-large2;
+      line-height: t.$line-heights-extra-large4;
       height: 4rem;
     }
     &--filled {
@@ -74,9 +75,9 @@ $label-top-large: 0.5rem;
   }
 
   &__label-tooltip-icon {
-    color: $colors-validation-sky;
-    padding-left: $space-extra-small2;
-    padding-right: $space-extra-small2;
+    color: t.$colors-validation-sky;
+    padding-left: t.$space-extra-small2;
+    padding-right: t.$space-extra-small2;
     display: flex;
     align-items: center;
     cursor: help;

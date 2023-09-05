@@ -1,21 +1,21 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-tooltip-wrapper {
   display: inline-block;
   position: relative;
   .eds-contrast & {
-    --primary-background-color: #{$colors-blues-blue20};
-    --primary-text-color: #{$colors-brand-white};
-    --primary-border-color: #{$colors-blues-blue10};
+    --primary-background-color: #{t.$colors-blues-blue20};
+    --primary-text-color: #{t.$colors-brand-white};
+    --primary-border-color: #{t.$colors-blues-blue10};
   }
 }
 
 .eds-tooltip {
-  color: $colors-brand-white;
-  background: $colors-brand-blue;
-  border-radius: $border-radiuses-medium;
-  box-shadow: $shadows-box-shadow;
-  font-size: $font-sizes-medium;
+  color: t.$colors-brand-white;
+  background: t.$colors-brand-blue;
+  border-radius: t.$border-radiuses-medium;
+  box-shadow: t.$shadows-box-shadow;
+  font-size: t.$font-sizes-medium;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,63 +23,63 @@
   min-width: 2rem;
   padding: 0.3125rem 0.625rem;
   position: absolute;
-  z-index: $z-indexes-popover;
+  z-index: t.$z-indexes-popover;
   max-width: 32rem;
   .eds-contrast & {
-    background: $colors-brand-white;
-    color: $colors-brand-blue;
-    box-shadow: $shadows-box-shadow-contrast;
+    background: t.$colors-brand-white;
+    color: t.$colors-brand-blue;
+    box-shadow: t.$shadows-box-shadow-contrast;
   }
 
   &__close-button {
     float: right;
     &:hover {
-      background: $colors-blues-blue30;
+      background: t.$colors-blues-blue30;
     }
     .eds-contrast & {
       &:hover {
-        background-color: $colors-greys-grey70;
+        background-color: t.$colors-greys-grey70;
       }
     }
   }
 
   &::after {
-    background: $colors-brand-blue;
+    background: t.$colors-brand-blue;
     content: '';
     height: 0.625rem;
     position: absolute;
     transform: rotate(45deg) translateY(0.125rem);
     width: 0.625rem;
-    z-index: $z-indexes-behind;
+    z-index: t.$z-indexes-behind;
     .eds-contrast & {
-      background: $colors-brand-white;
+      background: t.$colors-brand-white;
     }
   }
 
   &--error {
-    background: $colors-validation-lava-tint;
-    border: solid $border-widths-medium $colors-validation-lava-contrast;
-    color: $colors-brand-blue;
+    background: t.$colors-validation-lava-tint;
+    border: solid t.$border-widths-medium t.$colors-validation-lava-contrast;
+    color: t.$colors-brand-blue;
     &::after {
-      background: $colors-validation-lava-tint;
+      background: t.$colors-validation-lava-tint;
     }
 
     &::before {
-      background: $colors-validation-lava-contrast;
+      background: t.$colors-validation-lava-contrast;
       content: '';
-      height: 0.625rem + $border-widths-medium;
+      height: 0.625rem + t.$border-widths-medium;
       position: absolute;
       transform: rotate(45deg) translateY(0.125rem);
-      width: 0.625rem + $border-widths-medium;
-      z-index: $z-indexes-behind;
+      width: 0.625rem + t.$border-widths-medium;
+      z-index: t.$z-indexes-behind;
     }
     .eds-contrast & {
-      color: $colors-brand-blue;
-      background: $colors-validation-lava-tint;
-      border: solid $border-widths-medium $colors-validation-lava-contrast;
-      box-shadow: $shadows-box-shadow-contrast;
+      color: t.$colors-brand-blue;
+      background: t.$colors-validation-lava-tint;
+      border: solid t.$border-widths-medium t.$colors-validation-lava-contrast;
+      box-shadow: t.$shadows-box-shadow-contrast;
       &::after {
-        background: $colors-validation-lava-tint;
+        background: t.$colors-validation-lava-tint;
       }
     }
   }
@@ -87,7 +87,7 @@
   &--top {
     &::before {
       left: calc(50% - 0.375rem);
-      bottom: calc(-0.5rem + #{$border-widths-small});
+      bottom: calc(-0.5rem + #{t.$border-widths-small});
     }
     &::after {
       bottom: -0.2rem;
@@ -125,7 +125,7 @@
   &--bottom {
     &::before {
       left: calc(50% - 6px);
-      top: calc(-0.5rem - #{$border-widths-small});
+      top: calc(-0.5rem - #{t.$border-widths-small});
     }
     &::after {
       left: calc(50% - 0.3125rem);

@@ -1,7 +1,7 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 textarea.eds-form-control.eds-textarea {
   min-height: 7.75rem;
   resize: vertical;
-  line-height: $line-heights-extra-large;
+  line-height: t.$line-heights-extra-large;
 }

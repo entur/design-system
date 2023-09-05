@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown__toggle-button {
   appearance: none;
@@ -8,8 +8,8 @@
   color: inherit;
   font-size: inherit;
   font-family: inherit;
-  margin-right: -$space-small;
-  padding: $space-extra-small;
+  margin-right: -(t.$space-small);
+  padding: t.$space-extra-small;
 
   display: flex;
   justify-content: center;
@@ -18,11 +18,11 @@
     transform: rotate(180deg);
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 }

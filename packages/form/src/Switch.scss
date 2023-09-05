@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-switch {
   cursor: pointer;
@@ -29,10 +29,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: left $timings-fast ease-in-out,
-      background-color $timings-fast ease-in-out;
-    box-shadow: $shadows-box-shadow;
-    background-color: $colors-brand-white;
+    transition: left t.$timings-fast ease-in-out,
+      background-color t.$timings-fast ease-in-out;
+    box-shadow: t.$shadows-box-shadow;
+    background-color: t.$colors-brand-white;
     top: 0.125rem;
     left: 0.125rem;
     position: relative;
@@ -47,30 +47,30 @@
   }
   &__switch {
     position: relative;
-    background-color: $colors-greys-grey50;
+    background-color: t.$colors-greys-grey50;
     content: '';
     display: block;
-    transition: background-color $timings-fast ease-in-out;
+    transition: background-color t.$timings-fast ease-in-out;
     height: 1.5rem;
     width: 3rem;
     border-radius: 1.5rem;
     box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
 
     .eds-contrast & {
-      background-color: $colors-blues-blue50;
+      background-color: t.$colors-blues-blue50;
     }
 
     .eds-switch--right & {
-      margin-right: $space-small;
+      margin-right: t.$space-small;
     }
 
     svg g, // This is to colorize every type of icon that will potentially be included
     path {
-      fill: $colors-greys-grey40;
-      transition: fill ease-in-out $timings-fast;
+      fill: t.$colors-greys-grey40;
+      transition: fill ease-in-out t.$timings-fast;
 
       .eds-contrast & {
-        fill: $colors-brand-blue;
+        fill: t.$colors-brand-blue;
       }
     }
 
@@ -89,10 +89,10 @@
     }
     :focus + & {
       outline: none;
-      box-shadow: $shadows-focus;
-      outline-offset: $outline-offsets-focus;
+      box-shadow: t.$shadows-focus;
+      outline-offset: t.$outline-offsets-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        box-shadow: t.$shadows-focus-contrast;
       }
     }
 
@@ -115,18 +115,18 @@
   &__label {
     &--large {
       &--right {
-        font-size: $font-sizes-large;
+        font-size: t.$font-sizes-large;
       }
       &--bottom {
-        font-size: $font-sizes-medium;
+        font-size: t.$font-sizes-medium;
       }
     }
     &--medium {
       &--right {
-        font-size: $font-sizes-medium;
+        font-size: t.$font-sizes-medium;
       }
       &--bottom {
-        font-size: $font-sizes-small;
+        font-size: t.$font-sizes-small;
       }
     }
   }

@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-stepper {
   display: flex;
@@ -24,14 +24,14 @@
       flex-grow: 1;
       flex-basis: 0;
       flex-direction: column;
-      margin-left: $space-extra-small2;
+      margin-left: t.$space-extra-small2;
 
       &:focus {
-        outline-offset: $outline-offsets-focus;
+        outline-offset: t.$outline-offsets-focus;
         outline: none;
-        box-shadow: $shadows-focus;
+        box-shadow: t.$shadows-focus;
         .eds-contrast & {
-          box-shadow: $shadows-focus-contrast;
+          box-shadow: t.$shadows-focus-contrast;
         }
       }
     }
@@ -45,49 +45,49 @@
       flex-grow: 1;
       flex-direction: column;
       text-align: center;
-      font-size: $font-sizes-medium;
-      padding: $space-extra-small2 $space-medium;
+      font-size: t.$font-sizes-medium;
+      padding: t.$space-extra-small2 t.$space-medium;
       &--active {
-        font-weight: $font-weights-heading;
+        font-weight: t.$font-weights-heading;
       }
     }
     &__label.eds-stepper__item__label--active {
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
       .eds-contrast & {
-        color: $colors-brand-white;
+        color: t.$colors-brand-white;
       }
     }
     &__label.eds-stepper__item__label--has-been {
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
       .eds-contrast & {
-        color: $colors-brand-white;
+        color: t.$colors-brand-white;
       }
     }
     &__square {
-      height: $space-extra-small;
+      height: t.$space-extra-small;
       &--active {
         color: inherit;
-        background: $colors-greys-grey70;
+        background: t.$colors-greys-grey70;
         position: relative;
         &:before {
-          background: $colors-brand-blue;
+          background: t.$colors-brand-blue;
           content: '';
           position: absolute;
           right: calc(50% - 0.2rem);
-          border-radius: $border-radiuses-small;
-          bottom: $border-widths-small;
+          border-radius: t.$border-radiuses-small;
+          bottom: t.$border-widths-small;
 
           //Approximate pixel perfect adjustments in size
           width: calc(
-            #{$space-extra-small} - #{$border-widths-medium} - 0.01rem
+            #{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem
           );
           height: calc(
-            #{$space-extra-small} - #{$border-widths-medium} - 0.01rem
+            #{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem
           );
           transform: rotate(45deg);
           .eds-contrast & {
-            border-left-color: $colors-brand-lavender;
-            border-left-color: $colors-brand-lavender;
+            border-left-color: t.$colors-brand-lavender;
+            border-left-color: t.$colors-brand-lavender;
           }
         }
         &:after {
@@ -96,31 +96,31 @@
           left: 0;
           bottom: 0;
           width: 50%;
-          height: $space-extra-small;
-          background: $colors-brand-blue;
+          height: t.$space-extra-small;
+          background: t.$colors-brand-blue;
           .eds-contrast & {
-            background: $colors-brand-lavender;
+            background: t.$colors-brand-lavender;
           }
         }
         .eds-contrast & {
-          background: $colors-brand-lavender;
-          background: $colors-blues-blue20;
+          background: t.$colors-brand-lavender;
+          background: t.$colors-blues-blue20;
         }
       }
 
       &--inactive {
-        color: $colors-blues-blue40;
-        background: $colors-greys-grey70;
+        color: t.$colors-blues-blue40;
+        background: t.$colors-greys-grey70;
         .eds-contrast & {
-          color: $colors-brand-lavender;
-          background: $colors-blues-blue20;
+          color: t.$colors-brand-lavender;
+          background: t.$colors-blues-blue20;
         }
       }
       &--has-been {
         color: inherit;
-        background: $colors-brand-blue;
+        background: t.$colors-brand-blue;
         .eds-contrast & {
-          background: $colors-brand-lavender;
+          background: t.$colors-brand-lavender;
         }
       }
     }

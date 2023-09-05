@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 @keyframes eds-back-and-forth {
   from {
@@ -6,7 +6,7 @@
   }
 
   to {
-    transform: translateX(calc(100% - #{$space-extra-large3}));
+    transform: translateX(calc(100% - #{t.$space-extra-large3}));
   }
 }
 
@@ -27,22 +27,22 @@
   max-width: 20rem;
   margin: 0 auto;
   .eds-loader__label {
-    margin-bottom: $space-extra-small;
+    margin-bottom: t.$space-extra-small;
   }
   .eds-loader__percentage {
     float: right;
-    margin-top: $space-extra-small;
+    margin-top: t.$space-extra-small;
   }
 }
 
 .eds-loader__bar {
-  border: $border-widths-medium solid $colors-greys-grey70;
+  border: t.$border-widths-medium solid t.$colors-greys-grey70;
   &::after {
-    background: $colors-brand-coral;
+    background: t.$colors-brand-coral;
     content: '';
     display: block;
     height: 0.3125rem; // 5px
-    transition: width $timings-fast ease-out;
+    transition: width t.$timings-fast ease-out;
     width: var(--loader-width);
   }
 
@@ -53,7 +53,7 @@
 
     &::after {
       animation: 1s grow alternate infinite ease-in-out;
-      width: $space-extra-large3;
+      width: t.$space-extra-large3;
       will-change: transform;
     }
   }

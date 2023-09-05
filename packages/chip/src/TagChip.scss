@@ -1,36 +1,36 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 .eds-tag-chip {
   cursor: default;
-  padding-right: $space-extra-small2;
+  padding-right: t.$space-extra-small2;
   width: fit-content;
   &__close-button {
     appearance: none;
     background: none;
     border: none;
     border-radius: 50%;
-    color: $colors-brand-blue;
+    color: t.$colors-brand-blue;
     cursor: pointer;
     display: flex;
-    font-size: $font-sizes-medium;
-    padding: $space-extra-small2;
-    margin-left: $space-extra-small2;
-    transition: box-shadow $timings-fast ease-in-out,
-      background $timings-fast ease-in-out;
+    font-size: t.$font-sizes-medium;
+    padding: t.$space-extra-small2;
+    margin-left: t.$space-extra-small2;
+    transition: box-shadow t.$timings-fast ease-in-out,
+      background t.$timings-fast ease-in-out;
     .eds-contrast & {
-      color: $colors-brand-white;
+      color: t.$colors-brand-white;
     }
     &:hover {
-      background: $colors-blues-blue60;
+      background: t.$colors-blues-blue60;
       .eds-contrast & {
-        background: $colors-blues-blue30;
+        background: t.$colors-blues-blue30;
       }
     }
     &:focus {
-      outline-offset: $outline-offsets-focus;
+      outline-offset: t.$outline-offsets-focus;
       outline: none;
-      box-shadow: $shadows-focus;
+      box-shadow: t.$shadows-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        box-shadow: t.$shadows-focus-contrast;
       }
     }
   }

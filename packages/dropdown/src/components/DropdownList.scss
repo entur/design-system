@@ -1,34 +1,34 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown__list {
   position: absolute;
 
   list-style: none;
-  border-radius: $border-radiuses-medium;
-  border: 0.125rem solid $colors-blues-blue45;
-  box-shadow: $shadows-box-shadow;
+  border-radius: t.$border-radiuses-medium;
+  border: 0.125rem solid t.$colors-blues-blue45;
+  box-shadow: t.$shadows-box-shadow;
   padding: 0;
   margin: 0;
-  margin-top: $space-extra-small;
+  margin-top: t.$space-extra-small;
   max-height: 50vh;
   overflow-y: auto;
   width: 100%;
-  z-index: $z-indexes-popover;
+  z-index: t.$z-indexes-popover;
 
   &:focus {
     outline: none;
   }
 
   &__item {
-    background-color: $colors-greys-grey90;
-    color: $colors-brand-blue;
+    background-color: t.$colors-greys-grey90;
+    color: t.$colors-brand-blue;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-family: inherit;
-    font-size: $font-sizes-large;
-    line-height: $line-heights-medium;
-    padding: $space-small $space-default;
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-medium;
+    padding: t.$space-small t.$space-default;
     width: 100%;
     overflow-x: hidden;
     word-break: break-word;
@@ -43,7 +43,7 @@
     }
 
     &__icon {
-      margin-left: $space-small;
+      margin-left: t.$space-small;
     }
 
     &__checkbox {
@@ -52,17 +52,17 @@
       .eds-contrast & {
         &.eds-checkbox__container {
           > input + .eds-checkbox__icon {
-            border-color: $colors-brand-blue;
+            border-color: t.$colors-brand-blue;
           }
           > input:checked,
           > input:indeterminate {
             + .eds-checkbox__icon {
-              background-color: $colors-brand-blue;
+              background-color: t.$colors-brand-blue;
               path {
-                stroke: $colors-brand-white;
+                stroke: t.$colors-brand-white;
               }
               rect {
-                fill: $colors-brand-white;
+                fill: t.$colors-brand-white;
               }
             }
           }
@@ -71,29 +71,29 @@
     }
 
     &--highlighted {
-      background-color: $colors-blues-blue70;
+      background-color: t.$colors-blues-blue70;
 
       // change to hover style for checkbox when list is hovered
       .eds-dropdown__list__item__checkbox.eds-checkbox__container,
       .eds-dropdown__list__item__checkbox.eds-checkbox__container:hover {
         > input:checked + .eds-checkbox__icon,
         > input:indeterminate + .eds-checkbox__icon {
-          background-color: $colors-blues-blue30;
+          background-color: t.$colors-blues-blue30;
           border-color: transparent;
         }
         > input + .eds-checkbox__icon {
-          border-color: $colors-blues-blue30;
+          border-color: t.$colors-blues-blue30;
         }
       }
     }
 
     &--selected {
-      background-color: $colors-blues-blue30;
-      color: $colors-brand-white;
+      background-color: t.$colors-blues-blue30;
+      color: t.$colors-brand-white;
     }
   }
 
-  @media all and (min-width: $breakpoints-large) {
+  @media all and (min-width: t.$breakpoints-large) {
     max-height: 30vh;
   }
 }

@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-timepicker__wrapper {
   position: relative;
@@ -8,11 +8,11 @@
 
   .eds-timepicker {
     justify-content: center;
-    padding: $space-none $space-extra-large3;
+    padding: t.$space-none t.$space-extra-large3;
 
     .eds-input-group__label,
     .eds-input-group__label--filled {
-      margin-left: $space-none !important;
+      margin-left: t.$space-none !important;
     }
 
     &__arrowbutton {
@@ -32,9 +32,9 @@
       }
 
       // for counter-acting contrast mode
-      color: $colors-brand-blue;
+      color: t.$colors-brand-blue;
       &:hover {
-        background-color: $colors-blues-blue70;
+        background-color: t.$colors-blues-blue70;
       }
     }
 
@@ -50,6 +50,6 @@
 
   .eds-feedback-text {
     position: absolute;
-    top: $space-extra-large4;
+    top: t.$space-extra-large4;
   }
 }

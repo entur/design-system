@@ -1,67 +1,67 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/color-utils.scss' as util;
 
-$default-height: $space-extra-large3;
-$small-height: $space-extra-large;
+$default-height: t.$space-extra-large3;
+$small-height: t.$space-extra-large;
 $default-padding: calc((44rem - 14rem) / 2 / 16);
 $small-padding: calc((36rem - 14rem) / 2 / 16);
 
 .eds-floating-button {
   align-items: center;
   appearance: none;
-  background: $colors-brand-blue;
+  background: t.$colors-brand-blue;
   border: 0;
   border-radius: calc($default-height / 2);
-  box-shadow: $shadows-box-shadow;
-  color: $colors-brand-white;
+  box-shadow: t.$shadows-box-shadow;
+  color: t.$colors-brand-white;
   cursor: pointer;
   display: flex;
   font-family: inherit;
-  font-size: $font-sizes-medium;
-  font-weight: $font-weights-body;
+  font-size: t.$font-sizes-medium;
+  font-weight: t.$font-weights-body;
   justify-content: center;
   min-height: $default-height;
   margin: 0;
   min-width: $default-height;
-  padding: 0 $space-medium;
+  padding: 0 t.$space-medium;
   position: relative;
-  z-index: $z-indexes-sticky;
+  z-index: t.$z-indexes-sticky;
 
   &--extended {
     padding: 0 $default-padding;
   }
   &:hover {
-    background-color: tint($colors-brand-blue, 10%);
+    background-color: util.tint(t.$colors-brand-blue, 10%);
   }
   &:active {
-    background-color: shade($colors-brand-blue, 10%);
+    background-color: util.shade(t.$colors-brand-blue, 10%);
   }
 
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: $shadows-focus-contrast;
+      box-shadow: t.$shadows-focus-contrast;
     }
   }
 
   .eds-contrast & {
-    background: $colors-brand-white;
-    color: $colors-brand-blue;
-    box-shadow: $shadows-box-shadow-contrast;
+    background: t.$colors-brand-white;
+    color: t.$colors-brand-blue;
+    box-shadow: t.$shadows-box-shadow-contrast;
     &:hover {
-      background-color: tint($colors-brand-lavender, 10%);
+      background-color: util.tint(t.$colors-brand-lavender, 10%);
     }
     &:active {
-      background-color: shade($colors-brand-white, 10%);
+      background-color: util.shade(t.$colors-brand-white, 10%);
     }
   }
 
   &--small {
     border-radius: calc($small-height / 2);
     height: $small-height;
-    padding: 0 $space-extra-small;
+    padding: 0 t.$space-extra-small;
     min-width: $small-height;
     min-height: $small-height;
     flex: 0 1 auto;

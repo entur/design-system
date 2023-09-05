@@ -1,12 +1,12 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/color-utils.scss' as util;
 
 .eds-choice-chip {
   cursor: pointer;
   display: inline-block;
-  margin-right: $space-small;
+  margin-right: t.$space-small;
   position: relative;
-  transition: all $timings-fast ease-out;
+  transition: all t.$timings-fast ease-out;
   &__input {
     appearance: none;
     height: 0;
@@ -16,47 +16,47 @@
     ~ .eds-chip {
       background-color: transparent;
       .eds-contrast & {
-        border-color: $colors-brand-lavender;
-        color: $colors-brand-white;
+        border-color: t.$colors-brand-lavender;
+        color: t.$colors-brand-white;
       }
     }
     &:checked ~ .eds-chip {
-      background-color: $colors-brand-blue;
-      border-color: $colors-brand-blue;
-      color: $colors-brand-white;
+      background-color: t.$colors-brand-blue;
+      border-color: t.$colors-brand-blue;
+      color: t.$colors-brand-white;
       .eds-contrast & {
-        border-color: $colors-brand-lavender;
-        background-color: $colors-brand-lavender;
-        color: $colors-brand-blue;
+        border-color: t.$colors-brand-lavender;
+        background-color: t.$colors-brand-lavender;
+        color: t.$colors-brand-blue;
       }
     }
     &:focus ~ .eds-chip {
       outline: none;
-      box-shadow: $shadows-focus;
-      outline-offset: $outline-offsets-focus;
+      box-shadow: t.$shadows-focus;
+      outline-offset: t.$outline-offsets-focus;
       .eds-contrast & {
-        box-shadow: $shadows-focus-contrast;
+        box-shadow: t.$shadows-focus-contrast;
       }
     }
     &:not(:checked):not(:disabled):hover ~ .eds-chip {
-      border-color: $colors-brand-blue;
+      border-color: t.$colors-brand-blue;
       .eds-contrast & {
-        border-color: $colors-brand-white;
+        border-color: t.$colors-brand-white;
       }
     }
     &:checked:hover ~ .eds-chip {
-      background-color: tint($colors-brand-blue, 15%);
-      border-color: tint($colors-brand-blue, 15%);
+      background-color: util.tint(t.$colors-brand-blue, 15%);
+      border-color: util.tint(t.$colors-brand-blue, 15%);
       .eds-contrast & {
-        background-color: tint($colors-brand-lavender, 15%);
-        border-color: tint($colors-brand-lavender, 15%);
+        background-color: util.tint(t.$colors-brand-lavender, 15%);
+        border-color: util.tint(t.$colors-brand-lavender, 15%);
       }
     }
     &:active ~ .eds-chip {
-      background-color: $colors-blues-blue70;
-      border-color: $colors-blues-blue70;
+      background-color: t.$colors-blues-blue70;
+      border-color: t.$colors-blues-blue70;
       .eds-contrast & {
-        background: shade($colors-blues-blue20, 10%);
+        background: util.shade(t.$colors-blues-blue20, 10%);
       }
     }
   }
@@ -67,8 +67,8 @@
 
       .eds-contrast & {
         opacity: 1;
-        border-color: $colors-blues-blue50;
-        color: $colors-blues-blue60;
+        border-color: t.$colors-blues-blue50;
+        color: t.$colors-blues-blue60;
       }
     }
   }

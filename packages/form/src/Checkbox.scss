@@ -1,5 +1,5 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/color-utils.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/color-utils.scss' as util;
 
 .eds-checkbox {
   &__container {
@@ -10,7 +10,7 @@
     cursor: pointer;
     user-select: none;
     width: fit-content;
-    margin: $space-extra-small 0;
+    margin: t.$space-extra-small 0;
     &--reduced-click-area {
       height: fit-content;
     }
@@ -23,16 +23,17 @@
 
       &:checked + .eds-checkbox__icon,
       &:indeterminate + .eds-checkbox__icon {
-        background-color: $colors-brand-blue;
+        background-color: t.$colors-brand-blue;
         .eds-checkbox-icon {
           visibility: visible;
 
           path {
-            stroke: $colors-brand-white;
-            animation: stroke ease-in-out $timings-medium $timings-fast forwards;
+            stroke: t.$colors-brand-white;
+            animation: stroke ease-in-out t.$timings-medium t.$timings-fast
+              forwards;
           }
           rect {
-            fill: $colors-brand-white;
+            fill: t.$colors-brand-white;
           }
         }
         &--disabled {
@@ -43,52 +44,52 @@
           }
         }
         .eds-contrast & {
-          background-color: $colors-brand-lavender;
+          background-color: t.$colors-brand-lavender;
           path {
-            stroke: $colors-brand-blue;
+            stroke: t.$colors-brand-blue;
           }
           rect {
-            fill: $colors-brand-blue;
+            fill: t.$colors-brand-blue;
           }
         }
       }
     }
     &:hover {
       input + .eds-checkbox__icon {
-        border-color: $colors-blues-blue10;
-        background-color: $colors-blues-blue70;
+        border-color: t.$colors-blues-blue10;
+        background-color: t.$colors-blues-blue70;
 
         .eds-contrast & {
-          border-color: tint($colors-brand-lavender, 10%);
-          background-color: rgba($color: $colors-brand-lavender, $alpha: 0.2);
+          border-color: util.tint(t.$colors-brand-lavender, 10%);
+          background-color: rgba(t.$colors-brand-lavender, 0.2);
         }
       }
 
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
         border-color: transparent;
-        background-color: $colors-blues-blue30;
+        background-color: t.$colors-blues-blue30;
 
         .eds-contrast & {
-          background-color: tint($colors-brand-lavender, 10%);
+          background-color: util.tint(t.$colors-brand-lavender, 10%);
         }
       }
     }
     &:active {
       input + .eds-checkbox__icon {
-        border-color: shade($colors-brand-blue, 10%);
+        border-color: util.shade(t.$colors-brand-blue, 10%);
 
         .eds-contrast & {
-          border-color: shade($colors-brand-lavender, 10%);
+          border-color: util.shade(t.$colors-brand-lavender, 10%);
         }
       }
 
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
-        background-color: shade($colors-brand-blue, 10%);
+        background-color: util.shade(t.$colors-brand-blue, 10%);
 
         .eds-contrast & {
-          background-color: shade($colors-brand-lavender, 10%);
+          background-color: util.shade(t.$colors-brand-lavender, 10%);
         }
       }
     }
@@ -96,10 +97,10 @@
     :focus-within {
       + .eds-checkbox__icon {
         outline: none;
-        box-shadow: $shadows-focus;
-        outline-offset: $outline-offsets-focus;
+        box-shadow: t.$shadows-focus;
+        outline-offset: t.$outline-offsets-focus;
         .eds-contrast & {
-          box-shadow: $shadows-focus-contrast;
+          box-shadow: t.$shadows-focus-contrast;
         }
       }
     }
@@ -120,24 +121,24 @@
     align-items: center;
     position: relative;
 
-    margin-right: $space-default;
+    margin-right: t.$space-default;
     height: 1.25rem;
     width: 1.25rem;
-    border: $border-widths-default solid $colors-brand-blue;
-    border-radius: calc($border-radiuses-medium / 2);
+    border: t.$border-widths-default solid t.$colors-brand-blue;
+    border-radius: calc(t.$border-radiuses-medium / 2);
     background-color: transparent;
-    color: $colors-brand-white;
-    transition: border-color $timings-fast ease-in-out,
-      background-color $timings-fast ease-in-out;
+    color: t.$colors-brand-white;
+    transition: border-color t.$timings-fast ease-in-out,
+      background-color t.$timings-fast ease-in-out;
     &--reduced-click-area {
       margin-right: 0;
     }
     .eds-contrast & {
-      border-color: $colors-brand-lavender;
+      border-color: t.$colors-brand-lavender;
     }
     .eds-checkbox-icon {
-      height: $space-default;
-      width: $space-default;
+      height: t.$space-default;
+      width: t.$space-default;
       visibility: hidden;
       path {
         transform-origin: 50% 50%;

@@ -1,59 +1,59 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-form-control-wrapper {
-  --border-color: #{$colors-blues-blue45};
-  --border-color-hover: #{$colors-brand-lavender};
+  --border-color: #{t.$colors-blues-blue45};
+  --border-color-hover: #{t.$colors-brand-lavender};
 
   align-items: center;
-  background-color: $colors-brand-white;
-  border-radius: $border-radiuses-medium;
-  border: $border-widths-medium solid var(--border-color);
+  background-color: t.$colors-brand-white;
+  border-radius: t.$border-radiuses-medium;
+  border: t.$border-widths-medium solid var(--border-color);
   box-shadow: 0 0 0 transparent;
-  color: $colors-brand-blue;
+  color: t.$colors-brand-blue;
   display: flex;
   position: relative;
   width: 100%;
   min-height: 3rem;
-  transition: border-color $timings-fast ease-in-out;
+  transition: border-color t.$timings-fast ease-in-out;
 
-  --textarea-label-background: $colors-brand-white;
+  --textarea-label-background: t.$colors-brand-white;
 
   &:focus-within,
   &:hover {
-    --border-color: #{$colors-brand-blue};
+    --border-color: #{t.$colors-brand-blue};
   }
   &:hover {
     .eds-contrast & {
-      --border-color: #{$colors-brand-lavender};
+      --border-color: #{t.$colors-brand-lavender};
     }
   }
   &:focus-within {
     box-shadow: inset 0 0 0 1px var(--border-color);
     .eds-contrast & {
-      --border-color: #{$colors-brand-blue};
-      box-shadow: 0 0 0 $border-widths-medium $colors-brand-lavender;
+      --border-color: #{t.$colors-brand-blue};
+      box-shadow: 0 0 0 t.$border-widths-medium t.$colors-brand-lavender;
     }
   }
 
   ::placeholder {
-    color: $colors-blues-blue40;
+    color: t.$colors-blues-blue40;
   }
 
   // Variations
   &--disabled {
     --border-color: transparent;
-    background-color: $colors-greys-grey70;
+    background-color: t.$colors-greys-grey70;
     pointer-events: none;
-    color: $colors-greys-grey40;
+    color: t.$colors-greys-grey40;
     .eds-input-group__label {
-      color: $colors-greys-grey40;
+      color: t.$colors-greys-grey40;
     }
 
     .eds-contrast & {
-      background: $colors-blues-blue10;
-      color: $colors-blues-blue50;
+      background: t.$colors-blues-blue10;
+      color: t.$colors-blues-blue50;
       .eds-input-group__label {
-        color: $colors-blues-blue50;
+        color: t.$colors-blues-blue50;
       }
     }
 
@@ -65,17 +65,17 @@
 
   &--readonly {
     --border-color: transparent;
-    --textarea-label-background: $colors-greys-grey90;
+    --textarea-label-background: t.$colors-greys-grey90;
     pointer-events: none;
     cursor: default;
-    background: $colors-greys-grey90;
+    background: t.$colors-greys-grey90;
 
     .eds-contrast & {
-      --textarea-label-background: $colors-blues-blue10;
-      background: $colors-blues-blue10;
-      color: $colors-brand-white;
+      --textarea-label-background: t.$colors-blues-blue10;
+      background: t.$colors-blues-blue10;
+      color: t.$colors-brand-white;
       .eds-input-group__label {
-        color: $colors-brand-lavender;
+        color: t.$colors-brand-lavender;
       }
     }
 
@@ -89,68 +89,68 @@
     .eds-form-control,
     .eds-form-control__append,
     .eds-form-control__prepend {
-      font-size: $font-sizes-large;
-      line-height: $line-heights-small;
+      font-size: t.$font-sizes-large;
+      line-height: t.$line-heights-small;
     }
   }
   &--size-large {
     min-height: 4rem;
-    padding: 0 $space-extra-small;
+    padding: 0 t.$space-extra-small;
     &::before,
     &::after {
-      border-width: $border-widths-large;
+      border-width: t.$border-widths-large;
     }
     .eds-form-control,
     .eds-form-control__append,
     .eds-form-control__prepend {
-      font-size: $font-sizes-extra-large2;
-      line-height: $line-heights-extra-large4;
+      font-size: t.$font-sizes-extra-large2;
+      line-height: t.$line-heights-extra-large4;
     }
   }
 
   // Validation modes changes the border colors
   &--success {
-    border-color: $colors-validation-mint;
-    --border-color: #{$colors-validation-mint};
+    border-color: t.$colors-validation-mint;
+    --border-color: #{t.$colors-validation-mint};
     &:hover {
-      border-color: $colors-validation-mint-contrast;
+      border-color: t.$colors-validation-mint-contrast;
     }
     &:focus-within {
-      border-color: $colors-validation-mint;
+      border-color: t.$colors-validation-mint;
     }
 
     .eds-contrast & {
-      border-color: $colors-validation-mint-contrast;
-      --border-color: #{$colors-validation-mint-contrast};
+      border-color: t.$colors-validation-mint-contrast;
+      --border-color: #{t.$colors-validation-mint-contrast};
       &:hover {
-        border-color: $colors-validation-mint;
+        border-color: t.$colors-validation-mint;
       }
       &:focus-within {
-        --border-color: #{$colors-validation-mint-contrast};
-        border-color: $colors-brand-blue;
+        --border-color: #{t.$colors-validation-mint-contrast};
+        border-color: t.$colors-brand-blue;
       }
     }
   }
 
   &--error {
-    border-color: $colors-validation-lava;
-    --border-color: #{$colors-validation-lava};
+    border-color: t.$colors-validation-lava;
+    --border-color: #{t.$colors-validation-lava};
     &:hover {
-      border-color: $colors-validation-lava-contrast;
+      border-color: t.$colors-validation-lava-contrast;
     }
     &:focus-within {
-      border-color: $colors-validation-lava;
+      border-color: t.$colors-validation-lava;
     }
 
     .eds-contrast & {
-      border-color: $colors-validation-lava-contrast;
-      --border-color: #{$colors-validation-lava-contrast};
+      border-color: t.$colors-validation-lava-contrast;
+      --border-color: #{t.$colors-validation-lava-contrast};
       &:hover {
-        border-color: $colors-validation-lava;
+        border-color: t.$colors-validation-lava;
       }
       &:focus-within {
-        border-color: $colors-brand-blue;
-        --border-color: #{$colors-validation-lava-contrast};
+        border-color: t.$colors-brand-blue;
+        --border-color: #{t.$colors-validation-lava-contrast};
       }
     }
   }
@@ -161,19 +161,19 @@
   */
   .eds-contrast & {
     &--dark {
-      background-color: $colors-brand-blue;
-      color: $colors-brand-white;
+      background-color: t.$colors-brand-blue;
+      color: t.$colors-brand-white;
       ::placeholder {
-        color: $colors-brand-lavender;
+        color: t.$colors-brand-lavender;
       }
 
       &:hover {
-        // background-color: $colors-blues-blue30;
-        border-color: $colors-brand-lavender;
+        // background-color: t.$colors-blues-blue30;
+        border-color: t.$colors-brand-lavender;
       }
       &:focus-within {
-        background-color: $colors-blues-blue10;
-        border-color: $colors-brand-lavender;
+        background-color: t.$colors-blues-blue10;
+        border-color: t.$colors-brand-lavender;
       }
 
       * {
@@ -182,8 +182,8 @@
       }
 
       &.eds-form-control-wrapper--disabled {
-        background-color: $colors-blues-blue10;
-        color: $colors-blues-blue50;
+        background-color: t.$colors-blues-blue10;
+        color: t.$colors-blues-blue50;
       }
     }
   }
@@ -196,14 +196,14 @@
   color: inherit;
   display: block;
   font-family: inherit;
-  line-height: $line-heights-small;
-  font-size: $font-sizes-large;
-  padding: 20px $space-default $space-extra-small2;
+  line-height: t.$line-heights-small;
+  font-size: t.$font-sizes-large;
+  padding: 20px t.$space-default t.$space-extra-small2;
   width: 100%;
 
   &::placeholder {
     opacity: 0;
-    transition: opacity $timings-medium ease-in-out;
+    transition: opacity t.$timings-medium ease-in-out;
   }
   &:focus {
     outline: none;
@@ -215,7 +215,7 @@
   &__prepend,
   &__append {
     position: relative;
-    margin: 0 $space-default;
+    margin: 0 t.$space-default;
     line-height: inherit;
     &--tooltip {
       position: static;

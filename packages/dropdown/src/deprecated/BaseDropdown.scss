@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown-wrapper {
   position: relative;
@@ -13,7 +13,7 @@
 
 .eds-dropdown__input {
   &::placeholder {
-    color: $colors-blues-blue40;
+    color: t.$colors-blues-blue40;
   }
 }
 
@@ -35,24 +35,24 @@
   line-height: 1rem;
   padding: 0.5rem;
   &:hover {
-    background: $colors-greys-grey80;
+    background: t.$colors-greys-grey80;
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: t.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: t.$shadows-focus;
   }
 }
 
 .eds-dropdown__divider {
   content: '';
   display: block;
-  background-color: $colors-greys-grey70;
+  background-color: t.$colors-greys-grey70;
   height: 1.5rem;
   width: 1px;
   .eds-form-control-wrapper--disabled & {
     .eds-contrast & {
-      background-color: $colors-blues-blue50;
+      background-color: t.$colors-blues-blue50;
     }
   }
 }
