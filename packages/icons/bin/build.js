@@ -223,6 +223,7 @@ function createSvgrConfig(native = false, componentName) {
       'VippsIcon',
       'VippsLogoIcon',
       'VisaIcon',
+      'CompassNeedleIcon',
       ...partnerIcons,
     ];
 
