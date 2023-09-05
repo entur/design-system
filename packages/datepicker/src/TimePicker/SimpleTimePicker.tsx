@@ -48,12 +48,14 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   feedback?: string;
   /** Valideringsvariant */
   variant?: VariantType;
+  /** Tekst eller ikon som vises foran skjema-elementet */
+  prepend?: React.ReactNode;
+  /** Tekst eller ikon som vises etter skjema-elementet */
+  append?: React.ReactNode;
   labelTooltip?: React.ReactNode;
   disabled?: boolean;
   readOnly?: boolean;
   inputRef?: React.ForwardedRef<HTMLInputElement>;
-  append?: boolean;
-  prepend?: boolean;
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
