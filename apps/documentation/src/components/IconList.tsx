@@ -20,8 +20,8 @@ import './IconList.scss';
 
 type IconListProps = {
   icons: {
-    [key: string]: React.ElementType;
-  };
+    [key: string]: React.Component<any, any>;
+  }[];
 };
 const ICON_SIZES = [
   { label: 'Small', value: fontSizes.small.toString() },
@@ -32,29 +32,46 @@ const ICON_SIZES = [
   { label: '4XLarge', value: fontSizes.extraLarge4.toString() },
 ];
 
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach(item => {
-    const key = keyGetter(item);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
+const mapIconsToCategories = iconList => {
+  const map = new Map<
+    string,
+    Array<{
+      category: string;
+      name: string;
+    }>
+  >();
+  iconList.forEach(icon => {
+    const category = icon.category;
+    const collection = map.get(category);
+    if (collection !== undefined) {
+      collection.push(icon);
     } else {
-      collection.push(item);
+      map.set(category, [icon]);
+    }
+
+    // if category is eg. 'UI/Arrows', this will add the icon to 'UI' as well
+    const rootCategory = category.split('/')[0];
+    if (category !== rootCategory) {
+      const rootCollection = map.get(rootCategory);
+      if (rootCollection !== undefined) {
+        rootCollection.push(icon);
+      } else {
+        map.set(rootCategory, [icon]);
+      }
     }
   });
   return map;
-}
-
-const unique = (value, index, self) => {
-  return self.indexOf(value) === index;
 };
 
-const IconList: React.FC<IconListProps> = props => {
+const unique = (value: string, index: number, listWithItems: string[]) => {
+  return listWithItems.indexOf(value) === index;
+};
+
+const IconList: React.FC<IconListProps> = ({ icons: iconComponents }) => {
   const { addToast } = useToast();
   const iconsQuery = useGetIcons();
   const [isContrast, setContrast] = React.useState(false);
-  const [filterString, setFilterString] = React.useState('');
+  const [searchString, setFilterString] = React.useState('');
   const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>({
     label: '2XLarge',
     value: fontSizes.extraLarge2.toString(),
@@ -62,43 +79,51 @@ const IconList: React.FC<IconListProps> = props => {
   const [category, setCategory] =
     React.useState<NormalizedDropdownItemType | null>(null);
 
-  const categoriesMap = iconsQuery.map(icon => {
+  const allIcons = iconsQuery.map(icon => {
+    const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+    // console.log('entries', Object.entries(iconComponents));
+
+    const iconComponent = Object.entries(iconComponents).find(
+      component => component?.[0] === iconName,
+    )?.[1];
+
     return {
-      category: icon.node.absolutePath.split('/').splice(-2, 1).toString(),
-      name: icon.node.name.replace(/\s+/g, '') + 'Icon',
+      category:
+        icon.node.absolutePath.match(/icons\/(.*?)\/[^\/]+\.svg/)?.[1] ??
+        'None',
+      name: iconName,
+      component: iconComponent,
     };
   });
 
-  const categories = iconsQuery
-    .map(icon => icon.node.absolutePath.split('/').splice(-2, 1).toString())
+  const iconsMappedToCategory = mapIconsToCategories(allIcons);
+
+  const filteredIcons = React.useMemo(() => {
+    const isCategorySelected = category !== null;
+
+    if (!isCategorySelected && searchString === '') return allIcons;
+
+    if (isCategorySelected) {
+      const filteredOnCategory = allIcons.filter(
+        icon => icon.category === category.value,
+      );
+
+      if (searchString === '') return filteredOnCategory;
+
+      return matchSorter(filteredOnCategory, searchString, { keys: ['0'] });
+    }
+
+    return matchSorter(allIcons, searchString, { keys: ['0'] });
+  }, [category, searchString, allIcons]);
+
+  const categories = allIcons
+    .map(icon => icon.category)
     .filter(unique)
     .sort();
 
-  const grouped = groupBy(
-    categoriesMap,
-    (category: { category: string; name: string }) => category.category,
-  );
-
-  const filteredIcons = React.useMemo(() => {
-    const isCategorySelected = category !== null && category?.value !== '';
-    const iconEntries = Object.entries(props.icons);
-    const filteredOnCategory = isCategorySelected
-      ? iconEntries.filter(icon => {
-          const k = grouped.get(category.value);
-          return k.some(l => l.name === icon[0]);
-        })
-      : [];
-    const returnIcons = isCategorySelected ? filteredOnCategory : iconEntries;
-    if (filterString === '') {
-      return returnIcons;
-    }
-
-    return matchSorter(returnIcons, filterString, { keys: ['0'] });
-  }, [filterString, props.icons, category, grouped]);
-
   const noHits = filteredIcons.length === 0;
   const feedbackText =
-    filterString.length > 0
+    searchString.length > 0
       ? `${filteredIcons.length}\u00A0treff på søket ditt`
       : undefined;
 
@@ -121,7 +146,7 @@ const IconList: React.FC<IconListProps> = props => {
             label="Søk etter ikon"
             feedback={feedbackText}
             variant={noHits ? 'error' : 'info'}
-            value={filterString}
+            value={searchString}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setFilterString(e.target.value)
             }
@@ -139,7 +164,7 @@ const IconList: React.FC<IconListProps> = props => {
         <GridItem small={6} medium={4}>
           <SearchableDropdown
             label="Kategori"
-            items={categories}
+            items={() => categories}
             selectedItem={category}
             onChange={setCategory}
           />
@@ -157,7 +182,7 @@ const IconList: React.FC<IconListProps> = props => {
             </Switch>
           </div>
           <ul className="icon-list">
-            {filteredIcons.map(([iconName, Icon]: any) => (
+            {filteredIcons.map(({ name: iconName, component: Icon }) => (
               <li
                 className={classNames('icon-list__item', {
                   'eds-contrast': isContrast,
