@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.7...@entur/dropdown@5.0.8) (2023-09-08)
+
+### Bug Fixes
+
+- **multiselect:** fix Select all duplicating selected items if items is a function ([6511017](https://bitbucket.org/enturas/design-system/commits/6511017d8b26684493d42b5c2052c9fcc7dc0bb5))
+
 ## [5.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.6...@entur/dropdown@5.0.7) (2023-09-08)
 
 **Note:** Version bump only for package @entur/dropdown
