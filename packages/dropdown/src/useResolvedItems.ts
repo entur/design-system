@@ -65,7 +65,7 @@ export const useResolvedItems = (
       isItemsFunction
         ? (itemsOrItemsResolver as AsyncDropdownItemType)
         : () => Promise.resolve(itemsOrItemsResolver as DropdownItemType[]),
-    [itemsOrItemsResolver, isItemsFunction],
+    [isItemsFunction],
   );
 
   const [{ items, loading }, dispatch] = React.useReducer(reducer, {
