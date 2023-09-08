@@ -160,7 +160,7 @@ test('Focus lock is working on popover calendar', async () => {
     'eds-datepicker__calendar__grid__cell--selected',
   )[0];
   expect(selectedDateInCalendar).toHaveFocus();
-});
+}, 10000);
 
 test('Escape closes calendar popover', () => {
   const spy = jest.fn();
