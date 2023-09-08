@@ -225,8 +225,10 @@ export const MultiSelect = ({
     ]);
 
   const updateListItems = ({ inputValue }: { inputValue?: string }) => {
-    if (typeof initialItems === 'function')
-      fetchItems(inputValue ?? EMPTY_INPUT); // fetch items only if user provides a function as items
+    const shouldRefetchItems = // fetch items only if user provides a function with inputValue argument as items
+      typeof initialItems === 'function' && initialItems.length > 0; // Function.length == number of arguments
+
+    if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
     filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
   };
 

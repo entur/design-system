@@ -43,12 +43,22 @@ export const useMultiselectUtils = ({
     item => item.value !== selectAll.value,
   );
 
-  const allListItemsAreSelected =
-    listItemsWithoutSelectAll.filter(item => !selectedItems.includes(item))
-      .length === 0;
+  const unselectedItemsInListItems = listItemsWithoutSelectAll.filter(
+    listItem =>
+      !selectedItems.some(
+        selectedItem => selectedItem.value === listItem.value,
+      ),
+  );
 
-  const someListItemsAreSelected = listItemsWithoutSelectAll.some(item =>
-    selectedItems.includes(item),
+  const allListItemsAreSelected = !listItemsWithoutSelectAll.some(
+    listItem =>
+      !selectedItems.some(
+        selectedItem => selectedItem.value === listItem.value,
+      ),
+  );
+
+  const someListItemsAreSelected = listItemsWithoutSelectAll.some(listItem =>
+    selectedItems.some(selectedItem => selectedItem.value === listItem.value),
   );
 
   const addClickedItemToSelectedItems = (
@@ -109,20 +119,19 @@ export const useMultiselectUtils = ({
   const selectAllUnselectedItemsInListItems = (
     onChange: (value: NormalizedDropdownItemType[]) => void,
   ) => {
-    onChange([
-      ...selectedItems,
-      ...listItemsWithoutSelectAll.filter(
-        item => !selectedItems.includes(item),
-      ),
-    ]);
+    onChange([...selectedItems, ...unselectedItemsInListItems]);
   };
 
   const unselectAllListItems = (
     onChange: (value: NormalizedDropdownItemType[]) => void,
   ) => {
-    onChange(
-      selectedItems.filter(item => !listItemsWithoutSelectAll.includes(item)),
+    const selectedItemsWithoutItemsInListItems = selectedItems.filter(
+      selectedItem =>
+        !listItemsWithoutSelectAll.some(
+          listItem => listItem.value === selectedItem.value,
+        ),
     );
+    onChange(selectedItemsWithoutItemsInListItems);
   };
 
   return {
