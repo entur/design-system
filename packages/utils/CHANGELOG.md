@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.4...@entur/utils@0.9.5) (2023-09-08)
+
+**Note:** Version bump only for package @entur/utils
+
 ## [0.9.4](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.3...@entur/utils@0.9.4) (2023-08-28)
 
 ### Bug Fixes
