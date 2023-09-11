@@ -163,7 +163,7 @@ export const Dropdown = ({
         {...rest}
       >
         <div
-          className="eds-dropdown__selected-item-button"
+          className="eds-dropdown__selected-item"
           {...getToggleButtonProps({
             id: undefined,
           })}
@@ -171,9 +171,9 @@ export const Dropdown = ({
           {selectedItem?.label ?? (
               <span
                 className={classNames(
-                  'eds-dropdown__selected-item-button__placeholder',
+                  'eds-dropdown__selected-item__placeholder',
                   {
-                    'eds-dropdown__selected-item-button__placeholder--readonly':
+                    'eds-dropdown__selected-item__placeholder--readonly':
                       readOnly,
                   },
                 )}

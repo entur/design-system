@@ -48,6 +48,7 @@ export type BaseFormControlProps = {
   /** Plasserer labelen statisk på toppen av inputfeltet */
   disableLabelAnimation?: boolean;
   /** Setter feedbackText sin rolle til "alert" */
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   ariaAlertOnFeedback?: boolean;
 };
 

@@ -448,17 +448,21 @@ export const MultiSelect = ({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget) inputRef.current?.focus();
+        }}
         readOnly={readOnly}
         variant={variant}
         {...rest}
       >
         <div
-          className={classNames('eds-dropdown__selected-items-and-input', {
-            'eds-dropdown__selected-items-and-input--filled': hasSelectedItems,
-          })}
-          onClick={(e: React.MouseEvent) => {
-            if (e.target === e.currentTarget) inputRef.current?.focus();
-          }}
+          className={classNames(
+            'eds-dropdown--multiselect__selected-items-and-input',
+            {
+              'eds-dropdown--multiselect__selected-items-and-input--filled':
+                hasSelectedItems,
+            },
+          )}
         >
           {selectedItems.length < maxChips ? (
             <>
