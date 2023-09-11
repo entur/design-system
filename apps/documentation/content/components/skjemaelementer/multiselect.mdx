@@ -140,9 +140,12 @@ Se eksempel på dette under [MultiSelect med egendefingert filtreringsfunksjon-e
 
 ### Hente valgalternaltiver fra nettverkskall
 
-Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en funksjon til `items`
+Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en memoisert funksjon til `items`
 i stedet for en liste med valg. Denne funksjonen kan enten være synkron eller asynkron og må enten returnere en
-liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`. `items`-funksjonen kan også bruke `inputValue`
+liste med `NormalizedDropdownItem` direkte eller gjennom et `Promise`. OBS: du må huske å [memoisere funksjonen](https://react.dev/reference/react/useCallback) ved å bruke
+`React.useCallback`, ellers vil den kjøre funksjonen din oftere enn nødvendig!
+
+`items`-funksjonen kan også bruke `inputValue`
 -verdien som sendes inn å gjøre f.eks en query mot et API-et. I disse tilfellene kan prop-en `debounceTimeout` være nyttig hvis du
 ønsker å øke eller minke tiden det ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
 
@@ -222,7 +225,7 @@ eksterne API-et listet opp når data-en er mottatt.
   hideContrastOption
 >
   {() => {
-    const fetchItems = async () => {
+    const fetchItems = React.useCallback(async () => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
@@ -234,7 +237,7 @@ eksterne API-et listet opp når data-en er mottatt.
         console.error('noe galt');
         return [];
       }
-    };
+    }, []);
     const [selected, setSelected] = React.useState([]);
     return (
       <MultiSelect
@@ -260,7 +263,7 @@ at all filtrering skjer gjennom API-kallet.
   hideContrastOption
 >
   {() => {
-    const fetchItems = async inputValue => {
+    const fetchItems = React.useCallback(async inputValue => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
@@ -275,7 +278,7 @@ at all filtrering skjer gjennom API-kallet.
         console.error('noe galt');
         return [];
       }
-    };
+    }, []);
     const [selected, setSelected] = React.useState([]);
     return (
       <MultiSelect
