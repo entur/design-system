@@ -93,6 +93,12 @@ export type MultiSelectProps = {
    */
   clearInputOnSelect?: boolean;
   /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnTab?: boolean;
+  /**
+   * @deprecated
+   * Bruk selectOnTab i stedet
+   *
+   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnBlur?: boolean;
   style?: React.CSSProperties;
   /** Styling som sendes ned til MultiSelect-lista */
@@ -164,6 +170,7 @@ export const MultiSelect = ({
   readOnly = false,
   selectedItems,
   selectOnBlur = false,
+  selectOnTab = false,
   style,
   variant = 'info',
   ariaLabelChosenSingular = 'valgt',
@@ -486,8 +493,16 @@ export const MultiSelect = ({
             placeholder={placeholder}
             className="eds-dropdown__input eds-form-control"
             disabled={readOnly || disabled}
-            {...getInputProps(
-              getDropdownProps({
+            {...getInputProps({
+              onKeyDown: (e: React.KeyboardEvent) => {
+                if (selectOnTab && e.key === 'Tab')
+                  handleListItemClicked({
+                    clickedItem: listItems[highlightedIndex],
+                    onChange,
+                    setLastRemovedItem,
+                  });
+              },
+              ...getDropdownProps({
                 onClick: (e: React.MouseEvent) => {
                   if (!isOpen && isVoiceOverClick(e)) openMenu();
                 },
@@ -495,7 +510,7 @@ export const MultiSelect = ({
                 ref: inputRef,
                 value: inputValue ?? EMPTY_INPUT,
               }),
-            )}
+            })}
           />
         </div>
       </BaseFormControl>

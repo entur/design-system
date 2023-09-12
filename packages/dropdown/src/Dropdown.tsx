@@ -34,6 +34,12 @@ export type DropdownProps = {
    */
   clearable?: boolean;
   /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnTab?: boolean;
+  /**
+   * @deprecated
+   * Bruk selectOnTab i stedet
+   *
+   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnBlur?: boolean;
   /** Deaktiver dropdown-en */
   disabled?: boolean;
@@ -90,6 +96,7 @@ export const Dropdown = ({
   readOnly = false,
   selectedItem,
   selectOnBlur = false,
+  selectOnTab = false,
   style,
   variant = 'info',
   ...rest
@@ -166,6 +173,10 @@ export const Dropdown = ({
           className="eds-dropdown__selected-item-button"
           {...getToggleButtonProps({
             id: undefined,
+            onKeyDown: e => {
+              if (selectOnTab && e.key === 'Tab')
+                onChange?.(normalizedItems[highlightedIndex]);
+            },
           })}
         >
           {selectedItem?.label ?? (
