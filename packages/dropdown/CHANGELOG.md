@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.9-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.8...@entur/dropdown@5.0.9-beta.0) (2023-09-12)
+
+### Bug Fixes
+
+- **multiselect:** fix bug with stale data when fetching items from function ([467b7d7](https://bitbucket.org/enturas/design-system/commits/467b7d73952d0b3b9fdad49c15efaa5c436ce640))
+- **searchable dropdown:** fix visual bug with append ([739bf12](https://bitbucket.org/enturas/design-system/commits/739bf12b2f299c2edd3c9f378213fe1f9607e837))
+
 ## [5.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.7...@entur/dropdown@5.0.8) (2023-09-08)
 
 ### Bug Fixes

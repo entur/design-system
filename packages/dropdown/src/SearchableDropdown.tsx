@@ -17,9 +17,11 @@ import {
   EMPTY_INPUT,
   getA11ySelectionMessage,
   getA11yStatusMessage,
+  isFunctionWithQueryArgument,
   isVoiceOverClick,
   itemToString,
   lowerCaseFilterTest,
+  noFilter,
 } from './utils';
 
 import './Dropdown.scss';
@@ -105,8 +107,10 @@ export const SearchableDropdown = ({
   disabled = false,
   disableLabelAnimation = false,
   feedback,
-  itemFilter = lowerCaseFilterTest,
   items: initialItems,
+  itemFilter = isFunctionWithQueryArgument(initialItems)
+    ? noFilter
+    : lowerCaseFilterTest,
   label,
   labelClearSelectedItem = 'fjern valgt',
   listStyle,
@@ -138,8 +142,9 @@ export const SearchableDropdown = ({
     setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
 
   const updateListItems = ({ inputValue }: { inputValue?: string }) => {
-    if (typeof initialItems === 'function')
-      fetchItems(inputValue ?? EMPTY_INPUT); // fetch items only if user provides a function as items
+    const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
+    if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
+
     filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
   };
 
@@ -168,7 +173,7 @@ export const SearchableDropdown = ({
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.InputBlur:
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
-          filterListItems({ inputValue: EMPTY_INPUT });
+          updateListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
             inputValue: EMPTY_INPUT,
@@ -280,17 +285,13 @@ export const SearchableDropdown = ({
         variant={variant}
         {...rest}
       >
-        {!hideSelectedItem && selectedItem && !inputValue && (
+        {!hideSelectedItem && selectedItem !== null && inputValue === '' && (
           <span
-            className="eds-dropdown__selected-item__wrapper"
+            className="eds-dropdown--searchable__selected-item"
             aria-hidden="true"
+            onClick={() => inputRef.current?.focus()}
           >
-            <span
-              className="eds-dropdown__selected-item"
-              onClick={() => inputRef.current?.focus()}
-            >
-              {selectedItem.label}
-            </span>
+            {selectedItem.label}
           </span>
         )}
         <input

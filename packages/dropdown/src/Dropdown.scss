@@ -3,96 +3,22 @@
 .eds-dropdown {
   &__wrapper {
     position: relative;
-    width: 100%;
-  }
-
-  &__selected-item {
-    display: block;
-    font-size: t.$font-sizes-large;
-    line-height: t.$line-heights-small;
-    margin-right: -(t.$space-medium);
-    padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0
-      t.$space-extra-small2 t.$space-medium;
-    font-family: inherit;
-
-    position: relative;
-    top: 5px;
-
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &__wrapper {
-      position: absolute;
-      max-width: 65%;
-    }
-  }
-
-  &__selected-items-and-input {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    gap: 0.5rem;
-
-    &--filled {
-      padding: 1.25rem 0rem 0.25rem 1rem;
-
-      .eds-dropdown__input {
-        padding: unset;
-        min-height: 1.5rem;
-      }
-
-      .eds-tag-chip {
-        &:focus {
-          box-shadow: t.$shadows-focus;
-        }
-      }
-    }
   }
 
   &__input {
     flex: 1;
-    min-width: 10%;
     min-height: calc(1.5rem + 1.25rem + 0.25rem);
   }
 
-  &.eds-form-control-wrapper {
-    align-items: start;
-
-    &.eds-dropdown--not-filled .eds-input-group__label {
-      font-size: t.$font-sizes-large;
-      position: absolute;
-      line-height: t.$font-sizes-large;
-      height: t.$space-extra-large3;
-      padding: t.$space-default;
-      padding-left: 0;
-      margin-left: t.$space-default;
-      top: -(t.$border-widths-medium);
-      transition: top t.$timings-medium ease-in-out,
-        font-size t.$timings-medium ease-in-out,
-        padding t.$timings-medium ease-in-out,
-        line-height ease-in-out t.$timings-medium;
-    }
-
-    .eds-form-control__prepend {
-      top: 1rem;
-    }
-
-    .eds-form-control__append {
-      top: 0.4rem;
-
-      .eds-loading-dots {
-        height: 2rem;
-      }
-    }
-  }
-
-  &__selected-item-button {
+  &__selected-item {
     cursor: pointer;
 
     flex: 1;
     padding: 1.25rem 1rem 0.25rem;
     min-height: 2.75rem;
+
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 
     &__placeholder {
       color: t.$colors-blues-blue30;
@@ -106,7 +32,51 @@
     }
   }
 
-  &-appendix {
+  &--searchable {
+    &__selected-item {
+      display: block;
+      font-size: t.$font-sizes-large;
+      line-height: t.$line-heights-small;
+      margin-right: -(t.$space-medium);
+      padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0
+        t.$space-extra-small2 t.$space-medium;
+      font-family: inherit;
+
+      position: relative;
+      top: 5px;
+
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &--multiselect {
+    &__selected-items-and-input {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+      gap: 0.5rem;
+      min-width: 0; // needed to avoid overflow in flex child
+
+      &--filled {
+        padding: 1.25rem 0rem 0.25rem 1rem;
+
+        .eds-dropdown__input {
+          padding: unset;
+          min-height: 1.5rem;
+        }
+
+        .eds-tag-chip {
+          &:focus {
+            box-shadow: t.$shadows-focus;
+          }
+        }
+      }
+    }
+  }
+
+  &__appendix {
     display: flex;
     align-items: center;
 
@@ -178,6 +148,38 @@
           border: none;
           outline: none;
         }
+      }
+    }
+  }
+
+  // overrides to input field styling
+  &.eds-form-control-wrapper {
+    align-items: start;
+
+    &.eds-dropdown--not-filled .eds-input-group__label {
+      font-size: t.$font-sizes-large;
+      position: absolute;
+      line-height: t.$font-sizes-large;
+      height: t.$space-extra-large3;
+      padding: t.$space-default;
+      padding-left: 0;
+      margin-left: t.$space-default;
+      top: -(t.$border-widths-medium);
+      transition: top t.$timings-medium ease-in-out,
+        font-size t.$timings-medium ease-in-out,
+        padding t.$timings-medium ease-in-out,
+        line-height ease-in-out t.$timings-medium;
+    }
+
+    .eds-form-control__prepend {
+      top: 1rem;
+    }
+
+    .eds-form-control__append {
+      top: 0.4rem;
+
+      .eds-loading-dots {
+        height: 2rem;
       }
     }
   }

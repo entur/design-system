@@ -20,8 +20,20 @@ export function lowerCaseFilterTest(
   return inputRegex.test(item.label);
 }
 
+export function noFilter(
+  //@ts-expect-error only here to comply with dropdown filter API
+  item: NormalizedDropdownItemType,
+  //@ts-expect-error only here to comply with dropdown filter API
+  input: string | undefined,
+) {
+  return true;
+}
+
 export const itemToString = (item: NormalizedDropdownItemType | null) =>
   item ? item.label : '';
+
+export const isFunctionWithQueryArgument = (object: any) =>
+  typeof object === 'function' && object.length > 0;
 
 /* end general utils */
 /* start multiselect utils */

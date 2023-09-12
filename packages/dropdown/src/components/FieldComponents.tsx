@@ -94,7 +94,7 @@ export const FieldAppend: React.FC<{
 }) => {
   if (loading) {
     return (
-      <div className={'eds-dropdown-appendix__toggle-button--loading-dots'}>
+      <div className={'eds-dropdown__appendix__toggle-button--loading-dots'}>
         <LoadingDots aria-label={loadingText} />
       </div>
     );
@@ -103,7 +103,7 @@ export const FieldAppend: React.FC<{
     return null;
   }
   return (
-    <div className="eds-dropdown-appendix">
+    <div className="eds-dropdown__appendix">
       {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
         <>
           <ClearableButton
@@ -111,7 +111,7 @@ export const FieldAppend: React.FC<{
             focusable={true}
             labelClearSelectedItems={labelClearSelectedItems}
           />
-          <div className="eds-dropdown-appendix__divider" />
+          <div className="eds-dropdown__appendix__divider" />
         </>
       )}
       <ToggleButton
@@ -141,10 +141,10 @@ const ClearableButton = ({
       aria-hidden="true"
       placement="top"
       content={labelClearSelectedItems}
-      className="eds-dropdown-appendix__clear-button__tooltip"
+      className="eds-dropdown__appendix__clear-button__tooltip"
     >
       <IconButton
-        className="eds-dropdown-appendix__clear-button"
+        className="eds-dropdown__appendix__clear-button"
         type="button"
         tabIndex={focusable ? 0 : 1}
         onClick={onClear}
@@ -176,8 +176,8 @@ const ToggleButton = ({
   return (
     <IconButton
       {...getToggleButtonProps({
-        className: classNames('eds-dropdown-appendix__toggle-button', {
-          'eds-dropdown-appendix__toggle-button--open': isOpen,
+        className: classNames('eds-dropdown__appendix__toggle-button', {
+          'eds-dropdown__appendix__toggle-button--open': isOpen,
         }),
         'aria-labelledby': undefined,
       })}

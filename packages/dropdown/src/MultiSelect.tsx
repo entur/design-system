@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import classNames from 'classnames';
 import {
   useMultipleSelection,
@@ -24,9 +30,11 @@ import {
   getA11yRemovalMessage,
   getA11ySelectionMessage,
   getA11yStatusMessage,
+  isFunctionWithQueryArgument,
   isVoiceOverClick,
   itemToString,
   lowerCaseFilterTest,
+  noFilter,
   useMultiselectUtils,
 } from './utils';
 
@@ -155,8 +163,10 @@ export const MultiSelect = ({
   disabled = false,
   feedback,
   hideSelectAll = false,
-  itemFilter = lowerCaseFilterTest,
   items: initialItems,
+  itemFilter = isFunctionWithQueryArgument(initialItems)
+    ? noFilter
+    : lowerCaseFilterTest,
   label,
   labelAllItemsSelected = 'Alle valgt',
   labelClearAllItems = 'Fjern valgte',
@@ -168,7 +178,7 @@ export const MultiSelect = ({
   onChange = () => undefined,
   placeholder,
   readOnly = false,
-  selectedItems,
+  selectedItems = [],
   selectOnBlur = false,
   selectOnTab = false,
   style,
@@ -187,6 +197,14 @@ export const MultiSelect = ({
     NormalizedDropdownItemType | undefined
   >(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    //@ts-expect-error this is done to aid developers debug wrong prop usage
+    if (rest.selectedItem !== undefined)
+      console.warn(
+        "Incorrect 'selectedItem' prop found, did you mean to use 'selectedItems?",
+      );
+  }, []);
 
   const {
     items: normalizedItems,
@@ -232,10 +250,9 @@ export const MultiSelect = ({
     ]);
 
   const updateListItems = ({ inputValue }: { inputValue?: string }) => {
-    const shouldRefetchItems = // fetch items only if user provides a function with inputValue argument as items
-      typeof initialItems === 'function' && initialItems.length > 0; // Function.length == number of arguments
-
+    const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
     if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
+
     filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
   };
 
@@ -342,6 +359,7 @@ export const MultiSelect = ({
         }
         // reset input value when leaving input field
         case useCombobox.stateChangeTypes.InputBlur: {
+          updateListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
             inputValue: EMPTY_INPUT,
@@ -437,17 +455,21 @@ export const MultiSelect = ({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget) inputRef.current?.focus();
+        }}
         readOnly={readOnly}
         variant={variant}
         {...rest}
       >
         <div
-          className={classNames('eds-dropdown__selected-items-and-input', {
-            'eds-dropdown__selected-items-and-input--filled': hasSelectedItems,
-          })}
-          onClick={(e: React.MouseEvent) => {
-            if (e.target === e.currentTarget) inputRef.current?.focus();
-          }}
+          className={classNames(
+            'eds-dropdown--multiselect__selected-items-and-input',
+            {
+              'eds-dropdown--multiselect__selected-items-and-input--filled':
+                hasSelectedItems,
+            },
+          )}
         >
           {selectedItems.length < maxChips ? (
             <>
