@@ -424,7 +424,7 @@ describe('MultiSelect', () => {
     ).not.toBeInTheDocument();
   });
 
-  test('selects item with tab when selectOnBlur is true', async () => {
+  test('selects item with tab when selectOnTab is true', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
@@ -433,7 +433,7 @@ describe('MultiSelect', () => {
         items={testItems}
         selectedItems={[]}
         onChange={onChange}
-        selectOnBlur={true}
+        selectOnTab={true}
       />,
     );
 
