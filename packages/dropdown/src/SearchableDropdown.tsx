@@ -59,6 +59,12 @@ export type SearchableDropdownProps = {
   /** Deaktiver dropdown-en */
   disabled?: boolean;
   /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
+  selectOnTab?: boolean;
+  /**
+   * @deprecated
+   * Bruk selectOnTab i stedet
+   *
+   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnBlur?: boolean;
   /** Gjør dropdown-en til å kun kunne leses
    * @default false
@@ -111,6 +117,7 @@ export const SearchableDropdown = ({
   readOnly = false,
   selectedItem: value,
   selectOnBlur = false,
+  selectOnTab = false,
   style,
   variant = 'info',
   ...rest
@@ -299,6 +306,10 @@ export const SearchableDropdown = ({
             },
             onFocus: () => {
               setHideSelectedItem(true);
+            },
+            onKeyDown: e => {
+              if (selectOnTab && e.key === 'Tab')
+                onChange?.(listItems[highlightedIndex]);
             },
             ref: inputRef,
           })}

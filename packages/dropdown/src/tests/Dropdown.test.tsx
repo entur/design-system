@@ -137,7 +137,7 @@ describe('Dropdown', () => {
     expect(dropdownList).not.toBeVisible();
   });
 
-  test('selects item with tab when selectOnBlur is true', async () => {
+  test('selects item with tab when selectOnTab is true', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
@@ -146,7 +146,7 @@ describe('Dropdown', () => {
         items={testItems}
         selectedItem={null}
         onChange={onChange}
-        selectOnBlur={true}
+        selectOnTab={true}
       />,
     );
 

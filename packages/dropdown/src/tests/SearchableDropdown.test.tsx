@@ -251,7 +251,7 @@ describe('SearchableDropdown', () => {
     ).not.toBeInTheDocument();
   });
 
-  test('selects item with tab when selectOnBlur is true', async () => {
+  test('selects item with tab when selectOnTab is true', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
     render(
@@ -260,7 +260,7 @@ describe('SearchableDropdown', () => {
         items={testItems}
         selectedItem={null}
         onChange={onChange}
-        selectOnBlur={true}
+        selectOnTab={true}
       />,
     );
 
