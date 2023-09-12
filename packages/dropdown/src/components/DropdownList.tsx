@@ -124,7 +124,7 @@ export const DropdownList = ({
           <span>
             {item.icons.map(Icon => (
               <Icon
-                key={Icon.displayName}
+                key={item.label + item.value + Icon.displayName}
                 inline
                 className="eds-dropdown__list__item__icon"
               />
