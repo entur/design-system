@@ -13,6 +13,7 @@ import { now } from '@internationalized/date';
 
 import {
   TimePicker,
+  SimpleTimePicker,
   NativeTimePicker,
   nativeDateToTimeValue,
   nativeDateToDateValue,
@@ -69,7 +70,11 @@ I tillegg er det noen ledetekster og `aria-label`-er som må sendes inn manuelt.
 
 #### TimePicker tilpasset USA
 
-<Playground defaultShowEditor hideContrastOption>
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ justifyContent: 'start', width: 'fit-content' }}
+>
   {() => {
     const [time, setTime] = React.useState(now('Europe/Oslo'));
     return (
@@ -134,7 +139,11 @@ timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: str
 
 TimePicker er fungerer like bra på mobile enheter også, men ønsker man en OS-spesifikk opplevelse på mobilen kan `<NativeTimePicker />` benyttes. Her må dubenytte `Date`-objektet til Javascript eller [konvertere et TimeValue-objekt](#bruk-sammen-datepicker--bruk-med-js-date).
 
-<Playground defaultShowEditor hideContrastOption>
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ justifyContent: 'start', width: 'fit-content' }}
+>
   {() => {
     const [nativeTime, setNativeTime] = React.useState(new Date());
     return (
@@ -156,12 +165,51 @@ Hvert tidssegment er tilgjengelig med tastaturet og alle interagerbare elementer
 
 Hvis du endrer `locale` (dvs. språk) må du sende inn verdier på riktig språk til `leftArrowButtonAriaLabel`- og `rightArrowButtonAriaLabel`-props-ene.
 
+### Mer kompakt fritektsvariant (B2B)
+
+For grensesnitt der et kompakt skjemafelt og mulighet til å kopiere og lime inn fullstendige tidspunkt er viktig kan man bruke `SimpleTimePicker`. Denne varianten inneholder
+mindre funksjonalitet enn `TimePicker` – den har f.eks ikke `locale` og fullstendig UU-støtte –, men bygger på samme tidsobjekt. Man interagerer med feltet ved å skrive inn tidspunkt på et av følgende format (t: time, m: minutt, s:sekund): tmm, ttmm, tt:mm, tmmss, ttmmss, t:mm:ss, tt:mm:ss.
+Hvis du ønsker å vise sekunder i feltet kan du bruke `showSeconds`-prop-en.
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ alignItems: 'start' }}
+>
+  {() => {
+    const [time, setTime] = React.useState(now('Europe/Oslo'));
+    return (
+      <>
+        <SimpleTimePicker
+          label="B2B time"
+          selectedTime={time}
+          onChange={time => setTime(time)}
+          style={{ width: '7rem' }}
+        />
+        <br />
+        <SimpleTimePicker
+          label="B2B time"
+          selectedTime={time}
+          onChange={time => setTime(time)}
+          showSeconds
+          style={{ width: '8.5rem' }}
+        />
+      </>
+    );
+  }}
+</Playground>
+
 ## Komponenter
 
 ### <TimePicker /\>
 
 <ImportStatement imports="TimePicker" />
 <Props of={TimePicker} />
+
+### <SimpleTimePicker /\>
+
+<ImportStatement imports="SimpleTimePicker" />
+<Props of={SimpleTimePicker} />
 
 ### <NativeTimePicker /\>
 
