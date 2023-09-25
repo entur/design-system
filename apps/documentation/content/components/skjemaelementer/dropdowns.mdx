@@ -24,7 +24,7 @@ import { Link as LinkText, CodeText } from '@entur/typography';
 
 <PageHeader />
 
-<Playground style={{ overflow: 'visible', margin: 'auto', width: '50%' }}>
+<Playground style={{ overflow: 'visible', margin: 'auto', width: '70%' }}>
   {() => {
     const [selectedTraveler, setSelectedTraveler] = React.useState(null);
     const [selectedCountry, setSelectedCountry] = React.useState(null);
@@ -186,6 +186,8 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 - i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
 - `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
   {' '}
+  {' '}
+  {' '}
   <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
     {`
 type onChange = (
@@ -214,7 +216,7 @@ Kommer snart
 Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -236,7 +238,7 @@ Her finner du en vanlig, ikke-søkbar dropdown med standard-props.
 Her finner du en vanlig, søkbar dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -259,7 +261,7 @@ I dette eksempelet brukes en fuzzyMatch-implementasjon til å utføre en mer til
 filtrering av de tilgjengelige valgene.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -285,7 +287,7 @@ Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API.
 eksterne API-et listet opp når data-en er mottatt.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -322,7 +324,7 @@ og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn
 eksterne API-et listet opp med query bassert på det som skrives inn.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >
@@ -360,7 +362,7 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
 Her finner du en native dropdown med standard-props.
 
 <Playground
-  style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
   defaultShowEditor
   hideContrastOption
 >

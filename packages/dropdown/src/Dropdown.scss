@@ -3,11 +3,24 @@
 .eds-dropdown {
   &__wrapper {
     position: relative;
+    width: 100%;
+    min-width: 6rem;
+    max-width: 100%;
   }
 
   &__input {
     flex: 1;
+    width: 0; // this makes the input act as if it has 'fit-content'
     min-height: calc(1.5rem + 1.25rem + 0.25rem);
+
+    &--hidden {
+      flex: 0;
+    }
+
+    &__wrapper {
+      flex: 1 1 auto;
+      display: flex;
+    }
   }
 
   &__selected-item {
@@ -15,7 +28,7 @@
 
     flex: 1;
     padding: 1.25rem 1rem 0.25rem;
-    min-height: 2.75rem;
+    min-height: 3rem;
 
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -34,20 +47,23 @@
 
   &--searchable {
     &__selected-item {
-      display: block;
-      font-size: t.$font-sizes-large;
-      line-height: t.$line-heights-small;
-      margin-right: -(t.$space-medium);
-      padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0
-        t.$space-extra-small2 t.$space-medium;
-      font-family: inherit;
-
       position: relative;
       top: 5px;
 
+      flex: 1;
       overflow-x: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+
+      font-size: t.$font-sizes-large;
+      line-height: t.$line-heights-small;
+      margin-right: -(t.$space-medium);
+      padding: 1.25rem 0rem 0.25rem 1rem;
+
+      font-family: inherit;
+
+      &--hidden {
+        flex: 0;
+      }
     }
   }
 
