@@ -25,6 +25,7 @@ const partnerIcons = [
   'BrakarIcon',
   'BrakarNoTextIcon',
   'FarteIcon',
+  'FlybussenIcon',
   'GOAIcon',
   'HykeIcon',
   'InnlandstrafikkIcon',
