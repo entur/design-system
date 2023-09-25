@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.10](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.7...@entur/dropdown@5.0.10) (2023-09-25)
+
+### Bug Fixes
+
+- **dropdown:** fix duplicate key error when using same icon twice in dropdowns ([cb82091](https://bitbucket.org/enturas/design-system/commits/cb820910002ffa830a553dd0b2a13f26723497df))
+- **dropdowns:** change selectOnBlur to selectOnTab to improve name precision ([e6a0ad1](https://bitbucket.org/enturas/design-system/commits/e6a0ad142fb88a11290f2b51e81ac72594bd5483))
+- **multiselect:** fix bug with stale data when fetching items from function ([467b7d7](https://bitbucket.org/enturas/design-system/commits/467b7d73952d0b3b9fdad49c15efaa5c436ce640))
+- **multiselect:** fix Select all duplicating selected items if items is a function ([6511017](https://bitbucket.org/enturas/design-system/commits/6511017d8b26684493d42b5c2052c9fcc7dc0bb5))
+- **searchable dropdown:** fix onChange not picking up selection bug ([ab6ff25](https://bitbucket.org/enturas/design-system/commits/ab6ff2582482cf671a3f746c5991cb4f391f1544))
+- **searchable dropdown:** fix visual bug with append ([739bf12](https://bitbucket.org/enturas/design-system/commits/739bf12b2f299c2edd3c9f378213fe1f9607e837))
+
 ## [5.0.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.9-beta.0...@entur/dropdown@5.0.9) (2023-09-12)
 
 ### Bug Fixes
