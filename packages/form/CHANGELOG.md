@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.20](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.17...@entur/form@7.0.20) (2023-09-25)
+
+### Bug Fixes
+
+- **searchable dropdown:** fix visual bug with append ([739bf12](https://bitbucket.org/enturas/design-system/commits/739bf12b2f299c2edd3c9f378213fe1f9607e837))
+
 ## [7.0.19](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.17...@entur/form@7.0.19) (2023-09-25)
 
 ### Bug Fixes

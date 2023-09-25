@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.5.0...@entur/icons@6.8.0) (2023-09-25)
+
+### Features
+
+- **icons:** add Flybussen icon ([784bd25](https://bitbucket.org/enturas/design-system/commits/784bd2571f124a1a834621faf89f815a0008a684))
+
 # [6.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.5.0...@entur/icons@6.7.0) (2023-09-25)
 
 ### Features
