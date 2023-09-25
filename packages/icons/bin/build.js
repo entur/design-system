@@ -18,6 +18,54 @@ const deprecatedIcons = new Map([
   ['WalkingIcon', 'WalkIcon'],
 ]);
 
+// Should always be white
+const partnerIcons = [
+  'AKTIcon',
+  'AtBIcon',
+  'BrakarIcon',
+  'BrakarNoTextIcon',
+  'FarteIcon',
+  'GOAIcon',
+  'HykeIcon',
+  'InnlandstrafikkIcon',
+  'KolumbusIcon',
+  'OstfoldIcon',
+  'RuterIcon',
+  'RuterNoTextIcon',
+  'SJIcon',
+  'SkyssIcon',
+  'VKTIcon',
+  'VyIcon',
+  // Mobility Partners
+  'BergenBysykkelIcon',
+  'BoltIcon',
+  'KolumbusBysykkelIcon',
+  'LimeIcon',
+  'MoveAboutIcon',
+  'OsloBysykkelIcon',
+  'TierIcon',
+  'TrondheimBysykkelIcon',
+  'VoiIcon',
+  'ZvippIcon',
+];
+// Icons with "special colors", so no color exchange for those
+const outliers = [
+  'NorwayIcon',
+  'UKIcon',
+  'SwedenIcon',
+  'DenmarkIcon',
+  'SamiIcon',
+  'LogoNegativeIcon',
+  'LogoPositiveIcon',
+  'AmericanExpressIcon',
+  'MastercardIcon',
+  'VippsIcon',
+  'VippsLogoIcon',
+  'VisaIcon',
+  'CompassNeedleIcon',
+  ...partnerIcons,
+];
+
 const components = traverse('src/svgs').map(svgPath => {
   // Check for .DS_Store to clarify confusing error message
   if (svgPath.endsWith('.DS_Store')) {
@@ -179,54 +227,6 @@ function createSvgrConfig(native = false, componentName) {
       [colors.transport.default.cableway.toUpperCase()]: 'currentColor',
     };
   } else {
-    // Should always be white
-    const partnerIcons = [
-      'AKTIcon',
-      'AtBIcon',
-      'BrakarIcon',
-      'BrakarNoTextIcon',
-      'FarteIcon',
-      'GOAIcon',
-      'HykeIcon',
-      'InnlandstrafikkIcon',
-      'KolumbusIcon',
-      'OstfoldIcon',
-      'RuterIcon',
-      'RuterNoTextIcon',
-      'SJIcon',
-      'SkyssIcon',
-      'VKTIcon',
-      'VyIcon',
-      // Mobility Partners
-      'BergenBysykkelIcon',
-      'BoltIcon',
-      'KolumbusBysykkelIcon',
-      'LimeIcon',
-      'MoveAboutIcon',
-      'OsloBysykkelIcon',
-      'TierIcon',
-      'TrondheimBysykkelIcon',
-      'VoiIcon',
-      'ZvippIcon',
-    ];
-    // Icons with "special colors", so no color exchange for those
-    const outliers = [
-      'NorwayIcon',
-      'UKIcon',
-      'SwedenIcon',
-      'DenmarkIcon',
-      'SamiIcon',
-      'LogoNegativeIcon',
-      'LogoPositiveIcon',
-      'AmericanExpressIcon',
-      'MastercardIcon',
-      'VippsIcon',
-      'VippsLogoIcon',
-      'VisaIcon',
-      'CompassNeedleIcon',
-      ...partnerIcons,
-    ];
-
     /** Get icon-name, and if it has a transport color, add it as class to component */
     const lowerCaseName = componentName
       .substring(0, componentName.length - 4)
