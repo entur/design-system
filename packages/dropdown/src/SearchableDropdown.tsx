@@ -115,7 +115,7 @@ export const SearchableDropdown = ({
   labelClearSelectedItem = 'fjern valgt',
   listStyle,
   loadingText,
-  onChange,
+  onChange = () => undefined,
   placeholder,
   prepend,
   readOnly = false,
@@ -192,7 +192,7 @@ export const SearchableDropdown = ({
               openMenu();
 
               if (isOpen && changes.highlightedIndex !== undefined) {
-                onChange?.(listItems[changes.highlightedIndex]);
+                onChange(listItems[changes.highlightedIndex]);
               }
             }
           } else {
@@ -232,7 +232,7 @@ export const SearchableDropdown = ({
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
-          onChange?.(clickedItem ?? null);
+          onChange(clickedItem ?? null);
       }
     },
     // Accessibility
@@ -244,7 +244,7 @@ export const SearchableDropdown = ({
   });
 
   const handleOnClear = () => {
-    onChange?.(null);
+    onChange(null);
     setInputValue(EMPTY_INPUT);
     inputRef.current?.focus();
     updateListItems({ inputValue });
@@ -310,7 +310,7 @@ export const SearchableDropdown = ({
             },
             onKeyDown: e => {
               if (selectOnTab && e.key === 'Tab')
-                onChange?.(listItems[highlightedIndex]);
+                onChange(listItems[highlightedIndex]);
             },
             ref: inputRef,
           })}
