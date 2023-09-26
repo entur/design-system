@@ -24,7 +24,9 @@ import { Link as LinkText, CodeText } from '@entur/typography';
 
 <PageHeader />
 
-<Playground style={{ overflow: 'visible', margin: 'auto', width: '70%' }}>
+<Playground
+  style={{ overflow: 'visible', margin: 'auto', width: 'max(15rem, 40%)' }}
+>
   {() => {
     const [selectedTraveler, setSelectedTraveler] = React.useState(null);
     const [selectedCountry, setSelectedCountry] = React.useState(null);
@@ -185,8 +187,6 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 
 - i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
 - `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
-  {' '}
-  {' '}
   {' '}
   <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
     {`
