@@ -126,7 +126,7 @@ export const SearchableDropdown = ({
   variant = 'info',
   ...rest
 }: SearchableDropdownProps) => {
-  const [hideSelectedItem, setHideSelectedItem] = useState(false);
+  const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -285,17 +285,20 @@ export const SearchableDropdown = ({
         variant={variant}
         {...rest}
       >
-        {!hideSelectedItem && selectedItem !== null && inputValue === '' && (
-          <span
-            className="eds-dropdown--searchable__selected-item"
-            aria-hidden="true"
-            onClick={() => inputRef.current?.focus()}
-          >
-            {selectedItem.label}
-          </span>
-        )}
+        <span
+          className={classNames('eds-dropdown--searchable__selected-item', {
+            'eds-dropdown--searchable__selected-item--hidden':
+              !showSelectedItem,
+          })}
+          aria-hidden="true"
+          onClick={() => inputRef.current?.focus()}
+        >
+          {selectedItem?.label}
+        </span>
         <input
-          className="eds-dropdown__input eds-form-control"
+          className={classNames('eds-dropdown__input eds-form-control', {
+            'eds-dropdown__input--hidden': showSelectedItem,
+          })}
           disabled={readOnly || disabled}
           placeholder={selectedItem?.label ?? placeholder}
           {...getInputProps({
@@ -303,10 +306,10 @@ export const SearchableDropdown = ({
               if (!isOpen && isVoiceOverClick(e)) openMenu();
             },
             onBlur: () => {
-              setHideSelectedItem(false);
+              if (selectedItem !== null) setShowSelectedItem(true);
             },
             onFocus: () => {
-              setHideSelectedItem(true);
+              setShowSelectedItem(false);
             },
             onKeyDown: e => {
               if (selectOnTab && e.key === 'Tab')
