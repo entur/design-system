@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.17...@entur/datepicker@8.1.0) (2023-09-29)
+
+### Bug Fixes
+
+- **simple time picker:** change width for field and add left adjustment option for clock icon ([5912064](https://bitbucket.org/enturas/design-system/commits/591206423c7ed50f782626b1c71b753c901a874a))
+- **simple time picker:** clean up props and add padding prop ([3fd4077](https://bitbucket.org/enturas/design-system/commits/3fd407707d371399dbf3678ec92b4517b3257e26))
+- **simple time picker:** fix wrong type for append and prepend ([2fdb561](https://bitbucket.org/enturas/design-system/commits/2fdb5611a2827e0eef6cf82a2e45e5990e3f98f3))
+
+### Features
+
+- **datepicker:** add new SimpleTimePicker component ([80fac4d](https://bitbucket.org/enturas/design-system/commits/80fac4da489fe7cfee8e3accc7c1228042264123))
+
 ## [8.0.17](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.0.13...@entur/datepicker@8.0.17) (2023-09-25)
 
 **Note:** Version bump only for package @entur/datepicker
