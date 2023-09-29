@@ -7,11 +7,10 @@ export * from './DatePicker';
 export * from './TimePicker';
 export * from './shared';
 
-export type {
-  DateValue,
+export {
   CalendarDate,
   CalendarDateTime,
   ZonedDateTime,
   Time,
 } from '@internationalized/date';
-export type { TimeValue } from '@react-types/datepicker';
+export type { TimeValue, DateValue } from '@react-types/datepicker';

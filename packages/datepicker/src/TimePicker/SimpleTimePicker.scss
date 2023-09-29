@@ -1,0 +1,21 @@
+.eds-simple-timepicker {
+  --input-width: 7rem;
+
+  &--hide-clock {
+    --input-width: 5rem;
+  }
+  &--show-seconds {
+    --input-width: 8.5rem;
+
+    &.eds-simple-timepicker--hide-clock {
+      --input-width: 6.5rem;
+    }
+  }
+
+  width: var(--input-width);
+
+  .eds-form-control__append--tooltip {
+    margin-top: -0.2rem;
+    margin-left: -0.5rem;
+  }
+}
