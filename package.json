@@ -12,6 +12,7 @@
     "build:documentation": "lerna run --scope @entur/documentation build",
     "build:code-playground": "lerna run --scope @entur/code-playground build",
     "gc:format": "cz",
+    "graduate-prerelease-packages": "HUSKY=0 lerna publish --conventional-commits  --conventional-graduate",
     "lint": "lerna run lint",
     "lint:documentation": "lerna run --scope @entur/documentation lint -- --report-unused-disable-directives",
     "lint:packages": "lerna run lint --no-private",
