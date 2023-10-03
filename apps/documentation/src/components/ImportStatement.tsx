@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCurrentDoc } from 'docz';
-import { CopyablePreformattedText } from '~/components/CopyablePreformattedText';
 import { useSettings } from '~/components/SettingsContext';
+import { CopyableText } from '@entur/alert';
 
 type Props = {
   imports: string;
@@ -19,8 +19,8 @@ export const ImportStatement: React.FC<Props> = ({ imports, packageName }) => {
     packageName || npmPackage
   }';`;
   return (
-    <CopyablePreformattedText successMessage="Import-statementet ble kopiert til utklippstavla.">
+    <CopyableText successMessage="Import-statementet ble kopiert til utklippstavla.">
       {importText}
-    </CopyablePreformattedText>
+    </CopyableText>
   );
 };
