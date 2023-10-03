@@ -1,6 +1,7 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
-.copyable-text {
+.eds-copyable-text,
+.eds-contrast .eds-copyable-text {
   appearance: none;
   background: none;
   border: 0;
@@ -15,9 +16,35 @@
   text-align: left;
   width: 100%;
 
-  > * {
+  &__preformatted-text {
     margin: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: border-color t.$timings-fast;
+
+    &:hover {
+      border-color: t.$colors-greys-grey40;
+    }
   }
+
+  &__displayed-text {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+  }
+
+  &__button {
+    margin: -0.5rem; // remove extra spacing added by icon button padding
+    margin-left: 0.5rem;
+
+    &:hover {
+      background-color: t.$colors-blues-blue40;
+      color: t.$colors-brand-white;
+    }
+  }
+
   &:focus {
     outline-offset: t.$outline-offsets-focus;
     outline: none;
@@ -25,19 +52,5 @@
     .eds-contrast & {
       box-shadow: t.$shadows-focus-contrast;
     }
-  }
-}
-
-.copyable-text__icon {
-  display: none;
-  position: absolute;
-  right: t.$space-large;
-  top: t.$space-medium;
-  bottom: t.$space-medium;
-
-  .copyable-text:hover &,
-  .copyable-text:focus & {
-    display: block;
-    color: t.$colors-brand-blue;
   }
 }
