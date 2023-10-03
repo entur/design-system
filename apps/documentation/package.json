@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "3.0.25",
+  "version": "3.0.26",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -20,7 +20,7 @@
     "@artsy/fresnel": "^1.9.0",
     "@emotion/core": "10.0.28",
     "@entur/a11y": "^0.2.70",
-    "@entur/alert": "^0.14.13",
+    "@entur/alert": "^0.15.0",
     "@entur/button": "^3.1.4",
     "@entur/chip": "^0.6.48",
     "@entur/datepicker": "^8.1.0",

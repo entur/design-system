@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.26](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.25...@entur/documentation@3.0.26) (2023-10-03)
+
+**Note:** Version bump only for package @entur/documentation
+
 ## [3.0.25](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.0.24...@entur/documentation@3.0.25) (2023-09-29)
 
 ### Bug Fixes

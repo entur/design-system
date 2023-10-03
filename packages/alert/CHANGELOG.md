@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.14.13...@entur/alert@0.15.0) (2023-10-03)
+
+### Features
+
+- **copyable text:** update copyable text design ([13a97b0](https://bitbucket.org/enturas/design-system/commits/13a97b066346625cbbc5fc0c2efcda8dd0be451c))
+
 ## [0.14.13](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.14.11...@entur/alert@0.14.13) (2023-09-25)
 
 **Note:** Version bump only for package @entur/alert

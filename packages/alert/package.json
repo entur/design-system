@@ -1,6 +1,6 @@
 {
   "name": "@entur/alert",
-  "version": "0.14.13",
+  "version": "0.15.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/alert.esm.js",
