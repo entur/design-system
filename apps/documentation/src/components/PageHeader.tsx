@@ -1,11 +1,11 @@
 import React from 'react';
 import { useCurrentDoc } from 'docz';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
-import { CopyablePreformattedText } from '~/components/CopyablePreformattedText';
 import { useSettings } from './SettingsContext';
 import { PackageChangelog } from '../gatsby-theme-docz/components/PackageChangelog';
 import './PageHeader.scss';
 import { NpmTag } from '../gatsby-theme-docz/components/NpmTag';
+import { CopyableText } from '@entur/alert';
 
 type Props = {
   category?: string;
@@ -58,13 +58,19 @@ const PageHeader: React.FC<Props> = ({
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
         <div>
-          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <CopyablePreformattedText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+            }}
+          >
+            <CopyableText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
               {installText}
-            </CopyablePreformattedText>
-            <CopyablePreformattedText successMessage="CSS-importen ble kopiert til utklippstavla.">
+            </CopyableText>
+            <CopyableText successMessage="CSS-importen ble kopiert til utklippstavla.">
               {cssImport}
-            </CopyablePreformattedText>
+            </CopyableText>
           </div>
         </div>
       )}
