@@ -35,17 +35,15 @@ export function useSortableData<T>(
   };
 
   const tableSortedAscending = [...tableData].sort((a: any, b: any) => {
-    const valueOfA = get(a, sortConfig.key, a);
-    const valueOfB = get(b, sortConfig.key, b);
+    const valueOfA = get(a, sortConfig.key, a).toString();
+    const valueOfB = get(b, sortConfig.key, b).toString();
 
-    const comparableAValue =
-      typeof valueOfA === 'string' ? valueOfA.toLowerCase() : valueOfA;
-    const comparableBValue =
-      typeof valueOfB === 'string' ? valueOfB.toLowerCase() : valueOfB;
+    const stringComparator = new Intl.Collator(['no', 'en'], {
+      numeric: true,
+      sensitivity: 'base',
+    });
 
-    if (comparableAValue < comparableBValue) return -1;
-    if (comparableAValue > comparableBValue) return 1;
-    return 0;
+    return stringComparator.compare(valueOfA, valueOfB);
   });
 
   const getSortedData: () => T[] = () => {
