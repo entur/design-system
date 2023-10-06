@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.9.0...@entur/icons@6.10.0) (2023-10-06)
+
+### Features
+
+- **icons:** add CalendarPeriodeIcon and CalendarPeriodeFilledIcon ([a5c4d2e](https://bitbucket.org/enturas/design-system/commits/a5c4d2e656e1f05dfcda7c91720a4a5b5389316f))
+
 # [6.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.8.0...@entur/icons@6.9.0) (2023-10-06)
 
 ### Features

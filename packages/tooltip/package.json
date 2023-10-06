@@ -1,6 +1,6 @@
 {
   "name": "@entur/tooltip",
-  "version": "2.6.30",
+  "version": "2.6.31",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tooltip.esm.js",
@@ -27,9 +27,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/button": "^3.1.5",
-    "@entur/icons": "^6.9.0",
-    "@entur/layout": "^2.1.44",
+    "@entur/button": "^3.1.6",
+    "@entur/icons": "^6.10.0",
+    "@entur/layout": "^2.1.45",
     "@entur/tokens": "^3.10.0",
     "@entur/utils": "^0.9.5",
     "@popperjs/core": "^2.10.1",
