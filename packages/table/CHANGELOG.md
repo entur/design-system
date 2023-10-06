@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.22](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.21...@entur/table@4.6.22) (2023-10-06)
+
+### Bug Fixes
+
+- **use sortable data:** make useSortableData work with alphanumeric values in sortable tables ([a3c9eb3](https://bitbucket.org/enturas/design-system/commits/a3c9eb3ee9f8a4362a1b702ba2f32c57e70ad722))
+
 ## [4.6.21](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.18...@entur/table@4.6.21) (2023-09-25)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.8.0...@entur/icons@6.9.0) (2023-10-06)
+
+### Features
+
+- **icons:** add AssignToMe and AssignToMeFilled icon to UI category ([65a08ad](https://bitbucket.org/enturas/design-system/commits/65a08ad8931c19e80710f707c2a52e23a88768b5))
+
 # [6.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.5.0...@entur/icons@6.8.0) (2023-09-25)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.52...@entur/menu@4.2.0) (2023-10-06)
+
+### Features
+
+- **stepper:** improve accessibility ([7f22374](https://bitbucket.org/enturas/design-system/commits/7f223745fa2165fa10c1bf5efb113c686b471797))
+
 ## [4.1.52](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.1.50...@entur/menu@4.1.52) (2023-09-25)
 
 **Note:** Version bump only for package @entur/menu
