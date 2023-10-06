@@ -1,82 +1,99 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Label } from '@entur/typography';
+
+import { VisuallyHidden } from '@entur/a11y';
 
 import './Stepper.scss';
 
 export type StepperProps = {
-  /** Det nåværende steget. */
-  activeIndex: number;
-  /** Oppdater state ved klikk. */
-  onStepClick: (index: number) => void;
-  /** Liste av steg. */
+  /** Liste med steg-navn i rekkefølge. */
   steps: string[];
-  /** Ekstra klassenavn. */
-  className?: string;
+  /** Det nåværende steget. 0-indeksert */
+  activeIndex: number;
   /** Om stepperen skal være et interaktivt-navigasjonselement eller ikke
    * @default false
    */
   interactive?: boolean;
+  /** Kalles med indeksen til det klikkede steget.
+   * Fungerer kun hvis Stepper-en er interaktiv */
+  onStepClick?: (index: number) => void;
   /** Om stepper skal vise indeksering av hvilket trinn man er på
    * @default true
    */
   showStepperIndex?: boolean;
-  as?: 'button' | React.ElementType;
+  /** Ekstra klassenavn. */
+  className?: string;
+  /** Skjermlesertekst for ordet 'steg' som i '_steg_ 1 av 3'
+   * @default 'Steg'
+   */
+  ariaLabelStep?: string;
+  /** Skjermlesertekst for ordet 'av' som i 'steg 1 _av_ 3'
+   * @defaul 'av'
+   */
+  ariaLabelOf?: string;
+  /** Skjermlesertekst for ordet fullført
+   * @default 'fullført'
+   */
+  ariaLabelCompleted?: string;
+  /** Skjermlesertekst for oppsummering av hele stepper-en
+   * @default `Stegindikator med ${steps.length} steg, du er på steg ${activeIndex + 1} ${steps[activeIndex]},`
+   */
+  ariaLabelSummary?: string;
   [key: string]: any;
 };
 
 export const Stepper: React.FC<StepperProps> = ({
-  className,
-  onStepClick,
-  steps,
   activeIndex,
+  className,
   interactive = false,
+  onStepClick,
   showStepperIndex = true,
+  steps,
+  ariaLabelStep = 'Steg',
+  ariaLabelOf = 'av',
+  ariaLabelCompleted = 'fullført',
+  ariaLabelSummary = `Stegindikator med ${steps.length} steg, du er på steg ${
+    activeIndex + 1
+  } ${steps[activeIndex]},`,
   ...rest
 }) => {
-  const Element = interactive ? 'button' : 'div';
   return (
-    <div className={classNames('eds-stepper', className)} {...rest}>
+    <ol
+      className={classNames('eds-stepper', className)}
+      aria-label={ariaLabelSummary}
+      {...rest}
+    >
       {steps.map((step, i) => {
-        const isActive = i === activeIndex;
-        const hasBeenActive = activeIndex > i;
-        const props = interactive ? { onClick: () => onStepClick(i) } : {};
+        const isCurrent = i === activeIndex;
+        const isInteractive = interactive && activeIndex > i;
+        const Element = isInteractive ? 'button' : 'div';
+        const isCompleted = activeIndex > i;
+        const currentStepSummary = `${ariaLabelStep} ${i + 1} ${ariaLabelOf} ${
+          steps.length
+        }, ${step} ${isCompleted ? `, ${ariaLabelCompleted}` : ''}`;
+        const props = isInteractive ? { onClick: () => onStepClick?.(i) } : {};
+
         return (
-          <Element
-            key={step}
-            className={classNames('eds-stepper__item__container', {
-              'eds-stepper__item__container--non-interactive': !interactive,
-            })}
-            aria-current={isActive ? 'step' : undefined}
-            aria-label={`Steg ${i + 1} av ${steps.length}, ${step} ${
-              hasBeenActive ? ', fullført' : ''
-            }`}
-            {...props}
-          >
-            <div
+          <li key={step}>
+            <Element
               className={classNames(
-                'eds-stepper__item__square',
-                { 'eds-stepper__item__square--active': isActive },
-                { 'eds-stepper__item__square--inactive': activeIndex < i },
-                { 'eds-stepper__item__square--has-been': hasBeenActive },
+                'eds-stepper__step',
+                { 'eds-stepper__step--active': isCurrent },
+                { 'eds-stepper__step--completed': isCompleted },
+                { 'eds-stepper__step--interactive': isInteractive },
               )}
-            />
-            <Label
-              className={classNames(
-                'eds-stepper__item__label',
-                {
-                  'eds-stepper__item__label--has-been': hasBeenActive,
-                },
-                {
-                  'eds-stepper__item__label--active': isActive,
-                },
-              )}
+              aria-current={isCurrent ? 'step' : undefined}
+              {...props}
             >
-              {showStepperIndex && i + 1 + '.'} {step}
-            </Label>
-          </Element>
+              <div className="eds-stepper__step__line" aria-hidden={true} />
+              <span className="eds-stepper__step__label" aria-hidden={true}>
+                {showStepperIndex && i + 1 + '.'} {step}
+              </span>
+              <VisuallyHidden>{currentStepSummary}</VisuallyHidden>
+            </Element>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 };

@@ -5,7 +5,7 @@ route: /komponenter/navigasjon/stepper
 parent: Komponenter
 menu: Navigasjon
 npmPackage: menu
-tags: stepper
+tags: stepper, steg, trinn, stegindikator
 ---
 
 import { Props } from 'docz';
@@ -13,33 +13,50 @@ import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
 import { Playground } from '~/components/playground/Playground';
 import { Stepper } from '@entur/menu';
+import { IconButton } from '@entur/button';
+import { Label } from '@entur/typography';
 
 <PageHeader />
 
 <Playground style={{ marginTop: '2rem' }}>
   {() => {
-    let [activeIndex, setActiveIndex] = React.useState(0);
+    const [activeIndex, setActiveIndex] = React.useState(0);
     const steps = ['Betaling', 'Kvittering', 'Billettering'];
     return (
-      <Stepper
-        steps={steps}
-        activeIndex={activeIndex}
-        onStepClick={setActiveIndex}
-      />
+      <>
+        <Label>Vanlig stepper</Label>
+        <Stepper steps={steps} activeIndex={1} />
+        <Label>Interaktiv stepper</Label>
+        <Stepper
+          steps={steps}
+          activeIndex={activeIndex}
+          onStepClick={setActiveIndex}
+          interactive
+        />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <IconButton
+            onClick={() =>
+              setActiveIndex(activeIndex > 0 ? activeIndex - 1 : 0)
+            }
+          >
+            Tilbake
+          </IconButton>
+          <IconButton
+            onClick={() =>
+              setActiveIndex(activeIndex < 2 ? activeIndex + 1 : 2)
+            }
+          >
+            Frem
+          </IconButton>
+        </div>
+      </>
     );
   }}
 </Playground>
 
-## Komponenter
-
-### Stepper
-
-<ImportStatement imports="Stepper" />
-<Props of={Stepper} />
+## Retningslinjer for bruk
 
 `<Stepper />`-komponenten skal brukes til skjemaer som krever trinnvis utfylling. Det skal i utgangspunktet ikke være mulig å hoppe _framover_ i skjemaet uten å ha fylt inn de foregående stegene først.
-
-## Retningslinjer for bruk
 
 Stepper er en visuell fremstilling av brukerens fremgang gjennom et sett med trinn.
 En trinnliste som fungerer som en veiviser for å hjelpe brukerne med å fullføre en spesifikk oppgave i
@@ -52,3 +69,10 @@ Brukeren kan navigere seg bakover ved å klikke på overskriften på et fullfør
 - **Fullført**: Vises når trinnet er utført og brukeren oppnår det som kreves for å fortsette til neste trinn.
 - **Aktiv**: Viser det nåværende trinnet, men ikke fullført enda.
 - **Inaktiv**: Viser trinnene som ikke er nådd enda.
+
+## Komponenter
+
+### <Stepper /\>
+
+<ImportStatement imports="Stepper" />
+<Props of={Stepper} />
