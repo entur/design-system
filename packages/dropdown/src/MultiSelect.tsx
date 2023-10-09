@@ -130,10 +130,6 @@ export type MultiSelectProps = {
    */
   ariaLabelRemoveSelected?: string;
   /** Tekst for skjemleser for å indikere at et element er valgt
-   * @default "valgt"
-   */
-  ariaLabelChosenSingular?: string;
-  /** Tekst for skjemleser for å indikere at et element er valgt
    * @default "valgte"
    */
   ariaLabelChosenPlural?: string;
@@ -149,8 +145,13 @@ export type MultiSelectProps = {
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
-  /** Tekst for skjemleser for å indikere at et element i listen er valgt
-   * @default ", valgt element, trykk for å fjerne"
+  /** Ord for at et element er valgt i entall
+   * eks. 'Element 1, _valgt_'
+   * @default 'valgt'
+   */
+  ariaLabelChosenSingular?: string;
+  /** Tekst for skjermleser som beskriver statusen til et element som valgt
+   * @default ', valgt element, trykk for å fjerne'
    */
   ariaLabelSelectedItem?: string;
 };
@@ -183,13 +184,13 @@ export const MultiSelect = ({
   selectOnTab = false,
   style,
   variant = 'info',
-  ariaLabelChosenSingular = 'valgt',
+  ariaLabelChosenSingular,
   ariaLabelChosenPlural = 'valgte',
   ariaLabelCloseList,
   ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
   ariaLabelOpenList,
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
-  ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
+  ariaLabelSelectedItem,
   ...rest
 }: MultiSelectProps) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
@@ -548,6 +549,7 @@ export const MultiSelect = ({
         listStyle={listStyle}
         loading={loading}
         loadingText={loadingText}
+        noMatchesText={noMatchesText}
         selectAllCheckboxState={selectAllCheckboxState}
         selectAllItem={selectAll}
         selectedItems={selectedItems}

@@ -51,7 +51,9 @@ export type DropdownProps = {
   feedback?: string;
   /** Tekst eller ikon som kommer før dropdown-en */
   prepend?: React.ReactNode;
-  /** En tekst som beskriver hva som skjer når man venter på items */
+  /** En tekst som beskriver hva som skjer når man venter på items
+   * @default 'Laster inn …'
+   */
   loadingText?: string;
   /** Om man skal ha mulighet for å nullstille Dropdown-en
    * @default "fjern valgt"
@@ -75,11 +77,22 @@ export type DropdownProps = {
    * @default "Åpne liste med valg"
    */
   ariaLabelOpenList?: string;
+  /** Ord for at et element er valgt i entall
+   * eks. 'Element 1, _valgt_'
+   * @default 'valgt'
+   */
+  ariaLabelChosenSingular?: string;
+  /** Tekst for skjermleser som beskriver statusen til et element som valgt
+   * @default ', valgt element, trykk for å fjerne'
+   */
+  ariaLabelSelectedItem?: string;
 };
 
 export const Dropdown = ({
+  ariaLabelChosenSingular,
   ariaLabelCloseList,
   ariaLabelOpenList,
+  ariaLabelSelectedItem,
   className,
   clearable = false,
   disabled = false,
@@ -196,6 +209,8 @@ export const Dropdown = ({
         </div>
       </BaseFormControl>
       <DropdownList
+        ariaLabelChosenSingular={ariaLabelChosenSingular}
+        ariaLabelSelectedItem={ariaLabelSelectedItem}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
