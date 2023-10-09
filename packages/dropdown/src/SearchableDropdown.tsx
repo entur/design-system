@@ -68,6 +68,10 @@ export type SearchableDropdownProps = {
    *
    * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
   selectOnBlur?: boolean;
+  /** Tekst som kommer opp når det ikke er noe treff på filtreringsøket
+   * @default "Ingen treff for søket"
+   */
+  noMatchesText?: string;
   /** Gjør dropdown-en til å kun kunne leses
    * @default false
    */
@@ -96,11 +100,22 @@ export type SearchableDropdownProps = {
    * @default "Åpne liste med valg"
    */
   ariaLabelOpenList?: string;
+  /** Ord for at et element er valgt i entall
+   * eks. 'Element 1, _valgt_'
+   * @default "valgt"
+   */
+  ariaLabelChosenSingular?: string;
+  /** Tekst for skjermleser som beskriver statusen til et element som valgt
+   * @default ", valgt element, trykk for å fjerne"
+   */
+  ariaLabelSelectedItem?: string;
 };
 
 export const SearchableDropdown = ({
+  ariaLabelChosenSingular,
   ariaLabelCloseList,
   ariaLabelOpenList,
+  ariaLabelSelectedItem,
   className,
   clearable = true,
   debounceTimeout,
@@ -115,6 +130,7 @@ export const SearchableDropdown = ({
   labelClearSelectedItem = 'fjern valgt',
   listStyle,
   loadingText,
+  noMatchesText,
   onChange = () => undefined,
   placeholder,
   prepend,
@@ -320,11 +336,14 @@ export const SearchableDropdown = ({
         />
       </BaseFormControl>
       <DropdownList
+        ariaLabelChosenSingular={ariaLabelChosenSingular}
+        ariaLabelSelectedItem={ariaLabelSelectedItem}
         isOpen={isOpen}
         listItems={listItems}
         listStyle={listStyle}
         loading={loading}
         loadingText={loadingText}
+        noMatchesText={noMatchesText}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
