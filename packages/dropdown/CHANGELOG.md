@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.15](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.14...@entur/dropdown@5.0.15) (2023-10-09)
+
+### Bug Fixes
+
+- **dropdowns:** add missing text props for screen readers and visuals ([ac39e1a](https://bitbucket.org/enturas/design-system/commits/ac39e1a4bd225ad9421ea50e4bb064291e15b9a8))
+
 ## [5.0.14](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.13...@entur/dropdown@5.0.14) (2023-10-06)
 
 **Note:** Version bump only for package @entur/dropdown
