@@ -132,9 +132,11 @@
       border-color: t.$colors-blues-blue20;
     }
 
-    .eds-table--sticky-header--active & {
+    .eds-table--sticky-header & {
       position: sticky;
       top: 0;
+    }
+    .eds-table--sticky-header--active & {
       box-shadow: 0px 10px 8px -10px rgba(0, 0, 0, 0.15);
       border-bottom: none;
     }
