@@ -1,6 +1,6 @@
 {
   "name": "@entur/icons",
-  "version": "6.11.0",
+  "version": "6.11.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
