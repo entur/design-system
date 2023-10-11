@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.10.0...@entur/icons@6.11.0) (2023-10-11)
+
+### Features
+
+- **icons:** add missing UI icons ([1551ce1](https://bitbucket.org/enturas/design-system/commits/1551ce104fac29c64e1f8920d41c90ae9d58eb9f))
+
 # [6.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.9.0...@entur/icons@6.10.0) (2023-10-06)
 
 ### Features

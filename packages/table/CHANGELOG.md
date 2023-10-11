@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.24](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.23...@entur/table@4.6.24) (2023-10-11)
+
+### Bug Fixes
+
+- **table:** fix visual bug with sticky header in firefox ([a5f4f65](https://bitbucket.org/enturas/design-system/commits/a5f4f65c28d7c31c5ca49103a9f512a515430a22))
+
 ## [4.6.23](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.22...@entur/table@4.6.23) (2023-10-06)
 
 **Note:** Version bump only for package @entur/table
