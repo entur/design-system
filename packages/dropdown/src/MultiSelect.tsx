@@ -488,7 +488,7 @@ export const MultiSelect = ({
                   disabled={disabled}
                   getSelectedItemProps={getSelectedItemProps}
                   index={index}
-                  key={selectedItem.value}
+                  key={selectedItem?.value}
                   readOnly={readOnly}
                   removeSelectedItem={() => {
                     handleListItemClicked({
@@ -518,12 +518,17 @@ export const MultiSelect = ({
             disabled={readOnly || disabled}
             {...getInputProps({
               onKeyDown: (e: React.KeyboardEvent) => {
-                if (selectOnTab && e.key === 'Tab')
-                  handleListItemClicked({
-                    clickedItem: listItems[highlightedIndex],
-                    onChange,
-                    setLastRemovedItem,
-                  });
+                if (selectOnTab && e.key === 'Tab') {
+                  const highlitedItem = listItems[highlightedIndex];
+                  // we don't want to clear selection with tab
+                  if (highlitedItem) {
+                    handleListItemClicked({
+                      clickedItem: highlitedItem,
+                      onChange,
+                      setLastRemovedItem,
+                    });
+                  }
+                }
               },
               ...getDropdownProps({
                 onClick: (e: React.MouseEvent) => {

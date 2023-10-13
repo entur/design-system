@@ -328,8 +328,13 @@ export const SearchableDropdown = ({
               setShowSelectedItem(false);
             },
             onKeyDown: e => {
-              if (selectOnTab && e.key === 'Tab')
-                onChange(listItems[highlightedIndex]);
+              if (selectOnTab && e.key === 'Tab') {
+                const highlitedItem = listItems[highlightedIndex];
+                if (highlitedItem) {
+                  // we don't want to clear selection with tab
+                  onChange?.(highlitedItem);
+                }
+              }
             },
             ref: inputRef,
           })}

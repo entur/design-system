@@ -59,11 +59,13 @@ export const DropdownList = ({
   const isNoMatches =
     !loading &&
     (listItems.length === 0 ||
-      (listItems.length === 1 && listItems[0].value === selectAllItem?.value));
+      (listItems?.length === 1 &&
+        listItems?.[0]?.value === selectAllItem?.value));
   const isItemSelected = (item: NormalizedDropdownItemType) =>
     selectedItems.some(
       selectedItem =>
-        selectedItem.value === item.value && selectedItem.label === item.label,
+        selectedItem?.value === item?.value &&
+        selectedItem?.label === item?.label,
     );
 
   const ariaLabelSelectAll = () => {
@@ -124,7 +126,7 @@ export const DropdownList = ({
           <span>
             {item.icons.map(Icon => (
               <Icon
-                key={item.label + item.value + Icon.displayName}
+                key={item?.label + item?.value + Icon?.displayName}
                 inline
                 className="eds-dropdown__list__item__icon"
               />
@@ -153,7 +155,7 @@ export const DropdownList = ({
 
           return (
             <li
-              key={item.label + item.value}
+              key={item?.label + item?.value}
               className={classNames('eds-dropdown__list__item', {
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
@@ -162,7 +164,7 @@ export const DropdownList = ({
                   !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
-                key: item.label + item.value,
+                key: item?.label + item?.value,
                 item,
                 index,
               })}
