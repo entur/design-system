@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.18](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.17...@entur/dropdown@5.0.18) (2023-10-13)
+
+### Bug Fixes
+
+- **dropdown:** fix selectOnTab clearing selection when tabing out ([27ac046](https://bitbucket.org/enturas/design-system/commits/27ac046b59631ec3eb57ce0be5c7be5ee05352b2))
+
 ## [5.0.17](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.16...@entur/dropdown@5.0.17) (2023-10-11)
 
 **Note:** Version bump only for package @entur/dropdown
