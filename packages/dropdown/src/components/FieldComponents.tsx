@@ -92,13 +92,6 @@ export const FieldAppend: React.FC<{
   onClear,
   selectedItems,
 }) => {
-  if (loading) {
-    return (
-      <div className={'eds-dropdown__appendix__toggle-button--loading-dots'}>
-        <LoadingDots aria-label={loadingText} />
-      </div>
-    );
-  }
   if (disabled) {
     return null;
   }
@@ -114,14 +107,20 @@ export const FieldAppend: React.FC<{
           <div className="eds-dropdown__appendix__divider" />
         </>
       )}
-      <ToggleButton
-        aria-hidden={ariaHiddenToggleButton}
-        ariaLabelCloseList={ariaLabelCloseList}
-        ariaLabelOpenList={ariaLabelOpenList}
-        getToggleButtonProps={getToggleButtonProps}
-        isOpen={isOpen}
-        focusable={focusable}
-      />
+      {!loading ? (
+        <ToggleButton
+          aria-hidden={ariaHiddenToggleButton}
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          getToggleButtonProps={getToggleButtonProps}
+          isOpen={isOpen}
+          focusable={focusable}
+        />
+      ) : (
+        <div className={'eds-dropdown__appendix__toggle-button--loading-dots'}>
+          <LoadingDots aria-label={loadingText} />
+        </div>
+      )}
     </div>
   );
 };
