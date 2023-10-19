@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.19](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.18...@entur/dropdown@5.0.19) (2023-10-19)
+
+### Bug Fixes
+
+- **dropdowns:** fix visual and keyboard bugs when loading items ([5676095](https://bitbucket.org/enturas/design-system/commits/56760957ea6b4f3e842d966bfd633d6073ca4716))
+
 ## [5.0.18](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.17...@entur/dropdown@5.0.18) (2023-10-13)
 
 ### Bug Fixes
