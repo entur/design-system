@@ -168,6 +168,11 @@ export const SearchableDropdown = ({
     filterListItems({ inputValue });
   }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const inputHasFocus =
+    typeof document !== 'undefined'
+      ? inputRef?.current === document?.activeElement
+      : false;
+
   const stateReducer = React.useCallback(
     (
       _,
@@ -187,14 +192,20 @@ export const SearchableDropdown = ({
         // empty input to show selected item and reset dropdown list on item selection
         case useCombobox.stateChangeTypes.ItemClick:
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.InputBlur:
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
+        case useCombobox.stateChangeTypes.InputBlur: {
           updateListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
             inputValue: EMPTY_INPUT,
           };
         }
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+          if (!inputHasFocus) setShowSelectedItem(true);
+          updateListItems({ inputValue: EMPTY_INPUT });
+          return {
+            ...changes,
+            inputValue: EMPTY_INPUT,
+          };
         // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
         case useCombobox.stateChangeTypes.InputChange: {
           const leadingWhitespaceTest = /^\s+/g;
@@ -264,6 +275,7 @@ export const SearchableDropdown = ({
     setInputValue(EMPTY_INPUT);
     inputRef.current?.focus();
     updateListItems({ inputValue });
+    setShowSelectedItem(false);
   };
 
   return (
@@ -272,6 +284,18 @@ export const SearchableDropdown = ({
       style={style}
     >
       <BaseFormControl
+        className="eds-dropdown"
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        prepend={prepend}
+        readOnly={readOnly}
+        variant={variant}
+        {...rest}
         append={
           <FieldAppend
             ariaLabelCloseList={ariaLabelCloseList}
@@ -288,18 +312,6 @@ export const SearchableDropdown = ({
             selectedItems={[selectedItem]}
           />
         }
-        className="eds-dropdown"
-        disabled={disabled}
-        disableLabelAnimation={disableLabelAnimation}
-        feedback={feedback}
-        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
-        label={label}
-        labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
-        prepend={prepend}
-        readOnly={readOnly}
-        variant={variant}
-        {...rest}
       >
         <span
           className={classNames('eds-dropdown--searchable__selected-item', {
@@ -309,7 +321,7 @@ export const SearchableDropdown = ({
           aria-hidden="true"
           onClick={() => inputRef.current?.focus()}
         >
-          {selectedItem?.label}
+          {showSelectedItem ? selectedItem?.label : ''}
         </span>
         <input
           className={classNames('eds-dropdown__input eds-form-control', {
