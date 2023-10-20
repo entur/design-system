@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.4...@entur/datepicker@8.1.5) (2023-10-20)
+
+### Bug Fixes
+
+- **datepicker:** fix height bug ([9eb7d4c](https://bitbucket.org/enturas/design-system/commits/9eb7d4cb71f439cd60c46d203453e657f4239295))
+
 ## [8.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.3...@entur/datepicker@8.1.4) (2023-10-11)
 
 **Note:** Version bump only for package @entur/datepicker
