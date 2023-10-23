@@ -71,6 +71,7 @@ export const Badge: BadgeComponent = React.forwardRef(
     }
 
     const classList = classNames(
+      className,
       'eds-badge',
       { 'eds-badge--invisible': invisible, 'eds-badge--show-zero': showZero },
       `eds-badge--variant-${variant}`,
