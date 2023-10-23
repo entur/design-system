@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.48](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.47...@entur/layout@2.1.48) (2023-10-23)
+
+### Bug Fixes
+
+- **badge:** fix className prop not being applied ([6a602b0](https://bitbucket.org/enturas/design-system/commits/6a602b06de5dbdc1cb8cda1147d0071102faf2ad))
+
 ## [2.1.47](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.46...@entur/layout@2.1.47) (2023-10-11)
 
 **Note:** Version bump only for package @entur/layout

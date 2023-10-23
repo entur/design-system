@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.10.0...@entur/tokens@3.11.0) (2023-10-23)
+
+### Features
+
+- **transport tokens:** add new color to taxi transport ([110f02b](https://bitbucket.org/enturas/design-system/commits/110f02b2c96e2ca39619dbf316b33a479cc5315b))
+
 # [3.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.9.0...@entur/tokens@3.10.0) (2023-07-18)
 
 ### Features

@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.7.17",
+  "version": "1.7.18",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
@@ -27,12 +27,12 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.70",
-    "@entur/button": "^3.1.8",
-    "@entur/icons": "^6.11.1",
-    "@entur/layout": "^2.1.47",
-    "@entur/tokens": "^3.10.0",
-    "@entur/typography": "^1.8.14",
+    "@entur/a11y": "^0.2.71",
+    "@entur/button": "^3.1.9",
+    "@entur/icons": "^6.11.2",
+    "@entur/layout": "^2.1.48",
+    "@entur/tokens": "^3.11.0",
+    "@entur/typography": "^1.8.15",
     "@entur/utils": "^0.9.5",
     "@reach/dialog": "^0.16.0",
     "classnames": "^2.3.1",
