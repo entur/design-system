@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.12.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.11.2...@entur/icons@6.12.0) (2023-10-30)
+
+### Features
+
+- **UI icons:** add new LostAndFound icon in normal and filled variant ([f4f258e](https://bitbucket.org/enturas/design-system/commits/f4f258e58546e983afc1c1ad0adb4589edb0ca8a))
+
 ## [6.11.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.11.1...@entur/icons@6.11.2) (2023-10-23)
 
 **Note:** Version bump only for package @entur/icons
