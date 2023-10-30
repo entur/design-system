@@ -6,7 +6,7 @@ export type SecondaryButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
    * @default false
    */

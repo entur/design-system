@@ -10,7 +10,7 @@ type ButtonBaseProps = {
   /** Størrelsen på knappen
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
    * @default false
    */
@@ -27,6 +27,10 @@ type ButtonBaseProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
+  /** Et HTML-element eller en React-komponent som komponenten tar utgangspunkt i for å lage denne knappevarianten
+   * @default "button"
+   */
+  as?: string | React.ElementType;
   /**
    * Tekst som leses opp på skjermleser (nødvendig når knappetekst mangler)
    */

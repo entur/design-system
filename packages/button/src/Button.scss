@@ -6,6 +6,9 @@ a.eds-button {
   &--variant-tertiary {
     padding: t.$space-extra-small2 t.$space-default;
   }
+  &--size-small {
+    padding: t.$space-extra-small2 t.$space-default;
+  }
   &--size-large {
     padding: t.$space-default;
   }
@@ -54,6 +57,12 @@ a.eds-button {
   }
 
   // Size
+  &--size-small {
+    min-width: 5.75rem;
+    height: 2rem;
+    font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-large;
+  }
   &--size-large {
     min-width: 11.75rem;
     height: 3.75rem;
