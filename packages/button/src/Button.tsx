@@ -4,9 +4,12 @@ import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './Button.scss';
 
+/** @deprecated use variant="secondary" size="small" instead */
+const tertiary = 'tertiary';
+
 type ButtonBaseProps = {
   /** Farge og uttrykk på knappen */
-  variant: 'primary' | 'secondary' | 'success' | 'negative' | 'tertiary';
+  variant: 'primary' | 'secondary' | 'success' | 'negative' | typeof tertiary;
   /** Størrelsen på knappen
    * @default 'medium'
    */
