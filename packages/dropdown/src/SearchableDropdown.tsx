@@ -340,7 +340,7 @@ export const SearchableDropdown = ({
               setShowSelectedItem(false);
             },
             onKeyDown: e => {
-              if (selectOnTab && e.key === 'Tab') {
+              if (selectOnTab && isOpen && e.key === 'Tab') {
                 const highlitedItem = listItems[highlightedIndex];
                 if (highlitedItem) {
                   // we don't want to clear selection with tab

@@ -187,7 +187,7 @@ export const Dropdown = ({
           {...getToggleButtonProps({
             id: undefined,
             onKeyDown: e => {
-              if (selectOnTab && e.key === 'Tab') {
+              if (selectOnTab && isOpen && e.key === 'Tab') {
                 // we don't want to clear selection with tab
                 const highlitedItem = normalizedItems[highlightedIndex];
                 if (highlitedItem) {

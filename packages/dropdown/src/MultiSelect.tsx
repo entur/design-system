@@ -518,7 +518,7 @@ export const MultiSelect = ({
             disabled={readOnly || disabled}
             {...getInputProps({
               onKeyDown: (e: React.KeyboardEvent) => {
-                if (selectOnTab && e.key === 'Tab') {
+                if (selectOnTab && isOpen && e.key === 'Tab') {
                   const highlitedItem = listItems[highlightedIndex];
                   // we don't want to clear selection with tab
                   if (highlitedItem) {
