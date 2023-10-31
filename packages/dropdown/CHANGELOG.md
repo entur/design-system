@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.22](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.21...@entur/dropdown@5.0.22) (2023-10-31)
+
+### Bug Fixes
+
+- **dropdown:** fix selectOnTab bug when tab-ing after selecting with enter ([164bfe9](https://bitbucket.org/enturas/design-system/commits/164bfe988f1f7ff8ab8e15f4b21ef0be1da50d91))
+
 ## [5.0.21](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.20...@entur/dropdown@5.0.21) (2023-10-30)
 
 ### Bug Fixes
