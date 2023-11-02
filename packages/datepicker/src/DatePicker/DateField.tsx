@@ -71,7 +71,8 @@ export type DateFieldProps = {
 export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
   (
     {
-      selectedDate: value,
+      selectedDate,
+      onChange,
       label,
       locale: customLocale,
       showTimeZone,
@@ -99,7 +100,8 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       ...rest,
       locale: customLocale ?? locale,
       createCalendar,
-      value: value === null ? undefined : value,
+      value: selectedDate,
+      onChange,
       hideTimeZone: !showTimeZone,
       granularity: showTime ? 'minute' : granularity,
       minValue,

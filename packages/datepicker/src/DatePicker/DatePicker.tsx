@@ -108,7 +108,7 @@ export type DatePickerProps<DateType extends DateValue> = {
 >;
 
 export const DatePicker = <DateType extends DateValue>({
-  selectedDate: value,
+  selectedDate,
   onChange,
   locale,
   disabled: isDisabled,
@@ -139,7 +139,7 @@ export const DatePicker = <DateType extends DateValue>({
     ...rest,
     minValue,
     maxValue,
-    value: value === null ? undefined : value,
+    value: selectedDate,
     onChange,
     granularity: showTime ? 'minute' : rest.granularity,
   });
@@ -167,13 +167,6 @@ export const DatePicker = <DateType extends DateValue>({
     ],
   });
 
-  const onChangeCalendar = (newSelectedDate: DateValue) => {
-    // Necessary to avoid state update on unmounted component
-    requestAnimationFrame(() => {
-      calendarProps.onChange && calendarProps.onChange(newSelectedDate);
-    });
-  };
-
   useOnClickOutside([calendarRef], () => {
     state.setOpen(false);
   });
@@ -188,7 +181,8 @@ export const DatePicker = <DateType extends DateValue>({
     disabled: calendarProps.isDisabled,
     navigationDescription: navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
-    onChange: onChangeCalendar,
+    selectedDate,
+    onChange,
     granularity: showTime ? 'minute' : rest.granularity,
   };
 
@@ -250,7 +244,8 @@ export const DatePicker = <DateType extends DateValue>({
         >
           <DateField
             {...fieldProps}
-            selectedDate={state.value}
+            selectedDate={selectedDate}
+            onChange={onChange}
             label={rest.label}
             labelProps={labelProps}
             showTime={showTime}

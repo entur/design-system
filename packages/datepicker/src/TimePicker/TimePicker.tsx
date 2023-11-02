@@ -92,7 +92,7 @@ export const TimePicker = <TimeType extends TimeValue>({
     onChange,
     label: label,
     locale,
-    value: selectedTime === null ? undefined : selectedTime,
+    value: selectedTime,
     hideTimeZone: !showTimeZone,
     isDisabled: disabled,
     ...rest,
@@ -130,11 +130,11 @@ export const TimePicker = <TimeType extends TimeValue>({
   };
 
   const addMinutesToSelectedTime = (minutes: number) => {
-    state.value &&
-      state.setValue(
-        state.value?.add({
+    selectedTime !== null &&
+      onChange(
+        selectedTime.add({
           minutes: minutes,
-        }),
+        }) as MappedTimeValue<TimeType>,
       );
   };
 
