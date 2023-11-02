@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.28-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.27...@entur/table@4.6.28-beta.0) (2023-11-02)
+
+### Bug Fixes
+
+- **sortable table:** fix sort crash when one or more column value is null ([b5b1382](https://bitbucket.org/enturas/design-system/commits/b5b1382c242f05803b3092c7a7a15acae480c2d6))
+
 ## [4.6.27](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.26...@entur/table@4.6.27) (2023-10-30)
 
 **Note:** Version bump only for package @entur/table
