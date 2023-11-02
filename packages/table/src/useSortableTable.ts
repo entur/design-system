@@ -35,8 +35,8 @@ export function useSortableData<T>(
   };
 
   const tableSortedAscending = [...tableData].sort((a: any, b: any) => {
-    const valueOfA = get(a, sortConfig.key, a).toString();
-    const valueOfB = get(b, sortConfig.key, b).toString();
+    const valueOfA: string = get(a, sortConfig.key, a)?.toString() ?? '';
+    const valueOfB: string = get(b, sortConfig.key, b)?.toString() ?? '';
 
     const stringComparator = new Intl.Collator(['no', 'en'], {
       numeric: true,
