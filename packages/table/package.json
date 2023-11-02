@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.6.28-beta.0",
+  "version": "4.6.28",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
