@@ -37,15 +37,15 @@ test('Util function correctly converts JS Date to Date- and TimeValues', () => {
   const withDateOnly = nativeDateToDateValue(dateObject, true);
   const dateWithoutTimeZone = nativeDateToDateValue(dateObject);
 
-  expect(dateWithTimeZoneAndOffset.toString()).toEqual(
+  expect(dateWithTimeZoneAndOffset?.toString()).toEqual(
     '1997-07-10T10:00:00-04:00[America/Los_Angeles]',
   );
-  expect(dateWithTimeZoneOnly.toString()).toEqual(
+  expect(dateWithTimeZoneOnly?.toString()).toEqual(
     '1997-07-10T03:00:00-07:00[America/Los_Angeles]',
   );
-  expect(withTimeOnly.toString()).toEqual('10:00:00');
-  expect(withDateOnly.toString()).toEqual('1997-07-10');
-  expect(dateWithoutTimeZone.toString()).toEqual('1997-07-10T10:00:00');
+  expect(withTimeOnly?.toString()).toEqual('10:00:00');
+  expect(withDateOnly?.toString()).toEqual('1997-07-10');
+  expect(dateWithoutTimeZone?.toString()).toEqual('1997-07-10T10:00:00');
 });
 
 test('util function correctly converts from any Date or TimeValue to JS Date', () => {
@@ -59,35 +59,38 @@ test('util function correctly converts from any Date or TimeValue to JS Date', (
   );
   const time = parseTime(timeString.substring(0, 5));
   const calendarDate = parseDate(dateString);
+  const nullValue = null;
 
-  expect(timeOrDateValueToNativeDate(zonedDateTime).toISOString()).toEqual(
+  expect(timeOrDateValueToNativeDate(zonedDateTime)?.toISOString()).toEqual(
     '1997-07-10T10:00:00.000Z',
   );
-  expect(timeOrDateValueToNativeDate(calendarDateTime).toISOString()).toEqual(
+  expect(timeOrDateValueToNativeDate(calendarDateTime)?.toISOString()).toEqual(
     '1997-07-10T10:00:00.000Z',
   );
   expect(
-    timeOrDateValueToNativeDate(calendarDateTime, timeZone).toISOString(),
+    timeOrDateValueToNativeDate(calendarDateTime, timeZone)?.toISOString(),
   ).toEqual('1997-07-10T17:00:00.000Z');
-  expect(timeOrDateValueToNativeDate(time).toLocaleTimeString('no-NO')).toEqual(
-    '10:00:00',
-  );
-  expect(timeOrDateValueToNativeDate(calendarDate).toISOString()).toEqual(
+  expect(
+    timeOrDateValueToNativeDate(time)?.toLocaleTimeString('no-NO'),
+  ).toEqual('10:00:00');
+  expect(timeOrDateValueToNativeDate(calendarDate)?.toISOString()).toEqual(
     '1997-07-10T00:00:00.000Z',
   );
+  expect(timeOrDateValueToNativeDate(nullValue)).toEqual(nullValue);
 
   // timeZone should not impact result for ZonedDateTime and Time
   expect(
-    timeOrDateValueToNativeDate(zonedDateTime, timeZone).toISOString(),
+    timeOrDateValueToNativeDate(zonedDateTime, timeZone)?.toISOString(),
   ).toEqual('1997-07-10T10:00:00.000Z');
   expect(
-    timeOrDateValueToNativeDate(time, timeZone).toLocaleTimeString('no-NO'),
+    timeOrDateValueToNativeDate(time, timeZone)?.toLocaleTimeString('no-NO'),
   ).toEqual('10:00:00');
   expect(
-    timeOrDateValueToNativeDate(calendarDate, timeZone).toLocaleDateString(
+    timeOrDateValueToNativeDate(calendarDate, timeZone)?.toLocaleDateString(
       'no-NO',
     ),
   ).toEqual('10.7.1997');
+  expect(timeOrDateValueToNativeDate(nullValue, timeZone)).toEqual(nullValue);
 });
 
 test('util function converts from Date to TimeValue and back again correctly', () => {
@@ -105,6 +108,6 @@ test('util function converts from Date to TimeValue and back again correctly', (
   expect(
     timeOrDateValueToNativeDate(
       nativeDateToTimeValue(dateObject, true),
-    ).toLocaleTimeString('no-NO'),
+    )?.toLocaleTimeString('no-NO'),
   ).toEqual(dateObject.toLocaleTimeString('no-NO'));
 });
