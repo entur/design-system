@@ -184,6 +184,7 @@ export const DatePicker = <DateType extends DateValue>({
     selectedDate,
     onChange,
     granularity: showTime ? 'minute' : rest.granularity,
+    ref: calendarRef,
   };
 
   const useModal =
@@ -205,9 +206,7 @@ export const DatePicker = <DateType extends DateValue>({
       }}
     >
       <FocusLock disabled={!state.isOpen || useModal} returnFocus>
-        {state.isOpen && (
-          <Calendar {...calendarSharedProps} ref={calendarRef} />
-        )}
+        {state.isOpen && <Calendar {...calendarSharedProps} />}
       </FocusLock>
     </div>
   );
@@ -218,7 +217,6 @@ export const DatePicker = <DateType extends DateValue>({
       title=""
       open={state.isOpen}
       onDismiss={() => state.setOpen(false)}
-      closeOnClickOutside
       className="eds-datepicker__calendar-modal"
     >
       <Calendar {...calendarSharedProps} />
