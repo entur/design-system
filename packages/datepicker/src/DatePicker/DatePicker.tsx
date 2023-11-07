@@ -111,7 +111,7 @@ export const DatePicker = <DateType extends DateValue>({
   selectedDate,
   onChange,
   locale,
-  disabled: isDisabled,
+  disabled,
   showTime,
   showTimeZone = false,
   className,
@@ -142,6 +142,7 @@ export const DatePicker = <DateType extends DateValue>({
     value: selectedDate,
     onChange,
     granularity: showTime ? 'minute' : rest.granularity,
+    isDisabled: disabled,
   });
   const {
     groupProps,
@@ -150,11 +151,7 @@ export const DatePicker = <DateType extends DateValue>({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker(
-    { isDisabled, minValue, maxValue, ...rest },
-    state,
-    datePickerRef,
-  );
+  } = useDatePicker({ minValue, maxValue, ...rest }, state, datePickerRef);
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
@@ -178,7 +175,7 @@ export const DatePicker = <DateType extends DateValue>({
   const calendarSharedProps = {
     ...dialogProps,
     ...calendarProps,
-    disabled: calendarProps.isDisabled,
+    disabled,
     navigationDescription: navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
     selectedDate,
@@ -248,6 +245,7 @@ export const DatePicker = <DateType extends DateValue>({
             onChange={onChange}
             label={rest.label}
             labelProps={labelProps}
+            disabled={disabled}
             showTime={showTime}
             showTimeZone={showTimeZone}
             ref={dateFieldRef}
@@ -257,10 +255,10 @@ export const DatePicker = <DateType extends DateValue>({
             validationFeedback={validationFeedback}
             labelTooltip={labelTooltip}
             className={classNames('eds-datepicker__datefield', {
-              'eds-datepicker__datefield--disabled': fieldProps.isDisabled,
+              'eds-datepicker__datefield--disabled': disabled,
             })}
           />
-          {!fieldProps.isDisabled && (
+          {!disabled && (
             <CalendarButton
               {...buttonProps}
               onPress={() => state.setOpen(!state.isOpen)}

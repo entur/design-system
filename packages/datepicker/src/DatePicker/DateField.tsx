@@ -79,6 +79,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       showTime,
       granularity = 'day',
       disabled,
+      isDisabled,
       variant,
       feedback,
       validationVariant = 'error',
@@ -106,11 +107,12 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       granularity: showTime ? 'minute' : granularity,
       minValue,
       maxValue,
+      isDisabled: isDisabled || disabled,
     });
 
     const dateFieldRef = useRef(null);
     const { labelProps, fieldProps } = useDateField(
-      { ...rest, label: label, isDisabled: disabled || rest.isDisabled },
+      { ...rest, label: label },
       state,
       dateFieldRef,
     );
@@ -129,7 +131,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
           className={classNames('eds-datefield', className)}
           labelId={id}
           ref={mergeRefs(dateFieldRef, ref)}
-          disabled={state.isDisabled}
+          disabled={isDisabled || disabled}
           disableLabelAnimation
           label={label}
           labelTooltip={labelTooltip}
