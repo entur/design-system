@@ -26,7 +26,7 @@ type CalendarProps = {
 export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   (
     {
-      selectedDate: value,
+      selectedDate,
       onChange,
       locale: customLocale,
       style,
@@ -43,6 +43,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
     const state = useCalendarState({
       ...rest,
+      value: selectedDate,
       onChange,
       locale: customLocale ?? locale,
       createCalendar,

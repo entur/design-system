@@ -104,7 +104,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
     onChange,
     label: label,
     locale,
-    value: selectedTime === null ? undefined : selectedTime,
+    value: selectedTime,
     hideTimeZone: true,
     isDisabled: disabled,
     isReadOnly: readOnly,
