@@ -19,7 +19,7 @@
     &:focus {
       background-color: t.$colors-blues-blue40;
       color: t.$colors-brand-white;
-      outline: none;
+      outline: transparent;
       border-radius: t.$border-radiuses-default;
     }
   }
