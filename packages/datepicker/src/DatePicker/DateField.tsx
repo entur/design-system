@@ -108,6 +108,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       minValue,
       maxValue,
       isDisabled: isDisabled || disabled,
+      shouldForceLeadingZeros: true,
     });
 
     const dateFieldRef = useRef(null);

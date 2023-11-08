@@ -95,6 +95,7 @@ export const TimePicker = <TimeType extends TimeValue>({
     value: selectedTime,
     hideTimeZone: !showTimeZone,
     isDisabled: disabled,
+    shouldForceLeadingZeros: true,
     ...rest,
   });
   const timeFieldRef = useRef(null);

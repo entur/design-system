@@ -14,17 +14,6 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
 
-  const is12HourFormatted = state.segments.some(
-    segment => segment.text === 'AM' || segment.text === 'PM',
-  );
-
-  const segmentDisplayText = () => {
-    if (is12HourFormatted) return segment.text;
-    // if number add '0' padding to start when one digit
-    if (segment.text.match(/\d+/)) return segment.text.padStart(2, '0');
-    return segment.text;
-  };
-
   return (
     <div
       {...segmentProps}
@@ -35,7 +24,7 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
       })}
       tabIndex={state.isDisabled ? -1 : segmentProps.tabIndex}
     >
-      {segmentDisplayText()}
+      {segment.text}
     </div>
   );
 };
