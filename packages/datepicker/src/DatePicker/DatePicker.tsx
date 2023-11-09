@@ -34,6 +34,7 @@ import type { VariantType } from '@entur/form';
 import { DateField } from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
+import { lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
 
@@ -57,12 +58,18 @@ export type DatePickerProps<DateType extends DateValue> = {
    */
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone. */
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig fra og med den tiden som legges inn som minDate.
+   * Dato uten tid vil være gyldig hele minDate-dagen */
   minDate?: DateValue;
   /** Seneste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone
+   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
    *
-   * OBS: Hvis du bruker dato med tid vil det være til, men ikke med denne datoen */
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig til og med den tiden som legges inn som maxDate.
+   * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
   /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
    * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
@@ -123,8 +130,8 @@ export const DatePicker = <DateType extends DateValue>({
   disableModal = false,
   labelTooltip,
   navigationDescription,
-  minDate: minValue,
-  maxDate: maxValue,
+  minDate,
+  maxDate,
   modalTreshold = 1000,
   ...rest
 }: DatePickerProps<DateType>) => {
@@ -137,8 +144,14 @@ export const DatePicker = <DateType extends DateValue>({
 
   const state = useDatePickerState({
     ...rest,
-    minValue,
-    maxValue,
+    minValue: minDate,
+    // this weird logic makes sure the entire day is included if no time is provided in maxDate
+    maxValue:
+      'hour' in (maxDate ?? {})
+        ? maxDate
+        : maxDate !== undefined
+        ? lastMillisecondOfDay(maxDate)
+        : undefined,
     value: selectedDate,
     onChange,
     granularity: showTime ? 'minute' : rest.granularity,
@@ -151,7 +164,7 @@ export const DatePicker = <DateType extends DateValue>({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker({ minValue, maxValue, ...rest }, state, datePickerRef);
+  } = useDatePicker({ ...rest }, state, datePickerRef);
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
@@ -180,6 +193,8 @@ export const DatePicker = <DateType extends DateValue>({
     onSelectedCellClick: () => state.setOpen(false),
     selectedDate,
     onChange,
+    minDate,
+    maxDate,
     granularity: showTime ? 'minute' : rest.granularity,
     ref: calendarRef,
   };
@@ -244,6 +259,8 @@ export const DatePicker = <DateType extends DateValue>({
             label={rest.label}
             labelProps={labelProps}
             disabled={disabled}
+            minDate={minDate}
+            maxDate={maxDate}
             showTime={showTime}
             showTimeZone={showTimeZone}
             ref={dateFieldRef}

@@ -20,6 +20,20 @@ type CalendarProps = {
   navigationDescription?: string;
   style?: React.CSSProperties;
   onSelectedCellClick?: () => void;
+  /** Tidligste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig fra og med den tiden som legges inn som minDate.
+   * Dato uten tid vil være gyldig hele minDate-dagen */
+  minDate?: DateValue;
+  /** Seneste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig til og med den tiden som legges inn som maxDate.
+   * Dato uten tid vil være gyldig hele maxDate-dagen */
+  maxDate?: DateValue;
   [key: string]: any;
 };
 
@@ -29,6 +43,8 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       selectedDate,
       onChange,
       locale: customLocale,
+      minDate,
+      maxDate,
       style,
       children: _,
       navigationDescription,
@@ -47,6 +63,8 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       onChange,
       locale: customLocale ?? locale,
       createCalendar,
+      minValue: minDate,
+      maxValue: maxDate,
     });
     const { calendarProps, prevButtonProps, nextButtonProps, title } =
       useCalendar(rest, state);
