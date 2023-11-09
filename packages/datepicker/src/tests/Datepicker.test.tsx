@@ -1,9 +1,18 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CalendarDate, ZonedDateTime } from '@internationalized/date';
+import {
+  CalendarDate,
+  ZonedDateTime,
+  parseAbsolute,
+  parseDate,
+  parseDateTime,
+  toCalendarDate,
+} from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
-import { DatePicker } from '../DatePicker';
+
+import { DateField, DatePicker } from '../DatePicker';
+
 jest.mock('@floating-ui/react-dom', () => ({
   useFloating: jest.fn(() => {
     return {
@@ -216,6 +225,274 @@ describe('DatePicker', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+});
+
+test('maxDate works correctly for edge values', () => {
+  const spy = jest.fn();
+
+  const maxDateValue = parseDate('1997-07-10');
+  const edgeValueWithin = parseAbsolute('1997-07-10T23:59:59.999Z', 'Etc/UTC');
+  const edgeValueOutside = parseAbsolute('1997-07-11T00:00:00.000Z', 'Etc/UTC');
+
+  const { rerender } = render(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeWithError"
+        selectedDate={edgeValueWithin}
+        onChange={spy}
+        maxDate={maxDateValue}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeWithError"
+        selectedDate={edgeValueWithin}
+        onChange={spy}
+        maxDate={maxDateValue}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
+  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+
+  rerender(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeWithError"
+        selectedDate={edgeValueOutside}
+        onChange={spy}
+        maxDate={maxDateValue}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeWithError"
+        selectedDate={edgeValueOutside}
+        onChange={spy}
+        maxDate={maxDateValue}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+});
+
+test('gives errors correctly using maxDate as CalendarDate', () => {
+  const spy = jest.fn();
+  const currentDate = parseDateTime('1997-07-10T23:59');
+
+  const { rerender } = render(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={toCalendarDate(currentDate).add({ days: -1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={toCalendarDate(currentDate).add({ days: -1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+
+  rerender(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={toCalendarDate(currentDate)}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={toCalendarDate(currentDate)}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
+  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+});
+
+test('gives errors correctly using maxDate as CalendarDateTime', () => {
+  const spy = jest.fn();
+  const currentDate = parseDateTime('1997-07-10T09:00');
+
+  const { rerender } = render(
+    <>
+      <DatePicker
+        label="pickerMaxDateWithTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={currentDate.add({ minutes: -1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateWithTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={currentDate.add({ minutes: -1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+
+  rerender(
+    <>
+      <DatePicker
+        label="pickerMaxDateWithTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={currentDate}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateWithTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        maxDate={currentDate}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
+  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+});
+
+test('gives errors correctly using minDate as CalendarDate', () => {
+  const spy = jest.fn();
+  const currentDate = parseDateTime('1997-07-10T09:00');
+
+  const { rerender } = render(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={toCalendarDate(currentDate).add({ days: 1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={toCalendarDate(currentDate).add({ days: 1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+
+  rerender(
+    <>
+      <DatePicker
+        label="pickerMaxDateNoTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={toCalendarDate(currentDate)}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateNoTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={toCalendarDate(currentDate)}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
+  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+});
+
+test('gives errors correctly using minDate as CalendarDateTime', () => {
+  const spy = jest.fn();
+  const currentDate = parseDateTime('1997-07-10T09:00');
+
+  const { rerender } = render(
+    <>
+      <DatePicker
+        label="pickerMaxDateWithTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={currentDate.add({ minutes: 1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateWithTimeWithError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={currentDate.add({ minutes: 1 })}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.getAllByRole('alert')[0]).toHaveTextContent('Expected error');
+  expect(screen.getAllByRole('alert')[1]).toHaveTextContent('Expected error');
+
+  rerender(
+    <>
+      <DatePicker
+        label="pickerMaxDateWithTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={currentDate}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+      <DateField
+        label="fieldMaxDateWithTimeNoError"
+        selectedDate={currentDate}
+        onChange={spy}
+        minDate={currentDate}
+        locale="no-NO"
+        validationFeedback="Expected error"
+      />
+    </>,
+  );
+
+  expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
+  expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
 });
 
 test('Timezones should always be UTC', () => {
