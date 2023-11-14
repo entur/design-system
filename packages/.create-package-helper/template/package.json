@@ -23,7 +23,7 @@
     "lint": "dts lint src"
   },
   "dependencies": {
-    "@entur/utils": "^0.2.0"
+    "@entur/utils": "^0.9.5"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

@@ -4,7 +4,8 @@
   "exclude": [
     "node_modules",
     "packages/**/node_modules",
-    "packages/**/node_modules/*"
+    "packages/**/node_modules/*",
+    "packages/.create-package-helper/**"
   ],
   "compilerOptions": {
     "baseUrl": ".",
