@@ -19,7 +19,6 @@
     "lint": "lerna run lint",
     "lint:documentation": "lerna run --scope @entur/documentation lint -- --report-unused-disable-directives",
     "lint:packages": "lerna run lint --no-private",
-    "new-package": "./packages/.create-package-helper/new-package.js",
     "prepare": "husky install",
     "prettier": "prettier --write src/**/*\\.tsx packages/**/*\\.tsx",
     "prerelease-packages": "HUSKY=0 lerna publish --conventional-commits --conventional-prerelease --pre-dist-tag next --preid beta",
@@ -39,7 +38,7 @@
     "test:watch": "dts test --watch"
   },
   "workspaces": [
-    "packages/!(.create-package-helper)",
+    "packages/*",
     "apps/*"
   ],
   "dependencies": {
