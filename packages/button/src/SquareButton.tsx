@@ -2,9 +2,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
-import './BaseSquareButton.scss';
+import './SquareButton.scss';
 
-export type BaseSquareButtonBaseProps = {
+export type SquareButtonBaseProps = {
   /** Tekst og ikon */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -19,30 +19,32 @@ export type BaseSquareButtonBaseProps = {
    * @default false
    */
   loading?: boolean;
+  /** DOM-elementet knappen rendres som */
+  as: string | React.ElementType;
 };
 
-export type BaseSquareButtonProps<T extends React.ElementType> =
-  PolymorphicComponentPropsWithRef<T, BaseSquareButtonBaseProps>;
+export type SquareButtonProps<T extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<T, SquareButtonBaseProps>;
 
-export type BaseSquareButtonComponent = <
+export type SquareButtonComponent = <
   T extends React.ElementType = typeof defaultElement,
 >(
-  props: BaseSquareButtonProps<T>,
+  props: SquareButtonProps<T>,
 ) => React.ReactElement | null;
 
 const defaultElement = 'button';
 
-export const BaseSquareButton: BaseSquareButtonComponent = React.forwardRef(
+export const SquareButton: SquareButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
     {
+      as,
       children,
       className,
-      variant,
       disabled = false,
       loading = false,
-      as,
+      variant = 'secondary',
       ...rest
-    }: BaseSquareButtonProps<T>,
+    }: SquareButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
@@ -50,10 +52,10 @@ export const BaseSquareButton: BaseSquareButtonComponent = React.forwardRef(
       <Element
         className={classNames(
           'eds-square-button',
-          { 'eds-square-button--success': variant === 'success' },
-          { 'eds-square-button--secondary': variant === 'secondary' },
-          { 'eds-square-button--tertiary': variant === 'tertiary' },
-          { 'eds-square-button--loading': loading },
+          `eds-square-button--${variant}`,
+          {
+            'eds-square-button--loading': loading,
+          },
           className,
         )}
         aria-busy={loading}
@@ -67,7 +69,7 @@ export const BaseSquareButton: BaseSquareButtonComponent = React.forwardRef(
             return <span className="eds-square-button__label">{child}</span>;
           }
           return (
-            <span className="eds-square-button__icon">
+            <span className="eds-square-button__button">
               {loading ? (
                 <LoadingDots className="eds-square-button__loading-dots" />
               ) : (

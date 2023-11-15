@@ -4,13 +4,16 @@ import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 import { LoadingDots } from '@entur/loader';
 import './Button.scss';
 
+/** @deprecated use variant="secondary" size="small" instead */
+const tertiary = 'tertiary';
+
 type ButtonBaseProps = {
   /** Farge og uttrykk på knappen */
-  variant: 'primary' | 'secondary' | 'success' | 'negative' | 'tertiary';
+  variant: 'primary' | 'secondary' | 'success' | 'negative' | typeof tertiary;
   /** Størrelsen på knappen
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
    * @default false
    */
@@ -27,6 +30,10 @@ type ButtonBaseProps = {
   width?: 'fluid' | 'auto';
   /** Innholdet i knappen */
   children: React.ReactNode;
+  /** Et HTML-element eller en React-komponent som komponenten tar utgangspunkt i for å lage denne knappevarianten
+   * @default "button"
+   */
+  as?: string | React.ElementType;
   /**
    * Tekst som leses opp på skjermleser (nødvendig når knappetekst mangler)
    */

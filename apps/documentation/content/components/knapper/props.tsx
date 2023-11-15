@@ -13,13 +13,13 @@ export const standardknapper = [
   },
   {
     name: 'variant',
-    options: ['primary', 'secondary', 'success', 'negative', 'tertiary'],
+    options: ['primary', 'secondary', 'success', 'negative'],
     defaultValue: 'primary',
     type: 'dropdown',
   },
   {
     name: 'size',
-    options: ['medium', 'large'],
+    options: ['small', 'medium', 'large'],
     defaultValue: 'medium',
     type: 'dropdown',
   },

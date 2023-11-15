@@ -36,13 +36,21 @@ export type TertiaryButtonComponent = <
 
 const defaultElement = 'button';
 
+/** @deprecated use SecondaryButton size="small" instead */
 export const TertiaryButton: TertiaryButtonComponent = React.forwardRef(
   <T extends React.ElementType = typeof defaultElement>(
     props: TertiaryButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = props.as || defaultElement;
-    // @ts-expect-error type error due to props not being BaseButtonProps
-    return <Button as={Element} {...props} ref={ref} variant="tertiary" />;
+    return (
+      <Button
+        as={Element}
+        {...props}
+        ref={ref}
+        variant="tertiary"
+        size="small"
+      />
+    );
   },
 );

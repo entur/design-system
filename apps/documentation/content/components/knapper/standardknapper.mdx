@@ -17,6 +17,7 @@ import {
   NegativeButton,
   ButtonGroup,
 } from '@entur/button';
+import { SmallExpandableAlertBox } from '@entur/alert';
 import { Props } from 'docz';
 import PageHeader from '~/components/PageHeader';
 import { BestPractices, Example } from '~/components/BestPractices';
@@ -34,48 +35,7 @@ import { standardknapper } from './props';
   <Button></Button>
 </Playground>
 
-## Komponenter
-
-### PrimaryButton
-
-<ImportStatement imports="PrimaryButton" />
-<Props of={PrimaryButton} />
-
-### SecondaryButton
-
-<ImportStatement imports="SecondaryButton" />
-<Props of={SecondaryButton} />
-
-### SuccessButton
-
-<ImportStatement imports="SuccessButton" />
-<Props of={SuccessButton} />
-
-### NegativeButton
-
-<ImportStatement imports="NegativeButton" />
-<Props of={NegativeButton} />
-
-### TertiaryButton
-
-<ImportStatement imports="TertiaryButton" />
-<Props of={TertiaryButton} />
-
-### Button
-
-<ImportStatement imports="Button" />
-<Props of={Button} />
-
-`<Button />` er grunn-komponenten som lar deg lage de andre knappene. Du vil typisk bruke en av de andre komponentene direkte.
-
-### ButtonGroup
-
-<ImportStatement imports="ButtonGroup" />
-<Props of={ButtonGroup} />
-
-Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<ButtonGroup />`. Dette gir deg riktig avstand mellom knappene.
-
-## Retningslinjer for bruk
+## Bruk
 
 ### Varianter
 
@@ -96,6 +56,18 @@ Subtil variant som brukes til å indikere en sekundær handling som komplimenter
 Indikerer en fare eller potensielt negativ handling. Brukes kun for å advare brukeren mot handlinger som kan føre til negative konsekvenser som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
 
 #### Tertiary
+
+<SmallExpandableAlertBox
+  variant="warning"
+  title="Tertiary button er deprekert!"
+>
+  Tertiærknappen er deprektert til fordel for SecondaryButton i size="small".
+  Tertiærknappen er fortsatt tilgjengelgi i @entur/button, men vil på sikt bli
+  fjernet. Vi jobber også med å se på behovet for en ny knappetype som kan
+  brukes i tilfeller der man trenger en knapp som hierakrisk ligger mellom
+  IconButton og SecondaryButton.
+</SmallExpandableAlertBox>
+<br />
 
 Tertiary brukes på steder hvor de andre knappevariantene bruker for stor plass, og en mindre knapp er nødvendig. Alternativt kan man også bruke ActionChip for dette behovet, men tertiærknappen finnes som et alternativ til den.
 
@@ -118,35 +90,33 @@ alltid sammen med en tekst.
 
 ### Størrelser
 
-Standardstørrelsen på våre knapper er “medium”. Men man kan vurdere å bruke “large” som har en større høyde, dersom man trenger knapper med mer oppmerksomhet.
+Standardstørrelsen på våre knappene er “medium”. Trenger man en knapp som tar mer fokus kan man bruke "large" med en større høyde.
+Hvis man ønsker en knapp med mindre fokus eller som tar mindre plass kan man bruke size="small".
 
-<Playground>
-  <ButtonGroup>
-    <PrimaryButton size="large">Primary</PrimaryButton>
-    <SecondaryButton size="large">Secondary</SecondaryButton>
-    <SuccessButton size="large">Success</SuccessButton>
-    <NegativeButton size="large">Negative</NegativeButton>
-  </ButtonGroup>
-</Playground>
-
-<br />
-
-<ComponentRuler.Wrapper>
+<ComponentRuler.Wrapper direction="vertical">
   <ComponentRuler
-    xName="Min-Width"
-    xNumber="152px"
+    xName="Min-bredde"
+    xNumber="5.75rem"
     yName="Høyde"
-    yNumber="44px"
+    yNumber="2rem"
   >
-    <PrimaryButton>Vanlig knapp</PrimaryButton>
+    <PrimaryButton size="small">Liten</PrimaryButton>
   </ComponentRuler>
   <ComponentRuler
-    xName="Min-Width"
-    xNumber="188px"
+    xName="Min-bredde"
+    xNumber="9.5rem"
     yName="Høyde"
-    yNumber="60px"
+    yNumber="3rem"
   >
-    <PrimaryButton size="large">Stor knapp</PrimaryButton>
+    <PrimaryButton>Vanlig</PrimaryButton>
+  </ComponentRuler>
+  <ComponentRuler
+    xName="Min-bredde"
+    xNumber="11.75rem"
+    yName="Høyde"
+    yNumber="3.75rem"
+  >
+    <PrimaryButton size="large">Stor</PrimaryButton>
   </ComponentRuler>
 </ComponentRuler.Wrapper>
 
@@ -188,3 +158,39 @@ Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre.
     </ul>
   </Example>
 </BestPractices>
+
+## Komponenter
+
+### PrimaryButton
+
+<ImportStatement imports="PrimaryButton" />
+<Props of={PrimaryButton} />
+
+### SecondaryButton
+
+<ImportStatement imports="SecondaryButton" />
+<Props of={SecondaryButton} />
+
+### SuccessButton
+
+<ImportStatement imports="SuccessButton" />
+<Props of={SuccessButton} />
+
+### NegativeButton
+
+<ImportStatement imports="NegativeButton" />
+<Props of={NegativeButton} />
+
+### Button
+
+<ImportStatement imports="Button" />
+<Props of={Button} />
+
+`<Button />` er grunn-komponenten som lar deg lage de andre knappene. Du vil typisk bruke en av de andre komponentene direkte.
+
+### ButtonGroup
+
+<ImportStatement imports="ButtonGroup" />
+<Props of={ButtonGroup} />
+
+Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<ButtonGroup />`. Dette gir deg riktig avstand mellom knappene.

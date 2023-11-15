@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseSquareButton } from './BaseSquareButton';
+import { SquareButton, SquareButtonBaseProps } from './SquareButton';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
 
 type TertiarySquareButtonBaseProps = {
@@ -15,7 +15,7 @@ type TertiarySquareButtonBaseProps = {
    * @default false
    */
   loading?: boolean;
-};
+} & SquareButtonBaseProps;
 
 export type TertiarySquareButtonProps<T extends React.ElementType> =
   PolymorphicComponentPropsWithRef<T, TertiarySquareButtonBaseProps>;
@@ -33,16 +33,5 @@ export const TertiarySquareButton: TertiarySquareButtonComponent =
     <T extends React.ElementType = typeof defaultElement>(
       props: TertiarySquareButtonProps<T>,
       ref: PolymorphicRef<T>,
-    ) => {
-      const Element: React.ElementType = props.as || defaultElement;
-      return (
-        // @ts-expect-error type error due to props not being BaseButtonProps
-        <BaseSquareButton
-          as={Element}
-          ref={ref}
-          {...props}
-          variant="tertiary"
-        />
-      );
-    },
+    ) => <SquareButton ref={ref} {...props} variant="tertiary" />,
   );
