@@ -12,16 +12,6 @@ type ComponentRulerProps = {
 function ComponentRuler(props: ComponentRulerProps): React.ReactNode {
   return (
     <div className="component-ruler-container">
-      <div className="vertical-ruler-wrapper">
-        {props.yName && <div className="yName">{`${props.yName}:`}</div>}
-        {props.yNumber && <div className="yNumber">{props.yNumber}</div>}
-        <div>
-          <div
-            className="vertical-ruler-line"
-            style={{ height: props.yNumber }}
-          />
-        </div>
-      </div>
       <div className="hortizontal-ruler-wrapper">
         {props.children}
         <div className="horizontal-ruler-container">
@@ -31,20 +21,37 @@ function ComponentRuler(props: ComponentRulerProps): React.ReactNode {
           />
         </div>
         <div className="horizontal-ruler-information-wrapper">
-          {props.xName && <div> {`${props.xName}: `}</div>}
-          {props.xNumber && <div>{props.xNumber}</div>}
+          <div>{`${props?.xName ? props.xName + ': ' : ''}${
+            props?.xNumber
+          }`}</div>
         </div>
       </div>
+      <div className="vertical-ruler-wrapper">
+        <div>
+          <div
+            className="vertical-ruler-line"
+            style={{ height: props.yNumber }}
+          />
+        </div>
+      </div>
+      <div>{`${props?.yName ? props.yName + ': ' : ''}${props?.yNumber}`}</div>
     </div>
   );
 }
 
 type WrapperProps = {
   children: React.ReactNode;
+  direction: 'vertical' | 'horizontal';
 };
 
 function Wrapper(props: WrapperProps) {
-  return <div className="component-ruler-wrapper">{props.children}</div>;
+  return (
+    <div
+      className={`component-ruler-wrapper component-ruler-wrapper--${props.direction}`}
+    >
+      {props.children}
+    </div>
+  );
 }
 
 ComponentRuler.Wrapper = Wrapper;

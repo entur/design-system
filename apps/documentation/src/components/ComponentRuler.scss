@@ -10,6 +10,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: $space-small;
+
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .component-ruler-container {
@@ -24,7 +30,7 @@
 .vertical-ruler-wrapper {
   display: inline-flex;
   flex-direction: row;
-  margin-right: $space-extra-small;
+  margin: 0 $space-extra-small;
   align-items: center;
   margin-top: -0.125rem; //Offset for ruler end
 }
