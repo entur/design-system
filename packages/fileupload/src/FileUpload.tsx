@@ -10,7 +10,6 @@ import classNames from 'classnames';
 import { FileIcon, DeleteIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Label } from '@entur/typography';
-import { VisuallyHidden } from '@entur/a11y';
 
 import './FileUpload.scss';
 
@@ -103,14 +102,18 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       <div className="eds-file-upload__file-list">
         {files.map((file, index) => (
           <div className="eds-file-upload__file-name" key={index}>
-            <FileIcon className="eds-file-upload__file-name-icon" />
+            <FileIcon
+              aria-label="File icon"
+              className="eds-file-upload__file-name-icon"
+            />
             <span className="eds-field-upload__file-name-path">
               {file.name} - {convertSizeToHuman(file.size)}{' '}
             </span>
-            <IconButton onClick={() => onDelete(file)}>
-              <VisuallyHidden>
-                {removeFileButtonDescription}, {file.name}
-              </VisuallyHidden>
+            <IconButton
+              onClick={() => onDelete(file)}
+              type="button"
+              aria-label={`${removeFileButtonDescription}, ${file.name}`}
+            >
               <DeleteIcon />
             </IconButton>
           </div>
