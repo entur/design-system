@@ -6,6 +6,7 @@ import {
   DateValue,
   getLocalTimeZone,
   CalendarDate,
+  toCalendarDateTime,
 } from '@internationalized/date';
 import { TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
@@ -151,3 +152,8 @@ export const ariaLabelIfNorwegian = (
   if (locale.toLowerCase() !== 'no-no') return propsCollection['aria-label'];
   return norwegianAriaLabel;
 };
+
+export const lastMillisecondOfDay = (dateValue: DateValue) =>
+  toCalendarDateTime(dateValue.add({ days: 1 })).add({
+    milliseconds: -1,
+  });

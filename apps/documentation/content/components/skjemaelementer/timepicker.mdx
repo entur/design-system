@@ -101,8 +101,8 @@ mellom `@internationalized/date` sine tre tidstyper: `ZonedDateTime`, `CalendarD
 Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-  {`nativeDateToTimeValue: (date: Date, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime;
-timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: string | undefined) => Date;`}
+  {`nativeDateToTimeValue: (date: Date | null, noDateOnlyTime?: boolean, timeZone?: string | undefined, offset?: number | undefined) => Time | CalendarDateTime | ZonedDateTime | null;
+timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCalendarDateTime?: string | undefined) => Date | null;`}
 </CodeBlock>
 
 #### Eksempel på bruk av JS-date med DatePicker

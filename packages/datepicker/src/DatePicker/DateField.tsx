@@ -14,7 +14,7 @@ import { BaseFormControl, VariantType } from '@entur/form';
 import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
-import { createCalendar } from '../shared/utils';
+import { createCalendar, lastMillisecondOfDay } from '../shared/utils';
 
 import './DateField.scss';
 
@@ -35,9 +35,18 @@ export type DateFieldProps = {
   showTimeZone?: boolean;
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone */
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig fra og med den tiden som legges inn som minDate.
+   * Dato uten tid vil være gyldig hele minDate-dagen */
   minDate?: DateValue;
-  /** Seneste gyldige datovalg. (se minValue) */
+  /** Seneste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig til og med den tiden som legges inn som maxDate.
+   * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
@@ -85,8 +94,8 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       validationVariant = 'error',
       validationFeedback = 'Ugyldig dato',
       labelTooltip,
-      minDate: minValue,
-      maxDate: maxValue,
+      minDate,
+      maxDate,
       style,
       className,
       labelProps: parentLabelProps,
@@ -105,8 +114,14 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       onChange,
       hideTimeZone: !showTimeZone,
       granularity: showTime ? 'minute' : granularity,
-      minValue,
-      maxValue,
+      minValue: minDate,
+      // this weird logic makes sure the entire day is included if no time is provided in maxDate
+      maxValue:
+        'hour' in (maxDate ?? {})
+          ? maxDate
+          : maxDate !== undefined
+          ? lastMillisecondOfDay(maxDate)
+          : undefined,
       isDisabled: isDisabled || disabled,
       shouldForceLeadingZeros: true,
     });

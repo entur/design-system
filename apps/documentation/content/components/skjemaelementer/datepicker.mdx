@@ -165,13 +165,13 @@ Følgende eksempel godtar datoer som ikke er en helg.
 
 ### Bruke JS Date i stedet for @internationalized/date
 
-Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToDateValue` og `timeValueToNativeDate`. Disse konverterer
+Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToDateValue` og `timeOrDateValueToNativeDate`. Disse konverterer
 mellom `@internationalized/date` sine tre dato-typer: `ZonedDateTime`, `CalendarDateTime` og `CalendarDate` (`DateValue` er en samling av disse tre typene) og Javascript sin `Date`.
 Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-  {`nativeDateToDateValue: (date: Date, noTimeOnlyDate?: boolean, timeZone?: string | undefined, offset?: number | undefined) => CalendarDateTime | ZonedDateTime | CalendarDate;
-timeOrDateValueToNativeDate: (time: TimeValue, timeZoneForCalendarDateTime?: string | undefined) => Date;`}
+  {`nativeDateToDateValue: (date: Date | null, noTimeOnlyDate?: boolean, timeZone?: string | undefined, offset?: number | undefined) => CalendarDateTime | ZonedDateTime | CalendarDate | null;
+timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCalendarDateTime?: string | undefined) => Date | null;`}
 </CodeBlock>
 
 #### Eksempel på bruk av JS-date med DatePicker
