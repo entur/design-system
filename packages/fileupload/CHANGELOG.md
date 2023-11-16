@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.94](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.93...@entur/fileupload@0.3.94) (2023-11-16)
+
+### Bug Fixes
+
+- **file upload:** add type button to delete file buttons to prevent form submit ([125870b](https://bitbucket.org/enturas/design-system/commits/125870ba53456375ec842d0083d2eb8d92f50439))
+
 ## [0.3.93](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.92...@entur/fileupload@0.3.93) (2023-10-30)
 
 **Note:** Version bump only for package @entur/fileupload

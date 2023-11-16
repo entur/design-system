@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.1.10...@entur/button@3.2.0) (2023-11-16)
+
+### Features
+
+- **button:** add new size option small ([841dfa6](https://bitbucket.org/enturas/design-system/commits/841dfa6c6b59ec40259e8bccdc6296497fe48d9d))
+
 ## [3.1.10](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.1.9...@entur/button@3.1.10) (2023-10-30)
 
 **Note:** Version bump only for package @entur/button

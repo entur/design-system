@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.7...@entur/datepicker@9.0.0) (2023-11-16)
+
+### Bug Fixes
+
+- **datefield:** fix disabled state in DateField ([ba5a279](https://bitbucket.org/enturas/design-system/commits/ba5a27971617c3e7893b716ba9d81e7aa2480da2))
+- **datepicker utils:** add support for null value in datepicker util functions ([76220f7](https://bitbucket.org/enturas/design-system/commits/76220f7e2619a77450dcb72d89db80c0072f79b4))
+- **datepicker:** fix modal calendar not working on touch screens ([bf38dc0](https://bitbucket.org/enturas/design-system/commits/bf38dc0018f7c52415719704125b0d06fb48b7b9))
+- **datepicker:** fix value not visually updating when set to null ([75ded17](https://bitbucket.org/enturas/design-system/commits/75ded176796a443839b6d00bcfca7915831fe5a9))
+- **timepicker:** fix unpredictable behaviour when inputing text in time picker ([1a65c99](https://bitbucket.org/enturas/design-system/commits/1a65c9905cc4df4421a8b2bdac6e1116d5f4d980))
+
+### Features
+
+- **datepicker:** make maxDate and minDate inclusive ([99475e0](https://bitbucket.org/enturas/design-system/commits/99475e04bec140263a9d83c1fcca773d5fd0fe3a))
+
+### BREAKING CHANGES
+
+- **datepicker:** maxDate is now inclusive and might need changes to not include one extra day.
+- **datepicker utils:** nativeDateToDateValue, nativeDateToTimeValue, timeOrDateValueToNativeDate may now return null
+
 ## [8.1.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@8.1.6...@entur/datepicker@8.1.7) (2023-10-30)
 
 **Note:** Version bump only for package @entur/datepicker
