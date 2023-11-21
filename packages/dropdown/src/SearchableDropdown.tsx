@@ -200,7 +200,8 @@ export const SearchableDropdown = ({
           };
         }
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-          if (!inputHasFocus) setShowSelectedItem(true);
+          if (changes.selectedItem !== null && !inputHasFocus)
+            setShowSelectedItem(true);
           updateListItems({ inputValue: EMPTY_INPUT });
           return {
             ...changes,
@@ -224,6 +225,8 @@ export const SearchableDropdown = ({
             }
           } else {
             updateListItems({ inputValue: changes.inputValue });
+            setHighlightedIndex(0);
+            setLastHighlightedIndex(0);
           }
           return changes;
         }
@@ -242,6 +245,7 @@ export const SearchableDropdown = ({
     getMenuProps,
     getInputProps,
     highlightedIndex,
+    setHighlightedIndex,
     getItemProps,
     selectedItem,
     inputValue,
@@ -292,6 +296,9 @@ export const SearchableDropdown = ({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget) inputRef.current?.focus();
+        }}
         prepend={prepend}
         readOnly={readOnly}
         variant={variant}
