@@ -10,7 +10,7 @@ export type SquareButtonBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** En type knapp */
-  variant: 'success' | 'secondary' | 'tertiary';
+  variant?: 'success' | 'secondary' | 'tertiary';
   /** Deaktivering av knappen
    * @default false
    */
@@ -20,7 +20,7 @@ export type SquareButtonBaseProps = {
    */
   loading?: boolean;
   /** DOM-elementet knappen rendres som */
-  as: string | React.ElementType;
+  as?: string | React.ElementType;
 };
 
 export type SquareButtonProps<T extends React.ElementType> =
