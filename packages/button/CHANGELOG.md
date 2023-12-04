@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.2.0...@entur/button@3.2.1) (2023-12-04)
+
+### Bug Fixes
+
+- **square button:** fix incorrect required props ([206acd6](https://bitbucket.org/enturas/design-system/commits/206acd6569b81c79a3b7c616993cfbde5724e1c1))
+
 # [3.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.1.10...@entur/button@3.2.0) (2023-11-16)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.24](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.23...@entur/dropdown@5.0.24) (2023-12-04)
+
+### Bug Fixes
+
+- **searchable dropdown:** fix searchable dropdown sometimes not opening on click ([376a87c](https://bitbucket.org/enturas/design-system/commits/376a87c70380c248da848283c89f9bf24845ca35))
+
 ## [5.0.23](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.22...@entur/dropdown@5.0.23) (2023-11-16)
 
 **Note:** Version bump only for package @entur/dropdown
