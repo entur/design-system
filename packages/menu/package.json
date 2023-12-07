@@ -35,8 +35,8 @@
     "@entur/tokens": "^3.11.1",
     "@entur/typography": "^1.8.17",
     "@entur/utils": "^0.9.5",
-    "@reach/menu-button": "^0.16.1",
-    "@reach/polymorphic": "0.18.0",
+    "@reach/menu-button": "^0.18.0",
+    "@reach/polymorphic": "^0.18.0",
     "classnames": "^2.3.1"
   }
 }

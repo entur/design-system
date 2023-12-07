@@ -15,7 +15,8 @@ import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
 import { Contrast, useContrast } from '@entur/layout';
 import classNames from 'classnames';
-import type * as Polymorphic from '@reach/polymorphic';
+import type { ForwardRefComponent } from '@reach/polymorphic';
+
 import './OverflowMenu.scss';
 
 export type OverflowMenuProps = {
@@ -113,7 +114,7 @@ export const OverflowMenuItem = React.forwardRef(
       </MenuItem>
     );
   },
-) as Polymorphic.ForwardRefComponent<'div', OverflowMenuItemProps>;
+) as ForwardRefComponent<'div', OverflowMenuItemProps>;
 
 export type OverflowMenuLinkProps = {
   /** Innholdet til OverflowMenuLink */
@@ -147,4 +148,4 @@ export const OverflowMenuLink = React.forwardRef(
       </MenuLink>
     );
   },
-) as Polymorphic.ForwardRefComponent<'a', OverflowMenuLinkProps>;
+) as ForwardRefComponent<'a', OverflowMenuLinkProps>;
