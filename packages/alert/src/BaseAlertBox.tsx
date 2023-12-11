@@ -7,7 +7,10 @@ import {
   OutlinedValidationInfoIcon,
   OutlinedValidationErrorIcon,
 } from '@entur/icons';
-import './styles.scss';
+import { IconButton } from '@entur/button';
+import { Tooltip } from '@entur/tooltip';
+
+import './BaseAlertBox.scss';
 
 const iconsMap = {
   success: {
@@ -80,16 +83,6 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
       )}
       {...rest}
     >
-      {closable && (
-        <button
-          aria-label={closeButtonLabel}
-          className="eds-alert-box__close-button"
-          type="button"
-          onClick={handleClose}
-        >
-          <CloseIcon />
-        </button>
-      )}
       <Icon
         role="img"
         className="eds-alert-box__icon"
@@ -104,6 +97,22 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
         {title && <div className="eds-alert-box__title">{title}</div>}
         {children && children}
       </div>
+      {closable && (
+        <Tooltip
+          className="eds-alert-box__tooltip"
+          aria-hidden
+          placement="bottom"
+          content="Lukk"
+        >
+          <IconButton
+            className="eds-alert-box__close-button"
+            aria-label={closeButtonLabel}
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Tooltip>
+      )}
     </div>
   );
 };
