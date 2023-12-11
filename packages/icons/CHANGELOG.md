@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.12.1...@entur/icons@6.13.0) (2023-12-11)
+
+### Features
+
+- add troms fylkestrafikk icon ([ed516a1](https://bitbucket.org/enturas/design-system/commits/ed516a159f59536b8962feb84b75de77547605c9))
+
 # [6.12.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.11.2...@entur/icons@6.12.0) (2023-10-30)
 
 ### Features
