@@ -1,5 +1,6 @@
 import React from 'react';
 import { BaseAlertBox } from './BaseAlertBox';
+import './ToastAlertBox.scss';
 
 export type ToastAlertBoxProps = {
   /** Innholdet i toasten */
