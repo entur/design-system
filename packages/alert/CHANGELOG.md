@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.11](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.10...@entur/alert@0.15.11) (2023-12-12)
+
+### Bug Fixes
+
+- **SmallAlert:** fix closebutton in SmallAlert ([7c17b20](https://bitbucket.org/enturas/design-system/commits/7c17b209fc6cb072fcca0f956dbd7cdad65bd501))
+
 ## [0.15.10](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.9...@entur/alert@0.15.10) (2023-12-11)
 
 **Note:** Version bump only for package @entur/alert
