@@ -4,7 +4,7 @@ import { SegmentedChoice, SegmentedControl } from '@entur/form';
 import { Contrast } from '@entur/layout';
 import Logo from './Logo.svg';
 import LogoContrast from './LogoContrast.svg';
-import { TertiaryButton } from '@entur/button';
+import { SecondaryButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
 import { colors } from '@entur/tokens/dist';
 import { StrongText, Paragraph } from '@entur/typography';
@@ -72,7 +72,8 @@ const LogoPreview = () => {
             right: '2rem',
           }}
         >
-          <TertiaryButton
+          <SecondaryButton
+            size="small"
             style={{ marginRight: '0.5rem' }}
             as="a"
             href={files[0].node.publicURL}
@@ -80,11 +81,16 @@ const LogoPreview = () => {
           >
             <DownloadIcon />
             Entur Logoer RGB
-          </TertiaryButton>
-          <TertiaryButton as="a" href={files[1].node.publicURL} download>
+          </SecondaryButton>
+          <SecondaryButton
+            size="small"
+            as="a"
+            href={files[1].node.publicURL}
+            download
+          >
             <DownloadIcon />
             Entur Logoer CMYK
-          </TertiaryButton>
+          </SecondaryButton>
         </div>
       </Wrapper>
       <div style={{ marginTop: '1rem' }}>

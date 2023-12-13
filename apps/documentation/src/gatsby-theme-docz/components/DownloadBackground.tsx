@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { TertiaryButton } from '@entur/button';
+import { SecondaryButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
 
 export const DownloadBackground = () => {
@@ -17,7 +17,8 @@ export const DownloadBackground = () => {
     }
   `);
   return (
-    <TertiaryButton
+    <SecondaryButton
+      size="small"
       as="a"
       href={query.file.publicURL}
       download
@@ -25,6 +26,6 @@ export const DownloadBackground = () => {
     >
       <DownloadIcon />
       {query.file.name}.{query.file.extension}
-    </TertiaryButton>
+    </SecondaryButton>
   );
 };
