@@ -1,4 +1,4 @@
-import { TertiaryButton } from '@entur/button';
+import { SecondaryButton } from '@entur/button';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { DownloadIcon } from '@entur/icons';
@@ -17,7 +17,8 @@ export const DownloadWord = () => {
     }
   `);
   return (
-    <TertiaryButton
+    <SecondaryButton
+      size="small"
       as="a"
       href={query.file.publicURL}
       download
@@ -25,6 +26,6 @@ export const DownloadWord = () => {
     >
       <DownloadIcon />
       {query.file.name}.{query.file.extension}
-    </TertiaryButton>
+    </SecondaryButton>
   );
 };

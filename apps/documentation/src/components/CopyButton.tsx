@@ -1,7 +1,7 @@
 import React from 'react';
 import { useToast } from '@entur/alert';
 import copy from 'copy-text-to-clipboard';
-import { TertiaryButton } from '@entur/button';
+import { SecondaryButton } from '@entur/button';
 import { CopyIcon } from '@entur/icons';
 
 import './CopyButton.scss';
@@ -23,7 +23,8 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
     return () => clearTimeout(id);
   }, [isCopied]);
   return (
-    <TertiaryButton
+    <SecondaryButton
+      size="small"
       onClick={() => {
         copy(textToCopy);
         setCopied(true);
@@ -36,6 +37,6 @@ export const CopyButton: React.FC<Props> = ({ textToCopy, children }) => {
     >
       <span>{children} </span>
       <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
-    </TertiaryButton>
+    </SecondaryButton>
   );
 };
