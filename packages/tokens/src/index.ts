@@ -113,7 +113,7 @@ export const colors = {
       lilac: '#8e57e3',
     },
     contrast: {
-      blue: '#6466aa',
+      blue: '#6C6EB7',
       coral: '#ff5959',
       jungle: '#0fc2b3',
       azure: '#64b2fb',
