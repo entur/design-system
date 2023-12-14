@@ -32,6 +32,7 @@
     "@entur/icons": "^6.13.0",
     "@entur/tokens": "^3.11.1",
     "@entur/typography": "^1.8.18",
+    "@entur/tooltip": "^2.6.39",
     "@entur/utils": "^0.9.5",
     "classnames": "^2.3.1",
     "copy-text-to-clipboard": "^2.2"
