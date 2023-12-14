@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.12](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.11...@entur/alert@0.15.12) (2023-12-14)
+
+### Bug Fixes
+
+- **alert:** alert needs tooltip as dependency ([58a4dbe](https://bitbucket.org/enturas/design-system/commits/58a4dbe1260fc3a2d8117f6c0e239eaacc528ffa))
+
 ## [0.15.11](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.10...@entur/alert@0.15.11) (2023-12-12)
 
 ### Bug Fixes
