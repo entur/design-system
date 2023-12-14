@@ -74,7 +74,7 @@ export const Stepper: React.FC<StepperProps> = ({
         const props = isInteractive ? { onClick: () => onStepClick?.(i) } : {};
 
         return (
-          <li key={step}>
+          <li key={step} className="eds-stepper__step__wrapper">
             <Element
               className={classNames(
                 'eds-stepper__step',
