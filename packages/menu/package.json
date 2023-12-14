@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "4.2.8",
+  "version": "5.0.0-alpha.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",

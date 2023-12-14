@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.55...@entur/tab@1.0.0-alpha.0) (2023-12-14)
+
+### chore
+
+- **tab, modal, overflow menu:** update @reach/\* packages to version 0.18.0 ([d2b9304](https://bitbucket.org/enturas/design-system/commits/d2b93040b5f5716448235a4ac67c3de4ea2569f7))
+
+### BREAKING CHANGES
+
+- **tab, modal, overflow menu:** this version uses .mjs files instead of esm.js. You might need to configure |your bundler etc. to
+  work with these kind of files
+
 ## [0.4.54](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.53...@entur/tab@0.4.54) (2023-10-23)
 
 **Note:** Version bump only for package @entur/tab
