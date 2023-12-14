@@ -56,14 +56,8 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   const alertIsSet = alert !== 'none';
   const tagRef = useRef<HTMLDivElement>(null);
   const numberOfChildren = React.Children.count(children);
-  const {
-    Icon,
-    contrastBackgroundColor,
-    contrastTextColor,
-    backgroundColor,
-    textColor,
-    ariaLabel,
-  } = getTransportStyle(transport);
+  const { Icon, contrastBackgroundColor, backgroundColor, ariaLabel } =
+    getTransportStyle(transport);
 
   useEffect(() => {
     if (transportIsSet) {
@@ -71,12 +65,8 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         '--background-color',
         isContrast ? contrastBackgroundColor : backgroundColor,
       );
-      tagRef.current?.style.setProperty(
-        '--text-color',
-        isContrast ? contrastTextColor : textColor,
-      );
     }
-  }, [tagRef.current, backgroundColor, textColor]);
+  }, [tagRef.current, backgroundColor]);
 
   const TravelTagWithoutLabel: JSX.Element = (
     <div
