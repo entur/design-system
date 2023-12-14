@@ -76,7 +76,7 @@ export const colors = {
       tram: '#642e88',
       funicular: '#642e88',
       cableway: '#642e88',
-      taxi: '#926f07',
+      taxi: '#3d3e40',
       bicycle: '#181c56',
       walk: '#181c56',
       train: '#00367f',
