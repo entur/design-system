@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.2-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.11.1...@entur/tokens@3.11.2-beta.0) (2023-12-14)
+
+### Bug Fixes
+
+- **colortokens:** change hex on contrast blue ([dc1a58d](https://bitbucket.org/enturas/design-system/commits/dc1a58d0ab3b706263bfdbe92f61c6e1a17e94f5))
+
 # [3.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.10.0...@entur/tokens@3.11.0) (2023-10-23)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.10-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.9...@entur/menu@4.2.10-beta.0) (2023-12-14)
+
+### Bug Fixes
+
+- **stepper:** fix visual bugs on small screen widths ([6b8c8f9](https://bitbucket.org/enturas/design-system/commits/6b8c8f9fe39ce64146b38c4d5b29c023a7f13f60))
+
 ## [4.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.8...@entur/menu@4.2.9) (2023-12-11)
 
 **Note:** Version bump only for package @entur/menu

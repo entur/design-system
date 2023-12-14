@@ -1,6 +1,6 @@
 {
   "name": "@entur/grid",
-  "version": "0.3.38",
+  "version": "0.3.39-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/grid.esm.js",
@@ -23,7 +23,7 @@
     "lint": "dts lint src"
   },
   "dependencies": {
-    "@entur/tokens": "^3.11.1",
+    "@entur/tokens": "^3.11.2-beta.0",
     "@entur/utils": "^0.9.5",
     "classnames": "^2.3.1"
   },
