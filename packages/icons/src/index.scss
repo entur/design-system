@@ -15,46 +15,46 @@ p .eds-icon {
 }
 
 .eds-contrast .eds-icon {
-  &__metro :where(g, path) {
-    fill: t.$colors-transport-contrast-metro;
+  &__metro {
+    color: t.$colors-transport-contrast-metro;
   }
-  &__bus :where(g, path) {
-    fill: t.$colors-transport-contrast-bus;
+  &__bus {
+    color: t.$colors-transport-contrast-bus;
   }
-  &__plane :where(g, path) {
-    fill: t.$colors-transport-contrast-plane;
+  &__plane {
+    color: t.$colors-transport-contrast-plane;
   }
-  &__helicopter :where(g, path) {
-    fill: t.$colors-transport-contrast-helicopter;
+  &__helicopter {
+    color: t.$colors-transport-contrast-helicopter;
   }
-  &__tram :where(g, path) {
-    fill: t.$colors-transport-contrast-tram;
+  &__tram {
+    color: t.$colors-transport-contrast-tram;
   }
-  &__funicular :where(g, path) {
-    fill: t.$colors-transport-contrast-funicular;
+  &__funicular {
+    color: t.$colors-transport-contrast-funicular;
   }
-  &__cableway :where(g, path) {
-    fill: t.$colors-transport-contrast-cableway;
+  &__cableway {
+    color: t.$colors-transport-contrast-cableway;
   }
-  &__taxi :where(g, path) {
-    fill: t.$colors-transport-contrast-taxi;
+  &__taxi {
+    color: t.$colors-transport-contrast-taxi;
   }
-  &__bicycle :where(g, path) {
-    fill: t.$colors-transport-contrast-bicycle;
+  &__bicycle {
+    color: t.$colors-transport-contrast-bicycle;
   }
-  &__walk :where(g, path) {
-    fill: t.$colors-transport-contrast-walk;
+  &__walk {
+    color: t.$colors-transport-contrast-walk;
   }
-  &__train :where(g, path) {
-    fill: t.$colors-transport-contrast-train;
+  &__train {
+    color: t.$colors-transport-contrast-train;
   }
-  &__ferry :where(g, path) {
-    fill: t.$colors-transport-contrast-ferry;
+  &__ferry {
+    color: t.$colors-transport-contrast-ferry;
   }
-  &__carferry :where(g, path) {
-    fill: t.$colors-transport-contrast-carferry;
+  &__carferry {
+    color: t.$colors-transport-contrast-carferry;
   }
-  &__mobility :where(g, path) {
-    fill: t.$colors-transport-contrast-mobility;
+  &__mobility {
+    color: t.$colors-transport-contrast-mobility;
   }
 }
