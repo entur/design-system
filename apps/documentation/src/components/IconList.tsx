@@ -1,3 +1,8 @@
+import React from 'react';
+import classNames from 'classnames';
+import copy from 'copy-text-to-clipboard';
+import { Searcher, search } from 'fast-fuzzy';
+
 import { useToast } from '@entur/alert';
 import { IconButton } from '@entur/button';
 import {
@@ -11,11 +16,9 @@ import { fontSizes } from '@entur/tokens';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
 import { Heading4, SubLabel } from '@entur/typography';
-import classNames from 'classnames';
-import copy from 'copy-text-to-clipboard';
-import { matchSorter } from 'match-sorter';
-import React from 'react';
+
 import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
+
 import './IconList.scss';
 
 type IconListProps = {
@@ -23,6 +26,15 @@ type IconListProps = {
     [key: string]: React.Component<any, any>;
   }[];
 };
+type IconListItem = {
+  category: string;
+  rootCategory?: string;
+  name: string;
+  component: {
+    [key: string]: React.Component<any, any, any>;
+  };
+};
+
 const ICON_SIZES = [
   { label: 'Small', value: fontSizes.small.toString() },
   { label: 'Medium', value: fontSizes.medium.toString() },
@@ -32,99 +44,90 @@ const ICON_SIZES = [
   { label: '4XLarge', value: fontSizes.extraLarge4.toString() },
 ];
 
-const mapIconsToCategories = iconList => {
-  const map = new Map<
-    string,
-    Array<{
-      category: string;
-      name: string;
-    }>
-  >();
-  iconList.forEach(icon => {
-    const category = icon.category;
-    const collection = map.get(category);
-    if (collection !== undefined) {
-      collection.push(icon);
-    } else {
-      map.set(category, [icon]);
-    }
-
-    // if category is eg. 'UI/Arrows', this will add the icon to 'UI' as well
-    const rootCategory = category.split('/')[0];
-    if (category !== rootCategory) {
-      const rootCollection = map.get(rootCategory);
-      if (rootCollection !== undefined) {
-        rootCollection.push(icon);
-      } else {
-        map.set(rootCategory, [icon]);
-      }
-    }
-  });
-  return map;
-};
-
 const unique = (value: string, index: number, listWithItems: string[]) => {
   return listWithItems.indexOf(value) === index;
 };
 
-const IconList: React.FC<IconListProps> = ({ icons: iconComponents }) => {
+const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const { addToast } = useToast();
   const iconsQuery = useGetIcons();
   const [isContrast, setContrast] = React.useState(false);
-  const [searchString, setFilterString] = React.useState('');
+  const [searchString, setSearchString] = React.useState('');
   const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>({
     label: '2XLarge',
     value: fontSizes.extraLarge2.toString(),
   });
-  const [category, setCategory] =
+  const [selectedCategory, setSelectedCategory] =
     React.useState<NormalizedDropdownItemType | null>(null);
 
-  const allIcons = iconsQuery.map(icon => {
-    const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
-    // console.log('entries', Object.entries(iconComponents));
+  const allIcons = React.useMemo(
+    () =>
+      iconsQuery.map(icon => {
+        const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+        const iconComponent = Object.entries(allIconComponents).find(
+          iconComponent => iconComponent?.[0] === iconName,
+        )?.[1];
 
-    const iconComponent = Object.entries(iconComponents).find(
-      component => component?.[0] === iconName,
-    )?.[1];
+        const category =
+          icon.node.absolutePath.match(/icons\/(.*?)\/[^\/]+\.svg/)?.[1] ??
+          'None';
+        const rootCategory = category.split('/')[1];
 
-    return {
-      category:
-        icon.node.absolutePath.match(/icons\/(.*?)\/[^\/]+\.svg/)?.[1] ??
-        'None',
-      name: iconName,
-      component: iconComponent,
-    };
-  });
+        return {
+          category: category,
+          rootCategory: rootCategory,
+          name: iconName,
+          component: iconComponent,
+        } as IconListItem;
+      }),
+    [iconsQuery, allIconComponents],
+  );
 
-  const iconsMappedToCategory = mapIconsToCategories(allIcons);
+  const SEARCH_OPTIONS = React.useMemo(
+    () => ({
+      keySelector: (icon: IconListItem) => icon.name,
+      threshold: 0.8,
+    }),
+    [],
+  );
 
-  const filteredIcons = React.useMemo(() => {
-    const isCategorySelected = category !== null;
+  const searcherAllIcons = React.useMemo(
+    () => new Searcher(allIcons, SEARCH_OPTIONS),
+    [allIcons, SEARCH_OPTIONS],
+  );
 
-    if (!isCategorySelected && searchString === '') return allIcons;
+  const displayedIcons = React.useMemo(() => {
+    const categoryIsSelected = selectedCategory !== null;
 
-    if (isCategorySelected) {
-      const filteredOnCategory = allIcons.filter(
-        icon => icon.category === category.value,
-      );
-
-      if (searchString === '') return filteredOnCategory;
-
-      return matchSorter(filteredOnCategory, searchString, { keys: ['0'] });
+    if (!categoryIsSelected) {
+      if (searchString === '') return allIcons;
+      return searcherAllIcons.search(searchString);
     }
 
-    return matchSorter(allIcons, searchString, { keys: ['0'] });
-  }, [category, searchString, allIcons]);
+    const iconsInSelectedCategory = allIcons.filter(
+      icon => icon.category === selectedCategory.value,
+    );
+
+    if (searchString === '') return iconsInSelectedCategory;
+
+    return search(searchString, iconsInSelectedCategory, SEARCH_OPTIONS);
+  }, [
+    allIcons,
+    searchString,
+    selectedCategory,
+    searcherAllIcons,
+    SEARCH_OPTIONS,
+  ]);
 
   const categories = allIcons
     .map(icon => icon.category)
     .filter(unique)
     .sort();
 
-  const noHits = filteredIcons.length === 0;
+  const noHits = displayedIcons.length === 0;
   const feedbackText =
     searchString.length > 0
-      ? `${filteredIcons.length}\u00A0treff på søket ditt`
+      ? `${displayedIcons.length}\u00A0treff på søket ditt`
       : undefined;
 
   const handleIconClick = (iconName: string) => () => {
@@ -148,7 +151,7 @@ const IconList: React.FC<IconListProps> = ({ icons: iconComponents }) => {
             variant={noHits ? 'error' : 'info'}
             value={searchString}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setFilterString(e.target.value)
+              setSearchString(e.target.value)
             }
             prepend={<SearchIcon aria-hidden="true" />}
           />
@@ -165,8 +168,8 @@ const IconList: React.FC<IconListProps> = ({ icons: iconComponents }) => {
           <SearchableDropdown
             label="Kategori"
             items={() => categories}
-            selectedItem={category}
-            onChange={setCategory}
+            selectedItem={selectedCategory}
+            onChange={setSelectedCategory}
           />
         </GridItem>
       </GridContainer>
@@ -182,7 +185,7 @@ const IconList: React.FC<IconListProps> = ({ icons: iconComponents }) => {
             </Switch>
           </div>
           <ul className="icon-list">
-            {filteredIcons.map(({ name: iconName, component: Icon }) => (
+            {displayedIcons.map(({ name: iconName, component: Icon }) => (
               <li
                 className={classNames('icon-list__item', {
                   'eds-contrast': isContrast,
