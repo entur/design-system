@@ -21,6 +21,7 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     transition: border-color t.$timings-fast;
 
@@ -35,9 +36,11 @@
     text-wrap: nowrap;
   }
 
-  &__button {
+  & &__button {
     margin: -0.5rem; // remove extra spacing added by icon button padding
     margin-left: 0.5rem;
+    width: fit-content;
+    height: fit-content;
 
     &:hover {
       background-color: t.$colors-blues-blue40;
