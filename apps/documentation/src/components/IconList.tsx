@@ -4,7 +4,7 @@ import copy from 'copy-text-to-clipboard';
 import { Searcher, search } from 'fast-fuzzy';
 
 import { useToast } from '@entur/alert';
-import { IconButton } from '@entur/button';
+import { IconButton, SecondaryButton } from '@entur/button';
 import {
   Dropdown,
   NormalizedDropdownItemType,
@@ -15,7 +15,15 @@ import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
-import { Heading4, SubLabel } from '@entur/typography';
+import {
+  Heading2,
+  Heading3,
+  Heading4,
+  Link,
+  ListItem,
+  SubLabel,
+  UnorderedList,
+} from '@entur/typography';
 
 import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
 
@@ -33,6 +41,7 @@ type IconListItem = {
   component: {
     [key: string]: React.Component<any, any, any>;
   };
+  downloadUrl: string;
 };
 
 const ICON_SIZES = [
@@ -53,10 +62,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const iconsQuery = useGetIcons();
   const [isContrast, setContrast] = React.useState(false);
   const [searchString, setSearchString] = React.useState('');
-  const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>({
-    label: '2XLarge',
-    value: fontSizes.extraLarge2.toString(),
-  });
+  const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>(
+    ICON_SIZES[ICON_SIZES.length - 1],
+  );
   const [selectedCategory, setSelectedCategory] =
     React.useState<NormalizedDropdownItemType | null>(null);
 
@@ -67,6 +75,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
         const iconComponent = Object.entries(allIconComponents).find(
           iconComponent => iconComponent?.[0] === iconName,
         )?.[1];
+        const downloadUrl = icon.node.publicURL;
 
         const category =
           icon.node.absolutePath.match(/icons\/(.*?)\/[^\/]+\.svg/)?.[1] ??
@@ -78,6 +87,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           rootCategory: rootCategory,
           name: iconName,
           component: iconComponent,
+          downloadUrl: downloadUrl,
         } as IconListItem;
       }),
     [iconsQuery, allIconComponents],
@@ -124,11 +134,8 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     .filter(unique)
     .sort();
 
-  const noHits = displayedIcons.length === 0;
-  const feedbackText =
-    searchString.length > 0
-      ? `${displayedIcons.length}\u00A0treff på søket ditt`
-      : undefined;
+  const noResults = displayedIcons.length === 0;
+  const numberOfResultsString = `${displayedIcons.length}\u00A0ikoner`;
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -138,17 +145,20 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     });
   };
 
+  const resetFilter = () => {
+    setSearchString('');
+    setSelectedCategory(null);
+  };
+
   return (
     <div>
-      <Heading4 as="div" style={{ marginBottom: '1rem' }}>
-        Filter
-      </Heading4>
+      <Heading3 as="h2" style={{ marginBottom: '1rem' }}>
+        Søk etter et ikon
+      </Heading3>
       <GridContainer spacing="medium">
         <GridItem small={12} medium={4}>
           <TextField
             label="Søk etter ikon"
-            feedback={feedbackText}
-            variant={noHits ? 'error' : 'info'}
             value={searchString}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setSearchString(e.target.value)
@@ -173,63 +183,84 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           />
         </GridItem>
       </GridContainer>
-      {!noHits && (
+      {noResults ? (
+        <div className="icon-list__no-results">
+          <Heading2 as="h3">Finner ingen ikoner</Heading2>
+          <SecondaryButton
+            className="icon-list__no-results__reset-filter"
+            size="small"
+            onClick={resetFilter}
+          >
+            Nullstill søk
+          </SecondaryButton>
+          <Heading4>Her er noen forslag til hva du kan gjøre:</Heading4>
+          <UnorderedList>
+            <ListItem>Prøv å bruke synonymer for «{searchString}»</ListItem>
+            <ListItem>
+              Prøv å beskrive handlingen til ikonet i stedet for utseende, eks.
+              «search» i stedet for «magnifying glass»
+            </ListItem>
+            <ListItem>Søk på engelsk</ListItem>
+            <ListItem>
+              Hvis ikonet ikke eksisterer, meld det inn til oss på{' '}
+              <Link href="https://entur.slack.com/archives/C899QSPB7">
+                #talk-designsystem
+              </Link>
+              , så hjelper vi deg!
+            </ListItem>
+          </UnorderedList>
+        </div>
+      ) : (
         <>
-          <div style={{ display: 'flex' }}>
+          <div className="icon-list__header">
             <Switch
               checked={isContrast}
               onChange={() => setContrast(prev => !prev)}
-              style={{ margin: '1rem 0' }}
             >
               Kontrast
             </Switch>
+            <span>{numberOfResultsString}</span>
           </div>
           <ul className="icon-list">
-            {displayedIcons.map(({ name: iconName, component: Icon }) => (
-              <li
-                className={classNames('icon-list__item', {
-                  'eds-contrast': isContrast,
-                })}
-                key={iconName}
-              >
-                <SubLabel
-                  as="button"
-                  className="icon-list__item-name"
-                  onClick={handleIconClick(iconName)}
+            {displayedIcons.map(
+              ({ name: iconName, component: Icon, downloadUrl }) => (
+                <li
+                  className={classNames('icon-list__item', {
+                    'eds-contrast': isContrast,
+                  })}
+                  key={iconName}
                 >
-                  {iconName}
-                  <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
-                </SubLabel>
-                <Icon
-                  style={{ width: iconSize?.value, height: iconSize?.value }}
-                  aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
-                />
-                <div className="icon-list__item-buttons">
-                  <Tooltip
-                    aria-hidden="true"
-                    content="Last ned SVG"
-                    placement="top"
+                  <SubLabel
+                    as="button"
+                    className="icon-list__item-name"
+                    onClick={handleIconClick(iconName)}
                   >
-                    <IconButton
-                      as="a"
-                      aria-label={`Last ned ${iconName}.svg`}
-                      download
-                      href={
-                        iconsQuery
-                          .filter(
-                            icon =>
-                              icon.node.name.split(' ').join('') + 'Icon' ===
-                              iconName,
-                          )
-                          .map(node => node.node.publicURL)[0]
-                      }
+                    <span>{iconName}</span>
+                    <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
+                  </SubLabel>
+                  <Icon
+                    style={{ width: iconSize?.value, height: iconSize?.value }}
+                    aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
+                  />
+                  <div className="icon-list__item-buttons">
+                    <Tooltip
+                      aria-hidden="true"
+                      content="Last ned SVG"
+                      placement="top"
                     >
-                      <DownloadIcon />
-                    </IconButton>
-                  </Tooltip>
-                </div>
-              </li>
-            ))}
+                      <IconButton
+                        as="a"
+                        aria-label={`Last ned ${iconName}.svg`}
+                        download
+                        href={downloadUrl}
+                      >
+                        <DownloadIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </div>
+                </li>
+              ),
+            )}
           </ul>
         </>
       )}
