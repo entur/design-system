@@ -102,7 +102,7 @@ export type DatePickerProps<DateType extends DateValue> = {
   navigationDescription?: string;
   /** Tvinger typen på onChange til den gitte typen.
    * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-   * DatePicker f.eks alltid skal returnere en ZonedDateTime.
+   * DatePicker f.eks alltid skal returnere en 'ZonedDateTime'.
    *
    * @default undefined (onChange returnerer DateValue bassert på value, og om tid vises eller ikke)
    *
