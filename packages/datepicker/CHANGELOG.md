@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.0.3...@entur/datepicker@9.1.0-RC.0) (2023-12-18)
+
+### Features
+
+- **datepicker:** add new prop forcedReturnType ([7967442](https://bitbucket.org/enturas/design-system/commits/79674421db100b8da96a4327bb0b1b90bdde1917))
+
 ## [9.0.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.0.2...@entur/datepicker@9.0.3) (2023-12-11)
 
 **Note:** Version bump only for package @entur/datepicker

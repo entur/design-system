@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.56-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.55...@entur/tab@0.4.56-RC.0) (2023-12-18)
+
+**Note:** Version bump only for package @entur/tab
+
 ## [0.4.54](https://bitbucket.org/enturas/design-system/compare/@entur/tab@0.4.53...@entur/tab@0.4.54) (2023-10-23)
 
 **Note:** Version bump only for package @entur/tab
