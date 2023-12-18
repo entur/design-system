@@ -34,7 +34,7 @@ import type { VariantType } from '@entur/form';
 import { DateField } from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { lastMillisecondOfDay } from '../shared/utils';
+import { convertValueToType, lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
 
@@ -100,6 +100,25 @@ export type DatePickerProps<DateType extends DateValue> = {
    * @default 'Bruk piltastene til å navigere mellom datoer'
    */
   navigationDescription?: string;
+  /** Tvinger typen på onChange til den gitte typen.
+   * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
+   * DatePicker f.eks alltid skal returnere en ZonedDateTime.
+   *
+   * @default undefined (onChange returnerer DateValue bassert på value, og om tid vises eller ikke)
+   *
+   * Hvorfor er dette nødvendig?
+   * I utgangspunktet vil en DatePicker som initieres med 'null' som verdi og ikke viser tid returnere en CalendarDate.
+   * Dette er problematisk hvis du bruker datovelgeren sammen en TimePicker da
+   * denne ikke støtter dato uten tidspunkt (CalendarDate). Ved å da tvinge DatePicker til å returnere
+   * CalendarDateTime eller ZonedDateTime vil du kunne bruke den sammen med TimePicker.
+   *
+   * Hvorfor kan ikke dette gjøres automatisk?
+   * En DatePicker som initieres med 'null' som verdi gir ingen informasjon om hvilken type man ønsker å returnere.
+   * DatePicker støtter dog at du kan sende med en TypeScript-type, men TypeScript eksisterer ikke i runtime og
+   * kan derfor ikke brukes til å bestemme hvilken type som skal returneres. Det er derfor nødvendig å enten gi
+   * en initiell 'selectedDate' eller tvinge typen med denne prop-en.
+   */
+  forcedReturnType?: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
@@ -133,6 +152,7 @@ export const DatePicker = <DateType extends DateValue>({
   minDate,
   maxDate,
   modalTreshold = 1000,
+  forcedReturnType,
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -141,6 +161,19 @@ export const DatePicker = <DateType extends DateValue>({
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
 
   const { width } = useWindowDimensions();
+
+  const handleOnChange = (value: MappedDateValue<DateType> | null) => {
+    if (forcedReturnType !== undefined) {
+      return onChange(
+        convertValueToType({
+          value,
+          type: forcedReturnType,
+        }) as MappedDateValue<DateType> | null,
+      );
+    }
+
+    onChange(value);
+  };
 
   const state = useDatePickerState({
     ...rest,
@@ -153,7 +186,7 @@ export const DatePicker = <DateType extends DateValue>({
         ? lastMillisecondOfDay(maxDate)
         : undefined,
     value: selectedDate,
-    onChange,
+    onChange: handleOnChange,
     granularity: showTime ? 'minute' : rest.granularity,
     isDisabled: disabled,
   });
@@ -189,13 +222,12 @@ export const DatePicker = <DateType extends DateValue>({
     ...dialogProps,
     ...calendarProps,
     disabled,
-    navigationDescription: navigationDescription,
+    navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
     selectedDate,
-    onChange,
+    onChange: handleOnChange,
     minDate,
     maxDate,
-    granularity: showTime ? 'minute' : rest.granularity,
     ref: calendarRef,
   };
 
@@ -255,7 +287,7 @@ export const DatePicker = <DateType extends DateValue>({
           <DateField
             {...fieldProps}
             selectedDate={selectedDate}
-            onChange={onChange}
+            onChange={handleOnChange}
             label={rest.label}
             labelProps={labelProps}
             disabled={disabled}

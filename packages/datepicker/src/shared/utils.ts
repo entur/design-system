@@ -7,6 +7,8 @@ import {
   getLocalTimeZone,
   CalendarDate,
   toCalendarDateTime,
+  toCalendarDate,
+  toZoned,
 } from '@internationalized/date';
 import { TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
@@ -157,3 +159,26 @@ export const lastMillisecondOfDay = (dateValue: DateValue) =>
   toCalendarDateTime(dateValue.add({ days: 1 })).add({
     milliseconds: -1,
   });
+
+export const convertValueToType = ({
+  value,
+  type,
+}: {
+  value: DateValue | null;
+  type: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
+}) => {
+  if (value === null) return null;
+  switch (type) {
+    case 'CalendarDate':
+      return toCalendarDate(value);
+
+    case 'CalendarDateTime':
+      return toCalendarDateTime(value);
+
+    case 'ZonedDateTime':
+      return toZoned(value, 'Europe/Oslo');
+
+    default:
+      return value;
+  }
+};

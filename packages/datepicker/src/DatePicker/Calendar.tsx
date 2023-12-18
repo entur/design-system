@@ -57,7 +57,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
   ) => {
     const { locale } = useLocale();
 
-    const state = useCalendarState({
+    const allProps = {
       ...rest,
       value: selectedDate,
       onChange,
@@ -65,9 +65,11 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       createCalendar,
       minValue: minDate,
       maxValue: maxDate,
-    });
+    };
+
+    const state = useCalendarState(allProps);
     const { calendarProps, prevButtonProps, nextButtonProps, title } =
-      useCalendar(rest, state);
+      useCalendar(allProps, state);
 
     return (
       <ConditionalWrapper
