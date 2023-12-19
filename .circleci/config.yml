@@ -24,8 +24,8 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - v1-yarn-cache-{{ checksum "yarn.lock" }}
-            - v1-yarn-cache-
+            - v2_3-yarn-cache-{{ checksum "yarn.lock" }}
+            - v2_3-yarn-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -33,11 +33,40 @@ jobs:
           name: Install Dependencies
           command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
 
+      - run:
+          name: Print directory and contetn
+          command: pwd && ls -la
+
       - save_cache:
           name: Save Yarn Package Cache
-          key: v1-yarn-cache-{{ checksum "yarn.lock" }}
+          key: v2_3-yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+            - node_modules
+            - apps/documentation/node_modules
+            - apps/code-playground/node_modules
+            - packages/icons/node_modules
+            - packages/a11y/node_modules
+            - packages/grid/node_modules
+            - packages/tab/node_modules
+            - packages/typography/node_modules
+            - packages/layout/node_modules
+            - packages/loader/node_modules
+            - packages/expand/node_modules
+            - packages/button/node_modules
+            - packages/alert/node_modules
+            - packages/menu/node_modules
+            - packages/fileupload/node_modules
+            - packages/modal/node_modules
+            - packages/tooltip/node_modules
+            - packages/form/node_modules
+            - packages/chip/node_modules
+            - packages/datepicker/node_modules
+            - packages/travel/node_modules
+            - packages/table/node_modules
+            - packages/dropdown/node_modules
+            - packages/utils/node_modules
+            - packages/tokens/node_modules
 
       - run:
           name: build packages
