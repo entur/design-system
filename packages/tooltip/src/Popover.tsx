@@ -102,6 +102,7 @@ export const Popover: React.FC<PopoverProps> = ({
       'aria-haspopup': 'dialog',
       'aria-expanded': showPopover,
       ref: triggerElement,
+      type: 'button',
     };
     const buttonOnClick = {
       onClick: (e: React.MouseEvent) => {
@@ -120,6 +121,7 @@ export const Popover: React.FC<PopoverProps> = ({
       e.preventDefault();
       setShowPopover(false);
     },
+    type: 'button',
   };
   const popoverContentProps = React.useCallback(() => {
     const contentProps = {

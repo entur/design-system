@@ -174,6 +174,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
                 <IconButton
                   className="eds-tooltip__close-button"
                   onClick={() => setShowTooltip(false)}
+                  type="button"
                 >
                   <CloseIcon />
                 </IconButton>

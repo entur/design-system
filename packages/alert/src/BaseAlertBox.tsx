@@ -108,6 +108,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
             className="eds-alert-box__close-button"
             aria-label={closeButtonLabel}
             onClick={handleClose}
+            type="button"
           >
             <CloseIcon />
           </IconButton>

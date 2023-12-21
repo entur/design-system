@@ -68,6 +68,7 @@ export const Modal: React.FC<ModalProps> = ({
             className="eds-modal__close"
             aria-label={closeLabel}
             onClick={onDismiss}
+            type="button"
           >
             <CloseIcon />
           </IconButton>
