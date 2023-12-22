@@ -152,9 +152,6 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
 
   return (
     <div>
-      <Heading3 as="h2" style={{ marginBottom: '1rem' }}>
-        Søk etter et ikon
-      </Heading3>
       <GridContainer spacing="medium">
         <GridItem small={12} medium={4}>
           <TextField
