@@ -29,7 +29,7 @@
     }
     &:hover,
     &:focus-within {
-      .icon-list__item-buttons {
+      .icon-list__item__download-button {
         opacity: 1;
       }
     }
@@ -71,10 +71,11 @@
         }
       }
     }
-    &-buttons {
+    &__download-button {
       align-self: flex-end;
       opacity: 0;
       padding-right: $space-extra-small;
+      margin-right: $space-extra-small;
     }
 
     .eds-contrast & {

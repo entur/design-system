@@ -13,11 +13,11 @@ import {
 import { Switch, TextField } from '@entur/form';
 import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
+import { VisuallyHidden } from '@entur/a11y';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
   Heading2,
-  Heading3,
   Heading4,
   Link,
   ListItem,
@@ -28,7 +28,6 @@ import {
 import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
 
 import './IconList.scss';
-
 type IconListProps = {
   icons: {
     [key: string]: React.Component<any, any>;
@@ -135,7 +134,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
     .sort();
 
   const noResults = displayedIcons.length === 0;
-  const numberOfResultsString = `${displayedIcons.length}\u00A0ikoner`;
+  const numberOfResultsString = `${displayedIcons.length}\u00A0ikon${
+    displayedIcons.length === 1 ? '' : 'er'
+  }`;
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -182,7 +183,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       </GridContainer>
       {noResults ? (
         <div className="icon-list__no-results">
-          <Heading2 as="h3">Finner ingen ikoner</Heading2>
+          <Heading2 as="h3" aria-live="polite">
+            Finner ingen ikoner
+          </Heading2>
           <SecondaryButton
             className="icon-list__no-results__reset-filter"
             size="small"
@@ -216,7 +219,10 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
             >
               Kontrast
             </Switch>
-            <span>{numberOfResultsString}</span>
+            <span aria-live="polite">
+              {numberOfResultsString}
+              <VisuallyHidden> funnet</VisuallyHidden>
+            </span>
           </div>
           <ul className="icon-list">
             {displayedIcons.map(
@@ -239,22 +245,21 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                     style={{ width: iconSize?.value, height: iconSize?.value }}
                     aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
                   />
-                  <div className="icon-list__item-buttons">
-                    <Tooltip
-                      aria-hidden="true"
-                      content="Last ned SVG"
-                      placement="top"
+                  <Tooltip
+                    aria-hidden="true"
+                    content="Last ned SVG"
+                    placement="top"
+                  >
+                    <IconButton
+                      as="a"
+                      aria-label={`Last ned ${iconName}.svg`}
+                      download
+                      href={downloadUrl}
+                      className="icon-list__item__download-button"
                     >
-                      <IconButton
-                        as="a"
-                        aria-label={`Last ned ${iconName}.svg`}
-                        download
-                        href={downloadUrl}
-                      >
-                        <DownloadIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
+                      <DownloadIcon />
+                    </IconButton>
+                  </Tooltip>
                 </li>
               ),
             )}
