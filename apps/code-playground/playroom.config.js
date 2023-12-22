@@ -9,6 +9,7 @@ module.exports = {
   port: 9000,
   openBrowser: true,
   paramType: 'search', // default is 'hash'
+  snippets: './src/snippets.ts',
   exampleCode: `
     <div>
     </div>
