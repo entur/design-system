@@ -1,31 +1,34 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-tag {
-  --background-color: #{t.$colors-greys-grey70};
-  --text-color: inherit;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border-radius: t.$border-radiuses-medium;
+  --background-color: #{t.$colors-greys-grey40};
+  --text-color: #{t.$colors-brand-white};
+
   display: inline-flex;
-  font-size: t.$font-sizes-medium;
-  line-height: t.$space-large;
+  position: relative;
+  padding: t.$space-extra-small2 t.$space-extra-small;
   height: t.$space-extra-large;
   min-width: t.$space-extra-large;
-  padding: t.$space-extra-small2 t.$space-extra-small;
-  position: relative;
+  font-size: t.$font-sizes-medium;
+  line-height: t.$space-large;
+  border-radius: t.$border-radiuses-medium;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
 
   .eds-contrast & {
-    background-color: t.$colors-blues-blue20;
+    --background-color: #{t.$colors-greys-grey60};
+    --text-color: #{t.$colors-brand-blue};
   }
 
   &--alert {
     padding-right: t.$space-small;
     &--error {
-      box-shadow: inset 0 0 0 20px rgba(255, 255, 255, 0.5); // adds 50% white overlay
+      box-shadow: inset 0 0 0 20px rgba(t.$colors-brand-white, 0.7); // adds 50% white overlay
+      --text-color: var(--background-color);
       .eds-contrast &.eds-travel-tag {
-        box-shadow: none;
-        background-color: rgba(0, 0, 0, 0);
-        border: t.$border-widths-default dashed t.$colors-blues-blue30;
+        box-shadow: inset 0 0 0 20px rgba(t.$colors-brand-blue, 0.7); // adds 50% black overlay;
+        --text-color: var(--background-color);
       }
     }
   }
@@ -35,43 +38,10 @@
 
   > .eds-icon {
     font-size: t.$font-sizes-extra-large2;
-    color: t.$colors-brand-white;
-
-    .eds-contrast & :where(g, path) {
-      fill: var(--background-color);
-    }
-  }
-
-  &__close-button {
-    appearance: none;
-    background: none;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 0 0 0 t.$space-small;
-    padding: 0;
-    height: t.$space-large;
-    width: t.$space-large;
-    .eds-icon {
-      color: t.$colors-brand-blue;
-      font-size: t.$font-sizes-medium;
-      .eds-contrast & {
-        color: t.$colors-brand-white;
-      }
-    }
-    &:focus,
-    :focus-within {
-      outline-offset: t.$outline-offsets-focus;
-      outline: none;
-      box-shadow: t.$shadows-focus;
-      .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
-      }
-    }
+    color: var(--text-color);
   }
 
   &__alert {
-    background: t.$colors-brand-white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -80,6 +50,7 @@
     font-size: t.$font-sizes-large;
     height: calc(t.$space-default + t.$border-widths-medium);
     width: calc(t.$space-default + t.$border-widths-medium);
+
     position: absolute;
     top: calc(
       (t.$space-extra-large - (t.$space-default + t.$border-widths-medium)) / 2
@@ -87,11 +58,10 @@
     right: calc(
       -1 * (t.$space-default - t.$border-widths-medium) / 2 - t.$space-extra-small2
     );
+
+    background: t.$colors-brand-white;
     .eds-contrast & {
       background: t.$colors-brand-blue;
-      &--error-icon {
-        top: calc((t.$space-extra-large - (t.$font-sizes-medium)) / 2);
-      }
     }
 
     &-exclamation-icon {
@@ -107,7 +77,6 @@
       font-size: t.$font-sizes-medium;
       color: t.$colors-validation-lava;
       .eds-contrast & {
-        margin-bottom: t.$space-extra-small2;
         color: t.$colors-validation-lava-contrast;
       }
     }
@@ -146,6 +115,27 @@
     &--bottom {
       margin-top: calc(t.$space-extra-small2 / 2);
       font-size: t.$font-sizes-medium;
+    }
+  }
+
+  &__close-button {
+    appearance: none;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 0 0 t.$space-small;
+    padding: 0;
+    height: t.$space-large;
+    width: t.$space-large;
+    .eds-icon {
+      color: var(--text-color);
+      font-size: t.$font-sizes-medium;
+    }
+    &:focus,
+    :focus-within {
+      outline-offset: t.$outline-offsets-focus;
+      outline: t.$outlines-focus-contrast;
     }
   }
 }
