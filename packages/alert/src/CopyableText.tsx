@@ -25,7 +25,7 @@ export type CopyableTextProps = {
    * @default `${textToCopy} ble kopiert til utklippstavlen.`
    */
   successMessage?: string;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+} & Omit<React.ButtonHTMLAttributes<HTMLDivElement>, 'children'>;
 
 export const CopyableText = ({
   children,
@@ -51,12 +51,11 @@ export const CopyableText = ({
       addToast({ title: successHeading, content: _successMessage });
   };
   return (
-    <button
+    <div
       className={'eds-copyable-text ' + className}
       style={{ ...rest.style }}
       type="button"
       onClick={handleClick}
-      ref={buttonRef}
       tabIndex={-1}
       aria-label=""
       {...rest}
@@ -67,10 +66,11 @@ export const CopyableText = ({
           className="eds-copyable-text__button"
           aria-label={ariaLabel}
           type="button"
+          ref={buttonRef}
         >
           <CopyIcon className={'eds-copyable-text__button__icon'} />
         </IconButton>
       </PreformattedText>
-    </button>
+    </div>
   );
 };

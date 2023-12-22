@@ -11,6 +11,16 @@ tags: ikoner, icons
 import { Props } from 'docz';
 import { Playground } from '~/components/playground/Playground';
 import { PrimaryButton } from '@entur/button';
+import { ExpandableText } from '@entur/expand';
+import { Heading2, CodeText } from '@entur/typography';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  HeaderCell,
+  DataCell,
+} from '@entur/table';
 import { AddIcon } from '@entur/icons';
 import * as icons from '@entur/icons';
 import IconList from '~/components/IconList';
@@ -25,12 +35,89 @@ import sizeDontSrc from './size-dont.png';
 
 <PageHeader />
 
-Enturs UI-ikoner er funksjonelle ikoner, til bruk i alle Enturs digitale kanaler. Alle ikonene er laget på huset – ta kontakt
-på #talk-designsystem hvis det mangler et ikon du trenger.
+## Søk etter et ikon
 
 <IconList icons={icons} />
 
-### Props
+## Bruk
+
+Enturs UI-ikoner er funksjonelle ikoner, til bruk i alle Enturs digitale kanaler. Alle ikonene er laget på huset – ta kontakt
+på [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7) hvis det mangler et ikon du trenger.
+
+<ExpandableText title="Props" titleElement="Heading3">
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Type</HeaderCell>
+        <HeaderCell>Default-verdi</HeaderCell>
+        <HeaderCell>Beskrivelse</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>
+          <CodeText>inline?</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>boolean</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>false</CodeText>
+        </DataCell>
+        <DataCell>Om ikonet skal brukes inline i tekst</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          <CodeText>size?</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>string | number</CodeText>
+        </DataCell>
+        <DataCell></DataCell>
+        <DataCell>Størrelse til ikonet. Trumfer `width` og `height`</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          <CodeText>color?</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>string</CodeText>
+        </DataCell>
+        <DataCell></DataCell>
+        <DataCell>Overskriver fargen til ikonet</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          <CodeText>height?</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>string | number</CodeText>
+        </DataCell>
+        <DataCell></DataCell>
+        <DataCell>
+          Høyden til ikonet. Streng tar CSS-verdier, tall blir kalkulert som
+          pixler
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          <CodeText>width?</CodeText>
+        </DataCell>
+        <DataCell>
+          <CodeText>string | number</CodeText>
+        </DataCell>
+        <DataCell></DataCell>
+        <DataCell>
+          Bredden til ikonet. Streng tar CSS-verdier, tall blir kalkulert som
+          pixler
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ExpandableText>
+
+#### inline
 
 Alle ikoner har støtte for propen `inline`, som forenkler bruken av ikoner når de skal stå i en tekstlig sammenheng.
 Dette brukes først og fremst internt i komponenter som bruker komponenter, men anbefales å bruke sammen med knapper og andre komponenter hvor man har behov for et inline ikon.
@@ -66,9 +153,9 @@ import { SeatIcon, RuterIcon } from '@entur/icons'
 </View>
 ```
 
-## Retningslinjer for bruk
+### Retningslinjer
 
-### Når skal ikoner brukes?
+#### Når skal ikoner brukes?
 
 Ikoner skal brukes for å skape bedre navigasjon og brukeropplevelse. De skal oppleves som relevant for de formålene de brukes til, og for å hjelpe brukeren å forstå innholdet raskere enn med kun tekst. Ikoner benyttes oftest sammen med forklarende tekst, og helst ikke frittstående.
 

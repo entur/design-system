@@ -1,5 +1,10 @@
+import React from 'react';
+import classNames from 'classnames';
+import copy from 'copy-text-to-clipboard';
+import { Searcher, search } from 'fast-fuzzy';
+
 import { useToast } from '@entur/alert';
-import { IconButton } from '@entur/button';
+import { IconButton, SecondaryButton } from '@entur/button';
 import {
   Dropdown,
   NormalizedDropdownItemType,
@@ -8,21 +13,36 @@ import {
 import { Switch, TextField } from '@entur/form';
 import { DownloadIcon, CopyIcon, SearchIcon } from '@entur/icons';
 import { fontSizes } from '@entur/tokens';
+import { VisuallyHidden } from '@entur/a11y';
 import { Tooltip } from '@entur/tooltip';
 import { GridContainer, GridItem } from '@entur/grid';
-import { Heading4, SubLabel } from '@entur/typography';
-import classNames from 'classnames';
-import copy from 'copy-text-to-clipboard';
-import { matchSorter } from 'match-sorter';
-import React from 'react';
-import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
-import './IconList.scss';
+import {
+  Heading2,
+  Heading4,
+  Link,
+  ListItem,
+  SubLabel,
+  UnorderedList,
+} from '@entur/typography';
 
+import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
+
+import './IconList.scss';
 type IconListProps = {
   icons: {
-    [key: string]: React.ElementType;
-  };
+    [key: string]: React.Component<any, any>;
+  }[];
 };
+type IconListItem = {
+  category: string;
+  rootCategory?: string;
+  name: string;
+  component: {
+    [key: string]: React.Component<any, any, any>;
+  };
+  downloadUrl: string;
+};
+
 const ICON_SIZES = [
   { label: 'Small', value: fontSizes.small.toString() },
   { label: 'Medium', value: fontSizes.medium.toString() },
@@ -32,75 +52,91 @@ const ICON_SIZES = [
   { label: '4XLarge', value: fontSizes.extraLarge4.toString() },
 ];
 
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach(item => {
-    const key = keyGetter(item);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
-}
-
-const unique = (value, index, self) => {
-  return self.indexOf(value) === index;
+const unique = (value: string, index: number, listWithItems: string[]) => {
+  return listWithItems.indexOf(value) === index;
 };
 
-const IconList: React.FC<IconListProps> = props => {
+const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const { addToast } = useToast();
   const iconsQuery = useGetIcons();
   const [isContrast, setContrast] = React.useState(false);
-  const [filterString, setFilterString] = React.useState('');
-  const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>({
-    label: '2XLarge',
-    value: fontSizes.extraLarge2.toString(),
-  });
-  const [category, setCategory] =
+  const [searchString, setSearchString] = React.useState('');
+  const [iconSize, setIconSize] = React.useState<NormalizedDropdownItemType>(
+    ICON_SIZES[ICON_SIZES.length - 1],
+  );
+  const [selectedCategory, setSelectedCategory] =
     React.useState<NormalizedDropdownItemType | null>(null);
 
-  const categoriesMap = iconsQuery.map(icon => {
-    return {
-      category: icon.node.absolutePath.split('/').splice(-2, 1).toString(),
-      name: icon.node.name.replace(/\s+/g, '') + 'Icon',
-    };
-  });
+  const allIcons = React.useMemo(
+    () =>
+      iconsQuery.map(icon => {
+        const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+        const iconComponent = Object.entries(allIconComponents).find(
+          iconComponent => iconComponent?.[0] === iconName,
+        )?.[1];
+        const downloadUrl = icon.node.publicURL;
 
-  const categories = iconsQuery
-    .map(icon => icon.node.absolutePath.split('/').splice(-2, 1).toString())
+        const category =
+          icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
+          'None';
+        const rootCategory = category.split('/')[1];
+
+        return {
+          category: category,
+          rootCategory: rootCategory,
+          name: iconName,
+          component: iconComponent,
+          downloadUrl: downloadUrl,
+        } as IconListItem;
+      }),
+    [iconsQuery, allIconComponents],
+  );
+
+  const SEARCH_OPTIONS = React.useMemo(
+    () => ({
+      keySelector: (icon: IconListItem) => icon.name,
+      threshold: 0.8,
+    }),
+    [],
+  );
+
+  const searcherAllIcons = React.useMemo(
+    () => new Searcher(allIcons, SEARCH_OPTIONS),
+    [allIcons, SEARCH_OPTIONS],
+  );
+
+  const displayedIcons = React.useMemo(() => {
+    const categoryIsSelected = selectedCategory !== null;
+
+    if (!categoryIsSelected) {
+      if (searchString === '') return allIcons;
+      return searcherAllIcons.search(searchString);
+    }
+
+    const iconsInSelectedCategory = allIcons.filter(
+      icon => icon.category === selectedCategory.value,
+    );
+
+    if (searchString === '') return iconsInSelectedCategory;
+
+    return search(searchString, iconsInSelectedCategory, SEARCH_OPTIONS);
+  }, [
+    allIcons,
+    searchString,
+    selectedCategory,
+    searcherAllIcons,
+    SEARCH_OPTIONS,
+  ]);
+
+  const categories = allIcons
+    .map(icon => icon.category)
     .filter(unique)
     .sort();
 
-  const grouped = groupBy(
-    categoriesMap,
-    (category: { category: string; name: string }) => category.category,
-  );
-
-  const filteredIcons = React.useMemo(() => {
-    const isCategorySelected = category !== null && category?.value !== '';
-    const iconEntries = Object.entries(props.icons);
-    const filteredOnCategory = isCategorySelected
-      ? iconEntries.filter(icon => {
-          const k = grouped.get(category.value);
-          return k.some(l => l.name === icon[0]);
-        })
-      : [];
-    const returnIcons = isCategorySelected ? filteredOnCategory : iconEntries;
-    if (filterString === '') {
-      return returnIcons;
-    }
-
-    return matchSorter(returnIcons, filterString, { keys: ['0'] });
-  }, [filterString, props.icons, category, grouped]);
-
-  const noHits = filteredIcons.length === 0;
-  const feedbackText =
-    filterString.length > 0
-      ? `${filteredIcons.length}\u00A0treff på søket ditt`
-      : undefined;
+  const noResults = displayedIcons.length === 0;
+  const numberOfResultsString = `${displayedIcons.length}\u00A0ikon${
+    displayedIcons.length === 1 ? '' : 'er'
+  }`;
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -110,20 +146,20 @@ const IconList: React.FC<IconListProps> = props => {
     });
   };
 
+  const resetFilter = () => {
+    setSearchString('');
+    setSelectedCategory(null);
+  };
+
   return (
     <div>
-      <Heading4 as="div" style={{ marginBottom: '1rem' }}>
-        Filter
-      </Heading4>
       <GridContainer spacing="medium">
         <GridItem small={12} medium={4}>
           <TextField
             label="Søk etter ikon"
-            feedback={feedbackText}
-            variant={noHits ? 'error' : 'info'}
-            value={filterString}
+            value={searchString}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setFilterString(e.target.value)
+              setSearchString(e.target.value)
             }
             prepend={<SearchIcon aria-hidden="true" />}
           />
@@ -139,44 +175,76 @@ const IconList: React.FC<IconListProps> = props => {
         <GridItem small={6} medium={4}>
           <SearchableDropdown
             label="Kategori"
-            items={categories}
-            selectedItem={category}
-            onChange={setCategory}
+            items={() => categories}
+            selectedItem={selectedCategory}
+            onChange={setSelectedCategory}
           />
         </GridItem>
       </GridContainer>
-      {!noHits && (
+      {noResults ? (
+        <div className="icon-list__no-results">
+          <Heading2 as="h3" aria-live="polite">
+            Finner ingen ikoner
+          </Heading2>
+          <SecondaryButton
+            className="icon-list__no-results__reset-filter"
+            size="small"
+            onClick={resetFilter}
+          >
+            Nullstill søk
+          </SecondaryButton>
+          <Heading4>Her er noen forslag til hva du kan gjøre:</Heading4>
+          <UnorderedList>
+            <ListItem>Prøv å bruke synonymer for «{searchString}»</ListItem>
+            <ListItem>
+              Prøv å beskrive handlingen til ikonet i stedet for utseende, eks.
+              «search» i stedet for «magnifying glass»
+            </ListItem>
+            <ListItem>Søk på engelsk</ListItem>
+            <ListItem>
+              Hvis ikonet ikke eksisterer, meld det inn til oss på{' '}
+              <Link href="https://entur.slack.com/archives/C899QSPB7">
+                #talk-designsystem
+              </Link>
+              , så hjelper vi deg!
+            </ListItem>
+          </UnorderedList>
+        </div>
+      ) : (
         <>
-          <div style={{ display: 'flex' }}>
+          <div className="icon-list__header">
             <Switch
               checked={isContrast}
               onChange={() => setContrast(prev => !prev)}
-              style={{ margin: '1rem 0' }}
             >
               Kontrast
             </Switch>
+            <span aria-live="polite">
+              {numberOfResultsString}
+              <VisuallyHidden> funnet</VisuallyHidden>
+            </span>
           </div>
           <ul className="icon-list">
-            {filteredIcons.map(([iconName, Icon]: any) => (
-              <li
-                className={classNames('icon-list__item', {
-                  'eds-contrast': isContrast,
-                })}
-                key={iconName}
-              >
-                <SubLabel
-                  as="button"
-                  className="icon-list__item-name"
-                  onClick={handleIconClick(iconName)}
+            {displayedIcons.map(
+              ({ name: iconName, component: Icon, downloadUrl }) => (
+                <li
+                  className={classNames('icon-list__item', {
+                    'eds-contrast': isContrast,
+                  })}
+                  key={iconName}
                 >
-                  {iconName}
-                  <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
-                </SubLabel>
-                <Icon
-                  style={{ width: iconSize?.value, height: iconSize?.value }}
-                  aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
-                />
-                <div className="icon-list__item-buttons">
+                  <SubLabel
+                    as="button"
+                    className="icon-list__item-name"
+                    onClick={handleIconClick(iconName)}
+                  >
+                    <span>{iconName}</span>
+                    <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
+                  </SubLabel>
+                  <Icon
+                    style={{ width: iconSize?.value, height: iconSize?.value }}
+                    aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
+                  />
                   <Tooltip
                     aria-hidden="true"
                     content="Last ned SVG"
@@ -186,22 +254,15 @@ const IconList: React.FC<IconListProps> = props => {
                       as="a"
                       aria-label={`Last ned ${iconName}.svg`}
                       download
-                      href={
-                        iconsQuery
-                          .filter(
-                            icon =>
-                              icon.node.name.split(' ').join('') + 'Icon' ===
-                              iconName,
-                          )
-                          .map(node => node.node.publicURL)[0]
-                      }
+                      href={downloadUrl}
+                      className="icon-list__item__download-button"
                     >
                       <DownloadIcon />
                     </IconButton>
                   </Tooltip>
-                </div>
-              </li>
-            ))}
+                </li>
+              ),
+            )}
           </ul>
         </>
       )}
