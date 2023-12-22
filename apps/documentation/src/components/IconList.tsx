@@ -78,7 +78,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
         const downloadUrl = icon.node.publicURL;
 
         const category =
-          icon.node.absolutePath.match(/icons\/(.*?)\/[^\/]+\.svg/)?.[1] ??
+          icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
           'None';
         const rootCategory = category.split('/')[1];
 
