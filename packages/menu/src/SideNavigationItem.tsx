@@ -89,6 +89,7 @@ const DisabledSideNavigationItem = React.forwardRef<
     disabled={true}
     aria-disabled={true}
     ref={ref}
+    type="button"
     {...rest}
   >
     {children}

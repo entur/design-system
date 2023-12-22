@@ -66,6 +66,7 @@ export const CopyableText = ({
         <IconButton
           className="eds-copyable-text__button"
           aria-label={ariaLabel}
+          type="button"
         >
           <CopyIcon className={'eds-copyable-text__button__icon'} />
         </IconButton>

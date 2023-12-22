@@ -99,7 +99,11 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       <Icon aria-hidden />
       {children}
       {isClosable && (
-        <button onClick={onClose} className="eds-travel-tag__close-button">
+        <button
+          onClick={onClose}
+          type="button"
+          className="eds-travel-tag__close-button"
+        >
           <CloseSmallIcon inline />
         </button>
       )}
