@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.11.2...@entur/tokens@3.12.0) (2023-12-22)
+
+### Features
+
+- **travel:** update walk transport color to new grey color ([1c0d352](https://bitbucket.org/enturas/design-system/commits/1c0d352e9bc21764f9a5846d7e889ef4a97fb214))
+
 ## [3.11.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.11.1...@entur/tokens@3.11.2) (2023-12-18)
 
 ### Bug Fixes

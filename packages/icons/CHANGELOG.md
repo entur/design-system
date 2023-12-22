@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.13.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.13.1...@entur/icons@6.13.2) (2023-12-22)
+
+### Bug Fixes
+
+- **capacity icons:** fix path colors in capacity icons ([384ee6c](https://bitbucket.org/enturas/design-system/commits/384ee6c50a1fba3594395c4c29f4e080075a55c7))
+
 ## [6.13.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.13.0...@entur/icons@6.13.1) (2023-12-18)
 
 **Note:** Version bump only for package @entur/icons

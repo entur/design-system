@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.0.34...@entur/travel@6.1.0) (2023-12-22)
+
+### Bug Fixes
+
+- add missing type="button" to several buttons ([c5ddbac](https://bitbucket.org/enturas/design-system/commits/c5ddbac0ec3043694708fe146df77619218cb240))
+
+### Features
+
+- **travel tag:** update design for contrast ([10e17af](https://bitbucket.org/enturas/design-system/commits/10e17afe818320b6a3f9f31b9e53e66ff6bd70d7))
+
 ## [6.0.34](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.0.33...@entur/travel@6.0.34) (2023-12-18)
 
 **Note:** Version bump only for package @entur/travel

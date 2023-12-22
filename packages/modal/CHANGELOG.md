@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.25](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.24...@entur/modal@1.7.25) (2023-12-22)
+
+### Bug Fixes
+
+- add missing type="button" to several buttons ([c5ddbac](https://bitbucket.org/enturas/design-system/commits/c5ddbac0ec3043694708fe146df77619218cb240))
+
 ## [1.7.24](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.23...@entur/modal@1.7.24) (2023-12-18)
 
 **Note:** Version bump only for package @entur/modal

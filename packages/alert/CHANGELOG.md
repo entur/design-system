@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.14](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.13...@entur/alert@0.15.14) (2023-12-22)
+
+### Bug Fixes
+
+- add missing type="button" to several buttons ([c5ddbac](https://bitbucket.org/enturas/design-system/commits/c5ddbac0ec3043694708fe146df77619218cb240))
+- copyable text visual bugs ([25305d7](https://bitbucket.org/enturas/design-system/commits/25305d7b3fdc31dc08ed6585ea35665dca379f43))
+
 ## [0.15.13](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.12...@entur/alert@0.15.13) (2023-12-18)
 
 **Note:** Version bump only for package @entur/alert

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.41](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.40...@entur/tooltip@2.6.41) (2023-12-22)
+
+### Bug Fixes
+
+- add missing type="button" to several buttons ([c5ddbac](https://bitbucket.org/enturas/design-system/commits/c5ddbac0ec3043694708fe146df77619218cb240))
+
 ## [2.6.40](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.39...@entur/tooltip@2.6.40) (2023-12-18)
 
 **Note:** Version bump only for package @entur/tooltip

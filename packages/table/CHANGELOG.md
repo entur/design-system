@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.34](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.33...@entur/table@4.6.34) (2023-12-22)
+
+### Bug Fixes
+
+- add missing type="button" to several buttons ([c5ddbac](https://bitbucket.org/enturas/design-system/commits/c5ddbac0ec3043694708fe146df77619218cb240))
+
 ## [4.6.33](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.32...@entur/table@4.6.33) (2023-12-18)
 
 **Note:** Version bump only for package @entur/table
