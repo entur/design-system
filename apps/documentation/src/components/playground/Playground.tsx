@@ -134,6 +134,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
         <LiveEditor
           className="playground__editor"
           onChange={updatedCode => setCodeWithUpdatedProps(updatedCode)}
+          tabMode="focus"
         />
       </BaseExpand>
     </LiveProvider>

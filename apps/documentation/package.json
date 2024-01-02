@@ -55,7 +55,7 @@
     "match-sorter": "^6.3.0",
     "react-confetti": "^6.0.1",
     "react-helmet-async": "^1.0.4",
-    "react-live": "^3.1.1",
+    "react-live": "^3.1.2",
     "react-syntax-highlighter": "^15.5.0",
     "wcag-contrast": "^3.0.0"
   },

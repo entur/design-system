@@ -131,7 +131,8 @@
     font-family: monospace;
 
     &:focus-within {
-      box-shadow: $shadows-focus;
+      outline: $outlines-focus;
+      outline-offset: $outline-offsets-focus;
     }
 
     & .token:last-of-type {
