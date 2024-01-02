@@ -25,20 +25,21 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   // This little trick lets the user tap '/' to focus the search field
   React.useEffect(() => {
     function handleKeyUp(e: KeyboardEvent) {
-      const hasFocus = inputRef.current === document.activeElement;
+      const searchHasFocus = inputRef.current === document.activeElement;
+      const playgroundHasFocus =
+        document.activeElement?.parentElement?.className.includes(
+          'playground__editor',
+        );
       switch (e.key) {
         case '/':
-          if (
-            !hasFocus &&
-            !document.activeElement?.className.includes('code-editor')
-          ) {
+          if (!searchHasFocus && !playgroundHasFocus) {
             previousFocusRef.current = document.activeElement as HTMLElement;
             e.stopPropagation();
             inputRef.current && inputRef.current.focus(); // inputRef will always be set
           }
           break;
         case 'Escape':
-          if (hasFocus && previousFocusRef.current) {
+          if (searchHasFocus && previousFocusRef.current) {
             previousFocusRef.current.focus();
             onSearchTextChange('');
           }
