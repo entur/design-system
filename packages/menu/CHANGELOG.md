@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.12](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.11...@entur/menu@4.2.12) (2024-01-02)
+
+### Bug Fixes
+
+- **stepper:** fix visual bugs on small screen widths ([e2517d9](https://bitbucket.org/enturas/design-system/commits/e2517d988457c4590e3e79cd77b8b6e0f126b348))
+
 ## [4.2.11](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.10...@entur/menu@4.2.11) (2023-12-22)
 
 ### Bug Fixes
