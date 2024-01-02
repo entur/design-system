@@ -8,39 +8,35 @@
 
   display: flex;
   flex-direction: row;
+  width: 100%;
 
   list-style-type: none;
 
   &__step {
+    &__wrapper {
+      flex-grow: 1;
+    }
+
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
     flex-direction: column;
     align-items: inherit;
-    appearance: none;
 
+    appearance: none;
     background: none;
     border: none;
-    margin: 0;
-    margin-left: t.$space-extra-small2;
-    padding: 0;
-    height: 2.5rem;
 
     font-family: inherit;
     text-transform: none;
 
-    &:focus {
+    &:focus-visible &__label {
       outline-offset: t.$outline-offsets-focus;
-      outline: none;
-      box-shadow: t.$shadows-focus;
+      outline: t.$outlines-focus;
 
       .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
+        outline: t.$outlines-focus-contrast;
       }
-    }
-
-    &:first-child {
-      margin-left: 0;
     }
 
     .eds-contrast & {
@@ -52,6 +48,7 @@
       all: unset; // remove default styling for button
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       cursor: pointer;
     }
@@ -79,11 +76,13 @@
     &__label {
       flex-grow: 1;
       flex-direction: column;
+      align-self: center;
       text-align: center;
       font-size: t.$font-sizes-medium;
-      padding: 0.125rem 0.25rem;
-      margin: calc(#{t.$space-extra-small2} - 0.125rem)
-        calc(#{t.$space-medium} - 0.25rem);
+      margin: t.$space-extra-small 0 0;
+      padding: 0 t.$space-extra-small;
+      width: fit-content;
+      border-radius: t.$border-radiuses-default;
 
       color: var(--text-color);
       font-weight: var(--label-font-weight);
@@ -91,7 +90,6 @@
       .eds-stepper__step--interactive:hover & {
         background-color: t.$colors-blues-blue40;
         color: t.$colors-brand-white;
-        border-radius: t.$border-radiuses-default;
       }
     }
 

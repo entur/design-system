@@ -74,7 +74,7 @@ export const Stepper: React.FC<StepperProps> = ({
         const props = isInteractive ? { onClick: () => onStepClick?.(i) } : {};
 
         return (
-          <li key={step}>
+          <li key={step} className="eds-stepper__step__wrapper">
             <Element
               className={classNames(
                 'eds-stepper__step',
@@ -83,6 +83,7 @@ export const Stepper: React.FC<StepperProps> = ({
                 { 'eds-stepper__step--interactive': isInteractive },
               )}
               aria-current={isCurrent ? 'step' : undefined}
+              type={Element === 'button' ? 'button' : undefined}
               {...props}
             >
               <div className="eds-stepper__step__line" aria-hidden={true} />
