@@ -125,7 +125,7 @@
         background: rgba(t.$colors-misc-black, 0.3);
       }
       &:focus {
-        border: t.$border-widths-small solid t.$colors-brand-blue;
+        border: t.$border-widths-default solid t.$colors-brand-blue;
         outline: none;
       }
     }
