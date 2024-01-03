@@ -13,13 +13,25 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
   const iconClass = `eds-feedback-text__icon eds-feedback-text__icon--${variant}`;
   switch (variant) {
     case 'success':
-      return <ValidationCheckIcon className={iconClass} />;
+      return (
+        <ValidationCheckIcon
+          aria-label="Suksessmelding"
+          className={iconClass}
+        />
+      );
     case 'error':
-      return <ValidationErrorIcon className={iconClass} />;
+      return (
+        <ValidationErrorIcon aria-label="Feilmelding" className={iconClass} />
+      );
     case 'info':
       return null;
     case 'warning':
-      return <ValidationExclamationIcon className={iconClass} />;
+      return (
+        <ValidationExclamationIcon
+          aria-label="Varselmelding"
+          className={iconClass}
+        />
+      );
     default:
       return null;
   }
