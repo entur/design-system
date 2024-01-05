@@ -38,10 +38,10 @@
     }
   }
   &:focus {
-    border: t.$border-widths-default solid t.$colors-brand-blue;
-    outline: none;
+    outline: t.$outlines-focus;
+
     .eds-contrast & {
-      border: t.$border-widths-default solid t.$colors-brand-white;
+      outline: t.$outlines-focus-contrast;
     }
   }
   &--disabled {

@@ -37,6 +37,12 @@
       &:hover {
         background-color: t.$colors-blues-blue70;
       }
+      &:focus {
+        outline: t.$outlines-focus;
+      }
+      &:active {
+        background-color: t.$colors-blues-blue50;
+      }
     }
 
     .eds-form-control__append--tooltip {
