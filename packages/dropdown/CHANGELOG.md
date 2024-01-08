@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.29](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.28...@entur/dropdown@5.0.29) (2024-01-08)
+
+### Bug Fixes
+
+- **iconbutton:** replaces border with outline ([ad8a877](https://bitbucket.org/enturas/design-system/commits/ad8a877400388e5983263397791d81afec5b2212))
+
 ## [5.0.28](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.27...@entur/dropdown@5.0.28) (2023-12-22)
 
 **Note:** Version bump only for package @entur/dropdown

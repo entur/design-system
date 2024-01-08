@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.33](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.32...@entur/form@7.0.33) (2024-01-08)
+
+### Bug Fixes
+
+- **feedbacktext:** added aria-label on feedback-icon ([c230b76](https://bitbucket.org/enturas/design-system/commits/c230b76590fdddc1c49dcdba6c8a1e04374b49be))
+
 ## [7.0.32](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.31...@entur/form@7.0.32) (2023-12-22)
 
 **Note:** Version bump only for package @entur/form

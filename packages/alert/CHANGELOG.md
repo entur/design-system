@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.15](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.14...@entur/alert@0.15.15) (2024-01-08)
+
+### Bug Fixes
+
+- **button:** from 1px to 2px border on iconbutton ([0e8ba64](https://bitbucket.org/enturas/design-system/commits/0e8ba649f910cd115e2efd7b6dd2385694243dad))
+- **iconbutton:** replaces border with outline ([ad8a877](https://bitbucket.org/enturas/design-system/commits/ad8a877400388e5983263397791d81afec5b2212))
+
 ## [0.15.14](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.13...@entur/alert@0.15.14) (2023-12-22)
 
 ### Bug Fixes
