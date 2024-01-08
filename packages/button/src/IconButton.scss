@@ -1,7 +1,7 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-icon-button {
-  border: t.$border-widths-small solid transparent;
+  border: t.$border-widths-default solid transparent;
   border-radius: t.$border-radiuses-medium;
   background: none;
   color: inherit;
@@ -38,10 +38,10 @@
     }
   }
   &:focus {
-    border: t.$border-widths-small solid t.$colors-brand-blue;
-    outline: none;
+    outline: t.$outlines-focus;
+
     .eds-contrast & {
-      border: t.$border-widths-small solid t.$colors-brand-white;
+      outline: t.$outlines-focus-contrast;
     }
   }
   &--disabled {

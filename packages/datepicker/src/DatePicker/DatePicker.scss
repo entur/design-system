@@ -18,7 +18,7 @@
         color: t.$colors-brand-white;
       }
       &:focus {
-        border: t.$border-widths-small solid t.$colors-brand-blue;
+        outline: t.$outlines-focus;
       }
       &:active {
         background-color: t.$colors-blues-blue50;

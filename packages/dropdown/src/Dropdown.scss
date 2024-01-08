@@ -43,6 +43,9 @@
         }
       }
     }
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   &--searchable {

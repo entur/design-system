@@ -46,14 +46,14 @@
       background-color: t.$colors-blues-blue40;
       color: t.$colors-brand-white;
     }
-  }
 
-  &:focus {
-    outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
-    .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+    &:focus {
+      outline: t.$outlines-focus;
+      outline-offset: t.$outline-offsets-focus;
+
+      .eds-contrast & {
+        outline: t.$outlines-focus;
+      }
     }
   }
 }

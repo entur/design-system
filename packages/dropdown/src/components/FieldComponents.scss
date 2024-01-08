@@ -71,14 +71,13 @@
 
       .eds-contrast & {
         &:hover {
-          background: t.$colors-greys-grey60;
+          background-color: t.$colors-blues-blue70;
         }
         &:active {
-          background: t.$colors-greys-grey50;
+          background: t.$colors-blues-blue60;
         }
         &:focus {
-          border: 0.0625rem solid t.$colors-brand-blue;
-          outline: none;
+          outline: t.$outlines-focus;
         }
       }
 
@@ -124,14 +123,13 @@
 
       .eds-contrast & {
         &:hover {
-          background: t.$colors-greys-grey60;
+          background-color: t.$colors-blues-blue70;
         }
         &:active {
-          background: t.$colors-greys-grey50;
+          background: t.$colors-blues-blue60;
         }
         &:focus {
-          border: none;
-          outline: none;
+          outline: t.$outlines-focus;
         }
       }
     }
