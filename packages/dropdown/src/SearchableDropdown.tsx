@@ -288,7 +288,7 @@ export const SearchableDropdown = ({
       style={style}
     >
       <BaseFormControl
-        className="eds-dropdown"
+        className={classNames('eds-dropdown', 'eds-dropdown--searchable')}
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}

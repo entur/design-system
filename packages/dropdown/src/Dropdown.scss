@@ -11,7 +11,6 @@
   &__input {
     flex: 1;
     width: 0; // this makes the input act as if it has 'fit-content'
-    min-height: calc(1.5rem + 1.25rem + 0.25rem);
 
     &--hidden {
       flex: 0;
@@ -25,13 +24,11 @@
 
   &__selected-item {
     cursor: pointer;
-
     flex: 1;
-    padding: 1.25rem 1rem 0.25rem;
-    min-height: 3rem;
-
     overflow-x: hidden;
     text-overflow: ellipsis;
+    line-height: t.$line-heights-small;
+    padding: 1.25rem t.$space-default t.$space-extra-small2;
 
     &__placeholder {
       color: t.$colors-blues-blue30;
@@ -51,23 +48,25 @@
   &--searchable {
     &__selected-item {
       position: relative;
-      top: 5px;
-
       flex: 1;
       overflow-x: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-
-      font-size: t.$font-sizes-large;
-      line-height: t.$line-heights-small;
       margin-right: -(t.$space-medium);
-      padding: 1.25rem 0rem 0.25rem 1rem;
-
+      padding: 1.375rem 0rem 0.25rem 1rem;
       font-family: inherit;
+      line-height: t.$line-heights-small;
 
       &--hidden {
         flex: 0;
       }
+    }
+    // overrides to input field styling
+    .eds-input-group__label {
+      top: 0;
+    }
+    &.eds-form-control-wrapper--is-filled .eds-input-group__label {
+      top: 0.375rem;
     }
   }
 
@@ -94,6 +93,13 @@
         }
       }
     }
+    // overrides to input field styling
+    .eds-input-group__label {
+      top: 0;
+    }
+    &.eds-form-control-wrapper--is-filled .eds-input-group__label {
+      top: 0.375rem;
+    }
   }
 
   // overrides to input field styling
@@ -104,11 +110,10 @@
       font-size: t.$font-sizes-large;
       position: absolute;
       line-height: t.$font-sizes-large;
-      height: t.$space-extra-large3;
       padding: t.$space-default;
       padding-left: 0;
       margin-left: t.$space-default;
-      top: -(t.$border-widths-medium);
+      top: 0;
       transition: top t.$timings-medium ease-in-out,
         font-size t.$timings-medium ease-in-out,
         padding t.$timings-medium ease-in-out,
@@ -120,7 +125,7 @@
     }
 
     .eds-form-control__append {
-      top: 0.4rem;
+      top: 0.25rem;
 
       .eds-loading-dots {
         height: 2rem;
