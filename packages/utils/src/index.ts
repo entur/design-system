@@ -1,5 +1,5 @@
-export * from './debounce';
 export * from './PolymorphicComponent';
+export * from './useDebounce';
 export * from './useRandomId';
 export * from './useOnMount';
 export * from './mergeRefs';
