@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useDebounce } from '@entur/utils';
 import { useCurrentDoc, Entry } from 'docz';
-import './TocNavigation.scss';
+
+import { useDebounce } from '@entur/utils';
 import { Heading4 } from '@entur/typography';
+
+import './TocNavigation.scss';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
-
-  const headingElements = headings.map(
-    heading => document.getElementById(heading.slug) as HTMLElement,
+  const [headingElements, setHeadingElements] = React.useState<HTMLElement[]>(
+    [],
   );
 
   const findActiveHeading = useDebounce(() => {
@@ -27,6 +28,15 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
       }
     }
   }, 16);
+
+  React.useEffect(() => {
+    setHeadingElements(
+      headings.map(
+        heading => document.getElementById(heading.slug) as HTMLElement,
+      ),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener('resize', findActiveHeading);

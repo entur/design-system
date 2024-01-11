@@ -187,15 +187,14 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 
 - i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
 - `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
-  {' '}
   <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-    {`
-type onChange = (
-    value: string;
-    selectedItem: NormalizedDropdownItemType | null;
-    target: EventTarget & HTMLSelectElement;
-  ) => void;
-`}
+  {`
+    type onChange = (
+      value: string;
+      selectedItem: NormalizedDropdownItemType | null;
+      target: EventTarget & HTMLSelectElement;
+    ) => void;
+  `}
   </CodeBlock>
 - i stedet for `selectedItem` brukes `value`, dette på samme måte som i HTML sin select-input
 
@@ -292,15 +291,20 @@ eksterne API-et listet opp når data-en er mottatt.
   hideContrastOption
 >
   {() => {
-    const fetchItems = React.useCallback(async () => {
+    // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
+    const fetchItems = React.useCallback(async (_, abortControllerRef) => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
+          // Bruk signalet fra abortController for å avbryte utdaterte kall
+          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
         return data;
-      } catch {
+      } catch (error) {
+        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
+        if (error && error.name === 'AbortError') throw error;
         console.error('noe galt');
         return [];
       }
@@ -329,10 +333,13 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
   hideContrastOption
 >
   {() => {
-    const fetchItems = React.useCallback(async inputValue => {
+    // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
+    const fetchItems = React.useCallback(async (inputValue, abortControllerRef) => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
+          // Bruk signalet fra abortController for å avbryte utdaterte kall
+          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
@@ -340,11 +347,15 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
           return { label: item.title, value: item.id };
         });
         return processedData;
-      } catch {
+      } catch (error) {
+        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
+        if (error && error.name === 'AbortError') throw error;
+        
         console.error('noe galt');
         return [];
       }
     }, []);
+    
     const [selected, setSelected] = React.useState(null);
     return (
       <SearchableDropdown
