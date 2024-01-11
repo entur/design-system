@@ -150,7 +150,8 @@ export const DropdownList = ({
         ...listStyle,
       }}
     >
-      {listItems.length > 0 &&
+      {!loading &&
+        listItems.length > 0 &&
         listItems.map((item, index) => {
           const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return null;
