@@ -90,13 +90,13 @@ Dette løser du ved å:
 
 ## Bruk
 
-`Dropdown` og `SearchableDropdown` er komponenter som lar brukeren utføre ett valg blandt
+`Dropdown` og `SearchableDropdown` er komponenter som lar brukeren utføre ett valg blant
 mange ulike valgalternaltiver. Skal flere valg være mulig på en gang må du bruke
 [MultiSelect](https://design.entur.no/komponenter/skjemaelementer/multi-select). Komponenten
-viser frem en liste med valg bassert på `items`-prop-en, der `items` kan være en string, eller
+viser frem en liste med valg bassert på `items`-prop-en, der `items` kan være en liste med `string` eller
 objekter med `value`, `label` og `icons` - eller en blanding av disse. For å dekke situasjoner
-der tilgjenglige valgalternaltiver kommmer fra et API eller lignende støtter `items` også
-synkrone og asynkrone funksjoner som returnerer `DropdownItemType`.
+der valgalternaltiver kommmer fra et API eller lignende støtter `items` også
+synkrone og asynkrone funksjoner som returnerer samme type liste som `items` aksepterer.
 
 ### Kom i gang
 
@@ -165,14 +165,17 @@ Se eksempel på dette under [Søkbar dropdown med egendefingert filtreringsfunks
 
 Hvis listen din med valg skal hentes fra et API eller lignende er det mulig å sende inn en memoisert funksjon til `items`
 i stedet for en liste med valg. Denne funksjonen kan enten være synkron eller asynkron og må enten returnere en
-liste med `NormalizedDropdownItemType` direkte eller gjennom et `Promise`. OBS: du må huske å [memoisere funksjonen](https://react.dev/reference/react/useCallback) ved å bruke
+liste med `DropdownItemType` direkte eller gjennom et `Promise`. OBS: du må huske å [memoisere funksjonen](https://react.dev/reference/react/useCallback) ved å bruke
 `React.useCallback`, ellers vil den kjøre funksjonen din oftere enn nødvendig!
 
 For søkbare dropdowns kan funksjonen i `items` også bruke `inputValue`-verdien som sendes inn å f.eks gjøre en query mot
 et API-et. I dette tilfellet kan du også bruke prop-en `debounceTimeout` til å bestemme hvor lenge det skal
-ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive.
+ventes før et nytt kall mot funksjonen skal kjøres etter brukeres slutter å skrive. 
 
-Se eksempler på dette under [Dropdown med valg fra nettverkskall](#dropdown-med-valg-fra-nettverkskall).
+For å avbryte utdaterte kall og hindre 'state update of unmounted component' kan du bruke `abortControllerRef` som sendes inn som andre argument til funksjonen. 
+`abortControllerRef.current.signal` inneholder et signal som sier fra når asynkrone kall bør avbrytes og er støttet ut av boksen i f.eks `fetch` og `axios`.
+Les mer om AbortController [på Mozilla sine sider](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) og se eksempel på alt i bruk under 
+[Dropdown med valg fra nettverkskall](#dropdown-med-valg-fra-nettverkskall).
 
 ### Innebygd nettleser-dropdown med styling (NativeDropdown)
 
@@ -187,15 +190,14 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 
 - i stedet for å ha `<option />` som children gir du inn liste med valg på samme måte som `Dropdown` og `SearchableDropdown` – se [Liste med valgalternaltiver](#liste-med-valgalternaltiver).
 - `onChange` er forskjellig fra den originale `onchange` og ser ut som følger:
-  {' '}
   <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
-    {`
-type onChange = (
-    value: string;
-    selectedItem: NormalizedDropdownItemType | null;
-    target: EventTarget & HTMLSelectElement;
-  ) => void;
-`}
+  {`
+    type onChange = (
+      value: string;
+      selectedItem: NormalizedDropdownItemType | null;
+      target: EventTarget & HTMLSelectElement;
+    ) => void;
+  `}
   </CodeBlock>
 - i stedet for `selectedItem` brukes `value`, dette på samme måte som i HTML sin select-input
 
@@ -283,8 +285,8 @@ filtrering av de tilgjengelige valgene.
 
 ### Dropdown med valg fra nettverkskall
 
-Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
-eksterne API-et listet opp når data-en er mottatt.
+Her har vi en eksempelfunksjon `fetchItems` som bruker `abortControllerRef`-argumentet og henter inn data fra et test-API. 
+Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det eksterne API-et listet opp når data-en er mottatt.
 
 <Playground
   style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
@@ -292,15 +294,20 @@ eksterne API-et listet opp når data-en er mottatt.
   hideContrastOption
 >
   {() => {
-    const fetchItems = React.useCallback(async () => {
+    // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
+    const fetchItems = React.useCallback(async (_, abortControllerRef) => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
+          // Bruk signalet fra abortController for å avbryte utdaterte kall
+          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
         return data;
-      } catch {
+      } catch (error) {
+        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
+        if (error && error.name === 'AbortError') throw error;
         console.error('noe galt');
         return [];
       }
@@ -319,9 +326,10 @@ eksterne API-et listet opp når data-en er mottatt.
 
 ### Søkbar dropdown med valg fra nettverkskall bassert på tekstinput
 
-Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn nåværende `inputValue`
-og bruker det til å gjøre en query mot API-et. Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det
-eksterne API-et listet opp med query bassert på det som skrives inn.
+Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn 
+nåværende `inputValue` og `abortControllerRef` og bruker det til å gjøre en query mot API-et. Denne funksjonen 
+settes så inn i `items`-prop-en og vi får data fra det eksterne API-et listet opp med query bassert på 
+det som skrives inn.
 
 <Playground
   style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
@@ -329,10 +337,13 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
   hideContrastOption
 >
   {() => {
-    const fetchItems = React.useCallback(async inputValue => {
+    // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
+    const fetchItems = React.useCallback(async (inputValue, abortControllerRef) => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
+          // Bruk signalet fra abortController for å avbryte utdaterte kall
+          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
@@ -340,11 +351,14 @@ eksterne API-et listet opp med query bassert på det som skrives inn.
           return { label: item.title, value: item.id };
         });
         return processedData;
-      } catch {
+      } catch (error) {
+        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
+        if (error && error.name === 'AbortError') throw error;
         console.error('noe galt');
         return [];
       }
     }, []);
+    
     const [selected, setSelected] = React.useState(null);
     return (
       <SearchableDropdown
