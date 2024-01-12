@@ -7,10 +7,13 @@ import {
 } from './useNormalizedItems';
 
 type AsyncDropdownItemType = (
-  inputType?: string,
-  abortControllerRef?: React.MutableRefObject<AbortController>,
+  inputType: string,
+  abortControllerRef: React.MutableRefObject<AbortController>,
 ) => Promise<DropdownItemType[]>;
-type SyncDropdownItemType = (inputType?: string) => DropdownItemType[];
+type SyncDropdownItemType = (
+  inputType: string,
+  abortControllerRef: React.MutableRefObject<AbortController>,
+) => DropdownItemType[];
 export type PotentiallyAsyncDropdownItemType =
   | DropdownItemType[]
   | SyncDropdownItemType

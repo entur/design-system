@@ -572,14 +572,16 @@ describe('MultiSelect', () => {
     const inputField = screen.getByRole('combobox', { name: 'test label' });
     await user.click(inputField);
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
+    const listItems = await screen.findAllByRole('option');
+
+    expect(listItems).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
   });
 
   test('works with items as an asynchronous function', async () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 1000);
+        setTimeout(() => resolve(testItems), 750);
       });
     };
     render(
@@ -589,10 +591,10 @@ describe('MultiSelect', () => {
     const inputField = screen.getByRole('combobox', { name: 'test label' });
     await user.click(inputField);
 
-    await waitFor(() => screen.getAllByRole('option'));
+    const listItems = await screen.findAllByRole('option');
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
-  });
+    expect(listItems).toHaveLength(testItems.length + 1); // '+ 1' to account for 'select all' option
+  }, 1500);
 
   test('input is cleared when clearInputOnSelect is true', async () => {
     const user = userEvent.setup();

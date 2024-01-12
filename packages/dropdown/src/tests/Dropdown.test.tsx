@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Dropdown, DropdownItemType } from '..';
@@ -243,14 +243,16 @@ describe('Dropdown', () => {
     const toggleButton = screen.getByRole('combobox', { name: 'test label' });
     await user.click(toggleButton);
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
+    const listItems = await screen.findAllByRole('option');
+
+    expect(listItems).toHaveLength(testItems.length);
   });
 
   test('works with items as an asynchronous function', async () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 1000);
+        setTimeout(() => resolve(testItems), 750);
       });
     };
     render(
@@ -260,10 +262,10 @@ describe('Dropdown', () => {
     const toggleButton = screen.getByRole('combobox', { name: 'test label' });
     await user.click(toggleButton);
 
-    await waitFor(() => screen.getAllByRole('option'));
+    const listItems = await screen.findAllByRole('option');
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
-  });
+    expect(listItems).toHaveLength(testItems.length);
+  }, 1500);
 
   test('highlights matched item on letter keydown', async () => {
     const user = userEvent.setup();
