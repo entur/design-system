@@ -426,7 +426,6 @@ export const MultiSelect = ({
     inputRef.current?.focus();
     updateListItems({ inputValue });
   };
-
   return (
     <div
       className={classNames('eds-dropdown__wrapper', className)}
@@ -449,7 +448,7 @@ export const MultiSelect = ({
             getToggleButtonProps={getToggleButtonProps}
           />
         }
-        className="eds-dropdown"
+        className={classNames('eds-dropdown', 'eds-dropdown--multiselect')}
         disabled={disabled}
         feedback={feedback}
         isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}

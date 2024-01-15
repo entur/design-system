@@ -65,6 +65,7 @@ $label-top-large: 0.5rem;
       font-size: t.$font-sizes-extra-large2;
       line-height: t.$line-heights-extra-large4;
       height: 4rem;
+      top: -0.25rem;
     }
     &--filled {
       @include labelPositionTop;
