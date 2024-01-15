@@ -15,6 +15,7 @@ import {
   DatePicker,
   DateField,
   Calendar,
+  TimePicker,
   NativeDatePicker,
   nativeDateToDateValue,
   nativeDateToTimeValue,
@@ -203,6 +204,70 @@ timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCa
       />
   );`}
 </CodeBlock>
+
+### Bruk sammen med TimePicker
+
+Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline med `showTime`-prop-en eller ved å bruke en `TimePicker` i kombinasjon med `DatePicker`-en.
+
+#### Inline
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+>
+  {() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DatePicker
+        label="Velg dato og tid"
+        selectedDate={date}
+        onChange={setDate}
+        locale="no-NO"
+        showTime
+      />
+    );
+  }}
+</Playground>
+
+#### Kombinasjon med TimePicker
+
+I løsninger ut mot vanlige sluttbrukere er en separat dato- og tid-velger foretrukket.
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+>
+  {() => {
+    const [dateTime, setDateTime] = React.useState(null);
+    return (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <DatePicker
+          label="Dato"
+          selectedDate={dateTime}
+          onChange={setDateTime}
+          locale="no-NO"
+          // 'forcedReturnType' er nødvendig når
+          // initiell state er 'null'
+          forcedReturnType="ZonedDateTime"
+        />
+        <TimePicker
+          label="Tid"
+          selectedTime={dateTime}
+          onChange={setDateTime}
+          locale="no-NO"
+        />
+      </div>
+    );
+  }}
+</Playground>
+
+##### 'Invalid granularity for …' feilmelding
+
+Hvis DatePicker initialiseres med `null` som `selectedDate` vil den som standard returnere en `CalendarDate` uten tidspunkt.
+For å fungere sammen med en `TimePicker` må man da tvinge den til å returnere et objekt med tid også. Dette kan du gjøre med
+prop-en `forcedReturnType`. Send inn enten `ZonedDateTime` eller `CalendarDateTime` avhengig av om du ønsker å sette en tidssoner eller ikke.
 
 ### Bruk på mobile enheter
 

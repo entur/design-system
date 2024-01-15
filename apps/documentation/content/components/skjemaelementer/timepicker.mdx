@@ -135,6 +135,11 @@ timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCa
   );`}
 </CodeBlock>
 
+### Bruk sammen med DatePicker
+
+Du kan velge en dato sammen med tidspunktet på to ulike måter, enten ved å bruke en `DatePicker` i kombinasjon med `TimePicker`-en – se [kombo av Time- og DatePicker-eksempel på siden til DatePicker](/komponenter/skjemaelementer/datepicker#kombinasjon-med-timepicker) –,
+eller inline ved å bruke en `DatePicker` med prop-en `showTime` – se [inline-eksempel på siden til DatePicker](/komponenter/skjemaelementer/datepicker#inline).
+
 ### Bruk på mobile enheter
 
 TimePicker er fungerer like bra på mobile enheter også, men ønsker man en OS-spesifikk opplevelse på mobilen kan `<NativeTimePicker />` benyttes. Her må dubenytte `Date`-objektet til Javascript eller [konvertere et TimeValue-objekt](#bruk-sammen-datepicker--bruk-med-js-date).
