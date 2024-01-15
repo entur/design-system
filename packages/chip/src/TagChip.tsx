@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { CloseIcon } from '@entur/icons';
+import { CloseSmallIcon } from '@entur/icons';
 import './BaseChip.scss';
 import './TagChip.scss';
 
@@ -36,7 +36,7 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
           aria-label={selectedCloseLabel}
           ref={ref}
         >
-          <CloseIcon aria-hidden />
+          <CloseSmallIcon aria-hidden />
         </button>
       </div>
     );

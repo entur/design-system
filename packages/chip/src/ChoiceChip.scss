@@ -7,6 +7,7 @@
   margin-right: t.$space-small;
   position: relative;
   transition: all t.$timings-fast ease-out;
+
   &__input {
     appearance: none;
     height: 0;
@@ -14,49 +15,52 @@
     width: 0;
     -webkit-appearance: none;
     ~ .eds-chip {
-      background-color: transparent;
+      background-color: var(--components-chip-standard-default);
+      color: var(--components-chip-standard-text-unselected);
+      border-color: var(--components-chip-standard-border);
       .eds-contrast & {
-        border-color: t.$colors-brand-lavender;
-        color: t.$colors-brand-white;
+        border-color: var(--components-chip-contrast-border);
+        color: var(--components-chip-contrast-text-unselected);
+        background-color: var(--components-chip-contrast-default);
       }
     }
     &:checked ~ .eds-chip {
-      background-color: t.$colors-brand-blue;
-      border-color: t.$colors-brand-blue;
-      color: t.$colors-brand-white;
+      background-color: var(--components-chip-standard-active);
+      color: var(--components-chip-standard-text-selected);
+      border-color: transparent;
+
       .eds-contrast & {
-        border-color: t.$colors-brand-lavender;
-        background-color: t.$colors-brand-lavender;
-        color: t.$colors-brand-blue;
+        background-color: var(--components-chip-contrast-active);
+      }
+      &:hover {
+        .eds-contrast & {
+          color: var(--components-chip-contrast-text-unselected);
+        }
       }
     }
     &:focus ~ .eds-chip {
-      outline: none;
-      box-shadow: t.$shadows-focus;
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
-    &:not(:checked):not(:disabled):hover ~ .eds-chip {
-      border-color: t.$colors-brand-blue;
+    &:not(:disabled):hover ~ .eds-chip {
+      border-color: var(--components-chip-standard-border);
+      background-color: var(--components-chip-standard-hover);
       .eds-contrast & {
-        border-color: t.$colors-brand-white;
+        border-color: transparent;
+        background-color: var(--components-chip-contrast-hover);
       }
     }
-    &:checked:hover ~ .eds-chip {
-      background-color: util.tint(t.$colors-brand-blue, 15%);
-      border-color: util.tint(t.$colors-brand-blue, 15%);
+    &:not(:disabled):active ~ .eds-chip {
+      background-color: var(--components-chip-standard-active);
+      border-color: transparent;
+      color: var(--components-chip-contrast-text-selected);
       .eds-contrast & {
-        background-color: util.tint(t.$colors-brand-lavender, 15%);
-        border-color: util.tint(t.$colors-brand-lavender, 15%);
-      }
-    }
-    &:active ~ .eds-chip {
-      background-color: t.$colors-blues-blue70;
-      border-color: t.$colors-blues-blue70;
-      .eds-contrast & {
-        background: util.shade(t.$colors-blues-blue20, 10%);
+        background-color: var(--components-chip-contrast-active);
       }
     }
   }
@@ -64,11 +68,11 @@
     &--disabled {
       border-style: dashed;
       cursor: not-allowed;
-
+      color: var(--components-chip-standard-text-disabled);
       .eds-contrast & {
         opacity: 1;
-        border-color: t.$colors-blues-blue50;
-        color: t.$colors-blues-blue60;
+        border-color: var(--components-chip-contrast-border-disabled);
+        color: var(--components-chip-contrast-text-disabled);
       }
     }
   }
