@@ -17,9 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn build:tokens && yarn build:css",
+    "build": "yarn build:tokens && yarn build:variables && yarn build:css",
     "build:tokens": "dts build",
-    "build:css": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts"
+    "build:css": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-tokens.ts",
+    "build:variables": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-variables.ts"
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",
