@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
-import { LiveProvider, LivePreview, LiveEditor } from 'react-live';
+import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
 import classNames from 'classnames';
 
 import { Heading5, Label } from '@entur/typography';
@@ -117,6 +117,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
             className="playground__live-preview"
             style={{ ...style }}
           />
+          <LiveError className="playground__live-preview" />
         </Element>
         {propsState !== undefined && (
           <div className="playground__props-selector">
