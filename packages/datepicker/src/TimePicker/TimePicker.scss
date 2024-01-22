@@ -25,15 +25,34 @@
       }
 
       // for counter-acting contrast mode
-      color: t.$colors-brand-blue;
       &:hover {
-        background-color: t.$colors-blues-blue70;
+        background-color: var(--components-button-iconbutton-standard-hover);
       }
+
       &:focus {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
       }
       &:active {
-        background-color: t.$colors-blues-blue50;
+        background-color: var(--components-button-iconbutton-standard-active);
+      }
+
+      // This is done to remove contrast specific styling
+      &.eds-icon-button {
+        color: var(--components-button-iconbutton-standard-text);
+
+        &:hover {
+          background-color: var(--components-button-iconbutton-standard-hover);
+        }
+        &:focus {
+          outline: t.$outlines-focus;
+          outline-color: var(--basecolors-stroke-focus-standard);
+          outline-offset: t.$outline-offsets-focus;
+        }
+        &:active {
+          background-color: var(--components-button-iconbutton-standard-active);
+        }
       }
     }
 

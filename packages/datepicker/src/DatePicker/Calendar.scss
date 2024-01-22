@@ -5,9 +5,8 @@
   width: fit-content;
   padding: t.$space-large;
   padding-top: t.$space-small;
-
-  background-color: t.$colors-brand-white;
-  color: t.$colors-brand-blue;
+  background-color: var(--components-datepicker-calendar-background);
+  color: var(--components-datepicker-calendar-text-subdued);
   border-radius: 4px;
   box-shadow: t.$shadows-box-shadow;
 
@@ -15,6 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--components-datepicker-calendar-text-accent);
 
     h2 {
       font-size: t.$font-sizes-large;
@@ -23,15 +23,18 @@
 
     // This is done to remove contrast specific styling
     .eds-icon-button {
+      color: var(--components-button-iconbutton-standard-text);
+
       &:hover {
-        background-color: t.$colors-blues-blue40;
-        color: t.$colors-brand-white;
+        background-color: var(--components-button-iconbutton-standard-hover);
       }
       &:focus {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
       }
       &:active {
-        background-color: t.$colors-blues-blue50;
+        background-color: var(--components-button-iconbutton-standard-active);
       }
       &--disabled__wrapper {
         visibility: hidden;
@@ -46,7 +49,7 @@
 
     &__weeknumber,
     thead tr th {
-      color: t.$colors-blues-blue30;
+      color: var(--components-datepicker-calendar-text-subdued);
       font-size: t.$font-sizes-small;
     }
 
@@ -68,7 +71,7 @@
       &__td {
         position: relative;
         padding: 0;
-        border: 1px solid t.$colors-greys-grey70;
+        border: 1px solid var(--components-datepicker-calendar-dateborder);
 
         &:focus-within {
           z-index: 2;
@@ -76,29 +79,32 @@
       }
 
       &:hover {
-        background-color: t.$colors-blues-blue40;
-        color: t.$colors-brand-white;
+        background-color: var(--components-datepicker-calendar-datefill-hover);
+        color: var(--components-datepicker-calendar-text-accent);
       }
 
       &:active {
-        background-color: t.$colors-blues-blue50;
+        background-color: var(--components-datepicker-calendar-datefill-selected);
+        color: var(--components-datepicker-calendar-text-accent);
       }
-
       &:focus {
-        box-shadow: t.$shadows-focus;
-        outline: 1px solid t.$colors-greys-grey70;
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
       }
 
       &--selected {
-        background-color: t.$colors-brand-blue;
-        color: t.$colors-brand-white;
+        background-color: var(--components-datepicker-calendar-datefill-selected);
+        color: var(--components-datepicker-calendar-text-accent);
 
         &:hover {
-          background-color: t.$colors-blues-blue20;
+          background-color: var(--components-datepicker-calendar-datefill-hover);
+          color: var(--components-datepicker-calendar-text-accent);
         }
 
         &:active {
-          background-color: t.$colors-blues-blue10;
+          background-color: var(--components-datepicker-calendar-datefill-selected);
+          color: var(--components-datepicker-calendar-text-accent);
         }
       }
 
@@ -107,7 +113,6 @@
 
         &:hover {
           background-color: transparent;
-          color: t.$colors-brand-blue;
           cursor: not-allowed;
         }
       }
@@ -123,7 +128,7 @@
       }
 
       &--today {
-        border-bottom: 2px solid t.$colors-brand-coral;
+        border-bottom: 2px solid var(--components-datepicker-calendar-stroke-today);
       }
     }
   }

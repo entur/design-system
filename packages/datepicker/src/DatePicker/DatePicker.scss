@@ -12,16 +12,17 @@
 
     // This is done to remove contrast specific styling
     &.eds-icon-button {
-      color: t.$colors-brand-blue;
+      color: var(--components-datepicker-calendar-icon);
       &:hover {
-        background-color: t.$colors-blues-blue40;
-        color: t.$colors-brand-white;
+        background-color: var(--components-button-iconbutton-standard-hover);
       }
       &:focus {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
       }
       &:active {
-        background-color: t.$colors-blues-blue50;
+        background-color: var(--components-button-iconbutton-standard-active);
       }
     }
   }
