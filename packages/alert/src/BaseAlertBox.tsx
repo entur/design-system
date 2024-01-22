@@ -105,6 +105,7 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
           content="Lukk"
         >
           <IconButton
+            data-color-mode="light"
             className="eds-alert-box__close-button"
             aria-label={closeButtonLabel}
             onClick={handleClose}
