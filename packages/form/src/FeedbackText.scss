@@ -8,9 +8,9 @@
     padding-left: calc(#{t.$space-medium} + #{t.$border-widths-medium});
   }
   &__text {
-    color: t.$colors-brand-blue;
+    color: var(--components-form-feedbacktext-information-standard-text);
     .eds-contrast & {
-      color: t.$colors-brand-white;
+      color: var(--components-form-feedbacktext-information-contrast-text);
     }
   }
 }
@@ -24,30 +24,51 @@
   top: -0.1rem;
 
   &--success {
-    color: t.$colors-validation-mint;
+    color: var(--components-form-feedbacktext-success-standard-icon-fill);
+    circle {
+      fill: var(--components-form-feedbacktext-success-standard-icon-symbol);
+    }
     .eds-contrast & {
-      color: t.$colors-validation-mint-contrast;
+      color: var(--components-form-feedbacktext-success-contrast-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-success-contrast-icon-symbol);
+      }
     }
   }
   &--error {
-    color: t.$colors-validation-lava;
+    color: var(--components-form-feedbacktext-negative-standard-icon-fill);
+    circle {
+      fill: var(--components-form-feedbacktext-negative-standard-icon-symbol);
+    }
     .eds-contrast & {
-      color: t.$colors-validation-lava-contrast;
+      color: var(--components-form-feedbacktext-negative-contrast-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-negative-contrast-icon-symbol);
+      }
     }
   }
   &--info {
-    color: t.$colors-validation-sky;
+    color: var(--components-form-feedbacktext-information-standard-icon-fill);
+    circle {
+      fill: var(--components-form-feedbacktext-information-standard-icon-symbol);
+    }
     .eds-contrast & {
-      color: t.$colors-validation-sky-contrast;
+      color: var(--components-form-feedbacktext-information-contrast-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-information-contrast-icon-symbol);
+      }
     }
   }
   &--warning {
-    color: t.$colors-validation-canary;
+    color: var(--components-form-feedbacktext-warning-standard-icon-fill);
     circle {
-      fill: t.$colors-brand-blue;
+      fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
     }
     .eds-contrast & {
-      color: t.$colors-validation-canary-contrast;
+      color: var(--components-form-feedbacktext-warning-contrast-icon-fill);
+      circle {
+        fill: var(--components-form-feedbacktext-warning-contrast-icon-symbol);
+      }
     }
   }
 }

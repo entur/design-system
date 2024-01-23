@@ -8,7 +8,7 @@
     border: none;
     font-size: t.$font-sizes-medium;
     font-family: inherit;
-    color: var(--primary-text-color);
+    color: var(--components-menu-overflowmenu-text);
     background: t.$colors-greys-grey90;
     display: block;
     height: t.$space-extra-large3;
@@ -18,9 +18,8 @@
     text-align: left;
     padding: t.$space-small t.$space-medium;
     opacity: 1;
-    .eds-contrast & {
-      color: t.$colors-brand-blue;
-    }
+
+    // TODO Missing variables
     &.eds-overflow-menu__item--disabled {
       background: t.$colors-greys-grey70;
       color: t.$colors-greys-grey50;

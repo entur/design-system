@@ -21,9 +21,7 @@ $label-top-large: 0.5rem;
   .eds-textarea__label & {
     box-shadow: 0px -2px 0px 4px var(--textarea-label-background);
     background: var(--textarea-label-background);
-    width: calc(
-      100% - #{t.$space-default} - #{t.$space-default} - 4px
-    ); // ~36px = margin-left + scrollbar-width + box-shadow blur
+    width: calc(100% - #{t.$space-default} - #{t.$space-default} - 4px); // ~36px = margin-left + scrollbar-width + box-shadow blur
   }
 }
 
@@ -33,17 +31,12 @@ $label-top-large: 0.5rem;
   position: relative;
 
   &__label {
-    color: t.$colors-blues-blue40;
+    color: var(--components-form-baseform-standard-text-label);
     display: flex;
     .eds-form-control-wrapper--is-filled & {
       @include labelPositionTop;
       .eds-form-control-wrapper--size-large & {
         @include labelPositionTopLarge;
-      }
-    }
-    .eds-form-control-wrapper--dark & {
-      .eds-contrast & {
-        color: t.$colors-brand-lavender;
       }
     }
     font-size: t.$font-sizes-large;
@@ -54,9 +47,7 @@ $label-top-large: 0.5rem;
     padding-left: 0;
     margin-left: t.$space-default;
     top: -(t.$border-widths-medium);
-    transition: top t.$timings-medium ease-in-out,
-      font-size t.$timings-medium ease-in-out,
-      padding t.$timings-medium ease-in-out,
+    transition: top t.$timings-medium ease-in-out, font-size t.$timings-medium ease-in-out, padding t.$timings-medium ease-in-out,
       line-height ease-in-out t.$timings-medium;
 
     user-select: none;
@@ -74,9 +65,8 @@ $label-top-large: 0.5rem;
       }
     }
   }
-
   &__label-tooltip-icon {
-    color: t.$colors-validation-sky;
+    color: var(--base-colors-shape-accent);
     padding-left: t.$space-extra-small2;
     padding-right: t.$space-extra-small2;
     display: flex;
@@ -93,6 +83,17 @@ $label-top-large: 0.5rem;
   &--size-large:focus-within {
     & .eds-input-group__label {
       @include labelPositionTopLarge;
+    }
+  }
+  .eds-tooltip {
+    .eds-contrast & {
+      background: var(--components-tooltip-tooltip-standard-fill);
+      color: var(--components-tooltip-tooltip-standard-text);
+      box-shadow: t.$shadows-box-shadow;
+    }
+
+    &::after {
+      background: var(--components-tooltip-tooltip-standard-fill);
     }
   }
 }

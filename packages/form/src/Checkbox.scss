@@ -23,17 +23,16 @@
 
       &:checked + .eds-checkbox__icon,
       &:indeterminate + .eds-checkbox__icon {
-        background-color: t.$colors-brand-blue;
+        background-color: var(--components-form-checkbox-standard-fill-selected);
         .eds-checkbox-icon {
           visibility: visible;
 
           path {
-            stroke: t.$colors-brand-white;
-            animation: stroke ease-in-out t.$timings-medium t.$timings-fast
-              forwards;
+            stroke: var(--components-form-checkbox-standard-icon);
+            animation: stroke ease-in-out t.$timings-medium t.$timings-fast forwards;
           }
           rect {
-            fill: t.$colors-brand-white;
+            fill: var(--components-form-checkbox-standard-icon);
           }
         }
         &--disabled {
@@ -44,63 +43,55 @@
           }
         }
         .eds-contrast & {
-          background-color: t.$colors-brand-lavender;
+          background-color: var(--components-form-checkbox-contrast-fill-selected);
           path {
-            stroke: t.$colors-brand-blue;
+            stroke: var(--components-form-checkbox-contrast-icon);
           }
           rect {
-            fill: t.$colors-brand-blue;
+            fill: var(--components-form-checkbox-contrast-icon);
           }
         }
       }
     }
     &:hover {
       input + .eds-checkbox__icon {
-        border-color: t.$colors-blues-blue10;
-        background-color: t.$colors-blues-blue70;
+        border-color: var(--components-form-checkbox-standard-border);
+        background-color: var(--components-form-checkbox-standard-fill-hover);
 
         .eds-contrast & {
-          border-color: util.tint(t.$colors-brand-lavender, 10%);
-          background-color: rgba(t.$colors-brand-lavender, 0.2);
+          border-color: var(--components-form-checkbox-contrast-border);
+          background-color: var(--components-form-checkbox-contrast-fill-hover);
         }
       }
 
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
         border-color: transparent;
-        background-color: t.$colors-blues-blue30;
+        background-color: var(--components-form-checkbox-standard-fill-selectedhover);
 
         .eds-contrast & {
-          background-color: util.tint(t.$colors-brand-lavender, 10%);
+          background-color: var(--components-form-checkbox-contrast-fill-selectedhover);
         }
       }
     }
     &:active {
-      input + .eds-checkbox__icon {
-        border-color: util.shade(t.$colors-brand-blue, 10%);
-
-        .eds-contrast & {
-          border-color: util.shade(t.$colors-brand-lavender, 10%);
-        }
-      }
-
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
-        background-color: util.shade(t.$colors-brand-blue, 10%);
+        background-color: var(--components-form-checkbox-standard-fill-selected);
 
         .eds-contrast & {
-          background-color: util.shade(t.$colors-brand-lavender, 10%);
+          background-color: var(--components-form-checkbox-contrast-fill-selected);
         }
       }
     }
     &:focus,
     :focus-within {
       + .eds-checkbox__icon {
-        outline: none;
-        box-shadow: t.$shadows-focus;
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
         .eds-contrast & {
-          box-shadow: t.$shadows-focus-contrast;
+          outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
     }
@@ -124,17 +115,15 @@
     margin-right: t.$space-default;
     height: 1.25rem;
     width: 1.25rem;
-    border: t.$border-widths-default solid t.$colors-brand-blue;
+    border: t.$border-widths-default solid var(--components-form-checkbox-standard-border);
     border-radius: calc(t.$border-radiuses-medium / 2);
     background-color: transparent;
-    color: t.$colors-brand-white;
-    transition: border-color t.$timings-fast ease-in-out,
-      background-color t.$timings-fast ease-in-out;
+    transition: border-color t.$timings-fast ease-in-out, background-color t.$timings-fast ease-in-out;
     &--reduced-click-area {
       margin-right: 0;
     }
     .eds-contrast & {
-      border-color: t.$colors-brand-lavender;
+      border-color: var(--components-form-checkbox-contrast-border);
     }
     .eds-checkbox-icon {
       height: t.$space-default;

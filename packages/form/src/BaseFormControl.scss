@@ -1,59 +1,55 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-form-control-wrapper {
-  --border-color: #{t.$colors-blues-blue45};
-  --border-color-hover: #{t.$colors-brand-lavender};
-
   align-items: center;
-  background-color: t.$colors-brand-white;
+  background-color: var(--components-form-baseform-standard-fill-default);
   border-radius: t.$border-radiuses-medium;
-  border: t.$border-widths-medium solid var(--border-color);
+  border: t.$border-widths-medium solid var(--components-form-baseform-standard-border-default);
   box-shadow: 0 0 0 transparent;
-  color: t.$colors-brand-blue;
+  color: var(--components-form-baseform-standard-text-content);
   display: flex;
   position: relative;
   width: 100%;
   min-height: 3rem;
   transition: border-color t.$timings-fast ease-in-out;
 
-  --textarea-label-background: t.$colors-brand-white;
-
   &:focus-within,
   &:hover {
-    --border-color: #{t.$colors-brand-blue};
+    border-color: var(--components-form-baseform-standard-border-interactive);
   }
   &:hover {
     .eds-contrast & {
-      --border-color: #{t.$colors-brand-lavender};
+      border-color: var(--components-form-baseform-contrast-border-interactive);
     }
   }
+
   &:focus-within {
-    box-shadow: inset 0 0 0 1px var(--border-color);
+    outline: 1px solid var(--components-form-baseform-standard-border-interactive);
     .eds-contrast & {
-      --border-color: #{t.$colors-brand-blue};
-      box-shadow: 0 0 0 t.$border-widths-medium t.$colors-brand-lavender;
+      outline: var(--components-form-baseform-contrast-border-interactive);
     }
   }
 
   ::placeholder {
-    color: t.$colors-blues-blue40;
+    color: var(--components-form-baseform-standard-text-label);
   }
 
   // Variations
   &--disabled {
-    --border-color: transparent;
-    background-color: t.$colors-greys-grey70;
+    border-color: transparent;
+    background-color: var(--components-form-baseform-standard-fill-disabled);
     pointer-events: none;
-    color: t.$colors-greys-grey40;
+    color: var(--components-form-baseform-standard-text-disabled);
     .eds-input-group__label {
-      color: t.$colors-greys-grey40;
+      color: var(--components-form-baseform-standard-text-disabled);
     }
 
     .eds-contrast & {
-      background: t.$colors-blues-blue10;
-      color: t.$colors-blues-blue50;
+      border-color: transparent;
+      background-color: var(--components-form-baseform-contrast-fill-disabled);
+      color: var(--components-form-baseform-contrast-text-disabled);
       .eds-input-group__label {
-        color: t.$colors-blues-blue50;
+        color: var(--components-form-baseform-contrast-text-disabled);
       }
     }
 
@@ -64,18 +60,18 @@
   }
 
   &--readonly {
-    --border-color: transparent;
-    --textarea-label-background: t.$colors-greys-grey90;
+    border-color: transparent;
     pointer-events: none;
     cursor: default;
-    background: t.$colors-greys-grey90;
+    background: var(--components-form-baseform-standard-fill-readonly);
+    border: var(--components-form-baseform-standard-fill-readonly);
 
     .eds-contrast & {
-      --textarea-label-background: t.$colors-blues-blue10;
-      background: t.$colors-blues-blue10;
-      color: t.$colors-brand-white;
+      background: var(--components-form-baseform-contrast-fill-readonly);
+      color: var(--components-form-baseform-contrast-text-description);
+      border: var(--components-form-baseform-contrast-fill-readonly);
       .eds-input-group__label {
-        color: t.$colors-brand-lavender;
+        color: var(--components-form-baseform-contrast-text-description);
       }
     }
 
@@ -110,80 +106,29 @@
 
   // Validation modes changes the border colors
   &--success {
-    border-color: t.$colors-validation-mint;
-    --border-color: #{t.$colors-validation-mint};
-    &:hover {
-      border-color: t.$colors-validation-mint-contrast;
-    }
+    border-color: var(--components-form-baseform-standard-border-success);
     &:focus-within {
-      border-color: t.$colors-validation-mint;
+      border-color: var(--components-form-baseform-standard-border-success);
     }
 
     .eds-contrast & {
-      border-color: t.$colors-validation-mint-contrast;
-      --border-color: #{t.$colors-validation-mint-contrast};
-      &:hover {
-        border-color: t.$colors-validation-mint;
-      }
+      border-color: var(--components-form-baseform-standard-border-success);
       &:focus-within {
-        --border-color: #{t.$colors-validation-mint-contrast};
-        border-color: t.$colors-brand-blue;
+        border-color: var(--components-form-baseform-contrast-border-success);
       }
     }
   }
 
   &--error {
-    border-color: t.$colors-validation-lava;
-    --border-color: #{t.$colors-validation-lava};
-    &:hover {
-      border-color: t.$colors-validation-lava-contrast;
-    }
+    border-color: var(--components-form-baseform-standard-border-negative);
     &:focus-within {
-      border-color: t.$colors-validation-lava;
+      border-color: var(--components-form-baseform-standard-border-negative);
     }
 
     .eds-contrast & {
-      border-color: t.$colors-validation-lava-contrast;
-      --border-color: #{t.$colors-validation-lava-contrast};
-      &:hover {
-        border-color: t.$colors-validation-lava;
-      }
+      border-color: var(--components-form-baseform-contrast-border-negative);
       &:focus-within {
-        border-color: t.$colors-brand-blue;
-        --border-color: #{t.$colors-validation-lava-contrast};
-      }
-    }
-  }
-
-  /* 
-  Some input controls require a darker design while inside a contrast block. 
-  These elements require the `--dark` modifier, even on the wrapper.
-  */
-  .eds-contrast & {
-    &--dark {
-      background-color: t.$colors-brand-blue;
-      color: t.$colors-brand-white;
-      ::placeholder {
-        color: t.$colors-brand-lavender;
-      }
-
-      &:hover {
-        // background-color: t.$colors-blues-blue30;
-        border-color: t.$colors-brand-lavender;
-      }
-      &:focus-within {
-        background-color: t.$colors-blues-blue10;
-        border-color: t.$colors-brand-lavender;
-      }
-
-      * {
-        background-color: transparent;
-        color: inherit;
-      }
-
-      &.eds-form-control-wrapper--disabled {
-        background-color: t.$colors-blues-blue10;
-        color: t.$colors-blues-blue50;
+        border-color: var(--components-form-baseform-contrast-border-negative);
       }
     }
   }
@@ -193,7 +138,7 @@
   appearance: none;
   background-color: transparent;
   border: 0;
-  color: inherit;
+  color: var(--components-form-baseform-standard-text-content);
   display: block;
   font-family: inherit;
   line-height: t.$line-heights-small;

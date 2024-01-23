@@ -29,10 +29,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: left t.$timings-fast ease-in-out,
-      background-color t.$timings-fast ease-in-out;
+    transition: left t.$timings-fast ease-in-out, background-color t.$timings-fast ease-in-out;
     box-shadow: t.$shadows-box-shadow;
-    background-color: t.$colors-brand-white;
+    background-color: var(--components-form-switch-standard-switch);
     top: 0.125rem;
     left: 0.125rem;
     position: relative;
@@ -47,7 +46,7 @@
   }
   &__switch {
     position: relative;
-    background-color: t.$colors-greys-grey50;
+    background-color: var(--components-form-switch-standard-fill-false);
     content: '';
     display: block;
     transition: background-color t.$timings-fast ease-in-out;
@@ -57,7 +56,7 @@
     box-shadow: inset 0px 2px 2px -1px rgba(0, 0, 0, 0.1);
 
     .eds-contrast & {
-      background-color: t.$colors-blues-blue50;
+      background-color: var(--components-form-switch-contrast-fill-false);
     }
 
     .eds-switch--right & {
@@ -66,33 +65,35 @@
 
     svg g, // This is to colorize every type of icon that will potentially be included
     path {
-      fill: t.$colors-greys-grey40;
+      fill: var(--components-form-switch-standard-icon-false);
       transition: fill ease-in-out t.$timings-fast;
 
       .eds-contrast & {
-        fill: t.$colors-brand-blue;
+        fill: var(--components-form-switch-contrast-icon-false);
       }
     }
 
     :checked + & {
-      background-color: var(--eds-switch-color);
+      background-color: var(--components-form-switch-standard-fill-true);
       .eds-switch__circle {
         left: 1.625rem;
         svg g,
         path {
-          fill: var(--eds-switch-color);
+          fill: var(--components-form-switch-standard-fill-true);
         }
       }
       .eds-contrast & {
-        background-color: var(--eds-switch-contrast-color);
+        background-color: var(--components-form-switch-contrast-fill-true);
       }
     }
+
     :focus + & {
-      outline: none;
-      box-shadow: t.$shadows-focus;
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
 

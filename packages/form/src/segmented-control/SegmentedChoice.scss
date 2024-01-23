@@ -6,20 +6,18 @@
 /// @param {Color} $color-bg - background color
 /// @return {Box-shadow}
 @function inset-focus($color-focus, $color-bg) {
-  @return inset 0 0 0 t.$border-widths-small $color-bg,
-    inset 0 0 0 calc(#{t.$border-widths-medium} + #{t.$border-widths-small})
-      $color-focus;
+  @return inset 0 0 0 t.$border-widths-small $color-bg, inset 0 0 0 calc(#{t.$border-widths-medium} + #{t.$border-widths-small}) $color-focus;
 }
 
 .eds-segmented-choice {
   display: block;
   flex: 1 1 0px;
   .eds-base-segmented {
-    --background-color: transparent;
+    --background-color: var(--components-form-segmentedcontrol-standard-fill-unselected);
 
     background-color: var(--background-color);
     border-radius: t.$border-widths-large;
-    color: inherit;
+    color: var(--components-form-segmentedcontrol-standard-text-unselected);
     cursor: pointer;
     font-size: t.$font-sizes-medium;
     height: t.$space-large;
@@ -36,21 +34,26 @@
       line-height: t.$line-heights-extra-large;
       padding: t.$space-extra-small t.$space-small;
     }
+
+    .eds-contrast & {
+      --background-color: var(--components-form-segmentedcontrol-contrast-background);
+      color: var(--components-form-segmentedcontrol-contrast-text-unselected);
+    }
   }
 
   &:hover input {
     &:not(:checked) + .eds-base-segmented {
-      --background-color: #{t.$colors-blues-blue80};
-
+      --background-color: var(--components-form-segmentedcontrol-standard-fill-hover);
       .eds-contrast & {
-        --background-color: #{t.$colors-blues-blue30};
+        --background-color: var(--components-form-segmentedcontrol-contrast-fill-hover);
       }
     }
     &:checked + .eds-base-segmented {
-      --background-color: #{t.$colors-blues-blue80};
-
+      --background-color: var(--components-form-segmentedcontrol-standard-fill-hover);
+      color: var(--components-form-segmentedcontrol-standard-text-unselected);
       .eds-contrast & {
-        --background-color: #{t.$colors-blues-blue70};
+        --background-color: var(--components-form-segmentedcontrol-contrast-fill-hover);
+        color: var(--components-form-segmentedcontrol-contrast-text-unselected);
       }
     }
   }
@@ -63,36 +66,33 @@
     width: 0;
 
     &:checked + .eds-base-segmented {
-      --background-color: #{t.$colors-brand-white};
-
-      box-shadow: t.$shadows-box-shadow;
+      --background-color: var(--components-form-segmentedcontrol-standard-fill-selected);
+      color: var(--components-form-segmentedcontrol-standard-text-selected);
+      box-shadow: t.$shadows-box-shadow; // TODO missing variable
 
       .eds-contrast & {
-        --background-color: #{t.$colors-brand-white};
-
-        box-shadow: t.$shadows-box-shadow-contrast;
-        color: t.$colors-brand-blue;
+        --background-color: var(--components-form-segmentedcontrol-contrast-fill-selected);
+        box-shadow: t.$shadows-box-shadow-contrast; // TODO missing variable
+        color: var(--components-form-segmentedcontrol-contrast-text-selected);
       }
     }
 
     &:focus {
       &:not(:checked) + .eds-base-segmented {
-        box-shadow: #{inset-focus(t.$colors-brand-blue, t.$colors-blues-blue70)};
-
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
         .eds-contrast & {
-          box-shadow: #{inset-focus(
-              t.$colors-brand-white,
-              t.$colors-blues-blue20
-            )};
+          outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
       &:checked + .eds-base-segmented {
-        box-shadow: t.$shadows-box-shadow,
-          #{inset-focus(t.$colors-brand-blue, t.$colors-brand-white)};
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
 
         .eds-contrast & {
-          box-shadow: t.$shadows-box-shadow-contrast,
-            #{inset-focus(t.$colors-brand-blue, t.$colors-brand-white)};
+          outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
     }
