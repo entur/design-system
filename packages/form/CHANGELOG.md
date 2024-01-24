@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.34](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.33...@entur/form@7.0.34) (2024-01-24)
+
+### Bug Fixes
+
+- **dropdown:** fix height on dropdown ([89e1c40](https://bitbucket.org/enturas/design-system/commits/89e1c401c972f76ef04fed79deaf9d1ebc100a13))
+
 ## [7.0.33](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.32...@entur/form@7.0.33) (2024-01-08)
 
 ### Bug Fixes

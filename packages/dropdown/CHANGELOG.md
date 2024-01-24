@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.29...@entur/dropdown@5.1.0) (2024-01-24)
+
+### Bug Fixes
+
+- **dropdown:** fix height on dropdown ([89e1c40](https://bitbucket.org/enturas/design-system/commits/89e1c401c972f76ef04fed79deaf9d1ebc100a13))
+
+### Features
+
+- **dropdown:** improve handling of async functions as items ([de36d9a](https://bitbucket.org/enturas/design-system/commits/de36d9af407473ae190957bb7d6641f938232e95))
+
 ## [5.0.29](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.28...@entur/dropdown@5.0.29) (2024-01-08)
 
 ### Bug Fixes

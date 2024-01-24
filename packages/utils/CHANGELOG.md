@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.5...@entur/utils@0.10.0) (2024-01-24)
+
+### Features
+
+- **debounce util:** turn debounce into hook useDebounce which fixes incorrect behaviour ([72b1332](https://bitbucket.org/enturas/design-system/commits/72b1332a41c918297280cc3fa61f9a5fa7e2a52e))
+
+### BREAKING CHANGES
+
+- **debounce util:** debounce is now named useDebounce
+
 ## [0.9.5](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.9.4...@entur/utils@0.9.5) (2023-09-08)
 
 **Note:** Version bump only for package @entur/utils
