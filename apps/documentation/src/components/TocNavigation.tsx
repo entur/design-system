@@ -1,32 +1,44 @@
 import React from 'react';
 import classNames from 'classnames';
-import { debounce } from '@entur/utils';
 import { useCurrentDoc, Entry } from 'docz';
-import './TocNavigation.scss';
+
+import { useDebounce } from '@entur/utils';
 import { Heading4 } from '@entur/typography';
+
+import './TocNavigation.scss';
 
 function useCurrentActiveHeading(headings: Entry['headings']) {
   const [activeHeading, setActiveHeading] = React.useState<string | null>(null);
+  const [headingElements, setHeadingElements] = React.useState<HTMLElement[]>(
+    [],
+  );
+
+  const findActiveHeading = useDebounce(() => {
+    for (const i in headingElements) {
+      if (!headingElements[i]) {
+        continue;
+      }
+      const thisTop = headingElements[i].getBoundingClientRect().top;
+      const nextTop =
+        headingElements[Number(i) + 1]?.getBoundingClientRect().top;
+
+      if (thisTop + nextTop >= 0 || thisTop >= 0) {
+        setActiveHeading(headingElements[i].id);
+        break;
+      }
+    }
+  }, 16);
 
   React.useEffect(() => {
-    const findActiveHeading = debounce(() => {
-      for (const i in headingElements) {
-        if (!headingElements[i]) {
-          continue;
-        }
-        const thisTop = headingElements[i].getBoundingClientRect().top;
-        const nextTop =
-          headingElements[Number(i) + 1]?.getBoundingClientRect().top;
-
-        if (thisTop + nextTop >= 0 || thisTop >= 0) {
-          setActiveHeading(headingElements[i].id);
-          break;
-        }
-      }
-    }, 16);
-    const headingElements = headings.map(
-      heading => document.getElementById(heading.slug) as HTMLElement,
+    setHeadingElements(
+      headings.map(
+        heading => document.getElementById(heading.slug) as HTMLElement,
+      ),
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
     window.addEventListener('resize', findActiveHeading);
     window.addEventListener('scroll', findActiveHeading);
     findActiveHeading();
@@ -34,7 +46,7 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
       window.removeEventListener('resize', findActiveHeading);
       window.removeEventListener('scroll', findActiveHeading);
     };
-  }, [headings]);
+  }, [findActiveHeading]);
 
   return activeHeading;
 }

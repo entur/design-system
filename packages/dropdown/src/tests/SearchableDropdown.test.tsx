@@ -356,14 +356,16 @@ describe('SearchableDropdown', () => {
     const toggleButton = screen.getByRole('combobox', { name: 'test label' });
     await user.click(toggleButton);
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
+    const listItems = await screen.findAllByRole('option');
+
+    expect(listItems).toHaveLength(testItems.length);
   });
 
   test('works with items as an asynchronous function', async () => {
     const user = userEvent.setup();
     const asyncItems = () => {
       return new Promise<DropdownItemType[]>(resolve => {
-        setTimeout(() => resolve(testItems), 1000);
+        setTimeout(() => resolve(testItems), 750);
       });
     };
     render(
@@ -377,10 +379,10 @@ describe('SearchableDropdown', () => {
     const toggleButton = screen.getByRole('combobox', { name: 'test label' });
     await user.click(toggleButton);
 
-    await waitFor(() => screen.getAllByRole('option'));
+    const listItems = await screen.findAllByRole('option');
 
-    expect(screen.getAllByRole('option')).toHaveLength(testItems.length);
-  });
+    expect(listItems).toHaveLength(testItems.length);
+  }, 1500);
 
   test('applies className to eds-dropdown__wrapper element', () => {
     const { container } = render(

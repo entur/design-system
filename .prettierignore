@@ -1,2 +1,3 @@
 # disable prettier in code block theme to comply with exprected syntax
 themeForCodeBlock.js
+*.mdx
