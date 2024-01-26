@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.1.0...@entur/dropdown@5.1.1-beta.0) (2024-01-26)
+
+### Bug Fixes
+
+- **dropdown:** fix list of items not updating on items prop update ([de72875](https://bitbucket.org/enturas/design-system/commits/de728759ca3e2e977d2b46d8fea7424d07353a4a))
+
 # [5.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.0.29...@entur/dropdown@5.1.0) (2024-01-24)
 
 ### Bug Fixes
