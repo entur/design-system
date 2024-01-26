@@ -6,16 +6,20 @@
   position: relative;
   width: fit-content;
   transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
+  background-color: var(--components-layout-card-standard-fill-default);
+
+  .eds-contrast & {
+    background-color: var(--components-layout-card-contrast-fill-default);
+  }
+
   &:focus,
   &:focus-within {
     outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
     .eds-contrast & {
-      outline: t.$outlines-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
-  }
-  .eds-contrast & {
-    background-color: t.$colors-blues-blue10;
   }
 
   &:hover {

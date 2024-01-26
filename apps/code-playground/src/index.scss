@@ -29,5 +29,9 @@ body {
 
 .code-playground__wrapper {
   padding: 1rem 2rem 2rem;
+  background-color: var(--basecolors-frame-default);
   height: 100%;
+  &.eds-contrast {
+    background-color: var(--basecolors-frame-contrast);
+  }
 }
