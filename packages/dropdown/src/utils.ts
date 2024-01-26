@@ -251,17 +251,6 @@ export const isVoiceOverClick = (clickEvent: React.MouseEvent) => {
   const clickPositionX = clickEvent.clientX;
   const clickPositionY = clickEvent.clientY;
 
-  console.log(
-    'targetX:',
-    targetElementMiddleX,
-    'targetY:',
-    targetElementMiddleY,
-    'clickX:',
-    clickPositionX,
-    'clickY:',
-    clickPositionY,
-  );
-
   return (
     Math.abs(targetElementMiddleX - clickPositionX) <= 1 &&
     Math.abs(targetElementMiddleY - clickPositionY) <= 1
