@@ -1,6 +1,8 @@
 # Entur design tokens
 
-This package contains all design tokens used throughout the design system. You'l find all of them in the `src/tokens.ts` file.
+This package contains all design tokens and design variables used throughout the design system. We are currently in a process to migrate over to a new design variable system based on [Figma Variables](https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma).
+
+Since not all values are available as a variable yet and to avoid breaking changes, all previous design tokens will be kept around for a while. These are built from the `src/legacy-tokens.ts` file.
 
 > 💡 Looking for the [documentation](https://design.entur.no/komponenter/resources/tokens)?
 
@@ -97,3 +99,23 @@ StyleSheet.create({
 #### px vs rem
 
 These values are mainly provided in pixels. If you need the values in rem instead, add a `.rem` after the token name, e.g. `space.rem.large` for rem value and `space.large` for pixel value.
+
+## [For maintainers] Updating design variables
+
+There are three steps needed to update the set of available designs variables in this repo:
+
+1. generate a JSON-export of the variable set from Figma
+2. Update the corresponding JSON-file in the `src` folder
+3. Build the new variables and commit the changes
+
+### 1. Generate a JSON export
+
+The JSON is exported from Figma using the [variabels2css-plugin](https://www.figma.com/community/plugin/1261234393153346915), download the plugin if you haven't already. Go to the Figma file containing the variables you want to export, eg. [Semantic Colors](https://www.figma.com/file/zFFjH3gKGON6vFJZQK5ltr/Tokens-Semantic-colors?type=design&mode=design&t=M9cT0w0kaaxyBHiq-1). In you menu bar, select 'Plugins' and choose 'variables2css' – this opens a modal. Under 'choose your collection' choose the variable set you want to export. Under 'type' choose 'JSON', and under 'color' and 'unit' choose 'hex' and 'rem'. Then click 'Generate' and copy the result.
+
+### 2. Update JSON file
+
+Back in this repo, find the JSON-variables file you want to update, eg. `semantic.json`, delete its content and paste the generated result you copied in step 1. Then save the file.
+
+### 3. Build variables
+
+When the JSON-file content is updated, run the script `yarn build` inside this package or `yarn build:packages` from root. This will generate new files with updated values in both this package and in all other packages where the component color value has been updated. Once the build is finished, commit all changes and push the commit.
