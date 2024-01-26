@@ -105,7 +105,7 @@ export const useResolvedItems = (
     if (itemsIsAFunction) {
       debouncedFetchItems('');
     }
-  }, [itemsIsAFunction]);
+  }, [itemsIsAFunction, itemsResolver]);
 
   return {
     items: normalizedItems,
