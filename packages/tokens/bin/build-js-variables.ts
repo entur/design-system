@@ -10,25 +10,34 @@ import * as prettier from 'prettier';
 
 import {
   WARNING_TEXT,
+  baseFilePath,
   createComponentColorSet,
   createPrimitiveSet,
-  createSemanticSet,
+  createVariablesSet,
+  semanticFilePath,
 } from './build-variables';
 import type { variableSet } from './build-variables';
 
 const createJSVariables = () => {
   const primitive = createPrimitiveSet();
-  const semantic = createSemanticSet();
+  const semantic = createVariablesSet(semanticFilePath);
+  const base = createComponentColorSet(baseFilePath);
   const componentColors = createComponentColorSet();
 
   outputJSObjectFile(primitive, 'primitive');
   outputJSObjectFile(semantic, 'semantic');
+  outputJSObjectFile(base, 'base');
   outputJSObjectFile(componentColors, 'componentColors');
 };
 
 function outputJSObjectFile(
   variables: variableSet[],
-  name: 'styles' | 'primitive' | 'semantic' | 'componentColors' = 'styles',
+  name:
+    | 'styles'
+    | 'primitive'
+    | 'semantic'
+    | 'base'
+    | 'componentColors' = 'styles',
 ) {
   const jsVariables = variables.map(color => color?.js);
   const jsVariablesObject = Object.assign({}, ...jsVariables);
