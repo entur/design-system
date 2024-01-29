@@ -1,20 +1,26 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-popover {
-  background: t.$colors-brand-blue;
+  background: var(--components-tooltip-popover-standard-fill);
   box-shadow: t.$shadows-box-shadow;
   border-radius: t.$border-radiuses-default;
-  border: t.$border-widths-small solid t.$colors-greys-grey60;
+  border: t.$border-widths-small solid var(--components-tooltip-popover-standard-border);
   font-family: inherit;
   z-index: t.$z-indexes-popover;
   .eds-contrast & {
-    background: t.$colors-blues-blue10;
+    background: var(--components-tooltip-popover-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
   &--hidden {
     display: none;
   }
   &:focus {
-    outline: 5px solid red;
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
   }
 }
