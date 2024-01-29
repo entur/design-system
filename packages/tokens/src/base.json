@@ -1,0 +1,404 @@
+[
+  {
+    "mode": {
+      "name": "Light",
+      "id": "2820:14"
+    },
+    "color": [
+      {
+        "name": "Base colors/Frame/Contrast",
+        "color": "#181c56",
+        "var": "Fill/Background/Contrast/Light",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Base colors/Frame/ContrastAlt",
+        "color": "#393d79",
+        "var": "Fill/Background/Contrast/LightAlt",
+        "rootAlias": "Blue/90"
+      },
+      {
+        "name": "Base colors/Frame/Default",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Frame/Elevated",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Frame/ElevatedAlt",
+        "color": "#f6f6f9",
+        "var": "Fill/Background/Tint/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
+        "name": "Base colors/Frame/Subdued",
+        "color": "#d9dae8",
+        "var": "Fill/Background/Subdued/Light",
+        "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Base colors/Frame/Tint",
+        "color": "#f6f6f9",
+        "var": "Fill/Background/Tint/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
+        "name": "Base colors/Shape/Accent",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Base colors/Shape/Disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Base colors/Shape/DisabledAlt",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Shape/Highlight",
+        "color": "#ff5959",
+        "var": "Stroke/Highlight",
+        "rootAlias": "Coral/40"
+      },
+      {
+        "name": "Base colors/Shape/Light",
+        "color": "#ffffff",
+        "var": "Shape/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Shape/Mask",
+        "color": "#ffffff",
+        "var": "Shape/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Shape/MaskAlt",
+        "color": "#ffffff",
+        "var": "Shape/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Shape/Subdued",
+        "color": "#626493",
+        "var": "Shape/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Base colors/Shape/SubduedAlt",
+        "color": "#d9dae8",
+        "var": "Shape/SubduedAlt",
+        "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Base colors/Stroke/Contrast",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Base colors/Stroke/Default",
+        "color": "#181c56",
+        "var": "Stroke/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Base colors/Stroke/Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Base colors/Stroke/Focus-Contrast",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Base colors/Stroke/Focus-Standard",
+        "color": "#181c56",
+        "var": "Stroke/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Base colors/Stroke/Highlight",
+        "color": "#ff5959",
+        "var": "Stroke/Highlight",
+        "rootAlias": "Coral/40"
+      },
+      {
+        "name": "Base colors/Stroke/Light",
+        "color": "#ffffff",
+        "var": "Stroke/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Stroke/Subdued",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Base colors/Stroke/SubduedAlt",
+        "color": "#e3e6e8",
+        "var": "Stroke/Neutral",
+        "rootAlias": "Grey/30"
+      },
+      {
+        "name": "Base colors/Text/Accent",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Base colors/Text/Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Base colors/Text/DisabledAlt",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Text/Highlight",
+        "color": "#ff5959",
+        "var": "Stroke/Highlight",
+        "rootAlias": "Coral/40"
+      },
+      {
+        "name": "Base colors/Text/Light",
+        "color": "#ffffff",
+        "var": "Text/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Base colors/Text/Subdued",
+        "color": "#626493",
+        "var": "Text/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Base colors/Text/SubduedAlt",
+        "color": "#d9dae8",
+        "var": "Text/SubduedAlt",
+        "rootAlias": "Blue/30"
+      }
+    ],
+    "number": []
+  },
+  {
+    "mode": {
+      "name": "Dark",
+      "id": "2820:16"
+    },
+    "color": [
+      {
+        "name": "Base colors/Frame/Contrast",
+        "color": "#212233",
+        "var": "Fill/Background/Contrast/Dark",
+        "rootAlias": "Ebony/90"
+      },
+      {
+        "name": "Base colors/Frame/ContrastAlt",
+        "color": "#141527",
+        "var": "Fill/Background/Tint/Dark",
+        "rootAlias": "Ebony/95"
+      },
+      {
+        "name": "Base colors/Frame/Default",
+        "color": "#08091c",
+        "var": "Fill/Background/Standard/Dark",
+        "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Base colors/Frame/Elevated",
+        "color": "#e5e5e926",
+        "var": "Fill/Background/Overlay/Transparent",
+        "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Base colors/Frame/ElevatedAlt",
+        "color": "#464755",
+        "var": "Fill/Background/Overlay/SolidAlt",
+        "rootAlias": "Ebony/75"
+      },
+      {
+        "name": "Base colors/Frame/Subdued",
+        "color": "#2d2e3e",
+        "var": "Fill/Background/Subdued/Dark",
+        "rootAlias": "Ebony/85"
+      },
+      {
+        "name": "Base colors/Frame/Tint",
+        "color": "#141527",
+        "var": "Fill/Background/Tint/Dark",
+        "rootAlias": "Ebony/95"
+      },
+      {
+        "name": "Base colors/Shape/Accent",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Base colors/Shape/Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Shape/DisabledAlt",
+        "color": "#cccdd4",
+        "var": "Shape/DarkAlt",
+        "rootAlias": "Ebony/20"
+      },
+      {
+        "name": "Base colors/Shape/Highlight",
+        "color": "#ff9494",
+        "var": "Stroke/HighlightAlt",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Base colors/Shape/Light",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Base colors/Shape/Mask",
+        "color": "#2d2e3e",
+        "var": "Fill/Background/Subdued/Dark",
+        "rootAlias": "Ebony/85"
+      },
+      {
+        "name": "Base colors/Shape/MaskAlt",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Base colors/Shape/Subdued",
+        "color": "#cccdd4",
+        "var": "Shape/DarkAlt",
+        "rootAlias": "Ebony/20"
+      },
+      {
+        "name": "Base colors/Shape/SubduedAlt",
+        "color": "#cccdd4",
+        "var": "Shape/DarkAlt",
+        "rootAlias": "Ebony/20"
+      },
+      {
+        "name": "Base colors/Stroke/Contrast",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Base colors/Stroke/Default",
+        "color": "#b3b4bd",
+        "var": "Stroke/Dark",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Base colors/Stroke/Disabled",
+        "color": "#e3e6e8",
+        "var": "Stroke/Neutral",
+        "rootAlias": "Grey/30"
+      },
+      {
+        "name": "Base colors/Stroke/Focus-Contrast",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Base colors/Stroke/Focus-Standard",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Base colors/Stroke/Highlight",
+        "color": "#ff9494",
+        "var": "Stroke/HighlightAlt",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Base colors/Stroke/Light",
+        "color": "#b3b4bd",
+        "var": "Stroke/Dark",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Base colors/Stroke/Subdued",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
+      },
+      {
+        "name": "Base colors/Stroke/SubduedAlt",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
+      },
+      {
+        "name": "Base colors/Text/Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Base colors/Text/Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Text/DisabledAlt",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Text/Highlight",
+        "color": "#ff9494",
+        "var": "Stroke/HighlightAlt",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Base colors/Text/Light",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Base colors/Text/Subdued",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Base colors/Text/SubduedAlt",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      }
+    ],
+    "number": []
+  }
+]
