@@ -69,7 +69,12 @@ export const SideNavigationGroup: React.FC<SideNavigationGroupProps> = ({
           />
         )}
       </button>
-      <BaseExpand open={isOpen}>{children}</BaseExpand>
+      <BaseExpand
+        className="eds-side-navigation-group__expand-content"
+        open={isOpen}
+      >
+        {children}
+      </BaseExpand>
     </div>
   );
 };

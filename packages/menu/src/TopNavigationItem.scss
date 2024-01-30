@@ -5,7 +5,7 @@
 
   display: inline-block;
   cursor: pointer;
-  color: inherit;
+  color: var(--components-menu-navigationbar-standard-text-unselected);
   text-decoration: none;
   position: relative;
   padding: t.$space-default;
@@ -23,17 +23,20 @@
     width: 0; //t.$space-extra-large;
     margin: 0 auto;
     opacity: var(--show-active-line);
-    background: t.$colors-brand-coral;
-    transition: width ease-in-out t.$timings-medium,
-      opacity ease-in-out t.$timings-medium;
+    background: var(--components-menu-navigationbar-standard-stroke-selected);
+    transition: width ease-in-out t.$timings-medium, opacity ease-in-out t.$timings-medium;
+  }
+  .eds-contrast & {
+    color: var(--components-menu-navigationbar-contrast-text-unselected);
   }
 
   &:focus {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
+
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
   &:hover {
@@ -44,9 +47,13 @@
   }
 
   &--active {
+    color: var(--components-menu-navigationbar-standard-text-selected);
     --show-active-line: 1;
     &::after {
       width: t.$space-extra-large;
+    }
+    .eds-contrast & {
+      color: var(--components-menu-navigationbar-contrast-text-selected);
     }
   }
 }

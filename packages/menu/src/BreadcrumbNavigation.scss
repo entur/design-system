@@ -20,23 +20,35 @@
 
 .eds-breadcrumb__link {
   text-decoration: none;
+  color: var(--components-menu-breadcrumb-standard-text);
+  background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-standard-text) 0%, var(--components-menu-breadcrumb-standard-text) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.125rem;
+  background-position: 0 100%;
+  .eds-contrast & {
+    color: var(--components-menu-breadcrumb-contrast-text);
+    background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
+  }
 
   &:hover {
     animation: eds-breadcrumb-underline 0.3s ease-in;
   }
-  // TODO missing variables
+
   &:focus {
-    outline: none;
-    box-shadow: t.$shadows-focus;
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
   }
 
   @keyframes eds-breadcrumb-underline {
     from {
-      background-size: 0% 0.125rem;
+      background-size: 0% t.$border-widths-default;
     }
     to {
-      background-size: 100% 0.125rem;
+      background-size: 100% t.$border-widths-default;
     }
   }
 

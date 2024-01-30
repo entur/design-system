@@ -1,36 +1,34 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-overflow-menu {
-  &__button {
-  }
   &__item {
     appearance: none;
     border: none;
-    font-size: t.$font-sizes-medium;
+    font-size: t.$font-sizes-large;
     font-family: inherit;
     color: var(--components-menu-overflowmenu-text);
-    background: t.$colors-greys-grey90;
+    background: var(--components-menu-overflowmenu-fill-default);
     display: block;
-    height: t.$space-extra-large3;
     cursor: pointer;
     width: 100%;
     line-height: t.$line-heights-large;
     text-align: left;
-    padding: t.$space-small t.$space-medium;
+    padding: t.$space-small;
     opacity: 1;
 
-    // TODO Missing variables
     &.eds-overflow-menu__item--disabled {
-      background: t.$colors-greys-grey70;
-      color: t.$colors-greys-grey50;
+      background: var(--components-menu-overflowmenu-fill-default);
+      color: var(--components-menu-overflowmenu-text-disabled);
+
       .eds-contrast & {
-        background: t.$colors-greys-grey70;
-        color: t.$colors-greys-grey50;
+        background: var(--components-menu-overflowmenu-fill-default);
+        color: var(--components-menu-overflowmenu-text-disabled);
       }
+
       &:hover {
         cursor: not-allowed;
-        background: t.$colors-greys-grey70;
-        color: t.$colors-greys-grey50;
+        background: var(--components-menu-overflowmenu-fill-default);
+        color: var(--components-menu-overflowmenu-text-disabled);
       }
     }
 
@@ -41,21 +39,20 @@
     &:hover,
     &:focus,
     &[data-selected] {
-      background: t.$colors-blues-blue70;
+      background: var(--components-menu-overflowmenu-fill-hover);
     }
     &:focus {
       outline: none;
     }
   }
 }
-.eds-overflow-menu__item + .eds-overflow-menu__item {
-  border-top: t.$border-widths-small solid t.$colors-greys-grey70;
-}
+
 .eds-overflow-menu__menu-list[data-reach-menu-list] {
-  border: t.$border-widths-small solid t.$colors-greys-grey70;
-  border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
   overflow: hidden;
+  border-radius: t.$border-radiuses-medium;
+  border: 1px solid var(--components-menu-overflowmenu-border);
+
   &:focus {
     outline: none;
   }
