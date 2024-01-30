@@ -1,9 +1,10 @@
 import React from 'react';
-import { TestBench } from './TestBench';
+
 import { Label } from '@entur/typography';
 import { Switch } from '@entur/form';
-import { Contrast } from '@entur/layout';
 import { ToastProvider } from '@entur/alert';
+
+import { TestBench } from './TestBench';
 
 type FrameComponentProps = {
   children: React.ReactNode;
@@ -11,27 +12,30 @@ type FrameComponentProps = {
 
 const FrameComponent = ({ children }: FrameComponentProps) => {
   const [contrast, setContrast] = React.useState(false);
-  const Element = contrast ? Contrast : 'div';
+  const [darkMode, setDarkMode] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.setAttribute('data-color-mode', darkMode ? 'dark' : 'light');
+    document.body.setAttribute('class', contrast ? 'eds-contrast' : '');
+  }, [darkMode, contrast]);
+
   return (
-    <React.StrictMode>
-      <ToastProvider>
-        <Element>
-          <div style={{ paddingBottom: '1rem' }}>
-            <Label>
-              Kontrast
-              <Switch
-                checked={contrast}
-                onChange={() => setContrast(!contrast)}
-              />
-            </Label>
-          </div>
-          <div style={{ margin: '2rem' }}>
-            <TestBench />
-          </div>
-          {children}
-        </Element>
-      </ToastProvider>
-    </React.StrictMode>
+    <ToastProvider>
+      <div style={{ paddingBottom: '1rem', display: 'flex', gap: '1rem' }}>
+        <Label>
+          Dark mode
+          <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        </Label>
+        <Label>
+          Kontrast
+          <Switch checked={contrast} onChange={() => setContrast(!contrast)} />
+        </Label>
+      </div>
+      <div style={{ margin: '2rem' }}>
+        <TestBench />
+      </div>
+      {children}
+    </ToastProvider>
   );
 };
 

@@ -1,4 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/tokens/dist/base.css';
 @import '~@entur/utils/dist/breakpoints.scss';
 
 @import '~@entur/icons/dist/styles.css';
@@ -21,3 +22,14 @@
 @import '~@entur/travel/dist/styles.css';
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/dropdown/dist/styles.css';
+
+body {
+  background-color: var(--basecolors-frame-default);
+  height: 100vh;
+  margin: unset;
+  padding: 1rem 2rem 2rem;
+
+  &.eds-contrast {
+    background-color: var(--basecolors-frame-contrast);
+  }
+}
