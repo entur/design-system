@@ -35,6 +35,7 @@ const partnerIcons = [
   'RuterNoTextIcon',
   'SJIcon',
   'SkyssIcon',
+  'SkyssNoTextIcon',
   'VKTIcon',
   'VyIcon',
   // Mobility Partners
