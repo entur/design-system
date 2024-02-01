@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.14.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.13.2...@entur/icons@6.14.0) (2024-02-01)
+
+### Features
+
+- **icons:** add updated skyss logo ([bfd61ab](https://bitbucket.org/enturas/design-system/commits/bfd61ab86985342dd572285bbe2162739793584d))
+
 ## [6.13.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.13.1...@entur/icons@6.13.2) (2023-12-22)
 
 ### Bug Fixes
