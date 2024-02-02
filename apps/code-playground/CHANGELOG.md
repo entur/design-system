@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-alpha.0](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.2.0...@entur/code-playground@1.3.0-alpha.0) (2024-02-02)
+
+### Features
+
+- **code playground:** add dark mode toggle ([e5f12e9](https://bitbucket.org/enturas/design-system/commits/e5f12e9d3944525134c92212e29bfc3b9790f992))
+
 # [1.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.1.0...@entur/code-playground@1.2.0) (2024-01-26)
 
 ### Features
