@@ -1,14 +1,14 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-travel-header {
-  color: t.$colors-brand-blue;
+  color: var(--components-travel-travelheader-standard-text);
   display: flex;
   flex-direction: column;
   font-weight: t.$font-weights-heading;
   line-height: 1.5;
   max-width: 100%;
   .eds-contrast & {
-    color: t.$colors-brand-white;
+    color: var(--components-travel-travelheader-contrast-text);
   }
   &--large {
     font-size: t.$font-sizes-extra-large2;
@@ -35,7 +35,7 @@
     padding-left: calc(4em / 3 + 0.5em);
     position: relative;
     &::before {
-      background-color: t.$colors-brand-coral;
+      background-color: var(--components-travel-travelheader-standard-stroke-line);
       content: '';
       display: block;
       height: calc(1em / 6);
@@ -43,6 +43,10 @@
       position: absolute;
       top: 0.65em;
       width: calc(4em / 3);
+
+      .eds-contrast & {
+        background-color: var(--components-travel-travelheader-contrast-stroke-line);
+      }
     }
   }
 }

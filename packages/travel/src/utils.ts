@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors } from '@entur/tokens';
+
 import {
   BusIcon,
   FerryIcon,
@@ -43,8 +43,12 @@ export type Transport =
 
 type transportStyleResult = {
   Icon: React.FC<IconProps>;
-  backgroundColor: string;
-  contrastBackgroundColor: string;
+  backgroundColor?: string;
+  contrastBackgroundColor?: string;
+  errorBackgroundColor?: string;
+  errorTextColor?: string;
+  errorContrastTextColor?: string;
+  errorContrastBackgroundColor?: string;
   pattern: 'line' | 'wave' | 'dashed' | 'dotted';
   ariaLabel: string;
 };
@@ -54,16 +58,12 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
     case 'metro':
       return {
         Icon: MetroIcon,
-        backgroundColor: colors.transport.default.metro,
-        contrastBackgroundColor: colors.transport.contrast.metro,
         pattern: 'line',
         ariaLabel: 'T-bane',
       };
     case 'bus':
       return {
         Icon: BusIcon,
-        backgroundColor: colors.transport.default.bus,
-        contrastBackgroundColor: colors.transport.contrast.bus,
         pattern: 'dashed',
         ariaLabel: 'Buss',
       };
@@ -71,64 +71,48 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
     case 'air':
       return {
         Icon: PlaneIcon,
-        backgroundColor: colors.transport.default.plane,
-        contrastBackgroundColor: colors.transport.contrast.plane,
         pattern: 'line',
         ariaLabel: 'Fly',
       };
     case 'helicopter':
       return {
         Icon: HelicopterIcon,
-        backgroundColor: colors.transport.default.helicopter,
-        contrastBackgroundColor: colors.transport.contrast.helicopter,
         pattern: 'line',
         ariaLabel: 'Helikopter',
       };
     case 'tram':
       return {
         Icon: TramIcon,
-        backgroundColor: colors.transport.default.tram,
-        contrastBackgroundColor: colors.transport.contrast.tram,
         pattern: 'line',
         ariaLabel: 'Trikk',
       };
     case 'funicular':
       return {
         Icon: FunicularIcon,
-        backgroundColor: colors.transport.default.funicular,
-        contrastBackgroundColor: colors.transport.contrast.funicular,
         pattern: 'line',
         ariaLabel: 'Taubane',
       };
     case 'cableway':
       return {
         Icon: CablewayIcon,
-        backgroundColor: colors.transport.default.cableway,
-        contrastBackgroundColor: colors.transport.contrast.cableway,
         pattern: 'line',
         ariaLabel: 'Gondol',
       };
     case 'taxi':
       return {
         Icon: TaxiIcon,
-        backgroundColor: colors.transport.default.taxi,
-        contrastBackgroundColor: colors.transport.contrast.taxi,
         pattern: 'dashed',
         ariaLabel: 'Taxi',
       };
     case 'bicycle':
       return {
         Icon: BicycleIcon,
-        backgroundColor: colors.transport.default.bicycle,
-        contrastBackgroundColor: colors.transport.contrast.bicycle,
-        pattern: 'line',
+        pattern: 'dashed',
         ariaLabel: 'Sykkel',
       };
     case 'walk':
       return {
         Icon: WalkIcon,
-        backgroundColor: colors.transport.default.walk,
-        contrastBackgroundColor: colors.transport.contrast.walk,
         pattern: 'dotted',
         ariaLabel: 'Gange',
       };
@@ -136,8 +120,6 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
     case 'rail':
       return {
         Icon: TrainIcon,
-        backgroundColor: colors.transport.default.train,
-        contrastBackgroundColor: colors.transport.contrast.train,
         pattern: 'line',
         ariaLabel: 'Tog',
       };
@@ -145,48 +127,36 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
     case 'water':
       return {
         Icon: FerryIcon,
-        backgroundColor: colors.transport.default.ferry,
-        contrastBackgroundColor: colors.transport.contrast.ferry,
         pattern: 'wave',
         ariaLabel: 'Ferge',
       };
     case 'carferry':
       return {
         Icon: CarferryIcon,
-        backgroundColor: colors.transport.default.carferry,
-        contrastBackgroundColor: colors.transport.contrast.carferry,
         pattern: 'wave',
         ariaLabel: 'Bilferge',
       };
     case 'mobility':
       return {
         Icon: MobilityIcon,
-        backgroundColor: colors.transport.default.mobility,
-        contrastBackgroundColor: colors.transport.contrast.mobility,
         pattern: 'line',
         ariaLabel: 'El-sparkesykkel',
       };
     case 'airportLinkBus':
       return {
         Icon: BusIcon,
-        backgroundColor: colors.transport.default.plane,
-        contrastBackgroundColor: colors.transport.contrast.plane,
         pattern: 'dashed',
         ariaLabel: 'Flybuss',
       };
     case 'airportLinkRail':
       return {
         Icon: TrainIcon,
-        backgroundColor: colors.transport.default.plane,
-        contrastBackgroundColor: colors.transport.contrast.plane,
         pattern: 'line',
         ariaLabel: 'Flytog',
       };
     case 'none':
       return {
         Icon: React.Fragment,
-        backgroundColor: colors.brand.blue,
-        contrastBackgroundColor: colors.brand.white,
         pattern: 'line',
         ariaLabel: '',
       };

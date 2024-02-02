@@ -74,16 +74,16 @@
     }
 
     :checked + & {
-      background-color: var(--components-form-switch-standard-fill-true);
+      background-color: var(--eds-switch-color);
       .eds-switch__circle {
         left: 1.625rem;
         svg g,
         path {
-          fill: var(--components-form-switch-standard-fill-true);
+          fill: var(--eds-switch-color);
         }
       }
       .eds-contrast & {
-        background-color: var(--components-form-switch-contrast-fill-true);
+        background-color: var(--eds-switch-contrast-color);
       }
     }
 

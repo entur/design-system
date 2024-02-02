@@ -56,17 +56,66 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   const alertIsSet = alert !== 'none';
   const tagRef = useRef<HTMLDivElement>(null);
   const numberOfChildren = React.Children.count(children);
-  const { Icon, contrastBackgroundColor, backgroundColor, ariaLabel } =
-    getTransportStyle(transport);
+  const { Icon, ariaLabel } = getTransportStyle(transport);
+  const deCapitalizeTransport = transport.toLowerCase();
+
+  const backgroundColor =
+    'var(--components-travel-traveltag-standard-tagfill-' +
+    deCapitalizeTransport +
+    ')';
+  const contrastBackgroundColor =
+    'var(--components-travel-traveltag-contrast-tagfill-' +
+    deCapitalizeTransport +
+    ')';
+  // Error colors
+  const errorBackgroundColor =
+    'var(--components-travel-traveltag-standard-tagfill-' +
+    deCapitalizeTransport +
+    '-cancled)';
+  const errorContrastBackgroundColor =
+    'var(--components-travel-traveltag-contrast-tagfill-' +
+    deCapitalizeTransport +
+    '-cancled)';
+  const errorContrastTextColor =
+    'var(--components-travel-traveltag-contrast-text-line-' +
+    deCapitalizeTransport +
+    '-cancled)';
+  const errorTextColor =
+    'var(--components-travel-traveltag-standard-text-line-' +
+    deCapitalizeTransport +
+    '-cancled)';
 
   useEffect(() => {
     if (transportIsSet) {
-      tagRef.current?.style.setProperty(
-        '--background-color',
-        isContrast ? contrastBackgroundColor : backgroundColor,
-      );
+      let colorToSet;
+      let textColorToSet;
+      // Walk has another icon/text color then the other transports
+      if (transport === 'walk') {
+        tagRef.current?.style.setProperty(
+          '--text-color',
+          'var(--components-travel-traveltag-standard-icon-walk)',
+        );
+      }
+      // Error
+      if (alert === 'error') {
+        colorToSet = isContrast
+          ? errorContrastBackgroundColor
+          : errorBackgroundColor;
+        textColorToSet = isContrast ? errorContrastTextColor : errorTextColor;
+        tagRef.current?.style.setProperty('--text-color', `${textColorToSet}`);
+      } else {
+        colorToSet = isContrast ? contrastBackgroundColor : backgroundColor;
+      }
+      tagRef.current?.style.setProperty('--background-color', `${colorToSet}`);
     }
-  }, [tagRef.current, backgroundColor]);
+  }, [
+    transportIsSet,
+    isContrast,
+    backgroundColor,
+    contrastBackgroundColor,
+    errorBackgroundColor,
+    alert,
+  ]);
 
   const TravelTagWithoutLabel: JSX.Element = (
     <div

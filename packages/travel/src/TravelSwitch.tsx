@@ -33,8 +33,18 @@ export const TravelSwitch: React.FC<TravelSwitchProps> = ({
   size,
   ...rest
 }) => {
-  const { backgroundColor, contrastBackgroundColor, Icon } =
-    getTransportStyle(transport);
+  const { Icon } = getTransportStyle(transport);
+  const deCapitalizeTransport = transport.toLowerCase();
+
+  const backgroundColor =
+    'var(--components-travel-travelswitch-standard-backgroundtrue-' +
+    deCapitalizeTransport +
+    ')';
+  const contrastBackgroundColor =
+    'var(--components-travel-travelswitch-contrast-backgroundtrue-' +
+    deCapitalizeTransport +
+    ')';
+
   return (
     <Switch
       className={className}

@@ -1,6 +1,7 @@
 // Used to register the styles as loaded!
 @use "./componentColors.scss";
 @use '~@entur/tokens/dist/base.css';
+@use '~@entur/tokens/dist/transport.css';
 :root {
   --eds-form: 1;
 }
