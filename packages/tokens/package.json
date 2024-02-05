@@ -21,7 +21,7 @@
     "build:legacy-tokens": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-legacy-tokens.ts",
     "build:js-variables": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-variables.ts) && dts build",
     "build:variables": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-variables.ts",
-    "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
+    "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",

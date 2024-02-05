@@ -5,6 +5,8 @@ export * from './semantic';
 // @ts-ignore
 export * from './base';
 // @ts-ignore
+export * from './transport';
+// @ts-ignore
 export * from './componentColors';
 // @ts-ignore
 export * from './legacy-tokens';
