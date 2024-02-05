@@ -15,8 +15,14 @@ const FrameComponent = ({ children }: FrameComponentProps) => {
   const [darkMode, setDarkMode] = React.useState(false);
 
   React.useEffect(() => {
-    document.body.setAttribute('data-color-mode', darkMode ? 'dark' : 'light');
-    document.body.setAttribute('class', contrast ? 'eds-contrast' : '');
+    document.documentElement.setAttribute(
+      'data-color-mode',
+      darkMode ? 'dark' : 'light',
+    );
+    document.documentElement.setAttribute(
+      'class',
+      contrast ? 'eds-contrast' : '',
+    );
   }, [darkMode, contrast]);
 
   return (

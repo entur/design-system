@@ -23,9 +23,9 @@
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/dropdown/dist/styles.css';
 
-body {
+:root {
   background-color: var(--basecolors-frame-default);
-  height: 100vh;
+  height: 100%;
   margin: unset;
   padding: 1rem 2rem 2rem;
 
