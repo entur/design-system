@@ -24,6 +24,12 @@
         "rootAlias": "Blue/90"
       },
       {
+        "name": "Fill/Background/Contrast/LightAlt-2",
+        "color": "#292b6a",
+        "var": "Blue/100",
+        "rootAlias": "Blue/100"
+      },
+      {
         "name": "Fill/Background/Overlay/Solid",
         "color": "#393a49",
         "var": "Ebony/80",
@@ -37,9 +43,15 @@
       },
       {
         "name": "Fill/Background/Overlay/Transparent",
-        "color": "#e5e5e933",
-        "var": "Transparent/Ebony-Alpha20",
-        "rootAlias": "Transparent/Ebony-Alpha20"
+        "color": "#e5e5e926",
+        "var": "Transparent/Ebony-Alpha15",
+        "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Fill/Background/Overlay/TransparentAlt",
+        "color": "#e5e5e940",
+        "var": "Transparent/Ebony-Alpha25",
+        "rootAlias": "Transparent/Ebony-Alpha25"
       },
       {
         "name": "Fill/Background/Standard/Colorless",
@@ -90,6 +102,12 @@
         "rootAlias": "Grey/10"
       },
       {
+        "name": "Fill/Background/Tint/Transparent",
+        "color": "#9ea0bd1a",
+        "var": "Transparent/Blue-Alpha10",
+        "rootAlias": "Transparent/Blue-Alpha10"
+      },
+      {
         "name": "Fill/Boolean/False/Contrast",
         "color": "#9ea0bd",
         "var": "Blue/50",
@@ -136,6 +154,12 @@
         "color": "#cfd2d426",
         "var": "Transparent/Neutral-Alpha15",
         "rootAlias": "Transparent/Neutral-Alpha15"
+      },
+      {
+        "name": "Fill/Disabled/TransparentAlt",
+        "color": "#cfd2d41a",
+        "var": "Transparent/Neutral-Alpha10",
+        "rootAlias": "Transparent/Neutral-Alpha10"
       },
       {
         "name": "Fill/Information/Contrast",
@@ -372,6 +396,12 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Shape/Contrast",
+        "color": "#aeb7e2",
+        "var": "Lavender/40",
+        "rootAlias": "Lavender/40"
+      },
+      {
         "name": "Shape/Dark",
         "color": "#08091c",
         "var": "Ebony/100",
@@ -379,9 +409,15 @@
       },
       {
         "name": "Shape/DarkAlt",
-        "color": "#cccdd4",
-        "var": "Ebony/20",
-        "rootAlias": "Ebony/20"
+        "color": "#b3b4bd",
+        "var": "Ebony/30",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Shape/Disabled",
+        "color": "#515254",
+        "var": "Grey/80",
+        "rootAlias": "Grey/80"
       },
       {
         "name": "Shape/Highlight",
@@ -448,6 +484,12 @@
         "color": "#b6b8ba",
         "var": "Grey/50",
         "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Shape/NeutralAlt2",
+        "color": "#949699",
+        "var": "Grey/60",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Shape/Subdued",
@@ -631,9 +673,15 @@
       },
       {
         "name": "Text/DarkAlt",
-        "color": "#cccdd4",
-        "var": "Ebony/20",
-        "rootAlias": "Ebony/20"
+        "color": "#b3b4bd",
+        "var": "Ebony/30",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Text/Disabled",
+        "color": "#515254",
+        "var": "Grey/80",
+        "rootAlias": "Grey/80"
       },
       {
         "name": "Text/Highlight",
@@ -682,6 +730,12 @@
         "color": "#b6b8ba",
         "var": "Grey/50",
         "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Text/NeutralAlt2",
+        "color": "#949699",
+        "var": "Grey/60",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Text/Subdued",

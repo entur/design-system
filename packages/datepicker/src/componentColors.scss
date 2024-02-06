@@ -13,30 +13,6 @@
   --components-datepicker-calendar-text-accent: var(--text-accent);
   --components-datepicker-calendar-text-disabled: var(--text-neutralalt);
   --components-datepicker-calendar-text-subdued: var(--text-subdued);
-  --components-datepicker-datefield-contrast-border-default: var(--stroke-subdued);
-  --components-datepicker-datefield-contrast-border-interactive: var(--stroke-contrast);
-  --components-datepicker-datefield-contrast-border-negative: var(--stroke-negativealt);
-  --components-datepicker-datefield-contrast-border-success: var(--stroke-successalt);
-  --components-datepicker-datefield-contrast-fill-default: var(--fill-background-standard-light);
-  --components-datepicker-datefield-contrast-fill-disabled: var(--fill-disabled-transparent);
-  --components-datepicker-datefield-contrast-icon: var(--shape-accent);
-  --components-datepicker-datefield-contrast-icon-disabled: var(--shape-neutral);
-  --components-datepicker-datefield-contrast-text-content: var(--text-accent);
-  --components-datepicker-datefield-contrast-text-description: var(--text-light);
-  --components-datepicker-datefield-contrast-text-label: var(--text-subdued);
-  --components-datepicker-datefield-contrast-text-disabled: var(--text-neutral);
-  --components-datepicker-datefield-standard-border-default: var(--stroke-subdued);
-  --components-datepicker-datefield-standard-border-interactive: var(--stroke-accent);
-  --components-datepicker-datefield-standard-border-negative: var(--stroke-negative);
-  --components-datepicker-datefield-standard-border-success: var(--stroke-success);
-  --components-datepicker-datefield-standard-fill-default: var(--fill-background-standard-light);
-  --components-datepicker-datefield-standard-fill-disabled: var(--fill-disabled-light);
-  --components-datepicker-datefield-standard-icon: var(--shape-accent);
-  --components-datepicker-datefield-standard-icon-disabled: var(--shape-neutral);
-  --components-datepicker-datefield-standard-text-content: var(--text-accent);
-  --components-datepicker-datefield-standard-text-description: var(--text-accent);
-  --components-datepicker-datefield-standard-text-label: var(--text-subdued);
-  --components-datepicker-datefield-standard-text-disabled: var(--text-neutral);
 }
 
 [data-color-mode='dark'] {
@@ -50,28 +26,4 @@
   --components-datepicker-calendar-text-accent: var(--text-lightalt);
   --components-datepicker-calendar-text-disabled: var(--text-neutral);
   --components-datepicker-calendar-text-subdued: var(--text-darkalt);
-  --components-datepicker-datefield-contrast-border-default: var(--stroke-subdued);
-  --components-datepicker-datefield-contrast-border-interactive: var(--stroke-contrast);
-  --components-datepicker-datefield-contrast-border-negative: var(--stroke-negativealt);
-  --components-datepicker-datefield-contrast-border-success: var(--stroke-successalt);
-  --components-datepicker-datefield-contrast-fill-default: var(--fill-background-standard-colorless);
-  --components-datepicker-datefield-contrast-fill-disabled: var(--fill-disabled-transparent);
-  --components-datepicker-datefield-contrast-icon: var(--shape-lightalt);
-  --components-datepicker-datefield-contrast-icon-disabled: var(--shape-neutral);
-  --components-datepicker-datefield-contrast-text-content: var(--text-lightalt);
-  --components-datepicker-datefield-contrast-text-description: var(--text-lightalt);
-  --components-datepicker-datefield-contrast-text-label: var(--text-darkalt);
-  --components-datepicker-datefield-contrast-text-disabled: var(--text-neutral);
-  --components-datepicker-datefield-standard-border-default: var(--stroke-subdued);
-  --components-datepicker-datefield-standard-border-interactive: var(--stroke-contrast);
-  --components-datepicker-datefield-standard-border-negative: var(--stroke-negativealt);
-  --components-datepicker-datefield-standard-border-success: var(--stroke-successalt);
-  --components-datepicker-datefield-standard-fill-default: var(--fill-background-standard-colorless);
-  --components-datepicker-datefield-standard-fill-disabled: var(--fill-disabled-transparent);
-  --components-datepicker-datefield-standard-icon: var(--shape-lightalt);
-  --components-datepicker-datefield-standard-icon-disabled: var(--shape-neutral);
-  --components-datepicker-datefield-standard-text-content: var(--text-lightalt);
-  --components-datepicker-datefield-standard-text-description: var(--text-lightalt);
-  --components-datepicker-datefield-standard-text-label: var(--text-darkalt);
-  --components-datepicker-datefield-standard-text-disabled: var(--text-neutral);
 }

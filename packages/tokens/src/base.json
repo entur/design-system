@@ -54,6 +54,42 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Base colors/Shape/Bicycle-Contrast",
+        "color": "#00db9b",
+        "var": "Contrast/Bicycle",
+        "rootAlias": "Contrast/Bicycle"
+      },
+      {
+        "name": "Base colors/Shape/Bicycle-Default",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
+      },
+      {
+        "name": "Base colors/Shape/Bus-Contrast",
+        "color": "#ff6392",
+        "var": "Contrast/Bus",
+        "rootAlias": "Contrast/Bus"
+      },
+      {
+        "name": "Base colors/Shape/Bus-Default",
+        "color": "#c5044e",
+        "var": "Standard/Bus",
+        "rootAlias": "Standard/Bus"
+      },
+      {
+        "name": "Base colors/Shape/Cableway-Contrast",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Base colors/Shape/Cableway-Default",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
         "name": "Base colors/Shape/Disabled",
         "color": "#6e6f73",
         "var": "Shape/Neutral",
@@ -64,6 +100,42 @@
         "color": "#b6b8ba",
         "var": "Shape/NeutralAlt",
         "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Base colors/Shape/Ferry-Contrast",
+        "color": "#6fdfff",
+        "var": "Contrast/Ferry",
+        "rootAlias": "Contrast/Ferry"
+      },
+      {
+        "name": "Base colors/Shape/Ferry-Default",
+        "color": "#0c6693",
+        "var": "Standard/Ferry",
+        "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Base colors/Shape/Funicular-Contrast",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Base colors/Shape/Funicular-Default",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Base colors/Shape/Helicopter-Contrast",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
+      },
+      {
+        "name": "Base colors/Shape/Helicopter-Default",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Base colors/Shape/Highlight",
@@ -90,6 +162,42 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Base colors/Shape/Metro-Contrast",
+        "color": "#f08901",
+        "var": "Contrast/Metro",
+        "rootAlias": "Contrast/Metro"
+      },
+      {
+        "name": "Base colors/Shape/Metro-Default",
+        "color": "#bf5826",
+        "var": "Standard/Metro",
+        "rootAlias": "Standard/Metro"
+      },
+      {
+        "name": "Base colors/Shape/Mobility-Contrast",
+        "color": "#00db9b",
+        "var": "Contrast/Mobility",
+        "rootAlias": "Contrast/Mobility"
+      },
+      {
+        "name": "Base colors/Shape/Mobility-Default",
+        "color": "#388f76",
+        "var": "Standard/Mobility",
+        "rootAlias": "Standard/Mobility"
+      },
+      {
+        "name": "Base colors/Shape/Plane-Contrast",
+        "color": "#fbafea",
+        "var": "Contrast/Plane",
+        "rootAlias": "Contrast/Plane"
+      },
+      {
+        "name": "Base colors/Shape/Plane-Default",
+        "color": "#800664",
+        "var": "Standard/Plane",
+        "rootAlias": "Standard/Plane"
+      },
+      {
         "name": "Base colors/Shape/Subdued",
         "color": "#626493",
         "var": "Shape/Subdued",
@@ -100,6 +208,78 @@
         "color": "#d9dae8",
         "var": "Shape/SubduedAlt",
         "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Base colors/Shape/Taxi-Contrast",
+        "color": "#ffe082",
+        "var": "Contrast/Taxi",
+        "rootAlias": "Contrast/Taxi"
+      },
+      {
+        "name": "Base colors/Shape/Taxi-Default",
+        "color": "#3d3e40",
+        "var": "Standard/Taxi",
+        "rootAlias": "Standard/Taxi"
+      },
+      {
+        "name": "Base colors/Shape/Train-Contrast",
+        "color": "#42a5f5",
+        "var": "Contrast/Train",
+        "rootAlias": "Contrast/Train"
+      },
+      {
+        "name": "Base colors/Shape/Train-Default",
+        "color": "#00367f",
+        "var": "Standard/Train",
+        "rootAlias": "Standard/Train"
+      },
+      {
+        "name": "Base colors/Shape/Tram-Contrast",
+        "color": "#b482fb",
+        "var": "Contrast/Tram",
+        "rootAlias": "Contrast/Tram"
+      },
+      {
+        "name": "Base colors/Shape/Tram-Default",
+        "color": "#78469a",
+        "var": "Standard/Tram",
+        "rootAlias": "Standard/Tram"
+      },
+      {
+        "name": "Base colors/Shape/Walk-Contrast",
+        "color": "#8284ab",
+        "var": "Contrast/Walk",
+        "rootAlias": "Contrast/Walk"
+      },
+      {
+        "name": "Base colors/Shape/Walk-Default",
+        "color": "#8d8e9c",
+        "var": "Standard/Walk",
+        "rootAlias": "Standard/Walk"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkBus-Contrast",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkBus-Default",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkRail-Contrast",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkRail-Default",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
       },
       {
         "name": "Base colors/Stroke/Contrast",
@@ -255,6 +435,42 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Base colors/Shape/Bicycle-Contrast",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
+        "name": "Base colors/Shape/Bicycle-Default",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
+        "name": "Base colors/Shape/Bus-Contrast",
+        "color": "#e87a9b",
+        "var": "Dark/Bus",
+        "rootAlias": "Dark/Bus"
+      },
+      {
+        "name": "Base colors/Shape/Bus-Default",
+        "color": "#e87a9b",
+        "var": "Dark/Bus",
+        "rootAlias": "Dark/Bus"
+      },
+      {
+        "name": "Base colors/Shape/Cableway-Contrast",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Base colors/Shape/Cableway-Default",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
         "name": "Base colors/Shape/Disabled",
         "color": "#b6b8ba",
         "var": "Shape/NeutralAlt",
@@ -262,9 +478,45 @@
       },
       {
         "name": "Base colors/Shape/DisabledAlt",
-        "color": "#cccdd4",
+        "color": "#b3b4bd",
         "var": "Shape/DarkAlt",
-        "rootAlias": "Ebony/20"
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Base colors/Shape/Ferry-Contrast",
+        "color": "#8ccfe2",
+        "var": "Dark/Ferry",
+        "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Base colors/Shape/Ferry-Default",
+        "color": "#8ccfe2",
+        "var": "Dark/Ferry",
+        "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Base colors/Shape/Funicular-Contrast",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Base colors/Shape/Funicular-Default",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Base colors/Shape/Helicopter-Contrast",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
+      },
+      {
+        "name": "Base colors/Shape/Helicopter-Default",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Base colors/Shape/Highlight",
@@ -291,16 +543,124 @@
         "rootAlias": "Ebony/80"
       },
       {
+        "name": "Base colors/Shape/Metro-Contrast",
+        "color": "#dd973c",
+        "var": "Dark/Metro",
+        "rootAlias": "Dark/Metro"
+      },
+      {
+        "name": "Base colors/Shape/Metro-Default",
+        "color": "#dd973c",
+        "var": "Dark/Metro",
+        "rootAlias": "Dark/Metro"
+      },
+      {
+        "name": "Base colors/Shape/Mobility-Contrast",
+        "color": "#4db295",
+        "var": "Dark/Mobility",
+        "rootAlias": "Dark/Mobility"
+      },
+      {
+        "name": "Base colors/Shape/Mobility-Default",
+        "color": "#4db295",
+        "var": "Dark/Mobility",
+        "rootAlias": "Dark/Mobility"
+      },
+      {
+        "name": "Base colors/Shape/Plane-Contrast",
+        "color": "#f2b8e5",
+        "var": "Dark/Plane",
+        "rootAlias": "Dark/Plane"
+      },
+      {
+        "name": "Base colors/Shape/Plane-Default",
+        "color": "#f2b8e5",
+        "var": "Dark/Plane",
+        "rootAlias": "Dark/Plane"
+      },
+      {
         "name": "Base colors/Shape/Subdued",
-        "color": "#cccdd4",
+        "color": "#b3b4bd",
         "var": "Shape/DarkAlt",
-        "rootAlias": "Ebony/20"
+        "rootAlias": "Ebony/30"
       },
       {
         "name": "Base colors/Shape/SubduedAlt",
-        "color": "#cccdd4",
+        "color": "#b3b4bd",
         "var": "Shape/DarkAlt",
-        "rootAlias": "Ebony/20"
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Base colors/Shape/Taxi-Contrast",
+        "color": "#ffe082",
+        "var": "Dark/Taxi",
+        "rootAlias": "Dark/Taxi"
+      },
+      {
+        "name": "Base colors/Shape/Taxi-Default",
+        "color": "#ffe082",
+        "var": "Dark/Taxi",
+        "rootAlias": "Dark/Taxi"
+      },
+      {
+        "name": "Base colors/Shape/Train-Contrast",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
+        "name": "Base colors/Shape/Train-Default",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
+        "name": "Base colors/Shape/Tram-Contrast",
+        "color": "#b898e5",
+        "var": "Dark/Tram",
+        "rootAlias": "Dark/Tram"
+      },
+      {
+        "name": "Base colors/Shape/Tram-Default",
+        "color": "#b898e5",
+        "var": "Dark/Tram",
+        "rootAlias": "Dark/Tram"
+      },
+      {
+        "name": "Base colors/Shape/Walk-Contrast",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Base colors/Shape/Walk-Default",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkBus-Contrast",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkBus-Default",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkRail-Contrast",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Base colors/Shape/airportLinkRail-Default",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
       },
       {
         "name": "Base colors/Stroke/Contrast",

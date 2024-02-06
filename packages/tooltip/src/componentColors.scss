@@ -12,11 +12,21 @@
   --components-tooltip-popover-standard-icon: var(--shape-accent);
   --components-tooltip-popover-standard-text: var(--text-accent);
   --components-tooltip-tooltip-contrast-fill: var(--fill-background-standard-light);
-  --components-tooltip-tooltip-contrast-shape: var(--fill-background-standard-light);
+  --components-tooltip-tooltip-contrast-fill-negative: var(--fill-negative-tint);
+  --components-tooltip-tooltip-contrast-icon: var(--shape-accent);
+  --components-tooltip-tooltip-contrast-icon-negative: var(--shape-accent);
   --components-tooltip-tooltip-contrast-text: var(--text-accent);
+  --components-tooltip-tooltip-contrast-text-negative: var(--text-accent);
+  --components-tooltip-tooltip-contrast-triangle: var(--fill-background-standard-light);
+  --components-tooltip-tooltip-contrast-triangle-negative: var(--fill-negative-tint);
   --components-tooltip-tooltip-standard-fill: var(--fill-background-contrast-light);
-  --components-tooltip-tooltip-standard-shape: var(--fill-background-contrast-light);
+  --components-tooltip-tooltip-standard-fill-negative: var(--fill-negative-muted);
+  --components-tooltip-tooltip-standard-icon: var(--shape-light);
+  --components-tooltip-tooltip-standard-icon-negative: var(--shape-accent);
   --components-tooltip-tooltip-standard-text: var(--text-light);
+  --components-tooltip-tooltip-standard-text-negative: var(--text-accent);
+  --components-tooltip-tooltip-standard-triangle: var(--fill-background-contrast-light);
+  --components-tooltip-tooltip-standard-triangle-negative: var(--fill-negative-muted);
 }
 
 [data-color-mode='dark'] {
@@ -29,9 +39,19 @@
   --components-tooltip-popover-standard-icon: var(--shape-lightalt);
   --components-tooltip-popover-standard-text: var(--text-lightalt);
   --components-tooltip-tooltip-contrast-fill: var(--fill-background-overlay-solid);
-  --components-tooltip-tooltip-contrast-shape: var(--fill-background-overlay-solid);
+  --components-tooltip-tooltip-contrast-fill-negative: var(--fill-negative-tint);
+  --components-tooltip-tooltip-contrast-icon: var(--shape-lightalt);
+  --components-tooltip-tooltip-contrast-icon-negative: var(--shape-dark);
   --components-tooltip-tooltip-contrast-text: var(--text-lightalt);
+  --components-tooltip-tooltip-contrast-text-negative: var(--text-dark);
+  --components-tooltip-tooltip-contrast-triangle: var(--fill-background-overlay-solid);
+  --components-tooltip-tooltip-contrast-triangle-negative: var(--fill-negative-tint);
   --components-tooltip-tooltip-standard-fill: var(--fill-background-overlay-solid);
-  --components-tooltip-tooltip-standard-shape: var(--fill-background-overlay-solid);
+  --components-tooltip-tooltip-standard-fill-negative: var(--fill-negative-tint);
+  --components-tooltip-tooltip-standard-icon: var(--shape-lightalt);
+  --components-tooltip-tooltip-standard-icon-negative: var(--shape-dark);
   --components-tooltip-tooltip-standard-text: var(--text-lightalt);
+  --components-tooltip-tooltip-standard-text-negative: var(--text-dark);
+  --components-tooltip-tooltip-standard-triangle: var(--fill-background-overlay-solid);
+  --components-tooltip-tooltip-standard-triangle-negative: var(--fill-negative-tint);
 }

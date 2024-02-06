@@ -612,6 +612,12 @@
         "rootAlias": ""
       },
       {
+        "name": "Transparent/Blue-Alpha10",
+        "color": "#9ea0bd1a",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
         "name": "Transparent/Blue-Alpha40",
         "color": "#54568c66",
         "var": "",
@@ -630,8 +636,14 @@
         "rootAlias": ""
       },
       {
-        "name": "Transparent/Ebony-Alpha20",
-        "color": "#e5e5e933",
+        "name": "Transparent/Ebony-Alpha15",
+        "color": "#e5e5e926",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Transparent/Ebony-Alpha25",
+        "color": "#e5e5e940",
         "var": "",
         "rootAlias": ""
       },
@@ -644,6 +656,12 @@
       {
         "name": "Transparent/Lavender-Alpha70",
         "color": "#aeb7e2b2",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Transparent/Neutral-Alpha10",
+        "color": "#cfd2d41a",
         "var": "",
         "rootAlias": ""
       },

@@ -186,6 +186,12 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/Layout/Badge/Primary/Contrast/Bullet",
+        "color": "#aeb7e2",
+        "var": "Fill/Primary/Default/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
         "name": "Components/Layout/Badge/Primary/Contrast/Fill",
         "color": "#aeb7e2",
         "var": "Fill/Primary/Default/Contrast",
@@ -202,6 +208,12 @@
         "color": "#ffffff",
         "var": "Text/Light",
         "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/Layout/Badge/Primary/Standard/Bullet",
+        "color": "#181c56",
+        "var": "Fill/Primary/Default/Light",
+        "rootAlias": "Lavender/90"
       },
       {
         "name": "Components/Layout/Badge/Primary/Standard/Fill",
@@ -738,6 +750,42 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/button/Disabled/Contrast/Fill",
+        "color": "#cfd2d426",
+        "var": "Fill/Disabled/Transparent",
+        "rootAlias": "Transparent/Neutral-Alpha15"
+      },
+      {
+        "name": "Components/button/Disabled/Contrast/Icon-Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/button/Disabled/Contrast/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Fill",
+        "color": "#cfd2d4",
+        "var": "Fill/Disabled/Light",
+        "rootAlias": "Grey/40"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Icon-Disabled",
+        "color": "#515254",
+        "var": "Shape/Disabled",
+        "rootAlias": "Grey/80"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Text-Disabled",
+        "color": "#515254",
+        "var": "Text/Disabled",
+        "rootAlias": "Grey/80"
+      },
+      {
         "name": "Components/button/Floating/Contrast/Active",
         "color": "#f6f6f9",
         "var": "Fill/Background/Tint/Light",
@@ -1584,474 +1632,6 @@
         "rootAlias": "Blue/70"
       },
       {
-        "name": "Components/datepicker/DateField/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Interactive",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Active",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Hover",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Active",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Hover",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Danger",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Interactive",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
         "name": "Components/expand/Expandable Panel/Contrast/Fill-Default",
         "color": "#393d79",
         "var": "Fill/Selected/Default/Contrast",
@@ -2136,133 +1716,343 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Default",
+        "name": "Components/form/Base form/Contrast/Border-Default",
         "color": "#8284ab",
         "var": "Stroke/Subdued",
         "rootAlias": "Blue/60"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Selected",
+        "name": "Components/form/Base form/Contrast/Border-Interactive",
         "color": "#aeb7e2",
         "var": "Stroke/Contrast",
         "rootAlias": "Lavender/40"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
+        "name": "Components/form/Base form/Contrast/Border-Negative",
+        "color": "#ff9494",
+        "var": "Stroke/NegativeAlt",
+        "rootAlias": "Coral/30"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Disabled",
+        "name": "Components/form/Base form/Contrast/Border-Success",
+        "color": "#5ac39a",
+        "var": "Stroke/SuccessAlt",
+        "rootAlias": "Mint/40"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Fill-Default",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Fill-Disabled",
         "color": "#cfd2d426",
         "var": "Fill/Disabled/Transparent",
         "rootAlias": "Transparent/Neutral-Alpha15"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Hover",
-        "color": "#54568c",
-        "var": "Fill/Selected/Hover/Contrast",
-        "rootAlias": "Blue/80"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Selected",
-        "color": "#393d79",
-        "var": "Fill/Primary/Hover/Light",
-        "rootAlias": "Blue/90"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Accent",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Disabled",
-        "color": "#b6b8ba",
-        "var": "Text/NeutralAlt",
-        "rootAlias": "Grey/50"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Rebate",
-        "color": "#5ac39a",
-        "var": "Text/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Subdued",
-        "color": "#d9dae8",
-        "var": "Text/SubduedAlt",
-        "rootAlias": "Blue/30"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Selected",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Default",
+        "name": "Components/form/Base form/Contrast/Fill-ReadOnly",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
+        "name": "Components/form/Base form/Contrast/Icon",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Hover",
-        "color": "#d9ddf2",
-        "var": "Fill/Secondary/Hover/Light",
-        "rootAlias": "Lavender/20"
+        "name": "Components/form/Base form/Contrast/Icon-disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Selected",
-        "color": "#f6f6f9",
-        "var": "Fill/Selected/Default/Light",
-        "rootAlias": "Blue/10"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Accent",
+        "name": "Components/form/Base form/Contrast/Text-Content",
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Disabled",
+        "name": "Components/form/Base form/Contrast/Text-Description",
+        "color": "#ffffff",
+        "var": "Text/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Text-Label",
+        "color": "#626493",
+        "var": "Text/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Text-disabled",
         "color": "#6e6f73",
         "var": "Text/Neutral",
         "rootAlias": "Grey/70"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Rebate",
+        "name": "Components/form/Base form/Standard/Border-Default",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Border-Interactive",
+        "color": "#181c56",
+        "var": "Stroke/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Border-Negative",
+        "color": "#d31b1b",
+        "var": "Stroke/Negative",
+        "rootAlias": "Coral/60"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Border-Success",
+        "color": "#1a8e60",
+        "var": "Stroke/Success",
+        "rootAlias": "Mint/60"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Fill-Default",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Fill-Disabled",
+        "color": "#cfd2d4",
+        "var": "Fill/Disabled/Light",
+        "rootAlias": "Grey/40"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Fill-ReadOnly",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Icon",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Icon-disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-Content",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-Description",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-Label",
+        "color": "#626493",
+        "var": "Text/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base menu/Border",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/form/Base menu/Fill-Default",
+        "color": "#f2f5f7",
+        "var": "Fill/Background/Tint/Neutral",
+        "rootAlias": "Grey/10"
+      },
+      {
+        "name": "Components/form/Base menu/Fill-Hover",
+        "color": "#d9dae8",
+        "var": "Fill/Background/Subdued/Light",
+        "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Components/form/Base menu/Icon",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base menu/Icon-Disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base menu/Text",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base menu/Text-Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Default",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Selected",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Default",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Disabled",
+        "color": "#cfd2d426",
+        "var": "Fill/Disabled/Transparent",
+        "rootAlias": "Transparent/Neutral-Alpha15"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Expired",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Hover",
+        "color": "#54568c",
+        "var": "Fill/Selected/Hover/Contrast",
+        "rootAlias": "Blue/80"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Selected",
+        "color": "#393d79",
+        "var": "Fill/Primary/Hover/Light",
+        "rootAlias": "Blue/90"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Accent",
+        "color": "#ffffff",
+        "var": "Text/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Rebate",
+        "color": "#5ac39a",
+        "var": "Text/SuccessAlt",
+        "rootAlias": "Mint/40"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Subdued",
+        "color": "#d9dae8",
+        "var": "Text/SubduedAlt",
+        "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Default",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Selected",
+        "color": "#181c56",
+        "var": "Stroke/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Default",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Disabled",
+        "color": "#cfd2d4",
+        "var": "Fill/Disabled/Light",
+        "rootAlias": "Grey/40"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Expired",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Hover",
+        "color": "#eaeaf1",
+        "var": "Fill/Selected/Hover/Light",
+        "rootAlias": "Blue/20"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Selected",
+        "color": "#f6f6f9",
+        "var": "Fill/Selected/Default/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Accent",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Rebate",
         "color": "#1a8e60",
         "var": "Text/Success",
         "rootAlias": "Mint/60"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Subdued",
+        "name": "Components/form/Base panel/Standard/Text-Subdued",
         "color": "#626493",
         "var": "Text/Subdued",
         "rootAlias": "Blue/70"
@@ -2346,16 +2136,16 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/form/Checkbox/Standard/Fill-SelectedHover",
+        "color": "#393d79",
+        "var": "Fill/Primary/Hover/Light",
+        "rootAlias": "Blue/90"
+      },
+      {
         "name": "Components/form/Checkbox/Standard/Icon",
         "color": "#ffffff",
         "var": "Shape/Light",
         "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Checkbox/Standard/SelectedHover",
-        "color": "#393d79",
-        "var": "Fill/Primary/Hover/Light",
-        "rootAlias": "Blue/90"
       },
       {
         "name": "Components/form/Checkbox/Standard/Text",
@@ -2556,138 +2346,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/form/Radio Panel/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Border-Selected",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Hover",
-        "color": "#54568c",
-        "var": "Fill/Selected/Hover/Contrast",
-        "rootAlias": "Blue/80"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Selected",
-        "color": "#393d79",
-        "var": "Fill/Primary/Hover/Light",
-        "rootAlias": "Blue/90"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Accent",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Disabled",
-        "color": "#b6b8ba",
-        "var": "Text/NeutralAlt",
-        "rootAlias": "Grey/50"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Rebate",
-        "color": "#5ac39a",
-        "var": "Text/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Subdued",
-        "color": "#d9dae8",
-        "var": "Text/SubduedAlt",
-        "rootAlias": "Blue/30"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Selected",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Hover",
-        "color": "#d9ddf2",
-        "var": "Fill/Secondary/Hover/Light",
-        "rootAlias": "Lavender/20"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Selected",
-        "color": "#f6f6f9",
-        "var": "Fill/Selected/Default/Light",
-        "rootAlias": "Blue/10"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Accent",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Rebate",
-        "color": "#1a8e60",
-        "var": "Text/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Subdued",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
         "name": "Components/form/Radio/Contrast/Border",
         "color": "#aeb7e2",
         "var": "Stroke/Contrast",
@@ -2782,162 +2440,6 @@
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Danger",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Interactive",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
       },
       {
         "name": "Components/form/Segmented Control/Contrast/Background",
@@ -3108,318 +2610,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/form/Text area/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Interactive",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Description",
-        "color": "#ffffff",
-        "var": "Text/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Interactive",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Negative",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Success",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-Disabled",
-        "color": "#cfd2d4",
-        "var": "Fill/Disabled/Light",
-        "rootAlias": "Grey/40"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Icon",
-        "color": "#181c56",
-        "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Content",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Description",
-        "color": "#181c56",
-        "var": "Text/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Label",
-        "color": "#626493",
-        "var": "Text/Subdued",
-        "rootAlias": "Blue/70"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
         "name": "Components/loader/Fileupload/Contrast/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -3432,10 +2622,22 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/loader/Fileupload/Contrast/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/loader/Fileupload/Contrast/Stroke-Default",
         "color": "#8284ab",
         "var": "Stroke/Subdued",
         "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/loader/Fileupload/Contrast/Stroke-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/loader/Fileupload/Contrast/Stroke-Negative",
@@ -3456,6 +2658,12 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/loader/Fileupload/Contrast/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/loader/Fileupload/Standard/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -3468,10 +2676,22 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/loader/Fileupload/Standard/Icon-Disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
         "name": "Components/loader/Fileupload/Standard/Stroke-Default",
         "color": "#8284ab",
         "var": "Stroke/Subdued",
         "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/loader/Fileupload/Standard/Stroke-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/loader/Fileupload/Standard/Stroke-Negative",
@@ -3490,6 +2710,12 @@
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/loader/Fileupload/Standard/Text-Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
       },
       {
         "name": "Components/loader/Loader/Contrast/Border",
@@ -3526,6 +2752,30 @@
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/loader/skeleton/Contrast/Fill",
+        "color": "#292b6a",
+        "var": "Fill/Background/Contrast/LightAlt-2",
+        "rootAlias": "Blue/100"
+      },
+      {
+        "name": "Components/loader/skeleton/Contrast/Highlight",
+        "color": "#181c56",
+        "var": "Base colors/Frame/Contrast",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/loader/skeleton/Standard/Fill",
+        "color": "#eaeaf1",
+        "var": "Fill/Selected/Hover/Light",
+        "rootAlias": "Blue/20"
+      },
+      {
+        "name": "Components/loader/skeleton/Standard/Highlight",
+        "color": "#f6f6f9",
+        "var": "Base colors/Frame/Tint",
+        "rootAlias": "Blue/10"
       },
       {
         "name": "Components/menu/Breadcrumb/Contrast/Icon",
@@ -3684,10 +2934,22 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/menu/Overflow Menu/Icon-Disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
         "name": "Components/menu/Overflow Menu/Text",
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/menu/Overflow Menu/Text-Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
       },
       {
         "name": "Components/menu/Pagination/Contrast/Active",
@@ -3810,6 +3072,12 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Divide",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Fill-Active",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -3834,6 +3102,18 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Icon-Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Contrast/Label",
+        "color": "#d9dae8",
+        "var": "Text/SubduedAlt",
+        "rootAlias": "Blue/30"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
         "color": "#ff5959",
         "var": "Stroke/Highlight",
@@ -3846,6 +3126,12 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
         "name": "Components/menu/Side Navigation/Standard/Avatar",
         "color": "#ffffff",
         "var": "Fill/Background/Standard/Light",
@@ -3856,6 +3142,12 @@
         "color": "#f2f5f7",
         "var": "Fill/Background/Tint/Neutral",
         "rootAlias": "Grey/10"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Divide",
+        "color": "#e3e6e8",
+        "var": "Stroke/Neutral",
+        "rootAlias": "Grey/30"
       },
       {
         "name": "Components/menu/Side Navigation/Standard/Fill-Active",
@@ -3882,6 +3174,18 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/menu/Side Navigation/Standard/Icon-Disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Label",
+        "color": "#626493",
+        "var": "Text/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
         "name": "Components/menu/Side Navigation/Standard/Stroke-Selected",
         "color": "#181c56",
         "var": "Stroke/Accent",
@@ -3892,6 +3196,12 @@
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Text-Disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
       },
       {
         "name": "Components/menu/Stepper/Contrast/Background",
@@ -4092,6 +3402,12 @@
         "rootAlias": "Lavender/40"
       },
       {
+        "name": "Components/tab/Contrast/Fill-Disabled",
+        "color": "#54568c66",
+        "var": "Stroke/Transparent",
+        "rootAlias": "Transparent/Blue-Alpha40"
+      },
+      {
         "name": "Components/tab/Contrast/Fill-Hover",
         "color": "#626493",
         "var": "Fill/Secondary/Hover/Contrast",
@@ -4116,10 +3432,22 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/tab/Contrast/Icon-Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
         "name": "Components/tab/Contrast/Text",
         "color": "#ffffff",
         "var": "Text/Light",
         "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/tab/Contrast/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
       },
       {
         "name": "Components/tab/Contrast/Underline-selected",
@@ -4132,6 +3460,12 @@
         "color": "#e3e6e8",
         "var": "Stroke/Neutral",
         "rootAlias": "Grey/30"
+      },
+      {
+        "name": "Components/tab/Standard/Fill-Disabled",
+        "color": "#cfd2d4",
+        "var": "Fill/Disabled/Light",
+        "rootAlias": "Grey/40"
       },
       {
         "name": "Components/tab/Standard/Fill-Hover",
@@ -4158,10 +3492,22 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/tab/Standard/Icon-Disabled",
+        "color": "#515254",
+        "var": "Shape/Disabled",
+        "rootAlias": "Grey/80"
+      },
+      {
         "name": "Components/tab/Standard/Text",
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/tab/Standard/Text-Disabled",
+        "color": "#515254",
+        "var": "Text/Disabled",
+        "rootAlias": "Grey/80"
       },
       {
         "name": "Components/tab/Standard/Underline-selected",
@@ -4176,10 +3522,16 @@
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/table/Contrast/Fill-Striped",
+        "name": "Components/table/Contrast/Fill-Hover",
         "color": "#393d79",
         "var": "Fill/Background/Contrast/LightAlt",
         "rootAlias": "Blue/90"
+      },
+      {
+        "name": "Components/table/Contrast/Fill-Negative",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
       },
       {
         "name": "Components/table/Contrast/Icon",
@@ -4206,10 +3558,16 @@
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/table/Standard/Fill-Striped",
+        "name": "Components/table/Standard/Fill-Hover",
         "color": "#f2f5f7",
         "var": "Fill/Background/Tint/Neutral",
         "rootAlias": "Grey/10"
+      },
+      {
+        "name": "Components/table/Standard/Fill-Negative",
+        "color": "#ffcece",
+        "var": "Fill/Negative/Muted",
+        "rootAlias": "Coral/20"
       },
       {
         "name": "Components/table/Standard/Icon",
@@ -4284,10 +3642,22 @@
         "rootAlias": "White/Alpha-100"
       },
       {
-        "name": "Components/tooltip/Tooltip/Contrast/Shape",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
+        "name": "Components/tooltip/Tooltip/Contrast/Fill-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Icon",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Icon-Negative",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
       },
       {
         "name": "Components/tooltip/Tooltip/Contrast/Text",
@@ -4296,15 +3666,45 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/tooltip/Tooltip/Contrast/Text-Negative",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Triangle",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Triangle-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
+      },
+      {
         "name": "Components/tooltip/Tooltip/Standard/Fill",
         "color": "#181c56",
         "var": "Fill/Background/Contrast/Light",
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/tooltip/Tooltip/Standard/Shape",
+        "name": "Components/tooltip/Tooltip/Standard/Fill-Negative",
+        "color": "#ffcece",
+        "var": "Fill/Negative/Muted",
+        "rootAlias": "Coral/20"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Icon",
+        "color": "#ffffff",
+        "var": "Shape/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Icon-Negative",
         "color": "#181c56",
-        "var": "Fill/Background/Contrast/Light",
+        "var": "Shape/Accent",
         "rootAlias": "Lavender/90"
       },
       {
@@ -4312,6 +3712,24 @@
         "color": "#ffffff",
         "var": "Text/Light",
         "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Text-Negative",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Triangle",
+        "color": "#181c56",
+        "var": "Fill/Background/Contrast/Light",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Triangle-Negative",
+        "color": "#ffcece",
+        "var": "Fill/Negative/Muted",
+        "rootAlias": "Coral/20"
       },
       {
         "name": "Components/travel/Leg Line/Stroke-Line",
@@ -4482,6 +3900,24 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/travel/Travel Leg/Contrast/AirportLinkBus",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/AirportLinkRail",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Bicycle",
+        "color": "#00db9b",
+        "var": "Contrast/Bicycle",
+        "rootAlias": "Contrast/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Leg/Contrast/Bullet border",
         "color": "#181c56",
         "var": "Stroke/Accent",
@@ -4494,10 +3930,40 @@
         "rootAlias": "Contrast/Bus"
       },
       {
+        "name": "Components/travel/Travel Leg/Contrast/Cableway",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Carferry",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Citybike",
+        "color": "#00db9b",
+        "var": "Contrast/Citybike",
+        "rootAlias": "Contrast/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Leg/Contrast/Ferry",
         "color": "#6fdfff",
         "var": "Contrast/Ferry",
         "rootAlias": "Contrast/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Funicular",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Helicopter",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
       },
       {
         "name": "Components/travel/Travel Leg/Contrast/Metro",
@@ -4542,6 +4008,24 @@
         "rootAlias": "Contrast/Walk"
       },
       {
+        "name": "Components/travel/Travel Leg/Standard/AirportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/AirportLinkRail",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Bicycle",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Leg/Standard/Bullet border",
         "color": "#ffffff",
         "var": "Stroke/Light",
@@ -4554,10 +4038,40 @@
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Leg/Standard/Cableway",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Carferry",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Citybike",
+        "color": "#388f76",
+        "var": "Standard/Citybike",
+        "rootAlias": "Standard/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Leg/Standard/Ferry",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Funicular",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Helicopter",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Leg/Standard/Metro",
@@ -4608,16 +4122,52 @@
         "rootAlias": "Blue/70"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
+        "color": "#00db9b",
+        "var": "Contrast/Bicycle",
+        "rootAlias": "Contrast/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bus",
         "color": "#ff6392",
         "var": "Contrast/Bus",
         "rootAlias": "Contrast/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Cableway",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Carferry",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Citybike",
+        "color": "#00db9b",
+        "var": "Contrast/Citybike",
+        "rootAlias": "Contrast/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Ferry",
         "color": "#6fdfff",
         "var": "Contrast/Ferry",
         "rootAlias": "Contrast/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Funicular",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Helicopter",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Metro",
@@ -4656,10 +4206,34 @@
         "rootAlias": "Contrast/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Walk",
+        "color": "#8284ab",
+        "var": "Contrast/Walk",
+        "rootAlias": "Contrast/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkBus",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkRail",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/IconFalse",
         "color": "#626493",
         "var": "Fill/Secondary/Hover/Contrast",
         "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bicycle",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bus",
@@ -4668,10 +4242,40 @@
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Cableway",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Carferry",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Citybike",
+        "color": "#388f76",
+        "var": "Standard/Citybike",
+        "rootAlias": "Standard/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Ferry",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Funicular",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Helicopter",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Metro",
@@ -4710,6 +4314,24 @@
         "rootAlias": "Standard/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Walk",
+        "color": "#8284ab",
+        "var": "Contrast/Walk",
+        "rootAlias": "Contrast/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-airportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-airportLinkRail",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/SwitchFill-False",
         "color": "#ffffff",
         "var": "Fill/Background/Standard/Light",
@@ -4734,16 +4356,52 @@
         "rootAlias": "Grey/60"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bus",
         "color": "#c5044e",
         "var": "Standard/Bus",
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Cableway",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Carferry",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Citybike",
+        "color": "#388f76",
+        "var": "Standard/Citybike",
+        "rootAlias": "Standard/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Ferry",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Funicular",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Helicopter",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Metro",
@@ -4782,10 +4440,34 @@
         "rootAlias": "Standard/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Standard/Walk",
+        "rootAlias": "Standard/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkRail",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconFalse",
         "color": "#6e6f73",
         "var": "Shape/Neutral",
         "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Bicycle",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Bus",
@@ -4794,10 +4476,40 @@
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Cableway",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Carferry",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Citybike",
+        "color": "#388f76",
+        "var": "Standard/Citybike",
+        "rootAlias": "Standard/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Ferry",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Funicular",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Helicopter",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Metro",
@@ -4836,6 +4548,24 @@
         "rootAlias": "Standard/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Standard/Walk",
+        "rootAlias": "Standard/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkRail",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/SwitchFill-False",
         "color": "#ffffff",
         "var": "Fill/Background/Standard/Light",
@@ -4866,10 +4596,34 @@
         "rootAlias": "Contrast/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Cablleway-Cancled",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Carferry-Cancled",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Icon-Ferry-Cancled",
         "color": "#6fdfff",
         "var": "Contrast/Ferry",
         "rootAlias": "Contrast/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Funicular-Cancled",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Helicopter-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/Icon-Metro-Cancled",
@@ -4908,10 +4662,28 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-airportLinkBus-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-airportLinkRail-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/IconBorder-Validation",
         "color": "#181c56",
         "var": "Shape/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Bicycle",
+        "color": "#00db9b",
+        "var": "Contrast/Bicycle",
+        "rootAlias": "Contrast/Bicycle"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Bus",
@@ -4926,6 +4698,36 @@
         "rootAlias": "Standard/Bus-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Cableway",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Cableway-Cancled",
+        "color": "#b482fb26",
+        "var": "Contrast/Cableway-transparent",
+        "rootAlias": "Contrast/Cableway-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Carferry",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Carferry-Cancled",
+        "color": "#6fdfff26",
+        "var": "Contrast/Carferry-transparent",
+        "rootAlias": "Contrast/Carferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Citybike",
+        "color": "#00db9b",
+        "var": "Contrast/Citybike",
+        "rootAlias": "Contrast/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Ferry",
         "color": "#6fdfff",
         "var": "Contrast/Ferry",
@@ -4936,6 +4738,30 @@
         "color": "#6fdfff26",
         "var": "Contrast/Ferry-transparent",
         "rootAlias": "Contrast/Ferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Funicular",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Funicular-Cancled",
+        "color": "#b482fb26",
+        "var": "Contrast/Funicular-transparent",
+        "rootAlias": "Contrast/Funicular-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Helicopter",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Helicopter-Cancled",
+        "color": "#fbafea26",
+        "var": "Contrast/Helicopter-transparent",
+        "rootAlias": "Contrast/Helicopter-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Metro",
@@ -5010,6 +4836,30 @@
         "rootAlias": "Contrast/Walk"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled",
+        "color": "#fbafea26",
+        "var": "Contrast/airportLinkBus-transparent",
+        "rootAlias": "Contrast/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkRail",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkRail-Cancled",
+        "color": "#fbafea26",
+        "var": "Contrast/airportLinkRail-transparent",
+        "rootAlias": "Contrast/airportLinkRail-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkbus",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-Cancled",
         "color": "#b6b8ba",
         "var": "Text/NeutralAlt",
@@ -5034,10 +4884,34 @@
         "rootAlias": "Contrast/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Cableway-Cancled",
+        "color": "#b482fb",
+        "var": "Contrast/Cableway",
+        "rootAlias": "Contrast/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Carferry-Cancled",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-Line-Ferry-Cancled",
         "color": "#6fdfff",
         "var": "Contrast/Ferry",
         "rootAlias": "Contrast/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Funicular-Cancled",
+        "color": "#b482fb",
+        "var": "Contrast/Funicular",
+        "rootAlias": "Contrast/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Helicopter-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/Helicopter",
+        "rootAlias": "Contrast/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/Text-Line-Metro-Cancled",
@@ -5070,6 +4944,18 @@
         "rootAlias": "Contrast/Tram"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-airportLinkBus-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-airportLinkRail-Cancled",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkRail",
+        "rootAlias": "Contrast/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-NewTime",
         "color": "#ff9494",
         "var": "Text/NegativeAlt",
@@ -5094,10 +4980,28 @@
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Carferry-Cancled",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Icon-Ferry-Cancled",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Funicular-Cancled",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Helicopter-Cancled",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Icon-Metro-Cancled",
@@ -5136,10 +5040,34 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Icon-airportLinkBus-Cancled",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-airportLinkRail-Cancled",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-cableway-Cancled",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/IconBorder-Validation",
         "color": "#ffffff",
         "var": "Shape/Light",
         "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Bicycle",
+        "color": "#388f76",
+        "var": "Standard/Bicycle",
+        "rootAlias": "Standard/Bicycle"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Bus",
@@ -5154,6 +5082,36 @@
         "rootAlias": "Standard/Bus-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Cableway",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Cableway-Cancled",
+        "color": "#78469a26",
+        "var": "Standard/Cableway-transparent",
+        "rootAlias": "Standard/Cableway-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Carferry",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Carferry-Cancled",
+        "color": "#0c669326",
+        "var": "Standard/Carferry-transparent",
+        "rootAlias": "Standard/Carferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Citybike",
+        "color": "#388f76",
+        "var": "Standard/Citybike",
+        "rootAlias": "Standard/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Ferry",
         "color": "#0c6693",
         "var": "Standard/Ferry",
@@ -5164,6 +5122,30 @@
         "color": "#0c669326",
         "var": "Standard/Ferry-transparent",
         "rootAlias": "Standard/Ferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Funicular",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Funicular-Cancled",
+        "color": "#78469a26",
+        "var": "Standard/Funicular-transparent",
+        "rootAlias": "Standard/Funicular-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Helicopter",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Helicopter-Cancled",
+        "color": "#80066426",
+        "var": "Standard/Helicopter-transparent",
+        "rootAlias": "Standard/Helicopter-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Metro",
@@ -5238,6 +5220,30 @@
         "rootAlias": "Grey/30"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus-Cancled",
+        "color": "#80066426",
+        "var": "Standard/airportLinkBus-transparent",
+        "rootAlias": "Standard/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkRail",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkRail-Cancled",
+        "color": "#80066426",
+        "var": "Standard/airportLinkRail-transparent",
+        "rootAlias": "Standard/airportLinkRail-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-Cancled",
         "color": "#6e6f73",
         "var": "Text/Neutral",
@@ -5262,10 +5268,34 @@
         "rootAlias": "Standard/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Cableway-Cancled",
+        "color": "#78469a",
+        "var": "Standard/Cableway",
+        "rootAlias": "Standard/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Carferry-Cancled",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-Line-Ferry-Cancled",
         "color": "#0c6693",
         "var": "Standard/Ferry",
         "rootAlias": "Standard/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Funicular-Cancled",
+        "color": "#78469a",
+        "var": "Standard/Funicular",
+        "rootAlias": "Standard/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Helicopter-Cancled",
+        "color": "#800664",
+        "var": "Standard/Helicopter",
+        "rootAlias": "Standard/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Text-Line-Metro-Cancled",
@@ -5298,6 +5328,18 @@
         "rootAlias": "Standard/Tram"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-airportLinkBus-Cancled",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-airportLinkRail-Cancled",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-NewTime",
         "color": "#d31b1b",
         "var": "Text/Negative",
@@ -5305,6 +5347,18 @@
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Text-Walk",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/typography/Base text/Contrast/Text-Accent",
+        "color": "#ffffff",
+        "var": "Text/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/typography/Base text/Standard/Text-Accent",
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
@@ -5344,6 +5398,90 @@
         "color": "#626493",
         "var": "Text/Subdued",
         "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Border",
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Border-interactive",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Fill",
+        "color": "#f6f6f9",
+        "var": "Fill/Background/Tint/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Text",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Border",
+        "color": "#54568c66",
+        "var": "Stroke/Transparent",
+        "rootAlias": "Transparent/Blue-Alpha40"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Border-interactive",
+        "color": "#181c56",
+        "var": "Stroke/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Fill",
+        "color": "#f6f6f9",
+        "var": "Fill/Background/Tint/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Text",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "Components/typography/Label/Contrast/Text-Accent",
+        "color": "#d9dae8",
+        "var": "Text/SubduedAlt",
+        "rootAlias": "Blue/30"
+      },
+      {
+        "name": "Components/typography/Label/Standard/Text-Accent",
+        "color": "#626493",
+        "var": "Text/Subdued",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/typography/List/Contrast/Border",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/typography/List/Contrast/Text-Accent",
+        "color": "#ffffff",
+        "var": "Text/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/typography/List/Standard/Border",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/typography/List/Standard/Text-Accent",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
       }
     ],
     "number": []
@@ -5535,6 +5673,12 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/Layout/Badge/Primary/Contrast/Bullet",
+        "color": "#aeb7e2",
+        "var": "Fill/Primary/Default/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
         "name": "Components/Layout/Badge/Primary/Contrast/Fill",
         "color": "#aeb7e2",
         "var": "Fill/Primary/Default/Contrast",
@@ -5551,6 +5695,12 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/Layout/Badge/Primary/Standard/Bullet",
+        "color": "#aeb7e2",
+        "var": "Fill/Primary/Default/Contrast",
+        "rootAlias": "Lavender/40"
       },
       {
         "name": "Components/Layout/Badge/Primary/Standard/Fill",
@@ -6087,22 +6237,58 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/button/Disabled/Contrast/Fill",
+        "color": "#cfd2d41a",
+        "var": "Fill/Disabled/TransparentAlt",
+        "rootAlias": "Transparent/Neutral-Alpha10"
+      },
+      {
+        "name": "Components/button/Disabled/Contrast/Icon-Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/button/Disabled/Contrast/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Fill",
+        "color": "#cfd2d41a",
+        "var": "Fill/Disabled/TransparentAlt",
+        "rootAlias": "Transparent/Neutral-Alpha10"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Icon-Disabled",
+        "color": "#b6b8ba",
+        "var": "Shape/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/button/Disabled/Standard/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
         "name": "Components/button/Floating/Contrast/Active",
-        "color": "#f6f6f9",
-        "var": "Fill/Background/Tint/Light",
-        "rootAlias": "Blue/10"
+        "color": "#8794d4",
+        "var": "Fill/Primary/Active/Contrast",
+        "rootAlias": "Lavender/50"
       },
       {
         "name": "Components/button/Floating/Contrast/Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
+        "color": "#aeb7e2",
+        "var": "Fill/Primary/Default/Contrast",
+        "rootAlias": "Lavender/40"
       },
       {
         "name": "Components/button/Floating/Contrast/Hover",
-        "color": "#f6f6f9",
-        "var": "Fill/Background/Tint/Light",
-        "rootAlias": "Blue/10"
+        "color": "#c7cdeb",
+        "var": "Fill/Primary/Hover/Contrast",
+        "rootAlias": "Lavender/30"
       },
       {
         "name": "Components/button/Floating/Contrast/Icon",
@@ -6118,21 +6304,21 @@
       },
       {
         "name": "Components/button/Floating/Standard/Active",
-        "color": "#f6f6f9",
-        "var": "Fill/Background/Tint/Light",
-        "rootAlias": "Blue/10"
+        "color": "#8794d4",
+        "var": "Fill/Primary/Active/Contrast",
+        "rootAlias": "Lavender/50"
       },
       {
         "name": "Components/button/Floating/Standard/Default",
-        "color": "#ffffff",
-        "var": "Fill/Background/Standard/Light",
-        "rootAlias": "White/Alpha-100"
+        "color": "#aeb7e2",
+        "var": "Fill/Primary/Default/Contrast",
+        "rootAlias": "Lavender/40"
       },
       {
         "name": "Components/button/Floating/Standard/Hover",
-        "color": "#f6f6f9",
-        "var": "Fill/Background/Tint/Light",
-        "rootAlias": "Blue/10"
+        "color": "#c7cdeb",
+        "var": "Fill/Primary/Hover/Contrast",
+        "rootAlias": "Lavender/30"
       },
       {
         "name": "Components/button/Floating/Standard/Icon",
@@ -6933,474 +7119,6 @@
         "rootAlias": "Ebony/30"
       },
       {
-        "name": "Components/datepicker/DateField/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/datepicker/DateField/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/datepicker/DateField/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Active",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Hover",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Active",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Hover",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/HighlightAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/dropdown/Dropdown/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Danger",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/dropdown/Multi Select/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
         "name": "Components/expand/Expandable Panel/Contrast/Fill-Default",
         "color": "#e5e5e926",
         "var": "Fill/Background/Overlay/Transparent",
@@ -7485,133 +7203,343 @@
         "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Default",
-        "color": "#81828f",
-        "var": "Stroke/DarkAlt",
-        "rootAlias": "Ebony/50"
+        "name": "Components/form/Base form/Contrast/Border-Default",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Border-Selected",
+        "name": "Components/form/Base form/Contrast/Border-Interactive",
         "color": "#aeb7e2",
         "var": "Stroke/Contrast",
         "rootAlias": "Lavender/40"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Default",
+        "name": "Components/form/Base form/Contrast/Border-Negative",
+        "color": "#ff9494",
+        "var": "Stroke/NegativeAlt",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Border-Success",
+        "color": "#5ac39a",
+        "var": "Stroke/SuccessAlt",
+        "rootAlias": "Mint/40"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Disabled",
+        "name": "Components/form/Base form/Contrast/Fill-Disabled",
         "color": "#cfd2d426",
         "var": "Fill/Disabled/Transparent",
         "rootAlias": "Transparent/Neutral-Alpha15"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Hover",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
+        "name": "Components/form/Base form/Contrast/Fill-ReadOnly",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Fill-Selected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
+        "name": "Components/form/Base form/Contrast/Icon",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Accent",
+        "name": "Components/form/Base form/Contrast/Icon-disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base form/Contrast/Text-Content",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Disabled",
-        "color": "#b6b8ba",
-        "var": "Text/NeutralAlt",
-        "rootAlias": "Grey/50"
+        "name": "Components/form/Base form/Contrast/Text-Description",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Rebate",
-        "color": "#5ac39a",
-        "var": "Text/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Checkbox Panel/Contrast/Text-Subdued",
+        "name": "Components/form/Base form/Contrast/Text-Label",
         "color": "#b3b4bd",
         "var": "Text/DarkAlt",
         "rootAlias": "Ebony/30"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Default",
-        "color": "#81828f",
-        "var": "Stroke/DarkAlt",
-        "rootAlias": "Ebony/50"
+        "name": "Components/form/Base form/Contrast/Text-disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
+        "name": "Components/form/Base form/Standard/Border-Default",
+        "color": "#8284ab",
+        "var": "Stroke/Subdued",
+        "rootAlias": "Blue/60"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Border-Selected",
+        "name": "Components/form/Base form/Standard/Border-Interactive",
         "color": "#aeb7e2",
         "var": "Stroke/Contrast",
         "rootAlias": "Lavender/40"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Default",
+        "name": "Components/form/Base form/Standard/Border-Negative",
+        "color": "#ff9494",
+        "var": "Stroke/NegativeAlt",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Border-Success",
+        "color": "#5ac39a",
+        "var": "Stroke/SuccessAlt",
+        "rootAlias": "Mint/40"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Disabled",
+        "name": "Components/form/Base form/Standard/Fill-Disabled",
         "color": "#cfd2d426",
         "var": "Fill/Disabled/Transparent",
         "rootAlias": "Transparent/Neutral-Alpha15"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Hover",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
+        "name": "Components/form/Base form/Standard/Fill-ReadOnly",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Fill-Selected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
+        "name": "Components/form/Base form/Standard/Icon",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Accent",
+        "name": "Components/form/Base form/Standard/Icon-disabled",
+        "color": "#6e6f73",
+        "var": "Shape/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-Content",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Disabled",
+        "name": "Components/form/Base form/Standard/Text-Description",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-Label",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Components/form/Base form/Standard/Text-disabled",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/form/Base menu/Border",
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base menu/Fill-Default",
+        "color": "#464755",
+        "var": "Fill/Background/Overlay/SolidAlt",
+        "rootAlias": "Ebony/75"
+      },
+      {
+        "name": "Components/form/Base menu/Fill-Hover",
+        "color": "#626493",
+        "var": "Fill/Secondary/Hover/Contrast",
+        "rootAlias": "Blue/70"
+      },
+      {
+        "name": "Components/form/Base menu/Icon",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/form/Base menu/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base menu/Text",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/form/Base menu/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Default",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Border-Selected",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Default",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Disabled",
+        "color": "#cfd2d426",
+        "var": "Fill/Disabled/Transparent",
+        "rootAlias": "Transparent/Neutral-Alpha15"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Expired",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Hover",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Fill-Selected",
+        "color": "#e5e5e926",
+        "var": "Fill/Background/Overlay/Transparent",
+        "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/form/Base panel/Contrast/Text-Disabled",
         "color": "#b6b8ba",
         "var": "Text/NeutralAlt",
         "rootAlias": "Grey/50"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Rebate",
+        "name": "Components/form/Base panel/Contrast/Text-Rebate",
         "color": "#5ac39a",
         "var": "Text/SuccessAlt",
         "rootAlias": "Mint/40"
       },
       {
-        "name": "Components/form/Checkbox Panel/Standard/Text-Subdued",
+        "name": "Components/form/Base panel/Contrast/Text-Subdued",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Default",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Disabled",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Border-Selected",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Default",
+        "color": "#ffffff00",
+        "var": "Fill/Background/Standard/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Disabled",
+        "color": "#cfd2d426",
+        "var": "Fill/Disabled/Transparent",
+        "rootAlias": "Transparent/Neutral-Alpha15"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Expired",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Hover",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Fill-Selected",
+        "color": "#e5e5e926",
+        "var": "Fill/Background/Overlay/Transparent",
+        "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Disabled",
+        "color": "#b6b8ba",
+        "var": "Text/NeutralAlt",
+        "rootAlias": "Grey/50"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Rebate",
+        "color": "#5ac39a",
+        "var": "Text/SuccessAlt",
+        "rootAlias": "Mint/40"
+      },
+      {
+        "name": "Components/form/Base panel/Standard/Text-Subdued",
         "color": "#b3b4bd",
         "var": "Text/DarkAlt",
         "rootAlias": "Ebony/30"
@@ -7695,16 +7623,16 @@
         "rootAlias": "Lavender/40"
       },
       {
+        "name": "Components/form/Checkbox/Standard/Fill-SelectedHover",
+        "color": "#c7cdeb",
+        "var": "Fill/Primary/Hover/Contrast",
+        "rootAlias": "Lavender/30"
+      },
+      {
         "name": "Components/form/Checkbox/Standard/Icon",
         "color": "#181c56",
         "var": "Shape/Accent",
         "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/form/Checkbox/Standard/SelectedHover",
-        "color": "#c7cdeb",
-        "var": "Fill/Primary/Hover/Contrast",
-        "rootAlias": "Lavender/30"
       },
       {
         "name": "Components/form/Checkbox/Standard/Text",
@@ -7905,138 +7833,6 @@
         "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Radio Panel/Contrast/Border-Default",
-        "color": "#81828f",
-        "var": "Stroke/DarkAlt",
-        "rootAlias": "Ebony/50"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Border-Selected",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Hover",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Fill-Selected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Accent",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Disabled",
-        "color": "#b6b8ba",
-        "var": "Text/NeutralAlt",
-        "rootAlias": "Grey/50"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Rebate",
-        "color": "#5ac39a",
-        "var": "Text/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Contrast/Text-Subdued",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Default",
-        "color": "#81828f",
-        "var": "Stroke/DarkAlt",
-        "rootAlias": "Ebony/50"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Disabled",
-        "color": "#949699",
-        "var": "Stroke/NeutralAlt",
-        "rootAlias": "Grey/60"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Border-Selected",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Hover",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Fill-Selected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Accent",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Disabled",
-        "color": "#b6b8ba",
-        "var": "Text/NeutralAlt",
-        "rootAlias": "Grey/50"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Rebate",
-        "color": "#5ac39a",
-        "var": "Text/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Radio Panel/Standard/Text-Subdued",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
         "name": "Components/form/Radio/Contrast/Border",
         "color": "#aeb7e2",
         "var": "Stroke/Contrast",
@@ -8131,162 +7927,6 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Danger",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Search/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Search/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Search/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Search/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Search/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
       },
       {
         "name": "Components/form/Segmented Control/Contrast/Background",
@@ -8457,318 +8097,6 @@
         "rootAlias": "Ebony/10"
       },
       {
-        "name": "Components/form/Text area/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Text area/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Text area/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Text field/Contrast/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Default",
-        "color": "#8284ab",
-        "var": "Stroke/Subdued",
-        "rootAlias": "Blue/60"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Interactive",
-        "color": "#aeb7e2",
-        "var": "Stroke/Contrast",
-        "rootAlias": "Lavender/40"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Negative",
-        "color": "#ff9494",
-        "var": "Stroke/NegativeAlt",
-        "rootAlias": "Coral/30"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Border-Success",
-        "color": "#5ac39a",
-        "var": "Stroke/SuccessAlt",
-        "rootAlias": "Mint/40"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-Default",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-Disabled",
-        "color": "#cfd2d426",
-        "var": "Fill/Disabled/Transparent",
-        "rootAlias": "Transparent/Neutral-Alpha15"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Fill-ReadOnly",
-        "color": "#ffffff00",
-        "var": "Fill/Background/Standard/Colorless",
-        "rootAlias": "White/Alpha-0"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Icon",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Icon-disabled",
-        "color": "#6e6f73",
-        "var": "Shape/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Content",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Description",
-        "color": "#e5e5e9",
-        "var": "Text/LightAlt",
-        "rootAlias": "Ebony/10"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-Label",
-        "color": "#b3b4bd",
-        "var": "Text/DarkAlt",
-        "rootAlias": "Ebony/30"
-      },
-      {
-        "name": "Components/form/Text field/Standard/Text-disabled",
-        "color": "#6e6f73",
-        "var": "Text/Neutral",
-        "rootAlias": "Grey/70"
-      },
-      {
         "name": "Components/loader/Fileupload/Contrast/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -8781,10 +8109,22 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/loader/Fileupload/Contrast/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/loader/Fileupload/Contrast/Stroke-Default",
         "color": "#8284ab",
         "var": "Stroke/Subdued",
         "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/loader/Fileupload/Contrast/Stroke-Disabled",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
       },
       {
         "name": "Components/loader/Fileupload/Contrast/Stroke-Negative",
@@ -8805,6 +8145,12 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/loader/Fileupload/Contrast/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/loader/Fileupload/Standard/Fill-Default",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -8817,10 +8163,22 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/loader/Fileupload/Standard/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/loader/Fileupload/Standard/Stroke-Default",
         "color": "#8284ab",
         "var": "Stroke/Subdued",
         "rootAlias": "Blue/60"
+      },
+      {
+        "name": "Components/loader/Fileupload/Standard/Stroke-Disabled",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
       },
       {
         "name": "Components/loader/Fileupload/Standard/Stroke-Negative",
@@ -8839,6 +8197,12 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/loader/Fileupload/Standard/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/loader/Loader/Contrast/Border",
@@ -8875,6 +8239,30 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/loader/skeleton/Contrast/Fill",
+        "color": "#2d2e3e",
+        "var": "Fill/Background/Subdued/Dark",
+        "rootAlias": "Ebony/85"
+      },
+      {
+        "name": "Components/loader/skeleton/Contrast/Highlight",
+        "color": "#141527",
+        "var": "Fill/Background/Tint/Dark",
+        "rootAlias": "Ebony/95"
+      },
+      {
+        "name": "Components/loader/skeleton/Standard/Fill",
+        "color": "#2d2e3e",
+        "var": "Fill/Background/Subdued/Dark",
+        "rootAlias": "Ebony/85"
+      },
+      {
+        "name": "Components/loader/skeleton/Standard/Highlight",
+        "color": "#141527",
+        "var": "Fill/Background/Tint/Dark",
+        "rootAlias": "Ebony/95"
       },
       {
         "name": "Components/menu/Breadcrumb/Contrast/Icon",
@@ -9033,10 +8421,22 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/menu/Overflow Menu/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/menu/Overflow Menu/Text",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/menu/Overflow Menu/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/menu/Pagination/Contrast/Active",
@@ -9159,6 +8559,12 @@
         "rootAlias": "Ebony/90"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Divide",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Fill-Active",
         "color": "#ffffff00",
         "var": "Fill/Background/Standard/Colorless",
@@ -9183,6 +8589,18 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Contrast/Label",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
         "color": "#ff9494",
         "var": "Stroke/HighlightAlt",
@@ -9195,6 +8613,12 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/menu/Side Navigation/Standard/Avatar",
         "color": "#e5e5e926",
         "var": "Fill/Background/Overlay/Transparent",
@@ -9205,6 +8629,12 @@
         "color": "#212233",
         "var": "Fill/Background/Contrast/Dark",
         "rootAlias": "Ebony/90"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Divide",
+        "color": "#81828f",
+        "var": "Stroke/DarkAlt",
+        "rootAlias": "Ebony/50"
       },
       {
         "name": "Components/menu/Side Navigation/Standard/Fill-Active",
@@ -9231,6 +8661,18 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/menu/Side Navigation/Standard/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Label",
+        "color": "#b3b4bd",
+        "var": "Text/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
         "name": "Components/menu/Side Navigation/Standard/Stroke-Selected",
         "color": "#ff9494",
         "var": "Stroke/HighlightAlt",
@@ -9241,6 +8683,12 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/menu/Stepper/Contrast/Background",
@@ -9441,6 +8889,12 @@
         "rootAlias": "Ebony/50"
       },
       {
+        "name": "Components/tab/Contrast/Fill-Disabled",
+        "color": "#cfd2d41a",
+        "var": "Fill/Disabled/TransparentAlt",
+        "rootAlias": "Transparent/Neutral-Alpha10"
+      },
+      {
         "name": "Components/tab/Contrast/Fill-Hover",
         "color": "#393a49",
         "var": "Fill/Background/Overlay/Solid",
@@ -9454,9 +8908,9 @@
       },
       {
         "name": "Components/tab/Contrast/Fill-Unselected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
+        "color": "#e5e5e940",
+        "var": "Fill/Background/Overlay/TransparentAlt",
+        "rootAlias": "Transparent/Ebony-Alpha25"
       },
       {
         "name": "Components/tab/Contrast/Icon",
@@ -9465,10 +8919,22 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/tab/Contrast/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/tab/Contrast/Text",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/tab/Contrast/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/tab/Contrast/Underline-selected",
@@ -9481,6 +8947,12 @@
         "color": "#81828f",
         "var": "Stroke/DarkAlt",
         "rootAlias": "Ebony/50"
+      },
+      {
+        "name": "Components/tab/Standard/Fill-Disabled",
+        "color": "#cfd2d41a",
+        "var": "Fill/Disabled/TransparentAlt",
+        "rootAlias": "Transparent/Neutral-Alpha10"
       },
       {
         "name": "Components/tab/Standard/Fill-Hover",
@@ -9496,9 +8968,9 @@
       },
       {
         "name": "Components/tab/Standard/Fill-Unselected",
-        "color": "#e5e5e926",
-        "var": "Fill/Background/Overlay/Transparent",
-        "rootAlias": "Transparent/Ebony-Alpha15"
+        "color": "#e5e5e940",
+        "var": "Fill/Background/Overlay/TransparentAlt",
+        "rootAlias": "Transparent/Ebony-Alpha25"
       },
       {
         "name": "Components/tab/Standard/Icon",
@@ -9507,10 +8979,22 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/tab/Standard/Icon-Disabled",
+        "color": "#949699",
+        "var": "Shape/NeutralAlt2",
+        "rootAlias": "Grey/60"
+      },
+      {
         "name": "Components/tab/Standard/Text",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/tab/Standard/Text-Disabled",
+        "color": "#949699",
+        "var": "Text/NeutralAlt2",
+        "rootAlias": "Grey/60"
       },
       {
         "name": "Components/tab/Standard/Underline-selected",
@@ -9525,10 +9009,16 @@
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/table/Contrast/Fill-Striped",
+        "name": "Components/table/Contrast/Fill-Hover",
         "color": "#e5e5e926",
         "var": "Fill/Background/Overlay/Transparent",
         "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Components/table/Contrast/Fill-Negative",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
       },
       {
         "name": "Components/table/Contrast/Icon",
@@ -9555,10 +9045,16 @@
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "Components/table/Standard/Fill-Striped",
+        "name": "Components/table/Standard/Fill-Hover",
         "color": "#e5e5e926",
         "var": "Fill/Background/Overlay/Transparent",
         "rootAlias": "Transparent/Ebony-Alpha15"
+      },
+      {
+        "name": "Components/table/Standard/Fill-Negative",
+        "color": "#ff949433",
+        "var": "Fill/Negative/Transparent",
+        "rootAlias": "Transparent/Coral-Alpha20"
       },
       {
         "name": "Components/table/Standard/Icon",
@@ -9633,10 +9129,22 @@
         "rootAlias": "Ebony/80"
       },
       {
-        "name": "Components/tooltip/Tooltip/Contrast/Shape",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
+        "name": "Components/tooltip/Tooltip/Contrast/Fill-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Icon",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Icon-Negative",
+        "color": "#08091c",
+        "var": "Shape/Dark",
+        "rootAlias": "Ebony/100"
       },
       {
         "name": "Components/tooltip/Tooltip/Contrast/Text",
@@ -9645,22 +9153,70 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/tooltip/Tooltip/Contrast/Text-Negative",
+        "color": "#08091c",
+        "var": "Text/Dark",
+        "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Triangle",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Contrast/Triangle-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
+      },
+      {
         "name": "Components/tooltip/Tooltip/Standard/Fill",
         "color": "#393a49",
         "var": "Fill/Background/Overlay/Solid",
         "rootAlias": "Ebony/80"
       },
       {
-        "name": "Components/tooltip/Tooltip/Standard/Shape",
-        "color": "#393a49",
-        "var": "Fill/Background/Overlay/Solid",
-        "rootAlias": "Ebony/80"
+        "name": "Components/tooltip/Tooltip/Standard/Fill-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Icon",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Icon-Negative",
+        "color": "#08091c",
+        "var": "Shape/Dark",
+        "rootAlias": "Ebony/100"
       },
       {
         "name": "Components/tooltip/Tooltip/Standard/Text",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Text-Negative",
+        "color": "#08091c",
+        "var": "Text/Dark",
+        "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Triangle",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/tooltip/Tooltip/Standard/Triangle-Negative",
+        "color": "#ff9494",
+        "var": "Fill/Negative/Tint",
+        "rootAlias": "Coral/30"
       },
       {
         "name": "Components/travel/Leg Line/Stroke-Line",
@@ -9831,6 +9387,24 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/travel/Travel Leg/Contrast/AirportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/AirportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Leg/Contrast/Bullet border",
         "color": "#08091c",
         "var": "Stroke/DarkAlt-2",
@@ -9843,10 +9417,40 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Leg/Contrast/Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Leg/Contrast/Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Contrast/Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Leg/Contrast/Metro",
@@ -9891,6 +9495,24 @@
         "rootAlias": "Dark/Walk"
       },
       {
+        "name": "Components/travel/Travel Leg/Standard/AirportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/AirportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Leg/Standard/Bullet border",
         "color": "#08091c",
         "var": "Stroke/DarkAlt-2",
@@ -9903,10 +9525,40 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Leg/Standard/Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Leg/Standard/Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Leg/Standard/Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Leg/Standard/Metro",
@@ -9957,16 +9609,52 @@
         "rootAlias": "Transparent/Ebony-Alpha35"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bus",
         "color": "#e87a9b",
         "var": "Dark/Bus",
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Metro",
@@ -10005,10 +9693,34 @@
         "rootAlias": "Dark/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/IconFalse",
         "color": "#b3b4bd",
         "var": "Shape/DarkAlt",
         "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Bus",
@@ -10017,10 +9729,40 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/IconTrue-Metro",
@@ -10059,6 +9801,24 @@
         "rootAlias": "Dark/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/IconTrue-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/SwitchFill-False",
         "color": "#08091c",
         "var": "Fill/Background/Standard/Dark",
@@ -10083,16 +9843,52 @@
         "rootAlias": "Transparent/Ebony-Alpha35"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bus",
         "color": "#e87a9b",
         "var": "Dark/Bus",
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Metro",
@@ -10131,10 +9927,34 @@
         "rootAlias": "Dark/Tram"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconFalse",
         "color": "#b3b4bd",
         "var": "Shape/DarkAlt",
         "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Bicycle",
+        "color": "#00db9b",
+        "var": "Contrast/Bicycle",
+        "rootAlias": "Contrast/Bicycle"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Bus",
@@ -10143,10 +9963,40 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Citybike",
+        "color": "#00db9b",
+        "var": "Contrast/Citybike",
+        "rootAlias": "Contrast/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Metro",
@@ -10156,9 +10006,9 @@
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Mobility",
-        "color": "#4db295",
-        "var": "Dark/Mobility",
-        "rootAlias": "Dark/Mobility"
+        "color": "#00db9b",
+        "var": "Contrast/Mobility",
+        "rootAlias": "Contrast/Mobility"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Plane",
@@ -10183,6 +10033,24 @@
         "color": "#b898e5",
         "var": "Dark/Tram",
         "rootAlias": "Dark/Tram"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Walk",
+        "color": "#8d8e9c",
+        "var": "Dark/Walk",
+        "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/SwitchFill-False",
@@ -10215,10 +10083,34 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Cablleway-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Carferry-Cancled",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Icon-Ferry-Cancled",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Funicular-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-Helicopter-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/Icon-Metro-Cancled",
@@ -10257,10 +10149,28 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-airportLinkBus-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Icon-airportLinkRail-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/IconBorder-Validation",
         "color": "#08091c",
         "var": "Shape/Dark",
         "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Bus",
@@ -10275,6 +10185,36 @@
         "rootAlias": "Dark/Bus-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Cableway-Cancled",
+        "color": "#b898e526",
+        "var": "Dark/Cableway-transparent",
+        "rootAlias": "Dark/Cableway-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Carferry-Cancled",
+        "color": "#8ccfe226",
+        "var": "Dark/Carferry-transparent",
+        "rootAlias": "Dark/Carferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
@@ -10285,6 +10225,30 @@
         "color": "#8ccfe226",
         "var": "Dark/Ferry-transparent",
         "rootAlias": "Dark/Ferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Funicular-Cancled",
+        "color": "#b898e526",
+        "var": "Dark/Funicular-transparent",
+        "rootAlias": "Dark/Funicular-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Helicopter-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/Helicopter-transparent",
+        "rootAlias": "Dark/Helicopter-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Metro",
@@ -10359,6 +10323,30 @@
         "rootAlias": "Dark/Walk"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkBus-transparent",
+        "rootAlias": "Dark/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkRail-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkRail-transparent",
+        "rootAlias": "Dark/airportLinkRail-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkbus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-Cancled",
         "color": "#b6b8ba",
         "var": "Text/NeutralAlt",
@@ -10383,10 +10371,34 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Cableway-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Carferry-Cancled",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-Line-Ferry-Cancled",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Funicular-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-Helicopter-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Contrast/Text-Line-Metro-Cancled",
@@ -10419,6 +10431,18 @@
         "rootAlias": "Dark/Tram"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-airportLinkBus-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/Text-Line-airportLinkRail-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/Text-NewTime",
         "color": "#ff9494",
         "var": "Text/NegativeAlt",
@@ -10443,10 +10467,28 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Carferry-Cancled",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Icon-Ferry-Cancled",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Funicular-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-Helicopter-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Icon-Metro-Cancled",
@@ -10480,15 +10522,39 @@
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Icon-Walk",
-        "color": "#e5e5e9",
-        "var": "Shape/LightAlt",
-        "rootAlias": "Ebony/10"
+        "color": "#08091c",
+        "var": "Shape/Dark",
+        "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-airportLinkBus-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-airportLinkRail-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Icon-cableway-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/IconBorder-Validation",
         "color": "#08091c",
         "var": "Shape/Dark",
         "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Bicycle",
+        "color": "#4db295",
+        "var": "Dark/Bicycle",
+        "rootAlias": "Dark/Bicycle"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Bus",
@@ -10503,6 +10569,36 @@
         "rootAlias": "Dark/Bus-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Cableway",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Cableway-Cancled",
+        "color": "#b482fb26",
+        "var": "Contrast/Cableway-transparent",
+        "rootAlias": "Contrast/Cableway-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Carferry",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Carferry-Cancled",
+        "color": "#8ccfe226",
+        "var": "Dark/Carferry-transparent",
+        "rootAlias": "Dark/Carferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Citybike",
+        "color": "#4db295",
+        "var": "Dark/Citybike",
+        "rootAlias": "Dark/Citybike"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Ferry",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
@@ -10513,6 +10609,30 @@
         "color": "#8ccfe226",
         "var": "Dark/Ferry-transparent",
         "rootAlias": "Dark/Ferry-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Funicular",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Funicular-Cancled",
+        "color": "#b898e526",
+        "var": "Dark/Funicular-transparent",
+        "rootAlias": "Dark/Funicular-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Helicopter",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Helicopter-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/Helicopter-transparent",
+        "rootAlias": "Dark/Helicopter-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Metro",
@@ -10587,6 +10707,30 @@
         "rootAlias": "Dark/Walk"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkBus-transparent",
+        "rootAlias": "Dark/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkRail-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkRail-transparent",
+        "rootAlias": "Dark/airportLinkRail-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-Cancled",
         "color": "#b6b8ba",
         "var": "Text/NeutralAlt",
@@ -10611,10 +10755,34 @@
         "rootAlias": "Dark/Bus"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Cableway-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Cableway",
+        "rootAlias": "Dark/Cableway"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Carferry-Cancled",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-Line-Ferry-Cancled",
         "color": "#8ccfe2",
         "var": "Dark/Ferry",
         "rootAlias": "Dark/Ferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Funicular-Cancled",
+        "color": "#b898e5",
+        "var": "Dark/Funicular",
+        "rootAlias": "Dark/Funicular"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-Helicopter-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/Helicopter",
+        "rootAlias": "Dark/Helicopter"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Text-Line-Metro-Cancled",
@@ -10647,6 +10815,18 @@
         "rootAlias": "Dark/Tram"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-airportLinkBus-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/Text-Line-airportLinkRail-Cancled",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/Text-NewTime",
         "color": "#ff9494",
         "var": "Text/NegativeAlt",
@@ -10654,6 +10834,18 @@
       },
       {
         "name": "Components/travel/Travel Tag/Standard/Text-Walk",
+        "color": "#08091c",
+        "var": "Text/Dark",
+        "rootAlias": "Ebony/100"
+      },
+      {
+        "name": "Components/typography/Base text/Contrast/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Base text/Standard/Text-Accent",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
@@ -10693,6 +10885,90 @@
         "color": "#b3b4bd",
         "var": "Text/DarkAlt",
         "rootAlias": "Ebony/30"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Border",
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Border-interactive",
+        "color": "#e5e5e9",
+        "var": "Stroke/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Fill",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/typography/Code text/Contrast/Text",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Border",
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Border-interactive",
+        "color": "#e5e5e9",
+        "var": "Stroke/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Fill",
+        "color": "#393a49",
+        "var": "Fill/Background/Overlay/Solid",
+        "rootAlias": "Ebony/80"
+      },
+      {
+        "name": "Components/typography/Code text/Standard/Text",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Label/Contrast/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/Label/Standard/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/List/Contrast/Border",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/typography/List/Contrast/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/typography/List/Standard/Border",
+        "color": "#aeb7e2",
+        "var": "Stroke/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
+        "name": "Components/typography/List/Standard/Text-Accent",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
       }
     ],
     "number": []

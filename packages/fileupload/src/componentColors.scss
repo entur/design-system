@@ -5,29 +5,41 @@
 :root {
   --components-loader-fileupload-contrast-fill-default: var(--fill-background-standard-colorless);
   --components-loader-fileupload-contrast-icon: var(--shape-light);
+  --components-loader-fileupload-contrast-icon-disabled: var(--shape-neutralalt2);
   --components-loader-fileupload-contrast-stroke-default: var(--stroke-subdued);
+  --components-loader-fileupload-contrast-stroke-disabled: var(--stroke-neutralalt);
   --components-loader-fileupload-contrast-stroke-negative: var(--stroke-negativealt);
   --components-loader-fileupload-contrast-stroke-success: var(--stroke-successalt);
   --components-loader-fileupload-contrast-text: var(--text-light);
+  --components-loader-fileupload-contrast-text-disabled: var(--text-neutralalt2);
   --components-loader-fileupload-standard-fill-default: var(--fill-background-standard-colorless);
   --components-loader-fileupload-standard-icon: var(--shape-accent);
+  --components-loader-fileupload-standard-icon-disabled: var(--shape-neutral);
   --components-loader-fileupload-standard-stroke-default: var(--stroke-subdued);
+  --components-loader-fileupload-standard-stroke-disabled: var(--stroke-neutralalt);
   --components-loader-fileupload-standard-stroke-negative: var(--stroke-negative);
   --components-loader-fileupload-standard-stroke-success: var(--stroke-success);
   --components-loader-fileupload-standard-text: var(--text-accent);
+  --components-loader-fileupload-standard-text-disabled: var(--text-neutral);
 }
 
 [data-color-mode='dark'] {
   --components-loader-fileupload-contrast-fill-default: var(--fill-background-standard-colorless);
   --components-loader-fileupload-contrast-icon: var(--shape-lightalt);
+  --components-loader-fileupload-contrast-icon-disabled: var(--shape-neutralalt2);
   --components-loader-fileupload-contrast-stroke-default: var(--stroke-subdued);
+  --components-loader-fileupload-contrast-stroke-disabled: var(--stroke-darkalt);
   --components-loader-fileupload-contrast-stroke-negative: var(--stroke-negativealt);
   --components-loader-fileupload-contrast-stroke-success: var(--stroke-successalt);
   --components-loader-fileupload-contrast-text: var(--text-lightalt);
+  --components-loader-fileupload-contrast-text-disabled: var(--text-neutralalt2);
   --components-loader-fileupload-standard-fill-default: var(--fill-background-standard-colorless);
   --components-loader-fileupload-standard-icon: var(--shape-lightalt);
+  --components-loader-fileupload-standard-icon-disabled: var(--shape-neutralalt2);
   --components-loader-fileupload-standard-stroke-default: var(--stroke-subdued);
+  --components-loader-fileupload-standard-stroke-disabled: var(--stroke-darkalt);
   --components-loader-fileupload-standard-stroke-negative: var(--stroke-negativealt);
   --components-loader-fileupload-standard-stroke-success: var(--stroke-successalt);
   --components-loader-fileupload-standard-text: var(--text-lightalt);
+  --components-loader-fileupload-standard-text-disabled: var(--text-neutralalt2);
 }
