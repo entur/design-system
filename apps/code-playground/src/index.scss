@@ -23,13 +23,11 @@
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/dropdown/dist/styles.css';
 
-:root {
-  background-color: var(--basecolors-frame-default);
-  height: 100%;
+body {
   margin: unset;
-  padding: 1rem 2rem 2rem;
+}
 
-  &.eds-contrast {
-    background-color: var(--basecolors-frame-contrast);
-  }
+.code-playground__wrapper {
+  padding: 1rem 2rem 2rem;
+  height: 100%;
 }
