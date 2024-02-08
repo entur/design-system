@@ -24,9 +24,7 @@ import { Heading4 } from '@entur/typography';
     const[error, setError] = React.useState(false);
     const onDelete = file  =>{
       console.log(file);
-      const newFiles = [...myFiles];
-      newFiles.splice(newFiles.indexOf(file), 1);
-      setMyFiles(newFiles);
+      setMyFiles((prev) => prev.filter((f) => f !== file));
     }
     const onDrop = React.useCallback((acceptedFiles) => {
       acceptedFiles.forEach((file) => {
