@@ -18,10 +18,10 @@
 
   &__trigger {
     appearance: none;
-    background: t.$colors-greys-grey70;
+    background: var(--components-expand-expandablepanel-standard-fill-default);
     border: none;
     border-radius: t.$border-radiuses-medium;
-    color: inherit;
+    color: var(--components-expand-expandablepanel-standard-text);
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
@@ -33,25 +33,26 @@
     word-break: break-word;
 
     .eds-contrast & {
-      background: t.$colors-blues-blue20;
-      border-color: t.$colors-brand-blue;
+      background: var(--components-expand-expandablepanel-contrast-fill-default);
+      color: var(--components-expand-expandablepanel-contrast-text);
     }
 
     &:hover {
-      background: t.$colors-greys-grey80;
+      background: var(--components-expand-expandablepanel-standard-fill-hover);
       .eds-contrast & {
-        background: t.$colors-blues-blue30;
+        background: var(--components-expand-expandablepanel-contrast-fill-hover);
       }
     }
     &:focus {
-      outline: none;
-      box-shadow: t.$shadows-focus;
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
-
   &__icon-container {
     display: flex;
     align-items: center;
