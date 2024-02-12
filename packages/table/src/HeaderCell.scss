@@ -1,11 +1,10 @@
 @use '~@entur/tokens/dist/styles' as t;
 
 .eds-table__header-cell {
-  color: t.$colors-blues-blue40;
-  font-size: t.$font-sizes-medium;
-  font-weight: t.$font-weights-body;
+  color: var(--components-table-standard-text);
+  font-size: t.$font-sizes-large;
+  font-weight: t.$font-weights-heading;
   text-align: left;
-
   height: t.$space-extra-large3;
   padding: 0 (t.$space-default + t.$space-extra-small);
 
@@ -15,8 +14,8 @@
   }
 
   .eds-contrast & {
-    color: t.$colors-brand-lavender;
-    border-bottom-color: t.$colors-blues-blue20;
+    color: var(--components-table-contrast-text);
+    border-bottom-color: var(--components-table-contrast-stroke);
   }
 
   &--padding-checkbox {
@@ -33,9 +32,13 @@
   }
   &--sortable {
     &:focus {
-      outline: none;
-      box-shadow: t.$shadows-focus;
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
+
+      .eds-contrast & {
+        outline-color: var(--basecolors-stroke-focus-contrast);
+      }
     }
   }
   &-button {
@@ -58,19 +61,22 @@
     }
     &:focus {
       outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        outline: t.$outlines-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 
   .eds-table--sticky-header & {
-    background-color: t.$colors-brand-white;
+    background-color: var(--components-table-standard-fill);
     position: sticky;
     top: 0;
 
     .eds-contrast & {
-      background-color: t.$colors-brand-blue;
+      background-color: var(--components-table-contrast-fill);
     }
   }
 }
