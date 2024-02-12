@@ -6,20 +6,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &__dot {
     display: inline-block;
     content: '';
     height: 3px;
     width: 3px;
-    background-color: t.$colors-brand-blue;
+    background-color: var(--components-loader-loader-standard-text);
     border-radius: 50%;
     margin-right: 2px;
     transform: scale(1);
+    .eds-contrast & {
+      background-color: var(--components-loader-loader-contrast-text);
+    }
     &--blue {
-      background-color: t.$colors-brand-blue;
+      background-color: var(--components-loader-loader-standard-text);
     }
     &--white {
-      background-color: t.$colors-brand-white;
+      background-color: var(--components-loader-loader-contrast-text);
     }
     &--one {
       -webkit-animation: dot 1s infinite;
