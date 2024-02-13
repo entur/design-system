@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
 import { CheckIcon } from '@entur/icons';
+import { NormalizedDropdownItemDeprecatedType } from './types';
 import './DropdownList.scss';
 
 export type DropdownListDeprecatedProps = {
-  items: NormalizedDropdownItemType[];
+  items: NormalizedDropdownItemDeprecatedType[];
   [key: string]: any;
 };
 

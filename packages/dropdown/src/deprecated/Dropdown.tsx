@@ -1,20 +1,20 @@
 import React from 'react';
 import { VariantType } from '@entur/form';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { RegularDropdownDeprecated } from './RegularDropdown';
 import { DownshiftProvider } from './DownshiftProvider';
 import { SearchableDropdownDeprecated } from './SearchableDropdown';
 import { DropdownInputGroupDeprecated } from './DropdownInputGroup';
+import { useResolvedItems } from '../useResolvedItems';
 import {
-  useResolvedItems,
-  PotentiallyAsyncDropdownItemType,
-} from '../useResolvedItems';
+  NormalizedDropdownItemDeprecatedType,
+  PotentiallyAsyncDropdownItemDeprecatedType,
+} from './types';
 
 export type DropdownDeprecatedProps = {
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** Tilgjengelige valg i dropdownen */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemDeprecatedType;
   /** Valgt verdi. Bruk null for ingen verdi. */
   value?: string | null;
   /** Om man skal kunne søke i dropdownen eller ikke */
@@ -36,7 +36,9 @@ export type DropdownDeprecatedProps = {
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
   /** Callback når brukeren endrer valg */
-  onChange?: (selectedItem: NormalizedDropdownItemType | null) => void;
+  onChange?: (
+    selectedItem: NormalizedDropdownItemDeprecatedType | null,
+  ) => void;
   /** Lar brukeren velge ved å "tæbbe" seg ut av komponenten */
   selectOnTab?: boolean;
   /** Om man skal vise items ved fokusering av input-feltet, før man skriver inn noe */
@@ -56,7 +58,7 @@ export type DropdownDeprecatedProps = {
   /** Filtreringen som blir brukt dersom man har en searchable Dropdown
    * @default Enkel tekstsammenligning
    */
-  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  itemFilter?: (item: NormalizedDropdownItemDeprecatedType) => boolean;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */

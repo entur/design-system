@@ -11,11 +11,11 @@ import { CloseSmallIcon, DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
 import { Tooltip } from '@entur/tooltip';
 
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { NormalizedDropdownItemType } from '../types';
 
 import './FieldComponents.scss';
 
-export const SelectedItemTag = ({
+export const SelectedItemTag = <ValueType extends NonNullable<any>>({
   ariaLabelRemoveSelected,
   ariaLabelChosen = 'valgt',
   disabled,
@@ -29,12 +29,14 @@ export const SelectedItemTag = ({
   ariaLabelChosen?: string;
   disabled?: boolean;
   getSelectedItemProps?: (
-    options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType>,
+    options: UseMultipleSelectionGetSelectedItemPropsOptions<
+      NormalizedDropdownItemType<ValueType>
+    >,
   ) => any;
   index?: number;
   readOnly?: boolean;
-  removeSelectedItem: (item: NormalizedDropdownItemType) => void;
-  selectedItem: NormalizedDropdownItemType;
+  removeSelectedItem: (item: NormalizedDropdownItemType<ValueType>) => void;
+  selectedItem: NormalizedDropdownItemType<ValueType>;
 }) => {
   const { tabIndex: _, ...selectedItemProps } =
     getSelectedItemProps?.({
@@ -61,7 +63,7 @@ export const SelectedItemTag = ({
   );
 };
 
-export const FieldAppend: React.FC<{
+type FieldAppendProps<ValueType> = {
   ariaHiddenToggleButton?: boolean;
   ariaLabelCloseList?: string;
   ariaLabelOpenList?: string;
@@ -76,8 +78,10 @@ export const FieldAppend: React.FC<{
   loading?: boolean;
   loadingText?: string;
   onClear: () => void;
-  selectedItems: (NormalizedDropdownItemType | null)[];
-}> = ({
+  selectedItems: (NormalizedDropdownItemType<ValueType> | null)[];
+};
+
+export const FieldAppend = <ValueType extends NonNullable<any>>({
   ariaHiddenToggleButton = false,
   ariaLabelCloseList,
   ariaLabelOpenList,
@@ -91,7 +95,7 @@ export const FieldAppend: React.FC<{
   loadingText = 'Laster resultater …',
   onClear,
   selectedItems,
-}) => {
+}: FieldAppendProps<ValueType>) => {
   if (disabled) {
     return null;
   }

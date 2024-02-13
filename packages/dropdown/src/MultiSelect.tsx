@@ -20,11 +20,7 @@ import { useRandomId } from '@entur/utils';
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
 
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import {
-  PotentiallyAsyncDropdownItemType,
-  useResolvedItems,
-} from './useResolvedItems';
+import { useResolvedItems } from './useResolvedItems';
 import {
   EMPTY_INPUT,
   getA11yRemovalMessage,
@@ -38,26 +34,31 @@ import {
   useMultiselectUtils,
 } from './utils';
 
+import {
+  NormalizedDropdownItemType,
+  PotentiallyAsyncDropdownItemType,
+} from './types';
+
 import './Dropdown.scss';
 
-export type MultiSelectProps = {
+export type MultiSelectProps<ValueType> = {
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** Tilgjengelige valg i MultiSelect */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemType<ValueType>;
   /** Elementer som er valgt blant 'items'. Bruk tom liste for ingen valgte
    */
-  selectedItems: NormalizedDropdownItemType[];
+  selectedItems: NormalizedDropdownItemType<ValueType>[];
   /** Callback med alle valgte verdier.
    *  Bruk denne til å oppdatere selectedItems-listen */
   onChange?: (
-    selectedItems: NormalizedDropdownItemType[],
-  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType[]>>;
+    selectedItems: NormalizedDropdownItemType<ValueType>[],
+  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType<ValueType>[]>>;
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
    * @default Regex-test som sjekker om item.label inneholder input-teksten
    */
   itemFilter?: (
-    item: NormalizedDropdownItemType,
+    item: NormalizedDropdownItemType<ValueType>,
     inputValue: string | undefined,
   ) => boolean;
   /** Hvilken valideringsvariant som gjelder */
@@ -156,7 +157,7 @@ export type MultiSelectProps = {
   ariaLabelSelectedItem?: string;
 };
 
-export const MultiSelect = ({
+export const MultiSelect = <ValueType extends NonNullable<any>>({
   className,
   clearable = true,
   clearInputOnSelect = false,
@@ -192,10 +193,10 @@ export const MultiSelect = ({
   ariaLabelRemoveSelected = 'trykk for å fjerne valg',
   ariaLabelSelectedItem,
   ...rest
-}: MultiSelectProps) => {
+}: MultiSelectProps<ValueType>) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
   const [lastRemovedItem, setLastRemovedItem] = React.useState<
-    NormalizedDropdownItemType | undefined
+    NormalizedDropdownItemType<ValueType> | undefined
   >(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -218,26 +219,27 @@ export const MultiSelect = ({
     selectedItems.length === normalizedItems.length;
 
   // special 'item' used as Select All entry in the dropdown list
-  const selectAll: NormalizedDropdownItemType = {
+  const selectAll: NormalizedDropdownItemType<string> = {
     value: useRandomId('select-all'),
     label: labelSelectAll,
   };
   // special 'item' used as a replacement selected item tag for when
   // there are more selected element than maxChips
-  const summarySelectedItems: NormalizedDropdownItemType = React.useMemo(
-    () => ({
-      value: EMPTY_INPUT,
-      label: isAllNonAsyncItemsSelected
-        ? labelAllItemsSelected
-        : selectedItems.length + ' ' + ariaLabelChosenPlural,
-    }),
-    [
-      isAllNonAsyncItemsSelected,
-      selectedItems,
-      labelAllItemsSelected,
-      ariaLabelChosenPlural,
-    ],
-  );
+  const summarySelectedItems: NormalizedDropdownItemType<string> =
+    React.useMemo(
+      () => ({
+        value: EMPTY_INPUT,
+        label: isAllNonAsyncItemsSelected
+          ? labelAllItemsSelected
+          : selectedItems.length + ' ' + ariaLabelChosenPlural,
+      }),
+      [
+        isAllNonAsyncItemsSelected,
+        selectedItems,
+        labelAllItemsSelected,
+        ariaLabelChosenPlural,
+      ],
+    );
 
   const [listItems, setListItems] = useState([
     ...(!hideSelectAll ? [selectAll] : []),
@@ -262,7 +264,7 @@ export const MultiSelect = ({
   }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
-    useMultiselectUtils({
+    useMultiselectUtils<ValueType>({
       listItems,
       selectAll,
       selectedItems,
@@ -299,7 +301,9 @@ export const MultiSelect = ({
       {
         changes,
         type,
-      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
+      }: UseComboboxStateChangeOptions<
+        NormalizedDropdownItemType<ValueType | string>
+      >,
     ) => {
       if (
         changes.highlightedIndex !== undefined &&
@@ -487,7 +491,12 @@ export const MultiSelect = ({
                   disabled={disabled}
                   getSelectedItemProps={getSelectedItemProps}
                   index={index}
-                  key={selectedItem?.value}
+                  key={
+                    selectedItem?.label +
+                    (typeof selectedItem?.value === 'string'
+                      ? selectedItem.value
+                      : '')
+                  }
                   readOnly={readOnly}
                   removeSelectedItem={() => {
                     handleListItemClicked({

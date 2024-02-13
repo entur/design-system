@@ -9,15 +9,17 @@ import {
 import { Checkbox } from '@entur/form';
 import { VisuallyHidden } from '@entur/a11y';
 
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
+import { NormalizedDropdownItemType } from '../types';
 
 import './DropdownList.scss';
 
-type DropdownListProps = {
+type DropdownListProps<ValueType> = {
   ariaLabelChosenSingular?: string;
   ariaLabelSelectedItem?: string;
   getItemProps: (
-    options: UseComboboxGetItemPropsOptions<NormalizedDropdownItemType>,
+    options: UseComboboxGetItemPropsOptions<
+      NormalizedDropdownItemType<ValueType>
+    >,
   ) => any;
   getMenuProps: (
     options?: UseComboboxGetMenuPropsOptions | undefined,
@@ -25,18 +27,18 @@ type DropdownListProps = {
   ) => any;
   highlightedIndex: number;
   isOpen: boolean;
-  listItems: NormalizedDropdownItemType[];
+  listItems: NormalizedDropdownItemType<ValueType | string>[];
   listStyle: { [key: string]: any } | undefined;
   loading?: boolean;
   loadingText?: string;
   noMatchesText?: string;
   selectAllCheckboxState?: () => boolean | 'indeterminate';
-  selectAllItem?: NormalizedDropdownItemType;
-  selectedItems: NormalizedDropdownItemType[];
+  selectAllItem?: NormalizedDropdownItemType<string>;
+  selectedItems: NormalizedDropdownItemType<ValueType>[];
   [key: string]: any;
 };
 
-export const DropdownList = ({
+export const DropdownList = <ValueType extends NonNullable<any>>({
   ariaLabelChosenSingular = 'valgt',
   ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   getItemProps,
@@ -54,14 +56,14 @@ export const DropdownList = ({
   selectedItems,
   showSelectAllInList = false,
   ...rest
-}: DropdownListProps) => {
+}: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
   const isNoMatches =
     !loading &&
     (listItems.length === 0 ||
       (listItems?.length === 1 &&
         listItems?.[0]?.value === selectAllItem?.value));
-  const isItemSelected = (item: NormalizedDropdownItemType) =>
+  const isItemSelected = (item: NormalizedDropdownItemType<ValueType>) =>
     selectedItems.some(
       selectedItem =>
         selectedItem?.value === item?.value &&
@@ -102,7 +104,7 @@ export const DropdownList = ({
     </>
   );
 
-  const listItemContent = (item: NormalizedDropdownItemType) => {
+  const listItemContent = (item: NormalizedDropdownItemType<ValueType>) => {
     return (
       <>
         <Checkbox
@@ -164,17 +166,23 @@ export const DropdownList = ({
                 'eds-dropdown__list__item--highlighted':
                   highlightedIndex === index,
                 'eds-dropdown__list__item--selected':
-                  !isMultiselect && isItemSelected(item),
+                  !isMultiselect &&
+                  isItemSelected(item as NormalizedDropdownItemType<ValueType>),
               })}
               {...getItemProps({
                 key: item?.label + item?.value,
+                // @ts-expect-error Since getItemProps expects the same item type
+                // here as items, it throws error when selectAllItem is a string.
+                // This does, however, not cause any functional issues.
                 item,
                 index,
               })}
             >
               {itemIsSelectAll
                 ? selectAllListItemContent()
-                : listItemContent(item)}
+                : listItemContent(
+                    item as NormalizedDropdownItemType<ValueType>,
+                  )}
             </li>
           );
         })}

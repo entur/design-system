@@ -4,15 +4,15 @@ import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
 import { useRandomId } from '@entur/utils';
 
+import { useResolvedItems } from './useResolvedItems';
 import {
+  NormalizedDropdownItemType,
   PotentiallyAsyncDropdownItemType,
-  useResolvedItems,
-} from './useResolvedItems';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+} from './types';
 
 import './Dropdown.scss';
 
-export type NativeDropdownProps = {
+export type NativeDropdownProps<ValueType> = {
   /** Ekstra klassenavn */
   className?: string;
   /**
@@ -23,7 +23,7 @@ export type NativeDropdownProps = {
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
   /** Alle valg for dropdown-en å ha */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemType<ValueType>;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** En callback for endringer av value
@@ -36,7 +36,7 @@ export type NativeDropdownProps = {
     target,
   }: {
     value: string;
-    selectedItem: NormalizedDropdownItemType | null;
+    selectedItem: NormalizedDropdownItemType<ValueType> | null;
     target: EventTarget & HTMLSelectElement;
   }) => void;
   /** Tekst eller ikon som kommer før dropdown-en */
@@ -49,7 +49,7 @@ export type NativeDropdownProps = {
   /** Den valgte verdien som NormalizedDropdownItemType
    * (Brukes når komponenten er 'controlled')
    */
-  selectedItem?: NormalizedDropdownItemType | null;
+  selectedItem?: NormalizedDropdownItemType<ValueType> | null;
   /** Den valgte verdien som sting
    * (Brukes når komponenten er 'controlled)
    */
@@ -63,7 +63,7 @@ export type NativeDropdownProps = {
   [key: string]: any;
 };
 
-export const NativeDropdown: React.FC<NativeDropdownProps> = ({
+export const NativeDropdown = <ValueType extends string | number>({
   className,
   disabled = false,
   disableLabelAnimation,
@@ -79,8 +79,9 @@ export const NativeDropdown: React.FC<NativeDropdownProps> = ({
   value,
   variant,
   ...rest
-}) => {
-  const { items: normalizedItems, loading } = useResolvedItems(items);
+}: NativeDropdownProps<ValueType>) => {
+  const { items: normalizedItems, loading } =
+    useResolvedItems<ValueType>(items);
   const nativeDropdownId = useRandomId('eds-dropdown-native');
 
   return (

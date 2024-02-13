@@ -1,37 +1,29 @@
 import React from 'react';
+
 import { useDebounce } from '@entur/utils';
+
+import { useNormalizedItems } from './useNormalizedItems';
+
 import {
+  PotentiallyAsyncDropdownItemType,
   DropdownItemType,
   NormalizedDropdownItemType,
-  useNormalizedItems,
-} from './useNormalizedItems';
+  AsyncDropdownItemType,
+} from './types';
 
-type AsyncDropdownItemType = (
-  inputType: string,
-  abortControllerRef: React.MutableRefObject<AbortController>,
-) => Promise<DropdownItemType[]>;
-type SyncDropdownItemType = (
-  inputType: string,
-  abortControllerRef: React.MutableRefObject<AbortController>,
-) => DropdownItemType[];
-export type PotentiallyAsyncDropdownItemType =
-  | DropdownItemType[]
-  | SyncDropdownItemType
-  | AsyncDropdownItemType;
-
-export const useResolvedItems = (
+export const useResolvedItems = <ValueType extends NonNullable<any>>(
   /** The list of items, or an async function that resolves the list of items */
-  itemsOrItemsResolver: PotentiallyAsyncDropdownItemType,
+  itemsOrItemsResolver: PotentiallyAsyncDropdownItemType<ValueType>,
   /** The time to wait after the input changes to the fetchItems method is called */
   debounceTimeout = 250,
 ): {
   fetchItems: (query?: string) => void;
   loading: boolean;
-  items: NormalizedDropdownItemType[];
+  items: NormalizedDropdownItemType<ValueType>[];
 } => {
   const itemsIsAFunction = typeof itemsOrItemsResolver === 'function';
 
-  const [items, setItems] = React.useState<DropdownItemType[]>(
+  const [items, setItems] = React.useState<DropdownItemType<ValueType>[]>(
     itemsIsAFunction ? [] : itemsOrItemsResolver,
   );
   const [loading, setLoading] = React.useState(false);
@@ -43,8 +35,10 @@ export const useResolvedItems = (
   // We normalize the itemsResolver argument to an async function, so we
   // can use it without thinking about the differences later
   const itemsResolver = React.useMemo(() => {
-    if (itemsIsAFunction) return itemsOrItemsResolver as AsyncDropdownItemType;
-    return () => Promise.resolve(itemsOrItemsResolver as DropdownItemType[]);
+    if (itemsIsAFunction)
+      return itemsOrItemsResolver as AsyncDropdownItemType<ValueType>;
+    return () =>
+      Promise.resolve(itemsOrItemsResolver as DropdownItemType<ValueType>[]);
   }, [itemsOrItemsResolver, itemsIsAFunction]);
 
   // This should be called whenever the input value changes
