@@ -1,29 +1,27 @@
 import React from 'react';
 
-export type DropdownItemType =
-  | { value?: string; label: string; icons?: React.ComponentType<any>[] }
-  | string;
+import { DropdownItemType, NormalizedDropdownItemType } from './types';
 
-export type NormalizedDropdownItemType = {
-  value: string;
-  label: string;
-  icons?: React.ComponentType<any>[];
-};
-
-export const useNormalizedItems = (
-  items: DropdownItemType[],
-): NormalizedDropdownItemType[] =>
+export const useNormalizedItems = <ValueType = string>(
+  items: DropdownItemType<ValueType>[],
+): NormalizedDropdownItemType<ValueType>[] =>
   React.useMemo(
     () =>
       items.map(item => {
         if (typeof item == 'string') {
-          return { value: item, label: item };
+          return {
+            value: item as ValueType,
+            label: item,
+          };
         }
 
-        if (!('value' in item)) {
-          return { ...item, value: item.label };
+        if (item?.value === undefined) {
+          return {
+            ...item,
+            value: item.label as ValueType,
+          };
         }
-        return item as NormalizedDropdownItemType;
+        return { ...item, value: item.value };
       }),
     [items],
   );

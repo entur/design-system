@@ -4,22 +4,22 @@ import Downshift, {
   DownshiftState,
   StateChangeOptions,
 } from 'downshift';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import classNames from 'classnames';
+import { NormalizedDropdownItemDeprecatedType } from './types';
 
 const DownshiftContext =
-  React.createContext<ControllerStateAndHelpers<NormalizedDropdownItemType> | null>(
+  React.createContext<ControllerStateAndHelpers<NormalizedDropdownItemDeprecatedType> | null>(
     null,
   );
 
 export type DownshiftProviderProps = {
   onChange?: (
-    selectedItem: NormalizedDropdownItemType,
-    stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
+    selectedItem: NormalizedDropdownItemDeprecatedType,
+    stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemDeprecatedType>,
   ) => void;
   onInputValueChange?: (value: string) => void;
   inputValue?: string;
-  initialSelectedItem?: NormalizedDropdownItemType;
+  initialSelectedItem?: NormalizedDropdownItemDeprecatedType;
   highlightFirstItemOnOpen?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -38,7 +38,7 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
 }) => {
   const handleStateChange = (
     changes: any,
-    stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemType>,
+    stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemDeprecatedType>,
   ) => {
     if (
       changes.type ===
@@ -54,13 +54,13 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   };
 
   const stateReducer = (
-    _: DownshiftState<NormalizedDropdownItemType>,
-    changes: StateChangeOptions<NormalizedDropdownItemType>,
-  ): Partial<StateChangeOptions<NormalizedDropdownItemType>> => {
+    _: DownshiftState<NormalizedDropdownItemDeprecatedType>,
+    changes: StateChangeOptions<NormalizedDropdownItemDeprecatedType>,
+  ): Partial<StateChangeOptions<NormalizedDropdownItemDeprecatedType>> => {
     const highlightFirstOnOpen =
       highlightFirstItemOnOpen && 'isOpen' in changes && changes.isOpen;
     const highlightFirstItemIndex: Partial<
-      StateChangeOptions<NormalizedDropdownItemType>
+      StateChangeOptions<NormalizedDropdownItemDeprecatedType>
     > = highlightFirstOnOpen ? { highlightedIndex: 0 } : {};
 
     if (searchable) {
@@ -114,7 +114,7 @@ export const DownshiftProvider: React.FC<DownshiftProviderProps> = ({
   );
 };
 
-export const useDownshift: () => ControllerStateAndHelpers<NormalizedDropdownItemType> =
+export const useDownshift: () => ControllerStateAndHelpers<NormalizedDropdownItemDeprecatedType> =
   () => {
     const context = React.useContext(DownshiftContext);
     if (!context) {

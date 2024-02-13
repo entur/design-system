@@ -1,12 +1,12 @@
 import { A11yRemovalMessage, A11yStatusMessageOptions } from 'downshift';
-import { NormalizedDropdownItemType } from './useNormalizedItems';
+import { NormalizedDropdownItemType } from './types';
 import React from 'react';
 
 /* start general utils */
 export const EMPTY_INPUT = '';
 
 export function lowerCaseFilterTest(
-  item: NormalizedDropdownItemType,
+  item: NormalizedDropdownItemType<any>,
   input: string | undefined,
 ) {
   if (!input) {
@@ -20,16 +20,16 @@ export function lowerCaseFilterTest(
   return inputRegex.test(item.label);
 }
 
-export function noFilter(
+export function noFilter<ValueType>(
   //@ts-expect-error only here to comply with dropdown filter API
-  item: NormalizedDropdownItemType,
+  item: NormalizedDropdownItemType<ValueType>,
   //@ts-expect-error only here to comply with dropdown filter API
   input: string | undefined,
 ) {
   return true;
 }
 
-export const itemToString = (item: NormalizedDropdownItemType | null) =>
+export const itemToString = (item: NormalizedDropdownItemType<any> | null) =>
   item ? item.label : '';
 
 export const isFunctionWithQueryArgument = (object: any) =>
@@ -38,22 +38,22 @@ export const isFunctionWithQueryArgument = (object: any) =>
 /* end general utils */
 /* start multiselect utils */
 
-type useMultiselectUtilsType = {
-  selectedItems: NormalizedDropdownItemType[];
-  listItems: NormalizedDropdownItemType[];
-  selectAll: NormalizedDropdownItemType;
+type useMultiselectUtilsType<ValueType> = {
+  selectedItems: NormalizedDropdownItemType<ValueType>[];
+  listItems: NormalizedDropdownItemType<ValueType | string>[];
+  selectAll: NormalizedDropdownItemType<string>;
 };
 
-export const useMultiselectUtils = ({
+export const useMultiselectUtils = <ValueType>({
   listItems,
   selectedItems,
   selectAll,
-}: useMultiselectUtilsType) => {
+}: useMultiselectUtilsType<ValueType>) => {
   const hasSelectedItems = selectedItems.length > 0;
 
   const listItemsWithoutSelectAll = listItems.filter(
     item => item.value !== selectAll.value,
-  );
+  ) as NormalizedDropdownItemType<ValueType>[];
 
   const unselectedItemsInListItems = listItemsWithoutSelectAll.filter(
     listItem =>
@@ -74,27 +74,28 @@ export const useMultiselectUtils = ({
   );
 
   const addClickedItemToSelectedItems = (
-    clickedItem: NormalizedDropdownItemType,
-    onChange: (value: NormalizedDropdownItemType[]) => void,
+    clickedItem: NormalizedDropdownItemType<ValueType>,
+    onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void,
   ) => onChange([...selectedItems, clickedItem]);
 
   const clickedItemIsInSelectedItems = (
-    clickedItem: NormalizedDropdownItemType,
+    clickedItem: NormalizedDropdownItemType<ValueType>,
   ) =>
     selectedItems.some(
       selectedItem => selectedItem.value === clickedItem.value,
     );
 
-  const clickedItemIsSelectAll = (clickedItem: NormalizedDropdownItemType) =>
-    clickedItem.value === selectAll.value;
+  const clickedItemIsSelectAll = (
+    clickedItem: NormalizedDropdownItemType<string | ValueType>,
+  ) => clickedItem.value === selectAll.value;
 
   const handleListItemClicked = ({
     clickedItem,
     onChange,
     setLastRemovedItem,
   }: {
-    clickedItem: NormalizedDropdownItemType;
-    onChange: (value: NormalizedDropdownItemType[]) => void;
+    clickedItem: NormalizedDropdownItemType<any>;
+    onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void;
     setLastRemovedItem: any;
   }) => {
     if (clickedItemIsSelectAll(clickedItem)) {
@@ -113,8 +114,8 @@ export const useMultiselectUtils = ({
   };
 
   const removeClickedItemFromSelectedItems = (
-    clickedItem: NormalizedDropdownItemType,
-    onChange: (value: NormalizedDropdownItemType[]) => void,
+    clickedItem: NormalizedDropdownItemType<ValueType>,
+    onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void,
   ) =>
     onChange(
       selectedItems.filter(
@@ -129,13 +130,13 @@ export const useMultiselectUtils = ({
   };
 
   const selectAllUnselectedItemsInListItems = (
-    onChange: (value: NormalizedDropdownItemType[]) => void,
+    onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void,
   ) => {
     onChange([...selectedItems, ...unselectedItemsInListItems]);
   };
 
   const unselectAllListItems = (
-    onChange: (value: NormalizedDropdownItemType[]) => void,
+    onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void,
   ) => {
     const selectedItemsWithoutItemsInListItems = selectedItems.filter(
       selectedItem =>
@@ -202,11 +203,11 @@ export function getA11yStatusMessage<Item>(
 }
 
 type getA11ySelectionMessageType<Item> = A11yStatusMessageOptions<Item> & {
-  selectAllItem?: NormalizedDropdownItemType;
+  selectAllItem?: NormalizedDropdownItemType<string>;
 };
 
 export function getA11ySelectionMessage(
-  options: getA11ySelectionMessageType<NormalizedDropdownItemType>,
+  options: getA11ySelectionMessageType<NormalizedDropdownItemType<any>>,
 ) {
   const {
     selectedItem,
@@ -221,12 +222,12 @@ export function getA11ySelectionMessage(
 }
 
 type getA11yRemovalMessageType<Item> = A11yRemovalMessage<Item> & {
-  selectAllItem?: NormalizedDropdownItemType;
-  removedItem?: NormalizedDropdownItemType;
+  selectAllItem?: NormalizedDropdownItemType<string>;
+  removedItem?: NormalizedDropdownItemType<any>;
 };
 
 export function getA11yRemovalMessage(
-  options: getA11yRemovalMessageType<NormalizedDropdownItemType>,
+  options: getA11yRemovalMessageType<NormalizedDropdownItemType<any>>,
 ) {
   const { itemToString, selectAllItem, removedItem } = options;
   if (removedItem === undefined) return '';

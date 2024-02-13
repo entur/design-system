@@ -5,17 +5,17 @@ import {
   //   StateChangeOptions,
   //   UseSelectStateChangeOptions,
 } from 'downshift';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { BaseFormControl, VariantType } from '@entur/form';
-import {
-  PotentiallyAsyncDropdownItemType,
-  useResolvedItems,
-} from '../useResolvedItems';
+import { useResolvedItems } from '../useResolvedItems';
 import { DropdownDeprecatedLoadingDots } from './DropdownLoadingDots';
 import { useRandomId } from '@entur/utils';
 import classNames from 'classnames';
 import { CloseIcon, DownArrowIcon } from '@entur/icons';
 import { space } from '@entur/tokens';
+import {
+  NormalizedDropdownItemDeprecatedType,
+  PotentiallyAsyncDropdownItemDeprecatedType,
+} from './types';
 import './MultiSelect.scss';
 import './DropdownList.scss';
 
@@ -35,8 +35,8 @@ const useMultiSelectOldContext = () => {
 };
 
 function stateReducer(
-  state: any, //StateChangeOptions<NormalizedDropdownItemType>,
-  actionAndChanges: any, //UseSelectStateChangeOptions<NormalizedDropdownItemType>,
+  state: any, //StateChangeOptions<NormalizedDropdownItemDeprecatedType>,
+  actionAndChanges: any, //UseSelectStateChangeOptions<NormalizedDropdownItemDeprecatedType>,
 ) {
   const { changes, type } = actionAndChanges;
   switch (type) {
@@ -54,10 +54,10 @@ function stateReducer(
 }
 type MultiSelectDeprecatedProps = {
   /** Tilgjengelige valg i MultiSelect */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemDeprecatedType;
   /** Tekst som vises i boksen når elementer er valgt */
   itemsSelectedLabel?: (
-    selectedItems: NormalizedDropdownItemType[],
+    selectedItems: NormalizedDropdownItemDeprecatedType[],
     numberOfItems?: number,
   ) => string;
   /** Beskrivende tekst som forklarer feltet */
@@ -96,9 +96,9 @@ type MultiSelectDeprecatedProps = {
   clearable?: boolean;
   loading?: boolean;
   style?: React.CSSProperties;
-  initialSelectedItems?: NormalizedDropdownItemType[];
+  initialSelectedItems?: NormalizedDropdownItemDeprecatedType[];
 } & Omit<
-  UseSelectProps<NormalizedDropdownItemType>,
+  UseSelectProps<NormalizedDropdownItemDeprecatedType>,
   'initialSelectedItem' | 'items'
 >;
 
@@ -134,13 +134,15 @@ export const MultiSelectDeprecated: React.FC<MultiSelectDeprecatedProps> = ({
 }) => {
   const { items } = useResolvedItems(input, debounceTimeout);
   const [selectedItems, setSelectedItems] =
-    useState<NormalizedDropdownItemType[]>(initialSelectedItems);
+    useState<NormalizedDropdownItemDeprecatedType[]>(initialSelectedItems);
 
   const reset = React.useCallback(() => {
     setSelectedItems([]);
   }, []);
 
-  function isSelected(selectedCheckboxItem: NormalizedDropdownItemType) {
+  function isSelected(
+    selectedCheckboxItem: NormalizedDropdownItemDeprecatedType,
+  ) {
     return selectedItems.some(
       selected => selected.value === selectedCheckboxItem.value,
     );
@@ -154,7 +156,7 @@ export const MultiSelectDeprecated: React.FC<MultiSelectDeprecatedProps> = ({
     highlightedIndex,
     getItemProps,
     openMenu,
-  } = useSelect<NormalizedDropdownItemType>({
+  } = useSelect<NormalizedDropdownItemDeprecatedType>({
     items,
     stateReducer,
     selectedItem: null,
@@ -365,7 +367,7 @@ const CheckboxIcon: React.FC = () => {
   );
 };
 
-function SelectedItemsLabel(items: NormalizedDropdownItemType[]) {
+function SelectedItemsLabel(items: NormalizedDropdownItemDeprecatedType[]) {
   return items.length < 3
     ? items.map(item => item.label).toString()
     : `${items.length} elementer valgt`;

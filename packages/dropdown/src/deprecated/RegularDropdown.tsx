@@ -1,10 +1,10 @@
 import React from 'react';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { useDownshift } from './DownshiftProvider';
 import { BaseDropdownDeprecated } from './BaseDropdown';
+import { NormalizedDropdownItemDeprecatedType } from './types';
 
 type RegularDropdownDeprecatedProps = {
-  items: NormalizedDropdownItemType[];
+  items: NormalizedDropdownItemDeprecatedType[];
   disabled?: boolean;
   placeholder?: string;
   loading?: boolean;

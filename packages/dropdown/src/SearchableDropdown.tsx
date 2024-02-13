@@ -8,11 +8,7 @@ import { BaseFormControl, VariantType } from '@entur/form';
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
 
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import {
-  PotentiallyAsyncDropdownItemType,
-  useResolvedItems,
-} from './useResolvedItems';
+import { useResolvedItems } from './useResolvedItems';
 import {
   EMPTY_INPUT,
   getA11ySelectionMessage,
@@ -24,22 +20,29 @@ import {
   noFilter,
 } from './utils';
 
+import {
+  NormalizedDropdownItemType,
+  PotentiallyAsyncDropdownItemType,
+} from './types';
+
 import './Dropdown.scss';
 
-export type SearchableDropdownProps = {
+export type SearchableDropdownProps<ValueType> = {
   /** Tilgjengelige valg i dropdown-en */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemType<ValueType>;
   /** Valgt element. Bruk null for ingen verdi */
-  selectedItem: NormalizedDropdownItemType | null;
+  selectedItem: NormalizedDropdownItemType<ValueType> | null;
   /** Callback ved valg som skal brukes til å oppdatere selectedItem */
   onChange?: (
-    selectedItem: NormalizedDropdownItemType | null,
-  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType | null>>;
+    selectedItem: NormalizedDropdownItemType<ValueType> | null,
+  ) => void | Dispatch<
+    SetStateAction<NormalizedDropdownItemType<ValueType> | null>
+  >;
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
    * @default Regex-test som sjekker om item.label inneholder input-teksten
    */
   itemFilter?: (
-    item: NormalizedDropdownItemType,
+    item: NormalizedDropdownItemType<ValueType>,
     inputValue: string | undefined,
   ) => boolean;
   /** Beskrivende tekst som forklarer feltet */
@@ -111,7 +114,7 @@ export type SearchableDropdownProps = {
   ariaLabelSelectedItem?: string;
 };
 
-export const SearchableDropdown = ({
+export const SearchableDropdown = <ValueType extends NonNullable<any>>({
   ariaLabelChosenSingular,
   ariaLabelCloseList,
   ariaLabelOpenList,
@@ -141,7 +144,7 @@ export const SearchableDropdown = ({
   style,
   variant = 'info',
   ...rest
-}: SearchableDropdownProps) => {
+}: SearchableDropdownProps<ValueType>) => {
   const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -179,7 +182,7 @@ export const SearchableDropdown = ({
       {
         type,
         changes,
-      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType>,
+      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType<ValueType>>,
     ) => {
       if (
         changes.highlightedIndex !== undefined &&

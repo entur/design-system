@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { mergeRefs } from '@entur/utils';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { BaseDropdownDeprecated } from './BaseDropdown';
 import { useDownshift } from './DownshiftProvider';
+import { NormalizedDropdownItemDeprecatedType } from './types';
 import './SearchableDropdown.scss';
 
 type SearchableDropdownDeprecatedProps = {
   className?: string;
   disabled?: boolean;
-  items: NormalizedDropdownItemType[];
+  items: NormalizedDropdownItemDeprecatedType[];
   loading?: boolean;
   loadingText?: string;
   placeholder?: string;
@@ -18,13 +18,13 @@ type SearchableDropdownDeprecatedProps = {
   openOnFocus?: boolean;
   listStyle?: { [key: string]: any };
   clearable: boolean;
-  itemFilter?: (item: NormalizedDropdownItemType) => boolean;
+  itemFilter?: (item: NormalizedDropdownItemDeprecatedType) => boolean;
   disableLabelAnimation?: boolean;
   [key: string]: any;
 };
 
 function LowerCaseFilterTest(
-  item: NormalizedDropdownItemType,
+  item: NormalizedDropdownItemDeprecatedType,
   input: string | null,
 ) {
   if (!input) {
@@ -64,7 +64,7 @@ export const SearchableDropdownDeprecated: React.FC<SearchableDropdownDeprecated
         listStyle,
         clearable,
         itemFilter = (
-          item: NormalizedDropdownItemType,
+          item: NormalizedDropdownItemDeprecatedType,
           inputValue: string | null,
         ) => LowerCaseFilterTest(item, inputValue),
         label,
