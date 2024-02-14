@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.1.3...@entur/dropdown@5.2.0-beta.0) (2024-02-14)
+
+### Features
+
+- **dropdowns:** add type support for value in DropdownItem to be any non-nullish value ([dcee9eb](https://bitbucket.org/enturas/design-system/commits/dcee9eb68653fb20576feb856687021f27c768a2))
+
 ## [5.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.1.2...@entur/dropdown@5.1.3) (2024-02-12)
 
 **Note:** Version bump only for package @entur/dropdown
