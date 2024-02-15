@@ -100,9 +100,12 @@ for å se dette i praksis.
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
   {`// Definition of NormalizedDropdownItemType
-type NormalizedDropdownItemType = 
-      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+type NormalizedDropdownItemType<ValueType = string> = 
+      { label: string, value: ValueType, icons?: React.ComponentType<any>[] }`}
 </CodeBlock>
+
+Siden `NormalizedDropdownItemType` er en generisk type så kan `value` være hvilken som helst type. TypeScript vil
+da også gi deg riktig type ut i `onChange`. Den er satt til standard som `string` da dette er vanligste praksis. 
 
 ### Liste med valgalternaltiver
 
@@ -114,9 +117,9 @@ funksjoner – de to siste kan du lese mer om under [Hente valgalternaltiver fra
 
 <CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
   {`// Definition of DropdownItemType
-type DropdownItemType = 
+type DropdownItemType<ValueType = string> = 
       string |
-      { label: string, value: string, icons?: React.ComponentType<any>[] }`}
+      { label: string, value: ValueType, icons?: React.ComponentType<any>[] }`}
 </CodeBlock>
 
 Disse kan også blandes slik at følgende også vil være et gyldig `items`-input:
