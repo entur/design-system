@@ -2,10 +2,9 @@
 
 .eds-dropdown__list {
   position: absolute;
-
   list-style: none;
   border-radius: t.$border-radiuses-medium;
-  border: 0.125rem solid t.$colors-blues-blue45;
+  border: 0.125rem solid var(--components-form-basemenu-border);
   box-shadow: t.$shadows-box-shadow;
   padding: 0;
   margin: 0;
@@ -20,8 +19,8 @@
   }
 
   &__item {
-    background-color: t.$colors-greys-grey90;
-    color: t.$colors-brand-blue;
+    background-color: var(--components-form-basemenu-fill-default);
+    color: var(--components-form-basemenu-text);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -52,17 +51,17 @@
       .eds-contrast & {
         &.eds-checkbox__container {
           > input + .eds-checkbox__icon {
-            border-color: t.$colors-brand-blue;
+            border-color: var(--components-form-checkbox-standard-border);
           }
           > input:checked,
           > input:indeterminate {
             + .eds-checkbox__icon {
-              background-color: t.$colors-brand-blue;
+              background-color: var(--components-form-checkbox-standard-fill-selected);
               path {
-                stroke: t.$colors-brand-white;
+                stroke: var(--components-form-checkbox-standard-icon);
               }
               rect {
-                fill: t.$colors-brand-white;
+                fill: var(--components-form-checkbox-standard-icon);
               }
             }
           }
@@ -71,25 +70,24 @@
     }
 
     &--highlighted {
-      background-color: t.$colors-blues-blue70;
+      background-color: var(--components-form-basemenu-fill-hover);
 
       // change to hover style for checkbox when list is hovered
       .eds-dropdown__list__item__checkbox.eds-checkbox__container,
       .eds-dropdown__list__item__checkbox.eds-checkbox__container:hover {
         > input:checked + .eds-checkbox__icon,
         > input:indeterminate + .eds-checkbox__icon {
-          background-color: t.$colors-blues-blue30;
+          background-color: var(--components-form-checkbox-standard-fill-selected);
           border-color: transparent;
         }
         > input + .eds-checkbox__icon {
-          border-color: t.$colors-blues-blue30;
+          border-color: var(--components-form-checkbox-standard-border);
         }
       }
     }
 
     &--selected {
-      background-color: t.$colors-blues-blue30;
-      color: t.$colors-brand-white;
+      background-color: var(--components-form-basemenu-fill-hover);
     }
   }
 

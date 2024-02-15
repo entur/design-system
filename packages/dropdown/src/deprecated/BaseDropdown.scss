@@ -13,7 +13,7 @@
 
 .eds-dropdown__input {
   &::placeholder {
-    color: t.$colors-blues-blue40;
+    color: var(--components-form-baseform-standard-text-label);
   }
 }
 
