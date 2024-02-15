@@ -470,6 +470,9 @@ export const MultiSelect = ({
                 hasSelectedItems,
             },
           )}
+          onClick={e => {
+            if (e.target === e.currentTarget) openMenu();
+          }}
         >
           {selectedItems.length < maxChips ? (
             <>

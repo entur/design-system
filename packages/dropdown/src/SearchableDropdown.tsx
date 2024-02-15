@@ -256,14 +256,15 @@ export const SearchableDropdown = ({
     itemToString,
     selectedItem: value,
     stateReducer,
-    onStateChange({ type, selectedItem: clickedItem }) {
+    onStateChange({ type, selectedItem: newSelectedItem }) {
       switch (type) {
         // @ts-expect-error This falltrough is wanted
         case useCombobox.stateChangeTypes.InputBlur:
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick:
-          onChange(clickedItem ?? null);
+          if (newSelectedItem === undefined) return;
+          onChange(newSelectedItem ?? null);
       }
     },
     // Accessibility

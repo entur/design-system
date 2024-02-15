@@ -32,6 +32,7 @@
 
     &__placeholder {
       color: t.$colors-blues-blue30;
+      height: t.$line-heights-small;
 
       .eds-contrast & {
         color: t.$colors-blues-blue40;
@@ -56,6 +57,7 @@
       padding: 1.375rem 0rem 0.25rem 1rem;
       font-family: inherit;
       line-height: t.$line-heights-small;
+      cursor: text;
 
       &--hidden {
         flex: 0;
@@ -77,6 +79,7 @@
       flex: 1;
       gap: 0.5rem;
       min-width: 0; // needed to avoid overflow in flex child
+      cursor: text;
 
       &--filled {
         padding: 1.25rem 0rem 0.25rem 1rem;

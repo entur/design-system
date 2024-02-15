@@ -128,14 +128,15 @@ export const Dropdown = ({
     items: normalizedItems,
     defaultHighlightedIndex: selectedItem ? undefined : 0,
     selectedItem,
-    onStateChange({ type, selectedItem: clickedItem }) {
+    onStateChange({ type, selectedItem: newSelectedItem }) {
       switch (type) {
         // @ts-expect-error This falltrough is wanted
         case useSelect.stateChangeTypes.ToggleButtonBlur:
           if (!selectOnBlur) break;
         case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
         case useSelect.stateChangeTypes.ItemClick: {
-          onChange?.(clickedItem !== undefined ? clickedItem : null);
+          if (newSelectedItem === undefined) return;
+          onChange?.(newSelectedItem ?? null);
         }
       }
     },
@@ -198,7 +199,7 @@ export const Dropdown = ({
           })}
         >
           {selectedItem?.label ?? (
-              <span
+              <div
                 className={classNames(
                   'eds-dropdown__selected-item__placeholder',
                   {
@@ -208,7 +209,7 @@ export const Dropdown = ({
                 )}
               >
                 {placeholder}
-              </span>
+              </div>
             ) ??
             ''}
         </div>
