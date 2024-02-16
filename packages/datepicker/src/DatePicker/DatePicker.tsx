@@ -102,21 +102,12 @@ export type DatePickerProps<DateType extends DateValue> = {
   navigationDescription?: string;
   /** Tvinger typen på onChange til den gitte typen.
    * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-   * DatePicker f.eks alltid skal returnere en ZonedDateTime.
+   * DatePicker alltid skal returnere f.eks ZonedDateTime.
    *
-   * @default undefined (onChange returnerer DateValue bassert på value, og om tid vises eller ikke)
+   * Som standard returnerer onChange DateValue basert på selectedDate,
+   * eller CalendarDate hvis selectedDate er 'null'.
    *
-   * Hvorfor er dette nødvendig?
-   * I utgangspunktet vil en DatePicker som initieres med 'null' som verdi og ikke viser tid returnere en CalendarDate.
-   * Dette er problematisk hvis du bruker datovelgeren sammen en TimePicker da
-   * denne ikke støtter dato uten tidspunkt (CalendarDate). Ved å da tvinge DatePicker til å returnere
-   * CalendarDateTime eller ZonedDateTime vil du kunne bruke den sammen med TimePicker.
-   *
-   * Hvorfor kan ikke dette gjøres automatisk?
-   * En DatePicker som initieres med 'null' som verdi gir ingen informasjon om hvilken type man ønsker å returnere.
-   * DatePicker støtter dog at du kan sende med en TypeScript-type, men TypeScript eksisterer ikke i runtime og
-   * kan derfor ikke brukes til å bestemme hvilken type som skal returneres. Det er derfor nødvendig å enten gi
-   * en initiell 'selectedDate' eller tvinge typen med denne prop-en.
+   * @default undefined
    */
   forcedReturnType?: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
   /** Ekstra klassenavn */

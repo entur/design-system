@@ -154,14 +154,16 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
           labelProps={parentLabelProps ?? labelProps}
           {...fieldProps}
           variant={
-            variant ?? state.validationState === 'invalid'
+            variant ??
+            (state.validationState === 'invalid'
               ? validationVariant
-              : undefined
+              : undefined)
           }
           feedback={
-            feedback ?? state.validationState === 'invalid'
+            feedback ??
+            (state.validationState === 'invalid'
               ? validationFeedback
-              : undefined
+              : undefined)
           }
           append={append}
           ariaAlertOnFeedback
