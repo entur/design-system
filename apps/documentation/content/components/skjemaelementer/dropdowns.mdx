@@ -11,6 +11,8 @@ tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny, gardinmeny
 import { Props, Link } from 'docz';
 import { Dropdown, SearchableDropdown, NativeDropdown } from '@entur/dropdown';
 import { SmallExpandableAlertBox } from '@entur/alert';
+import { ResetIcon } from '@entur/icons';
+import { IconButton } from '@entur/button';
 import { ExpandableText } from '@entur/expand';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
@@ -279,6 +281,35 @@ filtrering av de tilgjengelige valgene.
           fuzzyMatch(inputValue, item.label) > 0.5
         }
       />
+    );
+  }}
+</Playground>
+
+### Dropdown som kan tilbakestilles
+
+Hvis du øsker at brukeren kan fjerne valget sitt etter å ha gjort det kan du enten bruke prop-en `clearable` eller selv sende inn
+valgt verdien `null` til `selectedItem`-prop-en. `clearable` legger til en knapp i dropdownen som fjerner valgt element.
+Funksjonaliteten er lik for både vanlig og søkbar dropdown.
+
+<Playground
+  style={{ overflow: 'visible', alignItems: 'start', width: '50%' }}
+  defaultShowEditor
+  hideContrastOption 
+>
+  {() => {
+    const [selected, setSelected] = React.useState(null);
+    return (
+      <>
+      <span><IconButton onClick={()=>setSelected(null)}><ResetIcon />Tilbakestill</IconButton></span>
+      <Dropdown
+        label="Velg by"
+        items={cities}
+        selectedItem={selected}
+        onChange={setSelected}
+        clearable
+        labelClearSelectedItem="fjern valgt by"
+      />
+      </>
     );
   }}
 </Playground>
