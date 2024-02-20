@@ -3,10 +3,7 @@ import './index.scss';
 
 warnAboutMissingStyles('dropdown', 'form', 'a11y', 'chip');
 
-export type {
-  NormalizedDropdownItemType,
-  DropdownItemType,
-} from './useNormalizedItems';
+export type { NormalizedDropdownItemType, DropdownItemType } from './types';
 
 export * from './deprecated';
 

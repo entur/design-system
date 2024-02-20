@@ -6,25 +6,27 @@ import { BaseFormControl, VariantType } from '@entur/form';
 
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
-
-import { NormalizedDropdownItemType } from './useNormalizedItems';
-import {
-  PotentiallyAsyncDropdownItemType,
-  useResolvedItems,
-} from './useResolvedItems';
+import { useResolvedItems } from './useResolvedItems';
 import { itemToString } from './utils';
+
+import {
+  NormalizedDropdownItemType,
+  PotentiallyAsyncDropdownItemType,
+} from './types';
 
 import './Dropdown.scss';
 
-export type DropdownProps = {
+export type DropdownProps<ValueType> = {
   /** Tilgjengelige valg i dropdown-en */
-  items: PotentiallyAsyncDropdownItemType;
+  items: PotentiallyAsyncDropdownItemType<ValueType>;
   /** Valgt verdi. Bruk null for ingen verdi. */
-  selectedItem: NormalizedDropdownItemType | null;
+  selectedItem: NormalizedDropdownItemType<ValueType> | null;
   /** Callback ved valg som skal oppdatere selectedItem */
   onChange?: (
-    selectedItem: NormalizedDropdownItemType | null,
-  ) => void | Dispatch<SetStateAction<NormalizedDropdownItemType | null>>;
+    selectedItem: NormalizedDropdownItemType<ValueType> | null,
+  ) => void | Dispatch<
+    SetStateAction<NormalizedDropdownItemType<ValueType> | null>
+  >;
   /** Beskrivende tekst som forklarer feltet */
   label: string;
   /** Placeholder-tekst når ingenting er satt */
@@ -88,7 +90,7 @@ export type DropdownProps = {
   ariaLabelSelectedItem?: string;
 };
 
-export const Dropdown = ({
+export const Dropdown = <ValueType extends NonNullable<any>>({
   ariaLabelChosenSingular,
   ariaLabelCloseList,
   ariaLabelOpenList,
@@ -113,7 +115,7 @@ export const Dropdown = ({
   style,
   variant = 'info',
   ...rest
-}: DropdownProps) => {
+}: DropdownProps<ValueType>) => {
   const { items: normalizedItems, loading } = useResolvedItems(initialItems);
   const isFilled = selectedItem !== null || placeholder !== undefined;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BaseFormControl } from '@entur/form';
-import { NormalizedDropdownItemType } from '../useNormalizedItems';
 import { DropdownListDeprecated } from './DropdownList';
 import { DropdownDeprecatedToggleButton } from './DropdownToggleButton';
 import { DropdownDeprecatedLoadingDots } from './DropdownLoadingDots';
@@ -8,11 +7,12 @@ import { CloseSmallIcon } from '@entur/icons';
 import './BaseDropdown.scss';
 import { useDownshift } from './DownshiftProvider';
 import { space } from '@entur/tokens';
+import { NormalizedDropdownItemDeprecatedType } from './types';
 
 type BaseDropdownDeprecatedProps = {
   className?: string;
   disabled?: boolean;
-  items: NormalizedDropdownItemType[];
+  items: NormalizedDropdownItemDeprecatedType[];
   loading?: boolean;
   loadingText?: string;
   placeholder?: string;
