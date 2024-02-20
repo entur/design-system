@@ -159,6 +159,10 @@ export const DatePicker = <DateType extends DateValue>({
         convertValueToType({
           value,
           type: forcedReturnType,
+          timezone:
+            value !== null && 'timezone' in value
+              ? (value.timezone as string)
+              : undefined,
         }) as MappedDateValue<DateType> | null,
       );
     }
