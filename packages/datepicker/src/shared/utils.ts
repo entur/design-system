@@ -199,12 +199,21 @@ export const convertValueToType = ({
 
 export const modulo = (a: number, b: number) => ((a % b) + b) % b;
 
-export const focusLastSegment = (ref: React.RefObject<HTMLDivElement>) => {
+export const focusSegment = (
+  ref: React.RefObject<HTMLDivElement>,
+  segment: 'first' | 'last',
+) => {
   if (ref.current) {
     const segments = ref.current.querySelectorAll(
       '.eds-date-and-time-field__segment',
     );
+    const firstSegment = segments[0] as HTMLElement;
     const lastSegment = segments[segments.length - 1] as HTMLElement;
-    lastSegment.focus();
+    switch (segment) {
+      case 'first':
+        return firstSegment.focus();
+      case 'last':
+        return lastSegment.focus();
+    }
   }
 };

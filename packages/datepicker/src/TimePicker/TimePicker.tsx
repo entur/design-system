@@ -17,7 +17,7 @@ import { useRandomId, mergeRefs } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
-import { convertValueToType, focusLastSegment, modulo } from '../shared/utils';
+import { convertValueToType, focusSegment, modulo } from '../shared/utils';
 
 import './TimePicker.scss';
 
@@ -111,6 +111,7 @@ export const TimePicker = <TimeType extends TimeValue>({
 }: TimePickerProps<TimeType>) => {
   let { locale } = useLocale();
   if (customLocale) locale = customLocale;
+  const timePickerId = useRandomId('eds-timepicker');
 
   const timeZone =
     forcedTimeZone ??
@@ -191,7 +192,10 @@ export const TimePicker = <TimeType extends TimeValue>({
           })}
           labelId={id}
           label={label}
-          labelProps={{ ...labelProps }}
+          labelProps={{
+            ...labelProps,
+            'aria-describedby': timePickerId + 'description',
+          }}
           ref={mergeRefs(timeFieldRef, inputRef)}
           disabled={disabled}
           disableLabelAnimation
@@ -199,12 +203,15 @@ export const TimePicker = <TimeType extends TimeValue>({
           {...fieldProps}
           variant={variant}
           feedback={feedback}
+          ariaAlertOnFeedback
+          aria-describedby={timePickerId + 'description'}
           prepend={
             <TimePickerArrowButton
               direction="left"
               disabled={disabled}
               aria-label={leftArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('subtract')}
+              onFocus={() => focusSegment(timeFieldRef, 'first')}
             />
           }
           append={
@@ -213,14 +220,30 @@ export const TimePicker = <TimeType extends TimeValue>({
               disabled={disabled}
               aria-label={rightArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('add')}
-              onFocus={() => focusLastSegment(timeFieldRef)}
+              onFocus={() => focusSegment(timeFieldRef, 'last')}
             />
           }
         >
           {state.segments.map((segment, i) => (
-            <FieldSegment segment={segment} state={state} key={i} />
+            <FieldSegment
+              segment={segment}
+              state={state}
+              key={i}
+              aria-describedby={timePickerId + 'description'}
+            />
           ))}
         </BaseFormControl>
+        <VisuallyHidden id={timePickerId + 'description'}>
+          {selectedTime !== null
+            ? 'valgt tid: ' +
+              selectedTime.hour.toString().padStart(2, '0') +
+              ':' +
+              selectedTime.minute.toString().padStart(2, '0') +
+              (showSeconds
+                ? ':' + selectedTime.second.toString().padStart(2, '0')
+                : '')
+            : ''}
+        </VisuallyHidden>
       </div>
     </I18nProvider>
   );

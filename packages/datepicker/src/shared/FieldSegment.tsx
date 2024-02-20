@@ -8,9 +8,10 @@ import './FieldSegment.scss';
 type TimeSegmentProps = {
   segment: DateSegment;
   state: DateFieldState;
+  'aria-describedby'?: string;
 };
 
-export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
+export const FieldSegment = ({ segment, state, ...rest }: TimeSegmentProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { segmentProps } = useDateSegment(segment, state, ref);
 
@@ -23,6 +24,7 @@ export const FieldSegment = ({ segment, state }: TimeSegmentProps) => {
         'eds-date-and-time-field__segment--dot-separator': segment.text === '.',
       })}
       tabIndex={state.isDisabled ? -1 : segmentProps.tabIndex}
+      {...rest}
     >
       {segment.text}
     </div>
