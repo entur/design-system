@@ -1,31 +1,23 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-timepicker__wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
   width: fit-content;
-  height: fit-content;
 
   .eds-timepicker {
     justify-content: center;
-    padding: t.$space-none t.$space-extra-large3;
 
     .eds-input-group__label,
     .eds-input-group__label--filled {
       margin-left: t.$space-none !important;
     }
 
+    &--disabled {
+      padding-inline: t.$space-medium;
+    }
+
     &__arrowbutton {
-      &--left {
-        position: absolute;
-        left: 0.35rem;
-        z-index: 1;
-      }
-      &--right {
-        position: absolute;
-        right: 0.4rem;
-      }
+      margin: 0 t.$space-extra-small2;
+
       &--disabled {
         opacity: 0.5;
         pointer-events: none;
@@ -45,18 +37,13 @@
       }
     }
 
-    .eds-form-control__append--tooltip {
-      margin-top: 0.75rem;
-      margin-right: -0.25rem;
+    .eds-form-control__prepend,
+    .eds-form-control__append {
+      margin: 0;
     }
   }
 
   .eds-icon-button--disabled__wrapper {
     display: none;
-  }
-
-  .eds-feedback-text {
-    position: absolute;
-    top: t.$space-extra-large4;
   }
 }

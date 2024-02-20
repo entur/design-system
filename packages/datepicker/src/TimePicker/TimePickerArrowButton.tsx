@@ -6,17 +6,19 @@ import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 
 type TimePickerArrowButtonProps = {
   direction: 'left' | 'right';
-} & React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
+  disabled?: boolean;
+  'aria-label': string;
+  onClick?: () => void;
+  onFocus?: () => void;
+};
 
-export const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
+export const TimePickerArrowButton = ({
   direction,
   onClick,
   disabled,
   'aria-label': ariaLabel,
-}) => {
+  ...rest
+}: TimePickerArrowButtonProps) => {
   return (
     <IconButton
       className={classNames(
@@ -29,6 +31,7 @@ export const TimePickerArrowButton: React.FC<TimePickerArrowButtonProps> = ({
       onClick={onClick}
       aria-label={ariaLabel}
       disabled={disabled}
+      {...rest}
     >
       {direction === 'left' ? <LeftArrowIcon /> : <RightArrowIcon />}
     </IconButton>

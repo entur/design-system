@@ -1,12 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {
-  getLocalTimeZone,
-  now,
-  Time,
-  ZonedDateTime,
-} from '@internationalized/date';
+import { now, Time, ZonedDateTime } from '@internationalized/date';
 import { toHaveNoViolations, axe } from 'jest-axe';
 import { SimpleTimePicker, TimePicker } from '../TimePicker';
 
@@ -111,8 +106,8 @@ describe('TimePicker', () => {
     const newHour = clickResult[0][0].hour;
     const newMinute = clickResult[0][0].minute;
 
-    expect(newHour === 20).toBeTruthy();
-    expect(newMinute === 45).toBeTruthy();
+    expect(newHour).toEqual(20);
+    expect(newMinute).toEqual(30);
   });
 
   test('adds custom minutes on add time button click', async () => {
@@ -125,7 +120,7 @@ describe('TimePicker', () => {
         label="test"
         selectedTime={currentTime}
         onChange={spy}
-        minuteIncrementForArrowButtons={500}
+        minuteIncrementForArrowButtons={60 * 8}
         locale="en-GB"
       />,
     );
@@ -139,14 +134,15 @@ describe('TimePicker', () => {
     const newHour = clickResult[0][0].hour;
     const newMinute = clickResult[0][0].minute;
 
-    expect(newHour === 4).toBeTruthy();
-    expect(newMinute === 35).toBeTruthy();
+    expect(newHour).toEqual(4);
+    expect(newMinute).toEqual(0);
   });
 
-  test('sets time to current time on add time button click when selected time is undefined', async () => {
+  test('sets time to current time on add time button click when selected time is null', async () => {
     const user = userEvent.setup();
     const spy = jest.fn();
-    const currentTime = now(getLocalTimeZone());
+    // default returned timezone is Europe/Oslo
+    const currentTime = now('Europe/Oslo');
     const minuteIncrement = 15;
 
     const { container } = render(
@@ -169,9 +165,7 @@ describe('TimePicker', () => {
     const newMinute = clickResult[0][0].minute;
 
     expect(newHour).toEqual(currentTime.hour);
-    expect(newMinute).toEqual(
-      Math.floor(currentTime.minute / minuteIncrement) * minuteIncrement,
-    );
+    expect(newMinute).toEqual(currentTime.minute);
   });
 
   test("doesn't violate basic accessibility requirements", async () => {

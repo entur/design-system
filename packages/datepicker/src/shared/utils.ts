@@ -9,6 +9,9 @@ import {
   toCalendarDateTime,
   toCalendarDate,
   toZoned,
+  toTime,
+  today,
+  now,
 } from '@internationalized/date';
 import { TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
@@ -163,22 +166,54 @@ export const lastMillisecondOfDay = (dateValue: DateValue) =>
 export const convertValueToType = ({
   value,
   type,
+  timezone = 'Europe/Oslo',
 }: {
-  value: DateValue | null;
-  type: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
+  value: DateValue | TimeValue | null;
+  type: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime' | 'Time';
+  timezone?: string;
 }) => {
   if (value === null) return null;
   switch (type) {
     case 'CalendarDate':
+      if (!('day' in value)) return today(timezone);
       return toCalendarDate(value);
 
     case 'CalendarDateTime':
+      if (!('day' in value)) return toCalendarDateTime(today(timezone), value);
       return toCalendarDateTime(value);
 
     case 'ZonedDateTime':
-      return toZoned(value, 'Europe/Oslo');
+      if (!('day' in value))
+        return toZoned(toCalendarDateTime(today(timezone), value), timezone);
+      return toZoned(value, timezone);
+
+    case 'Time':
+      if (!('hour' in value)) return toTime(now(timezone));
+      if (!('day' in value)) return value;
+      return toTime(value);
 
     default:
       return value;
+  }
+};
+
+export const modulo = (a: number, b: number) => ((a % b) + b) % b;
+
+export const focusSegment = (
+  ref: React.RefObject<HTMLDivElement>,
+  segment: 'first' | 'last',
+) => {
+  if (ref.current) {
+    const segments = ref.current.querySelectorAll(
+      '.eds-date-and-time-field__segment',
+    );
+    const firstSegment = segments[0] as HTMLElement;
+    const lastSegment = segments[segments.length - 1] as HTMLElement;
+    switch (segment) {
+      case 'first':
+        return firstSegment.focus();
+      case 'last':
+        return lastSegment.focus();
+    }
   }
 };
