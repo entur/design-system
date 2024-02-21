@@ -20,7 +20,7 @@ export type IconButtonBaseProps = {
    */
   as?: React.ElementType;
   /**Størrelsen på knappen
-   * @default "medium"
+   * @default 'medium'
    */
   size?: 'small' | 'medium';
   /** Om knappen er opptatt, f.eks. med å lagre eller å kjøpe
@@ -46,7 +46,7 @@ export const IconButton: IconButtonComponent = React.forwardRef(
       children,
       className,
       disabled = false,
-      size,
+      size = 'medium',
       as,
       loading,
       ...rest
