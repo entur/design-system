@@ -21,10 +21,6 @@
     width: 1.5rem;
     padding: 0;
   }
-  &--size-medium {
-    height: 2rem;
-    width: 2rem;
-  }
   &:hover {
     background-color: t.$colors-blues-blue70;
     .eds-contrast & {
