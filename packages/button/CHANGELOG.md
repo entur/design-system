@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.10](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.2.9...@entur/button@3.2.10) (2024-02-22)
+
+### Bug Fixes
+
+- **icon button:** fix incorrect size for size='medium' ([2823c56](https://bitbucket.org/enturas/design-system/commits/2823c5687611e91b42a865ee741a5598a9ce349a))
+
 ## [3.2.9](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.2.8...@entur/button@3.2.9) (2024-02-12)
 
 **Note:** Version bump only for package @entur/button

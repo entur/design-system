@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.7.29",
+  "version": "1.7.30",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@entur/a11y": "^0.2.75",
-    "@entur/button": "^3.2.9",
+    "@entur/button": "^3.2.10",
     "@entur/icons": "^6.15.0",
     "@entur/layout": "^2.1.56",
     "@entur/tokens": "^3.12.0",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.1.5...@entur/datepicker@9.1.6) (2024-02-22)
+
+### Bug Fixes
+
+- **datepicker:** fix feedback and variant prop not working correctly ([ca56175](https://bitbucket.org/enturas/design-system/commits/ca561754a9398472416344f7c0206e1782a749e6))
+- **timepicker:** fix feedback text not displayed correctly ([517309e](https://bitbucket.org/enturas/design-system/commits/517309e86add2eef7fe69fb42669de27287bc82c))
+- **timepicker:** improve screen reader accesibility ([b148514](https://bitbucket.org/enturas/design-system/commits/b148514101e00e55f38f1644c9a31515ef5ad002))
+
 ## [9.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.1.4...@entur/datepicker@9.1.5) (2024-02-12)
 
 **Note:** Version bump only for package @entur/datepicker
