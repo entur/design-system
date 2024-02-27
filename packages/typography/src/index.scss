@@ -7,6 +7,8 @@
 
 @import '~normalize-scss';
 
+[data-color-mode='light'],
+[data-color-mode='dark'],
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
   --primary-background-color: var(--basecolors-frame-default);

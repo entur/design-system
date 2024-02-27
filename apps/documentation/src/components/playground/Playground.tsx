@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
 import classNames from 'classnames';
@@ -33,6 +33,7 @@ type PlaygroundProps = {
   props?: AdvancedProps[];
   style?: React.CSSProperties;
   defaultContrast?: boolean;
+  defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
   hideContrastOption?: boolean;
   // These props are injected by MDX
@@ -47,11 +48,14 @@ export const Playground: React.FC<PlaygroundProps> = ({
   props,
   style,
   defaultContrast = false,
+  defaultDarkMode = false,
   defaultShowEditor = false,
   hideContrastOption = false,
 }) => {
   const [isContrast, setContrast] = useState(defaultContrast);
+  const [darkMode, setDarkMode] = useState(defaultDarkMode);
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
+  const playgroundRef = useRef<HTMLDivElement>(null);
 
   const {
     codeWithUpdatedProps,
@@ -60,6 +64,18 @@ export const Playground: React.FC<PlaygroundProps> = ({
     updatePropState,
     componentName,
   } = useAdvancedPlaygroundCode(codeFromMDXInjection, props);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    const playground = playgroundRef.current;
+    if (playground) {
+      playground.setAttribute('data-color-mode', darkMode ? 'light' : 'dark');
+    }
+  };
+
+  const toggleContrast = () => {
+    setContrast(!isContrast);
+  };
 
   const Element = isContrast ? Contrast : 'div';
 
@@ -84,11 +100,15 @@ export const Playground: React.FC<PlaygroundProps> = ({
       <div className="playground__header">
         {!hideContrastOption && (
           <div className="playground__contrast-switch">
-            <Label as="span">Kontrast</Label>
-            <Switch
-              checked={isContrast}
-              onChange={() => setContrast(prev => !prev)}
-            />
+            <Label>Velg color-mode:</Label>
+            <div className="playground__contrast-switch-container">
+              <Switch checked={isContrast} onChange={toggleContrast}>
+                Kontrast
+              </Switch>
+              <Switch checked={darkMode} onChange={toggleDarkMode}>
+                Dark
+              </Switch>
+            </div>
           </div>
         )}
         {!defaultShowEditor && (
@@ -112,6 +132,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
           className={classNames('playground__live-preview-container', {
             'playground__live-preview-container--code-closed': !isShowingEditor,
           })}
+          ref={playgroundRef}
         >
           <LivePreview
             className="playground__live-preview"
