@@ -2,6 +2,8 @@ import React from 'react';
 
 import { UnmountClosed } from 'react-collapse';
 
+import './BaseExpand.scss';
+
 type BaseExpandProps = {
   /** Innholdet som skal være expandable */
   children: React.ReactNode;

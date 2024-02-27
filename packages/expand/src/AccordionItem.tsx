@@ -14,6 +14,7 @@ export type AccordionItemProps = {
   defaultOpen?: boolean;
   /** Styling som sendes til innholdet av AccordionItem */
   contentStyle?: CSSProperties;
+  disableAnimation?: boolean;
   [key: string]: any;
 };
 export const AccordionItem: React.FC<AccordionItemProps> = ({

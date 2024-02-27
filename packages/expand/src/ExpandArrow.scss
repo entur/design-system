@@ -6,3 +6,10 @@
     transform: rotate(-180deg);
   }
 }
+
+.eds-expandable-text,
+.eds-expandable-panel {
+  &--disable-animation .eds-expandable-arrow {
+    transition: none;
+  }
+}

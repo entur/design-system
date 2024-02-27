@@ -1,4 +1,6 @@
 import React, { CSSProperties } from 'react';
+import classNames from 'classnames';
+
 import { useRandomId } from '@entur/utils';
 import { ExpandableTextButton } from './ExpandableTextButton';
 import { BaseExpand } from './BaseExpand';
@@ -10,6 +12,7 @@ import {
   Paragraph,
   SubParagraph,
 } from '@entur/typography';
+
 import './ExpandableText.scss';
 
 export type ExpandableTextProps = {
@@ -31,6 +34,7 @@ export type ExpandableTextProps = {
    * @default "Heading5"
    */
   titleElement?: 'Heading5' | 'Paragraph' | 'SubParagraph';
+  disableAnimation?: boolean;
   [key: string]: any;
 };
 
@@ -40,6 +44,8 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   defaultOpen = false,
   contentStyle,
   titleElement = 'Heading5',
+  disableAnimation,
+  className,
   ...rest
 }) => {
   const randomId = useRandomId('eds-expandable-text');
@@ -51,7 +57,11 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
   );
 
   return (
-    <>
+    <div
+      className={classNames('eds-expandable-text', className, {
+        'eds-expandable-text--disable-animation': disableAnimation,
+      })}
+    >
       <ExpandableTextButton
         open={isOpen}
         onToggle={() => setOpen(prev => !prev)}
@@ -70,7 +80,7 @@ export const ExpandableText: React.FC<ExpandableTextProps> = ({
       >
         {children}
       </BaseExpand>
-    </>
+    </div>
   );
 };
 

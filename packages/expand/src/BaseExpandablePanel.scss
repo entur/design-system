@@ -10,61 +10,66 @@
   &:focus-within {
     z-index: 2;
   }
-}
 
-.eds-expandable-panel__grid {
-  display: grid;
-  grid-template-columns: auto 2rem;
-}
-
-.eds-expandable-panel__trigger {
-  appearance: none;
-  background: t.$colors-greys-grey70;
-  border: none;
-  border-radius: t.$border-radiuses-medium;
-  color: inherit;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0;
-  padding: t.$space-medium t.$space-large t.$space-medium t.$space-large;
-  text-align: left;
-  user-select: none;
-  width: 100%;
-  word-break: break-word;
-
-  .eds-contrast & {
-    background: t.$colors-blues-blue20;
-    border-color: t.$colors-brand-blue;
+  &__grid {
+    display: grid;
+    grid-template-columns: auto 2rem;
   }
 
-  &:hover {
-    background: t.$colors-greys-grey80;
+  &__trigger {
+    appearance: none;
+    background: t.$colors-greys-grey70;
+    border: none;
+    border-radius: t.$border-radiuses-medium;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: t.$space-medium t.$space-large t.$space-medium t.$space-large;
+    text-align: left;
+    user-select: none;
+    width: 100%;
+    word-break: break-word;
+
     .eds-contrast & {
-      background: t.$colors-blues-blue30;
+      background: t.$colors-blues-blue20;
+      border-color: t.$colors-brand-blue;
+    }
+
+    &:hover {
+      background: t.$colors-greys-grey80;
+      .eds-contrast & {
+        background: t.$colors-blues-blue30;
+      }
+    }
+    &:focus {
+      outline: none;
+      box-shadow: t.$shadows-focus;
+      .eds-contrast & {
+        box-shadow: t.$shadows-focus-contrast;
+      }
     }
   }
-  &:focus {
-    outline: none;
-    box-shadow: t.$shadows-focus;
-    .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__content {
+    overflow: auto;
+    padding: t.$space-default t.$space-default t.$space-default t.$space-large;
+  }
+
+  // Used to override react-collapse's default transition
+  .ReactCollapse--collapse {
+    transition: height t.$timings-slow ease-out;
+  }
+  &--disable-animation {
+    .ReactCollapse--collapse {
+      transition: none;
     }
   }
-}
-
-.eds-expandable-panel__icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.eds-expandable-panel__content {
-  overflow: auto;
-  padding: t.$space-default t.$space-default t.$space-default t.$space-large;
-}
-
-// Used to override react-collapse's default transition
-.ReactCollapse--collapse {
-  transition: height t.$timings-slow ease-out;
 }
