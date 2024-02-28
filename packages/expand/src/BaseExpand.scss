@@ -1,0 +1,6 @@
+@use '~@entur/tokens/dist/styles.scss' as t;
+
+// Used to override react-collapse's default transition
+.ReactCollapse--collapse {
+  transition: height t.$timings-slow ease-out;
+}

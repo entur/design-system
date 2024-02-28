@@ -1,10 +1,11 @@
 import React, { CSSProperties } from 'react';
 import classNames from 'classnames';
+
 import { Heading5 } from '@entur/typography';
 import { BaseExpand } from './BaseExpand';
+import { ExpandArrow } from './ExpandArrow';
 
 import './BaseExpandablePanel.scss';
-import { ExpandArrow } from './ExpandArrow';
 
 type BaseExpandablePanelProps = {
   /** Teksten som skal stå i panelet */
@@ -19,6 +20,7 @@ type BaseExpandablePanelProps = {
   onToggle: () => void;
   /** Styling som sendes til innholdet av BaseExpandablePanel */
   contentStyle?: CSSProperties;
+  disableAnimation?: boolean;
   [key: string]: any;
 };
 export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
@@ -29,10 +31,15 @@ export const BaseExpandablePanel: React.FC<BaseExpandablePanelProps> = ({
   open,
   onToggle,
   contentStyle,
+  disableAnimation,
   ...rest
 }) => {
   return (
-    <div className={classNames('eds-expandable-panel', className)}>
+    <div
+      className={classNames('eds-expandable-panel', className, {
+        'eds-expandable-panel--disable-animation': disableAnimation,
+      })}
+    >
       <button
         type="button"
         className="eds-expandable-panel__trigger"
