@@ -2,3 +2,15 @@
 :root {
   --eds-expand: 1;
 }
+
+@media (prefers-reduced-motion) {
+  // If you know a way to not use !important here
+  // please update to that solution instead
+  .ReactCollapse--collapse {
+    transition: none !important;
+  }
+
+  .eds-expandable-arrow {
+    transition: none !important;
+  }
+}
