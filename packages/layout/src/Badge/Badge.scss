@@ -132,9 +132,9 @@
       display: block;
       text-transform: uppercase;
       border-radius: t.$border-radiuses-medium;
-      line-height: t.$line-heights-medium;
-      padding: 0 t.$space-extra-small;
-      height: 1.25rem;
+      padding: 0.125rem t.$space-extra-small 0;
+      line-height: t.$line-heights-small;
+      height: unset;
       border: t.$border-widths-small solid t.$colors-brand-blue;
       .eds-contrast & {
         border-color: transparent;
