@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 type ToastId = string;
 
-type ToastVariants = 'success' | 'info';
+export type ToastVariants = 'success' | 'info';
 
 type ToastType = {
   title?: string;
@@ -15,14 +15,16 @@ type ToastType = {
 };
 
 type ToastContextType = {
-  addToast: (payload: AddToastPayload) => void;
+  addToast: (payload: AddToastPayload | string) => void;
   removeToast: (id: ToastId) => void;
   toasts: ToastType[];
 };
 
-type AddToastPayload =
-  | { title?: string; content: React.ReactNode; variant?: ToastVariants }
-  | string;
+export type AddToastPayload = {
+  title?: string;
+  content: React.ReactNode;
+  variant?: ToastVariants;
+};
 
 type ToastAction =
   | { type: 'ADD_TOAST'; payload: ToastType }
@@ -53,7 +55,10 @@ const toastReducer = (
 
 const createUniqueId = () => Math.random().toString().substring(2);
 
-const createToast = (toast: AddToastPayload, id: ToastId): ToastType => {
+const createToast = (
+  toast: AddToastPayload | string,
+  id: ToastId,
+): ToastType => {
   if (typeof toast === 'string') {
     return { id, content: toast, variant: 'success', isBeingRemoved: false };
   } else {
@@ -116,7 +121,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   );
 
   const addToast = React.useCallback(
-    (toast: AddToastPayload) => {
+    (toast: AddToastPayload | string) => {
       const id = createUniqueId();
       const payload = createToast(toast, id);
       dispatch({ type: 'ADD_TOAST', payload });
@@ -184,7 +189,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 };
 
 export const useToast: () => {
-  addToast: (payload: AddToastPayload) => void;
+  addToast: (payload: AddToastPayload | string) => void;
 } = () => {
   const context = React.useContext(ToastContext);
   if (!context) {
