@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 import { useSelect } from 'downshift';
 import classNames from 'classnames';
 
@@ -117,6 +117,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   ...rest
 }: DropdownProps<ValueType>) => {
   const { items: normalizedItems, loading } = useResolvedItems(initialItems);
+  const toggleButtonRef = useRef<HTMLDivElement>(null);
   const isFilled = selectedItem !== null || placeholder !== undefined;
 
   const {
@@ -136,6 +137,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         case useSelect.stateChangeTypes.ToggleButtonBlur:
           if (!selectOnBlur) break;
         case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
+        case useSelect.stateChangeTypes.ToggleButtonKeyDownSpaceButton:
         case useSelect.stateChangeTypes.ItemClick: {
           if (newSelectedItem === undefined) return;
           onChange?.(newSelectedItem ?? null);
@@ -165,6 +167,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
             loadingText={loadingText}
             onClear={() => {
               onChange?.(null);
+              toggleButtonRef.current?.focus();
             }}
             disabled={readOnly || disabled}
             selectedItems={[selectedItem]}
@@ -198,6 +201,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
                 }
               }
             },
+            ref: toggleButtonRef,
           })}
         >
           {selectedItem?.label ?? (
