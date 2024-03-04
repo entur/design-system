@@ -14,7 +14,6 @@ import {
   getA11ySelectionMessage,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
-  isVoiceOverClick,
   itemToString,
   lowerCaseFilterTest,
   noFilter,
@@ -330,7 +329,10 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
               !showSelectedItem,
           })}
           aria-hidden="true"
-          onClick={() => inputRef.current?.focus()}
+          onClick={() => {
+            inputRef.current?.focus();
+            openMenu();
+          }}
         >
           {showSelectedItem ? selectedItem?.label : ''}
         </span>
@@ -341,9 +343,6 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
           disabled={readOnly || disabled}
           placeholder={selectedItem?.label ?? placeholder}
           {...getInputProps({
-            onClick: (e: React.MouseEvent) => {
-              if (!isOpen && isVoiceOverClick(e)) openMenu();
-            },
             onBlur: () => {
               if (selectedItem !== null) setShowSelectedItem(true);
             },
@@ -351,13 +350,8 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
               setShowSelectedItem(false);
             },
             onKeyDown: e => {
-              if (selectOnTab && isOpen && e.key === 'Tab') {
-                const highlitedItem = listItems[highlightedIndex];
-                if (highlitedItem) {
-                  // we don't want to clear selection with tab
-                  onChange?.(highlitedItem);
-                }
-              }
+              if (selectOnTab && isOpen && e.key === 'Tab')
+                onChange?.(listItems[highlightedIndex]);
             },
             ref: inputRef,
           })}

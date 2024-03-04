@@ -13,7 +13,7 @@ export const DropdownDeprecatedToggleButton: () => JSX.Element = () => {
           'eds-dropdown__toggle-button--open': isOpen,
         }),
       })}
-      tabIndex="-1"
+      tabIndex={-1}
       type="button"
     >
       <DownArrowIcon />
