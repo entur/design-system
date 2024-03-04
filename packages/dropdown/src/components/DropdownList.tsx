@@ -63,23 +63,31 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     (listItems.length === 0 ||
       (listItems?.length === 1 &&
         listItems?.[0]?.value === selectAllItem?.value));
-  const isItemSelected = (item: NormalizedDropdownItemType<ValueType>) =>
+  const isItemSelected = (
+    item: NormalizedDropdownItemType<ValueType | string>,
+  ) =>
     selectedItems.some(
       selectedItem =>
         selectedItem?.value === item?.value &&
         selectedItem?.label === item?.label,
     );
 
-  const ariaLabelSelectAll = () => {
+  const ariaValuesSelectAll = () => {
     switch (selectAllCheckboxState?.()) {
       case 'indeterminate': {
-        return `${selectAllItem?.label}, delvis valgt`;
+        return {
+          label: `${selectAllItem?.label}, delvis valgt`,
+          selected: false,
+        };
       }
       case true: {
-        return `${selectAllItem?.label}, ${ariaLabelChosenSingular}`;
+        return {
+          label: `${selectAllItem?.label}, ${ariaLabelChosenSingular}`,
+          selected: true,
+        };
       }
       default: {
-        return `${selectAllItem?.label}`;
+        return { label: `${selectAllItem?.label}`, selected: false };
       }
     }
   };
@@ -97,7 +105,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
       />
       <span
         className="eds-dropdown__list__item__text"
-        aria-label={ariaLabelSelectAll()}
+        aria-label={ariaValuesSelectAll().label}
       >
         {selectAllItem?.label}
       </span>
@@ -144,7 +152,9 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
-      {...getMenuProps()}
+      {...getMenuProps({
+        'aria-multiselectable': isMultiselect,
+      })}
       className="eds-dropdown__list"
       style={{
         display: isOpen ? 'inline-block' : 'none',
@@ -166,8 +176,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                 'eds-dropdown__list__item--highlighted':
                   highlightedIndex === index,
                 'eds-dropdown__list__item--selected':
-                  !isMultiselect &&
-                  isItemSelected(item as NormalizedDropdownItemType<ValueType>),
+                  !isMultiselect && isItemSelected(item),
               })}
               {...getItemProps({
                 key: item?.label + item?.value,
@@ -176,6 +185,9 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                 // This does, however, not cause any functional issues.
                 item,
                 index,
+                'aria-selected': itemIsSelectAll
+                  ? ariaValuesSelectAll().selected
+                  : isItemSelected(item),
               })}
             >
               {itemIsSelectAll
