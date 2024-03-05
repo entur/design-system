@@ -38,8 +38,17 @@ export type CalendarProps = {
    *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
    *  @default undefined
    *  @example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''
+   *
+   *  OBS: hvis stylingen er meningsbærende bør du bruke ariaLabelForDate i tillegg for å beskrive
+   *  meningen til skjermlesere o.l.
    */
   classNameForDate?: (date: CalendarDate) => string;
+  /** Legger til teksten som returneres på datoen i kalenderen sin aria-label.
+   *  Bør brukes sammen med classNameForDate hvis styling-endringene gjort der er meningsbærende.
+   *  @default undefined
+   *  @example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''
+   */
+  ariaLabelForDate?: (date: CalendarDate) => string;
   [key: string]: any;
 };
 
@@ -58,6 +67,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         return;
       },
       classNameForDate,
+      ariaLabelForDate,
       ...rest
     },
     ref,
@@ -119,6 +129,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             navigationDescription={navigationDescription}
             onSelectedCellClick={onSelectedCellClick}
             classNameForDate={classNameForDate}
+            ariaLabelForDate={ariaLabelForDate}
           />
         </div>
       </ConditionalWrapper>
