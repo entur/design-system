@@ -15,6 +15,7 @@ type CalendarGridProps = {
   navigationDescription?: string;
   onSelectedCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
+  ariaLabelForDate?: (date: CalendarDate) => string;
 };
 
 export const CalendarGrid = ({
@@ -24,6 +25,7 @@ export const CalendarGrid = ({
     return;
   },
   classNameForDate,
+  ariaLabelForDate,
   ...rest
 }: CalendarGridProps) => {
   const calendarGridId = useRandomId('eds-calendar');
@@ -81,6 +83,7 @@ export const CalendarGrid = ({
                       aria-describedby={calendarGridId + 'description'}
                       onSelectedCellClick={onSelectedCellClick}
                       classNameForDate={classNameForDate}
+                      ariaLabelForDate={ariaLabelForDate}
                     />
                   ) : (
                     <td key={i} />
