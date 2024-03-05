@@ -14,6 +14,7 @@ type CalendarCellProps = {
   state: CalendarState;
   date: CalendarDate;
   onSelectedCellClick?: () => void;
+  classNameForDate?: (date: CalendarDate) => string;
 };
 
 export const CalendarCell = ({
@@ -22,6 +23,7 @@ export const CalendarCell = ({
   onSelectedCellClick = () => {
     return;
   },
+  classNameForDate,
   ...rest
 }: CalendarCellProps) => {
   const cellRef = useRef(null);
@@ -42,6 +44,7 @@ export const CalendarCell = ({
         ref={cellRef}
         hidden={isOutsideVisibleRange}
         className={classNames('eds-datepicker__calendar__grid__cell', {
+          [classNameForDate?.(date) ?? '']: !isOutsideVisibleRange,
           'eds-datepicker__calendar__grid__cell--selected': isSelected,
           'eds-datepicker__calendar__grid__cell--disabled':
             isDisabled || isUnavailable,
