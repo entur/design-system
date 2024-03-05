@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import { useCalendar } from '@react-aria/calendar';
 import { useCalendarState } from '@react-stately/calendar';
-import { DateValue } from '@internationalized/date';
+import { CalendarDate, DateValue } from '@internationalized/date';
 
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { ConditionalWrapper } from '@entur/utils';
@@ -14,7 +14,7 @@ import { CalendarGrid } from './CalendarGrid';
 
 import './Calendar.scss';
 
-type CalendarProps = {
+export type CalendarProps = {
   selectedDate: DateValue | null;
   onChange: (SelectedDate: DateValue | null) => void;
   navigationDescription?: string;
@@ -34,6 +34,12 @@ type CalendarProps = {
    * Gyldig til og med den tiden som legges inn som maxDate.
    * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
+  /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
+   *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
+   *  @default undefined
+   *  @example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''
+   */
+  classNameForDate?: (date: CalendarDate) => string;
   [key: string]: any;
 };
 
@@ -51,6 +57,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       onSelectedCellClick = () => {
         return;
       },
+      classNameForDate,
       ...rest
     },
     ref,
@@ -111,6 +118,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             state={state}
             navigationDescription={navigationDescription}
             onSelectedCellClick={onSelectedCellClick}
+            classNameForDate={classNameForDate}
           />
         </div>
       </ConditionalWrapper>

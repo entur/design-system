@@ -13,8 +13,8 @@ import {
 import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
+import { CalendarDate, DateValue } from '@internationalized/date';
 import type {
-  DateValue,
   AriaDatePickerProps,
   MappedDateValue,
 } from '@react-types/datepicker';
@@ -110,6 +110,12 @@ export type DatePickerProps<DateType extends DateValue> = {
    * @default undefined
    */
   forcedReturnType?: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
+  /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
+   *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
+   *  @default undefined
+   *  @example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''
+   */
+  classNameForDate?: (date: CalendarDate) => string;
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
@@ -131,6 +137,7 @@ export const DatePicker = <DateType extends DateValue>({
   disabled,
   showTime,
   showTimeZone = false,
+  classNameForDate,
   className,
   style,
   variant,
@@ -224,6 +231,7 @@ export const DatePicker = <DateType extends DateValue>({
     minDate,
     maxDate,
     ref: calendarRef,
+    classNameForDate,
   };
 
   const useModal =

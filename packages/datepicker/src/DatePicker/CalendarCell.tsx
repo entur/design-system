@@ -14,6 +14,7 @@ type CalendarCellProps = {
   state: CalendarState;
   date: CalendarDate;
   onSelectedCellClick?: () => void;
+  classNameForDate?: (date: CalendarDate) => string;
 };
 
 export const CalendarCell = ({
@@ -22,6 +23,7 @@ export const CalendarCell = ({
   onSelectedCellClick = () => {
     return;
   },
+  classNameForDate,
   ...rest
 }: CalendarCellProps) => {
   const cellRef = useRef(null);
@@ -41,17 +43,21 @@ export const CalendarCell = ({
         {...buttonProps}
         ref={cellRef}
         hidden={isOutsideVisibleRange}
-        className={classNames('eds-datepicker__calendar__grid__cell', {
-          'eds-datepicker__calendar__grid__cell--selected': isSelected,
-          'eds-datepicker__calendar__grid__cell--disabled':
-            isDisabled || isUnavailable,
-          'eds-datepicker__calendar__grid__cell--outside-month':
-            isOutsideVisibleRange,
-          'eds-datepicker__calendar__grid__cell--today': isEqualDay(
-            date,
-            now(state.timeZone ?? getLocalTimeZone()),
-          ),
-        })}
+        className={classNames(
+          'eds-datepicker__calendar__grid__cell',
+          [classNameForDate?.(date) ?? ''],
+          {
+            'eds-datepicker__calendar__grid__cell--selected': isSelected,
+            'eds-datepicker__calendar__grid__cell--disabled':
+              isDisabled || isUnavailable,
+            'eds-datepicker__calendar__grid__cell--outside-month':
+              isOutsideVisibleRange,
+            'eds-datepicker__calendar__grid__cell--today': isEqualDay(
+              date,
+              now(state.timeZone ?? getLocalTimeZone()),
+            ),
+          },
+        )}
         {...rest}
         onClick={e => {
           buttonProps.onClick && buttonProps.onClick(e);
