@@ -1,0 +1,569 @@
+[
+  {
+    "mode": {
+      "name": "Value",
+      "id": "2814:6"
+    },
+    "color": [
+      {
+        "name": "Contrast/Bicycle",
+        "color": "#00db9b",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Bus",
+        "color": "#ff6392",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Bus-transparent",
+        "color": "#ff639226",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Cableway",
+        "color": "#b482fb",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Cableway-transparent",
+        "color": "#b482fb26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Carferry",
+        "color": "#6fdfff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Carferry-transparent",
+        "color": "#6fdfff26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Citybike",
+        "color": "#00db9b",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Ferry",
+        "color": "#6fdfff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Ferry-transparent",
+        "color": "#6fdfff26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Funicular",
+        "color": "#b482fb",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Funicular-transparent",
+        "color": "#b482fb26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Helicopter",
+        "color": "#fbafea",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Helicopter-transparent",
+        "color": "#fbafea26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Metro",
+        "color": "#f08901",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Metro-transparent",
+        "color": "#f0890126",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Mobility",
+        "color": "#00db9b",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Neutral",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Plane",
+        "color": "#fbafea",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Plane-transparent",
+        "color": "#fbafea26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Taxi",
+        "color": "#ffe082",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Taxi-transparent",
+        "color": "#ffe08226",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Train",
+        "color": "#42a5f5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Train-transparent",
+        "color": "#42a5f526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Tram",
+        "color": "#b482fb",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Tram-transparent",
+        "color": "#b482fb26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/Walk",
+        "color": "#8284ab",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/airportLinkBus",
+        "color": "#fbafea",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/airportLinkBus-transparent",
+        "color": "#fbafea26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/airportLinkRail",
+        "color": "#fbafea",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Contrast/airportLinkRail-transparent",
+        "color": "#fbafea26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Bicycle",
+        "color": "#4db295",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Bus",
+        "color": "#e87a9b",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Bus-transparent",
+        "color": "#e87a9b26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Cableway",
+        "color": "#b898e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Cableway-transparent",
+        "color": "#b898e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Carferry",
+        "color": "#8ccfe2",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Carferry-transparent",
+        "color": "#8ccfe226",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Citybike",
+        "color": "#4db295",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Ferry",
+        "color": "#8ccfe2",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Ferry-transparent",
+        "color": "#8ccfe226",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Funicular",
+        "color": "#b898e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Funicular-transparent",
+        "color": "#b898e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Helicopter",
+        "color": "#f2b8e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Helicopter-transparent",
+        "color": "#f2b8e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Metro",
+        "color": "#dd973c",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Metro-transparent",
+        "color": "#dd973c26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Mobility",
+        "color": "#4db295",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Neutral",
+        "color": "#e5e5e9",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Plane",
+        "color": "#f2b8e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Plane-transparent",
+        "color": "#f2b8e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Taxi",
+        "color": "#ffe082",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Taxi-transparent",
+        "color": "#ffe08226",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Train",
+        "color": "#60a2d7",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Train-transparent",
+        "color": "#60a2d726",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Tram",
+        "color": "#b898e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Tram-transparent",
+        "color": "#b898e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/Walk",
+        "color": "#8d8e9c",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/airportLinkBus-transparent",
+        "color": "#f2b8e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/airportLinkRail",
+        "color": "#f2b8e5",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Dark/airportLinkRail-transparent",
+        "color": "#f2b8e526",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Bicycle",
+        "color": "#388f76",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Bus",
+        "color": "#c5044e",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Bus-transparent",
+        "color": "#c5044e26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Cableway",
+        "color": "#78469a",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Cableway-transparent",
+        "color": "#78469a26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Carferry",
+        "color": "#0c6693",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Carferry-transparent",
+        "color": "#0c669326",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Citybike",
+        "color": "#388f76",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Ferry",
+        "color": "#0c6693",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Ferry-transparent",
+        "color": "#0c669326",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Funicular",
+        "color": "#78469a",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Funicular-transparent",
+        "color": "#78469a26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Helicopter",
+        "color": "#800664",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Helicopter-transparent",
+        "color": "#80066426",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Metro",
+        "color": "#bf5826",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Metro-transparent",
+        "color": "#bf582626",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Mobility",
+        "color": "#388f76",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Neutral",
+        "color": "#181c56",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Plane",
+        "color": "#800664",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Plane-transparent",
+        "color": "#80066426",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Taxi",
+        "color": "#3d3e40",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Taxi-transparent",
+        "color": "#3d3e4026",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Train",
+        "color": "#00367f",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Train-transparent",
+        "color": "#00367f26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Tram",
+        "color": "#78469a",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Tram-transparent",
+        "color": "#78469a26",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/Walk",
+        "color": "#8d8e9c",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/airportLinkBus",
+        "color": "#800664",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/airportLinkBus-transparent",
+        "color": "#80066426",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/airportLinkRail",
+        "color": "#800664",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "Standard/airportLinkRail-transparent",
+        "color": "#80066426",
+        "var": "",
+        "rootAlias": ""
+      }
+    ],
+    "number": []
+  }
+]

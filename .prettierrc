@@ -10,5 +10,13 @@
   "arrowParens": "avoid",
   "filePath": "",
   "requirePragma": false,
-  "insertPragma": false
+  "insertPragma": false,
+  "overrides": [
+    {
+      "files": "**/*.scss",
+      "options": {
+        "printWidth": 160
+      }
+    }
+  ]
 }
