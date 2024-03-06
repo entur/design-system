@@ -14,22 +14,25 @@ import {
   createComponentColorSet,
   createPrimitiveSet,
   createVariablesSet,
+  dataFilePath,
   primitiveFilePath,
   semanticFilePath,
   transportFilePath,
 } from './build-variables';
-import type { variableSet } from './build-variables';
+import type { variableSet } from './utils';
 
 const createJSVariables = () => {
   const primitive = createPrimitiveSet(primitiveFilePath);
   const transport = createPrimitiveSet(transportFilePath);
   const semantic = createVariablesSet(semanticFilePath);
   const base = createComponentColorSet(baseFilePath);
+  const data = createComponentColorSet(dataFilePath);
   const componentColors = createComponentColorSet();
 
   outputJSObjectFile(primitive, 'primitive');
   outputJSObjectFile(semantic, 'semantic');
   outputJSObjectFile(base, 'base');
+  outputJSObjectFile(data, 'data');
   outputJSObjectFile(transport, 'transport');
   outputJSObjectFile(componentColors, 'componentColors');
 };
@@ -41,6 +44,7 @@ function outputJSObjectFile(
     | 'primitive'
     | 'semantic'
     | 'base'
+    | 'data'
     | 'transport'
     | 'componentColors' = 'styles',
 ) {

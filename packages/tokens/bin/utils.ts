@@ -1,6 +1,25 @@
 import fs from 'fs-extra';
 import path from 'path';
 
+export type Color = {
+  name: string;
+  color: string;
+  var: string;
+  rootAlias: string;
+};
+export type ColorMode = {
+  mode: { name: string };
+  color: Color[];
+  number: Array<Record<string, string>>;
+};
+export type variableSet = {
+  css: string;
+  scss?: string;
+  less?: string;
+  js?: Record<string, string>;
+  mode?: string;
+};
+
 export function getAllPackageNames() {
   const packageNames = fs
     .readdirSync(path.resolve(__dirname, '../../../packages'), {
