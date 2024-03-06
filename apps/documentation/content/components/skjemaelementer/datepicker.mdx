@@ -30,6 +30,8 @@ import PageHeader from '~/components/PageHeader';
 import { CodeBlock } from '~/components/CodeBlock';
 import { datepicker } from './props';
 
+import './styles.scss';
+
 <PageHeader />
 
 <Playground
@@ -302,6 +304,28 @@ Hvis du ønsker å kun vise en inline kalender til brukeren kan du benytte `<Cal
         selectedDate={date}
         onChange={date => setDate(date)}
         locale="no-NO"
+      />
+    );
+  }}
+</Playground>
+
+#### Styling av datoer i kalenderen
+
+Både `DatePicker` og `Calendar` har støtte for prop-en `classNameForDate`. `classNameForDate` skal være en funksjon som tar inn en dato og returnerer en streng med klassenavnet som skal legges til for dato-ruten. 
+
+Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelForDate` til å beskrive stylingens mening for skjermlesere o.l.
+
+<Playground hideContrastOption>
+  {() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="no-NO"
+        classNameForDate={date => isWeekend(date, 'no-NO') ? 'special-class' : ''}
+        ariaLabelForDate={date => isWeekend(date, 'no-NO') ? ', helgedag' : ''}
       />
     );
   }}

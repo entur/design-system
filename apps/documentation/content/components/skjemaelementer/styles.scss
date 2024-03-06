@@ -1,0 +1,5 @@
+@use "@entur/tokens/dist/styles.scss" as t;
+
+.special-class {
+  background-color: t.$colors-data-default-spring;
+}

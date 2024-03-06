@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocale } from '@react-aria/i18n';
 import { useCalendarGrid } from '@react-aria/calendar';
 import { CalendarState } from '@react-stately/calendar';
-import { getWeeksInMonth } from '@internationalized/date';
+import { CalendarDate, getWeeksInMonth } from '@internationalized/date';
 
 import { useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
@@ -14,6 +14,8 @@ type CalendarGridProps = {
   state: CalendarState;
   navigationDescription?: string;
   onSelectedCellClick?: () => void;
+  classNameForDate?: (date: CalendarDate) => string;
+  ariaLabelForDate?: (date: CalendarDate) => string;
 };
 
 export const CalendarGrid = ({
@@ -22,6 +24,8 @@ export const CalendarGrid = ({
   onSelectedCellClick = () => {
     return;
   },
+  classNameForDate,
+  ariaLabelForDate,
   ...rest
 }: CalendarGridProps) => {
   const calendarGridId = useRandomId('eds-calendar');
@@ -78,6 +82,8 @@ export const CalendarGrid = ({
                       date={date}
                       aria-describedby={calendarGridId + 'description'}
                       onSelectedCellClick={onSelectedCellClick}
+                      classNameForDate={classNameForDate}
+                      ariaLabelForDate={ariaLabelForDate}
                     />
                   ) : (
                     <td key={i} />
