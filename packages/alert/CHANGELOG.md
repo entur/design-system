@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.20](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.19...@entur/alert@0.15.20) (2024-03-06)
+
+### Bug Fixes
+
+- **toast:** export toast types ([1e146f8](https://bitbucket.org/enturas/design-system/commits/1e146f8dd1c3aeaf1fcdb6617e9a137d2cab2120))
+
 ## [0.15.19](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.18...@entur/alert@0.15.19) (2024-02-22)
 
 **Note:** Version bump only for package @entur/alert

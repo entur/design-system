@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.2.0...@entur/dropdown@5.3.0) (2024-03-06)
+
+### Bug Fixes
+
+- **dropdown:** fix missing export for NormalizedDropdownItemType ([07d90da](https://bitbucket.org/enturas/design-system/commits/07d90da702686c31f653866ee6411594d0ddbeea))
+- **dropdown:** items can now be selected with spacebar in Dropdown as well ([c8a3525](https://bitbucket.org/enturas/design-system/commits/c8a35257cf8a696ac0d6bff905372fbeae0c92a5))
+- **dropdowns:** fix incorrect usage of aria-selected in dropdown list ([5eed47e](https://bitbucket.org/enturas/design-system/commits/5eed47e4db822ae20642abc9db7909380e272662))
+
+### Features
+
+- **dropdowns:** update downshift to v8 ([7801946](https://bitbucket.org/enturas/design-system/commits/7801946441df447cd8e6b0f91e273b27bf66696b))
+
 # [5.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.1.3...@entur/dropdown@5.2.0) (2024-02-22)
 
 ### Features

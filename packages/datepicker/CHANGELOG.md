@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.1.6...@entur/datepicker@9.2.0) (2024-03-06)
+
+### Features
+
+- **calendar:** add classNameForDate prop to DatePicker and Calendar ([702d2d5](https://bitbucket.org/enturas/design-system/commits/702d2d5bcc5d8e36fba853426c5b964844b64872))
+- **datepicker:** add ariaLabelForDate prop to DatePicker and Calendar ([767136b](https://bitbucket.org/enturas/design-system/commits/767136bd249f360c7aaa59466f9a938f1469994a))
+
 ## [9.1.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.1.5...@entur/datepicker@9.1.6) (2024-02-22)
 
 ### Bug Fixes

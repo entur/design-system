@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.4.24...@entur/expand@3.5.0) (2024-03-06)
+
+### Features
+
+- **expandable:** add prop 'disableAnimation' for disabling opening and closing animation ([603bf37](https://bitbucket.org/enturas/design-system/commits/603bf37646e611d7ff497b83b9eb7bfe3cb8239a))
+- **expandable:** automatically remove animation if user has preference for it ([6d982ea](https://bitbucket.org/enturas/design-system/commits/6d982ea5073e54e5b48104347523a5aa1748f7cc))
+
 ## [3.4.24](https://bitbucket.org/enturas/design-system/compare/@entur/expand@3.4.23...@entur/expand@3.4.24) (2024-02-12)
 
 **Note:** Version bump only for package @entur/expand

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.15.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.15.0...@entur/icons@6.15.1) (2024-03-06)
+
+**Note:** Version bump only for package @entur/icons
+
 # [6.15.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.14.0...@entur/icons@6.15.0) (2024-02-12)
 
 ### Features

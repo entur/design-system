@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.2.3...@entur/code-playground@1.3.0) (2024-03-06)
+
+### Bug Fixes
+
+- **code-playground:** make darkmode apply to root instead of body ([3e659f1](https://bitbucket.org/enturas/design-system/commits/3e659f1e6463c5a46b9dbfd56095d3fde6aa00f9))
+- **code-playground:** use contrast wrapper instead of class on root ([820f4f0](https://bitbucket.org/enturas/design-system/commits/820f4f04612e10a712bcab7bdb5b37e35ae80bef))
+
+### Features
+
+- **code playground:** add dark mode toggle ([f1b8fba](https://bitbucket.org/enturas/design-system/commits/f1b8fba2efbaee17ac45de26a9060849f9ff0b27))
+
 ## [1.2.3](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.2.2...@entur/code-playground@1.2.3) (2024-02-22)
 
 **Note:** Version bump only for package @entur/code-playground
