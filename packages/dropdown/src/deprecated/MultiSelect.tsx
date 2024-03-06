@@ -199,7 +199,7 @@ export const MultiSelectDeprecated: React.FC<MultiSelectDeprecatedProps> = ({
         <BaseFormControl
           label={label}
           labelId={multiSelectId}
-          labelProps={...getLabelProps()}
+          labelProps={getLabelProps}
           feedback={feedback}
           variant={variant}
           isFilled={selectedItems.length > 0 || isOpen}

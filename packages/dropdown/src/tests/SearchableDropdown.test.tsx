@@ -42,8 +42,8 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
-    await user.click(toggleButton);
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    await user.click(inputField);
 
     const menuItemOslo = screen.getByRole('option', { name: 'Oslo' });
     await user.click(menuItemOslo);
@@ -66,7 +66,10 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
+
     await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
 
     expect(onChange).toHaveBeenCalledWith({
@@ -84,18 +87,24 @@ describe('SearchableDropdown', () => {
         items={testItems}
         selectedItem={null}
         onChange={onChange}
+        ariaLabelOpenList="togglebutton"
+        ariaLabelCloseList="togglebutton"
       />,
     );
 
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    const toggleButton = screen.getByRole('button', { name: 'togglebutton' });
 
-    await user.click(toggleButton);
+    await user.click(inputField);
     const dropdownList = screen.getByRole('listbox', { name: 'test label' });
-
     expect(dropdownList).toBeVisible();
 
     await user.click(document.body);
+    expect(dropdownList).not.toBeVisible();
 
+    await user.click(toggleButton);
+    expect(dropdownList).toBeVisible();
+    await user.click(toggleButton);
     expect(dropdownList).not.toBeVisible();
   });
 
@@ -111,10 +120,17 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
-    const dropdownList = screen.getByRole('listbox', { name: 'test label' });
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    const dropdownList = screen.getByRole('listbox', {
+      hidden: true,
+    });
 
-    // focus opens list
+    // focus does not open list
+    expect(dropdownList).not.toBeVisible();
+
+    // space opens list
+    await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
 
     // close on select with enter
@@ -128,14 +144,19 @@ describe('SearchableDropdown', () => {
     expect(dropdownList).toBeVisible();
 
     // close on esc
-    await user.keyboard('{ }');
-    expect(dropdownList).toBeVisible();
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
 
-    // close on tab
-    await user.keyboard('{ }');
+    // open on type
+    await user.keyboard('{b}');
     expect(dropdownList).toBeVisible();
+    await user.keyboard('{Escape}');
+
+    // down arrow opens list
+    await user.keyboard('{ArrowDown}');
+    expect(dropdownList).toBeVisible();
+
+    // close on tab
     await user.keyboard('{Tab}');
     expect(dropdownList).not.toBeVisible();
   });
@@ -202,7 +223,9 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
     expect(
       screen.queryByRole('option', { name: 'Kristiansund' }),
@@ -264,10 +287,10 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
-    toggleButton.focus();
-    await user.keyboard('{Enter}');
     await user.keyboard('{Tab}');
 
     expect(onChange).toBeCalledWith({ label: 'Oslo', value: 'Oslo' });
@@ -310,16 +333,17 @@ describe('SearchableDropdown', () => {
   test('accepts all allowed types of items', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    const MockIcon = () => <svg />;
+    const MockIcon1 = () => <svg />;
+    const MockIcon2 = () => <svg />;
     const mixedItems = [
       'Simple option',
       { label: 'Just label option' },
       { value: 'value', label: 'Label with different value' },
-      { label: 'Just label with icons', icons: [MockIcon] },
+      { label: 'Just label with icons', icons: [MockIcon1] },
       {
         value: 'another value',
         label: 'Full monty',
-        icons: [MockIcon, MockIcon],
+        icons: [MockIcon1, MockIcon2],
       },
     ];
     render(
@@ -331,7 +355,9 @@ describe('SearchableDropdown', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
     expect(screen.getAllByRole('option')).toHaveLength(mixedItems.length);
 

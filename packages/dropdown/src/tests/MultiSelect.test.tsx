@@ -124,7 +124,10 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
+
     await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
 
     expect(onChange).toHaveBeenCalledWith([
@@ -162,7 +165,10 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
+
     await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}{ArrowDown}{Enter}');
 
     expect(onChange).toHaveBeenCalledWith([
@@ -186,7 +192,8 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    await user.click(inputField); // open dropdown list
 
     await user.click(screen.getByRole('option', { name: 'select all' }));
 
@@ -207,7 +214,8 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    await user.click(inputField); // open dropdown list
 
     await user.click(
       screen.getByRole('option', { name: 'select all, delvis valgt' }),
@@ -230,7 +238,8 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    await user.click(inputField); // open dropdown list
 
     await user.click(
       screen.getByRole('option', { name: 'select all, selected' }),
@@ -240,6 +249,7 @@ describe('MultiSelect', () => {
   });
 
   test('hideSelectAll hides select all option', async () => {
+    const user = userEvent.setup();
     render(
       <MultiSelect
         label="test label"
@@ -250,7 +260,9 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
     expect(
       screen.queryByRole('option', { name: 'select all' }),
@@ -267,18 +279,24 @@ describe('MultiSelect', () => {
         items={testItems}
         selectedItems={[]}
         onChange={onChange}
+        ariaLabelOpenList="togglebutton"
+        ariaLabelCloseList="togglebutton"
       />,
     );
 
     const inputField = screen.getByRole('combobox', { name: 'test label' });
+    const toggleButton = screen.getByRole('button', { name: 'togglebutton' });
 
     await user.click(inputField);
     const dropdownList = screen.getByRole('listbox', { name: 'test label' });
-
     expect(dropdownList).toBeVisible();
 
     await user.click(document.body);
+    expect(dropdownList).not.toBeVisible();
 
+    await user.click(toggleButton);
+    expect(dropdownList).toBeVisible();
+    await user.click(toggleButton);
     expect(dropdownList).not.toBeVisible();
   });
 
@@ -294,10 +312,17 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
-    const dropdownList = screen.getByRole('listbox', { name: 'test label' });
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    const dropdownList = screen.getByRole('listbox', {
+      hidden: true,
+    });
 
-    // focus opens list
+    // focus does not open list
+    expect(dropdownList).not.toBeVisible();
+
+    // space opens list
+    await user.keyboard('{ }');
     expect(dropdownList).toBeVisible();
 
     // select with enter or space does not close list
@@ -310,9 +335,16 @@ describe('MultiSelect', () => {
     await user.keyboard('{Escape}');
     expect(dropdownList).not.toBeVisible();
 
-    // close on tab
-    await user.keyboard('{ }');
+    // open on type
+    await user.keyboard('{b}');
     expect(dropdownList).toBeVisible();
+    await user.keyboard('{Escape}');
+
+    // down arrow opens list
+    await user.keyboard('{ArrowDown}');
+    expect(dropdownList).toBeVisible();
+
+    // close on tab
     await user.keyboard('{Tab}');
     expect(dropdownList).not.toBeVisible();
   });
@@ -375,7 +407,9 @@ describe('MultiSelect', () => {
       <MultiSelect label="test label" items={testItems} selectedItems={[]} />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
     expect(
       screen.queryByRole('option', { name: 'Kristiansund' }),
@@ -438,8 +472,9 @@ describe('MultiSelect', () => {
     );
 
     const inputField = screen.getByRole('combobox', { name: 'test label' });
-
     inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
+
     await user.keyboard('{ArrowDown}{Enter}');
     await user.keyboard('{Tab}');
 
@@ -524,16 +559,17 @@ describe('MultiSelect', () => {
   test('accepts all allowed types of items', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    const MockIcon = () => <svg />;
+    const MockIcon1 = () => <svg />;
+    const MockIcon2 = () => <svg />;
     const mixedItems = [
       'Simple option',
       { label: 'Just label option' },
       { value: 'value', label: 'Label with different value' },
-      { label: 'Just label with icons', icons: [MockIcon] },
+      { label: 'Just label with icons', icons: [MockIcon1] },
       {
         value: 'another value',
         label: 'Full monty',
-        icons: [MockIcon, MockIcon],
+        icons: [MockIcon1, MockIcon2],
       },
     ];
     render(
@@ -545,7 +581,9 @@ describe('MultiSelect', () => {
       />,
     );
 
-    screen.getByRole('combobox', { name: 'test label' }).focus();
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    inputField.focus();
+    await user.keyboard('{ }'); // open dropdown list
 
     expect(screen.getAllByRole('option')).toHaveLength(mixedItems.length + 1); // '+ 1' to account for 'select all' option
 

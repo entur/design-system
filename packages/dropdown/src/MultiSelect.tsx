@@ -27,7 +27,6 @@ import {
   getA11ySelectionMessage,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
-  isVoiceOverClick,
   itemToString,
   lowerCaseFilterTest,
   noFilter,
@@ -542,9 +541,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                 }
               },
               ...getDropdownProps({
-                onClick: (e: React.MouseEvent) => {
-                  if (!isOpen && isVoiceOverClick(e)) openMenu();
-                },
                 preventKeyAction: isOpen,
                 ref: inputRef,
                 value: inputValue ?? EMPTY_INPUT,

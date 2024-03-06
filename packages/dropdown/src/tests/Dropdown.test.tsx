@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Dropdown, DropdownItemType } from '..';
+import { Dropdown, DropdownItemType, NormalizedDropdownItemType } from '..';
 
 expect.extend(toHaveNoViolations);
 
@@ -172,6 +172,46 @@ describe('Dropdown', () => {
     expect(screen.queryByText(selectedItem.label)).toBeInTheDocument();
   });
 
+  test('marks selected option as selected if set initially', async () => {
+    const user = userEvent.setup();
+    const normalizedItems: NormalizedDropdownItemType<string>[] = testItems.map(
+      item => ({
+        label: item,
+        value: item,
+      }),
+    );
+
+    const bergenItem = normalizedItems[1];
+
+    const fn = jest.fn();
+
+    render(
+      <Dropdown
+        label="test label"
+        items={normalizedItems}
+        selectedItem={bergenItem}
+        onChange={fn}
+      />,
+    );
+
+    // not changed yet
+    expect(fn).not.toHaveBeenCalled();
+
+    // not visible since not opened
+    const item = screen.queryByRole('option', { selected: true });
+    expect(item).not.toBeInTheDocument();
+
+    const toggleButton = screen.getByRole('combobox', { name: 'test label' });
+    await user.click(toggleButton);
+
+    const selectedOption = screen.getByRole('option', { selected: true });
+    expect(selectedOption).toHaveTextContent('Bergen');
+
+    // all others
+    const otherOptions = screen.getAllByRole('option', { selected: false });
+    expect(otherOptions).toHaveLength(normalizedItems.length - 1);
+  });
+
   test('clearable button clears selected item', async () => {
     const user = userEvent.setup();
     const selectedItem = { label: 'selected', value: 'selected' };
@@ -196,16 +236,17 @@ describe('Dropdown', () => {
   test('accepts all allowed types of items', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    const MockIcon = () => <svg />;
+    const MockIcon1 = () => <svg />;
+    const MockIcon2 = () => <svg />;
     const mixedItems = [
       'Simple option',
       { label: 'Just label option' },
       { value: 'value', label: 'Label with different value' },
-      { label: 'Just label with icons', icons: [MockIcon] },
+      { label: 'Just label with icons', icons: [MockIcon1] },
       {
         value: 'another value',
         label: 'Full monty',
-        icons: [MockIcon, MockIcon],
+        icons: [MockIcon1, MockIcon2],
       },
     ];
     render(

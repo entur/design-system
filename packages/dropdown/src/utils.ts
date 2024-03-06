@@ -1,6 +1,5 @@
 import { A11yRemovalMessage, A11yStatusMessageOptions } from 'downshift';
 import { NormalizedDropdownItemType } from './types';
-import React from 'react';
 
 /* start general utils */
 export const EMPTY_INPUT = '';
@@ -236,25 +235,4 @@ export function getA11yRemovalMessage(
 
   return `${itemToString(removedItem)} fjernet fra valgte.`;
 }
-
-/**A VoiceOver click is always preformed in the center of the clicked element.
-   This functions expolits that to check if the performed click likely is 
-   made by VoiceOver. */
-export const isVoiceOverClick = (clickEvent: React.MouseEvent) => {
-  const targetElementRect = clickEvent.currentTarget.getBoundingClientRect();
-  const targetElementMiddleX = Math.floor(
-    targetElementRect.x + targetElementRect.width / 2,
-  );
-  const targetElementMiddleY = Math.floor(
-    targetElementRect.y + targetElementRect.height / 2,
-  );
-
-  const clickPositionX = clickEvent.clientX;
-  const clickPositionY = clickEvent.clientY;
-
-  return (
-    Math.abs(targetElementMiddleX - clickPositionX) <= 1 &&
-    Math.abs(targetElementMiddleY - clickPositionY) <= 1
-  );
-};
 /* end a11y utils */
