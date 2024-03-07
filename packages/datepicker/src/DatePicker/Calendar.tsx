@@ -37,6 +37,13 @@ export type CalendarProps = {
    * Gyldig til og med den tiden som legges inn som maxDate.
    * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
+  /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
+   * kan endres med prop-en 'weekNumberHeader'
+   * @default false */
+  showWeekNumbers?: boolean;
+  /** Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.
+   * @default 'uke' */
+  weekNumberHeader?: string;
   /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
    *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
    *  @default undefined
@@ -63,6 +70,8 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
       locale: customLocale,
       minDate,
       maxDate,
+      showWeekNumbers = false,
+      weekNumberHeader = 'uke',
       style,
       className,
       children: _,
@@ -134,6 +143,8 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
             onSelectedCellClick={onSelectedCellClick}
             classNameForDate={classNameForDate}
             ariaLabelForDate={ariaLabelForDate}
+            showWeekNumbers={showWeekNumbers}
+            weekNumberHeader={weekNumberHeader}
           />
         </div>
       </ConditionalWrapper>

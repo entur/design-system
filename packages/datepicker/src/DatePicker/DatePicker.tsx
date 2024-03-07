@@ -87,6 +87,13 @@ export type DatePickerProps<DateType extends DateValue> = {
    */
   validationVariant?: VariantType;
   disabled?: boolean;
+  /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
+   * kan endres med prop-en 'weekNumberHeader'
+   * @default false */
+  showWeekNumbers?: boolean;
+  /** Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.
+   * @default '#' */
+  weekNumberHeader?: string;
   /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
    *  @default false
    */
@@ -153,6 +160,8 @@ export const DatePicker = <DateType extends DateValue>({
   feedback,
   validationVariant,
   validationFeedback,
+  showWeekNumbers,
+  weekNumberHeader,
   disableModal = false,
   labelTooltip,
   navigationDescription,
@@ -243,6 +252,8 @@ export const DatePicker = <DateType extends DateValue>({
     ref: calendarRef,
     classNameForDate,
     ariaLabelForDate,
+    showWeekNumbers,
+    weekNumberHeader,
   };
 
   const useModal =
