@@ -331,6 +331,25 @@ Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelF
   }}
 </Playground>
 
+#### Vise ukenummer
+
+Hvis du trenger å vise ukenummer i kalenderen kan du benytte prop-en `showWeekNumbers`. Du kan endre overskriften til ukenummerkolonnen ved å bruke prop-en `weekNumberHeading`.
+
+<Playground hideContrastOption>
+  {() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="no-NO"
+        showWeekNumbers
+      />
+    );
+  }}
+</Playground>
+
 ### Kun inputfelt
 
 Hvis du ønsker å kun vise et inputfelt uten mulighet for en kalender-popover kan du benytte `<DateField />`-komponenten. Denne fungerer med samme type datoobjekter som `<DatePicker />` og støtter mange av de samme props-ene.
