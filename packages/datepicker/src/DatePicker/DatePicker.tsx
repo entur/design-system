@@ -249,7 +249,7 @@ export const DatePicker = <DateType extends DateValue>({
     onChange: handleOnChange,
     minDate,
     maxDate,
-    ref: calendarRef,
+    calendarRef,
     classNameForDate,
     ariaLabelForDate,
     showWeekNumbers,
