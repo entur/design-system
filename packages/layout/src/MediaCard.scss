@@ -5,14 +5,13 @@
   overflow: hidden;
   position: relative;
   width: fit-content;
-  transition: transform t.$timings-medium ease-in-out,
-    box-shadow t.$timings-medium ease-in-out;
+  transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
   &:focus,
   &:focus-within {
-    outline: none;
-    box-shadow: t.$shadows-focus;
+    outline: t.$outlines-focus;
+    outline-offset: t.$outline-offsets-focus;
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline: t.$outlines-focus-contrast;
     }
   }
   .eds-contrast & {
