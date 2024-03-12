@@ -12,6 +12,8 @@ import {
   toTime,
   today,
   now,
+  startOfWeek,
+  startOfYear,
 } from '@internationalized/date';
 import { TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
@@ -217,3 +219,19 @@ export const focusSegment = (
     }
   }
 };
+
+/** Based on code from https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php */
+export function getWeekNumberForDate(date: DateValue | null) {
+  if (date === null) return -1;
+  const calendarDate = convertValueToType({
+    value: date,
+    type: 'CalendarDate',
+  }) as CalendarDate;
+  const firstDayOfWeek = startOfWeek(calendarDate, 'no-NO');
+  const thursdayOfWeek = firstDayOfWeek.add({ days: 3 });
+  const firstDayOfYearForThursday = startOfYear(thursdayOfWeek);
+  const weekNumber = Math.ceil(
+    (thursdayOfWeek.compare(firstDayOfYearForThursday) + 1) / 7,
+  );
+  return weekNumber;
+}

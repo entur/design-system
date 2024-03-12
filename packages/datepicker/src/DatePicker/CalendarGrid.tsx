@@ -3,16 +3,19 @@ import React from 'react';
 import { useLocale } from '@react-aria/i18n';
 import { useCalendarGrid } from '@react-aria/calendar';
 import { CalendarState } from '@react-stately/calendar';
-import { CalendarDate, getWeeksInMonth } from '@internationalized/date';
+import { getWeeksInMonth, CalendarDate } from '@internationalized/date';
 
 import { useRandomId } from '@entur/utils';
 import { VisuallyHidden } from '@entur/a11y';
 
+import { getWeekNumberForDate } from '../shared/utils';
 import { CalendarCell } from './CalendarCell';
 
 type CalendarGridProps = {
   state: CalendarState;
   navigationDescription?: string;
+  showWeekNumbers: boolean;
+  weekNumberHeader: string;
   onSelectedCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
   ariaLabelForDate?: (date: CalendarDate) => string;
@@ -24,6 +27,8 @@ export const CalendarGrid = ({
   onSelectedCellClick = () => {
     return;
   },
+  showWeekNumbers,
+  weekNumberHeader,
   classNameForDate,
   ariaLabelForDate,
   ...rest
@@ -64,33 +69,56 @@ export const CalendarGrid = ({
       >
         <thead {...headerProps}>
           <tr>
+            {showWeekNumbers && (
+              <th className="eds-datepicker__calendar__grid__weeknumber-header">
+                {weekNumberHeader}
+              </th>
+            )}
             {weekDaysMapped().map((day, index) => (
               <th key={index}>{day}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {weeksArray.map(weekIndex => (
-            <tr key={weekIndex}>
-              {state
-                .getDatesInWeek(weekIndex)
-                .map((date, i) =>
-                  date ? (
-                    <CalendarCell
-                      key={i}
-                      state={state}
-                      date={date}
-                      aria-describedby={calendarGridId + 'description'}
-                      onSelectedCellClick={onSelectedCellClick}
-                      classNameForDate={classNameForDate}
-                      ariaLabelForDate={ariaLabelForDate}
-                    />
-                  ) : (
-                    <td key={i} />
-                  ),
+          {weeksArray.map(weekIndex => {
+            const weekNumber = getWeekNumberForDate(
+              state.getDatesInWeek(weekIndex)[0],
+            );
+            return (
+              <tr key={weekIndex}>
+                {showWeekNumbers && (
+                  <th
+                    aria-hidden
+                    className="eds-datepicker__calendar__grid__weeknumber"
+                  >
+                    {weekNumber}
+                  </th>
                 )}
-            </tr>
-          ))}
+                {state
+                  .getDatesInWeek(weekIndex)
+                  .map((date, i) =>
+                    date ? (
+                      <CalendarCell
+                        key={i}
+                        state={state}
+                        date={date}
+                        aria-describedby={calendarGridId + 'description'}
+                        weekNumberString={
+                          showWeekNumbers
+                            ? `, ${weekNumberHeader} ${weekNumber},`
+                            : ''
+                        }
+                        onSelectedCellClick={onSelectedCellClick}
+                        classNameForDate={classNameForDate}
+                        ariaLabelForDate={ariaLabelForDate}
+                      />
+                    ) : (
+                      <td key={i} />
+                    ),
+                  )}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <VisuallyHidden id={calendarGridId + 'description'}>

@@ -44,9 +44,16 @@
     border-spacing: 0px;
     border-collapse: collapse;
 
+    &__weeknumber,
     thead tr th {
       color: t.$colors-blues-blue30;
       font-size: t.$font-sizes-small;
+    }
+
+    &__weeknumber-header,
+    &__weeknumber {
+      text-align: right;
+      padding-right: 0.5rem;
     }
 
     &__cell {

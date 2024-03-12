@@ -45,7 +45,7 @@ import './styles.scss';
         label="Dato"
         selectedDate={date}
         onChange={date => setDate(date)}
-        locale="no-NO"
+        locale="nb-NO"
       />
     );
   }}
@@ -69,7 +69,7 @@ DatePicker støtter også ulike locals og språk. DatePicker bygger på react-ar
 ### Språk og locale
 
 Språk og locals er støttet gjennom to metoder. All automatisk tilpassing av språk skjer gjennom prop-en `locale` eller [react-aria](https://react-spectrum.adobe.com/react-aria/I18nProvider.html) sin `<I18nProvider />`.
-`locale` støtter strenger på BCP 47-formatet, eks. `no-NO` for norsk. Her finner du en [liste over BCP 47-koder](https://www.techonthenet.com/js/language_tags.php). Som default velges den locale-en som er satt på brukeren maskin.
+`locale` støtter strenger på BCP 47-formatet, eks. `nb-NO` for norsk. Her finner du en [liste over BCP 47-koder](https://www.techonthenet.com/js/language_tags.php). Som default velges den locale-en som er satt på brukeren maskin.
 
 Ledeteksten (label), og `navigationDescription`\* må sende inn manuell oversettelse for. For `navigationDescription` vil en norsk og engelsk verdi følge med automatisk, men andre språk må legges inn selv.
 
@@ -133,7 +133,7 @@ Følgende eksempel godtar datoer fra og med i dag til og med en måned frem:
         label="Velg dato"
         selectedDate={date}
         onChange={setDate}
-        locale="no-NO"
+        locale="nb-NO"
         minDate={today('Europe/Oslo')}
         maxDate={today('Europe/Oslo').add({ months: 1 })}
         validationFeedback="Valgt dato er for langt frem i tid"
@@ -158,8 +158,8 @@ Følgende eksempel godtar datoer som ikke er en helg.
         label="Velg dato"
         selectedDate={date}
         onChange={setDate}
-        locale="no-NO"
-        isDateUnavailable={date => isWeekend(date, 'no-NO')}
+        locale="nb-NO"
+        isDateUnavailable={date => isWeekend(date, 'nb-NO')}
         validationFeedback="Valgt dato kan ikke være en helgedag"
       />
     );
@@ -225,7 +225,7 @@ Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline me
         label="Velg dato og tid"
         selectedDate={date}
         onChange={setDate}
-        locale="no-NO"
+        locale="nb-NO"
         showTime
       />
     );
@@ -249,7 +249,7 @@ I løsninger ut mot vanlige sluttbrukere er en separat dato- og tid-velger foret
           label="Dato"
           selectedDate={dateTime}
           onChange={setDateTime}
-          locale="no-NO"
+          locale="nb-NO"
           // 'forcedReturnType' er nødvendig når
           // initiell state er 'null'
           forcedReturnType="ZonedDateTime"
@@ -258,7 +258,7 @@ I løsninger ut mot vanlige sluttbrukere er en separat dato- og tid-velger foret
           label="Tid"
           selectedTime={dateTime}
           onChange={setDateTime}
-          locale="no-NO"
+          locale="nb-NO"
         />
       </div>
     );
@@ -303,7 +303,7 @@ Hvis du ønsker å kun vise en inline kalender til brukeren kan du benytte `<Cal
         label="Dato"
         selectedDate={date}
         onChange={date => setDate(date)}
-        locale="no-NO"
+        locale="nb-NO"
       />
     );
   }}
@@ -323,9 +323,28 @@ Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelF
         label="Dato"
         selectedDate={date}
         onChange={date => setDate(date)}
-        locale="no-NO"
-        classNameForDate={date => isWeekend(date, 'no-NO') ? 'special-class' : ''}
-        ariaLabelForDate={date => isWeekend(date, 'no-NO') ? ', helgedag' : ''}
+        locale="nb-NO"
+        classNameForDate={date => isWeekend(date, 'nb-NO') ? 'special-class' : ''}
+        ariaLabelForDate={date => isWeekend(date, 'nb-NO') ? ', helgedag' : ''}
+      />
+    );
+  }}
+</Playground>
+
+#### Vise ukenummer
+
+Hvis du trenger å vise ukenummer i kalenderen kan du benytte prop-en `showWeekNumbers`. Du kan endre overskriften til ukenummerkolonnen ved å bruke prop-en `weekNumberHeading`.
+
+<Playground hideContrastOption>
+  {() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        showWeekNumbers
       />
     );
   }}
@@ -343,8 +362,8 @@ Hvis du ønsker å kun vise et inputfelt uten mulighet for en kalender-popover k
         label="Dato"
         selectedDate={date}
         onChange={date => setDate(date)}
-        locale="no-NO"
-        style={{ width: '10rem' }}
+        locale="nb-NO"
+        style={{ width: '8.5rem' }}
       />
     );
   }}

@@ -13,6 +13,7 @@ import classNames from 'classnames';
 type CalendarCellProps = {
   state: CalendarState;
   date: CalendarDate;
+  weekNumberString: string;
   onSelectedCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
   ariaLabelForDate?: (date: CalendarDate) => string;
@@ -24,6 +25,7 @@ export const CalendarCell = ({
   onSelectedCellClick = () => {
     return;
   },
+  weekNumberString,
   classNameForDate,
   ariaLabelForDate,
   ...rest
@@ -40,7 +42,7 @@ export const CalendarCell = ({
     formattedDate,
   } = useCalendarCell({ date }, state, cellRef);
 
-  const ariaLabel = `${buttonProps['aria-label']} ${
+  const ariaLabel = `${buttonProps['aria-label']}${weekNumberString} ${
     ariaLabelForDate?.(date) ?? ''
   }`;
 
@@ -49,6 +51,7 @@ export const CalendarCell = ({
       <div
         {...buttonProps}
         aria-label={ariaLabel}
+        aria-hidden={isOutsideVisibleRange}
         ref={cellRef}
         hidden={isOutsideVisibleRange}
         className={classNames('eds-datepicker__calendar__grid__cell', {
