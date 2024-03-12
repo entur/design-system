@@ -18,36 +18,70 @@
   .eds-contrast & {
     background-color: t.$colors-blues-blue10;
   }
-  &__media {
-    transition: transform t.$timings-medium ease-in-out;
-  }
-  &__title {
-    font-size: t.$font-sizes-extra-large2;
-    line-height: t.$line-heights-extra-large3;
-    font-weight: t.$font-weights-heading;
-    margin: 0.75rem 0 0.5rem;
-    text-align: left;
-    width: fit-content;
-    position: relative;
-  }
+
   &:hover {
     transform: translateY(-(t.$space-extra-small2));
     box-shadow: t.$shadows-card-shadow-hover;
   }
+
+  &__media {
+    transition: transform t.$timings-medium ease-in-out;
+
+    max-height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
   &__text {
     appearance: none;
-    cursor: pointer;
+    width: 100%;
     color: inherit;
     display: flex;
     flex-direction: column;
+    gap: t.$space-default;
     text-decoration: none;
     padding: 1.25rem t.$space-extra-large 0;
     &:focus {
       outline: none;
     }
-  }
-  &__arrow-icon {
-    align-self: flex-end;
-    margin: t.$space-default 0 t.$space-large;
+
+    &__title {
+      font-size: t.$font-sizes-extra-large2;
+      line-height: t.$line-heights-extra-large3;
+      font-weight: t.$font-weights-heading;
+      margin: 0.75rem 0 0.5rem;
+
+      &-link {
+        appearance: none;
+        all: unset;
+
+        // this is a hack to make entire card clickable
+        &::after {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          cursor: pointer;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &__arrow-icon {
+      align-self: flex-end;
+      margin: t.$space-default 0 t.$space-large;
+    }
   }
 }

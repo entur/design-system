@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
 import './MediaCard.scss';
-import { PolymorphicComponentProps } from '@entur/utils';
+import { ConditionalWrapper, PolymorphicComponentProps } from '@entur/utils';
 
 export type MediaCardOwnProps = {
   /** HTML-elementet eller React-komponenten som lager bunnen (under media) av MediaCard
@@ -23,8 +23,19 @@ export type MediaCardOwnProps = {
   children?: React.ReactNode;
   /** Styling som sendes til komponenten */
   style?: CSSProperties;
-  /** Gjør hele kortet til "as"-elementet. Default er kun tekstområdet. Anbefales hvis media er et bilde
+  /** Hvilken heading som brukes for tittelen.
+   *  Blir kun satt hvis description også er satt.
+   * @default 'h2'
+   */
+  headingLevel?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  /** Skjul pil-ikonet nederst til høyre
    * @default false
+   */
+  hideArrow?: boolean;
+  /** Props som sendes til wrapper-elementet i stedet for lenke-elementet */
+  wrapperProps?: React.HTMLAttributes<HTMLElement>;
+  /** @deprecated Denne prop-en har ikke lenger en funksjon.
+   *  Hvis du trenger å legge til props på wrapper-elementet, bruk 'wrapperProps'-prop-en
    */
   wholeCardAsElement?: boolean;
 };
@@ -43,35 +54,52 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   category,
   style,
   as,
+  headingLevel = 'h2',
   wholeCardAsElement: whole,
+  hideArrow,
+  wrapperProps,
   ...rest
 }: MediaCardProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
-  const classList = classNames('eds-base-card', 'eds-media-card', className);
+  const Heading = headingLevel;
 
-  const wrapperElement = whole ? Element : 'div';
-  const wrapperProps = whole ? rest : {};
-  const innerProps = whole ? {} : rest;
-  const InnerElement = whole ? 'div' : Element;
+  const _wrapperProps = whole
+    ? { ...wrapperProps, ...rest }
+    : { ...wrapperProps };
   return (
     <BaseCard
-      as={wrapperElement}
-      className={classList}
+      className={classNames('eds-base-card', 'eds-media-card', className)}
       style={style}
-      {...wrapperProps}
+      {..._wrapperProps}
     >
       <div className="eds-media-card__media">{children}</div>
-      <InnerElement className="eds-media-card__text" {...innerProps}>
+      <div className="eds-media-card__text">
         {category && (
-          <Label className="eds-media-card__category">{category}</Label>
+          <Label className="eds-media-card__text__category">{category}</Label>
         )}
-        <div className="eds-media-card__title">{title}</div>
-        <Paragraph>{description}</Paragraph>
+        {/* we only want a heading wrapper when we also have description text */}
+        <ConditionalWrapper
+          condition={description !== undefined}
+          wrapper={(children: React.ReactNode) => (
+            <Heading className="eds-media-card__text__title">
+              {children}
+            </Heading>
+          )}
+        >
+          <Element
+            tabIndex={0}
+            className="eds-media-card__text__title-link"
+            {...rest}
+          >
+            {title}
+          </Element>
+        </ConditionalWrapper>
+        {description !== undefined && <Paragraph>{description}</Paragraph>}
         <ForwardIcon
-          className="eds-media-card__arrow-icon"
+          className="eds-media-card__text__arrow-icon"
           aria-hidden="true"
         />
-      </InnerElement>
+      </div>
     </BaseCard>
   );
 };
