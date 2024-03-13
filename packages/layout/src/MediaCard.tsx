@@ -95,10 +95,12 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
           </Element>
         </ConditionalWrapper>
         {description !== undefined && <Paragraph>{description}</Paragraph>}
-        <ForwardIcon
-          className="eds-media-card__text__arrow-icon"
-          aria-hidden="true"
-        />
+        {!hideArrow && (
+          <ForwardIcon
+            className="eds-media-card__arrow-icon"
+            aria-hidden="true"
+          />
+        )}
       </div>
     </BaseCard>
   );

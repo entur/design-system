@@ -44,7 +44,6 @@
     color: inherit;
     display: flex;
     flex-direction: column;
-    gap: t.$space-default;
     text-decoration: none;
     padding: 1.25rem t.$space-extra-large 0;
     &:focus {
@@ -77,10 +76,10 @@
         }
       }
     }
+  }
 
-    &__arrow-icon {
-      align-self: flex-end;
-      margin: t.$space-default 0 t.$space-large;
-    }
+  &__arrow-icon {
+    align-self: flex-end;
+    margin: t.$space-default 0 t.$space-large;
   }
 }
