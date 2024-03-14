@@ -25,7 +25,6 @@ import { ImportStatement } from '~/components/ImportStatement';
     <TabList>
       <Tab>Priser</Tab>
       <Tab>Detaljer</Tab>
-      <Tab disabled>Disabled</Tab>
       <Tab>Tom fane</Tab>
     </TabList>
     <TabPanels>
@@ -130,7 +129,7 @@ Her er et eksempel der man går fra 1 tab til en annen programmatisk:
 <ImportStatement imports="Tab" />
 <Props of={Tab} />
 
-`<Tab />` er hver av ark-fanene, og kan være `disabled` om man ønsker det. De inneholder som regel bare en enkel tekst.
+`<Tab />` er hver av ark-fanene. De inneholder som regel bare en enkel tekst.
 
 ### TabPanels
 
