@@ -1,5 +1,4 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/color-utils.scss' as util;
 
 $default-height: t.$space-extra-large3;
 $small-height: t.$space-extra-large;
@@ -9,11 +8,12 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
 .eds-floating-button {
   align-items: center;
   appearance: none;
-  background: t.$colors-brand-blue;
+  background: var(--components-button-floating-standard-default);
   border: 0;
   border-radius: calc($default-height / 2);
+  // TODO box shadow is not available as a variable yet, needs to be implemented
   box-shadow: t.$shadows-box-shadow;
-  color: t.$colors-brand-white;
+  color: var(--components-button-floating-standard-text);
   cursor: pointer;
   display: flex;
   font-family: inherit;
@@ -31,30 +31,31 @@ $small-padding: calc((36rem - 14rem) / 2 / 16);
     padding: 0 $default-padding;
   }
   &:hover {
-    background-color: util.tint(t.$colors-brand-blue, 10%);
+    background-color: var(--components-button-floating-standard-hover);
   }
   &:active {
-    background-color: util.shade(t.$colors-brand-blue, 10%);
+    background-color: var(--components-button-floating-standard-active);
   }
 
   &:focus {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 
   .eds-contrast & {
-    background: t.$colors-brand-white;
-    color: t.$colors-brand-blue;
+    background: var(--components-button-floating-contrast-default);
+    color: var(--components-button-floating-contrast-text);
+    // TODO box shadow is not available as a variable yet, needs to be implemented
     box-shadow: t.$shadows-box-shadow-contrast;
     &:hover {
-      background-color: util.tint(t.$colors-brand-lavender, 10%);
+      background-color: var(--components-button-floating-contrast-hover);
     }
     &:active {
-      background-color: util.shade(t.$colors-brand-white, 10%);
+      background-color: var(--components-button-floating-contrast-active);
     }
   }
 

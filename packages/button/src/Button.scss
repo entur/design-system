@@ -16,7 +16,6 @@ a.eds-button {
 
 .eds-button {
   min-width: 9.5rem;
-  border: t.$border-widths-default solid transparent;
   border-radius: t.$border-radiuses-medium;
   font-size: inherit;
   cursor: pointer;
@@ -32,18 +31,34 @@ a.eds-button {
   font-family: inherit;
   position: relative;
   vertical-align: top;
-  .eds-button__loading-dots {
-    width: 100%;
+
+  background-color: var(--eds-button-background);
+  border: t.$border-widths-default solid var(--eds-button-border);
+  color: var(--eds-button-text);
+
+  &:hover {
+    background-color: var(--eds-button-background-hover);
+  }
+  &:active {
+    background-color: var(--eds-button-background-active);
+    border-color: var(--eds-button-border-active);
+    color: var(--eds-button-text-active);
   }
   &:focus {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 
+  > .eds-button__loading-dots {
+    width: 100%;
+    .eds-loading-dots__dot {
+      background: var(--eds-button-text);
+    }
+  }
   .eds-icon {
     position: relative;
     top: 0.2em;
@@ -74,125 +89,86 @@ a.eds-button {
 
   //Variant
   &--variant-primary {
-    background-color: t.$colors-brand-blue;
-    color: t.$colors-brand-white;
-    > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-white;
-    }
-    &:hover {
-      background-color: util.tint(t.$colors-brand-blue, 10%);
-    }
-    &:active {
-      background-color: util.shade(t.$colors-brand-blue, 10%);
-    }
+    --eds-button-background: var(--components-button-primary-standard-default);
+    --eds-button-text: var(--components-button-primary-standard-text);
+    --eds-button-text-active: var(--components-button-primary-standard-text);
+    --eds-button-background-hover: var(--components-button-primary-standard-hover);
+    --eds-button-background-active: var(--components-button-primary-standard-active);
+    --eds-button-border: transparent;
+    --eds-button-border-active: transparent;
+
     .eds-contrast & {
-      background-color: t.$colors-brand-lavender;
-      color: t.$colors-brand-blue;
-      > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-blue;
-      }
-      &:hover {
-        background-color: util.tint(t.$colors-brand-lavender, 10%);
-      }
-      &:active {
-        background-color: util.shade(t.$colors-brand-lavender, 10%);
-      }
+      --eds-button-background: var(--components-button-primary-contrast-default);
+      --eds-button-text: var(--components-button-primary-contrast-text);
+      --eds-button-text-active: var(--components-button-primary-contrast-text);
+      --eds-button-background-hover: var(--components-button-primary-contrast-hover);
+      --eds-button-background-active: var(--components-button-primary-contrast-active);
+      --eds-button-border: transparent;
+      --eds-button-border-active: transparent;
     }
   }
-  &--variant-secondary {
-    background-color: transparent;
-    border: t.$border-widths-default solid t.$colors-blues-blue30;
-    color: t.$colors-brand-blue;
-    > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-blue;
-    }
-    &:hover {
-      background-color: util.tint(t.$colors-brand-lavender, 40%);
-    }
-    &:active {
-      background-color: t.$colors-brand-lavender;
-    }
-    .eds-contrast & {
-      background-color: transparent;
-      color: t.$colors-brand-white;
-      border-color: t.$colors-brand-lavender;
 
-      > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-white;
-      }
-      &:hover {
-        background-color: rgba(t.$colors-brand-lavender, 0.2);
-      }
-      &:active {
-        background: t.$colors-brand-lavender;
-        color: t.$colors-brand-blue;
-        > .eds-button__loading-dots .eds-loading-dots__dot {
-          background: t.$colors-brand-blue;
-        }
-      }
+  &--variant-secondary {
+    --eds-button-background: var(--components-button-secondary-standard-default);
+    --eds-button-text: var(--components-button-secondary-standard-text);
+    --eds-button-text-active: var(--components-button-secondary-standard-text-active);
+    --eds-button-background-hover: var(--components-button-secondary-standard-hover);
+    --eds-button-background-active: var(--components-button-secondary-standard-active);
+    --eds-button-border: var(--components-button-secondary-standard-border);
+    --eds-button-border-active: var(--components-button-secondary-standard-border-active);
+
+    .eds-contrast & {
+      --eds-button-background: var(--components-button-secondary-contrast-default);
+      --eds-button-text: var(--components-button-secondary-contrast-text);
+      --eds-button-text-active: var(--components-button-secondary-contrast-text-active);
+      --eds-button-background-hover: var(--components-button-secondary-contrast-hover);
+      --eds-button-background-active: var(--components-button-secondary-contrast-active);
+      --eds-button-border: var(--components-button-secondary-contrast-border);
+      --eds-button-border-active: var(--components-button-secondary-contrast-border-active);
     }
   }
 
   &--variant-success {
-    background-color: t.$colors-validation-mint-contrast;
-    color: t.$colors-brand-blue;
-    border: t.$border-widths-default solid t.$colors-blues-blue30;
-    border-radius: t.$border-radiuses-medium;
-    > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-blue;
-    }
-
-    &:hover {
-      background: rgba(util.tint(t.$colors-validation-mint-contrast, 10%), 0.4);
-    }
-    &:active {
-      background-color: util.shade(t.$colors-validation-mint-contrast, 10%);
-    }
+    --eds-button-background: var(--components-button-success-standard-default);
+    --eds-button-text: var(--components-button-success-standard-text);
+    --eds-button-text-active: var(--components-button-success-standard-text);
+    --eds-button-background-hover: var(--components-button-success-standard-hover);
+    --eds-button-background-active: var(--components-button-success-standard-active);
+    --eds-button-border: var(--components-button-success-standard-border);
+    --eds-button-border-active: var(--components-button-success-standard-border);
 
     .eds-contrast & {
-      border: none;
-      &:hover {
-        background: util.tint(t.$colors-validation-mint-contrast, 10%);
-      }
-      &:active {
-        background-color: util.shade(t.$colors-validation-mint-contrast, 10%);
-      }
+      --eds-button-background: var(--components-button-success-contrast-default);
+      --eds-button-text: var(--components-button-success-contrast-text);
+      --eds-button-text-active: var(--components-button-success-contrast-text);
+      --eds-button-background-hover: var(--components-button-success-contrast-hover);
+      --eds-button-background-active: var(--components-button-success-contrast-active);
+      --eds-button-border: var(--components-button-success-contrast-border);
+      --eds-button-border-active: var(--components-button-success-contrast-border);
     }
   }
 
   &--variant-negative {
-    background: transparent;
-    color: t.$colors-validation-lava;
-    border-color: t.$colors-validation-lava;
-    > .eds-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-validation-lava;
-    }
-    &:hover {
-      background-color: rgba(t.$colors-validation-lava, 0.2);
-    }
-    &:active {
-      background-color: t.$colors-validation-lava;
-      color: t.$colors-brand-white;
-      > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-white;
-      }
-    }
+    --eds-button-background: var(--components-button-negative-standard-default);
+    --eds-button-text: var(--components-button-negative-standard-text);
+    --eds-button-text-active: var(--components-button-negative-standard-text-active);
+    --eds-button-background-hover: var(--components-button-negative-standard-hover);
+    --eds-button-background-active: var(--components-button-negative-standard-active);
+    --eds-button-border: var(--components-button-negative-standard-border);
+    --eds-button-border-active: var(--components-button-negative-standard-border);
+
     .eds-contrast & {
-      color: t.$colors-brand-white;
-      border-color: t.$colors-validation-lava-contrast;
-      > .eds-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-white;
-      }
-      &:hover {
-        background-color: rgba(t.$colors-validation-lava-contrast, 0.2);
-      }
-      &:active {
-        background-color: t.$colors-validation-lava-contrast;
-        color: t.$colors-brand-blue;
-      }
+      --eds-button-background: var(--components-button-negative-contrast-default);
+      --eds-button-text: var(--components-button-negative-contrast-text);
+      --eds-button-text-active: var(--components-button-negative-contrast-text-active);
+      --eds-button-background-hover: var(--components-button-negative-contrast-hover);
+      --eds-button-background-active: var(--components-button-negative-contrast-active);
+      --eds-button-border: var(--components-button-negative-contrast-border);
+      --eds-button-border-active: var(--components-button-negative-contrast-border);
     }
   }
 
+  // tertiary is deprecated and does not have color variables
   &--variant-tertiary {
     font-size: t.$font-sizes-medium;
     border: t.$border-widths-small solid t.$colors-blues-blue30;
@@ -243,15 +219,15 @@ a.eds-button {
   }
 
   &[disabled]:not(.eds-button--loading) {
-    background: t.$colors-greys-grey80;
-    border-color: t.$colors-greys-grey80;
-    color: t.$colors-blues-blue40;
+    background: var(--components-button-disabled-standard-fill);
+    color: var(--components-button-disabled-standard-text-disabled);
+    border-color: transparent;
     cursor: not-allowed;
 
     .eds-contrast & {
-      background-color: t.$colors-blues-blue20;
-      border-color: t.$colors-blues-blue20;
-      color: t.$colors-brand-lavender;
+      background-color: var(--components-button-disabled-contrast-fill);
+      color: var(--components-button-disabled-contrast-text-disabled);
+      border-color: transparent;
     }
   }
 }

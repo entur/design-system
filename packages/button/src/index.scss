@@ -1,5 +1,7 @@
-// Used to register the styles as loaded!
 @use './componentColors.scss';
+@use '~@entur/tokens/dist/base.css';
+
+// Used to register the styles as loaded!
 :root {
   --eds-button: 1;
 }

@@ -56,7 +56,7 @@ export const Button: ButtonComponent = React.forwardRef(
     {
       as,
       children,
-      variant,
+      variant = 'primary',
       size = 'medium',
       loading,
       className,
