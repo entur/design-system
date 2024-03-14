@@ -300,6 +300,12 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "Fill/Selected/Default/DarkAlt",
+        "color": "#81828f",
+        "var": "Ebony/50",
+        "rootAlias": "Ebony/50"
+      },
+      {
         "name": "Fill/Selected/Default/Light",
         "color": "#f6f6f9",
         "var": "Blue/10",

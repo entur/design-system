@@ -68,6 +68,7 @@
   --components-travel-travelleg-standard-tram: var(--standard-tram);
   --components-travel-travelleg-standard-walk: var(--standard-walk);
   --components-travel-travelswitch-contrast-backgroundfalse: var(--fill-secondary-hover-contrast);
+  --components-travel-travelswitch-contrast-backgroundtrue-air: var(--contrast-airportlinkbus);
   --components-travel-travelswitch-contrast-backgroundtrue-bicycle: var(--contrast-bicycle);
   --components-travel-travelswitch-contrast-backgroundtrue-bus: var(--contrast-bus);
   --components-travel-travelswitch-contrast-backgroundtrue-cableway: var(--contrast-cableway);
@@ -79,10 +80,12 @@
   --components-travel-travelswitch-contrast-backgroundtrue-metro: var(--contrast-metro);
   --components-travel-travelswitch-contrast-backgroundtrue-mobility: var(--contrast-mobility);
   --components-travel-travelswitch-contrast-backgroundtrue-plane: var(--contrast-plane);
+  --components-travel-travelswitch-contrast-backgroundtrue-rail: var(--contrast-train);
   --components-travel-travelswitch-contrast-backgroundtrue-taxi: var(--contrast-taxi);
   --components-travel-travelswitch-contrast-backgroundtrue-train: var(--contrast-train);
   --components-travel-travelswitch-contrast-backgroundtrue-tram: var(--contrast-tram);
   --components-travel-travelswitch-contrast-backgroundtrue-walk: var(--contrast-walk);
+  --components-travel-travelswitch-contrast-backgroundtrue-water: var(--contrast-carferry);
   --components-travel-travelswitch-contrast-backgroundtrue-airportlinkbus: var(--contrast-airportlinkbus);
   --components-travel-travelswitch-contrast-backgroundtrue-airportlinkrail: var(--contrast-airportlinkrail);
   --components-travel-travelswitch-contrast-iconfalse: var(--fill-secondary-hover-contrast);
@@ -107,6 +110,7 @@
   --components-travel-travelswitch-contrast-switchfill-true: var(--fill-background-standard-light);
   --components-travel-travelswitch-contrast-text: var(--text-light);
   --components-travel-travelswitch-standard-backgroundfalse: var(--fill-boolean-false-light);
+  --components-travel-travelswitch-standard-backgroundtrue-air: var(--standard-airportlinkbus);
   --components-travel-travelswitch-standard-backgroundtrue-bicycle: var(--standard-bicycle);
   --components-travel-travelswitch-standard-backgroundtrue-bus: var(--standard-bus);
   --components-travel-travelswitch-standard-backgroundtrue-cableway: var(--standard-cableway);
@@ -118,10 +122,12 @@
   --components-travel-travelswitch-standard-backgroundtrue-metro: var(--standard-metro);
   --components-travel-travelswitch-standard-backgroundtrue-mobility: var(--standard-mobility);
   --components-travel-travelswitch-standard-backgroundtrue-plane: var(--standard-plane);
+  --components-travel-travelswitch-standard-backgroundtrue-rail: var(--standard-train);
   --components-travel-travelswitch-standard-backgroundtrue-taxi: var(--standard-taxi);
   --components-travel-travelswitch-standard-backgroundtrue-train: var(--standard-train);
   --components-travel-travelswitch-standard-backgroundtrue-tram: var(--standard-tram);
   --components-travel-travelswitch-standard-backgroundtrue-walk: var(--standard-walk);
+  --components-travel-travelswitch-standard-backgroundtrue-water: var(--standard-carferry);
   --components-travel-travelswitch-standard-backgroundtrue-airportlinkbus: var(--standard-airportlinkbus);
   --components-travel-travelswitch-standard-backgroundtrue-airportlinkrail: var(--standard-airportlinkrail);
   --components-travel-travelswitch-standard-iconfalse: var(--shape-neutral);
@@ -136,11 +142,14 @@
   --components-travel-travelswitch-standard-icontrue-metro: var(--standard-metro);
   --components-travel-travelswitch-standard-icontrue-mobility: var(--standard-mobility);
   --components-travel-travelswitch-standard-icontrue-plane: var(--standard-plane);
+  --components-travel-travelswitch-standard-icontrue-rail: var(--standard-train);
   --components-travel-travelswitch-standard-icontrue-taxi: var(--standard-taxi);
   --components-travel-travelswitch-standard-icontrue-train: var(--standard-train);
   --components-travel-travelswitch-standard-icontrue-tram: var(--standard-tram);
   --components-travel-travelswitch-standard-icontrue-walk: var(--standard-walk);
+  --components-travel-travelswitch-standard-icontrue-water: var(--standard-carferry);
   --components-travel-travelswitch-standard-icontrue-airportlinkbus: var(--standard-airportlinkbus);
+  --components-travel-travelswitch-standard-icontrue-airportlinkbus2: var(--standard-airportlinkbus);
   --components-travel-travelswitch-standard-icontrue-airportlinkrail: var(--standard-airportlinkrail);
   --components-travel-travelswitch-standard-switchfill-false: var(--fill-background-standard-light);
   --components-travel-travelswitch-standard-switchfill-true: var(--fill-background-standard-light);
@@ -161,6 +170,7 @@
   --components-travel-traveltag-contrast-icon-airportlinkbus-cancled: var(--contrast-airportlinkbus);
   --components-travel-traveltag-contrast-icon-airportlinkrail-cancled: var(--contrast-airportlinkrail);
   --components-travel-traveltag-contrast-iconborder-validation: var(--shape-accent);
+  --components-travel-traveltag-contrast-tagfill-air: var(--contrast-airportlinkbus);
   --components-travel-traveltag-contrast-tagfill-bicycle: var(--contrast-bicycle);
   --components-travel-traveltag-contrast-tagfill-bus: var(--contrast-bus);
   --components-travel-traveltag-contrast-tagfill-bus-cancled: var(--standard-bus-transparent);
@@ -180,6 +190,8 @@
   --components-travel-traveltag-contrast-tagfill-mobility: var(--contrast-mobility);
   --components-travel-traveltag-contrast-tagfill-plane: var(--contrast-plane);
   --components-travel-traveltag-contrast-tagfill-plane-cancled: var(--contrast-plane-transparent);
+  --components-travel-traveltag-contrast-tagfill-rail: var(--contrast-train);
+  --components-travel-traveltag-contrast-tagfill-rail-cancled: var(--contrast-train-transparent);
   --components-travel-traveltag-contrast-tagfill-taxi: var(--contrast-taxi);
   --components-travel-traveltag-contrast-tagfill-taxi-cancled: var(--contrast-taxi-transparent);
   --components-travel-traveltag-contrast-tagfill-train: var(--contrast-train);
@@ -187,7 +199,10 @@
   --components-travel-traveltag-contrast-tagfill-tram: var(--contrast-tram);
   --components-travel-traveltag-contrast-tagfill-tram-cancled: var(--contrast-tram-transparent);
   --components-travel-traveltag-contrast-tagfill-walk: var(--contrast-walk);
+  --components-travel-traveltag-contrast-tagfill-water: var(--contrast-carferry);
+  --components-travel-traveltag-contrast-tagfill-water-cancled: var(--contrast-carferry-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkbus-cancled: var(--contrast-airportlinkbus-transparent);
+  --components-travel-traveltag-contrast-tagfill-airportlinkbus-cancled2: var(--contrast-airportlinkbus-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkrail: var(--contrast-airportlinkrail);
   --components-travel-traveltag-contrast-tagfill-airportlinkrail-cancled: var(--contrast-airportlinkrail-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkbus: var(--contrast-airportlinkbus);
@@ -225,6 +240,8 @@
   --components-travel-traveltag-standard-icon-airportlinkrail-cancled: var(--standard-airportlinkrail);
   --components-travel-traveltag-standard-icon-cableway-cancled: var(--standard-cableway);
   --components-travel-traveltag-standard-iconborder-validation: var(--shape-light);
+  --components-travel-traveltag-standard-tagfill-air: var(--standard-airportlinkrail);
+  --components-travel-traveltag-standard-tagfill-air-cancled: var(--standard-airportlinkrail-transparent);
   --components-travel-traveltag-standard-tagfill-bicycle: var(--standard-bicycle);
   --components-travel-traveltag-standard-tagfill-bus: var(--standard-bus);
   --components-travel-traveltag-standard-tagfill-bus-cancled: var(--standard-bus-transparent);
@@ -244,6 +261,8 @@
   --components-travel-traveltag-standard-tagfill-mobility: var(--standard-mobility);
   --components-travel-traveltag-standard-tagfill-plane: var(--standard-plane);
   --components-travel-traveltag-standard-tagfill-plane-cancled: var(--standard-plane-transparent);
+  --components-travel-traveltag-standard-tagfill-rail: var(--standard-train);
+  --components-travel-traveltag-standard-tagfill-rail-cancled: var(--standard-train-transparent);
   --components-travel-traveltag-standard-tagfill-taxi: var(--standard-taxi);
   --components-travel-traveltag-standard-tagfill-taxi-cancled: var(--standard-taxi-transparent);
   --components-travel-traveltag-standard-tagfill-train: var(--standard-train);
@@ -251,6 +270,8 @@
   --components-travel-traveltag-standard-tagfill-tram: var(--standard-tram);
   --components-travel-traveltag-standard-tagfill-tram-cancled: var(--standard-tram-transparent);
   --components-travel-traveltag-standard-tagfill-walk: var(--fill-selected-default-neutral);
+  --components-travel-traveltag-standard-tagfill-water: var(--standard-carferry);
+  --components-travel-traveltag-standard-tagfill-water-cancled: var(--standard-carferry-transparent);
   --components-travel-traveltag-standard-tagfill-airportlinkbus: var(--standard-airportlinkbus);
   --components-travel-traveltag-standard-tagfill-airportlinkbus-cancled: var(--standard-airportlinkbus-transparent);
   --components-travel-traveltag-standard-tagfill-airportlinkrail: var(--standard-airportlinkrail);
@@ -341,6 +362,7 @@
   --components-travel-travelleg-standard-tram: var(--dark-tram);
   --components-travel-travelleg-standard-walk: var(--dark-walk);
   --components-travel-travelswitch-contrast-backgroundfalse: var(--fill-boolean-false-dark);
+  --components-travel-travelswitch-contrast-backgroundtrue-air: var(--dark-airportlinkbus);
   --components-travel-travelswitch-contrast-backgroundtrue-bicycle: var(--dark-bicycle);
   --components-travel-travelswitch-contrast-backgroundtrue-bus: var(--dark-bus);
   --components-travel-travelswitch-contrast-backgroundtrue-cableway: var(--dark-cableway);
@@ -352,10 +374,12 @@
   --components-travel-travelswitch-contrast-backgroundtrue-metro: var(--dark-metro);
   --components-travel-travelswitch-contrast-backgroundtrue-mobility: var(--dark-mobility);
   --components-travel-travelswitch-contrast-backgroundtrue-plane: var(--dark-plane);
+  --components-travel-travelswitch-contrast-backgroundtrue-rail: var(--dark-train);
   --components-travel-travelswitch-contrast-backgroundtrue-taxi: var(--dark-taxi);
   --components-travel-travelswitch-contrast-backgroundtrue-train: var(--dark-train);
   --components-travel-travelswitch-contrast-backgroundtrue-tram: var(--dark-tram);
   --components-travel-travelswitch-contrast-backgroundtrue-walk: var(--dark-walk);
+  --components-travel-travelswitch-contrast-backgroundtrue-water: var(--dark-carferry);
   --components-travel-travelswitch-contrast-backgroundtrue-airportlinkbus: var(--dark-airportlinkbus);
   --components-travel-travelswitch-contrast-backgroundtrue-airportlinkrail: var(--dark-airportlinkrail);
   --components-travel-travelswitch-contrast-iconfalse: var(--shape-darkalt);
@@ -380,6 +404,7 @@
   --components-travel-travelswitch-contrast-switchfill-true: var(--fill-background-standard-dark);
   --components-travel-travelswitch-contrast-text: var(--text-lightalt);
   --components-travel-travelswitch-standard-backgroundfalse: var(--fill-boolean-false-dark);
+  --components-travel-travelswitch-standard-backgroundtrue-air: var(--dark-airportlinkbus);
   --components-travel-travelswitch-standard-backgroundtrue-bicycle: var(--dark-bicycle);
   --components-travel-travelswitch-standard-backgroundtrue-bus: var(--dark-bus);
   --components-travel-travelswitch-standard-backgroundtrue-cableway: var(--dark-cableway);
@@ -391,10 +416,12 @@
   --components-travel-travelswitch-standard-backgroundtrue-metro: var(--dark-metro);
   --components-travel-travelswitch-standard-backgroundtrue-mobility: var(--dark-mobility);
   --components-travel-travelswitch-standard-backgroundtrue-plane: var(--dark-plane);
+  --components-travel-travelswitch-standard-backgroundtrue-rail: var(--dark-train);
   --components-travel-travelswitch-standard-backgroundtrue-taxi: var(--dark-taxi);
   --components-travel-travelswitch-standard-backgroundtrue-train: var(--dark-train);
   --components-travel-travelswitch-standard-backgroundtrue-tram: var(--dark-tram);
   --components-travel-travelswitch-standard-backgroundtrue-walk: var(--dark-walk);
+  --components-travel-travelswitch-standard-backgroundtrue-water: var(--dark-carferry);
   --components-travel-travelswitch-standard-backgroundtrue-airportlinkbus: var(--dark-airportlinkbus);
   --components-travel-travelswitch-standard-backgroundtrue-airportlinkrail: var(--dark-airportlinkrail);
   --components-travel-travelswitch-standard-iconfalse: var(--shape-darkalt);
@@ -409,11 +436,14 @@
   --components-travel-travelswitch-standard-icontrue-metro: var(--dark-metro);
   --components-travel-travelswitch-standard-icontrue-mobility: var(--contrast-mobility);
   --components-travel-travelswitch-standard-icontrue-plane: var(--dark-plane);
+  --components-travel-travelswitch-standard-icontrue-rail: var(--dark-train);
   --components-travel-travelswitch-standard-icontrue-taxi: var(--dark-taxi);
   --components-travel-travelswitch-standard-icontrue-train: var(--dark-train);
   --components-travel-travelswitch-standard-icontrue-tram: var(--dark-tram);
   --components-travel-travelswitch-standard-icontrue-walk: var(--dark-walk);
+  --components-travel-travelswitch-standard-icontrue-water: var(--dark-carferry);
   --components-travel-travelswitch-standard-icontrue-airportlinkbus: var(--dark-airportlinkbus);
+  --components-travel-travelswitch-standard-icontrue-airportlinkbus2: var(--dark-airportlinkbus);
   --components-travel-travelswitch-standard-icontrue-airportlinkrail: var(--dark-airportlinkrail);
   --components-travel-travelswitch-standard-switchfill-false: var(--fill-background-standard-dark);
   --components-travel-travelswitch-standard-switchfill-true: var(--fill-background-standard-dark);
@@ -434,6 +464,7 @@
   --components-travel-traveltag-contrast-icon-airportlinkbus-cancled: var(--dark-airportlinkbus);
   --components-travel-traveltag-contrast-icon-airportlinkrail-cancled: var(--dark-airportlinkrail);
   --components-travel-traveltag-contrast-iconborder-validation: var(--shape-dark);
+  --components-travel-traveltag-contrast-tagfill-air: var(--dark-airportlinkbus);
   --components-travel-traveltag-contrast-tagfill-bicycle: var(--dark-bicycle);
   --components-travel-traveltag-contrast-tagfill-bus: var(--dark-bus);
   --components-travel-traveltag-contrast-tagfill-bus-cancled: var(--dark-bus-transparent);
@@ -453,6 +484,8 @@
   --components-travel-traveltag-contrast-tagfill-mobility: var(--dark-mobility);
   --components-travel-traveltag-contrast-tagfill-plane: var(--dark-plane);
   --components-travel-traveltag-contrast-tagfill-plane-cancled: var(--dark-plane-transparent);
+  --components-travel-traveltag-contrast-tagfill-rail: var(--dark-train);
+  --components-travel-traveltag-contrast-tagfill-rail-cancled: var(--dark-train-transparent);
   --components-travel-traveltag-contrast-tagfill-taxi: var(--dark-taxi);
   --components-travel-traveltag-contrast-tagfill-taxi-cancled: var(--dark-taxi-transparent);
   --components-travel-traveltag-contrast-tagfill-train: var(--dark-train);
@@ -460,7 +493,10 @@
   --components-travel-traveltag-contrast-tagfill-tram: var(--dark-tram);
   --components-travel-traveltag-contrast-tagfill-tram-cancled: var(--dark-tram-transparent);
   --components-travel-traveltag-contrast-tagfill-walk: var(--dark-walk);
+  --components-travel-traveltag-contrast-tagfill-water: var(--dark-carferry);
+  --components-travel-traveltag-contrast-tagfill-water-cancled: var(--dark-carferry-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkbus-cancled: var(--dark-airportlinkbus-transparent);
+  --components-travel-traveltag-contrast-tagfill-airportlinkbus-cancled2: var(--dark-airportlinkbus-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkrail: var(--dark-airportlinkrail);
   --components-travel-traveltag-contrast-tagfill-airportlinkrail-cancled: var(--dark-airportlinkrail-transparent);
   --components-travel-traveltag-contrast-tagfill-airportlinkbus: var(--dark-airportlinkbus);
@@ -498,6 +534,8 @@
   --components-travel-traveltag-standard-icon-airportlinkrail-cancled: var(--dark-airportlinkrail);
   --components-travel-traveltag-standard-icon-cableway-cancled: var(--dark-cableway);
   --components-travel-traveltag-standard-iconborder-validation: var(--shape-dark);
+  --components-travel-traveltag-standard-tagfill-air: var(--dark-airportlinkrail);
+  --components-travel-traveltag-standard-tagfill-air-cancled: var(--dark-airportlinkrail-transparent);
   --components-travel-traveltag-standard-tagfill-bicycle: var(--dark-bicycle);
   --components-travel-traveltag-standard-tagfill-bus: var(--dark-bus);
   --components-travel-traveltag-standard-tagfill-bus-cancled: var(--dark-bus-transparent);
@@ -517,6 +555,8 @@
   --components-travel-traveltag-standard-tagfill-mobility: var(--dark-mobility);
   --components-travel-traveltag-standard-tagfill-plane: var(--dark-plane);
   --components-travel-traveltag-standard-tagfill-plane-cancled: var(--dark-plane-transparent);
+  --components-travel-traveltag-standard-tagfill-rail: var(--dark-train);
+  --components-travel-traveltag-standard-tagfill-rail-cancled: var(--dark-train-transparent);
   --components-travel-traveltag-standard-tagfill-taxi: var(--dark-taxi);
   --components-travel-traveltag-standard-tagfill-taxi-cancled: var(--dark-taxi-transparent);
   --components-travel-traveltag-standard-tagfill-train: var(--dark-train);
@@ -524,6 +564,8 @@
   --components-travel-traveltag-standard-tagfill-tram: var(--dark-tram);
   --components-travel-traveltag-standard-tagfill-tram-cancled: var(--dark-tram-transparent);
   --components-travel-traveltag-standard-tagfill-walk: var(--dark-walk);
+  --components-travel-traveltag-standard-tagfill-water: var(--dark-carferry);
+  --components-travel-traveltag-standard-tagfill-water-cancled: var(--dark-carferry-transparent);
   --components-travel-traveltag-standard-tagfill-airportlinkbus: var(--dark-airportlinkbus);
   --components-travel-traveltag-standard-tagfill-airportlinkbus-cancled: var(--dark-airportlinkbus-transparent);
   --components-travel-traveltag-standard-tagfill-airportlinkrail: var(--dark-airportlinkrail);
