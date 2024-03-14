@@ -6,112 +6,102 @@
 }
 $modal-animation-duration: t.$timings-medium;
 
-.eds-modal__overlay {
-  background: rgba(black, 0.5);
-  bottom: 0;
-  display: flex;
-  left: 0;
-  overflow: hidden;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: t.$z-indexes-overlay;
+.eds-modal {
+  &__overlay {
+    background: rgba(black, 0.5);
+    bottom: 0;
+    display: flex;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: t.$z-indexes-overlay;
 
-  animation: fadeInOverlay;
-  animation-duration: $modal-animation-duration;
-  animation-timing-function: ease-in-out;
-}
-
-.eds-modal__content {
-  background: var(--primary-background-color);
-  border-radius: 0.75rem;
-  color: var(--primary-text-color);
-  margin: auto;
-  padding: t.$space-large;
-  position: relative;
-  outline-offset: t.$outline-offsets-focus;
-  width: 100%;
-  max-height: 90vh;
-  overflow: auto;
-  z-index: t.$z-indexes-modal;
-
-  animation: slideInContent;
-  animation-duration: $modal-animation-duration;
-  animation-timing-function: ease-in-out;
-
-  &--align {
-    &-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    &-end {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
+    animation: fadeInOverlay;
+    animation-duration: $modal-animation-duration;
+    animation-timing-function: ease-in-out;
   }
 
-  &--size-extraSmall {
-    max-width: 21rem;
+  &__content {
+    background: var(--components-modal-modal-standard-fill);
+    border: 1px solid var(--components-modal-modal-standard-border);
+    border-radius: 0.75rem;
+    color: var(--components-modal-modal-standard-text);
+    margin: auto;
     padding: t.$space-large;
-  }
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    z-index: t.$z-indexes-modal;
 
-  &--size-small {
-    max-width: 28.125rem;
-    padding: t.$space-extra-large2;
-  }
+    animation: slideInContent;
+    animation-duration: $modal-animation-duration;
+    animation-timing-function: ease-in-out;
 
-  &--size-medium {
-    max-width: 45rem;
-    padding: t.$space-extra-large3;
-  }
+    &--align {
+      &-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  &--size-large {
-    max-width: 56.25rem;
-    padding: t.$space-extra-large3;
-  }
+      &-end {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
 
-  &--size-extraLarge {
-    max-width: 78.75rem;
-    padding: t.$space-extra-large3;
-  }
+    &--size-extraSmall {
+      max-width: 21rem;
+      padding: t.$space-large;
+    }
 
-  &::-webkit-scrollbar {
-    width: 16px;
-  }
-  &::-webkit-scrollbar-track {
-    margin-block: t.$space-extra-small;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: lightgrey;
-    border: 4px solid transparent;
-    border-radius: 8px;
-    background-clip: padding-box;
-    &:hover {
-      background-color: grey;
+    &--size-small {
+      max-width: 28.125rem;
+      padding: t.$space-extra-large2;
+    }
+
+    &--size-medium {
+      max-width: 45rem;
+      padding: t.$space-extra-large3;
+    }
+
+    &--size-large {
+      max-width: 56.25rem;
+      padding: t.$space-extra-large3;
+    }
+
+    &--size-extraLarge {
+      max-width: 78.75rem;
+      padding: t.$space-extra-large3;
+    }
+
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+    &::-webkit-scrollbar-track {
+      margin-block: t.$space-extra-small;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgrey;
+      border: 4px solid transparent;
+      border-radius: 8px;
+      background-clip: padding-box;
+      &:hover {
+        background-color: grey;
+      }
     }
   }
-}
 
-.eds-modal__close {
-  appearance: none;
-  background: none;
-  border: none;
-  border-radius: 0;
-  font-size: inherit;
-  color: inherit;
-  position: absolute;
-  top: t.$space-medium;
-  right: t.$space-medium;
-  padding: t.$space-extra-small;
-  cursor: pointer;
-  &:focus {
-    outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
+  &__close {
+    position: absolute;
+    top: t.$space-medium;
+    right: t.$space-medium;
+    color: var(--components-modal-modal-standard-icon);
   }
 }
 
