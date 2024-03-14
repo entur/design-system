@@ -220,7 +220,15 @@ function outputComponentColorsFile(
       return;
     }
 
-    const outputString = generateComponentColorsString(variablesForPackage);
+    let outputString = '';
+    if (packageName === 'layout') {
+      outputString = generateComponentColorsString(
+        variablesForPackage,
+        '@import',
+      );
+    } else {
+      outputString = generateComponentColorsString(variablesForPackage);
+    }
 
     fs.outputFileSync(
       path.resolve(__dirname, '../../', packageName, 'src', `${name}.scss`),
