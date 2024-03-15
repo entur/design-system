@@ -3,15 +3,18 @@
 .eds-base-card {
   display: flex;
   box-shadow: t.$shadows-card-shadow;
-  border: t.$border-widths-small solid t.$colors-greys-grey70;
+  background-color: var(--components-layout-card-standard-fill-default);
+  border: t.$border-widths-small solid var(--components-layout-card-standard-border-default);
+  color: var(--components-layout-card-standard-text);
   border-radius: t.$border-radiuses-medium;
   align-items: center;
   appearance: none;
   text-decoration: none;
-  color: inherit;
+
   .eds-contrast & {
-    background-color: t.$colors-blues-blue10;
-    border-color: t.$colors-blues-blue30;
+    background-color: var(--components-layout-card-contrast-fill-default);
+    border-color: var(--components-layout-card-contrast-border-default);
     box-shadow: t.$shadows-card-shadow-contrast;
+    color: var(--components-layout-card-contrast-text);
   }
 }

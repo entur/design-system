@@ -1,4 +1,6 @@
 // Used to register the styles as loaded!
+@use "./componentColors.scss";
+@import '~@entur/tokens/dist/base.css';
 :root {
   --eds-layout: 1;
 }

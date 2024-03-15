@@ -30,17 +30,6 @@
     line-height: t.$line-heights-small;
     padding: 1.25rem t.$space-default t.$space-extra-small2;
 
-    &__placeholder {
-      color: t.$colors-blues-blue30;
-      height: t.$line-heights-small;
-
-      .eds-contrast & {
-        color: t.$colors-blues-blue40;
-        &--readonly {
-          color: t.$colors-brand-lavender;
-        }
-      }
-    }
     &:focus-visible {
       outline: none;
     }
@@ -93,6 +82,10 @@
           &:focus {
             box-shadow: t.$shadows-focus;
           }
+          &__close-button svg {
+            width: 1rem;
+            height: 1rem;
+          }
         }
       }
     }
@@ -117,9 +110,7 @@
       padding-left: 0;
       margin-left: t.$space-default;
       top: 0;
-      transition: top t.$timings-medium ease-in-out,
-        font-size t.$timings-medium ease-in-out,
-        padding t.$timings-medium ease-in-out,
+      transition: top t.$timings-medium ease-in-out, font-size t.$timings-medium ease-in-out, padding t.$timings-medium ease-in-out,
         line-height ease-in-out t.$timings-medium;
     }
 
@@ -144,10 +135,10 @@
 
     // Override for Windows
     & option {
-      color: t.$colors-brand-blue;
-      background-color: t.$colors-brand-white;
+      color: var(--components-form-basemenu-text);
+      background-color: var(--components-form-basemenu-fill-default);
       .eds-contrast & {
-        color: t.$colors-brand-blue;
+        color: var(--components-form-basemenu-text);
       }
     }
   }

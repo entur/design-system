@@ -17,7 +17,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
     { className, children, value, disabled = false, name, style, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
-    const classList = cx(className, 'eds-chip', 'eds-filter-chip');
+    const classList = cx(className, 'eds-filter-chip');
 
     return (
       <label className={classList} style={style}>
@@ -30,10 +30,12 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
           disabled={disabled}
           {...rest}
         />
-        <span className="eds-filter-chip__icon">
-          <CheckboxIcon />
-        </span>
-        {children}
+        <div className="eds-chip">
+          <span className="eds-filter-chip__icon">
+            <CheckboxIcon />
+          </span>
+          {children}
+        </div>
       </label>
     );
   },
@@ -43,15 +45,17 @@ const CheckboxIcon: React.FC = () => {
   return (
     <svg
       className="eds-filter-chip-icon"
-      width="11px"
-      height="9px"
-      viewBox="6 11 37 33"
-      aria-hidden
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         className="eds-filter-chip-icon__path"
-        d="M14.1 27.2l7.1 7.2 14.6-14.8"
-        fill="none"
+        d="M1.71283 7.10801L5.6464 11.1377C5.84098 11.3371 6.16095 11.339 6.35786 11.1419L14.2916 3.20325"
+        stroke="#181C56"
+        strokeWidth="2"
       />
     </svg>
   );

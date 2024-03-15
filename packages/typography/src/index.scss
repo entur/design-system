@@ -1,40 +1,41 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/base.css';
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+@use './componentColors.scss';
 @use './fonts.scss';
+
 @import '~normalize-scss';
 
-@mixin for-desktop {
-  @media screen and (min-width: #{t.$breakpoints-large}) {
-    @content;
-  }
-}
-
+[data-color-mode='light'],
+[data-color-mode='dark'],
 :root {
   --eds-typography: 1; // Register that the styles are loaded!
-  --primary-background-color: #{t.$colors-brand-white};
-  --primary-text-color: #{t.$colors-brand-blue};
-  --primary-label-color: #{t.$colors-blues-blue40};
-  --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+  --primary-background-color: var(--basecolors-frame-default);
+  --primary-text-color: var(--components-typography-basetext-standard-text-accent);
+  --primary-label-color: var(--components-typography-label-standard-text-accent);
+  --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     'Helvetica Neue', sans-serif;
 
-  @media (prefers-color-scheme: dark) {
-    // TODO: We still need a design for this
-  }
-}
-
-// Base styles
-// These styles will propagate across the project
-html {
-  background-color: t.$colors-brand-white;
-  background-color: var(--primary-background-color);
+  // Base styles
+  // These styles will propagate across the project
   box-sizing: border-box;
-  color: t.$colors-brand-blue; // ie fallback
   color: var(--primary-text-color);
-  font-family: var(--eds-font-family);
+  background-color: var(--primary-background-color);
+  font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
   font-weight: t.$font-weights-body;
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-large;
+
+  .eds-contrast {
+    --primary-background-color: var(--basecolors-frame-contrast);
+    --primary-text-color: var(--components-typography-basetext-contrast-text-accent);
+    --primary-label-color: var(--components-typography-label-contrast-text-accent);
+
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+  }
 
   @include for-desktop {
     font-size: t.$font-sizes-large;
@@ -56,8 +57,6 @@ html {
 .eds-h4,
 .eds-h5,
 .eds-h6 {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
   font-weight: t.$font-weights-heading;
   -webkit-font-smoothing: antialiased;
 }
@@ -66,6 +65,7 @@ html {
   font-size: t.$font-sizes-extra-large2;
   line-height: t.$line-heights-extra-large5;
   margin: 0 0 t.$space-default;
+
   @include for-desktop {
     font-size: t.$font-sizes-extra-large5;
     line-height: t.$line-heights-extra-large7;
@@ -75,6 +75,7 @@ html {
   font-size: t.$font-sizes-extra-large;
   line-height: t.$line-heights-extra-large4;
   margin: t.$space-extra-large 0 t.$space-small;
+
   @include for-desktop {
     font-size: t.$font-sizes-extra-large4;
     line-height: t.$line-heights-extra-large6;
@@ -84,6 +85,7 @@ html {
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-extra-large;
   margin: t.$space-large 0 t.$space-extra-small;
+
   @include for-desktop {
     font-size: t.$font-sizes-extra-large2;
     line-height: t.$line-heights-extra-large4;
@@ -93,6 +95,7 @@ html {
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-large;
   margin: t.$space-large 0 0;
+
   @include for-desktop {
     font-size: t.$font-sizes-extra-large;
     line-height: t.$line-heights-extra-large3;
@@ -102,16 +105,17 @@ html {
   font-size: t.$font-sizes-small;
   line-height: t.$line-heights-medium;
   margin: t.$space-large 0 0;
+
   @include for-desktop {
     font-size: t.$font-sizes-large;
     line-height: t.$line-heights-extra-large;
   }
 }
-
 .eds-h6 {
   font-size: t.$font-sizes-small;
   line-height: t.$line-heights-medium;
   margin: t.$space-large 0 0;
+
   @include for-desktop {
     font-size: t.$font-sizes-medium;
     line-height: t.$line-heights-large;
@@ -120,32 +124,26 @@ html {
 
 // Body text and inline element styling
 .eds-paragraph {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-extra-large;
   margin: 0 0 t.$space-extra-large;
+
   @include for-desktop {
     font-size: t.$font-sizes-large;
     line-height: t.$line-heights-extra-large;
   }
 }
-
 .eds-lead-paragraph {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
   font-size: 1.25rem;
   line-height: 1.875rem;
   margin: t.$space-large 0;
+
   @include for-desktop {
     font-size: t.$font-sizes-extra-large;
     line-height: t.$line-heights-extra-large4;
   }
 }
-
 .eds-sub-paragraph {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-medium;
 
@@ -153,12 +151,10 @@ html {
     line-height: t.$line-heights-large;
   }
 }
-
 .eds-small-text {
-  color: inherit; // ie fallback
-  color: var(--primary-text-color);
   font-size: t.$font-sizes-extra-small;
   line-height: t.$line-heights-small;
+
   @include for-desktop {
     font-size: t.$font-sizes-small;
     line-height: t.$line-heights-medium;
@@ -166,20 +162,16 @@ html {
 }
 
 .eds-link {
+  color: var(--primary-text-color);
+
   &,
   &:link,
   &:visited {
-    color: inherit; // ie fallback
-    color: var(--primary-text-color);
     font-size: inherit;
     text-decoration: none;
     position: relative;
 
-    background-image: linear-gradient(
-      120deg,
-      t.$colors-brand-blue 0%,
-      t.$colors-brand-blue 100%
-    );
+    background-image: linear-gradient(120deg, var(--primary-text-color) 0%, var(--primary-text-color) 100%);
     background-repeat: no-repeat;
     background-size: 100% 0.125rem;
     background-position: 0 100%;
@@ -189,13 +181,6 @@ html {
     cursor: pointer;
   }
 
-  .eds-contrast & {
-    background-image: linear-gradient(
-      120deg,
-      t.$colors-brand-white 0%,
-      t.$colors-brand-white 100%
-    );
-  }
   @keyframes eds-link-underline {
     from {
       background-size: 0% 0.125rem;
@@ -206,11 +191,12 @@ html {
   }
 
   &:focus {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
+
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 
@@ -230,7 +216,6 @@ html {
 
 .eds-label,
 .eds-sub-label {
-  color: t.$colors-blues-blue40; // ie fallback
   color: var(--primary-label-color);
 }
 
@@ -260,14 +245,17 @@ html {
   font-style: italic;
 }
 
-.eds-preformatted-text {
-  background-color: t.$colors-greys-grey90;
-  border: t.$border-widths-small solid t.$colors-greys-grey70;
+.eds-preformatted-text,
+.eds-code-text {
+  background-color: var(--components-typography-codetext-standard-fill);
+  border: t.$border-widths-small solid var(--components-typography-codetext-standard-border);
   border-radius: t.$border-radiuses-medium;
-  color: t.$colors-greys-grey40;
+  color: var(--components-typography-codetext-standard-text);
   font-family: 'Monaco', monospace;
   font-size: t.$font-sizes-medium;
-  padding: 1em;
+}
+.eds-preformatted-text {
+  padding: 1rem;
   white-space: pre-wrap;
   word-break: keep-all;
 }
@@ -276,12 +264,6 @@ html {
   display: inline-block;
   word-wrap: break-word;
   overflow-wrap: anywhere;
-  background-color: t.$colors-greys-grey90;
-  border: t.$border-widths-small solid t.$colors-greys-grey70;
-  border-radius: t.$border-radiuses-medium;
-  color: t.$colors-greys-grey40;
-  font-family: 'Monaco', monospace;
-  font-size: t.$font-sizes-medium; // Slightly smaller than
   padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small2;
 }
 
@@ -293,9 +275,9 @@ html {
 .eds-unordered-list {
   list-style: none;
   .eds-list-item {
-    &:before {
+    &::before {
       content: '';
-      background: t.$colors-brand-lavender;
+      background: var(--components-typography-list-standard-border);
       display: block;
       height: t.$border-widths-medium;
       left: -1.75rem;
@@ -358,12 +340,11 @@ html {
   position: relative;
 
   &::before {
-    color: inherit; // ie fallback
     color: var(--primary-text-color);
     position: absolute;
     font-weight: t.$font-weights-heading;
     left: -(t.$space-extra-large2);
-    border: t.$border-widths-medium solid t.$colors-brand-lavender;
+    border: t.$border-widths-medium solid var(--components-typography-list-standard-border);
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -385,13 +366,14 @@ html {
 }
 
 .eds-blockquote {
-  border-left: t.$border-widths-large solid t.$colors-blues-blue60;
+  border-left: t.$border-widths-large solid var(--components-typography-blockquote-standard-stroke);
   font-family: inherit;
   font-size: 1.25rem;
   line-height: t.$line-heights-extra-large3;
   margin: 0;
   padding: t.$space-extra-small;
   padding-left: t.$space-extra-large;
+
   &__footer {
     font-size: t.$font-sizes-medium;
     line-height: t.$line-heights-large;

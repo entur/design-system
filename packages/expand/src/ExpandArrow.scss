@@ -1,9 +1,13 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-expandable-arrow {
+  color: var(--components-expand-expandablepanel-standard-icon);
   transition: (t.$timings-fast + t.$timings-fast) transform ease-out;
   &--open {
     transform: rotate(-180deg);
+  }
+  .eds-contrast & {
+    color: var(--components-expand-expandablepanel-contrast-icon);
   }
 }
 

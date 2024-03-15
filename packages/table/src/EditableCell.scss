@@ -9,103 +9,17 @@
     padding: 0.125rem t.$space-extra-small;
   }
 
-  &.eds-editable-cell--outlined {
-    .eds-form-control-wrapper {
-      border-color: t.$colors-greys-grey60;
-      background: t.$colors-brand-white;
-      .eds-contrast & {
-        border-color: t.$colors-blues-blue20;
-        color: t.$colors-brand-blue;
-      }
-    }
-  }
-  .eds-form-control-wrapper {
-    background: t.$colors-brand-white;
-    &::before,
-    &::after {
-      opacity: 0;
-    }
-
-    .eds-table__row:hover & {
-      border-color: t.$colors-greys-grey60;
-      background: t.$colors-brand-white;
-      &:active,
-      &:focus-within {
-        outline-offset: t.$outline-offsets-focus;
-        border: t.$border-widths-small solid t.$colors-brand-blue;
-        border-radius: t.$border-radiuses-medium;
-        .eds-contrast & {
-          border-color: t.$colors-brand-lavender;
-        }
-      }
-      .eds-contrast & {
-        border-color: t.$colors-blues-blue20;
-        color: t.$colors-brand-blue;
-      }
-    }
-    &:active,
-    &:focus-within {
-      outline-offset: t.$outline-offsets-focus;
-      border: t.$border-widths-small solid t.$colors-brand-blue;
-      border-radius: t.$border-radiuses-medium;
-      .eds-contrast & {
-        border-color: t.$colors-brand-lavender;
-        background: t.$colors-brand-white;
-        color: t.$colors-brand-blue;
-      }
-    }
-    &--error {
-      .eds-table__row:hover & {
-        &:active,
-        &:focus-within {
-          border-color: transparent;
-        }
-      }
-      &:active,
-      &:focus-within {
-        border-color: transparent;
-      }
-      &::before,
-      &::after {
-        opacity: 1;
-      }
-    }
-    font-family: inherit;
-    font-size: t.$font-sizes-large;
-    line-height: t.$line-heights-medium;
-    margin: 0;
-    text-transform: none;
-    color: inherit;
-    background: none;
-    text-align: inherit;
-    margin: 0 0;
-    width: 100%;
-    border: t.$border-widths-small solid transparent;
-    border-radius: t.$border-radiuses-medium;
-    line-height: t.$line-heights-extra-large;
-    min-height: 24px;
-    background: t.$colors-brand-white;
-    color: inherit;
-    .eds-contrast & {
-      color: t.$colors-brand-white;
-      background: transparent;
-      transition: background ease-in-out t.$timings-fast;
-    }
+  // input-sizes
+  .eds-form-control-wrapper:not(.eds-datepicker__datefield) {
+    min-height: 0;
     .eds-form-control {
       padding: t.$space-small;
-      &:hover,
-      &:active {
-        .eds-contrast & {
-          color: t.$colors-brand-blue;
-        }
-      }
+
       .eds-table--middle & {
-        padding: t.$space-extra-small2
-          calc(#{t.$space-extra-small} - #{t.$border-widths-small});
+        padding: t.$space-extra-small2 calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }
       .eds-table--small & {
-        padding: calc(#{t.$space-extra-small2} - 0.125rem)
-          calc(#{t.$space-extra-small} - #{t.$border-widths-small});
+        padding: calc(#{t.$space-extra-small2} - 0.125rem) calc(#{t.$space-extra-small} - #{t.$border-widths-small});
       }
     }
   }

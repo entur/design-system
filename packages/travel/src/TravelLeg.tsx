@@ -23,9 +23,15 @@ export const TravelLeg: React.FC<TravelLegProps> = ({
   direction,
   ...rest
 }) => {
-  const { backgroundColor, contrastBackgroundColor, pattern } =
-    getTransportStyle(transport);
+  const { pattern } = getTransportStyle(transport);
   const isContrast = useContrast();
+  const deCapitalizeTransport = transport.toLowerCase();
+
+  console.log('deCapitalizeTransport', deCapitalizeTransport);
+  const backgroundColor =
+    'var(--components-travel-travelleg-standard-' + deCapitalizeTransport + ')';
+  const contrastBackgroundColor =
+    'var(--components-travel-travelleg-contrast-' + deCapitalizeTransport + ')';
 
   return (
     <LegBone

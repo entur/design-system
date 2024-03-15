@@ -1,4 +1,6 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
+@use "./componentColors.scss";
+@use '~@entur/tokens/dist/base.css';
 
 :root {
   --reach-tabs: 1; // We want to do the styling ourselves
@@ -20,13 +22,13 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: t.$colors-greys-grey60;
+    background-color: var(--components-tab-standard-border);
     display: block;
     height: t.$border-widths-default;
     width: inherit;
     z-index: t.$z-indexes-behind;
     .eds-contrast & {
-      background-color: t.$colors-brand-lavender;
+      background-color: var(--components-tab-contrast-border);
     }
   }
 
@@ -37,10 +39,10 @@
 
 .eds-tab {
   appearance: none;
-  background: t.$colors-greys-grey80;
-  border: t.$border-widths-default solid t.$colors-greys-grey80;
+  background: var(--components-tab-standard-fill-unselected);
+  border: t.$border-widths-default solid transparent;
   border-radius: t.$border-radiuses-medium t.$border-radiuses-medium 0 0;
-  color: t.$colors-brand-blue;
+  color: var(--components-tab-standard-text);
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
@@ -55,17 +57,15 @@
     min-width: 0;
   }
   .eds-contrast & {
-    background-color: t.$colors-blues-blue30;
-    border-color: t.$colors-blues-blue30;
-    color: t.$colors-brand-white;
+    background-color: var(--components-tab-contrast-fill-unselected);
+    color: var(--components-tab-contrast-text);
   }
   &:hover {
-    background-color: t.$colors-greys-grey60;
-    border-color: t.$colors-greys-grey60;
+    background-color: var(--components-tab-standard-fill-hover);
+    color: var(--components-menu-tableofcontent-standard-text-selected);
     .eds-contrast & {
-      background-color: t.$colors-brand-lavender;
-      border-color: t.$colors-brand-lavender;
-      color: t.$colors-brand-blue;
+      background-color: var(--components-tab-contrast-fill-hover);
+      color: var(--components-tab-contrast-text);
     }
   }
 
@@ -80,32 +80,33 @@
     bottom: -(t.$border-widths-default);
     left: -(t.$border-widths-default);
     right: -(t.$border-widths-default);
-    background-color: t.$colors-greys-grey60;
+    background-color: var(--components-tab-standard-border);
+
     display: block;
     height: t.$border-widths-default;
     .eds-contrast & {
-      background-color: t.$colors-brand-lavender;
+      background-color: var(--components-tab-contrast-border);
     }
   }
 
   &[aria-selected='true'] {
-    background-color: t.$colors-brand-white;
-    border-color: t.$colors-greys-grey60;
-    color: t.$colors-brand-blue;
+    background-color: var(--components-tab-standard-fill-selected);
+    border-color: var(--components-tab-standard-border);
+    color: var(--components-tab-standard-text);
     font-weight: t.$font-weights-heading;
 
     .eds-contrast & {
-      background-color: t.$colors-brand-blue;
-      color: t.$colors-brand-white;
-      border-color: t.$colors-brand-lavender;
+      background-color: var(--components-tab-contrast-fill-selected);
+      color: var(--components-tab-contrast-text);
+      border-color: var(--components-tab-contrast-border);
     }
 
     &::after {
-      background-color: t.$colors-brand-white;
+      background-color: var(--components-tab-standard-fill-selected);
       left: 0;
       right: 0;
       .eds-contrast & {
-        background-color: t.$colors-brand-blue;
+        background-color: var(--components-tab-contrast-fill-selected);
       }
     }
 
@@ -115,7 +116,7 @@
       margin: 0 auto;
       width: t.$space-extra-large;
       height: 3px;
-      background: t.$colors-brand-coral;
+      background: var(--components-tab-standard-underline-selected);
       position: absolute;
       bottom: t.$space-extra-small2;
       left: 0;
@@ -127,22 +128,24 @@
   }
 
   &[disabled] {
-    background: t.$colors-greys-grey90;
-    border-color: t.$colors-greys-grey90;
-    color: t.$colors-greys-grey60;
-    pointer-events: none;
+    background: var(--components-tab-standard-fill-disabled);
+    border-color: none;
+    color: var(--components-tab-standard-text-disabled);
+    cursor: not-allowed;
     .eds-contrast & {
-      background: t.$colors-blues-blue10;
-      border-color: t.$colors-blues-blue10;
-      color: t.$colors-blues-blue60;
+      background: var(--components-tab-contrast-fill-disabled);
+      border-color: none;
+      color: var(--components-tab-contrast-text-disabled);
     }
   }
 
   &:focus {
-    outline: none;
-    box-shadow: t.$shadows-focus;
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }
@@ -153,11 +156,12 @@
 
 .eds-tab-panel {
   &:focus {
-    outline: none;
-    box-shadow: t.$shadows-focus;
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+
     .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }

@@ -1,4 +1,5 @@
-@use '../../tokens/dist/styles.scss' as t;
+@import '~@entur/tokens/dist/base.css';
+@import '~@entur/tokens/dist/transport.css';
 
 :root {
   --eds-icons: 1;
@@ -14,47 +15,89 @@ p .eds-icon {
   fill: currentColor;
 }
 
-.eds-contrast .eds-icon {
+.eds-icon {
   &__metro {
-    color: t.$colors-transport-contrast-metro;
+    color: var(--basecolors-shape-metro-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-metro-contrast);
+    }
   }
   &__bus {
-    color: t.$colors-transport-contrast-bus;
+    color: var(--basecolors-shape-bus-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-bus-contrast);
+    }
   }
   &__plane {
-    color: t.$colors-transport-contrast-plane;
+    color: var(--basecolors-shape-plane-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-plane-contrast);
+    }
   }
   &__helicopter {
-    color: t.$colors-transport-contrast-helicopter;
+    color: var(--basecolors-shape-helicopter-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-helicopter-contrast);
+    }
   }
   &__tram {
-    color: t.$colors-transport-contrast-tram;
+    color: var(--basecolors-shape-tram-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-tram-contrast);
+    }
   }
   &__funicular {
-    color: t.$colors-transport-contrast-funicular;
+    color: var(--basecolors-shape-funicular-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-funicular-contrast);
+    }
   }
   &__cableway {
-    color: t.$colors-transport-contrast-cableway;
+    color: var(--basecolors-shape-cableway-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-cableway-contrast);
+    }
   }
   &__taxi {
-    color: t.$colors-transport-contrast-taxi;
+    color: var(--basecolors-shape-taxi-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-taxi-contrast);
+    }
   }
   &__bicycle {
-    color: t.$colors-transport-contrast-bicycle;
+    color: var(--basecolors-shape-bicycle-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-bicycle-contrast);
+    }
   }
   &__walk {
-    color: t.$colors-transport-contrast-walk;
+    color: var(--basecolors-shape-walk-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-walk-contrast);
+    }
   }
   &__train {
-    color: t.$colors-transport-contrast-train;
+    color: var(--basecolors-shape-train-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-train-contrast);
+    }
   }
   &__ferry {
-    color: t.$colors-transport-contrast-ferry;
+    color: var(--basecolors-shape-ferry-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-ferry-contrast);
+    }
   }
   &__carferry {
-    color: t.$colors-transport-contrast-carferry;
+    color: var(--basecolors-shape-carferry-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-carferry-contrast);
+    }
   }
   &__mobility {
-    color: t.$colors-transport-contrast-mobility;
+    color: var(--basecolors-shape-mobility-default);
+    .eds-contrast & {
+      color: var(--basecolors-shape-mobility-contrast);
+    }
   }
 }

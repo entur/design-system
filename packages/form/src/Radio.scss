@@ -11,15 +11,10 @@
     width: fit-content;
     user-select: none;
     :hover ~ .eds-form-component--radio__radio {
-      border-color: t.$colors-blues-blue30;
-      .eds-form-component--radio__circle {
-        background-color: t.$colors-blues-blue30;
-      }
+      background-color: var(--components-form-radio-standard-fill-hover);
+
       .eds-contrast & {
-        border-color: t.$colors-blues-blue50;
-        .eds-form-component--radio__circle {
-          background-color: t.$colors-blues-blue50;
-        }
+        background-color: var(--components-form-radio-contrast-fill-hover);
       }
     }
 
@@ -29,18 +24,16 @@
       cursor: pointer;
       height: 0;
       width: 0;
-      &:checked
-        ~ .eds-form-component--radio__radio
-        .eds-form-component--radio__circle {
+      &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
         height: 0.625rem;
         width: 0.625rem;
       }
       &:focus ~ .eds-form-component--radio__radio {
-        outline: none;
-        box-shadow: t.$shadows-focus;
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
         .eds-contrast & {
-          box-shadow: t.$shadows-focus-contrast;
+          outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
     }
@@ -49,29 +42,30 @@
       height: calc(t.$space-medium + t.$space-extra-small2);
       width: calc(t.$space-medium + t.$space-extra-small2);
       margin-right: t.$space-default;
-      background-color: t.$colors-brand-white;
-      border: t.$border-widths-medium solid t.$colors-brand-blue;
+      background-color: var(--components-form-radio-standard-fill-default);
+      border: t.$border-widths-medium solid var(--components-form-radio-standard-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       .eds-contrast & {
-        background-color: t.$colors-brand-blue;
-        border-color: t.$colors-brand-lavender;
+        background-color: var(--components-form-radio-contrast-fill-default);
+        border-color: var(--components-form-radio-contrast-border);
       }
+
       &.eds-form-component--radio__radio--disabled {
-        background: t.$colors-greys-grey60;
-        border-color: t.$colors-greys-grey60;
+        background: var(--components-form-baseform-contrast-fill-disabled);
+        border-color: var(--components-form-baseform-contrast-text-disabled);
         cursor: not-allowed;
         &:hover {
-          border-color: t.$colors-greys-grey60;
+          border-color: var(--components-form-baseform-contrast-text-disabled);
         }
         .eds-contrast & {
-          background: t.$colors-greys-grey60;
-          border-color: t.$colors-greys-grey60;
+          background: var(--components-form-baseform-contrast-fill-disabled);
+          border-color: var(--components-form-baseform-contrast-text-disabled);
         }
         & ~ .eds-form-component--radio__label {
-          color: t.$colors-blues-blue40;
+          color: var(--components-form-baseform-contrast-text-disabled);
         }
       }
       .eds-form-component--radio__circle {
@@ -79,11 +73,10 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background-color: t.$colors-brand-blue;
-        transition: width t.$timings-fast ease-in-out,
-          height t.$timings-fast ease-in-out;
+        background-color: var(--components-form-radio-standard-fill-selected);
+        transition: width t.$timings-fast ease-in-out, height t.$timings-fast ease-in-out;
         .eds-contrast & {
-          background-color: t.$colors-brand-lavender;
+          background-color: var(--components-form-radio-contrast-icon);
         }
       }
     }

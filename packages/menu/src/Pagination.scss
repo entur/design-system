@@ -11,8 +11,15 @@
     display: flex;
     flex: 1;
     justify-content: flex-start;
+
     &-label {
       margin-right: t.$space-extra-small;
+    }
+  }
+  .eds-label {
+    color: var(--components-menu-pagination-standard-text-subdued);
+    .eds-contrast & {
+      color: var(--components-menu-pagination-contrast-text-subdued);
     }
   }
   &__controls {
@@ -30,9 +37,9 @@
   &__menu-button {
     appearance: none;
     background: transparent;
-    border: t.$border-widths-small solid t.$colors-greys-grey60;
+    border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
     border-radius: t.$border-radiuses-medium;
-    color: inherit;
+    color: var(--components-menu-pagination-standard-text-unselected);
     font-family: inherit;
     display: flex;
     align-items: center;
@@ -41,6 +48,12 @@
     margin-left: t.$space-extra-small2;
     margin-right: t.$space-medium;
     width: 3.5rem;
+
+    .eds-contrast & {
+      border-color: var(--components-menu-pagination-contrast-border-unselected);
+      color: var(--components-menu-pagination-contrast-text-unselected);
+    }
+
     &--open {
       border-color: currentColor;
     }
@@ -57,11 +70,10 @@
 .eds-pagination__page {
   align-items: center;
   appearance: none;
-  background: transparent;
-  border: t.$border-widths-small solid t.$colors-greys-grey60;
-  border-color: t.$colors-greys-grey60;
+  background-color: var(--components-menu-pagination-standard-default);
+  border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
   border-radius: t.$border-radiuses-medium;
-  color: inherit;
+  color: var(--components-menu-pagination-standard-text-unselected);
   cursor: pointer;
   display: flex;
   font-family: inherit;
@@ -70,23 +82,25 @@
   justify-content: center;
   margin: 0 t.$border-widths-medium;
   padding: 0 t.$space-extra-small2;
-  transition: background t.$timings-fast ease-out,
-    border-color t.$timings-fast ease-out;
+  transition: background t.$timings-fast ease-out, border-color t.$timings-fast ease-out;
   user-select: none;
   min-width: t.$space-extra-large;
 
   .eds-contrast & {
-    border-color: t.$colors-blues-blue30;
+    background-color: var(--components-menu-pagination-contrast-default);
+    border-color: var(--components-menu-pagination-contrast-border-unselected);
+    color: var(--components-menu-pagination-contrast-text-unselected);
   }
   &--selected {
-    background: t.$colors-blues-blue70;
-    border-color: t.$colors-brand-blue;
-    color: inherit;
+    background: var(--components-menu-pagination-standard-active);
+    border-color: var(--components-menu-pagination-standard-border-selected);
+    color: var(--components-menu-pagination-standard-text-selected);
     opacity: 1;
     pointer-events: none;
     .eds-contrast & {
-      border-color: t.$colors-brand-white;
-      background: t.$colors-blues-blue20;
+      background: var(--components-menu-pagination-contrast-active);
+      border-color: var(--components-menu-pagination-contrast-border-selected);
+      color: var(--components-menu-pagination-contrast-text-selected);
     }
   }
   &--disabled {
@@ -95,24 +109,26 @@
   }
 
   &:hover {
-    background-color: t.$colors-blues-blue70;
-    border-color: t.$colors-blues-blue70;
+    background-color: var(--components-menu-pagination-standard-hover);
+    border-color: var(--components-menu-pagination-standard-border-unselected);
 
     .eds-contrast & {
-      background-color: t.$colors-blues-blue20;
-      border-color: t.$colors-blues-blue20;
+      background-color: var(--components-menu-pagination-contrast-hover);
+      border-color: var(--components-menu-pagination-contrast-border-unselected);
     }
   }
-  &:focus {
-    outline: none;
-    border-color: t.$colors-brand-blue;
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
     .eds-contrast & {
-      border-color: t.$colors-brand-white;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }
 
 .eds-pagination__ellipsis {
+  color: var(--components-menu-pagination-standard-icon);
   align-items: baseline;
   cursor: default;
   display: flex;
@@ -122,6 +138,9 @@
   user-select: none;
   width: t.$space-extra-large;
   margin: 0 2px;
+  .eds-contrast & {
+    color: var(--components-menu-pagination-contrast-icon);
+  }
 }
 
 .eds-pagination__input {
@@ -129,35 +148,48 @@
     white-space: nowrap;
   }
   &-label {
-    border-left: t.$border-widths-small solid t.$colors-greys-grey60;
-    color: t.$colors-blues-blue40;
+    border-left: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
+    color: var(--components-menu-pagination-standard-text-subdued);
     font-size: t.$font-sizes-medium;
     margin-left: t.$space-extra-small;
     padding: 0 t.$space-medium;
-
     .eds-contrast & {
-      border-color: t.$colors-blues-blue20;
-      color: t.$colors-brand-lavender;
+      border-color: var(--components-menu-pagination-contrast-border-unselected);
+      color: var(--components-menu-pagination-contrast-text-subdued);
     }
   }
 
   &-field {
     appearance: none;
-    background: transparent;
-    border: t.$border-widths-small solid t.$colors-greys-grey60;
+    background-color: var(--components-menu-pagination-standard-default);
+    border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
     border-radius: t.$border-radiuses-medium;
-    color: inherit;
+    color: var(--components-menu-pagination-standard-text-unselected);
     font-family: inherit;
     font-size: t.$font-sizes-medium;
     height: t.$space-extra-large;
     text-align: center;
     width: t.$space-extra-large;
 
+    .eds-contrast & {
+      background-color: var(--components-menu-pagination-contrast-default);
+      border-color: var(--components-menu-pagination-contrast-border-unselected);
+      color: var(--components-menu-pagination-contrast-text-unselected);
+    }
     // Removes those pesky increment and decrement buttons on input[type=number]
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       appearance: none;
       margin: 0;
+    }
+
+    &:focus-visible {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+      .eds-contrast & {
+        outline-color: var(--basecolors-stroke-focus-contrast);
+      }
     }
   }
 }

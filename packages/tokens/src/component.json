@@ -163,9 +163,9 @@
       },
       {
         "name": "Components/Layout/Badge/Neutral/Standard/Bullet",
-        "color": "#e3e6e8",
-        "var": "Fill/Selected/Default/Neutral",
-        "rootAlias": "Grey/30"
+        "color": "#81828f",
+        "var": "Fill/Selected/Default/DarkAlt",
+        "rootAlias": "Ebony/50"
       },
       {
         "name": "Components/Layout/Badge/Neutral/Standard/Fill",
@@ -787,9 +787,9 @@
       },
       {
         "name": "Components/button/Floating/Contrast/Active",
-        "color": "#f6f6f9",
-        "var": "Fill/Background/Tint/Light",
-        "rootAlias": "Blue/10"
+        "color": "#d9dae8",
+        "var": "Fill/Background/Subdued/Light",
+        "rootAlias": "Blue/30"
       },
       {
         "name": "Components/button/Floating/Contrast/Default",
@@ -3108,10 +3108,16 @@
         "rootAlias": "Grey/50"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Icon-Label",
+        "color": "#aeb7e2",
+        "var": "Shape/Contrast",
+        "rootAlias": "Lavender/40"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Label",
-        "color": "#d9dae8",
-        "var": "Text/SubduedAlt",
-        "rootAlias": "Blue/30"
+        "color": "#aeb7e2",
+        "var": "Text/Highlight",
+        "rootAlias": "Lavender/40"
       },
       {
         "name": "Components/menu/Side Navigation/Contrast/Stroke-Selected",
@@ -3178,6 +3184,12 @@
         "color": "#6e6f73",
         "var": "Shape/Neutral",
         "rootAlias": "Grey/70"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Icon-Label",
+        "color": "#626493",
+        "var": "Shape/Subdued",
+        "rootAlias": "Blue/70"
       },
       {
         "name": "Components/menu/Side Navigation/Standard/Label",
@@ -4122,6 +4134,12 @@
         "rootAlias": "Blue/70"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Air",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
         "color": "#00db9b",
         "var": "Contrast/Bicycle",
@@ -4188,6 +4206,12 @@
         "rootAlias": "Contrast/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Rail",
+        "color": "#42a5f5",
+        "var": "Contrast/Train",
+        "rootAlias": "Contrast/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
         "color": "#ffe082",
         "var": "Contrast/Taxi",
@@ -4210,6 +4234,12 @@
         "color": "#8284ab",
         "var": "Contrast/Walk",
         "rootAlias": "Contrast/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Water",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkBus",
@@ -4356,6 +4386,12 @@
         "rootAlias": "Grey/60"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Air",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
         "color": "#388f76",
         "var": "Standard/Bicycle",
@@ -4422,6 +4458,12 @@
         "rootAlias": "Standard/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Rail",
+        "color": "#00367f",
+        "var": "Standard/Train",
+        "rootAlias": "Standard/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Taxi",
         "color": "#3d3e40",
         "var": "Standard/Taxi",
@@ -4444,6 +4486,12 @@
         "color": "#8d8e9c",
         "var": "Standard/Walk",
         "rootAlias": "Standard/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Water",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkBus",
@@ -4530,6 +4578,12 @@
         "rootAlias": "Standard/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Rail",
+        "color": "#00367f",
+        "var": "Standard/Train",
+        "rootAlias": "Standard/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
         "color": "#3d3e40",
         "var": "Standard/Taxi",
@@ -4554,7 +4608,19 @@
         "rootAlias": "Standard/Walk"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Water",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus",
+        "color": "#800664",
+        "var": "Standard/airportLinkBus",
+        "rootAlias": "Standard/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus 2",
         "color": "#800664",
         "var": "Standard/airportLinkBus",
         "rootAlias": "Standard/airportLinkBus"
@@ -4680,6 +4746,12 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Air",
+        "color": "#fbafea",
+        "var": "Contrast/airportLinkBus",
+        "rootAlias": "Contrast/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Bicycle",
         "color": "#00db9b",
         "var": "Contrast/Bicycle",
@@ -4794,6 +4866,18 @@
         "rootAlias": "Contrast/Plane-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Rail",
+        "color": "#42a5f5",
+        "var": "Contrast/Train",
+        "rootAlias": "Contrast/Train"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Rail-Cancled",
+        "color": "#42a5f526",
+        "var": "Contrast/Train-transparent",
+        "rootAlias": "Contrast/Train-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Taxi",
         "color": "#ffe082",
         "var": "Contrast/Taxi",
@@ -4836,7 +4920,25 @@
         "rootAlias": "Contrast/Walk"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Water",
+        "color": "#6fdfff",
+        "var": "Contrast/Carferry",
+        "rootAlias": "Contrast/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Water-Cancled",
+        "color": "#6fdfff26",
+        "var": "Contrast/Carferry-transparent",
+        "rootAlias": "Contrast/Carferry-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled",
+        "color": "#fbafea26",
+        "var": "Contrast/airportLinkBus-transparent",
+        "rootAlias": "Contrast/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled 2",
         "color": "#fbafea26",
         "var": "Contrast/airportLinkBus-transparent",
         "rootAlias": "Contrast/airportLinkBus-transparent"
@@ -5064,6 +5166,18 @@
         "rootAlias": "White/Alpha-100"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Air",
+        "color": "#800664",
+        "var": "Standard/airportLinkRail",
+        "rootAlias": "Standard/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Air-Cancled",
+        "color": "#80066426",
+        "var": "Standard/airportLinkRail-transparent",
+        "rootAlias": "Standard/airportLinkRail-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Bicycle",
         "color": "#388f76",
         "var": "Standard/Bicycle",
@@ -5178,6 +5292,18 @@
         "rootAlias": "Standard/Plane-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Rail",
+        "color": "#00367f",
+        "var": "Standard/Train",
+        "rootAlias": "Standard/Train"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Rail-Cancled",
+        "color": "#00367f26",
+        "var": "Standard/Train-transparent",
+        "rootAlias": "Standard/Train-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Taxi",
         "color": "#3d3e40",
         "var": "Standard/Taxi",
@@ -5218,6 +5344,18 @@
         "color": "#e3e6e8",
         "var": "Fill/Selected/Default/Neutral",
         "rootAlias": "Grey/30"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Water",
+        "color": "#0c6693",
+        "var": "Standard/Carferry",
+        "rootAlias": "Standard/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Water-Cancled",
+        "color": "#0c669326",
+        "var": "Standard/Carferry-transparent",
+        "rootAlias": "Standard/Carferry-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus",
@@ -8595,6 +8733,12 @@
         "rootAlias": "Grey/60"
       },
       {
+        "name": "Components/menu/Side Navigation/Contrast/Icon-Label",
+        "color": "#b3b4bd",
+        "var": "Shape/DarkAlt",
+        "rootAlias": "Ebony/30"
+      },
+      {
         "name": "Components/menu/Side Navigation/Contrast/Label",
         "color": "#b3b4bd",
         "var": "Text/DarkAlt",
@@ -8665,6 +8809,12 @@
         "color": "#949699",
         "var": "Shape/NeutralAlt2",
         "rootAlias": "Grey/60"
+      },
+      {
+        "name": "Components/menu/Side Navigation/Standard/Icon-Label",
+        "color": "#b3b4bd",
+        "var": "Shape/DarkAlt",
+        "rootAlias": "Ebony/30"
       },
       {
         "name": "Components/menu/Side Navigation/Standard/Label",
@@ -9609,6 +9759,12 @@
         "rootAlias": "Transparent/Ebony-Alpha35"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Air",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Bicycle",
         "color": "#4db295",
         "var": "Dark/Bicycle",
@@ -9675,6 +9831,12 @@
         "rootAlias": "Dark/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Rail",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Taxi",
         "color": "#ffe082",
         "var": "Dark/Taxi",
@@ -9697,6 +9859,12 @@
         "color": "#8d8e9c",
         "var": "Dark/Walk",
         "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-Water",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
       },
       {
         "name": "Components/travel/Travel Switch/Contrast/BackgroundTrue-airportLinkBus",
@@ -9843,6 +10011,12 @@
         "rootAlias": "Transparent/Ebony-Alpha35"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Air",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Bicycle",
         "color": "#4db295",
         "var": "Dark/Bicycle",
@@ -9909,6 +10083,12 @@
         "rootAlias": "Dark/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Rail",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Taxi",
         "color": "#ffe082",
         "var": "Dark/Taxi",
@@ -9931,6 +10111,12 @@
         "color": "#8d8e9c",
         "var": "Dark/Walk",
         "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-Water",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
       },
       {
         "name": "Components/travel/Travel Switch/Standard/BackgroundTrue-airportLinkBus",
@@ -10017,6 +10203,12 @@
         "rootAlias": "Dark/Plane"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Rail",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-Taxi",
         "color": "#ffe082",
         "var": "Dark/Taxi",
@@ -10041,7 +10233,19 @@
         "rootAlias": "Dark/Walk"
       },
       {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-Water",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
         "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
+        "name": "Components/travel/Travel Switch/Standard/IconTrue-airportLinkBus 2",
         "color": "#f2b8e5",
         "var": "Dark/airportLinkBus",
         "rootAlias": "Dark/airportLinkBus"
@@ -10167,6 +10371,12 @@
         "rootAlias": "Ebony/100"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Air",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkBus",
+        "rootAlias": "Dark/airportLinkBus"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Bicycle",
         "color": "#4db295",
         "var": "Dark/Bicycle",
@@ -10281,6 +10491,18 @@
         "rootAlias": "Dark/Plane-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Rail",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Rail-Cancled",
+        "color": "#60a2d726",
+        "var": "Dark/Train-transparent",
+        "rootAlias": "Dark/Train-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-Taxi",
         "color": "#ffe082",
         "var": "Dark/Taxi",
@@ -10323,7 +10545,25 @@
         "rootAlias": "Dark/Walk"
       },
       {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Water",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-Water-Cancled",
+        "color": "#8ccfe226",
+        "var": "Dark/Carferry-transparent",
+        "rootAlias": "Dark/Carferry-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkBus-transparent",
+        "rootAlias": "Dark/airportLinkBus-transparent"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Contrast/TagFill-airportLinkBus-Cancled 2",
         "color": "#f2b8e526",
         "var": "Dark/airportLinkBus-transparent",
         "rootAlias": "Dark/airportLinkBus-transparent"
@@ -10551,6 +10791,18 @@
         "rootAlias": "Ebony/100"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Air",
+        "color": "#f2b8e5",
+        "var": "Dark/airportLinkRail",
+        "rootAlias": "Dark/airportLinkRail"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Air-Cancled",
+        "color": "#f2b8e526",
+        "var": "Dark/airportLinkRail-transparent",
+        "rootAlias": "Dark/airportLinkRail-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Bicycle",
         "color": "#4db295",
         "var": "Dark/Bicycle",
@@ -10665,6 +10917,18 @@
         "rootAlias": "Dark/Plane-transparent"
       },
       {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Rail",
+        "color": "#60a2d7",
+        "var": "Dark/Train",
+        "rootAlias": "Dark/Train"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Rail-Cancled",
+        "color": "#60a2d726",
+        "var": "Dark/Train-transparent",
+        "rootAlias": "Dark/Train-transparent"
+      },
+      {
         "name": "Components/travel/Travel Tag/Standard/TagFill-Taxi",
         "color": "#ffe082",
         "var": "Dark/Taxi",
@@ -10705,6 +10969,18 @@
         "color": "#8d8e9c",
         "var": "Dark/Walk",
         "rootAlias": "Dark/Walk"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Water",
+        "color": "#8ccfe2",
+        "var": "Dark/Carferry",
+        "rootAlias": "Dark/Carferry"
+      },
+      {
+        "name": "Components/travel/Travel Tag/Standard/TagFill-Water-Cancled",
+        "color": "#8ccfe226",
+        "var": "Dark/Carferry-transparent",
+        "rootAlias": "Dark/Carferry-transparent"
       },
       {
         "name": "Components/travel/Travel Tag/Standard/TagFill-airportLinkBus",

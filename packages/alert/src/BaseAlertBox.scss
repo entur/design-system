@@ -2,9 +2,8 @@
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-alert-box {
-  border: t.$border-widths-small solid;
+  border: t.$border-widths-small solid transparent;
   border-radius: t.$border-radiuses-medium;
-  color: t.$colors-brand-blue;
   display: flex;
   padding: t.$space-small;
   position: relative;
@@ -44,24 +43,77 @@
 
   // Variants
   &--success {
-    background-color: t.$colors-validation-mint-tint;
-    border-color: t.$colors-validation-mint;
-    color: t.$colors-validation-mint;
+    background-color: var(--components-alert-alertbox-success-standard-fill);
+    border-color: var(--components-alert-alertbox-success-standard-border);
+    color: var(--components-alert-alertbox-success-standard-text);
+
+    .eds-alert-box__icon {
+      color: var(--components-alert-alertbox-success-standard-icon);
+    }
+    .eds-contrast & {
+      background-color: var(--components-alert-alertbox-success-contrast-fill);
+      border-color: transparent;
+      color: var(--components-alert-alertbox-success-contrast-text);
+
+      .eds-alert-box__icon {
+        color: var(--components-alert-alertbox-success-contrast-icon);
+      }
+    }
   }
   &--info {
-    background-color: t.$colors-validation-sky-tint;
-    border-color: t.$colors-validation-sky-contrast;
-    color: t.$colors-validation-sky;
+    background-color: var(--components-alert-alertbox-information-standard-fill);
+    border-color: var(--components-alert-alertbox-information-standard-border);
+    color: var(--components-alert-alertbox-information-standard-text);
+
+    .eds-alert-box__icon {
+      color: var(--components-alert-alertbox-information-standard-icon);
+    }
+    .eds-contrast & {
+      background-color: var(--components-alert-alertbox-information-contrast-fill);
+      border-color: transparent;
+      color: var(--components-alert-alertbox-information-contrast-text);
+
+      .eds-alert-box__icon {
+        color: var(--components-alert-alertbox-information-contrast-icon);
+      }
+    }
   }
   &--warning {
-    background-color: t.$colors-validation-canary-tint;
-    border-color: t.$colors-validation-canary-contrast;
-    color: t.$colors-brand-blue;
+    background-color: var(--components-alert-alertbox-warning-standard-fill);
+    border-color: var(--components-alert-alertbox-warning-standard-border);
+    color: var(--components-alert-alertbox-warning-standard-text);
+
+    .eds-alert-box__icon {
+      color: var(--components-alert-alertbox-warning-standard-icon);
+    }
+    .eds-contrast & {
+      background-color: var(--components-alert-alertbox-warning-contrast-fill);
+      border-color: transparent;
+      color: var(--components-alert-alertbox-warning-contrast-text);
+
+      .eds-alert-box__icon {
+        color: var(--components-alert-alertbox-warning-contrast-icon);
+      }
+    }
   }
   &--error {
-    background-color: t.$colors-validation-lava-tint;
-    border-color: t.$colors-validation-lava-contrast;
-    color: t.$colors-validation-lava;
+    background-color: var(--components-alert-alertbox-negative-standard-fill);
+    border-color: var(--components-alert-alertbox-negative-standard-border);
+    color: var(--components-alert-alertbox-negative-standard-text);
+
+    .eds-alert-box__icon {
+      color: var(--components-alert-alertbox-negative-standard-icon);
+    }
+
+    .eds-contrast & {
+      background-color: var(--components-alert-alertbox-negative-contrast-fill);
+      border-color: transparent;
+      color: var(--components-alert-alertbox-negative-contrast-text);
+
+      .eds-alert-box__icon {
+        color: var(--components-alert-alertbox-negative-contrast-icon);
+      }
+    }
   }
 
   &__icon {
@@ -86,7 +138,6 @@
   }
 
   &__content {
-    color: t.$colors-brand-blue;
     flex: 1;
     &--no-title,
     &--no-children {
@@ -113,16 +164,16 @@
     margin-left: t.$space-extra-small;
     height: fit-content;
     width: fit-content;
-    color: t.$colors-brand-blue;
 
     // Normal mode and contrast mode
     &,
     .eds-contrast & {
+      color: var(--components-button-iconbutton-standard-text);
       &:hover {
-        background: rgba(t.$colors-misc-black, 0.1);
+        background: var(--components-button-iconbutton-standard-hover);
       }
       &:active {
-        background: rgba(t.$colors-misc-black, 0.3);
+        background: var(--components-button-iconbutton-standard-active);
       }
       &:focus {
         outline: t.$outlines-focus;
@@ -132,10 +183,10 @@
   // Overwrites tooltip default styling
   & &__tooltip {
     .eds-contrast & {
-      background: t.$colors-brand-blue;
-      color: t.$colors-brand-white;
+      background: var(--components-tooltip-tooltip-standard-fill);
+      color: var(--components-tooltip-tooltip-standard-text);
       &::after {
-        background: t.$colors-brand-blue;
+        background: var(--components-tooltip-tooltip-standard-fill);
       }
     }
   }

@@ -19,19 +19,38 @@
       > svg {
         font-size: 0.6rem;
       }
+      &:focus {
+        outline-color: var(--basecolors-stroke-focus-standard);
+      }
+      &:hover {
+        border-color: var(--components-chip-standard-border);
+        background-color: var(--components-chip-standard-hover);
+      }
     }
 
     // revert contrast styling since dropdown field always is light
     .eds-contrast & {
-      background: t.$colors-blues-blue80;
-      border: t.$border-widths-small solid t.$colors-blues-blue70;
-      color: t.$colors-brand-blue;
+      background: var(--components-chip-standard-default);
+      border: t.$border-widths-small solid var(--components-chip-standard-border);
+      color: var(--components-chip-standard-text-unselected);
+
+      &:hover {
+        border-color: var(--components-chip-standard-border);
+        background-color: var(--components-chip-standard-hover);
+      }
+      &:active {
+        background-color: var(--components-chip-standard-active);
+        border-color: transparent;
+      }
 
       .eds-tag-chip__close-button {
-        color: t.$colors-brand-blue;
+        color: var(--components-chip-standard-text-unselected);
 
         &:hover {
-          background-color: t.$colors-blues-blue60;
+          background-color: var(--components-chip-standard-hover);
+        }
+        &:focus {
+          outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
     }
@@ -46,18 +65,35 @@
 
     &--readonly {
       .eds-contrast & {
-        background-color: t.$colors-blues-blue50;
+        background-color: var(--components-dropdown-dropdown-standard-fill-readonly);
         border-color: transparent;
-        color: t.$colors-brand-white;
+        color: var(--components-dropdown-dropdown-standard-text-readonly);
       }
     }
 
     &--disabled {
       .eds-contrast & {
-        background-color: t.$colors-blues-blue30;
+        background-color: var(--components-dropdown-dropdown-standard-fill-disabled);
         border-color: transparent;
-        color: t.$colors-blues-blue50;
+        color: var(--components-dropdown-dropdown-standard-text-disabled);
       }
+    }
+  }
+
+  // This is done to remove contrast specific styling
+  .eds-icon-button {
+    color: var(--components-button-iconbutton-standard-text);
+
+    &:hover {
+      background-color: var(--components-button-iconbutton-standard-hover);
+    }
+    &:focus {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+    }
+    &:active {
+      background-color: var(--components-button-iconbutton-standard-active);
     }
   }
 
@@ -71,13 +107,11 @@
 
       .eds-contrast & {
         &:hover {
-          background-color: t.$colors-blues-blue70;
+          background-color: var(--components-button-iconbutton-standard-hover);
         }
-        &:active {
-          background: t.$colors-blues-blue60;
-        }
+
         &:focus {
-          outline: t.$outlines-focus;
+          outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
 
@@ -89,15 +123,9 @@
     &__divider {
       content: '';
       display: block;
-      background-color: t.$colors-greys-grey70;
+      background-color: var(--components-dropdown-dropdown-standard-text-content);
       height: 1.5rem;
       width: 1px;
-      .eds-contrast .eds-form-control-wrapper--disabled & {
-        background-color: t.$colors-blues-blue50;
-      }
-      .eds-contrast & {
-        background-color: t.$colors-greys-grey60;
-      }
     }
 
     &__toggle-button {
@@ -119,17 +147,20 @@
         height: 100%;
         width: 1rem;
         margin-left: calc(0.5rem + 2px);
+        .eds-loading-dots__dot {
+          background-color: var(--components-loader-loader-standard-text);
+          .eds-contrast & {
+            background-color: var(--components-loader-loader-standard-text);
+          }
+        }
       }
 
       .eds-contrast & {
         &:hover {
-          background-color: t.$colors-blues-blue70;
-        }
-        &:active {
-          background: t.$colors-blues-blue60;
+          background-color: var(--components-button-iconbutton-standard-hover);
         }
         &:focus {
-          outline: t.$outlines-focus;
+          outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
     }

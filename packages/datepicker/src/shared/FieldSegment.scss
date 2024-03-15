@@ -8,17 +8,15 @@
     text-align: end;
 
     &--placeholder {
-      color: t.$colors-greys-grey40;
+      color: var(--components-datepicker-datefield-standard-text-content);
     }
 
     &--dot-separator {
       margin-left: -0.1rem;
       margin-right: -0.2rem;
     }
-
     &:focus {
-      background-color: t.$colors-blues-blue40;
-      color: t.$colors-brand-white;
+      background-color: var(--components-button-iconbutton-standard-active);
       outline: transparent;
       border-radius: t.$border-radiuses-default;
     }

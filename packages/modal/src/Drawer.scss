@@ -1,19 +1,9 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
-@keyframes slideFromRight {
-  from {
-    box-shadow: none;
-    transform: translateX(100%);
-  }
-  to {
-    box-shadow: t.$shadows-box-shadow;
-    transform: 0;
-  }
-}
-
 .eds-drawer {
   animation: slideFromRight forwards ease-out t.$timings-fast;
-  background: t.$colors-blues-blue80;
+  background-color: var(--components-modal-drawer-standard-background);
+  color: var(--components-modal-drawer-standard-text);
   bottom: 0;
   padding: t.$space-large;
   position: fixed;
@@ -26,22 +16,25 @@
   overflow-y: auto;
 
   .eds-contrast & {
-    background: t.$colors-blues-blue10;
+    background-color: var(--components-modal-drawer-contrast-background);
+    color: var(--components-modal-drawer-contrast-text);
+  }
+
+  &__close-button {
+    margin: 0;
+    position: absolute;
+    top: t.$space-large;
+    right: t.$space-large;
   }
 }
 
-.eds-drawer__close-button {
-  margin: 0;
-  position: absolute;
-  top: t.$space-large;
-  right: t.$space-large;
-
-  &:focus {
-    outline-offset: t.$outline-offsets-focus;
-    outline: none;
-    box-shadow: t.$shadows-focus;
-    .eds-contrast & {
-      box-shadow: t.$shadows-focus-contrast;
-    }
+@keyframes slideFromRight {
+  from {
+    box-shadow: none;
+    transform: translateX(100%);
+  }
+  to {
+    box-shadow: t.$shadows-box-shadow;
+    transform: 0;
   }
 }

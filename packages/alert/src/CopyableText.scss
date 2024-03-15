@@ -26,7 +26,10 @@
     transition: border-color t.$timings-fast;
 
     &:hover {
-      border-color: t.$colors-greys-grey40;
+      border-color: var(--components-alert-copyabletext-standard-border-interactive);
+      .eds-contrast & {
+        border-color: var(--components-alert-copyabletext-contrast-border-interactive);
+      }
     }
   }
 
@@ -37,22 +40,30 @@
   }
 
   & &__button {
+    color: var(--components-alert-copyabletext-standard-text);
     margin: -0.5rem; // remove extra spacing added by icon button padding
     margin-left: 0.5rem;
     width: fit-content;
     height: fit-content;
 
-    &:hover {
-      background-color: t.$colors-blues-blue40;
-      color: t.$colors-brand-white;
-    }
+    &,
+    .eds-contrast & {
+      color: var(--components-alert-copyabletext-standard-text);
+      &:hover {
+        background: var(--components-button-iconbutton-standard-hover);
+      }
 
-    &:focus {
-      outline: t.$outlines-focus;
-      outline-offset: t.$outline-offsets-focus;
-
-      .eds-contrast & {
+      &:active {
+        background: var(--components-button-iconbutton-standard-active);
+      }
+      &:focus {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+
+        .eds-contrast & {
+          outline-color: var(--basecolors-stroke-focus-contrast);
+        }
       }
     }
   }

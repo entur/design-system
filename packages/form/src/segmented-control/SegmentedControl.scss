@@ -3,9 +3,9 @@
 .eds-segmented-control {
   margin-top: t.$space-extra-small2;
   display: flex;
-  background: t.$colors-blues-blue70;
+  background: var(--components-form-segmentedcontrol-standard-background);
   border-radius: t.$border-radiuses-large;
   .eds-contrast & {
-    background: t.$colors-blues-blue20;
+    background: var(--components-form-segmentedcontrol-contrast-background);
   }
 }

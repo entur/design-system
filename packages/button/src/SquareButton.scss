@@ -1,11 +1,6 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/color-utils.scss' as util;
 
 .eds-square-button {
-  --icon-color: var(--primary-text-color);
-  --button-background: transparent;
-  --border-color: transparent;
-
   align-items: center;
   appearance: none;
   background: transparent;
@@ -23,21 +18,33 @@
   &:focus {
     outline: none;
     .eds-square-button__button {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
-      outline: none;
-      box-shadow: t.$shadows-focus;
       .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 
-  &[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-    &.eds-square-button--loading {
-      opacity: 1;
+  &[disabled]:not(.eds-square-button--loading) {
+    cursor: not-allowed;
+
+    .eds-square-button__button,
+    .eds-square-button__button:hover {
+      border-color: var(--basecolors-stroke-disabled);
+      border-style: dashed;
+      background-color: transparent;
+      color: var(--basecolors-text-disabled);
     }
+    .eds-square-button__label,
+    .eds-square-button__label:hover {
+      color: var(--basecolors-text-disabled);
+    }
+  }
+
+  &.eds-square-button--loading {
+    opacity: 1;
   }
 
   &__button {
@@ -59,7 +66,7 @@
   }
 
   &__label {
-    color: var(--primary-text-color);
+    color: var(--label-color);
   }
 
   &__label + &__button,
@@ -67,87 +74,104 @@
     margin-left: t.$space-default;
   }
 
+  .eds-square-button__loading-dots .eds-loading-dots__dot {
+    background: var(--icon-color);
+  }
+
   &--secondary {
-    --button-background: transparent;
-    --border-color: #{t.$colors-blues-blue30};
+    --button-background: var(--components-button-squaresecondary-standard-default);
+    --border-color: var(--components-button-squaresecondary-standard-border);
+    --icon-color: var(--components-button-squaresecondary-standard-icon);
+    --label-color: var(--components-button-squaresecondary-standard-text);
 
     &:hover {
-      --button-background: #{rgba(t.$colors-brand-lavender, 0.4)};
+      --button-background: var(--components-button-squaresecondary-standard-hover);
     }
     &:active {
-      --button-background: #{t.$colors-brand-lavender};
+      --button-background: var(--components-button-squaresecondary-standard-active);
+      --border-color: var(--components-button-squaresecondary-standard-border-active);
+      --icon-color: var(--components-button-squaresecondary-standard-icon-active);
     }
 
     .eds-contrast & {
-      --border-color: #{t.$colors-brand-lavender};
+      --button-background: var(--components-button-squaresecondary-contrast-default);
+      --border-color: var(--components-button-squaresecondary-contrast-border);
+      --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
+      --label-color: var(--components-button-squaresecondary-contrast-label);
 
       &:hover {
-        --button-background: #{rgba(t.$colors-brand-lavender, 0.2)};
+        --button-background: var(--components-button-squaresecondary-contrast-hover);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
       }
       &:active {
-        --button-background: #{t.$colors-brand-lavender};
-        --icon-color: #{t.$colors-brand-blue};
+        --button-background: var(--components-button-squaresecondary-contrast-active);
+        --border-color: var(--components-button-squaresecondary-contrast-border-active);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
       }
-
-      .eds-square-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-white;
-      }
-    }
-
-    .eds-square-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-blue;
     }
   }
 
   &--success {
-    --button-background: #{t.$colors-validation-mint-contrast};
-    --border-color: #{t.$colors-blues-blue30};
+    --button-background: var(--components-button-squaresuccess-standard-default);
+    --border-color: var(--components-button-squaresuccess-standard-border);
+    --icon-color: var(--components-button-squaresuccess-standard-icon);
+    --label-color: var(--components-button-squaresuccess-standard-label);
 
     &:hover {
-      --button-background: #{util.tint(t.$colors-validation-mint-contrast, 10%)};
+      --button-background: var(--components-button-squaresuccess-standard-hover);
     }
     &:active {
-      --button-background: #{util.shade(t.$colors-validation-mint-contrast, 10%)};
-    }
-
-    .eds-square-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-blue;
+      --button-background: var(--components-button-squaresuccess-standard-active);
     }
 
     .eds-contrast & {
-      --border-color: transparent;
-      --icon-color: #{t.$colors-brand-blue};
+      --button-background: var(--components-button-squaresuccess-contrast-default);
+      --border-color: var(--components-button-squaresuccess-contrast-border);
+      --icon-color: var(--components-button-squaresuccess-contrast-icon);
+      --label-color: var(--components-button-squaresuccess-contrast-label);
+
+      &:hover {
+        --button-background: var(--components-button-squaresuccess-contrast-hover);
+      }
+      &:active {
+        --button-background: var(--components-button-squaresuccess-contrast-active);
+      }
     }
   }
 
   &--tertiary {
-    --button-background: transparent;
-    --border-color: #{t.$colors-blues-blue30};
-    font-size: t.$font-sizes-medium;
+    --button-background: var(--components-button-squaresecondary-standard-default);
+    --border-color: var(--components-button-squaresecondary-standard-border);
+    --icon-color: var(--components-button-squaresecondary-standard-icon);
+    --label-color: var(--components-button-squaresecondary-standard-text);
 
     &:hover {
-      --button-background: #{rgba(t.$colors-brand-lavender, 0.4)};
+      --button-background: var(--components-button-squaresecondary-standard-hover);
     }
     &:active {
-      --button-background: #{t.$colors-brand-lavender};
+      --button-background: var(--components-button-squaresecondary-standard-active);
+      --border-color: var(--components-button-squaresecondary-standard-border-active);
+      --icon-color: var(--components-button-squaresecondary-standard-icon-active);
     }
 
     .eds-contrast & {
-      --border-color: #{t.$colors-brand-white};
-      --border-color: #{t.$colors-brand-lavender};
+      --button-background: var(--components-button-squaresecondary-contrast-default);
+      --border-color: var(--components-button-squaresecondary-contrast-border);
+      --icon-color: var(--components-button-squaresecondary-contrast-icon-default);
+      --label-color: var(--components-button-squaresecondary-contrast-label);
 
       &:hover {
-        --button-background: #{rgba(t.$colors-brand-lavender, 0.2)};
+        --button-background: var(--components-button-squaresecondary-contrast-hover);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-hover);
       }
       &:active {
-        --button-background: #{t.$colors-brand-lavender};
-        --icon-color: #{t.$colors-brand-blue};
-      }
-
-      .eds-square-button__loading-dots .eds-loading-dots__dot {
-        background: t.$colors-brand-white;
+        --button-background: var(--components-button-squaresecondary-contrast-active);
+        --border-color: var(--components-button-squaresecondary-contrast-border-active);
+        --icon-color: var(--components-button-squaresecondary-contrast-icon-active);
       }
     }
+
+    font-size: t.$font-sizes-medium;
 
     .eds-square-button__label + .eds-square-button__button,
     .eds-square-button__button + .eds-square-button__label {
@@ -158,10 +182,6 @@
       height: t.$space-extra-large;
       width: t.$space-extra-large;
       border-width: t.$border-widths-small;
-    }
-
-    .eds-square-button__loading-dots .eds-loading-dots__dot {
-      background: t.$colors-brand-blue;
     }
   }
 }

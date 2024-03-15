@@ -13,8 +13,6 @@ export type BaseFormControlProps = {
   children: React.ReactNode;
   /** Ekstra klassenavn */
   className?: string;
-  /** Sett til true om skjema-elementet skal ha mørkt design i contrast mode */
-  dark?: boolean;
   /** Sett til true om skjema-elementet er disabled */
   disabled?: boolean;
   /** Sett til true om skjema-elementet er i read-only modus */
@@ -60,7 +58,6 @@ export const BaseFormControl = React.forwardRef<
     {
       children,
       className,
-      dark = false,
       disabled = false,
       readOnly = false,
       variant,
@@ -94,7 +91,6 @@ export const BaseFormControl = React.forwardRef<
             {
               'eds-form-control-wrapper--success': currentVariant === 'success',
               'eds-form-control-wrapper--error': currentVariant === 'error',
-              'eds-form-control-wrapper--dark': dark,
               'eds-form-control-wrapper--disabled': disabled,
               'eds-form-control-wrapper--readonly': readOnly,
               'eds-form-control-wrapper--is-filled': isFilled,

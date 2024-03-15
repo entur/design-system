@@ -4,7 +4,7 @@
   border: t.$border-widths-default solid transparent;
   border-radius: t.$border-radiuses-medium;
   background: none;
-  color: inherit;
+  color: var(--components-button-iconbutton-standard-text);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -12,8 +12,10 @@
   font-size: t.$font-sizes-large;
   padding: t.$space-extra-small;
   .eds-contrast & {
+    color: var(--components-button-iconbutton-contrast-text);
+
     > .eds-loading-dots .eds-loading-dots__dot {
-      background-color: t.$colors-brand-white;
+      background-color: var(--components-button-iconbutton-contrast-icon);
     }
   }
   &--size-small {
@@ -22,22 +24,25 @@
     padding: 0;
   }
   &:hover {
-    background-color: t.$colors-blues-blue70;
+    background-color: var(--components-button-iconbutton-standard-hover);
     .eds-contrast & {
-      background-color: t.$colors-blues-blue20;
+      background-color: var(--components-button-iconbutton-contrast-hover);
     }
   }
   &:active {
-    background: t.$colors-blues-blue60;
+    background: var(--components-button-iconbutton-standard-active);
+    color: var(--components-button-iconbutton-standard-text-active);
     .eds-contrast & {
-      background: t.$colors-blues-blue10;
+      background: var(--components-button-iconbutton-contrast-active);
+      color: var(--components-button-iconbutton-contrast-text-active);
     }
   }
   &:focus {
     outline: t.$outlines-focus;
-
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
     .eds-contrast & {
-      outline: t.$outlines-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
   &--disabled {

@@ -3,16 +3,11 @@
 .eds-tooltip-wrapper {
   display: inline-block;
   position: relative;
-  .eds-contrast & {
-    --primary-background-color: #{t.$colors-blues-blue20};
-    --primary-text-color: #{t.$colors-brand-white};
-    --primary-border-color: #{t.$colors-blues-blue10};
-  }
 }
 
 .eds-tooltip {
-  color: t.$colors-brand-white;
-  background: t.$colors-brand-blue;
+  color: var(--components-tooltip-tooltip-standard-text);
+  background: var(--components-tooltip-tooltip-standard-fill);
   border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
   font-size: t.$font-sizes-medium;
@@ -26,25 +21,45 @@
   z-index: t.$z-indexes-popover;
   max-width: 32rem;
   .eds-contrast & {
-    background: t.$colors-brand-white;
-    color: t.$colors-brand-blue;
+    color: var(--components-tooltip-tooltip-contrast-text);
+    background: var(--components-tooltip-tooltip-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
 
   &__close-button {
     float: right;
+    color: var(--components-button-iconbutton-contrast-text);
+
     &:hover {
-      background: t.$colors-blues-blue30;
+      background-color: var(--components-button-iconbutton-contrast-hover);
     }
+    &:focus {
+      outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-contrast);
+      outline-offset: t.$outline-offsets-focus;
+    }
+    &:active {
+      background-color: var(--components-button-iconbutton-contrast-active);
+    }
+
     .eds-contrast & {
+      color: var(--components-button-iconbutton-standard-text);
       &:hover {
-        background-color: t.$colors-greys-grey70;
+        background-color: var(--components-button-iconbutton-standard-hover);
+      }
+      &:focus {
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+      }
+      &:active {
+        background-color: var(--components-button-iconbutton-standard-active);
       }
     }
   }
 
   &::after {
-    background: t.$colors-brand-blue;
+    background: var(--components-tooltip-tooltip-standard-fill);
     content: '';
     height: 0.625rem;
     position: absolute;
@@ -52,20 +67,19 @@
     width: 0.625rem;
     z-index: t.$z-indexes-behind;
     .eds-contrast & {
-      background: t.$colors-brand-white;
+      background: var(--components-tooltip-tooltip-contrast-fill);
     }
   }
-
   &--error {
-    background: t.$colors-validation-lava-tint;
-    border: solid t.$border-widths-medium t.$colors-validation-lava-contrast;
-    color: t.$colors-brand-blue;
+    background: var(--components-tooltip-tooltip-standard-fill-negative);
+    border: solid var(--components-tooltip-tooltip-standard-fill-negative);
+    color: var(--components-tooltip-tooltip-standard-text-negative);
     &::after {
-      background: t.$colors-validation-lava-tint;
+      background: var(--components-tooltip-tooltip-standard-triangle-negative);
     }
 
     &::before {
-      background: t.$colors-validation-lava-contrast;
+      background: var(--components-tooltip-tooltip-standard-triangle-negative);
       content: '';
       height: 0.625rem + t.$border-widths-medium;
       position: absolute;
@@ -74,12 +88,21 @@
       z-index: t.$z-indexes-behind;
     }
     .eds-contrast & {
-      color: t.$colors-brand-blue;
-      background: t.$colors-validation-lava-tint;
-      border: solid t.$border-widths-medium t.$colors-validation-lava-contrast;
+      background: var(--components-tooltip-tooltip-contrast-fill-negative);
+      color: var(--components-tooltip-tooltip-contrast-text-negative);
+      border: solid var(--components-tooltip-tooltip-contrast-fill-negative);
       box-shadow: t.$shadows-box-shadow-contrast;
       &::after {
-        background: t.$colors-validation-lava-tint;
+        background: var(--components-tooltip-tooltip-contrast-triangle-negative);
+      }
+      &::before {
+        background: var(--components-tooltip-tooltip-contrast-triangle-negative);
+      }
+    }
+    .eds-tooltip__close-button {
+      color: var(--components-tooltip-tooltip-standard-icon-negative);
+      .eds-contrast & {
+        color: var(--components-tooltip-tooltip-contrast-icon-negative);
       }
     }
   }

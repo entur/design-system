@@ -14,19 +14,14 @@
     height: t.$space-default;
   }
   &--animate {
-    --background-color: #{t.$colors-greys-grey80};
-    --shimmer-highlight-color: #{rgba(t.$colors-greys-grey80, 0.5)};
+    --background-color: var(--components-loader-skeleton-standard-fill);
+    --shimmer-highlight-color: var(--components-loader-skeleton-standard-highlight);
     animation: shimmer 2s infinite linear;
-    background: linear-gradient(
-      to right,
-      var(--background-color) 4%,
-      var(--shimmer-highlight-color) 25%,
-      var(--background-color) 36%
-    );
+    background: linear-gradient(to right, var(--background-color) 4%, var(--shimmer-highlight-color) 25%, var(--background-color) 36%);
     background-size: 1000px 100%;
     .eds-contrast & {
-      --background-color: #{t.$colors-blues-blue10};
-      --shimmer-highlight-color: #{rgba(t.$colors-blues-blue10, 0.5)};
+      --background-color: var(--components-loader-skeleton-contrast-fill);
+      --shimmer-highlight-color: var(--components-loader-skeleton-contrast-highlight);
     }
   }
 }

@@ -1,8 +1,8 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
 .eds-stepper {
-  --text-color: #{t.$colors-blues-blue40};
-  --line-color: #{t.$colors-greys-grey70};
+  --text-color: var(--components-menu-stepper-standard-text-uncompleted);
+  --line-color: var(--components-menu-stepper-standard-background);
   --label-font-weight: #{t.$font-weights-body};
   --display-active-line: none;
 
@@ -40,8 +40,8 @@
     }
 
     .eds-contrast & {
-      --text-color: #{t.$colors-brand-lavender};
-      --line-color: #{t.$colors-blues-blue20};
+      --text-color: var(--components-menu-stepper-contrast-text-uncompleted);
+      --line-color: var(--components-menu-stepper-contrast-background);
     }
 
     &--interactive {
@@ -49,27 +49,26 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-
       cursor: pointer;
     }
 
     &--active {
-      --text-color: #{t.$colors-brand-blue};
+      --text-color: var(--components-menu-stepper-standard-text-uncompleted);
       --label-font-weight: #{t.$font-weights-heading};
       --display-active-line: block;
 
       .eds-contrast & {
-        --text-color: #{t.$colors-brand-white};
+        --text-color: var(--components-menu-stepper-contrast-text-uncompleted);
       }
     }
 
     &--completed {
-      --text-color: #{t.$colors-brand-blue};
-      --line-color: #{t.$colors-brand-blue};
+      --text-color: var(--components-menu-stepper-standard-text-completed);
+      --line-color: var(--components-menu-stepper-standard-progressbar);
 
       .eds-contrast & {
-        --text-color: #{t.$colors-brand-white};
-        --line-color: #{t.$colors-brand-lavender};
+        --text-color: var(--components-menu-stepper-contrast-text-completed);
+        --line-color: var(--components-menu-stepper-contrast-progressbar);
       }
     }
 
@@ -88,8 +87,13 @@
       font-weight: var(--label-font-weight);
 
       .eds-stepper__step--interactive:hover & {
-        background-color: t.$colors-blues-blue40;
-        color: t.$colors-brand-white;
+        background-color: var(--components-menu-stepper-standard-background);
+        color: var(--components-menu-stepper-standard-text-completed);
+
+        .eds-contrast & {
+          background-color: var(--components-menu-stepper-contrast-background);
+          color: var(--components-menu-stepper-contrast-text-completed);
+        }
       }
     }
 
@@ -100,26 +104,20 @@
 
       &:before {
         display: var(--display-active-line);
-
         content: '';
         position: absolute;
         right: calc(50% - 0.2rem);
         bottom: t.$border-widths-small;
         border-radius: t.$border-radiuses-small;
-
-        background: t.$colors-brand-blue;
+        background: var(--components-menu-stepper-standard-progressbar);
 
         //Approximate pixel perfect adjustments in size
-        width: calc(
-          #{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem
-        );
-        height: calc(
-          #{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem
-        );
+        width: calc(#{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem);
+        height: calc(#{t.$space-extra-small} - #{t.$border-widths-medium} - 0.01rem);
         transform: rotate(45deg);
 
         .eds-contrast & {
-          background-color: t.$colors-brand-lavender;
+          background: var(--components-menu-stepper-contrast-progressbar);
         }
       }
       &:after {
@@ -132,10 +130,10 @@
         width: 50%;
         height: t.$space-extra-small;
 
-        background: t.$colors-brand-blue;
+        background: var(--components-menu-stepper-standard-progressbar);
 
         .eds-contrast & {
-          background: t.$colors-brand-lavender;
+          background: var(--components-menu-stepper-contrast-progressbar);
         }
       }
     }

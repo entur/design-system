@@ -8,6 +8,10 @@
 
 .eds-breadcrumb__item {
   display: inline-block;
+  color: var(--components-menu-breadcrumb-standard-text);
+  .eds-contrast & {
+    color: var(--components-menu-breadcrumb-contrast-text);
+  }
 }
 
 .eds-breadcrumb__separator {
@@ -16,21 +20,14 @@
 
 .eds-breadcrumb__link {
   text-decoration: none;
-  color: inherit;
-  background-image: linear-gradient(
-    120deg,
-    t.$colors-brand-blue 0%,
-    t.$colors-brand-blue 100%
-  );
+  color: var(--components-menu-breadcrumb-standard-text);
+  background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-standard-text) 0%, var(--components-menu-breadcrumb-standard-text) 100%);
   background-repeat: no-repeat;
   background-size: 100% 0.125rem;
   background-position: 0 100%;
   .eds-contrast & {
-    background-image: linear-gradient(
-      120deg,
-      t.$colors-brand-white 0%,
-      t.$colors-brand-white 100%
-    );
+    color: var(--components-menu-breadcrumb-contrast-text);
+    background-image: linear-gradient(120deg, var(--components-menu-breadcrumb-contrast-text) 0%, var(--components-menu-breadcrumb-contrast-text) 100%);
   }
 
   &:hover {
@@ -38,17 +35,20 @@
   }
 
   &:focus {
-    outline: none;
-    box-shadow: t.$shadows-focus;
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
   }
 
   @keyframes eds-breadcrumb-underline {
     from {
-      background-size: 0% 0.125rem;
+      background-size: 0% t.$border-widths-default;
     }
     to {
-      background-size: 100% 0.125rem;
+      background-size: 100% t.$border-widths-default;
     }
   }
 

@@ -1,50 +1,34 @@
 @use '~@entur/tokens/dist/styles.scss' as t;
 
-.eds-expandable-text {
-  &__trigger {
-    appearance: none;
-    margin: 0;
-    border: none;
-    padding: t.$space-extra-small 0;
-    cursor: pointer;
-    font-family: inherit;
-    color: inherit;
-    background: inherit;
-    font-size: inherit;
-    display: flex;
-    align-items: center;
+.eds-expandable-text__trigger {
+  appearance: none;
+  margin: 0;
+  border: none;
+  padding: t.$space-extra-small 0;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--components-expand-expandabletext-standard-text);
+  background: inherit;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
 
-    > :is(h5, h4, h3, h2, p) {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    &:focus {
-      outline-offset: t.$outline-offsets-focus;
-      outline: none;
-      box-shadow: t.$shadows-focus;
-      .eds-contrast & {
-        box-shadow: t.$shadows-focus-contrast;
-      }
-    }
+  .eds-contrast & {
+    color: var(--components-expand-expandabletext-contrast-text);
   }
 
-  &__content {
-    width: 100%;
-    padding-left: t.$space-small;
+  > :is(h5, h4, h3, h2, p) {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  &__arrow {
-    margin-left: t.$space-extra-small;
-  }
+  &:focus {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
 
-  // Used to override react-collapse's default transition
-  .ReactCollapse--collapse {
-    transition: height t.$timings-slow ease-out;
-  }
-  &--disable-animation {
-    .ReactCollapse--collapse {
-      transition: none;
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }

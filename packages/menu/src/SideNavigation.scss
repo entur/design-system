@@ -3,75 +3,82 @@
 
 .eds-side-navigation,
 .eds-side-navigation-group {
-  --primary-background-color: #{t.$colors-greys-grey90};
-  --primary-text-color: #{t.$colors-brand-blue};
+  color: var(--components-menu-sidenavigation-standard-text);
   .eds-contrast & {
-    --primary-background-color: #{t.$colors-brand-blue};
-    --primary-text-color: #{colors-brand-white};
+    color: var(--components-menu-sidenavigation-contrast-text);
   }
 }
 
 .eds-side-navigation__click-target svg {
   margin-right: t.$space-medium;
-  color: t.$colors-blues-blue40;
+  color: var(--components-menu-sidenavigation-standard-icon);
   display: inline-flex;
   align-self: center;
   position: relative;
   top: 0.075em;
   .eds-contrast & {
-    color: t.$colors-brand-lavender;
+    color: var(--components-menu-sidenavigation-contrast-icon);
   }
 }
 
 .eds-side-navigation__click-target[disabled] svg {
-  color: t.$colors-blues-blue40;
+  color: var(--components-menu-sidenavigation-standard-icon-disabled);
+  .eds-contrast & {
+    color: var(--components-menu-sidenavigation-contrast-icon-disabled);
+  }
 }
 
 .eds-side-navigation {
   --padding-vertical: #{t.$space-medium};
   --padding-horizontal: #{t.$space-extra-large2};
-  background-color: var(--primary-background-color);
-  color: var(--primary-text-color);
+  background-color: var(--components-menu-sidenavigation-standard-background);
+  color: var(--components-menu-sidenavigation-standard-text);
   padding: 0;
   margin: 0;
   list-style: none;
   position: relative;
   transition: max-width ease-in-out t.$timings-medium;
+  .eds-contrast & {
+    background-color: var(--components-menu-sidenavigation-contrast-background);
+    color: var(--components-menu-sidenavigation-contrast-text);
+  }
+
   &__collapse-button {
     position: absolute;
     right: 0 - 0.75rem;
-
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
+    border: none;
     cursor: pointer;
-    background: t.$colors-brand-white;
+    background-color: var(--components-menu-sidenavigation-standard-background);
+    color: var(--components-menu-sidenavigation-standard-text);
     box-shadow: t.$shadows-box-shadow;
-    border: t.$border-widths-small solid t.$colors-greys-grey60;
-    color: inherit;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     z-index: t.$z-indexes-sticky;
     .eds-contrast & {
-      background: t.$colors-blues-blue20;
+      background-color: var(--components-menu-sidenavigation-contrast-background);
+      color: var(--components-menu-sidenavigation-contast-text);
       box-shadow: t.$shadows-box-shadow;
-      border-color: transparent;
     }
     svg {
       margin: 0;
       top: 0;
-      color: t.$colors-brand-blue;
+      color: var(--components-menu-sidenavigation-standard-icon);
       .eds-contrast & {
-        color: t.$colors-brand-white;
+        color: var(--components-menu-sidenavigation-contrast-icon);
       }
     }
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        outline: t.$outlines-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
@@ -86,9 +93,9 @@
 
   // Nested sub menus
   & & {
-    background-color: t.$colors-greys-grey80;
+    background-color: var(--components-menu-sidenavigation-standard-background);
     .eds-contrast & {
-      background-color: t.$colors-blues-blue10;
+      background-color: var(--components-menu-sidenavigation-contrast-background);
     }
   }
   &--collapsed {
@@ -102,9 +109,9 @@
     padding-left: t.$space-extra-large4;
     box-shadow: none;
     &--active {
-      background-color: t.$colors-blues-blue70;
+      background-color: var(--components-menu-sidenavigation-standard-fill-active);
       .eds-contrast & {
-        background-color: t.$colors-blues-blue30;
+        background-color: var(--components-menu-sidenavigation-contrast-fill-active);
       }
     }
   }
@@ -114,13 +121,13 @@
   appearance: none;
   background: none;
   border: 0;
-  border-bottom: t.$border-widths-medium solid t.$colors-greys-grey70;
+  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-divide);
   border-radius: 0;
-  color: var(--primary-text-color);
+  color: var(--components-menu-sidenavigation-standard-text);
   cursor: pointer;
   display: block;
+  font-size: t.$font-sizes-large;
   font-family: inherit;
-  font-size: inherit;
   font-weight: t.$font-weights-body;
   line-height: inherit;
   padding: var(--padding-vertical) t.$space-extra-large2;
@@ -131,49 +138,49 @@
   width: 100%;
 
   .eds-contrast & {
-    border-color: t.$colors-blues-blue10;
+    color: var(--components-menu-sidenavigation-contrast-text);
+    border-color: var(--components-menu-sidenavigation-contrast-divide);
   }
   .eds-side-navigation--collapsed & {
     padding-left: t.$space-extra-large;
   }
   &--active {
-    box-shadow: inset t.$border-widths-large 0 0 t.$colors-brand-blue;
+    box-shadow: inset t.$border-widths-large 0 0 var(--components-menu-sidenavigation-standard-stroke-selected);
     font-weight: t.$font-weights-heading;
     .eds-contrast & {
-      box-shadow: inset t.$border-widths-large 0 0 t.$colors-brand-coral;
+      box-shadow: inset t.$border-widths-large 0 0 var(--components-menu-sidenavigation-contrast-stroke-selected);
     }
   }
 
   &[disabled] {
     cursor: not-allowed;
-    color: t.$colors-blues-blue40;
+    color: var(--components-menu-sidenavigation-standard-text-disabled);
+    .eds-contrast & {
+      color: var(--components-menu-sidenavigation-contrast-text-disabled);
+    }
   }
 
   &:not([disabled]) {
     &:hover {
-      background-color: t.$colors-blues-blue70;
+      background-color: var(--components-menu-sidenavigation-standard-fill-hover);
       .eds-contrast & {
-        background-color: t.$colors-blues-blue20;
+        background-color: var(--components-menu-sidenavigation-contrast-fill-hover);
       }
     }
 
-    &:active,
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
-      outline-offset: -2px;
-      background: t.$colors-blues-blue80;
+      outline-color: var(--basecolors-stroke-focus-standard);
+      outline-offset: t.$outline-offsets-focus;
+
       .eds-contrast & {
-        background-color: t.$colors-blues-blue30;
-        outline: t.$outlines-focus-contrast;
+        outline-color: var(--basecolors-stroke-focus-contrast);
       }
     }
   }
 }
 
 .eds-side-navigation-group {
-  background-color: var(--primary-background-color);
-  color: var(--primary-text-color);
-
   & + & {
     padding-top: t.$space-extra-small;
   }
@@ -186,11 +193,10 @@
 .eds-side-navigation-group__trigger {
   align-items: center;
   appearance: none;
-  background: none;
+  background-color: var(--components-menu-sidenavigation-standard-background);
   border: none;
-  border-radius: 0;
-  border-bottom: t.$border-widths-medium solid t.$colors-greys-grey70;
-  color: t.$colors-blues-blue40;
+  border-bottom: t.$border-widths-small solid var(--components-menu-sidenavigation-standard-divide);
+  color: var(--components-menu-sidenavigation-standard-label);
   cursor: pointer;
   display: flex;
   font-size: t.$font-sizes-medium;
@@ -206,22 +212,31 @@
   transition: padding t.$timings-medium ease-in-out;
   width: 100%;
   .eds-contrast & {
-    color: t.$colors-brand-lavender;
-    border-color: t.$colors-blues-blue10;
+    color: var(--components-menu-sidenavigation-contrast-label);
+    background-color: var(--components-menu-sidenavigation-contrast-background);
+    border-color: var(--components-menu-sidenavigation-contrast-divide);
   }
   &-icon {
     margin-right: t.$space-small;
   }
   .eds-side-navigation-group__expand-icon {
     margin-right: t.$space-extra-large2;
+    color: var(--components-menu-sidenavigation-standard-icon-label);
+
+    .eds-contrast & {
+      color: var(--components-menu-sidenavigation-contrast-icon-label);
+    }
   }
   .eds-side-navigation--collapsed & {
     padding-left: t.$space-extra-large;
   }
-  &:focus {
+  &:focus-visible {
     outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
     .eds-contrast & {
-      outline: t.$outlines-focus-contrast;
+      outline-color: var(--basecolors-stroke-focus-contrast);
     }
   }
 }

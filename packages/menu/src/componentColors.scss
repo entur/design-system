@@ -58,7 +58,8 @@
   --components-menu-sidenavigation-contrast-fill-hover: var(--fill-background-contrast-lightalt);
   --components-menu-sidenavigation-contrast-icon: var(--shape-light);
   --components-menu-sidenavigation-contrast-icon-disabled: var(--shape-neutralalt);
-  --components-menu-sidenavigation-contrast-label: var(--text-subduedalt);
+  --components-menu-sidenavigation-contrast-icon-label: var(--shape-contrast);
+  --components-menu-sidenavigation-contrast-label: var(--text-highlight);
   --components-menu-sidenavigation-contrast-stroke-selected: var(--stroke-highlight);
   --components-menu-sidenavigation-contrast-text: var(--text-light);
   --components-menu-sidenavigation-contrast-text-disabled: var(--text-neutralalt);
@@ -70,6 +71,7 @@
   --components-menu-sidenavigation-standard-fill-hover: var(--fill-background-subdued-light);
   --components-menu-sidenavigation-standard-icon: var(--shape-accent);
   --components-menu-sidenavigation-standard-icon-disabled: var(--shape-neutral);
+  --components-menu-sidenavigation-standard-icon-label: var(--shape-subdued);
   --components-menu-sidenavigation-standard-label: var(--text-subdued);
   --components-menu-sidenavigation-standard-stroke-selected: var(--stroke-accent);
   --components-menu-sidenavigation-standard-text: var(--text-accent);
@@ -152,6 +154,7 @@
   --components-menu-sidenavigation-contrast-fill-hover: var(--fill-background-overlay-transparent);
   --components-menu-sidenavigation-contrast-icon: var(--shape-lightalt);
   --components-menu-sidenavigation-contrast-icon-disabled: var(--shape-neutralalt2);
+  --components-menu-sidenavigation-contrast-icon-label: var(--shape-darkalt);
   --components-menu-sidenavigation-contrast-label: var(--text-darkalt);
   --components-menu-sidenavigation-contrast-stroke-selected: var(--stroke-highlightalt);
   --components-menu-sidenavigation-contrast-text: var(--text-lightalt);
@@ -164,6 +167,7 @@
   --components-menu-sidenavigation-standard-fill-hover: var(--fill-background-overlay-transparent);
   --components-menu-sidenavigation-standard-icon: var(--shape-lightalt);
   --components-menu-sidenavigation-standard-icon-disabled: var(--shape-neutralalt2);
+  --components-menu-sidenavigation-standard-icon-label: var(--shape-darkalt);
   --components-menu-sidenavigation-standard-label: var(--text-darkalt);
   --components-menu-sidenavigation-standard-stroke-selected: var(--stroke-highlightalt);
   --components-menu-sidenavigation-standard-text: var(--text-lightalt);

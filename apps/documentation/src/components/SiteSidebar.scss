@@ -6,7 +6,8 @@
 .site-sidebar-wrapper {
   width: 100%;
   transition: max-width $timings-fast ease-out;
-  background: $colors-greys-grey90;
+  background: var(--transparent-blue-alpha10);
+
   @include for-desktop {
     max-width: $site-sidebar-width--desktop;
     height: 100vh;
@@ -39,8 +40,7 @@
     right: 0;
     margin-top: -$navbar-height;
     opacity: 0;
-    transition: right $timings-slow ease-in-out,
-      opacity $timings-slow ease-in-out;
+    transition: right $timings-slow ease-in-out, opacity $timings-slow ease-in-out;
     &--open {
       opacity: 1;
       right: calc(20% - 24px);
