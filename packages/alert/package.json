@@ -1,6 +1,6 @@
 {
   "name": "@entur/alert",
-  "version": "0.15.20",
+  "version": "0.15.21",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/alert.esm.js",
@@ -31,7 +31,7 @@
     "@entur/expand": "^3.5.0",
     "@entur/icons": "^6.15.1",
     "@entur/tokens": "^3.13.0",
-    "@entur/tooltip": "^2.6.47",
+    "@entur/tooltip": "^2.6.48",
     "@entur/typography": "^1.8.24",
     "@entur/utils": "^0.10.0",
     "classnames": "^2.3.1",

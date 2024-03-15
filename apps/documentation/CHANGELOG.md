@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.15](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.14...@entur/documentation@3.2.15) (2024-03-15)
+
+### Bug Fixes
+
+- **calendar:** fix error with locale prop not being applied correctly ([fdd442d](https://bitbucket.org/enturas/design-system/commits/fdd442d5b010bd611453c687e40ff405cc15c770))
+
 ## [3.2.14](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.13...@entur/documentation@3.2.14) (2024-03-06)
 
 **Note:** Version bump only for package @entur/documentation

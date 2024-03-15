@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.57...@entur/layout@2.2.0) (2024-03-15)
+
+### Bug Fixes
+
+- **media card:** fix missing visable focus on hover with mediaCard ([cb056c8](https://bitbucket.org/enturas/design-system/commits/cb056c8350a03b59242f212366ebb8f7ca8431be))
+- **media card:** make whole mediaCard clickable by default ([59799b1](https://bitbucket.org/enturas/design-system/commits/59799b1d6a74c6ccc19f7dad2b879d987094bf22))
+
+### Features
+
+- **media card:** add prop 'hideArrow' ([87e5056](https://bitbucket.org/enturas/design-system/commits/87e5056555a870f3a86f2be7d8c60f837f55d1c3))
+
 ## [2.1.57](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.1.56...@entur/layout@2.1.57) (2024-03-06)
 
 ### Bug Fixes
