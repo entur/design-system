@@ -18,7 +18,8 @@ export const ComponentPreview: React.FC<{
         title={title}
         description={description}
         className="component-preview"
-        wholeCardAsElement
+        headingLevel="h3"
+        hideArrow
       >
         <div className="component-preview__image-wrapper">{children}</div>
       </MediaCard>
