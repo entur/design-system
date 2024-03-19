@@ -1,6 +1,6 @@
 import React from 'react';
 import { FileUpload } from './';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 
 test('invoke onDragEnter when dragenter event occurs', async () => {
   const file = new File([JSON.stringify({ ping: true })], 'ping.json', {
@@ -21,8 +21,10 @@ test('invoke onDragEnter when dragenter event occurs', async () => {
   const { container, rerender } = render(ui);
   const dropzone = container.querySelector('.eds-file-upload__input');
 
-  dispatchEvt(dropzone, 'dragenter', data);
-  await flushPromises(ui, container);
+  await act(async () => {
+    dispatchEvt(dropzone, 'dragenter', data);
+    await flushPromises(ui, container);
+  });
 
   await waitFor(() => expect(onDragEnter).toHaveBeenCalled());
   rerender(

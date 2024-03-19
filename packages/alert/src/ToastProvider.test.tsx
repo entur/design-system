@@ -48,7 +48,10 @@ test('removes the toasts after the specified delay', () => {
   fireEvent.click(button);
 
   expect(getAllByRole('status')).toHaveLength(2);
-  jest.advanceTimersByTime(2999);
+  // exit animation start EXIT_ANIMATION_TIME ms before exit and triggers state update
+  act(() => {
+    jest.advanceTimersByTime(2999);
+  });
   expect(getAllByRole('status')).toHaveLength(2);
 
   fireEvent.click(button);
