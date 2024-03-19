@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { cloneElement, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import {
   CloseSmallIcon,
@@ -56,8 +56,10 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   const alertIsSet = alert !== 'none';
   const tagRef = useRef<HTMLDivElement>(null);
   const numberOfChildren = React.Children.count(children);
-  const { Icon, ariaLabel } = getTransportStyle(transport);
+  const { Icon, ariaLabel: ariaLabelForTranportIcon } =
+    getTransportStyle(transport);
   const deCapitalizeTransport = transport.toLowerCase();
+  const IconWithAriaHidden = cloneElement(<Icon />, { 'aria-hidden': 'true' });
 
   const backgroundColor =
     'var(--components-travel-traveltag-standard-tagfill-' +
@@ -129,13 +131,13 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         className,
       })}
       ref={tagRef}
-      {...rest}
-      aria-label={
-        rest['aria-label'] ?? ariaLabel + (alertIsSet ? ` ${alert}` : '')
-      }
+      aria-label={`${ariaLabelForTranportIcon} ${children} ${
+        alertIsSet ? alert : ''
+      }`}
       role="img"
+      {...rest}
     >
-      <Icon aria-hidden />
+      {IconWithAriaHidden}
       {children}
       {isClosable && (
         <button
