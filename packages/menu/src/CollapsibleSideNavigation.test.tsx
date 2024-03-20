@@ -11,7 +11,7 @@ jest.useFakeTimers();
 afterEach(() => jest.clearAllTimers());
 
 const OPEN_ANIMATION_TIME = 200;
-const CLOSE_ANIMATION_TIME = 200;
+const CLOSE_ANIMATION_TIME = 50;
 
 test('renders a collapsible sidenavigation, and closes it and the SideNavigationGroup', async () => {
   const { getByText, queryByText, getAllByRole } = render(
