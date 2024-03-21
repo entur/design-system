@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.41...@entur/table@4.7.0) (2024-03-21)
+
+### Features
+
+- **data cell:** update DataCell to use BulletBadge from layout package ([b7796ce](https://bitbucket.org/enturas/design-system/commits/b7796ce847f4559917bd84a12425a3c9c88d4201))
+
 ## [4.6.41](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.6.40...@entur/table@4.6.41) (2024-03-15)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.20](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.19...@entur/menu@4.2.20) (2024-03-21)
+
+### Bug Fixes
+
+- **side navigation:** fix incorrect aria label on collapsed menu ([5cb2f22](https://bitbucket.org/enturas/design-system/commits/5cb2f221564856567f5c95f8b6c4776ecc262c41))
+
 ## [4.2.19](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.18...@entur/menu@4.2.19) (2024-03-15)
 
 **Note:** Version bump only for package @entur/menu
