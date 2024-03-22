@@ -1,0 +1,33 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+
+@import '../../../styles/variables';
+
+.top-navigation {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
+  width: 100%;
+  padding: 1rem 1rem 0rem;
+  transition: margin-left $timings-fast ease-out;
+  height: $navbar-height;
+  z-index: $z-indexes-popover;
+
+  @include for-desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: initial;
+    padding: $space-extra-large2 0 $space-extra-large2 $space-extra-large2;
+    justify-content: flex-start;
+    &__logo {
+      margin-right: 3rem;
+      &:focus {
+        outline: none;
+        box-shadow: $shadows-focus;
+        outline-offset: $outline-offsets-focus;
+      }
+    }
+  }
+}

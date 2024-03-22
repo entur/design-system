@@ -1,0 +1,72 @@
+{
+  "name": "@entur/documentation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Documentation for Entur's design system",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "dev": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts"
+  },
+  "dependencies": {
+    "@entur/a11y": "^0.2.76",
+    "@entur/alert": "^0.15.21",
+    "@entur/button": "^3.2.11",
+    "@entur/chip": "^0.6.67",
+    "@entur/datepicker": "^9.3.0",
+    "@entur/dropdown": "^5.3.1",
+    "@entur/expand": "^3.5.0",
+    "@entur/fileupload": "^0.3.105",
+    "@entur/form": "^7.0.39",
+    "@entur/grid": "^0.3.42",
+    "@entur/icons": "^6.15.1",
+    "@entur/layout": "^2.2.0",
+    "@entur/loader": "^0.4.55",
+    "@entur/menu": "^4.2.19",
+    "@entur/modal": "^1.7.32",
+    "@entur/tab": "^0.4.59",
+    "@entur/table": "^4.6.41",
+    "@entur/tokens": "^3.16.0",
+    "@entur/tooltip": "^2.6.48",
+    "@entur/travel": "^6.1.7",
+    "@entur/typography": "^1.8.24",
+    "@entur/utils": "^0.10.0",
+    "classnames": "^2.5.1",
+    "fast-fuzzy": "^1.12.0",
+    "gatsby": "^5.13.7",
+    "gatsby-plugin-image": "^3.13.1",
+    "gatsby-plugin-mdx": "^5.13.1",
+    "gatsby-plugin-sass": "^6.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-plugin-sitemap": "^6.13.1",
+    "gatsby-remark-images": "^7.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
+    "gatsby-transformer-remark": "^6.13.1",
+    "gatsby-remark-autolink-headers": "6.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0",
+    "react-confetti": "^6.1.0",
+    "framer-motion": "^4.1.17",
+    "@artsy/fresnel": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.28",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "typescript": "^5.5.4",
+    "dts-cli": "2.0.3"
+  },
+  "overrides": {
+    "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
+      "react": "^18.2.0"
+    }
+  }
+}
