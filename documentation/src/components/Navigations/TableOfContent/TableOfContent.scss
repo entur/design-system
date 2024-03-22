@@ -1,0 +1,67 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/menu/dist/styles.css';
+@import '../../../styles/variables';
+
+.table-of-content-container {
+  display: none;
+  z-index: 1;
+
+  @media screen and (min-width: $show-toc-min-width) {
+    display: block;
+    position: fixed;
+    left: $toc-left-position;
+    top: ($navbar-height + 2rem);
+    bottom: 0rem;
+    overflow-y: auto;
+
+    height: calc(100% - 9rem);
+  }
+}
+.table-of-content {
+  list-style: none;
+  padding: 0;
+  max-width: 15rem;
+  padding-left: 1rem;
+  border-left: $border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
+}
+
+.table-of-content__item {
+  margin-bottom: $space-medium;
+  &--depth-3 {
+    padding-left: $space-large;
+  }
+
+  &--depth-4 {
+    padding-left: $space-extra-large;
+  }
+}
+
+.table-of-content__link {
+  color: var(--components-menu-tableofcontent-standard-text-unselected);
+  font-size: $font-sizes-medium;
+  line-height: $line-heights-small;
+  text-decoration: none;
+  position: relative;
+  &:before {
+    display: block;
+    content: '';
+    height: 100%;
+    width: $border-widths-medium;
+    position: absolute;
+    left: -1rem - $border-widths-medium;
+    top: 0;
+    background: transparent;
+    transition: background $timings-fast ease-in-out;
+    .table-of-content__item--depth-3 & {
+      left: -2.5rem - $border-widths-medium;
+    }
+  }
+
+  &--active {
+    color: var(--components-menu-tableofcontent-standard-text-selected);
+    font-weight: $font-weights-heading;
+    &:before {
+      background: var(--components-menu-tableofcontent-standard-stroke-selected);
+    }
+  }
+}
