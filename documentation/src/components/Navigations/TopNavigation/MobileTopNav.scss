@@ -1,0 +1,63 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+@import '../../../styles/variables';
+
+.mobile-topnav {
+  position: absolute;
+  width: 100%;
+  background: var(--designentur-header-default-fill);
+  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
+  transition: position $timings-medium ease-in-out 0.2s;
+
+  .eds-contrast & {
+    background: var(--designentur-header-contrast-fill);
+    border-color: var(--designentur-header-contrast-divider);
+  }
+
+  &__links {
+    display: flex;
+    overflow-x: auto;
+
+    &__scroll-gradient {
+      // horizontal shadow scroll from https://codepen.io/vakhula/pen/OJVqBOK
+      background-position: left center, right center, left center, right center;
+      background-repeat: no-repeat;
+      background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+      background-attachment: local, local, scroll, scroll;
+
+      background-image: linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
+        linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
+        linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent), linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
+      background-color: var(--designentur-header-default-fill);
+
+      .eds-contrast & {
+        background-image: linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
+          linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
+          linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent);
+        background-color: var(--designentur-header-contrast-fill);
+      }
+    }
+  }
+  &-item {
+    padding: $space-medium $space-large;
+    word-break: keep-all;
+    display: flex;
+    color: inherit;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+    &--active {
+      &:after {
+        // border-bottom: $border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
+        border-bottom: $border-widths-large solid pink;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
