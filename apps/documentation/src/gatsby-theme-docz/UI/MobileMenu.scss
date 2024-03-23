@@ -38,8 +38,8 @@
         left: 2rem;
       }
       &:focus {
-        outline: none;
-        box-shadow: $shadows-focus;
+        outline: $outlines-focus;
+        outline-offset: $outline-offsets-focus;
       }
     }
     &--settings {
@@ -65,28 +65,19 @@
       // horizontal shadow scroll from https://codepen.io/vakhula/pen/OJVqBOK
       &,
       &--not-frontpage {
-        background-position: left center, right center, left center,
-          right center;
+        background-position: left center, right center, left center, right center;
         background-repeat: no-repeat;
         background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
         background-attachment: local, local, scroll, scroll;
       }
 
-      background-image: linear-gradient(
-          to right,
-          $colors-brand-blue,
-          $colors-brand-blue
-        ),
-        linear-gradient(to right, $colors-brand-blue, $colors-brand-blue),
-        linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent),
-        linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
+      background-image: linear-gradient(to right, $colors-brand-blue, $colors-brand-blue), linear-gradient(to right, $colors-brand-blue, $colors-brand-blue),
+        linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent), linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
       background-color: $colors-brand-blue;
 
       &--not-frontpage {
-        background-image: linear-gradient(to right, white, white),
-          linear-gradient(to right, white, white),
-          linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent),
-          linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent);
+        background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
+          linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent);
         background-color: white;
       }
     }

@@ -22,8 +22,8 @@ const SettingsPanel: React.FC = () => {
     setUserType,
     packageManager,
     setPackageManager,
-    theme,
-    setTheme,
+    colorMode,
+    setColorMode,
   } = useSettings();
 
   return (
@@ -42,10 +42,12 @@ const SettingsPanel: React.FC = () => {
         >
           <SettingsIcon aria-hidden="true" />
         </FloatingButton>
-        {false && (
+        {true && (
           <Switch
-            checked={theme === 'dark'}
-            onChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            checked={colorMode === 'dark'}
+            onChange={() =>
+              setColorMode(colorMode === 'dark' ? 'light' : 'dark')
+            }
           ></Switch>
         )}
       </div>

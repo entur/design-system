@@ -24,6 +24,17 @@
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/dropdown/dist/styles.css';
 
+:root{
+color-scheme: light dark
+}
+
+[data-color-mode='light'] {
+  color-scheme: light;
+}
+[data-color-mode='dark'] {
+  color-scheme: dark;
+}
+
 body {
   margin: 0;
 }

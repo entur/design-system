@@ -1,21 +1,24 @@
 import React from 'react';
-import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
-import classNames from 'classnames';
+import { ComponentsProvider, theme } from 'docz';
+// import { ComponentsProvider, theme, useCurrentDoc } from 'docz';
+// import classNames from 'classnames';
 import * as typography from '@entur/typography';
 import { ToastProvider } from '@entur/alert';
-import { SkipToContent } from '@entur/a11y';
+// import { SkipToContent } from '@entur/a11y';
 import { ColorsProvider } from '~/components/Colors';
-import SiteFooter from '~/components/SiteFooter';
-import FrontPageFooter from '~/components/FrontPageFooter';
+// import SiteFooter from '~/components/SiteFooter';
+// import FrontPageFooter from '~/components/FrontPageFooter';
 import { SettingsProvider } from '~/components/SettingsContext';
-import { TocNavigation } from '~/components/TocNavigation';
-import SEO from '~/gatsby-theme-docz/base/Seo';
+// import { TocNavigation } from '~/components/TocNavigation';
+// import SEO from '~/gatsby-theme-docz/base/Seo';
 import Props from '~/components/Props';
-import Menu from './UI/Menu';
-import FrontPageMenu from './UI/FrontPageMenu';
-import MobileMenu from './UI/MobileMenu';
-import { MediaContextProvider, Media } from '~/utils/MediaBreakpoint';
+// import Menu from './UI/Menu';
+// import FrontPageMenu from './UI/FrontPageMenu';
+// import MobileMenu from './UI/MobileMenu';
+import { MediaContextProvider } from '~/utils/MediaBreakpoint';
+// import { MediaContextProvider, Media } from '~/utils/MediaBreakpoint';
 import './index.scss';
+import { Page } from './UI/Page';
 
 const componentMap = {
   h1: typography.Heading1,
@@ -36,15 +39,16 @@ const componentMap = {
 };
 
 const App: React.FC = ({ children }) => {
-  const isFrontPage = useCurrentDoc().frontpage;
-  const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
+  // const isFrontPage = useCurrentDoc().frontpage;
+  // const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
   return (
     <SettingsProvider>
       <ToastProvider>
         <MediaContextProvider>
           <ColorsProvider>
             <ComponentsProvider components={componentMap}>
-              <SkipToContent mainId="site-content">
+              <Page>{children}</Page>
+              {/* <SkipToContent mainId="site-content">
                 Gå til hovedinnhold
               </SkipToContent>
               {isFrontPage ? (
@@ -98,7 +102,7 @@ const App: React.FC = ({ children }) => {
                     </div>
                   </div>
                 </>
-              )}
+              )} */}
             </ComponentsProvider>
           </ColorsProvider>
         </MediaContextProvider>
