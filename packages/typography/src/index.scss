@@ -57,6 +57,7 @@
 .eds-h4,
 .eds-h5,
 .eds-h6 {
+  color: var(--primary-text-color);
   font-weight: t.$font-weights-heading;
   -webkit-font-smoothing: antialiased;
 }
@@ -124,6 +125,7 @@
 
 // Body text and inline element styling
 .eds-paragraph {
+  color: var(--primary-text-color);
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-extra-large;
   margin: 0 0 t.$space-extra-large;
@@ -134,6 +136,7 @@
   }
 }
 .eds-lead-paragraph {
+  color: var(--primary-text-color);
   font-size: 1.25rem;
   line-height: 1.875rem;
   margin: t.$space-large 0;
@@ -144,6 +147,7 @@
   }
 }
 .eds-sub-paragraph {
+  color: var(--primary-text-color);
   font-size: t.$font-sizes-medium;
   line-height: t.$line-heights-medium;
 
@@ -152,6 +156,7 @@
   }
 }
 .eds-small-text {
+  color: var(--primary-text-color);
   font-size: t.$font-sizes-extra-small;
   line-height: t.$line-heights-small;
 
