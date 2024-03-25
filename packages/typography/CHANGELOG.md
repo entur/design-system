@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.26](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.25...@entur/typography@1.8.26) (2024-03-25)
+
+### Bug Fixes
+
+- **typography:** fix text colors being overriden by user agent stylesheet ([98bfd14](https://bitbucket.org/enturas/design-system/commits/98bfd14ebda51e99eff20774f8c69e97d7eee8d0))
+
 ## [1.8.25](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.24...@entur/typography@1.8.25) (2024-03-21)
 
 **Note:** Version bump only for package @entur/typography
