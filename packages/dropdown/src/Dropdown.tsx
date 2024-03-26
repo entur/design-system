@@ -61,6 +61,8 @@ export type DropdownProps<ValueType> = {
    * @default "fjern valgt"
    */
   labelClearSelectedItem?: string;
+  /** En tooltip som gir ekstra info om inputfeltet */
+  labelTooltip?: React.ReactNode;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
@@ -103,6 +105,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   items: initialItems,
   label,
   labelClearSelectedItem = 'fjern valgt',
+  labelTooltip,
   listStyle,
   loadingText,
   onChange,
@@ -149,7 +152,9 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
 
   return (
     <div
-      className={classNames('eds-dropdown__wrapper', className)}
+      className={classNames('eds-dropdown__wrapper', className, {
+        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
+      })}
       style={style}
     >
       <BaseFormControl
@@ -183,6 +188,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
         prepend={prepend}
         readOnly={readOnly}
         variant={variant}

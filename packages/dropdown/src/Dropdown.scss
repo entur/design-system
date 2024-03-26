@@ -6,6 +6,14 @@
     width: 100%;
     min-width: 6rem;
     max-width: 100%;
+
+    &--has-tooltip {
+      padding-right: t.$space-extra-large;
+
+      .eds-dropdown__list {
+        width: calc(100% - t.$space-extra-large);
+      }
+    }
   }
 
   &__input {
@@ -120,6 +128,13 @@
 
     .eds-form-control__append {
       top: 0.25rem;
+
+      &.eds-form-control__append--tooltip {
+        color: var(--primary-text-color);
+        position: absolute;
+        top: 0.75rem;
+        right: -1 * t.$space-extra-large3;
+      }
 
       .eds-loading-dots {
         height: 2rem;
