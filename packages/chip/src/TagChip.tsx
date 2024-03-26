@@ -13,11 +13,22 @@ export type TagChipProps = {
   onClose: () => void;
   /** Skjermlesertekst for X-knappen */
   closeButtonAriaLabel?: string;
+  /** Størrelsen på chip
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 };
 
 export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
   (
-    { children, className, onClose, closeButtonAriaLabel, ...rest },
+    {
+      children,
+      className,
+      onClose,
+      closeButtonAriaLabel,
+      size = 'medium',
+      ...rest
+    },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const selectedCloseLabel =
@@ -25,7 +36,9 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
 
     return (
       <div
-        className={classNames('eds-chip', 'eds-tag-chip', className)}
+        className={classNames('eds-chip', 'eds-tag-chip', className, {
+          [`eds-chip--size-${size}`]: size,
+        })}
         {...rest}
       >
         {children}

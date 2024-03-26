@@ -6,10 +6,7 @@
   border-radius: 1rem;
   color: var(--components-chip-standard-text-unselected);
   font-family: inherit;
-  font-size: t.$font-sizes-medium;
-  height: 2rem;
-  min-width: 3rem;
-  padding: 0 t.$space-small;
+
   transition: background t.$timings-fast ease-out, border t.$timings-fast ease-out;
   display: flex;
   justify-content: center;
@@ -29,5 +26,24 @@
   }
   &--trailing-icon .eds-icon:last-of-type {
     margin-left: t.$space-extra-small;
+  }
+  &--size-small {
+    height: 1.5rem;
+    min-width: 2.5rem;
+    padding: 0 t.$space-extra-small;
+    font-size: t.$font-sizes-small;
+
+    .eds-tag-chip__close-button {
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+  &--size-medium {
+    height: 2rem;
+    min-width: 3rem;
+    padding: 0 t.$space-small;
+    font-size: t.$font-sizes-medium;
   }
 }
