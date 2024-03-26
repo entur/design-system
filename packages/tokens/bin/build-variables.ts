@@ -242,7 +242,7 @@ function generateComponentColorsString(
   importSyntax = '@use',
   extension: 'css' | 'scss' | 'less' = 'css',
 ) {
-  const CSS_SEMANTIC_IMPORT_TEXT = `${importSyntax} '~@entur/tokens/dist/semantic.css';`;
+  const CSS_SEMANTIC_IMPORT_TEXT = `${importSyntax} '~@entur/tokens/dist/semantic.${extension}';`;
 
   const outputString = `${CSS_SEMANTIC_IMPORT_TEXT}
 ${WARNING_TEXT}
