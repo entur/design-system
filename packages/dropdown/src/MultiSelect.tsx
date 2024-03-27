@@ -125,6 +125,8 @@ export type MultiSelectProps<ValueType> = {
    * @default "Fjern valgte"
    */
   labelClearAllItems?: string;
+  /** En tooltip som gir ekstra info om inputfeltet */
+  labelTooltip?: React.ReactNode;
   /** Tekst for skjemleser på knapper for å fjerne valgt element
    * @default "trykk for å fjerne valg"
    */
@@ -172,6 +174,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   labelAllItemsSelected = 'Alle valgt',
   labelClearAllItems = 'Fjern valgte',
   labelSelectAll = 'Velg alle',
+  labelTooltip,
   listStyle,
   loadingText,
   maxChips = 10,
@@ -431,7 +434,9 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   };
   return (
     <div
-      className={classNames('eds-dropdown__wrapper', className)}
+      className={classNames('eds-dropdown__wrapper', className, {
+        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
+      })}
       style={style}
     >
       <BaseFormControl
@@ -458,6 +463,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
         onClick={(e: React.MouseEvent) => {
           if (e.target === e.currentTarget) inputRef.current?.focus();
         }}

@@ -94,6 +94,8 @@ export type SearchableDropdownProps<ValueType> = {
    * @default "fjern valgt"
    */
   labelClearSelectedItem?: string;
+  /** En tooltip som gir ekstra info om inputfeltet */
+  labelTooltip?: React.ReactNode;
   /** Tekst for skjemleser for knapp som lukker listen med valg
    * @default "Lukk liste med valg"
    */
@@ -130,6 +132,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
     : lowerCaseFilterTest,
   label,
   labelClearSelectedItem = 'fjern valgt',
+  labelTooltip,
   listStyle,
   loadingText,
   noMatchesText,
@@ -287,7 +290,9 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
 
   return (
     <div
-      className={classNames('eds-dropdown__wrapper', className)}
+      className={classNames('eds-dropdown__wrapper', className, {
+        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
+      })}
       style={style}
     >
       <BaseFormControl
@@ -299,6 +304,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         label={label}
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
         onClick={(e: React.MouseEvent) => {
           if (e.target === e.currentTarget) inputRef.current?.focus();
         }}
