@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.3...@entur/dropdown@5.3.4) (2024-03-27)
+
+### Bug Fixes
+
+- **dropdowns:** support for labelTooltip prop is back ([3af9663](https://bitbucket.org/enturas/design-system/commits/3af9663e7d95b41e481c647b19a4df51861f8585))
+
 ## [5.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.2...@entur/dropdown@5.3.3) (2024-03-25)
 
 **Note:** Version bump only for package @entur/dropdown

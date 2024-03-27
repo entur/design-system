@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.1...@entur/tokens@3.13.2) (2024-03-27)
+
+### Bug Fixes
+
+- **color variables:** fix incorrect import in sass some sass files ([4074456](https://bitbucket.org/enturas/design-system/commits/40744560f41e4b83854e33063c8e0a22fc0b18c3))
+
 ## [3.13.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.0...@entur/tokens@3.13.1) (2024-03-21)
 
 **Note:** Version bump only for package @entur/tokens
