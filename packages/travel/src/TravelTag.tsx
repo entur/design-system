@@ -2,9 +2,9 @@ import React, { cloneElement, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import {
   CloseSmallIcon,
-  ValidationInfoIcon,
-  ValidationErrorIcon,
-  ValidationExclamationIcon,
+  ValidationInfoFilledIcon,
+  ValidationErrorFilledIcon,
+  ValidationExclamationFilledIcon,
 } from '@entur/icons';
 import { useContrast } from '@entur/layout';
 
@@ -151,19 +151,19 @@ export const TravelTag: React.FC<TravelTagProps> = ({
       {alertIsSet && (
         <span className="eds-travel-tag__alert">
           {alert === 'info' && (
-            <ValidationInfoIcon
+            <ValidationInfoFilledIcon
               aria-hidden
               className="eds-travel-tag__alert-info-icon"
             />
           )}
           {alert === 'error' && (
-            <ValidationErrorIcon
+            <ValidationErrorFilledIcon
               aria-hidden
               className="eds-travel-tag__alert-error-icon"
             />
           )}
           {alert === 'warning' && (
-            <ValidationExclamationIcon
+            <ValidationExclamationFilledIcon
               aria-hidden
               className="eds-travel-tag__alert-exclamation-icon"
             />

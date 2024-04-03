@@ -2,7 +2,6 @@
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-alert-box {
-  border: t.$border-widths-small solid transparent;
   border-radius: t.$border-radiuses-medium;
   display: flex;
   padding: t.$space-small;
@@ -44,7 +43,6 @@
   // Variants
   &--success {
     background-color: var(--components-alert-alertbox-success-standard-fill);
-    border-color: var(--components-alert-alertbox-success-standard-border);
     color: var(--components-alert-alertbox-success-standard-text);
 
     .eds-alert-box__icon {
@@ -52,7 +50,6 @@
     }
     .eds-contrast & {
       background-color: var(--components-alert-alertbox-success-contrast-fill);
-      border-color: transparent;
       color: var(--components-alert-alertbox-success-contrast-text);
 
       .eds-alert-box__icon {
@@ -62,7 +59,6 @@
   }
   &--info {
     background-color: var(--components-alert-alertbox-information-standard-fill);
-    border-color: var(--components-alert-alertbox-information-standard-border);
     color: var(--components-alert-alertbox-information-standard-text);
 
     .eds-alert-box__icon {
@@ -70,7 +66,6 @@
     }
     .eds-contrast & {
       background-color: var(--components-alert-alertbox-information-contrast-fill);
-      border-color: transparent;
       color: var(--components-alert-alertbox-information-contrast-text);
 
       .eds-alert-box__icon {
@@ -80,7 +75,6 @@
   }
   &--warning {
     background-color: var(--components-alert-alertbox-warning-standard-fill);
-    border-color: var(--components-alert-alertbox-warning-standard-border);
     color: var(--components-alert-alertbox-warning-standard-text);
 
     .eds-alert-box__icon {
@@ -88,7 +82,6 @@
     }
     .eds-contrast & {
       background-color: var(--components-alert-alertbox-warning-contrast-fill);
-      border-color: transparent;
       color: var(--components-alert-alertbox-warning-contrast-text);
 
       .eds-alert-box__icon {
@@ -98,7 +91,6 @@
   }
   &--error {
     background-color: var(--components-alert-alertbox-negative-standard-fill);
-    border-color: var(--components-alert-alertbox-negative-standard-border);
     color: var(--components-alert-alertbox-negative-standard-text);
 
     .eds-alert-box__icon {
@@ -107,7 +99,6 @@
 
     .eds-contrast & {
       background-color: var(--components-alert-alertbox-negative-contrast-fill);
-      border-color: transparent;
       color: var(--components-alert-alertbox-negative-contrast-text);
 
       .eds-alert-box__icon {
