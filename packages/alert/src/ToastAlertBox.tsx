@@ -2,6 +2,9 @@ import React from 'react';
 import { BaseAlertBox } from './BaseAlertBox';
 import './ToastAlertBox.scss';
 
+/** @deprecated use variant="information" instead */
+const info = 'info';
+
 export type ToastAlertBoxProps = {
   /** Innholdet i toasten */
   children?: React.ReactNode;
@@ -15,8 +18,8 @@ export type ToastAlertBoxProps = {
   closable?: boolean;
   /** Tittel på boksen - oppsummer virkning */
   title?: string;
-  /** Farge og uttrykk på toasten */
-  variant: 'success' | 'info';
+  /** Farge og uttrykk på toasten, info er deprecated bruk information istedenfor*/
+  variant: 'success' | 'information' | typeof info;
   [key: string]: any;
 };
 

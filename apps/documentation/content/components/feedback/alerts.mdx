@@ -28,7 +28,7 @@ import { banner } from './props';
 <PageHeader />
 
 <Playground props={banner}>
-  <BannerAlertBox variant="info"></BannerAlertBox>
+  <BannerAlertBox variant="information"></BannerAlertBox>
 </Playground>
 
 ## Komponenter
@@ -63,7 +63,7 @@ import { banner } from './props';
     <ToastAlertBox variant="success" title="Nå har du billett!">
       Ha det gøy på togturen til Bergen!
     </ToastAlertBox>
-    <ToastAlertBox variant="info" title="Toget går fra plattform 2">
+    <ToastAlertBox variant="information" title="Toget går fra plattform 2">
       Husk å sjekke plattform når du ankommer.
     </ToastAlertBox>
   </div>
@@ -91,12 +91,12 @@ import { banner } from './props';
             addToast({
               title: 'Toasts burde brukes sparsomt!',
               content: 'For mye av det gode er aldri bra.',
-              variant: 'info',
+              variant: 'information',
             })
           }
           type="button"
         >
-          Lag info-toast
+          Lag information-toast
         </SecondaryButton>
       </React.Fragment>
     );
@@ -136,7 +136,7 @@ Du kan enten sende inn en string, eller et objekt med følgende form:
 {
   title: 'Tittelen på toasten',
   content: <>Mer <em>utfyllende</em> informasjon</>
-  variant: 'info' // eller 'success', som er default
+  variant: 'information' // eller 'success', som er default
 }
 ```
 
@@ -162,11 +162,11 @@ Små alert-bokser brukes når de skal plasseres inni en annen UI-komponent.
     }}
   >
     <SmallAlertBox variant="success">Kjøpet gikk i orden!</SmallAlertBox>
-    <SmallAlertBox variant="info">Toget går fra plattform 2</SmallAlertBox>
+    <SmallAlertBox variant="information">Toget går fra plattform 2</SmallAlertBox>
     <SmallAlertBox variant="warning" width="fit-content">
       Snøvær på Bergensbanen
     </SmallAlertBox>
-    <SmallAlertBox variant="error" width="fit-content">
+    <SmallAlertBox variant="negative" width="fit-content">
       Kjøpet kunne ikke gjennomføres!
     </SmallAlertBox>
   </div>
@@ -184,7 +184,7 @@ Da kan man bruke `SmallExpandableAlertBox` eller `BannerExpandableAlertBox` for 
 
 <Playground style={{ width: '62%', margin: '0 auto' }}>
   <SmallExpandableAlertBox
-    variant="error"
+    variant="negative"
     title="Kjøpet kunne ikke gjennomføres!"
   >
     Vi har et teknisk problem akkurat nå. Kjøpsløsningen for billetter fungerer
@@ -213,7 +213,7 @@ Suksessvarselet er grønn og vises når en handling er vellykket. For eksempel i
 
 Advarselen er gul og brukes for å advare brukeren om viktig informasjon som trenger oppmerksomhet. For eksempel avvik i trafikken eller at man skal benytte bakdører til av- og påstigning.
 
-#### Error:
+#### Negative:
 
 Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en handling, eller for å varsle brukeren om en feil som trenger øyeblikkelig oppmerksomhet. For eksempel skjemaet kunne ikke lagres fordi det mangler data på noen felter.
 
@@ -226,7 +226,7 @@ Feilvarslingen er rød. Den indikerer at noe gikk galt etter å ha utført en ha
 Globale varsler brukes når man ønsker å meddele informasjon på tvers av en applikasjon.
 Eksempler kan være cookie-info, et API som er nede eller generalstreik som påvirker alt og alle.
 
-Globale varsler finnes i info, warning og error-utførelse (ikke suksess).
+Globale varsler finnes i information, warning og negative-utførelse (ikke suksess).
 De skal dekke hele toppen av siden, og skyver ned sidens innhold.
 De har vanligvis muligheten til å bli lukket, slik at brukerne kan fjerne den.
 Beskjeden bør dukke opp igjen neste gang man laster siden, men dette er opp til konsumenten.
@@ -248,7 +248,7 @@ Toasts brukes i respons på visse typer handlinger og hendelser, og vises automa
 De bør forsvinne etter minst 6 sekunder, eller om man trykker på lukke-knappen.
 Lukke-knappen bør dukke opp når man holder musepekeren over feltet, og "nedtellingen" for å automatisk fjerne knappen bør starte på nytt.
 
-Toasts er kun tilgjengelige i typene success og info, men vi brukes for det meste success-varselet.
+Toasts er kun tilgjengelige i typene success og information, men vi brukes for det meste success-varselet.
 De skal kun brukes som reaksjon på en hendelse, eller vise tidssensitiv informasjon.
 Et godt eksempel kan være at brukeren er oppdatert, eller at en annen bruker har begynt å redigere samme dokument.
 
@@ -281,7 +281,7 @@ Disse brukes ikke så ofte, og man kan ofte benytte valideringsmeldinger isteden
         gi beskjed om hva de trenger å gjøre for å gjennomføre oppgaven.
       </li>
       <li>Tillatt brukeren å avvise et varsel der det er aktuelt.</li>
-      <li>Bruk standardikonet for info, suksess, advarsel og feil.</li>
+      <li>Bruk standardikonet for information, suksess, advarsel og feil.</li>
     </ul>
   </Example>
   <Example type="dont">

@@ -57,7 +57,8 @@
       }
     }
   }
-  &--info {
+  &--info,
+  &--information {
     background-color: var(--components-alert-alertbox-information-standard-fill);
     color: var(--components-alert-alertbox-information-standard-text);
 
@@ -89,7 +90,8 @@
       }
     }
   }
-  &--error {
+  &--error,
+  &--negative {
     background-color: var(--components-alert-alertbox-negative-standard-fill);
     color: var(--components-alert-alertbox-negative-standard-text);
 
