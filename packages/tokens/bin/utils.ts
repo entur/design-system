@@ -26,6 +26,8 @@ export type KeyValueSet = {
   sanitizedValue?: string;
 };
 
+const SUPPORTED_COLOR_MODES = ['light', 'dark'];
+
 export function createColorSet(filePath: string) {
   const fileData = fs.readFileSync(filePath, 'utf-8');
   const colorsUnformated = JSON.parse(fileData);
@@ -55,7 +57,11 @@ export function createColorSet(filePath: string) {
               value: usesAlias ? `@${varNameInKebabCase}` : hexValue,
             },
             js: {
-              key: `${toFlattenedJSObjectKey(color.name)}`,
+              key: `${
+                SUPPORTED_COLOR_MODES.includes(colorModeName)
+                  ? colorModeName + '.'
+                  : ''
+              }${toFlattenedJSObjectKey(color.name)}`,
               value: hexValue,
             },
             mode: colorModeName,
