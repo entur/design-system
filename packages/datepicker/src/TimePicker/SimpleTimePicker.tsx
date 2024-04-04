@@ -11,9 +11,9 @@ import type {
   MappedTimeValue,
 } from '@react-types/datepicker';
 
-import { TextField, VariantType } from '@entur/form';
+import { TextField } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
-import { mergeRefs } from '@entur/utils';
+import { mergeRefs, VariantType } from '@entur/utils';
 
 import './SimpleTimePicker.scss';
 
@@ -21,6 +21,11 @@ enum inputResult {
   RESET_TIME,
   INVALID,
 }
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
@@ -46,8 +51,8 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   padding?: 'default' | 'large';
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant info og error er deprecated bruk information og negative istedenfor*/
+  variant?: VariantType | typeof error | typeof info;
   /** Tekst eller ikon som vises foran skjema-elementet */
   prepend?: React.ReactNode;
   /** Tekst eller ikon som vises etter skjema-elementet */

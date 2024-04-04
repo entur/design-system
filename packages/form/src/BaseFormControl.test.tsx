@@ -17,7 +17,7 @@ test('renders variants correctly', () => {
     <BaseFormControl
       label="test"
       labelId="testId"
-      variant="error"
+      variant="negative"
       data-testid="wrapper"
     >
       <input />
@@ -25,7 +25,7 @@ test('renders variants correctly', () => {
   );
 
   let wrapper = getByTestId('wrapper');
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--negative');
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
@@ -41,7 +41,7 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
   expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
@@ -52,7 +52,7 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
@@ -68,14 +68,14 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).not.toHaveClass('eds-form-control-wrapper--negative');
   expect(wrapper).toHaveClass('eds-form-control-wrapper--success');
 
   rerender(
     <BaseFormControl
       label="test"
       labelId="testId"
-      variant="error"
+      variant="negative"
       data-testid="wrapper"
     >
       <input />
@@ -84,7 +84,7 @@ test('renders variants correctly', () => {
 
   wrapper = getByTestId('wrapper');
 
-  expect(wrapper).toHaveClass('eds-form-control-wrapper--error');
+  expect(wrapper).toHaveClass('eds-form-control-wrapper--negative');
   expect(wrapper).not.toHaveClass('eds-form-control-wrapper--success');
 });
 
