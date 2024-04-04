@@ -1,7 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import { VariantType } from '@entur/utils';
+
 import './Badge.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const danger = 'danger';
 
 export type BadgeTypes = 'status' | 'bullet' | 'notification';
 
@@ -14,8 +21,8 @@ export type BadgeOwnProps = {
   className?: string;
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
-  /** Hvilken type badge man vil ha */
-  variant: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
+  /** Hvilken type badge man vil ha , info og danger er deprecated bruk information og negative istedenfor */
+  variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
   /** Om 0 skal vises
    * @default false
    */
