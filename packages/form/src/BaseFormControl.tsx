@@ -1,12 +1,20 @@
-import { Tooltip } from '@entur/tooltip';
 import classNames from 'classnames';
 import React from 'react';
+
 import './BaseFormControl.scss';
 import { FeedbackText } from './FeedbackText';
 import { InputGroupContextProvider } from './InputGroupContext';
 import { InputGroupLabel } from './InputGroupLabel';
-import { useVariant, VariantType } from './VariantProvider';
+import { useVariant } from './VariantProvider';
+
+import { VariantType } from '@entur/utils';
 import { QuestionIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type BaseFormControlProps = {
   /** Et skjemaelement med `eds-form-control`-klassen */
@@ -21,8 +29,8 @@ export type BaseFormControlProps = {
   prepend?: React.ReactNode;
   /** Tekst eller ikon som vises etter skjema-elementet */
   append?: React.ReactNode;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant, info og error er deprecated bruk information og negative istedenfor */
+  variant?: VariantType | typeof error | typeof info;
   /**Størrelsen på skjemaelementet
    * @default "medium"
    */
@@ -90,7 +98,8 @@ export const BaseFormControl = React.forwardRef<
             `eds-form-control-wrapper--size-${size}`,
             {
               'eds-form-control-wrapper--success': currentVariant === 'success',
-              'eds-form-control-wrapper--error': currentVariant === 'error',
+              'eds-form-control-wrapper--negative':
+                currentVariant === 'negative' || currentVariant === error,
               'eds-form-control-wrapper--disabled': disabled,
               'eds-form-control-wrapper--readonly': readOnly,
               'eds-form-control-wrapper--is-filled': isFilled,

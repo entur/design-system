@@ -1,22 +1,17 @@
 import React from 'react';
+import { VariantType } from '@entur/utils';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type VariantType =
-  | 'success'
-  | 'negative'
-  | 'warning'
-  | 'information'
-  | typeof error
-  | typeof info;
-
-const VariantContext = React.createContext<VariantType | null>(null);
+const VariantContext = React.createContext<
+  VariantType | typeof error | typeof info | null
+>(null);
 
 export type VariantProviderProps = {
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
 };
 export const VariantProvider: React.FC<VariantProviderProps> = ({
   children,
@@ -29,7 +24,8 @@ export const VariantProvider: React.FC<VariantProviderProps> = ({
   );
 };
 
-export const useVariant: () => VariantType | null = () => {
-  const context = React.useContext(VariantContext);
-  return context;
-};
+export const useVariant: () => VariantType | typeof error | typeof info | null =
+  () => {
+    const context = React.useContext(VariantContext);
+    return context;
+  };

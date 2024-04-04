@@ -5,11 +5,19 @@ import {
   ValidationExclamationFilledIcon,
 } from '@entur/icons';
 import { SubLabel } from '@entur/typography';
-import { VariantType } from './VariantProvider';
+import { VariantType } from '@entur/utils';
+
 import classNames from 'classnames';
 import './FeedbackText.scss';
 
-const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
+const AlertIcon: React.FC<{
+  variant: VariantType | typeof info | typeof error;
+}> = ({ variant }) => {
   const iconClass = `eds-feedback-text__icon eds-feedback-text__icon--${variant}`;
   switch (variant) {
     case 'success':
@@ -19,14 +27,14 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
           className={iconClass}
         />
       );
-    case 'error':
+    case 'negative':
       return (
         <ValidationErrorFilledIcon
           aria-label="Feilmelding"
           className={iconClass}
         />
       );
-    case 'info':
+    case 'information':
       return null;
     case 'warning':
       return (
@@ -35,6 +43,12 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
           className={iconClass}
         />
       );
+    case error:
+      return (
+        <ValidationErrorIcon aria-label="Feilmelding" className={iconClass} />
+      );
+    case info:
+      return null;
     default:
       return null;
   }
@@ -45,8 +59,8 @@ export type FeedbackTextProps = {
   children: React.ReactNode;
   /** Skjuler ikonet */
   hideIcon?: boolean;
-  /** Feedbackvarianten */
-  variant: VariantType;
+  /** Feedbackvarianten , info og error er deprecated bruk information og negative istedenfor*/
+  variant: VariantType | typeof error | typeof info;
   /** Ekstra klassenavn */
   className?: string;
   [key: string]: any;
@@ -62,7 +76,10 @@ export const FeedbackText: React.FC<FeedbackTextProps> = ({
     <SubLabel
       className={classNames(
         'eds-feedback-text',
-        { 'eds-feedback-text--info': variant === 'info' },
+        {
+          'eds-feedback-text--information':
+            variant === info || variant === 'information',
+        },
         className,
       )}
       {...rest}

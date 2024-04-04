@@ -2,10 +2,16 @@ import { useRandomId, useOnMount } from '@entur/utils';
 import React from 'react';
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
-import { useVariant, VariantType } from './VariantProvider';
+import { useVariant } from './VariantProvider';
 import { isFilled } from './utils';
 import { CloseSmallIcon } from '@entur/icons';
+import { VariantType } from '@entur/utils';
 import './TextField.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type TextFieldProps = {
   /** Tekst eller ikon som kommer før inputfeltet */
@@ -20,8 +26,8 @@ export type TextFieldProps = {
   labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextField */
   feedback?: string;
-  /** Hvilken valideringsfarge som vises */
-  variant?: VariantType;
+  /** Hvilken valideringsfarge som vises, info og error er deprecated bruk information og negative istedenfor */
+  variant?: VariantType | typeof error | typeof info;
   /** Deaktiver inputfeltet */
   disabled?: boolean;
   /** Setter inputfeltet i read-only modus */
@@ -117,7 +123,7 @@ type TextFieldBaseProps = {
   disabled?: boolean;
   /** Setter inputfeltet i read-only modus */
   readOnly?: boolean;
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement

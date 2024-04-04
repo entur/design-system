@@ -119,7 +119,8 @@
     }
   }
 
-  &--error {
+  &--error,
+  &--negative {
     border-color: var(--components-form-baseform-standard-border-negative);
     &:focus-within {
       border-color: var(--components-form-baseform-standard-border-negative);
