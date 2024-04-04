@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { DataCell } from './DataCell';
 import { VariantProvider, VariantType } from '@entur/form';
+
 import { Tooltip } from '@entur/tooltip';
 import './EditableCell.scss';
 

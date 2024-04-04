@@ -1,6 +1,17 @@
 import React from 'react';
 
-export type VariantType = 'success' | 'error' | 'warning' | 'info';
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
+export type VariantType =
+  | 'success'
+  | 'negative'
+  | 'warning'
+  | 'information'
+  | typeof error
+  | typeof info;
 
 const VariantContext = React.createContext<VariantType | null>(null);
 
