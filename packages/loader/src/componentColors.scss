@@ -29,9 +29,9 @@
   --components-loader-loader-standard-progressbar: #{$stroke-highlight};
   --components-loader-loader-standard-text: #{$text-accent};
   --components-loader-skeleton-contrast-fill: #{$fill-background-contrast-lightalt-2};
-  --components-loader-skeleton-contrast-highlight: #{$fill-selected-hover-light};
+  --components-loader-skeleton-contrast-highlight: #{$fill-background-contrast-light};
   --components-loader-skeleton-standard-fill: #{$fill-selected-hover-light};
-  --components-loader-skeleton-standard-highlight: #{$fill-selected-hover-light};
+  --components-loader-skeleton-standard-highlight: #{$fill-background-tint-light};
 }
 
 [data-color-mode='dark'] {
