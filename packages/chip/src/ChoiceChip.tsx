@@ -48,8 +48,7 @@ export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
     const hasTrailingIcon =
       childrenArray.length > 1 && isIcon(childrenArray.at(-1));
 
-    const classList = cx(className, 'eds-chip', {
-      [`eds-chip--size-${size}`]: size,
+    const classList = cx(className, 'eds-chip', `eds-chip--size-${size}`, {
       'eds-chip--disabled': disabled,
       'eds-chip--leading-icon': hasLeadingIcon,
       'eds-chip--trailing-icon': hasTrailingIcon,

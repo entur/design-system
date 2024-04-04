@@ -45,12 +45,17 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       .filter(child => typeof child === 'string')
       .join(' ');
 
-    const classList = classNames(className, 'eds-chip', 'eds-action-chip', {
-      [`eds-chip--size-${size}`]: size,
-      'eds-chip--leading-icon': hasLeadingIcon,
-      'eds-chip--trailing-icon': hasTrailingIcon,
-      'eds-action-chip--disabled': rest.disabled,
-    });
+    const classList = classNames(
+      className,
+      'eds-chip',
+      'eds-action-chip',
+      `eds-chip--size-${size}`,
+      {
+        'eds-chip--leading-icon': hasLeadingIcon,
+        'eds-chip--trailing-icon': hasTrailingIcon,
+        'eds-action-chip--disabled': rest.disabled,
+      },
+    );
 
     const actionChip = (
       <button

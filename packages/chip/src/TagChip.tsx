@@ -36,9 +36,12 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
 
     return (
       <div
-        className={classNames('eds-chip', 'eds-tag-chip', className, {
-          [`eds-chip--size-${size}`]: size,
-        })}
+        className={classNames(
+          'eds-chip',
+          'eds-tag-chip',
+          `eds-chip--size-${size}`,
+          className,
+        )}
         {...rest}
       >
         {children}
