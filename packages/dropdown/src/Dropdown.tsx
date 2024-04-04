@@ -2,7 +2,8 @@ import React, { Dispatch, SetStateAction, useRef } from 'react';
 import { useSelect } from 'downshift';
 import classNames from 'classnames';
 
-import { BaseFormControl, VariantType } from '@entur/form';
+import { BaseFormControl } from '@entur/form';
+import { VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
@@ -15,6 +16,11 @@ import {
 } from './types';
 
 import './Dropdown.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type DropdownProps<ValueType> = {
   /** Tilgjengelige valg i dropdown-en */
@@ -47,8 +53,8 @@ export type DropdownProps<ValueType> = {
   disabled?: boolean;
   /** Setter dropdown-en i read-only modus */
   readOnly?: boolean;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType;
+  /** Hvilken valideringsvariant som gjelder, info og error er deprecated bruk information og negative istedenfor */
+  variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
   /** Tekst eller ikon som kommer før dropdown-en */
@@ -116,7 +122,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   selectOnBlur = false,
   selectOnTab = false,
   style,
-  variant = 'info',
+  variant = 'information',
   ...rest
 }: DropdownProps<ValueType>) => {
   const { items: normalizedItems, loading } = useResolvedItems(initialItems);

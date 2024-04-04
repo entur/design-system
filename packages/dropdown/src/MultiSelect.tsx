@@ -14,7 +14,8 @@ import {
 } from 'downshift';
 
 import { VisuallyHidden } from '@entur/a11y';
-import { BaseFormControl, VariantType } from '@entur/form';
+import { BaseFormControl } from '@entur/form';
+import { VariantType } from '@entur/utils';
 import { useRandomId } from '@entur/utils';
 
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
@@ -40,6 +41,11 @@ import {
 
 import './Dropdown.scss';
 
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
 export type MultiSelectProps<ValueType> = {
   /** Beskrivende tekst som forklarer feltet */
   label: string;
@@ -60,8 +66,8 @@ export type MultiSelectProps<ValueType> = {
     item: NormalizedDropdownItemType<ValueType>,
     inputValue: string | undefined,
   ) => boolean;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType;
+  /** Hvilken valideringsvariant som gjelder, info og error er deprecated bruk information og negative istedenfor  */
+  variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
   /** Om dropdown-en er deaktivert */
@@ -186,7 +192,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   selectOnBlur = false,
   selectOnTab = false,
   style,
-  variant = 'info',
+  variant = 'information',
   ariaLabelChosenSingular,
   ariaLabelChosenPlural = 'valgte',
   ariaLabelCloseList,
