@@ -17,6 +17,9 @@ type Modifier = {
   [key: string]: any;
 };
 
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
 export type TooltipProps = {
   /** Plassering av tooltip-en */
   placement:
@@ -48,8 +51,8 @@ export type TooltipProps = {
    * @default true
    */
   showCloseButton?: boolean;
-  /** Valideringsvariant for Tooltip */
-  variant?: 'error';
+  /** Valideringsvariant for Tooltip, error er deprecated bruk negative istedenfor */
+  variant?: 'negative' | typeof error;
   /** En array av modifiers som sendes til Popper, rammeverket som brukes til plassering av Tooltip
    * @default [{ name: 'offset', options: { offset: [0, 10]} }]
    */
@@ -160,7 +163,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
                 'eds-tooltip',
                 className,
                 `eds-tooltip--${popperPlacement}`,
-                { 'eds-tooltip--error': variant === 'error' },
+                {
+                  'eds-tooltip--negative':
+                    variant === error || variant === 'negative',
+                },
               )}
               ref={ref}
               style={style}

@@ -54,7 +54,7 @@ export const EditableCell: React.FC<EditableCellProps> = ({
           disableFocusListener={!feedback}
           placement="bottom"
           content={feedback || undefined}
-          variant={feedback ? 'error' : undefined}
+          variant={feedback ? 'negative' : undefined}
         >
           {children}
         </Tooltip>

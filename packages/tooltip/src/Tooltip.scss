@@ -70,7 +70,8 @@
       background: var(--components-tooltip-tooltip-contrast-fill);
     }
   }
-  &--error {
+  &--error,
+  &--negative {
     background: var(--components-tooltip-tooltip-standard-fill-negative);
     border: solid var(--components-tooltip-tooltip-standard-fill-negative);
     color: var(--components-tooltip-tooltip-standard-text-negative);
