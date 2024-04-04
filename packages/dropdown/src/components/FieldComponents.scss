@@ -2,32 +2,6 @@
 
 .eds-dropdown {
   &__selected-item-tag {
-    height: 1.5rem;
-    max-width: 10rem;
-    padding: 0;
-
-    > span {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-left: 0.5rem;
-    }
-
-    .eds-tag-chip__close-button {
-      margin-right: 0.125rem;
-
-      > svg {
-        font-size: 0.6rem;
-      }
-      &:focus {
-        outline-color: var(--basecolors-stroke-focus-standard);
-      }
-      &:hover {
-        border-color: var(--components-chip-standard-border);
-        background-color: var(--components-chip-standard-hover);
-      }
-    }
-
     // revert contrast styling since dropdown field always is light
     .eds-contrast & {
       background: var(--components-chip-standard-default);

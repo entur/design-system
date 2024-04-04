@@ -13,15 +13,28 @@
 
     &:checked ~ .eds-chip {
       background-color: var(--components-chip-standard-active);
-      color: var(--components-chip-standard-text-unselected);
+      color: var(--components-chip-standard-text-selected);
       border-color: transparent;
       gap: t.$space-extra-small2;
       .eds-contrast & {
         background-color: var(--components-chip-contrast-active);
       }
       &:hover {
+        color: var(--components-chip-standard-text-unselected);
+
+        .eds-filter-chip-icon {
+          .eds-filter-chip-icon__path {
+            stroke: var(--components-chip-standard-icon-unselected);
+          }
+        }
+
         .eds-contrast & {
           color: var(--components-chip-contrast-text-unselected);
+          .eds-filter-chip-icon {
+            .eds-filter-chip-icon__path {
+              stroke: var(--components-chip-contrast-icon-unselected);
+            }
+          }
         }
       }
     }

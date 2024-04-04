@@ -10,11 +10,24 @@ export type FilterChipProps = {
   children?: React.ReactNode;
   /** Verdien til FilterChip */
   value: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+  /** Størrelsen på chip
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'size'>;
 
 export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
   (
-    { className, children, value, disabled = false, name, style, ...rest },
+    {
+      className,
+      children,
+      value,
+      disabled = false,
+      name,
+      style,
+      size = 'medium',
+      ...rest
+    },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const classList = cx(className, 'eds-filter-chip');
@@ -30,7 +43,7 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
           disabled={disabled}
           {...rest}
         />
-        <div className="eds-chip">
+        <div className={`eds-chip ${size ? `eds-chip--size-${size}` : ''}`}>
           <span className="eds-filter-chip__icon">
             <CheckboxIcon />
           </span>

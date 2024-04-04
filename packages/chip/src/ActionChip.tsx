@@ -13,6 +13,10 @@ export type ActionChipProps = {
    * @default false
    */
   loading?: boolean;
+  /** Størrelsen på chip
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
 } & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
@@ -20,7 +24,7 @@ export type ActionChipProps = {
 
 export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
   (
-    { children, className, loading = false, ...rest },
+    { children, className, loading = false, size = 'medium', ...rest },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
     const childrenArray = React.Children.toArray(children);
@@ -41,18 +45,21 @@ export const ActionChip = React.forwardRef<HTMLButtonElement, ActionChipProps>(
       .filter(child => typeof child === 'string')
       .join(' ');
 
+    const classList = classNames(
+      className,
+      'eds-chip',
+      'eds-action-chip',
+      `eds-chip--size-${size}`,
+      {
+        'eds-chip--leading-icon': hasLeadingIcon,
+        'eds-chip--trailing-icon': hasTrailingIcon,
+        'eds-action-chip--disabled': rest.disabled,
+      },
+    );
+
     const actionChip = (
       <button
-        className={classNames(
-          'eds-chip',
-          'eds-action-chip',
-          {
-            'eds-chip--leading-icon': hasLeadingIcon,
-            'eds-chip--trailing-icon': hasTrailingIcon,
-            'eds-action-chip--disabled': rest.disabled,
-          },
-          className,
-        )}
+        className={classList}
         ref={ref}
         aria-busy={loading}
         aria-label={ariaLabelValue()}

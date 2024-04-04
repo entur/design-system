@@ -50,9 +50,11 @@
     &:not(:disabled):hover ~ .eds-chip {
       border-color: var(--components-chip-standard-border);
       background-color: var(--components-chip-standard-hover);
+      color: var(--components-chip-standard-text-unselected);
       .eds-contrast & {
         border-color: transparent;
         background-color: var(--components-chip-contrast-hover);
+        color: var(--components-chip-contrast-text-unselected);
       }
     }
     &:not(:disabled):active ~ .eds-chip {

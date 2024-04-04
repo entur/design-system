@@ -45,6 +45,7 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
     }) ?? {};
   return (
     <TagChip
+      size="small"
       className={classNames('eds-dropdown__selected-item-tag', {
         'eds-dropdown__selected-item-tag--readonly': readOnly,
         'eds-dropdown__selected-item-tag--disabled': disabled,
