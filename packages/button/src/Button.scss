@@ -1,5 +1,5 @@
-@use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/color-utils.scss' as util;
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/utils/dist/color-utils.scss' as util;
 
 a.eds-button {
   padding: t.$space-extra-small t.$space-default;

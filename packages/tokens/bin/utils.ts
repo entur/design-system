@@ -36,36 +36,28 @@ export function createColorSet(filePath: string) {
         (color: Color) => {
           const colorNameInKebabCase = toKebabCase(color.name);
           const varNameInKebabCase = toKebabCase(color.var);
+          const hexValue = color.color;
           const colorModeName = colorMode.mode.name.toLowerCase();
           const usesAlias = varNameInKebabCase !== '';
 
-          const cssVariableKey = `--${colorNameInKebabCase}`;
-          const cssVariableValue = `var(--${varNameInKebabCase})`;
-
-          const scssVariableKey = `$${colorNameInKebabCase}`;
-          const scssVariableValue = `$${varNameInKebabCase}`;
-
-          const lessVariableKey = `@${colorNameInKebabCase}`;
-          const lessVariableValue = `@${varNameInKebabCase}`;
-
-          const jsVariableKey = `${toFlattenedJSObjectKey(color.name)}`;
-          const hexValue = color.color;
-
           return {
             css: {
-              key: cssVariableKey,
-              value: usesAlias ? cssVariableValue : hexValue,
+              key: `--${colorNameInKebabCase}`,
+              value: usesAlias ? `var(--${varNameInKebabCase})` : hexValue,
             },
             scss: {
-              key: scssVariableKey,
-              value: usesAlias ? scssVariableValue : hexValue,
-              sanitizedValue: `#{${scssVariableValue}}`,
+              key: `$${colorNameInKebabCase}`,
+              value: usesAlias ? `$${varNameInKebabCase}` : hexValue,
+              sanitizedValue: `#{$${varNameInKebabCase}}`,
             },
             less: {
-              key: lessVariableKey,
-              value: usesAlias ? lessVariableValue : hexValue,
+              key: `@${colorNameInKebabCase}`,
+              value: usesAlias ? `@${varNameInKebabCase}` : hexValue,
             },
-            js: { key: jsVariableKey, value: hexValue },
+            js: {
+              key: `${toFlattenedJSObjectKey(color.name)}`,
+              value: hexValue,
+            },
             mode: colorModeName,
             usesAlias: usesAlias,
           };
@@ -151,8 +143,8 @@ ${WARNING_TEXT}
       const colorKey = color[keyType].key;
       const colorValue =
         keyType === 'css' && valueType === 'scss'
-          ? color[valueType].value
-          : color[valueType].sanitizedValue;
+          ? color[valueType].sanitizedValue
+          : color[valueType].value;
       return `${colorKey}: ${colorValue};`;
     })
     .join('\n  ')}
@@ -191,7 +183,7 @@ ${needsRoot ? '}' : ''}
     const IMPORT_SYNTAX = { css: '@import', scss: '@use', less: '@import' };
     const asStatement = includeAs ? ' as *' : '';
     const importStatements = fileNames.map(fileName => {
-      const importPath = `'~@entur/tokens/dist/${fileName}.${extension}'`;
+      const importPath = `'@entur/tokens/dist/${fileName}.${extension}'`;
       return `${IMPORT_SYNTAX[extension]} ${importPath}${asStatement};`;
     });
 

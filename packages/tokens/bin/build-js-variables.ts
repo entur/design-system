@@ -9,7 +9,6 @@ import { unflatten } from 'flat';
 import * as prettier from 'prettier';
 
 import {
-  WARNING_TEXT,
   baseFilePath,
   componentFilePath,
   dataFilePath,
@@ -17,7 +16,7 @@ import {
   semanticFilePath,
   transportFilePath,
 } from './build-variables';
-import { createColorSet, variableSet } from './utils';
+import { WARNING_TEXT, createColorSet, variableSet } from './utils';
 
 const createJSVariables = () => {
   const primitive = createColorSet(primitiveFilePath);

@@ -1,5 +1,5 @@
 @use "./componentColors.scss";
-@use '~@entur/tokens/dist/base.scss' as *;
+@use '@entur/tokens/dist/base.scss' as *;
 :root {
   --eds-tooltip: 1; // Register that the styles are loaded!
 }

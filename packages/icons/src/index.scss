@@ -1,5 +1,4 @@
-@import '~@entur/tokens/dist/base.css';
-@import '~@entur/tokens/dist/transport.css';
+@use '@entur/tokens/dist/base.scss';
 
 :root {
   --eds-icons: 1;

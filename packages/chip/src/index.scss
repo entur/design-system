@@ -1,5 +1,5 @@
 @use './componentColors.scss';
-@use '~@entur/tokens/dist/base.scss' as *;
+@use '@entur/tokens/dist/base.scss' as *;
 // Used to register the styles as loaded!
 :root {
   --eds-chip: 1;

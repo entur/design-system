@@ -10,6 +10,9 @@ module.exports = {
     config.plugins.unshift(
       sass({
         output: 'dist/styles.css',
+        options: {
+          includePaths: ['../../node_modules'],
+        },
         processor: css =>
           postcss([postcssPresetEnv])
             // Having multiple @charset in bundle causes syntax errors so we remove them

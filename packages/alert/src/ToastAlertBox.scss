@@ -1,5 +1,5 @@
-@use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .eds-toast-container {
   position: fixed;
