@@ -5,8 +5,7 @@
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-small;
   margin-right: -(t.$space-medium);
-  padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0
-    t.$space-extra-small2 t.$space-medium;
+  padding: calc(#{t.$space-medium} + #{t.$space-extra-small2}) 0 t.$space-extra-small2 t.$space-medium;
   font-family: inherit;
 
   overflow-x: hidden;

@@ -1,5 +1,5 @@
 @use "./componentColors.scss";
-@use '~@entur/tokens/dist/base.css';
+@use '~@entur/tokens/dist/base.scss' as *;
 :root {
   --eds-fileupload: 1;
 }
