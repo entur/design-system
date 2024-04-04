@@ -1,4 +1,4 @@
-@use '~@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/styles.scss' as t;
 .eds-tag-chip {
   cursor: default;
   padding-right: t.$space-extra-small2;

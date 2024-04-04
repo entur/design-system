@@ -468,12 +468,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/alert/AlertBox/Information/Contrast/Icon border",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
         "name": "Components/alert/AlertBox/Information/Contrast/Text",
         "color": "#181c56",
         "var": "Text/Accent",
@@ -495,12 +489,6 @@
         "name": "Components/alert/AlertBox/Information/Standard/Icon",
         "color": "#067eb2",
         "var": "Shape/Information",
-        "rootAlias": "Sky/50"
-      },
-      {
-        "name": "Components/alert/AlertBox/Information/Standard/Icon border",
-        "color": "#067eb2",
-        "var": "Stroke/Information",
         "rootAlias": "Sky/50"
       },
       {
@@ -528,12 +516,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/alert/AlertBox/Negative/Contrast/Icon border",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
         "name": "Components/alert/AlertBox/Negative/Contrast/Text",
         "color": "#181c56",
         "var": "Text/Accent",
@@ -555,12 +537,6 @@
         "name": "Components/alert/AlertBox/Negative/Standard/Icon",
         "color": "#d31b1b",
         "var": "Shape/Negative",
-        "rootAlias": "Coral/60"
-      },
-      {
-        "name": "Components/alert/AlertBox/Negative/Standard/Icon border",
-        "color": "#d31b1b",
-        "var": "Stroke/Negative",
         "rootAlias": "Coral/60"
       },
       {
@@ -588,12 +564,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/alert/AlertBox/Success/Contrast/Icon border",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
         "name": "Components/alert/AlertBox/Success/Contrast/Text",
         "color": "#181c56",
         "var": "Text/Accent",
@@ -601,9 +571,9 @@
       },
       {
         "name": "Components/alert/AlertBox/Success/Standard/Border",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
-        "rootAlias": "Mint/60"
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
       },
       {
         "name": "Components/alert/AlertBox/Success/Standard/Fill",
@@ -615,12 +585,6 @@
         "name": "Components/alert/AlertBox/Success/Standard/Icon",
         "color": "#1a8e60",
         "var": "Shape/Success",
-        "rootAlias": "Mint/60"
-      },
-      {
-        "name": "Components/alert/AlertBox/Success/Standard/Icon border",
-        "color": "#1a8e60",
-        "var": "Stroke/Success",
         "rootAlias": "Mint/60"
       },
       {
@@ -648,12 +612,6 @@
         "rootAlias": "Lavender/90"
       },
       {
-        "name": "Components/alert/AlertBox/Warning/Contrast/Icon border",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
         "name": "Components/alert/AlertBox/Warning/Contrast/Text",
         "color": "#181c56",
         "var": "Text/Accent",
@@ -661,9 +619,9 @@
       },
       {
         "name": "Components/alert/AlertBox/Warning/Standard/Border",
-        "color": "#e9b10c",
-        "var": "Stroke/Warning",
-        "rootAlias": "Canary/70"
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
       },
       {
         "name": "Components/alert/AlertBox/Warning/Standard/Fill",
@@ -675,12 +633,6 @@
         "name": "Components/alert/AlertBox/Warning/Standard/Icon",
         "color": "#181c56",
         "var": "Shape/Accent",
-        "rootAlias": "Lavender/90"
-      },
-      {
-        "name": "Components/alert/AlertBox/Warning/Standard/Icon border",
-        "color": "#181c56",
-        "var": "Stroke/Accent",
         "rootAlias": "Lavender/90"
       },
       {
@@ -2762,7 +2714,7 @@
       {
         "name": "Components/loader/skeleton/Contrast/Highlight",
         "color": "#181c56",
-        "var": "Base colors/Frame/Contrast",
+        "var": "Fill/Background/Contrast/Light",
         "rootAlias": "Lavender/90"
       },
       {
@@ -2774,7 +2726,7 @@
       {
         "name": "Components/loader/skeleton/Standard/Highlight",
         "color": "#f6f6f9",
-        "var": "Base colors/Frame/Tint",
+        "var": "Fill/Background/Tint/Light",
         "rootAlias": "Blue/10"
       },
       {
@@ -6082,21 +6034,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Information/Contrast/Fill",
-        "color": "#acd7f1",
-        "var": "Fill/Information/Tint",
-        "rootAlias": "Sky/20"
+        "color": "#e1eff8",
+        "var": "Fill/Information/Muted",
+        "rootAlias": "Sky/10"
       },
       {
         "name": "Components/alert/AlertBox/Information/Contrast/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Information/Contrast/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#067eb2",
+        "var": "Shape/Information",
+        "rootAlias": "Sky/50"
       },
       {
         "name": "Components/alert/AlertBox/Information/Contrast/Text",
@@ -6112,21 +6058,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Information/Standard/Fill",
-        "color": "#acd7f1",
-        "var": "Fill/Information/Tint",
-        "rootAlias": "Sky/20"
+        "color": "#e1eff8",
+        "var": "Fill/Information/Muted",
+        "rootAlias": "Sky/10"
       },
       {
         "name": "Components/alert/AlertBox/Information/Standard/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Information/Standard/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#067eb2",
+        "var": "Shape/Information",
+        "rootAlias": "Sky/50"
       },
       {
         "name": "Components/alert/AlertBox/Information/Standard/Text",
@@ -6142,21 +6082,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Negative/Contrast/Fill",
-        "color": "#ff9494",
-        "var": "Fill/Negative/Tint",
-        "rootAlias": "Coral/30"
+        "color": "#ffcece",
+        "var": "Fill/Negative/Muted",
+        "rootAlias": "Coral/20"
       },
       {
         "name": "Components/alert/AlertBox/Negative/Contrast/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Negative/Contrast/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#d31b1b",
+        "var": "Shape/Negative",
+        "rootAlias": "Coral/60"
       },
       {
         "name": "Components/alert/AlertBox/Negative/Contrast/Text",
@@ -6172,21 +6106,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Negative/Standard/Fill",
-        "color": "#ff9494",
-        "var": "Fill/Negative/Tint",
-        "rootAlias": "Coral/30"
+        "color": "#ffcece",
+        "var": "Fill/Negative/Muted",
+        "rootAlias": "Coral/20"
       },
       {
         "name": "Components/alert/AlertBox/Negative/Standard/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Negative/Standard/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#d31b1b",
+        "var": "Shape/Negative",
+        "rootAlias": "Coral/60"
       },
       {
         "name": "Components/alert/AlertBox/Negative/Standard/Text",
@@ -6202,21 +6130,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Success/Contrast/Fill",
-        "color": "#9cd9c2",
-        "var": "Fill/Success/Tint",
-        "rootAlias": "Mint/30"
+        "color": "#d0f1e3",
+        "var": "Fill/Success/Muted",
+        "rootAlias": "Mint/20"
       },
       {
         "name": "Components/alert/AlertBox/Success/Contrast/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Success/Contrast/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#1a8e60",
+        "var": "Shape/Success",
+        "rootAlias": "Mint/60"
       },
       {
         "name": "Components/alert/AlertBox/Success/Contrast/Text",
@@ -6232,21 +6154,15 @@
       },
       {
         "name": "Components/alert/AlertBox/Success/Standard/Fill",
-        "color": "#9cd9c2",
-        "var": "Fill/Success/Tint",
-        "rootAlias": "Mint/30"
+        "color": "#d0f1e3",
+        "var": "Fill/Success/Muted",
+        "rootAlias": "Mint/20"
       },
       {
         "name": "Components/alert/AlertBox/Success/Standard/Icon",
-        "color": "#08091c",
-        "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Success/Standard/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
-        "rootAlias": "Ebony/100"
+        "color": "#1a8e60",
+        "var": "Shape/Success",
+        "rootAlias": "Mint/60"
       },
       {
         "name": "Components/alert/AlertBox/Success/Standard/Text",
@@ -6262,20 +6178,14 @@
       },
       {
         "name": "Components/alert/AlertBox/Warning/Contrast/Fill",
-        "color": "#ffeeb3",
-        "var": "Fill/Warning/Tint",
-        "rootAlias": "Canary/30"
+        "color": "#fff4cd",
+        "var": "Fill/Warning/Muted",
+        "rootAlias": "Canary/20"
       },
       {
         "name": "Components/alert/AlertBox/Warning/Contrast/Icon",
         "color": "#08091c",
         "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Warning/Contrast/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
         "rootAlias": "Ebony/100"
       },
       {
@@ -6292,20 +6202,14 @@
       },
       {
         "name": "Components/alert/AlertBox/Warning/Standard/Fill",
-        "color": "#ffeeb3",
-        "var": "Fill/Warning/Tint",
-        "rootAlias": "Canary/30"
+        "color": "#fff4cd",
+        "var": "Fill/Warning/Muted",
+        "rootAlias": "Canary/20"
       },
       {
         "name": "Components/alert/AlertBox/Warning/Standard/Icon",
         "color": "#08091c",
         "var": "Shape/Dark",
-        "rootAlias": "Ebony/100"
-      },
-      {
-        "name": "Components/alert/AlertBox/Warning/Standard/Icon border",
-        "color": "#08091c",
-        "var": "Stroke/DarkAlt-2",
         "rootAlias": "Ebony/100"
       },
       {

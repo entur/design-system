@@ -1,6 +1,6 @@
-@use '~@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/styles.scss' as t;
 @use "./componentColors.scss";
-@use '~@entur/tokens/dist/base.css';
+@use '@entur/tokens/dist/base.scss' as *;
 
 :root {
   --reach-tabs: 1; // We want to do the styling ourselves

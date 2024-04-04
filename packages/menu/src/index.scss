@@ -1,6 +1,6 @@
 // Used to register the styles as loaded!
 @use './componentColors.scss';
-@use '~@entur/tokens/dist/base.css';
+@use '@entur/tokens/dist/base.scss' as *;
 :root {
   --eds-menu: 1;
   --reach-menu-button: 1;

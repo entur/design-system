@@ -171,7 +171,9 @@ function createStyleFiles() {
   fs.ensureDirSync('./dist');
   // finally, let's copy over the static assets if you need those directly
   try {
-    const result = sass.compile('./src/index.scss');
+    const result = sass.compile('./src/index.scss', {
+      loadPaths: ['../../node_modules'],
+    });
     fs.outputFileSync('./dist/styles.css', result.css);
   } catch (e) {
     console.error(

@@ -51,11 +51,11 @@ Please refer to the design system documentation for which ones are available.
 To use the LESS or SCSS files, import it into your LESS or SCSS file. The method is the same:
 
 ```less
-@import '~@entur/tokens/dist/styles.less';
+@import '@entur/tokens/dist/styles.less';
 ```
 
 ```scss
-@import '~@entur/tokens/dist/styles.scss';
+@import '@entur/tokens/dist/styles.scss';
 ```
 
 You'll then be able to use the variables in your code as usual.
