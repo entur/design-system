@@ -1,5 +1,5 @@
 /* We need our js file to be compiled and bundled by dts-cli.
-   Therefore, we first create the files for the variables in 
+   Therefore, we first create the files for the variables in
    the src folder, and then we run dts build to create the
    js files in the dist folder. */
 
@@ -11,23 +11,21 @@ import * as prettier from 'prettier';
 import {
   WARNING_TEXT,
   baseFilePath,
-  createComponentColorSet,
-  createPrimitiveSet,
-  createVariablesSet,
+  componentFilePath,
   dataFilePath,
   primitiveFilePath,
   semanticFilePath,
   transportFilePath,
 } from './build-variables';
-import type { variableSet } from './utils';
+import { createColorSet, variableSet } from './utils';
 
 const createJSVariables = () => {
-  const primitive = createPrimitiveSet(primitiveFilePath);
-  const transport = createPrimitiveSet(transportFilePath);
-  const semantic = createVariablesSet(semanticFilePath);
-  const base = createComponentColorSet(baseFilePath);
-  const data = createComponentColorSet(dataFilePath);
-  const componentColors = createComponentColorSet();
+  const primitive = createColorSet(primitiveFilePath);
+  const transport = createColorSet(transportFilePath);
+  const semantic = createColorSet(semanticFilePath);
+  const base = createColorSet(baseFilePath);
+  const data = createColorSet(dataFilePath);
+  const componentColors = createColorSet(componentFilePath);
 
   outputJSObjectFile(primitive, 'primitive');
   outputJSObjectFile(semantic, 'semantic');
@@ -48,7 +46,9 @@ function outputJSObjectFile(
     | 'transport'
     | 'componentColors' = 'styles',
 ) {
-  const jsVariables = variables.map(color => color?.js);
+  const jsVariables = variables.map(color => ({
+    [color?.js.key]: color?.js.value,
+  }));
   const jsVariablesObject = Object.assign({}, ...jsVariables);
   const unflattenedJSVariablesObject = unflatten(jsVariablesObject);
 
