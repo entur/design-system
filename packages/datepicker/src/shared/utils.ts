@@ -34,6 +34,7 @@ const nativeDateToDateTime = (
         date.getHours(),
         date.getMinutes(),
         date.getSeconds(),
+        date.getMilliseconds(),
       );
     }
     return parseAbsolute(date.toISOString(), timeZone);
@@ -46,6 +47,7 @@ const nativeDateToDateTime = (
     date.getHours(),
     date.getMinutes(),
     date.getSeconds(),
+    date.getMilliseconds(),
   );
 };
 
@@ -92,7 +94,12 @@ export function nativeDateToTimeValue(
   if (date === null) return null;
 
   if (noDateOnlyTime)
-    return new Time(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+    return new Time(
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds(),
+    );
 
   return nativeDateToDateTime(date, timeZone, offset);
 }
@@ -115,6 +122,7 @@ export function timeOrDateValueToNativeDate(
     date.setHours(value.hour);
     date.setMinutes(value.minute);
     date.setSeconds(value.second);
+    date.setMilliseconds(value.millisecond);
     return date;
   }
 
@@ -135,6 +143,7 @@ export function timeOrDateValueToNativeDate(
       value.hour,
       value.minute,
       value.second,
+      value.millisecond,
     );
   }
 
