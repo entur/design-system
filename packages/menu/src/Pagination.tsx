@@ -59,7 +59,7 @@ export type PaginationProps = {
   inputLabel?: string;
 
   /** Hvor mange resultater man har totalt */
-  nubmerOfResults?: number;
+  numberOfResults?: number;
   /** Hvor mange resultater som vises per side */
   resultsPerPage?: number;
   /**
