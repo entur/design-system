@@ -17,10 +17,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn build:js-variables && (yarn build:variables & yarn build:legacy-tokens)  && yarn cleanup-temp-files",
+    "build": "yarn build:js && (yarn build:stylesheets & yarn build:legacy-tokens)  && yarn cleanup-temp-files",
     "build:legacy-tokens": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-legacy-tokens.ts",
-    "build:js-variables": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-variables.ts) && dts build",
-    "build:variables": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-variables.ts",
+    "build:js": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-objects.ts) && dts build",
+    "build:stylesheets": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-stylesheets.ts",
     "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/data.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
   },
   "devDependencies": {
@@ -34,5 +34,8 @@
   },
   "dependencies": {
     "hex-rgb": "^4.3.0"
+  },
+  "peerDependencies": {
+    "prettier": "^2.3.2"
   }
 }

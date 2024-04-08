@@ -35,19 +35,17 @@ ${WARNING_TEXT}
 ${createVariablesWithPrefix('  --')}
 }`;
   fs.outputFileSync(path.resolve('dist', 'styles.css'), cssString);
-  console.log('✅ Created file with CSS properties');
 
   const scssString = `
 ${WARNING_TEXT}
 
 ${createVariablesWithPrefix('$')}`;
   fs.outputFileSync(path.resolve('dist', 'styles.scss'), scssString);
-  console.log('✅ Created file with SCSS variables');
 
   const lessString = `${WARNING_TEXT}
 ${createVariablesWithPrefix('@')}
   `;
   fs.outputFileSync(path.resolve('dist', 'styles.less'), lessString);
-  console.log('✅ Created file with LESS variables');
+  console.log('👵🏻 Created all legacy tokens');
 }
 run();

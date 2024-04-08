@@ -1,7 +1,4 @@
-import fs from 'fs-extra';
-import path from 'path';
 import { unflatten } from 'flat';
-import * as prettier from 'prettier';
 
 type Color = {
   name: string;
@@ -27,11 +24,15 @@ type KeyValueSet = {
   value: string;
   sanitizedValue?: string;
 };
+type ColorFileData = {
+  outputString: string;
+  outputFileName: string;
+  packageName?: string;
+};
 
 const SUPPORTED_COLOR_MODES = ['light', 'dark'];
 
-export function createColorSet(filePath: string) {
-  const fileData = fs.readFileSync(filePath, 'utf-8');
+export function createColorSet(fileData: string) {
   const colorsUnformated = JSON.parse(fileData);
 
   const colorsFormatedAndMappedToModes: variableSet[] = colorsUnformated.reduce(
@@ -199,26 +200,25 @@ ${needsRoot ? '}' : ''}
   }
 }
 
-export function outputColorsFiles({
+export function createColorsFileData({
   colorSet,
   keyType,
   valueType,
   name,
-  toAllPackages = false,
-  relativeOutputPath = 'dist',
+  outputToPackages,
 }: {
   colorSet: variableSet[];
   keyType: 'css' | 'scss' | 'less';
   valueType: 'css' | 'scss' | 'less';
   name: string;
-  toAllPackages?: boolean;
+  outputToPackages?: string[];
   relativeOutputPath?: string;
 }) {
   let outputString = '';
 
-  if (toAllPackages) {
-    const packageNames = getAllPackageNames();
-    packageNames.forEach(packageName => {
+  if (outputToPackages) {
+    let outputData: ColorFileData[] = [];
+    outputToPackages.forEach(packageName => {
       outputString = '';
       const variablesForCurrentPackage = colorSet.filter(variable =>
         variable.scss.key.includes(`-${packageName}-`),
@@ -246,13 +246,13 @@ export function outputColorsFiles({
         });
       }
 
-      fs.outputFileSync(
-        path.resolve(__dirname, '../../', packageName, 'src', `${name}.scss`),
+      outputData.push({
         outputString,
-      );
-      return;
+        outputFileName: `${name}.scss`,
+        packageName,
+      });
     });
-    return;
+    return outputData;
   }
 
   switch (name) {
@@ -291,31 +291,17 @@ export function outputColorsFiles({
       });
   }
 
-  fs.outputFileSync(
-    path.resolve(relativeOutputPath, `${name}.${valueType}`),
-    outputString,
-  );
+  return [
+    { outputString, outputFileName: `${name}.${valueType}` },
+  ] as ColorFileData[];
 }
 
-function getAllPackageNames() {
-  const packageNames = fs
-    .readdirSync(path.resolve(__dirname, '../../../packages'), {
-      withFileTypes: true,
-    })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
-
-  return packageNames;
-}
-
-export function outputJSColorFile({
+export function createJSColorFileData({
   variables,
   name,
-  relativeOutputPath = '../src',
 }: {
   variables: variableSet[];
   name: string;
-  relativeOutputPath?: string;
 }) {
   const jsVariables = variables.map(color => ({
     [color?.js.key]: color?.js.value,
@@ -327,14 +313,7 @@ export function outputJSColorFile({
  export const ${name} = ${JSON.stringify(unflattenedJSVariablesObject)}
  `;
 
-  const formatedOutputString = prettier.format(outputString, {
-    parser: 'babel',
-  });
-
-  fs.outputFileSync(
-    path.resolve(__dirname, relativeOutputPath, `${name}.ts`),
-    formatedOutputString,
-  );
+  return { outputString: outputString, outputFileName: `${name}.ts` };
 }
 
 function toKebabCase(name: string) {

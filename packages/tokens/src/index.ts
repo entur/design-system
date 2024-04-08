@@ -13,4 +13,8 @@ export * from './componentColors';
 // @ts-ignore
 export * from './legacy-tokens';
 
-export * from './utils';
+export {
+  createColorSet,
+  createColorsFileData,
+  createJSColorFileData,
+} from './buildVariables';
