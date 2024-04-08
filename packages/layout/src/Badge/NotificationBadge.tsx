@@ -17,7 +17,7 @@ type NotificationBadgeBaseProps = {
   className?: string;
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
-  /** Hvilken type badge man vil ha , info og danger er deprecated bruk information og negative istedenfor */
+  /** Hvilken type badge man vil ha */
   variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
   /** Om 0 skal vises
    * @default false

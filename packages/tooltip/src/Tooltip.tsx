@@ -51,7 +51,7 @@ export type TooltipProps = {
    * @default true
    */
   showCloseButton?: boolean;
-  /** Valideringsvariant for Tooltip, error er deprecated bruk negative istedenfor */
+  /** Valideringsvariant for Tooltip */
   variant?: 'negative' | typeof error;
   /** En array av modifiers som sendes til Popper, rammeverket som brukes til plassering av Tooltip
    * @default [{ name: 'offset', options: { offset: [0, 10]} }]

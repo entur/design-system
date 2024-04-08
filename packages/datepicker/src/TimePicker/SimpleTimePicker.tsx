@@ -51,7 +51,7 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   padding?: 'default' | 'large';
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant info og error er deprecated bruk information og negative istedenfor*/
+  /** Valideringsvariant*/
   variant?: VariantType | typeof error | typeof info;
   /** Tekst eller ikon som vises foran skjema-elementet */
   prepend?: React.ReactNode;

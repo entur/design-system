@@ -81,7 +81,7 @@ export type DatePickerProps<DateType extends DateValue> = {
   isDateUnavailable?: (date: DateValue) => boolean;
   /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
   feedback?: string;
-  /** Valideringsvariant , info og error er deprecated bruk information og negative istedenfor*/
+  /** Valideringsvariant*/
   variant?: VariantType | typeof error | typeof info;
   /** Varselmelding som forteller om ugyldig dato
    * @default "Ugyldig dato"

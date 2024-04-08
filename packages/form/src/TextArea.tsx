@@ -16,7 +16,7 @@ const error = 'error';
 export type TextAreaProps = {
   /** Ekstra klassenavn */
   className?: string;
-  /** Valideringsvariant, info og error er deprecated bruk information og negative istedenfor */
+  /** Valideringsvariant */
   variant?: VariantType | typeof error | typeof info;
   /** Deaktiverer tekstområdet */
   disabled?: boolean;

@@ -22,7 +22,7 @@ export type NativeTimePickerProps = {
   label: string;
   /** Varselmelding, som vil komme under NativeTimePicker */
   feedback?: string;
-  /** Valideringsvariant info og error er deprecated bruk information og negative istedenfor*/
+  /** Valideringsvariant*/
   variant?: VariantType | typeof error | typeof info;
   /** Tekst eller ikon som kommer før inputfelter */
   prepend?: React.ReactNode;

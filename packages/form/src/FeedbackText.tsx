@@ -45,7 +45,10 @@ const AlertIcon: React.FC<{
       );
     case error:
       return (
-        <ValidationErrorIcon aria-label="Feilmelding" className={iconClass} />
+        <ValidationErrorFilledIcon
+          aria-label="Feilmelding"
+          className={iconClass}
+        />
       );
     case info:
       return null;
@@ -59,7 +62,7 @@ export type FeedbackTextProps = {
   children: React.ReactNode;
   /** Skjuler ikonet */
   hideIcon?: boolean;
-  /** Feedbackvarianten , info og error er deprecated bruk information og negative istedenfor*/
+  /** Feedbackvarianten*/
   variant: VariantType | typeof error | typeof info;
   /** Ekstra klassenavn */
   className?: string;

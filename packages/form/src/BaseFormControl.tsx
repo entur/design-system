@@ -29,7 +29,7 @@ export type BaseFormControlProps = {
   prepend?: React.ReactNode;
   /** Tekst eller ikon som vises etter skjema-elementet */
   append?: React.ReactNode;
-  /** Valideringsvariant, info og error er deprecated bruk information og negative istedenfor */
+  /** Valideringsvariant */
   variant?: VariantType | typeof error | typeof info;
   /**Størrelsen på skjemaelementet
    * @default "medium"

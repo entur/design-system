@@ -26,7 +26,7 @@ export type TextFieldProps = {
   labelTooltip?: React.ReactNode;
   /** Varselmelding, som vil komme under TextField */
   feedback?: string;
-  /** Hvilken valideringsfarge som vises, info og error er deprecated bruk information og negative istedenfor */
+  /** Hvilken valideringsfarge som vises*/
   variant?: VariantType | typeof error | typeof info;
   /** Deaktiver inputfeltet */
   disabled?: boolean;

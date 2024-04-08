@@ -53,7 +53,7 @@ export type DropdownProps<ValueType> = {
   disabled?: boolean;
   /** Setter dropdown-en i read-only modus */
   readOnly?: boolean;
-  /** Hvilken valideringsvariant som gjelder, info og error er deprecated bruk information og negative istedenfor */
+  /** Hvilken valideringsvariant som gjelder */
   variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;

@@ -62,7 +62,7 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   rightArrowButtonAriaLabel?: string;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant info og error er deprecated bruk information og negative istedenfor*/
+  /** Valideringsvariant*/
   variant?: VariantType | typeof error | typeof info;
   labelTooltip?: React.ReactNode;
   disabled?: boolean;

@@ -30,7 +30,7 @@ const info = 'info';
 const error = 'error';
 
 type ExpandableAlertBoxProps = {
-  /**Farge og uttrykk på alert-boksen, info og error er deprecated bruk information og negative istedenfor */
+  /**Farge og uttrykk på alert-boksen*/
   variant: VariantType | typeof info | typeof error;
   /** Tittelen til ExpandableAlertBox */
   title: React.ReactNode;

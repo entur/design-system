@@ -26,7 +26,7 @@ export type SmallAlertBoxProps = {
   title?: string;
   /** Bredden på boksen - fullbredde eller tilpasset innholdet */
   width?: 'fluid' | 'fit-content';
-  /** Farge og uttrykk på alert-boksen, info og error er deprecated bruk information og negative istedenfor */
+  /** Farge og uttrykk på alert-boksen*/
   variant: VariantType | typeof info | typeof error;
   [key: string]: any;
 };

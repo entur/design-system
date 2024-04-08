@@ -60,7 +60,7 @@ export type DateFieldProps = {
   maxDate?: DateValue;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant, info og error er deprecated bruk information og negative istedenfor*/
+  /** Valideringsvariant*/
   variant?: VariantType | typeof error | typeof info;
   /** Varselmelding som forteller om ugyldig dato
    * @default "Ugyldig dato"

@@ -18,7 +18,7 @@ export type ToastAlertBoxProps = {
   closable?: boolean;
   /** Tittel på boksen - oppsummer virkning */
   title?: string;
-  /** Farge og uttrykk på toasten, info er deprecated bruk information istedenfor*/
+  /** Farge og uttrykk på toasten */
   variant: 'success' | 'information' | typeof info;
   [key: string]: any;
 };

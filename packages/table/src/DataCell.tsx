@@ -18,7 +18,7 @@ export type DataCellProps = {
   padding?: 'default' | 'checkbox' | 'radio' | 'overflow-menu';
   /** @deprecated bruk variant */
   status?: 'positive' | 'negative' | 'neutral';
-  /** Hvilken type status man vil vise, info og danger er deprecated bruk information og negative istedenfor */
+  /** Hvilken type status man vil vise */
   variant?: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
 } & React.DetailedHTMLProps<
   React.TdHTMLAttributes<HTMLTableDataCellElement>,

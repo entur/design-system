@@ -59,7 +59,7 @@ export type NativeDropdownProps<ValueType> = {
    * (Brukes når komponenten er 'controlled)
    */
   value?: string;
-  /** Hvilken valideringsvariant som gjelder,  info og error er deprecated bruk information og negative istedenfor */
+  /** Hvilken valideringsvariant som gjelder*/
   variant?: VariantType | typeof error | typeof info;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false

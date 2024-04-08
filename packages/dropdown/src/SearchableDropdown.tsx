@@ -88,7 +88,7 @@ export type SearchableDropdownProps<ValueType> = {
   prepend?: React.ReactNode;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  /** Hvilken valideringsvariant som gjelder, info og error er deprecated bruk information og negative istedenfor */
+  /** Hvilken valideringsvariant som gjelder*/
   variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;

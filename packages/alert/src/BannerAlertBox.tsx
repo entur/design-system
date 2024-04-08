@@ -23,7 +23,7 @@ export type BannerAlertBoxProps = {
   closable?: boolean;
   /** Tittel på boksen - oppsummer virkning */
   title?: string;
-  /** Farge og uttrykk på alert-boksen - info og error er deprecated bruk information og negative istedenfor */
+  /** Farge og uttrykk på alert-boksen */
   variant: VariantType | typeof info | typeof error;
   [key: string]: any;
 };

@@ -18,7 +18,7 @@ type EditableCellProps = {
   className?: string;
   /** Inputelementet som skal være i tabellcellen */
   children: React.ReactElement;
-  /** Valideringsvariant for EditableCell, info og error er deprecated bruk information og negative istedenfor */
+  /** Valideringsvariant for EditableCell */
   variant?: VariantType | typeof error | typeof info;
   /** Varselmelding, som vil komme som en Tooltip under EditableCell */
   feedback?: string;
