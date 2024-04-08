@@ -12,3 +12,5 @@ export * from './transport';
 export * from './componentColors';
 // @ts-ignore
 export * from './legacy-tokens';
+
+export * from './utils';

@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { createColorSet, outputColorsFiles } from './utils';
+import { createColorSet, outputColorsFiles } from '../src/utils';
 
 export const primitiveFilePath = path.resolve(
   __dirname,
