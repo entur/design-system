@@ -136,15 +136,7 @@ export function timeOrDateValueToNativeDate(
     if (timeZoneForCalendarDateTime)
       return value.toDate(timeZoneForCalendarDateTime);
 
-    return new Date(
-      value.year,
-      value.month - 1,
-      value.day,
-      value.hour,
-      value.minute,
-      value.second,
-      value.millisecond,
-    );
+    return value.toDate(getLocalTimeZone());
   }
 
   // type is ZonedDateTime

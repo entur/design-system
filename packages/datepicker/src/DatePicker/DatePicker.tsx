@@ -180,6 +180,9 @@ export const DatePicker = <DateType extends DateValue>({
   const { width } = useWindowDimensions();
 
   const handleOnChange = (value: MappedDateValue<DateType> | null) => {
+    // console.log(value && value.compare(parseDate('1000-01-01')) < 0);
+
+    // if (value && value.compare(parseDate('1000-01-01')) < 0) return;
     if (forcedReturnType !== undefined) {
       return onChange(
         convertValueToType({
