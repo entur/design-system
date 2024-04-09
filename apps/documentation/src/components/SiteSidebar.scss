@@ -6,7 +6,7 @@
 .site-sidebar-wrapper {
   width: 100%;
   transition: max-width $timings-fast ease-out;
-  background: var(--transparent-blue-alpha10);
+  background: var(--components-menu-sidenavigation-standard-background);
 
   @include for-desktop {
     max-width: $site-sidebar-width--desktop;
