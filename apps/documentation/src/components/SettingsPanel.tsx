@@ -1,17 +1,17 @@
 import React from 'react';
-import { SettingsIcon, ViewIcon } from '@entur/icons';
+import { NightIcon, SettingsIcon, SunIcon, ViewIcon } from '@entur/icons';
 import { Paragraph } from '@entur/typography';
 import { PrimaryButton, FloatingButton } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
+import { SegmentedChoice, SegmentedControl } from '@entur/form';
+import { Modal } from '@entur/modal';
 import {
   useSettings,
   UserType,
   VariableFormat,
   PackageManager,
 } from './SettingsContext';
-import { Modal } from '@entur/modal';
 import './SettingsPanel.scss';
-import { Switch } from '@entur/form';
 
 const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
@@ -42,14 +42,6 @@ const SettingsPanel: React.FC = () => {
         >
           <SettingsIcon aria-hidden="true" />
         </FloatingButton>
-        {true && (
-          <Switch
-            checked={colorMode === 'dark'}
-            onChange={() =>
-              setColorMode(colorMode === 'dark' ? 'light' : 'dark')
-            }
-          ></Switch>
-        )}
       </div>
       <Modal
         open={isOpen}
@@ -59,6 +51,20 @@ const SettingsPanel: React.FC = () => {
         className="settings-panel__modal"
       >
         <form onSubmit={() => setOpen(false)}>
+          <SegmentedControl
+            label="Fargemodus"
+            onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
+            selectedValue={colorMode ?? 'light'}
+            style={{ marginBottom: '1rem' }}
+          >
+            <SegmentedChoice value="light">
+              Lys <SunIcon inline />
+            </SegmentedChoice>
+            <SegmentedChoice value="dark">
+              Mørk <NightIcon inline />
+            </SegmentedChoice>
+            {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
+          </SegmentedControl>
           <Dropdown
             label="Hva slags bruker er du?"
             items={[
