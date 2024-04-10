@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.15](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.2.14...@entur/button@3.2.15) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
 ## [3.2.14](https://bitbucket.org/enturas/design-system/compare/@entur/button@3.2.13...@entur/button@3.2.14) (2024-03-27)
 
 **Note:** Version bump only for package @entur/button

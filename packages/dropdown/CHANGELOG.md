@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.4...@entur/dropdown@5.3.5) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+- **tokens:** update color variable output functions ([602128b](https://bitbucket.org/enturas/design-system/commits/602128b139ccc37ea6d7bfc695effeec0cc6ee71))
+
 ## [5.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.3...@entur/dropdown@5.3.4) (2024-03-27)
 
 ### Bug Fixes

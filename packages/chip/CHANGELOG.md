@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.70...@entur/chip@0.7.0) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
+### Features
+
+- **chip:** add size small and small fix ([433646e](https://bitbucket.org/enturas/design-system/commits/433646e725831edbf1d7c24bc590304d6e876034))
+- **chip:** add size small chip ([301077d](https://bitbucket.org/enturas/design-system/commits/301077db50c6f4380b5cc39d9116a5fd15843635))
+
 ## [0.6.70](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.6.69...@entur/chip@0.6.70) (2024-03-27)
 
 **Note:** Version bump only for package @entur/chip

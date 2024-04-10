@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.23](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.22...@entur/menu@4.2.23) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+- **pagination:** fix typo in type declaration for numberOfResults ([93fff59](https://bitbucket.org/enturas/design-system/commits/93fff593201e8c5ffe4666ee46e13856de00d9f4))
+
 ## [4.2.22](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.21...@entur/menu@4.2.22) (2024-03-27)
 
 **Note:** Version bump only for package @entur/menu

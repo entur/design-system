@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.3.3...@entur/datepicker@9.3.4) (2024-04-10)
+
+### Bug Fixes
+
+- **datepicker utils:** conserve milliseconds when converting date and time objects ([98c89c9](https://bitbucket.org/enturas/design-system/commits/98c89c9de669809c1e0d176f1e76bbd26a72cb3a))
+- **datepicker utils:** fix incorrect handling of dates with two-digit years and no timezone ([a27e449](https://bitbucket.org/enturas/design-system/commits/a27e449a889be5ed1e11a50ed6e662bd7f7f5fd5))
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
 ## [9.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.3.2...@entur/datepicker@9.3.3) (2024-03-27)
 
 **Note:** Version bump only for package @entur/datepicker

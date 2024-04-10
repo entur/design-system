@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.19](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.18...@entur/documentation@3.2.19) (2024-04-10)
+
+### Bug Fixes
+
+- **tokens:** update color variable output functions ([602128b](https://bitbucket.org/enturas/design-system/commits/602128b139ccc37ea6d7bfc695effeec0cc6ee71))
+
 ## [3.2.18](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.17...@entur/documentation@3.2.18) (2024-03-27)
 
 **Note:** Version bump only for package @entur/documentation

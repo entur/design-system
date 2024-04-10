@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.2...@entur/tokens@3.13.3) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+- **tokens:** fix missing color mode in JS-tokens ([3b0a87e](https://bitbucket.org/enturas/design-system/commits/3b0a87e254d9a02938a5ccd7bc3e6d04b76e13cb))
+- **tokens:** update color variable output functions ([602128b](https://bitbucket.org/enturas/design-system/commits/602128b139ccc37ea6d7bfc695effeec0cc6ee71))
+
+### Performance Improvements
+
+- **tokens:** improve generate color varibles script ([a3415a3](https://bitbucket.org/enturas/design-system/commits/a3415a3fbd913b5dcaabb0030982249daaf7e37b))
+
 ## [3.13.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.1...@entur/tokens@3.13.2) (2024-03-27)
 
 ### Bug Fixes

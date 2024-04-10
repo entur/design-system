@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.36](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.35...@entur/modal@1.7.36) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
 ## [1.7.35](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.34...@entur/modal@1.7.35) (2024-03-27)
 
 **Note:** Version bump only for package @entur/modal

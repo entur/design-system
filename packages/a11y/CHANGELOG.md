@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.79](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.78...@entur/a11y@0.2.79) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
 ## [0.2.78](https://bitbucket.org/enturas/design-system/compare/@entur/a11y@0.2.77...@entur/a11y@0.2.78) (2024-03-27)
 
 **Note:** Version bump only for package @entur/a11y

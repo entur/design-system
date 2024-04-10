@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.28](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.27...@entur/typography@1.8.28) (2024-04-10)
+
+### Bug Fixes
+
+- migrate away from legacy tilde imports in sass ([cc16e7f](https://bitbucket.org/enturas/design-system/commits/cc16e7f1a8d65143ab0dd583aea76b5ba11be148))
+
 ## [1.8.27](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.26...@entur/typography@1.8.27) (2024-03-27)
 
 **Note:** Version bump only for package @entur/typography
