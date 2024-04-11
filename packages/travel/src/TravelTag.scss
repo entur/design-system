@@ -57,15 +57,11 @@
       background: var(--components-form-feedbacktext-information-contrast-stroke);
     }
 
-    &-exclamation-icon {
-      color: var(--components-form-feedbacktext-warning-standard-icon-fill);
-      .svg-exclamation {
-        fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
-      }
-      .eds-contrast & {
-        color: var(--components-form-feedbacktext-warning-contrast-icon);
-      }
+    &--warning,
+    .eds-contrast &--warning {
+      background: none;
     }
+
     &-error-icon {
       font-size: t.$font-sizes-medium;
       color: var(--components-form-feedbacktext-negative-standard-icon-fill);
@@ -77,6 +73,31 @@
       color: var(--components-form-feedbacktext-information-standard-icon-fill);
       .eds-contrast & {
         color: var(--components-form-feedbacktext-information-contrast-icon-fill);
+      }
+    }
+    &-warning-icon {
+      position: absolute;
+      bottom: 0.14rem;
+      color: var(--components-form-feedbacktext-warning-standard-icon-fill);
+
+      .eds-contrast & {
+        color: var(--components-form-feedbacktext-warning-contrast-icon);
+      }
+
+      .svg-exclamation {
+        fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
+      }
+
+      &__border {
+        position: absolute;
+        bottom: 0.1375rem;
+
+        path {
+          fill: var(--components-form-feedbacktext-warning-standard-stroke);
+          .eds-contrast & {
+            fill: var(--components-form-feedbacktext-warning-contrast-stroke);
+          }
+        }
       }
     }
   }
