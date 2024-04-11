@@ -1,3 +1,4 @@
+@use '../utils/componentColors/designEnturComponentColors.scss' as *;
 @import './variables';
 
 @import '~@entur/tokens/dist/styles.scss';
@@ -24,8 +25,8 @@
 @import '~@entur/table/dist/styles.css';
 @import '~@entur/dropdown/dist/styles.css';
 
-:root{
-color-scheme: light dark
+:root {
+  color-scheme: light dark;
 }
 
 [data-color-mode='light'] {
@@ -61,8 +62,7 @@ body {
     flex-direction: column;
     height: 100%;
     margin: 3rem $space-extra-large $space-default;
-    transition: max-width $timings-fast ease-out,
-      margin-left $timings-fast ease-out;
+    transition: max-width $timings-fast ease-out, margin-left $timings-fast ease-out;
 
     @include for-large-desktop {
       max-width: 45rem;

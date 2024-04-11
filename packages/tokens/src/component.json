@@ -5572,6 +5572,180 @@
         "color": "#181c56",
         "var": "Text/Accent",
         "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "DesignEntur/BaseCard/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Contrast/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Border",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/StatusLine",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Contrast/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Default/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/NpmTag/Divide",
+        "color": "#949699",
+        "var": "Stroke/NeutralAlt",
+        "rootAlias": "Grey/60"
+      },
+      {
+        "name": "DesignEntur/NpmTag/Text",
+        "color": "#6e6f73",
+        "var": "Text/Neutral",
+        "rootAlias": "Grey/70"
+      },
+      {
+        "name": "DesignEntur/Playground/Border",
+        "color": "#e3e6e8",
+        "var": "Stroke/Neutral",
+        "rootAlias": "Grey/30"
+      },
+      {
+        "name": "DesignEntur/Playground/Fill",
+        "color": "#ffffff",
+        "var": "Fill/Background/Standard/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "DesignEntur/Playground/Text",
+        "color": "#181c56",
+        "var": "Text/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Border",
+        "color": "#e3e6e8",
+        "var": "Stroke/Neutral",
+        "rootAlias": "Grey/30"
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
       }
     ],
     "number": []
@@ -11149,6 +11323,180 @@
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
         "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "DesignEntur/BaseCard/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Contrast/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Border",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/StatusLine",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Contrast/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Footer/Default/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Contrast/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Default/Divider",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/Header/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/NpmTag/Divide",
+        "color": "#e5e5e9",
+        "var": "Stroke/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "DesignEntur/NpmTag/Text",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "DesignEntur/Playground/Border",
+        "color": "#ffffff00",
+        "var": "Stroke/Colorless",
+        "rootAlias": "White/Alpha-0"
+      },
+      {
+        "name": "DesignEntur/Playground/Fill",
+        "color": "#e5e5e940",
+        "var": "Fill/Background/Overlay/TransparentAlt",
+        "rootAlias": "Transparent/Ebony-Alpha25"
+      },
+      {
+        "name": "DesignEntur/Playground/Text",
+        "color": "#e5e5e9",
+        "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Border",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Text",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/TypographyCard/Text-subdued",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
       }
     ],
     "number": []
