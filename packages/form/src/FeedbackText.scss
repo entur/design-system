@@ -4,7 +4,8 @@
   display: flex;
   align-items: center;
   margin-top: t.$space-extra-small2;
-  &--info {
+  &--info,
+  &--information {
     padding-left: calc(#{t.$space-medium} + #{t.$border-widths-medium});
   }
   &__text {
@@ -35,7 +36,8 @@
       }
     }
   }
-  &--error {
+  &--error,
+  &--negative {
     color: var(--components-form-feedbacktext-negative-standard-icon-fill);
     circle {
       fill: var(--components-form-feedbacktext-negative-standard-icon-symbol);
@@ -47,7 +49,8 @@
       }
     }
   }
-  &--info {
+  &--info,
+  &--information {
     color: var(--components-form-feedbacktext-information-standard-icon-fill);
     circle {
       fill: var(--components-form-feedbacktext-information-standard-icon-symbol);

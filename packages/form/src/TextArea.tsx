@@ -1,16 +1,23 @@
 import React from 'react';
-import { useVariant, VariantType } from './VariantProvider';
+import { useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
 import './TextArea.scss';
 import { useInputGroupContext } from './InputGroupContext';
-import { useRandomId, useOnMount } from '@entur/utils';
 import { isFilled } from './utils';
+
+import { useRandomId, useOnMount } from '@entur/utils';
+import { VariantType } from '@entur/utils';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type TextAreaProps = {
   /** Ekstra klassenavn */
   className?: string;
   /** Valideringsvariant */
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
   /** Deaktiverer tekstområdet */
   disabled?: boolean;
   /** Setter tekstområdet i read-only modus */
@@ -76,7 +83,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 type TextAreaBaseProps = {
   readOnly?: boolean;
   disabled?: boolean;
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(

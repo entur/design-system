@@ -1,4 +1,6 @@
 import { BaseExpand, ExpandArrow } from '@entur/expand/';
+import { VariantType } from '@entur/utils';
+
 import classNames from 'classnames';
 import React from 'react';
 import { BannerAlertBoxProps } from './BannerAlertBox';
@@ -22,9 +24,14 @@ export const BannerExpandableAlertBox: React.FC<BannerExpandableAlertBoxProps> =
     return <ExpandableAlertBox size="banner" {...props} />;
   };
 
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
 type ExpandableAlertBoxProps = {
-  /**Farge og uttrykk på alert-boksen */
-  variant: 'success' | 'info' | 'warning' | 'error';
+  /**Farge og uttrykk på alert-boksen*/
+  variant: VariantType | typeof info | typeof error;
   /** Tittelen til ExpandableAlertBox */
   title: React.ReactNode;
   /**Innhold som vises ved ekspandering */

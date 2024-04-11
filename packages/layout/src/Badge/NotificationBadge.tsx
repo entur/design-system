@@ -1,6 +1,12 @@
 import React from 'react';
 import { Badge } from './Badge';
 import { PolymorphicComponentPropsWithRef, PolymorphicRef } from '@entur/utils';
+import { VariantType } from '@entur/utils';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const danger = 'danger';
 
 type NotificationBadgeBaseProps = {
   /** Elementet som wrapper badgen
@@ -12,7 +18,7 @@ type NotificationBadgeBaseProps = {
   /** Elementet som badge vil legges relativt til */
   children: React.ReactNode;
   /** Hvilken type badge man vil ha */
-  variant: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
+  variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
   /** Om 0 skal vises
    * @default false
    */

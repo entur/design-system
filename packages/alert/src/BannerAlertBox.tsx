@@ -1,6 +1,13 @@
 import React from 'react';
 import { BaseAlertBox } from './BaseAlertBox';
 
+import { VariantType } from '@entur/utils';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
+
 export type BannerAlertBoxProps = {
   /** Innholdet i alert-boksen */
   children: React.ReactNode;
@@ -17,7 +24,7 @@ export type BannerAlertBoxProps = {
   /** Tittel på boksen - oppsummer virkning */
   title?: string;
   /** Farge og uttrykk på alert-boksen */
-  variant: 'success' | 'info' | 'warning' | 'error';
+  variant: VariantType | typeof info | typeof error;
   [key: string]: any;
 };
 

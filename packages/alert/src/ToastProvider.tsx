@@ -4,7 +4,10 @@ import classNames from 'classnames';
 
 type ToastId = string;
 
-export type ToastVariants = 'success' | 'info';
+/** @deprecated use variant="information" instead */
+const info = 'info';
+
+export type ToastVariants = 'success' | 'information' | typeof info;
 
 type ToastType = {
   title?: string;

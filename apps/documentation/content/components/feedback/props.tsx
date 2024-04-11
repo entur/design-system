@@ -14,8 +14,8 @@ export const banner = [
 
   {
     name: 'variant',
-    options: ['info', 'success', 'warning', 'error'],
-    defaultValue: 'info',
+    options: ['information', 'success', 'warning', 'negative'],
+    defaultValue: 'information',
     type: 'dropdown',
   },
   {
@@ -34,7 +34,14 @@ export const badgeprops = [
   },
   {
     name: 'variant',
-    options: ['primary', 'success', 'warning', 'danger', 'info', 'neutral'],
+    options: [
+      'primary',
+      'success',
+      'warning',
+      'negative',
+      'information',
+      'neutral',
+    ],
     defaultValue: 'primary',
     type: 'dropdown',
   },

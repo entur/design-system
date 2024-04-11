@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropsComponentProps } from 'docz';
 import { CodeText, Paragraph } from '@entur/typography';
+
 import {
   Table,
   TableHead,
@@ -13,11 +14,70 @@ import { ExpandableText } from '@entur/expand';
 import { useSettings } from './SettingsContext';
 import './Props.scss';
 
+// removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.
+// we need gatbsy 5 and gatbsy-mdx-plugin to get frontmatterdata from mdx files, that we can use to get the component name.
+function removeDeprecatedVariantType(type: string) {
+  const deprecatedVariantTypes = ['error', 'danger', 'info'];
+  const types = type.split(' | ');
+
+  // Check if any type is deprecated
+  if (
+    types.some(t => deprecatedVariantTypes.includes(t.trim().replace(/"/g, '')))
+  ) {
+    const filteredTypes = types
+      .map(t => t.trim().replace(/"/g, ''))
+      .filter(t => !deprecatedVariantTypes.includes(t));
+
+    // Join the remaining types back into a single string with quotes
+    return filteredTypes.map(t => `"${t}"`).join(' | ');
+  } else {
+    return type;
+  }
+}
+
 function skipUndefinedType(type: string) {
   return type.replace(
-    /((\| undefined)?(\| ComponentProps<E>\[string\])?)/g,
+    /((\| undefined)?(\| "undefined")?(\| ComponentProps<E>\[string\])?)/g,
     '',
   );
+}
+
+function resolveVariantType(typeName: string) {
+  // Check if the typeName includes "VariantType"
+  if (typeName.includes('VariantType')) {
+    const VariantType = '"success" | "negative" | "warning" | "information"';
+
+    // Extract individual types from the typeName
+    const types = typeName.split(' | ');
+
+    // Check if any of the types are custom types and replace them
+    const resultTypes = types.map(t => {
+      if (t === 'VariantType') {
+        return VariantType;
+      }
+      return t;
+    });
+
+    const result = resultTypes.join(' | ');
+
+    return result;
+  }
+
+  // If it doesn't include "VariantType", return the original typeName
+  return typeName;
+}
+
+function formatPropType(typeName: string) {
+  // Run resolveVariantType to handle VariantType
+  let formattedType = resolveVariantType(typeName);
+
+  // Run skipUndefinedType to handle undefined types
+  formattedType = skipUndefinedType(formattedType);
+
+  // Run removeDeprecatedVariantType to handle deprecated variant types
+  formattedType = removeDeprecatedVariantType(formattedType);
+
+  return formattedType;
 }
 
 type PropsProps = PropsComponentProps & {
@@ -35,7 +95,6 @@ const Props: React.FC<PropsProps> = ({
     details => details.defaultValue,
   );
   const isDefaultOpenSet = defaultOpen !== undefined;
-
   return (
     <ExpandableText
       title={title}
@@ -63,7 +122,7 @@ const Props: React.FC<PropsProps> = ({
                   <CodeText className="props-table__type">
                     {propName === 'as'
                       ? 'string | React.ElementType'
-                      : skipUndefinedType(details.type.name)}
+                      : formatPropType(details.type.name)}
                   </CodeText>
                 </DataCell>
                 {hasAnyDefaultValues && (
@@ -86,5 +145,7 @@ const Props: React.FC<PropsProps> = ({
     </ExpandableText>
   );
 };
+
+// Define the GraphQL query
 
 export default Props;

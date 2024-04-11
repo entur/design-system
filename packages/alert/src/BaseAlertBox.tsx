@@ -2,28 +2,37 @@ import React from 'react';
 import classNames from 'classnames';
 import {
   CloseIcon,
-  ValidationSuccessIcon,
+  ValidationCheckIcon,
   ValidationExclamationIcon,
   ValidationInfoIcon,
   ValidationErrorIcon,
 } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Tooltip } from '@entur/tooltip';
+import { VariantType } from '@entur/utils';
 
 import './BaseAlertBox.scss';
 
 const iconsMap = {
   success: {
-    icon: ValidationSuccessIcon,
+    icon: ValidationCheckIcon,
     description: 'Suksessmelding',
   },
-  info: { icon: ValidationInfoIcon, description: 'Infomelding' },
+  information: { icon: ValidationInfoIcon, description: 'Infomelding' },
   warning: {
     icon: ValidationExclamationIcon,
     description: 'Varselmelding',
   },
+  negative: { icon: ValidationErrorIcon, description: 'Feilmelding' },
+  //deprecated
+  info: { icon: ValidationInfoIcon, description: 'Infomelding' },
   error: { icon: ValidationErrorIcon, description: 'Feilmelding' },
 };
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 type BaseAlertBoxProps = {
   /** Innholdet i alert-boksen */
@@ -45,7 +54,7 @@ type BaseAlertBoxProps = {
   /** Tittel på boksen - oppsummer virkning */
   title?: React.ReactNode;
   /** Farge og uttrykk på alert-boksen */
-  variant: 'success' | 'info' | 'warning' | 'error';
+  variant: VariantType | typeof info | typeof error;
   /** Typen boks (internt bruk) */
   size: 'banner' | 'toast' | 'small';
   [key: string]: any;

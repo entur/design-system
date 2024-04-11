@@ -13,7 +13,7 @@ export const datepicker = [
   },
   {
     name: 'variant',
-    options: ['success', 'error', 'warning', 'info'],
+    options: ['success', 'negative', 'warning', 'information'],
     defaultValue: null,
     type: 'dropdown',
   },
@@ -107,7 +107,7 @@ export const textfield = [
   },
   {
     name: 'variant',
-    options: ['success', 'error', 'warning', 'info'],
+    options: ['success', 'negative', 'warning', 'information'],
     defaultValue: null,
     type: 'dropdown',
   },
@@ -151,7 +151,7 @@ export const textarea = [
   },
   {
     name: 'variant',
-    options: ['success', 'error', 'warning', 'info'],
+    options: ['success', 'negative', 'warning', 'information'],
     defaultValue: null,
     type: 'dropdown',
   },

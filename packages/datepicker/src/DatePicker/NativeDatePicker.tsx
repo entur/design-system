@@ -4,10 +4,14 @@ import {
   isFilled,
   useInputGroupContext,
   useVariant,
-  VariantType,
 } from '@entur/form';
 import { DateIcon } from '@entur/icons';
-import { useOnMount, useRandomId } from '@entur/utils';
+import { useOnMount, useRandomId, VariantType } from '@entur/utils';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type NativeDatePickerProps = {
   /** Ekstra klassenavn */
@@ -16,8 +20,8 @@ export type NativeDatePickerProps = {
   label: string;
   /** Varselmelding, som vil komme under NativeDatePicker */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
@@ -73,7 +77,7 @@ export const NativeDatePicker = React.forwardRef<
 
 type NativeDatePickerBaseProps = {
   onChange?: any;
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement

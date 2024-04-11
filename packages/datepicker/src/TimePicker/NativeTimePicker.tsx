@@ -5,11 +5,15 @@ import {
   isFilled,
   useInputGroupContext,
   useVariant,
-  VariantType,
 } from '@entur/form';
-import { useOnMount, useRandomId } from '@entur/utils';
+import { useOnMount, useRandomId, VariantType } from '@entur/utils';
 
 import './NativeTimePicker.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type NativeTimePickerProps = {
   /** Ekstra klassenavn */
@@ -18,8 +22,8 @@ export type NativeTimePickerProps = {
   label: string;
   /** Varselmelding, som vil komme under NativeTimePicker */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
   /** Tekst eller ikon som kommer før inputfelter */
   prepend?: React.ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
@@ -56,7 +60,7 @@ export const NativeTimePicker = React.forwardRef<
 );
 
 type NativeTimePickerBaseProps = {
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
 } & React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement

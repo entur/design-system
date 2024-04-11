@@ -10,13 +10,23 @@ import type {
   DateValue,
 } from '@react-types/datepicker';
 
-import { BaseFormControl, VariantType } from '@entur/form';
-import { ConditionalWrapper, mergeRefs, useRandomId } from '@entur/utils';
+import { BaseFormControl } from '@entur/form';
+import {
+  ConditionalWrapper,
+  mergeRefs,
+  useRandomId,
+  VariantType,
+} from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { createCalendar, lastMillisecondOfDay } from '../shared/utils';
 
 import './DateField.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type DateFieldProps = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
@@ -50,14 +60,14 @@ export type DateFieldProps = {
   maxDate?: DateValue;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
   /** Varselmelding som forteller om ugyldig dato
    * @default "Ugyldig dato"
    */
   validationFeedback?: string;
   /** Valideringsvariant for melding om ugyldig dato
-   * @default "error"
+   * @default "negative"
    */
   validationVariant?: VariantType;
   labelTooltip?: React.ReactNode;
@@ -91,7 +101,7 @@ export const DateField = React.forwardRef<HTMLDivElement, DateFieldProps>(
       isDisabled,
       variant,
       feedback,
-      validationVariant = 'error',
+      validationVariant = 'negative',
       validationFeedback = 'Ugyldig dato',
       labelTooltip,
       minDate,

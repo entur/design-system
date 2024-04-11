@@ -2,6 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { BulletBadge } from '@entur/layout';
+import { VariantType } from '@entur/utils';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const danger = 'danger';
 
 export type DataCellProps = {
   /** Innholdet i tabellcellen */
@@ -13,7 +19,7 @@ export type DataCellProps = {
   /** @deprecated bruk variant */
   status?: 'positive' | 'negative' | 'neutral';
   /** Hvilken type status man vil vise */
-  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'neutral';
+  variant?: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
 } & React.DetailedHTMLProps<
   React.TdHTMLAttributes<HTMLTableDataCellElement>,
   HTMLTableDataCellElement
@@ -26,7 +32,7 @@ function mapStatusToVariant(
     case 'positive':
       return 'success';
     case 'negative':
-      return 'danger';
+      return 'negative';
     case 'neutral':
       return 'neutral';
     default:

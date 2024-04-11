@@ -1,9 +1,17 @@
 import classNames from 'classnames';
 import React from 'react';
 import { DataCell } from './DataCell';
-import { VariantProvider, VariantType } from '@entur/form';
+
+import { VariantProvider } from '@entur/form';
+import { VariantType } from '@entur/utils';
 import { Tooltip } from '@entur/tooltip';
+
 import './EditableCell.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 type EditableCellProps = {
   /** Ekstra klassenavn */
@@ -11,7 +19,7 @@ type EditableCellProps = {
   /** Inputelementet som skal være i tabellcellen */
   children: React.ReactElement;
   /** Valideringsvariant for EditableCell */
-  variant?: VariantType;
+  variant?: VariantType | typeof error | typeof info;
   /** Varselmelding, som vil komme som en Tooltip under EditableCell */
   feedback?: string;
   /** Om cellen skal vise omriss til enhver tid
@@ -46,7 +54,7 @@ export const EditableCell: React.FC<EditableCellProps> = ({
           disableFocusListener={!feedback}
           placement="bottom"
           content={feedback || undefined}
-          variant={feedback ? 'error' : undefined}
+          variant={feedback ? 'negative' : undefined}
         >
           {children}
         </Tooltip>

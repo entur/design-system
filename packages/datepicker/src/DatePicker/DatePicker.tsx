@@ -29,7 +29,7 @@ import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
-import type { VariantType } from '@entur/form';
+import type { VariantType } from '@entur/utils';
 
 import { DateField } from './DateField';
 import { Calendar } from './Calendar';
@@ -37,6 +37,11 @@ import { CalendarButton } from '../shared/CalendarButton';
 import { convertValueToType, lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type DatePickerProps<DateType extends DateValue> = {
   /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
@@ -76,16 +81,16 @@ export type DatePickerProps<DateType extends DateValue> = {
   isDateUnavailable?: (date: DateValue) => boolean;
   /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
   /** Varselmelding som forteller om ugyldig dato
    * @default "Ugyldig dato"
    */
   validationFeedback?: string;
   /** Valideringsvariant for melding om ugyldig dato
-   * @default "error"
+   * @default "negative"
    */
-  validationVariant?: VariantType;
+  validationVariant?: VariantType | typeof error | typeof info;
   disabled?: boolean;
   /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
    * kan endres med prop-en 'weekNumberHeader'

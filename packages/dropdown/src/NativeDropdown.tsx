@@ -1,8 +1,8 @@
 import React from 'react';
-import { BaseFormControl, VariantType } from '@entur/form';
+import { BaseFormControl } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
-import { useRandomId } from '@entur/utils';
+import { useRandomId, VariantType } from '@entur/utils';
 
 import { useResolvedItems } from './useResolvedItems';
 import {
@@ -11,6 +11,11 @@ import {
 } from './types';
 
 import './Dropdown.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type NativeDropdownProps<ValueType> = {
   /** Ekstra klassenavn */
@@ -54,8 +59,8 @@ export type NativeDropdownProps<ValueType> = {
    * (Brukes når komponenten er 'controlled)
    */
   value?: string;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType;
+  /** Hvilken valideringsvariant som gjelder*/
+  variant?: VariantType | typeof error | typeof info;
   /** Plasserer labelen statisk på toppen av inputfeltet
    * @default false
    */
@@ -106,7 +111,7 @@ export const NativeDropdown = <ValueType extends string | number>({
       isFilled={true}
     >
       <select
-        aria-invalid={variant === 'error'}
+        aria-invalid={variant === 'negative' || variant === error}
         aria-labelledby={nativeDropdownId}
         aria-busy={loading}
         className="eds-form-control eds-dropdown--native"

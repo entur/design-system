@@ -3,7 +3,8 @@ import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
 
-import { BaseFormControl, VariantType } from '@entur/form';
+import { BaseFormControl } from '@entur/form';
+import { VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
@@ -25,6 +26,11 @@ import {
 } from './types';
 
 import './Dropdown.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type SearchableDropdownProps<ValueType> = {
   /** Tilgjengelige valg i dropdown-en */
@@ -82,8 +88,8 @@ export type SearchableDropdownProps<ValueType> = {
   prepend?: React.ReactNode;
   /** En tekst som beskriver hva som skjer når man venter på items */
   loadingText?: string;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType;
+  /** Hvilken valideringsvariant som gjelder*/
+  variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
   className?: string;

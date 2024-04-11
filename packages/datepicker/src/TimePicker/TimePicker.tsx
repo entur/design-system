@@ -12,14 +12,19 @@ import type {
 } from '@react-types/datepicker';
 
 import { VisuallyHidden } from '@entur/a11y';
-import { BaseFormControl, VariantType } from '@entur/form';
-import { useRandomId, mergeRefs } from '@entur/utils';
+import { BaseFormControl } from '@entur/form';
+import { useRandomId, mergeRefs, VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
 import { convertValueToType, focusSegment, modulo } from '../shared/utils';
 
 import './TimePicker.scss';
+
+/** @deprecated use variant="information" instead */
+const info = 'info';
+/** @deprecated use variant="negative" instead */
+const error = 'error';
 
 export type TimePickerProps<TimeType extends TimeValue> = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
@@ -57,8 +62,8 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   rightArrowButtonAriaLabel?: string;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
-  /** Valideringsvariant */
-  variant?: VariantType;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
   labelTooltip?: React.ReactNode;
   disabled?: boolean;
   inputRef?: React.ForwardedRef<HTMLDivElement>;

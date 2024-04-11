@@ -80,7 +80,8 @@
       }
     }
   }
-  &--variant-danger {
+  &--variant-danger,
+  &--variant-negative {
     background-color: var(--components-layout-badge-negative-standard-fill);
     color: var(--components-layout-badge-negative-standard-text);
 
@@ -102,7 +103,8 @@
       }
     }
   }
-  &--variant-info {
+  &--variant-info,
+  &--variant-information {
     background-color: var(--components-layout-badge-information-standard-fill);
     color: var(--components-layout-badge-information-standard-text);
 

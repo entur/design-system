@@ -653,7 +653,7 @@ publisert (grønn), hvilke som er kladd (grå) og hvilke som er utløpt (rød).
           Kan Kringom sende deg e-post med <br />
           kvitteringer og billetter?
         </DataCell>
-        <DataCell variant="danger">Utløpt</DataCell>
+        <DataCell variant="negative">Utløpt</DataCell>
         <DataCell>02.02.2020</DataCell>
         <DataCell>Kringom</DataCell>
       </TableRow>
@@ -907,7 +907,7 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
         </TableHead>
         <TableBody>
           <TableRow hover>
-            <EditableCell variant="error" feedback="Navn mangler">
+            <EditableCell variant="negative" feedback="Navn mangler">
               <TextField
                 aria-label="Navn"
                 append={
