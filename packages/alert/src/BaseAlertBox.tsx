@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import {
   CloseIcon,
-  ValidationCheckIcon,
+  ValidationSuccessIcon,
   ValidationExclamationIcon,
   ValidationInfoIcon,
   ValidationErrorIcon,
@@ -15,7 +15,7 @@ import './BaseAlertBox.scss';
 
 const iconsMap = {
   success: {
-    icon: ValidationCheckIcon,
+    icon: ValidationSuccessIcon,
     description: 'Suksessmelding',
   },
   information: { icon: ValidationInfoIcon, description: 'Infomelding' },
