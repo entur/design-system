@@ -13,7 +13,7 @@ import { BestPractices, Example } from '~/components/BestPractices';
 import { Heading3, Paragraph } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import { GridItem, GridContainer } from '@entur/grid';
-import { ValidationErrorIcon, ValidationCheckIcon } from '@entur/icons';
+import { ValidationErrorFilledIcon, ValidationSuccessFilledIcon } from '@entur/icons';
 import './farger.scss';
 
 <PageHeader />
@@ -43,7 +43,7 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
     </div>
     <div>
       <span className="eds-contrast__header">
-        <ValidationErrorIcon color={colors.validation.lava} />
+        <ValidationErrorFilledIcon color={colors.validation.lava} />
         <span className="eds-contrast__header-text">Unngå</span>
       </span>
       <div>
@@ -64,7 +64,7 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
     </div>
     <div>
       <span className="eds-contrast__header">
-        <ValidationCheckIcon color={colors.validation.mint} />{' '}
+        <ValidationSuccessFilledIcon color={colors.validation.mint} />{' '}
         <span className="eds-contrast__header-text">Innafor</span>
       </span>
       <div>
@@ -82,7 +82,7 @@ Stor tekst er det som er dobbelt så stor som brødtekst, det vil si at mestepar
     </div>
     <div>
       <span className="eds-contrast__header">
-        <ValidationCheckIcon color={colors.validation.mint} />{' '}
+        <ValidationSuccessFilledIcon color={colors.validation.mint} />{' '}
         <span className="eds-contrast__header-text">Innafor</span>
       </span>
       <div>

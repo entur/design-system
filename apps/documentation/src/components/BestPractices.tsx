@@ -1,5 +1,8 @@
 import React from 'react';
-import { ValidationCheckIcon, ValidationErrorIcon } from '@entur/icons';
+import {
+  ValidationSuccessFilledIcon,
+  ValidationErrorFilledIcon,
+} from '@entur/icons';
 import classNames from 'classnames';
 import './BestPractices.scss';
 import { Contrast } from '@entur/layout';
@@ -28,7 +31,8 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
   className,
   contrast = false,
 }) => {
-  const Icon = type === 'do' ? ValidationCheckIcon : ValidationErrorIcon;
+  const Icon =
+    type === 'do' ? ValidationSuccessFilledIcon : ValidationErrorFilledIcon;
   const Element = contrast ? Contrast : 'div';
   return (
     <article className={classNames('best-practices__example', className)}>

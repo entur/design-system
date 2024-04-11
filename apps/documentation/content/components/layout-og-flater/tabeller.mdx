@@ -37,8 +37,8 @@ import {
   RowHeightDefaultIcon,
   RowHeightMiddleIcon,
   RowHeightSmallIcon,
-  ValidationInfoIcon,
-  ValidationErrorIcon,
+  ValidationInfoFilledIcon,
+  ValidationErrorFilledIcon,
   FileIcon,
   EditIcon,
   DeleteIcon,
@@ -749,7 +749,7 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline aria-hidden="true" />
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
@@ -772,7 +772,7 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline aria-hidden="true" />
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
@@ -795,7 +795,7 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <DataCell padding="overflow-menu">
           <OverflowMenu>
             <OverflowMenuItem onSelect={() => {}}>
-              <ValidationInfoIcon inline aria-hidden="true" />
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
               Info
             </OverflowMenuItem>
             <OverflowMenuItem onSelect={() => {}}>
@@ -839,7 +839,7 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon aria-label="Info" />
+            <ValidationInfoFilledIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
             <EditIcon aria-label="Rediger" />
@@ -856,7 +856,7 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon aria-label="Info" />
+            <ValidationInfoFilledIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
             <EditIcon aria-label="Rediger" />
@@ -873,7 +873,7 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
           <IconButton onClick={() => {}}>
-            <ValidationInfoIcon aria-label="Info" />
+            <ValidationInfoFilledIcon aria-label="Info" />
           </IconButton>
           <IconButton onClick={() => {}}>
             <EditIcon aria-label="Rediger" />
@@ -911,7 +911,7 @@ Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sa
               <TextField
                 aria-label="Navn"
                 append={
-                  <ValidationErrorIcon
+                  <ValidationErrorFilledIcon
                     inline
                     color={colors.validation.lava}
                     aria-hidden="true"

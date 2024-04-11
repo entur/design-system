@@ -16,6 +16,12 @@ const deprecatedIcons = new Map([
   ['SubwayIcon', 'MetroIcon'],
   ['ScooterIcon', 'MobilityIcon'],
   ['WalkingIcon', 'WalkIcon'],
+  ['OutlinedValidationCheckIcon', 'ValidationCheckIcon'],
+  ['OutlinedValidationErrorIcon', 'ValidationErrorIcon'],
+  ['OutlinedValidationExclamationIcon', 'ValidationExclamationIcon'],
+  ['OutlinedValidationInfoIcon', 'ValidationInfoIcon'],
+  ['ValidationCheckIcon', 'ValidationSuccessIcon'],
+  ['ValidationCheckFilledIcon', 'ValidationSuccessFilledIcon'],
 ]);
 
 // Should always be white

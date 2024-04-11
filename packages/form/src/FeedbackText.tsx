@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  ValidationCheckIcon,
-  ValidationErrorIcon,
-  ValidationExclamationIcon,
+  ValidationSuccessFilledIcon,
+  ValidationErrorFilledIcon,
+  ValidationExclamationFilledIcon,
 } from '@entur/icons';
 import { SubLabel } from '@entur/typography';
 import { VariantType } from './VariantProvider';
@@ -14,20 +14,23 @@ const AlertIcon: React.FC<{ variant: VariantType }> = ({ variant }) => {
   switch (variant) {
     case 'success':
       return (
-        <ValidationCheckIcon
+        <ValidationSuccessFilledIcon
           aria-label="Suksessmelding"
           className={iconClass}
         />
       );
     case 'error':
       return (
-        <ValidationErrorIcon aria-label="Feilmelding" className={iconClass} />
+        <ValidationErrorFilledIcon
+          aria-label="Feilmelding"
+          className={iconClass}
+        />
       );
     case 'info':
       return null;
     case 'warning':
       return (
-        <ValidationExclamationIcon
+        <ValidationExclamationFilledIcon
           aria-label="Varselmelding"
           className={iconClass}
         />

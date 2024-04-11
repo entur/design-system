@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import {
   CloseIcon,
-  OutlinedValidationCheckIcon,
-  OutlinedValidationExclamationIcon,
-  OutlinedValidationInfoIcon,
-  OutlinedValidationErrorIcon,
+  ValidationSuccessIcon,
+  ValidationExclamationIcon,
+  ValidationInfoIcon,
+  ValidationErrorIcon,
 } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { Tooltip } from '@entur/tooltip';
@@ -14,15 +14,15 @@ import './BaseAlertBox.scss';
 
 const iconsMap = {
   success: {
-    icon: OutlinedValidationCheckIcon,
+    icon: ValidationSuccessIcon,
     description: 'Suksessmelding',
   },
-  info: { icon: OutlinedValidationInfoIcon, description: 'Infomelding' },
+  info: { icon: ValidationInfoIcon, description: 'Infomelding' },
   warning: {
-    icon: OutlinedValidationExclamationIcon,
+    icon: ValidationExclamationIcon,
     description: 'Varselmelding',
   },
-  error: { icon: OutlinedValidationErrorIcon, description: 'Feilmelding' },
+  error: { icon: ValidationErrorIcon, description: 'Feilmelding' },
 };
 
 type BaseAlertBoxProps = {

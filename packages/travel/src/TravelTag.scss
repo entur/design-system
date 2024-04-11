@@ -59,7 +59,7 @@
 
     &-exclamation-icon {
       color: var(--components-form-feedbacktext-warning-standard-icon-fill);
-      circle {
+      .svg-exclamation {
         fill: var(--components-form-feedbacktext-warning-standard-icon-symbol);
       }
       .eds-contrast & {
