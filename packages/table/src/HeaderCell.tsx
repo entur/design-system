@@ -151,21 +151,21 @@ const SortableHeaderCellButton: React.FC<SortableHeaderCellButtonProps> = ({
       {children}
       {(!isCurrentlySorted || sortConfig.order === 'none') && (
         <UnsortedIcon
-          size="1rem"
+          size="1em"
           className="eds-table__header-cell-button-icon"
           aria-hidden="true"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'ascending' && (
         <UpArrowIcon
-          size="1rem"
+          size="1em"
           className="eds-table__header-cell-button-icon"
           aria-hidden="true"
         />
       )}
       {isCurrentlySorted && sortConfig.order === 'descending' && (
         <DownArrowIcon
-          size="1rem"
+          size="1em"
           className="eds-table__header-cell-button-icon"
           aria-hidden="true"
         />
