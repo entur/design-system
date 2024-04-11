@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.25...@entur/alert@0.16.0) (2024-04-11)
+
+### Bug Fixes
+
+- **alert:** replaced deprecated ValidationIcon ([571e9a2](https://bitbucket.org/enturas/design-system/commits/571e9a2ce0d07409356cd7a41495854837aa5610))
+
+### Features
+
+- **alert:** add new VariantType and deprecate the old one ([ebfea71](https://bitbucket.org/enturas/design-system/commits/ebfea715f1660335a8cd287fca253abe21e444db))
+
 ## [0.15.25](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.24...@entur/alert@0.15.25) (2024-04-10)
 
 ### Bug Fixes

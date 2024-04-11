@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.2.4...@entur/layout@2.3.0) (2024-04-11)
+
+### Features
+
+- **badge:** add new VariantType and deprecate the old ones ([af10b23](https://bitbucket.org/enturas/design-system/commits/af10b231f57f752252644fb6aeab8acc1b7f5d46))
+
 ## [2.2.4](https://bitbucket.org/enturas/design-system/compare/@entur/layout@2.2.3...@entur/layout@2.2.4) (2024-04-10)
 
 ### Bug Fixes

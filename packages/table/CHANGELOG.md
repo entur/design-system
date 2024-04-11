@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.7.3...@entur/table@4.8.0) (2024-04-11)
+
+### Bug Fixes
+
+- fix incorrect usage of rem size value on svg element ([707b4f5](https://bitbucket.org/enturas/design-system/commits/707b4f5aa501f0b79440575d15c85457dccf7fef))
+
+### Features
+
+- **form:** add new VariantType and deprecate the old ones ([bdb7360](https://bitbucket.org/enturas/design-system/commits/bdb73603b8898cec0aaeb3f6e4f0fe1042374499))
+- **table:** add new VariantType and deprecate the old ones ([ff6f8b7](https://bitbucket.org/enturas/design-system/commits/ff6f8b742a4ad0bff6857772f5938191563e1997))
+- **tooltip:** add new VariantType and deprecate the old ones ([8e78884](https://bitbucket.org/enturas/design-system/commits/8e788849a9767cdbba078f34e225bcf972cfe847))
+
 ## [4.7.3](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.7.2...@entur/table@4.7.3) (2024-04-10)
 
 ### Bug Fixes

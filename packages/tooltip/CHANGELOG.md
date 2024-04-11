@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.52...@entur/tooltip@2.7.0) (2024-04-11)
+
+### Features
+
+- **tooltip:** add new VariantType and deprecate the old ones ([8e78884](https://bitbucket.org/enturas/design-system/commits/8e788849a9767cdbba078f34e225bcf972cfe847))
+
 ## [2.6.52](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.6.51...@entur/tooltip@2.6.52) (2024-04-10)
 
 ### Bug Fixes

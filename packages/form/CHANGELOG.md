@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.43...@entur/form@7.1.0) (2024-04-11)
+
+### Features
+
+- **datepicker:** add new VariantType and deprecate the old ones ([606e788](https://bitbucket.org/enturas/design-system/commits/606e7887abb61196d347f6acd6e0d1c110441665))
+- **form:** add new VariantType and deprecate the old ones ([bdb7360](https://bitbucket.org/enturas/design-system/commits/bdb73603b8898cec0aaeb3f6e4f0fe1042374499))
+- **table:** add new VariantType and deprecate the old ones ([ff6f8b7](https://bitbucket.org/enturas/design-system/commits/ff6f8b742a4ad0bff6857772f5938191563e1997))
+
 ## [7.0.43](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.0.42...@entur/form@7.0.43) (2024-04-10)
 
 ### Bug Fixes

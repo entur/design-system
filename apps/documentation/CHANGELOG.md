@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.19...@entur/documentation@3.3.0) (2024-04-11)
+
+### Bug Fixes
+
+- fix incorrect usage of rem size value on svg element ([707b4f5](https://bitbucket.org/enturas/design-system/commits/707b4f5aa501f0b79440575d15c85457dccf7fef))
+
+### Features
+
+- **alert:** add new VariantType and deprecate the old one ([ebfea71](https://bitbucket.org/enturas/design-system/commits/ebfea715f1660335a8cd287fca253abe21e444db))
+- **badge:** add new VariantType and deprecate the old ones ([af10b23](https://bitbucket.org/enturas/design-system/commits/af10b231f57f752252644fb6aeab8acc1b7f5d46))
+- **datepicker:** add new VariantType and deprecate the old ones ([606e788](https://bitbucket.org/enturas/design-system/commits/606e7887abb61196d347f6acd6e0d1c110441665))
+- **dropdown:** add new VariantType and deprecate the old ones ([492b9cf](https://bitbucket.org/enturas/design-system/commits/492b9cf1644f1a0f7093ceddb74b04dbc491bd22))
+
 ## [3.2.19](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.2.18...@entur/documentation@3.2.19) (2024-04-10)
 
 ### Bug Fixes

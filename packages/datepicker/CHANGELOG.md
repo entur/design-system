@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.3.4...@entur/datepicker@9.4.0) (2024-04-11)
+
+### Features
+
+- **datepicker:** add new VariantType and deprecate the old ones ([606e788](https://bitbucket.org/enturas/design-system/commits/606e7887abb61196d347f6acd6e0d1c110441665))
+
 ## [9.3.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.3.3...@entur/datepicker@9.3.4) (2024-04-10)
 
 ### Bug Fixes

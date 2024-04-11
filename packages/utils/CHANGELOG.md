@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.10.1...@entur/utils@0.11.0) (2024-04-11)
+
+### Features
+
+- **utils:** add type variants to utils ([f215cc7](https://bitbucket.org/enturas/design-system/commits/f215cc7fe306b1e6262c0cb55bd4296ab3d0be17))
+
 ## [0.10.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.10.0...@entur/utils@0.10.1) (2024-04-10)
 
 ### Bug Fixes

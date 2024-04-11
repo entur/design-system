@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.5...@entur/dropdown@5.4.0) (2024-04-11)
+
+### Features
+
+- **dropdown:** add new VariantType and deprecate the old ones ([492b9cf](https://bitbucket.org/enturas/design-system/commits/492b9cf1644f1a0f7093ceddb74b04dbc491bd22))
+
 ## [5.3.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.3.4...@entur/dropdown@5.3.5) (2024-04-10)
 
 ### Bug Fixes
