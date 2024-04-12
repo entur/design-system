@@ -34,8 +34,5 @@
   },
   "dependencies": {
     "hex-rgb": "^4.3.0"
-  },
-  "peerDependencies": {
-    "prettier": "^2.3.2"
   }
 }
