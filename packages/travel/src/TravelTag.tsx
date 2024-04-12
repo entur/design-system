@@ -149,7 +149,11 @@ export const TravelTag: React.FC<TravelTagProps> = ({
         </button>
       )}
       {alertIsSet && (
-        <span className="eds-travel-tag__alert">
+        <span
+          className={classNames('eds-travel-tag__alert', {
+            'eds-travel-tag__alert--warning': alert === 'warning',
+          })}
+        >
           {alert === 'info' && (
             <ValidationInfoFilledIcon
               aria-hidden
@@ -163,10 +167,13 @@ export const TravelTag: React.FC<TravelTagProps> = ({
             />
           )}
           {alert === 'warning' && (
-            <ValidationExclamationFilledIcon
-              aria-hidden
-              className="eds-travel-tag__alert-exclamation-icon"
-            />
+            <>
+              <TriangleBorderShape aria-hidden />
+              <ValidationExclamationFilledIcon
+                className="eds-travel-tag__alert-warning-icon"
+                aria-hidden
+              />
+            </>
           )}
         </span>
       )}
@@ -199,4 +206,22 @@ export const TravelTag: React.FC<TravelTagProps> = ({
   }
 
   return TravelTagWithoutLabel;
+};
+
+const TriangleBorderShape: React.FC = () => {
+  return (
+    <svg
+      width="20"
+      height="17"
+      viewBox="0 0 20 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="eds-travel-tag__alert-warning-icon__border"
+    >
+      <path
+        d="M7.74451 1.9216C8.75118 0.192584 11.2489 0.192586 12.2556 1.92161L18.7502 13.0764C19.7633 14.8164 18.5081 16.9996 16.4946 16.9996H3.50547C1.49206 16.9996 0.236853 14.8164 1.24991 13.0764L7.74451 1.9216Z"
+        fill="white"
+      />
+    </svg>
+  );
 };
