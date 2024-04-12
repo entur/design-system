@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.3...@entur/tokens@3.13.4) (2024-04-12)
+
+### Bug Fixes
+
+- **tokens:** remove unnecessary peer dependency prettier ([975f84c](https://bitbucket.org/enturas/design-system/commits/975f84c31c232c259c19e4d6468e7745c5a77fd7))
+
 ## [3.13.3](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.2...@entur/tokens@3.13.3) (2024-04-10)
 
 ### Bug Fixes

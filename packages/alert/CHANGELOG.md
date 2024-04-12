@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.1](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.16.0...@entur/alert@0.16.1) (2024-04-12)
+
+**Note:** Version bump only for package @entur/alert
+
 # [0.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/alert@0.15.25...@entur/alert@0.16.0) (2024-04-11)
 
 ### Bug Fixes
