@@ -1,21 +1,24 @@
 import React from 'react';
-import './NpmTag.scss';
-import { SmallText } from '@entur/typography';
+import { Heading5, SubLabel } from '@entur/typography';
 import { useGetNpmVersion } from './useGetNpmVersion';
+
+import './NpmTag.scss';
 
 export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
   const query = useGetNpmVersion();
 
-  const npmV = query.allNpmPackage.edges.filter(
-    item => item.node.name === packageName,
-  );
+  const npmInfo = query.allNpmPackage.edges.filter(
+    (item: { node: { name: string; version: string } }) =>
+      item.node.name === packageName,
+  )[0].node;
 
   return (
-    <div className="ds-npm-tag">
-      <SmallText className="ds-npm-tag__npm">npm</SmallText>
-      <SmallText className="ds-npm-tag__version">
-        v{npmV[0].node.version}
-      </SmallText>
-    </div>
+    <a
+      className="ds-npm-tag"
+      href={`https://www.npmjs.com/package/@entur/${npmInfo.name}`}
+    >
+      <Heading5 as="span">npm</Heading5>
+      <SubLabel>v{npmInfo.version}</SubLabel>
+    </a>
   );
 };
