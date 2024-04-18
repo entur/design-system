@@ -43,6 +43,9 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
             <NavItem to="/komponenter" location={location}>
               Komponenter
             </NavItem>
+            <NavItem to="/tokens" location={location}>
+              Tokens
+            </NavItem>
             <NavItem to="/universell-utforming" location={location}>
               Universell utforming
             </NavItem>
