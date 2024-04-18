@@ -39,7 +39,11 @@ ${missingImports
 /** Warns the developer if they have forgotten to include styles */
 export function warnAboutMissingStyles(...namespaces: string[]): void {
   // We skip this check in production, and when we build static sites
-  if (!__DEV__ || typeof window === 'undefined') {
+  if (
+    process.env.TEST === 'true' ||
+    !__DEV__ ||
+    typeof window === 'undefined'
+  ) {
     return;
   }
   // First, let's clear earlier calls to setTimeout
