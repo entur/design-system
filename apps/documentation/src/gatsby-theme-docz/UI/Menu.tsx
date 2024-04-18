@@ -22,6 +22,7 @@ const Menu: React.FC<{ className: string }> = ({ className }) => {
           <nav
             className={classNames('top-navigation', {
               'top-navigation--front-page': location.pathname === '/',
+              'eds-contrast': location.pathname === '/',
             })}
             aria-label="Navigasjon, hovedseksjoner"
           >

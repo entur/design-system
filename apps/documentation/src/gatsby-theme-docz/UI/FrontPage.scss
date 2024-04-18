@@ -50,7 +50,7 @@
 }
 
 .front-page__blue-cards {
-  background: var(--basecolors-frame-default);
+  background: var(--basecolors-frame-tint);
   padding-bottom: 3rem;
   @include for-desktop {
     padding-bottom: 7.5rem;

@@ -8,8 +8,8 @@
     gap: $space-large;
   }
   &__grid-item {
-    background: $colors-brand-blue;
-    color: $colors-brand-white;
+    background: var(--designentur-basecard-contrast-fill);
+    color: var(--designentur-basecard-contrast-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,8 +19,10 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      .eds-h4 {
+      span {
         font-weight: 500;
+        font-size: $font-sizes-extra-large;
+        line-height: $line-heights-extra-large3;
       }
       .eds-contrast {
         text-align: center;
@@ -42,7 +44,7 @@
     }
   }
   &__number {
-    border: $colors-brand-lavender solid $border-widths-small;
+    border: var(--basecolors-stroke-contrast) solid $border-widths-small;
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
@@ -52,7 +54,7 @@
     margin-bottom: $space-large;
   }
   &__red-text {
-    color: $colors-brand-coral;
+    color: var(--basecolors-text-highlight);
     font-weight: 600;
   }
 }

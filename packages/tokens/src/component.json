@@ -5580,6 +5580,12 @@
         "rootAlias": ""
       },
       {
+        "name": "DesignEntur/BaseCard/Contrast/Fill-tint",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
         "name": "DesignEntur/BaseCard/Contrast/Text",
         "color": "#ffffff",
         "var": "",
@@ -5587,6 +5593,12 @@
       },
       {
         "name": "DesignEntur/BaseCard/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Fill-tint",
         "color": "#ffffff",
         "var": "",
         "rootAlias": ""
@@ -5610,7 +5622,13 @@
         "rootAlias": ""
       },
       {
-        "name": "DesignEntur/DoDontCard/StatusLine",
+        "name": "DesignEntur/DoDontCard/StatusLine-negative",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/StatusLine-success",
         "color": "#ffffff",
         "var": "",
         "rootAlias": ""
@@ -5706,13 +5724,19 @@
         "rootAlias": "Grey/70"
       },
       {
+        "name": "DesignEntur/Playground/Background",
+        "color": "#f6f6f9",
+        "var": "Fill/Background/Tint/Light",
+        "rootAlias": "Blue/10"
+      },
+      {
         "name": "DesignEntur/Playground/Border",
         "color": "#e3e6e8",
         "var": "Stroke/Neutral",
         "rootAlias": "Grey/30"
       },
       {
-        "name": "DesignEntur/Playground/Fill",
+        "name": "DesignEntur/Playground/Panel",
         "color": "#ffffff",
         "var": "Fill/Background/Standard/Light",
         "rootAlias": "White/Alpha-100"
@@ -11331,6 +11355,12 @@
         "rootAlias": ""
       },
       {
+        "name": "DesignEntur/BaseCard/Contrast/Fill-tint",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
         "name": "DesignEntur/BaseCard/Contrast/Text",
         "color": "#ffffff",
         "var": "",
@@ -11338,6 +11368,12 @@
       },
       {
         "name": "DesignEntur/BaseCard/Default/Fill",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/BaseCard/Default/Fill-tint",
         "color": "#ffffff",
         "var": "",
         "rootAlias": ""
@@ -11361,7 +11397,13 @@
         "rootAlias": ""
       },
       {
-        "name": "DesignEntur/DoDontCard/StatusLine",
+        "name": "DesignEntur/DoDontCard/StatusLine-negative",
+        "color": "#ffffff",
+        "var": "",
+        "rootAlias": ""
+      },
+      {
+        "name": "DesignEntur/DoDontCard/StatusLine-success",
         "color": "#ffffff",
         "var": "",
         "rootAlias": ""
@@ -11457,13 +11499,19 @@
         "rootAlias": "Ebony/10"
       },
       {
+        "name": "DesignEntur/Playground/Background",
+        "color": "#141527",
+        "var": "Fill/Background/Tint/Dark",
+        "rootAlias": "Ebony/95"
+      },
+      {
         "name": "DesignEntur/Playground/Border",
         "color": "#ffffff00",
         "var": "Stroke/Colorless",
         "rootAlias": "White/Alpha-0"
       },
       {
-        "name": "DesignEntur/Playground/Fill",
+        "name": "DesignEntur/Playground/Panel",
         "color": "#e5e5e940",
         "var": "Fill/Background/Overlay/TransparentAlt",
         "rootAlias": "Transparent/Ebony-Alpha25"

@@ -18,20 +18,20 @@
 
 .best-practices__heading {
   background-color: transparent;
-  outline: $border-widths-medium solid $colors-greys-grey80;
+  outline: $border-widths-medium solid var(--designentur-dodontcard-border);
   font-weight: $font-weights-heading;
   padding: $space-large;
-  border-bottom: $border-widths-large solid currentColor;
+  border-bottom: $border-widths-large solid transparent;
   &--do {
-    color: $colors-validation-mint;
+    border-color: var(--designentur-dodontcard-statusline-success);
   }
 
   &--dont {
-    color: $colors-validation-lava;
+    border-color: var(--designentur-dodontcard-statusline-negative);
   }
 
   > span {
-    color: var(--primary-text-color);
+    color: var(--designentur-dodontcard-text);
   }
 
   > .eds-icon {

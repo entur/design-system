@@ -1,7 +1,7 @@
 @import '~@entur/tokens/dist/styles.scss';
 
 .border-wrapper {
-  border: $border-widths-small solid $colors-greys-grey70;
+  border: $border-widths-small solid var(--basecolors-stroke-subduedalt);
   border-radius: $border-widths-large;
   display: grid;
   gap: $space-default;
@@ -22,9 +22,9 @@
       opacity: 1;
 
       &-button {
-        background-color: rgba($colors-blues-blue70, 0.4);
+        background-color: var(--basecolors-frame-tint);
         &:hover {
-          background-color: rgba($colors-blues-blue70, 1);
+          background-color: var(--basecolors-frame-subdued);
         }
       }
     }

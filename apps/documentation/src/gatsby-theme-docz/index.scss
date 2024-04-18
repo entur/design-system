@@ -2,6 +2,7 @@
 @import './variables';
 
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/tokens/dist/data.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
 @import '~@entur/icons/dist/styles.css';
@@ -127,7 +128,7 @@ body {
 
 .frontpage__site-content-wrapper {
   .frontpage-blue-backer {
-    background: $colors-brand-blue;
+    background: var(--basecolors-frame-contrast);
     position: absolute;
     width: 100vw;
     top: 0;

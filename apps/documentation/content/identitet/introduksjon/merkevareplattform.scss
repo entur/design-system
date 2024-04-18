@@ -6,7 +6,7 @@
     gap: 1rem;
   }
   &__blue-box {
-    background: $colors-blues-blue80;
+    background: var(--designentur-basecard-default-fill-tint);
     padding: 48px 48px;
   }
   &__slogan {
@@ -23,7 +23,7 @@
       width: $space-extra-large2;
       margin: 0 auto;
       opacity: 1;
-      background: $colors-brand-coral;
+      background: var(--basecolors-stroke-highlight);
     }
   }
   &__lofte {
