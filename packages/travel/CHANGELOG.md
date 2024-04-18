@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.14](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.13...@entur/travel@6.1.14) (2024-04-18)
+
+**Note:** Version bump only for package @entur/travel
+
 ## [6.1.13](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.12...@entur/travel@6.1.13) (2024-04-12)
 
 ### Bug Fixes

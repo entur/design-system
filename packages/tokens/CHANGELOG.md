@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.5](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.4...@entur/tokens@3.13.5) (2024-04-18)
+
+### Bug Fixes
+
+- **tokens:** move 'flat' from dev dependencies to dependencies ([9f56702](https://bitbucket.org/enturas/design-system/commits/9f5670292930e8e05a0e60ada6f4df479adb679b))
+
 ## [3.13.4](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.3...@entur/tokens@3.13.4) (2024-04-12)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@entur/tokens",
-  "version": "3.13.4",
+  "version": "3.13.5",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tokens.esm.js",
@@ -32,7 +32,7 @@
     "ts-node": "^8.3.0"
   },
   "dependencies": {
-    "hex-rgb": "^4.3.0",
-    "flat": "^5.0.1"
+    "flat": "^5.0.1",
+    "hex-rgb": "^4.3.0"
   }
 }
