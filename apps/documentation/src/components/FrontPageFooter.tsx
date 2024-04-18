@@ -49,6 +49,9 @@ const FrontPageFooter = () => {
             <DoczLinkWrapper to="/komponenter">Komponenter</DoczLinkWrapper>
           </div>
           <div className="front-page-footer__link">
+            <DoczLinkWrapper to="/tokens">Tokens</DoczLinkWrapper>
+          </div>
+          <div className="front-page-footer__link">
             <DoczLinkWrapper to="/universell-utforming">
               Universell utforming
             </DoczLinkWrapper>

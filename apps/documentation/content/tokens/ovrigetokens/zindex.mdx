@@ -1,0 +1,31 @@
+---
+name: Z-index
+description: Z-index kontrollerer rekkefølgen der elementer overlapper hverandre, elementer med høyere z-indeks verdier blir plassert foran elementer med lavere z-indeks verdier.
+route: /tokens/ovrigetokens/zindex
+parent: Tokens
+menu: Øvrige tokens
+order: 6
+---
+
+import PageHeader from '~/components/PageHeader';
+import { TokenTable } from '~/components/TokensTable/TokenTable';
+
+<PageHeader>
+
+</PageHeader>
+
+Z-index bør brukes med omhu. Overforbruk av z-indexverdier kan føre til uforutsigbar adferd og vanskeligheter med vedlikehold. For å gjøre verdiene mer lesbare er det lurt å bruke variabler med forståelige navn, som våre variabler.
+
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.card {
+    z-index: $z-indexes-behind;
+}
+```
+
+
+## Z-indexer
+
+<TokenTable tokenKey="zIndexes" />

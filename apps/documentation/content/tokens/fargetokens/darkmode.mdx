@@ -1,0 +1,115 @@
+---
+name: Dark mode
+description: Fargetokens gjør det mulig å implementere en strukturert dark mode for en sømløs overgang mellom lys og mørk modus i både Figma og kode.
+route: /tokens/fargetokens/darkmode
+parent: Tokens
+menu: Fargetokens
+order: 3
+---
+
+import PageHeader from '~/components/PageHeader';
+import BaseCardDesignEntur from '~/components/BaseCardDesignEntur';
+import lightdarkmode from "./images/lightdarkmode.png"
+import lightdarkmodecontrast from "./images/lightDarkmodeContrast.png"
+import darkmodedemo from "./images/darkmodedemo.gif"
+import componentExample from "./images/componentExample.png"
+import componentExampleDark from "./images/componentExampleDark.png"
+import illustrationExample from "./images/illustrationExample.png"
+import illustrationExampleDark from "./images/illustrationExampleDark.png"
+import { Heading4 } from '@entur/typography';
+
+<PageHeader>
+
+</PageHeader>
+
+Vi har vi implementert både vanlige farger og kontrastfarger i light mode. I praksis er vanlige farger samlet under kategorien "Standard", mens kontrastfarger er samlet under kategorien "Contrast" innenfor light mode. Begge kategorier har like dark mode-farger, slik at de har en 1 mot 1-mapping.
+
+<img
+  src={lightdarkmodecontrast}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+/>
+
+<Heading4 as="h2">Eksempel på komponent</Heading4>
+
+<img
+  src={componentExample}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+  style={{ marginBottom: '-8px' }}
+/>
+<img
+  src={componentExampleDark}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+/>
+
+<Heading4 as="h2">Eksempel på illustrasjon</Heading4>
+
+<img
+  src={illustrationExample}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+  style={{ marginBottom: '-8px' }}
+/>
+<img
+  src={illustrationExampleDark}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+/>
+
+<Heading4 as="h2">Eksempel på Entur-APP</Heading4>
+
+<img
+  src={lightdarkmode}
+  className="darkmode__image"
+  width="100%"
+  alt=""
+/>
+
+## Hvordan ta i bruk i Figma
+Her er et eksempel på hvordan Dark mode-farger kan implementeres med automatisk lys/mørk fargebytting.
+
+
+<BaseCardDesignEntur imageBorderBottom title="Eksempel aktivere automatisk dark mode i Figma" subText="Ved å lage et “frame” som inneholder designløsningen, og deretter slå på alle fargetokens til “dark” som eksempelet viser, kan automatisk fargebytting bli aktivert. Dette gjør det mulig å flytte designløsningen mellom lys og mørk bakgrunn med automatisk fargebytting.">
+  <img
+    src={darkmodedemo}
+    alt=""
+    width="100%"
+  />
+</BaseCardDesignEntur>
+
+## Hvordan ta i bruk i kode
+
+Alle våre komponenter fra komponentbiblioteket bruker fargevariabler som støtter light, dark og contrast.
+
+For å aktivere dark-mode på designsystemets komponenter kan du inkludere attributtet data-color-mode på html-elementet. Dette attributtet vil stå som en indikator for hvilken mode som skal aktiveres, om det er light eller dark.
+
+```html
+<html data-color-mode="dark">
+<html data-color-mode="light">
+```
+
+For å bytte mellom light- og dark-modus, trenger du en måte å endre verdien til data-color-mode-attributtet dynamisk. Dette er avhengig av ditt valg av rammeverk eller bibliotek.
+
+Om deler av din løsning ikke bruker komponentene våre må du sørge for at de har fargevariabler som støtter darkmode. Dette kan du få til ved å enten bruke variabler fra vår `base.css`, for eksempel: var(--basecolors-text-light). Eller lage et internt stilsett, eksempel:
+
+```scss
+/* intern styles.scss */
+
+/* Stiler for light-modus */
+[data-color-mode='light'],
+:root {
+  --my-background-color: white;
+}
+/* Stiler for dark-modus */
+[data-color-mode='dark'] {
+  --my-background-color: black;
+}
+```
+

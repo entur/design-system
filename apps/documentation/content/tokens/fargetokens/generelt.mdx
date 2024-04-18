@@ -1,0 +1,147 @@
+---
+name: Generelt om fargetokens
+description: Hvorfor har vi egentlig fargetokens? Er du usikker på hvordan komme i gang? Her kommer en kort introduksjon.
+route: /tokens/fargetokens/generelt
+parent: Tokens
+menu: Fargetokens
+order: 1
+---
+
+import brukAssets from "./images/brukAssets.gif"
+import brukMenu from "./images/brukMenu.gif"
+import brukFlateBase from "./images/brukFlateBase.png"
+import donts from "./images/dont-tokens.png"
+import dos from "./images/do-tokens.png"
+import primitive from "./images/primitive.png"
+import semantic from "./images/semantic.png"
+import component from "./images/component.png"
+import base from "./images/base.png"
+import { BaseCard } from '@entur/layout';
+import BaseCardDesignEntur from '~/components/BaseCardDesignEntur';
+import PageHeader from '~/components/PageHeader';
+import { BestPractices, Example } from '~/components/BestPractices';
+import { Heading5, SmallText } from '@entur/typography';
+import { GridContainer, GridItem } from '@entur/grid';
+import './generelt.scss';
+
+<PageHeader>
+</PageHeader>
+
+## Hvorfor trenger vi fargetokens?
+Fargetokens gir ikke bare mening, men også fleksibilitet, og de utgjør grunnlaget i et designsystem. De bidrar til å opprettholde organiseringen og konsistensen i fargesystemet, samtidig som bruken av tokens muliggjør raskere og mer effektiv utvikling av designsystemet.
+
+
+<BestPractices>
+
+<Example type="do" src={dos} alt="illustrasjon av at Lavendel 90-fargen ved navn Fill.Primary.Default er den man skal bruke i komponenter.">
+Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede referansefarger til tokens.
+</Example>
+
+<Example type="dont" src={donts} alt="illustrasjon av at utvikler A bruker navnet Lavendel90 og utvikler B bruker navnet ColorBlue men begge er den samme fargen.">
+Å bruke ulike fargenavn eller fargeverdier fører til unødvendig ekstra arbeid både ved implementering og bytting av farger i systemet. Dette resulterer i redusert effektivitet og manglende standardisering, spesielt med flere brukere involvert.
+</Example>
+
+</BestPractices>
+
+## Tokensstruktur
+Tokensstrukturen inneholder flere lag av fargetokens. Det grunnleggende laget består av "primitive tokens", som representerer fargene i fargepaletten. Deretter kommer "semantic tokens" eller “alias tokens”, som gir en tydeligere mening til fargene ved å tildele dem betydningsfulle navn. Til slutt "component tokens" og “Base element tokens” spesifiserer fargene som brukes på individuelle komponenter og løse elementer. Hvert lag i strukturen kommuniserer informasjon om hva fargen representerer, hvordan den skal brukes, og hvor den skal brukes i designsystemet.
+
+
+<BaseCardDesignEntur arrow imageBorderTop title="Primitive tokens">
+  <img src={primitive} alt="" width="100%" />
+</BaseCardDesignEntur>
+
+<BaseCardDesignEntur arrow imageBorderTop title="Semantic tokens">
+  <img src={semantic} alt="" width="100%" />
+</BaseCardDesignEntur>
+
+<GridContainer spacing="large">
+  <GridItem small={12} medium={6}>
+    <BaseCardDesignEntur  imageBorderTop title="Component tokens">
+      <img src={component} alt="" width="100%" />
+    </BaseCardDesignEntur>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <BaseCardDesignEntur  imageBorderTop title="Base tokens">
+      <img src={base} alt="" width="100%" />
+    </BaseCardDesignEntur>
+  </GridItem>
+</GridContainer>
+
+## Bruk fargetokens
+
+### Figma
+Fargetokensfiler finner du under Assets-menyen i Figma, hvor de enkelt kan slås av eller på etter behov. Vi anbefaler å aktivere fargetokensfilen “Base elements” først når du bygger design eller grensesnitt, da alle andre fargetokens allerede er implementert i komponentbibliotekene, illustrasjonene og ikonene i designsystembibliotekene.
+
+<GridContainer spacing="large">
+  <GridItem small={12} medium={6}>
+    <BaseCardDesignEntur title="Assets meny" subText="I assets meny aktiverer vi Tokens-Base elements colors">
+          <img
+            src={brukAssets}
+            alt=""
+            width="100%"
+            height="327"
+      />
+    </BaseCardDesignEntur>
+  </GridItem>
+  <GridItem small={12} medium={6}>
+    <BaseCardDesignEntur title="Property meny" subText="Dette bidrar til å unngå for mange fargevariabler i property menyen, slik at du kan fokusere bare på det som er nødvendig for gjeldende design.">
+      <img
+            src={brukMenu}
+            alt=""
+            width="100%"
+            height="327"
+      />
+    </BaseCardDesignEntur>
+  </GridItem>
+</GridContainer>
+
+<BaseCardDesignEntur imageBorderBottom title="I grensesnitt" subText="Siden komponentene allerede er integrert med fargevariabler for de fleste kontekster. Det eneste som gjenstår er å implementere base elementer i designløsningen, spesielt layouten under de fleste kontekstene. Vi kan enkelt velge riktig fargefil for å bruke de nødvendige fargene etter behov.">
+    <img
+      src={brukFlateBase}
+      alt=""
+      width="100%"
+    />
+</BaseCardDesignEntur>
+
+De andre separate fargetokensfilene gir mer fleksibilitet og kontroll, slik at du kan velge nøyaktig hvilke fargevariabler som skal være synlige etter designbehov. For eksempel kan du bygge lokale komponenter med “Primitive colors” og “Semantic colors”.
+
+### Kode
+
+Alle tokens er tilgjengelige gjennom [Tokens-pakken](/tokens). Tokens er organisert i separate filer basert på type variabler de inneholder. Dette gjør det enkelt å finne og bruke de spesifikke variablene du trenger. 
+
+For eksempel, hvis du arbeider med CSS, vil du finne følgende filstruktur i Tokens-pakken:
+
+```css
+@entur/tokens/dist/
+├── primitive.css 
+├── semantic.css 
+├── data.css 
+└── transport.css
+```
+
+SASS og LESS variablene aksesseres med henholdsvis _\$_ og _@_, og er semantisk delt opp ved _-_ (bindestrek).
+CSS-variablene prefikses med to bindestreker.
+Javascript-variablene aksesseres som nestede objekter.
+  
+Eksempel på importering av SCSS-variablene og bruk av dem:
+
+```css
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+
+.background {
+  background-color: semantic.$fill-background-subdued-light;
+}
+
+```
+
+Eksempel på importering av CSS-variablene og bruk av dem:
+
+```css
+@import '@entur/tokens/dist/primitive.css';
+
+.background {
+  background-color: var(--fill-background-subdued-light);
+}
+
+```

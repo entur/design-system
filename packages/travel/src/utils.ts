@@ -105,6 +105,7 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         ariaLabel: 'Taxi',
       };
     case 'bicycle':
+    case 'citybike':
       return {
         Icon: BicycleIcon,
         pattern: 'dashed',
@@ -143,18 +144,21 @@ export const getTransportStyle = (mode: string): transportStyleResult => {
         ariaLabel: 'El-sparkesykkel',
       };
     case 'airportLinkBus':
+    case 'airportlinkbus':
       return {
         Icon: BusIcon,
         pattern: 'dashed',
         ariaLabel: 'Flybuss',
       };
     case 'airportLinkRail':
+    case 'airportlinkrail':
       return {
         Icon: TrainIcon,
         pattern: 'line',
         ariaLabel: 'Flytog',
       };
     case 'none':
+    case 'neutral':
       return {
         Icon: React.Fragment,
         pattern: 'line',

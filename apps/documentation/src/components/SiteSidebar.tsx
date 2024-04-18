@@ -300,7 +300,6 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
   mobile = false,
 }) => {
   menuItems.sort(compare);
-
   const topMargin = mobile ? '0rem' : '1.5rem';
   return (
     <SideNavigation style={{ marginTop: topMargin }}>
@@ -332,7 +331,7 @@ const SimpleSideNavigation: React.FC<SimpleSideNavigationProps> = ({
     </SideNavigation>
   );
 };
-
+// add sorters for new main-menutitems here
 const componentsMenuSortOrder = {
   Ressurser: 1,
   Knapper: 2,
@@ -351,6 +350,12 @@ const visuellIdentitetMenuSortOrder = {
   Verktøykassen: 2,
   Maler: 3,
 } as any;
+
+const tokensMenuSortOrder = {
+  Fargetokens: 1,
+  'Øvrige tokens': 2,
+} as any;
+
 const sortComponentMenus = (a: MenuItem, b: MenuItem, sortOrder: any) => {
   const aSortOrder = sortOrder[a.name] || 10;
   const bSortOrder = sortOrder[b.name] || 10;
@@ -360,6 +365,7 @@ const sorters: { [sorter: string]: any } = {
   'Kom i gang': komIGangMenuSortOrder,
   Identitet: visuellIdentitetMenuSortOrder,
   Komponenter: componentsMenuSortOrder,
+  Tokens: tokensMenuSortOrder,
 };
 
 type ComponentsSideNavigationProps = {
@@ -371,7 +377,6 @@ const ComponentsSideNavigation: React.FC<ComponentsSideNavigationProps> = ({
   location,
 }) => {
   const [searchText, setSearchText] = React.useState('');
-
   const filteredMenuItems = React.useMemo<MenuItem[]>(
     () => filterMenuItems(menuItems, searchText),
     [menuItems, searchText],

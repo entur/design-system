@@ -1,0 +1,52 @@
+---
+name: Typografi
+description: Ved å definere tydelige tokens for font weights, størrelser og linjehøyder, blir det enklere å innføre konsistent typografi.
+route: /tokens/ovrigetokens/typografi
+parent: Tokens
+menu: Øvrige tokens
+order: 3
+---
+
+import PageHeader from '~/components/PageHeader';
+import { TokenTable } from '~/components/TokensTable/TokenTable';
+
+<PageHeader>
+
+</PageHeader>
+
+Vi kan anbefale å bruke vår [Typografipakke](/komponenter/ressurser/typography) for konsistent hierarki for typografi.
+
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.button {
+    font-weight: $font-weights-body;
+    font-size: $font-sizes-extra-small;
+    line-height: $line-heights-extra-small;
+}
+```
+
+## Tekstvekting (font-weight)
+
+Tekstvekting refererer til tykkelsen eller "boldness" av en font. Ved å definere font weights som tokens, kan man enkelt tilpasse seg forskjellige typografiske stiler og hierarkier. $font-weights-body representerer den primære teksten, og $font-weights-heading kan brukes til overskrifter.
+
+
+<TokenTable
+  tokenKey="fontWeights"
+  example={({ value }) => <div style={{ fontWeight: value }}>ABC abc</div>}
+/>
+
+## Tekststørrelser (size)
+Tekststørrelser definerer de forskjellige fontstørrelsene som brukes i designsystemet. Dette inkluderer alt fra små body-tekster til store overskrifter. Ved å bruke størrelser som $font-sizes-small, kan man enkelt skalere tekststørrelser i henhold til enhet og brukerens preferanser, samtidig som det opprettholder en enhetlig visuell hierarki.
+
+<TokenTable
+  tokenKey="fontSizes"
+  example={({ value }) => <div style={{ fontSize: value }}>ABC abc</div>}
+/>
+
+## Linjehøyder (line-height)
+
+Linjehøyder bestemmer avstanden mellom linjene i tekstblokker. Å ha klart definerte linjehøyder bidrar til å forbedre lesbarheten av teksten. Linjehøyder kan også tilpasses forskjellige tekststiler og størrelser for å sikre at linjeavstanden passer godt sammen med den valgte fonten og layouten.
+
+<TokenTable tokenKey="lineHeights" />

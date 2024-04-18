@@ -63,6 +63,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
             <MobileNavItem to="/identitet">Identitet</MobileNavItem>
             <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>
+            <MobileNavItem to="/tokens">Tokens</MobileNavItem>
             <MobileNavItem to="/universell-utforming">
               Universell utforming
             </MobileNavItem>

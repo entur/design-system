@@ -1,0 +1,59 @@
+---
+name: Border
+description: Border-variabler brukes til å definere grensene til et element i CSS.
+route: /tokens/ovrigetokens/border
+parent: Tokens
+menu: Øvrige tokens
+order: 5
+---
+
+import PageHeader from '~/components/PageHeader';
+import { TokenTable } from '~/components/TokensTable/TokenTable';
+import { colors, borderWidths, space } from '@entur/tokens';
+
+<PageHeader>
+
+</PageHeader>
+
+Border-variablene våre definerer tykkelse og radius på kantene til elementer. Variablene gjør det enkelt å opprettholde konsistens i løsningen din og følge Entur brandet.
+
+
+```css
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+@use '@entur/tokens/dist/styles.scss';
+
+.card {
+    border: semantic.$stroke-accent $border-widths-default solid;
+}
+```
+
+##  Border-bredde
+
+<TokenTable
+  tokenKey="borderWidths"
+  example={({ value }) => (
+    <div
+      style={{
+        border: `${value}px solid ${colors.misc.black}`,
+        width: space.extraLarge,
+        height: space.extraLarge,
+      }}
+    />
+  )}
+/>
+
+## Border-radius
+
+<TokenTable
+  tokenKey="borderRadiuses"
+  example={({ value }) => (
+    <div
+      style={{
+        border: `${borderWidths.default}px solid ${colors.misc.black}`,
+        borderRadius: value,
+        width: space.extraLarge,
+        height: space.extraLarge,
+      }}
+    />
+  )}
+/>

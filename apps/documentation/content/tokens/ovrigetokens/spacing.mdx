@@ -1,0 +1,59 @@
+---
+name: Spacing
+description: Spacing brukes konsekvent på margin og padding for å oppnå konsistens på tvers av komponenter og UI.
+route: /tokens/ovrigetokens/spacing
+parent: Tokens
+menu: Øvrige tokens
+order: 2
+---
+
+import { colors, borderRadiuses } from '@entur/tokens';
+import { TokenTable } from '~/components/TokensTable/TokenTable';
+import PageHeader from '~/components/PageHeader';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  DataCell,
+  HeaderCell,
+} from '@entur/table';
+
+<PageHeader>
+
+</PageHeader>
+
+Vårt spacing system baserer seg på standardariserte klesstørrelser fra XS til XXXL.
+Spacing M er default. Størrelsesskalaen baserer seg på 8 gangen som gjør det enkelt å skalere for et bredt utvalg av størrelser. Vi skal forholde oss til denne skalaen når vi skal definere ulike avstandsituasjoner.
+
+Spacing brukes f.eks innenfor konteksten til en komponent (dvs. avstand mellom en label og et inputfelt).
+Det kan også brukes til å lage en god avstand mellom komponenter i en layout (dvs. avstand mellom et inputfelt og en nedtrekksmeny). Denne avstandsskalaen kontrollerer mengden av whitespace mellom komponenter og layout.
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.card {
+  padding: $space-large;
+}
+```
+
+<TokenTable
+  tokenKey="space"
+  example={({ value }) => (
+    <div
+      style={{
+        background: colors.brand.lavender,
+        borderRadius: borderRadiuses.default,
+        width: value,
+        height: value,
+      }}
+    />
+  )}
+/>
+
+
+
+
+
+
+

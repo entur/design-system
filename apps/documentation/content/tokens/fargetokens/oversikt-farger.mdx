@@ -1,0 +1,69 @@
+---
+name: Oversikt
+description: Oversikt over våre fargetokens
+route: /tokens/fargetokens/oversikt-farger
+parent: Tokens
+menu: Fargetokens
+order: 2
+---
+
+import PageHeader from '~/components/PageHeader';
+import { TokensTableColor } from '~/components/TokensTable/TokensTableColor';
+import { Heading5 } from '@entur/typography';
+
+<PageHeader>
+
+</PageHeader>
+
+
+## Primitive
+<TokensTableColor
+  tokenKey="primitive"
+  example={({ value, className }) => (
+    <div
+      className="token-table-content__example"
+      style={{
+        backgroundColor: value,
+      }}
+    />
+  )}
+/>
+
+## Semantic
+<TokensTableColor
+  tokenKey="semantic"
+  example={({ value, className }) => (
+    <div
+      className="token-table-content__example"
+      style={{
+        backgroundColor: value,
+      }}
+    />
+  )}
+/>
+
+## Datavisualisering
+<TokensTableColor
+  tokenKey="data"
+  example={({ value, className }) => (
+    <div
+      className="token-table-content__example"
+      style={{
+        backgroundColor: value,
+      }}
+    />
+  )}
+/>
+
+## Transport
+<TokensTableColor
+  tokenKey="transport"
+  example={({ value, className }) => (
+    <div
+      className="token-table-content__example"
+      style={{
+        backgroundColor: value,
+      }}
+    />
+  )}
+/>

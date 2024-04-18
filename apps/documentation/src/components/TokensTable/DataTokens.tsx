@@ -1,0 +1,89 @@
+import React from 'react';
+import { DataTokenProps, FlattenedTokens } from './types';
+import { ChartFilledIcon } from '@entur/icons';
+import { CopyableText } from '@entur/alert';
+import {
+  formatVariableNew,
+  formatVariableByType,
+  formatTokenValue,
+  sliceTokenKey,
+} from '~/utils/formatVariable';
+import { GridItem } from '@entur/grid';
+import { Heading3 } from '@entur/typography';
+import { useSettings } from '../SettingsContext';
+
+type Props = {
+  tokens: FlattenedTokens;
+};
+const DataToken: React.FC<DataTokenProps> = ({
+  formattedVariable,
+  value,
+  copyValue,
+}) => {
+  return (
+    <div className="token-table data-token">
+      <div className="token-table-content__grid-item">
+        <div className="token-table data-token__icon">
+          <ChartFilledIcon color={value} />
+        </div>
+        <div className="token-table data-token__codetext">
+          <CopyableText textToCopy={copyValue}>
+            {sliceTokenKey(formattedVariable, 2)}
+          </CopyableText>
+          {formatTokenValue(value)}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const DataTokenList: React.FC<Props> = ({ tokens }) => {
+  const { variableFormat } = useSettings();
+
+  const formatTokens = Object.entries(tokens)
+    .filter(([key]) => !key.includes('rem.'))
+    .map(([key, value]) => {
+      const formattedVariable = formatVariableNew(key);
+      return [formattedVariable, value] as [string, string];
+    });
+
+  const categorizedItems = formatTokens.reduce((categories, [key, value]) => {
+    const formattedVariable = formatVariableNew(key);
+    const parts = formattedVariable.split('-');
+    const mainCategory = parts[0];
+
+    if (!categories[mainCategory]) {
+      categories[mainCategory] = [];
+    }
+
+    const copyValue = formatVariableByType(variableFormat, formattedVariable);
+
+    categories[mainCategory].push(
+      <DataToken
+        key={formattedVariable}
+        formattedVariable={formattedVariable}
+        value={value}
+        copyValue={copyValue}
+      />,
+    );
+
+    return categories;
+  }, {} as Record<string, any>);
+
+  return (
+    <>
+      {Object.entries(categorizedItems).map(([categoryKey, tokens]) => (
+        <React.Fragment key={categoryKey}>
+          <GridItem small={12} medium={12} large={12} key={categoryKey}>
+            <div className="token-table-content">
+              <Heading3>{categoryKey}</Heading3>
+              <div className="token-table-content--multi-columns">{tokens}</div>
+            </div>
+          </GridItem>
+        </React.Fragment>
+      ))}
+    </>
+  );
+};
+
+export default DataTokenList;
