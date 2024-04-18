@@ -40,9 +40,9 @@ ${missingImports
 export function warnAboutMissingStyles(...namespaces: string[]): void {
   // We skip this check in production, and when we build static sites
   if (
-    process.env.TEST === 'true' ||
     !__DEV__ ||
-    typeof window === 'undefined'
+    typeof window === 'undefined' ||
+    (typeof process !== 'undefined' && process?.env?.TEST === 'true')
   ) {
     return;
   }
