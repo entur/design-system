@@ -71,12 +71,12 @@
   }
 
   .eds-table--sticky-header & {
-    background-color: var(--components-table-standard-fill);
+    background-color: var(--components-table-standard-header-fill);
     position: sticky;
     top: 0;
 
     .eds-contrast & {
-      background-color: var(--components-table-contrast-fill);
+      background-color: var(--components-table-contrast-header-fill);
     }
   }
 }
