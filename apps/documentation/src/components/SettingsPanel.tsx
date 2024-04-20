@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NightIcon, SettingsIcon, SunIcon, ViewIcon } from '@entur/icons';
 import { Paragraph } from '@entur/typography';
 import { PrimaryButton, FloatingButton } from '@entur/button';
@@ -15,6 +15,7 @@ import './SettingsPanel.scss';
 
 const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
+  const [showBetaSettings, setShowBetaSettings] = React.useState(false);
   const {
     variableFormat,
     setVariableFormat,
@@ -25,6 +26,21 @@ const SettingsPanel: React.FC = () => {
     colorMode,
     setColorMode,
   } = useSettings();
+
+  useEffect(() => {
+    document.addEventListener('keydown', e => {
+      if (e.key === '/') {
+        setShowBetaSettings(prev => !prev);
+      }
+    });
+    return () => {
+      document.removeEventListener('keydown', e => {
+        if (e.key === '/') {
+          setShowBetaSettings(prev => !prev);
+        }
+      });
+    };
+  }, []);
 
   return (
     <>
@@ -51,20 +67,22 @@ const SettingsPanel: React.FC = () => {
         className="settings-panel__modal"
       >
         <form onSubmit={() => setOpen(false)}>
-          <SegmentedControl
-            label="Fargemodus"
-            onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
-            selectedValue={colorMode ?? 'light'}
-            style={{ marginBottom: '1rem' }}
-          >
-            <SegmentedChoice value="light">
-              Lys <SunIcon inline />
-            </SegmentedChoice>
-            <SegmentedChoice value="dark">
-              Mørk <NightIcon inline />
-            </SegmentedChoice>
-            {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
-          </SegmentedControl>
+          {showBetaSettings && (
+            <SegmentedControl
+              label="Fargemodus"
+              onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
+              selectedValue={colorMode ?? 'light'}
+              style={{ marginBottom: '1rem' }}
+            >
+              <SegmentedChoice value="light">
+                Lys <SunIcon inline />
+              </SegmentedChoice>
+              <SegmentedChoice value="dark">
+                Mørk <NightIcon inline />
+              </SegmentedChoice>
+              {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
+            </SegmentedControl>
+          )}
           <Dropdown
             label="Hva slags bruker er du?"
             items={[
