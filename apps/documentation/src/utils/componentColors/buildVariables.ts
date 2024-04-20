@@ -34,7 +34,6 @@ try {
     path.join(__dirname, componentColorsOutputData[0].outputFileName),
     componentColorsOutputData[0].outputString,
   );
-  console.log(designEnturComponentColors);
 } catch (e) {
   console.log(e);
 }

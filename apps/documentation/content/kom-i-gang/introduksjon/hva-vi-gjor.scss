@@ -3,7 +3,7 @@
 
 .hva-vi-gjor {
   &__goal {
-    border: $border-widths-medium solid $colors-blues-blue80;
+    border: $border-widths-medium solid var(--designentur-basecard-default-border);
     padding: $space-extra-large $space-extra-large4;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
     &-image {
     }
     &-text {
-      background: $colors-blues-blue80;
+      background: var(--designentur-basecard-default-fill);
     }
   }
 }

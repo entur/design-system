@@ -1,3 +1,4 @@
+@use '~@entur/tokens/dist/semantic.scss' as *;
 @import '~@entur/tokens/dist/styles.scss';
 
 .border-wrapper {
@@ -10,6 +11,7 @@
 .image-display {
   width: 100%;
   position: relative;
+  background: $fill-background-standard-light;
 
   &__image {
     width: 100%;

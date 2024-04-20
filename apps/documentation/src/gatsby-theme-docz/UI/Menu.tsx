@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'docz';
 import { Location } from '@reach/router';
 import { TopNavigationItem } from '@entur/menu';
