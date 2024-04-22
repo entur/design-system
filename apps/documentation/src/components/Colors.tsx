@@ -66,7 +66,6 @@ export const ColorsProvider: React.FC = ({ children }) => {
         title={chosenColor.name}
         open={chosenColor.name !== ''}
         overlay
-        style={{ background: colors.brand.white }}
         onDismiss={() =>
           setChosenColor({
             name: '',

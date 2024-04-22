@@ -2,7 +2,7 @@
 
 .typography-display {
   padding: $space-extra-large3;
-  border: $colors-greys-grey70 $border-widths-default solid;
+  border: var(--designentur-typographycard-border) $border-widths-default solid;
   display: grid;
   grid-template-columns: 4fr 2fr;
   &-header {
@@ -22,9 +22,9 @@
     &__text {
       font-size: $font-sizes-small;
       padding-left: $space-large;
-      border-left: $colors-greys-grey70 $border-widths-default solid;
+      border-left: var(--designentur-typographycard-border) $border-widths-default solid;
       &-title {
-        color: $colors-blues-blue40;
+        color: var(--designentur-typographycard-text-subdued);
       }
     }
   }

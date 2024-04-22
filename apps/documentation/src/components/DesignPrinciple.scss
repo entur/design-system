@@ -3,15 +3,15 @@
 .design-principle {
   &__container {
     border-radius: 15px;
-    background: $colors-blues-blue80;
+    background: var(--designentur-basecard-default-fill-tint);
     padding: $space-large;
   }
   &__number {
     font-size: $font-sizes-extra-large2;
-    color: $colors-blues-blue40;
+    color: var(--basecolors-text-subdued);
   }
   &__icon {
-    background: $colors-brand-white;
+    background: var(--basecolors-frame-default);
     border-radius: 50%;
     font-size: $font-sizes-extra-large4;
     height: 4.5rem;

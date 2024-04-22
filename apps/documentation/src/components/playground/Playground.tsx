@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
 import classNames from 'classnames';
@@ -9,6 +9,7 @@ import { Contrast } from '@entur/layout';
 import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand';
 import { ConditionalWrapper } from '@entur/utils';
+import { componentColors } from '@entur/tokens';
 import {
   AdjustmentsIcon,
   BellIcon,
@@ -55,7 +56,6 @@ export const Playground: React.FC<PlaygroundProps> = ({
   const [isContrast, setContrast] = useState(defaultContrast);
   const [darkMode, setDarkMode] = useState(defaultDarkMode);
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
-  const playgroundRef = useRef<HTMLDivElement>(null);
 
   const {
     codeWithUpdatedProps,
@@ -67,10 +67,6 @@ export const Playground: React.FC<PlaygroundProps> = ({
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    const playground = playgroundRef.current;
-    if (playground) {
-      playground.setAttribute('data-color-mode', darkMode ? 'light' : 'dark');
-    }
   };
 
   const toggleContrast = () => {
@@ -132,7 +128,14 @@ export const Playground: React.FC<PlaygroundProps> = ({
           className={classNames('playground__live-preview-container', {
             'playground__live-preview-container--code-closed': !isShowingEditor,
           })}
-          ref={playgroundRef}
+          style={{
+            background: !isContrast
+              ? darkMode
+                ? componentColors.dark.designentur.playground.background
+                : componentColors.light.designentur.playground.background
+              : 'revert-layer',
+          }}
+          data-color-mode={darkMode ? 'dark' : 'light'}
         >
           <LivePreview
             className="playground__live-preview"

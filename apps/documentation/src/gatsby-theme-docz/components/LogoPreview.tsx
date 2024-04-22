@@ -6,7 +6,7 @@ import Logo from './Logo.svg';
 import LogoContrast from './LogoContrast.svg';
 import { SecondaryButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
-import { colors } from '@entur/tokens/dist';
+import { semantic } from '@entur/tokens/dist';
 import { StrongText, Paragraph } from '@entur/typography';
 
 const LogoPreview = () => {
@@ -53,8 +53,12 @@ const LogoPreview = () => {
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          background: isContrast ? '' : colors.greys.grey80,
+          backgroundColor: !isContrast
+            ? semantic.fill.background.tint.neutral
+            : '',
         }}
+        className={isContrast ? 'eds-contrast' : ''}
+        data-color-mode={!isContrast ? 'light' : undefined}
       >
         <img
           src={isContrast ? LogoContrast : Logo}

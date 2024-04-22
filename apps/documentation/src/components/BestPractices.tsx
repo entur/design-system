@@ -38,6 +38,7 @@ export const Example: React.FC<BestPracticesExampleProps> = ({
     <article className={classNames('best-practices__example', className)}>
       <Element
         className={`best-practices__heading best-practices__heading--${type}`}
+        data-color-mode="light"
       >
         <Icon inline={true} aria-hidden="true" />{' '}
         <span>{type === 'do' ? 'Innafor' : 'Uttafor'}</span>

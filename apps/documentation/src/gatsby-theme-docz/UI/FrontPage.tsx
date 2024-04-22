@@ -94,7 +94,6 @@ export const FrontPage = () => {
                     titleIcon={card.icon}
                     as={Link}
                     to={card.to}
-                    style={{ background: 'white' }}
                   >
                     {card.description}
                   </NavigationCard>
@@ -111,8 +110,7 @@ export const FrontPage = () => {
                     as={Link}
                     to={card.to}
                     compact
-                    style={{ background: 'white' }}
-                  ></NavigationCard>
+                  />
                 </GridItem>
               ))}
             </GridContainer>

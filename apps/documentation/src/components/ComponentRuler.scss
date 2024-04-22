@@ -2,6 +2,7 @@
 
 :root {
   --ruler-line-width: 0.125rem;
+  --ruler-line-color: var(--basecolors-stroke-subdued);
   --ruler-end-thickness: 0.125rem;
   --ruler-end-length: 0.25rem;
 }
@@ -23,7 +24,7 @@
   flex-direction: row;
   align-items: flex-start;
   font-size: $font-sizes-small;
-  color: $colors-blues-blue40;
+  color: var(--basecolors-text-subdued);
   margin-right: $space-medium;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .vertical-ruler-line {
-  background-color: $colors-greys-grey60;
+  background-color: var(--ruler-line-color);
   margin-top: 0.125rem;
   width: var(--ruler-line-width);
   display: flex;
@@ -46,7 +47,7 @@
   &::after {
     content: '';
     display: block;
-    background-color: $colors-greys-grey60;
+    background-color: var(--ruler-line-color);
     height: var(--ruler-end-length);
     width: var(--ruler-end-thickness);
     transform: rotate(90deg);
@@ -61,7 +62,7 @@
 }
 
 .horizontal-ruler-line {
-  background-color: $colors-greys-grey60;
+  background-color: var(--ruler-line-color);
   height: var(--ruler-line-width);
   display: flex;
   flex-direction: column;
@@ -70,7 +71,7 @@
   &::after {
     content: '';
     display: block;
-    background-color: $colors-greys-grey60;
+    background-color: var(--ruler-line-color);
     width: var(--ruler-end-length);
     height: var(--ruler-end-thickness);
     transform: rotate(90deg);

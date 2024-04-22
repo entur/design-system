@@ -6,6 +6,7 @@
   "scripts": {
     "start": "docz dev",
     "build": "docz build",
+    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts",
     "lint": "dts lint src content",
     "deploy-docs": "firebase deploy",
     "deploy-docs:preview": "firebase hosting:channel:deploy",
@@ -65,6 +66,7 @@
     "@types/react-dom": "16.9.5",
     "@types/react-syntax-highlighter": "^15.5.5",
     "firebase-tools": "^10.0.0",
+    "fs-extra": "^9.0.0",
     "tslib": "^2.3.1",
     "typescript": "^4.9.4"
   }

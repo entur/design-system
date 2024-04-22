@@ -1,3 +1,4 @@
+@import '~@entur/tokens/dist/base.scss';
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
@@ -28,6 +29,7 @@
 .front-page__top {
   margin-top: 8rem;
   @include for-desktop {
+    padding-top: 7rem;
     margin-top: 0;
     padding-bottom: 3rem;
   }
@@ -48,7 +50,7 @@
 }
 
 .front-page__blue-cards {
-  background: $colors-blues-blue80;
+  background: var(--basecolors-frame-tint);
   padding-bottom: 3rem;
   @include for-desktop {
     padding-bottom: 7.5rem;
@@ -59,7 +61,6 @@
   padding-top: 2rem;
   margin-bottom: 2rem;
   text-align: left;
-  background: $colors-blues-blue80;
   @include for-desktop {
     text-align: center;
     padding-top: 6.5rem;

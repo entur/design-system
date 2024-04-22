@@ -2,12 +2,12 @@
 
 .brukerhistorier {
   &-custom-code {
-    background-color: $colors-blues-blue80;
+    background-color: var(--designentur-basecard-default-fill);
     padding: $space-large $space-extra-large;
     margin-bottom: $space-extra-large;
   }
   &-summary {
-    background: $colors-greys-grey80;
+    background: var(--designentur-basecard-default-fill);
     padding: $space-large $space-extra-large;
   }
 }

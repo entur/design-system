@@ -1,3 +1,4 @@
+@import '~@entur/tokens/dist/base.scss';
 @import '../variables';
 
 @import '~@entur/tokens/dist/styles.scss';
@@ -7,13 +8,18 @@
   display: flex;
   align-items: center;
   overflow-x: scroll;
-  background-color: $colors-brand-white;
-  border-bottom: $border-widths-small solid $colors-greys-grey70;
+  background: var(--designentur-header-default-fill);
+  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
   width: 100%;
   padding: 1rem 1rem 0rem;
   transition: margin-left $timings-fast ease-out;
   height: $navbar-height;
   z-index: $z-indexes-popover;
+
+  .eds-contrast & {
+    background: var(--designentur-header-contrast-fill);
+    border-color: var(--designentur-header-contrast-divider);
+  }
 
   @include for-desktop {
     position: fixed;

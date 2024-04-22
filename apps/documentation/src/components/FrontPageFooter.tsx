@@ -13,13 +13,16 @@ import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
 import { Media } from '~/utils/MediaBreakpoint';
+import logo from '~/components/logo.svg';
+import logoDark from '~/components/logoDark.svg';
 
-import logo from './EnturLogo.svg';
+import { useSettings } from './SettingsContext';
 
 import './FrontPageFooter.scss';
 
 const FrontPageFooter = () => {
   const year = new Date();
+  const { colorMode } = useSettings();
   return (
     <div className="front-page-footer">
       <GridContainer
@@ -78,7 +81,11 @@ const FrontPageFooter = () => {
       </GridContainer>
       <div className="front-page-footer__entur-banner">
         <div>
-          <img src={logo} width="104px" alt="Entur sin logo" />
+          <img
+            src={colorMode === 'dark' ? logoDark : logo}
+            width="104px"
+            alt="Entur sin logo"
+          />
         </div>
         <div style={{ float: 'right', position: 'relative', top: '0.9rem' }}>
           <Label

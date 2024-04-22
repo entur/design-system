@@ -11,7 +11,7 @@ type ColorMode = {
   color: Color[];
   number: Array<Record<string, string>>;
 };
-type variableSet = {
+export type VariableSet = {
   css: KeyValueSet;
   scss: KeyValueSet;
   less: KeyValueSet;
@@ -24,7 +24,7 @@ type KeyValueSet = {
   value: string;
   sanitizedValue?: string;
 };
-type ColorFileData = {
+export type ColorFileData = {
   outputString: string;
   outputFileName: string;
   packageName?: string;
@@ -35,9 +35,9 @@ const SUPPORTED_COLOR_MODES = ['light', 'dark'];
 export function createColorSet(fileData: string) {
   const colorsUnformated = JSON.parse(fileData);
 
-  const colorsFormatedAndMappedToModes: variableSet[] = colorsUnformated.reduce(
-    (allComponentColors: variableSet[], colorMode: ColorMode) => {
-      const colorsFormatedForMode: variableSet[] = colorMode.color.map(
+  const colorsFormatedAndMappedToModes: VariableSet[] = colorsUnformated.reduce(
+    (allComponentColors: VariableSet[], colorMode: ColorMode) => {
+      const colorsFormatedForMode: VariableSet[] = colorMode.color.map(
         (color: Color) => {
           const colorNameInKebabCase = toKebabCase(color.name);
           const varNameInKebabCase = toKebabCase(color.var);
@@ -53,7 +53,9 @@ export function createColorSet(fileData: string) {
             scss: {
               key: `$${colorNameInKebabCase}`,
               value: usesAlias ? `$${varNameInKebabCase}` : hexValue,
-              sanitizedValue: `#{$${varNameInKebabCase}}`,
+              sanitizedValue: usesAlias
+                ? `#{$${varNameInKebabCase}}`
+                : hexValue,
             },
             less: {
               key: `@${colorNameInKebabCase}`,
@@ -90,14 +92,14 @@ function createColorsOutputString({
   withColorMode,
   importFileNames,
 }: {
-  colorSet: variableSet[];
+  colorSet: VariableSet[];
   keyType: 'css' | 'scss' | 'less';
   valueType: 'css' | 'scss' | 'less';
   withColorMode?: boolean;
   importFileNames?: string[];
 }) {
   const needsRoot = keyType === 'css';
-  const needsImport = colorSet.every(color => color.usesAlias);
+  const needsImport = colorSet.some(color => color.usesAlias);
 
   if (withColorMode) {
     if (needsImport && importFileNames) {
@@ -127,7 +129,7 @@ function createColorsOutputString({
     return stringWithoutColorMode(colorSet, needsRoot);
   }
 
-  function stringWithColorMode(colorSet: variableSet[]) {
+  function stringWithColorMode(colorSet: VariableSet[]) {
     const outputString = `
 ${WARNING_TEXT}
 [data-color-mode='light'],
@@ -162,7 +164,7 @@ ${WARNING_TEXT}
 
     return outputString;
   }
-  function stringWithoutColorMode(colorSet: variableSet[], needsRoot: boolean) {
+  function stringWithoutColorMode(colorSet: VariableSet[], needsRoot: boolean) {
     const outputString = `
 ${WARNING_TEXT}
 ${needsRoot ? ':root {' : ''}
@@ -206,13 +208,16 @@ export function createColorsFileData({
   valueType,
   name,
   outputToPackages,
+  withColorMode = false,
+  importFileNames,
 }: {
-  colorSet: variableSet[];
+  colorSet: VariableSet[];
   keyType: 'css' | 'scss' | 'less';
   valueType: 'css' | 'scss' | 'less';
   name: string;
   outputToPackages?: string[];
-  relativeOutputPath?: string;
+  withColorMode?: boolean;
+  importFileNames?: string[];
 }) {
   let outputString = '';
 
@@ -287,7 +292,8 @@ export function createColorsFileData({
         colorSet,
         keyType,
         valueType,
-        withColorMode: false,
+        withColorMode,
+        importFileNames,
       });
   }
 
@@ -300,7 +306,7 @@ export function createJSColorFileData({
   variables,
   name,
 }: {
-  variables: variableSet[];
+  variables: VariableSet[];
   name: string;
 }) {
   const jsVariables = variables.map(color => ({

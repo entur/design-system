@@ -15,7 +15,7 @@
     }
   }
   &__live-preview {
-    padding: 0.5rem;
+    padding: 1rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -27,7 +27,7 @@
     overflow-anchor: none;
 
     // this section adds a shadow indication when the content is scrollable
-    --background-color: var(--basecolors-frame-default);
+    --background-color: var(--designentur-playground-background);
     --shadow-color: rgba(0, 0, 0, 0.25);
     background-position: left center, right center, left center, right center;
     background-repeat: no-repeat;
@@ -44,9 +44,9 @@
     }
 
     &-container {
-      border: $border-widths-small solid $colors-greys-grey70;
+      border: $border-widths-small solid var(--designentur-playground-border);
+      background: var(--designentur-playground-background);
       border-radius: $border-radiuses-medium;
-      padding: 1rem;
       box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
 
       flex: 1;
@@ -55,22 +55,17 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         margin-bottom: 0rem;
+        background: var(--designentur-playground-background);
       }
 
       &.eds-contrast {
-        border: $border-widths-small solid $colors-brand-blue;
-        border-bottom-color: $colors-blues-blue30;
-      }
-
-      &.eds-contrast {
-        border: $border-widths-small solid $colors-brand-blue;
-        border-bottom-color: $colors-blues-blue30;
+        border: $border-widths-small solid var(--basecolors-stroke-accent);
       }
     }
   }
   &__props-selector {
-    background-color: $colors-greys-grey70;
-    border: $border-widths-small solid $colors-greys-grey70;
+    background-color: var(--designentur-playground-panel);
+    border: $border-widths-small solid var(--designentur-playground-border);
     border-radius: 0 $border-radiuses-medium $border-radiuses-medium 0;
     padding: 1rem;
     box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);

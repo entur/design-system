@@ -1,22 +1,18 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .ds-npm-tag {
-  border: 1px solid $colors-blues-blue70;
-  border-radius: $border-radiuses-small;
-  display: flex;
-  height: fit-content;
-  width: fit-content;
-
-  // height: 24px;
-  &__npm {
-    background: $colors-blues-blue70;
+  text-decoration: none;
+  .eds-h5 {
+    border-right: solid t.$border-widths-small var(--designentur-npmtag-divide);
+    padding-right: t.$space-extra-small;
   }
-  &__npm,
-  &__version {
-    display: flex;
-    height: fit-content;
-    width: fit-content;
-    padding: 2px 8px;
-    // height: 20px;
+  .eds-sub-label {
+    padding-left: t.$space-extra-small;
+  }
+  .eds-h5,
+  .eds-sub-label {
+    line-height: t.$line-heights-small;
+    margin: t.$space-none;
+    color: var(--designentur-npmtag-text);
   }
 }

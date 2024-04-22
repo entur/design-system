@@ -29,8 +29,8 @@ const ColorsDataVisualisation: React.FC = () => {
       </Switch>
       <Wrapper
         style={{
-          boxShadow: isContrast ? `0 0 0 1rem ${colors.brand.blue}` : 'none',
-          borderRadius: borderRadiuses.small,
+          padding: '1rem',
+          borderRadius: borderRadiuses.large,
         }}
       >
         <GridContainer spacing="large">
@@ -103,6 +103,7 @@ export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
         style={{
           borderRadius: borderRadiuses.small,
           padding: space.extraLarge3,
+          backgroundColor: isContrast ? '' : colors.greys.grey90,
         }}
       >
         {illustration === '1' && (

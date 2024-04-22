@@ -13,6 +13,8 @@ import { Paragraph, StrongText } from '@entur/typography';
 import { colors } from '@entur/tokens';
 import EmailBilde from './Email_signatur.png';
 
+import './index.scss';
+
 <PageHeader></PageHeader>
 
 For å endre din signatur i Outlook, gå til: **Fil > Alternativer > E-post > Signaturer > Ny > Gi navn > Lagre.**
@@ -26,10 +28,10 @@ For å endre din signatur i Outlook, gå til: **Fil > Alternativer > E-post > Si
 />
 
 <div
+  className="epost-card"
   style={{
     padding: '1.5rem',
     marginTop: '3rem',
-    background: colors.greys.grey90,
   }}
 >
   <StrongText>Oppsett</StrongText>

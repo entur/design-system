@@ -1,3 +1,4 @@
+@use '~@entur/tokens/dist/semantic.scss' as *;
 @import '~@entur/tokens/dist/styles.scss';
 
 .brukergrupper {
@@ -6,13 +7,13 @@
       margin-bottom: $space-extra-large;
     }
     min-height: 10rem;
-    background: $colors-greys-grey80;
+    background: var(--designentur-basecard-default-fill);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     .eds-icon {
-      color: $colors-brand-blue;
+      // color: $colors-brand-blue;
       font-size: $font-sizes-extra-large5;
       margin-top: $space-large;
     }
@@ -21,5 +22,9 @@
       margin-top: $space-large;
       max-width: 10rem;
     }
+  }
+  &__situasjonsbehov {
+    background-color: $fill-background-tint-neutral;
+    padding: 1rem;
   }
 }

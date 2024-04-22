@@ -1,5 +1,6 @@
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
+@import '~@entur/tokens/dist/semantic.scss';
 
 .brukertesting {
   display: grid;
@@ -44,5 +45,9 @@
     &--lilac {
       border-color: $colors-data-default-lilac;
     }
+  }
+  &__verktoy {
+    background-color: $fill-background-tint-neutral;
+    padding: 1rem;
   }
 }

@@ -5,7 +5,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import { DownloadIcon } from '@entur/icons';
 import { SecondaryButton } from '@entur/button';
-import { colors } from '@entur/tokens';
 const EnLogoDownload = () => {
   const query = useStaticQuery(graphql`
     query Logo {
@@ -26,14 +25,12 @@ const EnLogoDownload = () => {
       <div
         style={{
           width: '100%',
-          padding: '4rem',
-          minHeight: '27rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
-          background: colors.greys.grey80,
         }}
+        data-color-mode="light"
       >
         <img
           src={EnIcon}

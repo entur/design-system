@@ -1,4 +1,5 @@
 @import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/menu/dist/styles.css';
 @import '../gatsby-theme-docz/variables';
 
 .table-of-content-container {
@@ -21,7 +22,7 @@
   padding: 0;
   max-width: 15rem;
   padding-left: 1rem;
-  border-left: $border-widths-medium solid $colors-greys-grey70;
+  border-left: $border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
 }
 
 .table-of-content__item {
@@ -36,7 +37,7 @@
 }
 
 .table-of-content__link {
-  color: var(--primary-label-color);
+  color: var(--components-menu-tableofcontent-standard-text-unselected);
   font-size: $font-sizes-medium;
   line-height: $line-heights-small;
   text-decoration: none;
@@ -57,10 +58,10 @@
   }
 
   &--active {
-    color: var(--primary-text-color);
+    color: var(--components-menu-tableofcontent-standard-text-selected);
     font-weight: $font-weights-heading;
     &:before {
-      background: $colors-brand-coral;
+      background: var(--components-menu-tableofcontent-standard-stroke-selected);
     }
   }
 }

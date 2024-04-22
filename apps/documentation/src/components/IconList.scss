@@ -13,9 +13,9 @@
   }
 
   &__item {
-    border: $border-widths-small solid $colors-greys-grey70;
+    border: $border-widths-small solid var(--designentur-basecard-default-fill);
     border-radius: $border-radiuses-medium;
-    background-color: $colors-greys-grey70;
+    background-color: var(--designentur-basecard-default-fill);
     display: flex;
     flex-direction: column;
     align-items: center;
