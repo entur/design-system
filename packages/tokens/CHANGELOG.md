@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.14.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.5...@entur/tokens@3.14.0) (2024-04-22)
+
+### Features
+
+- add component colors desing.entur.no ([ec81512](https://bitbucket.org/enturas/design-system/commits/ec8151239012d4fe61d2439d2908389b2b2178c8))
+- add component colors to most remaining components ([afe858c](https://bitbucket.org/enturas/design-system/commits/afe858c076b6f6e65e04d34d6a829d2e18965415))
+
 ## [3.13.5](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.4...@entur/tokens@3.13.5) (2024-04-18)
 
 ### Bug Fixes

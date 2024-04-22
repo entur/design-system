@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.3.3...@entur/documentation@3.4.0) (2024-04-22)
+
+### Features
+
+- add component colors desing.entur.no ([ec81512](https://bitbucket.org/enturas/design-system/commits/ec8151239012d4fe61d2439d2908389b2b2178c8))
+- add component colors to most remaining components ([afe858c](https://bitbucket.org/enturas/design-system/commits/afe858c076b6f6e65e04d34d6a829d2e18965415))
+- add improved dark mode toggle ([3370a72](https://bitbucket.org/enturas/design-system/commits/3370a7273c2ffd6e3f1bd0700ae32083c188c374))
+- **docs:** start add dark mode ([331b6ff](https://bitbucket.org/enturas/design-system/commits/331b6ff8284d9c2a5ccca7b2cc7f865564f3f6f3))
+- **docs:** update npmTag design and add component colors ([67f087d](https://bitbucket.org/enturas/design-system/commits/67f087d8631c82f4ca5b14e2c5f7e40ff7159315))
+
 ## [3.3.3](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.3.2...@entur/documentation@3.3.3) (2024-04-18)
 
 **Note:** Version bump only for package @entur/documentation

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.4](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.3...@entur/table@4.8.4) (2024-04-22)
+
+### Bug Fixes
+
+- **table:** added backgroundcolor on sticky header ([c61e06f](https://bitbucket.org/enturas/design-system/commits/c61e06f8111b1879425602e7322948f4564b3c05))
+
 ## [4.8.3](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.2...@entur/table@4.8.3) (2024-04-18)
 
 **Note:** Version bump only for package @entur/table

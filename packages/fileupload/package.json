@@ -1,6 +1,6 @@
 {
   "name": "@entur/fileupload",
-  "version": "0.3.113",
+  "version": "0.3.114",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/fileupload.esm.js",
@@ -23,11 +23,11 @@
     "lint": "dts lint src"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.83",
-    "@entur/button": "^3.2.19",
-    "@entur/icons": "^6.15.7",
-    "@entur/tokens": "^3.13.5",
-    "@entur/typography": "^1.8.32",
+    "@entur/a11y": "^0.2.84",
+    "@entur/button": "^3.2.20",
+    "@entur/icons": "^6.15.8",
+    "@entur/tokens": "^3.14.0",
+    "@entur/typography": "^1.8.33",
     "@entur/utils": "^0.11.1",
     "classnames": "^2.3.1",
     "react-dropzone": "^11.3.4"
