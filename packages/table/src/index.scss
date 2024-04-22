@@ -60,22 +60,22 @@
       }
       &--hover {
         &:hover {
-          background: var(--components-table-standard-fill-hover);
+          background: var(--components-table-standard-cell-fill-hover);
           .eds-contrast & {
-            background: var(--components-table-contrast-fill-hover);
+            background: var(--components-table-contrast-cell-fill-hover);
           }
         }
       }
       &--active {
-        background: var(--components-table-standard-fill-hover);
+        background: var(--components-table-standard-cell-fill-hover);
         .eds-contrast & {
-          background: var(--components-table-contrast-fill-hover);
+          background: var(--components-table-contrast-cell-fill-hover);
         }
       }
       &--error {
-        background: var(--components-table-contrast-fill-negative);
+        background: var(--components-table-standard-fill-negative);
         .eds-contrast & {
-          background: var(--components-table-contrast-fill-negative);
+          background: var(--components-table-contrast-cell-fill-negative);
         }
       }
     }
@@ -89,6 +89,7 @@
     .eds-table--sticky-header & {
       position: sticky;
       top: 0;
+      z-index: 2;
     }
     .eds-table--sticky-header--active & {
       box-shadow: 0px 10px 8px -10px rgba(0, 0, 0, 0.15);
