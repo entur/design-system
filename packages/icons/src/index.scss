@@ -14,6 +14,14 @@ p .eds-icon {
   fill: currentColor;
 }
 
+.svg-exclamation {
+  fill: var(--basecolors-frame-default);
+
+  .eds-contrast & {
+    fill: var(--basecolors-frame-contrast);
+  }
+}
+
 .eds-icon {
   &__metro {
     color: var(--basecolors-shape-metro-default);
