@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.17](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.16...@entur/travel@6.1.17) (2024-04-24)
+
+### Bug Fixes
+
+- **icon:** added ValidationExclamationCircle icon and fixed icon color bugs ([9a161d8](https://bitbucket.org/enturas/design-system/commits/9a161d880a8b6bec7b2f6bc09331f608fb2daf49))
+
 ## [6.1.16](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.15...@entur/travel@6.1.16) (2024-04-22)
 
 **Note:** Version bump only for package @entur/travel

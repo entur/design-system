@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.15.8...@entur/icons@6.16.0) (2024-04-24)
+
+### Bug Fixes
+
+- **icon:** added ValidationExclamationCircle icon and fixed icon color bugs ([9a161d8](https://bitbucket.org/enturas/design-system/commits/9a161d880a8b6bec7b2f6bc09331f608fb2daf49))
+
+### Features
+
+- **icons:** add new getaround icon ([d58551b](https://bitbucket.org/enturas/design-system/commits/d58551bec1a1fd3fc4e2581eca9af5973c8e6cb6))
+
 ## [6.15.8](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.15.7...@entur/icons@6.15.8) (2024-04-22)
 
 **Note:** Version bump only for package @entur/icons

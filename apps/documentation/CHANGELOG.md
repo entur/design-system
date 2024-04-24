@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.4.0...@entur/documentation@3.4.1) (2024-04-24)
+
+### Bug Fixes
+
+- **icon:** added ValidationExclamationCircle icon and fixed icon color bugs ([9a161d8](https://bitbucket.org/enturas/design-system/commits/9a161d880a8b6bec7b2f6bc09331f608fb2daf49))
+
 # [3.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.3.3...@entur/documentation@3.4.0) (2024-04-22)
 
 ### Features
