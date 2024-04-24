@@ -52,6 +52,19 @@ const ICON_SIZES = [
   { label: '4XLarge', value: fontSizes.extraLarge4.toString() },
 ];
 
+const deprecatedIcons = [
+  'ReportsIcon',
+  'SubwayIcon',
+  'ScooterIcon',
+  'WalkingIcon',
+  'OutlinedValidationCheckIcon',
+  'OutlinedValidationErrorIcon',
+  'OutlinedValidationExclamationIcon',
+  'OutlinedValidationInfoIcon',
+  'ValidationCheckIcon',
+  'ValidationCheckFilledIcon',
+];
+
 const unique = (value: string, index: number, listWithItems: string[]) => {
   return listWithItems.indexOf(value) === index;
 };
@@ -67,30 +80,33 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const [selectedCategory, setSelectedCategory] =
     React.useState<NormalizedDropdownItemType | null>(null);
 
-  const allIcons = React.useMemo(
-    () =>
-      iconsQuery.map(icon => {
-        const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
-        const iconComponent = Object.entries(allIconComponents).find(
-          iconComponent => iconComponent?.[0] === iconName,
-        )?.[1];
-        const downloadUrl = icon.node.publicURL;
+  const allIcons = React.useMemo(() => {
+    const filteredIcons = iconsQuery.filter(icon => {
+      const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+      const isDeprecated = deprecatedIcons.includes(iconName);
+      return !isDeprecated;
+    });
 
-        const category =
-          icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
-          'None';
-        const rootCategory = category.split('/')[1];
+    return filteredIcons.map(icon => {
+      const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+      const iconComponent = Object.entries(allIconComponents).find(
+        iconComponent => iconComponent?.[0] === iconName,
+      )?.[1];
+      const downloadUrl = icon.node.publicURL;
 
-        return {
-          category: category,
-          rootCategory: rootCategory,
-          name: iconName,
-          component: iconComponent,
-          downloadUrl: downloadUrl,
-        } as IconListItem;
-      }),
-    [iconsQuery, allIconComponents],
-  );
+      const category =
+        icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ?? 'None';
+      const rootCategory = category.split('/')[1];
+
+      return {
+        category: category,
+        rootCategory: rootCategory,
+        name: iconName,
+        component: iconComponent,
+        downloadUrl: downloadUrl,
+      } as IconListItem;
+    });
+  }, [iconsQuery, allIconComponents]);
 
   const SEARCH_OPTIONS = React.useMemo(
     () => ({
