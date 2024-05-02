@@ -28,6 +28,8 @@
   --components-loader-loader-standard-border: #{$stroke-neutralalt};
   --components-loader-loader-standard-progressbar: #{$stroke-highlight};
   --components-loader-loader-standard-text: #{$text-accent};
+  --components-loader-spinner-contrast-fill: #{$shape-light};
+  --components-loader-spinner-standard-fill: #{$shape-accent};
   --components-loader-skeleton-contrast-fill: #{$fill-background-contrast-lightalt-2};
   --components-loader-skeleton-contrast-highlight: #{$fill-background-contrast-light};
   --components-loader-skeleton-standard-fill: #{$fill-selected-hover-light};
@@ -59,6 +61,8 @@
   --components-loader-loader-standard-border: #{$stroke-darkalt};
   --components-loader-loader-standard-progressbar: #{$stroke-highlightalt};
   --components-loader-loader-standard-text: #{$text-lightalt};
+  --components-loader-spinner-contrast-fill: #{$shape-lightalt};
+  --components-loader-spinner-standard-fill: #{$shape-lightalt};
   --components-loader-skeleton-contrast-fill: #{$fill-background-subdued-dark};
   --components-loader-skeleton-contrast-highlight: #{$fill-background-tint-dark};
   --components-loader-skeleton-standard-fill: #{$fill-background-subdued-dark};

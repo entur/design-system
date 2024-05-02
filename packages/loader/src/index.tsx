@@ -10,3 +10,4 @@ export * from './SkeletonRectangle';
 export * from './SkeletonCircle';
 export * from './SkeletonWrapper';
 export * from './LoadingDots';
+export * from './Spinner';

@@ -2706,6 +2706,18 @@
         "rootAlias": "Lavender/90"
       },
       {
+        "name": "Components/loader/Spinner/Contrast/Fill",
+        "color": "#ffffff",
+        "var": "Shape/Light",
+        "rootAlias": "White/Alpha-100"
+      },
+      {
+        "name": "Components/loader/Spinner/Standard/Fill",
+        "color": "#181c56",
+        "var": "Shape/Accent",
+        "rootAlias": "Lavender/90"
+      },
+      {
         "name": "Components/loader/skeleton/Contrast/Fill",
         "color": "#292b6a",
         "var": "Fill/Background/Contrast/LightAlt-2",
@@ -8502,6 +8514,18 @@
         "name": "Components/loader/Loader/Standard/Text",
         "color": "#e5e5e9",
         "var": "Text/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/loader/Spinner/Contrast/Fill",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
+        "rootAlias": "Ebony/10"
+      },
+      {
+        "name": "Components/loader/Spinner/Standard/Fill",
+        "color": "#e5e5e9",
+        "var": "Shape/LightAlt",
         "rootAlias": "Ebony/10"
       },
       {
