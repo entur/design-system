@@ -1,0 +1,248 @@
+---
+name: Tone of voice
+description: 
+route: /identitet/toneofvoice
+parent: Identitet
+menu: Introduksjon
+order: 3
+removeToc: true
+---
+
+import PageHeader from '~/components/PageHeader';
+import { VisuallyHidden } from '@entur/a11y';
+import { GridContainer, GridItem } from '@entur/grid';
+import { ListItem, UnorderedList, Heading3, StrongText } from '@entur/typography';
+import { BannerAlertBox } from '@entur/alert';
+import arrows from './arrows.png'
+import { ExpandablePanel } from '@entur/expand';
+
+import './toneofvoice.scss'
+
+<PageHeader title="Hvem snakker vi til?"></PageHeader>
+
+<p style={{marginTop: '1rem'}}>Selv om vi skal skrive som én personlighet i alle kanaler, må vi vektlegge ulike personlighetstrekk i ulike sammenhenger basert på hvem vi snakker til. Entur kommuniserer med et bredt spekter av aktører som grovt sett deler dem inn i to hovedgrupper:</p>
+
+- B2B: Personer som representerer andre virksomheter når de er i kontakt med Entur
+- B2C: Reisende som benytter seg av Enturs tjenester
+
+De reisende som bruker Enturs tjenester har helt andre forventninger til kommunikasjonen enn en som jobber i et kollektivselskap. En reisende har betalt for en reise og forventer å bli behandlet som en kunde. En ansatt i et kollektivselskap forventer kanskje heller å bli behandlet som en samarbeidspartner.
+
+For å sjonglere mellom disse hovedkategoriene kan vi se for oss at kommunikasjonen kan justeres langs en «personlig/profesjonell»-akse, og at vi kan foreta oss en ulik vekting av personlighetstrekkene.
+
+## Personlig / Profesjonell akse
+
+Å fremstå personlig og profesjonell er ofte motsetninger, og vi kan derfor se på det som en akse.
+
+<div className="eds-contrast tone-of-voice__card">
+  <div style={{ textAlign: 'center'}}>Hvilke tone skal vi ha i språket?</div>
+  <div
+    style={{ padding: '7rem 2rem', display: 'flex', flexDirection: 'column' }}
+  >
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        fontWeight: '600',
+        marginBottom: '0.5rem',
+      }}
+    >
+      <div>Personlig</div> <div>Profesjonell</div>
+    </div>
+    <VisuallyHidden>Toveis pil fra personlig til profesjonell</VisuallyHidden>
+    <div className="red-arrow" />
+  </div>
+</div>
+
+ <GridContainer
+        spacing={'extraLarge'}
+        className="tone-of-voice__grid-container"
+      >
+        <GridItem small={12} medium={6}>
+          <Heading3 style={{ marginBottom: '12px' }}>
+            Personlig
+          </Heading3>
+          Det som kjennetegner den personlige siden av aksen er:
+          <UnorderedList>
+            <ListItem>
+              ...kan vi være mer lettbeint og lettfattelig skriving og tale.
+            </ListItem>
+            <ListItem>
+              ...kan vi være mer hverdagslig i ordbruken, der vi heller
+              fokuserer på at språket skal være enkelt enn teknisk nøyaktig.
+            </ListItem>
+            <ListItem>
+              ...kan vi trekke paralleller til hverdagslige situasjoner når vi
+              skal forklare hendelser.
+            </ListItem>
+            <ListItem>
+              ...kan et for teknisk eller komplisert språk bli oppfattet som
+              nedlatende. Dersom vi er mindre personlige i tonen enn det som
+              forventes, skapes det en distanse mellom oss og den vi snakker
+              med.
+            </ListItem>
+          </UnorderedList>
+        </GridItem>
+        <GridItem small={12} medium={6}>
+          <Heading3 style={{ marginBottom: '12px' }}>
+            Profesjonell
+          </Heading3>
+          På den profesjonelle enden av aksen:
+          <UnorderedList>
+            <ListItem>
+           ...kan vi tillate oss mer tekniske og fagspesifikke uttrykk.
+            </ListItem>
+            <ListItem>
+             ...blir det mindre viktig med entusiasme i språket, og mer viktig å uttrykke oss presist.
+            </ListItem>
+            <ListItem>
+              ...skriver og snakker vi mindre hverdagslig og mer nøyaktig.
+            </ListItem>
+            <ListItem>
+             ...får vi frem det vi ønsker å kommunisere, uten å anstrenge oss for å skape et personlig bånd med den vi snakker eller skriver til.
+            </ListItem>
+          </UnorderedList>
+        </GridItem>
+      </GridContainer>
+
+
+<BannerAlertBox variant="information" title="Tips" style={{ marginTop: '2.5rem' }}>
+  Det er nettopp de reisende (B2C) som i størst grad forventer å bli møtt med en personlig tone, men her finnes det også nyanser. Dersom en passasjer har fremmet en klage, vil de forvente en mer profesjonell tone enn dersom de har postet et mer spontant innlegg på Facebooksiden vår. En huskeregel er at desto mindre formell henvendelsen vi besvarer er, desto mer personlige kan vi tillate oss å være i tonen. 
+</BannerAlertBox>
+
+## Vekting av personligheten i Tone of Voice
+
+   <div className="eds-contrast tone-of-voice__card">
+        <div style={{ textAlign: 'center' }}>
+          Hvordan kan vi vekte personlighetstrekkene?
+        </div>
+        <div
+          style={{
+            padding: '3rem',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              fontWeight: '500',
+              marginBottom: '1.25rem',
+            }}
+          >
+            <div>Har drive</div>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              fontWeight: '500',
+              marginBottom: '1.25rem',
+              alignItems: 'space-around',
+            }}
+          >
+            <img
+              src={arrows}
+              className="tone-of-voice__arrows"
+              width="146px"
+              height="146px"
+              alt=""
+            />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              fontWeight: '500',
+              marginBottom: '1.25rem',
+              alignItems: 'space-around',
+              gap: '7rem'
+            }}
+          >
+            <div>Er troverdig</div> <div>Vil at du skal lykkes</div>
+          </div>
+        </div>
+      </div>
+
+Når vi skal velge hvordan vi vektlegger de ulike personlighetstrekkene, holder det ikke bare å skille mellom B2C og B2B. Vi må vurdere hvilken situasjon den vi snakker med er i og kanalen vi kommuniserer gjennom. Nedenfor er noen egenskaper ved de ulike personlighetstrekken som kan være til hjelp med å vurdere hvilke(t) som skal vektlegges.
+
+<p style={{marginBottom: '1rem', fontWeight: '600'}}>Entur har drive</p>
+
+- Det mest utadvente og energiske personlighetstrekket
+- Ofte et mer emosjonelt eller visjonært budskap som kan trigge større tanker hos leseren/lytteren
+- Kan motivere publikum til å lære mer om Entur, og dermed bli introdusert for Enturs øvrige personlighet senere
+- Effektivt der vi ønsker å skape entusiasme og iver, som f.eks. i reklametekster, innlegg i sosiale medier eller nyhetsbrev. Slike tekster kan dessuten være publikums første møte med Entur, og da er det ekstra viktig at vi skiller oss ut og smitter dem med energien vår.
+
+<p style={{marginBottom: '1rem',marginTop: '3.5rem', fontWeight: '600'}}>Entur vil at du skal lykkes</p>
+
+- Viser at vi er på kundens lag som en samarbeidspartner som hjelper til på reisen
+- Hevder ikke oss selv eller snakker ikke om oss selv først
+- Bekrefter kunden i positive tanker og handlinger
+- Passer ekstra godt når vi snakker med kunder på telefon, eller når publikum oppsøker oss på eget initiativ. Her ønsker vedkommende gjerne å oppnå et konkret mål, for eksempel å reise fra A til B, og da er det spesielt viktig å vekte det mest hjelpsomme og vennlige personlighetstrekket.
+
+<p style={{marginBottom: '1rem',marginTop: '3.5rem', fontWeight: '600'}}>Entur er troverdig</p>
+
+- Nyttig å vektlegge når det er viktig at vi oppfattes som kompetente og dyktige
+- Henviser til konkrete bevis, data og fakta, har tydelige og velbegrunnede påstander
+- Snakker med selvsikkerhet og autoritet, men er ikke autoritær
+- Spesielt viktig når vi behandler mer formelle henvendelser slik som klagebehandling, stillingsannonser eller fagspesifikk kommunikasjon. Om noen for eksempel er misfornøyd med en reiseopplevelse, er det viktig at vi kan formulere oss med en viss autoritet og at vi er forståelige, slik at det ikke oppfattes som at vi forsøker å unngå ansvar.
+
+
+## Tips til spesifikke sjangre
+
+
+<ExpandablePanel title="Pressemelding">
+<StrongText>Pressemelding</StrongText>
+<p>I pressemeldinger er vi underlagt sjangerens regler i større grad enn ved andre typer tekster. Dette innebærer:</p>
+<UnorderedList>
+<ListItem>Konklusjonen først! Hvis hovedpoenget f.eks. er «Enturs app når milepæl på antall nedlastinger» må dette komme frem helt i begynnelsen. Skriv dermed en overskrift og en ingress som reflekterer hovedpoenget i pressemeldingen.
+</ListItem>
+<ListItem>Inkludér relevante sitater. Bestem hvilken informasjon som skal komme frem i pressemeldingen, og innhent deretter sitater som erstatter noe av brødteksten. Sitér med tankestrek, ikke med gåseøyne.</ListItem>
+<ListItem>Det tyngste stoffet, f.eks. tørre fakta, legges til slutt i artikkelen. La leseren få interesse for stoffet før du presenterer mer krevende stoff.</ListItem>
+</UnorderedList>
+</ExpandablePanel>
+
+<ExpandablePanel title="Nyhetsbrev">
+<StrongText>Nyhetsbrev</StrongText>
+<p>De som abonnerer på nyhetsbrevet til Entur har ofte større kjennskap til Entur enn folk flest, og det stilles dermed andre krav til innhold:</p>
+<UnorderedList>
+<ListItem>Nyhetsbrevet må inneholde engasjerende historier. Fordi vi allerede har «brukt opp» nyheten om hva Entur er – vi må snakke om hva Entur gjør.
+</ListItem>
+<ListItem>I likhet med pressemeldinger kan vi benytte en journalistisk stil. </ListItem>
+<ListItem>På «personlig/profesjonell»-aksen ligger nyhetsbrev nærmere «personlig" enn en pressemelding. Skriv med entusiasme, bruk bilder og sitater. </ListItem>
+<ListItem>Bruk gjerne punktlister for å korte ned budskapet.</ListItem>
+</UnorderedList></ExpandablePanel>
+
+<ExpandablePanel title="Kundeservice">
+<StrongText>Kundeservice</StrongText>
+<p>Det kan være nyttig å ha Enturs personlighetstrekk i bakhodet når vi besvarer henvendelser til kundeservice. </p>
+<UnorderedList>
+<ListItem>«Entur vil at du skal lykkes» uttrykker en serviceinnstilling. Noen enkle, konkrete grep kan være nok til å vise kunden at vi er på deres lag: Avslutt samtalen med en oppfordring om å ta kontakt igjen om det er flere spørsmål. Unngå å bruke ord som «selvfølgelig» og «selvsagt» i forklaringer, så vi ikke hever oss over kunden. Utelat uviktige detaljer for at besvarelser ikke fremstår overveldende for kunden. Stikkord: kort, tydelig og vennlig.
+</ListItem>
+<ListItem>«Entur er troverdig» handler om å vise kompetanse og forståelse for. En god rutine kan være å starte med en kort oppsummering av hva kundens henvendelse handlet om. Da viser vi at vi tar kunden på alvor og har forstått hva de ønsker. </ListItem>
+<ListItem>«Entur har drive!» handler om å møte kunden med entusiasme. All kritikk som konstruktiv kritikk, uansett hvor misfornøyd kunden måtte høres ut, og en gylden mulighet for oss til å lære og bli bedre  </ListItem>
+</UnorderedList></ExpandablePanel>
+
+<ExpandablePanel title="Kundeservice via Facebook">
+<StrongText>Kundeservice via Facebook</StrongText>
+<p>På Facebook er publikum vant til en mer muntlig tone enn i de fleste andre medier. Her kan man dermed legge seg lengre mot «personlig»-enden langs «personlig/profesjonell»-aksen. Man kan gjerne signere svar med fornavnet til den som svarer, f.eks. «Hilsen Trine fra kundeservice».</p>
+<p>I Facebook-chat kan vi tillate oss en enda mer personlig tone:</p>
+<UnorderedList>
+<ListItem>Hold kunden løpende informert underveis imens vi behandler deres forespørsel. Vær åpen og gi dem et ærlig svar som «Det er et godt spørsmål, det må jeg sjekke opp» eller «Vent et øyeblikk, så skal jeg finne ut av det». 
+</ListItem>
+<ListItem>Del opp svaret i flere chatlinjer, så kommunikasjonen blir løpende. Da virker svartiden kortere og mer muntlig, og vi unngår å distansere oss fra kunden.</ListItem>
+</UnorderedList></ExpandablePanel>
+
+<ExpandablePanel title="Stillingsannonse">
+<StrongText>Stillingsannonse</StrongText>
+<p>Siden mange ennå ikke kjenner Entur, er det ekstra nyttig å få vist frem personligheten og engasjementet vårt til potensielle jobbsøkere. Ha gjerne «Entur har drive» i bakhodet og la leseren danne seg fremtidsbilder: «Bli med når vi endrer kollektiv-Norge!»  </p>
+<p>Selv om vi skal vise personlighet, må det ikke komme i veien for viktige elementer som må være med i en stillingsannonse: </p>
+<UnorderedList>
+<ListItem>Fortell punktvis hva slags person Entur er ute etter til stillingen, ved å fremheve Enturs personlighet; kanskje vi er ute etter folk som har noen fellestrekk med personligheten Entur har selv?
+</ListItem>
+<ListItem>Skriv en kort beskrivelse av Entur. Her kan vi vise «drive» ved å tegne en fremtidsvisjon, f.eks. hvor vil Entur være om 10 år? </ListItem>
+<ListItem>Skriv en kort introduksjon til selve jobben.</ListItem>
+<ListItem>List opp stillingens ansvarsområder.</ListItem>
+<ListItem>Formaliteter som lokasjon og betingelser må selvsagt på plass</ListItem>
+<ListItem>Avslutningsvis må vi informere om hva som er neste skritt for jobbsøkeren hvis vedkommende ønsker å sende søknad. </ListItem>
+</UnorderedList></ExpandablePanel>

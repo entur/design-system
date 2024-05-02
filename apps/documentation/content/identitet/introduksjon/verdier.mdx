@@ -1,0 +1,89 @@
+---
+name: Våre verdier
+description: 
+route: /identitet/verdier
+parent: Identitet
+menu: Introduksjon
+order: 2
+removeToc: true
+---
+
+import PageHeader from '~/components/PageHeader';
+import { NumberedList, ListItem , Paragraph } from '@entur/typography';
+import { EmphasizedText, Heading2 } from '@entur/typography';
+import entur1 from './ENTUR.. 1.png'
+import paalag from './paalag.png'
+import lettaaforstaa from './lettaaforstaa.png'
+import framiskoa from './framiskoa.png'
+
+import './verdier.scss'
+
+<PageHeader></PageHeader>
+
+<img
+  src={entur1}
+  className="verdier__entur1"
+  width="100%"
+  alt="entur har drive, vil at du skal lykkes, er troverdig"
+  style={{ padding: '2.5rem 0rem'}}
+/>
+
+**Med utgangspunkt i våre verdier er det skapt tre personlighetstrekk som gir Entur en menneskelig, distinkt og tydelig fremtoning**
+
+
+<NumberedList>
+  <ListItem title="Entur har drive!">
+    Entur er karismatisk og har en naturlig evne til å få med seg folk og skape JA-stemning. Entur fokuserer på mulighetene og stiller spørsmål som, «Hva om vi...?» eller «Kunne det ikke vært gøy å...?». Imens andre planlegger, tenker og forutser, er Entur allerede på vei og får ting til å skje. Det gjør at Entur er skodd for endring – beveger seg smidig, er lettbeint og god til å hive seg rundt og håndtere det som måtte oppstå underveis.
+    <p style={{marginTop: '1rem'}}><EmphasizedText>(Basert på verdien FramiSkoa)</EmphasizedText></p>
+  </ListItem>
+  <ListItem title="Entur vil at du skal lykkes">
+  Entur måler suksess i andres fremskritt og mestring. Entur er observant, fanger opp det som motiverer den enkelte og legger til rette så de får det til. Entur er støttende og gir det ekstra push’et som gjør at man kommer langt og enda lengre enn man selv trodde var mulig. Entur er kompromissløst engasjert på vegne av kundene og de reisende, og en man kan regne med.
+    <p style={{marginTop: '1rem'}}><EmphasizedText>(Basert på verdien PåLag)</EmphasizedText></p>
+  </ListItem>
+    <ListItem title="Entur er troverdig">
+    Entur er bereist og har mange opplevelser i kofferten. Entur er ledende på sitt felt og bærer den faglige fanen. Entur er nysgjerrig, med et stort behov for å forstå. Gjør det kompliserte enkelt og kommuniserer det uanstrengt. Entur er alltid oppdatert, interessert i hva som rører seg, og sulten etter kunnskap. Enturs betraktninger og påstander er veloverveid og tydelig begrunnet. Det gjør Entur til det Entur er idag; Erfaren, klok og på ballen.
+    <p style={{marginTop: '1rem'}}><EmphasizedText> (Basert på verdien LettåForstå)</EmphasizedText></p>
+  </ListItem>
+</NumberedList>
+
+
+## Å snakke med én stemme
+
+Det er en stor jobb å fortelle hele Norge hvem vi er og hva vi gjør. For at folk skal få et tydelig bilde på hvem vi er, må vi snakke med én stemme på tvers av et svært variert spekter av kanaler og til ulike målgrupper. Om alle ledd i organisasjonen følger de samme prinsippene for Tone of Voice, vil det bidra til at vi fremstår som en samlet, forståelig og profesjonell organisasjon overfor alle vi er i kontakt med. Tone of voice handler altså ikke om hva vi sier, men hvordan vi sier det.
+
+**Enturs Tone of Voice er forankret i Enturs verdier:**
+- På Lag: Samlende og brobyggende med samfunnets beste som hensikt.. Uten å minste konkurransekraften, være naiv eller "statlig" i fremgangsmåten. 
+- FramiSkoa: Har drive, energi og nysgjerrighet. Er lettbeint og vil prøve nye veier...Uten å være påtrengende eller lite gjennomtenkt.
+- Lett å Forstå: Tydelig, bevisførende og troverdig. Bruker et språk med bred appell og som "alle" forstår... Uten å bli overtydelig, belærende eller høylytt. 
+
+
+<div className="eds-contrast verdier__card">
+<Heading2 style={{marginTop: '0'}}>Enturs verdier</Heading2>
+  <Paragraph>Entur har 3 verdier som skal være lette å huske og enkle å ta i bruk. Verdiene skal samle oss og være våre verktøy for at vi skal yte og ha det så bra som mulig i Entur. Våre verdier er:</Paragraph>
+  <img
+  src={paalag}
+  className="verdier__card-image"
+  width="100%"
+  alt=""
+/>
+<h3>PÅ LAG</h3>
+  <Paragraph>Vi jobber som ett lag, og heier når kollegaer og partnere lykkes. Forskjeller er en styrke, og de beste løsningene finner vi sammen. Vi tolker hverandre i beste mening, og bryr oss om kollegaer, partnere, reisende og miljøet. Vi ivrer for å bruke samfunnets ressurser smart.</Paragraph>
+
+  <img
+  src={framiskoa}
+  className="verdier__card-image"
+  width="100%"
+  alt=""
+/>
+<h3>FRAM I SKOA</h3>
+  <Paragraph>Vi digger fart og flyt, lærer raskt og feirer ofte. Vi er nysgjerrige, og ser etter løsninger. Vi deler villig vekk, rekker opp hånda, tør å utfordre og tar ansvar for å ta oppgaver helt i mål.</Paragraph>
+
+  <img
+  src={lettaaforstaa}
+  className="verdier__card-image"
+  width="100%"
+  alt=""
+/>
+<h3>LETT Å FORSTÅ</h3>
+  <Paragraph>Vi snakker og koder så alle forstår. Vi forenkler, bruker fakta og er forutsigbare og åpne. Det vi leverer, skaper verdi. Vi er enkle å bruke, lette å like.</Paragraph>
+</div>

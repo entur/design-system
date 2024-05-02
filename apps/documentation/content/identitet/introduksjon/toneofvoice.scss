@@ -1,9 +1,29 @@
-@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
 
-.card {
-  background-color: var(--designentur-basecard-default-fill);
-  padding: $space-extra-large2;
-  width: 80%;
+.tone-of-voice {
+  &__card {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+
+    @include for-desktop {
+      padding: 2.5rem;
+    }
+  }
+  &__grid-container {
+    margin-top: 2rem;
+  }
+  &__arrows {
+    text-align: center;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+.page .site-content main > h2 {
+  margin-top: 4rem !important;
 }
 
 .red-arrow {

@@ -1,0 +1,18 @@
+@import '~@entur/utils/dist/breakpoints.scss';
+
+.verdier {
+  &__card {
+    margin-top: 4rem;
+    padding: 1rem 1.5rem;
+    width: 100%;
+
+    @include for-desktop {
+      padding: 3rem 4rem;
+    }
+  }
+}
+
+.eds-h3 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
