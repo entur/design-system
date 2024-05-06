@@ -10,7 +10,7 @@ export type CheckboxProps = {
   className?: string;
   /** Label for checkboxen, som vises ved høyre side. */
   children?: React.ReactNode;
-  /** Om Checkbox er avmerket, eller om den  */
+  /** Om Checkbox er avmerket, eller om den er i en indeterminate state */
   checked?: 'indeterminate' | boolean;
   /** Callback for Checkbox */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
