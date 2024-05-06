@@ -1,6 +1,6 @@
 {
   "name": "@entur/datepicker",
-  "version": "9.4.5",
+  "version": "9.4.6",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/datepicker.esm.js",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@entur/a11y": "^0.2.84",
     "@entur/button": "^3.2.21",
-    "@entur/form": "^7.1.5",
+    "@entur/form": "^7.1.6",
     "@entur/icons": "^6.16.0",
     "@entur/modal": "^1.7.42",
     "@entur/tokens": "^3.14.0",

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.6](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.5...@entur/dropdown@5.4.6) (2024-05-06)
+
+### Bug Fixes
+
+- **dropdown:** fix color on button-icon in contrastmode ([1870104](https://bitbucket.org/enturas/design-system/commits/18701043e6e7226bae7b6d77afda307d3583c3ec))
+
 ## [5.4.5](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.4...@entur/dropdown@5.4.5) (2024-04-24)
 
 **Note:** Version bump only for package @entur/dropdown

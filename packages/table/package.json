@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.8.5",
+  "version": "4.8.6",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -30,7 +30,7 @@
     "@entur/a11y": "^0.2.84",
     "@entur/button": "^3.2.21",
     "@entur/expand": "^3.5.10",
-    "@entur/form": "^7.1.5",
+    "@entur/form": "^7.1.6",
     "@entur/icons": "^6.16.0",
     "@entur/layout": "^2.3.5",
     "@entur/tokens": "^3.14.0",
