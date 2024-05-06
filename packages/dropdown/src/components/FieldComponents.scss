@@ -56,18 +56,20 @@
 
   // This is done to remove contrast specific styling
   .eds-icon-button {
-    color: var(--components-button-iconbutton-standard-text);
+    .eds-contrast & {
+      color: var(--components-button-iconbutton-standard-text);
 
-    &:hover {
-      background-color: var(--components-button-iconbutton-standard-hover);
-    }
-    &:focus {
-      outline: t.$outlines-focus;
-      outline-color: var(--basecolors-stroke-focus-standard);
-      outline-offset: t.$outline-offsets-focus;
-    }
-    &:active {
-      background-color: var(--components-button-iconbutton-standard-active);
+      &:hover {
+        background-color: var(--components-button-iconbutton-standard-hover);
+      }
+      &:focus {
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+      }
+      &:active {
+        background-color: var(--components-button-iconbutton-standard-active);
+      }
     }
   }
 
