@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.65...@entur/loader@0.5.0) (2024-05-07)
+
+### Features
+
+- **loader:** added new spinner, first version ([681cbce](https://bitbucket.org/enturas/design-system/commits/681cbce2ef55a1ddcee747cf99e55be66ec23b24))
+
 ## [0.4.65](https://bitbucket.org/enturas/design-system/compare/@entur/loader@0.4.64...@entur/loader@0.4.65) (2024-04-24)
 
 **Note:** Version bump only for package @entur/loader

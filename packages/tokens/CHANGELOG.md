@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.14.0...@entur/tokens@3.15.0) (2024-05-07)
+
+### Features
+
+- **loader:** added new spinner, first version ([681cbce](https://bitbucket.org/enturas/design-system/commits/681cbce2ef55a1ddcee747cf99e55be66ec23b24))
+
 # [3.14.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.13.5...@entur/tokens@3.14.0) (2024-04-22)
 
 ### Features
