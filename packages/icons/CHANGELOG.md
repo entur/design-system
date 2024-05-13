@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.16.2](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.16.1...@entur/icons@6.16.2) (2024-05-13)
+
+### Bug Fixes
+
+- **icons:** updated CheckFilledIcon ([2e25fb9](https://bitbucket.org/enturas/design-system/commits/2e25fb9dcc0b717cb7aa753ffde92857c1fe37fb))
+
 ## [6.16.1](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.16.0...@entur/icons@6.16.1) (2024-05-07)
 
 **Note:** Version bump only for package @entur/icons
