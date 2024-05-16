@@ -15,7 +15,6 @@ const Changelog = () => {
   const [packageChangelog, setPackageChangelog] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const query = useGetChangelog();
-
   return (
     <div>
       <GridContainer spacing="medium">
