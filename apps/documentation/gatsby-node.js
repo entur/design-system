@@ -41,6 +41,7 @@ const packages = [
   'tooltip',
   'travel',
   'typography',
+  'utils',
 ];
 
 exports.onPreBootstrap = () => {
