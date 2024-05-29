@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.10](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.9...@entur/dropdown@5.4.10) (2024-05-29)
+
+### Bug Fixes
+
+- **dropdown:** fixed a bug with clearInputOnSelect on multiselect ([4b79e6d](https://bitbucket.org/enturas/design-system/commits/4b79e6d610051ca6bf37acad0ed183207275b8d0))
+
 ## [5.4.9](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.8...@entur/dropdown@5.4.9) (2024-05-21)
 
 **Note:** Version bump only for package @entur/dropdown
