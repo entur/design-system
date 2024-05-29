@@ -25,7 +25,7 @@ import {
   useOnEscape,
   useWindowDimensions,
 } from '@entur/utils';
-import { space, zIndexes } from '@entur/tokens';
+import { space, zIndexes, timings } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
@@ -185,9 +185,6 @@ export const DatePicker = <DateType extends DateValue>({
   const { width } = useWindowDimensions();
 
   const handleOnChange = (value: MappedDateValue<DateType> | null) => {
-    // console.log(value && value.compare(parseDate('1000-01-01')) < 0);
-
-    // if (value && value.compare(parseDate('1000-01-01')) < 0) return;
     if (forcedReturnType !== undefined) {
       return onChange(
         convertValueToType({
@@ -230,7 +227,11 @@ export const DatePicker = <DateType extends DateValue>({
 
   // calculations for floating-UI popover position
   const { x, y, reference, floating, strategy } = useFloating({
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: (referenceEl, floatingEl, update) =>
+      autoUpdate(referenceEl, floatingEl, update, {
+        // This is added to avoid layout shift for next/prev. month calendar buttons when switching month
+        elementResize: false,
+      }),
     placement: 'bottom-start',
     middleware: [
       offset(space.extraSmall),
@@ -277,6 +278,7 @@ export const DatePicker = <DateType extends DateValue>({
         top: y ?? 0,
         left: x ?? 0,
         zIndex: zIndexes.popover,
+        transition: `all ${timings.medium} ease-in-out`,
       }}
       ref={node => {
         floating(node);
