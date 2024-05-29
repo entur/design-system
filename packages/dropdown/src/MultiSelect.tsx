@@ -339,9 +339,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
           return {
             ...changes,
-            inputValue: clearInputOnSelect
-              ? EMPTY_INPUT
-              : inputRef?.current?.value ?? EMPTY_INPUT,
+            inputValue: inputRef?.current?.value ?? EMPTY_INPUT,
           };
         }
         // remove leading whitespace, select item with spacebar if input is empty and filter list items
