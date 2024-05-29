@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.17.1-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.17.0...@entur/icons@6.17.1-beta.0) (2024-05-29)
+
+### Bug Fixes
+
+- **icons:** remove unnecessary peerDependency react-dom ([c9b500a](https://bitbucket.org/enturas/design-system/commits/c9b500a0b6af0d15e719dc0d7b9a8bafabff5aac))
+
 # [6.17.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.16.2...@entur/icons@6.17.0) (2024-05-21)
 
 ### Features
