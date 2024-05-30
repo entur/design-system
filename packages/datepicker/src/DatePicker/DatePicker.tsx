@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { useDatePickerState } from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
@@ -181,6 +181,7 @@ export const DatePicker = <DateType extends DateValue>({
   const datePickerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const dateFieldRef = useRef<HTMLDivElement | null>(null);
+  const [showAnimations, setShowAnimations] = useState(false);
 
   const { width } = useWindowDimensions();
 
@@ -226,12 +227,9 @@ export const DatePicker = <DateType extends DateValue>({
   } = useDatePicker({ ...rest }, state, datePickerRef);
 
   // calculations for floating-UI popover position
-  const { x, y, reference, floating, strategy } = useFloating({
-    whileElementsMounted: (referenceEl, floatingEl, update) =>
-      autoUpdate(referenceEl, floatingEl, update, {
-        // This is added to avoid layout shift for next/prev. month calendar buttons when switching month
-        elementResize: false,
-      }),
+  const { x, y, refs, strategy, update } = useFloating({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update, { elementResize: false }),
     placement: 'bottom-start',
     middleware: [
       offset(space.extraSmall),
@@ -265,6 +263,12 @@ export const DatePicker = <DateType extends DateValue>({
     weekNumberHeader,
   };
 
+  // Initial position for popover is (0,0) before being moved to calculated position.
+  // To avoid animating this move we delay turning on animation by a few ms.
+  useEffect(() => {
+    setTimeout(() => setShowAnimations(state.isOpen), 10);
+  }, [state.isOpen]);
+
   const useModal =
     typeof width !== 'undefined' &&
     width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH &&
@@ -275,13 +279,15 @@ export const DatePicker = <DateType extends DateValue>({
       // styling for floating-UI popover
       style={{
         position: strategy,
-        top: y ?? 0,
-        left: x ?? 0,
+        top: y,
+        left: x,
         zIndex: zIndexes.popover,
-        transition: `all ${timings.medium} ease-in-out`,
+        transition: showAnimations
+          ? `top ${timings.medium} ease-in-out`
+          : 'unset',
       }}
       ref={node => {
-        floating(node);
+        refs.setFloating(node);
       }}
     >
       <FocusLock disabled={!state.isOpen || useModal} returnFocus>
@@ -314,7 +320,7 @@ export const DatePicker = <DateType extends DateValue>({
           {...groupProps}
           ref={node => {
             datePickerRef.current = node;
-            reference(node);
+            refs.setReference(node);
           }}
           id={undefined}
           className="eds-datepicker__datefield__wrapper"
@@ -343,7 +349,10 @@ export const DatePicker = <DateType extends DateValue>({
           {!disabled && (
             <CalendarButton
               {...buttonProps}
-              onPress={() => state.setOpen(!state.isOpen)}
+              onPress={() => {
+                state.setOpen(!state.isOpen);
+                update();
+              }}
               className="eds-datepicker__open-calendar-button"
             >
               <CalendarIcon />
