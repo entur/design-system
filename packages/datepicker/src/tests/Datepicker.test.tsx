@@ -18,9 +18,12 @@ jest.mock('@floating-ui/react-dom', () => ({
     return {
       x: 0,
       y: 0,
-      reference: jest.fn(),
-      floating: jest.fn(),
+      refs: {
+        setReference: jest.fn(),
+        setFloating: jest.fn(),
+      },
       strategy: 'absolute',
+      update: jest.fn(),
     };
   }),
   offset: jest.fn(),
