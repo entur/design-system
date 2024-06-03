@@ -25,13 +25,7 @@
     "postbuild": "rimraf tmp"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "peerDependenciesMeta": {
-    "react-dom": {
-      "optional": true
-    }
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
