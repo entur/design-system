@@ -37,6 +37,7 @@
     text-overflow: ellipsis;
     line-height: t.$line-heights-small;
     padding: 1.25rem t.$space-default t.$space-extra-small2;
+    min-height: calc(3rem - (2 * t.$border-widths-default));
 
     &:focus-visible {
       outline: none;

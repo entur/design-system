@@ -487,7 +487,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
             if (e.target === e.currentTarget) openMenu();
           }}
         >
-          {selectedItems.length < maxChips ? (
+          {selectedItems.length <= maxChips ? (
             <>
               {selectedItems.length > 1 ? (
                 <VisuallyHidden onClick={() => inputRef.current?.focus()}>
