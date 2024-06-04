@@ -329,19 +329,15 @@ Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det ekster
 >
   {() => {
     // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
-    const fetchItems = React.useCallback(async (_, abortControllerRef) => {
+    const fetchItems = React.useCallback(async () => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
-          // Bruk signalet fra abortController for å avbryte utdaterte kall
-          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
-        return data;
+        return data.map(item => ({ label: item.name, value: item.slug }));
       } catch (error) {
-        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
-        if (error && error.name === 'AbortError') throw error;
         console.error('noe galt');
         return [];
       }

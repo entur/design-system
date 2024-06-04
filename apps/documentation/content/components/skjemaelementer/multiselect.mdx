@@ -235,19 +235,15 @@ Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det ekster
 >
   {() => {
     // Husk å bruke useCallback for å unngå at funksjonen kjøres oftere enn nødvendig
-    const fetchItems = React.useCallback(async (_, abortControllerRef) => {
+    const fetchItems = React.useCallback(async () => {
       try {
         const response = await fetch(
           `https://dummyjson.com/products/categories`,
-          // Bruk signalet fra abortController for å avbryte utdaterte kall
-          { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
         if (data.message !== undefined) return [data.message];
-        return data;
+        return data.map(item => ({ label: item.name, value: item.slug }));
       } catch (error) {
-        // AbortError må sendes videre til komponenten for å håndtere cleanup riktig
-        if (error && error.name === 'AbortError') throw error;
         console.error('noe galt');
         return [];
       }
@@ -264,13 +260,12 @@ Denne funksjonen settes så inn i `items`-prop-en og vi får data fra det ekster
   }}
 </Playground>
 
-### Søkbar dropdown med valg fra nettverkskall bassert på tekstinput
+### MultiSelect med valg fra nettverkskall bassert på tekstinput
 
 Her har vi en eksempelfunksjon `fetchItems` som henter inn data fra et test-API. `fetchItems` tar inn 
 nåværende `inputValue` og `abortControllerRef` og bruker det til å gjøre en query mot API-et. Denne funksjonen 
 settes så inn i `items`-prop-en og vi får data fra det eksterne API-et listet opp med query bassert på 
-det som skrives inn. Merk at `itemFilter` skrues av gjennom `() => true` slik
-at all filtrering skjer gjennom API-kallet.
+det som skrives inn.
 
 <Playground
   style={{ overflow: 'visible', justifyContent: 'start', width: '50%' }}
@@ -283,7 +278,7 @@ at all filtrering skjer gjennom API-kallet.
       try {
         const response = await fetch(
           `https://dummyjson.com/products/search?q=${inputValue}&limit=15&select=title`,
-          // Bruk signalet fra abortController for å avbryte utdaterte kall
+          // Bruk signalet fra abortControllerRef for å avbryte utdaterte kall
           { signal: abortControllerRef.current.signal },
         );
         const data = await response.json();
@@ -306,8 +301,6 @@ at all filtrering skjer gjennom API-kallet.
         items={fetchItems}
         selectedItems={selected}
         onChange={setSelected}
-        // Vi skrur av itemFilter slik at filtrering skjer gjennom API-kallet
-        itemFilter={() => true}
       />
     );
   }}
