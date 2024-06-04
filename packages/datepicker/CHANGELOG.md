@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.11-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.4.10...@entur/datepicker@9.4.11-beta.0) (2024-06-04)
+
+### Bug Fixes
+
+- limit datepicker popover layout shifts ([76db444](https://bitbucket.org/enturas/design-system/commits/76db4449348119b2c202e34a9f1dcc1b7cb9bf0d))
+
+### Performance Improvements
+
+- **datepicker:** upgrade floating-ui ([01372b6](https://bitbucket.org/enturas/design-system/commits/01372b6222a38f69a11834cf39bcb011ef730780))
+
 ## [9.4.10](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.4.9...@entur/datepicker@9.4.10) (2024-05-29)
 
 **Note:** Version bump only for package @entur/datepicker
