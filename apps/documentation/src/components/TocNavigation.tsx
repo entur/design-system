@@ -39,12 +39,15 @@ function useCurrentActiveHeading(headings: Entry['headings']) {
   }, []);
 
   React.useEffect(() => {
-    window.addEventListener('resize', findActiveHeading);
-    window.addEventListener('scroll', findActiveHeading);
+    const articleSection = document.getElementsByClassName('page')?.[0];
+    if (articleSection === null) return;
+
+    articleSection.addEventListener('resize', findActiveHeading);
+    articleSection.addEventListener('scroll', findActiveHeading);
     findActiveHeading();
     return () => {
-      window.removeEventListener('resize', findActiveHeading);
-      window.removeEventListener('scroll', findActiveHeading);
+      articleSection.removeEventListener('resize', findActiveHeading);
+      articleSection.removeEventListener('scroll', findActiveHeading);
     };
   }, [findActiveHeading]);
 
