@@ -91,54 +91,57 @@ export const BaseFormControl = React.forwardRef<
 
     return (
       <InputGroupContextProvider>
-        <div
-          className={classNames(
-            'eds-form-control-wrapper',
-            className,
-            `eds-form-control-wrapper--size-${size}`,
-            {
-              'eds-form-control-wrapper--success': currentVariant === 'success',
-              'eds-form-control-wrapper--negative':
-                currentVariant === 'negative' || currentVariant === error,
-              'eds-form-control-wrapper--disabled': disabled,
-              'eds-form-control-wrapper--readonly': readOnly,
-              'eds-form-control-wrapper--is-filled': isFilled,
-            },
-          )}
-          ref={ref}
-          style={style}
-          {...rest}
-        >
-          {prepend && (
-            <div className="eds-form-control__prepend">{prepend}</div>
-          )}
-          <InputGroupLabel
-            label={label}
-            required={required}
-            labelId={labelId}
-            staticAnimation={disableLabelAnimation}
-            {...labelProps}
-          />
-          {children}
-          {append && <div className="eds-form-control__append">{append}</div>}
-          {labelTooltip && (
-            <div className="eds-form-control__append eds-form-control__append--tooltip">
-              <Tooltip content={labelTooltip} placement="right">
-                <span className="eds-input-group__label-tooltip-icon">
-                  <QuestionIcon />
-                </span>
-              </Tooltip>
-            </div>
+        <div>
+          <div
+            className={classNames(
+              'eds-form-control-wrapper',
+              className,
+              `eds-form-control-wrapper--size-${size}`,
+              {
+                'eds-form-control-wrapper--success':
+                  currentVariant === 'success',
+                'eds-form-control-wrapper--negative':
+                  currentVariant === 'negative' || currentVariant === error,
+                'eds-form-control-wrapper--disabled': disabled,
+                'eds-form-control-wrapper--readonly': readOnly,
+                'eds-form-control-wrapper--is-filled': isFilled,
+              },
+            )}
+            ref={ref}
+            style={style}
+            {...rest}
+          >
+            {prepend && (
+              <div className="eds-form-control__prepend">{prepend}</div>
+            )}
+            <InputGroupLabel
+              label={label}
+              required={required}
+              labelId={labelId}
+              staticAnimation={disableLabelAnimation}
+              {...labelProps}
+            />
+            {children}
+            {append && <div className="eds-form-control__append">{append}</div>}
+            {labelTooltip && (
+              <div className="eds-form-control__append eds-form-control__append--tooltip">
+                <Tooltip content={labelTooltip} placement="right">
+                  <span className="eds-input-group__label-tooltip-icon">
+                    <QuestionIcon />
+                  </span>
+                </Tooltip>
+              </div>
+            )}
+          </div>
+          {feedback && currentVariant && (
+            <FeedbackText
+              variant={currentVariant}
+              role={ariaAlertOnFeedback ? 'alert' : undefined}
+            >
+              {feedback}
+            </FeedbackText>
           )}
         </div>
-        {feedback && currentVariant && (
-          <FeedbackText
-            variant={currentVariant}
-            role={ariaAlertOnFeedback ? 'alert' : undefined}
-          >
-            {feedback}
-          </FeedbackText>
-        )}
       </InputGroupContextProvider>
     );
   },
