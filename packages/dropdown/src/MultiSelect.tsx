@@ -12,11 +12,12 @@ import {
   UseComboboxStateChangeOptions,
   A11yStatusMessageOptions,
 } from 'downshift';
+import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
-import { VariantType } from '@entur/utils';
-import { useRandomId } from '@entur/utils';
+import { space } from '@entur/tokens';
+import { VariantType, useRandomId } from '@entur/utils';
 
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
@@ -430,6 +431,14 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
     ...rest,
   });
 
+  const { refs, floatingStyles } = useFloating({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update),
+    placement: 'bottom-start',
+    open: isOpen,
+    middleware: [offset(space.extraSmall2), flip()],
+  });
+
   const handleOnClear = () => {
     onChange([]);
     setInputValue(EMPTY_INPUT);
@@ -472,6 +481,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           if (e.target === e.currentTarget) inputRef.current?.focus();
         }}
         readOnly={readOnly}
+        ref={refs.setReference}
         variant={variant}
         {...rest}
       >
@@ -568,7 +578,8 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         inputValue={inputValue}
         isOpen={isOpen}
         listItems={listItems}
-        listStyle={listStyle}
+        listStyle={{ ...floatingStyles, ...listStyle }}
+        listRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}
