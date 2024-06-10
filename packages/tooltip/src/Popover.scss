@@ -3,7 +3,7 @@
 .eds-popover {
   background: var(--components-tooltip-popover-standard-fill);
   box-shadow: t.$shadows-box-shadow;
-  border-radius: t.$border-radiuses-default;
+  border-radius: t.$border-radiuses-medium;
   border: t.$border-widths-small solid var(--components-tooltip-popover-standard-border);
   font-family: inherit;
   z-index: t.$z-indexes-popover;
