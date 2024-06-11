@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.11](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.10...@entur/dropdown@5.4.11) (2024-06-11)
+
+### Bug Fixes
+
+- **multiselect:** fix maxChips summarizing one chip before it should ([31e440c](https://bitbucket.org/enturas/design-system/commits/31e440c19b96fc4c9ecb44c22b57839eac226b97))
+
 ## [5.4.10](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.9...@entur/dropdown@5.4.10) (2024-05-29)
 
 ### Bug Fixes

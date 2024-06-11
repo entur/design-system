@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.10](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.9...@entur/tooltip@2.7.10) (2024-06-11)
+
+### Bug Fixes
+
+- **popover:** add correct border-radius ([74c1907](https://bitbucket.org/enturas/design-system/commits/74c190737d4b50dc499d6d0eb22034a3c2dde25c))
+
 ## [2.7.9](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.8...@entur/tooltip@2.7.9) (2024-05-29)
 
 **Note:** Version bump only for package @entur/tooltip
