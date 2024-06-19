@@ -1,5 +1,12 @@
 /* eslint-disable  no-warning-comments */
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
 import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
@@ -156,7 +163,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
   ...rest
 }: SearchableDropdownProps<ValueType>) => {
   const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
-  const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
+  const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -165,7 +172,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
     fetchItems,
   } = useResolvedItems(initialItems, debounceTimeout);
 
-  const [listItems, setListItems] = React.useState(normalizedItems);
+  const [listItems, setListItems] = useState(normalizedItems);
 
   const filterListItems = ({ inputValue }: { inputValue: string }) =>
     setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
@@ -177,16 +184,25 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
     filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
   };
 
-  React.useEffect(() => {
-    filterListItems({ inputValue });
-  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const inputHasFocus =
     typeof document !== 'undefined'
       ? inputRef?.current === document?.activeElement
       : false;
 
-  const stateReducer = React.useCallback(
+  useEffect(() => {
+    filterListItems({ inputValue });
+  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    // sync internal state on initial render
+    if (selectedItem !== null && !inputHasFocus) {
+      setShowSelectedItem(true);
+      updateListItems({ inputValue: EMPTY_INPUT });
+      setInputValue(EMPTY_INPUT);
+    }
+  }, []);
+
+  const stateReducer = useCallback(
     (
       _,
       {
