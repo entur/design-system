@@ -365,6 +365,9 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
             }
           } else {
             updateListItems({ inputValue: changes.inputValue });
+            // set highlighted item to first item after search
+            setLastHighlightedIndex(hideSelectAll ? 0 : 1);
+            return { ...changes, highlightedIndex: hideSelectAll ? 0 : 1 };
           }
 
           return changes;
