@@ -1,4 +1,9 @@
-import { useState, DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  useMemo,
+  useState,
+} from 'react';
 import get from 'lodash.get';
 
 export type ExternalSortConfig = {
@@ -34,29 +39,38 @@ export function useSortableData<T>(
       return setSortConfig({ key, order: 'none' });
   };
 
-  const tableSortedAscending = [...tableData].sort((a: any, b: any) => {
-    const valueOfA: string = get(a, sortConfig.key, a)?.toString() ?? '';
-    const valueOfB: string = get(b, sortConfig.key, b)?.toString() ?? '';
+  const tableSortedAscending = useMemo(
+    () =>
+      [...tableData].sort((a: any, b: any) => {
+        const valueOfA: string = get(a, sortConfig.key, a)?.toString() ?? '';
+        const valueOfB: string = get(b, sortConfig.key, b)?.toString() ?? '';
 
-    const stringComparator = new Intl.Collator(['no', 'en'], {
-      numeric: true,
-      sensitivity: 'base',
-    });
+        const stringComparator = new Intl.Collator(['no', 'en'], {
+          numeric: true,
+          sensitivity: 'base',
+        });
 
-    return stringComparator.compare(valueOfA, valueOfB);
-  });
+        return stringComparator.compare(valueOfA, valueOfB);
+      }),
+    [tableData, sortConfig.key],
+  );
 
-  const getSortedData: () => T[] = () => {
-    if (sortConfig.order === 'none') {
-      return tableData;
+  const sortedData = useMemo(() => {
+    switch (sortConfig.order) {
+      case 'ascending': {
+        return tableSortedAscending;
+      }
+      case 'descending': {
+        return [...tableSortedAscending].reverse();
+      }
+      case 'none': {
+        return tableData;
+      }
+      default: {
+        return tableData;
+      }
     }
-    if (sortConfig.order === 'descending') {
-      return [...tableSortedAscending].reverse();
-    }
-    return tableSortedAscending;
-  };
-
-  const sortedData = getSortedData();
+  }, [sortConfig.order, tableData, tableSortedAscending]);
 
   const getSortableHeaderProps = ({
     name,
