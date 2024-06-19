@@ -54,6 +54,27 @@ describe('SearchableDropdown', () => {
     });
   });
 
+  test('selectedItem placeholder is correctly displayed on initial launch', async () => {
+    const onChange = jest.fn();
+    const selectedItem = { label: testItems[0], value: testItems[0] };
+    render(
+      <SearchableDropdown
+        label="test label"
+        items={testItems}
+        selectedItem={selectedItem}
+        onChange={onChange}
+      />,
+    );
+
+    const inputField = screen.getByRole('combobox', { name: 'test label' });
+    const selectedItemPlaceholder = document.getElementsByClassName(
+      'eds-dropdown--searchable__selected-item',
+    )?.[0];
+
+    expect(inputField).toHaveValue('');
+    expect(selectedItemPlaceholder).toHaveTextContent(selectedItem.label);
+  });
+
   test('can select element with keyboard', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
