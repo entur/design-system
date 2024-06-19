@@ -1,8 +1,10 @@
 import React, { Dispatch, SetStateAction, useRef } from 'react';
-import { useSelect } from 'downshift';
 import classNames from 'classnames';
+import { useSelect } from 'downshift';
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
+import { space } from '@entur/tokens';
 import { VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
@@ -156,6 +158,14 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
     itemToString,
   });
 
+  const { refs, floatingStyles } = useFloating({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update),
+    placement: 'bottom-start',
+    open: isOpen,
+    middleware: [offset(space.extraSmall2), flip()],
+  });
+
   return (
     <div
       className={classNames('eds-dropdown__wrapper', className, {
@@ -197,6 +207,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         labelTooltip={labelTooltip}
         prepend={prepend}
         readOnly={readOnly}
+        ref={refs.setReference}
         variant={variant}
         {...rest}
       >
@@ -240,7 +251,8 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         highlightedIndex={highlightedIndex}
         isOpen={isOpen}
         listItems={normalizedItems}
-        listStyle={listStyle}
+        listStyle={{ ...floatingStyles, ...listStyle }}
+        listRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
         selectedItems={selectedItem !== null ? [selectedItem] : []}

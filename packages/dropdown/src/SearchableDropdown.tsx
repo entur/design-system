@@ -2,8 +2,10 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
+import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
+import { space } from '@entur/tokens';
 import { VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
@@ -286,6 +288,14 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
     ...rest,
   });
 
+  const { refs, floatingStyles } = useFloating({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update),
+    placement: 'bottom-start',
+    open: isOpen,
+    middleware: [offset(space.extraSmall2), flip()],
+  });
+
   const handleOnClear = () => {
     onChange(null);
     setInputValue(EMPTY_INPUT);
@@ -316,6 +326,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         }}
         prepend={prepend}
         readOnly={readOnly}
+        ref={refs.setReference}
         variant={variant}
         {...rest}
         append={
@@ -374,7 +385,8 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         ariaLabelSelectedItem={ariaLabelSelectedItem}
         isOpen={isOpen}
         listItems={listItems}
-        listStyle={listStyle}
+        listStyle={{ ...floatingStyles, ...listStyle }}
+        listRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}

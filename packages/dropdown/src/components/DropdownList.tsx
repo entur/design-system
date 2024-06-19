@@ -6,8 +6,9 @@ import {
   UseComboboxGetItemPropsOptions,
 } from 'downshift';
 
-import { Checkbox } from '@entur/form';
 import { VisuallyHidden } from '@entur/a11y';
+import { Checkbox } from '@entur/form';
+import { mergeRefs } from '@entur/utils';
 
 import { NormalizedDropdownItemType } from '../types';
 
@@ -29,6 +30,7 @@ type DropdownListProps<ValueType> = {
   isOpen: boolean;
   listItems: NormalizedDropdownItemType<ValueType | string>[];
   listStyle: { [key: string]: any } | undefined;
+  listRef?: React.Ref<HTMLUListElement>;
   loading?: boolean;
   loadingText?: string;
   noMatchesText?: string;
@@ -48,6 +50,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   highlightedIndex,
   listItems,
   listStyle,
+  listRef,
   loading = false,
   loadingText = 'Laster inn …',
   noMatchesText = 'Ingen treff for søket',
@@ -154,6 +157,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     <ul
       {...getMenuProps({
         'aria-multiselectable': isMultiselect,
+        ref: mergeRefs(getMenuProps().ref, listRef),
       })}
       className="eds-dropdown__list"
       style={{
