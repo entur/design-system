@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.12](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.11...@entur/table@4.8.12) (2024-06-24)
+
+### Bug Fixes
+
+- **table:** memoise sorted data from useSortableData ([18f44d6](https://bitbucket.org/enturas/design-system/commits/18f44d61776443b5da5e5be6feb22ea85a361c92))
+
 ## [4.8.11](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.10...@entur/table@4.8.11) (2024-06-11)
 
 **Note:** Version bump only for package @entur/table

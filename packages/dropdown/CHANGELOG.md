@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.11...@entur/dropdown@5.5.0) (2024-06-24)
+
+### Bug Fixes
+
+- **dropdown:** fix searchable dropdown not setting selectedItem state correctly on initial render ([bd9fe65](https://bitbucket.org/enturas/design-system/commits/bd9fe65a307f82e4e3ff8a016dd635b647da956a))
+- **multiselect:** fix incorrect highlighted item in list after search ([6d25ec7](https://bitbucket.org/enturas/design-system/commits/6d25ec76095e5d63f98d768fd0b6a007888c386a))
+
+### Features
+
+- **dropdown:** switch to floating-ui for dislaying dropdown list ([5a72a9f](https://bitbucket.org/enturas/design-system/commits/5a72a9f7f8254df618659fd3136d4e13d683b07b))
+
+### Performance Improvements
+
+- **datepicker:** small fixes to datepicker ([b73467b](https://bitbucket.org/enturas/design-system/commits/b73467be00a4dfce38bc0c775dff9a77e6fd5ff6))
+
 ## [5.4.11](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.10...@entur/dropdown@5.4.11) (2024-06-11)
 
 ### Bug Fixes
