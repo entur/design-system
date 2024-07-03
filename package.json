@@ -12,6 +12,7 @@
     "build:documentation": "lerna run --scope @entur/documentation build",
     "build:packages": "lerna run build --no-private",
     "cleanStart": "lerna run --scope @entur/documentation cleanStart",
+    "cleanDocz": "lerna run --scope @entur/documentation cleanDocz",
     "deploy-docs": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
     "deploy-docs:preview": "lerna exec --scope @entur/documentation -- yarn deploy-docs:preview",
     "gc:format": "cz",
