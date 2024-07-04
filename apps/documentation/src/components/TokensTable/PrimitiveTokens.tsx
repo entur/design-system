@@ -1,40 +1,18 @@
 import React from 'react';
 import { Heading5 } from '@entur/typography';
 import { GridItem } from '@entur/grid';
-
 import {
   formatVariablePrimitive,
   formatVariableByType,
-  formatTokenValue,
 } from '~/utils/formatVariable';
-import { PrimitiveTokenProps, FlattenedTokens } from './types';
-import { CopyableText } from '@entur/alert';
+import { TokensTableProps } from './types';
 import { useSettings } from '../SettingsContext';
+import ColorToken from './ColorToken';
 
-type Props = {
-  tokens: FlattenedTokens;
-  Example?: React.ComponentType<{ value: string; className?: string }>;
-};
-
-const PrimitiveToken: React.FC<PrimitiveTokenProps> = ({
-  formattedVariable,
-  value,
-  copyValue,
-  className,
-  Example,
-}) => (
-  <div className="token-table">
-    <div className="token-table-content__grid-item">
-      {Example && <Example className={className} value={value} />}
-      <div className="token-table-content__codetext">
-        {formatTokenValue(value)}
-      </div>
-      <CopyableText textToCopy={copyValue}>{formattedVariable}</CopyableText>
-    </div>
-  </div>
-);
-
-const PrimitiveTokenList: React.FC<Props> = ({ tokens, Example }) => {
+const PrimitiveTokenList: React.FC<TokensTableProps> = ({
+  tokens,
+  PrimitiveExample,
+}) => {
   const { variableFormat } = useSettings();
   const dontShowCategory = ['white'];
 
@@ -60,14 +38,13 @@ const PrimitiveTokenList: React.FC<Props> = ({ tokens, Example }) => {
       }
 
       const copyValue = formatVariableByType(variableFormat, formattedVariable);
-
       categories[mainCategory].push(
-        <PrimitiveToken
+        <ColorToken
           key={formattedVariable}
-          formattedVariable={formattedVariable}
-          value={value}
+          showValue={formattedVariable}
+          hexValue={value}
           copyValue={copyValue}
-          Example={Example}
+          PrimitiveExample={PrimitiveExample}
         />,
       );
 

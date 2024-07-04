@@ -4,54 +4,13 @@ import { GridItem } from '@entur/grid';
 import {
   formatDotToVariable,
   formatVariableByType,
-  formatTokenValue,
   sliceTokenKey,
 } from '~/utils/formatVariable';
-import { SemanticTokenProps, FlattenedTokens } from './types';
-import { CopyableText } from '@entur/alert';
 
-import FillIcon from './icons/FillIcon';
-import StrokeIcon from './icons/StrokeIcon';
-import ShapeIcon from './icons/ShapeIcon';
-import TextIcon from './icons/TextIcon';
+import { TokensTableProps } from './types';
+import ColorToken from './ColorToken';
 
-const categoryIcons = {
-  frame: FillIcon,
-  text: TextIcon,
-  stroke: StrokeIcon,
-  shape: ShapeIcon,
-};
-
-type Props = {
-  tokens: FlattenedTokens;
-};
-
-const BaseToken: React.FC<SemanticTokenProps> = ({
-  category,
-  formattedVariable,
-  value,
-  copyValue,
-}) => {
-  const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
-
-  return (
-    <div className="token-table semantic-token">
-      <div className="token-table-content__grid-item">
-        <div className="token-table semantic-token__icon" id={category}>
-          <IconComponent color={value} />
-        </div>
-        <div className="token-table semantic-token__codetext">
-          <CopyableText textToCopy={copyValue}>
-            {sliceTokenKey(formattedVariable, 3)}
-          </CopyableText>
-          {formatTokenValue(value)}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const BaseTokenList: React.FC<Props> = ({ tokens }) => {
+const BaseTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
     return [formattedVariable, value] as [string, string];
@@ -76,12 +35,14 @@ const BaseTokenList: React.FC<Props> = ({ tokens }) => {
     );
 
     const copyValue = formatVariableBySettingsType;
+    const showValue = sliceTokenKey(formattedVariable, 3);
+
     categories[mainCategory][subCategory].push(
-      <BaseToken
+      <ColorToken
         key={formattedVariable}
-        category={subCategory}
-        formattedVariable={formattedVariable}
-        value={value}
+        iconCategory={subCategory}
+        showValue={showValue}
+        hexValue={value}
         copyValue={copyValue}
       />,
     );
