@@ -31,7 +31,7 @@ import {
 </PageHeader>
 
 ## Hvorfor trenger vi fargetokens?
-Fargetokens er en viktig grunnsten i et designsystem. Ved å lage et sett med farger og fargenavn er tanken at det skal bli lettere for alle å forholde seg til bedriftens farger på en korrekt måte. Bruken av tokens gjør det også enklere å vedlikeholde og videreutvikle fargesettet som brukes. Eksempelvis hvis farger skal oppdateres kan det gjøres uten at designsystem-brukere må endre noe på sin side.
+Fargetokens er en viktig grunnsten i et designsystem. Ved å lage et sett med farger og fargenavn er tanken at det skal bli lettere for alle å forholde seg til Enturs farger på en korrekt måte. Bruken av tokens gjør det også enklere å vedlikeholde og videreutvikle fargesettet som brukes. Eksempelvis hvis farger skal oppdateres kan det gjøres uten at designsystem-brukere må endre noe på sin side.
 
 Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede referansefarger til tokens.
 Å bruke ulike fargenavn eller fargeverdier fører til unødvendig ekstra arbeid både ved implementering og bytting av farger i systemet. Dette resulterer i redusert effektivitet og manglende standardisering, spesielt med flere brukere involvert.
@@ -50,24 +50,24 @@ Tokensstrukturen inneholder flere lag av fargetokens. Hvert lag i strukturen kom
 
 <BaseCardDesignEntur arrow title="Primitive tokens" subText="
 Det grunnleggende laget består av «primitive tokens», som representerer fargene i fargepaletten.">
-  <img src={primitive} alt="" class="designentur-base-card__image" />
+  <img src={primitive} alt="eksempel på en primitive token er lavender 90" class="designentur-base-card__image" />
 </BaseCardDesignEntur>
 
 
 <BaseCardDesignEntur arrow title="Semantic tokens" subText="«Semantic tokens» gir en tydeligere mening til fargene ved å tildele dem betydningsfulle navn.">
-  <img src={semantic} alt=""  class="designentur-base-card__image" />
+  <img src={semantic} alt="eksempel på semantic token er fill-primary-default for bakgrunnen til en firkant, stroke-accent for en strek, text-accent for tekst og shape-accent for et hjerteikon"  class="designentur-base-card__image" />
 </BaseCardDesignEntur>
 
 
 <GridContainer spacing="large">
   <GridItem small={12} medium={6}>
     <BaseCardDesignEntur title="Component tokens" subText="«Component tokens» spesifiserer fargene som brukes på designsystemets komponenter.">
-      <img src={component} alt=""  class="designentur-base-card__image" />
+      <img src={component} alt="eksempel på en komponent-token er button-primary-fill for bakgrunnen til designsystemets knapp"  class="designentur-base-card__image" />
     </BaseCardDesignEntur>
   </GridItem>
   <GridItem small={12} medium={6}>
     <BaseCardDesignEntur title="Base tokens" subText="«Base tokens» spesifiserer fargene som brukes på generelle elementer. Bruke disse på egne komponenter.">
-      <img src={base} alt="" class="designentur-base-card__image" />
+      <img src={base} alt="eksempel på base-tokens er base-frame-subsueded som er en dempet farge for en bakgrunn til en firkant" class="designentur-base-card__image" />
     </BaseCardDesignEntur>
   </GridItem>
 </GridContainer>
@@ -84,7 +84,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
 <BaseCardDesignEntur  title="Eksempel i grensesnitt" >
     <img
       src={brukFlateBase}
-      alt=""
+      alt="eksemplet viser at background skal brukes for bakgrunn, shape skal brukes på en sirkel, text skal brukes på tekst, og stroke kan brukes på en skillelinje"
      class="designentur-base-card__image--medium"
     />
 </BaseCardDesignEntur>
@@ -92,7 +92,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
 <BaseCardDesignEntur  title="Eksempel komponentnivå" subText="I eksemplet over ser du hvordan du kan lage din egen komponent ved å ta i bruk base-tokens.">
     <img
       src={brukBase}
-      alt=""
+      alt="eksemplet viser navnene på base-tokens. For eksempel for bakgrunn kan du bruke frame-default, for border kan du bruke stroke-subduedalt, for ikon kan du bruke shape-default, for titteltekst kan du bruke text-default og for subtekst kan du bruke text-subdued"
      class="designentur-base-card__image--medium"
     />
 </BaseCardDesignEntur>
@@ -117,7 +117,7 @@ Fargetokensfiler finner du under Assets-menyen i Figma, hvor de enkelt kan slås
     <BaseCardDesignEntur title="Property meny" subText="Dette bidrar til å unngå for mange fargetokens i property menyen, slik at du kan fokusere bare på det som er nødvendig for gjeldende design.">
       <img
             src={brukMenu}
-            alt=""
+            alt="velg Token-base i property nedtrekksmenyen"
             class="designentur-base-card__image"
       />
     </BaseCardDesignEntur>
