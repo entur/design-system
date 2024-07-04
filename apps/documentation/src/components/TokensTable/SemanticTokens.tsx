@@ -4,65 +4,20 @@ import { GridItem } from '@entur/grid';
 import {
   formatDotToVariable,
   formatVariableByType,
-  formatTokenValue,
   sliceTokenKey,
 } from '~/utils/formatVariable';
-import { SemanticTokenProps, FlattenedTokens } from './types';
-
+import { TokensTableProps } from './types';
 import { useSettings } from '../SettingsContext';
-import { CopyableText } from '@entur/alert';
+import ColorToken from './ColorToken';
 
-import FillIcon from './icons/FillIcon';
-import StrokeIcon from './icons/StrokeIcon';
-import ShapeIcon from './icons/ShapeIcon';
-import TextIcon from './icons/TextIcon';
-
-const categoryIcons = {
-  fill: FillIcon,
-  text: TextIcon,
-  stroke: StrokeIcon,
-  shape: ShapeIcon,
-};
-
-type Props = {
-  tokens: FlattenedTokens;
-};
-
-const SemanticToken: React.FC<SemanticTokenProps> = ({
-  category,
-  formattedVariable,
-  value,
-  copyValue,
-}) => {
-  const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
-
-  return (
-    <div className="token-table semantic-token">
-      <div className="token-table-content__grid-item">
-        <div className="token-table semantic-token__icon" id={category}>
-          <IconComponent color={value} />
-        </div>
-        <div className="token-table semantic-token__codetext">
-          <CopyableText textToCopy={copyValue}>
-            {category === 'fill'
-              ? sliceTokenKey(formattedVariable, 2)
-              : sliceTokenKey(formattedVariable, 1)}
-          </CopyableText>
-          {formatTokenValue(value)}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const SemanticTokenList: React.FC<Props> = ({ tokens }) => {
+const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
-  const formatTokens = Object.entries(tokens).map(([key, value]) => {
+  const formatTokens = Object.entries(tokens).map(([key, token]) => {
     const formattedVariable = formatDotToVariable(key);
-    return [formattedVariable, value] as [string, string];
+    return [formattedVariable, token] as [string, string];
   });
 
-  const categorizedTokens = formatTokens.reduce((categories, [key, value]) => {
+  const categorizedTokens = formatTokens.reduce((categories, [key, token]) => {
     const formattedVariable = formatDotToVariable(key);
     const parts = formattedVariable.split('-');
     const mainCategory = parts[0];
@@ -76,12 +31,17 @@ const SemanticTokenList: React.FC<Props> = ({ tokens }) => {
     }
 
     const copyValue = formatVariableByType(variableFormat, formattedVariable);
+    const showValue =
+      mainCategory === 'fill'
+        ? sliceTokenKey(formattedVariable, 2)
+        : sliceTokenKey(formattedVariable, 1);
+
     categories[mainCategory][subCategory].push(
-      <SemanticToken
+      <ColorToken
         key={formattedVariable}
-        category={mainCategory}
-        formattedVariable={formattedVariable}
-        value={value}
+        iconCategory={mainCategory}
+        showValue={showValue}
+        hexValue={token}
         copyValue={copyValue}
       />,
     );
@@ -110,8 +70,8 @@ const SemanticTokenList: React.FC<Props> = ({ tokens }) => {
             <GridItem small={12} medium={12} large={12}>
               <div className="token-table-content">
                 <div className="token-table-content--multi-columns">
-                  {Object.values(subCategories).map((value, index) => (
-                    <div key={index}>{value}</div>
+                  {Object.values(subCategories).map(token => (
+                    <div key={subCategories}>{token}</div>
                   ))}
                 </div>
               </div>

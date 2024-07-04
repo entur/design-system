@@ -9,13 +9,17 @@ import DataTokenList from './DataTokens';
 import TransportTokenList from './TransportTokens';
 import BaseTokenList from './BaseTokens';
 import { CodeText } from '@entur/typography';
-import { Props, FlattenedTokens } from './types';
+import { AllTokensTableProps, FlattenedTokens } from './types';
 
 import './TokenTable.scss';
 
-export const TokensTableColor: React.FC<Props> = ({
+interface ExampleProps {
+  value: string;
+  className?: string;
+}
+
+export const TokensTableColor: React.FC<AllTokensTableProps> = ({
   tokenKey,
-  example: Example,
 }) => {
   const flattenedTokens = React.useMemo<FlattenedTokens>(
     () => flatten(allTokens[tokenKey]),
@@ -41,9 +45,16 @@ export const TokensTableColor: React.FC<Props> = ({
       break;
     case 'transport':
       TokenListComponent = TransportTokenList;
-
-      break;
   }
+
+  const PrimitiveExample: React.FC<ExampleProps> = ({ value, className }) => (
+    <div
+      className={`token-content__example ${className}`}
+      style={{
+        backgroundColor: value,
+      }}
+    />
+  );
 
   return (
     <>
@@ -52,7 +63,10 @@ export const TokensTableColor: React.FC<Props> = ({
         innstillinger.
       </p>
       <GridContainer className="token-table__grid">
-        <TokenListComponent tokens={flattenedTokens} Example={Example} />
+        <TokenListComponent
+          tokens={flattenedTokens}
+          PrimitiveExample={PrimitiveExample}
+        />
       </GridContainer>
     </>
   );

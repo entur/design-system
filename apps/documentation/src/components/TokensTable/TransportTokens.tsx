@@ -1,46 +1,15 @@
 import React from 'react';
-import { TransportTokenProps, FlattenedTokens } from './types';
+import { TokensTableProps } from './types';
 import { VariableFormat } from '~/components/SettingsContext';
-import { CopyableText } from '@entur/alert';
 import {
   formatVariableByType,
-  formatTokenValue,
   formatDotToVariable,
   sliceTokenKey,
 } from '~/utils/formatVariable';
 import { GridItem } from '@entur/grid';
 import { Heading3, Heading5 } from '@entur/typography';
 import { useSettings } from '../SettingsContext';
-import { getTransportStyle } from '@entur/travel/src/utils';
-
-type Props = {
-  tokens: FlattenedTokens;
-};
-
-const TransportToken: React.FC<TransportTokenProps> = ({
-  formattedVariable,
-  value,
-  copyValue,
-}) => {
-  const iconNameWords = formattedVariable.split('-');
-  const { Icon } = getTransportStyle(iconNameWords[1]);
-
-  return (
-    <div className="token-table data-token">
-      <div className="token-table-content__grid-item">
-        <div className="token-table data-token__icon">
-          <Icon color={value} />
-        </div>
-        <div className="token-table data-token__codetext">
-          <CopyableText textToCopy={copyValue}>
-            {sliceTokenKey(formattedVariable, 1)}
-          </CopyableText>
-          {formatTokenValue(value)}
-        </div>
-      </div>
-    </div>
-  );
-};
+import ColorToken from './ColorToken';
 
 const categorizedTokens = (
   tokens: [string, string][],
@@ -61,12 +30,14 @@ const categorizedTokens = (
     }
 
     const copyValue = formatVariableByType(variableFormat, formattedVariable);
-
+    const showValue = sliceTokenKey(formattedVariable, 1);
+    const iconCategory = 'transport';
     categories[categoryKey][subCategoryKey].push(
-      <TransportToken
+      <ColorToken
         key={formattedVariable}
-        formattedVariable={formattedVariable}
-        value={value}
+        iconCategory={iconCategory}
+        showValue={showValue}
+        hexValue={value}
         copyValue={copyValue}
       />,
     );
@@ -75,7 +46,7 @@ const categorizedTokens = (
   }, {} as Record<string, any>);
 };
 
-const TransportTokenList: React.FC<Props> = ({ tokens }) => {
+const TransportTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
 
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
