@@ -167,82 +167,76 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   });
 
   return (
-    <div
-      className={classNames('eds-dropdown__wrapper', className, {
-        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
+    <BaseFormControl
+      append={
+        <FieldAppend
+          ariaHiddenToggleButton={true}
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          clearable={clearable}
+          labelClearSelectedItems={labelClearSelectedItem}
+          focusable={false}
+          getToggleButtonProps={getToggleButtonProps}
+          isOpen={isOpen}
+          loading={loading}
+          loadingText={loadingText}
+          onClear={() => {
+            onChange?.(null);
+            toggleButtonRef.current?.focus();
+          }}
+          disabled={readOnly || disabled}
+          selectedItems={[selectedItem]}
+        />
+      }
+      className={classNames('eds-dropdown', className, {
+        'eds-dropdown--has-tooltip': labelTooltip !== undefined,
       })}
+      disabled={disabled}
+      disableLabelAnimation={disableLabelAnimation}
+      feedback={feedback}
+      isFilled={isFilled}
+      label={label}
+      labelId={getLabelProps().id}
+      labelProps={getLabelProps()}
+      labelTooltip={labelTooltip}
+      prepend={prepend}
+      readOnly={readOnly}
+      ref={refs.setReference}
       style={style}
+      variant={variant}
+      {...rest}
     >
-      <BaseFormControl
-        append={
-          <FieldAppend
-            ariaHiddenToggleButton={true}
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearSelectedItem}
-            focusable={false}
-            getToggleButtonProps={getToggleButtonProps}
-            isOpen={isOpen}
-            loading={loading}
-            loadingText={loadingText}
-            onClear={() => {
-              onChange?.(null);
-              toggleButtonRef.current?.focus();
-            }}
-            disabled={readOnly || disabled}
-            selectedItems={[selectedItem]}
-          />
-        }
-        className={classNames('eds-dropdown', {
-          'eds-dropdown--not-filled': !isFilled,
-        })}
-        disabled={disabled}
-        disableLabelAnimation={disableLabelAnimation}
-        feedback={feedback}
-        isFilled={isFilled}
-        label={label}
-        labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
-        labelTooltip={labelTooltip}
-        prepend={prepend}
-        readOnly={readOnly}
-        ref={refs.setReference}
-        variant={variant}
-        {...rest}
-      >
-        <div
-          className="eds-dropdown__selected-item"
-          {...getToggleButtonProps({
-            id: undefined,
-            onKeyDown: e => {
-              if (selectOnTab && isOpen && e.key === 'Tab') {
-                // we don't want to clear selection with tab
-                const highlitedItem = normalizedItems[highlightedIndex];
-                if (highlitedItem) {
-                  onChange?.(highlitedItem);
-                }
+      <div
+        className="eds-dropdown__selected-item"
+        {...getToggleButtonProps({
+          id: undefined,
+          onKeyDown: e => {
+            if (selectOnTab && isOpen && e.key === 'Tab') {
+              // we don't want to clear selection with tab
+              const highlitedItem = normalizedItems[highlightedIndex];
+              if (highlitedItem) {
+                onChange?.(highlitedItem);
               }
-            },
-            ref: toggleButtonRef,
-          })}
-        >
-          {selectedItem?.label ?? (
-              <div
-                className={classNames(
-                  'eds-dropdown__selected-item__placeholder',
-                  {
-                    'eds-dropdown__selected-item__placeholder--readonly':
-                      readOnly,
-                  },
-                )}
-              >
-                {placeholder}
-              </div>
-            ) ??
-            ''}
-        </div>
-      </BaseFormControl>
+            }
+          },
+          ref: toggleButtonRef,
+        })}
+      >
+        {selectedItem?.label ?? (
+            <div
+              className={classNames(
+                'eds-dropdown__selected-item__placeholder',
+                {
+                  'eds-dropdown__selected-item__placeholder--readonly':
+                    readOnly,
+                },
+              )}
+            >
+              {placeholder}
+            </div>
+          ) ??
+          ''}
+      </div>
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
@@ -257,6 +251,6 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         loadingText={loadingText}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
-    </div>
+    </BaseFormControl>
   );
 };
