@@ -47,6 +47,8 @@ export type TooltipProps = {
    * @default false
    */
   disableFocusListener?: boolean;
+  disableKeyboardListener?: boolean;
+  disableClickListner?: boolean;
   /** Viser en lukkeknapp om man kontrollerer åpningen av Tooltip vha `isOpen`
    * @default true
    */
@@ -68,6 +70,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   isOpen = false,
   disableHoverListener = false,
   disableFocusListener = false,
+  disableKeyboardListener = true,
+  disableClickListner = true,
   showCloseButton = true,
   variant,
   popperModifiers = [
@@ -130,6 +134,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
     onBlur?: () => void;
     onMouseEnter?: (e: React.MouseEvent) => void;
     onMouseLeave?: () => void;
+    onKeyDown?: (e: React.KeyboardEvent) => void;
+    onKeyUp?: (e: React.KeyboardEvent) => void;
+    onClick?: (e: React.MouseEvent) => void;
   } = {};
   childProps['aria-describedby'] = showTooltip ? tooltipId : undefined;
 
@@ -140,6 +147,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
   if (!disableHoverListener) {
     childProps.onMouseEnter = e => handleOpen(e);
     childProps.onMouseLeave = () => onMouseExit();
+  }
+  if (!disableKeyboardListener) {
+    childProps.onKeyDown = e => {
+      if (e.key === 'Escape') setShowTooltip(false);
+    };
+    childProps.onKeyUp = e => {
+      console.log(e);
+      if (e.key === ' ' || e.key === 'Enter') setShowTooltip(!showTooltip);
+    };
+  }
+  if (!disableClickListner) {
+    childProps.onClick = () => setShowTooltip(!showTooltip);
   }
 
   return (

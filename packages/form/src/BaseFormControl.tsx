@@ -1,15 +1,17 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
 
-import './BaseFormControl.scss';
+import { VariantType } from '@entur/utils';
+import { QuestionIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
+import { IconButton } from '@entur/button';
+
 import { FeedbackText } from './FeedbackText';
 import { InputGroupContextProvider } from './InputGroupContext';
 import { InputGroupLabel } from './InputGroupLabel';
 import { useVariant } from './VariantProvider';
 
-import { VariantType } from '@entur/utils';
-import { QuestionIcon } from '@entur/icons';
-import { Tooltip } from '@entur/tooltip';
+import './BaseFormControl.scss';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -39,6 +41,8 @@ export type BaseFormControlProps = {
   label: React.ReactNode;
   /** En tooltip som forklarer labelen til inputfeltet */
   labelTooltip?: React.ReactNode;
+  /** Forklarende tekst for knappen som åpner labelTooltip */
+  labelTooltipButtonAriaLabel?: string;
   /** Illustrerer om inputfeltet er påkrevd eller ikke */
   required?: boolean;
   /** ID som settes på labelen til inputfeltet */
@@ -76,6 +80,7 @@ export const BaseFormControl = React.forwardRef<
       label,
       required,
       labelTooltip,
+      labelTooltipButtonAriaLabel = 'Klikk for tilleggsinfo om feltet',
       feedback,
       labelId,
       labelProps,
@@ -91,11 +96,20 @@ export const BaseFormControl = React.forwardRef<
 
     return (
       <InputGroupContextProvider>
-        <div>
+        <div
+          className={classNames(
+            'eds-form-control__field-and-feedback-text',
+            className,
+            {
+              'eds-form-control__field-and-feedback-text--has-tooltip':
+                labelTooltip !== undefined,
+            },
+          )}
+          style={style}
+        >
           <div
             className={classNames(
               'eds-form-control-wrapper',
-              className,
               `eds-form-control-wrapper--size-${size}`,
               {
                 'eds-form-control-wrapper--success':
@@ -108,7 +122,6 @@ export const BaseFormControl = React.forwardRef<
               },
             )}
             ref={ref}
-            style={style}
             {...rest}
           >
             {prepend && (
@@ -121,17 +134,32 @@ export const BaseFormControl = React.forwardRef<
               staticAnimation={disableLabelAnimation}
               {...labelProps}
             />
+            {labelTooltip && (
+              <Tooltip
+                content={labelTooltip}
+                placement="right"
+                showCloseButton={false}
+                disableFocusListener={true}
+                disableHoverListener={true}
+                disableClickListner={false}
+                disableKeyboardListener={false}
+              >
+                <IconButton
+                  as="span"
+                  tabIndex={0}
+                  role="button"
+                  className="eds-form-control__append eds-form-control__append--tooltip"
+                  aria-label={labelTooltipButtonAriaLabel}
+                >
+                  <QuestionIcon
+                    className="eds-input-group__label-tooltip-icon"
+                    aria-hidden="true"
+                  />
+                </IconButton>
+              </Tooltip>
+            )}
             {children}
             {append && <div className="eds-form-control__append">{append}</div>}
-            {labelTooltip && (
-              <div className="eds-form-control__append eds-form-control__append--tooltip">
-                <Tooltip content={labelTooltip} placement="right">
-                  <span className="eds-input-group__label-tooltip-icon">
-                    <QuestionIcon />
-                  </span>
-                </Tooltip>
-              </div>
-            )}
           </div>
           {feedback && currentVariant && (
             <FeedbackText
