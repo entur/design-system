@@ -1,14 +1,15 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-datepicker {
-  position: relative;
-  width: fit-content;
-  height: fit-content;
+  // Overrides for default datefield
+  &.eds-datefield {
+    .eds-form-control-wrapper {
+      padding-right: 0rem;
+    }
+  }
 
   &__open-calendar-button {
-    position: absolute;
-    right: 0.5rem;
-    top: 0.45rem;
+    margin: t.$space-none t.$space-extra-small2 t.$space-none t.$space-extra-small;
 
     // This is done to remove contrast specific styling
     &.eds-icon-button {
@@ -27,15 +28,8 @@
     }
   }
 
-  &__datefield {
-    padding-right: 4rem;
-    &--disabled {
-      padding-right: 1rem;
-    }
-
-    &__wrapper {
-      position: relative;
-    }
+  &--disabled {
+    padding-right: 1rem;
   }
 
   &__calendar-modal.eds-modal__content {
