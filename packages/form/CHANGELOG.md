@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.2.0...@entur/form@8.0.0-beta.0) (2024-07-08)
+
+### Bug Fixes
+
+- **form:** make text field and text area work with improved base form control ([a7939f2](https://bitbucket.org/enturas/design-system/commits/a7939f23a8a59211d697b966f9779be81d6721d0))
+
+### Performance Improvements
+
+- **base form control:** simplify code structure of base form control ([ac7da6a](https://bitbucket.org/enturas/design-system/commits/ac7da6a3c3caddddd71631736b2c6a69d3e192f5))
+
+### BREAKING CHANGES
+
+- **form:** Some wrappers and styling classes are removed.|If you override internal styling classes, make
+  sure they look as expected after this update!
+- **base form control:** Some wrappers have been removed and component structure is changed.|This could make previous
+  overwritten styles no longer work as intended.|If you are changign internal styles, please make sure
+  your UI works as expected
+
 # [7.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@7.1.11...@entur/form@7.2.0) (2024-06-24)
 
 ### Features

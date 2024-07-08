@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.4.12...@entur/datepicker@10.0.0-beta.0) (2024-07-08)
+
+### Bug Fixes
+
+- **datepicker:** make date- and timepicker work with improved base form control ([862c0d4](https://bitbucket.org/enturas/design-system/commits/862c0d477fa43b3eeeebf2369d60183e83c42215))
+
+### BREAKING CHANGES
+
+- **datepicker:** Some wrappers and styling classes are removed.|If you override internal styling classes, make sure
+  the look as expected after this update!
+
 ## [9.4.12](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@9.4.11...@entur/datepicker@9.4.12) (2024-06-24)
 
 ### Performance Improvements

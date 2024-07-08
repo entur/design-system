@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.5.0...@entur/dropdown@6.0.0-beta.0) (2024-07-08)
+
+### Bug Fixes
+
+- **dropdowns:** make dropdowns work with improved base form control ([39e4ec1](https://bitbucket.org/enturas/design-system/commits/39e4ec15cbae05ba8f799c0d333d0079346da2bb))
+
+### BREAKING CHANGES
+
+- **dropdowns:** Wrappers and some classes are removed.|If you are overriding internal styling classes make sure they
+  look as expected after this update!
+
 # [5.5.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@5.4.11...@entur/dropdown@5.5.0) (2024-06-24)
 
 ### Bug Fixes
