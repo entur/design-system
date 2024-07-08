@@ -151,10 +151,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
   if (!disableKeyboardListener) {
     childProps.onKeyDown = e => {
       if (e.key === 'Escape') setShowTooltip(false);
-    };
-    childProps.onKeyUp = e => {
-      console.log(e);
-      if (e.key === ' ' || e.key === 'Enter') setShowTooltip(!showTooltip);
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        setShowTooltip(!showTooltip);
+      }
     };
   }
   if (!disableClickListner) {
