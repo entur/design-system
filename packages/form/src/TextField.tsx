@@ -1,11 +1,13 @@
-import { useRandomId, useOnMount } from '@entur/utils';
 import React from 'react';
+import classNames from 'classnames';
+
+import { CloseSmallIcon } from '@entur/icons';
+import { useRandomId, useOnMount, mergeRefs, VariantType } from '@entur/utils';
+
 import { BaseFormControl } from './BaseFormControl';
 import { useInputGroupContext } from './InputGroupContext';
-import { useVariant } from './VariantProvider';
 import { isFilled } from './utils';
-import { CloseSmallIcon } from '@entur/icons';
-import { VariantType } from '@entur/utils';
+import { useVariant } from './VariantProvider';
 import './TextField.scss';
 
 /** @deprecated use variant="information" instead */
@@ -82,6 +84,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const randomId = useRandomId('eds-textfield');
     const textFieldId = labelProps && labelProps.id ? labelProps.id : randomId;
+    const textFieldRef = React.useRef<HTMLInputElement>(null);
     return (
       <BaseFormControl
         disabled={disabled}
@@ -91,7 +94,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         append={
           clearable && onClear ? <ClearButton onClear={onClear} /> : append
         }
-        className={className}
+        className={classNames(className, 'eds-textfield__wrapper')}
         style={style}
         size={size}
         label={label}
@@ -102,11 +105,14 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         disableLabelAnimation={disableLabelAnimation}
         labelProps={labelProps}
         ariaAlertOnFeedback={ariaAlertOnFeedback}
+        onClick={e => {
+          if (e.target === e.currentTarget) textFieldRef?.current?.focus();
+        }}
       >
         <TextFieldBase
           disabled={disabled}
           readOnly={readOnly}
-          ref={ref}
+          ref={mergeRefs(ref, textFieldRef)}
           aria-labelledby={textFieldId}
           onChange={onChange}
           value={value}
