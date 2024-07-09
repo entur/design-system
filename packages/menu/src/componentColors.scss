@@ -29,10 +29,12 @@
   --components-menu-overflowmenu-border: #{$stroke-subdued};
   --components-menu-overflowmenu-fill-default: #{$fill-background-tint-neutral};
   --components-menu-overflowmenu-fill-hover: #{$fill-background-subdued-light};
+  --components-menu-overflowmenu-fill-selected: #{$fill-primary-default-light};
   --components-menu-overflowmenu-icon: #{$shape-accent};
   --components-menu-overflowmenu-icon-disabled: #{$shape-neutral};
   --components-menu-overflowmenu-text: #{$text-accent};
   --components-menu-overflowmenu-text-disabled: #{$text-neutral};
+  --components-menu-overflowmenu-text-selected: #{$text-light};
   --components-menu-pagination-contrast-active: #{$fill-secondary-active-contrast};
   --components-menu-pagination-contrast-border-selected: #{$stroke-light};
   --components-menu-pagination-contrast-border-unselected: #{$stroke-transparentalt};
@@ -125,10 +127,12 @@
   --components-menu-overflowmenu-border: #{$stroke-colorless};
   --components-menu-overflowmenu-fill-default: #{$fill-background-overlay-solidalt};
   --components-menu-overflowmenu-fill-hover: #{$fill-secondary-hover-contrast};
+  --components-menu-overflowmenu-fill-selected: #{$fill-primary-active-contrast};
   --components-menu-overflowmenu-icon: #{$shape-lightalt};
   --components-menu-overflowmenu-icon-disabled: #{$shape-neutralalt2};
   --components-menu-overflowmenu-text: #{$text-lightalt};
   --components-menu-overflowmenu-text-disabled: #{$text-neutralalt2};
+  --components-menu-overflowmenu-text-selected: #{$text-accent};
   --components-menu-pagination-contrast-active: #{$fill-secondary-active-contrast};
   --components-menu-pagination-contrast-border-selected: #{$stroke-lightalt};
   --components-menu-pagination-contrast-border-unselected: #{$stroke-transparentalt};

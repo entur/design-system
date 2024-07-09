@@ -1,755 +1,785 @@
 [
   {
-    "mode": {
-      "name": "Mode 1",
-      "id": "2813:1"
-    },
-    "color": [
-      {
-        "name": "Blue/10",
-        "color": "#f6f6f9",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/100",
-        "color": "#292b6a",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/20",
-        "color": "#eaeaf1",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/30",
-        "color": "#d9dae8",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/40",
-        "color": "#bcbdd2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/50",
-        "color": "#9ea0bd",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/60",
-        "color": "#8284ab",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/70",
-        "color": "#626493",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/80",
-        "color": "#54568c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Blue/90",
-        "color": "#393d79",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/10",
-        "color": "#fffbeb",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/100",
-        "color": "#483705",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/20",
-        "color": "#fff4cd",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/30",
-        "color": "#ffeeb3",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/40",
-        "color": "#ffe082",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/50",
-        "color": "#ffda6b",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/60",
-        "color": "#ffca28",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/70",
-        "color": "#e9b10c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/80",
-        "color": "#b38909",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Canary/90",
-        "color": "#775b09",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/10",
-        "color": "#ffe5e5",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/100",
-        "color": "#370606",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/20",
-        "color": "#ffcece",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/30",
-        "color": "#ff9494",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/40",
-        "color": "#ff5959",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/50",
-        "color": "#f73e3b",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/60",
-        "color": "#d31b1b",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/70",
-        "color": "#b31414",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/80",
-        "color": "#8a1414",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Coral/90",
-        "color": "#5d0e0e",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/10",
-        "color": "#e5e5e9",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/100",
-        "color": "#08091c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/15",
-        "color": "#d8d9df",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/20",
-        "color": "#cccdd4",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/25",
-        "color": "#bfc0c8",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/30",
-        "color": "#b3b4bd",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/35",
-        "color": "#a6a7b2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/40",
-        "color": "#999aa7",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/45",
-        "color": "#8d8e9c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/5",
-        "color": "#f2f2f5",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/50",
-        "color": "#81828f",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/55",
-        "color": "#757584",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/60",
-        "color": "#6a6b78",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/65",
-        "color": "#5e5f6c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/70",
-        "color": "#525360",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/75",
-        "color": "#464755",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/80",
-        "color": "#393a49",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/85",
-        "color": "#2d2e3e",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/90",
-        "color": "#212233",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Ebony/95",
-        "color": "#141527",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/10",
-        "color": "#f2f5f7",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/100",
-        "color": "#262729",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/110",
-        "color": "#101112",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/20",
-        "color": "#edf0f2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/30",
-        "color": "#e3e6e8",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/40",
-        "color": "#cfd2d4",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/50",
-        "color": "#b6b8ba",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/60",
-        "color": "#949699",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/70",
-        "color": "#6e6f73",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/80",
-        "color": "#515254",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Grey/90",
-        "color": "#3d3e40",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/10",
-        "color": "#f0f1fa",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/100",
-        "color": "#11143c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/20",
-        "color": "#d9ddf2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/30",
-        "color": "#c7cdeb",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/40",
-        "color": "#aeb7e2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/50",
-        "color": "#8794d4",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/60",
-        "color": "#5a68c4",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/70",
-        "color": "#3b46ab",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/80",
-        "color": "#262f7d",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Lavender/90",
-        "color": "#181c56",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/10",
-        "color": "#e6f6f0",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/100",
-        "color": "#022015",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/20",
-        "color": "#d0f1e3",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/30",
-        "color": "#9cd9c2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/40",
-        "color": "#5ac39a",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/50",
-        "color": "#37ab83",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/60",
-        "color": "#1a8e60",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/70",
-        "color": "#068152",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/80",
-        "color": "#05613e",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Mint/90",
-        "color": "#034029",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/10",
-        "color": "#fff1eb",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/100",
-        "color": "#3a1503",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/20",
-        "color": "#ffe4d6",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/30",
-        "color": "#ffd3bd",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/40",
-        "color": "#ffbf9e",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/50",
-        "color": "#fd9a68",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/60",
-        "color": "#fd7835",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/70",
-        "color": "#e6560f",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/80",
-        "color": "#ae4009",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Peach/90",
-        "color": "#742b06",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/10",
-        "color": "#e1eff8",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/100",
-        "color": "#011a23",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/20",
-        "color": "#acd7f1",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/30",
-        "color": "#64b3e7",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/40",
-        "color": "#2d98d2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/50",
-        "color": "#067eb2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/60",
-        "color": "#046690",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/70",
-        "color": "#044d6c",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/80",
-        "color": "#003852",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Sky/90",
-        "color": "#022536",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Blue-Alpha10",
-        "color": "#9ea0bd1a",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Blue-Alpha40",
-        "color": "#54568c66",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Canary-Alpha30",
-        "color": "#fff4cd4d",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Coral-Alpha20",
-        "color": "#ff949433",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Ebony-Alpha15",
-        "color": "#e5e5e926",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Ebony-Alpha20",
-        "color": "#cccdd44d",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Ebony-Alpha25",
-        "color": "#e5e5e940",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Ebony-Alpha35",
-        "color": "#e5e5e959",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Lavender-Alpha70",
-        "color": "#aeb7e2b2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Neutral-Alpha10",
-        "color": "#cfd2d41a",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Neutral-Alpha15",
-        "color": "#cfd2d426",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "Transparent/Peach-Alpha70",
-        "color": "#ffbf9eb2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-0",
-        "color": "#ffffff00",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-10",
-        "color": "#ffffff1a",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-100",
-        "color": "#ffffff",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-20",
-        "color": "#ffffff33",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-30",
-        "color": "#ffffff4d",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-40",
-        "color": "#ffffff66",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-50",
-        "color": "#ffffff80",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-60",
-        "color": "#ffffff99",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-70",
-        "color": "#ffffffb2",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-80",
-        "color": "#ffffffcc",
-        "var": "",
-        "rootAlias": ""
-      },
-      {
-        "name": "White/Alpha-90",
-        "color": "#ffffffe5",
-        "var": "",
-        "rootAlias": ""
+    "name": "Primitive colors",
+    "values": [
+      {
+        "mode": {
+          "name": "Mode 1",
+          "id": "2813:1"
+        },
+        "color": [
+          {
+            "name": "Blue/10",
+            "value": "#f6f6f9",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/100",
+            "value": "#292b6a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/20",
+            "value": "#eaeaf1",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/30",
+            "value": "#d9dae8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/40",
+            "value": "#bcbdd2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/50",
+            "value": "#9ea0bd",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/60",
+            "value": "#8284ab",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/70",
+            "value": "#626493",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/80",
+            "value": "#54568c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Blue/90",
+            "value": "#393d79",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/10",
+            "value": "#fffbeb",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/100",
+            "value": "#483705",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/20",
+            "value": "#fff4cd",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/30",
+            "value": "#ffeeb3",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/40",
+            "value": "#ffe082",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/50",
+            "value": "#ffda6b",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/60",
+            "value": "#ffca28",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/70",
+            "value": "#e9b10c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/80",
+            "value": "#b38909",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Canary/90",
+            "value": "#775b09",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/10",
+            "value": "#ffe5e5",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/100",
+            "value": "#370606",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/20",
+            "value": "#ffcece",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/30",
+            "value": "#ff9494",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/40",
+            "value": "#ff5959",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/50",
+            "value": "#f73e3b",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/60",
+            "value": "#d31b1b",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/70",
+            "value": "#b31414",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/80",
+            "value": "#8a1414",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Coral/90",
+            "value": "#5d0e0e",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/10",
+            "value": "#e5e5e9",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/100",
+            "value": "#08091c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/15",
+            "value": "#d8d9df",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/20",
+            "value": "#cccdd4",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/25",
+            "value": "#bfc0c8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/30",
+            "value": "#b3b4bd",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/35",
+            "value": "#a6a7b2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/40",
+            "value": "#999aa7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/45",
+            "value": "#8d8e9c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/5",
+            "value": "#f2f2f5",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/50",
+            "value": "#81828f",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/55",
+            "value": "#757584",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/60",
+            "value": "#6a6b78",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/65",
+            "value": "#5e5f6c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/70",
+            "value": "#525360",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/75",
+            "value": "#464755",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/80",
+            "value": "#393a49",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/85",
+            "value": "#2d2e3e",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/90",
+            "value": "#212233",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Ebony/95",
+            "value": "#141527",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/10",
+            "value": "#f2f5f7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/100",
+            "value": "#262729",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/110",
+            "value": "#101112",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/20",
+            "value": "#edf0f2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/30",
+            "value": "#e3e6e8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/40",
+            "value": "#cfd2d4",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/50",
+            "value": "#b6b8ba",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/60",
+            "value": "#949699",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/70",
+            "value": "#6e6f73",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/80",
+            "value": "#515254",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Grey/90",
+            "value": "#3d3e40",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/10",
+            "value": "#f0f1fa",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/100",
+            "value": "#11143c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/20",
+            "value": "#d9ddf2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/30",
+            "value": "#c7cdeb",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/40",
+            "value": "#aeb7e2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/50",
+            "value": "#8794d4",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/60",
+            "value": "#5a68c4",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/70",
+            "value": "#3b46ab",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/80",
+            "value": "#262f7d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Lavender/90",
+            "value": "#181c56",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/10",
+            "value": "#e6f6f0",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/100",
+            "value": "#022015",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/20",
+            "value": "#d0f1e3",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/30",
+            "value": "#9cd9c2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/40",
+            "value": "#5ac39a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/50",
+            "value": "#37ab83",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/60",
+            "value": "#1a8e60",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/70",
+            "value": "#068152",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/80",
+            "value": "#05613e",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Mint/90",
+            "value": "#034029",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/10",
+            "value": "#fff1eb",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/100",
+            "value": "#3a1503",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/20",
+            "value": "#ffe4d6",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/30",
+            "value": "#ffd3bd",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/40",
+            "value": "#ffbf9e",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/50",
+            "value": "#fd9a68",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/60",
+            "value": "#fd7835",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/70",
+            "value": "#e6560f",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/80",
+            "value": "#ae4009",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Peach/90",
+            "value": "#742b06",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/10",
+            "value": "#e1eff8",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/100",
+            "value": "#011a23",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/20",
+            "value": "#acd7f1",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/30",
+            "value": "#64b3e7",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/40",
+            "value": "#2d98d2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/50",
+            "value": "#067eb2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/60",
+            "value": "#046690",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/70",
+            "value": "#044d6c",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/80",
+            "value": "#003852",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Sky/90",
+            "value": "#022536",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Blue-Alpha10",
+            "value": "#9ea0bd1a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Blue-Alpha40",
+            "value": "#54568c66",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Canary-Alpha25",
+            "value": "#ffe08240",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Canary-Alpha30",
+            "value": "#fff4cd4d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Coral-Alpha20",
+            "value": "#ff949433",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Ebony-Alpha15",
+            "value": "#e5e5e926",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Ebony-Alpha20",
+            "value": "#cccdd44d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Ebony-Alpha25",
+            "value": "#e5e5e940",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Ebony-Alpha35",
+            "value": "#e5e5e959",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Lavender-Alpha70",
+            "value": "#aeb7e2b2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Mint-Alpha20",
+            "value": "#5ac39a33",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Neutral-Alpha10",
+            "value": "#cfd2d41a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Neutral-Alpha15",
+            "value": "#cfd2d426",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Neutral-Alpha20",
+            "value": "#26272933",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Peach-Alpha70",
+            "value": "#ffbf9eb2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "Transparent/Sky-Alpha20",
+            "value": "#2d98d233",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-0",
+            "value": "#ffffff00",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-10",
+            "value": "#ffffff1a",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-100",
+            "value": "#ffffff",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-20",
+            "value": "#ffffff33",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-30",
+            "value": "#ffffff4d",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-40",
+            "value": "#ffffff66",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-50",
+            "value": "#ffffff80",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-60",
+            "value": "#ffffff99",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-70",
+            "value": "#ffffffb2",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-80",
+            "value": "#ffffffcc",
+            "var": "",
+            "rootAlias": ""
+          },
+          {
+            "name": "White/Alpha-90",
+            "value": "#ffffffe5",
+            "var": "",
+            "rootAlias": ""
+          }
+        ],
+        "number": [],
+        "string": []
       }
-    ],
-    "number": []
+    ]
   }
 ]

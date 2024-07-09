@@ -2,7 +2,7 @@ import { unflatten } from 'flat';
 
 type Color = {
   name: string;
-  color: string;
+  value: string;
   var: string;
   rootAlias: string;
 };
@@ -34,51 +34,51 @@ const SUPPORTED_COLOR_MODES = ['light', 'dark'];
 
 export function createColorSet(fileData: string) {
   const colorsUnformated = JSON.parse(fileData);
+  const colorsFormatedAndMappedToModes: VariableSet[] =
+    colorsUnformated[0].values.reduce(
+      (allComponentColors: VariableSet[], colorMode: ColorMode) => {
+        const colorsFormatedForMode: VariableSet[] = colorMode.color.map(
+          (color: Color) => {
+            const colorNameInKebabCase = toKebabCase(color.name);
+            const varNameInKebabCase = toKebabCase(color.var);
+            const hexValue = color.value;
+            const colorModeName = colorMode.mode.name.toLowerCase();
+            const usesAlias = varNameInKebabCase !== '';
 
-  const colorsFormatedAndMappedToModes: VariableSet[] = colorsUnformated.reduce(
-    (allComponentColors: VariableSet[], colorMode: ColorMode) => {
-      const colorsFormatedForMode: VariableSet[] = colorMode.color.map(
-        (color: Color) => {
-          const colorNameInKebabCase = toKebabCase(color.name);
-          const varNameInKebabCase = toKebabCase(color.var);
-          const hexValue = color.color;
-          const colorModeName = colorMode.mode.name.toLowerCase();
-          const usesAlias = varNameInKebabCase !== '';
+            return {
+              css: {
+                key: `--${colorNameInKebabCase}`,
+                value: usesAlias ? `var(--${varNameInKebabCase})` : hexValue,
+              },
+              scss: {
+                key: `$${colorNameInKebabCase}`,
+                value: usesAlias ? `$${varNameInKebabCase}` : hexValue,
+                sanitizedValue: usesAlias
+                  ? `#{$${varNameInKebabCase}}`
+                  : hexValue,
+              },
+              less: {
+                key: `@${colorNameInKebabCase}`,
+                value: usesAlias ? `@${varNameInKebabCase}` : hexValue,
+              },
+              js: {
+                key: `${
+                  SUPPORTED_COLOR_MODES.includes(colorModeName)
+                    ? colorModeName + '.'
+                    : ''
+                }${toFlattenedJSObjectKey(color.name)}`,
+                value: hexValue,
+              },
+              mode: colorModeName,
+              usesAlias: usesAlias,
+            };
+          },
+        );
 
-          return {
-            css: {
-              key: `--${colorNameInKebabCase}`,
-              value: usesAlias ? `var(--${varNameInKebabCase})` : hexValue,
-            },
-            scss: {
-              key: `$${colorNameInKebabCase}`,
-              value: usesAlias ? `$${varNameInKebabCase}` : hexValue,
-              sanitizedValue: usesAlias
-                ? `#{$${varNameInKebabCase}}`
-                : hexValue,
-            },
-            less: {
-              key: `@${colorNameInKebabCase}`,
-              value: usesAlias ? `@${varNameInKebabCase}` : hexValue,
-            },
-            js: {
-              key: `${
-                SUPPORTED_COLOR_MODES.includes(colorModeName)
-                  ? colorModeName + '.'
-                  : ''
-              }${toFlattenedJSObjectKey(color.name)}`,
-              value: hexValue,
-            },
-            mode: colorModeName,
-            usesAlias: usesAlias,
-          };
-        },
-      );
-
-      return [...allComponentColors, ...colorsFormatedForMode];
-    },
-    [],
-  );
+        return [...allComponentColors, ...colorsFormatedForMode];
+      },
+      [],
+    );
   return colorsFormatedAndMappedToModes;
 }
 
