@@ -2,6 +2,108 @@
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
+.token {
+  &-content {
+    margin-top: $space-small;
+
+    &__grid-item {
+      display: flex;
+      gap: $space-extra-small;
+      height: 3rem;
+      align-items: flex-start;
+      margin-bottom: $space-medium;
+
+      @include for-large-desktop {
+        margin: 0;
+      }
+      &__example {
+        border-radius: 1px;
+        width: 96px;
+        height: 32px;
+
+        @include for-large-desktop {
+          width: 32px;
+        }
+      }
+      &--primitive {
+        display: flex;
+        align-items: center;
+        gap: $space-extra-small;
+        height: 2rem;
+        margin-top: 0;
+      }
+    }
+    &__example {
+      border-radius: 1px;
+      width: 96px;
+      height: 32px;
+
+      @include for-large-desktop {
+        width: 32px;
+      }
+    }
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-items: center;
+
+      &#chart svg,
+      &#transport svg {
+        height: auto;
+        width: 32px;
+      }
+    }
+
+    &__codetext {
+      display: flex;
+      flex-direction: column;
+      color: var(--basecolors-text-subdued);
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 20px;
+      gap: $space-extra-small2;
+      width: 100%;
+      @include for-large-desktop {
+        min-width: 145px;
+        max-width: 184px;
+      }
+      &--primitive {
+        color: var(--basecolors-text-subdued);
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: $space-extra-small;
+        height: 2rem;
+        margin-left: $space-small;
+        width: 100%;
+        @include for-large-desktop {
+          justify-content: space-around;
+        }
+      }
+    }
+    // Edit eds-copyable-text
+    .eds-copyable-text {
+      width: 100%;
+      margin: 0 !important;
+      max-width: 9rem;
+
+      &__button {
+        margin: 0 !important;
+        padding: 0;
+      }
+      &__button:focus {
+        outline-offset: 0 !important;
+      }
+    }
+    .eds-preformatted-text {
+      padding: 0.25rem;
+      height: 24px;
+    }
+  }
+}
+
 .token-table {
   &__grid {
     h3 {
@@ -24,53 +126,8 @@
     }
   }
   &-content {
-    margin-top: 0.75rem;
+    margin-top: $space-small;
 
-    &__grid-item {
-      display: flex;
-      align-items: center;
-      gap: $space-extra-small;
-      height: 2rem;
-    }
-    &__example {
-      border-radius: 1px;
-      width: 96px;
-      height: 32px;
-
-      @include for-large-desktop {
-        width: 32px;
-      }
-    }
-    &__codetext {
-      color: var(--basecolors-text-subdued);
-      font-weight: 500;
-      font-size: 0.875rem;
-      margin-left: $space-small;
-      width: 100%;
-
-      @include for-large-desktop {
-        margin-left: $space-large;
-        max-width: $space-extra-large9;
-        min-width: $space-extra-large9;
-      }
-    }
-    .eds-copyable-text {
-      width: 100%;
-      margin: 0 !important;
-      max-width: 9rem;
-
-      &__button {
-        margin: 0 !important;
-        padding: 0;
-      }
-      &__button:focus {
-        outline-offset: 0 !important;
-      }
-    }
-    .eds-preformatted-text {
-      padding: 0.25rem;
-      height: 24px;
-    }
     &--dark-bg {
       background-color: semantic.$fill-background-standard-dark;
 
@@ -80,102 +137,26 @@
     }
     &--multi-columns {
       display: grid;
-      gap: 16px;
-      margin-bottom: 1rem;
+      gap: $space-medium;
+      margin-bottom: $space-medium;
       padding: $space-medium;
 
       @include for-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 2rem;
-        gap: 24px;
+        gap: $space-large;
       }
       @include for-large-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin-bottom: 2rem;
-        gap: 24px;
+        margin-bottom: $space-extra-large;
+        gap: $space-large;
       }
     }
   }
+  // edit eds-table
   .eds-table {
     margin-bottom: $space-extra-large;
-  }
-
-  // If semantic or base
-  &.semantic-token {
-    .token-table-content__grid-item {
-      align-items: flex-start;
-      height: 48px;
-      margin-bottom: 1rem;
-
-      @include for-large-desktop {
-        margin: 0;
-      }
-    }
-    &__codetext {
-      display: flex;
-      flex-direction: column;
-      color: var(--basecolors-text-subdued);
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: 20px;
-      gap: $space-extra-small2;
-      width: 100%;
-      @include for-large-desktop {
-        min-width: 145px;
-        max-width: 184px;
-      }
-    }
-
-    &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-items: center;
-
-      &#fill {
-        height: 48px;
-        width: 32px;
-        border-radius: 4px;
-      }
-    }
-  }
-  // if data
-  &.data-token {
-    .token-table-content__grid-item {
-      align-items: flex-start;
-      height: 48px;
-      margin-bottom: 1rem;
-      @include for-large-desktop {
-        margin: 0;
-      }
-    }
-    &__codetext {
-      display: flex;
-      flex-direction: column;
-      color: var(--basecolors-text-subdued);
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: 20px;
-      gap: $space-extra-small2;
-      width: 100%;
-      @include for-desktop {
-        max-width: $space-extra-large9;
-        min-width: $space-extra-large9;
-      }
-    }
-
-    &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-items: center;
-
-      & svg {
-        height: auto;
-        width: 32px;
-      }
-    }
   }
 }

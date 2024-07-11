@@ -1,51 +1,22 @@
 import React from 'react';
-import { DataTokenProps, FlattenedTokens } from './types';
-import { ChartFilledIcon } from '@entur/icons';
-import { CopyableText } from '@entur/alert';
+import { TokensTableProps } from './types';
 import {
   formatDotToVariable,
   formatVariableByType,
-  formatTokenValue,
   sliceTokenKey,
 } from '~/utils/formatVariable';
 import { GridItem } from '@entur/grid';
 import { Heading3, Heading4 } from '@entur/typography';
 import { useSettings } from '../SettingsContext';
+import ColorToken from './ColorToken';
 
-type Props = {
-  tokens: FlattenedTokens;
-};
-const DataToken: React.FC<DataTokenProps> = ({
-  formattedVariable,
-  value,
-  copyValue,
-}) => {
-  return (
-    <div className="token-table data-token">
-      <div className="token-table-content__grid-item">
-        <div className="token-table data-token__icon">
-          <ChartFilledIcon color={value} />
-        </div>
-        <div className="token-table data-token__codetext">
-          <CopyableText textToCopy={copyValue}>
-            {sliceTokenKey(formattedVariable, 2)}
-          </CopyableText>
-          {formatTokenValue(value)}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const DataTokenList: React.FC<Props> = ({ tokens }) => {
+const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
 
-  const formatTokens = Object.entries(tokens)
-    .filter(([key]) => !key.includes('rem.'))
-    .map(([key, value]) => {
-      const formattedVariable = formatDotToVariable(key);
-      return [formattedVariable, value] as [string, string];
-    });
+  const formatTokens = Object.entries(tokens).map(([key, value]) => {
+    const formattedVariable = formatDotToVariable(key);
+    return [formattedVariable, value] as [string, string];
+  });
 
   const categorizedTokens = formatTokens.reduce((categories, [key, value]) => {
     const formattedVariable = formatDotToVariable(key);
@@ -66,12 +37,15 @@ const DataTokenList: React.FC<Props> = ({ tokens }) => {
       sliceTokenKey(formattedVariable, 1),
     );
     const copyValue = formatVariableBySettingsType;
+    const showValue = sliceTokenKey(formattedVariable, 2);
+    const iconCategory = 'chart';
 
     categories[mainCategory][subCategory].push(
-      <DataToken
+      <ColorToken
         key={formattedVariable}
-        formattedVariable={formattedVariable}
-        value={value}
+        iconCategory={iconCategory}
+        showValue={showValue}
+        hexValue={value}
         copyValue={copyValue}
       />,
     );

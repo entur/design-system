@@ -14,12 +14,12 @@ import { flatten } from '~/utils/flatten';
 import { CopyButton } from '../CopyButton';
 import { useSettings } from '../SettingsContext';
 
-type Props = {
-  tokenKey: keyof typeof allTokens;
-  example?: React.ComponentType<{ value: string }>;
-};
+import { AllTokensTableProps } from './types';
 
-export const TokenTable: React.FC<Props> = ({ tokenKey, example: Example }) => {
+export const TokenTable: React.FC<AllTokensTableProps> = ({
+  tokenKey,
+  example: Example,
+}) => {
   const flattenedTokens = React.useMemo(
     () => flatten(allTokens[tokenKey]),
     [tokenKey],
