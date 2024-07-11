@@ -5,3 +5,9 @@ textarea.eds-form-control.eds-textarea {
   resize: vertical;
   line-height: t.$line-heights-extra-large;
 }
+
+// No right side padding to make resize handle positioned in bottom right corner
+.eds-textarea__wrapper .eds-form-control-wrapper {
+  padding-right: 0;
+  cursor: text;
+}

@@ -1,18 +1,19 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
 .eds-datefield {
-  div:first-of-type.eds-date-and-time-field__segment {
-    margin-left: 1rem;
-  }
-  &.eds-form-control-wrapper--disabled {
-    &:focus-within {
-      border-color: transparent;
-      box-shadow: none;
+  width: fit-content;
+
+  .eds-form-control-wrapper {
+    padding-inline: 1rem;
+
+    &--disabled {
+      &:focus-within {
+        border-color: transparent;
+        box-shadow: none;
+      }
+      .eds-date-and-time-field__segment:focus {
+        background: none;
+      }
     }
-    .eds-date-and-time-field__segment:focus {
-      background: none;
-    }
-  }
-  .eds-form-control__append--tooltip {
-    margin-top: 0.75rem;
-    margin-right: -0.25rem;
   }
 }

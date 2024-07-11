@@ -321,81 +321,81 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
   };
 
   return (
-    <div
-      className={classNames('eds-dropdown__wrapper', className, {
-        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
-      })}
-      style={style}
-    >
-      <BaseFormControl
-        className={classNames('eds-dropdown', 'eds-dropdown--searchable')}
-        disabled={disabled}
-        disableLabelAnimation={disableLabelAnimation}
-        feedback={feedback}
-        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
-        label={label}
-        labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
-        labelTooltip={labelTooltip}
-        onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget) inputRef.current?.focus();
-        }}
-        prepend={prepend}
-        readOnly={readOnly}
-        ref={refs.setReference}
-        variant={variant}
-        {...rest}
-        append={
-          <FieldAppend
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearSelectedItem}
-            disabled={readOnly || disabled}
-            focusable={false}
-            getToggleButtonProps={getToggleButtonProps}
-            isOpen={isOpen}
-            loading={loading}
-            loadingText={loadingText}
-            onClear={handleOnClear}
-            selectedItems={[selectedItem]}
-          />
-        }
-      >
-        <span
-          className={classNames('eds-dropdown--searchable__selected-item', {
-            'eds-dropdown--searchable__selected-item--hidden':
-              !showSelectedItem,
-          })}
-          aria-hidden="true"
-          onClick={() => {
-            inputRef.current?.focus();
-            openMenu();
-          }}
-        >
-          {showSelectedItem ? selectedItem?.label : ''}
-        </span>
-        <input
-          className={classNames('eds-dropdown__input eds-form-control', {
-            'eds-dropdown__input--hidden': showSelectedItem,
-          })}
+    <BaseFormControl
+      append={
+        <FieldAppend
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          clearable={clearable}
+          labelClearSelectedItems={labelClearSelectedItem}
           disabled={readOnly || disabled}
-          placeholder={selectedItem?.label ?? placeholder}
-          {...getInputProps({
-            onBlur: () => {
-              if (selectedItem !== null) setShowSelectedItem(true);
-            },
-            onFocus: () => {
-              setShowSelectedItem(false);
-            },
-            onKeyDown: e => {
-              if (selectOnTab && isOpen && e.key === 'Tab')
-                onChange?.(listItems[highlightedIndex]);
-            },
-            ref: inputRef,
-          })}
+          focusable={false}
+          getToggleButtonProps={getToggleButtonProps}
+          isOpen={isOpen}
+          loading={loading}
+          loadingText={loadingText}
+          onClear={handleOnClear}
+          selectedItems={[selectedItem]}
         />
-      </BaseFormControl>
+      }
+      className={classNames(
+        'eds-dropdown',
+        'eds-dropdown--searchable',
+        className,
+        {
+          'eds-dropdown--has-tooltip': labelTooltip !== undefined,
+        },
+      )}
+      disabled={disabled}
+      disableLabelAnimation={disableLabelAnimation}
+      feedback={feedback}
+      isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
+      label={label}
+      labelId={getLabelProps().id}
+      labelProps={getLabelProps()}
+      labelTooltip={labelTooltip}
+      onClick={(e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) inputRef.current?.focus();
+      }}
+      prepend={prepend}
+      readOnly={readOnly}
+      ref={refs.setReference}
+      style={style}
+      variant={variant}
+      {...rest}
+    >
+      <span
+        className={classNames('eds-dropdown--searchable__selected-item', {
+          'eds-dropdown--searchable__selected-item--hidden': !showSelectedItem,
+        })}
+        aria-hidden="true"
+        onClick={() => {
+          inputRef.current?.focus();
+          openMenu();
+        }}
+      >
+        {showSelectedItem ? selectedItem?.label : ''}
+      </span>
+      <input
+        className={classNames('eds-dropdown__input eds-form-control', {
+          'eds-dropdown__input--hidden': showSelectedItem,
+        })}
+        disabled={readOnly || disabled}
+        placeholder={selectedItem?.label ?? placeholder}
+        {...getInputProps({
+          onBlur: () => {
+            if (selectedItem !== null) setShowSelectedItem(true);
+          },
+          onFocus: () => {
+            setShowSelectedItem(false);
+          },
+          onKeyDown: e => {
+            if (selectOnTab && isOpen && e.key === 'Tab')
+              onChange?.(listItems[highlightedIndex]);
+          },
+          ref: inputRef,
+        })}
+      />
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
@@ -411,6 +411,6 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         highlightedIndex={highlightedIndex}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
-    </div>
+    </BaseFormControl>
   );
 };

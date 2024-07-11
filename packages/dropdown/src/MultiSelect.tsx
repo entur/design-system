@@ -449,129 +449,128 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
     updateListItems({ inputValue });
   };
   return (
-    <div
-      className={classNames('eds-dropdown__wrapper', className, {
-        'eds-dropdown__wrapper--has-tooltip': labelTooltip !== undefined,
-      })}
+    <BaseFormControl
+      append={
+        <FieldAppend
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          selectedItems={selectedItems}
+          isOpen={isOpen}
+          clearable={clearable}
+          labelClearSelectedItems={labelClearAllItems}
+          focusable={false}
+          loading={loading}
+          loadingText={loadingText}
+          disabled={readOnly || disabled}
+          onClear={handleOnClear}
+          getToggleButtonProps={getToggleButtonProps}
+        />
+      }
+      className={classNames(
+        'eds-dropdown',
+        'eds-dropdown--multiselect',
+        className,
+        { 'eds-dropdown--has-tooltip': labelTooltip !== undefined },
+      )}
+      disabled={disabled}
+      feedback={feedback}
+      isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
+      label={label}
+      labelId={getLabelProps().id}
+      labelProps={getLabelProps()}
+      labelTooltip={labelTooltip}
+      onClick={(e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) inputRef.current?.focus();
+      }}
+      readOnly={readOnly}
+      ref={refs.setReference}
       style={style}
+      variant={variant}
+      {...rest}
     >
-      <BaseFormControl
-        append={
-          <FieldAppend
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            selectedItems={selectedItems}
-            isOpen={isOpen}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearAllItems}
-            focusable={false}
-            loading={loading}
-            loadingText={loadingText}
-            disabled={readOnly || disabled}
-            onClear={handleOnClear}
-            getToggleButtonProps={getToggleButtonProps}
-          />
-        }
-        className={classNames('eds-dropdown', 'eds-dropdown--multiselect')}
-        disabled={disabled}
-        feedback={feedback}
-        isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
-        label={label}
-        labelId={getLabelProps().id}
-        labelProps={getLabelProps()}
-        labelTooltip={labelTooltip}
-        onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget) inputRef.current?.focus();
+      <div
+        className={classNames(
+          'eds-dropdown--multiselect__selected-items-and-input',
+          {
+            'eds-dropdown--multiselect__selected-items-and-input--filled':
+              hasSelectedItems,
+          },
+        )}
+        onClick={e => {
+          if (e.target === e.currentTarget) openMenu();
         }}
-        readOnly={readOnly}
-        ref={refs.setReference}
-        variant={variant}
-        {...rest}
       >
-        <div
-          className={classNames(
-            'eds-dropdown--multiselect__selected-items-and-input',
-            {
-              'eds-dropdown--multiselect__selected-items-and-input--filled':
-                hasSelectedItems,
-            },
-          )}
-          onClick={e => {
-            if (e.target === e.currentTarget) openMenu();
-          }}
-        >
-          {selectedItems.length <= maxChips ? (
-            <>
-              {selectedItems.length > 1 ? (
-                <VisuallyHidden onClick={() => inputRef.current?.focus()}>
-                  {ariaLabelJumpToInput}
-                </VisuallyHidden>
-              ) : (
-                <></>
-              )}
-              {selectedItems.map((selectedItem, index) => (
-                <SelectedItemTag
-                  ariaLabelChosen={ariaLabelChosenSingular}
-                  ariaLabelRemoveSelected={ariaLabelRemoveSelected}
-                  disabled={disabled}
-                  getSelectedItemProps={getSelectedItemProps}
-                  index={index}
-                  key={
-                    selectedItem?.label +
-                    (typeof selectedItem?.value === 'string'
-                      ? selectedItem.value
-                      : '')
-                  }
-                  readOnly={readOnly}
-                  removeSelectedItem={() => {
-                    handleListItemClicked({
-                      clickedItem: selectedItem,
-                      onChange,
-                      setLastRemovedItem,
-                    });
-                    inputRef?.current?.focus();
-                  }}
-                  selectedItem={selectedItem}
-                />
-              ))}
-            </>
-          ) : (
-            <SelectedItemTag
-              ariaLabelRemoveSelected={labelClearAllItems}
-              ariaLabelChosen=""
-              disabled={disabled}
-              readOnly={readOnly}
-              removeSelectedItem={handleOnClear}
-              selectedItem={summarySelectedItems}
-            />
-          )}
-          <input
-            placeholder={placeholder}
-            className="eds-dropdown__input eds-form-control"
-            disabled={readOnly || disabled}
-            {...getInputProps({
-              onKeyDown: (e: React.KeyboardEvent) => {
-                if (selectOnTab && isOpen && e.key === 'Tab') {
-                  const highlitedItem = listItems[highlightedIndex];
-                  // we don't want to clear selection with tab
-                  if (highlitedItem) {
-                    handleListItemClicked({
-                      clickedItem: highlitedItem,
-                      onChange,
-                      setLastRemovedItem,
-                    });
-                  }
+        {selectedItems.length <= maxChips ? (
+          <>
+            {selectedItems.length > 1 ? (
+              <VisuallyHidden onClick={() => inputRef.current?.focus()}>
+                {ariaLabelJumpToInput}
+              </VisuallyHidden>
+            ) : (
+              <></>
+            )}
+            {selectedItems.map((selectedItem, index) => (
+              <SelectedItemTag
+                ariaLabelChosen={ariaLabelChosenSingular}
+                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                disabled={disabled}
+                getSelectedItemProps={getSelectedItemProps}
+                index={index}
+                key={
+                  selectedItem?.label +
+                  (typeof selectedItem?.value === 'string'
+                    ? selectedItem.value
+                    : '')
                 }
-              },
-              ...getDropdownProps({
-                preventKeyAction: isOpen,
-                ref: inputRef,
-                value: inputValue ?? EMPTY_INPUT,
-              }),
-            })}
+                readOnly={readOnly}
+                removeSelectedItem={() => {
+                  handleListItemClicked({
+                    clickedItem: selectedItem,
+                    onChange,
+                    setLastRemovedItem,
+                  });
+                  inputRef?.current?.focus();
+                }}
+                selectedItem={selectedItem}
+              />
+            ))}
+          </>
+        ) : (
+          <SelectedItemTag
+            ariaLabelRemoveSelected={labelClearAllItems}
+            ariaLabelChosen=""
+            disabled={disabled}
+            readOnly={readOnly}
+            removeSelectedItem={handleOnClear}
+            selectedItem={summarySelectedItems}
           />
-        </div>
-      </BaseFormControl>
+        )}
+        <input
+          placeholder={placeholder}
+          className="eds-dropdown__input eds-form-control"
+          disabled={readOnly || disabled}
+          {...getInputProps({
+            onKeyDown: (e: React.KeyboardEvent) => {
+              if (selectOnTab && isOpen && e.key === 'Tab') {
+                const highlitedItem = listItems[highlightedIndex];
+                // we don't want to clear selection with tab
+                if (highlitedItem) {
+                  handleListItemClicked({
+                    clickedItem: highlitedItem,
+                    onChange,
+                    setLastRemovedItem,
+                  });
+                }
+              }
+            },
+            ...getDropdownProps({
+              preventKeyAction: isOpen,
+              ref: inputRef,
+              value: inputValue ?? EMPTY_INPUT,
+            }),
+          })}
+        />
+      </div>
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
@@ -590,6 +589,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         selectAllItem={selectAll}
         selectedItems={selectedItems}
       />
-    </div>
+    </BaseFormControl>
   );
 };

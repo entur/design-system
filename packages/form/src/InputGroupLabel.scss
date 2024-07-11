@@ -8,7 +8,11 @@ $label-top-large: 0.5rem;
   font-size: t.$font-sizes-medium;
   line-height: t.$font-sizes-large;
   padding: 0;
-  margin-left: t.$space-default;
+}
+@mixin labelPositionDefaultLarge {
+  top: 0.75rem;
+  font-size: t.$font-sizes-extra-large2;
+  line-height: t.$line-heights-extra-large4;
 }
 
 @mixin labelPositionTop {
@@ -17,7 +21,6 @@ $label-top-large: 0.5rem;
   line-height: t.$font-sizes-small;
   height: 10px;
   padding: 0;
-  margin-left: t.$space-default;
   .eds-textarea__label & {
     box-shadow: 0px -2px 0px 4px var(--textarea-label-background);
     background: var(--textarea-label-background);
@@ -35,28 +38,23 @@ $label-top-large: 0.5rem;
     display: flex;
     .eds-form-control-wrapper--is-filled & {
       @include labelPositionTop;
-      .eds-form-control-wrapper--size-large & {
-        @include labelPositionTopLarge;
-      }
+    }
+    .eds-form-control-wrapper--is-filled.eds-form-control-wrapper--size-large & {
+      @include labelPositionTopLarge;
     }
     font-size: t.$font-sizes-large;
     position: absolute;
     line-height: t.$font-sizes-large;
     height: t.$space-extra-large3;
-    padding: t.$space-default;
     padding-left: 0;
-    margin-left: t.$space-default;
-    top: -(t.$border-widths-medium);
+    top: 1rem;
     transition: top t.$timings-medium ease-in-out, font-size t.$timings-medium ease-in-out, padding t.$timings-medium ease-in-out,
       line-height ease-in-out t.$timings-medium;
 
     user-select: none;
     pointer-events: none;
     .eds-form-control-wrapper--size-large & {
-      font-size: t.$font-sizes-extra-large2;
-      line-height: t.$line-heights-extra-large4;
-      height: 4rem;
-      top: -0.25rem;
+      @include labelPositionDefaultLarge;
     }
     &--filled {
       @include labelPositionTop;
@@ -64,15 +62,6 @@ $label-top-large: 0.5rem;
         @include labelPositionTopLarge;
       }
     }
-  }
-  &__label-tooltip-icon {
-    color: var(--base-colors-shape-accent);
-    padding-left: t.$space-extra-small2;
-    padding-right: t.$space-extra-small2;
-    display: flex;
-    align-items: center;
-    cursor: help;
-    font-size: 1rem;
   }
 }
 
@@ -83,17 +72,6 @@ $label-top-large: 0.5rem;
   &--size-large:focus-within {
     & .eds-input-group__label {
       @include labelPositionTopLarge;
-    }
-  }
-  .eds-tooltip {
-    .eds-contrast & {
-      background: var(--components-tooltip-tooltip-standard-fill);
-      color: var(--components-tooltip-tooltip-standard-text);
-      box-shadow: t.$shadows-box-shadow;
-    }
-
-    &::after {
-      background: var(--components-tooltip-tooltip-standard-fill);
     }
   }
 }

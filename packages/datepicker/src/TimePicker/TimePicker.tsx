@@ -12,8 +12,8 @@ import type {
 } from '@react-types/datepicker';
 
 import { VisuallyHidden } from '@entur/a11y';
-import { BaseFormControl } from '@entur/form';
-import { useRandomId, mergeRefs, VariantType } from '@entur/utils';
+import { BaseFormControl, BaseFormControlProps } from '@entur/form';
+import { useRandomId, VariantType } from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import { TimePickerArrowButton } from './TimePickerArrowButton';
@@ -90,7 +90,8 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   | 'placeholder'
   | 'minValue'
   | 'maxValue'
->;
+> &
+  Partial<BaseFormControlProps>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
@@ -112,6 +113,8 @@ export const TimePicker = <TimeType extends TimeValue>({
   inputRef,
   forcedReturnType,
   forcedTimeZone,
+  append,
+  prepend,
   ...rest
 }: TimePickerProps<TimeType>) => {
   let { locale } = useLocale();
@@ -189,37 +192,10 @@ export const TimePicker = <TimeType extends TimeValue>({
 
   return (
     <I18nProvider locale={locale}>
-      <div className={classNames(className, 'eds-timepicker__wrapper')}>
-        <BaseFormControl
-          style={style}
-          className={classNames('eds-timepicker', {
-            'eds-timepicker--disabled': disabled,
-          })}
-          labelId={id}
-          label={label}
-          labelProps={{
-            ...labelProps,
-            'aria-describedby': timePickerId + 'description',
-          }}
-          ref={mergeRefs(timeFieldRef, inputRef)}
-          disabled={disabled}
-          disableLabelAnimation
-          labelTooltip={labelTooltip}
-          {...fieldProps}
-          variant={variant}
-          feedback={feedback}
-          ariaAlertOnFeedback
-          aria-describedby={timePickerId + 'description'}
-          prepend={
-            <TimePickerArrowButton
-              direction="left"
-              disabled={disabled}
-              aria-label={leftArrowButtonAriaLabel}
-              onClick={() => handleOnClickArrowButton('subtract')}
-              onFocus={() => focusSegment(timeFieldRef, 'first')}
-            />
-          }
-          append={
+      <BaseFormControl
+        append={
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {append}
             <TimePickerArrowButton
               direction="right"
               disabled={disabled}
@@ -227,7 +203,44 @@ export const TimePicker = <TimeType extends TimeValue>({
               onClick={() => handleOnClickArrowButton('add')}
               onFocus={() => focusSegment(timeFieldRef, 'last')}
             />
-          }
+          </div>
+        }
+        ariaAlertOnFeedback
+        aria-describedby={timePickerId + 'description'}
+        className={classNames('eds-timepicker', className, {
+          'eds-timepicker--disabled': disabled,
+          'eds-timepicker--has-tooltip': labelTooltip !== undefined,
+        })}
+        disabled={disabled}
+        disableLabelAnimation
+        feedback={feedback}
+        label={label}
+        labelId={id}
+        labelProps={{
+          ...labelProps,
+          'aria-describedby': timePickerId + 'description',
+        }}
+        labelTooltip={labelTooltip}
+        prepend={
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <TimePickerArrowButton
+              direction="left"
+              disabled={disabled}
+              aria-label={leftArrowButtonAriaLabel}
+              onClick={() => handleOnClickArrowButton('subtract')}
+              onFocus={() => focusSegment(timeFieldRef, 'first')}
+            />
+            {prepend}
+          </div>
+        }
+        ref={inputRef}
+        style={style}
+        variant={variant}
+      >
+        <span
+          ref={timeFieldRef}
+          {...fieldProps}
+          style={{ display: 'contents' }}
         >
           {state.segments.map((segment, i) => (
             <FieldSegment
@@ -237,7 +250,7 @@ export const TimePicker = <TimeType extends TimeValue>({
               aria-describedby={timePickerId + 'description'}
             />
           ))}
-        </BaseFormControl>
+        </span>
         <VisuallyHidden id={timePickerId + 'description'}>
           {selectedTime !== null
             ? 'valgt tid: ' +
@@ -249,7 +262,7 @@ export const TimePicker = <TimeType extends TimeValue>({
                 : '')
             : ''}
         </VisuallyHidden>
-      </div>
+      </BaseFormControl>
     </I18nProvider>
   );
 };

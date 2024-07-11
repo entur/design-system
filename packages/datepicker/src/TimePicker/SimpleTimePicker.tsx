@@ -11,7 +11,7 @@ import type {
   MappedTimeValue,
 } from '@react-types/datepicker';
 
-import { TextField } from '@entur/form';
+import { BaseFormControlProps, TextField } from '@entur/form';
 import { ClockIcon } from '@entur/icons';
 import { mergeRefs, VariantType } from '@entur/utils';
 
@@ -77,7 +77,8 @@ export type SimpleTimePickerProps<TimeType extends TimeValue> = {
   | 'isReadOnly'
   | 'isDisabled'
   | 'locale'
->;
+> &
+  Omit<Partial<BaseFormControlProps>, 'children'>;
 
 export const SimpleTimePicker = <TimeType extends TimeValue>({
   append,
@@ -284,13 +285,14 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
         append={
           append ||
           (showClockIcon === true || showClockIcon === 'right' ? (
-            <ClockIcon onClick={() => timeFieldRef?.current?.focus()} />
+            <ClockIcon onClick={() => timeFieldRef?.current?.focus()} inline />
           ) : undefined)
         }
         className={classNames('eds-simple-timepicker', {
           'eds-simple-timepicker--padding-large': padding === 'large',
           'eds-simple-timepicker--show-seconds': showSeconds,
           'eds-simple-timepicker--hide-clock': !showClockIcon,
+          'eds-simple-timepicker--has-tooltip': labelTooltip !== undefined,
         })}
         disabled={disabled}
         disableLabelAnimation

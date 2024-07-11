@@ -1,34 +1,34 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-timepicker__wrapper {
+.eds-timepicker {
   width: fit-content;
+  justify-content: center;
 
-  .eds-timepicker {
-    justify-content: center;
+  &--disabled {
+    padding-inline: t.$space-medium;
+  }
 
-    .eds-input-group__label,
-    .eds-input-group__label--filled {
-      margin-left: t.$space-none !important;
-    }
+  // Overrides for default base form control
+  .eds-form-control-wrapper {
+    padding: 0rem;
+  }
+
+  &__arrowbutton {
+    margin: 0 t.$space-extra-small2;
 
     &--disabled {
-      padding-inline: t.$space-medium;
+      opacity: 0.5;
+      pointer-events: none;
+      visibility: hidden;
     }
 
-    &__arrowbutton {
-      margin: 0 t.$space-extra-small2;
+    // This is done to remove contrast specific styling
+    &.eds-icon-button {
+      color: var(--components-button-iconbutton-standard-text);
 
-      &--disabled {
-        opacity: 0.5;
-        pointer-events: none;
-        visibility: hidden;
-      }
-
-      // for counter-acting contrast mode
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-
       &:focus {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
@@ -37,28 +37,6 @@
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }
-
-      // This is done to remove contrast specific styling
-      &.eds-icon-button {
-        color: var(--components-button-iconbutton-standard-text);
-
-        &:hover {
-          background-color: var(--components-button-iconbutton-standard-hover);
-        }
-        &:focus {
-          outline: t.$outlines-focus;
-          outline-color: var(--basecolors-stroke-focus-standard);
-          outline-offset: t.$outline-offsets-focus;
-        }
-        &:active {
-          background-color: var(--components-button-iconbutton-standard-active);
-        }
-      }
-    }
-
-    .eds-form-control__prepend,
-    .eds-form-control__append {
-      margin: 0;
     }
   }
 

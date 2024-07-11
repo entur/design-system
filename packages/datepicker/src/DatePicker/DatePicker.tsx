@@ -29,6 +29,7 @@ import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
+import type { BaseFormControlProps } from '@entur/form';
 import type { VariantType } from '@entur/utils';
 
 import { DateField } from './DateField';
@@ -149,7 +150,8 @@ export type DatePickerProps<DateType extends DateValue> = {
   | 'placeholder'
   | 'minValue'
   | 'maxValue'
->;
+> &
+  Omit<Partial<BaseFormControlProps>, 'children'>;
 
 export const DatePicker = <DateType extends DateValue>({
   selectedDate,
@@ -175,6 +177,8 @@ export const DatePicker = <DateType extends DateValue>({
   modalTreshold = 1000,
   forcedReturnType,
   ariaLabelForDate,
+  append,
+  prepend,
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -296,49 +300,51 @@ export const DatePicker = <DateType extends DateValue>({
         <I18nProvider locale={locale}>{child}</I18nProvider>
       )}
     >
-      <div className={classNames('eds-datepicker', className)}>
-        <div
-          {...groupProps}
-          ref={datePickerRef}
-          id={undefined}
-          className="eds-datepicker__datefield__wrapper"
-        >
-          <DateField
-            {...fieldProps}
-            selectedDate={selectedDate}
-            onChange={handleOnChange}
-            label={rest.label}
-            labelProps={labelProps}
-            disabled={disabled}
-            minDate={minDate}
-            maxDate={maxDate}
-            showTime={showTime}
-            showTimeZone={showTimeZone}
-            ref={refs.setReference}
-            variant={variant}
-            feedback={feedback}
-            validationVariant={validationVariant}
-            validationFeedback={validationFeedback}
-            labelTooltip={labelTooltip}
-            className={classNames('eds-datepicker__datefield', {
-              'eds-datepicker__datefield--disabled': disabled,
-            })}
-          />
-          {!disabled && (
-            <CalendarButton
-              {...buttonProps}
-              onPress={() => {
-                state.setOpen(!state.isOpen);
-                update();
-              }}
-              className="eds-datepicker__open-calendar-button"
-            >
-              <CalendarIcon />
-            </CalendarButton>
-          )}
-          {useModal ? modalCalendar : popoverCalendar}
-        </div>
-      </div>
+      <DateField
+        append={
+          !disabled && (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {append}
+              <CalendarButton
+                {...buttonProps}
+                onPress={() => {
+                  state.setOpen(!state.isOpen);
+                  update();
+                }}
+                className="eds-datepicker__open-calendar-button"
+              >
+                <CalendarIcon />
+              </CalendarButton>
+            </div>
+          )
+        }
+        prepend={prepend}
+        className={classNames('eds-datepicker', className, {
+          'eds-datepicker--disabled': disabled,
+        })}
+        disabled={disabled}
+        feedback={feedback}
+        fieldProps={fieldProps}
+        groupProps={groupProps}
+        label={rest.label}
+        labelProps={labelProps}
+        labelTooltip={labelTooltip}
+        maxDate={maxDate}
+        minDate={minDate}
+        onChange={handleOnChange}
+        dateFieldRef={node => {
+          refs.setReference(node);
+          datePickerRef.current = node;
+        }}
+        selectedDate={selectedDate}
+        showTime={showTime}
+        showTimeZone={showTimeZone}
+        style={style}
+        validationFeedback={validationFeedback}
+        validationVariant={validationVariant}
+        variant={variant}
+      />
+      {useModal ? modalCalendar : popoverCalendar}
     </ConditionalWrapper>
   );
 };

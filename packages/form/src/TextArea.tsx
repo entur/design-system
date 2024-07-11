@@ -1,12 +1,14 @@
 import React from 'react';
+import classNames from 'classnames';
+
+import { useRandomId, useOnMount, mergeRefs, VariantType } from '@entur/utils';
+
 import { useVariant } from './VariantProvider';
 import { BaseFormControl } from './BaseFormControl';
-import './TextArea.scss';
 import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 
-import { useRandomId, useOnMount } from '@entur/utils';
-import { VariantType } from '@entur/utils';
+import './TextArea.scss';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -52,9 +54,10 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ref: React.Ref<HTMLTextAreaElement>,
   ) => {
     const textAreaId = useRandomId('eds-textarea');
+    const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     return (
       <BaseFormControl
-        className={className}
+        className={classNames(className, 'eds-textarea__wrapper')}
         disabled={disabled}
         readOnly={readOnly}
         variant={variant}
@@ -65,11 +68,14 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelTooltip={labelTooltip}
         labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
+        onClick={e => {
+          if (e.target === e.currentTarget) textareaRef?.current?.focus();
+        }}
       >
         <TextAreaBase
           readOnly={readOnly}
           disabled={disabled}
-          ref={ref}
+          ref={mergeRefs(ref, textareaRef)}
           aria-labelledby={textAreaId}
           onChange={onChange}
           variant={variant}

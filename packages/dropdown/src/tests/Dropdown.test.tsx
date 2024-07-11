@@ -333,7 +333,7 @@ describe('Dropdown', () => {
     });
   });
 
-  test('applies className to eds-dropdown__wrapper element', () => {
+  test('applies className to eds-dropdown element', () => {
     const { container } = render(
       <Dropdown
         label="test label"
@@ -343,9 +343,8 @@ describe('Dropdown', () => {
       />,
     );
 
-    const edsDropdownElement = container.getElementsByClassName(
-      'eds-dropdown__wrapper',
-    )[0];
+    const edsDropdownElement =
+      container.getElementsByClassName('eds-dropdown')[0];
     expect(edsDropdownElement).toHaveClass('custom-class');
   });
 

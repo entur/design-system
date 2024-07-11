@@ -1,151 +1,172 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
-.eds-form-control-wrapper {
-  align-items: center;
-  background-color: var(--components-form-baseform-standard-fill-default);
-  border-radius: t.$border-radiuses-medium;
-  border: t.$border-widths-medium solid var(--components-form-baseform-standard-border-default);
-  box-shadow: 0 0 0 transparent;
-  color: var(--components-form-baseform-standard-text-content);
-  display: flex;
-  position: relative;
-  width: 100%;
-  min-height: 3rem;
-  transition: border-color t.$timings-fast ease-in-out;
+.eds-form-control {
+  &__field-and-feedback-text {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
 
-  &:focus-within,
-  &:hover {
-    border-color: var(--components-form-baseform-standard-border-interactive);
-  }
-  &:hover {
-    .eds-contrast & {
-      border-color: var(--components-form-baseform-contrast-border-interactive);
+    &--has-tooltip {
+      padding-right: t.$space-extra-large;
     }
   }
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    min-height: 3rem;
+    padding-inline: t.$space-default;
+    background-color: var(--components-form-baseform-standard-fill-default);
+    border-radius: t.$border-radiuses-medium;
+    border: t.$border-widths-medium solid var(--components-form-baseform-standard-border-default);
+    box-shadow: 0 0 0 transparent;
+    color: var(--components-form-baseform-standard-text-content);
+    transition: border-color t.$timings-fast ease-in-out;
 
-  &:focus-within {
-    outline: 1px solid var(--components-form-baseform-standard-border-interactive);
-    .eds-contrast & {
-      outline: var(--components-form-baseform-contrast-border-interactive);
+    &:focus-within,
+    &:hover {
+      border-color: var(--components-form-baseform-standard-border-interactive);
     }
-  }
-
-  ::placeholder {
-    color: var(--components-form-baseform-standard-text-label);
-  }
-
-  // Variations
-  &--disabled {
-    border-color: transparent;
-    background-color: var(--components-form-baseform-standard-fill-disabled);
-    pointer-events: none;
-    color: var(--components-form-baseform-standard-text-disabled);
-    .eds-input-group__label {
-      color: var(--components-form-baseform-standard-text-disabled);
+    &:hover {
+      .eds-contrast & {
+        border-color: var(--components-form-baseform-contrast-border-interactive);
+      }
     }
 
-    .eds-contrast & {
+    &:focus-within {
+      outline: 1px solid var(--components-form-baseform-standard-border-interactive);
+      .eds-contrast & {
+        outline: var(--components-form-baseform-contrast-border-interactive);
+      }
+    }
+
+    ::placeholder {
+      color: var(--components-form-baseform-standard-text-label);
+    }
+
+    // Variations
+    &--disabled {
       border-color: transparent;
-      background-color: var(--components-form-baseform-contrast-fill-disabled);
-      color: var(--components-form-baseform-contrast-text-disabled);
+      background-color: var(--components-form-baseform-standard-fill-disabled);
+      pointer-events: none;
+      color: var(--components-form-baseform-standard-text-disabled);
       .eds-input-group__label {
+        color: var(--components-form-baseform-standard-text-disabled);
+      }
+
+      .eds-contrast & {
+        border-color: transparent;
+        background-color: var(--components-form-baseform-contrast-fill-disabled);
         color: var(--components-form-baseform-contrast-text-disabled);
+        .eds-input-group__label {
+          color: var(--components-form-baseform-contrast-text-disabled);
+        }
+      }
+
+      &::before,
+      &::after {
+        display: none;
       }
     }
 
-    &::before,
-    &::after {
-      display: none;
-    }
-  }
+    &--readonly {
+      border-color: transparent;
+      pointer-events: none;
+      cursor: default;
+      background: var(--components-form-baseform-standard-fill-readonly);
+      border: var(--components-form-baseform-standard-fill-readonly);
 
-  &--readonly {
-    border-color: transparent;
-    pointer-events: none;
-    cursor: default;
-    background: var(--components-form-baseform-standard-fill-readonly);
-    border: var(--components-form-baseform-standard-fill-readonly);
-
-    .eds-contrast & {
-      background: var(--components-form-baseform-contrast-fill-readonly);
-      color: var(--components-form-baseform-contrast-text-description);
-      border: var(--components-form-baseform-contrast-fill-readonly);
-      .eds-input-group__label {
+      .eds-contrast & {
+        background: var(--components-form-baseform-contrast-fill-readonly);
         color: var(--components-form-baseform-contrast-text-description);
+        border: var(--components-form-baseform-contrast-fill-readonly);
+        .eds-input-group__label {
+          color: var(--components-form-baseform-contrast-text-description);
+        }
+      }
+
+      &::before,
+      &::after {
+        display: none;
       }
     }
 
-    &::before,
-    &::after {
-      display: none;
+    &--size-medium {
+      .eds-form-control,
+      .eds-form-control__append,
+      .eds-form-control__prepend {
+        font-size: t.$font-sizes-large;
+        line-height: t.$line-heights-small;
+      }
     }
-  }
+    &--size-large {
+      min-height: 4rem;
 
-  &--size-medium {
-    .eds-form-control,
-    .eds-form-control__append,
-    .eds-form-control__prepend {
-      font-size: t.$font-sizes-large;
-      line-height: t.$line-heights-small;
-    }
-  }
-  &--size-large {
-    min-height: 4rem;
-    padding: 0 t.$space-extra-small;
-    &::before,
-    &::after {
-      border-width: t.$border-widths-large;
-    }
-    .eds-form-control,
-    .eds-form-control__append,
-    .eds-form-control__prepend {
-      font-size: t.$font-sizes-extra-large2;
-      line-height: t.$line-heights-extra-large4;
-    }
-  }
-
-  // Validation modes changes the border colors
-  &--success {
-    border-color: var(--components-form-baseform-standard-border-success);
-    &:focus-within {
-      border-color: var(--components-form-baseform-standard-border-success);
+      .eds-form-control,
+      .eds-form-control__append,
+      .eds-form-control__prepend {
+        font-size: t.$font-sizes-extra-large2;
+      }
     }
 
-    .eds-contrast & {
+    // Validation modes changes the border colors
+    &--success {
       border-color: var(--components-form-baseform-standard-border-success);
       &:focus-within {
-        border-color: var(--components-form-baseform-contrast-border-success);
+        border-color: var(--components-form-baseform-standard-border-success);
+      }
+
+      .eds-contrast & {
+        border-color: var(--components-form-baseform-standard-border-success);
+        &:focus-within {
+          border-color: var(--components-form-baseform-contrast-border-success);
+        }
       }
     }
-  }
 
-  &--error,
-  &--negative {
-    border-color: var(--components-form-baseform-standard-border-negative);
-    &:focus-within {
+    &--error,
+    &--negative {
       border-color: var(--components-form-baseform-standard-border-negative);
+      &:focus-within {
+        border-color: var(--components-form-baseform-standard-border-negative);
+      }
+
+      .eds-contrast & {
+        border-color: var(--components-form-baseform-contrast-border-negative);
+        &:focus-within {
+          border-color: var(--components-form-baseform-contrast-border-negative);
+        }
+      }
+    }
+  }
+
+  .eds-tooltip {
+    .eds-contrast & {
+      background: var(--components-tooltip-tooltip-standard-fill);
+      color: var(--components-tooltip-tooltip-standard-text);
+      box-shadow: t.$shadows-box-shadow;
     }
 
-    .eds-contrast & {
-      border-color: var(--components-form-baseform-contrast-border-negative);
-      &:focus-within {
-        border-color: var(--components-form-baseform-contrast-border-negative);
-      }
+    &::after {
+      background: var(--components-tooltip-tooltip-standard-fill);
     }
   }
 }
 
 .eds-form-control {
+  display: block;
   appearance: none;
-  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 20px t.$space-none t.$space-extra-small2;
+  font-family: inherit;
+  font-size: t.$font-sizes-large;
+  line-height: t.$line-heights-small;
   border: 0;
   color: var(--components-form-baseform-standard-text-content);
-  display: block;
-  font-family: inherit;
-  line-height: t.$line-heights-small;
-  font-size: t.$font-sizes-large;
-  padding: 20px t.$space-default t.$space-extra-small2;
-  width: 100%;
+  background-color: transparent;
 
   &::placeholder {
     opacity: 0;
@@ -161,21 +182,29 @@
   &__prepend,
   &__append {
     position: relative;
-    margin: 0 t.$space-default;
     line-height: inherit;
     &--tooltip {
-      position: static;
-    }
-    svg {
-      top: (0.125rem);
+      all: unset;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 1.5rem;
+      width: 1.5rem;
+      right: -1 * t.$space-extra-large;
+      border-radius: 100%;
+      color: var(--primary-text-color);
+      cursor: pointer;
     }
   }
 
   &__prepend {
-    margin-right: 0;
+    margin-right: t.$space-small;
+    margin-left: 0;
   }
 
   &__append {
-    margin-left: 0;
+    margin-right: 0;
+    margin-left: t.$space-small;
   }
 }
