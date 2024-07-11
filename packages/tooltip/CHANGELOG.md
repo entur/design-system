@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.11...@entur/tooltip@3.0.0) (2024-07-11)
+
+### Features
+
+- **tooltip:** add click and keyboard listner for tooltip ([4afc7f9](https://bitbucket.org/enturas/design-system/commits/4afc7f920b9c7936db7442c83e625113e71df104))
+
+### Performance Improvements
+
+- **base form control:** simplify code structure of base form control ([ac7da6a](https://bitbucket.org/enturas/design-system/commits/ac7da6a3c3caddddd71631736b2c6a69d3e192f5))
+
+### BREAKING CHANGES
+
+- **base form control:** Some wrappers have been removed and component structure is changed.|This could make previous
+  overwritten styles no longer work as intended.|If you are changign internal styles, please make sure
+  your UI works as expected
+
 ## [2.7.11](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.10...@entur/tooltip@2.7.11) (2024-07-11)
 
 **Note:** Version bump only for package @entur/tooltip
