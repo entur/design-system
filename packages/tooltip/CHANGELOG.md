@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.11](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.10...@entur/tooltip@2.7.11) (2024-07-11)
+
+**Note:** Version bump only for package @entur/tooltip
+
 ## [2.7.10](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@2.7.9...@entur/tooltip@2.7.10) (2024-06-11)
 
 ### Bug Fixes

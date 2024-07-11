@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.24...@entur/travel@6.2.0) (2024-07-11)
+
+### Features
+
+- **docs:** colorvariables documentation ([e47d517](https://bitbucket.org/enturas/design-system/commits/e47d517d6d7fe3bcb4a5e210b6abb9a93eb7c73a))
+
 ## [6.1.24](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.1.23...@entur/travel@6.1.24) (2024-06-24)
 
 **Note:** Version bump only for package @entur/travel
