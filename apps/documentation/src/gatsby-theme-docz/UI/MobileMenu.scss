@@ -5,11 +5,15 @@
 .mobile-nav-bar {
   position: absolute;
   width: 100%;
-  background: $colors-brand-blue;
+  background: var(--designentur-header-default-fill);
+  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
   transition: position $timings-medium ease-in-out 0.2s;
-  &--not-frontpage {
-    background: white;
+
+  .eds-contrast & {
+    background: var(--designentur-header-contrast-fill);
+    border-color: var(--designentur-header-contrast-divider);
   }
+
   &--open-sidemenu {
     position: fixed;
     margin-top: -$navbar-height;
@@ -54,31 +58,26 @@
     }
   }
   &__links {
-    border-bottom: $border-widths-small solid $colors-greys-grey70;
     display: flex;
     overflow-x: auto;
-    .eds-contrast & {
-      border-bottom: $border-widths-small solid $colors-blues-blue20;
-    }
 
     &__scroll-gradient {
       // horizontal shadow scroll from https://codepen.io/vakhula/pen/OJVqBOK
-      &,
-      &--not-frontpage {
-        background-position: left center, right center, left center, right center;
-        background-repeat: no-repeat;
-        background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
-        background-attachment: local, local, scroll, scroll;
-      }
+      background-position: left center, right center, left center, right center;
+      background-repeat: no-repeat;
+      background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+      background-attachment: local, local, scroll, scroll;
 
-      background-image: linear-gradient(to right, $colors-brand-blue, $colors-brand-blue), linear-gradient(to right, $colors-brand-blue, $colors-brand-blue),
+      background-image: linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
+        linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
         linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent), linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
-      background-color: $colors-brand-blue;
+      background-color: var(--designentur-header-default-fill);
 
-      &--not-frontpage {
-        background-image: linear-gradient(to right, white, white), linear-gradient(to right, white, white),
+      .eds-contrast & {
+        background-image: linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
+          linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
           linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent);
-        background-color: white;
+        background-color: var(--designentur-header-contrast-fill);
       }
     }
   }
@@ -93,7 +92,7 @@
   white-space: nowrap;
   &--active {
     &:after {
-      border-bottom: $border-widths-medium solid $colors-brand-coral;
+      border-bottom: $border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
       content: '';
       display: block;
       position: absolute;

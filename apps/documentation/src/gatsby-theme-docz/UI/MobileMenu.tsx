@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'docz';
 import classNames from 'classnames';
-
 import { Location } from '@reach/router';
-import { Contrast } from '@entur/layout/src';
+
+import { Contrast, useContrast } from '@entur/layout';
 import { MenuIcon } from '@entur/icons';
 import { FloatingButton } from '@entur/button';
 
 import SettingsPanel from '~/components/SettingsPanel';
 import { SiteSidebar } from '~/components/SiteSidebar';
-
-import './MobileMenu.scss';
+import { useSettings } from '~/components/SettingsContext';
 
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
+
+import './MobileMenu.scss';
 
 type MobileMenuProps = {
   frontPage?: boolean;
@@ -25,6 +26,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   className,
   ...rest
 }) => {
+  const { colorMode } = useSettings();
+  const isContrast = useContrast();
   const [sidemenu, showSidemenu] = React.useState(false);
   const Element = frontPage ? Contrast : 'div';
 
@@ -33,33 +36,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <Element as="header" className={className}>
         <div
           className={classNames('mobile-nav-bar', {
-            'mobile-nav-bar--not-frontpage': !frontPage,
             'mobile-nav-bar--open-sidemenu': sidemenu,
           })}
         >
           <div className="mobile-nav-bar__menu">
-            {frontPage ? (
+            <Link to="/">
               <img
-                src={logo}
-                alt="Entur logo"
+                src={colorMode === 'dark' || isContrast ? logoDark : logo}
+                alt="Entur logo – designsystemets starside"
                 style={{ paddingLeft: '24px' }}
               />
-            ) : (
-              <Link to="/">
-                <img
-                  src={logoDark}
-                  alt="Entur logo, klikk for å gå til startsiden"
-                  style={{ paddingLeft: '24px' }}
-                />
-              </Link>
-            )}
+            </Link>
             <SettingsPanel />
           </div>
-          <div
-            className={`mobile-nav-bar__links mobile-nav-bar__links__scroll-gradient${
-              !frontPage ? '--not-frontpage' : ''
-            }`}
-          >
+          <div className="mobile-nav-bar__links mobile-nav-bar__links__scroll-gradient">
             <MobileNavItem to="/kom-i-gang">Kom i Gang</MobileNavItem>
             <MobileNavItem to="/identitet">Identitet</MobileNavItem>
             <MobileNavItem to="/komponenter">Komponenter</MobileNavItem>

@@ -1,22 +1,28 @@
-import { FloatingButton } from '@entur/button/dist';
-import { LeftArrowIcon } from '@entur/icons/dist';
+import React from 'react';
+import classNames from 'classnames';
+import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Location, WindowLocation } from '@reach/router';
+
+import { FloatingButton } from '@entur/button';
+import { LeftArrowIcon } from '@entur/icons';
+import { useContrast } from '@entur/layout';
 import {
   SideNavigation,
   SideNavigationGroup,
   SideNavigationItem,
 } from '@entur/menu';
-import { Heading2 } from '@entur/typography/dist';
-import { Location, WindowLocation } from '@reach/router';
-import classNames from 'classnames';
-import { Link, MenuItem, useCurrentDoc, useMenus } from 'docz';
-import React from 'react';
+import { space } from '@entur/tokens';
+import { Heading2 } from '@entur/typography';
+
 import { SearchBar } from '~/components/SearchBar';
 import { Media } from '~/utils/MediaBreakpoint';
-import { usePersistedState } from './SettingsContext';
-import logo from '~/components/logoDark.svg';
-import { motion, AnimatePresence } from 'framer-motion';
-import { colors, space } from '@entur/tokens';
+import { usePersistedState, useSettings } from './SettingsContext';
+
 import './SiteSidebar.scss';
+
+import logo from '~/components/logo.svg';
+import logoDark from '~/components/logoDark.svg';
 
 const filterMenuItems = (menuItems: MenuItem[], searchString: string) => {
   if (!searchString.length) {
@@ -113,6 +119,8 @@ export const SiteSidebar: React.FC<{
   const [scrollPosition, setScrollPosition] = useSideMenuScroll<number>(
     currentDoc.parent,
   );
+  const { colorMode } = useSettings();
+  const isContrast = useContrast();
   const [openSidebar, setOpenSidebar] = React.useState(false);
 
   React.useEffect(() => {
@@ -212,13 +220,7 @@ export const SiteSidebar: React.FC<{
                 >
                   <Location>
                     {({ location }) => (
-                      <div
-                        style={{
-                          paddingTop: space.extraLarge,
-                          paddingBottom: space.extraLarge,
-                          background: colors.greys.grey90,
-                        }}
-                      >
+                      <div className="site-sidebar__background">
                         <Link
                           to="/"
                           className="top-navigation__logo"
@@ -227,7 +229,11 @@ export const SiteSidebar: React.FC<{
                           }}
                         >
                           <img
-                            src={logo}
+                            src={
+                              colorMode === 'dark' || isContrast
+                                ? logoDark
+                                : logo
+                            }
                             height="20px"
                             width="64px"
                             alt="Entur logo"
