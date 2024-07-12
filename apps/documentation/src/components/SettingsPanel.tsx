@@ -67,22 +67,20 @@ const SettingsPanel: React.FC = () => {
         className="settings-panel__modal"
       >
         <form onSubmit={() => setOpen(false)}>
-          {showBetaSettings && (
-            <SegmentedControl
-              label="Fargemodus"
-              onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
-              selectedValue={colorMode ?? 'light'}
-              style={{ marginBottom: '1rem' }}
-            >
-              <SegmentedChoice value="light">
-                Lys <SunIcon inline />
-              </SegmentedChoice>
-              <SegmentedChoice value="dark">
-                Mørk <NightIcon inline />
-              </SegmentedChoice>
-              {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
-            </SegmentedControl>
-          )}
+          <SegmentedControl
+            label="Fargemodus"
+            onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
+            selectedValue={colorMode ?? 'light'}
+            style={{ marginBottom: '1rem' }}
+          >
+            <SegmentedChoice value="light">
+              Lys <SunIcon inline />
+            </SegmentedChoice>
+            <SegmentedChoice value="dark">
+              Mørk <NightIcon inline />
+            </SegmentedChoice>
+            {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
+          </SegmentedControl>
           <Dropdown
             label="Hva slags bruker er du?"
             items={[
