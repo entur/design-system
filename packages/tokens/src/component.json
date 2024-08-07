@@ -5661,16 +5661,16 @@
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "DesignEntur/DoDontCard/Border",
-            "value": "#e3e6e8",
-            "var": "Stroke/Neutral",
-            "rootAlias": "Grey/30"
-          },
-          {
             "name": "DesignEntur/DoDontCard/Fill",
             "value": "#f6f6f9",
             "var": "Fill/Background/Tint/Light",
             "rootAlias": "Blue/10"
+          },
+          {
+            "name": "DesignEntur/DoDontCard/StatusLine-Negative",
+            "value": "#d31b1b",
+            "var": "Fill/Negative/Deep",
+            "rootAlias": "Coral/60"
           },
           {
             "name": "DesignEntur/DoDontCard/StatusLine-Success",
@@ -11533,16 +11533,16 @@
             "rootAlias": "Ebony/10"
           },
           {
-            "name": "DesignEntur/DoDontCard/Border",
-            "value": "#81828f",
-            "var": "Stroke/DarkAlt",
-            "rootAlias": "Ebony/50"
-          },
-          {
             "name": "DesignEntur/DoDontCard/Fill",
             "value": "#e5e5e926",
             "var": "Fill/Background/Overlay/Transparent",
             "rootAlias": "Transparent/Ebony-Alpha15"
+          },
+          {
+            "name": "DesignEntur/DoDontCard/StatusLine-Negative",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
           },
           {
             "name": "DesignEntur/DoDontCard/StatusLine-Success",
