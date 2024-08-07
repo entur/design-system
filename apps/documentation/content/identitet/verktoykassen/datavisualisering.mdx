@@ -13,7 +13,7 @@ import ColorsDataVisualisation, {
   DataIllustrations,
 } from '~/components/ColorsDataVisualisation';
 import Vektlegging from './DatavisualiseringVektlegging.png';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import dataDont1 from './dataDont1.png';
 import dataDont2 from './dataDont2.png';
 
@@ -86,11 +86,11 @@ Det er anbefalt å benytte mest av `Blue` og `Coral`, men det er ikke alltid mul
 
 ### Prinsipper
 
-<BestPractices className="ds-logo">
-  <Example type="dont" src={dataDont1} alt="Søylediagram med tekst på søylene">
+<DoDontGroup className="ds-logo">
+  <DoDontCard variant="warning" src={dataDont1} alt="Søylediagram med tekst på søylene">
     <Paragraph>Unngå tekst oppå former i diagrammet</Paragraph>
-  </Example>
-  <Example type="dont" src={dataDont2} alt="Søylediagram med ">
+  </DoDontCard>
+  <DoDontCard variant="warning" src={dataDont2} alt="Søylediagram med ">
     <Paragraph>Unngå å benytte mest av de lavest prioriterte fargene</Paragraph>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

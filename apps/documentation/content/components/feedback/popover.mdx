@@ -18,7 +18,7 @@ import { Heading4, Label } from '@entur/typography';
 import { GridContainer, GridItem } from '@entur/grid';
 import { Checkbox } from '@entur/form';
 import { SecondaryButton, IconButton } from '@entur/button';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import { AdjustmentsIcon, CloseIcon } from '@entur/icons';
 import { Props } from 'docz';
 import { Playground } from '~/components/playground/Playground';
@@ -99,8 +99,8 @@ formkontrolller som Radio, Checkbox, Datapicker og Dropdown.
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do">
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" textInBox>
     <ul>
       <li>Bruk en handlingsknapp for å utløse en popover.</li>
       <li>Minst et interaktiv element skal være inne i en popover.</li>
@@ -113,8 +113,8 @@ formkontrolller som Radio, Checkbox, Datapicker og Dropdown.
         måtte hovre på elementet slik som Tooltip.
       </li>
     </ul>
-  </Example>
-  <Example type="dont">
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
     <ul>
       <li>
         Hvis det bare er en tekst som ikke er interaktiv, vurder å bruk en
@@ -129,5 +129,5 @@ formkontrolller som Radio, Checkbox, Datapicker og Dropdown.
         på skjermen. Vurder heller en Modal.
       </li>
     </ul>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

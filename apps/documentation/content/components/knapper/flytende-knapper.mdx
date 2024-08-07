@@ -16,7 +16,7 @@ import { AddIcon, CheckIcon, RightArrowIcon, ForwardIcon } from '@entur/icons';
 import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import FabExample from './FabExample.png';
 import FabDo from './FabDo.png';
 import FabDont from './FabDont.png';
@@ -72,14 +72,14 @@ Her er et eksempel med FABs som ligger over kartet i reiseplanleggeren, hvor man
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do" src={FabDo}>
+<DoDontGroup>
+  <DoDontCard variant="success" src={FabDo}>
     Bruk FABs for primære, positive handlinger som for eksempel søk, legg til,
     rediger, innstillinger, favoritt, dele, chat osv.
-  </Example>
-  <Example type="dont" src={FabDont}>
+  </DoDontCard>
+  <DoDontCard variant="negative" src={FabDont}>
     Unngå å bruk en FAB for mindre, uklare eller begrensede handlinger som for
     eksempel arkiver/søppel, varsler/feil, kontroller for å justere tekst,
     klipp/lim eller skriftfarge som hører hjemme i en verktøylinje.
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

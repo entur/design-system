@@ -15,7 +15,7 @@ import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import { ImportStatement } from '~/components/ImportStatement';
 import { ValidationInfoFilledIcon } from '@entur/icons';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 
 <PageHeader />
 
@@ -56,8 +56,8 @@ så bør det brukes sparsommelig. For kompleks informasjon og setninger som går
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do">
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" textInBox>
     <ul>
       <li>
         Bruk hvis du vil gi et lite hint om hvordan eller hva et element på
@@ -73,8 +73,8 @@ så bør det brukes sparsommelig. For kompleks informasjon og setninger som går
         hvis det skaper for mye rot å vise den med en gang.
       </li>
     </ul>
-  </Example>
-  <Example type="dont">
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
     <ul>
       <li>
         Unngå bruk av interaktive elementer som lenker elle rknapper i en
@@ -90,5 +90,5 @@ så bør det brukes sparsommelig. For kompleks informasjon og setninger som går
         irritere brukeren.
       </li>
     </ul>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

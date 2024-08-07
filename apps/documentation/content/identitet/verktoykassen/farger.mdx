@@ -16,7 +16,7 @@ import {
   TableBody,
 } from '@entur/table';
 import { GridContainer } from '@entur/grid';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import dont1 from './farger/Dont1.png';
 import dont2 from './farger/Dont2.png';
 import dont3 from './farger/Dont3.png';
@@ -101,21 +101,21 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="dont" src={dont1} alt="">
+<DoDontGroup>
+  <DoDontCard variant="negative" src={dont1} alt="" noPadding>
     Unngå mørk tekst på blå bakgrunn
-  </Example>
-  <Example type="dont" src={dont2} alt="">
+  </DoDontCard>
+  <DoDontCard variant="negative" src={dont2} alt="" noPadding>
     Unngå korallrød bakgrunn
-  </Example>
-</BestPractices>
-<BestPractices>
-  <Example type="dont" src={dont3} alt="">
+  </DoDontCard>
+</DoDontGroup>
+<DoDontGroup>
+  <DoDontCard variant="negative" src={dont3} alt="" noPadding>
     Unngå identitetløst uttryk
-  </Example>
-  <Example type="dont" src={dont4} alt="">
+  </DoDontCard>
+  <DoDontCard variant="negative" src={dont4} alt="" noPadding>
     Unngå lys tekst på lys bakgrunn
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>
 
 Les mer om kontrastkrav for farger på [Universell utforming](/universell-utforming) siden og bruk vår [Color Contrast Checker](/universell-utforming/kontrast-sjekker) for å hjelpe deg med å bestemme lesbarheten til tekst og kontrasten til grafiske objekter.

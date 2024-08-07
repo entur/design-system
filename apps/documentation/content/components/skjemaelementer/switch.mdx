@@ -16,7 +16,7 @@ import { BusIcon, FerryIcon } from '@entur/icons';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
 import PageHeader from '~/components/PageHeader';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import doPic from './SwitchDo.png';
 import dontPic from './SwitchDont.png';
 
@@ -53,14 +53,14 @@ For handlinger der brukeren må bekrefte valget sitt, bruk Checkboxes istedenfor
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do" src={doPic}>
+<DoDontGroup>
+  <DoDontCard variant="success" src={doPic}>
     Bruk switch til å slå på eller av en funksjon/innstilling som gir automatisk
     oppdatering eller automatisk lagring.
-  </Example>
-  <Example type="dont" src={dontPic}>
+  </DoDontCard>
+  <DoDontCard variant="negative" src={dontPic}>
     Unngå å bruk radioknapper for å slå innstillinger av eller på. Radioknapper
     indikerer at bare en kan velges om gangen og krever et ekstra steg for
     lagring.
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

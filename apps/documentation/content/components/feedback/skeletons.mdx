@@ -12,7 +12,7 @@ import { Props } from 'docz';
 import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 
 import { ImportStatement } from '~/components/ImportStatement';
 
@@ -66,8 +66,8 @@ i tillegg for å skape en oppfatning av redusert ventetid. Skeletons blir borte 
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do">
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" textInBox>
     <ul>
       <li>
         Bruk skeletons hvis data hentes fra baksystemer som har lang ventetid og
@@ -82,8 +82,8 @@ i tillegg for å skape en oppfatning av redusert ventetid. Skeletons blir borte 
         forutsigbart.
       </li>
     </ul>
-  </Example>
-  <Example type="dont">
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
     <ul>
       <li>
         Unngå å bruk skeletons hvis det er en langvarig prosess, f.eks
@@ -100,5 +100,5 @@ i tillegg for å skape en oppfatning av redusert ventetid. Skeletons blir borte 
         handlingen kan ta tid, bruker vi en lastespinner i knappen istedet.
       </li>
     </ul>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

@@ -12,7 +12,7 @@ import { Props } from 'docz';
 import { Radio, RadioGroup } from '@entur/form';
 import { Playground } from '~/components/playground/Playground';
 import { ImportStatement } from '~/components/ImportStatement';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import doPic from './RadioDo.png';
 import dontPic from './RadioDont.png';
 import PageHeader from '~/components/PageHeader';
@@ -60,14 +60,14 @@ Brukes i tilfeller der brukeren kun kan velge ett alternativ. En radioknapp skal
 
 Bruk Checkboxes hvis brukerne har mulighet til å velge flere alternativer fra listen. Om du har flere enn 5 valg, vurder å bruk en Dropdown med single select funksjon istedet.
 
-<BestPractices>
-  <Example type="do" src={doPic}>
+<DoDontGroup>
+  <DoDontCard variant="success" src={doPic}>
     Hvis du har mange radioknapper, bør du liste dem under hverandre i en
     kolonnegruppe slikt at det gjør det enkelt for brukeren å skanne raskt
     gjennom listen.
-  </Example>
-  <Example type="dont" src={dontPic}>
+  </DoDontCard>
+  <DoDontCard variant="negative" src={dontPic}>
     Du bør unngå å plassere radioknapper ved siden av hverandre og i flere
     kolonner.
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>
