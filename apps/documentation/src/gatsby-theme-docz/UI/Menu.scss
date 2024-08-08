@@ -1,39 +1,39 @@
-@import '~@entur/tokens/dist/base.scss';
-@import '../variables';
+@use '~@entur/tokens/dist/base.scss';
+@use '../variables' as vars;
 
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .top-navigation {
   display: flex;
   align-items: center;
   overflow-x: scroll;
   background: var(--designentur-header-default-fill);
-  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
+  border-bottom: t.$border-widths-default solid var(--designentur-header-default-divider);
   width: 100%;
   padding: 1rem 1rem 0rem;
-  transition: margin-left $timings-fast ease-out;
-  height: $navbar-height;
-  z-index: $z-indexes-popover;
+  transition: margin-left t.$timings-fast ease-out;
+  height: vars.$navbar-height;
+  z-index: t.$z-indexes-popover;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
     border-color: var(--designentur-header-contrast-divider);
   }
 
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     position: fixed;
     top: 0;
     left: 0;
     overflow-x: initial;
-    padding: $space-extra-large2 0 $space-extra-large2 $space-extra-large2;
+    padding: t.$space-extra-large2 0 t.$space-extra-large2 t.$space-extra-large2;
     justify-content: flex-start;
     &__logo {
       margin-right: 3rem;
       &:focus {
         outline: none;
-        box-shadow: $shadows-focus;
-        outline-offset: $outline-offsets-focus;
+        box-shadow: t.$shadows-focus;
+        outline-offset: t.$outline-offsets-focus;
       }
     }
   }

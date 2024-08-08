@@ -1,18 +1,17 @@
-@import '~@entur/tokens/dist/base.scss';
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/base.scss';
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .front-page {
   &-footer {
     background: var(--designentur-footer-default-fill);
     &__mobile-item {
-      @include for-desktop {
+      @include breakpoint.for-desktop {
         display: none;
       }
     }
     &__lead {
       margin: 0 !important;
-      @include for-desktop {
+      @include breakpoint.for-desktop {
         width: 69%;
       }
     }
@@ -24,13 +23,13 @@
       padding-right: 1.5rem;
       padding-top: 2rem;
       padding-bottom: 2rem;
-      @include for-desktop {
+      @include breakpoint.for-desktop {
         padding-top: 4.5rem;
         padding-bottom: 2.5rem;
       }
       .eds-grid__container {
         gap: 2rem;
-        @include for-desktop;
+        @include breakpoint.for-desktop;
       }
     }
     &__link {
