@@ -13,7 +13,7 @@ import { Link } from '@entur/typography';
 import { Checkbox, Fieldset } from '@entur/form';
 import { ImportStatement } from '~/components/ImportStatement';
 import { Playground } from '~/components/playground/Playground';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import doPic from './CheckboxDo.png';
 import dontPic from './CheckboxDont.png';
 import PageHeader from '~/components/PageHeader';
@@ -116,13 +116,13 @@ Her har du et eksempel hvor det brukes. Prøv å velg ingen, alle eller en bland
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do" src={doPic}>
+<DoDontGroup>
+  <DoDontCard variant="success" src={doPic}>
     Dersom det er mange checkboxes, bør du liste dem under hverandre i en
     kolonnegruppe slikt at det gjør det enkelt for brukeren å skanne raskt
     gjennom listen.
-  </Example>
-  <Example type="dont" src={dontPic}>
+  </DoDontCard>
+  <DoDontCard variant="negative" src={dontPic}>
     Du bør unngå å plassere checkboxes i flere kolonner.
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

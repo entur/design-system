@@ -12,7 +12,7 @@ import { Props } from 'docz';
 import { Playground } from '~/components/playground/Playground';
 import PageHeader from '~/components/PageHeader';
 import InlineComponent from '~/components/InlineComponent';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import { ImportStatement } from '~/components/ImportStatement';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
 import {
@@ -267,8 +267,8 @@ Disse brukes ikke så ofte, og man kan ofte benytte valideringsmeldinger isteden
 
 ## Prinsipper
 
-<BestPractices>
-  <Example type="do">
+<DoDontGroup>
+  <DoDontCard title="God praksis" variant="success" textInBox>
     <ul>
       <li>Bruk varsler sparsomt</li>
       <li>Hold det kort og konsist</li>
@@ -283,8 +283,8 @@ Disse brukes ikke så ofte, og man kan ofte benytte valideringsmeldinger isteden
       <li>Tillatt brukeren å avvise et varsel der det er aktuelt.</li>
       <li>Bruk standardikonet for information, suksess, advarsel og feil.</li>
     </ul>
-  </Example>
-  <Example type="dont">
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
     <ul>
       <li>Ikke legg varsler over innhold på siden</li>
       <li>
@@ -299,5 +299,5 @@ Disse brukes ikke så ofte, og man kan ofte benytte valideringsmeldinger isteden
         Ikke ta med varsler som ikke er relevant for brukerens nåværende oppgave
       </li>
     </ul>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

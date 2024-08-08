@@ -1,5 +1,5 @@
 ---
-name: EN......TUR
+name: EN … TUR
 description: Vi åpner logoen for å gi plass til innholdet.
 route: /identitet/verktoykassen/entur
 parent: Identitet
@@ -20,7 +20,7 @@ import bilde9 from './entur/EN---TUR_foto-1.png';
 import bilde10 from './entur/EN---TUR_foto-2.png';
 import bilde11 from './entur/EN---TUR_foto-3.png';
 import bilde12 from './entur/EN---TUR_foto-4.png';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
   UnorderedList,
@@ -72,88 +72,81 @@ Oppsettet tilfører bevegelse og dynamikk til identiteten, og understøtter mang
   alt="Typografiske eksempler hvor et ord er lagt inn mellom EN og Tur som en sammenslått Entur-logo. Eksempel: En God Tur"
 />
 
-### Unngå...
-
-<GridContainer spacing="extraLarge">
-  <GridItem small={12} medium={6}>
-    <Example
+### Unngå …
+  <DoDontGroup>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde3}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur logo med grønn og grå tekst imellom"
+      noPadding
     >
-      <StrongText>...at innholdet står i annet enn korall</StrongText>
+      <StrongText>… at innholdet står i annet enn korall</StrongText>
       <Paragraph>
         Innholdet mellom EN og TUR skal alltid stå i korallrød.
       </Paragraph>
-    </Example>
-  </GridItem>
-  <GridItem small={12} medium={6}>
-    <Example
+    </DoDontCard>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde4}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur-logo med liten tekst imellom "
+      noPadding
     >
-      <StrongText>...for liten tekst</StrongText>
+      <StrongText>… for liten tekst</StrongText>
       <Paragraph>
         Innholdet mellom EN og TUR skal alltid stå i korallrød.
       </Paragraph>
-    </Example>
-  </GridItem>
-  <GridItem small={12} medium={6}>
-    <Example
+    </DoDontCard>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde5}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur-logo med små bokstaver imellom"
+      noPadding
     >
-      <StrongText>...små bokstaver</StrongText>
+      <StrongText>… små bokstaver</StrongText>
       <Paragraph>Innholdet står alltid i versaler.</Paragraph>
-    </Example>
-  </GridItem>
-  <GridItem small={12} medium={6}>
-    <Example
+    </DoDontCard>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde6}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur-logo som ikke følger en av de tre aksene nevnt over"
+      noPadding
     >
-      <StrongText>...tilfeldig plassering av EN og TUR</StrongText>
+      <StrongText>… tilfeldig plassering av EN og TUR</StrongText>
       <Paragraph>
         EN og TUR forholder seg alltid til de tre retningene som beskrevet over.
       </Paragraph>
-    </Example>
-  </GridItem>
-  <GridItem small={12} medium={6}>
-    <Example
+    </DoDontCard>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde7}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur-logo hvor de forskjellige elementene varierer i størrelse"
+      noPadding
     >
-      <StrongText>...ulik størrelse på EN og TUR</StrongText>
+      <StrongText>… ulik størrelse på EN og TUR</StrongText>
       <Paragraph> EN og TUR står alltid i samme størrelse.</Paragraph>
-    </Example>
-  </GridItem>
-  <GridItem small={12} medium={6}>
-    <Example
+    </DoDontCard>
+    <DoDontCard
       contrast
-      type="dont"
+      variant="negative"
       src={bilde8}
       className="ds-en-tur-overlay"
       alt="Sammenslått Entur-logo i reversert rekkefølge på vertikalen"
+      noPadding
     >
-      <StrongText>...plassering av EN og TUR bakvendt</StrongText>
-      <Paragraph> Legg aldri en effekt på logoen. </Paragraph>
-    </Example>
-  </GridItem>
-</GridContainer>
+      <StrongText>… plassering av EN og TUR bakvendt</StrongText>
+      <Paragraph> Teksten skal følge naturlig leserekkefølge. </Paragraph>
+    </DoDontCard>
+  </DoDontGroup>
 
 ## Bruk med foto
 

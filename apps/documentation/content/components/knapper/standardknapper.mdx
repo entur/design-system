@@ -20,7 +20,7 @@ import {
 import { SmallExpandableAlertBox } from '@entur/alert';
 import { Props } from 'docz';
 import PageHeader from '~/components/PageHeader';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import { ImportStatement } from '~/components/ImportStatement';
 import ComponentRuler from '~/components/ComponentRuler';
 import { Playground } from '~/components/playground/Playground';
@@ -124,8 +124,8 @@ Hvis man ønsker en knapp med mindre fokus eller som tar mindre plass kan man br
 
 Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre.
 
-<BestPractices>
-  <Example type="do" src={doPic}>
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" src={doPic}>
     <ul>
       <li>
         Aktiv knapp som validerer (når man klikker på den) erstatter bruk av
@@ -141,8 +141,8 @@ Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre.
         også for felter som validerer mot baksystemer
       </li>
     </ul>
-  </Example>
-  <Example type="dont" src={dontPic}>
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" src={dontPic}>
     <ul>
       <li>
         Inaktive knapper bør unngås fordi den skaper vanligvis en elendig
@@ -156,8 +156,8 @@ Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre.
         den ikke er klikkbar
       </li>
     </ul>
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>
 
 ## Komponenter
 

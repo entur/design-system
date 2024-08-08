@@ -25,7 +25,7 @@ import { AddIcon } from '@entur/icons';
 import * as icons from '@entur/icons';
 import IconList from '~/components/IconList';
 import PageHeader from '~/components/PageHeader';
-import { BestPractices, Example } from '~/components/BestPractices';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
 import alignDoSrc from './align-do.png';
 import alignDontSrc from './align-dont.png';
 import colorDoSrc from './color-do.png';
@@ -163,28 +163,28 @@ Ikoner er _ikke_ ment som dekorasjon, og skal derfor _kun_ brukes der de gir ver
 
 ### Prinsipper
 
-<BestPractices>
-  <Example type="do" src={colorDoSrc} alt="">
+<DoDontGroup>
+  <DoDontCard variant="success" src={colorDoSrc} alt="">
     Bruk samme farge på ikon og tekst når de skal stå sammen
-  </Example>
-  <Example type="dont" src={colorDontSrc} alt="">
+  </DoDontCard>
+  <DoDontCard variant="negative" src={colorDontSrc} alt="">
     Ikke bruk forskjellige farger på ikon og tekst
-  </Example>
-</BestPractices>
-<BestPractices>
-  <Example type="do" src={alignDoSrc} alt="">
+  </DoDontCard>
+</DoDontGroup>
+<DoDontGroup>
+  <DoDontCard variant="success" src={alignDoSrc} alt="">
     Når man bruker ikon ved siden av tekst, skal ikonet midtstilles
-  </Example>
-  <Example type="dont" src={alignDontSrc} alt="">
+  </DoDontCard>
+  <DoDontCard variant="negative" src={alignDontSrc} alt="">
     Ikke baseline-juster ikonet til teksten
-  </Example>
-</BestPractices>
-<BestPractices>
-  <Example type="do" src={sizeDoSrc} alt="">
+  </DoDontCard>
+</DoDontGroup>
+<DoDontGroup>
+  <DoDontCard variant="success" src={sizeDoSrc} alt="">
     Størrelsen på både ikon og tekst skal alltid være lik og innenfor
     størrelse-skalaen
-  </Example>
-  <Example type="dont" src={sizeDontSrc} alt="">
+  </DoDontCard>
+  <DoDontCard variant="negative" src={sizeDontSrc} alt="">
     Ikke bruk forskjellig størrelser på ikon og tekst
-  </Example>
-</BestPractices>
+  </DoDontCard>
+</DoDontGroup>

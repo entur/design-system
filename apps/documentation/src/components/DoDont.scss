@@ -1,0 +1,91 @@
+@use '~@entur/tokens/dist/styles.scss' as t;
+
+.do-dont-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-default;
+  margin-bottom: t.$space-extra-large3;
+
+  .do-dont-card:nth-child(2n) {
+    flex-basis: 100%;
+  }
+}
+
+.do-dont-card {
+  max-width: calc(50% - t.$space-default);
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 16rem;
+    padding: t.$space-large;
+    border-radius: t.$border-radiuses-large;
+    overflow: hidden;
+
+    border-bottom: 0.5rem solid transparent;
+    background-color: var(--designentur-dodontcard-fill);
+
+    .do-dont-card--success & {
+      border-color: var(--designentur-dodontcard-statusline-success);
+    }
+    .do-dont-card--warning & {
+      border-color: var(--designentur-dodontcard-statusline-warning);
+    }
+    .do-dont-card--negative & {
+      border-color: var(--designentur-dodontcard-statusline-negative);
+    }
+
+    &--no-padding {
+      padding: 0;
+      min-height: initial;
+
+      .do-dont-card__box__image {
+        margin: 0;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    &__image {
+      display: block;
+      width: calc(100% - #{t.$space-extra-large3} * 2);
+      min-width: 10rem;
+      margin: 1rem auto;
+    }
+  }
+
+  &__text-content {
+    margin-top: t.$space-extra-small;
+
+    display: flex;
+    gap: t.$space-small;
+    margin-top: t.$space-small;
+
+    .eds-icon {
+      min-width: t.$space-default;
+
+      .do-dont-card--success & {
+        color: var(--designentur-dodontcard-statusline-success);
+      }
+      .do-dont-card--warning & {
+        color: var(--designentur-dodontcard-statusline-warning);
+      }
+      .do-dont-card--negative & {
+        color: var(--designentur-dodontcard-statusline-negative);
+      }
+    }
+
+    &__title {
+      font-weight: t.$font-weights-heading;
+    }
+    ul {
+      padding-left: 0;
+      margin-left: -0.4rem;
+      margin-top: t.$space-extra-small;
+    }
+  }
+}

@@ -27,7 +27,6 @@ export const TravelLeg: React.FC<TravelLegProps> = ({
   const isContrast = useContrast();
   const deCapitalizeTransport = transport.toLowerCase();
 
-  console.log('deCapitalizeTransport', deCapitalizeTransport);
   const backgroundColor =
     'var(--components-travel-travelleg-standard-' + deCapitalizeTransport + ')';
   const contrastBackgroundColor =
