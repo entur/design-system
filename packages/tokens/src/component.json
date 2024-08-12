@@ -3903,6 +3903,12 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Air",
+            "value": "#fbafea",
+            "var": "Contrast/Plane",
+            "rootAlias": "Contrast/Plane"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/AirportLinkBus",
             "value": "#fbafea",
             "var": "Contrast/airportLinkBus",
@@ -3987,6 +3993,12 @@
             "rootAlias": "Contrast/Plane"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Rail",
+            "value": "#42a5f5",
+            "var": "Contrast/Train",
+            "rootAlias": "Contrast/Train"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Taxi",
             "value": "#ffe082",
             "var": "Contrast/Taxi",
@@ -4009,6 +4021,18 @@
             "value": "#8284ab",
             "var": "Contrast/Walk",
             "rootAlias": "Contrast/Walk"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Contrast/Water",
+            "value": "#6fdfff",
+            "var": "Contrast/Carferry",
+            "rootAlias": "Contrast/Carferry"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Standard/Air",
+            "value": "#800664",
+            "var": "Standard/Plane",
+            "rootAlias": "Standard/Plane"
           },
           {
             "name": "Components/travel/Travel Leg/Standard/AirportLinkBus",
@@ -4095,6 +4119,12 @@
             "rootAlias": "Standard/Plane"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/Rail",
+            "value": "#00367f",
+            "var": "Standard/Train",
+            "rootAlias": "Standard/Train"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Taxi",
             "value": "#3d3e40",
             "var": "Standard/Taxi",
@@ -4117,6 +4147,12 @@
             "value": "#8d8e9c",
             "var": "Standard/Walk",
             "rootAlias": "Standard/Walk"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Standard/Water",
+            "value": "#0c6693",
+            "var": "Standard/Carferry",
+            "rootAlias": "Standard/Carferry"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundFalse",
@@ -9775,6 +9811,12 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Air",
+            "value": "#f2b8e5",
+            "var": "Dark/Plane",
+            "rootAlias": "Dark/Plane"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/AirportLinkBus",
             "value": "#f2b8e5",
             "var": "Dark/airportLinkBus",
@@ -9859,6 +9901,12 @@
             "rootAlias": "Dark/Plane"
           },
           {
+            "name": "Components/travel/Travel Leg/Contrast/Rail",
+            "value": "#60a2d7",
+            "var": "Dark/Train",
+            "rootAlias": "Dark/Train"
+          },
+          {
             "name": "Components/travel/Travel Leg/Contrast/Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -9881,6 +9929,18 @@
             "value": "#8d8e9c",
             "var": "Dark/Walk",
             "rootAlias": "Dark/Walk"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Contrast/Water",
+            "value": "#8ccfe2",
+            "var": "Dark/Carferry",
+            "rootAlias": "Dark/Carferry"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Standard/Air",
+            "value": "#f2b8e5",
+            "var": "Dark/Plane",
+            "rootAlias": "Dark/Plane"
           },
           {
             "name": "Components/travel/Travel Leg/Standard/AirportLinkBus",
@@ -9967,6 +10027,12 @@
             "rootAlias": "Dark/Plane"
           },
           {
+            "name": "Components/travel/Travel Leg/Standard/Rail",
+            "value": "#60a2d7",
+            "var": "Dark/Train",
+            "rootAlias": "Dark/Train"
+          },
+          {
             "name": "Components/travel/Travel Leg/Standard/Taxi",
             "value": "#ffe082",
             "var": "Dark/Taxi",
@@ -9989,6 +10055,12 @@
             "value": "#8d8e9c",
             "var": "Dark/Walk",
             "rootAlias": "Dark/Walk"
+          },
+          {
+            "name": "Components/travel/Travel Leg/Standard/Water",
+            "value": "#8ccfe2",
+            "var": "Dark/Carferry",
+            "rootAlias": "Dark/Carferry"
           },
           {
             "name": "Components/travel/Travel Switch/Contrast/BackgroundFalse",
