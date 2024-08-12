@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.0.0...@entur/icons@7.1.0) (2024-08-12)
+
+### Features
+
+- **icons:** add new partner icons ([9b2ce5a](https://bitbucket.org/enturas/design-system/commits/9b2ce5a777cd683a5d585dcc8d390179434c9925))
+
 # [7.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@6.18.1...@entur/icons@7.0.0) (2024-07-11)
 
 ### Performance Improvements

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.15.2...@entur/tokens@3.16.0) (2024-08-12)
+
+### Bug Fixes
+
+- **travel leg:** fix missing colours for air, rail and water transport type ([2a93865](https://bitbucket.org/enturas/design-system/commits/2a93865a160d4c1ded174cb2dd8ee5194f7db202))
+
+### Features
+
+- **documentation:** add new design for do-dont cards ([e167e04](https://bitbucket.org/enturas/design-system/commits/e167e043993c2959cdda55e0869b5b0418f14b9f))
+
 ## [3.15.2](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.15.1...@entur/tokens@3.15.2) (2024-07-11)
 
 **Note:** Version bump only for package @entur/tokens

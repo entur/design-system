@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.5.1...@entur/documentation@3.6.0) (2024-08-12)
+
+### Features
+
+- **documentation:** add new design for do-dont cards ([e167e04](https://bitbucket.org/enturas/design-system/commits/e167e043993c2959cdda55e0869b5b0418f14b9f))
+- **documentation:** make beta dark mode feature available for everyone ([33b7c65](https://bitbucket.org/enturas/design-system/commits/33b7c6591f709185a18255c8e6fef461420c2e54))
+
 ## [3.5.1](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.5.0...@entur/documentation@3.5.1) (2024-07-11)
 
 **Note:** Version bump only for package @entur/documentation

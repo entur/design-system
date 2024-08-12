@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.2.1...@entur/travel@6.2.2) (2024-08-12)
+
+### Bug Fixes
+
+- **travel leg:** fix missing colours for air, rail and water transport type ([2a93865](https://bitbucket.org/enturas/design-system/commits/2a93865a160d4c1ded174cb2dd8ee5194f7db202))
+- **travel leg:** remove console.log statement from code ([2957680](https://bitbucket.org/enturas/design-system/commits/2957680275fb9ad0ac9d94e2b4812d0f897b76f8))
+
 ## [6.2.1](https://bitbucket.org/enturas/design-system/compare/@entur/travel@6.2.0...@entur/travel@6.2.1) (2024-07-11)
 
 **Note:** Version bump only for package @entur/travel
