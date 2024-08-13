@@ -1,8 +1,9 @@
 import React from 'react';
+import Img from 'gatsby-image';
 
 import { IconButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
-import { Tooltip } from '@entur/tooltip';
+import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
 
 import './ImageDisplay.scss';
 
@@ -26,40 +27,56 @@ const BorderWrapper: React.FC<BorderWrapperProps> = ({
 };
 
 type ImageDisplayProps = {
-  src: string;
-  download?: boolean;
+  src?: string;
+  fluidSource?: any;
+  name?: string;
+  downloadSources?: Array<{ src: string; format: string }>;
   alt?: string;
 };
 
 const ImageDisplay: React.FC<ImageDisplayProps> = ({
   src,
-  download = false,
+  fluidSource,
+  name,
+  downloadSources = [],
   alt = '',
   ...rest
 }) => {
   return (
-    <div className="image-display">
-      <div className="image-display__image" {...rest}>
-        <img src={src} alt={alt} />
-      </div>
-      {download && (
-        <Tooltip
-          aria-hidden="true"
-          content="Last ned illustrasjon"
-          placement="top"
-        >
-          <IconButton
-            as="a"
-            download
-            href={src}
-            className="image-display__download"
-            aria-label={`Last ned illustrasjon ${
-              src.match(/([^/]+$)/)?.[0].match(/(^[^-]*)/)?.[0]
-            }`}
+    <div className="image-display" {...rest}>
+      {src !== undefined && <img src={src} alt={alt} />}
+      {fluidSource !== undefined && (
+        <Img fluid={fluidSource} alt={alt} style={{ objectFit: 'contain' }} />
+      )}
+      {downloadSources && (
+        <div className="image-display__download-container">
+          <OverflowMenu
+            button={
+              <IconButton
+                className="image-display__download"
+                aria-label={`Last ned illustrasjon ${name}`}
+              >
+                <DownloadIcon />
+              </IconButton>
+            }
+            position="left"
           >
-            <DownloadIcon />
-          </IconButton>
-        </Tooltip>
+            {downloadSources.map(
+              downloadSrc =>
+                downloadSrc.src !== undefined && (
+                  <OverflowMenuItem
+                    as="a"
+                    href={downloadSrc.src}
+                    download
+                    key={downloadSrc.src}
+                    onSelect={() => undefined}
+                  >
+                    Last ned som {downloadSrc.format}
+                  </OverflowMenuItem>
+                ),
+            )}
+          </OverflowMenu>
+        </div>
       )}
     </div>
   );

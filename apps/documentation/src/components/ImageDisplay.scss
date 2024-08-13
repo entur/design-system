@@ -1,24 +1,23 @@
 @use '~@entur/tokens/dist/semantic.scss' as *;
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .border-wrapper {
-  border: $border-widths-small solid var(--basecolors-stroke-subduedalt);
-  border-radius: $border-widths-large;
+  border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
+  border-radius: t.$border-widths-large;
   display: grid;
-  gap: $space-default;
+  gap: t.$space-default;
 }
 
 .image-display {
-  width: 100%;
+  height: 100%;
   position: relative;
-  background: $fill-background-standard-light;
 
-  &__image {
+  img {
+    height: 100%;
     width: 100%;
-    & > img {
-      width: 100%;
-    }
+    object-fit: contain;
   }
+
   &:hover {
     .eds-icon {
       opacity: 1;
@@ -32,18 +31,27 @@
     }
   }
   &__download {
-    position: absolute;
-    bottom: $space-small;
-    right: $space-small;
+    &-container {
+      position: absolute;
+      bottom: t.$space-small;
+      right: t.$space-small;
 
-    &:focus {
-      .eds-icon {
-        opacity: 1;
+      display: flex;
+      gap: t.$space-default;
+
+      .eds-overflow-menu__menu-list {
+        width: 10.5rem;
       }
-    }
 
-    .eds-icon {
-      opacity: 0;
+      &:focus {
+        .eds-icon {
+          opacity: 1;
+        }
+      }
+
+      .eds-icon {
+        opacity: 0;
+      }
     }
   }
 }
