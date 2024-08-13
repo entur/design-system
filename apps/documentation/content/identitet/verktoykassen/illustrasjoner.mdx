@@ -7,387 +7,70 @@ menu: Verktøykassen
 order: 10
 ---
 
-import PageHeader from '~/components/PageHeader';
 import { GridContainer, GridItem } from '@entur/grid';
-import { Link } from '@entur/typography';
 import { ExternalIcon } from '@entur/icons';
+import { Link } from '@entur/typography';
+
+import PageHeader from '~/components/PageHeader';
 import { ImageDisplay, BorderWrapper } from '~/components/ImageDisplay';
-
-import main from './Illustrasjoner/Landskap/Main.png';
-import main2 from './Illustrasjoner/Landskap/Main_Frame.png';
-
-import landing1 from './Illustrasjoner/Landskap/Landscape_1.png';
-import landing2 from './Illustrasjoner/Landskap/Landscape_2.png';
-import landing3 from './Illustrasjoner/Landskap/Landscape_3.png';
-import landing4 from './Illustrasjoner/Landskap/Landscape_4.png';
-
-import landing1frame from './Illustrasjoner/Landskap/Landscape_1_Frame.png';
-import landing2frame from './Illustrasjoner/Landskap/Landscape_2_Frame.png';
-import landing3frame from './Illustrasjoner/Landskap/Landscape_3_Frame.png';
-import landing4frame from './Illustrasjoner/Landskap/Landscape_4_Frame.png';
-import landing4phone from './Illustrasjoner/Landskap/Landscape_4_withoutphone.png';
-
-import clock from './Illustrasjoner/Kvadrat/Clock.png';
-import doves from './Illustrasjoner/Kvadrat/Doves.png';
-import ducks from './Illustrasjoner/Kvadrat/Ducks.png';
-import goat from './Illustrasjoner/Kvadrat/Goat.png';
-import hedgehog from './Illustrasjoner/Kvadrat/Hedgehog.png';
-import leafs from './Illustrasjoner/Kvadrat/Leafs.png';
-import musk from './Illustrasjoner/Kvadrat/Musk.png';
-import sheep from './Illustrasjoner/Kvadrat/Sheep.png';
-import squirrel from './Illustrasjoner/Kvadrat/Squirrel.png';
-
-import clockCircle from './Illustrasjoner/Kvadrat/Clock-circle.png';
-import dovesCircle from './Illustrasjoner/Kvadrat/Doves-circle.png';
-import ducksCircle from './Illustrasjoner/Kvadrat/Ducks-circle.png';
-import goatCircle from './Illustrasjoner/Kvadrat/Goat-circle.png';
-import hedgehogCircle from './Illustrasjoner/Kvadrat/Hedgehog-circle.png';
-import leafsCircle from './Illustrasjoner/Kvadrat/Leafs-circle.png';
-import muskCircle from './Illustrasjoner/Kvadrat/Musk-circle.png';
-import sheepCircle from './Illustrasjoner/Kvadrat/Sheep-circle.png';
-import squirrelCircle from './Illustrasjoner/Kvadrat/Squirrel-circle.png';
-
-import City from './Illustrasjoner/Annet/City.png';
-import Humans from './Illustrasjoner/Annet/Humans.png';
-import Onboarding from './Illustrasjoner/Annet/Onboarding.png';
-import Train1 from './Illustrasjoner/Annet/Train1.png';
-import Bus from './Illustrasjoner/Transport/Bus.png';
-import Ferry from './Illustrasjoner/Transport/Ferry.png';
-import Metro from './Illustrasjoner/Transport/Metro.png';
-import Scooter from './Illustrasjoner/Transport/Scooter.png';
-import Train from './Illustrasjoner/Transport/Train.png';
+import IllustrationList from '~/components/IllustrationList';
 
 <PageHeader />
 
-Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge.
-Illustrasjonsstilen tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten.
+Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge. Illustrasjonsstilen 
+tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten. 
 Illustrasjonenes fremste oppgave er å myke opp og menneskeliggjøre uttrykket i våre digitale flater.
 
-Ved behov for andre formater eller utsnitt av materiale som ligger i
-illustrasjonsbiblioteket, kontakt oss på Slack i
-[#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). Vi jobber også
-med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt
-etter litt. Det er foreløpig ikke avklart om de animerte illustrasjonene skal
-legges ut her eller et annet sted.
+Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). 
+Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Det er foreløpig ikke avklart om de animerte 
+illustrasjonene skal legges ut her eller et annet sted.
 
-### Filformater
-
-<div>
-  Alle illustrasjonene er tilgjengelig i png- og svg-format. På denne siden vil
-  du finne png-versjonen ved å klikke på «Last ned illustrasjon»-knappen på
-  bildet. Trenger du svg-formatet er det foreløpig kun tilgjengelig via{' '}
-  <Link
-    href="https://drive.google.com/drive/folders/1Y85Rs4FvhhEt02kUd-U_ybzmEHJ_1tHi?usp=sharing"
-    target="_blank"
-    external
-  >
-    Google Drive.
-  </Link>
-</div>
+## Filformater
+Alle illustrasjonene er tilgjengelig i png- og svg-format. På denne siden vil du finne png-versjonen ved å klikke på «Last ned illustrasjon»-knappen på 
+bildet. Trenger du svg-formatet er det foreløpig kun tilgjengelig via [Google Drive](https://drive.google.com/drive/folders/1Y85Rs4FvhhEt02kUd-U_ybzmEHJ_1tHi?usp=sharing).
 
 ## Hovedillustrasjon
+Hovedillustrasjonen skal anvendes slik at den oppleves som brukerens første møte med Entur, for å introdusere hvem vi er og hva vi gjør. Brukes f.eks på 
+introsider eller som onboarding-illustrasjon.
 
-Hovedillustrasjonen skal anvendes slik at det oppleves som brukerens første møte med Entur, og brukes for å introdusere hvem vi er. Brukes f.eks på introsider som onboarding-illustrasjon.
+<IllustrationList categoryFilter="landscape" squareIllustrations={false} includeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" />
 
-<BorderWrapper>
-  <ImageDisplay download src={main} />
-</BorderWrapper>
+## Landskapsmotiv
+Disse illustrasjonene er spesielt tiltenkt landningssider på web. Illustrasjonene bidrar med å fremheve, visualisere og myke opp innholdet på en ellers 
+teksttung side. Bildene skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. i to-kolonners grid) skal det benyttes mindre utsnitt 
+av landskapet.
 
-### Hovedillustrasjon med ramme
+<IllustrationList categoryFilter="landscape" squareIllustrations={false} excludeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" />
 
-<BorderWrapper>
-  <ImageDisplay download src={main2} />
-</BorderWrapper>
 
-## Landskapsformat
-
-Disse illustrasjonene er spesielt tiltenkt landningssider på web.
-Illustrasjonene bidrar med å fremheve, visualisere og myke opp innholdet på en ellers teksttung side.
-Disse skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. i to-kolonners grid) skal det benyttes mindre utsnitt av landskapene.
-
-<GridContainer spacing="large">
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing1} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing2} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing3} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing4} />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
-
-## Landskapsformat med ramme
-
-<GridContainer spacing="large">
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing1frame} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing2frame} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing3frame} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing4frame} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={12}>
-    <BorderWrapper>
-      <ImageDisplay download src={landing4phone} />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
-
-## Kvadratiske motiv
-
+## Kvadratiske motiver
 De små illustrasjonene brukes primært på informasjonssider, modaler, infomeldinger, feilmeldinger og sider hvor det mangler innhold («empty states»).
 
-Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få.
-Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side bør de settes i et fler-kolonners grid.
+Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. 
+Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side 
+bør de settes i et fler-kolonners grid.
+
+### Mennesker
+<IllustrationList categoryFilter="people" disableBackgroundSwitch />
+<IllustrationList categoryFilter="entur staff" disableBackgroundSwitch />
 
 ### Dyremotiv
+<IllustrationList categoryFilter="animals" />
 
-<GridContainer spacing="extraLarge">
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={clock} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={doves} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={ducks} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={goat} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={hedgehog} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={leafs} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={musk} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={sheep} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={squirrel} />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
+### Gjenstander
+<IllustrationList categoryFilter="objects" />
 
-### Dyremotiv med sirkelbakgrunn
+### Hånd
+<IllustrationList categoryFilter="hands" />
 
-<GridContainer spacing="extraLarge">
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={clockCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={dovesCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={ducksCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={goatCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={hedgehogCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={leafsCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={muskCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={sheepCircle} />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay download src={squirrelCircle} />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
+### Digitale enheter
+<IllustrationList categoryFilter="devices" disableBackgroundSwitch />
 
-### Landskapsmotiv
+### Transportmidler
+<IllustrationList categoryFilter="transport" disableBackgroundSwitch />
 
-<GridContainer spacing="extraLarge">
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1.5rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={City}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1.5rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Onboarding}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1.5rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Train1}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '4rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Humans}
-      />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
+### Hittegods
+<IllustrationList categoryFilter="travel" disableBackgroundSwitch />
 
-### Transportmotiv
-
-<GridContainer spacing="extraLarge">
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Bus}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Ferry}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Metro}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Scooter}
-      />
-    </BorderWrapper>
-  </GridItem>
-  <GridItem small={6} medium={4}>
-    <BorderWrapper>
-      <ImageDisplay
-        download
-        style={{
-          padding: '1rem 0.5rem',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        src={Train}
-      />
-    </BorderWrapper>
-  </GridItem>
-</GridContainer>
+### Scenarioer
+<IllustrationList categoryFilter="scenario" disableBackgroundSwitch />
