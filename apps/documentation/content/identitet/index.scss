@@ -1,22 +1,8 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .identitet-designprinsipper {
-  display: flex;
-  flex-direction: column;
-  &__wrapper {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  &__grey {
-    color: $colors-brand-coral;
-    font-size: $font-sizes-extra-large4;
-    line-height: $line-heights-extra-large6;
-    padding: 5rem 5rem;
-    background: $colors-greys-grey90;
-    height: 15rem;
-  }
-  .eds-h5 {
-    margin-top: 1rem;
+  &__image {
+    width: 100%;
+    margin-bottom: t.$space-default;
   }
 }

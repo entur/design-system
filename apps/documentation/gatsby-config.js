@@ -6,6 +6,8 @@ module.exports = {
         implementation: require('sass'),
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -18,6 +20,13 @@ module.exports = {
       options: {
         name: `downloads`,
         path: `${__dirname}/src/gatsby-theme-docz/downloads/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `media`,
+        path: `${__dirname}/src/gatsby-theme-docz/media/`,
       },
     },
     {

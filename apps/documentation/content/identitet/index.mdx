@@ -7,25 +7,70 @@ index: true
 removeToc: true
 ---
 
-import PageHeader from '~/components/PageHeader';
-import { Heading5, Paragraph, StrongText } from '@entur/typography';
-import prinsipp1 from './design_prinsipper/prinsipp1.png';
-import prinsipp2 from './design_prinsipper/prinsipp2.png';
-import prinsipp3 from './design_prinsipper/prinsipp3.png';
-import prinsipp4 from './design_prinsipper/prinsipp4.png';
-import prinsipp5 from './design_prinsipper/prinsipp5.png';
-import prinsipp6 from './design_prinsipper/prinsipp6.png';
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+
 import { GridItem, GridContainer } from '@entur/grid';
+import { data, space } from '@entur/tokens';
+import { Heading5, Paragraph, StrongText, UnorderedList, ListItem } from '@entur/typography';
+
+import BaseCardDesignEntur from '~/components/BaseCardDesignEntur';
+import PageHeader from '~/components/PageHeader';
+
 import './index.scss';
+
+export const query = graphql`
+  query pageQuery {
+    pageHeader: file(
+    sourceInstanceName: { eq: "media"}
+    name: {
+      eq: "Entur_visuell-identitet2"
+    }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    principles: allFile(
+      filter: {sourceInstanceName: {eq: "media"}, relativePath: {regex: "/.+design_prinsipper.+/"}}
+    ) { 
+      images: nodes {
+        name
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`
 
 <PageHeader />
 
-Målet med vår identitet er å sikre et helhetlig uttrykk på tvers av alle kanaler.
-Hvert eneste uttak vi skaper med Entur som avsender bidrar til den overordnede merkevaren
-vår og hvordan vi blir oppfattet. Det er derfor viktig at vi er konsekvente i bruk
-og omhyggelige med hvordan vi uttrykker oss, så inntrykket av Entur blir opprettholdt.
-På den måten kan vi sammen skape en sterk og gjenkjennelig merkevare som både tilbydere
-og de reisende kan stole på og bli glad i.
+<Img
+  fluid={props.data.pageHeader.childImageSharp.fluid}
+  alt="Et bilde som viser Entur sin profil gjennom et foto av en dame kledd i 
+      Enturs profilfarger på venstresiden og teksten «En resie, En billett, En app. 
+      Entur» på høyresiden"
+  style={{ marginBottom: space.extraLarge3 }}
+/>
+
+Målet med vår identitet er å sikre et helhetlig uttrykk på tvers av alle kanaler. Hvert eneste uttak 
+vi skaper med Entur som avsender bidrar til den overordnede merkevaren vår og hvordan vi blir oppfattet. 
+Det er derfor viktig at vi er konsekvente i bruk og omhyggelige med hvordan vi uttrykker oss, så 
+inntrykket av Entur blir opprettholdt. På den måten kan vi sammen skape en sterk og gjenkjennelig 
+merkevare som både tilbydere og de reisende kan stole på og bli glad i.
+
+<BaseCardDesignEntur>
+  <StrongText>Denne manualen er en veiledning til deg som skal ta identiteten i bruk.</StrongText>
+  <UnorderedList>
+    <ListItem>I introduksjonen blir kjent med hvem Entur er, hvorfor vi er til, hva vi tror på, og hva vi gjør for å oppnå målene våre.</ListItem>
+    <ListItem>I verktøykassen får du oversikt over alle virkemidlene identiteten er bygget opp av, og hvordan du bruker dem.</ListItem>
+  </UnorderedList>
+</BaseCardDesignEntur>
 
 ### Bruk av Enturs merkevare
 
@@ -37,7 +82,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
   style={{ marginTop: '2.5rem' }}
 >
   <GridItem small={12} medium={6}>
-    <img src={prinsipp1} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp1').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>1. Ydmyk for oppdraget</StrongText>
     </Paragraph>
@@ -47,7 +92,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
     </Paragraph>
   </GridItem>
   <GridItem small={12} medium={6}>
-    <img src={prinsipp2} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp2').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>2. Innholdet er helten</StrongText>
     </Paragraph>
@@ -57,7 +102,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
     </Paragraph>
   </GridItem>
   <GridItem small={12} medium={6}>
-    <img src={prinsipp3} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp3').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>3. Flere enn en</StrongText>
     </Paragraph>
@@ -68,7 +113,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
     </Paragraph>
   </GridItem>
   <GridItem small={12} medium={6}>
-    <img src={prinsipp4} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp4').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>4. Enkel og skalerbar</StrongText>
     </Paragraph>
@@ -79,7 +124,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
     </Paragraph>
   </GridItem>
   <GridItem small={12} medium={6}>
-    <img src={prinsipp5} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp5').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>5. Tydelige kontraster</StrongText>
     </Paragraph>
@@ -90,7 +135,7 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
     </Paragraph>
   </GridItem>
   <GridItem small={12} medium={6}>
-    <img src={prinsipp6} width="100%" style={{ marginBottom: '1rem' }} alt="" />
+    <Img fluid={props.data.principles.images.find(image => image.name === 'prinsipp6').childImageSharp.fluid} className="identitet-designprinsipper__image" alt="" />
     <Paragraph margin="none">
       <StrongText>6. Lett og leken</StrongText>
     </Paragraph>
