@@ -21,6 +21,7 @@
     "build:legacy-tokens": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-legacy-tokens.ts",
     "build:js": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-objects.ts) && dts build",
     "build:stylesheets": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-stylesheets.ts",
+    "start": "yarn build",
     "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/data.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
   },
   "devDependencies": {
