@@ -10,47 +10,65 @@
 
 .image-display {
   height: 100%;
+  flex: 0;
   position: relative;
 
   img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    border-radius: t.$border-radiuses-large;
+
+    -webkit-user-drag: none;
+  }
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
   }
 
-  &:hover {
-    .eds-icon {
-      opacity: 1;
+  .image-display__download-container {
+    opacity: 0;
 
-      &-button {
-        background-color: var(--basecolors-frame-tint);
-        &:hover {
-          background-color: var(--basecolors-frame-subdued);
+    &--show {
+      opacity: 1;
+    }
+  }
+
+  &:hover .image-display__download-container,
+  &:focus-within .image-display__download-container {
+    opacity: 1;
+  }
+
+  &__download-container {
+    position: absolute;
+    bottom: t.$space-small;
+    right: t.$space-small;
+
+    display: flex;
+    gap: t.$space-default;
+
+    [data-reach-menu-popover] {
+      right: 0;
+
+      .eds-overflow-menu__menu-list {
+        min-width: max-content;
+
+        &--left {
+          position: initial;
         }
       }
     }
   }
-  &__download {
-    &-container {
-      position: absolute;
-      bottom: t.$space-small;
-      right: t.$space-small;
 
-      display: flex;
-      gap: t.$space-default;
+  &.preset {
+    &--logo-display {
+      height: 25rem;
+      padding-inline: 30%;
+      background: var(--basecolors-frame-tint);
+      border-radius: t.$border-radiuses-large;
 
-      .eds-overflow-menu__menu-list {
-        width: 10.5rem;
-      }
-
-      &:focus {
-        .eds-icon {
-          opacity: 1;
-        }
-      }
-
-      .eds-icon {
-        opacity: 0;
+      .image-display__download-container {
+        opacity: 1;
       }
     }
   }

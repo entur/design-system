@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import Img, { FluidObject } from 'gatsby-image';
+
 import {
   ValidationErrorIcon,
   ValidationExclamationIcon,
@@ -29,6 +31,7 @@ const variantMap = {
     ariaDescription: 'advarselikon',
   },
   negative: { icon: ValidationErrorIcon, ariaDescription: 'feil-ikon' },
+  none: { icon: <></>, ariaDescription: '' },
 };
 
 type DoDontCardProps = {
@@ -37,7 +40,8 @@ type DoDontCardProps = {
   className?: string;
   title?: string;
   src?: string;
-  variant: VariantType;
+  fluidSource?: FluidObject;
+  variant: VariantType | 'none';
   noPadding: boolean;
   textInBox: boolean;
 };
@@ -48,6 +52,7 @@ export const DoDontCard = ({
   className,
   title,
   src,
+  fluidSource,
   variant = 'success',
   noPadding = false,
   textInBox = false,
@@ -56,7 +61,9 @@ export const DoDontCard = ({
 
   const textContent = (
     <div className="do-dont-card__text-content">
-      <Icon inline={true} aria-label={variantMap[variant].ariaDescription} />
+      {variant !== 'none' && (
+        <Icon inline={true} aria-label={variantMap[variant].ariaDescription} />
+      )}
       <div>
         {title !== undefined && (
           <div className="do-dont-card__text-content__title">{title}</div>
@@ -84,7 +91,14 @@ export const DoDontCard = ({
         {src !== undefined && (
           <img src={src} alt={alt} className="do-dont-card__box__image" />
         )}
-        {!src && textInBox && textContent}
+        {fluidSource !== undefined && (
+          <Img
+            fluid={fluidSource}
+            alt={alt}
+            className="do-dont-card__box__image"
+          />
+        )}
+        {!src && !fluidSource && textInBox && textContent}
       </div>
       {!textInBox && textContent}
     </article>

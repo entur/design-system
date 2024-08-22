@@ -1,85 +1,81 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 
 import { IconButton } from '@entur/button';
 import { DownloadIcon } from '@entur/icons';
 import { OverflowMenu, OverflowMenuItem } from '@entur/menu';
 
 import './ImageDisplay.scss';
-
-type BorderWrapperProps = {
-  threeGrid?: boolean;
-  children: React.ReactNode;
-};
-
-const BorderWrapper: React.FC<BorderWrapperProps> = ({
-  threeGrid,
-  children,
-}) => {
-  return (
-    <div
-      className="border-wrapper"
-      style={{ gridTemplateColumns: threeGrid ? '1fr 1fr 1fr' : '1fr' }}
-    >
-      {children}
-    </div>
-  );
-};
+import { Tooltip } from '@entur/tooltip';
+import classNames from 'classnames';
 
 type ImageDisplayProps = {
   src?: string;
-  fluidSource?: any;
+  fluidSource?: FluidObject;
   name?: string;
-  downloadSources?: Array<{ src: string; format: string }>;
+  downloadSources?: Array<{ src: string; format: string; label?: string }>;
   alt?: string;
+  alwaysShowDownload?: boolean;
+  className?: string;
+  preset?: string;
 };
 
-const ImageDisplay: React.FC<ImageDisplayProps> = ({
+export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   src,
   fluidSource,
   name,
-  downloadSources = [],
+  downloadSources,
   alt = '',
+  alwaysShowDownload = false,
+  className,
+  preset,
   ...rest
 }) => {
   return (
-    <div className="image-display" {...rest}>
+    <div
+      className={classNames('image-display', className, {
+        'preset--logo-display': preset === 'logo-display',
+      })}
+      {...rest}
+    >
       {src !== undefined && <img src={src} alt={alt} />}
       {fluidSource !== undefined && (
         <Img fluid={fluidSource} alt={alt} style={{ objectFit: 'contain' }} />
       )}
-      {downloadSources && (
-        <div className="image-display__download-container">
-          <OverflowMenu
-            button={
-              <IconButton
-                className="image-display__download"
-                aria-label={`Last ned illustrasjon ${name}`}
-              >
-                <DownloadIcon />
-              </IconButton>
-            }
-            position="left"
+      {downloadSources !== undefined && (
+        <Tooltip placement={'bottom'} content="Last ned …">
+          <div
+            className={classNames('image-display__download-container', {
+              'image-display__download-container--show': alwaysShowDownload,
+            })}
           >
-            {downloadSources.map(
-              downloadSrc =>
-                downloadSrc.src !== undefined && (
-                  <OverflowMenuItem
-                    as="a"
-                    href={downloadSrc.src}
-                    download
-                    key={downloadSrc.src}
-                    onSelect={() => undefined}
-                  >
-                    Last ned som {downloadSrc.format}
-                  </OverflowMenuItem>
-                ),
-            )}
-          </OverflowMenu>
-        </div>
+            <OverflowMenu
+              button={
+                <IconButton aria-label={`Last ned illustrasjon ${name}`}>
+                  <DownloadIcon />
+                </IconButton>
+              }
+              position="left"
+            >
+              {downloadSources.map(
+                downloadSrc =>
+                  downloadSrc.src !== undefined && (
+                    <OverflowMenuItem
+                      as="a"
+                      href={downloadSrc.src}
+                      download
+                      key={downloadSrc.src}
+                      onSelect={() => undefined}
+                    >
+                      {downloadSrc.label ??
+                        `Last ned som ${downloadSrc.format}`}
+                    </OverflowMenuItem>
+                  ),
+              )}
+            </OverflowMenu>
+          </div>
+        </Tooltip>
       )}
     </div>
   );
 };
-
-export { ImageDisplay, BorderWrapper };
