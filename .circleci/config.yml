@@ -24,8 +24,8 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - v2_3-yarn-cache-{{ checksum "yarn.lock" }}
-            - v2_3-yarn-cache-
+            - v2_5-yarn-cache-{{ checksum "yarn.lock" }}
+            - v2_5-yarn-cache-
 
       - add_ssh_keys: *ssh-fingerprint
 
@@ -39,7 +39,7 @@ jobs:
 
       - save_cache:
           name: Save Yarn Package Cache
-          key: v2_3-yarn-cache-{{ checksum "yarn.lock" }}
+          key: v2_5-yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - node_modules
