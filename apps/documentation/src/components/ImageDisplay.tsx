@@ -33,9 +33,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
 }) => {
   return (
     <div
-      className={classNames('image-display', className, {
-        'preset--logo-display': preset === 'logo-display',
-      })}
+      className={classNames('image-display', `preset--${preset}`, className)}
       {...rest}
     >
       {src !== undefined && <img src={src} alt={alt} />}
