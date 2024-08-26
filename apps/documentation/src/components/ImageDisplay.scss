@@ -73,7 +73,8 @@
     }
 
     &--full-width-image {
-      height: 25rem;
+      height: fit-content;
+      max-height: 25rem;
       border-radius: t.$border-radiuses-large;
     }
   }

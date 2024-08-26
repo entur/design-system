@@ -1,0 +1,78 @@
+---
+name: Co-branding
+description: Her finner du info om hvordan du kan kombinere en partner sitt brand med Entur sitt.
+route: /identitet/verktoykassen/co-branding
+parent: Identitet
+menu: Verktøykassen
+order: 9
+---
+
+import { graphql } from 'gatsby'
+
+import PageHeader from '~/components/PageHeader';
+import { ImageDisplay } from '~/components/ImageDisplay';
+
+export const query = graphql`
+query coBrandingFiles {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/co_branding"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+## Horisontalt formatprinsipp
+
+Der flaten er bred nok til å tillate en horisontal visning av de co-brandede logoene, skal de horisontale formatprinsippene brukes.
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 1").childImageSharp.fluid}
+  alt="Viser en fremstilling av hvordan Entur-logoen og andre partnere sine logoer kan plasseres sammen horisontalt i en bunntekst. Teksten på bildet sier (engelsk): The 'X' widith as determined from the Entur logo (visually the witdh of 'TUR' in the ENTUR logo) sets the distance of the co-brands placement in relation to the Entur payoff. The 'Y'-height as determined from the Entur payoff (visually the Cap-height of the 'Vi kommer lenger sammen'-text to the right of the ENTUR logo) sets the guide for the height of co-branding logo placement. NB! When placing multiple co-branding logos together they sholuld appear wqual in prominance and should be adjusted accordingly withing the guide area."
+  preset="full-width-image"
+/>
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 2").childImageSharp.fluid}
+  alt=""
+  preset="full-width-image"
+/>
+
+## Vertikalt formatprinsipp
+
+For flater som er begrenset i bredden til en slik grad at det horisontale formatprinsippet ikke fungerer, skal det vertikale formatprinsippet tas i bruk
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 4").childImageSharp.fluid}
+  alt="Viser en fremstilling av hvordan Entur-logoen og andre partnere sine logoer kan plasseres sammen vertikalt i en bunntekst. Teksten på bildet sier (engelsk): The 'X' widith as determined from the Entur logo (visually the witdh of 'TUR' in the ENTUR logo) sets the distance of the co-brands placement in relation to the Entur payoff. The 'Y'-height as determined from the Entur payoff (visually the Cap-height of the 'Vi kommer lenger sammen'-text to the right of the ENTUR logo) determines the guide area the co-branding logos should be placed whitin. NB! When placing multiple co-branding logos together they sholuld appear wqual in prominance and should be adjusted accordingly withing the guide area."
+  preset="full-width-image"
+/>
+
+## Standard co-brandingprinsipp
+
+I tilfeller der selskapet vi co-brander med ikke er direkte tilknyttet drift av kollektivtransport, skal det standard co-brandingprinsippet benyttes.
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 6").childImageSharp.fluid}
+  alt="Viser en fremstilling av hvordan Entur-logoen kan plasseres sammen ikke-partner-logoer i en bunntekst. Teksten på bildet sier (engelsk): The 'Y' width as determined from the placement of the Entur logo ranged right within the application (visually the margin between the ENTUR logo and the right edge of the canvas – this width is not derived from the Entur logo), should be the same distance from the left edge og the application to the co-branding logo. The 'X' heigth as determined from the height of the Entur logo (visually the heigth from the red line underneath 'EN  to the top of 'EN' in the ENTUR logo) determines the guide area the co-branding logos should be placed within."
+  preset="full-width-image"
+/>
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 7").childImageSharp.fluid}
+  alt="Viser en fremstilling av hvordan Entur-logoen kan plasseres sammen ikke-partner-logoer i en bunntekst. Teksten på bildet sier (engelsk): If there are more than one co-branding logo appearing together, the distance between the co-branding logos should meassure 0.75X, with the 'X' measurement determined by the height og the Entur logo. NB! When placing multiple co-branding logos together they should appear equal in prominance and should be adjusted accordingly within the guide area."
+  preset="full-width-image"
+/>
+
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "Co-brand 8").childImageSharp.fluid}
+  alt="Viser en fremstilling av hvordan Entur-logoen kan plasseres sammen ikke-partner-logoer i en bunntekst. Teksten på bildet sier (engelsk): If the width of the co-branding logo appears wider than the Entur logo using the standard Co-branding rule, the Alternaltive version shoud be used to ensure the Entur logo retains visual prominence. The 'Z' height, as determined from the height within the Entur logo (visually the height of the letters 'TUR' in the ENTUR logo) determines the guide area the co-branding logo should be placed."
+  preset="full-width-image"
+/>
