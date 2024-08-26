@@ -46,6 +46,7 @@ const partnerIcons = [
   'SkyssIcon',
   'SkyssNoTextIcon',
   'SnelandiaIcon',
+  'SvipperIcon',
   'TromsFylkestrafikkIcon',
   'VKTIcon',
   'VyIcon',
