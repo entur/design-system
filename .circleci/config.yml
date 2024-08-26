@@ -121,7 +121,7 @@ jobs:
 
       - run:
           name: build documentation site
-          command: yarn cleanDocz && yarn build:documentation
+          command: yarn cleanDocz && cd apps/documentation && yarn build && cd ../..
 
       - persist_to_workspace:
           root: ~/
