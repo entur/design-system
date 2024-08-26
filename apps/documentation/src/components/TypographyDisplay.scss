@@ -1,31 +1,31 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .typography-display {
-  padding: $space-extra-large3;
-  border: var(--designentur-typographycard-border) $border-widths-default solid;
   display: grid;
   grid-template-columns: 4fr 2fr;
+
+  padding: t.$space-extra-large3;
+  border: var(--designentur-typographycard-border) t.$border-widths-default solid;
+  border-radius: t.$border-radiuses-large;
+
   &-header {
     font-weight: bold;
-    margin: $space-extra-large 0 $space-default;
+    margin: t.$space-extra-large 0 t.$space-default;
   }
 
-  &-presenter {
+  &__visualiser {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    row-gap: $space-extra-large2;
+    row-gap: t.$space-extra-large2;
   }
-  &-information {
+  &__information {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    row-gap: $space-extra-large2;
+    row-gap: t.$space-extra-large2;
     &__text {
-      font-size: $font-sizes-small;
-      padding-left: $space-large;
-      border-left: var(--designentur-typographycard-border) $border-widths-default solid;
-      &-title {
-        color: var(--designentur-typographycard-text-subdued);
-      }
+      font-size: t.$font-sizes-small;
+      padding-left: t.$space-large;
+      border-left: var(--designentur-typographycard-border) t.$border-widths-default solid;
     }
   }
 }
@@ -34,32 +34,15 @@
   &-wrapper {
     display: flex;
     align-items: center;
-    padding-right: $space-extra-large2;
+    padding-right: t.$space-extra-large2;
   }
   &-text {
     display: flex;
     flex-direction: column;
-    font-size: $font-sizes-medium;
-  }
-  &--weight {
-    &-300 {
-      font-weight: 300;
-    }
-    &-400 {
-      font-weight: 400;
-    }
-    &-500 {
-      font-weight: 500;
-    }
-    &-600 {
-      font-weight: 600;
-    }
-  }
-  &--italic {
-    font-style: italic;
+    font-size: t.$font-sizes-medium;
   }
   &--large {
     font-size: 3.5rem;
-    padding-right: $space-extra-large;
+    padding-right: t.$space-extra-large;
   }
 }

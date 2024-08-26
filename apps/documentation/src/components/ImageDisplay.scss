@@ -71,5 +71,10 @@
         opacity: 1;
       }
     }
+
+    &--full-width-image {
+      height: 25rem;
+      border-radius: t.$border-radiuses-large;
+    }
   }
 }

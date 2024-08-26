@@ -1,16 +1,21 @@
 import React from 'react';
-import cx from 'classnames';
+
+import { Heading5, SmallText, StrongText, SubLabel } from '@entur/typography';
+
 import './TypographyDisplay.scss';
+
+type TypographyWeights = 300 | 400 | 500 | 600 | 700;
+
 type TypographyDisplayProps = {
-  weight: 300 | 400 | 500 | 600;
+  weight: TypographyWeights;
+  fontFamily?: string;
 };
 
-type TypographyWeights = 'Light' | 'Regular' | 'Medium' | 'DemiBold';
-
-function TypographyDisplay({
+export function TypographyDisplay({
   weight,
+  fontFamily = 'Nationale',
 }: TypographyDisplayProps): React.ReactNode {
-  function FontName(): TypographyWeights {
+  function FontName() {
     switch (weight) {
       case 300:
         return 'Light';
@@ -20,47 +25,49 @@ function TypographyDisplay({
         return 'Medium';
       case 600:
         return 'DemiBold';
+      case 700:
+        return 'Bold';
     }
   }
   return (
     <>
-      <div className="typography-display-header">Nationale {FontName()} </div>
+      <Heading5 as="h4">
+        {fontFamily} {FontName()}
+      </Heading5>
       <div className="typography-display">
-        <div className="typography-display-presenter">
-          <TypographyAlphabet weight={weight} />
-          <TypographyAlphabet weight={weight} italic />
+        <div className="typography-display__visualiser">
+          <TypographyAlphabet weight={weight} fontFamily={fontFamily} />
+          <TypographyAlphabet
+            weight={weight}
+            fontStyle="italic"
+            fontFamily={fontFamily}
+          />
         </div>
-        <div className="typography-display-information">
-          <div className="typography-display-information__text">
-            <div style={{ fontWeight: 'bold' }}>Nationale {FontName()}</div>
+        <div className="typography-display__information">
+          <div className="typography-display__information__text">
+            <StrongText>
+              {fontFamily} {FontName()}
+            </StrongText>
             <div>
-              <span className="typography-display-information__text-title">
-                Weight:{' '}
-              </span>
-              {weight}
+              <SubLabel>Vekt: </SubLabel>
+              <SmallText>{weight}</SmallText>
             </div>
             <div>
-              <span className="typography-display-information__text-title">
-                Style:{' '}
-              </span>
-              normal
+              <SubLabel>Stil: </SubLabel>
+              <SmallText>normal</SmallText>
             </div>
           </div>
-          <div className="typography-display-information__text">
-            <div style={{ fontWeight: 'bold' }}>
-              Nationale {FontName()} Italic
+          <div className="typography-display__information__text">
+            <StrongText>
+              {fontFamily} {FontName()} Italic
+            </StrongText>
+            <div>
+              <SubLabel>Vekt: </SubLabel>
+              <SmallText>{weight}</SmallText>
             </div>
             <div>
-              <span className="typography-display-information__text-title">
-                Weight:{' '}
-              </span>
-              {weight}
-            </div>
-            <div>
-              <span className="typography-display-information__text-title">
-                Style:{' '}
-              </span>
-              italic
+              <SubLabel>Stil: </SubLabel>
+              <SmallText>kursiv</SmallText>
             </div>
           </div>
         </div>
@@ -70,21 +77,21 @@ function TypographyDisplay({
 }
 
 type TypographyAlphabetProps = {
-  italic?: boolean;
-  weight: 300 | 400 | 500 | 600;
+  fontStyle?: 'normal' | 'italic';
+  weight: TypographyWeights;
+  fontFamily?: string;
 };
 
-function TypographyAlphabet({ italic, weight }: TypographyAlphabetProps) {
-  const classList = cx([
-    'typography-alphabet-wrapper',
-    {
-      'typography-alphabet--italic': italic,
-    },
-    [`typography-alphabet--weight-${weight}`],
-  ]);
-
+function TypographyAlphabet({
+  fontStyle = 'normal',
+  weight,
+  fontFamily,
+}: TypographyAlphabetProps) {
   return (
-    <div className={classList}>
+    <div
+      className="typography-alphabet-wrapper"
+      style={{ fontFamily, fontWeight: weight, fontStyle }}
+    >
       <div className="typography-alphabet--large">Aa</div>
       <div className="typography-alphabet-text">
         <span>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
@@ -94,5 +101,3 @@ function TypographyAlphabet({ italic, weight }: TypographyAlphabetProps) {
     </div>
   );
 }
-
-export default TypographyDisplay;
