@@ -7,6 +7,8 @@ menu: Verktøykassen
 order: 4
 ---
 
+import { graphql } from 'gatsby'
+
 import { borderWidths, colors, space } from '@entur/tokens';
 import {
   Table,
@@ -16,14 +18,26 @@ import {
   TableBody,
 } from '@entur/table';
 import { GridContainer } from '@entur/grid';
+
 import { DoDontGroup, DoDontCard } from '~/components/DoDont';
-import dont1 from './farger/Dont1.png';
-import dont2 from './farger/Dont2.png';
-import dont3 from './farger/Dont3.png';
-import dont4 from './farger/Dont4.png';
-import balance from './farger/ColorBalance.png';
 import Colors from '~/components/Colors';
 import PageHeader from '~/components/PageHeader';
+import { ImageDisplay } from '~/components/ImageDisplay';
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/farger"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+}
+`;
 
 <PageHeader>
   Fargepaletten er et viktig grafisk virkemiddel i identiteten vår. Det er
@@ -92,28 +106,48 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
     display: 'flex',
   }}
 >
-  <img
-    src={balance}
-    width="100%"
+  <ImageDisplay
+    fluidSource={props.data.files.images.find(image => image.name === "ColorBalance")?.childImageSharp.fluid}
     alt="Viser vektleggingen av profilfargene, Blue og white er størst, så lavender, coral og til slutt peach"
+    preset="full-width-image"
   />
 </div>
 
 ### Prinsipper
 
 <DoDontGroup>
-  <DoDontCard variant="negative" src={dont1} alt="" noPadding>
+  <DoDontCard 
+    variant="negative" 
+    fluidSource={props.data.files.images.find(image => image.name === "Dont1")?.childImageSharp.fluid} 
+    alt="" 
+    noPadding
+  >
     Unngå mørk tekst på blå bakgrunn
   </DoDontCard>
-  <DoDontCard variant="negative" src={dont2} alt="" noPadding>
+  <DoDontCard 
+    variant="negative" 
+    fluidSource={props.data.files.images.find(image => image.name === "Dont2")?.childImageSharp.fluid} 
+    alt="" 
+    noPadding
+  >
     Unngå korallrød bakgrunn
   </DoDontCard>
 </DoDontGroup>
 <DoDontGroup>
-  <DoDontCard variant="negative" src={dont3} alt="" noPadding>
+  <DoDontCard 
+    variant="negative" 
+    fluidSource={props.data.files.images.find(image => image.name === "Dont3")?.childImageSharp.fluid} 
+    alt="" 
+    noPadding
+  >
     Unngå identitetløst uttryk
   </DoDontCard>
-  <DoDontCard variant="negative" src={dont4} alt="" noPadding>
+  <DoDontCard 
+    variant="negative" 
+    fluidSource={props.data.files.images.find(image => image.name === "Dont4")?.childImageSharp.fluid} 
+    alt="" 
+    noPadding
+  >
     Unngå lys tekst på lys bakgrunn
   </DoDontCard>
 </DoDontGroup>
