@@ -1,4 +1,11 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use 'sass:math';
+@use '@entur/button/dist/styles.css';
+
+$tooltip-arrow-size: t.$space-extra-small;
+$tooltip-arrow-half-height: calc(math.hypot($tooltip-arrow-size, $tooltip-arrow-size) / 2 - 0.125rem);
+$tooltip-padding-top: 0.3125rem;
+$tooltip-padding-side: 0.625rem;
 
 .eds-tooltip-wrapper {
   display: inline-block;
@@ -6,29 +13,74 @@
 }
 
 .eds-tooltip {
-  color: var(--components-tooltip-tooltip-standard-text);
-  background: var(--components-tooltip-tooltip-standard-fill);
-  border-radius: t.$border-radiuses-medium;
-  box-shadow: t.$shadows-box-shadow;
-  font-size: t.$font-sizes-medium;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: t.$z-indexes-popover;
+  padding: $tooltip-padding-top $tooltip-padding-side;
   min-height: 1rem;
   min-width: 2rem;
-  padding: 0.3125rem 0.625rem;
-  position: absolute;
-  z-index: t.$z-indexes-popover;
   max-width: 32rem;
+
+  font-size: t.$font-sizes-medium;
+  border-radius: t.$border-radiuses-medium;
+  box-shadow: t.$shadows-box-shadow;
+  background: var(--components-tooltip-tooltip-standard-fill);
+  color: var(--components-tooltip-tooltip-standard-text);
+
   .eds-contrast & {
     color: var(--components-tooltip-tooltip-contrast-text);
     background: var(--components-tooltip-tooltip-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
 
+  &__arrow {
+    position: absolute;
+    background: inherit;
+    width: $tooltip-arrow-size;
+    height: $tooltip-arrow-size;
+    transform: rotate(45deg);
+
+    &--right {
+      @extend .eds-tooltip__arrow;
+      left: -$tooltip-arrow-half-height;
+    }
+    &--left {
+      @extend .eds-tooltip__arrow;
+      right: -$tooltip-arrow-half-height;
+    }
+    &--top {
+      @extend .eds-tooltip__arrow;
+      bottom: -$tooltip-arrow-half-height;
+    }
+    &--bottom {
+      @extend .eds-tooltip__arrow;
+      top: -$tooltip-arrow-half-height;
+    }
+  }
+
+  &--error,
+  &--negative {
+    background: var(--components-tooltip-tooltip-standard-fill-negative);
+    border: solid var(--components-tooltip-tooltip-standard-fill-negative);
+    color: var(--components-tooltip-tooltip-standard-text-negative);
+
+    .eds-contrast & {
+      background: var(--components-tooltip-tooltip-contrast-fill-negative);
+      color: var(--components-tooltip-tooltip-contrast-text-negative);
+      border: solid var(--components-tooltip-tooltip-contrast-fill-negative);
+      box-shadow: t.$shadows-box-shadow-contrast;
+    }
+  }
+
   &__close-button {
-    float: right;
-    color: var(--components-button-iconbutton-contrast-text);
+    padding: 0.2rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: calc(-1 * $tooltip-padding-top);
+    margin-left: t.$space-extra-small2;
+    color: inherit;
 
     &:hover {
       background-color: var(--components-button-iconbutton-contrast-hover);
@@ -43,7 +95,7 @@
     }
 
     .eds-contrast & {
-      color: var(--components-button-iconbutton-standard-text);
+      color: inherit;
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
@@ -55,118 +107,6 @@
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
       }
-    }
-  }
-
-  &::after {
-    background: var(--components-tooltip-tooltip-standard-fill);
-    content: '';
-    height: 0.625rem;
-    position: absolute;
-    transform: rotate(45deg) translateY(0.125rem);
-    width: 0.625rem;
-    z-index: t.$z-indexes-behind;
-    .eds-contrast & {
-      background: var(--components-tooltip-tooltip-contrast-fill);
-    }
-  }
-  &--error,
-  &--negative {
-    background: var(--components-tooltip-tooltip-standard-fill-negative);
-    border: solid var(--components-tooltip-tooltip-standard-fill-negative);
-    color: var(--components-tooltip-tooltip-standard-text-negative);
-    &::after {
-      background: var(--components-tooltip-tooltip-standard-triangle-negative);
-    }
-
-    &::before {
-      background: var(--components-tooltip-tooltip-standard-triangle-negative);
-      content: '';
-      height: 0.625rem + t.$border-widths-medium;
-      position: absolute;
-      transform: rotate(45deg) translateY(0.125rem);
-      width: 0.625rem + t.$border-widths-medium;
-      z-index: t.$z-indexes-behind;
-    }
-    .eds-contrast & {
-      background: var(--components-tooltip-tooltip-contrast-fill-negative);
-      color: var(--components-tooltip-tooltip-contrast-text-negative);
-      border: solid var(--components-tooltip-tooltip-contrast-fill-negative);
-      box-shadow: t.$shadows-box-shadow-contrast;
-      &::after {
-        background: var(--components-tooltip-tooltip-contrast-triangle-negative);
-      }
-      &::before {
-        background: var(--components-tooltip-tooltip-contrast-triangle-negative);
-      }
-    }
-    .eds-tooltip__close-button {
-      color: var(--components-tooltip-tooltip-standard-icon-negative);
-      .eds-contrast & {
-        color: var(--components-tooltip-tooltip-contrast-icon-negative);
-      }
-    }
-  }
-
-  &--top {
-    &::before {
-      left: calc(50% - 0.375rem);
-      bottom: calc(-0.5rem + #{t.$border-widths-small});
-    }
-    &::after {
-      bottom: -0.2rem;
-      left: calc(50% - 0.3125rem);
-    }
-  }
-
-  &--top-start {
-    &::after {
-      bottom: -0.2rem;
-    }
-  }
-
-  &--top-end {
-    &::after {
-      bottom: -0.2rem;
-      right: 0.35rem;
-    }
-  }
-
-  &--left {
-    &::after {
-      bottom: calc(50% - 0.3125rem);
-      left: calc(100% - 0.25rem);
-    }
-  }
-
-  &--right {
-    &::after {
-      bottom: calc(50% - 0.3125rem);
-      right: calc(100% - 0.45rem);
-    }
-  }
-
-  &--bottom {
-    &::before {
-      left: calc(50% - 6px);
-      top: calc(-0.5rem - #{t.$border-widths-small});
-    }
-    &::after {
-      left: calc(50% - 0.3125rem);
-      top: -0.4rem;
-    }
-  }
-
-  &--bottom-start {
-    &::after {
-      bottom: calc(100% - 0.25rem);
-    }
-  }
-
-  &--bottom-end {
-    &::after {
-      bottom: calc(100% - 0.25rem);
-      left: calc(100% - 1rem);
     }
   }
 }
