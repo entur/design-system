@@ -1,10 +1,22 @@
-import React, { cloneElement, useState } from 'react';
-import { Manager, Reference, Popper } from 'react-popper';
+import React, { cloneElement, useRef, useState } from 'react';
+
 import classNames from 'classnames';
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  Placement as FloatingUIPlacement,
+  arrow,
+  limitShift,
+} from '@floating-ui/react-dom';
+
 import { useRandomId } from '@entur/utils';
-import { Placement as PopperPlacementProps } from '@popperjs/core';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
+import { space, borderRadiuses } from '@entur/tokens';
+
 import './Tooltip.scss';
 
 type Modifier = {
@@ -17,25 +29,42 @@ type Modifier = {
   [key: string]: any;
 };
 
+export type Placement =
+  | 'top'
+  | 'top-left'
+  | 'top-start'
+  | 'top-right'
+  | 'top-end'
+  | 'left'
+  | 'right'
+  | 'bottom-left'
+  | 'bottom-start'
+  | 'bottom'
+  | 'bottom-right'
+  | 'bottom-end';
+
+type ChildEventListner = {
+  'aria-describedby'?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
+  onMouseEnter?: (e: React.MouseEvent) => void;
+  onMouseLeave?: () => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
+  onKeyUp?: (e: React.KeyboardEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
+};
+
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
 export type TooltipProps = {
   /** Plassering av tooltip-en */
-  placement:
-    | 'top'
-    | 'top-left'
-    | 'top-right'
-    | 'left'
-    | 'right'
-    | 'bottom-left' // bottom-start
-    | 'bottom'
-    | 'bottom-right'; // bottom-end
+  placement: Placement;
   /** Innholdet i tooltip-boksen */
   content: React.ReactNode;
   /** Elementet som skal ha tooltip-funksjonalitet */
   children: React.ReactElement;
-  /** Om tooltipen skal vises */
+  /** Om tooltip-en skal vises */
   isOpen?: boolean;
   /** Ekstra klassenavn for tooltip */
   className?: string;
@@ -55,8 +84,8 @@ export type TooltipProps = {
   showCloseButton?: boolean;
   /** Valideringsvariant for Tooltip */
   variant?: 'negative' | typeof error;
-  /** En array av modifiers som sendes til Popper, rammeverket som brukes til plassering av Tooltip
-   * @default [{ name: 'offset', options: { offset: [0, 10]} }]
+  /** @deprecated Ikke lenger støttet. Meld fra på #talk-designsystem hvis du trenger støtte for
+   * overskrivinger av plasseringen til Tooltip!
    */
   popperModifiers?: Modifier[];
   [key: string]: any;
@@ -74,140 +103,141 @@ export const Tooltip: React.FC<TooltipProps> = ({
   disableClickListner = true,
   showCloseButton = true,
   variant,
-  popperModifiers = [
-    {
-      name: 'offset',
-      options: { offset: [0, 10] },
-    },
-  ],
+  style,
   ...rest
 }) => {
-  const [showTooltip, setShowTooltip] = useState(isOpen || false);
-  let hoverTimer: ReturnType<typeof setTimeout>;
+  const [showTooltip, setShowTooltip] = useState(isOpen);
+  const tooltipArrowRef = useRef(null);
+  const tooltipId = useRandomId('eds-tooltip');
+  const hoverOpenTimer = useRef<ReturnType<typeof setTimeout>>();
+  const hoverCloseTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  const handleOpen: (event: React.MouseEvent) => void = event => {
-    event.persist();
-    hoverTimer = setTimeout(() => {
+  // calculations for floating-UI tooltip position
+  const {
+    refs,
+    floatingStyles,
+    middlewareData,
+    placement: actualPlacement,
+  } = useFloating({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update),
+    placement: standardisePlacement(placement),
+    middleware: [
+      offset(space.extraSmall),
+      flip(),
+      shift({ padding: space.extraSmall, limiter: limitShift({ offset: 8 }) }),
+      arrow({
+        element: tooltipArrowRef,
+        padding: borderRadiuses.medium,
+      }),
+    ],
+  });
+
+  const onMouseEnter = () => {
+    clearTimeout(hoverCloseTimer.current);
+    hoverOpenTimer.current = setTimeout(() => {
       setShowTooltip(true);
     }, 150);
   };
-  const onMouseExit: () => void = () => {
-    setShowTooltip(false);
-    clearTimeout(hoverTimer);
+
+  const onMouseLeave = () => {
+    clearTimeout(hoverOpenTimer.current);
+    hoverCloseTimer.current = setTimeout(() => {
+      setShowTooltip(false);
+    }, 300);
   };
+
   React.useEffect(() => {
     return () => {
-      clearTimeout(hoverTimer);
+      clearTimeout(hoverOpenTimer.current);
+      clearTimeout(hoverCloseTimer.current);
     };
-  });
-
-  const tooltipId = useRandomId('eds-tooltip');
+  }, []);
   React.useEffect(() => {
-    setShowTooltip(isOpen);
-  }, [isOpen]);
+    console.log(actualPlacement);
+  }, [actualPlacement]);
 
-  React.useEffect(() => {
-    if (!content) {
-      setShowTooltip(false);
-    }
-  }, [content]);
-
-  let popperPlacement = placement as PopperPlacementProps;
-  if (placement.includes('-')) {
-    if (placement.includes('right')) {
-      popperPlacement = placement.replace(
-        'right',
-        'end',
-      ) as PopperPlacementProps;
-    }
-    if (placement.includes('left')) {
-      popperPlacement = placement.replace(
-        'left',
-        'start',
-      ) as PopperPlacementProps;
-    }
-  }
-
-  const childProps: {
-    'aria-describedby'?: string;
-    onFocus?: () => void;
-    onBlur?: () => void;
-    onMouseEnter?: (e: React.MouseEvent) => void;
-    onMouseLeave?: () => void;
-    onKeyDown?: (e: React.KeyboardEvent) => void;
-    onKeyUp?: (e: React.KeyboardEvent) => void;
-    onClick?: (e: React.MouseEvent) => void;
-  } = {};
-  childProps['aria-describedby'] = showTooltip ? tooltipId : undefined;
-
-  if (!disableFocusListener) {
-    childProps.onFocus = () => setShowTooltip(true);
-    childProps.onBlur = () => setShowTooltip(false);
-  }
-  if (!disableHoverListener) {
-    childProps.onMouseEnter = e => handleOpen(e);
-    childProps.onMouseLeave = () => onMouseExit();
-  }
-  if (!disableKeyboardListener) {
-    childProps.onKeyDown = e => {
-      if (e.key === 'Escape') setShowTooltip(false);
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        setShowTooltip(!showTooltip);
-      }
-    };
-  }
-  if (!disableClickListner) {
-    childProps.onClick = () => setShowTooltip(!showTooltip);
-  }
+  const referenceListenerProps: ChildEventListner = {
+    'aria-describedby': showTooltip ? tooltipId : undefined,
+    // focusListner
+    ...(!disableFocusListener && { onFocus: () => setShowTooltip(true) }),
+    ...(!disableFocusListener && { onBlur: () => setShowTooltip(false) }),
+    // hoverListner
+    ...(!disableHoverListener && { onMouseEnter }),
+    ...(!disableHoverListener && { onMouseLeave }),
+    // keyboardListner
+    ...(!disableKeyboardListener && {
+      onKeyDown: e => {
+        if (e.key === 'Escape') setShowTooltip(false);
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          setShowTooltip(!showTooltip);
+        }
+      },
+    }),
+    // clickListner
+    ...(!disableClickListner && {
+      onClick: () => setShowTooltip(!showTooltip),
+    }),
+  };
 
   return (
-    <Manager>
-      <Reference>
-        {({ ref }) =>
-          cloneElement(children, {
-            ref: ref,
-            ...childProps,
-          })
-        }
-      </Reference>
-      {showTooltip && (
-        <Popper
-          modifiers={[{ name: 'arrow', enabled: false }, ...popperModifiers]}
-          placement={popperPlacement}
-        >
-          {({ ref, style, placement: popperPlacement }) => (
-            <div
-              className={classNames(
-                'eds-tooltip',
-                className,
-                `eds-tooltip--${popperPlacement}`,
-                {
-                  'eds-tooltip--negative':
-                    variant === error || variant === 'negative',
-                },
-              )}
-              ref={ref}
-              style={style}
-              role="tooltip"
-              id={tooltipId}
-              data-placement={popperPlacement}
-              {...rest}
-            >
-              {content}
-              {isOpen && showCloseButton && (
-                <IconButton
-                  className="eds-tooltip__close-button"
-                  onClick={() => setShowTooltip(false)}
-                  type="button"
-                >
-                  <CloseIcon />
-                </IconButton>
-              )}
-            </div>
-          )}
-        </Popper>
-      )}
-    </Manager>
+    <>
+      {cloneElement(children, {
+        ref: refs.setReference,
+        ...referenceListenerProps,
+      })}
+      <div
+        className={classNames(className, 'eds-tooltip', {
+          'eds-tooltip--negative': variant === error || variant === 'negative',
+        })}
+        ref={refs.setFloating}
+        style={{
+          ...floatingStyles,
+          display: showTooltip && content ? undefined : 'none',
+          ...style,
+        }}
+        role="tooltip"
+        id={tooltipId}
+        onMouseEnter={!disableHoverListener ? onMouseEnter : undefined}
+        onMouseLeave={!disableHoverListener ? onMouseLeave : undefined}
+        {...rest}
+      >
+        {content}
+        {isOpen && showCloseButton && (
+          <IconButton
+            className="eds-tooltip__close-button"
+            onClick={() => setShowTooltip(false)}
+            type="button"
+            aria-label="Lukk tooltip"
+          >
+            <CloseIcon aria-hidden="true" />
+          </IconButton>
+        )}
+        <div
+          className={`eds-tooltip__arrow--${actualPlacement?.split('-')?.[0]}`}
+          ref={tooltipArrowRef}
+          style={{
+            left: middlewareData.arrow?.x,
+            top: middlewareData.arrow?.y,
+          }}
+        />
+      </div>
+    </>
   );
 };
+
+function standardisePlacement(placement: string): FloatingUIPlacement {
+  switch (placement) {
+    case 'top-left':
+      return 'top-start';
+    case 'top-right':
+      return 'top-end';
+    case 'bottom-left':
+      return 'bottom-start';
+    case 'bottom-right':
+      return 'bottom-end';
+    default:
+      return placement as FloatingUIPlacement;
+  }
+}
