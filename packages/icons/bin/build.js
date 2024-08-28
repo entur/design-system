@@ -40,6 +40,7 @@ const partnerIcons = [
   'KolumbusIcon',
   'NordlandIcon',
   'OstfoldIcon',
+  'ReisNordlandIcon',
   'RuterIcon',
   'RuterNoTextIcon',
   'SJIcon',
