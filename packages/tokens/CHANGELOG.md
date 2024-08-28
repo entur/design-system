@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.17.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.16.0...@entur/tokens@3.17.0) (2024-08-28)
+
+### Features
+
+- **illustrations:** improve illustrations loading and display ([b57f86b](https://bitbucket.org/enturas/design-system/commits/b57f86b3f83fb4aff200bf8d3be14bfe7e43be0b))
+
 # [3.16.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.15.2...@entur/tokens@3.16.0) (2024-08-12)
 
 ### Bug Fixes

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.1.0...@entur/icons@7.2.0) (2024-08-28)
+
+### Features
+
+- **icons:** add new student icon ([0001937](https://bitbucket.org/enturas/design-system/commits/0001937f0763e4bc2cec3f31d7984ad80a88148e))
+- **icons:** add Reis Nordland icon ([bb02bae](https://bitbucket.org/enturas/design-system/commits/bb02baeef202231266ff6d4ab2f1f084aa3243b7))
+- **icons:** add Svipper icon ([a578680](https://bitbucket.org/enturas/design-system/commits/a578680577ac014a685c655bf4ea01c1030e0b9a))
+
 # [7.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.0.0...@entur/icons@7.1.0) (2024-08-12)
 
 ### Features

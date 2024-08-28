@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.6.0...@entur/documentation@3.7.0) (2024-08-28)
+
+### Bug Fixes
+
+- **docs:** small syntax fix ([c3606c8](https://bitbucket.org/enturas/design-system/commits/c3606c8f6f074e6f8d639bd090f37615a6b2a9a1))
+
+### Features
+
+- **dodont and image display:** make doDont and ImageDisplay more versatile ([770dcc2](https://bitbucket.org/enturas/design-system/commits/770dcc2b69d6d6b6184094884a429ff21e48057c))
+- **illustrations:** improve illustrations loading and display ([b57f86b](https://bitbucket.org/enturas/design-system/commits/b57f86b3f83fb4aff200bf8d3be14bfe7e43be0b))
+
+### Performance Improvements
+
+- delete old unused illustrations ([1fd0a3c](https://bitbucket.org/enturas/design-system/commits/1fd0a3cf2526740bc7a034694b61a0e662020626))
+- **docs:** small optimisations to grafiske elementer, farger and datavisualisering pages ([a0de213](https://bitbucket.org/enturas/design-system/commits/a0de213b51d2f90b120c0feb006f0aaa67ba4de3))
+- **en---tur:** standardise and optimise en---tur page ([8176c93](https://bitbucket.org/enturas/design-system/commits/8176c938adce2cbe24fb5d33eac61dfd806d64af))
+
 # [3.6.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.5.1...@entur/documentation@3.6.0) (2024-08-12)
 
 ### Features
