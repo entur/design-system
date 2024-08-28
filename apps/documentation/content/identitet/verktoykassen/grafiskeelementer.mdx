@@ -4,25 +4,36 @@ description: Typografi, strek og mønster er de bærende grafiske elementene i i
 parent: Identitet
 route: /identitet/verktoykassen/grafiske-elementer
 menu: Verktøykassen
-order: 8
+order: 9
 ---
 
-import PageHeader from '~/components/PageHeader';
+import { graphql } from 'gatsby'
+
 import { Paragraph, Heading5 } from '@entur/typography';
+import { space } from '@entur/tokens';
 import { GridContainer, GridItem } from '@entur/grid';
 import { BannerAlertBox } from '@entur/alert';
+
 import { DownloadBrushes } from '~/gatsby-theme-docz/components/DownloadBrushes';
-import farge1 from './Grafiskeelementer/Typo-steder-korall-kaviar.png';
-import farge2 from './Grafiskeelementer/Typo-steder-korall.png';
-import farge3 from './Grafiskeelementer/Typo-steder.png';
-import farge4 from './Grafiskeelementer/Typo-steder-blue.png';
-import linjeavstand from './Grafiskeelementer/Typo-linjeavstand.png';
-import strek1 from './Grafiskeelementer/EN_strek_typer.png';
-import strek2 from './Grafiskeelementer/EN_strek_patterns.png';
-import strek3 from './Grafiskeelementer/EN_strek_linjeavstand.png';
-import strek4 from './Grafiskeelementer/EN_strek_forhold.png';
-import strek5 from './Grafiskeelementer/EN_strek_plassering.png';
-import strek6 from './Grafiskeelementer/EN_strek_str.png';
+
+import PageHeader from '~/components/PageHeader';
+import { DoDontGroup, DoDontCard } from '~/components/DoDont';
+import { ImageDisplay } from '~/components/ImageDisplay';
+
+export const query = graphql`
+query grafiskeElementerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/grafiske_elementer"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+}
+`;
 
 <PageHeader />
 
@@ -32,47 +43,50 @@ Typografi er et av de bærende grafiske elementene i identiteten. Gjennom bruk a
 
 ### Fargekombinasjoner
 
-<GridContainer spacing="large">
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={farge1} width="100%" alt="" />
+<DoDontGroup>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "Typo-steder-korall-kaviar").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    >
     <Paragraph>Korall og lys korall på blå bakgrunn.</Paragraph>
-  </GridItem>
-
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={farge2} width="100%" alt="" />
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "Typo-steder-korall").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    >
     <Paragraph>Korall på lys bakgrunn.</Paragraph>
-  </GridItem>
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={farge3} width="100%" alt="" />
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "Typo-steder").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    >
     <Paragraph>Farget på lys bakgrunn.</Paragraph>
-  </GridItem>
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={farge4} width="100%" alt="" />
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "Typo-steder-blue").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    >
     <Paragraph>Farget på blå bakgrunn.</Paragraph>
-  </GridItem>
-</GridContainer>
+  </DoDontCard>
+</DoDontGroup>
 
 ### Linjeavstand
 
 <GridContainer spacing="large">
   <GridItem small={12} medium={8}>
-    <img src={linjeavstand} width="100%" alt="" />
+    <ImageDisplay
+      fluidSource={props.data.files.images.find(image => image.name === "Typo-linjeavstand").childImageSharp.fluid}
+      alt=""
+      preset="full-width-image"
+    />
   </GridItem>
   <GridItem small={12} medium={4}>
     <Paragraph>Mellom ord skal avstanden bestå av mellomrom x 2.</Paragraph>
@@ -84,10 +98,11 @@ Typografi er et av de bærende grafiske elementene i identiteten. Gjennom bruk a
 
 ## Strek og mønster
 
-<img
-  src={strek1}
-  width="100%"
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "EN_strek_typer").childImageSharp.fluid}
   alt="Illustrerer de forskjellige strekstilene til Entur"
+  preset="full-width-image"
+  style={{ marginBottom: space.large }}
 />
 
 Den røde streken er hentet fra logoen, og danner grunnlaget for strekstilen i Entur.
@@ -100,58 +115,59 @@ Strekene er lagret som brushes i en .ai fil og kan lastes ned her:
 
 <DownloadBrushes />
 
-<img
-  src={strek2}
-  width="100%"
+<ImageDisplay
+  fluidSource={props.data.files.images.find(image => image.name === "EN_strek_patterns").childImageSharp.fluid}
   alt="Illustrerer strekstilen i bruk med stedsnavn, eller ved å kombinere strekstiler"
+  preset="full-width-image"
+  style={{ marginBottom: space.extraLarge3 }}
 />
 
-<GridContainer spacing="large">
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={strek3} width="100%" alt="" />
-    <Heading5>Linjeavstand</Heading5>
+<DoDontGroup>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "EN_strek_linjeavstand").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    title="Linjeavstand"
+    >
     <Paragraph>
       Avstanden mellom linjene er 2,5 ganger høyden av stedsnavnet.
     </Paragraph>
-  </GridItem>
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={strek4} width="100%" alt="" />
-    <Heading5>Linjeavstand</Heading5>
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "EN_strek_forhold").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    title="Linjeavstand"
+    >
     <Paragraph>
       20 px avstand mellom linjene i 100 px bredde. 4 enheter pr. 100 px bredde.
     </Paragraph>
-  </GridItem>
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={strek5} width="100%" alt="" />
-    <Heading5>Plassering</Heading5>
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "EN_strek_plassering").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    title="Plassering"
+    >
     <Paragraph>
       I kombinasjon med linjer skal stedsnavn ikke stå over hverandre. Dette for
       å skape balanse i mønsteret og for å unngå at linjeavstanden ser
       ubalansert ut.
     </Paragraph>
-  </GridItem>
-  <GridItem
-    small={12}
-    medium={6}
-    style={{ display: 'flex', flexDirection: 'column' }}
-  >
-    <img src={strek6} width="100%" alt="" />
-    <Heading5>Strektykkelse</Heading5>
+  </DoDontCard>
+  <DoDontCard
+    fluidSource={props.data.files.images.find(image => image.name === "EN_strek_str").childImageSharp.fluid}
+    alt=""
+    variant="none"
+    noPadding
+    title="Strektykkelse"
+    >
     <Paragraph>
       Strekenes tykkelse samsarer med linjetykkelsen til vertikalene i Nationale
       Medium.
     </Paragraph>
-  </GridItem>
-</GridContainer>
+  </DoDontCard>
+</DoDontGroup>
