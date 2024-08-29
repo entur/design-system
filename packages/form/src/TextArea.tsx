@@ -9,6 +9,7 @@ import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 
 import './TextArea.scss';
+import { Placement } from '@entur/tooltip';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -28,6 +29,10 @@ export type TextAreaProps = {
   label: string;
   /** En tooltip som forklarer labelen til inputfeltet */
   labelTooltip?: React.ReactNode;
+  /** Forklarende tekst for knappen som åpner labelTooltip */
+  labelTooltipButtonAriaLabel?: string;
+  /** Plasseringen til tooltip-en relativt til spørsmålstegn-knappen */
+  labelTooltipPlacement?: Placement;
   /** Varselmelding, som vil komme under TextArea */
   feedback?: string;
   /** Plasserer labelen statisk på toppen av inputfeltet
@@ -47,6 +52,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       label,
       feedback,
       labelTooltip,
+      labelTooltipButtonAriaLabel,
+      labelTooltipPlacement,
       onChange,
       disableLabelAnimation,
       ...rest
@@ -66,6 +73,8 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         labelId={textAreaId}
         feedback={feedback}
         labelTooltip={labelTooltip}
+        labelTooltipButtonAriaLabel={labelTooltipButtonAriaLabel}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelProps={{ className: 'eds-textarea__label' }}
         disableLabelAnimation={disableLabelAnimation}
         onClick={e => {
