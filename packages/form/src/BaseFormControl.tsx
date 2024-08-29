@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { VariantType } from '@entur/utils';
 import { QuestionIcon } from '@entur/icons';
-import { Tooltip } from '@entur/tooltip';
+import { Tooltip, Placement } from '@entur/tooltip';
 import { IconButton } from '@entur/button';
 
 import { FeedbackText } from './FeedbackText';
@@ -43,6 +43,7 @@ export type BaseFormControlProps = {
   labelTooltip?: React.ReactNode;
   /** Forklarende tekst for knappen som åpner labelTooltip */
   labelTooltipButtonAriaLabel?: string;
+  labelTooltipPlacement?: Placement;
   /** Illustrerer om inputfeltet er påkrevd eller ikke */
   required?: boolean;
   /** ID som settes på labelen til inputfeltet */
@@ -81,6 +82,7 @@ export const BaseFormControl = React.forwardRef<
       required,
       labelTooltip,
       labelTooltipButtonAriaLabel = 'Klikk for tilleggsinfo om feltet',
+      labelTooltipPlacement = 'top',
       feedback,
       labelId,
       labelProps,
@@ -93,6 +95,8 @@ export const BaseFormControl = React.forwardRef<
   ) => {
     const contextVariant = useVariant();
     const currentVariant = variant || contextVariant;
+
+    console.log('baseF', labelTooltipPlacement);
 
     return (
       <InputGroupContextProvider>
@@ -137,7 +141,7 @@ export const BaseFormControl = React.forwardRef<
             {labelTooltip && (
               <Tooltip
                 content={labelTooltip}
-                placement="right"
+                placement={labelTooltipPlacement}
                 showCloseButton={false}
                 disableFocusListener={true}
                 disableHoverListener={true}
