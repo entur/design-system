@@ -9,6 +9,7 @@ import { useInputGroupContext } from './InputGroupContext';
 import { isFilled } from './utils';
 import { useVariant } from './VariantProvider';
 import './TextField.scss';
+import { Placement } from '@entur/tooltip';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -26,6 +27,10 @@ export type TextFieldProps = {
   label: React.ReactNode;
   /** En tooltip som forklarer labelen til inputfeltet */
   labelTooltip?: React.ReactNode;
+  /** Forklarende tekst for knappen som åpner labelTooltip */
+  labelTooltipButtonAriaLabel?: string;
+  /** Plasseringen til tooltip-en relativt til spørsmålstegn-knappen */
+  labelTooltipPlacement?: Placement;
   /** Varselmelding, som vil komme under TextField */
   feedback?: string;
   /** Hvilken valideringsfarge som vises*/
@@ -70,6 +75,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       label,
       required,
       labelTooltip,
+      labelTooltipButtonAriaLabel,
+      labelTooltipPlacement,
       feedback,
       onChange,
       disableLabelAnimation,
@@ -100,6 +107,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         label={label}
         required={required}
         labelTooltip={labelTooltip}
+        labelTooltipButtonAriaLabel={labelTooltipButtonAriaLabel}
+        labelTooltipPlacement={labelTooltipPlacement}
         labelId={textFieldId}
         feedback={feedback}
         disableLabelAnimation={disableLabelAnimation}
