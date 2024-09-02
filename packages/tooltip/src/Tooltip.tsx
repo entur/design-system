@@ -7,7 +7,6 @@ import {
   offset,
   flip,
   shift,
-  Placement as FloatingUIPlacement,
   arrow,
   limitShift,
 } from '@floating-ui/react-dom';
@@ -16,6 +15,8 @@ import { useRandomId } from '@entur/utils';
 import { CloseIcon } from '@entur/icons';
 import { IconButton } from '@entur/button';
 import { space, borderRadiuses } from '@entur/tokens';
+
+import { Placement, standardisePlacement } from './utils';
 
 import './Tooltip.scss';
 
@@ -28,20 +29,6 @@ type Modifier = {
   data?: Record<string, unknown>;
   [key: string]: any;
 };
-
-export type Placement =
-  | 'top'
-  | 'top-left'
-  | 'top-start'
-  | 'top-right'
-  | 'top-end'
-  | 'left'
-  | 'right'
-  | 'bottom-left'
-  | 'bottom-start'
-  | 'bottom'
-  | 'bottom-right'
-  | 'bottom-end';
 
 type ChildEventListner = {
   'aria-describedby'?: string;
@@ -153,9 +140,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
       clearTimeout(hoverCloseTimer);
     };
   }, []);
-  React.useEffect(() => {
-    console.log(actualPlacement);
-  }, [actualPlacement]);
 
   const referenceListenerProps: ChildEventListner = {
     'aria-describedby': showTooltip ? tooltipId : undefined,
@@ -226,18 +210,3 @@ export const Tooltip: React.FC<TooltipProps> = ({
     </>
   );
 };
-
-function standardisePlacement(placement: string): FloatingUIPlacement {
-  switch (placement) {
-    case 'top-left':
-      return 'top-start';
-    case 'top-right':
-      return 'top-end';
-    case 'bottom-left':
-      return 'bottom-start';
-    case 'bottom-right':
-      return 'bottom-end';
-    default:
-      return placement as FloatingUIPlacement;
-  }
-}
