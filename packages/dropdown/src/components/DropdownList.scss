@@ -12,6 +12,7 @@
   border: 0.125rem solid var(--components-form-basemenu-border);
   border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
+  cursor: default;
 
   &:focus {
     outline: none;
