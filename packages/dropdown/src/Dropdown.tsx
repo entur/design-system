@@ -133,6 +133,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
 
   const {
     isOpen,
+    openMenu,
     getItemProps,
     getLabelProps,
     getMenuProps,
@@ -199,6 +200,9 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
       labelId={getLabelProps().id}
       labelProps={getLabelProps()}
       labelTooltip={labelTooltip}
+      onClick={(e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) openMenu();
+      }}
       prepend={prepend}
       readOnly={readOnly}
       ref={refs.setReference}
