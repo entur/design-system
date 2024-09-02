@@ -8,7 +8,6 @@ import {
 
 import { VisuallyHidden } from '@entur/a11y';
 import { Checkbox } from '@entur/form';
-import { mergeRefs } from '@entur/utils';
 
 import { NormalizedDropdownItemType } from '../types';
 
@@ -157,7 +156,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     <ul
       {...getMenuProps({
         'aria-multiselectable': isMultiselect,
-        ref: mergeRefs(getMenuProps().ref, listRef),
+        ref: listRef,
       })}
       className="eds-dropdown__list"
       style={{
