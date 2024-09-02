@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-beta.0) (2024-09-02)
+
+**Note:** Version bump only for package @entur/dropdown
+
 ## [6.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.1...@entur/dropdown@6.0.2) (2024-08-28)
 
 **Note:** Version bump only for package @entur/dropdown
