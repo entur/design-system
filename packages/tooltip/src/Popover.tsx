@@ -1,52 +1,27 @@
-import React, { cloneElement, createContext, useContext } from 'react';
+import React, {
+  cloneElement,
+  createContext,
+  MutableRefObject,
+  useContext,
+} from 'react';
 
-import { usePopper } from 'react-popper';
-import { Placement } from '@popperjs/core';
 import classNames from 'classnames';
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  limitShift,
+} from '@floating-ui/react-dom';
 
 import { Contrast } from '@entur/layout';
-import { useOnClickOutside } from '@entur/utils';
+import { mergeRefs, useOnClickOutside } from '@entur/utils';
+import { space } from '@entur/tokens';
+
+import { Placement, standardisePlacement } from './utils';
 
 import './Popover.scss';
-
-type PopoverContentCallbackProps = {
-  ref: React.Ref<HTMLDivElement>;
-};
-
-type PopoverContextProps = {
-  showPopover: boolean;
-  triggerElement?: React.RefObject<HTMLButtonElement>;
-  contentElement: React.RefObject<HTMLDivElement>;
-  styles: { [key: string]: React.CSSProperties };
-  attributes: { [key: string]: { [key: string]: string } | undefined };
-  closeButtonProps: Record<string, unknown>;
-  popoverContentProps: (
-    e: PopoverContentCallbackProps,
-  ) => Record<string, unknown>;
-  triggerProps: () => Record<string, unknown>;
-  [key: string]: any;
-};
-
-const PopoverContext = createContext<PopoverContextProps | undefined>(
-  undefined,
-);
-const usePopoverContext = () => {
-  const context = useContext(PopoverContext);
-  if (context == null) {
-    throw Error('usePopoverContext must be used within <Popover/>');
-  }
-  return context;
-};
-
-const useCustomState = (
-  state?: boolean,
-  setState?: React.Dispatch<React.SetStateAction<boolean>>,
-): [boolean, React.Dispatch<React.SetStateAction<boolean>>, boolean] => {
-  const [internalState, setInternalState] = React.useState<boolean>(false);
-  const controlled = state !== undefined && setState !== undefined;
-  if (controlled) return [state, setState, controlled];
-  return [internalState, setInternalState, controlled];
-};
 
 export type PopoverProps = {
   /** Innholdet i Popover */
@@ -71,100 +46,77 @@ export const Popover: React.FC<PopoverProps> = ({
     controlledState,
     setControlledState,
   );
-  const triggerElement = React.useRef(null);
-  const contentElement = React.useRef(null);
 
-  const { styles, attributes, forceUpdate } = usePopper(
-    triggerElement.current,
-    contentElement.current,
-    {
-      modifiers: [
-        { name: 'arrow', enabled: false },
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8],
-          },
-        },
-      ],
-      placement: placement,
-    },
-  );
+  // calculations for floating-UI popover position
+  const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update),
+    placement: standardisePlacement(placement),
+    middleware: [
+      offset(space.extraSmall),
+      flip(),
+      shift({ padding: space.extraSmall, limiter: limitShift({ offset: 8 }) }),
+    ],
+  });
 
-  React.useEffect(() => {
-    if (forceUpdate) {
-      forceUpdate();
-    }
-  }, [showPopover, forceUpdate]);
-
-  const triggerProps = React.useCallback(() => {
-    const buttonProps = {
-      'aria-haspopup': 'dialog',
-      'aria-expanded': showPopover,
-      ref: triggerElement,
-      type: 'button',
-    };
-    const buttonOnClick = {
-      onClick: (e: React.MouseEvent) => {
-        e.preventDefault();
-        setShowPopover(prev => !prev);
-      },
-    };
-    return controlled ? buttonProps : { ...buttonProps, ...buttonOnClick };
-  }, [triggerElement, showPopover, setShowPopover, controlled]);
-
-  useOnClickOutside([contentElement, triggerElement], () =>
+  useOnClickOutside([refs.floating, refs.reference], () =>
     setShowPopover(false),
   );
-  const closeButtonProps = {
-    onClick: (e: React.MouseEvent) => {
-      e.preventDefault();
-      setShowPopover(false);
+
+  const popoverTriggerProps = {
+    'aria-haspopup': 'dialog',
+    'aria-expanded': showPopover,
+    ref: refs.setReference,
+    type: 'button',
+    ...(!controlled && {
+      onClick: () => setShowPopover(prev => !prev),
+    }),
+  };
+
+  const popoverContentProps = {
+    role: 'dialog',
+    'aria-modal': false,
+    'aria-hidden': !showPopover,
+    ref: refs.setFloating,
+    style: { ...(!showPopover && { display: 'none' }) },
+    onKeyDown: (event: React.KeyboardEvent) => {
+      if (event.key === 'Escape') setShowPopover(false);
     },
+    onBlur: (event: React.FocusEvent) => {
+      const elementReceivingFocus = event.relatedTarget as HTMLElement;
+      // The check for 'tabindex=-1' is a special case for focus handling in Docz
+      if (
+        !elementReceivingFocus ||
+        elementReceivingFocus.getAttribute('tabindex') === '-1'
+      )
+        return;
+      const focusedElementIsPopover = elementContainsElement(
+        refs.floating.current,
+        elementReceivingFocus,
+      );
+      const focusedElementIsTrigger = elementContainsElement(
+        refs.reference.current,
+        elementReceivingFocus,
+      );
+      const popoverShouldClose =
+        !focusedElementIsPopover && !focusedElementIsTrigger;
+      if (showPopover && popoverShouldClose) setShowPopover(false);
+    },
+  };
+
+  const closeButtonProps = {
+    onClick: () => setShowPopover(false),
     type: 'button',
   };
-  const popoverContentProps = React.useCallback(() => {
-    const contentProps = {
-      role: 'dialog',
-      'aria-modal': 'false',
-      ref: contentElement,
-      onKeyDown: (event: React.KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          showPopover && setShowPopover(false);
-        }
-      },
-      onBlur: (event: React.FocusEvent) => {
-        const elementReceivingFocus = event.relatedTarget as HTMLElement;
-        // The check for 'tabindex=-1' is a special case for focus handling in Docz
-        if (
-          !elementReceivingFocus ||
-          elementReceivingFocus.getAttribute('tabindex') === '-1'
-        )
-          return;
-        const focusElementIsPopover = elementContainsElement(
-          contentElement.current,
-          elementReceivingFocus,
-        );
-        const focusElementIsTrigger = elementContainsElement(
-          triggerElement.current,
-          elementReceivingFocus,
-        );
-        const isValidBlur = !focusElementIsPopover && !focusElementIsTrigger;
-        if (showPopover && isValidBlur) setShowPopover(false);
-      },
-    };
-    return contentProps;
-  }, [contentElement, showPopover, setShowPopover]);
+
   const contextValue: PopoverContextProps = {
     showPopover,
-    triggerElement,
-    contentElement,
-    styles,
-    attributes,
+    floatingStyles,
+    popoverTriggerProps,
     popoverContentProps,
     closeButtonProps,
-    triggerProps,
   };
+
   return (
     <PopoverContext.Provider value={contextValue}>
       {children}
@@ -178,9 +130,9 @@ export type PopoverTriggerProps = {
 };
 
 export const PopoverTrigger: React.FC<PopoverTriggerProps> = ({ children }) => {
-  const { triggerProps } = usePopoverContext();
+  const { popoverTriggerProps } = usePopoverContext();
   const child = React.Children.only(children) as React.ReactElement<any>;
-  return cloneElement(child, triggerProps());
+  return cloneElement(child, popoverTriggerProps);
 };
 
 export type PopoverCloseButtonProps = {
@@ -199,33 +151,64 @@ export const PopoverCloseButton: React.FC<PopoverCloseButtonProps> = ({
 export type PopoverContentProps = {
   /**Innholdet til Popover */
   children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
->(({ children }, ref: React.Ref<HTMLDivElement>) => {
-  const { showPopover, attributes, styles, popoverContentProps } =
-    usePopoverContext();
-  const props = popoverContentProps({ ref });
+>(({ children, className, style }, ref: React.Ref<HTMLDivElement>) => {
+  const { floatingStyles, popoverContentProps } = usePopoverContext();
   return (
     <Contrast
-      className={classNames(
-        'eds-popover',
-        {
-          'eds-popover--hidden': !showPopover,
-        },
-        'eds-contrast',
-      )}
-      style={styles.popper}
-      aria-hidden={!showPopover}
-      {...attributes.styles}
-      {...props}
+      className={classNames(className, 'eds-popover')}
+      {...popoverContentProps}
+      style={{ ...floatingStyles, ...popoverContentProps.style, ...style }}
+      // @ts-expect-error correct type for floating cannot be set via useFloating
+      ref={mergeRefs(popoverContentProps.ref, ref)}
     >
       {children}
     </Contrast>
   );
 });
+
+type PopoverContextProps = {
+  showPopover: boolean;
+  floatingStyles: React.CSSProperties;
+  closeButtonProps: Record<string, unknown>;
+  popoverContentProps: {
+    role: string;
+    'aria-modal': boolean;
+    'aria-hidden': boolean;
+    ref: MutableRefObject<HTMLElement> | ((node: HTMLElement | null) => void);
+    style: React.CSSProperties;
+    onKeyDown: (event: React.KeyboardEvent) => void;
+    onBlur: (event: React.FocusEvent) => void;
+  };
+  popoverTriggerProps: Record<string, unknown>;
+};
+
+const PopoverContext = createContext<PopoverContextProps | undefined>(
+  undefined,
+);
+const usePopoverContext = () => {
+  const context = useContext(PopoverContext);
+  if (context == null) {
+    throw Error('usePopoverContext must be used within <Popover/>');
+  }
+  return context;
+};
+
+const useCustomState = (
+  state?: boolean,
+  setState?: React.Dispatch<React.SetStateAction<boolean>>,
+): [boolean, React.Dispatch<React.SetStateAction<boolean>>, boolean] => {
+  const [internalState, setInternalState] = React.useState<boolean>(false);
+  const controlled = state !== undefined && setState !== undefined;
+  if (controlled) return [state, setState, controlled];
+  return [internalState, setInternalState, controlled];
+};
 
 function elementContainsElement(
   parent: HTMLElement | null,

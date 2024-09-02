@@ -11,9 +11,6 @@
     background: var(--components-tooltip-popover-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
-  &--hidden {
-    display: none;
-  }
   &:focus {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
