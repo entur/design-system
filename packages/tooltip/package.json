@@ -1,6 +1,6 @@
 {
   "name": "@entur/tooltip",
-  "version": "3.0.2",
+  "version": "4.0.0-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tooltip.esm.js",
@@ -32,8 +32,8 @@
     "@entur/layout": "^2.3.14",
     "@entur/tokens": "^3.17.0",
     "@entur/utils": "^0.11.1",
-    "@popperjs/core": "^2.10.1",
     "@floating-ui/react-dom": "^2.1.0",
+    "@popperjs/core": "^2.10.1",
     "classnames": "^2.3.1",
     "react-popper": "~2.2.5"
   }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@3.0.2...@entur/tooltip@4.0.0-beta.0) (2024-09-02)
+
+### Performance Improvements
+
+- **tooltip:** change from popper-js to floating-ui in Tooltip component ([dc906cc](https://bitbucket.org/enturas/design-system/commits/dc906cca48dae48f467407bdab6bed09c8170a30))
+
+### BREAKING CHANGES
+
+- **tooltip:** popperModifiers prop is depracated and no longer works| Tooltip is now hidden via display: none in
+  stead of removal from DOM.
+
 ## [3.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@3.0.1...@entur/tooltip@3.0.2) (2024-08-28)
 
 **Note:** Version bump only for package @entur/tooltip
