@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.3-beta.0...@entur/dropdown@6.0.3-beta.1) (2024-09-02)
+
+### Bug Fixes
+
+- **dropdown:** fix crash in special cases when selecting with tab ([b7f355b](https://bitbucket.org/enturas/design-system/commits/b7f355b78fcf1b3940f7f437da79dddabff748aa))
+
 ## [6.0.3-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-beta.0) (2024-09-02)
 
 **Note:** Version bump only for package @entur/dropdown
