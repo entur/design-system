@@ -21,7 +21,6 @@ import { FieldAppend } from './components/FieldComponents';
 import { useResolvedItems } from './useResolvedItems';
 import {
   EMPTY_INPUT,
-  getA11ySelectionMessage,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
   itemToString,
@@ -297,10 +296,8 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
       }
     },
     // Accessibility
-    getA11yStatusMessage,
-    // The following A11y-helper does not work due to a bug (https://github.com/downshift-js/downshift/issues/1227)
-    // but is left here for when it is fixed
-    getA11ySelectionMessage: options => getA11ySelectionMessage(options),
+    getA11yStatusMessage: options =>
+      getA11yStatusMessage({ ...options, resultCount: listItems.length }),
     ...rest,
   });
 
@@ -399,6 +396,9 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
+        getItemProps={getItemProps}
+        getMenuProps={getMenuProps}
+        highlightedIndex={highlightedIndex}
         isOpen={isOpen}
         listItems={listItems}
         listStyle={{ ...floatingStyles, ...listStyle }}
@@ -406,9 +406,6 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         loading={loading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}
-        getItemProps={getItemProps}
-        getMenuProps={getMenuProps}
-        highlightedIndex={highlightedIndex}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
     </BaseFormControl>
