@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.0.2...@entur/form@8.1.0-beta.1) (2024-09-03)
+
+### Features
+
+- **form:** add labelTooltipPlacement prop to textField and -Area ([0985083](https://bitbucket.org/enturas/design-system/commits/0985083a0ddcc4afc672ea5fe1367b6889bca726))
+
 # [8.1.0-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.0.2...@entur/form@8.1.0-beta.0) (2024-09-02)
 
 ### Features

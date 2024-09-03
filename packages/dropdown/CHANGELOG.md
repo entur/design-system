@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-beta.2) (2024-09-03)
+
+### Bug Fixes
+
+- **dropdown:** fix crash in special cases when selecting with tab ([6947493](https://bitbucket.org/enturas/design-system/commits/694749301f7d4dc2baec6bf1006f4f210fb41349))
+- **dropdown:** remove dead zones from dropdown ([a490689](https://bitbucket.org/enturas/design-system/commits/a490689c1b0108a5fb99d7d6a1718cee58ebb56f))
+- **dropdown:** update dependency downshift to v9 ([d9b9bf2](https://bitbucket.org/enturas/design-system/commits/d9b9bf23e72662f6c8cf6c4317b7617809302713))
+
 ## [6.0.3-beta.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.3-beta.0...@entur/dropdown@6.0.3-beta.1) (2024-09-02)
 
 ### Bug Fixes

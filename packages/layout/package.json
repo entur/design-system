@@ -1,6 +1,6 @@
 {
   "name": "@entur/layout",
-  "version": "2.3.14",
+  "version": "2.3.15-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/layout.esm.js",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@entur/icons": "^7.2.0",
     "@entur/tokens": "^3.17.0",
-    "@entur/typography": "^1.8.43",
-    "@entur/utils": "^0.11.1",
+    "@entur/typography": "^1.8.44-beta.0",
+    "@entur/utils": "^0.11.2-beta.0",
     "classnames": "^2.3.1"
   }
 }
