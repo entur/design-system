@@ -94,22 +94,18 @@ export const useMultiselectUtils = <ValueType>({
   const handleListItemClicked = ({
     clickedItem,
     onChange,
-    setLastClickedItem: setLastRemovedItem,
   }: {
     clickedItem: NormalizedDropdownItemType<any>;
     onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void;
-    setLastClickedItem: any;
   }) => {
     if (clickedItemIsSelectAll(clickedItem)) {
       if (allListItemsAreSelected) {
-        setLastRemovedItem(selectAll);
         return unselectAllListItems(onChange);
       }
       return selectAllUnselectedItemsInListItems(onChange);
     }
 
     if (clickedItemIsInSelectedItems(clickedItem)) {
-      setLastRemovedItem(clickedItem);
       return removeClickedItemFromSelectedItems(clickedItem, onChange);
     }
     addClickedItemToSelectedItems(clickedItem, onChange);

@@ -202,9 +202,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   ...rest
 }: MultiSelectProps<ValueType>) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
-  const [_lastClickedItem, setLastClickedItem] = React.useState<
-    NormalizedDropdownItemType<ValueType> | undefined
-  >(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -213,7 +210,8 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
       console.warn(
         "Incorrect 'selectedItem' prop found, did you mean to use 'selectedItems?",
       );
-  }, []);
+    //@ts-expect-error selectedItem should not actually exist in rest
+  }, [rest.selectedItem]);
 
   const {
     items: normalizedItems,
@@ -352,7 +350,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                 handleListItemClicked({
                   clickedItem: listItems[changes.highlightedIndex],
                   onChange,
-                  setLastClickedItem,
                 });
               }
             }
@@ -410,7 +407,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           handleListItemClicked({
             clickedItem,
             onChange,
-            setLastClickedItem,
           });
         }
       }
@@ -518,7 +514,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                   handleListItemClicked({
                     clickedItem: selectedItem,
                     onChange,
-                    setLastClickedItem,
                   });
                   inputRef?.current?.focus();
                 }}
@@ -549,15 +544,14 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                   handleListItemClicked({
                     clickedItem: highlitedItem,
                     onChange,
-                    setLastClickedItem,
                   });
                 }
               }
             },
             ...getDropdownProps({
               preventKeyAction: isOpen,
-              ref: inputRef,
               value: inputValue ?? EMPTY_INPUT,
+              ref: inputRef,
             }),
           })}
         />
@@ -572,7 +566,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         isOpen={isOpen}
         listItems={listItems}
         listStyle={{ ...floatingStyles, ...listStyle }}
-        listRef={refs.setFloating}
+        setListRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}
