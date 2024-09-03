@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3-beta.3](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.3-beta.2...@entur/dropdown@6.0.3-beta.3) (2024-09-03)
+
+### Bug Fixes
+
+- **dropdown:** fix maximum update depth bug ([8838a80](https://bitbucket.org/enturas/design-system/commits/8838a80f65796433215929e5ecaed180c36ab4c9))
+
 ## [6.0.3-beta.2](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-beta.2) (2024-09-03)
 
 ### Bug Fixes
