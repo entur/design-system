@@ -556,9 +556,9 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
             },
             ...getDropdownProps({
               preventKeyAction: isOpen,
-              ref: inputRef,
               value: inputValue ?? EMPTY_INPUT,
             }),
+            ref: inputRef,
           })}
         />
       </div>

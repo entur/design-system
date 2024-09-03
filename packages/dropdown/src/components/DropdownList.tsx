@@ -1,13 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  UseComboboxGetMenuPropsOptions,
-  GetPropsCommonOptions,
-  UseComboboxGetItemPropsOptions,
-} from 'downshift';
+import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { Checkbox } from '@entur/form';
+import { mergeRefs } from '@entur/utils';
 
 import { NormalizedDropdownItemType } from '../types';
 
@@ -16,15 +13,12 @@ import './DropdownList.scss';
 type DropdownListProps<ValueType> = {
   ariaLabelChosenSingular?: string;
   ariaLabelSelectedItem?: string;
-  getItemProps: (
-    options: UseComboboxGetItemPropsOptions<
-      NormalizedDropdownItemType<ValueType>
-    >,
-  ) => any;
-  getMenuProps: (
-    options?: UseComboboxGetMenuPropsOptions | undefined,
-    otherOptions?: GetPropsCommonOptions | undefined,
-  ) => any;
+  getMenuProps:
+    | UseComboboxPropGetters<ValueType>['getMenuProps']
+    | UseSelectPropGetters<ValueType>['getMenuProps'];
+  getItemProps:
+    | UseComboboxPropGetters<ValueType>['getItemProps']
+    | UseSelectPropGetters<ValueType>['getItemProps'];
   highlightedIndex: number;
   isOpen: boolean;
   listItems: NormalizedDropdownItemType<ValueType | string>[];
@@ -154,10 +148,13 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
-      {...getMenuProps({
-        'aria-multiselectable': isMultiselect,
-        ref: listRef,
-      })}
+      {...getMenuProps(
+        {
+          'aria-multiselectable': isMultiselect,
+        },
+        { suppressRefError: true },
+      )}
+      ref={mergeRefs(listRef, getMenuProps().ref)}
       className="eds-dropdown__list"
       style={{
         display: isOpen ? 'inline-block' : 'none',
@@ -173,7 +170,6 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
 
           return (
             <li
-              key={item?.label + item?.value}
               className={classNames('eds-dropdown__list__item', {
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
