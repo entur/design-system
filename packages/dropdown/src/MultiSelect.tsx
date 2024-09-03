@@ -540,26 +540,29 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           placeholder={placeholder}
           className="eds-dropdown__input eds-form-control"
           disabled={readOnly || disabled}
-          {...getInputProps({
-            onKeyDown: (e: React.KeyboardEvent) => {
-              if (selectOnTab && isOpen && e.key === 'Tab') {
-                const highlitedItem = listItems[highlightedIndex];
-                // we don't want to clear selection with tab
-                if (highlitedItem) {
-                  handleListItemClicked({
-                    clickedItem: highlitedItem,
-                    onChange,
-                    setLastClickedItem,
-                  });
+          {...getInputProps(
+            {
+              onKeyDown: (e: React.KeyboardEvent) => {
+                if (selectOnTab && isOpen && e.key === 'Tab') {
+                  const highlitedItem = listItems[highlightedIndex];
+                  // we don't want to clear selection with tab
+                  if (highlitedItem) {
+                    handleListItemClicked({
+                      clickedItem: highlitedItem,
+                      onChange,
+                      setLastClickedItem,
+                    });
+                  }
                 }
-              }
+              },
+              ...getDropdownProps({
+                preventKeyAction: isOpen,
+                value: inputValue ?? EMPTY_INPUT,
+              }),
             },
-            ...getDropdownProps({
-              preventKeyAction: isOpen,
-              ref: inputRef,
-              value: inputValue ?? EMPTY_INPUT,
-            }),
-          })}
+            { suppressRefError: true },
+          )}
+          ref={inputRef}
         />
       </div>
       <DropdownList

@@ -212,19 +212,22 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
     >
       <div
         className="eds-dropdown__selected-item"
-        {...getToggleButtonProps({
-          id: undefined,
-          onKeyDown: e => {
-            if (selectOnTab && isOpen && e.key === 'Tab') {
-              // we don't want to clear selection with tab
-              const highlitedItem = normalizedItems[highlightedIndex];
-              if (highlitedItem) {
-                onChange?.(highlitedItem);
+        {...getToggleButtonProps(
+          {
+            id: undefined,
+            onKeyDown: e => {
+              if (selectOnTab && isOpen && e.key === 'Tab') {
+                // we don't want to clear selection with tab
+                const highlitedItem = normalizedItems[highlightedIndex];
+                if (highlitedItem) {
+                  onChange?.(highlitedItem);
+                }
               }
-            }
+            },
           },
-          ref: toggleButtonRef,
-        })}
+          { suppressRefError: true },
+        )}
+        ref={toggleButtonRef}
       >
         {selectedItem?.label ?? (
             <div

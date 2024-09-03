@@ -154,10 +154,13 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
-      {...getMenuProps({
-        'aria-multiselectable': isMultiselect,
-        ref: listRef,
-      })}
+      {...getMenuProps(
+        {
+          'aria-multiselectable': isMultiselect,
+        },
+        { suppressRefError: true },
+      )}
+      ref={listRef}
       className="eds-dropdown__list"
       style={{
         display: isOpen ? 'inline-block' : 'none',
