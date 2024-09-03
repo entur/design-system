@@ -248,7 +248,7 @@ const OverviewCards: FrontpageCards[] = [
         komponenter som følger Entur sin visuelle identitet.
       </>
     ),
-    to: '/komponenter/ressurser/tokens',
+    to: '/tokens',
     icon: <UsersIcon />,
   },
   {
