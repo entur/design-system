@@ -10,7 +10,6 @@ import {
   useMultipleSelection,
   useCombobox,
   UseComboboxStateChangeOptions,
-  A11yStatusMessageOptions,
 } from 'downshift';
 import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
 
@@ -25,10 +24,9 @@ import { DropdownList } from './components/DropdownList';
 import { useResolvedItems } from './useResolvedItems';
 import {
   EMPTY_INPUT,
-  getA11yRemovalMessage,
-  getA11ySelectionMessage,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
+  itemToKey,
   itemToString,
   lowerCaseFilterTest,
   noFilter,
@@ -204,7 +202,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   ...rest
 }: MultiSelectProps<ValueType>) => {
   const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
-  const [lastRemovedItem, setLastRemovedItem] = React.useState<
+  const [_lastClickedItem, setLastClickedItem] = React.useState<
     NormalizedDropdownItemType<ValueType> | undefined
   >(undefined);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -281,7 +279,9 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
 
   const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
     selectedItems,
+    // @ts-expect-error prop missing from library types
     itemToString,
+    itemToKey,
     onStateChange({ selectedItems: newSelectedItems, type }) {
       switch (type) {
         case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
@@ -295,13 +295,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           break;
       }
     },
-    // Accessibility
-    getA11yRemovalMessage: options =>
-      getA11yRemovalMessage({
-        ...options,
-        selectAllItem: selectAll,
-        removedItem: lastRemovedItem,
-      }),
   });
 
   const stateReducer = React.useCallback(
@@ -359,7 +352,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                 handleListItemClicked({
                   clickedItem: listItems[changes.highlightedIndex],
                   onChange,
-                  setLastRemovedItem,
+                  setLastClickedItem,
                 });
               }
             }
@@ -414,23 +407,21 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           if (!selectOnBlur) break;
         case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
         case useCombobox.stateChangeTypes.ItemClick: {
-          handleListItemClicked({ clickedItem, onChange, setLastRemovedItem });
+          handleListItemClicked({
+            clickedItem,
+            onChange,
+            setLastClickedItem,
+          });
         }
       }
     },
     // Accessibility
-    getA11yStatusMessage: function <Item>(
-      options: A11yStatusMessageOptions<Item>,
-    ) {
-      return getA11yStatusMessage<Item>({
+    getA11yStatusMessage: options =>
+      getA11yStatusMessage({
         ...options,
         selectAllItemIncluded: !hideSelectAll,
-      });
-    },
-    // The following A11y-helper does not work due to a bug (https://github.com/downshift-js/downshift/issues/1227)
-    // but is left here for when it is fixed
-    getA11ySelectionMessage: options =>
-      getA11ySelectionMessage({ ...options, selectAllItem: selectAll }),
+        resultCount: listItems.length,
+      }),
     ...rest,
   });
 
@@ -527,7 +518,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                   handleListItemClicked({
                     clickedItem: selectedItem,
                     onChange,
-                    setLastRemovedItem,
+                    setLastClickedItem,
                   });
                   inputRef?.current?.focus();
                 }}
@@ -558,7 +549,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
                   handleListItemClicked({
                     clickedItem: highlitedItem,
                     onChange,
-                    setLastRemovedItem,
+                    setLastClickedItem,
                   });
                 }
               }
