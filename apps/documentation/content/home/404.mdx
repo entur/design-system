@@ -7,12 +7,25 @@ index: true
 ---
 
 import PageHeader from '~/components/PageHeader';
-import notFoundImage from './notFoundImage.jpg';
 import { Paragraph, Heading2, Link } from '@entur/typography';
 import { PrimaryButton } from '@entur/button';
+import { ImageDisplay } from '~/components/ImageDisplay';
+
+export const query = graphql`
+query NotFoundquery {
+   file(sourceInstanceName: {eq: "downloads"}, name: {eq: "Sheep"}) {
+    image: childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+  }
+}
+`;
 
 <div style={{textAlign:"center"}}>
-<img src={notFoundImage} alt="Bomstasjon som sperrer veien videre. Tegning" />
+
+<ImageDisplay fluidSource={props.data.file.image.fluid} alt="Bomstasjon som sperrer veien videre. Tegning" />
 
 <Heading2>Bomtur</Heading2>
 
