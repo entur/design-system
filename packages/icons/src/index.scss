@@ -101,7 +101,9 @@ p .eds-icon {
       color: var(--basecolors-shape-carferry-contrast);
     }
   }
-  &__mobility {
+  &__mobility,
+  &__citybike,
+  &__carsharing {
     color: var(--basecolors-shape-mobility-default);
     .eds-contrast & {
       color: var(--basecolors-shape-mobility-contrast);
