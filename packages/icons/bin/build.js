@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const sass = require('sass');
 
-const { colors } = require('@entur/tokens');
+const { colors, transport } = require('@entur/tokens');
 
 /**
  * Deprecated icons, mapped to their possible replacements.
@@ -93,9 +93,10 @@ const components = traverse('src/svgs').map(svgPath => {
     );
   }
   const name = getComponentNameFromSvgPath(svgPath);
+  const categories = svgPath.split('svgs')?.[1].split('/');
   const isDeprecated = deprecatedIcons.has(name);
   const replacement = deprecatedIcons.get(name);
-  return { name, svgPath, isDeprecated, replacement };
+  return { name, svgPath, isDeprecated, replacement, categories };
 });
 
 for (const component of components) {
@@ -110,11 +111,15 @@ createTypeDeclaration(components);
 createStyleFiles();
 
 function outputWebCode(component) {
-  const { name, svgPath } = component;
+  const { name, svgPath, categories } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-  const webCode = svgr.sync(rawSvgText, createSvgrConfig(false, name), {
-    componentName: name,
-  });
+  const webCode = svgr.sync(
+    rawSvgText,
+    createSvgrConfig(false, name, categories),
+    {
+      componentName: name,
+    },
+  );
   const afterPossibleDeprecations = addDeprecationWarnings(webCode, component);
   fs.outputFileSync(`./tmp/web/${name}.js`, afterPossibleDeprecations);
 }
@@ -216,7 +221,7 @@ function traverse(directory, dirEnt = '') {
 }
 
 /** Create the correct SVGR config based on its environment */
-function createSvgrConfig(native = false, componentName) {
+function createSvgrConfig(native = false, componentName, categories) {
   const config = {
     icon: true,
     replaceAttrValues: {
@@ -243,6 +248,7 @@ function createSvgrConfig(native = false, componentName) {
       [colors.transport.default.ferry.toUpperCase()]: 'currentColor',
       [colors.transport.default.plane.toUpperCase()]: 'currentColor',
       [colors.transport.default.cableway.toUpperCase()]: 'currentColor',
+      [colors.transport.default.mobility.toUpperCase()]: 'currentColor',
     };
   } else {
     /** Get icon-name, and if it has a transport color, add it as class to component */
@@ -257,9 +263,9 @@ function createSvgrConfig(native = false, componentName) {
       className = `{(props.color ? "eds-icon " : "") + "eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
       color = `{(props.color)}`;
     }
-    if (componentName && colors.transport.contrast[lowerCaseName]) {
+    if (componentName && categories.includes('Transport')) {
       className = `{(!props.color ? "eds-icon eds-icon__${lowerCaseName} " : "eds-icon") + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
-      color = `{(props.color || "${colors.transport.default[lowerCaseName]}")}`;
+      color = `{(props.color || "${transport.standard[lowerCaseName]}")}`;
     }
 
     config.svgProps = {
