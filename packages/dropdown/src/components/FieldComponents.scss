@@ -52,6 +52,12 @@
         color: var(--components-dropdown-dropdown-standard-text-disabled);
       }
     }
+
+    &__text {
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+    }
   }
 
   // This is done to remove contrast specific styling
