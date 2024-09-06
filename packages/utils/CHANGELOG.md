@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.11.1...@entur/utils@0.11.2-RC.0) (2024-09-06)
+
+### Performance Improvements
+
+- **popover:** use floating-ui in popover instead of popper-js ([f622bb5](https://bitbucket.org/enturas/design-system/commits/f622bb56487ea9e0bc52019411d807162aad213c))
+
 ## [0.11.1](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.11.0...@entur/utils@0.11.1) (2024-04-18)
 
 **Note:** Version bump only for package @entur/utils

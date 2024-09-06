@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.7.0...@entur/documentation@4.0.0-RC.0) (2024-09-06)
+
+### Bug Fixes
+
+- **docs:** add new not-found image ([d246d30](https://bitbucket.org/enturas/design-system/commits/d246d3079939eb57d6c7764ea84ecf874135c479))
+
+### Features
+
+- **icons:** add car sharing icon ([2d33751](https://bitbucket.org/enturas/design-system/commits/2d3375156396a295e36cc0371bedaceda41d083c))
+
+### Performance Improvements
+
+- **tooltip:** change from popper-js to floating-ui in Tooltip component ([dfe1a34](https://bitbucket.org/enturas/design-system/commits/dfe1a347565be86a2d9671f29e27a877a5c38be7))
+
+### BREAKING CHANGES
+
+- **tooltip:** popperModifiers prop is depracated and no longer works| Tooltip is now hidden via display: none in
+  stead of removal from DOM.
+
 # [3.7.0](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@3.6.0...@entur/documentation@3.7.0) (2024-08-28)
 
 ### Bug Fixes
