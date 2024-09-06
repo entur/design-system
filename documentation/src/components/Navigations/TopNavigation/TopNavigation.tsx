@@ -10,13 +10,18 @@ import { useSettings } from '../../../contexts/SettingsContext';
 
 import './TopNavigation.scss';
 
-const TopNavigation: React.FC<{}> = ({}) => {
+interface TopNavigationProps {
+  frontPage?: boolean;
+}
+
+const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
   return (
     <nav
       className={classNames('top-navigation', {
         'eds-contrast': location.pathname === '/',
+        'top-navigation--frontpage': frontPage,
       })}
       aria-label="Navigasjon, hovedseksjoner"
     >

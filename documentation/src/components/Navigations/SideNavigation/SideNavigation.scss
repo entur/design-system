@@ -3,67 +3,33 @@
 
 @import '../../../styles/variables';
 
-.site-sidebar-wrapper {
-  width: 100%;
-  transition: max-width $timings-fast ease-out;
-  background: var(--components-menu-sidenavigation-standard-background);
-
-  @include for-desktop {
-    max-width: $site-sidebar-width--desktop;
-    height: 100vh;
-    left: 0;
-    top: $navbar-height;
-    padding-bottom: 10rem;
-    overflow-y: scroll;
-    position: fixed;
-    z-index: $z-indexes-sticky;
+.side-navigation {
+  &__logo {
+    width: 100%;
+    padding: $space-extra-large2 $space-extra-large2 0 $space-extra-large2;
   }
-  @include for-large-desktop {
-    max-width: $site-sidebar-width--large-desktop;
-  }
-}
 
-.site-sidebar__logo-svg {
-  width: 100%;
-  padding: $space-extra-large2 $space-extra-large2 0 $space-extra-large2;
-}
-
-.site-sidebar {
-  &__searchbar {
-  }
   &__group {
     margin-top: 1rem;
   }
-  &-wrapper .eds-floating-button.site-sidebar__close-menu {
-    position: fixed !important;
-    top: 86vh;
-    right: 0;
-    margin-top: -$navbar-height;
-    opacity: 0;
-    transition: right $timings-slow ease-in-out, opacity $timings-slow ease-in-out;
-    &--open {
-      opacity: 1;
-      right: calc(20% - 24px);
-    }
-  }
-  &__background {
-    min-height: 100dvh;
-    padding-top: $space-extra-large;
-    padding-bottom: $space-extra-large;
-    background-color: pink;
-    // TODO
-    // background-color: var(--components-menu-sidenavigation-standard-background);
-  }
-  &__backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
+
+  &-wrapper {
     width: 100%;
-    position: fixed;
-    margin-top: -$navbar-height;
-    opacity: 1;
-    transition: opacity $timings-medium ease-in-out;
-    &--inactive {
-      opacity: 0;
+    transition: max-width $timings-fast ease-out;
+    background: var(--components-menu-sidenavigation-standard-background);
+
+    @include for-desktop {
+      max-width: $side-navigation-width--desktop;
+      height: 100vh;
+      left: 0;
+      top: $navbar-height;
+      padding-bottom: 10rem;
+      overflow-y: scroll;
+      position: fixed;
+      z-index: $z-indexes-sticky;
+    }
+    @include for-large-desktop {
+      max-width: $side-navigation-width--large-desktop;
     }
   }
 }

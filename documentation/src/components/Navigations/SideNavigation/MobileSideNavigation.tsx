@@ -1,18 +1,17 @@
 import React from 'react';
-import { MenuItem } from './utils';
+import { MenuItem, removeTrailingSlash } from './utils';
 import { Link } from 'gatsby';
 import { FloatingButton } from '@entur/button';
 import { LeftArrowIcon, MenuIcon } from '@entur/icons';
 import classNames from 'classnames';
 import { Heading2 } from '@entur/typography';
 import { space } from '@entur/tokens';
-import { SiteSideNavigation } from './SiteSideNavigation';
-
+import { useLocation } from '@reach/router';
+import { SideNavigation } from './SideNavigation';
 import { useContrast } from '@entur/layout';
 import { useSettings } from '../../../contexts/SettingsContext';
 
 import './MobileSideNavigation.scss';
-import './SideNavigation.scss';
 
 type MobileMenuProps = {
   className?: string;
@@ -30,13 +29,20 @@ export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
+  const location = useLocation();
+  const currentPathSegments = removeTrailingSlash(location.pathname).split('/');
+  const parentPath =
+    currentPathSegments.length > 1 ? currentPathSegments[1] : '';
+  const capitalizedParentPath =
+    parentPath.charAt(0).toUpperCase() + parentPath.slice(1);
+
   return (
     <>
       <div className="ui-menu--mobile">
         <FloatingButton
           size="medium"
-          className={classNames('mobile-nav-bar__menu--menu-button ', {
-            'mobile-nav-bar__menu--menu-button-open': openSidebar,
+          className={classNames('mobile-side-navigation__menu--menu-button', {
+            'mobile-side-navigation__menu--menu-button-open': openSidebar,
           })}
           onClick={() => setOpenSidebar(true)}
           type="button"
@@ -49,24 +55,27 @@ export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
       {openSidebar && (
         <div
           onClick={() => setOpenSidebar(false)}
-          className={classNames('site-sidebar__backdrop')}
+          className="mobile-side-navigation__backdrop"
         />
       )}
-
-      {openSidebar && (
-        <div className={classNames('site-sidebar-wrapper', className)}>
-          <nav aria-label={`Navigasjon for seksjonen "parent"`}>
-            <div className="site-sidebar__background">
+      <div
+        className={classNames('mobile-side-navigation', {
+          'mobile-side-navigation--visible': openSidebar,
+        })}
+      >
+        <div
+          className={classNames('mobile-side-navigation-wrapper', className)}
+        >
+          <nav aria-label={`Navigasjon for seksjonen "${parentPath}"`}>
+            <div className="mobile-side-navigation__background">
               <Link
                 to="/"
-                className="top-navigation__logo"
-                style={{
-                  marginLeft: space.extraLarge,
-                }}
+                className="mobile-side-navigation__logo"
+                style={{ marginLeft: space.extraLarge }}
               >
                 <img
-                  //TODO: Fix images
-                  //src={colorMode === 'dark' || isContrast ? logoDark : logo}
+                  // TODO: Fix images
+                  // src={colorMode === 'dark' || isContrast ? logoDark : logo}
                   height="20px"
                   width="64px"
                   alt="Entur logo"
@@ -79,10 +88,10 @@ export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
                   marginTop: space.extraLarge2,
                 }}
               >
-                parent
+                {capitalizedParentPath}
               </Heading2>
 
-              <SiteSideNavigation
+              <SideNavigation
                 menuItems={menuItems}
                 mobile={true}
                 openSidebar={openSidebar}
@@ -92,15 +101,15 @@ export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
             <FloatingButton
               aria-label="Lukk sidemeny"
               onClick={() => setOpenSidebar(false)}
-              className={classNames('site-sidebar__close-menu', {
-                'site-sidebar__close-menu--open': openSidebar,
+              className={classNames('mobile-side-navigation__close-menu', {
+                'mobile-side-navigation__close-menu--open': openSidebar,
               })}
             >
               <LeftArrowIcon />
             </FloatingButton>
           </nav>
         </div>
-      )}
+      </div>
     </>
   );
 };
