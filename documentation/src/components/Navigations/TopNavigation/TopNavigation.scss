@@ -14,6 +14,9 @@
   height: $navbar-height;
   z-index: $z-indexes-popover;
 
+  &--frontpage {
+    border-bottom: none;
+  }
   @include for-desktop {
     position: fixed;
     top: 0;
