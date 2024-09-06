@@ -1,8 +1,8 @@
-// Step 1: Import React
 import * as React from 'react';
 
 import '../styles/index.scss';
 import FrontPageLayout from '../layouts/FrontPageLayout';
+import { FrontPage } from '../components/FrontPage/FrontPage';
 import { SEO } from '../components/seo/SEO';
 import { MediaContextProvider } from '../contexts/MediaBreakpoint';
 import { SettingsProvider } from '../contexts/SettingsContext';
@@ -13,7 +13,9 @@ const IndexPage = () => {
   return (
     <SettingsProvider>
       <MediaContextProvider>
-        <FrontPageLayout>Startsiden</FrontPageLayout>
+        <FrontPageLayout>
+          <FrontPage />
+        </FrontPageLayout>
       </MediaContextProvider>
     </SettingsProvider>
   );
