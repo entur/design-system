@@ -48,14 +48,14 @@ body {
   @include for-desktop {
     position: absolute;
     top: $navbar-height;
-    left: $site-sidebar-width--desktop;
+    left: $side-navigation-width--desktop;
     margin-top: 0;
     height: calc(100vh - #{$navbar-height});
-    width: calc(100% - #{$site-sidebar-width--desktop});
+    width: calc(100% - #{$side-navigation-width--desktop});
   }
   @include for-large-desktop {
-    left: $site-sidebar-width--large-desktop;
-    width: calc(100% - #{$site-sidebar-width--large-desktop});
+    left: $side-navigation-width--large-desktop;
+    width: calc(100% - #{$side-navigation-width--large-desktop});
   }
   .site-content {
     display: flex;

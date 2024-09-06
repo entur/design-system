@@ -10,7 +10,7 @@ const TopNavigationLayout: React.FC = () => {
         <MobileTopNavigation />
       </Media>
       <Media greaterThanOrEqual="desktop">
-        <TopNavigation />
+        <TopNavigation frontPage />
       </Media>
     </>
   );
