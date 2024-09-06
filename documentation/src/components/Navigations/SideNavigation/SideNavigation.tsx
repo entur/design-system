@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { useLocation } from '@reach/router';
 import classNames from 'classnames';
 import {
-  SideNavigation,
+  SideNavigation as EnturSideNavigation,
   SideNavigationItem,
   SideNavigationGroup,
 } from '@entur/menu';
@@ -22,14 +22,14 @@ import { SearchBar } from './SearchBar';
 
 import './SideNavigation.scss';
 
-type SiteSideNavigationProps = {
+type SideNavigationProps = {
   mobile?: boolean;
   menuItems: MenuItem[];
   className?: string;
   openSidebar?: boolean;
 };
 
-export const SiteSideNavigation: React.FC<SiteSideNavigationProps> = ({
+export const SideNavigation: React.FC<SideNavigationProps> = ({
   mobile = false,
   openSidebar = false,
   menuItems,
@@ -119,22 +119,22 @@ export const SiteSideNavigation: React.FC<SiteSideNavigationProps> = ({
     <div
       onScroll={handleScroll}
       ref={menuRef}
-      className={classNames('site-sidebar-wrapper', className)}
+      className={classNames('side-navigation-wrapper', className)}
     >
       <Media greaterThanOrEqual="desktop">
         <SearchBar
-          className="site-sidebar__searchbar"
+          className="side-navigation__searchbar"
           searchText={searchText}
           onSearchTextChange={setSearchText}
         />
       </Media>
-      <SideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
+      <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
         {sortedMenuNames.map(menuName => (
           <SideNavigationGroup
             key={menuName}
             defaultOpen={true}
             title={menuName}
-            className="site-sidebar__group"
+            className="side-navigation__group"
           >
             {grouped[menuName].map(item => (
               <SideNavigationItem
@@ -158,7 +158,7 @@ export const SiteSideNavigation: React.FC<SiteSideNavigationProps> = ({
             {item.frontmatter.title}
           </SideNavigationItem>
         ))}
-      </SideNavigation>
+      </EnturSideNavigation>
     </div>
   );
 };
