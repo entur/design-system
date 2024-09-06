@@ -3,7 +3,6 @@ import { Contrast } from '@entur/layout';
 import FrontPageFooter from '../components/Footer/FrontPageFooter';
 import TopNavigationLayout from './TopNavigationLayout';
 interface FrontPageLayoutProps {
-  pageTitle: string;
   children: React.ReactNode;
 }
 

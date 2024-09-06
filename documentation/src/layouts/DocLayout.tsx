@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 import { MenuItem } from '../components/Navigations/SideNavigation/utils';
-import { SiteSideNavigation } from '../components/Navigations/SideNavigation/SiteSideNavigation';
+import { SideNavigation } from '../components/Navigations/SideNavigation/SideNavigation';
 import { MobileSideNavigation } from '../components/Navigations/SideNavigation/MobileSideNavigation';
 import { TableOfContent } from '../components/Navigations/TableOfContent/TableOfContent';
 import { Media } from '../contexts/MediaBreakpoint';
@@ -41,16 +41,13 @@ const DocLayout: React.FC<LayoutProps> = ({
     <div className="page">
       <TopNavigationLayout />
       <Media greaterThanOrEqual="desktop">
-        <SiteSideNavigation menuItems={menuItems} />
+        <SideNavigation menuItems={menuItems} />
       </Media>
       <Media at="mobile">
         <MobileSideNavigation
           menuItems={menuItems}
           openSidebar={openSidebar}
           setOpenSidebar={setOpenSidebar}
-          className={classNames('sidebar-mobile', {
-            'sidebar-mobile--show': openSidebar,
-          })}
         />
       </Media>
 
