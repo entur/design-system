@@ -379,19 +379,22 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         })}
         disabled={readOnly || disabled}
         placeholder={selectedItem?.label ?? placeholder}
-        {...getInputProps({
-          onBlur: () => {
-            if (selectedItem !== null) setShowSelectedItem(true);
+        {...getInputProps(
+          {
+            onBlur: () => {
+              if (selectedItem !== null) setShowSelectedItem(true);
+            },
+            onFocus: () => {
+              setShowSelectedItem(false);
+            },
+            onKeyDown: e => {
+              if (selectOnTab && isOpen && e.key === 'Tab')
+                onChange?.(listItems[highlightedIndex]);
+            },
           },
-          onFocus: () => {
-            setShowSelectedItem(false);
-          },
-          onKeyDown: e => {
-            if (selectOnTab && isOpen && e.key === 'Tab')
-              onChange?.(listItems[highlightedIndex]);
-          },
-          ref: inputRef,
-        })}
+          { suppressRefError: true },
+        )}
+        ref={inputRef}
       />
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
