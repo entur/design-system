@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "4.0.0-RC.4",
+  "version": "4.0.0-RC.5",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
@@ -26,7 +26,7 @@
     "@entur/button": "^3.2.31-RC.1",
     "@entur/chip": "^0.7.18-RC.1",
     "@entur/datepicker": "^10.0.3-RC.1",
-    "@entur/dropdown": "^6.0.3-RC.4",
+    "@entur/dropdown": "^6.0.3-RC.5",
     "@entur/expand": "^3.5.20-RC.1",
     "@entur/fileupload": "^0.3.125-RC.1",
     "@entur/form": "^8.1.0-RC.1",
