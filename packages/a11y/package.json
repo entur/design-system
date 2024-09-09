@@ -1,6 +1,6 @@
 {
   "name": "@entur/a11y",
-  "version": "0.2.90-RC.0",
+  "version": "0.2.90-RC.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/a11y.esm.js",
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@entur/tokens": "^3.17.0",
-    "@entur/utils": "^0.11.2-RC.0"
+    "@entur/utils": "^0.11.2-RC.1"
   }
 }

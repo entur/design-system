@@ -1,6 +1,6 @@
 {
   "name": "@entur/table",
-  "version": "4.8.17-RC.0",
+  "version": "4.8.17-RC.1",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/table.esm.js",
@@ -27,15 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.90-RC.0",
-    "@entur/button": "^3.2.31-RC.0",
-    "@entur/expand": "^3.5.20-RC.0",
-    "@entur/form": "^8.1.0-RC.0",
-    "@entur/icons": "^7.3.0-RC.0",
-    "@entur/layout": "^2.3.15-RC.0",
+    "@entur/a11y": "^0.2.90-RC.1",
+    "@entur/button": "^3.2.31-RC.1",
+    "@entur/expand": "^3.5.20-RC.1",
+    "@entur/form": "^8.1.0-RC.1",
+    "@entur/icons": "^7.3.0-RC.1",
+    "@entur/layout": "^2.3.15-RC.1",
     "@entur/tokens": "^3.17.0",
-    "@entur/tooltip": "^4.0.0-RC.0",
-    "@entur/utils": "^0.11.2-RC.0",
+    "@entur/tooltip": "^4.0.0-RC.1",
+    "@entur/utils": "^0.11.2-RC.1",
     "@types/lodash.get": "^4.4.6",
     "classnames": "^2.3.1",
     "lodash.get": "^4.4.2"

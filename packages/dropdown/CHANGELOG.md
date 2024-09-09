@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3-RC.1](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-RC.1) (2024-09-09)
+
+### Bug Fixes
+
+- **dropdown:** fix crash in special cases when selecting with tab ([ccc756d](https://bitbucket.org/enturas/design-system/commits/ccc756d1e4d3e885459209793c470f798505b19a))
+- **dropdown:** fix layout shift on loading ([d92d1e3](https://bitbucket.org/enturas/design-system/commits/d92d1e385ef92079ea9574c822f509c9f5d22997))
+- **dropdown:** fix maximum update depth bug ([83355e0](https://bitbucket.org/enturas/design-system/commits/83355e0aa8fbcfb116f010708db003ae732ef17b))
+- **dropdown:** remove dead zones from dropdown ([cef2bf7](https://bitbucket.org/enturas/design-system/commits/cef2bf7d8021664fc21d483e4017e0d776df2a4a))
+- **multiselect:** fix overflow issue in selectedItemTag ([d411ad0](https://bitbucket.org/enturas/design-system/commits/d411ad0e3ca8e7c41f513818bae0780bf7f72b35))
+
+### Performance Improvements
+
+- **dropdown:** update dependency downshift to v9 ([f628387](https://bitbucket.org/enturas/design-system/commits/f6283877984c0b77db06dc2e2ac4b4a1af4985da))
+
 ## [6.0.3-RC.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.2...@entur/dropdown@6.0.3-RC.0) (2024-09-06)
 
 ### Bug Fixes
