@@ -250,7 +250,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         isOpen={isOpen}
         listItems={normalizedItems}
         listStyle={{ ...floatingStyles, ...listStyle }}
-        listRef={refs.setFloating}
+        setListRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
