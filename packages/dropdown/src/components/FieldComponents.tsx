@@ -59,7 +59,12 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
       key={selectedItem.value}
       aria-live="polite"
     >
-      <span aria-hidden="true">{selectedItem.label}</span>
+      <span
+        aria-hidden="true"
+        className="eds-dropdown__selected-item-tag__text"
+      >
+        {selectedItem.label}
+      </span>
     </TagChip>
   );
 };

@@ -52,6 +52,12 @@
         color: var(--components-dropdown-dropdown-standard-text-disabled);
       }
     }
+
+    &__text {
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+    }
   }
 
   // This is done to remove contrast specific styling
@@ -121,8 +127,8 @@
         display: flex;
         justify-content: center;
         height: 100%;
-        width: 1rem;
-        margin-left: calc(0.5rem + 2px);
+        width: 1.5rem;
+        margin-left: 0.25rem;
         .eds-loading-dots__dot {
           background-color: var(--components-loader-loader-standard-text);
           .eds-contrast & {

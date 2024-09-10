@@ -1,14 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  UseComboboxGetMenuPropsOptions,
-  GetPropsCommonOptions,
-  UseComboboxGetItemPropsOptions,
-} from 'downshift';
+import { UseComboboxPropGetters, UseSelectPropGetters } from 'downshift';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { Checkbox } from '@entur/form';
-import { mergeRefs } from '@entur/utils';
 
 import { NormalizedDropdownItemType } from '../types';
 
@@ -17,20 +12,17 @@ import './DropdownList.scss';
 type DropdownListProps<ValueType> = {
   ariaLabelChosenSingular?: string;
   ariaLabelSelectedItem?: string;
-  getItemProps: (
-    options: UseComboboxGetItemPropsOptions<
-      NormalizedDropdownItemType<ValueType>
-    >,
-  ) => any;
-  getMenuProps: (
-    options?: UseComboboxGetMenuPropsOptions | undefined,
-    otherOptions?: GetPropsCommonOptions | undefined,
-  ) => any;
+  getMenuProps:
+    | UseComboboxPropGetters<ValueType>['getMenuProps']
+    | UseSelectPropGetters<ValueType>['getMenuProps'];
+  getItemProps:
+    | UseComboboxPropGetters<ValueType>['getItemProps']
+    | UseSelectPropGetters<ValueType>['getItemProps'];
   highlightedIndex: number;
   isOpen: boolean;
   listItems: NormalizedDropdownItemType<ValueType | string>[];
   listStyle: { [key: string]: any } | undefined;
-  listRef?: React.Ref<HTMLUListElement>;
+  setListRef: (node: HTMLElement | null) => void;
   loading?: boolean;
   loadingText?: string;
   noMatchesText?: string;
@@ -50,7 +42,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   highlightedIndex,
   listItems,
   listStyle,
-  listRef,
+  setListRef,
   loading = false,
   loadingText = 'Laster inn …',
   noMatchesText = 'Ingen treff for søket',
@@ -155,10 +147,13 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
-      {...getMenuProps({
-        'aria-multiselectable': isMultiselect,
-        ref: mergeRefs(getMenuProps().ref, listRef),
-      })}
+      {...getMenuProps(
+        {
+          'aria-multiselectable': isMultiselect,
+        },
+        { suppressRefError: true },
+      )}
+      ref={setListRef}
       className="eds-dropdown__list"
       style={{
         display: isOpen ? 'inline-block' : 'none',
@@ -174,7 +169,6 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
 
           return (
             <li
-              key={item?.label + item?.value}
               className={classNames('eds-dropdown__list__item', {
                 'eds-dropdown__list__item--select-all': itemIsSelectAll,
                 'eds-dropdown__list__item--highlighted':
@@ -182,8 +176,8 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                 'eds-dropdown__list__item--selected':
                   !isMultiselect && isItemSelected(item),
               })}
+              key={item?.label + item?.value}
               {...getItemProps({
-                key: item?.label + item?.value,
                 // @ts-expect-error Since getItemProps expects the same item type
                 // here as items, it throws error when selectAllItem is a string.
                 // This does, however, not cause any functional issues.

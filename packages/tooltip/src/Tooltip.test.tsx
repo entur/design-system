@@ -1,9 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 
 import { Tooltip } from '.';
 
 test('Tooltip renders with content and children, and is displayed on mouse-over', async () => {
+  jest.useFakeTimers();
+
   const content = 'tooltipcontent';
   const children = 'Tooltip children';
 
@@ -15,14 +17,23 @@ test('Tooltip renders with content and children, and is displayed on mouse-over'
 
   const tooltipdiv = getByText(children);
 
-  expect(queryByText(content)).not.toBeInTheDocument();
+  expect(queryByText(content)).not.toBeVisible();
   fireEvent.mouseEnter(tooltipdiv);
-
-  await waitFor(() => {
-    expect(queryByText(content)).toBeInTheDocument();
-
-    expect(getByText(content)).toHaveClass('tester');
-    fireEvent.mouseLeave(tooltipdiv);
-    expect(queryByText(content)).not.toBeInTheDocument();
+  act(() => {
+    jest.runAllTimers();
   });
+
+  expect(queryByText(content)).toBeVisible();
+
+  expect(getByText(content)).toHaveClass('tester');
+
+  fireEvent.mouseLeave(tooltipdiv);
+  act(() => {
+    jest.runAllTimers();
+  });
+
+  expect(queryByText(content)).not.toBeVisible();
+
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
 });

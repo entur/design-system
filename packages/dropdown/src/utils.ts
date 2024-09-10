@@ -1,4 +1,4 @@
-import { A11yRemovalMessage, A11yStatusMessageOptions } from 'downshift';
+import { UseComboboxState } from 'downshift';
 import { NormalizedDropdownItemType } from './types';
 
 /* start general utils */
@@ -30,6 +30,9 @@ export function noFilter<ValueType>(
 
 export const itemToString = (item: NormalizedDropdownItemType<any> | null) =>
   item ? item.label : '';
+
+export const itemToKey = (item: NormalizedDropdownItemType<any> | null) =>
+  item?.label + item?.value;
 
 export const isFunctionWithQueryArgument = (object: any) =>
   typeof object === 'function' && object.length > 0;
@@ -91,22 +94,18 @@ export const useMultiselectUtils = <ValueType>({
   const handleListItemClicked = ({
     clickedItem,
     onChange,
-    setLastRemovedItem,
   }: {
     clickedItem: NormalizedDropdownItemType<any>;
     onChange: (value: NormalizedDropdownItemType<ValueType>[]) => void;
-    setLastRemovedItem: any;
   }) => {
     if (clickedItemIsSelectAll(clickedItem)) {
       if (allListItemsAreSelected) {
-        setLastRemovedItem(selectAll);
         return unselectAllListItems(onChange);
       }
       return selectAllUnselectedItemsInListItems(onChange);
     }
 
     if (clickedItemIsInSelectedItems(clickedItem)) {
-      setLastRemovedItem(clickedItem);
       return removeClickedItemFromSelectedItems(clickedItem, onChange);
     }
     addClickedItemToSelectedItems(clickedItem, onChange);
@@ -164,21 +163,16 @@ export const useMultiselectUtils = <ValueType>({
 
 /* end multiselect utils */
 /* start a11y utils */
-type getA11yStatusMessageType<Item> = A11yStatusMessageOptions<Item> & {
-  selectAllItemIncluded?: boolean;
-  ariaLabelNoResults?: string;
-};
 
-export function getA11yStatusMessage<Item>(
-  options: getA11yStatusMessageType<Item>,
+// called when the state changes:
+// selectedItem, highlightedIndex, inputValue or isOpen.
+export function getA11yStatusMessage<ValueType>(
+  options: UseComboboxState<NormalizedDropdownItemType<ValueType>> & {
+    selectAllItemIncluded?: boolean;
+    resultCount: number;
+  },
 ): string {
-  const {
-    isOpen,
-    resultCount,
-    previousResultCount,
-    selectAllItemIncluded = false,
-    ariaLabelNoResults = 'Ingen resultater',
-  } = options;
+  const { isOpen, selectAllItemIncluded = false, resultCount } = options;
 
   if (!isOpen) {
     return '';
@@ -189,50 +183,11 @@ export function getA11yStatusMessage<Item>(
     : resultCount;
 
   if (resultCountWithoutSelectAll === 0) {
-    return ariaLabelNoResults;
+    return 'Ingen resultater';
   }
 
-  if (resultCount !== previousResultCount) {
-    return `${resultCountWithoutSelectAll} resultat${
-      resultCountWithoutSelectAll === 1 ? '' : 'er'
-    } tilgjengelig, naviger med pil opp eller ned, velg elementer med enter.`;
-  }
-
-  return '';
-}
-
-type getA11ySelectionMessageType<Item> = A11yStatusMessageOptions<Item> & {
-  selectAllItem?: NormalizedDropdownItemType<string>;
-};
-
-export function getA11ySelectionMessage(
-  options: getA11ySelectionMessageType<NormalizedDropdownItemType<any>>,
-) {
-  const {
-    selectedItem,
-    itemToString: itemToStringLocal,
-    selectAllItem,
-  } = options;
-
-  if (selectedItem?.value === selectAllItem?.value)
-    return 'Alle elementer i listen valgt.';
-
-  return selectedItem ? `${itemToStringLocal(selectedItem)} er valgt.` : '';
-}
-
-type getA11yRemovalMessageType<Item> = A11yRemovalMessage<Item> & {
-  selectAllItem?: NormalizedDropdownItemType<string>;
-  removedItem?: NormalizedDropdownItemType<any>;
-};
-
-export function getA11yRemovalMessage(
-  options: getA11yRemovalMessageType<NormalizedDropdownItemType<any>>,
-) {
-  const { itemToString, selectAllItem, removedItem } = options;
-  if (removedItem === undefined) return '';
-  if (removedItem.value === selectAllItem?.value)
-    return 'Alle elementer i listen fjernet fra valgte.';
-
-  return `${itemToString(removedItem)} fjernet fra valgte.`;
+  return `${resultCountWithoutSelectAll} resultat${
+    resultCountWithoutSelectAll === 1 ? '' : 'er'
+  } tilgjengelig, naviger med pil opp eller ned, velg elementer med Enter.`;
 }
 /* end a11y utils */
