@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.2.0...@entur/icons@7.3.0) (2024-09-10)
+
+### Features
+
+- **icons:** add car sharing icon ([2d33751](https://bitbucket.org/enturas/design-system/commits/2d3375156396a295e36cc0371bedaceda41d083c))
+
 # [7.2.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.1.0...@entur/icons@7.2.0) (2024-08-28)
 
 ### Features
