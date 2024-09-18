@@ -10,3 +10,4 @@ export * from './useWindowDimensions';
 export * from './ConditionalWrapper';
 export * from './warnAboutMissingStyles';
 export * from './types';
+export * from './getNodeText';
