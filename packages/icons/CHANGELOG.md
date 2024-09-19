@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.3.0...@entur/icons@7.4.0) (2024-09-19)
+
+### Features
+
+- **icons:** add align objects icons ([5fa80d2](https://bitbucket.org/enturas/design-system/commits/5fa80d2d90b5c37dd794741568bcbe4d0b5238d9))
+
 # [7.3.0](https://bitbucket.org/enturas/design-system/compare/@entur/icons@7.2.0...@entur/icons@7.3.0) (2024-09-10)
 
 ### Features
