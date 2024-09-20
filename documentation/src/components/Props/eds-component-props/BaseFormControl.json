@@ -1,0 +1,339 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseFormControl",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Et skjemaelement med `eds-form-control`-klassen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Sett til true om skjema-elementet er disabled",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Sett til true om skjema-elementet er i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som vises foran skjema-elementet",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "append": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som vises etter skjema-elementet",
+        "name": "append",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på skjemaelementet",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"large\" | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label til inputfeltet",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelTooltip": {
+        "defaultValue": null,
+        "description": "En tooltip som forklarer labelen til inputfeltet",
+        "name": "labelTooltip",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelTooltipButtonAriaLabel": {
+        "defaultValue": {
+          "value": "Klikk for tilleggsinfo om feltet"
+        },
+        "description": "Forklarende tekst for knappen som åpner labelTooltip",
+        "name": "labelTooltipButtonAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelTooltipPlacement": {
+        "defaultValue": {
+          "value": "top"
+        },
+        "description": "",
+        "name": "labelTooltipPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement | undefined"
+        }
+      },
+      "required": {
+        "defaultValue": null,
+        "description": "Illustrerer om inputfeltet er påkrevd eller ikke",
+        "name": "required",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelId": {
+        "defaultValue": null,
+        "description": "ID som settes på labelen til inputfeltet",
+        "name": "labelId",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme under form-komponenten",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "isFilled": {
+        "defaultValue": null,
+        "description": "Om inputfeltet er fylt med data. Brukes for plassering av label",
+        "name": "isFilled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelProps": {
+        "defaultValue": null,
+        "description": "Ekstra props som sendes til label",
+        "name": "labelProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Ekstra styling",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Setter feedbackText sin rolle til \"alert\"",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
+        }
+      },
+      "ariaAlertOnFeedback": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "ariaAlertOnFeedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

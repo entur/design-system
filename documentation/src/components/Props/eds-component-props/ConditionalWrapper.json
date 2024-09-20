@@ -1,0 +1,40 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ConditionalWrapper",
+    "methods": [],
+    "props": {
+      "condition": {
+        "defaultValue": null,
+        "description": "",
+        "name": "condition",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/utils/src/ConditionalWrapper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "wrapper": {
+        "defaultValue": null,
+        "description": "",
+        "name": "wrapper",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/utils/src/ConditionalWrapper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "any"
+        }
+      }
+    }
+  }
+]

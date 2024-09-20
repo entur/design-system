@@ -1,0 +1,61 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandableRow",
+    "methods": [],
+    "props": {
+      "colSpan": {
+        "defaultValue": null,
+        "description": "Antall kolonner tabellraden er",
+        "name": "colSpan",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/ExpandableRow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til ExpandableRow",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/ExpandableRow.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "open": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om ExpandableRow er åpen",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/ExpandableRow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

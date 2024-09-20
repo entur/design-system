@@ -1,0 +1,29 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TableFooter",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Tabellrader",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableFooter.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

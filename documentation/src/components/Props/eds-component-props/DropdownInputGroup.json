@@ -1,0 +1,70 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "DropdownInputGroupDeprecated",
+    "methods": [],
+    "props": {
+      "feedback": {
+        "defaultValue": null,
+        "description": "",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownInputGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownInputGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownInputGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownInputGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      }
+    }
+  }
+]

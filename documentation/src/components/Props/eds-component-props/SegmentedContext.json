@@ -1,0 +1,107 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SegmentedProvider",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((value: SelectedValues) => void) | ((value: SelectedValue) => void) | undefined"
+        }
+      },
+      "selectedValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectedValue",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "SelectedValues | SelectedValue"
+        }
+      },
+      "multiple": {
+        "defaultValue": null,
+        "description": "",
+        "name": "multiple",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedContext.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"medium\" | \"large\""
+        }
+      }
+    }
+  }
+]

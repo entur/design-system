@@ -1,0 +1,40 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseSkeleton",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/BaseSkeleton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/BaseSkeleton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "CSSProperties"
+        }
+      }
+    }
+  }
+]

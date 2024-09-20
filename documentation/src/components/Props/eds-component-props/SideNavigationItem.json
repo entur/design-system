@@ -1,0 +1,121 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SideNavigationItem",
+    "methods": [],
+    "props": {
+      "active": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om meny-elementet er det som er aktivt",
+        "name": "active",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | ... 177 more ... | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Om meny-elementet er deaktivert",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Callback for når man klikker på meny-elementet",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e: MouseEvent<Element, MouseEvent>) => any) | undefined"
+        }
+      },
+      "forceExpandSubMenus": {
+        "defaultValue": null,
+        "description": "Sett til true om du vil tvinge alle sub-menus til å rendre barna sine. Typisk for å vise søkeresultater",
+        "name": "forceExpandSubMenus",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "icon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "icon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

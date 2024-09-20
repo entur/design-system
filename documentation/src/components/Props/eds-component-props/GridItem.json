@@ -1,0 +1,106 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "GridItem",
+    "methods": [],
+    "props": {
+      "small": {
+        "defaultValue": {
+          "value": "1"
+        },
+        "description": "Antall kolonner en Item bruker på små flater (og oppover)",
+        "name": "small",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "medium": {
+        "defaultValue": null,
+        "description": "Antall kolonner en Item bruker på medium flater (og oppover)",
+        "name": "medium",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "large": {
+        "defaultValue": null,
+        "description": "Antall kolonner en Item bruker på store flater.",
+        "name": "large",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "HTML-elementet eller React-komponenten som lager Grid-elementet\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til Grid containeren/item",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "tags": {
+      "deprecated": ""
+    },
+    "description": "This component is not used by anyone, and is therefore deprecated",
+    "displayName": "MultipleSegmentedControl",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "Navn på input-elementene",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/MultipleSegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/MultipleSegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "En eller flere SegmentedChoice-komponenter",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/MultipleSegmentedControl.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "selectedValue": {
+        "defaultValue": null,
+        "description": "Den eller de valgte verdiene",
+        "name": "selectedValue",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/MultipleSegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "SelectedValues"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Callback for når det gjøres et valg",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/MultipleSegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(value: SelectedValues) => void"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,161 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "HeaderCell",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Kolonneoverskrift",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "name": {
+        "defaultValue": null,
+        "description": "Navnet det skal sorteres på. Benyttes via useSortableTable",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "sortable": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om komponenten brukes til sortering. Benytt via useSortableTable",
+        "name": "sortable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "sortConfig": {
+        "defaultValue": null,
+        "description": "Konfigurering og rekkefølgen på sortering. Benyttes via useSortableTable",
+        "name": "sortConfig",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ExternalSortConfig | undefined"
+        }
+      },
+      "padding": {
+        "defaultValue": {
+          "value": "default"
+        },
+        "description": "Størrelse som settes for HeaderCell for ulikt innhold av komponenter",
+        "name": "padding",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"default\" | \"checkbox\" | \"radio\" | \"overflow-menu\" | undefined"
+        }
+      },
+      "sortableButtonProps": {
+        "defaultValue": null,
+        "description": "Ekstra props som kan sendes til sorteringsknappelementet. Benyttes via useSortableTable",
+        "name": "sortableButtonProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> | undefined"
+        }
+      },
+      "sortedAscendingAriaLabel": {
+        "defaultValue": {
+          "value": ", sortert stigende"
+        },
+        "description": "",
+        "name": "sortedAscendingAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "sortedDescendingAriaLabel": {
+        "defaultValue": {
+          "value": ", sortert synkende"
+        },
+        "description": "",
+        "name": "sortedDescendingAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/HeaderCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]
