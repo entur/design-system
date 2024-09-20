@@ -1,0 +1,67 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Radio",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Radio.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label til radio-button. Vises ved høyre side.",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Radio.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til radioknappen",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Radio.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | (string & readonly string[])"
+        }
+      }
+    }
+  }
+]

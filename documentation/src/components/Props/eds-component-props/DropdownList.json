@@ -1,0 +1,245 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "DropdownList",
+    "methods": [],
+    "props": {
+      "ariaLabelChosenSingular": {
+        "defaultValue": {
+          "value": "valgt"
+        },
+        "description": "",
+        "name": "ariaLabelChosenSingular",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelSelectedItem": {
+        "defaultValue": {
+          "value": ", valgt element, trykk for å fjerne"
+        },
+        "description": "",
+        "name": "ariaLabelSelectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "getMenuProps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getMenuProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(<Options>(options?: (UseComboboxGetMenuPropsOptions & Options) | undefined, otherOptions?: GetPropsCommonOptions | undefined) => Overwrite<...>) | (<Options>(options?: (UseSelectGetMenuPropsOptions & Options) | undefined, otherOptions?: GetPropsCommonOptions | undefined) => Overwrite<...>)"
+        }
+      },
+      "getItemProps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getItemProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(<Options>(options: UseComboboxGetItemPropsOptions<ValueType> & Options) => Omit<Overwrite<UseComboboxGetItemPropsReturnValue, Options>, \"index\" | \"item\">) | (<Options>(options: UseSelectGetItemPropsOptions<...> & Options) => Omit<...>)"
+        }
+      },
+      "highlightedIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "highlightedIndex",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "isOpen": {
+        "defaultValue": null,
+        "description": "",
+        "name": "isOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "listItems": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "NormalizedDropdownItemType<string | ValueType>[]"
+        }
+      },
+      "listStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "setListRef": {
+        "defaultValue": null,
+        "description": "",
+        "name": "setListRef",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(node: HTMLElement | null) => void"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": {
+          "value": "Laster inn …"
+        },
+        "description": "",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "noMatchesText": {
+        "defaultValue": {
+          "value": "Ingen treff for søket"
+        },
+        "description": "",
+        "name": "noMatchesText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "selectAllCheckboxState": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectAllCheckboxState",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => boolean | \"indeterminate\") | undefined"
+        }
+      },
+      "selectAllItem": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectAllItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "NormalizedDropdownItemType<string> | undefined"
+        }
+      },
+      "selectedItems": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectedItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "NormalizedDropdownItemType<ValueType>[]"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,135 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TravelTag",
+    "methods": [],
+    "props": {
+      "onClose": {
+        "defaultValue": {
+          "value": "undefined"
+        },
+        "description": "Callback som kalles for når man skal lukke TravelTag-en",
+        "name": "onClose",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet inne i TravelTag-en",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "alert": {
+        "defaultValue": {
+          "value": "none"
+        },
+        "description": "Legger til et Valideringsikon i TravelTagen for å signalisere avvik, informasjon e.l.",
+        "name": "alert",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"error\" | \"warning\" | \"info\" | undefined"
+        }
+      },
+      "transport": {
+        "defaultValue": {
+          "value": "none"
+        },
+        "description": "Legger til farge og ikon tilpasset valgt transportmiddel",
+        "name": "transport",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Transport | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Element ved siden av eller under TravelTag.",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelPlacement": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Posisjonen til label-en i forhold til TravelTag-en",
+        "name": "labelPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelTag.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"bottom\" | \"right\" | undefined"
+        }
+      }
+    }
+  }
+]

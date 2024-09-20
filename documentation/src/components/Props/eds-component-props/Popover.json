@@ -1,0 +1,183 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Popover",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i Popover",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "placement": {
+        "defaultValue": {
+          "value": "bottom-start"
+        },
+        "description": "Plasseringen av Popover",
+        "name": "placement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement | undefined"
+        }
+      },
+      "showPopover": {
+        "defaultValue": null,
+        "description": "Hvis du ønsker å styre state selv kan du sende inn state her",
+        "name": "showPopover",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "setShowPopover": {
+        "defaultValue": null,
+        "description": "Hvis du ønsker å styre state selv kan du sende inn setState her",
+        "name": "setShowPopover",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Dispatch<SetStateAction<boolean>> | undefined"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "PopoverTrigger",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Knapp som skal brukes for å åpne Popover",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<any, string | JSXElementConstructor<any>> & ReactNode"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "PopoverCloseButton",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "En valgfri knapp som kan legges inn for å lukke Popover",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<any, string | JSXElementConstructor<any>> & ReactNode"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "PopoverContent",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til Popover",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Popover.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      }
+    }
+  }
+]

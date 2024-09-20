@@ -1,0 +1,402 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FileUpload",
+    "methods": [],
+    "props": {
+      "accept": {
+        "defaultValue": {
+          "value": ""
+        },
+        "description": "Hvilken filtyper som skal aksepteres",
+        "name": "accept",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | string[] | undefined"
+        }
+      },
+      "minSize": {
+        "defaultValue": null,
+        "description": "Minste filstørrelse",
+        "name": "minSize",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxSize": {
+        "defaultValue": null,
+        "description": "Største filstørrelse",
+        "name": "maxSize",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxFiles": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxFiles",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "preventDropOnDocument": {
+        "defaultValue": null,
+        "description": "",
+        "name": "preventDropOnDocument",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "noClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "noClick",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "noKeyboard": {
+        "defaultValue": null,
+        "description": "",
+        "name": "noKeyboard",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "noDrag": {
+        "defaultValue": null,
+        "description": "",
+        "name": "noDrag",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "noDragEventsBubbling": {
+        "defaultValue": null,
+        "description": "",
+        "name": "noDragEventsBubbling",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onDrop": {
+        "defaultValue": null,
+        "description": "Callback for når en fil legges til",
+        "name": "onDrop",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((<T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void) & (<T extends File>(acceptedFiles: T[], fileRejections: FileRejection[], event: DropEvent) => void)) | undefined"
+        }
+      },
+      "onDropAccepted": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDropAccepted",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(<T extends File>(files: T[], event: DropEvent) => void) | undefined"
+        }
+      },
+      "onDropRejected": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDropRejected",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((fileRejections: FileRejection[], event: DropEvent) => void) | undefined"
+        }
+      },
+      "getFilesFromEvent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getFilesFromEvent",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((event: DropEvent) => Promise<(File | DataTransferItem)[]>) | undefined"
+        }
+      },
+      "onFileDialogCancel": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onFileDialogCancel",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "validator": {
+        "defaultValue": null,
+        "description": "",
+        "name": "validator",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/react-dropzone/typings/react-dropzone.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(<T extends File>(file: T) => FileError | FileError[] | null) | undefined"
+        }
+      },
+      "successText": {
+        "defaultValue": {
+          "value": "Opplasting fullført"
+        },
+        "description": "Tekst som vises ved fullført opplasting",
+        "name": "successText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "errorText": {
+        "defaultValue": {
+          "value": "Feil ved opplasting av fil"
+        },
+        "description": "Tekst som vises om opplasting feilet",
+        "name": "errorText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "standbyText": {
+        "defaultValue": {
+          "value": "Dra fil eller klikk for å laste opp"
+        },
+        "description": "Tekst som vises før man laster opp noe",
+        "name": "standbyText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "errorUpload": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Boolean for hvis opplastingen feiler.",
+        "name": "errorUpload",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onDelete": {
+        "defaultValue": {
+          "value": "file => console.log(file)"
+        },
+        "description": "Callback for når en fil slettes fra lista",
+        "name": "onDelete",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((file: File) => void) | undefined"
+        }
+      },
+      "files": {
+        "defaultValue": {
+          "value": "[]"
+        },
+        "description": "Filene som er aktive i komponenten",
+        "name": "files",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "File[]"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst som forklarer feltet",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "removeFileButtonDescription": {
+        "defaultValue": {
+          "value": "Fjern fil"
+        },
+        "description": "Tekst som leses opp av skjermleser på søppelbøtte-ikonet",
+        "name": "removeFileButtonDescription",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/fileupload/src/FileUpload.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

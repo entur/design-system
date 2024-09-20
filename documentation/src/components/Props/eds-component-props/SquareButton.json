@@ -1,0 +1,125 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SquareButton",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Tekst og ikon",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "secondary"
+        },
+        "description": "En type knapp",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"success\" | \"secondary\" | \"tertiary\" | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Deaktivering av knappen",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om knappen er opptatt, f.eks. med å lagre eller å kjøpe",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "DOM-elementet knappen rendres som\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/SquareButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      }
+    }
+  }
+]

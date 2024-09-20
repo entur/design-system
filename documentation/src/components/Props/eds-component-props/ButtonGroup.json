@@ -1,0 +1,61 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ButtonGroup",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "To eller flere Button-komponenter",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/ButtonGroup.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/ButtonGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "\"div\""
+        },
+        "description": "HTML-elementet eller React-komponenten som lages",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/ButtonGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass<any, any> | FunctionComponent<any> | undefined"
+        }
+      }
+    }
+  }
+]

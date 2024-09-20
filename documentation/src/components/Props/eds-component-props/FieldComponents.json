@@ -1,0 +1,355 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SelectedItemTag",
+    "methods": [],
+    "props": {
+      "ariaLabelRemoveSelected": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ariaLabelRemoveSelected",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ariaLabelChosen": {
+        "defaultValue": {
+          "value": "valgt"
+        },
+        "description": "",
+        "name": "ariaLabelChosen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "getSelectedItemProps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getSelectedItemProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType<ValueType>>) => any) | undefined"
+        }
+      },
+      "index": {
+        "defaultValue": null,
+        "description": "",
+        "name": "index",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "readOnly": {
+        "defaultValue": null,
+        "description": "",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "removeSelectedItem": {
+        "defaultValue": null,
+        "description": "",
+        "name": "removeSelectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(item: NormalizedDropdownItemType<ValueType>) => void"
+        }
+      },
+      "selectedItem": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "NormalizedDropdownItemType<ValueType>"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FieldAppend",
+    "methods": [],
+    "props": {
+      "ariaHiddenToggleButton": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "ariaHiddenToggleButton",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "ariaLabelCloseList": {
+        "defaultValue": {
+          "value": "Lukk liste med valg"
+        },
+        "description": "",
+        "name": "ariaLabelCloseList",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelOpenList": {
+        "defaultValue": {
+          "value": "Åpne liste med valg"
+        },
+        "description": "",
+        "name": "ariaLabelOpenList",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "clearable": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "clearable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelClearSelectedItems": {
+        "defaultValue": {
+          "value": "Fjern valgte"
+        },
+        "description": "",
+        "name": "labelClearSelectedItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "focusable": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "focusable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "getToggleButtonProps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getToggleButtonProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(options?: UseComboboxGetToggleButtonPropsOptions | undefined) => any"
+        }
+      },
+      "isOpen": {
+        "defaultValue": null,
+        "description": "",
+        "name": "isOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": {
+          "value": "Laster resultater …"
+        },
+        "description": "",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClear",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "selectedItems": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectedItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(NormalizedDropdownItemType<ValueType> | null)[]"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,196 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "NativeDropdown",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "For å deaktivere dropdow-nen",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Valideringsmelding, brukes sammen med `variant`",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "items": {
+        "defaultValue": null,
+        "description": "Alle valg for dropdown-en å ha",
+        "name": "items",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "PotentiallyAsyncDropdownItemType<ValueType>"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst som forklarer feltet",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "En callback for endringer av value\nObs: merk at parameter her denne ikke er samme som i en HTML select.\nBruk { target } hvis du trenger info om select-elementet som ble trykket på",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(({ value, selectedItem, target, }: { value: string; selectedItem: NormalizedDropdownItemType<ValueType> | null; target: EventTarget & HTMLSelectElement; }) => void) | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som kommer før dropdown-en",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Setter dropdown-en i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "selectedItem": {
+        "defaultValue": null,
+        "description": "Den valgte verdien som NormalizedDropdownItemType\n(Brukes når komponenten er 'controlled')",
+        "name": "selectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "NormalizedDropdownItemType<ValueType> | null | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Den valgte verdien som sting\n(Brukes når komponenten er 'controlled)",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Hvilken valideringsvariant som gjelder",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/NativeDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

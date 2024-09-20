@@ -1,0 +1,190 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Switch",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label for Switch-en.",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelPlacement": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Posisjonen til label for Switch-en.",
+        "name": "labelPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"right\" | \"bottom\" | undefined"
+        }
+      },
+      "checked": {
+        "defaultValue": null,
+        "description": "Om switch-en er checked eller ikke",
+        "name": "checked",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "icon": {
+        "defaultValue": null,
+        "description": "Ikonet som skal stå inne i sirkelen på Switch-en",
+        "name": "icon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "hideIcon": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Skjul ikonet inne i sikrelen på Switch-en",
+        "name": "hideIcon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "color": {
+        "defaultValue": {
+          "value": "colors.validation.mint"
+        },
+        "description": "Farge som settes på ikon og bakgrunn når Switch-en er \"checked\"",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "contrastColor": {
+        "defaultValue": {
+          "value": "colors.validation.mintContrast"
+        },
+        "description": "Farge på bakgrunn når Switch-en er \"checked\" og står i en kontrast-seksjon",
+        "name": "contrastColor",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på Switch-en",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"large\" | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Callback for når verdien endres",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Switch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(((e: ChangeEvent<HTMLInputElement>) => void) & ChangeEventHandler<HTMLInputElement>) | undefined"
+        }
+      }
+    }
+  }
+]

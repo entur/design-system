@@ -1,0 +1,140 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseAlertBox",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i alert-boksen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeButtonLabel": {
+        "defaultValue": {
+          "value": "Lukk"
+        },
+        "description": "Skjermleser-label for lukkeknappen, om den vises",
+        "name": "closeButtonLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onClose": {
+        "defaultValue": {
+          "value": "() => ({})"
+        },
+        "description": "Callback som kalles når man lukker boksen",
+        "name": "onClose",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "closable": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om denne er true, vil boksen få en lukkeknapp i høyre hjørne",
+        "name": "closable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittel på boksen - oppsummer virkning",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Farge og uttrykk på alert-boksen",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "VariantType | \"info\" | \"error\""
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Typen boks (internt bruk)",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BaseAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"banner\" | \"toast\" | \"small\""
+        }
+      }
+    }
+  }
+]

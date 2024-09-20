@@ -1,0 +1,46 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SkipToContent",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Lenketeksten",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/a11y/src/SkipToContent.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "mainId": {
+        "defaultValue": {
+          "value": "main-content"
+        },
+        "description": "IDen til hovedinnholdsområdet",
+        "name": "mainId",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/a11y/src/SkipToContent.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

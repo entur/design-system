@@ -1,0 +1,171 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "RadioPanel",
+    "methods": [],
+    "props": {
+      "title": {
+        "defaultValue": null,
+        "description": "Hovedtittelen til radio-panelet",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelse på radio-panelet",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"large\" | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om radio-panelet er deaktivert eller ikke",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til radio-panelet",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | (string & readonly string[])"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Ekstra informasjon som legges nederst i radio-panelet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "secondaryLabel": {
+        "defaultValue": null,
+        "description": "Ektstra label som står høyrestilt, til venstre for radio-button-en",
+        "name": "secondaryLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "hideRadioButton": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Skjuler radio-button-en i radio-panelet",
+        "name": "hideRadioButton",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/inputPanel/RadioPanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

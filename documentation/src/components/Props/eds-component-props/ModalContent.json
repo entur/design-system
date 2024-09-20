@@ -1,0 +1,91 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ModalContent",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i modalen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Størrelsen på modalen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"extraSmall\" | \"small\" | \"medium\" | \"large\" | \"extraLarge\""
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen som vises i modalen",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "align": {
+        "defaultValue": {
+          "value": "start"
+        },
+        "description": "Hvordan innholdet skal plasseres i modalen",
+        "name": "align",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalContent.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"start\" | \"center\" | \"end\" | undefined"
+        }
+      }
+    }
+  }
+]

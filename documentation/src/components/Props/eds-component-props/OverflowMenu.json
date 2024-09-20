@@ -1,0 +1,164 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "OverflowMenu",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Menypunkter (OverflowMenuItem eller OverflowMenuLink)\nAccepts any renderable content.\n@see Docs https://reach.tech/menu-button#menubutton-children",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@reach/menu-button/dist/declarations/src/index.d.ts",
+            "name": "MenuButtonProps"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "button": {
+        "defaultValue": {
+          "value": "IconButton med VerticalDotsIcon"
+        },
+        "description": "Knapp som skal åpne OverflowMenu",
+        "name": "button",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<any, string | JSXElementConstructor<any>> | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "position": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Posisjoneringen av OverflowMenu-lista",
+        "name": "position",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"right\" | \"left\" | undefined"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "OverflowMenuItem",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"button\""
+        },
+        "description": "HTML-elementet eller React-komponenten som lager elementet",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"symbol\" | \"object\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | ... 339 more ... | (FunctionComponent<...> & (\"symbol\" | ... 176 more ... | \"set\"))"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "OverflowMenuLink",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"a\""
+        },
+        "description": "HTML-elementet eller React-komponenten som lager elementet",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"symbol\" | \"object\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | ... 160 more ... | (ReactElement<...> & (\"symbol\" | ... 176 more ... | \"set\"))"
+        }
+      }
+    }
+  }
+]

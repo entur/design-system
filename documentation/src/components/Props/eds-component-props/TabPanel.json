@@ -1,0 +1,44 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TabPanel",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Overskriften til taben",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tab/src/TabPanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "HTML-elementet eller React-komponenten som lager komponenten",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tab/src/TabPanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      }
+    }
+  }
+]

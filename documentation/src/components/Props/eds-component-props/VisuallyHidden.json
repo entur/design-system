@@ -1,0 +1,46 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "VisuallyHidden",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"span\""
+        },
+        "description": "HTML-elementet eller React-komponenten som lager elementet",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/a11y/src/VisuallyHidden.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass<any, any> | FunctionComponent<any> | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innhold for skjermlesere",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/a11y/src/VisuallyHidden.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

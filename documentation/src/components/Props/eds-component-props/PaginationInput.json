@@ -1,0 +1,72 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "PaginationInput",
+    "methods": [],
+    "props": {
+      "currentPage": {
+        "defaultValue": null,
+        "description": "",
+        "name": "currentPage",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationInput.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "label": {
+        "defaultValue": {
+          "value": "Gå til side"
+        },
+        "description": "",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationInput.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onPageChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onPageChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationInput.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(pageNumber: number) => void"
+        }
+      },
+      "pageCount": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pageCount",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationInput.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  }
+]

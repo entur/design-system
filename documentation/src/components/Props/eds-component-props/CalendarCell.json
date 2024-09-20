@@ -1,0 +1,102 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CalendarCell",
+    "methods": [],
+    "props": {
+      "state": {
+        "defaultValue": null,
+        "description": "",
+        "name": "state",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "CalendarState"
+        }
+      },
+      "date": {
+        "defaultValue": null,
+        "description": "",
+        "name": "date",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "CalendarDate"
+        }
+      },
+      "weekNumberString": {
+        "defaultValue": null,
+        "description": "",
+        "name": "weekNumberString",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onSelectedCellClick": {
+        "defaultValue": {
+          "value": "() => {\n    return;\n  }"
+        },
+        "description": "",
+        "name": "onSelectedCellClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "classNameForDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "classNameForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      },
+      "ariaLabelForDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ariaLabelForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      }
+    }
+  }
+]

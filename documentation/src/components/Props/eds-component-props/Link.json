@@ -1,0 +1,112 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Link",
+    "methods": [],
+    "props": {
+      "external": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "external",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "\"a\""
+        },
+        "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "margin": {
+        "defaultValue": {
+          "value": "both"
+        },
+        "description": "Hvor du vil ha marginer",
+        "name": "margin",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"top\" | \"bottom\" | \"both\" | \"none\" | undefined"
+        }
+      },
+      "ariaLabelExternalIcon": {
+        "defaultValue": {
+          "value": "(ekstern lenke)"
+        },
+        "description": "",
+        "name": "ariaLabelExternalIcon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/Link.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

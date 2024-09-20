@@ -1,0 +1,82 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ActionChip",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Teksten som vises i ActionChip",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ActionChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ActionChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om chip-en er opptatt, f.eks med å oppdatere informasjon",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ActionChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på chip",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ActionChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      }
+    }
+  }
+]
