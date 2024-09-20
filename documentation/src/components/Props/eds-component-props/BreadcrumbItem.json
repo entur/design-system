@@ -1,0 +1,76 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BreadcrumbItem",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"a\""
+        },
+        "description": "Komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbItem.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Teksten som vises",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "isCurrent": {
+        "defaultValue": null,
+        "description": "True om sist i listen. Settes automatisk av BreadcrumbNavigation-komponenten",
+        "name": "isCurrent",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

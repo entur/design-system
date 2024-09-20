@@ -1,0 +1,40 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CalendarButton",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/shared/CalendarButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/shared/CalendarButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      }
+    }
+  }
+]

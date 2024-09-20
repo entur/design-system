@@ -1,0 +1,185 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "MediaCard",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "'a'"
+        },
+        "description": "HTML-elementet eller React-komponenten som lager bunnen (under media) av MediaCard\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen/teksten som står i CardBox",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "description": {
+        "defaultValue": null,
+        "description": "Teksten under tittelen i MediaCard",
+        "name": "description",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "category": {
+        "defaultValue": null,
+        "description": "Kategori (eller lignende) som vises over tittelen",
+        "name": "category",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Det du skulle ønske som media (f.eks. bilder eller video)",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Styling som sendes til komponenten",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "headingLevel": {
+        "defaultValue": {
+          "value": "h2"
+        },
+        "description": "Hvilken heading som brukes for tittelen.\nBlir kun satt hvis description også er satt.",
+        "name": "headingLevel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | undefined"
+        }
+      },
+      "hideArrow": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Skjul pil-ikonet nederst til høyre",
+        "name": "hideArrow",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "wrapperProps": {
+        "defaultValue": null,
+        "description": "Props som sendes til wrapper-elementet i stedet for lenke-elementet",
+        "name": "wrapperProps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "HTMLAttributes<HTMLElement> | undefined"
+        }
+      },
+      "wholeCardAsElement": {
+        "defaultValue": null,
+        "description": "@deprecated Denne prop-en har ikke lenger en funksjon.\nHvis du trenger å legge til props på wrapper-elementet, bruk 'wrapperProps'-prop-en",
+        "name": "wholeCardAsElement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

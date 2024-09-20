@@ -1,0 +1,61 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Loader",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Tekst som beskriver prosessen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/Loader.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/Loader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "progress": {
+        "defaultValue": {
+          "value": "indeterminate"
+        },
+        "description": "Tall mellom 0-100, eller \"indeterminate\" om man ikke vet",
+        "name": "progress",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/Loader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | \"indeterminate\" | undefined"
+        }
+      }
+    }
+  }
+]

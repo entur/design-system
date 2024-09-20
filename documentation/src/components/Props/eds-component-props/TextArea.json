@@ -1,0 +1,178 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TextArea",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Deaktiverer tekstområdet",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TextareaHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Setter tekstområdet i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TextareaHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label over TextArea",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "labelTooltip": {
+        "defaultValue": null,
+        "description": "En tooltip som forklarer labelen til inputfeltet",
+        "name": "labelTooltip",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelTooltipButtonAriaLabel": {
+        "defaultValue": null,
+        "description": "Forklarende tekst for knappen som åpner labelTooltip",
+        "name": "labelTooltipButtonAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelTooltipPlacement": {
+        "defaultValue": null,
+        "description": "Plasseringen til tooltip-en relativt til spørsmålstegn-knappen",
+        "name": "labelTooltipPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement | undefined"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme under TextArea",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/TextArea.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

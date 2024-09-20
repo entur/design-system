@@ -1,0 +1,93 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "GridContainer",
+    "methods": [],
+    "props": {
+      "spacing": {
+        "defaultValue": {
+          "value": "none"
+        },
+        "description": "Mellomromet mellom hver GridItem, basert på spacing-tokens",
+        "name": "spacing",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridContainer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"none\" | \"extraSmall2\" | \"extraSmall\" | \"medium\" | \"large\" | \"extraLarge\" | undefined"
+        }
+      },
+      "rowSpacing": {
+        "defaultValue": {
+          "value": "Verdien til spacing"
+        },
+        "description": "Mellomrom mellom hver rad",
+        "name": "rowSpacing",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridContainer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"none\" | \"extraSmall2\" | \"extraSmall\" | \"medium\" | \"large\" | \"extraLarge\" | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "HTML-elementet eller React-komponenten som lager Grid-elementet\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridContainer.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til Grid-containeren",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridContainer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/GridContainer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

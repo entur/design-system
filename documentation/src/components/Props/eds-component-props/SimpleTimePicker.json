@@ -1,0 +1,448 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SimpleTimePicker",
+    "methods": [],
+    "props": {
+      "selectedTime": {
+        "defaultValue": null,
+        "description": "Den valgte tiden. Tid i '@internationalized/date'-pakkens format",
+        "name": "selectedTime",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "TimeValue | null"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((value: MappedTimeValue<TimeType> | null) => void | Dispatch<SetStateAction<TimeValue | null>>) | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label til TimePicker\nLabel til inputfeltet",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string & ReactNode"
+        }
+      },
+      "showSeconds": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Viser sekund i tillegg til time og minutt",
+        "name": "showSeconds",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "showClockIcon": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Viser et klokkeikonet for å klarere indikere at dette\ner en tidsvelger",
+        "name": "showClockIcon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"right\" | \"left\" | undefined"
+        }
+      },
+      "padding": {
+        "defaultValue": {
+          "value": "default"
+        },
+        "description": "Velger hvor mye luft det skal være på sidene av klokkeslettet",
+        "name": "padding",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"default\" | \"large\" | undefined"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme under TimePicker\nVarselmelding, som vil komme under form-komponenten",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som vises foran skjema-elementet",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "append": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som vises etter skjema-elementet",
+        "name": "append",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelTooltip": {
+        "defaultValue": null,
+        "description": "En tooltip som forklarer labelen til inputfeltet",
+        "name": "labelTooltip",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Sett til true om skjema-elementet er disabled",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "readOnly": {
+        "defaultValue": null,
+        "description": "Sett til true om skjema-elementet er i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "inputRef": {
+        "defaultValue": null,
+        "description": "",
+        "name": "inputRef",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ForwardedRef<HTMLInputElement> | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Ekstra styling",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/SimpleTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "\"medium\""
+        },
+        "description": "Størrelsen på skjemaelementet",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"large\" | \"medium\" | undefined"
+        }
+      },
+      "labelTooltipButtonAriaLabel": {
+        "defaultValue": null,
+        "description": "Forklarende tekst for knappen som åpner labelTooltip",
+        "name": "labelTooltipButtonAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelTooltipPlacement": {
+        "defaultValue": null,
+        "description": "",
+        "name": "labelTooltipPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement | undefined"
+        }
+      },
+      "required": {
+        "defaultValue": null,
+        "description": "Illustrerer om inputfeltet er påkrevd eller ikke",
+        "name": "required",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelId": {
+        "defaultValue": null,
+        "description": "ID som settes på labelen til inputfeltet",
+        "name": "labelId",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "isFilled": {
+        "defaultValue": null,
+        "description": "Om inputfeltet er fylt med data. Brukes for plassering av label",
+        "name": "isFilled",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelProps": {
+        "defaultValue": null,
+        "description": "Ekstra props som sendes til label",
+        "name": "labelProps",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": null,
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Setter feedbackText sin rolle til \"alert\"",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
+        }
+      },
+      "ariaAlertOnFeedback": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ariaAlertOnFeedback",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

@@ -1,7 +1,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
-module.exports = {
+const config = {
   siteMetadata: {
     title: `Entur designsystem`,
     url: `https://design.entur.no/`,
@@ -61,3 +61,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;

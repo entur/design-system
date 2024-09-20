@@ -1,0 +1,59 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TravelLeg",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelLeg.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "transport": {
+        "defaultValue": null,
+        "description": "Hviklen type reise som skal vises riktig farge og linjetype",
+        "name": "transport",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelLeg.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "Transport"
+        }
+      },
+      "direction": {
+        "defaultValue": null,
+        "description": "Retningen på komponenten",
+        "name": "direction",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelLeg.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      }
+    }
+  }
+]

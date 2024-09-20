@@ -1,0 +1,93 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ToastProvider",
+    "methods": [],
+    "props": {
+      "delay": {
+        "defaultValue": {
+          "value": 6000
+        },
+        "description": "Antall millisekunder før toasts forsvinner av seg selv",
+        "name": "delay",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "position": {
+        "defaultValue": {
+          "value": "bottom-right"
+        },
+        "description": "Plasseringen av toasts",
+        "name": "position",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"bottom-right\" | \"top-right\" | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn til ToastProvider-wrapperen",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Ekstra styling som sendes til ToastProvider-wrapperen",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ToastProvider.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

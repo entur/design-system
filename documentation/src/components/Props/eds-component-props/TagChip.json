@@ -1,0 +1,87 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TagChip",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Teksten som vises i TagChip",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/TagChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/TagChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Callback for når man klikker på krysset",
+        "name": "onClose",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/TagChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "closeButtonAriaLabel": {
+        "defaultValue": null,
+        "description": "Skjermlesertekst for X-knappen",
+        "name": "closeButtonAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/TagChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på chip",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/TagChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      }
+    }
+  }
+]

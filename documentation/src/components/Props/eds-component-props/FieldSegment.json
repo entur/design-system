@@ -1,0 +1,55 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FieldSegment",
+    "methods": [],
+    "props": {
+      "segment": {
+        "defaultValue": null,
+        "description": "",
+        "name": "segment",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/shared/FieldSegment.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "DateSegment"
+        }
+      },
+      "state": {
+        "defaultValue": null,
+        "description": "",
+        "name": "state",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/shared/FieldSegment.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "DateFieldState"
+        }
+      },
+      "aria-describedby": {
+        "defaultValue": null,
+        "description": "",
+        "name": "aria-describedby",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/shared/FieldSegment.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

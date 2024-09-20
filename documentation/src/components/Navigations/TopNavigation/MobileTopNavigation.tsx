@@ -30,7 +30,8 @@ export const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
       <Element
         as="header"
         className={classNames('ui-menu--mobile', {
-          'eds-contrast': location.pathname === '/',
+          'eds-contrast':
+            typeof window !== 'undefined' && window.location.pathname === '/',
         })}
       >
         <div className={classNames('mobile-topnav')}>

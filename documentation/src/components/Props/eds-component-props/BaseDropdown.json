@@ -1,0 +1,166 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseDropdownDeprecated",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "items": {
+        "defaultValue": null,
+        "description": "",
+        "name": "items",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "NormalizedDropdownItemDeprecatedType[]"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": {
+          "value": "Loading..."
+        },
+        "description": "",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placeholder",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "listStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "isFilled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "isFilled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/BaseDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

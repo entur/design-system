@@ -1,0 +1,61 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SkeletonWrapper",
+    "methods": [],
+    "props": {
+      "loadingAriaLabel": {
+        "defaultValue": {
+          "value": "Laster inn innhold …"
+        },
+        "description": "Meldig som leses opp for skjemleser",
+        "name": "loadingAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/SkeletonWrapper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/SkeletonWrapper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Skeletonkomponentene som skal vises",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/SkeletonWrapper.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

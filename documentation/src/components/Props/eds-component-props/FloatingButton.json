@@ -1,0 +1,107 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FloatingButton",
+    "methods": [],
+    "props": {
+      "aria-label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst for skjermlesere\nDefines a string value that labels the current element.\n@see aria-labelledby.",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/FloatingButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Ikon eller ikon-og-tekst",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/FloatingButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/FloatingButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Callback når knappen klikkes",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/FloatingButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e: MouseEvent<HTMLButtonElement, MouseEvent>) => void) & MouseEventHandler<HTMLButtonElement>"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelse på knappen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/FloatingButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"small\" | undefined"
+        }
+      }
+    }
+  }
+]
