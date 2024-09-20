@@ -1,0 +1,121 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SegmentedControl",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "Navn på input-elementene",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "En eller flere SegmentedChoice-komponenter",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "selectedValue": {
+        "defaultValue": null,
+        "description": "Den valgte verdien",
+        "name": "selectedValue",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "SelectedValue"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Callback for når det gjøres et valg",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(value: SelectedValue) => void"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på SegmentedChoice-komponentene",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"large\" | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

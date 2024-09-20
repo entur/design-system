@@ -1,0 +1,355 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SmallExpandableAlertBox",
+    "methods": [],
+    "props": {
+      "variant": {
+        "defaultValue": null,
+        "description": "Farge og uttrykk på alert-boksen",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "VariantType | \"info\" | \"error\""
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen til ExpandableAlertBox\nTittel på boksen - oppsummer virkning",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((boolean | ReactChild | ReactFragment | ReactPortal | null) & string) | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innhold som vises ved ekspandering\nInnholdet i alert-boksen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "openLabel": {
+        "defaultValue": {
+          "value": "Les mer"
+        },
+        "description": "Tekst som vises på ekspanderingsknappen før åpning",
+        "name": "openLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeLabel": {
+        "defaultValue": {
+          "value": "Lukk"
+        },
+        "description": "Tekst som vises på ekspanderingsknappen når den er åpnet",
+        "name": "closeLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeButtonLabel": {
+        "defaultValue": null,
+        "description": "Skjermleser-label for lukkeknappen, om den vises",
+        "name": "closeButtonLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closable": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om denne er true, vil boksen få en lukkeknapp i høyre hjørne",
+        "name": "closable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Callback som kalles når man lukker boksen",
+        "name": "onClose",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "width": {
+        "defaultValue": null,
+        "description": "Bredden på boksen - fullbredde eller tilpasset innholdet",
+        "name": "width",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/SmallAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"fluid\" | \"fit-content\" | undefined"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BannerExpandableAlertBox",
+    "methods": [],
+    "props": {
+      "variant": {
+        "defaultValue": null,
+        "description": "Farge og uttrykk på alert-boksen",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "VariantType | \"info\" | \"error\""
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen til ExpandableAlertBox\nTittel på boksen - oppsummer virkning",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((boolean | ReactChild | ReactFragment | ReactPortal | null) & string) | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innhold som vises ved ekspandering\nInnholdet i alert-boksen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "openLabel": {
+        "defaultValue": {
+          "value": "Les mer"
+        },
+        "description": "Tekst som vises på ekspanderingsknappen før åpning",
+        "name": "openLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeLabel": {
+        "defaultValue": {
+          "value": "Lukk"
+        },
+        "description": "Tekst som vises på ekspanderingsknappen når den er åpnet",
+        "name": "closeLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/ExpandableAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeButtonLabel": {
+        "defaultValue": null,
+        "description": "Skjermleser-label for lukkeknappen, om den vises",
+        "name": "closeButtonLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "Callback som kalles når man lukker boksen",
+        "name": "onClose",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "closable": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om denne er true, vil boksen få en lukkeknapp i høyre hjørne",
+        "name": "closable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/BannerAlertBox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

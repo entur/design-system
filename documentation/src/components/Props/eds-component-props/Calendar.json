@@ -1,0 +1,230 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Calendar",
+    "methods": [],
+    "props": {
+      "selectedDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectedDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "DateValue | null"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(SelectedDate: MappedDateValue<DateType> | null) => void | Dispatch<SetStateAction<DateType | null>>"
+        }
+      },
+      "navigationDescription": {
+        "defaultValue": null,
+        "description": "",
+        "name": "navigationDescription",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onSelectedCellClick": {
+        "defaultValue": {
+          "value": "() => {\n    return;\n  }"
+        },
+        "description": "",
+        "name": "onSelectedCellClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "minDate": {
+        "defaultValue": null,
+        "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig fra og med den tiden som legges inn som minDate.\nDato uten tid vil være gyldig hele minDate-dagen",
+        "name": "minDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DateValue | undefined"
+        }
+      },
+      "maxDate": {
+        "defaultValue": null,
+        "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig til og med den tiden som legges inn som maxDate.\nDato uten tid vil være gyldig hele maxDate-dagen",
+        "name": "maxDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DateValue | undefined"
+        }
+      },
+      "showWeekNumbers": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen\nkan endres med prop-en 'weekNumberHeader'",
+        "name": "showWeekNumbers",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "weekNumberHeader": {
+        "defaultValue": {
+          "value": "uke"
+        },
+        "description": "Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.",
+        "name": "weekNumberHeader",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "classNameForDate": {
+        "defaultValue": {
+          "value": "undefined"
+        },
+        "description": "Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.\nTar inn en dato og skal returnere klassenavnet som skal legges til den datoen.\n@example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''\n\nOBS: hvis stylingen er meningsbærende bør du bruke ariaLabelForDate i tillegg for å beskrive\nmeningen til skjermlesere o.l.",
+        "name": "classNameForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      },
+      "ariaLabelForDate": {
+        "defaultValue": {
+          "value": "undefined"
+        },
+        "description": "Legger til teksten som returneres på datoen i kalenderen sin aria-label.\nBør brukes sammen med classNameForDate hvis styling-endringene gjort der er meningsbærende.\n@example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''",
+        "name": "ariaLabelForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "calendarRef": {
+        "defaultValue": null,
+        "description": "",
+        "name": "calendarRef",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MutableRefObject<HTMLDivElement | null> | undefined"
+        }
+      }
+    }
+  }
+]

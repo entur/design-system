@@ -1,0 +1,117 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CalendarGrid",
+    "methods": [],
+    "props": {
+      "state": {
+        "defaultValue": null,
+        "description": "",
+        "name": "state",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "CalendarState"
+        }
+      },
+      "navigationDescription": {
+        "defaultValue": null,
+        "description": "",
+        "name": "navigationDescription",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "showWeekNumbers": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showWeekNumbers",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "weekNumberHeader": {
+        "defaultValue": null,
+        "description": "",
+        "name": "weekNumberHeader",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onSelectedCellClick": {
+        "defaultValue": {
+          "value": "() => {\n    return;\n  }"
+        },
+        "description": "",
+        "name": "onSelectedCellClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "classNameForDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "classNameForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      },
+      "ariaLabelForDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ariaLabelForDate",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/CalendarGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((date: CalendarDate) => string) | undefined"
+        }
+      }
+    }
+  }
+]

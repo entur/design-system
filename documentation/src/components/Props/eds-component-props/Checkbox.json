@@ -1,0 +1,139 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Checkbox",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label for checkboxen, som vises ved høyre side.",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "checked": {
+        "defaultValue": null,
+        "description": "Om Checkbox er avmerket, eller om den er i en indeterminate state",
+        "name": "checked",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"indeterminate\" | undefined"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Callback for Checkbox",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(((e: ChangeEvent<HTMLInputElement>) => void) & ChangeEventHandler<HTMLInputElement>) | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om checkboxen er disabled eller ikke",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Ekstra styling til komponenten",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "reduceClickArea": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Reduserer klikkflaten for Checkbox'en",
+        "name": "reduceClickArea",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

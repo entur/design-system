@@ -1,0 +1,101 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ChoiceChip",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til ChoiceChip",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på chip",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om Choicechip er deaktivert eller ikke",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label til ChoiceChip",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

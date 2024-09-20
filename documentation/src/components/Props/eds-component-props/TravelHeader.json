@@ -1,0 +1,104 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TravelHeader",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "'div'"
+        },
+        "description": "HTML-elementet eller React-komponenten som lager elementet",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | ComponentClass<any, any> | FunctionComponent<any> | undefined"
+        }
+      },
+      "from": {
+        "defaultValue": null,
+        "description": "Destinasjonen man reiser fra",
+        "name": "from",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "to": {
+        "defaultValue": null,
+        "description": "Destinasjonen man reiser til",
+        "name": "to",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "large"
+        },
+        "description": "Størrelsen på komponenten",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"large\" | \"medium\" | undefined"
+        }
+      },
+      "noWrap": {
+        "defaultValue": null,
+        "description": "Plassere til og fra på samme linje",
+        "name": "noWrap",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelHeader.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

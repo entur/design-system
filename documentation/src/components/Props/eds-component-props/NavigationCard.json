@@ -1,0 +1,125 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "NavigationCard",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "'a'"
+        },
+        "description": "HTML-elementet eller React-komponenten som lager NavigationCard\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen/teksten som står i CardBox",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "titleIcon": {
+        "defaultValue": null,
+        "description": "Valgfritt ikon som står over tittelen",
+        "name": "titleIcon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "compact": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Lager en mer kompakt NavigationCard, uten ikon og beskrivende tekst",
+        "name": "compact",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Beskrivelse under tittel, om ikke \"compact\" er valgt",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "externalLink": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Legger til et ikon for å symbolisere at kortet har en ekstern lenke",
+        "name": "externalLink",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/NavigationCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

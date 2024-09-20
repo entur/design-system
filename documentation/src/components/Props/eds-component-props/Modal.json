@@ -1,0 +1,155 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Modal",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i modalen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "closeLabel": {
+        "defaultValue": {
+          "value": "Lukk"
+        },
+        "description": "Skjermleser-label til lukk-knappen",
+        "name": "closeLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "initialFocusRef": {
+        "defaultValue": null,
+        "description": "En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen",
+        "name": "initialFocusRef",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RefObject<HTMLElement> | undefined"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "Flagg som sier om modalen er åpen",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onDismiss": {
+        "defaultValue": null,
+        "description": "Callback som kalles når brukeren ber om å lukke modalen",
+        "name": "onDismiss",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "Størrelsen på modalen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"extraSmall\" | \"small\" | \"medium\" | \"large\" | \"extraLarge\""
+        }
+      },
+      "align": {
+        "defaultValue": {
+          "value": "start"
+        },
+        "description": "Hvordan innholdet skal plasseres i modalen",
+        "name": "align",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"start\" | \"center\" | \"end\" | undefined"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittelen som vises i modalen",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "closeOnClickOutside": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Om modalen skal lukkes når man klikker på utsiden av den",
+        "name": "closeOnClickOutside",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Modal.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

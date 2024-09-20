@@ -1,0 +1,139 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TravelSwitch",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "checked": {
+        "defaultValue": null,
+        "description": "Om switch-en er checked eller ikke",
+        "name": "checked",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label for TravelSwitch-en.",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "labelPlacement": {
+        "defaultValue": {
+          "value": "right"
+        },
+        "description": "Posisjonen til label for TravelSwitch-en.",
+        "name": "labelPlacement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"right\" | \"bottom\" | undefined"
+        }
+      },
+      "transport": {
+        "defaultValue": null,
+        "description": "Hvilken type reise som skal vises ikon og farge for",
+        "name": "transport",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "Transport"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "Callback for når verdien endres",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(((e: ChangeEvent<HTMLInputElement>) => void) & ChangeEventHandler<HTMLInputElement>) | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "\"medium\""
+        },
+        "description": "Størrelsen på Switch-en",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/TravelSwitch.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"medium\" | \"large\" | undefined"
+        }
+      }
+    }
+  }
+]

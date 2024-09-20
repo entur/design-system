@@ -1,0 +1,157 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Drawer",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet. Typisk tekst, lenker eller knapper",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeLabel": {
+        "defaultValue": {
+          "value": "Lukk skuff"
+        },
+        "description": "Tekst som beskriver lukkeknappen for skjermlesere",
+        "name": "closeLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "contrast": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om draweren skal vises i mørk variant",
+        "name": "contrast",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onDismiss": {
+        "defaultValue": null,
+        "description": "Callback som kalles når brukeren ønsker å lukke draweren",
+        "name": "onDismiss",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "open": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Om draweren er åpen eller ikke",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Tittel på toppen av draweren",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Styling som sendes til Drawer",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "overlay": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Legger på et overlay over resten av siden",
+        "name": "overlay",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/Drawer.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CopyableText",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tekstinnhold som vises og kopieres",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "textToCopy": {
+        "defaultValue": null,
+        "description": "Hvis du ønsker å kopiere noe annet enn\ninnholdet i children kan du legge det inn her",
+        "name": "textToCopy",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "successHeading": {
+        "defaultValue": {
+          "value": "Kopiert!"
+        },
+        "description": "Overskrift i toast-varselet",
+        "name": "successHeading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "successMessage": {
+        "defaultValue": {
+          "value": "`${textToCopy} ble kopiert til utklippstavlen.`"
+        },
+        "description": "Bekreftelsesmelding i toast-varselet",
+        "name": "successMessage",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/alert/src/CopyableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

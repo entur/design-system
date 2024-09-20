@@ -1,0 +1,44 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandRowButton",
+    "methods": [],
+    "props": {
+      "open": {
+        "defaultValue": null,
+        "description": "",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/ExpandRowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/ExpandRowButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e: MouseEvent<Element, MouseEvent>) => void) & MouseEventHandler<HTMLButtonElement>"
+        }
+      }
+    }
+  }
+]

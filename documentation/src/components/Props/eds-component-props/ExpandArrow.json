@@ -1,0 +1,42 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandArrow",
+    "methods": [],
+    "props": {
+      "open": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om innholdet er åpent eller ikke, som bestemmer retningen på pila",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandArrow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandArrow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

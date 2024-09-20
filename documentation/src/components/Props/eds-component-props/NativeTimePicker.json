@@ -1,0 +1,89 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "NativeTimePicker",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label over NativeTimePicker",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme under NativeTimePicker",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som kommer før inputfelter",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/NativeTimePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,121 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SideNavigationGroup",
+    "methods": [],
+    "props": {
+      "defaultOpen": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Skal menygruppen være ekspandert by default? Kun relevant om komponenten ikke er kontrollert",
+        "name": "defaultOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "Er menyen åpen?",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onToggle": {
+        "defaultValue": null,
+        "description": "Kalles når menygruppen åpnes eller lukkes",
+        "name": "onToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e?: boolean | undefined) => void) | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Menyen som skal grupperes",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "Overskriften til menyen",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "icon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "icon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigationGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

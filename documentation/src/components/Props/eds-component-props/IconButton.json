@@ -1,0 +1,142 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "IconButton",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Ikonet som du vil ha inne i knappen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "aria-label": {
+        "defaultValue": null,
+        "description": "Tekst som forklarer knappens handling. MÅ være satt hvis du ikke har en forklarende tooltip på knappen",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Deaktivering av knappen",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "'button'"
+        },
+        "description": "HTML-elementet eller React-komponenten som lager knappen\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | ... 177 more ... | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på knappen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om knappen er opptatt, f.eks. med å lagre eller å kjøpe",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/button/src/IconButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      }
+    }
+  }
+]

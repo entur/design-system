@@ -10,11 +10,14 @@
     "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
+    "prebuild": "yarn generate-props",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts"
+    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts",
+    "generate-props": "tsx src/components/Props/generate-props.ts"
   },
   "dependencies": {
+    "@artsy/fresnel": "^1.9.0",
     "@entur/a11y": "^0.2.76",
     "@entur/alert": "^0.15.21",
     "@entur/button": "^3.2.11",
@@ -45,23 +48,25 @@
     "gatsby-plugin-sass": "^6.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
     "gatsby-plugin-sitemap": "^6.13.1",
+    "gatsby-remark-autolink-headers": "6.13.1",
     "gatsby-remark-images": "^7.13.1",
     "gatsby-source-filesystem": "^5.13.1",
-    "gatsby-transformer-sharp": "^5.13.1",
+    "gatsby-transformer-json": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.1",
-    "gatsby-remark-autolink-headers": "6.13.1",
+    "gatsby-transformer-sharp": "^5.13.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.72.0",
     "react-confetti": "^6.1.0",
-    "@artsy/fresnel": "^1.9.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.72.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.28",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "dts-cli": "2.0.3",
+    "react-docgen-typescript": "^2.2.2",
     "typescript": "^5.5.4",
-    "dts-cli": "2.0.3"
+    "tsx": "^4.19.1"
   },
   "overrides": {
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {

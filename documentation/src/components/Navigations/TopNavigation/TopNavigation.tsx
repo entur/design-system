@@ -20,7 +20,8 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
   return (
     <nav
       className={classNames('top-navigation', {
-        'eds-contrast': location.pathname === '/',
+        'eds-contrast':
+          typeof window !== 'undefined' && window.location.pathname === '/',
         'top-navigation--frontpage': frontPage,
       })}
       aria-label="Navigasjon, hovedseksjoner"

@@ -1,0 +1,59 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Fieldset",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i felt-gruppen.",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Fieldset.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Fieldset.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Labelen til felt-gruppen.",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Fieldset.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

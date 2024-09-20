@@ -1,0 +1,85 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TimePickerArrowButton",
+    "methods": [],
+    "props": {
+      "direction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "direction",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"left\" | \"right\""
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "aria-label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "onFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onFocus",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      }
+    }
+  }
+]

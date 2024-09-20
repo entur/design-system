@@ -1,0 +1,50 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "LoadingDots",
+    "methods": [],
+    "props": {
+      "color": {
+        "defaultValue": {
+          "value": "blue"
+        },
+        "description": "Valg av farge (brand-blue eller brand-white)",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/LoadingDots.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"blue\" | \"white\" | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/loader/src/LoadingDots.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]
