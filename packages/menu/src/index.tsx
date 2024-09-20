@@ -13,11 +13,11 @@ warnAboutMissingStyles(
 
 export * from './BreadcrumbNavigation';
 export * from './BreadcrumbItem';
+export * from './CollapsibleSideNavigation';
+export * from './OverflowMenu';
+export * from './Pagination';
 export * from './SideNavigation';
 export * from './SideNavigationItem';
 export * from './SideNavigationGroup';
-export * from './TopNavigationItem';
-export * from './Pagination';
 export * from './Stepper';
-export * from './OverflowMenu';
-export * from './CollapsibleSideNavigation';
+export * from './TopNavigationItem';

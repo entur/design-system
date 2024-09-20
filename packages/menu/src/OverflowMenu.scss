@@ -1,87 +1,48 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-overflow-menu {
+  &__menu-list {
+    box-shadow: t.$shadows-box-shadow;
+    overflow: hidden;
+    border-radius: t.$border-radiuses-medium;
+    border: t.$border-widths-small solid var(--components-menu-overflowmenu-border);
+    z-index: t.$z-indexes-popover;
+
+    &.eds-contrast {
+      box-shadow: t.$shadows-box-shadow-contrast;
+    }
+  }
+
   &__item {
-    appearance: none;
-    border: none;
-    font-size: t.$font-sizes-large;
-    font-family: inherit;
-    color: var(--components-menu-overflowmenu-text);
-    background: var(--components-menu-overflowmenu-fill-default);
     display: block;
-    cursor: pointer;
     width: 100%;
+    appearance: none;
+    padding: t.$space-small;
+    border: none;
+    outline: none;
+    font-size: t.$font-sizes-large;
     line-height: t.$line-heights-large;
     text-align: left;
-    padding: t.$space-small;
-    opacity: 1;
+    text-decoration: none;
+    color: var(--components-menu-overflowmenu-text);
+    background: var(--components-menu-overflowmenu-fill-default);
+    cursor: pointer;
 
-    &.eds-overflow-menu__item--disabled {
-      background: var(--components-menu-overflowmenu-fill-default);
-      color: var(--components-menu-overflowmenu-text-disabled);
-
-      .eds-contrast & {
-        background: var(--components-menu-overflowmenu-fill-default);
-        color: var(--components-menu-overflowmenu-text-disabled);
-      }
-
-      &:hover {
-        cursor: not-allowed;
-        background: var(--components-menu-overflowmenu-fill-default);
-        color: var(--components-menu-overflowmenu-text-disabled);
-      }
-    }
-
-    .eds-icon {
-      margin-right: t.$space-small;
-    }
-
-    &:hover,
-    &:focus,
-    &[data-selected] {
+    &--highlighted {
       background: var(--components-menu-overflowmenu-fill-hover);
     }
-    &:focus {
-      outline: none;
+    &:active {
+      background: var(--components-menu-overflowmenu-fill-active);
+      color: var(--components-menu-overflowmenu-text-active);
     }
-  }
-}
+    &--disabled {
+      background: var(--components-menu-overflowmenu-fill-default);
+      color: var(--components-menu-overflowmenu-text-disabled);
+      cursor: not-allowed;
+    }
 
-.eds-overflow-menu__menu-list[data-reach-menu-list] {
-  box-shadow: t.$shadows-box-shadow;
-  overflow: hidden;
-  border-radius: t.$border-radiuses-medium;
-  border: 1px solid var(--components-menu-overflowmenu-border);
-
-  &:focus {
-    outline: none;
-  }
-  &.eds-contrast {
-    box-shadow: t.$shadows-box-shadow-contrast;
-  }
-}
-.eds-overflow-menu__menu-list[data-reach-menu-list],
-.eds-overflow-menu__menu-list[data-reach-menu-items] {
-  animation: slide-in t.$timings-medium ease-in-out;
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateY(t.$space-extra-small);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-[data-reach-menu-popover] {
-  position: absolute;
-  z-index: t.$z-indexes-overlay;
-  .eds-overflow-menu__menu-list {
-    &--left {
-      position: relative;
-      right: calc(100% - 2rem); // List width - IconButton width
+    svg {
+      margin-right: t.$space-small;
     }
   }
 }

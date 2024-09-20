@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 export const useOnClickOutside = (
-  refs: React.RefObject<HTMLElement>[],
+  refs: (React.RefObject<HTMLElement> | React.MutableRefObject<any>)[],
   handler: () => void,
 ) => {
   useEffect(() => {

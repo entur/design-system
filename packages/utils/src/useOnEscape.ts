@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 export const useOnEscape = (
-  ref: React.RefObject<HTMLElement>,
+  ref: React.RefObject<any> | React.MutableRefObject<any>,
   handler: () => void,
 ) => {
   useEffect(() => {
