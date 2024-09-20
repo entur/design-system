@@ -1,0 +1,91 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "StatusBadge",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"span\""
+        },
+        "description": "Elementet som wrapper badgen\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/StatusBadge.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | ... 177 more ... | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/StatusBadge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Elementet som badge vil legges relativt til",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/StatusBadge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Hvilken type badge man vil ha",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/StatusBadge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"primary\" | \"neutral\" | VariantType | \"danger\" | \"info\""
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      }
+    }
+  }
+]

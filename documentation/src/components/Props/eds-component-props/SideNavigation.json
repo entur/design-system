@@ -1,0 +1,49 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SideNavigation",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelse på menyen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      }
+    }
+  },
+  {
+    "tags": {},
+    "description": "This is required to check that the Menu",
+    "displayName": "SideNavigation.___IS_ENTUR_MENU__",
+    "methods": [],
+    "props": {}
+  }
+]

@@ -1,0 +1,89 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ModalOverlay",
+    "methods": [],
+    "props": {
+      "open": {
+        "defaultValue": null,
+        "description": "Flagg som sier om modalen er åpen",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalOverlay.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onDismiss": {
+        "defaultValue": null,
+        "description": "Callback som kalles når brukeren ber om å lukke modalen",
+        "name": "onDismiss",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalOverlay.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet i modalen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalOverlay.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalOverlay.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "initialFocusRef": {
+        "defaultValue": null,
+        "description": "En ref til elementet som skal være fokusert når modalen åpnes. Defaulter til lukkeknappen",
+        "name": "initialFocusRef",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/modal/src/ModalOverlay.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RefObject<HTMLElement> | undefined"
+        }
+      }
+    }
+  }
+]

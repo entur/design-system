@@ -1,0 +1,80 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FilterChip",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/FilterChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Label til FilterChip",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/FilterChip.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til FilterChip",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/FilterChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "medium"
+        },
+        "description": "Størrelsen på chip",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/FilterChip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      }
+    }
+  }
+]

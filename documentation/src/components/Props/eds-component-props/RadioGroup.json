@@ -1,0 +1,89 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "RadioGroup",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "Navnet til radiogruppen.",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Overskrift over radiogruppen",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til den valgte radioknappen",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string | null"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Radioknappene sendes inn som children",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "En callback som blir kalles hver gang en radioknapp klikkes på",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(e: ChangeEvent<HTMLInputElement>) => void"
+        }
+      }
+    }
+  }
+]

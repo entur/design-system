@@ -1,0 +1,44 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "DropdownDeprecatedLoadingDots",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownLoadingDots.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tekst for skjermlesere",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DropdownLoadingDots.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string & ReactNode"
+        }
+      }
+    }
+  }
+]

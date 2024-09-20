@@ -1,0 +1,125 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CollapsibleSideNavigation",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "size": {
+        "defaultValue": {
+          "value": "'medium'"
+        },
+        "description": "Størrelse på menyen",
+        "name": "size",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/SideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | undefined"
+        }
+      },
+      "collapsed": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Tilstand til menyen",
+        "name": "collapsed",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onCollapseToggle": {
+        "defaultValue": null,
+        "description": "Kalles når menyen åpnes eller lukkes",
+        "name": "onCollapseToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e: any) => void) | undefined"
+        }
+      },
+      "collapsibleButtonPosition": {
+        "defaultValue": {
+          "value": "50%"
+        },
+        "description": "Posisjonen til Collapsible-knappen, målt fra toppen (som CSS-enhet)",
+        "name": "collapsibleButtonPosition",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "openSideMenuAriaLabel": {
+        "defaultValue": {
+          "value": "Åpne sidemeny"
+        },
+        "description": "Aria-label for knappen som åpner menyen",
+        "name": "openSideMenuAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "closeSideMenuAriaLabel": {
+        "defaultValue": {
+          "value": "Lukk sidemeny"
+        },
+        "description": "Aria-label for knappen som lukker menyen",
+        "name": "closeSideMenuAriaLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/CollapsibleSideNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,302 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Pagination",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "currentPage": {
+        "defaultValue": null,
+        "description": "Sidenummeret som er aktivt nå (1-indeksert)",
+        "name": "currentPage",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onPageChange": {
+        "defaultValue": null,
+        "description": "Callback for når man ønsker å gå til en ny side",
+        "name": "onPageChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(requestedPage: number) => void"
+        }
+      },
+      "pageCount": {
+        "defaultValue": null,
+        "description": "Antall sider totalt",
+        "name": "pageCount",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "previousPageLabel": {
+        "defaultValue": {
+          "value": "Gå til forrige side"
+        },
+        "description": "Hva som blir lest opp når brukere av skjermlesere navigerer til \"forrige side knappen\"",
+        "name": "previousPageLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "nextPageLabel": {
+        "defaultValue": {
+          "value": "Gå til neste side"
+        },
+        "description": "Hva som blir lest opp når brukere av skjermlesere navigerer til \"neste side knappen\"",
+        "name": "nextPageLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "pageLabel": {
+        "defaultValue": {
+          "value": "pageNumber => `Gå til side ${pageNumber}`"
+        },
+        "description": "Hva som blir lest opp når brukere av skjermlesere navigerer til \"forrige side knappen\"",
+        "name": "pageLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((pageNumber: number) => string) | undefined"
+        }
+      },
+      "currentPageLabelForScreenreader": {
+        "defaultValue": {
+          "value": "Nåværende side:"
+        },
+        "description": "",
+        "name": "currentPageLabelForScreenreader",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "showInput": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Vis et felt til høyre for pagineringen hvor man kan angi siden man\nønsker å vise i et tekstfelt.",
+        "name": "showInput",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "inputLabel": {
+        "defaultValue": {
+          "value": "\"Gå til side\""
+        },
+        "description": "Label som vises til venstre for input-feltet som vises om `showInput` er true",
+        "name": "inputLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "numberOfResults": {
+        "defaultValue": null,
+        "description": "Hvor mange resultater man har totalt",
+        "name": "numberOfResults",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "resultsPerPage": {
+        "defaultValue": null,
+        "description": "Hvor mange resultater som vises per side",
+        "name": "resultsPerPage",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "resultsPerPageOptions": {
+        "defaultValue": {
+          "value": "[10, 25, 50]"
+        },
+        "description": "",
+        "name": "resultsPerPageOptions",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number[] | undefined"
+        }
+      },
+      "onResultsPerPageChange": {
+        "defaultValue": null,
+        "description": "Callback for når resultater per side oppdateres",
+        "name": "onResultsPerPageChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((e: number) => void) | undefined"
+        }
+      },
+      "hideNextButton": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Brukes for å skjule \"neste side\"-knappen",
+        "name": "hideNextButton",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "hidePrevButton": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Brukes for å skjule \"forrige side\"-knappen",
+        "name": "hidePrevButton",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "showingResultsLabel": {
+        "defaultValue": {
+          "value": "(minPage, maxPage, pageCount) =>\n    `Viser resultat ${minPage}–${maxPage} av ${pageCount}`"
+        },
+        "description": "Teksten som vises for hvilke resultater av sideantallet man viser.",
+        "name": "showingResultsLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((minPage: number, maxPage: number, pageCount: number) => string) | undefined"
+        }
+      },
+      "showNumberOfResultsLabel": {
+        "defaultValue": {
+          "value": "Vis"
+        },
+        "description": "Teksten som vises før \"resultsPerPage\"-velgeren",
+        "name": "showNumberOfResultsLabel",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Pagination.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

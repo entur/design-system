@@ -1,0 +1,78 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TopNavigationItem",
+    "methods": [],
+    "props": {
+      "active": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om komponenten vises som valgt eller ikke",
+        "name": "active",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tekste som vises",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "'a'"
+        },
+        "description": "HTML-elementet eller React-komponenten som lager komponenten\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"symbol\" & ElementType<any>) | (\"object\" & ElementType<any>) | (\"a\" & ElementType<any>) | (\"abbr\" & ElementType<any>) | ... 176 more ... | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/TopNavigationItem.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

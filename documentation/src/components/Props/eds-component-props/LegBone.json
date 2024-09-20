@@ -1,0 +1,163 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "LegBone",
+    "methods": [],
+    "props": {
+      "direction": {
+        "defaultValue": null,
+        "description": "Retning på komponenten",
+        "name": "direction",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      },
+      "pattern": {
+        "defaultValue": null,
+        "description": "Hvilke linjemønster som skal brukes",
+        "name": "pattern",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"line\" | \"dashed\" | \"dotted\" | \"wave\""
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "Farge på linja",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "startColor": {
+        "defaultValue": {
+          "value": "Verdien til color"
+        },
+        "description": "Farge på startpunktet",
+        "name": "startColor",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "endColor": {
+        "defaultValue": {
+          "value": "Verdien til color"
+        },
+        "description": "Farge på endepunktet",
+        "name": "endColor",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "showStart": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Vis startpunkt",
+        "name": "showStart",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "showLine": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Vis linke",
+        "name": "showLine",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "showStop": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Vis endepunkt",
+        "name": "showStop",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegBone.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

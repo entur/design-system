@@ -1,0 +1,181 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "RegularDropdownDeprecated",
+    "methods": [],
+    "props": {
+      "items": {
+        "defaultValue": null,
+        "description": "",
+        "name": "items",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "NormalizedDropdownItemDeprecatedType[]"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "placeholder": {
+        "defaultValue": {
+          "value": "Vennligst velg"
+        },
+        "description": "",
+        "name": "placeholder",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "loading": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "selectOnTab": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "selectOnTab",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "openOnFocus": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "openOnFocus",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "listStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "clearable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "clearable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/RegularDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

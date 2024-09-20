@@ -1,0 +1,76 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "FeedbackText",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Teksten som vises",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "hideIcon": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Skjuler ikonet",
+        "name": "hideIcon",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Feedbackvarianten",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\""
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/FeedbackText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

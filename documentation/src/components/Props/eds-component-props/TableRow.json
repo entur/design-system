@@ -1,0 +1,99 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "TableRow",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableRow.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "hover": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Hvis satt, så vil tabellraden endre fargen ved hover",
+        "name": "hover",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableRow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "active": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om raden er klikkbar, så vil raden endre farge, og musepekeren vil symbolisere interaktivitet",
+        "name": "active",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableRow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "error": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Signalisere om at det er en feil i tabellraden",
+        "name": "error",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableRow.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Tabellceller",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/TableRow.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]
