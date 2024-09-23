@@ -20,5 +20,9 @@
       outline: transparent;
       border-radius: t.$border-radiuses-default;
     }
+    // Targets the year-stepper
+    &[aria-valuemax='9999'] {
+      min-width: 4ch;
+    }
   }
 }
