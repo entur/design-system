@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.4...@entur/datepicker@10.0.5) (2024-09-23)
+
+### Bug Fixes
+
+- **datepicker:** incorrect width for datepicker when feedback text is longer than input field ([5ce28bb](https://bitbucket.org/enturas/design-system/commits/5ce28bbc512c25b109d56d6fe9f129d9911d8358))
+
 ## [10.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.3...@entur/datepicker@10.0.4) (2024-09-19)
 
 **Note:** Version bump only for package @entur/datepicker
