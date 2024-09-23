@@ -32,7 +32,8 @@
   --components-form-baseform-standard-text-disabled: #{$text-neutral};
   --components-form-basemenu-border: #{$stroke-subdued};
   --components-form-basemenu-fill-default: #{$fill-background-tint-neutral};
-  --components-form-basemenu-fill-hover: #{$fill-background-subdued-light};
+  --components-form-basemenu-fill-hover: #{$fill-secondary-hover-light};
+  --components-form-basemenu-fill-selected: #{$fill-secondary-active-light};
   --components-form-basemenu-icon: #{$shape-accent};
   --components-form-basemenu-icon-disabled: #{$shape-neutral};
   --components-form-basemenu-text: #{$text-accent};
@@ -185,6 +186,7 @@
   --components-form-basemenu-border: #{$stroke-colorless};
   --components-form-basemenu-fill-default: #{$fill-background-overlay-solidalt};
   --components-form-basemenu-fill-hover: #{$fill-secondary-hover-contrast};
+  --components-form-basemenu-fill-selected: #{$fill-secondary-active-contrast};
   --components-form-basemenu-icon: #{$shape-lightalt};
   --components-form-basemenu-icon-disabled: #{$shape-neutralalt2};
   --components-form-basemenu-text: #{$text-lightalt};

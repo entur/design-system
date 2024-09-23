@@ -1840,9 +1840,15 @@
           },
           {
             "name": "Components/form/Base menu/Fill-Hover",
-            "value": "#d9dae8",
-            "var": "Fill/Background/Subdued/Light",
-            "rootAlias": "Blue/30"
+            "value": "#d9ddf2",
+            "var": "Fill/Secondary/Hover/Light",
+            "rootAlias": "Lavender/20"
+          },
+          {
+            "name": "Components/form/Base menu/Fill-Selected",
+            "value": "#aeb7e2",
+            "var": "Fill/Secondary/Active/Light",
+            "rootAlias": "Lavender/40"
           },
           {
             "name": "Components/form/Base menu/Icon",
@@ -2883,6 +2889,12 @@
             "rootAlias": "Blue/60"
           },
           {
+            "name": "Components/menu/Overflow Menu/Fill-Active",
+            "value": "#aeb7e2",
+            "var": "Fill/Secondary/Active/Light",
+            "rootAlias": "Lavender/40"
+          },
+          {
             "name": "Components/menu/Overflow Menu/Fill-Default",
             "value": "#f2f5f7",
             "var": "Fill/Background/Tint/Neutral",
@@ -2890,15 +2902,9 @@
           },
           {
             "name": "Components/menu/Overflow Menu/Fill-Hover",
-            "value": "#d9dae8",
-            "var": "Fill/Background/Subdued/Light",
-            "rootAlias": "Blue/30"
-          },
-          {
-            "name": "Components/menu/Overflow Menu/Fill-Selected",
-            "value": "#181c56",
-            "var": "Fill/Primary/Default/Light",
-            "rootAlias": "Lavender/90"
+            "value": "#d9ddf2",
+            "var": "Fill/Secondary/Hover/Light",
+            "rootAlias": "Lavender/20"
           },
           {
             "name": "Components/menu/Overflow Menu/Icon",
@@ -2923,12 +2929,6 @@
             "value": "#6e6f73",
             "var": "Text/Neutral",
             "rootAlias": "Grey/70"
-          },
-          {
-            "name": "Components/menu/Overflow Menu/Text-Selected",
-            "value": "#ffffff",
-            "var": "Text/Light",
-            "rootAlias": "White/Alpha-100"
           },
           {
             "name": "Components/menu/Pagination/Contrast/Active",
@@ -7753,6 +7753,12 @@
             "rootAlias": "Blue/70"
           },
           {
+            "name": "Components/form/Base menu/Fill-Selected",
+            "value": "#8794d4",
+            "var": "Fill/Secondary/Active/Contrast",
+            "rootAlias": "Lavender/50"
+          },
+          {
             "name": "Components/form/Base menu/Icon",
             "value": "#e5e5e9",
             "var": "Shape/LightAlt",
@@ -8791,6 +8797,12 @@
             "rootAlias": "White/Alpha-0"
           },
           {
+            "name": "Components/menu/Overflow Menu/Fill-Active",
+            "value": "#8794d4",
+            "var": "Fill/Secondary/Active/Contrast",
+            "rootAlias": "Lavender/50"
+          },
+          {
             "name": "Components/menu/Overflow Menu/Fill-Default",
             "value": "#464755",
             "var": "Fill/Background/Overlay/SolidAlt",
@@ -8801,12 +8813,6 @@
             "value": "#626493",
             "var": "Fill/Secondary/Hover/Contrast",
             "rootAlias": "Blue/70"
-          },
-          {
-            "name": "Components/menu/Overflow Menu/Fill-Selected",
-            "value": "#8794d4",
-            "var": "Fill/Primary/Active/Contrast",
-            "rootAlias": "Lavender/50"
           },
           {
             "name": "Components/menu/Overflow Menu/Icon",
@@ -8831,12 +8837,6 @@
             "value": "#949699",
             "var": "Text/NeutralAlt2",
             "rootAlias": "Grey/60"
-          },
-          {
-            "name": "Components/menu/Overflow Menu/Text-Selected",
-            "value": "#181c56",
-            "var": "Text/Accent",
-            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/menu/Pagination/Contrast/Active",
