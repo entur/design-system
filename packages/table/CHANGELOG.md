@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.19](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.18...@entur/table@4.8.19) (2024-09-23)
+
+**Note:** Version bump only for package @entur/table
+
 ## [4.8.18](https://bitbucket.org/enturas/design-system/compare/@entur/table@4.8.17...@entur/table@4.8.18) (2024-09-19)
 
 **Note:** Version bump only for package @entur/table

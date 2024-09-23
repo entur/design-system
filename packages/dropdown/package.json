@@ -1,6 +1,6 @@
 {
   "name": "@entur/dropdown",
-  "version": "6.0.4",
+  "version": "6.0.5",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/dropdown.esm.js",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@entur/a11y": "^0.2.90",
     "@entur/button": "^3.2.32",
-    "@entur/chip": "^0.7.19",
-    "@entur/form": "^8.1.1",
+    "@entur/chip": "^0.7.20",
+    "@entur/form": "^8.1.2",
     "@entur/icons": "^7.4.0",
     "@entur/loader": "^0.5.10",
     "@entur/tokens": "^3.17.0",
