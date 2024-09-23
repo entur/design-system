@@ -5,6 +5,7 @@
 
   .eds-form-control-wrapper {
     padding-inline: 1rem;
+    width: fit-content;
 
     &--disabled {
       &:focus-within {
