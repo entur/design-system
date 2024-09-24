@@ -1,8 +1,74 @@
 ---
 title: Chips
-route: "/komponenter/knapper/chips"
+route: /komponenter/knapper/chips
 parent: Komponenter
 menu: Knapper
 ---
 
-chips
+import { Playground } from '../../../components/Playground/Playground.tsx';
+import {
+  ActionChip,
+  ChoiceChip,
+  ChoiceChipGroup,
+  TagChip,
+  FilterChip,
+} from '@entur/chip';
+import { AddIcon } from '@entur/icons';
+import { Label } from '@entur/typography';
+
+<Playground
+  scope={{
+  ActionChip,
+  ChoiceChip,
+  ChoiceChipGroup,
+  TagChip,
+  FilterChip,
+  Label,
+  AddIcon,
+  }}
+  code={`() => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridGap: '1rem',
+        }}
+      >
+        <div>
+          <Label>ChoiceChips</Label>
+          <ChoiceChipGroup
+            name="city"
+            label="Velg setekategori"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          >
+            <ChoiceChip value="standard">Standard</ChoiceChip>
+            <ChoiceChip value="premium">Premium</ChoiceChip>
+            <ChoiceChip value="sove" disabled>
+              Sove (utsolgt)
+            </ChoiceChip>
+          </ChoiceChipGroup>
+        </div>
+        <div>
+          <Label>ActionChip</Label>
+          <div style={{ display: 'flex' }}>
+            <ActionChip style={{ marginRight: '1rem' }}>Lagre</ActionChip>
+            <ActionChip style={{ marginRight: '1rem' }}>
+              Legg til <AddIcon aria-hidden />
+            </ActionChip>
+          </div>
+        </div>
+        <div>
+          <Label>TagChip</Label>
+          <TagChip>Buss</TagChip>
+        </div>
+        <div>
+          <Label>FilterChip</Label>
+          <FilterChip value="mandag">Mandag</FilterChip>
+        </div>
+      </div>
+    );
+  }`}
+/>
