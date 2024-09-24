@@ -47,12 +47,12 @@ export const PaginationInput: React.FC<PaginationInputProps> = ({
 
   return (
     <form onSubmit={handleSubmit} noValidate aria-label="form">
-      <label className="eds-pagination__input-wrapper">
-        <span className="eds-pagination__input-label">{label}</span>
+      <label className="eds-pagination__controls__input__wrapper">
+        <span className="eds-pagination__controls__input__label">{label}</span>
         <input
           type="number"
           max={pageCount}
-          className="eds-pagination__input-field"
+          className="eds-pagination__controls__input__field"
           value={input}
           onChange={handleChange}
         />

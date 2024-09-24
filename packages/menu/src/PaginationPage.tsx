@@ -27,9 +27,9 @@ export const PaginationPage: React.FC<PaginationPageProps> = ({
 }) => (
   <button
     className={classNames(
-      'eds-pagination__page',
-      { 'eds-pagination__page--selected': selected },
-      { 'eds-pagination__page--disabled': disabled },
+      'eds-pagination__controls__page',
+      { 'eds-pagination__controls__page--selected': selected },
+      { 'eds-pagination__controls__page--disabled': disabled },
       className,
     )}
     disabled={selected || disabled}

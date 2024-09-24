@@ -6,189 +6,169 @@
   flex-wrap: wrap;
   row-gap: t.$space-small;
   justify-content: space-between;
+
   &__results {
-    align-items: center;
+    margin-right: t.$space-extra-small;
     display: flex;
     flex: 1;
+    align-items: center;
     justify-content: flex-start;
-
-    &-label {
-      margin-right: t.$space-extra-small;
-    }
-  }
-  .eds-label {
     color: var(--components-menu-pagination-standard-text-subdued);
+
     .eds-contrast & {
       color: var(--components-menu-pagination-contrast-text-subdued);
     }
+
+    & &__change-number-of-results {
+      border: solid t.$border-widths-small var(--components-menu-pagination-contrast-border-unselected);
+      margin: 0 t.$space-extra-small;
+
+      &__arrow {
+        margin-left: 0.5rem;
+      }
+      &[aria-expanded='true'] {
+        .eds-pagination__results__change-number-of-results__arrow {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
-  &__controls {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
+
   &__results:first-of-type:last-of-type,
   &__controls:first-of-type:last-of-type {
     margin: 0 auto;
   }
-}
 
-.eds-pagination-menu {
-  &__menu-button {
-    appearance: none;
-    background: transparent;
-    border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
-    border-radius: t.$border-radiuses-medium;
-    color: var(--components-menu-pagination-standard-text-unselected);
-    font-family: inherit;
-    display: flex;
+  &__controls {
     align-items: center;
-    justify-content: space-around;
-    height: t.$space-extra-large;
-    margin-left: t.$space-extra-small2;
-    margin-right: t.$space-medium;
-    width: 3.5rem;
+    display: flex;
+    justify-content: center;
 
-    .eds-contrast & {
-      border-color: var(--components-menu-pagination-contrast-border-unselected);
-      color: var(--components-menu-pagination-contrast-text-unselected);
-    }
-
-    &--open {
-      border-color: currentColor;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: t.$shadows-focus;
-    }
-  }
-  &__menu-list {
-    width: 3.5rem;
-  }
-}
-
-.eds-pagination__page {
-  align-items: center;
-  appearance: none;
-  background-color: var(--components-menu-pagination-standard-default);
-  border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
-  border-radius: t.$border-radiuses-medium;
-  color: var(--components-menu-pagination-standard-text-unselected);
-  cursor: pointer;
-  display: flex;
-  font-family: inherit;
-  font-size: t.$font-sizes-medium;
-  height: t.$space-extra-large;
-  justify-content: center;
-  margin: 0 t.$border-widths-medium;
-  padding: 0 t.$space-extra-small2;
-  transition: background t.$timings-fast ease-out, border-color t.$timings-fast ease-out;
-  user-select: none;
-  min-width: t.$space-extra-large;
-
-  .eds-contrast & {
-    background-color: var(--components-menu-pagination-contrast-default);
-    border-color: var(--components-menu-pagination-contrast-border-unselected);
-    color: var(--components-menu-pagination-contrast-text-unselected);
-  }
-  &--selected {
-    background: var(--components-menu-pagination-standard-active);
-    border-color: var(--components-menu-pagination-standard-border-selected);
-    color: var(--components-menu-pagination-standard-text-selected);
-    opacity: 1;
-    pointer-events: none;
-    .eds-contrast & {
-      background: var(--components-menu-pagination-contrast-active);
-      border-color: var(--components-menu-pagination-contrast-border-selected);
-      color: var(--components-menu-pagination-contrast-text-selected);
-    }
-  }
-  &--disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  &:hover {
-    background-color: var(--components-menu-pagination-standard-hover);
-    border-color: var(--components-menu-pagination-standard-border-unselected);
-
-    .eds-contrast & {
-      background-color: var(--components-menu-pagination-contrast-hover);
-      border-color: var(--components-menu-pagination-contrast-border-unselected);
-    }
-  }
-  &:focus-visible {
-    outline: t.$outlines-focus;
-    outline-color: var(--basecolors-stroke-focus-standard);
-    outline-offset: t.$outline-offsets-focus;
-    .eds-contrast & {
-      outline-color: var(--basecolors-stroke-focus-contrast);
-    }
-  }
-}
-
-.eds-pagination__ellipsis {
-  color: var(--components-menu-pagination-standard-icon);
-  align-items: baseline;
-  cursor: default;
-  display: flex;
-  font-size: t.$font-sizes-extra-large2;
-  height: t.$space-extra-large;
-  justify-content: center;
-  user-select: none;
-  width: t.$space-extra-large;
-  margin: 0 2px;
-  .eds-contrast & {
-    color: var(--components-menu-pagination-contrast-icon);
-  }
-}
-
-.eds-pagination__input {
-  &-wrapper {
-    white-space: nowrap;
-  }
-  &-label {
-    border-left: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
-    color: var(--components-menu-pagination-standard-text-subdued);
-    font-size: t.$font-sizes-medium;
-    margin-left: t.$space-extra-small;
-    padding: 0 t.$space-medium;
-    .eds-contrast & {
-      border-color: var(--components-menu-pagination-contrast-border-unselected);
-      color: var(--components-menu-pagination-contrast-text-subdued);
-    }
-  }
-
-  &-field {
-    appearance: none;
-    background-color: var(--components-menu-pagination-standard-default);
-    border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
-    border-radius: t.$border-radiuses-medium;
-    color: var(--components-menu-pagination-standard-text-unselected);
-    font-family: inherit;
-    font-size: t.$font-sizes-medium;
-    height: t.$space-extra-large;
-    text-align: center;
-    width: t.$space-extra-large;
-
-    .eds-contrast & {
-      background-color: var(--components-menu-pagination-contrast-default);
-      border-color: var(--components-menu-pagination-contrast-border-unselected);
-      color: var(--components-menu-pagination-contrast-text-unselected);
-    }
-    // Removes those pesky increment and decrement buttons on input[type=number]
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
+    &__page {
+      align-items: center;
       appearance: none;
-      margin: 0;
+      background-color: var(--components-menu-pagination-standard-default);
+      border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
+      border-radius: t.$border-radiuses-medium;
+      color: var(--components-menu-pagination-standard-text-unselected);
+      cursor: pointer;
+      display: flex;
+      font-family: inherit;
+      font-size: t.$font-sizes-medium;
+      height: t.$space-extra-large;
+      justify-content: center;
+      margin: 0 t.$border-widths-medium;
+      padding: 0 t.$space-extra-small2;
+      transition: background t.$timings-fast ease-out, border-color t.$timings-fast ease-out;
+      user-select: none;
+      min-width: t.$space-extra-large;
+
+      .eds-contrast & {
+        background-color: var(--components-menu-pagination-contrast-default);
+        border-color: var(--components-menu-pagination-contrast-border-unselected);
+        color: var(--components-menu-pagination-contrast-text-unselected);
+      }
+
+      &--selected {
+        background: var(--components-menu-pagination-standard-active);
+        border-color: var(--components-menu-pagination-standard-border-selected);
+        color: var(--components-menu-pagination-standard-text-selected);
+        opacity: 1;
+        pointer-events: none;
+        .eds-contrast & {
+          background: var(--components-menu-pagination-contrast-active);
+          border-color: var(--components-menu-pagination-contrast-border-selected);
+          color: var(--components-menu-pagination-contrast-text-selected);
+        }
+      }
+      &--disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: var(--components-menu-pagination-standard-hover);
+        border-color: var(--components-menu-pagination-standard-border-unselected);
+
+        .eds-contrast & {
+          background-color: var(--components-menu-pagination-contrast-hover);
+          border-color: var(--components-menu-pagination-contrast-border-unselected);
+        }
+      }
+      &:focus-visible {
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+        .eds-contrast & {
+          outline-color: var(--basecolors-stroke-focus-contrast);
+        }
+      }
+
+      &__ellipsis {
+        color: var(--components-menu-pagination-standard-icon);
+        align-items: baseline;
+        cursor: default;
+        display: flex;
+        font-size: t.$font-sizes-extra-large2;
+        height: t.$space-extra-large;
+        justify-content: center;
+        user-select: none;
+        width: t.$space-extra-large;
+        margin: 0 2px;
+        .eds-contrast & {
+          color: var(--components-menu-pagination-contrast-icon);
+        }
+      }
     }
 
-    &:focus-visible {
-      outline: t.$outlines-focus;
-      outline-color: var(--basecolors-stroke-focus-standard);
-      outline-offset: t.$outline-offsets-focus;
-      .eds-contrast & {
-        outline-color: var(--basecolors-stroke-focus-contrast);
+    &__input {
+      &__wrapper {
+        white-space: nowrap;
+      }
+      &__label {
+        border-left: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
+        color: var(--components-menu-pagination-standard-text-subdued);
+        font-size: t.$font-sizes-medium;
+        margin-left: t.$space-extra-small;
+        padding: 0 t.$space-medium;
+        .eds-contrast & {
+          border-color: var(--components-menu-pagination-contrast-border-unselected);
+          color: var(--components-menu-pagination-contrast-text-subdued);
+        }
+      }
+
+      &__field {
+        appearance: none;
+        background-color: var(--components-menu-pagination-standard-default);
+        border: t.$border-widths-small solid var(--components-menu-pagination-standard-border-unselected);
+        border-radius: t.$border-radiuses-medium;
+        color: var(--components-menu-pagination-standard-text-unselected);
+        font-family: inherit;
+        font-size: t.$font-sizes-medium;
+        height: t.$space-extra-large;
+        text-align: center;
+        width: t.$space-extra-large;
+
+        .eds-contrast & {
+          background-color: var(--components-menu-pagination-contrast-default);
+          border-color: var(--components-menu-pagination-contrast-border-unselected);
+          color: var(--components-menu-pagination-contrast-text-unselected);
+        }
+        // Removes those pesky increment and decrement buttons on input[type=number]
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          appearance: none;
+          margin: 0;
+        }
+
+        &:focus-visible {
+          outline: t.$outlines-focus;
+          outline-color: var(--basecolors-stroke-focus-standard);
+          outline-offset: t.$outline-offsets-focus;
+          .eds-contrast & {
+            outline-color: var(--basecolors-stroke-focus-contrast);
+          }
+        }
       }
     }
   }

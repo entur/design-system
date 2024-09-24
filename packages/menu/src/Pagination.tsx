@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { Menu, MenuList, MenuButton } from '@reach/menu-button';
 
-import {
-  LeftArrowIcon,
-  RightArrowIcon,
-  DownArrowIcon,
-  UpArrowIcon,
-} from '@entur/icons';
+import { DownArrowIcon, LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 import { VisuallyHidden } from '@entur/a11y';
-import { useContrast } from '@entur/layout';
 import { Label } from '@entur/typography';
 import { useRandomId } from '@entur/utils';
 
 import { PaginationPage } from './PaginationPage';
 import { PaginationInput } from './PaginationInput';
-import { OverflowMenuItem } from './OverflowMenu';
+import { OverflowMenu, OverflowMenuItem } from './OverflowMenu';
 
 import './Pagination.scss';
 
@@ -112,11 +105,11 @@ export const Pagination: React.FC<PaginationProps> = ({
   nextPageLabel = 'Gå til neste side',
   showingResultsLabel = (minPage, maxPage, pageCount) =>
     `Viser resultat ${minPage}–${maxPage} av ${pageCount}`,
+  changeNumberOfResultsLabelForScreenreader = `Viser ${resultsPerPage} resultater. Trykk for å endre antall. Åpner en flervalgsmeny.`,
   hideNextButton = false,
   hidePrevButton = false,
   ...rest
 }) => {
-  const isContrast = useContrast();
   const [listedEntries, setListedEntries] = useState<Array<number | '…'>>([]);
   const paginationId = useRandomId('eds-pagination');
 
@@ -179,44 +172,36 @@ export const Pagination: React.FC<PaginationProps> = ({
       {resultsPerPage && numberOfResults && (
         <div className="eds-pagination__results">
           {onResultsPerPageChange && (
-            <Menu>
-              {({ isOpen }) => (
-                <>
-                  <Label as="p" aria-hidden="true">
-                    {showNumberOfResultsLabel}
-                  </Label>
-                  <MenuButton
-                    className={classNames('eds-pagination-menu__menu-button', {
-                      'eds-pagination-menu__menu-button--open': isOpen,
-                    })}
+            <>
+              <Label as="p" aria-hidden="true">
+                {showNumberOfResultsLabel}
+              </Label>
+              <OverflowMenu
+                className="eds-pagination__results__change-number-of-results"
+                buttonIcon={
+                  <>
+                    {resultsPerPage}{' '}
+                    <DownArrowIcon
+                      className="eds-pagination__results__change-number-of-results__arrow"
+                      aria-hidden="true"
+                    />
+                  </>
+                }
+                aria-label={changeNumberOfResultsLabelForScreenreader}
+                placement="bottom-end"
+              >
+                {resultsPerPageOptions.map((option: number, key: number) => (
+                  <OverflowMenuItem
+                    key={key}
+                    onSelect={() => onResultsPerPageChange(option)}
                   >
-                    <VisuallyHidden>{showNumberOfResultsLabel} </VisuallyHidden>
-                    {resultsPerPage}
-                    {isOpen ? <UpArrowIcon /> : <DownArrowIcon />}
-                  </MenuButton>
-                  <MenuList
-                    className={classNames(
-                      'eds-pagination-menu__menu-list',
-                      'eds-overflow-menu__menu-list',
-                      { 'eds-contrast': isContrast },
-                    )}
-                  >
-                    {resultsPerPageOptions.map(
-                      (option: number, key: number) => (
-                        <OverflowMenuItem
-                          key={key}
-                          onSelect={() => onResultsPerPageChange(option)}
-                        >
-                          {option}
-                        </OverflowMenuItem>
-                      ),
-                    )}
-                  </MenuList>
-                </>
-              )}
-            </Menu>
+                    {option}
+                  </OverflowMenuItem>
+                ))}
+              </OverflowMenu>
+            </>
           )}
-          <Label as="p" className="eds-pagination__results-label">
+          <Label as="p">
             {showingResultsLabel(
               (currentPage - 1) * resultsPerPage + 1,
               currentPage * resultsPerPage > numberOfResults
@@ -235,7 +220,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             aria-describedby={paginationId}
             disabled={isFirstPostSelected}
           >
-            <LeftArrowIcon />
+            <LeftArrowIcon aria-hidden="true" />
           </PaginationPage>
         )}
         {listedEntries.map((entry, index) =>
@@ -264,7 +249,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             aria-describedby={paginationId}
             disabled={isLastPostSelected}
           >
-            <RightArrowIcon />
+            <RightArrowIcon aria-hidden="true" />
           </PaginationPage>
         )}
         {showInput && (
@@ -284,7 +269,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 };
 
 const Ellipsis: React.FC = () => (
-  <span className="eds-pagination__ellipsis" aria-hidden="true">
+  <span className="eds-pagination__controls__page__ellipsis" aria-hidden="true">
     …
   </span>
 );
