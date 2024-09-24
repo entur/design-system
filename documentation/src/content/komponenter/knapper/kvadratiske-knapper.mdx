@@ -5,4 +5,60 @@ parent: Komponenter
 menu: Knapper
 ---
 
-square
+import { Playground } from '../../../components/Playground/Playground.tsx'
+import { AddIcon, CheckIcon } from '@entur/icons';
+import {
+SecondarySquareButton,
+SuccessSquareButton,
+TertiarySquareButton,
+} from '@entur/button';
+
+<Playground scope={{
+    SecondarySquareButton,
+    SuccessSquareButton,
+    TertiarySquareButton,
+    AddIcon,
+    CheckIcon
+  }} code={`
+
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SecondarySquareButton aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }} aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+  </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SecondarySquareButton>
+      Legg til <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }}>
+      <AddIcon /> Legg til
+    </SecondarySquareButton>
+  </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SuccessSquareButton>
+      Lagre <CheckIcon />
+    </SuccessSquareButton>
+    <SuccessSquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </SuccessSquareButton>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <TertiarySquareButton>
+      Lagre <CheckIcon />
+    </TertiarySquareButton>
+    <TertiarySquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </TertiarySquareButton>
+  </div>`}
+  >
+
+</Playground>
