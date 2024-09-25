@@ -151,7 +151,9 @@ test('renders the currentPage as selected', () => {
   );
 
   expect(getByText('3')).toHaveAttribute('aria-current', 'page');
-  expect(getByText('3')).toHaveClass('eds-pagination__page--selected');
+  expect(getByText('3')).toHaveClass(
+    'eds-pagination__controls__page--selected',
+  );
 });
 
 test('page input works as expected', () => {
