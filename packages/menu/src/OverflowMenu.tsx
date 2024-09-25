@@ -12,6 +12,7 @@ import {
   useTypeahead,
   FloatingList,
   shift,
+  useRole,
 } from '@floating-ui/react';
 
 import { IconButton } from '@entur/button';
@@ -52,6 +53,7 @@ export type OverflowMenuProps = {
 interface SelectContextValue {
   activeIndex: number | null;
   getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
+  closeMenuAndReturnFocus: () => void;
 }
 
 const SelectContext = React.createContext<SelectContextValue>(
@@ -99,8 +101,10 @@ export const OverflowMenu = ({
     onMatch: index => isOpen && setActiveIndex(index),
   });
 
+  const role = useRole(context, { role: 'menu' });
+
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
-    [listNav, typeahead],
+    [listNav, typeahead, role],
   );
 
   const closeMenuAndReturnFocus = () => {
@@ -117,8 +121,9 @@ export const OverflowMenu = ({
     () => ({
       activeIndex,
       getItemProps,
+      closeMenuAndReturnFocus,
     }),
-    [activeIndex, getItemProps],
+    [activeIndex, getItemProps, closeMenuAndReturnFocus],
   );
 
   const _buttonIcon = buttonIcon ?? <VerticalDotsIcon />;
@@ -154,7 +159,6 @@ export const OverflowMenu = ({
           style={{ ...floatingStyles, display: isOpen ? 'initial' : 'none' }}
           {...getFloatingProps({
             className: 'eds-overflow-menu__menu-list',
-            role: 'menu',
           })}
         >
           <FloatingList elementsRef={listRef} labelsRef={labelsRef}>
@@ -189,7 +193,8 @@ export const OverflowMenuItem = ({
   disabled,
   ...rest
 }: OverflowMenuItemProps) => {
-  const { activeIndex, getItemProps } = useContext(SelectContext);
+  const { activeIndex, getItemProps, closeMenuAndReturnFocus } =
+    useContext(SelectContext);
   const { ref: listItemRef, index } = useListItem({
     label: !disabled ? getNodeText(children) : null,
   });
@@ -214,7 +219,13 @@ export const OverflowMenuItem = ({
       aria-disabled={disabled}
       aria-selected={isHighlighted}
       {...getItemProps({
-        onClick: isLink || disabled ? undefined : onSelect,
+        onClick:
+          isLink || disabled
+            ? undefined
+            : () => {
+                onSelect();
+                closeMenuAndReturnFocus();
+              },
         href: disabled ? undefined : href,
         tabIndex: isHighlighted ? 0 : -1,
       })}
