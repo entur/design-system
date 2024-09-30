@@ -6,6 +6,7 @@ menu: Knapper
 ---
 
 import { Playground } from '../../../components/Playground/Playground.tsx'
+
 import { AddIcon, CheckIcon } from '@entur/icons';
 import {
 SecondarySquareButton,
@@ -13,14 +14,7 @@ SuccessSquareButton,
 TertiarySquareButton,
 } from '@entur/button';
 
-<Playground scope={{
-    SecondarySquareButton,
-    SuccessSquareButton,
-    TertiarySquareButton,
-    AddIcon,
-    CheckIcon
-  }} code={`
-
+<Playground code={`
   <div
     style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
   >
@@ -60,5 +54,4 @@ TertiarySquareButton,
     </TertiarySquareButton>
   </div>`}
   >
-
 </Playground>
