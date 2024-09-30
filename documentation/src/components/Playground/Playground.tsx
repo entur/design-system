@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
+
 import classNames from 'classnames';
 
 import { Heading5, Label } from '@entur/typography';
@@ -10,12 +11,8 @@ import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand';
 import { ConditionalWrapper } from '@entur/utils';
 import { componentColors } from '@entur/tokens';
-import {
-  AdjustmentsIcon,
-  BellIcon,
-  DestinationIcon,
-  SourceCodeIcon,
-} from '@entur/icons';
+import { SourceCodeIcon } from '@entur/icons';
+import { packages } from './packages-scope';
 
 import {
   AdvancedProps,
@@ -38,12 +35,12 @@ type PlaygroundProps = {
   defaultShowEditor?: boolean;
   hideContrastOption?: boolean;
   code: string;
-  scope: Record<string, any>;
+  scope?: Record<string, any>;
 };
 
 export const Playground: React.FC<PlaygroundProps> = ({
   code,
-  scope,
+  scope = {},
   language = 'jsx',
   props,
   style,
@@ -53,7 +50,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
   hideContrastOption = false,
 }) => {
   const [isContrast, setContrast] = useState(defaultContrast);
-  const [darkMode, setDarkMode] = useState(defaultDarkMode);
+  const [darkMode, setdarkMode] = useState(defaultDarkMode);
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
 
   const {
@@ -65,8 +62,8 @@ export const Playground: React.FC<PlaygroundProps> = ({
   } = useAdvancedPlaygroundCode(code, props);
 
   // TODO Gatsby 5- sjekk om darkmode fungerer når vi har lagt inn alle fargevariabler
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggledarkMode = () => {
+    setdarkMode(!darkMode);
   };
 
   const toggleContrast = () => {
@@ -75,9 +72,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
 
   const Element = isContrast ? Contrast : 'div';
 
-  // Icons need to be included in scope to be accessible in LivePreview
-  const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
-  const finalScope = { ...scope, ...icons };
+  const finalScope = { ...packages, ...scope };
 
   return (
     <LiveProvider
@@ -92,13 +87,13 @@ export const Playground: React.FC<PlaygroundProps> = ({
       <div className="playground__header">
         {!hideContrastOption && (
           <div className="playground__contrast-switch">
-            <Label>Velg color-mode:</Label>
+            <Label>Velg fargemode:</Label>
             <div className="playground__contrast-switch-container">
               <Switch checked={isContrast} onChange={toggleContrast}>
                 Kontrast
               </Switch>
-              <Switch checked={darkMode} onChange={toggleDarkMode}>
-                Dark
+              <Switch checked={darkMode} onChange={toggledarkMode}>
+                Natt
               </Switch>
             </div>
           </div>
