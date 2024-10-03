@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.11.2...@entur/utils@0.12.0) (2024-10-03)
+
+### Features
+
+- **utils:** add getNodeText utility function ([2be0a75](https://bitbucket.org/enturas/design-system/commits/2be0a750eb1d07c841f2f0ddd49f68d2c6d95cea))
+
+### Performance Improvements
+
+- **overflow menu:** switch from @reach/menu to floating-ui for overflow menu functionality ([eebc701](https://bitbucket.org/enturas/design-system/commits/eebc701c1683db6b2981d851b0832fa101c9e529))
+
+### BREAKING CHANGES
+
+- **overflow menu:** - position is deprecated in favor of placement. This is done to improve naming consistency
+
+* onSelect is deprecated in overflowMenuLink, href should be used.
+* as is removed from overflowMenuItem. Element is now based only on if item is an action or a link
+* change from @reach/menu to floating-ui may lead to unknown changes, check where component is used
+
 ## [0.11.2](https://bitbucket.org/enturas/design-system/compare/@entur/utils@0.11.1...@entur/utils@0.11.2) (2024-09-10)
 
 ### Performance Improvements

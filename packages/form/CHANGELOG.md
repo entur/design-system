@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.1...@entur/form@8.1.3) (2024-10-03)
+
+### Bug Fixes
+
+- **textarea:** fix illegible label when text length exceeds height of textarea ([371382f](https://bitbucket.org/enturas/design-system/commits/371382fb2d1d76649808cea73ea7cb8f0cc73d17))
+
 ## [8.1.2](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.1...@entur/form@8.1.2) (2024-09-23)
 
 ### Bug Fixes

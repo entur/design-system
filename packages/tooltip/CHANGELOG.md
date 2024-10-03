@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@4.0.1...@entur/tooltip@5.0.0) (2024-10-03)
+
+### Performance Improvements
+
+- **overflow menu:** switch from @reach/menu to floating-ui for overflow menu functionality ([eebc701](https://bitbucket.org/enturas/design-system/commits/eebc701c1683db6b2981d851b0832fa101c9e529))
+
+### BREAKING CHANGES
+
+- **overflow menu:** - position is deprecated in favor of placement. This is done to improve naming consistency
+
+* onSelect is deprecated in overflowMenuLink, href should be used.
+* as is removed from overflowMenuItem. Element is now based only on if item is an action or a link
+* change from @reach/menu to floating-ui may lead to unknown changes, check where component is used
+
 ## [4.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@4.0.0...@entur/tooltip@4.0.1) (2024-09-19)
 
 **Note:** Version bump only for package @entur/tooltip

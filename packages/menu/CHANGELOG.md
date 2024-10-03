@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.40...@entur/menu@5.0.0) (2024-10-03)
+
+### Bug Fixes
+
+- **overflow menu:** add aria roles and close menu on select ([a61fb05](https://bitbucket.org/enturas/design-system/commits/a61fb0538b07841c267574f6c451a979b598fd67))
+
+### Performance Improvements
+
+- **overflow menu:** switch from @reach/menu to floating-ui for overflow menu functionality ([eebc701](https://bitbucket.org/enturas/design-system/commits/eebc701c1683db6b2981d851b0832fa101c9e529))
+- **pagination:** use overflow menu in pagination instead of custom component ([31d9839](https://bitbucket.org/enturas/design-system/commits/31d983950fc7dd85ea6169c422a7adc6456cde19))
+
+### BREAKING CHANGES
+
+- **pagination:** - some classNames have changed. If you have overriden this component, make sure things look as
+  expected.
+- **overflow menu:** - position is deprecated in favor of placement. This is done to improve naming consistency
+
+* onSelect is deprecated in overflowMenuLink, href should be used.
+* as is removed from overflowMenuItem. Element is now based only on if item is an action or a link
+* change from @reach/menu to floating-ui may lead to unknown changes, check where component is used
+
 ## [4.2.40](https://bitbucket.org/enturas/design-system/compare/@entur/menu@4.2.39...@entur/menu@4.2.40) (2024-09-19)
 
 **Note:** Version bump only for package @entur/menu
