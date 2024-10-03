@@ -183,6 +183,11 @@ export type OverflowMenuItemProps = {
   href?: string;
   /** Om dette valget skal være deaktivert */
   disabled?: boolean;
+  /**
+   * @deprecated Denne prop-en har ikke lenger noe effekt.
+   * Si fra hvis dette er problematisk for ditt produkt!
+   */
+  as?: string;
 };
 
 export const OverflowMenuItem = ({
