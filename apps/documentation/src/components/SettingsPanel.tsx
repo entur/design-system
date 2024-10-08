@@ -1,36 +1,39 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
+
 import {
   CheckFilledIcon,
   EditIcon,
   NightIcon,
   SettingsIcon,
   SunIcon,
-  ViewIcon,
 } from '@entur/icons';
-import { Label, Paragraph, SmallText } from '@entur/typography';
+import { Label, Link, Paragraph, SmallText } from '@entur/typography';
 import {
   PrimaryButton,
-  FloatingButton,
   ButtonGroup,
   SecondaryButton,
   IconButton,
 } from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
+import { ExpandableText } from '@entur/expand';
 import { SegmentedChoice, SegmentedControl, TextField } from '@entur/form';
 import { Modal } from '@entur/modal';
+import { Tag } from '@entur/layout';
+import { Tooltip } from '@entur/tooltip';
+
 import {
   useSettings,
   UserType,
   VariableFormat,
   PackageManager,
+  usePersistedState,
 } from '~/utils/Providers/SettingsContext';
 import './SettingsPanel.scss';
 import {
   ConsentValue,
   useAnalytics,
 } from '~/utils/Providers/AnalyticsProvider';
-import { ExpandableText } from '@entur/expand';
-import { Tag } from '@entur/layout';
 
 const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
@@ -45,6 +48,10 @@ const SettingsPanel: React.FC = () => {
     colorMode,
     setColorMode,
   } = useSettings();
+  const [hasSeenAnalytics, setHasSeenAnalytics] = usePersistedState<boolean>(
+    'hide_analytics_tooltip',
+    false,
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', e => {
@@ -61,26 +68,39 @@ const SettingsPanel: React.FC = () => {
     };
   }, []);
 
+  const showAnalyticsTooltip = React.useMemo(() => {
+    return !hasSeenAnalytics;
+  }, [hasSeenAnalytics]);
+
   return (
     <>
       <div className="settings-panel">
-        <div className="settings-panel__container">
-          <ViewIcon aria-hidden="true" className="settings-panel__icon" />
-          <Paragraph margin="none">
-            Vis som: {userType === 'developer' ? 'Utvikler' : 'Designer'}
-          </Paragraph>
-        </div>
-        <FloatingButton
-          aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
-          className="settings-trigger"
-          onClick={() => setOpen(prev => !prev)}
+        <Tooltip
+          placement={'bottom'}
+          content={'Hjelp oss å gjøre designsystemet bedre!'}
+          isOpen={showAnalyticsTooltip}
+          onClickCloseButton={() => setHasSeenAnalytics(true)}
+          className="settings-panel__tooltip"
         >
-          <SettingsIcon aria-hidden="true" />
-        </FloatingButton>
+          <IconButton
+            aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
+            className="settings-trigger"
+            onClick={() => setOpen(prev => !prev)}
+          >
+            <SettingsIcon
+              className="settings-trigger__icon"
+              aria-hidden="true"
+            />{' '}
+            Innstilinger
+          </IconButton>
+        </Tooltip>
       </div>
       <Modal
         open={isOpen}
-        onDismiss={() => setOpen(false)}
+        onDismiss={() => {
+          setHasSeenAnalytics(true);
+          setOpen(false);
+        }}
         title="Innstillinger"
         size="small"
         className="settings-panel__modal"
@@ -88,6 +108,7 @@ const SettingsPanel: React.FC = () => {
         <form
           onSubmit={e => {
             e.preventDefault();
+            setHasSeenAnalytics(true);
             setOpen(false);
           }}
         >
@@ -148,7 +169,11 @@ const SettingsPanel: React.FC = () => {
               setVariableFormat((selectedItem?.value as VariableFormat) ?? 'js')
             }
           />
-          <AnalyticsSection showBetaSettings={showBetaSettings} />
+          <AnalyticsSection
+            showBetaSettings={showBetaSettings}
+            hasSeenAnalytics={hasSeenAnalytics}
+            setHasSeenAnalytics={setHasSeenAnalytics}
+          />
           <PrimaryButton
             className="settings-panel__modal__save-button"
             width="fluid"
@@ -165,8 +190,12 @@ export default SettingsPanel;
 
 const AnalyticsSection = ({
   showBetaSettings,
+  hasSeenAnalytics,
+  setHasSeenAnalytics,
 }: {
   showBetaSettings: boolean;
+  hasSeenAnalytics: boolean;
+  setHasSeenAnalytics: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const { analyticsConsent, updateAnalyticsConsent, posthog } = useAnalytics();
   const [isEditingUserID, setIsEditingUserID] = useState(false);
@@ -179,6 +208,8 @@ const AnalyticsSection = ({
     updateAnalyticsConsent(updatedConsent);
     setIsEditingConsent(false);
     setUserIDFieldValue(posthog?.get_property('$user_id'));
+
+    setHasSeenAnalytics(true);
   };
   const notDecided =
     analyticsConsent === 'undecided' ||
@@ -202,18 +233,22 @@ const AnalyticsSection = ({
         titleElement="Heading3"
         title="Analyseverktøy"
         defaultOpen={notDecided}
-        className="settings-panel__modal__analytics"
+        className={classNames('settings-panel__modal__analytics', {
+          'settings-panel__modal__analytics--pulse': !hasSeenAnalytics,
+        })}
       >
         <SmallText>
           Hjelp oss å forstå hvordan du bruker designsystemet. Informasjon om
           hvilke sider du bruker og hvordan du bruker dem over tid gjør det
           lettere å ta gode valg når vi forbedrer siden. Vi bruker Posthog når
           vi analyserer denne dataen, les mer på{' '}
-          <a href="https://posthog.com/docs/privacy">Posthog sine sider.</a>
+          <Link href="https://posthog.com/docs/privacy">
+            Posthog sine sider.
+          </Link>
         </SmallText>
         <br />
         <Label className="settings-panel__modal__analytics__choice-status-label">
-          Kan vi spore bruken din på denne nettsiden?
+          Kan vi spore bruken din på dette nettstedet?
         </Label>
         {notDecided ? (
           <ButtonGroup className="settings-panel__modal__analytics__choice">
