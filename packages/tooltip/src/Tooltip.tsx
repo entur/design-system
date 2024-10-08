@@ -53,6 +53,10 @@ export type TooltipProps = {
   children: React.ReactElement;
   /** Om tooltip-en skal vises */
   isOpen?: boolean;
+  /** Callback-funksjon for når brukeren trykker på lukk-tooltip-knappen
+   * @default () => undefined;
+   */
+  onClickCloseButton?: () => void;
   /** Ekstra klassenavn for tooltip */
   className?: string;
   /** Åpner ikke tooltip ved hover-events
@@ -84,6 +88,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
   className,
   isOpen,
+  onClickCloseButton = () => undefined,
   disableHoverListener = false,
   disableFocusListener = false,
   disableKeyboardListener = true,
@@ -212,6 +217,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
             className="eds-tooltip__close-button"
             onClick={() => {
               setShowTooltip(false);
+              onClickCloseButton();
             }}
             type="button"
             aria-label="Lukk tooltip"
