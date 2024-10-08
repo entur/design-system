@@ -4,7 +4,7 @@ import { Location } from '@reach/router';
 import { TopNavigationItem } from '@entur/menu';
 import { SiteSidebar } from '~/components/SiteSidebar';
 import SettingsPanel from '~/components/SettingsPanel';
-import { useSettings } from '~/components/SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import logoDark from '~/components/logoDark.svg';
 import logo from '~/components/logo.svg';
 import './Menu.scss';

@@ -7,7 +7,7 @@ import {
 } from '~/utils/formatVariable';
 import { GridItem } from '@entur/grid';
 import { Heading3, Heading4 } from '@entur/typography';
-import { useSettings } from '../SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {

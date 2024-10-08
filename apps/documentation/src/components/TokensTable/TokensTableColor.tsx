@@ -2,7 +2,7 @@ import React from 'react';
 import * as allTokens from '@entur/tokens';
 import { flatten } from '~/utils/flatten';
 import { GridContainer } from '@entur/grid';
-import { useSettings } from '../SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import SemanticTokenList from './SemanticTokens';
 import PrimitiveTokenList from './PrimitiveTokens';
 import DataTokenList from './DataTokens';

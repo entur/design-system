@@ -9,8 +9,8 @@ import SEO from '~/gatsby-theme-docz/base/Seo';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import SiteFooter from '~/components/SiteFooter';
 import { TocNavigation } from '~/components/TocNavigation';
-import { useSettings } from '~/components/SettingsContext';
-import { Media } from '~/utils/MediaBreakpoint';
+import { useSettings } from '~/utils/Providers/SettingsContext';
+import { Media } from '~/utils/Providers/MediaBreakpoint';
 
 import Menu from './Menu';
 import MobileMenu from './MobileMenu';

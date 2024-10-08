@@ -1,6 +1,5 @@
 import React from 'react';
 import { TokensTableProps } from './types';
-import { VariableFormat } from '~/components/SettingsContext';
 import {
   formatVariableByType,
   formatDotToVariable,
@@ -8,7 +7,7 @@ import {
 } from '~/utils/formatVariable';
 import { GridItem } from '@entur/grid';
 import { Heading3, Heading5 } from '@entur/typography';
-import { useSettings } from '../SettingsContext';
+import { useSettings, VariableFormat } from '~/utils/Providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const categorizedTokens = (

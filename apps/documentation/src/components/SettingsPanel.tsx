@@ -1,17 +1,36 @@
-import React, { useEffect } from 'react';
-import { NightIcon, SettingsIcon, SunIcon, ViewIcon } from '@entur/icons';
-import { Paragraph } from '@entur/typography';
-import { PrimaryButton, FloatingButton } from '@entur/button';
+import React, { useEffect, useState } from 'react';
+import {
+  CheckFilledIcon,
+  EditIcon,
+  NightIcon,
+  SettingsIcon,
+  SunIcon,
+  ViewIcon,
+} from '@entur/icons';
+import { Label, Paragraph, SmallText } from '@entur/typography';
+import {
+  PrimaryButton,
+  FloatingButton,
+  ButtonGroup,
+  SecondaryButton,
+  IconButton,
+} from '@entur/button';
 import { Dropdown } from '@entur/dropdown';
-import { SegmentedChoice, SegmentedControl } from '@entur/form';
+import { SegmentedChoice, SegmentedControl, TextField } from '@entur/form';
 import { Modal } from '@entur/modal';
 import {
   useSettings,
   UserType,
   VariableFormat,
   PackageManager,
-} from './SettingsContext';
+} from '~/utils/Providers/SettingsContext';
 import './SettingsPanel.scss';
+import {
+  ConsentValue,
+  useAnalytics,
+} from '~/utils/Providers/AnalyticsProvider';
+import { ExpandableText } from '@entur/expand';
+import { Tag } from '@entur/layout';
 
 const SettingsPanel: React.FC = () => {
   const [isOpen, setOpen] = React.useState(false);
@@ -66,7 +85,12 @@ const SettingsPanel: React.FC = () => {
         size="small"
         className="settings-panel__modal"
       >
-        <form onSubmit={() => setOpen(false)}>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            setOpen(false);
+          }}
+        >
           <SegmentedControl
             label="Fargemodus"
             onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
@@ -94,7 +118,7 @@ const SettingsPanel: React.FC = () => {
             onChange={selectedItem =>
               setUserType((selectedItem?.value as UserType) ?? 'developer')
             }
-            style={{ marginBottom: '1rem', marginTop: '0.5rem;' }}
+            style={{ marginBottom: '1rem', marginTop: '0.5rem' }}
           />
           {userType === 'developer' && (
             <Dropdown
@@ -112,7 +136,6 @@ const SettingsPanel: React.FC = () => {
             />
           )}
           <Dropdown
-            className="eds-dropdown"
             label="Hva slags variabler vil du se?"
             items={[
               { value: 'css', label: 'CSS' },
@@ -125,7 +148,11 @@ const SettingsPanel: React.FC = () => {
               setVariableFormat((selectedItem?.value as VariableFormat) ?? 'js')
             }
           />
-          <PrimaryButton width="fluid" style={{ marginTop: '1rem' }}>
+          <AnalyticsSection showBetaSettings={showBetaSettings} />
+          <PrimaryButton
+            className="settings-panel__modal__save-button"
+            width="fluid"
+          >
             Lagre
           </PrimaryButton>
         </form>
@@ -135,3 +162,117 @@ const SettingsPanel: React.FC = () => {
 };
 
 export default SettingsPanel;
+
+const AnalyticsSection = ({
+  showBetaSettings,
+}: {
+  showBetaSettings: boolean;
+}) => {
+  const { analyticsConsent, updateAnalyticsConsent, posthog } = useAnalytics();
+  const [isEditingUserID, setIsEditingUserID] = useState(false);
+  const [isEditingConsent, setIsEditingConsent] = useState(false);
+  const [userIDFieldValue, setUserIDFieldValue] = useState(
+    posthog?.get_property('$user_id'),
+  );
+
+  const handleUpdateConsent = (updatedConsent: ConsentValue) => {
+    updateAnalyticsConsent(updatedConsent);
+    setIsEditingConsent(false);
+    setUserIDFieldValue(posthog?.get_property('$user_id'));
+  };
+  const notDecided =
+    analyticsConsent === 'undecided' ||
+    analyticsConsent === undefined ||
+    isEditingConsent;
+
+  const getDisplayNameForConsentValue = (consentValue: ConsentValue) => {
+    switch (consentValue) {
+      case 'accepted':
+        return 'Godta';
+      case 'denied':
+        return 'Avslå';
+      case 'undecided':
+      default:
+        return 'Ikke valgt';
+    }
+  };
+  return (
+    <>
+      <ExpandableText
+        titleElement="Heading3"
+        title="Analyseverktøy"
+        defaultOpen={notDecided}
+        className="settings-panel__modal__analytics"
+      >
+        <SmallText>
+          Hjelp oss å forstå hvordan du bruker designsystemet. Informasjon om
+          hvilke sider du bruker og hvordan du bruker dem over tid gjør det
+          lettere å ta gode valg når vi forbedrer siden. Vi bruker Posthog når
+          vi analyserer denne dataen, les mer på{' '}
+          <a href="https://posthog.com/docs/privacy">Posthog sine sider.</a>
+        </SmallText>
+        <br />
+        <Label className="settings-panel__modal__analytics__choice-status-label">
+          Kan vi spore bruken din på denne nettsiden?
+        </Label>
+        {notDecided ? (
+          <ButtonGroup className="settings-panel__modal__analytics__choice">
+            <PrimaryButton
+              size="small"
+              onClick={() => handleUpdateConsent('accepted')}
+            >
+              {getDisplayNameForConsentValue('accepted')}
+            </PrimaryButton>
+            <SecondaryButton
+              size="small"
+              onClick={() => handleUpdateConsent('denied')}
+            >
+              {getDisplayNameForConsentValue('denied')}
+            </SecondaryButton>
+          </ButtonGroup>
+        ) : (
+          <div className="settings-panel__modal__analytics__status">
+            <div className="settings-panel__modal__analytics__status__tag">
+              <Paragraph>Nåværende status: </Paragraph>
+              <Tag>{getDisplayNameForConsentValue(analyticsConsent)}</Tag>
+            </div>
+            <SecondaryButton
+              size="small"
+              onClick={() => setIsEditingConsent(true)}
+              className="settings-panel__modal__analytics__status__edit-consent"
+            >
+              Endre samtykke
+            </SecondaryButton>
+          </div>
+        )}
+        {(analyticsConsent === 'accepted' || showBetaSettings) && (
+          <div className="settings-panel__modal__analytics__id">
+            <TextField
+              label="Din enhets-id"
+              value={userIDFieldValue}
+              onChange={e => setUserIDFieldValue(e.target.value)}
+              readOnly={!isEditingUserID}
+              style={{ flex: 1 }}
+            />
+            {showBetaSettings && (
+              <IconButton
+                type="button"
+                onClick={() => {
+                  if (isEditingUserID) {
+                    if (posthog.get_property('$user_id') !== userIDFieldValue)
+                      posthog.identify(userIDFieldValue);
+                    setIsEditingUserID(false);
+                  } else {
+                    setIsEditingUserID(true);
+                  }
+                }}
+              >
+                {isEditingUserID ? <CheckFilledIcon /> : <EditIcon />}
+              </IconButton>
+            )}
+          </div>
+        )}
+      </ExpandableText>
+    </>
+  );
+};

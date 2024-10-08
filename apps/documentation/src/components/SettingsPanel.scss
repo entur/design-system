@@ -1,12 +1,12 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .settings-panel {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
   margin-right: 1rem;
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     flex-grow: unset;
     align-items: center;
     justify-content: center;
@@ -14,21 +14,74 @@
     padding-right: 2.5rem;
   }
   &__icon {
-    font-size: $font-sizes-extra-large2;
-    margin-right: $space-extra-small2;
+    font-size: t.$font-sizes-extra-large2;
+    margin-right: t.$space-extra-small2;
   }
-  &__modal.eds-modal__content {
-    overflow: visible;
+  &__modal {
+    &.eds-modal__content {
+      overflow: visible;
+    }
+
+    &__analytics {
+      margin-top: t.$space-extra-large;
+
+      & &__choice-status-label {
+        display: block;
+        margin-top: t.$space-extra-large;
+        margin-bottom: t.$space-extra-small;
+      }
+      &__choice {
+        margin-top: t.$space-default;
+      }
+      &__status {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .eds-paragraph {
+          margin-top: t.$space-none;
+          margin-bottom: t.$space-default;
+          margin-bottom: t.$space-none;
+        }
+
+        &__tag {
+          display: flex;
+          gap: t.$space-default;
+          align-items: center;
+
+          * {
+            height: fit-content;
+          }
+        }
+
+        &__edit-consent {
+          margin-top: t.$space-small;
+        }
+      }
+      &__id {
+        display: flex;
+        width: 100%;
+        margin-top: t.$space-extra-large;
+
+        div {
+          width: 100%;
+          margin-left: -0.5rem;
+        }
+      }
+    }
+    &__save-button {
+      margin-top: t.$space-extra-large;
+    }
   }
   &__container {
     display: none;
-    @include for-large-desktop {
+    @include breakpoint.for-large-desktop {
       display: flex;
       align-items: center;
       justify-content: center;
     }
   }
   .settings-trigger {
-    margin-left: $space-large;
+    margin-left: t.$space-large;
   }
 }

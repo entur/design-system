@@ -9,7 +9,7 @@ import { FloatingButton } from '@entur/button';
 
 import SettingsPanel from '~/components/SettingsPanel';
 import { SiteSidebar } from '~/components/SiteSidebar';
-import { useSettings } from '~/components/SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';

@@ -1,12 +1,12 @@
 import React from 'react';
 import { colors, space } from '@entur/tokens';
 import { formatVariable } from '~/utils/formatVariable';
-import { useSettings } from './SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import hexrgb from 'hex-rgb';
 import './ColorSwatch.scss';
 import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
-import { useColorContext } from './Colors';
+import { useColorContext } from '~/utils/Providers/ColorProvider';
 import { Heading4, Label } from '@entur/typography';
 
 export function getColorFromPath(path: string): string {

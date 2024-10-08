@@ -16,8 +16,11 @@ import { space } from '@entur/tokens';
 import { Heading2 } from '@entur/typography';
 
 import { SearchBar } from '~/components/SearchBar';
-import { Media } from '~/utils/MediaBreakpoint';
-import { usePersistedState, useSettings } from './SettingsContext';
+import { Media } from '~/utils/Providers/MediaBreakpoint';
+import {
+  usePersistedState,
+  useSettings,
+} from '~/utils/Providers/SettingsContext';
 
 import './SiteSidebar.scss';
 
