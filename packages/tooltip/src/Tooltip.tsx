@@ -75,6 +75,15 @@ export type TooltipProps = {
   showCloseButton?: boolean;
   /** Valideringsvariant for Tooltip */
   variant?: 'negative' | typeof error;
+  /** For å kontrollere tiden i millisekunder det tar før tooltip-en
+   *  vises etter hover, og hvor lang tid det tar før den lukkes etter
+   *  hover-slutt.
+   *  @default { enter: 150, leave: 300 }
+   */
+  hoverDelay?: {
+    enter?: number;
+    leave?: number;
+  };
   /** @deprecated Ikke lenger støttet. Meld fra på #talk-designsystem hvis du trenger støtte for
    * overskrivinger av plasseringen til Tooltip!
    */
@@ -95,6 +104,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   disableClickListner = true,
   showCloseButton = true,
   variant,
+  hoverDelay,
   style,
   ...rest
 }) => {
@@ -134,7 +144,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     clearTimeout(hoverCloseTimer.current);
     hoverOpenTimer.current = setTimeout(() => {
       setShowTooltip(true);
-    }, 150);
+    }, hoverDelay?.enter ?? 150);
   };
 
   const onMouseLeave = () => {
@@ -142,7 +152,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     clearTimeout(hoverOpenTimer.current);
     hoverCloseTimer.current = setTimeout(() => {
       setShowTooltip(false);
-    }, 300);
+    }, hoverDelay?.leave ?? 300);
   };
 
   React.useEffect(() => {
