@@ -42,6 +42,7 @@ type AnalyticsContextType = {
   updateAnalyticsConsent: (newConsent: ConsentValue) => void;
   analyticsConsent: ConsentValue | undefined;
   posthog: PostHog;
+  setUniqueIdLocalStorage: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 const AnalyticsContext = React.createContext<AnalyticsContextType | null>(null);
@@ -93,6 +94,7 @@ export const AnalyticsProvider = ({
       updateAnalyticsConsent,
       analyticsConsent: consents?.analytics,
       posthog,
+      setUniqueIdLocalStorage: setUniqueId,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [consents, posthog],

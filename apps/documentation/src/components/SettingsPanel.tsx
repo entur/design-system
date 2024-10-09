@@ -48,6 +48,7 @@ const SettingsPanel: React.FC = () => {
     colorMode,
     setColorMode,
   } = useSettings();
+  const { posthog } = useAnalytics();
   const [hasSeenAnalytics, setHasSeenAnalytics] = usePersistedState<boolean>(
     'hide_analytics_tooltip',
     false,
@@ -68,6 +69,15 @@ const SettingsPanel: React.FC = () => {
     };
   }, []);
 
+  const handleDismissAnalyticsTooltip = () => {
+    if (!hasSeenAnalytics) {
+      setHasSeenAnalytics(true);
+      posthog.capture('Dismissed analytics tooltip', {
+        setting_modal_was_open: isOpen,
+      });
+    }
+  };
+
   const showAnalyticsTooltip = React.useMemo(() => {
     return !hasSeenAnalytics;
   }, [hasSeenAnalytics]);
@@ -79,7 +89,7 @@ const SettingsPanel: React.FC = () => {
           placement={'bottom'}
           content={'Hjelp oss å gjøre designsystemet bedre!'}
           isOpen={showAnalyticsTooltip}
-          onClickCloseButton={() => setHasSeenAnalytics(true)}
+          onClickCloseButton={handleDismissAnalyticsTooltip}
           className="settings-panel__tooltip"
         >
           <IconButton
@@ -98,7 +108,7 @@ const SettingsPanel: React.FC = () => {
       <Modal
         open={isOpen}
         onDismiss={() => {
-          setHasSeenAnalytics(true);
+          handleDismissAnalyticsTooltip();
           setOpen(false);
         }}
         title="Innstillinger"
@@ -108,7 +118,7 @@ const SettingsPanel: React.FC = () => {
         <form
           onSubmit={e => {
             e.preventDefault();
-            setHasSeenAnalytics(true);
+            handleDismissAnalyticsTooltip();
             setOpen(false);
           }}
         >
@@ -172,7 +182,7 @@ const SettingsPanel: React.FC = () => {
           <AnalyticsSection
             showBetaSettings={showBetaSettings}
             hasSeenAnalytics={hasSeenAnalytics}
-            setHasSeenAnalytics={setHasSeenAnalytics}
+            handleDismissAnalyticsTooltip={handleDismissAnalyticsTooltip}
           />
           <PrimaryButton
             className="settings-panel__modal__save-button"
@@ -191,13 +201,18 @@ export default SettingsPanel;
 const AnalyticsSection = ({
   showBetaSettings,
   hasSeenAnalytics,
-  setHasSeenAnalytics,
+  handleDismissAnalyticsTooltip,
 }: {
   showBetaSettings: boolean;
   hasSeenAnalytics: boolean;
-  setHasSeenAnalytics: React.Dispatch<React.SetStateAction<boolean>>;
+  handleDismissAnalyticsTooltip: () => void;
 }) => {
-  const { analyticsConsent, updateAnalyticsConsent, posthog } = useAnalytics();
+  const {
+    analyticsConsent,
+    updateAnalyticsConsent,
+    posthog,
+    setUniqueIdLocalStorage,
+  } = useAnalytics();
   const [isEditingUserID, setIsEditingUserID] = useState(false);
   const [isEditingConsent, setIsEditingConsent] = useState(false);
   const [userIDFieldValue, setUserIDFieldValue] = useState(
@@ -209,7 +224,7 @@ const AnalyticsSection = ({
     setIsEditingConsent(false);
     setUserIDFieldValue(posthog?.get_property('$user_id'));
 
-    setHasSeenAnalytics(true);
+    handleDismissAnalyticsTooltip();
   };
   const notDecided =
     analyticsConsent === 'undecided' ||
@@ -294,8 +309,10 @@ const AnalyticsSection = ({
                 type="button"
                 onClick={() => {
                   if (isEditingUserID) {
-                    if (posthog.get_property('$user_id') !== userIDFieldValue)
+                    if (posthog.get_property('$user_id') !== userIDFieldValue) {
                       posthog.identify(userIDFieldValue);
+                      setUniqueIdLocalStorage(userIDFieldValue);
+                    }
                     setIsEditingUserID(false);
                   } else {
                     setIsEditingUserID(true);
