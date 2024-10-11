@@ -20,7 +20,6 @@ import {
   wrapCodeInFragmentIfNecessary,
 } from './playground-utils';
 import { PropsList } from './PropsList';
-
 import theme from './themeForPlayground';
 
 import './Playground.scss';
