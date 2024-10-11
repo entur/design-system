@@ -2059,6 +2059,13 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
+"@mdx-js/react@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-3.0.1.tgz#997a19b3a5b783d936c75ae7c47cfe62f967f746"
+  integrity sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==
+  dependencies:
+    "@types/mdx" "^2.0.0"
+
 "@mischnic/json-sourcemap@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@mischnic/json-sourcemap/-/json-sourcemap-0.1.1.tgz#0ef9b015a8f575dd9a8720d9a6b4dbc988425906"
