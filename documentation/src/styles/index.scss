@@ -1,12 +1,12 @@
-@import './variables';
-@import '../utils/componentColors/designEnturComponentColors.scss';
+@use './variables' as *;
+@use '../utils/componentColors/designEnturComponentColors.scss' as *;
 
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
 
-@import '~@entur/icons/dist/styles.css';
-@import '~@entur/a11y/dist/styles.css';
-@import '~@entur/grid/dist/styles.css';
+@import '@entur/a11y/dist/styles.css';
+@import '@entur/grid/dist/styles.css';
+@import '@entur/icons/dist/styles.css';
 @import '~@entur/tab/dist/styles.css';
 @import '~@entur/typography/dist/styles.css';
 @import '~@entur/layout/dist/styles.css';

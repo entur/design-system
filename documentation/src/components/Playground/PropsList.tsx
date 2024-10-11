@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { AdvancedProps, capitalize } from './playground-utils';
+
 import { Dropdown, NormalizedDropdownItemType } from '@entur/dropdown';
 import {
   Switch,
@@ -6,11 +9,10 @@ import {
   SegmentedControl,
   SegmentedChoice,
 } from '@entur/form';
-import { AdvancedProps, capitalize } from './playground-utils';
 
 import './Playground.scss';
 
-export const PropsList = ({
+const PropsList = ({
   propsState,
   updatePropState,
 }: {
@@ -97,3 +99,5 @@ const PropsController = ({
       return <></>;
   }
 };
+
+export default PropsList;

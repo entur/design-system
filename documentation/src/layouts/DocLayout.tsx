@@ -2,11 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 import { MenuItem } from '../components/Navigations/SideNavigation/utils';
-import { SideNavigation } from '../components/Navigations/SideNavigation/SideNavigation';
-import { MobileSideNavigation } from '../components/Navigations/SideNavigation/MobileSideNavigation';
-import { TableOfContent } from '../components/Navigations/TableOfContent/TableOfContent';
-import { Media } from '../contexts/MediaBreakpoint';
+import SideNavigation from '../components/Navigations/SideNavigation/SideNavigation';
+import MobileSideNavigation from '../components/Navigations/SideNavigation/MobileSideNavigation';
+import TableOfContent from '../components/Navigations/TableOfContent/TableOfContent';
+import { Media } from '../providers/MediaBreakpoint';
 import TopNavigationLayout from './TopNavigationLayout';
+import { MDXProvider } from '@mdx-js/react';
+import components from './MdxProvider-utils';
 interface LayoutProps {
   pageTitle: string;
   children: React.ReactNode;
@@ -56,7 +58,9 @@ const DocLayout: React.FC<LayoutProps> = ({
           'site-content--hidden': openSidebar,
         })}
       >
-        <main id="site-content">{children}</main>
+        <main id="site-content">
+          <MDXProvider components={components}>{children} </MDXProvider>
+        </main>
         <TableOfContent />
       </div>
     </div>

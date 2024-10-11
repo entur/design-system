@@ -1,6 +1,5 @@
+@use '../../../styles/variables' as *;
 @import '~@entur/tokens/dist/styles.scss';
-
-@import '../../../styles/variables';
 
 .mobile-topnav {
   position: absolute;

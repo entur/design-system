@@ -4,6 +4,14 @@ import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
 
 import classNames from 'classnames';
 
+import {
+  AdvancedProps,
+  useAdvancedPlaygroundCode,
+  wrapCodeInFragmentIfNecessary,
+} from './playground-utils';
+import PropsList from './PropsList';
+import theme from './themeForPlayground';
+
 import { Heading5, Label } from '@entur/typography';
 import { Switch } from '@entur/form';
 import { Contrast } from '@entur/layout';
@@ -13,20 +21,10 @@ import { ConditionalWrapper } from '@entur/utils';
 import { componentColors } from '@entur/tokens';
 import { SourceCodeIcon } from '@entur/icons';
 import { packages } from './packages-scope';
-
-import {
-  AdvancedProps,
-  useAdvancedPlaygroundCode,
-  wrapCodeInFragmentIfNecessary,
-} from './playground-utils';
-import { PropsList } from './PropsList';
-
-import theme from './themeForPlayground';
-
 import './Playground.scss';
 
 type PlaygroundProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   language?: Language;
   props?: AdvancedProps[];
   style?: React.CSSProperties;
@@ -37,8 +35,7 @@ type PlaygroundProps = {
   code: string;
   scope?: Record<string, any>;
 };
-
-export const Playground: React.FC<PlaygroundProps> = ({
+const Playground: React.FC<PlaygroundProps> = ({
   code,
   scope = {},
   language = 'jsx',
@@ -156,3 +153,4 @@ export const Playground: React.FC<PlaygroundProps> = ({
     </LiveProvider>
   );
 };
+export default Playground;

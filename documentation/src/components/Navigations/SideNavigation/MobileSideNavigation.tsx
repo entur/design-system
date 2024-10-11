@@ -7,9 +7,9 @@ import classNames from 'classnames';
 import { Heading2 } from '@entur/typography';
 import { space } from '@entur/tokens';
 import { useLocation } from '@reach/router';
-import { SideNavigation } from './SideNavigation';
+import SideNavigation from './SideNavigation';
 import { useContrast } from '@entur/layout';
-import { useSettings } from '../../../contexts/SettingsContext';
+import { useSettings } from '../../../providers/SettingsContext';
 
 import './MobileSideNavigation.scss';
 
@@ -20,12 +20,13 @@ type MobileMenuProps = {
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
+const MobileSideNavigation: React.FC<MobileMenuProps> = ({
   className,
   menuItems,
   openSidebar,
   setOpenSidebar,
 }) => {
+  // todo: add contrast to mobile side navigation
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
@@ -113,3 +114,5 @@ export const MobileSideNavigation: React.FC<MobileMenuProps> = ({
     </>
   );
 };
+
+export default MobileSideNavigation;

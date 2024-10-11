@@ -1,5 +1,5 @@
-@use '~@entur/tokens/dist/base.scss';
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+@import '~@entur/tokens/dist/base.scss';
 
 .content-margin {
   max-width: 1328px;

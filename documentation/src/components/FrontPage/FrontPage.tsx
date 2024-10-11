@@ -10,7 +10,7 @@ import { PrimaryButton } from '@entur/button/dist';
 
 //import Kontakt from '../media/images/frontpage/Kontakt.png';
 //import FrontPageImage from '../media/images/frontpage/FrontpageImage.png';
-import { Media } from '../../contexts/MediaBreakpoint';
+import { Media } from '../../providers/MediaBreakpoint';
 import { OverviewCards } from './FrontPageCards';
 
 import './FrontPage.scss';

@@ -11,9 +11,9 @@ import {
 import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
-import { Media } from '../../contexts/MediaBreakpoint';
+import { Media } from '../../providers/MediaBreakpoint';
 
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '../../providers/SettingsContext';
 
 import './FrontPageFooter.scss';
 
