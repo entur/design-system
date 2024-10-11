@@ -40,6 +40,7 @@
     "@entur/travel": "^6.2.6",
     "@entur/typography": "^1.8.45",
     "@entur/utils": "^0.11.2",
+    "@mdx-js/react": "^3.0.1",
     "classnames": "^2.5.1",
     "fast-fuzzy": "^1.12.0",
     "gatsby": "^5.13.7",
