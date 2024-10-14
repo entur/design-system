@@ -3,8 +3,14 @@
 .eds-datepicker {
   // Overrides for default datefield
   &.eds-datefield {
-    .eds-form-control-wrapper {
-      padding-right: 0rem;
+    &:not(.eds-datepicker--disabled) .eds-form-control {
+      &-wrapper {
+        padding-right: 0rem;
+      }
+
+      &__append {
+        margin-left: auto;
+      }
     }
   }
 
@@ -26,10 +32,6 @@
         background-color: var(--components-button-iconbutton-standard-active);
       }
     }
-  }
-
-  &--disabled {
-    padding-right: 1rem;
   }
 
   &__calendar-modal.eds-modal__content {
