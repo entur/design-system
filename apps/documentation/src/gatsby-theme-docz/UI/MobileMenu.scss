@@ -1,13 +1,12 @@
-@import '../variables';
-
-@import '~@entur/tokens/dist/styles.scss';
+@use './variables' as site-var;
+@use '@entur/tokens/dist/styles.scss' as t;
 
 .mobile-nav-bar {
   position: absolute;
   width: 100%;
   background: var(--designentur-header-default-fill);
-  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
-  transition: position $timings-medium ease-in-out 0.2s;
+  border-bottom: t.$border-widths-default solid var(--designentur-header-default-divider);
+  transition: position t.$timings-medium ease-in-out 0.2s;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
@@ -16,7 +15,7 @@
 
   &--open-sidemenu {
     position: fixed;
-    margin-top: -$navbar-height;
+    margin-top: calc(-1 * site-var.$navbar-height);
   }
   &__menu {
     display: flex;
@@ -28,10 +27,10 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: $font-sizes-extra-large2;
-      padding: $space-extra-small $space-large;
+      font-size: t.$font-sizes-extra-large2;
+      padding: t.$space-extra-small t.$space-large;
       transform: scale(1);
-      transition: transform $timings-medium ease-in-out;
+      transition: transform t.$timings-medium ease-in-out;
       &-open {
         //Slide til venstre og opacity
         transform: scale(0);
@@ -42,18 +41,18 @@
         left: 2rem;
       }
       &:focus {
-        outline: $outlines-focus;
-        outline-offset: $outline-offsets-focus;
+        outline: t.$outlines-focus;
+        outline-offset: t.$outline-offsets-focus;
       }
     }
     &--settings {
       color: inherit;
-      padding: $space-extra-small;
-      font-size: $font-sizes-extra-large2;
+      padding: t.$space-extra-small;
+      font-size: t.$font-sizes-extra-large2;
       flex-grow: 1;
       &:focus {
         outline: none;
-        box-shadow: $shadows-focus;
+        box-shadow: t.$shadows-focus;
       }
     }
   }
@@ -83,7 +82,7 @@
   }
 }
 .mobile-nav-item {
-  padding: $space-medium $space-large;
+  padding: t.$space-medium t.$space-large;
   word-break: keep-all;
   display: flex;
   color: inherit;
@@ -92,7 +91,7 @@
   white-space: nowrap;
   &--active {
     &:after {
-      border-bottom: $border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
+      border-bottom: t.$border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
       content: '';
       display: block;
       position: absolute;
@@ -107,9 +106,9 @@
 .sidebar-mobile {
   position: absolute;
   top: 0;
-  transition: left $timings-slow ease-in-out;
-  z-index: $z-indexes-popover;
+  transition: left t.$timings-slow ease-in-out;
+  z-index: t.$z-indexes-popover;
   height: 100%;
   width: 80%;
-  margin-top: -$navbar-height;
+  margin-top: calc(-1 * site-var.$navbar-height);
 }

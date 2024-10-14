@@ -31,7 +31,11 @@ try {
   });
 
   fs.writeFileSync(
-    path.join(__dirname, componentColorsOutputData[0].outputFileName),
+    path.join(
+      __dirname,
+      '../../gatsby-theme-docz/UI',
+      componentColorsOutputData[0].outputFileName,
+    ),
     componentColorsOutputData[0].outputString,
   );
 } catch (e) {

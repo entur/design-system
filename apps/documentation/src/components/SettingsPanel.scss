@@ -1,6 +1,6 @@
-@use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/tokens/dist/semantic.scss';
-@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/semantic.scss';
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .settings-panel {
   display: flex;

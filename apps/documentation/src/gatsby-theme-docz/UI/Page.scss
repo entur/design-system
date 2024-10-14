@@ -1,9 +1,8 @@
-@use '../src/utils/componentColors/designEnturComponentColors.scss' as *;
-@import './variables';
+@use './designEnturComponentColors.scss' as *;
+@use './variables' as site-var;
 
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/tokens/dist/data.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 @import '~@entur/icons/dist/styles.css';
 @import '~@entur/a11y/dist/styles.css';
@@ -42,30 +41,30 @@ body {
 }
 
 .page {
-  margin-top: $navbar-height;
+  margin-top: site-var.$navbar-height;
   height: 100%;
   width: 100%;
   overflow-y: auto;
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     position: absolute;
-    top: $navbar-height;
-    left: $site-sidebar-width--desktop;
+    top: site-var.$navbar-height;
+    left: site-var.$site-sidebar-width--desktop;
     margin-top: 0;
-    height: calc(100vh - #{$navbar-height});
-    width: calc(100% - #{$site-sidebar-width--desktop});
+    height: calc(100vh - #{site-var.$navbar-height});
+    width: calc(100% - #{site-var.$site-sidebar-width--desktop});
   }
-  @include for-large-desktop {
-    left: $site-sidebar-width--large-desktop;
-    width: calc(100% - #{$site-sidebar-width--large-desktop});
+  @include breakpoint.for-large-desktop {
+    left: site-var.$site-sidebar-width--large-desktop;
+    width: calc(100% - #{site-var.$site-sidebar-width--large-desktop});
   }
   .site-content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin: 3rem $space-extra-large $space-default;
-    transition: max-width $timings-fast ease-out, margin-left $timings-fast ease-out;
+    margin: 3rem t.$space-extra-large t.$space-default;
+    transition: max-width t.$timings-fast ease-out, margin-left t.$timings-fast ease-out;
 
-    @include for-large-desktop {
+    @include breakpoint.for-large-desktop {
       max-width: 45rem;
       margin: 3rem 2rem 1rem Min(8%, 15rem);
     }
@@ -103,7 +102,7 @@ body {
 .ui-menu {
   &--desktop {
     display: none;
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       display: flex;
     }
   }
@@ -112,15 +111,15 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: $z-indexes-sticky;
-    transition: position $timings-medium ease-in-out $timings-medium;
+    z-index: t.$z-indexes-sticky;
+    transition: position t.$timings-medium ease-in-out t.$timings-medium;
     &-not-frontpage {
       background: white;
     }
     &-open-sidemenu {
       position: static;
     }
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       display: none;
     }
   }
@@ -134,7 +133,7 @@ body {
     top: 0;
     z-index: -1;
     height: 42rem;
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       height: 39rem;
     }
   }
@@ -149,10 +148,10 @@ body {
 
 .frontpage-site-content {
   display: flex;
-  margin: $space-default $space-large;
+  margin: t.$space-default t.$space-large;
   flex-direction: column;
   min-height: 90vh;
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     margin: 0 auto 1rem;
     max-width: 64rem;
   }

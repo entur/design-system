@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useCurrentDoc } from 'docz';
 import classNames from 'classnames';
@@ -9,24 +9,17 @@ import SEO from '~/gatsby-theme-docz/base/Seo';
 import FrontPageFooter from '~/components/FrontPageFooter';
 import SiteFooter from '~/components/SiteFooter';
 import { TocNavigation } from '~/components/TocNavigation';
-import { useSettings } from '~/utils/Providers/SettingsContext';
 import { Media } from '~/utils/Providers/MediaBreakpoint';
 
 import Menu from './Menu';
 import MobileMenu from './MobileMenu';
 import { Contrast } from '@entur/layout';
 
+import './Page.scss';
+
 export const Page = ({ children }: { children: React.ReactNode }) => {
-  const { colorMode } = useSettings();
   const isFrontPage = useCurrentDoc().frontpage;
   const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
-
-  useEffect(() => {
-    document.documentElement.setAttribute(
-      'data-color-mode',
-      colorMode ?? 'dark',
-    );
-  }, [colorMode]);
 
   return (
     <>

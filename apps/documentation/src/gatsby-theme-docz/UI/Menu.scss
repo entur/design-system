@@ -1,8 +1,8 @@
-@use '~@entur/tokens/dist/base.scss';
-@use '../variables' as vars;
+@use '@entur/tokens/dist/base.scss';
+@use '../../gatsby-theme-docz/UI/variables' as site-var;
 
-@use '~@entur/tokens/dist/styles.scss' as t;
-@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .top-navigation {
   display: flex;
@@ -13,7 +13,7 @@
   width: 100%;
   padding: 1rem 1rem 0rem;
   transition: margin-left t.$timings-fast ease-out;
-  height: vars.$navbar-height;
+  height: site-var.$navbar-height;
   z-index: t.$z-indexes-popover;
 
   .eds-contrast & {

@@ -58,6 +58,13 @@ export const SettingsProvider: React.FC = props => {
     'light',
   );
 
+  React.useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-color-mode',
+      colorMode ?? 'dark',
+    );
+  }, [colorMode]);
+
   const contextValue = React.useMemo(
     () => ({
       variableFormat,
