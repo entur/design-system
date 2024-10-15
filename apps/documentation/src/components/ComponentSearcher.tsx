@@ -4,7 +4,7 @@ import { space } from '@entur/tokens';
 import {
   allComponentsAlphabetically,
   ComponentRepresentationType,
-} from '../utils/componentList';
+} from '~/utils/componentList';
 import { Heading3 } from '@entur/typography';
 
 type ComponentSearcherProps = {

@@ -9,7 +9,7 @@ import {
   shift,
   arrow,
   limitShift,
-} from '@floating-ui/react-dom';
+} from '@floating-ui/react';
 
 import { useRandomId } from '@entur/utils';
 import { CloseIcon } from '@entur/icons';
@@ -53,6 +53,10 @@ export type TooltipProps = {
   children: React.ReactElement;
   /** Om tooltip-en skal vises */
   isOpen?: boolean;
+  /** Callback-funksjon for når brukeren trykker på lukk-tooltip-knappen
+   * @default () => undefined;
+   */
+  onClickCloseButton?: () => void;
   /** Ekstra klassenavn for tooltip */
   className?: string;
   /** Åpner ikke tooltip ved hover-events
@@ -71,6 +75,15 @@ export type TooltipProps = {
   showCloseButton?: boolean;
   /** Valideringsvariant for Tooltip */
   variant?: 'negative' | typeof error;
+  /** For å kontrollere tiden i millisekunder det tar før tooltip-en
+   *  vises etter hover, og hvor lang tid det tar før den lukkes etter
+   *  hover-slutt.
+   *  @default { enter: 150, leave: 300 }
+   */
+  hoverDelay?: {
+    enter?: number;
+    leave?: number;
+  };
   /** @deprecated Ikke lenger støttet. Meld fra på #talk-designsystem hvis du trenger støtte for
    * overskrivinger av plasseringen til Tooltip!
    */
@@ -83,21 +96,25 @@ export const Tooltip: React.FC<TooltipProps> = ({
   content,
   children,
   className,
-  isOpen = false,
+  isOpen,
+  onClickCloseButton = () => undefined,
   disableHoverListener = false,
   disableFocusListener = false,
   disableKeyboardListener = true,
   disableClickListner = true,
   showCloseButton = true,
   variant,
+  hoverDelay,
   style,
   ...rest
 }) => {
-  const [showTooltip, setShowTooltip] = useState(isOpen);
+  const [showTooltip, setShowTooltip] = useState(isOpen ?? false);
   const tooltipArrowRef = useRef(null);
   const tooltipId = useRandomId('eds-tooltip');
   const hoverOpenTimer = useRef<ReturnType<typeof setTimeout>>();
   const hoverCloseTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  const isControlled = isOpen !== undefined;
 
   // calculations for floating-UI tooltip position
   const {
@@ -105,10 +122,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
     floatingStyles,
     middlewareData,
     placement: actualPlacement,
+    isPositioned,
   } = useFloating({
     whileElementsMounted: (ref, float, update) =>
       autoUpdate(ref, float, update),
     placement: standardisePlacement(placement),
+    open: showTooltip,
     middleware: [
       offset(space.extraSmall),
       flip(),
@@ -121,17 +140,19 @@ export const Tooltip: React.FC<TooltipProps> = ({
   });
 
   const onMouseEnter = () => {
+    if (isControlled) return;
     clearTimeout(hoverCloseTimer.current);
     hoverOpenTimer.current = setTimeout(() => {
       setShowTooltip(true);
-    }, 150);
+    }, hoverDelay?.enter ?? 150);
   };
 
   const onMouseLeave = () => {
+    if (isControlled) return;
     clearTimeout(hoverOpenTimer.current);
     hoverCloseTimer.current = setTimeout(() => {
       setShowTooltip(false);
-    }, 300);
+    }, hoverDelay?.leave ?? 300);
   };
 
   React.useEffect(() => {
@@ -141,29 +162,42 @@ export const Tooltip: React.FC<TooltipProps> = ({
     };
   }, []);
 
+  React.useEffect(() => {
+    if (isOpen !== undefined) setShowTooltip(isOpen);
+  }, [isOpen]);
+
   const referenceListenerProps: ChildEventListner = {
     'aria-describedby': showTooltip ? tooltipId : undefined,
     // focusListner
-    ...(!disableFocusListener && { onFocus: () => setShowTooltip(true) }),
-    ...(!disableFocusListener && { onBlur: () => setShowTooltip(false) }),
+    ...(!disableFocusListener &&
+      !isControlled && { onFocus: () => setShowTooltip(true) }),
+    ...(!disableFocusListener &&
+      !isControlled && { onBlur: () => setShowTooltip(false) }),
     // hoverListner
-    ...(!disableHoverListener && { onMouseEnter }),
-    ...(!disableHoverListener && { onMouseLeave }),
+    ...(!disableHoverListener && !isControlled && { onMouseEnter }),
+    ...(!disableHoverListener && !isControlled && { onMouseLeave }),
     // keyboardListner
-    ...(!disableKeyboardListener && {
-      onKeyDown: e => {
-        if (e.key === 'Escape') setShowTooltip(false);
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault();
-          setShowTooltip(!showTooltip);
-        }
-      },
-    }),
+    ...(!disableKeyboardListener &&
+      !isControlled && {
+        onKeyDown: e => {
+          if (e.key === 'Escape') setShowTooltip(false);
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            setShowTooltip(!showTooltip);
+          }
+        },
+      }),
     // clickListner
-    ...(!disableClickListner && {
-      onClick: () => setShowTooltip(!showTooltip),
-    }),
+    ...(!disableClickListner &&
+      !isControlled && {
+        onClick: () => setShowTooltip(!showTooltip),
+      }),
   };
+
+  const displayTooltipStyle =
+    (!isControlled || isPositioned) && showTooltip && content
+      ? undefined
+      : 'none';
 
   return (
     <>
@@ -178,7 +212,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         ref={refs.setFloating}
         style={{
           ...floatingStyles,
-          display: showTooltip && content ? undefined : 'none',
+          display: displayTooltipStyle,
           ...style,
         }}
         role="tooltip"
@@ -191,7 +225,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
         {isOpen && showCloseButton && (
           <IconButton
             className="eds-tooltip__close-button"
-            onClick={() => setShowTooltip(false)}
+            onClick={() => {
+              setShowTooltip(false);
+              onClickCloseButton();
+            }}
             type="button"
             aria-label="Lukk tooltip"
           >

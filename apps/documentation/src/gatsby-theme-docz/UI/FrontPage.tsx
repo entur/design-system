@@ -16,7 +16,7 @@ import { PrimaryButton } from '@entur/button/dist';
 import Kontakt from './Kontakt.png';
 import FrontPageImage from './FrontpageImage.png';
 import './FrontPage.scss';
-import { Media } from '~/utils/MediaBreakpoint';
+import { Media } from '~/utils/Providers/MediaBreakpoint';
 
 export const FrontPage = () => {
   return (

@@ -12,7 +12,7 @@ import { CodeText } from '@entur/typography';
 import { formatVariable, formatTokenValue } from '~/utils/formatVariable';
 import { flatten } from '~/utils/flatten';
 import { CopyButton } from '../CopyButton';
-import { useSettings } from '../SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 
 import { AllTokensTableProps } from './types';
 

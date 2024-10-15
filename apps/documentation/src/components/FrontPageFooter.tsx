@@ -12,11 +12,11 @@ import {
 import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
-import { Media } from '~/utils/MediaBreakpoint';
+import { Media } from '~/utils/Providers/MediaBreakpoint';
 import logo from '~/components/logo.svg';
 import logoDark from '~/components/logoDark.svg';
 
-import { useSettings } from './SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 
 import './FrontPageFooter.scss';
 

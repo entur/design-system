@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCurrentDoc } from 'docz';
-import { useSettings } from '~/components/SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import { CopyableText } from '@entur/alert';
 
 type Props = {

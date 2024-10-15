@@ -11,7 +11,7 @@ import {
   DataCell,
 } from '@entur/table';
 import { ExpandableText } from '@entur/expand';
-import { useSettings } from './SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import './Props.scss';
 
 // removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.

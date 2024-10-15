@@ -3,7 +3,7 @@ const path = require('path');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const fs = require('fs-extra');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
-const fetch = require(`node-fetch`);
+const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- disabled when we turned on linting for all files in the project
 const crypto = require('crypto');
 
@@ -68,16 +68,16 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
       const result = await data.json();
       createNode({
         name: thePackage,
-        parent: `__SOURCE__`,
+        parent: '__SOURCE__',
         children: [],
         id: createNodeId(thePackage),
         version: result['dist-tags'].latest,
         internal: {
           type: 'NpmPackage',
           contentDigest: crypto
-            .createHash(`md5`)
+            .createHash('md5')
             .update(result['dist-tags'].latest)
-            .digest(`hex`),
+            .digest('hex'),
         },
       });
     }),

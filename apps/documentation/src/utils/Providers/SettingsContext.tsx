@@ -15,7 +15,8 @@ export function usePersistedState<Type>(
   // done this way to keep the type definition intact
   const [state] = useStateResult;
   React.useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
+    if (!state) localStorage.removeItem(key);
+    else localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
   return useStateResult;
 }
@@ -56,6 +57,13 @@ export const SettingsProvider: React.FC = props => {
     'color-mode',
     'light',
   );
+
+  React.useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-color-mode',
+      colorMode ?? 'dark',
+    );
+  }, [colorMode]);
 
   const contextValue = React.useMemo(
     () => ({

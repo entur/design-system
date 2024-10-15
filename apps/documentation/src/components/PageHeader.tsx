@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCurrentDoc } from 'docz';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
-import { useSettings } from './SettingsContext';
+import { useSettings } from '~/utils/Providers/SettingsContext';
 import { PackageChangelog } from '../gatsby-theme-docz/components/PackageChangelog';
 import './PageHeader.scss';
 import { NpmTag } from '../gatsby-theme-docz/components/NpmTag';
