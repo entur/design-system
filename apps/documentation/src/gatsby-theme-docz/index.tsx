@@ -54,6 +54,7 @@ const App: React.FC = ({ children }) => {
   // useEffect to only initialise posthog in browser environment,
   // not during gatsby build
   useEffect(() => {
+    if (posthog.__loaded) return;
     posthog.init(POSTHOG_API_KEY, deniedPosthogOptions);
   }, []);
 

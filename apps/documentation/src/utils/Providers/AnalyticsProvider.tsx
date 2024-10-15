@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { PostHogConfig } from 'posthog-js';
 import { usePostHog } from 'posthog-js/react';
 import type { PostHog } from 'posthog-js/react';
+import { useLocation } from '@reach/router';
 import { usePersistedState } from './SettingsContext';
 import { useConsent } from './ConsentProvider';
 
@@ -58,9 +59,14 @@ export const AnalyticsProvider = ({
     'entur_ds_unique_id',
     null,
   );
+  const location = useLocation();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => updateAnalyticsConsent(consents?.analytics), []);
+
+  useEffect(() => {
+    if (posthog.__loaded) posthog.capture('$pageview');
+  }, [location.href, posthog]);
 
   const updateAnalyticsConsent = (newConsent: ConsentValue) => {
     switch (newConsent) {
