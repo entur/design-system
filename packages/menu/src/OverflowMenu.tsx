@@ -137,6 +137,7 @@ export const OverflowMenu = ({
             onClick: () => setIsOpen(!isOpen),
             className,
             'aria-label': ariaLabel,
+            type: 'button',
           })}
           {...rest}
         >
@@ -149,6 +150,7 @@ export const OverflowMenu = ({
             onClick: () => setIsOpen(!isOpen),
             className,
             'aria-label': ariaLabel,
+            type: 'button',
           }),
           ...rest,
         })
@@ -221,6 +223,7 @@ export const OverflowMenuItem = ({
         className,
       )}
       role="menuitem"
+      type={Element === 'button' ? 'button' : undefined}
       aria-disabled={disabled}
       aria-selected={isHighlighted}
       {...getItemProps({
