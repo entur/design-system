@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.6...@entur/datepicker@10.0.7) (2024-10-16)
+
+### Bug Fixes
+
+- **datepicker:** fix styling for disabled datepicker ([089597f](https://bitbucket.org/enturas/design-system/commits/089597fa29f30bb6fd4c7bd49e09305c7d52e4ce))
+
 ## [10.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.4...@entur/datepicker@10.0.6) (2024-10-03)
 
 ### Bug Fixes

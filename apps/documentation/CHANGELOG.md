@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@4.0.4...@entur/documentation@4.0.5) (2024-10-16)
+
+### Bug Fixes
+
+- **analytics:** fix posthog not capturing pageviews ([d3863cd](https://bitbucket.org/enturas/design-system/commits/d3863cd25e6e12abb315cc03b7a88f0e973e48b8))
+
+### Performance Improvements
+
+- **documentation site:** refactor code for improved performance and cleaner code ([f37bdbd](https://bitbucket.org/enturas/design-system/commits/f37bdbd166d879b4c2389064b3c11032bcbdb8e1))
+
 ## [4.0.4](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@4.0.3...@entur/documentation@4.0.4) (2024-10-03)
 
 **Note:** Version bump only for package @entur/documentation

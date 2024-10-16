@@ -1,6 +1,6 @@
 {
   "name": "@entur/menu",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/menu.esm.js",
@@ -33,7 +33,7 @@
     "@entur/icons": "^7.4.1",
     "@entur/layout": "^2.3.17",
     "@entur/tokens": "^3.17.1",
-    "@entur/tooltip": "^5.0.0",
+    "@entur/tooltip": "^5.1.0",
     "@entur/typography": "^1.8.46",
     "@entur/utils": "^0.12.0",
     "@floating-ui/react": "^0.26.23",

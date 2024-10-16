@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.3...@entur/form@8.1.4) (2024-10-16)
+
+**Note:** Version bump only for package @entur/form
+
 ## [8.1.3](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.1...@entur/form@8.1.3) (2024-10-03)
 
 ### Bug Fixes

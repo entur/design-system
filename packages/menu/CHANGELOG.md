@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://bitbucket.org/enturas/design-system/compare/@entur/menu@5.0.1...@entur/menu@5.0.2) (2024-10-16)
+
+### Bug Fixes
+
+- **overflow menu:** add missing type="button" to overfow menu buttons ([d41c5e8](https://bitbucket.org/enturas/design-system/commits/d41c5e8cab0d452fa629a62c2a5601b9e29bc787))
+
 ## [5.0.1](https://bitbucket.org/enturas/design-system/compare/@entur/menu@5.0.0...@entur/menu@5.0.1) (2024-10-03)
 
 ### Bug Fixes

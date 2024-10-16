@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@5.0.0...@entur/tooltip@5.1.0) (2024-10-16)
+
+### Bug Fixes
+
+- **tooltip:** fix isOpen-prop not behaving as intended ([551b25c](https://bitbucket.org/enturas/design-system/commits/551b25c5e53655654dbcc3ceb3cdd7827808b01f))
+
+### Features
+
+- **tooltip:** add new prop hoverDelay to control delay for showing and hiding tooltip ([e124a70](https://bitbucket.org/enturas/design-system/commits/e124a7021dbedef1c41b61382d6dbc22b36685df))
+- **tooltip:** add onClickCloseButton prop ([9f986af](https://bitbucket.org/enturas/design-system/commits/9f986afd46b6393df53220e69c05e49fa658d9bd))
+
 # [5.0.0](https://bitbucket.org/enturas/design-system/compare/@entur/tooltip@4.0.1...@entur/tooltip@5.0.0) (2024-10-03)
 
 ### Performance Improvements
