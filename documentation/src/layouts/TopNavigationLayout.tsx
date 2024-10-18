@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TopNavigation from '../components/Navigations/TopNavigation/TopNavigation';
-import { Media } from '../contexts/MediaBreakpoint';
-import { MobileTopNavigation } from '../components/Navigations/TopNavigation/MobileTopNavigation';
+import { Media } from '../providers/MediaBreakpoint';
+import MobileTopNavigation from '../components/Navigations/TopNavigation/MobileTopNavigation';
 
 const TopNavigationLayout: React.FC = () => {
   return (

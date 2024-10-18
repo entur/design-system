@@ -1,7 +1,6 @@
+@use '../../../styles/variables' as *;
 @import '~@entur/tokens/dist/styles.scss';
 @import '~@entur/utils/dist/breakpoints.scss';
-
-@import '../../../styles/variables';
 
 .mobile-side-navigation {
   position: fixed;

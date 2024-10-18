@@ -93,7 +93,7 @@ const flattenHeadings = (
   }, []);
 };
 
-export const TableOfContent = () => {
+const TableOfContent = () => {
   const location = useLocation();
   const data: TableOfContentQuery = useStaticQuery(graphql`
     query TocNavigationQuery {

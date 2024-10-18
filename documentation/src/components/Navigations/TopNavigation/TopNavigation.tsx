@@ -6,7 +6,7 @@ import { useContrast } from '@entur/layout';
 import classNames from 'classnames';
 
 import SettingsPanel from '../SettingsPanel';
-import { useSettings } from '../../../contexts/SettingsContext';
+import { useSettings } from '../../../providers/SettingsContext';
 
 import './TopNavigation.scss';
 

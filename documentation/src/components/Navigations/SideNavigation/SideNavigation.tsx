@@ -17,8 +17,8 @@ import {
   sorters,
   useSideMenuScroll,
 } from './utils';
-import { Media } from '../../../contexts/MediaBreakpoint';
-import { SearchBar } from './SearchBar';
+import { Media } from '../../../providers/MediaBreakpoint';
+import SearchBar from './SearchBar';
 
 import './SideNavigation.scss';
 
@@ -29,7 +29,7 @@ type SideNavigationProps = {
   openSidebar?: boolean;
 };
 
-export const SideNavigation: React.FC<SideNavigationProps> = ({
+const SideNavigation: React.FC<SideNavigationProps> = ({
   mobile = false,
   openSidebar = false,
   menuItems,
@@ -162,3 +162,5 @@ export const SideNavigation: React.FC<SideNavigationProps> = ({
     </div>
   );
 };
+
+export default SideNavigation;

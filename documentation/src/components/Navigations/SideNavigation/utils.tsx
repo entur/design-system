@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePersistedState } from '../../../contexts/SettingsContext';
+import { usePersistedState } from '../../../providers/SettingsContext';
 
 export type MenuItem = {
   id: string;
