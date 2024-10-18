@@ -16,7 +16,7 @@ type SearchBarProps = {
   className?: string;
 };
 
-export const SearchBar: React.FC<SearchBarProps> = ({
+const SearchBar: React.FC<SearchBarProps> = ({
   searchText,
   onSearchTextChange,
   className,
@@ -77,3 +77,5 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     </div>
   );
 };
+
+export default SearchBar;

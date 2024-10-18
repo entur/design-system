@@ -5,7 +5,7 @@ import { Location } from '@reach/router';
 import { Contrast, useContrast } from '@entur/layout';
 
 import SettingsPanel from '../SettingsPanel';
-import { useSettings } from '../../../contexts/SettingsContext';
+import { useSettings } from '../../../providers/SettingsContext';
 
 import './MobileTopNav.scss';
 
@@ -14,12 +14,12 @@ type MobileTopNavigationProps = {
   className?: string;
   [key: string]: any;
 };
-export const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
+const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   frontPage,
   className,
   ...rest
 }) => {
-  //TODO
+  //TODO add contrast to mobile topnav
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
@@ -59,6 +59,7 @@ export const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
     </>
   );
 };
+export default MobileTopNavigation;
 
 type MobileNavItemProps = {
   to: string;

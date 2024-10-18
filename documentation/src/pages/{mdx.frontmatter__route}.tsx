@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import DocLayout from '../layouts/DocLayout';
 import { SEO } from '../components/seo/SEO';
-import { SettingsProvider, useSettings } from '../contexts/SettingsContext';
-import { useEffect } from 'react';
-import { MediaContextProvider } from '../contexts/MediaBreakpoint';
+import { useSettings } from '../providers/SettingsContext';
 
 interface DocsRouteProps {
   children: React.ReactNode;
@@ -33,11 +32,7 @@ const DocsRouteContent: React.FC<DocsRouteProps> = ({ data, children }) => {
 
 // TODO Fix errors on SettingsProvider and MediaContextProvider
 const DocsRoute: React.FC<DocsRouteProps> = props => (
-  <SettingsProvider>
-    <MediaContextProvider>
-      <DocsRouteContent {...props} />
-    </MediaContextProvider>
-  </SettingsProvider>
+  <DocsRouteContent {...props} />
 );
 
 export const query = graphql`
