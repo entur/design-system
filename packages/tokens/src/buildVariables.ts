@@ -195,7 +195,9 @@ ${needsRoot ? '}' : ''}
     const asStatement = includeAs ? ' as *' : '';
     const importStatements = fileNames.map(fileName => {
       const importPath = `'@entur/tokens/dist/${fileName}.${extension}'`;
-      return `${IMPORT_SYNTAX[extension]} ${importPath}${asStatement};`;
+      return `${extension === 'scss' ? '@forward ' + importPath + ';\n' : ''}${
+        IMPORT_SYNTAX[extension]
+      } ${importPath}${asStatement};`;
     });
 
     return importStatements.join('\n');
