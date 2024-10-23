@@ -191,8 +191,8 @@ ${needsRoot ? '}' : ''}
     extension: 'css' | 'scss' | 'less';
     includeAs?: boolean;
   }) {
-    const IMPORT_SYNTAX = { css: '@import', scss: '@use', less: '@import' };
-    const asStatement = includeAs ? ' as *' : '';
+    const IMPORT_SYNTAX = { css: '@import', scss: '@forward', less: '@import' };
+    const asStatement = includeAs ? '' : '';
     const importStatements = fileNames.map(fileName => {
       const importPath = `'@entur/tokens/dist/${fileName}.${extension}'`;
       return `${IMPORT_SYNTAX[extension]} ${importPath}${asStatement};`;
