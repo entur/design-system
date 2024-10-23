@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.8-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.7...@entur/datepicker@10.0.8-beta.0) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** switch from [@use](https://bitbucket.org/use) to [@forward](https://bitbucket.org/forward) in scss stylesheets ([cfb5331](https://bitbucket.org/enturas/design-system/commits/cfb533180b8d59ca455b26652586284fa1d8c125))
+
 ## [10.0.7](https://bitbucket.org/enturas/design-system/compare/@entur/datepicker@10.0.6...@entur/datepicker@10.0.7) (2024-10-16)
 
 ### Bug Fixes

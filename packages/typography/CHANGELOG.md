@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.47-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.46...@entur/typography@1.8.47-beta.0) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** switch from [@use](https://bitbucket.org/use) to [@forward](https://bitbucket.org/forward) in scss stylesheets ([cfb5331](https://bitbucket.org/enturas/design-system/commits/cfb533180b8d59ca455b26652586284fa1d8c125))
+
 ## [1.8.46](https://bitbucket.org/enturas/design-system/compare/@entur/typography@1.8.45...@entur/typography@1.8.46) (2024-10-03)
 
 **Note:** Version bump only for package @entur/typography

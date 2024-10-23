@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.2-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.17.1...@entur/tokens@3.17.2-beta.0) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** switch from [@use](https://bitbucket.org/use) to [@forward](https://bitbucket.org/forward) in scss stylesheets ([cfb5331](https://bitbucket.org/enturas/design-system/commits/cfb533180b8d59ca455b26652586284fa1d8c125))
+
 ## [3.17.1](https://bitbucket.org/enturas/design-system/compare/@entur/tokens@3.17.0...@entur/tokens@3.17.1) (2024-10-03)
 
 **Note:** Version bump only for package @entur/tokens
