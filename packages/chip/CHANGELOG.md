@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.23](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.7.22...@entur/chip@0.7.23) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** add [@forward](https://bitbucket.org/forward) export in scss stylesheets that import scss variabels ([7141592](https://bitbucket.org/enturas/design-system/commits/71415926888eda23e02efaf98a611043f9fd9b2f))
+
 ## [0.7.22](https://bitbucket.org/enturas/design-system/compare/@entur/chip@0.7.21...@entur/chip@0.7.22) (2024-10-16)
 
 **Note:** Version bump only for package @entur/chip

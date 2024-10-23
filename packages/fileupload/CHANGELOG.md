@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.128](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.127...@entur/fileupload@0.3.128) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** add [@forward](https://bitbucket.org/forward) export in scss stylesheets that import scss variabels ([7141592](https://bitbucket.org/enturas/design-system/commits/71415926888eda23e02efaf98a611043f9fd9b2f))
+
 ## [0.3.127](https://bitbucket.org/enturas/design-system/compare/@entur/fileupload@0.3.126...@entur/fileupload@0.3.127) (2024-10-03)
 
 **Note:** Version bump only for package @entur/fileupload

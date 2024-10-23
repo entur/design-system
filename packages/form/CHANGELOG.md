@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.5](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.4...@entur/form@8.1.5) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** add [@forward](https://bitbucket.org/forward) export in scss stylesheets that import scss variabels ([7141592](https://bitbucket.org/enturas/design-system/commits/71415926888eda23e02efaf98a611043f9fd9b2f))
+
 ## [8.1.4](https://bitbucket.org/enturas/design-system/compare/@entur/form@8.1.3...@entur/form@8.1.4) (2024-10-16)
 
 **Note:** Version bump only for package @entur/form

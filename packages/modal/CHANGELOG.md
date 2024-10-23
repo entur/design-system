@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.55](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.54...@entur/modal@1.7.55) (2024-10-23)
+
+### Bug Fixes
+
+- **tokens:** add [@forward](https://bitbucket.org/forward) export in scss stylesheets that import scss variabels ([7141592](https://bitbucket.org/enturas/design-system/commits/71415926888eda23e02efaf98a611043f9fd9b2f))
+
 ## [1.7.54](https://bitbucket.org/enturas/design-system/compare/@entur/modal@1.7.53...@entur/modal@1.7.54) (2024-10-03)
 
 **Note:** Version bump only for package @entur/modal
