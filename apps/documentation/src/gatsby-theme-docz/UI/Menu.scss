@@ -7,6 +7,7 @@
 .top-navigation {
   display: flex;
   align-items: center;
+  gap: 2rem;
   overflow-x: scroll;
   background: var(--designentur-header-default-fill);
   border-bottom: t.$border-widths-default solid var(--designentur-header-default-divider);
@@ -28,8 +29,14 @@
     overflow-x: initial;
     padding: t.$space-extra-large2 0 t.$space-extra-large2 t.$space-extra-large2;
     justify-content: flex-start;
+
+    > .eds-top-navigation-item {
+      min-width: unset;
+      padding: unset;
+    }
+
     &__logo {
-      margin-right: 3rem;
+      margin-right: 2rem;
       &:focus {
         outline: none;
         box-shadow: t.$shadows-focus;
