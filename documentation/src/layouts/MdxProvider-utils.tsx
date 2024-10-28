@@ -1,5 +1,23 @@
 import * as React from 'react';
+import Props from '../components/Props/Props';
 import Playground from '../components/Playground/Playground';
+
+import {
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  Paragraph,
+  PreformattedText,
+  StrongText,
+  CodeText,
+  UnorderedList,
+  ListItem,
+  NumberedList,
+  Link as LinkText,
+} from '@entur/typography';
 
 const preToCodeBlock = preProps => {
   if (
@@ -28,19 +46,32 @@ const preToCodeBlock = preProps => {
   return undefined;
 };
 
-// These components are used in the MDXProvider in the DocLayout file.
-// We will not have to import these components in every MDX file.
-
+// Mapping styles and global import components for MDX-files
+// components are used in the MDXProvider in the DocLayout file.
 const components = {
+  h1: Heading1,
+  h2: Heading2,
+  h3: Heading3,
+  h4: Heading4,
+  h5: Heading5,
+  h6: Heading6,
+  p: Paragraph,
+  a: LinkText,
+  strong: StrongText,
+  inlineCode: CodeText,
+  ul: UnorderedList,
+  li: ListItem,
+  ol: NumberedList,
+  Playground,
+  Props,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
     if (props) {
       return <Playground code={props.codeString} language={props.language} />;
     } else {
-      return <pre {...preProps} />;
+      return <PreformattedText {...preProps} />;
     }
   },
-
-  Playground,
 };
+
 export default components;
