@@ -13,6 +13,7 @@
     "prebuild": "yarn generate-props",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "clean-start": "yarn clean && yarn start",
     "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts",
     "generate-props": "tsx src/components/Props/generate-props.ts"
   },
@@ -40,7 +41,7 @@
     "@entur/travel": "^6.2.6",
     "@entur/typography": "^1.8.45",
     "@entur/utils": "^0.11.2",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/react": "^3.1.0",
     "classnames": "^2.5.1",
     "fast-fuzzy": "^1.12.0",
     "gatsby": "^5.13.7",
