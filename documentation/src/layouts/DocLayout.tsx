@@ -8,6 +8,7 @@ import TableOfContent from '../components/Navigations/TableOfContent/TableOfCont
 import { Media } from '../providers/MediaBreakpoint';
 import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
+import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
 interface LayoutProps {
   pageTitle: string;
@@ -59,7 +60,9 @@ const DocLayout: React.FC<LayoutProps> = ({
         })}
       >
         <main id="site-content">
-          <MDXProvider components={components}>{children} </MDXProvider>
+          <MDXProvider components={components as MDXComponents}>
+            {children}
+          </MDXProvider>
         </main>
         <TableOfContent />
       </div>
