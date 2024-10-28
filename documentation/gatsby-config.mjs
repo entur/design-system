@@ -30,7 +30,10 @@ const config = {
           },
           {
             resolve: `gatsby-remark-autolink-headers`,
-            options: {},
+            options: {
+              className: `gatsby-header-links`,
+              icon: false,
+            },
           },
         ],
       },
