@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
 
 .color-swatch {
   border: none;
@@ -9,8 +9,7 @@
   background: $colors-brand-white;
   cursor: pointer;
   font-family: inherit;
-  transition: box-shadow $timings-medium ease-in-out,
-    transform $timings-medium ease-in-out;
+  transition: box-shadow $timings-medium ease-in-out, transform $timings-medium ease-in-out;
   &:hover {
     box-shadow: $shadows-card-shadow-hover;
     transform: translateY(-$space-extra-small2);

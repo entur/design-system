@@ -1,6 +1,6 @@
-@use '@entur/tokens/dist/semantic.scss' as semantic;
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/semantic.scss' as semantic;
+@use '~@entur/tokens/dist/styles.scss' as *;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .token {
   &-content {
@@ -13,7 +13,7 @@
       align-items: flex-start;
       margin-bottom: $space-medium;
 
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         margin: 0;
       }
       &__example {
@@ -21,7 +21,7 @@
         width: 96px;
         height: 32px;
 
-        @include for-large-desktop {
+        @include breakpoint.for-large-desktop {
           width: 32px;
         }
       }
@@ -38,7 +38,7 @@
       width: 96px;
       height: 32px;
 
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         width: 32px;
       }
     }
@@ -64,7 +64,7 @@
       line-height: 20px;
       gap: $space-extra-small2;
       width: 100%;
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         min-width: 145px;
         max-width: 184px;
       }
@@ -78,7 +78,7 @@
         height: 2rem;
         margin-left: $space-small;
         width: 100%;
-        @include for-large-desktop {
+        @include breakpoint.for-large-desktop {
           justify-content: space-around;
         }
       }
@@ -141,13 +141,13 @@
       margin-bottom: $space-medium;
       padding: $space-medium;
 
-      @include for-desktop {
+      @include breakpoint.for-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 2rem;
         gap: $space-large;
       }
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-bottom: $space-extra-large;

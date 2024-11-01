@@ -1,11 +1,11 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/tokens/dist/semantic.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/tokens/dist/base.scss' as *;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .designentur-base-card {
   appearance: none;
   text-decoration: none;
-  margin-bottom: $space-extra-large3;
+  margin-bottom: t.$space-extra-large3;
 
   &:has(&__arrow) {
     margin-bottom: 0;
@@ -15,7 +15,7 @@
     text-align: center;
     color: var(--basecolors-stroke-subdued);
     height: 2rem;
-    margin-top: $space-extra-small;
+    margin-top: t.$space-extra-small;
   }
 
   &__content {
@@ -23,10 +23,10 @@
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
-    padding: $space-large;
+    padding: t.$space-large;
     background-color: var(--designentur-basecard-default-fill-tint);
-    border: $border-widths-small solid var(--designentur-basecard-default-border);
-    border-radius: $border-radiuses-medium;
+    border: t.$border-widths-small solid var(--designentur-basecard-default-border);
+    border-radius: t.$border-radiuses-medium;
 
     .eds-contrast & {
       background-color: var(--designentur-basecard-contrast-fill-tint);
@@ -54,7 +54,7 @@
       width: 100%;
       height: auto;
 
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         width: 30rem;
         height: auto;
         margin: 0 auto;
@@ -63,7 +63,7 @@
     &--small {
       width: 100%;
       height: auto;
-      @include for-large-desktop {
+      @include breakpoint.for-large-desktop {
         width: 20rem;
         height: auto;
         margin: 0 auto;
@@ -92,5 +92,5 @@
   background-color: var(--designentur-basecard-default-fill-tint);
   border: 0.0625rem solid var(--designentur-basecard-default-border);
   border-radius: 0.25rem;
-  margin-bottom: $space-extra-large3;
+  margin-bottom: t.$space-extra-large3;
 }

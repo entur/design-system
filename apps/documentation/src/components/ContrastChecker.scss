@@ -1,31 +1,31 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .contrast-checker {
   &__container {
-    margin-top: $space-extra-large;
+    margin-top: t.$space-extra-large;
   }
   &__calculator {
     display: grid;
     grid-template-columns: 1fr;
-    @include for-large-desktop {
+    @include breakpoint.for-large-desktop {
       grid-template-columns: 3fr 1fr;
     }
-    grid-gap: $space-large;
-    margin-bottom: $space-extra-large4;
+    grid-gap: t.$space-large;
+    margin-bottom: t.$space-extra-large4;
   }
   &__ratio {
-    border-width: $border-widths-medium;
+    border-width: t.$border-widths-medium;
     border-style: solid;
-    padding: $space-extra-large2;
+    padding: t.$space-extra-large2;
     &-header {
-      font-size: $font-sizes-extra-large2;
+      font-size: t.$font-sizes-extra-large2;
       text-align: center;
     }
     &-ratio {
-      font-weight: $font-weights-heading;
-      font-size: $font-sizes-extra-large5;
-      line-height: $line-heights-extra-large7;
+      font-weight: t.$font-weights-heading;
+      font-size: t.$font-sizes-extra-large5;
+      line-height: t.$line-heights-extra-large7;
       text-align: center;
     }
   }
@@ -37,7 +37,7 @@
 
 .color-pickers-container {
   display: grid;
-  grid-gap: $space-medium;
+  grid-gap: t.$space-medium;
   grid-template-columns: auto 2.75rem auto;
 }
 
@@ -49,17 +49,17 @@
 .contrast-preview {
   &__container {
     display: grid;
-    grid-gap: $space-medium;
+    grid-gap: t.$space-medium;
     grid-template-columns: 3fr 1fr;
-    margin-top: $space-large;
+    margin-top: t.$space-large;
   }
   &__small-text {
-    padding: $space-large;
+    padding: t.$space-large;
   }
   &__large-text {
-    font-size: $font-sizes-extra-large2;
-    font-weight: $font-weights-heading;
-    padding: $space-large;
+    font-size: t.$font-sizes-extra-large2;
+    font-weight: t.$font-weights-heading;
+    padding: t.$space-large;
   }
   &__graphics-object {
     display: flex;
@@ -77,20 +77,20 @@
   &__names {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: $space-extra-small;
+    grid-gap: t.$space-extra-small;
     border-right: var(--basecolor-stroke-disabled) 1px solid; // TODO switch with neutral when available
-    font-size: $font-sizes-medium;
-    margin-top: $space-large;
-    line-height: $line-heights-medium;
-    padding-right: $space-medium;
-    margin-right: $space-medium;
-    color: $colors-blues-blue40;
+    font-size: t.$font-sizes-medium;
+    margin-top: t.$space-large;
+    line-height: t.$line-heights-medium;
+    padding-right: t.$space-medium;
+    margin-right: t.$space-medium;
+    color: t.$colors-blues-blue40;
     align-items: center;
   }
   &__values {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: $space-extra-small;
-    margin-top: $space-large;
+    grid-gap: t.$space-extra-small;
+    margin-top: t.$space-large;
   }
 }

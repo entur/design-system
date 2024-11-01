@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
 
 .eds-copy-button.eds-button--variant-secondary {
   min-height: 2rem;

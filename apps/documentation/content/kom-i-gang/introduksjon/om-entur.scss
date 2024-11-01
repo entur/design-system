@@ -1,11 +1,11 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 .stats {
   &-wrapper {
     display: grid;
     grid-gap: $space-extra-large;
     grid-template-columns: 1fr;
-    @include for-large-desktop {
+    @include breakpoint.for-large-desktop {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }

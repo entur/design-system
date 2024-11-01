@@ -1,8 +1,8 @@
-@use '@entur/tokens/dist/base.scss';
+@use '~@entur/tokens/dist/base.scss';
 @use '../../gatsby-theme-docz/UI/variables' as site-var;
 
-@use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .top-navigation {
   display: flex;

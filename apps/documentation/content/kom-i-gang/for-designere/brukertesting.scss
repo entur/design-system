@@ -1,6 +1,6 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
-@import '~@entur/tokens/dist/semantic.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
+@use '~@entur/tokens/dist/semantic.scss' as *;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .brukertesting {
   display: grid;
@@ -9,7 +9,7 @@
   row-gap: $space-small;
   margin-top: $space-large;
   margin-bottom: $space-extra-large3;
-  @include for-desktop {
+  @include breakpoint.for-desktop {
     grid-template-columns: 1fr 1fr;
     gap: $space-large;
   }

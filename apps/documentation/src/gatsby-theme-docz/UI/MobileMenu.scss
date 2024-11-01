@@ -1,5 +1,5 @@
 @use './variables' as site-var;
-@use '@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .mobile-nav-bar {
   position: absolute;

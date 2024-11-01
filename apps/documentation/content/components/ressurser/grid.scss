@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
 
 .grid-demo-item {
   background: var(--designentur-basecard-default-fill);

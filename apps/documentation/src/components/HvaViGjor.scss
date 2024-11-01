@@ -1,11 +1,10 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .hva-vi-gjor {
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: $space-large;
+    gap: t.$space-large;
   }
   &__grid-item {
     background: var(--designentur-basecard-contrast-fill);
@@ -13,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $space-extra-large4;
+    padding: t.$space-extra-large4;
     &-content {
       display: flex;
       align-items: center;
@@ -21,8 +20,8 @@
       flex-direction: column;
       span {
         font-weight: 500;
-        font-size: $font-sizes-extra-large;
-        line-height: $line-heights-extra-large3;
+        font-size: t.$font-sizes-extra-large;
+        line-height: t.$line-heights-extra-large3;
       }
       .eds-contrast {
         text-align: center;
@@ -35,23 +34,23 @@
     &-second {
       grid-column: 3/6;
       grid-row: 1/4;
-      padding: $space-extra-large6 8rem;
+      padding: t.$space-extra-large6 8rem;
     }
     &-third {
       grid-column: 3/6;
       grid-row: 4/7;
-      padding: $space-extra-large6 8rem;
+      padding: t.$space-extra-large6 8rem;
     }
   }
   &__number {
-    border: var(--basecolors-stroke-contrast) solid $border-widths-small;
+    border: var(--basecolors-stroke-contrast) solid t.$border-widths-small;
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: $space-large;
+    margin-bottom: t.$space-large;
   }
   &__red-text {
     color: var(--basecolors-text-highlight);

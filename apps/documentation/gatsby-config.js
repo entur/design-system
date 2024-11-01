@@ -1,9 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Path = require('path');
+
+console.log('PATH', Path.resolve(__dirname, '../../../node_modules'));
+console.log('PATH2', Path.resolve(__dirname));
+
 module.exports = {
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        implementation: require('sass'),
+        sassOptions: {
+          includePaths: [Path.resolve(__dirname, '../../../node_modules')],
+        },
       },
     },
     `gatsby-plugin-sharp`,

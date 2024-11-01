@@ -1,4 +1,4 @@
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .verdier {
   &__card {
@@ -6,7 +6,7 @@
     padding: 1rem 1.5rem;
     width: 100%;
 
-    @include for-desktop {
+    @include breakpoint.for-desktop {
       padding: 3rem 4rem;
     }
     h3 {

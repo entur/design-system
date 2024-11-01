@@ -1,29 +1,29 @@
 @use './designEnturComponentColors.scss' as *;
 @use './variables' as site-var;
 
-@use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
-@import '~@entur/icons/dist/styles.css';
-@import '~@entur/a11y/dist/styles.css';
-@import '~@entur/grid/dist/styles.css';
-@import '~@entur/tab/dist/styles.css';
-@import '~@entur/typography/dist/styles.css';
-@import '~@entur/layout/dist/styles.css';
-@import '~@entur/loader/dist/styles.css';
-@import '~@entur/expand/dist/styles.css';
-@import '~@entur/button/dist/styles.css';
-@import '~@entur/alert/dist/styles.css';
-@import '~@entur/menu/dist/styles.css';
-@import '~@entur/fileupload/dist/styles.css';
-@import '~@entur/modal/dist/styles.css';
-@import '~@entur/tooltip/dist/styles.css';
-@import '~@entur/form/dist/styles.css';
-@import '~@entur/chip/dist/styles.css';
-@import '~@entur/datepicker/dist/styles.css';
-@import '~@entur/travel/dist/styles.css';
-@import '~@entur/table/dist/styles.css';
-@import '~@entur/dropdown/dist/styles.css';
+@use '~@entur/icons/dist/styles.css' as icons;
+@use '~@entur/a11y/dist/styles.css' as a11y;
+@use '~@entur/grid/dist/styles.css' as grid;
+@use '~@entur/tab/dist/styles.css' as tab;
+@use '~@entur/typography/dist/styles.css' as typography;
+@use '~@entur/layout/dist/styles.css' as layout;
+@use '~@entur/loader/dist/styles.css' as loader;
+@use '~@entur/expand/dist/styles.css' as expand;
+@use '~@entur/button/dist/styles.css' as button;
+@use '~@entur/alert/dist/styles.css' as alert;
+@use '~@entur/menu/dist/styles.css' as menu;
+@use '~@entur/fileupload/dist/styles.css' as fileupload;
+@use '~@entur/modal/dist/styles.css' as modal;
+@use '~@entur/tooltip/dist/styles.css' as tooltip;
+@use '~@entur/form/dist/styles.css' as form;
+@use '~@entur/chip/dist/styles.css' as chip;
+@use '~@entur/datepicker/dist/styles.css' as datepicker;
+@use '~@entur/travel/dist/styles.css' as travel;
+@use '~@entur/table/dist/styles.css' as table;
+@use '~@entur/dropdown/dist/styles.css' as dropdown;
 
 :root {
   color-scheme: light dark;

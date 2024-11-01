@@ -1,5 +1,5 @@
 @use '~@entur/tokens/dist/base.scss' as *;
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as *;
 @import '~@entur/utils/dist/breakpoints.scss';
 
 @import '~@entur/icons/dist/styles.css';

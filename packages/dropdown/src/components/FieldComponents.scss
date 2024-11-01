@@ -39,9 +39,13 @@
 
     &--readonly {
       .eds-contrast & {
-        background-color: var(--components-dropdown-dropdown-standard-fill-readonly);
+        background-color: var(--components-form-baseform-standard-fill-readonly);
         border-color: transparent;
         color: var(--components-dropdown-dropdown-standard-text-readonly);
+
+        background-color: inherit;
+        border-color: inherit;
+        color: inherit;
       }
     }
 

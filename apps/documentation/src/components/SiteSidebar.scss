@@ -1,7 +1,7 @@
 @use '../gatsby-theme-docz/UI/variables' as site-var;
 
-@use '@entur/tokens/dist/styles.scss' as t;
-@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '~@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .site-sidebar-wrapper {
   width: 100%;

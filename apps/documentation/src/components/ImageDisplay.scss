@@ -1,5 +1,5 @@
-@use '@entur/tokens/dist/semantic.scss' as *;
-@use '@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/tokens/dist/semantic.scss' as *;
+@use '~@entur/tokens/dist/styles.scss' as t;
 
 .border-wrapper {
   border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
