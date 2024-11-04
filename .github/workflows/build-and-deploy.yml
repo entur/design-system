@@ -70,6 +70,60 @@ jobs:
           name: documentation-site-artifact
           path: apps/documentation/dist
 
+  test-packages:
+    name: Test packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: yarn test
+
+  lint-packages:
+    name: Lint packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: yarn lint
+
   deploy-documentation-to-preview-channel:
     needs: build-documentation
     uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
