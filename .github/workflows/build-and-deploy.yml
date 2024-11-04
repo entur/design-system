@@ -27,6 +27,13 @@ jobs:
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - run: yarn install --frozen-lockfile
+
+      - name: Cache Nx
+        uses: actions/cache@v4
+        with:
+          path: '.nx/cache'
+          key: nx-cache
+
       - run: yarn build:packages
       - name: upload artifact
         uses: actions/upload-artifact@v4
