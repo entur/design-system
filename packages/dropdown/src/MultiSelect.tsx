@@ -77,6 +77,8 @@ export type MultiSelectProps<ValueType> = {
    * @default true
    */
   clearable?: boolean;
+  /** Plasserer ledeteksten statisk på toppen av inputfeltet */
+  disableLabelAnimation?: boolean;
   /** Placeholder-tekst når ingenting er satt */
   placeholder?: string;
   /** En tekst som beskriver hva som skjer når man venter på items
@@ -169,6 +171,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   clearInputOnSelect = false,
   debounceTimeout,
   disabled = false,
+  disableLabelAnimation,
   feedback,
   hideSelectAll = false,
   items: initialItems,
@@ -460,6 +463,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         { 'eds-dropdown--has-tooltip': labelTooltip !== undefined },
       )}
       disabled={disabled}
+      disableLabelAnimation={disableLabelAnimation}
       feedback={feedback}
       isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
       label={label}
