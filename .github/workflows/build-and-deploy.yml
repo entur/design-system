@@ -26,8 +26,6 @@ jobs:
           path: '**/node_modules'
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - run: pwd
-
       - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
 
       - run: yarn build:packages
@@ -64,10 +62,6 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: |
-          echo "in root:"
-          tree -d
-
       - run: yarn build:documentation
 
       - name: upload artifact
@@ -83,4 +77,5 @@ jobs:
       gcp_project_id: entur-design-system
       environment: prd
       build_artifact_name: documentation-site-artifact
-      build_artifact_path: .
+      build_artifact_path: 'apps/documentation/dist'
+      entry_point: 'apps/documentation'
