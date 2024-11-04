@@ -5,6 +5,10 @@ on:
     # branches:
     #   - "main"
 
+concurrency:
+  group: 'yarn-build'
+  cancel-in-progress: true
+
 jobs:
   build-packages:
     name: Build packages
@@ -15,7 +19,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '16'
-          cache: 'yarn'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
       - run: yarn install --frozen-lockfile
       - run: yarn build:packages
       - name: upload artifact
@@ -34,21 +44,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '16'
-          cache: 'yarn'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
       - run: yarn install --frozen-lockfile
       - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
           name: package-artifacts
 
-      - run: cd apps/documentation
-      - run: yarn build
+      - run: |
+          cd apps/documentation
+          yarn build
       # - run: yarn build:documentation
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: documentation-site-artifact
           path: apps/documentation/dist
+
   deploy-documentation-to-preview-channel:
     needs: build-documentation
     uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
