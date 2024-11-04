@@ -44,7 +44,8 @@ jobs:
   build-documentation:
     name: Build documentation
     needs: build-packages
-    runs-on: ubuntu-latest
+    runs-on:
+      group: 'grp-ubuntu-22.04-4core'
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js 16
