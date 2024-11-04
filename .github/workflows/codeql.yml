@@ -1,0 +1,31 @@
+#
+# Shared Workflows - CodeQL Scan
+#
+# Reusable Workflows used:
+# * Code Scan
+#   * Readme <https://github.com/entur/gha-security/blob/main/README-code-scan.md>
+#   * Owner: Team Sikkerhet
+#   * Slack: #talk-sikkerhet
+#
+# TODO: This file comes from entur/.github/workflow-templates/codeql.yml
+#       Adopt to your needs, this file is yours now.
+#
+name: CodeQL Scan
+
+on:
+  pull_request:
+    branches:
+      - "main"
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - '**/README.md'
+  schedule:
+    - cron: "0 3 * * 1-5" # Run Monday to Friday at 3AM UTC
+
+jobs:
+  code-scan:
+    name: CodeQL Scan
+    uses: entur/gha-security/.github/workflows/code-scan.yml@v2
+    secrets: inherit
