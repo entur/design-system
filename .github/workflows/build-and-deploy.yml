@@ -1,0 +1,59 @@
+name: build-test-and-approval-deploy
+
+on:
+  push:
+    # branches:
+    #   - "main"
+
+jobs:
+  build-packages:
+    name: Build packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:packages
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-artifacts
+          path: packages/**/dist
+
+  build-documentation:
+    name: Build documentation
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 16
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+
+      - run: cd apps/documentation
+      - run: yarn build
+      # - run: yarn build:documentation
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-site-artifact
+          path: apps/documentation/dist
+  deploy-documentation-to-preview-channel:
+    needs: build-documentation
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
+    with:
+      gcp_project_id: entur-design-system
+      environment: prd
+      build_artifact_name: documentation-site-artifact
+      build_artifact_path: .
