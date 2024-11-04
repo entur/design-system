@@ -26,20 +26,17 @@ jobs:
           path: '**/node_modules'
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
+      - run: pwd
 
-      - name: Cache Nx
-        uses: actions/cache@v4
-        with:
-          path: '.nx/cache'
-          key: nx-cache
+      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
 
       - run: yarn build:packages
+
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: package-artifacts
-          path: packages/**/dist
+          path: 'packages/**/dist'
 
   build-documentation:
     name: Build documentation
@@ -59,16 +56,20 @@ jobs:
           path: '**/node_modules'
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+
       - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
           name: package-artifacts
+          path: 'packages'
 
       - run: |
-          cd apps/documentation
-          yarn build
-      # - run: yarn build:documentation
+          echo "in root:"
+          tree -d
+
+      - run: yarn build:documentation
+
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
