@@ -1,0 +1,67 @@
+name: Build and deploy to prod
+
+on:
+  push:
+    branches:
+      - 'main'
+
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build-packages:
+    name: Build packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn build:packages
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages/**/dist'
+
+  build-documentation:
+    name: Build documentation
+    needs: build-packages
+    runs-on:
+      group: 'grp-ubuntu-22.04-4core'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
+
+      - run: yarn build:documentation
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-site-artifact
+          path: apps/documentation/dist
+
+  deploy-documentation-to-prod:
+    needs: build-documentation
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-deploy.yml@v1
+    with:
+      gcp_project_id: entur-design-system
+      environment: prd
+      build_artifact_name: documentation-site-artifact
+      build_artifact_path: 'apps/documentation/dist'
+      entry_point: 'apps/documentation'

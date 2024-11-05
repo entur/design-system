@@ -28,3 +28,5 @@ coverage
 ## Local test environment
 TestBench.tsx
 content/components/testin.mdx
+
+**/charts/*.tgz
