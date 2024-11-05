@@ -1,11 +1,9 @@
-name: build-test-and-approval-deploy
+name: Build and deploy to prod
 
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+  push:
+    branches:
+      - 'main'
 
 concurrency:
   group: ci-${{ github.ref_name }}
@@ -58,49 +56,9 @@ jobs:
           name: documentation-site-artifact
           path: apps/documentation/dist
 
-  test-packages:
-    name: Test packages
-    needs: build-packages
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install and Cache Yarn Dependencies
-        uses: ./.github/actions/install-and-cache-dependencies
-        with:
-          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Download package artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: package-artifacts
-          path: 'packages'
-
-      - run: yarn test
-
-  lint-packages:
-    name: Lint packages
-    needs: build-packages
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install and Cache Yarn Dependencies
-        uses: ./.github/actions/install-and-cache-dependencies
-        with:
-          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Download package artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: package-artifacts
-          path: 'packages'
-
-      - run: yarn lint
-
-  deploy-documentation-to-preview-channel:
+  deploy-documentation-to-prod:
     needs: build-documentation
-    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-deploy.yml@v1
     with:
       gcp_project_id: entur-design-system
       environment: prd
