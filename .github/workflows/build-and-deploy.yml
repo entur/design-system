@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install and Cache Yarn Dependencies
-        uses: './actions/install-and-cache-dependencies'
+        uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
@@ -37,8 +37,10 @@ jobs:
     runs-on:
       group: 'grp-ubuntu-22.04-4core'
     steps:
+      - uses: actions/checkout@v4
+
       - name: Install and Cache Yarn Dependencies
-        uses: './actions/install-and-cache-dependencies'
+        uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
@@ -61,8 +63,10 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Install and Cache Yarn Dependencies
-        uses: './actions/install-and-cache-dependencies'
+        uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
@@ -79,8 +83,10 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Install and Cache Yarn Dependencies
-        uses: './actions/install-and-cache-dependencies'
+        uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
@@ -94,7 +100,7 @@ jobs:
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation
-    uses: entur/gha-firebase/./workflows/firebase-hosting-preview.yml@v1
+    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
     with:
       gcp_project_id: entur-design-system
       environment: prd
