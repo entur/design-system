@@ -1,12 +1,14 @@
 name: build-test-and-approval-deploy
 
 on:
-  push:
-    # branches:
-    #   - "main"
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 concurrency:
-  group: 'yarn-build'
+  group: ci-${{ github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -15,18 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 16
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16'
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Install and Cache Yarn Dependencies
+        uses: './actions/install-and-cache-dependencies'
         with:
-          path: '**/node_modules'
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - run: yarn build:packages
 
@@ -42,19 +37,10 @@ jobs:
     runs-on:
       group: 'grp-ubuntu-22.04-4core'
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 16
-        uses: actions/setup-node@v4
+      - name: Install and Cache Yarn Dependencies
+        uses: './actions/install-and-cache-dependencies'
         with:
-          node-version: '16'
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: '**/node_modules'
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Download package artifacts
         uses: actions/download-artifact@v4
@@ -75,19 +61,10 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 16
-        uses: actions/setup-node@v4
+      - name: Install and Cache Yarn Dependencies
+        uses: './actions/install-and-cache-dependencies'
         with:
-          node-version: '16'
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: '**/node_modules'
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Download package artifacts
         uses: actions/download-artifact@v4
@@ -102,19 +79,10 @@ jobs:
     needs: build-packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 16
-        uses: actions/setup-node@v4
+      - name: Install and Cache Yarn Dependencies
+        uses: './actions/install-and-cache-dependencies'
         with:
-          node-version: '16'
-
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: '**/node_modules'
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Download package artifacts
         uses: actions/download-artifact@v4
@@ -126,7 +94,7 @@ jobs:
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation
-    uses: entur/gha-firebase/.github/workflows/firebase-hosting-preview.yml@v1
+    uses: entur/gha-firebase/./workflows/firebase-hosting-preview.yml@v1
     with:
       gcp_project_id: entur-design-system
       environment: prd

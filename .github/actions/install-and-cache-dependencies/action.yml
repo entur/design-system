@@ -1,0 +1,22 @@
+name: 'Install and cache dependencies'
+description: 'Installs dependencies for a yarn 2 monorepo and caches the result'
+inputs:
+  cache-key:
+    description: 'Cache key for Yarn dependencies'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 16
+      uses: actions/setup-node@v4
+      with:
+        node-version: '16'
+
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: '**/node_modules'
+        key: ${{ inputs.cache-key }}
+
+    - run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
