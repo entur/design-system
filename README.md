@@ -38,16 +38,16 @@ Yarn can easily be installed with e.g. [npm](https://classic.yarnpkg.com/lang/en
 
 _NOTICE: these instructions are for MAC OS_
 
-### Cloning the repo from Github
+### Cloning the repo from GitHub
 
-The repo is available at [Github](https://github.com/entur/design-system). To clone it you need to set up an ssh key on you mac and add the public key to you Github account (i.e. authenticate your computer). If you've already done this, you can skip the next step
+The repo is available at [GitHub](https://github.com/entur/design-system). To clone it you need to set up an ssh key on you mac and add the public key to you GitHub account (i.e. authenticate your computer). If you've already done this, you can skip the next step
 
-- Follow [Githubs guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) on how to set up you ssh key connection
+- Follow [GitHubs guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) on how to set up you ssh key connection
 
 After you ssh key is set up, run the following script:
 `git clone git@github.com:entur/design-system.git`
 
-Alteratively, click the `clone` button on the Github repo page and follow the instructions.
+Alteratively, click the `clone` button on the GitHub repo page and follow the instructions.
 
 ### Install dependencies and build packages
 
@@ -105,7 +105,7 @@ No errors? Great! Otherwise, try again …
 4. Make your changes in `packages/[packagename]`.
 5. Watch you changes live on `localhost:90000`
 6. Stage your changes and commit with `yarn gc:format`
-7. Push your changes to Github
+7. Push your changes to GitHub
 
 ## Publish packages to npm
 
@@ -243,10 +243,10 @@ _NOTICE: the commit linter Husky can be ignored with `HUSKY=0` before your scrip
 
 Entur Designsystem documentation is hosted on Firebase hosting as a static site. [Link to project](https://console.firebase.google.com/u/0/project/entur-design-system/hosting/sites/entur-design-system).
 
-### Github Actions
+### GitHub Actions
 
-Entur Designsystem uses Github Actions and workflow to automatically deploy the documentation to firebase.
-When a PR is made the `build-test-and-deploy-preview.yml` starts that builds, tests and lints the packages, then builds the documentation and creates a preview channel in Firebase Hosting. A github-bot adds preview-link as a comment in the PR.
+Entur Designsystem uses GitHub Actions and workflow to automatically deploy the documentation to firebase.
+When a PR is made the `build-test-and-deploy-preview.yml` starts that builds, tests and lints the packages, then builds the documentation and creates a preview channel in Firebase Hosting. A GitHub-bot adds preview-link as a comment in the PR.
 When push and merge to main the `build-and-deploy-prod.yml` starts and builds, tests, and lints the packages, then builds the documentation and deploy the website to production in Firebase Hosting.
 
 ### PostHog
