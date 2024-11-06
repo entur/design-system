@@ -73,7 +73,6 @@
 
     &--readonly {
       border-color: transparent;
-      pointer-events: none;
       cursor: default;
       background: var(--components-form-baseform-standard-fill-readonly);
       border: var(--components-form-baseform-standard-fill-readonly);
@@ -85,6 +84,9 @@
         .eds-input-group__label {
           color: var(--components-form-baseform-contrast-text-description);
         }
+      }
+      &:focus-within {
+        outline: none;
       }
 
       &::before,

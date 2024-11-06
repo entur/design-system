@@ -133,7 +133,7 @@ export const BaseFormControl = React.forwardRef<
               label={label}
               required={required}
               labelId={labelId}
-              staticAnimation={disableLabelAnimation}
+              staticAnimation={disableLabelAnimation || readOnly}
               {...labelProps}
             />
             {labelTooltip && (

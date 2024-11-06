@@ -186,6 +186,7 @@ const TextFieldBase = React.forwardRef<HTMLInputElement, TextFieldBaseProps>(
         placeholder={placeholder}
         onChange={handleChange}
         value={value}
+        tabIndex={readOnly ? -1 : undefined}
         {...rest}
       />
     );

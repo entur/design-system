@@ -139,6 +139,7 @@ const TextAreaBase = React.forwardRef<HTMLTextAreaElement, TextAreaBaseProps>(
         onChange={handleChange}
         value={value}
         aria-invalid={currentVariant === 'error'}
+        tabIndex={readOnly ? -1 : undefined}
         {...rest}
       />
     );

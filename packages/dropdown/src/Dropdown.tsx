@@ -193,7 +193,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         'eds-dropdown--has-tooltip': labelTooltip !== undefined,
       })}
       disabled={disabled}
-      disableLabelAnimation={disableLabelAnimation}
+      disableLabelAnimation={disableLabelAnimation || readOnly}
       feedback={feedback}
       isFilled={isFilled}
       label={label}
