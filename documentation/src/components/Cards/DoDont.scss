@@ -1,0 +1,104 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.do-dont-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: t.$space-default;
+  margin-bottom: t.$space-extra-large3;
+}
+
+.do-dont-card {
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 16rem;
+    padding-inline: t.$space-large;
+    padding-block: 15%;
+    border-radius: t.$border-radiuses-large;
+    overflow: hidden;
+
+    border-bottom: 0.5rem solid transparent;
+    background-color: var(--designentur-dodontcard-fill);
+
+    .do-dont-card--none & {
+      border-bottom: initial;
+    }
+    .do-dont-card--success & {
+      border-color: var(--designentur-dodontcard-statusline-success);
+    }
+    .do-dont-card--warning & {
+      border-color: var(--designentur-dodontcard-statusline-warning);
+    }
+    .do-dont-card--negative & {
+      border-color: var(--designentur-dodontcard-statusline-negative);
+    }
+
+    &__image {
+      display: block;
+      width: calc(100% - #{t.$space-extra-large3} * 2);
+      min-width: 100%;
+      margin: 1rem auto;
+
+      &.gatsby-image-wrapper {
+        img {
+          object-fit: contain !important;
+          -webkit-user-drag: none;
+        }
+      }
+    }
+
+    &--no-padding {
+      padding: 0;
+      min-height: initial;
+
+      .do-dont-card__box__image {
+        margin: 0;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .gatsby-image-wrapper {
+        width: 100%;
+        height: 100%;
+        img {
+          max-height: initial;
+        }
+      }
+    }
+  }
+
+  &__text-content {
+    margin-top: t.$space-extra-small;
+
+    display: flex;
+    gap: t.$space-small;
+    margin-top: t.$space-small;
+
+    .eds-icon {
+      min-width: t.$space-default;
+
+      .do-dont-card--success & {
+        color: var(--designentur-dodontcard-statusline-success);
+      }
+      .do-dont-card--warning & {
+        color: var(--designentur-dodontcard-statusline-warning);
+      }
+      .do-dont-card--negative & {
+        color: var(--designentur-dodontcard-statusline-negative);
+      }
+    }
+
+    &__title {
+      font-weight: t.$font-weights-heading;
+    }
+    ul {
+      padding-left: 0;
+      margin-left: -0.4rem;
+      margin-top: t.$space-extra-small;
+    }
+  }
+}
