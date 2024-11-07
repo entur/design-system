@@ -26,9 +26,10 @@
 }
 
 .front-page__top {
-  margin-top: 8rem;
+  margin-top: 7rem;
+
   @include breakpoint.for-desktop {
-    padding-top: 7rem;
+    padding-top: 8rem;
     margin-top: 0;
     padding-bottom: 3rem;
   }
