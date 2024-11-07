@@ -11,15 +11,12 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
 interface LayoutProps {
-  pageTitle: string;
+  //pageTitle: string;
   children: React.ReactNode;
 }
-//TODO graphql query kan flyttes til pages mdx.frontmatter__route.tsx?
-const DocLayout: React.FC<LayoutProps> = ({
-  pageTitle,
-  children,
-}: LayoutProps) => {
-  const data = useStaticQuery(graphql`
+//TODO Bør graphql query flyttes til pages mdx.frontmatter__route.tsx?
+const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+  const MenuData = useStaticQuery(graphql`
     query {
       allMdx {
         nodes {
@@ -36,7 +33,7 @@ const DocLayout: React.FC<LayoutProps> = ({
       }
     }
   `);
-  const menuItems: MenuItem[] = data.allMdx.nodes;
+  const menuItems: MenuItem[] = MenuData.allMdx.nodes;
 
   const [openSidebar, setOpenSidebar] = React.useState(false);
 
