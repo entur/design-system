@@ -396,12 +396,13 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
+        floatingStyles={floatingStyles}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
         isOpen={isOpen}
         listItems={listItems}
-        listStyle={{ ...floatingStyles, ...listStyle }}
+        style={listStyle}
         setListRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
