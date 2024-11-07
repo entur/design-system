@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.30-beta.0](https://github.com/entur/design-system/compare/@entur/code-playground@1.3.29...@entur/code-playground@1.3.30-beta.0) (2024-11-07)
+
+**Note:** Version bump only for package @entur/code-playground
+
 ## [1.3.29](https://bitbucket.org/enturas/design-system/compare/@entur/code-playground@1.3.28...@entur/code-playground@1.3.29) (2024-10-23)
 
 **Note:** Version bump only for package @entur/code-playground

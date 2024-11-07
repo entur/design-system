@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.7-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@4.0.6...@entur/documentation@4.0.7-beta.0) (2024-11-07)
+
+### Bug Fixes
+
+- **documentation:** fix text overflow in desktop top navigation ([5710d3d](https://github.com/entur/design-system/commit/5710d3d335a4529007bce923938ccbe8098e9c66))
+
 ## [4.0.6](https://bitbucket.org/enturas/design-system/compare/@entur/documentation@4.0.5...@entur/documentation@4.0.6) (2024-10-23)
 
 **Note:** Version bump only for package @entur/documentation

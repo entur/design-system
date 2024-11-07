@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.9-beta.0](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.8...@entur/dropdown@6.0.9-beta.0) (2024-11-07)
+
+### Bug Fixes
+
+- **dropdowns:** fix elements in dropdown list not selectable with touch action ([6834e1f](https://bitbucket.org/enturas/design-system/commits/6834e1f7383f5f3d3f5e60a24a481682d1a9c1be))
+- **multiselect:** add missing prop disableLabelAnimation to MultiSelect ([01f9ef5](https://bitbucket.org/enturas/design-system/commits/01f9ef5b08107f982edd669cf91a7373ee2739fc))
+
 ## [6.0.8](https://bitbucket.org/enturas/design-system/compare/@entur/dropdown@6.0.7...@entur/dropdown@6.0.8) (2024-10-23)
 
 **Note:** Version bump only for package @entur/dropdown
