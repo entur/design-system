@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Props from '../components/Props/Props';
 import Playground from '../components/Playground/Playground';
-
 import {
   Heading1,
   Heading2,
@@ -18,6 +17,11 @@ import {
   NumberedList,
   Link as LinkText,
 } from '@entur/typography';
+
+import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
+import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
+import PageHeader from '../components/PageHeader/PageHeader';
+import MediaDisplayWrapper from '../components/Media/MediaDisplayWrapper';
 
 const preToCodeBlock = preProps => {
   if (
@@ -45,10 +49,10 @@ const preToCodeBlock = preProps => {
 
   return undefined;
 };
-
 // Mapping styles and global import components for MDX-files
 // components are used in the MDXProvider in the DocLayout file.
 const components = {
+  // DS components
   h1: Heading1,
   h2: Heading2,
   h3: Heading3,
@@ -62,8 +66,18 @@ const components = {
   ul: UnorderedList,
   li: ListItem,
   ol: NumberedList,
+  Paragraph,
+  StrongText,
+  UnorderedList,
+  ListItem,
+  // Custom components
   Playground,
   Props,
+  DoDontGroup,
+  DoDontCard,
+  BaseCardDesignEntur,
+  PageHeader,
+  MediaDisplayWrapper,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
     if (props) {

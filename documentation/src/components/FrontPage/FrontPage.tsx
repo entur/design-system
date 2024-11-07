@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import { Heading1, Heading2, Paragraph } from '@entur/typography';
 import { colors } from '@entur/tokens';
@@ -7,9 +8,6 @@ import { GridContainer, GridItem } from '@entur/grid/dist';
 import { NavigationCard, Contrast } from '@entur/layout';
 
 import { PrimaryButton } from '@entur/button/dist';
-
-//import Kontakt from '../media/images/frontpage/Kontakt.png';
-//import FrontPageImage from '../media/images/frontpage/FrontpageImage.png';
 import { Media } from '../../providers/MediaBreakpoint';
 import { OverviewCards } from './FrontPageCards';
 
@@ -42,10 +40,8 @@ export const FrontPage = () => {
                 </div>
               </div>
               <div className="front-page__top-image" style={{}}>
-                <img
-                  //TODO images
-                  //src={FrontPageImage}
-                  width="100%"
+                <StaticImage
+                  src="../../media/images/frontpage/FrontpageImage.png"
                   alt="Tegning av en by med kollektivtrafikk"
                 />
               </div>
@@ -61,9 +57,8 @@ export const FrontPage = () => {
                 frontend-kode for å oppnå visuell konsistens som er oppdatert i
                 henhold til vår grafiske profil.
               </Paragraph>
-              <img
-                //src={FrontPageImage}
-                width="100%"
+              <StaticImage
+                src="../../media/images/frontpage/FrontpageImage.png"
                 alt="Tegning av en by med kollektivtrafikk"
               />
             </div>
@@ -118,9 +113,9 @@ export const FrontPage = () => {
       <div className="content-margin">
         <div className="front-page__last-section">
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <img
-              //src={Kontakt}
-              width="66%"
+            <StaticImage
+              width={500}
+              src="../../media/images/frontpage/kontakt.png"
               alt=""
             />
           </div>
