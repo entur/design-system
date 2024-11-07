@@ -563,13 +563,14 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}
         ariaLabelSelectedItem={ariaLabelSelectedItem}
+        floatingStyles={floatingStyles}
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
         inputValue={inputValue}
         isOpen={isOpen}
         listItems={listItems}
-        listStyle={{ ...floatingStyles, ...listStyle }}
+        style={listStyle}
         setListRef={refs.setFloating}
         loading={loading}
         loadingText={loadingText}
