@@ -21,11 +21,11 @@ const SiteFooter: React.FC = () => {
       <div style={{ margin: '4rem 0 0' }}>
         <EditIcon inline={true} />{' '}
         <Link
-          href={`https://bitbucket.org/enturas/design-system/src/master/apps/documentation/${filepath.substring(
+          href={`https://github.com/entur/design-system/tree/main/apps/documentation/${filepath.substring(
             8,
           )}?mode=edit&spa=0&at=master&fileviewer=file-view-default`}
         >
-          Rediger denne siden på Bitbucket
+          Rediger denne siden på GitHub
         </Link>
       </div>
       <Divider />
