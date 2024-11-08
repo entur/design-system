@@ -101,14 +101,12 @@ const IllustrationList = ({
       >
         {filteredIllustrations.map(illustration => (
           <div
-            className="illustration-list__display-grid__image-box"
+            className={classNames(
+              'illustration-list__display-grid__image-box',
+              { 'eds-contrast': colorMode === 'contrast' },
+            )}
+            data-color-mode={colorMode === 'darkmode' ? 'dark' : undefined}
             style={{
-              backgroundColor:
-                colorMode === 'contrast'
-                  ? base.light.baseColors.frame.contrast
-                  : colorMode === 'darkmode'
-                  ? base.dark.baseColors.frame.default
-                  : base.light.baseColors.frame.default,
               border:
                 colorMode === 'standard'
                   ? `solid 2px ${base.light.baseColors.stroke.subduedalt}`
