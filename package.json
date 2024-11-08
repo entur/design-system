@@ -10,6 +10,7 @@
     "build:all": "yarn build:packages && yarn build:documentation",
     "build:code-playground": "lerna run --scope @entur/code-playground build",
     "build:documentation": "lerna run --scope @entur/documentation build",
+    "build:documentation:skip-packages-dependency": "cd apps/documentation && yarn build",
     "build:packages": "lerna run build --no-private",
     "cleanStart": "lerna run --scope @entur/documentation cleanStart",
     "cleanDocz": "lerna run --scope @entur/documentation cleanDocz",
