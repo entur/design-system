@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { SegmentedChoice, SegmentedControl, Switch } from '@entur/form';
 import { base } from '@entur/tokens';
+import { Label } from '@entur/typography';
 
 import {
   IllustrationsQueryType,
@@ -16,6 +17,7 @@ import './IllustrationList.scss';
 type IllustrationListItem = {
   categories: string[];
   name: string;
+  sanitizedName: string;
   uniqueName: string;
   fluidSource: any;
   publicUrl: string;
@@ -36,6 +38,7 @@ const IllustrationList = ({
   categoryFilter,
   excludeListFile,
   includeListFile,
+  showIllustrationName = false,
   disableBackgroundSwitch = false,
   disableColorModeSelector = false,
   squareIllustrations = true,
@@ -44,6 +47,7 @@ const IllustrationList = ({
   categoryFilter: string;
   excludeListFile?: string[];
   includeListFile?: string[];
+  showIllustrationName?: boolean;
   disableBackgroundSwitch: boolean;
   disableColorModeSelector: boolean;
   squareIllustrations: boolean;
@@ -81,7 +85,7 @@ const IllustrationList = ({
             className="illustration-list__color-mode-selector"
           >
             <SegmentedChoice value="standard">Standard</SegmentedChoice>
-            <SegmentedChoice value="darkmode">Nattmodus</SegmentedChoice>
+            <SegmentedChoice value="darkmode">Mørk</SegmentedChoice>
             <SegmentedChoice value="contrast">Kontrast</SegmentedChoice>
           </SegmentedControl>
         )}
@@ -114,10 +118,16 @@ const IllustrationList = ({
             }}
             key={illustration.name + illustration.extension}
           >
+            {showIllustrationName && (
+              <Label className="illustration-list__display-grid__image-box__label">
+                {illustration.sanitizedName}
+              </Label>
+            )}
             <ImageDisplay
               fluidSource={illustration.fluidSource}
               name={illustration.name}
               downloadSources={illustration.publicUrls}
+              className="illustration-list__display-grid__image-box__image"
             />
           </div>
         ))}
@@ -140,6 +150,15 @@ const processIllustrationsQuery = (
     // Process raw GraphQL-data into info about illustration
     .map(illustration => {
       const illustrationName = illustration.name.replace(/-|_/g, ' ');
+      const sanitizedName =
+        illustration.name.charAt(0) +
+        illustration.name
+          .toLowerCase()
+          .replace(' contrast', '')
+          .replace(' darkmode', '')
+          .replace(' default', '')
+          .replace(' circle', '')
+          .slice(1);
       const categories = illustration.absolutePath
         .split('/downloads/illustrations/')?.[1]
         ?.split('/')
@@ -164,6 +183,7 @@ const processIllustrationsQuery = (
 
       return {
         name: illustrationName,
+        sanitizedName,
         uniqueName: categories?.join('-') + illustrationName,
         categories,
         extension: illustration.extension,
