@@ -132,8 +132,10 @@ const processIllustrationsQuery = (
   illustrationsQuery: IllustrationsQueryType[],
 ) =>
   illustrationsQuery
-    .filter(illustration =>
-      ACCEPTED_EXTENSIONS.includes(illustration.extension.toLowerCase()),
+    .filter(
+      illustration =>
+        ACCEPTED_EXTENSIONS.includes(illustration.extension.toLowerCase()) &&
+        illustration.absolutePath.includes('/downloads/illustrations/'),
     )
     // Process raw GraphQL-data into info about illustration
     .map(illustration => {
