@@ -41,19 +41,16 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         <Img fluid={fluidSource} alt={alt} style={{ objectFit: 'contain' }} />
       )}
       {downloadSources !== undefined && (
-        <Tooltip placement={'bottom'} content="Last ned …">
+        <Tooltip placement="top" content="Last ned …">
           <div
             className={classNames('image-display__download-container', {
               'image-display__download-container--show': alwaysShowDownload,
             })}
           >
             <OverflowMenu
-              button={
-                <IconButton aria-label={`Last ned illustrasjon ${name}`}>
-                  <DownloadIcon />
-                </IconButton>
-              }
-              position="left"
+              buttonIcon={<DownloadIcon />}
+              placement="bottom-end"
+              aria-label={`Trykk for å åpne nedlastingsvalg for illustrasjon ${name}`}
             >
               {downloadSources.map(
                 downloadSrc =>
@@ -64,6 +61,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
                       download
                       key={downloadSrc.src}
                       onSelect={() => undefined}
+                      className="image-display__download-container__menu__item"
                     >
                       {downloadSrc.label ??
                         `Last ned som ${downloadSrc.format}`}

@@ -15,7 +15,21 @@
     gap: 1rem;
 
     &__image-box {
+      position: relative;
       border-radius: t.$border-radiuses-large;
+
+      &__label {
+        position: absolute;
+
+        // Add extra space above image to compansate for absolute positioned label
+        & + .illustration-list__display-grid__image-box__image.image-display {
+          .gatsby-image-wrapper {
+            img {
+              margin-top: 1rem;
+            }
+          }
+        }
+      }
     }
 
     &--square {

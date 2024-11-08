@@ -47,16 +47,8 @@
     display: flex;
     gap: t.$space-default;
 
-    [data-reach-menu-popover] {
-      right: 0;
-
-      .eds-overflow-menu__menu-list {
-        min-width: max-content;
-
-        &--left {
-          position: initial;
-        }
-      }
+    &__menu__item {
+      text-wrap: nowrap;
     }
   }
 
