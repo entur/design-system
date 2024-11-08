@@ -50,7 +50,7 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - run: yarn build:documentation
+      - run: yarn build:documentation:skip-packages-dependency
 
       - name: upload artifact
         uses: actions/upload-artifact@v4
