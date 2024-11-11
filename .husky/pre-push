@@ -7,8 +7,8 @@ branch="$(git rev-parse --abbrev-ref HEAD)"
 commitCountOnBranch=$(git rev-list --count $branch --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/$branch"))
 yarn commitlint --from=HEAD~$commitCountOnBranch --to=HEAD
 
-# If we are on the master branch, the code needs to pass linting and tests to be pushed
-if [ "$branch" = "master" ]; then
+# If we are on the main branch, the code needs to pass linting and tests to be pushed
+if [ "$branch" = "main" ]; then
     yarn lint
     yarn test
 fi
