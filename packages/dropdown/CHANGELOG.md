@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.9](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.8...@entur/dropdown@6.0.9) (2024-11-12)
+
+### Bug Fixes
+
+- **dropdowns:** fix elements in dropdown list not selectable with touch action ([dd7a4a8](https://github.com/entur/design-system/commit/dd7a4a8e4818c4c60e42ee68d36b507655d92aaa))
+- **multiselect:** add missing prop disableLabelAnimation to MultiSelect ([01f9ef5](https://github.com/entur/design-system/commit/01f9ef5b08107f982edd669cf91a7373ee2739fc))
+
 ## [6.0.8](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.7...@entur/dropdown@6.0.8) (2024-10-23)
 
 **Note:** Version bump only for package @entur/dropdown

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.19](https://github.com/entur/design-system/compare/@entur/layout@2.3.18...@entur/layout@2.3.19) (2024-11-12)
+
+**Note:** Version bump only for package @entur/layout
+
 ## [2.3.18](https://github.com/entur/design-system/compare/@entur/layout@2.3.17...@entur/layout@2.3.18) (2024-10-23)
 
 ### Bug Fixes

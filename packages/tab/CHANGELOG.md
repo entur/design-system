@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.76](https://github.com/entur/design-system/compare/@entur/tab@0.4.75...@entur/tab@0.4.76) (2024-11-12)
+
+**Note:** Version bump only for package @entur/tab
+
 ## [0.4.75](https://github.com/entur/design-system/compare/@entur/tab@0.4.74...@entur/tab@0.4.75) (2024-10-23)
 
 ### Bug Fixes
