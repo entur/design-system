@@ -21,7 +21,7 @@ type DropdownListProps<ValueType> = {
   highlightedIndex: number;
   isOpen: boolean;
   listItems: NormalizedDropdownItemType<ValueType | string>[];
-  listStyle: { [key: string]: any } | undefined;
+  floatingStyles: { [key: string]: any } | undefined;
   setListRef: (node: HTMLElement | null) => void;
   loading?: boolean;
   loadingText?: string;
@@ -41,7 +41,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   isOpen,
   highlightedIndex,
   listItems,
-  listStyle,
+  floatingStyles,
   setListRef,
   loading = false,
   loadingText = 'Laster inn …',
@@ -146,69 +146,70 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
 
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
-    <ul
-      {...getMenuProps(
-        {
-          'aria-multiselectable': isMultiselect,
-        },
-        { suppressRefError: true },
-      )}
-      ref={setListRef}
-      className="eds-dropdown__list"
+    <div
+      className="eds-dropdown__list__floating-container"
       style={{
-        display: isOpen ? 'inline-block' : 'none',
-        ...rest.style,
-        ...listStyle,
+        display: isOpen ? undefined : 'none',
+        ...floatingStyles,
       }}
+      ref={setListRef}
     >
-      {!loading &&
-        listItems.length > 0 &&
-        listItems.map((item, index) => {
-          const itemIsSelectAll = item.value === selectAllItem?.value;
-          if (itemIsSelectAll && listItems.length <= 2) return null;
-
-          return (
-            <li
-              className={classNames('eds-dropdown__list__item', {
-                'eds-dropdown__list__item--select-all': itemIsSelectAll,
-                'eds-dropdown__list__item--highlighted':
-                  highlightedIndex === index,
-                'eds-dropdown__list__item--selected':
-                  !isMultiselect && isItemSelected(item),
-              })}
-              key={item?.label + item?.value}
-              {...getItemProps({
-                // @ts-expect-error Since getItemProps expects the same item type
-                // here as items, it throws error when selectAllItem is a string.
-                // This does, however, not cause any functional issues.
-                item,
-                index,
-                'aria-selected': itemIsSelectAll
-                  ? ariaValuesSelectAll().selected
-                  : isItemSelected(item),
-              })}
-            >
-              {itemIsSelectAll
-                ? selectAllListItemContent()
-                : listItemContent(
-                    item as NormalizedDropdownItemType<ValueType>,
-                  )}
-            </li>
-          );
+      <ul
+        {...getMenuProps({
+          'aria-multiselectable': isMultiselect,
         })}
+        className="eds-dropdown__list"
+        style={{ ...rest.style }}
+      >
+        {!loading &&
+          listItems.length > 0 &&
+          listItems.map((item, index) => {
+            const itemIsSelectAll = item.value === selectAllItem?.value;
+            if (itemIsSelectAll && listItems.length <= 2) return null;
 
-      {isNoMatches && (
-        <li key="dropdown-list-no-match" className="eds-dropdown__list__item">
-          {noMatchesText}
-        </li>
-      )}
-      {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
+            return (
+              <li
+                className={classNames('eds-dropdown__list__item', {
+                  'eds-dropdown__list__item--select-all': itemIsSelectAll,
+                  'eds-dropdown__list__item--highlighted':
+                    highlightedIndex === index,
+                  'eds-dropdown__list__item--selected':
+                    !isMultiselect && isItemSelected(item),
+                })}
+                key={item?.label + item?.value}
+                {...getItemProps({
+                  // @ts-expect-error Since getItemProps expects the same item type
+                  // here as items, it throws error when selectAllItem is a string.
+                  // This does, however, not cause any functional issues.
+                  item,
+                  index,
+                  'aria-selected': itemIsSelectAll
+                    ? ariaValuesSelectAll().selected
+                    : isItemSelected(item),
+                })}
+              >
+                {itemIsSelectAll
+                  ? selectAllListItemContent()
+                  : listItemContent(
+                      item as NormalizedDropdownItemType<ValueType>,
+                    )}
+              </li>
+            );
+          })}
+
+        {isNoMatches && (
+          <li key="dropdown-list-no-match" className="eds-dropdown__list__item">
+            {noMatchesText}
+          </li>
+        )}
+        {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
           To solve this, the dropdownList needs to account for the debounce */}
-      {loading && (
-        <li key="dropdown-list-loading" className="eds-dropdown__list__item">
-          {loadingText}
-        </li>
-      )}
-    </ul>
+        {loading && (
+          <li key="dropdown-list-loading" className="eds-dropdown__list__item">
+            {loadingText}
+          </li>
+        )}
+      </ul>
+    </div>
   );
 };
