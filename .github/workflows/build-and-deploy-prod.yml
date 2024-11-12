@@ -21,6 +21,9 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
       - run: yarn build:packages
 
       - name: upload artifact

@@ -23,6 +23,9 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
       - run: yarn build:packages
 
       - name: upload artifact
@@ -89,6 +92,9 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
 
       - name: Download package artifacts
         uses: actions/download-artifact@v4
