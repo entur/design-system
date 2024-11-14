@@ -169,6 +169,21 @@
           "name": "boolean | undefined"
         }
       },
+      "disableLabelAnimation": {
+        "defaultValue": null,
+        "description": "Plasserer ledeteksten statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "placeholder": {
         "defaultValue": null,
         "description": "Placeholder-tekst når ingenting er satt",

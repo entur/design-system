@@ -114,10 +114,10 @@
           "name": "NormalizedDropdownItemType<string | ValueType>[]"
         }
       },
-      "listStyle": {
+      "floatingStyles": {
         "defaultValue": null,
         "description": "",
-        "name": "listStyle",
+        "name": "floatingStyles",
         "declarations": [
           {
             "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
