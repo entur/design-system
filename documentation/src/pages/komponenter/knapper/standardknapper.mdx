@@ -1,3 +1,15 @@
+---
+title: Button
+route: /komponenter/knapper/button
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+---
+
+import {
+  Button,
+} from '@entur/button';
+
 export const standardknapper = [
   {
     name: 'width',
@@ -35,17 +47,15 @@ export const standardknapper = [
   },
 ];
 
-export const flytendeknapper = [
-  {
-    name: 'children',
-    defaultValue: 'Publiser',
-    type: 'string',
-    label: 'Button text',
-  },
-  {
-    name: 'size',
-    options: ['small', 'medium'],
-    defaultValue: 'medium',
-    type: 'dropdown',
-  },
-];
+
+
+```jsx
+<Button variant="primary">Test</Button>
+```
+
+<Playground code={`<Button></Button>`} props={standardknapper} />
+
+<Props componentName="Button" />
+
+
+
