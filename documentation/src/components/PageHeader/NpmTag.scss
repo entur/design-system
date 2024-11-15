@@ -1,0 +1,18 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.ds-npm-tag {
+  text-decoration: none;
+  .eds-h5 {
+    border-right: solid t.$border-widths-small var(--designentur-npmtag-divide);
+    padding-right: t.$space-extra-small;
+  }
+  .eds-sub-label {
+    padding-left: t.$space-extra-small;
+  }
+  .eds-h5,
+  .eds-sub-label {
+    line-height: t.$line-heights-small;
+    margin: t.$space-none;
+    color: var(--designentur-npmtag-text);
+  }
+}

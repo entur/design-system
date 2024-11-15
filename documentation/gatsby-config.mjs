@@ -62,6 +62,14 @@ const config = {
       },
       __key: 'content',
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'changelog',
+        path: './changelogs/',
+      },
+      __key: 'changelog',
+    },
   ],
 };
 

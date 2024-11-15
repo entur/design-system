@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 16 16" version="1.1" viewBox="0 0 16 16" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<title>Icon/Flag/Norway</title>
+<desc>Created with Sketch.</desc>
+<g id="Icon_x2F_Flag_x2F_Norway" transform="translate(0 -.99999)">
+	<g id="Flag" transform="translate(1,4)">
+		<polygon id="Icon-Fill" points="14 -1e-5 0 -1e-5 0 10 14 10" fill="#d80027"/>
+		<polygon id="Icon-Fill_1_" points="14 -1e-5 0 -1e-5 0 10 14 10" fill="#d80027"/>
+		<polygon id="Icon-Fill_2_" points="6.5943 10 6.5943 6.3043 14 6.3043 14 3.6956 6.5943 3.6956 6.5943 -1e-5 4.1595 -1e-5 4.1595 3.6956 0 3.6956 0 4.3478 0 5.6522 0 6.3043 4.1595 6.3043 4.1595 10 4.7682 10 5.9856 10" fill="#ffffff"/>
+		<polygon id="Icon-Fill_3_" points="0 4.3478 0 5.6522 4.7682 5.6522 4.7682 10 5.9856 10 5.9856 5.6522 14 5.6522 14 4.3478 5.9856 4.3478 5.9856 -1e-5 4.7682 -1e-5 4.7682 4.3478" fill="#0052b4"/>
+	</g>
+</g>
+</svg>
