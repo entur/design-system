@@ -2,6 +2,9 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 const config = {
+  graphqlTypegen: {
+    typesOutputPath: `src/utils/gatsby/gatsby-types.d.ts`,
+  },
   siteMetadata: {
     title: `Entur designsystem`,
     url: `https://design.entur.no/`,
@@ -53,14 +56,6 @@ const config = {
         path: './src/pages/',
       },
       __key: 'pages',
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'content',
-        path: './src/content',
-      },
-      __key: 'content',
     },
     {
       resolve: 'gatsby-source-filesystem',

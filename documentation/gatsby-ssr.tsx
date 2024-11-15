@@ -1,19 +1,14 @@
 import './src/styles/index.scss';
 
 import React, { useEffect } from 'react';
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
-import {
-  AnalyticsProvider,
-  deniedPosthogOptions,
-  POSTHOG_API_KEY,
-} from './src/providers/AnalyticsProvider';
-import { ConsentProvider } from './src/providers/ConsentProvider';
-import { ToastProvider } from '@entur/alert';
 import { SettingsProvider } from './src/providers/SettingsContext';
 import { MediaContextProvider } from './src/providers/MediaBreakpoint';
+import DocLayout from './src/layouts/DocLayout';
+import { GatsbySSR } from 'gatsby';
+import { FrontPage } from './src/components/FrontPage/FrontPage';
+import FrontPageLayout from './src/layouts/FrontPageLayout';
 
-export const wrapRootElement = ({ element }) => {
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   //TODO fix analytics providers
   // useEffect to only initialise posthog in browser environment,
   // not during gatsby build
@@ -35,4 +30,12 @@ export const wrapRootElement = ({ element }) => {
       {/* </ConsentProvider> */}
     </SettingsProvider>
   );
+};
+
+export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
+  element,
+  props,
+}) => {
+  if (props.location.pathname === '/') return <>{element}</>;
+  return <DocLayout {...props}>{element}</DocLayout>;
 };

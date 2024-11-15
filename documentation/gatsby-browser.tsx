@@ -1,19 +1,16 @@
+import React, { useEffect } from 'react';
+import { SettingsProvider, useSettings } from './src/providers/SettingsContext';
+import { MediaContextProvider } from './src/providers/MediaBreakpoint';
+import DocLayout from './src/layouts/DocLayout';
+import { GatsbyBrowser } from 'gatsby';
+import { FrontPage } from './src/components/FrontPage/FrontPage';
+import FrontPageLayout from './src/layouts/FrontPageLayout';
+
 import './src/styles/index.scss';
 
-import React, { useEffect } from 'react';
-import posthog from 'posthog-js';
-import { PostHogProvider } from 'posthog-js/react';
-import {
-  AnalyticsProvider,
-  deniedPosthogOptions,
-  POSTHOG_API_KEY,
-} from './src/providers/AnalyticsProvider';
-import { ConsentProvider } from './src/providers/ConsentProvider';
-import { ToastProvider } from '@entur/alert';
-import { SettingsProvider } from './src/providers/SettingsContext';
-import { MediaContextProvider } from './src/providers/MediaBreakpoint';
-
-export const wrapRootElement = ({ element }) => {
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
+  element,
+}) => {
   // useEffect to only initialise posthog in browser environment,
   // not during gatsby build
   // useEffect(() => {
@@ -34,4 +31,12 @@ export const wrapRootElement = ({ element }) => {
       {/* </ConsentProvider> */}
     </SettingsProvider>
   );
+};
+
+export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
+  element,
+  props,
+}) => {
+  if (props.location.pathname === '/') return <>{element}</>;
+  return <DocLayout {...props}>{element}</DocLayout>;
 };

@@ -18,8 +18,8 @@ export const isActive = (route: string, location: Location) => {
   return removeTrailingSlash(route) === removeTrailingSlash(location.pathname);
 };
 
-export const removeTrailingSlash = (str: string) =>
-  str.endsWith('/') ? str.slice(0, -1) : str;
+export const removeTrailingSlash = (str?: string) =>
+  str && str.endsWith('/') ? str.slice(0, -1) : str;
 
 export const normalizePath = (path: string): string => {
   return path.replace(/\//g, '').replace(/-/g, ' ').toLowerCase();

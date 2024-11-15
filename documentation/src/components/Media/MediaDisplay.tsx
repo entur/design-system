@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ImageDisplay, ImageDisplayProps } from './ImageDisplay';
 
-const MediaDisplayWrapper: React.FC<ImageDisplayProps> = ({
+const MediaDisplay: React.FC<ImageDisplayProps> = ({
   name,
   downloadSources,
   alt = '',
@@ -14,7 +14,12 @@ const MediaDisplayWrapper: React.FC<ImageDisplayProps> = ({
 }) => {
   const data = useStaticQuery(graphql`
     query {
-      files: allFile(filter: { sourceInstanceName: { eq: "media" } }) {
+      imageSharpFiles: allFile(
+        filter: {
+          sourceInstanceName: { eq: "media" }
+          extension: { in: ["png", "jpg", "jpeg"] }
+        }
+      ) {
         nodes {
           name
           extension
@@ -24,10 +29,26 @@ const MediaDisplayWrapper: React.FC<ImageDisplayProps> = ({
           publicURL
         }
       }
+      otherMediaFiles: allFile(
+        filter: {
+          sourceInstanceName: { eq: "media" }
+          extension: { in: ["svg", "mp4"] }
+        }
+      ) {
+        nodes {
+          name
+          extension
+          publicURL
+        }
+      }
     }
   `);
 
-  const file = data.files.nodes.find((file: any) => file.name === name);
+  const allFiles = [
+    ...data.imageSharpFiles.nodes,
+    ...data.otherMediaFiles.nodes,
+  ];
+  const file = allFiles.find((file: any) => file.name === name);
 
   if (!file) {
     return <p>No media found with name: {name}</p>;
@@ -68,4 +89,4 @@ const MediaDisplayWrapper: React.FC<ImageDisplayProps> = ({
   );
 };
 
-export default MediaDisplayWrapper;
+export default MediaDisplay;
