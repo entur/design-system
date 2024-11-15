@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 import { MenuItem } from '../components/Navigations/SideNavigation/utils';
@@ -6,6 +6,7 @@ import SideNavigation from '../components/Navigations/SideNavigation/SideNavigat
 import MobileSideNavigation from '../components/Navigations/SideNavigation/MobileSideNavigation';
 import TableOfContent from '../components/Navigations/TableOfContent/TableOfContent';
 import { Media } from '../providers/MediaBreakpoint';
+import { useSettings } from '../providers/SettingsContext';
 import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
@@ -16,6 +17,8 @@ interface LayoutProps {
 }
 //TODO Bør graphql query flyttes til pages mdx.frontmatter__route.tsx?
 const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+  const [openSidebar, setOpenSidebar] = React.useState(false);
+  const { colorMode } = useSettings();
   const MenuData = useStaticQuery(graphql`
     query {
       allMdx {
@@ -33,9 +36,13 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
       }
     }
   `);
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-color-mode',
+      colorMode ?? 'dark',
+    );
+  }, [colorMode]);
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
-
-  const [openSidebar, setOpenSidebar] = React.useState(false);
 
   return (
     <div className="page">
