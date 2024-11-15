@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="8" cy="8" r="6" fill="transparent" />
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15ZM7.34853 10.8485L11.8485 6.34853L11 5.5L6.92426 9.57574L4.84853 7.5L4 8.34853L6.5 10.8485C6.73431 11.0828 7.11421 11.0828 7.34853 10.8485Z"
+        fill="#181C56" />
+</svg>

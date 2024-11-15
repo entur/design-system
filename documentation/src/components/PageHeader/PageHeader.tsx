@@ -1,17 +1,18 @@
 import React from 'react';
-import { useCurrentDoc } from 'docz';
+import { useLocation } from '@reach/router';
+import { useStaticQuery, graphql } from 'gatsby';
 import { Heading1, Label, LeadParagraph } from '@entur/typography';
 import { useSettings } from '../../providers/SettingsContext';
-//import { PackageChangelog } from './PackageChangelog';
+import { PackageChangelog } from './PackageChangelog';
 import './PageHeader.scss';
-//import { NpmTag } from './NpmTag';
+import { NpmTag } from './NpmTag';
 import { CopyableText } from '@entur/alert';
 
 type Props = {
   category?: string;
   forceNoLeadText?: boolean;
   title?: string;
-  children?: React.ReactNode; // Add this line
+  children?: React.ReactNode;
 };
 
 const PageHeader: React.FC<Props> = ({
@@ -20,17 +21,41 @@ const PageHeader: React.FC<Props> = ({
   category,
   forceNoLeadText,
 }) => {
-  const currentDoc = useCurrentDoc();
-  const npmPackage: string = currentDoc.npmPackage;
-  const categoryToShow = category || currentDoc.parent;
-  const titleToShow = title || currentDoc.name;
+  const location = useLocation();
+  const data = useStaticQuery(graphql`
+    query {
+      allMdx {
+        nodes {
+          frontmatter {
+            title
+            npmPackage
+            route
+            description
+            parent
+          }
+        }
+      }
+    }
+  `);
+
+  const currentDoc = data.allMdx.nodes.find(node =>
+    new RegExp(`^${node.frontmatter.route}$`).test(location.pathname),
+  );
+
+  const npmPackage = currentDoc?.frontmatter?.npmPackage || '';
+
+  const categoryToShow = category || currentDoc?.frontmatter.parent || '';
+  const titleToShow = title || currentDoc?.frontmatter?.title || '';
   const { packageManager, userType } = useSettings();
-  const leadText = forceNoLeadText ? null : children || currentDoc.description;
+  const leadText = forceNoLeadText
+    ? null
+    : children || currentDoc?.frontmatter?.description;
   const installText =
     packageManager === 'yarn'
       ? `yarn add @entur/${npmPackage}`
       : `npm install @entur/${npmPackage}`;
   const cssImport = `@import '@entur/${npmPackage}/dist/styles.css';`;
+
   return (
     <header>
       {categoryToShow && (
@@ -43,20 +68,18 @@ const PageHeader: React.FC<Props> = ({
           </Label>
           {npmPackage && userType === 'developer' && (
             <span style={{ float: 'right' }}>
-              {/* <PackageChangelog packageName={npmPackage}></PackageChangelog> */}
+              <PackageChangelog packageName={npmPackage} />
             </span>
           )}
-          changelog
         </div>
       )}
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <Heading1 margin="none" style={{ marginRight: '1rem' }}>
           {titleToShow}
         </Heading1>
-        {/* {npmPackage && userType === 'developer' && (
-          // <NpmTag packageName={npmPackage}></NpmTag>
-        )} */}
-        changelog
+        {npmPackage && userType === 'developer' && (
+          <NpmTag packageName={npmPackage} />
+        )}
       </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
@@ -68,16 +91,18 @@ const PageHeader: React.FC<Props> = ({
               gap: '1rem',
             }}
           >
+            {/*             
             <CopyableText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
               {installText}
             </CopyableText>
             <CopyableText successMessage="CSS-importen ble kopiert til utklippstavla.">
               {cssImport}
-            </CopyableText>
+            </CopyableText> */}
           </div>
         </div>
       )}
     </header>
   );
 };
+
 export default PageHeader;
