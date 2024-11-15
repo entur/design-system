@@ -1,0 +1,41 @@
+---
+title: Travel leg
+route: /komponenter/reise/travel-leg
+parent: Komponenter
+menu: reise
+---
+
+export const travelleg = [
+  {
+    name: 'direction',
+    defaultValue: 'vertical',
+    options: ['vertical', 'horizontal'],
+    type: 'segmented',
+  },
+  {
+    name: 'transport',
+    defaultValue: 'bus',
+    options: [
+      'metro',
+      'bus',
+      'plane',
+      'helicopter',
+      'tram',
+      'funicular',
+      'cableway',
+      'taxi',
+      'bicycle',
+      'walk',
+      'train',
+      'ferry',
+      'carferry',
+      'mobility',
+      'airportLinkBus',
+      'airportLinkRail',
+      'rail',
+      'water',
+      'air',
+    ],
+    type: 'dropdown',
+  },
+];

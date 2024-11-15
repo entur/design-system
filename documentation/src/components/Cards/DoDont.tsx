@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import MediaDisplayWrapper from '../../components/Media/MediaDisplayWrapper';
+import MediaDisplay from '../Media/MediaDisplay';
 
 import {
   ValidationErrorIcon,
@@ -92,7 +92,7 @@ export const DoDontCard = ({
           <img src={src} alt={alt} className="do-dont-card__box__image" />
         )}
         {name !== undefined && (
-          <MediaDisplayWrapper
+          <MediaDisplay
             name={name}
             alt={alt}
             className="do-dont-card__box__image"
