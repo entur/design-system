@@ -87,25 +87,28 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       return !isDeprecated;
     });
 
-    return filteredIcons.map(icon => {
-      const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
-      const iconComponent = Object.entries(allIconComponents).find(
-        iconComponent => iconComponent?.[0] === iconName,
-      )?.[1];
-      const downloadUrl = icon.node.publicURL;
+    return filteredIcons
+      .map(icon => {
+        const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+        const iconComponent = Object.entries(allIconComponents).find(
+          iconComponent => iconComponent?.[0] === iconName,
+        )?.[1];
+        const downloadUrl = icon.node.publicURL;
 
-      const category =
-        icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ?? 'None';
-      const rootCategory = category.split('/')[1];
+        const category =
+          icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
+          'None';
+        const rootCategory = category.split('/')[1];
 
-      return {
-        category: category,
-        rootCategory: rootCategory,
-        name: iconName,
-        component: iconComponent,
-        downloadUrl: downloadUrl,
-      } as IconListItem;
-    });
+        return {
+          category: category,
+          rootCategory: rootCategory,
+          name: iconName,
+          component: iconComponent,
+          downloadUrl: downloadUrl,
+        } as IconListItem;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name, 'no'));
   }, [iconsQuery, allIconComponents]);
 
   const SEARCH_OPTIONS = React.useMemo(
