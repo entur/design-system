@@ -21,7 +21,6 @@ import {
 import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
 import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
 import PageHeader from '../components/PageHeader/PageHeader';
-import MediaDisplay from '../components/Media/MediaDisplay';
 import { ImageDisplay } from '../components/Media/ImageDisplay';
 
 const preToCodeBlock = preProps => {
@@ -78,7 +77,6 @@ const components = {
   DoDontCard,
   BaseCardDesignEntur,
   PageHeader,
-  MediaDisplayWrapper: MediaDisplay,
   ImageDisplay,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
