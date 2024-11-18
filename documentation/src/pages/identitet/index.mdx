@@ -5,15 +5,44 @@ route: /identitet
 parent: Identitet
 removeToc: false
 ---
+
 import { data, space } from '@entur/tokens';
+import { graphql } from "gatsby"
+
+export const query = graphql`
+  query pageQuery {
+    pageHeader: file(
+    sourceInstanceName: { eq: "media"}
+    name: {
+      eq: "Entur_visuell-identitet2"
+    }
+    ) {
+      childImageSharp {
+        gatsbyImageData(layout: CONSTRAINED)
+      }
+    }
+    principles: allFile(
+      filter: {sourceInstanceName: {eq: "media"}, relativePath: {regex: "/.+identitet.+/"}}
+    ) { 
+      images: nodes {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: CONSTRAINED)
+        }
+      }
+    }
+  }
+`
 
 <PageHeader/>
 
-<MediaDisplayWrapper 
-  name="Entur_visuell-identitet2"
-  alt="Entur branding image"
-  preset="full-width-image"
+<ImageDisplay
+  imgSource={props.data.pageHeader.childImageSharp.gatsbyImageData}
+  alt="Et bilde som viser Entur sin profil gjennom et foto av en dame kledd i 
+      Enturs profilfarger på venstresiden og teksten «En resie, En billett, En app. 
+      Entur» på høyresiden"
   style={{ marginBottom: space.extraLarge3 }}
+  preset="full-width-image"
 />
 
 Målet med vår identitet er å sikre et helhetlig uttrykk på tvers av alle kanaler. Hvert eneste uttak 
@@ -36,70 +65,78 @@ Disse retningslinjene er utarbeidet som guide til hvordan vår merkevare og visu
 
 <DoDontGroup>
   <DoDontCard 
-    name="prinsipp1"
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp1').childImageSharp.gatsbyImageData}
     alt="" 
     variant="none"
     title="1. Ydmyk for oppdraget"
     noPadding
   >
+    <Paragraph>
       Vi vet at ved å samarbeide med andre, og spille på hverandres styrker, kan
       vi nå lengre.
+    </Paragraph>
   </DoDontCard>
   <DoDontCard 
-    name="prinsipp2"   
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp2').childImageSharp.gatsbyImageData}     
     alt="" 
     variant="none"
     title="2. Innholdet er helten"
     noPadding
   >
+    <Paragraph>
       Vi løfter frem innholdet ved å synliggjøre og spille tilbyderne gode. Vi
       har ikke behov for å hevde oss og setter andre før oss selv.
+    </Paragraph>
   </DoDontCard>
   <DoDontCard 
-    name="prinsipp3"
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp3').childImageSharp.gatsbyImageData}     
     alt="" 
     variant="none"
     title="3. Flere enn en"
     noPadding
   >
+    <Paragraph>
       Det som gjør tjenestene våre unike er mangfoldigheten og helheten. Derfor
       skal vi alltid søke etter å tilrettelegge og inkludere våre
       samarbeidspartnere, og vise verdien av å bidra.
+    </Paragraph>
   </DoDontCard>
   <DoDontCard 
-    name="prinsipp4"   
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp4').childImageSharp.gatsbyImageData}     
     alt="" 
     variant="none"
     title="4. Enkel og skalerbar"
     noPadding
   >
+    <Paragraph>
       Identiteten vår er bygget på enkle, tydelige verktøy. Ved å bruke
       verktøykassen på en smart måte, skaper vi et fleksibelt og gjenkjennelig
       uttrykk.
-   
+    </Paragraph>
   </DoDontCard>
   <DoDontCard 
-    name="prinsipp5"   
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp5').childImageSharp.gatsbyImageData}     
     alt="" 
     variant="none"
     title="5. Tydelige kontraster"
     noPadding
->
+  >
+    <Paragraph>
       Vi tydeliggjør historiefortellingen vår ved å spille på kontraster i
       farger, typografi og layout. Dermed gjør vi det enklere for de reisende å
       forstå.
-
+    </Paragraph>
   </DoDontCard>
   <DoDontCard 
-    name="prinsipp6"    
+    imgSource={props.data.principles.images.find(image => image.name === 'prinsipp6').childImageSharp.gatsbyImageData}     
     alt="" 
     variant="none"
     title="6. Lett og leken"
     noPadding
   >
-
+    <Paragraph>
       Vi gjør det enklere for de reisende å velge kollektivt og identiteten vår
       skal alltid uttrykke dette.
+    </Paragraph>
   </DoDontCard>
 </DoDontGroup>
-
