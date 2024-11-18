@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import MediaDisplay from '../Media/MediaDisplay';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import {
   ValidationErrorIcon,
@@ -40,7 +40,7 @@ type DoDontCardProps = {
   className?: string;
   title?: string;
   src?: string;
-  name?: string;
+  imgSource?: IGatsbyImageData;
   variant: VariantType | 'none';
   noPadding: boolean;
   textInBox: boolean;
@@ -52,7 +52,7 @@ export const DoDontCard = ({
   className,
   title,
   src,
-  name,
+  imgSource,
   variant = 'success',
   noPadding = false,
   textInBox = false,
@@ -91,14 +91,14 @@ export const DoDontCard = ({
         {src !== undefined && (
           <img src={src} alt={alt} className="do-dont-card__box__image" />
         )}
-        {name !== undefined && (
-          <MediaDisplay
-            name={name}
+        {imgSource !== undefined && (
+          <GatsbyImage
+            image={imgSource}
             alt={alt}
             className="do-dont-card__box__image"
           />
         )}
-        {!src && !name && textInBox && textContent}
+        {!src && !imgSource && textInBox && textContent}
       </div>
       {!textInBox && textContent}
     </article>
