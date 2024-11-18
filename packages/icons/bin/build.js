@@ -63,6 +63,7 @@ const partnerIcons = [
   'VoiIcon',
   'ZvippIcon',
   'GetAroundIcon',
+  'ØresundstågIcon',
 ];
 // Icons with "special colors", so no color exchange for those
 const outliers = [
