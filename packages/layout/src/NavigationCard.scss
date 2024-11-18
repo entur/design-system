@@ -26,22 +26,6 @@
       transition: width t.$timings-medium ease-in-out;
     }
   }
-  &:before {
-    content: ' ';
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: t.$shadows-card-shadow-hover;
-    transition: opacity t.$timings-medium ease-in-out;
-    opacity: 0;
-    border-radius: t.$border-radiuses-medium;
-    .eds-contrast & {
-      box-shadow: t.$shadows-card-shadow-hover-contrast;
-    }
-  }
 
   &:hover {
     transform: translateY(-(t.$space-extra-small2));
