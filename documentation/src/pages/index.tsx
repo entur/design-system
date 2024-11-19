@@ -14,6 +14,8 @@ import TopNavigationLayout from '../layouts/TopNavigationLayout';
 import { Media } from '../providers/MediaBreakpoint';
 import { useSettings } from '../providers/SettingsContext';
 
+import { SEO } from '../components/Seo/SEO';
+
 import './index.scss';
 
 const Index = () => {
@@ -198,3 +200,7 @@ function ShiftingHeader() {
     </div>
   );
 }
+
+export const Head = () => {
+  return <SEO />;
+};

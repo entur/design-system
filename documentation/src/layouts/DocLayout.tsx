@@ -12,7 +12,6 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
 interface LayoutProps {
-  //pageTitle: string;
   children: React.ReactNode;
 }
 //TODO Bør graphql query flyttes til pages mdx.frontmatter__route.tsx?
