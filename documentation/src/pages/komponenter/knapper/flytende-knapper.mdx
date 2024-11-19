@@ -1,10 +1,16 @@
 ---
 title: Floating action button
-route: /komponenter/knapper/floating-action-button
+route: /komponenter/knapper/flytende-knapper
 parent: Komponenter
 menu: Knapper
 npmPackage: button
 ---
+
+import { SEO } from '../../../components/Seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
 
 export const flytendeknapper = [
   {

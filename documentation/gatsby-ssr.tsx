@@ -5,8 +5,6 @@ import { SettingsProvider } from './src/providers/SettingsContext';
 import { MediaContextProvider } from './src/providers/MediaBreakpoint';
 import DocLayout from './src/layouts/DocLayout';
 import { GatsbySSR } from 'gatsby';
-import { FrontPage } from './src/components/FrontPage/FrontPage';
-import FrontPageLayout from './src/layouts/FrontPageLayout';
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   //TODO fix analytics providers

@@ -1,10 +1,17 @@
 ---
 title: Komponentbibliotek
+description: komponentbibliotek
 route: /kom-i-gang/for-utviklere/komponentbibliotek
 parent: Kom i gang
 menu: For utviklere
 order: 1
 ---
+
+import { SEO } from '../../../components/Seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
 
 Designsystemet gjør det enklere for deg som utvikler å lage gode, universelt
 utformede brukeropplevelser som er like på tvers av appene våre. Denne guiden
