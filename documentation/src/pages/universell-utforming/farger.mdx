@@ -1,9 +1,15 @@
 ---
 title: Kontrastsjekker
-route: /universell-utforming/kontrast-sjekker
+route: /universell-utforming/farger
 parent: Universell utforming
 tags: farger, kontrast
 order: 4
 ---
+
+import { SEO } from '../../components/Seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
 
 farger
