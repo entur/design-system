@@ -3,8 +3,6 @@ import { SettingsProvider, useSettings } from './src/providers/SettingsContext';
 import { MediaContextProvider } from './src/providers/MediaBreakpoint';
 import DocLayout from './src/layouts/DocLayout';
 import { GatsbyBrowser } from 'gatsby';
-import { FrontPage } from './src/components/FrontPage/FrontPage';
-import FrontPageLayout from './src/layouts/FrontPageLayout';
 
 import './src/styles/index.scss';
 

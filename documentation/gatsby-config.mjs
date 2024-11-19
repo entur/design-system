@@ -6,11 +6,10 @@ const config = {
     typesOutputPath: `src/utils/gatsby/gatsby-types.d.ts`,
   },
   siteMetadata: {
-    title: `Entur designsystem`,
+    title: `Entur Designsystem`,
     url: `https://design.entur.no/`,
     siteUrl: `https://design.entur.no/`,
-    description: `Velkommen til Entur sitt designsystem. Her vil du finne informasjon om bruk og API-dokumentasjon for komponentene våre.`,
-    image: `/images/Enturlogo_Blue_RGB.png`,
+    description: `Her finner du alt du trenger å vite om Entur sitt designsystem`,
   },
   trailingSlash: 'never',
   plugins: [

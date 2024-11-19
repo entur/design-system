@@ -1,11 +1,17 @@
 ---
 title: Bidra med kode
-route: /kom-i-gang/for-utviklere/bidra
+description: bidra
+route: /kom-i-gang/for-utviklere/bidraMedKode
 parent: Kom i gang
 menu: For utviklere
 order: 2
 ---
 
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
 
 ## Introduksjon
 

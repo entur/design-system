@@ -1,9 +1,15 @@
 ---
 title: Icon button
-route: /komponenter/knapper/icon-button
+route: /komponenter/knapper/ikon-knapper
 parent: Komponenter
 menu: Knapper
 npmPackage: button
 ---
 
-test
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+ikonbutton

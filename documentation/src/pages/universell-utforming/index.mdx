@@ -5,6 +5,12 @@ parent: Universell utforming
 hide: true
 ---
 
+import { SEO } from '../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
 Universelt utformede løsninger sikrer at flest mulig forstår og kan bruke dem. Det er en viktig designbeslutning å inkludere alle, ikke bare fordi vi må på grunn av lovkrav, men fordi det er viktig å gjøre med tanke på inkludering og likestilling. Vi har høye ambisjoner om å være en foregangsbedrift på dette området. Vi ønsker at det skal være en del av vår kultur, og dette blir derfor høyt prioritert hos Entur.
 
 Enturs samfunnsansvar er at kollektive reiser skal være førstevalget, og det skal være tilgjengelig for alle. Enturs digitale løsninger må innfri krav om universell utforming, og den informasjonen som vi samler inn og viser ut i våre egne flater - og formidler videre til andre aktører – skal også være tilpasset behovene til et bredt spekter av reisende.
