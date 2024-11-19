@@ -15,8 +15,8 @@ import {
   compare,
   sortComponentMenus,
   sorters,
-  useSideMenuScroll,
 } from './utils';
+import { useScrollRestoration } from '../../../utils/useScrollRestoration';
 import { Media } from '../../../providers/MediaBreakpoint';
 import SearchBar from './SearchBar';
 
@@ -36,38 +36,16 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   className,
 }) => {
   const location = useLocation();
-
   const [searchText, setSearchText] = React.useState('');
 
-  const currentPathSegments = removeTrailingSlash(location.pathname).split('/');
   const parentPath =
-    currentPathSegments.length > 1 ? currentPathSegments[1] : '';
+    removeTrailingSlash(location.pathname)?.split('/')?.[1] ?? '';
 
-  const [scrollPosition, setScrollPosition] = useSideMenuScroll(parentPath);
   const menuRef = React.useRef<HTMLDivElement>(null);
-
-  // TODO fix scroll position on mobile
-  React.useEffect(() => {
-    // Restore the scroll position when the sidebar is opened on mobile
-    if (mobile && openSidebar) {
-      if (menuRef.current) {
-        setScrollPosition(menuRef.current.scrollTop);
-      }
-    }
-  }, [mobile, openSidebar, setScrollPosition]);
-
-  React.useEffect(() => {
-    // Apply the saved scroll position
-    if (menuRef.current) {
-      menuRef.current.scrollTop = scrollPosition;
-    }
-  }, [scrollPosition]);
-
-  const handleScroll = () => {
-    if (menuRef.current) {
-      setScrollPosition(menuRef.current.scrollTop);
-    }
-  };
+  const { handleOnScroll } = useScrollRestoration({
+    ref: menuRef,
+    key: 'side-navigation',
+  });
 
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
@@ -117,7 +95,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   return (
     <div
-      onScroll={handleScroll}
+      onScroll={handleOnScroll}
       ref={menuRef}
       className={classNames('side-navigation-wrapper', className)}
     >

@@ -1,24 +1,31 @@
 import React, { useEffect } from 'react';
-import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
+import classNames from 'classnames';
+import { MDXComponents } from 'mdx/types.js';
+import { MDXProvider } from '@mdx-js/react';
+
 import { MenuItem } from '../components/Navigations/SideNavigation/utils';
+import { useScrollRestoration } from '../utils/useScrollRestoration';
 import SideNavigation from '../components/Navigations/SideNavigation/SideNavigation';
 import MobileSideNavigation from '../components/Navigations/SideNavigation/MobileSideNavigation';
 import TableOfContent from '../components/Navigations/TableOfContent/TableOfContent';
 import { Media } from '../providers/MediaBreakpoint';
 import { useSettings } from '../providers/SettingsContext';
+
 import TopNavigationLayout from './TopNavigationLayout';
-import { MDXProvider } from '@mdx-js/react';
-import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
+
 interface LayoutProps {
   //pageTitle: string;
   children: React.ReactNode;
+  location: Location;
 }
-//TODO Bør graphql query flyttes til pages mdx.frontmatter__route.tsx?
-const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+
+const DocLayout = (props: LayoutProps) => {
+  const { children } = props;
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const { colorMode } = useSettings();
+
   const MenuData = useStaticQuery(graphql`
     query {
       allMdx {
@@ -36,6 +43,7 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
       }
     }
   `);
+
   useEffect(() => {
     document.documentElement.setAttribute(
       'data-color-mode',

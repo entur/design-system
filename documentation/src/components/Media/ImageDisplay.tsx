@@ -32,7 +32,6 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   style,
   ...rest
 }) => {
-  console.log('ImageDisplay', imgSource);
   return (
     <div
       className={classNames('image-display', `preset--${preset}`, className)}

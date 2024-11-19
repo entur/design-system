@@ -1,6 +1,3 @@
-import React from 'react';
-import { usePersistedState } from '../../../providers/SettingsContext';
-
 export type MenuItem = {
   id: string;
   frontmatter: {
@@ -117,22 +114,3 @@ export const sorters: { [key: string]: any } = {
   komponenter: componentsMenuSortOrder,
   tokens: tokensMenuSortOrder,
 };
-
-export function useSideMenuScroll(page: string) {
-  const [scrollPosition, setScrollPosition] = React.useState<number>(0);
-
-  React.useEffect(() => {
-    // Retrieve the scroll position from localStorage
-    const savedPosition = localStorage.getItem(`scroll-${page}`);
-    if (savedPosition !== null) {
-      setScrollPosition(Number(savedPosition)); // Ensure it's a number
-    }
-  }, [page]);
-
-  React.useEffect(() => {
-    // Save the current scroll position to localStorage
-    localStorage.setItem(`scroll-${page}`, scrollPosition.toString());
-  }, [scrollPosition, page]);
-
-  return [scrollPosition, setScrollPosition] as const;
-}
