@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/entur/design-system/compare/@entur/documentation@4.1.0...@entur/documentation@4.1.1) (2024-11-20)
+
+### Bug Fixes
+
+- **icon list:** add support for scandinavian characters when sorting icon list ([645efed](https://github.com/entur/design-system/commit/645efed8c539e6928284d2ca415f183f0899cf80))
+
 # [4.1.0](https://github.com/entur/design-system/compare/@entur/documentation@4.0.6...@entur/documentation@4.1.0) (2024-11-12)
 
 ### Bug Fixes

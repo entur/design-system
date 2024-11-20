@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/entur/design-system/compare/@entur/icons@7.4.3...@entur/icons@7.5.0) (2024-11-20)
+
+### Features
+
+- **icons:** add new partner icon ØresundstågIcon ([16a7cf1](https://github.com/entur/design-system/commit/16a7cf1ed041fa3d5648895f9c1d63ae1848be87))
+
 ## [7.4.3](https://github.com/entur/design-system/compare/@entur/icons@7.4.2...@entur/icons@7.4.3) (2024-11-12)
 
 **Note:** Version bump only for package @entur/icons
