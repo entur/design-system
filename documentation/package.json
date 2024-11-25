@@ -61,12 +61,14 @@
     "react-confetti": "^6.1.0",
     "react-live": "^3.1.2",
     "react-dom": "^18.2.0",
-    "posthog-js": "^1.167.1"
+    "posthog-js": "^1.167.1",
+    "wcag-contrast": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.28",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/wcag-contrast": "^3.0.3",
     "react-docgen-typescript": "^2.2.2",
     "typescript": "^5.5.4",
     "tsx": "^4.19.1"

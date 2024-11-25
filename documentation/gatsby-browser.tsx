@@ -3,7 +3,7 @@ import { SettingsProvider, useSettings } from './src/providers/SettingsContext';
 import { MediaContextProvider } from './src/providers/MediaBreakpoint';
 import DocLayout from './src/layouts/DocLayout';
 import { GatsbyBrowser } from 'gatsby';
-
+import { ToastProvider } from '@entur/alert';
 import './src/styles/index.scss';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
@@ -21,9 +21,9 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
       {/* <ConsentProvider> */}
       {/* <PostHogProvider client={posthog}> */}
       {/* <AnalyticsProvider> */}
-      {/* <ToastProvider> */}
-      <MediaContextProvider>{element}</MediaContextProvider>
-      {/* </ToastProvider> */}
+      <ToastProvider>
+        <MediaContextProvider>{element}</MediaContextProvider>
+      </ToastProvider>
       {/* </AnalyticsProvider> */}
       {/* </PostHogProvider> */}
       {/* </ConsentProvider> */}
