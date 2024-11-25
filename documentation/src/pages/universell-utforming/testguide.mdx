@@ -1,8 +1,9 @@
 ---
 title: Testguide
+description: UU-tilsynet har satt sammen en guide til hvordan man selv kan teste løsningen sin, som vi her gjengir i korte trekk.
 route: /universell-utforming/testguide
 parent: Universell utforming
-order: 2
+order: 3
 ---
 
 import { SEO } from '../../components/seo/SEO';
@@ -11,4 +12,150 @@ export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-testguide
+<PageHeader/>
+
+UU-tilsynet kjører tester av ulike nettsteder, og man kan se på [tidligere tilsynsrapporter](https://www.uutilsynet.no/tilsynsrapporter/tilsynsrapporter/270) for å se hva og hvordan de tester, og hvilke vanlige mangler som gjengår. En god del av disse kan lukes ut ved auomatiske tester, men noe må man teste manuelt selv. Her er en liten guide over hva du kan gjøre for å teste tilgjengegligheten av nettsiden din.
+[Teksten er hentet fra uutilsynet.no.](https://www.uutilsynet.no/regelverk/sjekk-nettstedet-ditt-selv/708)
+
+## 1. Tastaturnavigering
+
+Mange brukere er avhengig av tastatur for å kunne navigere, deriblant brukere med motoriske funksjonsnedsettelser og brukere med opplesende hjelpemiddel. Det er også mange brukere som foretrekker å benytte tastatur i enkelte sammenhenger, for eksempel ved utfylling av skjema.
+
+For å teste hvordan din løsning fungerer med tastatur kan du trykke på Tab-tasten gjentatte ganger, og evaluere følgende:
+
+- Finnes det en snarveilenke fra starten av siden og ned til hovedinnholdet?
+- Er det tydelig fokusmarkering på alle steg?
+- Virker tab-rekkefølgen fornuftig? Vanlige feil er at fokus starter langt nede på siden, sikksakkhopping mellom kolonner ved Tab og at relaterte objekter ikke er gruppert sammen.
+- Kommer du innom alle objekter som har funksjonalitet, for eksempel lenker og skjemafelt, og skjer det du forventet når du trykker Enter?
+- Ved brukerstyrte endringer i grensesnittet, som for eksempel utvid/kollaps eller modalbokser, havner fokus direkte i første skjemafelt, alternativt at ett trykk på Tab-tasten setter fokus på første skjemafelt eller første lenke i det nye området?
+
+[Les mer om tastaturnavigasjon.](https://www.uutilsynet.no/wcag-standarden/tastaturnavigasjon/37)
+
+## 2. Forstørring og responsiv design
+
+For brukere med moderat nedsatt syn, er nettleserforstørring en enkel metode for å få større tekst på nettsiden. Dersom nettsiden er satt opp med responsivt design, vil dette slå inn også ved nettleserforstørring eller endring i vindusstørrelsen. Derfor bør det responsive oppsettet fungere best mulig gjennom hele spekteret av visningsstørrelser.
+
+For å teste at forstørring fungerer på en god måte, kan du gjøre følgende:
+
+- Sett nettleseren i fullskjerm på den største skjermen du har tilgang til, deretter bruk nettleserens zoomfunksjon (Ctrl og +/- eller Cmd og +/-) stegvis til minst 200 prosent, gjerne opp til 400 prosent. Sjekk at alt innhold og funksjonalitet er tilgjengelig og forståelig.
+- Sett forstørringen til 100 prosent, og endre vindusbredden på din nettleser gradvis fra fullskjerm og ned til det smaleste du får til. Se om rekkefølge, gruppering og generell layout fungerer godt i hele spekteret.
+- På mobil eller nettbrett, sjekk at du kan forstørre også på sider med responsivt oppsett.
+
+## 3. Farger og kontrast
+
+God kontrast mellom tekst og bakgrunn er særlig viktig for brukere med nedsatt syn, lesevansker og nedsatt kognisjon, og for alle brukere under krevende lysforhold. I tillegg er det viktig at farge ikke er den eneste måten å formidle informasjon på med tanke på nedsatt fargesyn.
+
+- Er lenker i løpende tekst markert med mer enn bare farge fra teksten rundt?
+- Mål kontrasten mellom tekst og bakgrunn. Hvis du benytter et verktøy som f.eks. Eyedropper, så sier dette fra dersom kravene ikke er tilfredsstilt. Minimumskravet er 3:1 for stor tekst og 4,5:1 for vanlig tekst
+- Du kan gjerne også teste kontrast på ikoner, selv om disse ikke er omfattet av WCAG.
+- I Windows-versjon av gratisprogrammet Colour Contrast Analyser (CCA, engelsk) kan du gå til Image og så Screen og velge ulike former for fargeblindhet. Deretter kan du se på små utsnitt av nettsiden din med simulert fargeblindhet. Dette er særlig relevant dersom du har noen form for fargekoding, for eksempel i diagrammer.
+- I Google Chrome kan man åpne utivklerinnstillinger med CTRL+Shift+I, klikk på menyknappen med tre vertikale prikker, `More tools -> Rendering`. Nederst i denne menyen kan man simulere forskjellige fargeblindheter og tåkesyn.
+- Funkify har også en simulator for ulike type fargeblindhet, som vi har benyttet i app/web for justering av transportfargene som skal gjøre det enkelt å kjapt se forskjell på ulike type reiseforslag.
+
+## 4. Overskrifter
+
+Overskrifter gjør det lettere for alle brukere å orientere seg i teksten. Korrekt koding av overskriftene er til stor hjelp for brukere med opplesingsverktøy, fordi det blir mulig å navigere mellom overskriftene på nettsiden.
+
+Gå inn på et utvalg av sider på ditt nettsted, gjerne med ulike sidemaler, og les gjennom tekstene. Opplever du på noen punkter at det er lite fristende å lese videre, eller at du savner en form for oversikt over hva teksten inneholder? Da er det godt mulig at det bør være flere mellomtitler.
+
+### Koding av overskrifter
+
+Ved hjelp av en tilleggsmodul i nettleseren din kan du raskt sjekke om sidene dine har rett koding av overskriftene. Aktuelle moduler er:
+
+- Web Accessibility Toolbar (WAT) for Internet Explorer.
+- Web Developer (WD) for Firefox og Chrome.
+
+Hvis det finnes mellomtitler, bruk tilleggsmodulen din for å sjekke om mellomtitlene er definert med overskriftelementer i koden. I HTML er overskrifter definert med elementene `<h1>` til `<h6>`. Slik gjør du:
+
+- I WAT velger du Structure, Headings
+- I WD velger du Outline, Outline Headings
+
+### Riktig overskriftsnivå
+
+Du kan også se om noen overskrifter hopper over nivå, for eksempel at de går direkte fra nivå 2 til 5 uten mellomliggende 3 og 4. Å hoppe over nivåer er ikke bra for søkemotoroptimalisering, og mange brukere med skjermleser kan oppleve å miste oversikten over innholdet.
+
+## 5. Lenker
+
+### Markering av lenker
+
+Lenker må være mulig å se uavhengig av fargesyn, lysforhold og innstillinger i nettleseren. For å bekrefte at lenkene er lenker, skal det også være synlig fokus ved tastaturnavigering, og gjerne synlig effekt når musepekeren holdes over.
+
+- Lenker må være mulig å se uavhengig av fargesyn, lysforhold og innstillinger i nettleseren. For å bekrefte at lenkene er lenker, skal det også være synlig fokus ved tastaturnavigering, og gjerne synlig effekt når musepekeren holdes over.
+- Er lenker i løpende tekst understreket eller skiller de seg fra brødteksten med mer enn farge?
+- Hvis lenkene i brødteksten er understreket, kan du teste med å slå av automatisk understreking av lenker i nettleseren. I Internet Explorer går du til til Verktøy, Alternativer for Internett, Avansert, rull så helt ned i listen og sett innstillingen Understrek koblinger til Aldri. Er lenkene fremdeles understreket?
+- Er lenker utenfor brødtekst tydelig markert gjennom design, ikonbruk eller lignende, slik at det er lett å se at lenkene er klikkbare?
+- Hvis du kan peke med musen på lenkene, skjer det endring i utseendet for å bekrefte klikkbarhet?
+
+### Lenketekst
+
+Lenketeksten bør forteller hvor lenken leder og bør være fullt ut beskrivende. Det skal være tydelig for brukeren å se hvor han havner ved å følge lenken.
+
+- Hvis du ser på lenketeksten alene, skjønner du hvilken side du vil komme til med lenken?
+- Når du følger lenken, er det samsvar mellom lenketeksten og overskriften på siden du kom til?
+
+## 6. Bilder
+
+For at brukere som ikke ser skal oppfatte motivet i bilder, og hvor lenkede bilder leder, må bildene ha en alternativ tekst. For å sjekke dette på en enkel måte kan du benytte tilleggsmodulen Web Accessibility Toolbar (WAT) for Internet Explorer
+
+For å sjekke alt-tekster, gjør følgende på et utvalg sider, helst med ulike sidemaler:
+
+1. I WAT velger du Images, Show images.
+2. Dersom det kommer en dialogboks som forteller at det er bilder uten alt-attributtet, er det en feil i rammeverket. Alle bilder lagt inn med HTML skal ha alt-attributtet. Se gjennom siden og identifiser alle tilfeller av «No alt!», og sørg for at disse utbedres.
+3. Se gjennom alt-tekstene på alle bilder uten lenke og se om motiv blir beskrevet på en god måte.
+4. Se gjennom alt-tekstene på alle lenkede bilder og se om den er en god beskrivelse av hvor lenken leder.
+
+[Utdypende om bilder og grafikk.](https://www.uutilsynet.no/regelverk/bilder-og-grafikk/205)
+
+### Alt-tekster
+
+Bilder som ikke er meningsbærende, kun er dekorative samt bilder som gjengir tekst som står i nærheten, skal ha et tomt alt-atributt (`alt=""`). Ikoner som gjengis/forklares tekstlig ved siden av, trenger heller ikke alt-atributt.
+
+Bilder som er meningsbærende samt ikoner som er meningsbærende og mangler tekstlig forklaring, skal ha Alt-atributt som forklarer betydelsen av dem.
+
+Alt-teksten skal formuleres som en kort setning som beskriver bildet i kontekst og hva det prøver å formidle. Man skal ikke beskrive kun det som er synlig, men oversette betydelsen av det.
+
+[Les mer om Alt-tekster her](https://www.w3.org/WAI/tutorials/images/decision-tree/)
+
+## 7. Skjema
+
+Korrekt koding av skjema er særlig viktig av hensyn til brukere som ikke ser grensesnittet, og i mange tilfeller også for brukere med nedsatt motorisk presisjon eller kognitive funksjonsnedsettelser.
+
+For å teste hvordan dine skjema er kodet, kan du gjøre følgende:
+
+- Sjekk at tekstfelt, nedtrekkslister og lignende har synlig ledetekst.
+- For skjemafelt: Klikk på ledeteksten med musen og se om det tilhørende feltet blir aktivt. Da er normalt koblingen mellom ledetekst og skjemafelt korrekt.
+- For radioknapper og avkrysningsbokser: Klikk på ledeteksten med musen og se om du krysser av i radioknappen eller avkryssingsboksen. Da er normalt koblingen mellom ledetekst og skjemaelement korrekt.
+
+[Utdypende om skjema.](https://www.uutilsynet.no/wcag-standarden/skjema/38)
+
+## 8. Søkefunksjon
+
+For mange er søkefunksjonen det mest brukte alternativet for å finne fram til ønsket informasjon. Derfor er det viktig at søket fungerer på en god måte.
+
+I søkestatistikken kan du finne ut hva brukerne søker etter. Dette kan du bruke som grunnlag for testing:
+
+- Test de vanligste søkefrasene og se om resultatvisningen viser det brukeren burde få presentert.
+- Se gjennom søkestatistikken, og se om det finnes noen trender, for eksempel samme type informasjon som blir søkt etter på forskjellig måte. Gir slike søk gode treff?
+- Søk på ord som du vet det finnes dedikerte sider for på ditt nettsted. Kommer hovedsiden for dette ordet øverst i resultatvisningen?
+- Søk på kombinasjoner av ord. Gir det færre og mer presise treff, eller flere og mindre presise treff?
+- Er det mulig å filtrere resultatene på noe vis?
+- Gir søkefunksjonen hjelp ved feilstaving av søkeord?
+
+## 9. Sidetitler
+
+Sidetittel presenteres øverst i vinduet eller i fanen i nettleseren og hjelper brukeren med å finne riktig nettleserfane. Sidetittel er også navneforslaget ved lagring av bokmerke eller favoritt i nettleseren.
+
+- Åpne et utvalg sider, helst med ulike sidemaler, og se om nettleserfanen starter med en beskrivelse av sidens spesifikke innhold, og gjerne at den slutter med navnet på ditt nettsted eller virksomhet.
+
+## 10. Kodevalidering
+
+Korrekt kode er viktig for å sikre at nettsiden fungerer riktig med ulike nettlesere og hjelpemidler. Det er enkelte kodefeil som er mer kritiske enn andre. Når nettsiden har få kodefeil, er det lettere å oppdage de alvorlige feilene.
+
+For å sjekke koden på nettsidene kan du bruke [W3Cs kodevalidator](https://validator.w3.org) (engelsk). Du bør sjekke alle sidemalene på ditt nettsted. Målsetningen bør være feilfri kode, men du må se spesielt etter disse feilene:
+
+- At alle elementer er nøstet korrekt.
+- At alle elementer startes og avsluttes korrekt.
+- At ingen elementer har duplikate attributt.
+- At ingen elementer har identisk verdi på id-attributtet.
+
+[Utdypende om kodestandarder og validering.](https://www.uutilsynet.no/regelverk/kodestandarder-og-validering/212)

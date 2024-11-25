@@ -5,7 +5,7 @@ import { SettingsProvider } from './src/providers/SettingsContext';
 import { MediaContextProvider } from './src/providers/MediaBreakpoint';
 import DocLayout from './src/layouts/DocLayout';
 import { GatsbySSR } from 'gatsby';
-
+import { ToastProvider } from '@entur/alert';
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   //TODO fix analytics providers
   // useEffect to only initialise posthog in browser environment,
@@ -20,9 +20,9 @@ export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
       {/* <ConsentProvider> */}
       {/* <PostHogProvider client={posthog}> */}
       {/* <AnalyticsProvider> */}
-      {/* <ToastProvider> */}
-      <MediaContextProvider>{element}</MediaContextProvider>
-      {/* </ToastProvider> */}
+      <ToastProvider>
+        <MediaContextProvider>{element}</MediaContextProvider>
+      </ToastProvider>
       {/* </AnalyticsProvider> */}
       {/* </PostHogProvider> */}
       {/* </ConsentProvider> */}

@@ -1341,7 +1341,6 @@ type MdxFilterListInput = {
 
 type MdxFrontmatter = {
   readonly description: Maybe<Scalars['String']>;
-  readonly hide: Maybe<Scalars['Boolean']>;
   readonly menu: Maybe<Scalars['String']>;
   readonly npmPackage: Maybe<Scalars['String']>;
   readonly order: Maybe<Scalars['Int']>;
@@ -1354,7 +1353,6 @@ type MdxFrontmatter = {
 
 type MdxFrontmatterFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly hide: InputMaybe<FieldSelectorEnum>;
   readonly menu: InputMaybe<FieldSelectorEnum>;
   readonly npmPackage: InputMaybe<FieldSelectorEnum>;
   readonly order: InputMaybe<FieldSelectorEnum>;
@@ -1367,7 +1365,6 @@ type MdxFrontmatterFieldSelector = {
 
 type MdxFrontmatterFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
-  readonly hide: InputMaybe<BooleanQueryOperatorInput>;
   readonly menu: InputMaybe<StringQueryOperatorInput>;
   readonly npmPackage: InputMaybe<StringQueryOperatorInput>;
   readonly order: InputMaybe<IntQueryOperatorInput>;
@@ -1380,7 +1377,6 @@ type MdxFrontmatterFilterInput = {
 
 type MdxFrontmatterSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
-  readonly hide: InputMaybe<SortOrderEnum>;
   readonly menu: InputMaybe<SortOrderEnum>;
   readonly npmPackage: InputMaybe<SortOrderEnum>;
   readonly order: InputMaybe<SortOrderEnum>;
@@ -3080,6 +3076,11 @@ type TransformOptions = {
 type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
+
+type DownloadAllyPDFQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type DownloadAllyPDFQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
