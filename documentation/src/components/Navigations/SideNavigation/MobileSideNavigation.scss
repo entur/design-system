@@ -3,18 +3,27 @@
 @import '~@entur/utils/dist/breakpoints.scss';
 
 .mobile-side-navigation {
+  height: 100%;
+  width: 85%;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
-  left: -80%;
+  left: -85%;
   transition: left 0.3s ease-in-out;
   z-index: 1000;
-  height: 100%;
-  width: 80%;
   margin-top: -$navbar-height;
-  pointer-events: none; /* Prevent interaction when hidden */
+  pointer-events: none;
+  padding-right: 2.5rem;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
     border-color: var(--designentur-header-contrast-divider);
+  }
+
+  // remove scrollbar styling
+  scrollbar-width: none; // Firefox
+  &::-webkit-scrollbar {
+    display: none;
   }
 
   &__menu {
@@ -95,6 +104,7 @@
     width: 100%;
     transition: max-width $timings-fast ease-out;
     background: var(--components-menu-sidenavigation-standard-background);
+    overflow-y: scroll;
 
     @include for-desktop {
       max-width: $side-navigation-width--desktop;
@@ -114,14 +124,14 @@
   &-wrapper .eds-floating-button.mobile-side-navigation__close-menu {
     position: absolute;
     top: 86vh;
-    right: 0;
+    right: 1rem;
     margin-top: -$navbar-height;
     opacity: 0;
     transition: transform 0.3s ease-in-out;
 
     &--open {
       opacity: 1;
-      right: -24px;
+      //right: -24px;
     }
   }
   &__background {
@@ -148,7 +158,7 @@
 
   &--visible {
     left: 0;
-    pointer-events: auto; /* Allow interaction */
+    pointer-events: auto;
   }
 
   &--open-sidemenu {
