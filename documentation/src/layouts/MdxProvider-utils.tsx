@@ -17,7 +17,7 @@ import {
   NumberedList,
   Link as LinkText,
 } from '@entur/typography';
-
+import { GridItem, GridContainer } from '@entur/grid';
 import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
 import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
 import PageHeader from '../components/PageHeader/PageHeader';
@@ -70,6 +70,14 @@ const components = {
   StrongText,
   UnorderedList,
   ListItem,
+  GridContainer,
+  GridItem,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
   // Custom components
   Playground,
   Props,

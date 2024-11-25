@@ -5,12 +5,14 @@ import { MenuItem } from '../components/Navigations/SideNavigation/utils';
 import SideNavigation from '../components/Navigations/SideNavigation/SideNavigation';
 import MobileSideNavigation from '../components/Navigations/SideNavigation/MobileSideNavigation';
 import TableOfContent from '../components/Navigations/TableOfContent/TableOfContent';
+import SiteFooter from '../components/Footer/SiteFooter';
 import { Media } from '../providers/MediaBreakpoint';
 import { useSettings } from '../providers/SettingsContext';
 import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -28,7 +30,7 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             parent
             menu
             order
-            hide
+            removeToc
           }
           id
         }
@@ -67,7 +69,9 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             {children}
           </MDXProvider>
         </main>
+
         <TableOfContent />
+        <SiteFooter />
       </div>
     </div>
   );
