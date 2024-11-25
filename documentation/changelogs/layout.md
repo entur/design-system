@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.20](https://github.com/entur/design-system/compare/@entur/layout@2.3.19...@entur/layout@2.3.20) (2024-11-20)
+
+### Bug Fixes
+
+- **navigation card:** remove unneccesary :before element ([e93bd59](https://github.com/entur/design-system/commit/e93bd59ea7d1b004ca6a3bb0340e23dd33d56776))
+
 ## [2.3.19](https://github.com/entur/design-system/compare/@entur/layout@2.3.18...@entur/layout@2.3.19) (2024-11-12)
 
 **Note:** Version bump only for package @entur/layout
