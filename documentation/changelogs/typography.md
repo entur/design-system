@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.49](https://github.com/entur/design-system/compare/@entur/typography@1.8.48...@entur/typography@1.8.49) (2024-11-20)
+
+**Note:** Version bump only for package @entur/typography
+
 ## [1.8.48](https://github.com/entur/design-system/compare/@entur/typography@1.8.47...@entur/typography@1.8.48) (2024-11-12)
 
 **Note:** Version bump only for package @entur/typography
