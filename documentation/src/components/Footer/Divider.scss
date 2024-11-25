@@ -1,0 +1,8 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.divider {
+  border: none;
+  margin: $space-extra-large 0;
+  height: 1px;
+  width: 100%;
+}

@@ -229,6 +229,23 @@
           "name": "string | undefined"
         }
       },
+      "noMatchesText": {
+        "defaultValue": {
+          "value": "Ingen tilgjengelige valg …"
+        },
+        "description": "Tekst som kommer opp når det ikke er noe elementer å vise",
+        "name": "noMatchesText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
       "labelClearSelectedItem": {
         "defaultValue": {
           "value": "fjern valgt"
