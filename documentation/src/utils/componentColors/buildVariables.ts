@@ -9,7 +9,6 @@ const componentColorsFileData = fs.readFileSync(
     '..',
     '..',
     '..',
-    '..',
     'packages/tokens/src/',
     'component.json',
   ),
