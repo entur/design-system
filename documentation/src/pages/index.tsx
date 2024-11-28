@@ -14,7 +14,7 @@ import TopNavigationLayout from '../layouts/TopNavigationLayout';
 import { Media } from '../providers/MediaBreakpoint';
 import { useSettings } from '../providers/SettingsContext';
 
-import { SEO } from '../components/Seo/SEO';
+import { SEO } from '../components/seo/SEO';
 
 import './index.scss';
 
