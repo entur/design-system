@@ -69,7 +69,8 @@
     "@types/react-dom": "^18.2.22",
     "react-docgen-typescript": "^2.2.2",
     "typescript": "^5.5.4",
-    "tsx": "^4.19.1"
+    "tsx": "^4.19.1",
+    "ts-node": "^10.9.2"
   },
   "overrides": {
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
