@@ -13,10 +13,7 @@
     margin-left: auto;
     padding-right: 2.5rem;
   }
-  &__icon {
-    font-size: $font-sizes-extra-large2;
-    margin-right: $space-extra-small2;
-  }
+
   &__modal.eds-modal__content {
     overflow: visible;
   }
@@ -30,5 +27,9 @@
   }
   .settings-trigger {
     margin-left: $space-large;
+    &__icon {
+      font-size: $font-sizes-extra-large2;
+      margin-right: $space-extra-small;
+    }
   }
 }

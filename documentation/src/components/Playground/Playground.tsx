@@ -58,7 +58,6 @@ const Playground: React.FC<PlaygroundProps> = ({
     componentName,
   } = useAdvancedPlaygroundCode(code, props);
 
-  // TODO Gatsby 5- sjekk om darkmode fungerer når vi har lagt inn alle fargevariabler
   const toggledarkMode = () => {
     setdarkMode(!darkMode);
   };

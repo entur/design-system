@@ -7,6 +7,9 @@ import { Contrast, useContrast } from '@entur/layout';
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '../../../providers/SettingsContext';
 
+import logo from '../../../media/logo/logo.svg';
+import logoDark from '../../../media/logo/logoDark.svg';
+
 import './MobileTopNav.scss';
 
 type MobileTopNavigationProps = {
@@ -19,7 +22,6 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   className,
   ...rest
 }) => {
-  //TODO add contrast to mobile topnav
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
@@ -36,11 +38,10 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
       >
         <div className={classNames('mobile-topnav')}>
           <div className="mobile-topnav__menu">
-            <Link to="/">
+            <Link to="/" className="mobile-topnav__logo">
               <img
-                // src={colorMode === 'dark' || isContrast ? logoDark : logo}
+                src={colorMode === 'dark' || isContrast ? logoDark : logo}
                 alt="Entur logo – designsystemets starside"
-                style={{ paddingLeft: '24px' }}
               />
             </Link>
             <SettingsPanel />
