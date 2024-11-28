@@ -65,6 +65,10 @@ export type DropdownProps<ValueType> = {
    * @default 'Laster inn …'
    */
   loadingText?: string;
+  /** Tekst som kommer opp når det ikke er noe elementer å vise
+   * @default "Ingen tilgjengelige valg …"
+   */
+  noMatchesText?: string;
   /** Om man skal ha mulighet for å nullstille Dropdown-en
    * @default "fjern valgt"
    */
@@ -116,6 +120,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   labelTooltip,
   listStyle,
   loadingText,
+  noMatchesText = 'Ingen tilgjengelige valg …',
   onChange,
   placeholder,
   prepend,
@@ -250,6 +255,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         highlightedIndex={highlightedIndex}
         isOpen={isOpen}
         listItems={normalizedItems}
+        noMatchesText={noMatchesText}
         style={listStyle}
         setListRef={refs.setFloating}
         loading={loading}
