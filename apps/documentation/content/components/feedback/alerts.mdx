@@ -248,12 +248,35 @@ Toasts brukes i respons på visse typer handlinger og hendelser, og vises automa
 De bør forsvinne etter minst 6 sekunder, eller om man trykker på lukke-knappen.
 Lukke-knappen bør dukke opp når man holder musepekeren over feltet, og "nedtellingen" for å automatisk fjerne knappen bør starte på nytt.
 
-Toasts er kun tilgjengelige i typene success og information, men vi brukes for det meste success-varselet.
+Toasts er kun tilgjengelige i typene success og information, men vi bruker for det meste success-varselet.
 De skal kun brukes som reaksjon på en hendelse, eller vise tidssensitiv informasjon.
 Et godt eksempel kan være at brukeren er oppdatert, eller at en annen bruker har begynt å redigere samme dokument.
 
 Toast-varsler skal ikke plasseres over kritisk funksjonalitet, som knapper, navigasjon og andre funksjoner.
 De dukker opp nedenfra på små flater, og ligger øverst i høyre hjørne på store flater.
+
+#### Toasts og universell utforming
+
+Toast-varsler kan være utfordrende med tanke på universell utforming. Derfor har vi valgt å ikke tilby variantene error og warning.
+Feilmeldinger og advarsler bør presenteres permanent og i kontekst, nær det aktuelle problemet, med tydelige forslag til rettelser.
+
+WCAG-punkter som er relatert til bruk av toasts:
+
+- [Retningslinje 3.3.3 – Forslag ved feil](https://www.uutilsynet.no/wcag-standarden/333-forslag-ved-feil-niva-aa/118)
+
+Brukeren skal få tydelige instruksjoner eller forslag når en feil oppstår, noe som kan være vanskelig å oppnå i en toast.
+
+- [Prinsipp 2.2 - Nok tid](https://www.uutilsynet.no/wcag-standarden/22-nok-tid/720)
+
+Gi brukerne nok tid til å lese og bruke innhold.
+
+- [Retningslinje 1.3.1 – Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+
+Informasjon skal ha logiske relasjoner. Om toasten ikke er implementert riktig og feilmeldingen bare visuelt er koblet til relatert informasjon vil ikke alle brukere forstå sammenhengen med informasjonen.
+
+- [Retningslinje 1.4.13 - Pekerfølsomt innhold eller innhold ved tastaturfokus](https://www.uutilsynet.no/wcag-standarden/1413-pekerfolsomt-innhold-eller-innhold-ved-tastaturfokus-niva-aa/147) 
+
+Viktig innhold som vises midlertidig må være tilgjengelig via tastatur, og forbli synlig til brukeren aktivt lukker det, eller så lenge det er nødvendig for å forstå meldingen.
 
 ### SmallAlertBox
 
