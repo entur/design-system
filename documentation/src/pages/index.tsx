@@ -62,6 +62,7 @@ const Index = () => {
                     <StaticImage
                       src="../media/images/frontpage/FrontpageImage.png"
                       alt="Tegning av en by med kollektivtrafikk"
+                      placeholder="none"
                     />
                   </div>
                 </div>
@@ -79,6 +80,7 @@ const Index = () => {
                   <StaticImage
                     src="../media/images/frontpage/FrontpageImage.png"
                     alt="Tegning av en by med kollektivtrafikk"
+                    placeholder="none"
                   />
                 </div>
               </Media>
@@ -137,6 +139,7 @@ const Index = () => {
                   width={500}
                   src="../media/images/frontpage/kontakt.png"
                   alt=""
+                  placeholder="none"
                 />
               </div>
               <Heading2>Vil du bidra?</Heading2>

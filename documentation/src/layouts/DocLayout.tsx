@@ -15,7 +15,7 @@ interface LayoutProps {
   //pageTitle: string;
   children: React.ReactNode;
 }
-//TODO Bør graphql query flyttes til pages mdx.frontmatter__route.tsx?
+
 const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const { colorMode } = useSettings();

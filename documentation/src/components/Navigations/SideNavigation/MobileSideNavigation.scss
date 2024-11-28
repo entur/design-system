@@ -33,8 +33,7 @@
     &--menu-button {
       position: relative;
       appearance: none;
-      // TODO add correct color
-      background-color: pink;
+      background-color: inherit;
       border: none;
       color: inherit;
       cursor: pointer;
@@ -138,9 +137,7 @@
     min-height: 100dvh;
     padding-top: $space-extra-large;
     padding-bottom: $space-extra-large;
-    background-color: pink;
-    // TODO
-    // background-color: var(--components-menu-sidenavigation-standard-background);
+    background-color: var(--components-menu-sidenavigation-standard-background);
   }
   &__backdrop {
     z-index: 19;
