@@ -26,6 +26,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "tiny-warning": "^1.0.3"
+    "tiny-warning": "^1.0.3",
+    "@entur/tokens": "^3.17.3"
   }
 }

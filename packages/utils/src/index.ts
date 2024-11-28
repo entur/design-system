@@ -11,3 +11,4 @@ export * from './ConditionalWrapper';
 export * from './warnAboutMissingStyles';
 export * from './types';
 export * from './getNodeText';
+export * from './ConsentProvider';
