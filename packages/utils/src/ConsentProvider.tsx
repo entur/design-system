@@ -5,7 +5,39 @@ import { fontSizes, lineHeights, shadows, space } from '@entur/tokens';
 const CONSENT_EVENT = 'UC_CONSENT';
 const INITIALIZE_EVENT = 'UC_UI_INITIALIZED';
 
-const ConsentContext = React.createContext<null>(null);
+declare global {
+  interface Window {
+    __ucCmp: any;
+  }
+}
+
+type ConsentContextType = {
+  consents:
+    | {
+        id: string;
+        name: string;
+        consentGiven: boolean;
+        category: string;
+      }[]
+    | undefined;
+  isInitialized: boolean;
+  acceptAllConsents: (() => Promise<void>) | undefined;
+  denyAllConsents: (() => Promise<void>) | undefined;
+  updateServicesConsents:
+    | ((
+        serviceConsents: Array<{ id: string; consent: boolean }>,
+      ) => Promise<void>)
+    | undefined;
+  changeLanguage: ((language: string) => Promise<void>) | undefined;
+};
+const ConsentContext = React.createContext<ConsentContextType>({
+  consents: undefined,
+  isInitialized: false,
+  acceptAllConsents: undefined,
+  denyAllConsents: undefined,
+  updateServicesConsents: undefined,
+  changeLanguage: undefined,
+});
 
 export const ConsentProvider = ({
   language,
@@ -14,15 +46,32 @@ export const ConsentProvider = ({
   language: 'en' | 'nb' | 'nn';
 }) => {
   const [isInitialized, setIsInitialized] = React.useState(false);
+  const [consents, setConsents] =
+    React.useState<ConsentContextType['consents']>(undefined);
+
+  async function acceptAllFunction() {
+    // if (window?.__ucCmp === undefined)
+    await window?.__ucCmp?.acceptAllConsentsFunction();
+  }
+  const denyAllFunction = () => {};
+  const updateServicesConsentsFunction = () => {};
+  const changeLanguageFunction = () => {};
 
   React.useEffect(() => {
     function logConsent(event: Event & { detail?: ConsentDetails }) {
       const UC_Event_detail = event.detail;
-      console.log('UC_CONSENT event detail', UC_Event_detail);
-      console.log(
-        'UC_CONSENT for Posthog:',
-        UC_Event_detail?.services?.['uRoG9JxhEUtI4V'].consent?.given,
+
+      const _consents = Object.entries(UC_Event_detail?.services ?? {}).map(
+        service => {
+          return {
+            id: service[0],
+            name: service[1].name,
+            consentGiven: service[1].consent?.given ?? false,
+            category: service[1].category,
+          };
+        },
       );
+      setConsents(_consents);
     }
     window.addEventListener(CONSENT_EVENT, logConsent);
     return () => {
@@ -32,17 +81,31 @@ export const ConsentProvider = ({
 
   React.useEffect(() => {
     function updatelanguage() {
-      // @ts-expect-error __ucCmp should exist on window object
       if (window?.__ucCmp === undefined)
         console.warn(
           'Could not find __ucCmp within window object, have you initialized the UserCentrics CMP v3 script?',
         );
-      // @ts-expect-error __ucCmp should exist on window object
       window?.__ucCmp?.changeLanguage(language);
     }
     function initializeCMPSettings() {
-      setIsInitialized(true);
       updatelanguage();
+      console.log('window', window?.__ucCmp);
+      console.log('window accept', window?.__ucCmp?.acceptAllConsents);
+      // setDenyAllFunction(window.__ucCmp.denyAllConsents as () => Promise<void>);
+      // setUpdateServicesConsentsFunction(
+      //   async (servicesConsents: Array<{ id: string; consent: boolean }>) => {
+      //     await window.__ucCmp.updateServicesConsents(servicesConsents);
+      //     (await window.__ucCmp.saveConsents()) as (servicesConsents: {
+      //       id: string;
+      //       consent: boolean;
+      //     }) => Promise<void>;
+      //   },
+      // );
+      // setChangeLanguageFunction(
+      //   window?.__ucCmp?.changeLanguage as (language: string) => Promise<void>,
+      // );
+
+      setIsInitialized(true);
     }
 
     isInitialized && updatelanguage();
@@ -65,7 +128,38 @@ export const ConsentProvider = ({
     addCustomStylesheet();
   }, []);
 
-  return <ConsentContext.Provider value={null} {...rest} />;
+  const contextValue = React.useMemo(
+    () => ({
+      consents,
+      isInitialized,
+      acceptAllConsents: acceptAllFunction,
+      denyAllConsents: denyAllFunction,
+      updateServicesConsents: updateServicesConsentsFunction,
+      changeLanguage: changeLanguageFunction,
+    }),
+    [
+      consents,
+      isInitialized,
+      // acceptAllFunction,
+      // denyAllFunction,
+      // updateServicesConsentsFunction,
+      // changeLanguageFunction,
+    ],
+  );
+
+  // @ts-expect-error test
+  return <ConsentContext.Provider value={contextValue} {...rest} />;
+};
+
+export const useConsent: () => ConsentContextType = () => {
+  const context = React.useContext(ConsentContext);
+  if (!context) {
+    throw new Error(
+      'You need to wrap your component in a SettingsProvider component in ' +
+        'order to use the useSettings hook',
+    );
+  }
+  return context;
 };
 
 const cmpStyleSheet = `
