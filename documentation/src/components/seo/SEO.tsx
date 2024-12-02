@@ -52,6 +52,8 @@ export const SEO: React.FC<SEOProps> = ({
       </title>
       <meta name="description" content={SEO.description} />
       <meta name="image" content={SEO.image} />
+      <meta property="twitter:image" content={SEO.image} />
+      <meta property="og:image" content={SEO.image} />
       <meta property="og:url" content={SEO.url} />
       <meta property="og:title" content={SEO.title} />
       <meta property="og:type" content="website" />
