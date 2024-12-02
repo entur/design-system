@@ -4,7 +4,7 @@
 
 .mobile-side-navigation {
   height: 100%;
-  width: 85%;
+  width: 80%;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -13,11 +13,15 @@
   z-index: 1000;
   margin-top: -$navbar-height;
   pointer-events: none;
-  padding-right: 2.5rem;
+  padding-right: 1.6rem;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
     border-color: var(--designentur-header-contrast-divider);
+  }
+  // remove scrollbar styling
+  &::-webkit-scrollbar {
+    display: none;
   }
 
   // remove scrollbar styling
@@ -131,7 +135,6 @@
 
     &--open {
       opacity: 1;
-      //right: -24px;
     }
   }
   &__background {
