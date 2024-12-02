@@ -5,11 +5,17 @@ import { fontSizes, lineHeights, shadows, space } from '@entur/tokens';
 const CONSENT_EVENT = 'UC_CONSENT';
 const INITIALIZE_EVENT = 'UC_UI_INITIALIZED';
 
-declare global {
-  interface Window {
-    __ucCmp: any;
-  }
-}
+// declare global {
+//   interface Window {
+//     __ucCmp: {
+//       acceptAllConsents: () => Promise<void>;
+//       changeLanguage: (language: string) => Promise<void>;
+//     };
+//   }
+//   interface globalThis {
+//     __ucCmp: any;
+//   }
+// }
 
 type ConsentContextType = {
   consents:
@@ -21,7 +27,8 @@ type ConsentContextType = {
       }[]
     | undefined;
   isInitialized: boolean;
-  acceptAllConsents: (() => Promise<void>) | undefined;
+  // acceptAllConsents: () => Promise<void>;
+  acceptAllConsents: () => any;
   denyAllConsents: (() => Promise<void>) | undefined;
   updateServicesConsents:
     | ((
@@ -30,14 +37,8 @@ type ConsentContextType = {
     | undefined;
   changeLanguage: ((language: string) => Promise<void>) | undefined;
 };
-const ConsentContext = React.createContext<ConsentContextType>({
-  consents: undefined,
-  isInitialized: false,
-  acceptAllConsents: undefined,
-  denyAllConsents: undefined,
-  updateServicesConsents: undefined,
-  changeLanguage: undefined,
-});
+// @ts-expect-error tes
+const ConsentContext = React.createContext<ConsentContextType>({});
 
 export const ConsentProvider = ({
   language,
@@ -49,10 +50,23 @@ export const ConsentProvider = ({
   const [consents, setConsents] =
     React.useState<ConsentContextType['consents']>(undefined);
 
-  async function acceptAllFunction() {
-    // if (window?.__ucCmp === undefined)
-    await window?.__ucCmp?.acceptAllConsentsFunction();
-  }
+  const acceptAllFunction = async () => {
+    const sleep = (timeout: number) =>
+      new Promise(resolve => setTimeout(resolve, timeout));
+
+    for (let index = 0; index < 10; index++) {
+      if (
+        '__ucCmp' in window &&
+        typeof window.__ucCmp === 'object' &&
+        window.__ucCmp
+      ) {
+        return window.__ucCmp.acceptAllConsents();
+      } else {
+        await sleep(250);
+      }
+    }
+  };
+
   const denyAllFunction = () => {};
   const updateServicesConsentsFunction = () => {};
   const changeLanguageFunction = () => {};
