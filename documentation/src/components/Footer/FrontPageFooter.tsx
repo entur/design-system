@@ -12,14 +12,15 @@ import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
 import { Media } from '../../providers/MediaBreakpoint';
-
 import { useSettings } from '../../providers/SettingsContext';
+
+import logo from '../../media/logo/logo.svg';
+import logoDark from '../../media/logo/logoDark.svg';
 
 import './FrontPageFooter.scss';
 
 const FrontPageFooter = () => {
   const year = new Date();
-  //TODO: Images are missing
   const { colorMode } = useSettings();
   return (
     <div className="front-page-footer">
@@ -83,7 +84,7 @@ const FrontPageFooter = () => {
       <div className="front-page-footer__entur-banner">
         <div>
           <img
-            //src={colorMode === 'dark' ? logoDark : logo}
+            src={colorMode === 'dark' ? logoDark : logo}
             width="104px"
             alt="Entur sin logo"
           />

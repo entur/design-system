@@ -11,6 +11,9 @@ import SideNavigation from './SideNavigation';
 import { useContrast } from '@entur/layout';
 import { useSettings } from '../../../providers/SettingsContext';
 
+import logo from '../../../media/logo/logo.svg';
+import logoDark from '../../../media/logo/logoDark.svg';
+
 import './MobileSideNavigation.scss';
 
 type MobileMenuProps = {
@@ -26,7 +29,6 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
   openSidebar,
   setOpenSidebar,
 }) => {
-  // todo: add contrast to mobile side navigation
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
@@ -69,14 +71,9 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
         >
           <nav aria-label={`Navigasjon for seksjonen "${parentPath}"`}>
             <div className="mobile-side-navigation__background">
-              <Link
-                to="/"
-                className="mobile-side-navigation__logo"
-                style={{ marginLeft: space.extraLarge }}
-              >
+              <Link to="/" className="mobile-side-navigation__logo">
                 <img
-                  // TODO: Fix images
-                  // src={colorMode === 'dark' || isContrast ? logoDark : logo}
+                  src={colorMode === 'dark' || isContrast ? logoDark : logo}
                   height="20px"
                   width="64px"
                   alt="Entur logo"

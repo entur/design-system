@@ -8,6 +8,9 @@ import classNames from 'classnames';
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '../../../providers/SettingsContext';
 
+import logo from '../../../media/logo/logo.svg';
+import logoDark from '../../../media/logo/logoDark.svg';
+
 import './TopNavigation.scss';
 
 interface TopNavigationProps {
@@ -17,6 +20,7 @@ interface TopNavigationProps {
 const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
+  // TODO  top navigation får klassen top-navigation--frontpage også når den ikke er på frontpage
   return (
     <nav
       className={classNames('top-navigation', {
@@ -28,8 +32,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
     >
       <Link to="/" className="top-navigation__logo">
         <img
-          //TODO
-          //src={colorMode === 'dark' || isContrast ? logoDark : logo}
+          src={colorMode === 'dark' || isContrast ? logoDark : logo}
           height="32px"
           width="102px"
           alt="Entur logo, klikk for å gå til startsiden"

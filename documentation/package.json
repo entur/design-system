@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",
-    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts",
+    "build:componentColors": "tsx src/utils/componentColors/buildVariables.ts",
     "generate-props": "tsx src/components/Props/generate-props.ts"
   },
   "dependencies": {
