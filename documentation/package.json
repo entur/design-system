@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",
-    "build:componentColors": "ts-node -O '{\"module\": \"commonjs\"}' src/utils/componentColors/buildVariables.ts",
+    "build:componentColors": "tsx src/utils/componentColors/buildVariables.ts",
     "generate-props": "tsx src/components/Props/generate-props.ts"
   },
   "dependencies": {
@@ -69,8 +69,7 @@
     "@types/react-dom": "^18.2.22",
     "react-docgen-typescript": "^2.2.2",
     "typescript": "^5.5.4",
-    "tsx": "^4.19.1",
-    "ts-node": "^10.9.2"
+    "tsx": "^4.19.1"
   },
   "overrides": {
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
