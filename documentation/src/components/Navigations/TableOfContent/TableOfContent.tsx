@@ -53,13 +53,8 @@ function useCurrentActiveHeading(headings: Heading[]) {
   );
 
   useEffect(() => {
-    console.log('useCurrentActiveHeading', headings);
-    if (headings.length > 0 && !activeHeading) {
-      setActiveHeading(headings[0].url?.replace('#', '') || null);
-    }
-
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '0px 0px -50% 0px', // Triggers when 50% is out of view
+      rootMargin: '0px 0px -50% 0px',
       threshold: 1.0,
     });
 
@@ -68,10 +63,21 @@ function useCurrentActiveHeading(headings: Heading[]) {
     );
 
     elements.forEach(el => el && observer.observe(el));
+
+    // Cleanup
     return () => {
       elements.forEach(el => el && observer.unobserve(el));
+      observer.disconnect();
     };
-  }, [headings, observerCallback, activeHeading]);
+  }, [headings, observerCallback]);
+
+  const { pathname } = useLocation();
+  // Set active heading to the first heading when the pathname changes
+  useEffect(() => {
+    if (headings.length > 0) {
+      setActiveHeading(headings[0].url?.replace('#', '') || null);
+    }
+  }, [pathname, headings]);
 
   return activeHeading;
 }
