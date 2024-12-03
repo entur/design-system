@@ -3077,11 +3077,6 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
-type DownloadAllyPDFQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type DownloadAllyPDFQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
-
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };

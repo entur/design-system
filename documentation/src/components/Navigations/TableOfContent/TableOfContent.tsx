@@ -53,6 +53,11 @@ function useCurrentActiveHeading(headings: Heading[]) {
   );
 
   useEffect(() => {
+    console.log('useCurrentActiveHeading', headings);
+    if (headings.length > 0 && !activeHeading) {
+      setActiveHeading(headings[0].url?.replace('#', '') || null);
+    }
+
     const observer = new IntersectionObserver(observerCallback, {
       rootMargin: '0px 0px -50% 0px', // Triggers when 50% is out of view
       threshold: 1.0,
@@ -66,7 +71,7 @@ function useCurrentActiveHeading(headings: Heading[]) {
     return () => {
       elements.forEach(el => el && observer.unobserve(el));
     };
-  }, [headings, observerCallback]);
+  }, [headings, observerCallback, activeHeading]);
 
   return activeHeading;
 }

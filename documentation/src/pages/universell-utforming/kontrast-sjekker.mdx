@@ -7,12 +7,15 @@ tags: farger, kontrast
 order: 5
 ---
 
+import { SEO } from '../../components/seo/SEO';
 import ContrastChecker from '../../components/UU/ContrastChecker';
-
 import { ValidationErrorFilledIcon, ValidationSuccessFilledIcon } from '@entur/icons';
 import { colors } from '@entur/tokens';
-
 import './kontrast-sjekker.scss';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
 
 <PageHeader />
 
