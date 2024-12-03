@@ -20,6 +20,7 @@ interface TopNavigationProps {
 const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
+  // TODO  top navigation får klassen top-navigation--frontpage også når den ikke er på frontpage
   return (
     <nav
       className={classNames('top-navigation', {
