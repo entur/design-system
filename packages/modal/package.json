@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.7.58-beta.0",
+  "version": "1.7.58-alpha.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
@@ -27,13 +27,13 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.94-beta.0",
-    "@entur/button": "^3.2.37-beta.0",
+    "@entur/a11y": "^0.2.94-alpha.0",
+    "@entur/button": "^3.2.37-alpha.0",
     "@entur/icons": "^7.5.0",
-    "@entur/layout": "^2.3.21-beta.0",
+    "@entur/layout": "^2.3.21-alpha.0",
     "@entur/tokens": "^3.17.3",
-    "@entur/typography": "^1.8.50-beta.0",
-    "@entur/utils": "^1.0.0-beta.0",
+    "@entur/typography": "^1.8.50-alpha.0",
+    "@entur/utils": "^1.0.0-alpha.0",
     "@reach/dialog": "^0.16.0",
     "classnames": "^2.3.1",
     "react-focus-lock": "^2.9.1"

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.0](https://github.com/entur/design-system/compare/@entur/utils@0.12.1...@entur/utils@1.0.0-alpha.0) (2024-12-04)
+
+### Bug Fixes
+
+- **utils:** moves types for usercentrics ([ef7feae](https://github.com/entur/design-system/commit/ef7feae4268d763b7702e47121b475453b6c199a))
+
+### Features
+
+- **utils:** add utils for consent managment / cookie banner ([1cb035a](https://github.com/entur/design-system/commit/1cb035aeb3cbf6a0440facf2f4dedcfc77ec06d4))
+
 # [1.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/utils@0.12.1...@entur/utils@0.13.0-beta.0) (2024-12-04)
 
 ### Features
