@@ -15,9 +15,13 @@ import {
   UnorderedList,
   ListItem,
   NumberedList,
+  EmphasizedText,
   Link as LinkText,
 } from '@entur/typography';
+import { VisuallyHidden } from '@entur/a11y';
+import { ExpandablePanel } from '@entur/expand';
 import { GridItem, GridContainer } from '@entur/grid';
+import { BannerAlertBox } from '@entur/alert';
 import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
 import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
 import PageHeader from '../components/PageHeader/PageHeader';
@@ -68,8 +72,10 @@ const components = {
   ol: NumberedList,
   Paragraph,
   StrongText,
+  EmphasizedText,
   UnorderedList,
   ListItem,
+  NumberedList,
   GridContainer,
   GridItem,
   Heading1,
@@ -78,6 +84,9 @@ const components = {
   Heading4,
   Heading5,
   Heading6,
+  BannerAlertBox,
+  ExpandablePanel,
+  VisuallyHidden,
   // Custom components
   Playground,
   Props,
