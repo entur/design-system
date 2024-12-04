@@ -5,22 +5,6 @@ export const CMP_INITIALIZE_EVENT = 'UC_UI_INITIALIZED';
 export const CONSENT_UPDATED_EVENT = 'UC_CONSENT';
 const CMP_SHADOW_ROOT_ID = 'usercentrics-cmp-ui';
 
-declare global {
-  interface Window {
-    __ucCmp: {
-      acceptAllConsents: () => Promise<void>;
-      changeLanguage: (language: string) => Promise<void>;
-      denyAllConsents: () => Promise<void>;
-      updateServicesConsents: (serviceConsents: {
-        id: string;
-        consent: boolean;
-      }) => Promise<void>;
-      closeCmp: () => Promise<void>;
-      showFirstLayer: () => Promise<void>;
-    };
-  }
-}
-
 type Consents =
   | {
       id: string;
