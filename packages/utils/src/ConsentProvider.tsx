@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConsentDetails } from './types/UserCentricsTypes';
+import { ConsentDetails } from './types/usercentrics';
 import { fontSizes, lineHeights, shadows, space } from '@entur/tokens';
 
 const CONSENT_EVENT = 'UC_CONSENT';
