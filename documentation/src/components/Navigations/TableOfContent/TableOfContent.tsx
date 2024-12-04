@@ -107,6 +107,11 @@ const TableOfContent = () => {
         removeTrailingSlash(pathname),
     );
 
+    if (!currentDoc) {
+      console.warn('No matching document found for the current route');
+      return null;
+    }
+
     if (!currentDoc || currentDoc.frontmatter.removeToc) return null;
     return currentDoc.tableOfContents || {};
   }, [data, pathname]);
@@ -117,11 +122,6 @@ const TableOfContent = () => {
 
   if (!data?.allMdx?.nodes) {
     console.warn('Invalid data structure returned from GraphQL query');
-    return null;
-  }
-
-  if (!toc) {
-    console.warn('No matching document found for the current route');
     return null;
   }
 
