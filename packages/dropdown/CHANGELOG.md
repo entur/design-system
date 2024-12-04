@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.11-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.10...@entur/dropdown@6.0.11-beta.0) (2024-12-04)
+
+### Bug Fixes
+
+- **dropdown:** add missing prop noMatchesText for when an empty list is provided to items ([65d025a](https://github.com/entur/design-system/commit/65d025ad038d8315a472eb6abb6d9cf2532f942a))
+
 ## [6.0.10](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.9...@entur/dropdown@6.0.10) (2024-11-20)
 
 **Note:** Version bump only for package @entur/dropdown
