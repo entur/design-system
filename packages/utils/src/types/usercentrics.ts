@@ -1,3 +1,19 @@
+declare global {
+  interface Window {
+    __ucCmp: {
+      acceptAllConsents: () => Promise<void>;
+      changeLanguage: (language: string) => Promise<void>;
+      denyAllConsents: () => Promise<void>;
+      updateServicesConsents: (serviceConsents: {
+        id: string;
+        consent: boolean;
+      }) => Promise<void>;
+      closeCmp: () => Promise<void>;
+      showFirstLayer: () => Promise<void>;
+    };
+  }
+}
+
 export type ConsentActionType =
   | 'onAcceptAllServices'
   | 'onDenyAllServices'
