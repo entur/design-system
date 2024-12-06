@@ -3,6 +3,7 @@ import React, {
   createContext,
   MutableRefObject,
   useContext,
+  useEffect,
 } from 'react';
 
 import classNames from 'classnames';
@@ -48,16 +49,28 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   // calculations for floating-UI popover position
-  const { refs, floatingStyles } = useFloating<HTMLButtonElement>({
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update),
-    placement: standardisePlacement(placement),
-    middleware: [
-      offset(space.extraSmall),
-      flip(),
-      shift({ padding: space.extraSmall, limiter: limitShift({ offset: 8 }) }),
-    ],
-  });
+  const { refs, floatingStyles, elements, update } =
+    useFloating<HTMLButtonElement>({
+      placement: standardisePlacement(placement),
+      middleware: [
+        offset(space.extraSmall),
+        flip(),
+        shift({
+          padding: space.extraSmall,
+          limiter: limitShift({ offset: 8 }),
+        }),
+      ],
+    });
+
+  // Since we use CSS instead of conditional rendering when hiding dropdownlist
+  // we can't use the whileElementsMounted option and need to handle
+  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
+  useEffect(() => {
+    if (showPopover && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
+    }
+  }, [showPopover, elements, update]);
 
   useOnClickOutside([refs.floating, refs.reference], () =>
     setShowPopover(false),
