@@ -30,6 +30,7 @@ const flattenHeadings = (
   items: Heading[] = [],
   currentDepth = 1,
 ): Heading[] => {
+  console.log(`Flattening items at depth ${currentDepth}:`, items);
   return items.reduce((acc: Heading[], item: Heading) => {
     acc.push({ ...item, depth: currentDepth });
     if (item.items) {
@@ -129,6 +130,7 @@ const TableOfContent = () => {
     return null;
   }
 
+  console.log('TableOfContent', filteredHeadings);
   return (
     <nav className="table-of-content-container">
       <Heading4 style={{ margin: 0 }}>Innhold</Heading4>
