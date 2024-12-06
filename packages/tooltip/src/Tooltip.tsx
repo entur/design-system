@@ -1,4 +1,4 @@
-import React, { cloneElement, useRef, useState } from 'react';
+import React, { cloneElement, useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import {
@@ -123,9 +123,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
     middlewareData,
     placement: actualPlacement,
     isPositioned,
+    update,
+    elements,
   } = useFloating({
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update),
     placement: standardisePlacement(placement),
     open: showTooltip,
     middleware: [
@@ -138,6 +138,16 @@ export const Tooltip: React.FC<TooltipProps> = ({
       }),
     ],
   });
+
+  // Since we use CSS instead of conditional rendering when hiding tooltip
+  // we can't use the whileElementsMounted option and need to handle
+  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
+  useEffect(() => {
+    if (showTooltip && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
+    }
+  }, [showTooltip, elements, update]);
 
   const onMouseEnter = () => {
     if (isControlled) return;

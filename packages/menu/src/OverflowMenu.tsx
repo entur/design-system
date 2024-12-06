@@ -1,4 +1,10 @@
-import React, { cloneElement, useContext, useRef, useState } from 'react';
+import React, {
+  cloneElement,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import classNames from 'classnames';
 import {
@@ -74,8 +80,7 @@ export const OverflowMenu = ({
   const listRef = useRef([]);
   const labelsRef = useRef([]);
 
-  const { refs, floatingStyles, context } = useFloating({
-    whileElementsMounted: autoUpdate,
+  const { refs, floatingStyles, context, elements, update } = useFloating({
     placement: standardisePlacement(
       // check for left is added for backwards compatibility
       rest.position === 'left' ? 'bottom-end' : placement,
@@ -88,6 +93,16 @@ export const OverflowMenu = ({
       shift({ padding: space.extraSmall }),
     ],
   });
+
+  // Since we use CSS instead of conditional rendering when hiding dropdownlist
+  // we can't use the whileElementsMounted option and need to handle
+  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
+  useEffect(() => {
+    if (isOpen && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
+    }
+  }, [isOpen, elements, update]);
 
   const listNav = useListNavigation(context, {
     listRef,
