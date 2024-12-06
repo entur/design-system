@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.26](https://github.com/entur/design-system/compare/@entur/chip@0.7.25...@entur/chip@0.7.26) (2024-12-06)
+
+**Note:** Version bump only for package @entur/chip
+
 ## [0.7.25](https://github.com/entur/design-system/compare/@entur/chip@0.7.24...@entur/chip@0.7.25) (2024-11-20)
 
 **Note:** Version bump only for package @entur/chip
