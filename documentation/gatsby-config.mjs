@@ -51,6 +51,14 @@ const config = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'downloads',
+        path: './src/downloads/',
+      },
+      __key: 'downloads',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'pages',
         path: './src/pages/',
       },
