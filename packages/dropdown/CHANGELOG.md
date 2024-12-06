@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.12](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.11...@entur/dropdown@6.0.12) (2024-12-06)
+
+### Performance Improvements
+
+- **dropdowns:** fix performance bug causing unnecessary rerenders ([f495f3a](https://github.com/entur/design-system/commit/f495f3ad869f4db3b68ad7b069bca414960a756d))
+
 ## [6.0.11](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.10...@entur/dropdown@6.0.11) (2024-11-29)
 
 ### Bug Fixes
