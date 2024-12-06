@@ -1,6 +1,10 @@
 import * as React from 'react';
 import Props from '../components/Props/Props';
 import Playground from '../components/Playground/Playground';
+import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
+import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
+import PageHeader from '../components/PageHeader/PageHeader';
+import { ImageDisplay } from '../components/Media/ImageDisplay';
 import {
   Heading1,
   Heading2,
@@ -18,14 +22,17 @@ import {
   EmphasizedText,
   Link as LinkText,
 } from '@entur/typography';
+import {
+  Table,
+  TableHead,
+  TableRow,
+  HeaderCell,
+  TableBody,
+} from '@entur/table';
 import { VisuallyHidden } from '@entur/a11y';
 import { ExpandablePanel } from '@entur/expand';
 import { GridItem, GridContainer } from '@entur/grid';
 import { BannerAlertBox } from '@entur/alert';
-import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
-import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
-import PageHeader from '../components/PageHeader/PageHeader';
-import { ImageDisplay } from '../components/Media/ImageDisplay';
 
 const preToCodeBlock = preProps => {
   if (
@@ -84,9 +91,15 @@ const components = {
   Heading4,
   Heading5,
   Heading6,
+  LinkText,
   BannerAlertBox,
   ExpandablePanel,
   VisuallyHidden,
+  Table,
+  TableHead,
+  TableRow,
+  HeaderCell,
+  TableBody,
   // Custom components
   Playground,
   Props,
