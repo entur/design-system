@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useSelect } from 'downshift';
 import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react-dom';
@@ -164,13 +164,21 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
     itemToString,
   });
 
-  const { refs, floatingStyles } = useFloating({
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update),
+  const { refs, floatingStyles, elements, update } = useFloating({
     placement: 'bottom-start',
     open: isOpen,
     middleware: [offset(space.extraSmall2), flip()],
   });
+
+  // Since we use CSS instead of conditional rendering when hiding dropdownlist
+  // we can't use the whileElementsMounted option and need to handle
+  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
+  useEffect(() => {
+    if (isOpen && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
+    }
+  }, [isOpen, elements, update]);
 
   return (
     <BaseFormControl

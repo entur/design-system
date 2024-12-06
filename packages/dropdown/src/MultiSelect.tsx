@@ -424,13 +424,21 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
     ...rest,
   });
 
-  const { refs, floatingStyles } = useFloating({
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update),
+  const { refs, floatingStyles, elements, update } = useFloating({
     placement: 'bottom-start',
     open: isOpen,
     middleware: [offset(space.extraSmall2), flip()],
   });
+
+  // Since we use CSS instead of conditional rendering when hiding dropdownlist
+  // we can't use the whileElementsMounted option and need to handle
+  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
+  useEffect(() => {
+    if (isOpen && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
+    }
+  }, [isOpen, elements, update]);
 
   const handleOnClear = () => {
     onChange([]);
