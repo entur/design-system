@@ -1,0 +1,41 @@
+---
+title: Skjermbakgrunn
+description: Tilpass skrivebordsbakgrunnen (bakgrunnsbilde) med et bilde av Enturs visuelle profil.
+route: /identitet/maler/skjermbakgrunn
+parent: Identitet
+menu: Maler
+order: 13
+---
+
+import { graphql } from 'gatsby'
+import { DownloadBackground } from '../../../components/Download/DownloadBackground';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/maler"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader></PageHeader>
+
+<DownloadBackground></DownloadBackground>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Skjermbakgrunn").childImageSharp.gatsbyImageData}
+  alt="Illustrerer bruken av Entur sin skjermbakgrunn på en dataskjerm"
+  preset="full-width-image"
+/>

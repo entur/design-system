@@ -26,11 +26,11 @@
 
 .table-of-content__item {
   margin-bottom: $space-medium;
-  &--depth-3 {
+  &--depth-2 {
     padding-left: $space-large;
   }
 
-  &--depth-4 {
+  &--depth-3 {
     padding-left: $space-extra-large;
   }
 }

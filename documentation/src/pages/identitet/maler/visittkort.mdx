@@ -1,0 +1,42 @@
+---
+title: Visittkort
+description: Her finner du malen som inneholder det du trenger for å lage nye visittkort.
+route: /identitet/maler/visittkort
+parent: Identitet
+menu: Maler
+order: 13
+---
+
+import { graphql } from 'gatsby'
+import { DownloadCard } from '../../../components/Download/DownloadCard';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/maler"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader></PageHeader>
+
+<DownloadCard></DownloadCard>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Visittkort").childImageSharp.gatsbyImageData}
+  alt="Viser flere eksempler på Enturs visittkort"
+  preset="full-width-image"
+/>
+
