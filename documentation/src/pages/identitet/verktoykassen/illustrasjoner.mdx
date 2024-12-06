@@ -1,0 +1,80 @@
+---
+title: Illustrasjoner
+description: Det er utviklet et eget illustrasjonsbibliotek for Entur i samarbeid med SDG. Illustrasjonene kan brukes på alle type flater i Entur.
+parent: Identitet
+route: /identitet/verktoykassen/illustrasjoner
+menu: Verktøykassen
+order: 13
+---
+
+import { ExternalIcon } from '@entur/icons';
+import IllustrationList from '../../../components/Media/IllustrationList';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+Motivene i illustrasjonene viser ulike situasjoner og møter i trafikkbildet som er en representasjon av Enturs rolle i kollektiv-Norge. Illustrasjonsstilen 
+tar utgangspunkt i norsk natur og landskap, og tar opp elementer fra Entur sin visuelle profil for å skape gjenkjennelse og en rød tråd i identiteten. 
+Illustrasjonenes fremste oppgave er å myke opp og menneskeliggjøre uttrykket i våre digitale flater.
+
+Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7). 
+Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Det er foreløpig ikke avklart om de animerte 
+illustrasjonene skal legges ut her eller et annet sted.
+
+## Filformater
+Våre kvadratiske illustrasjoner er tilgjengelig i pdf-, png- og svg-format. Illustrasjoner i landskap er tilgjengelige i png-format. Ved behov for andre formater eller utsnitt av materiale som ligger i illustrasjonsbiblioteket, kontakt oss på Slack i [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7).
+
+Vi jobber også med å utvikle animasjoner av noen av motivene, etter smidige prinsipper, litt etter litt. Foreløpig ligger disse tilgjengelig for ansatte i Entur på [Google Drive](https://drive.google.com/drive/folders/151XETkW3uniEIEEb0fbn2U2XipRKDNxb?usp=sharing).
+
+## Hovedillustrasjon
+Hovedillustrasjonen skal anvendes slik at den oppleves som brukerens første møte med Entur, for å introdusere hvem vi er og hva vi gjør. Brukes f.eks på 
+introsider eller som onboarding-illustrasjon.
+
+<IllustrationList categoryFilter="landscape" squareIllustrations={false} includeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" />
+
+## Landskapsmotiv
+Disse illustrasjonene er spesielt tiltenkt landningssider på web. Illustrasjonene bidrar med å fremheve, visualisere og myke opp innholdet på en ellers 
+teksttung side. Bildene skal helst dekke hele nettsidens fulle bredde. Ved andre formater (f.eks. i to-kolonners grid) skal det benyttes mindre utsnitt 
+av landskapet.
+
+<IllustrationList categoryFilter="landscape" squareIllustrations={false} excludeListFile={["city"]} disableColorModeSelector backgroundSwitchLabel="Med ramme" />
+
+
+## Kvadratiske motiver
+De små illustrasjonene brukes primært på informasjonssider, modaler, infomeldinger, feilmeldinger og sider hvor det mangler innhold («empty states»).
+
+Disse motivene er designet for å hyggeliggjøre meldinger som kan være kjedelig eller irriterende for brukeren å få. 
+Det skal ikke brukes mer enn tre slike illustrasjoner på én sidevisning, og i tilfeller hvor det brukes mer enn én illustrason på en side 
+bør de settes i et fler-kolonners grid.
+
+### Mennesker
+<IllustrationList categoryFilter="people" disableBackgroundSwitch />
+<IllustrationList categoryFilter="entur staff" disableBackgroundSwitch />
+
+### Dyremotiv
+<IllustrationList categoryFilter="animals" />
+
+### Gjenstander
+<IllustrationList categoryFilter="objects" />
+
+### Konsepter
+<IllustrationList categoryFilter="concepts" showIllustrationName />
+
+### Hånd
+<IllustrationList categoryFilter="hands" />
+
+### Digitale enheter
+<IllustrationList categoryFilter="devices" disableBackgroundSwitch />
+
+### Transportmidler
+<IllustrationList categoryFilter="transport" disableBackgroundSwitch />
+
+### Hittegods
+<IllustrationList categoryFilter="travel" disableBackgroundSwitch />
+
+### Scenarioer
+<IllustrationList categoryFilter="scenario" disableBackgroundSwitch />
