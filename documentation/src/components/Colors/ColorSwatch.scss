@@ -1,0 +1,70 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.color-swatch {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  background: $colors-brand-white;
+  cursor: pointer;
+  font-family: inherit;
+  transition: box-shadow $timings-medium ease-in-out, transform $timings-medium ease-in-out;
+  &:hover {
+    box-shadow: $shadows-card-shadow-hover;
+    transform: translateY(-$space-extra-small2);
+  }
+  &:focus {
+    outline-offset: $outline-offsets-focus;
+    outline: none;
+    box-shadow: $shadows-focus;
+  }
+}
+
+.color-square {
+  height: 10rem;
+  width: 100%;
+  border-radius: $border-radiuses-medium;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.color-description {
+  padding: 1rem;
+  font-family: inherit;
+  font-size: $font-sizes-large;
+}
+.color-swatch__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: $font-weights-body;
+}
+
+.color-swatch__copy-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: $border-radiuses-default;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: inherit;
+  padding: $space-extra-small2;
+  width: fit-content;
+
+  & + & {
+    margin-top: $space-extra-small2;
+  }
+
+  .eds-icon {
+    opacity: 0;
+    transition: all $timings-fast ease-out;
+    visibility: hidden;
+  }
+
+  .color-swatch:hover & .eds-icon,
+  &:focus .eds-icon {
+    opacity: 1;
+    visibility: visible;
+  }
+}

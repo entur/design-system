@@ -1,0 +1,104 @@
+---
+title: Ikoner
+description: Gir visuell kontekst og forbedrer brukervennligheten
+route: /identitet/verktoykassen/ikoner
+parent: Identitet
+menu: Verktøykassen
+order: 7
+---
+
+import { graphql } from 'gatsby'
+import { BugIcon, ValidTicketIcon } from '@entur/icons'
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+  query {
+    files: allFile(
+      filter: {
+        sourceInstanceName: { eq: "media" }
+        relativeDirectory: { glob: "images/identitet/verktoykassen/ikoner" }
+        extension: { eq: "svg" }
+      }
+    ) {
+    images: nodes {
+      name
+      publicURL
+    }
+    }
+  }
+`;
+
+<PageHeader />
+
+Ikoner blir brukt for å maksimere forståelsen og redusere kognitiv belastning når du trenger å rette 
+oppmerksomhet mot en bestemt handling, kommando eller seksjon. Se en liste over alle ikoner og last 
+dem ned i [ikonoversikten vår](/komponenter/ressurser/icons).
+
+## Ikonstil
+
+Entur sine ikoner kombinerer et profesjonelt og lekent uttrykk. Ikonene våre er stilrene med avrundede hjørner 
+som gjør dem lette å lese. Ikonene skal være enkle å kjenne igjen og huske, slik at folk raskt forstår 
+hva de betyr og husker dem til senere.
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "ikonoversikt")?.publicURL}
+  alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+  preset="full-width-image"
+/>
+
+## Ikonfarge
+
+Entur sine ikoner benytter kun én farge om gangen. Standardfargen for Entur-ikonene er Entur 
+Blå / Lavender-90 `#181C56` på lys bakgrunn og hvit `#ffffff` på mørk bakgrunn. Unntaket er transportikoner 
+som benytter spesifikke transportfarger. 
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "to_farger")?.publicURL}
+  alt="En sammenligning av to ikoner der det venstre er en billett plassert på en lys bakgrunn med Entur Blå som strekfarge og det høyre er en bille pøassert på en Entur Blå bakgrunn med hvit strekfarge"
+  preset="full-width-image"
+/>
+
+### Universell utforming
+
+Når du bruker ikoner i arbeidet ditt, spesielt i digitale produkter, er det viktig å sørge for 
+at ikonene har tilstrekkelig kontrast mot bakgrunnen. Dette sikrer god lesbarhet og at designet 
+oppfyller kravene for universell utforming. Du kan sjekke kontrasten ved å bruke vår 
+[kontrastsjekker](/universell-utforming/kontrast-sjekker).
+
+## Prinsipper
+
+### Gridsystem
+
+Entur-ikonene er bygd ved hjelp av et gridsystem som gir retningslinjer for forskjellige former, 
+inkludert rektangler, sirkler og trekanter. Gridsystemet omfatter også _padding_ for å sikre god 
+balanse og lesbarhet for ikonene.
+
+<ImageDisplay 
+  imgSource={props.data.files.images.find(image => image.name === "gridsystem")?.publicURL}
+  alt="En visuell fremstilling av gridsystemet som brukes for ikoner. Det består av ulike rettningslinjer og srikler som veileder hvor ikonet skal ligge innenfor."
+  preset="full-width-image"
+/>
+
+### Størrelser
+
+Entur-ikonene tegnes i et gridsystem med størrelsen 32 px × 32 px, og de skaleres lineært opp eller 
+ned til ulike størrelser. I dag bruker vi fire forskjellige størrelser for ikoner i designsystemet: 
+32 px, 24 px, 20 px og 16 px.
+    
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "storrelser")?.publicURL}
+  alt="En visuell fremstilling av billettikonet i de fire ulike størrelsene plassert inne i gridsystemets rettningslinjer."
+  preset="full-width-image"
+/>
+
+### Ikonoppbygging
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "oppbygging")?.publicURL}
+  alt="En tabelloversikt som viser ulike nøkkeltall for tykkelser på streker i ikonene under ulike størrelser."
+  preset="full-width-image"
+/>
