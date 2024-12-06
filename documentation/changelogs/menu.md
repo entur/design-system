@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/entur/design-system/compare/@entur/menu@5.0.5...@entur/menu@5.0.6) (2024-12-06)
+
+### Performance Improvements
+
+- **overflow menu:** fix performance bug causing unnecessary rerenders ([20ab2d2](https://github.com/entur/design-system/commit/20ab2d24adaa93e71c5f9b31c6194d99e0db9675))
+
 ## [5.0.5](https://github.com/entur/design-system/compare/@entur/menu@5.0.4...@entur/menu@5.0.5) (2024-11-20)
 
 **Note:** Version bump only for package @entur/menu
