@@ -2726,10 +2726,20 @@ type animationQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type animationQueryQuery = { readonly files: { readonly videos: ReadonlyArray<{ readonly name: string, readonly publicURL: string | null }> } };
 
+type BackgroundFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BackgroundFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
 type BrushesFileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type BrushesFileQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
+type CardFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CardFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 type coBrandingFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2745,6 +2755,11 @@ type enturFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type enturFilesQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type EpostFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type EpostFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 type fargerQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2807,6 +2822,11 @@ type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type pageQueryQuery = { readonly toneofvoice: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
+type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PowerpointFileQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
 type TocNavigationQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2816,6 +2836,11 @@ type typografiQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type typografiQueryQuery = { readonly graphics: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type WordFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WordFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 
 }
