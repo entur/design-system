@@ -19,19 +19,25 @@ export const Head = ( props ) => {
 }
 
 export const query = graphql`
-query dataVisualQuery {
-  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/identitet/verktoykassen/datavisualisering"}, extension: {eq: "png"}}) {
-    images: nodes {
-      name
-      childImageSharp {
-         gatsbyImageData(
-          layout: CONSTRAINED
-        )
+  query dataVisualQuery {
+    files: allFile(
+      filter: {
+        sourceInstanceName: { eq: "media" }
+        relativeDirectory: {
+          glob: "images/identitet/verktoykassen/datavisualisering"
+        }
+        extension: { eq: "png" }
+      }
+    ) {
+      images: nodes {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: CONSTRAINED)
+        }
       }
     }
   }
-}
-`
+`;
 
 <PageHeader />
 

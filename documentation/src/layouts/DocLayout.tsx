@@ -31,6 +31,7 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             menu
             order
             removeToc
+            hide
           }
           id
         }
