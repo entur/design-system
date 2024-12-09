@@ -24,16 +24,16 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED)
       }
     }
-    principles: allFile(
-      filter: {sourceInstanceName: {eq: "media"}, relativePath: {regex: "/.+identitet.+/"}}
-    ) { 
-      images: nodes {
-        name
-        childImageSharp {
-          gatsbyImageData(layout: CONSTRAINED)
-        }
+     principles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/design_prinsipper"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
       }
     }
+  }
   }
 `
 

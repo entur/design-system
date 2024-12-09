@@ -90,7 +90,7 @@ export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
         filter: {
           sourceInstanceName: { eq: "media" }
           relativeDirectory: {
-            glob: "images/identitet/verktoykassen/DataExamples"
+            glob: "images/identitet/verktoykassen/datavisualisering"
           }
           extension: { eq: "png" }
         }
@@ -104,14 +104,13 @@ export const DataIllustrations: React.FC<DataIllustrationsProps> = ({
       }
     }
   `);
-  console.log(data);
   const Wrapper = isContrast ? Contrast : 'div';
 
   const imageName = isContrast
     ? `Eksempel${illustration}Contrast`
     : `Eksempel${illustration}`;
   const image = data.files.nodes.find((node: any) => node.name === imageName);
-  console.log(image);
+
   return (
     <>
       <Switch

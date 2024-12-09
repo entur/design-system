@@ -18,16 +18,16 @@ export const Head = ( props ) => {
 
 export const query = graphql`
   query pageQuery {
-    toneofvoice: allFile(
-      filter: {sourceInstanceName: {eq: "media"}, relativePath: {regex: "/.+identitet.+/"}}
-    ) { 
-      images: nodes {
-        name
-        childImageSharp {
-          gatsbyImageData(layout: FIXED)
-        }
+     toneofvoice: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/toneofvoice"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: FIXED
+        )
       }
     }
+  }
   }
 `
 

@@ -1,0 +1,51 @@
+---
+title: Timings
+description: Timing-tokens brukes til å definere overgangseffekter (transitions) i CSS. 
+route: /tokens/ovrigetokens/timings
+parent: Tokens
+menu: Øvrige tokens
+order: 7
+---
+
+import { colors, borderWidths, space } from '@entur/tokens';
+import { TokenTable } from '../../../components/TokensTable/TokenTable';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader>
+
+</PageHeader>
+
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.card {
+  transition: left $timings-slow ease-in-out;
+}
+```
+
+<TokenTable
+  tokenKey="timings"
+  example={({ value }) => {
+    let [currBg, setCurrBg] = React.useState(colors.brand.white);
+    return (
+      <div
+        style={{
+          display: 'block',
+          border: `${borderWidths.default}px solid ${colors.misc.black}`,
+          backgroundColor: `${currBg}`,
+          transition: `${value} background linear`,
+          padding: `${space.small}px ${space.default}px`,
+        }}
+        onMouseOver={() => setCurrBg(colors.brand.lavender)}
+        onMouseOut={() => setCurrBg(colors.brand.white)}
+      >
+        Hover for transisjonstid
+      </div>
+    );
+  }}
+/>

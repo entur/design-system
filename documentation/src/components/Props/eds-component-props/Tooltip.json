@@ -55,9 +55,7 @@
         }
       },
       "isOpen": {
-        "defaultValue": {
-          "value": false
-        },
+        "defaultValue": null,
         "description": "Om tooltip-en skal vises",
         "name": "isOpen",
         "declarations": [
@@ -69,6 +67,23 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "onClickCloseButton": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "Callback-funksjon for når brukeren trykker på lukk-tooltip-knappen",
+        "name": "onClickCloseButton",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Tooltip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
         }
       },
       "className": {
@@ -184,6 +199,23 @@
         "required": false,
         "type": {
           "name": "\"negative\" | \"error\" | undefined"
+        }
+      },
+      "hoverDelay": {
+        "defaultValue": {
+          "value": "{ enter: 150, leave: 300 }"
+        },
+        "description": "For å kontrollere tiden i millisekunder det tar før tooltip-en\nvises etter hover, og hvor lang tid det tar før den lukkes etter\nhover-slutt.",
+        "name": "hoverDelay",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/tooltip/src/Tooltip.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ enter?: number | undefined; leave?: number | undefined; } | undefined"
         }
       },
       "popperModifiers": {
