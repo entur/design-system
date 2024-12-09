@@ -51,10 +51,11 @@ const preToCodeBlock = preProps => {
     }
 
     const { className = '' } = preProps.children.props;
+    const language = className.split('-')[1] || ''; // Extract the language
 
     return {
       codeString: codeString.trim(),
-      language: className.split('-')[1] || '',
+      language,
     };
   }
 
@@ -110,11 +111,22 @@ const components = {
   ImageDisplay,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
+
     if (props) {
-      return <Playground code={props.codeString} language={props.language} />;
-    } else {
-      return <PreformattedText {...preProps} />;
+      if (props.language === 'jsx') {
+        return <Playground code={props.codeString} language={props.language} />;
+      } else {
+        return <PreformattedText {...preProps} />;
+      }
     }
+    return <PreformattedText {...preProps} />;
+  },
+  code: props => {
+    const { className } = props;
+    if (className) {
+      return <code {...props} />;
+    }
+    return <CodeText {...props} />;
   },
 };
 

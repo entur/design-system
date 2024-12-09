@@ -1,0 +1,53 @@
+---
+title: Typografi
+description: Ved å definere tydelige tokens for font weights, størrelser og linjehøyder, blir det enklere å innføre konsistent typografi.
+route: /tokens/ovrigetokens/typografi
+parent: Tokens
+menu: Øvrige tokens
+order: 3
+---
+
+import { TokenTable } from '../../../components/TokensTable/TokenTable';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+Vi kan anbefale å bruke vår [Typografipakke](/komponenter/ressurser/typography) for konsistent hierarki for typografi.
+
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.button {
+    font-weight: $font-weights-body;
+    font-size: $font-sizes-extra-small;
+    line-height: $line-heights-extra-small;
+}
+```
+
+## Tekstvekting (font-weight)
+
+Tekstvekting har verdier for tykkelsen eller *boldness* til en font. Ved å definere fontvekter som tokens kan man bygge forskjellige typografiske stiler og hierarkier. Til eksempel har man `$font-weights-body` for brødtekst (body er brødtekst på engelsk) og `$font-weights-heading` til overskrifter.
+
+<TokenTable
+  tokenKey="fontWeights"
+  example={({ value }) => <div style={{ fontWeight: value }}>ABC abc</div>}
+/>
+
+## Tekststørrelser (size)
+Tekststørrelser inneholder fontstørrelser. Tokenssettet har verdier fra minste tekst small text opp til største tekst heading 1. Bruk av størrelsetokens, som `$font-sizes-small`, gjør det enklere å skalere tekst basert på eksempelvis brukerens enhet. Da kan tokenen peke på ulike verdier for bruk på mobil eller PC. Den semantiske navngivningen gjør det også enklere å opprettholde visuelt hierarki i tekst.
+
+<TokenTable
+  tokenKey="fontSizes"
+  example={({ value }) => <div style={{ fontSize: value }}>ABC abc</div>}
+/>
+
+## Linjehøyder (line-height)
+
+Linjehøyder bestemmer avstanden mellom linjene i tekstblokker. Å ha klart definerte linjehøyder bidrar til å forbedre lesbarheten av teksten. Linjehøyder kan også tilpasses forskjellige tekststiler og størrelser for å sikre at linjeavstanden passer godt sammen med den valgte fonten og layouten.
+
+<TokenTable tokenKey="lineHeights" />
