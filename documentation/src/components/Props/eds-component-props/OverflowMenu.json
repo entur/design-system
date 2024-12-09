@@ -7,19 +7,26 @@
     "props": {
       "children": {
         "defaultValue": null,
-        "description": "Menypunkter (OverflowMenuItem eller OverflowMenuLink)\nAccepts any renderable content.\n@see Docs https://reach.tech/menu-button#menubutton-children",
+        "description": "Menypunkter (OverflowMenuItem eller OverflowMenuLink)",
         "name": "children",
         "declarations": [
           {
             "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
             "name": "TypeLiteral"
-          },
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "buttonIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "buttonIcon",
+        "declarations": [
           {
-            "fileName": "design-system/node_modules/@reach/menu-button/dist/declarations/src/index.d.ts",
-            "name": "MenuButtonProps"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -60,11 +67,26 @@
           "name": "string | undefined"
         }
       },
-      "position": {
+      "placement": {
         "defaultValue": {
-          "value": "right"
+          "value": "bottom-start"
         },
         "description": "Posisjoneringen av OverflowMenu-lista",
+        "name": "placement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement | undefined"
+        }
+      },
+      "position": {
+        "defaultValue": null,
+        "description": "@deprecated Use placement insted.\nThis is done to standardise the name of\nthe relative position prop used in Entur\ndesigns sytstem components",
         "name": "position",
         "declarations": [
           {
@@ -74,7 +96,24 @@
         ],
         "required": false,
         "type": {
-          "name": "\"right\" | \"left\" | undefined"
+          "name": "\"left\" | \"right\" | undefined"
+        }
+      },
+      "aria-label": {
+        "defaultValue": {
+          "value": "\"åpne valgmeny\""
+        },
+        "description": "Tekst som beskriver knappen som åpner Overflow-menyen",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
         }
       }
     }
@@ -85,37 +124,96 @@
     "displayName": "OverflowMenuItem",
     "methods": [],
     "props": {
-      "as": {
-        "defaultValue": {
-          "value": "\"button\""
-        },
-        "description": "HTML-elementet eller React-komponenten som lager elementet",
-        "name": "as",
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til OverflowMenuItem",
+        "name": "children",
         "declarations": [
           {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
-            "name": "TypeLiteral"
-          },
-          {
             "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
-            "name": "TypeLiteral"
-          },
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
           {
             "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
             "name": "TypeLiteral"
           }
         ],
         "required": false,
         "type": {
-          "name": "\"symbol\" | \"object\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | ... 339 more ... | (FunctionComponent<...> & (\"symbol\" | ... 176 more ... | \"set\"))"
+          "name": "string | undefined"
+        }
+      },
+      "onSelect": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "Det som skjer når elementet er valgt, enten ved museklikk eller Enter-klikk",
+        "name": "onSelect",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "href": {
+        "defaultValue": null,
+        "description": "Lenke til siden brukeren skal sendes til.\nObs: kun én av onSelect og href skal brukes på ett element",
+        "name": "href",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Om dette valget skal være deaktivert",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "@deprecated Denne prop-en har ikke lenger noe effekt.\nSi fra hvis dette er problematisk for ditt produkt!",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
         }
       }
     }
@@ -126,37 +224,96 @@
     "displayName": "OverflowMenuLink",
     "methods": [],
     "props": {
-      "as": {
-        "defaultValue": {
-          "value": "\"a\""
-        },
-        "description": "HTML-elementet eller React-komponenten som lager elementet",
-        "name": "as",
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til OverflowMenuItem",
+        "name": "children",
         "declarations": [
           {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
-            "name": "TypeLiteral"
-          },
-          {
             "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
-            "name": "TypeLiteral"
-          },
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
           {
             "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@reach/polymorphic/dist/reach-polymorphic.d.ts",
             "name": "TypeLiteral"
           }
         ],
         "required": false,
         "type": {
-          "name": "\"symbol\" | \"object\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | ... 160 more ... | (ReactElement<...> & (\"symbol\" | ... 176 more ... | \"set\"))"
+          "name": "string | undefined"
+        }
+      },
+      "href": {
+        "defaultValue": null,
+        "description": "Lenke til siden brukeren skal sendes til.\nObs: kun én av onSelect og href skal brukes på ett element",
+        "name": "href",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Om dette valget skal være deaktivert",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": null,
+        "description": "@deprecated Denne prop-en har ikke lenger noe effekt.\nSi fra hvis dette er problematisk for ditt produkt!",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "onSelect": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "@deprecated onSelect is no longer used\nin OverflowMenuLink, use 'href' instead",
+        "name": "onSelect",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
         }
       }
     }

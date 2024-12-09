@@ -1341,6 +1341,7 @@ type MdxFilterListInput = {
 
 type MdxFrontmatter = {
   readonly description: Maybe<Scalars['String']>;
+  readonly hide: Maybe<Scalars['Boolean']>;
   readonly menu: Maybe<Scalars['String']>;
   readonly npmPackage: Maybe<Scalars['String']>;
   readonly order: Maybe<Scalars['Int']>;
@@ -1353,6 +1354,7 @@ type MdxFrontmatter = {
 
 type MdxFrontmatterFieldSelector = {
   readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly hide: InputMaybe<FieldSelectorEnum>;
   readonly menu: InputMaybe<FieldSelectorEnum>;
   readonly npmPackage: InputMaybe<FieldSelectorEnum>;
   readonly order: InputMaybe<FieldSelectorEnum>;
@@ -1365,6 +1367,7 @@ type MdxFrontmatterFieldSelector = {
 
 type MdxFrontmatterFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly hide: InputMaybe<BooleanQueryOperatorInput>;
   readonly menu: InputMaybe<StringQueryOperatorInput>;
   readonly npmPackage: InputMaybe<StringQueryOperatorInput>;
   readonly order: InputMaybe<IntQueryOperatorInput>;
@@ -1377,6 +1380,7 @@ type MdxFrontmatterFilterInput = {
 
 type MdxFrontmatterSortInput = {
   readonly description: InputMaybe<SortOrderEnum>;
+  readonly hide: InputMaybe<SortOrderEnum>;
   readonly menu: InputMaybe<SortOrderEnum>;
   readonly npmPackage: InputMaybe<SortOrderEnum>;
   readonly order: InputMaybe<SortOrderEnum>;
@@ -2746,6 +2750,11 @@ type coBrandingFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type coBrandingFilesQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
+type darkmodeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type darkmodeQuery = { readonly imagefiles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type dataVisualQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2820,7 +2829,7 @@ type PackageChangelogQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<
 type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageQueryQuery = { readonly toneofvoice: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+type pageQueryQuery = { readonly verdier: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -41,6 +41,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
       <NavItem to="/kom-i-gang">Kom i gang</NavItem>
       <NavItem to="/identitet">Identitet</NavItem>
       <NavItem to="/komponenter">Komponenter</NavItem>
+      <NavItem to="/tokens">Tokens</NavItem>
       <NavItem to="/universell-utforming">Universell utforming</NavItem>
       <SettingsPanel />
     </nav>
