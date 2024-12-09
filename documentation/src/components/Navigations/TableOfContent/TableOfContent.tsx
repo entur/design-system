@@ -30,6 +30,7 @@ const flattenHeadings = (
   items: Heading[] = [],
   currentDepth = 1,
 ): Heading[] => {
+  console.log(`Flattening items at depth ${currentDepth}:`, items);
   return items.reduce((acc: Heading[], item: Heading) => {
     acc.push({ ...item, depth: currentDepth });
     if (item.items) {
@@ -107,6 +108,11 @@ const TableOfContent = () => {
         removeTrailingSlash(pathname),
     );
 
+    if (!currentDoc) {
+      console.warn('No matching document found for the current route');
+      return null;
+    }
+
     if (!currentDoc || currentDoc.frontmatter.removeToc) return null;
     return currentDoc.tableOfContents || {};
   }, [data, pathname]);
@@ -120,15 +126,11 @@ const TableOfContent = () => {
     return null;
   }
 
-  if (!toc) {
-    console.warn('No matching document found for the current route');
-    return null;
-  }
-
   if (filteredHeadings.length < 2) {
     return null;
   }
 
+  console.log('TableOfContent', filteredHeadings);
   return (
     <nav className="table-of-content-container">
       <Heading4 style={{ margin: 0 }}>Innhold</Heading4>

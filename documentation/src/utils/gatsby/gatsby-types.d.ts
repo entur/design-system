@@ -2721,6 +2721,51 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type animationQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type animationQueryQuery = { readonly files: { readonly videos: ReadonlyArray<{ readonly name: string, readonly publicURL: string | null }> } };
+
+type BackgroundFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BackgroundFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
+type BrushesFileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BrushesFileQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
+type CardFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CardFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
+type coBrandingFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type coBrandingFilesQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type dataVisualQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type dataVisualQueryQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type enturFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type enturFilesQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type EpostFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type EpostFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
+
+type fargerQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type fargerQueryQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -2747,6 +2792,21 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type illustrationQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type illustrationQueryQuery = { readonly files: { readonly nodes: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type IllustrationsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type IllustrationsQueryQuery = { readonly pngFiles: { readonly illustrations: ReadonlyArray<{ readonly absolutePath: string, readonly name: string, readonly publicURL: string | null, readonly extension: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> }, readonly otherFiles: { readonly illustrations: ReadonlyArray<{ readonly absolutePath: string, readonly name: string, readonly publicURL: string | null, readonly extension: string }> } };
+
+type NewLogoFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NewLogoFilesQuery = { readonly downloads: { readonly files: ReadonlyArray<{ readonly extension: string, readonly dir: string, readonly name: string, readonly publicURL: string | null }> }, readonly logosPng: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> }, readonly logosSvg: { readonly images: ReadonlyArray<{ readonly name: string, readonly publicURL: string | null }> } };
+
 type NpmVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2760,12 +2820,27 @@ type PackageChangelogQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<
 type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageQueryQuery = { readonly pageHeader: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly principles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+type pageQueryQuery = { readonly toneofvoice: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PowerpointFileQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 type TocNavigationQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type TocNavigationQueryQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly tableOfContents: Record<string, unknown> | null, readonly frontmatter: { readonly route: string | null, readonly removeToc: boolean | null } | null }> } };
+
+type typografiQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type typografiQueryQuery = { readonly graphics: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type WordFilesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WordFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
 
 }

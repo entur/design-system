@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import './ImageDisplay.scss';
 
 export type ImageDisplayProps = {
-  imgSource?: IGatsbyImageData;
+  imgSource?: IGatsbyImageData | string;
   name?: string;
   downloadSources?: Array<{ src: string; format: string; label?: string }>;
   alt?: string;
@@ -32,14 +32,23 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   style,
   ...rest
 }) => {
-  console.log('ImageDisplay', imgSource);
+  // Check if imgSource is a string (SVG URL)
+  const isSvg = typeof imgSource === 'string' && imgSource.endsWith('.svg');
+
   return (
     <div
       className={classNames('image-display', `preset--${preset}`, className)}
       {...rest}
       style={style}
     >
-      {imgSource !== undefined && <GatsbyImage image={imgSource} alt={alt} />}
+      {isSvg ? (
+        <img src={imgSource} alt={alt} className="image-display__image" />
+      ) : (
+        imgSource !== undefined && (
+          <GatsbyImage image={imgSource as IGatsbyImageData} alt={alt} />
+        )
+      )}
+
       {downloadSources !== undefined && (
         <Tooltip placement={'bottom'} content="Last ned …">
           <div

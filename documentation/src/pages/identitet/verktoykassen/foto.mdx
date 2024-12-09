@@ -1,0 +1,187 @@
+---
+title: Foto
+description: Dette er vår overordnet bildestil som skal kommunisere våre verdier og Enturs personlighet.
+route: /identitet/verktoykassen/foto
+parent: Identitet
+menu: Verktøykassen
+order: 8
+---
+
+import { graphql } from "gatsby"
+import { colors, space } from '@entur/tokens';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/verktoykassen/foto"}, extension: {eq: "jpg"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "bilde1").childImageSharp.gatsbyImageData}
+  alt="Buss som kjører over vinterlandskap"
+  preset="full-width-image"
+/>
+
+## Tilgang til fotobank
+
+Noen av bildene har lisens og krever derfor tilgang. Alle bilder er tilgjengelig bak innlogging via [Google Drive](https://drive.google.com/drive/folders/1MSzIoGAtemTZ3IR9Xsj8_uI_Ze3rZL6B?usp=drive_link).
+
+## Eksempler på motiver
+
+### Tilbyderne og transportmidlene
+
+For eksempel: infrastrukturen – stasjoner og holdeplasser – detaljer fra transportmidlene – nettverket – trafikk
+
+<GridContainer spacing="large" style={{ marginBottom: space.extraLarge7 * -1 }}>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "transport1").childImageSharp.gatsbyImageData}
+      alt="Person med ryggsekk på perongen ved siden av et tog"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "transport2").childImageSharp.gatsbyImageData}
+      alt="Tog som  kjører i vinterlandskap"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "transport3").childImageSharp.gatsbyImageData}
+      alt="Veikryss som viser til trafikk og bevegelser"
+      preset="full-width-image"
+    />
+  </GridItem>
+</GridContainer>
+
+### Teknologien møter menneskene
+
+For eksempel: reiseplanleggeren – de ansatte – kundesenter – teknologi i bruk på jobb – digitale kanaler i bruk
+
+<GridContainer spacing="large" style={{ marginBottom: space.extraLarge7 * -1 }}>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "teknologi1").childImageSharp.gatsbyImageData}
+      alt="Person med ryggsekk på perongen ved siden av et tog"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "teknologi2").childImageSharp.gatsbyImageData}
+      alt="Tog som  kjører i vinterlandskap"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "teknologi3").childImageSharp.gatsbyImageData}
+      alt="Veikryss som viser til trafikk og bevegelser"
+      preset="full-width-image"
+    />
+  </GridItem>
+</GridContainer>
+
+### Destinasjonene og de reisende
+
+For eksempel: fjord og fjell – by og bygd – de reisende i møte med det kollektive – familier og grupper – pendlere
+
+<GridContainer spacing="large">
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "reisende1").childImageSharp.gatsbyImageData}
+      alt="Person med ryggsekk på perongen ved siden av et tog"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "reisende2").childImageSharp.gatsbyImageData}
+      alt="Tog som  kjører i vinterlandskap"
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={6} medium={4}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "reisende3").childImageSharp.gatsbyImageData}
+      alt="Veikryss som viser til trafikk og bevegelser"
+      preset="full-width-image"
+    />
+  </GridItem>
+</GridContainer>
+
+## Prinsipper
+
+### Sammen er vi bedre
+
+Vi synliggjør mulighetene og potensialet i et samlet kollektiv-Norge, og verdien det har for de reisende.
+Vi løfter frem mangfoldigheten i infrastrukturen og landet vårt, og alle de ulike turene det inviterer til.
+Vi spiller på kontraster; fra nord til sør, det store toget og den lille lokale fergen.
+
+### Den røde tråden
+
+Vi bygger identitet i bildene, ofte med motiver med tydelige horisontale linjer.
+Linjene går til kant; de starter og stopper utenfor rammen.
+Det gir bildene et dynamisk uttrykk og kobler dem til en større sammenheng.
+Det grafiske virkemiddelet skaper et rent uttrykk, strammer og skaper ro i komposisjonen.
+Det gir også muligheten til å binde flere foto sammen med en, uavbrutt linje eller horisont.
+Det er ikke i alle foto at dette grepet er mulig. Vi forsøker i det lengste å binde disse fotoene sammen med den fine, røde tråden.
+Reisen som går uavbrutt gjennom motivene.
+
+### Lett og leken
+
+Bildene uttrykker en følelse av mestring hos brukerne, og viser en sømløs integrering av teknologi i hverdagen.
+Bildene uttrykker liv og bevegelse og har en positiv stemning.
+Vi viser mennesker i bevegelse, og teknologien i bruk.
+
+## Stil og tone
+
+<BaseCardDesignEntur>
+  <StrongText>Naturlig lys</StrongText>
+  <Paragraph margin="none">
+    Bildene har et lett, nordisk uttrykk med mye blåstikk. Foto tas i naturlig
+    lys. Ta gjerne bilder utendørs.
+  </Paragraph>
+</BaseCardDesignEntur>
+
+<BaseCardDesignEntur>
+  <StrongText>Ekte farger</StrongText>
+  <Paragraph margin="none">
+    Fargene er naturlige og avspeiler virkeligheten. God kontrast underbygger
+    det grafiske uttrykket.
+  </Paragraph>
+</BaseCardDesignEntur>
+
+<BaseCardDesignEntur>
+  <StrongText>I bevegelse</StrongText>
+  <Paragraph margin="none">
+    Vi skaper et livlig uttrykk ved å fokusere på personer i bevegelse eller
+    transportmidler og teknologi i bruk.
+  </Paragraph>
+</BaseCardDesignEntur>
+
+<BaseCardDesignEntur>
+  <StrongText>Rett på</StrongText>
+  <Paragraph margin="none">
+    Vi forsøker å være rett på der det er mulig. Ved å ta bildene rett på
+    skaper vi et rent, grafisk og ærlig uttrykk.
+  </Paragraph>
+</BaseCardDesignEntur>
