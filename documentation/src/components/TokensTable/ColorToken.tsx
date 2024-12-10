@@ -2,12 +2,14 @@ import React from 'react';
 import { formatTokenValue } from '../../utils/formatVariable';
 import { TokenProps } from './types';
 import { CopyableText } from '@entur/alert';
-import { getTransportStyle } from '@entur/travel/src/utils';
+// TODO This function is not exported from travel. We must
+// TODO either export it or include it in documentation directly
+import { getTransportStyle } from '@entur/travel';
 
-import FillIcon from './icons/FillIcon';
-import StrokeIcon from './icons/StrokeIcon';
-import ShapeIcon from './icons/ShapeIcon';
-import TextIcon from './icons/TextIcon';
+import FillIcon from './tokenIcons/FillIcon';
+import StrokeIcon from './tokenIcons/StrokeIcon';
+import ShapeIcon from './tokenIcons/ShapeIcon';
+import TextIcon from './tokenIcons/TextIcon';
 import { ChartFilledIcon } from '@entur/icons';
 
 const categoryIcons = {
