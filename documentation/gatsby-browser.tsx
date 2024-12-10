@@ -38,3 +38,11 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   if (props.location.pathname === '/') return <>{element}</>;
   return <DocLayout {...props}>{element}</DocLayout>;
 };
+
+// Since Gatsby does automatic scroll restoration on navigation,
+// we need to manually disable it
+export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = () => {
+  const page = document.getElementsByClassName('page')?.[0];
+  if (page) page.scrollTo(0, 0);
+  return false;
+};
