@@ -25,7 +25,7 @@ export const OverviewCards: FrontpageCards[] = [
         kommunisere med brukerne våre.
       </>
     ),
-    to: '/kom-i-gang',
+    to: '/identitet/introduksjon/toneofvoice',
     icon: <EditIcon />,
   },
   {

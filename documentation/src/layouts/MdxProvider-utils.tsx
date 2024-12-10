@@ -20,6 +20,7 @@ import {
   ListItem,
   NumberedList,
   EmphasizedText,
+  Label,
   Link as LinkText,
 } from '@entur/typography';
 import {
@@ -101,6 +102,7 @@ const components = {
   TableRow,
   HeaderCell,
   TableBody,
+  Label,
   // Custom components
   Playground,
   Props,

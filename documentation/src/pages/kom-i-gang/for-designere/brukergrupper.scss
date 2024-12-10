@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/semantic.scss';
+@use '@entur/tokens/dist/semantic.scss' as *;
 @import '~@entur/tokens/dist/styles.scss';
 
 .brukergrupper {

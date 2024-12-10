@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'gatsby';
 import { IconButton } from '@entur/button';
 import { GridContainer, GridItem } from '@entur/grid';
 import {
@@ -8,7 +8,12 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@entur/icons';
-import { Heading3, Label, LeadParagraph, Link } from '@entur/typography';
+import {
+  Heading3,
+  Label,
+  LeadParagraph,
+  Link as DSLink,
+} from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
 import { Media } from '../../providers/MediaBreakpoint';
@@ -59,9 +64,12 @@ const FrontPageFooter = () => {
         <GridItem small={12} medium={3} large={3}>
           <Heading3 margin="bottom">Informasjon</Heading3>
           <div className="front-page-footer__link">
-            <Link external href="https://entur.slack.com/archives/C899QSPB7">
+            <LinkWrapper
+              external
+              href="https://entur.slack.com/archives/C899QSPB7"
+            >
               #talk-designsystem på Slack
-            </Link>
+            </LinkWrapper>
           </div>
           <div className="front-page-footer__link">
             <LinkWrapper
@@ -153,9 +161,9 @@ const SocialMediaLinks = ({ style }: { style?: React.CSSProperties }) => {
 
 function LinkWrapper(props: any) {
   return (
-    <Link as={Link} {...props}>
+    <DSLink as={Link} {...props}>
       {props.children}
-    </Link>
+    </DSLink>
   );
 }
 

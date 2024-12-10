@@ -1,0 +1,177 @@
+---
+title: Bidra med kode
+description: Har du funnet en bug i designsystemet? Vil du legge til en ny feature eller fikse noe i dokumentasjonen? Eller kanskje bare utforske repoet? Da er dette guiden for deg.
+route: /kom-i-gang/for-utviklere/bidra-med-kode
+parent: Kom i gang
+menu: For utviklere
+order: 2
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query forutviklere {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/kom-i-gang/for-utviklere"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+## Introduksjon
+
+_For en mer detaljert beskrivelse, se [README.md](https://github.com/entur/design-system#readme) i repoet._
+
+Monorepoet inneholder alle npm-pakkene som er utgitt av Entur Designsystem, samt [dokumentasjonssiden](https://design.entur.no) og en kode-lekeplass for lokal testing.
+
+Monorepoet er delt inn i `packages` og `apps`. `packages` inneholder alle pakkene vi utgir til npm. `apps` inneholder tjenester som bruker komponentene og verktøyene under `packages`, i vårt tilfelle dokumentasjonen og en code-playground for lokal testing.
+
+## Krav
+
+_MERK: disse instruksjonene er kun testet for MAC OS_
+
+Designsystemet sitt monorepoet trenger følgende verktøy for å kjøre ordentlig:
+
+- Node.JS 16.17.0
+- yarn 1.22.19
+
+Node.js er tilgjengelig på [Node's nettside](https://nodejs.org/en/download). Hvis du vil enkelt bytte mellom forskjellige versjoner av Node.js (forskjellige repoer kan bruke forskjellige versjoner) så er [nvm](https://github.com/nvm-sh/nvm) et godt alternativ.
+
+Yarn kan enkelt installeres med f.eks. [npm](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) eller [brew](https://formulae.brew.sh/formula/yarn#default).
+
+## Førstegangsoppsett
+
+### Kloning av repoet fra GitHub
+
+Repoet er tilgjengelig på [GitHub](https://github.com/entur/design-system) (Merk at du må være i Entur for å ha tilgang til dette repoet). For å klone det, må du sette opp en ssh-nøkkel på Mac-en din og legge til den offentlige nøkkelen i GitHub-kontoen din (dvs. autentisere datamaskinen din). Hvis du allerede har gjort dette, kan du hoppe over neste trinn.
+
+- Følg [GitHubs veiledning](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) om hvordan du setter opp SSH-nøkkeltilkoblingen din.
+
+Når ssh-nøkkelen din er satt opp, kjør følgende skript:
+`git clone git@github.com:entur/design-system.git`
+
+Alternativt kan du klikke på `clone` -knappen på GitHub-repo-siden og følge instruksjonene.
+
+### Installer avhengigheter og bygg pakker
+
+Hvis det er første gang du utvikler i repoet, kjør `yarn setup`. Den vil installere avhengigheter og bygge alle komponenter.
+
+Hvis dette fungerer, flott! Hvis ikke, spør en voksen om hjelp …
+
+## Bruk – komponentbibliotek
+
+### Utvikling av pakker
+
+Alle pakkene ligger under `packages/`. De er publisert under `@entur/[pakkenavn]` der `[pakkenavn]` er mappenavnet under `packages/` (uten firkantede paranteser), f.eks. button. Se en komplett liste på [npm](https://www.npmjs.com/org/entur).
+
+Start med å opprette en _branch_ for din _bugfix_ eller _feature_. _Branch_-en skal ideelt sett starte med Jira-issue-id-en, f.eks. ETU-38373-branch-navn. Når du fikser bugs eller legger til nye funksjoner i en pakke anbefales det å forhåndsvise og teste komponenten ved hjelp av code-playground. Code-playground bruker `playroom` ([tilgjengelig fra npm](https://www.npmjs.com/package/playroom)) for å forhåndsvise koden din. Start code-playground med `yarn start:code-playground` og start _watch mode_ for pakken med `yarn start:package [pakkenavn]`. Det siste skriptet er nødvendig for å gjenspeile kodeendringene dine i code-playground. Alternativt kan du bruke skriptet `yarn start:code-playground-for-package [pakkenavn]` for å starte både kodelekeplassen og _watch mode_ for [pakkenavn].
+
+Testutviklingskoden kan enten skrives i den innebygde editoren i kodelekeplassen eller ved hjelp av `TestBench.tsx` under `apps/code-playground/src` ([se bildet nedenfor](#editor-images)). Hvis du vil bruke _state_ eller annen mer kompleks logikk i testingen, må du bruke filen `TestBench.tsx`.
+
+<GridContainer spacing="large">
+  <GridItem
+    small={12}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "code-playground-editor").childImageSharp.gatsbyImageData}
+    alt="Innebygd kodeeditor i kodelekeplassen"
+    preset="full-width-image"
+  />
+    <Label as="p">Innebygd kodeeditor i kodelekeplassen</Label>
+  </GridItem>
+
+  <GridItem
+    small={12}
+    style={{ display: 'flex', flexDirection: 'column' }}
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "test-bench-editor").childImageSharp.gatsbyImageData}
+    alt="TestBench-fil i VSCode-editor"
+    preset="full-width-image"
+  />
+    <Label as="p">Innebygd kodeeditor i kodelekeplassen</Label>
+  </GridItem>
+</GridContainer>
+
+### Skrive tester for koden din
+
+Repoet inneholder støtte for Jest tester. Hvis det lar seg gjøre, anbefales det å skrive tester for fiksen eller funksjonaliteten du har lagt til. Tester kan legges til ved å lage en `komponentnavn.test.jsx`-fil og skrive Jest-kode i den. Se andre Jest-test-filer for eksempel på hvordan du kan skrive tester.
+
+### Commit av endringene dine
+
+Siden commitene som er laget brukes både som en endringslogg og for å spore om vi gir ut en patch-, minor- eller majorversjon ([se conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/)), må vi forsikre oss om at commitene er skrevet riktig. For å gjøre dette bruker vi [Commitizen](https://github.com/commitizen/cz-cli), som lar oss bygge en riktig formatert commit-melding og lint den for feil. Som en ekstra forsikring blir alle nye commit-meldinger også lintet ved `git push` for å forsikre oss om at vi ikke glemmer riktig formatering (_MERK: kan overstyrres ved å bruke HUSKY=0_).
+
+Når funksjonen eller feilrettingen din er ferdig, legg til endringene dine og commit dem med `yarn gc:format`. Dette aktiverer Commitizen og forsikrer at commitene er skrevet med riktig formatering.
+
+Hvordan fylle ut commit-meldingen:
+
+1. **type** skal velges basert på ([conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/))
+2. **scope** skal inneholde komponenten eller pakken som påvirkes i små bokstaver med mellomrom, f.eks. square button
+3. **short description** er en setning om hvilken endring dette vil legge til, alltid i påførende form, f.eks. add new button type duodenary
+4. **long description** er for når mer informasjon kanskje er nødvendig for å forklare fiks/funksjonen
+5. **breaking changes** skal inneholde informasjon om alle breaking changes gjort i denne committen, dvs. endringer som kan gjøre eksisterende bruk ikke lenger fungerer
+6. **issues closed** kan hoppes over
+7. **affected packages** skal automatisk være riktig. Bare bekreft med enter
+
+Ingen feil? Flott! Ellers prøv igjen …
+
+### Tl;dr
+
+1. Du vil legge til en funksjon i `[pakkenavn]`, f.eks. button
+2. Opprett en gren for fiks/funksjonen
+3. Kjør `yarn start:code-playground` og `yarn start:package [pakkenavn]`.
+4. Gjør endringene dine i `packages/[pakkenavn]`.
+5. Se endringene live på `localhost:90000`
+6. Legg til endringene dine og commite med `yarn gc:format`
+7. Push endringene dine til GitHub
+
+## Bruk – dokumentasjonsside
+
+Innholdet i de forskjellige dokumentasjonssidene finner du i `content`-mappen under `apps/documentation`. Hver side er lagt i mapper basert på hvilken del
+av siden den tilhører, og hver av filene er i `MDX`-formatet. Les mer om MDX på [MDX sine sider](https://mdxjs.com/).
+
+For komponent-dokumentasjonen er det prøvd å standardisere utseendet og strukturen på hver side. Kopier gjerne en eksisterende fil om du skal legge til en ny side.
+
+### Frontmatter – metadata for dokumentasjonssiden
+
+Vi bruker noe som heter `frontmatter` på toppen av hver dokumentasjonsside-fil (se kodeeksemplet som følger). Dette er metainformasjon for dokumentasjonssiden og kan være
+tittelen på siden, hvilken NPM-pakke denne komponenten tilhører, hvilken rekkefølge den burde dukke opp iog i hvilken meny osv. Frontmatter er formatert i `yaml`.
+
+Følgende valg er tilgjengelige i frontmatter-YAML-en:
+
+```yaml
+title: Tittel på siden
+route: /url/til/siden
+order: 1
+parent: Hovedkategori (Komponenter, Kom i gang osv)
+menu: Hvilken undermeny
+npmPackage: navnet på npm-pakken (kun relevant for komponenter-sider)
+tags: søkbare, ord (kun relevant for komponenter-siden)
+hide: fjern fra navigasjonen
+removeToc: fjern table of content
+```
+
+### Komponenter og utils for dokumentasjonssiden
+
+Trenger du å endre noe på selve dokumentasjonssiden eller lage en intern-komponent for å dokumentere noe, så skal kode for dette ligge under `apps/documentation/src`.
+Dette kan være kode for live-fremvisning av Designsystem-komponenter, utils, sidestruktur (header og footer) o.l.
+
+Mappen inneholder tre mapper:
+
+- `gatsby-theme-docz` inneholder toppnivå-komponenter og kode som gjør kall til eksterne tjenester.
+- `utils` inneholder utilities som brukes på kryss og tvers av siden
+- `components` inneholder en rekke gjenbrukbare interne dokumentasjonsside-komponenter. Disse brukes både i selve side-strukturen og som hjelpekomponenter i dokumentering, eg. Playground.

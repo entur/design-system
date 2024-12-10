@@ -2775,6 +2775,16 @@ type fargerQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type fargerQueryQuery = { readonly files: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
+type fordesignereQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type fordesignereQuery = { readonly imagefiles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
+type forutviklereQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type forutviklereQuery = { readonly imagefiles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -2810,6 +2820,11 @@ type IllustrationsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type IllustrationsQueryQuery = { readonly pngFiles: { readonly illustrations: ReadonlyArray<{ readonly absolutePath: string, readonly name: string, readonly publicURL: string | null, readonly extension: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> }, readonly otherFiles: { readonly illustrations: ReadonlyArray<{ readonly absolutePath: string, readonly name: string, readonly publicURL: string | null, readonly extension: string }> } };
+
+type komigangQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type komigangQuery = { readonly imagefiles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type NewLogoFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
