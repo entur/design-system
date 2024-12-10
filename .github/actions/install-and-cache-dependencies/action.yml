@@ -7,10 +7,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Use Node.js 16
+    # - name: Use Node.js 16
+    - name: Use Node.js 18
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        # node-version: '16'
+        node-version: '18'
 
     - name: Cache dependencies
       uses: actions/cache@v4
@@ -19,5 +21,6 @@ runs:
         key: ${{ inputs.cache-key }}
 
     - name: Install dependencies
-      run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+      # run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+      run: cd documentation && yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
       shell: bash
