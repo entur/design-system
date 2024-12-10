@@ -1,0 +1,67 @@
+---
+title: Arbeidskultur
+description: Entur består av mange team som utvikler løsninger for ulike typer kunder – og
+  ikke minst for hverandre. Derfor er det viktig med retningslinjer for hvordan
+  vi ønsker å jobbe.
+route: /kom-i-gang/introduksjon/arbeidskultur
+parent: Kom i gang
+menu: Introduksjon
+order: 4
+---
+
+import { SEO } from '../../../components/seo/SEO';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/kom-i-gang"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+<div style={{ margin: '3rem 0' }}>
+   <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "KomIGang").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+</div>
+
+### Brukerorientert
+
+Vi må designe og utvikle for dem som skal benytte produktet, enten det er en kollektivreisende, en kundebehandler, en fylkeskommune eller et kollektivselskap (mer om [brukergrupper her](/kom-i-gang/for-designere/brukergrupper)). Hva er egentlig behovet til brukeren og hvilket problem skal vi løse?
+
+Vet vi hvordan tjenesten skal benyttes? Har vi skisser eller annet materiale fra innsiktsfase? Hvis tjenesten kan piloteres via Enturs egne kanaler, kan vi teste ut, forbedre og kvalitetssikre tjenestene før eksterne skal ta dem i bruk. Alternativt finne andre måter å teste underveis før vi leverer.
+
+### Tverrfaglig
+
+De aller fleste leveranser er avhengig av andre team for å levere en ende-til-ende funksjonalitet. En kort introprat med alle berørte team og sikring av at noen leder fremdrift for totalleveransen/tjenesten må være på plass før oppstart. Kanksje er det hensiktsmessig å opprette en egen slackkanal for tjenesten (eks. #talk_personalbillett)? Ved behov settes det opp jevnlige avsjekker i hele gruppa, f.eks. 10 min en gang i uken.
+
+Som team må vi også ha strategier for å jobbe med design og utvikling i parallell, og sikre iterering på design og funskjonalitet i utviklingsprosessen.
+
+### Smidig og innsiktsbasert med fokus på kontinuerlig forbedring
+
+Kan vi begynne med en enkel og nedskalert MVP, som allikevel gir verdi for brukeren? Kan vi teste at det som leveres på API-nivå også er verdifullt for våre kunder? Hvis vi lager en pilot bør vi definere hva vi vil oppnå med den, hvordan vi skal måle verdien og lage en plan for hvordan vi vil videreutvikle tjenesten.
+
+Når vi jobber smidig må vi alltid prioritere forbedringer av MVP kontra ny funksjonalitet. Her kan vi bruke data og brukertesting for å gjøre riktige prioriteringer. Hypotesedrevet utvikling kan bidra til at vi raskt får data på om vi er på riktig vei og lager en løsning som vil fungere.
+Les [mer om Hypotesedrevet utvikling](/kom-i-gang/for-designere/brukertesting) og andre analysemetoder her.
+
+### Standardisering for nasjonalt enhetlige løsninger
+
+Vi må sikre at det vi lager fungerer for alle aktører, all type transport og i hele landet. Det er ikke alltid vi ‘vet alt’, men skalerbarhet og standardisering bør være noe vi etterstreber. Vi skal ikke lage spesialtilpassede løsninger for én transporttype, én operatør eller én forretningsmodell. Vi må spørre oss om det vi lager vil fungere for alle sparkesykkelaktører eller togoperatører eller samkjøringstjenester på tvers av ulike forretningsmodeller. Vil det fungere nasjonalt? Er løsningen like god for Nordland som for Akershus?
+
+Hvis vi er tidlig ute med å definere standarder vil vårt arbeid være gunstig for aktørene i bransjen på lang sikt.

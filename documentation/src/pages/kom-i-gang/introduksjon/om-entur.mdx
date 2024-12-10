@@ -1,0 +1,98 @@
+---
+title: Om Entur
+description: Entur gjør det enklere å reise kollektivt ved å gi deg overblikk over hele Norges kollektivtransport på ett sted.
+route: /kom-i-gang/introduksjon/om-entur
+parent: Kom i gang
+menu: Introduksjon
+order: 2
+---
+
+import { SEO } from '../../../components/seo/SEO';
+import { graphql } from 'gatsby';
+import './om-entur.scss';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/kom-i-gang/introduksjon"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+Entur gjør det enklere å reise kollektivt ved å gi deg overblikk over hele Norges kollektivtransport på ett sted. Altså; alle ruter og stoppesteder med alle busser, tog, trikker, t-baner og båter i hele Norge. Oversikt over tilgjengelighet på bysykler og sprakesykler får du også. Entur hjelper deg med å planlegge hele turen. Hvis turen din krever både tog, buss og båt, hjelper Entur deg med å finne frem til den beste eller raskeste kombinasjonen for å komme deg helt frem – eller helt hjem. Med Entur slipper du å forholde deg til forskjellige aktører med begrensede rutetilbud eller ukjente aktører med egne app’er.
+
+Entur er lett å like fordi Entur setter meg i førersetet. Entur blir ikke påvirket av betalte plasseringer, men holder fokus på mitt reelle reisebehov og styrker meg i evnen til å ta det riktige valget. Ikke nødvendigvis riktig i form av “det grønne” valget, men det riktige valget for meg, om jeg er ute etter den billigste turen, den mest naturskjønne, eller den som tar kortest tid. Med Entur blir jeg klar for flere turer, og bedre måter å komme meg rundt på.
+
+### Entur samler data om:
+
+<div className="stats-wrapper">
+  <div className="stats-box" data-color-mode="light">
+      <ImageDisplay
+      imgSource={props.data.imagefiles.images.find(image => image.name === "City").childImageSharp.gatsbyImageData}
+      alt=""
+      preset="full-width-image"
+    />
+    <div className="stats-box__number">58 239</div>
+    <div className="stats-box__text">stoppesteder</div>
+  </div>
+  <div className="stats-box" data-color-mode="light">
+    <ImageDisplay
+      imgSource={props.data.imagefiles.images.find(image => image.name === "Bus").childImageSharp.gatsbyImageData}
+      alt=""
+      preset="full-width-image"
+    />
+    <div className="stats-box__number">57</div>
+    <div className="stats-box__text">kollektivselskaper</div>
+  </div>
+  <div className="stats-box" data-color-mode="light">
+      <ImageDisplay
+      imgSource={props.data.imagefiles.images.find(image => image.name === "TrainLong").childImageSharp.gatsbyImageData}
+      alt=""
+      preset="full-width-image"
+    />
+    <div className="stats-box__number">4000</div>
+    <div className="stats-box__text">daglige ruter</div>
+  </div>
+</div>
+
+## Våre kunder
+
+Slik gjør Entur det enklere å reise kollektivt for:
+
+### Kollektivreisende
+
+Planlegg hele reisen fra ett sted — uansett hvor du skal. For de reisende tilbyr Entur en nasjonal reiseplanlegger, der man får oppdaterte reiseforslag for alle kollektivreiser i Norge. Denne løsningen er gratis å bruke og konkurransenøytral. Uansett om reisen består av flere delstrekninger, vil Entur gjøre det mulig å kjøpe billetter til hele reisen med ett tastetrykk. Dette gjelder selv om man må bytte mellom tog og buss, eller reise på tvers av fylkesgrenser.
+
+I fremtiden vil flere og flere tilby reiseinformasjon som en del av sine tjenester. Blant annet bruker Google, Finn, Gule Sider og Bing data fra oss i dag.
+
+### Databrukere
+
+Et samlet kollektiv-Norge gir muligheter — for store og små. Vi gjør reisedata standardiserte og enkelt integrerbare. Dette er kostnadseffektivt for samfunnet, og åpner opp nye bruksområder for kollektivinformasjon. Når Entur samler og formidler kollektivdata på ett sted, kan selv små kollektivselskaper nå ut med sin ruteinformasjon til reisende fra hele landet.
+
+Rutedata er ikke lenger forbeholdt kollektivbransjen. Vi deler gratis ut alt vi samler inn til de som ønsker å tilby reiseinformasjon som en del av sine tjenester. Vi er overbevist om at informasjon om kollektivtrafikk er nyttig for mange som lager digitale tjenester. Yr ga folket været, Entur vil gi folket hele landets kollektivreiser.
+
+### Kollektivselskaper
+
+Entur henter inn og tilgjengeliggjør rute- og reisedata for all kollektivtrafikk i Norge. Dette gjør det enklere og billigere for kollektivselskapene, siden de ikke trenger å lage og vedlikeholde egne databaser og systemer for sine data. Dessuten får de også muligheten til å bruke data fra andre selskaper, slik at de gi kundene sine god informasjon om reiser som går utover de strekningene de selv betjener.
+
+Å reise kollektivt blir virkelig enkelt idet man også kan kjøpe alle billettene man trenger på ett sted. For å legge til rette for enkelt billettkjøp, jobber Entur med å utvide samarbeidet på tvers av kollektivselskaper. Entur har et kompetent fagmiljø med tett kontakt til Samferdselsdepartementet. Vi tror at økt samarbeid mellom kollektivselskapene gjør det enklere for enda flere å reise kollektivt.
+
+### Togselskaper
+
+Entur driver billettsystem, kundesenter og stasjonenes salg og service på vegne av jernbanen i Norge. Jernbanereformen kan føre til at vi får flere togselskaper på norske skinner. Entur har fått oppgaven med å forvalter salg og distribusjon av billetter på vegne av alle togselskapene.
+Entur har også ansvar for salg av utenlandsbilletter, og forvalter personalbillettordningen på vegne av Jernbanedirektoratet.
+
+Vi driver jernbanens kundesentre, og har salgs- og servicefunksjonene for de betjente togstasjonene i Norge. Som en kunnskapsrik og profesjonell partner skal Entur sikre at togselskapene får solgt sine billetter og ytet kundeservice til sine reisende på en god og effektiv måte.

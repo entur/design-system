@@ -1,0 +1,83 @@
+---
+title: Designprinsipper
+description: De fem designprinsippene skal fungere som guidelines som vi skal rette oss etter når vi designer og utvikler de digitale tjenestene til Entur.
+route: /kom-i-gang/introduksjon/designprinsipper
+parent: Kom i gang
+menu: Introduksjon
+order: 5
+---
+
+import { SEO } from '../../../components/seo/SEO';
+import { graphql } from 'gatsby';
+import { DesignPrinciple } from '../../../components/DesignPrinciple';
+import {
+  PurposeIcon,
+  AccessibilityIcon,
+  DestinationIcon,
+  ValueIcon,
+  MapIcon,
+} from '@entur/icons';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+## To grunnleggende prinsipper
+
+De to første prinsippene er et fundament for hvordan vi skal jobbe.
+Et mindset. Noen ganger motstridende, men akkurat derfor er det viktig å passe på at begge prinsippene blir ivaretatt.
+
+<GridContainer spacing="large" style={{ margin: '2rem 0 3rem' }}>
+  <DesignPrinciple
+    title="Det viktigste først"
+    number={1}
+    description="Når vi designer og utvikler tjenestene våre, skal vi ha fokus på å løse de viktigste problemene først. Vi skal ikke løse alle edge-caser, men konsentrere innsatsen på å lage det som gir størst verdi for flest mulig."
+    icon={<PurposeIcon />}
+  ></DesignPrinciple>
+  <DesignPrinciple
+    title="Alle om bord"
+    number={2}
+    description="Produktene vi lager skal være tilgjengelig for alle, uansett varige eller midlertidig reduserte evner. Tjenestene skal være intuitive å ta i bruk for både uerfarne brukere og eksperter."
+    icon={<AccessibilityIcon />}
+  ></DesignPrinciple>
+</GridContainer>
+
+## Tre prinsipper for brukeropplevelse
+
+De tre neste prinsippene handler om hvordan vi ønsker at våre produker skal oppleves av dem som benytter seg av dem.
+Disse prinsippene skal være det vi strekker oss mot innen brukeropplevelse.
+Faktisk uttak kan variere noe ut fra produkt og brukergruppe, men tolkningen av hva disse punktene betyr for akkurat det du lager, er viktig å ha på plass.
+
+<GridContainer spacing="large" style={{ margin: '2rem 0 3.5rem' }}>
+  <DesignPrinciple
+    title="Korteste vei til mål"
+    number={3}
+    description="Veien til produktets kjerneverdi skal være så kort og enkel som mulig. Vi skal fjerne unødig støy og hindringer i grensesnittet som kan forstyrre brukerens flyt."
+    icon={<AccessibilityIcon />}
+  ></DesignPrinciple>
+  <DesignPrinciple
+    title="Fokus til riktig tid"
+    number={4}
+    description="Produktene våre skal gi deg det du trenger når du trenger det. Vi skal ikke overvelde med all informasjon på én gang, men veilede fra A til B i små porsjoner og i relevant kontekst. Vi skal gi overblikk, deretter detaljer ved behov."
+    icon={<AccessibilityIcon />}
+  ></DesignPrinciple>
+  <DesignPrinciple
+    title="Umulig å gå seg vill"
+    number={5}
+    description="Produktene våre skal ha forståelige tekster og tydelige instruksjoner. Brukeren skal kunne utforske grensesnittet uten å være redd for å gjøre feil. Det skal være enkelt å sette i revers - lett å rette opp feil og lett å få hjelp."
+    icon={<AccessibilityIcon />}
+  ></DesignPrinciple>
+</GridContainer>
+
+## Forslag til hvordan designprinsippene kan brukes
+
+De fem designprinsippene eksisterer også som egne skissekomponenter i Figma.
+Det er ikke tilfeldig at de minner om spillekort; det skal være enkelt å trekke frem et prinsipp ur ermet og benytte det som argument.
+Eller bare referere til dem i forbindelse med en justering som løser et problem bedre enn dagens løsning.
+
+Designprinsipp-kortene kan benyttes enkeltvis eller sammen.
+Lim dem inn i skisser, som vedlegg i Jira, print dem ut og heng dem opp der du eller teamet ditt kan se dem.
+Husk at god og gjennomtenkt design er viktig for oss i Entur, og at det er en oppgave som løses best i tverfaglig samarbeid.
+Designprinsippene er ikke bare relevante for designere, men for alle som jobber med digital produktutvikling.

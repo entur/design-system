@@ -161,7 +161,7 @@ const Index = () => {
                 title="Se hvordan du kan bidra"
                 style={{ marginTop: '3rem' }}
                 as={Link}
-                to="/kom-i-gang/for-utviklere/bidra"
+                to="/kom-i-gang/for-utviklere/bidra-med-kode"
               />
             </div>
           </div>

@@ -1,0 +1,19 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+
+.hva-vi-gjor {
+  &__goal {
+    border: $border-widths-medium solid var(--designentur-basecard-default-border);
+    padding: $space-extra-large $space-extra-large4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 7.75rem;
+    &-image {
+    }
+    &-text {
+      background: var(--designentur-basecard-default-fill);
+    }
+  }
+}
