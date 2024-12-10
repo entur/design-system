@@ -2,7 +2,7 @@
 
 This package contains the different loader components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/feedback/loaders)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/feedback/loader)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/loader
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/feedback/loaders) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/feedback/loader) for usage information.

@@ -2,7 +2,7 @@
 
 This package contains the different Fileupload components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/skjemaelementer/fileupload)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/fileupload
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/skjemaelementer/fileupload) for usage information.

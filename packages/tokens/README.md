@@ -4,7 +4,7 @@ This package contains all design tokens and design variables used throughout the
 
 Since not all values are available as a variable yet and to avoid breaking changes, all previous design tokens will be kept around for a while. These are built from the `src/legacy-tokens.ts` file.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/resources/tokens)?
+> 💡 Looking for the [documentation](https://design.entur.no/tokens)?
 
 ## Installation
 
@@ -16,7 +16,7 @@ yarn add @entur/tokens
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/resources/tokens) for in-depth usage information.
+Please refer to the [documentation](https://design.entur.no/tokens) for in-depth usage information.
 
 This package has several main exports:
 
