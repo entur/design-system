@@ -13,20 +13,16 @@ import logoDark from '../../../media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
-interface TopNavigationProps {
-  frontPage?: boolean;
-}
-
-const TopNavigation: React.FC<TopNavigationProps> = ({ frontPage = false }) => {
+const TopNavigation = () => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
-  // TODO  top navigation får klassen top-navigation--frontpage også når den ikke er på frontpage
+
+  const isFrontpage =
+    typeof window !== 'undefined' && window.location.pathname === '/';
   return (
     <nav
       className={classNames('top-navigation', {
-        'eds-contrast':
-          typeof window !== 'undefined' && window.location.pathname === '/',
-        'top-navigation--frontpage': frontPage,
+        'top-navigation--frontpage eds-contrast': isFrontpage,
       })}
       aria-label="Navigasjon, hovedseksjoner"
     >
