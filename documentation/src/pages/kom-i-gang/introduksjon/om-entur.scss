@@ -1,0 +1,31 @@
+@import '~@entur/tokens/dist/styles.scss';
+@import '~@entur/utils/dist/breakpoints.scss';
+.stats {
+  &-wrapper {
+    display: grid;
+    grid-gap: $space-extra-large;
+    grid-template-columns: 1fr;
+    @include for-large-desktop {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  &-box {
+    align-items: center;
+    padding: $space-extra-large4 $space-extra-large2;
+    display: flex;
+    flex-direction: column;
+    &__number {
+      text-align: center;
+      font-size: $font-sizes-extra-large4;
+      line-height: $line-heights-extra-large6;
+      font-weight: $font-weights-heading;
+    }
+    &__image {
+      height: 13rem;
+      width: 13rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
