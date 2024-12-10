@@ -6,7 +6,7 @@ Entur's official font is Nationale and is created by Playtype Foundry, located i
 
 This package contains styles and React components for all of our typography.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/resources/typography)?
+> 💡 Looking for the [documentation](https://design.entur.no/komponenter/ressurser/typography)?
 
 ## Installation
 
@@ -18,7 +18,7 @@ yarn add @entur/typography
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/resources/typography) for usage information.
+Please refer to the [documentation](https://design.entur.no/komponenter/ressurser/typography) for usage information.
 
 ## Licenses
 
