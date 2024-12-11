@@ -55,7 +55,7 @@ function useCurrentActiveHeading(headings: Heading[]) {
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
       rootMargin: '0px 0px -50% 0px',
-      threshold: 1.0,
+      threshold: [0.1, 0.5, 1.0],
     });
 
     const elements = headings.map(heading =>
@@ -117,7 +117,10 @@ const TableOfContent = () => {
   }, [data, pathname]);
 
   const headings = useMemo(() => toc?.items || [], [toc]);
-  const filteredHeadings = useMemo(() => flattenHeadings(headings), [headings]);
+  const filteredHeadings = useMemo(
+    () => flattenHeadings(headings).filter(heading => heading.depth !== 3),
+    [headings],
+  );
   const activeHeading = useCurrentActiveHeading(filteredHeadings);
 
   if (!data?.allMdx?.nodes) {

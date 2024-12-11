@@ -5,6 +5,8 @@ import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
+import { TextField, TextArea, Checkbox } from '@entur/form';
 import {
   Heading1,
   Heading2,
@@ -33,26 +35,41 @@ import {
 import { VisuallyHidden } from '@entur/a11y';
 import { ExpandablePanel } from '@entur/expand';
 import { GridItem, GridContainer } from '@entur/grid';
-import { BannerAlertBox } from '@entur/alert';
+import {
+  BannerAlertBox,
+  ToastAlertBox,
+  ToastProvider,
+  SmallAlertBox,
+  SmallExpandableAlertBox,
+  CopyableText,
+} from '@entur/alert';
+import {
+  Badge,
+  NotificationBadge,
+  StatusBadge,
+  BulletBadge,
+} from '@entur/layout';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 
 const preToCodeBlock = preProps => {
   if (
     preProps.children &&
     typeof preProps.children === 'object' &&
-    preProps.children.props &&
-    preProps.children.type === 'code'
+    preProps.children.props
   ) {
-    const codeString = Array.isArray(preProps.children.props.children)
-      ? preProps.children.props.children.join('')
-      : preProps.children.props.children;
+    const { className = '', children } = preProps.children.props;
+
+    const codeString = Array.isArray(children) ? children.join('') : children;
 
     if (!codeString || typeof codeString !== 'string') {
       console.warn('Unexpected code block structure:', preProps.children);
       return undefined;
     }
 
-    const { className = '' } = preProps.children.props;
-    const language = className.split('-')[1] || ''; // Extract the language
+    // Extract language, supporting both "language-jsx" and "jsx" formats
+    const language = className.startsWith('language-')
+      ? className.replace('language-', '')
+      : className;
 
     return {
       codeString: codeString.trim(),
@@ -103,6 +120,24 @@ const components = {
   HeaderCell,
   TableBody,
   Label,
+  ToastAlertBox,
+  ToastProvider,
+  SmallAlertBox,
+  SmallExpandableAlertBox,
+  PrimaryButton,
+  SecondaryButton,
+  Badge,
+  NotificationBadge,
+  StatusBadge,
+  BulletBadge,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  TextField,
+  TextArea,
+  CopyableText,
   // Custom components
   Playground,
   Props,
@@ -111,9 +146,10 @@ const components = {
   BaseCardDesignEntur,
   PageHeader,
   ImageDisplay,
+  Checkbox,
+  IconButton,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
-
     if (props) {
       if (props.language === 'jsx') {
         return <Playground code={props.codeString} language={props.language} />;
