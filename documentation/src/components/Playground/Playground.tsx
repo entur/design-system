@@ -89,7 +89,7 @@ const Playground: React.FC<PlaygroundProps> = ({
                 Kontrast
               </Switch>
               <Switch checked={darkMode} onChange={toggledarkMode}>
-                Natt
+                Dark
               </Switch>
             </div>
           </div>
