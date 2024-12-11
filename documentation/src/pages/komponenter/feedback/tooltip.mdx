@@ -1,0 +1,92 @@
+---
+title: Tooltip
+description: Tooltip brukes for å beskrive eller legge til tilleggsinformasjon til brukeren ved hover eller fokus på elementer.
+route: /komponenter/feedback/tooltip
+parent: Komponenter
+menu: Feedback
+npmPackage: tooltip
+tags: hjelpetekst, tooltip, verktøyhjelp, popover
+---
+
+import { Tooltip } from '@entur/tooltip';
+import { ImportStatement } from '../../../components/Common/ImportStatement';
+import { ValidationInfoFilledIcon } from '@entur/icons';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Tooltip content="Tooltip på toppen" placement="top">
+      <PrimaryButton>
+        <ValidationInfoFilledIcon inline /> Denne knappen har en tilleggsinformasjon
+      </PrimaryButton>
+  </Tooltip>
+</div>
+```
+
+## Varianter
+
+### Tooltip
+
+Du wrapper `<Tooltip />` rundt elementet du ønsker at skal ha en tooltip.
+**Obs:** Plasseringen av tooltip baserer seg på `ref`,
+så pass derfor på at komponenten som wrappes støtter `forwardRef`. Les mer om dette [her](https://reactjs.org/docs/forwarding-refs.html).
+
+Om man sender med `isOpen` så får Tooltip en lukkeknapp for å håndtere situasjoner hvor man ønsker kontrollere visningen av Tooltip.
+
+## Retningslinjer
+
+Tooltip brukes for å beskrive eller legge til tilleggsinformasjon når brukeren hovrer eller fokuserer på
+interaktive elementer som knapper, lenker, ikonknapper eller ikke-interaktive elementer som ikoner og tekst.
+En tooltip bør kun ha en kortfattet setning på en enkelt tekstlinje.
+
+På mobile flater vises en tooltip først når en bruker klikker på elementet.
+Den blir borte hvis brukeren klikker utenfor tooltip’en. Siden tooltips skjuler informasjonen,
+så bør det brukes sparsommelig. For kompleks informasjon og setninger som går over flere tekstlinjer, bruk heller Popover eller Drawer.
+
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" textInBox>
+    <ul>
+      <li>
+        Bruk hvis du vil gi et lite hint om hvordan eller hva et element på
+        siden gjør.
+      </li>
+      <li>Bruk tooltip sparsomt, og hold det kort og konsists,</li>
+      <li>
+        Bruk hvis et interaktivt element (knapp, label, ikon) har ingen
+        beskrivende tekst og dette elementet trenger en kort forklaring.
+      </li>
+      <li>
+        Bruk hvis det er lite plass, for mye informasjon til å ha det inline og
+        hvis det skaper for mye rot å vise den med en gang.
+      </li>
+    </ul>
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
+    <ul>
+      <li>
+        Unngå bruk av interaktive elementer som lenker elle rknapper i en
+        tooltip. Vurder heller å bruke en Popover
+      </li>
+      <li>
+        Unngå tooltip for å kommunisere og varsle om viktig og kritisk
+        informasjon eller feilmeldinger i skjemaer. Vurder å bruk Modaler eller
+        Alerts.
+      </li>
+      <li>
+        Ikke overdriv bruken av tooltips. For mange vil enten overvelde eller
+        irritere brukeren.
+      </li>
+    </ul>
+  </DoDontCard>
+</DoDontGroup>
+
+## Props
+
+<ImportStatement imports="Tooltip" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Tooltip" />

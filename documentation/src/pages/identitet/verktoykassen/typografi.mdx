@@ -8,11 +8,10 @@ order: 6
 removeToc: false
 ---
 
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import { TypographyDisplay } from '@components/TypographyDisplay';
 import { SEO } from '@components/seo/SEO';
-import { Link } from 'gatsby';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
