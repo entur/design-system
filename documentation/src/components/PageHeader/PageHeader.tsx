@@ -91,13 +91,12 @@ const PageHeader: React.FC<Props> = ({
               gap: '1rem',
             }}
           >
-            {/*             
             <CopyableText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
               {installText}
             </CopyableText>
             <CopyableText successMessage="CSS-importen ble kopiert til utklippstavla.">
               {cssImport}
-            </CopyableText> */}
+            </CopyableText>
           </div>
         </div>
       )}
