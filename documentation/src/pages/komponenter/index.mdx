@@ -1,14 +1,520 @@
 ---
 title: Komponenter
+description: Entur sitt designsystem har et komplett komponentbibliotek, som lar deg lage brukergrensesnitt på en rask og universelt utformet måte.
 route: /komponenter
 parent: Komponenter
-removeToc: true
+hide: true
 ---
 
 import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-Identitet
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter"}, extension: {eq: "jpg"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+import { fontWeights } from '@entur/tokens';
+import { ExpandablePanel } from '@entur/expand';
+
+import { ImportStatement } from '../../components/Common/ImportStatement';
+import { ComponentPreview } from '../../components/Common/ComponentPreview';
+import { GridContainer } from '@entur/grid';
+
+<PageHeader category="Introduksjon"></PageHeader>
+
+## Knapper
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Chips"
+    description="Små avrundede knapper som eksisterer i ulike typer: action chip, choice chip, filter chip og tagchip."
+    to="/komponenter/skjemaelementer/chip"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Chip").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Button"
+    description="Knapper lar brukerne gjøre handlinger og ta valg med et klikk. Knapper finnes i flere varianter og størrelser."
+    to="/komponenter/knapper/button"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Button").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="FAB"
+    description="Flytende handlingsknapp i en sirkulær form. Finnes med kun ikon eller i en bredere variant med tekst i tillegg."
+    to="/komponenter/knapper/floating-action-button"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "FAB").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Icon Button"
+    description="Ikonknapper har bare et ikon uten label og lar brukerne gjøre handlinger og ta valg med et enkelt klikk."
+    to="/komponenter/knapper/icon-button"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Icon button").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Square Button"
+    description="Kvadratiske knapper består av et ikon og en valgfri tilhørende label til høyre eller venstre for knappen."
+    to="/komponenter/knapper/square-button"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Square button").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Skjemaelementer
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Checkbox"
+    description="Checkbox lar brukerne velge ett eller flere alternativer fra en liste over valg."
+    to="/komponenter/skjemaelementer/checkbox"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Checkbox").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Datepicker"
+    description="Datepicker og Native Datepicker er komponenter for å velge dato."
+    to="/komponenter/skjemaelementer/datepicker"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Datepicker").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Dropdown"
+    description="Dropdown presenterer en liste over alternativer som kan brukes til å filtrere eller sortere eksisterende innhold."
+    to="/komponenter/skjemaelementer/dropdown"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Dropdown").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="File upload"
+    description="Filopplaster brukes for å velge en eller flere filer som skal lastes opp til et bestemt sted."
+    to="/komponenter/skjemaelementer/fileupload"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "File upload").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Multi select"
+    description="Multi select brukes for å velge opp til flere elementer til filtrering eller sortering i en liste."
+    to="/komponenter/skjemaelementer/multi-select"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Multi select").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Radio"
+    description="Radio buttons lar brukerne velge kun ett alternativ fra en liste over valg."
+    to="/komponenter/skjemaelementer/radio-button"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Radio").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Radio panel"
+    description="Fungerer som radio button, men med en større trykkflate, og muligheter for å vise ekstra informasjon."
+    to="/komponenter/skjemaelementer/radio-panel"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Radio panel").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Segmented control"
+    description="Segmented controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning."
+    to="/komponenter/skjemaelementer/segmented-control"
+  >
+    <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Segmented control").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Switch"
+    description="Switch fungerer som en fysisk bryter for å slå på eller av en funksjon."
+    to="/komponenter/skjemaelementer/switch"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Switch").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Text area"
+    description="Text area brukes til å fylle inn lengre tekstinnhold som strekker seg over flere linjer."
+    to="/komponenter/skjemaelementer/textarea"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Text area").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Text field"
+    description="Text field brukes til å skrive inn eller redigere kortfattet tekst."
+    to="/komponenter/skjemaelementer/textfield"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Text field").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Timepicker"
+    description="Timepicker er en komponent for å velge et tidspunkt."
+    to="/komponenter/skjemaelementer/timepicker"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Timepicker").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Navigasjon
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Breadcrumbs"
+    description="Breadcrumbs brukes for å vise hvor man er i navigasjonshierarkiet."
+    to="/komponenter/navigasjon/breadcrumbs"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Breadcrumbs").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Overflow menu"
+    description="Overflow menu består av en ikonknapp som viser en liste over handlinger når man klikker på den."
+    to="/komponenter/navigasjon/overflow-menu"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Overflow menu").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Pagination"
+    description="Pagination brukes for å fordele innhold på over flere sider, for å unngå for mange elementer i samme visning."
+    to="/komponenter/navigasjon/pagination"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Pagination").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Side navigation"
+    description="Side navigation brukes som en global meny for å vise et navigasjons-hierarki med ett eller to nivåer."
+    to="/komponenter/navigasjon/side-navigation"
+  >
+      <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Side navigation").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Stepper"
+    description="En stepper viser fremdriften gjennom en stegvis prosess."
+    to="/komponenter/navigasjon/stepper"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Stepper").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Top navigation"
+    description="Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen i grensesnittet."
+    to="/komponenter/navigasjon/top-navigation"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Top navigation").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Layout og flater
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Card"
+    description="Cards er bokser som viser innhold og handlinger om et emne som man ønsker å fremheve på en side."
+    to="/komponenter/layout-og-flater/card"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Card").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Contrast"
+    description="Contrast er en invertert versjon av profilen vår og kan brukes til å skape et visuelt hierarki på siden."
+    to="/komponenter/layout-og-flater/contrast"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Contrast").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Drawer"
+    description="Drawer er et panel som glir inn fra siden. Benyttes til å gi tilleggsinformasjon, uten å avbryte flyten."
+    to="/komponenter/layout-og-flater/drawer"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Drawer").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Expandable"
+    description="Expandables er komponenter for å kollapse og ekspandere innhold."
+    to="/komponenter/layout-og-flater/expandable"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Expandable").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Media card"
+    description="Media card gir et kort sammendrag av innhold og støtter video, bilde eller grafikk."
+    to="/komponenter/layout-og-flater/media-card"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Media card").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Modal"
+    description="Modal er et vindu som legger seg over og toner ned øvrig innhold på siden, og tilbyr fokus på spørsmål eller info."
+    to="/komponenter/layout-og-flater/modal"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Modal").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Table"
+    description="Tables brukes for å vise frem strukturert datasett på tvers av rader og kolonner."
+    to="/komponenter/layout-og-flater/table"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Modal").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Tabs"
+    description="Tabs brukes til å organisere og gruppere informasjon, og kan benyttes som lokal navigasjon på en side."
+    to="/komponenter/layout-og-flater/tabs"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Tabs").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Feedback
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Alert"
+    description="Alert brukes til å gi varsel om en handling eller for å fremheve viktig info som brukeren bør ta stilling til."
+    to="/komponenter/feedback/alert"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Alert").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Badge"
+    description="Badge er en visuell indikator som brukes til å varsle status til et element eller for å kategorisere et innhold."
+    to="/komponenter/feedback/badge"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Badge").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Loader"
+    description="Loader er en visuell tilbakemelding som indikerer at lasting av innhold og data er i prosess."
+    to="/komponenter/feedback/loader"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Loader").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Popover"
+    description="Popover er en boks med tilleggsinformasjon eller valg, som legger seg over annet innhold."
+    to="/komponenter/feedback/popover"
+  >
+ <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Popover").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Skeleton"
+    description="Skeleton er en placeholder som indikerer at deler av innholdet er i ferd med å laste inn."
+    to="/komponenter/feedback/skeleton"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Skeleton").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Tooltip"
+    description="Tooltip brukes for å beskrive eller gi tilleggsinformasjon ved hover eller fokus på elementet."
+    to="/komponenter/feedback/tooltip"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Tooltip").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
+## Travel
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Travel switch"
+    description="Travel Switch er en variant av switch som brukes til filtrering av transportmidler."
+    to="/komponenter/reise/travelswitch"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Travel switch").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel header"
+    description="Travel header presenterer destinasjonene som man reiser fra og til. "
+    to="/komponenter/reise/travelheader"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Travel header").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel leg"
+    description="Travel leg benyttes til å visualisere reisestrekningen mellom to destinasjoner."
+    to="/komponenter/reise/travel-leg"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Travel leg").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+  <ComponentPreview
+    title="Travel tag"
+    description="Travel tag brukes til å opplyse om transportmiddel og linjenummer til en avgang."
+    to="/komponenter/reise/traveltag"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Travel tag").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
+
