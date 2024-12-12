@@ -5,6 +5,7 @@ import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { ImportStatement } from '../components/Common/ImportStatement';
 import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
 import { TextField, TextArea, Checkbox } from '@entur/form';
 import {
@@ -31,6 +32,8 @@ import {
   TableRow,
   HeaderCell,
   TableBody,
+  TableFooter,
+  DataCell,
 } from '@entur/table';
 import { VisuallyHidden } from '@entur/a11y';
 import { ExpandablePanel } from '@entur/expand';
@@ -118,6 +121,8 @@ const components = {
   TableHead,
   TableRow,
   HeaderCell,
+  TableFooter,
+  DataCell,
   TableBody,
   Label,
   ToastAlertBox,
@@ -148,6 +153,7 @@ const components = {
   ImageDisplay,
   Checkbox,
   IconButton,
+  ImportStatement,
   pre: preProps => {
     const props = preToCodeBlock(preProps);
     if (props) {
