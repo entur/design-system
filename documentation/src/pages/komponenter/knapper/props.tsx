@@ -1,20 +1,3 @@
----
-title: Button
-route: /komponenter/knapper/standardknapper
-parent: Komponenter
-menu: Knapper
-npmPackage: button
----
-
-import {
-  Button,
-} from '@entur/button';
-import { SEO } from '@components/seo/SEO';
-
-export const Head = ( props ) => {
-  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
-}
-
 export const standardknapper = [
   {
     name: 'width',
@@ -52,15 +35,17 @@ export const standardknapper = [
   },
 ];
 
-
-
-```jsx
-<Button variant="primary">Test</Button>
-```
-
-<Playground code={`<Button></Button>`} props={standardknapper} />
-
-<Props componentName="Button" />
-
-
-
+export const flytendeknapper = [
+  {
+    name: 'children',
+    defaultValue: 'Publiser',
+    type: 'string',
+    label: 'Button text',
+  },
+  {
+    name: 'size',
+    options: ['small', 'medium'],
+    defaultValue: 'medium',
+    type: 'dropdown',
+  },
+];
