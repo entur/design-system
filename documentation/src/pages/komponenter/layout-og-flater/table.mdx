@@ -1,0 +1,1220 @@
+---
+title: Table
+description: Tabeller brukes for å vise frem strukturert data
+parent: Komponenter
+route: /komponenter/layout-og-flater/table
+menu: Layout & Flater
+npmPackage: table
+tags: table, tabell, td, tr, th, row, cell
+---
+
+import {
+  useSortableData,
+  useTableKeyboardNavigation,
+} from '@entur/table';
+import {
+  RowHeightDefaultIcon,
+  RowHeightMiddleIcon,
+  RowHeightSmallIcon,
+  ValidationInfoFilledIcon,
+  ValidationErrorFilledIcon,
+  FileIcon,
+  EditIcon,
+  DeleteIcon,
+  SearchIcon,
+} from '@entur/icons';
+import { OverflowMenu, OverflowMenuItem, Pagination } from '@entur/menu';
+import { IconButton } from '@entur/button';
+import CheckIcon from './CheckIcon';
+import { DatePicker } from '@entur/datepicker';
+import { colors } from '@entur/tokens';
+import { useState } from 'react';
+import { Dropdown } from '@entur/dropdown';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Fra</HeaderCell>
+        <HeaderCell>Avgang</HeaderCell>
+        <HeaderCell>Til</HeaderCell>
+        <HeaderCell>Ankomst</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>10.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>10.28</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>11.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>11.28</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>12.00</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>12.28</DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+## Kom i gang
+
+En tabell settes sammen av flere forskjellige komponenter. Rekkefølgen er viktig her, så følg nøye med om du ikke har brukt denne pakken før.
+
+### Table
+
+`<Table />` er grunnkomponenten til en tabell. Den wrapper man rundt en eller flere seksjonskomponenter (se `<TableHead />`, `<TableBody />` og `<TableFooter />`), for å lage en tabell. Du kan også sende inn en `<caption />` for å gi en tittel til tabellen din. `<caption />` må i så fall være første barneelement.
+
+Du kan spesifisere `fixed`-propen for å ha like kolonnestørrelser. For å endre på tettheten mellom radnene kan du bruke `spacing`-propen.
+
+Om du ønsker en mer kompakt tabell, så kan du spesifisere `middle`-propen.
+
+### TableHead, TableBody og TableFooter
+
+`<TableHead />`, `<TableBody />` og `<TableFooter />` er såkalte seksjonskomponenter, og brukes for å dele inn innholdet i tabellen din. `<TableHead />` inneholder overskriftene, `<TableBody />` inneholder selve den tabulære dataen, og `<TableFooter />` inneholder raden eller radene som oppsummerer de andre radene.
+
+### TableRow
+
+`<TableRow />` er en rad i tabellen, og inneholder enten `<HeaderCell />`- eller `<DataCell />`-komponenter.
+
+### HeaderCell og DataCell
+
+`<HeaderCell />` brukes som kolonneoverskrifter, og skal plasseres inni en `<TableRow />` inni en `<TableHead />`. Gi et godt og oppsummerende navn.
+
+Det er ikke støtte for å ha rad-overskrifter, altså overskrifter til venstre for en rad.
+
+`<DataCell />`-komponentene inneholder den tabulære dataen, og "cellen" i regnearket. Disse plasseres inni en `<TableRow />` inni en `<TableBody />` eller en `<TableFooter />`.
+
+### ExpandableRow og ExpandableRowButton
+
+Merk `colSpan`-propen til ExpandableRow. Denne må settes til antallet kolonner du har i tabellen,
+for at innholdet som ekspanderes skal vises til hele bredden av tabellen. Se eksempelet under for hvordan dette kan gjøres.
+
+## Eksempler
+
+### Sortering av tabell
+
+Sorteringsfunksjonene er plassert i kolonneoverskriftene. Ved å klikke på en kolonneoverskrift sorteres tabellen basert på dataene innen - alfabetisk, numerisk, dato osv.
+En sortert tabell har tre tilstander: usortert (pilikon – opp og ned), sortert etter stigende rekkefølge (pilikon – opp) eller sortert etter synkende rekkefølge (pilikon – ned).
+Ikonene indikerer gjeldende sortert tilstand og vises bare på kolonner der `useSortableData` sine props er tatt i bruk.
+
+```jsx
+() => {
+    const data = [
+      { name: 'Hund', age: 13 },
+      { name: 'Katt', age: 10 },
+      { name: 'Spurv', age: 5 },
+      { name: 'Elefant', age: 60 },
+      { name: 'Skilpadde', age: 50 },
+      { name: 'Løve', age: 25 },
+    ];
+    const { sortedData, getSortableHeaderProps, getSortableTableProps } =
+      useSortableData(data);
+    return (
+      <Table {...getSortableTableProps()}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell {...getSortableHeaderProps({ name: 'name' })}>
+              Navn
+            </HeaderCell>
+            <HeaderCell {...getSortableHeaderProps({ name: 'age' })}>
+              Alder
+            </HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {sortedData.map(item => (
+            <TableRow key={item.name}>
+              <DataCell>{item.name}</DataCell>
+              <DataCell>{item.age}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }
+```
+
+Her brukes hooken `useSortableData` med dataen man vil ha i tabellen som output.
+Merk bruken av `getSortableHeaderProps` hvor man må sende inn en verdi for `name` som tilsvarer den i datasettet du bruker.
+
+Obs for Typescript: useSortableData benytter seg av generic-types, dermed ville den i eksemplet over sett ut slikt:
+
+```js
+const {
+    sortedData,
+    getSortableHeaderProps,
+    getSortableTableProps,
+  } = useSortableData<{name:string; age:number }>(data);
+```
+
+### Table density
+
+Tabellkomponenten tilbyr tre størrelser: Default, Middle og Small. Dette tillater brukeren å veksle mellom ulike radhøyder for brukstilfeller der økt tetthet foredrer brukeropplevelsen.
+
+```jsx
+() => {
+    const [spacing, setSpacing] = React.useState('default');
+    return (
+      <div style={{ width: '100%' }}>
+        <div style={{ float: 'left' }}>
+          <SegmentedControl
+            label="Tetthet"
+            onChange={selectedValue => setSpacing(selectedValue)}
+            selectedValue={spacing}
+          >
+            <SegmentedChoice value="default">
+              <RowHeightDefaultIcon inline aria-label='"default" tetthet' />
+            </SegmentedChoice>
+            <SegmentedChoice value="middle">
+              <RowHeightMiddleIcon inline aria-label='"middle" tetthet' />
+            </SegmentedChoice>
+            <SegmentedChoice value="small">
+              <RowHeightSmallIcon inline aria-label='"small" tetthet' />
+            </SegmentedChoice>
+          </SegmentedControl>
+        </div>
+        <Table spacing={spacing}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Passasjerkategori</HeaderCell>
+              <HeaderCell>Type</HeaderCell>
+              <HeaderCell>Vogn</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+              <HeaderCell>Sete/kupe</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <DataCell>Voksen</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>3</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Voksen</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>4</DataCell>
+              <DataCell>22</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Barn 0-5 år</DataCell>
+              <DataCell>Komfort</DataCell>
+              <DataCell>4</DataCell>
+              <DataCell>44</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+              <DataCell>12</DataCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }
+```
+
+### Sticky header
+
+Ønsker du en såkalt «sticky header», altså en topp-rad som forblir synlig på skjermen når man skroller i tabellen, kan du bruke `stickyHeader`-propen.
+
+```jsx
+() => {
+    const data = [
+      { name: 'Hund', age: 13 },
+      { name: 'Katt', age: 10 },
+      { name: 'Spurv', age: 5 },
+      { name: 'Elefant', age: 60 },
+      { name: 'Skilpadde', age: 50 },
+      { name: 'Løve', age: 25 },
+    ];
+    const { sortedData, getSortableHeaderProps, getSortableTableProps } =
+      useSortableData(data);
+    return (
+      <Table {...getSortableTableProps()}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell {...getSortableHeaderProps({ name: 'name' })}>
+              Navn
+            </HeaderCell>
+            <HeaderCell {...getSortableHeaderProps({ name: 'age' })}>
+              Alder
+            </HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {sortedData.map(item => (
+            <TableRow key={item.name}>
+              <DataCell>{item.name}</DataCell>
+              <DataCell>{item.age}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }
+```
+
+### Checkbox-tabell
+
+**Checkbox:** Tabeller med valgbare rader som inneholder en Checkbox brukes i tilfeller der det er en liste over alternativer og brukeren kan velge ett eller flere alternativer. I tillegg brukes en global checkbox i tabelloverskriften for å kunne raskt velge eller fjerne markeringen av alle radene i tabellen.
+
+Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
+
+```jsx
+() => {
+    // Her er et minimalt eksempel på hvordan Checkbox kan bli brukt i en tabell
+    const [selectedItems, setSelectedItems] = React.useState([
+      {
+        selected: false,
+        fra: 'Majorstua',
+        til: 'Østerås',
+        avgang: '10.00',
+      },
+      { selected: false, fra: 'Oslo S', til: 'Røa', avgang: '11.30' },
+      {
+        selected: false,
+        fra: 'Sofies Plass',
+        til: 'Helsfyr',
+        avgang: '12.11',
+      },
+    ]);
+    const isEverythingSelected = Object.values(selectedItems).every(
+      value => value.selected,
+    );
+    const isNothingSelected = Object.values(selectedItems).every(
+      value => !value.selected,
+    );
+    const isSomeSelected = !isEverythingSelected && !isNothingSelected;
+    const handleAllOrNothingChange = () => {
+      setSelectedItems(prev =>
+        prev.map(prevItem =>
+          isEverythingSelected
+            ? { ...prevItem, selected: false }
+            : { ...prevItem, selected: true },
+        ),
+      );
+    };
+    const handleRegularChange = fra => {
+      setSelectedItems(prev =>
+        prev.map(prevItem =>
+          prevItem.fra === fra
+            ? { ...prevItem, selected: !prevItem.selected }
+            : prevItem,
+        ),
+      );
+    };
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <HeaderCell padding="checkbox">
+              <Checkbox
+                name="all"
+                checked={
+                  isSomeSelected ? 'indeterminate' : isEverythingSelected
+                }
+                onChange={handleAllOrNothingChange}
+              />
+            </HeaderCell>
+            <HeaderCell>Fra</HeaderCell>
+            <HeaderCell>Til</HeaderCell>
+            <HeaderCell>Avgang</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {selectedItems.map((item, index) => (
+            <TableRow key={index}>
+              <DataCell padding="checkbox">
+                <Checkbox
+                  name={item.fra}
+                  checked={item.selected}
+                  onChange={() => handleRegularChange(item.fra)}
+                />
+              </DataCell>
+              <DataCell>{item.fra}</DataCell>
+              <DataCell>{item.til}</DataCell>
+              <DataCell>{item.avgang}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }
+```
+
+### Expandable tabell
+
+En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare tabeller er nyttig for å presentere store datamengder på et lite sted.
+
+```jsx
+() => {
+    const mockData = [
+      {
+        pay: 'Faktura',
+        sum: '20 487',
+        transactions: [
+          { time: '08:25', id: 'EN48123', sum: '3 331' },
+          { time: '11:37', id: 'EN48159', sum: '6 368' },
+          { time: '14:12', id: 'EN48053', sum: '1 331' },
+          { time: '17:12', id: 'EN48141', sum: '749' },
+          { time: '15:12', id: 'EN48178', sum: '2 721' },
+          { time: '16:12', id: 'EN48158', sum: '3 768' },
+        ],
+      },
+      {
+        pay: 'Kort',
+        sum: '4 487',
+        transactions: [
+          { time: '21:50', id: 'EN41123', sum: '931' },
+          { time: '11:55', id: 'EN48239', sum: '1 681' },
+          { time: '14:12', id: 'EN48375', sum: '425' },
+          { time: '14:39', id: 'EN48222', sum: '2 651' },
+        ],
+      },
+      {
+        pay: 'Kontant',
+        sum: '13 487',
+        transactions: [
+          { time: '19:03', id: 'EN41168', sum: '10 931' },
+          { time: '14:04', id: 'EN48289', sum: '1 681' },
+          { time: '12:24', id: 'EN48470', sum: '1 425' },
+        ],
+      },
+    ];
+    // Hjelpe-komponent for å håndtere en rad og innholdet til raden under
+    const ExpRow = ({ data, children }) => {
+      const [open, setopen] = React.useState(false);
+      return (
+        <React.Fragment>
+          <TableRow>
+            <DataCell>
+              <ExpandRowButton onClick={() => setopen(!open)} open={open} />
+            </DataCell>
+            <DataCell>
+              {data.pay} ({data.transactions.length})
+            </DataCell>
+            <DataCell align="right">{data.sum},-</DataCell>
+          </TableRow>
+          {/* Tabellen i eksemplet har 3 kolonner, derav colSpan={3} */}
+          <ExpandableRow colSpan={3} open={open}>
+            {children}
+          </ExpandableRow>
+        </React.Fragment>
+      );
+    };
+    // Hjelpekomponent for innholdet inne i den ekspanderte raden
+    const SummaryTable = ({ data }) => {
+      return (
+        <div style={{ paddingTop: '0.5rem' }}>
+          <Table spacing="middle">
+            <TableHead>
+              <TableRow>
+                <HeaderCell style={{ paddingLeft: '4.5rem' }}>
+                  Tidspunkt
+                </HeaderCell>
+                <HeaderCell>Ordrenummer</HeaderCell>
+                <HeaderCell
+                  style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                >
+                  Pris
+                </HeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map(field => (
+                <TableRow key={field.id}>
+                  <DataCell style={{ paddingLeft: '4.5rem' }}>
+                    {field.time}
+                  </DataCell>
+                  <DataCell>{field.id}</DataCell>
+                  <DataCell
+                    style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                  >
+                    {field.sum},-
+                  </DataCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      );
+    };
+    return (
+      <Table fixed>
+        <TableHead>
+          <TableRow>
+            {/* Bruker padding="radio" her for å "enkelt" sette en god verdi for paddingen til venstre-kolonnen */}
+            <HeaderCell padding="radio">{''}</HeaderCell>
+            <HeaderCell>Betalingsmåte</HeaderCell>
+            <HeaderCell style={{ textAlign: 'right' }}>Salgssum</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {mockData.map((field, i) => (
+            <ExpRow data={field} key={i}>
+              <SummaryTable data={field.transactions}></SummaryTable>
+            </ExpRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }
+```
+
+### Radio-tabell
+
+**Radio:** Tabeller med valgbare rader som inneholder Radio knapper brukes i tilfeller der brukeren kun kan velge ett alternativ.
+
+```jsx
+  () => {
+    const [value, setValue] = React.useState('');
+    const selectedItems = [
+      {
+        fra: 'Majorstua',
+        til: 'Østerås',
+        avgang: '10.00',
+      },
+      { fra: 'Oslo S', til: 'Røa', avgang: '11.30' },
+      {
+        fra: 'Sofies Plass',
+        til: 'Helsfyr',
+        avgang: '12.11',
+      },
+    ];
+    const handleChange = e => {
+      setValue(e.target.value);
+    };
+    return (
+      <Table>
+        <RadioGroup name="row" onChange={handleChange} value={value}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell padding="radio"></HeaderCell>
+              <HeaderCell>Fra</HeaderCell>
+              <HeaderCell>Til</HeaderCell>
+              <HeaderCell>Avgang</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {selectedItems.map((item, index) => (
+              <TableRow key={index}>
+                <DataCell padding="radio">
+                  <Radio value={item.fra} />
+                </DataCell>
+                <DataCell>{item.fra}</DataCell>
+                <DataCell>{item.til}</DataCell>
+                <DataCell>{item.avgang}</DataCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </RadioGroup>
+      </Table>
+    );
+  }
+```
+
+### Statustabell
+
+En tabell kan vise ulike status via en statusindikator som vises i tabellradene.
+Statusindikatorene hjelper brukeren med å se hvilke rader som kan kreve spesiell oppmerksomhet.
+I dette eksemplet kan brukeren identifisere hvilke samtykker som er
+publisert (grønn), hvilke som er kladd (grå) og hvilke som er utløpt (rød).
+
+```jsx
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Beskrivelse</HeaderCell>
+        <HeaderCell>Status</HeaderCell>
+        <HeaderCell>Publisering start og slutt</HeaderCell>
+        <HeaderCell>Opprettet av</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody style={{ verticalAlign: 'top' }}>
+      {/** Merk bruken av denne når datacellene går over flere rader */}
+      <TableRow>
+        <DataCell>Kan Entur vise reklame i mobilappen?</DataCell>
+        <DataCell variant="success">Publisert</DataCell>
+        <DataCell>
+          01.04.2020 -<br />
+          01.01.2022
+        </DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Kan Entur sende deg tilbud og nyheter på e-post?</DataCell>
+        <DataCell variant="neutral">Kladd</DataCell>
+        <DataCell></DataCell>
+        <DataCell>Entur</DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>
+          Kan Kringom sende deg e-post med <br />
+          kvitteringer og billetter?
+        </DataCell>
+        <DataCell variant="negative">Utløpt</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Kringom</DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+### Sammenligningstabell
+
+En sammenligningstabell er godt egnet til å visualisere og sammenligne data for produkter eller tjenester.
+Den gir mulighet for rask og enkel sammenligning mellom hvert produkts funksjoner og egenskaper.
+Alle kolonner skal være sorterte i enten stigende eller synkende rekkefølge fra høyre eller venstre,
+slik at alle likheter samles henholdsvis til høyre eller venstre.
+
+```jsx
+  <Table fixed>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Valør</HeaderCell>
+        <HeaderCell>Reisebillett</HeaderCell>
+        <HeaderCell>Plass</HeaderCell>
+        <HeaderCell>Sovekupé</HeaderCell>
+        <HeaderCell>Oppgradering</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Platinum</DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Gull</DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell></DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Sølv</DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell>
+          <CheckIcon inline aria-label="inkludert" />
+        </DataCell>
+        <DataCell></DataCell>
+        <DataCell></DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+### Table actions
+
+Handlinger som en bruker kan utføre fra en enkel tabellrad vises i kolonnen helt til høyre og er synlige ved hover.
+Hvis tabellraden har mer en tre alternativer bruker vi en `OverflowMenu` som inneholder handlinger relatert til
+den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
+
+```jsx
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell padding="overflow-menu"></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline aria-hidden="true" /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline aria-hidden="true" /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline aria-hidden="true" /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline aria-hidden="true" /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline aria-hidden="true" /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline aria-hidden="true" /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => {}}>
+              <ValidationInfoFilledIcon inline aria-hidden="true" />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <FileIcon inline aria-hidden="true" /> Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <EditIcon inline aria-hidden="true" /> Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => {}}>
+              <DeleteIcon inline aria-hidden="true" /> Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+Inneholder over-flow menyen mindre enn tre alternativer, vis handlingene på linje som ikonknapper i stedet.
+Dette reduserer 1 klikk og gjør tilgjengelige handlinger synlige for brukerne med en gang.
+
+Eksempler på handlingsikoner er info ikon for å vise mer detaljert informasjon,
+pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette en tabellrad.
+
+```jsx
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoFilledIcon aria-label="Info" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon aria-label="Rediger" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon aria-label="Slett" />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoFilledIcon aria-label="Info" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon aria-label="Rediger" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon aria-label="Slett" />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell style={{ display: 'flex' }}>
+          <IconButton onClick={() => {}}>
+            <ValidationInfoFilledIcon aria-label="Info" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <EditIcon aria-label="Rediger" />
+          </IconButton>
+          <IconButton onClick={() => {}}>
+            <DeleteIcon aria-label="Slett" />
+          </IconButton>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+### Inline editing
+
+I noen tilfeller ønsker man å endre informasjonen som står i tabellene.
+Man kan da bruke `EditableCell`-komponenten for å gi tabeller redigerbarhet, sammenlignet med regnearksprogrammer som f.eks. Excel.
+
+**Obs:** bruk `hover`-propen for å symbolisere at cellene i raden er redigerbare.
+
+```jsx
+ () => {
+    const [date, setDate] = React.useState();
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <HeaderCell>Navn</HeaderCell>
+            <HeaderCell>Dato</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow hover>
+            <EditableCell variant="negative" feedback="Navn mangler">
+              <TextField
+                aria-label="Navn"
+                append={
+                  <ValidationErrorFilledIcon
+                    inline
+                    color={colors.validation.lava}
+                    aria-hidden="true"
+                  />
+                }
+              ></TextField>
+            </EditableCell>
+            <EditableCell>
+              <DatePicker
+                aria-label="Dato"
+                selectedDate={date}
+                onChange={date => setDate(date)}
+              ></DatePicker>
+            </EditableCell>
+          </TableRow>
+          <TableRow hover>
+            <EditableCell outlined>
+              <TextField aria-label="Navn"></TextField>
+            </EditableCell>
+            <DataCell>Nordmann</DataCell>
+          </TableRow>
+          <TableRow>
+            <DataCell>Ola</DataCell>
+            <DataCell>Nordmann</DataCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+  }
+```
+
+### Pagination
+
+Paginering i tabeller fungerer ved å presentere et sett antall rader i en visning,
+med mulighet til å navigere til et annet sett. Brukes for å hjelpe brukerne å analysere
+et stort antall elementer når det er for mange resultater til å vises samtidig,
+slik at de ikke blir overveldet av for mye informasjon. Tabeller med mer enn 20 elementer
+bør inkludere paginering som alltid ligger under eller både over og under tabellen.
+Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og indikerer at flere sider eksisterer.
+
+**Kontrollene som støttes er:**
+
+- Rader per side: Viser antall resultater slik at brukeren kan tilpasse hvor mye de ønsker å se.
+- Venstre og høyre pil: Lar brukeren navigere til neste eller forrige side.
+- Gå til side: Lar brukeren hoppe direkte til en ønsket side.
+
+```jsx
+() => {
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    const testdata = [
+    {
+      name: 'Statusrapport Entur',
+      date: '01.01.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport Vy',
+      date: '02.01.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+    {
+      name: 'Ledelserapport Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Ledelse',
+    },
+    {
+      name: 'Statusrapport2 Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport1 Vy',
+      date: '25.05.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+      {
+      name: 'Ledelserapport Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Ledelse',
+    },
+    {
+      name: 'Statusrapport2 Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport1 Vy',
+      date: '25.05.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+      {
+      name: 'Ledelserapport Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Ledelse',
+    },
+    {
+      name: 'Statusrapport2 Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport1 Vy',
+      date: '25.05.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+      {
+      name: 'Ledelserapport Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Ledelse',
+    },
+    {
+      name: 'Statusrapport2 Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport1 Vy',
+      date: '25.05.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+  ];
+    const numberOfResults = testdata.length;
+    const pageCount = Math.ceil(numberOfResults / results);
+    return (
+      <>
+        <Pagination
+          pageCount={pageCount}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          numberOfResults={numberOfResults}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+        <Table fixed style={{ margin: '1.5rem 0' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {testdata
+              .filter(
+                (item, index) =>
+                  index + 1 >= (currentPage - 1) * results + 1 &&
+                  index + 1 <= currentPage * results,
+              )
+              .map((item, index) => (
+                <TableRow key={index}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.date}</DataCell>
+                  <DataCell>{item.category}</DataCell>
+                  <DataCell>{item.receiver}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+        <Pagination
+          pageCount={Math.ceil(numberOfResults / results)}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          numberOfResults={numberOfResults}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+      </>
+    );
+  }
+```
+
+### Tastaturnavigering i tabell
+
+Hvis du ønsker tastaturnavigering i tabell, så kan man benytte seg av hooken `useTableKeyboardNavigation`. Én tabellrad vil da være fokuserbar.
+Man navigerer seg deretter i tabellen ved bruk av pil opp og pil ned.
+
+Prøv på eksempelet under ved å klikke på en rad, og deretter endre rad med piltastene.
+
+```jsx
+() => {
+  const { getTableRowNavigationProps, getTableBodyNavigationProps } =
+    useTableKeyboardNavigation(10, true);
+  const testdata = [
+    {
+      name: 'Statusrapport Entur',
+      date: '01.01.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport Vy',
+      date: '02.01.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+    {
+      name: 'Ledelserapport Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Ledelse',
+    },
+    {
+      name: 'Statusrapport2 Entur',
+      date: '15.04.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Entur Alle',
+    },
+    {
+      name: 'Statusrapport1 Vy',
+      date: '25.05.2020',
+      category: 'Transaksjonsstatistikk',
+      receiver: 'Vy alle',
+    },
+  ];
+  // Første parameter er antall rader som er i tabellen,
+  // Andre parameter er om det skal være sirkulær navigering, dvs. at pil ned på siste rad sender deg til toppen av tabellen.
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <HeaderCell>Navn</HeaderCell>
+          <HeaderCell>Publisert</HeaderCell>
+          <HeaderCell>Kategori</HeaderCell>
+          <HeaderCell>Mottaker</HeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody {...getTableBodyNavigationProps()}>
+        {testdata
+          .filter((item, index) => index < 10)
+          .map((item, index) => (
+            <TableRow
+              {...getTableRowNavigationProps(index)} // Index sendes inn her for intern state-håndtering
+              hover
+              key={item.name}
+            >
+              <DataCell>{item.name}</DataCell>
+              <DataCell>{item.date}</DataCell>
+              <DataCell>{item.category}</DataCell>
+              <DataCell>{item.receiver}</DataCell>
+            </TableRow>
+          ))}
+      </TableBody>
+    </Table>
+  );
+}
+```
+
+### Filter tables
+
+Tabeller med filtrering hjelper til med å begrense søkeresultatene,
+slik at brukeren kan finne mer nøyaktige resultater de leter etter,
+få ulik innsikt og gjøre sammenligninger.
+Det er tre typer filter-kontroller tilgjengelig:
+
+### Tabellsøk
+
+Ved å benytte et søkefelt som begrenser resultatene som er vist basert på hva brukeren taster inn.
+
+```jsx
+  () => {
+    const [filterSearch, setFilterSearch] = React.useState('');
+    const data = [
+      {
+        name: 'Rolf Svendsen',
+        id: '87374061',
+        place: 'Oslo S',
+        channel: 'MT',
+        open: '28.04.20',
+        closed: 'Åpent',
+      },
+      {
+        name: 'Robert Jensen',
+        id: '21837127',
+        place: 'Entur admin',
+        channel: 'Entur Sørvis',
+        open: '18.10.20',
+        closed: '20.10.20',
+      },
+      {
+        name: 'Ola Nordmann',
+        id: '66162613',
+        place: 'Oslo S',
+        channel: 'MT',
+        open: '12.10.20',
+        closed: '20.10.20',
+      },
+    ];
+    const textSearchRegex = new RegExp(filterSearch, 'i');
+    return (
+      <div>
+        <TextField
+          label="Søk på Navn eller ID"
+          style={{ width: '15rem' }}
+          prepend={<SearchIcon inline />}
+          value={filterSearch}
+          placeholder="Kari Nordmann"
+          onChange={e => setFilterSearch(e.target.value)}
+        />
+        <Table style={{ marginTop: '2rem' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Kassepunkt ID</HeaderCell>
+              <HeaderCell>Salgssted</HeaderCell>
+              <HeaderCell>Salgskanal</HeaderCell>
+              <HeaderCell>Åpnet</HeaderCell>
+              <HeaderCell>Lukket</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data
+              .filter(
+                item =>
+                  textSearchRegex.test(item.name) ||
+                  textSearchRegex.test(item.id) ||
+                  filterSearch === '',
+              )
+              .map(item => (
+                <TableRow key={item.name}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.id}</DataCell>
+                  <DataCell>{item.place}</DataCell>
+                  <DataCell>{item.channel}</DataCell>
+                  <DataCell>{item.open}</DataCell>
+                  <DataCell>{item.closed}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }
+```
+
+## Props
+
+### Table
+
+<ImportStatement imports="Table" packageName={props.pageContext.frontmatter.npmPackage} />
+<SmallAlertBox variant="warning" width="fit-content">
+  <CodeText>Table</CodeText> sine props vises ikke pga en bug. Men det viktigste blir forklart under Kom i gang.
+</SmallAlertBox>
+<Props componentName="Table" />
+
+### TableHead, TableBody og TableFooter
+
+<ImportStatement imports="TableHead, TableBody, TableFooter" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TableHead" />
+
+### TableRow
+
+<ImportStatement imports="TableRow" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TableRow" />
+
+### HeaderCell og DataCell
+
+<ImportStatement imports="HeaderCell, DataCell" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="HeaderCell" />
+<Props componentName="DataCell" />
+
+### ExpandableRow og ExpandableRowButton
+
+<ImportStatement imports="ExpandableRow, ExpandableRowButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ExpandableRow" />
+<Props componentName="ExpandRowButton" />

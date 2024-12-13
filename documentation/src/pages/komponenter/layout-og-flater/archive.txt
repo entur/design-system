@@ -1,0 +1,347 @@
+
+Noe som var kommentert ut i tables:
+
+<!-- ### Enkelt filter
+
+Ved å presentere multi-select dropdowns med predefinerte valg og søkefunksjon,
+som lar brukerne velge kategorier de ønsker å filtrere etter.
+Når brukeren velger en kategori, vises bare radene som tilhører den valgte kategorien.
+For eksempel kan brukeren filtrere etter størrelse, dato, mottaker osv.
+Denne metoden for filtrering gir brukeren umiddelbare oppdateringer og
+resultater etter at hvert enkelt valg er gjort.
+De valgte filtrene dukker opp som Tag Chips under skjemaet, for å la brukerne se det de har valgt.
+Ved å klikke på krysset til et valgt filter, fjernes den enkelt og siden oppdateres automatisk.
+
+<Playground>
+  {() => {
+  const data = [
+    {
+      nameId: 'Kari Nordmann',
+      checkpointId: '21739427',
+      location: 'Entur admin',
+      channel: 'MT',
+      open: '16.04.20',
+      closed: 'Åpen',
+    },
+    {
+      nameId: 'Rolf Svendsen',
+      checkpointId: '95739438',
+      location: 'Oslo S',
+      channel: 'Entur Sørvis',
+      open: '12.04.20',
+      closed: '20.10.20',
+    },
+    {
+      nameId: 'Robert Jensen',
+      checkpointId: '62129459',
+      location: 'Oslo S',
+      channel: 'Entur Sørvis',
+      open: '19.04.20',
+      closed: '06.08.20',
+    },
+    {
+      nameId: 'Karl Jacobsen',
+      checkpointId: '41423492',
+      location: 'Trondheim S',
+      channel: 'Entur Sørvis',
+      open: '25.03.20',
+      closed: 'Åpen',
+    },
+    {
+      nameId: 'Leonora Sivertsen',
+      checkpointId: '22857411',
+      location: 'Entur Admin',
+      channel: 'MT',
+      open: '08.02.20',
+      closed: '13.10.20',
+    },
+    {
+      nameId: 'Anne Johnsen',
+      checkpointId: '84793913',
+      location: 'Oslo S',
+      channel: 'MT',
+      open: '10.06.20',
+      closed: 'Åpen',
+    },
+  ];
+  const [nameId, setNameId] = useState('');
+  const [saleLocation, setSaleLocation] = useState(null);
+  const [channel, setChannel] = useState(null);
+  const [filteredData, setFilteredData] = useState(data);
+
+  const resetFilters = () => {
+    setNameId('');
+    setSaleLocation(null);
+    setChannel(null);
+  };
+  const rowFilter = row => {
+    const nameFilter = nameId === '' || row.name === nameId;
+    const saleLocationFilter =
+      saleLocation === null || row.location === saleLocation;
+    const channelFilter = channel === null || row.channel === saleLocation;
+    return nameFilter && saleLocationFilter && channelFilter;
+  };
+  React.useEffect(() => {
+    const filtered = data.filter(row => rowFilter(row));
+    console.log(filtered);
+
+    setFilteredData(filtered);
+  }, [nameId, saleLocation, channel]);
+  return (
+    <div>
+      <GridContainer spacing="small">
+        <GridItem small={3}>
+          <TextField
+            label="Søk på navn"
+            value={nameId}
+            onChange={e => setNameId(e.target.value)}
+          />
+        </GridItem>
+        <GridItem small={3}>
+          <Dropdown
+            value={saleLocation}
+            items={['Entur Admin', 'Oslo S', 'Trondheim S']}
+            selectedItem={saleLocation}
+            onChange={e => setSaleLocation(e.value)}
+            label="Velg salgssted"
+            clearable
+          />
+        </GridItem>
+        <GridItem small={3}>
+          <Dropdown
+            value={channel}
+            items={['Entur Sørvis', 'MT']}
+            selectedItem={channel}
+            onChange={e => setChannel(e.value)}
+            clearable
+            label="Velg salgskanal"
+          />
+        </GridItem>
+        <GridItem
+          small={3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <TertiaryButton onClick={() => resetFilters()}>
+            Nullstill
+          </TertiaryButton>
+        </GridItem>
+      </GridContainer>
+      <Table style={{ marginTop: '2rem' }}>
+        <TableHead>
+          <TableRow>
+            <HeaderCell>Intern ID</HeaderCell>
+            <HeaderCell>Kassepunkt ID</HeaderCell>
+            <HeaderCell>Salgssted</HeaderCell>
+            <HeaderCell>Salgskanal</HeaderCell>
+            <HeaderCell>Åpnet</HeaderCell>
+            <HeaderCell>Lukket</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {filteredData.map(item => (
+            <TableRow>
+              <DataCell>{item.nameId}</DataCell>
+              <DataCell>{item.checkpointId}</DataCell>
+              <DataCell>{item.location}</DataCell>
+              <DataCell>{item.channel}</DataCell>
+              <DataCell>{item.open}</DataCell>
+              <DataCell>{item.closed}</DataCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+}}
+</Playground>
+
+### Avansert filter
+
+Ved å bruke en avansert filterkontroll som kombinerer flere filterkontroller i en popover-meny.
+Den kan bestå av hvilken som helst formkontroll som Radio, Checkbox, DatePicker og Dropdowns.
+Brukerne kan velge ett eller flere filtre og aktivere dem ved å klikke “Bruk filter”.
+Siden oppdateres for å vise resultatene som samsvarer med filtrene.
+De valgte filtrene er også merket med Tags Chips over tabellen.
+
+<Playground>
+  {() => {
+    return <div />;
+  }}
+</Playground>{' '} -->
+
+
+
+```jsx
+  () => {
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    const numberOfResults = testdata.length;
+    const pageCount = Math.ceil(numberOfResults / results);
+    return (
+      <>
+        <Pagination
+          pageCount={pageCount}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          numberOfResults={numberOfResults}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+        <Table fixed style={{ margin: '1.5rem 0' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {testdata
+              .filter(
+                (item, index) =>
+                  index + 1 >= (currentPage - 1) * results + 1 &&
+                  index + 1 <= currentPage * results,
+              )
+              .map((item, index) => (
+                <TableRow key={index}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.date}</DataCell>
+                  <DataCell>{item.category}</DataCell>
+                  <DataCell>{item.receiver}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+        <Pagination
+          pageCount={Math.ceil(numberOfResults / results)}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          numberOfResults={numberOfResults}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+      </>
+    );
+  }
+```
+
+```jsx
+  () => {
+    const mockData = [
+      {
+        pay: 'Faktura',
+        sum: '20 487',
+        transactions: [
+          { time: '08:25', id: 'EN48123', sum: '3 331' },
+          { time: '11:37', id: 'EN48159', sum: '6 368' },
+          { time: '14:12', id: 'EN48053', sum: '1 331' },
+          { time: '17:12', id: 'EN48141', sum: '749' },
+          { time: '15:12', id: 'EN48178', sum: '2 721' },
+          { time: '16:12', id: 'EN48158', sum: '3 768' },
+        ],
+      },
+      {
+        pay: 'Kort',
+        sum: '4 487',
+        transactions: [
+          { time: '21:50', id: 'EN41123', sum: '931' },
+          { time: '11:55', id: 'EN48239', sum: '1 681' },
+          { time: '14:12', id: 'EN48375', sum: '425' },
+          { time: '14:39', id: 'EN48222', sum: '2 651' },
+        ],
+      },
+      {
+        pay: 'Kontant',
+        sum: '13 487',
+        transactions: [
+          { time: '19:03', id: 'EN41168', sum: '10 931' },
+          { time: '14:04', id: 'EN48289', sum: '1 681' },
+          { time: '12:24', id: 'EN48470', sum: '1 425' },
+        ],
+      },
+    ];
+    // Hjelpe-komponent for å håndtere en rad og innholdet til raden under
+    const ExpRow = ({ data, children }) => {
+      const [open, setopen] = React.useState(false);
+      return (
+        <React.Fragment>
+          <TableRow>
+            <DataCell>
+              <ExpandRowButton onClick={() => setopen(!open)} open={open} />
+            </DataCell>
+            <DataCell>
+              {data.pay} ({data.transactions.length})
+            </DataCell>
+            <DataCell align="right">{data.sum},-</DataCell>
+          </TableRow>
+          {/* Tabellen i eksemplet har 3 kolonner, derav colSpan={3} */}
+          <ExpandableRow colSpan={3} open={open}>
+            {children}
+          </ExpandableRow>
+        </React.Fragment>
+      );
+    };
+    // Hjelpekomponent for innholdet inne i den ekspanderte raden
+    const SummaryTable = ({ data }) => {
+      return (
+        <div style={{ paddingTop: '0.5rem' }}>
+          <Table spacing="middle">
+            <TableHead>
+              <TableRow>
+                <HeaderCell style={{ paddingLeft: '4.5rem' }}>
+                  Tidspunkt
+                </HeaderCell>
+                <HeaderCell>Ordrenummer</HeaderCell>
+                <HeaderCell
+                  style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                >
+                  Pris
+                </HeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map(field => (
+                <TableRow key={field.id}>
+                  <DataCell style={{ paddingLeft: '4.5rem' }}>
+                    {field.time}
+                  </DataCell>
+                  <DataCell>{field.id}</DataCell>
+                  <DataCell
+                    style={{ textAlign: 'right', paddingRight: '1.5rem' }}
+                  >
+                    {field.sum},-
+                  </DataCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      );
+    };
+    return (
+      <Table fixed>
+        <TableHead>
+          <TableRow>
+            {/* Bruker padding="radio" her for å "enkelt" sette en god verdi for paddingen til venstre-kolonnen */}
+            <HeaderCell padding="radio">{''}</HeaderCell>
+            <HeaderCell>Betalingsmåte</HeaderCell>
+            <HeaderCell style={{ textAlign: 'right' }}>Salgssum</HeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {mockData.map((field, i) => (
+            <ExpRow data={field} key={i}>
+              <SummaryTable data={field.transactions}></SummaryTable>
+            </ExpRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  }
+```
+

@@ -1,53 +1,29 @@
 ---
 title: Travel Switch
+description: Travel Switch er en variant av Switch for å skru av/på modaliteter.
 route: /komponenter/reise/travelswitch
 parent: Komponenter
 menu: reise
+npmPackage: travel
+tags: switch, travelswitch
 ---
 
 import { SEO } from '@components/seo/SEO';
+import { TravelSwitch } from '@entur/travel';
+import { travelswitch } from '@data/props/travel-props';
+import './traveltag.css';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-export const travelswitch = [
-  {
-    name: 'size',
-    defaultValue: 'medium',
-    options: ['medium', 'large'],
-    type: 'segmented',
-  },
-  {
-    name: 'children',
-    defaultValue: 'Buss',
-    type: 'string',
-    label: 'Label',
-  },
-  {
-    name: 'transport',
-    defaultValue: 'bus',
-    options: [
-      'metro',
-      'bus',
-      'plane',
-      'helicopter',
-      'tram',
-      'funicular',
-      'cableway',
-      'taxi',
-      'bicycle',
-      'walk',
-      'train',
-      'ferry',
-      'carferry',
-      'mobility',
-      'airportLinkBus',
-      'airportLinkRail',
-      'rail',
-      'water',
-      'air',
-    ],
-    type: 'dropdown',
-  },
-];
+<PageHeader />
+
+<Playground props={travelswitch} code={`<TravelSwitch transport="bus">Buss</TravelSwitch>`} />
+
+## Props
+
+### TravelSwitch
+
+<ImportStatement imports="TravelSwitch" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TravelSwitch" />

@@ -1,0 +1,162 @@
+---
+title: Tab
+description: Tabs lar oss designe grupperte brukergrensesnitt på en enkel måte.
+parent: Komponenter
+route: /komponenter/layout-og-flater/tab
+menu: Layout & Flater
+npmPackage: tab
+tags: faner, flater
+---
+
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  <Tabs style={{ marginRight: 'auto' }}>
+    <TabList>
+      <Tab>Priser</Tab>
+      <Tab>Detaljer</Tab>
+      <Tab>Tom fane</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <Heading3>Informasjon</Heading3>
+        <Paragraph>
+          Et tab-panel kan inneholde masse informasjon, sortert og gruppert
+          etter kategori.
+        </Paragraph>
+        <Paragraph>
+          Man kan ha langt innhold eller kort innhold, og tab-panelet vil
+          tilpasse seg underveis.
+        </Paragraph>
+      </TabPanel>
+      <TabPanel>
+        <Heading3>Priser</Heading3>
+        <TextField defaultValue="99,00" label="Pris" />
+        <TextArea
+          defaultValue="Prisen er inkludert MVA"
+          style={{ marginBottom: '1rem' }}
+        />
+        <PrimaryButton>Lagre</PrimaryButton>
+      </TabPanel>
+      <TabPanel />
+      <TabPanel>
+        <Heading3>Denne er tom</Heading3>
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+```
+
+## Varianter
+
+Tab-pakken består av mange forskjellige komponenter, som lar deg komponere en Tab-opplevelse som passer dine behov.
+
+Strukturen til et tabs-panel ser slik ut:
+
+```js
+<Tabs>
+  <TabList>
+    <Tab>Option 1</Tab>
+    <Tab>Option 2</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>Panel 1</TabPanel>
+    <TabPanel>Panel 2</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+Under får du en beskrivelse av alle komponentene og hvordan du kan sette dem sammen.
+
+### Tabs
+
+`<Tabs />` brukes som en wrapper rundt tab-panelet.
+
+#### Kontrollerbar
+
+I utgangspunktet så er Tabs-paneler selvstyrt. Du kan spesifisere `defaultIndex` for å si hvilket panel som skal være valgt by default.
+
+Om du ønsker, kan du også styre hvilket panel som er valgt programmatisk. Du kan sette valgt panel med `index`-propen, og `onChange` til å lytte på når brukeren ønsker å endre det.
+
+Her er et eksempel der man går fra 1 tab til en annen programmatisk:
+
+```jsx
+  () => {
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    return (
+      <Tabs
+        index={currentIndex}
+        onChange={newIndex => setCurrentIndex(newIndex)}
+      >
+        <TabList>
+          <Tab>En tab</Tab>
+          <Tab>En annen tab</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <PrimaryButton onClick={() => setCurrentIndex(1)} type="button">
+              Gå til den andre taben
+            </PrimaryButton>
+          </TabPanel>
+          <TabPanel>Da er vi på tab nummer 2!</TabPanel>
+        </TabPanels>
+      </Tabs>
+    );
+  }
+```
+
+#### TabList
+
+`<TabList />` er listen med tabs på toppen av siden. Denne kommer som første barn til `<Tabs />`, og godtar flere `<Tab />` barn.
+
+#### Tab
+
+`<Tab />` er hver av ark-fanene. De inneholder som regel bare en enkel tekst.
+
+#### TabPanels
+
+`<TabPanels />` er wrapper-komponenten rundt alle panelene. Den tar ikke i mot noen spesielle props.
+
+#### TabPanel
+
+`<TabPanel />` er hvert innholdspanel. De må ligge i samme rekkefølge som overskriftene i `<TabList />`.
+
+En observant bruker vil oppdage at `TabPanel` mottar fokusmarkering ved tabbing til den.
+Dette er fordi rammeverket som brukes for å bygge disse komponentene følger WAI-ARIA prinsippene for tilgjengeliget, og dette er derfor best-practice.
+Interesserte kan lese mer om [WAI-ARIA kravene til Tabs her.](https://www.w3.org/TR/wai-aria-practices-1.2/#tabpanel)
+
+## Retningslinjer
+
+Tabs eller faner lar oss designe grupperte brukergrensesnitt på en enkel måte. De benyttes ofte som en menynavigasjon innad på en side (f.eks. på nivå 3 eller 4), der valgt tab påvirker alt innhold under tabsrekken. De kan også benyttes til en avgrenset seksjon på en side, men da med en tydelig ramme rundt det de påvirker (?).
+
+## Props
+
+### Tabs
+
+<ImportStatement imports="Tabs" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Tabs" />
+
+### TabList
+
+<ImportStatement imports="TabList" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TabList" />
+
+### Tab
+
+<ImportStatement imports="Tab" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Tab" />
+
+### TabPanels
+
+<ImportStatement imports="TabPanels" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TabPanels" />
+
+### TabPanel
+
+<ImportStatement imports="TabPanel" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TabPanel" />
