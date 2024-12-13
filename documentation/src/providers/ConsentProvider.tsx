@@ -8,19 +8,19 @@ export type ConsentSet = {
 };
 
 type ConsentProviderProps = {
-  initialConsents?: ConsentSet;
+  initialConsents?: ConsentSet | null;
   children: React.ReactNode;
 };
 
 type ConsentContextType = {
-  consents: ConsentSet | undefined;
+  consents: ConsentSet | null;
   updateConsents: (updatedValues: ConsentSet) => void;
 };
 
 const ConsentContext = React.createContext<ConsentContextType | null>(null);
 
 export const ConsentProvider = ({
-  initialConsents,
+  initialConsents = null,
   children,
 }: ConsentProviderProps) => {
   const [consents, setConsents] = usePersistedState(

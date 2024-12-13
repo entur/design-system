@@ -1,31 +1,35 @@
 import './src/styles/index.scss';
 
-import React, { useEffect } from 'react';
-import { SettingsProvider } from './src/providers/SettingsContext';
-import { MediaContextProvider } from './src/providers/MediaBreakpoint';
-import DocLayout from './src/layouts/DocLayout';
-import { GatsbySSR } from 'gatsby';
-import { ToastProvider } from '@entur/alert';
-export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
-  //TODO fix analytics providers
-  // useEffect to only initialise posthog in browser environment,
-  // not during gatsby build
-  // useEffect(() => {
-  //   if (posthog.__loaded) return;
-  //   posthog.init(POSTHOG_API_KEY, deniedPosthogOptions);
-  // }, []);
+import React from 'react';
+import { GatsbyBrowser, GatsbySSR } from 'gatsby';
+import { PostHogProvider } from 'posthog-js/react';
+import posthog from 'posthog-js';
 
+import { ToastProvider } from '@entur/alert';
+
+import DocLayout from './src/layouts/DocLayout';
+import {
+  ConsentProvider,
+  AnalyticsProvider,
+  SettingsProvider,
+  MediaContextProvider,
+  AnalyticsContext,
+} from './src/providers';
+
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
+  element,
+}) => {
   return (
     <SettingsProvider>
-      {/* <ConsentProvider> */}
-      {/* <PostHogProvider client={posthog}> */}
-      {/* <AnalyticsProvider> */}
-      <ToastProvider>
-        <MediaContextProvider>{element}</MediaContextProvider>
-      </ToastProvider>
-      {/* </AnalyticsProvider> */}
-      {/* </PostHogProvider> */}
-      {/* </ConsentProvider> */}
+      <ConsentProvider>
+        <PostHogProvider client={posthog}>
+          <AnalyticsProvider>
+            <ToastProvider>
+              <MediaContextProvider>{element}</MediaContextProvider>
+            </ToastProvider>
+          </AnalyticsProvider>
+        </PostHogProvider>
+      </ConsentProvider>
     </SettingsProvider>
   );
 };
@@ -34,6 +38,22 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   element,
   props,
 }) => {
-  if (props.location.pathname === '/') return <>{element}</>;
-  return <DocLayout {...props}>{element}</DocLayout>;
+  const children = (
+    <ConsentProvider>
+      <PostHogProvider client={posthog}>
+        <AnalyticsContext.Consumer>
+          {context => {
+            if (context !== null && context.posthog.__loaded) {
+              // we manually capture pageviews since gatsby
+              // is not able to detect route changes
+              context.posthog.capture('$pageview');
+            }
+            return element;
+          }}
+        </AnalyticsContext.Consumer>
+      </PostHogProvider>
+    </ConsentProvider>
+  );
+  if (props.location.pathname === '/') return <>{children}</>;
+  return <DocLayout {...props}>{children}</DocLayout>;
 };
