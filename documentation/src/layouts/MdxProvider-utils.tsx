@@ -7,7 +7,15 @@ import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { ImportStatement } from '../components/Common/ImportStatement';
 import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
-import { TextField, TextArea, Checkbox } from '@entur/form';
+import {
+  TextField,
+  TextArea,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  SegmentedChoice,
+  SegmentedControl,
+} from '@entur/form';
 import {
   Heading1,
   Heading2,
@@ -29,11 +37,14 @@ import {
 import {
   Table,
   TableHead,
-  TableRow,
-  HeaderCell,
   TableBody,
   TableFooter,
+  TableRow,
+  HeaderCell,
   DataCell,
+  EditableCell,
+  ExpandableRow,
+  ExpandRowButton,
 } from '@entur/table';
 import { VisuallyHidden } from '@entur/a11y';
 import { ExpandablePanel } from '@entur/expand';
@@ -124,6 +135,9 @@ const components = {
   TableFooter,
   DataCell,
   TableBody,
+  EditableCell,
+  ExpandableRow,
+  ExpandRowButton,
   Label,
   ToastAlertBox,
   ToastProvider,
@@ -143,6 +157,7 @@ const components = {
   TextField,
   TextArea,
   CopyableText,
+  CodeText,
   // Custom components
   Playground,
   Props,
@@ -152,6 +167,10 @@ const components = {
   PageHeader,
   ImageDisplay,
   Checkbox,
+  Radio,
+  RadioGroup,
+  SegmentedChoice,
+  SegmentedControl,
   IconButton,
   ImportStatement,
   pre: preProps => {

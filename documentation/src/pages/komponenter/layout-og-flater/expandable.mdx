@@ -1,0 +1,185 @@
+---
+title: Expandable
+description: Expandables er komponenter for å kollapse og ekspandere innhold.
+parent: Komponenter
+route: /komponenter/layout-og-flater/expandable
+menu: Layout & Flater
+npmPackage: expand
+tags: expand, utvidbar, kollaps, collapsed
+---
+
+import {
+  ExpandablePanel,
+  Accordion,
+  AccordionItem,
+  BaseExpand,
+  ExpandableText,
+  ExpandableTextButton,
+  ExpandArrow,
+} from '@entur/expand';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  <ExpandablePanel title="Kollektivreisende">
+    <Heading3>
+      Planlegg hele reisen fra ett sted — uansett hvor du skal
+    </Heading3>
+    <Paragraph>
+      For de reisende tilbyr Entur en nasjonal reiseplanlegger, der man får oppdaterte reiseforslag for alle kollektivreiser i Norge. Denne løsningen er gratis å bruke og konkurransenøytral.
+    </Paragraph>
+
+    <Heading3>Én billett til hele reisen — på tvers av selskaper</Heading3>
+    <Paragraph>
+      Uansett om reisen består av flere delstrekninger, vil Entur gjøre det mulig å kjøpe billetter til hele reisen med ett tastetrykk. Dette gjelder selv om man må bytte mellom tog og buss, eller reise på tvers av fylkesgrenser.
+    </Paragraph>
+
+    <Heading3>Kollektivdata til alle — mulighetene er mange</Heading3>
+    <Paragraph>
+      I fremtiden vil flere og flere tilby reiseinformasjon som en del av sine tjenester. Blant annet bruker Google, Finn, Gule Sider og Bing data fra oss i dag.
+    </Paragraph>
+
+  </ExpandablePanel>
+```
+
+## Varianter
+
+### ExpandablePanel
+
+`ExpandablePanel` kan brukes om man har noe innhold man vil skjule initielt, men som skal kunne åpnes og lukkes ved klikk.
+ExpandablePanel skal i utgangspunktet ikke stå alene, dvs, det burde være minst _to_ ExpandablePanel ved siden av hverandre til ei hver tid.
+ExpandableText skal heller brukes om man har et enkeltstående innhold man ønsker å skjule.
+
+Om man har lyst til å kontrollere åpningen og lukkingen selv, så kan man benytte seg av `open` og `onToggle`.
+
+Her er et eksempel:
+
+```jsx
+  () => {
+    const [open, setOpen] = React.useState(false);
+    return (
+      <ExpandablePanel
+        title="Om Entur"
+        open={open}
+        onToggle={() => setOpen(!open)}
+      >
+        I Norge har vi et godt kollektivtilbud. Vi tror at enda flere vil velge
+        å reise kollektivt om det blir enklere å finne frem i tilbudet. Derfor
+        samler vi reisedata fra alle kollektivselskap i landet.
+      </ExpandablePanel>
+    );
+  }
+```
+
+### ExpandableText
+
+ExpandableText brukes om man ønsker å skjule et innhold, og i motsetning til ExpandablePanel, så står den gjerne alene uten andre "Expand"-komponenter.
+
+<Playground style={{ alignItems: 'start' }} code={`<ExpandableText title="Se mer info" >
+    Her står det mye mer info, under en mindre knapp som ikke tar så mye fokus
+    fra brukeren, men fortsatt har muligheten til åpning/lukking. Her står det
+    mye mer info, under en mindre knapp som ikke tar så mye fokus fra brukeren,
+    men fortsatt har muligheten til åpning/lukking.
+</ExpandableText>`} />
+
+### Accordion og AccordionItem
+
+Om du ønsker å gruppere flere `ExpandablePanel`-komponenter sammen til en accordion, kan du heller bruke `Accordion`- og `AccordionItem`-komponenter:
+
+```jsx
+  <Accordion>
+    <AccordionItem title="Kan jeg kjøpe billetter i Norden?" defaultOpen>
+      Billetter til Gøteborg, Åre og Østersund kan bestilles på vy.no. Ønsker du
+      å reise til Stockholm, København eller andre reisemål i Europa kan
+      kundesenteret vårt hjelpe deg med informasjon og bestilling av billett.
+      Les mer om togreiser i utlandet .
+    </AccordionItem>
+    <AccordionItem title="Kan jeg kjøpe Interrail-billett i app?">
+      Vi selger dessverre ikke Interrail-billetter i appen vår. Billetter til
+      Interrail kan du bestille på telefon via kundesenteret eller hos betjente
+      togstasjoner. Det er en bookingavgift på 195 kr pr. Interrail-billett ved
+      kjøp i Norge. Ønsker du å bestille på en ekstern nettside kan
+      europarundt.no være et alternativ. Husk å ha passnummer tilgjengelig..
+    </AccordionItem>
+    <AccordionItem title="Hvordan kan jeg refundere billetter?">
+      Alle billetter som ikke har startet allerede kan refunderes innen 4 timer
+      fra de ble kjøpt, da vi tilbyr angrefrist på alle kjøp. Utover 4 timer
+      kommer det an på hvilken billettype du har kjøpt om billetten kan
+      refunderes. Detaljerte refusjonsregler for hver billettype finner du
+      vanligvis på operatørens nettsider.
+      <br />
+      Refunderbare billetter kan du selv avbestille i appen ved å åpne billetten
+      du ønsker å avbestille, som du finner under «Billetter». Videre klikker du
+      på «Avbestill billett» og bekrefter avbestilling. Billetten er nå
+      avbestilt og eventuell refusjon blir automatisk refundert.
+    </AccordionItem>
+  </Accordion>
+```
+
+### BaseExpand
+
+`ExpandablePanel`, `AccordionItem` (og andre komponenter i designsystemet) benytter seg av `<BaseExpand>`, så om man har behov for å benytte seg av åpne/lukkemekanismen direkte, kan man benytte seg av denne.
+
+### ExpandArrow
+
+Hvis man bruker `BaseExpand`, så kan man bruke `ExpandArrow` samtidig for å få den roterende pila som brukes i alle expandable-komponenter i designsystemet.
+
+### Retningslinjer
+
+Expandables lar brukerne ekspandere og kollapse innhold på en side. Pil-ikonet brukes til å indikere ekspandere/kollapse handlingen,
+men hele headeren er klikkbar for samme handling. Komponenten gir oss en måte å presentere en stor mengde informasjon,
+samtidig som brukerne får bestemme over hvor mye de vil se. Den hjelper oss også med å organisere informasjon for å holde grensesnittet
+ryddig og oversiktlig, slik at brukerne finner det innholdet de trenger.
+
+Expandables er fin å bruke hvis du har en liten plass til å vise mye innhold, for eksempel på en mobil.
+Ved å bruke expandables kan man også redusere scrolling på en side.
+
+#### ExpandablePanel
+
+`ExpandablePanel` bruker man hvis det er behov for å se flere paneler oppe om gangen. En `ExpandablePanel` kan også inneholde flere nivåer/levels.`ExpandablePanel` skal i utgangspunktet ikke stå alene, og det bør være minst to ExpandablePanels ved siden av hverandre til en hver tid. Bruk heller `ExpandableText` om man har et enkeltstående innhold man ønsker å skjule.For å kontrollere åpning og lukking selv, så kan man benytte seg av open og onToggle.
+
+#### ExpandableText
+
+`ExpandableText` brukes om man ønsker å skjule et innhold. I motsetning til `ExpandablePanel` så står den gjerne alene uten andre ‘expand’-komponenter.
+
+#### Accordion og AccordionItem
+
+`Accordion` er ett sett av collapsible, hvor man ekspanderer en og en panel om gangen. Om du ønsker å gruppere flere ExpandablePanel-komponenter sammen til en accordion, kan du heller bruke Accordion- og AccordionItem-komponenter.
+
+## Props
+
+### ExpandablePanel
+
+<ImportStatement imports="ExpandablePanel"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ExpandablePanel" />
+
+### ExpandableText
+
+<ImportStatement imports="ExpandableText"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ExpandableText" />
+
+### Accordion og AccordionItem
+
+<ImportStatement imports="Accordion, AccordionItem"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Accordion" title="Props, Accordion" />
+<Props componentName="AccordionItem" title="Props, AccordionItem" />
+
+### ExpandableTextButton
+
+<ImportStatement imports="ExpandableTextButton"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ExpandableTextButton" />
+
+### BaseExpand
+
+<ImportStatement imports="BaseExpand"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="BaseExpand" />
+
+### ExpandArrow
+
+<ImportStatement imports="ExpandArrow"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ExpandArrow" />

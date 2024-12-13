@@ -1,66 +1,32 @@
 ---
 title: Travel tag
+description: TravelTag er en komponent for å vise noe om en reise
 route: /komponenter/reise/traveltag
 parent: Komponenter
 menu: reise
+npmPackage: travel
+tags: tag, reisetag
 ---
 
 import { SEO } from '@components/seo/SEO';
+import { BusIcon, BicycleIcon } from '@entur/icons';
+import { TravelTag } from '@entur/travel';
+import { traveltag } from '@data/props/travel-props';
+import './traveltag.css';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
-export const traveltag = [
-  {
-    name: 'children',
-    defaultValue: '32',
-    type: 'string',
-    label: 'Content',
-  },
-  {
-    name: 'alert',
-    defaultValue: 'none',
-    options: ['none', 'info', 'warning', 'error'],
-    type: 'dropdown',
-  },
-  {
-    name: 'transport',
-    defaultValue: 'bus',
-    options: [
-      'none',
-      'metro',
-      'bus',
-      'plane',
-      'helicopter',
-      'tram',
-      'funicular',
-      'cableway',
-      'taxi',
-      'bicycle',
-      'walk',
-      'train',
-      'ferry',
-      'carferry',
-      'mobility',
-      'airportLinkBus',
-      'airportLinkRail',
-      'rail',
-      'water',
-      'air',
-    ],
-    type: 'dropdown',
-  },
-  {
-    name: 'label',
-    default: '',
-    type: 'string',
-    label: 'Label',
-  },
-  {
-    name: 'labelPlacement',
-    defaultValue: 'right',
-    options: ['right', 'bottom'],
-    type: 'segmented',
-  },
-];
+<PageHeader />
+
+<Playground props={traveltag} code={`<TravelTag transport="bus">32</TravelTag>`} />
+
+## Props
+
+### TravelTag
+
+Om du ønsker at man skal kunne lukke / fjerne en TravelTag, kan du sende inn en onClose-callback funksjon.
+
+<ImportStatement imports="TravelTag" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TravelTag" />

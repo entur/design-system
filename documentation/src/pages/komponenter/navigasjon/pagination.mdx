@@ -1,0 +1,219 @@
+---
+title: Pagination
+description: Pagination brukes for å fordele innhold på over flere sider, for å unngå for mange elementer i én og samme visning.
+route: /komponenter/navigasjon/pagination
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: paginering, pagination, navigation
+---
+
+import { Pagination } from '@entur/menu';
+import {
+  useSortableData,
+} from '@entur/table';
+import { SEO } from '../../../components/seo/SEO';
+import { Link } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  () => {
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    const numberOfResults = 100;
+    return (
+      <Pagination
+        pageCount={Math.round(numberOfResults / results)}
+        numberOfResults={numberOfResults}
+        currentPage={currentPage}
+        onPageChange={page => setPage(page)}
+        resultsPerPage={results}
+        onResultsPerPageChange={e => setResults(e)}
+      />
+    );
+  }
+```
+
+## Varianter
+
+### Pagination
+
+`<Pagination />`-komponenten er ganske grei å bruke. Du sier hvor mange sider du har totalt, hvilken side man er på nå, og hva som skal skje når man trykker på et tall.
+
+Hver gang brukeren ber om å endre en side, så blir callbacken `onPageChange` kalt med nummeret til den ønskede siden. Det er da opp til utvikleren å implementere navigasjonen derifra - f.eks. med `window.history.push()`, eller APIene til `react-router`, om du bruker det.
+
+Du kan også spesifisere `showInput` for å vise et input-felt, der man kan skrive inn hvilken side man ønsker å bruke. Det kan være praktisk i svært store
+datasett, men bør kun brukes der det er behov.
+
+Om du ønsker flerspråklig støtte, har du tilgang på flere props: `pageLabel`, `previousPageLabel`, `nextPageLabel`, og eventuelt `inputLabel` om det trengs.
+
+For visning av resultat per side, og muligheten for å endre dette, bruk `resultsPerPage` og `onResultsPerPageChange`.
+Bruk så enten 10, 25 eller 50 resultater per side.
+
+## Retningslinjer
+
+Pagination brukes for å fordele innhold på over flere sider, for å unngå for
+mange elementer i én og samme visning. Komponenten brukes for eksempel i{' '}
+<LinkText as={Link} to="/komponenter/layout-og-flater/table">Tabeller</LinkText>
+der man presenterer et sett antall rader, med mulighet til å navigere seg til
+et annet sett.
+
+Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og indikerer at flere sider eksisterer.
+
+**Kontrollene som støttes er:**
+
+- Rader per side: Viser antall resultater slik at brukeren kan tilpasse hvor mye de ønsker å se.
+- Venstre og høyre pil: Lar brukeren navigere til neste eller forrige side.
+- Gå til side: Lar brukeren hoppe direkte til en ønsket side.
+
+```jsx
+  () => {
+    const testdata = [
+      {
+        name: 'Statusrapport Entur',
+        date: '01.01.2020',
+        category: 'Transaksjonsstatistikk',
+        receiver: 'Entur Alle',
+      },
+      {
+        name: 'Statusrapport Vy',
+        date: '02.01.2020',
+        category: 'Transaksjonsstatistikk',
+        receiver: 'Vy alle',
+      },
+      {
+        name: 'Ledelserapport Entur',
+        date: '15.04.2020',
+        category: 'Transaksjonsstatistikk',
+        receiver: 'Entur Ledelse',
+      },
+      {
+        name: 'Statusrapport2 Entur',
+        date: '15.04.2020',
+        category: 'Transaksjonsstatistikk',
+        receiver: 'Entur Alle',
+      },
+      {
+        name: 'Statusrapport1 Vy',
+        date: '25.05.2020',
+        category: 'Transaksjonsstatistikk',
+        receiver: 'Vy alle',
+      },
+       {
+    name: 'Ledelserapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Ledelse',
+  },
+  {
+    name: 'Statusrapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Alle',
+  },
+  {
+    name: 'Statusrapport Vy',
+    date: '25.05.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Vy alle',
+  },
+  {
+    name: 'Ledelserapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Ledelse',
+  },
+  {
+    name: 'Statusrapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Alle',
+  },
+  {
+    name: 'Statusrapport Vy',
+    date: '25.05.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Vy alle',
+  },
+  {
+    name: 'Ledelserapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Ledelse',
+  },
+  {
+    name: 'Statusrapport Entur',
+    date: '15.04.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Entur Alle',
+  },
+  {
+    name: 'Statusrapport Vy',
+    date: '25.05.2020',
+    category: 'Transaksjonsstatistikk',
+    receiver: 'Vy alle',
+  },
+    ];
+    const [currentPage, setPage] = React.useState(1);
+    const [results, setResults] = React.useState(10);
+    const numberOfResults = testdata.length;
+    const pageCount = Math.ceil(numberOfResults / results);
+    
+    return (
+      <>
+        <Pagination
+          pageCount={pageCount}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          resultsPerPage={results}
+          numberOfResults={numberOfResults}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+        <Table fixed style={{ margin: '1.5rem 0' }}>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {testdata
+              .filter(
+                (item, index) =>
+                  index + 1 >= (currentPage - 1) * results + 1 &&
+                  index + 1 <= currentPage * results,
+              )
+              .map((item, index) => (
+                <TableRow key={index}>
+                  <DataCell>{item.name}</DataCell>
+                  <DataCell>{item.date}</DataCell>
+                  <DataCell>{item.category}</DataCell>
+                  <DataCell>{item.receiver}</DataCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+        <Pagination
+          pageCount={Math.ceil(numberOfResults / results)}
+          currentPage={currentPage}
+          onPageChange={page => setPage(page)}
+          numberOfResults={numberOfResults}
+          resultsPerPage={results}
+          onResultsPerPageChange={e => setResults(e)}
+        />
+      </>
+    );
+  }
+```
+
+## Props
+
+<ImportStatement imports="Pagination" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Pagination" />
