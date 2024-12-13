@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export function usePersistedState<Type>(
   key: string,
@@ -9,7 +9,12 @@ export function usePersistedState<Type>(
       // Server side
       return initialState;
     }
-    return JSON.parse(localStorage.getItem(key) as string) || initialState;
+    const localStorageItem = localStorage.getItem(key);
+    if (localStorageItem !== null) {
+      return JSON.parse(localStorageItem);
+    }
+
+    return initialState;
   });
   // It seem like an unnecessary step to not destructure right away, but it's
   // done this way to keep the type definition intact
@@ -37,7 +42,7 @@ type SettingsContextType = {
 
 const SettingsContext = React.createContext<SettingsContextType | null>(null);
 
-export const SettingsProvider: React.FC = props => {
+export const SettingsProvider = (props: { children?: ReactNode }) => {
   const [variableFormat, setVariableFormat] = usePersistedState<VariableFormat>(
     'variable-format',
     'scss',

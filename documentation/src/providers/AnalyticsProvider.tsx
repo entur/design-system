@@ -2,26 +2,22 @@ import React, { useEffect, useMemo } from 'react';
 import { PostHogConfig } from 'posthog-js';
 import { usePostHog } from 'posthog-js/react';
 import type { PostHog } from 'posthog-js/react';
-import { useLocation } from '@reach/router';
+
 import { usePersistedState } from './SettingsContext';
-import { useConsent } from './ConsentProvider';
+import { ConsentValue, useConsent } from './ConsentProvider';
 
-export type ConsentValue = 'undecided' | 'accepted' | 'denied' | undefined;
-
-export type ConsentSet = {
-  [key: string]: ConsentValue;
-};
-
-const PERSISTANCE_KEY_NAME = 'entur_ds_analytics';
+const PERSISTENCE_KEY_NAME = 'entur_ds_analytics';
 const IDENTIFIED_PREFIX = 'entur_ds_';
 
 const basePosthogOptions: Partial<PostHogConfig> = {
   api_host: 'https://eu.posthog.com',
   persistence: 'memory',
   disable_session_recording: true,
-  persistence_name: PERSISTANCE_KEY_NAME,
+  persistence_name: PERSISTENCE_KEY_NAME,
   cross_subdomain_cookie: false,
   person_profiles: 'identified_only',
+  // we disable pageview since we will handle it manually
+  capture_pageview: false,
 };
 const acceptedPosthogOptions: Partial<PostHogConfig> = {
   ...basePosthogOptions,
@@ -46,7 +42,8 @@ type AnalyticsContextType = {
   setUniqueIdLocalStorage: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const AnalyticsContext = React.createContext<AnalyticsContextType | null>(null);
+export const AnalyticsContext =
+  React.createContext<AnalyticsContextType | null>(null);
 
 export const AnalyticsProvider = ({
   children,
@@ -59,14 +56,14 @@ export const AnalyticsProvider = ({
     'entur_ds_unique_id',
     null,
   );
-  const location = useLocation();
+
+  useEffect(() => {
+    if (posthog.__loaded) return;
+    posthog.init(POSTHOG_API_KEY, deniedPosthogOptions);
+  }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => updateAnalyticsConsent(consents?.analytics), []);
-
-  useEffect(() => {
-    if (posthog.__loaded) posthog.capture('$pageview');
-  }, [location.href, posthog]);
 
   const updateAnalyticsConsent = (newConsent: ConsentValue) => {
     switch (newConsent) {

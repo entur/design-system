@@ -28,11 +28,13 @@ import {
   VariableFormat,
   PackageManager,
   usePersistedState,
-} from '../../providers/SettingsContext';
-import './SettingsPanel.scss';
-//import { ConsentValue, useAnalytics } from '../../providers/AnalyticsProvider';
+} from '@providers/SettingsContext';
+import { useAnalytics } from '@providers/AnalyticsProvider';
+import { ConsentValue } from '@providers/ConsentProvider';
 
-const SettingsPanel: React.FC = () => {
+import './SettingsPanel.scss';
+
+const SettingsPanel = () => {
   const [isOpen, setOpen] = React.useState(false);
   const [showBetaSettings, setShowBetaSettings] = React.useState(false);
   const {
@@ -45,11 +47,11 @@ const SettingsPanel: React.FC = () => {
     colorMode,
     setColorMode,
   } = useSettings();
-  //const { posthog } = useAnalytics();
-  // const [hasSeenAnalytics, setHasSeenAnalytics] = usePersistedState<boolean>(
-  //   'hide_analytics_tooltip',
-  //   false,
-  // );
+  const { posthog } = useAnalytics();
+  const [hasSeenAnalytics, setHasSeenAnalytics] = usePersistedState<boolean>(
+    'hide_analytics_tooltip',
+    false,
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', e => {
@@ -65,7 +67,7 @@ const SettingsPanel: React.FC = () => {
       });
     };
   }, []);
-  /*
+
   const handleDismissAnalyticsTooltip = () => {
     if (!hasSeenAnalytics) {
       setHasSeenAnalytics(true);
@@ -78,31 +80,34 @@ const SettingsPanel: React.FC = () => {
   const showAnalyticsTooltip = React.useMemo(() => {
     return !hasSeenAnalytics;
   }, [hasSeenAnalytics]);
-*/
+
   return (
     <>
       <div className="settings-panel">
-        {/* <Tooltip
+        <Tooltip
           placement={'bottom'}
           content={'Hjelp oss å gjøre designsystemet bedre!'}
           isOpen={showAnalyticsTooltip}
           onClickCloseButton={handleDismissAnalyticsTooltip}
           className="settings-panel__tooltip"
-        > */}
-        <IconButton
-          aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
-          className="settings-trigger"
-          onClick={() => setOpen(prev => !prev)}
         >
-          <SettingsIcon className="settings-trigger__icon" aria-hidden="true" />{' '}
-          Innstilinger
-        </IconButton>
-        {/* </Tooltip> */}
+          <IconButton
+            aria-label={isOpen ? 'Lukk innstillinger' : 'Vis innstillinger'}
+            className="settings-trigger"
+            onClick={() => setOpen(prev => !prev)}
+          >
+            <SettingsIcon
+              className="settings-trigger__icon"
+              aria-hidden="true"
+            />{' '}
+            Innstilinger
+          </IconButton>
+        </Tooltip>
       </div>
       <Modal
         open={isOpen}
         onDismiss={() => {
-          // handleDismissAnalyticsTooltip();
+          handleDismissAnalyticsTooltip();
           setOpen(false);
         }}
         title="Innstillinger"
@@ -112,13 +117,23 @@ const SettingsPanel: React.FC = () => {
         <form
           onSubmit={e => {
             e.preventDefault();
-            // handleDismissAnalyticsTooltip();
+            handleDismissAnalyticsTooltip();
             setOpen(false);
           }}
         >
           <SegmentedControl
             label="Fargemodus"
-            onChange={selectedValue => setColorMode(selectedValue ?? 'light')}
+            onChange={selectedValue => {
+              switch (selectedValue) {
+                case 'light':
+                case 'dark':
+                case 'system':
+                  setColorMode(selectedValue);
+                  break;
+                default:
+                  setColorMode('light');
+              }
+            }}
             selectedValue={colorMode ?? 'light'}
             style={{ marginBottom: '1rem' }}
           >
@@ -128,7 +143,7 @@ const SettingsPanel: React.FC = () => {
             <SegmentedChoice value="dark">
               Mørk <NightIcon inline />
             </SegmentedChoice>
-            {/* <SegmentedChoice value="system">System</SegmentedChoice> */}
+            <SegmentedChoice value="system">System</SegmentedChoice>
           </SegmentedControl>
           <Dropdown
             label="Hva slags bruker er du?"
@@ -174,11 +189,11 @@ const SettingsPanel: React.FC = () => {
             }
           />
 
-          {/* <AnalyticsSection
+          <AnalyticsSection
             showBetaSettings={showBetaSettings}
             hasSeenAnalytics={hasSeenAnalytics}
             handleDismissAnalyticsTooltip={handleDismissAnalyticsTooltip}
-          /> */}
+          />
           <PrimaryButton
             className="settings-panel__modal__save-button"
             width="fluid"
@@ -192,7 +207,7 @@ const SettingsPanel: React.FC = () => {
 };
 
 export default SettingsPanel;
-/*
+
 const AnalyticsSection = ({
   showBetaSettings,
   hasSeenAnalytics,
@@ -240,6 +255,7 @@ const AnalyticsSection = ({
   return (
     <>
       <ExpandableText
+        // @ts-expect-error does work
         titleElement="Heading3"
         title="Analyseverktøy"
         defaultOpen={notDecided}
@@ -323,4 +339,3 @@ const AnalyticsSection = ({
     </>
   );
 };
-*/
