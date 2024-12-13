@@ -76,7 +76,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
   }, [componentName]);
 
   if (!componentProps) {
-    return <Paragraph>Laster komponentens prop data...</Paragraph>;
+    return <Paragraph>Denne komponenten har ingen props</Paragraph>;
   }
 
   const hasAnyDefaultValues = Object.values(componentProps).some(

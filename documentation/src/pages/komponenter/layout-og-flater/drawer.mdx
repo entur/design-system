@@ -1,0 +1,183 @@
+---
+title: Drawer
+description: Drawer er et panel som glir inn fra siden. Den skal benyttes til å gi tilleggsinformasjon som man trenger der og da, uten å avbryte flyten.
+parent: Komponenter
+route: /komponenter/layout-og-flater/drawer
+menu: Layout & Flater
+npmPackage: modal
+tags: drawer, skuff, skoff, panel, side
+---
+
+import {
+  ButtonGroup,
+  IconButton,
+} from '@entur/button';
+import { Contrast } from '@entur/layout';
+import { Drawer } from '@entur/modal';
+import { ValidationInfoFilledIcon } from '@entur/icons';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+() => {
+    const [mode, setMode] = React.useState('closed');
+    const Wrapper = mode === 'dark' ? Contrast : React.Fragment;
+    return (
+      <div>
+        <ButtonGroup>
+          <PrimaryButton
+            onClick={() => setMode('light')}
+            aria-expanded={mode === 'light'}
+          >
+            Åpne en lys drawer
+          </PrimaryButton>
+          <SecondaryButton
+            onClick={() => setMode('dark')}
+            aria-expanded={mode === 'dark'}
+          >
+            Åpne en mørk drawer
+          </SecondaryButton>
+        </ButtonGroup>
+        <Drawer
+          contrast={mode === 'dark'}
+          title="Litt mer informasjon"
+          open={mode !== 'closed'}
+          onDismiss={() => setMode('closed')}
+        >
+          <Paragraph>
+            Denne drawer-komponenten skal i hovedsak kun brukes til å gi mer
+            informasjon - litt som et mer avansert tooltip. Et eksempel kan være
+            å vise flere detaljer om et valgt produkt, reise eller lignende. Du
+            kan lenke til mer funksjonalitet om ønskelig.
+          </Paragraph>
+          <Paragraph>
+            Man skal aldri plassere tekstfelt, radioknapper og lignende i
+            drawers. Lenk heller til egne views for å endre dette - eller tilby
+            disse kontrollene kontekstuelt.
+          </Paragraph>
+          <PrimaryButton type="button" onClick={() => setMode('closed')}>
+            Den er grei
+          </PrimaryButton>
+        </Drawer>
+      </div>
+    );
+  }
+```
+
+## Varianter
+
+### Drawer
+
+`<Drawer />`-komponenten rendrer en "skuff" som sklir inn fra siden. Rent teknisk beholder den sin plass i DOM-treet, slik at tastatur-brukere og skjermlesere finner frem til den.
+
+Første fokuserbare element blir fokusert by default.
+
+<BannerAlertBox variant="information" title="Husk på aria-attributtene!">
+  For å gi skjermlesere riktig kontekst, er det viktig at du setter riktig
+  aria-attributter på elementet som trigger visningen av draweren. Husk også å
+  plassere <CodeText>Drawer</CodeText> rett etter knappen som viser den.
+</BannerAlertBox>
+
+## Retningslinjer
+
+Drawer er et panel som glir inn fra siden.
+Den fungerer som en hjelpeskuff som skal benyttes til å gi tilleggsinformasjon som man trenger der og da,
+uten å avbryte flyten. Slik at man kan fortsette å jobbe i kontekst på valgte funksjoner, i motsetning til Modal som pauser brukerflyten.
+Med denne komponenten hjelper du brukerne med å fullføre en oppgave raskere.
+
+Drawer brukes for eksempel til å supplementere informasjon på siden eller i en tabell.
+Den gir også mulighet til å enkelt skifte mellom ulike typer tilleggsinfo, uten pause mellom.
+På desktop er den festet på høyre side av skjermen, og på mindre skjermer legger den seg som et lag over hele skjermen.
+
+Drawer brukes ofte til ren informasjonstekst, men enkle handlinger er tillatt.
+Drawer skal ikke benyttes til å starte en flyt eller en handling over flere steg. Ikke benytt innstillinger,
+filtrering eller funksjoner for å gjøre endringer i en drawer. Mindre redigerbare handlinger kan foretas i en modal.
+Den bør heller ikke inneholde navigasjon (tabs, expansion panels eller menyer). For mer komplekse handlinger, vurder å ha det på en egen side.
+
+```jsx
+() => {
+    const [mode, setMode] = React.useState('closed');
+    return (
+      <div>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <HeaderCell>Navn</HeaderCell>
+              <HeaderCell>Publisert</HeaderCell>
+              <HeaderCell>Kategori</HeaderCell>
+              <HeaderCell>Mottaker</HeaderCell>
+              <HeaderCell padding="overflow-menu"></HeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <DataCell>Status rapport Vy</DataCell>
+              <DataCell>15.04.2020</DataCell>
+              <DataCell>Transaksjonssstatistikk</DataCell>
+              <DataCell>Vy Alle</DataCell>
+              <DataCell padding="overflow-menu">
+                <IconButton onClick={() => setMode(true)}>
+                  <ValidationInfoFilledIcon />
+                </IconButton>
+              </DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Status rapport Vy</DataCell>
+              <DataCell>10.03.2020</DataCell>
+              <DataCell>Transaksjonssstatistikk</DataCell>
+              <DataCell>Vy Alle</DataCell>
+              <DataCell padding="overflow-menu">
+                <IconButton onClick={() => setMode(true)}>
+                  <ValidationInfoFilledIcon />
+                </IconButton>
+              </DataCell>
+            </TableRow>
+            <TableRow>
+              <DataCell>Status rapport Vy</DataCell>
+              <DataCell>02.02.2020</DataCell>
+              <DataCell>Transaksjonssstatistikk</DataCell>
+              <DataCell>Vy Alle</DataCell>
+              <DataCell padding="overflow-menu">
+                <IconButton onClick={() => setMode(true)}>
+                  <ValidationInfoFilledIcon />
+                </IconButton>
+              </DataCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Drawer
+          title="Litt mer informasjon"
+          open={mode !== 'closed'}
+          onDismiss={() => setMode('closed')}
+        >
+          <Paragraph>
+            Denne drawer-komponenten skal i hovedsak kun brukes til å gi mer
+            informasjon - litt som et mer avansert tooltip. Et eksempel kan være
+            å vise flere detaljer om et valgt produkt, reise eller lignende. Du
+            kan lenke til mer funksjonalitet om ønskelig.
+          </Paragraph>
+          <Paragraph>
+            Man skal aldri plassere tekstfelt, radioknapper og lignende i
+            drawers. Lenk heller til egne views for å endre dette - eller tilby
+            disse kontrollene kontekstuelt.
+          </Paragraph>
+          <PrimaryButton type="button" onClick={() => setMode('closed')}>
+            Den er grei
+          </PrimaryButton>
+        </Drawer>
+      </div>
+    );
+  }
+```
+
+## Props
+
+### Drawer
+
+<ImportStatement imports="Drawer" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Drawer" />
