@@ -5,8 +5,8 @@ import { BaseCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
 import { Heading4, Label } from '@entur/typography';
 import { formatVariable } from '../../utils/formatVariable';
-import { useSettings } from '../../providers/SettingsContext';
-import { useColorContext } from '../../providers/ColorProvider';
+import { useSettings } from '@providers/SettingsContext';
+import { useColorContext } from '@providers/ColorProvider';
 
 import './ColorSwatch.scss';
 

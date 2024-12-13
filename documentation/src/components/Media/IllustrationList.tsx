@@ -10,7 +10,7 @@ import {
   useGetIllustrations,
 } from './useGetIllustrations';
 
-import { ImageDisplay } from '../../components/Media/ImageDisplay';
+import { ImageDisplay } from '@components/Media/ImageDisplay';
 
 import './IllustrationList.scss';
 

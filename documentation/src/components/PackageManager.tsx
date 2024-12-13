@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSettings } from '../providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 import { CodeText } from '@entur/typography';
 
 const PackageManager = (): React.ReactNode => {
