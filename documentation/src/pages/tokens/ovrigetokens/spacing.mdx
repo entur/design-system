@@ -8,8 +8,8 @@ order: 2
 ---
 
 import { colors, borderRadiuses } from '@entur/tokens';
-import { TokenTable } from '../../../components/TokensTable/TokenTable';
-import { SEO } from '../../../components/seo/SEO';
+import { TokenTable } from '@components/TokensTable/TokenTable';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

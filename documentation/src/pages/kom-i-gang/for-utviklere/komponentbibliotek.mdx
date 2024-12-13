@@ -9,8 +9,8 @@ menu: For utviklere
 order: 1
 ---
 
-import PackageManager from '../../../components/PackageManager';
-import { SEO } from '../../../components/seo/SEO';
+import PackageManager from '@components/PackageManager';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

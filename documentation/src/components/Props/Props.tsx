@@ -9,7 +9,7 @@ import {
   DataCell,
 } from '@entur/table';
 import { ExpandableText } from '@entur/expand';
-import { useSettings } from '../../providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 import './Props.scss';
 
 // Utility functions for formatting prop types

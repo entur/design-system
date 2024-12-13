@@ -1,6 +1,6 @@
 import React from 'react';
 import { Drawer } from '@entur/modal';
-import { ColorDrawer } from '../components/Colors/Colors';
+import { ColorDrawer } from '@components/Colors/Colors';
 
 type ColorObject = {
   name: string;

@@ -17,7 +17,7 @@ import {
   sorters,
   useSideMenuScroll,
 } from './utils';
-import { Media } from '../../../providers/MediaBreakpoint';
+import { Media } from '@providers/MediaBreakpoint';
 import SearchBar from './SearchBar';
 
 import './SideNavigation.scss';

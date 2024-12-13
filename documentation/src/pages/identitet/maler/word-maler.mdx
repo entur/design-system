@@ -8,8 +8,8 @@ order: 10
 ---
 
 import { graphql } from 'gatsby'
-import { DownloadWord } from '../../../components/Download/DownloadWord';
-import { SEO } from '../../../components/seo/SEO';
+import { DownloadWord } from '@components/Download/DownloadWord';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

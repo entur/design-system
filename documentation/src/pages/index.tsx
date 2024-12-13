@@ -8,12 +8,12 @@ import { GridContainer, GridItem } from '@entur/grid';
 import { Contrast, NavigationCard } from '@entur/layout';
 import { Heading1, Paragraph, Heading2 } from '@entur/typography';
 
-import FrontPageFooter from '../components/Footer/FrontPageFooter';
-import { OverviewCards } from '../components/Cards/FrontPageCards';
+import FrontPageFooter from '@components/Footer/FrontPageFooter';
+import { OverviewCards } from '@components/Cards/FrontPageCards';
 import TopNavigationLayout from '../layouts/TopNavigationLayout';
-import { Media } from '../providers/MediaBreakpoint';
+import { Media } from '@providers/MediaBreakpoint';
 
-import { SEO } from '../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
 
 import './index.scss';
 

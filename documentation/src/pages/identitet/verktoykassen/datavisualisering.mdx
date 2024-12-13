@@ -10,9 +10,9 @@ order: 5
 import { graphql } from 'gatsby'
 import ColorsDataVisualisation, {
   DataIllustrations,
-} from '../../../components/Colors/ColorsDataVisualisation';
+} from '@components/Colors/ColorsDataVisualisation';
 
-import { SEO } from '../../../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

@@ -8,8 +8,8 @@ order: 13
 ---
 
 import { ExternalIcon } from '@entur/icons';
-import IllustrationList from '../../../components/Media/IllustrationList';
-import { SEO } from '../../../components/seo/SEO';
+import IllustrationList from '@components/Media/IllustrationList';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
