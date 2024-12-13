@@ -62,6 +62,52 @@ export const SettingsProvider = (props: { children?: ReactNode }) => {
     'light',
   );
 
+  // Handle custom color mode preference
+  React.useEffect(() => {
+    if (colorMode === 'system') return;
+    document.documentElement.setAttribute(
+      'data-color-mode',
+      colorMode ?? 'light',
+    );
+  }, [colorMode]);
+
+  // Handle color mode === system
+  React.useEffect(() => {
+    function handleColorModeUpdateFromSystem(event: MediaQueryListEvent) {
+      if (colorMode === 'system') {
+        const systemPreference = event.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute(
+          'data-color-mode',
+          systemPreference,
+        );
+      }
+    }
+
+    function updateColorModeToSystemPreference() {
+      const currentSystemPreference = colorModeWatcher.matches
+        ? 'dark'
+        : 'light';
+      document.documentElement.setAttribute(
+        'data-color-mode',
+        currentSystemPreference,
+      );
+    }
+
+    const colorModeWatcher = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (colorMode === 'system') updateColorModeToSystemPreference();
+
+    colorModeWatcher.addEventListener(
+      'change',
+      handleColorModeUpdateFromSystem,
+    );
+    return () =>
+      colorModeWatcher.removeEventListener(
+        'change',
+        handleColorModeUpdateFromSystem,
+      );
+  }, [colorMode]);
+
   const contextValue = React.useMemo(
     () => ({
       variableFormat,

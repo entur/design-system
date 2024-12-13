@@ -3,13 +3,14 @@ import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   graphqlTypegen: {
-    typesOutputPath: `src/utils/gatsby/gatsby-types.d.ts`,
+    typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
   },
   siteMetadata: {
-    title: `Entur Designsystem`,
-    url: `https://design.entur.no/`,
-    siteUrl: `https://design.entur.no/`,
-    description: `Her finner du alt du trenger å vite om Entur sitt designsystem`,
+    title: 'Entur Designsystem',
+    url: 'https://design.entur.no/',
+    siteUrl: 'https://design.entur.no/',
+    description:
+      'Her finner du alt du trenger å vite om Entur sitt designsystem',
   },
   trailingSlash: 'never',
   plugins: [

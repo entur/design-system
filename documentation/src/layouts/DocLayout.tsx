@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
-import { MenuItem } from '../components/Navigations/SideNavigation/utils';
-import SideNavigation from '../components/Navigations/SideNavigation/SideNavigation';
+import { MenuItem } from '@components/Navigations/SideNavigation/utils';
+import SideNavigation from '@components/Navigations/SideNavigation/SideNavigation';
 import MobileSideNavigation from '../components/Navigations/SideNavigation/MobileSideNavigation';
 import TableOfContent from '../components/Navigations/TableOfContent/TableOfContent';
 import SiteFooter from '../components/Footer/SiteFooter';
 import { Media } from '../providers/MediaBreakpoint';
-import { useSettings } from '../providers/SettingsContext';
 import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
@@ -17,9 +16,8 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
+const DocLayout = ({ children }: LayoutProps) => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
-  const { colorMode } = useSettings();
   const MenuData = useStaticQuery(graphql`
     query {
       allMdx {
@@ -38,12 +36,7 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
       }
     }
   `);
-  useEffect(() => {
-    document.documentElement.setAttribute(
-      'data-color-mode',
-      colorMode ?? 'dark',
-    );
-  }, [colorMode]);
+
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
 
   return (
@@ -70,7 +63,6 @@ const DocLayout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
             {children}
           </MDXProvider>
         </main>
-
         <TableOfContent />
         <SiteFooter />
       </div>
