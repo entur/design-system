@@ -53,6 +53,10 @@ export const hasSameParentCategory = (
 };
 
 export function compare(a: MenuItem, b: MenuItem) {
+  if (!a.frontmatter.title || !b.frontmatter.title) {
+    console.error('Missing title in frontmatter:', a, b);
+  }
+
   const menuItemAOrder = a.frontmatter.order ? a.frontmatter.order : 1000;
   const menuItemBOrder = b.frontmatter.order ? b.frontmatter.order : 1000;
 
@@ -60,9 +64,8 @@ export function compare(a: MenuItem, b: MenuItem) {
     return menuItemAOrder - menuItemBOrder;
   }
 
-  // Fallback to alphabetical sorting
-  const titleA = a.frontmatter.title.toUpperCase();
-  const titleB = b.frontmatter.title.toUpperCase();
+  const titleA = (a.frontmatter.title || '').toUpperCase();
+  const titleB = (b.frontmatter.title || '').toUpperCase();
 
   if (titleA < titleB) {
     return -1;
@@ -75,13 +78,13 @@ export function compare(a: MenuItem, b: MenuItem) {
 
 // Menu-items sort orders
 export const componentsMenuSortOrder = {
-  Ressurser: 7,
+  Ressurser: 1,
   Knapper: 2,
   Skjemaelementer: 3,
   Navigasjon: 4,
   'Layout & Flater': 5,
   Feedback: 6,
-  Reise: 1,
+  Reise: 7,
 } as any;
 
 export const komIGangMenuSortOrder = {

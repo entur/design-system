@@ -75,6 +75,14 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'icons',
+        path: './icons/',
+      },
+      __key: 'icons',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'changelog',
         path: './changelogs/',
       },

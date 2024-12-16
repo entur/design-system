@@ -58,7 +58,17 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
 
 // Since Gatsby does automatic scroll restoration on navigation,
 // we need to manually disable it
-export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = () => {
+export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
+  prevPath,
+  pathname,
+}) => {
+  // If the pathname has a hash (i.e., navigating to a specific heading),
+  // do not override the scroll position.
+  if (pathname !== prevPath && window.location.hash) {
+    return false;
+  }
+
+  // Otherwise, scroll to the top of the page
   const page = document.getElementsByClassName('page')?.[0];
   if (page) page.scrollTo(0, 0);
   return false;
