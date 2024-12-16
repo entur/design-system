@@ -1,0 +1,9 @@
+@import '~@entur/tokens/dist/styles.scss';
+
+.changelog-link {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background-color: white;
+  background-image: linear-gradient(120deg, var(--primary-text-color) 0%, var(--primary-text-color) 100%);
+}

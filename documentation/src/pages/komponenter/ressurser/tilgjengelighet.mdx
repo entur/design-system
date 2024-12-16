@@ -1,0 +1,49 @@
+---
+title: Tilgjengelighet
+description: Entur sitt designsystem er utviklet for å være universelt utformet. Det betyr at det skal kunne fungere for alle. Her finner du noen ekstra komponenter for å forenkle dette arbeidet i løsningene våre også.
+route: /komponenter/ressurser/tilgjengelighet
+parent: Komponenter
+menu: Ressurser
+npmPackage: a11y
+tags: accessibility, uu, universell utforming, a11y, visuallyhidden, skiptocontent
+---
+
+import { SkipToContent, VisuallyHidden } from '@entur/a11y';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+## Varianter
+
+### SkipToContent
+
+`SkipToContent` er en snarvei for brukere av tastaturnavigasjon for å forenkle veien til sidens hovedinnhold. Den synes ikke for vanlige brukere, men vil vises med en gang man trykker "tab" for å navigere seg nedover siden.
+
+Den plasseres så tidlig som mulig i dokumentet. Du kan sende inn id-en til sidens hovedinnhold via `mainId`-propen, og en tekst som sier noe slikt som "Gå til hovedinnhold" i teksten.
+
+Vi bruker den på denne siden også - test den ut med å trykke "tab"!
+
+### VisuallyHidden
+
+`VisuallyHidden` brukes for å gi skjermlesere en tekstlig beskrivelse av et visuelt element. Det er den logiske motsetningen til `aria-hidden="true"`, og brukes ofte for å gi informasjon til skjermlesere der man ikke kan (eller vil) vise denne informasjonen til alle brukere.
+
+<VisuallyHidden>
+  Alle de kule utviklerne bruker <CodeText>VisuallyHidden</CodeText>
+  -komponenten, asså.
+</VisuallyHidden>
+
+## Props
+
+### SkipToContent
+
+<ImportStatement imports="SkipToContent" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SkipToContent" />
+
+### VisuallyHidden
+
+<ImportStatement imports="VisuallyHidden" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="VisuallyHidden" />

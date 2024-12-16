@@ -1,0 +1,29 @@
+---
+title: Changelog
+description: Vi gjør kontinuerlige forbedringer i EDS. Her vil du finne en oppsummering av hva som har blitt lansert oppført etter dataoen vi fullførte hver endring.
+route: /komponenter/ressurser/changelog
+parent: Komponenter
+menu: Ressurser
+tags: endringslogg, versjonslogg
+---
+
+import Changelog from '../../../components/Changelog/Changelog';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Changelog />
+
+## FAQ
+
+### Hva betyr "Version bump only for package @entur/xxxxx"?
+
+Her har pakken en annen pakke fra designsystemet som dependency, og dermed bumpes denne for å oppdatere til den nyeste versjonen av den oppdaterte avhengigheten.
+
+### Jeg forstår ikke changelogen/ønsker en oppsummering av en release
+
+Sjekk ut kanalen #talk-designsystem på Slack. Der vil det postes oppsummeringer av hver release i et mer leselig format enn de korte commit-meldingene i changelogen.
