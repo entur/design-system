@@ -1,0 +1,187 @@
+---
+title: Grid
+description: Grid hjelper deg og plassere elementer med jevn rytme, og forenkler responsivitet på forskjellige flater.
+route: /komponenter/ressurser/grid
+parent: Komponenter
+menu: Ressurser
+npmPackage: grid
+tags: grid
+---
+
+import { ChoiceChip, ChoiceChipGroup } from '@entur/chip';
+import { TextField } from '@entur/form';
+import './grid.scss';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+() => {
+    const [value, setValue] = React.useState('extraSmall');
+    return (
+      <>
+        <GridContainer spacing={value}>
+          <GridItem small={12} className="grid-demo-item">
+            small=12
+          </GridItem>
+          <GridItem small={6} className="grid-demo-item">
+            small=6
+          </GridItem>
+          <GridItem small={6} className="grid-demo-item">
+            small=6
+          </GridItem>
+          <GridItem small={3} className="grid-demo-item">
+            small=3
+          </GridItem>
+          <GridItem small={3} className="grid-demo-item">
+            small=3
+          </GridItem>
+          <GridItem small={3} className="grid-demo-item">
+            small=3
+          </GridItem>
+          <GridItem small={3} className="grid-demo-item">
+            small=3
+          </GridItem>
+        </GridContainer>
+        <ChoiceChipGroup
+          name="spacing"
+          label="Spacing"
+          onChange={e => setValue(e.target.value)}
+          value={value}
+          style={{ marginTop: '1.5rem' }}
+        >
+          <ChoiceChip value="none">none</ChoiceChip>
+          <ChoiceChip value="extraSmall2">extraSmall2</ChoiceChip>
+          <ChoiceChip value="extraSmall">extraSmall</ChoiceChip>
+          <ChoiceChip value="small">small</ChoiceChip>
+          <ChoiceChip value="medium">medium</ChoiceChip>
+          <ChoiceChip value="large">large</ChoiceChip>
+          <ChoiceChip value="extraLarge">extraLarge</ChoiceChip>
+        </ChoiceChipGroup>
+      </>
+    );
+  }
+```
+
+## Varianter
+
+### Grid
+
+Vår grid går etter prinsippet om 12 kolonner. Hver GridContainer har 12 kolonner, og hver GridItem tar opp så mange kolonner man skulle ønske.
+
+Grid baserer seg på tre forskjellige breakpoints: small, medium og large, som utledes fra breakpoints-tokens i.e. 800px og 1200px. Disse fungerer dra fra og med en skjermbredde og oppover. Det vil si, hvis ingen large eller medium verdi er satt, så ser Grid etter hvilken small verdi som er satt.
+Så om du ikke skal bruke de responsive funksjonene til Grid, benytt `small` når du setter størrelser på GridItem'er.
+
+Navngivningen til spacing-verdiene følger samme konvensjon som spacing-tokens.
+Det vil si f.eks. extraSmall2 for xxs (tskjorte)
+
+## Eksempler
+
+### Responsivitet
+
+Endre bredden på browser-vinduet for å teste responsiviteten.
+
+- **Small** er vinduer mellom 0-800 piksler i bredden.
+- **Medium** er vinduer mellom 800-1200 piksler.
+- **Large** er vinduer over 1200 piksler.
+
+```jsx
+  <GridContainer spacing="medium">
+    <GridItem small={12} medium={6} large={4} className="grid-demo-item">
+      small=12 medium=6 large=4
+    </GridItem>
+    <GridItem small={12} medium={6} large={4} className="grid-demo-item">
+      small=12 medium=6 large=4
+    </GridItem>
+    <GridItem small={6} medium={3} large={4} className="grid-demo-item">
+      small=6 medium=3 large=4
+    </GridItem>
+    <GridItem small={6} medium={3} large={2} className="grid-demo-item">
+      small=6 medium=3 large=2
+    </GridItem>
+    <GridItem small={4} medium={3} large={2} className="grid-demo-item">
+      small=4 medium=3 large=2
+    </GridItem>
+    <GridItem small={4} medium={3} large={2} className="grid-demo-item">
+      small=4 medium=3 large=2
+    </GridItem>
+  </GridContainer>
+```
+
+### Forskjellig spacing på kolonner og rader
+
+```jsx
+  <GridContainer spacing="extraSmall" rowSpacing="large">
+    <GridItem small={12} className="grid-demo-item">
+      small=12
+    </GridItem>
+    <GridItem small={6} className="grid-demo-item">
+      small=6
+    </GridItem>
+    <GridItem small={6} className="grid-demo-item">
+      small=6
+    </GridItem>
+    <GridItem small={3} className="grid-demo-item">
+      small=3
+    </GridItem>
+    <GridItem small={3} className="grid-demo-item">
+      small=3
+    </GridItem>
+    <GridItem small={3} className="grid-demo-item">
+      small=3
+    </GridItem>
+    <GridItem small={3} className="grid-demo-item">
+      small=3
+    </GridItem>
+  </GridContainer>
+```
+
+### Eksempel med komponenter
+
+```jsx
+  () => {
+    const [value, setValue] = React.useState(undefined);
+    return (
+      <GridContainer spacing="medium" rowSpacing="large">
+        <GridItem small={6}>
+          <TextField label="Fra" />
+        </GridItem>
+        <GridItem small={6}>
+          <TextField label="Til" />
+        </GridItem>
+        <GridItem small={12}>
+          <ChoiceChipGroup
+            name="tickettype"
+            label="Billettype"
+            onChange={e => setValue(e.target.value)}
+            value={value}
+          >
+            <ChoiceChip value="barn">Barn</ChoiceChip>
+            <ChoiceChip value="voksen">Voksen</ChoiceChip>
+            <ChoiceChip value="honnør">Honnør</ChoiceChip>
+            <ChoiceChip value="millitær">Millitær</ChoiceChip>
+          </ChoiceChipGroup>
+        </GridItem>
+        <GridItem small={3}>
+          <PrimaryButton width="fluid">Kjøp</PrimaryButton>
+        </GridItem>
+      </GridContainer>
+    );
+  }
+```
+
+## Props
+
+### GridContainer
+
+<ImportStatement imports="GridContainer" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="GridContainer" />
+
+### GridItem
+
+<ImportStatement imports="GridItem" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="GridItem" />
