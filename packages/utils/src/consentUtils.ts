@@ -24,6 +24,7 @@ const changeLanguage = (language: string) =>
   window.__ucCmp.changeLanguage(language);
 const showCookieBanner = () => window.__ucCmp.showFirstLayer();
 const hideCookieBanner = () => window.__ucCmp.closeCmp();
+// TODO Legg inn getConsentDetails
 
 async function styleCookieBanner() {
   await waitForElementWithId(CMP_SHADOW_ROOT_ID);
