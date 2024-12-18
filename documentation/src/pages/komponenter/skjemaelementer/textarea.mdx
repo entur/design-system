@@ -1,0 +1,36 @@
+---
+title: Text area
+description: TextArea brukes når brukeren skal fylle ut lengre tekster, som et avsnitt eller to.
+route: /komponenter/skjemaelementer/textarea
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: tekstområde, textarea
+---
+
+import { TextArea } from '@entur/form';
+import { ImageIcon } from '@entur/icons';
+import { textarea } from '../../../data/props/skjema-props.tsx';
+import { SEO } from '../../../components/seo/SEO';
+import { Link } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground props={textarea} code={`<TextArea></TextArea>`} />
+
+## Retningslinjer
+
+Text areas er lange tekstfelt som lar brukeren skrive tekst over flere linjer. Tekstfeltet kan justeres i høyden. Bør benyttes med label og eventuelt variant-stiler og validering. Hvis tekststyling er nødvendig, bruk Rich Text Editor for å støtte dette.
+
+For tekst som går over flere linjer, bruk heller [Text field](/komponenter/skjemaelementer/textfield).
+
+## Props
+
+### TextArea
+
+<ImportStatement imports="TextArea"  packageName={props.pageContext.frontmatter.npmPackage}  />
+<Props componentName="TextArea" />

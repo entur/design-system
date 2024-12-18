@@ -1,7 +1,7 @@
 import React from 'react';
 import { MediaCard } from '@entur/layout';
 import { GridItem } from '@entur/grid';
-import { Link } from 'docz';
+import { Link } from 'gatsby';
 import './ComponentPreview.scss';
 
 export const ComponentPreview: React.FC<{

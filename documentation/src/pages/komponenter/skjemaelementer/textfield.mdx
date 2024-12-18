@@ -1,0 +1,51 @@
+---
+title: Textfield
+description: TextField en komponent for å ta imot tekst fra brukeren.
+route: /komponenter/skjemaelementer/textfield
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: textfield, input, tekstfelt, form
+---
+
+import { TextField } from '@entur/form';
+import { SearchIcon } from '@entur/icons';
+import { textfield } from '../../../data/props/skjema-props.tsx';
+import { SEO } from '../../../components/seo/SEO';
+import { Link } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground props={textfield} code={`<TextField></TextField>`} />
+
+## Varianter
+
+### TextField
+
+`TextField` er en stylet wrapper for et `<input>`-element.
+Dette innebærer at eventuelle props du ønsker bruke fra det grunnleggende HTML-elementet blir videresendt.
+
+Les mer om disse her:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes
+
+## Retningslinjer
+
+  Tekstfelt lar brukerne legge inn og redigere tekst i et brukergrensesnitt.
+  Tekstfelt brukes normalt i et skjema, man kan også være del av for eksempel
+  modal eller søk. Bør benyttes med en kort og tydelig ledetekst som forklarer
+  hva brukeren skal oppgi i feltet. Hvis det er nødvendig med mer veiledning for
+  å hjelpe brukerens utfylling av skjemaet, kan du legge til hint, hjelpetekst
+  og validering. Anbefalt bredde på tekstfelt bør ikke overstige 500px.
+
+  For tekst som går over flere linjer, bruk heller [Text area](/komponenter/skjemaelementer/textarea).
+
+## Props
+
+### TextField
+
+<ImportStatement imports="TextField" packageName={props.pageContext.frontmatter.npmPackage}  />
+<Props componentName="TextField" />
