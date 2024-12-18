@@ -30,8 +30,8 @@ import { DatePicker } from '@entur/datepicker';
 import { colors } from '@entur/tokens';
 import { useState } from 'react';
 import { Dropdown } from '@entur/dropdown';
-import { SEO } from '../../../components/seo/SEO';
-import testdata from '../../../data/tabell-data'
+import { SEO } from '@components/seo/SEO';
+import testdata from '@data/tabell-data'
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

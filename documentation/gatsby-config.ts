@@ -24,6 +24,8 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         '@components': path.join(__dirname, 'src', 'components'),
+        '@data': path.join(__dirname, 'src', 'data'),
+        '@media': path.join(__dirname, 'src', 'media'),
         '@providers': path.join(__dirname, 'src', 'providers'),
       },
     },

@@ -8,8 +8,8 @@ npmPackage: loader
 tags: skjelett, content loader, last, placeloader, placeholder
 ---
 
-import InlineComponent from '../../../components/Common/InlineComponent';
-import { SEO } from '../../../components/seo/SEO';
+import InlineComponent from '@components/Common/InlineComponent';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

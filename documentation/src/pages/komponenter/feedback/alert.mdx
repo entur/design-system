@@ -8,10 +8,10 @@ npmPackage: alert
 tags: toast, banner, alert, varsel, varsler
 ---
 
-import InlineComponent from '../../../components/Common/InlineComponent';
+import InlineComponent from '@components/Common/InlineComponent';
 import { useToast } from '@entur/alert';
-import { banner } from '../../../data/props/feedback-props';
-import { SEO } from '../../../components/seo/SEO';
+import { banner } from '@data/props/feedback-props';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

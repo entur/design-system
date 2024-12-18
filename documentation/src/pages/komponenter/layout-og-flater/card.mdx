@@ -10,8 +10,8 @@ tags: kort, card, navigasjon
 
 import { NavigationCard, BaseCard } from '@entur/layout';
 import { RSSIcon, MapPinIcon, InterrailIcon } from '@entur/icons';
-import { cards } from '../../../data/props/layout-props';
-import { SEO } from '../../../components/seo/SEO';
+import { cards } from '@data/props/layout-props';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

@@ -12,8 +12,8 @@ import { ExpandableText } from '@entur/expand';
 import { AddIcon } from '@entur/icons';
 import * as icons from '@entur/icons';
 import { graphql } from 'gatsby';
-import { SEO } from '../../../components/seo/SEO';
-import IconList from '../../../components/IconList';
+import { SEO } from '@components/seo/SEO';
+import IconList from '@components/IconList';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

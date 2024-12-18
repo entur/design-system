@@ -11,9 +11,9 @@ tags: leg, legs, legbone, leglines
 import { Link } from 'gatsby';
 import { LegLine, LegBone, TravelLeg } from '@entur/travel';
 import { colors } from '@entur/tokens';
-import { travelleg } from '../../../data/props/travel-props';
-import { SEO } from '../../../components/seo/SEO';
+import { travelleg } from '@data/props/travel-props';
 import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
