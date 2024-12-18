@@ -62,6 +62,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-live": "^4.1.8",
+    "react-syntax-highlighter": "^15.6.1",
     "sass": "^1.65.1",
     "wcag-contrast": "^3.0.0"
   },
@@ -71,6 +72,7 @@
     "@types/react-dom": "^18.2.22",
     "@types/wcag-contrast": "^3.0.3",
     "gatsby-plugin-root-import": "^2.0.9",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "react-docgen-typescript": "^2.2.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.1",
