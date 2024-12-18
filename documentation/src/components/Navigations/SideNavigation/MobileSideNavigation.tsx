@@ -9,7 +9,7 @@ import { space } from '@entur/tokens';
 import { useLocation } from '@reach/router';
 import SideNavigation from './SideNavigation';
 import { useContrast } from '@entur/layout';
-import { useSettings } from '../../../providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';

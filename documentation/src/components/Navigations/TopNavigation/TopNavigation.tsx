@@ -6,7 +6,7 @@ import { useContrast } from '@entur/layout';
 import classNames from 'classnames';
 
 import SettingsPanel from '../SettingsPanel';
-import { useSettings } from '../../../providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';

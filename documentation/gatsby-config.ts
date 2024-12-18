@@ -1,15 +1,16 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
-const config = {
+import path from 'path';
+import type { GatsbyConfig } from 'gatsby';
+
+const config: GatsbyConfig = {
   graphqlTypegen: {
-    typesOutputPath: `src/utils/gatsby/gatsby-types.d.ts`,
+    typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
   },
   siteMetadata: {
-    title: `Entur Designsystem`,
-    url: `https://design.entur.no/`,
-    siteUrl: `https://design.entur.no/`,
-    description: `Her finner du alt du trenger å vite om Entur sitt designsystem`,
+    title: 'Entur Designsystem',
+    url: 'https://design.entur.no/',
+    siteUrl: 'https://design.entur.no/',
+    description:
+      'Her finner du alt du trenger å vite om Entur sitt designsystem',
   },
   trailingSlash: 'never',
   plugins: [
@@ -20,9 +21,16 @@ const config = {
     'gatsby-transformer-sharp',
     'gatsby-remark-images',
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-root-import',
       options: {
-        extensions: [`.mdx`, `.md`],
+        '@components': path.join(__dirname, 'src', 'components'),
+        '@providers': path.join(__dirname, 'src', 'providers'),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,

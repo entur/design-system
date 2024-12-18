@@ -9,7 +9,7 @@ order: 7
 
 import { graphql } from 'gatsby'
 import { BugIcon, ValidTicketIcon } from '@entur/icons'
-import { SEO } from '../../../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Props from '../components/Props/Props';
-import Playground from '../components/Playground/Playground';
-import { DoDontGroup, DoDontCard } from '../components/Cards/DoDont';
-import BaseCardDesignEntur from '../components/Cards/BaseCardDesignEntur';
-import PageHeader from '../components/PageHeader/PageHeader';
-import { ImageDisplay } from '../components/Media/ImageDisplay';
+import Props from '@components/Props/Props';
+import Playground from '@components/Playground/Playground';
+import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
+import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
+import PageHeader from '@components/PageHeader/PageHeader';
+import { ImageDisplay } from '@components/Media/ImageDisplay';
 import {
   Heading1,
   Heading2,

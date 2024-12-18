@@ -7,8 +7,8 @@ menu: Fargetokens
 order: 2
 ---
 
-import { TokensTableColor } from '../../../components/TokensTable/TokensTableColor';
-import { SEO } from '../../../components/seo/SEO';
+import { TokensTableColor } from '@components/TokensTable/TokensTableColor';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

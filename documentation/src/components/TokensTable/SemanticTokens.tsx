@@ -7,7 +7,7 @@ import {
   sliceTokenKey,
 } from '../../utils/formatVariable';
 import { TokensTableProps } from './types';
-import { useSettings } from '../../providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
