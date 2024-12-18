@@ -9,7 +9,6 @@ import { useGetChangelog } from '../Pages/useGetChangelog';
 
 import './Changelog.scss';
 
-/**Must be in this (gastby-theme-docz/components) for graphql query to run */
 const Changelog = () => {
   const [openModal, setOpenModal] = useState(false);
   const [packageChangelog, setPackageChangelog] = useState('');
