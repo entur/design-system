@@ -8,10 +8,10 @@ npmPackage: loader
 tags: loader, spinner, wait, vent, indikator, opplasting, last opp
 ---
 
-import InlineComponent from '../../../components/Common/InlineComponent';
+import InlineComponent from '@components/Common/InlineComponent';
 import { Loader } from '@entur/loader';
 
-import { SEO } from '../../../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

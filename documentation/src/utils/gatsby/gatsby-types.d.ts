@@ -2854,7 +2854,7 @@ type PackageChangelogQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<
 type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageQueryQuery = { readonly verdier: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+type pageQueryQuery = { readonly toneofvoice: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
 

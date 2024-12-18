@@ -5,7 +5,7 @@ import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import PageHeader from '@components/PageHeader/PageHeader';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
-import { ImportStatement } from '../components/Common/ImportStatement';
+import { ImportStatement } from '@components/Common/ImportStatement';
 import { PrimaryButton, SecondaryButton, IconButton } from '@entur/button';
 import {
   TextField,

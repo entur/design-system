@@ -10,15 +10,15 @@ tags: multi, dropdown, select, autocomplete, autosuggest, dropdown, nedtrekksmen
 
 import { MultiSelect } from '@entur/dropdown';
 import { ExpandableText } from '@entur/expand';
-import { CodeBlock } from '../../../components/Codeblock/CodeBlock';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import {
   FILTERS,
   dropdownItems,
   countries,
   cities,
   fuzzyMatch,
-} from '../../../data/dropdownItems-data.ts';
-import { SEO } from '../../../components/seo/SEO';
+} from '@data/dropdownItems-data.ts';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

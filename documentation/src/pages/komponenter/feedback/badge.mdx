@@ -9,8 +9,8 @@ tags: hjelpetekst, tooltip, verktøyhjelp, popover
 ---
 
 import { SubtractIcon } from '@entur/icons';
-import { badgeprops } from '../../../data/props/feedback-props';
-import { SEO } from '../../../components/seo/SEO';
+import { badgeprops } from '@data/props/feedback-props';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

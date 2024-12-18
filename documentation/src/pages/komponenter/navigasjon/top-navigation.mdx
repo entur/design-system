@@ -11,8 +11,8 @@ tags: top menu, top navigation
 import { Link } from 'gatsby';
 import { TopNavigationItem } from '@entur/menu';
 import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
-import { topnavigation } from '../../../data/props/navigation-props';
-import { SEO } from '../../../components/seo/SEO';
+import { topnavigation } from '@data/props/navigation-props';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
