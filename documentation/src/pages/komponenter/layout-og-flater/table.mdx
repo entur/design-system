@@ -31,6 +31,7 @@ import { colors } from '@entur/tokens';
 import { useState } from 'react';
 import { Dropdown } from '@entur/dropdown';
 import { SEO } from '../../../components/seo/SEO';
+import testdata from '../../../data/tabell-data'
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -883,96 +884,9 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
 - Venstre og høyre pil: Lar brukeren navigere til neste eller forrige side.
 - Gå til side: Lar brukeren hoppe direkte til en ønsket side.
 
-```jsx
-() => {
+<Playground code={`() => {
     const [currentPage, setPage] = React.useState(1);
     const [results, setResults] = React.useState(10);
-    const testdata = [
-    {
-      name: 'Statusrapport Entur',
-      date: '01.01.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport Vy',
-      date: '02.01.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-    {
-      name: 'Ledelserapport Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Ledelse',
-    },
-    {
-      name: 'Statusrapport2 Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport1 Vy',
-      date: '25.05.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-      {
-      name: 'Ledelserapport Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Ledelse',
-    },
-    {
-      name: 'Statusrapport2 Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport1 Vy',
-      date: '25.05.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-      {
-      name: 'Ledelserapport Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Ledelse',
-    },
-    {
-      name: 'Statusrapport2 Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport1 Vy',
-      date: '25.05.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-      {
-      name: 'Ledelserapport Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Ledelse',
-    },
-    {
-      name: 'Statusrapport2 Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport1 Vy',
-      date: '25.05.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-  ];
     const numberOfResults = testdata.length;
     const pageCount = Math.ceil(numberOfResults / results);
     return (
@@ -1021,9 +935,10 @@ Pagineringskontroller er tilgjengelig for å gi rask tilgang til alle sider og i
         />
       </>
     );
-  }
-```
-
+  }`}
+  scope={{testdata}}
+  />
+  
 ### Tastaturnavigering i tabell
 
 Hvis du ønsker tastaturnavigering i tabell, så kan man benytte seg av hooken `useTableKeyboardNavigation`. Én tabellrad vil da være fokuserbar.
@@ -1031,42 +946,9 @@ Man navigerer seg deretter i tabellen ved bruk av pil opp og pil ned.
 
 Prøv på eksempelet under ved å klikke på en rad, og deretter endre rad med piltastene.
 
-```jsx
-() => {
+<Playground code={`() => {
   const { getTableRowNavigationProps, getTableBodyNavigationProps } =
     useTableKeyboardNavigation(10, true);
-  const testdata = [
-    {
-      name: 'Statusrapport Entur',
-      date: '01.01.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport Vy',
-      date: '02.01.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-    {
-      name: 'Ledelserapport Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Ledelse',
-    },
-    {
-      name: 'Statusrapport2 Entur',
-      date: '15.04.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Entur Alle',
-    },
-    {
-      name: 'Statusrapport1 Vy',
-      date: '25.05.2020',
-      category: 'Transaksjonsstatistikk',
-      receiver: 'Vy alle',
-    },
-  ];
   // Første parameter er antall rader som er i tabellen,
   // Andre parameter er om det skal være sirkulær navigering, dvs. at pil ned på siste rad sender deg til toppen av tabellen.
   return (
@@ -1097,8 +979,9 @@ Prøv på eksempelet under ved å klikke på en rad, og deretter endre rad med p
       </TableBody>
     </Table>
   );
-}
-```
+}`}
+scope={{testdata}}
+/>
 
 ### Filter tables
 

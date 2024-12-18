@@ -1,0 +1,75 @@
+---
+title: Switch
+description: Switch fungerer som en fysisk bryter som lar brukerne slå på eller av en funksjon.
+route: /komponenter/skjemaelementer/switch
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: slideswitch, toggle, toggleswitch, bryter, av, på
+---
+
+import { Switch } from '@entur/form';
+import { colors } from '@entur/tokens';
+import { BusIcon, FerryIcon } from '@entur/icons';
+import { SEO } from '../../../components/seo/SEO';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/skjemaelementer"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+```jsx
+  () => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <div>
+        <Label>Ønsker du å motta nyhetsbrev?</Label>
+        <Switch checked={checked} onChange={() => setChecked(!checked)}>
+          Ja takk
+        </Switch>
+      </div>
+    );
+  }
+```
+
+## Retningslinjer for bruk
+
+Switch er en kontroll som lar brukerne veksle mellom to mulige tilstander (av eller på).
+Switch brukes kun for binære handlinger som aktiveres eller deaktiveres umiddelbart etter at brukeren har slått på eller av bryteren.
+Det vil si at endring i tilstanden ikke skal kreve bekreftelse eller lagring. Switch bør ha en ledetekst som forteller hva brukeren slår av og på.
+
+For handlinger der brukeren må bekrefte valget sitt, bruk Checkboxes istedenfor.
+
+<DoDontGroup>
+  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "SwitchDo").childImageSharp.gatsbyImageData}>
+    Bruk switch til å slå på eller av en funksjon/innstilling som gir automatisk
+    oppdatering eller automatisk lagring.
+  </DoDontCard>
+  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "SwitchDont").childImageSharp.gatsbyImageData}>
+    Unngå å bruk radioknapper for å slå innstillinger av eller på. Radioknapper
+    indikerer at bare en kan velges om gangen og krever et ekstra steg for
+    lagring.
+  </DoDontCard>
+</DoDontGroup>
+
+## Props
+
+<ImportStatement imports="Switch"  packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Switch" />

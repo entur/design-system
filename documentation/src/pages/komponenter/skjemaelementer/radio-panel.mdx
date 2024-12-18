@@ -1,0 +1,100 @@
+---
+title: Radio panel
+description: Radio panel fungerer som radio button, men med en større trykkflate, og muligheter for å vise ekstra informasjon.
+route: /komponenter/skjemaelementer/radio-panel
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: panel
+---
+
+import { RadioPanel, RadioGroup } from '@entur/form';
+import { ExpandableText } from '@entur/expand';
+import { VyIcon } from '@entur/icons';
+import { inputpanel } from '../../../data/props/skjema-props.tsx';
+import { SEO } from '../../../components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  () => {
+    const [value, setValue] = React.useState(null);
+    return (
+      <div style={{ width: '20rem' }}>
+        <RadioGroup
+          name="ticket-type"
+          label="Velg billettype:"
+          onChange={e => setValue(e.target.value)}
+          value={value}
+        >
+          <div style={{ display: 'grid', gridGap: '0.5rem' }}>
+            <RadioPanel
+              title="Standard"
+              secondaryLabel="199,-"
+              value="non-flexi"
+              size="large"
+            >
+              Ikke fleksibel
+            </RadioPanel>
+            <RadioPanel
+              title="Premium"
+              secondaryLabel="299,-"
+              value="flexi"
+              size="large"
+            >
+              <div>Fleksibel billett</div>
+              {value === 'flexi' && (
+                <Label as="div">
+                  Billetten kan refunderes eller endres ved et senere tidspunkt
+                </Label>
+              )}
+            </RadioPanel>
+          </div>
+        </RadioGroup>
+      </div>
+    );
+  }
+```
+
+## Retningslinjer
+
+`RadioPanel` brukes i tilfeller der du har en liste over alternativer og brukeren kan velge kun ett alternativer.
+Den er mest nyttig hvis man ønsker å legge til ekstra informasjon for hvert element, vil fremheve listen eller
+ønsker å øke trykkflaten. Ellers kan det hende vanlig [Radio button](/komponenter/skjemaelementer/radiobutton)
+fungerer bedre.
+
+Hvis brukerne skal kunne velge flere alternativer fra listen, er det mer passende å bruke
+[CheckboxPanel](/komponenter/skjemaelementer/checkboxpanel). Om du ønsker at valget gjenspeiles
+eller lagres med en gang bør du heller bruke en [Switch](/komponenter/skjermaelementer/switch).
+
+Alternaltivene bør vises i en logisk rekkefølge.
+
+### Test ut props
+
+`RadioPanel` støtter de samme props-ene som [CheckboxPanel](/komponenter/skjemaelementer/checkboxpanel),
+med unntak av `checked` – dette siden checked-verdien styres gjennom `RadioGroup`. Du kan teste dem ut interaktivt på
+[siden for CheckboxPanel](/komponenter/skjemaelementer/checkbox-panel#test-ut-props).
+
+### RadioGroup
+
+<ImportStatement imports="RadioGroup" />
+
+`RadioGroup` er en nødvendig wrapper for å bruke `RadioPanel` og lar deg gruppere flere `RadioPanel`-er under en overskrift. Du kan spesifisere valgt verdi via `value`-propen, lytte på endringer med `onChange` og sette en ledetekst/overskrift med `label`-propen.
+
+`name`-propen blir propagert ned til hver av `<Radio />`-elementene, så du slipper å gjøre dette manuelt.
+
+## Props
+
+### RadioPanel
+
+<ImportStatement imports="RadioPanel" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="RadioPanel" />
+
+### RadioGroup
+
+<ImportStatement imports="RadioGroup" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="RadioGroup" />

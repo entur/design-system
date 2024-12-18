@@ -15,7 +15,7 @@ export const Head = ( props ) => {
 
 export const query = graphql`
 query komigang {
-  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter"}, extension: {eq: "jpg"}}) {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/index"}, extension: {eq: "jpg"}}) {
     images: nodes {
       name
       childImageSharp {
@@ -147,7 +147,7 @@ import { GridContainer } from '@entur/grid';
   <ComponentPreview
     title="Multi select"
     description="Multi select brukes for å velge opp til flere elementer til filtrering eller sortering i en liste."
-    to="/komponenter/skjemaelementer/multi-select"
+    to="/komponenter/skjemaelementer/multiselect"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Multi select").childImageSharp.gatsbyImageData}
@@ -180,7 +180,7 @@ import { GridContainer } from '@entur/grid';
   <ComponentPreview
     title="Segmented control"
     description="Segmented controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning."
-    to="/komponenter/skjemaelementer/segmented-control"
+    to="/komponenter/skjemaelementer/segmentedcontrol"
   >
     <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Segmented control").childImageSharp.gatsbyImageData}
@@ -517,4 +517,3 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
 </GridContainer>
-
