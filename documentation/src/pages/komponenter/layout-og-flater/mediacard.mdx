@@ -10,8 +10,24 @@ tags: media, richmedia, rich media, kort, card, navigasjon
 
 import { MediaCard } from '@entur/layout';
 import { DesktopIcon } from '@entur/icons';
-import mediacard from './MediaCard.png';
-import { SEO } from '../../../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
+import mediacard from '../../../media/images/komponenter/layout/MediaCard.png';
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/layout"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -19,20 +35,20 @@ export const Head = ( props ) => {
 
 <PageHeader />
 
-```jsx
-  <MediaCard
+<Playground code={`<MediaCard
     title="Hva gjør Entur?"
     description="Entur eier og styrer salgssystemet for togbilletter og samler data om kollektivtrafikken i Norge, slik at det blir enklere å velge en bærekraftig reise."
     href="https://www.entur.no"
     style={{ width: '31rem' }}
   >
-    <img
-      style={{ width: '31rem' }}
-      src={mediacard}
-      alt="Buss som kjører over bro i fjelllandskap"
-    />
-  </MediaCard>
-```
+  <img
+    src={mediacard}
+    alt="Buss som kjører over bro i fjelllandskap"
+    style={{ width: '31rem' }}
+  />
+  </MediaCard>`}
+  scope={{mediacard}}
+  />
 
 ## Retningslinjer
 

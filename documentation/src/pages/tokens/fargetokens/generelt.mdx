@@ -9,8 +9,8 @@ order: 1
 
 import { graphql } from 'gatsby'
 import { SEO } from '@components/seo/SEO';
-import brukAssets from '../../../media/images/tokens/brukAssets.gif'
-import brukMenu from '../../../media/images/tokens/brukMenu.gif'
+import brukAssets from '@media/images/tokens/brukAssets.gif'
+import brukMenu from '@media/images/tokens/brukMenu.gif'
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

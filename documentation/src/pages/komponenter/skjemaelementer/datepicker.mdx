@@ -20,10 +20,10 @@ import {
   nativeDateToTimeValue,
   timeOrDateValueToNativeDate,
 } from '@entur/datepicker';
-import { datepicker } from '../../../data/props/skjema-props.tsx';
-import { CodeBlock } from '../../../components/Codeblock/CodeBlock';
+import { datepicker } from '@data/props/skjema-props.tsx';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
 import './styles.scss';
-import { SEO } from '../../../components/seo/SEO';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

@@ -11,9 +11,9 @@ tags: select, autocomplete, autosuggest, dropdown, nedtrekksmeny, gardinmeny
 import { Dropdown, SearchableDropdown, NativeDropdown } from '@entur/dropdown';
 import { ResetIcon } from '@entur/icons';
 import { ExpandableText } from '@entur/expand';
-import { dropdownItems, countries, cities, fuzzyMatch } from '../../../data/dropdownItems-data.ts';
-import { CodeBlock } from '../../../components/Codeblock/CodeBlock';
-import { SEO } from '../../../components/seo/SEO';
+import { dropdownItems, countries, cities, fuzzyMatch } from '@data/dropdownItems-data.ts';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />

@@ -11,8 +11,8 @@ tags: panel
 import { CheckboxPanel, Fieldset } from '@entur/form';
 import { ForwardIcon } from '@entur/icons';
 
-import { inputpanel } from '../../../data/props/skjema-props.tsx';
-import { SEO } from '../../../components/seo/SEO';
+import { inputpanel } from '@data/props/skjema-props.tsx';
+import { SEO } from '@components/seo/SEO';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
