@@ -5,23 +5,28 @@
   &__container {
     margin-top: $space-extra-large;
   }
+
   &__calculator {
     display: grid;
     grid-template-columns: 1fr;
+    grid-gap: $space-large;
+    margin-bottom: $space-extra-large4;
+
     @include for-large-desktop {
       grid-template-columns: 3fr 1fr;
     }
-    grid-gap: $space-large;
-    margin-bottom: $space-extra-large4;
   }
+
   &__ratio {
     border-width: $border-widths-medium;
     border-style: solid;
     padding: $space-extra-large2;
+
     &-header {
       font-size: $font-sizes-extra-large2;
       text-align: center;
     }
+
     &-ratio {
       font-weight: $font-weights-heading;
       font-size: $font-sizes-extra-large5;
@@ -53,14 +58,17 @@
     grid-template-columns: 3fr 1fr;
     margin-top: $space-large;
   }
+
   &__small-text {
     padding: $space-large;
   }
+
   &__large-text {
     font-size: $font-sizes-extra-large2;
     font-weight: $font-weights-heading;
     padding: $space-large;
   }
+
   &__graphics-object {
     display: flex;
     align-items: center;
@@ -74,6 +82,7 @@
   &__wrapper {
     display: flex;
   }
+
   &__names {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
@@ -87,6 +96,7 @@
     color: $colors-blues-blue40;
     align-items: center;
   }
+
   &__values {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
