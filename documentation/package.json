@@ -63,8 +63,11 @@
     "react-dom": "^18.2.0",
     "react-live": "^4.1.8",
     "react-syntax-highlighter": "^15.6.1",
-    "sass": "^1.65.1",
+    "sass": "^1.83.0",
     "wcag-contrast": "^3.0.0"
+  },
+  "resolutions": {
+    "sass-loader": "^16.0.4"
   },
   "devDependencies": {
     "@types/node": "^20.11.28",

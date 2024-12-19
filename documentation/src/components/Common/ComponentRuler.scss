@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 :root {
   --ruler-line-width: 0.125rem;
@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: $space-small;
+  gap: tokens.$space-small;
 
   &--vertical {
     flex-direction: column;
@@ -23,15 +23,15 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  font-size: $font-sizes-small;
+  font-size: tokens.$font-sizes-small;
   color: var(--basecolors-text-subdued);
-  margin-right: $space-medium;
+  margin-right: tokens.$space-medium;
 }
 
 .vertical-ruler-wrapper {
   display: inline-flex;
   flex-direction: row;
-  margin: 0 $space-extra-small;
+  margin: 0 tokens.$space-extra-small;
   align-items: center;
   margin-top: -0.125rem; //Offset for ruler end
 }
@@ -88,7 +88,7 @@
 .horizontal-ruler-container {
   display: flex;
   flex-direction: row;
-  margin-top: $space-extra-small;
+  margin-top: tokens.$space-extra-small;
 }
 
 .horizontal-ruler-wrapper {

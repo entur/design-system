@@ -1,5 +1,5 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .merkevare {
   &__grid-container {
@@ -18,9 +18,9 @@
     .eds-h2::after {
       content: '';
       display: block;
-      bottom: $space-default;
+      bottom: tokens.$space-default;
       height: 0.25rem; // 3px in rem
-      width: $space-extra-large2;
+      width: tokens.$space-extra-large2;
       margin: 0 auto;
       opacity: 1;
       background: var(--basecolors-stroke-highlight);
@@ -28,9 +28,9 @@
   }
   &__lofte {
     margin-left: 38px;
-    padding-top: $space-large;
+    padding-top: tokens.$space-large;
     &--header {
-      font-weight: $font-weights-heading;
+      font-weight: tokens.$font-weights-heading;
     }
   }
 }
