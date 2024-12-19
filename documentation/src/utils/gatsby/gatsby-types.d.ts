@@ -2841,6 +2841,11 @@ type NewLogoFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type NewLogoFilesQuery = { readonly downloads: { readonly files: ReadonlyArray<{ readonly extension: string, readonly dir: string, readonly name: string, readonly publicURL: string | null }> }, readonly logosPng: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> }, readonly logosSvg: { readonly images: ReadonlyArray<{ readonly name: string, readonly publicURL: string | null }> } };
 
+type NotFoundPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NotFoundPageQuery = { readonly imagefiles: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type NpmVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 

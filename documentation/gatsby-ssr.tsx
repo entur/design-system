@@ -55,5 +55,8 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
     </ConsentProvider>
   );
   if (props.location.pathname === '/') return <>{children}</>;
+  if (element.type.is404) {
+    return <>{children}</>; // Do not wrap 404 pages
+  }
   return <DocLayout {...props}>{children}</DocLayout>;
 };

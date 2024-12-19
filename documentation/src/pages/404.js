@@ -1,48 +1,69 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
-const pageStyles = {
-  color: '#232129',
-  padding: '96px',
-  fontFamily: '-apple-system, Roboto, sans-serif, serif',
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
+import { Paragraph, Heading2, Link as TextLink } from '@entur/typography';
+import { PrimaryButton } from '@entur/button';
+import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { useSettings } from '@providers/SettingsContext';
+import { useContrast } from '@entur/layout';
 
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: '#8A6534',
-  padding: 4,
-  backgroundColor: '#FFF4DB',
-  fontSize: '1.25rem',
-  borderRadius: 4,
-};
+export const query = graphql`
+  query NotFoundPage {
+    imagefiles: allFile(
+      filter: {
+        sourceInstanceName: { eq: "media" }
+        relativeDirectory: { glob: "images/404" }
+        extension: { eq: "png" }
+      }
+    ) {
+      images: nodes {
+        name
+        childImageSharp {
+          gatsbyImageData(layout: CONSTRAINED)
+        }
+      }
+    }
+  }
+`;
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ data }) => {
+  const { colorMode } = useSettings();
+  const isContrast = useContrast();
+  const sheepImage = data.imagefiles.images.find(
+    image => image.name === 'Sheep',
+  )?.childImageSharp.gatsbyImageData;
+
+  const sheepImageDark = data.imagefiles.images.find(
+    image => image.name === 'Sheep-darkmode',
+  )?.childImageSharp.gatsbyImageData;
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
+    <div style={{ textAlign: 'center' }} data-is-404>
+      {sheepImage && (
+        <ImageDisplay
+          style={{ paddingInline: '20%' }}
+          imgSource={
+            colorMode === 'dark' || isContrast ? sheepImageDark : sheepImage
+          }
+          alt="Bomstasjon som sperrer veien videre. Tegning"
+        />
+      )}
+      <Heading2>Bomtur</Heading2>
+
+      <Paragraph>
+        Adressen du forsøkte å gå til finnes ikke
         <br />
-        {process.env.NODE_ENV === 'development' ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+        Eller så har siden blitt flyttet til et annet sted.
+      </Paragraph>
+      <TextLink as={Link} to="/">
+        <PrimaryButton>Gå til forsiden</PrimaryButton>
+      </TextLink>
+    </div>
   );
 };
+
+NotFoundPage.is404 = true;
 
 export default NotFoundPage;
 
