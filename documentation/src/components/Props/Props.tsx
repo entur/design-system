@@ -66,7 +66,9 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
 
   useEffect(() => {
     // Dynamically import the JSON data for the component
-    import(`./eds-component-props/${componentName}.json`)
+    import(
+      `../../utils/componentProps/eds-component-props/${componentName}.json`
+    )
       .then(data => {
         setComponentProps(data[0]?.props || {});
       })
