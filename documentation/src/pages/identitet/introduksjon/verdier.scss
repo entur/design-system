@@ -1,4 +1,4 @@
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .verdier {
   &__card {

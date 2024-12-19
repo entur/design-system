@@ -1,64 +1,65 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
+//
 .color-swatch {
   border: none;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0;
-  background: $colors-brand-white;
+  background: tokens.$colors-brand-white;
   cursor: pointer;
   font-family: inherit;
-  transition: box-shadow $timings-medium ease-in-out, transform $timings-medium ease-in-out;
+  transition: box-shadow tokens.$timings-medium ease-in-out, transform tokens.$timings-medium ease-in-out;
   &:hover {
-    box-shadow: $shadows-card-shadow-hover;
-    transform: translateY(-$space-extra-small2);
+    box-shadow: tokens.$shadows-card-shadow-hover;
+    transform: translateY(tokens.$space-extra-small2);
   }
   &:focus {
-    outline-offset: $outline-offsets-focus;
+    outline-offset: tokens.$outline-offsets-focus;
     outline: none;
-    box-shadow: $shadows-focus;
+    box-shadow: tokens.$shadows-focus;
   }
 }
 
 .color-square {
   height: 10rem;
   width: 100%;
-  border-radius: $border-radiuses-medium;
+  border-radius: tokens.$border-radiuses-medium;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 .color-description {
   padding: 1rem;
   font-family: inherit;
-  font-size: $font-sizes-large;
+  font-size: tokens.$font-sizes-large;
 }
 .color-swatch__details {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  font-weight: $font-weights-body;
+  font-weight: tokens.$font-weights-body;
 }
 
 .color-swatch__copy-button {
   appearance: none;
   background: none;
   border: 0;
-  border-radius: $border-radiuses-default;
+  border-radius: tokens.$border-radiuses-default;
   color: inherit;
   cursor: pointer;
   display: block;
   font-size: inherit;
-  padding: $space-extra-small2;
+  padding: tokens.$space-extra-small2;
   width: fit-content;
 
   & + & {
-    margin-top: $space-extra-small2;
+    margin-top: tokens.$space-extra-small2;
   }
 
   .eds-icon {
     opacity: 0;
-    transition: all $timings-fast ease-out;
+    transition: all tokens.$timings-fast ease-out;
     visibility: hidden;
   }
 

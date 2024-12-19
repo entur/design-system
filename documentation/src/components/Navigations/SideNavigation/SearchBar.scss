@@ -1,6 +1,6 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .searchbar-wrapper {
   display: block;
-  padding: $space-large $space-extra-large2 $space-large $space-extra-large2;
+  padding: tokens.$space-large tokens.$space-extra-large2 tokens.$space-large tokens.$space-extra-large2;
 }

@@ -1,5 +1,5 @@
-@use '@entur/tokens/dist/semantic.scss' as *;
-@import '~@entur/tokens/dist/styles.scss';
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .brukergrupper {
   &__brukere {
@@ -11,23 +11,23 @@
     background: var(--designentur-basecard-default-fill);
 
     &-wrapper {
-      margin-bottom: $space-extra-large;
+      margin-bottom: tokens.$space-extra-large;
     }
 
     .eds-icon {
-      font-size: $font-sizes-extra-large5;
-      margin-top: $space-large;
+      font-size: tokens.$font-sizes-extra-large5;
+      margin-top: tokens.$space-large;
     }
 
     .eds-paragraph {
       text-align: center;
-      margin-top: $space-large;
+      margin-top: tokens.$space-large;
       max-width: 10rem;
     }
   }
 
   &__situasjonsbehov {
-    background-color: $fill-background-tint-neutral;
+    background-color: semantic.$fill-background-tint-neutral;
     padding: 1rem;
   }
 }

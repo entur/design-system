@@ -17,7 +17,16 @@ const config: GatsbyConfig = {
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        useResolveUrlLoader: true,
+        sassOptions: {
+          api: 'modern-compiler',
+          includePaths: [path.resolve(__dirname, '../../node_modules')],
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-remark-images',
     {

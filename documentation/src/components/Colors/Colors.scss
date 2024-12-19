@@ -1,10 +1,10 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .eds-colors-group {
   &__large-space {
-    margin-bottom: $space-extra-large5;
+    margin-bottom: tokens.$space-extra-large5;
   }
   &__small-space {
-    margin-bottom: $space-extra-large2;
+    margin-bottom: tokens.$space-extra-large2;
   }
 }

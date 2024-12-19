@@ -1,5 +1,5 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .settings-panel {
   display: flex;
@@ -26,10 +26,10 @@
     }
   }
   .settings-trigger {
-    margin-left: $space-large;
+    margin-left: tokens.$space-large;
     &__icon {
-      font-size: $font-sizes-extra-large2;
-      margin-right: $space-extra-small;
+      font-size: tokens.$font-sizes-extra-large2;
+      margin-right: tokens.$space-extra-small;
     }
   }
 }
