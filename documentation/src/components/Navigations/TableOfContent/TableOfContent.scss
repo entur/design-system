@@ -1,15 +1,15 @@
-@use '../../../styles/variables' as *;
-@import '~@entur/tokens/dist/styles.scss';
+@use '../../../styles/variables' as variables;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .table-of-content-container {
   display: none;
   z-index: 1;
 
-  @media screen and (min-width: $show-toc-min-width) {
+  @media screen and (min-width: variables.$show-toc-min-width) {
     display: block;
     position: fixed;
-    left: $toc-left-position;
-    top: ($navbar-height + 2rem);
+    left: variables.$toc-left-position;
+    top: (variables.$navbar-height + 2rem);
     bottom: 0rem;
     overflow-y: auto;
 
@@ -21,44 +21,44 @@
   padding: 0;
   max-width: 15rem;
   padding-left: 1rem;
-  border-left: $border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
+  border-left: tokens.$border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
 }
 
 .table-of-content__item {
-  margin-bottom: $space-medium;
+  margin-bottom: tokens.$space-medium;
   &--depth-2 {
-    padding-left: $space-large;
+    padding-left: tokens.$space-large;
   }
 
   &--depth-3 {
-    padding-left: $space-extra-large;
+    padding-left: tokens.$space-extra-large;
   }
 }
 
 .table-of-content__link {
   color: var(--components-menu-tableofcontent-standard-text-unselected);
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-small;
+  font-size: tokens.$font-sizes-medium;
+  line-height: tokens.$line-heights-small;
   text-decoration: none;
   position: relative;
   &:before {
     display: block;
     content: '';
     height: 100%;
-    width: $border-widths-medium;
+    width: tokens.$border-widths-medium;
     position: absolute;
-    left: -1rem - $border-widths-medium;
+    left: -1rem - tokens.$border-widths-medium;
     top: 0;
     background: transparent;
-    transition: background $timings-fast ease-in-out;
+    transition: background tokens.$timings-fast ease-in-out;
     .table-of-content__item--depth-3 & {
-      left: -2.5rem - $border-widths-medium;
+      left: -2.5rem - tokens.$border-widths-medium;
     }
   }
 
   &--active {
     color: var(--components-menu-tableofcontent-standard-text-selected);
-    font-weight: $font-weights-heading;
+    font-weight: tokens.$font-weights-heading;
     &:before {
       background: var(--components-menu-tableofcontent-standard-stroke-selected);
     }

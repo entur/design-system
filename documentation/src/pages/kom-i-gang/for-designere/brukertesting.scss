@@ -1,53 +1,53 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
-@import '~@entur/tokens/dist/semantic.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '~@entur/tokens/dist/semantic.scss' as semantic;
 
 .brukertesting {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
-  row-gap: $space-small;
-  margin-top: $space-large;
-  margin-bottom: $space-extra-large3;
+  row-gap: tokens.$space-small;
+  margin-top: tokens.$space-large;
+  margin-bottom: tokens.$space-extra-large3;
   @include for-desktop {
     grid-template-columns: 1fr 1fr;
-    gap: $space-large;
+    gap: tokens.$space-large;
   }
   .eds-icon {
-    margin-right: $space-extra-small;
+    margin-right: tokens.$space-extra-small;
   }
   &__box {
-    border: $border-widths-medium solid $colors-blues-blue10;
-    padding: $space-extra-large;
-    padding-right: $space-extra-large3;
+    border: tokens.$border-widths-medium solid tokens.$colors-blues-blue10;
+    padding: tokens.$space-extra-large;
+    padding-right: tokens.$space-extra-large3;
     min-height: 10rem;
     .eds-h4 {
-      margin-bottom: $space-small;
+      margin-bottom: tokens.$space-small;
     }
     &--red {
-      border-color: $colors-brand-coral;
+      border-color: tokens.$colors-brand-coral;
     }
     &--mint {
-      border-color: $colors-data-default-jungle;
+      border-color: tokens.$colors-data-default-jungle;
     }
     &--azure {
-      border-color: $colors-data-default-azure;
+      border-color: tokens.$colors-data-default-azure;
     }
     &--orange {
       border-color: #e8734b;
     }
     &--lavender {
-      border-color: $colors-data-default-lavender;
+      border-color: tokens.$colors-data-default-lavender;
     }
     &--green {
-      border-color: $colors-data-default-spring;
+      border-color: tokens.$colors-data-default-spring;
     }
     &--lilac {
-      border-color: $colors-data-default-lilac;
+      border-color: tokens.$colors-data-default-lilac;
     }
   }
   &__verktoy {
-    background-color: $fill-background-tint-neutral;
+    background-color: semantic.$fill-background-tint-neutral;
     padding: 1rem;
   }
 }

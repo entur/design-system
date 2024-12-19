@@ -1,10 +1,9 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .hva-vi-gjor {
   &__goal {
-    border: $border-widths-medium solid var(--designentur-basecard-default-border);
-    padding: $space-extra-large $space-extra-large4;
+    border: tokens.$border-widths-medium solid var(--designentur-basecard-default-border);
+    padding: tokens.$space-extra-large tokens.$space-extra-large4;
     display: flex;
     align-items: center;
     justify-content: center;

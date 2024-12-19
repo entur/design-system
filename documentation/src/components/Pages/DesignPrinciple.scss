@@ -1,19 +1,19 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .design-principle {
   &__container {
     border-radius: 15px;
     background: var(--designentur-basecard-default-fill-tint);
-    padding: $space-large;
+    padding: tokens.$space-large;
   }
   &__number {
-    font-size: $font-sizes-extra-large2;
+    font-size: tokens.$font-sizes-extra-large2;
     color: var(--basecolors-text-subdued);
   }
   &__icon {
     background: var(--basecolors-frame-default);
     border-radius: 50%;
-    font-size: $font-sizes-extra-large4;
+    font-size: tokens.$font-sizes-extra-large4;
     height: 4.5rem;
     width: 4.5rem;
     margin: 0 auto;

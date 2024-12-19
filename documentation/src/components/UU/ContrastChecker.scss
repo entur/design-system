@@ -1,16 +1,16 @@
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .contrast-checker {
   &__container {
-    margin-top: $space-extra-large;
+    margin-top: tokens.$space-extra-large;
   }
 
   &__calculator {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: $space-large;
-    margin-bottom: $space-extra-large4;
+    grid-gap: tokens.$space-large;
+    margin-bottom: tokens.$space-extra-large4;
 
     @include for-large-desktop {
       grid-template-columns: 3fr 1fr;
@@ -18,19 +18,19 @@
   }
 
   &__ratio {
-    border-width: $border-widths-medium;
+    border-width: tokens.$border-widths-medium;
     border-style: solid;
-    padding: $space-extra-large2;
+    padding: tokens.$space-extra-large2;
 
     &-header {
-      font-size: $font-sizes-extra-large2;
+      font-size: tokens.$font-sizes-extra-large2;
       text-align: center;
     }
 
     &-ratio {
-      font-weight: $font-weights-heading;
-      font-size: $font-sizes-extra-large5;
-      line-height: $line-heights-extra-large7;
+      font-weight: tokens.$font-weights-heading;
+      font-size: tokens.$font-sizes-extra-large5;
+      line-height: tokens.$line-heights-extra-large7;
       text-align: center;
     }
   }
@@ -42,7 +42,7 @@
 
 .color-pickers-container {
   display: grid;
-  grid-gap: $space-medium;
+  grid-gap: tokens.$space-medium;
   grid-template-columns: auto 2.75rem auto;
 }
 
@@ -54,19 +54,19 @@
 .contrast-preview {
   &__container {
     display: grid;
-    grid-gap: $space-medium;
+    grid-gap: tokens.$space-medium;
     grid-template-columns: 3fr 1fr;
-    margin-top: $space-large;
+    margin-top: tokens.$space-large;
   }
 
   &__small-text {
-    padding: $space-large;
+    padding: tokens.$space-large;
   }
 
   &__large-text {
-    font-size: $font-sizes-extra-large2;
-    font-weight: $font-weights-heading;
-    padding: $space-large;
+    font-size: tokens.$font-sizes-extra-large2;
+    font-weight: tokens.$font-weights-heading;
+    padding: tokens.$space-large;
   }
 
   &__graphics-object {
@@ -86,21 +86,21 @@
   &__names {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: $space-extra-small;
+    grid-gap: tokens.$space-extra-small;
     border-right: var(--basecolor-stroke-disabled) 1px solid; // TODO switch with neutral when available
-    font-size: $font-sizes-medium;
-    margin-top: $space-large;
-    line-height: $line-heights-medium;
-    padding-right: $space-medium;
-    margin-right: $space-medium;
-    color: $colors-blues-blue40;
+    font-size: tokens.$font-sizes-medium;
+    margin-top: tokens.$space-large;
+    line-height: tokens.$line-heights-medium;
+    padding-right: tokens.$space-medium;
+    margin-right: tokens.$space-medium;
+    color: tokens.$colors-blues-blue40;
     align-items: center;
   }
 
   &__values {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: $space-extra-small;
-    margin-top: $space-large;
+    grid-gap: tokens.$space-extra-small;
+    margin-top: tokens.$space-large;
   }
 }

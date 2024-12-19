@@ -1,9 +1,9 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .props__description > .eds-paragraph {
   margin: 0;
-  font-size: $font-sizes-medium;
-  line-height: $line-heights-medium;
+  font-size: tokens.$font-sizes-medium;
+  line-height: tokens.$line-heights-medium;
 }
 
 .props-table__type {

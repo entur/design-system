@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .playground {
   &__header {
@@ -44,9 +44,9 @@
     }
 
     &-container {
-      border: $border-widths-small solid var(--designentur-playground-border);
+      border: tokens.$border-widths-small solid var(--designentur-playground-border);
       background: var(--designentur-playground-background);
-      border-radius: $border-radiuses-medium;
+      border-radius: tokens.$border-radiuses-medium;
       box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
 
       flex: 1;
@@ -59,14 +59,14 @@
       }
 
       &.eds-contrast {
-        border: $border-widths-small solid var(--basecolors-stroke-accent);
+        border: tokens.$border-widths-small solid var(--basecolors-stroke-accent);
       }
     }
   }
   &__props-selector {
     background-color: var(--designentur-playground-panel);
-    border: $border-widths-small solid var(--designentur-playground-border);
-    border-radius: 0 $border-radiuses-medium $border-radiuses-medium 0;
+    border: tokens.$border-widths-small solid var(--designentur-playground-border);
+    border-radius: 0 tokens.$border-radiuses-medium tokens.$border-radiuses-medium 0;
     padding: 1rem;
     box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
 
@@ -81,7 +81,7 @@
     &-container {
       display: flex;
       align-items: center;
-      gap: $space-default;
+      gap: tokens.$space-default;
     }
   }
 
@@ -113,7 +113,7 @@
   $editor-background: #1e1e1e;
   &__editor {
     position: relative;
-    border-radius: $border-radiuses-medium;
+    border-radius: tokens.$border-radiuses-medium;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 2rem;
@@ -123,8 +123,8 @@
     font-family: monospace;
 
     &:focus-within {
-      outline: $outlines-focus;
-      outline-offset: $outline-offsets-focus;
+      outline: tokens.$outlines-focus;
+      outline-offset: tokens.$outline-offsets-focus;
     }
 
     & .token:last-of-type {
@@ -142,14 +142,14 @@
     }
     &::-webkit-scrollbar-track {
       background-color: $editor-background;
-      border-radius: 0 0 $border-radiuses-medium $border-radiuses-medium;
-      margin-inline: $space-extra-small2;
+      border-radius: 0 0 tokens.$border-radiuses-medium tokens.$border-radiuses-medium;
+      margin-inline: tokens.$space-extra-small2;
     }
     &::-webkit-scrollbar-thumb {
       background-color: var(--scrollbar-color);
       border: solid 0.25rem $editor-background;
       border-radius: 0.5rem;
-      padding-block: $space-extra-small;
+      padding-block: tokens.$space-extra-small;
       &:hover {
         --scrollbar-color: grey;
       }

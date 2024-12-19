@@ -1,12 +1,12 @@
-@use '../../../styles/variables' as *;
-@import '~@entur/tokens/dist/styles.scss';
+@use '../../../styles/variables' as variables;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .mobile-topnav {
   position: absolute;
   width: 100%;
   background: var(--designentur-header-default-fill);
-  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
-  transition: position $timings-medium ease-in-out 0.2s;
+  border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
+  transition: position tokens.$timings-medium ease-in-out 0.2s;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
@@ -23,10 +23,10 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: $font-sizes-extra-large2;
-      padding: $space-extra-small $space-large;
+      font-size: tokens.$font-sizes-extra-large2;
+      padding: tokens.$space-extra-small tokens.$space-large;
       transform: scale(1);
-      transition: transform $timings-medium ease-in-out;
+      transition: transform tokens.$timings-medium ease-in-out;
       &-open {
         //Slide til venstre og opacity
         transform: scale(0);
@@ -37,18 +37,18 @@
         left: 2rem;
       }
       &:focus {
-        outline: $outlines-focus;
-        outline-offset: $outline-offsets-focus;
+        outline: tokens.$outlines-focus;
+        outline-offset: tokens.$outline-offsets-focus;
       }
     }
     &--settings {
       color: inherit;
-      padding: $space-extra-small;
-      font-size: $font-sizes-extra-large2;
+      padding: tokens.$space-extra-small;
+      font-size: tokens.$font-sizes-extra-large2;
       flex-grow: 1;
       &:focus {
         outline: none;
-        box-shadow: $shadows-focus;
+        box-shadow: tokens.$shadows-focus;
       }
     }
   }
@@ -81,7 +81,7 @@
   }
 
   &-item {
-    padding: $space-medium $space-large;
+    padding: tokens.$space-medium tokens.$space-large;
     word-break: keep-all;
     display: flex;
     color: inherit;
@@ -90,7 +90,7 @@
     white-space: nowrap;
     &--active {
       &:after {
-        border-bottom: $border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
+        border-bottom: tokens.$border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
         content: '';
         display: block;
         position: absolute;

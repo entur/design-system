@@ -1,17 +1,17 @@
-@use '../../../styles/variables' as *;
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '../../../styles/variables' as variables;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .top-navigation {
   display: flex;
   align-items: center;
   overflow-x: scroll;
-  border-bottom: $border-widths-default solid var(--designentur-header-default-divider);
+  border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
   width: 100%;
   padding: 1rem 1rem 0rem;
-  transition: margin-left $timings-fast ease-out;
-  height: $navbar-height;
-  z-index: $z-indexes-popover;
+  transition: margin-left tokens.$timings-fast ease-out;
+  height: variables.$navbar-height;
+  z-index: tokens.$z-indexes-popover;
 
   &--frontpage {
     border-bottom: none;
@@ -21,14 +21,14 @@
     top: 0;
     left: 0;
     overflow-x: initial;
-    padding: $space-extra-large2 0 $space-extra-large2 $space-extra-large2;
+    padding: tokens.$space-extra-large2 0 tokens.$space-extra-large2 tokens.$space-extra-large2;
     justify-content: flex-start;
     &__logo {
       margin-right: 3rem;
       &:focus {
         outline: none;
-        box-shadow: $shadows-focus;
-        outline-offset: $outline-offsets-focus;
+        box-shadow: tokens.$shadows-focus;
+        outline-offset: tokens.$outline-offsets-focus;
       }
     }
   }

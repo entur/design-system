@@ -1,8 +1,8 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .divider {
   border: none;
-  margin: $space-extra-large 0;
+  margin: tokens.$space-extra-large 0;
   height: 1px;
   width: 100%;
 }
