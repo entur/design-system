@@ -15,7 +15,7 @@
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",
     "build:componentColors": "tsx src/utils/componentColors/buildVariables.ts",
-    "generate-props": "tsx src/components/Props/generate-props.ts"
+    "generate-props": "tsx src/utils/componentProps/generate-props.ts"
   },
   "dependencies": {
     "@artsy/fresnel": "^1.9.0",

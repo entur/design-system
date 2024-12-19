@@ -58,6 +58,11 @@ function needsUpdate(componentFile: string, jsonFile: string): boolean {
   const componentStats = fs.statSync(componentFile);
   const jsonStats = fs.statSync(jsonFile);
 
+  console.log('Component create time:', componentStats.mtime);
+  console.log('json create time:', jsonStats.mtime);
+  console.log('Should be updated:', componentStats.mtime > jsonStats.mtime);
+  console.log('--');
+
   return componentStats.mtime > jsonStats.mtime; // Return true if component was modified after the JSON file
 }
 
