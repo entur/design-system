@@ -4,6 +4,9 @@
   cursor: pointer;
   font-family: inherit;
   border: none;
-  background-color: white;
-  background-image: linear-gradient(120deg, var(--primary-text-color) 0%, var(--primary-text-color) 100%);
+  background: none;
+  background-image: linear-gradient(120deg, var(--primary-text-color), var(--primary-text-color));
+  background-repeat: no-repeat;
+  background-size: 100% 0.125rem;
+  background-position: 0 100%;
 }
