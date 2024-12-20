@@ -11,7 +11,7 @@ import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types.js';
 import components from './MdxProvider-utils';
-
+import { SkipToContent } from '@entur/a11y';
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -40,33 +40,36 @@ const DocLayout = ({ children }: LayoutProps) => {
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
 
   return (
-    <div className="page">
-      <TopNavigationLayout />
-      <Media greaterThanOrEqual="desktop">
-        <SideNavigation menuItems={menuItems} />
-      </Media>
-      <Media at="mobile">
-        <MobileSideNavigation
-          menuItems={menuItems}
-          openSidebar={openSidebar}
-          setOpenSidebar={setOpenSidebar}
-        />
-      </Media>
+    <>
+      <SkipToContent mainId="site-content">Gå til hovedinnhold</SkipToContent>
+      <div className="page">
+        <TopNavigationLayout />
+        <Media greaterThanOrEqual="desktop">
+          <SideNavigation menuItems={menuItems} />
+        </Media>
+        <Media at="mobile">
+          <MobileSideNavigation
+            menuItems={menuItems}
+            openSidebar={openSidebar}
+            setOpenSidebar={setOpenSidebar}
+          />
+        </Media>
 
-      <div
-        className={classNames('site-content', {
-          'site-content--hidden': openSidebar,
-        })}
-      >
-        <main id="site-content">
-          <MDXProvider components={components as MDXComponents}>
-            {children}
-          </MDXProvider>
-        </main>
-        <TableOfContent />
-        <SiteFooter />
+        <div
+          className={classNames('site-content', {
+            'site-content--hidden': openSidebar,
+          })}
+        >
+          <main id="site-content">
+            <MDXProvider components={components as MDXComponents}>
+              {children}
+            </MDXProvider>
+          </main>
+          <TableOfContent />
+          <SiteFooter />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

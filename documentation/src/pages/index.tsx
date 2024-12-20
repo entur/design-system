@@ -12,13 +12,16 @@ import FrontPageFooter from '@components/Footer/FrontPageFooter';
 import { OverviewCards } from '@components/Cards/FrontPageCards';
 import TopNavigationLayout from '../layouts/TopNavigationLayout';
 import { Media } from '@providers/MediaBreakpoint';
-
+import { SkipToContent } from '@entur/a11y';
 import { SEO } from '@components/seo/SEO';
 
 import './index.scss';
 
 const Index = () => (
   <>
+    <SkipToContent mainId="frontpage-content">
+      Gå til hovedinnhold
+    </SkipToContent>
     <Contrast>
       <TopNavigationLayout />
     </Contrast>
@@ -28,7 +31,7 @@ const Index = () => (
           <div className="content-margin">
             <Media greaterThanOrEqual="desktop" className="front-page__desktop">
               <div style={{ position: 'relative' }}>
-                <div>
+                <div id="frontpage-content">
                   <div style={{ paddingTop: '6rem' }}>
                     <Heading1 style={{ fontWeight: 500 }}>
                       Entur Designsystem
