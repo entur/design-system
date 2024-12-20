@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Location } from '@reach/router';
+import { Location, useLocation } from '@reach/router';
 import { TopNavigationItem } from '@entur/menu';
 import { useContrast } from '@entur/layout';
 import classNames from 'classnames';
@@ -16,9 +16,10 @@ import './TopNavigation.scss';
 const TopNavigation = () => {
   const { colorMode } = useSettings();
   const isContrast = useContrast();
+  const location = useLocation();
 
-  const isFrontpage =
-    typeof window !== 'undefined' && window.location.pathname === '/';
+  const isFrontpage = location.pathname === '/';
+
   return (
     <nav
       className={classNames('top-navigation', {
