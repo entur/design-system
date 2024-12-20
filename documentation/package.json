@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
-    "prebuild": "yarn generate-props",
+    "build": "yarn generate-props & gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",
