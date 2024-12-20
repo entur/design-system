@@ -2,6 +2,7 @@ import { withCustomConfig } from 'react-docgen-typescript';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,59 +50,66 @@ function getAllComponentFiles(
   return arrayOfFiles;
 }
 
-// Check if the JSON file needs to be updated
-function needsUpdate(componentFile: string, jsonFile: string): boolean {
-  if (!fs.existsSync(jsonFile)) {
-    return true; // JSON file doesn't exist, needs to be created
-  }
-
-  const componentStats = fs.statSync(componentFile);
-  const jsonStats = fs.statSync(jsonFile);
-
-  console.log('Component create time:', componentStats.mtime);
-  console.log('json create time:', jsonStats.mtime);
-  console.log('Should be updated:', componentStats.mtime > jsonStats.mtime);
-  console.log('--');
-
-  return componentStats.mtime > jsonStats.mtime; // Return true if component was modified after the JSON file
-}
-
 // Parse and generate JSON for each .tsx file if needed
-function generatePropFilesForComponents(): void {
+function generatePropFiles(): void {
   const componentFiles = getAllComponentFiles(componentsRootDir);
-  let updatedFilesCount = 0;
 
-  console.log(`👩🏼‍🍳 Starting making components-props..`);
-  console.log(`🔎 Found ${componentFiles.length} components`);
+  console.log(`🕵🏻‍♂️ Checking if prop files are out of date …`);
 
   componentFiles.forEach(componentFile => {
-    try {
-      const componentName = path.basename(componentFile, '.tsx');
-      const outputFilePath = path.join(outputDir, `${componentName}.json`);
+    const componentName = path.basename(componentFile, '.tsx');
+    const outputFilePath = path.join(outputDir, `${componentName}.json`);
 
-      if (!needsUpdate(componentFile, outputFilePath)) {
-        return; // Skip this component as it's already up-to-date
-      }
-
-      const propFiles = parser.parse(componentFile);
-
-      // Remove the filePath property from the parsed data
-      propFiles.forEach((file: any) => {
-        delete file.filePath;
-      });
-
-      // Write the updated JSON file
-      fs.writeFileSync(outputFilePath, JSON.stringify(propFiles, null, 2));
-      console.log(`✅ Found changes and updated ${componentName}`);
-      updatedFilesCount++;
-    } catch (error) {
-      console.error(`Failed to extract props for ${componentFile}:`, error);
-    }
+    updatePropsIfComponentIsModified(componentFile, outputFilePath);
   });
+}
 
-  console.log(
-    `Updated props for ${updatedFilesCount} out of ${componentFiles.length} components`,
+// Check if the JSON props file needs to be updated
+async function updatePropsIfComponentIsModified(
+  componentFile: string,
+  jsonFile: string,
+) {
+  function getLastCommitDateForFile(file: string) {
+    return `git log --follow -1 --pretty=format:"%h" --no-patch -- ${file} | xargs git show --no-patch --format=%ci`;
+  }
+
+  await exec(
+    `${getLastCommitDateForFile(componentFile)}`,
+    async function (errorComp, componentLastCommitDate, stderrComp) {
+      await exec(
+        `${getLastCommitDateForFile(jsonFile)}`,
+        function (errorProps, propsLastCommitDate, stderrProps) {
+          if (errorComp || stderrComp || errorProps || stderrProps) return;
+          if (componentLastCommitDate > propsLastCommitDate) {
+            generatePropFileForComponent(componentFile, jsonFile);
+          }
+        },
+      );
+    },
   );
 }
 
-generatePropFilesForComponents();
+function generatePropFileForComponent(
+  componentFile: string,
+  outputFilePath: string,
+): void {
+  try {
+    const componentName = path.basename(componentFile, '.tsx');
+    const propFiles = parser.parse(componentFile);
+
+    // Remove the filePath property from the parsed data
+    propFiles.forEach((file: any) => {
+      delete file.filePath;
+    });
+
+    // Write the updated JSON file
+    fs.writeFileSync(outputFilePath, JSON.stringify(propFiles, null, 2));
+    console.log(
+      `🚧 ${componentName}: Found changes and updated prop file.\n⚠️ This change should be commited to the repo!`,
+    );
+  } catch (error) {
+    console.error(`Failed to extract props for ${componentFile}:`, error);
+  }
+}
+
+generatePropFiles();
