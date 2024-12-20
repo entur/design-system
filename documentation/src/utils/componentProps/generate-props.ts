@@ -2,7 +2,8 @@ import { withCustomConfig } from 'react-docgen-typescript';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
+import util from 'util';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,7 +55,7 @@ function getAllComponentFiles(
 function generatePropFiles(): void {
   const componentFiles = getAllComponentFiles(componentsRootDir);
 
-  console.log(`🕵🏻‍♂️ Checking if prop files are out of date …`);
+  console.log('🕵🏻‍♂️ Checking if prop files are out of date …');
 
   componentFiles.forEach(componentFile => {
     const componentName = path.basename(componentFile, '.tsx');
@@ -64,29 +65,50 @@ function generatePropFiles(): void {
   });
 }
 
+const execFileAsync = util.promisify(execFile);
+
+async function getLastCommitDateForFile(file: string): Promise<string> {
+  // Get the commit hash for the file
+  const { stdout: commitHash } = await execFileAsync('git', [
+    'log',
+    '--follow',
+    '-1',
+    '--pretty=format:%h',
+    '--no-patch',
+    '--',
+    file,
+  ]);
+
+  // Get the commit date using the hash
+  const { stdout: commitDate } = await execFileAsync('git', [
+    'show',
+    '--no-patch',
+    '--format=%ci',
+    commitHash.trim(),
+  ]);
+
+  return commitDate.trim();
+}
+
 // Check if the JSON props file needs to be updated
 async function updatePropsIfComponentIsModified(
   componentFile: string,
   jsonFile: string,
 ) {
-  function getLastCommitDateForFile(file: string) {
-    return `git log --follow -1 --pretty=format:"%h" --no-patch -- ${file} | xargs git show --no-patch --format=%ci`;
-  }
+  try {
+    const componentLastCommitDate = await getLastCommitDateForFile(
+      componentFile,
+    );
+    const propsLastCommitDate = await getLastCommitDateForFile(jsonFile);
 
-  await exec(
-    `${getLastCommitDateForFile(componentFile)}`,
-    async function (errorComp, componentLastCommitDate, stderrComp) {
-      await exec(
-        `${getLastCommitDateForFile(jsonFile)}`,
-        function (errorProps, propsLastCommitDate, stderrProps) {
-          if (errorComp || stderrComp || errorProps || stderrProps) return;
-          if (componentLastCommitDate > propsLastCommitDate) {
-            generatePropFileForComponent(componentFile, jsonFile);
-          }
-        },
-      );
-    },
-  );
+    if (componentLastCommitDate > propsLastCommitDate)
+      generatePropFileForComponent(componentFile, jsonFile);
+  } catch (error) {
+    console.error(
+      `Error checking if prop for ${jsonFile} needs update:`,
+      error,
+    );
+  }
 }
 
 function generatePropFileForComponent(
