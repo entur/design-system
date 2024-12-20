@@ -129,7 +129,7 @@ const Index = () => (
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <StaticImage
                 width={500}
-                src="../media/images/frontpage/kontakt.png"
+                src="../media/images/frontpage/Kontakt.png"
                 alt=""
                 placeholder="none"
               />
