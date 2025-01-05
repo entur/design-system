@@ -1,92 +1,66 @@
 module.exports = {
   components: './src/components.ts',
-  outputPath: './dist',
+  outputPath: './public/playroom',
 
-  // Optional:
-  title: 'TestBench',
+  title: 'Linje lekerom',
+  snippets: './src/snippets.ts',
   frameComponent: './src/FrameComponent.tsx',
-  widths: [1200, 700, 500, 350],
+  widths: [320, 768, 1024],
   port: 9000,
   openBrowser: true,
-  paramType: 'search', // default is 'hash'
-  snippets: './src/snippets.ts',
-  exampleCode: `
-    <div>
-    </div>
-  `,
-  baseUrl: '/',
-  webpackConfig: () => {
-    return {
-      module: {
-        rules: [
-          {
-            oneOf: [
-              {
-                test: /\.(ts|tsx)$/,
-                exclude: /node_modules/,
-                use: {
-                  loader: 'babel-loader',
+  paramType: 'search',
+  baseUrl: '/playroom/',
+  webpackConfig: () => ({
+    module: {
+      rules: [
+        {
+          oneOf: [
+            {
+              test: /\.tsx?$/,
+              use: 'ts-loader',
+              exclude: /node_modules/,
+            },
+            {
+              test: /\.scss$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                {
+                  loader: 'sass-loader',
                   options: {
-                    presets: [
-                      '@babel/preset-env',
-                      '@babel/preset-react',
-                      '@babel/preset-typescript',
-                    ],
-                    plugins: [
-                      '@babel/plugin-proposal-class-properties',
-                      '@babel/plugin-proposal-optional-chaining',
-                      '@babel/plugin-proposal-nullish-coalescing-operator',
-                    ],
+                    sourceMap: true,
+                    api: 'modern-compiler',
                   },
                 },
+              ],
+              sideEffects: true,
+            },
+            {
+              loader: 'file-loader',
+              exclude: [
+                /node_modules\/(?!(@entur.+)\/).*/,
+                /node_modules(\/|\\)(?!(@entur.+)(\/|\\)).*/,
+                /\.(js|mjs|jsx|css|scss|ts|tsx)$/,
+              ],
+              options: {
+                name: 'static/media/[name].[hash:8].[ext]',
               },
-              {
-                test: /\.css$/,
-                include: [
-                  /src\/.*/,
-                  /playroom\/.*/,
-                  /packages\/.*/,
-                  /node_modules\/react-datepicker\/.*/,
-                ],
-                use: ['style-loader', 'css-loader'],
-              },
-
-              {
-                test: /\.scss$/,
-                use: [
-                  'style-loader',
-                  {
-                    loader: 'css-loader',
-                    options: {
-                      importLoaders: 3,
-                      sourceMap: true,
-                    },
-                  },
-                  {
-                    loader: 'sass-loader',
-                    options: {
-                      sourceMap: true,
-                    },
-                  },
-                ],
-                sideEffects: true,
-              },
-              {
-                loader: 'file-loader',
-                exclude: [
-                  /node_modules\/(?!(@entur.+)\/).*/,
-                  /node_modules(\/|\\)(?!(@entur.+)(\/|\\)).*/,
-                  /\.(js|mjs|jsx|css|scss|ts|tsx)$/,
-                ],
-                options: {
-                  name: 'static/media/[name].[hash:8].[ext]',
-                },
-              },
-            ],
-          },
-        ],
-      },
-    };
-  },
-  iframeSandbox: 'allow-scripts allow-forms allow-same-origin',
+            },
+          ],
+        },
+      ],
+    },
+  }),
+  exampleCode: `
+  <Button>
+    Hello World!
+  </Button>
+`,
+  iframeSandbox: 'allow-scripts',
+  defaultVisibleWidths: [
+    // subset of widths to display on first load
+  ],
+  defaultVisibleThemes: [
+    // subset of themes to display on first load
+  ],
 };
