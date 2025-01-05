@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
+
 import classNames from 'classnames';
+
+import {
+  AdvancedProps,
+  useAdvancedPlaygroundCode,
+  wrapCodeInFragmentIfNecessary,
+} from './playground-utils';
+import PropsList from './PropsList';
+import theme from './themeForPlayground';
 
 import { Heading5, Label } from '@entur/typography';
 import { Switch } from '@entur/form';
@@ -10,26 +19,12 @@ import { SecondarySquareButton } from '@entur/button';
 import { BaseExpand } from '@entur/expand';
 import { ConditionalWrapper } from '@entur/utils';
 import { componentColors } from '@entur/tokens';
-import {
-  AdjustmentsIcon,
-  BellIcon,
-  DestinationIcon,
-  SourceCodeIcon,
-} from '@entur/icons';
-
-import {
-  AdvancedProps,
-  useAdvancedPlaygroundCode,
-  wrapCodeInFragmentIfNecessary,
-} from './playground-utils';
-import { PropsList } from './PropsList';
-// @ts-expect-error No types for theme exists
-import theme from './themeForPlayground';
-
+import { SourceCodeIcon } from '@entur/icons';
+import { packages } from './packages-scope';
 import './Playground.scss';
 
 type PlaygroundProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   language?: Language;
   props?: AdvancedProps[];
   style?: React.CSSProperties;
@@ -37,14 +32,12 @@ type PlaygroundProps = {
   defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
   hideContrastOption?: boolean;
-  // These props are injected by MDX
-  __code: string;
-  __scope: Record<string, any>;
+  code: string;
+  scope?: Record<string, any>;
 };
-
-export const Playground: React.FC<PlaygroundProps> = ({
-  __code: codeFromMDXInjection,
-  __scope: scopeFromMDXInjection,
+const Playground: React.FC<PlaygroundProps> = ({
+  code,
+  scope = {},
   language = 'jsx',
   props,
   style,
@@ -54,7 +47,7 @@ export const Playground: React.FC<PlaygroundProps> = ({
   hideContrastOption = false,
 }) => {
   const [isContrast, setContrast] = useState(defaultContrast);
-  const [darkMode, setDarkMode] = useState(defaultDarkMode);
+  const [darkMode, setdarkMode] = useState(defaultDarkMode);
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
 
   const {
@@ -63,10 +56,10 @@ export const Playground: React.FC<PlaygroundProps> = ({
     propsState,
     updatePropState,
     componentName,
-  } = useAdvancedPlaygroundCode(codeFromMDXInjection, props);
+  } = useAdvancedPlaygroundCode(code, props);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggledarkMode = () => {
+    setdarkMode(!darkMode);
   };
 
   const toggleContrast = () => {
@@ -75,33 +68,27 @@ export const Playground: React.FC<PlaygroundProps> = ({
 
   const Element = isContrast ? Contrast : 'div';
 
-  // Icons need to be included in scope to be accessible in LivePreview
-  const icons = { AdjustmentsIcon, BellIcon, DestinationIcon };
-
-  // Different code and scope if props selector panel is available
-  const code = codeWithUpdatedProps;
-  const scope = propsState
-    ? { ...scopeFromMDXInjection, ...icons }
-    : scopeFromMDXInjection;
+  const finalScope = { ...packages, ...scope };
 
   return (
     <LiveProvider
-      code={code}
-      scope={scope}
+      code={codeWithUpdatedProps}
+      scope={finalScope}
       language={language}
       transformCode={wrapCodeInFragmentIfNecessary}
+      // @ts-expect-error No types for theme exists
       theme={theme}
       className="playground"
     >
       <div className="playground__header">
         {!hideContrastOption && (
           <div className="playground__contrast-switch">
-            <Label>Velg color-mode:</Label>
+            <Label>Velg fargemode:</Label>
             <div className="playground__contrast-switch-container">
               <Switch checked={isContrast} onChange={toggleContrast}>
                 Kontrast
               </Switch>
-              <Switch checked={darkMode} onChange={toggleDarkMode}>
+              <Switch checked={darkMode} onChange={toggledarkMode}>
                 Dark
               </Switch>
             </div>
@@ -165,3 +152,4 @@ export const Playground: React.FC<PlaygroundProps> = ({
     </LiveProvider>
   );
 };
+export default Playground;

@@ -5,8 +5,6 @@ warnAboutMissingStyles('dropdown', 'form', 'a11y', 'chip');
 
 export type { NormalizedDropdownItemType, DropdownItemType } from './types';
 
-export * from './deprecated';
-
 export * from './SearchableDropdown';
 export * from './MultiSelect';
 export * from './Dropdown';

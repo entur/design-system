@@ -1,4 +1,4 @@
-import { VariableFormat } from '~/utils/Providers/SettingsContext';
+import { VariableFormat } from '@providers/SettingsContext';
 
 /**
  * Takes a dot notation path and returns it in the preferred format.

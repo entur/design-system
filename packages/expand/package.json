@@ -32,9 +32,9 @@
     "@entur/typography": "^1.8.49",
     "@entur/utils": "^0.12.1",
     "classnames": "^2.3.1",
-    "react-collapse": "^5.1.0"
+    "react-collapse": "5.1.0"
   },
   "devDependencies": {
-    "@types/react-collapse": "^5.0.1"
+    "@types/react-collapse": "5.0.1"
   }
 }
