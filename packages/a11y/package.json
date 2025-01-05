@@ -26,7 +26,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^3.17.3",
-    "@entur/utils": "^0.12.1"
+    "@entur/tokens": "workspace:^",
+    "@entur/utils": "workspace:^"
   }
 }

@@ -2036,29 +2036,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@entur/a11y@npm:^0.2.93, @entur/a11y@workspace:packages/a11y":
+"@entur/a11y@workspace:^, @entur/a11y@workspace:packages/a11y":
   version: 0.0.0-use.local
   resolution: "@entur/a11y@workspace:packages/a11y"
   dependencies:
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   languageName: unknown
   linkType: soft
 
-"@entur/alert@npm:^0.16.22, @entur/alert@workspace:packages/alert":
+"@entur/alert@workspace:^, @entur/alert@workspace:packages/alert":
   version: 0.0.0-use.local
   resolution: "@entur/alert@workspace:packages/alert"
   dependencies:
-    "@entur/button": "npm:^3.2.36"
-    "@entur/expand": "npm:^3.5.25"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/button": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
     copy-text-to-clipboard: "npm:^2.2"
   peerDependencies:
@@ -2067,13 +2067,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/button@npm:^3.2.36, @entur/button@workspace:packages/button":
+"@entur/button@workspace:^, @entur/button@workspace:packages/button":
   version: 0.0.0-use.local
   resolution: "@entur/button@workspace:packages/button"
   dependencies:
-    "@entur/loader": "npm:^0.5.14"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/loader": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2081,15 +2081,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/chip@npm:^0.7.26, @entur/chip@workspace:packages/chip":
+"@entur/chip@workspace:^, @entur/chip@workspace:packages/chip":
   version: 0.0.0-use.local
   resolution: "@entur/chip@workspace:packages/chip"
   dependencies:
-    "@entur/form": "npm:^8.1.8"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/loader": "npm:^0.5.14"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/loader": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2101,28 +2101,28 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@entur/code-playground@workspace:apps/code-playground"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/alert": "npm:^0.16.22"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/chip": "npm:^0.7.26"
-    "@entur/datepicker": "npm:^10.0.11"
-    "@entur/dropdown": "npm:^6.0.12"
-    "@entur/expand": "npm:^3.5.25"
-    "@entur/fileupload": "npm:^0.3.130"
-    "@entur/form": "npm:^8.1.8"
-    "@entur/grid": "npm:^0.3.59"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/loader": "npm:^0.5.14"
-    "@entur/menu": "npm:^5.0.6"
-    "@entur/modal": "npm:^1.7.57"
-    "@entur/tab": "npm:^0.4.76"
-    "@entur/table": "npm:^4.8.25"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/travel": "npm:^6.2.12"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/alert": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/chip": "workspace:^"
+    "@entur/datepicker": "workspace:^"
+    "@entur/dropdown": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/fileupload": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/grid": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/loader": "workspace:^"
+    "@entur/menu": "workspace:^"
+    "@entur/modal": "workspace:^"
+    "@entur/tab": "workspace:^"
+    "@entur/table": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/travel": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     playroom: "npm:0.39.1"
     react: "npm:^17.0.2"
     react-dom: "npm:^17.0.2"
@@ -2132,19 +2132,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/datepicker@npm:^10.0.11, @entur/datepicker@workspace:packages/datepicker":
+"@entur/datepicker@workspace:^, @entur/datepicker@workspace:packages/datepicker":
   version: 0.0.0-use.local
   resolution: "@entur/datepicker@workspace:packages/datepicker"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/form": "npm:^8.1.8"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/modal": "npm:^1.7.57"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/modal": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@floating-ui/react-dom": "npm:^2.1.0"
     "@internationalized/date": "npm:^3.4.0"
     "@react-aria/button": "npm:^3.6.4"
@@ -2166,6 +2166,28 @@ __metadata:
   resolution: "@entur/documentation@workspace:apps/documentation"
   dependencies:
     "@artsy/fresnel": "npm:^1.9.0"
+    "@entur/a11y": "workspace:^"
+    "@entur/alert": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/chip": "workspace:^"
+    "@entur/datepicker": "workspace:^"
+    "@entur/dropdown": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/fileupload": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/grid": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/loader": "workspace:^"
+    "@entur/menu": "workspace:^"
+    "@entur/modal": "workspace:^"
+    "@entur/tab": "workspace:^"
+    "@entur/table": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/travel": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@mdx-js/react": "npm:^3.1.0"
     "@types/node": "npm:^20.11.28"
     "@types/react": "npm:^18.2.66"
@@ -2203,19 +2225,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/dropdown@npm:^6.0.12, @entur/dropdown@workspace:packages/dropdown":
+"@entur/dropdown@workspace:^, @entur/dropdown@workspace:packages/dropdown":
   version: 0.0.0-use.local
   resolution: "@entur/dropdown@workspace:packages/dropdown"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/chip": "npm:^0.7.26"
-    "@entur/form": "npm:^8.1.8"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/loader": "npm:^0.5.14"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/chip": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/loader": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@floating-ui/react-dom": "npm:^2.1.0"
     classnames: "npm:^2.3.1"
     downshift: "npm:^9.0.8"
@@ -2225,14 +2247,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/expand@npm:^3.5.25, @entur/expand@workspace:packages/expand":
+"@entur/expand@workspace:^, @entur/expand@workspace:packages/expand":
   version: 0.0.0-use.local
   resolution: "@entur/expand@workspace:packages/expand"
   dependencies:
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@types/react-collapse": "npm:5.0.1"
     classnames: "npm:^2.3.1"
     react-collapse: "npm:5.1.0"
@@ -2242,16 +2264,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/fileupload@npm:^0.3.130, @entur/fileupload@workspace:packages/fileupload":
+"@entur/fileupload@workspace:^, @entur/fileupload@workspace:packages/fileupload":
   version: 0.0.0-use.local
   resolution: "@entur/fileupload@workspace:packages/fileupload"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
     react-dropzone: "npm:^11.3.4"
   peerDependencies:
@@ -2260,15 +2282,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/form@npm:^8.1.8, @entur/form@workspace:packages/form":
+"@entur/form@workspace:^, @entur/form@workspace:packages/form":
   version: 0.0.0-use.local
   resolution: "@entur/form@workspace:packages/form"
   dependencies:
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2276,12 +2299,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/grid@npm:^0.3.59, @entur/grid@workspace:packages/grid":
+"@entur/grid@workspace:^, @entur/grid@workspace:packages/grid":
   version: 0.0.0-use.local
   resolution: "@entur/grid@workspace:packages/grid"
   dependencies:
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2289,14 +2312,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/icons@npm:^7.5.0, @entur/icons@workspace:packages/icons":
+"@entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@entur/icons@workspace:packages/icons"
   dependencies:
     "@babel/core": "npm:^7.7.7"
     "@babel/preset-env": "npm:^7.7.7"
     "@babel/preset-react": "npm:^7.7.4"
-    "@entur/tokens": "npm:^3.17.3"
+    "@entur/tokens": "workspace:^"
     "@rollup/plugin-babel": "npm:^5.3.1"
     "@rollup/plugin-node-resolve": "npm:^7.0.0"
     "@svgr/core": "npm:^5.0.1"
@@ -2314,14 +2337,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/layout@npm:^2.3.20, @entur/layout@workspace:packages/layout":
+"@entur/layout@workspace:^, @entur/layout@workspace:packages/layout":
   version: 0.0.0-use.local
   resolution: "@entur/layout@workspace:packages/layout"
   dependencies:
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2329,13 +2352,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/loader@npm:^0.5.14, @entur/loader@workspace:packages/loader":
+"@entur/loader@workspace:^, @entur/loader@workspace:packages/loader":
   version: 0.0.0-use.local
   resolution: "@entur/loader@workspace:packages/loader"
   dependencies:
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2343,19 +2366,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/menu@npm:^5.0.6, @entur/menu@workspace:packages/menu":
+"@entur/menu@workspace:^, @entur/menu@workspace:packages/menu":
   version: 0.0.0-use.local
   resolution: "@entur/menu@workspace:packages/menu"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/expand": "npm:^3.5.25"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@floating-ui/react": "npm:^0.26.23"
     classnames: "npm:^2.3.1"
   peerDependencies:
@@ -2364,17 +2387,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/modal@npm:^1.7.57, @entur/modal@workspace:packages/modal":
+"@entur/modal@workspace:^, @entur/modal@workspace:packages/modal":
   version: 0.0.0-use.local
   resolution: "@entur/modal@workspace:packages/modal"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/typography": "npm:^1.8.49"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/typography": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@reach/dialog": "npm:^0.16.0"
     classnames: "npm:^2.3.1"
     react-focus-lock: "npm:^2.9.1"
@@ -2384,12 +2407,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tab@npm:^0.4.76, @entur/tab@workspace:packages/tab":
+"@entur/tab@workspace:^, @entur/tab@workspace:packages/tab":
   version: 0.0.0-use.local
   resolution: "@entur/tab@workspace:packages/tab"
   dependencies:
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@reach/tabs": "npm:^0.15.0"
     classnames: "npm:^2.3.1"
   peerDependencies:
@@ -2398,19 +2421,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/table@npm:^4.8.25, @entur/table@workspace:packages/table":
+"@entur/table@workspace:^, @entur/table@workspace:packages/table":
   version: 0.0.0-use.local
   resolution: "@entur/table@workspace:packages/table"
   dependencies:
-    "@entur/a11y": "npm:^0.2.93"
-    "@entur/button": "npm:^3.2.36"
-    "@entur/expand": "npm:^3.5.25"
-    "@entur/form": "npm:^8.1.8"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/tooltip": "npm:^5.1.4"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/a11y": "workspace:^"
+    "@entur/button": "workspace:^"
+    "@entur/expand": "workspace:^"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/tooltip": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@types/lodash.get": "npm:^4.4.6"
     classnames: "npm:^2.3.1"
     lodash.get: "npm:^4.4.2"
@@ -2420,7 +2443,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tokens@npm:^3.17.3, @entur/tokens@workspace:packages/tokens":
+"@entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:
@@ -2435,15 +2458,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tooltip@npm:^5.1.4, @entur/tooltip@workspace:packages/tooltip":
+"@entur/tooltip@workspace:^, @entur/tooltip@workspace:packages/tooltip":
   version: 0.0.0-use.local
   resolution: "@entur/tooltip@workspace:packages/tooltip"
   dependencies:
-    "@entur/button": "npm:^3.2.36"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/button": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     "@floating-ui/react": "npm:^0.26.24"
     "@floating-ui/react-dom": "npm:^2.1.0"
     classnames: "npm:^2.3.1"
@@ -2453,15 +2476,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/travel@npm:^6.2.12, @entur/travel@workspace:packages/travel":
+"@entur/travel@workspace:^, @entur/travel@workspace:packages/travel":
   version: 0.0.0-use.local
   resolution: "@entur/travel@workspace:packages/travel"
   dependencies:
-    "@entur/form": "npm:^8.1.8"
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/layout": "npm:^2.3.20"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/form": "workspace:^"
+    "@entur/icons": "workspace:^"
+    "@entur/layout": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
   peerDependencies:
     react: ">=16.8.0"
@@ -2469,13 +2492,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/typography@npm:^1.8.49, @entur/typography@workspace:packages/typography":
+"@entur/typography@workspace:^, @entur/typography@workspace:packages/typography":
   version: 0.0.0-use.local
   resolution: "@entur/typography@workspace:packages/typography"
   dependencies:
-    "@entur/icons": "npm:^7.5.0"
-    "@entur/tokens": "npm:^3.17.3"
-    "@entur/utils": "npm:^0.12.1"
+    "@entur/icons": "workspace:^"
+    "@entur/tokens": "workspace:^"
+    "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
     normalize-scss: "npm:^7.0.1"
   peerDependencies:
@@ -2484,7 +2507,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/utils@npm:^0.12.1, @entur/utils@workspace:packages/utils":
+"@entur/utils@workspace:^, @entur/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@entur/utils@workspace:packages/utils"
   dependencies:

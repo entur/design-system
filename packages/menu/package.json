@@ -27,15 +27,15 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.93",
-    "@entur/button": "^3.2.36",
-    "@entur/expand": "^3.5.25",
-    "@entur/icons": "^7.5.0",
-    "@entur/layout": "^2.3.20",
-    "@entur/tokens": "^3.17.3",
-    "@entur/tooltip": "^5.1.4",
-    "@entur/typography": "^1.8.49",
-    "@entur/utils": "^0.12.1",
+    "@entur/a11y": "workspace:^",
+    "@entur/button": "workspace:^",
+    "@entur/expand": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/layout": "workspace:^",
+    "@entur/tokens": "workspace:^",
+    "@entur/tooltip": "workspace:^",
+    "@entur/typography": "workspace:^",
+    "@entur/utils": "workspace:^",
     "@floating-ui/react": "^0.26.23",
     "classnames": "^2.3.1"
   }

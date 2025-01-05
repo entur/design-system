@@ -45,6 +45,6 @@
     "sass": "^1.65.1"
   },
   "dependencies": {
-    "@entur/tokens": "^3.17.3"
+    "@entur/tokens": "workspace:^"
   }
 }
