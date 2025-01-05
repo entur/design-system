@@ -8,6 +8,13 @@ public
 .firebase
 .docz
 .nx
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # dependencies
 node_modules

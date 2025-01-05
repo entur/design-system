@@ -14,13 +14,20 @@ runs:
         # node-version: '16'
         node-version: '18'
 
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+
+    - name: Enable Corepack
+      run: yarn set version berry
+      shell: bash
+
     - name: Cache dependencies
       uses: actions/cache@v4
       with:
-        path: '**/node_modules'
+        path: '.yarn/cache'
         key: ${{ inputs.cache-key }}
 
     - name: Install dependencies
-      # run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
-      run: cd documentation && yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+      run: yarn install --immutable
       shell: bash
