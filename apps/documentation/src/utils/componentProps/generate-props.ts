@@ -68,26 +68,30 @@ function generatePropFiles(): void {
 const execFileAsync = util.promisify(execFile);
 
 async function getLastCommitDateForFile(file: string): Promise<string> {
-  // Get the commit hash for the file
-  const { stdout: commitHash } = await execFileAsync('git', [
-    'log',
-    '--follow',
-    '-1',
-    '--pretty=format:%h',
-    '--no-patch',
-    '--',
-    file,
-  ]);
+  try {
+    // Get the commit hash for the file
+    const { stdout: commitHash } = await execFileAsync('git', [
+      'log',
+      '--follow',
+      '-1',
+      '--pretty=format:%h',
+      '--no-patch',
+      '--',
+      file,
+    ]);
 
-  // Get the commit date using the hash
-  const { stdout: commitDate } = await execFileAsync('git', [
-    'show',
-    '--no-patch',
-    '--format=%ci',
-    commitHash.trim(),
-  ]);
+    // Get the commit date using the hash
+    const { stdout: commitDate } = await execFileAsync('git', [
+      'show',
+      '--no-patch',
+      '--format=%ci',
+      commitHash.trim(),
+    ]);
 
-  return commitDate.trim();
+    return commitDate.trim();
+  } catch {
+    return '';
+  }
 }
 
 // Check if the JSON props file needs to be updated

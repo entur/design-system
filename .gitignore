@@ -1,5 +1,6 @@
 # generated files
 dist
+public
 *.tsbuildinfo
 .rts2_cache
 .rts2_cache_cjs
