@@ -38,5 +38,8 @@
     "@entur/utils": "workspace:^",
     "@floating-ui/react": "^0.26.23",
     "classnames": "^2.3.1"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

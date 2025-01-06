@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "tiny-warning": "^1.0.3"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

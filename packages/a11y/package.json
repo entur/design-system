@@ -28,5 +28,8 @@
   "dependencies": {
     "@entur/tokens": "workspace:^",
     "@entur/utils": "workspace:^"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

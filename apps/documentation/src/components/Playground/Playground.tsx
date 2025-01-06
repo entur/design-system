@@ -21,6 +21,7 @@ import { ConditionalWrapper } from '@entur/utils';
 import { componentColors } from '@entur/tokens';
 import { SourceCodeIcon } from '@entur/icons';
 import { packages } from './packages-scope';
+
 import './Playground.scss';
 
 type PlaygroundProps = {
@@ -76,9 +77,7 @@ const Playground: React.FC<PlaygroundProps> = ({
       scope={finalScope}
       language={language}
       transformCode={wrapCodeInFragmentIfNecessary}
-      // @ts-expect-error No types for theme exists
       theme={theme}
-      className="playground"
     >
       <div className="playground__header">
         {!hideContrastOption && (
@@ -89,7 +88,7 @@ const Playground: React.FC<PlaygroundProps> = ({
                 Kontrast
               </Switch>
               <Switch checked={darkMode} onChange={toggledarkMode}>
-                Dark
+                Mørk
               </Switch>
             </div>
           </div>

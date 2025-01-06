@@ -35,6 +35,7 @@
     "react-collapse": "5.1.0"
   },
   "devDependencies": {
-    "@types/react-collapse": "5.0.1"
+    "@types/react-collapse": "5.0.1",
+    "dts-cli": "2.0.5"
   }
 }

@@ -1,8 +1,6 @@
 import path from 'path';
 import type { GatsbyConfig } from 'gatsby';
 
-console.log('dirname', path.join(__dirname));
-
 const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
@@ -20,7 +18,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: 'gatsby-plugin-sass',
       options: {
         useResolveUrlLoader: true,
         sassOptions: {
@@ -46,15 +44,15 @@ const config: GatsbyConfig = {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
             },
           },
           {
-            resolve: `gatsby-remark-autolink-headers`,
+            resolve: 'gatsby-remark-autolink-headers',
             options: {
-              className: `gatsby-header-links`,
+              className: 'gatsby-header-links',
               icon: false,
             },
           },

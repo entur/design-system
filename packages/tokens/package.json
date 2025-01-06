@@ -28,6 +28,7 @@
     "@types/flat": "^0.0.28",
     "@types/fs-extra": "^8.0.0",
     "case": "^1.6.2",
+    "dts-cli": "2.0.5",
     "fs-extra": "^9.0.0",
     "path": "0.12.7",
     "ts-node": "^8.3.0"
