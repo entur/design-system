@@ -7,11 +7,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    # - name: Use Node.js 16
     - name: Use Node.js 18
       uses: actions/setup-node@v4
       with:
-        # node-version: '16'
         node-version: '18'
 
     - name: Enable Corepack
@@ -25,7 +23,7 @@ runs:
     - name: Cache dependencies
       uses: actions/cache@v4
       with:
-        path: '.yarn/cache'
+        path: '.cache/yarn'
         key: ${{ inputs.cache-key }}
 
     - name: Install dependencies
