@@ -2179,6 +2179,7 @@ __metadata:
     "@types/react-syntax-highlighter": "npm:^15.5.13"
     "@types/wcag-contrast": "npm:^3.0.3"
     classnames: "npm:^2.5.1"
+    copy-text-to-clipboard: "npm:^2.2"
     fast-fuzzy: "npm:^1.12.0"
     gatsby: "npm:^5.14.0"
     gatsby-plugin-image: "npm:^3.14.0"

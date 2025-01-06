@@ -10,13 +10,6 @@ public
 .nx
 .cache
 .pnp.*
-.yarn/*
-.yarn/install-state.gz
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
 
 # dependencies
 node_modules

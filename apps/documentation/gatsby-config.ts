@@ -1,6 +1,8 @@
 import path from 'path';
 import type { GatsbyConfig } from 'gatsby';
 
+console.log('dirname', path.join(__dirname));
+
 const config: GatsbyConfig = {
   graphqlTypegen: {
     typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
@@ -23,7 +25,7 @@ const config: GatsbyConfig = {
         useResolveUrlLoader: true,
         sassOptions: {
           api: 'modern-compiler',
-          includePaths: [path.resolve(__dirname, '../../node_modules')],
+          includePaths: [path.resolve(__dirname, 'node_modules')],
         },
       },
     },
