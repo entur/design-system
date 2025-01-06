@@ -11,7 +11,8 @@ module.exports = {
       sass({
         output: 'dist/styles.css',
         options: {
-          includePaths: ['../../node_modules'],
+          api: 'modern-complier',
+          includePaths: ['node_modules', '../../node_modules'],
         },
         processor: css =>
           postcss([postcssPresetEnv])

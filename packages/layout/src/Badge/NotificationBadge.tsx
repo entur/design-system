@@ -12,7 +12,7 @@ type NotificationBadgeBaseProps = {
   /** Elementet som wrapper badgen
    * @default "span"
    */
-  as?: 'span' | React.ElementType;
+  as?: string | React.ElementType;
   /** Ekstra klassenavn */
   className?: string;
   /** Elementet som badge vil legges relativt til */
@@ -45,7 +45,7 @@ export const NotificationBadge: NotificationBadgeComponent = React.forwardRef(
     props: NotificationBadgeProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
-    const Element: React.ElementType = props.as || defaultElement;
+    const Element = props.as || defaultElement;
     // @ts-expect-error type error due to props not being BadgeOwnProps
     return <Badge as={Element} {...props} ref={ref} type="notification" />;
   },

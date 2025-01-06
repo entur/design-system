@@ -13,7 +13,6 @@ type BaseExpandProps = {
 };
 export const BaseExpand: React.FC<BaseExpandProps> = ({ open, ...rest }) => {
   return (
-    // @ts-expect-error TODO ts-error introduced when merging gatsby5 upgrade
     <UnmountClosed isOpened={open}>
       <div {...rest} />
     </UnmountClosed>
