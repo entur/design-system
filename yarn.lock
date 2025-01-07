@@ -25608,14 +25608,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-sass@npm:1.14.0":
-  version: 1.14.0
-  resolution: "rollup-plugin-sass@npm:1.14.0"
+"rollup-plugin-sass@npm:1.15.0":
+  version: 1.15.0
+  resolution: "rollup-plugin-sass@npm:1.15.0"
   dependencies:
     "@rollup/pluginutils": "npm:^3 || ^4 || ^5"
     resolve: "npm:^1.5.0"
     sass: "npm:^1.7.2"
-  checksum: 10c0/231d08e0a5c453e291b73e322cf176382855f597e41dbbaa1bc65bb480ae9a9fe8b45f611e62103eaada07a72e9ed5a5c9f4653507a9542735a0c6cb68f880b9
+  checksum: 10c0/3cd87e596f7d1769cb3d8cb323e6e8eda42142bcdc98cc1fc6b39898290a781ef452fb936f35d56acda9e8e7a8c4838478ae544aeb52f29648dec0ad3090b242
   languageName: node
   linkType: hard
 
@@ -25773,7 +25773,7 @@ __metadata:
     pretty-quick: "npm:^3.1.1"
     react: "npm:^17.0.2"
     react-dom: "npm:^17.0.2"
-    rollup-plugin-sass: "npm:1.14.0"
+    rollup-plugin-sass: "npm:1.15.0"
     sass: "npm:^1.83.0"
     tslib: "npm:^2.3.1"
     typescript: "npm:^4.9.4"

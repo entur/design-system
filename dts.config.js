@@ -12,12 +12,9 @@ module.exports = {
     config.plugins.unshift(
       sass({
         output: 'dist/styles.css',
-        // Api with rollup-plugin-sass has no effect as of Jan 2025 so legacy-js-api warnings are silenced for now
         api: 'modern',
         options: {
-          includePaths: [path.resolve(__dirname, 'node_modules')],
-          // Remove this when api option works with rollup-plugin-sass
-          silenceDeprecations: ['legacy-js-api'],
+          loadPaths: [path.resolve(__dirname, 'node_modules')],
         },
         processor: css =>
           postcss([postcssPresetEnv])
