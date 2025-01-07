@@ -1,5 +1,5 @@
 import path from 'path';
-import type { GatsbyConfig } from 'gatsby';
+import { GatsbyConfig, graphql } from 'gatsby';
 
 const config: GatsbyConfig = {
   graphqlTypegen: {
@@ -98,6 +98,69 @@ const config: GatsbyConfig = {
         path: './changelogs/',
       },
       __key: 'changelog',
+    },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        // Info about options here: https://www.gatsbyjs.com/plugins/gatsby-plugin-local-search/#gatsby-plugin-local-search
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: {
+          // Info about engineOptions here: https://github.com/nextapps-de/flexsearch?tab=readme-ov-file#index-options
+          tokenize: 'forward',
+          threshold: 2,
+          resolution: 30,
+          depth: 20,
+          document: {
+            id: 'id',
+            index: ['title', 'tags', 'body'],
+            // This is done to add more importance to 'title' and 'tags' in the search
+            field: {
+              title: {
+                weight: 3,
+              },
+              tags: {
+                weight: 2,
+              },
+              body: {
+                weight: 1,
+              },
+            },
+          },
+        },
+        ref: 'id',
+        index: ['title', 'tags', 'body'],
+        store: ['id', 'path', 'title', 'description'],
+        normalizer: ({ data }) =>
+          data.allMdx.nodes.map(node => ({
+            id: node.id,
+            path: node.frontmatter.route,
+            title: node.frontmatter.title,
+            tags: node.frontmatter.tags,
+            description: node.frontmatter.description,
+            body: node.body,
+          })),
+
+        // GraphQL query used to fetch all data for the search index. This is
+        // required.
+        query: `
+          {
+            allMdx {
+              nodes {
+                body
+                id
+                frontmatter {
+                  route
+                  description
+                  npmPackage
+                  title
+                  tags
+                }
+              }
+            }
+          }
+        `,
+      },
     },
   ],
 };
