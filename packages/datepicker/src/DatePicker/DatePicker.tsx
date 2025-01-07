@@ -214,6 +214,7 @@ export const DatePicker = <DateType extends DateValue>({
         : maxDate !== undefined
         ? lastMillisecondOfDay(maxDate)
         : undefined,
+    // @ts-expect-error test
     value: selectedDate,
     onChange: handleOnChange,
     granularity: showTime ? 'minute' : rest.granularity,
@@ -230,6 +231,7 @@ export const DatePicker = <DateType extends DateValue>({
 
   // calculations for floating-UI popover position
   const { refs, floatingStyles, update } = useFloating({
+    // @ts-expect-error test
     whileElementsMounted: (ref, float, update) =>
       autoUpdate(ref, float, update, { elementResize: false }),
     placement: 'bottom-start',

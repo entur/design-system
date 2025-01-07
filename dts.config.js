@@ -14,7 +14,16 @@ module.exports = {
         output: 'dist/styles.css',
         api: 'modern',
         options: {
-          loadPaths: [path.resolve(__dirname, 'node_modules')],
+          loadPaths: [
+            path.resolve(__dirname, 'node_modules'),
+            '../../node_modules',
+            'node_modules',
+          ],
+          includePaths: [
+            path.resolve(__dirname, 'node_modules'),
+            '../../node_modules',
+            'node_modules',
+          ],
         },
         processor: css =>
           postcss([postcssPresetEnv])

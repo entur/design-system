@@ -17,11 +17,11 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn build:js && (yarn build:stylesheets & yarn build:legacy-tokens)  && yarn cleanup-temp-files",
+    "build": "pnpm build:js && (pnpm build:stylesheets & pnpm build:legacy-tokens)  && pnpm cleanup-temp-files",
     "build:legacy-tokens": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-legacy-tokens.ts",
     "build:js": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-objects.ts) && dts build",
     "build:stylesheets": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-stylesheets.ts",
-    "start": "yarn build",
+    "start": "pnpm build",
     "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/data.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
   },
   "devDependencies": {

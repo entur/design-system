@@ -24,6 +24,7 @@ const config: GatsbyConfig = {
         sassOptions: {
           api: 'modern-compiler',
           includePaths: [path.resolve(__dirname, 'node_modules')],
+          loadPaths: [path.resolve(__dirname, 'node_modules')],
         },
       },
     },

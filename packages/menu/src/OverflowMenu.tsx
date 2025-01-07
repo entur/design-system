@@ -124,7 +124,6 @@ export const OverflowMenu = ({
 
   const closeMenuAndReturnFocus = () => {
     setIsOpen(false);
-    // @ts-expect-error the reference element is actually focusable
     refs.reference.current?.focus?.();
   };
 

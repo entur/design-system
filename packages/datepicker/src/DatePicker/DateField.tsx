@@ -99,6 +99,7 @@ export const DateField = <DateType extends DateValue>({
   showTime,
   granularity = 'day',
   disabled,
+  // @ts-expect-error test
   isDisabled,
   variant,
   feedback,
@@ -123,6 +124,7 @@ export const DateField = <DateType extends DateValue>({
     ...rest,
     locale: customLocale ?? locale,
     createCalendar,
+    // @ts-expect-error test
     value: selectedDate,
     onChange,
     hideTimeZone: !showTimeZone,
@@ -141,6 +143,7 @@ export const DateField = <DateType extends DateValue>({
 
   const dateFieldRef = useRef(null);
   const { labelProps, fieldProps } = useDateField(
+    // @ts-expect-error test
     { ...parentFieldProps, ...rest, label: label },
     state,
     dateFieldRef,

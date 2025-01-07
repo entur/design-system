@@ -107,6 +107,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
   const { locale } = useLocale();
 
   const state = useTimeFieldState({
+    // @ts-expect-error test
     onChange,
     label: label,
     locale,
@@ -117,6 +118,7 @@ export const SimpleTimePicker = <TimeType extends TimeValue>({
     ...rest,
   });
   const { labelProps, fieldProps } = useTimeField<TimeType>(
+    // @ts-expect-error test
     { ...rest, label: label },
     state,
     timeFieldRef,

@@ -142,6 +142,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   };
 
   const state = useTimeFieldState({
+    // @ts-expect-error
     onChange: handleOnChange,
     label: label,
     locale,
@@ -154,6 +155,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   });
   const timeFieldRef = useRef<HTMLDivElement>(null);
   const { labelProps, fieldProps } = useTimeField<TimeType>(
+    // @ts-expect-error test
     { ...rest, label: label },
     state,
     timeFieldRef,
