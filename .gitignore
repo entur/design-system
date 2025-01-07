@@ -10,6 +10,7 @@ public
 .nx
 .cache
 .pnp.*
+.yarn
 
 # dependencies
 node_modules
