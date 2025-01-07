@@ -3,11 +3,12 @@
   "include": ["src", "content"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "module": "esnext",
     "baseUrl": ".",
     "paths": {
       "@entur/*": ["../../node_modules/@entur/*/dist"],
-      "~*": ["src/*"],
-      "src/*": ["src/*"]
+      "@components/*": ["src/components/*"],
+      "@providers/*": ["src/providers/*"]
     }
   }
 }

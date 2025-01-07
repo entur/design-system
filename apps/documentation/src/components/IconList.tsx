@@ -1,8 +1,8 @@
 import React from 'react';
+import { ComponentType } from 'react';
 import classNames from 'classnames';
 import copy from 'copy-text-to-clipboard';
 import { Searcher, search } from 'fast-fuzzy';
-
 import { useToast } from '@entur/alert';
 import { IconButton, SecondaryButton } from '@entur/button';
 import {
@@ -25,7 +25,7 @@ import {
   UnorderedList,
 } from '@entur/typography';
 
-import { useGetIcons } from '../gatsby-theme-docz/components/useGetIcons';
+import { useGetIcons } from './useGetIcons';
 
 import './IconList.scss';
 type IconListProps = {
@@ -41,6 +41,10 @@ type IconListItem = {
     [key: string]: React.Component<any, any, any>;
   };
   downloadUrl: string;
+};
+
+const FallbackIcon: ComponentType = () => {
+  return <span>Icon not available</span>;
 };
 
 const ICON_SIZES = [
@@ -99,6 +103,18 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           icon.node.absolutePath.match(/icons\/(.*?)\/[^/]+\.svg/)?.[1] ??
           'None';
         const rootCategory = category.split('/')[1];
+
+        if (!iconComponent) {
+          // Log missing icon
+          console.error(`Icon component "${iconName}" not found.`);
+          return {
+            category: category,
+            rootCategory: rootCategory,
+            name: iconName,
+            component: FallbackIcon,
+            downloadUrl: downloadUrl,
+          } as IconListItem;
+        }
 
         return {
           category: category,

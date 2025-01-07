@@ -27,17 +27,20 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/a11y": "^0.2.93",
-    "@entur/button": "^3.2.36",
-    "@entur/expand": "^3.5.25",
-    "@entur/form": "^8.1.8",
-    "@entur/icons": "^7.5.0",
-    "@entur/layout": "^2.3.20",
-    "@entur/tokens": "^3.17.3",
-    "@entur/tooltip": "^5.1.4",
-    "@entur/utils": "^0.12.1",
+    "@entur/a11y": "workspace:^",
+    "@entur/button": "workspace:^",
+    "@entur/expand": "workspace:^",
+    "@entur/form": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/layout": "workspace:^",
+    "@entur/tokens": "workspace:^",
+    "@entur/tooltip": "workspace:^",
+    "@entur/utils": "workspace:^",
     "@types/lodash.get": "^4.4.6",
     "classnames": "^2.3.1",
     "lodash.get": "^4.4.2"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

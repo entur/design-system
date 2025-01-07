@@ -27,14 +27,17 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/button": "^3.2.36",
-    "@entur/expand": "^3.5.25",
-    "@entur/icons": "^7.5.0",
-    "@entur/tokens": "^3.17.3",
-    "@entur/tooltip": "^5.1.4",
-    "@entur/typography": "^1.8.49",
-    "@entur/utils": "^0.12.1",
+    "@entur/button": "workspace:^",
+    "@entur/expand": "workspace:^",
+    "@entur/icons": "workspace:^",
+    "@entur/tokens": "workspace:^",
+    "@entur/tooltip": "workspace:^",
+    "@entur/typography": "workspace:^",
+    "@entur/utils": "workspace:^",
     "classnames": "^2.3.1",
     "copy-text-to-clipboard": "^2.2"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

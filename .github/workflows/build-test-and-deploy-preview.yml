@@ -12,31 +12,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # build-packages:
-  #   name: Build packages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  build-packages:
+    name: Build packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install and Cache Yarn Dependencies
-  #       uses: ./.github/actions/install-and-cache-dependencies
-  #       with:
-  #         cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-  #     - name: Use Nx cache
-  #       uses: ./.github/actions/use-nx-cache
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
 
-  #     - run: yarn build:packages
+      - run: yarn build:packages
 
-  #     - name: upload artifact
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: package-artifacts
-  #         path: 'packages/**/dist'
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages/**/dist'
 
   build-documentation:
     name: Build documentation
-    # needs: build-packages
+    needs: build-packages
     runs-on:
       group: 'grp-ubuntu-22.04-4core'
     steps:
@@ -47,64 +47,71 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-      # - name: Download package artifacts
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: package-artifacts
-      #     path: 'packages'
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
 
-      # - run: yarn build:documentation:skip-packages-dependency
-      - run: cd documentation && yarn build
+      - name: Cache gatsby
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/documentation/.cache
+            apps/documentation/public
+          key: gatsby-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
+          restore-keys: gatsby-${{ runner.os }} # But since this one always matches we will also always get a cache hit
+
+      - run: yarn build:documentation:skip-packages-dependency
 
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: documentation-site-artifact
-          # path: apps/documentation/dist
-          path: documentation/public
+          path: apps/documentation/public
 
-  # test-packages:
-  #   name: Test packages
-  #   needs: build-packages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  test-packages:
+    name: Test packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install and Cache Yarn Dependencies
-  #       uses: ./.github/actions/install-and-cache-dependencies
-  #       with:
-  #         cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-  #     - name: Download package artifacts
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: package-artifacts
-  #         path: 'packages'
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
 
-  #     - run: yarn test
+      - run: yarn test
 
-  # lint-packages:
-  #   name: Lint packages
-  #   needs: build-packages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  lint-packages:
+    name: Lint packages
+    needs: build-packages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install and Cache Yarn Dependencies
-  #       uses: ./.github/actions/install-and-cache-dependencies
-  #       with:
-  #         cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
-  #     - name: Use Nx cache
-  #       uses: ./.github/actions/use-nx-cache
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
 
-  #     - name: Download package artifacts
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: package-artifacts
-  #         path: 'packages'
+      - name: Download package artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: package-artifacts
+          path: 'packages'
 
-  #     - run: yarn lint
+      - run: yarn lint
 
   deploy-documentation-to-preview-channel:
     needs: build-documentation
@@ -113,7 +120,5 @@ jobs:
       gcp_project_id: entur-design-system
       environment: prd
       build_artifact_name: documentation-site-artifact
-      # build_artifact_path: 'apps/documentation/dist'
-      build_artifact_path: 'documentation/public'
-      # entry_point: 'apps/documentation'
-      entry_point: 'documentation'
+      build_artifact_path: 'apps/documentation/public'
+      entry_point: 'apps/documentation'

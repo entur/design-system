@@ -1,17 +1,17 @@
 @use '@entur/tokens/dist/semantic.scss' as semantic;
-@import '~@entur/tokens/dist/styles.scss';
-@import '~@entur/utils/dist/breakpoints.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .token {
   &-content {
-    margin-top: $space-small;
+    margin-top: tokens.$space-small;
 
     &__grid-item {
       display: flex;
-      gap: $space-extra-small;
+      gap: tokens.$space-extra-small;
       height: 3rem;
       align-items: flex-start;
-      margin-bottom: $space-medium;
+      margin-bottom: tokens.$space-medium;
 
       @include for-large-desktop {
         margin: 0;
@@ -28,7 +28,7 @@
       &--primitive {
         display: flex;
         align-items: center;
-        gap: $space-extra-small;
+        gap: tokens.$space-extra-small;
         height: 2rem;
         margin-top: 0;
       }
@@ -62,7 +62,7 @@
       font-weight: 500;
       font-size: 0.875rem;
       line-height: 20px;
-      gap: $space-extra-small2;
+      gap: tokens.$space-extra-small2;
       width: 100%;
       @include for-large-desktop {
         min-width: 145px;
@@ -74,9 +74,9 @@
         align-items: center;
         flex-direction: row-reverse;
         justify-content: space-between;
-        gap: $space-extra-small;
+        gap: tokens.$space-extra-small;
         height: 2rem;
-        margin-left: $space-small;
+        margin-left: tokens.$space-small;
         width: 100%;
         @include for-large-desktop {
           justify-content: space-around;
@@ -107,13 +107,13 @@
 .token-table {
   &__grid {
     h3 {
-      margin-bottom: $space-extra-small;
+      margin-bottom: tokens.$space-extra-small;
       &:first-letter {
         text-transform: uppercase;
       }
     }
     h4 {
-      margin-bottom: $space-small;
+      margin-bottom: tokens.$space-small;
 
       &:first-letter {
         text-transform: uppercase;
@@ -126,7 +126,7 @@
     }
   }
   &-content {
-    margin-top: $space-small;
+    margin-top: tokens.$space-small;
 
     &--dark-bg {
       background-color: semantic.$fill-background-standard-dark;
@@ -137,26 +137,26 @@
     }
     &--multi-columns {
       display: grid;
-      gap: $space-medium;
-      margin-bottom: $space-medium;
-      padding: $space-medium;
+      gap: tokens.$space-medium;
+      margin-bottom: tokens.$space-medium;
+      padding: tokens.$space-medium;
 
       @include for-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 2rem;
-        gap: $space-large;
+        gap: tokens.$space-large;
       }
       @include for-large-desktop {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin-bottom: $space-extra-large;
-        gap: $space-large;
+        margin-bottom: tokens.$space-extra-large;
+        gap: tokens.$space-large;
       }
     }
   }
   // edit eds-table
   .eds-table {
-    margin-bottom: $space-extra-large;
+    margin-bottom: tokens.$space-extra-large;
   }
 }

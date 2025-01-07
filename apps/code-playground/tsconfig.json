@@ -1,11 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src", "../../packages/*/src"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@entur/*": ["../../packages/*/dist"]
-    }
+    },
+    "declaration": false
   }
 }
