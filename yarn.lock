@@ -2111,10 +2111,12 @@ __metadata:
     "@entur/travel": "workspace:^"
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
+    css-loader: "npm:^6.7.2"
     playroom: "npm:0.39.1"
     react: "npm:^17.0.2"
     react-dom: "npm:^17.0.2"
     sass-loader: "npm:^16.0.4"
+    style-loader: "npm:^2.0.0"
     ts-loader: "npm:^9.5.1"
     typescript: "npm:^4.9.4"
   languageName: unknown
@@ -2141,6 +2143,7 @@ __metadata:
     "@react-aria/i18n": "npm:^3.8.1"
     "@react-stately/calendar": "npm:^3.6.0"
     "@react-stately/datepicker": "npm:^3.11.0"
+    "@react-types/datepicker": "npm:^3.9.0"
     classnames: "npm:^2.3.1"
     dts-cli: "npm:2.0.5"
     react-focus-lock: "npm:^2.9.1"
@@ -2177,10 +2180,11 @@ __metadata:
     "@entur/travel": "workspace:^"
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
+    "@internationalized/date": "npm:^3.4.0"
     "@mdx-js/react": "npm:^3.1.0"
     "@types/node": "npm:^20.11.28"
     "@types/react": "npm:^18.2.66"
-    "@types/react-dom": "npm:^18.2.22"
+    "@types/react-dom": "npm:^18.2.21"
     "@types/react-syntax-highlighter": "npm:^15.5.13"
     "@types/wcag-contrast": "npm:^3.0.3"
     classnames: "npm:^2.5.1"
@@ -2199,6 +2203,7 @@ __metadata:
     gatsby-transformer-json: "npm:^5.14.0"
     gatsby-transformer-remark: "npm:^6.14.0"
     gatsby-transformer-sharp: "npm:^5.14.0"
+    hex-rgb: "npm:^4.3.0"
     markdown-to-jsx: "npm:^7.7.1"
     posthog-js: "npm:^1.167.1"
     react: "npm:^18.2.0"
@@ -2207,6 +2212,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-live: "npm:^4.1.8"
     react-syntax-highlighter: "npm:^15.6.1"
+    resolve-url-loader: "npm:^3.1.5"
     sass: "npm:^1.83.0"
     ts-node: "npm:^10.9.2"
     tsx: "npm:^4.19.1"
@@ -7161,7 +7167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.9, @types/react-dom@npm:^18.2.22":
+"@types/react-dom@npm:^18.0.9, @types/react-dom@npm:^18.2.21":
   version: 18.3.5
   resolution: "@types/react-dom@npm:18.3.5"
   peerDependencies:

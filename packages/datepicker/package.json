@@ -48,6 +48,7 @@
     "react-focus-lock": "^2.9.1"
   },
   "devDependencies": {
+    "@react-types/datepicker": "^3.9.0",
     "dts-cli": "2.0.5"
   }
 }
