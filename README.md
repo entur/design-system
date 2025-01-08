@@ -162,11 +162,9 @@ $ git reset --hard HEAD~1 && git push --force-with-lease
 
 ## Using the documentation site
 
-The documentation is built useing [Docz](https://www.docz.site/) which is an extension of Gatsby. This package is, however, unfortunately been abandoned and is no longer maintained by the creator.
-This means that the documentation site has some old dependencies which leads to suboptimal performance. We plan on migrating away from Docz but due to the sheer size of this task we have not yet been
-able to prioritize it.
+The documentation is built using [Gatsby](https://www.gatsbyjs.com/).
 
-The content of the various documentation pages can be found in the `content` folder under `apps/documentation`. Each page is placed in folders based on which part of the page it belongs to, and each of the files is in the `MDX` format. Read more about MDX on [MDX's pages](https://mdxjs.com/).
+The content of the various documentation pages can be found in the `pages` folder under `apps/documentation/src`. Each page is placed in folders based on which part of the page it belongs to, and each of the files is in the `MDX` format. Read more about MDX on [MDX's pages](https://mdxjs.com/).
 
 For the component documentation, an attempt has been made to standardise the appearance and structure of each page. Feel free to copy an existing file if you are adding a new page.
 
@@ -186,15 +184,12 @@ npmPackage: name of the npm package (only relevant for components pages)
 tags: searchable, words (only relevant for components page)
 ```
 
-There are a couple of others too (`index`, `frontpage` etc), but you probably never need to worry about them. When in doubt, take a look at the source code.
+There are a couple of others too, but you probably never need to worry about them. When in doubt, take a look at the source code.
 
 ### Components and utils for the documentation page
 
 If you need to change something on the documentation page itself, or create some special components to document something, then the code for this should be under `apps/documentation/src`. This could be code for live demonstration of Designsystem components, utils, page structure (header and footer) etc.
 
-The folder contains three folders:
-
-- `gatsby-theme-docz` contains top-level components and code that makes calls to external services.
 - `utils` contains utilities that are used across the page
 - `components` contains a number of reusable internal documentation page components. These are used both in the actual page structure and as helper components in documentation, e.g. Playground.
 

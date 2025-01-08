@@ -6,7 +6,6 @@ public
 .rts2_cache_cjs
 .rts2_cache_esm
 .firebase
-.docz
 .nx
 .cache
 .pnp.*
