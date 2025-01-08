@@ -14,6 +14,7 @@ import {
   SettingsProvider,
   MediaContextProvider,
   AnalyticsContext,
+  ColorsProvider,
 } from './src/providers';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
@@ -25,7 +26,9 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
         <PostHogProvider client={posthog}>
           <AnalyticsProvider>
             <ToastProvider>
-              <MediaContextProvider>{element}</MediaContextProvider>
+              <ColorsProvider>
+                <MediaContextProvider>{element}</MediaContextProvider>
+              </ColorsProvider>
             </ToastProvider>
           </AnalyticsProvider>
         </PostHogProvider>
