@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
+import { useLocation } from '@reach/router';
 import classNames from 'classnames';
 
 import './SearchBar.scss';
@@ -23,6 +24,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const previousFocusRef = React.useRef<HTMLElement>();
+  const location = useLocation();
+
+  // Reset searchText when the URL changes
+  React.useEffect(() => {
+    onSearchTextChange('');
+  }, [location.pathname, onSearchTextChange]);
+
   // This little trick lets the user tap '/' to focus the search field
   React.useEffect(() => {
     function handleKeyUp(e: KeyboardEvent) {
@@ -59,12 +67,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className={classNames('searchbar-wrapper', className)}>
       <TextField
+        key={location.pathname}
         prepend={<SearchIcon aria-hidden="true" />}
         label="Søk …"
         value={searchText}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           onSearchTextChange(e.target.value);
-          console.log('change', e);
         }}
         width="fluid"
         ref={inputRef}
