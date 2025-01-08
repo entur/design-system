@@ -128,10 +128,13 @@ function generatePropFileForComponent(
       delete file.filePath;
     });
 
+    // Normalize the JSON output with a final newline
+    const normalizedJson = JSON.stringify(propFiles, null, 2) + '\n';
+
     // Write the updated JSON file
-    fs.writeFileSync(outputFilePath, JSON.stringify(propFiles, null, 2));
+    fs.writeFileSync(outputFilePath, normalizedJson, { encoding: 'utf8' });
     console.log(
-      `🚧 ${componentName}: Found changes and updated prop file.\n⚠️ This change should be commited to the repo!`,
+      `🚧 ${componentName}: Found changes and updated prop file.\n⚠️ This change should be committed to the repo!`,
     );
   } catch (error) {
     console.error(`Failed to extract props for ${componentFile}:`, error);
