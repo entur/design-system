@@ -2512,7 +2512,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
     dts-cli: "npm:2.0.5"
-    normalize-scss: "npm:^7.0.1"
+    normalize-scss: "npm:^8.0.0"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
@@ -21476,10 +21476,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-scss@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "normalize-scss@npm:7.0.1"
-  checksum: 10c0/7e242f92f2f295a6525464bd377ccb497ea7a7cbbc4b459c7d37db4f1d69b1e36ba5f38a3106c4e12e5adfba5c6c44def521bc2222349dfe7370fb73c41e94bf
+"normalize-scss@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "normalize-scss@npm:8.0.0"
+  checksum: 10c0/a0b429574f047f28c2b4ed3c6b23e78183f6567a27ef6351f5939f22a8fa6f2452134e0cb254fa1078c962016bc2e2dfec4042c338ea86dc9de8fa96bbe460b9
   languageName: node
   linkType: hard
 
