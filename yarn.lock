@@ -2235,9 +2235,10 @@ __metadata:
     copy-text-to-clipboard: "npm:^2.2"
     fast-fuzzy: "npm:^1.12.0"
     firebase-tools: "npm:^13.29.1"
-    gatsby: "npm:^5.14.0"
-    gatsby-plugin-image: "npm:^3.14.0"
-    gatsby-plugin-mdx: "npm:^5.14.0"
+    gatsby: "npm:5.14.1"
+    gatsby-plugin-image: "npm:3.14.0"
+    gatsby-plugin-local-search: "npm:2.0.1"
+    gatsby-plugin-mdx: "npm:5.14.0"
     gatsby-plugin-root-import: "npm:^2.0.9"
     gatsby-plugin-sass: "npm:6.14.0"
     gatsby-plugin-sharp: "npm:5.14.0"
@@ -15126,6 +15127,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"flexsearch@npm:^0.6.22, flexsearch@npm:^0.6.32":
+  version: 0.6.32
+  resolution: "flexsearch@npm:0.6.32"
+  checksum: 10c0/f033fba51568bcd4f8fc0588cd457a0af15b48dfcdf1128341b0af19949ba957ada2ff2b39bb28a5a11df0dda8e73ca6fb7518d06c42f8fd8adc1679b93d0d41
+  languageName: node
+  linkType: hard
+
 "fn.name@npm:1.x.x":
   version: 1.1.0
   resolution: "fn.name@npm:1.1.0"
@@ -20870,6 +20878,13 @@ __metadata:
     is-number: "npm:^2.1.0"
     through2: "npm:^2.0.1"
   checksum: 10c0/eea1ebfaa501258403ceb8b9cc19598a8c0d0adcc976bb679151b9c3d2d8860e209c0ae3f308821420ae709f27ff46a03c7f6e29eb3c48b9a157dd5ae43028dc
+  languageName: node
+  linkType: hard
+
+"lunr@npm:^2.3.8":
+  version: 2.3.9
+  resolution: "lunr@npm:2.3.9"
+  checksum: 10c0/77d7dbb4fbd602aac161e2b50887d8eda28c0fa3b799159cee380fbb311f1e614219126ecbbd2c3a9c685f1720a8109b3c1ca85cc893c39b6c9cc6a62a1d8a8b
   languageName: node
   linkType: hard
 

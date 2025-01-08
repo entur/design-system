@@ -1,6 +1,6 @@
 @use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as *;
 
 .top-navigation {
   display: flex;
@@ -16,6 +16,11 @@
   &--frontpage {
     border-bottom: none;
   }
+
+  .searchmodal__button {
+    margin-left: auto;
+  }
+
   @include for-desktop {
     position: fixed;
     top: 0;

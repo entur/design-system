@@ -11,7 +11,6 @@ removeToc: false
 import { data, space } from '@entur/tokens';
 import { graphql } from "gatsby"
 import { SEO } from '@components/seo/SEO';
-import { Search } from '@components/Search';
 
 export const query = graphql`
   query pageQuery {
@@ -52,8 +51,6 @@ export const Head = ( props ) => {
   style={{ marginBottom: space.extraLarge3 }}
   preset="full-width-image"
 />
-
-<Search />
 
 Målet med vår identitet er å sikre et helhetlig uttrykk på tvers av alle kanaler. Hvert eneste uttak 
 vi skaper med Entur som avsender bidrar til den overordnede merkevaren vår og hvordan vi blir oppfattet. 

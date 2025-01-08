@@ -130,7 +130,7 @@ const config: GatsbyConfig = {
         },
         ref: 'id',
         index: ['title', 'tags', 'body'],
-        store: ['id', 'path', 'title', 'description'],
+        store: ['id', 'path', 'title', 'description', 'npmPackage'],
         normalizer: ({ data }) =>
           data.allMdx.nodes.map(node => ({
             id: node.id,
@@ -139,6 +139,7 @@ const config: GatsbyConfig = {
             tags: node.frontmatter.tags,
             description: node.frontmatter.description,
             body: node.body,
+            npmPackage: node.frontmatter.npmPackage,
           })),
 
         // GraphQL query used to fetch all data for the search index. This is
