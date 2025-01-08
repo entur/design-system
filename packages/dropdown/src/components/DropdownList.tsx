@@ -176,7 +176,14 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                   'eds-dropdown__list__item--selected':
                     !isMultiselect && isItemSelected(item),
                 })}
-                key={item?.label + item?.value}
+                key={
+                  item?.label +
+                  item?.value +
+                  (
+                    item?.icons?.map(icon => icon.displayName ?? icon.name) ??
+                    ''
+                  ).toString()
+                }
                 {...getItemProps({
                   // @ts-expect-error Since getItemProps expects the same item type
                   // here as items, it throws error when selectAllItem is a string.
