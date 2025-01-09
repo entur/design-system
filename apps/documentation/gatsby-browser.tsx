@@ -58,7 +58,7 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   );
   if (props.location.pathname === '/') return <>{children}</>;
   if (element.type.is404) {
-    return <>{children}</>; // Do not wrap 404 pages
+    return <DocLayout {...props}>{children}</DocLayout>;
   }
   return <DocLayout {...props}>{children}</DocLayout>;
 };
