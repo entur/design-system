@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-RC.0](https://github.com/entur/design-system/compare/@entur/documentation@4.1.3...@entur/documentation@1.1.0-RC.0) (2025-01-09)
+
+### Bug Fixes
+
+- **docs:** fix liten uu-feil ([a4bf1ac](https://github.com/entur/design-system/commit/a4bf1ac38d85734053a13e9d5c950331458f45eb))
+- **website:** top navigation layout shift on open search ([f53c873](https://github.com/entur/design-system/commit/f53c873d69fa9180f2a056086425b73f31b92ede))
+
+### Features
+
+- **website:** add search functionality ([d91dfd7](https://github.com/entur/design-system/commit/d91dfd7e0f2ff736f2f6cc7229f957c06b265855))
+- **website:** add styling to search component ([47e640b](https://github.com/entur/design-system/commit/47e640b63291ae1bed98103fb7ac657de49bbacb))
+
 ## [4.1.3](https://github.com/entur/design-system/compare/@entur/documentation@4.1.2...@entur/documentation@4.1.3) (2024-12-06)
 
 **Note:** Version bump only for package @entur/documentation

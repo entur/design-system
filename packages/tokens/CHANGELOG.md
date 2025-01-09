@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.4-RC.0](https://github.com/entur/design-system/compare/@entur/tokens@3.17.3...@entur/tokens@3.17.4-RC.0) (2025-01-09)
+
+**Note:** Version bump only for package @entur/tokens
+
 ## [3.17.3](https://github.com/entur/design-system/compare/@entur/tokens@3.17.2...@entur/tokens@3.17.3) (2024-11-12)
 
 **Note:** Version bump only for package @entur/tokens

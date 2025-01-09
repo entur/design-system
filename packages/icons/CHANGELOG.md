@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.1-RC.0](https://github.com/entur/design-system/compare/@entur/icons@7.5.0...@entur/icons@7.5.1-RC.0) (2025-01-09)
+
+**Note:** Version bump only for package @entur/icons
+
 # [7.5.0](https://github.com/entur/design-system/compare/@entur/icons@7.4.3...@entur/icons@7.5.0) (2024-11-20)
 
 ### Features

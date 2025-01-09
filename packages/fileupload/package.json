@@ -1,6 +1,6 @@
 {
   "name": "@entur/fileupload",
-  "version": "0.3.130",
+  "version": "0.3.131-RC.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/fileupload.esm.js",
