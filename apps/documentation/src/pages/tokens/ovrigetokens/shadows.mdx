@@ -1,0 +1,43 @@
+---
+title: Shadows
+description: Shadows brukes til å definere skyggeeffekter i CSS, som legger til dybde og dimensjon på elementer.
+route: /tokens/ovrigetokens/shadows
+parent: Tokens
+menu: Øvrige tokens
+order: 8
+---
+
+import { TokenTable } from '@components/TokensTable/TokenTable';
+import { colors, borderWidths, space } from '@entur/tokens';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+
+```css
+@use '@entur/tokens/dist/styles.scss';
+
+.card:hover {
+    box-shadow: $shadows-card-shadow-hover;
+}
+```
+
+## Shadows
+
+<TokenTable
+  tokenKey="shadows"
+  example={({ value }) => (
+    <div
+      style={{
+        border: `${borderWidths.default}px solid ${colors.misc.black}`,
+        boxShadow: value,
+        width: space.extraLarge,
+        height: space.extraLarge,
+      }}
+    />
+  )}
+/>

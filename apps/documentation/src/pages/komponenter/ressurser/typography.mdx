@@ -1,0 +1,236 @@
+---
+title: Typography
+description: Oversikt over Entur sine typografiske komponenter
+route: /komponenter/ressurser/typography
+parent: Komponenter
+menu: Ressurser
+npmPackage: typography
+tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link, sitat, blockquote
+---
+
+import {
+  SubLabel,
+  SmallText,
+  Blockquote,
+  BlockquoteFooter,
+} from '@entur/typography';
+import { Link } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+## Kom i gang
+
+<LinkText as={Link} to="/identitet/verktoykassen/typografi">Retningslinjer for bruk av typografi</LinkText>{' '}
+står beskrevet under Visuell identitet.
+
+Det er definert en typografisk skala, hvor vi bruker ulike fontstørrelser for å skape typografisk hierarki i teksten. Dette er den typografiske skalaen for løpende brødtekst og titler, navngitt etter “heading” nummerering i synkende skala der øverste nivå er H1, deretter H2, H3 osv.
+
+Tabellen viser hvilke størrelser og linjeavstander vi skal bruke når vi designer for web. Ved å kombinere ulike fontstørrelser på en god måte kan vi skape et tydelig hierarki og en struktur som gjør det enklere for leseren å forstå og navigere seg gjennom tekstene våre.
+
+**Tekstavstand:**
+
+Tekstavstanden skal kunne overstyres for å gjøre teksten lettere å lese. Suksesskriterium for tekstavstand er følgende:
+
+- Linjehøyde (linjeavstand) angis til minst 1,5 ganger skriftstørrelsen.
+- Avstand etter avsnitt angis til minst 2 ganger skriftstørrelsen.
+- Avstanden mellom bokstaver i blokker av tekst (sperring) angis til minst 0,12 ganger skriftstørrelsen.
+- Avstanden mellom ord angis til minst 0,16 ganger skriftstørrelsen.
+
+## Varianter
+
+### Overskrifter
+
+Vi har egne komponenter for hver overskriftstype - en for hvert av de 6 nivåene vi støtter.
+
+```jsx
+  <Heading1>Overskrift nivå 1</Heading1>
+  <Heading2>Overskrift nivå 2</Heading2>
+  <Heading3>Overskrift nivå 3</Heading3>
+  <Heading4>Overskrift nivå 4</Heading4>
+  <Heading5>Overskrift nivå 5</Heading5>
+  <Heading6>Overskrift nivå 6</Heading6>
+```
+
+### Ingress
+
+Ingressen er et kort avsnitt som normalt kommer etter tittelen på en side.
+
+```jsx
+  <LeadParagraph>Entur gjør det enklere å reise kollektivt</LeadParagraph>
+```
+
+### Vanlig tekst
+
+Vi har tre nivåer med tekst - "paragraph", "sub paragraph" og "small text".
+
+```jsx
+  <Paragraph>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </Paragraph>
+  <SubParagraph>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </SubParagraph>
+  <SmallText>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </SmallText>
+```
+
+### Label-tekst
+
+Vi har to nivåer med "label"-tekst - "label" og "sub label".
+
+```jsx
+  <Label>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </Label>
+  <br />
+  <SubLabel>
+    Entur leverer tjenester som gjør det enkelt å reise på tvers av alle
+    kollektivselskaper i Norge.
+  </SubLabel>
+```
+
+### Lister
+
+Du har to forskjellige listetyper - usortert og nummerert.
+
+```jsx
+  <Paragraph>
+    Usorterte lister er fine for å summere opp en rekke punkter der rekkefølgen
+    ikke er så viktig
+  </Paragraph>
+  <UnorderedList>
+    <ListItem>Du kan bruke dem til å summere opp hva kunden har kjøpt</ListItem>
+    <ListItem>Du kan liste opp hovedtrekk i en kjøpskontrakt</ListItem>
+    <ListItem>
+      Du kan gjerne skrive lengre punkter om du vil, men det er ofte lettere å
+      lese korte og konsise punkter enn lange og detaljrike tekster.
+    </ListItem>
+  </UnorderedList>
+  <Paragraph>
+    Nummererte lister er flotte når du har en rekke punker du vil fremheve
+    rekkefølgen på.
+  </Paragraph>
+  <NumberedList>
+    <ListItem title="Først bør du huske på å bruke title-propen">
+      Da får du en fin fet overskrift på punktet ditt
+    </ListItem>
+    <ListItem title="For det andre bør du ha gode overskrifter">
+      Dette er forferdelige eksempler, så gjør en mye bedre jobb enn det vi har
+      gjort her.
+    </ListItem>
+  </NumberedList>
+```
+
+### Blockquote
+
+```jsx
+  <Blockquote cite="">
+    Entur gjør det enklere å reise kollektivt
+    <BlockquoteFooter>Ola Nordmann, Entur</BlockquoteFooter>
+  </Blockquote>
+```
+
+### Link
+
+```jsx
+  <Link href="https://entur.no/">Reiseplanleggeren til Entur</Link>
+```
+
+## CSS properties
+
+Vi eksponerer noen CSS-properties fra denne pakken, som kan brukes på tvers av andre komponenter. Disse er:
+
+```css
+--primary-background-color;
+--primary-text-color;
+--primary-label-color;
+```
+
+De vil bli dokumentert bedre etterhvert, men vil være de aktuelle hovedfargene for gitt tema og modus.
+
+## Props
+
+### Heading1-6
+
+<ImportStatement imports="Heading1, Heading2, Heading3, Heading4, Heading5, Heading6" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Heading1" />
+
+### LeadParagraph
+
+<ImportStatement imports="LeadParagraph" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="LeadParagraph" />
+
+### Paragraph
+
+<ImportStatement imports="Paragraph" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Paragraph" />
+
+### SubParagraph
+
+<ImportStatement imports="SubParagraph" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SubParagraph" />
+
+### SmallText
+
+<ImportStatement imports="SmallText" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SmallText" />
+
+### Label
+
+<ImportStatement imports="Label" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Label" />
+
+### SubLabel
+
+<ImportStatement imports="SubLabel" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SubLabel" />
+
+### StrongText
+
+<ImportStatement imports="StrongText" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="StrongText" />
+
+### EmphasizedText
+
+<ImportStatement imports="EmphasizedText" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="EmphasizedText" />
+
+### Link
+
+<ImportStatement imports="Link" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Link" />
+
+### PreformattedText
+
+<ImportStatement imports="PreformattedText" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="PreformattedText" />
+
+### CodeText
+
+<ImportStatement imports="CodeText" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="CodeText" />
+
+### UnorderedList
+
+<ImportStatement imports="UnorderedList" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="UnorderedList" />
+
+### NumberedList
+
+<ImportStatement imports="NumberedList" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="NumberedList" />
+
+### ListItem
+
+<ImportStatement imports="ListItem" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ListItem" />

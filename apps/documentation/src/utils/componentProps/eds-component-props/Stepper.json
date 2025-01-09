@@ -1,0 +1,172 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Stepper",
+    "methods": [],
+    "props": {
+      "steps": {
+        "defaultValue": null,
+        "description": "Liste med steg-navn i rekkefølge.",
+        "name": "steps",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "activeIndex": {
+        "defaultValue": null,
+        "description": "Det nåværende steget. 0-indeksert",
+        "name": "activeIndex",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "number"
+        }
+      },
+      "interactive": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om stepperen skal være et interaktivt-navigasjonselement eller ikke",
+        "name": "interactive",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onStepClick": {
+        "defaultValue": null,
+        "description": "Kalles med indeksen til det klikkede steget.\nFungerer kun hvis Stepper-en er interaktiv",
+        "name": "onStepClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((index: number) => void) | undefined"
+        }
+      },
+      "showStepperIndex": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Om stepper skal vise indeksering av hvilket trinn man er på",
+        "name": "showStepperIndex",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn.",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelStep": {
+        "defaultValue": {
+          "value": "Steg"
+        },
+        "description": "Skjermlesertekst for ordet 'steg' som i '_steg_ 1 av 3'",
+        "name": "ariaLabelStep",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelOf": {
+        "defaultValue": {
+          "value": "av"
+        },
+        "description": "Skjermlesertekst for ordet 'av' som i 'steg 1 _av_ 3'\n@defaul 'av'",
+        "name": "ariaLabelOf",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelCompleted": {
+        "defaultValue": {
+          "value": "fullført"
+        },
+        "description": "Skjermlesertekst for ordet fullført",
+        "name": "ariaLabelCompleted",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelSummary": {
+        "defaultValue": {
+          "value": "`Stegindikator med ${steps.length} steg, du er på steg ${\n    activeIndex + 1\n  } ${steps[activeIndex]},`"
+        },
+        "description": "Skjermlesertekst for oppsummering av hele stepper-en",
+        "name": "ariaLabelSummary",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/Stepper.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

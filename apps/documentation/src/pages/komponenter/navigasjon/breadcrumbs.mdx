@@ -1,0 +1,60 @@
+---
+title: Breadcrumbs
+description: Breadcrumbs er en navigasjonskomponent som viser hvor man er i navigasjonshierarkiet, og hvordan man navigerer seg tilbake.
+route: /komponenter/navigasjon/breadcrumbs
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: brødsmuler, sidenavigasjon
+---
+
+import { BreadcrumbNavigation, BreadcrumbItem } from '@entur/menu';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <BreadcrumbNavigation>
+    <BreadcrumbItem as={Link} to="/">
+      Hjem
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter">
+      Komponenter
+    </BreadcrumbItem>
+    <BreadcrumbItem as={Link} to="/komponenter/navigasjon/breadcrumbs">
+      Breadcrumbs
+    </BreadcrumbItem>
+  </BreadcrumbNavigation>
+</div>
+```
+
+## Varianter
+
+### BreadcrumbNavigation
+
+`<BreadcrumbNavigation />` er en wrapper-komponent som brukes rundt `<BreadcrumbItem />`-komponenter for å lage en komplett brødsmulesti.
+
+Merk at du kun kan sende inn `<BreadcrumbItem />`s som `children` til denne komponenten for at den skal fungere som forventet.
+
+`<BreadcrumbItem />` lager en lenke i brødsmulestien. Du sender inn navnet på siden som `children`, og lenken som `href`. For å fungere som forventet må de wrappes inne i en `<BreadcrumbNavigation />`-komponent.
+
+## Retningslinjer
+
+Breadcrumbs er en navigasjonskomponent som viser hvor man er i navigasjonshierarkiet. Bruk breadcrumbs når applikasjonen din har flere nivåer i navigasjonshierarkiet. Med denne komponenten kan du hjelpe brukerne med å navigere raskt mellom disse nivåene. Breadcrumbs er ikke nødvendig hvis applikasjonen din kun har ett navigasjonsnivå.
+
+## Props
+
+### BreadcrumbNavigation
+
+<ImportStatement imports="BreadcrumbNavigation" packageName={props.pageContext.frontmatter.npmPackage}/>
+<Props componentName="BreadcrumbNavigation" />
+
+### BreadcrumbItem
+
+<ImportStatement imports="BreadcrumbItem" packageName={props.pageContext.frontmatter.npmPackage}/>
+<Props componentName="BreadcrumbItem" />

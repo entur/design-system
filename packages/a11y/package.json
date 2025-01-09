@@ -1,6 +1,6 @@
 {
   "name": "@entur/a11y",
-  "version": "0.2.93",
+  "version": "0.2.94-RC.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/a11y.esm.js",
@@ -26,7 +26,10 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@entur/tokens": "^3.17.3",
-    "@entur/utils": "^0.12.1"
+    "@entur/tokens": "workspace:^",
+    "@entur/utils": "workspace:^"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

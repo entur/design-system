@@ -1,0 +1,46 @@
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+
+.front-page {
+  &-footer {
+    background: var(--designentur-footer-default-fill);
+    &__mobile-item {
+      @include breakpoint.for-desktop {
+        display: none;
+      }
+    }
+    &__lead {
+      margin: 0 !important;
+      @include breakpoint.for-desktop {
+        width: 69%;
+      }
+    }
+
+    &__grid-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      @include breakpoint.for-desktop {
+        padding-top: 4.5rem;
+        padding-bottom: 2.5rem;
+      }
+      .eds-grid__container {
+        gap: 2rem;
+        @include breakpoint.for-desktop;
+      }
+    }
+    &__link {
+      margin-bottom: 1rem;
+    }
+    &__entur-banner {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1328px;
+      margin: 0 auto;
+      border-top: 1px solid var(--designentur-footer-default-divider);
+      padding: 1rem 1.5rem;
+    }
+  }
+}

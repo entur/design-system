@@ -1,0 +1,29 @@
+---
+title: Tokens
+description: Designsystemet er et system for å opprettholde frontend kode og visuell konsistens. Det inneholder alt som er felles på tvers av team og produkter og som gir verdi å dele i Entur.
+route: /tokens
+parent: tokens
+npmPackage: tokens
+tags: tokens, farger, colors, spacing, space, border, bredder
+hide: true
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader>Designtokens er vårt felles designspråk satt i system - bindeleddet mellom
+alle flater.</PageHeader>
+
+Ved bruk av pakken _@entur/tokens_ så har man tilgang til alle gjenbrukbare verdier som kan brukes for å designe sider og komponenter for å følge Entur sin visuelle identitet.
+Disse kan aksesseres enten ved CSS, SASS, LESS eller Javscript.
+
+## Hva er tokens?
+
+Tokens i et designsystem er nøkkelverdier som representerer farger, typografi, spacing, skriftstørrelser osv. De er grunnleggende byggeklosser som brukes til å definere og vedlikeholde design på tvers av produkter.
+
+Å ha et sett med tokens gir flere fordeler. For det første muliggjør det konsistens, ved å sørge for at de samme designelementene brukes konsekvent overalt i et produkt. Dette skaper en helhetlig opplevelse for brukerne. Videre forenkler tokens vedlikeholdet, da endringer bare trenger å gjøres på ett sted, og de blir automatisk oppdatert over hele systemet. Dette sparer tid og reduserer risikoen for feil.
+
+Kort sagt, tokens er en nødvendig del av et designsystem for å oppnå konsistent design og effektivt vedlikehold av designelementer på tvers av et produkt eller en plattform.

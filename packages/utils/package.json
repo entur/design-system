@@ -1,6 +1,6 @@
 {
   "name": "@entur/utils",
-  "version": "0.12.1",
+  "version": "0.12.2-RC.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/utils.esm.js",
@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "tiny-warning": "^1.0.3"
+  },
+  "devDependencies": {
+    "dts-cli": "2.0.5"
   }
 }

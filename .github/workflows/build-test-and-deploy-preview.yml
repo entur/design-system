@@ -53,13 +53,22 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
+      - name: Cache gatsby
+        uses: actions/cache@v4
+        with:
+          path: |
+            apps/documentation/.cache
+            apps/documentation/public
+          key: gatsby-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
+          restore-keys: gatsby-${{ runner.os }} # But since this one always matches we will also always get a cache hit
+
       - run: yarn build:documentation:skip-packages-dependency
 
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: documentation-site-artifact
-          path: apps/documentation/dist
+          path: apps/documentation/public
 
   test-packages:
     name: Test packages
@@ -111,5 +120,5 @@ jobs:
       gcp_project_id: entur-design-system
       environment: prd
       build_artifact_name: documentation-site-artifact
-      build_artifact_path: 'apps/documentation/dist'
+      build_artifact_path: 'apps/documentation/public'
       entry_point: 'apps/documentation'

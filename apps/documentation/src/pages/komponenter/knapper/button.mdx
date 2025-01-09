@@ -1,0 +1,251 @@
+---
+title: Button
+description: Knapper lar brukerne gjøre handlinger og ta valg med et klikk.
+route: /komponenter/knapper/button
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+tags: knapp, default button, large button, primary, secondary, tertiary, primær, sekundær, tertiær
+---
+
+import {
+  Button,
+  TertiaryButton,
+  SuccessButton,
+  NegativeButton,
+  ButtonGroup,
+} from '@entur/button';
+import { SEO } from '@components/seo/SEO';
+import { SmallExpandableAlertBox } from '@entur/alert';
+import ComponentRuler from '@components/Common/ComponentRuler';
+import { RefreshIcon, AddIcon, ForwardIcon } from '@entur/icons';
+import { standardknapper } from '@data/props/button-props';
+import { graphql } from 'gatsby';
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/knapper"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground props={standardknapper} code={`<Button></Button>`} />
+
+## Varianter
+
+<SmallExpandableAlertBox
+  variant="warning"
+  title="Tertiary button er deprekert!"
+>
+  Tertiærknappen er deprektert til fordel for SecondaryButton i size="small".
+  Tertiærknappen er fortsatt tilgjengelgi i @entur/button, men vil på sikt bli
+  fjernet. Vi jobber også med å se på behovet for en ny knappetype som kan
+  brukes i tilfeller der man trenger en knapp som hierakrisk ligger mellom
+  IconButton og SecondaryButton.
+</SmallExpandableAlertBox>
+
+### Success (Svært høyt prioritert):
+
+Indikerer en vellykket eller positiv handling. Brukes som “call to action” for svært høyt prioriterte handlinger. Hovedregelen her er kun én action knapp per side. Knappen kan brukes for handlinger som f.eks Betal, Godkjenn osv.
+
+### Primary (Høy prioritet):
+
+Brukes kun til primær handlinger som har høyt prioritert på en side. Det bør ikke være mer enn én slik knapp per side eller visning. Kan brukes for handlinger som f.eks Lagre, Send, Gå videre osv.
+
+### Secondary (Middels prioritet):
+
+Subtil variant som brukes til å indikere en sekundær handling som komplimenterer en primær handling. Middels prioriterte handlinger og dersom man ikke ønsker at den skal være i fokus eller for å redusere visuell støy når det er mange handlinger av like stor prioritet på siden.
+
+### Negative
+
+Indikerer en fare eller potensielt negativ handling. Brukes kun for å advare brukeren mot handlinger som kan føre til negative konsekvenser som f.eks Slett, Fjern, Avbryt osv. Slike handlinger må alltid bekreftes.
+
+### Størrelser
+
+Standardstørrelsen på våre knappene er “medium”. Trenger man en knapp som tar mer fokus kan man bruke "large" med en større høyde.
+Hvis man ønsker en knapp med mindre fokus eller som tar mindre plass kan man bruke size="small".
+
+<ComponentRuler.Wrapper direction="vertical">
+  <ComponentRuler
+    xName="Min-bredde"
+    xNumber="5.75rem"
+    yName="Høyde"
+    yNumber="2rem"
+  >
+    <PrimaryButton size="small">Liten</PrimaryButton>
+  </ComponentRuler>
+  <ComponentRuler
+    xName="Min-bredde"
+    xNumber="9.5rem"
+    yName="Høyde"
+    yNumber="3rem"
+  >
+    <PrimaryButton>Vanlig</PrimaryButton>
+  </ComponentRuler>
+  <ComponentRuler
+    xName="Min-bredde"
+    xNumber="11.75rem"
+    yName="Høyde"
+    yNumber="3.75rem"
+  >
+    <PrimaryButton size="large">Stor</PrimaryButton>
+  </ComponentRuler>
+</ComponentRuler.Wrapper>
+
+
+### Knapper i gruppe
+
+Om du skal ha flere knapper ved siden av hverandre, bør du wrappe dem i en `<ButtonGroup />`. Dette gir deg riktig avstand mellom knappene.
+
+```jsx
+  <ButtonGroup>
+    <SecondaryButton>
+      <AddIcon /> Legg til kunde
+    </SecondaryButton>
+    <SuccessButton>
+      Gå videre <ForwardIcon />
+    </SuccessButton>
+  </ButtonGroup>
+```
+
+### Knapp med ikon og tekst
+
+Når navngivingen på knappen ikke er tydelig nok, kan man vurdere å bruke
+ikoner i knapper for å kommunisere tydeligere hva knappen gjør. Ikoner er
+alltid sammen med en tekst.
+
+```jsx
+  <ButtonGroup>
+    <SecondaryButton>
+      <AddIcon /> Legg til kunde
+    </SecondaryButton>
+  </ButtonGroup>
+```
+
+## Retningslinjer
+
+Kort oppsummert: Unngå inaktive knapper så godt det lar seg gjøre. Les mer om hvorfor under [universell utforming](/komponenter/knapper/button#universell-utforming).
+
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "ButtonDo").childImageSharp.gatsbyImageData}
+>
+    <ul>
+      <li>
+        Aktiv knapp som validerer (når man klikker på den) erstatter bruk av
+        disabled (inaktiv) knapp
+      </li>
+      <li>
+        Validering av påkrevde felter skal skje underveis i skjema, men først
+        når man går ut av inputfeltet
+      </li>
+      <li>
+        Hvis man ikke går inn i feltet vil validering først komme når man
+        validerer siden (ved f.eks å klikke “lagre” eller lignende). Det gjelder
+        også for felter som validerer mot baksystemer
+      </li>
+    </ul>
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" imgSource={props.data.imagefiles.images.find(image => image.name === "ButtonDont").childImageSharp.gatsbyImageData}>
+    <ul>
+      <li>
+        Inaktive knapper bør unngås
+      </li>
+      <li>
+        Når du ved et uhell klikker på dem, får du ingen konkret tilbakemelding
+      </li>
+      <li>
+        Brukeren har vanskeligheter med å forstå hva som er meningen med knappen eller hvorfor
+        den ikke er klikkbar.
+      </li>
+    </ul>
+  </DoDontCard>
+</DoDontGroup>
+
+### Universell utforming
+
+Det er flere ting å tenke på ved bruk av knapper med tanke på universell utforming:
+
+- Knapper må ha tilgjengelig navn (f.eks. via aria-label, aria-labelledby eller synlig tekst).
+- Knapper uten tekst (for eksempel ikonknapper) bør bruke en aria-label for å beskrive funksjonen.
+- Gi tilstrekkelig avstand mellom knapper for å unngå utilsiktede klikk.
+- Sørg for at knappene skiller seg tydelig fra andre elementer på siden.
+
+#### Disabled state
+Knapper må ha en klar og forståelig hensikt, og det bør være åpenbart hva som skjer når brukeren klikker på dem.
+Derfor anbefaler vi å unngå `disabled` på knapper så langt det lar seg gjøre.
+Dette fordi `disabled` kan bryte WCAG-reglene:
+
+- **Manglende tilbakemelding.** Deaktiverte knapper er ofte fullstendig inaktive og gir ingen respons når brukeren interagerer med dem. Dette kan føre til forvirring blant brukere som ikke forstår hvorfor knappen ikke virker. Det kan også føre til at brukere av skjermlesere ikke får en indikasjon på hvorfor knappen er inaktiv.
+
+- **Manglende tilgjengelighet for hjelpemiddelteknologi.**
+Deaktiverte knapper kan bli hoppet over av hjelpemiddelteknologi som skjermlesere, fordi slike knapper vanligvis fjernes fra fokusrekkefølgen. Dette betyr at brukere som navigerer med tastatur eller skjermlesere, kanskje aldri oppdager at knappen eksisterer.
+
+- **Dynamisk oppdatering av status.**
+Hvis en knapp aktiveres eller deaktiveres basert på brukerens handlinger, må disse endringene kommuniseres effektivt til brukeren. Mange implementasjoner av deaktiverte knapper informerer ikke brukere om statusendringen, noe som skaper trøbbel for personer som navigerer med skjermlesere eller andre hjelpemidler.
+
+- **Forvirrende designmønstre.**
+Brukere forstår ofte ikke hvorfor en deaktivert knapp ikke kan brukes, spesielt hvis det ikke finnes tydelig informasjon om hva som må gjøres for å aktivere den. Dette kan føre til frustrasjon, spesielt for brukere med kognitive eller læringsrelaterte utfordringer.
+
+#### Dersom du likevel trenger å bruke deaktivert knapp
+
+- **Bruk tydelig hjelpetekst.**
+Forklar på forhånd hva som må gjøres for å aktivere knappen. Dette kan gjøres gjennom visuelle hjelpemidler eller tekst nær knappen. Og/eller `aria-label` for teknologiske hjelpemidler.
+
+- **Oppretthold kontrast.**
+Selv om knappen ikke er interaktiv, bør den ha tilstrekkelig kontrast til å være synlig for alle brukere. Bruk alternative visuelle signaler som ikke senker kontrasten, som et ikon eller en stilendring som fortsatt oppfyller kontrastkravene.
+
+- **Vis alltid knappen som klikkbar.**
+Gjør knappen klikkbar, men gi tilbakemelding når den ikke kan utføre en handling, for eksempel via en alert eller melding som forklarer hvorfor handlingen ikke er mulig.
+
+**Kilder:**
+- [3.3.1 Identifikasjon av feil](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116)
+- [4.1.2: Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+- [1.3.1: Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+- [4.1.3: Statusmeldinger](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+
+## Props
+
+### PrimaryButton
+
+<ImportStatement imports="PrimaryButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="PrimaryButton" />
+
+### SecondaryButton
+
+<ImportStatement imports="SecondaryButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SecondaryButton" />
+
+### SuccessButton
+
+<ImportStatement imports="SuccessButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SuccessButton" />
+
+### NegativeButton
+
+<ImportStatement imports="NegativeButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="NegativeButton" />
+
+### Button
+
+<ImportStatement imports="Button" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Button" />
+
+
+### ButtonGroup
+
+<ImportStatement imports="ButtonGroup" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="ButtonGroup" />

@@ -1,0 +1,128 @@
+---
+title: Dark mode
+description: Fargetokens gjør det mulig å implementere en strukturert dark mode for en sømløs overgang mellom lys og mørk modus i både Figma og kode.
+route: /tokens/fargetokens/darkmode
+parent: Tokens
+menu: Fargetokens
+order: 3
+---
+
+import { graphql } from 'gatsby'
+import { SEO } from '@components/seo/SEO';
+import darkmodedemo from '@media/images/tokens/darkmodedemo.gif'
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query darkmode {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/tokens"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+
+Både de vanlige fargene og kontrastfargene finnes i light mode(lys modus). I praksis er vanlige farger samlet under kategorien «Standard», mens kontrastfarger er samlet under kategorien «Contrast» innenfor light mode. Begge kategorier har like dark mode-farger, slik at de har en én mot én-mapping.
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "lightDarkmodeContrast").childImageSharp.gatsbyImageData}
+  alt=""
+  preset="full-width-image"
+  className="darkmode__image"
+/>
+
+<Heading4 as="h2">Eksempel på komponent</Heading4>
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "componentExample").childImageSharp.gatsbyImageData}
+  alt="eksempel på dark-mode, contrast og light"
+  preset="full-width-image"
+  className="darkmode__image"
+  style={{ marginBottom: '-8px', marginTop: '8px' }}
+/>
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "componentExampleDark").childImageSharp.gatsbyImageData}
+  alt=""
+  preset="full-width-image"
+  className="darkmode__image"
+/>
+
+<Heading4 as="h2">Eksempel på illustrasjon</Heading4>
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "illustrationExample").childImageSharp.gatsbyImageData}
+  alt="eksempel på illustrasjoner i ulike modes"
+  preset="full-width-image"
+  className="darkmode__image"
+  style={{ marginBottom: '-8px', marginTop: '8px' }}
+/>
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "illustrationExampleDark").childImageSharp.gatsbyImageData}
+  preset="full-width-image"
+  className="darkmode__image"
+/>
+
+<Heading4 as="h2">Eksempel på Entur-app</Heading4>
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "lightdarkmode").childImageSharp.gatsbyImageData}
+  preset="full-width-image"
+  className="darkmode__image"
+  style={{ marginTop: '8px' }}
+  alt=""
+/>
+
+## Bruk i Figma
+Her er et eksempel på hvordan Dark mode-farger kan implementeres med automatisk lys/mørk fargebytting.
+
+<BaseCardDesignEntur title="Eksempel aktivere automatisk dark mode i Figma" subText="Ved å lage et «frame» som inneholder designløsningen, og deretter slå på alle fargetokens til «dark» som eksempelet viser, kan automatisk fargebytting bli aktivert. Dette gjør det mulig å flytte designløsningen mellom lys og mørk bakgrunn med automatisk fargebytting.">
+  <img
+  src={darkmodedemo}
+  alt="eksempel på darkmode i Enturappen"
+  className="designentur-base-card__image"
+/>
+</BaseCardDesignEntur>
+
+## Bruk i kode
+
+Alle designsystemets komponenter fra komponentbiblioteket bruker fargetokens som støtter light, dark og contrast.
+
+For å aktivere dark-mode på designsystemets komponenter kan du inkludere attributtet data-color-mode på html-elementet. Dette attributtet vil stå som en indikator for hvilken mode som skal aktiveres, om det er light eller dark.
+
+```html
+<html data-color-mode="dark">
+<html data-color-mode="light">
+```
+
+For å bytte mellom light- og dark-modus, trenger du en måte å endre verdien til data-color-mode-attributtet dynamisk. Dette er avhengig av ditt valg av rammeverk eller bibliotek.
+
+Om deler av din løsning ikke bruker designsystemets komponenter og du ønsker å støtte darkmode kan du bruke tokens fra `base.css` , `base`-stilsettet støtter dark-mode. Sjekk ut [oversikt over base-tokens](/tokens/fargetokens/oversikt-farger#base). 
+Hvis `base` ikke dekker ditt behov kan du lage et eget internt stilsett, for eksempel:
+
+```scss
+/* Eksempel intern styles.scss */
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+
+/* Stiler for light-modus */
+[data-color-mode='light'],
+:root {
+  --my-background-color: semantic.$fill-background-standard-colorless;
+}
+/* Stiler for dark-modus */
+[data-color-mode='dark'] {
+  --my-background-color: semantic.$fill-background-standard-dark;
+}
+```

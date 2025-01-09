@@ -1,0 +1,106 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+.contrast-checker {
+  &__container {
+    margin-top: tokens.$space-extra-large;
+  }
+
+  &__calculator {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: tokens.$space-large;
+    margin-bottom: tokens.$space-extra-large4;
+
+    @include for-large-desktop {
+      grid-template-columns: 3fr 1fr;
+    }
+  }
+
+  &__ratio {
+    border-width: tokens.$border-widths-medium;
+    border-style: solid;
+    padding: tokens.$space-extra-large2;
+
+    &-header {
+      font-size: tokens.$font-sizes-extra-large2;
+      text-align: center;
+    }
+
+    &-ratio {
+      font-weight: tokens.$font-weights-heading;
+      font-size: tokens.$font-sizes-extra-large5;
+      line-height: tokens.$line-heights-extra-large7;
+      text-align: center;
+    }
+  }
+}
+
+.color-picker__switch-button {
+  align-self: start;
+}
+
+.color-pickers-container {
+  display: grid;
+  grid-gap: tokens.$space-medium;
+  grid-template-columns: auto 2.75rem auto;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.contrast-preview {
+  &__container {
+    display: grid;
+    grid-gap: tokens.$space-medium;
+    grid-template-columns: 3fr 1fr;
+    margin-top: tokens.$space-large;
+  }
+
+  &__small-text {
+    padding: tokens.$space-large;
+  }
+
+  &__large-text {
+    font-size: tokens.$font-sizes-extra-large2;
+    font-weight: tokens.$font-weights-heading;
+    padding: tokens.$space-large;
+  }
+
+  &__graphics-object {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.125rem;
+    font-size: 3.75rem;
+  }
+}
+
+.color-values {
+  &__wrapper {
+    display: flex;
+  }
+
+  &__names {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: tokens.$space-extra-small;
+    border-right: var(--basecolor-stroke-disabled) 1px solid; // TODO switch with neutral when available
+    font-size: tokens.$font-sizes-medium;
+    margin-top: tokens.$space-large;
+    line-height: tokens.$line-heights-medium;
+    padding-right: tokens.$space-medium;
+    margin-right: tokens.$space-medium;
+    color: tokens.$colors-blues-blue40;
+    align-items: center;
+  }
+
+  &__values {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: tokens.$space-extra-small;
+    margin-top: tokens.$space-large;
+  }
+}

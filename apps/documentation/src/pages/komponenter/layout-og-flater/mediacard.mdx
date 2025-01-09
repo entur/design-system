@@ -1,0 +1,69 @@
+---
+title: MediaCard
+description: MediaCard er en skyggefull boks som gir et kort sammendrag av innnhold og som støtter video, bilde eller grafikk for å forsterke innholdet.
+parent: Komponenter
+route: /komponenter/layout-og-flater/mediacard
+menu: Layout & Flater
+npmPackage: layout
+tags: media, richmedia, rich media, kort, card, navigasjon
+---
+
+import { MediaCard } from '@entur/layout';
+import { DesktopIcon } from '@entur/icons';
+import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
+import mediacard from '../../../media/images/komponenter/layout/MediaCard.png';
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/layout"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground code={`<MediaCard
+    title="Hva gjør Entur?"
+    description="Entur eier og styrer salgssystemet for togbilletter og samler data om kollektivtrafikken i Norge, slik at det blir enklere å velge en bærekraftig reise."
+    href="https://www.entur.no"
+    style={{ width: '31rem' }}
+  >
+  <img
+    src={mediacard}
+    alt="Buss som kjører over bro i fjelllandskap"
+    style={{ width: '31rem' }}
+  />
+  </MediaCard>`}
+  scope={{mediacard}}
+  />
+
+## Retningslinjer
+
+Card Media er en skyggefull boks som viser innhold og handling om et emne.
+I motsetnings til et vanlig Card, kan Card Media inneholde video, bilde og grafikk for å forsterke innholdet.
+Card Media gir et kort sammendrag av innholdet, og lenker videre til en ny side med ytterligere detaljer.
+Den skal være enkel å skanne etter relevant informasjon.
+
+Card Media kan for eksempel brukes som navigasjon til en artikkel eller bloggpost.
+Komponenten skal ha en beskrivende tekst under tittelen.
+Teksten bør være kort og konsis, på max 3 linjer.
+
+## Props 
+
+### MediaCard
+
+<ImportStatement imports="MediaCard" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="MediaCard" />

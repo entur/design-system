@@ -1,0 +1,148 @@
+---
+title: Icon button
+description: Ikonknapper har bare et ikon uten label og lar brukerne gjøre handlinger og ta valg med et enkelt klikk.
+route: /komponenter/knapper/icon-button
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+tags: ikonknapp, ikon
+---
+
+import { SEO } from '@components/seo/SEO';
+import { IconButton } from '@entur/button';
+import {
+  AddIcon,
+  VerticalDotsIcon,
+  MenuIcon,
+  EditIcon,
+  CloseIcon,
+} from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+<div
+  style={{
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '2rem',
+    paddingBottom: '2rem',
+  }}
+>
+  <Tooltip aria-hidden placement="bottom" content="Legg til">
+    <IconButton aria-label="Legg til">
+      <AddIcon />
+    </IconButton>
+  </Tooltip>
+  <Tooltip aria-hidden placement="bottom" content="Meny">
+    <IconButton aria-label="Meny">
+      <MenuIcon />
+    </IconButton>
+  </Tooltip>
+  <Tooltip aria-hidden placement="bottom" content="Rediger">
+    <IconButton aria-label="Rediger">
+      <EditIcon />
+    </IconButton>
+  </Tooltip>
+  <Tooltip aria-hidden placement="bottom" content="Lukk">
+    <IconButton aria-label="Lukk">
+      <CloseIcon />
+    </IconButton>
+  </Tooltip>
+</div>
+```
+
+## Varianter
+
+### IconButton
+
+Ikonknapper brukes ofte som inline-handlinger i tabellrader og verktøylinjer.
+
+```jsx
+  <Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Fra</HeaderCell>
+        <HeaderCell>Til</HeaderCell>
+        <HeaderCell>Avgang</HeaderCell>
+        <HeaderCell>Rediger</HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>10.00</DataCell>
+        <DataCell>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aria-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>11.00</DataCell>
+        <DataCell>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aria-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Majorstua</DataCell>
+        <DataCell>Østerås</DataCell>
+        <DataCell>12.00</DataCell>
+        <DataCell>
+          <Tooltip aria-hidden placement="bottom" content="Rediger reise">
+            <IconButton aira-label="Rediger reise">
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+```
+
+## Retningslinjer
+
+Siden ikonknapper bare et ikon, er [Tooltip](/komponenter/feedback/tooltip) nødvendig når de brukes uten en label.
+Ved å hovre eller fokusere på ikonknappen vil det da dukke opp et tooltip med en tekstbeskrivelse som forklarer
+handlingen brukeren kan utføre.
+
+Siden de ikke har en label sparer disse knappene mye plass i et grensesnitt.
+Ikonknapper lar deg ha flere ikonknapper ved siden av hverandre på et liten plassområde.
+Tommelfingerregelen for ikonknapper er å kun bruke dem mde ikoner som man anser som globalt forståelige.
+
+### Universell utforming
+
+Det er viktig at knappen er tilgjenglig og forstålig for alle, for å sikre dette må du bruke en `aria-label` på knappen som beskriver hva den gjør. For å unngå dobbel-opplesing i skjermleseren når du bruker Tooltip er det anbefalt å gjøre som i eksempelet før og sette en `aria-hidden` på selve Tooltip-en.
+
+En annen løsning, som vil være enda mer tilgjengelig, er å ha en label til knappen – pass da på at label-en er koblet korrekt til knappen eller skjult med aria-hidden for å unngå dobbel-opplesing.
+Knappen har per i dag ingen prop for label, si fra på [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7) hvis dette ønskes.
+
+Ellers følg våre generelle råd [om knapper](/komponenter/knapper/button) og [disabled states](/komponenter/knapper/button#disabled-state).
+
+**Kilder:**
+- [1.1.1 Ikke-tekstlig innhold](https://www.uutilsynet.no/wcag-standarden/111-ikke-tekstlig-innhold-niva/87)
+- [1.3.1 Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+- [4.1.2 Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+- [3.3.2 Ledetekster eller instruksjoner](https://www.uutilsynet.no/wcag-standarden/332-ledetekster-eller-instruksjoner-niva/117)
+
+
+
+
+## Props
+
+<ImportStatement imports="IconButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="IconButton" />

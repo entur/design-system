@@ -1,0 +1,22 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.code-block {
+  .eds-expandable-panel {
+    position: relative;
+    &__content {
+      height: min-content;
+      padding: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &__trigger {
+      position: relative;
+      margin-top: tokens.$space-default;
+      margin-bottom: 0;
+      z-index: 1;
+    }
+  }
+  code {
+    font-size: 1rem;
+  }
+}

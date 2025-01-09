@@ -1,0 +1,102 @@
+@use "@entur/tokens/dist/styles.scss" as t;
+@use "@entur/form/src/componentColors.scss";
+@use "@entur/tokens/dist/base.scss";
+
+.searchmodal {
+  margin-top: 4dvh;
+  padding-top: t.$space-extra-large;
+
+  &__button {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__searchbar {
+    &::after {
+      content: '';
+      display: block;
+      width: calc(100% + 6rem);
+      height: 2px;
+      background-color: var(--basecolors-shape-subduedalt);
+      margin-top: t.$space-extra-large;
+      margin-inline: -3rem;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    padding-left: unset;
+
+    & &__item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: t.$space-default;
+      height: fit-content;
+      min-width: 0;
+      padding-block: 0.75rem;
+
+      border-radius: t.$border-radiuses-large;
+
+      &::before {
+        content: none;
+      }
+
+      &:hover,
+      &:focus-within {
+        background-color: var(--basecolors-frame-subdued);
+      }
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        margin-block: auto;
+        overflow: hidden;
+
+        &__link {
+          display: flex;
+          align-items: center;
+
+          color: inherit;
+          text-decoration: none;
+
+          &:focus {
+            outline: unset;
+          }
+
+          // make entire list item clickable
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .eds-small-text {
+          margin-block: unset;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          color: var(--basecolors-text-subdued);
+        }
+      }
+
+      &__tag {
+        height: fit-content;
+        margin-block: auto;
+        margin-right: 1rem;
+        flex: 0 0 fit-content;
+      }
+    }
+  }
+
+  .eds-modal__close {
+    display: none;
+  }
+}

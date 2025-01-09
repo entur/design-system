@@ -1,0 +1,176 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseGrid",
+    "methods": [],
+    "props": {
+      "container": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om det er en GridContainer",
+        "name": "container",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "item": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om det er et GridItem",
+        "name": "item",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "spacing": {
+        "defaultValue": {
+          "value": "none"
+        },
+        "description": "Mellomromet mellom hver GridItem, basert på spacing-tokens",
+        "name": "spacing",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | \"large\" | \"none\" | \"extraSmall2\" | \"extraSmall\" | \"extraLarge\" | undefined"
+        }
+      },
+      "rowSpacing": {
+        "defaultValue": {
+          "value": "Verdien til spacing"
+        },
+        "description": "Vertikalt mellomrom for hver GridItem",
+        "name": "rowSpacing",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"small\" | \"medium\" | \"large\" | \"none\" | \"extraSmall2\" | \"extraSmall\" | \"extraLarge\" | undefined"
+        }
+      },
+      "small": {
+        "defaultValue": {
+          "value": 1
+        },
+        "description": "Antall kolonner en Item bruker på små flater (og oppover)",
+        "name": "small",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "medium": {
+        "defaultValue": null,
+        "description": "Antall kolonner en Item bruker på medium flater (og oppover)",
+        "name": "medium",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "large": {
+        "defaultValue": null,
+        "description": "Antall kolonner en Item bruker på store flater.",
+        "name": "large",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | undefined"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "\"div\""
+        },
+        "description": "HTML-elementet eller React-komponenten som lager Grid-elementet\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet til Grid containeren/item",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/grid/src/BaseGrid.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

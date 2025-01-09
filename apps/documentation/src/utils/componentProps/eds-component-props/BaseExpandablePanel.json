@@ -1,0 +1,119 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BaseExpandablePanel",
+    "methods": [],
+    "props": {
+      "title": {
+        "defaultValue": null,
+        "description": "Teksten som skal stå i panelet",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet som skal vises under panelet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "IDen til expand-panelet",
+        "name": "id",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "Prop for om innholdet er åpent",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onToggle": {
+        "defaultValue": null,
+        "description": "Funksjonen som styrer åpningen av BaseExpandablePanel",
+        "name": "onToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "contentStyle": {
+        "defaultValue": null,
+        "description": "Styling som sendes til innholdet av BaseExpandablePanel",
+        "name": "contentStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "disableAnimation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disableAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/BaseExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

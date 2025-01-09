@@ -1,0 +1,11 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.props__description > .eds-paragraph {
+  margin: 0;
+  font-size: tokens.$font-sizes-medium;
+  line-height: tokens.$line-heights-medium;
+}
+
+.props-table__type {
+  word-break: break-all;
+}

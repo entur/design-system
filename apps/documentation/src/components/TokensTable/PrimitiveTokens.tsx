@@ -4,9 +4,9 @@ import { GridItem } from '@entur/grid';
 import {
   formatVariablePrimitive,
   formatVariableByType,
-} from '~/utils/formatVariable';
+} from '../../utils/formatVariable';
 import { TokensTableProps } from './types';
-import { useSettings } from '~/utils/Providers/SettingsContext';
+import { useSettings } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const PrimitiveTokenList: React.FC<TokensTableProps> = ({

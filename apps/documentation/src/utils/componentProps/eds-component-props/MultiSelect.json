@@ -1,0 +1,585 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "MultiSelect",
+    "methods": [],
+    "props": {
+      "label": {
+        "defaultValue": null,
+        "description": "Beskrivende tekst som forklarer feltet",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "items": {
+        "defaultValue": null,
+        "description": "Tilgjengelige valg i MultiSelect",
+        "name": "items",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "PotentiallyAsyncDropdownItemType<ValueType>"
+        }
+      },
+      "selectedItems": {
+        "defaultValue": {
+          "value": "[]"
+        },
+        "description": "Elementer som er valgt blant 'items'. Bruk tom liste for ingen valgte",
+        "name": "selectedItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "NormalizedDropdownItemType<ValueType>[]"
+        }
+      },
+      "onChange": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "Callback med alle valgte verdier.\nBruk denne til å oppdatere selectedItems-listen",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((selectedItems: NormalizedDropdownItemType<ValueType>[]) => void | Dispatch<SetStateAction<NormalizedDropdownItemType<ValueType>[]>>) | undefined"
+        }
+      },
+      "itemFilter": {
+        "defaultValue": {
+          "value": "isFunctionWithQueryArgument(initialItems)\n    ? noFilter\n    : lowerCaseFilterTest"
+        },
+        "description": "Filtreringen som brukes når man skriver inn tekst i inputfeltet",
+        "name": "itemFilter",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((item: NormalizedDropdownItemType<ValueType>, inputValue: string | undefined) => boolean) | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": {
+          "value": "information"
+        },
+        "description": "Hvilken valideringsvariant som gjelder",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Valideringsmelding, brukes sammen med `variant`",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om dropdown-en er deaktivert",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om dropdown-en er i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "clearable": {
+        "defaultValue": {
+          "value": true
+        },
+        "description": "Om en knapp for å fjerne alle valg skal vises",
+        "name": "clearable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": null,
+        "description": "Plasserer ledeteksten statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "Placeholder-tekst når ingenting er satt",
+        "name": "placeholder",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": {
+          "value": "\"Laster inn …\""
+        },
+        "description": "En tekst som beskriver hva som skjer når man venter på items",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "noMatchesText": {
+        "defaultValue": {
+          "value": "\"Ingen treff for søket\""
+        },
+        "description": "Tekst som kommer opp når det ikke er noe treff på filtreringsøket",
+        "name": "noMatchesText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "hideSelectAll": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Skjuler «Velg alle» fra listen med valg",
+        "name": "hideSelectAll",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "debounceTimeout": {
+        "defaultValue": {
+          "value": "250"
+        },
+        "description": "Antall millisekunder man venter før man kaller en potensiell items-funksjon",
+        "name": "debounceTimeout",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "maxChips": {
+        "defaultValue": {
+          "value": 10
+        },
+        "description": "Maks antall individuelle valgt-element-tags i MultiSelect-en før de blir til en samle-tag",
+        "name": "maxChips",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": null,
+        "description": "Tekst eller ikon som kommer før MultiSelect",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "clearInputOnSelect": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Resetter input etter at et element er valgt i listen",
+        "name": "clearInputOnSelect",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "selectOnTab": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Lar brukeren velge ved å \"tab-e\" seg ut av komponenten",
+        "name": "selectOnTab",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "selectOnBlur": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "@deprecated Bruk selectOnTab i stedet\n\nLar brukeren velge ved å \"tab-e\" seg ut av komponenten",
+        "name": "selectOnBlur",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "listStyle": {
+        "defaultValue": null,
+        "description": "Styling som sendes ned til MultiSelect-lista",
+        "name": "listStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelSelectAll": {
+        "defaultValue": {
+          "value": "Velg alle"
+        },
+        "description": "Teksten som vises for «Velg alle»-elementet i listen",
+        "name": "labelSelectAll",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelAllItemsSelected": {
+        "defaultValue": {
+          "value": "Alle valgt"
+        },
+        "description": "Teksten som vises for «Velg alle»-elementet i listen",
+        "name": "labelAllItemsSelected",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelClearAllItems": {
+        "defaultValue": {
+          "value": "Fjern valgte"
+        },
+        "description": "Skjermleser-tekst som for å fjerne alle valg",
+        "name": "labelClearAllItems",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelTooltip": {
+        "defaultValue": null,
+        "description": "En tooltip som gir ekstra info om inputfeltet",
+        "name": "labelTooltip",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "ariaLabelRemoveSelected": {
+        "defaultValue": {
+          "value": "trykk for å fjerne valg"
+        },
+        "description": "Tekst for skjemleser på knapper for å fjerne valgt element",
+        "name": "ariaLabelRemoveSelected",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelChosenPlural": {
+        "defaultValue": {
+          "value": "valgte"
+        },
+        "description": "Tekst for skjemleser for å indikere at et element er valgt",
+        "name": "ariaLabelChosenPlural",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelCloseList": {
+        "defaultValue": {
+          "value": "\"Lukk liste med valg\""
+        },
+        "description": "Tekst for skjemleser for knapp som lukker listen med valg",
+        "name": "ariaLabelCloseList",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelOpenList": {
+        "defaultValue": {
+          "value": "\"Åpne liste med valg\""
+        },
+        "description": "Tekst for skjemleser for knapp som åpner listen med valg",
+        "name": "ariaLabelOpenList",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelJumpToInput": {
+        "defaultValue": {
+          "value": "`${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`"
+        },
+        "description": "Tekst for skjemleser for å hoppe til input-feltet",
+        "name": "ariaLabelJumpToInput",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelChosenSingular": {
+        "defaultValue": {
+          "value": "'valgt'"
+        },
+        "description": "Ord for at et element er valgt i entall\neks. 'Element 1, _valgt_'",
+        "name": "ariaLabelChosenSingular",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "ariaLabelSelectedItem": {
+        "defaultValue": {
+          "value": "', valgt element, trykk for å fjerne'"
+        },
+        "description": "Tekst for skjermleser som beskriver statusen til et element som valgt",
+        "name": "ariaLabelSelectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

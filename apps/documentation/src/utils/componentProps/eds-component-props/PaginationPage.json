@@ -1,0 +1,119 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "PaginationPage",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Sidenummeret som er aktivt nå",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "selected": {
+        "defaultValue": null,
+        "description": "Viser siden som aktiv",
+        "name": "selected",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "Viser knappen som inaktiv",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "Callback for når man trykker på siden",
+        "name": "onClick",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "aria-label": {
+        "defaultValue": null,
+        "description": "Tekst for skjermlesere",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-describedby": {
+        "defaultValue": null,
+        "description": "",
+        "name": "aria-describedby",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/PaginationPage.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "BreadcrumbNavigation",
+    "methods": [],
+    "props": {
+      "aria-label": {
+        "defaultValue": {
+          "value": "'Brødsmulesti'"
+        },
+        "description": "Label for brødsmulestien.",
+        "name": "aria-label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbNavigation.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "En liste med BreadcrumbItem-er",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/menu/src/BreadcrumbNavigation.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<any, string | JSXElementConstructor<any>>[] & ReactNode"
+        }
+      }
+    }
+  }
+]

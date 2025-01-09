@@ -1,0 +1,56 @@
+---
+title: Introduksjon
+description: Designsystemet er et system for å opprettholde frontend kode og visuell konsistens. Det inneholder alt som er felles på tvers av team og produkter og som gir verdi å dele i Entur.
+route: /kom-i-gang
+parent: Kom i gang
+menu: Introduksjon
+order: 1
+removeToc: true
+---
+
+import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/kom-i-gang"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader title="Introduksjon" />
+
+<div style={{ margin: '3rem 0' }}>
+ <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "KomIGang").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+</div>
+
+### Fordeler med et designsystem:
+
+- Mindre dobbeltarbeid, raskere ut i produksjon og enklere skalering.
+- Mye av arbeidet med Universell Utforming kommer med gratis
+- Én kilde til sannhet gir en helhetlig brukeropplevelse på tvers av våre produkter, designjusteringer når alle flater raskt.
+- Bedre kunnskapsdeling ved å spille hverandre gode - vi kommer lenger sammen.
+
+## Hvor starte?
+
+Aller først anbefaler vi at du går inn på innstillinger ved å trykke på hjulet øverst til høyre i toppmenyen. Det lar deg si hva slags informasjon som er interessant for deg, og hva slags format du ønsker den på.
+
+Om du er helt ny i Entur, eller til designsystemet, ta en titt på kom i gang-sidene [for utviklere](/kom-i-gang/for-utviklere/komponentbibliotek) og [for designere](/kom-i-gang/for-designere/designprosess).
+
+Lykke til!

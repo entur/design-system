@@ -1,0 +1,61 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "CodeText",
+    "methods": [],
+    "props": {
+      "as": {
+        "defaultValue": {
+          "value": "\"code\""
+        },
+        "description": "HTML-elementet eller React-komponenten som rendres\nAn override of the default HTML tag.\nCan also be another React component.",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/CodeText.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(string & ElementType<any>) | (ComponentClass<any, any> & ElementType<any>) | (FunctionComponent<any> & ElementType<...>) | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/CodeText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/typography/src/CodeText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

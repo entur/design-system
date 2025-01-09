@@ -1,0 +1,53 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '~@entur/tokens/dist/semantic.scss' as semantic;
+
+.brukertesting {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  row-gap: tokens.$space-small;
+  margin-top: tokens.$space-large;
+  margin-bottom: tokens.$space-extra-large3;
+  @include for-desktop {
+    grid-template-columns: 1fr 1fr;
+    gap: tokens.$space-large;
+  }
+  .eds-icon {
+    margin-right: tokens.$space-extra-small;
+  }
+  &__box {
+    border: tokens.$border-widths-medium solid tokens.$colors-blues-blue10;
+    padding: tokens.$space-extra-large;
+    padding-right: tokens.$space-extra-large3;
+    min-height: 10rem;
+    .eds-h4 {
+      margin-bottom: tokens.$space-small;
+    }
+    &--red {
+      border-color: tokens.$colors-brand-coral;
+    }
+    &--mint {
+      border-color: tokens.$colors-data-default-jungle;
+    }
+    &--azure {
+      border-color: tokens.$colors-data-default-azure;
+    }
+    &--orange {
+      border-color: #e8734b;
+    }
+    &--lavender {
+      border-color: tokens.$colors-data-default-lavender;
+    }
+    &--green {
+      border-color: tokens.$colors-data-default-spring;
+    }
+    &--lilac {
+      border-color: tokens.$colors-data-default-lilac;
+    }
+  }
+  &__verktoy {
+    background-color: semantic.$fill-background-tint-neutral;
+    padding: 1rem;
+  }
+}

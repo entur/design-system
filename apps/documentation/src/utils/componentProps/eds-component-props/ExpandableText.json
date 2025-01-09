@@ -1,0 +1,138 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandableText",
+    "methods": [],
+    "props": {
+      "title": {
+        "defaultValue": null,
+        "description": "Teksten som skal \"vises\"",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet som skal vises under linken",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "defaultOpen": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Hvilken tilstand ExpandableText skal ha som default (med mindre den er kontrollert)",
+        "name": "defaultOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "Prop for om innholdet er åpent. Brukes hvis du vil kontrollere ExpandableText, sammen med onToggle",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onToggle": {
+        "defaultValue": null,
+        "description": "Funksjonen som styrer åpningen av ExpandableText",
+        "name": "onToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "contentStyle": {
+        "defaultValue": null,
+        "description": "Styling som sendes til innholdet av ExpandableText",
+        "name": "contentStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "titleElement": {
+        "defaultValue": {
+          "value": "Heading5"
+        },
+        "description": "Hvilket typografisk element tittelen er",
+        "name": "titleElement",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"Heading5\" | \"Paragraph\" | \"SubParagraph\" | undefined"
+        }
+      },
+      "disableAnimation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disableAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableText.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

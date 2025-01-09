@@ -1,0 +1,13 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.brukerhistorier {
+  &-custom-code {
+    background-color: var(--designentur-basecard-default-fill);
+    padding: tokens.$space-large tokens.$space-extra-large;
+    margin-bottom: tokens.$space-extra-large;
+  }
+  &-summary {
+    background: var(--designentur-basecard-default-fill);
+    padding: tokens.$space-large tokens.$space-extra-large;
+  }
+}

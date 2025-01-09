@@ -1,0 +1,212 @@
+---
+title: Logo
+description: Streken i logoen setter fokus på EN og det som gjør oss unike. Streken er et symbol på innholdet i sin mest minimalistiske form.
+parent: Identitet
+route: /identitet/verktoykassen/logo
+menu: Verktøykassen
+order: 3
+---
+
+import { graphql } from 'gatsby'
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query NewLogoFiles {
+  downloads: allFile(filter: {sourceInstanceName: {eq: "downloads"}, name: {glob: "*logo*"}}) {
+    files: nodes {
+      extension
+      dir
+      name
+      publicURL
+    }
+  }
+  logosPng: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/verktoykassen/logo"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+  logosSvg: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/identitet/verktoykassen/logo"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+      publicURL
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+Logoen er vår signatur, og skal være tilstede på alle uttak. Vi har utarbeidet en rekke retningslinjer for bruk av logo, og endel eksempler på bruk som skal unngås. Det er viktig at du følger disse, så vi oppnår et konsekvent uttrykk.
+
+Vi har laget ulike logopakker som passer til alle formål, og som kan lastes ned her på siden.
+RGB er til digitalt bruk, og CMYK til trykk.
+
+## Entur primærlogo
+
+Dette er vår hovedlogo og skal brukes i de aller fleste sammenhenger. Brukes på lyse bakgrunn og rolige bilder.
+ 
+<ImageDisplay
+  imgSource={props.data.logosSvg.images.find(image => image.name === "PrimaryLogo").publicURL}
+  downloadSources={[
+    { src: props.data.downloads.files.find(file => file.name === "Entur_logo_RGB").publicURL, format: "RGB", label: "Last ned logopakke i RGB-farger" },
+    { src: props.data.downloads.files.find(file => file.name === "Entur_logo_CMYK").publicURL, format: "CMYK", label: "Last ned logopakke i CMYK-farger" }
+  ]} 
+  name={props.data.logosSvg.images.find(image => image.name === "PrimaryLogo").name}
+  preset="logo-display"
+  alt="Entur sin primærlogo består av teksten Entur med skrifttype Nationale og den blå hovedfargen til Entur. «En» er understreket av en Entur-rød, også kalt koral, strek"
+/>
+
+## Entur sekundærlogo
+
+Skal kun tas i bruk når primærlogo ikke er mulig å bruke. Brukes på mørke bakgrunner og bilder med rolige, mørke toner.
+
+<ImageDisplay 
+  imgSource={props.data.logosSvg.images.find(image => image.name === "SecondaryLogo").publicURL}
+  name={props.data.logosSvg.images.find(image => image.name === "SecondaryLogo").name}
+  downloadSources={[
+    { src: props.data.downloads.files.find(file => file.name === "Entur_logo_RGB").publicURL, format: "RGB", label: "Last ned logopakke i RGB-farger" }, 
+    { src: props.data.downloads.files.find(file => file.name === "Entur_logo_CMYK").publicURL, format: "CMYK", label: "Last ned logopakke i CMYK-farger" }
+  ]}
+  preset="logo-display"
+  className="eds-contrast"
+  alt="Entur sin sekundærlogo består av teksten Entur med skrifttype Nationale og hvit farge. «En» er understreket av en Entur-rød, også kalt koral, strek"
+/>
+
+## Svart-hvitt logo
+
+Logo i sort eller hvit skal unngås såvidt mulig, og brukes kun som unntak, i sort/hvite uttak. Hvis nødvendig settes logoen i fargen som gir best kontrast mot bakgrunnen.
+
+<DoDontGroup>
+  <DoDontCard
+    imgSource={props.data.logosPng.images.find(image => image.name === "Sortoghvit_Positiv").childImageSharp.gatsbyImageData}
+    alt="Entur logo med svart tekst på hvit bakgrunn"
+    variant="none"
+    noPadding
+    >
+  </DoDontCard>
+  <DoDontCard
+    imgSource={props.data.logosPng.images.find(image => image.name === "Sortoghvit_Negativ").childImageSharp.gatsbyImageData}
+    alt="Entur logo med hvit tekst på svart bakgrunn"
+    variant="none"
+    noPadding
+    >
+  </DoDontCard>
+</DoDontGroup>
+
+## Frisone og minimum størrelse
+
+<DoDontGroup>
+  <DoDontCard
+      imgSource={props.data.logosPng.images.find(image => image.name === "Logo_frisone").childImageSharp.gatsbyImageData}
+      alt="Entur-logo med frisone tilsvarende fontstørrelsen"
+      variant="none"
+      noPadding
+      title="Frisone rundt logo"
+    >
+      For at lesbarheten til logoen skal være tydelig er det viktig å respektere
+      frisonen, så logoen ikke blir forstyrret. Unngå å plassere tekst, bilder
+      eller annet i dette området. Plasseres logoen i et hjørne av et format, er
+      dette absolutte minste avstand den bør ha til formatets kanter.
+  </DoDontCard>
+  <DoDontCard
+      imgSource={props.data.logosPng.images.find(image => image.name === "Logo_minimumstr").childImageSharp.gatsbyImageData}
+      alt="Entur-logo med minimum størrelse på 20 piksler"
+      variant="none"
+      noPadding
+      title="Minimum størrelse"
+    >
+      Når logoen skal representeres i små størrelser er det viktig at høyden
+      ikke blir lavere enn 20 px på digitalt eller 6 mm på trykk.
+  </DoDontCard>
+</DoDontGroup>
+
+## Feil bruk av logo
+
+Endre, forvrenge eller behandle logoen galt kan føre til uklar kommunikasjon. Aldri forsøk å lage logoen selv, i en annen font, eller endre størrelsen eller proporsjoner. Under er et par eksempler på hva du skal unngå.
+
+**NB! Bruk kun godkjente filer av logoen. Logopakken kan lastes ned på toppen av denne siden.**
+
+<DoDontGroup>
+  <DoDontCard
+    title="Proporsjoner"
+    variant="negative"
+    imgSource={props.data.logosPng.images.find(image => image.name === "Proposjoner").childImageSharp.gatsbyImageData}
+    alt="Entur-logo som er strukket i vertikalen"
+  >
+      Logoen skal aldri dras ut av de opprinnelige proporsjonene.
+  </DoDontCard>
+  <DoDontCard title="Effekter" variant="negative" imgSource={props.data.logosPng.images.find(image => image.name === "Effekter").childImageSharp.gatsbyImageData} alt="Entur-logo med pålagt skyggeeffekt">
+  Legg aldri en effekt på logoen.
+  </DoDontCard>
+  <DoDontCard
+    title="Skifte farge"
+    variant="negative"
+    imgSource={props.data.logosPng.images.find(image => image.name === "Skiftefarge").childImageSharp.gatsbyImageData}
+    alt="Entur-logo i en blåfarge som ikke finnes i fargepaletten"
+  >
+      Logoen skal ikke brukes i andre farger enn det som er oppgitt.
+  </DoDontCard>
+  <DoDontCard
+    title="Rotéring"
+    variant="negative"
+    imgSource={props.data.logosPng.images.find(image => image.name === "Ikkeroter").childImageSharp.gatsbyImageData}
+    alt="Entur-logo som er rotert cirka 30 grader"
+  >
+  Roter, skru eller vend aldri på logoen.
+  </DoDontCard>
+  <DoDontCard
+    title="Endre oppsett"
+    variant="negative"
+    imgSource={props.data.logosPng.images.find(image => image.name === "Endreoppsett").childImageSharp.gatsbyImageData}
+    alt="Entur-logo hvor En og Tur er stablet i vertikalen"
+  >
+   Flytt aldri på bokstavene eller streken i logoen.
+  </DoDontCard>
+  <DoDontCard
+    title="Logo på bakgrunn"
+    variant="negative"
+    imgSource={props.data.logosPng.images.find(image => image.name === "Logobakgrunn").childImageSharp.gatsbyImageData}
+    alt="Hvit Entur-logo på et lyst bilde, som gjør logoen nesten usynlig"
+    noPadding
+  >
+  Sett aldri logoen på en bakgrunn som ikke gir nok kontrast.
+  </DoDontCard>
+</DoDontGroup>
+
+## App-ikon
+
+Denne logo-varianten skal kun benyttes som app-ikon for iOS og Android og som [favicon](https://en.wikipedia.org/wiki/Favicon) på nettsider.
+
+<ImageDisplay 
+  imgSource={props.data.logosPng.images.find(image => image.name === "App_ikon").childImageSharp.gatsbyImageData} 
+  name={props.data.logosPng.images.find(image => image.name === "App_ikon").name} 
+  alt="Entur logo i app-ikon-variant. Består av teksten «EN» i hvit understreket av en Entur-rød, også kalt koral, strek på en Entur-blå avrundet kvadratisk bakgrunn."
+  downloadSources={[
+    { src: props.data.downloads.files.find(file => file.name === "EN-app-logo-512x512").publicURL, format: "png" }, 
+  ]} 
+  preset="logo-display"
+/>
+
+### Rettningslinjer
+
+<DoDontGroup>
+  <DoDontCard
+    title="Frisone rundt app-ikon"
+    variant="none"
+    imgSource={props.data.logosPng.images.find(image => image.name === "App_ikon_frisone").childImageSharp.gatsbyImageData}
+    alt="Entur-appen sitt ikon, med frisonen rundt tilsvarende fontstørrelsen."
+    noPadding
+  >
+    Plasseres ikonet i et hjørne av et format, er dette absolutte minste avstand
+    den bør ha til formatets kanter.
+  </DoDontCard>
+</DoDontGroup>

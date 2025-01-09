@@ -1,0 +1,55 @@
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+.tone-of-voice {
+  &__card {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+
+    @include for-desktop {
+      padding: 2.5rem;
+    }
+  }
+  &__grid-container {
+    margin-top: 2rem;
+  }
+  &__arrows {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+
+    &-image {
+      width: 146px;
+      max-width: none;
+    }
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+.red-arrow {
+  background-color: var(--basecolors-stroke-highlight);
+  width: 100%;
+  height: 0.125rem;
+  display: inline-block;
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    border: solid var(--basecolors-stroke-highlight);
+    border-width: 0 0.125rem 0.125rem 0;
+    display: inline-block;
+    padding: 0.125rem;
+    position: absolute;
+    top: -0.125rem;
+  }
+  &::before {
+    transform: rotate(135deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
+    right: 0rem;
+  }
+}

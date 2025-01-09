@@ -1,0 +1,179 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.playground {
+  &__header {
+    display: flex;
+    margin-top: 1rem;
+  }
+  &__live-preview-and-props-wrapper {
+    display: flex;
+
+    &:has(+ .ReactCollapse--collapse) .playground__live-preview-container {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-bottom: 0rem;
+    }
+  }
+  &__live-preview {
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    // prevents chrome from moving page around the component
+    overflow-anchor: none;
+
+    // this section adds a shadow indication when the content is scrollable
+    --background-color: var(--designentur-playground-background);
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    background-position: left center, right center, left center, right center;
+    background-repeat: no-repeat;
+    background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+    background-attachment: local, local, scroll, scroll;
+    background-image: linear-gradient(to right, var(--background-color), var(--background-color)),
+      linear-gradient(to right, var(--background-color), var(--background-color)), linear-gradient(to right, var(--shadow-color), transparent),
+      linear-gradient(to left, var(--shadow-color), transparent);
+    background-color: var(--background-color);
+
+    .eds-contrast > & {
+      --background-color: var(--basecolors-frame-contrast);
+      --shadow-color: rgba(255, 255, 255, 0.75);
+    }
+
+    &-container {
+      border: tokens.$border-widths-small solid var(--designentur-playground-border);
+      background: var(--designentur-playground-background);
+      border-radius: tokens.$border-radiuses-medium;
+      box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
+
+      flex: 1;
+
+      &:has(+ .playground__props-selector) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: 0rem;
+        background: var(--designentur-playground-background);
+      }
+
+      &.eds-contrast {
+        border: tokens.$border-widths-small solid var(--basecolors-stroke-accent);
+      }
+    }
+  }
+  &__props-selector {
+    background-color: var(--designentur-playground-panel);
+    border: tokens.$border-widths-small solid var(--designentur-playground-border);
+    border-radius: 0 tokens.$border-radiuses-medium tokens.$border-radiuses-medium 0;
+    padding: 1rem;
+    box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
+
+    &__prop {
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__contrast-switch {
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: tokens.$space-default;
+    }
+  }
+
+  &__code-button {
+    &.eds-square-button {
+      z-index: 1;
+      align-self: flex-end;
+      position: relative;
+      bottom: 0rem;
+      margin-left: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__control {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+
+    & + & {
+      margin-left: 1em;
+    }
+  }
+
+  $editor-background: #1e1e1e;
+  &__editor {
+    position: relative;
+    border-radius: tokens.$border-radiuses-medium;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+
+    background-color: $editor-background;
+    font-family: monospace;
+
+    &:focus-within {
+      outline: tokens.$outlines-focus;
+      outline-offset: tokens.$outline-offsets-focus;
+    }
+
+    & .token:last-of-type {
+      margin-right: 1rem;
+    }
+
+    // styling to make the scrollbar fit in with code theme
+    --scrollbar-color: transparent;
+    &:hover {
+      --scrollbar-color: lightgrey;
+    }
+    scrollbar-color: var(--scrollbar-color) $editor-background;
+    &::-webkit-scrollbar {
+      height: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $editor-background;
+      border-radius: 0 0 tokens.$border-radiuses-medium tokens.$border-radiuses-medium;
+      margin-inline: tokens.$space-extra-small2;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-color);
+      border: solid 0.25rem $editor-background;
+      border-radius: 0.5rem;
+      padding-block: tokens.$space-extra-small;
+      &:hover {
+        --scrollbar-color: grey;
+      }
+    }
+
+    pre {
+      counter-reset: token-line;
+      padding-left: 0 !important; // "!important" needed to overwrite inline styling
+
+      .token-line {
+        white-space: pre;
+        &::before {
+          // line numbers formating
+          counter-increment: token-line;
+          content: counter(token-line);
+
+          width: 2rem;
+          display: inline-block;
+          text-align: right;
+          user-select: none;
+
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+}

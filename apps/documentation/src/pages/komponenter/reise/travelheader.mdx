@@ -1,0 +1,60 @@
+---
+title: Travel header
+description: Travel header viser destinasjonene som man reiser fra og til på en visuell måte. Vi benytter den røde streken fra logoen for å understreke identiteten til Entur.
+route: /komponenter/reise/travelheader
+parent: Komponenter
+menu: Reise
+npmPackage: travel
+tags: reise, fra, til
+---
+
+import { SEO } from '@components/seo/SEO';
+import { TravelHeader } from '@entur/travel';
+import { colors } from '@entur/tokens';
+import { travelheader } from '@data/props/travel-props';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fordesignere {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/reise"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+<Playground props={travelheader} code={`<TravelHeader from="Bergen" to="Oslo"></TravelHeader>`} />
+
+## Retningslinjer
+
+Destinasjonene skal alltid stå på hver sin linje, og ‘til’-destinasjon står alltid med et innrykk etter streken på linje to.
+Hvis det er så lange stedsnavn at de ikke får plass, benyttes ‘…’ isteden for å brekke til ny rad.
+‘Fra’ iog ‘Til’ er alltid stoppesteder, men på billetter kan også soner benyttes.
+
+Her er et eksempel på hvordan man har tatt i bruk travel header i reiseplanleggeren til Entur.
+
+<ImageDisplay
+  imgSource={props.data.imagefiles.images.find(image => image.name === "LegsExample1").childImageSharp.gatsbyImageData}
+  alt="Skjermbilde av Entur-appen hvor Travel-Header illustrerer avreisested og destinasjon"
+  preset="full-width-image"
+  style={{ border: `2px solid  ${colors.greys.grey80}` }}
+/>
+
+## Props
+
+### TravelHeader
+
+<ImportStatement imports="TravelHeader" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TravelHeader" />

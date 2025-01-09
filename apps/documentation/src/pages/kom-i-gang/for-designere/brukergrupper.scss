@@ -1,0 +1,33 @@
+@use '@entur/tokens/dist/semantic.scss' as semantic;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.brukergrupper {
+  &__brukere {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 10rem;
+    background: var(--designentur-basecard-default-fill);
+
+    &-wrapper {
+      margin-bottom: tokens.$space-extra-large;
+    }
+
+    .eds-icon {
+      font-size: tokens.$font-sizes-extra-large5;
+      margin-top: tokens.$space-large;
+    }
+
+    .eds-paragraph {
+      text-align: center;
+      margin-top: tokens.$space-large;
+      max-width: 10rem;
+    }
+  }
+
+  &__situasjonsbehov {
+    background-color: semantic.$fill-background-tint-neutral;
+    padding: 1rem;
+  }
+}

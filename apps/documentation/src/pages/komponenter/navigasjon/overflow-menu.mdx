@@ -1,0 +1,241 @@
+---
+title: Overflow menu
+description: Overflow menu består av en ikonknapp som åpner en liste med handlinger når man klikker på den.
+route: /komponenter/navigasjon/overflow-menu
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: dropdown, meny
+---
+
+import {
+  ValidationInfoFilledIcon,
+  DeleteIcon,
+  EditIcon,
+  FileIcon,
+  SettingsIcon,
+  VerticalDotsIcon
+} from '@entur/icons';
+import { OverflowMenu, OverflowMenuItem, OverflowMenuLink } from '@entur/menu';
+import { Contrast } from '@entur/layout';
+import {
+  useSortableData,
+} from '@entur/table';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+<div style={{ display: "flex", gap: "2rem", flexDirection: "row" }}>
+  <OverflowMenu aria-label="Åpne valgmeny">
+    <OverflowMenuItem onSelect={() => undefined}>Info</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Rediger</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Slett</OverflowMenuItem>
+    <OverflowMenuLink href="#overflowmenulink">Les mer</OverflowMenuLink>
+  </OverflowMenu>
+  <OverflowMenu aria-label="Åpne valgmeny">
+    <OverflowMenuItem onSelect={() => undefined}>
+      <ValidationInfoFilledIcon inline aria-hidden />
+      Info
+    </OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>
+      <EditIcon inline aria-hidden />
+      Rediger
+    </OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>
+      <DeleteIcon inline aria-hidden />
+      Slett
+    </OverflowMenuItem>
+    <OverflowMenuItem href="#overflowmenulink">
+      <FileIcon inline aria-hidden />
+      Les mer
+    </OverflowMenuItem>
+  </OverflowMenu>
+</div>
+```
+
+## Varianter
+
+### OverflowMenu
+
+Overflow menu består av en ikonknapp som åpner en liste med handlinger.
+Overflow menu består av komponentene `OverflowMenu`, `OverflowMenuItem` og `OverflowMenuLink`.
+`OverflowMenuItem` representerer et handlingsvalg i menyen. For handlinger som trigges av en funksjon kan man bruke
+callback-funksjonen `onSelect` og for lenker kan man bruke attributtet `href`.
+`OverflowMenuLink` er helt lik `OverflowMenuItem` utenom at den kun støtter å bruke `href`-prop-en som handling.
+
+## Eksempler
+
+### Bruk i tabell
+
+I situasjoner der brukeren kan utføre en handlig på en hel rad i en tabell, eksempelvis å redigere innholdet eller slette rader,
+kan en `OverflowMenu` være nyttig å bruke på enden av raden. 
+
+<Playground hideContrastOption code={`<Table>
+    <TableHead>
+      <TableRow>
+        <HeaderCell>Navn</HeaderCell>
+        <HeaderCell>Publisert</HeaderCell>
+        <HeaderCell>Kategori</HeaderCell>
+        <HeaderCell>Mottaker</HeaderCell>
+        <HeaderCell padding="overflow-menu"></HeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>15.04.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <ValidationInfoFilledIcon inline aria-hidden />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <FileIcon inline aria-hidden />
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <EditIcon inline aria-hidden />
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <DeleteIcon inline aria-hidden />
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>10.03.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <ValidationInfoFilledIcon inline aria-hidden />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <FileIcon inline aria-hidden />
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <EditIcon inline aria-hidden />
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <DeleteIcon inline aria-hidden />
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+      <TableRow>
+        <DataCell>Status rapport Vy</DataCell>
+        <DataCell>02.02.2020</DataCell>
+        <DataCell>Transaksjonssstatistikk</DataCell>
+        <DataCell>Vy Alle</DataCell>
+        <DataCell padding="overflow-menu">
+          <OverflowMenu>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <ValidationInfoFilledIcon inline aria-hidden />
+              Info
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <FileIcon inline aria-hidden />
+              Last ned fil
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <EditIcon inline aria-hidden />
+              Rediger
+            </OverflowMenuItem>
+            <OverflowMenuItem onSelect={() => undefined}>
+              <DeleteIcon inline aria-hidden />
+              Slett
+            </OverflowMenuItem>
+          </OverflowMenu>
+        </DataCell>
+      </TableRow>
+    </TableBody>
+  </Table>`}/>
+
+### Endret ikon i ikonknappen
+
+Noen ganger kan andre ikoner enn de tre vertikale prikkene <VerticalDotsIcon inline /> være mer
+forståelig for brukeren for å vise hva menyen gjør. Da kan du bruke prop-en `buttonIcon` for å sende
+med ditt ønskede ikon.
+
+<Playground
+  hideContrastOption
+  style={{ display: 'flex', gap: '2rem', flexDirection: 'row' }}
+  code={`<OverflowMenu buttonIcon={<EditIcon />} aria-label="åpne redigeringsmeny">
+    <OverflowMenuItem onSelect={() => undefined}>Flytt</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Kopier</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Slett</OverflowMenuItem>
+  </OverflowMenu>
+  <OverflowMenu buttonIcon={<SettingsIcon />} aria-label="åpne innstillingsmeny">
+    <OverflowMenuLink href="#">Enhetsinstillinger</OverflowMenuLink>
+    <OverflowMenuLink href="#">Brukerinnstillinger</OverflowMenuLink>
+    <OverflowMenuLink href="#">Organisasjonsinnstillinger</OverflowMenuLink>
+  </OverflowMenu>`}
+ />
+
+### Egendefinert knapp for å åpne menyen
+
+Vi anbefaler å bruke komponenten som den er, men hvis du har situasjoner der det er bedre å
+bruke noe annet enn en ikonknapp for å åpne menyen, så er dette mulig med prop-en `button`.
+
+<Playground
+  hideContrastOption
+  code={`<OverflowMenu button={<PrimaryButton><EditIcon aria-hidden /> Rediger</PrimaryButton>}>
+    <OverflowMenuItem onSelect={() => undefined}>Flytt</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Kopier</OverflowMenuItem>
+    <OverflowMenuItem onSelect={() => undefined}>Slett</OverflowMenuItem>
+  </OverflowMenu>`}
+ />
+
+## Retningslinjer
+
+Overflow menu brukes for eksempel som en kontekstuell meny i en tabellrad der flere handlinger er tilgjengelig for brukeren.
+
+Teksten på menyelementer bør være kort og direkte slik at brukerne raskt kan bestemme seg for en handling. 
+Ikoner kan også hjelpe brukeren å forstå konteksten raskere. Hvis du skal bruke ikoner i menyelementene skal 
+disse være venstrejustert og være klart relatert til handlingene de brukes på.
+
+Avhengig av hvor menyen vises i brukergrensesnittet kan en overflow menu vises i retning venstre eller høyre 
+slik at den alltid er synlig for brukeren. En overflow menu bør ha minst 3 menyelementer. Hvis den ikke har det, 
+vurder heller å vise handlingene som separate [ikonknapper](../../knapper/icon-button).
+
+### Universell utforming
+
+Hvis du bruker et ikon sammen med teksten i `OverflowMenuItem`, så husk å enten legge til en
+`aria-label`-beskrivelse eller `aria-hidden` på ikonet slik at skjermlesere ikke leser det
+opp som «image».
+
+Hvis du endrer ikonet på `OverflowMenu`, pass på å sjekke om du bør `aria-label` også.
+Standardverdien for `aria-label` er «åpne velgmeny».
+
+## Props
+
+### OverflowMenu
+
+<ImportStatement imports="OverflowMenu" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="OverflowMenu" />
+
+### OverflowMenuItem
+
+<ImportStatement imports="OverflowMenuItem" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="OverflowMenuItem" />
+
+### OverflowMenuLink
+
+<ImportStatement imports="OverflowMenuLink" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="OverflowMenuLink" />

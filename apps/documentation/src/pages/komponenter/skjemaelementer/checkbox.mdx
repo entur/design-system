@@ -1,0 +1,145 @@
+---
+title: Checkbox
+description: Checkboxes lar brukerne velge ett eller flere alternativer fra en liste over valg.
+route: /komponenter/skjemaelementer/checkbox
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: form
+tags: avkrysningsboks, avkrysningsfelt, valg
+---
+
+import { Checkbox, Fieldset } from '@entur/form';
+import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/skjemaelementer"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+```jsx
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Fieldset label="Hvilke sparkesykler vil du se i kartet?">
+    <Checkbox>Tier</Checkbox>
+    <Checkbox>Voi</Checkbox>
+    <Checkbox>Zvipp</Checkbox>
+  </Fieldset>
+</div>
+```
+
+## Varianter
+
+### Checkbox
+
+Checkbox inneholder komponentene `Checkbox` og `Fieldset`. `Fieldset` lar deg gruppere flere `Checkbox`-er sammmen under en overskrift. Du kan sette en ledetekst/overskrift med `label`-propen.
+
+Les mer om hvordan du bruker html-taggen `fieldset` på sidene til [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset);
+
+## Retningslinjer
+
+Brukes i tilfeller der det er en liste over alternativer, og brukeren kan velge ett eller flere
+alternativer. En checkbox skal være venstrejustert i skjemaer. Den skal alltid stå foran
+tilhørende label tekst, og bør aldri stå alene.
+
+Hvis brukerne bare kan velge ett alternativ fra listen, er det mer passende å bruke Radioknapper.
+Om du ønsker at valget blir gjenspeilet eller lagret med en gang, bruk heller en Switch istedenfor.
+
+### Indeterminate
+
+Det finnes tilfeller der en checkbox hverken er på eller av. Det er typisk når man bruker en checkbox til å velge en rekke andre checkboxes.
+
+Her har du et eksempel hvor det brukes. Prøv å velg ingen, alle eller en blanding.
+
+```jsx
+  () => {
+    const [selectedItems, setSelectedItems] = React.useState({
+      Buss: false,
+      Tog: false,
+      Båt: false,
+      Fly: false,
+      Sykkel: false,
+      Sparkesykkel: false,
+    });
+    const isEverythingSelected = Object.values(selectedItems).every(
+      value => value,
+    );
+    const isNothingSelected = Object.values(selectedItems).every(
+      value => !value,
+    );
+    const isSomeSelected = !isEverythingSelected && !isNothingSelected;
+    const handleAllOrNothingChange = () => {
+      setSelectedItems(prev =>
+        Object.keys(prev).reduce(
+          (acc, key) => ({ ...acc, [key]: !isEverythingSelected }),
+          {},
+        ),
+      );
+    };
+    const handleRegularChange = e => {
+      setSelectedItems({
+        ...selectedItems,
+        [e.target.name]: e.target.checked,
+      });
+    };
+    return (
+      <Fieldset label="Jeg vil gjerne reise med">
+        <Checkbox
+          name="all"
+          checked={isSomeSelected ? 'indeterminate' : isEverythingSelected}
+          onChange={handleAllOrNothingChange}
+        >
+          Alt
+        </Checkbox>
+        {Object.entries(selectedItems).map(([name, checked]) => (
+          <Checkbox
+            key={name}
+            checked={checked}
+            name={name}
+            onChange={handleRegularChange}
+          >
+            {name}
+          </Checkbox>
+        ))}
+      </Fieldset>
+    );
+  }
+```
+
+<DoDontGroup>
+  <DoDontCard variant="success" imgSource={props.data.imagefiles.images.find(image => image.name === "CheckboxDo").childImageSharp.gatsbyImageData}>
+    Dersom det er mange checkboxes, bør du liste dem under hverandre i en
+    kolonnegruppe slikt at det gjør det enkelt for brukeren å skanne raskt
+    gjennom listen.
+  </DoDontCard>
+  <DoDontCard variant="negative" imgSource={props.data.imagefiles.images.find(image => image.name === "CheckboxDont").childImageSharp.gatsbyImageData}>
+    Du bør unngå å plassere checkboxes i flere kolonner.
+  </DoDontCard>
+</DoDontGroup>
+
+## Props
+
+### Checkbox
+
+<ImportStatement imports="Checkbox"  packageName={props.pageContext.frontmatter.npmPackage}  />
+<Props componentName="Checkbox" />
+
+### Fieldset
+
+<ImportStatement imports="Fieldset"  packageName={props.pageContext.frontmatter.npmPackage}  />
+<Props componentName="Fieldset" />

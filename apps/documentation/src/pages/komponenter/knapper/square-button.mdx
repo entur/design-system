@@ -1,0 +1,119 @@
+---
+title: Square button
+description: Kvadratiske knapper består av et ikon og et tilhørende label. Knappen kan benyttes for eksempel til; Legg til, Last ned, Last opp osv.
+route: /komponenter/knapper/square-button
+parent: Komponenter
+menu: Knapper
+npmPackage: button
+tags: firkant, knapp, funksjonsknapp, tabellknapp
+---
+
+import { AddIcon, CheckIcon } from '@entur/icons';
+import {
+SecondarySquareButton,
+SuccessSquareButton,
+TertiarySquareButton,
+} from '@entur/button';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SecondarySquareButton aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }} aria-label="Legg til">
+      <AddIcon />
+    </SecondarySquareButton>
+  </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SecondarySquareButton>
+      Legg til <AddIcon />
+    </SecondarySquareButton>
+    <SecondarySquareButton style={{ marginLeft: '1em' }}>
+      <AddIcon /> Legg til
+    </SecondarySquareButton>
+  </div>
+  <div
+    style={{ display: 'flex', justifyContent: 'center', marginBottom: '1em' }}
+  >
+    <SuccessSquareButton>
+      Lagre <CheckIcon />
+    </SuccessSquareButton>
+    <SuccessSquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </SuccessSquareButton>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <TertiarySquareButton>
+      Lagre <CheckIcon />
+    </TertiarySquareButton>
+    <TertiarySquareButton style={{ marginLeft: '1em' }}>
+      <CheckIcon /> Lagre
+    </TertiarySquareButton>
+  </div>
+```
+
+Kvadratiske knapper skal alltid ha ett ikon, og _kan_ ha en label på enten venstre eller høyre side. Du kan også bruke dem uten label, men bør da sende inn en alternativ beskrivelse med `aria-label`.
+
+## Varianter
+
+### Square button
+
+Square button finnes i variantene `SuccessSquareButton`, `SecondarySquareButton` og`TertiarySquareButton`.
+Alle tre komponentene har samme API, og brukes på samme måte. [Les mer om buttons](/komponenter/knapper/button) for retningslinjer om når du burde bruke Success, Secondary eller Tertiary.
+
+Knappen regner med at du sender inn label-teksten som en ren string, og ikonet som en komponent. Med andre ord på denne måten:
+
+```js
+<SecondarySquareButton>
+  <RandomIkon /> En label-tekst
+</SecondarySquareButton>
+```
+
+Du kan ikke plassere teksten inni en `<span />` eller lignende, da komponenten da vil tolke den biten som et ikon. Dette vil med andre ord _ikke_ fungere:
+
+```js
+<SecondarySquareButton>
+  <RandomIkon /> <span>En label-tekst</span>
+</SecondarySquareButton>
+```
+
+## Retningslinjer
+
+Fungerer som handlingsknapper som består av av et ikon.
+Ikonet skal være selvforklarende for handlingen samt ha en Tooltip med en beskrivende tekst ved hover.
+Denne knappen skal benyttes i f.eks disse tilfellene; Legge til, laste ned, laste opp osv.
+
+Kvadratiske knapper skal alltid ha ett ikon, og kan ha en label på enten venstre eller høyre side.
+Du kan også bruke dem uten label, men bør da sende inn en alternativ beskrivelse med aria-label.
+
+### Universell utforming
+
+Følg våre generelle råd [om knapper](/komponenter/knapper/button) og [disabled states](/komponenter/knapper/button#disabled-state).
+
+## Props
+
+### SuccessSquareButton
+
+<ImportStatement imports="SuccessSquareButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SuccessSquareButton" />
+
+### SecondarySquareButton
+
+<ImportStatement imports="SecondarySquareButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SecondarySquareButton" />
+
+### TertiarySquareButton
+
+<ImportStatement imports="TertiarySquareButton" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TertiarySquareButton" />

@@ -1,0 +1,34 @@
+@use '../../../styles/variables' as variables;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+.side-navigation {
+  &__logo {
+    width: 100%;
+    padding: tokens.$space-extra-large2 tokens.$space-extra-large2 0 tokens.$space-extra-large2;
+  }
+
+  &__group {
+    margin-top: 1rem;
+  }
+
+  &-wrapper {
+    width: 100%;
+    transition: max-width tokens.$timings-fast ease-out;
+    background: var(--components-menu-sidenavigation-standard-background);
+
+    @include for-desktop {
+      max-width: variables.$side-navigation-width--desktop;
+      height: 100vh;
+      left: 0;
+      top: variables.$navbar-height;
+      padding-bottom: 10rem;
+      overflow-y: scroll;
+      position: fixed;
+      z-index: tokens.$z-indexes-sticky;
+    }
+    @include for-large-desktop {
+      max-width: variables.$side-navigation-width--large-desktop;
+    }
+  }
+}

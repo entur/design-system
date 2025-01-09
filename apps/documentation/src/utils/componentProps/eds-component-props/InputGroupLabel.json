@@ -1,0 +1,87 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "InputGroupLabel",
+    "methods": [],
+    "props": {
+      "label": {
+        "defaultValue": null,
+        "description": "",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "required": {
+        "defaultValue": null,
+        "description": "",
+        "name": "required",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "labelTooltip": {
+        "defaultValue": null,
+        "description": "",
+        "name": "labelTooltip",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "labelId": {
+        "defaultValue": null,
+        "description": "",
+        "name": "labelId",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "staticAnimation": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "staticAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/InputGroupLabel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

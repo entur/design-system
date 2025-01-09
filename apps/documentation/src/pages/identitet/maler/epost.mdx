@@ -1,0 +1,60 @@
+---
+title: E-post signatur
+description: Her ser du hvordan signaturer skal se ut i e-postutsendelser.
+route: /identitet/maler/epost
+parent: Identitet
+menu: Maler
+order: 12
+---
+
+import { graphql } from 'gatsby'
+import { DownloadEpostSignature } from '@components/Download/DownloadEpostSignature';
+import { colors } from '@entur/tokens';
+import { SEO } from '@components/seo/SEO';
+
+import './index.scss';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/maler"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader></PageHeader>
+
+For å endre din signatur i Outlook, gå til: **Fil > Alternativer > E-post > Signaturer > Ny > Gi navn > Lagre.**
+
+<DownloadEpostSignature></DownloadEpostSignature>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Email_signatur").childImageSharp.gatsbyImageData}
+  alt="Illustrerer bruk av Entur sin epost-signatur i slutten av en epost"
+  preset="full-width-image"
+/>
+
+<div
+  className="epost-card"
+  style={{
+    padding: '1.5rem',
+    marginTop: '3rem',
+  }}
+>
+  <StrongText>Oppsett</StrongText>
+  <br />
+    Skrifttype: Arial <br />
+    Størrelse: 11 pt navn i bold / 9 pt brødtekst <br />
+    Farge: Blue #181C56
+</div>

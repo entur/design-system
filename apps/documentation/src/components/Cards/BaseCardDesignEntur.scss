@@ -1,0 +1,96 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/semantic.scss' as semantic;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+.designentur-base-card {
+  appearance: none;
+  text-decoration: none;
+  margin-bottom: tokens.$space-extra-large3;
+
+  &:has(&__arrow) {
+    margin-bottom: 0;
+  }
+
+  &__arrow {
+    text-align: center;
+    color: var(--basecolors-stroke-subdued);
+    height: 2rem;
+    margin-top: tokens.$space-extra-small;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: tokens.$space-large;
+    background-color: var(--designentur-basecard-default-fill-tint);
+    border: tokens.$border-widths-small solid var(--designentur-basecard-default-border);
+    border-radius: tokens.$border-radiuses-medium;
+
+    .eds-contrast & {
+      background-color: var(--designentur-basecard-contrast-fill-tint);
+      border-color: var(--designentur-basecard-contrast-border);
+    }
+  }
+
+  &__subtext {
+    margin-top: auto;
+  }
+
+  .eds-h5 {
+    margin: 0;
+  }
+
+  &__children {
+    margin: 0 auto;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+
+    &--medium {
+      width: 100%;
+      height: auto;
+
+      @include for-large-desktop {
+        width: 30rem;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+    &--small {
+      width: 100%;
+      height: auto;
+      @include for-large-desktop {
+        width: 20rem;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+// If the cards is in a grid, this css makes the card equal height
+.eds-grid__container .designentur-base-card {
+  appearance: none;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.eds-grid__container .designentur-base-card__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: var(--designentur-basecard-default-fill-tint);
+  border: 0.0625rem solid var(--designentur-basecard-default-border);
+  border-radius: 0.25rem;
+  margin-bottom: tokens.$space-extra-large3;
+}

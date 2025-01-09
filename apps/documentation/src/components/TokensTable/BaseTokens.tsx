@@ -5,7 +5,7 @@ import {
   formatDotToVariable,
   formatVariableByType,
   sliceTokenKey,
-} from '~/utils/formatVariable';
+} from '../../utils/formatVariable';
 
 import { TokensTableProps } from './types';
 import ColorToken from './ColorToken';

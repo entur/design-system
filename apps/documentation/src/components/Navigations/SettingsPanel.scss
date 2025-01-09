@@ -1,0 +1,34 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
+
+.settings-panel {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+
+  @include for-desktop {
+    flex-grow: unset;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2.5rem;
+  }
+
+  &__modal.eds-modal__content {
+    overflow: visible;
+  }
+  &__container {
+    display: none;
+    @include for-large-desktop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .settings-trigger {
+    margin-left: tokens.$space-large;
+    &__icon {
+      font-size: tokens.$font-sizes-extra-large2;
+      margin-right: tokens.$space-extra-small;
+    }
+  }
+}

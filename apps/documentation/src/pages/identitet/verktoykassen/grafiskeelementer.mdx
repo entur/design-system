@@ -1,0 +1,175 @@
+---
+title: Grafiske elementer
+description: Typografi, strek og mønster er de bærende grafiske elementene i identiteten.
+parent: Identitet
+route: /identitet/verktoykassen/grafiskeelementer
+menu: Verktøykassen
+order: 9
+---
+
+import { graphql } from 'gatsby'
+import { space } from '@entur/tokens';
+import { DownloadBrushes } from '@components/Download/DownloadBrushes';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/verktoykassen/grafiske_elementer"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+## Typografi
+
+Typografi er et av de bærende grafiske elementene i identiteten. Gjennom bruk av ulike vekter gjør vi innholdet til helten og skaper et lekent og variert uttrykk. Oppsettet tilfører bevegelse og dynamikk til identiteten, og understøtter mangfoldigheten og kontrastene i alle de forskjellige turene Entur tilrettelegger for.
+
+### Fargekombinasjoner
+
+<DoDontGroup>
+  <DoDontCard
+    imgSource={props.data.files.images.find(image => image.name === "Typo-steder-korall-kaviar").childImageSharp.gatsbyImageData}
+    alt=""
+    variant="none"
+    noPadding
+    >
+    Korall og lys korall på blå bakgrunn.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={props.data.files.images.find(image => image.name === "Typo-steder-korall").childImageSharp.gatsbyImageData}
+    alt=""
+    variant="none"
+    noPadding
+    >
+Korall på lys bakgrunn.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={props.data.files.images.find(image => image.name === "Typo-steder").childImageSharp.gatsbyImageData}
+    alt=""
+    variant="none"
+    noPadding
+    >
+   Farget på lys bakgrunn.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={props.data.files.images.find(image => image.name === "Typo-steder-blue").childImageSharp.gatsbyImageData}
+    alt=""
+    variant="none"
+    noPadding
+    >
+   Farget på blå bakgrunn.
+  </DoDontCard>
+</DoDontGroup>
+
+### Linjeavstand
+
+<GridContainer spacing="large">
+  <GridItem small={12} medium={8}>
+    <ImageDisplay
+      imgSource={props.data.files.images.find(image => image.name === "Typo-linjeavstand").childImageSharp.gatsbyImageData}
+      alt=""
+      preset="full-width-image"
+    />
+  </GridItem>
+  <GridItem small={12} medium={4}>
+
+    Mellom ord skal avstanden bestå av mellomrom x 2.
+
+    Mellom linjene skal avstanden være 1.1 x punkt størrelsen.
+  </GridItem>
+</GridContainer>
+
+## Strek og mønster
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "EN_strek_typer").childImageSharp.gatsbyImageData}
+  alt="Illustrerer de forskjellige strekstilene til Entur"
+  preset="full-width-image"
+  style={{ marginBottom: space.large }}
+/>
+
+Den røde streken er hentet fra logoen, og danner grunnlaget for strekstilen i Entur.
+De forskjellige strekene symboliserer de ulike transportmidlene.
+Strekene brukes for seg, i tillegg til sammen med stedsnavn/ulike typer transportmidler.
+
+**NB! I markedsmateriell, skal strekene kun brukes i korall.**
+
+Strekene er lagret som brushes i en .ai fil og kan lastes ned her:
+
+<DownloadBrushes />
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "EN_strek_patterns").childImageSharp.gatsbyImageData}
+  alt="Illustrerer strekstilen i bruk med stedsnavn, eller ved å kombinere strekstiler"
+  preset="full-width-image"
+  style={{ marginBottom: space.extraLarge3 }}
+/>
+
+<DoDontGroup>
+  <DoDontCard
+    imgSource={
+      props.data.files.images.find(
+        image => image.name === 'EN_strek_linjeavstand',
+      ).childImageSharp.gatsbyImageData
+    }
+    alt=""
+    variant="none"
+    noPadding
+    title="Linjeavstand"
+  >
+    Avstanden mellom linjene er 2,5 ganger høyden av stedsnavnet.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={
+      props.data.files.images.find(image => image.name === 'EN_strek_forhold')
+        .childImageSharp.gatsbyImageData
+    }
+    alt=""
+    variant="none"
+    noPadding
+    title="Linjeavstand"
+  >
+    20 px avstand mellom linjene i 100 px bredde. 4 enheter pr. 100 px bredde.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={
+      props.data.files.images.find(
+        image => image.name === 'EN_strek_plassering',
+      ).childImageSharp.gatsbyImageData
+    }
+    alt=""
+    variant="none"
+    noPadding
+    title="Plassering"
+  >
+    I kombinasjon med linjer skal stedsnavn ikke stå over hverandre. Dette for å
+    skape balanse i mønsteret og for å unngå at linjeavstanden ser ubalansert
+    ut.
+  </DoDontCard>
+  <DoDontCard
+    imgSource={
+      props.data.files.images.find(image => image.name === 'EN_strek_str')
+        .childImageSharp.gatsbyImageData
+    }
+    alt=""
+    variant="none"
+    noPadding
+    title="Strektykkelse"
+  >
+    Strekenes tykkelse samsarer med linjetykkelsen til vertikalene i Nationale
+    Medium.
+  </DoDontCard>
+</DoDontGroup>

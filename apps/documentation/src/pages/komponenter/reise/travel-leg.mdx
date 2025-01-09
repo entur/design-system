@@ -1,0 +1,91 @@
+---
+title: Travel leg
+description: Travel leg benyttes til å illustrere reisestrekningen mellom to destinasjoner, og benytter transportfargen og Enturs mønster til det aktuelle transportmidlet.
+route: /komponenter/reise/travel-leg
+parent: Komponenter
+menu: Reise
+npmPackage: travel
+tags: leg, legs, legbone, leglines
+---
+
+import { Link } from 'gatsby';
+import { LegLine, LegBone, TravelLeg } from '@entur/travel';
+import { colors } from '@entur/tokens';
+import { travelleg } from '@data/props/travel-props';
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fordesignere {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/komponenter/reise"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader />
+
+
+<Playground props={travelleg} code={`<div style={{ display: 'flex', height: '10rem' }}>
+    <TravelLeg transport="bus" direction="vertical"></TravelLeg>
+  </div>`}/>
+
+## Varianter
+
+### TravelLeg
+
+Ved å bruke TravelLeg istedet for LegLine og/eller LegBone, kan man enkelt få riktig farge ved å velge transportmodalitet.
+Disse tar også hensyn til om man er i en Kontrast-seksjon eller ikke.
+
+## Retningslinjer
+
+Travel leg benyttes oftest vertikalt, men kan også benyttes horisontalt i grensesnitt der dette passer bedre.
+
+Her er et eksempel på hvordan man har tatt i bruk travel legs på reisedetaljer siden i reiseplanleggeren til Entur.
+
+<GridContainer spacing="large">
+  <GridItem snall={12} medium={6} large={4}>
+    <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "LegsExample1").childImageSharp.gatsbyImageData}
+    alt="Skjermbilde av Entur-appen som illustrer bruk av travel leg"
+    preset="full-width-image"
+    style={{ border: `2px solid  ${colors.greys.grey80}` }}
+  />
+  </GridItem>
+  <GridItem small={12} medium={6} large={4}>
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "LegsExample2").childImageSharp.gatsbyImageData}
+    alt="Skjermbilde 2 av Entur-appen som illustrer bruk av travel leg"
+    preset="full-width-image"
+    style={{ border: `2px solid  ${colors.greys.grey80}` }}
+  />
+  </GridItem>
+</GridContainer>
+
+## Props
+
+### TravelLeg
+
+<ImportStatement imports="TravelLeg" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TravelLeg" />
+
+### LegBone
+
+<ImportStatement imports="LegBone" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="LegBone" />
+
+### LegLine
+
+<ImportStatement imports="LegLine" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="LegLine" />

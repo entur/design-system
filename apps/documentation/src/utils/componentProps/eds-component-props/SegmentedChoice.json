@@ -1,0 +1,88 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "SegmentedChoice",
+    "methods": [],
+    "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "Innhold som beskriver valget",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til valget",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | (string & readonly string[])"
+        }
+      },
+      "onChange": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "Callback som kalles når komponenten endres",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/segmented-control/SegmentedChoice.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(((e: ChangeEvent<HTMLInputElement>) => void) & ChangeEventHandler<HTMLInputElement>) | undefined"
+        }
+      }
+    }
+  }
+]

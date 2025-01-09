@@ -1,4 +1,4 @@
-@import '~@entur/tokens/dist/styles.scss';
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .icon-list {
   margin: 1em 0;
@@ -13,8 +13,8 @@
   }
 
   &__item {
-    border: $border-widths-small solid var(--designentur-basecard-default-fill);
-    border-radius: $border-radiuses-medium;
+    border: tokens.$border-widths-small solid var(--designentur-basecard-default-fill);
+    border-radius: tokens.$border-radiuses-medium;
     background-color: var(--designentur-basecard-default-fill);
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     overflow-x: hidden;
 
     &.eds-contrast {
-      border-color: $colors-blues-blue50;
+      border-color: tokens.$colors-blues-blue50;
     }
     &:hover,
     &:focus-within {
@@ -41,7 +41,7 @@
       align-items: center;
       justify-content: flex-start;
       align-self: flex-start;
-      padding: $space-small;
+      padding: tokens.$space-small;
       font-family: inherit;
       width: 100%;
 
@@ -64,27 +64,27 @@
         }
       }
       &:focus {
-        outline: $outlines-focus;
-        outline-offset: (-3 * $outline-offsets-focus);
+        outline: tokens.$outlines-focus;
+        outline-offset: (-3 * tokens.$outline-offsets-focus);
         .eds-contrast & {
-          outline: $outlines-focus-contrast;
+          outline: tokens.$outlines-focus-contrast;
         }
       }
     }
     &__download-button {
       align-self: flex-end;
       opacity: 0;
-      padding-right: $space-extra-small;
-      margin-right: $space-extra-small;
+      padding-right: tokens.$space-extra-small;
+      margin-right: tokens.$space-extra-small;
     }
 
     .eds-contrast & {
-      border-color: $colors-blues-blue40;
+      border-color: tokens.$colors-blues-blue40;
     }
   }
 
   &__name {
-    margin-top: $space-extra-small;
+    margin-top: tokens.$space-extra-small;
     word-break: break-all;
     hyphens: auto;
   }
@@ -94,21 +94,21 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: $space-extra-large;
+    margin-top: tokens.$space-extra-large;
   }
 
   &__no-results {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 $space-extra-large3;
+    padding: 0 tokens.$space-extra-large3;
     width: 100%;
-    font-size: $font-sizes-large;
+    font-size: tokens.$font-sizes-large;
 
-    margin-bottom: $space-extra-large5;
+    margin-bottom: tokens.$space-extra-large5;
 
     &__reset-filter {
-      margin-bottom: $space-extra-large;
+      margin-bottom: tokens.$space-extra-large;
     }
   }
 }

@@ -1,0 +1,46 @@
+---
+title: Powerpoint
+description: Her finner du Entur's powerpointmal som skal brukes til presentasjoner i Entur.
+route: /identitet/maler/powerpoint
+parent: Identitet
+menu: Maler
+order: 11
+---
+
+import { graphql } from 'gatsby'
+import { DownloadPowerpoint } from '@components/Download/DownloadPowerpoint';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/maler"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader></PageHeader>
+
+I Powerpoint-malen kan du endre bilde ved å klikke på ikonet.
+Malen velger automatisk utsnitt, og skalerer opp bildet dersom det kreves.
+Om utsnittet ikke er slik du ønsker, kan du høyreklikke på bildet og velge "Beskjær".
+Dra bildet slik at utsnittet blir etter ditt ønske.
+
+<DownloadPowerpoint></DownloadPowerpoint>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "powerpoint").childImageSharp.gatsbyImageData}
+  alt="Illustrerer bruken av Entur sin skjermbakgrunn på en dataskjerm"
+  preset="full-width-image"
+/>

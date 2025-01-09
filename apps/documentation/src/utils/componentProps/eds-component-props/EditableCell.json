@@ -1,0 +1,91 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "EditableCell",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/EditableCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Inputelementet som skal være i tabellcellen",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/EditableCell.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<any, string | JSXElementConstructor<any>> & ReactNode"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant for EditableCell",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/EditableCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme som en Tooltip under EditableCell",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/EditableCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "outlined": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om cellen skal vise omriss til enhver tid",
+        "name": "outlined",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/table/src/EditableCell.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

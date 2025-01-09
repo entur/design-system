@@ -1,0 +1,57 @@
+---
+title: Oversikt
+description: Oversikt over designsystemets fargetokens
+route: /tokens/fargetokens/oversikt-farger
+parent: Tokens
+menu: Fargetokens
+order: 2
+---
+
+import { TokensTableColor } from '@components/TokensTable/TokensTableColor';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+## Primitive
+«Primitive tokens» representerer fargepaletten til Entur. Disse brukes til å bygge de andre tokensettene.
+<TokensTableColor
+  tokenKey="primitive"
+/>
+
+
+
+## Semantic
+«Semantic tokens» er laget for å definere hva den brukes til. De er farger som skal brukes til bakgrunn, tekst, stroke og shape til grafiske elementer (for eksempel ikon, illustrasjoner). «Base colors» er bygget på disse, forskjellen på semantiske og base-tokens er at base-tokens tilbyr dark-mode.
+
+<TokensTableColor
+  tokenKey="semantic"
+/>
+
+## Base
+«Base tokens» er basert på «Semantic tokens» men har støtte for dark-mode. Det er disse vi ønsker du tar i bruk. 
+Les mer om [hvordan ta i bruk base-tokens](/tokens/fargetokens/generelt#hvilken-tokens-skal-jeg-bruke).
+<TokensTableColor
+  tokenKey="base"
+/>
+
+## Datavisualisering
+Data-tokens er Entur sin egen palett for farger som skal benyttes til visualisering av data. Les mer om [datavisualisering](/identitet/verktoykassen/datavisualisering).
+
+<TokensTableColor
+  tokenKey="data"
+/>
+
+## Transport
+Transport-tokens er Entur sine farger på transportmidler. Les mer om [transportfarger](/identitet/verktoykassen/farger#transportfarger).
+Transparent-variantene brukes i dag for å vise disabled state, disse har svak kontrast og må brukes med omhu.
+
+<TokensTableColor
+  tokenKey="transport"
+/>
+
+
+

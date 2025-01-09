@@ -1,0 +1,46 @@
+---
+title: Tag
+description: Tags brukes for å kategorisere eller organisere elementer ved hjelp av nøkkelord som beskriver dem.
+parent: Komponenter
+route: /komponenter/layout-og-flater/tag
+menu: Layout & Flater
+npmPackage: layout
+tags: tag, knagg,
+---
+
+import { Tag } from '@entur/layout';
+import { ClockIcon } from '@entur/icons';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  () => {
+    const time = new Date().getHours() + 1 + ':' + new Date().getMinutes();
+    return (
+      <div style={{ display: 'flex', gap: '2rem' }}>
+        <Tag>
+          <ClockIcon aria-label="Klokke" />
+        </Tag>
+        <Tag>
+          <ClockIcon inline aria-label="Tidspunkt:" /> {time}
+        </Tag>
+        <Tag>Kollektivselskap</Tag>
+      </div>
+    );
+  }
+```
+
+## Retningslinjer for bruk
+
+Tags brukes for å kategorisere eller organisere elementer ved hjelp av nøkkelord som beskriver dem. Bruk tags når innholdet har mange kategorier, og brukeren trenger en måte å skille mellom dem. For enkel skanning av de ulike, bør teksten ikke være på mer enn to ord.
+For filtrering der brukeren kan filtrere data og bare se elementer innenfor ønsket kategori kan du bruke Filter Chips eller Tags Chips komponenten.
+
+## Props
+
+<ImportStatement imports="Tag" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Tag" />

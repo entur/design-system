@@ -7,17 +7,25 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Use Node.js 16
+    - name: Use Node.js 18
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
+
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+
+    - name: Enable Corepack
+      run: yarn set version berry
+      shell: bash
 
     - name: Cache dependencies
       uses: actions/cache@v4
       with:
-        path: '**/node_modules'
+        path: '.cache/yarn'
         key: ${{ inputs.cache-key }}
 
     - name: Install dependencies
-      run: yarn install --frozen-lockfile --cache-folder node_modules/.cache/yarn
+      run: yarn install --immutable
       shell: bash

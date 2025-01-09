@@ -1,0 +1,30 @@
+---
+title: PX vs REM
+description: Pixel er faste størrelser som ikke endrer seg. Rem, derimot, tilpasser seg automatisk fontstørrelsen på root i HTML, og derfor er den ofte best for responsivt design.
+route: /tokens/ovrigetokens/pxrem
+parent: Tokens
+menu: Øvrige tokens
+order: 1
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+`Pixel` er bedre egnet for designelementer som skal være faste i størrelse, som logoer eller ikoner, mens `rem` kan være mer egnet for typografiske elementer og layoutelementer som skal skalere basert på skjermstørrelse.
+
+I designsystemet er alle relevante tokens i CSS, SASS og LESS i `rem`-enheten.
+Men ønsker du valgmuligheten finnes våre tokens i Javascript i både `px`- og `rem`-enheter. De kan hentes ut slik:
+
+```js
+import { fontSizes } from '@entur/tokens';
+
+fontSizes.small; // gir tallet 12 (i px)
+fontSizes.rem.small; // gir tallet 0.75 (i rem)
+```
+
+En `.rem` etter token-navnet vil altså la deg velge mellom `rem`-størrelser i stedet for `px`-størrelser.

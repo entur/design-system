@@ -1,0 +1,12 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.grid-demo-item {
+  background: var(--designentur-basecard-default-fill);
+  color: var(--designentur-basecard-default-text);
+  text-align: center;
+  padding: tokens.$space-extra-small;
+  .eds-contrast & {
+    background: var(--designentur-basecard-contrast-fill);
+    color: var(--designentur-basecard-contrast-text);
+  }
+}

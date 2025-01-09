@@ -1,0 +1,41 @@
+---
+title: Word maler
+description: Her finner du Entur's dokumentmaler som skal brukes ved opprettelse av ny dokument som brevark, møtereferat, notat, rapport og rutine.
+route: /identitet/maler/word-maler
+parent: Identitet
+menu: Maler
+order: 10
+---
+
+import { graphql } from 'gatsby'
+import { DownloadWord } from '@components/Download/DownloadWord';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query fargerQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/identitet/maler"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader></PageHeader>
+
+<DownloadWord></DownloadWord>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Officemaler_Entur").childImageSharp.gatsbyImageData}
+  alt="Eksempler hvor Entur sin word-mal er brukt"
+  preset="full-width-image"
+/>

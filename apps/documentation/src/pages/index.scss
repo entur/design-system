@@ -1,0 +1,119 @@
+@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+
+.content-margin {
+  max-width: 1328px;
+  padding: 0 1.5rem;
+
+  @include breakpoint.for-desktop {
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+}
+
+.front-page {
+  &__desktop {
+    display: none;
+
+    @include breakpoint.for-desktop {
+      display: block;
+    }
+  }
+  &__mobile {
+    display: block;
+
+    @include breakpoint.for-desktop {
+      display: none;
+    }
+  }
+}
+
+.front-page__top {
+  margin-top: 7rem;
+
+  @include breakpoint.for-desktop {
+    padding-top: 8rem;
+    margin-top: 0;
+    padding-bottom: 3rem;
+  }
+}
+
+.front-page__top-image {
+  position: absolute;
+  top: 4rem;
+  right: 0rem;
+  display: none;
+
+  @include breakpoint.for-desktop {
+    width: 51%;
+    display: block;
+  }
+  @include breakpoint.for-large-desktop {
+    width: 60%;
+  }
+}
+
+.front-page__blue-cards {
+  background: var(--basecolors-frame-tint);
+  padding-bottom: 3rem;
+
+  @include breakpoint.for-desktop {
+    padding-bottom: 7.5rem;
+  }
+}
+
+.front-page__second-intro {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+
+  @include breakpoint.for-desktop {
+    text-align: center;
+    padding-top: 6.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.front-page__last-section {
+  max-width: 784px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+
+  @include breakpoint.for-desktop {
+    margin-top: 8.5rem;
+    margin-bottom: 12.5rem;
+  }
+}
+
+// Animation for header
+.shifting-header {
+  position: relative;
+  height: 5.2rem;
+  margin-top: -0.5rem;
+  overflow: hidden;
+}
+
+.fade-in-out {
+  animation: fadeInOut 5s ease-out infinite;
+  position: absolute;
+  width: 100%;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}

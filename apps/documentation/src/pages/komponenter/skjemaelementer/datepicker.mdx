@@ -1,0 +1,395 @@
+---
+title: Datepicker
+description: DatePicker, DateField, Calendar og NativeDatePicker er komponenter for å velge datoer.
+route: /komponenter/skjemaelementer/datepicker
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: datepicker
+tags: dato, date, time, tid, picker, calendar, kalender, datofelt, felt
+---
+
+import { now, today, isWeekend } from '@internationalized/date';
+
+import {
+  DatePicker,
+  DateField,
+  Calendar,
+  TimePicker,
+  NativeDatePicker,
+  nativeDateToDateValue,
+  nativeDateToTimeValue,
+  timeOrDateValueToNativeDate,
+} from '@entur/datepicker';
+import { datepicker } from '@data/props/skjema-props.tsx';
+import { CodeBlock } from '@components/Codeblock/CodeBlock';
+import './styles.scss';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground
+  defaultShowEditor
+  style={{ display: 'flex', justifyContent: 'center', overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DatePicker
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+      />
+    );
+  }`}
+  scope={{now}}
+/>
+
+## Kom i gang
+
+DatePicker hjelper brukeren å velge en dato – og evt. et tidspunkt. Den bruker pakken @internationalized/date i bakgrunnen til håndtering av dato-objektet, inkludert tidssoner – dette er tilsvarende i TimePicker.
+DatePicker støtter også ulike locals og språk. DatePicker bygger på react-aria og støtter det meste av funksjonalitet du finner der, [les mer her](https://react-spectrum.adobe.com/react-aria/useDatePicker.html).
+
+<SmallAlertBox variant="information">
+  <div>
+    <strong>OBS:</strong> hjelpefunksjoner fra{' '}
+    <CodeText>@internationalized/date</CodeText> (typ.{' '}
+    <CodeText>now()</CodeText> og <CodeText>isWeekend()</CodeText>) er ikke
+    inkludert i <CodeText>@entur/datepicker</CodeText>, legg til{' '}
+    <CodeText>@internationalized/date</CodeText> i repo ditt for å bruke dem.
+  </div>
+</SmallAlertBox>
+
+### Språk og locale
+
+Språk og locals er støttet gjennom to metoder. All automatisk tilpassing av språk skjer gjennom prop-en `locale` eller [react-aria](https://react-spectrum.adobe.com/react-aria/I18nProvider.html) sin `<I18nProvider />`.
+`locale` støtter strenger på BCP 47-formatet, eks. `nb-NO` for norsk. Her finner du en [liste over BCP 47-koder](https://www.techonthenet.com/js/language_tags.php). Som default velges den locale-en som er satt på brukeren maskin.
+
+Ledeteksten (label), og `navigationDescription`\* må sende inn manuell oversettelse for. For `navigationDescription` vil en norsk og engelsk verdi følge med automatisk, men andre språk må legges inn selv.
+
+\*`navigationDescription` er en prop som forteller brukeren hvordan de kan navigere i kalenderen med tastaturet.
+
+#### DatePicker tilpasset USA
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DatePicker
+        label="Date"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="en-US"
+      />
+    );
+  }`}
+  scope={{now}}
+/>
+
+### Tidssoner
+
+TimePicker støtter tidssonehåndtering for å sikre lik opplevelse på tvers av tidssoner. Dette håndteres ved `@internationalized/date` sitt `ZonedDateTime`-objekt.
+Under er et eksempel på hvordan du lager state for nåværende dato og tidspunkt i norsk tidssone, og for et spesifikt tidspunkt i Los Angeles sin tidssone:
+
+[Les mer om hvordan opprette og bruke tidssonefunksjonalitet her](https://react-spectrum.adobe.com/internationalized/date/ZonedDateTime.html).
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`// nåværende tidspunkt i norsk tidssone
+const [date, setDate] = React.useState(now('Europe/Oslo'));
+// spesifikt tidspunkt i Los Angeles sin tidssone
+const [date2, setDate2] = React.useState(parseZonedDateTime('2022-11-07T00:45[America/Los_Angeles]'));`}
+</CodeBlock>
+
+### Datovalidering
+
+Hvis du ønsker å begrense tilgjengelige datoer for brukeren, samt gi en tilbakemelding når en dato utenfor dette intervallet er valgt, kan du benytte
+`minDate`- og `maxDate`-props-ene eller `isDateUnavailable()`-valideringsfunksjonen. `minDate` og `maxDate` tar inn et `CalendarDate`-objekt.
+`isDateUnavailable()` skal ta inn en `DateValue` og returnerer en `boolean` for om datoen er gyldig.
+
+#### Validering med minDate og maxDate
+
+Følgende eksempel godtar datoer fra og med i dag til og med en måned frem:
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(
+      today('Europe/Oslo').add({ months: 2 }),
+    );
+    return (
+      <DatePicker
+        label="Velg dato"
+        selectedDate={date}
+        onChange={setDate}
+        locale="nb-NO"
+        minDate={today('Europe/Oslo')}
+        maxDate={today('Europe/Oslo').add({ months: 1 })}
+        validationFeedback="Valgt dato er for langt frem i tid"
+      />
+    );
+  }`}
+  scope={{today}}
+/>
+
+#### Validering med isDateUnavailable
+
+Følgende eksempel godtar datoer som ikke er en helg.
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DatePicker
+        label="Velg dato"
+        selectedDate={date}
+        onChange={setDate}
+        locale="nb-NO"
+        isDateUnavailable={date => isWeekend(date, 'nb-NO')}
+        validationFeedback="Valgt dato kan ikke være en helgedag"
+      />
+    );
+  }`}
+  scope={{now, isWeekend}}
+/>
+
+### Bruke JS Date i stedet for @internationalized/date
+
+Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToDateValue` og `timeOrDateValueToNativeDate`. Disse konverterer
+mellom `@internationalized/date` sine tre dato-typer: `ZonedDateTime`, `CalendarDateTime` og `CalendarDate` (`DateValue` er en samling av disse tre typene) og Javascript sin `Date`.
+Se API under, nærmere beskrivelse finnes i JSDocs for funksjonene:
+
+<CodeBlock hideLineNumbers wrapLongLines={false} language="ts">
+  {`nativeDateToDateValue: (date: Date | null, noTimeOnlyDate?: boolean, timeZone?: string | undefined, offset?: number | undefined) => CalendarDateTime | ZonedDateTime | CalendarDate | null;
+timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCalendarDateTime?: string | undefined) => Date | null;`}
+</CodeBlock>
+
+#### Eksempel på bruk av JS-date med DatePicker
+
+<CodeBlock asExpandable expandableLabel="JS Date-eksempel">
+  {`const [date, setDate] = useState(new Date());
+  return (
+    <DatePicker
+      label="Choose date"
+      selectedDate={nativeDateToDateValue(date)}
+      onChange={d => setDate(timeOrDateValueToNativeDate(d))}
+    />
+  );`}
+</CodeBlock>
+
+<CodeBlock asExpandable expandableLabel="JS Date med tidssone-eksempel">
+  {`const [date, setDate] = useState(new Date());
+  return (
+      <DatePicker
+        label="Choose date"
+        selectedDate={
+          nativeDateToDateValue(
+            date,
+            false,
+            'Europe/Oslo',
+          )
+        }
+        onChange={d => setDate(timeOrDateValueToNativeDate(d))}
+      />
+  );`}
+</CodeBlock>
+
+### Bruk sammen med TimePicker
+
+Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline med `showTime`-prop-en eller ved å bruke en `TimePicker` i kombinasjon med `DatePicker`-en.
+
+#### Inline
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DatePicker
+        label="Velg dato og tid"
+        selectedDate={date}
+        onChange={setDate}
+        locale="nb-NO"
+        showTime
+      />
+    );
+  }`}
+  scope={{now}}
+/>
+
+#### Kombinasjon med TimePicker
+
+I løsninger ut mot vanlige sluttbrukere er en separat dato- og tid-velger foretrukket.
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [dateTime, setDateTime] = React.useState(null);
+    return (
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <DatePicker
+          label="Dato"
+          selectedDate={dateTime}
+          onChange={setDateTime}
+          locale="nb-NO"
+          // 'forcedReturnType' er nødvendig når
+          // initiell state er 'null'
+          forcedReturnType="ZonedDateTime"
+        />
+        <TimePicker
+          label="Tid"
+          selectedTime={dateTime}
+          onChange={setDateTime}
+          locale="nb-NO"
+        />
+      </div>
+    );
+  }`}
+/>
+
+### 'Invalid granularity for …' feilmelding
+
+Hvis DatePicker initialiseres med `null` som `selectedDate` vil den som standard returnere en `CalendarDate` uten tidspunkt.
+For å fungere sammen med en `TimePicker` må man da tvinge den til å returnere et objekt med tid også. Dette kan du gjøre med
+prop-en `forcedReturnType`. Send inn enten `ZonedDateTime` eller `CalendarDateTime` avhengig av om du ønsker å sette en tidssoner eller ikke.
+
+### Bruk på mobile enheter
+
+DatePicker fungerer også på mobile enheter. For å gjøre valg enklere for brukere med berøringskjermer benyttes en modal i stedet for en popover når skjermen er
+smalere enn 1000px. På denne måten vil alltid hele datovelgeren vises når man åpner den. Dette er mulig å skru av ved å bruke prop-en `disableModal`.
+
+Ønsker man en OS-spesifikk opplevelse av DatePicker-en, kan man benytte seg av NativeDatePicker. Denne har noe styling for å gi den et Entur-preg,
+men vil bruke OS-et sin styling og interaksjonsmetode når man interagerer med den.
+
+<Playground defaultShowEditor hideContrastOption code={`()=> {
+    return (
+      <NativeDatePicker
+        label="Fødselsdato"
+        style={{ width: '15rem' }}
+        value="1997-07-10"
+      />
+    );
+  }`}/>
+
+### Kun kalender
+
+Hvis du ønsker å kun vise en inline kalender til brukeren kan du benytte `<Calendar />`-komponenten. Denne fungerer med samme type datoobjekter som `<DatePicker />` og støtter mange av de samme props-ene.
+
+<Playground hideContrastOption code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+      />
+    );
+  }`}
+  scope={{now}} />
+
+
+#### Styling av datoer i kalenderen
+
+Både `DatePicker` og `Calendar` har støtte for prop-en `classNameForDate`. `classNameForDate` skal være en funksjon som tar inn en dato og returnerer en streng med klassenavnet som skal legges til for dato-ruten. 
+
+Hvis stylingen som legges til er meningsbærende bør du også bruke `ariaLabelForDate` til å beskrive stylingens mening for skjermlesere o.l.
+
+<Playground hideContrastOption  scope={now}
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        classNameForDate={date => isWeekend(date, 'nb-NO') ? 'special-class' : ''}
+        ariaLabelForDate={date => isWeekend(date, 'nb-NO') ? ', helgedag' : ''}
+      />
+    );
+  }`}
+scope={{now , isWeekend}} />
+
+#### Vise ukenummer
+
+Hvis du trenger å vise ukenummer i kalenderen kan du benytte prop-en `showWeekNumbers`. Du kan endre overskriften til ukenummerkolonnen ved å bruke prop-en `weekNumberHeading`.
+
+<Playground hideContrastOption
+code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <Calendar
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        showWeekNumbers
+      />
+    );
+  }`}
+scope={{now}} />
+
+### Kun inputfelt
+
+Hvis du ønsker å kun vise et inputfelt uten mulighet for en kalender-popover kan du benytte `<DateField />`-komponenten. Denne fungerer med samme type datoobjekter som `<DatePicker />` og støtter mange av de samme props-ene.
+
+<Playground hideContrastOption code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    return (
+      <DateField
+        label="Dato"
+        selectedDate={date}
+        onChange={date => setDate(date)}
+        locale="nb-NO"
+        style={{ width: '8.5rem' }}
+      />
+    );
+  }`}
+  scope={{now}} />
+
+
+## Retningslinjer
+
+### Universell utforming
+
+DatePicker bruker [react-aria](https://react-spectrum.adobe.com/react-aria/useTimeField.html) i bakgrunnen.Denne pakken sørger for gjennomgående støtte for universell utforming.
+Hvert datosegment er tilgjengelig med tastaturet og alle interagerbare elementer, både i inputfeltet og i kalenderen, har aria-beskrivelser.
+
+Hvis du endrer `locale` (dvs. språk) til noe annet enn norsk og engelsk må du sende inn verdier på riktig språk til `navigationDescription`-prop-en.
+
+## Komponenter
+
+### DatePicker
+
+<ImportStatement imports="DatePicker" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="DatePicker" />
+
+### DateField
+
+<ImportStatement imports="DateField" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="DateField" />
+
+### Calendar
+
+<ImportStatement imports="Calendar" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Calendar" />
+
+### NativeDatePicker
+
+<ImportStatement imports="NativeDatePicker" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="NativeDatePicker" />

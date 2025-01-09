@@ -1,0 +1,91 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandablePanel",
+    "methods": [],
+    "props": {
+      "title": {
+        "defaultValue": null,
+        "description": "Teksten som skal stå i panelet",
+        "name": "title",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Innholdet som skal vises under panelet",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "defaultOpen": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Hvilken tilstand ExpandablePanel skal ha som default",
+        "name": "defaultOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onToggle": {
+        "defaultValue": null,
+        "description": "Funksjonen som styrer åpningen av ExpandablePanel",
+        "name": "onToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(() => void) | undefined"
+        }
+      },
+      "contentStyle": {
+        "defaultValue": null,
+        "description": "Styling som sendes til innholdet av ExpandablePanel",
+        "name": "contentStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandablePanel.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      }
+    }
+  }
+]

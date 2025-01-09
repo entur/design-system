@@ -1,0 +1,59 @@
+---
+title: File upload
+description: FileUpload en komponent for å ta imot filer fra brukeren.
+route: /komponenter/skjemaelementer/fileupload
+parent: Komponenter
+menu: Skjemaelementer
+npmPackage: fileupload
+tags: opplasting, fil, filer
+---
+
+import { FileUpload } from '@entur/fileupload';
+import { ImageIcon } from '@entur/icons';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  () => {
+    const [myFiles, setMyFiles] = React.useState([])
+    const[error, setError] = React.useState(false);
+    const onDelete = file  =>{
+      console.log(file);
+      setMyFiles((prev) => prev.filter((f) => f !== file));
+    }
+    const onDrop = React.useCallback((acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+      const reader = new FileReader()
+      reader.onerror = () => setError(true);
+      reader.onload = () => {
+        setMyFiles([...myFiles, ...acceptedFiles]);
+        const binaryStr = reader.result;
+        console.log(binaryStr);
+      }
+      reader.readAsArrayBuffer(file)
+    })
+  }, [])
+  return(<FileUpload accept="image/*" files={myFiles} errorUpload={error} onDrop={onDrop} onDelete={file => onDelete(file)} ></FileUpload>);
+}
+```
+
+## Varianter
+
+### FileUpload
+
+Bygger på react-dropzone, og vil spre props for den. Les mer om disse her: https://react-dropzone.js.org/#src
+
+Komponenten har ingen validering eller forkasting av potensielt skadelige filer. **Dette er noe brukeren selv må stå for**.
+Dette kan forenkles litt ved å bruke `accept` propen, som begrenser hvilke filtyper som vil aksepteres.
+
+Les mer på [OWASP-artikkelen om filopplasting](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload).
+
+## Props
+
+<ImportStatement imports="FileUpload" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="FileUpload" />

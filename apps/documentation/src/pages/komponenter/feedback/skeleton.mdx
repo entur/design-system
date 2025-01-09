@@ -1,0 +1,102 @@
+---
+title: Skeleton
+description: Skeletons er placeholdere som visuelt kommuniserer at deler av innholdet er i ferd med å laste inn og hvordan innholdsoppsettet vil se ut.
+route: /komponenter/feedback/skeleton
+parent: Komponenter
+menu: Feedback
+npmPackage: loader
+tags: skjelett, content loader, last, placeloader, placeholder
+---
+
+import InlineComponent from '@components/Common/InlineComponent';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+import {
+  SkeletonRectangle,
+  SkeletonCircle,
+  SkeletonWrapper,
+} from '@entur/loader';
+
+<PageHeader />
+
+```jsx
+  <SkeletonWrapper style={{ width: '100%' }}>
+    <SkeletonCircle size="5em" />
+    <SkeletonRectangle width="30%" />
+    <SkeletonRectangle width="70%" />
+    <SkeletonRectangle />
+  </SkeletonWrapper>
+```
+
+## Varianter
+
+### Skeleton
+
+`Skeleton` er en firkantet boks, som man gir en høyde og bredde til.
+Elementene har litt marigin seg i mellom per default.
+
+### SkeletonCircle
+
+`SkeletonCircle` er en sirkulær "Skeleton", for å illustrere sirkulære komponenter som vil vises etter lastingen er gjennomført.
+
+## Retningslinjer
+
+Skeletons er placeholdere som visuelt kommuniserer at deler av innholdet er i ferd med å laste inn og hvordan innholdsoppsettet vil se ut.
+Brukes når seksjoner på siden gradvis fylles med innhold, for eksempel tekst og bilder eller data i tabeller som dukker opp etterhvert som de blir tilgjengelige. På denne måten gir vi brukerne en idé og forventning om hva slags innhold som skal komme, i tillegg for å skape en oppfatning av redusert ventetid. Skeletons blir borte og erstattes med innhold så snart dataene er tilgjengelig.
+
+<DoDontGroup>
+  <DoDontCard title="Gjør" variant="success" textInBox>
+    <ul>
+      <li>
+        Bruk skeletons hvis data hentes fra baksystemer som har lang ventetid og
+        er ikke umiddelbart tilgjengelige.
+      </li>
+      <li>
+        Bruk skeletons hvis det laster inn mer enn ett element samtidig som
+        krever en indikator.
+      </li>
+      <li>
+        Bruk skeletons når innholdet har en fast størrelse og oppsettet er
+        forutsigbart.
+      </li>
+    </ul>
+  </DoDontCard>
+  <DoDontCard title="Unngå" variant="warning" textInBox>
+    <ul>
+      <li>
+        Unngå å bruk skeletons hvis det er en langvarig prosess, f.eks
+        importering av data eller opplasting av en fil. Bruk Progressbar i
+        stedet.
+      </li>
+      <li>
+        Unngå skeletons hvis det er en rask prosess som tar mindre enn 300 ms.
+        Vurderer å bruk en vanlig Loader eller om du i det hele tatt trenger en
+        lastetilstand.
+      </li>
+      <li>
+        For en liten, inline handling som f.eks klikket på en knapp der
+        handlingen kan ta tid, bruker vi en lastespinner i knappen istedet.
+      </li>
+    </ul>
+  </DoDontCard>
+</DoDontGroup>
+
+## Props
+
+### SkeletonRectangle
+
+<ImportStatement imports="SkeletonRectangle" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SkeletonRectangle" />
+
+### SkeletonCircle
+<ImportStatement imports="SkeletonCircle" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="SkeletonCircle" />
+
+### SkeletonWrapper
+
+<ImportStatement imports="SkeletonWrapper" />
+<Props componentName="SkeletonWrapper" />

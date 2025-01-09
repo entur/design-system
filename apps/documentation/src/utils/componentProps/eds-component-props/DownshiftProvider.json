@@ -1,0 +1,138 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "DownshiftProvider",
+    "methods": [],
+    "props": {
+      "onChange": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((selectedItem: NormalizedDropdownItemDeprecatedType, stateAndHelpers: ControllerStateAndHelpers<NormalizedDropdownItemDeprecatedType>) => void) | undefined"
+        }
+      },
+      "onInputValueChange": {
+        "defaultValue": {
+          "value": "() => undefined"
+        },
+        "description": "",
+        "name": "onInputValueChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((value: string) => void) | undefined"
+        }
+      },
+      "inputValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "inputValue",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "initialSelectedItem": {
+        "defaultValue": null,
+        "description": "",
+        "name": "initialSelectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "NormalizedDropdownItemDeprecatedType | undefined"
+        }
+      },
+      "highlightFirstItemOnOpen": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "highlightFirstItemOnOpen",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
+      },
+      "searchable": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "",
+        "name": "searchable",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/deprecated/DownshiftProvider.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      }
+    }
+  }
+]

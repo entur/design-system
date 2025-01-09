@@ -1,0 +1,77 @@
+---
+title: Stepper
+description: En stepper tar deg stegvis gjennom et visst løp.
+route: /komponenter/navigasjon/stepper
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: stepper, steg, trinn, stegindikator
+---
+
+import { Stepper } from '@entur/menu';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+```jsx
+  () => {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const steps = ['Betaling', 'Kvittering', 'Billettering'];
+    return (
+      <>
+        <Label>Vanlig stepper</Label>
+        <Stepper steps={steps} activeIndex={1} />
+        <Label>Interaktiv stepper</Label>
+        <Stepper
+          steps={steps}
+          activeIndex={activeIndex}
+          onStepClick={setActiveIndex}
+          interactive
+        />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <IconButton
+            onClick={() =>
+              setActiveIndex(activeIndex > 0 ? activeIndex - 1 : 0)
+            }
+          >
+            Tilbake
+          </IconButton>
+          <IconButton
+            onClick={() =>
+              setActiveIndex(activeIndex < 2 ? activeIndex + 1 : 2)
+            }
+          >
+            Frem
+          </IconButton>
+        </div>
+      </>
+    );
+  }
+```
+
+## Retningslinjer
+
+`<Stepper />`-komponenten skal brukes til skjemaer som krever trinnvis utfylling. Det skal i utgangspunktet ikke være mulig å hoppe _framover_ i skjemaet uten å ha fylt inn de foregående stegene først.
+
+Stepper er en visuell fremstilling av brukerens fremgang gjennom et sett med trinn.
+En trinnliste som fungerer som en veiviser for å hjelpe brukerne med å fullføre en spesifikk oppgave i
+en arbeidsflyt bestående av et antall trinn. Den gir brukeren en raskt måte å se hvor de er i løpet og
+hva de skal jobbe med videre. Vis trinnene i rekkefølge fra venstre mot høyre.
+Brukeren kan navigere seg bakover ved å klikke på overskriften på et fullført trinn.
+
+### Trinnstatus
+
+- **Fullført**: Vises når trinnet er utført og brukeren oppnår det som kreves for å fortsette til neste trinn.
+- **Aktiv**: Viser det nåværende trinnet, men ikke fullført enda.
+- **Inaktiv**: Viser trinnene som ikke er nådd enda.
+
+## Props
+
+### Stepper
+
+<ImportStatement imports="Stepper" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="Stepper" />

@@ -1,0 +1,41 @@
+---
+title: Top navigation
+description: Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen av en side eller applikasjon.
+route: /komponenter/navigasjon/top-navigation
+parent: Komponenter
+menu: Navigasjon
+npmPackage: menu
+tags: top menu, top navigation
+---
+
+import { Link } from 'gatsby';
+import { TopNavigationItem } from '@entur/menu';
+import { UserIcon, StatsIcon, SettingsIcon } from '@entur/icons';
+import { topnavigation } from '@data/props/navigation-props';
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader />
+
+<Playground props={topnavigation} code={`<TopNavigationItem></TopNavigationItem>`} />
+
+## Retningslinjer
+
+Top navigation brukes som en global navigasjonsmeny som ligger horisontalt på toppen av en side eller applikasjon.
+Sammenlignet med Side navigation, støtter Top navigation kun et nivå av navigasjon.
+Hvis du har færre enn 3 menypunkter i navigasjonshierarkiet, er det denne komponenten du bør bruke.
+Menypunktene vises direkte og er alltid tilgjengelig i headeren for å hjelpe brukeren å finne det de trenger.
+`active` brukes for å vise hvilken underside man er inne på for øyeblikket, og maks én skal være det til enhver tid.
+
+Bruk Tabs hvis brukeren kan bytte visninger i samme kontekst.
+Hvis det er mer enn 6 menyelementer, eller hvis du trenger å gruppere elementer, vurder å bruk Side navigation istedenfor.
+
+## Props
+
+### TopNavigationItem
+
+<ImportStatement imports="TopNavigationItem" packageName={props.pageContext.frontmatter.npmPackage} />
+<Props componentName="TopNavigationItem" />

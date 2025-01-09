@@ -1,0 +1,32 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.eds-contrast {
+  &__practice {
+    border: tokens.$border-widths-medium solid tokens.$colors-greys-grey80;
+    padding: tokens.$space-extra-large tokens.$space-large;
+    position: relative;
+    &::after {
+      bottom: 0;
+      display: block;
+      content: '';
+      height: tokens.$border-widths-large;
+      width: 100%;
+      left: 0;
+      background: tokens.$colors-validation-lava;
+      position: absolute;
+    }
+    &--do::after {
+      background: tokens.$colors-validation-mint;
+    }
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-top: tokens.$space-medium;
+    margin-bottom: tokens.$space-extra-small2;
+    &-text {
+      font-weight: tokens.$font-weights-heading;
+      margin-left: tokens.$space-small;
+    }
+  }
+}

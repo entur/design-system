@@ -1,0 +1,93 @@
+---
+title: Merkevareplattform
+description: Vi ønsker at mål, visjon og verdier til Entur skal være synlige og tilstede i brukeropplevelsen til våre kunder.
+route: /identitet/introduksjon/merkevareplattform
+parent: Identitet
+menu: Introduksjon
+order: 1
+removeToc: true
+
+---
+
+import { PurposeIcon, ViewIcon, ValueIcon } from '@entur/icons';
+import { Contrast } from '@entur/layout';
+import { SEO } from '@components/seo/SEO';
+
+import './merkevareplattform.scss';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader title="Merkevareplattform" />
+
+{
+<GridContainer className="merkevare__grid-container">
+  <GridItem className="merkevare__blue-box" small={12} medium={6}>
+    <Heading3 as="div" style={{ marginBottom: '12px' }} margin="bottom">
+      Formål
+    </Heading3>
+    <div>
+      Kobler kollektiv-Norge sammen slik at det blir enkelt å planlegge, kjøpe
+      og reise kollektivt.
+    </div>
+  </GridItem>
+  <GridItem className="merkevare__blue-box" small={12} medium={6}>
+    <Heading3 as="div" style={{ marginBottom: '12px' }} margin="bottom">
+      Visjon
+    </Heading3>
+    <div>I samarbeid om enkle, bærekraftige reiser.</div>
+  </GridItem>
+  <GridItem small={12} as={Contrast} className="merkevare__slogan">
+    <Heading2 margin="none" as="span">
+      Vi kommer lenger sammen
+    </Heading2>
+  </GridItem>
+  <GridItem className="merkevare__blue-box" small={12}>
+    <Heading3 as="div" margin="none">
+      Verdier
+    </Heading3>
+    <GridContainer>
+      <GridItem small={12} medium={12}>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header">På Lag</div>
+           Samlende og brobyggende med samfunnets beste som hensikt.. Uten å minste konkurransekraften, være naiv eller “statlig” i fremgangsmåten.
+        </div>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header">FramiSkoa</div>
+           Har drive, energi og nysgjerrighet. Er lettbeint og vil prøve nye veier...Uten å være påtrengende eller lite gjennomtenkt.
+        </div>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header"> Lett å Forstå</div>
+          Tydelig, bevisførende og troverdig. Bruker et språk med bred appell og som “alle” forstår... Uten å bli overtydelig, belærende eller høylytt.
+        </div>
+      </GridItem>
+    </GridContainer>
+  </GridItem>
+  <GridItem className="merkevare__blue-box" small={12}>
+    <Heading3 as="span" margin="none">
+      Løfter
+    </Heading3>
+    <GridContainer>
+      <GridItem small={12} medium={12}>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header">For de reisende</div>
+          skal vi gjøre det enklere å velge kollektivt.
+        </div>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header">For reisetilbydere</div>
+          skal vi levere en konkurransedyktig plattform for deres verdiskapning.
+        </div>
+      </GridItem>
+      <GridItem small={12} medium={12}>
+        <div className="merkevare__lofte">
+          <div className="merkevare__lofte--header">For samfunnet</div>
+          skal vi legge til rette for effektiv bruk av stadig økende mengder data
+          i kollektivsektoren gjennom en åpen nasjonal digital plattform.
+        </div>
+      </GridItem>
+    </GridContainer>
+  </GridItem>
+</GridContainer>
+
+}

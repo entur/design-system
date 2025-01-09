@@ -1,0 +1,8 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: tokens.$space-default;
+}

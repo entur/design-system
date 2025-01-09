@@ -1,10 +1,6 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-textfield__clear-button {
-  &-wrapper {
-    display: flex;
-    align-items: center;
-  }
   background: none;
   border: none;
   border-radius: 50%;
@@ -16,6 +12,7 @@
   line-height: 1rem;
   padding: t.$space-extra-small;
   margin-right: -(t.$space-small);
+
   &:hover {
     background: var(--components-form-basepanel-standard-fill-hover);
   }
@@ -24,6 +21,11 @@
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
   }
 }
 .eds-textfield__divider {

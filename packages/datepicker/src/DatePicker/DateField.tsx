@@ -83,6 +83,8 @@ export type DateFieldProps<DateType extends DateValue> = {
   | 'label'
   | 'hideTimeZone'
   | 'placeholder'
+  | 'placeholderValue'
+  | 'defaultValue'
   | 'minValue'
   | 'maxValue'
 > &
@@ -122,7 +124,6 @@ export const DateField = <DateType extends DateValue>({
     locale: customLocale ?? locale,
     createCalendar,
     value: selectedDate,
-    //@ts-expect-error incorrect type in package
     onChange,
     hideTimeZone: !showTimeZone,
     granularity: showTime ? 'minute' : granularity,

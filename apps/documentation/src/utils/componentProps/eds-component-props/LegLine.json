@@ -1,0 +1,80 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "LegLine",
+    "methods": [],
+    "props": {
+      "color": {
+        "defaultValue": null,
+        "description": "Farge på  LegLine'n",
+        "name": "color",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegLine.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "direction": {
+        "defaultValue": {
+          "value": "horizontal"
+        },
+        "description": "Retningen til LegLine",
+        "name": "direction",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegLine.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      },
+      "pattern": {
+        "defaultValue": null,
+        "description": "Hvilket linjemønster som skal brukes",
+        "name": "pattern",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegLine.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "\"line\" | \"dashed\" | \"dotted\" | \"wave\""
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/travel/src/LegLine.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      }
+    }
+  }
+]

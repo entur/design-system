@@ -1,0 +1,108 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "NativeDatePicker",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Label over NativeDatePicker",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "feedback": {
+        "defaultValue": null,
+        "description": "Varselmelding, som vil komme under NativeDatePicker",
+        "name": "feedback",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "variant": {
+        "defaultValue": null,
+        "description": "Valideringsvariant",
+        "name": "variant",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "VariantType | \"error\" | \"info\" | undefined"
+        }
+      },
+      "disableLabelAnimation": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "prepend": {
+        "defaultValue": {
+          "value": "<DateIcon inline />"
+        },
+        "description": "Tekst eller ikon som kommer før inputfelter",
+        "name": "prepend",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/NativeDatePicker.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

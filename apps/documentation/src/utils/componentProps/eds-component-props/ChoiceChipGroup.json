@@ -1,0 +1,89 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ChoiceChipGroup",
+    "methods": [],
+    "props": {
+      "name": {
+        "defaultValue": null,
+        "description": "Navnet til ChoiceChipsGroup",
+        "name": "name",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChipGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "Verdien til den valgte ChoiceChipen",
+        "name": "value",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChipGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "string | null"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "ChoiceChip-komponentene sendes inn som children",
+        "name": "children",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChipGroup.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "En callback som blir kalles hver gang en ChoiceChip klikkes på",
+        "name": "onChange",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChipGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "(e: ChangeEvent<HTMLInputElement>) => void"
+        }
+      },
+      "label": {
+        "defaultValue": null,
+        "description": "Labelen til ChoiceChip-gruppen.",
+        "name": "label",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/chip/src/ChoiceChipGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

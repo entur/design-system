@@ -1,0 +1,57 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "ExpandableTextButton",
+    "methods": [],
+    "props": {
+      "open": {
+        "defaultValue": null,
+        "description": "Prop for om innholdet er åpent",
+        "name": "open",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "onToggle": {
+        "defaultValue": null,
+        "description": "Funksjonen som styrer åpningen av ExpandableTextButton",
+        "name": "onToggle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "as": {
+        "defaultValue": {
+          "value": "Heading5"
+        },
+        "description": "Den typografiske komponenten for tittelen",
+        "name": "as",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/expand/src/ExpandableTextButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ElementType<any> | undefined"
+        }
+      }
+    }
+  }
+]
