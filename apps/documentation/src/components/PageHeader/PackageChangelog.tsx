@@ -13,11 +13,12 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const changelog = query.allMdx.nodes.filter(node => {
     return node.parent?.name == packageName;
   });
+  console.log(changelog);
   return (
     <>
       <ActionChip
         onClick={() => {
-          setPackageChangelog(changelog[0].body);
+          setPackageChangelog(changelog[1].body);
           setModalTitle(`@entur/${changelog[0].parent.name}`);
           setOpenModal(true);
         }}
