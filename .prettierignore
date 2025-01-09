@@ -2,3 +2,6 @@
 themeForCodeBlock.js
 *.mdx
 componentColors.scss
+
+/.nx/cache
+/.nx/workspace-data

@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 # This hook lints all commits made on the current branch
 # If at least on of them does not adhere to conventional-commits standard, it will abort the push
 branch="$(git rev-parse --abbrev-ref HEAD)"

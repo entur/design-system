@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 # If we are on the main branch we lint the commit
 # If it does not follow conventional-commits standards, it will be aborted with a warning
 branch="$(git rev-parse --abbrev-ref HEAD)"
