@@ -3,12 +3,15 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useGetChangelog = () => {
   const query = useStaticQuery(graphql`
     query PackageChangelog {
-      allMdx {
+      allFile(filter: { sourceInstanceName: { eq: "changelog" } }) {
         nodes {
-          body
-          parent {
-            ... on File {
-              name
+          name
+          publicURL
+          children {
+            id
+            ... on Mdx {
+              id
+              body
             }
           }
         }

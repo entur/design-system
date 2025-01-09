@@ -5,7 +5,7 @@ import { Modal } from '@entur/modal';
 import { Link as LinkText } from '@entur/typography';
 
 import { MarkdownParser } from '../PageHeader/MarkdownParser';
-import { useGetChangelog } from '../Pages/useGetChangelog';
+import { useGetChangelog } from '../PageHeader/useGetChangelog';
 
 import './Changelog.scss';
 
@@ -15,7 +15,7 @@ const Changelog = () => {
   const [modalTitle, setModalTitle] = useState('');
   const query = useGetChangelog();
 
-  const changelogs = query?.allFile?.edges?.map(({ node }) => node) || [];
+  const changelogs = query?.allFile?.nodes || [];
 
   return (
     <div>

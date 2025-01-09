@@ -2913,11 +2913,6 @@ type CardFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type CardFilesQuery = { readonly file: { readonly extension: string, readonly name: string, readonly publicURL: string | null } | null };
 
-type ChangelogQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ChangelogQueryQuery = { readonly allFile: { readonly edges: ReadonlyArray<{ readonly node: { readonly publicURL: string | null, readonly name: string, readonly absolutePath: string } }> } };
-
 type coBrandingFilesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3027,12 +3022,12 @@ type NpmVersionQuery = { readonly allNpmPackage: { readonly edges: ReadonlyArray
 type PackageChangelogQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PackageChangelogQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly body: string | null, readonly parent: { readonly name: string } | {} | null }> } };
+type PackageChangelogQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly name: string, readonly publicURL: string | null, readonly children: ReadonlyArray<{ readonly id: string } | { readonly id: string } | { readonly id: string } | { readonly id: string } | { readonly id: string, readonly body: string | null } | { readonly id: string } | { readonly id: string } | { readonly id: string } | { readonly id: string } | { readonly id: string } | { readonly id: string }> }> } };
 
 type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageQueryQuery = { readonly toneofvoice: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+type pageQueryQuery = { readonly verdier: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
 

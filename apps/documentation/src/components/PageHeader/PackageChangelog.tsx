@@ -10,16 +10,16 @@ export const PackageChangelog = ({ packageName }: { packageName: string }) => {
   const [packageChangelog, setPackageChangelog] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const query = useGetChangelog();
-  const changelog = query.allMdx.nodes.filter(node => {
-    return node.parent?.name == packageName;
+  const changelog = query.allFile.nodes.filter(node => {
+    return node.name == packageName;
   });
-  console.log(changelog);
+  const changelogbody = changelog[0].children[0].body;
   return (
     <>
       <ActionChip
         onClick={() => {
-          setPackageChangelog(changelog[1].body);
-          setModalTitle(`@entur/${changelog[0].parent.name}`);
+          setPackageChangelog(changelogbody);
+          setModalTitle(`@entur/${changelog[0].name}`);
           setOpenModal(true);
         }}
       >
