@@ -7,7 +7,7 @@
   align-items: center;
   overflow-x: scroll;
   border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
-  width: 100%;
+  width: 100vw;
   padding: 1rem 1rem 0rem;
   transition: margin-left tokens.$timings-fast ease-out;
   height: variables.$navbar-height;
