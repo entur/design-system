@@ -66,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documentation-site-artifact
-          path: apps/documentation/dist
+          path: apps/documentation/public
 
   deploy-documentation-to-prod:
     needs: build-documentation
@@ -75,5 +75,5 @@ jobs:
       gcp_project_id: entur-design-system
       environment: prd
       build_artifact_name: documentation-site-artifact
-      build_artifact_path: 'apps/documentation/dist'
+      build_artifact_path: 'apps/documentation/public'
       entry_point: 'apps/documentation'
