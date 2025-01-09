@@ -49,6 +49,7 @@ const partnerIcons = [
   'SnelandiaIcon',
   'SvipperIcon',
   'TromsFylkestrafikkIcon',
+  'VestfoldkollektivtrafikkIcon',
   'VKTIcon',
   'VyIcon',
   // Mobility Partners
