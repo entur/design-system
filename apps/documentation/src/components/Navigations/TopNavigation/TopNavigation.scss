@@ -1,13 +1,13 @@
 @use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as *;
 
 .top-navigation {
   display: flex;
   align-items: center;
   overflow-x: scroll;
   border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
-  width: 100%;
+  width: 100vw;
   padding: 1rem 1rem 0rem;
   transition: margin-left tokens.$timings-fast ease-out;
   height: variables.$navbar-height;
@@ -16,6 +16,11 @@
   &--frontpage {
     border-bottom: none;
   }
+
+  .searchmodal__button {
+    margin-left: auto;
+  }
+
   @include for-desktop {
     position: fixed;
     top: 0;

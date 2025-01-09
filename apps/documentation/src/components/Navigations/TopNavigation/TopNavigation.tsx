@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Location, useLocation } from '@reach/router';
+import classNames from 'classnames';
+
 import { TopNavigationItem } from '@entur/menu';
 import { useContrast } from '@entur/layout';
-import classNames from 'classnames';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
+import { Search } from '@components/Search/Search';
 
-import logo from '../../../media/logo/logo.svg';
-import logoDark from '../../../media/logo/logoDark.svg';
+import logo from '@media/logo/logo.svg';
+import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
 
@@ -40,6 +42,7 @@ const TopNavigation = () => {
       <NavItem to="/komponenter">Komponenter</NavItem>
       <NavItem to="/tokens">Tokens</NavItem>
       <NavItem to="/universell-utforming">Universell utforming</NavItem>
+      <Search />
       <SettingsPanel />
     </nav>
   );

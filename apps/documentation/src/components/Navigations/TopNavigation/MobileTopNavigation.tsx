@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { Location } from '@reach/router';
+
 import { Contrast, useContrast } from '@entur/layout';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
+import { Search } from '@components/Search/Search';
 
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';
@@ -44,6 +46,7 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
                 alt="Entur logo – designsystemets starside"
               />
             </Link>
+            <Search />
             <SettingsPanel />
           </div>
           <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">

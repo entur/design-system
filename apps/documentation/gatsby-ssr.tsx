@@ -1,13 +1,11 @@
+import React from 'react';
+import { GatsbyBrowser } from 'gatsby';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+
 import './src/styles/index.scss';
 
-import React from 'react';
-import { GatsbyBrowser, GatsbySSR } from 'gatsby';
-import { PostHogProvider } from 'posthog-js/react';
-import posthog from 'posthog-js';
-
 import { ToastProvider } from '@entur/alert';
-
-import DocLayout from './src/layouts/DocLayout';
 import {
   ConsentProvider,
   AnalyticsProvider,
@@ -16,6 +14,7 @@ import {
   AnalyticsContext,
   ColorsProvider,
 } from './src/providers';
+import DocLayout from './src/layouts/DocLayout';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
