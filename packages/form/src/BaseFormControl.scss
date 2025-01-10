@@ -36,9 +36,11 @@
     }
 
     &:focus-within {
-      outline: 1px solid var(--components-form-baseform-standard-border-interactive);
+      outline: t.$outlines-focus;
+      outline-color: var(--components-form-baseform-standard-border-interactive);
+      outline-offset: t.$outline-offsets-focus;
       .eds-contrast & {
-        outline: var(--components-form-baseform-contrast-border-interactive);
+        outline-color: var(--components-form-baseform-contrast-border-interactive);
       }
     }
 
