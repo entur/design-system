@@ -15,7 +15,7 @@
   padding: 0;
   text-decoration: none;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
     .eds-square-button__button {
       outline: t.$outlines-focus;

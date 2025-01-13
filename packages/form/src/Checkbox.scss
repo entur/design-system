@@ -84,9 +84,8 @@
         }
       }
     }
-    &:focus,
-    :focus-within {
-      + .eds-checkbox__icon {
+    &:has(:focus-visible) {
+      .eds-checkbox__icon {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
