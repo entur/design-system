@@ -1,6 +1,16 @@
-.page-header__install-text {
-  cursor: pointer;
-  & > svg {
-    float: right;
+@use '@entur/tokens/dist/styles.scss' as t;
+
+.page-header {
+  &__import-wrapper {
+    display: flex;
+    align-items: flex-start;
+    column-gap: t.$space-default;
+    row-gap: t.$space-extra-small;
+    flex-wrap: wrap;
+
+    &__copy-button {
+      margin-bottom: t.$space-none;
+      flex: 1 0;
+    }
   }
 }

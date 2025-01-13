@@ -83,21 +83,19 @@ const PageHeader: React.FC<Props> = ({
       </div>
       {leadText && <LeadParagraph>{leadText}</LeadParagraph>}
       {npmPackage && userType === 'developer' && (
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '1rem',
-            }}
+        <div className="page-header__import-wrapper">
+          <CopyableText
+            successMessage="Innstalleringstekst ble kopiert til utklippstavla."
+            className="page-header__import-wrapper__copy-button"
           >
-            <CopyableText successMessage="Innstalleringstekst ble kopiert til utklippstavla.">
-              {installText}
-            </CopyableText>
-            <CopyableText successMessage="CSS-importen ble kopiert til utklippstavla.">
-              {cssImport}
-            </CopyableText>
-          </div>
+            {installText}
+          </CopyableText>
+          <CopyableText
+            successMessage="CSS-importen ble kopiert til utklippstavla."
+            className="page-header__import-wrapper__copy-button"
+          >
+            {cssImport}
+          </CopyableText>
         </div>
       )}
     </header>
