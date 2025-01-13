@@ -1,5 +1,4 @@
 import React from 'react';
-import { usePersistedState } from '@providers/SettingsContext';
 
 export type MenuItem = {
   id: string;
@@ -133,8 +132,11 @@ export function useSideMenuScroll(page: string) {
   }, [page]);
 
   React.useEffect(() => {
-    // Save the current scroll position to localStorage
-    localStorage.setItem(`scroll-${page}`, scrollPosition.toString());
+    const currentScroll = scrollPosition.toString();
+    if (currentScroll !== '0') {
+      // Save the current scroll position to localStorage
+      localStorage.setItem(`scroll-${page}`, scrollPosition.toString());
+    } else localStorage.removeItem(`scroll-${page}`);
   }, [scrollPosition, page]);
 
   return [scrollPosition, setScrollPosition] as const;

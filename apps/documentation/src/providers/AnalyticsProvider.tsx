@@ -87,7 +87,6 @@ export const AnalyticsProvider = ({
       }
       default: {
         posthog.set_config(deniedPosthogOptions);
-        updateConsents({ analytics: 'undecided' });
       }
     }
   };

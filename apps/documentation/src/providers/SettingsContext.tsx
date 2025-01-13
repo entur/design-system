@@ -20,7 +20,9 @@ export function usePersistedState<Type>(
   // done this way to keep the type definition intact
   const [state] = useStateResult;
   React.useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
+    if (JSON.stringify(state) !== JSON.stringify(initialState))
+      localStorage.setItem(key, JSON.stringify(state));
+    else localStorage.removeItem(key);
   }, [key, state]);
   return useStateResult;
 }
