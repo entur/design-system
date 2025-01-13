@@ -172,6 +172,8 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
   const numberOfResultsString = `${displayedIcons.length}\u00A0ikon${
     displayedIcons.length === 1 ? '' : 'er'
   }`;
+  const partnerCategoryIsSelected =
+    selectedCategory?.value.toLowerCase() === 'partner';
 
   const handleIconClick = (iconName: string) => () => {
     copy(iconName);
@@ -249,7 +251,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
         <>
           <div className="icon-list__header">
             <Switch
-              checked={isContrast}
+              checked={partnerCategoryIsSelected || isContrast}
               onChange={() => setContrast(prev => !prev)}
             >
               Kontrast
@@ -264,7 +266,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
               ({ name: iconName, component: Icon, downloadUrl }) => (
                 <li
                   className={classNames('icon-list__item', {
-                    'eds-contrast': isContrast,
+                    'eds-contrast': partnerCategoryIsSelected || isContrast,
                   })}
                   key={iconName}
                 >
