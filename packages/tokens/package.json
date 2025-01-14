@@ -18,11 +18,11 @@
   },
   "scripts": {
     "build": "yarn build:js && (yarn build:stylesheets & yarn build:legacy-tokens)  && yarn cleanup-temp-files",
-    "build:legacy-tokens": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-legacy-tokens.ts",
-    "build:js": "(ts-node -O '{\"module\": \"commonjs\"}' bin/build-js-objects.ts) && dts build",
-    "build:stylesheets": "ts-node -O '{\"module\": \"commonjs\"}' bin/build-stylesheets.ts",
+    "build:legacy-tokens": "tsx bin/build-legacy-tokens.ts",
+    "build:js": "(tsx bin/build-js-objects.ts) && dts build",
+    "build:stylesheets": "tsx bin/build-stylesheets.ts",
     "start": "yarn build",
-    "cleanup-temp-files": "ts-node -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/data.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
+    "cleanup-temp-files": "tsx -e \"['src/primitive.ts', 'src/semantic.ts', 'src/base.ts', 'src/data.ts', 'src/transport.ts', 'src/componentColors.ts'].forEach(file => require('fs-extra').removeSync(file)); \""
   },
   "devDependencies": {
     "@types/flat": "^0.0.28",
@@ -31,7 +31,7 @@
     "dts-cli": "2.0.5",
     "fs-extra": "^9.0.0",
     "path": "0.12.7",
-    "ts-node": "^8.3.0"
+    "tsx": "4.19.2"
   },
   "dependencies": {
     "flat": "^5.0.1",

@@ -83,8 +83,7 @@
     "firebase-tools": "^13.29.1",
     "gatsby-plugin-root-import": "^2.0.9",
     "react-docgen-typescript": "^2.2.2",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.1",
+    "tsx": "4.19.2",
     "typescript": "^5.5.4"
   }
 }
