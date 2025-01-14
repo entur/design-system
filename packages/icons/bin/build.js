@@ -51,6 +51,7 @@ const partnerIcons = [
   'TromsFylkestrafikkIcon',
   'VKTIcon',
   'VyIcon',
+  'AlesundTurvognIcon',
   // Mobility Partners
   'BergenBysykkelIcon',
   'BoltIcon',
