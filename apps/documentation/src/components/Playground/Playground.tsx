@@ -141,9 +141,9 @@ const Playground: React.FC<PlaygroundProps> = ({
           </div>
         )}
       </ConditionalWrapper>
-      <BaseExpand open={isShowingEditor}>
+      <BaseExpand open={isShowingEditor} className="playground__expandable">
         <LiveEditor
-          className="playground__editor"
+          className="playground__expandable__editor"
           onChange={updatedCode => setCodeWithUpdatedProps(updatedCode)}
           tabMode="focus"
         />
