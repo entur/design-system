@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.60](https://github.com/entur/design-system/compare/@entur/grid@0.3.60-RC.0...@entur/grid@0.3.60) (2025-01-14)
+
+**Note:** Version bump only for package @entur/grid
+
 ## [0.3.60-RC.0](https://github.com/entur/design-system/compare/@entur/grid@0.3.59...@entur/grid@0.3.60-RC.0) (2025-01-09)
 
 **Note:** Version bump only for package @entur/grid

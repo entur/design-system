@@ -1,6 +1,6 @@
 {
   "name": "@entur/expand",
-  "version": "3.5.26-RC.0",
+  "version": "3.5.26",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/expand.esm.js",

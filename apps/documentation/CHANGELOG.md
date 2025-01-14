@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/entur/design-system/compare/@entur/documentation@1.1.0-RC.0...@entur/documentation@1.1.0) (2025-01-14)
+
+### Bug Fixes
+
+- **docs:** fix 404 page ([700e6e0](https://github.com/entur/design-system/commit/700e6e0acb00071ae48459a18d4fcb7b2d501582))
+- **docs:** fix bg color on floating mobile button ([3fd95e9](https://github.com/entur/design-system/commit/3fd95e9ad69ffa23c7c635dd7d7b5afe1f8214ae))
+- **docs:** quickfix changelog ([5c1047e](https://github.com/entur/design-system/commit/5c1047eefa31a549f4c30157fbf4d01bcecca5eb))
+- **docs:** real fix changelog ([a493b57](https://github.com/entur/design-system/commit/a493b57d9a31f302280d2e2dedb921ef55643f73))
+
+### Features
+
+- **website:** display partner icons with contrast background for visibility ([92ac152](https://github.com/entur/design-system/commit/92ac15234f91136724334dfc69acdef42684c7da))
+
 # [1.1.0-RC.0](https://github.com/entur/design-system/compare/@entur/documentation@4.1.3...@entur/documentation@1.1.0-RC.0) (2025-01-09)
 
 ### Bug Fixes
