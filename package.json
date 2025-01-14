@@ -61,7 +61,7 @@
     "case": "1.6.3",
     "commitizen": "4.3.1",
     "cross-env": "7.0.3",
-    "cz-lerna-changelog": "2.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "dts-cli": "2.0.5",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
@@ -102,7 +102,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "packageManager": "yarn@4.6.0"
