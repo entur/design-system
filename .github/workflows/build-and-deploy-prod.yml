@@ -36,7 +36,7 @@ jobs:
     name: Build documentation
     needs: build-packages
     runs-on:
-      group: 'grp-ubuntu-22.04-4core'
+      group: 'grp-ubuntu-22.04-4core-x64'
     steps:
       - uses: actions/checkout@v4
 
