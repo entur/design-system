@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.5](https://github.com/entur/design-system/compare/@entur/tokens@3.17.4...@entur/tokens@3.17.5) (2025-01-15)
+
+### Performance Improvements
+
+- switch from ts-node to tsx in tokens build and documentation ([9dc9c13](https://github.com/entur/design-system/commit/9dc9c1310db7bc50b3be43f5e5518a8126699c0d))
+
 ## [3.17.4](https://github.com/entur/design-system/compare/@entur/tokens@3.17.4-RC.0...@entur/tokens@3.17.4) (2025-01-14)
 
 **Note:** Version bump only for package @entur/tokens

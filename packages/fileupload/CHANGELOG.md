@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.132](https://github.com/entur/design-system/compare/@entur/fileupload@0.3.131...@entur/fileupload@0.3.132) (2025-01-15)
+
+**Note:** Version bump only for package @entur/fileupload
+
 ## [0.3.131](https://github.com/entur/design-system/compare/@entur/fileupload@0.3.131-RC.0...@entur/fileupload@0.3.131) (2025-01-14)
 
 **Note:** Version bump only for package @entur/fileupload

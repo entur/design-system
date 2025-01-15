@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.38](https://github.com/entur/design-system/compare/@entur/button@3.2.37...@entur/button@3.2.38) (2025-01-15)
+
+**Note:** Version bump only for package @entur/button
+
 ## [3.2.37](https://github.com/entur/design-system/compare/@entur/button@3.2.37-RC.0...@entur/button@3.2.37) (2025-01-14)
 
 **Note:** Version bump only for package @entur/button

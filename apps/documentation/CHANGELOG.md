@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/entur/design-system/compare/@entur/documentation@1.1.0...@entur/documentation@1.1.1) (2025-01-15)
+
+### Bug Fixes
+
+- **website:** fix poor contrast for focus indicator playground code editor in dark mode ([83bb1dc](https://github.com/entur/design-system/commit/83bb1dc33050074612689df975faa6b2f2dc3129))
+
+### Performance Improvements
+
+- switch from ts-node to tsx in tokens build and documentation ([9dc9c13](https://github.com/entur/design-system/commit/9dc9c1310db7bc50b3be43f5e5518a8126699c0d))
+
 # [1.1.0](https://github.com/entur/design-system/compare/@entur/documentation@1.1.0-RC.0...@entur/documentation@1.1.0) (2025-01-14)
 
 ### Bug Fixes

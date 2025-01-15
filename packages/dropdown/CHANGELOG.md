@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.14](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13...@entur/dropdown@6.0.14) (2025-01-15)
+
+**Note:** Version bump only for package @entur/dropdown
+
 ## [6.0.13](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13-RC.0...@entur/dropdown@6.0.13) (2025-01-14)
 
 ### Bug Fixes

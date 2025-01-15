@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.27](https://github.com/entur/design-system/compare/@entur/expand@3.5.26...@entur/expand@3.5.27) (2025-01-15)
+
+**Note:** Version bump only for package @entur/expand
+
 ## [3.5.26](https://github.com/entur/design-system/compare/@entur/expand@3.5.26-RC.0...@entur/expand@3.5.26) (2025-01-14)
 
 **Note:** Version bump only for package @entur/expand

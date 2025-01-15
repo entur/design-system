@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.59](https://github.com/entur/design-system/compare/@entur/modal@1.7.58...@entur/modal@1.7.59) (2025-01-15)
+
+**Note:** Version bump only for package @entur/modal
+
 ## [1.7.58](https://github.com/entur/design-system/compare/@entur/modal@1.7.58-RC.0...@entur/modal@1.7.58) (2025-01-14)
 
 **Note:** Version bump only for package @entur/modal
