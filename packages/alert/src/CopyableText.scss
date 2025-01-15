@@ -56,13 +56,13 @@
       &:active {
         background: var(--components-button-iconbutton-standard-active);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
 
         .eds-contrast & {
-          outline-color: var(--basecolors-stroke-focus-contrast);
+          outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
     }

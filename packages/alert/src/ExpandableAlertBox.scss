@@ -32,7 +32,7 @@
     line-height: t.$line-heights-extra-large;
     padding: 0 t.$space-extra-small2;
     flex-shrink: 0;
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
       outline-offset: t.$outline-offsets-focus;
     }
