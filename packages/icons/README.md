@@ -26,7 +26,7 @@ Please refer to the [documentation](https://design.entur.no/komponenter/ressurse
 
 This package contains all SVG files, as well as a script to create optimized React components from those SVG files.
 
-If you're adding an icon, please add the SVG file to the appropriate `svg/` folder. Make sure you give it a unique name, and make sure it looks correct in a browser after exporting it.
+If you're adding an icon, please add the SVG file to the appropriate `svg/` folder. Make sure you give it a unique name, and make sure it looks correct in a browser after exporting it. Remember to add the icon-name in bin/build.js if it is a partner-icon.
 
 If you're changing an existing icon, just update the existing SVG file with the new source code.
 
