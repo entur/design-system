@@ -15,7 +15,7 @@
       margin-left: -0.1rem;
       margin-right: -0.2rem;
     }
-    &:focus {
+    &:focus-visible {
       background-color: var(--components-button-iconbutton-standard-active);
       outline: transparent;
       border-radius: t.$border-radiuses-default;
