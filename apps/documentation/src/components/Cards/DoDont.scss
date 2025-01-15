@@ -15,7 +15,7 @@
 
     min-height: 16rem;
     padding-inline: t.$space-large;
-    padding-block: 15%;
+    padding-block: t.$space-default;
     border-radius: t.$border-radiuses-large;
     overflow: hidden;
 
@@ -79,7 +79,7 @@
     margin-top: t.$space-small;
 
     .eds-icon {
-      min-width: t.$space-default;
+      min-width: t.$font-sizes-extra-large;
 
       .do-dont-card--success & {
         color: var(--designentur-dodontcard-statusline-success);
@@ -94,11 +94,12 @@
 
     &__title {
       font-weight: t.$font-weights-heading;
+      font-size: t.$font-sizes-extra-large;
+      margin-bottom: t.$space-default;
     }
     ul {
-      padding-left: 0;
-      margin-left: -0.4rem;
-      margin-top: t.$space-extra-small;
+      padding-left: t.$space-none;
+      margin-left: calc(-1 * t.$space-default);
     }
   }
 }

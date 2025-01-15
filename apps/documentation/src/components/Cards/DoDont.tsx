@@ -62,7 +62,7 @@ export const DoDontCard = ({
   const textContent = (
     <div className="do-dont-card__text-content">
       {variant !== 'none' && (
-        <Icon inline={true} aria-label={variantMap[variant].ariaDescription} />
+        <Icon aria-label={variantMap[variant].ariaDescription} size="24px" />
       )}
       <div>
         {title !== undefined && (
