@@ -5,7 +5,7 @@
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 1rem;
 
   &.eds-contrast {
@@ -29,6 +29,7 @@
     }
     &:hover,
     &:focus-within {
+      .eds-icon,
       .icon-list__item__download-button {
         opacity: 1;
       }
@@ -48,32 +49,51 @@
       cursor: pointer;
 
       > span {
+        height: 1.25rem;
+        padding-left: tokens.$space-extra-small2;
+        margin-left: calc(-1 * tokens.$space-extra-small2);
+
         overflow-x: hidden;
         text-overflow: ellipsis;
+        border-radius: tokens.$border-radiuses-default 0 0 tokens.$border-radiuses-default;
       }
-      .eds-icon {
-        margin-left: 0.25rem;
+      > .eds-icon {
+        min-height: tokens.$font-sizes-extra-large;
+        min-width: tokens.$font-sizes-extra-large;
+        padding-left: tokens.$space-extra-small2;
+        padding-right: tokens.$space-extra-small2;
+        padding-block: tokens.$space-extra-small2;
+
+        border-radius: 0 tokens.$border-radiuses-default tokens.$border-radiuses-default 0;
         opacity: 0;
-        transition: opacity 10 ease-in-out;
       }
 
       &:hover,
       &:focus {
         .eds-icon {
+          background-color: var(--components-button-iconbutton-contrast-hover);
           opacity: 1;
         }
+        span {
+          background-color: var(--components-button-iconbutton-contrast-hover);
+        }
       }
-      &:focus {
+      &:focus-visible {
         outline: tokens.$outlines-focus;
         outline-offset: (-3 * tokens.$outline-offsets-focus);
+        outline-color: var(--basecolors-stroke-focus-standard);
+
         .eds-contrast & {
           outline: tokens.$outlines-focus-contrast;
+          outline-color: var(--basecolors-stroke-focus-contrast);
         }
       }
     }
     &__download-button {
       align-self: flex-end;
       opacity: 0;
+      position: relative;
+      bottom: tokens.$space-extra-small;
       padding-right: tokens.$space-extra-small;
       margin-right: tokens.$space-extra-small;
     }

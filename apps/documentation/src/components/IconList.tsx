@@ -51,9 +51,10 @@ const ICON_SIZES = [
   { label: 'Small', value: fontSizes.small.toString() },
   { label: 'Medium', value: fontSizes.medium.toString() },
   { label: 'Large', value: fontSizes.large.toString() },
-  { label: '2XLarge', value: fontSizes.extraLarge2.toString() },
-  { label: '3XLarge', value: fontSizes.extraLarge3.toString() },
-  { label: '4XLarge', value: fontSizes.extraLarge4.toString() },
+  { label: 'Extra large 2', value: fontSizes.extraLarge2.toString() },
+  { label: 'Extra large 3', value: fontSizes.extraLarge3.toString() },
+  { label: 'Extra large 4', value: fontSizes.extraLarge4.toString() },
+  { label: 'Extra large 5', value: fontSizes.extraLarge5.toString() },
 ];
 
 const deprecatedIcons = [
@@ -93,9 +94,9 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
 
     return filteredIcons
       .map(icon => {
-        const iconName = icon.node.name.replace(/\s+/g, '') + 'Icon';
+        const iconName = icon.node.name.replace(/\s+/g, '');
         const iconComponent = Object.entries(allIconComponents).find(
-          iconComponent => iconComponent?.[0] === iconName,
+          iconComponent => iconComponent?.[0] === iconName + 'Icon',
         )?.[1];
         const downloadUrl = icon.node.publicURL;
 
@@ -202,19 +203,20 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           />
         </GridItem>
         <GridItem small={6} medium={4}>
-          <Dropdown
-            items={ICON_SIZES}
-            selectedItem={iconSize}
-            onChange={item => (item === null ? undefined : setIconSize(item))}
-            label="Ikonstørrelse"
-          />
-        </GridItem>
-        <GridItem small={6} medium={4}>
           <SearchableDropdown
             label="Kategori"
             items={() => categories}
             selectedItem={selectedCategory}
             onChange={setSelectedCategory}
+            labelClearSelectedItem="Fjern valgt kategori"
+          />
+        </GridItem>
+        <GridItem small={6} medium={4}>
+          <Dropdown
+            items={ICON_SIZES}
+            selectedItem={iconSize}
+            onChange={item => (item === null ? undefined : setIconSize(item))}
+            label="Ikonstørrelse"
           />
         </GridItem>
       </GridContainer>
@@ -232,6 +234,12 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
           </SecondaryButton>
           <Heading4>Her er noen forslag til hva du kan gjøre:</Heading4>
           <UnorderedList>
+            {selectedCategory !== null && (
+              <ListItem>
+                Du viser kun ikoner i «{selectedCategory.label}»-kategorien.
+                Prøv å fjerne denne.
+              </ListItem>
+            )}
             <ListItem>Prøv å bruke synonymer for «{searchString}»</ListItem>
             <ListItem>
               Prøv å beskrive handlingen til ikonet i stedet for utseende, eks.
@@ -250,12 +258,14 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
       ) : (
         <>
           <div className="icon-list__header">
-            <Switch
-              checked={partnerCategoryIsSelected || isContrast}
-              onChange={() => setContrast(prev => !prev)}
-            >
-              Kontrast
-            </Switch>
+            {!partnerCategoryIsSelected && (
+              <Switch
+                checked={partnerCategoryIsSelected || isContrast}
+                onChange={() => setContrast(prev => !prev)}
+              >
+                Kontrast
+              </Switch>
+            )}
             <span aria-live="polite">
               {numberOfResultsString}
               <VisuallyHidden> funnet</VisuallyHidden>
@@ -279,13 +289,18 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />
                   </SubLabel>
                   <Icon
-                    style={{ width: iconSize?.value, height: iconSize?.value }}
+                    style={{
+                      width: iconSize?.value,
+                      height: iconSize?.value,
+                      marginBlock: 'auto',
+                    }}
                     aria-label={`Forhåndsvisning av ${iconName}-ikonet`}
+                    size="16px"
                   />
                   <Tooltip
                     aria-hidden="true"
                     content="Last ned SVG"
-                    placement="top"
+                    placement="bottom"
                   >
                     <IconButton
                       as="a"
