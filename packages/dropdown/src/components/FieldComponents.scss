@@ -23,7 +23,7 @@
         &:hover {
           background-color: var(--components-chip-standard-hover);
         }
-        &:focus {
+        &:focus-visible {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
@@ -68,7 +68,7 @@
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
@@ -92,7 +92,7 @@
           background-color: var(--components-button-iconbutton-standard-hover);
         }
 
-        &:focus {
+        &:focus-visible {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
@@ -141,7 +141,7 @@
         &:hover {
           background-color: var(--components-button-iconbutton-standard-hover);
         }
-        &:focus {
+        &:focus-visible {
           outline-color: var(--basecolors-stroke-focus-standard);
         }
       }
