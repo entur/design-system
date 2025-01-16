@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { MoveFocusInside } from 'react-focus-lock';
-import { VisuallyHidden } from '@entur/a11y';
 import { Contrast } from '@entur/layout';
 import { CloseIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
@@ -82,20 +81,20 @@ export const Drawer: React.FC<DrawerProps> = ({
           style={style}
         >
           <MoveFocusInside>
+            <IconButton
+              className="eds-drawer__close-button"
+              onClick={onDismiss}
+              type="button"
+              aria-label={closeLabel}
+            >
+              <CloseIcon aria-hidden />
+            </IconButton>
             <div className="eds-drawer__content">
               <Heading3 as="h2" id={titleId}>
                 {title}
               </Heading3>
               {children}
             </div>
-            <IconButton
-              className="eds-drawer__close-button"
-              onClick={onDismiss}
-              type="button"
-            >
-              <CloseIcon aria-hidden />
-              <VisuallyHidden>{closeLabel}</VisuallyHidden>
-            </IconButton>
           </MoveFocusInside>
         </ContentContainer>
       </Wrapper>
