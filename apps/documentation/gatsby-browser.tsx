@@ -57,9 +57,7 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
     </ConsentProvider>
   );
   if (props.location.pathname === '/') return <>{children}</>;
-  if (element.type.is404) {
-    return <DocLayout {...props}>{children}</DocLayout>;
-  }
+
   return <DocLayout {...props}>{children}</DocLayout>;
 };
 
