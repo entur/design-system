@@ -5,12 +5,13 @@ parent: Komponenter
 route: /komponenter/ressurser/icons
 menu: Ressurser
 npmPackage: icons
-tags: ikoner, icons
+tags: ikoner, icons, ikon, piktogram, icon, pictogram
 ---
 
 import { ExpandableText } from '@entur/expand';
 import { AddIcon } from '@entur/icons';
 import * as icons from '@entur/icons';
+import { fontSizes, base } from "@entur/tokens";
 import { graphql } from 'gatsby';
 import { SEO } from '@components/seo/SEO';
 import IconList from '@components/IconList';
@@ -50,18 +51,49 @@ på [#talk-designsystem](https://entur.slack.com/archives/C899QSPB7) hvis det ma
 Alle ikoner har støtte for propen `inline`, som forenkler bruken av ikoner når de skal stå i en tekstlig sammenheng.
 Dette brukes først og fremst internt i komponenter som bruker komponenter, men anbefales å bruke sammen med knapper og andre komponenter hvor man har behov for et inline ikon.
 
+<Playground 
+  hideContrastOption
+  code=
+  {`<div>
+  Se dette ikoner ligger inline med teksten{' '}
+  <AddIcon inline aria-label="(ikoneksempel som ligger på linje)" />
+  <br /> i motsetning til dette som ligger litt for høyt opp <AddIcon aria-label="(ikoneksempel som ligger litt for høyt)" />
+  <br />
+  <br />
+  <PrimaryButton>
+    Legg til <AddIcon aria-hidden="true" />
+  </PrimaryButton>
+</div>`}
+  />
+
+### color
+
+Hvis du trenger å endre farge på ikonet (med unntak av partner-ikoner), kan du bruke prop-en `color`. Denne godtar 
+alle CSS-godkjente fargeverdier.
+
 ```jsx
-  <div>
-    Se dette ikoner ligger inline med teksten{' '}
-    <AddIcon inline aria-label="(ikoneksempel som ligger på linje)" />
-    <br /> i motsetning til dette som ligger litt for høyt opp <AddIcon aria-label="(ikoneksempel som ligger litt for høyt)" />
-    <br />
-    <br />
-    <PrimaryButton>
-      Legg til <AddIcon aria-hidden="true" />
-    </PrimaryButton>
-  </div>
+<div style={{ display: "flex", gap: "2rem"}}>
+  <HeartIcon color="var(--basecolors-shape-highlight)" size={fontSizes.rem.extraLarge5 + "rem"} aria-label="(Hjerteikon i den variable basecolor shape highlight–farge)" />
+  <HeartIcon color={base.light.baseColors.shape.highlight} size={fontSizes.rem.extraLarge5 + "rem"} aria-label="(Hjerteikon i light basecolor shape highlight–fargen)" />
+  <HeartIcon color="#181c56" size={fontSizes.rem.extraLarge5 + "rem"} aria-label="(Hjerteikon i Entur-blått)" />
+  <HeartIcon color="blue" size={fontSizes.rem.extraLarge5 + "rem"} aria-label="(Hjerteikon i CSS-blått)" />
+</div>
 ```
+
+### size
+
+Hvis du trenger å endre størrelsen på ikonet, kan du bruke prop-en `size`. Denne godtar 
+alle CSS-godkjente størrelseverdier. Hvis du ikke legger ved en enhet tolkes tallet som `px`.
+
+<Playground 
+  hideContrastOption
+  code={`<div style={{ display: "flex", gap: "2rem"}}>
+  <HeartIcon size={fontSizes.large} aria-label="(16px stort hjerteikon)" />
+  <HeartIcon size={fontSizes.large + "px"} aria-label="(16px stort hjerteikon)" />
+  <HeartIcon size={fontSizes.rem.extraLarge2 + "rem"} aria-label="(1.5rem stort hjerteikon)" />
+  <HeartIcon size={"2rem"} aria-label="(2rem stort hjerteikon)" />
+</div>`}
+/>
 
 ### React Native
 

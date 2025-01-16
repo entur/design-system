@@ -51,6 +51,7 @@ const ICON_SIZES = [
   { label: 'Small', value: fontSizes.small.toString() },
   { label: 'Medium', value: fontSizes.medium.toString() },
   { label: 'Large', value: fontSizes.large.toString() },
+  { label: 'Extra large', value: fontSizes.extraLarge.toString() },
   { label: 'Extra large 2', value: fontSizes.extraLarge2.toString() },
   { label: 'Extra large 3', value: fontSizes.extraLarge3.toString() },
   { label: 'Extra large 4', value: fontSizes.extraLarge4.toString() },
@@ -283,7 +284,7 @@ const IconList: React.FC<IconListProps> = ({ icons: allIconComponents }) => {
                   <SubLabel
                     as="button"
                     className="icon-list__item-name"
-                    onClick={handleIconClick(iconName)}
+                    onClick={handleIconClick(iconName + 'Icon')}
                   >
                     <span>{iconName}</span>
                     <CopyIcon aria-label=", trykk for å kopiere til utklippstavlen" />

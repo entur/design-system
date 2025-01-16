@@ -1,13 +1,11 @@
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 
-//
 .color-swatch {
   border: none;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0;
-  background: tokens.$colors-brand-white;
   cursor: pointer;
   font-family: inherit;
   transition: box-shadow tokens.$timings-medium ease-in-out, transform tokens.$timings-medium ease-in-out;
