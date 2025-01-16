@@ -22,8 +22,9 @@
     justify-content: space-between;
     align-items: baseline;
   }
+
   &__button {
-    color: inherit;
+    color: var(--components-button-iconbutton-standard-text);
     background: none;
     border: none;
     cursor: pointer;
@@ -34,11 +35,13 @@
     flex-shrink: 0;
     &:focus-visible {
       outline: t.$outlines-focus;
+      outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
     }
     .eds-icon {
       font-size: t.$font-sizes-large;
       padding-left: t.$space-extra-small2;
+      color: var(--components-button-iconbutton-standard-text);
     }
   }
 }
