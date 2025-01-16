@@ -31,7 +31,7 @@
     padding: t.$space-medium t.$space-small;
   }
   &--sortable {
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
@@ -59,7 +59,7 @@
       position: absolute;
       margin-left: t.$space-extra-small2;
     }
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;
