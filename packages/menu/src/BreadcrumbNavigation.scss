@@ -34,7 +34,7 @@
     animation: eds-breadcrumb-underline 0.3s ease-in;
   }
 
-  &:focus {
+  &:focus-visible {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
