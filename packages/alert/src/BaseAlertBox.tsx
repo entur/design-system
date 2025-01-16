@@ -87,7 +87,10 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
         'eds-alert-box',
         `eds-alert-box--${size}`,
         `eds-alert-box--${variant}`,
-        { 'eds-alert-box--toast--exit-animation': toastIsBeingRemoved },
+        {
+          'eds-alert-box--toast--exit-animation': toastIsBeingRemoved,
+          'eds-alert-box--no-title': !title,
+        },
         className,
       )}
       {...rest}
@@ -99,7 +102,6 @@ export const BaseAlertBox: React.FC<BaseAlertBoxProps> = ({
       />
       <div
         className={classNames('eds-alert-box__content', {
-          'eds-alert-box__content--no-title': !title,
           'eds-alert-box__content--no-children': !children,
         })}
       >
