@@ -12,8 +12,7 @@
     background-color: var(--components-layout-card-contrast-fill-default);
   }
 
-  &:focus,
-  &:focus-within {
+  &:has(:focus-visible) {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;
