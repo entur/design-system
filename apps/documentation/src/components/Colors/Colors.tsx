@@ -81,7 +81,7 @@ const Colors: React.FC<{
           <GridContainer
             spacing="large"
             style={{ marginBottom: '3rem' }}
-            className="eds-colors-small-space"
+            className="eds-colors-group__small-space"
           >
             <ColorSwatch title="Sky" path="validation.sky"></ColorSwatch>
             <ColorSwatch
@@ -190,24 +190,34 @@ export const ColorDrawer: React.FC<{
       {description && <div style={{ marginTop: '1.5rem' }}>{description}</div>}
       <Heading4>Fargerverdier</Heading4>
       <Label>Variabel</Label>
-      <CopyableText successMessage={`Kopiert til utklippstavle`}>
+      <CopyableText
+        className="eds-colors-group__copy-color-button"
+        successMessage={`Kopiert til utklippstavle`}
+      >
         {color.variable}
       </CopyableText>
       <Label>Hex</Label>
       <CopyableText
+        className="eds-colors-group__copy-color-button"
         textToCopy={color.hex.replace('#', '')}
         successMessage={'Kopiert til utklippstavle'}
       >
         {color.hex}
       </CopyableText>
       <Label>RGB</Label>
-      <CopyableText successMessage={'Kopiert til utklippstavle'}>
+      <CopyableText
+        className="eds-colors-group__copy-color-button"
+        successMessage={'Kopiert til utklippstavle'}
+      >
         {color.rgb}
       </CopyableText>
       {color.cmyk && (
         <>
           <Label>CMYK</Label>
-          <CopyableText successMessage={'Kopiert til utklippstavle'}>
+          <CopyableText
+            className="eds-colors-group__copy-color-button"
+            successMessage={'Kopiert til utklippstavle'}
+          >
             {color.cmyk}
           </CopyableText>
         </>
@@ -220,7 +230,7 @@ export const ColorDrawer: React.FC<{
           kontrastkrav for farger.
         </LinkText>
       </Paragraph>
-      <Table>
+      <Table className="eds-colors-group__contrast-table">
         <TableHead>
           <TableRow>
             <HeaderCell>Bakgrunn</HeaderCell>
@@ -259,7 +269,11 @@ const ContrastRow = ({ color, testColor }) => {
       <DataCell>
         <div
           role="img"
-          style={{ background: testColor, height: '100%' }}
+          style={{
+            background: testColor,
+            height: '100%',
+            border: 'solid 1px var(--basecolors-stroke-subdued)',
+          }}
           aria-label={'Farge: ' + testColor}
         />
       </DataCell>
@@ -292,8 +306,8 @@ function Innafor() {
   return (
     <CheckIcon
       inline
-      style={{ color: colors.validation.mint }}
       aria-label="Innfrir kontrastkravet"
+      className="eds-colors-group__validation-icon--valid"
     />
   );
 }
@@ -302,8 +316,8 @@ function Uttafor() {
   return (
     <CloseIcon
       inline
-      style={{ color: colors.validation.lava }}
       aria-label="Bryter kontrastkravet"
+      className="eds-colors-group__validation-icon--invalid"
     />
   );
 }

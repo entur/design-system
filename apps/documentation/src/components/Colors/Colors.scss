@@ -1,4 +1,5 @@
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/semantic.scss' as semantic;
 
 .eds-colors-group {
   &__large-space {
@@ -6,5 +7,37 @@
   }
   &__small-space {
     margin-bottom: tokens.$space-extra-large2;
+  }
+  &__validation-icon {
+    &--invalid {
+      color: semantic.$fill-negative-deep;
+
+      [data-color-mode='dark'] & {
+        color: semantic.$fill-negative-contrast;
+      }
+    }
+    &--valid {
+      color: semantic.$fill-success-deep;
+
+      [data-color-mode='dark'] & {
+        color: semantic.$fill-success-contrast;
+      }
+    }
+  }
+
+  &__copy-color-button pre {
+    background-color: var(--basecolors-frame-elevated);
+  }
+
+  &__contrast-table {
+    th {
+      color: var(--components-table-standard-text);
+      font-size: tokens.$font-sizes-large;
+      font-weight: tokens.$font-weights-heading;
+      height: 3rem;
+      width: 100%;
+      text-align: center;
+      padding: unset;
+    }
   }
 }
