@@ -92,7 +92,7 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
               <SideNavigation
                 menuItems={menuItems}
                 mobile={true}
-                openSidebar={openSidebar}
+                onClickMenuItem={() => setOpenSidebar(false)}
               />
             </div>
 

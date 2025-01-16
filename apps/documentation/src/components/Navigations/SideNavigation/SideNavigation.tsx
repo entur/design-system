@@ -15,7 +15,6 @@ import {
   compare,
   sortComponentMenus,
   sorters,
-  useSideMenuScroll,
 } from './utils';
 import { Media } from '@providers/MediaBreakpoint';
 import SearchBar from './SearchBar';
@@ -26,48 +25,26 @@ type SideNavigationProps = {
   mobile?: boolean;
   menuItems: MenuItem[];
   className?: string;
-  openSidebar?: boolean;
+  onClickMenuItem?: () => void;
 };
 
 const SideNavigation: React.FC<SideNavigationProps> = ({
   mobile = false,
-  openSidebar = false,
   menuItems,
   className,
+  onClickMenuItem,
 }) => {
   const location = useLocation();
 
   const [searchText, setSearchText] = React.useState('');
 
-  const currentPathSegments = removeTrailingSlash(location.pathname).split('/');
+  const currentPathSegments = removeTrailingSlash(location.pathname)?.split(
+    '/',
+  );
   const parentPath =
-    currentPathSegments.length > 1 ? currentPathSegments[1] : '';
-
-  const [scrollPosition, setScrollPosition] = useSideMenuScroll(parentPath);
-  const menuRef = React.useRef<HTMLDivElement>(null);
-
-  // TODO fix scroll position on mobile
-  React.useEffect(() => {
-    // Restore the scroll position when the sidebar is opened on mobile
-    if (mobile && openSidebar) {
-      if (menuRef.current) {
-        setScrollPosition(menuRef.current.scrollTop);
-      }
-    }
-  }, [mobile, openSidebar, setScrollPosition]);
-
-  React.useEffect(() => {
-    // Apply the saved scroll position
-    if (menuRef.current) {
-      menuRef.current.scrollTop = scrollPosition;
-    }
-  }, [scrollPosition]);
-
-  const handleScroll = () => {
-    if (menuRef.current) {
-      setScrollPosition(menuRef.current.scrollTop);
-    }
-  };
+    currentPathSegments !== undefined && currentPathSegments.length > 1
+      ? currentPathSegments[1]
+      : '';
 
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
@@ -116,11 +93,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   }, [grouped, parentPath]);
 
   return (
-    <div
-      onScroll={handleScroll}
-      ref={menuRef}
-      className={classNames('side-navigation-wrapper', className)}
-    >
+    <div className={classNames('side-navigation-wrapper', className)}>
       <Media greaterThanOrEqual="desktop">
         <SearchBar
           className="side-navigation__searchbar"
@@ -142,6 +115,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
                 as={Link}
                 to={item.frontmatter.route || ''}
                 active={isActive(item.frontmatter.route || '', location)}
+                onClick={onClickMenuItem}
               >
                 {item.frontmatter.title}
               </SideNavigationItem>
@@ -154,6 +128,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
             as={Link}
             to={item.frontmatter.route || ''}
             active={isActive(item.frontmatter.route || '', location)}
+            onClick={onClickMenuItem}
           >
             {item.frontmatter.title}
           </SideNavigationItem>

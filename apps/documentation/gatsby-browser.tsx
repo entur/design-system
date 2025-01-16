@@ -62,19 +62,38 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
 };
 
 // Since Gatsby does automatic scroll restoration on navigation,
-// we need to manually disable it
+// we need to manually disable it in some situations
 export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
-  prevPath,
-  pathname,
+  prevRouterProps,
+  routerProps,
 }) => {
-  // If the pathname has a hash (i.e., navigating to a specific heading),
-  // do not override the scroll position.
-  if (pathname !== prevPath && window.location.hash) {
-    return false;
+  const previousPathCategory =
+    prevRouterProps?.location.pathname.split('/')?.[1];
+  const pathCategory = routerProps?.location.pathname.split('/')?.[1];
+
+  console.log('has hash', routerProps.location);
+
+  // If the pathname doesn't have a hash, reset the scroll position to the top
+  if (routerProps.location.hash === '') {
+    // Otherwise, scroll to the top of the page
+    const page = document.getElementsByClassName('page')?.[0];
+    if (page) page.scrollTo(0, 0);
+  }
+  // If the path does have a hash, scroll to that hash element
+  else {
+    const hashElement = document.getElementById(
+      routerProps.location.hash?.slice(1),
+    );
+    if (hashElement) hashElement.scrollIntoView();
   }
 
-  // Otherwise, scroll to the top of the page
-  const page = document.getElementsByClassName('page')?.[0];
-  if (page) page.scrollTo(0, 0);
+  // If we move to a new category, i.e. 'komponenter' -> 'identitet', reset side menu scroll
+  if (pathCategory !== previousPathCategory) {
+    const sideMenu = document.getElementsByClassName(
+      'side-navigation-wrapper',
+    )?.[0];
+    if (sideMenu) sideMenu.scrollTo(0, 0);
+  }
+
   return false;
 };

@@ -123,21 +123,27 @@ export const sorters: { [key: string]: any } = {
 export function useSideMenuScroll(page: string) {
   const [scrollPosition, setScrollPosition] = React.useState<number>(0);
 
-  React.useEffect(() => {
-    // Retrieve the scroll position from localStorage
-    const savedPosition = localStorage.getItem(`scroll-${page}`);
-    if (savedPosition !== null) {
-      setScrollPosition(Number(savedPosition)); // Ensure it's a number
-    }
-  }, [page]);
+  // React.useEffect(() => {
+  //   // Retrieve the scroll position from sessionStorage
+  //   const savedPosition = sessionStorage.getItem(`scroll-${page}`);
+  //   if (savedPosition !== null) {
+  //     // setScrollPosition(Number(savedPosition)); // Ensure it's a number
+  //   }
+  //   return () => {
+  //     console.log('removescroll!');
+  //     console.log('page', page);
+  //     sessionStorage.removeItem(`scroll-${page}`);
+  //   };
+  // }, [page]);
 
-  React.useEffect(() => {
-    const currentScroll = scrollPosition.toString();
-    if (currentScroll !== '0') {
-      // Save the current scroll position to localStorage
-      localStorage.setItem(`scroll-${page}`, scrollPosition.toString());
-    } else localStorage.removeItem(`scroll-${page}`);
-  }, [scrollPosition, page]);
+  // React.useEffect(() => {
+  //   console.log('setscroll!');
+  //   const currentScroll = scrollPosition.toString();
+  //   if (currentScroll !== '0') {
+  //     // Save the current scroll position to sessionStorage
+  //     sessionStorage.setItem(`scroll-${page}`, scrollPosition.toString());
+  //   } else sessionStorage.removeItem(`scroll-${page}`);
+  // }, [scrollPosition, page]);
 
   return [scrollPosition, setScrollPosition] as const;
 }
