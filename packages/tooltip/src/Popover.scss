@@ -11,7 +11,7 @@
     background: var(--components-tooltip-popover-contrast-fill);
     box-shadow: t.$shadows-box-shadow-contrast;
   }
-  &:focus {
+  &:focus-visible {
     outline: t.$outlines-focus;
     outline-color: var(--basecolors-stroke-focus-standard);
     outline-offset: t.$outline-offsets-focus;

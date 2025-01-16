@@ -85,7 +85,7 @@ $tooltip-padding-side: 0.625rem;
     &:hover {
       background-color: var(--components-button-iconbutton-contrast-hover);
     }
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-contrast);
       outline-offset: t.$outline-offsets-focus;
@@ -99,7 +99,7 @@ $tooltip-padding-side: 0.625rem;
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
