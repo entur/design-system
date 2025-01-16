@@ -27,6 +27,8 @@
     // prevents chrome from moving page around the component
     overflow-anchor: none;
 
+    border-radius: tokens.$border-radiuses-medium;
+
     // this section adds a shadow indication when the content is scrollable
     --background-color: var(--designentur-playground-background);
     --shadow-color: rgba(0, 0, 0, 0.25);
@@ -60,7 +62,7 @@
       }
 
       &.eds-contrast {
-        border: tokens.$border-widths-small solid var(--basecolors-stroke-accent);
+        border: tokens.$border-widths-small solid var(--basecolors-stroke-contrast);
       }
     }
   }
@@ -75,26 +77,20 @@
       margin-bottom: 0.5rem;
     }
   }
-  &__contrast-switch {
-    margin-bottom: 0rem;
-    margin-top: 0.5rem;
-
-    &-container {
-      display: flex;
-      align-items: center;
-      gap: tokens.$space-default;
-    }
+  &__color-mode-select {
+    margin-block: tokens.$space-extra-small;
   }
 
   &__code-button {
-    &.eds-square-button {
-      z-index: 1;
-      align-self: flex-end;
-      position: relative;
-      bottom: 0rem;
-      margin-left: auto;
-      margin-bottom: 0.5rem;
-    }
+    z-index: 1;
+    align-self: flex-end;
+    position: relative;
+    bottom: 0rem;
+    margin-left: auto;
+    margin-bottom: 0.5rem;
+
+    display: flex;
+    gap: tokens.$space-small;
   }
 
   &__control {

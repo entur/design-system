@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { Language } from 'prism-react-renderer';
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live';
-
 import classNames from 'classnames';
+
+import { IconButton } from '@entur/button';
+import { BaseExpand } from '@entur/expand';
+import { SegmentedChoice, SegmentedControl } from '@entur/form';
+import { SourceCodeIcon } from '@entur/icons';
+import { Contrast } from '@entur/layout';
+import { componentColors } from '@entur/tokens';
+import { Heading5 } from '@entur/typography';
+import { ConditionalWrapper } from '@entur/utils';
 
 import {
   AdvancedProps,
@@ -11,15 +19,6 @@ import {
 } from './playground-utils';
 import PropsList from './PropsList';
 import theme from './themeForPlayground';
-
-import { Heading5, Label } from '@entur/typography';
-import { Switch } from '@entur/form';
-import { Contrast } from '@entur/layout';
-import { SecondarySquareButton } from '@entur/button';
-import { BaseExpand } from '@entur/expand';
-import { ConditionalWrapper } from '@entur/utils';
-import { componentColors } from '@entur/tokens';
-import { SourceCodeIcon } from '@entur/icons';
 import { packages } from './packages-scope';
 
 import './Playground.scss';
@@ -32,7 +31,7 @@ type PlaygroundProps = {
   defaultContrast?: boolean;
   defaultDarkMode?: boolean;
   defaultShowEditor?: boolean;
-  hideContrastOption?: boolean;
+  hideColorModeOption?: boolean;
   code: string;
   scope?: Record<string, any>;
 };
@@ -45,10 +44,11 @@ const Playground: React.FC<PlaygroundProps> = ({
   defaultContrast = false,
   defaultDarkMode = false,
   defaultShowEditor = false,
-  hideContrastOption = false,
+  hideColorModeOption = false,
 }) => {
-  const [isContrast, setContrast] = useState(defaultContrast);
-  const [darkMode, setdarkMode] = useState(defaultDarkMode);
+  const [colorMode, setColorMode] = useState<'light' | 'dark' | 'contrast'>(
+    defaultContrast ? 'contrast' : defaultDarkMode ? 'dark' : 'light',
+  );
   const [isShowingEditor, setShowingEditor] = useState(defaultShowEditor);
 
   const {
@@ -59,15 +59,7 @@ const Playground: React.FC<PlaygroundProps> = ({
     componentName,
   } = useAdvancedPlaygroundCode(code, props);
 
-  const toggledarkMode = () => {
-    setdarkMode(!darkMode);
-  };
-
-  const toggleContrast = () => {
-    setContrast(!isContrast);
-  };
-
-  const Element = isContrast ? Contrast : 'div';
+  const Element = colorMode === 'contrast' ? Contrast : 'div';
 
   const finalScope = { ...packages, ...scope };
 
@@ -80,26 +72,28 @@ const Playground: React.FC<PlaygroundProps> = ({
       theme={theme}
     >
       <div className="playground__header">
-        {!hideContrastOption && (
-          <div className="playground__contrast-switch">
-            <Label>Velg fargemode:</Label>
-            <div className="playground__contrast-switch-container">
-              <Switch checked={isContrast} onChange={toggleContrast}>
-                Kontrast
-              </Switch>
-              <Switch checked={darkMode} onChange={toggledarkMode}>
-                Mørk
-              </Switch>
-            </div>
+        {!hideColorModeOption && (
+          <div className="playground__color-mode-select">
+            <SegmentedControl
+              label="Fargemodus"
+              onChange={selectedValue =>
+                setColorMode(selectedValue as 'light' | 'dark' | 'contrast')
+              }
+              selectedValue={colorMode}
+            >
+              <SegmentedChoice value="light">Standard</SegmentedChoice>
+              <SegmentedChoice value="dark">Mørk</SegmentedChoice>
+              <SegmentedChoice value="contrast">Kontrast</SegmentedChoice>
+            </SegmentedControl>
           </div>
         )}
         {!defaultShowEditor && (
-          <SecondarySquareButton
+          <IconButton
             className="playground__code-button"
             onClick={() => setShowingEditor(prev => !prev)}
           >
-            {isShowingEditor ? 'Skjul kode' : 'Vis kode'} <SourceCodeIcon />
-          </SecondarySquareButton>
+            <SourceCodeIcon /> {isShowingEditor ? 'Skjul kode' : 'Vis kode'}
+          </IconButton>
         )}
       </div>
       <ConditionalWrapper
@@ -115,13 +109,14 @@ const Playground: React.FC<PlaygroundProps> = ({
             'playground__live-preview-container--code-closed': !isShowingEditor,
           })}
           style={{
-            background: !isContrast
-              ? darkMode
+            background:
+              colorMode === 'dark'
                 ? componentColors.dark.designentur.playground.background
-                : componentColors.light.designentur.playground.background
-              : 'revert-layer',
+                : colorMode === 'light'
+                ? componentColors.light.designentur.playground.background
+                : 'revert-layer',
           }}
-          data-color-mode={darkMode ? 'dark' : 'light'}
+          data-color-mode={colorMode === 'dark' ? 'dark' : 'light'}
         >
           <LivePreview
             className="playground__live-preview"
