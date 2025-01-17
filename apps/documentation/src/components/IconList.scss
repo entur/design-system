@@ -71,11 +71,22 @@
       &:hover,
       &:focus {
         .eds-icon {
-          background-color: var(--components-button-iconbutton-contrast-hover);
+          background-color: var(--components-button-iconbutton-standard-hover);
           opacity: 1;
         }
         span {
-          background-color: var(--components-button-iconbutton-contrast-hover);
+          background-color: var(--components-button-iconbutton-standard-hover);
+          color: var(--components-button-iconbutton-standard-text);
+        }
+
+        .eds-contrast & {
+          .eds-icon {
+            background-color: var(--components-button-iconbutton-contrast-hover);
+          }
+          span {
+            background-color: var(--components-button-iconbutton-contrast-hover);
+            color: var(--components-button-iconbutton-contrast-text);
+          }
         }
       }
       &:focus-visible {
