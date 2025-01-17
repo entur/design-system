@@ -21,6 +21,12 @@ const TopNavigation = () => {
   const location = useLocation();
 
   const isFrontpage = location.pathname === '/';
+  const shouldUseNegativeLogo =
+    colorMode === 'dark' ||
+    isContrast ||
+    (colorMode === 'system' &&
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   return (
     <nav
@@ -31,7 +37,7 @@ const TopNavigation = () => {
     >
       <Link to="/" className="top-navigation__logo">
         <img
-          src={colorMode === 'dark' || isContrast ? logoDark : logo}
+          src={shouldUseNegativeLogo ? logoDark : logo}
           height="32px"
           width="102px"
           alt="Entur logo, klikk for å gå til startsiden"
