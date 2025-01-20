@@ -94,6 +94,7 @@ const processIllustrationsQuery = (
           .replace(' darkmode', '')
           .replace(' default', '')
           .replace(' circle', '')
+          .replace(' dark', '')
           .slice(1);
       const categories = illustration.absolutePath
         .split('/downloads/illustrations/')?.[1]
@@ -108,10 +109,9 @@ const processIllustrationsQuery = (
       const publicUrl = illustration.publicURL;
       const imgSource = illustration.childImageSharp?.gatsbyImageData;
       const isContrast = illustrationName.toLowerCase().includes('contrast');
-      const isDarkmode = illustrationName
-        .toLowerCase()
-        .replace(/\s+|-|_/g, '')
-        .includes('darkmode');
+      const isDarkmode = /darkmode|dark/.test(
+        illustrationName.toLowerCase().replace(/\s+|-|_/g, ''),
+      );
       const hasBackground =
         illustrationName.toLowerCase().includes('circle') ||
         illustrationName.toLowerCase().includes('frame') ||
