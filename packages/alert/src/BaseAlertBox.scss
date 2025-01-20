@@ -141,6 +141,9 @@
 
   &__content {
     flex: 1;
+    word-break: break-word;
+    hyphens: auto;
+
     &--no-title,
     &--no-children {
       display: flex;
