@@ -1,4 +1,5 @@
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .content-margin {
   max-width: 1328px;
@@ -91,6 +92,11 @@
   height: 5.2rem;
   margin-top: -0.5rem;
   overflow: hidden;
+  .eds-paragraph {
+    font-size: tokens.$font-sizes-extra-large5;
+    margin: 0 0 1rem;
+    line-height: tokens.$line-heights-extra-large7;
+  }
 }
 
 .fade-in-out {

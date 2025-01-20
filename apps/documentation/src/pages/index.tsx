@@ -182,13 +182,13 @@ function ShiftingHeader() {
 
   return (
     <div className="shifting-header">
-      <Heading1
+      <Paragraph
         key={SHIFTING_HEADER_WORDS[currentIndex]}
         className="fade-in-out"
         style={{ fontWeight: 600, color: colors.brand.coral }}
       >
         {SHIFTING_HEADER_WORDS[currentIndex]}
-      </Heading1>
+      </Paragraph>
     </div>
   );
 }
