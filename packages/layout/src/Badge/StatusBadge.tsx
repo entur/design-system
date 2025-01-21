@@ -19,6 +19,8 @@ type StatusBadgeBaseProps = {
   children: React.ReactNode;
   /** Hvilken type badge man vil ha */
   variant: 'primary' | 'neutral' | VariantType | typeof danger | typeof info;
+  /** Skjul badge */
+  hide?: boolean;
 };
 
 export type StatusBadgeProps<T extends React.ElementType> =

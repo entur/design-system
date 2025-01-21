@@ -20,7 +20,7 @@
   color: var(--components-layout-badge-primary-standard-text);
   transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
 
-  &--invisible {
+  &--hide {
     opacity: 0;
     visibility: hidden;
     transition: opacity t.$timings-medium ease-in-out, visibility 0s linear 0.3s;

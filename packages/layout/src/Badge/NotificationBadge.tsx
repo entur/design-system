@@ -27,6 +27,8 @@ type NotificationBadgeBaseProps = {
    * @default ++
    */
   max?: number;
+  /** Skjul badge */
+  hide?: boolean;
 };
 
 export type NotificationBadgeProps<T extends React.ElementType> =
