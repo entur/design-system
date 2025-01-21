@@ -13,7 +13,7 @@
     box-shadow: tokens.$shadows-card-shadow-hover;
     transform: translateY(tokens.$space-extra-small2);
   }
-  &:focus {
+  &:focus-visible {
     outline-offset: tokens.$outline-offsets-focus;
     outline: none;
     box-shadow: tokens.$shadows-focus;
@@ -62,7 +62,7 @@
   }
 
   .color-swatch:hover & .eds-icon,
-  &:focus .eds-icon {
+  &:focus-visible .eds-icon {
     opacity: 1;
     visibility: visible;
   }

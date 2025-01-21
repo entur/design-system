@@ -118,6 +118,11 @@
     }
   }
 
+  &--no-title {
+    display: flex;
+    align-items: center;
+  }
+
   &__icon {
     display: inline-block;
     flex: 0 0 1em;
@@ -144,7 +149,6 @@
     word-break: break-word;
     hyphens: auto;
 
-    &--no-title,
     &--no-children {
       display: flex;
       align-items: center;
@@ -163,15 +167,14 @@
       margin-bottom: 0;
     }
   }
-
-  &__close-button {
+  // Overwrites button default styling
+  & &__close-button {
     margin-top: -0.3125rem;
     margin-left: t.$space-extra-small;
     height: fit-content;
     width: fit-content;
 
     // Normal mode and contrast mode
-    &,
     .eds-contrast & {
       color: var(--components-button-iconbutton-standard-text);
       &:hover {
@@ -180,8 +183,9 @@
       &:active {
         background: var(--components-button-iconbutton-standard-active);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
       }
     }
   }

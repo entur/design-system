@@ -77,7 +77,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       &:not(:checked) + .eds-base-segmented {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);

@@ -36,7 +36,7 @@
         top: 87vh;
         left: 2rem;
       }
-      &:focus {
+      &:focus-visible {
         outline: tokens.$outlines-focus;
         outline-offset: tokens.$outline-offsets-focus;
       }
@@ -46,7 +46,7 @@
       padding: tokens.$space-extra-small;
       font-size: tokens.$font-sizes-extra-large2;
       flex-grow: 1;
-      &:focus {
+      &:focus-visible {
         outline: none;
         box-shadow: tokens.$shadows-focus;
       }

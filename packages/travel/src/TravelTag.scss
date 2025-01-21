@@ -125,8 +125,7 @@
       color: var(--text-color);
       font-size: t.$font-sizes-medium;
     }
-    &:focus,
-    :focus-within {
+    &:has(:focus-visible) {
       outline-offset: t.$outline-offsets-focus;
       outline: t.$outlines-focus-contrast;
     }

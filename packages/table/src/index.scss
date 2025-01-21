@@ -55,8 +55,14 @@
       .eds-contrast & {
         border-color: var(--components-table-contrast-stroke);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+
+        .eds-contrast & {
+          outline-color: var(--basecolors-stroke-focus-contrast);
+        }
       }
       &--hover {
         &:hover {

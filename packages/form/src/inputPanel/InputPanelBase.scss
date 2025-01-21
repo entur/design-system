@@ -2,7 +2,7 @@
 @use '@entur/utils/dist/color-utils.scss' as util;
 
 .eds-input-panel {
-  &:focus-within {
+  &:has(:focus-visible) {
     .eds-input-panel__container {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);

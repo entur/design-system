@@ -28,7 +28,7 @@
       &:hover {
         background-color: var(--components-button-iconbutton-standard-hover);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
@@ -87,7 +87,7 @@
         background-color: var(--components-datepicker-calendar-datefill-selected);
         color: var(--components-datepicker-calendar-text-accent);
       }
-      &:focus {
+      &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;

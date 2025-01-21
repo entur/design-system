@@ -25,10 +25,10 @@
     color: var(--components-form-baseform-standard-text-content);
     transition: border-color t.$timings-fast ease-in-out;
 
-    &:focus-within,
     &:hover {
       border-color: var(--components-form-baseform-standard-border-interactive);
     }
+
     &:hover {
       .eds-contrast & {
         border-color: var(--components-form-baseform-contrast-border-interactive);
@@ -36,9 +36,11 @@
     }
 
     &:focus-within {
-      outline: 1px solid var(--components-form-baseform-standard-border-interactive);
+      border-color: var(--components-form-baseform-standard-border-interactive);
+      outline: 2px solid var(--components-form-baseform-standard-border-interactive);
       .eds-contrast & {
-        outline: var(--components-form-baseform-contrast-border-interactive);
+        border-color: var(--components-form-baseform-contrast-border-interactive);
+        outline-color: var(--components-form-baseform-contrast-border-interactive);
       }
     }
 
@@ -116,12 +118,14 @@
       border-color: var(--components-form-baseform-standard-border-success);
       &:focus-within {
         border-color: var(--components-form-baseform-standard-border-success);
+        outline-color: var(--components-form-baseform-standard-border-success);
       }
 
       .eds-contrast & {
         border-color: var(--components-form-baseform-standard-border-success);
         &:focus-within {
           border-color: var(--components-form-baseform-contrast-border-success);
+          outline-color: var(--components-form-baseform-contrast-border-success);
         }
       }
     }
@@ -131,12 +135,14 @@
       border-color: var(--components-form-baseform-standard-border-negative);
       &:focus-within {
         border-color: var(--components-form-baseform-standard-border-negative);
+        outline-color: var(--components-form-baseform-standard-border-negative);
       }
 
       .eds-contrast & {
         border-color: var(--components-form-baseform-contrast-border-negative);
         &:focus-within {
           border-color: var(--components-form-baseform-contrast-border-negative);
+          outline-color: var(--components-form-baseform-contrast-border-negative);
         }
       }
     }

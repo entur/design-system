@@ -19,7 +19,7 @@
       width: 1.5rem;
       height: 1.5rem;
     }
-    &:focus {
+    &:focus-visible {
       outline: t.$outlines-focus;
       outline-color: var(--basecolors-stroke-focus-standard);
       outline-offset: t.$outline-offsets-focus;

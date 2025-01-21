@@ -28,7 +28,7 @@
         height: 0.625rem;
         width: 0.625rem;
       }
-      &:focus ~ .eds-form-component--radio__radio {
+      &:focus-visible ~ .eds-form-component--radio__radio {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
         outline-offset: t.$outline-offsets-focus;
