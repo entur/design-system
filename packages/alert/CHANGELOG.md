@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0-beta.0](https://github.com/entur/design-system/compare/@entur/alert@0.16.24...@entur/alert@0.17.0-beta.0) (2025-01-23)
+
+### Bug Fixes
+
+- **alert:** break long words ([ee4b557](https://github.com/entur/design-system/commit/ee4b5571e00c471d474f1f8aecf8e267518d0802))
+- **alert:** etu-45159 fix center align on alerts without title ([b66a456](https://github.com/entur/design-system/commit/b66a456c6b88cc4281f9de5ea23c0bab7b8da6b8))
+- **alert:** etu-55188 fix focus-contrast on expandbutton ([80b423e](https://github.com/entur/design-system/commit/80b423efe9da0f83006c817f7c4bfce7facb26dd))
+
+### Features
+
+- **alert:** replace focus-within with focus-visible ([b5e60f1](https://github.com/entur/design-system/commit/b5e60f1677a1dac3746bf6cf53e0aa683a1956ab))
+
 ## [0.16.24](https://github.com/entur/design-system/compare/@entur/alert@0.16.23...@entur/alert@0.16.24) (2025-01-15)
 
 **Note:** Version bump only for package @entur/alert

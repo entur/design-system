@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0-beta.0](https://github.com/entur/design-system/compare/@entur/expand@3.5.27...@entur/expand@3.6.0-beta.0) (2025-01-23)
+
+### Bug Fixes
+
+- **expand:** update react collapse to fix type-error ([8e3cebd](https://github.com/entur/design-system/commit/8e3cebda5b1fe74e21a911bc9405a39b459ed1c7))
+
+### Features
+
+- **expand:** replace focus with focus-visible ([43dcaf6](https://github.com/entur/design-system/commit/43dcaf6df576b536d4c73c7767f8fe6549bcb6bb))
+
 ## [3.5.27](https://github.com/entur/design-system/compare/@entur/expand@3.5.26...@entur/expand@3.5.27) (2025-01-15)
 
 **Note:** Version bump only for package @entur/expand

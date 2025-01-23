@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0-beta.0](https://github.com/entur/design-system/compare/@entur/travel@6.2.14...@entur/travel@6.3.0-beta.0) (2025-01-23)
+
+### Features
+
+- **travel:** replace focus with focus-visible ([e276afc](https://github.com/entur/design-system/commit/e276afcf84c429c70bd3c2675d406a001ae53aa6))
+
 ## [6.2.14](https://github.com/entur/design-system/compare/@entur/travel@6.2.13...@entur/travel@6.2.14) (2025-01-15)
 
 **Note:** Version bump only for package @entur/travel

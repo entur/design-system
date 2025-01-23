@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.14...@entur/dropdown@6.1.0-beta.0) (2025-01-23)
+
+### Features
+
+- **dropdown:** replace focus with focus-visible ([6112834](https://github.com/entur/design-system/commit/61128349be08d7fc60a605ad80579d8d582a4966))
+
 ## [6.0.14](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.13...@entur/dropdown@6.0.14) (2025-01-15)
 
 **Note:** Version bump only for package @entur/dropdown

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0-beta.0](https://github.com/entur/design-system/compare/@entur/table@4.8.27...@entur/table@4.9.0-beta.0) (2025-01-23)
+
+### Features
+
+- **table:** replace focus with focus-visible ([f3908e3](https://github.com/entur/design-system/commit/f3908e37c88c35f61c8a883cb3db0777b1011ba5))
+
 ## [4.8.27](https://github.com/entur/design-system/compare/@entur/table@4.8.26...@entur/table@4.8.27) (2025-01-15)
 
 **Note:** Version bump only for package @entur/table

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.60-beta.0](https://github.com/entur/design-system/compare/@entur/modal@1.7.59...@entur/modal@1.7.60-beta.0) (2025-01-23)
+
+### Bug Fixes
+
+- **modal:** etu-44429 change focus-order on close-button in drawer ([ac9a754](https://github.com/entur/design-system/commit/ac9a7549dfaf25416124e4e796cdd8e3e2331b44))
+
 ## [1.7.59](https://github.com/entur/design-system/compare/@entur/modal@1.7.58...@entur/modal@1.7.59) (2025-01-15)
 
 **Note:** Version bump only for package @entur/modal

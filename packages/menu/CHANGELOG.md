@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0-beta.0](https://github.com/entur/design-system/compare/@entur/menu@5.0.8...@entur/menu@5.1.0-beta.0) (2025-01-23)
+
+### Features
+
+- **menu:** replace focus with focus-visible ([b8e086e](https://github.com/entur/design-system/commit/b8e086efc80e631e4a8fcb55401e1d4df97dbd6f))
+
 ## [5.0.8](https://github.com/entur/design-system/compare/@entur/menu@5.0.7...@entur/menu@5.0.8) (2025-01-15)
 
 **Note:** Version bump only for package @entur/menu

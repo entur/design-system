@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0-beta.0](https://github.com/entur/design-system/compare/@entur/fileupload@0.3.132...@entur/fileupload@0.4.0-beta.0) (2025-01-23)
+
+### Features
+
+- **fileupload:** replace focus with focus-visible ([f998930](https://github.com/entur/design-system/commit/f998930d51352651908616411bdd0a4e107ef12d))
+
 ## [0.3.132](https://github.com/entur/design-system/compare/@entur/fileupload@0.3.131...@entur/fileupload@0.3.132) (2025-01-15)
 
 **Note:** Version bump only for package @entur/fileupload

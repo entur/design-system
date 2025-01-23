@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-beta.0](https://github.com/entur/design-system/compare/@entur/layout@2.3.22...@entur/layout@2.4.0-beta.0) (2025-01-23)
+
+### Features
+
+- **layout:** replace focus with focus-visible ([51836ac](https://github.com/entur/design-system/commit/51836ac828f5dba97e5d1d1e6758d4a94a184a45))
+
 ## [2.3.22](https://github.com/entur/design-system/compare/@entur/layout@2.3.21...@entur/layout@2.3.22) (2025-01-15)
 
 **Note:** Version bump only for package @entur/layout
