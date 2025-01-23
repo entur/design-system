@@ -28,6 +28,10 @@
   margin-bottom: tokens.$space-medium;
   &--depth-2 {
     padding-left: tokens.$space-large;
+
+    .table-of-content__link:before {
+      left: -2.625rem;
+    }
   }
 
   &--depth-3 {
@@ -44,13 +48,12 @@
   &:before {
     display: block;
     content: '';
-    height: 100%;
+    height: tokens.$space-large;
     width: tokens.$border-widths-medium;
     position: absolute;
     left: -1rem - tokens.$border-widths-medium;
-    top: 0;
     background: transparent;
-    transition: background tokens.$timings-fast ease-in-out;
+    transition: all tokens.$timings-medium ease-in-out;
     .table-of-content__item--depth-3 & {
       left: -2.5rem - tokens.$border-widths-medium;
     }

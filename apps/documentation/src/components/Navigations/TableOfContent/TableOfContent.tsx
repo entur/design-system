@@ -145,7 +145,6 @@ const TableOfContent = () => {
           return (
             <li
               key={headingId}
-              id={headingId}
               className={classNames(
                 'table-of-content__item',
                 `table-of-content__item--depth-${heading.depth}`,
