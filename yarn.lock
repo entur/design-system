@@ -2594,10 +2594,10 @@ __metadata:
     "@entur/tokens": "workspace:^"
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
-    "@types/react-collapse": "npm:5.0.1"
+    "@types/react-collapse": "npm:5.0.4"
     classnames: "npm:^2.3.1"
     dts-cli: "npm:2.0.5"
-    react-collapse: "npm:5.1.0"
+    react-collapse: "npm:^5.1.1"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
@@ -7661,12 +7661,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-collapse@npm:5.0.1":
-  version: 5.0.1
-  resolution: "@types/react-collapse@npm:5.0.1"
+"@types/react-collapse@npm:5.0.4":
+  version: 5.0.4
+  resolution: "@types/react-collapse@npm:5.0.4"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 10c0/49ab0ba27e9fb4e8f5c411dd493caf245f50d1c4beb2fb443751de4f594b5772c25a0a0cd726b776998f9c19eaab96f07eb99d1beb0acab907245826b97eaa13
+  checksum: 10c0/aee373253e3a3ecc0b695810760ecacb6beae64b695a677c4fafbeb03f6e67f85a846de06ae9b22f3f77d5e785c98874e67561a3a2f25fab167f1704a6018210
   languageName: node
   linkType: hard
 
@@ -25744,12 +25744,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-collapse@npm:5.1.0":
-  version: 5.1.0
-  resolution: "react-collapse@npm:5.1.0"
+"react-collapse@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "react-collapse@npm:5.1.1"
   peerDependencies:
     react: ">=16.3.0"
-  checksum: 10c0/e72b5b8ca3dd1b35bcbaf3762fcaccef1866d542e99bbb6bef30efd7f4501f8c200d934f71c802162d553f3efa0bd1f208c83ffba2b11043d2689cc5bc929f21
+  checksum: 10c0/78804c8b652da770e27fd8b89eb48d959858c4d76bf1e95845fce2f4f255c5c5096cd0a8f4897b17a9e65938e5d50174fc2fb6d6a45c47aec9db6307b04044e8
   languageName: node
   linkType: hard
 
