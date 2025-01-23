@@ -180,7 +180,7 @@ function ContrastChecker(): React.ReactNode {
       </Table>
       <div aria-hidden="true" className="contrast-preview__container">
         <div>
-          <Heading4>Normal tekst</Heading4>
+          <Heading4 as="h3">Normal tekst</Heading4>
           <div
             className="contrast-preview__small-text"
             style={{
@@ -190,7 +190,7 @@ function ContrastChecker(): React.ReactNode {
           >
             Vi samler kollektiv-Norge
           </div>
-          <Heading4>Stor tekst</Heading4>
+          <Heading4 as="h3">Stor tekst</Heading4>
           <div
             className="contrast-preview__large-text"
             style={{
@@ -202,7 +202,7 @@ function ContrastChecker(): React.ReactNode {
           </div>
         </div>
         <div>
-          <Heading4>Grafisk objekt</Heading4>
+          <Heading4 as="h3">Grafisk objekt</Heading4>
           <div
             className="contrast-preview__graphics-object"
             style={{

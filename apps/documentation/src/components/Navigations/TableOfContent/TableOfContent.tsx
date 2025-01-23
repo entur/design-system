@@ -134,7 +134,9 @@ const TableOfContent = () => {
 
   return (
     <nav className="table-of-content-container">
-      <Heading4 style={{ margin: 0 }}>Innhold</Heading4>
+      <Heading4 as="h2" style={{ margin: 0 }}>
+        Innhold
+      </Heading4>
       <ul className="table-of-content">
         {filteredHeadings.map(heading => {
           const headingId = heading.url?.replace('#', '');

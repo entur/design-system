@@ -89,6 +89,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
 
   return (
     <ExpandableText
+      as="h3"
       title={`${componentName} Props`}
       defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
     >
