@@ -8,6 +8,12 @@
   align-items: flex-end;
   flex-direction: column;
 
+  .eds-alert-box__close-button {
+    position: absolute;
+    top: t.$space-small;
+    right: t.$space-small;
+  }
+
   &--bottom-right {
     bottom: t.$space-large;
     right: t.$space-large;
