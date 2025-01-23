@@ -32,7 +32,10 @@ export type BadgeOwnProps = {
    */
   max?: number;
   type?: BadgeTypes;
+  /** @deprecated Bruk `hide` i stedet */
   invisible?: boolean;
+  /** Skjul badge */
+  hide?: boolean;
 };
 
 export type BadgeProps<T extends React.ElementType> =
@@ -55,6 +58,7 @@ export const Badge: BadgeComponent = React.forwardRef(
       variant,
       showZero = false,
       invisible: invisibleProp = false,
+      hide: hideProp = false,
       as,
       type = 'status',
       ...rest
@@ -62,13 +66,12 @@ export const Badge: BadgeComponent = React.forwardRef(
     ref: PolymorphicRef<T>,
   ) => {
     const Element: React.ElementType = as || defaultElement;
-    let invisible = invisibleProp;
-    if (
-      invisibleProp === false &&
-      ((children === 0 && !showZero) || children == null)
-    ) {
-      invisible = true;
-    }
+
+    const computedHide =
+      hideProp ||
+      invisibleProp ||
+      (children === 0 && !showZero) ||
+      children == null;
 
     let displayValue;
     if (typeof children === 'number') {
@@ -80,7 +83,10 @@ export const Badge: BadgeComponent = React.forwardRef(
     const classList = classNames(
       className,
       'eds-badge',
-      { 'eds-badge--invisible': invisible, 'eds-badge--show-zero': showZero },
+      {
+        'eds-badge--hide': computedHide,
+        'eds-badge--show-zero': showZero,
+      },
       `eds-badge--variant-${variant}`,
       `eds-badge--type-${type}`,
     );

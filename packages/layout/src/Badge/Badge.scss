@@ -15,12 +15,17 @@
   border-radius: 0.75rem;
   top: 0;
   right: 0;
-  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
   color: var(--components-layout-badge-primary-standard-text);
-  transition: ease-in-out t.$timings-medium transform;
-  &--invisible {
-    transform: scale(0);
+  transition: opacity t.$timings-medium ease-in-out, visibility 0s linear;
+
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity t.$timings-medium ease-in-out, visibility 0s linear 0.3s;
   }
+
   &--variant-primary {
     background-color: var(--components-layout-badge-primary-standard-fill);
     color: var(--components-layout-badge-primary-standard-text);
