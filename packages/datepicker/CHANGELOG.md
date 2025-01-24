@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.13...@entur/datepicker@10.1.0) (2025-01-24)
+
+### Features
+
+- **datepicker:** replace focus with focus-visible ([de811a0](https://github.com/entur/design-system/commit/de811a06c0a590c82dc99d996789e7d4abe2e43a))
+
 ## [10.0.13](https://github.com/entur/design-system/compare/@entur/datepicker@10.0.12...@entur/datepicker@10.0.13) (2025-01-15)
 
 **Note:** Version bump only for package @entur/datepicker

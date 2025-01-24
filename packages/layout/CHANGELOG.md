@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/entur/design-system/compare/@entur/layout@2.3.22...@entur/layout@2.4.0) (2025-01-24)
+
+### Bug Fixes
+
+- **badge:** replace transform with visibility ([9052754](https://github.com/entur/design-system/commit/905275481db2f1e5c7789a7e38e66181cbfd54a7))
+
+### Features
+
+- **badge:** add hide prop in all badges ([1f49a7a](https://github.com/entur/design-system/commit/1f49a7ac17f5d32dfccc84852b63e351b3e4605b))
+- **layout:** replace focus with focus-visible ([51836ac](https://github.com/entur/design-system/commit/51836ac828f5dba97e5d1d1e6758d4a94a184a45))
+
 ## [2.3.22](https://github.com/entur/design-system/compare/@entur/layout@2.3.21...@entur/layout@2.3.22) (2025-01-15)
 
 **Note:** Version bump only for package @entur/layout

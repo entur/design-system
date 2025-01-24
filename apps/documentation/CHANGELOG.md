@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/entur/design-system/compare/@entur/documentation@1.1.1...@entur/documentation@1.2.0) (2025-01-24)
+
+### Bug Fixes
+
+- **alert:** etu-45159 fix center align on alerts without title ([b66a456](https://github.com/entur/design-system/commit/b66a456c6b88cc4281f9de5ea23c0bab7b8da6b8))
+- **modal:** etu-44429 change focus-order on close-button in drawer ([ac9a754](https://github.com/entur/design-system/commit/ac9a7549dfaf25416124e4e796cdd8e3e2331b44))
+- **toast:** fix breaking text in toast on hover ([92c25ea](https://github.com/entur/design-system/commit/92c25ea769e8034b21f72057bc8916f7b804aade))
+- **website:** fix contrast issues in color drawer ([a2d8605](https://github.com/entur/design-system/commit/a2d86057ab35220e1ab59ae9e94f1c7b9d4b8d43))
+- **website:** fix incorrect colors for icon name in IconList on hover ([0b133fc](https://github.com/entur/design-system/commit/0b133fc5ee97009ae165c7bf92e8855016545826))
+- **website:** fix incorrect logo when color mode is set to system and system is drak ([72dd60e](https://github.com/entur/design-system/commit/72dd60e68459ad448af2054ab53d8234cb41c353))
+- **website:** improve scroll restoration logic ([e6c89d3](https://github.com/entur/design-system/commit/e6c89d35f53581ab90d718d923abbd1bacde1fe1))
+- **website:** improve styling for DoDontCard ([49eaa5c](https://github.com/entur/design-system/commit/49eaa5c83793f3bb77ccaece99ba5ef963369708))
+- **website:** remove duplicate ids and fix styling for table of contents ([00a0452](https://github.com/entur/design-system/commit/00a04525349f488b3da24f28d06c32792c00c784))
+- **website:** replace focus with focus-visible on websitecomponents ([0b60478](https://github.com/entur/design-system/commit/0b6047827b31c3a99980f20111821ca517b3e71f))
+- **website:** usability in heading structures ([1d369ca](https://github.com/entur/design-system/commit/1d369cab5a8047a133400c16e8460035a812ac75))
+
+### Features
+
+- **badge:** add hide prop in all badges ([1f49a7a](https://github.com/entur/design-system/commit/1f49a7ac17f5d32dfccc84852b63e351b3e4605b))
+- **illustrations:** add send and notification illustration ([1e01b0e](https://github.com/entur/design-system/commit/1e01b0e81a6755d067a345e971656c4b0608b268))
+- **website:** improve icon list styling ([8260e75](https://github.com/entur/design-system/commit/8260e75a943fe74a9c23fbea046bc33b31da9b11))
+- **website:** small styling improvements to playground ([b021b29](https://github.com/entur/design-system/commit/b021b291825e8ff4c3196f8790efb1dae0495462))
+
 ## [1.1.1](https://github.com/entur/design-system/compare/@entur/documentation@1.1.0...@entur/documentation@1.1.1) (2025-01-15)
 
 ### Bug Fixes

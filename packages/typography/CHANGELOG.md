@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/entur/design-system/compare/@entur/typography@1.8.51...@entur/typography@1.9.0) (2025-01-24)
+
+### Features
+
+- **typography:** replace focus with focus-visible ([eee2547](https://github.com/entur/design-system/commit/eee2547fb155a4e4e9b12a869df607cd33ff91fa))
+
 ## [1.8.51](https://github.com/entur/design-system/compare/@entur/typography@1.8.50...@entur/typography@1.8.51) (2025-01-15)
 
 **Note:** Version bump only for package @entur/typography

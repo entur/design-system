@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/entur/design-system/compare/@entur/button@3.2.38...@entur/button@3.3.0) (2025-01-24)
+
+### Features
+
+- **form:** replace focus-within to focus-visible ([af46088](https://github.com/entur/design-system/commit/af46088512b9b6e7f5e1141321950b8c9c7e94f4))
+
 ## [3.2.38](https://github.com/entur/design-system/compare/@entur/button@3.2.37...@entur/button@3.2.38) (2025-01-15)
 
 **Note:** Version bump only for package @entur/button

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/entur/design-system/compare/@entur/tooltip@5.1.6...@entur/tooltip@5.2.0) (2025-01-24)
+
+### Features
+
+- **tooltip:** replace focus with focus-visible ([aaf2574](https://github.com/entur/design-system/commit/aaf25747573a22bc732e4e45c36aa0d1c631a9c2))
+
 ## [5.1.6](https://github.com/entur/design-system/compare/@entur/tooltip@5.1.5...@entur/tooltip@5.1.6) (2025-01-15)
 
 **Note:** Version bump only for package @entur/tooltip
