@@ -2,20 +2,24 @@ import React, { useRef, useState } from 'react';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 // @ts-expect-error react-use-flexsearch is missing type declerations
 import { useFlexSearch } from 'react-use-flexsearch';
-import { Modal } from '@entur/modal';
 
+import { IconButton } from '@entur/button';
 import { TextField } from '@entur/form';
-import { UnorderedList, Heading5 } from '@entur/typography';
-import { ListItem } from '@entur/typography';
+import { Modal } from '@entur/modal';
 import { SearchIcon } from '@entur/icons';
-
 import { Tag } from '@entur/layout';
-import { SmallText } from '@entur/typography';
-import { Heading2 } from '@entur/typography';
+import {
+  Heading2,
+  Heading5,
+  Paragraph,
+  UnorderedList,
+  ListItem,
+  SmallText,
+} from '@entur/typography';
+
+import { useAnalytics } from '@providers/AnalyticsProvider';
 
 import './Search.scss';
-import { IconButton } from '@entur/button';
-import { Paragraph } from '@entur/typography';
 
 type StoreResult = {
   id: string;
@@ -29,6 +33,7 @@ export const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [open, setOpen] = useState(false);
   const searchbarRef = useRef(null);
+  const { posthog } = useAnalytics();
 
   const NUMBER_OF_RESULTS = 10;
 
@@ -84,8 +89,14 @@ export const Search = () => {
   );
   return (
     <>
-      <IconButton className="searchmodal__button" onClick={() => setOpen(true)}>
-        <SearchIcon /> <span>Søk</span>
+      <IconButton
+        className="searchmodal__button"
+        onClick={() => {
+          setOpen(true);
+          posthog.capture('Clicked search', { isCool: 'true' });
+        }}
+      >
+        <SearchIcon aria-hidden="true" /> <span>Søk</span>
       </IconButton>
       <Modal
         size="medium"
@@ -151,7 +162,11 @@ const ListSection = (props: {
     <>
       <Heading5 as={Heading2}>{title}</Heading5>
       {group.map(result => (
-        <ListElement result={result} handleDismiss={handleDismiss} />
+        <ListElement
+          key={result.id}
+          result={result}
+          handleDismiss={handleDismiss}
+        />
       ))}
     </>
   );

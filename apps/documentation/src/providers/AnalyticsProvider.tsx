@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
-import { PostHogConfig } from 'posthog-js';
-import { usePostHog } from 'posthog-js/react';
-import type { PostHog } from 'posthog-js/react';
+import { CaptureResult, PostHogConfig } from 'posthog-js';
+import { usePostHog, PostHog } from 'posthog-js/react';
 
 import { usePersistedState } from './SettingsContext';
 import { ConsentValue, useConsent } from './ConsentProvider';
@@ -30,6 +29,33 @@ export const deniedPosthogOptions: Partial<PostHogConfig> = {
   persistence: 'memory',
   disable_persistence: false,
   enable_heatmaps: false,
+  autocapture: false,
+  capture_pageview: false,
+  capture_pageleave: true,
+  capture_dead_clicks: false,
+  before_send: (event: CaptureResult | null): CaptureResult | null => {
+    function removePosthogPropertiesFromObject(object: Record<string, any>) {
+      return Object.entries(object)
+        .filter(([key]) => !(key[0] === '$'))
+        .reduce((acc, [key, value]) => {
+          acc[key] = value;
+          return acc;
+        }, {} as Record<string, any>);
+    }
+
+    if (event) {
+      const _current_url = event.properties['$current_url'] as string;
+      event.properties = removePosthogPropertiesFromObject(event.properties);
+      event.properties['$current_url'] = _current_url;
+      event.properties['is_dev'] =
+        _current_url.includes('localhost') ||
+        _current_url.includes('127.0.0.1');
+      // TODO: should we anonymise distinct_id?
+
+      return event;
+    }
+    return null;
+  },
 };
 
 export const POSTHOG_API_KEY =
@@ -80,7 +106,6 @@ export const AnalyticsProvider = ({
       case 'denied': {
         posthog.set_config(deniedPosthogOptions);
         updateConsents({ analytics: 'denied' });
-        posthog.opt_out_capturing();
         posthog.reset();
         setUniqueId(null);
         break;
