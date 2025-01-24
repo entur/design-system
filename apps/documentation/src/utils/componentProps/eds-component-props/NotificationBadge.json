@@ -105,6 +105,21 @@
           "name": "number | undefined"
         }
       },
+      "hide": {
+        "defaultValue": null,
+        "description": "Skjul badge",
+        "name": "hide",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/NotificationBadge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "ref": {
         "defaultValue": null,
         "description": "",

@@ -124,8 +124,23 @@
       },
       "invisible": {
         "defaultValue": null,
-        "description": "",
+        "description": "@deprecated Bruk `hide` i stedet",
         "name": "invisible",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/Badge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "hide": {
+        "defaultValue": null,
+        "description": "Skjul badge",
+        "name": "hide",
         "declarations": [
           {
             "fileName": "design-system/packages/layout/src/Badge/Badge.tsx",

@@ -71,6 +71,21 @@
           "name": "\"primary\" | \"neutral\" | VariantType | \"danger\" | \"info\""
         }
       },
+      "hide": {
+        "defaultValue": null,
+        "description": "Skjul badge",
+        "name": "hide",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/Badge/BulletBadge.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "ref": {
         "defaultValue": null,
         "description": "",
