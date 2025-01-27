@@ -459,19 +459,37 @@
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
             "value": "#acd7f1",
             "var": "Fill/Information/Tint",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill Toast",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text",
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -483,19 +501,37 @@
             "rootAlias": "Sky/50"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill Default",
             "value": "#e1eff8",
             "var": "Fill/Information/Muted",
             "rootAlias": "Sky/10"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill Toast",
+            "value": "#e1eff8",
+            "var": "Fill/Information/Muted",
+            "rootAlias": "Sky/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Icon Default",
             "value": "#067eb2",
             "var": "Shape/Information",
             "rootAlias": "Sky/50"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Text",
+            "name": "Components/alert/AlertBox/Information/Standard/Icon Toast",
+            "value": "#067eb2",
+            "var": "Shape/Information",
+            "rootAlias": "Sky/50"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -507,19 +543,37 @@
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
             "value": "#ff9494",
             "var": "Fill/Negative/Tint",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Toast",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -531,19 +585,37 @@
             "rootAlias": "Coral/60"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill Default",
             "value": "#ffcece",
             "var": "Fill/Negative/Muted",
             "rootAlias": "Coral/20"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill Toast",
+            "value": "#ffcece",
+            "var": "Fill/Negative/Muted",
+            "rootAlias": "Coral/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon Default",
             "value": "#d31b1b",
             "var": "Shape/Negative",
             "rootAlias": "Coral/60"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text",
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon Toast",
+            "value": "#d31b1b",
+            "var": "Shape/Negative",
+            "rootAlias": "Coral/60"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -555,19 +627,37 @@
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
             "value": "#9cd9c2",
             "var": "Fill/Success/Tint",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill Toast",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text",
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -579,19 +669,37 @@
             "rootAlias": "Mint/60"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill Default",
             "value": "#d0f1e3",
             "var": "Fill/Success/Muted",
             "rootAlias": "Mint/20"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill Toast",
+            "value": "#d0f1e3",
+            "var": "Fill/Success/Muted",
+            "rootAlias": "Mint/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Icon Default",
             "value": "#1a8e60",
             "var": "Shape/Success",
             "rootAlias": "Mint/60"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Text",
+            "name": "Components/alert/AlertBox/Success/Standard/Icon Toast",
+            "value": "#1a8e60",
+            "var": "Shape/Success",
+            "rootAlias": "Mint/60"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -603,19 +711,37 @@
             "rootAlias": "White/Alpha-0"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
             "value": "#ffeeb3",
             "var": "Fill/Warning/Tint",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Toast",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default 2",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -627,19 +753,37 @@
             "rootAlias": "Canary/70"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill Default",
             "value": "#fff4cd",
             "var": "Fill/Warning/Muted",
             "rootAlias": "Canary/20"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill Toast",
+            "value": "#fff4cd",
+            "var": "Fill/Warning/Muted",
+            "rootAlias": "Canary/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon Default",
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text",
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Text Default",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Text Toast",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
@@ -6367,22 +6511,40 @@
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
             "value": "#2d98d233",
             "var": "Fill/Information/Transparent",
             "rootAlias": "Transparent/Sky-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Information/Contrast/Fill Toast",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon Default",
             "value": "#acd7f1",
             "var": "Shape/InformationAlt-2",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Contrast/Text",
+            "name": "Components/alert/AlertBox/Information/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Contrast/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Information/Standard/Border",
@@ -6391,22 +6553,40 @@
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Fill",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill Default",
             "value": "#2d98d233",
             "var": "Fill/Information/Transparent",
             "rootAlias": "Transparent/Sky-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Icon",
+            "name": "Components/alert/AlertBox/Information/Standard/Fill Toast",
+            "value": "#acd7f1",
+            "var": "Fill/Information/Tint",
+            "rootAlias": "Sky/20"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Icon Default",
             "value": "#acd7f1",
             "var": "Shape/InformationAlt-2",
             "rootAlias": "Sky/20"
           },
           {
-            "name": "Components/alert/AlertBox/Information/Standard/Text",
+            "name": "Components/alert/AlertBox/Information/Standard/Icon Toast",
+            "value": "#067eb2",
+            "var": "Shape/Information",
+            "rootAlias": "Sky/50"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Information/Standard/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Border",
@@ -6415,22 +6595,40 @@
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
             "value": "#ff949433",
             "var": "Fill/Negative/Transparent",
             "rootAlias": "Transparent/Coral-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Fill Toast",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Default",
             "value": "#ff9494",
             "var": "Shape/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Contrast/Text",
+            "name": "Components/alert/AlertBox/Negative/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Contrast/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Standard/Border",
@@ -6439,22 +6637,40 @@
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Fill",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill Default",
             "value": "#ff949433",
             "var": "Fill/Negative/Transparent",
             "rootAlias": "Transparent/Coral-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Icon",
+            "name": "Components/alert/AlertBox/Negative/Standard/Fill Toast",
+            "value": "#ff9494",
+            "var": "Fill/Negative/Tint",
+            "rootAlias": "Coral/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon Default",
             "value": "#ff9494",
             "var": "Shape/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
-            "name": "Components/alert/AlertBox/Negative/Standard/Text",
+            "name": "Components/alert/AlertBox/Negative/Standard/Icon Toast",
+            "value": "#d31b1b",
+            "var": "Shape/Negative",
+            "rootAlias": "Coral/60"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Negative/Standard/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Border",
@@ -6463,22 +6679,40 @@
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
             "value": "#5ac39a33",
             "var": "Fill/Success/Transparent",
             "rootAlias": "Transparent/Mint-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Success/Contrast/Fill Toast",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon Default",
             "value": "#9cd9c2",
             "var": "Shape/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Contrast/Text",
+            "name": "Components/alert/AlertBox/Success/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Contrast/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Success/Standard/Border",
@@ -6487,22 +6721,40 @@
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Fill",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill Default",
             "value": "#5ac39a33",
             "var": "Fill/Success/Transparent",
             "rootAlias": "Transparent/Mint-Alpha20"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Icon",
+            "name": "Components/alert/AlertBox/Success/Standard/Fill Toast",
+            "value": "#9cd9c2",
+            "var": "Fill/Success/Tint",
+            "rootAlias": "Mint/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Icon Default",
             "value": "#9cd9c2",
             "var": "Shape/SuccessAlt-2",
             "rootAlias": "Mint/30"
           },
           {
-            "name": "Components/alert/AlertBox/Success/Standard/Text",
+            "name": "Components/alert/AlertBox/Success/Standard/Icon Toast",
+            "value": "#1a8e60",
+            "var": "Shape/Success",
+            "rootAlias": "Mint/60"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Success/Standard/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Border",
@@ -6511,19 +6763,37 @@
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Fill",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
             "value": "#ffe08240",
             "var": "Fill/Warning/Transparent",
             "rootAlias": "Transparent/Canary-Alpha25"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Icon",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Fill Toast",
             "value": "#ffeeb3",
-            "var": "Shape/WarningAlt-2",
+            "var": "Fill/Warning/Tint",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Contrast/Text",
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Default",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default",
+            "value": "#e5e5e9",
+            "var": "Text/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Contrast/Text Default 2",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
@@ -6535,22 +6805,40 @@
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Fill",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill Default",
             "value": "#ffe08240",
             "var": "Fill/Warning/Transparent",
             "rootAlias": "Transparent/Canary-Alpha25"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Icon",
+            "name": "Components/alert/AlertBox/Warning/Standard/Fill Toast",
+            "value": "#ffeeb3",
+            "var": "Fill/Warning/Tint",
+            "rootAlias": "Canary/30"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon Default",
             "value": "#ffeeb3",
             "var": "Shape/WarningAlt-2",
             "rootAlias": "Canary/30"
           },
           {
-            "name": "Components/alert/AlertBox/Warning/Standard/Text",
+            "name": "Components/alert/AlertBox/Warning/Standard/Icon Toast",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Text Default",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/alert/AlertBox/Warning/Standard/Text Toast",
+            "value": "#181c56",
+            "var": "Text/Accent",
+            "rootAlias": "Lavender/90"
           },
           {
             "name": "Components/alert/Copyable text/Contrast/Border",
