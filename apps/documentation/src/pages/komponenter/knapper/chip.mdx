@@ -36,7 +36,7 @@ export const Head = ( props ) => {
         }}
       >
         <div>
-          <Label>ChoiceChips</Label>
+          <div className="eds-label">ChoiceChips</div>
           <ChoiceChipGroup
             name="city"
             label="Velg setekategori"
@@ -51,7 +51,7 @@ export const Head = ( props ) => {
           </ChoiceChipGroup>
         </div>
         <div>
-          <Label>ActionChip</Label>
+          <div className="eds-label">ActionChip</div>
           <div style={{ display: 'flex' }}>
             <ActionChip style={{ marginRight: '1rem' }}>Lagre</ActionChip>
             <ActionChip style={{ marginRight: '1rem' }}>
@@ -60,11 +60,11 @@ export const Head = ( props ) => {
           </div>
         </div>
         <div>
-          <Label>TagChip</Label>
+          <div className="eds-label">TagChip</div>
           <TagChip>Buss</TagChip>
         </div>
         <div>
-          <Label>FilterChip</Label>
+          <div className="eds-label">FilterChip</div>
           <FilterChip value="mandag">Mandag</FilterChip>
         </div>
       </div>
