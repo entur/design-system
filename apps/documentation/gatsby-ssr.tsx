@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyBrowser } from 'gatsby';
+import { GatsbySSR } from 'gatsby';
 import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
 
@@ -16,9 +16,7 @@ import {
 } from './src/providers';
 import DocLayout from './src/layouts/DocLayout';
 
-export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
-  element,
-}) => {
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return (
     <SettingsProvider>
       <ConsentProvider>
@@ -61,4 +59,25 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
     return <DocLayout {...props}>{children}</DocLayout>;
   }
   return <DocLayout {...props}>{children}</DocLayout>;
+};
+
+export const onRenderBody: GatsbySSR['onRenderBody'] = args => {
+  const { setHeadComponents, setPreBodyComponents } = args;
+
+  setHeadComponents([
+    <script
+      key="usercentrics-cmp"
+      id="usercentrics-cmp"
+      src="https://web.cmp.usercentrics.eu/ui/loader.js"
+      data-draft="true"
+      data-settings-id="uZYAtMHS646Dzh"
+      async
+    ></script>,
+  ]);
+
+  setPreBodyComponents([
+    <script key="suppress-cmp" type="application/javascript">
+      var UC_UI_SUPPRESS_CMP_DISPLAY = true;
+    </script>,
+  ]);
 };

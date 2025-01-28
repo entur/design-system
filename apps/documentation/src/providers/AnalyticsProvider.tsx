@@ -4,7 +4,7 @@ import { usePostHog } from 'posthog-js/react';
 import type { PostHog } from 'posthog-js/react';
 
 import { usePersistedState } from './SettingsContext';
-import { ConsentValue, useConsent } from './ConsentProvider';
+// import { ConsentValue, useConsent } from './ConsentProvider';
 
 const PERSISTENCE_KEY_NAME = 'entur_ds_analytics';
 const IDENTIFIED_PREFIX = 'entur_ds_';
@@ -36,8 +36,8 @@ export const POSTHOG_API_KEY =
   'phc_ESGRM1feMLZkHxV0P81O4i7g4I4jTFIYZpuZVxqF3hq';
 
 type AnalyticsContextType = {
-  updateAnalyticsConsent: (newConsent: ConsentValue) => void;
-  analyticsConsent: ConsentValue | undefined;
+  updateAnalyticsConsent: (newConsent: any) => void;
+  analyticsConsent: any | undefined;
   posthog: PostHog;
   setUniqueIdLocalStorage: React.Dispatch<React.SetStateAction<string | null>>;
 };
@@ -51,11 +51,21 @@ export const AnalyticsProvider = ({
   children: React.ReactNode;
 }) => {
   const posthog = usePostHog();
-  const { consents, updateConsents } = useConsent();
+  // const { consents, updateConsents } = useConsent();
   const [uniqueId, setUniqueId] = usePersistedState<string | null>(
     'entur_ds_unique_id',
     null,
   );
+
+  window.addEventListener('UC_UI_INITIALIZED', function (event) {
+    console.log('UC_UI_INITIALIZED', event.detail);
+  });
+  useEffect(() => {
+    window.addEventListener('UC_CONSENT', function (event) {
+      console.log('UC_CONSENT event detail', event.detail);
+    });
+    console.log('stats:', window.__ucCmp.getConsentDetails());
+  }, []);
 
   useEffect(() => {
     if (posthog.__loaded) return;
@@ -63,14 +73,14 @@ export const AnalyticsProvider = ({
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => updateAnalyticsConsent(consents?.analytics), []);
+  // useEffect(() => updateAnalyticsConsent(consents?.analytics), []);
 
-  const updateAnalyticsConsent = (newConsent: ConsentValue) => {
+  const updateAnalyticsConsent = (newConsent: any) => {
     switch (newConsent) {
       case 'accepted': {
         posthog.set_config(acceptedPosthogOptions);
         posthog.opt_in_capturing({ captureEventName: 'User opted in' });
-        updateConsents({ analytics: 'accepted' });
+        // updateConsents({ analytics: 'accepted' });
         const _uniqueId =
           uniqueId ?? IDENTIFIED_PREFIX + posthog.get_distinct_id();
         setUniqueId(_uniqueId);
@@ -79,7 +89,7 @@ export const AnalyticsProvider = ({
       }
       case 'denied': {
         posthog.set_config(deniedPosthogOptions);
-        updateConsents({ analytics: 'denied' });
+        // updateConsents({ analytics: 'denied' });
         posthog.opt_out_capturing();
         posthog.reset();
         setUniqueId(null);
@@ -94,12 +104,12 @@ export const AnalyticsProvider = ({
   const contextValue = useMemo(
     () => ({
       updateAnalyticsConsent,
-      analyticsConsent: consents?.analytics,
+      analyticsConsent: null,
       posthog,
       setUniqueIdLocalStorage: setUniqueId,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [consents, posthog],
+    [posthog],
   );
 
   return (
