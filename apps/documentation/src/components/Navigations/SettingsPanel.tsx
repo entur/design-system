@@ -219,6 +219,7 @@ const AnalyticsSection = ({
 }) => {
   const {
     analyticsConsent,
+    consents,
     updateAnalyticsConsent,
     posthog,
     setUniqueIdLocalStorage,
@@ -229,15 +230,15 @@ const AnalyticsSection = ({
     posthog?.get_property('$user_id'),
   );
 
-  const handleUpdateConsent = (updatedConsent: ConsentValue) => {
-    updateAnalyticsConsent(updatedConsent);
+  const handleUpdateConsent = async (consent: boolean) => {
+    updateAnalyticsConsent(consent);
     setIsEditingConsent(false);
     setUserIDFieldValue(posthog?.get_property('$user_id'));
 
     handleDismissAnalyticsTooltip();
   };
   const notDecided =
-    analyticsConsent === 'undecided' ||
+    analyticsConsent === false ||
     analyticsConsent === undefined ||
     isEditingConsent;
 
@@ -280,13 +281,13 @@ const AnalyticsSection = ({
           <ButtonGroup className="settings-panel__modal__analytics__choice">
             <PrimaryButton
               size="small"
-              onClick={() => handleUpdateConsent('accepted')}
+              onClick={() => handleUpdateConsent(true)}
             >
               {getDisplayNameForConsentValue('accepted')}
             </PrimaryButton>
             <SecondaryButton
               size="small"
-              onClick={() => handleUpdateConsent('denied')}
+              onClick={() => handleUpdateConsent(false)}
             >
               {getDisplayNameForConsentValue('denied')}
             </SecondaryButton>

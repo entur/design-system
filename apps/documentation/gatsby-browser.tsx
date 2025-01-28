@@ -7,7 +7,6 @@ import './src/styles/index.scss';
 
 import { ToastProvider } from '@entur/alert';
 import {
-  ConsentProvider,
   AnalyticsProvider,
   SettingsProvider,
   MediaContextProvider,
@@ -21,17 +20,15 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
 }) => {
   return (
     <SettingsProvider>
-      <ConsentProvider>
-        <PostHogProvider client={posthog}>
-          <AnalyticsProvider>
-            <ToastProvider>
-              <ColorsProvider>
-                <MediaContextProvider>{element}</MediaContextProvider>
-              </ColorsProvider>
-            </ToastProvider>
-          </AnalyticsProvider>
-        </PostHogProvider>
-      </ConsentProvider>
+      <PostHogProvider client={posthog}>
+        <AnalyticsProvider>
+          <ToastProvider>
+            <ColorsProvider>
+              <MediaContextProvider>{element}</MediaContextProvider>
+            </ColorsProvider>
+          </ToastProvider>
+        </AnalyticsProvider>
+      </PostHogProvider>
     </SettingsProvider>
   );
 };
@@ -41,20 +38,22 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   props,
 }) => {
   const children = (
-    <ConsentProvider>
-      <PostHogProvider client={posthog}>
-        <AnalyticsContext.Consumer>
-          {context => {
-            if (context !== null && context.posthog.__loaded) {
-              // we manually capture pageviews since gatsby
-              // is not able to detect route changes
-              context.posthog.capture('$pageview');
-            }
-            return element;
-          }}
-        </AnalyticsContext.Consumer>
-      </PostHogProvider>
-    </ConsentProvider>
+    <PostHogProvider client={posthog}>
+      <AnalyticsContext.Consumer>
+        {context => {
+          if (
+            context !== null &&
+            context.posthog.__loaded &&
+            context.analyticsConsent === true
+          ) {
+            // we manually capture pageviews since gatsby
+            // is not able to detect route changes
+            context.posthog.capture('$pageview');
+          }
+          return element;
+        }}
+      </AnalyticsContext.Consumer>
+    </PostHogProvider>
   );
   if (props.location.pathname === '/') return <>{children}</>;
 

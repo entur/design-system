@@ -39,20 +39,18 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
   props,
 }) => {
   const children = (
-    <ConsentProvider>
-      <PostHogProvider client={posthog}>
-        <AnalyticsContext.Consumer>
-          {context => {
-            if (context !== null && context.posthog.__loaded) {
-              // we manually capture pageviews since gatsby
-              // is not able to detect route changes
-              context.posthog.capture('$pageview');
-            }
-            return element;
-          }}
-        </AnalyticsContext.Consumer>
-      </PostHogProvider>
-    </ConsentProvider>
+    <PostHogProvider client={posthog}>
+      <AnalyticsContext.Consumer>
+        {context => {
+          if (context !== null && context.posthog.__loaded) {
+            // we manually capture pageviews since gatsby
+            // is not able to detect route changes
+            context.posthog.capture('$pageview');
+          }
+          return element;
+        }}
+      </AnalyticsContext.Consumer>
+    </PostHogProvider>
   );
   if (props.location.pathname === '/') return <>{children}</>;
   if (element.type.is404) {
@@ -73,6 +71,9 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = args => {
       data-settings-id="uZYAtMHS646Dzh"
       async
     ></script>,
+    <script key="suppress-cmp" type="application/javascript">
+      var UC_UI_SUPPRESS_CMP_DISPLAY = true;
+    </script>,
   ]);
 
   setPreBodyComponents([
