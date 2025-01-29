@@ -375,7 +375,13 @@
             "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/Layout/Card/Contrast/Fill-Default",
+            "name": "Components/Layout/Card/Contrast/Fill-Default-Solid",
+            "value": "#393d79",
+            "var": "Fill/Selected/Default/Contrast",
+            "rootAlias": "Blue/90"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Fill-Default-Transparent",
             "value": "#393d79",
             "var": "Fill/Selected/Default/Contrast",
             "rootAlias": "Blue/90"
@@ -423,7 +429,13 @@
             "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/Layout/Card/Standard/Fill-Default",
+            "name": "Components/Layout/Card/Standard/Fill-Default-Solid",
+            "value": "#ffffff",
+            "var": "Fill/Background/Standard/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Fill-Default-Transparent",
             "value": "#ffffff",
             "var": "Fill/Background/Standard/Light",
             "rootAlias": "White/Alpha-100"
@@ -6422,21 +6434,27 @@
           },
           {
             "name": "Components/Layout/Card/Contrast/Divide",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/Layout/Card/Contrast/Fill-Default",
+            "name": "Components/Layout/Card/Contrast/Fill-Default-Solid",
+            "value": "#393a49",
+            "var": "Fill/Background/Overlay/Solid",
+            "rootAlias": "Ebony/80"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Fill-Default-Transparent",
             "value": "#e5e5e926",
             "var": "Fill/Background/Overlay/Transparent",
             "rootAlias": "Transparent/Ebony-Alpha15"
           },
           {
             "name": "Components/Layout/Card/Contrast/Fill-HoverActive",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
+            "value": "#464755",
+            "var": "Fill/Background/Overlay/SolidAlt",
+            "rootAlias": "Ebony/75"
           },
           {
             "name": "Components/Layout/Card/Contrast/Icon",
@@ -6470,21 +6488,27 @@
           },
           {
             "name": "Components/Layout/Card/Standard/Divide",
-            "value": "#ff9494",
-            "var": "Stroke/HighlightAlt",
-            "rootAlias": "Coral/30"
+            "value": "#ff5959",
+            "var": "Stroke/Highlight",
+            "rootAlias": "Coral/40"
           },
           {
-            "name": "Components/Layout/Card/Standard/Fill-Default",
+            "name": "Components/Layout/Card/Standard/Fill-Default-Solid",
+            "value": "#393a49",
+            "var": "Fill/Background/Overlay/Solid",
+            "rootAlias": "Ebony/80"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Fill-Default-Transparent",
             "value": "#e5e5e926",
             "var": "Fill/Background/Overlay/Transparent",
             "rootAlias": "Transparent/Ebony-Alpha15"
           },
           {
             "name": "Components/Layout/Card/Standard/Fill-HoverActive",
-            "value": "#393a49",
-            "var": "Fill/Background/Overlay/Solid",
-            "rootAlias": "Ebony/80"
+            "value": "#464755",
+            "var": "Fill/Background/Overlay/SolidAlt",
+            "rootAlias": "Ebony/75"
           },
           {
             "name": "Components/Layout/Card/Standard/Icon",
