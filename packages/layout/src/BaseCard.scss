@@ -7,7 +7,7 @@
   border: t.$border-widths-small solid var(--components-layout-card-standard-border-default);
   color: var(--components-layout-card-standard-text);
   border-radius: t.$border-radiuses-medium;
-  align-items: center;
+  align-items: flex-start;
   appearance: none;
   text-decoration: none;
 
