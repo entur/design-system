@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.0) (2025-02-05)
+
+### Refactor
+
+- **dropdown:** remove deprecated dropdown components
+
+### BREAKING CHANGES
+
+- **dropdowns:** Deprecated dropdowns, i.e suffixed with Deprecated, e.g. DropdownDeprecated, are removed from @entur/dropdown. Use version 6.0.12 or earlier if
+  you are still unable to migrate to the new versions. This change was in reality introduced in [6.0.13](https://github.com/entur/design-system/commit/54ce3886ddc0bab92bbae23bbda88044bf9ef452) by a mistake. We apologize for the inconvenience.
+
 # [6.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.14...@entur/dropdown@6.1.0) (2025-01-24)
 
 ### Features
@@ -21,12 +32,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-- **dropdowns:** Deprecated dropdowns, i.e suffixed with Deprecated, e.g. DropdownDeprecated, are removed from @entur/dropdown. Use <=@6.0.12 if
-  you still are unable to migrate to new versions. This should have been a major release but was by a mistake release as a patch. We apologize for the inconvenience.
-
-## [6.0.13-RC.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.12...@entur/dropdown@6.0.13-RC.0) (2025-01-09)
-
-**Note:** Version bump only for package @entur/dropdown
+- **dropdowns:** Deprecated dropdowns, i.e suffixed with Deprecated, e.g. DropdownDeprecated, are removed from @entur/dropdown. Use version 6.0.12 or earlier if
+  you are still unable to migrate to the new versions. This should have been a major release but was by a mistake release as a patch. We apologize for the inconvenience.
 
 ## [6.0.12](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.11...@entur/dropdown@6.0.12) (2024-12-06)
 
