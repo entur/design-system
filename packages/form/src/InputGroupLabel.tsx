@@ -29,6 +29,7 @@ export const InputGroupLabel: React.FC<InputGroupLabelProps> = ({
         'eds-input-group-label-wrapper--filled': filler,
       })}
       id={labelId}
+      htmlFor={labelId}
       {...rest}
     >
       <span

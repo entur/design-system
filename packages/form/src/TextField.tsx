@@ -123,6 +123,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           readOnly={readOnly}
           ref={mergeRefs(ref, textFieldRef)}
           aria-labelledby={textFieldId}
+          id={textFieldId}
           onChange={onChange}
           value={value}
           variant={variant}

@@ -86,6 +86,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           ref={mergeRefs(ref, textareaRef)}
           aria-labelledby={textAreaId}
+          id={textAreaId}
           onChange={onChange}
           variant={variant}
           {...rest}
