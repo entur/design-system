@@ -19,6 +19,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **dropdown:** fix non-unique key in list ([2c6da92](https://github.com/entur/design-system/commit/2c6da929dd09d10f454a261765df32b30ae2c59e))
 
+### BREAKING CHANGES
+
+- **dropdowns:** Deprecated dropdowns, i.e suffixed with Deprecated, e.g. DropdownDeprecated, are removed from @entur/dropdown. Use <=@6.0.12 if
+  you still are unable to migrate to new versions. This should have been a major release but was by a mistake release as a patch. We apologize for the inconvenience.
+
 ## [6.0.13-RC.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.0.12...@entur/dropdown@6.0.13-RC.0) (2025-01-09)
 
 **Note:** Version bump only for package @entur/dropdown
