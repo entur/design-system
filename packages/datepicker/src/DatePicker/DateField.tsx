@@ -19,6 +19,7 @@ import { FieldSegment } from '../shared/FieldSegment';
 import { createCalendar, lastMillisecondOfDay } from '../shared/utils';
 
 import './DateField.scss';
+import { getLocalTimeZone, now } from '@internationalized/date';
 
 /** @deprecated use variant="information" instead */
 const info = 'info';
@@ -137,6 +138,9 @@ export const DateField = <DateType extends DateValue>({
         : undefined,
     isDisabled: isDisabled || disabled,
     shouldForceLeadingZeros: true,
+    // @ts-expect-error test
+    placeholderValue: now(getLocalTimeZone()).set({ month: 1 }),
+    preventFocusOnPress: true,
   });
 
   const dateFieldRef = useRef(null);

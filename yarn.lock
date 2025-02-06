@@ -2451,6 +2451,7 @@ __metadata:
     "@entur/travel": "workspace:^"
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
+    "@internationalized/date": "npm:^3.4.0"
     css-loader: "npm:^6.7.2"
     playroom: "npm:0.39.1"
     react: "npm:^17.0.2"
