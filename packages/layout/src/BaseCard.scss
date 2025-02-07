@@ -1,9 +1,11 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/primitive.css' as *;
 
 .eds-base-card {
   display: flex;
-  box-shadow: t.$shadows-card-shadow;
-  background-color: var(--components-layout-card-standard-fill-default);
+  box-shadow: 0.375rem 0.375rem 0.625rem var(--transparent-ebony-alpha15),
+    0.1875rem 0.1875rem 0.375rem var(--transparent-ebony-alpha35) 0.0625rem 0.0625rem 0.125rem 0rem var(--transparent-ebony-alpha20);
+  background-color: var(--components-layout-card-standard-fill-default-solid);
   border: t.$border-widths-small solid var(--components-layout-card-standard-border-default);
   color: var(--components-layout-card-standard-text);
   border-radius: t.$border-radiuses-medium;
@@ -12,9 +14,9 @@
   text-decoration: none;
 
   .eds-contrast & {
-    background-color: var(--components-layout-card-contrast-fill-default);
+    background-color: var(--components-layout-card-contrast-fill-default-solid);
     border-color: var(--components-layout-card-contrast-border-default);
-    box-shadow: t.$shadows-card-shadow-contrast;
+    box-shadow: none;
     color: var(--components-layout-card-contrast-text);
   }
 }

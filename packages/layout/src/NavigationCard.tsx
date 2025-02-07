@@ -54,6 +54,7 @@ export const NavigationCard = <
   });
   return (
     <BaseCard as={Element} className={classList} {...rest}>
+      <div className="eds-navigation-card__highlight"></div>
       <div className="eds-navigation-card-header">
         {titleIcon && (
           <div
