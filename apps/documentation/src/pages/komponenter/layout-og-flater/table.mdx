@@ -333,14 +333,15 @@ Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
     return (
       <Table>
         <TableHead>
-          <TableRow>
-            <HeaderCell padding="checkbox">
+          <TableRow>                
+            <HeaderCell padding="checkbox" aria-label="avkrysningsbokser">
               <Checkbox
                 name="all"
                 checked={
                   isSomeSelected ? 'indeterminate' : isEverythingSelected
                 }
                 onChange={handleAllOrNothingChange}
+                aria-label="kryss av alle"
               />
             </HeaderCell>
             <HeaderCell>Fra</HeaderCell>
@@ -351,7 +352,7 @@ Rader kan velges ved å gjøre første kolonne som en valgbar kolonne.
         <TableBody>
           {selectedItems.map((item, index) => (
             <TableRow key={index}>
-              <DataCell padding="checkbox">
+              <DataCell padding="checkbox" aria-label="avkrysningsboks">
                 <Checkbox
                   name={item.fra}
                   checked={item.selected}
@@ -414,7 +415,7 @@ En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare t
       return (
         <React.Fragment>
           <TableRow>
-            <DataCell>
+            <DataCell aria-label="ekspanderknapper">
               <ExpandRowButton onClick={() => setopen(!open)} open={open} />
             </DataCell>
             <DataCell>
@@ -471,7 +472,7 @@ En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare t
         <TableHead>
           <TableRow>
             {/* Bruker padding="radio" her for å "enkelt" sette en god verdi for paddingen til venstre-kolonnen */}
-            <HeaderCell padding="radio">{''}</HeaderCell>
+            <HeaderCell padding="radio" aria-label="radioknapper">{''}</HeaderCell>
             <HeaderCell>Betalingsmåte</HeaderCell>
             <HeaderCell style={{ textAlign: 'right' }}>Salgssum</HeaderCell>
           </TableRow>
@@ -516,7 +517,7 @@ En utvidbar tabell lar brukeren vise og skjule innholdet på en rad. Utvidbare t
         <RadioGroup name="row" onChange={handleChange} value={value}>
           <TableHead>
             <TableRow>
-              <HeaderCell padding="radio"></HeaderCell>
+              <HeaderCell padding="radio" aria-label="radioknapper"></HeaderCell>
               <HeaderCell>Fra</HeaderCell>
               <HeaderCell>Til</HeaderCell>
               <HeaderCell>Avgang</HeaderCell>
@@ -663,7 +664,7 @@ den tabellraden. Har menyen en "slett" alternativ, bør det være på bunnen.
         <HeaderCell>Publisert</HeaderCell>
         <HeaderCell>Kategori</HeaderCell>
         <HeaderCell>Mottaker</HeaderCell>
-        <HeaderCell padding="overflow-menu"></HeaderCell>
+        <HeaderCell padding="overflow-menu" aria-label="menyknapper"></HeaderCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -754,7 +755,7 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <HeaderCell>Publisert</HeaderCell>
         <HeaderCell>Kategori</HeaderCell>
         <HeaderCell>Mottaker</HeaderCell>
-        <HeaderCell></HeaderCell>
+        <HeaderCell aria-label="innstillinger"></HeaderCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -764,14 +765,14 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Transaksjonssstatistikk</DataCell>
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
-          <IconButton onClick={() => {}}>
-            <ValidationInfoFilledIcon aria-label="Info" />
+          <IconButton onClick={() => {}} aria-label="Info">
+            <ValidationInfoFilledIcon  />
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <EditIcon aria-label="Rediger" />
+          <IconButton onClick={() => {}} aria-label="Rediger">
+            <EditIcon  />
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <DeleteIcon aria-label="Slett" />
+          <IconButton onClick={() => {}} aria-label="Slett">
+            <DeleteIcon  />
           </IconButton>
         </DataCell>
       </TableRow>
@@ -781,14 +782,14 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Transaksjonssstatistikk</DataCell>
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
-          <IconButton onClick={() => {}}>
-            <ValidationInfoFilledIcon aria-label="Info" />
+          <IconButton onClick={() => {}} aria-label="Info">
+            <ValidationInfoFilledIcon  />
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <EditIcon aria-label="Rediger" />
+          <IconButton onClick={() => {}}  aria-label="Rediger" >
+            <EditIcon/>
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <DeleteIcon aria-label="Slett" />
+          <IconButton onClick={() => {}} aria-label="Slett">
+            <DeleteIcon  />
           </IconButton>
         </DataCell>
       </TableRow>
@@ -798,14 +799,14 @@ pen ikon for å konfigurere/redigere og søppelkasse ikon for å fjerne/slette e
         <DataCell>Transaksjonssstatistikk</DataCell>
         <DataCell>Vy Alle</DataCell>
         <DataCell style={{ display: 'flex' }}>
-          <IconButton onClick={() => {}}>
-            <ValidationInfoFilledIcon aria-label="Info" />
+          <IconButton onClick={() => {}} aria-label="Info" >
+            <ValidationInfoFilledIcon />
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <EditIcon aria-label="Rediger" />
+          <IconButton onClick={() => {}} aria-label="Rediger">
+            <EditIcon  />
           </IconButton>
-          <IconButton onClick={() => {}}>
-            <DeleteIcon aria-label="Slett" />
+          <IconButton onClick={() => {}} aria-label="Slett" >
+            <DeleteIcon />
           </IconButton>
         </DataCell>
       </TableRow>

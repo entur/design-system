@@ -42,7 +42,7 @@ Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede r
 <BaseCardDesignEntur arrow>
 <ImageDisplay
   imgSource={props.data.imagefiles.images.find(image => image.name === "dont-tokens").childImageSharp.gatsbyImageData}
-  alt="illustrasjon av at utvikler A bruker navnet Lavender90 og utvikler B bruker navnet ColorBlue men begge er den samme fargen."
+  alt="utvikler A bruker navnet Lavender90 og utvikler B bruker navnet ColorBlue men begge er den samme fargen."
   preset="full-width-image"
   className="designentur-base-card__image--small"
 />
@@ -51,7 +51,8 @@ Med standardiserte fargetokens blir det enkelt og tydelig å endre tilknyttede r
 <BaseCardDesignEntur>
 <ImageDisplay
   imgSource={props.data.imagefiles.images.find(image => image.name === "do-tokens").childImageSharp.gatsbyImageData}
-  alt="illustrasjon av at Lavender 90-fargen ved navn Fill.Primary.Default er den man skal bruke i komponenter."    preset="full-width-image"
+  alt="Lavender 90-fargen ved navn Fill.Primary.Default er den man skal bruke i komponenter."
+  preset="full-width-image"
   className="designentur-base-card__image--small"
 />
 </BaseCardDesignEntur>
@@ -121,7 +122,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
 <BaseCardDesignEntur  title="Eksempel i grensesnitt" >
   <ImageDisplay
   imgSource={props.data.imagefiles.images.find(image => image.name === "brukFlateBase").childImageSharp.gatsbyImageData}
-  alt="eksemplet viser at background skal brukes for bakgrunn, shape skal brukes på en sirkel, text skal brukes på tekst, og stroke kan brukes på en skillelinje" 
+  alt="background skal brukes for bakgrunn, shape skal brukes på en sirkel, text skal brukes på tekst, og stroke kan brukes på en skillelinje" 
   className="designentur-base-card__image--medium"
   />
 </BaseCardDesignEntur>
@@ -135,7 +136,7 @@ Som allerede nevnt er komponentene i designsystemet integrert med fargetokens, s
       props.data.imagefiles.images.find(image => image.name === 'brukBase')
         .childImageSharp.gatsbyImageData
     }
-    alt="eksemplet viser navnene på base-tokens. For eksempel for bakgrunn kan du bruke frame-default, for border kan du bruke stroke-subduedalt, for ikon kan du bruke shape-default, for titteltekst kan du bruke text-default og for subtekst kan du bruke text-subdued"
+    alt="For eksempel for bakgrunn kan du bruke frame-default, for border kan du bruke stroke-subduedalt, for ikon kan du bruke shape-default, for titteltekst kan du bruke text-default og for subtekst kan du bruke text-subdued"
     className="designentur-base-card__image--medium"
   />
 </BaseCardDesignEntur>

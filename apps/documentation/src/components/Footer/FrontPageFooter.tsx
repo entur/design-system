@@ -98,17 +98,18 @@ const FrontPageFooter = () => {
           />
         </div>
         <div style={{ float: 'right', position: 'relative', top: '0.9rem' }}>
-          <Label
+          <span
+            className="eds-label"
             style={{
               borderRight: `1px solid ${colors.greys.grey70}`,
               paddingRight: space.small,
             }}
           >
             Entur.no
-          </Label>
-          <Label style={{ paddingLeft: space.small }}>
+          </span>
+          <span className="eds-label" style={{ paddingLeft: space.small }}>
             © {year.getFullYear()} Entur AS
-          </Label>
+          </span>
         </div>
       </div>
     </div>

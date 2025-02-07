@@ -3,7 +3,6 @@ import classNames from 'classnames';
 
 import { SegmentedChoice, SegmentedControl, Switch } from '@entur/form';
 import { base } from '@entur/tokens';
-import { Label } from '@entur/typography';
 
 import {
   IllustrationListItem,
@@ -101,9 +100,9 @@ const IllustrationList = ({
             key={illustration.name + illustration.extension}
           >
             {showIllustrationName && (
-              <Label className="illustration-list__display-grid__image-box__label">
+              <div className="eds-label illustration-list__display-grid__image-box__label">
                 {illustration.sanitizedName}
-              </Label>
+              </div>
             )}
             <ImageDisplay
               imgSource={illustration.imgSource}

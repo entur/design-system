@@ -84,7 +84,11 @@ export const Search = () => {
   );
   return (
     <>
-      <IconButton className="searchmodal__button" onClick={() => setOpen(true)}>
+      <IconButton
+        aria-label="Søk"
+        className="searchmodal__button"
+        onClick={() => setOpen(true)}
+      >
         <SearchIcon /> <span>Søk</span>
       </IconButton>
       <Modal
