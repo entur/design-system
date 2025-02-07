@@ -9,6 +9,18 @@
   position: relative;
   transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
 
+  &__highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 4rem;
+    background-color: var(--components-layout-card-standard-divide);
+    transition: width 0.3s ease-in-out;
+    border-top-left-radius: 0.2rem;
+    border-bottom-right-radius: 4px;
+  }
+
   &-header {
     display: flex;
     flex-direction: column;
