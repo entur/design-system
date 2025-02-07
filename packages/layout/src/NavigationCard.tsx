@@ -26,7 +26,6 @@ export type NavigationCardOwnProps = {
   /** Legger til et ikon for å symbolisere at kortet har en ekstern lenke
    * @default false
    */
-  //externalLink?: boolean;
 };
 
 export type NavigationCardProps<
@@ -43,7 +42,6 @@ export const NavigationCard = <
   titleIcon,
   compact = false,
   className,
-  //externalLink = false,
   as,
   ...rest
 }: NavigationCardProps<E>): JSX.Element => {
@@ -54,19 +52,21 @@ export const NavigationCard = <
   });
   return (
     <BaseCard as={Element} className={classList} {...rest}>
-      <div className="eds-navigation-card__highlight"></div>
       <div className="eds-navigation-card-header">
-        {titleIcon && (
-          <div
-            className="eds-navigation-card-header__title-icon"
-            aria-hidden="true"
-          >
-            {titleIcon}
-          </div>
-        )}
-        <span className="eds-navigation-card-header__title">
-          <Heading3 as="span">{title}</Heading3>
-        </span>
+        <div className="eds-navigation-card-header__content">
+          {titleIcon && (
+            <div
+              className="eds-navigation-card-header__title-icon"
+              aria-hidden="true"
+            >
+              {titleIcon}
+            </div>
+          )}
+          <span className="eds-navigation-card-header__title">
+            <Heading3 as="span">{title}</Heading3>
+          </span>
+        </div>
+        <div className="eds-navigation-card-header__highlight"></div>
       </div>
       {!compact && (
         <>
