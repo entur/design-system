@@ -2,6 +2,7 @@
 
 .eds-dropdown {
   cursor: pointer;
+
   &__input {
     flex: 1;
     width: 0; // this makes the input act as if it has 'fit-content'

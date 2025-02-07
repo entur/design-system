@@ -82,8 +82,11 @@
 
       .eds-contrast & {
         background: var(--components-form-baseform-contrast-fill-readonly);
-        color: var(--components-form-baseform-contrast-text-description);
         border: var(--components-form-baseform-contrast-fill-readonly);
+        color: var(--components-form-baseform-contrast-text-description);
+        .eds-form-control {
+          color: var(--components-form-baseform-contrast-text-description);
+        }
         .eds-input-group__label {
           color: var(--components-form-baseform-contrast-text-description);
         }
