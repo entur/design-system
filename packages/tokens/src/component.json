@@ -454,9 +454,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
+            "value": "#067eb2",
+            "var": "Stroke/Information",
+            "rootAlias": "Sky/50"
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
@@ -538,9 +538,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
+            "value": "#d31b1b",
+            "var": "Stroke/Negative",
+            "rootAlias": "Coral/60"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
@@ -622,9 +622,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
+            "value": "#1a8e60",
+            "var": "Stroke/Success",
+            "rootAlias": "Mint/60"
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
@@ -706,9 +706,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Border",
-            "value": "#ffffff00",
-            "var": "Stroke/Colorless",
-            "rootAlias": "White/Alpha-0"
+            "value": "#e9b10c",
+            "var": "Stroke/Warning",
+            "rootAlias": "Canary/70"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
@@ -6506,9 +6506,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Border",
-            "value": "#acd7f1",
-            "var": "Stroke/InformationAlt",
-            "rootAlias": "Sky/20"
+            "value": "#067eb2",
+            "var": "Stroke/Information",
+            "rootAlias": "Sky/50"
           },
           {
             "name": "Components/alert/AlertBox/Information/Contrast/Fill Default",
@@ -6548,9 +6548,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Information/Standard/Border",
-            "value": "#acd7f1",
-            "var": "Stroke/InformationAlt",
-            "rootAlias": "Sky/20"
+            "value": "#067eb2",
+            "var": "Stroke/Information",
+            "rootAlias": "Sky/50"
           },
           {
             "name": "Components/alert/AlertBox/Information/Standard/Fill Default",
@@ -6590,9 +6590,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Border",
-            "value": "#ff9494",
-            "var": "Stroke/NegativeAlt",
-            "rootAlias": "Coral/30"
+            "value": "#d31b1b",
+            "var": "Stroke/Negative",
+            "rootAlias": "Coral/60"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Contrast/Fill Default",
@@ -6632,9 +6632,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Negative/Standard/Border",
-            "value": "#ff9494",
-            "var": "Stroke/NegativeAlt",
-            "rootAlias": "Coral/30"
+            "value": "#d31b1b",
+            "var": "Stroke/Negative",
+            "rootAlias": "Coral/60"
           },
           {
             "name": "Components/alert/AlertBox/Negative/Standard/Fill Default",
@@ -6674,9 +6674,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Border",
-            "value": "#9cd9c2",
-            "var": "Stroke/SuccessAlt-2",
-            "rootAlias": "Mint/30"
+            "value": "#1a8e60",
+            "var": "Stroke/Success",
+            "rootAlias": "Mint/60"
           },
           {
             "name": "Components/alert/AlertBox/Success/Contrast/Fill Default",
@@ -6716,9 +6716,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Success/Standard/Border",
-            "value": "#9cd9c2",
-            "var": "Stroke/SuccessAlt-2",
-            "rootAlias": "Mint/30"
+            "value": "#1a8e60",
+            "var": "Stroke/Success",
+            "rootAlias": "Mint/60"
           },
           {
             "name": "Components/alert/AlertBox/Success/Standard/Fill Default",
@@ -6758,9 +6758,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Border",
-            "value": "#ffeeb3",
-            "var": "Stroke/WarningAlt",
-            "rootAlias": "Canary/30"
+            "value": "#e9b10c",
+            "var": "Stroke/Warning",
+            "rootAlias": "Canary/70"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Contrast/Fill Default",
@@ -6800,9 +6800,9 @@
           },
           {
             "name": "Components/alert/AlertBox/Warning/Standard/Border",
-            "value": "#ffeeb3",
-            "var": "Stroke/WarningAlt",
-            "rootAlias": "Canary/30"
+            "value": "#e9b10c",
+            "var": "Stroke/Warning",
+            "rootAlias": "Canary/70"
           },
           {
             "name": "Components/alert/AlertBox/Warning/Standard/Fill Default",
