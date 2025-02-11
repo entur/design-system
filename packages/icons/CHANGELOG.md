@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0-beta.0](https://github.com/entur/design-system/compare/@entur/icons@7.6.0...@entur/icons@7.7.0-beta.0) (2025-02-11)
+
+### Features
+
+- **icons:** wip add posibility to override partner icon colors for react native ([5a4e857](https://github.com/entur/design-system/commit/5a4e8577f82fba07e93ea086e687271aee6385ef))
+
 # [7.6.0](https://github.com/entur/design-system/compare/@entur/icons@7.5.1...@entur/icons@7.6.0) (2025-01-15)
 
 ### Features

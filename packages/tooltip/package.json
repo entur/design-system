@@ -1,6 +1,6 @@
 {
   "name": "@entur/tooltip",
-  "version": "5.2.0",
+  "version": "5.2.1-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/tooltip.esm.js",

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.1-beta.0) (2025-02-11)
+
+**Note:** Version bump only for package @entur/dropdown
+
 # [7.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.0) (2025-02-05)
 
 ### Refactor

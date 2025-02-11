@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@1.2.0...@entur/documentation@5.1.0-beta.0) (2025-02-11)
+
+### Bug Fixes
+
+- **website:** etu-55349 small uu-fixes ([51366d1](https://github.com/entur/design-system/commit/51366d12ced7045660f5697f89cc9c3bef1a0c07))
+
+### Features
+
+- **icons:** wip add posibility to override partner icon colors for react native ([5a4e857](https://github.com/entur/design-system/commit/5a4e8577f82fba07e93ea086e687271aee6385ef))
+
 # [1.2.0](https://github.com/entur/design-system/compare/@entur/documentation@1.1.1...@entur/documentation@1.2.0) (2025-01-24)
 
 ### Bug Fixes

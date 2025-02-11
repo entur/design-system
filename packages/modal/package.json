@@ -1,6 +1,6 @@
 {
   "name": "@entur/modal",
-  "version": "1.7.60",
+  "version": "1.7.61-beta.0",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
