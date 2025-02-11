@@ -1,10 +1,10 @@
-const svgr = require('@svgr/core').default;
-const toCase = require('case');
-const fs = require('fs-extra');
-const path = require('path');
-const sass = require('sass');
+import { transform } from '@svgr/core';
+import toCase from 'case';
+import fs from 'fs-extra';
+import path from 'path';
+import sass from 'sass';
 
-const { colors, transport } = require('@entur/tokens');
+import { colors, transport } from '@entur/tokens';
 
 /**
  * Deprecated icons, mapped to their possible replacements.
@@ -112,10 +112,10 @@ createIndexFiles(components);
 createTypeDeclaration(components);
 createStyleFiles();
 
-function outputWebCode(component) {
+async function outputWebCode(component) {
   const { name, svgPath, categories } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-  const webCode = svgr.sync(
+  const webCode = await transform(
     rawSvgText,
     createSvgrConfig(false, name, categories),
     {
@@ -132,7 +132,7 @@ function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
     const webCodeList = webCode.split(`\n`);
 
     const functionDeclarationLine = webCodeList.findIndex(line =>
-      /^function/.test(line),
+      /^const.+=>.+/.test(line),
     );
 
     const deprecationMessage = getDeprecationMessage(name, replacement);
@@ -143,18 +143,18 @@ function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
 
     return [
       ...webCodeList.slice(0, jsdocInsertionPoint),
+      `console.warn('Design system warning: ${deprecationMessage}');`,
       createDeprecatedJsdocComment(deprecationMessage),
       ...webCodeList.slice(jsdocInsertionPoint, consoleLogInsertionPoint),
-      `console.warn('Design system warning: ${deprecationMessage}');`,
       ...webCodeList.slice(consoleLogInsertionPoint),
     ].join(`\n`);
   }
   return webCode;
 }
 
-function outputNativeCode({ name: componentName, svgPath }) {
+async function outputNativeCode({ name: componentName, svgPath }) {
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-  const nativeCode = svgr.sync(rawSvgText, createSvgrConfig(true), {
+  const nativeCode = await transform(rawSvgText, createSvgrConfig(true), {
     componentName,
   });
   fs.outputFileSync(`./tmp/native/${componentName}.js`, nativeCode);
@@ -274,7 +274,6 @@ function createSvgrConfig(native = false, componentName, categories) {
       width: '{(props.width || props.size || "1em")}',
       height: '{(props.height || props.size || "1em")}',
       className: className,
-      inline: '{undefined}',
       color: color,
     };
   }
