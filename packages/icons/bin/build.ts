@@ -1,8 +1,9 @@
-import { transform } from '@svgr/core';
+import { Config, transform } from '@svgr/core';
 import toCase from 'case';
 import fs from 'fs-extra';
 import path from 'path';
 import sass from 'sass';
+import template from './template';
 
 import { colors, transport } from '@entur/tokens';
 
@@ -84,6 +85,17 @@ const outliers = [
   ...partnerIcons,
 ];
 
+const outlierCategories = ['Partner', 'Flag', 'Entur'];
+
+const specialOutliers = [
+  'AmericanExpressIcon',
+  'MastercardIcon',
+  'VippsIcon',
+  'VippsLogoIcon',
+  'VisaIcon',
+  'CompassNeedleIcon',
+];
+
 const components = traverse('src/svgs').map(svgPath => {
   // Check for .DS_Store to clarify confusing error message
   if (svgPath.endsWith('.DS_Store')) {
@@ -95,7 +107,12 @@ const components = traverse('src/svgs').map(svgPath => {
     );
   }
   const name = getComponentNameFromSvgPath(svgPath);
-  const categories = svgPath.split('svgs')?.[1].split('/');
+  const categories = svgPath
+    .split('svgs')?.[1]
+    .split('/')
+    .filter(
+      (category: string) => category !== '' && !category.includes('.svg'),
+    );
   const isDeprecated = deprecatedIcons.has(name);
   const replacement = deprecatedIcons.get(name);
   return { name, svgPath, isDeprecated, replacement, categories };
@@ -132,7 +149,7 @@ function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
     const webCodeList = webCode.split(`\n`);
 
     const functionDeclarationLine = webCodeList.findIndex(line =>
-      /^const.+=>.+/.test(line),
+      /^function/.test(line),
     );
 
     const deprecationMessage = getDeprecationMessage(name, replacement);
@@ -143,21 +160,26 @@ function addDeprecationWarnings(webCode, { isDeprecated, name, replacement }) {
 
     return [
       ...webCodeList.slice(0, jsdocInsertionPoint),
-      `console.warn('Design system warning: ${deprecationMessage}');`,
       createDeprecatedJsdocComment(deprecationMessage),
       ...webCodeList.slice(jsdocInsertionPoint, consoleLogInsertionPoint),
+      `console.warn('Design system warning: ${deprecationMessage}');`,
       ...webCodeList.slice(consoleLogInsertionPoint),
     ].join(`\n`);
   }
   return webCode;
 }
 
-async function outputNativeCode({ name: componentName, svgPath }) {
+async function outputNativeCode(component) {
+  const { name, svgPath, categories } = component;
   const rawSvgText = fs.readFileSync(svgPath, 'utf-8');
-  const nativeCode = await transform(rawSvgText, createSvgrConfig(true), {
-    componentName,
-  });
-  fs.outputFileSync(`./tmp/native/${componentName}.js`, nativeCode);
+  const nativeCode = await transform(
+    rawSvgText,
+    createSvgrConfig(true, name, categories),
+    {
+      componentName: name,
+    },
+  );
+  fs.outputFileSync(`./tmp/native/${name}.js`, nativeCode);
 }
 
 function createIndexFiles(components) {
@@ -174,7 +196,7 @@ function createTypeDeclaration(components) {
   const typingsPreamble = fs.readFileSync('./types/index.d.ts').toString();
   const componentTypeLines = components.flatMap(
     ({ name, isDeprecated, replacement }) => {
-      const typeDeclaration = `export declare const ${name}: React.FC<IconProps>;`;
+      const typeDeclaration = `export declare const ${name}: React.FC<IconProps & React.SVGProps<SVGElement>>;`;
       if (isDeprecated) {
         const deprecationMessage = getDeprecationMessage(name, replacement);
         const jsdocComment = createDeprecatedJsdocComment(deprecationMessage);
@@ -224,25 +246,33 @@ function traverse(directory, dirEnt = '') {
 
 /** Create the correct SVGR config based on its environment */
 function createSvgrConfig(native = false, componentName, categories) {
-  const config = {
+  const config: Config = {
     icon: true,
     replaceAttrValues: {
       [`${colors.brand.blue.toUpperCase()}`]: 'currentColor',
     },
     expandProps: 'start',
     plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx', '@svgr/plugin-prettier'],
+    template: template,
     native,
+    ref: true,
   };
 
   if (native) {
+    const isPartnerIcon = categories.includes('Partner');
     config.svgProps = {
-      color: '{(props.color || "#181C56")}',
+      ...(!isPartnerIcon && { color: '{(props.color || "#181C56")}' }),
+      ...(isPartnerIcon && { color: '{(props.color || "#FFFFFF")}' }),
       width: '{(props.width || props.size || 16)}',
       height: '{(props.height || props.size || 16)}',
     };
 
     config.replaceAttrValues = {
       [colors.brand.blue.toUpperCase()]: 'currentColor',
+      ...(isPartnerIcon && {
+        [colors.brand.white.toUpperCase()]: 'currentColor',
+        [colors.brand.white.toLowerCase()]: 'currentColor',
+      }),
       [colors.transport.default.bus.toUpperCase()]: 'currentColor',
       [colors.transport.default.metro.toUpperCase()]: 'currentColor',
       [colors.transport.default.tram.toUpperCase()]: 'currentColor',
@@ -261,7 +291,12 @@ function createSvgrConfig(native = false, componentName, categories) {
       '{"eds-icon " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}';
     let color = `{(props.color || "currentColor")}`;
 
-    if (outliers.includes(componentName)) {
+    if (
+      categories.some((category: string) =>
+        outlierCategories.includes(category),
+      ) ||
+      specialOutliers.includes(componentName)
+    ) {
       className = `{(props.color ? "eds-icon " : "") + "eds-icon__${componentName} " + (props.className || "") + (props.inline ? " eds-icon--inline" : "")}`;
       color = `{(props.color)}`;
     }

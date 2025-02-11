@@ -24,7 +24,6 @@ const plugins = [
   { name: 'cleanupEnableBackground' },
   { name: 'minifyStyles' },
   { name: 'convertStyleToAttrs' },
-  { name: 'convertColors' },
   { name: 'convertPathData' },
   { name: 'convertTransform' },
   { name: 'removeUnknownsAndDefaults' },
@@ -47,6 +46,13 @@ const plugins = [
   { name: 'removeOffCanvasPaths' },
   { name: 'removeStyleElement' },
   { name: 'removeScriptElement' },
+  {
+    name: 'convertColors',
+    params: {
+      shorthex: false, // Prevents shortening (e.g., #ffffff → #fff)
+      shortname: false, // Prevents named colors (e.g., `black` → `#000000`)
+    },
+  },
 ];
 
 module.exports = {

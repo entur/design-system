@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist native tmp ",
-    "build": "yarn prebuild && tsx bin/build.ts && rollup -c && yarn postbuild",
+    "build": "yarn prebuild && tsx bin/build.ts && rollup -c",
     "postbuild": "rimraf tmp"
   },
   "peerDependencies": {
