@@ -11,7 +11,7 @@
     "build:documentation": "lerna run --scope @entur/documentation build",
     "build:documentation:skip-packages-dependency": "cd apps/documentation && yarn build",
     "build:packages": "lerna run build --no-private",
-    "cleanStart": "lerna run --scope @entur/documentation cleanStart",
+    "cleanStart": "lerna run --scope @entur/documentation clean-start",
     "deploy-docs": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
     "deploy-docs:preview": "lerna exec --scope @entur/documentation -- yarn deploy-docs:preview",
     "gc:format": "cz",

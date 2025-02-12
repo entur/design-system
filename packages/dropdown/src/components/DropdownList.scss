@@ -1,6 +1,8 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 
 .eds-dropdown__list {
+  position: absolute;
+  width: 100%;
   box-sizing: content-box;
   max-height: 50vh;
   overflow-y: auto;
@@ -14,7 +16,7 @@
 
   &__floating-container {
     z-index: t.$z-indexes-popover;
-    width: calc(100% + t.$border-widths-medium * 2);
+    width: 100%;
   }
 
   &:focus {
