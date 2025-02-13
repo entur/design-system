@@ -1,12 +1,13 @@
-@use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 
 .mobile-topnav {
-  position: absolute;
+  position: sticky;
+  top: 0;
+  z-index: eds.$z-indexes-sticky;
   width: 100%;
   background: var(--designentur-header-default-fill);
-  border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
-  transition: position tokens.$timings-medium ease-in-out 0.2s;
+  border-bottom: eds.$border-widths-default solid var(--designentur-header-default-divider);
+  transition: position eds.$timings-medium ease-in-out 0.2s;
 
   .eds-contrast & {
     background: var(--designentur-header-contrast-fill);
@@ -23,32 +24,27 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: tokens.$font-sizes-extra-large2;
-      padding: tokens.$space-extra-small tokens.$space-large;
+      font-size: eds.$font-sizes-extra-large2;
+      padding: eds.$space-extra-small eds.$space-large;
       transform: scale(1);
-      transition: transform tokens.$timings-medium ease-in-out;
+      transition: transform eds.$timings-medium ease-in-out;
       &-open {
         //Slide til venstre og opacity
         transform: scale(0);
       }
-      &.eds-floating-button {
-        position: absolute;
-        top: 87vh;
-        left: 2rem;
-      }
       &:focus-visible {
-        outline: tokens.$outlines-focus;
-        outline-offset: tokens.$outline-offsets-focus;
+        outline: eds.$outlines-focus;
+        outline-offset: eds.$outline-offsets-focus;
       }
     }
     &--settings {
       color: inherit;
-      padding: tokens.$space-extra-small;
-      font-size: tokens.$font-sizes-extra-large2;
+      padding: eds.$space-extra-small;
+      font-size: eds.$font-sizes-extra-large2;
       flex-grow: 1;
       &:focus-visible {
         outline: none;
-        box-shadow: tokens.$shadows-focus;
+        box-shadow: eds.$shadows-focus;
       }
     }
   }
@@ -82,7 +78,7 @@
   }
 
   &-item {
-    padding: tokens.$space-medium tokens.$space-large;
+    padding: eds.$space-medium eds.$space-large;
     word-break: keep-all;
     display: flex;
     color: inherit;
@@ -91,7 +87,7 @@
     white-space: nowrap;
     &--active {
       &:after {
-        border-bottom: tokens.$border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
+        border-bottom: eds.$border-widths-large solid var(--components-menu-navigationbar-standard-stroke-selected);
         content: '';
         display: block;
         position: absolute;

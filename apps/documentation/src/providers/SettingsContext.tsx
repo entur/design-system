@@ -30,7 +30,7 @@ export function usePersistedState<Type>(
 export type VariableFormat = 'scss' | 'less' | 'css' | 'js';
 export type UserType = 'developer' | 'designer';
 export type PackageManager = 'yarn' | 'npm';
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark' | 'system' | 'contrast';
 type SettingsContextType = {
   variableFormat: VariableFormat;
   setVariableFormat: React.Dispatch<React.SetStateAction<VariableFormat>>;

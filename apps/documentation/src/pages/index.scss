@@ -1,88 +1,97 @@
+@use "sass:map";
+@use "../styles/variables.scss" as variables;
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 
-.content-margin {
-  max-width: 1328px;
-  padding: 0 1.5rem;
+.frontpage {
+  &__main {
+    display: grid;
+    gap: eds.$space-default;
+    grid-template-columns:
+      1fr
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      minmax(0px, 6rem) minmax(0px, 6rem)
+      1fr;
 
-  @include breakpoint.for-desktop {
-    padding: 0 1rem;
-    margin: 0 auto;
-  }
-}
+    background: url('../media/images/frontpage/Linjer.svg'), var(--basecolors-frame-contrast);
+    background-position: top-center;
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.front-page {
-  &__desktop {
-    display: none;
+    &__hero {
+      grid-column: 2 / -2;
+      display: grid;
+      grid-template-columns: subgrid;
+      row-gap: eds.$space-default;
+      height: fit-content;
+      padding-block: eds.$space-extra-large5;
 
-    @include breakpoint.for-desktop {
-      display: block;
+      &__main-heading {
+        grid-column: span 12;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        font-size: calc(eds.$font-sizes-extra-large5 * 2);
+
+        @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+          gap: eds.$space-default;
+        }
+
+        &__start {
+        }
+        &__end {
+          display: block;
+          font-size: eds.$font-sizes-extra-large5;
+          color: var(--basecolors-text-highlight);
+        }
+      }
+      &__secondary-heading {
+        grid-column: span 12;
+        margin-block-start: eds.$space-extra-large5;
+      }
+      &__navigation-cards {
+        &__card {
+          grid-column: span 4;
+
+          @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+            grid-column: span 6;
+          }
+          @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+            grid-column: span 12;
+          }
+        }
+      }
     }
-  }
-  &__mobile {
-    display: block;
+    &__section {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      row-gap: eds.$space-default;
+      padding-block: eds.$space-extra-large5;
 
-    @include breakpoint.for-desktop {
-      display: none;
+      background-color: var(--section-color);
+
+      > * {
+        grid-column: 2 / -2;
+        width: fit-content;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        grid-column: 2 / span 6;
+
+        @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+          grid-column: 2 / span 12;
+        }
+      }
     }
-  }
-}
-
-.front-page__top {
-  margin-top: 7rem;
-
-  @include breakpoint.for-desktop {
-    padding-top: 8rem;
-    margin-top: 0;
-    padding-bottom: 3rem;
-  }
-}
-
-.front-page__top-image {
-  position: absolute;
-  top: 4rem;
-  right: 0rem;
-  display: none;
-
-  @include breakpoint.for-desktop {
-    width: 51%;
-    display: block;
-  }
-  @include breakpoint.for-large-desktop {
-    width: 60%;
-  }
-}
-
-.front-page__blue-cards {
-  background: var(--basecolors-frame-tint);
-  padding-bottom: 3rem;
-
-  @include breakpoint.for-desktop {
-    padding-bottom: 7.5rem;
-  }
-}
-
-.front-page__second-intro {
-  padding-top: 2rem;
-  margin-bottom: 2rem;
-  text-align: left;
-
-  @include breakpoint.for-desktop {
-    text-align: center;
-    padding-top: 6.5rem;
-    margin-bottom: 4rem;
-  }
-}
-
-.front-page__last-section {
-  max-width: 784px;
-  margin: 0 auto;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
-
-  @include breakpoint.for-desktop {
-    margin-top: 8.5rem;
-    margin-bottom: 12.5rem;
   }
 }
 
@@ -93,9 +102,9 @@
   margin-top: -0.5rem;
   overflow: hidden;
   .eds-paragraph {
-    font-size: tokens.$font-sizes-extra-large5;
+    font-size: eds.$font-sizes-extra-large5;
     margin: 0 0 1rem;
-    line-height: tokens.$line-heights-extra-large7;
+    line-height: eds.$line-heights-extra-large7;
   }
 }
 

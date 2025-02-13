@@ -1,40 +1,36 @@
 @use '../../../styles/variables' as variables;
-@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/styles.scss' as eds;
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
 .top-navigation {
   display: flex;
   align-items: center;
-  overflow-x: scroll;
-  border-bottom: tokens.$border-widths-default solid var(--designentur-header-default-divider);
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow-x: initial;
+  padding-left: eds.$space-extra-large2;
+  justify-content: flex-start;
+  border-bottom: eds.$border-widths-default solid var(--designentur-header-default-divider);
   width: 100vw;
-  padding: 1rem 1rem 0rem;
-  transition: margin-left tokens.$timings-fast ease-out;
   height: variables.$navbar-height;
-  z-index: tokens.$z-indexes-popover;
+  z-index: eds.$z-indexes-popover;
+  transition: margin-left eds.$timings-fast ease-out;
 
   &--frontpage {
     border-bottom: none;
   }
 
-  .searchmodal__button {
-    margin-left: auto;
+  &__logo {
+    margin-right: 3rem;
+    &:focus-visible {
+      outline: none;
+      box-shadow: eds.$shadows-focus;
+      outline-offset: eds.$outline-offsets-focus;
+    }
   }
 
-  @include for-desktop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-x: initial;
-    padding: tokens.$space-extra-large2 0 tokens.$space-extra-large2 tokens.$space-extra-large2;
-    justify-content: flex-start;
-    &__logo {
-      margin-right: 3rem;
-      &:focus-visible {
-        outline: none;
-        box-shadow: tokens.$shadows-focus;
-        outline-offset: tokens.$outline-offsets-focus;
-      }
-    }
+  .searchmodal__button {
+    margin-left: auto;
   }
 }

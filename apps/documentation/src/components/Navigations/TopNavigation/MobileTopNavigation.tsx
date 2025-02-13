@@ -30,37 +30,32 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   const Element = frontPage ? Contrast : 'div';
 
   return (
-    <>
-      <Element
-        as="header"
-        className={classNames('ui-menu--mobile', {
-          'eds-contrast':
-            typeof window !== 'undefined' && window.location.pathname === '/',
-        })}
-      >
-        <div className={classNames('mobile-topnav')}>
-          <div className="mobile-topnav__menu">
-            <Link to="/" className="mobile-topnav__logo">
-              <img
-                src={colorMode === 'dark' || isContrast ? logoDark : logo}
-                alt="Entur logo – designsystemets starside"
-              />
-            </Link>
-            <Search />
-            <SettingsPanel />
-          </div>
-          <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">
-            <MobileTopNavItem to="/kom-i-gang">Kom i Gang</MobileTopNavItem>
-            <MobileTopNavItem to="/identitet">Identitet</MobileTopNavItem>
-            <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
-            <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
-            <MobileTopNavItem to="/universell-utforming">
-              Universell utforming
-            </MobileTopNavItem>
-          </div>
-        </div>
-      </Element>
-    </>
+    <nav
+      className={classNames('mobile-topnav', {
+        'eds-contrast':
+          typeof window !== 'undefined' && window.location.pathname === '/',
+      })}
+    >
+      <div className="mobile-topnav__menu">
+        <Link to="/" className="mobile-topnav__logo">
+          <img
+            src={colorMode === 'dark' || isContrast ? logoDark : logo}
+            alt="Entur logo – designsystemets starside"
+          />
+        </Link>
+        <Search />
+        <SettingsPanel />
+      </div>
+      <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">
+        <MobileTopNavItem to="/kom-i-gang">Kom i Gang</MobileTopNavItem>
+        <MobileTopNavItem to="/identitet">Identitet</MobileTopNavItem>
+        <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
+        <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
+        <MobileTopNavItem to="/universell-utforming">
+          Universell utforming
+        </MobileTopNavItem>
+      </div>
+    </nav>
   );
 };
 export default MobileTopNavigation;

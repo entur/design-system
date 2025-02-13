@@ -6,3 +6,9 @@ $site-content-left-margin: 8%;
 $show-toc-min-width: 94rem;
 $toc-left-position-relative-to-site-content: 5rem;
 $toc-left-position: #{'Calc(#{$side-navigation-width--large-desktop} + #{$site-content-left-margin} + #{$site-content-max-width} + #{$toc-left-position-relative-to-site-content})'};
+
+$breakpoints: (
+  mobile-small: 375px,
+  mobile: 648px,
+  tablet: 960px,
+);

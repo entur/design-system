@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MenuItem, removeTrailingSlash } from './utils';
 import { Link } from 'gatsby';
 import { FloatingButton } from '@entur/button';
@@ -39,21 +39,29 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
   const capitalizedParentPath =
     parentPath.charAt(0).toUpperCase() + parentPath.slice(1);
 
+  useEffect(() => {
+    const siteContent = document.body;
+    if (!siteContent) return;
+
+    if (openSidebar) siteContent.style.overflow = 'hidden';
+    else siteContent.style.overflow = '';
+  }, [openSidebar]);
+
+  useEffect(() => () => setOpenSidebar(false), [setOpenSidebar]);
+
   return (
     <>
-      <div className="ui-menu--mobile">
-        <FloatingButton
-          size="medium"
-          className={classNames('mobile-side-navigation__menu--menu-button', {
-            'mobile-side-navigation__menu--menu-button-open': openSidebar,
-          })}
-          onClick={() => setOpenSidebar(true)}
-          type="button"
-          aria-label="meny"
-        >
-          <MenuIcon />
-        </FloatingButton>
-      </div>
+      <FloatingButton
+        size="medium"
+        className={classNames('mobile-side-navigation__menu--menu-button', {
+          'mobile-side-navigation__menu--menu-button-open': openSidebar,
+        })}
+        onClick={() => setOpenSidebar(true)}
+        type="button"
+        aria-label="meny"
+      >
+        <MenuIcon />
+      </FloatingButton>
 
       {openSidebar && (
         <div
@@ -66,47 +74,46 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
           'mobile-side-navigation--visible': openSidebar,
         })}
       >
-        <div
+        <nav
           className={classNames('mobile-side-navigation-wrapper', className)}
+          aria-label={`Navigasjon for seksjonen "${parentPath}"`}
         >
-          <nav aria-label={`Navigasjon for seksjonen "${parentPath}"`}>
-            <div className="mobile-side-navigation__background">
-              <Link to="/" className="mobile-side-navigation__logo">
-                <img
-                  src={colorMode === 'dark' || isContrast ? logoDark : logo}
-                  height="20px"
-                  width="64px"
-                  alt="Entur logo"
-                />
-              </Link>
-              <Heading2
-                margin="none"
-                style={{
-                  marginLeft: space.extraLarge,
-                  marginTop: space.extraLarge2,
-                }}
-              >
-                {capitalizedParentPath}
-              </Heading2>
-
-              <SideNavigation
-                menuItems={menuItems}
-                mobile={true}
-                onClickMenuItem={() => setOpenSidebar(false)}
+          <div className="mobile-side-navigation__background">
+            <Link to="/" className="mobile-side-navigation__logo">
+              <img
+                src={colorMode === 'dark' || isContrast ? logoDark : logo}
+                height="20px"
+                width="64px"
+                alt="Entur logo"
               />
-            </div>
-
-            <FloatingButton
-              aria-label="Lukk sidemeny"
-              onClick={() => setOpenSidebar(false)}
-              className={classNames('mobile-side-navigation__close-menu', {
-                'mobile-side-navigation__close-menu--open': openSidebar,
-              })}
+            </Link>
+            <Heading2
+              margin="none"
+              style={{
+                marginLeft: space.extraLarge,
+                marginTop: space.extraLarge2,
+              }}
             >
-              <LeftArrowIcon />
-            </FloatingButton>
-          </nav>
-        </div>
+              {capitalizedParentPath}
+            </Heading2>
+
+            <SideNavigation
+              menuItems={menuItems}
+              mobile={true}
+              onClickMenuItem={() => setOpenSidebar(false)}
+            />
+          </div>
+
+          <FloatingButton
+            aria-label="Lukk sidemeny"
+            onClick={() => setOpenSidebar(false)}
+            className={classNames('mobile-side-navigation__close-menu', {
+              'mobile-side-navigation__close-menu--open': openSidebar,
+            })}
+          >
+            <LeftArrowIcon />
+          </FloatingButton>
+        </nav>
       </div>
     </>
   );

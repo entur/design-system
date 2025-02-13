@@ -1,3 +1,4 @@
+@use '@entur/tokens/dist/base.scss';
 @use './variables' as variables;
 @use '../utils/componentColors/designEnturComponentColors.scss' as *;
 
@@ -41,10 +42,10 @@ body {
 }
 
 .page {
-  margin-top: variables.$navbar-height;
   height: 100%;
   width: 100%;
   overflow-y: auto;
+
   @include for-desktop {
     position: absolute;
     top: variables.$navbar-height;
@@ -97,67 +98,6 @@ body {
       }
     }
   }
-}
-
-.ui-menu {
-  &--desktop {
-    display: none;
-    @include for-desktop {
-      display: block;
-    }
-  }
-  &--mobile {
-    display: block;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: tokens.$z-indexes-sticky;
-    transition: position tokens.$timings-medium ease-in-out tokens.$timings-medium;
-    &-not-frontpage {
-      background: white;
-    }
-    &-open-sidemenu {
-      position: static;
-    }
-    @include for-desktop {
-      display: none;
-    }
-  }
-}
-
-.frontpage__site-content-wrapper {
-  .frontpage-blue-backer {
-    background: var(--basecolors-frame-contrast);
-    position: absolute;
-    width: 100vw;
-    top: 0;
-    z-index: -1;
-    height: 42rem;
-    @include for-desktop {
-      height: 39rem;
-    }
-  }
-  &--hidden {
-    overflow: hidden;
-    position: fixed;
-    .frontpage-blue-backer {
-      height: 33rem; //Hack to avoid visual bug
-    }
-  }
-}
-
-.frontpage-site-content {
-  display: flex;
-  margin: tokens.$space-default tokens.$space-large;
-  flex-direction: column;
-  min-height: 90vh;
-  @include for-desktop {
-    margin: 0 auto 1rem;
-    max-width: 64rem;
-  }
-}
-.frontpage-site-content main {
-  flex: 1;
 }
 
 code {
