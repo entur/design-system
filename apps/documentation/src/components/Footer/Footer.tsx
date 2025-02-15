@@ -8,19 +8,13 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@entur/icons';
-import {
-  Heading3,
-  Label,
-  LeadParagraph,
-  Link as DSLink,
-} from '@entur/typography';
+import { Heading3, LeadParagraph, Link as DSLink } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
-import { Media } from '@providers/MediaBreakpoint';
+import { Logo } from '@components/Logo/Logo';
 import { Theme, useSettings } from '@providers/SettingsContext';
 
 import './Footer.scss';
-import { Logo } from '@components/Logo/Logo';
 
 const Footer = ({ forceColorMode }: { forceColorMode?: Theme }) => {
   const year = new Date();

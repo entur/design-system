@@ -12,6 +12,8 @@ import TopNavigationLayout from '../layouts/TopNavigationLayout';
 import { SkipToContent } from '@entur/a11y';
 import { SEO } from '@components/seo/SEO';
 
+import Linjer from '@media/images/frontpage/Linjer.svg';
+
 import './index.scss';
 
 const Index = () => (
@@ -19,10 +21,11 @@ const Index = () => (
     <SkipToContent mainId="frontpage-content">
       Gå til hovedinnhold
     </SkipToContent>
-    <Contrast data-color-mode="contrast">
+    <Contrast data-color-mode="contrast" className="frontpage">
       <TopNavigationLayout />
       <main className="frontpage__main">
         <div className="frontpage__main__hero">
+          <img src={Linjer} alt="" className="frontpage__main__hero__lines" />
           <Heading1 className="frontpage__main__hero__main-heading">
             <span className="frontpage__main__hero__main-heading__start">
               Navn

@@ -4,8 +4,14 @@
 @use '~@entur/tokens/dist/styles.scss' as eds;
 
 .frontpage {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+
   &__main {
+    flex: 1;
     display: grid;
+    position: relative;
     gap: eds.$space-default;
     grid-template-columns:
       1fr
@@ -16,12 +22,8 @@
       minmax(0px, 6rem) minmax(0px, 6rem)
       minmax(0px, 6rem) minmax(0px, 6rem)
       1fr;
-
-    background: url('../media/images/frontpage/Linjer.svg'), var(--basecolors-frame-contrast);
-    background-position: top-center;
-    background-blend-mode: multiply;
-    background-repeat: no-repeat;
-    background-size: cover;
+    overflow: hidden;
+    margin-top: variables.$navbar-height;
 
     &__hero {
       grid-column: 2 / -2;
@@ -31,19 +33,28 @@
       height: fit-content;
       padding-block: eds.$space-extra-large5;
 
+      &__lines {
+        position: absolute;
+        object-fit: none;
+        overflow: hidden;
+        transform: translate(-69.5rem, -64rem) scale(1);
+        opacity: 0.3;
+
+        path {
+          stroke-dasharray: 20;
+        }
+      }
+
       &__main-heading {
         grid-column: span 12;
         display: flex;
         flex-direction: column;
-        gap: 0;
         font-size: calc(eds.$font-sizes-extra-large5 * 2);
 
         @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
           gap: eds.$space-default;
         }
 
-        &__start {
-        }
         &__end {
           display: block;
           font-size: eds.$font-sizes-extra-large5;
@@ -52,7 +63,7 @@
       }
       &__secondary-heading {
         grid-column: span 12;
-        margin-block-start: eds.$space-extra-large5;
+        margin-block-start: eds.$space-extra-large9;
       }
       &__navigation-cards {
         &__card {
@@ -69,10 +80,14 @@
     }
     &__section {
       grid-column: 1 / -1;
+      position: relative;
+      height: 100%;
       display: grid;
       grid-template-columns: subgrid;
+      align-content: start;
       row-gap: eds.$space-default;
       padding-block: eds.$space-extra-large5;
+      margin-top: eds.$space-extra-large5;
 
       background-color: var(--section-color);
 
