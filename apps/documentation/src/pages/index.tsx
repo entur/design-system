@@ -30,9 +30,7 @@ const Index = () => (
             <span className="frontpage__main__hero__main-heading__start">
               Navn
             </span>
-            <span className="frontpage__main__hero__main-heading__end">
-              {`\ner til for å sikre visuell konsistens`}
-            </span>
+            <ShiftingHeader />
           </Heading1>
           <PrimaryButton as={Link} to="/kom-i-gang">
             Kom i gang
@@ -125,9 +123,17 @@ const NAVIGATION_CARDS = [
 ];
 
 const SHIFTING_HEADER_WORDS = [
-  'sikrer visuell konsistens',
-  'reduserer dobbeltarbeid',
-  'oppnår raskere utviklingstid',
+  'er til for å sikre visuell konsistens',
+  'leder deg i riktig retning',
+  'tar deg raskere til mål',
+  'gjør det lett å gjøre rett',
+  'er her for å hjelpe deg',
+  'støtter mørk modus',
+  'gjør løsningene dine mer tilgjengelige',
+  'setter standarder på tvers',
+  'er glad i deg',
+  'får designet til å gå på skinner',
+  'unngår design-kollisjoner',
 ];
 
 function ShiftingHeader() {
@@ -135,22 +141,28 @@ function ShiftingHeader() {
 
   React.useEffect(() => {
     const id = setInterval(
-      () => setIndex(prev => (prev + 1) % SHIFTING_HEADER_WORDS.length),
+      () =>
+        setIndex(prev => {
+          const newIndex =
+            Math.floor(Math.random() * SHIFTING_HEADER_WORDS.length) %
+            SHIFTING_HEADER_WORDS.length;
+          if (newIndex === prev)
+            return (newIndex + 1) % SHIFTING_HEADER_WORDS.length;
+          return newIndex;
+        }),
       5000,
     );
     return () => clearInterval(id);
   }, []);
 
   return (
-    <div className="shifting-header">
-      <Paragraph
-        key={SHIFTING_HEADER_WORDS[currentIndex]}
-        className="fade-in-out"
-        style={{ fontWeight: 600, color: colors.brand.coral }}
-      >
-        {SHIFTING_HEADER_WORDS[currentIndex]}
-      </Paragraph>
-    </div>
+    <span
+      key={SHIFTING_HEADER_WORDS[currentIndex]}
+      className="frontpage__main__hero__main-heading__end shifting-header"
+      style={{ fontWeight: 600, color: colors.brand.coral }}
+    >
+      {`\n${SHIFTING_HEADER_WORDS[currentIndex]}`}
+    </span>
   );
 }
 

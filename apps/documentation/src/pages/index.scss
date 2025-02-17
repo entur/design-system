@@ -116,23 +116,18 @@
   height: 5.2rem;
   margin-top: -0.5rem;
   overflow: hidden;
-  .eds-paragraph {
-    font-size: eds.$font-sizes-extra-large5;
-    margin: 0 0 1rem;
-    line-height: eds.$line-heights-extra-large7;
+  width: 100%;
+  animation: scrollInOut 5s ease-out infinite;
+
+  @media (prefers-reduced-motion) {
+    animation: fadeInOut 5s ease-out infinite;
   }
 }
 
-.fade-in-out {
-  animation: fadeInOut 5s ease-out infinite;
-  position: absolute;
-  width: 100%;
-}
-
-@keyframes fadeInOut {
+@keyframes scrollInOut {
   0% {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-20px);
   }
   10% {
     opacity: 1;
@@ -145,5 +140,19 @@
   100% {
     opacity: 0;
     transform: translateY(40px);
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
