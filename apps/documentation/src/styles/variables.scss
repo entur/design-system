@@ -1,11 +1,11 @@
 $navbar-height: 7rem;
-$side-navigation-width--desktop: 18rem;
+$side-navigation-width--desktop: 21rem;
 $side-navigation-width--large-desktop: 22rem;
 $site-content-max-width: 45rem;
 $site-content-left-margin: 8%;
-$show-toc-min-width: 94rem;
-$toc-left-position-relative-to-site-content: 5rem;
-$toc-left-position: #{'Calc(#{$side-navigation-width--large-desktop} + #{$site-content-left-margin} + #{$site-content-max-width} + #{$toc-left-position-relative-to-site-content})'};
+$show-toc-min-width: 90rem;
+$toc-left-position-relative-to-site-content: 3rem;
+$toc-left-position: #{'Calc(#{$side-navigation-width--desktop} + #{$site-content-left-margin} + #{$site-content-max-width} + #{$toc-left-position-relative-to-site-content})'};
 
 $breakpoints: (
   mobile-small: 375px,

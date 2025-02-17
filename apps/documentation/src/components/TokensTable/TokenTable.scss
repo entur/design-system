@@ -1,6 +1,9 @@
+@use "sass:map";
 @use '@entur/tokens/dist/semantic.scss' as semantic;
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
+
+@use '../../styles/variables' as variables;
 
 .token {
   &-content {
@@ -138,7 +141,7 @@
       margin-bottom: tokens.$space-medium;
       padding: tokens.$space-medium;
 
-      @include for-desktop {
+      @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 2rem;

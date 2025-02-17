@@ -1,12 +1,15 @@
+@use "sass:map";
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
+
+@use '../../styles/variables' as variables;
 
 .settings-panel {
   display: flex;
   justify-content: flex-end;
   margin-right: 1rem;
 
-  @include for-desktop {
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
     flex-grow: unset;
     align-items: center;
     justify-content: center;

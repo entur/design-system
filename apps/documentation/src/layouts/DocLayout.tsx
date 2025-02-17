@@ -14,13 +14,12 @@ interface LayoutProps {
 const DocLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <SkipToContent mainId="site-content">Gå til hovedinnhold</SkipToContent>
+      <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>
       <TopNavigationLayout />
+      <SideNavigationLayout />
       <div className="page">
-        <SideNavigationLayout />
-
         <div className="site-content">
-          <main id="site-content">
+          <main id="main">
             <MDXProvider components={components as MDXComponents}>
               {children}
             </MDXProvider>

@@ -1,8 +1,8 @@
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
 
 .footer {
-  position: relative;
   background-color: var(--basecolors-frame-contrast);
+
   &__mobile-item {
     @include breakpoint.for-desktop {
       display: none;

@@ -9,7 +9,7 @@ const SideNavigationLayout = () => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
 
   const { width } = useWindowDimensions();
-  const isMobile = width !== undefined && width <= 960;
+  const isTablet = width !== undefined && width <= 960;
 
   const MenuData = useStaticQuery(graphql`
     query {
@@ -32,7 +32,7 @@ const SideNavigationLayout = () => {
 
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
 
-  return isMobile ? (
+  return isTablet ? (
     <MobileSideNavigation
       menuItems={menuItems}
       openSidebar={openSidebar}

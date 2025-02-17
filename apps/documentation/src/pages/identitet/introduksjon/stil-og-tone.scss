@@ -1,4 +1,7 @@
+@use "sass:map";
 @use '~@entur/utils/dist/breakpoints.scss' as *;
+
+@use '../../../styles/variables' as variables;
 
 .tone-of-voice {
   &__card {
@@ -6,7 +9,7 @@
     margin-bottom: 2.5rem;
     width: 100%;
 
-    @include for-desktop {
+    @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
       padding: 2.5rem;
     }
   }

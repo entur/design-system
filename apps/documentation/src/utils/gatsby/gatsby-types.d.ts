@@ -3383,7 +3383,7 @@ type PackageChangelogQuery = { readonly allFile: { readonly nodes: ReadonlyArray
 type pageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageQueryQuery = { readonly stilogtone: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+type pageQueryQuery = { readonly verdier: { readonly images: ReadonlyArray<{ readonly name: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type PowerpointFileQueryVariables = Exact<{ [key: string]: never; }>;
 

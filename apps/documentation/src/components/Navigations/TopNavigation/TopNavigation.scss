@@ -5,17 +5,22 @@
 .top-navigation {
   display: flex;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   overflow-x: initial;
   padding-left: eds.$space-extra-large2;
   justify-content: flex-start;
   border-bottom: eds.$border-widths-default solid var(--designentur-header-default-divider);
-  width: 100vw;
+  background: var(--designentur-header-default-fill);
+  width: 100%;
   height: variables.$navbar-height;
   z-index: eds.$z-indexes-popover;
   transition: margin-left eds.$timings-fast ease-out;
+
+  [data-color-mode='contrast'] {
+    background: var(--designentur-header-contrast-fill);
+  }
 
   &--frontpage {
     border-bottom: none;
