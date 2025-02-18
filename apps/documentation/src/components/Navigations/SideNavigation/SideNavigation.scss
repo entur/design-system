@@ -42,9 +42,9 @@
 
     &__menu-button {
       position: fixed;
-      bottom: 4rem;
+      bottom: 2em;
       right: 4rem;
-      transform: scale(1.5);
+      transform: scale(1.25);
       transition: transform tokens.$timings-medium ease-in-out;
 
       &-open {

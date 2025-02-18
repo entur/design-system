@@ -16,29 +16,8 @@
 
   &__menu {
     display: flex;
-    padding: 1rem 0;
+    padding-top: 1rem;
     align-items: center;
-
-    &--menu-button {
-      appearance: none;
-      background-color: inherit;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      font-size: eds.$font-sizes-extra-large2;
-      padding: eds.$space-extra-small eds.$space-large;
-      transform: scale(1);
-      transition: transform eds.$timings-medium ease-in-out;
-
-      &-open {
-        //Slide til venstre og opacity
-        transform: scale(0);
-      }
-      &:focus-visible {
-        outline: eds.$outlines-focus;
-        outline-offset: eds.$outline-offsets-focus;
-      }
-    }
 
     &--settings {
       color: inherit;

@@ -1,11 +1,11 @@
-$navbar-height: 7rem;
+$navbar-height: 5rem;
 $side-navigation-width--desktop: 21rem;
 $side-navigation-width--large-desktop: 22rem;
 $site-content-max-width: 45rem;
 $site-content-left-margin: 8%;
 $show-toc-min-width: 90rem;
 $toc-left-position-relative-to-site-content: 3rem;
-$toc-left-position: #{'Calc(#{$side-navigation-width--desktop} + #{$site-content-left-margin} + #{$site-content-max-width} + #{$toc-left-position-relative-to-site-content})'};
+$toc-left-position: 74rem;
 
 $breakpoints: (
   mobile-small: 375px,

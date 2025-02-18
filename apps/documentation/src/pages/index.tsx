@@ -12,7 +12,11 @@ import TopNavigationLayout from '../layouts/TopNavigationLayout';
 import { SkipToContent } from '@entur/a11y';
 import { SEO } from '@components/seo/SEO';
 
-import Linjer from '@media/images/frontpage/Linjer.svg';
+import {
+  LinjeLines,
+  LinjeTopographicTop,
+  LinjeTopographicBottom,
+} from '@media/images/frontpage/Linjer2';
 
 import './index.scss';
 
@@ -21,61 +25,67 @@ const Index = () => (
     <SkipToContent mainId="frontpage-content">
       Gå til hovedinnhold
     </SkipToContent>
-    <Contrast data-color-mode="contrast" className="frontpage">
-      <TopNavigationLayout />
-      <main className="frontpage__main">
-        <div className="frontpage__main__hero">
-          <img src={Linjer} alt="" className="frontpage__main__hero__lines" />
-          <Heading1 className="frontpage__main__hero__main-heading">
-            <span className="frontpage__main__hero__main-heading__start">
-              Navn
-            </span>
-            <ShiftingHeader />
-          </Heading1>
-          <PrimaryButton as={Link} to="/kom-i-gang">
-            Kom i gang
-          </PrimaryButton>
-          <Heading2 className="frontpage__main__hero__secondary-heading">
-            Alt du trenger i ett system
-          </Heading2>
-          {NAVIGATION_CARDS.map(card => {
-            return (
-              <NavigationCard
-                title={card.title}
-                as={Link}
-                to={card.linkTo}
-                className="frontpage__main__hero__navigation-cards__card"
-              >
-                {card.description}
-              </NavigationCard>
-            );
-          })}
-        </div>
-        <div
-          className="frontpage__main__section"
-          style={{ '--section-color': 'var(--basecolors-frame-contrastalt)' }}
-        >
-          <Heading2>Vil du bidra?</Heading2>
-          <Paragraph>
-            Designsystemet er et levende produkt som oppdateres og vedlikeholdes
-            kontinuerlig. Kjerneteamet er ansvarlig for forvalting og support av
-            designsystemet, men eierskapet deles mellom alle designere og
-            uviklere av Entur.
-          </Paragraph>
-          <Paragraph>
-            Alle med interesse for å påvirke utviklingen, ha innflytelse på
-            designsystems innhold eller gi tilbakemeldinger er velkomne. Ta en
-            titt på vår bidra side for hvordan du går frem.
-          </Paragraph>
-          <SecondaryButton
-            as={Link}
-            to="/kom-i-gang/for-utviklere/bidra-med-kode"
+    <Contrast data-color-mode="contrast">
+      <TopNavigationLayout data-color-mode="contrast" />
+      <div className="frontpage">
+        <LinjeTopographicBottom className="frontpage__background__topographic-bottom" />
+        <LinjeTopographicTop className="frontpage__background__topographic-top" />
+        <LinjeLines className="frontpage__background__lines" />
+        <main className="frontpage__main">
+          <div className="frontpage__main__hero">
+            <div className="frontpage__main__hero__content">
+              <Heading1 className="frontpage__main__hero__content__main-heading">
+                <span className="frontpage__main__hero__content__main-heading__start">
+                  Navn
+                </span>
+                <ShiftingHeader />
+              </Heading1>
+              <PrimaryButton as={Link} to="/kom-i-gang">
+                Kom i gang
+              </PrimaryButton>
+              <Heading2 className="frontpage__main__hero__content__secondary-heading">
+                Alt du trenger i ett system
+              </Heading2>
+              {NAVIGATION_CARDS.map(card => {
+                return (
+                  <NavigationCard
+                    title={card.title}
+                    as={Link}
+                    to={card.linkTo}
+                    className="frontpage__main__hero__content__navigation-cards__card"
+                  >
+                    {card.description}
+                  </NavigationCard>
+                );
+              })}
+            </div>
+          </div>
+          <div
+            className="frontpage__main__section"
+            style={{ '--section-color': 'var(--basecolors-frame-contrastalt)' }}
           >
-            Se hvordan du kan bidra
-          </SecondaryButton>
-        </div>
-      </main>
-      <Footer forceColorMode="contrast" />
+            <Heading2>Vil du bidra?</Heading2>
+            <Paragraph>
+              Designsystemet er et levende produkt som oppdateres og
+              vedlikeholdes kontinuerlig. Kjerneteamet er ansvarlig for
+              forvalting og support av designsystemet, men eierskapet deles
+              mellom alle designere og uviklere av Entur.
+            </Paragraph>
+            <Paragraph>
+              Alle med interesse for å påvirke utviklingen, ha innflytelse på
+              designsystems innhold eller gi tilbakemeldinger er velkomne. Ta en
+              titt på vår bidra side for hvordan du går frem.
+            </Paragraph>
+            <SecondaryButton
+              as={Link}
+              to="/kom-i-gang/for-utviklere/bidra-med-kode"
+            >
+              Se hvordan du kan bidra
+            </SecondaryButton>
+          </div>
+        </main>
+        <Footer forceColorMode="contrast" />
+      </div>
     </Contrast>
   </>
 );
@@ -158,7 +168,7 @@ function ShiftingHeader() {
   return (
     <span
       key={SHIFTING_HEADER_WORDS[currentIndex]}
-      className="frontpage__main__hero__main-heading__end shifting-header"
+      className="frontpage__main__hero__content__main-heading__end shifting-header"
       style={{ fontWeight: 600, color: colors.brand.coral }}
     >
       {`\n${SHIFTING_HEADER_WORDS[currentIndex]}`}

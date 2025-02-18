@@ -5,8 +5,40 @@
 
 .frontpage {
   display: flex;
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow-y: auto;
   flex-direction: column;
+  perspective: 10px;
+  background-color: var(--basecolors-frame-contrast);
+
+  &__background {
+    position: absolute;
+    transform-style: preserve-3d;
+    z-index: -1;
+    opacity: 0.3;
+
+    &__lines,
+    &__topographic-top,
+    &__topographic-bottom {
+      display: block;
+      transform-origin: center;
+      height: 200rem;
+      width: 400rem;
+      position: absolute;
+      top: -53%;
+      left: 50vw;
+      opacity: 0.3;
+    }
+    &__lines {
+      transform: translateZ(-8px) translateX(-40rem) translateY(-7rem) scale(1.8);
+    }
+    &__topographic-top {
+      transform: translateZ(-10px) translateX(-40rem) translateY(-7rem) scale(2);
+    }
+    &__topographic-bottom {
+      transform: translateZ(-12px) translateX(-40rem) translateY(-7rem) scale(2.2);
+    }
+  }
 
   &__main {
     flex: 1;
@@ -22,58 +54,52 @@
       minmax(0px, 6rem) minmax(0px, 6rem)
       minmax(0px, 6rem) minmax(0px, 6rem)
       1fr;
-    overflow: hidden;
-    margin-top: variables.$navbar-height;
+    padding-top: variables.$navbar-height;
 
     &__hero {
-      grid-column: 2 / -2;
+      grid-column: 1 / -1;
       display: grid;
       grid-template-columns: subgrid;
-      row-gap: eds.$space-default;
       height: fit-content;
-      padding-block: eds.$space-extra-large5;
 
-      &__lines {
-        position: absolute;
-        object-fit: none;
-        overflow: hidden;
-        transform: translate(-69.5rem, -64rem) scale(1);
-        opacity: 0.3;
+      &__content {
+        grid-column: 2 / -2;
+        display: grid;
+        grid-template-columns: subgrid;
+        height: fit-content;
+        padding-block: eds.$space-extra-large5;
+        row-gap: eds.$space-default;
 
-        path {
-          stroke-dasharray: 20;
-        }
-      }
-
-      &__main-heading {
-        grid-column: span 12;
-        display: flex;
-        flex-direction: column;
-        font-size: calc(eds.$font-sizes-extra-large5 * 2);
-
-        @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
-          gap: eds.$space-default;
-        }
-
-        &__end {
-          display: block;
-          font-size: eds.$font-sizes-extra-large5;
-          color: var(--basecolors-text-highlight);
-        }
-      }
-      &__secondary-heading {
-        grid-column: span 12;
-        margin-block-start: eds.$space-extra-large9;
-      }
-      &__navigation-cards {
-        &__card {
-          grid-column: span 4;
+        &__main-heading {
+          grid-column: span 12;
+          display: flex;
+          flex-direction: column;
+          font-size: calc(eds.$font-sizes-extra-large5 * 2);
 
           @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
-            grid-column: span 6;
+            gap: eds.$space-default;
           }
-          @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
-            grid-column: span 12;
+
+          &__end {
+            display: block;
+            font-size: eds.$font-sizes-extra-large5;
+            color: var(--basecolors-text-highlight);
+          }
+        }
+        &__secondary-heading {
+          grid-column: span 12;
+          margin-block-start: eds.$space-extra-large9;
+        }
+        &__navigation-cards {
+          &__card {
+            grid-column: span 4;
+
+            @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+              grid-column: span 6;
+            }
+            @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+              grid-column: span 12;
+            }
           }
         }
       }
@@ -114,7 +140,6 @@
 .shifting-header {
   position: relative;
   height: 5.2rem;
-  margin-top: -0.5rem;
   overflow: hidden;
   width: 100%;
   animation: scrollInOut 5s ease-out infinite;
