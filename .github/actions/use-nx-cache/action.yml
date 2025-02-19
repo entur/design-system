@@ -8,4 +8,4 @@ runs:
       with:
         path: '.cache/nx'
         key: nx-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
-        restore-keys: nx-${{ runner.os }} # But since this one always matches we will also always get a cache hit
+        restore-keys: nx-${{ runner.os }}- # But since this one always matches we will also always get a cache hit
