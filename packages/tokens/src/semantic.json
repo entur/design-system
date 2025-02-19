@@ -57,6 +57,12 @@
             "rootAlias": "Transparent/Ebony-Alpha25"
           },
           {
+            "name": "Fill/Background/Overlay/TransparentAlt2",
+            "value": "#cccdd44d",
+            "var": "Transparent/Ebony-Alpha20",
+            "rootAlias": "Transparent/Ebony-Alpha20"
+          },
+          {
             "name": "Fill/Background/Standard/Colorless",
             "value": "#ffffff00",
             "var": "White/Alpha-0",

@@ -40,8 +40,9 @@
   }
   &:hover {
     background-color: var(--components-layout-card-standard-fill-hoveractive);
-    box-shadow: 0.625rem 0.625rem 1rem var(--transparent-ebony-alpha15), 0.375rem 0.375rem 0.75rem var(--transparent-ebony-alpha35),
-      0.1875rem 0.1875rem 0.375rem var(--transparent-ebony-alpha20);
+    box-shadow: 0.625rem 0.625rem 1rem var(--components-layout-card-standard-shadowlayer3),
+      0.375rem 0.375rem 0.75rem var(--components-layout-card-standard-shadowlayer2),
+      0.1875rem 0.1875rem 0.375rem var(--components-layout-card-standard-shadowlayer1);
 
     &:before {
       opacity: 1;
@@ -51,7 +52,9 @@
     }
     .eds-contrast & {
       background-color: var(--components-layout-card-contrast-fill-hoveractive);
-      box-shadow: none;
+      box-shadow: 0.625rem 0.625rem 1rem var(--components-layout-card-contrast-shadowlayer3),
+        0.375rem 0.375rem 0.75rem var(--components-layout-card-contrast-shadowlayer2),
+        0.1875rem 0.1875rem 0.375rem var(--components-layout-card-contrast-shadowlayer1);
     }
   }
 
