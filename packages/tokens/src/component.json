@@ -399,6 +399,24 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/Layout/Card/Contrast/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
             "name": "Components/Layout/Card/Contrast/Subject text",
             "value": "#d9dae8",
             "var": "Text/SubduedAlt",
@@ -451,6 +469,24 @@
             "value": "#181c56",
             "var": "Shape/Accent",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer1",
+            "value": "#cccdd44d",
+            "var": "Fill/Background/Overlay/TransparentAlt2",
+            "rootAlias": "Transparent/Ebony-Alpha20"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer2",
+            "value": "#e5e5e959",
+            "var": "Fill/Selected/Hover/Dark",
+            "rootAlias": "Transparent/Ebony-Alpha35"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer3",
+            "value": "#e5e5e926",
+            "var": "Fill/Background/Overlay/Transparent",
+            "rootAlias": "Transparent/Ebony-Alpha15"
           },
           {
             "name": "Components/Layout/Card/Standard/Subject text",
@@ -6463,6 +6499,24 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/Layout/Card/Contrast/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Contrast/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
             "name": "Components/Layout/Card/Contrast/Subject text",
             "value": "#b3b4bd",
             "var": "Text/DarkAlt",
@@ -6515,6 +6569,24 @@
             "value": "#e5e5e9",
             "var": "Shape/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer1",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer2",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/Layout/Card/Standard/Shadow layer3",
+            "value": "#ffffff00",
+            "var": "Fill/Background/Standard/Colorless",
+            "rootAlias": "White/Alpha-0"
           },
           {
             "name": "Components/Layout/Card/Standard/Subject text",

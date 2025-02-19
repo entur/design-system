@@ -70,6 +70,9 @@
   --components-layout-card-contrast-fill-default-transparent: #{$fill-selected-default-contrast};
   --components-layout-card-contrast-fill-hoveractive: #{$fill-selected-hover-contrast};
   --components-layout-card-contrast-icon: #{$shape-light};
+  --components-layout-card-contrast-shadowlayer1: #{$fill-background-standard-colorless};
+  --components-layout-card-contrast-shadowlayer2: #{$fill-background-standard-colorless};
+  --components-layout-card-contrast-shadowlayer3: #{$fill-background-standard-colorless};
   --components-layout-card-contrast-subjecttext: #{$text-subduedalt};
   --components-layout-card-contrast-text: #{$text-light};
   --components-layout-card-standard-border-default: #{$stroke-neutral};
@@ -79,6 +82,9 @@
   --components-layout-card-standard-fill-default-transparent: #{$fill-background-standard-light};
   --components-layout-card-standard-fill-hoveractive: #{$fill-background-tint-light};
   --components-layout-card-standard-icon: #{$shape-accent};
+  --components-layout-card-standard-shadowlayer1: #{$fill-background-overlay-transparentalt2};
+  --components-layout-card-standard-shadowlayer2: #{$fill-selected-hover-dark};
+  --components-layout-card-standard-shadowlayer3: #{$fill-background-overlay-transparent};
   --components-layout-card-standard-subjecttext: #{$text-subdued};
   --components-layout-card-standard-text: #{$text-accent};
 }
@@ -149,6 +155,9 @@
   --components-layout-card-contrast-fill-default-transparent: #{$fill-background-overlay-transparent};
   --components-layout-card-contrast-fill-hoveractive: #{$fill-background-overlay-solidalt};
   --components-layout-card-contrast-icon: #{$shape-lightalt};
+  --components-layout-card-contrast-shadowlayer1: #{$fill-background-standard-colorless};
+  --components-layout-card-contrast-shadowlayer2: #{$fill-background-standard-colorless};
+  --components-layout-card-contrast-shadowlayer3: #{$fill-background-standard-colorless};
   --components-layout-card-contrast-subjecttext: #{$text-darkalt};
   --components-layout-card-contrast-text: #{$text-lightalt};
   --components-layout-card-standard-border-default: #{$stroke-colorless};
@@ -158,6 +167,9 @@
   --components-layout-card-standard-fill-default-transparent: #{$fill-background-overlay-transparent};
   --components-layout-card-standard-fill-hoveractive: #{$fill-background-overlay-solidalt};
   --components-layout-card-standard-icon: #{$shape-lightalt};
+  --components-layout-card-standard-shadowlayer1: #{$fill-background-standard-colorless};
+  --components-layout-card-standard-shadowlayer2: #{$fill-background-standard-colorless};
+  --components-layout-card-standard-shadowlayer3: #{$fill-background-standard-colorless};
   --components-layout-card-standard-subjecttext: #{$text-darkalt};
   --components-layout-card-standard-text: #{$text-lightalt};
 }
