@@ -59,8 +59,8 @@ jobs:
           path: |
             apps/documentation/.cache
             apps/documentation/public
-          key: gatsby-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
-          restore-keys: gatsby-${{ runner.os }} # But since this one always matches we will also always get a cache hit
+          key: gatsby-${{github.head_ref}}-${{ runner.os }}-${{ github.run_id }} # Since this is unique within the PR the cache will always be updated
+          restore-keys: gatsby-${{github.head_ref}}-${{ runner.os }} # But since this one always matches within the PR we will also always get a cache hit
 
       - run: yarn build:documentation:skip-packages-dependency
 
