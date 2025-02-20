@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.17.7-beta.0](https://github.com/entur/design-system/compare/@entur/tokens@3.17.6...@entur/tokens@3.17.7-beta.0) (2025-02-20)
+
+### Bug Fixes
+
+- **navigationcard:** etu-55052 add new colortokens ([2e07dc4](https://github.com/entur/design-system/commit/2e07dc4bb89797ff6cc18875702f1e29d62b2c33))
+
 ## [3.17.6](https://github.com/entur/design-system/compare/@entur/tokens@3.17.5...@entur/tokens@3.17.6) (2025-02-20)
 
 ### Bug Fixes

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/layout@2.4.1...@entur/layout@3.0.0-beta.0) (2025-02-20)
+
+### Bug Fixes
+
+- **navigationcard:** etu-55052 add new colortokens ([2e07dc4](https://github.com/entur/design-system/commit/2e07dc4bb89797ff6cc18875702f1e29d62b2c33))
+
+### Features
+
+- **card:** new design on navigation-card ([b4f20fa](https://github.com/entur/design-system/commit/b4f20fa7e304cfcf934486182b0c76d7c9c9584a))
+- **navigationcard:** remove external prop ([db0dd6d](https://github.com/entur/design-system/commit/db0dd6d1ea9a7154dcb55fa196e99e8d93012f0d))
+
+### BREAKING CHANGES
+
+- **navigationcard:** removed prop externalLink
+
 ## [2.4.1](https://github.com/entur/design-system/compare/@entur/layout@2.4.0...@entur/layout@2.4.1) (2025-02-20)
 
 **Note:** Version bump only for package @entur/layout

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@5.0.1...@entur/documentation@6.0.0-beta.0) (2025-02-20)
+
+### Features
+
+- **navigationcard:** remove external prop ([db0dd6d](https://github.com/entur/design-system/commit/db0dd6d1ea9a7154dcb55fa196e99e8d93012f0d))
+
+### BREAKING CHANGES
+
+- **navigationcard:** removed prop externalLink
+
 ## [5.0.1](https://github.com/entur/design-system/compare/@entur/documentation@1.2.0...@entur/documentation@5.0.1) (2025-02-20)
 
 ### Bug Fixes
