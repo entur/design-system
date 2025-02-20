@@ -4,39 +4,51 @@
 @use '~@entur/tokens/dist/styles.scss' as eds;
 
 .frontpage {
+  // This variable is overridden by js in ./index.tsx
+  --background-height: 200rem;
+
   display: flex;
   height: 100dvh;
   overflow-y: auto;
+  overflow-x: hidden;
   flex-direction: column;
-  perspective: 10px;
   background-color: var(--basecolors-frame-contrast);
+  transform-style: preserve-3d;
+
+  perspective: 10px;
+
+  @media (prefers-reduced-motion) {
+    perspective: none;
+  }
 
   &__background {
-    position: absolute;
-    transform-style: preserve-3d;
     z-index: -1;
     opacity: 0.3;
 
+    &__lines {
+      transform: translateZ(-8px) translateX(-40rem) translateY(1rem) scale(1.8);
+    }
+    &__topographic-top {
+      transform: translateZ(-10px) translateX(-40rem) translateY(1rem) scale(2);
+    }
+    &__topographic-bottom {
+      transform: translateZ(-12px) translateX(-40rem) translateY(1rem) scale(2.2);
+    }
     &__lines,
     &__topographic-top,
     &__topographic-bottom {
       display: block;
-      transform-origin: center;
       height: 200rem;
+      height: min(var(--background-height), 200rem);
       width: 400rem;
       position: absolute;
-      top: -53%;
+      top: -100%;
       left: 50vw;
       opacity: 0.3;
-    }
-    &__lines {
-      transform: translateZ(-8px) translateX(-40rem) translateY(-7rem) scale(1.8);
-    }
-    &__topographic-top {
-      transform: translateZ(-10px) translateX(-40rem) translateY(-7rem) scale(2);
-    }
-    &__topographic-bottom {
-      transform: translateZ(-12px) translateX(-40rem) translateY(-7rem) scale(2.2);
+
+      @media (prefers-reduced-motion) {
+        transform: translateX(-110rem) translateY(9rem);
+      }
     }
   }
 

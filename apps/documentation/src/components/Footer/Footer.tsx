@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { Link } from 'gatsby';
 import { IconButton } from '@entur/button';
 import { GridContainer, GridItem } from '@entur/grid';
@@ -16,11 +16,17 @@ import { Theme, useSettings } from '@providers/SettingsContext';
 
 import './Footer.scss';
 
-const Footer = ({ forceColorMode }: { forceColorMode?: Theme }) => {
+const Footer = ({
+  forceColorMode,
+  footerRef,
+}: {
+  forceColorMode?: Theme;
+  footerRef?: RefObject<HTMLDivElement>;
+}) => {
   const year = new Date();
   const { colorMode } = useSettings();
   return (
-    <div className="footer">
+    <div ref={footerRef} className="footer">
       <GridContainer spacing="extraLarge" className="footer__grid-container">
         <GridItem small={12} medium={6} large={4}>
           <LeadParagraph margin="none" className="footer__lead">
