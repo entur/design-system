@@ -24,7 +24,6 @@ const plugins = [
   { name: 'cleanupEnableBackground' },
   { name: 'minifyStyles' },
   { name: 'convertStyleToAttrs' },
-  { name: 'convertColors' },
   { name: 'convertPathData' },
   { name: 'convertTransform' },
   { name: 'removeUnknownsAndDefaults' },
@@ -46,7 +45,13 @@ const plugins = [
   { name: 'removeDimensions' },
   { name: 'removeOffCanvasPaths' },
   { name: 'removeStyleElement' },
-  { name: 'removeScriptElement' },
+  {
+    name: 'convertColors',
+    params: {
+      // Until we use svgo@4 convertCase wont work
+      convertCase: 'lower',
+    },
+  },
 ];
 
 module.exports = {
