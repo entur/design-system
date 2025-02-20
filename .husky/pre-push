@@ -6,6 +6,5 @@ yarn commitlint --from=HEAD~$commitCountOnBranch --to=HEAD
 
 # If we are on the main branch, the code needs to pass linting and tests to be pushed
 if [ "$branch" = "main" ]; then
-    yarn lint
-    yarn test
+    yarn lint & yarn test
 fi
