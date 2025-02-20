@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/entur/design-system/compare/@entur/documentation@1.2.0...@entur/documentation@5.0.1) (2025-02-20)
+
+### Bug Fixes
+
+- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710))
+- **website:** etu-55349 small uu-fixes ([51366d1](https://github.com/entur/design-system/commit/51366d12ced7045660f5697f89cc9c3bef1a0c07))
+
 # [1.2.0](https://github.com/entur/design-system/compare/@entur/documentation@1.1.1...@entur/documentation@1.2.0) (2025-01-24)
 
 ### Bug Fixes

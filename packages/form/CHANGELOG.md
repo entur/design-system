@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.1](https://github.com/entur/design-system/compare/@entur/form@8.2.0...@entur/form@8.2.1) (2025-02-20)
+
+### Bug Fixes
+
+- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca))
+
 # [8.2.0](https://github.com/entur/design-system/compare/@entur/form@8.1.10...@entur/form@8.2.0) (2025-01-24)
 
 ### Bug Fixes

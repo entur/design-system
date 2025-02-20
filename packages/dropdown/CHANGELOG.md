@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.1) (2025-02-20)
+
+### Bug Fixes
+
+- **baseformcontrol:** add correct text-color on readonly ([7fac4d7](https://github.com/entur/design-system/commit/7fac4d7f41d9618f1baaf021d4c13e1d075643ca))
+- **dropdown:** add absolute position on dropdownlist ([30b7916](https://github.com/entur/design-system/commit/30b79163cb3bcd38fa66ee837b92abd011099446))
+
 # [7.0.0](https://github.com/entur/design-system/compare/@entur/dropdown@6.1.0...@entur/dropdown@7.0.0) (2025-02-05)
 
 ### Refactor

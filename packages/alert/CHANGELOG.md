@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/entur/design-system/compare/@entur/alert@0.17.0...@entur/alert@0.17.1) (2025-02-20)
+
+### Bug Fixes
+
+- **alert:** etu-55268 add border again ([c1aec93](https://github.com/entur/design-system/commit/c1aec93a7fc3612a27f140cd464e2a33dce05710))
+- **toast:** etu-ETU-55268 replace transparent background on toasts to filled ([f9629f4](https://github.com/entur/design-system/commit/f9629f4f96f73b5571277350ea6aaf6b414b39a1))
+
 # [0.17.0](https://github.com/entur/design-system/compare/@entur/alert@0.16.24...@entur/alert@0.17.0) (2025-01-24)
 
 ### Bug Fixes
