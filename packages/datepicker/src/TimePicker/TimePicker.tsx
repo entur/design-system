@@ -128,11 +128,11 @@ export const TimePicker = <TimeType extends TimeValue>({
       : 'Europe/Oslo');
 
   const handleOnChange = (value: MappedTimeValue<TimeType> | null) => {
-    if (forcedReturnType !== undefined) {
+    if (forcedReturnType !== undefined || !selectedTime) {
       return onChange(
         convertValueToType({
           value,
-          type: forcedReturnType,
+          type: forcedReturnType ?? 'ZonedDateTime',
           timezone: timeZone,
         }) as MappedTimeValue<TimeType> | null,
       );
