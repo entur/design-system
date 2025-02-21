@@ -88,6 +88,23 @@
           "name": "boolean | undefined"
         }
       },
+      "granularity": {
+        "defaultValue": {
+          "value": "\"day\""
+        },
+        "description": "Velg minste enhet som skal vises i datovelgeren. Hvis du vil vise tid vil \"minute\"\nviser minutt og ikke sekund, mens \"second\" viser sekunder også.",
+        "name": "granularity",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Granularity | undefined"
+        }
+      },
       "showTime": {
         "defaultValue": null,
         "description": "",
