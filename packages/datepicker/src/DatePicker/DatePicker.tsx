@@ -179,6 +179,7 @@ export const DatePicker = <DateType extends DateValue>({
   ariaLabelForDate,
   append,
   prepend,
+  granularity = showTime ? 'minute' : undefined,
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -216,7 +217,7 @@ export const DatePicker = <DateType extends DateValue>({
         : undefined,
     value: selectedDate,
     onChange: handleOnChange,
-    granularity: showTime ? 'minute' : rest.granularity,
+    granularity,
     isDisabled: disabled,
   });
   const {
@@ -339,6 +340,7 @@ export const DatePicker = <DateType extends DateValue>({
         selectedDate={selectedDate}
         showTime={showTime}
         showTimeZone={showTimeZone}
+        granularity={granularity}
         style={style}
         validationFeedback={validationFeedback}
         validationVariant={validationVariant}
