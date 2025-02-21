@@ -185,8 +185,8 @@ export const DateField = <DateType extends DateValue>({
           {...fieldProps}
           style={{ display: 'contents' }}
         >
-          {state.segments.map((segment, i) => (
-            <FieldSegment segment={segment} state={state} key={i} />
+          {state.segments.map(segment => (
+            <FieldSegment segment={segment} state={state} key={segment.type} />
           ))}
         </span>
       </BaseFormControl>

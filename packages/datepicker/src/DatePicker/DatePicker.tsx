@@ -189,11 +189,11 @@ export const DatePicker = <DateType extends DateValue>({
   const { width } = useWindowDimensions();
 
   const handleOnChange = (value: MappedDateValue<DateType> | null) => {
-    if (forcedReturnType !== undefined) {
+    if (forcedReturnType !== undefined || !selectedDate) {
       return onChange(
         convertValueToType({
           value,
-          type: forcedReturnType,
+          type: forcedReturnType ?? 'ZonedDateTime',
           timezone:
             value !== null && 'timezone' in value
               ? (value.timezone as string)
@@ -266,7 +266,7 @@ export const DatePicker = <DateType extends DateValue>({
     weekNumberHeader,
   };
 
-  const useModal =
+  const isModal =
     typeof width !== 'undefined' &&
     width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH &&
     !disableModal;
@@ -276,7 +276,7 @@ export const DatePicker = <DateType extends DateValue>({
       style={{ ...floatingStyles, zIndex: zIndexes.popover }}
       ref={refs.setFloating}
     >
-      <FocusLock disabled={!state.isOpen || useModal} returnFocus>
+      <FocusLock disabled={!state.isOpen || isModal} returnFocus>
         {state.isOpen && <Calendar {...calendarSharedProps} />}
       </FocusLock>
     </div>
@@ -346,7 +346,7 @@ export const DatePicker = <DateType extends DateValue>({
         validationVariant={validationVariant}
         variant={variant}
       />
-      {useModal ? modalCalendar : popoverCalendar}
+      {isModal ? modalCalendar : popoverCalendar}
     </ConditionalWrapper>
   );
 };
