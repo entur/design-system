@@ -2708,6 +2708,7 @@ __metadata:
     "@entur/travel": "workspace:^"
     "@entur/typography": "workspace:^"
     "@entur/utils": "workspace:^"
+    "@internationalized/date": "npm:3.7.0"
     css-loader: "npm:^6.7.2"
     playroom: "npm:0.39.1"
     react: "npm:^17.0.2"
@@ -3913,6 +3914,15 @@ __metadata:
   version: 3.0.2
   resolution: "@hutson/parse-repository-url@npm:3.0.2"
   checksum: 10c0/d9197757ecad2df18d29d3e1d1fe0716d458fd88b849c71cbec9e78239f911074c97e8d764dfd8ed890431c1137e52dd7a337207fd65be20ce0784f7860ae4d1
+  languageName: node
+  linkType: hard
+
+"@internationalized/date@npm:3.7.0":
+  version: 3.7.0
+  resolution: "@internationalized/date@npm:3.7.0"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.0"
+  checksum: 10c0/4d0979dd49f0f979169073afa2b44ce8ae941407e22d4caba069e26e9d9a0c6d29fc11fb50d5e6fcad351f0f9b180e21cbd440fd4238e899719f5d3c84829985
   languageName: node
   linkType: hard
 
