@@ -92,3 +92,22 @@
     margin-bottom: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .eds-navigation-card {
+    transition: none;
+
+    &-header__highlight {
+      transition: none;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+
+      .eds-navigation-card-header__highlight {
+        width: t.$space-extra-large;
+      }
+    }
+  }
+}
