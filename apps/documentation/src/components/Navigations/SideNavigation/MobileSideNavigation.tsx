@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { MenuItem } from './utils';
 import { FloatingButton } from '@entur/button';
-import { MenuIcon } from '@entur/icons';
+import { CloseIcon, MenuIcon } from '@entur/icons';
 import classNames from 'classnames';
 import { Drawer } from '@entur/modal';
 
@@ -50,14 +50,16 @@ const MobileSideNavigation: React.FC<MobileMenuProps> = ({
       </Drawer>
       <FloatingButton
         size="medium"
-        className={classNames('side-navigation__drawer__menu-button', {
-          'side-navigation__drawer__menu-button-open': openSidebar,
-        })}
-        onClick={() => setOpenSidebar(true)}
+        className={classNames('side-navigation__drawer__menu-button')}
+        onClick={() => setOpenSidebar(!openSidebar)}
         type="button"
-        aria-label="meny"
+        aria-label={openSidebar ? 'Lukk meny' : 'Åpne meny'}
       >
-        <MenuIcon />
+        {openSidebar ? (
+          <CloseIcon aria-hidden="true" />
+        ) : (
+          <MenuIcon aria-hidden="true" />
+        )}
       </FloatingButton>
     </>
   );

@@ -37,7 +37,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       const searchHasFocus = inputRef.current === document.activeElement;
       const playgroundHasFocus =
         document.activeElement?.parentElement?.className.includes(
-          'playground__editor',
+          'playground__expandable__editor',
         );
       switch (e.key) {
         case '/':

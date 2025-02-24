@@ -7,27 +7,15 @@
 
 .token {
   &-content {
-    margin-top: tokens.$space-small;
-
     &__grid-item {
       display: flex;
       gap: tokens.$space-extra-small;
-      height: 3rem;
       align-items: flex-start;
-      margin-bottom: tokens.$space-medium;
 
       @include for-large-desktop {
         margin: 0;
       }
-      &__example {
-        border-radius: 1px;
-        width: 96px;
-        height: 32px;
 
-        @include for-large-desktop {
-          width: 32px;
-        }
-      }
       &--primitive {
         display: flex;
         align-items: center;
@@ -39,17 +27,16 @@
     &__example {
       border-radius: 1px;
       width: 96px;
-      height: 32px;
+      height: 100%;
 
       @include for-large-desktop {
-        width: 32px;
+        width: 64px;
       }
     }
     &__icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      align-items: center;
 
       &#chart svg,
       &#transport svg {
@@ -81,8 +68,10 @@
         height: 2rem;
         margin-left: tokens.$space-small;
         width: 100%;
+        max-width: 16rem;
         @include for-large-desktop {
-          justify-content: space-around;
+          justify-content: space-between;
+          margin-inline: tokens.$space-large;
         }
       }
     }

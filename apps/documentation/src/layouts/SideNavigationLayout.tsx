@@ -4,12 +4,15 @@ import MobileSideNavigation from '@components/Navigations/SideNavigation/MobileS
 import SideNavigation from '@components/Navigations/SideNavigation/SideNavigation';
 import { MenuItem } from '@components/Navigations/SideNavigation/utils';
 import { useStaticQuery, graphql } from 'gatsby';
+import { pxToRem } from 'src/utils/utils';
 
 const SideNavigationLayout = () => {
   const [openSidebar, setOpenSidebar] = React.useState(false);
 
   const { width } = useWindowDimensions();
-  const isTablet = width !== undefined && width <= 960;
+  const remWidth = pxToRem(width);
+  const isSmallScreen = remWidth !== undefined && remWidth < 60;
+  const isLargeScreen = remWidth !== undefined && remWidth >= 60;
 
   const MenuData = useStaticQuery(graphql`
     query {
@@ -32,15 +35,16 @@ const SideNavigationLayout = () => {
 
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
 
-  return isTablet ? (
-    <MobileSideNavigation
-      menuItems={menuItems}
-      openSidebar={openSidebar}
-      setOpenSidebar={setOpenSidebar}
-    />
-  ) : (
-    <SideNavigation menuItems={menuItems} />
-  );
+  if (isSmallScreen)
+    return (
+      <MobileSideNavigation
+        menuItems={menuItems}
+        openSidebar={openSidebar}
+        setOpenSidebar={setOpenSidebar}
+      />
+    );
+  if (isLargeScreen) return <SideNavigation menuItems={menuItems} />;
+  return <></>;
 };
 
 export default SideNavigationLayout;

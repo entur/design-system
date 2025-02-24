@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'gatsby';
+import classNames from 'classnames';
 
 import { SkipToContent } from '@entur/a11y';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
@@ -39,7 +40,9 @@ const Index = () => {
       <Contrast data-color-mode="contrast">
         <TopNavigationLayout data-color-mode="contrast" />
         <div
-          className="frontpage"
+          className={classNames('frontpage', {
+            'frontpage__background--loaded': backgroundHeight > 0,
+          })}
           // @ts-expect-error css-variable inline is supported
           // We use the height of the content to set a correct height for the background
           style={{ '--background-height': `${backgroundHeight}px` }}

@@ -8,7 +8,10 @@ $toc-left-position-relative-to-site-content: 3rem;
 $toc-left-position: 74rem;
 
 $breakpoints: (
-  mobile-small: 375px,
-  mobile: 648px,
-  tablet: 960px,
+  mobile-small: 23.4375rem,
+  // 375px / 16
+  mobile: 40.5rem,
+  // 648px / 16
+  tablet: 60rem,
+  // 960px / 16
 );

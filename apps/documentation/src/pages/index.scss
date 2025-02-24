@@ -6,6 +6,7 @@
 .frontpage {
   // This variable is overridden by js in ./index.tsx
   --background-height: 200rem;
+  $self: &;
 
   display: flex;
   height: 100dvh;
@@ -15,6 +16,8 @@
   background-color: var(--basecolors-frame-contrast);
   transform-style: preserve-3d;
 
+  // This creates the perspective that allow the parallax effect to work.
+  // 10px is arbitrary, the important thing is that every z-value is relative to this starting value
   perspective: 10px;
 
   @media (prefers-reduced-motion) {
@@ -22,18 +25,6 @@
   }
 
   &__background {
-    z-index: -1;
-    opacity: 0.3;
-
-    &__lines {
-      transform: translateZ(-8px) translateX(-40rem) translateY(1rem) scale(1.8);
-    }
-    &__topographic-top {
-      transform: translateZ(-10px) translateX(-40rem) translateY(1rem) scale(2);
-    }
-    &__topographic-bottom {
-      transform: translateZ(-12px) translateX(-40rem) translateY(1rem) scale(2.2);
-    }
     &__lines,
     &__topographic-top,
     &__topographic-bottom {
@@ -44,11 +35,28 @@
       position: absolute;
       top: -100%;
       left: 50vw;
-      opacity: 0.3;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
 
       @media (prefers-reduced-motion) {
         transform: translateX(-110rem) translateY(9rem);
       }
+
+      #{ $self }__background--loaded & {
+        opacity: 0.3;
+      }
+    }
+    &__lines {
+      transform: translateZ(-8px) translateX(-40rem) translateY(1rem) scale(1.8);
+      transition-delay: 1s;
+    }
+    &__topographic-top {
+      transform: translateZ(-10px) translateX(-40rem) translateY(1rem) scale(2);
+      transition-delay: 0.66s;
+    }
+    &__topographic-bottom {
+      transform: translateZ(-12px) translateX(-40rem) translateY(10rem) scale(2.2);
+      transition-delay: 0.33s;
     }
   }
 
