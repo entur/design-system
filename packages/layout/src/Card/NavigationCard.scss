@@ -1,0 +1,113 @@
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/tokens/dist/primitive.css' as *;
+
+.eds-navigation-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: t.$space-extra-large;
+  transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: t.$space-default;
+
+    &__content {
+      display: flex;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: t.$font-sizes-extra-large2;
+      line-height: t.$line-heights-extra-large3;
+      font-weight: t.$font-weights-heading;
+    }
+
+    &__title-icon {
+      font-size: 1.53125rem;
+      margin-right: t.$space-small;
+    }
+
+    &__highlight {
+      width: t.$space-extra-large;
+      height: 0.1875rem;
+      background: var(--components-layout-card-standard-divide);
+      opacity: var(--show-active-line);
+      transition: width t.$timings-medium ease-in-out;
+    }
+  }
+  &:hover {
+    background-color: var(--components-layout-card-standard-fill-hoveractive);
+    box-shadow: 0.625rem 0.625rem 1rem var(--components-layout-card-standard-shadowlayer3),
+      0.375rem 0.375rem 0.75rem var(--components-layout-card-standard-shadowlayer2),
+      0.1875rem 0.1875rem 0.375rem var(--components-layout-card-standard-shadowlayer1);
+
+    &:before {
+      opacity: 1;
+    }
+    .eds-navigation-card-header__highlight {
+      width: 5rem;
+    }
+    .eds-contrast & {
+      background-color: var(--components-layout-card-contrast-fill-hoveractive);
+      box-shadow: 0.625rem 0.625rem 1rem var(--components-layout-card-contrast-shadowlayer3),
+        0.375rem 0.375rem 0.75rem var(--components-layout-card-contrast-shadowlayer2),
+        0.1875rem 0.1875rem 0.375rem var(--components-layout-card-contrast-shadowlayer1);
+    }
+  }
+
+  &:active {
+    background-color: var(--components-layout-card-standard-fill-hoveractive);
+    border: 1px solid var(--components-layout-card-standard-border-active);
+    box-shadow: none;
+    .eds-contrast & {
+      background-color: var(--components-layout-card-contrast-fill-hoveractive);
+      border-color: var(--components-layout-card-contrast-border-active);
+      box-shadow: none;
+    }
+  }
+
+  &:focus-visible {
+    outline: t.$outlines-focus;
+    outline-color: var(--basecolors-stroke-focus-standard);
+    outline-offset: t.$outline-offsets-focus;
+
+    .eds-contrast & {
+      outline-color: var(--basecolors-stroke-focus-contrast);
+    }
+  }
+  &__arrow-icon {
+    margin-top: t.$space-extra-small;
+  }
+  &--compact {
+    padding: t.$space-large;
+
+    .eds-navigation-card-header {
+      margin-bottom: 0;
+    }
+  }
+  .eds-paragraph {
+    margin-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eds-navigation-card {
+    transition: none;
+
+    &-header__highlight {
+      transition: none;
+    }
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+
+      .eds-navigation-card-header__highlight {
+        width: t.$space-extra-large;
+      }
+    }
+  }
+}
