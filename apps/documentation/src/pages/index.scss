@@ -29,7 +29,6 @@
     &__topographic-top,
     &__topographic-bottom {
       display: block;
-      height: 200rem;
       height: min(var(--background-height), 200rem);
       width: 400rem;
       position: absolute;
@@ -39,7 +38,7 @@
       transition: opacity 0.5s ease-in-out;
 
       @media (prefers-reduced-motion) {
-        transform: translateX(-110rem) translateY(9rem);
+        transform: translateX(-110rem) translateY(25rem) scale(1) !important;
       }
 
       #{ $self }__background--loaded & {
@@ -57,6 +56,40 @@
     &__topographic-bottom {
       transform: translateZ(-12px) translateX(-40rem) translateY(10rem) scale(2.2);
       transition-delay: 0.33s;
+    }
+    &__animation {
+      height: min(var(--background-height), 200rem);
+      width: 400rem;
+      position: absolute;
+      top: -100%;
+      left: 50vw;
+      transform: translateZ(-8px) translateX(7.9rem) translateY(117.4rem) scale(1.8);
+
+      &__traveller {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 20%, rgba(0, 255, 255, 0.7) 60%, rgba(0, 255, 255, 0.2) 100%);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.4);
+        opacity: 0;
+
+        offset-path: path(
+          'M40.9,16h294.2c17.7,0,32,14.3,32,32v181.8c0,17.7,14.3,32,32,32l965.4-2c12.8,0,25,5.1,34,14.1l67.8,67.9c8.6,6.4,19.2,14,32.4,14h508.5c31.8,0,32,27.7,32,32v704.4'
+        );
+        offset-distance: 0%;
+
+        #{ $self }__background--loaded & {
+          animation: move 10s infinite ease-in-out, glow 2s infinite alternate ease-in-out;
+          animation-delay: 1.5s;
+          transition: opacity 1s ease-in;
+        }
+
+        @media (prefers-reduced-motion) {
+          animation: none;
+          display: none;
+        }
+      }
     }
   }
 
@@ -199,5 +232,27 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes move {
+  5% {
+    opacity: 0.5;
+  }
+  95% {
+    opacity: 0.5;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.4);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 0.8), 0 0 80px rgba(0, 255, 255, 0.6);
   }
 }

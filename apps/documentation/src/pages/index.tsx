@@ -17,7 +17,7 @@ import {
   LinjeLines,
   LinjeTopographicTop,
   LinjeTopographicBottom,
-} from '@media/images/frontpage/Linjer2';
+} from '@media/images/frontpage/BackgroundElements';
 
 import './index.scss';
 
@@ -47,6 +47,9 @@ const Index = () => {
           // We use the height of the content to set a correct height for the background
           style={{ '--background-height': `${backgroundHeight}px` }}
         >
+          <div className="frontpage__background__animation">
+            <div className="frontpage__background__animation__traveller"></div>
+          </div>
           <LinjeTopographicBottom className="frontpage__background__topographic-bottom" />
           <LinjeTopographicTop className="frontpage__background__topographic-top" />
           <LinjeLines className="frontpage__background__lines" />
