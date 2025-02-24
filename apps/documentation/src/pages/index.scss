@@ -37,6 +37,12 @@
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
 
+      @media screen and (max-height: 65rem) {
+        top: -125%;
+      }
+      @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+        top: -65%;
+      }
       @media (prefers-reduced-motion) {
         transform: translateX(-110rem) translateY(25rem) scale(1) !important;
       }
@@ -65,6 +71,13 @@
       left: 50vw;
       transform: translateZ(-8px) translateX(7.9rem) translateY(117.4rem) scale(1.8);
 
+      @media screen and (max-height: 65rem) {
+        top: -125%;
+      }
+      @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+        top: -65%;
+      }
+
       &__traveller {
         width: 1.5rem;
         height: 1.5rem;
@@ -79,15 +92,15 @@
         );
         offset-distance: 0%;
 
+        @media (prefers-reduced-motion) {
+          animation: none !important;
+          display: none !important;
+        }
+
         #{ $self }__background--loaded & {
           animation: move 10s infinite ease-in-out, glow 2s infinite alternate ease-in-out;
           animation-delay: 1.5s;
           transition: opacity 1s ease-in;
-        }
-
-        @media (prefers-reduced-motion) {
-          animation: none;
-          display: none;
         }
       }
     }
@@ -98,15 +111,7 @@
     display: grid;
     position: relative;
     gap: eds.$space-default;
-    grid-template-columns:
-      1fr
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      minmax(0px, 6rem) minmax(0px, 6rem)
-      1fr;
+    grid-template-columns: variables.$full-width-grid;
     padding-top: variables.$navbar-height;
 
     &__hero {
@@ -131,6 +136,8 @@
 
           @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
             gap: eds.$space-default;
+            margin-top: eds.$space-extra-large5;
+            margin-bottom: eds.$space-extra-large;
           }
 
           &__end {

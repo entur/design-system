@@ -7,6 +7,7 @@ import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { Contrast, NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { Heading1, Paragraph, Heading2 } from '@entur/typography';
+import { useWindowDimensions } from '@entur/utils';
 
 import Footer from '@components/Footer/Footer';
 import { SEO } from '@components/seo/SEO';
@@ -23,15 +24,19 @@ import './index.scss';
 
 // TODO: don't use beta version of layout when merging PR
 const Index = () => {
+  const { width } = useWindowDimensions();
   const [backgroundHeight, setBackgroundHeight] = useState(0);
   const footerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
+
+  const _width = Math.floor(width ?? 0 / 100);
+
   useEffect(() => {
-    setBackgroundHeight(
+    const contentHeight =
       (mainRef.current?.clientHeight ?? 0) +
-        (footerRef.current?.clientHeight ?? 0),
-    );
-  }, []);
+      (footerRef.current?.clientHeight ?? 0);
+    setBackgroundHeight(contentHeight);
+  }, [_width]);
   return (
     <>
       <SkipToContent mainId="frontpage-content">

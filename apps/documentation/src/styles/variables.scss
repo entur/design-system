@@ -15,3 +15,6 @@ $breakpoints: (
   tablet: 60rem,
   // 960px / 16
 );
+
+$full-width-grid: 1fr minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem)
+  minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) 1fr;
