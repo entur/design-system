@@ -23,9 +23,6 @@ export type NavigationCardOwnProps = {
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;
-  /** Legger til et ikon for å symbolisere at kortet har en ekstern lenke
-   * @default false
-   */
 };
 
 export type NavigationCardProps<

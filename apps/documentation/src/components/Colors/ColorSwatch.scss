@@ -1,13 +1,13 @@
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 
 .color-swatch {
-  border: none;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0;
   cursor: pointer;
   font-family: inherit;
+  align-items: center;
   transition: box-shadow tokens.$timings-medium ease-in-out, transform tokens.$timings-medium ease-in-out;
   &:hover {
     box-shadow: tokens.$shadows-card-shadow-hover;
