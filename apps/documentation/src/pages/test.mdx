@@ -1,0 +1,107 @@
+---
+title: Card
+description: test
+route: /test
+---
+
+import { NavigationCard, BaseCard, MediaCard } from '@entur/layout';
+import { HeartIcon, ForwardIcon } from '@entur/icons'
+import Sheep from './Sheep.svg'
+import image from '../media/images/komponenter/layout/MediaCard.png'
+
+### BaseCard
+
+<BaseCard>Test</BaseCard>
+
+### NavigationCard
+
+<NavigationCard href="test.no" title="Card title">Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende.</NavigationCard>
+
+### NavigationCard with icon
+
+<NavigationCard href="test.no" title="Card title" titleIcon={<HeartIcon />} >Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende.</NavigationCard>
+
+### NavigationCard compact
+
+<NavigationCard href="test.no" title="Card title" compact></NavigationCard>
+
+### NavigationCard compact with icon
+
+<NavigationCard href="test.no" title="Card title" titleIcon={<HeartIcon />} compact></NavigationCard>
+
+### MediaCard
+
+Alltid `vertical` ved mobil
+
+- as: `a`| `button` | `React.ElementType`
+  - default: `a`
+- size: `small` | `medium`
+  - default: `medium`
+- `vertical`: `boolean`
+  - default: `false`
+- variant: `illustration`| `image`
+  - default `image`
+
+### MediaCard Illustration default
+
+<MediaCard href="test.no" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." ><img src={Sheep} alt="Illustrasjon"  />
+</MediaCard>
+
+### MediaCard Illustration small
+
+<MediaCard href="test.no" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." size="small"><img src={Sheep} alt="Illustrasjon"  />
+</MediaCard>
+
+### MediaCard Illustration Vertical
+
+<MediaCard href="test.no" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical><img src={Sheep} alt="Illustrasjon"  />
+</MediaCard>
+
+### MediaCard Illustration Vertical small
+
+<MediaCard href="test.no" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical size="small"><img src={Sheep} alt="Illustrasjon"  />
+</MediaCard>
+
+### MediaCard Image
+<MediaCard href="test.no" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." ><img src={image} alt="Image" />
+</MediaCard>
+
+### MediaCard Image small
+<MediaCard href="test.no" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." size="small"><img src={image} alt="Image"/>
+</MediaCard>
+
+### MediaCard Image Vertical
+<MediaCard href="test.no" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical ><img src={image} alt="Image"  />
+</MediaCard>
+
+### MediaCard Image Vertical small
+<MediaCard href="test.no" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical size="small" ><img src={image} alt="Image"  />
+</MediaCard>
+
+### MediaCard Image Vertical med category
+<MediaCard href="test.no" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical category="Kategori" ><img src={image} alt="Image"  />
+</MediaCard>
+
+## Eksempel i bruk med button
+
+- as=`div` ikke link
+
+### MediaCard Illustration med button
+
+<MediaCard as="div" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende."><img src={Sheep} alt="Illustrasjon" /><SecondaryButton as="a" href="test.no" >Gå videre <ForwardIcon /></SecondaryButton></MediaCard>
+
+### MediaCard Illustration small med button
+
+<MediaCard as="div" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." size="small"><img src={Sheep} alt="Illustrasjon" /><SecondaryButton as="a" href="test.no"  size="small">Gå videre <ForwardIcon /></SecondaryButton></MediaCard>
+
+### MediaCard Illustration Vertical med button
+
+<MediaCard as="div" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical><img src={Sheep} alt="Illustrasjon" /><SecondaryButton as="a" href="test.no" >Gå videre <ForwardIcon /></SecondaryButton></MediaCard>
+
+### MediaCard Illustration Vertical small med button
+
+<MediaCard as="div" title="Card title"  variant="illustration" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical size="small"><img src={Sheep} alt="Illustrasjon" /><SecondaryButton as="a" href="test.no" size="small">Gå videre <ForwardIcon /></SecondaryButton></MediaCard>
+
+### MediaCard Image Vertical med category og button
+
+<MediaCard as="div" title="Card title" description="Card skal ha en beskrivende tekst under tittelen. Teksten bør være kort og konsis, på maks tre linjer. Ikon er valgfritt, men bør være selvforklarende." vertical category="Kategori" ><img src={image} alt="Image"  /><SecondaryButton as="a" href="test.no" size="small">Gå videre <ForwardIcon /></SecondaryButton></MediaCard>
