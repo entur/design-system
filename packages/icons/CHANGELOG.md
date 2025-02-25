@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/entur/design-system/compare/@entur/icons@7.6.1...@entur/icons@7.7.0) (2025-02-25)
+
+### Features
+
+- **icons:** add new board icon ([e369652](https://github.com/entur/design-system/commit/e369652215cdee3fc21d38daf57d94b1d4652708))
+- **icons:** add new component icon ([d89b7dd](https://github.com/entur/design-system/commit/d89b7dd3ada26c908e085e5119f0ecf4a8b26661))
+- **icons:** add new folder icon ([996756b](https://github.com/entur/design-system/commit/996756b5fa1ace3c99cc0adcc3fa8fb43eb71688))
+- **icons:** add new history icon ([832da96](https://github.com/entur/design-system/commit/832da96e2e2fe44e0521c59226cd10ffbad92726))
+- **icons:** add new icon icon ([da0e50a](https://github.com/entur/design-system/commit/da0e50a407b0f6a40a3640d0d7e2ab5c5cff3d70))
+- **icons:** add new puzzle icon ([ded2c22](https://github.com/entur/design-system/commit/ded2c22e64632f4c097007e25519f3ba2bd34a93))
+- **icons:** add new smile icon ([711218a](https://github.com/entur/design-system/commit/711218ae4f83cfdcf2f37a921f56688cc806dbac))
+- **icons:** add new tag icon ([ae1e970](https://github.com/entur/design-system/commit/ae1e9700419a28186c5efdaebe0df8eac69bfdc9))
+- **icons:** add new token icon ([01bc2fe](https://github.com/entur/design-system/commit/01bc2fe357627eff0c6477123a1d265d28d28ebf))
+- **icons:** add posibility to change color of partner icons in React Native ([11a164e](https://github.com/entur/design-system/commit/11a164ec3bad9b66cd291856413be15904f30d51))
+
 ## [7.6.1](https://github.com/entur/design-system/compare/@entur/icons@7.6.0...@entur/icons@7.6.1) (2025-02-20)
 
 **Note:** Version bump only for package @entur/icons
