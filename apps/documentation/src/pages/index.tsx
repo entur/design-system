@@ -53,7 +53,8 @@ const Index = () => {
           style={{ '--background-height': `${backgroundHeight}px` }}
         >
           <div className="frontpage__background__animation">
-            <div className="frontpage__background__animation__traveller"></div>
+            <div className="frontpage__background__animation__traveller first"></div>
+            <div className="frontpage__background__animation__traveller second"></div>
           </div>
           <LinjeTopographicBottom className="frontpage__background__topographic-bottom" />
           <LinjeTopographicTop className="frontpage__background__topographic-top" />
@@ -90,7 +91,7 @@ const Index = () => {
             <div
               className="frontpage__main__section"
               style={{
-                '--section-color': 'var(--basecolors-frame-contrastalt)',
+                '--section-color': 'var(--basecolors-frame-contrastalt-2)',
               }}
             >
               <Heading2>Vil du bidra?</Heading2>
