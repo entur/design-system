@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.2](https://github.com/entur/design-system/compare/@entur/button@3.3.1...@entur/button@3.3.2) (2025-02-25)
+
+### Bug Fixes
+
+- **button:** fix text not centered when button element is a link (anchor) ([66c2769](https://github.com/entur/design-system/commit/66c2769e7b85d6da1a8a1978ca7932e3f080d3ee))
+
 ## [3.3.1](https://github.com/entur/design-system/compare/@entur/button@3.3.0...@entur/button@3.3.1) (2025-02-20)
 
 **Note:** Version bump only for package @entur/button

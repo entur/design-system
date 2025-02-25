@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/entur/design-system/compare/@entur/documentation@5.0.1...@entur/documentation@5.0.2) (2025-02-25)
+
+**Note:** Version bump only for package @entur/documentation
+
 ## [5.0.1](https://github.com/entur/design-system/compare/@entur/documentation@1.2.0...@entur/documentation@5.0.1) (2025-02-20)
 
 ### Bug Fixes

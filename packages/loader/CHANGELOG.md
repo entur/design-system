@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.19](https://github.com/entur/design-system/compare/@entur/loader@0.5.18...@entur/loader@0.5.19) (2025-02-25)
+
+**Note:** Version bump only for package @entur/loader
+
 ## [0.5.18](https://github.com/entur/design-system/compare/@entur/loader@0.5.17...@entur/loader@0.5.18) (2025-02-20)
 
 **Note:** Version bump only for package @entur/loader
