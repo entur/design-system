@@ -4,6 +4,14 @@ import classNames from 'classnames';
 
 import { SkipToContent } from '@entur/a11y';
 import { PrimaryButton, SecondaryButton } from '@entur/button';
+import {
+  ColorPickerIcon,
+  ComponentIcon,
+  IconIcon,
+  TokenIcon,
+  ToneSmileIcon,
+  ViewIcon,
+} from '@entur/icons';
 import { Contrast, NavigationCard } from '@entur/layout';
 import { colors } from '@entur/tokens';
 import { Heading1, Paragraph, Heading2 } from '@entur/typography';
@@ -78,6 +86,7 @@ const Index = () => {
                   return (
                     <NavigationCard
                       title={card.title}
+                      titleIcon={card.icon}
                       as={Link}
                       to={card.linkTo}
                       className="frontpage__main__hero__content__navigation-cards__card"
@@ -128,37 +137,37 @@ const NAVIGATION_CARDS = [
     title: 'Stil og tone',
     description:
       'hvordan språket vårt skaper tydelig og brukervennlig kommunikasjon',
-    icon: undefined,
+    icon: <ToneSmileIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Visuell identitet',
     description: 'Veiledning og retningslinjer for bruk av Enturs merkevare',
-    icon: undefined,
+    icon: <ColorPickerIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Komponenter',
     description: 'Gjenbrukbare komponenter med kildekode og retningslinjer.',
-    icon: undefined,
+    icon: <ComponentIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Universell utforming',
     description: 'Retningslinjer for lovpålagt inkluderende design.',
-    icon: undefined,
+    icon: <ViewIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Tokens',
     description: 'Små, gjenbrukbare verdier som representerer enhetlig design.',
-    icon: undefined,
+    icon: <TokenIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Ikonbibliotek',
     description: 'En oversikt over alle våre ikoner.',
-    icon: undefined,
+    icon: <IconIcon />,
     linkTo: '/komponenter',
   },
 ];
