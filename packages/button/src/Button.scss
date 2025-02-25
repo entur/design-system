@@ -2,20 +2,20 @@
 @use '@entur/utils/dist/color-utils.scss' as util;
 
 a.eds-button {
-  padding: t.$space-extra-small t.$space-default;
-  &--variant-tertiary {
-    padding: t.$space-extra-small2 t.$space-default;
-  }
-  &--size-small {
-    padding: t.$space-extra-small2 t.$space-default;
-  }
-  &--size-large {
-    padding: t.$space-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .eds-icon {
+    position: unset;
   }
 }
 
 .eds-button {
   min-width: 9.5rem;
+  width: max-content;
+  min-height: t.$space-extra-large3;
+  height: fit-content;
   border-radius: t.$border-radiuses-medium;
   font-size: inherit;
   cursor: pointer;
@@ -23,7 +23,6 @@ a.eds-button {
   appearance: none;
   text-decoration: none;
   padding: 0 t.$space-default;
-  height: t.$space-extra-large3;
   font-size: t.$font-sizes-large;
   line-height: t.$line-heights-extra-large;
   font-weight: t.$font-weights-body;
@@ -74,13 +73,13 @@ a.eds-button {
   // Size
   &--size-small {
     min-width: 5.75rem;
-    height: 2rem;
+    min-height: 2rem;
     font-size: t.$font-sizes-medium;
     line-height: t.$line-heights-large;
   }
   &--size-large {
     min-width: 11.75rem;
-    height: 3.75rem;
+    min-height: 3.75rem;
   }
 
   &--width-fluid {
