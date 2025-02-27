@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 export const LinjeTopographicBottom = ({
   className,
 }: {
@@ -57,8 +57,19 @@ export const LinjeTopographicTop = ({ className }: { className?: string }) => (
     </g>
   </svg>
 );
-export const LinjeLines = ({ className }: { className?: string }) => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const LinjeLines = ({
+  className,
+  svgRef,
+}: {
+  className?: string;
+  svgRef?: React.LegacyRef<SVGSVGElement> | undefined;
+}) => (
+  <svg
+    ref={svgRef}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
     <g id="lines">
       <path
         d="M1787.73 1837.34H1602.25C1584.58 1837.34 1570.25 1823.01 1570.25 1805.34V1622.54C1570.25 1604.87 1555.92 1590.54 1538.25 1590.54H1322.84"
@@ -67,6 +78,7 @@ export const LinjeLines = ({ className }: { className?: string }) => (
         stroke-linecap="round"
       />
       <path
+        className="animated"
         d="M1938.37 1392.71H2301.49"
         stroke="var(--basecolors-stroke-contrast)"
         stroke-width="8"
@@ -87,6 +99,7 @@ export const LinjeLines = ({ className }: { className?: string }) => (
         stroke-linecap="round"
       />
       <path
+        className="animated"
         d="M1891.27 1377.72L1823.51 1309.86C1814.51 1300.84 1802.29 1295.77 1789.54 1295.77H1040.53"
         stroke="var(--basecolors-stroke-contrast)"
         stroke-width="8"
@@ -163,6 +176,7 @@ export const LinjeLines = ({ className }: { className?: string }) => (
         stroke-width="8"
       />
       <path
+        className="animated"
         d="M2346.38 1391.71H2432.1C2449.77 1391.71 2464.1 1406.04 2464.1 1423.71V1810.36"
         stroke="var(--basecolors-stroke-contrast)"
         stroke-width="8"
@@ -182,6 +196,7 @@ export const LinjeLines = ({ className }: { className?: string }) => (
         stroke-dasharray="1 16"
       />
       <path
+        className="animated"
         d="M992.647 1297.79H824.129C806.456 1297.79 792.129 1283.46 792.129 1265.79V1083.99C792.129 1066.32 777.802 1051.99 760.129 1051.99H465.914"
         stroke="var(--basecolors-stroke-contrast)"
         stroke-width="8"
@@ -243,6 +258,7 @@ export const LinjeLines = ({ className }: { className?: string }) => (
         stroke-width="8"
       />
       <path
+        className="animated"
         d="M2464.1 1865.32V2128.1"
         stroke="var(--basecolors-stroke-contrast)"
         stroke-width="8"

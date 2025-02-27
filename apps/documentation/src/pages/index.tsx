@@ -45,6 +45,48 @@ const Index = () => {
       (footerRef.current?.clientHeight ?? 0);
     setBackgroundHeight(contentHeight);
   }, [_width]);
+
+  const animatedCircleRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  let animationFrameId = useRef<number>(null); // Store the animation frame ID
+
+  useEffect(() => {
+    const checkOverlap = () => {
+      if (!animatedCircleRef.current || !svgRef.current) return;
+
+      const circleBox = animatedCircleRef.current.getBoundingClientRect();
+      const targets = svgRef.current.querySelectorAll('.animated');
+
+      targets.forEach(target => {
+        const targetBox = target.getBoundingClientRect();
+        const isOverlapping =
+          circleBox.right > targetBox.left &&
+          circleBox.left < targetBox.right &&
+          circleBox.bottom > targetBox.top &&
+          circleBox.top < targetBox.bottom;
+
+        target.setAttribute(
+          'stroke',
+          isOverlapping
+            ? 'var(--basecolors-stroke-light)'
+            : 'var(--basecolors-stroke-contrast)',
+        );
+      });
+
+      // Run the overlap detection for the next frame
+      animationFrameId.current = requestAnimationFrame(checkOverlap);
+    };
+
+    animationFrameId.current = requestAnimationFrame(checkOverlap);
+
+    return () => {
+      // Cleanup on unmount
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, []);
+
   return (
     <>
       <SkipToContent mainId="frontpage-content">
@@ -61,12 +103,18 @@ const Index = () => {
           style={{ '--background-height': `${backgroundHeight}px` }}
         >
           <div className="frontpage__background__animation">
-            <div className="frontpage__background__animation__traveller first"></div>
-            <div className="frontpage__background__animation__traveller second"></div>
+            <div
+              ref={animatedCircleRef}
+              className="frontpage__background__animation__traveller first"
+            />
+            <div className="frontpage__background__animation__traveller second" />
           </div>
           <LinjeTopographicBottom className="frontpage__background__topographic-bottom" />
           <LinjeTopographicTop className="frontpage__background__topographic-top" />
-          <LinjeLines className="frontpage__background__lines" />
+          <LinjeLines
+            svgRef={svgRef}
+            className="frontpage__background__lines"
+          />
           <main ref={mainRef} className="frontpage__main">
             <div className="frontpage__main__hero">
               <div className="frontpage__main__hero__content">

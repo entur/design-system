@@ -57,6 +57,10 @@
       transform: $top-parallax-transform;
       transition-delay: 1s;
 
+      .animated {
+        transition: filter 0.3s cubic-bezier(0.17, 0.89, 0, -1.23), stroke 0.3s cubic-bezier(0.17, 0.89, 0, -1.23);
+      }
+
       #{ $self }__background--loaded & {
         opacity: 0.1;
       }
@@ -86,8 +90,8 @@
       transform: $top-parallax-transform;
 
       &__traveller {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 0.5rem;
+        height: 0.5rem;
         border-radius: 50%;
         position: relative;
         top: 64.8rem;
@@ -105,20 +109,22 @@
         }
 
         #{ $self }__background--loaded & {
-          animation: move 20s infinite ease-in-out;
+          animation: move 40s infinite ease-in-out;
           animation-delay: 1.5s;
           transition: opacity 1s ease-in;
         }
 
         &.first {
           offset-path: path(
-            'M40.9,16h294.2c17.7,0,32,14.3,32,32v181.8c0,17.7,14.3,32,32,32l965.4-2c12.8,0,25,5.1,34,14.1l67.8,67.9c8.6,6.4,19.2,14,32.4,14h508.5c31.8,0,32,27.7,32,32v704.4'
+            'M41.3,16.1h294.2c17.7,0,32,14.3,32,32v181.8c0,17.7,14.3,32,32,32l965.4-2c12.8,0,25,5.1,34,14.1l67.8,67.9c8.6,6.4,19.2,14,32.4,14h508.5c31.8,0,32,27.7,32,32v704.4'
           );
         }
         &.second {
-          offset-path: path('M592.6,262.9v233.8c0,17.7,14.3,32,32,32h221.4l51.9,1h215.4c17.7,0,32,14.3,32,32v182.8c0,17.7,14.3,32,32,32h834.9l59.6.5h759');
+          offset-path: path(
+            'M 592.6 278.2 v 233.8 c 0 17.7 14.3 32 32 32 h 221.4 l 51.9 1 h 215.4 c 17.7 0 32 14.3 32 32 v 182.8 c 0 17.7 14.3 32 32 32 h 834.9 l 59.6 0.5 h 759'
+          );
           animation-direction: reverse;
-          animation-delay: 10s;
+          animation-delay: 20s;
         }
       }
     }
@@ -253,7 +259,7 @@
   }
   100% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
 }
 @keyframes fadeInOut {
@@ -273,10 +279,10 @@
 
 @keyframes move {
   5% {
-    opacity: 0.2;
+    opacity: 0.4;
   }
   99% {
-    opacity: 0.2;
+    opacity: 0.4;
   }
   100% {
     offset-distance: 100%;
