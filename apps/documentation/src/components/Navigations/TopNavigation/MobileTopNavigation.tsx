@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import { Location } from '@reach/router';
 
 import { Contrast, useContrast } from '@entur/layout';
+import { IconButton } from '@entur/button';
+import { GithubIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
@@ -44,6 +47,16 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
           />
         </Link>
         <Search />
+        <Tooltip content="Entur designsystem på GitHub">
+          <IconButton
+            className="top-navigation__github"
+            aria-label="Entur designsystem på Github"
+            as="a"
+            href="https://github.com/entur/design-system"
+          >
+            <GithubIcon aria-hidden />
+          </IconButton>
+        </Tooltip>
         <SettingsPanel />
       </div>
       <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">

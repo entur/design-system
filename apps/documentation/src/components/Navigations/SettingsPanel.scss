@@ -7,7 +7,6 @@
 .settings-panel {
   display: flex;
   justify-content: flex-end;
-  margin-right: 1rem;
 
   @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
     flex-grow: unset;
@@ -27,7 +26,7 @@
     }
   }
   .settings-trigger {
-    margin-left: tokens.$space-large;
+    margin-left: tokens.$space-small;
     &__icon {
       margin-right: tokens.$space-extra-small;
     }

@@ -3,8 +3,11 @@ import { Link } from 'gatsby';
 import { Location, useLocation } from '@reach/router';
 import classNames from 'classnames';
 
-import { TopNavigationItem } from '@entur/menu';
+import { IconButton } from '@entur/button';
+import { GithubIcon } from '@entur/icons';
 import { useContrast } from '@entur/layout';
+import { TopNavigationItem } from '@entur/menu';
+import { Tooltip } from '@entur/tooltip';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
@@ -49,6 +52,16 @@ const TopNavigation = () => {
       <NavItem to="/tokens">Tokens</NavItem>
       <NavItem to="/universell-utforming">Universell utforming</NavItem>
       <Search />
+      <Tooltip content="Entur Linje på GitHub">
+        <IconButton
+          className="top-navigation__github"
+          aria-label="Entur Linje på Github"
+          as="a"
+          href="https://github.com/entur/design-system"
+        >
+          <GithubIcon aria-hidden />
+        </IconButton>
+      </Tooltip>
       <SettingsPanel />
     </nav>
   );

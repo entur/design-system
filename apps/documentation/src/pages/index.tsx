@@ -217,7 +217,7 @@ const NAVIGATION_CARDS = [
   },
   {
     title: 'Ikonbibliotek',
-    description: 'En oversikt over alle våre ikoner',
+    description: 'En oversikt over alle våre ikoner.',
     icon: <IconIcon />,
     linkTo: '/komponenter/ressurser/icons',
   },

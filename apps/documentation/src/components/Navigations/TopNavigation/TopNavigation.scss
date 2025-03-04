@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   overflow-x: initial;
-  padding-left: eds.$space-extra-large2;
+  padding-inline: eds.$space-extra-large2;
   justify-content: flex-start;
   border-bottom: eds.$border-widths-default solid var(--designentur-header-default-divider);
   background: var(--designentur-header-default-fill);
@@ -33,6 +33,11 @@
       box-shadow: eds.$shadows-focus;
       outline-offset: eds.$outline-offsets-focus;
     }
+  }
+  &__github {
+    display: flex;
+    gap: eds.$space-extra-small;
+    margin-left: eds.$space-small;
   }
 
   .searchmodal__button {
