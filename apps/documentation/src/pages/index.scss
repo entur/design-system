@@ -94,7 +94,7 @@
         height: 0.5rem;
         border-radius: 50%;
         position: relative;
-        top: 64.8rem;
+        top: 64.7rem;
         left: 26.5rem;
 
         background: var(--basecolors-shape-walk-contrast);
@@ -121,7 +121,7 @@
         }
         &.second {
           offset-path: path(
-            'M 592.6 278.2 v 233.8 c 0 17.7 14.3 32 32 32 h 221.4 l 51.9 1 h 215.4 c 17.7 0 32 14.3 32 32 v 182.8 c 0 17.7 14.3 32 32 32 h 834.9 l 59.6 0.5 h 759'
+            'M 592.6 279.7 v 233.8 c 0 17.7 14.3 32 32 32 h 221.4 l 51.9 1 h 215.4 c 17.7 0 32 14.3 32 32 v 182.8 c 0 17.7 14.3 32 32 32 h 834.9 l 59.6 0.5 h 759'
           );
           animation-direction: reverse;
           animation-delay: 20s;
@@ -177,6 +177,8 @@
 
           &__end {
             display: block;
+            position: relative;
+            top: 0.5rem;
             font-size: eds.$font-sizes-extra-large5;
             color: var(--basecolors-text-highlight);
           }

@@ -120,7 +120,7 @@ const Index = () => {
               <div className="frontpage__main__hero__content">
                 <Heading1 className="frontpage__main__hero__content__main-heading">
                   <span className="frontpage__main__hero__content__main-heading__start">
-                    Navn
+                    Linje
                   </span>
                   <ShiftingHeader />
                 </Heading1>
@@ -156,7 +156,7 @@ const Index = () => {
                 Designsystemet er et levende produkt som oppdateres og
                 vedlikeholdes kontinuerlig. Kjerneteamet er ansvarlig for
                 forvalting og support av designsystemet, men eierskapet deles
-                mellom alle designere og uviklere av Entur.
+                mellom alle i Entur.
               </Paragraph>
               <Paragraph>
                 Alle med interesse for å påvirke utviklingen, ha innflytelse på
@@ -184,39 +184,42 @@ const NAVIGATION_CARDS = [
   {
     title: 'Stil og tone',
     description:
-      'hvordan språket vårt skaper tydelig og brukervennlig kommunikasjon',
+      'Retningslinjer for å skape en tydelig og brukervennlig kommunikasjon.',
     icon: <ToneSmileIcon />,
-    linkTo: '/komponenter',
+    linkTo: '/identitet/introduksjon/stil-og-tone',
   },
   {
     title: 'Visuell identitet',
-    description: 'Veiledning og retningslinjer for bruk av Enturs merkevare',
+    description:
+      'Veiledning og retningslinjer for bruk av Entur sin merkevare.',
     icon: <ColorPickerIcon />,
-    linkTo: '/komponenter',
+    linkTo: '/identitet',
   },
   {
     title: 'Komponenter',
-    description: 'Gjenbrukbare komponenter med kildekode og retningslinjer.',
+    description:
+      'Gjenbrukbare komponenter med retningslinjer for React og Figma.',
     icon: <ComponentIcon />,
     linkTo: '/komponenter',
   },
   {
     title: 'Universell utforming',
-    description: 'Retningslinjer for lovpålagt inkluderende design.',
+    description:
+      'Retningslinjer for hvordan lage løsninger som er gode å bruke for flest mulig mennesker.',
     icon: <ViewIcon />,
-    linkTo: '/komponenter',
+    linkTo: '/universell-utforming',
   },
   {
     title: 'Tokens',
     description: 'Små, gjenbrukbare verdier som representerer enhetlig design.',
     icon: <TokenIcon />,
-    linkTo: '/komponenter',
+    linkTo: '/tokens',
   },
   {
     title: 'Ikonbibliotek',
-    description: 'En oversikt over alle våre ikoner.',
+    description: 'En oversikt over alle våre ikoner',
     icon: <IconIcon />,
-    linkTo: '/komponenter',
+    linkTo: '/komponenter/ressurser/icons',
   },
 ];
 
@@ -265,5 +268,5 @@ function ShiftingHeader() {
 }
 
 export const Head = () => {
-  return <SEO />;
+  return <SEO title="Forside" />;
 };

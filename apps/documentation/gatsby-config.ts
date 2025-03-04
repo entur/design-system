@@ -6,11 +6,11 @@ const config: GatsbyConfig = {
     typesOutputPath: 'src/utils/gatsby/gatsby-types.d.ts',
   },
   siteMetadata: {
-    title: 'Entur Designsystem',
-    url: 'https://design.entur.no/',
-    siteUrl: 'https://design.entur.no/',
+    title: 'Entur Linje',
+    url: 'https://linje.entur.no/',
+    siteUrl: 'https://linje.entur.no/',
     description:
-      'Her finner du alt du trenger å vite om Entur sitt designsystem',
+      'Her finner du alt du trenger å vite om Linje – Entur sitt designsystem',
   },
   trailingSlash: 'never',
   plugins: [
