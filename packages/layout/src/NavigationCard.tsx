@@ -1,7 +1,6 @@
 import React from 'react';
 import { Paragraph } from '@entur/typography';
 import classNames from 'classnames';
-import { ForwardIcon, ExternalIcon } from '@entur/icons';
 import { Heading3 } from '@entur/typography';
 import { BaseCard } from './BaseCard';
 import './NavigationCard.scss';
@@ -24,9 +23,7 @@ export type NavigationCardOwnProps = {
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;
-  /** Legger til et ikon for å symbolisere at kortet har en ekstern lenke
-   * @default false
-   */
+  /** @deprecated eksternlenke ikon er ikke lenger støttet i NavigationCard  */
   externalLink?: boolean;
 };
 
@@ -44,7 +41,6 @@ export const NavigationCard = <
   titleIcon,
   compact = false,
   className,
-  externalLink = false,
   as,
   ...rest
 }: NavigationCardProps<E>): JSX.Element => {
@@ -55,44 +51,26 @@ export const NavigationCard = <
   });
   return (
     <BaseCard as={Element} className={classList} {...rest}>
-      {!compact && titleIcon && (
-        <div className="eds-navigation-card__title-icon" aria-hidden="true">
-          {titleIcon}
-        </div>
-      )}
-      <span className="eds-navigation-card__title">
-        {compact && titleIcon && (
-          <span
-            className="eds-navigation-card__title-icon-compact"
-            aria-hidden="true"
-          >
-            {titleIcon}
+      <div className="eds-navigation-card-header">
+        <div className="eds-navigation-card-header__content">
+          {titleIcon && (
+            <div
+              className="eds-navigation-card-header__title-icon"
+              aria-hidden="true"
+            >
+              {titleIcon}
+            </div>
+          )}
+          <span className="eds-navigation-card-header__title">
+            <Heading3 as="span">{title}</Heading3>
           </span>
-        )}
-        <Heading3 as="span">{title}</Heading3>
-      </span>
+        </div>
+        <div className="eds-navigation-card-header__highlight"></div>
+      </div>
       {!compact && (
         <>
           <Paragraph>{children}</Paragraph>
-          {externalLink && (
-            <ExternalIcon
-              aria-label="Ekstern lenke"
-              className="eds-navigation-card__external--not-compact"
-            />
-          )}
         </>
-      )}
-      {compact && externalLink && (
-        <ExternalIcon
-          aria-label="Ekstern lenke"
-          className="eds-navigattion-card__icon eds-navigation-card__external--compact"
-        />
-      )}
-      {compact && !externalLink && (
-        <ForwardIcon
-          className="eds-navigattion-card__icon eds-navigation-card__arrow-icon"
-          aria-hidden="true"
-        />
       )}
     </BaseCard>
   );

@@ -31,10 +31,4 @@ export const cards = [
     defaultValue: false,
     label: 'Kompakt',
   },
-  {
-    name: 'externalLink',
-    type: 'boolean',
-    defaultValue: false,
-    label: 'Ekstern lenke',
-  },
 ];
