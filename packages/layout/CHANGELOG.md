@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/entur/design-system/compare/@entur/layout@2.4.2...@entur/layout@3.0.0) (2025-03-05)
+
+### Bug Fixes
+
+- **docs:** fix colorSwatch cards ([76870e2](https://github.com/entur/design-system/commit/76870e2f54fcfda34239ead6a125befcf3df81c6))
+- **mediacard:** add correct background color token ([f2a3f5c](https://github.com/entur/design-system/commit/f2a3f5c5c8ca4f0f93d89a406929e7a68a09a458))
+- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674))
+- **navigationcard:** remove animation if perfers-reduced-motion ([d1ad51d](https://github.com/entur/design-system/commit/d1ad51d3384b3b9c021be3b27986bf9f8eeb1d1d))
+
+### Features
+
+- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679))
+- **navigationcard:** remove external prop ([1a35991](https://github.com/entur/design-system/commit/1a35991f745756c52b98d283e98eb0d5e52a462f))
+
+### BREAKING CHANGES
+
+- **navigationcard:** removed prop externalLink
+
 ## [2.4.2](https://github.com/entur/design-system/compare/@entur/layout@2.4.1...@entur/layout@2.4.2) (2025-02-25)
 
 **Note:** Version bump only for package @entur/layout

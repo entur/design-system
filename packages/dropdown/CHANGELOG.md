@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.3](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.2...@entur/dropdown@7.0.3) (2025-03-05)
+
+### Bug Fixes
+
+- **dropdown:** not focusable and interactive when disabled ([7aee4ae](https://github.com/entur/design-system/commit/7aee4ae1c54e98d4092c64243474f42319624af6))
+
 ## [7.0.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.1...@entur/dropdown@7.0.2) (2025-02-25)
 
 **Note:** Version bump only for package @entur/dropdown

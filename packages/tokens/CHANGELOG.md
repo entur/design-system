@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.18.0](https://github.com/entur/design-system/compare/@entur/tokens@3.17.6...@entur/tokens@3.18.0) (2025-03-05)
+
+### Bug Fixes
+
+- **navigationcard:** etu-55052 add new colortokens ([85cb58d](https://github.com/entur/design-system/commit/85cb58d9d9bcdfac9b359e824298b8ad28ab4674))
+
+### Features
+
+- **card:** new design on navigation-card ([3d9b4b3](https://github.com/entur/design-system/commit/3d9b4b3e9ea235bb85456adea806251ad5a3f679))
+
 ## [3.17.6](https://github.com/entur/design-system/compare/@entur/tokens@3.17.5...@entur/tokens@3.17.6) (2025-02-20)
 
 ### Bug Fixes

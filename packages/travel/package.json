@@ -1,6 +1,6 @@
 {
   "name": "@entur/travel",
-  "version": "6.3.2",
+  "version": "6.3.3",
   "license": "EUPL-1.2",
   "main": "dist/index.js",
   "module": "dist/travel.esm.js",

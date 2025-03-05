@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/entur/design-system/compare/@entur/documentation@5.0.2...@entur/documentation@6.0.0) (2025-03-05)
+
+### Bug Fixes
+
+- **docs:** fix colorSwatch cards ([76870e2](https://github.com/entur/design-system/commit/76870e2f54fcfda34239ead6a125befcf3df81c6))
+- **mediacard:** add correct background color token ([f2a3f5c](https://github.com/entur/design-system/commit/f2a3f5c5c8ca4f0f93d89a406929e7a68a09a458))
+
+### Features
+
+- **navigationcard:** remove external prop ([1a35991](https://github.com/entur/design-system/commit/1a35991f745756c52b98d283e98eb0d5e52a462f))
+
+### BREAKING CHANGES
+
+- **navigationcard:** removed prop externalLink
+
 ## [5.0.2](https://github.com/entur/design-system/compare/@entur/documentation@5.0.1...@entur/documentation@5.0.2) (2025-02-25)
 
 **Note:** Version bump only for package @entur/documentation

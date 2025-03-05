@@ -1,6 +1,6 @@
 {
   "name": "@entur/documentation",
-  "version": "5.0.2",
+  "version": "6.0.0",
   "private": true,
   "description": "Documentation for Entur's design system",
   "keywords": [
