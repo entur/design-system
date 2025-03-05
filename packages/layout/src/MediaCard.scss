@@ -6,10 +6,10 @@
   position: relative;
   width: fit-content;
   transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
-  background-color: var(--components-layout-card-standard-fill-default);
+  background-color: var(--components-layout-card-standard-fill-default-solid);
 
   .eds-contrast & {
-    background-color: var(--components-layout-card-contrast-fill-default);
+    background-color: var(--components-layout-card-contrast-fill-default-solid);
   }
 
   &:has(:focus-visible) {
