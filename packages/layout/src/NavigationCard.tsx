@@ -23,6 +23,8 @@ export type NavigationCardOwnProps = {
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;
+  /** @deprecated eksternlenke ikon er ikke lenger støttet i NavigationCard  */
+  externalLink?: boolean;
 };
 
 export type NavigationCardProps<

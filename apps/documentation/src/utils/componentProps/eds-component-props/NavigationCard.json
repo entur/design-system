@@ -104,10 +104,8 @@
         }
       },
       "externalLink": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Legger til et ikon for å symbolisere at kortet har en ekstern lenke",
+        "defaultValue": null,
+        "description": "@deprecated eksternlenke ikon er ikke lenger støttet i NavigationCard",
         "name": "externalLink",
         "declarations": [
           {
