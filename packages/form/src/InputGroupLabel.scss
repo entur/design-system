@@ -50,7 +50,6 @@ $label-top-large: 0.5rem;
     top: 1rem;
     transition: top t.$timings-medium ease-in-out, font-size t.$timings-medium ease-in-out, padding t.$timings-medium ease-in-out,
       line-height ease-in-out t.$timings-medium;
-
     user-select: none;
     pointer-events: none;
     .eds-form-control-wrapper--size-large & {
@@ -72,6 +71,14 @@ $label-top-large: 0.5rem;
   &--size-large:focus-within {
     & .eds-input-group__label {
       @include labelPositionTopLarge;
+    }
+  }
+  &--disabled {
+    &:focus-within .eds-input-group__label {
+      top: 1rem;
+      font-size: t.$font-sizes-large;
+      height: t.$space-extra-large3;
+      line-height: t.$font-sizes-large;
     }
   }
 }

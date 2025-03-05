@@ -135,7 +135,6 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   const { items: normalizedItems, loading } = useResolvedItems(initialItems);
   const toggleButtonRef = useRef<HTMLDivElement>(null);
   const isFilled = selectedItem !== null || placeholder !== undefined;
-
   const {
     isOpen,
     openMenu,
@@ -237,6 +236,10 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
             }
           },
           ref: toggleButtonRef,
+          'aria-disabled': disabled,
+          'aria-label': disabled ? 'Disabled dropdown' : '',
+          disabled: disabled,
+          tabIndex: disabled ? -1 : 0,
         })}
       >
         {selectedItem?.label ?? (

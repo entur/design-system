@@ -10,7 +10,11 @@
     &--has-tooltip {
       padding-right: t.$space-extra-large;
     }
+    &:has(.eds-form-control-wrapper--disabled) {
+      cursor: not-allowed;
+    }
   }
+
   &-wrapper {
     display: flex;
     align-items: center;
@@ -27,9 +31,7 @@
 
     &:hover {
       border-color: var(--components-form-baseform-standard-border-interactive);
-    }
 
-    &:hover {
       .eds-contrast & {
         border-color: var(--components-form-baseform-contrast-border-interactive);
       }
@@ -70,6 +72,15 @@
       &::before,
       &::after {
         display: none;
+      }
+
+      &:focus-within {
+        border-color: transparent;
+        outline: none;
+        .eds-contrast & {
+          border-color: transparent;
+          outline: none;
+        }
       }
     }
 
