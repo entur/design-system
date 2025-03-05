@@ -2,20 +2,31 @@ import React, { useRef, useState } from 'react';
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 // @ts-expect-error react-use-flexsearch is missing type declerations
 import { useFlexSearch } from 'react-use-flexsearch';
+
 import { Modal } from '@entur/modal';
-
+import { SecondaryButton } from '@entur/button';
 import { TextField } from '@entur/form';
-import { UnorderedList, Heading5 } from '@entur/typography';
-import { ListItem } from '@entur/typography';
-import { SearchIcon } from '@entur/icons';
-
-import { Tag } from '@entur/layout';
-import { SmallText } from '@entur/typography';
-import { Heading2 } from '@entur/typography';
+import {
+  ColorPickerIcon,
+  ComponentIcon,
+  FileIcon,
+  IconIcon,
+  NewIcon,
+  SearchIcon,
+  TokenIcon,
+  UserIcon,
+} from '@entur/icons';
+import { Badge, Tag } from '@entur/layout';
+import {
+  UnorderedList,
+  ListItem,
+  Heading5,
+  SmallText,
+  Heading2,
+  Paragraph,
+} from '@entur/typography';
 
 import './Search.scss';
-import { IconButton } from '@entur/button';
-import { Paragraph } from '@entur/typography';
 
 type StoreResult = {
   id: string;
@@ -23,6 +34,13 @@ type StoreResult = {
   title: string | null;
   description: string | null;
   npmPackage?: string | null;
+  icon?: any;
+};
+
+let LIST_ITEM_ICON_PROPS = {
+  inline: true,
+  size: '1.25rem',
+  'aria-hidden': true,
 };
 
 export const Search = () => {
@@ -82,15 +100,32 @@ export const Search = () => {
         result.path?.includes('maler')
       ),
   );
+
   return (
     <>
-      <IconButton
+      <SecondaryButton
         aria-label="Søk"
         className="searchmodal__button"
         onClick={() => setOpen(true)}
+        size="small"
       >
-        <SearchIcon /> <span>Søk</span>
-      </IconButton>
+        <SearchIcon aria-hidden="ture" /> Søk …
+        <Badge as="kbd" variant="neutral" type="status">
+          <kbd>
+            <span
+              style={{
+                fontSize: '1.25em',
+                position: 'relative',
+                top: '0.032rem',
+                marginRight: '0.25rem',
+              }}
+            >
+              ⌘
+            </span>
+            k
+          </kbd>
+        </Badge>
+      </SecondaryButton>
       <Modal
         size="medium"
         open={open}
@@ -99,11 +134,11 @@ export const Search = () => {
         className="searchmodal"
       >
         <TextField
-          label="Søk i vei!"
+          label="Søk i dokumentasjon"
           value={searchQuery}
           onChange={event => setSearchQuery(event.currentTarget.value)}
           ref={searchbarRef}
-          append={<SearchIcon />}
+          prepend={<SearchIcon aria-hidden="true" />}
           className="searchmodal__searchbar"
         />
         <UnorderedList className="searchmodal__list">
@@ -126,16 +161,19 @@ export const Search = () => {
             group={componentGroup}
             title="Komponenter"
             handleDismiss={handleDismiss}
+            icon={<ComponentIcon {...LIST_ITEM_ICON_PROPS} />}
           />
           <ListSection
             group={resourceGroup}
             title="Ressurser"
             handleDismiss={handleDismiss}
+            icon={<ColorPickerIcon {...LIST_ITEM_ICON_PROPS} />}
           />
           <ListSection
             group={remainingGroup}
             title="Andre sider"
             handleDismiss={handleDismiss}
+            icon={<FileIcon {...LIST_ITEM_ICON_PROPS} />}
           />
         </UnorderedList>
       </Modal>
@@ -146,16 +184,21 @@ export const Search = () => {
 const ListSection = (props: {
   group: StoreResult[];
   title: string;
+  icon?: any;
   handleDismiss: () => void;
 }) => {
-  const { group, title, handleDismiss } = props;
+  const { group, title, handleDismiss, icon } = props;
 
   if (group.length === 0) return <></>;
   return (
     <>
       <Heading5 as={Heading2}>{title}</Heading5>
       {group.map(result => (
-        <ListElement result={result} handleDismiss={handleDismiss} />
+        <ListElement
+          result={result}
+          handleDismiss={handleDismiss}
+          icon={icon}
+        />
       ))}
     </>
   );
@@ -164,10 +207,12 @@ const ListSection = (props: {
 const ListElement = (props: {
   result: StoreResult;
   handleDismiss: () => void;
+  icon: any;
 }) => {
-  const { result, handleDismiss } = props;
+  const { result, handleDismiss, icon } = props;
   return (
     <ListItem className="searchmodal__list__item">
+      {icon ?? result.icon}
       <div className="searchmodal__list__item__text">
         <GatsbyLink
           className="searchmodal__list__item__text__link"
@@ -194,6 +239,7 @@ const recommendedPages: StoreResult[] = [
     title: 'Ikoner',
     description: 'Se en oversikt over alle ikoner designsystemet tilbyr.',
     npmPackage: 'icons',
+    icon: <IconIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
     id: 'illustrations',
@@ -201,12 +247,15 @@ const recommendedPages: StoreResult[] = [
     title: 'Illustrasjoner',
     description:
       'Se og last ned alle illustrasjoner i designsystemet sitt arsenal.',
+    icon: <ColorPickerIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
     id: 'use-tokens',
     path: '/tokens/fargetokens/generelt#bruk-fargetokens',
     title: 'Bruke fargetokens',
     description: 'Les om fargetokens og hvordan du kan bruke dem.',
+    npmPackage: 'tokens',
+    icon: <TokenIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
     id: 'get-started',
@@ -214,6 +263,7 @@ const recommendedPages: StoreResult[] = [
     title: 'Kom igang',
     description:
       'Les om hvordan du kan komme igang med å bruke designsystemet til Entur.',
+    icon: <NewIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
     id: 'user-stories',
@@ -221,5 +271,6 @@ const recommendedPages: StoreResult[] = [
     title: 'Brukerhistorier',
     description:
       'Hva er en brukerhistorie, hvorfor er det nyttig og hvordan bruker jeg det egentlig?',
+    icon: <UserIcon {...LIST_ITEM_ICON_PROPS} />,
   },
 ];

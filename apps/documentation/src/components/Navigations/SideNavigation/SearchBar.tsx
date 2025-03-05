@@ -69,7 +69,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <TextField
         key={location.pathname}
         prepend={<SearchIcon aria-hidden="true" />}
-        label="Søk …"
+        label="Søk i meny"
         value={searchText}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           onSearchTextChange(e.target.value);
