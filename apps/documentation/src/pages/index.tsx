@@ -153,15 +153,14 @@ const Index = () => {
             >
               <Heading2>Vil du bidra?</Heading2>
               <Paragraph>
-                Designsystemet er et levende produkt som oppdateres og
-                vedlikeholdes kontinuerlig. Kjerneteamet er ansvarlig for
-                forvalting og support av designsystemet, men eierskapet deles
-                mellom alle i Entur.
+                Entur Linje er et levende produkt som oppdateres og
+                vedlikeholdes kontinuerlig. Designsystem-teamet er ansvarlig for
+                forvalting og support, men eierskapet deles mellom alle i Entur.
               </Paragraph>
               <Paragraph>
-                Alle med interesse for å påvirke utviklingen, ha innflytelse på
-                designsystems innhold eller gi tilbakemeldinger er velkomne. Ta
-                en titt på vår bidra side for hvordan du går frem.
+                Alle med interesse for å påvirke utvikling og eller innhold,
+                eller ønsker å gi tilbakemeldinger er hjertelig velkomne. Ta en
+                titt på vår bidra side for hvordan du går frem.
               </Paragraph>
               <SecondaryButton
                 as={Link}
@@ -235,6 +234,7 @@ const SHIFTING_HEADER_WORDS = [
   'er glad i deg',
   'får designet til å gå på skinner',
   'unngår design-kollisjoner',
+  'er designsystemet til Entur',
 ];
 
 function ShiftingHeader() {

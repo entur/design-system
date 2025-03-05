@@ -1,10 +1,10 @@
-# Entur design tokens
+# Entur Linje design tokens
 
 This package contains all design tokens and design variables used throughout the design system. We are currently in a process to migrate over to a new design variable system based on [Figma Variables](https://help.figma.com/hc/en-us/articles/15339657135383-Guide-to-variables-in-Figma).
 
 Since not all values are available as a variable yet and to avoid breaking changes, all previous design tokens will be kept around for a while. These are built from the `src/legacy-tokens.ts` file.
 
-> 💡 Looking for the [documentation](https://design.entur.no/tokens)?
+> 💡 Looking for the [documentation](https://linje.entur.no/tokens)?
 
 ## Installation
 
@@ -16,7 +16,7 @@ yarn add @entur/tokens
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/tokens) for in-depth usage information.
+Please refer to the [documentation](https://linje.entur.no/tokens) for in-depth usage information.
 
 This package has several main exports:
 

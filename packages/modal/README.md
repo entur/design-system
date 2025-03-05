@@ -2,7 +2,7 @@
 
 This package contains the different Modal components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-og-flater/modal)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/layout-og-flater/modal)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/modal
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/layout-og-flater/modal) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/layout-og-flater/modal) for usage information.

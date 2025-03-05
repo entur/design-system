@@ -2,7 +2,7 @@
 
 This package contains the different chip components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/skjemaelementer/chip)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/skjemaelementer/chip)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/chip
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/skjemaelementer/chip) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/skjemaelementer/chip) for usage information.

@@ -30,27 +30,26 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
-  const Element = frontPage ? Contrast : 'div';
-
   return (
     <nav
       className={classNames('mobile-topnav', {
         'eds-contrast':
           typeof window !== 'undefined' && window.location.pathname === '/',
       })}
+      {...rest}
     >
       <div className="mobile-topnav__menu">
         <Link to="/" className="mobile-topnav__logo">
           <img
             src={colorMode === 'dark' || isContrast ? logoDark : logo}
-            alt="Entur logo – designsystemets starside"
+            alt="Entur logo – Linje starside"
           />
         </Link>
         <Search />
-        <Tooltip content="Entur designsystem på GitHub">
+        <Tooltip content="Entur Linje på GitHub">
           <IconButton
             className="top-navigation__github"
-            aria-label="Entur designsystem på Github"
+            aria-label="Entur Linje på Github"
             as="a"
             href="https://github.com/entur/design-system"
           >

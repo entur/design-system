@@ -2,7 +2,7 @@
 
 This package contains the different Grid components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/ressurser/grid)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/ressurser/grid)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/grid
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/ressurser/grid) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/ressurser/grid) for usage information.

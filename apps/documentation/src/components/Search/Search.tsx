@@ -237,7 +237,7 @@ const recommendedPages: StoreResult[] = [
     id: 'icons',
     path: '/komponenter/ressurser/icons',
     title: 'Ikoner',
-    description: 'Se en oversikt over alle ikoner designsystemet tilbyr.',
+    description: 'Se en oversikt over alle ikoner Linje tilbyr.',
     npmPackage: 'icons',
     icon: <IconIcon {...LIST_ITEM_ICON_PROPS} />,
   },
@@ -245,8 +245,7 @@ const recommendedPages: StoreResult[] = [
     id: 'illustrations',
     path: '/identitet/verktoykassen/illustrasjoner',
     title: 'Illustrasjoner',
-    description:
-      'Se og last ned alle illustrasjoner i designsystemet sitt arsenal.',
+    description: 'Se og last ned alle illustrasjoner i Linje sitt arsenal.',
     icon: <ColorPickerIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
@@ -262,7 +261,7 @@ const recommendedPages: StoreResult[] = [
     path: '/kom-i-gang',
     title: 'Kom igang',
     description:
-      'Les om hvordan du kan komme igang med å bruke designsystemet til Entur.',
+      'Les om hvordan du kan komme igang med å bruke Linje – designsystemet til Entur.',
     icon: <NewIcon {...LIST_ITEM_ICON_PROPS} />,
   },
   {
