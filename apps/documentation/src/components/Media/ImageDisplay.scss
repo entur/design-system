@@ -67,6 +67,11 @@
       background: var(--basecolors-frame-tint);
       border-radius: t.$border-radiuses-large;
 
+      &.eds-contrast,
+      &[data-color-mode='contrast'] {
+        background: var(--basecolors-frame-contrast);
+      }
+
       .image-display__download-container {
         opacity: 1;
       }

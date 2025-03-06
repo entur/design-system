@@ -10,10 +10,27 @@ import {
 } from './useGetIllustrations';
 
 import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { Theme, useSettings } from '@providers/SettingsContext';
 
 import './IllustrationList.scss';
 
 type ColorModeType = 'standard' | 'darkmode' | 'contrast';
+
+const mapColorMode = (colorMode: ColorModeType | Theme) => {
+  switch (colorMode) {
+    case 'dark':
+      return 'darkmode';
+    case 'darkmode':
+      return 'dark';
+    case 'standard':
+      return 'light';
+    case 'light':
+      return 'standard';
+    case 'contrast':
+      return 'contrast';
+  }
+  return 'standard';
+};
 
 const IllustrationList = ({
   categoryFilter,
@@ -34,7 +51,10 @@ const IllustrationList = ({
   squareIllustrations: boolean;
   backgroundSwitchLabel: string;
 }) => {
-  const [colorMode, setColorMode] = React.useState<ColorModeType>('standard');
+  const { colorMode: settingsColorMode } = useSettings();
+  const [colorMode, setColorMode] = React.useState<ColorModeType>(
+    mapColorMode(settingsColorMode) as ColorModeType,
+  );
   const [hasBackground, setHasbackground] = React.useState(false);
 
   const allIllustrations = useGetIllustrations();
@@ -90,7 +110,7 @@ const IllustrationList = ({
               'illustration-list__display-grid__image-box',
               { 'eds-contrast': colorMode === 'contrast' },
             )}
-            data-color-mode={colorMode === 'darkmode' ? 'dark' : undefined}
+            data-color-mode={mapColorMode(colorMode)}
             style={{
               border:
                 colorMode === 'standard'

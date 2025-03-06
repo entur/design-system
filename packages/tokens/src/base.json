@@ -21,6 +21,12 @@
             "rootAlias": "Blue/90"
           },
           {
+            "name": "Base colors/Frame/ContrastAlt-2",
+            "value": "#292b6a",
+            "var": "Fill/Background/Contrast/LightAlt-2",
+            "rootAlias": "Blue/100"
+          },
+          {
             "name": "Base colors/Frame/Default",
             "value": "#ffffff",
             "var": "Fill/Background/Standard/Light",
@@ -403,6 +409,12 @@
             "rootAlias": "Ebony/95"
           },
           {
+            "name": "Base colors/Frame/ContrastAlt-2",
+            "value": "#08091c",
+            "var": "Fill/Background/Standard/Dark",
+            "rootAlias": "Ebony/100"
+          },
+          {
             "name": "Base colors/Frame/Default",
             "value": "#08091c",
             "var": "Fill/Background/Standard/Dark",
@@ -452,13 +464,13 @@
           },
           {
             "name": "Base colors/Shape/Bus-Contrast",
-            "value": "#e87a9b",
+            "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
           },
           {
             "name": "Base colors/Shape/Bus-Default",
-            "value": "#e87a9b",
+            "value": "#ef7398",
             "var": "Dark/Bus",
             "rootAlias": "Dark/Bus"
           },

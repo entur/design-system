@@ -2,7 +2,7 @@
 
 This package contains all the common form-components
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/skjemaelementer/textfield)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/skjemaelementer/textfield)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/form
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/skjemaelementer/textfield) for further usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/skjemaelementer/textfield) for further usage information.

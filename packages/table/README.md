@@ -2,7 +2,7 @@
 
 This package contains the different Table components.
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-og-flater/table)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/layout-og-flater/table)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/table
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/layout-og-flater/table) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/layout-og-flater/table) for usage information.

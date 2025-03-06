@@ -2,7 +2,7 @@
 
 This package contains the different layout components, and the powerful Contrast wrapper
 
-> 💡 Looking for the [documentation](https://design.entur.no/komponenter/layout-og-flater/card)?
+> 💡 Looking for the [documentation](https://linje.entur.no/komponenter/layout-og-flater/card)?
 
 ## Installation
 
@@ -14,4 +14,4 @@ yarn add @entur/layout
 
 ## Usage
 
-Please refer to the [documentation](https://design.entur.no/komponenter/layout-og-flater/card) for usage information.
+Please refer to the [documentation](https://linje.entur.no/komponenter/layout-og-flater/card) for usage information.

@@ -61,7 +61,7 @@ export const useResolvedItems = <ValueType extends NonNullable<any>>(
           'Avbryt den asynkrone funksjonen din med signalet fra AbortController-en for å for å unngå minnelekkasje.',
           'Funksjonen bør kaste en DOMException med navnet "AbortError" når den avbrytes.',
           '',
-          '\n\nSe eksempel her: https://design.entur.no/komponenter/skjemaelementer/dropdown#s%C3%B8kbar-dropdown-med-valg-fra-nettverkskall-bassert-p%C3%A5-tekstinput',
+          '\n\nSe eksempel her: https://linje.entur.no/komponenter/skjemaelementer/dropdown#s%C3%B8kbar-dropdown-med-valg-fra-nettverkskall-bassert-p%C3%A5-tekstinput',
           '\nLes mer om AbortController her: https://developer.mozilla.org/en-US/docs/Web/API/AbortController',
         );
         return;

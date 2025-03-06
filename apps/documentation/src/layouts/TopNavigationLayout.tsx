@@ -1,19 +1,14 @@
 import * as React from 'react';
 import TopNavigation from '@components/Navigations/TopNavigation/TopNavigation';
-import { Media } from '@providers/MediaBreakpoint';
 import MobileTopNavigation from '@components/Navigations/TopNavigation/MobileTopNavigation';
+import { useWindowDimensions } from '@entur/utils';
+import { pxToRem } from 'src/utils/utils';
 
 const TopNavigationLayout: React.FC = () => {
-  return (
-    <>
-      <Media at="mobile">
-        <MobileTopNavigation />
-      </Media>
-      <Media greaterThanOrEqual="desktop">
-        <TopNavigation />
-      </Media>
-    </>
-  );
+  const { width } = useWindowDimensions();
+  const remWidth = pxToRem(width);
+  const isMobile = remWidth !== undefined && remWidth < 60;
+  return isMobile ? <MobileTopNavigation /> : <TopNavigation />;
 };
 
 export default TopNavigationLayout;

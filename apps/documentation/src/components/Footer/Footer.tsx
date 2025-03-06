@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { Link } from 'gatsby';
 import { IconButton } from '@entur/button';
 import { GridContainer, GridItem } from '@entur/grid';
@@ -8,62 +8,58 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@entur/icons';
-import {
-  Heading3,
-  Label,
-  LeadParagraph,
-  Link as DSLink,
-} from '@entur/typography';
+import { Heading3, LeadParagraph, Link as DSLink } from '@entur/typography';
 import { colors, space } from '@entur/tokens/dist';
 
-import { Media } from '@providers/MediaBreakpoint';
-import { useSettings } from '@providers/SettingsContext';
+import { Logo } from '@components/Logo/Logo';
+import { Theme, useSettings } from '@providers/SettingsContext';
 
-import logo from '@media/logo/logo.svg';
-import logoDark from '@media/logo/logoDark.svg';
+import './Footer.scss';
 
-import './FrontPageFooter.scss';
-
-const FrontPageFooter = () => {
+const Footer = ({
+  forceColorMode,
+  footerRef,
+}: {
+  forceColorMode?: Theme;
+  footerRef?: RefObject<HTMLDivElement>;
+}) => {
   const year = new Date();
   const { colorMode } = useSettings();
   return (
-    <div className="front-page-footer">
-      <GridContainer
-        spacing="extraLarge"
-        className="front-page-footer__grid-container"
-      >
-        <GridItem small={12} medium={6} large={3}>
-          <LeadParagraph margin="none" className="front-page-footer__lead">
+    <div ref={footerRef} className="footer">
+      <GridContainer spacing="extraLarge" className="footer__grid-container">
+        <GridItem small={12} medium={6} large={4}>
+          <LeadParagraph margin="none" className="footer__lead">
             Entur leverer digitale tjenester til Norges kollektivtransport.
           </LeadParagraph>
-          <Media between={['desktop', 'wideDesktop']}>
-            <SocialMediaLinks style={{ marginTop: '3rem' }} />
-          </Media>
         </GridItem>
-        <GridItem small={12} medium={3} large={3}>
+        <GridItem small={12} medium={6} large={4}>
           <Heading3 margin="bottom">Sidestruktur</Heading3>
-          <div className="front-page-footer__link">
-            <LinkWrapper to="/kom-i-gang">Kom i gang</LinkWrapper>
-          </div>
-          <div className="front-page-footer__link">
-            <LinkWrapper to="/identitet">Identitet</LinkWrapper>
-          </div>
-          <div className="front-page-footer__link">
-            <LinkWrapper to="/komponenter">Komponenter</LinkWrapper>
-          </div>
-          <div className="front-page-footer__link">
-            <LinkWrapper to="/tokens">Tokens</LinkWrapper>
-          </div>
-          <div className="front-page-footer__link">
-            <LinkWrapper to="/universell-utforming">
-              Universell utforming
-            </LinkWrapper>
-          </div>
+          <LinkWrapper to="/kom-i-gang" className="footer__link">
+            Kom i gang
+          </LinkWrapper>
+          <LinkWrapper to="/identitet" className="footer__link">
+            Identitet
+          </LinkWrapper>
+          <LinkWrapper to="/komponenter" className="footer__link">
+            Komponenter
+          </LinkWrapper>
+          <LinkWrapper to="/tokens" className="footer__link">
+            Tokens
+          </LinkWrapper>
+          <LinkWrapper
+            to="/identitet/introduksjon/stil-og-tone"
+            className="footer__link"
+          >
+            Stil og tone
+          </LinkWrapper>
+          <LinkWrapper to="/universell-utforming" className="footer__link">
+            Universell utforming
+          </LinkWrapper>
         </GridItem>
-        <GridItem small={12} medium={3} large={3}>
+        <GridItem small={12} medium={6} large={4}>
           <Heading3 margin="bottom">Informasjon</Heading3>
-          <div className="front-page-footer__link">
+          <div className="footer__link">
             <LinkWrapper
               external
               href="https://entur.slack.com/archives/C899QSPB7"
@@ -71,7 +67,7 @@ const FrontPageFooter = () => {
               #talk-designsystem på Slack
             </LinkWrapper>
           </div>
-          <div className="front-page-footer__link">
+          <div className="footer__link">
             <LinkWrapper
               external
               href="https://uustatus.no/nb/erklaringer/publisert/7c5b8f79-7c24-4144-8084-afde897edded"
@@ -79,24 +75,11 @@ const FrontPageFooter = () => {
               Tilgjengelighetserklæring
             </LinkWrapper>
           </div>
-        </GridItem>
-        <GridItem small={12} medium={6} large={3}>
-          <Media greaterThanOrEqual="wideDesktop">
-            <SocialMediaLinks />
-          </Media>
-          <Media lessThan="desktop">
-            <SocialMediaLinks />
-          </Media>
+          <SocialMediaLinks />
         </GridItem>
       </GridContainer>
-      <div className="front-page-footer__entur-banner">
-        <div>
-          <img
-            src={colorMode === 'dark' ? logoDark : logo}
-            width="104px"
-            alt="Entur sin logo"
-          />
-        </div>
+      <div className="footer__entur-banner">
+        <Logo colorMode={forceColorMode || colorMode} />
         <div style={{ float: 'right', position: 'relative', top: '0.9rem' }}>
           <span
             className="eds-label"
@@ -168,4 +151,4 @@ function LinkWrapper(props: any) {
   );
 }
 
-export default FrontPageFooter;
+export default Footer;

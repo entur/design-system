@@ -86,7 +86,7 @@ const SettingsPanel = () => {
       <div className="settings-panel">
         <Tooltip
           placement={'bottom'}
-          content={'Hjelp oss å gjøre designsystemet bedre!'}
+          content={'Hjelp oss å gjøre Linje bedre!'}
           isOpen={showAnalyticsTooltip}
           onClickCloseButton={handleDismissAnalyticsTooltip}
           className="settings-panel__tooltip"
@@ -264,8 +264,8 @@ const AnalyticsSection = ({
         })}
       >
         <SmallText>
-          Hjelp oss å forstå hvordan du bruker designsystemet. Informasjon om
-          hvilke sider du bruker og hvordan du bruker dem over tid gjør det
+          Hjelp oss å forstå hvordan du bruker dokumentasjonssiden. Informasjon
+          om hvilke sider du bruker og hvordan du bruker dem over tid gjør det
           lettere å ta gode valg når vi forbedrer siden. Vi bruker Posthog når
           vi analyserer denne dataen, les mer på{' '}
           <Link href="https://posthog.com/docs/privacy">

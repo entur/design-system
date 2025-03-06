@@ -2,7 +2,7 @@
   Entur Design Tokens
 
   Hi there 👋 This file contains all the design tokens used in the Entur 
-  design system. It's broken up into a few different sections:
+  Linje. It's broken up into a few different sections:
 
   - colors
   - typography

@@ -1,16 +1,17 @@
+@use "sass:map";
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
+
+@use '../../styles/variables' as variables;
 
 .settings-panel {
   display: flex;
   justify-content: flex-end;
-  margin-right: 1rem;
 
-  @include for-desktop {
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
     flex-grow: unset;
     align-items: center;
     justify-content: center;
-    padding-right: 2.5rem;
   }
 
   &__modal.eds-modal__content {
@@ -25,7 +26,7 @@
     }
   }
   .settings-trigger {
-    margin-left: tokens.$space-large;
+    margin-left: tokens.$space-small;
     &__icon {
       margin-right: tokens.$space-extra-small;
     }

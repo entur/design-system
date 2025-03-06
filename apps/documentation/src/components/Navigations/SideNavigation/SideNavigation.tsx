@@ -16,7 +16,7 @@ import {
   sortComponentMenus,
   sorters,
 } from './utils';
-import { Media } from '@providers/MediaBreakpoint';
+
 import SearchBar from './SearchBar';
 
 import './SideNavigation.scss';
@@ -35,7 +35,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   onClickMenuItem,
 }) => {
   const location = useLocation();
-
   const [searchText, setSearchText] = React.useState('');
 
   const currentPathSegments = removeTrailingSlash(location.pathname)?.split(
@@ -94,13 +93,11 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   return (
     <div className={classNames('side-navigation-wrapper', className)}>
-      <Media greaterThanOrEqual="desktop">
-        <SearchBar
-          className="side-navigation__searchbar"
-          searchText={searchText}
-          onSearchTextChange={setSearchText}
-        />
-      </Media>
+      <SearchBar
+        className="side-navigation__searchbar"
+        searchText={searchText}
+        onSearchTextChange={setSearchText}
+      />
       <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
         {sortedMenuNames.map(menuName => (
           <SideNavigationGroup

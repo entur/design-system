@@ -53,14 +53,18 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
+      - name: Create cache key based on day
+        id: cache_day_key
+        run: echo "cache-key=$(date -u '+%Y-%m-%d')" >> $GITHUB_OUTPUT
+
       - name: Cache gatsby
         uses: actions/cache@v4
         with:
           path: |
             apps/documentation/.cache
             apps/documentation/public
-          key: gatsby-${{github.head_ref}}-${{ runner.os }}-${{ github.run_id }} # Since this is unique within the PR the cache will always be updated
-          restore-keys: gatsby-${{github.head_ref}}-${{ runner.os }} # But since this one always matches within the PR we will also always get a cache hit
+          key: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}-${{ github.run_id }}
+          restore-keys: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}
 
       - run: yarn build:documentation:skip-packages-dependency
 

@@ -1,11 +1,12 @@
+@use "sass:map";
 @use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .side-navigation {
   &__logo {
     width: 100%;
-    padding: tokens.$space-extra-large2 tokens.$space-extra-large2 0 tokens.$space-extra-large2;
+    padding: eds.$space-extra-large2 eds.$space-extra-large2 0 eds.$space-extra-large2;
   }
 
   &__group {
@@ -13,22 +14,44 @@
   }
 
   &-wrapper {
-    width: 100%;
-    transition: max-width tokens.$timings-fast ease-out;
+    position: fixed;
+    z-index: eds.$z-indexes-sticky;
+    top: variables.$navbar-height;
+    height: calc(100dvh - variables.$navbar-height);
+    overflow-y: scroll;
+    max-width: variables.$side-navigation-width--large-desktop;
+    background: var(--components-menu-sidenavigation-standard-background);
+  }
+
+  &__drawer {
+    padding: unset;
     background: var(--components-menu-sidenavigation-standard-background);
 
-    @include for-desktop {
-      max-width: variables.$side-navigation-width--desktop;
-      height: 100vh;
-      left: 0;
-      top: variables.$navbar-height;
-      padding-bottom: 10rem;
-      overflow-y: scroll;
-      position: fixed;
-      z-index: tokens.$z-indexes-sticky;
+    h2 {
+      display: none; // hide Drawer heading
     }
-    @include for-large-desktop {
-      max-width: variables.$side-navigation-width--large-desktop;
+
+    &__wrapper {
+      position: unset;
+      padding-top: 3rem;
+      width: 100%;
+      height: 100%;
+      max-height: 100dvh;
+      transition: max-width eds.$timings-fast ease-out;
+    }
+
+    &__menu-button {
+      position: fixed;
+      bottom: 2em;
+      right: 2rem;
+      z-index: eds.$z-indexes-toast;
+      transform: scale(1.25);
+      transition: transform eds.$timings-medium ease-in-out;
+
+      &:focus-visible {
+        outline: eds.$outlines-focus;
+        outline-offset: eds.$outline-offsets-focus;
+      }
     }
   }
 }

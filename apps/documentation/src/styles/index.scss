@@ -1,7 +1,9 @@
+@use "sass:map";
+@use '@entur/tokens/dist/base.scss';
 @use './variables' as variables;
 @use '../utils/componentColors/designEnturComponentColors.scss' as *;
 
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 @import '@entur/a11y/dist/styles.css';
@@ -32,7 +34,8 @@
 [data-color-mode='light'] {
   color-scheme: light;
 }
-[data-color-mode='dark'] {
+[data-color-mode='dark'],
+[data-color-mode='contrast'] {
   color-scheme: dark;
 }
 
@@ -41,38 +44,28 @@ body {
 }
 
 .page {
-  margin-top: variables.$navbar-height;
   height: 100%;
   width: 100%;
   overflow-y: auto;
-  @include for-desktop {
-    position: absolute;
-    top: variables.$navbar-height;
+  position: relative;
+  top: variables.$navbar-height;
+  height: calc(100vh - #{variables.$navbar-height});
+
+  @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
     left: variables.$side-navigation-width--desktop;
-    margin-top: 0;
-    height: calc(100vh - #{variables.$navbar-height});
     width: calc(100% - #{variables.$side-navigation-width--desktop});
   }
-  @include for-large-desktop {
-    left: variables.$side-navigation-width--large-desktop;
-    width: calc(100% - #{variables.$side-navigation-width--large-desktop});
-  }
+
   .site-content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin: 3rem tokens.$space-extra-large tokens.$space-default;
-    transition: max-width tokens.$timings-fast ease-out, margin-left tokens.$timings-fast ease-out;
+    margin: eds.$space-extra-large3 eds.$space-extra-large eds.$space-default;
+    transition: max-width eds.$timings-fast ease-out, margin-left eds.$timings-fast ease-out;
 
-    @include for-large-desktop {
+    @media screen and (min-width: map.get(variables.$breakpoints, 'tablet')) {
       max-width: 45rem;
-      margin: 3rem 2rem 1rem Min(8%, 15rem);
-    }
-
-    &--hidden {
-      overflow: hidden;
-      position: fixed;
-      z-index: -1;
+      margin: 2.5rem 2rem 1rem 3rem;
     }
 
     main {
@@ -97,67 +90,6 @@ body {
       }
     }
   }
-}
-
-.ui-menu {
-  &--desktop {
-    display: none;
-    @include for-desktop {
-      display: block;
-    }
-  }
-  &--mobile {
-    display: block;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: tokens.$z-indexes-sticky;
-    transition: position tokens.$timings-medium ease-in-out tokens.$timings-medium;
-    &-not-frontpage {
-      background: white;
-    }
-    &-open-sidemenu {
-      position: static;
-    }
-    @include for-desktop {
-      display: none;
-    }
-  }
-}
-
-.frontpage__site-content-wrapper {
-  .frontpage-blue-backer {
-    background: var(--basecolors-frame-contrast);
-    position: absolute;
-    width: 100vw;
-    top: 0;
-    z-index: -1;
-    height: 42rem;
-    @include for-desktop {
-      height: 39rem;
-    }
-  }
-  &--hidden {
-    overflow: hidden;
-    position: fixed;
-    .frontpage-blue-backer {
-      height: 33rem; //Hack to avoid visual bug
-    }
-  }
-}
-
-.frontpage-site-content {
-  display: flex;
-  margin: tokens.$space-default tokens.$space-large;
-  flex-direction: column;
-  min-height: 90vh;
-  @include for-desktop {
-    margin: 0 auto 1rem;
-    max-width: 64rem;
-  }
-}
-.frontpage-site-content main {
-  flex: 1;
 }
 
 code {

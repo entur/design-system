@@ -1,5 +1,6 @@
+@use "sass:map";
 @use '@entur/tokens/dist/styles.scss' as tokens;
-@use '@entur/tokens/dist/base.scss';
+@use '../../styles/variables' as variables;
 
 .playground {
   &__header {
@@ -8,6 +9,10 @@
   }
   &__live-preview-and-props-wrapper {
     display: flex;
+
+    @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+      flex-direction: column;
+    }
 
     &:has(+ .ReactCollapse--collapse) .playground__live-preview-container {
       border-bottom-left-radius: 0;
@@ -53,6 +58,7 @@
       box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
 
       flex: 1;
+      overflow: auto;
 
       &:has(+ .playground__props-selector) {
         border-top-right-radius: 0;
@@ -72,6 +78,8 @@
     border-radius: 0 tokens.$border-radiuses-medium tokens.$border-radiuses-medium 0;
     padding: 1rem;
     box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
+
+    flex: 0 1;
 
     &__prop {
       margin-bottom: 0.5rem;

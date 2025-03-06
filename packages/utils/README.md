@@ -1,6 +1,6 @@
 # Utils
 
-This package contains the different utils shared across the Entur Designsystem packages.
+This package contains the different utils shared across the Entur Linje packages.
 
 > ## Think twice before adding stuff here
 >

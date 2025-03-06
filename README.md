@@ -1,6 +1,6 @@
-# Entur Designsystem ✨
+# Entur Linje ✨
 
-Entur Designsystem is a collection of resources and guidelines for developing and creating material within the Entur brand. It is an internal tool with the goal of improving efficiency and consitency accross all of Entur's products.
+Entur Linje is a collection of resources and guidelines for developing and creating material within the Entur brand. It is an internal tool with the goal of improving efficiency and consitency accross all of Entur's products.
 
 ## Table of Contents
 
@@ -15,9 +15,9 @@ Entur Designsystem is a collection of resources and guidelines for developing an
 
 ## Intro
 
-The Design system provides guidelines on colours, typography and more, methodologies for how to gain user insight, reusable components for both Figma and React, illustrations and icons, and material for presentations etc.
+Entur Linje provides guidelines for colours, typography, and more. Linje also includes methodologies for how to gain user insight, reusable components for both Figma and React, illustrations and icons, and material for presentations etc.
 
-This monorepo contains all npm packages released by Entur Designsystem, as well as the [documentation site](design.entur.no) and a code playground for local testing.
+This monorepo contains all npm packages released by Entur Linje, as well as the [documentation site](linje.entur.no) and a code playground for local testing.
 
 The monorepo is divided into `packages` and `apps`. `packages` contains all packages we release to npm. `apps` contains services that use the components and utils under `packages`, in our case the documentation and a code playground for local testing.
 
@@ -250,6 +250,6 @@ Entur Designsystem documentation is connected to PostHog to provide analytics ab
 
 ## Contributing
 
-Want to contribute? Great! Follow the [usage](#usage) guide and make a PR with you changes. To not waste your own time, it's recommended you contact the designssystem team beforehand directly or via Slack ([#talk-designsystem](https://entur.slack.com/archives/CMTU7MY3V)) to make sure the feature/fix is wanted.
+Want to contribute? Great! Follow the [usage](#usage) guide and make a PR with you changes. To not waste your own time, it's recommended you contact the designs system team (@entur/team-designsystem) beforehand directly or via Slack ([#talk-designsystem](https://entur.slack.com/archives/CMTU7MY3V)) to make sure the feature/fix is wanted.
 
-A more thorough explanation can also be found [here](https://design.entur.no/kom-i-gang/for-utviklere/bidra) (in norwegian only).
+A more thorough explanation can also be found [here](https://linje.entur.no/kom-i-gang/for-utviklere/bidra) (in norwegian only).

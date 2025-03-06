@@ -1,8 +1,20 @@
-$navbar-height: 7rem;
-$side-navigation-width--desktop: 18rem;
+$navbar-height: 5rem;
+$side-navigation-width--desktop: 21rem;
 $side-navigation-width--large-desktop: 22rem;
 $site-content-max-width: 45rem;
 $site-content-left-margin: 8%;
-$show-toc-min-width: 94rem;
-$toc-left-position-relative-to-site-content: 5rem;
-$toc-left-position: #{'Calc(#{$side-navigation-width--large-desktop} + #{$site-content-left-margin} + #{$site-content-max-width} + #{$toc-left-position-relative-to-site-content})'};
+$show-toc-min-width: 90rem;
+$toc-left-position-relative-to-site-content: 3rem;
+$toc-left-position: 74rem;
+
+$breakpoints: (
+  mobile-small: 23.4375rem,
+  // 375px / 16
+  mobile: 40.5rem,
+  // 648px / 16
+  tablet: 60rem,
+  // 960px / 16
+);
+
+$full-width-grid: 1fr minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem)
+  minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) minmax(0px, 6rem) 1fr;

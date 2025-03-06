@@ -1,6 +1,9 @@
+@use "sass:map";
 @use "@entur/tokens/dist/styles.scss" as t;
 @use "@entur/form/src/componentColors.scss";
 @use "@entur/tokens/dist/base.scss";
+
+@use '../../styles/variables' as variables;
 
 .searchmodal {
   margin-top: 4dvh;
@@ -9,6 +12,26 @@
   &__button {
     display: flex;
     gap: 0.5rem;
+    padding-top: 0.25rem;
+    padding-inline: 0.25rem;
+    margin-left: t.$space-default;
+    white-space: nowrap;
+    overflow: hidden;
+
+    .eds-icon {
+      margin-inline: 0.25rem;
+      min-width: 1rem;
+    }
+    kbd {
+      padding-inline: 0.2rem;
+      padding-top: 0.1rem;
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+        display: none;
+      }
+    }
   }
 
   &__searchbar {
@@ -30,8 +53,8 @@
     & &__item {
       position: relative;
       display: flex;
-      justify-content: space-between;
-      gap: t.$space-default;
+      justify-content: flex-start;
+      gap: t.$space-small;
       height: fit-content;
       min-width: 0;
       padding-block: 0.75rem;
@@ -45,6 +68,10 @@
       &:hover,
       &:focus-within {
         background-color: var(--basecolors-frame-subdued);
+      }
+
+      .eds-icon {
+        min-width: 2rem;
       }
 
       &__text {
@@ -82,6 +109,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          padding-right: t.$space-default;
 
           color: var(--basecolors-text-subdued);
         }
@@ -92,6 +120,7 @@
         margin-block: auto;
         margin-right: 1rem;
         flex: 0 0 fit-content;
+        margin-left: auto;
       }
     }
   }

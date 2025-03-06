@@ -10,6 +10,7 @@ public
 .cache
 .pnp.*
 .yarn
+gatsby-types
 
 # dependencies
 node_modules

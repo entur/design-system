@@ -1,20 +1,14 @@
-import React from 'react';
-import { MenuItem, removeTrailingSlash } from './utils';
-import { Link } from 'gatsby';
+import React, { useEffect } from 'react';
+
+import { MenuItem } from './utils';
 import { FloatingButton } from '@entur/button';
-import { LeftArrowIcon, MenuIcon } from '@entur/icons';
+import { CloseIcon, MenuIcon } from '@entur/icons';
 import classNames from 'classnames';
-import { Heading2 } from '@entur/typography';
-import { space } from '@entur/tokens';
-import { useLocation } from '@reach/router';
+import { Drawer } from '@entur/modal';
+
 import SideNavigation from './SideNavigation';
-import { useContrast } from '@entur/layout';
-import { useSettings } from '@providers/SettingsContext';
 
-import logo from '../../../media/logo/logo.svg';
-import logoDark from '../../../media/logo/logoDark.svg';
-
-import './MobileSideNavigation.scss';
+import './SideNavigation.scss';
 
 type MobileMenuProps = {
   className?: string;
@@ -24,90 +18,49 @@ type MobileMenuProps = {
 };
 
 const MobileSideNavigation: React.FC<MobileMenuProps> = ({
-  className,
   menuItems,
   openSidebar,
   setOpenSidebar,
 }) => {
-  const { colorMode } = useSettings();
-  const isContrast = useContrast();
+  useEffect(() => {
+    const siteContent = document.body;
+    if (!siteContent) return;
 
-  const location = useLocation();
-  const currentPathSegments = removeTrailingSlash(location.pathname).split('/');
-  const parentPath =
-    currentPathSegments.length > 1 ? currentPathSegments[1] : '';
-  const capitalizedParentPath =
-    parentPath.charAt(0).toUpperCase() + parentPath.slice(1);
+    if (openSidebar) siteContent.style.overflow = 'hidden';
+    else siteContent.style.overflow = '';
+  }, [openSidebar]);
+
+  useEffect(() => () => setOpenSidebar(false), [setOpenSidebar]);
 
   return (
     <>
-      <div className="ui-menu--mobile">
-        <FloatingButton
-          size="medium"
-          className={classNames('mobile-side-navigation__menu--menu-button', {
-            'mobile-side-navigation__menu--menu-button-open': openSidebar,
-          })}
-          onClick={() => setOpenSidebar(true)}
-          type="button"
-          aria-label="meny"
-        >
-          <MenuIcon />
-        </FloatingButton>
-      </div>
-
-      {openSidebar && (
-        <div
-          onClick={() => setOpenSidebar(false)}
-          className="mobile-side-navigation__backdrop"
-        />
-      )}
-      <div
-        className={classNames('mobile-side-navigation', {
-          'mobile-side-navigation--visible': openSidebar,
-        })}
+      <Drawer
+        open={openSidebar}
+        onDismiss={() => setOpenSidebar(false)}
+        title={''}
+        className="side-navigation__drawer"
+        overlay
       >
-        <div
-          className={classNames('mobile-side-navigation-wrapper', className)}
-        >
-          <nav aria-label={`Navigasjon for seksjonen "${parentPath}"`}>
-            <div className="mobile-side-navigation__background">
-              <Link to="/" className="mobile-side-navigation__logo">
-                <img
-                  src={colorMode === 'dark' || isContrast ? logoDark : logo}
-                  height="20px"
-                  width="64px"
-                  alt="Entur logo"
-                />
-              </Link>
-              <Heading2
-                margin="none"
-                style={{
-                  marginLeft: space.extraLarge,
-                  marginTop: space.extraLarge2,
-                }}
-              >
-                {capitalizedParentPath}
-              </Heading2>
-
-              <SideNavigation
-                menuItems={menuItems}
-                mobile={true}
-                onClickMenuItem={() => setOpenSidebar(false)}
-              />
-            </div>
-
-            <FloatingButton
-              aria-label="Lukk sidemeny"
-              onClick={() => setOpenSidebar(false)}
-              className={classNames('mobile-side-navigation__close-menu', {
-                'mobile-side-navigation__close-menu--open': openSidebar,
-              })}
-            >
-              <LeftArrowIcon />
-            </FloatingButton>
-          </nav>
-        </div>
-      </div>
+        <SideNavigation
+          menuItems={menuItems}
+          mobile={true}
+          onClickMenuItem={() => setOpenSidebar(false)}
+          className="side-navigation__drawer__wrapper"
+        />
+      </Drawer>
+      <FloatingButton
+        size="medium"
+        className={classNames('side-navigation__drawer__menu-button')}
+        onClick={() => setOpenSidebar(!openSidebar)}
+        type="button"
+        aria-label={openSidebar ? 'Lukk meny' : 'Åpne meny'}
+      >
+        {openSidebar ? (
+          <CloseIcon aria-hidden="true" />
+        ) : (
+          <MenuIcon aria-hidden="true" />
+        )}
+      </FloatingButton>
     </>
   );
 };

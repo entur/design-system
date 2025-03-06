@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import { Location } from '@reach/router';
 
 import { Contrast, useContrast } from '@entur/layout';
+import { IconButton } from '@entur/button';
+import { GithubIcon } from '@entur/icons';
+import { Tooltip } from '@entur/tooltip';
 
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
@@ -27,40 +30,44 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
   const { colorMode } = useSettings();
   const isContrast = useContrast();
 
-  const Element = frontPage ? Contrast : 'div';
-
   return (
-    <>
-      <Element
-        as="header"
-        className={classNames('ui-menu--mobile', {
-          'eds-contrast':
-            typeof window !== 'undefined' && window.location.pathname === '/',
-        })}
-      >
-        <div className={classNames('mobile-topnav')}>
-          <div className="mobile-topnav__menu">
-            <Link to="/" className="mobile-topnav__logo">
-              <img
-                src={colorMode === 'dark' || isContrast ? logoDark : logo}
-                alt="Entur logo – designsystemets starside"
-              />
-            </Link>
-            <Search />
-            <SettingsPanel />
-          </div>
-          <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">
-            <MobileTopNavItem to="/kom-i-gang">Kom i Gang</MobileTopNavItem>
-            <MobileTopNavItem to="/identitet">Identitet</MobileTopNavItem>
-            <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
-            <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
-            <MobileTopNavItem to="/universell-utforming">
-              Universell utforming
-            </MobileTopNavItem>
-          </div>
-        </div>
-      </Element>
-    </>
+    <nav
+      className={classNames('mobile-topnav', {
+        'eds-contrast':
+          typeof window !== 'undefined' && window.location.pathname === '/',
+      })}
+      {...rest}
+    >
+      <div className="mobile-topnav__menu">
+        <Link to="/" className="mobile-topnav__logo">
+          <img
+            src={colorMode === 'dark' || isContrast ? logoDark : logo}
+            alt="Entur logo – Linje starside"
+          />
+        </Link>
+        <Search />
+        <Tooltip content="Entur Linje på GitHub">
+          <IconButton
+            className="top-navigation__github"
+            aria-label="Entur Linje på Github"
+            as="a"
+            href="https://github.com/entur/design-system"
+          >
+            <GithubIcon aria-hidden />
+          </IconButton>
+        </Tooltip>
+        <SettingsPanel />
+      </div>
+      <div className="mobile-topnav__links mobile-topnav__links__scroll-gradient">
+        <MobileTopNavItem to="/kom-i-gang">Kom i Gang</MobileTopNavItem>
+        <MobileTopNavItem to="/identitet">Identitet</MobileTopNavItem>
+        <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
+        <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
+        <MobileTopNavItem to="/universell-utforming">
+          Universell utforming
+        </MobileTopNavItem>
+      </div>
+    </nav>
   );
 };
 export default MobileTopNavigation;

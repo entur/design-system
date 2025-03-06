@@ -1,88 +1,235 @@
+@use "sass:map";
+@use "../styles/variables.scss" as variables;
 @use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 
-.content-margin {
-  max-width: 1328px;
-  padding: 0 1.5rem;
+.frontpage {
+  $self: &;
+  // This variable is overridden using javascript in ./index.tsx
+  --background-height: 200rem;
+  $background-width: 400rem;
+  $parallax-translate-x: -40rem;
+  --parallax-translate-y: -49rem;
+  $top-parallax-transform: translateZ(-4px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(1.8);
+  $bottom-parallax-transform: translateZ(-5px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(2);
+  $disabled-parallax-transform: translateX(-110rem) translateY(-55rem) scale(1) !important;
 
-  @include breakpoint.for-desktop {
-    padding: 0 1rem;
-    margin: 0 auto;
+  display: flex;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+  background-color: var(--basecolors-frame-contrast);
+  transform-style: preserve-3d;
+
+  // This creates the perspective that allow the parallax effect to work.
+  // 10px is arbitrary, the important thing is that every z-value is relative to this starting value
+  perspective: 5px;
+  perspective-origin: top;
+
+  @media (prefers-reduced-motion) {
+    perspective: none;
+    transform-style: none;
   }
-}
+  @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+    --parallax-translate-y: -15rem;
+  }
 
-.front-page {
-  &__desktop {
-    display: none;
-
-    @include breakpoint.for-desktop {
+  &__background {
+    &__lines,
+    &__topographic-top,
+    &__topographic-bottom {
       display: block;
+      height: var(--background-height);
+      width: $background-width;
+      position: absolute;
+      top: -100%;
+      top: 0;
+      left: 50vw;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      @media (prefers-reduced-motion) {
+        transform: $disabled-parallax-transform;
+      }
+    }
+    &__lines {
+      transform: $top-parallax-transform;
+      transition-delay: 1s;
+
+      .animated {
+        transition: filter 0.3s cubic-bezier(0.17, 0.89, 0, -1.23), stroke 0.3s cubic-bezier(0.17, 0.89, 0, -1.23);
+      }
+
+      #{ $self }__background--loaded & {
+        opacity: 0.1;
+      }
+    }
+    &__topographic-top {
+      transform: $bottom-parallax-transform;
+      transition-delay: 0.66s;
+
+      #{ $self }__background--loaded & {
+        opacity: 0.5;
+      }
+    }
+    &__topographic-bottom {
+      transform: $bottom-parallax-transform;
+      transition-delay: 0.33s;
+
+      #{ $self }__background--loaded & {
+        opacity: 0.35;
+      }
+    }
+    &__animation {
+      height: var(--background-height);
+      width: $background-width;
+      position: absolute;
+      top: 0;
+      left: 50vw;
+      transform: $top-parallax-transform;
+
+      &__traveller {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        position: relative;
+        top: 64.7rem;
+        left: 26.5rem;
+
+        background: var(--basecolors-shape-walk-contrast);
+        border: solid 2px var(--basecolors-stroke-contrast);
+        opacity: 0;
+
+        offset-distance: 0%;
+
+        @media (prefers-reduced-motion) {
+          animation: none !important;
+          display: none !important;
+        }
+
+        #{ $self }__background--loaded & {
+          animation: move 40s infinite ease-in-out;
+          animation-delay: 1.5s;
+          transition: opacity 1s ease-in;
+        }
+
+        &.first {
+          offset-path: path(
+            'M41.3,16.1h294.2c17.7,0,32,14.3,32,32v181.8c0,17.7,14.3,32,32,32l965.4-2c12.8,0,25,5.1,34,14.1l67.8,67.9c8.6,6.4,19.2,14,32.4,14h508.5c31.8,0,32,27.7,32,32v704.4'
+          );
+        }
+        &.second {
+          offset-path: path(
+            'M 592.6 279.7 v 233.8 c 0 17.7 14.3 32 32 32 h 221.4 l 51.9 1 h 215.4 c 17.7 0 32 14.3 32 32 v 182.8 c 0 17.7 14.3 32 32 32 h 834.9 l 59.6 0.5 h 759'
+          );
+          animation-direction: reverse;
+          animation-delay: 20s;
+        }
+      }
+    }
+    &__lines,
+    &__topographic-top,
+    &__topographic-bottom,
+    &__animation {
+      @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+        --background-height: 1550px;
+      }
+      @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+        --background-height: 3000px;
+      }
     }
   }
-  &__mobile {
-    display: block;
 
-    @include breakpoint.for-desktop {
-      display: none;
+  &__main {
+    flex: 1;
+    display: grid;
+    position: relative;
+    gap: eds.$space-default;
+    grid-template-columns: variables.$full-width-grid;
+    padding-top: variables.$navbar-height;
+
+    &__hero {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      height: fit-content;
+
+      &__content {
+        grid-column: 2 / -2;
+        display: grid;
+        grid-template-columns: subgrid;
+        height: fit-content;
+        padding-block: eds.$space-extra-large5;
+        row-gap: eds.$space-default;
+
+        &__main-heading {
+          grid-column: span 12;
+          display: flex;
+          flex-direction: column;
+          font-size: calc(eds.$font-sizes-extra-large5 * 2);
+
+          @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+            gap: eds.$space-default;
+            margin-top: eds.$space-extra-large5;
+            margin-bottom: eds.$space-extra-large;
+          }
+
+          &__end {
+            display: block;
+            position: relative;
+            top: 0.5rem;
+            font-size: eds.$font-sizes-extra-large5;
+            color: var(--basecolors-text-highlight);
+          }
+        }
+        &__secondary-heading {
+          grid-column: span 12;
+          margin-block-start: eds.$space-extra-large9;
+        }
+        &__navigation-cards {
+          &__card {
+            grid-column: span 4;
+
+            @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+              grid-column: span 6;
+            }
+            @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+              grid-column: span 12;
+            }
+          }
+        }
+      }
     }
-  }
-}
+    &__section {
+      grid-column: 1 / -1;
+      position: relative;
+      height: 100%;
+      display: grid;
+      grid-template-columns: subgrid;
+      align-content: start;
+      row-gap: eds.$space-default;
+      padding-block: eds.$space-extra-large5;
+      margin-top: eds.$space-extra-large5;
 
-.front-page__top {
-  margin-top: 7rem;
+      background-color: var(--section-color);
 
-  @include breakpoint.for-desktop {
-    padding-top: 8rem;
-    margin-top: 0;
-    padding-bottom: 3rem;
-  }
-}
+      > * {
+        grid-column: 2 / -2;
+        width: fit-content;
+      }
 
-.front-page__top-image {
-  position: absolute;
-  top: 4rem;
-  right: 0rem;
-  display: none;
+      h1,
+      h2,
+      h3,
+      p {
+        grid-column: 2 / span 6;
 
-  @include breakpoint.for-desktop {
-    width: 51%;
-    display: block;
-  }
-  @include breakpoint.for-large-desktop {
-    width: 60%;
-  }
-}
-
-.front-page__blue-cards {
-  background: var(--basecolors-frame-tint);
-  padding-bottom: 3rem;
-
-  @include breakpoint.for-desktop {
-    padding-bottom: 7.5rem;
-  }
-}
-
-.front-page__second-intro {
-  padding-top: 2rem;
-  margin-bottom: 2rem;
-  text-align: left;
-
-  @include breakpoint.for-desktop {
-    text-align: center;
-    padding-top: 6.5rem;
-    margin-bottom: 4rem;
-  }
-}
-
-.front-page__last-section {
-  max-width: 784px;
-  margin: 0 auto;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
-
-  @include breakpoint.for-desktop {
-    margin-top: 8.5rem;
-    margin-bottom: 12.5rem;
+        @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+          grid-column: 2 / span 12;
+        }
+      }
+    }
   }
 }
 
@@ -90,25 +237,19 @@
 .shifting-header {
   position: relative;
   height: 5.2rem;
-  margin-top: -0.5rem;
   overflow: hidden;
-  .eds-paragraph {
-    font-size: tokens.$font-sizes-extra-large5;
-    margin: 0 0 1rem;
-    line-height: tokens.$line-heights-extra-large7;
+  width: 100%;
+  animation: scrollInOut 5s ease-out infinite;
+
+  @media (prefers-reduced-motion) {
+    animation: fadeInOut 5s ease-out infinite;
   }
 }
 
-.fade-in-out {
-  animation: fadeInOut 5s ease-out infinite;
-  position: absolute;
-  width: 100%;
-}
-
-@keyframes fadeInOut {
+@keyframes scrollInOut {
   0% {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-20px);
   }
   10% {
     opacity: 1;
@@ -120,6 +261,33 @@
   }
   100% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
+  }
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move {
+  5% {
+    opacity: 0.4;
+  }
+  99% {
+    opacity: 0.4;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
   }
 }

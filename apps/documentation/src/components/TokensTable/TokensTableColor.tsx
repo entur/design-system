@@ -1,14 +1,17 @@
 import React from 'react';
-import * as allTokens from '@entur/tokens';
-import { flatten } from '../../utils/flatten';
+import classNames from 'classnames';
 import { GridContainer } from '@entur/grid';
+import * as allTokens from '@entur/tokens';
+import { CodeText } from '@entur/typography';
 import { useSettings } from '@providers/SettingsContext';
+
+import { flatten } from '../../utils/flatten';
+
 import SemanticTokenList from './SemanticTokens';
 import PrimitiveTokenList from './PrimitiveTokens';
 import DataTokenList from './DataTokens';
 import TransportTokenList from './TransportTokens';
 import BaseTokenList from './BaseTokens';
-import { CodeText } from '@entur/typography';
 import { AllTokensTableProps, FlattenedTokens } from './types';
 
 import './TokenTable.scss';
@@ -50,7 +53,7 @@ export const TokensTableColor: React.FC<AllTokensTableProps> = ({
   const PrimitiveExample: React.FC<ExampleProps> = ({ value, className }) => (
     <div
       aria-hidden="true"
-      className={`token-content__example ${className}`}
+      className={classNames('token-content__example', className)}
       style={{
         backgroundColor: value,
       }}

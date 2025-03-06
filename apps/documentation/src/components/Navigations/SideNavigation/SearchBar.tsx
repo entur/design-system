@@ -1,8 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
+import { useLocation } from '@reach/router';
+
 import { TextField } from '@entur/form';
 import { SearchIcon } from '@entur/icons';
-import { useLocation } from '@reach/router';
-import classNames from 'classnames';
+import { Badge } from '@entur/layout';
 
 import './SearchBar.scss';
 
@@ -37,7 +39,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       const searchHasFocus = inputRef.current === document.activeElement;
       const playgroundHasFocus =
         document.activeElement?.parentElement?.className.includes(
-          'playground__editor',
+          'playground__expandable__editor',
         );
       switch (e.key) {
         case '/':
@@ -69,7 +71,21 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <TextField
         key={location.pathname}
         prepend={<SearchIcon aria-hidden="true" />}
-        label="Søk …"
+        append={
+          <Badge
+            as="kbd"
+            variant="neutral"
+            type="status"
+            style={{
+              width: '2ch',
+              minWidth: 'unset',
+              paddingInline: '0.25rem',
+            }}
+          >
+            /
+          </Badge>
+        }
+        label="Søk i meny"
         value={searchText}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           onSearchTextChange(e.target.value);
