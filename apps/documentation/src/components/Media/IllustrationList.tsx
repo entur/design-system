@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import { SegmentedChoice, SegmentedControl, Switch } from '@entur/form';
 import { base } from '@entur/tokens';
 
-import { ImageDisplay } from '@components/Media/ImageDisplay';
-import { Theme, useSettings } from '@providers/SettingsContext';
-
 import {
   IllustrationListItem,
   useGetIllustrations,
 } from './useGetIllustrations';
+
+import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { Theme, useSettings } from '@providers/SettingsContext';
 
 import './IllustrationList.scss';
 
