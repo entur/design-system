@@ -1,6 +1,15 @@
+@use "sass:map";
 @use '~@entur/tokens/dist/styles.scss' as tokens;
+
+@use "../../../styles/variables.scss" as variables;
 
 .searchbar-wrapper {
   display: block;
   padding: tokens.$space-large tokens.$space-extra-large2 0 tokens.$space-extra-large2;
+
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    .eds-form-control__append {
+      display: none;
+    }
+  }
 }

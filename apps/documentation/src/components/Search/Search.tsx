@@ -66,11 +66,15 @@ export const Search = () => {
         e.preventDefault();
         setOpen(open => !open);
       }
+      if (open && e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+      }
     };
 
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, []);
+  }, [open]);
 
   function handleDismiss() {
     setOpen(false);
@@ -111,19 +115,14 @@ export const Search = () => {
       >
         <SearchIcon aria-hidden="ture" /> Søk …
         <Badge as="kbd" variant="neutral" type="status">
-          <kbd>
-            <span
-              style={{
-                fontSize: '1.25em',
-                position: 'relative',
-                top: '0.032rem',
-                marginRight: '0.25rem',
-              }}
-            >
-              ⌘
-            </span>
-            k
-          </kbd>
+          <span
+            style={{
+              marginRight: '0.25rem',
+            }}
+          >
+            ⌘
+          </span>
+          k
         </Badge>
       </SecondaryButton>
       <Modal
