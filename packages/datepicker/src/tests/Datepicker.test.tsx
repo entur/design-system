@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   CalendarDate,
+  CalendarDateTime,
   ZonedDateTime,
   parseAbsolute,
   parseDate,
@@ -496,6 +497,41 @@ test('gives errors correctly using minDate as CalendarDateTime', () => {
 
   expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
   expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+});
+
+test.only('shows selected granularity', () => {
+  const spy = jest.fn();
+  const currentDate = new CalendarDateTime(1997, 7, 10, 5, 44, 22, 4567);
+  const { getByRole, rerender } = render(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+      granularity="second"
+    />,
+  );
+
+  // Both year and second is shown in picker
+  expect(getByRole('spinbutton', { name: 'year, test' })).toHaveTextContent(
+    '1997',
+  );
+  expect(getByRole('spinbutton', { name: 'second, test' })).toHaveTextContent(
+    '22',
+  );
+
+  rerender(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+    />,
+  );
+
+  expect(
+    getByRole('spinbutton', { name: 'second, test' }),
+  ).not.toBeInTheDocument();
 });
 
 test('Timezones should always be UTC', () => {

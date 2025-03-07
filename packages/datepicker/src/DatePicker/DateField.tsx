@@ -97,7 +97,7 @@ export const DateField = <DateType extends DateValue>({
   locale: customLocale,
   showTimeZone,
   showTime,
-  granularity = 'day',
+  granularity = showTime ? 'minute' : 'day',
   disabled,
   isDisabled,
   variant,
@@ -126,7 +126,7 @@ export const DateField = <DateType extends DateValue>({
     value: selectedDate,
     onChange,
     hideTimeZone: !showTimeZone,
-    granularity: showTime ? 'minute' : granularity,
+    granularity,
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
     maxValue:
@@ -185,8 +185,8 @@ export const DateField = <DateType extends DateValue>({
           {...fieldProps}
           style={{ display: 'contents' }}
         >
-          {state.segments.map((segment, i) => (
-            <FieldSegment segment={segment} state={state} key={i} />
+          {state.segments.map(segment => (
+            <FieldSegment segment={segment} state={state} key={segment.type} />
           ))}
         </span>
       </BaseFormControl>

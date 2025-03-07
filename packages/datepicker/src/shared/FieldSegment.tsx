@@ -21,7 +21,8 @@ export const FieldSegment = ({ segment, state, ...rest }: TimeSegmentProps) => {
       ref={ref}
       className={classNames('eds-date-and-time-field__segment', {
         'eds-date-and-time-field__segment--placeholder': segment.isPlaceholder,
-        'eds-date-and-time-field__segment--dot-separator': segment.text === '.',
+        'eds-date-and-time-field__segment--dot-separator':
+          segment.text === '.' || segment.text === ':',
       })}
       tabIndex={state.isDisabled ? -1 : segmentProps.tabIndex}
       {...rest}

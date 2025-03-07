@@ -22,3 +22,4 @@ export * from '@entur/travel';
 export * from '@entur/typography';
 
 export { TestBench } from './TestBench';
+export { now, today } from '@internationalized/date';
