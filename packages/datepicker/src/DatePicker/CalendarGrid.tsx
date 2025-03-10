@@ -74,8 +74,8 @@ export const CalendarGrid = ({
                 {weekNumberHeader}
               </th>
             )}
-            {weekDaysMapped().map((day, index) => (
-              <th key={index}>{day}</th>
+            {weekDaysMapped().map(day => (
+              <th key={day}>{day}</th>
             ))}
           </tr>
         </thead>
@@ -99,7 +99,7 @@ export const CalendarGrid = ({
                   .map((date, i) =>
                     date ? (
                       <CalendarCell
-                        key={i}
+                        key={`${date.month}.${date.day}`}
                         state={state}
                         date={date}
                         aria-describedby={calendarGridId + 'description'}

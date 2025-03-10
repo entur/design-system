@@ -9,8 +9,16 @@
   }
 
   // Overrides for default base form control
-  .eds-form-control-wrapper {
-    padding: 0rem;
+  .eds-form-control {
+    &__prepend {
+      margin-right: 0.25rem;
+    }
+    &__append {
+      margin-left: 0.25rem;
+    }
+    &-wrapper {
+      padding: 0rem;
+    }
   }
 
   &__arrowbutton {
