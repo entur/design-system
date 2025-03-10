@@ -282,6 +282,7 @@ async function createSvgrConfig({
     height: '{(props.height || props.size || "1em")}',
     className,
     color,
+    inline: '{undefined}',
   };
 
   return config;
