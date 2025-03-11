@@ -40,6 +40,11 @@ export type DateFieldProps<DateType extends DateValue> = {
    * @default false
    */
   showTimeZone?: boolean;
+  /** Velg minste enhet som skal vises i datovelgeren. Hvis du vil vise tid vil "minute"
+   * viser minutt og ikke sekund, mens "second" viser sekunder også.
+   * @default "day"
+   */
+  granularity?: AriaDatePickerProps<DateType>['granularity'];
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
@@ -87,6 +92,7 @@ export type DateFieldProps<DateType extends DateValue> = {
   | 'defaultValue'
   | 'minValue'
   | 'maxValue'
+  | 'granularity'
 > &
   Omit<Partial<BaseFormControlProps>, 'children'>;
 
@@ -97,7 +103,7 @@ export const DateField = <DateType extends DateValue>({
   locale: customLocale,
   showTimeZone,
   showTime,
-  granularity = 'day',
+  granularity,
   disabled,
   isDisabled,
   variant,
@@ -126,7 +132,7 @@ export const DateField = <DateType extends DateValue>({
     value: selectedDate,
     onChange,
     hideTimeZone: !showTimeZone,
-    granularity: showTime ? 'minute' : 'day',
+    granularity: granularity ?? showTime ? 'minute' : 'day',
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
     maxValue:

@@ -185,7 +185,7 @@ export const DatePicker = <DateType extends DateValue>({
   ariaLabelForDate,
   append,
   prepend,
-  granularity = 'day',
+  granularity,
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -223,7 +223,7 @@ export const DatePicker = <DateType extends DateValue>({
         : undefined,
     value: selectedDate,
     onChange: handleOnChange,
-    granularity: showTime ? 'minute' : undefined,
+    granularity: granularity ?? showTime ? 'minute' : 'day',
     isDisabled: disabled,
   });
   const {
