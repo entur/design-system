@@ -97,7 +97,7 @@ export const DateField = <DateType extends DateValue>({
   locale: customLocale,
   showTimeZone,
   showTime,
-  granularity = showTime ? 'minute' : 'day',
+  granularity = 'day',
   disabled,
   isDisabled,
   variant,
@@ -126,7 +126,7 @@ export const DateField = <DateType extends DateValue>({
     value: selectedDate,
     onChange,
     hideTimeZone: !showTimeZone,
-    granularity,
+    granularity: showTime ? 'minute' : 'day',
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
     maxValue:

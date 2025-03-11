@@ -59,6 +59,11 @@ export type DatePickerProps<DateType extends DateValue> = {
    * @default false
    */
   showTimeZone?: boolean;
+  /** Velg minste enhet som skal vises i datovelgeren. Hvis du vil vise tid vil "minute"
+   * viser minutt og ikke sekund, mens "second" viser sekunder også.
+   * @default "day"
+   */
+  granularity?: AriaDatePickerProps<DateType>['granularity'];
   /** Viser tidspunkt i tillegg til dato.
    * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
    */
@@ -150,6 +155,7 @@ export type DatePickerProps<DateType extends DateValue> = {
   | 'placeholder'
   | 'minValue'
   | 'maxValue'
+  | 'granularity'
 > &
   Omit<Partial<BaseFormControlProps>, 'children'>;
 
@@ -179,7 +185,7 @@ export const DatePicker = <DateType extends DateValue>({
   ariaLabelForDate,
   append,
   prepend,
-  granularity = showTime ? 'minute' : undefined,
+  granularity = 'day',
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -217,7 +223,7 @@ export const DatePicker = <DateType extends DateValue>({
         : undefined,
     value: selectedDate,
     onChange: handleOnChange,
-    granularity,
+    granularity: showTime ? 'minute' : undefined,
     isDisabled: disabled,
   });
   const {
