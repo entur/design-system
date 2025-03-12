@@ -23,8 +23,9 @@ export type NavigationCardOwnProps = {
   compact?: boolean;
   /** Beskrivelse under tittel, om ikke "compact" er valgt */
   children?: React.ReactNode;
-  /** @deprecated eksternlenke ikon er ikke lenger støttet i NavigationCard  */
-  externalLink?: boolean;
+  /** Legger til et ikon for å symbolisere at kortet har en ekstern lenke
+   * @default false
+   */
 };
 
 export type NavigationCardProps<
@@ -51,7 +52,6 @@ export const NavigationCard = <
   });
   return (
     <BaseCard as={Element} className={classList} {...rest}>
-      <div className="eds-navigation-card__highlight"></div>
       <div className="eds-navigation-card-header">
         <div className="eds-navigation-card-header__content">
           {titleIcon && (

@@ -1,48 +1,61 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 @use '@entur/utils/dist/breakpoints.scss' as breakpoint;
-@use '@entur/tokens/dist/primitive.css' as *;
 
-.eds-navigation-card {
+.eds-media-card {
   display: flex;
-  flex-direction: column;
-  padding: t.$space-extra-large;
+  overflow: hidden;
   position: relative;
+  align-items: stretch;
+  flex-direction: column;
+  width: fit-content;
+  gap: t.$space-default;
+  padding: t.$space-large t.$space-extra-large t.$space-extra-large t.$space-extra-large;
   transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
 
-  &__highlight {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 5px;
-    width: 4rem;
-    background-color: var(--components-layout-card-standard-divide);
-    transition: width 0.3s ease-in-out;
-    border-top-left-radius: 0.2rem;
-    border-bottom-right-radius: 4px;
+  @include breakpoint.for-desktop {
+    &:not(.eds-media-card--vertical) {
+      flex-direction: row;
+    }
   }
 
-  &-header {
+  &__media {
+    max-height: 15rem;
     display: flex;
-    flex-direction: column;
-    margin-bottom: t.$space-default;
+    justify-content: space-around;
 
-    &__content {
-      display: flex;
-      align-items: center;
+    img {
+      width: 100%;
+      object-fit: cover;
     }
 
-    &__title {
+    @include breakpoint.for-desktop {
+      &:not(.eds-media-card--vertical) {
+        align-self: stretch;
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: t.$space-small;
+
+    &-title {
       font-size: t.$font-sizes-extra-large2;
       line-height: t.$line-heights-extra-large3;
       font-weight: t.$font-weights-heading;
+      & * {
+        margin: 0;
+        margin-top: t.$space-default;
+      }
     }
 
-    &__title-icon {
+    &-title-icon {
       font-size: 1.53125rem;
       margin-right: t.$space-small;
     }
 
-    &__highlight {
+    &-highlight {
       width: t.$space-extra-large;
       height: 0.1875rem;
       background: var(--components-layout-card-standard-divide);
@@ -50,6 +63,53 @@
       transition: width t.$timings-medium ease-in-out;
     }
   }
+  &__content {
+    p {
+      margin-bottom: t.$space-default;
+
+      @include breakpoint.for-desktop {
+        margin-bottom: t.$space-large;
+      }
+    }
+  }
+
+  // Modifiers
+  &--small {
+    gap: t.$space-small;
+    padding: t.$space-medium t.$space-large t.$space-large t.$space-large;
+
+    .eds-media-card__content p {
+      margin-bottom: t.$space-default;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    align-items: center;
+    //min-width: 15.75rem;
+    max-width: 24.5rem;
+
+    .eds-media-card__media {
+      align-self: center;
+    }
+  }
+
+  &--illustration {
+    .eds-media-card__media img {
+      width: 12.5rem;
+      height: 12.5rem;
+    }
+  }
+
+  &--illustration.eds-media-card--small .eds-media-card__media img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+// States only on a and button elements
+a.eds-media-card,
+button.eds-media-card {
   &:hover {
     background-color: var(--components-layout-card-standard-fill-hoveractive);
     box-shadow: 0.625rem 0.625rem 1rem var(--components-layout-card-standard-shadowlayer3),
@@ -59,7 +119,7 @@
     &:before {
       opacity: 1;
     }
-    .eds-navigation-card-header__highlight {
+    .eds-media-card__header-highlight {
       width: 5rem;
     }
     .eds-contrast & {
@@ -89,40 +149,5 @@
     .eds-contrast & {
       outline-color: var(--basecolors-stroke-focus-contrast);
     }
-  }
-  &__arrow-icon {
-    margin-top: t.$space-extra-small;
-  }
-  &--compact {
-    padding: t.$space-large;
-
-    .eds-navigation-card-header {
-      margin-bottom: 0;
-    }
-  }
-  .eds-paragraph {
-    margin-bottom: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .eds-navigation-card {
-    transition: none;
-
-    &-header__highlight {
-      transition: none;
-    }
-
-    &:hover {
-      transform: none;
-      box-shadow: none;
-
-      .eds-navigation-card-header__highlight {
-        width: t.$space-extra-large;
-      }
-    }
-  }
-  .eds-paragraph {
-    margin-bottom: 0;
   }
 }

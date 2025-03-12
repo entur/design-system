@@ -5,9 +5,9 @@ import './index.scss';
 warnAboutMissingStyles('layout', 'typography');
 
 export * from './Contrast';
-export * from './NavigationCard';
-export * from './BaseCard';
-export * from './MediaCard';
+export * from './Card/NavigationCard';
+export * from './Card/BaseCard';
+export * from './Card/MediaCard';
 export * from './Badge/Badge';
 export * from './Badge/BulletBadge';
 export * from './Badge/NotificationBadge';
