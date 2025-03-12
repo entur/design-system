@@ -1,6 +1,9 @@
 import React, { ReactNode, useRef } from 'react';
 
-import { useDateFieldState } from '@react-stately/datepicker';
+import {
+  DateFieldStateOptions,
+  useDateFieldState,
+} from '@react-stately/datepicker';
 import { useDateField } from '@react-aria/datepicker';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
 import classNames from 'classnames';
@@ -28,9 +31,9 @@ const error = 'error';
 export type DateFieldProps<DateType extends DateValue> = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
   selectedDate: DateType | null;
-  /** Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format */
+  /** Kalles når dato endres. Tid i '@internationalized/date'-pakkens format */
   onChange: (value: MappedDateValue<DateType> | null) => void;
-  /** Label til TimePicker */
+  /** Ledetekst til DateField */
   label: string;
   /** BCP47-språkkoden til locale-en du ønsker å bruke.
    * @default Brukerenhetens selvvalgte locale
@@ -45,6 +48,9 @@ export type DateFieldProps<DateType extends DateValue> = {
    * @default "day"
    */
   granularity?: AriaDatePickerProps<DateType>['granularity'];
+  /** Viser tidspunkt i tillegg til dato.
+   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
+   */
   showTime?: boolean;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
@@ -60,6 +66,9 @@ export type DateFieldProps<DateType extends DateValue> = {
    * Gyldig til og med den tiden som legges inn som maxDate.
    * Dato uten tid vil være gyldig hele maxDate-dagen */
   maxDate?: DateValue;
+  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
+   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
+  isDateUnavailable?: (date: DateValue) => boolean;
   /** Varselmelding, som vil komme under TimePicker */
   feedback?: string;
   /** Valideringsvariant*/
@@ -81,20 +90,7 @@ export type DateFieldProps<DateType extends DateValue> = {
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
-} & Omit<
-  SpectrumDateFieldProps<DateValue>,
-  | 'value'
-  | 'onChange'
-  | 'label'
-  | 'hideTimeZone'
-  | 'placeholder'
-  | 'placeholderValue'
-  | 'defaultValue'
-  | 'minValue'
-  | 'maxValue'
-  | 'granularity'
-> &
-  Omit<Partial<BaseFormControlProps>, 'children'>;
+};
 
 export const DateField = <DateType extends DateValue>({
   selectedDate,
@@ -125,7 +121,7 @@ export const DateField = <DateType extends DateValue>({
 }: DateFieldProps<DateType>) => {
   const { locale } = useLocale();
 
-  const state = useDateFieldState({
+  const _props: DateFieldStateOptions<DateType> = {
     ...rest,
     locale: customLocale ?? locale,
     createCalendar,
@@ -143,16 +139,16 @@ export const DateField = <DateType extends DateValue>({
         : undefined,
     isDisabled: isDisabled || disabled,
     shouldForceLeadingZeros: true,
-  });
+  };
+
+  const state = useDateFieldState(_props);
 
   const dateFieldRef = useRef(null);
-  const { labelProps, fieldProps } = useDateField(
-    { ...parentFieldProps, ...rest, label: label },
-    state,
-    dateFieldRef,
-  );
+  const { labelProps, fieldProps } = useDateField(_props, state, dateFieldRef);
 
   const id = useRandomId('datefield');
+
+  console.log(label, 'gran field', granularity, state.granularity);
 
   return (
     <ConditionalWrapper

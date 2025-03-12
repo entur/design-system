@@ -85,13 +85,12 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   AriaTimeFieldProps<TimeType>,
   | 'value'
   | 'onChange'
-  | 'label'
   | 'hideTimeZone'
   | 'placeholder'
   | 'minValue'
   | 'maxValue'
 > &
-  Partial<BaseFormControlProps>;
+  Omit<Partial<BaseFormControlProps>, 'children' | 'label'>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,

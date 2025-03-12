@@ -1,6 +1,9 @@
 import React, { ReactNode, useRef } from 'react';
 
-import { useDatePickerState } from '@react-stately/datepicker';
+import {
+  DatePickerStateOptions,
+  useDatePickerState,
+} from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
 import { I18nProvider } from '@react-aria/i18n';
 import {
@@ -32,7 +35,7 @@ import { Modal } from '@entur/modal';
 import type { BaseFormControlProps } from '@entur/form';
 import type { VariantType } from '@entur/utils';
 
-import { DateField } from './DateField';
+import { DateField, DateFieldProps } from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
 import { convertValueToType, lastMillisecondOfDay } from '../shared/utils';
@@ -44,60 +47,10 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type DatePickerProps<DateType extends DateValue> = {
-  /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
-  selectedDate: DateType | null;
-  /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
-  onChange: (value: MappedDateValue<DateType> | null) => void;
-  /** Ledetekst for inputfeltet til DatePicker */
-  label: string;
-  /** BCP47-språkkoden til locale-en du ønsker å bruke.
-   * @default Brukerenhetens selvvalgte locale
-   */
-  locale?: string;
-  /** Viser den gjeldende tidssonen hvis en er valgt (krever at tid også vises)
-   * @default false
-   */
-  showTimeZone?: boolean;
-  /** Velg minste enhet som skal vises i datovelgeren. Hvis du vil vise tid vil "minute"
-   * viser minutt og ikke sekund, mens "second" viser sekunder også.
-   * @default "day"
-   */
-  granularity?: AriaDatePickerProps<DateType>['granularity'];
-  /** Viser tidspunkt i tillegg til dato.
-   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
-   */
-  showTime?: boolean;
-  /** Tidligste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
-   *
-   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-   * Gyldig fra og med den tiden som legges inn som minDate.
-   * Dato uten tid vil være gyldig hele minDate-dagen */
-  minDate?: DateValue;
-  /** Seneste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
-   *
-   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-   * Gyldig til og med den tiden som legges inn som maxDate.
-   * Dato uten tid vil være gyldig hele maxDate-dagen */
-  maxDate?: DateValue;
-  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
-   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
-  isDateUnavailable?: (date: DateValue) => boolean;
-  /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
-  feedback?: string;
-  /** Valideringsvariant*/
-  variant?: VariantType | typeof error | typeof info;
-  /** Varselmelding som forteller om ugyldig dato
-   * @default "Ugyldig dato"
-   */
-  validationFeedback?: string;
-  /** Valideringsvariant for melding om ugyldig dato
-   * @default "negative"
-   */
-  validationVariant?: VariantType | typeof error | typeof info;
-  disabled?: boolean;
+export type DatePickerProps<DateType extends DateValue> = Omit<
+  DateFieldProps<DateType>,
+  'labelProps' | 'fieldProps' | 'groupProps' | 'dateFieldRef'
+> & {
   /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
    * kan endres med prop-en 'weekNumberHeader'
    * @default false */
@@ -143,25 +96,12 @@ export type DatePickerProps<DateType extends DateValue> = {
    *  @example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''
    */
   ariaLabelForDate?: (date: CalendarDate) => string;
-  /** Ekstra klassenavn */
-  className?: string;
-  style?: React.CSSProperties;
-} & Omit<
-  AriaDatePickerProps<DateType>,
-  | 'value'
-  | 'onChange'
-  | 'label'
-  | 'hideTimeZone'
-  | 'placeholder'
-  | 'minValue'
-  | 'maxValue'
-  | 'granularity'
-> &
-  Omit<Partial<BaseFormControlProps>, 'children'>;
+};
 
 export const DatePicker = <DateType extends DateValue>({
   selectedDate,
   onChange,
+  label,
   locale,
   disabled,
   showTime,
@@ -211,7 +151,7 @@ export const DatePicker = <DateType extends DateValue>({
     onChange(value);
   };
 
-  const state = useDatePickerState({
+  const _props: DatePickerStateOptions<DateType> = {
     ...rest,
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
@@ -225,7 +165,9 @@ export const DatePicker = <DateType extends DateValue>({
     onChange: handleOnChange,
     granularity: granularity ?? showTime ? 'minute' : 'day',
     isDisabled: disabled,
-  });
+  };
+
+  const state = useDatePickerState(_props);
   const {
     groupProps,
     labelProps,
@@ -233,7 +175,7 @@ export const DatePicker = <DateType extends DateValue>({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker({ ...rest }, state, datePickerRef);
+  } = useDatePicker(_props, state, datePickerRef);
 
   // calculations for floating-UI popover position
   const { refs, floatingStyles, update } = useFloating({
@@ -300,6 +242,8 @@ export const DatePicker = <DateType extends DateValue>({
     </Modal>
   );
 
+  console.log(label, 'gran field', granularity, state.granularity);
+
   return (
     <ConditionalWrapper
       condition={locale !== undefined}
@@ -333,7 +277,7 @@ export const DatePicker = <DateType extends DateValue>({
         feedback={feedback}
         fieldProps={fieldProps}
         groupProps={groupProps}
-        label={rest.label}
+        label={label}
         labelProps={labelProps}
         labelTooltip={labelTooltip}
         maxDate={maxDate}
@@ -346,11 +290,12 @@ export const DatePicker = <DateType extends DateValue>({
         selectedDate={selectedDate}
         showTime={showTime}
         showTimeZone={showTimeZone}
-        granularity={granularity}
+        granularity={granularity ? state.granularity : undefined}
         style={style}
         validationFeedback={validationFeedback}
         validationVariant={validationVariant}
         variant={variant}
+        {...fieldProps}
       />
       {isModal ? modalCalendar : popoverCalendar}
     </ConditionalWrapper>
