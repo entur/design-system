@@ -2,24 +2,41 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
-import { useCalendar } from '@react-aria/calendar';
-import { useCalendarState } from '@react-stately/calendar';
+import { AriaCalendarProps, useCalendar } from '@react-aria/calendar';
+import {
+  CalendarStateOptions,
+  useCalendarState,
+} from '@react-stately/calendar';
 import { CalendarDate, DateValue } from '@internationalized/date';
 import { MappedDateValue } from '@react-types/datepicker';
 
 import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 
-import { ariaLabelIfNorwegian, createCalendar } from '../shared/utils';
+import {
+  ariaLabelIfNorwegian,
+  createCalendar,
+  handleOnChange,
+} from '../shared/utils';
 import { CalendarButton } from '../shared/CalendarButton';
 import { CalendarGrid } from './CalendarGrid';
+import { DateFieldProps } from './DateField';
 
 import './Calendar.scss';
 
-export type CalendarProps<DateType extends DateValue> = {
+export type CalendarProps<DateType extends DateValue> = Omit<
+  AriaCalendarProps<DateType>,
+  | 'value'
+  | 'onChange'
+  | 'label'
+  | 'hideTimeZone'
+  | 'placeholder'
+  | 'placeholderValue'
+  | 'defaultValue'
+  | 'minValue'
+  | 'maxValue'
+> & {
   selectedDate: DateType | null;
-  onChange: (
-    SelectedDate: MappedDateValue<DateType> | null,
-  ) => void | React.Dispatch<React.SetStateAction<DateType | null>>;
+  onChange?: (selectedDate: MappedDateValue<DateType> | null) => void;
   navigationDescription?: string;
   style?: React.CSSProperties;
   /** Ekstra klassenavn */
@@ -63,6 +80,7 @@ export type CalendarProps<DateType extends DateValue> = {
   ariaLabelForDate?: (date: CalendarDate) => string;
   locale?: string;
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
+  forcedReturnType?: DateFieldProps<DateType>['forcedReturnType'];
 };
 
 export const Calendar = <DateType extends DateValue>({
@@ -84,6 +102,7 @@ const CalendarBase = <DateType extends DateValue>({
   maxDate,
   showWeekNumbers = false,
   weekNumberHeader = 'uke',
+  forcedReturnType,
   style,
   className,
   navigationDescription,
@@ -97,19 +116,25 @@ const CalendarBase = <DateType extends DateValue>({
 }: CalendarProps<DateType>) => {
   const { locale } = useLocale();
 
-  const allProps = {
+  const _props: CalendarStateOptions<DateType> = {
     ...rest,
     value: selectedDate,
-    onChange,
+    onChange: value =>
+      handleOnChange<DateType>({
+        value,
+        selectedDate,
+        forcedReturnType,
+        onChange,
+      }),
     locale,
     createCalendar,
     minValue: minDate,
     maxValue: maxDate,
   };
 
-  const state = useCalendarState(allProps);
+  const state = useCalendarState(_props);
   const { calendarProps, prevButtonProps, nextButtonProps, title } =
-    useCalendar(allProps, state);
+    useCalendar(_props, state);
 
   return (
     <div
@@ -142,6 +167,7 @@ const CalendarBase = <DateType extends DateValue>({
         </CalendarButton>
       </div>
       <CalendarGrid
+        {...rest}
         state={state}
         navigationDescription={navigationDescription}
         onSelectedCellClick={onSelectedCellClick}

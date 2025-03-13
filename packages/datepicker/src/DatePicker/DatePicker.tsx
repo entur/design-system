@@ -17,10 +17,6 @@ import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
 import { CalendarDate, DateValue } from '@internationalized/date';
-import type {
-  AriaDatePickerProps,
-  MappedDateValue,
-} from '@react-types/datepicker';
 
 import {
   ConditionalWrapper,
@@ -32,20 +28,12 @@ import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
-import type { BaseFormControlProps } from '@entur/form';
-import type { VariantType } from '@entur/utils';
-
 import { DateField, DateFieldProps } from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { convertValueToType, lastMillisecondOfDay } from '../shared/utils';
+import { lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
-
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const error = 'error';
 
 export type DatePickerProps<DateType extends DateValue> = Omit<
   DateFieldProps<DateType>,
@@ -71,16 +59,6 @@ export type DatePickerProps<DateType extends DateValue> = Omit<
    * @default 'Bruk piltastene til å navigere mellom datoer'
    */
   navigationDescription?: string;
-  /** Tvinger typen på onChange til den gitte typen.
-   * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-   * DatePicker alltid skal returnere f.eks ZonedDateTime.
-   *
-   * Som standard returnerer onChange DateValue basert på selectedDate,
-   * eller CalendarDate hvis selectedDate er 'null'.
-   *
-   * @default undefined
-   */
-  forcedReturnType?: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
   /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
    *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
    *  @default undefined
@@ -100,15 +78,12 @@ export type DatePickerProps<DateType extends DateValue> = Omit<
 
 export const DatePicker = <DateType extends DateValue>({
   selectedDate,
-  onChange,
-  label,
   locale,
   disabled,
   showTime,
   showTimeZone = false,
   classNameForDate,
   className,
-  style,
   variant,
   feedback,
   validationVariant,
@@ -125,7 +100,7 @@ export const DatePicker = <DateType extends DateValue>({
   ariaLabelForDate,
   append,
   prepend,
-  granularity,
+  granularity = showTime ? 'minute' : 'day',
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -133,23 +108,6 @@ export const DatePicker = <DateType extends DateValue>({
   const calendarRef = useRef<HTMLDivElement | null>(null);
 
   const { width } = useWindowDimensions();
-
-  const handleOnChange = (value: MappedDateValue<DateType> | null) => {
-    if (forcedReturnType !== undefined || !selectedDate) {
-      return onChange(
-        convertValueToType({
-          value,
-          type: forcedReturnType ?? 'ZonedDateTime',
-          timezone:
-            value !== null && 'timezone' in value
-              ? (value.timezone as string)
-              : undefined,
-        }) as MappedDateValue<DateType> | null,
-      );
-    }
-
-    onChange(value);
-  };
 
   const _props: DatePickerStateOptions<DateType> = {
     ...rest,
@@ -162,8 +120,7 @@ export const DatePicker = <DateType extends DateValue>({
         ? lastMillisecondOfDay(maxDate)
         : undefined,
     value: selectedDate,
-    onChange: handleOnChange,
-    granularity: granularity ?? showTime ? 'minute' : 'day',
+    granularity,
     isDisabled: disabled,
   };
 
@@ -200,11 +157,11 @@ export const DatePicker = <DateType extends DateValue>({
   const calendarSharedProps = {
     ...dialogProps,
     ...calendarProps,
+    onChange: calendarProps.onChange as DateFieldProps<DateType>['onChange'],
     disabled,
     navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
     selectedDate,
-    onChange: handleOnChange,
     minDate,
     maxDate,
     calendarRef,
@@ -242,8 +199,6 @@ export const DatePicker = <DateType extends DateValue>({
     </Modal>
   );
 
-  console.log(label, 'gran field', granularity, state.granularity);
-
   return (
     <ConditionalWrapper
       condition={locale !== undefined}
@@ -252,6 +207,9 @@ export const DatePicker = <DateType extends DateValue>({
       )}
     >
       <DateField
+        {...(groupProps as any)}
+        {...fieldProps}
+        {...rest}
         append={
           !disabled && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -275,14 +233,10 @@ export const DatePicker = <DateType extends DateValue>({
         })}
         disabled={disabled}
         feedback={feedback}
-        fieldProps={fieldProps}
-        groupProps={groupProps}
-        label={label}
         labelProps={labelProps}
         labelTooltip={labelTooltip}
         maxDate={maxDate}
         minDate={minDate}
-        onChange={handleOnChange}
         dateFieldRef={node => {
           refs.setReference(node);
           datePickerRef.current = node;
@@ -290,12 +244,9 @@ export const DatePicker = <DateType extends DateValue>({
         selectedDate={selectedDate}
         showTime={showTime}
         showTimeZone={showTimeZone}
-        granularity={granularity ? state.granularity : undefined}
-        style={style}
         validationFeedback={validationFeedback}
         validationVariant={validationVariant}
         variant={variant}
-        {...fieldProps}
       />
       {isModal ? modalCalendar : popoverCalendar}
     </ConditionalWrapper>

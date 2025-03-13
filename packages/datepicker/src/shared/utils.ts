@@ -15,7 +15,7 @@ import {
   startOfWeek,
   startOfYear,
 } from '@internationalized/date';
-import { TimeValue } from '@react-types/datepicker';
+import { MappedDateValue, TimeValue } from '@react-types/datepicker';
 import { Calendar, GregorianCalendar } from '@internationalized/date';
 
 const nativeDateToDateTime = (
@@ -235,4 +235,39 @@ export function getWeekNumberForDate(date: DateValue | null) {
     (thursdayOfWeek.compare(firstDayOfYearForThursday) + 1) / 7,
   );
   return weekNumber;
+}
+
+export type ForcedReturnType =
+  | 'CalendarDate'
+  | 'CalendarDateTime'
+  | 'ZonedDateTime'
+  | undefined;
+
+export function handleOnChange<DateType extends DateValue>({
+  value,
+  selectedDate,
+  forcedReturnType,
+  onChange,
+}: {
+  value: MappedDateValue<DateType> | null;
+  selectedDate: DateType | null;
+  forcedReturnType: ForcedReturnType;
+  onChange?:
+    | ((value: MappedDateValue<DateType> | null) => void)
+    | ((value: DateValue | null) => void);
+}) {
+  if (forcedReturnType !== undefined || !selectedDate) {
+    return onChange?.(
+      convertValueToType({
+        value,
+        type: forcedReturnType ?? 'ZonedDateTime',
+        timezone:
+          value !== null && 'timezone' in value
+            ? (value.timezone as string)
+            : undefined,
+      }) as MappedDateValue<typeof forcedReturnType> | null,
+    );
+  }
+
+  onChange?.(value);
 }
