@@ -157,7 +157,7 @@ export const DatePicker = <DateType extends DateValue>({
   const calendarSharedProps = {
     ...dialogProps,
     ...calendarProps,
-    onChange: calendarProps.onChange as DateFieldProps<DateType>['onChange'],
+    onChange: rest.onChange,
     disabled,
     navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),

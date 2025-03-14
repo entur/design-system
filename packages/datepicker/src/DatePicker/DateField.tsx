@@ -15,7 +15,12 @@ import type {
 } from '@react-types/datepicker';
 
 import { BaseFormControl, BaseFormControlProps } from '@entur/form';
-import { ConditionalWrapper, useRandomId, VariantType } from '@entur/utils';
+import {
+  ConditionalWrapper,
+  mergeRefs,
+  useRandomId,
+  VariantType,
+} from '@entur/utils';
 
 import { FieldSegment } from '../shared/FieldSegment';
 import {
@@ -147,6 +152,7 @@ export const DateField = <DateType extends DateValue>({
 
   const _props: DateFieldStateOptions<DateType> = {
     ...rest,
+    label,
     locale: customLocale ?? locale,
     createCalendar,
     value: selectedDate,
@@ -202,19 +208,14 @@ export const DateField = <DateType extends DateValue>({
         labelProps={parentLabelProps ?? labelProps}
         labelTooltip={labelTooltip}
         prepend={prepend}
-        ref={ref}
+        ref={mergeRefs(ref, dateFieldRef)}
         style={style}
         variant={variant ?? (state.isInvalid ? validationVariant : undefined)}
+        {...fieldProps}
       >
-        <span
-          ref={dateFieldRef}
-          {...fieldProps}
-          style={{ display: 'contents' }}
-        >
-          {state.segments.map((segment, i) => (
-            <FieldSegment segment={segment} state={state} key={i} />
-          ))}
-        </span>
+        {state.segments.map((segment, i) => (
+          <FieldSegment segment={segment} state={state} key={i} />
+        ))}
       </BaseFormControl>
     </ConditionalWrapper>
   );
