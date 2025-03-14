@@ -22,8 +22,9 @@ import {
 } from '@entur/datepicker';
 import { datepicker } from '@data/props/skjema-props.tsx';
 import { CodeBlock } from '@components/Codeblock/CodeBlock';
-import './styles.scss';
 import { SEO } from '@components/seo/SEO';
+
+import './styles.scss';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -206,7 +207,8 @@ timeOrDateValueToNativeDate: (value: TimeValue | DateValue | null, timeZoneForCa
 
 ### Bruk sammen med TimePicker
 
-Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline med `showTime`-prop-en eller ved å bruke en `TimePicker` i kombinasjon med `DatePicker`-en.
+Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline med `granularity="minute"` eller 
+`granularity="second"`- prop-en (avhengig om du vil vise sekund eller ikke) eller ved å bruke en `TimePicker` i kombinasjon med `DatePicker`-en.
 
 #### Inline
 
@@ -222,7 +224,7 @@ Du kan velge et tidspunkt sammen med datoen på to ulike måter, enten inline me
         selectedDate={date}
         onChange={setDate}
         locale="nb-NO"
-        showTime
+        granularity="minute"
       />
     );
   }`}
@@ -246,9 +248,6 @@ I løsninger ut mot vanlige sluttbrukere er en separat dato- og tid-velger foret
           selectedDate={dateTime}
           onChange={setDateTime}
           locale="nb-NO"
-          // 'forcedReturnType' er nødvendig når
-          // initiell state er 'null'
-          forcedReturnType="ZonedDateTime"
         />
         <TimePicker
           label="Tid"

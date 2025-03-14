@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   CalendarDate,
+  CalendarDateTime,
   ZonedDateTime,
   parseAbsolute,
   parseDate,
@@ -496,6 +497,110 @@ test('gives errors correctly using minDate as CalendarDateTime', () => {
 
   expect(screen.queryAllByRole('alert')[0]).toBeUndefined();
   expect(screen.queryAllByRole('alert')[1]).toBeUndefined();
+});
+
+test('shows selected granularity', () => {
+  const spy = jest.fn();
+  const currentDate = new CalendarDateTime(1997, 7, 10, 15, 30, 25);
+  const { rerender } = render(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+      granularity="second"
+    />,
+  );
+
+  // Both year and second is shown in picker
+  expect(
+    screen.getByRole('spinbutton', { name: 'year, test' }),
+  ).toHaveTextContent('1997');
+  expect(
+    screen.getByRole('spinbutton', { name: 'second, test' }),
+  ).toHaveTextContent('25');
+
+  rerender(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+    />,
+  );
+
+  // Second is not found in document anymore
+  expect(
+    screen.queryAllByRole('spinbutton', { name: 'second, test' }),
+  ).toHaveLength(0);
+});
+
+test.only('emits ZonedDateTime by default', async () => {
+  const user = userEvent.setup();
+  const spy = jest.fn();
+  const currentDate = null;
+  const { container, rerender } = render(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+    />,
+  );
+
+  let openCalendarButton = container.getElementsByClassName(
+    'eds-datepicker__open-calendar-button',
+  )[0];
+  await user.click(openCalendarButton);
+
+  let todaysDateButton = container.getElementsByClassName(
+    'eds-datepicker__calendar__grid__cell--today',
+  )[0];
+  await user.click(todaysDateButton);
+
+  // const emittedDefaultDateCalendar = spy.mock.calls[0][0];
+  // expect(emittedDefaultDateCalendar).toHaveProperty('timeZone');
+
+  rerender(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+      granularity="hour"
+    />,
+  );
+
+  openCalendarButton = container.getElementsByClassName(
+    'eds-datepicker__open-calendar-button',
+  )[0];
+  await user.click(openCalendarButton);
+
+  todaysDateButton = container.getElementsByClassName(
+    'eds-datepicker__calendar__grid__cell--today',
+  )[0];
+  await user.click(todaysDateButton);
+
+  const emittedDefaultDateCalendarWithGranularity = spy.mock.calls[0][0];
+  expect(emittedDefaultDateCalendarWithGranularity).toHaveProperty('timeZone');
+
+  rerender(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={spy}
+      locale="en-GB"
+      granularity="hour"
+    />,
+  );
+
+  const dayField = screen.getByRole('spinbutton', { name: 'day, test' });
+  dayField.focus();
+  await user.keyboard('{ArrowDown}');
+
+  // const emittedDefaultDateField = spy.mock.calls[0][0];
+  // expect(emittedDefaultDateField).toHaveProperty('timeZone');
+  console.log('bafore', spy.mock.calls);
 });
 
 test('Timezones should always be UTC', () => {

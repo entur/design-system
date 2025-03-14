@@ -1,6 +1,9 @@
 import React, { ReactNode, useRef } from 'react';
 
-import { useDatePickerState } from '@react-stately/datepicker';
+import {
+  DatePickerStateOptions,
+  useDatePickerState,
+} from '@react-stately/datepicker';
 import { useDatePicker } from '@react-aria/datepicker';
 import { I18nProvider } from '@react-aria/i18n';
 import {
@@ -14,10 +17,6 @@ import FocusLock from 'react-focus-lock';
 import classNames from 'classnames';
 
 import { CalendarDate, DateValue } from '@internationalized/date';
-import type {
-  AriaDatePickerProps,
-  MappedDateValue,
-} from '@react-types/datepicker';
 
 import {
   ConditionalWrapper,
@@ -29,70 +28,17 @@ import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
-import type { BaseFormControlProps } from '@entur/form';
-import type { VariantType } from '@entur/utils';
-
-import { DateField } from './DateField';
+import { DateField, DateFieldProps } from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { convertValueToType, lastMillisecondOfDay } from '../shared/utils';
+import { lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
 
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const error = 'error';
-
-export type DatePickerProps<DateType extends DateValue> = {
-  /** Den valgte datoen. Dato i '@internationalized/date'-pakkens format */
-  selectedDate: DateType | null;
-  /** Kalles når tiden endres. Dato i '@internationalized/date'-pakkens format */
-  onChange: (value: MappedDateValue<DateType> | null) => void;
-  /** Ledetekst for inputfeltet til DatePicker */
-  label: string;
-  /** BCP47-språkkoden til locale-en du ønsker å bruke.
-   * @default Brukerenhetens selvvalgte locale
-   */
-  locale?: string;
-  /** Viser den gjeldende tidssonen hvis en er valgt (krever at tid også vises)
-   * @default false
-   */
-  showTimeZone?: boolean;
-  /** Viser tidspunkt i tillegg til dato.
-   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
-   */
-  showTime?: boolean;
-  /** Tidligste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
-   *
-   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-   * Gyldig fra og med den tiden som legges inn som minDate.
-   * Dato uten tid vil være gyldig hele minDate-dagen */
-  minDate?: DateValue;
-  /** Seneste gyldige datovalg.
-   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
-   *
-   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-   * Gyldig til og med den tiden som legges inn som maxDate.
-   * Dato uten tid vil være gyldig hele maxDate-dagen */
-  maxDate?: DateValue;
-  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
-   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
-  isDateUnavailable?: (date: DateValue) => boolean;
-  /** Varselmelding, som vil komme under DatePicker sitt inputfelt */
-  feedback?: string;
-  /** Valideringsvariant*/
-  variant?: VariantType | typeof error | typeof info;
-  /** Varselmelding som forteller om ugyldig dato
-   * @default "Ugyldig dato"
-   */
-  validationFeedback?: string;
-  /** Valideringsvariant for melding om ugyldig dato
-   * @default "negative"
-   */
-  validationVariant?: VariantType | typeof error | typeof info;
-  disabled?: boolean;
+export type DatePickerProps<DateType extends DateValue> = Omit<
+  DateFieldProps<DateType>,
+  'labelProps' | 'fieldProps' | 'groupProps' | 'dateFieldRef'
+> & {
   /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
    * kan endres med prop-en 'weekNumberHeader'
    * @default false */
@@ -113,16 +59,6 @@ export type DatePickerProps<DateType extends DateValue> = {
    * @default 'Bruk piltastene til å navigere mellom datoer'
    */
   navigationDescription?: string;
-  /** Tvinger typen på onChange til den gitte typen.
-   * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-   * DatePicker alltid skal returnere f.eks ZonedDateTime.
-   *
-   * Som standard returnerer onChange DateValue basert på selectedDate,
-   * eller CalendarDate hvis selectedDate er 'null'.
-   *
-   * @default undefined
-   */
-  forcedReturnType?: 'CalendarDate' | 'CalendarDateTime' | 'ZonedDateTime';
   /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
    *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
    *  @default undefined
@@ -138,31 +74,16 @@ export type DatePickerProps<DateType extends DateValue> = {
    *  @example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''
    */
   ariaLabelForDate?: (date: CalendarDate) => string;
-  /** Ekstra klassenavn */
-  className?: string;
-  style?: React.CSSProperties;
-} & Omit<
-  AriaDatePickerProps<DateType>,
-  | 'value'
-  | 'onChange'
-  | 'label'
-  | 'hideTimeZone'
-  | 'placeholder'
-  | 'minValue'
-  | 'maxValue'
-> &
-  Omit<Partial<BaseFormControlProps>, 'children'>;
+};
 
 export const DatePicker = <DateType extends DateValue>({
   selectedDate,
-  onChange,
   locale,
   disabled,
   showTime,
   showTimeZone = false,
   classNameForDate,
   className,
-  style,
   variant,
   feedback,
   validationVariant,
@@ -179,6 +100,7 @@ export const DatePicker = <DateType extends DateValue>({
   ariaLabelForDate,
   append,
   prepend,
+  granularity = showTime ? 'minute' : 'day',
   ...rest
 }: DatePickerProps<DateType>) => {
   const CALENDAR_MODAL_MAX_SCREEN_WIDTH = modalTreshold;
@@ -187,24 +109,7 @@ export const DatePicker = <DateType extends DateValue>({
 
   const { width } = useWindowDimensions();
 
-  const handleOnChange = (value: MappedDateValue<DateType> | null) => {
-    if (forcedReturnType !== undefined) {
-      return onChange(
-        convertValueToType({
-          value,
-          type: forcedReturnType,
-          timezone:
-            value !== null && 'timezone' in value
-              ? (value.timezone as string)
-              : undefined,
-        }) as MappedDateValue<DateType> | null,
-      );
-    }
-
-    onChange(value);
-  };
-
-  const state = useDatePickerState({
+  const _props: DatePickerStateOptions<DateType> = {
     ...rest,
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
@@ -215,10 +120,11 @@ export const DatePicker = <DateType extends DateValue>({
         ? lastMillisecondOfDay(maxDate)
         : undefined,
     value: selectedDate,
-    onChange: handleOnChange,
-    granularity: showTime ? 'minute' : rest.granularity,
+    granularity,
     isDisabled: disabled,
-  });
+  };
+
+  const state = useDatePickerState(_props);
   const {
     groupProps,
     labelProps,
@@ -226,7 +132,7 @@ export const DatePicker = <DateType extends DateValue>({
     buttonProps,
     dialogProps,
     calendarProps,
-  } = useDatePicker({ ...rest }, state, datePickerRef);
+  } = useDatePicker(_props, state, datePickerRef);
 
   // calculations for floating-UI popover position
   const { refs, floatingStyles, update } = useFloating({
@@ -251,11 +157,11 @@ export const DatePicker = <DateType extends DateValue>({
   const calendarSharedProps = {
     ...dialogProps,
     ...calendarProps,
+    onChange: rest.onChange,
     disabled,
     navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
     selectedDate,
-    onChange: handleOnChange,
     minDate,
     maxDate,
     calendarRef,
@@ -265,7 +171,7 @@ export const DatePicker = <DateType extends DateValue>({
     weekNumberHeader,
   };
 
-  const useModal =
+  const isModal =
     typeof width !== 'undefined' &&
     width <= CALENDAR_MODAL_MAX_SCREEN_WIDTH &&
     !disableModal;
@@ -275,7 +181,7 @@ export const DatePicker = <DateType extends DateValue>({
       style={{ ...floatingStyles, zIndex: zIndexes.popover }}
       ref={refs.setFloating}
     >
-      <FocusLock disabled={!state.isOpen || useModal} returnFocus>
+      <FocusLock disabled={!state.isOpen || isModal} returnFocus>
         {state.isOpen && <Calendar {...calendarSharedProps} />}
       </FocusLock>
     </div>
@@ -301,6 +207,9 @@ export const DatePicker = <DateType extends DateValue>({
       )}
     >
       <DateField
+        {...(groupProps as any)}
+        {...fieldProps}
+        {...rest}
         append={
           !disabled && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -324,14 +233,10 @@ export const DatePicker = <DateType extends DateValue>({
         })}
         disabled={disabled}
         feedback={feedback}
-        fieldProps={fieldProps}
-        groupProps={groupProps}
-        label={rest.label}
         labelProps={labelProps}
         labelTooltip={labelTooltip}
         maxDate={maxDate}
         minDate={minDate}
-        onChange={handleOnChange}
         dateFieldRef={node => {
           refs.setReference(node);
           datePickerRef.current = node;
@@ -339,12 +244,11 @@ export const DatePicker = <DateType extends DateValue>({
         selectedDate={selectedDate}
         showTime={showTime}
         showTimeZone={showTimeZone}
-        style={style}
         validationFeedback={validationFeedback}
         validationVariant={validationVariant}
         variant={variant}
       />
-      {useModal ? modalCalendar : popoverCalendar}
+      {isModal ? modalCalendar : popoverCalendar}
     </ConditionalWrapper>
   );
 };
