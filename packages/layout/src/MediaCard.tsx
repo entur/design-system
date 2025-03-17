@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { Paragraph, Label } from '@entur/typography';
+import { Paragraph, Label, Heading3 } from '@entur/typography';
 import classNames from 'classnames';
 import { BaseCard } from './BaseCard';
 import { ForwardIcon } from '@entur/icons';
@@ -32,6 +32,9 @@ export type MediaCardOwnProps = {
    * @default false
    */
   hideArrow?: boolean;
+  /** Om MediaCard skal vises horisontalt
+   */
+  orientation?: 'horizontal';
   /** Props som sendes til wrapper-elementet i stedet for lenke-elementet */
   wrapperProps?: React.HTMLAttributes<HTMLElement>;
   /** @deprecated Denne prop-en har ikke lenger en funksjon.
@@ -58,20 +61,21 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
   wholeCardAsElement: whole,
   hideArrow,
   wrapperProps,
+  orientation,
   ...rest
 }: MediaCardProps<E>): JSX.Element => {
   const Element: React.ElementType = as || defaultElement;
-  const Heading = headingLevel;
+  const Heading = Heading3;
 
   const _wrapperProps = whole
     ? { ...wrapperProps, ...rest }
     : { ...wrapperProps };
+  const classList = classNames('eds-base-card, eds-media-card', className, {
+    'eds-media-card--horizontal': orientation === 'horizontal',
+  });
+
   return (
-    <BaseCard
-      className={classNames('eds-base-card', 'eds-media-card', className)}
-      style={style}
-      {..._wrapperProps}
-    >
+    <BaseCard className={classList} style={style} {..._wrapperProps}>
       <div className="eds-media-card__media">{children}</div>
       <div className="eds-media-card__text">
         {category && (
@@ -81,7 +85,7 @@ export const MediaCard = <E extends React.ElementType = typeof defaultElement>({
         <ConditionalWrapper
           condition={description !== undefined}
           wrapper={(children: React.ReactNode) => (
-            <Heading className="eds-media-card__text__title">
+            <Heading as={headingLevel} className="eds-media-card__text__title">
               {children}
             </Heading>
           )}

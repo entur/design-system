@@ -150,6 +150,21 @@
           "name": "boolean | undefined"
         }
       },
+      "orientation": {
+        "defaultValue": null,
+        "description": "Om MediaCard skal vises horisontalt",
+        "name": "orientation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/layout/src/MediaCard.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | undefined"
+        }
+      },
       "wrapperProps": {
         "defaultValue": null,
         "description": "Props som sendes til wrapper-elementet i stedet for lenke-elementet",
