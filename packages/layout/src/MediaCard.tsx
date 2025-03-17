@@ -32,9 +32,10 @@ export type MediaCardOwnProps = {
    * @default false
    */
   hideArrow?: boolean;
-  /** Om MediaCard skal vises horisontalt
+  /** Om MediaCard skal vises horisontalt eller vertikalt
+   * @default 'vertical'
    */
-  orientation?: 'horizontal';
+  orientation?: 'horizontal' | 'vertical';
   /** Props som sendes til wrapper-elementet i stedet for lenke-elementet */
   wrapperProps?: React.HTMLAttributes<HTMLElement>;
   /** @deprecated Denne prop-en har ikke lenger en funksjon.
