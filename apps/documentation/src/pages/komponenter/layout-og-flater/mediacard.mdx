@@ -13,6 +13,7 @@ import { DesktopIcon } from '@entur/icons';
 import { SEO } from '@components/seo/SEO';
 import { graphql } from 'gatsby';
 import mediacard from '../../../media/images/komponenter/layout/MediaCard.png';
+import sheep from '../../../media/images/komponenter/layout/sheep.svg';
 
 export const query = graphql`
 query komigang {
@@ -39,6 +40,7 @@ export const Head = ( props ) => {
     title="Hva gjør Entur?"
     description="Entur eier og styrer salgssystemet for togbilletter og samler data om kollektivtrafikken i Norge, slik at det blir enklere å velge en bærekraftig reise."
     href="https://www.entur.no"
+    category="Transport"
     style={{ width: '31rem' }}
   >
   <img
@@ -50,18 +52,39 @@ export const Head = ( props ) => {
   scope={{mediacard}}
   />
 
+## Varianter
+
+### MediaCard horizontal
+
+  <Playground code={`<MediaCard
+    title="Hva gjør Entur?"
+    description="Entur eier og styrer salgssystemet for togbilletter og samler data om kollektivtrafikken i Norge, slik at det blir enklere å velge en bærekraftig reise."
+    href="https://www.entur.no"
+    hideArrow
+    orientation="horizontal"
+  >
+  <img
+    src={sheep}
+    alt="Buss som kjører over bro i fjelllandskap"
+  />
+  </MediaCard>`}
+  scope={{sheep}}
+  />
+
 ## Retningslinjer
 
-Card Media er en skyggefull boks som viser innhold og handling om et emne.
-I motsetnings til et vanlig Card, kan Card Media inneholde video, bilde og grafikk for å forsterke innholdet.
-Card Media gir et kort sammendrag av innholdet, og lenker videre til en ny side med ytterligere detaljer.
+MediaCard er en skyggefull boks som viser innhold og handling om et emne.
+I motsetning til et vanlig Card, kan MediaCard inneholde video, bilde og grafikk for å forsterke innholdet.
+MediaCard gir et kort sammendrag av innholdet, og lenker videre til en ny side med ytterligere detaljer.
 Den skal være enkel å skanne etter relevant informasjon.
 
-Card Media kan for eksempel brukes som navigasjon til en artikkel eller bloggpost.
+MediaCard kan for eksempel brukes som navigasjon til en artikkel eller bloggpost.
 Komponenten skal ha en beskrivende tekst under tittelen.
 Teksten bør være kort og konsis, på max 3 linjer.
 
-## Props 
+Om du skal bruke illustrasjon som media bør den være enkel for best lesbarhet, for eksempel et dyr, en person eller et objekt. Unngå store og komplekse illustrasjoner med mange detaljer, som scener med flere elementer, bakgrunner eller kombinasjoner av mennesker, dyr og landskap.
+
+## Props
 
 ### MediaCard
 
