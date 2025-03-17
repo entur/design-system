@@ -39,7 +39,7 @@ const SiteFooter: React.FC = () => {
             #talk-designsystem
           </Link>{' '}
           i Slack, eller send oss en{' '}
-          <Link href="mailto:magnus.rand@entur.org">e-post</Link>.
+          <Link href="mailto:teamdesignsystem@entur.org">e-post</Link>.
         </div>
       </footer>
     </>
