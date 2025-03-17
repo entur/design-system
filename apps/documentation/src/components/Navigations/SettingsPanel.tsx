@@ -100,7 +100,10 @@ const SettingsPanel = () => {
               className="settings-trigger__icon"
               aria-hidden="true"
             />{' '}
-            Innstilinger
+            <span className="settings-trigger__button-text">
+              {' '}
+              Innstillinger
+            </span>
           </IconButton>
         </Tooltip>
       </div>

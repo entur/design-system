@@ -4,7 +4,7 @@ import { Location, useLocation } from '@reach/router';
 import classNames from 'classnames';
 
 import { IconButton } from '@entur/button';
-import { GithubIcon } from '@entur/icons';
+import { GithubIcon, MenuIcon } from '@entur/icons';
 import { useContrast } from '@entur/layout';
 import { TopNavigationItem } from '@entur/menu';
 import { Tooltip } from '@entur/tooltip';
@@ -17,6 +17,7 @@ import logo from '@media/logo/logo.svg';
 import logoDark from '@media/logo/logoDark.svg';
 
 import './TopNavigation.scss';
+import SideNavigationLayout from 'src/layouts/SideNavigationLayout';
 
 const TopNavigation = () => {
   const { colorMode } = useSettings();
@@ -30,7 +31,6 @@ const TopNavigation = () => {
     (colorMode === 'system' &&
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: dark)').matches);
-
   return (
     <nav
       className={classNames('top-navigation', {
@@ -50,6 +50,7 @@ const TopNavigation = () => {
       <NavItem to="/identitet">Identitet</NavItem>
       <NavItem to="/komponenter">Komponenter</NavItem>
       <NavItem to="/tokens">Tokens</NavItem>
+      <NavItem to="/ressurser">Ressurser</NavItem>
       <NavItem to="/universell-utforming">Universell utforming</NavItem>
       <Search />
       <Tooltip content="Entur Linje på GitHub">

@@ -7,6 +7,7 @@ import { MDXComponents } from 'mdx/types';
 import components from './MdxProvider-utils';
 import { SkipToContent } from '@entur/a11y';
 import SideNavigationLayout from './SideNavigationLayout';
+import TableOfContentLayout from './TableOfContentLayout';
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -17,6 +18,7 @@ const DocLayout = ({ children }: LayoutProps) => {
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>
       <TopNavigationLayout />
       <SideNavigationLayout />
+
       <div className="page">
         <div className="site-content">
           <main id="main">
@@ -24,7 +26,7 @@ const DocLayout = ({ children }: LayoutProps) => {
               {children}
             </MDXProvider>
           </main>
-          <TableOfContent />
+          <TableOfContentLayout />
           <SiteFooter />
         </div>
       </div>

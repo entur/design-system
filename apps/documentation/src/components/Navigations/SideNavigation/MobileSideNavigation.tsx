@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 
 import { MenuItem } from './utils';
-import { FloatingButton } from '@entur/button';
-import { CloseIcon, MenuIcon } from '@entur/icons';
-import classNames from 'classnames';
 import { Drawer } from '@entur/modal';
-
+import { MenuIcon, CloseIcon } from '@entur/icons';
+import { FloatingButton } from '@entur/button';
 import SideNavigation from './SideNavigation';
 
 import './SideNavigation.scss';

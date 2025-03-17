@@ -30,7 +30,6 @@ export const hasSameParentCategory = (
 ): boolean => {
   const normalizedParent = normalizePath(menuItem.frontmatter.parent || '');
   const normalizedCurrentDoc = normalizePath(currentDoc);
-
   if (normalizedParent === normalizedCurrentDoc) {
     return true;
   }
@@ -41,7 +40,10 @@ export const hasSameParentCategory = (
       hasSameParentCategory(subMenuItem, currentDoc),
     );
   } else if (typeof menuName === 'string') {
-    if (normalizePath(menuName) === normalizedCurrentDoc) {
+    if (
+      normalizedParent === normalizedCurrentDoc ||
+      normalizedCurrentDoc.startsWith(normalizedParent + '/')
+    ) {
       return true;
     } else {
       return false;

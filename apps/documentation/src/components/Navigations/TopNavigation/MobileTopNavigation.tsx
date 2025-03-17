@@ -11,7 +11,7 @@ import { Tooltip } from '@entur/tooltip';
 import SettingsPanel from '../SettingsPanel';
 import { useSettings } from '@providers/SettingsContext';
 import { Search } from '@components/Search/Search';
-
+import SideNavigationLayout from 'src/layouts/SideNavigationLayout';
 import logo from '../../../media/logo/logo.svg';
 import logoDark from '../../../media/logo/logoDark.svg';
 
@@ -63,6 +63,7 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
         <MobileTopNavItem to="/identitet">Identitet</MobileTopNavItem>
         <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
         <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
+        <MobileTopNavItem to="/ressurser">Ressurser</MobileTopNavItem>
         <MobileTopNavItem to="/universell-utforming">
           Universell utforming
         </MobileTopNavItem>

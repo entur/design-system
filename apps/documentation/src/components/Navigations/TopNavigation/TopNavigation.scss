@@ -43,4 +43,16 @@
   .searchmodal__button {
     margin-left: auto;
   }
+
+  @media screen and (max-width: 1108px) {
+    padding-inline: eds.$space-large;
+
+    .eds-top-navigation-item {
+      font-size: 14px;
+      padding: eds.$space-small;
+    }
+    .top-navigation__logo {
+      margin-right: eds.$space-large;
+    }
+  }
 }

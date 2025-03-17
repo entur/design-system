@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router';
 import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 import { removeTrailingSlash } from '../SideNavigation/utils';
+
 import './TableOfContent.scss';
 
 interface Heading {
@@ -131,14 +132,13 @@ const TableOfContent = () => {
   if (filteredHeadings.length < 2) {
     return null;
   }
-
   return (
     <nav className="table-of-content-container">
       <Heading4 as="h2" style={{ margin: 0 }}>
         Innhold
       </Heading4>
       <ul className="table-of-content">
-        {filteredHeadings.map(heading => {
+        {filteredHeadings.map((heading: any) => {
           const headingId = heading.url?.replace('#', '');
           if (!headingId) return null;
 
@@ -156,7 +156,7 @@ const TableOfContent = () => {
                 })}
                 href={heading.url}
               >
-                {heading.title}
+                <span>{heading.title}</span>
               </a>
             </li>
           );
