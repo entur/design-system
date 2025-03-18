@@ -58,7 +58,7 @@
       box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.12);
 
       flex: 1;
-      overflow: auto;
+      overflow: visible;
 
       &:has(+ .playground__props-selector) {
         border-top-right-radius: 0;
