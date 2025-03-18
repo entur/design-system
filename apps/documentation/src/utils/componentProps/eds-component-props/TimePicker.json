@@ -37,21 +37,17 @@
       },
       "label": {
         "defaultValue": null,
-        "description": "Label til TimePicker\nLabel til inputfeltet",
+        "description": "Label til TimePicker",
         "name": "label",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
           }
         ],
         "required": true,
         "type": {
-          "name": "string & ReactNode"
+          "name": "string"
         }
       },
       "minuteIncrementForArrowButtons": {
@@ -315,21 +311,6 @@
         "required": false,
         "type": {
           "name": "CSSProperties | undefined"
-        }
-      },
-      "children": {
-        "defaultValue": null,
-        "description": "Et skjemaelement med `eds-form-control`-klassen",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
         }
       },
       "readOnly": {

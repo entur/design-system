@@ -30,9 +30,9 @@
             "name": "TypeLiteral"
           }
         ],
-        "required": true,
+        "required": false,
         "type": {
-          "name": "(SelectedDate: MappedDateValue<DateType> | null) => void | Dispatch<SetStateAction<DateType | null>>"
+          "name": "((selectedDate: MappedDateValue<DateType> | null) => void) | undefined"
         }
       },
       "navigationDescription": {
@@ -223,6 +223,21 @@
         "required": false,
         "type": {
           "name": "MutableRefObject<HTMLDivElement | null> | undefined"
+        }
+      },
+      "forcedReturnType": {
+        "defaultValue": null,
+        "description": "",
+        "name": "forcedReturnType",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ForcedReturnType"
         }
       }
     }
