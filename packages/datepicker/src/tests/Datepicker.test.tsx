@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Granularity } from '@react-types/datepicker';
 import {
   CalendarDate,
   CalendarDateTime,
@@ -535,73 +536,76 @@ test('shows selected granularity', () => {
   ).toHaveLength(0);
 });
 
-test.only('emits ZonedDateTime by default', async () => {
-  const user = userEvent.setup();
-  const spy = jest.fn();
-  const currentDate = null;
-  const { container, rerender } = render(
-    <DatePicker
-      label="test"
-      selectedDate={currentDate}
-      onChange={spy}
-      locale="en-GB"
-    />,
-  );
+test.each([
+  { props: { granularity: undefined } },
+  { props: { granularity: 'second' as Granularity } },
+  { props: { granularity: 'month' as Granularity } },
+])(
+  'emits ZonedDateTime by default from calendar datepicker',
+  async ({ props }) => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const currentDate = null;
+    const { container } = render(
+      <DatePicker
+        label="test"
+        selectedDate={currentDate}
+        onChange={spy}
+        locale="en-GB"
+        granularity={props.granularity}
+      />,
+    );
 
-  let openCalendarButton = container.getElementsByClassName(
-    'eds-datepicker__open-calendar-button',
-  )[0];
-  await user.click(openCalendarButton);
+    const openCalendarButton = container.getElementsByClassName(
+      'eds-datepicker__open-calendar-button',
+    )[0];
+    await user.click(openCalendarButton);
 
-  let todaysDateButton = container.getElementsByClassName(
-    'eds-datepicker__calendar__grid__cell--today',
-  )[0];
-  await user.click(todaysDateButton);
+    const todaysDateButton = container.getElementsByClassName(
+      'eds-datepicker__calendar__grid__cell--today',
+    )[0];
+    await user.click(todaysDateButton);
 
-  // const emittedDefaultDateCalendar = spy.mock.calls[0][0];
-  // expect(emittedDefaultDateCalendar).toHaveProperty('timeZone');
+    const emittedDefaultDateCalendarWithGranularity = spy.mock.calls[0][0];
+    expect(emittedDefaultDateCalendarWithGranularity).toHaveProperty(
+      'timeZone',
+    );
+  },
+);
 
-  rerender(
-    <DatePicker
-      label="test"
-      selectedDate={currentDate}
-      onChange={spy}
-      locale="en-GB"
-      granularity="hour"
-    />,
-  );
+test.each([
+  { props: { granularity: undefined } },
+  { props: { granularity: 'second' as Granularity } },
+  { props: { granularity: 'month' as Granularity } },
+])(
+  'emits ZonedDateTime by default from datefield datepicker',
+  async ({ props }) => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const currentDate = null;
 
-  openCalendarButton = container.getElementsByClassName(
-    'eds-datepicker__open-calendar-button',
-  )[0];
-  await user.click(openCalendarButton);
+    render(
+      <DatePicker
+        label="test"
+        selectedDate={currentDate}
+        onChange={spy}
+        locale="en-GB"
+        granularity={props.granularity}
+      />,
+    );
 
-  todaysDateButton = container.getElementsByClassName(
-    'eds-datepicker__calendar__grid__cell--today',
-  )[0];
-  await user.click(todaysDateButton);
+    const dateFields = screen.getAllByRole('spinbutton');
+    for (const field of dateFields) {
+      field.focus();
+      await user.keyboard('{ArrowUp}');
+    }
 
-  const emittedDefaultDateCalendarWithGranularity = spy.mock.calls[0][0];
-  expect(emittedDefaultDateCalendarWithGranularity).toHaveProperty('timeZone');
-
-  rerender(
-    <DatePicker
-      label="test"
-      selectedDate={currentDate}
-      onChange={spy}
-      locale="en-GB"
-      granularity="hour"
-    />,
-  );
-
-  const dayField = screen.getByRole('spinbutton', { name: 'day, test' });
-  dayField.focus();
-  await user.keyboard('{ArrowDown}');
-
-  // const emittedDefaultDateField = spy.mock.calls[0][0];
-  // expect(emittedDefaultDateField).toHaveProperty('timeZone');
-  console.log('bafore', spy.mock.calls);
-});
+    const emittedDefaultDateCalendarWithGranularity = spy.mock.calls[0][0];
+    expect(emittedDefaultDateCalendarWithGranularity).toHaveProperty(
+      'timeZone',
+    );
+  },
+);
 
 test('Timezones should always be UTC', () => {
   expect(new Date().getTimezoneOffset()).toBe(0);
