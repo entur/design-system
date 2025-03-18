@@ -91,7 +91,7 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   | 'minValue'
   | 'maxValue'
 > &
-  Partial<BaseFormControlProps>;
+  Omit<Partial<BaseFormControlProps>, 'children' | 'label'>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
