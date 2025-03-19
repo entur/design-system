@@ -12,8 +12,8 @@ import { MediaCard } from '@entur/layout';
 import { DesktopIcon } from '@entur/icons';
 import { SEO } from '@components/seo/SEO';
 import { graphql } from 'gatsby';
-import mediacard from '../../../media/images/komponenter/layout/MediaCard.png';
-import sheep from '../../../media/images/komponenter/layout/sheep.svg';
+import mediacard from '@media/images/komponenter/layout/MediaCard.png';
+import sheep from '@media/images/komponenter/layout/Sheep.svg';
 
 export const query = graphql`
 query komigang {
@@ -54,7 +54,9 @@ export const Head = ( props ) => {
 
 ## Varianter
 
-### MediaCard horizontal
+### Horizontal
+
+MediaCard er som standard i `orientation="vertical"`, men om du ønsker å ha den i et horisontalt format bruk `orientation="horizontal"`. I mobilvisning vil den alltid har i vertikalt format.
 
   <Playground code={`<MediaCard
     title="Hva gjør Entur?"

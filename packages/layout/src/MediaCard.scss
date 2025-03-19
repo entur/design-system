@@ -10,6 +10,7 @@
   position: relative;
   width: fit-content;
   background-color: var(--components-layout-card-standard-fill-default-solid);
+  transition: transform t.$timings-fast ease-in-out, box-shadow t.$timings-fast ease-in-out, background t.$timings-fast ease-in-out;
 
   .eds-contrast & {
     background-color: var(--components-layout-card-contrast-fill-default-solid);
@@ -50,7 +51,6 @@
   }
 
   &__media {
-    transition: transform t.$timings-medium ease-in-out;
     max-height: 15rem;
     display: flex;
     align-items: center;
@@ -76,10 +76,7 @@
     }
 
     &__title {
-      & * {
-        margin: 0;
-        margin-top: t.$space-default;
-      }
+      margin: t.$space-extra-small2 0 t.$space-extra-small2;
 
       &-link {
         appearance: none;

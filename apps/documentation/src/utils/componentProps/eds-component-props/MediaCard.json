@@ -151,8 +151,10 @@
         }
       },
       "orientation": {
-        "defaultValue": null,
-        "description": "Om MediaCard skal vises horisontalt",
+        "defaultValue": {
+          "value": "vertical"
+        },
+        "description": "Om MediaCard skal vises horisontalt eller vertikalt",
         "name": "orientation",
         "declarations": [
           {
@@ -162,7 +164,7 @@
         ],
         "required": false,
         "type": {
-          "name": "\"horizontal\" | undefined"
+          "name": "\"vertical\" | \"horizontal\""
         }
       },
       "wrapperProps": {

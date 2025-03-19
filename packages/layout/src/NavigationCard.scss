@@ -7,7 +7,7 @@
   flex-direction: column;
   padding: t.$space-extra-large;
   position: relative;
-  transition: transform t.$timings-medium ease-in-out, box-shadow t.$timings-medium ease-in-out;
+  transition: transform t.$timings-fast ease-in-out, box-shadow t.$timings-fast ease-in-out, background t.$timings-fast ease-in-out;
 
   &-header {
     display: flex;
