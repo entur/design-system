@@ -12,16 +12,17 @@ import {
   UseComboboxStateChangeOptions,
 } from 'downshift';
 import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
+import { useRandomId } from '@entur/utils';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { VariantType, useRandomId } from '@entur/utils';
 
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
 
 import { useResolvedItems } from './useResolvedItems';
+import { DropdownProps } from './Dropdown';
 import {
   EMPTY_INPUT,
   getA11yStatusMessage,
@@ -33,23 +34,14 @@ import {
   useMultiselectUtils,
 } from './utils';
 
-import {
-  NormalizedDropdownItemType,
-  PotentiallyAsyncDropdownItemType,
-} from './types';
+import { NormalizedDropdownItemType } from './types';
 
 import './Dropdown.scss';
 
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const error = 'error';
-
-export type MultiSelectProps<ValueType> = {
-  /** Beskrivende tekst som forklarer feltet */
-  label: string;
-  /** Tilgjengelige valg i MultiSelect */
-  items: PotentiallyAsyncDropdownItemType<ValueType>;
+export type MultiSelectProps<ValueType> = Omit<
+  DropdownProps<ValueType>,
+  'selectedItem' | 'onChange'
+> & {
   /** Elementer som er valgt blant 'items'. Bruk tom liste for ingen valgte
    */
   selectedItems: NormalizedDropdownItemType<ValueType>[];
@@ -65,30 +57,6 @@ export type MultiSelectProps<ValueType> = {
     item: NormalizedDropdownItemType<ValueType>,
     inputValue: string | undefined,
   ) => boolean;
-  /** Hvilken valideringsvariant som gjelder */
-  variant?: VariantType | typeof error | typeof info;
-  /** Valideringsmelding, brukes sammen med `variant` */
-  feedback?: string;
-  /** Om dropdown-en er deaktivert */
-  disabled?: boolean;
-  /** Om dropdown-en er i read-only modus */
-  readOnly?: boolean;
-  /** Om en knapp for å fjerne alle valg skal vises
-   * @default true
-   */
-  clearable?: boolean;
-  /** Plasserer ledeteksten statisk på toppen av inputfeltet */
-  disableLabelAnimation?: boolean;
-  /** Placeholder-tekst når ingenting er satt */
-  placeholder?: string;
-  /** En tekst som beskriver hva som skjer når man venter på items
-   * @default "Laster inn …"
-   */
-  loadingText?: string;
-  /** Tekst som kommer opp når det ikke er noe treff på filtreringsøket
-   * @default "Ingen treff for søket"
-   */
-  noMatchesText?: string;
   /** Skjuler «Velg alle» fra listen med valg
    * @default false
    */
@@ -101,25 +69,10 @@ export type MultiSelectProps<ValueType> = {
    * @default 10
    */
   maxChips?: number;
-  /** Tekst eller ikon som kommer før MultiSelect */
-  prepend?: React.ReactNode;
   /** Resetter input etter at et element er valgt i listen
    * @default false
    */
   clearInputOnSelect?: boolean;
-  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnTab?: boolean;
-  /**
-   * @deprecated
-   * Bruk selectOnTab i stedet
-   *
-   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnBlur?: boolean;
-  style?: React.CSSProperties;
-  /** Styling som sendes ned til MultiSelect-lista */
-  listStyle?: { [key: string]: any };
-  /** Ekstra klassenavn */
-  className?: string;
   /** Teksten som vises for «Velg alle»-elementet i listen
    * @default "Velg alle"
    */
@@ -132,8 +85,6 @@ export type MultiSelectProps<ValueType> = {
    * @default "Fjern valgte"
    */
   labelClearAllItems?: string;
-  /** En tooltip som gir ekstra info om inputfeltet */
-  labelTooltip?: React.ReactNode;
   /** Tekst for skjemleser på knapper for å fjerne valgt element
    * @default "trykk for å fjerne valg"
    */
@@ -142,27 +93,10 @@ export type MultiSelectProps<ValueType> = {
    * @default "valgte"
    */
   ariaLabelChosenPlural?: string;
-  /** Tekst for skjemleser for knapp som lukker listen med valg
-   * @default "Lukk liste med valg"
-   */
-  ariaLabelCloseList?: string;
-  /** Tekst for skjemleser for knapp som åpner listen med valg
-   * @default "Åpne liste med valg"
-   */
-  ariaLabelOpenList?: string;
   /** Tekst for skjemleser for å hoppe til input-feltet
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
-  /** Ord for at et element er valgt i entall
-   * eks. 'Element 1, _valgt_'
-   * @default 'valgt'
-   */
-  ariaLabelChosenSingular?: string;
-  /** Tekst for skjermleser som beskriver statusen til et element som valgt
-   * @default ', valgt element, trykk for å fjerne'
-   */
-  ariaLabelSelectedItem?: string;
 };
 
 export const MultiSelect = <ValueType extends NonNullable<any>>({
@@ -184,6 +118,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
   labelSelectAll = 'Velg alle',
   labelTooltip,
   listStyle,
+  loading,
   loadingText,
   maxChips = 10,
   noMatchesText,
@@ -218,7 +153,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
 
   const {
     items: normalizedItems,
-    loading,
+    loading: resolvedItemsLoading,
     fetchItems,
   } = useResolvedItems(initialItems, debounceTimeout);
 
@@ -457,7 +392,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
           clearable={clearable}
           labelClearSelectedItems={labelClearAllItems}
           focusable={false}
-          loading={loading}
+          loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
           disabled={readOnly || disabled}
           onClear={handleOnClear}
@@ -580,7 +515,7 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         listItems={listItems}
         style={listStyle}
         setListRef={refs.setFloating}
-        loading={loading}
+        loading={loading ?? resolvedItemsLoading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}
         selectAllCheckboxState={selectAllCheckboxState}

@@ -61,6 +61,8 @@ export type DropdownProps<ValueType> = {
   feedback?: string;
   /** Tekst eller ikon som kommer før dropdown-en */
   prepend?: React.ReactNode;
+  /** */
+  loading?: boolean;
   /** En tekst som beskriver hva som skjer når man venter på items
    * @default 'Laster inn …'
    */
@@ -119,6 +121,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   labelClearSelectedItem = 'fjern valgt',
   labelTooltip,
   listStyle,
+  loading,
   loadingText,
   noMatchesText = 'Ingen tilgjengelige valg …',
   onChange,
@@ -132,7 +135,8 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
   variant = 'information',
   ...rest
 }: DropdownProps<ValueType>) => {
-  const { items: normalizedItems, loading } = useResolvedItems(initialItems);
+  const { items: normalizedItems, loading: resolvedItemsLoading } =
+    useResolvedItems(initialItems);
   const toggleButtonRef = useRef<HTMLDivElement>(null);
   const isFilled = selectedItem !== null || placeholder !== undefined;
   const {
@@ -191,7 +195,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
           focusable={false}
           getToggleButtonProps={getToggleButtonProps}
           isOpen={isOpen}
-          loading={loading}
+          loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
           onClear={() => {
             onChange?.(null);
@@ -269,7 +273,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
         noMatchesText={noMatchesText}
         style={listStyle}
         setListRef={refs.setFloating}
-        loading={loading}
+        loading={loading ?? resolvedItemsLoading}
         loadingText={loadingText}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
       />
