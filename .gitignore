@@ -11,6 +11,7 @@ public
 .pnp.*
 .yarn
 gatsby-types
+gatsby-types.d.ts
 
 # dependencies
 node_modules
