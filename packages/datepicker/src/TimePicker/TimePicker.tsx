@@ -91,7 +91,7 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   | 'minValue'
   | 'maxValue'
 > &
-  Partial<BaseFormControlProps>;
+  Omit<Partial<BaseFormControlProps>, 'children' | 'label'>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
@@ -128,11 +128,11 @@ export const TimePicker = <TimeType extends TimeValue>({
       : 'Europe/Oslo');
 
   const handleOnChange = (value: MappedTimeValue<TimeType> | null) => {
-    if (forcedReturnType !== undefined) {
+    if (forcedReturnType !== undefined || !selectedTime) {
       return onChange(
         convertValueToType({
           value,
-          type: forcedReturnType,
+          type: forcedReturnType ?? 'ZonedDateTime',
           timezone: timeZone,
         }) as MappedTimeValue<TimeType> | null,
       );
