@@ -1,23 +1,16 @@
 /* eslint-disable  no-warning-comments */
-import React, {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
 import classNames from 'classnames';
 import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
 
+import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
 import {
   EMPTY_INPUT,
@@ -28,29 +21,11 @@ import {
   noFilter,
 } from './utils';
 
-import {
-  NormalizedDropdownItemType,
-  PotentiallyAsyncDropdownItemType,
-} from './types';
+import { NormalizedDropdownItemType } from './types';
 
 import './Dropdown.scss';
 
-/** @deprecated use variant="information" instead */
-const info = 'info';
-/** @deprecated use variant="negative" instead */
-const error = 'error';
-
-export type SearchableDropdownProps<ValueType> = {
-  /** Tilgjengelige valg i dropdown-en */
-  items: PotentiallyAsyncDropdownItemType<ValueType>;
-  /** Valgt element. Bruk null for ingen verdi */
-  selectedItem: NormalizedDropdownItemType<ValueType> | null;
-  /** Callback ved valg som skal brukes til å oppdatere selectedItem */
-  onChange?: (
-    selectedItem: NormalizedDropdownItemType<ValueType> | null,
-  ) => void | Dispatch<
-    SetStateAction<NormalizedDropdownItemType<ValueType> | null>
-  >;
+export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
    * @default Regex-test som sjekker om item.label inneholder input-teksten
    */
@@ -58,75 +33,17 @@ export type SearchableDropdownProps<ValueType> = {
     item: NormalizedDropdownItemType<ValueType>,
     inputValue: string | undefined,
   ) => boolean;
-  /** Beskrivende tekst som forklarer feltet */
-  label: string;
-  /** Placeholder-tekst når ingenting er satt */
-  placeholder?: string;
-  /** Vis knapp for å nullstille Dropdown-en skal vises
-   * @default true
-   */
-  clearable?: boolean;
-  /** Plasserer labelen statisk på toppen av inputfeltet
-   * @default false
-   */
-  disableLabelAnimation?: boolean;
   /** Antall millisekunder man venter etter tekstinput før det gjøres kall for å oppdatere items
    * Denne er kun relevant hvis du sender inn en funksjon som items.
    */
   debounceTimeout?: number;
-  /** Deaktiver dropdown-en */
-  disabled?: boolean;
-  /** Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnTab?: boolean;
-  /**
-   * @deprecated
-   * Bruk selectOnTab i stedet
-   *
-   * Lar brukeren velge ved å "tab-e" seg ut av komponenten */
-  selectOnBlur?: boolean;
   /** Tekst som kommer opp når det ikke er noe treff på filtreringsøket
    * @default "Ingen treff for søket"
    */
   noMatchesText?: string;
-  /** Gjør dropdown-en til å kun kunne leses
-   * @default false
-   */
-  readOnly?: boolean;
-  /** Tekst eller ikon som kommer før dropdown-en */
-  prepend?: React.ReactNode;
-  /** En tekst som beskriver hva som skjer når man venter på items */
-  loadingText?: string;
-  /** Hvilken valideringsvariant som gjelder*/
-  variant?: VariantType | typeof error | typeof info;
-  /** Valideringsmelding, brukes sammen med `variant` */
-  feedback?: string;
-  className?: string;
-  style?: { [key: string]: any };
-  /** Style som kun påføres listeelementet */
-  listStyle?: { [key: string]: any };
-  /** Tekst som beskriver at man fjerner valget sitt
-   * @default "fjern valgt"
-   */
-  labelClearSelectedItem?: string;
-  /** En tooltip som gir ekstra info om inputfeltet */
-  labelTooltip?: React.ReactNode;
-  /** Tekst for skjemleser for knapp som lukker listen med valg
-   * @default "Lukk liste med valg"
-   */
-  ariaLabelCloseList?: string;
-  /** Tekst for skjemleser for knapp som åpner listen med valg
-   * @default "Åpne liste med valg"
-   */
-  ariaLabelOpenList?: string;
-  /** Ord for at et element er valgt i entall
-   * eks. 'Element 1, _valgt_'
-   * @default "valgt"
-   */
-  ariaLabelChosenSingular?: string;
   /** Tekst for skjermleser som beskriver statusen til et element som valgt
    * @default ", valgt element, trykk for å fjerne"
    */
-  ariaLabelSelectedItem?: string;
 };
 
 export const SearchableDropdown = <ValueType extends NonNullable<any>>({
@@ -148,6 +65,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
   labelClearSelectedItem = 'fjern valgt',
   labelTooltip,
   listStyle,
+  loading,
   loadingText,
   noMatchesText,
   onChange = () => undefined,
@@ -167,7 +85,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
 
   const {
     items: normalizedItems,
-    loading,
+    loading: resolvedItemsLoading,
     fetchItems,
   } = useResolvedItems(initialItems, debounceTimeout);
 
@@ -337,7 +255,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
           focusable={false}
           getToggleButtonProps={getToggleButtonProps}
           isOpen={isOpen}
-          loading={loading}
+          loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
           onClear={handleOnClear}
           selectedItems={[selectedItem]}
@@ -412,7 +330,7 @@ export const SearchableDropdown = <ValueType extends NonNullable<any>>({
         listItems={listItems}
         style={listStyle}
         setListRef={refs.setFloating}
-        loading={loading}
+        loading={loading ?? resolvedItemsLoading}
         loadingText={loadingText}
         noMatchesText={noMatchesText}
         selectedItems={selectedItem !== null ? [selectedItem] : []}
