@@ -3,8 +3,8 @@
 
 .eds-base-card {
   display: flex;
-  box-shadow: 0.375rem 0.375rem 0.625rem var(--transparent-ebony-alpha15),
-    0.1875rem 0.1875rem 0.375rem var(--transparent-ebony-alpha35) 0.0625rem 0.0625rem 0.125rem 0rem var(--transparent-ebony-alpha20);
+  box-shadow: 6px 6px 10px 0px var(--components-layout-card-standard-shadowlayer3), 3px 3px 6px 0px var(--components-layout-card-standard-shadowlayer2),
+    1px 1px 2px 0px var(--components-layout-card-standard-shadowlayer1);
   background-color: var(--components-layout-card-standard-fill-default-solid);
   border: t.$border-widths-small solid var(--components-layout-card-standard-border-default);
   color: var(--components-layout-card-standard-text);

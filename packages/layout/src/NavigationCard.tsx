@@ -65,7 +65,9 @@ export const NavigationCard = <
             <Heading3 as="span">{title}</Heading3>
           </span>
         </div>
-        <div className="eds-navigation-card-header__highlight"></div>
+        {!compact && (
+          <div className="eds-navigation-card-header__highlight"></div>
+        )}
       </div>
       {!compact && (
         <>
