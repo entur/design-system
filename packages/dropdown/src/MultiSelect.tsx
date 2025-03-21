@@ -23,7 +23,7 @@ import {
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { useRandomId } from '@entur/utils';
+import { mergeRefs, useRandomId } from '@entur/utils';
 
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
@@ -107,435 +107,442 @@ export type MultiSelectProps<ValueType> = Omit<
   ariaLabelJumpToInput?: string;
 };
 
-export const MultiSelect = <ValueType extends NonNullable<any>>({
-  className,
-  clearable = true,
-  clearInputOnSelect = false,
-  debounceTimeout,
-  disabled = false,
-  disableLabelAnimation,
-  feedback,
-  hideSelectAll = false,
-  items: initialItems,
-  itemFilter = isFunctionWithQueryArgument(initialItems)
-    ? noFilter
-    : lowerCaseFilterTest,
-  label,
-  labelAllItemsSelected = 'Alle valgt',
-  labelClearAllItems = 'Fjern valgte',
-  labelSelectAll = 'Velg alle',
-  labelTooltip,
-  listStyle,
-  loading,
-  loadingText,
-  maxChips = 10,
-  noMatchesText,
-  onChange = () => undefined,
-  placeholder,
-  readOnly = false,
-  selectedItems = [],
-  selectOnBlur = false,
-  selectOnTab = false,
-  style,
-  variant = 'information',
-  ariaLabelChosenSingular,
-  ariaLabelChosenPlural = 'valgte',
-  ariaLabelCloseList,
-  ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
-  ariaLabelOpenList,
-  ariaLabelRemoveSelected = 'trykk for å fjerne valg',
-  ariaLabelSelectedItem,
-  ...rest
-}: MultiSelectProps<ValueType>) => {
-  const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
+export const MultiSelect = React.forwardRef(
+  <ValueType extends NonNullable<any>>(
+    {
+      className,
+      clearable = true,
+      clearInputOnSelect = false,
+      debounceTimeout,
+      disabled = false,
+      disableLabelAnimation,
+      feedback,
+      hideSelectAll = false,
+      items: initialItems,
+      itemFilter = isFunctionWithQueryArgument(initialItems)
+        ? noFilter
+        : lowerCaseFilterTest,
+      label,
+      labelAllItemsSelected = 'Alle valgt',
+      labelClearAllItems = 'Fjern valgte',
+      labelSelectAll = 'Velg alle',
+      labelTooltip,
+      listStyle,
+      loading,
+      loadingText,
+      maxChips = 10,
+      noMatchesText,
+      onChange = () => undefined,
+      placeholder,
+      readOnly = false,
+      selectedItems = [],
+      selectOnBlur = false,
+      selectOnTab = false,
+      style,
+      variant = 'information',
+      ariaLabelChosenSingular,
+      ariaLabelChosenPlural = 'valgte',
+      ariaLabelCloseList,
+      ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
+      ariaLabelOpenList,
+      ariaLabelRemoveSelected = 'trykk for å fjerne valg',
+      ariaLabelSelectedItem,
+      ...rest
+    }: MultiSelectProps<ValueType>,
+    ref: React.ForwardedRef<HTMLInputElement>,
+  ) => {
+    const [lastHighlightedIndex, setLastHighlightedIndex] = React.useState(0);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    //@ts-expect-error this is done to aid developers debug wrong prop usage
-    if (rest.selectedItem !== undefined)
-      console.warn(
-        "Incorrect 'selectedItem' prop found, did you mean to use 'selectedItems?",
+    useEffect(() => {
+      //@ts-expect-error this is done to aid developers debug wrong prop usage
+      if (rest.selectedItem !== undefined)
+        console.warn(
+          "Incorrect 'selectedItem' prop found, did you mean to use 'selectedItems?",
+        );
+      //@ts-expect-error selectedItem should not actually exist in rest
+    }, [rest.selectedItem]);
+
+    const {
+      items: normalizedItems,
+      loading: resolvedItemsLoading,
+      fetchItems,
+    } = useResolvedItems(initialItems, debounceTimeout);
+
+    const isAllNonAsyncItemsSelected =
+      typeof initialItems !== 'function' &&
+      selectedItems.length === normalizedItems.length;
+
+    // special 'item' used as Select All entry in the dropdown list
+    const selectAll: NormalizedDropdownItemType<string> = {
+      value: useRandomId('select-all'),
+      label: labelSelectAll,
+    };
+    // special 'item' used as a replacement selected item tag for when
+    // there are more selected element than maxChips
+    const summarySelectedItems: NormalizedDropdownItemType<string> =
+      React.useMemo(
+        () => ({
+          value: EMPTY_INPUT,
+          label: isAllNonAsyncItemsSelected
+            ? labelAllItemsSelected
+            : selectedItems.length + ' ' + ariaLabelChosenPlural,
+        }),
+        [
+          isAllNonAsyncItemsSelected,
+          selectedItems,
+          labelAllItemsSelected,
+          ariaLabelChosenPlural,
+        ],
       );
-    //@ts-expect-error selectedItem should not actually exist in rest
-  }, [rest.selectedItem]);
 
-  const {
-    items: normalizedItems,
-    loading: resolvedItemsLoading,
-    fetchItems,
-  } = useResolvedItems(initialItems, debounceTimeout);
-
-  const isAllNonAsyncItemsSelected =
-    typeof initialItems !== 'function' &&
-    selectedItems.length === normalizedItems.length;
-
-  // special 'item' used as Select All entry in the dropdown list
-  const selectAll: NormalizedDropdownItemType<string> = {
-    value: useRandomId('select-all'),
-    label: labelSelectAll,
-  };
-  // special 'item' used as a replacement selected item tag for when
-  // there are more selected element than maxChips
-  const summarySelectedItems: NormalizedDropdownItemType<string> =
-    React.useMemo(
-      () => ({
-        value: EMPTY_INPUT,
-        label: isAllNonAsyncItemsSelected
-          ? labelAllItemsSelected
-          : selectedItems.length + ' ' + ariaLabelChosenPlural,
-      }),
-      [
-        isAllNonAsyncItemsSelected,
-        selectedItems,
-        labelAllItemsSelected,
-        ariaLabelChosenPlural,
-      ],
-    );
-
-  const [listItems, setListItems] = useState([
-    ...(!hideSelectAll ? [selectAll] : []),
-    ...normalizedItems,
-  ]);
-
-  const filterListItems = ({ inputValue }: { inputValue: string }) =>
-    setListItems([
+    const [listItems, setListItems] = useState([
       ...(!hideSelectAll ? [selectAll] : []),
-      ...normalizedItems.filter(item => itemFilter(item, inputValue)),
+      ...normalizedItems,
     ]);
 
-  const updateListItems = ({ inputValue }: { inputValue?: string }) => {
-    const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
-    if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
+    const filterListItems = ({ inputValue }: { inputValue: string }) =>
+      setListItems([
+        ...(!hideSelectAll ? [selectAll] : []),
+        ...normalizedItems.filter(item => itemFilter(item, inputValue)),
+      ]);
 
-    filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
-  };
+    const updateListItems = ({ inputValue }: { inputValue?: string }) => {
+      const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
+      if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
 
-  React.useEffect(() => {
-    filterListItems({ inputValue });
-  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+      filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
+    };
 
-  const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
-    useMultiselectUtils<ValueType>({
-      listItems,
-      selectAll,
+    React.useEffect(() => {
+      filterListItems({ inputValue });
+    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
+      useMultiselectUtils<ValueType>({
+        listItems,
+        selectAll,
+        selectedItems,
+      });
+
+    const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
       selectedItems,
+      // @ts-expect-error prop missing from library types
+      itemToString,
+      itemToKey,
+      onStateChange({ selectedItems: newSelectedItems, type }) {
+        switch (type) {
+          case useMultipleSelection.stateChangeTypes
+            .SelectedItemKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes
+            .FunctionRemoveSelectedItem: {
+            if (newSelectedItems !== undefined) onChange(newSelectedItems);
+            break;
+          }
+          default:
+            break;
+        }
+      },
     });
 
-  const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
-    selectedItems,
-    // @ts-expect-error prop missing from library types
-    itemToString,
-    itemToKey,
-    onStateChange({ selectedItems: newSelectedItems, type }) {
-      switch (type) {
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem: {
-          if (newSelectedItems !== undefined) onChange(newSelectedItems);
-          break;
+    const stateReducer = React.useCallback(
+      (
+        _,
+        {
+          changes,
+          type,
+        }: UseComboboxStateChangeOptions<
+          NormalizedDropdownItemType<ValueType | string>
+        >,
+      ) => {
+        if (
+          changes.highlightedIndex !== undefined &&
+          changes?.highlightedIndex >= 0
+        ) {
+          setLastHighlightedIndex(changes?.highlightedIndex);
         }
-        default:
-          break;
-      }
-    },
-  });
 
-  const stateReducer = React.useCallback(
-    (
-      _,
-      {
-        changes,
-        type,
-      }: UseComboboxStateChangeOptions<
-        NormalizedDropdownItemType<ValueType | string>
-      >,
-    ) => {
-      if (
-        changes.highlightedIndex !== undefined &&
-        changes?.highlightedIndex >= 0
-      ) {
-        setLastHighlightedIndex(changes?.highlightedIndex);
-      }
-
-      switch (type) {
-        // keep menu open and edit input value on item selection
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.ItemClick: {
-          if (clearInputOnSelect) {
-            updateListItems({ inputValue: EMPTY_INPUT });
-          }
-          return {
-            ...changes,
-            isOpen: true,
-            inputValue: clearInputOnSelect
-              ? EMPTY_INPUT
-              : inputRef?.current?.value ?? EMPTY_INPUT,
-          };
-        }
-        // edit input value when selected items is updated outside component
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
-          return {
-            ...changes,
-            inputValue: inputRef?.current?.value ?? EMPTY_INPUT,
-          };
-        }
-        // remove leading whitespace, select item with spacebar if input is empty and filter list items
-        case useCombobox.stateChangeTypes.InputChange: {
-          const leadingWhitespaceTest = /^\s+/g;
-          const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
-          if (changes.inputValue?.match(leadingWhitespaceTest)) {
-            setInputValue(
-              changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
-            );
-
-            if (isSpacePressedOnEmptyInput) {
-              openMenu();
-
-              if (isOpen && changes.highlightedIndex !== undefined) {
-                handleListItemClicked({
-                  clickedItem: listItems[changes.highlightedIndex],
-                  onChange,
-                });
-              }
+        switch (type) {
+          // keep menu open and edit input value on item selection
+          case useCombobox.stateChangeTypes.InputKeyDownEnter:
+          case useCombobox.stateChangeTypes.ItemClick: {
+            if (clearInputOnSelect) {
+              updateListItems({ inputValue: EMPTY_INPUT });
             }
-          } else {
-            updateListItems({ inputValue: changes.inputValue });
-            // set highlighted item to first item after search
-            setLastHighlightedIndex(hideSelectAll ? 0 : 1);
-            return { ...changes, highlightedIndex: hideSelectAll ? 0 : 1 };
+            return {
+              ...changes,
+              isOpen: true,
+              inputValue: clearInputOnSelect
+                ? EMPTY_INPUT
+                : inputRef?.current?.value ?? EMPTY_INPUT,
+            };
           }
+          // edit input value when selected items is updated outside component
+          case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem: {
+            return {
+              ...changes,
+              inputValue: inputRef?.current?.value ?? EMPTY_INPUT,
+            };
+          }
+          // remove leading whitespace, select item with spacebar if input is empty and filter list items
+          case useCombobox.stateChangeTypes.InputChange: {
+            const leadingWhitespaceTest = /^\s+/g;
+            const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
+            if (changes.inputValue?.match(leadingWhitespaceTest)) {
+              setInputValue(
+                changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+              );
 
-          return changes;
+              if (isSpacePressedOnEmptyInput) {
+                openMenu();
+
+                if (isOpen && changes.highlightedIndex !== undefined) {
+                  handleListItemClicked({
+                    clickedItem: listItems[changes.highlightedIndex],
+                    onChange,
+                  });
+                }
+              }
+            } else {
+              updateListItems({ inputValue: changes.inputValue });
+              // set highlighted item to first item after search
+              setLastHighlightedIndex(hideSelectAll ? 0 : 1);
+              return { ...changes, highlightedIndex: hideSelectAll ? 0 : 1 };
+            }
+
+            return changes;
+          }
+          // reset input value when leaving input field
+          case useCombobox.stateChangeTypes.InputBlur: {
+            updateListItems({ inputValue: EMPTY_INPUT });
+            return {
+              ...changes,
+              inputValue: EMPTY_INPUT,
+            };
+          }
+          default:
+            return changes;
         }
-        // reset input value when leaving input field
-        case useCombobox.stateChangeTypes.InputBlur: {
-          updateListItems({ inputValue: EMPTY_INPUT });
-          return {
-            ...changes,
-            inputValue: EMPTY_INPUT,
-          };
+      },
+      [hideSelectAll, normalizedItems, filterListItems, initialItems], // eslint-disable-line react-hooks/exhaustive-deps
+    );
+
+    const {
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      getMenuProps,
+      getToggleButtonProps,
+      highlightedIndex,
+      inputValue,
+      isOpen,
+      openMenu,
+      setInputValue,
+    } = useCombobox({
+      defaultHighlightedIndex: lastHighlightedIndex, // after selection, highlight previously selected item.
+      items: listItems,
+      itemToString,
+      selectedItem: null,
+      stateReducer,
+      onStateChange({ type, selectedItem: clickedItem }) {
+        // clickedItem means item chosen either via mouse or keyboard
+        if (!clickedItem) return;
+
+        switch (type) {
+          // @ts-expect-error This falltrough is wanted
+          case useCombobox.stateChangeTypes.InputBlur:
+            if (!selectOnBlur) break;
+          case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
+          case useCombobox.stateChangeTypes.ItemClick: {
+            handleListItemClicked({
+              clickedItem,
+              onChange,
+            });
+          }
         }
-        default:
-          return changes;
-      }
-    },
-    [hideSelectAll, normalizedItems, filterListItems, initialItems], // eslint-disable-line react-hooks/exhaustive-deps
-  );
+      },
+      // Accessibility
+      getA11yStatusMessage: options =>
+        getA11yStatusMessage({
+          ...options,
+          selectAllItemIncluded: !hideSelectAll,
+          resultCount: listItems.length,
+        }),
+      ...rest,
+    });
 
-  const {
-    getInputProps,
-    getItemProps,
-    getLabelProps,
-    getMenuProps,
-    getToggleButtonProps,
-    highlightedIndex,
-    inputValue,
-    isOpen,
-    openMenu,
-    setInputValue,
-  } = useCombobox({
-    defaultHighlightedIndex: lastHighlightedIndex, // after selection, highlight previously selected item.
-    items: listItems,
-    itemToString,
-    selectedItem: null,
-    stateReducer,
-    onStateChange({ type, selectedItem: clickedItem }) {
-      // clickedItem means item chosen either via mouse or keyboard
-      if (!clickedItem) return;
+    // calculations for floating-UI popover position
+    const { refs, floatingStyles } = useFloating({
+      open: isOpen,
+      whileElementsMounted: (ref, float, update) =>
+        autoUpdate(ref, float, update, { elementResize: false }),
+      placement: 'bottom-start',
+      middleware: [
+        offset(space.extraSmall2),
+        shift({ padding: space.extraSmall }),
+        size({
+          apply({ rects, elements, availableHeight }) {
+            Object.assign(elements.floating.style, {
+              minWidth: `${rects.reference.width}px`,
+              // Floating will flip when smaller than 10*16 px
+              // and never exceed 20*16 px.
+              maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+            });
+          },
+        }),
+        flip({ fallbackStrategy: 'initialPlacement' }),
+      ],
+    });
 
-      switch (type) {
-        // @ts-expect-error This falltrough is wanted
-        case useCombobox.stateChangeTypes.InputBlur:
-          if (!selectOnBlur) break;
-        case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
-        case useCombobox.stateChangeTypes.ItemClick: {
-          handleListItemClicked({
-            clickedItem,
-            onChange,
-          });
+    const handleOnClear = () => {
+      onChange([]);
+      setInputValue(EMPTY_INPUT);
+      inputRef.current?.focus();
+      updateListItems({ inputValue });
+    };
+    return (
+      <BaseFormControl
+        append={
+          <FieldAppend
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
+            selectedItems={selectedItems}
+            isOpen={isOpen}
+            clearable={clearable}
+            labelClearSelectedItems={labelClearAllItems}
+            focusable={false}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            disabled={readOnly || disabled}
+            onClear={handleOnClear}
+            getToggleButtonProps={getToggleButtonProps}
+          />
         }
-      }
-    },
-    // Accessibility
-    getA11yStatusMessage: options =>
-      getA11yStatusMessage({
-        ...options,
-        selectAllItemIncluded: !hideSelectAll,
-        resultCount: listItems.length,
-      }),
-    ...rest,
-  });
-
-  // calculations for floating-UI popover position
-  const { refs, floatingStyles } = useFloating({
-    open: isOpen,
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update, { elementResize: false }),
-    placement: 'bottom-start',
-    middleware: [
-      offset(space.extraSmall2),
-      shift({ padding: space.extraSmall }),
-      size({
-        apply({ rects, elements, availableHeight }) {
-          Object.assign(elements.floating.style, {
-            minWidth: `${rects.reference.width}px`,
-            // Floating will flip when smaller than 10*16 px
-            // and never exceed 20*16 px.
-            maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
-          });
-        },
-      }),
-      flip({ fallbackStrategy: 'initialPlacement' }),
-    ],
-  });
-
-  const handleOnClear = () => {
-    onChange([]);
-    setInputValue(EMPTY_INPUT);
-    inputRef.current?.focus();
-    updateListItems({ inputValue });
-  };
-  return (
-    <BaseFormControl
-      append={
-        <FieldAppend
-          ariaLabelCloseList={ariaLabelCloseList}
-          ariaLabelOpenList={ariaLabelOpenList}
-          selectedItems={selectedItems}
+        className={classNames(
+          'eds-dropdown',
+          'eds-dropdown--multiselect',
+          className,
+          { 'eds-dropdown--has-tooltip': labelTooltip !== undefined },
+        )}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget) inputRef.current?.focus();
+        }}
+        readOnly={readOnly}
+        ref={refs.setReference}
+        style={style}
+        variant={variant}
+        {...rest}
+      >
+        <div
+          className={classNames(
+            'eds-dropdown--multiselect__selected-items-and-input',
+            {
+              'eds-dropdown--multiselect__selected-items-and-input--filled':
+                hasSelectedItems,
+            },
+          )}
+          onClick={e => {
+            if (e.target === e.currentTarget) openMenu();
+          }}
+        >
+          {selectedItems.length <= maxChips ? (
+            <>
+              {selectedItems.length > 1 ? (
+                <VisuallyHidden onClick={() => inputRef.current?.focus()}>
+                  {ariaLabelJumpToInput}
+                </VisuallyHidden>
+              ) : (
+                <></>
+              )}
+              {selectedItems.map((selectedItem, index) => (
+                <SelectedItemTag
+                  ariaLabelChosen={ariaLabelChosenSingular}
+                  ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                  disabled={disabled}
+                  getSelectedItemProps={getSelectedItemProps}
+                  index={index}
+                  key={
+                    selectedItem?.label +
+                    (typeof selectedItem?.value === 'string'
+                      ? selectedItem.value
+                      : '')
+                  }
+                  readOnly={readOnly}
+                  removeSelectedItem={() => {
+                    handleListItemClicked({
+                      clickedItem: selectedItem,
+                      onChange,
+                    });
+                    inputRef?.current?.focus();
+                  }}
+                  selectedItem={selectedItem}
+                />
+              ))}
+            </>
+          ) : (
+            <SelectedItemTag
+              ariaLabelRemoveSelected={labelClearAllItems}
+              ariaLabelChosen=""
+              disabled={disabled}
+              readOnly={readOnly}
+              removeSelectedItem={handleOnClear}
+              selectedItem={summarySelectedItems}
+            />
+          )}
+          <input
+            placeholder={placeholder}
+            className="eds-dropdown__input eds-form-control"
+            disabled={readOnly || disabled}
+            {...getInputProps({
+              onKeyDown: (e: React.KeyboardEvent) => {
+                if (selectOnTab && isOpen && e.key === 'Tab') {
+                  const highlitedItem = listItems[highlightedIndex];
+                  // we don't want to clear selection with tab
+                  if (highlitedItem) {
+                    handleListItemClicked({
+                      clickedItem: highlitedItem,
+                      onChange,
+                    });
+                  }
+                }
+              },
+              ...getDropdownProps({
+                preventKeyAction: isOpen,
+                value: inputValue ?? EMPTY_INPUT,
+                ref: mergeRefs(inputRef, ref),
+              }),
+            })}
+          />
+        </div>
+        <DropdownList
+          ariaLabelChosenSingular={ariaLabelChosenSingular}
+          ariaLabelSelectedItem={ariaLabelSelectedItem}
+          floatingStyles={floatingStyles}
+          getItemProps={getItemProps}
+          getMenuProps={getMenuProps}
+          highlightedIndex={highlightedIndex}
           isOpen={isOpen}
-          clearable={clearable}
-          labelClearSelectedItems={labelClearAllItems}
-          focusable={false}
+          listItems={listItems}
+          style={listStyle}
+          setListRef={refs.setFloating}
           loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
-          disabled={readOnly || disabled}
-          onClear={handleOnClear}
-          getToggleButtonProps={getToggleButtonProps}
+          noMatchesText={noMatchesText}
+          selectAllCheckboxState={selectAllCheckboxState}
+          selectAllItem={selectAll}
+          selectedItems={selectedItems}
         />
-      }
-      className={classNames(
-        'eds-dropdown',
-        'eds-dropdown--multiselect',
-        className,
-        { 'eds-dropdown--has-tooltip': labelTooltip !== undefined },
-      )}
-      disabled={disabled}
-      disableLabelAnimation={disableLabelAnimation}
-      feedback={feedback}
-      isFilled={hasSelectedItems || inputValue !== EMPTY_INPUT}
-      label={label}
-      labelId={getLabelProps().id}
-      labelProps={getLabelProps()}
-      labelTooltip={labelTooltip}
-      onClick={(e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) inputRef.current?.focus();
-      }}
-      readOnly={readOnly}
-      ref={refs.setReference}
-      style={style}
-      variant={variant}
-      {...rest}
-    >
-      <div
-        className={classNames(
-          'eds-dropdown--multiselect__selected-items-and-input',
-          {
-            'eds-dropdown--multiselect__selected-items-and-input--filled':
-              hasSelectedItems,
-          },
-        )}
-        onClick={e => {
-          if (e.target === e.currentTarget) openMenu();
-        }}
-      >
-        {selectedItems.length <= maxChips ? (
-          <>
-            {selectedItems.length > 1 ? (
-              <VisuallyHidden onClick={() => inputRef.current?.focus()}>
-                {ariaLabelJumpToInput}
-              </VisuallyHidden>
-            ) : (
-              <></>
-            )}
-            {selectedItems.map((selectedItem, index) => (
-              <SelectedItemTag
-                ariaLabelChosen={ariaLabelChosenSingular}
-                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
-                disabled={disabled}
-                getSelectedItemProps={getSelectedItemProps}
-                index={index}
-                key={
-                  selectedItem?.label +
-                  (typeof selectedItem?.value === 'string'
-                    ? selectedItem.value
-                    : '')
-                }
-                readOnly={readOnly}
-                removeSelectedItem={() => {
-                  handleListItemClicked({
-                    clickedItem: selectedItem,
-                    onChange,
-                  });
-                  inputRef?.current?.focus();
-                }}
-                selectedItem={selectedItem}
-              />
-            ))}
-          </>
-        ) : (
-          <SelectedItemTag
-            ariaLabelRemoveSelected={labelClearAllItems}
-            ariaLabelChosen=""
-            disabled={disabled}
-            readOnly={readOnly}
-            removeSelectedItem={handleOnClear}
-            selectedItem={summarySelectedItems}
-          />
-        )}
-        <input
-          placeholder={placeholder}
-          className="eds-dropdown__input eds-form-control"
-          disabled={readOnly || disabled}
-          {...getInputProps({
-            onKeyDown: (e: React.KeyboardEvent) => {
-              if (selectOnTab && isOpen && e.key === 'Tab') {
-                const highlitedItem = listItems[highlightedIndex];
-                // we don't want to clear selection with tab
-                if (highlitedItem) {
-                  handleListItemClicked({
-                    clickedItem: highlitedItem,
-                    onChange,
-                  });
-                }
-              }
-            },
-            ...getDropdownProps({
-              preventKeyAction: isOpen,
-              value: inputValue ?? EMPTY_INPUT,
-              ref: inputRef,
-            }),
-          })}
-        />
-      </div>
-      <DropdownList
-        ariaLabelChosenSingular={ariaLabelChosenSingular}
-        ariaLabelSelectedItem={ariaLabelSelectedItem}
-        floatingStyles={floatingStyles}
-        getItemProps={getItemProps}
-        getMenuProps={getMenuProps}
-        highlightedIndex={highlightedIndex}
-        isOpen={isOpen}
-        listItems={listItems}
-        style={listStyle}
-        setListRef={refs.setFloating}
-        loading={loading ?? resolvedItemsLoading}
-        loadingText={loadingText}
-        noMatchesText={noMatchesText}
-        selectAllCheckboxState={selectAllCheckboxState}
-        selectAllItem={selectAll}
-        selectedItems={selectedItems}
-      />
-    </BaseFormControl>
-  );
-};
+      </BaseFormControl>
+    );
+  },
+);

@@ -32,6 +32,7 @@ import {
 import { NormalizedDropdownItemType } from './types';
 
 import './Dropdown.scss';
+import { mergeRefs } from '@entur/utils';
 
 export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
@@ -54,302 +55,310 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
    */
 };
 
-export const SearchableDropdown = <ValueType extends NonNullable<any>>({
-  ariaLabelChosenSingular,
-  ariaLabelCloseList,
-  ariaLabelOpenList,
-  ariaLabelSelectedItem,
-  className,
-  clearable = true,
-  debounceTimeout,
-  disabled = false,
-  disableLabelAnimation = false,
-  feedback,
-  items: initialItems,
-  itemFilter = isFunctionWithQueryArgument(initialItems)
-    ? noFilter
-    : lowerCaseFilterTest,
-  label,
-  labelClearSelectedItem = 'fjern valgt',
-  labelTooltip,
-  listStyle,
-  loading,
-  loadingText,
-  noMatchesText,
-  onChange = () => undefined,
-  placeholder,
-  prepend,
-  readOnly = false,
-  selectedItem: value,
-  selectOnBlur = false,
-  selectOnTab = false,
-  style,
-  variant = 'info',
-  ...rest
-}: SearchableDropdownProps<ValueType>) => {
-  const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
-  const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
+export const SearchableDropdown = React.forwardRef(
+  <ValueType extends NonNullable<any>>(
+    {
+      ariaLabelChosenSingular,
+      ariaLabelCloseList,
+      ariaLabelOpenList,
+      ariaLabelSelectedItem,
+      className,
+      clearable = true,
+      debounceTimeout,
+      disabled = false,
+      disableLabelAnimation = false,
+      feedback,
+      items: initialItems,
+      itemFilter = isFunctionWithQueryArgument(initialItems)
+        ? noFilter
+        : lowerCaseFilterTest,
+      label,
+      labelClearSelectedItem = 'fjern valgt',
+      labelTooltip,
+      listStyle,
+      loading,
+      loadingText,
+      noMatchesText,
+      onChange = () => undefined,
+      placeholder,
+      prepend,
+      readOnly = false,
+      selectedItem: value,
+      selectOnBlur = false,
+      selectOnTab = false,
+      style,
+      variant = 'info',
+      ...rest
+    }: SearchableDropdownProps<ValueType>,
+    ref: React.ForwardedRef<HTMLInputElement>,
+  ) => {
+    const [showSelectedItem, setShowSelectedItem] = useState(value !== null);
+    const [lastHighlightedIndex, setLastHighlightedIndex] = useState(0);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  const {
-    items: normalizedItems,
-    loading: resolvedItemsLoading,
-    fetchItems,
-  } = useResolvedItems(initialItems, debounceTimeout);
+    const {
+      items: normalizedItems,
+      loading: resolvedItemsLoading,
+      fetchItems,
+    } = useResolvedItems(initialItems, debounceTimeout);
 
-  const [listItems, setListItems] = useState(normalizedItems);
+    const [listItems, setListItems] = useState(normalizedItems);
 
-  const filterListItems = ({ inputValue }: { inputValue: string }) =>
-    setListItems(normalizedItems.filter(item => itemFilter(item, inputValue)));
+    const filterListItems = ({ inputValue }: { inputValue: string }) =>
+      setListItems(
+        normalizedItems.filter(item => itemFilter(item, inputValue)),
+      );
 
-  const updateListItems = ({ inputValue }: { inputValue?: string }) => {
-    const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
-    if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
+    const updateListItems = ({ inputValue }: { inputValue?: string }) => {
+      const shouldRefetchItems = isFunctionWithQueryArgument(initialItems);
+      if (shouldRefetchItems) fetchItems(inputValue ?? EMPTY_INPUT);
 
-    filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
-  };
+      filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
+    };
 
-  const inputHasFocus =
-    typeof document !== 'undefined'
-      ? inputRef?.current === document?.activeElement
-      : false;
+    const inputHasFocus =
+      typeof document !== 'undefined'
+        ? inputRef?.current === document?.activeElement
+        : false;
 
-  useEffect(() => {
-    filterListItems({ inputValue });
-  }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => {
+      filterListItems({ inputValue });
+    }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    // sync internal state on initial render
-    if (selectedItem !== null && !inputHasFocus) {
-      setShowSelectedItem(true);
-      updateListItems({ inputValue: EMPTY_INPUT });
-      setInputValue(EMPTY_INPUT);
-    }
-  }, []);
-
-  const stateReducer = useCallback(
-    (
-      _,
-      {
-        type,
-        changes,
-      }: UseComboboxStateChangeOptions<NormalizedDropdownItemType<ValueType>>,
-    ) => {
-      if (
-        changes.highlightedIndex !== undefined &&
-        changes?.highlightedIndex >= 0
-      ) {
-        setLastHighlightedIndex(changes?.highlightedIndex);
+    useEffect(() => {
+      // sync internal state on initial render
+      if (selectedItem !== null && !inputHasFocus) {
+        setShowSelectedItem(true);
+        updateListItems({ inputValue: EMPTY_INPUT });
+        setInputValue(EMPTY_INPUT);
       }
+    }, []);
 
-      switch (type) {
-        // empty input to show selected item and reset dropdown list on item selection
-        case useCombobox.stateChangeTypes.ItemClick:
-        case useCombobox.stateChangeTypes.InputKeyDownEnter:
-        case useCombobox.stateChangeTypes.InputBlur: {
-          updateListItems({ inputValue: EMPTY_INPUT });
-          return {
-            ...changes,
-            inputValue: EMPTY_INPUT,
-          };
+    const stateReducer = useCallback(
+      (
+        _,
+        {
+          type,
+          changes,
+        }: UseComboboxStateChangeOptions<NormalizedDropdownItemType<ValueType>>,
+      ) => {
+        if (
+          changes.highlightedIndex !== undefined &&
+          changes?.highlightedIndex >= 0
+        ) {
+          setLastHighlightedIndex(changes?.highlightedIndex);
         }
-        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-          if (changes.selectedItem !== null && !inputHasFocus)
-            setShowSelectedItem(true);
-          updateListItems({ inputValue: EMPTY_INPUT });
-          return {
-            ...changes,
-            inputValue: EMPTY_INPUT,
-          };
-        // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
-        case useCombobox.stateChangeTypes.InputChange: {
-          const leadingWhitespaceTest = /^\s+/g;
-          const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
-          if (changes.inputValue?.match(leadingWhitespaceTest)) {
-            setInputValue(
-              changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
-            );
 
-            if (isSpacePressedOnEmptyInput) {
-              openMenu();
-
-              if (isOpen && changes.highlightedIndex !== undefined) {
-                onChange(listItems[changes.highlightedIndex]);
-              }
-            }
-          } else {
-            updateListItems({ inputValue: changes.inputValue });
-            setHighlightedIndex(0);
-            setLastHighlightedIndex(0);
+        switch (type) {
+          // empty input to show selected item and reset dropdown list on item selection
+          case useCombobox.stateChangeTypes.ItemClick:
+          case useCombobox.stateChangeTypes.InputKeyDownEnter:
+          case useCombobox.stateChangeTypes.InputBlur: {
+            updateListItems({ inputValue: EMPTY_INPUT });
+            return {
+              ...changes,
+              inputValue: EMPTY_INPUT,
+            };
           }
-          return changes;
+          case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+            if (changes.selectedItem !== null && !inputHasFocus)
+              setShowSelectedItem(true);
+            updateListItems({ inputValue: EMPTY_INPUT });
+            return {
+              ...changes,
+              inputValue: EMPTY_INPUT,
+            };
+          // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
+          case useCombobox.stateChangeTypes.InputChange: {
+            const leadingWhitespaceTest = /^\s+/g;
+            const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
+            if (changes.inputValue?.match(leadingWhitespaceTest)) {
+              setInputValue(
+                changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+              );
+
+              if (isSpacePressedOnEmptyInput) {
+                openMenu();
+
+                if (isOpen && changes.highlightedIndex !== undefined) {
+                  onChange(listItems[changes.highlightedIndex]);
+                }
+              }
+            } else {
+              updateListItems({ inputValue: changes.inputValue });
+              setHighlightedIndex(0);
+              setLastHighlightedIndex(0);
+            }
+            return changes;
+          }
+          default:
+            return changes;
         }
-        default:
-          return changes;
-      }
-    },
-    [fetchItems, filterListItems], // eslint-disable-line react-hooks/exhaustive-deps
-  );
+      },
+      [fetchItems, filterListItems], // eslint-disable-line react-hooks/exhaustive-deps
+    );
 
-  const {
-    isOpen,
-    openMenu,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    getInputProps,
-    highlightedIndex,
-    setHighlightedIndex,
-    getItemProps,
-    selectedItem,
-    inputValue,
-    setInputValue,
-  } = useCombobox({
-    defaultHighlightedIndex: lastHighlightedIndex,
-    items: listItems,
-    itemToString,
-    selectedItem: value,
-    stateReducer,
-    onStateChange({ type, selectedItem: newSelectedItem }) {
-      switch (type) {
-        // @ts-expect-error This falltrough is wanted
-        case useCombobox.stateChangeTypes.InputBlur:
-          if (!selectOnBlur) break;
-        case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
-        case useCombobox.stateChangeTypes.ItemClick:
-          if (newSelectedItem === undefined) return;
-          onChange(newSelectedItem ?? null);
-      }
-    },
-    // Accessibility
-    getA11yStatusMessage: options =>
-      getA11yStatusMessage({ ...options, resultCount: listItems.length }),
-    ...rest,
-  });
+    const {
+      isOpen,
+      openMenu,
+      getToggleButtonProps,
+      getLabelProps,
+      getMenuProps,
+      getInputProps,
+      highlightedIndex,
+      setHighlightedIndex,
+      getItemProps,
+      selectedItem,
+      inputValue,
+      setInputValue,
+    } = useCombobox({
+      defaultHighlightedIndex: lastHighlightedIndex,
+      items: listItems,
+      itemToString,
+      selectedItem: value,
+      stateReducer,
+      onStateChange({ type, selectedItem: newSelectedItem }) {
+        switch (type) {
+          // @ts-expect-error This falltrough is wanted
+          case useCombobox.stateChangeTypes.InputBlur:
+            if (!selectOnBlur) break;
+          case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
+          case useCombobox.stateChangeTypes.ItemClick:
+            if (newSelectedItem === undefined) return;
+            onChange(newSelectedItem ?? null);
+        }
+      },
+      // Accessibility
+      getA11yStatusMessage: options =>
+        getA11yStatusMessage({ ...options, resultCount: listItems.length }),
+      ...rest,
+    });
 
-  // calculations for floating-UI popover position
-  const { refs, floatingStyles } = useFloating({
-    open: isOpen,
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update, { elementResize: false }),
-    placement: 'bottom-start',
-    middleware: [
-      offset(space.extraSmall2),
-      shift({ padding: space.extraSmall }),
-      size({
-        apply({ rects, elements, availableHeight }) {
-          Object.assign(elements.floating.style, {
-            minWidth: `${rects.reference.width}px`,
-            // Floating will flip when smaller than 10*16 px
-            // and never exceed 20*16 px.
-            maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
-          });
-        },
-      }),
-      flip({ fallbackStrategy: 'initialPlacement' }),
-    ],
-  });
+    // calculations for floating-UI popover position
+    const { refs, floatingStyles } = useFloating({
+      open: isOpen,
+      whileElementsMounted: (ref, float, update) =>
+        autoUpdate(ref, float, update, { elementResize: false }),
+      placement: 'bottom-start',
+      middleware: [
+        offset(space.extraSmall2),
+        shift({ padding: space.extraSmall }),
+        size({
+          apply({ rects, elements, availableHeight }) {
+            Object.assign(elements.floating.style, {
+              minWidth: `${rects.reference.width}px`,
+              // Floating will flip when smaller than 10*16 px
+              // and never exceed 20*16 px.
+              maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+            });
+          },
+        }),
+        flip({ fallbackStrategy: 'initialPlacement' }),
+      ],
+    });
 
-  const handleOnClear = () => {
-    onChange(null);
-    setInputValue(EMPTY_INPUT);
-    inputRef.current?.focus();
-    updateListItems({ inputValue });
-    setShowSelectedItem(false);
-  };
+    const handleOnClear = () => {
+      onChange(null);
+      setInputValue(EMPTY_INPUT);
+      inputRef.current?.focus();
+      updateListItems({ inputValue });
+      setShowSelectedItem(false);
+    };
 
-  return (
-    <BaseFormControl
-      append={
-        <FieldAppend
-          ariaLabelCloseList={ariaLabelCloseList}
-          ariaLabelOpenList={ariaLabelOpenList}
-          clearable={clearable}
-          labelClearSelectedItems={labelClearSelectedItem}
+    return (
+      <BaseFormControl
+        append={
+          <FieldAppend
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
+            clearable={clearable}
+            labelClearSelectedItems={labelClearSelectedItem}
+            disabled={readOnly || disabled}
+            focusable={false}
+            getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            onClear={handleOnClear}
+            selectedItems={[selectedItem]}
+          />
+        }
+        className={classNames(
+          'eds-dropdown',
+          'eds-dropdown--searchable',
+          className,
+          {
+            'eds-dropdown--has-tooltip': labelTooltip !== undefined,
+          },
+        )}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget) inputRef.current?.focus();
+        }}
+        prepend={prepend}
+        readOnly={readOnly}
+        ref={refs.setReference}
+        style={style}
+        variant={variant}
+        {...rest}
+      >
+        <span
+          className={classNames('eds-dropdown--searchable__selected-item', {
+            'eds-dropdown--searchable__selected-item--hidden':
+              !showSelectedItem,
+          })}
+          aria-hidden="true"
+          onClick={() => {
+            inputRef.current?.focus();
+            openMenu();
+          }}
+        >
+          {showSelectedItem ? selectedItem?.label : ''}
+        </span>
+        <input
+          className={classNames('eds-dropdown__input eds-form-control', {
+            'eds-dropdown__input--hidden': showSelectedItem,
+          })}
           disabled={readOnly || disabled}
-          focusable={false}
-          getToggleButtonProps={getToggleButtonProps}
+          placeholder={selectedItem?.label ?? placeholder}
+          {...getInputProps({
+            onBlur: () => {
+              if (selectedItem !== null) setShowSelectedItem(true);
+            },
+            onFocus: () => {
+              setShowSelectedItem(false);
+            },
+            onKeyDown: e => {
+              if (selectOnTab && isOpen && e.key === 'Tab')
+                onChange?.(listItems[highlightedIndex]);
+            },
+            ref: mergeRefs(inputRef, ref),
+          })}
+        />
+        <DropdownList
+          ariaLabelChosenSingular={ariaLabelChosenSingular}
+          ariaLabelSelectedItem={ariaLabelSelectedItem}
+          floatingStyles={floatingStyles}
+          getItemProps={getItemProps}
+          getMenuProps={getMenuProps}
+          highlightedIndex={highlightedIndex}
           isOpen={isOpen}
+          listItems={listItems}
+          style={listStyle}
+          setListRef={refs.setFloating}
           loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
-          onClear={handleOnClear}
-          selectedItems={[selectedItem]}
+          noMatchesText={noMatchesText}
+          selectedItems={selectedItem !== null ? [selectedItem] : []}
         />
-      }
-      className={classNames(
-        'eds-dropdown',
-        'eds-dropdown--searchable',
-        className,
-        {
-          'eds-dropdown--has-tooltip': labelTooltip !== undefined,
-        },
-      )}
-      disabled={disabled}
-      disableLabelAnimation={disableLabelAnimation}
-      feedback={feedback}
-      isFilled={selectedItem !== null || inputValue !== EMPTY_INPUT}
-      label={label}
-      labelId={getLabelProps().id}
-      labelProps={getLabelProps()}
-      labelTooltip={labelTooltip}
-      onClick={(e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) inputRef.current?.focus();
-      }}
-      prepend={prepend}
-      readOnly={readOnly}
-      ref={refs.setReference}
-      style={style}
-      variant={variant}
-      {...rest}
-    >
-      <span
-        className={classNames('eds-dropdown--searchable__selected-item', {
-          'eds-dropdown--searchable__selected-item--hidden': !showSelectedItem,
-        })}
-        aria-hidden="true"
-        onClick={() => {
-          inputRef.current?.focus();
-          openMenu();
-        }}
-      >
-        {showSelectedItem ? selectedItem?.label : ''}
-      </span>
-      <input
-        className={classNames('eds-dropdown__input eds-form-control', {
-          'eds-dropdown__input--hidden': showSelectedItem,
-        })}
-        disabled={readOnly || disabled}
-        placeholder={selectedItem?.label ?? placeholder}
-        {...getInputProps({
-          onBlur: () => {
-            if (selectedItem !== null) setShowSelectedItem(true);
-          },
-          onFocus: () => {
-            setShowSelectedItem(false);
-          },
-          onKeyDown: e => {
-            if (selectOnTab && isOpen && e.key === 'Tab')
-              onChange?.(listItems[highlightedIndex]);
-          },
-          ref: inputRef,
-        })}
-      />
-      <DropdownList
-        ariaLabelChosenSingular={ariaLabelChosenSingular}
-        ariaLabelSelectedItem={ariaLabelSelectedItem}
-        floatingStyles={floatingStyles}
-        getItemProps={getItemProps}
-        getMenuProps={getMenuProps}
-        highlightedIndex={highlightedIndex}
-        isOpen={isOpen}
-        listItems={listItems}
-        style={listStyle}
-        setListRef={refs.setFloating}
-        loading={loading ?? resolvedItemsLoading}
-        loadingText={loadingText}
-        noMatchesText={noMatchesText}
-        selectedItems={selectedItem !== null ? [selectedItem] : []}
-      />
-    </BaseFormControl>
-  );
-};
+      </BaseFormControl>
+    );
+  },
+);
