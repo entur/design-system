@@ -12,7 +12,7 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
-import { VariantType } from '@entur/utils';
+import { mergeRefs, VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
@@ -113,184 +113,189 @@ export type DropdownProps<ValueType> = {
   ariaLabelSelectedItem?: string;
 };
 
-export const Dropdown = <ValueType extends NonNullable<any>>({
-  ariaLabelChosenSingular,
-  ariaLabelCloseList,
-  ariaLabelOpenList,
-  ariaLabelSelectedItem,
-  className,
-  clearable = false,
-  disabled = false,
-  disableLabelAnimation,
-  feedback,
-  items: initialItems,
-  label,
-  labelClearSelectedItem = 'fjern valgt',
-  labelTooltip,
-  listStyle,
-  loading,
-  loadingText,
-  noMatchesText = 'Ingen tilgjengelige valg …',
-  onChange,
-  placeholder,
-  prepend,
-  readOnly = false,
-  selectedItem,
-  selectOnBlur = false,
-  selectOnTab = false,
-  style,
-  variant = 'information',
-  ...rest
-}: DropdownProps<ValueType>) => {
-  const { items: normalizedItems, loading: resolvedItemsLoading } =
-    useResolvedItems(initialItems);
-  const toggleButtonRef = useRef<HTMLDivElement>(null);
-  const isFilled = selectedItem !== null || placeholder !== undefined;
-  const {
-    isOpen,
-    openMenu,
-    getItemProps,
-    getLabelProps,
-    getMenuProps,
-    getToggleButtonProps,
-    highlightedIndex,
-  } = useSelect({
-    items: normalizedItems,
-    defaultHighlightedIndex: selectedItem ? undefined : 0,
-    selectedItem,
-    onStateChange({ type, selectedItem: newSelectedItem }) {
-      switch (type) {
-        // @ts-expect-error This falltrough is wanted
-        case useSelect.stateChangeTypes.ToggleButtonBlur:
-          if (!selectOnBlur) break;
-        case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
-        case useSelect.stateChangeTypes.ToggleButtonKeyDownSpaceButton:
-        case useSelect.stateChangeTypes.ItemClick: {
-          if (newSelectedItem === undefined) return;
-          onChange?.(newSelectedItem ?? null);
+export const Dropdown = React.forwardRef(
+  <ValueType extends NonNullable<any>>(
+    {
+      ariaLabelChosenSingular,
+      ariaLabelCloseList,
+      ariaLabelOpenList,
+      ariaLabelSelectedItem,
+      className,
+      clearable = false,
+      disabled = false,
+      disableLabelAnimation,
+      feedback,
+      items: initialItems,
+      label,
+      labelClearSelectedItem = 'fjern valgt',
+      labelTooltip,
+      listStyle,
+      loading,
+      loadingText,
+      noMatchesText = 'Ingen tilgjengelige valg …',
+      onChange,
+      placeholder,
+      prepend,
+      readOnly = false,
+      selectedItem,
+      selectOnBlur = false,
+      selectOnTab = false,
+      style,
+      variant = 'information',
+      ...rest
+    }: DropdownProps<ValueType>,
+    ref: React.ForwardedRef<HTMLDivElement>,
+  ) => {
+    const { items: normalizedItems, loading: resolvedItemsLoading } =
+      useResolvedItems(initialItems);
+    const toggleButtonRef = useRef<HTMLDivElement>(null);
+    const isFilled = selectedItem !== null || placeholder !== undefined;
+    const {
+      isOpen,
+      getItemProps,
+      getLabelProps,
+      getMenuProps,
+      getToggleButtonProps,
+      highlightedIndex,
+    } = useSelect({
+      items: normalizedItems,
+      defaultHighlightedIndex: selectedItem ? undefined : 0,
+      selectedItem,
+      onStateChange({ type, selectedItem: newSelectedItem }) {
+        switch (type) {
+          // @ts-expect-error This falltrough is wanted
+          case useSelect.stateChangeTypes.ToggleButtonBlur:
+            if (!selectOnBlur) break;
+          case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
+          case useSelect.stateChangeTypes.ToggleButtonKeyDownSpaceButton:
+          case useSelect.stateChangeTypes.ItemClick: {
+            if (newSelectedItem === undefined) return;
+            onChange?.(newSelectedItem ?? null);
+          }
         }
-      }
-    },
-    itemToString,
-  });
+      },
+      itemToString,
+    });
 
-  // calculations for floating-UI popover position
-  const { refs, floatingStyles } = useFloating({
-    open: isOpen,
-    whileElementsMounted: (ref, float, update) =>
-      autoUpdate(ref, float, update, { elementResize: false }),
-    placement: 'bottom-start',
-    middleware: [
-      offset(space.extraSmall2),
-      shift({ padding: space.extraSmall }),
-      size({
-        apply({ rects, elements, availableHeight }) {
-          Object.assign(elements.floating.style, {
-            minWidth: `${rects.reference.width}px`,
-            // Floating will flip when smaller than 10*16 px
-            // and never exceed 20*16 px.
-            maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
-          });
-        },
-      }),
-      flip({ fallbackStrategy: 'initialPlacement' }),
-    ],
-  });
+    // calculations for floating-UI popover position
+    const { refs, floatingStyles } = useFloating({
+      open: isOpen,
+      whileElementsMounted: (ref, float, update) =>
+        autoUpdate(ref, float, update, { elementResize: false }),
+      placement: 'bottom-start',
+      middleware: [
+        offset(space.extraSmall2),
+        shift({ padding: space.extraSmall }),
+        size({
+          apply({ rects, elements, availableHeight }) {
+            Object.assign(elements.floating.style, {
+              minWidth: `${rects.reference.width}px`,
+              // Floating will flip when smaller than 10*16 px
+              // and never exceed 20*16 px.
+              maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+            });
+          },
+        }),
+        flip({ fallbackStrategy: 'initialPlacement' }),
+      ],
+    });
 
-  return (
-    <BaseFormControl
-      append={
-        <FieldAppend
-          ariaHiddenToggleButton={true}
-          ariaLabelCloseList={ariaLabelCloseList}
-          ariaLabelOpenList={ariaLabelOpenList}
-          clearable={clearable}
-          labelClearSelectedItems={labelClearSelectedItem}
-          focusable={false}
-          getToggleButtonProps={getToggleButtonProps}
+    return (
+      <BaseFormControl
+        append={
+          <FieldAppend
+            ariaHiddenToggleButton={true}
+            ariaLabelCloseList={ariaLabelCloseList}
+            ariaLabelOpenList={ariaLabelOpenList}
+            clearable={clearable}
+            labelClearSelectedItems={labelClearSelectedItem}
+            focusable={false}
+            getToggleButtonProps={getToggleButtonProps}
+            isOpen={isOpen}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            onClear={() => {
+              onChange?.(null);
+              toggleButtonRef.current?.focus();
+            }}
+            disabled={readOnly || disabled}
+            selectedItems={[selectedItem]}
+          />
+        }
+        className={classNames('eds-dropdown', className, {
+          'eds-dropdown--has-tooltip': labelTooltip !== undefined,
+        })}
+        disabled={disabled}
+        disableLabelAnimation={disableLabelAnimation}
+        feedback={feedback}
+        isFilled={isFilled}
+        label={label}
+        labelId={getLabelProps().id}
+        labelProps={getLabelProps()}
+        labelTooltip={labelTooltip}
+        onClick={(e: React.MouseEvent) => {
+          if (e.target === e.currentTarget)
+            getToggleButtonProps()?.onClick?.(e);
+        }}
+        prepend={prepend}
+        readOnly={readOnly}
+        ref={refs.setReference}
+        style={style}
+        variant={variant}
+        {...rest}
+      >
+        <div
+          className="eds-dropdown__selected-item"
+          {...getToggleButtonProps({
+            id: undefined,
+            onKeyDown: e => {
+              if (selectOnTab && isOpen && e.key === 'Tab') {
+                // we don't want to clear selection with tab
+                const highlitedItem = normalizedItems[highlightedIndex];
+                if (highlitedItem) {
+                  onChange?.(highlitedItem);
+                }
+              }
+            },
+            ref: mergeRefs(toggleButtonRef, ref),
+            'aria-disabled': disabled,
+            'aria-label': disabled ? 'Disabled dropdown' : '',
+            disabled: disabled,
+            tabIndex: disabled ? -1 : 0,
+          })}
+        >
+          {selectedItem?.label ?? (
+              <div
+                className={classNames(
+                  'eds-dropdown__selected-item__placeholder',
+                  {
+                    'eds-dropdown__selected-item__placeholder--readonly':
+                      readOnly,
+                  },
+                )}
+              >
+                {placeholder}
+              </div>
+            ) ??
+            null}
+        </div>
+        <DropdownList
+          ariaLabelChosenSingular={ariaLabelChosenSingular}
+          ariaLabelSelectedItem={ariaLabelSelectedItem}
+          floatingStyles={floatingStyles}
+          getItemProps={getItemProps}
+          getMenuProps={getMenuProps}
+          highlightedIndex={highlightedIndex}
           isOpen={isOpen}
+          listItems={normalizedItems}
+          noMatchesText={noMatchesText}
+          style={listStyle}
+          setListRef={refs.setFloating}
           loading={loading ?? resolvedItemsLoading}
           loadingText={loadingText}
-          onClear={() => {
-            onChange?.(null);
-            toggleButtonRef.current?.focus();
-          }}
-          disabled={readOnly || disabled}
-          selectedItems={[selectedItem]}
+          selectedItems={selectedItem !== null ? [selectedItem] : []}
         />
-      }
-      className={classNames('eds-dropdown', className, {
-        'eds-dropdown--has-tooltip': labelTooltip !== undefined,
-      })}
-      disabled={disabled}
-      disableLabelAnimation={disableLabelAnimation}
-      feedback={feedback}
-      isFilled={isFilled}
-      label={label}
-      labelId={getLabelProps().id}
-      labelProps={getLabelProps()}
-      labelTooltip={labelTooltip}
-      onClick={(e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) openMenu();
-      }}
-      prepend={prepend}
-      readOnly={readOnly}
-      ref={refs.setReference}
-      style={style}
-      variant={variant}
-      {...rest}
-    >
-      <div
-        className="eds-dropdown__selected-item"
-        {...getToggleButtonProps({
-          id: undefined,
-          onKeyDown: e => {
-            if (selectOnTab && isOpen && e.key === 'Tab') {
-              // we don't want to clear selection with tab
-              const highlitedItem = normalizedItems[highlightedIndex];
-              if (highlitedItem) {
-                onChange?.(highlitedItem);
-              }
-            }
-          },
-          ref: toggleButtonRef,
-          'aria-disabled': disabled,
-          'aria-label': disabled ? 'Disabled dropdown' : '',
-          disabled: disabled,
-          tabIndex: disabled ? -1 : 0,
-        })}
-      >
-        {selectedItem?.label ?? (
-            <div
-              className={classNames(
-                'eds-dropdown__selected-item__placeholder',
-                {
-                  'eds-dropdown__selected-item__placeholder--readonly':
-                    readOnly,
-                },
-              )}
-            >
-              {placeholder}
-            </div>
-          ) ??
-          null}
-      </div>
-      <DropdownList
-        ariaLabelChosenSingular={ariaLabelChosenSingular}
-        ariaLabelSelectedItem={ariaLabelSelectedItem}
-        floatingStyles={floatingStyles}
-        getItemProps={getItemProps}
-        getMenuProps={getMenuProps}
-        highlightedIndex={highlightedIndex}
-        isOpen={isOpen}
-        listItems={normalizedItems}
-        noMatchesText={noMatchesText}
-        style={listStyle}
-        setListRef={refs.setFloating}
-        loading={loading ?? resolvedItemsLoading}
-        loadingText={loadingText}
-        selectedItems={selectedItem !== null ? [selectedItem] : []}
-      />
-    </BaseFormControl>
-  );
-};
+      </BaseFormControl>
+    );
+  },
+);

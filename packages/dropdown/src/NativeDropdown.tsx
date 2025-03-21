@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { BaseFormControl } from '@entur/form';
 import { DownArrowIcon } from '@entur/icons';
 import { LoadingDots } from '@entur/loader';
@@ -68,75 +68,82 @@ export type NativeDropdownProps<ValueType> = {
   [key: string]: any;
 };
 
-export const NativeDropdown = <ValueType extends string | number>({
-  className,
-  disabled = false,
-  disableLabelAnimation,
-  feedback,
-  items,
-  label,
-  loadingText,
-  onChange,
-  prepend,
-  readOnly = false,
-  selectedItem,
-  style,
-  value,
-  variant,
-  ...rest
-}: NativeDropdownProps<ValueType>) => {
-  const { items: normalizedItems, loading } =
-    useResolvedItems<ValueType>(items);
-  const nativeDropdownId = useRandomId('eds-dropdown-native');
+export const NativeDropdown = forwardRef(
+  <ValueType extends string | number>(
+    {
+      className,
+      disabled = false,
+      disableLabelAnimation,
+      feedback,
+      items,
+      label,
+      loadingText,
+      onChange,
+      prepend,
+      readOnly = false,
+      selectedItem,
+      style,
+      value,
+      variant,
+      ...rest
+    }: NativeDropdownProps<ValueType>,
+    ref: React.ForwardedRef<HTMLSelectElement>,
+  ) => {
+    const { items: normalizedItems, loading } =
+      useResolvedItems<ValueType>(items);
+    const nativeDropdownId = useRandomId('eds-dropdown-native');
 
-  return (
-    <BaseFormControl
-      disabled={disabled}
-      readOnly={readOnly}
-      prepend={prepend}
-      append={
-        <FieldAppend
-          hidden={disabled || readOnly}
-          loading={loading}
-          loadingText={loadingText}
-        />
-      }
-      className={className}
-      style={style}
-      label={label}
-      labelId={nativeDropdownId}
-      variant={variant}
-      feedback={feedback}
-      disableLabelAnimation={disableLabelAnimation}
-      isFilled={true}
-    >
-      <select
-        aria-invalid={variant === 'negative' || variant === error}
-        aria-labelledby={nativeDropdownId}
-        aria-busy={loading}
-        className="eds-form-control eds-dropdown--native"
-        disabled={disabled || readOnly}
-        onChange={event => {
-          onChange?.({
-            value: event.target.value,
-            selectedItem:
-              normalizedItems.find(item => item.value === event.target.value) ??
-              null,
-            target: event.target,
-          });
-        }}
-        value={value ?? selectedItem?.value ?? undefined}
-        {...rest}
+    return (
+      <BaseFormControl
+        disabled={disabled}
+        readOnly={readOnly}
+        prepend={prepend}
+        append={
+          <FieldAppend
+            hidden={disabled || readOnly}
+            loading={loading}
+            loadingText={loadingText}
+          />
+        }
+        className={className}
+        style={style}
+        label={label}
+        labelId={nativeDropdownId}
+        variant={variant}
+        feedback={feedback}
+        disableLabelAnimation={disableLabelAnimation}
+        isFilled={true}
       >
-        {normalizedItems.map(item => (
-          <option key={item.value} value={item.value}>
-            {item.label}
-          </option>
-        ))}
-      </select>
-    </BaseFormControl>
-  );
-};
+        <select
+          aria-invalid={variant === 'negative' || variant === error}
+          aria-labelledby={nativeDropdownId}
+          aria-busy={loading}
+          className="eds-form-control eds-dropdown--native"
+          disabled={disabled || readOnly}
+          onChange={event => {
+            onChange?.({
+              value: event.target.value,
+              selectedItem:
+                normalizedItems.find(
+                  item => item.value === event.target.value,
+                ) ?? null,
+              target: event.target,
+            });
+          }}
+          value={value ?? selectedItem?.value ?? undefined}
+          ref={ref}
+          {...rest}
+        >
+          {normalizedItems.map(item => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </BaseFormControl>
+    );
+  },
+);
 
 const FieldAppend = ({
   loading,
