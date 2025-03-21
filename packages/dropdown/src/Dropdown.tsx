@@ -1,7 +1,14 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 import classNames from 'classnames';
 import { useSelect } from 'downshift';
-import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react-dom';
+import {
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  size,
+  useFloating,
+} from '@floating-ui/react-dom';
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
@@ -10,7 +17,7 @@ import { VariantType } from '@entur/utils';
 import { DropdownList } from './components/DropdownList';
 import { FieldAppend } from './components/FieldComponents';
 import { useResolvedItems } from './useResolvedItems';
-import { itemToString } from './utils';
+import { clamp, itemToString } from './utils';
 
 import {
   NormalizedDropdownItemType,
@@ -167,21 +174,28 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
     itemToString,
   });
 
-  const { refs, floatingStyles, elements, update } = useFloating({
-    placement: 'bottom-start',
+  // calculations for floating-UI popover position
+  const { refs, floatingStyles } = useFloating({
     open: isOpen,
-    middleware: [offset(space.extraSmall2), flip()],
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update, { elementResize: false }),
+    placement: 'bottom-start',
+    middleware: [
+      offset(space.extraSmall2),
+      shift({ padding: space.extraSmall }),
+      size({
+        apply({ rects, elements, availableHeight }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+            // Floating will flip when smaller than 10*16 px
+            // and never exceed 20*16 px.
+            maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+          });
+        },
+      }),
+      flip({ fallbackStrategy: 'initialPlacement' }),
+    ],
   });
-
-  // Since we use CSS instead of conditional rendering when hiding dropdownlist
-  // we can't use the whileElementsMounted option and need to handle
-  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
-  useEffect(() => {
-    if (isOpen && elements.reference && elements.floating) {
-      const cleanup = autoUpdate(elements.reference, elements.floating, update);
-      return cleanup;
-    }
-  }, [isOpen, elements, update]);
 
   return (
     <BaseFormControl
@@ -259,7 +273,7 @@ export const Dropdown = <ValueType extends NonNullable<any>>({
               {placeholder}
             </div>
           ) ??
-          ''}
+          null}
       </div>
       <DropdownList
         ariaLabelChosenSingular={ariaLabelChosenSingular}

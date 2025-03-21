@@ -37,6 +37,9 @@ export const itemToKey = (item: NormalizedDropdownItemType<any> | null) =>
 export const isFunctionWithQueryArgument = (object: any) =>
   typeof object === 'function' && object.length > 0;
 
+export const clamp = (val: number, min = 1, max = 10) =>
+  Math.min(Math.max(val, min), max);
+
 /* end general utils */
 /* start multiselect utils */
 
