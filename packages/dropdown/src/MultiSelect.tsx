@@ -11,12 +11,19 @@ import {
   useCombobox,
   UseComboboxStateChangeOptions,
 } from 'downshift';
-import { useFloating, autoUpdate, offset, flip } from '@floating-ui/react-dom';
-import { useRandomId } from '@entur/utils';
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  size,
+} from '@floating-ui/react-dom';
 
 import { VisuallyHidden } from '@entur/a11y';
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
+import { useRandomId } from '@entur/utils';
 
 import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
@@ -24,6 +31,7 @@ import { DropdownList } from './components/DropdownList';
 import { useResolvedItems } from './useResolvedItems';
 import { DropdownProps } from './Dropdown';
 import {
+  clamp,
   EMPTY_INPUT,
   getA11yStatusMessage,
   isFunctionWithQueryArgument,
@@ -359,21 +367,28 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
     ...rest,
   });
 
-  const { refs, floatingStyles, elements, update } = useFloating({
-    placement: 'bottom-start',
+  // calculations for floating-UI popover position
+  const { refs, floatingStyles } = useFloating({
     open: isOpen,
-    middleware: [offset(space.extraSmall2), flip()],
+    whileElementsMounted: (ref, float, update) =>
+      autoUpdate(ref, float, update, { elementResize: false }),
+    placement: 'bottom-start',
+    middleware: [
+      offset(space.extraSmall2),
+      shift({ padding: space.extraSmall }),
+      size({
+        apply({ rects, elements, availableHeight }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+            // Floating will flip when smaller than 10*16 px
+            // and never exceed 20*16 px.
+            maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
+          });
+        },
+      }),
+      flip({ fallbackStrategy: 'initialPlacement' }),
+    ],
   });
-
-  // Since we use CSS instead of conditional rendering when hiding dropdownlist
-  // we can't use the whileElementsMounted option and need to handle
-  // cleanup ourselves. See https://floating-ui.com/docs/autoupdate
-  useEffect(() => {
-    if (isOpen && elements.reference && elements.floating) {
-      const cleanup = autoUpdate(elements.reference, elements.floating, update);
-      return cleanup;
-    }
-  }, [isOpen, elements, update]);
 
   const handleOnClear = () => {
     onChange([]);
@@ -510,7 +525,6 @@ export const MultiSelect = <ValueType extends NonNullable<any>>({
         getItemProps={getItemProps}
         getMenuProps={getMenuProps}
         highlightedIndex={highlightedIndex}
-        inputValue={inputValue}
         isOpen={isOpen}
         listItems={listItems}
         style={listStyle}
