@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/entur/design-system/compare/@entur/layout@3.0.0...@entur/layout@3.1.0) (2025-03-24)
+
+### Bug Fixes
+
+- **basecard:** fix typo in box-shadow ([580a201](https://github.com/entur/design-system/commit/580a2010a73ad065a99555b1ce0bb280018f832b))
+- **MediaCard:** transition on hover and docs tweeks ([e0be14c](https://github.com/entur/design-system/commit/e0be14ccbfdd78d975bf16536c4ebd427534047e))
+- **navigationcard:** remove highlight-line under title on compact variant ([e6d369e](https://github.com/entur/design-system/commit/e6d369e9601f4f77014327c09e05e3f322db2d7f))
+
+### Features
+
+- **mediacard:** new prop orientation: horizontal ([f8caa0e](https://github.com/entur/design-system/commit/f8caa0eb6899d3c69b8dc85bd4a148791df7c587))
+
 # [3.0.0](https://github.com/entur/design-system/compare/@entur/layout@2.4.2...@entur/layout@3.0.0) (2025-03-05)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/entur/design-system/compare/@entur/tokens@3.18.0...@entur/tokens@3.19.0) (2025-03-24)
+
+### Features
+
+- **tokens:** add new color variable basecolors frame contrast alt 2 ([9c9241d](https://github.com/entur/design-system/commit/9c9241d75a6201a323f0216a8d3168fb21a5e684))
+
 # [3.18.0](https://github.com/entur/design-system/compare/@entur/tokens@3.17.6...@entur/tokens@3.18.0) (2025-03-05)
 
 ### Bug Fixes

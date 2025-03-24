@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/entur/design-system/compare/@entur/icons@7.7.1...@entur/icons@7.8.0) (2025-03-24)
+
+### Bug Fixes
+
+- **icons:** fix 'Received `true` for a non-boolean attribute `inline`.' warning ([920a634](https://github.com/entur/design-system/commit/920a634a14309dabc6290557fb037a7ee0a51725))
+
+### Features
+
+- **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481))
+
 ## [7.7.1](https://github.com/entur/design-system/compare/@entur/icons@7.7.0...@entur/icons@7.7.1) (2025-03-05)
 
 **Note:** Version bump only for package @entur/icons

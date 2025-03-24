@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/entur/design-system/compare/@entur/documentation@6.0.0...@entur/documentation@6.1.0) (2025-03-24)
+
+### Bug Fixes
+
+- **MediaCard:** transition on hover and docs tweeks ([e0be14c](https://github.com/entur/design-system/commit/e0be14ccbfdd78d975bf16536c4ebd427534047e))
+- **website:** clean up frontpage background and fix colors ([7670b12](https://github.com/entur/design-system/commit/7670b12b672af57add012fe14915296ee3992bcb))
+- **website:** fix import order warning ([edf4169](https://github.com/entur/design-system/commit/edf416990edd037d044c8b2347b2ba2f44d69b8d))
+- **website:** fix overflow hidden for floating containers in playground ([ff58305](https://github.com/entur/design-system/commit/ff58305151497d1cabba1bab48d76777fc4a8d2b))
+- **website:** improve styling for search and searchbar ([e0f7c06](https://github.com/entur/design-system/commit/e0f7c06329e0a51aa05738e50a6bc0a80b0ec179))
+- **website:** make background reposition on resize ([863ce82](https://github.com/entur/design-system/commit/863ce82162cb3dfab243ac4b5da18592aa0fab6c))
+- **website:** small improvements and fixes ([26eeb45](https://github.com/entur/design-system/commit/26eeb45a0f7339b139c7f194a67dc3cdcae76e63))
+
+### Features
+
+- **datepicker:** add "second" granularity support to datepicker ([4233035](https://github.com/entur/design-system/commit/42330359e450855effd241e3c3d9b22ebc282ffc))
+- **icons:** add new birth date icon ([2d19be3](https://github.com/entur/design-system/commit/2d19be30cd1cdce8948eaacbe81eeca000b6c481))
+- **mediacard:** new prop orientation: horizontal ([43c9e21](https://github.com/entur/design-system/commit/43c9e21e0b4e47e4feb2e6df77ad0a9a77a1e523))
+- **mediacard:** new prop orientation: horizontal ([f8caa0e](https://github.com/entur/design-system/commit/f8caa0eb6899d3c69b8dc85bd4a148791df7c587))
+- **website:** add animation to lines ([4a089a7](https://github.com/entur/design-system/commit/4a089a7c706e081692b62ca38d5fc0c4d75f1746))
+- **website:** add github to top navigation ([91f0616](https://github.com/entur/design-system/commit/91f06160b49686a5bacabd88b411689754a444b6))
+- **website:** add line animation to frontpage ([cd966c9](https://github.com/entur/design-system/commit/cd966c9c3d771a6ea7f3b4878a1f972a0765fe6b))
+- **website:** add new icons to navigation cards on frontpage ([e3a0685](https://github.com/entur/design-system/commit/e3a06853b502cb2ff2105335664441abd1e6250a))
+- **website:** add new illustrations - kitty and mouse ([7ec5c42](https://github.com/entur/design-system/commit/7ec5c4221c90427473e5e4f08751a419330bbf94))
+- **website:** add parallax effect to frontpage ([d801a0d](https://github.com/entur/design-system/commit/d801a0d9eef1edfdc9c70ba7ee8b3cc1cecc6223))
+- **website:** add shifting header ([9523123](https://github.com/entur/design-system/commit/95231239c4088a003475c1b2d4f658b59c11fbe6))
+- **website:** foundations for new frontpage ([ca94c47](https://github.com/entur/design-system/commit/ca94c4763f6fa424f73ac20fe0481c37d48d7074))
+- **website:** improve parallax effect on frontpage ([b76ee0d](https://github.com/entur/design-system/commit/b76ee0d2568eba55de6778f45a3449a0373e2efa))
+- **website:** replace placeholders with actual name ([5bd027b](https://github.com/entur/design-system/commit/5bd027bd07862977b9f9e96bc4f692101b9b7578))
+- **website:** show illustration in color mode from settings by default ([4a23922](https://github.com/entur/design-system/commit/4a23922313ed2a9745e278c1d74fb9e19e9ea53b))
+- **website:** styling improvements to search component ([1d62220](https://github.com/entur/design-system/commit/1d6222015d6050a52f348dcd092e36ee165765c7))
+
 # [6.0.0](https://github.com/entur/design-system/compare/@entur/documentation@5.0.2...@entur/documentation@6.0.0) (2025-03-05)
 
 ### Bug Fixes

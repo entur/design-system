@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.3...@entur/datepicker@11.0.0) (2025-03-24)
+
+### Bug Fixes
+
+- **datepicker:** change default datetime type to ZonedDateTime ([78443c9](https://github.com/entur/design-system/commit/78443c9568c4f8e82e26a7c65ffee9a164a21bf5))
+
+### Features
+
+- **datepicker:** add "second" granularity support to datepicker ([4233035](https://github.com/entur/design-system/commit/42330359e450855effd241e3c3d9b22ebc282ffc))
+
+### BREAKING CHANGES
+
+- **datepicker:** ZonedDateTime is now returned from onChange if previous value was null.
+  Previously return type was conditionned by component type.
+
 ## [10.1.3](https://github.com/entur/design-system/compare/@entur/datepicker@10.1.2...@entur/datepicker@10.1.3) (2025-03-05)
 
 **Note:** Version bump only for package @entur/datepicker

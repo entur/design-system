@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.3...@entur/dropdown@7.1.0) (2025-03-24)
+
+### Features
+
+- **dropdown:** add loading prop ([a4de4c9](https://github.com/entur/design-system/commit/a4de4c94706893ac92734b8eb65bb5c9aa5fafa6))
+
 ## [7.0.3](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.2...@entur/dropdown@7.0.3) (2025-03-05)
 
 ### Bug Fixes

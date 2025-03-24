@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.4](https://github.com/entur/design-system/compare/@entur/alert@0.17.3...@entur/alert@0.17.4) (2025-03-24)
+
+### Bug Fixes
+
+- **alert:** remove data-color-mode attribute on IconButton ([09bd856](https://github.com/entur/design-system/commit/09bd85680e98d09bef3537f1e193bb0337b6796a))
+
 ## [0.17.3](https://github.com/entur/design-system/compare/@entur/alert@0.17.2...@entur/alert@0.17.3) (2025-03-05)
 
 **Note:** Version bump only for package @entur/alert
