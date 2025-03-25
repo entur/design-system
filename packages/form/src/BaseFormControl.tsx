@@ -81,7 +81,7 @@ export const BaseFormControl = React.forwardRef<
       label,
       required,
       labelTooltip,
-      labelTooltipButtonAriaLabel = 'Klikk for tilleggsinfo om feltet',
+      labelTooltipButtonAriaLabel = `Klikk for tilleggsinfo om ${label}-feltet`,
       labelTooltipPlacement = 'top',
       feedback,
       labelId,
