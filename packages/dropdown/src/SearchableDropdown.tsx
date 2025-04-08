@@ -1,6 +1,10 @@
 /* eslint-disable  no-warning-comments */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { UseComboboxStateChangeOptions, useCombobox } from 'downshift';
+import {
+  UseComboboxState,
+  UseComboboxStateChangeOptions,
+  useCombobox,
+} from 'downshift';
 import classNames from 'classnames';
 import {
   useFloating,
@@ -13,9 +17,10 @@ import {
 
 import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
+import { mergeRefs } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
-import { FieldAppend } from './components/FieldComponents';
+import { DropdownFieldAppendix } from './components/FieldComponents';
 
 import { DropdownProps } from './Dropdown';
 import { useResolvedItems } from './useResolvedItems';
@@ -32,7 +37,6 @@ import {
 import { NormalizedDropdownItemType } from './types';
 
 import './Dropdown.scss';
-import { mergeRefs } from '@entur/utils';
 
 export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   /** Filtreringen som brukes når man skriver inn tekst i inputfeltet
@@ -59,8 +63,8 @@ export const SearchableDropdown = React.forwardRef(
   <ValueType extends NonNullable<any>>(
     {
       ariaLabelChosenSingular,
-      ariaLabelCloseList,
-      ariaLabelOpenList,
+      ariaLabelCloseList = 'Lukk liste med valg',
+      ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelSelectedItem,
       className,
       clearable = true,
@@ -77,8 +81,8 @@ export const SearchableDropdown = React.forwardRef(
       labelTooltip,
       listStyle,
       loading,
-      loadingText,
-      noMatchesText,
+      loadingText = 'Laster resultater …',
+      noMatchesText = 'Ingen tilgjengelige valg …',
       onChange = () => undefined,
       placeholder,
       prepend,
@@ -116,6 +120,18 @@ export const SearchableDropdown = React.forwardRef(
       filterListItems({ inputValue: inputValue ?? EMPTY_INPUT });
     };
 
+    const resetInputState = ({
+      changes,
+    }: {
+      changes: Partial<UseComboboxState<NormalizedDropdownItemType<ValueType>>>;
+    }) => {
+      updateListItems({ inputValue: EMPTY_INPUT });
+      return {
+        ...changes,
+        inputValue: EMPTY_INPUT,
+      };
+    };
+
     const inputHasFocus =
       typeof document !== 'undefined'
         ? inputRef?.current === document?.activeElement
@@ -136,7 +152,7 @@ export const SearchableDropdown = React.forwardRef(
 
     const stateReducer = useCallback(
       (
-        _,
+        state: UseComboboxState<NormalizedDropdownItemType<ValueType>>,
         {
           type,
           changes,
@@ -153,60 +169,58 @@ export const SearchableDropdown = React.forwardRef(
           // empty input to show selected item and reset dropdown list on item selection
           case useCombobox.stateChangeTypes.ItemClick:
           case useCombobox.stateChangeTypes.InputKeyDownEnter:
-          case useCombobox.stateChangeTypes.InputBlur: {
-            updateListItems({ inputValue: EMPTY_INPUT });
-            return {
-              ...changes,
-              inputValue: EMPTY_INPUT,
-            };
-          }
+          case useCombobox.stateChangeTypes.InputBlur:
+            return resetInputState({ changes });
           case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
             if (changes.selectedItem !== null && !inputHasFocus)
               setShowSelectedItem(true);
-            updateListItems({ inputValue: EMPTY_INPUT });
-            return {
-              ...changes,
-              inputValue: EMPTY_INPUT,
-            };
-          // remove leading whitespace, select element with spacebar on empty input, and filter list based on input
+            return resetInputState({ changes });
+          // remove leading whitespace, select element with spacebar on empty input
           case useCombobox.stateChangeTypes.InputChange: {
+            setLastHighlightedIndex(0);
             const leadingWhitespaceTest = /^\s+/g;
             const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
             if (changes.inputValue?.match(leadingWhitespaceTest)) {
-              setInputValue(
-                changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+              const sanitizedInputValue = changes.inputValue.replace(
+                leadingWhitespaceTest,
+                EMPTY_INPUT,
               );
-
               if (isSpacePressedOnEmptyInput) {
-                openMenu();
+                if (!state.isOpen)
+                  return {
+                    ...changes,
+                    inputValue: sanitizedInputValue,
+                    isOpen: true,
+                    highlightedIndex: 0,
+                  };
 
-                if (isOpen && changes.highlightedIndex !== undefined) {
-                  onChange(listItems[changes.highlightedIndex]);
+                if (changes.highlightedIndex !== undefined) {
+                  return {
+                    ...changes,
+                    inputValue: sanitizedInputValue,
+                    selectedItem: listItems[changes.highlightedIndex],
+                    highlightedIndex: 0,
+                  };
                 }
               }
-            } else {
-              updateListItems({ inputValue: changes.inputValue });
-              setHighlightedIndex(0);
-              setLastHighlightedIndex(0);
             }
-            return changes;
+
+            return { ...changes, highlightedIndex: 0 };
           }
           default:
             return changes;
         }
       },
-      [fetchItems, filterListItems], // eslint-disable-line react-hooks/exhaustive-deps
+      [fetchItems, filterListItems, inputHasFocus, resetInputState],
     );
 
     const {
       isOpen,
-      openMenu,
       getToggleButtonProps,
       getLabelProps,
       getMenuProps,
       getInputProps,
       highlightedIndex,
-      setHighlightedIndex,
       getItemProps,
       selectedItem,
       inputValue,
@@ -217,28 +231,21 @@ export const SearchableDropdown = React.forwardRef(
       itemToString,
       selectedItem: value,
       stateReducer,
-      onStateChange({ type, selectedItem: newSelectedItem }) {
-        switch (type) {
-          // @ts-expect-error This falltrough is wanted
-          case useCombobox.stateChangeTypes.InputBlur:
-            if (!selectOnBlur) break;
-          case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
-          case useCombobox.stateChangeTypes.ItemClick:
-            if (newSelectedItem === undefined) return;
-            onChange(newSelectedItem ?? null);
-        }
+      onInputValueChange(changes) {
+        updateListItems({ inputValue: changes.inputValue });
+      },
+      onStateChange({ selectedItem: newSelectedItem }) {
+        if (newSelectedItem === undefined) return;
+        onChange(newSelectedItem);
       },
       // Accessibility
       getA11yStatusMessage: options =>
         getA11yStatusMessage({ ...options, resultCount: listItems.length }),
-      ...rest,
     });
 
     // calculations for floating-UI popover position
-    const { refs, floatingStyles } = useFloating({
+    const { refs, floatingStyles, update } = useFloating({
       open: isOpen,
-      whileElementsMounted: (ref, float, update) =>
-        autoUpdate(ref, float, update, { elementResize: false }),
       placement: 'bottom-start',
       middleware: [
         offset(space.extraSmall2),
@@ -246,7 +253,7 @@ export const SearchableDropdown = React.forwardRef(
         size({
           apply({ rects, elements, availableHeight }) {
             Object.assign(elements.floating.style, {
-              minWidth: `${rects.reference.width}px`,
+              width: `${rects.reference.width}px`,
               // Floating will flip when smaller than 10*16 px
               // and never exceed 20*16 px.
               maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
@@ -256,6 +263,20 @@ export const SearchableDropdown = React.forwardRef(
         flip({ fallbackStrategy: 'initialPlacement' }),
       ],
     });
+
+    // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
+    // the useFloating hook but this requires the floating element to be conditionally rendered.
+    // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
+    // spread to the component. We therefor use this useEffect to update position. See https://floating-ui.com/docs/autoupdate#usage
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(
+          refs.reference.current,
+          refs.floating.current,
+          update,
+        );
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
 
     const handleOnClear = () => {
       onChange(null);
@@ -267,29 +288,11 @@ export const SearchableDropdown = React.forwardRef(
 
     return (
       <BaseFormControl
-        append={
-          <FieldAppend
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearSelectedItem}
-            disabled={readOnly || disabled}
-            focusable={false}
-            getToggleButtonProps={getToggleButtonProps}
-            isOpen={isOpen}
-            loading={loading ?? resolvedItemsLoading}
-            loadingText={loadingText}
-            onClear={handleOnClear}
-            selectedItems={[selectedItem]}
-          />
-        }
         className={classNames(
           'eds-dropdown',
           'eds-dropdown--searchable',
           className,
-          {
-            'eds-dropdown--has-tooltip': labelTooltip !== undefined,
-          },
+          { 'eds-dropdown--has-tooltip': labelTooltip !== undefined },
         )}
         disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
@@ -299,15 +302,38 @@ export const SearchableDropdown = React.forwardRef(
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
+        onBlur={() => setInputValue('')}
         onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget) inputRef.current?.focus();
+          if (e.target === e.currentTarget) {
+            getInputProps()?.onClick?.(e);
+          }
         }}
         prepend={prepend}
         readOnly={readOnly}
         ref={refs.setReference}
         style={style}
         variant={variant}
+        after={
+          <DropdownList
+            ariaLabelChosenSingular={ariaLabelChosenSingular}
+            ariaLabelSelectedItem={ariaLabelSelectedItem}
+            floatingStyles={floatingStyles}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
+            listItems={listItems}
+            style={listStyle}
+            setListRef={refs.setFloating}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            noMatchesText={noMatchesText}
+            selectedItems={selectedItem !== null ? [selectedItem] : []}
+          />
+        }
         {...rest}
+        // Append is not supported as of now
+        append={undefined}
       >
         <span
           className={classNames('eds-dropdown--searchable__selected-item', {
@@ -315,10 +341,7 @@ export const SearchableDropdown = React.forwardRef(
               !showSelectedItem,
           })}
           aria-hidden="true"
-          onClick={() => {
-            inputRef.current?.focus();
-            openMenu();
-          }}
+          onClick={getInputProps()?.onClick}
         >
           {showSelectedItem ? selectedItem?.label : ''}
         </span>
@@ -326,37 +349,44 @@ export const SearchableDropdown = React.forwardRef(
           className={classNames('eds-dropdown__input eds-form-control', {
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
-          disabled={readOnly || disabled}
-          placeholder={selectedItem?.label ?? placeholder}
           {...getInputProps({
-            onBlur: () => {
+            onBlur() {
               if (selectedItem !== null) setShowSelectedItem(true);
             },
-            onFocus: () => {
+            onFocus() {
               setShowSelectedItem(false);
             },
-            onKeyDown: e => {
-              if (selectOnTab && isOpen && e.key === 'Tab')
-                onChange?.(listItems[highlightedIndex]);
+            onKeyDown(e) {
+              if (
+                isOpen &&
+                (selectOnTab || selectOnBlur) &&
+                e.key === 'Tab' &&
+                highlightedIndex !== undefined
+              )
+                onChange(listItems[highlightedIndex]);
             },
+            disabled: disabled,
+            readOnly: readOnly,
+            placeholder: selectedItem?.label ?? placeholder,
             ref: mergeRefs(inputRef, ref),
           })}
         />
-        <DropdownList
-          ariaLabelChosenSingular={ariaLabelChosenSingular}
-          ariaLabelSelectedItem={ariaLabelSelectedItem}
-          floatingStyles={floatingStyles}
-          getItemProps={getItemProps}
-          getMenuProps={getMenuProps}
-          highlightedIndex={highlightedIndex}
+        <DropdownFieldAppendix
+          {...getToggleButtonProps({
+            'aria-busy': !(loading ?? resolvedItemsLoading)
+              ? undefined
+              : 'true',
+          })}
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          clearable={clearable}
+          onClear={handleOnClear}
+          focusable={true}
+          labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
-          listItems={listItems}
-          style={listStyle}
-          setListRef={refs.setFloating}
-          loading={loading ?? resolvedItemsLoading}
+          itemIsSelected={selectedItem !== null}
           loadingText={loadingText}
-          noMatchesText={noMatchesText}
-          selectedItems={selectedItem !== null ? [selectedItem] : []}
+          loading={loading ?? resolvedItemsLoading}
         />
       </BaseFormControl>
     );

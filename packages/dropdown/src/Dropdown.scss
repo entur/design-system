@@ -38,7 +38,7 @@
       flex: 1;
       overflow-x: hidden;
       text-overflow: ellipsis;
-      padding: 1.375rem t.$space-none t.$space-extra-small2;
+      padding: 1.375rem t.$space-none 0.3rem;
       white-space: nowrap;
       line-height: t.$line-heights-small;
       font-family: inherit;
@@ -46,6 +46,11 @@
       &--hidden {
         flex: 0;
       }
+    }
+
+    // Remove fade transition when item is selected
+    :not(.eds-dropdown--searchable__selected-item--hidden) + ::placeholder {
+      transition: none;
     }
   }
 
