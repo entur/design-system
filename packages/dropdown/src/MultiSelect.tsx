@@ -520,6 +520,7 @@ export const MultiSelect = React.forwardRef(
               className: 'eds-dropdown__input eds-form-control',
               disabled: readOnly || disabled,
               placeholder: placeholder,
+              tabIndex: disabled || readOnly ? -1 : undefined,
             })}
           />
         </div>
@@ -532,8 +533,9 @@ export const MultiSelect = React.forwardRef(
           ariaLabelCloseList={ariaLabelCloseList}
           ariaLabelOpenList={ariaLabelOpenList}
           clearable={clearable}
+          disabled={disabled || readOnly}
           onClear={handleOnClear}
-          focusable={true}
+          focusable={false}
           labelClearSelected={labelClearAllItems}
           isOpen={isOpen}
           itemIsSelected={selectedItems.length > 0}

@@ -312,6 +312,7 @@ export const SearchableDropdown = React.forwardRef(
         readOnly={readOnly}
         ref={refs.setReference}
         style={style}
+        tabIndex={disabled || readOnly ? -1 : undefined}
         variant={variant}
         after={
           <DropdownList
@@ -368,6 +369,7 @@ export const SearchableDropdown = React.forwardRef(
             disabled: disabled,
             readOnly: readOnly,
             placeholder: selectedItem?.label ?? placeholder,
+            tabIndex: disabled || readOnly ? -1 : undefined,
             ref: mergeRefs(inputRef, ref),
           })}
         />
@@ -380,8 +382,9 @@ export const SearchableDropdown = React.forwardRef(
           ariaLabelCloseList={ariaLabelCloseList}
           ariaLabelOpenList={ariaLabelOpenList}
           clearable={clearable}
+          disabled={disabled || readOnly}
           onClear={handleOnClear}
-          focusable={true}
+          focusable={false}
           labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
           itemIsSelected={selectedItem !== null}

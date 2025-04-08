@@ -225,10 +225,10 @@ export const Dropdown = React.forwardRef(
           'aria-label': disabled ? 'Disabled dropdown' : '',
           disabled: disabled,
           readOnly: readOnly,
-          tabIndex: disabled ? -1 : 0,
           label: label,
           labelId: getLabelProps()?.id,
           children: undefined,
+          tabIndex: disabled || readOnly ? -1 : 0,
           onKeyDown(e) {
             if (
               isOpen &&
@@ -281,7 +281,8 @@ export const Dropdown = React.forwardRef(
           aria-expanded={isOpen}
           clearable={clearable}
           onClear={() => onChange?.(null)}
-          focusable={true}
+          disabled={disabled || readOnly}
+          focusable={false}
           labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
           itemIsSelected={selectedItem !== null}
