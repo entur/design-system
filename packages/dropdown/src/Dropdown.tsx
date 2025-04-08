@@ -150,6 +150,7 @@ export const Dropdown = React.forwardRef(
       useResolvedItems(initialItems);
     const isFilled = selectedItem !== null || placeholder !== undefined;
     const {
+      closeMenu,
       isOpen,
       getItemProps,
       getLabelProps,
@@ -225,18 +226,24 @@ export const Dropdown = React.forwardRef(
           'aria-label': disabled ? 'Disabled dropdown' : '',
           disabled: disabled,
           readOnly: readOnly,
-          tabIndex: disabled ? -1 : 0,
           label: label,
           labelId: getLabelProps()?.id,
           children: undefined,
+          tabIndex: disabled || readOnly ? -1 : 0,
           onKeyDown(e) {
-            if (
-              isOpen &&
-              (selectOnTab || selectOnBlur) &&
-              e.key === 'Tab' &&
-              highlightedIndex !== undefined
-            )
-              onChange?.(normalizedItems[highlightedIndex]);
+            if (isOpen && e.key === 'Tab') {
+              const highlitedItem = normalizedItems[highlightedIndex];
+              // we don't want to clear selection with tab
+              if (
+                (selectOnTab || selectOnBlur) &&
+                highlitedItem &&
+                highlitedItem !== selectedItem
+              ) {
+                onChange?.(highlitedItem);
+              }
+              closeMenu();
+              e.preventDefault();
+            }
           },
         })}
         after={
@@ -281,7 +288,8 @@ export const Dropdown = React.forwardRef(
           aria-expanded={isOpen}
           clearable={clearable}
           onClear={() => onChange?.(null)}
-          focusable={true}
+          disabled={disabled || readOnly}
+          focusable={false}
           labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
           itemIsSelected={selectedItem !== null}

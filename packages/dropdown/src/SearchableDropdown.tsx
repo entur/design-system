@@ -177,9 +177,10 @@ export const SearchableDropdown = React.forwardRef(
             return resetInputState({ changes });
           // remove leading whitespace, select element with spacebar on empty input
           case useCombobox.stateChangeTypes.InputChange: {
-            setLastHighlightedIndex(0);
             const leadingWhitespaceTest = /^\s+/g;
             const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
+            if (!isSpacePressedOnEmptyInput) setLastHighlightedIndex(0);
+
             if (changes.inputValue?.match(leadingWhitespaceTest)) {
               const sanitizedInputValue = changes.inputValue.replace(
                 leadingWhitespaceTest,
@@ -191,7 +192,6 @@ export const SearchableDropdown = React.forwardRef(
                     ...changes,
                     inputValue: sanitizedInputValue,
                     isOpen: true,
-                    highlightedIndex: 0,
                   };
 
                 if (changes.highlightedIndex !== undefined) {
@@ -199,7 +199,6 @@ export const SearchableDropdown = React.forwardRef(
                     ...changes,
                     inputValue: sanitizedInputValue,
                     selectedItem: listItems[changes.highlightedIndex],
-                    highlightedIndex: 0,
                   };
                 }
               }
@@ -215,6 +214,7 @@ export const SearchableDropdown = React.forwardRef(
     );
 
     const {
+      closeMenu,
       isOpen,
       getToggleButtonProps,
       getLabelProps,
@@ -312,6 +312,7 @@ export const SearchableDropdown = React.forwardRef(
         readOnly={readOnly}
         ref={refs.setReference}
         style={style}
+        tabIndex={disabled || readOnly ? -1 : undefined}
         variant={variant}
         after={
           <DropdownList
@@ -350,24 +351,31 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown__input--hidden': showSelectedItem,
           })}
           {...getInputProps({
+            onKeyDown(e: React.KeyboardEvent) {
+              if (isOpen && e.key === 'Tab') {
+                const highlitedItem = listItems[highlightedIndex];
+                // we don't want to clear selection with tab
+                if (
+                  (selectOnTab || selectOnBlur) &&
+                  highlitedItem &&
+                  highlitedItem !== selectedItem
+                ) {
+                  onChange?.(highlitedItem);
+                }
+                closeMenu();
+                e.preventDefault();
+              }
+            },
             onBlur() {
               if (selectedItem !== null) setShowSelectedItem(true);
             },
             onFocus() {
               setShowSelectedItem(false);
             },
-            onKeyDown(e) {
-              if (
-                isOpen &&
-                (selectOnTab || selectOnBlur) &&
-                e.key === 'Tab' &&
-                highlightedIndex !== undefined
-              )
-                onChange(listItems[highlightedIndex]);
-            },
             disabled: disabled,
             readOnly: readOnly,
             placeholder: selectedItem?.label ?? placeholder,
+            tabIndex: disabled || readOnly ? -1 : undefined,
             ref: mergeRefs(inputRef, ref),
           })}
         />
@@ -380,8 +388,9 @@ export const SearchableDropdown = React.forwardRef(
           ariaLabelCloseList={ariaLabelCloseList}
           ariaLabelOpenList={ariaLabelOpenList}
           clearable={clearable}
+          disabled={disabled || readOnly}
           onClear={handleOnClear}
-          focusable={true}
+          focusable={false}
           labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
           itemIsSelected={selectedItem !== null}

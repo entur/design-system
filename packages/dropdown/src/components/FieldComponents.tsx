@@ -109,30 +109,36 @@ export const DropdownFieldAppendix = forwardRef(
     }
 
     return (
-      <div className="eds-dropdown__appendix">
-        {!disabled && clearable && itemIsSelected && (
-          <ClearableButton
-            onClear={onClear}
-            focusable={true}
-            labelClearSelectedItems={labelClearSelected}
-          />
-        )}
+      <>
+        {!disabled && (
+          <div className="eds-dropdown__appendix">
+            {clearable && itemIsSelected && (
+              <ClearableButton
+                onClear={onClear}
+                focusable={true}
+                labelClearSelectedItems={labelClearSelected}
+              />
+            )}
 
-        <IconButton
-          className={classNames('eds-dropdown__appendix__toggle-button', {
-            'eds-dropdown__appendix__toggle-button--open': isOpen,
-          })}
-          ref={ref}
-          aria-label={getToggleAriaLabel()}
-          {...rest}
-        >
-          {!loading ? (
-            <DownArrowIcon aria-hidden="true" />
-          ) : (
-            <LoadingDots aria-hidden="true" />
-          )}
-        </IconButton>
-      </div>
+            <IconButton
+              className={classNames('eds-dropdown__appendix__toggle-button', {
+                'eds-dropdown__appendix__toggle-button--open': isOpen,
+              })}
+              ref={ref}
+              aria-label={getToggleAriaLabel()}
+              {...rest}
+              type="button"
+              tabIndex={focusable ? 0 : -1}
+            >
+              {!loading ? (
+                <DownArrowIcon aria-hidden="true" />
+              ) : (
+                <LoadingDots aria-hidden="true" />
+              )}
+            </IconButton>
+          </div>
+        )}
+      </>
     );
   },
 );
