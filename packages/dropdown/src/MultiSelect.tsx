@@ -10,6 +10,7 @@ import {
   useMultipleSelection,
   useCombobox,
   UseComboboxStateChangeOptions,
+  UseComboboxState,
 } from 'downshift';
 import {
   useFloating,
@@ -25,7 +26,10 @@ import { BaseFormControl } from '@entur/form';
 import { space } from '@entur/tokens';
 import { mergeRefs, useRandomId } from '@entur/utils';
 
-import { FieldAppend, SelectedItemTag } from './components/FieldComponents';
+import {
+  DropdownFieldAppendix,
+  SelectedItemTag,
+} from './components/FieldComponents';
 import { DropdownList } from './components/DropdownList';
 
 import { useResolvedItems } from './useResolvedItems';
@@ -129,7 +133,7 @@ export const MultiSelect = React.forwardRef(
       labelTooltip,
       listStyle,
       loading,
-      loadingText,
+      loadingText = 'Laster resultater …',
       maxChips = 10,
       noMatchesText,
       onChange = () => undefined,
@@ -142,9 +146,9 @@ export const MultiSelect = React.forwardRef(
       variant = 'information',
       ariaLabelChosenSingular,
       ariaLabelChosenPlural = 'valgte',
-      ariaLabelCloseList,
+      ariaLabelCloseList = 'Lukk liste med valg',
       ariaLabelJumpToInput = `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`,
-      ariaLabelOpenList,
+      ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
       ...rest
@@ -230,26 +234,14 @@ export const MultiSelect = React.forwardRef(
       // @ts-expect-error prop missing from library types
       itemToString,
       itemToKey,
-      onStateChange({ selectedItems: newSelectedItems, type }) {
-        switch (type) {
-          case useMultipleSelection.stateChangeTypes
-            .SelectedItemKeyDownBackspace:
-          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-          case useMultipleSelection.stateChangeTypes
-            .FunctionRemoveSelectedItem: {
-            if (newSelectedItems !== undefined) onChange(newSelectedItems);
-            break;
-          }
-          default:
-            break;
-        }
+      onStateChange({ selectedItems: newSelectedItems }) {
+        if (newSelectedItems !== undefined) onChange(newSelectedItems);
       },
     });
 
     const stateReducer = React.useCallback(
       (
-        _,
+        state: UseComboboxState<NormalizedDropdownItemType<ValueType | string>>,
         {
           changes,
           type,
@@ -265,12 +257,15 @@ export const MultiSelect = React.forwardRef(
         }
 
         switch (type) {
+          // reset input value when leaving input field
+          case useCombobox.stateChangeTypes.InputBlur:
+            return {
+              ...changes,
+              inputValue: EMPTY_INPUT,
+            };
           // keep menu open and edit input value on item selection
           case useCombobox.stateChangeTypes.InputKeyDownEnter:
           case useCombobox.stateChangeTypes.ItemClick: {
-            if (clearInputOnSelect) {
-              updateListItems({ inputValue: EMPTY_INPUT });
-            }
             return {
               ...changes,
               isOpen: true,
@@ -291,42 +286,35 @@ export const MultiSelect = React.forwardRef(
             const leadingWhitespaceTest = /^\s+/g;
             const isSpacePressedOnEmptyInput = changes.inputValue === ' ';
             if (changes.inputValue?.match(leadingWhitespaceTest)) {
-              setInputValue(
-                changes.inputValue.replace(leadingWhitespaceTest, EMPTY_INPUT),
+              const sanitizedInputValue = changes.inputValue.replace(
+                leadingWhitespaceTest,
+                EMPTY_INPUT,
               );
-
               if (isSpacePressedOnEmptyInput) {
-                openMenu();
+                if (!state.isOpen)
+                  return {
+                    ...changes,
+                    inputValue: sanitizedInputValue,
+                    isOpen: true,
+                  };
 
-                if (isOpen && changes.highlightedIndex !== undefined) {
-                  handleListItemClicked({
-                    clickedItem: listItems[changes.highlightedIndex],
-                    onChange,
-                  });
+                if (changes.highlightedIndex !== undefined) {
+                  return {
+                    ...changes,
+                    inputValue: sanitizedInputValue,
+                    selectedItem: listItems[changes.highlightedIndex],
+                  };
                 }
               }
-            } else {
-              updateListItems({ inputValue: changes.inputValue });
-              // set highlighted item to first item after search
-              setLastHighlightedIndex(hideSelectAll ? 0 : 1);
-              return { ...changes, highlightedIndex: hideSelectAll ? 0 : 1 };
             }
 
             return changes;
-          }
-          // reset input value when leaving input field
-          case useCombobox.stateChangeTypes.InputBlur: {
-            updateListItems({ inputValue: EMPTY_INPUT });
-            return {
-              ...changes,
-              inputValue: EMPTY_INPUT,
-            };
           }
           default:
             return changes;
         }
       },
-      [hideSelectAll, normalizedItems, filterListItems, initialItems], // eslint-disable-line react-hooks/exhaustive-deps
+      [hideSelectAll, normalizedItems, filterListItems, initialItems],
     );
 
     const {
@@ -336,9 +324,9 @@ export const MultiSelect = React.forwardRef(
       getMenuProps,
       getToggleButtonProps,
       highlightedIndex,
+      setHighlightedIndex,
       inputValue,
       isOpen,
-      openMenu,
       setInputValue,
     } = useCombobox({
       defaultHighlightedIndex: lastHighlightedIndex, // after selection, highlight previously selected item.
@@ -346,22 +334,20 @@ export const MultiSelect = React.forwardRef(
       itemToString,
       selectedItem: null,
       stateReducer,
-      onStateChange({ type, selectedItem: clickedItem }) {
+      onInputValueChange(changes) {
+        updateListItems({ inputValue: changes.inputValue });
+        // set highlighted item to first item after search
+        setHighlightedIndex(hideSelectAll ? 0 : 1);
+        setLastHighlightedIndex(hideSelectAll ? 0 : 1);
+      },
+      onStateChange({ selectedItem: clickedItem }) {
         // clickedItem means item chosen either via mouse or keyboard
         if (!clickedItem) return;
 
-        switch (type) {
-          // @ts-expect-error This falltrough is wanted
-          case useCombobox.stateChangeTypes.InputBlur:
-            if (!selectOnBlur) break;
-          case useCombobox.stateChangeTypes.InputKeyDownEnter: // eslint-disable-line no-fallthrough
-          case useCombobox.stateChangeTypes.ItemClick: {
-            handleListItemClicked({
-              clickedItem,
-              onChange,
-            });
-          }
-        }
+        handleListItemClicked({
+          clickedItem,
+          onChange,
+        });
       },
       // Accessibility
       getA11yStatusMessage: options =>
@@ -374,10 +360,8 @@ export const MultiSelect = React.forwardRef(
     });
 
     // calculations for floating-UI popover position
-    const { refs, floatingStyles } = useFloating({
+    const { refs, floatingStyles, update } = useFloating({
       open: isOpen,
-      whileElementsMounted: (ref, float, update) =>
-        autoUpdate(ref, float, update, { elementResize: false }),
       placement: 'bottom-start',
       middleware: [
         offset(space.extraSmall2),
@@ -385,7 +369,7 @@ export const MultiSelect = React.forwardRef(
         size({
           apply({ rects, elements, availableHeight }) {
             Object.assign(elements.floating.style, {
-              minWidth: `${rects.reference.width}px`,
+              width: `${rects.reference.width}px`,
               // Floating will flip when smaller than 10*16 px
               // and never exceed 20*16 px.
               maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
@@ -396,30 +380,29 @@ export const MultiSelect = React.forwardRef(
       ],
     });
 
+    // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
+    // the useFloating hook but this requires the floating element to be conditionally rendered.
+    // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
+    // spread to the component. We therefor use this useEffect to update position. See https://floating-ui.com/docs/autoupdate#usage
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(
+          refs.reference.current,
+          refs.floating.current,
+          update,
+        );
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
+
     const handleOnClear = () => {
       onChange([]);
       setInputValue(EMPTY_INPUT);
       inputRef.current?.focus();
       updateListItems({ inputValue });
     };
+
     return (
       <BaseFormControl
-        append={
-          <FieldAppend
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            selectedItems={selectedItems}
-            isOpen={isOpen}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearAllItems}
-            focusable={false}
-            loading={loading ?? resolvedItemsLoading}
-            loadingText={loadingText}
-            disabled={readOnly || disabled}
-            onClear={handleOnClear}
-            getToggleButtonProps={getToggleButtonProps}
-          />
-        }
         className={classNames(
           'eds-dropdown',
           'eds-dropdown--multiselect',
@@ -434,13 +417,36 @@ export const MultiSelect = React.forwardRef(
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
+        onBlur={() => setInputValue('')}
         onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget) inputRef.current?.focus();
+          if (e.target === e.currentTarget) {
+            getInputProps()?.onClick?.(e);
+          }
         }}
         readOnly={readOnly}
         ref={refs.setReference}
         style={style}
         variant={variant}
+        after={
+          <DropdownList
+            ariaLabelChosenSingular={ariaLabelChosenSingular}
+            ariaLabelSelectedItem={ariaLabelSelectedItem}
+            floatingStyles={floatingStyles}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
+            listItems={listItems}
+            style={listStyle}
+            setListRef={refs.setFloating}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            noMatchesText={noMatchesText}
+            selectAllCheckboxState={selectAllCheckboxState}
+            selectAllItem={selectAll}
+            selectedItems={selectedItems}
+          />
+        }
         {...rest}
       >
         <div
@@ -451,44 +457,37 @@ export const MultiSelect = React.forwardRef(
                 hasSelectedItems,
             },
           )}
-          onClick={e => {
-            if (e.target === e.currentTarget) openMenu();
-          }}
         >
+          {selectedItems.length > 1 ? (
+            <VisuallyHidden onClick={inputRef.current?.focus}>
+              {ariaLabelJumpToInput}
+            </VisuallyHidden>
+          ) : null}
           {selectedItems.length <= maxChips ? (
-            <>
-              {selectedItems.length > 1 ? (
-                <VisuallyHidden onClick={() => inputRef.current?.focus()}>
-                  {ariaLabelJumpToInput}
-                </VisuallyHidden>
-              ) : (
-                <></>
-              )}
-              {selectedItems.map((selectedItem, index) => (
-                <SelectedItemTag
-                  ariaLabelChosen={ariaLabelChosenSingular}
-                  ariaLabelRemoveSelected={ariaLabelRemoveSelected}
-                  disabled={disabled}
-                  getSelectedItemProps={getSelectedItemProps}
-                  index={index}
-                  key={
-                    selectedItem?.label +
-                    (typeof selectedItem?.value === 'string'
-                      ? selectedItem.value
-                      : '')
-                  }
-                  readOnly={readOnly}
-                  removeSelectedItem={() => {
-                    handleListItemClicked({
-                      clickedItem: selectedItem,
-                      onChange,
-                    });
-                    inputRef?.current?.focus();
-                  }}
-                  selectedItem={selectedItem}
-                />
-              ))}
-            </>
+            selectedItems.map((selectedItem, index) => (
+              <SelectedItemTag
+                ariaLabelChosen={ariaLabelChosenSingular}
+                ariaLabelRemoveSelected={ariaLabelRemoveSelected}
+                disabled={disabled}
+                getSelectedItemProps={getSelectedItemProps}
+                index={index}
+                key={
+                  selectedItem?.label +
+                  (typeof selectedItem?.value === 'string'
+                    ? selectedItem.value
+                    : '')
+                }
+                readOnly={readOnly}
+                removeSelectedItem={() => {
+                  handleListItemClicked({
+                    clickedItem: selectedItem,
+                    onChange,
+                  });
+                  inputRef?.current?.focus();
+                }}
+                selectedItem={selectedItem}
+              />
+            ))
           ) : (
             <SelectedItemTag
               ariaLabelRemoveSelected={labelClearAllItems}
@@ -500,9 +499,6 @@ export const MultiSelect = React.forwardRef(
             />
           )}
           <input
-            placeholder={placeholder}
-            className="eds-dropdown__input eds-form-control"
-            disabled={readOnly || disabled}
             {...getInputProps({
               onKeyDown: (e: React.KeyboardEvent) => {
                 if (selectOnTab && isOpen && e.key === 'Tab') {
@@ -521,26 +517,28 @@ export const MultiSelect = React.forwardRef(
                 value: inputValue ?? EMPTY_INPUT,
                 ref: mergeRefs(inputRef, ref),
               }),
+              className: 'eds-dropdown__input eds-form-control',
+              disabled: readOnly || disabled,
+              placeholder: placeholder,
             })}
           />
         </div>
-        <DropdownList
-          ariaLabelChosenSingular={ariaLabelChosenSingular}
-          ariaLabelSelectedItem={ariaLabelSelectedItem}
-          floatingStyles={floatingStyles}
-          getItemProps={getItemProps}
-          getMenuProps={getMenuProps}
-          highlightedIndex={highlightedIndex}
+        <DropdownFieldAppendix
+          {...getToggleButtonProps({
+            'aria-busy': !(loading ?? resolvedItemsLoading)
+              ? undefined
+              : 'true',
+          })}
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          clearable={clearable}
+          onClear={handleOnClear}
+          focusable={true}
+          labelClearSelected={labelClearAllItems}
           isOpen={isOpen}
-          listItems={listItems}
-          style={listStyle}
-          setListRef={refs.setFloating}
-          loading={loading ?? resolvedItemsLoading}
+          itemIsSelected={selectedItems.length > 0}
           loadingText={loadingText}
-          noMatchesText={noMatchesText}
-          selectAllCheckboxState={selectAllCheckboxState}
-          selectAllItem={selectAll}
-          selectedItems={selectedItems}
+          loading={loading ?? resolvedItemsLoading}
         />
       </BaseFormControl>
     );

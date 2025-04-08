@@ -92,6 +92,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         checked={selectAllCheckboxState?.()}
         className="eds-dropdown__list__item__checkbox"
         tabIndex={-1}
+        readOnly
       />
       <span
         className="eds-dropdown__list__item__text"
@@ -111,6 +112,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
             checked={isItemSelected(item)}
             className="eds-dropdown__list__item__checkbox"
             tabIndex={-1}
+            readOnly
           />
         )}
         <span className="eds-dropdown__list__item__text">
@@ -136,21 +138,48 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     );
   };
 
-  if (!isOpen) return null;
-
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
     <ul
       {...getMenuProps({
         'aria-multiselectable': isMultiselect,
+        ref: setListRef,
+        className: 'eds-dropdown__list',
+        style: {
+          ...floatingStyles,
+          display: isOpen ? undefined : 'none',
+          ...rest.style,
+        },
       })}
-      className="eds-dropdown__list"
-      style={{ ...floatingStyles, ...rest.style }}
-      ref={setListRef}
     >
-      {!loading &&
-        listItems.length > 0 &&
-        listItems.map((item, index) => {
+      {(() => {
+        if (!isOpen) {
+          return null;
+        }
+
+        if (loading) {
+          return (
+            <li
+              key="dropdown-list-loading"
+              className="eds-dropdown__list__item"
+            >
+              {loadingText}
+            </li>
+          );
+        }
+
+        if (isNoMatches) {
+          return (
+            <li
+              key="dropdown-list-no-match"
+              className="eds-dropdown__list__item"
+            >
+              {noMatchesText}
+            </li>
+          );
+        }
+
+        return listItems.map((item, index) => {
           const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return null;
 
@@ -188,20 +217,8 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                   )}
             </li>
           );
-        })}
-
-      {isNoMatches && (
-        <li key="dropdown-list-no-match" className="eds-dropdown__list__item">
-          {noMatchesText}
-        </li>
-      )}
-      {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
-          To solve this, the dropdownList needs to account for the debounce */}
-      {loading && (
-        <li key="dropdown-list-loading" className="eds-dropdown__list__item">
-          {loadingText}
-        </li>
-      )}
+        });
+      })()}
     </ul>
   );
 };

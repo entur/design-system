@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import classNames from 'classnames';
 import { useSelect } from 'downshift';
 import {
@@ -15,7 +15,7 @@ import { space } from '@entur/tokens';
 import { mergeRefs, VariantType } from '@entur/utils';
 
 import { DropdownList } from './components/DropdownList';
-import { FieldAppend } from './components/FieldComponents';
+import { DropdownFieldAppendix } from './components/FieldComponents';
 import { useResolvedItems } from './useResolvedItems';
 import { clamp, itemToString } from './utils';
 
@@ -66,7 +66,7 @@ export type DropdownProps<ValueType> = {
   variant?: VariantType | typeof error | typeof info;
   /** Valideringsmelding, brukes sammen med `variant` */
   feedback?: string;
-  /** Tekst eller ikon som kommer før dropdown-en */
+  /** Tekst eller ikon som kommer først i dropdown-feltet */
   prepend?: React.ReactNode;
   /** */
   loading?: boolean;
@@ -117,8 +117,8 @@ export const Dropdown = React.forwardRef(
   <ValueType extends NonNullable<any>>(
     {
       ariaLabelChosenSingular,
-      ariaLabelCloseList,
-      ariaLabelOpenList,
+      ariaLabelCloseList = 'Lukk liste med valg',
+      ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelSelectedItem,
       className,
       clearable = false,
@@ -131,7 +131,7 @@ export const Dropdown = React.forwardRef(
       labelTooltip,
       listStyle,
       loading,
-      loadingText,
+      loadingText = 'Laster resultater …',
       noMatchesText = 'Ingen tilgjengelige valg …',
       onChange,
       placeholder,
@@ -148,7 +148,6 @@ export const Dropdown = React.forwardRef(
   ) => {
     const { items: normalizedItems, loading: resolvedItemsLoading } =
       useResolvedItems(initialItems);
-    const toggleButtonRef = useRef<HTMLDivElement>(null);
     const isFilled = selectedItem !== null || placeholder !== undefined;
     const {
       isOpen,
@@ -163,25 +162,18 @@ export const Dropdown = React.forwardRef(
       selectedItem,
       onStateChange({ type, selectedItem: newSelectedItem }) {
         switch (type) {
-          // @ts-expect-error This falltrough is wanted
           case useSelect.stateChangeTypes.ToggleButtonBlur:
-            if (!selectOnBlur) break;
-          case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter: // eslint-disable-line no-fallthrough
-          case useSelect.stateChangeTypes.ToggleButtonKeyDownSpaceButton:
-          case useSelect.stateChangeTypes.ItemClick: {
-            if (newSelectedItem === undefined) return;
-            onChange?.(newSelectedItem ?? null);
-          }
+            if (!selectOnBlur) return;
         }
+        if (newSelectedItem === undefined) return;
+        onChange?.(newSelectedItem ?? null);
       },
       itemToString,
     });
 
     // calculations for floating-UI popover position
-    const { refs, floatingStyles } = useFloating({
+    const { refs, floatingStyles, update } = useFloating({
       open: isOpen,
-      whileElementsMounted: (ref, float, update) =>
-        autoUpdate(ref, float, update, { elementResize: false }),
       placement: 'bottom-start',
       middleware: [
         offset(space.extraSmall2),
@@ -189,7 +181,7 @@ export const Dropdown = React.forwardRef(
         size({
           apply({ rects, elements, availableHeight }) {
             Object.assign(elements.floating.style, {
-              minWidth: `${rects.reference.width}px`,
+              width: `${rects.reference.width}px`,
               // Floating will flip when smaller than 10*16 px
               // and never exceed 20*16 px.
               maxHeight: `${clamp(10 * 16, availableHeight, 20 * 16)}px`,
@@ -200,100 +192,103 @@ export const Dropdown = React.forwardRef(
       ],
     });
 
+    // Update floating-ui position on scroll etc. Floating-ui's autoupdate is usually used inside
+    // the useFloating hook but this requires the floating element to be conditionally rendered.
+    // Downshift doesn't work correctly when conditionally rendered since props and refs aren't correctly
+    // spread to the component. We therefor use this useEffect to update position. See https://floating-ui.com/docs/autoupdate#usage
+    useEffect(() => {
+      if (isOpen && refs.reference.current && refs.floating.current) {
+        return autoUpdate(
+          refs.reference.current,
+          refs.floating.current,
+          update,
+        );
+      }
+    }, [isOpen, refs.reference, refs.floating, update]);
+
     return (
       <BaseFormControl
-        append={
-          <FieldAppend
-            ariaHiddenToggleButton={true}
-            ariaLabelCloseList={ariaLabelCloseList}
-            ariaLabelOpenList={ariaLabelOpenList}
-            clearable={clearable}
-            labelClearSelectedItems={labelClearSelectedItem}
-            focusable={false}
-            getToggleButtonProps={getToggleButtonProps}
-            isOpen={isOpen}
-            loading={loading ?? resolvedItemsLoading}
-            loadingText={loadingText}
-            onClear={() => {
-              onChange?.(null);
-              toggleButtonRef.current?.focus();
-            }}
-            disabled={readOnly || disabled}
-            selectedItems={[selectedItem]}
-          />
-        }
         className={classNames('eds-dropdown', className, {
           'eds-dropdown--has-tooltip': labelTooltip !== undefined,
         })}
-        disabled={disabled}
         disableLabelAnimation={disableLabelAnimation}
         feedback={feedback}
         isFilled={isFilled}
-        label={label}
-        labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
-        onClick={(e: React.MouseEvent) => {
-          if (e.target === e.currentTarget)
-            getToggleButtonProps()?.onClick?.(e);
-        }}
         prepend={prepend}
-        readOnly={readOnly}
-        ref={refs.setReference}
         style={style}
         variant={variant}
+        {...getToggleButtonProps({
+          ref: mergeRefs(ref, refs.setReference),
+          'aria-disabled': disabled,
+          'aria-label': disabled ? 'Disabled dropdown' : '',
+          disabled: disabled,
+          readOnly: readOnly,
+          tabIndex: disabled ? -1 : 0,
+          label: label,
+          labelId: getLabelProps()?.id,
+          children: undefined,
+          onKeyDown(e) {
+            if (
+              isOpen &&
+              (selectOnTab || selectOnBlur) &&
+              e.key === 'Tab' &&
+              highlightedIndex !== undefined
+            )
+              onChange?.(normalizedItems[highlightedIndex]);
+          },
+        })}
+        after={
+          <DropdownList
+            ariaLabelChosenSingular={ariaLabelChosenSingular}
+            ariaLabelSelectedItem={ariaLabelSelectedItem}
+            floatingStyles={floatingStyles}
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
+            listItems={normalizedItems}
+            noMatchesText={noMatchesText}
+            style={listStyle}
+            setListRef={refs.setFloating}
+            loading={loading ?? resolvedItemsLoading}
+            loadingText={loadingText}
+            selectedItems={selectedItem !== null ? [selectedItem] : []}
+          />
+        }
         {...rest}
+        // Append is not supported as of now
+        append={undefined}
       >
-        <div
-          className="eds-dropdown__selected-item"
-          {...getToggleButtonProps({
-            id: undefined,
-            onKeyDown: e => {
-              if (selectOnTab && isOpen && e.key === 'Tab') {
-                // we don't want to clear selection with tab
-                const highlitedItem = normalizedItems[highlightedIndex];
-                if (highlitedItem) {
-                  onChange?.(highlitedItem);
-                }
-              }
-            },
-            ref: mergeRefs(toggleButtonRef, ref),
-            'aria-disabled': disabled,
-            'aria-label': disabled ? 'Disabled dropdown' : '',
-            disabled: disabled,
-            tabIndex: disabled ? -1 : 0,
-          })}
-        >
+        <div className="eds-dropdown__selected-item">
           {selectedItem?.label ?? (
-              <div
-                className={classNames(
-                  'eds-dropdown__selected-item__placeholder',
-                  {
-                    'eds-dropdown__selected-item__placeholder--readonly':
-                      readOnly,
-                  },
-                )}
-              >
-                {placeholder}
-              </div>
-            ) ??
-            null}
+            <div
+              className={classNames(
+                'eds-dropdown__selected-item__placeholder',
+                {
+                  'eds-dropdown__selected-item__placeholder--readonly':
+                    readOnly,
+                },
+              )}
+            >
+              {placeholder}
+            </div>
+          )}
         </div>
-        <DropdownList
-          ariaLabelChosenSingular={ariaLabelChosenSingular}
-          ariaLabelSelectedItem={ariaLabelSelectedItem}
-          floatingStyles={floatingStyles}
-          getItemProps={getItemProps}
-          getMenuProps={getMenuProps}
-          highlightedIndex={highlightedIndex}
+        <DropdownFieldAppendix
+          aria-busy={!(loading ?? resolvedItemsLoading) ? undefined : 'true'}
+          aria-expanded={isOpen}
+          clearable={clearable}
+          onClear={() => onChange?.(null)}
+          focusable={true}
+          labelClearSelected={labelClearSelectedItem}
           isOpen={isOpen}
-          listItems={normalizedItems}
-          noMatchesText={noMatchesText}
-          style={listStyle}
-          setListRef={refs.setFloating}
-          loading={loading ?? resolvedItemsLoading}
-          loadingText={loadingText}
-          selectedItems={selectedItem !== null ? [selectedItem] : []}
+          itemIsSelected={selectedItem !== null}
+          ariaLabelCloseList={ariaLabelCloseList}
+          ariaLabelOpenList={ariaLabelOpenList}
+          loading={false}
+          loadingText={undefined}
         />
       </BaseFormControl>
     );

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import {
-  UseComboboxGetToggleButtonPropsOptions,
+  UseComboboxGetToggleButtonPropsReturnValue,
   UseMultipleSelectionGetSelectedItemPropsOptions,
 } from 'downshift';
 
@@ -55,6 +55,7 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
         e.stopPropagation();
         removeSelectedItem(selectedItem);
       }}
+      onClick={(e: React.MouseEvent) => e.stopPropagation()}
       closeButtonAriaLabel={`${selectedItem.label} ${ariaLabelChosen}, ${ariaLabelRemoveSelected} `}
       key={selectedItem.value}
       aria-live="polite"
@@ -69,73 +70,74 @@ export const SelectedItemTag = <ValueType extends NonNullable<any>>({
   );
 };
 
-type FieldAppendProps<ValueType> = {
-  ariaHiddenToggleButton?: boolean;
-  ariaLabelCloseList?: string;
-  ariaLabelOpenList?: string;
+type FieldAppendProps = Partial<UseComboboxGetToggleButtonPropsReturnValue> & {
+  ariaLabelCloseList: string;
+  ariaLabelOpenList: string;
   clearable?: boolean;
-  labelClearSelectedItems?: string;
+  labelClearSelected: string;
   disabled?: boolean;
   focusable?: boolean;
-  getToggleButtonProps: (
-    options?: UseComboboxGetToggleButtonPropsOptions | undefined,
-  ) => any;
   isOpen: boolean;
-  loading?: boolean;
-  loadingText?: string;
+  loading: boolean;
+  loadingText: string | undefined;
   onClear: () => void;
-  selectedItems: (NormalizedDropdownItemType<ValueType> | null)[];
+  itemIsSelected: boolean;
 };
 
-export const FieldAppend = <ValueType extends NonNullable<any>>({
-  ariaHiddenToggleButton = false,
-  ariaLabelCloseList,
-  ariaLabelOpenList,
-  clearable = false,
-  labelClearSelectedItems,
-  disabled = false,
-  focusable = false,
-  getToggleButtonProps,
-  isOpen,
-  loading = false,
-  loadingText = 'Laster resultater …',
-  onClear,
-  selectedItems,
-}: FieldAppendProps<ValueType>) => {
-  if (disabled) {
-    return null;
-  }
-  return (
-    <div className="eds-dropdown__appendix">
-      {clearable && selectedItems?.length > 0 && selectedItems[0] !== null && (
-        <>
+export const DropdownFieldAppendix = forwardRef(
+  (
+    {
+      ariaLabelCloseList,
+      ariaLabelOpenList,
+      clearable = false,
+      labelClearSelected,
+      focusable = false,
+      disabled,
+      isOpen,
+      loading = false,
+      loadingText,
+      onClear,
+      itemIsSelected,
+      ...rest
+    }: FieldAppendProps,
+    ref: React.ForwardedRef<HTMLButtonElement>,
+  ) => {
+    function getToggleAriaLabel() {
+      if (loading) return loadingText;
+      if (isOpen) return ariaLabelCloseList;
+      return ariaLabelOpenList;
+    }
+
+    return (
+      <div className="eds-dropdown__appendix">
+        {!disabled && clearable && itemIsSelected && (
           <ClearableButton
             onClear={onClear}
             focusable={true}
-            labelClearSelectedItems={labelClearSelectedItems}
+            labelClearSelectedItems={labelClearSelected}
           />
-          <div className="eds-dropdown__appendix__divider" />
-        </>
-      )}
-      {!loading ? (
-        <ToggleButton
-          aria-hidden={ariaHiddenToggleButton}
-          ariaLabelCloseList={ariaLabelCloseList}
-          ariaLabelOpenList={ariaLabelOpenList}
-          getToggleButtonProps={getToggleButtonProps}
-          isOpen={isOpen}
-          focusable={focusable}
-        />
-      ) : (
-        <div className={'eds-dropdown__appendix__toggle-button--loading-dots'}>
-          <LoadingDots aria-label={loadingText} />
-        </div>
-      )}
-    </div>
-  );
-};
+        )}
 
-const ClearableButton = ({
+        <IconButton
+          className={classNames('eds-dropdown__appendix__toggle-button', {
+            'eds-dropdown__appendix__toggle-button--open': isOpen,
+          })}
+          ref={ref}
+          aria-label={getToggleAriaLabel()}
+          {...rest}
+        >
+          {!loading ? (
+            <DownArrowIcon aria-hidden="true" />
+          ) : (
+            <LoadingDots aria-hidden="true" />
+          )}
+        </IconButton>
+      </div>
+    );
+  },
+);
+
+export const ClearableButton = ({
   onClear,
   labelClearSelectedItems = 'Fjern valgte',
   focusable = false,
@@ -146,58 +148,27 @@ const ClearableButton = ({
   ariaLabelClearItems?: string;
 }) => {
   return (
-    <Tooltip
-      aria-hidden="true"
-      placement="top"
-      content={labelClearSelectedItems}
-      className="eds-dropdown__appendix__clear-button__tooltip"
-    >
-      <IconButton
-        className="eds-dropdown__appendix__clear-button"
-        type="button"
-        tabIndex={focusable ? 0 : 1}
-        onClick={onClear}
-        aria-label={labelClearSelectedItems}
+    <>
+      <Tooltip
+        aria-hidden="true"
+        placement="top"
+        content={labelClearSelectedItems}
+        className="eds-dropdown__appendix__clear-button__tooltip"
       >
-        <CloseSmallIcon aria-hidden="true" />
-      </IconButton>
-    </Tooltip>
-  );
-};
-
-const ToggleButton = ({
-  getToggleButtonProps,
-  isOpen,
-  'aria-hidden': ariaHidden = false,
-  ariaLabelCloseList = 'Lukk liste med valg',
-  ariaLabelOpenList = 'Åpne liste med valg',
-  focusable = false,
-}: {
-  getToggleButtonProps: (
-    options?: UseComboboxGetToggleButtonPropsOptions | undefined,
-  ) => any;
-  isOpen: boolean;
-  'aria-hidden'?: boolean;
-  ariaLabelCloseList?: string;
-  ariaLabelOpenList?: string;
-  focusable?: boolean;
-}) => {
-  return (
-    <IconButton
-      {...getToggleButtonProps({
-        className: classNames('eds-dropdown__appendix__toggle-button', {
-          'eds-dropdown__appendix__toggle-button--open': isOpen,
-        }),
-        'aria-labelledby': undefined,
-      })}
-      aria-hidden={ariaHidden}
-      aria-label={
-        ariaHidden ? undefined : isOpen ? ariaLabelCloseList : ariaLabelOpenList
-      }
-      tabIndex={focusable ? 0 : -1}
-      type="button"
-    >
-      <DownArrowIcon aria-hidden="true" />
-    </IconButton>
+        <IconButton
+          className="eds-dropdown__appendix__clear-button"
+          type="button"
+          tabIndex={focusable ? 0 : -1}
+          onClick={e => {
+            e.stopPropagation();
+            onClear();
+          }}
+          aria-label={labelClearSelectedItems}
+        >
+          <CloseSmallIcon aria-hidden="true" />
+        </IconButton>
+      </Tooltip>
+      <div className="eds-dropdown__appendix__divider" />
+    </>
   );
 };
