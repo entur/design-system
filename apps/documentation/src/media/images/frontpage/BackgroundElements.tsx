@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from 'react';
+import React from 'react';
 export const LinjeTopographicBottom = ({
   className,
 }: {
@@ -8,7 +8,19 @@ export const LinjeTopographicBottom = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    style={{ mixBlendMode: 'multiply' }}
+    style={(() => {
+      // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
+      // As a replacement, filter brightness is used instead. Color variables without
+      // blend mode is probably a better solution
+      const isSafari =
+        typeof window !== 'undefined' &&
+        /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+      if (isSafari) {
+        return { filter: 'brightness(0.4)' };
+      }
+      return { mixBlendMode: 'multiply' };
+    })()}
   >
     <g id="topographic-bottom">
       <path
@@ -27,7 +39,19 @@ export const LinjeTopographicTop = ({ className }: { className?: string }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    style={{ mixBlendMode: 'multiply' }}
+    style={(() => {
+      // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
+      // As a replacement, filter brightness is used instead. Color variables without
+      // blend mode is probably a better solution
+      const isSafari =
+        typeof window !== 'undefined' &&
+        /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+      if (isSafari) {
+        return { filter: 'brightness(0.25)' };
+      }
+      return { mixBlendMode: 'multiply' };
+    })()}
   >
     <g id="topographic-top">
       <path
