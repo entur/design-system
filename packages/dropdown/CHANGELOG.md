@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.0...@entur/dropdown@7.1.1-beta.0) (2025-04-08)
+
+### Bug Fixes
+
+- **dropdown:** add forwardRef support to dropdown components ([4873719](https://github.com/entur/design-system/commit/487371911392c1023598912c2d4d6d4b5e0bc2ae))
+- **dropdown:** imporve dropdown list positioning ([1d9ce06](https://github.com/entur/design-system/commit/1d9ce06ca0233958600e4bbf63522bf251e229e5))
+- **dropdown:** improve focus handling ([f02876a](https://github.com/entur/design-system/commit/f02876a5153146887563fa7adb0e1963b30379a1))
+
 # [7.1.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.0.3...@entur/dropdown@7.1.0) (2025-03-24)
 
 ### Features
