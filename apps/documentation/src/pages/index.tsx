@@ -30,7 +30,6 @@ import {
 
 import './index.scss';
 
-// TODO: don't use beta version of layout when merging PR
 const Index = () => {
   const { width } = useWindowDimensions();
   const [backgroundHeight, setBackgroundHeight] = useState(0);
