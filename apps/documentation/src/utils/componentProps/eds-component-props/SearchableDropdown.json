@@ -11,7 +11,7 @@
         "name": "items",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -22,11 +22,11 @@
       },
       "selectedItem": {
         "defaultValue": null,
-        "description": "Valgt element. Bruk null for ingen verdi",
+        "description": "Valgt verdi. Bruk null for ingen verdi.",
         "name": "selectedItem",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -39,11 +39,11 @@
         "defaultValue": {
           "value": "() => undefined"
         },
-        "description": "Callback ved valg som skal brukes til å oppdatere selectedItem",
+        "description": "Callback ved valg som skal oppdatere selectedItem",
         "name": "onChange",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -52,30 +52,13 @@
           "name": "((selectedItem: NormalizedDropdownItemType<ValueType> | null) => void | Dispatch<SetStateAction<NormalizedDropdownItemType<ValueType> | null>>) | undefined"
         }
       },
-      "itemFilter": {
-        "defaultValue": {
-          "value": "isFunctionWithQueryArgument(initialItems)\n    ? noFilter\n    : lowerCaseFilterTest"
-        },
-        "description": "Filtreringen som brukes når man skriver inn tekst i inputfeltet",
-        "name": "itemFilter",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((item: NormalizedDropdownItemType<ValueType>, inputValue: string | undefined) => boolean) | undefined"
-        }
-      },
       "label": {
         "defaultValue": null,
         "description": "Beskrivende tekst som forklarer feltet",
         "name": "label",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -90,7 +73,7 @@
         "name": "placeholder",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -103,60 +86,11 @@
         "defaultValue": {
           "value": true
         },
-        "description": "Vis knapp for å nullstille Dropdown-en skal vises",
+        "description": "Om man skal ha mulighet for å nullstille Dropdown-en",
         "name": "clearable",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "disableLabelAnimation": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Plasserer labelen statisk på toppen av inputfeltet",
-        "name": "disableLabelAnimation",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "debounceTimeout": {
-        "defaultValue": null,
-        "description": "Antall millisekunder man venter etter tekstinput før det gjøres kall for å oppdatere items\nDenne er kun relevant hvis du sender inn en funksjon som items.",
-        "name": "debounceTimeout",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "number | undefined"
-        }
-      },
-      "disabled": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Deaktiver dropdown-en",
-        "name": "disabled",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -173,7 +107,7 @@
         "name": "selectOnTab",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -190,7 +124,7 @@
         "name": "selectOnBlur",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -199,68 +133,38 @@
           "name": "boolean | undefined"
         }
       },
-      "noMatchesText": {
+      "disabled": {
         "defaultValue": {
-          "value": "\"Ingen treff for søket\""
+          "value": false
         },
-        "description": "Tekst som kommer opp når det ikke er noe treff på filtreringsøket",
-        "name": "noMatchesText",
+        "description": "Deaktiver dropdown-en",
+        "name": "disabled",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
         "required": false,
         "type": {
-          "name": "string | undefined"
+          "name": "boolean | undefined"
         }
       },
       "readOnly": {
         "defaultValue": {
           "value": false
         },
-        "description": "Gjør dropdown-en til å kun kunne leses",
+        "description": "Setter dropdown-en i read-only modus",
         "name": "readOnly",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
         "required": false,
         "type": {
           "name": "boolean | undefined"
-        }
-      },
-      "prepend": {
-        "defaultValue": null,
-        "description": "Tekst eller ikon som kommer før dropdown-en",
-        "name": "prepend",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "loadingText": {
-        "defaultValue": null,
-        "description": "En tekst som beskriver hva som skjer når man venter på items",
-        "name": "loadingText",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
         }
       },
       "variant": {
@@ -271,7 +175,7 @@
         "name": "variant",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -286,7 +190,7 @@
         "name": "feedback",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -295,13 +199,45 @@
           "name": "string | undefined"
         }
       },
-      "className": {
+      "prepend": {
         "defaultValue": null,
-        "description": "",
-        "name": "className",
+        "description": "Tekst eller ikon som kommer først i dropdown-feltet",
+        "name": "prepend",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "loading": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "loadingText": {
+        "defaultValue": {
+          "value": "Laster resultater …"
+        },
+        "description": "En tekst som beskriver hva som skjer når man venter på items",
+        "name": "loadingText",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -310,11 +246,17 @@
           "name": "string | undefined"
         }
       },
-      "style": {
-        "defaultValue": null,
-        "description": "",
-        "name": "style",
+      "noMatchesText": {
+        "defaultValue": {
+          "value": "Ingen tilgjengelige valg …"
+        },
+        "description": "Tekst som kommer opp når det ikke er noe elementer å vise\nTekst som kommer opp når det ikke er noe treff på filtreringsøket",
+        "name": "noMatchesText",
         "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          },
           {
             "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
             "name": "TypeLiteral"
@@ -322,33 +264,18 @@
         ],
         "required": false,
         "type": {
-          "name": "{ [key: string]: any; } | undefined"
-        }
-      },
-      "listStyle": {
-        "defaultValue": null,
-        "description": "Style som kun påføres listeelementet",
-        "name": "listStyle",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "{ [key: string]: any; } | undefined"
+          "name": "string | undefined"
         }
       },
       "labelClearSelectedItem": {
         "defaultValue": {
           "value": "fjern valgt"
         },
-        "description": "Tekst som beskriver at man fjerner valget sitt",
+        "description": "Om man skal ha mulighet for å nullstille Dropdown-en",
         "name": "labelClearSelectedItem",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -363,7 +290,7 @@
         "name": "labelTooltip",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -372,15 +299,77 @@
           "name": "ReactNode"
         }
       },
+      "disableLabelAnimation": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Plasserer labelen statisk på toppen av inputfeltet",
+        "name": "disableLabelAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "Ekstra klassenavn",
+        "name": "className",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "listStyle": {
+        "defaultValue": null,
+        "description": "Styling som sendes ned til Dropdown-lista",
+        "name": "listStyle",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Styling for Dropdown-en",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ [key: string]: any; } | undefined"
+        }
+      },
       "ariaLabelCloseList": {
         "defaultValue": {
-          "value": "\"Lukk liste med valg\""
+          "value": "Lukk liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som lukker listen med valg",
         "name": "ariaLabelCloseList",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -391,13 +380,13 @@
       },
       "ariaLabelOpenList": {
         "defaultValue": {
-          "value": "\"Åpne liste med valg\""
+          "value": "Åpne liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som åpner listen med valg",
         "name": "ariaLabelOpenList",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -408,13 +397,13 @@
       },
       "ariaLabelChosenSingular": {
         "defaultValue": {
-          "value": "\"valgt\""
+          "value": "'valgt'"
         },
         "description": "Ord for at et element er valgt i entall\neks. 'Element 1, _valgt_'",
         "name": "ariaLabelChosenSingular",
         "declarations": [
           {
-            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
             "name": "TypeLiteral"
           }
         ],
@@ -425,10 +414,27 @@
       },
       "ariaLabelSelectedItem": {
         "defaultValue": {
-          "value": "\", valgt element, trykk for å fjerne\""
+          "value": "', valgt element, trykk for å fjerne'"
         },
         "description": "Tekst for skjermleser som beskriver statusen til et element som valgt",
         "name": "ariaLabelSelectedItem",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | undefined"
+        }
+      },
+      "itemFilter": {
+        "defaultValue": {
+          "value": "isFunctionWithQueryArgument(initialItems)\n        ? noFilter\n        : lowerCaseFilterTest"
+        },
+        "description": "Filtreringen som brukes når man skriver inn tekst i inputfeltet",
+        "name": "itemFilter",
         "declarations": [
           {
             "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
@@ -437,7 +443,22 @@
         ],
         "required": false,
         "type": {
-          "name": "string | undefined"
+          "name": "((item: NormalizedDropdownItemType<ValueType>, inputValue: string | undefined) => boolean) | undefined"
+        }
+      },
+      "debounceTimeout": {
+        "defaultValue": null,
+        "description": "Antall millisekunder man venter etter tekstinput før det gjøres kall for å oppdatere items\nDenne er kun relevant hvis du sender inn en funksjon som items.",
+        "name": "debounceTimeout",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | undefined"
         }
       }
     }
