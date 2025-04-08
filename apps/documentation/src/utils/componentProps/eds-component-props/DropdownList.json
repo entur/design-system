@@ -239,6 +239,21 @@
         "type": {
           "name": "NormalizedDropdownItemType<ValueType>[]"
         }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/components/DropdownList.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | undefined"
+        }
       }
     }
   }
