@@ -30,7 +30,6 @@ import {
 
 import './index.scss';
 
-// TODO: don't use beta version of layout when merging PR
 const Index = () => {
   const { width } = useWindowDimensions();
   const [backgroundHeight, setBackgroundHeight] = useState(0);
@@ -40,9 +39,7 @@ const Index = () => {
   const _width = Math.floor(width ?? 0 / 100);
 
   useEffect(() => {
-    const contentHeight =
-      (mainRef.current?.clientHeight ?? 0) +
-      (footerRef.current?.clientHeight ?? 0);
+    const contentHeight = mainRef.current?.clientHeight ?? 0;
     setBackgroundHeight(contentHeight);
   }, [_width]);
 

@@ -9,7 +9,7 @@
   --background-height: 200rem;
   $background-width: 400rem;
   $parallax-translate-x: -40rem;
-  --parallax-translate-y: -49rem;
+  --parallax-translate-y: -59rem;
   $top-parallax-transform: translateZ(-4px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(1.8);
   $bottom-parallax-transform: translateZ(-5px) translateX($parallax-translate-x) translateY(var(--parallax-translate-y)) scale(2);
   $disabled-parallax-transform: translateX(-110rem) translateY(-55rem) scale(1) !important;
@@ -31,6 +31,9 @@
     perspective: none;
     transform-style: none;
   }
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    --parallax-translate-y: -50rem;
+  }
   @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
     --parallax-translate-y: -15rem;
   }
@@ -48,6 +51,7 @@
       left: 50vw;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
+      overflow: visible;
 
       @media (prefers-reduced-motion) {
         transform: $disabled-parallax-transform;
