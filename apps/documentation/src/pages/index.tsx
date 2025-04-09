@@ -39,9 +39,7 @@ const Index = () => {
   const _width = Math.floor(width ?? 0 / 100);
 
   useEffect(() => {
-    const contentHeight =
-      (mainRef.current?.clientHeight ?? 0) +
-      (footerRef.current?.clientHeight ?? 0);
+    const contentHeight = mainRef.current?.clientHeight ?? 0;
     setBackgroundHeight(contentHeight);
   }, [_width]);
 
