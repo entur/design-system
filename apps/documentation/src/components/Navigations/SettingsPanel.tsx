@@ -99,11 +99,8 @@ const SettingsPanel = () => {
             <SettingsIcon
               className="settings-trigger__icon"
               aria-hidden="true"
-            />{' '}
-            <span className="settings-trigger__button-text">
-              {' '}
-              Innstillinger
-            </span>
+            />
+            <span className="settings-trigger__button-text">Innstillinger</span>
           </IconButton>
         </Tooltip>
       </div>

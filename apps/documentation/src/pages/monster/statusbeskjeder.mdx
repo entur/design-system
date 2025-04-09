@@ -39,32 +39,34 @@ Statusbeskjeder informerer brukeren når noe går galt, eller når det ikke finn
 
 <BannerAlertBox title="Informasjon" variant="information">Denne siden er under arbeid. Det som står her er det Entur appen bruker. Om du har innspill til mer standardisert innhold her, ta kontakt med oss! </BannerAlertBox>
 
-
 ## Statusbeskjeder og illustrasjoner
-Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbeskjeder:
+
+Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbeskjeder. Du finner nedlasting av illustrasjonene på [denne siden](/identitet/verktoykassen/illustrasjoner).
+
+Illustrasjonene finnes også som animasjoner. Disse ligger i Google Drive i mappen `DesignGuild/Illustration Library/Animations/Animasjoner Entur`.
 
 <GridContainer spacing="medium" >
   <GridItem small={12} medium={4} className="statusbeskjed-grid">
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Sheep")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="sau"
     preset="full-width-image"
   />
-  Ingen treff / systemfeil
+  Ingen treff eller systemfeil
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
    <ImageDisplay
   imgSource={props.data.files.images.find(image => image.name === "Musk")?.publicURL}
-  alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+  alt="moskus"
   preset="full-width-image"
 />
-  404 / Feilmelding
+  Fant ikke siden (404)
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Beaver")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="bever"
     preset="full-width-image"
   />
   Ingen nett
@@ -72,49 +74,49 @@ Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbesk
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Squirrel")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="ekorn"
     preset="full-width-image"
   />
-   Profil / Pålogging
+   Pålogging og profil
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
    <ImageDisplay
   imgSource={props.data.files.images.find(image => image.name === "Hedgehog")?.publicURL}
-  alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+  alt="pinnsvin"
   preset="full-width-image"
 />
-   Tomt / Noe mangler / Timeout
+Sesjon utløpt
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Leaves")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="blader"
     preset="full-width-image"
   />
-     Empty state
+     Innhold mangler
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Rabbit")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="kaniner"
     preset="full-width-image"
   />
-   Empty state
+   Innhold mangler
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
    <ImageDisplay
   imgSource={props.data.files.images.find(image => image.name === "Ducks")?.publicURL}
-  alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+  alt="ender som går over et gangfelt"
   preset="full-width-image"
 />
-   Betaling
+   Betaling pågår
  </GridItem>
    <GridItem small={12} medium={4} className="statusbeskjed-grid">
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Doves")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="duer"
     preset="full-width-image"
   />
    Leter etter plass
@@ -123,7 +125,7 @@ Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbesk
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Goat")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="geit"
     preset="full-width-image"
   />
      Behandler refusjon
@@ -132,18 +134,18 @@ Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbesk
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Kitty")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="kan med tom matskål"
     preset="full-width-image"
   />
-     ???
+     Personvern og cookies
  </GridItem>
       <GridItem small={12} medium={4} className="statusbeskjed-grid">
 
   <ImageDisplay
     imgSource={props.data.files.images.find(image => image.name === "Mouse")?.publicURL}
-    alt="Et oversiktsbilde som viser et større utvalg at tilgjenglige Entur-ikoner"
+    alt="mus som spiser cookie"
     preset="full-width-image"
   />
-    Cookies
+    Personvern og cookies
  </GridItem>
  </GridContainer>
