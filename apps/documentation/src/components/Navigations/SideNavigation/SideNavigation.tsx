@@ -36,7 +36,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 }) => {
   const location = useLocation();
   const [searchText, setSearchText] = React.useState('');
-
   const currentPathSegments = removeTrailingSlash(location.pathname)?.split(
     '/',
   );

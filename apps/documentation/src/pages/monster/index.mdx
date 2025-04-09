@@ -1,0 +1,25 @@
+---
+title: Mønster
+description: Mønstre bygger på våre komponenter, og er våre anbefalinger på hvordan komponentene bør settes sammen for å løse spesifikke oppgaver.
+route: /monster
+parent: monster
+menu: Introduksjon
+order: 1
+---
+
+import { SEO } from '@components/seo/SEO';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+<PageHeader/>
+
+## Introduksjon
+
+Der komponentene fokuserer på hva som finnes i designsystemet, fokuserer mønstrene på hvordan og når komponentene brukes sammen for å skape en god og sammenhengende brukeropplevelse på tvers av Entur sine løsninger.
+
+Kort fortalt hjelper mønstre oss å:
+- Sikre konsistente opplevelser på tvers av produkter og plattformer.
+- Forbedre brukervennlighet og tilgjengelighet.
+- Spare tid ved å gjenbruke velprøvde løsninger.
