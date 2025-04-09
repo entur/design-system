@@ -163,7 +163,7 @@
       },
       "labelTooltipButtonAriaLabel": {
         "defaultValue": {
-          "value": "Klikk for tilleggsinfo om feltet"
+          "value": "`Klikk for tilleggsinfo om ${label}-feltet`"
         },
         "description": "Forklarende tekst for knappen som åpner labelTooltip",
         "name": "labelTooltipButtonAriaLabel",
