@@ -8,19 +8,19 @@ export const LinjeTopographicBottom = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    style={(() => {
-      // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
-      // As a replacement, filter brightness is used instead. Color variables without
-      // blend mode is probably a better solution
-      const isSafari = /^((?!chrome|android).)*safari/i.test(
-        navigator.userAgent,
-      );
-      if (!isSafari) {
-        return { mixBlendMode: 'multiply' };
-      } else {
-        return { filter: 'brightness(0.4)' };
-      }
-    })()}
+    // style={(() => {
+    //   // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
+    //   // As a replacement, filter brightness is used instead. Color variables without
+    //   // blend mode is probably a better solution
+    //   const isSafari = /^((?!chrome|android).)*safari/i.test(
+    //     navigator.userAgent,
+    //   );
+    //   if (!isSafari) {
+    //     return { mixBlendMode: 'multiply' };
+    //   } else {
+    //     return { filter: 'brightness(0.4)' };
+    //   }
+    // })()}
   >
     <g id="topographic-bottom">
       <path
@@ -39,19 +39,19 @@ export const LinjeTopographicTop = ({ className }: { className?: string }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    style={(() => {
-      // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
-      // As a replacement, filter brightness is used instead. Color variables without
-      // blend mode is probably a better solution
-      const isSafari = /^((?!chrome|android).)*safari/i.test(
-        navigator.userAgent,
-      );
-      if (!isSafari) {
-        return { mixBlendMode: 'multiply' };
-      } else {
-        return { filter: 'brightness(0.25)' };
-      }
-    })()}
+    // style={(() => {
+    //   // Safari doesn't support mix-blend-mode and 3d-perspective on the same object.
+    //   // As a replacement, filter brightness is used instead. Color variables without
+    //   // blend mode is probably a better solution
+    //   const isSafari = /^((?!chrome|android).)*safari/i.test(
+    //     navigator.userAgent,
+    //   );
+    //   if (!isSafari) {
+    //     return { mixBlendMode: 'multiply' };
+    //   } else {
+    //     return { filter: 'brightness(0.25)' };
+    //   }
+    // })()}
   >
     <g id="topographic-top">
       <path
