@@ -1,0 +1,38 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$space-extra-small;
+  row-gap: tokens.$space-small;
+  margin-top: tokens.$space-large;
+  margin-bottom: tokens.$space-extra-large;
+}
+
+.details-list-item {
+  display: flex;
+  align-items: center;
+  gap: tokens.$space-extra-small;
+}
+
+.details-list-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-list-content {
+  display: flex;
+  align-items: center;
+}
+
+.details-list-label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+
+.details-list-description {
+  font-weight: normal;
+}

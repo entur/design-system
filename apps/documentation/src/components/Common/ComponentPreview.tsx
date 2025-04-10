@@ -9,7 +9,8 @@ export const ComponentPreview: React.FC<{
   description: string;
   children: any;
   to: string;
-}> = ({ children, title, description, to }) => {
+  category?: string;
+}> = ({ children, title, description, to, category }) => {
   return (
     <GridItem small={12} medium={6} large={4}>
       <MediaCard
@@ -20,6 +21,7 @@ export const ComponentPreview: React.FC<{
         className="component-preview"
         headingLevel="h3"
         hideArrow
+        category={category}
       >
         <div className="component-preview__image-wrapper">{children}</div>
       </MediaCard>

@@ -8,11 +8,41 @@ order: 1
 ---
 
 import { SEO } from '@components/seo/SEO';
+import { ComponentPreview } from '@components/Common/ComponentPreview';
+import { graphql } from 'gatsby';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
 }
 
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/ressurser"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
 <PageHeader/>
 
-## Intro
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Aktørkart"
+    category="Maler"
+    description="En metode å få oversikt over aktører som berøres av et prosjekt."
+    to="/ressurser/aktorkart"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "aktorkartIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>
