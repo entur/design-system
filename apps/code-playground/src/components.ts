@@ -22,4 +22,55 @@ export * from '@entur/travel';
 export * from '@entur/typography';
 
 export { TestBench } from './TestBench';
+
+// Exports to make code examples from linje.entur.no work
+
 export * as intdate from '@internationalized/date';
+
+import {
+  PrioritySeatSeniorsIcon,
+  DenmarkIcon,
+  UKIcon,
+  NorwayIcon,
+  SamiIcon,
+  SwedenIcon,
+} from '@entur/icons';
+
+export const dropdownItems = [
+  'Voksen',
+  'Barn',
+  { label: 'Honnør', value: 'honnor', icons: [PrioritySeatSeniorsIcon] },
+  'Militær',
+];
+
+export const countries = [
+  { label: 'Danmark', value: 'danmark', icons: [DenmarkIcon] },
+  { label: 'England', value: 'england', icons: [UKIcon] },
+  { label: 'Norge', value: 'norge', icons: [NorwayIcon] },
+  { label: 'Sápmi', value: 'sapmi', icons: [SamiIcon] },
+  { label: 'Sverige', value: 'sverige', icons: [SwedenIcon] },
+];
+
+export const cities = [
+  'Oslo',
+  'Bergen',
+  'Trondheim',
+  'Stavanger',
+  'Kristiansand',
+  'Kristiansund',
+  'Molde',
+  'Bodø',
+  'Hønefoss',
+  'Egersund',
+  'Haugesund',
+  'Leikanger',
+  'Hjerkinn',
+  'Steinkjer',
+  'Sandefjord',
+  'Lillesand',
+  'Røros',
+  'Ålesund',
+  'Førde',
+  'Hammerfest',
+  'Narvik',
+];

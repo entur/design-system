@@ -5,36 +5,6 @@
     "displayName": "BaseFormControl",
     "methods": [],
     "props": {
-      "children": {
-        "defaultValue": null,
-        "description": "Et skjemaelement med `eds-form-control`-klassen",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": true,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
       "disabled": {
         "defaultValue": {
           "value": false
@@ -163,7 +133,7 @@
       },
       "labelTooltipButtonAriaLabel": {
         "defaultValue": {
-          "value": "Klikk for tilleggsinfo om feltet"
+          "value": "`Klikk for tilleggsinfo om ${label}-feltet`"
         },
         "description": "Forklarende tekst for knappen som åpner labelTooltip",
         "name": "labelTooltipButtonAriaLabel",
@@ -270,21 +240,6 @@
           "name": "{ [key: string]: any; } | undefined"
         }
       },
-      "style": {
-        "defaultValue": null,
-        "description": "Ekstra styling",
-        "name": "style",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties | undefined"
-        }
-      },
       "disableLabelAnimation": {
         "defaultValue": {
           "value": false
@@ -302,21 +257,6 @@
           "name": "boolean | undefined"
         }
       },
-      "onClick": {
-        "defaultValue": null,
-        "description": "Setter feedbackText sin rolle til \"alert\"",
-        "name": "onClick",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
-        }
-      },
       "ariaAlertOnFeedback": {
         "defaultValue": {
           "value": false
@@ -332,6 +272,36 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "after": {
+        "defaultValue": null,
+        "description": "Legg til et element etter feltet",
+        "name": "after",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "before": {
+        "defaultValue": null,
+        "description": "Legg til et element før feltet",
+        "name": "before",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/BaseFormControl.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
         }
       }
     }

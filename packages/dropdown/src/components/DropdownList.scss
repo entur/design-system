@@ -2,9 +2,8 @@
 
 .eds-dropdown__list {
   position: absolute;
-  width: 100%;
-  box-sizing: content-box;
-  max-height: 50vh;
+  box-sizing: border-box;
+  max-height: 20rem;
   overflow-y: auto;
   padding: 0;
   margin: 0;
@@ -13,11 +12,7 @@
   border-radius: t.$border-radiuses-medium;
   box-shadow: t.$shadows-box-shadow;
   cursor: default;
-
-  &__floating-container {
-    z-index: t.$z-indexes-popover;
-    width: 100%;
-  }
+  z-index: t.$z-indexes-popover;
 
   &:focus {
     outline: none;
@@ -93,9 +88,5 @@
     &--selected {
       background-color: var(--components-form-basemenu-fill-hover);
     }
-  }
-
-  @media all and (min-width: t.$breakpoints-large) {
-    max-height: 30vh;
   }
 }

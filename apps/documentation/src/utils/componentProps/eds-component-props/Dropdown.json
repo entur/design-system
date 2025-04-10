@@ -199,7 +199,7 @@
       },
       "prepend": {
         "defaultValue": null,
-        "description": "Tekst eller ikon som kommer før dropdown-en",
+        "description": "Tekst eller ikon som kommer først i dropdown-feltet",
         "name": "prepend",
         "declarations": [
           {
@@ -212,9 +212,24 @@
           "name": "ReactNode"
         }
       },
+      "loading": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loading",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/dropdown/src/Dropdown.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "loadingText": {
         "defaultValue": {
-          "value": "'Laster inn …'"
+          "value": "Laster resultater …"
         },
         "description": "En tekst som beskriver hva som skjer når man venter på items",
         "name": "loadingText",
@@ -342,7 +357,7 @@
       },
       "ariaLabelCloseList": {
         "defaultValue": {
-          "value": "\"Lukk liste med valg\""
+          "value": "Lukk liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som lukker listen med valg",
         "name": "ariaLabelCloseList",
@@ -359,7 +374,7 @@
       },
       "ariaLabelOpenList": {
         "defaultValue": {
-          "value": "\"Åpne liste med valg\""
+          "value": "Åpne liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som åpner listen med valg",
         "name": "ariaLabelOpenList",

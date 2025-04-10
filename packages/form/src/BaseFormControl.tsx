@@ -18,7 +18,7 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type BaseFormControlProps = {
+export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Et skjemaelement med `eds-form-control`-klassen */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -61,6 +61,10 @@ export type BaseFormControlProps = {
   /** Setter feedbackText sin rolle til "alert" */
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   ariaAlertOnFeedback?: boolean;
+  /** Legg til et element etter feltet */
+  after?: React.ReactNode;
+  /** Legg til et element før feltet */
+  before?: React.ReactNode;
 };
 
 export const BaseFormControl = React.forwardRef<
@@ -69,6 +73,8 @@ export const BaseFormControl = React.forwardRef<
 >(
   (
     {
+      after,
+      before,
       children,
       className,
       disabled = false,
@@ -109,6 +115,7 @@ export const BaseFormControl = React.forwardRef<
           )}
           style={style}
         >
+          {before}
           <div
             className={classNames(
               'eds-form-control-wrapper',
@@ -171,6 +178,7 @@ export const BaseFormControl = React.forwardRef<
               {feedback}
             </FeedbackText>
           )}
+          {after}
         </div>
       </InputGroupContextProvider>
     );
