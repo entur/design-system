@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M1.89999 5V9C1.89999 9.33137 2.16862 9.6 2.49999 9.6H12.0515L10.0757 11.5757L10.9243 12.4243L13.9243 9.42426C14.1586 9.18995 14.1586 8.81005 13.9243 8.57574L10.9243 5.57574L10.0757 6.42426L12.0515 8.4H3.09999V5H1.89999Z"
+        fill="#181C56" />
+</svg>
