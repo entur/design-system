@@ -1,6 +1,13 @@
 import { UseComboboxState } from 'downshift';
 import { NormalizedDropdownItemType } from './types';
 
+// Redeclare forwardRef
+declare module 'react' {
+  function forwardRef<T, P = object>(
+    render: (props: P, ref: React.Ref<T>) => React.ReactElement | null,
+  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
+}
+
 /* start general utils */
 export const EMPTY_INPUT = '';
 
@@ -36,6 +43,9 @@ export const itemToKey = (item: NormalizedDropdownItemType<any> | null) =>
 
 export const isFunctionWithQueryArgument = (object: any) =>
   typeof object === 'function' && object.length > 0;
+
+export const clamp = (val: number, min = 1, max = 10) =>
+  Math.min(Math.max(val, min), max);
 
 /* end general utils */
 /* start multiselect utils */

@@ -40,9 +40,9 @@
     &--readonly {
       cursor: text;
       .eds-contrast & {
-        background-color: var(--components-dropdown-dropdown-standard-fill-readonly);
+        background-color: var(--components-form-baseform-standard-fill-readonly);
         border-color: var(--components-chip-contrast-border);
-        color: var(--components-dropdown-dropdown-standard-text-readonly);
+        color: var(--components-form-baseform-standard-text-content);
       }
     }
 
@@ -50,9 +50,9 @@
       cursor: not-allowed;
       border: 1px dashed var(--components-chip-standard-border-disabled);
       .eds-contrast & {
-        background-color: var(--components-dropdown-dropdown-standard-fill-disabled);
+        background-color: var(--components-form-baseform-standard-fill-disabled);
         border: 1px dashed var(--components-chip-contrast-border-disabled);
-        color: var(--components-dropdown-dropdown-standard-text-disabled);
+        color: var(--components-form-baseform-standard-text-disabled);
       }
     }
 
@@ -85,21 +85,11 @@
   &__appendix {
     display: flex;
     align-items: center;
+    align-self: flex-start;
+    margin-top: t.$space-extra-small2;
+    gap: t.$space-extra-small2;
 
     &__clear-button {
-      padding: t.$space-extra-small;
-      margin-right: t.$space-extra-small2;
-
-      .eds-contrast & {
-        &:hover {
-          background-color: var(--components-button-iconbutton-standard-hover);
-        }
-
-        &:focus-visible {
-          outline-color: var(--basecolors-stroke-focus-standard);
-        }
-      }
-
       &__tooltip {
         white-space: nowrap;
       }
@@ -108,14 +98,13 @@
     &__divider {
       content: '';
       display: block;
-      background-color: var(--components-dropdown-dropdown-standard-text-content);
+      background-color: var(--components-form-baseform-standard-text-content);
       height: 1.5rem;
       width: 1px;
     }
 
     &__toggle-button {
       margin-right: -(t.$space-small);
-      margin-left: t.$space-extra-small2;
 
       &--open svg {
         transform: rotate(180deg);

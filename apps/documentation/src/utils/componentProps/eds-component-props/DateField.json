@@ -5,25 +5,6 @@
     "displayName": "DateField",
     "methods": [],
     "props": {
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
       "disabled": {
         "defaultValue": null,
         "description": "Sett til true om skjema-elementet er disabled",
@@ -256,25 +237,6 @@
           "name": "({ [key: string]: any; } & DOMAttributes<Element>) | undefined"
         }
       },
-      "style": {
-        "defaultValue": null,
-        "description": "Ekstra styling",
-        "name": "style",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties | undefined"
-        }
-      },
       "disableLabelAnimation": {
         "defaultValue": null,
         "description": "Plasserer labelen statisk på toppen av inputfeltet",
@@ -290,21 +252,6 @@
           "name": "boolean | undefined"
         }
       },
-      "onClick": {
-        "defaultValue": null,
-        "description": "Setter feedbackText sin rolle til \"alert\"",
-        "name": "onClick",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
-        }
-      },
       "ariaAlertOnFeedback": {
         "defaultValue": null,
         "description": "",
@@ -318,6 +265,36 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "after": {
+        "defaultValue": null,
+        "description": "Legg til et element etter feltet",
+        "name": "after",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "before": {
+        "defaultValue": null,
+        "description": "Legg til et element før feltet",
+        "name": "before",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
         }
       },
       "selectedDate": {
