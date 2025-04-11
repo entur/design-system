@@ -169,7 +169,7 @@
       },
       "prepend": {
         "defaultValue": null,
-        "description": "Tekst eller ikon som kommer før dropdown-en",
+        "description": "Tekst eller ikon som kommer først i dropdown-feltet",
         "name": "prepend",
         "declarations": [
           {
@@ -199,7 +199,7 @@
       },
       "loadingText": {
         "defaultValue": {
-          "value": "'Laster inn …'"
+          "value": "Laster resultater …"
         },
         "description": "En tekst som beskriver hva som skjer når man venter på items",
         "name": "loadingText",
@@ -327,7 +327,7 @@
       },
       "ariaLabelCloseList": {
         "defaultValue": {
-          "value": "\"Lukk liste med valg\""
+          "value": "Lukk liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som lukker listen med valg",
         "name": "ariaLabelCloseList",
@@ -344,7 +344,7 @@
       },
       "ariaLabelOpenList": {
         "defaultValue": {
-          "value": "\"Åpne liste med valg\""
+          "value": "Åpne liste med valg"
         },
         "description": "Tekst for skjemleser for knapp som åpner listen med valg",
         "name": "ariaLabelOpenList",
@@ -429,7 +429,7 @@
       },
       "itemFilter": {
         "defaultValue": {
-          "value": "isFunctionWithQueryArgument(initialItems)\n    ? noFilter\n    : lowerCaseFilterTest"
+          "value": "isFunctionWithQueryArgument(initialItems)\n        ? noFilter\n        : lowerCaseFilterTest"
         },
         "description": "Filtreringen som brukes når man skriver inn tekst i inputfeltet",
         "name": "itemFilter",

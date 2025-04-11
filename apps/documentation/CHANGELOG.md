@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/entur/design-system/compare/@entur/documentation@6.1.0...@entur/documentation@6.2.0) (2025-04-11)
+
+### Bug Fixes
+
+- **website:** broken parallax for Safari on frontpage ([091cf92](https://github.com/entur/design-system/commit/091cf92c3451f6003abc44c553f4bad5b8b76be0))
+- **website:** broken parallax for Safari on frontpage ([ad02c7b](https://github.com/entur/design-system/commit/ad02c7b7fa9dba5f71420327f7b61bb12fa60369))
+- **website:** broken parallax for Safari on frontpage ([ff1677f](https://github.com/entur/design-system/commit/ff1677f500c8480caa64b34f8686bbd7bc0ff903))
+
+### Features
+
+- **icons:** add PageNavigation arrow icon and new illustrations ([c4db6d2](https://github.com/entur/design-system/commit/c4db6d2b39692c994236cdad08870cae7ba838af))
+
 # [6.1.0](https://github.com/entur/design-system/compare/@entur/documentation@6.0.0...@entur/documentation@6.1.0) (2025-03-24)
 
 ### Bug Fixes

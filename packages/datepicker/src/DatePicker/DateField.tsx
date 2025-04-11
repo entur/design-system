@@ -50,7 +50,12 @@ export type DateFieldProps<DateType extends DateValue> = Omit<
   | 'minValue'
   | 'maxValue'
 > &
-  Partial<Omit<BaseFormControlProps, 'children' | 'label'>> & {
+  Partial<
+    Omit<
+      BaseFormControlProps,
+      'children' | 'label' | 'defaultValue' | 'value' | 'onChange'
+    >
+  > & {
     /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
     selectedDate: DateType | null;
     /** Kalles når dato endres. Tid i '@internationalized/date'-pakkens format */

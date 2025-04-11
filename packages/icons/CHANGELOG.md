@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/entur/design-system/compare/@entur/icons@7.8.0...@entur/icons@7.9.0) (2025-04-11)
+
+### Features
+
+- **icons:** add PageNavigation arrow icon and new illustrations ([c4db6d2](https://github.com/entur/design-system/commit/c4db6d2b39692c994236cdad08870cae7ba838af))
+
 # [7.8.0](https://github.com/entur/design-system/compare/@entur/icons@7.7.1...@entur/icons@7.8.0) (2025-03-24)
 
 ### Bug Fixes

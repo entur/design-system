@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.5](https://github.com/entur/design-system/compare/@entur/form@8.2.4...@entur/form@8.2.5) (2025-04-11)
+
+### Bug Fixes
+
+- **baseformcontrol:** add more descriptive labelTooltipButtonAriaLabel ([99799bd](https://github.com/entur/design-system/commit/99799bdcce48983f13ea9f6a0842756dbe17ff5a))
+
 ## [8.2.4](https://github.com/entur/design-system/compare/@entur/form@8.2.3...@entur/form@8.2.4) (2025-03-24)
 
 **Note:** Version bump only for package @entur/form
