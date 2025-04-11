@@ -29,7 +29,7 @@ type DropdownListProps<ValueType> = {
   selectAllCheckboxState?: () => boolean | 'indeterminate';
   selectAllItem?: NormalizedDropdownItemType<string>;
   selectedItems: NormalizedDropdownItemType<ValueType>[];
-  [key: string]: any;
+  style?: React.CSSProperties;
 };
 
 export const DropdownList = <ValueType extends NonNullable<any>>({
@@ -37,7 +37,6 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   ariaLabelSelectedItem = ', valgt element, trykk for å fjerne',
   getItemProps,
   getMenuProps,
-  inputValue,
   isOpen,
   highlightedIndex,
   listItems,
@@ -49,7 +48,6 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   selectAllCheckboxState,
   selectAllItem,
   selectedItems,
-  showSelectAllInList = false,
   ...rest
 }: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -93,10 +91,8 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         aria-hidden="true"
         checked={selectAllCheckboxState?.()}
         className="eds-dropdown__list__item__checkbox"
-        onChange={() => {
-          return;
-        }}
         tabIndex={-1}
+        readOnly
       />
       <span
         className="eds-dropdown__list__item__text"
@@ -110,17 +106,15 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   const listItemContent = (item: NormalizedDropdownItemType<ValueType>) => {
     return (
       <>
-        <Checkbox
-          aria-hidden="true"
-          checked={isItemSelected(item)}
-          className="eds-dropdown__list__item__checkbox"
-          onChange={() => {
-            return;
-          }}
-          style={!isMultiselect ? { display: 'none' } : {}}
-          tabIndex={-1}
-        />
-
+        {isMultiselect && (
+          <Checkbox
+            aria-hidden="true"
+            checked={isItemSelected(item)}
+            className="eds-dropdown__list__item__checkbox"
+            tabIndex={-1}
+            readOnly
+          />
+        )}
         <span className="eds-dropdown__list__item__text">
           {item.label}
           <VisuallyHidden>
@@ -146,77 +140,85 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
 
   return (
     // use popover from @entur/tooltip when that package upgrades to floating-ui
-    <div
-      className="eds-dropdown__list__floating-container"
-      style={{
-        display: isOpen ? undefined : 'none',
-        ...floatingStyles,
-      }}
-      ref={setListRef}
+    <ul
+      {...getMenuProps({
+        'aria-multiselectable': isMultiselect,
+        ref: setListRef,
+        className: 'eds-dropdown__list',
+        style: {
+          ...floatingStyles,
+          display: isOpen ? undefined : 'none',
+          ...rest.style,
+        },
+      })}
     >
-      <ul
-        {...getMenuProps({
-          'aria-multiselectable': isMultiselect,
-        })}
-        className="eds-dropdown__list"
-        style={{ ...rest.style }}
-      >
-        {!loading &&
-          listItems.length > 0 &&
-          listItems.map((item, index) => {
-            const itemIsSelectAll = item.value === selectAllItem?.value;
-            if (itemIsSelectAll && listItems.length <= 2) return null;
+      {(() => {
+        if (!isOpen) {
+          return null;
+        }
 
-            return (
-              <li
-                className={classNames('eds-dropdown__list__item', {
-                  'eds-dropdown__list__item--select-all': itemIsSelectAll,
-                  'eds-dropdown__list__item--highlighted':
-                    highlightedIndex === index,
-                  'eds-dropdown__list__item--selected':
-                    !isMultiselect && isItemSelected(item),
-                })}
-                key={
-                  item?.label +
-                  item?.value +
-                  (
-                    item?.icons?.map(icon => icon.displayName ?? icon.name) ??
-                    ''
-                  ).toString()
-                }
-                {...getItemProps({
-                  // @ts-expect-error Since getItemProps expects the same item type
-                  // here as items, it throws error when selectAllItem is a string.
-                  // This does, however, not cause any functional issues.
-                  item,
-                  index,
-                  'aria-selected': itemIsSelectAll
-                    ? ariaValuesSelectAll().selected
-                    : isItemSelected(item),
-                })}
-              >
-                {itemIsSelectAll
-                  ? selectAllListItemContent()
-                  : listItemContent(
-                      item as NormalizedDropdownItemType<ValueType>,
-                    )}
-              </li>
-            );
-          })}
+        if (loading) {
+          return (
+            <li
+              key="dropdown-list-loading"
+              className="eds-dropdown__list__item"
+            >
+              {loadingText}
+            </li>
+          );
+        }
 
-        {isNoMatches && (
-          <li key="dropdown-list-no-match" className="eds-dropdown__list__item">
-            {noMatchesText}
-          </li>
-        )}
-        {/* Known bug: the debounce of useResolvedItems makes noMatchesText show up before loadingText on fetch.
-          To solve this, the dropdownList needs to account for the debounce */}
-        {loading && (
-          <li key="dropdown-list-loading" className="eds-dropdown__list__item">
-            {loadingText}
-          </li>
-        )}
-      </ul>
-    </div>
+        if (isNoMatches) {
+          return (
+            <li
+              key="dropdown-list-no-match"
+              className="eds-dropdown__list__item"
+            >
+              {noMatchesText}
+            </li>
+          );
+        }
+
+        return listItems.map((item, index) => {
+          const itemIsSelectAll = item.value === selectAllItem?.value;
+          if (itemIsSelectAll && listItems.length <= 2) return null;
+
+          return (
+            <li
+              className={classNames('eds-dropdown__list__item', {
+                'eds-dropdown__list__item--select-all': itemIsSelectAll,
+                'eds-dropdown__list__item--highlighted':
+                  highlightedIndex === index,
+                'eds-dropdown__list__item--selected':
+                  !isMultiselect && isItemSelected(item),
+              })}
+              key={
+                item?.label +
+                item?.value +
+                (
+                  item?.icons?.map(icon => icon.displayName ?? icon.name) ?? ''
+                ).toString()
+              }
+              {...getItemProps({
+                // @ts-expect-error Since getItemProps expects the same item type
+                // here as items, it throws error when selectAllItem is a string.
+                // This does, however, not cause any functional issues.
+                item,
+                index,
+                'aria-selected': itemIsSelectAll
+                  ? ariaValuesSelectAll().selected
+                  : isItemSelected(item),
+              })}
+            >
+              {itemIsSelectAll
+                ? selectAllListItemContent()
+                : listItemContent(
+                    item as NormalizedDropdownItemType<ValueType>,
+                  )}
+            </li>
+          );
+        });
+      })()}
+    </ul>
   );
 };
