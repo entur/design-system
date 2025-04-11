@@ -35,7 +35,6 @@ query fargerQuery {
 <PageHeader/>
 
 Fargene har gode kontraster som til sammen gir et lekent og livlig uttrykk. I tillegg symboliserer fargene noen av verdiene vi står for.
-I Entur bruker vi fargenyanser både i oppbyggingen av komponenter og i visualiseringer eller workshopmateriale. For å se hele spekteret av fargekoder, gå til [tokens](/tokens/fargetokens/oversikt-farger).
 
 ## Fargeoversikt
 
@@ -96,7 +95,28 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
   alt="Viser eksempel på vekting på plakat"
   preset="full-width-image"
 />
-<Paragraph>beskrivelse</Paragraph>
+<Paragraph>Entur verdi plakat</Paragraph>
+
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'web')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på web"
+  preset="full-width-image"
+/>
+<Paragraph>Entur app</Paragraph>
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'interneapp')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på web"
+  preset="full-width-image"
+/>
+<Paragraph>Entur interne applikasjoner</Paragraph>
 
 <ImageDisplay
   imgSource={
@@ -107,60 +127,71 @@ Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for E
   preset="full-width-image"
 />
 
-<Paragraph>beskrivelse</Paragraph>
-
-<ImageDisplay
-  imgSource={
-    props.data.files.images.find(image => image.name === 'web')
-      ?.childImageSharp.gatsbyImageData
-  }
-  alt="Viser eksempel på vekting på web"
-  preset="full-width-image"
-/>
-<Paragraph>beskrivelse</Paragraph>
-
+<Paragraph>Entur web</Paragraph>
 </div>
 
 ### Unngå..
 
-<DoDontGroup>
-    <DoDontCard
-      contrast
-      variant="negative"
-      imgSource={props.data.files.images.find(image => image.name === "blue").childImageSharp.gatsbyImageData}
-      alt=""
-      noPadding
-    >
-        <Paragraph>Aldri mørk tekst på blå bakgrunn</Paragraph>
-    </DoDontCard>
-    <DoDontCard
-      contrast
-      variant="negative"
-      imgSource={props.data.files.images.find(image => image.name === "coral").childImageSharp.gatsbyImageData}
-      alt=""
-      noPadding
-    >
-        <Paragraph>Aldri korall som bakgrunn</Paragraph>
-    </DoDontCard>
-    <DoDontCard
-      contrast
-      variant="negative"
-      imgSource={props.data.files.images.find(image => image.name === "grey").childImageSharp.gatsbyImageData}
-      alt=""
-      noPadding
-    >
-    <Paragraph>Aldri kombinasjoner som ikke er identitetsbærende</Paragraph>
-    </DoDontCard>
-    <DoDontCard
-      contrast
-      variant="negative"
-      imgSource={props.data.files.images.find(image => image.name === "white").childImageSharp.gatsbyImageData}
-      alt=""
-      noPadding
-    >
-        <Paragraph>Aldri peach farge på lys bakgrunn</Paragraph>
-    </DoDontCard>
-  </DoDontGroup>
+ <GridContainer className="identitet-farger__fargenyanser" spacing="large">
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'blue')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Mørk tekst på blå bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'coral')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Korall som bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'grey')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>
+          Kombinasjoner som ikke er identitetsbærende
+        </Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'white')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Peach farge på lys bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+</GridContainer>
 
 ## Universell utforming
 
@@ -171,8 +202,7 @@ Farge er avgjørende for god lesbarhet, uansett hvor og hvordan designet brukes 
 Når du bruker farger på tekst eller elementer mot en bakgrunn, må du passe på at det er god nok kontrast for at innholdet skal være lett å lese.
 
 Kontrastkravene er:
-- Stor tekst: minst 3.0:1
-- Liten tekst: minst 4.5:1
+- Tekst: minst 4.5:1
 - Ved normal teksttykkelse er stor tekst 18 punkt og større.
 - Ved fet tekststil er stor tekst 14 punkt og større.
 
@@ -182,4 +212,109 @@ Les mer om kontrastkrav for farger på [Universell utforming](/universell-utform
 
 ## Fargenyanser
 
-I Entur bruker vi fargenyanser både i oppbyggingen av komponenter og i visualiseringer eller workshopmateriale. For å se hele spekteret av fargekoder, gå til tokens.
+I Entur bruker vi fargenyanser både i oppbyggingen av komponenter og i visualiseringer eller workshopmateriale. For å se hele spekteret av fargekoder, gå til [tokens](/tokens/fargetokens/oversikt-farger).
+
+ <GridContainer
+   className="identitet-farger__fargenyanser"
+   spacing="large"
+ >
+   <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'peach-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av peach"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'coral-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av coral"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'canery-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av canery"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'lavender-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av lavender"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'sky-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av sky"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'mint-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av mint"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'grey-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av grey"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'blue-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av blue"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'ebony-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av ebony"
+  preset="full-width-image"
+/>
+    </GridItem>
+</GridContainer>

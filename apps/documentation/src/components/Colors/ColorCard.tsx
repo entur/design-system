@@ -2,6 +2,7 @@ import React from 'react';
 import './ColorCard.scss';
 import { Heading4, SubParagraph } from '@entur/typography';
 import { CopyableText } from '@entur/alert';
+import classNames from 'classnames';
 
 type ColorCardProps = {
   colorTitle: string;
@@ -9,6 +10,7 @@ type ColorCardProps = {
   rgb?: string;
   cmyk?: string;
   pmsC?: string;
+  className?: string;
 };
 
 export const ColorCard: React.FC<ColorCardProps> = ({
@@ -17,9 +19,10 @@ export const ColorCard: React.FC<ColorCardProps> = ({
   rgb,
   cmyk,
   pmsC,
+  className,
 }) => {
   return (
-    <div className="color-card">
+    <div className={classNames('color-card', className)}>
       <div className="color-card__swatch" style={{ backgroundColor: hex }} />
       <div className="color-card__content">
         <Heading4 className="color-card__title">

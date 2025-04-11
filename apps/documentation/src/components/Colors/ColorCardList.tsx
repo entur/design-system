@@ -1,6 +1,5 @@
 import React from 'react';
 import { GridContainer, GridItem } from '@entur/grid';
-import { Heading3 } from '@entur/typography';
 import './ColorCard.scss';
 
 import { ColorCard } from './ColorCard';
@@ -39,6 +38,8 @@ const Colors: React.FC<{
               hex="#ffffff"
               rgb="255, 255, 255"
               cmyk="0, 0, 0, 0"
+              pmsC="-"
+              className="color-card__swatch--white"
             ></ColorCard>
           </GridItem>
         </GridContainer>
@@ -60,7 +61,13 @@ const Colors: React.FC<{
               ></ColorCard>
             </GridItem>
             <GridItem small={12} medium={6} large={4}>
-              <ColorCard colorTitle="Lavender" hex="#aeb7e2"></ColorCard>
+              <ColorCard
+                colorTitle="Lavender"
+                hex="#aeb7e2"
+                rgb="255, 89, 89"
+                cmyk="0, 80, 60, 0"
+                pmsC="178"
+              ></ColorCard>
             </GridItem>
           </GridContainer>
         </>
