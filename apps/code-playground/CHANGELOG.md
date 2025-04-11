@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.0.4...@entur/code-playground@2.1.0) (2025-04-11)
+
+### Features
+
+- **code-playground:** add dropdown list example exports to components ([07d5415](https://github.com/entur/design-system/commit/07d5415cd47e3d35e9fd8b631c250d6ab4f7d4da))
+
 ## [2.0.4](https://github.com/entur/design-system/compare/@entur/code-playground@2.0.3...@entur/code-playground@2.0.4) (2025-03-24)
 
 **Note:** Version bump only for package @entur/code-playground
