@@ -1,0 +1,13 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+
+.identitet-farger {
+  &__eksempler {
+    background-color: var(--base-colors-frame-elevatedalt, #f6f6f9);
+    padding: 16px;
+
+    @include breakpoint.for-desktop {
+      padding: 48px;
+    }
+  }
+}
