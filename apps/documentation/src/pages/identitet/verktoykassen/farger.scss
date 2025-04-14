@@ -1,0 +1,28 @@
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+
+.identitet-farger {
+  &__eksempler {
+    background-color: var(--base-colors-frame-elevatedalt, #f6f6f9);
+    padding: 16px;
+
+    @include breakpoint.for-desktop {
+      padding: 48px;
+    }
+
+    .eds-paragraph:not(:last-child) {
+      margin-bottom: 5rem;
+
+      @include breakpoint.for-desktop {
+        margin-bottom: 9rem;
+      }
+    }
+  }
+
+  &__fargenyanser-image img {
+    object-fit: contain !important;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  }
+}
