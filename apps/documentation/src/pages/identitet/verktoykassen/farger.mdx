@@ -1,8 +1,6 @@
 ---
 title: Farger
-description: Fargepaletten er et viktig grafisk virkemiddel i identiteten vår. Det er
-  viktig at fargene brukes riktig og med omhu, for å oppnå et gjenkjennelig
-  uttrykk.
+description: Fargepaletten er et viktig grafisk virkemiddel i identiteten vår. Det er viktig at fargene brukes riktig og med omhu, for å oppnå et gjenkjennelig uttrykk.
 route: /identitet/verktoykassen/farger
 parent: Identitet
 menu: Verktøykassen
@@ -10,9 +8,10 @@ order: 4
 ---
 
 import { graphql } from 'gatsby'
-import { borderWidths, colors, space } from '@entur/tokens';
-import Colors from '@components/Colors/Colors';
 import { SEO } from '@components/seo/SEO';
+import { borderWidths, colors, space } from '@entur/tokens';
+import ColorCardList from '@components/Colors/ColorCardList';
+import './farger.scss';
 
 export const Head = ( props ) => {
   return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
@@ -35,112 +34,287 @@ query fargerQuery {
 
 <PageHeader/>
 
+Fargene har gode kontraster som til sammen gir et lekent og livlig uttrykk. I tillegg symboliserer fargene noen av verdiene vi står for.
 
-## Profilfarger
+## Fargeoversikt
 
 Når det er snakk om kjernekommunikasjon, skal vi prøve å forholde oss til disse hovedfargene.
 
-<Colors colorType="brand"></Colors>
+### Primærfarger
 
-## Funksjonsfarger
+Primærfargene er de mest sentrale fargene i Entur.
 
-Disse fargene er ikke direkte knyttet til identiteten til Entur,
-men brukes til spesifikke funksjoner i grensesnittet som varselmeldinger, statusmeldinger eller validering i skjemaelementer.
-Disse fargene er ikke ment som dekorasjon, og skal kun brukes til å formidle et budskap.
+<ColorCardList colorType="primary" />
 
-<Colors colorType="validation" />
+### Sekundærfarger
 
-## Blåtoner
+Sekundærpaletten brukes primært dekorativt og tilfører visuell dybde.
 
-Disse blå fargenyansene brukes hovedsakelig som bakgrunnsfarger for
-Contrast seksjoner og enkelte elementer i designet som for eksempel
-borders og dividers.
+<ColorCardList colorType="secondary" />
 
-<Colors colorType="blues" />
+## Fargebruk
 
-## Gråtoner
+### For print
 
-Gråtonene symboliserer det tekniske og robuste i plattformen vår. Brukes
-hovedsakelig som bakgrunnsfarger for å få frem det lyse og luftige ved
-layouten i designet.
+På trykte flater skal merkevaren vår være **tydelig og lett gjenkjennelig**. Vi skal fremstå som profesjonelle, men kan gjerne være lekne i uttrykket der det passer.
 
-<Colors colorType="greys" />
+**Kjernefargene skal alltid være med** i designet – de bygger identitet og styrker gjenkjennelsen, uansett format. Sekundærfargene brukes som støtte for å skape dybde og variasjon.
 
-## Transportfarger
+I trykk har vi mer rom for å eksperimentere med farger, former og typografi, og skape energi og visuell interesse. Vi bruker også tekst som et grafisk virkemiddel, med ulike farger og vekter for å fremheve budskap.
 
-De ulike transportmidlene har hver sin representative farge for å skille
-de fra hverandre. Vanngående transport har for eksempel alltid lyseblå
-farge og er derfor også markert med den fargen på ikoner (ferje,
-bilferje, cruise osv.) og på reiselinjer. Transportmiddelfargene finnes
-også for Contrast seksjoner.
+### For digitale flater
 
-<Colors colorType="transport" />
+For digitale flate holder et **rent og enkelt uttrykk**, der blått og hvitt dominerer. Korall brukes som støtteelement for å forsterke merkevaren, og sekundærfargene støtter opp om enkelte designelementer for å skape dybde og variasjon.
 
-## Farger for datavisualisering
+Her har vi utvidet fargepaletten med flere nyanser av kjerne- og sekundærfargene, samt egne statusfarger og transportsfarger. Dette gir større fleksibilitet og gjør det mulig å tilpasse designet etter funksjon og de forventningene man har til digitale grensesnitt.
 
-Vi har også en egen fargepalett som skal benyttes ved visualisering av data, i forskjellige typer grafer og andre visualiseringer av informasjon.
-[Les mer om farger for datavisualisering her.](/identitet/verktoykassen/datavisualisering)
+Sammenlignet med trykk, skal det digitale uttrykket være mer nedtonet – her er det innholdet som skal være i fokus. Designet skal gjøre det enkelt å bruke og forstå, uten å konkurrere med budskapet.
 
-<Colors colorType="data" />
+### Vekting av farge
 
-## Retningslinjer for bruk
-
-### Vekting av profilfarger
-
-Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for Entur. Hovedfargene er blå, hvit og rød, og disse burde alltid være med. Korallfargen er vektet lavt, men er viktig og skal alltid være tilstede i uttak. Den brukes ofte til detaljer, til tider så detaljert som bare i logo.
+Hvordan fargene vektes er en viktig del av å skape det ønskede uttrykket for Entur. Hovedfargene er (blue), (white) og (coral), og disse burde alltid være med. Korallfargen er vektet lavt, men er viktig og skal alltid være tilstede i uttak. Den brukes ofte til detaljer, til tider så detaljert som bare i logo.
 
 <ImageDisplay
   imgSource={
-    props.data.files.images.find(image => image.name === 'ColorBalance')
+    props.data.files.images.find(image => image.name === 'vekting')
       ?.childImageSharp.gatsbyImageData
   }
-  style={{
-    padding: '0.25rem',
-    border: `2px solid ${colors.greys.grey70}`,
-    marginBottom: space.extraLarge3,
-    display: 'flex',
-  }}
   alt="Viser vektleggingen av profilfargene, Blue og white er størst, så lavender, coral og til slutt peach"
   preset="full-width-image"
 />
 
-### Prinsipper
+### Eksempler
 
-<DoDontGroup>
-  <DoDontCard 
-    variant="negative"
-    imgSource={props.data.files.images.find(image => image.name === "Dont1")?.childImageSharp.gatsbyImageData}
-    alt="" 
-    noPadding
-  >
-    Unngå mørk tekst på blå bakgrunn
-  </DoDontCard>
-  <DoDontCard 
-    variant="negative" 
-    imgSource={props.data.files.images.find(image => image.name === "Dont2")?.childImageSharp.gatsbyImageData}
-    alt="" 
-    noPadding
-  >
-    Unngå korallrød bakgrunn
-  </DoDontCard>
-</DoDontGroup>
-<DoDontGroup>
-  <DoDontCard 
-    variant="negative" 
-    imgSource={props.data.files.images.find(image => image.name === "Dont3")?.childImageSharp.gatsbyImageData}
-    alt="" 
-    noPadding
-  >
-    Unngå identitetløst uttryk
-  </DoDontCard>
-  <DoDontCard 
-    variant="negative" 
-    imgSource={props.data.files.images.find(image => image.name === "Dont4")?.childImageSharp.gatsbyImageData}
-    alt="" 
-    noPadding
-  >
-    Unngå lys tekst på lys bakgrunn
-  </DoDontCard>
-</DoDontGroup>
+<div className="identitet-farger__eksempler">
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'plakat')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på plakat"
+  preset="full-width-image"
+/>
+<Paragraph>Entur verdi plakat</Paragraph>
+
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'web')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på web"
+  preset="full-width-image"
+/>
+<Paragraph>Entur app</Paragraph>
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'interneapp')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på web"
+  preset="full-width-image"
+/>
+<Paragraph>Entur interne applikasjoner</Paragraph>
+
+<ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'mobil')
+      ?.childImageSharp.gatsbyImageData
+  }
+  alt="Viser eksempel på vekting på mobil"
+  preset="full-width-image"
+/>
+
+<Paragraph>Entur web</Paragraph>
+</div>
+
+### Unngå..
+
+ <GridContainer className="identitet-farger__fargenyanser" spacing="large">
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'blue')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Mørk tekst på blå bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'coral')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Korall som bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'grey')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>
+          Kombinasjoner som ikke er identitetsbærende
+        </Paragraph>
+      </DoDontCard>
+    </GridItem>
+    <GridItem small={12} medium={6} large={6}>
+      <DoDontCard
+        contrast
+        variant="negative"
+        imgSource={
+          props.data.files.images.find(image => image.name === 'white')
+            .childImageSharp.gatsbyImageData
+        }
+        alt=""
+        noPadding
+      >
+        <Paragraph>Peach farge på lys bakgrunn</Paragraph>
+      </DoDontCard>
+    </GridItem>
+</GridContainer>
+
+## Universell utforming
+
+Farge er avgjørende for god lesbarhet, uansett hvor og hvordan designet brukes – enten det er i animasjon, print, datavisualisering eller brukergrensesnitt. Hvis fargene ikke har tilstrekkelig kontrast i lysstyrke eller nyanse, kan det bli vanskelig for svaksynte å skille mellom tekst og grafiske elementer. Sørg for at fargevalgene dine støtter både budskapet og brukeropplevelsen – ikke svekker dem.
+
+### Kontrast ratio
+
+Når du bruker farger på tekst eller elementer mot en bakgrunn, må du passe på at det er god nok kontrast for at innholdet skal være lett å lese.
+
+Kontrastkravene er:
+- Tekst: minst 4.5:1
+- Ved normal teksttykkelse er stor tekst 18 punkt og større.
+- Ved fet tekststil er stor tekst 14 punkt og større.
+
+Derfor er det viktig å teste med en [kontrastsjekker](/universell-utforming/kontrast-sjekker/) for å sikre at kombinasjonen oppfyller kravene.
 
 Les mer om kontrastkrav for farger på [Universell utforming](/universell-utforming) siden og bruk vår [Color Contrast Checker](/universell-utforming/kontrast-sjekker) for å hjelpe deg med å bestemme lesbarheten til tekst og kontrasten til grafiske objekter.
+
+## Fargenyanser
+
+I Entur bruker vi fargenyanser både i oppbyggingen av komponenter og i visualiseringer eller workshopmateriale. For å se hele spekteret av fargekoder, gå til [tokens](/tokens/fargetokens/oversikt-farger).
+
+ <GridContainer
+   className="identitet-farger__fargenyanser"
+   spacing="large"
+ >
+   <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'peach-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av peach"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'coral-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av coral"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'canery-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av canery"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'lavender-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av lavender"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'sky-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av sky"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'mint-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av mint"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'grey-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av grey"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'blue-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av blue"
+  preset="full-width-image"
+/>
+    </GridItem>
+       <GridItem small={12} medium={6} large={4}>
+   <ImageDisplay
+  imgSource={
+    props.data.files.images.find(image => image.name === 'ebony-nyanse')
+      ?.childImageSharp.gatsbyImageData
+  }
+  className="identitet-farger__fargenyanser-image"
+  alt="Viser eksempel på nyanser av ebony"
+  preset="full-width-image"
+/>
+    </GridItem>
+</GridContainer>
