@@ -34,7 +34,6 @@ const SideNavigationLayout = () => {
   `);
 
   const menuItems: MenuItem[] = MenuData.allMdx.nodes;
-
   if (isSmallScreen)
     return (
       <MobileSideNavigation

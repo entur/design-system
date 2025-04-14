@@ -32,6 +32,7 @@ const PageHeader: React.FC<Props> = ({
             route
             description
             parent
+            menu
           }
         }
       }
@@ -44,7 +45,7 @@ const PageHeader: React.FC<Props> = ({
 
   const npmPackage = currentDoc?.frontmatter?.npmPackage || '';
 
-  const categoryToShow = category || currentDoc?.frontmatter.parent || '';
+  const categoryToShow = category || currentDoc?.frontmatter.menu || '';
   const titleToShow = title || currentDoc?.frontmatter?.title || '';
   const { packageManager, userType } = useSettings();
   const leadText = forceNoLeadText

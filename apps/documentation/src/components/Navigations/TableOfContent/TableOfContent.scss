@@ -1,70 +1,118 @@
 @use '../../../styles/variables' as variables;
 @use '~@entur/tokens/dist/styles.scss' as tokens;
 
-.table-of-content-container {
-  display: none;
-  z-index: 1;
-
-  @media screen and (min-width: variables.$show-toc-min-width) {
-    display: block;
-    position: fixed;
-    left: variables.$toc-left-position;
-    top: (variables.$navbar-height + 2rem);
-    bottom: 0rem;
-    overflow-y: auto;
-
-    max-height: calc(100% - 9rem);
-    height: fit-content;
-  }
-}
 .table-of-content {
   list-style: none;
   padding: 0;
   max-width: 15rem;
   padding-left: 1rem;
   border-left: tokens.$border-widths-medium solid var(--components-menu-tableofcontent-standard-stroke-unselected);
-}
 
-.table-of-content__item {
-  margin-bottom: tokens.$space-medium;
-  &--depth-2 {
-    padding-left: tokens.$space-large;
+  &__link {
+    color: var(--components-menu-tableofcontent-standard-text-unselected);
+    font-size: tokens.$font-sizes-medium;
+    line-height: tokens.$line-heights-small;
+    text-decoration: none;
+    position: relative;
+    transition: color tokens.$timings-medium ease-in-out;
 
-    .table-of-content__link:before {
-      left: -2.625rem;
-    }
-  }
-
-  &--depth-3 {
-    padding-left: tokens.$space-extra-large;
-  }
-}
-
-.table-of-content__link {
-  color: var(--components-menu-tableofcontent-standard-text-unselected);
-  font-size: tokens.$font-sizes-medium;
-  line-height: tokens.$line-heights-small;
-  text-decoration: none;
-  position: relative;
-  &:before {
-    display: block;
-    content: '';
-    height: tokens.$space-large;
-    width: tokens.$border-widths-medium;
-    position: absolute;
-    left: -1rem - tokens.$border-widths-medium;
-    background: transparent;
-    transition: all tokens.$timings-medium ease-in-out;
-    .table-of-content__item--depth-3 & {
-      left: -2.5rem - tokens.$border-widths-medium;
-    }
-  }
-
-  &--active {
-    color: var(--components-menu-tableofcontent-standard-text-selected);
-    font-weight: tokens.$font-weights-heading;
     &:before {
-      background: var(--components-menu-tableofcontent-standard-stroke-selected);
+      display: block;
+      content: '';
+      height: tokens.$space-large;
+      width: tokens.$border-widths-medium;
+      position: absolute;
+      left: -1rem - tokens.$border-widths-medium;
+      background: transparent;
+
+      .table-of-content__item--depth-3 & {
+        left: -2.5rem - tokens.$border-widths-medium;
+      }
+    }
+
+    &--active {
+      color: var(--components-menu-tableofcontent-standard-text-selected);
+      font-weight: tokens.$font-weights-heading;
+
+      &:before {
+        background: var(--components-menu-tableofcontent-standard-stroke-selected);
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: tokens.$space-medium;
+
+    &--depth-2 {
+      padding-left: tokens.$space-large;
+
+      .table-of-content__link:before {
+        left: -2.625rem;
+      }
+    }
+
+    &--depth-3 {
+      padding-left: tokens.$space-extra-large;
+    }
+  }
+  &-container {
+    display: block;
+    z-index: 1;
+    position: fixed;
+    left: variables.$toc-left-position;
+    top: (variables.$navbar-height + 2rem);
+    bottom: 0rem;
+
+    @media screen and (min-width: variables.$show-toc-min-width) {
+      overflow-y: auto;
+      max-height: calc(100% - 9rem);
+      height: fit-content;
+    }
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .page .site-content:has(.table-of-content-container) {
+    margin-right: 5rem;
+  }
+
+  .table-of-content-container {
+    transition: left tokens.$timings-medium ease-in-out;
+    height: fit-content;
+    left: 95%;
+
+    &:hover {
+      width: 100%;
+      left: 70%;
+      max-height: calc(100vh - variables.$navbar-height - 2rem);
+      overflow-y: auto;
+      background: var(--components-menu-sidenavigation-standard-background);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+      & span {
+        color: var(--components-menu-tableofcontent-standard-text-unselected);
+        font-size: tokens.$font-sizes-medium;
+
+        &--active {
+          color: var(--components-menu-tableofcontent-standard-text-selected);
+          font-weight: tokens.$font-weights-heading;
+        }
+      }
+    }
+  }
+
+  .table-of-content-container h2 {
+    display: none;
+  }
+
+  .table-of-content__link {
+    & span {
+      color: transparent;
+      font-size: 0;
+
+      &--active {
+        color: transparent;
+        font-size: 0;
+      }
     }
   }
 }

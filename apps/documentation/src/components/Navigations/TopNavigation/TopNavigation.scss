@@ -10,7 +10,7 @@
   left: 0;
   overflow-x: initial;
   padding-inline: eds.$space-extra-large2;
-  justify-content: flex-start;
+  justify-content: space-between;
   border-bottom: eds.$border-widths-default solid var(--designentur-header-default-divider);
   background: var(--designentur-header-default-fill);
   width: 100%;
@@ -42,5 +42,17 @@
 
   .searchmodal__button {
     margin-left: auto;
+  }
+
+  @media screen and (max-width: 1108px) {
+    padding-inline: eds.$space-large;
+
+    .eds-top-navigation-item {
+      font-size: 14px;
+      padding: eds.$space-small;
+    }
+    .top-navigation__logo {
+      margin-right: eds.$space-large;
+    }
   }
 }

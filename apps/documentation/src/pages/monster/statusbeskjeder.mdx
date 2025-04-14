@@ -1,0 +1,151 @@
+---
+title: Statusbeskjeder
+description: Statusbeskjeder informerer brukeren når noe går galt, så hvordan gjør vi det i Entur?
+route: /monster/statusbeskjeder
+parent: monster
+menu: mønster
+order: 2
+---
+
+import { SEO } from '@components/seo/SEO';
+import { graphql } from 'gatsby'
+import './statusbeskjeder.scss'
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+  query {
+    files: allFile(
+      filter: {
+        sourceInstanceName: { eq: "downloads" }
+        relativePath: { glob: "illustrations/**" }
+        extension: { eq: "svg" }
+      }
+    ) {
+    images: nodes {
+      name
+      publicURL
+      relativePath
+    }
+    }
+  }
+`;
+
+<PageHeader/>
+
+Statusbeskjeder informerer brukeren når noe går galt, eller når det ikke finnes innhold å vise. De består ofte av en illustrasjon, en kort forklarende tekst og eventuelt en handlingsmulighet.
+
+<BannerAlertBox title="Informasjon" variant="information">Denne siden er under arbeid. Det som står her er det Entur appen bruker. Om du har innspill til mer standardisert innhold her, ta kontakt med oss! </BannerAlertBox>
+
+## Statusbeskjeder og illustrasjoner
+
+Her presenteres en liste over illustrasjoner som blir brukt for ulike statusbeskjeder. Du finner nedlasting av illustrasjonene på [denne siden](/identitet/verktoykassen/illustrasjoner).
+
+Illustrasjonene finnes også som animasjoner. Disse ligger i Google Drive i mappen `DesignGuild/Illustration Library/Animations/Animasjoner Entur`.
+
+<GridContainer spacing="medium" >
+  <GridItem small={12} medium={4} className="statusbeskjed-grid">
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Sheep")?.publicURL}
+    alt="sau"
+    preset="full-width-image"
+  />
+  Ingen treff eller systemfeil
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+   <ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Musk")?.publicURL}
+  alt="moskus"
+  preset="full-width-image"
+/>
+  Fant ikke siden (404)
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Beaver")?.publicURL}
+    alt="bever"
+    preset="full-width-image"
+  />
+  Ingen nett
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Squirrel")?.publicURL}
+    alt="ekorn"
+    preset="full-width-image"
+  />
+   Pålogging og profil
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+   <ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Hedgehog")?.publicURL}
+  alt="pinnsvin"
+  preset="full-width-image"
+/>
+Sesjon utløpt
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Leaves")?.publicURL}
+    alt="blader"
+    preset="full-width-image"
+  />
+     Innhold mangler
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Rabbit")?.publicURL}
+    alt="kaniner"
+    preset="full-width-image"
+  />
+   Innhold mangler
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+   <ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Ducks")?.publicURL}
+  alt="ender som går over et gangfelt"
+  preset="full-width-image"
+/>
+   Betaling pågår
+ </GridItem>
+   <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Doves")?.publicURL}
+    alt="duer"
+    preset="full-width-image"
+  />
+   Leter etter plass
+ </GridItem>
+    <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Goat")?.publicURL}
+    alt="geit"
+    preset="full-width-image"
+  />
+     Behandler refusjon
+ </GridItem>
+     <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Kitty")?.publicURL}
+    alt="kan med tom matskål"
+    preset="full-width-image"
+  />
+     Personvern og cookies
+ </GridItem>
+      <GridItem small={12} medium={4} className="statusbeskjed-grid">
+
+  <ImageDisplay
+    imgSource={props.data.files.images.find(image => image.name === "Mouse")?.publicURL}
+    alt="mus som spiser cookie"
+    preset="full-width-image"
+  />
+    Personvern og cookies
+ </GridItem>
+ </GridContainer>

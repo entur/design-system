@@ -4,7 +4,7 @@ import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 
 import { Modal } from '@entur/modal';
-import { SecondaryButton } from '@entur/button';
+import { IconButton, SecondaryButton } from '@entur/button';
 import { TextField } from '@entur/form';
 import {
   ColorPickerIcon,
@@ -113,7 +113,7 @@ export const Search = () => {
         onClick={() => setOpen(true)}
         size="small"
       >
-        <SearchIcon aria-hidden="ture" /> Søk …
+        <SearchIcon aria-hidden="true" /> Søk …
         <Badge as="kbd" variant="neutral" type="status">
           <span
             style={{
@@ -125,6 +125,12 @@ export const Search = () => {
           k
         </Badge>
       </SecondaryButton>
+      <IconButton
+        className="searchmodal__button--small"
+        onClick={() => setOpen(true)}
+      >
+        <SearchIcon aria-hidden="true" />
+      </IconButton>
       <Modal
         size="medium"
         open={open}

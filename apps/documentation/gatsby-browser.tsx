@@ -71,8 +71,6 @@ export const shouldUpdateScroll: GatsbyBrowser['shouldUpdateScroll'] = ({
     prevRouterProps?.location.pathname.split('/')?.[1];
   const pathCategory = routerProps?.location.pathname.split('/')?.[1];
 
-  console.log('has hash', routerProps.location);
-
   // If the pathname doesn't have a hash, reset the scroll position to the top
   if (routerProps.location.hash === '') {
     // Otherwise, scroll to the top of the page

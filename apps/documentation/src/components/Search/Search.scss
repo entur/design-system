@@ -17,11 +17,14 @@
     margin-left: t.$space-default;
     white-space: nowrap;
     overflow: hidden;
-
+    @media screen and (max-width: 1194px) {
+      display: none;
+    }
     .eds-icon {
       margin-inline: 0.25rem;
       min-width: 1rem;
     }
+
     kbd {
       padding-inline: 0.2rem;
       padding-top: 0.1rem;
@@ -30,6 +33,12 @@
 
       @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
         display: none;
+      }
+    }
+    &--small {
+      display: none;
+      @media screen and (max-width: 1194px) {
+        display: flex;
       }
     }
   }

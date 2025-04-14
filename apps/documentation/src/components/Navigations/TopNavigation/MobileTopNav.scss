@@ -44,18 +44,19 @@
       // horizontal shadow scroll from https://codepen.io/vakhula/pen/OJVqBOK
       background-position: left center, right center, left center, right center;
       background-repeat: no-repeat;
-      background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+      background-size: 20px 100%, 20px 100%, 20px 100%, 20px 100%;
       background-attachment: local, local, scroll, scroll;
 
       background-image: linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
         linear-gradient(to right, var(--designentur-header-default-fill), var(--designentur-header-default-fill)),
-        linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent), linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
+        linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent), linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+
       background-color: var(--designentur-header-default-fill);
 
       .eds-contrast & {
         background-image: linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
           linear-gradient(to right, var(--designentur-header-contrast-fill), var(--designentur-header-contrast-fill)),
-          linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent), linear-gradient(to left, rgba(0, 0, 0, 0.25), transparent);
+          linear-gradient(to right, rgba(255, 255, 255, 0.66), transparent), linear-gradient(to left, rgba(255, 255, 255, 0.66), transparent);
         background-color: var(--designentur-header-contrast-fill);
       }
     }

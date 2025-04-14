@@ -1,0 +1,47 @@
+---
+title: Mønster
+description: Der komponentene fokuserer på hva som finnes i designsystemet, fokuserer mønstrene på hvordan og når komponentene brukes sammen for å skape en god og sammenhengende brukeropplevelse på tvers av Entur sine løsninger.
+route: /monster
+parent: monster
+menu: Introduksjon
+order: 1
+---
+
+import { SEO } from '@components/seo/SEO';
+import { ComponentPreview } from '@components/Common/ComponentPreview';
+import { graphql } from 'gatsby';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query komigang {
+  imagefiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory: {glob: "images/monster/index"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+      childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Statusbeskjeder"
+    description="Statusbeskjeder gir brukeren informasjon om tilstand eller resultat av en handling, som suksess, feil eller pågående prosess."
+    to="/monster/statusbeskjeder"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "Sheep").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+</GridContainer>

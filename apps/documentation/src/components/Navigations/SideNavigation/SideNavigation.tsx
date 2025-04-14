@@ -36,7 +36,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 }) => {
   const location = useLocation();
   const [searchText, setSearchText] = React.useState('');
-
   const currentPathSegments = removeTrailingSlash(location.pathname)?.split(
     '/',
   );
@@ -44,12 +43,10 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     currentPathSegments !== undefined && currentPathSegments.length > 1
       ? currentPathSegments[1]
       : '';
-
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
     const grouped: Record<string, MenuItem[]> = {};
     const ungrouped: MenuItem[] = [];
-
     menuItems
       .filter(
         item =>
@@ -57,7 +54,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
       )
       .forEach(item => {
         const { menu } = item.frontmatter;
-
         if (
           !searchText ||
           new RegExp(searchText, 'i').test(item.frontmatter.title)
@@ -70,7 +66,6 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
           }
         }
       });
-
     Object.values(grouped).forEach(group => group.sort(compare));
     ungrouped.sort(compare);
 
