@@ -35,6 +35,21 @@
           "name": "boolean | undefined"
         }
       },
+      "readonly": {
+        "defaultValue": null,
+        "description": "",
+        "name": "readonly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePickerArrowButton.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "aria-label": {
         "defaultValue": null,
         "description": "",

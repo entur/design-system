@@ -124,6 +124,7 @@ export type DateFieldProps<DateType extends DateValue> = Omit<
     fieldProps?: DateFieldProps<DateType>;
     dateFieldRef?: React.Ref<HTMLDivElement>;
     disabled?: boolean;
+    readOnly?: boolean;
     /** Ekstra klassenavn */
     className?: string;
     style?: React.CSSProperties;
@@ -138,6 +139,7 @@ export const DateField = <DateType extends DateValue>({
   showTime,
   granularity = showTime ? 'minute' : 'day',
   disabled,
+  readOnly,
   isDisabled,
   variant,
   feedback,
@@ -180,7 +182,7 @@ export const DateField = <DateType extends DateValue>({
         : maxDate !== undefined
         ? lastMillisecondOfDay(maxDate)
         : undefined,
-    isDisabled: isDisabled || disabled,
+    isDisabled: isDisabled || disabled || readOnly,
     shouldForceLeadingZeros: true,
   };
 
@@ -205,6 +207,7 @@ export const DateField = <DateType extends DateValue>({
           'eds-datefield--has-tooltip': labelTooltip !== undefined,
         })}
         disabled={isDisabled || disabled}
+        readOnly={readOnly}
         disableLabelAnimation
         feedback={
           feedback ??

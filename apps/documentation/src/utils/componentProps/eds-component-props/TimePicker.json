@@ -28,11 +28,15 @@
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
             "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "DOMAttributes"
           }
         ],
-        "required": true,
+        "required": false,
         "type": {
-          "name": "(value: MappedTimeValue<TimeType> | null) => void"
+          "name": "((value: MappedTimeValue<TimeType> | null) => void) & FormEventHandler<HTMLDivElement>"
         }
       },
       "label": {
@@ -228,6 +232,25 @@
           "name": "boolean | undefined"
         }
       },
+      "readOnly": {
+        "defaultValue": null,
+        "description": "Sett til true om skjema-elementet er i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "inputRef": {
         "defaultValue": null,
         "description": "",
@@ -285,6 +308,10 @@
             "name": "TypeLiteral"
           },
           {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          },
+          {
             "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
@@ -304,20 +331,9 @@
             "name": "TypeLiteral"
           },
           {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties | undefined"
-        }
-      },
-      "readOnly": {
-        "defaultValue": null,
-        "description": "Sett til true om skjema-elementet er i read-only modus",
-        "name": "readOnly",
-        "declarations": [
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "HTMLAttributes"
+          },
           {
             "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
@@ -325,7 +341,7 @@
         ],
         "required": false,
         "type": {
-          "name": "boolean | undefined"
+          "name": "CSSProperties | undefined"
         }
       },
       "prepend": {
@@ -480,21 +496,6 @@
           "name": "boolean | undefined"
         }
       },
-      "onClick": {
-        "defaultValue": null,
-        "description": "Setter feedbackText sin rolle til \"alert\"",
-        "name": "onClick",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((event: MouseEvent<HTMLElement, MouseEvent>) => void) | undefined"
-        }
-      },
       "ariaAlertOnFeedback": {
         "defaultValue": null,
         "description": "",
@@ -508,6 +509,36 @@
         "required": false,
         "type": {
           "name": "boolean | undefined"
+        }
+      },
+      "after": {
+        "defaultValue": null,
+        "description": "Legg til et element etter feltet",
+        "name": "after",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "before": {
+        "defaultValue": null,
+        "description": "Legg til et element før feltet",
+        "name": "before",
+        "declarations": [
+          {
+            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
         }
       }
     }

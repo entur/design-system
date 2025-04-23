@@ -80,6 +80,7 @@ export const DatePicker = <DateType extends DateValue>({
   selectedDate,
   locale,
   disabled,
+  readOnly,
   showTime,
   showTimeZone = false,
   classNameForDate,
@@ -121,7 +122,7 @@ export const DatePicker = <DateType extends DateValue>({
         : undefined,
     value: selectedDate,
     granularity,
-    isDisabled: disabled,
+    isDisabled: disabled || readOnly,
   };
 
   const state = useDatePickerState(_props);
@@ -211,7 +212,8 @@ export const DatePicker = <DateType extends DateValue>({
         {...fieldProps}
         {...rest}
         append={
-          !disabled && (
+          !disabled &&
+          !readOnly && (
             <div style={{ display: 'flex', alignItems: 'center' }}>
               {append}
               <CalendarButton
@@ -232,6 +234,7 @@ export const DatePicker = <DateType extends DateValue>({
           'eds-datepicker--disabled': disabled,
         })}
         disabled={disabled}
+        readOnly={readOnly}
         feedback={feedback}
         labelProps={labelProps}
         labelTooltip={labelTooltip}

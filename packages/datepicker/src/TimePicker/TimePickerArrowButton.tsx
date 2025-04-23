@@ -7,6 +7,7 @@ import { LeftArrowIcon, RightArrowIcon } from '@entur/icons';
 type TimePickerArrowButtonProps = {
   direction: 'left' | 'right';
   disabled?: boolean;
+  readonly?: boolean;
   'aria-label': string;
   onClick?: () => void;
   onFocus?: () => void;
@@ -16,6 +17,7 @@ export const TimePickerArrowButton = ({
   direction,
   onClick,
   disabled,
+  readonly,
   'aria-label': ariaLabel,
   ...rest
 }: TimePickerArrowButtonProps) => {

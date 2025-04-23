@@ -10,7 +10,7 @@
     &--has-tooltip {
       padding-right: t.$space-extra-large;
     }
-    &:has(.eds-form-control-wrapper--disabled) {
+    &:has(.eds-form-control-wrapper--disabled):not(:has(.eds-form-control-wrapper--readonly)) {
       cursor: not-allowed;
     }
   }

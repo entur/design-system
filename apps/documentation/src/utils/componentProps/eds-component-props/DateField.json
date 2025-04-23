@@ -32,6 +32,10 @@
           {
             "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+            "name": "TypeLiteral"
           }
         ],
         "required": false,
