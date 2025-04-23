@@ -66,6 +66,7 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   variant?: VariantType | typeof error | typeof info;
   labelTooltip?: React.ReactNode;
   disabled?: boolean;
+  readOnly?: boolean;
   inputRef?: React.ForwardedRef<HTMLDivElement>;
   /** Tvinger typen på onChange til den gitte typen.
    * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
@@ -97,6 +98,7 @@ export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
   onChange,
   disabled,
+  readOnly,
   className,
   style,
   label,
@@ -148,7 +150,7 @@ export const TimePicker = <TimeType extends TimeValue>({
     value: selectedTime,
     granularity: granularity ?? showSeconds ? 'second' : 'minute',
     hideTimeZone: !showTimeZone,
-    isDisabled: disabled,
+    isDisabled: disabled || readOnly,
     shouldForceLeadingZeros: true,
     ...rest,
   });
@@ -198,7 +200,7 @@ export const TimePicker = <TimeType extends TimeValue>({
             {append}
             <TimePickerArrowButton
               direction="right"
-              disabled={disabled}
+              disabled={disabled || readOnly}
               aria-label={rightArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('add')}
               onFocus={() => focusSegment(timeFieldRef, 'last')}
@@ -210,8 +212,10 @@ export const TimePicker = <TimeType extends TimeValue>({
         className={classNames('eds-timepicker', className, {
           'eds-timepicker--disabled': disabled,
           'eds-timepicker--has-tooltip': labelTooltip !== undefined,
+          'eds-timepicker--readonly': readOnly,
         })}
         disabled={disabled}
+        readOnly={readOnly}
         disableLabelAnimation
         feedback={feedback}
         label={label}
@@ -225,7 +229,7 @@ export const TimePicker = <TimeType extends TimeValue>({
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <TimePickerArrowButton
               direction="left"
-              disabled={disabled}
+              disabled={disabled || readOnly}
               aria-label={leftArrowButtonAriaLabel}
               onClick={() => handleOnClickArrowButton('subtract')}
               onFocus={() => focusSegment(timeFieldRef, 'first')}
