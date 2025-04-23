@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0](https://github.com/entur/design-system/compare/@entur/icons@7.9.0...@entur/icons@7.10.0) (2025-04-23)
+
+### Features
+
+- **icons:** add FavoriteStop and FavoriteRoute icons ([3de9a00](https://github.com/entur/design-system/commit/3de9a008f78c221e3a49aac64ab395868243d409))
+
 # [7.9.0](https://github.com/entur/design-system/compare/@entur/icons@7.8.0...@entur/icons@7.9.0) (2025-04-11)
 
 ### Features

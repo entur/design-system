@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/entur/design-system/compare/@entur/documentation@6.2.0...@entur/documentation@6.3.0) (2025-04-23)
+
+### Features
+
+- **website:** add patterns as topitem, and fill with statusbeskjed ([085f4ff](https://github.com/entur/design-system/commit/085f4ffc5870b20f75955018d3d21b790422c51d))
+- **website:** add patterns as topitem, and fill with statusbeskjed ([b0b10cd](https://github.com/entur/design-system/commit/b0b10cde2e38cf3846dad0227a59a6a45419f6f2))
+- **website:** cards in patterns index ([7e29a07](https://github.com/entur/design-system/commit/7e29a0760afa88388d93086cf02625f6580e890e))
+
 # [6.2.0](https://github.com/entur/design-system/compare/@entur/documentation@6.1.0...@entur/documentation@6.2.0) (2025-04-11)
 
 ### Bug Fixes

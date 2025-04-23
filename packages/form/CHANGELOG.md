@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.6](https://github.com/entur/design-system/compare/@entur/form@8.2.5...@entur/form@8.2.6) (2025-04-23)
+
+### Bug Fixes
+
+- **datepicker:** add readOnly on datepicker and timepicker ([6c0de8c](https://github.com/entur/design-system/commit/6c0de8c25b52caa1cf0224cf97fa9a94de00e202))
+
 ## [8.2.5](https://github.com/entur/design-system/compare/@entur/form@8.2.4...@entur/form@8.2.5) (2025-04-11)
 
 ### Bug Fixes
