@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.3](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.2...@entur/datepicker@11.0.3) (2025-04-29)
+
+**Note:** Version bump only for package @entur/datepicker
+
 ## [11.0.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.1...@entur/datepicker@11.0.2) (2025-04-23)
 
 ### Bug Fixes

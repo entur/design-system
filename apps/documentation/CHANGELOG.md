@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/entur/design-system/compare/@entur/documentation@6.3.0...@entur/documentation@6.3.1) (2025-04-29)
+
+### Bug Fixes
+
+- **website:** typo in colors ([7f1f048](https://github.com/entur/design-system/commit/7f1f048016956ede29f13f860b5bdaa2b8052dae))
+
 # [6.3.0](https://github.com/entur/design-system/compare/@entur/documentation@6.2.0...@entur/documentation@6.3.0) (2025-04-23)
 
 ### Features
