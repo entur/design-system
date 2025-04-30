@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.11.1](https://github.com/entur/design-system/compare/@entur/icons@7.11.0...@entur/icons@7.11.1) (2025-04-29)
+
+### Bug Fixes
+
+- **icons:** fix naming on seat compartment icon ([ba84b74](https://github.com/entur/design-system/commit/ba84b741d532a75ac3778b0453410e80f80c65bc))
+
+# [7.11.0](https://github.com/entur/design-system/compare/@entur/icons@7.10.0...@entur/icons@7.11.0) (2025-04-29)
+
+### Features
+
+- **icons:** add kupé icons ([694d92d](https://github.com/entur/design-system/commit/694d92dd59f782073dde972009361671b31fee02))
+
 # [7.10.0](https://github.com/entur/design-system/compare/@entur/icons@7.9.0...@entur/icons@7.10.0) (2025-04-23)
 
 ### Features

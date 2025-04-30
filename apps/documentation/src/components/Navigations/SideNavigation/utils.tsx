@@ -100,6 +100,11 @@ export const visuellIdentitetMenuSortOrder = {
   Maler: 3,
 } as any;
 
+export const monsterMenuSortOrder = {
+  Introduksjon: 1,
+  Mønster: 2,
+} as any;
+
 export const tokensMenuSortOrder = {
   Fargetokens: 1,
   'Øvrige tokens': 2,
@@ -120,6 +125,7 @@ export const sorters: { [key: string]: any } = {
   identitet: visuellIdentitetMenuSortOrder,
   komponenter: componentsMenuSortOrder,
   tokens: tokensMenuSortOrder,
+  monster: monsterMenuSortOrder,
 };
 
 export function useSideMenuScroll(page: string) {
