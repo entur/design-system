@@ -19,6 +19,7 @@ export type ImageDisplayProps = {
   className?: string;
   style?: React.CSSProperties;
   preset?: string;
+  noBorderRadius?: boolean;
 };
 
 export const ImageDisplay: React.FC<ImageDisplayProps> = ({
@@ -29,6 +30,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
   alwaysShowDownload = false,
   className,
   preset,
+  noBorderRadius,
   style,
   ...rest
 }) => {
@@ -37,7 +39,12 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
 
   return (
     <div
-      className={classNames('image-display', `preset--${preset}`, className)}
+      className={classNames(
+        'image-display',
+        `preset--${preset}`,
+        { 'image-display--no-border-radius': noBorderRadius },
+        className,
+      )}
       {...rest}
       style={style}
     >

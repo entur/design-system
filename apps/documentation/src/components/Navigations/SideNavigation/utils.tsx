@@ -79,13 +79,14 @@ export function compare(a: MenuItem, b: MenuItem) {
 
 // Menu-items sort orders
 export const componentsMenuSortOrder = {
-  Ressurser: 1,
-  Knapper: 2,
-  Skjemaelementer: 3,
-  Navigasjon: 4,
-  'Layout & Flater': 5,
-  Feedback: 6,
-  Reise: 7,
+  Oversikt: 1,
+  Ressurser: 2,
+  Knapper: 3,
+  Skjemaelementer: 4,
+  Navigasjon: 5,
+  'Layout & Flater': 6,
+  Feedback: 7,
+  Reise: 8,
 } as any;
 
 export const komIGangMenuSortOrder = {
@@ -101,13 +102,19 @@ export const visuellIdentitetMenuSortOrder = {
 } as any;
 
 export const monsterMenuSortOrder = {
-  Introduksjon: 1,
+  Oversikt: 1,
   Mønster: 2,
 } as any;
 
+export const ressurserMenuSortOrder = {
+  Oversikt: 1,
+  Workshopmaler: 2,
+} as any;
+
 export const tokensMenuSortOrder = {
-  Fargetokens: 1,
-  'Øvrige tokens': 2,
+  Introduksjon: 1,
+  Fargetokens: 2,
+  'Øvrige tokens': 3,
 } as any;
 
 export const sortComponentMenus = (
@@ -126,6 +133,7 @@ export const sorters: { [key: string]: any } = {
   komponenter: componentsMenuSortOrder,
   tokens: tokensMenuSortOrder,
   monster: monsterMenuSortOrder,
+  ressurser: ressurserMenuSortOrder,
 };
 
 export function useSideMenuScroll(page: string) {

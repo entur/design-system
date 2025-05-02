@@ -1,20 +1,31 @@
+@use "sass:map";
 @use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '../../styles/variables' as variables;
 
 .component-preview {
   min-height: 400px;
 
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    width: 100%;
+  }
+
   &__image-wrapper {
     img {
-      width: 100%;
+      width: 14rem;
+      height: 11rem;
       border-radius: 0;
     }
   }
 
   h3 {
     margin-top: 0;
+    font-size: 20px;
   }
 
   .eds-media-card__text {
     padding: 0 1.5rem;
+  }
+  .eds-media-card__media {
+    background-color: var(--basecolors-frame-tint);
   }
 }

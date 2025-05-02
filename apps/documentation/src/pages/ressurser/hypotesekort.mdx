@@ -1,0 +1,108 @@
+---
+title: Hypotesekort
+description: Et verktøy for å formulere, teste og måle hypoteser i produktutvikling.
+route: /ressurser/hypotesekort
+parent: ressurser
+menu: Workshopmaler
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+import figma from './figma.svg'
+import mural from './mural.svg'
+import { DetailsList }  from '@components/Pages/DetailsList';
+import { GuidelinesBlock }  from '@components/Pages/GuidelinesBlock';
+import { TimeglassIcon, UsersIcon, ClockIcon } from '@entur/icons';
+import { NavigationCard } from '@entur/layout';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query wsQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       publicURL
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+    svgFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+  pdfFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "pdf"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+Når vi utvikler digitale løsninger, jobber vi ofte ut fra antagelser – vi ser et problem, utvikler en idé, og setter løsningen ut i produksjon. Hypotesekort hjelper teamet med å sette ord på disse antagelsene, gjøre dem synlige, og teste dem systematisk. På den måten kan dere raskere forstå hva som faktisk fungerer, lære av resultatene, og ta tryggere og mer målrettede beslutninger underveis i utviklingen.
+
+<DetailsList
+  items={[
+    { icon: <TimeglassIcon />, label: 'Tidsbruk', description: '--' },
+    { icon: <UsersIcon />, label: 'Deltakere', description: '--' },
+    { icon: <ClockIcon />, label: 'Når i prosess',description: 'Når du skal teste antagelser eller idéer tidlig i utviklingen.' },
+  ]}
+/>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Interview Snapshot").childImageSharp.gatsbyImageData}
+  downloadSources={[
+    { src: props.data.files.images.find(image => image.name === "Interview Snapshot").publicURL, format: "png", label: "Last ned hypotesekort i png" },
+  ]}
+  name={props.data.files.images.find(image => image.name === "Interview Snapshot").name}
+  preset="centered-image"
+  alt=""
+  alwaysShowDownload
+  noBorderRadius
+/>
+
+<GridContainer spacing="medium" style={{marginTop: '2rem'}}>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Figma" titleIcon={<img src={figma} alt="" />} href="https://www.figma.com/design/ChQfEl7lEhiyaLJSGfBuoG/Design-verkt%C3%B8ykasse?node-id=302-2096&t=IGu4bQRd0yiJ8sEp-1" compact></NavigationCard>
+</GridItem>
+</GridContainer>
+
+## Forberedelser
+
+<Paragraph margin="none">Digitalt:</Paragraph>
+- Last ned eller koble til malen, og importer den i verktøy som MURAL eller FigJam.
+- Sørg for at alle har tilgang til verktøyet før møtet.
+
+<Paragraph margin="none">Fysisk:</Paragraph>
+- Print ut malen i A1-format, eller tegn den på tavle.
+- Tusjer og penner.
+- Klokke eller timer for å holde styr på tiden.
+
+<GuidelinesBlock>
+Hypotesekort hjelper deg å formulere én antagelse du ønsker å teste, og gir en enkel struktur for å tenke gjennom problemet, løsningen, forventet effekt – og hvordan du kan måle det. 
+Bruk én lapp per hypotese.
+
+<Heading3 as="h4">Steg 1: Vi tror at…</Heading3>
+Beskriv problemet slik dere forstår det i dag. Det kan være basert på antakelser, erfaring eller innsikt – poenget er å tydeliggjøre hva dere tror er sant.
+
+<Heading3 as="h4">Steg 2: Så hvis vi… </Heading3>
+Skriv hva dere har tenkt å gjøre – en løsning, et tiltak, en funksjon eller endring dere ønsker å teste.
+
+<Heading3 as="h4">Steg 3: Så vil vi se at… </Heading3>
+Hva håper dere skjer hvis løsningen fungerer? Dette er det ønskede utfallet, og ofte den mest usikre delen av hypotesen.
+
+<Heading3 as="h4">Steg 4: Og dette kan vi vite ved å måle…</Heading3>
+
+Hvordan skal dere finne ut om hypotesen stemmer? Definer eksperimentet: hva dere gjør, hvordan dere måler, og når dere evaluerer.
+Husk: Måling kan være både kvalitativ (f.eks. observasjon) og kvantitativ (f.eks. klikk, konvertering).
+</GuidelinesBlock>

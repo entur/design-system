@@ -1,9 +1,9 @@
 ---
-title: Introduksjon
-description: ressurser
+title: Metoder og maler
+description: Entur Linje samler metoder og maler for enklere samarbeid og bedre produktutvikling.
 route: /ressurser
 parent: ressurser
-menu: test
+menu: Oversikt
 order: 1
 ---
 
@@ -30,13 +30,19 @@ query komigang {
 }
 `;
 
-<PageHeader/>
+<PageHeader title="Metoder og maler"/>
+
+Vi har satt sammen et sett med maler og metoder vi tror er spesielt relevant for arbeidet i Entur slik at de er tilgjengelig for alle. Målet er å finne de verktøyene som hjelper oss å oppnå målene våres og samarbeide enklere i og på tvers av team og fagdisipliner.
+
+Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikling og interaksjons- og tjenestedesign. Noen gode kilder man kan se på hvis man er mer interessert:
+
+## Prosesser
 
 <GridContainer spacing="large">
   <ComponentPreview
     title="Aktørkart"
     category="Maler"
-    description="En metode å få oversikt over aktører som berøres av et prosjekt."
+    description="En metode for å få oversikt over aktører som berøres av et prosjekt."
     to="/ressurser/aktorkart"
   >
   <ImageDisplay
@@ -45,4 +51,127 @@ query komigang {
     preset="full-width-image"
   />
   </ComponentPreview>
+
+  <ComponentPreview
+    title="Forretningsmodell"
+    category="Maler"
+    description="En metode for å beskrive hva teamet, området eller bedriften skal fokusere på."
+    to="/ressurser/forretningsmodell"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "forretningsmodellIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="MoSCoW-analyse"
+    category="Maler"
+    description="En metode for å prioritere oppgaver og krav i et prosjekt"
+    to="/ressurser/moscow"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "moscowIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Verdiforslag"
+    category="Maler"
+    description="En metode for å avdekke kundebehov og utvikle produkter/tjenester som skaper verdi."
+    to="/ressurser/verdiforslag"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "verdiforslagIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Intervjukort"
+    category="Maler"
+    description="Et verktøy for rask oppsummering av brukerinnsikt"
+    to="/ressurser/intervjukort"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "intervjukortIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="OODA-loop"
+    category="Maler"
+    description="En modell for å ta raske og informerte beslutninger i komplekse situasjoner."
+    to="/ressurser/oodaloop"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "oodaloopIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Hypotesekort"
+    category="Maler"
+    description="Et verktøy for å formulere, teste og måle hypoteser i produktutvikling."
+    to="/ressurser/hypotesekort"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "hypotesekortIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Tjenestekart"
+    category="Maler"
+    description="En metode for å kartlegge hele tjenestereisen – fra brukerens handlinger til interne ledd."
+    to="/ressurser/tjenestekart"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "tjenestekartIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+  <ComponentPreview
+    title="Brukerreisekart"
+    category="Maler"
+    description="Et verktøy for å kartlegge brukerens opplevelse, behov og utfordringer i en tjenestereise."
+    to="/ressurser/brukerreisekart"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "brukerreisekartIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
+</GridContainer>
+
+## Teambygging
+
+<GridContainer spacing="large">
+  <ComponentPreview
+    title="Team Canvas"
+    category="Maler"
+    description="En metode for å støtte et team i å snakke om samarbeid og sette et felles mål."
+    to="/ressurser/teamcanvas"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "teamCanvasIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
 </GridContainer>

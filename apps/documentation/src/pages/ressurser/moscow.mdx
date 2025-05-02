@@ -1,0 +1,116 @@
+---
+title: MoSCoW-analyse
+description: En metode for å prioritere oppgaver og krav i et prosjekt
+route: /ressurser/moscow
+parent: ressurser
+menu: Workshopmaler
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+import figma from './figma.svg'
+import mural from './mural.svg'
+import { DetailsList }  from '@components/Pages/DetailsList';
+import { GuidelinesBlock }  from '@components/Pages/GuidelinesBlock';
+import { TimeglassIcon, UsersIcon, ClockIcon } from '@entur/icons';
+import { NavigationCard } from '@entur/layout';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query wsQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       publicURL
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+    svgFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+  pdfFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "pdf"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+MoSCoW er en prioriteringsteknikk som gir oversikt, skaper felles forståelse og hjelper team med å fokusere på det viktigste først. Ved å prioritere de mest kritiske oppgavene tidlig, sikres raskere fremdrift, samtidig som det er rom for å legge til mindre viktige elementer senere.
+
+<DetailsList
+  items={[
+    { icon: <TimeglassIcon />, label: 'Tidsbruk', description: '--' },
+    { icon: <UsersIcon />, label: 'Deltakere', description: '--' },
+    { icon: <ClockIcon />, label: 'Når i prosess',description: 'Når du planlegger utviklingsarbeid eller skal definere EPICS.' },
+  ]}
+/>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "MoSCoW").childImageSharp.gatsbyImageData}
+  downloadSources={[
+    { src: props.data.files.images.find(image => image.name === "MoSCoW").publicURL, format: "png", label: "Last ned MoSCoW i png" },
+    { src: props.data.svgFiles.images.find(image => image.name === "MoSCoW").publicURL, format: "svg", label: "Last ned MoSCoW i svg" },
+    { src: props.data.pdfFiles.images.find(image => image.name === "MoSCoW").publicURL, format: "pdf", label: "Last ned MoSCoW i pdf" }
+  ]}
+  name={props.data.files.images.find(image => image.name === "MoSCoW").name}
+  preset="centered-image"
+  alt=""
+  alwaysShowDownload
+  noBorderRadius
+/>
+
+<GridContainer spacing="medium" style={{marginTop: '2rem'}}>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Figma" titleIcon={<img src={figma} alt="" />} href="https://www.figma.com/design/ChQfEl7lEhiyaLJSGfBuoG/Design-verkt%C3%B8ykasse?node-id=302-2096&t=IGu4bQRd0yiJ8sEp-1" compact></NavigationCard>
+</GridItem>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Mural" titleIcon={<img src={mural} alt="" />} href="https://app.mural.co/t/entur7578/m/entur7578/1675667739480/f603144a76621c1f726269275c9ae6b3d6df9454" compact></NavigationCard>
+</GridItem>
+</GridContainer>
+
+## Forberedelser
+
+<Paragraph margin="none">Digitalt:</Paragraph>
+- Last ned eller koble til malen, og importer den i verktøy som MURAL eller FigJam.
+- Sørg for at alle har tilgang til verktøyet før møtet.
+
+<Paragraph margin="none">Fysisk:</Paragraph>
+- Print ut malen i A1-format, eller tegn den på tavle.
+- Post-it-lapper i ulike farger, tusjer og penner.
+- Klokke eller timer for å holde styr på tiden.
+
+<GuidelinesBlock>
+<Heading3 as="h4">Steg 1: Identifiser og list alle krav</Heading3>
+
+Start med å samle alle oppgaver, funksjoner og krav som er relevante for prosjektet. Det er viktig å få med alt i denne fasen for å sikre full oversikt og unngå overraskelser senere.
+
+<Heading3 as="h4">Steg 2: Kategoriser krav med MoSCoW-rammeverket</Heading3>
+<Paragraph margin="none">Sorter hvert krav i én av de fire kategoriene i MoSCoW-modellen:</Paragraph>
+- **Må:** Kritiske krav som er nødvendige for at prosjektet skal lykkes.
+- **Bør:** Viktige krav som gir verdi, men som kan utsettes ved behov.
+- **Kan:** Fine å ha-krav som forbedrer løsningen, men ikke er nødvendige.
+- **Skal ikke:** Krav som bevisst utelates for å unngå omfangsutvidelse (scope creep).
+
+Dette steget gjør det tydelig hva som må med i leveransen – og hva som kan vente.
+
+<Heading3 as="h4">Steg 3: Involver interessenter</Heading3>
+Gå gjennom prioriteringene sammen med relevante interessenter. Når alle parter er enige om hva som er viktigst, blir det enklere å ta beslutninger og unngå konflikter senere i prosessen.
+
+<Heading3 as="h4">Steg 4: Gjennomgå og juster underveis</Heading3>
+Prosjekter endrer seg, og det gjør prioriteringer også. Gjennomgå MoSCoW-listen jevnlig og gjør justeringer etter hvert som nye behov, avklaringer eller begrensninger dukker opp. Dette sikrer at dere holder fokus – også når ting endrer seg.
+
+</GuidelinesBlock>

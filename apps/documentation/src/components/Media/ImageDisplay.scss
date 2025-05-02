@@ -1,5 +1,7 @@
+@use "sass:map";
 @use '@entur/tokens/dist/semantic.scss' as *;
 @use '@entur/tokens/dist/styles.scss' as t;
+@use '../../styles/variables' as variables;
 
 .border-wrapper {
   border: t.$border-widths-small solid var(--basecolors-stroke-subduedalt);
@@ -59,7 +61,9 @@
       }
     }
   }
-
+  &--no-border-radius img {
+    border-radius: 0;
+  }
   &.preset {
     &--logo-display {
       height: 25rem;
@@ -80,6 +84,18 @@
     &--full-width-image {
       height: fit-content;
       border-radius: t.$border-radiuses-large;
+    }
+    &--centered-image {
+      background: var(--basecolors-frame-tint);
+      margin: 0 auto;
+      padding: 4rem;
+      border-radius: t.$border-radiuses-large;
+      max-width: 100%;
+      height: auto;
+
+      @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+        padding: 2rem;
+      }
     }
   }
 }

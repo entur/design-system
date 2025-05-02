@@ -51,7 +51,7 @@ const TopNavigation = () => {
       <NavItem to="/komponenter">Komponenter</NavItem>
       <NavItem to="/tokens">Tokens</NavItem>
       <NavItem to="/monster">Mønster</NavItem>
-      {/* <NavItem to="/ressurser">Ressurser</NavItem> */}
+      <NavItem to="/ressurser">Ressurser</NavItem>
       <NavItem to="/universell-utforming">Universell utforming</NavItem>
       <Search />
       <Tooltip content="Entur Linje på GitHub">
