@@ -30,6 +30,14 @@ type DropdownListProps<ValueType> = {
   selectAllItem?: NormalizedDropdownItemType<string>;
   selectedItems: NormalizedDropdownItemType<ValueType>[];
   style?: React.CSSProperties;
+  itemKeyFn?: (
+    item: NormalizedDropdownItemType<ValueType | string>,
+    index: number,
+  ) => string;
+  iconKeyFn?: (
+    icon: React.ComponentType<any>,
+    item: NormalizedDropdownItemType<ValueType | string>,
+  ) => string;
 };
 
 export const DropdownList = <ValueType extends NonNullable<any>>({
@@ -48,6 +56,8 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   selectAllCheckboxState,
   selectAllItem,
   selectedItems,
+  iconKeyFn,
+  itemKeyFn,
   ...rest
 }: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -103,6 +113,16 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
     </>
   );
 
+  const isReactComponent = (icon: any): icon is React.ComponentType<any> => {
+    return (
+      typeof icon === 'function' ||
+      (typeof icon === 'object' &&
+        icon !== null &&
+        '$$typeof' in icon &&
+        typeof icon.$$typeof === 'symbol')
+    );
+  };
+
   const listItemContent = (item: NormalizedDropdownItemType<ValueType>) => {
     return (
       <>
@@ -121,19 +141,22 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
             {isItemSelected(item) ? ariaLabelSelectedItem : ''}
           </VisuallyHidden>
         </span>
-        {item.icons && (
-          <span>
-            {item.icons.map(Icon => (
-              <Icon
-                key={
-                  item?.label + item?.value + (Icon?.displayName ?? Icon?.name)
-                }
-                inline
-                className="eds-dropdown__list__item__icon"
-              />
-            ))}
-          </span>
-        )}
+        {Array.isArray(item.icons)
+          ? item.icons.filter(isReactComponent).map(Icon => {
+              const key =
+                iconKeyFn?.(Icon, item) ??
+                `${item.label ?? ''}-${item.value ?? ''}-${
+                  Icon.displayName ?? Icon.name ?? 'unknown'
+                }`;
+              return (
+                <Icon
+                  key={key}
+                  inline
+                  className="eds-dropdown__list__item__icon"
+                />
+              );
+            })
+          : null}
       </>
     );
   };
@@ -180,9 +203,13 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         }
 
         return listItems.map((item, index) => {
+          const key = itemKeyFn
+            ? itemKeyFn(item, index)
+            : item?.label +
+              item?.value +
+              (item?.icons?.map(icon => icon.name) ?? 'unknown').toString();
           const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return null;
-
           return (
             <li
               className={classNames('eds-dropdown__list__item', {
@@ -192,13 +219,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
                 'eds-dropdown__list__item--selected':
                   !isMultiselect && isItemSelected(item),
               })}
-              key={
-                item?.label +
-                item?.value +
-                (
-                  item?.icons?.map(icon => icon.displayName ?? icon.name) ?? ''
-                ).toString()
-              }
+              key={key}
               {...getItemProps({
                 // @ts-expect-error Since getItemProps expects the same item type
                 // here as items, it throws error when selectAllItem is a string.

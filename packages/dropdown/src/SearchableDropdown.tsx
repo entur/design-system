@@ -57,6 +57,16 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   /** Tekst for skjermleser som beskriver statusen til et element som valgt
    * @default ", valgt element, trykk for å fjerne"
    */
+  /** Send din egen key til DropdownList items */
+  itemKeyFn?: (
+    item: NormalizedDropdownItemType<ValueType | string>,
+    index: number,
+  ) => string;
+  /** Send din egen key til DropdownList iconitems */
+  iconKeyFn?: (
+    icon: React.ComponentType<any>,
+    item: NormalizedDropdownItemType<ValueType | string>,
+  ) => string;
 };
 
 export const SearchableDropdown = React.forwardRef(
@@ -92,6 +102,8 @@ export const SearchableDropdown = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'info',
+      iconKeyFn,
+      itemKeyFn,
       ...rest
     }: SearchableDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -330,6 +342,8 @@ export const SearchableDropdown = React.forwardRef(
             loadingText={loadingText}
             noMatchesText={noMatchesText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
+            iconKeyFn={iconKeyFn}
+            itemKeyFn={itemKeyFn}
           />
         }
         {...rest}
