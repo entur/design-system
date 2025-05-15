@@ -109,16 +109,6 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
-  /** Send din egen key til DropdownList items */
-  itemKeyFn?: (
-    item: NormalizedDropdownItemType<ValueType | string>,
-    index: number,
-  ) => string;
-  /** Send din egen key til DropdownList iconitems */
-  iconKeyFn?: (
-    icon: React.ComponentType<any>,
-    item: NormalizedDropdownItemType<ValueType | string>,
-  ) => string;
 };
 
 export const MultiSelect = React.forwardRef(
@@ -161,8 +151,6 @@ export const MultiSelect = React.forwardRef(
       ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
-      iconKeyFn,
-      itemKeyFn,
       ...rest
     }: MultiSelectProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -458,8 +446,6 @@ export const MultiSelect = React.forwardRef(
             selectAllCheckboxState={selectAllCheckboxState}
             selectAllItem={selectAll}
             selectedItems={selectedItems}
-            iconKeyFn={iconKeyFn}
-            itemKeyFn={itemKeyFn}
           />
         }
         {...rest}

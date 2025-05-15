@@ -30,14 +30,6 @@ type DropdownListProps<ValueType> = {
   selectAllItem?: NormalizedDropdownItemType<string>;
   selectedItems: NormalizedDropdownItemType<ValueType>[];
   style?: React.CSSProperties;
-  itemKeyFn?: (
-    item: NormalizedDropdownItemType<ValueType | string>,
-    index: number,
-  ) => string;
-  iconKeyFn?: (
-    icon: React.ComponentType<any>,
-    item: NormalizedDropdownItemType<ValueType | string>,
-  ) => string;
 };
 
 export const DropdownList = <ValueType extends NonNullable<any>>({
@@ -56,8 +48,6 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   selectAllCheckboxState,
   selectAllItem,
   selectedItems,
-  iconKeyFn,
-  itemKeyFn,
   ...rest
 }: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -143,11 +133,9 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         </span>
         {Array.isArray(item.icons)
           ? item.icons.filter(isReactComponent).map(Icon => {
-              const key =
-                iconKeyFn?.(Icon, item) ??
-                `${item.label ?? ''}-${item.value ?? ''}-${
-                  Icon.displayName ?? Icon.name ?? 'unknown'
-                }`;
+              const key = `${
+                item.itemKey ?? `${item.label ?? ''}-${item.value ?? ''}`
+              }-${Icon.displayName ?? Icon.name ?? 'unknown'}`;
               return (
                 <Icon
                   key={key}
@@ -203,11 +191,11 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         }
 
         return listItems.map((item, index) => {
-          const key = itemKeyFn
-            ? itemKeyFn(item, index)
-            : item?.label +
-              item?.value +
-              (item?.icons?.map(icon => icon.name) ?? 'unknown').toString();
+          const key =
+            item.itemKey ??
+            `${item.label ?? ''}-${item.value ?? ''}-${(item.icons ?? [])
+              .map(icon => icon?.displayName ?? icon?.name ?? 'unknown')
+              .join('-')}`;
           const itemIsSelectAll = item.value === selectAllItem?.value;
           if (itemIsSelectAll && listItems.length <= 2) return null;
           return (

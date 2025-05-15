@@ -111,16 +111,6 @@ export type DropdownProps<ValueType> = {
    * @default ', valgt element, trykk for å fjerne'
    */
   ariaLabelSelectedItem?: string;
-  /** Send din egen key til DropdownList items */
-  itemKeyFn?: (
-    item: NormalizedDropdownItemType<ValueType | string>,
-    index: number,
-  ) => string;
-  /** Send din egen key til DropdownList iconitems */
-  iconKeyFn?: (
-    icon: React.ComponentType<any>,
-    item: NormalizedDropdownItemType<ValueType | string>,
-  ) => string;
 };
 
 export const Dropdown = React.forwardRef(
@@ -152,8 +142,6 @@ export const Dropdown = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'information',
-      iconKeyFn,
-      itemKeyFn,
       ...rest
     }: DropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLDivElement>,
@@ -274,8 +262,6 @@ export const Dropdown = React.forwardRef(
             loading={loading ?? resolvedItemsLoading}
             loadingText={loadingText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
-            iconKeyFn={iconKeyFn}
-            itemKeyFn={itemKeyFn}
           />
         }
         {...rest}
