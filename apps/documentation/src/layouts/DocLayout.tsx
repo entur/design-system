@@ -1,5 +1,4 @@
 import React from 'react';
-import TableOfContent from '@components/Navigations/TableOfContent/TableOfContent';
 import SiteFooter from '@components/Footer/SiteFooter';
 import TopNavigationLayout from './TopNavigationLayout';
 import { MDXProvider } from '@mdx-js/react';
@@ -10,9 +9,11 @@ import SideNavigationLayout from './SideNavigationLayout';
 import TableOfContentLayout from './TableOfContentLayout';
 interface LayoutProps {
   children: React.ReactNode;
+  data: any;
 }
 
-const DocLayout = ({ children }: LayoutProps) => {
+const DocLayout = ({ children, data }: LayoutProps) => {
+  console.log(data);
   return (
     <>
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>

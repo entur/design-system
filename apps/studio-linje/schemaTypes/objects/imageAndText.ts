@@ -1,4 +1,4 @@
-import {AdditionalIcon} from '@entur/icons'
+import {AdditionalIcon, RowHeightMiddleIcon} from '@entur/icons'
 import {defineField, defineType} from 'sanity'
 
 export const imageAndText = defineType({
@@ -28,14 +28,29 @@ export const imageAndText = defineType({
     }),
     defineField({
       name: 'text',
-      title: 'Tekst',
-      type: 'textBlocks',
+      title: 'Tekstelementer',
+      icon: RowHeightMiddleIcon,
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'},
+            {title: 'H5', value: 'h5'},
+            {title: 'Code', value: 'code'},
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.min(1).max(3).error('At least one text block is required'),
     }),
   ],
   preview: {
     select: {
       order: 'order',
-      text: 'text.nb',
+      text: 'text',
       image: 'image',
     },
     prepare({order, text, image}) {

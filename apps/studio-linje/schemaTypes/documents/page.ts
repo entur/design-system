@@ -30,7 +30,7 @@ export const page = defineType({
     }),
     defineField({
       name: 'content',
-      title: 'Content',
+      title: 'Innhold',
       type: 'array',
       of: [defineArrayMember({type: 'imageAndText'}), defineArrayMember({type: 'textBlocks'})],
     }),

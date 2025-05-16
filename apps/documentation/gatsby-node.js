@@ -56,6 +56,39 @@ exports.onPreBootstrap = () => {
   fs.copySync('../../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
 
+async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityPage(filter: { slug: { current: { ne: null } } }) {
+        nodes {
+          id
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const pages = (result.data.allSanityPage || {}).nodes || [];
+
+  pages.forEach(page => {
+    const id = page.id;
+    const slug = page.slug.current;
+    const path = `/${slug}`;
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/ContentTemplate.tsx'),
+      context: { slug },
+    });
+  });
+  reporter.info(`[create page] Created ${pages.length} documentation pages`);
+}
+
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
   // get data from GitHub API at build time
   await Promise.all(
@@ -80,4 +113,8 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
       });
     }),
   );
+};
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };

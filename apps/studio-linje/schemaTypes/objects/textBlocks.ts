@@ -1,9 +1,9 @@
 import {RowHeightMiddleIcon} from '@entur/icons'
 import {defineField, defineType} from 'sanity'
 
-export const textBlocks = defineType({
+export const textBlocksType = defineType({
   name: 'textBlocks',
-  title: 'Tekstseksjoner',
+  title: 'Tekstblokker',
   type: 'object',
   icon: RowHeightMiddleIcon,
   fields: [
@@ -33,7 +33,7 @@ export const textBlocks = defineType({
     },
     prepare: ({textBlocks}) => ({
       title: textBlocks
-        ? `Tekst med ${textBlocks.length} del${textBlocks.length === 1 ? '' : 'er'}`
+        ? `${textBlocks.length} tekstblokk${textBlocks.length === 1 ? '' : 'er'}`
         : 'empty',
     }),
   },

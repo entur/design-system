@@ -14,6 +14,14 @@ const config: GatsbyConfig = {
   },
   trailingSlash: 'never',
   plugins: [
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'npa0lfls',
+        dataset: 'production',
+        watchMode: true,
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',

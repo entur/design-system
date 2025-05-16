@@ -1,2 +1,2 @@
 export {imageAndText} from './imageAndText'
-export {textBlocks} from './textBlocks'
+export {textBlocksType} from './TextBlocks'
