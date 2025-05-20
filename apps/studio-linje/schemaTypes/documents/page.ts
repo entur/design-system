@@ -17,6 +17,17 @@ export const page = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'category',
+      title: 'Hovedkategori',
+      type: 'string',
+      validation: (Rule) => Rule.required().error('Tittel er et påkrevd felt'),
+    }),
+    defineField({
+      name: 'subcategory',
+      title: 'Underkategori',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

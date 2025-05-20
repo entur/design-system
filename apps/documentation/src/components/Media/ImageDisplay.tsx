@@ -52,7 +52,11 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         <img src={imgSource} alt={alt} className="image-display__image" />
       ) : (
         imgSource !== undefined && (
-          <GatsbyImage image={imgSource as IGatsbyImageData} alt={alt} />
+          <GatsbyImage
+            image={imgSource as IGatsbyImageData}
+            alt={alt}
+            objectFit={preset?.includes('contain') ? 'contain' : undefined}
+          />
         )
       )}
 

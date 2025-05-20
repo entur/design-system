@@ -1,3 +1,4 @@
+import { PortableTextProps } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
 
 export type SanityImageType = {
@@ -18,4 +19,14 @@ export type ImageAndTextType = {
 export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];
+};
+
+export type PageType = {
+  _type: string;
+  title: string;
+  description: string;
+  category: string;
+  subcategory?: string;
+  npmPackage?: string;
+  content: PortableTextProps['value'];
 };

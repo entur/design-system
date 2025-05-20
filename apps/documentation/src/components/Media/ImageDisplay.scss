@@ -85,6 +85,14 @@
       height: fit-content;
       border-radius: t.$border-radiuses-large;
     }
+
+    &--contain {
+      border-radius: t.$border-radiuses-large;
+
+      &-full-width {
+        width: 100%;
+      }
+    }
     &--centered-image {
       background: var(--basecolors-frame-tint);
       margin: 0 auto;

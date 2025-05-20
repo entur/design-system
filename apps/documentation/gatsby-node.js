@@ -83,7 +83,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     createPage({
       path,
       component: require.resolve('./src/templates/ContentTemplate.tsx'),
-      context: { slug },
+      context: { id },
     });
   });
   reporter.info(`[create page] Created ${pages.length} documentation pages`);
