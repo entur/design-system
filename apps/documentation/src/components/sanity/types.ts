@@ -14,11 +14,13 @@ export type ImageAndTextType = {
   image: SanityImageType;
   text: PortableTextBlock;
   _rawText: any[];
+  addMargin: boolean;
 };
 
 export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];
+  variant?: 'normal' | 'information';
 };
 
 export type PageType = {

@@ -1,38 +1,27 @@
 @use '@entur/tokens/dist/styles.scss' as eds;
-// @use '~/styles/breakpoints.scss' as *;
 
 .image-and-text {
+  $self: &;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  // @include breakpoint('laptop-up') {
-  //   flex-direction: row;
-  //   // grid-column: 3 / span 8;
-  // }
 
   &__image {
     grid-column: 1 / -1;
     align-self: center;
     background-color: var(--basecolors-frame-tint);
 
-    // @include breakpoint('laptop-up') {
-    //   grid-column: 1 / span 6;
-    // }
-  }
-  &__text {
-    // grid-column: 1 / -1;
+    #{ $self }--add-margin & {
+      padding: eds.$space-extra-large3;
+      border-radius: eds.$border-radiuses-large;
 
-    // @include breakpoint('laptop-up') {
-    //   grid-column: 6 / span 2;
-    // }
+      img {
+        border-radius: unset;
+      }
+    }
   }
 }
 
 .text-first {
   flex-direction: column-reverse;
-
-  // @include breakpoint('laptop-up') {
-  //   flex-direction: row-reverse;
-  // }
 }

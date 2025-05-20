@@ -27,6 +27,12 @@ export const imageAndText = defineType({
       type: 'image',
     }),
     defineField({
+      name: 'addMargin',
+      title: 'Legg til luft rundt bildet',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'text',
       title: 'Tekstelementer',
       icon: RowHeightMiddleIcon,

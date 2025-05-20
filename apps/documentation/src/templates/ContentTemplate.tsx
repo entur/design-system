@@ -41,6 +41,7 @@ export const query = graphql`
         ... on SanityTextBlocks {
           _key
           _type
+          variant
           _rawItems
         }
       }

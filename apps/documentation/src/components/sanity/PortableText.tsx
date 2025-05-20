@@ -20,7 +20,7 @@ import {
   UnorderedList,
 } from '@entur/typography';
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
-import { TextBlocksResolver } from './TextBlocksResolver';
+import { TextBlocksResolver } from './text/TextBlocksResolver';
 
 // TODO: Dette er direkte kopiert fra Omtur og må tilpasses masse!
 const components: Partial<PortableTextReactComponents> = {

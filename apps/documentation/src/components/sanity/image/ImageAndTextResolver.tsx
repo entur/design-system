@@ -4,16 +4,22 @@ import { ImageAndTextType } from '../types';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { PortableText } from '../PortableText';
 import './ImageAndText.scss';
+import classNames from 'classnames';
 
 type Props = {
   value: ImageAndTextType;
 };
 
 export const ImageAndTextResolver = ({ value }: Props) => {
-  const { image, _rawText } = value;
+  const { image, _rawText, addMargin } = value;
+  console.log(value);
 
   return (
-    <div className="image-and-text">
+    <div
+      className={classNames('image-and-text', {
+        'image-and-text--add-margin': addMargin,
+      })}
+    >
       <ImageDisplay
         imgSource={image.asset.gatsbyImageData}
         alt={''}
@@ -35,6 +41,7 @@ export const ImageAndTextFragment = graphql`
         gatsbyImageData
       }
     }
+    addMargin
     _rawText
   }
 `;

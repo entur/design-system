@@ -1,12 +1,27 @@
 import {RowHeightMiddleIcon} from '@entur/icons'
 import {defineField, defineType} from 'sanity'
 
+export const VARIANT_TYPES = [
+  {title: 'Standard', value: 'normal'},
+  {title: 'Informasjon', value: 'information'},
+]
+
 export const textBlocksType = defineType({
   name: 'textBlocks',
   title: 'Tekstblokker',
   type: 'object',
   icon: RowHeightMiddleIcon,
   fields: [
+    defineField({
+      name: 'variant',
+      title: 'Variant',
+      type: 'string',
+      options: {
+        list: VARIANT_TYPES,
+        layout: 'dropdown',
+      },
+      initialValue: 'normal',
+    }),
     defineField({
       name: 'items',
       title: 'Items',
@@ -24,7 +39,6 @@ export const textBlocksType = defineType({
           ],
         },
       ],
-      validation: (Rule) => Rule.min(1).max(3).error('At least one text block is required'),
     }),
   ],
   preview: {
