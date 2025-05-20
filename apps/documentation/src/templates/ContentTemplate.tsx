@@ -32,9 +32,6 @@ export default function ContentTemplate({
 export const query = graphql`
   query ContentBySlug($id: String!) {
     page: sanityPage(id: { eq: $id }) {
-      slug {
-        current
-      }
       title
       category
       subcategory

@@ -2,7 +2,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const page = defineType({
   name: 'page',
-  title: 'Page',
+  title: 'Dokumentasjonsside',
   type: 'document',
   fields: [
     defineField({
@@ -26,18 +26,6 @@ export const page = defineType({
       name: 'subcategory',
       title: 'Underkategori',
       type: 'string',
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-      description:
-        'Brukes for å lage hva urlen til siden blir. F.eks. /om-oss. Kan genereres fra tittel på bokmål.',
-      validation: (Rule) => Rule.required().error('Slug er et påkrevd felt'),
     }),
     defineField({
       name: 'content',

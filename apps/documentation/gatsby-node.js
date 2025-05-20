@@ -55,17 +55,16 @@ exports.onPreBootstrap = () => {
   }
   fs.copySync('../../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
-
 async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allSanityPage(filter: { slug: { current: { ne: null } } }) {
+      allSanityPage {
         nodes {
           id
-          slug {
-            current
-          }
+          title
+          category
+          subcategory
         }
       }
     }
@@ -76,9 +75,13 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   const pages = (result.data.allSanityPage || {}).nodes || [];
 
   pages.forEach(page => {
+    console.log('page', page);
     const id = page.id;
-    const slug = page.slug.current;
-    const path = `/${slug}`;
+    const path = getSanitizedPath({
+      title: page.title,
+      category: page.category,
+      subcategory: page.subcategory,
+    });
 
     createPage({
       path,
@@ -87,6 +90,24 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     });
   });
   reporter.info(`[create page] Created ${pages.length} documentation pages`);
+}
+
+function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
+  function sanitizeText(text) {
+    return text
+      .toLowerCase()
+      .replace(/[^æøå\w -]+/g, '')
+      .replace(/ +/g, '-');
+  }
+
+  const sanitizedCategory = sanitizeText(category);
+  if (categoryIndex) return `/${sanitizedCategory}`;
+
+  const sanitizedTitle = sanitizeText(title);
+  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
+
+  const sanitizedSubcategory = sanitizeText(subcategory);
+  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
 }
 
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
