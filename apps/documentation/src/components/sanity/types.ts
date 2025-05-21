@@ -31,6 +31,11 @@ export type TextBlocksType = {
   variant?: 'normal' | 'information';
 };
 
+export type GroupType = {
+  _type: string;
+  content: Array<PortableTextProps['value']>;
+};
+
 export type PageType = {
   _type: string;
   title: string;

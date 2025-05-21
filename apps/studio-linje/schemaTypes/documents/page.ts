@@ -35,6 +35,7 @@ export const page = defineType({
         defineArrayMember({type: 'imageAndText'}),
         defineArrayMember({type: 'textBlocks'}),
         defineArrayMember({type: 'link'}),
+        defineArrayMember({type: 'group'}),
       ],
     }),
   ],

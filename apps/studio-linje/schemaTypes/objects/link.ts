@@ -41,9 +41,7 @@ export const LinkType = defineType({
   ],
   preview: {
     select: {
-      order: 'order',
-      text: 'text',
-      image: 'image',
+      linkText: 'linkText',
     },
     prepare({linkText}) {
       return {

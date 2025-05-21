@@ -5,8 +5,6 @@ import { NavigationCard } from '@entur/layout';
 import { Link } from '@entur/typography';
 import { LinkType } from '../types';
 
-import './TextBlocks.scss';
-
 type Props = {
   value: LinkType;
 };
@@ -15,7 +13,7 @@ type IconName = keyof typeof icons;
 
 export const LinkResolver = ({ value }: Props) => {
   const { linkText, linkAddress, linkType, iconName } = value;
-  const Icon = icons[iconName as IconName];
+  const Icon = iconName ? icons[iconName as IconName] : null;
 
   switch (linkType) {
     case 'navigationcard':
@@ -24,7 +22,7 @@ export const LinkResolver = ({ value }: Props) => {
           compact
           title={linkText ?? ''}
           href={linkAddress}
-          titleIcon={<Icon />}
+          titleIcon={Icon ? <Icon /> : undefined}
         ></NavigationCard>
       );
     default:

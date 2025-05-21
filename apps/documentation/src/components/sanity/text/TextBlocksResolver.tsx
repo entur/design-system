@@ -1,5 +1,5 @@
 import React from 'react';
-import { PortableTextBlock } from '@portabletext/react';
+import { graphql } from 'gatsby';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import { PortableText } from '../PortableText';
 import { TextBlocksType } from '../types';
@@ -11,7 +11,6 @@ type Props = {
 };
 
 export const TextBlocksResolver = ({ value }: Props) => {
-  console.log('Variant', value);
   const textBlocksCount = value._rawItems.length;
   const textBlocksVariant = value.variant;
   if (textBlocksCount === 0) {
@@ -37,3 +36,12 @@ const VariantWrapper = ({ children, variant }) => {
       return <>{children}</>;
   }
 };
+
+export const TextBlockFragment = graphql`
+  fragment TextBlockFragment on SanityTextBlocks {
+    _key
+    _type
+    variant
+    _rawItems
+  }
+`;

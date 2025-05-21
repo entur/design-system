@@ -4,7 +4,6 @@ import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { PageType } from '@components/sanity/types';
 
-// TODO: Denne er på ingen måte klar!
 export default function ContentTemplate({
   data,
 }: {
@@ -13,7 +12,6 @@ export default function ContentTemplate({
   const { page } = data;
   const { title, category, subcategory, content, description, npmPackage } =
     page;
-  console.log('customPage', data);
 
   return (
     <>
@@ -38,13 +36,9 @@ export const query = graphql`
       description
       content {
         ...ImageAndTextFragment
-        ... on SanityTextBlocks {
-          _key
-          _type
-          variant
-          _rawItems
-        }
+        ...TextBlockFragment
         ...LinkFragment
+        ...GroupFragment
       }
     }
   }

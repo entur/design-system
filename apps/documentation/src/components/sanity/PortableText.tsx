@@ -23,8 +23,8 @@ import {
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
 import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
+import { GroupResolver } from './layout/GroupResolver';
 
-// TODO: Dette er direkte kopiert fra Omtur og må tilpasses masse!
 const components: Partial<PortableTextReactComponents> = {
   block: {
     h2: ({ children, value }) => (
@@ -84,6 +84,7 @@ const components: Partial<PortableTextReactComponents> = {
     imageAndText: ImageAndTextResolver,
     textBlocks: TextBlocksResolver,
     link: LinkResolver,
+    group: GroupResolver,
   },
 
   unknownType: ({ value }) => {
@@ -92,5 +93,6 @@ const components: Partial<PortableTextReactComponents> = {
 };
 
 export const PortableText = ({ value }: PortableTextProps) => {
+  console.log('portable', value);
   return <PortableTextReact components={components} value={value} />;
 };
