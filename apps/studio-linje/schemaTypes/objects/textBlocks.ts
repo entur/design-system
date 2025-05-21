@@ -35,8 +35,14 @@ export const textBlocksType = defineType({
             {title: 'H3', value: 'h3'},
             {title: 'H4', value: 'h4'},
             {title: 'H5', value: 'h5'},
-            {title: 'Code', value: 'code'},
           ],
+          marks: {
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'},
+              {title: 'Code', value: 'code'},
+            ],
+          },
         },
       ],
     }),

@@ -31,7 +31,11 @@ export const page = defineType({
       name: 'content',
       title: 'Innhold',
       type: 'array',
-      of: [defineArrayMember({type: 'imageAndText'}), defineArrayMember({type: 'textBlocks'})],
+      of: [
+        defineArrayMember({type: 'imageAndText'}),
+        defineArrayMember({type: 'textBlocks'}),
+        defineArrayMember({type: 'link'}),
+      ],
     }),
   ],
   preview: {

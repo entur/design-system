@@ -5,8 +5,8 @@ import type {
   PortableTextProps,
   PortableTextReactComponents,
 } from '@portabletext/react';
-
 import {
+  CodeText,
   EmphasizedText,
   Heading2,
   Heading3,
@@ -19,8 +19,10 @@ import {
   StrongText,
   UnorderedList,
 } from '@entur/typography';
+
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
 import { TextBlocksResolver } from './text/TextBlocksResolver';
+import { LinkResolver } from './text/LinkResolver';
 
 // TODO: Dette er direkte kopiert fra Omtur og må tilpasses masse!
 const components: Partial<PortableTextReactComponents> = {
@@ -76,10 +78,12 @@ const components: Partial<PortableTextReactComponents> = {
         </Link>
       );
     },
+    code: ({ children }) => <CodeText>{children}</CodeText>,
   },
   types: {
     imageAndText: ImageAndTextResolver,
     textBlocks: TextBlocksResolver,
+    link: LinkResolver,
   },
 
   unknownType: ({ value }) => {

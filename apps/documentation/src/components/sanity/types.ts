@@ -17,6 +17,14 @@ export type ImageAndTextType = {
   addMargin: boolean;
 };
 
+export type LinkType = {
+  _type: string;
+  linkAddress?: string;
+  linkText?: string;
+  linkType?: 'text' | 'navigationcard' | 'button';
+  iconName?: string;
+};
+
 export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];

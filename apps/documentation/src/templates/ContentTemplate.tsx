@@ -44,6 +44,7 @@ export const query = graphql`
           variant
           _rawItems
         }
+        ...LinkFragment
       }
     }
   }
