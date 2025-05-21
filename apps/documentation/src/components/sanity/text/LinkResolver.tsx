@@ -1,19 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import * as icons from '@entur/icons';
 import { NavigationCard } from '@entur/layout';
 import { Link } from '@entur/typography';
+import { getIconByName } from 'src/utils/utils';
 import { LinkType } from '../types';
 
 type Props = {
   value: LinkType;
 };
 
-type IconName = keyof typeof icons;
-
 export const LinkResolver = ({ value }: Props) => {
   const { linkText, linkAddress, linkType, iconName } = value;
-  const Icon = iconName ? icons[iconName as IconName] : null;
+  const Icon = getIconByName(iconName);
 
   switch (linkType) {
     case 'navigationcard':

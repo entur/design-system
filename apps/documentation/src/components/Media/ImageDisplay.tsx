@@ -61,7 +61,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
       )}
 
       {downloadSources !== undefined && (
-        <Tooltip placement={'bottom'} content="Last ned …">
+        <Tooltip placement={'top'} content="Last ned …">
           <div
             className={classNames('image-display__download-container', {
               'image-display__download-container--show': alwaysShowDownload,

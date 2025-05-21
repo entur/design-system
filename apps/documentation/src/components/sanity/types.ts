@@ -15,6 +15,7 @@ export type ImageAndTextType = {
   text: PortableTextBlock;
   _rawText: any[];
   addMargin: boolean;
+  showDownload?: boolean;
 };
 
 export type LinkType = {

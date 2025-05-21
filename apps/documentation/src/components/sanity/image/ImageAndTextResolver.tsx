@@ -1,18 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { ImageAndTextType } from '../types';
+import classNames from 'classnames';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { PortableText } from '../PortableText';
+import { ImageAndTextType } from '../types';
 import './ImageAndText.scss';
-import classNames from 'classnames';
 
 type Props = {
   value: ImageAndTextType;
 };
 
 export const ImageAndTextResolver = ({ value }: Props) => {
-  const { image, _rawText, addMargin } = value;
-  console.log(value);
+  const { image, _rawText, addMargin, showDownload } = value;
 
   return (
     <div
@@ -25,6 +24,16 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         alt={''}
         preset="contain-full-width"
         className="image-and-text__image"
+        downloadSources={
+          showDownload
+            ? [
+                {
+                  src: image.asset.gatsbyImageData.images.fallback?.src,
+                  format: 'png',
+                },
+              ]
+            : undefined
+        }
       />
       <PortableText value={_rawText} />
     </div>
@@ -42,6 +51,7 @@ export const ImageAndTextFragment = graphql`
       }
     }
     addMargin
+    showDownload
     _rawText
   }
 `;

@@ -33,6 +33,12 @@ export const imageAndText = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'showDownload',
+      title: 'Vis mulighet for å laste ned bildet',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'text',
       title: 'Tekstelementer',
       icon: RowHeightMiddleIcon,
