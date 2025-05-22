@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.9](https://github.com/entur/design-system/compare/@entur/form@8.2.8...@entur/form@8.2.9) (2025-05-22)
+
+### Bug Fixes
+
+- **form:** add correct disabled colors on radio and checkbox ([4c4e5e4](https://github.com/entur/design-system/commit/4c4e5e4b46ff928dffdf381bc0aab8a6f09c1a54))
+
 ## [8.2.8](https://github.com/entur/design-system/compare/@entur/form@8.2.7...@entur/form@8.2.8) (2025-04-29)
 
 **Note:** Version bump only for package @entur/form

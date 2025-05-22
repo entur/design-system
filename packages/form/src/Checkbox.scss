@@ -35,15 +35,17 @@
             fill: var(--components-form-checkbox-standard-icon);
           }
         }
+
         &--disabled {
-          opacity: 0.5;
+          background-color: var(--components-form-checkbox-standard-icon-disabled);
 
           :is(path, rect) {
-            opacity: 0.5;
+            background-color: var(--components-form-checkbox-standard-icon-disabled);
           }
         }
-        .eds-contrast & {
-          background-color: var(--components-form-checkbox-contrast-fill-selected);
+
+        .eds-contrast {
+          color: var(--components-form-checkbox-contrast-fill-selected);
           path {
             stroke: var(--components-form-checkbox-contrast-icon);
           }
@@ -53,7 +55,8 @@
         }
       }
     }
-    &:hover {
+
+    &:hover(:not(:has(input:disabled))) {
       input + .eds-checkbox__icon {
         border-color: var(--components-form-checkbox-standard-border);
         background-color: var(--components-form-checkbox-standard-fill-hover);
@@ -65,7 +68,7 @@
       }
 
       input:checked + .eds-checkbox__icon,
-      input:indeterminate + .eds-checkbox__icon {
+      input:indeterminate + .eds-checkbox__icon:not(.eds-checkbox--disabled) {
         border-color: transparent;
         background-color: var(--components-form-checkbox-standard-fill-selectedhover);
 
@@ -74,7 +77,7 @@
         }
       }
     }
-    &:active {
+    &:active(:not(:has(input:disabled))) {
       input:checked + .eds-checkbox__icon,
       input:indeterminate + .eds-checkbox__icon {
         background-color: var(--components-form-checkbox-standard-fill-selected);
@@ -96,12 +99,20 @@
     }
   }
   &--disabled {
-    pointer-events: none;
+    cursor: not-allowed;
+
+    input {
+      pointer-events: none;
+    }
+
     .eds-checkbox__label {
       opacity: 0.5;
     }
     .eds-checkbox__icon {
-      opacity: 0.5;
+      border-color: var(--components-form-checkbox-standard-icon-disabled);
+      .eds-contrast & {
+        border-color: var(--components-form-checkbox-contrast-icon-disabled);
+      }
     }
   }
   &__icon {

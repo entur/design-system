@@ -2217,16 +2217,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Checkbox/Contrast/Fill-Hover",
@@ -2253,10 +2271,28 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Icon-Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Icon-ReadOnly",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Text",
             "value": "#ffffff",
             "var": "Text/Light",
             "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Text-Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
           },
           {
             "name": "Components/form/Checkbox/Standard/Border",
@@ -2265,16 +2301,34 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Border-Disabled",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Border-Negative",
             "value": "#d31b1b",
             "var": "Stroke/Negative",
             "rootAlias": "Coral/60"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Border-ReadOnly",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Checkbox/Standard/Fill-Hover",
@@ -2301,10 +2355,28 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Icon-Disabled",
+            "value": "#b6b8ba",
+            "var": "Shape/NeutralAlt",
+            "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Icon-ReadOnly",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Text",
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Text-Disabled",
+            "value": "#b6b8ba",
+            "var": "Text/NeutralAlt",
+            "rootAlias": "Grey/50"
           },
           {
             "name": "Components/form/Feedback Text/Information/Contrast/Icon-Fill",
@@ -2505,16 +2577,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Radio/Contrast/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Radio/Contrast/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Radio/Contrast/Fill-Hover",
@@ -2541,10 +2631,28 @@
             "rootAlias": "White/Alpha-100"
           },
           {
+            "name": "Components/form/Radio/Contrast/Icon-Disabled",
+            "value": "#949699",
+            "var": "Shape/NeutralAlt2",
+            "rootAlias": "Grey/60"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Icon-ReadOnly",
+            "value": "#ffffff",
+            "var": "Shape/Light",
+            "rootAlias": "White/Alpha-100"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Text",
             "value": "#ffffff",
             "var": "Text/Light",
             "rootAlias": "White/Alpha-100"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Text-Disabled",
+            "value": "#949699",
+            "var": "Text/NeutralAlt2",
+            "rootAlias": "Grey/60"
           },
           {
             "name": "Components/form/Radio/Standard/Border",
@@ -2553,16 +2661,34 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Radio/Standard/Border-Disabled",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
+          },
+          {
             "name": "Components/form/Radio/Standard/Border-Negative",
             "value": "#d31b1b",
             "var": "Stroke/Negative",
             "rootAlias": "Coral/60"
           },
           {
+            "name": "Components/form/Radio/Standard/Border-ReadOnly",
+            "value": "#e3e6e8",
+            "var": "Stroke/Neutral",
+            "rootAlias": "Grey/30"
+          },
+          {
             "name": "Components/form/Radio/Standard/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Radio/Standard/Fill-Hover",
@@ -2583,6 +2709,18 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Radio/Standard/Icon-Disabled",
+            "value": "#b6b8ba",
+            "var": "Shape/NeutralAlt",
+            "rootAlias": "Grey/50"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Icon-ReadOnly",
+            "value": "#181c56",
+            "var": "Shape/Accent",
+            "rootAlias": "Lavender/90"
+          },
+          {
             "name": "Components/form/Radio/Standard/SelectedHover",
             "value": "#393d79",
             "var": "Fill/Primary/Hover/Light",
@@ -2593,6 +2731,12 @@
             "value": "#181c56",
             "var": "Text/Accent",
             "rootAlias": "Lavender/90"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Text-Disabled",
+            "value": "#b6b8ba",
+            "var": "Text/NeutralAlt",
+            "rootAlias": "Grey/50"
           },
           {
             "name": "Components/form/Segmented Control/Contrast/Background",
@@ -8317,16 +8461,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Fill-Disabled",
+            "value": "#cccdd44d",
+            "var": "Fill/Background/Overlay/TransparentAlt2",
+            "rootAlias": "Transparent/Ebony-Alpha20"
           },
           {
             "name": "Components/form/Checkbox/Contrast/Fill-Hover",
@@ -8353,10 +8515,28 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Checkbox/Contrast/Icon-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Icon-ReadOnly",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/form/Checkbox/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/form/Checkbox/Contrast/Text-Disabled",
+            "value": "#6e6f73",
+            "var": "Text/Neutral",
+            "rootAlias": "Grey/70"
           },
           {
             "name": "Components/form/Checkbox/Standard/Border",
@@ -8365,16 +8545,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Checkbox/Standard/Fill-Hover",
@@ -8401,10 +8599,28 @@
             "rootAlias": "Lavender/90"
           },
           {
+            "name": "Components/form/Checkbox/Standard/Icon-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Icon-ReadOnly",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/form/Checkbox/Standard/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/form/Checkbox/Standard/Text-Disabled",
+            "value": "#6e6f73",
+            "var": "Text/Neutral",
+            "rootAlias": "Grey/70"
           },
           {
             "name": "Components/form/Feedback Text/Information/Contrast/Icon-Fill",
@@ -8605,16 +8821,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Radio/Contrast/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Radio/Contrast/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Fill-Disabled",
+            "value": "#cccdd44d",
+            "var": "Fill/Background/Overlay/TransparentAlt2",
+            "rootAlias": "Transparent/Ebony-Alpha20"
           },
           {
             "name": "Components/form/Radio/Contrast/Fill-Hover",
@@ -8641,10 +8875,28 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/form/Radio/Contrast/Icon-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Icon-ReadOnly",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/form/Radio/Contrast/Text",
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/form/Radio/Contrast/Text-Disabled",
+            "value": "#6e6f73",
+            "var": "Text/Neutral",
+            "rootAlias": "Grey/70"
           },
           {
             "name": "Components/form/Radio/Standard/Border",
@@ -8653,16 +8905,34 @@
             "rootAlias": "Lavender/40"
           },
           {
+            "name": "Components/form/Radio/Standard/Border-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Standard/Border-Negative",
             "value": "#ff9494",
             "var": "Stroke/NegativeAlt",
             "rootAlias": "Coral/30"
           },
           {
+            "name": "Components/form/Radio/Standard/Border-ReadOnly",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
             "name": "Components/form/Radio/Standard/Fill-Default",
             "value": "#ffffff00",
             "var": "Fill/Background/Standard/Colorless",
             "rootAlias": "White/Alpha-0"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Fill-Disabled",
+            "value": "#cfd2d426",
+            "var": "Fill/Disabled/Transparent",
+            "rootAlias": "Transparent/Neutral-Alpha15"
           },
           {
             "name": "Components/form/Radio/Standard/Fill-Hover",
@@ -8683,6 +8953,18 @@
             "rootAlias": "Ebony/10"
           },
           {
+            "name": "Components/form/Radio/Standard/Icon-Disabled",
+            "value": "#6e6f73",
+            "var": "Shape/Neutral",
+            "rootAlias": "Grey/70"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Icon-ReadOnly",
+            "value": "#e5e5e9",
+            "var": "Shape/LightAlt",
+            "rootAlias": "Ebony/10"
+          },
+          {
             "name": "Components/form/Radio/Standard/SelectedHover",
             "value": "#c7cdeb",
             "var": "Fill/Primary/Hover/Contrast",
@@ -8693,6 +8975,12 @@
             "value": "#e5e5e9",
             "var": "Text/LightAlt",
             "rootAlias": "Ebony/10"
+          },
+          {
+            "name": "Components/form/Radio/Standard/Text-Disabled",
+            "value": "#6e6f73",
+            "var": "Text/Neutral",
+            "rootAlias": "Grey/70"
           },
           {
             "name": "Components/form/Segmented Control/Contrast/Background",
