@@ -10,7 +10,6 @@ import { fuzzy } from 'fast-fuzzy';
 import {
   isActive,
   MenuItem,
-  hasSameParentCategory as hasSameCategory,
   menuItemComparator,
   sortSubCategoriesForCategory,
   removeLeadingAndTrailingSlash,
@@ -42,7 +41,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   const currentPathSegments = removeLeadingAndTrailingSlash(
     currentLocation.pathname,
   )?.split('/');
-  const currentCategory = currentPathSegments?.[0] ?? '';
+  const currentCategory = normalizeString(currentPathSegments?.[0]) ?? '';
 
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
@@ -51,8 +50,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     menuItems
       .filter(
         item =>
-          (searchText || normalizeString(item.category) === currentCategory) &&
-          !item.hide,
+          searchText || normalizeString(item.category) === currentCategory,
       )
       .forEach(item => {
         const { subcategory } = item;

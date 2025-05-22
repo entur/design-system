@@ -75,7 +75,6 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   const pages = (result.data.allSanityPage || {}).nodes || [];
 
   pages.forEach(page => {
-    console.log('page', page);
     const id = page.id;
     const path = getSanitizedPath({
       title: page.title,
@@ -97,10 +96,13 @@ function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
     if (!text) return undefined;
     return text
       .toLowerCase()
-      .replace('æ', 'ae')
-      .replace('ø', 'o')
-      .replace('å', 'a')
-      .replace(/ +/g, '-');
+      .replaceAll('æ', 'ae')
+      .replaceAll('ø', 'o')
+      .replaceAll('å', 'a')
+      .replaceAll('&', 'og')
+      .replace(/\?$/, '')
+      .replace(/ +/g, '-')
+      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
   }
 
   const sanitizedCategory = sanitizeText(category);

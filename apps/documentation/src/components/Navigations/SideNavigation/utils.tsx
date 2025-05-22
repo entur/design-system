@@ -4,7 +4,7 @@ export type MenuItem = {
   category?: string;
   subcategory?: string;
   order?: number;
-  hide?: boolean;
+  hideFromMenu?: boolean;
   // not yet implemented
   categoryIndex?: boolean;
 };
@@ -124,14 +124,19 @@ export function getSanitizedPath({
     if (!text) return undefined;
     return text
       .toLowerCase()
-      .replace('æ', 'ae')
-      .replace('ø', 'o')
-      .replace('å', 'a')
-      .replace(/ +/g, '-');
+      .replaceAll('æ', 'ae')
+      .replaceAll('ø', 'o')
+      .replaceAll('å', 'a')
+      .replaceAll('&', 'og')
+      .replace(/\?$/, '')
+      .replace(/ +/g, '-')
+      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
   }
 
   const sanitizedCategory = sanitizeText(category);
-  if (categoryIndex) return `/${sanitizedCategory}`;
+  if (categoryIndex) {
+    return `/${sanitizedCategory}`;
+  }
 
   const sanitizedTitle = sanitizeText(title);
   if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;

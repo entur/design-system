@@ -255,7 +255,7 @@ const recommendedPages: StoreResult[] = [
   },
   {
     id: 'use-tokens',
-    path: '/tokens/fargetokens/generelt#bruk-fargetokens',
+    path: '/tokens/fargetokens/generelt-om-fargetokens#bruk-fargetokens',
     title: 'Bruke fargetokens',
     description: 'Les om fargetokens og hvordan du kan bruke dem.',
     npmPackage: 'tokens',

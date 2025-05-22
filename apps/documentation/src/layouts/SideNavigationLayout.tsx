@@ -33,6 +33,7 @@ const SideNavigationLayout = ({
             hide
             npmPackage
             tags
+            categoryIndex
           }
           id
         }
@@ -79,6 +80,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         tags: page.frontmatter.tags,
         hideFromMenu: page.frontmatter.hide,
         order: page.frontmatter.order,
+        categoryIndex: page.frontmatter.categoryIndex,
       } as MenuItem;
     });
   const sanityPages = sanityPageData.map(page => {
@@ -90,6 +92,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       tags: page?.tags ?? null,
       hideFromMenu: page.hide ?? null,
       order: page.order ?? null,
+      categoryIndex: page.categoryIndex ?? null,
     } as MenuItem;
   });
   return [...mdxPages, ...sanityPages];
