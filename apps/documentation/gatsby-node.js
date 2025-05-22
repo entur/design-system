@@ -94,9 +94,12 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
 
 function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
   function sanitizeText(text) {
+    if (!text) return undefined;
     return text
       .toLowerCase()
-      .replace(/[^æøå\w -]+/g, '')
+      .replace('æ', 'ae')
+      .replace('ø', 'o')
+      .replace('å', 'a')
       .replace(/ +/g, '-');
   }
 

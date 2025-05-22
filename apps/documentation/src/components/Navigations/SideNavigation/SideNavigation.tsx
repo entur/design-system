@@ -1,20 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
-import { useLocation } from '@reach/router';
 import classNames from 'classnames';
 import {
   SideNavigation as EnturSideNavigation,
   SideNavigationItem,
   SideNavigationGroup,
 } from '@entur/menu';
+import { fuzzy } from 'fast-fuzzy';
 import {
-  removeTrailingSlash,
   isActive,
   MenuItem,
-  hasSameParentCategory,
-  compare,
-  sortComponentMenus,
-  sorters,
+  hasSameParentCategory as hasSameCategory,
+  menuItemComparator,
+  sortSubCategoriesForCategory,
+  removeLeadingAndTrailingSlash,
+  normalizeString,
+  getSanitizedPath,
 } from './utils';
 
 import SearchBar from './SearchBar';
@@ -26,6 +27,7 @@ type SideNavigationProps = {
   menuItems: MenuItem[];
   className?: string;
   onClickMenuItem?: () => void;
+  currentLocation: Location;
 };
 
 const SideNavigation: React.FC<SideNavigationProps> = ({
@@ -33,16 +35,15 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   menuItems,
   className,
   onClickMenuItem,
+  currentLocation,
 }) => {
-  const location = useLocation();
   const [searchText, setSearchText] = React.useState('');
-  const currentPathSegments = removeTrailingSlash(location.pathname)?.split(
-    '/',
-  );
-  const parentPath =
-    currentPathSegments !== undefined && currentPathSegments.length > 1
-      ? currentPathSegments[1]
-      : '';
+
+  const currentPathSegments = removeLeadingAndTrailingSlash(
+    currentLocation.pathname,
+  )?.split('/');
+  const currentCategory = currentPathSegments?.[0] ?? '';
+
   // Filter, group, and sort menu items
   const processedMenuItems = React.useMemo(() => {
     const grouped: Record<string, MenuItem[]> = {};
@@ -50,41 +51,53 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     menuItems
       .filter(
         item =>
-          hasSameParentCategory(item, parentPath) && !item.frontmatter.hide,
+          (searchText || normalizeString(item.category) === currentCategory) &&
+          !item.hide,
       )
       .forEach(item => {
-        const { menu } = item.frontmatter;
-        if (
-          !searchText ||
-          new RegExp(searchText, 'i').test(item.frontmatter.title)
-        ) {
-          if (menu) {
-            if (!grouped[menu]) grouped[menu] = [];
-            grouped[menu].push(item);
+        const { subcategory } = item;
+        if (!searchText || fuzzy(searchText, item.title) > 0.5) {
+          if (subcategory) {
+            if (!grouped[subcategory]) grouped[subcategory] = [];
+            grouped[subcategory].push(item);
           } else {
             ungrouped.push(item);
           }
         }
       });
-    Object.values(grouped).forEach(group => group.sort(compare));
-    ungrouped.sort(compare);
 
-    return { grouped, ungrouped };
-  }, [menuItems, parentPath, searchText]);
+    Object.values(grouped).forEach(group => group.sort(menuItemComparator));
+    ungrouped.sort(menuItemComparator);
 
-  const { grouped, ungrouped } = processedMenuItems;
+    const sortedGrouped = Object.entries(grouped).sort(
+      (subcategoryA, subcategoryB) => {
+        return sortSubCategoriesForCategory(
+          subcategoryA[0],
+          subcategoryB[0],
+          currentCategory,
+        );
+      },
+    );
 
-  // Sort the menu names with sorters
-  const sortedMenuNames = React.useMemo(() => {
-    const sortOrder = sorters[parentPath] || {}; // Default to empty object if undefined
-    return Object.keys(grouped).sort((a, b) => {
-      return sortComponentMenus(
-        { frontmatter: { title: a } } as MenuItem,
-        { frontmatter: { title: b } } as MenuItem,
-        sortOrder,
-      );
-    });
-  }, [grouped, parentPath]);
+    return { sortedGrouped, ungrouped };
+  }, [menuItems, currentCategory, searchText]);
+
+  const MenuItem = (props: { item: MenuItem }) => {
+    const { item } = props;
+    return (
+      <SideNavigationItem
+        key={item.id}
+        as={Link}
+        to={getSanitizedPath(item) || ''}
+        active={isActive(getSanitizedPath(item) || '', currentLocation)}
+        onClick={onClickMenuItem}
+      >
+        {item.title}
+      </SideNavigationItem>
+    );
+  };
+
+  const { sortedGrouped, ungrouped } = processedMenuItems;
 
   return (
     <div className={classNames('side-navigation-wrapper', className)}>
@@ -94,36 +107,20 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         onSearchTextChange={setSearchText}
       />
       <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
-        {sortedMenuNames.map(menuName => (
+        {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <SideNavigationGroup
-            key={menuName}
+            key={subcategory}
             defaultOpen={true}
-            title={menuName}
+            title={subcategory}
             className="side-navigation__group"
           >
-            {grouped[menuName].map(item => (
-              <SideNavigationItem
-                key={item.id}
-                as={Link}
-                to={item.frontmatter.route || ''}
-                active={isActive(item.frontmatter.route || '', location)}
-                onClick={onClickMenuItem}
-              >
-                {item.frontmatter.title}
-              </SideNavigationItem>
+            {subcategoryMenuItems.map(item => (
+              <MenuItem item={item} />
             ))}
           </SideNavigationGroup>
         ))}
         {ungrouped.map(item => (
-          <SideNavigationItem
-            key={item.id}
-            as={Link}
-            to={item.frontmatter.route || ''}
-            active={isActive(item.frontmatter.route || '', location)}
-            onClick={onClickMenuItem}
-          >
-            {item.frontmatter.title}
-          </SideNavigationItem>
+          <MenuItem item={item} />
         ))}
       </EnturSideNavigation>
     </div>
