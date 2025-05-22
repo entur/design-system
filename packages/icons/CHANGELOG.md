@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.12.0](https://github.com/entur/design-system/compare/@entur/icons@7.11.1...@entur/icons@7.12.0) (2025-05-22)
+
+### Features
+
+- **icons:** add new cookie icons ([3a4ee68](https://github.com/entur/design-system/commit/3a4ee6831ff4d60b1e56250df28577afbfaf93c7))
+- **icons:** add route icons ([8cecb29](https://github.com/entur/design-system/commit/8cecb293e7989991d1c802c8aca4a6aecb16ae28))
+
 ## [7.11.1](https://github.com/entur/design-system/compare/@entur/icons@7.11.0...@entur/icons@7.11.1) (2025-04-29)
 
 ### Bug Fixes

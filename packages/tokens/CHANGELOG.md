@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.19.1](https://github.com/entur/design-system/compare/@entur/tokens@3.19.0...@entur/tokens@3.19.1) (2025-05-22)
+
+### Bug Fixes
+
+- **form:** add correct disabled colors on radio and checkbox ([4c4e5e4](https://github.com/entur/design-system/commit/4c4e5e4b46ff928dffdf381bc0aab8a6f09c1a54))
+
 # [3.19.0](https://github.com/entur/design-system/compare/@entur/tokens@3.18.0...@entur/tokens@3.19.0) (2025-03-24)
 
 ### Features
