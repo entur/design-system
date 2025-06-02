@@ -169,6 +169,13 @@ export const ClearableButton = ({
             e.stopPropagation();
             onClear();
           }}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              onClear();
+            }
+          }}
           aria-label={labelClearSelectedItems}
         >
           <CloseSmallIcon aria-hidden="true" />
