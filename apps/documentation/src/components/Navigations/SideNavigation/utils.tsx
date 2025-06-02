@@ -5,7 +5,6 @@ export type MenuItem = {
   subcategory?: string;
   order?: number;
   hideFromMenu?: boolean;
-  // not yet implemented
   categoryIndex?: boolean;
 };
 
@@ -119,7 +118,7 @@ export function getSanitizedPath({
   subcategory,
   title,
   categoryIndex,
-}: MenuItem) {
+}: Pick<MenuItem, 'category' | 'subcategory' | 'title' | 'categoryIndex'>) {
   function sanitizeText(text?: string) {
     if (!text) return undefined;
     return text

@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { PageType } from '@components/sanity/types';
+import { SEO } from '@components/seo/SEO';
+import { getSanitizedPath } from '@components/Navigations/SideNavigation/utils';
 
 export default function ContentTemplate({
   data,
@@ -15,6 +17,11 @@ export default function ContentTemplate({
 
   return (
     <>
+      <SEO
+        title={title}
+        description={description}
+        pathname={getSanitizedPath({ title, category, subcategory })}
+      />
       <BasePageHeader
         category={category}
         subcategory={subcategory}
