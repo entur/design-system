@@ -49,8 +49,6 @@ export const countries = [
   { label: 'Norge', value: 'norge', icons: [NorwayIcon] },
   { label: 'Sápmi', value: 'sapmi', icons: [SamiIcon] },
   { label: 'Sverige', value: 'sverige', icons: [SwedenIcon] },
-  { label: 'Sápmi', value: 'sapmi', icons: [SamiIcon], itemKey: 'sapmi2' },
-  { label: 'Tom array', value: 'tom', icons: [{}, {}] },
 ];
 
 export const cities = [
