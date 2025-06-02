@@ -174,4 +174,17 @@ Metodene er hentet og tilpasset på fra ulike kilder innen digital produktutvikl
   />
   </ComponentPreview>
 
+  <ComponentPreview
+    title="Retro"
+    category="Maler"
+    description="En fast møte der teamet reflekterer over det som har fungert bra og hva som kan forbedres."
+    to="/ressurser/retro"
+  >
+  <ImageDisplay
+    imgSource={props.data.imagefiles.images.find(image => image.name === "retroIndex").childImageSharp.gatsbyImageData}
+    alt=""
+    preset="full-width-image"
+  />
+  </ComponentPreview>
+
 </GridContainer>

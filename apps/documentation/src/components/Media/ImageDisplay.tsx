@@ -72,13 +72,13 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
               position="left"
             >
               {downloadSources.map(
-                downloadSrc =>
+                (downloadSrc, index) =>
                   downloadSrc.src !== undefined && (
                     <OverflowMenuItem
                       as="a"
                       href={downloadSrc.src}
                       download
-                      key={downloadSrc.src}
+                      key={downloadSrc.src + index}
                       onSelect={() => undefined}
                     >
                       {downloadSrc.label ??

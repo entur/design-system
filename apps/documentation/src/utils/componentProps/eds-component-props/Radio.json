@@ -61,6 +61,27 @@
         "type": {
           "name": "string | (string & readonly string[])"
         }
+      },
+      "disabled": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "Om radiobutton er disabled eller ikke",
+        "name": "disabled",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Radio.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
       }
     }
   }
