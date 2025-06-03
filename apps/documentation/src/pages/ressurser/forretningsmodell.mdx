@@ -1,0 +1,131 @@
+---
+title: Forretningsmodell
+description: En metode for å sette opp en forretningsmodell for hva teamet/området/bedriften din skal gjøre i en matrise.
+route: /ressurser/forretningsmodell
+parent: ressurser
+menu: Workshopmaler
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+import figma from './figma.svg'
+import mural from './mural.svg'
+import { DetailsList }  from '@components/Pages/DetailsList';
+import { GuidelinesBlock }  from '@components/Pages/GuidelinesBlock';
+import { TimeglassIcon, UsersIcon, ClockIcon } from '@entur/icons';
+import { NavigationCard } from '@entur/layout';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query wsQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       publicURL
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+    svgFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+  pdfFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "pdf"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+Metoden gir deg oversikt uten at du trenger å lese gjennom en haug med papirer og detaljerte planer. De ni ulike elementer i matrisen  gir deg en oversikt over hvordan du kan produsere og levere et produkt til et bestemt kundesegment. I tillegg gir modellen et grunnlag for å vurdere om konseptet ditt er levedyktig, om det skaper nok inntekter. 
+
+<DetailsList
+  items={[
+    { icon: <TimeglassIcon />, label: 'Tidsbruk', description: '90-120 min' },
+    { icon: <UsersIcon />, label: 'Deltakere', description: '5-10' },
+    { icon: <ClockIcon />, label: 'Når i prosess', description: 'Før en setter i gang et utviklingsarbeid' },
+  ]}
+/>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "Business Model").childImageSharp.gatsbyImageData}
+  downloadSources={[
+    { src: props.data.files.images.find(image => image.name === "Business Model").publicURL, format: "png", label: "Last ned forretningsmodell i png" },
+    { src: props.data.svgFiles.images.find(image => image.name === "Business Model").publicURL, format: "svg", label: "Last ned forretningsmodell i svg" },
+    { src: props.data.pdfFiles.images.find(image => image.name === "Business Model").publicURL, format: "pdf", label: "Lasned forretningsmodell i pdf" }
+  ]}
+  name={props.data.files.images.find(image => image.name === "Business Model").name}
+  preset="centered-image"
+  alt=""
+  alwaysShowDownload
+  noBorderRadius
+/>
+
+<GridContainer spacing="medium" style={{marginTop: '2rem'}}>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Figma" titleIcon={<img src={figma} alt="" />} href="https://www.figma.com/design/ChQfEl7lEhiyaLJSGfBuoG/Design-verkt%C3%B8ykasse?node-id=70-2048&t=BRR0BnoSV8wCQ8Db-1" compact></NavigationCard>
+</GridItem>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Mural" titleIcon={<img src={mural} alt="" />} href="https://app.mural.co/t/entur7578/m/entur7578/1675077294727/6bf0dbfe8367cc1c8d624c07031ad5261a8735f9" compact></NavigationCard>
+</GridItem>
+</GridContainer>
+
+
+## Forberedelser
+
+<Paragraph margin="none">Digital:</Paragraph>
+- Last ned eller koble til malen, og importer den i verktøy som MURAL eller FigJam.
+- Sørg for at alle har tilgang til verktøyet før møtet.
+
+<Paragraph margin="none">Fysisk:</Paragraph>
+- Print ut malen i A1-format, eller tegn den på tavle.
+- Post-it-lapper i ulike farger, tusjer og penner.
+- Klokke eller timer for å holde styr på tiden.
+
+<GuidelinesBlock>
+Modellen består av ni bokser med ting som en bør vurdere før en setter i gang med et utviklingsarbeid
+
+<Heading3 as="h4">Steg 1: Definer kjerneelementene</Heading3>
+Begynn med å fylle ut kjerneelementene for å sette retning på modellen:
+- **Kundesegmenter:** Hvem skaper vi verdi for? Hvem er de viktigste kundene eller brukerne våre?
+- **Verdiløfte:** Hvilket problem løser vi? Hvilken verdi tilbyr vi som gjør oss relevante?
+
+<Heading3 as="h4">Steg 2: Fyll ut resten av modellen</Heading3>
+<Paragraph margin="none">Bygg videre rundt kjerneelementene:</Paragraph>
+- **Kanaler:** Hvordan når vi kundene?
+- **Kunderelasjoner:** Hvordan bygger vi lojalitet?
+- **Inntektsstrømmer:** Hvordan tjener vi penger?
+- **Nøkkelressurser:** Hva trenger vi for å levere?
+- **Kjerneaktiviteter:** Hva må vi gjøre best?
+- **Partnere:** Hvem samarbeider vi med?
+- **Kostnader:** Hva koster mest?
+
+<Heading3 as="h4">Steg 3: Analyser sammenhengene</Heading3>
+Gå gjennom canvaset sammen og se hvordan de ulike byggeklossene henger sammen. Man bør spesielt undersøke:
+
+- **Sammenheng:** Støtter kjerneaktivitetene faktisk verdiløftet? Passer kanalene med kundesegmentene? Er inntektsstrømmene realistiske sammenlignet med kostnadsbildet?
+- **Mulige svakheter og risikoer:** Er det deler av modellen som bygger på usikre antakelser som bør testes? Finnes det risikoer, for eksempel avhengighet av én enkelt partner, kunde eller inntektskilde?
+
+Denne analysen bør være en åpen diskusjon hvor alle får bidra med refleksjoner. Det er ofte her de viktigste forbedringsmulighetene dukker opp.
+
+
+<Heading3 as="h4">Steg 4: Oppsummer og definer neste steg</Heading3>
+Til slutt bør dere oppsummere arbeidet ved å trekke frem hvilke deler av modellen som føles sterke, og hvilke som krever mer arbeid eller testing.
+
+- **Oppsummer styrker:** Hvilke deler av forretningsmodellen virker solide og godt forankret?
+- **Identifiser usikkerhet:** Hvilke områder trenger videre utforskning, testing eller avklaring?
+- **Avtal neste steg:** Bestem konkrete tiltak for veien videre. Eksempler kan være å teste verdiløftet mot faktiske kunder, utvikle en MVP, gjennomføre en partneranalyse eller analysere kostnadsstrukturen.
+
+</GuidelinesBlock>
