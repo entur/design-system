@@ -64,7 +64,7 @@ const MobileTopNavigation: React.FC<MobileTopNavigationProps> = ({
         <MobileTopNavItem to="/komponenter">Komponenter</MobileTopNavItem>
         <MobileTopNavItem to="/tokens">Tokens</MobileTopNavItem>
         <MobileTopNavItem to="/monster">Mønster</MobileTopNavItem>
-        {/* <MobileTopNavItem to="/ressurser">Ressurser</MobileTopNavItem> */}
+        <MobileTopNavItem to="/ressurser">Ressurser</MobileTopNavItem>
         <MobileTopNavItem to="/universell-utforming">
           Universell utforming
         </MobileTopNavItem>

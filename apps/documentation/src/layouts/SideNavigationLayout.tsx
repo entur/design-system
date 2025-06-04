@@ -25,7 +25,6 @@ const SideNavigationLayout = () => {
             menu
             order
             removeToc
-            hide
           }
           id
         }

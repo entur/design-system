@@ -1,0 +1,31 @@
+@use "sass:map";
+@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '../../styles/variables' as variables;
+
+.guidelines-block {
+  &__container {
+    margin-top: 3rem;
+    border-radius: 4px;
+    background: var(--basecolors-frame-tint);
+    padding: 2rem;
+
+    .eds-h2 {
+      margin-top: 0;
+    }
+    .eds-h3 {
+      margin-top: tokens.$space-extra-large2;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+
+    @media screen and (max-width: map.get(variables.$breakpoints, 'mobile')) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+  }
+}

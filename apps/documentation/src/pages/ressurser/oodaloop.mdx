@@ -1,0 +1,132 @@
+---
+title: OODA-loop
+description: En modell for å ta raske og informerte beslutninger i komplekse situasjoner.
+route: /ressurser/oodaloop
+parent: ressurser
+menu: Workshopmaler
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+import figma from './figma.svg'
+import mural from './mural.svg'
+import { DetailsList }  from '@components/Pages/DetailsList';
+import { GuidelinesBlock }  from '@components/Pages/GuidelinesBlock';
+import { TimeglassIcon, UsersIcon, ClockIcon } from '@entur/icons';
+import { NavigationCard } from '@entur/layout';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query wsQuery {
+  files: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       publicURL
+       childImageSharp {
+         gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
+  }
+    svgFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+  pdfFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "pdf"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+OODA-loop er en beslutningsmodell utviklet for å hjelpe enkeltpersoner og organisasjoner med å handle raskt og tilpasse seg i skiftende omgivelser. Modellen ble opprinnelig utviklet av den amerikanske offiseren John Boyd for militær strategi, men den er like relevant i produktutvikling, krisehåndtering og innovasjonsarbeid.
+
+Modellen består av fire faser – Observere, Orientere, Beslutte og Handle – og brukes som et kontinuerlig verktøy for å forstå situasjoner, ta valg og sette handling ut i livet.
+
+<DetailsList
+  items={[
+    { icon: <TimeglassIcon />, label: 'Tidsbruk', description: '60 – 120 min' },
+    { icon: <UsersIcon />, label: 'Deltakere', description: '3 - 8' },
+    { icon: <ClockIcon />, label: 'Når i prosess', description: 'Underveis eller rett etter intervjuet' },
+  ]}
+/>
+
+<ImageDisplay
+  imgSource={props.data.files.images.find(image => image.name === "OODA Loop").childImageSharp.gatsbyImageData}
+  downloadSources={[
+    { src: props.data.files.images.find(image => image.name === "OODA Loop").publicURL, format: "png", label: "Last ned OODA Loop i png" },
+    { src: props.data.svgFiles.images.find(image => image.name === "OODA Loop").publicURL, format: "svg", label: "Last ned OODA Loop i svg" },
+    { src: props.data.pdfFiles.images.find(image => image.name === "OODA Loop").publicURL, format: "pdf", label: "Last neOODA Loop i pdf" }
+  ]}
+  name={props.data.files.images.find(image => image.name === "OODA Loop").name}
+  preset="centered-image"
+  alt=""
+  alwaysShowDownload
+  noBorderRadius
+/>
+
+<GridContainer spacing="medium" style={{marginTop: '2rem'}}>
+<GridItem small={12} medium={6}>
+<NavigationCard title="Figma" titleIcon={<img src={figma} alt="" />} href="https://www.figma.com/design/ChQfEl7lEhiyaLJSGfBuoG/Design-verkt%C3%B8ykasse?node-id=302-2096&t=IGu4bQRd0yiJ8sEp-1" compact></NavigationCard>
+</GridItem>
+</GridContainer>
+
+## Forberedelser
+
+<Paragraph margin="none">Digitalt:</Paragraph>
+- Last ned eller koble til malen, og importer den i verktøy som MURAL eller FigJam.
+- Sørg for at alle har tilgang til verktøyet før møtet.
+
+<Paragraph margin="none">Fysisk:</Paragraph>
+- Print ut malen i A1-format, eller tegn den på tavle.
+- Post-it-lapper i ulike farger, tusjer og penner.
+- Klokke eller timer for å holde styr på tiden.
+
+<GuidelinesBlock>
+<Heading3 as="h4">Steg 1: Observer</Heading3>
+Start med å samle inn informasjon om situasjonen du står i. Se etter både interne og eksterne faktorer som påvirker problemet. Det kan være data, hendelser, innsikt eller observasjoner.
+
+<Paragraph margin="none">Spørsmål:</Paragraph>
+- Hva vet vi akkurat nå?
+- Hvor lenge de har brukt produktet/tjenesten?
+- Hva skjer rundt oss?
+
+<Heading3 as="h4">Steg 2: Orienter</Heading3>
+Gjør en vurdering av det du har observert. Koble ny informasjon til tidligere erfaringer, antakelser, verdier og kultur.
+<Paragraph margin="none">Spørsmål:</Paragraph>
+- Hva betyr dette?
+- Hvordan henger ting sammen?
+- Hva påvirker hva?
+
+Tips: Se etter mønstre, trender og koblinger.
+
+<Heading3 as="h4">Steg 3: Beslutt</Heading3>
+Velg en retning basert på det du har forstått. Det kan være en konkret beslutning eller en hypotese du vil teste.
+
+<Paragraph margin="none">Spørsmål:</Paragraph>
+- Hva skal vi gjøre?
+- Hvilken retning skal vi gå i?
+
+<Heading3 as="h4">Steg 4: Handle </Heading3>
+Gjennomfør tiltaket. Iverksett aktiviteter og følg med på hva som skjer.
+
+<Paragraph margin="none">Spørsmål:</Paragraph>
+- Hva gjør vi nå?
+- Hvordan vet vi om det virker?
+
+Tips: Handling gir ny innsikt – som starter en ny observasjon.
+
+<Heading3 as="h4">Steg 5: Start på nytt</Heading3>
+OODA er en loop, ikke en lineær prosess. Etter hvert tiltak må du observere på nytt, justere forståelsen og vurdere nye handlinger. Ved å jobbe kontinuerlig i syklusen tilpasser du deg raskere og mer presist.
+
+</GuidelinesBlock>
