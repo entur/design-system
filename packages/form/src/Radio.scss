@@ -41,6 +41,9 @@
     &:has(input:disabled) {
       cursor: not-allowed;
     }
+    &:has(.eds-form-component--radio__radio--readonly) {
+      cursor: default;
+    }
 
     .eds-form-component--radio__radio {
       position: relative;
