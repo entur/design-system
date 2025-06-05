@@ -98,6 +98,27 @@
           "name": "boolean | undefined"
         }
       },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Sett til true om skjema-elementet er i read-only modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          },
+          {
+            "fileName": "design-system/node_modules/@types/react/index.d.ts",
+            "name": "InputHTMLAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
+      },
       "style": {
         "defaultValue": null,
         "description": "Ekstra styling til komponenten",

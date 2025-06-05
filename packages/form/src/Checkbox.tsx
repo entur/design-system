@@ -18,6 +18,10 @@ export type CheckboxProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Sett til true om skjema-elementet er i read-only modus
+   * @default false
+   */
+  readOnly?: boolean;
   /**Ekstra styling til komponenten */
   style?: CSSProperties;
   /** Reduserer klikkflaten for Checkbox'en
@@ -34,6 +38,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       children,
       style,
       disabled = false,
+      readOnly = false,
       reduceClickArea,
       ...rest
     },
@@ -54,6 +59,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       <label
         className={cx('eds-checkbox__container', className, {
           'eds-checkbox--disabled': disabled,
+          'eds-checkbox--readonly': readOnly,
           'eds-checkbox__container--reduced-click-area': reduceClickArea,
         })}
         style={style}
@@ -63,11 +69,13 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ref={mergeRefs(ref, inputRef)}
           checked={isControlled ? checked === true : undefined}
           disabled={disabled}
+          readOnly={readOnly}
           {...rest}
         />
         <span
           className={cx('eds-checkbox__icon', {
             'eds-checkbox__icon--disabled': disabled,
+            'eds-checkbox__icon--readonly': readOnly,
             'eds-checkbox__icon--reduced-click-area': reduceClickArea,
           })}
         >

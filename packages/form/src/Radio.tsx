@@ -22,10 +22,17 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     { className, children, value, disabled, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const {
+      name,
+      value: selectedValue,
+      onChange,
+      readOnly,
+    } = useRadioGroupContext();
+
     const classList = cx(className, 'eds-form-component--radio__radio', {
       'eds-form-component--radio__radio--disabled': disabled,
+      'eds-form-component--radio__radio--readonly': readOnly,
     });
-    const { name, value: selectedValue, onChange } = useRadioGroupContext();
 
     return (
       <label className="eds-form-component--radio__container">
@@ -34,9 +41,29 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           name={rest.name ?? name}
           ref={ref}
           value={value}
-          checked={rest.checked ?? selectedValue === value}
-          onChange={rest.onChange ?? onChange}
+          checked={
+            readOnly
+              ? selectedValue === value
+              : rest.checked ?? selectedValue === value
+          }
+          onChange={e => {
+            if (readOnly) {
+              e.preventDefault();
+              return;
+            }
+            (rest.onChange ?? onChange)?.(e);
+          }}
+          onClick={e => {
+            if (readOnly) {
+              e.preventDefault();
+            }
+          }}
+          tabIndex={rest.tabIndex}
+          role="radio"
           disabled={disabled}
+          aria-label={
+            readOnly ? ` ${children?.toString()}. Kan ikke endres` : undefined
+          }
           {...rest}
         />
         <span className={classList}>
