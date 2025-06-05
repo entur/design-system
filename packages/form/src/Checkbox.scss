@@ -152,19 +152,6 @@
       }
     }
   }
-  .eds-checkbox__icon--no-animation {
-    .eds-checkbox-icon {
-      path {
-        animation: none !important;
-        transition: none !important;
-        stroke-dasharray: none;
-        stroke-dashoffset: 0;
-      }
-      rect {
-        transition: none !important;
-      }
-    }
-  }
   &__icon {
     box-sizing: border-box;
     display: inline-flex;
@@ -201,8 +188,8 @@
         path {
           animation: none !important;
           transition: none !important;
-          stroke-dasharray: 48; // behold verdien
-          stroke-dashoffset: 0; // vis hele stien med en gang
+          stroke-dasharray: 48;
+          stroke-dashoffset: 0;
         }
         rect {
           transition: none !important;

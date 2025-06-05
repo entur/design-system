@@ -74,13 +74,15 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           ref={mergeRefs(ref, inputRef)}
           checked={isControlled ? checked === true : undefined}
           disabled={disabled}
-          readOnly={readOnly}
           onKeyDown={e => {
             if (readOnly && (e.key === ' ' || e.key === 'Enter')) {
               e.preventDefault();
               e.stopPropagation();
             }
           }}
+          aria-label={
+            readOnly ? ` ${children?.toString()}. Kan ikke endres` : undefined
+          }
           {...rest}
         />
         <span
