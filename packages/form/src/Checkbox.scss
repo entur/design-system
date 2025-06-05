@@ -138,11 +138,14 @@
   }
   &--readonly {
     cursor: default;
+    pointer-events: none;
 
     input {
       pointer-events: none;
     }
-
+    .eds-checkbox__container {
+      pointer-events: none;
+    }
     .eds-checkbox__icon {
       border-color: var(--components-form-checkbox-standard-border-readonly);
 

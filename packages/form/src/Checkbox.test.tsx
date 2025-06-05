@@ -61,7 +61,7 @@ test('readonly checked Checkbox with `checked` prop is included in form submissi
 
   const { getByRole } = render(
     <form onSubmit={handleSubmit}>
-      <Checkbox name="terms" checked={true} readOnly onChange={() => {}}>
+      <Checkbox name="terms" checked={true} readOnly onChange={() => undefined}>
         Godta vilkår
       </Checkbox>
       <button type="submit">Send</button>

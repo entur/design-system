@@ -59,7 +59,6 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             }
           }}
           tabIndex={rest.tabIndex}
-          role="radio"
           disabled={disabled}
           aria-label={
             readOnly ? ` ${children?.toString()}. Kan ikke endres` : undefined

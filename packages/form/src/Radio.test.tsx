@@ -79,7 +79,12 @@ test('readonly checked Radio is included in form submission', () => {
 
   const { getByRole } = render(
     <form onSubmit={handleSubmit}>
-      <RadioGroup name="city" label="Velg by" value="Oslo" onChange={() => {}}>
+      <RadioGroup
+        name="city"
+        label="Velg by"
+        value="Oslo"
+        onChange={() => undefined}
+      >
         <Radio value="Oslo" readOnly>
           Oslo
         </Radio>

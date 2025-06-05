@@ -70,6 +70,12 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           checked={isControlled ? checked === true : undefined}
           disabled={disabled}
           readOnly={readOnly}
+          onKeyDown={e => {
+            if (readOnly && (e.key === ' ' || e.key === 'Enter')) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          }}
           {...rest}
         />
         <span
