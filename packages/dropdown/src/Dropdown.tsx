@@ -157,11 +157,16 @@ export const Dropdown = React.forwardRef(
       getMenuProps,
       getToggleButtonProps,
       highlightedIndex,
+      reset,
     } = useSelect({
       items: normalizedItems,
       defaultHighlightedIndex: selectedItem ? undefined : 0,
       selectedItem,
       stateReducer(_, { changes, type }) {
+        const toggleButtonIsFocused =
+          typeof document !== 'undefined' &&
+          document.activeElement === refs.reference.current;
+
         switch (type) {
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
@@ -216,12 +221,8 @@ export const Dropdown = React.forwardRef(
       }
     }, [isOpen, refs.reference, refs.floating, update]);
 
-    const toggleButtonIsFocused =
-      typeof document !== 'undefined' &&
-      document.activeElement === refs.reference.current;
-
     const handleOnClear = () => {
-      onChange?.(null);
+      reset();
       refs.reference.current?.focus();
     };
 
