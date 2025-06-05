@@ -171,9 +171,8 @@ export const Dropdown = React.forwardRef(
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
           case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
             if (!toggleButtonIsFocused) return { ...changes, isOpen: false };
-          default:
-            return changes;
         }
+        return changes;
       },
       onStateChange({ type, selectedItem: newSelectedItem }) {
         switch (type) {
