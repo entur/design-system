@@ -154,6 +154,23 @@
         "type": {
           "name": "boolean | undefined"
         }
+      },
+      "disableAnimation": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Om animasjon skal deaktiveres",
+        "name": "disableAnimation",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/Checkbox.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
       }
     }
   }

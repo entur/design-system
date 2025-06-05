@@ -28,6 +28,10 @@ export type CheckboxProps = {
    * @default false
    */
   reduceClickArea?: boolean;
+  /** Om animasjon skal deaktiveres
+   * @default false
+   */
+  disableAnimation?: boolean;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'checked'>;
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
@@ -40,6 +44,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       disabled = false,
       readOnly = false,
       reduceClickArea,
+      disableAnimation = false,
       ...rest
     },
     ref: React.Ref<HTMLInputElement>,
@@ -83,6 +88,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             'eds-checkbox__icon--disabled': disabled,
             'eds-checkbox__icon--readonly': readOnly,
             'eds-checkbox__icon--reduced-click-area': reduceClickArea,
+            'eds-checkbox__icon--no-animation':
+              disableAnimation || disabled || readOnly,
           })}
         >
           <CheckboxIcon indeterminate={isIndeterminate} />
