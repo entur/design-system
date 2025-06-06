@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.10-beta.0](https://github.com/entur/design-system/compare/@entur/button@3.3.9...@entur/button@3.3.10-beta.0) (2025-06-06)
+
+**Note:** Version bump only for package @entur/button
+
 ## [3.3.9](https://github.com/entur/design-system/compare/@entur/button@3.3.8...@entur/button@3.3.9) (2025-05-22)
 
 **Note:** Version bump only for package @entur/button

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.10-beta.0](https://github.com/entur/design-system/compare/@entur/travel@6.3.9...@entur/travel@6.3.10-beta.0) (2025-06-06)
+
+**Note:** Version bump only for package @entur/travel
+
 ## [6.3.9](https://github.com/entur/design-system/compare/@entur/travel@6.3.8...@entur/travel@6.3.9) (2025-05-22)
 
 **Note:** Version bump only for package @entur/travel

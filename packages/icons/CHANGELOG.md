@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.13.0-beta.0](https://github.com/entur/design-system/compare/@entur/icons@7.12.0...@entur/icons@7.13.0-beta.0) (2025-06-06)
+
+### Features
+
+- **icons:** fix bicycle and add bicycle simple ([2d16830](https://github.com/entur/design-system/commit/2d1683099b3b8ff2c5d857b7604d0b8c45c68b99))
+
 # [7.12.0](https://github.com/entur/design-system/compare/@entur/icons@7.11.1...@entur/icons@7.12.0) (2025-05-22)
 
 ### Features

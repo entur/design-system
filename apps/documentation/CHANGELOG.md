@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.3.3...@entur/documentation@6.4.0-beta.0) (2025-06-06)
+
+### Features
+
+- **website:** add new illustration - woman sitting inside the train ([afb720a](https://github.com/entur/design-system/commit/afb720aaf44a00bbde744191224649d58fc1983e))
+- **website:** add ressurser ([488d144](https://github.com/entur/design-system/commit/488d1441b4d8966451999183ad993eb7a82b73e1))
+
 ## [6.3.3](https://github.com/entur/design-system/compare/@entur/documentation@6.3.2...@entur/documentation@6.3.3) (2025-05-22)
 
 ### Bug Fixes

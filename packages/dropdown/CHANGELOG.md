@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.5...@entur/dropdown@7.2.0-beta.0) (2025-06-06)
+
+### Bug Fixes
+
+- **dropdown:** add index as key on dropdown icons ([cec2329](https://github.com/entur/design-system/commit/cec23298ea058148423e0b5cdd67ce343e39e704))
+- **dropdown:** clear selectedItem with keyboard in dropdown clearable ([0ebeb30](https://github.com/entur/design-system/commit/0ebeb30afbd3150050ffa5cd3eca87b76ac04364))
+
+### Features
+
+- **dropdown:** new prop to support custom keys in dropdownlist ([a881567](https://github.com/entur/design-system/commit/a8815674eb1ee8a496033ee79d90462f857f6e0a))
+- **dropdown:** new prop to support custom keys in dropdownlist ([816a771](https://github.com/entur/design-system/commit/816a771818b4804901aad6f03e22e35aa0a6c7a6))
+
 ## [7.1.5](https://github.com/entur/design-system/compare/@entur/dropdown@7.1.4...@entur/dropdown@7.1.5) (2025-05-22)
 
 **Note:** Version bump only for package @entur/dropdown
