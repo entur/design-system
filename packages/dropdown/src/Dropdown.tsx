@@ -157,10 +157,23 @@ export const Dropdown = React.forwardRef(
       getMenuProps,
       getToggleButtonProps,
       highlightedIndex,
+      reset,
     } = useSelect({
       items: normalizedItems,
       defaultHighlightedIndex: selectedItem ? undefined : 0,
       selectedItem,
+      stateReducer(_, { changes, type }) {
+        const toggleButtonIsFocused =
+          typeof document !== 'undefined' &&
+          document.activeElement === refs.reference.current;
+
+        switch (type) {
+          case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowDown:
+          case useSelect.stateChangeTypes.ToggleButtonKeyDownArrowUp:
+            if (!toggleButtonIsFocused) return { ...changes, isOpen: false };
+        }
+        return changes;
+      },
       onStateChange({ type, selectedItem: newSelectedItem }) {
         switch (type) {
           case useSelect.stateChangeTypes.ToggleButtonBlur:
@@ -173,7 +186,7 @@ export const Dropdown = React.forwardRef(
     });
 
     // calculations for floating-UI popover position
-    const { refs, floatingStyles, update } = useFloating({
+    const { refs, floatingStyles, update } = useFloating<HTMLDivElement>({
       open: isOpen,
       placement: 'bottom-start',
       middleware: [
@@ -206,6 +219,11 @@ export const Dropdown = React.forwardRef(
         );
       }
     }, [isOpen, refs.reference, refs.floating, update]);
+
+    const handleOnClear = () => {
+      reset();
+      refs.reference.current?.focus();
+    };
 
     return (
       <BaseFormControl
@@ -287,7 +305,7 @@ export const Dropdown = React.forwardRef(
           aria-busy={!(loading ?? resolvedItemsLoading) ? undefined : 'true'}
           aria-expanded={isOpen}
           clearable={clearable}
-          onClear={() => onChange?.(null)}
+          onClear={handleOnClear}
           disabled={disabled || readOnly}
           focusable={false}
           labelClearSelected={labelClearSelectedItem}

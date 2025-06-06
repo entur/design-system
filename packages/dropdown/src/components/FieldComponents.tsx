@@ -165,9 +165,18 @@ export const ClearableButton = ({
           className="eds-dropdown__appendix__clear-button"
           type="button"
           tabIndex={focusable ? 0 : -1}
+          // These events bubble up to the Dropdown container and trigger openMenu.
+          // To avoid this, stopPropagation and preventDefault are added.
           onClick={e => {
             e.stopPropagation();
             onClear();
+          }}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              e.stopPropagation();
+              onClear();
+            }
           }}
           aria-label={labelClearSelectedItems}
         >

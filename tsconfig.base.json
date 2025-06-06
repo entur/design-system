@@ -16,7 +16,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "traceResolution": false,
     "jsx": "react",
