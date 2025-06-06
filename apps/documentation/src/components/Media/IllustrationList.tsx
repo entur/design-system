@@ -129,6 +129,7 @@ const IllustrationList = ({
               name={illustration.name}
               downloadSources={illustration.publicUrls}
               className="illustration-list__display-grid__image-box__image"
+              alwaysShowDownload
             />
           </div>
         ))}
