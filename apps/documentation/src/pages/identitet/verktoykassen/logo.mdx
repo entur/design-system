@@ -64,6 +64,7 @@ Entur sin primærlogo består av teksten Entur med skrifttype Nationale og den b
   name={props.data.logosSvg.images.find(image => image.name === "PrimaryLogo").name}
   preset="logo-display"
   alt=""
+  alwaysShowDownload
 />
 
 ## Entur sekundærlogo
@@ -80,6 +81,7 @@ Skal kun tas i bruk når primærlogo ikke er mulig å bruke. Brukes på mørke b
   preset="logo-display"
   className="eds-contrast"
   alt=""
+  alwaysShowDownload
 />
 
 ## Svart-hvitt logo
@@ -195,6 +197,7 @@ Denne logo-varianten skal kun benyttes som app-ikon for iOS og Android og som [f
     { src: props.data.downloads.files.find(file => file.name === "EN-app-logo-512x512").publicURL, format: "png" }, 
   ]} 
   preset="logo-display"
+  alwaysShowDownload
 />
 
 ### Rettningslinjer
