@@ -42,6 +42,6 @@ export const TextBlockFragment = graphql`
     _key
     _type
     variant
-    _rawItems
+    _rawItems(resolveReferences: { maxDepth: 10 })
   }
 `;

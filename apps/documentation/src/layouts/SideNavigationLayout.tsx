@@ -30,7 +30,6 @@ const SideNavigationLayout = ({
             menu
             order
             removeToc
-            hide
             npmPackage
             tags
             categoryIndex
@@ -78,7 +77,6 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         category: page.frontmatter.parent,
         subcategory: page.frontmatter.menu,
         tags: page.frontmatter.tags,
-        hideFromMenu: page.frontmatter.hide,
         order: page.frontmatter.order,
         categoryIndex: page.frontmatter.categoryIndex,
       } as MenuItem;
@@ -90,7 +88,6 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       category: page.category,
       subcategory: page.subcategory,
       tags: page?.tags ?? null,
-      hideFromMenu: page.hide ?? null,
       order: page.order ?? null,
       categoryIndex: page.categoryIndex ?? null,
     } as MenuItem;

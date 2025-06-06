@@ -1,5 +1,6 @@
-import {RowHeightMiddleIcon} from '@entur/icons'
+import * as icons from '@entur/icons'
 import {defineField, defineType} from 'sanity'
+import {isEnturIcon} from '../../utils'
 
 export const VARIANT_TYPES = [
   {title: 'Standard', value: 'normal'},
@@ -10,7 +11,7 @@ export const textBlocksType = defineType({
   name: 'textBlocks',
   title: 'Tekstblokker',
   type: 'object',
-  icon: RowHeightMiddleIcon,
+  icon: icons.RowHeightMiddleIcon,
   fields: [
     defineField({
       name: 'variant',
@@ -43,6 +44,21 @@ export const textBlocksType = defineType({
               {title: 'Code', value: 'code'},
             ],
           },
+          of: [
+            {
+              name: 'inlineIcon',
+              type: 'inlineIcon',
+              components: {
+                inlineBlock: ({value}: {value: {iconName: string}}) => {
+                  if (value.iconName === undefined || !isEnturIcon(value.iconName))
+                    return <span>[Ukjent ikon]</span>
+
+                  const Icon = icons[value.iconName]
+                  return <Icon style={{marginInline: '0.1rem'}} inline />
+                },
+              },
+            },
+          ],
         },
       ],
     }),

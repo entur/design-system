@@ -4,7 +4,6 @@ export type MenuItem = {
   category?: string;
   subcategory?: string;
   order?: number;
-  hideFromMenu?: boolean;
   categoryIndex?: boolean;
 };
 

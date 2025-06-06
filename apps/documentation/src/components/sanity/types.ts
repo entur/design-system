@@ -26,6 +26,11 @@ export type LinkType = {
   iconName?: string;
 };
 
+export type InlineIcon = {
+  _type: string;
+  iconName?: string;
+};
+
 export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];

@@ -25,3 +25,7 @@ export function getIconByName(iconName: string | undefined) {
 
   return null;
 }
+
+export function isEnturIcon(iconName: string): iconName is keyof typeof icons {
+  return iconName in icons;
+}

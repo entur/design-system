@@ -19,11 +19,14 @@ import {
   StrongText,
   UnorderedList,
 } from '@entur/typography';
+import * as icons from '@entur/icons';
 
 import { ImageAndTextResolver } from './image/ImageAndTextResolver';
 import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
 import { GroupResolver } from './layout/GroupResolver';
+import { InlineIcon } from './types';
+import { isEnturIcon } from 'src/utils/utils';
 
 const components: Partial<PortableTextReactComponents> = {
   block: {
@@ -85,6 +88,13 @@ const components: Partial<PortableTextReactComponents> = {
     textBlocks: TextBlocksResolver,
     link: LinkResolver,
     group: GroupResolver,
+    inlineIcon: ({ value }: { value: InlineIcon }) => {
+      if (value.iconName === undefined || !isEnturIcon(value.iconName))
+        return null;
+
+      const Icon = icons[value.iconName];
+      return <Icon inline />;
+    },
   },
 
   unknownType: ({ value }) => {

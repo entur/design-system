@@ -24,6 +24,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         alt={''}
         preset="contain-full-width"
         className="image-and-text__image"
+        alwaysShowDownload={showDownload}
         downloadSources={
           showDownload
             ? [
