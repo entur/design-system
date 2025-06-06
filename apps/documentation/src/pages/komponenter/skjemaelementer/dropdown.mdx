@@ -201,6 +201,19 @@ for mer info – og fungerer for det meste likt som den. Det er dog noen forskje
 
 Se et eksempel på bruk av NativeDropdown under eksempelet [Native dropdown](#native-dropdown)
 
+### itemKey - unik key for dropdownelementer
+
+`itemKey`er et valgfritt felt som lar deg spesifisere en egendefinert og unik nøkkel for hvert element i en dropdown. Dette er nyttig for å unngå feilmeldinger som skyldes dupliserte key-verdier, spesielt i tilfeller der `label`, `value` og `icons` ikke er nok til å generere en unik kombinasjon.
+
+**Når bør du bruke itemKey?**
+- Når to eller flere dropdown-elementer har lik `label` og `value`
+- Når du har dynamisk genererte eller identiske elementer, men ønsker ulik nøkkelhåndtering
+- Når du ønsker å ha full kontroll over hvilken key React bruker for hvert element i listen
+  
+**Tips:**
+- Sørg for at `itemKey` er unik per liste.
+- Unngå å bruke indekser (index) som key i komponenter med dynamisk innhold, fordi det kan føre til problemer med React sin håndtering av oppdateringer og gjengivelse.
+  
 ## Eksempler
 
 ### Vanlig dropdown

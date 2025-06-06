@@ -133,7 +133,9 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         </span>
         {Array.isArray(item.icons)
           ? item.icons.filter(isReactComponent).map((Icon, index) => {
-              const key = `${Icon.displayName ?? Icon.name ?? index}`;
+              const key = `${
+                Icon.displayName ?? Icon.name ?? Icon.name
+              }-${index}`;
               return (
                 <Icon
                   key={key}
