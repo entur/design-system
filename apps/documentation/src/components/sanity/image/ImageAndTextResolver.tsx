@@ -29,7 +29,8 @@ export const ImageAndTextResolver = ({ value }: Props) => {
           showDownload
             ? [
                 {
-                  src: image.asset.gatsbyImageData.images.fallback?.src,
+                  src:
+                    image.asset.gatsbyImageData.images.fallback?.src + '&dl=',
                   format: 'png',
                 },
               ]
