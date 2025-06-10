@@ -1,0 +1,157 @@
+@use '@entur/utils/dist/breakpoints.scss' as *;
+
+/* Primitive size */
+:root {
+  /* Mode 1 */
+  /* number */
+  --size-0: 0rem;
+  --size-1: 0.125rem;
+  --size-2: 0.25rem;
+  --size-3: 0.5rem;
+  --size-4: 0.75rem;
+  --size-5: 0.875rem;
+  --size-6: 1rem;
+  --size-7: 1.25rem;
+  --size-8: 1.5rem;
+  --size-9: 1.75rem;
+  --size-10: 2rem;
+  --size-11: 2.25rem;
+  --size-12: 2.5rem;
+  --size-13: 2.75rem;
+  --size-14: 3rem;
+  --size-15: 3.25rem;
+  --size-16: 3.5rem;
+  --size-17: 4rem;
+  --size-18: 4.5rem;
+  --size-19: 5rem;
+  --size-20: 5.5rem;
+  --size-21: 6rem;
+  --size-22: 6.5rem;
+  --size-23: 7rem;
+  --size-24: 7.5rem;
+  --size-25: 8.5rem;
+  --size-26: 10rem;
+}
+
+:root,
+[data-theme='Mobile'] {
+  /* number */
+  --font-line-height-body-lg: var(--size-8);
+  --font-line-height-body-m: var(--size-8);
+  --font-line-height-body-s: var(--size-7);
+  --font-line-height-body-xl: var(--size-9);
+  --font-line-height-body-xs: var(--size-6);
+  --font-line-height-heading-2xl: var(--size-10);
+  --font-line-height-heading-lg: var(--size-8);
+  --font-line-height-heading-m: var(--size-7);
+  --font-line-height-heading-s: var(--size-6);
+  --font-line-height-heading-xl: var(--size-9);
+  --font-line-height-heading-xs: var(--size-6);
+  --font-paragraph-spacing-body-lg: var(--size-7);
+  --font-paragraph-spacing-body-m: var(--size-6);
+  --font-paragraph-spacing-body-s: var(--size-4);
+  --font-paragraph-spacing-body-xl: var(--size-7);
+  --font-paragraph-spacing-body-xs: var(--size-3);
+  --font-paragraph-spacing-heading-2xl: var(--size-6);
+  --font-paragraph-spacing-heading-lg: var(--size-4);
+  --font-paragraph-spacing-heading-m: var(--size-4);
+  --font-paragraph-spacing-heading-s: var(--size-3);
+  --font-paragraph-spacing-heading-xl: var(--size-6);
+  --font-paragraph-spacing-heading-xs: var(--size-3);
+  --font-size-body-lg: var(--size-6);
+  --font-size-body-m: var(--size-6);
+  --font-size-body-s: var(--size-5);
+  --font-size-body-xl: var(--size-7);
+  --font-size-body-xs: var(--size-4);
+  --font-size-heading-2xl: var(--size-9);
+  --font-size-heading-lg: var(--size-7);
+  --font-size-heading-m: var(--size-6);
+  --font-size-heading-s: var(--size-5);
+  --font-size-heading-xl: var(--size-8);
+  --font-size-heading-xs: var(--size-4);
+  /* string */
+  --font-family-nationale: Nationale;
+  --font-weight-body: 500;
+  --font-weight-heading: 600;
+
+  @include for-desktop {
+    /* number */
+    --font-line-height-body-lg: var(--size-9);
+    --font-line-height-body-m: var(--size-8);
+    --font-line-height-body-s: var(--size-7);
+    --font-line-height-body-xl: var(--size-10);
+    --font-line-height-body-xs: var(--size-6);
+    --font-line-height-heading-2xl: var(--size-13);
+    --font-line-height-heading-lg: var(--size-9);
+    --font-line-height-heading-m: var(--size-8);
+    --font-line-height-heading-s: var(--size-7);
+    --font-line-height-heading-xl: var(--size-11);
+    --font-line-height-heading-xs: var(--size-6);
+    --font-paragraph-spacing-body-lg: var(--size-8);
+    --font-paragraph-spacing-body-m: var(--size-6);
+    --font-paragraph-spacing-body-s: var(--size-4);
+    --font-paragraph-spacing-body-xl: var(--size-8);
+    --font-paragraph-spacing-body-xs: var(--size-3);
+    --font-paragraph-spacing-heading-2xl: var(--size-8);
+    --font-paragraph-spacing-heading-lg: var(--size-6);
+    --font-paragraph-spacing-heading-m: var(--size-4);
+    --font-paragraph-spacing-heading-s: var(--size-4);
+    --font-paragraph-spacing-heading-xl: var(--size-7);
+    --font-paragraph-spacing-heading-xs: var(--size-3);
+    --font-size-body-lg: var(--size-7);
+    --font-size-body-m: var(--size-6);
+    --font-size-body-s: var(--size-5);
+    --font-size-body-xl: var(--size-8);
+    --font-size-body-xs: var(--size-4);
+    --font-size-heading-2xl: var(--size-12);
+    --font-size-heading-lg: var(--size-8);
+    --font-size-heading-m: var(--size-7);
+    --font-size-heading-s: var(--size-6);
+    --font-size-heading-xl: var(--size-10);
+    --font-size-heading-xs: var(--size-5);
+    /* string */
+    --font-family-nationale: Nationale;
+    --font-weight-body: 500;
+    --font-weight-heading: 600;
+  }
+}
+[data-theme='Large'] {
+  /* number */
+  --font-line-height-body-lg: var(--size-16);
+  --font-line-height-body-m: var(--size-13);
+  --font-line-height-body-s: var(--size-10);
+  --font-line-height-body-xl: var(--size-17);
+  --font-line-height-body-xs: var(--size-9);
+  --font-line-height-heading-2xl: var(--size-19);
+  --font-line-height-heading-lg: var(--size-16);
+  --font-line-height-heading-m: var(--size-13);
+  --font-line-height-heading-s: var(--size-11);
+  --font-line-height-heading-xl: var(--size-18);
+  --font-line-height-heading-xs: var(--size-9);
+  --font-paragraph-spacing-body-lg: var(--size-12);
+  --font-paragraph-spacing-body-m: var(--size-10);
+  --font-paragraph-spacing-body-s: var(--size-8);
+  --font-paragraph-spacing-body-xl: var(--size-14);
+  --font-paragraph-spacing-body-xs: var(--size-7);
+  --font-paragraph-spacing-heading-2xl: var(--size-11);
+  --font-paragraph-spacing-heading-lg: var(--size-8);
+  --font-paragraph-spacing-heading-m: var(--size-7);
+  --font-paragraph-spacing-heading-s: var(--size-6);
+  --font-paragraph-spacing-heading-xl: var(--size-10);
+  --font-paragraph-spacing-heading-xs: var(--size-4);
+  --font-size-body-lg: var(--size-12);
+  --font-size-body-m: var(--size-10);
+  --font-size-body-s: var(--size-8);
+  --font-size-body-xl: var(--size-14);
+  --font-size-body-xs: var(--size-7);
+  --font-size-heading-2xl: var(--size-18);
+  --font-size-heading-lg: var(--size-14);
+  --font-size-heading-m: var(--size-12);
+  --font-size-heading-s: var(--size-10);
+  --font-size-heading-xl: var(--size-17);
+  --font-size-heading-xs: var(--size-8);
+  /* string */
+  --font-family-nationale: Nationale;
+  --font-weight-body: 500;
+  --font-weight-heading: 600;
+}

@@ -74,30 +74,30 @@ body {
     main {
       flex: 1;
       // custom paragraph spacing for documentation site
-      & > {
-        h2,
-        h3 {
-          margin-top: 3rem;
-        }
-        h2:first-of-type {
-          margin-top: 4rem;
-        }
-        h4 {
-          margin-top: 4rem;
-        }
+      // & > {
+      //   h2,
+      //   h3 {
+      //     margin-top: 3rem;
+      //   }
+      //   h2:first-of-type {
+      //     margin-top: 4rem;
+      //   }
+      //   h4 {
+      //     margin-top: 4rem;
+      //   }
 
-        // two adjacent headers
-        [class^='eds-h'] + [class^='eds-h'] {
-          margin-top: 2rem;
-        }
-      }
+      //   // two adjacent headers
+      //   [class^='eds-h'] + [class^='eds-h'] {
+      //     margin-top: 2rem;
+      //   }
+      // }
     }
   }
 }
 
-code {
-  font-size: 14px; //Override  for code, as rem is redefined
-}
+// code {
+//   font-size: 14px; //Override  for code, as rem is redefined
+// }
 
 .eds-link.gatsby-header-links {
   background-image: none;
