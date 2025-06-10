@@ -1,0 +1,172 @@
+---
+title: TypographyBeta
+description: BETA Oversikt over Entur sine typografiske komponenter
+route: /komponenter/ressurser/typographyBeta
+parent: Komponenter
+menu: Ressurser
+npmPackage: typography
+tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link, sitat, blockquote
+---
+
+import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta } from "@entur/typography";
+
+<PageHeader />
+
+
+## Headings
+Heading-komponenten brukes til å vise overskrifter i ulike nivåer og varianter, i tråd med designsystemets typografiretningslinjer. Den støtter semantiske HTML-elementer ved bruk av prop `as` (f.eks. h1, h2) og visuelle varianter uavhengig av semantikk ved bruk av prop `variant`.
+
+### Variants / Presets(?)
+
+````jsx
+<Heading as="h1" variant="title-1">Title 1</Heading>
+<Heading as="h2" variant="title-2">Title 2</Heading>
+<Heading as="h3" variant="subtitle-1">Subtitle 1</Heading>
+<Heading as="h4" variant="subtitle-2">Subtitle 2</Heading>
+<Heading as="h5" variant="section-1">Section 1</Heading>
+<Heading as="h6" variant="section-2">Section 2</Heading>
+````
+
+### as
+
+````jsx
+<Heading as="h1">Title 1</Heading>
+<Heading as="h2">Title 2</Heading>
+<Heading as="h3">Subtitle 1</Heading>
+<Heading as="h4">Subtitle 2</Heading>
+````
+
+### as + variant
+
+````jsx
+<Heading as="h1" variant="section-1">Title 1</Heading>
+<Heading as="h2" variant="section-2">Title 2</Heading>
+<Heading as="h3" variant="subtitle-1">Subtitle 1</Heading>
+<Heading as="h4" variant="subtitle-2">Subtitle 2</Heading>
+````
+
+### Sizes
+
+````jsx
+<Heading as="h1" size="2xl">2xl</Heading>
+<Heading as="h2" size="xl">xl</Heading>
+<Heading as="h3" size="lg">lg</Heading>
+<Heading as="h4" size="m">m</Heading>
+<Heading as="h5" size="s">s</Heading>
+<Heading as="h6" size="xs">xs</Heading>
+````
+
+
+## Text
+
+### Variants / Presets(?)
+
+````jsx
+<Text variant="leading">Leading</Text>
+<Text variant="quote">Quote</Text>
+<Text variant="paragraph">paragraph</Text>
+<Text variant="subparagraph">subparagraph</Text>
+<Text variant="caption">caption</Text>
+<Text variant="label">Label</Text>
+<Text variant="sublabel">SubLabel</Text>
+<Text variant="overline">Overline</Text>
+````
+
+### Sizes
+
+````jsx
+<Text size="xl">xl</Text>
+<Text size="m">m</Text>
+<Text size="s">s</Text>
+<Text size="xs">xs</Text>
+````
+
+### Weight
+
+````jsx
+<Text size="m" weight="bold">Bold</Text>
+<Text size="m" weight="semibold">Semibold</Text>
+<Text size="m" weight="medium">Medium</Text>
+<Text size="m" weight="regular">Regular</Text>
+
+<Text size="m" weight="700">700</Text>
+<Text size="m" weight="600">600</Text>
+<Text size="m" weight="500">500</Text>
+<Text size="m" weight="400">400</Text>
+````
+
+### as
+
+````jsx
+<Text as="p">{'<p>as paragraph</p>'}</Text>
+<Text as="label">{'<label>as label</label>'}</Text>
+<Text as="code">{'<code>as code</code>'}</Text>
+<Text as="pre">{'<pre>as preformatted text</pre>'}</Text>
+<Text as="blockquote">{'<blockquote>as blockquote</blockquote>'}</Text>
+````
+
+## Andre typografiske komponenter
+
+### Blockquote med footer
+
+````jsx
+<BlockquoteBeta> Entur gjør det enklere å reise kollektivt  <BlockquoteFooterBeta>Ola Nordmann, Entur</BlockquoteFooterBeta></BlockquoteBeta>
+````
+
+### Link
+
+````jsx
+<LinkBeta href="https://entur.no/">Reiseplanleggeren til Entur</LinkBeta>
+<LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
+````
+
+## Remove margin from presets
+
+````jsx
+### Both
+<Heading as="h2" variant="title-1" margin="both">title 1</Heading>
+<Heading as="h2" variant="2xl" margin="both">2xl</Heading>
+
+<Text variant="m" margin="both">m</Text>
+
+### Top margin
+<Heading as="h2" variant="title-1" margin="top">title 1</Heading>
+<Heading as="h2" variant="2xl" margin="top">2xl</Heading>
+
+<Text variant="paragraph" margin="top">Paragraph</Text>
+<Text variant="m" margin="top">m</Text>
+
+### Bottom margin
+<Heading as="h2" variant="title-1" margin="bottom">title 1</Heading>
+<Heading as="h2" variant="2xl" margin="bottom">2xl</Heading>
+
+<Text variant="m" margin="bottom">m</Text>
+
+### Remove margin
+<Heading as="h2" variant="title-1" margin="none">title 1</Heading>
+<Heading as="h2" variant="2xl" margin="none">2xl</Heading>
+
+<Text variant="m" margin="none">m</Text>
+
+````
+ 
+### Retningslinjer
+
+Ved å skille mellom semantiske props (as) og visuelle props (variant, size, weight), gir vi utviklere mulighet til å skrive semantisk korrekt HTML uten å være bundet til det visuelle uttrykket. Dette gir flere fordeler:
+
+- **Universell utforming og tilgjengelighet**
+  
+Skjermlesere og andre hjelpemidler bruker HTML-strukturen for å forstå og navigere innholdet. Ved å bruke riktige semantiske elementer (f.eks. `<h1>–<h6>, <p>, <label>`), styrker vi tilgjengeligheten.
+
+- **Bedre SEO**
+  
+Søkemotorer forstår dokumentstrukturen bedre når overskrifter og tekst er merket riktig semantisk. Det gir bedre rangering og struktur i søkeresultatene.
+
+- **Fleksibilitet i design**
+  
+Det er ikke alltid ønskelig at en semantisk `<h2>` skal se ut som en stor overskrift. Ved å separere `as` og `variant`, kan du velge det som passer designet – uten å gjøre kompromiss med semantikk.
+
+- **Gjenbruk og konsistens**
+  
+Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel kan du bruke samme variant visuelt flere steder, men tilpasse semantikken etter hvor i dokumentstrukturen den vises.
+
