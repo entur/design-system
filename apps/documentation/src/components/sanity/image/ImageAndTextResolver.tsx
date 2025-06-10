@@ -3,8 +3,10 @@ import { graphql } from 'gatsby';
 import classNames from 'classnames';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { PortableText } from '../PortableText';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
 import { ImageAndTextType } from '../types';
 import './ImageAndText.scss';
+import { getImage } from 'gatsby-plugin-image';
 
 type Props = {
   value: ImageAndTextType;
@@ -12,6 +14,21 @@ type Props = {
 
 export const ImageAndTextResolver = ({ value }: Props) => {
   const { image, _rawText, addMargin, showDownload } = value;
+  console.log('what', image.asset.gatsbyImageData);
+  const imageData =
+    image.asset.gatsbyImageData ??
+    getGatsbyImageData(
+      {
+        _id: image.asset._id,
+        url: image.asset.url,
+        assetId: image.assetId,
+        extension: image.asset.extension,
+        metadata: image.asset.metadata,
+      },
+      {},
+      { projectId: 'npa0lfls', dataset: 'production' },
+    );
+  console.log('hei', imageData);
 
   return (
     <div
@@ -20,7 +37,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
       })}
     >
       <ImageDisplay
-        imgSource={image.asset.gatsbyImageData}
+        imgSource={imageData}
         alt={''}
         preset="contain-full-width"
         className="image-and-text__image"
@@ -29,8 +46,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
           showDownload
             ? [
                 {
-                  src:
-                    image.asset.gatsbyImageData.images.fallback?.src + '&dl=',
+                  src: imageData.images.fallback?.src + '&dl=',
                   format: 'png',
                 },
               ]

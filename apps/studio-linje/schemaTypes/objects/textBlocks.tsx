@@ -60,6 +60,10 @@ export const textBlocksType = defineType({
             },
           ],
         },
+        {
+          type: 'imageAndText',
+          name: 'imageAndText',
+        },
       ],
     }),
   ],
