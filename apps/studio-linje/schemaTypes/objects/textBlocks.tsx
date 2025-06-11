@@ -49,12 +49,18 @@ export const textBlocksType = defineType({
               name: 'inlineIcon',
               type: 'inlineIcon',
               components: {
-                inlineBlock: ({value}: {value: {iconName: string}}) => {
-                  if (value.iconName === undefined || !isEnturIcon(value.iconName))
-                    return <span>[Ukjent ikon]</span>
+                inlineBlock: (props) => {
+                  console.log('props', props)
+                  return props.renderDefault({
+                    ...props,
+                    renderPreview: ({value}: {value: {iconName: string}}) => {
+                      if (value.iconName === undefined || !isEnturIcon(value.iconName))
+                        return 'Velg ikon'
 
-                  const Icon = icons[value.iconName]
-                  return <Icon style={{marginInline: '0.1rem'}} inline />
+                      const Icon = icons[value.iconName]
+                      return <Icon style={{marginInline: '0.1rem'}} inline />
+                    },
+                  })
                 },
               },
             },
