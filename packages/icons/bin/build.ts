@@ -42,6 +42,8 @@ const SPECIAL_OUTLIERS = [
   'VippsLogoIcon',
   'VisaIcon',
   'CompassNeedleIcon',
+  'FigmaIcon',
+  'MuralIcon',
 ];
 
 buildIconComponents();
