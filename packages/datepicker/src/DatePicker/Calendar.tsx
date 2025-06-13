@@ -80,6 +80,7 @@ type BaseCalendarProps<DateType extends DateValue> = {
    *  @example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''
    */
   ariaLabelForDate?: (date: CalendarDate) => string;
+  disabled?: boolean;
   locale?: string;
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
   forcedReturnType?: DateFieldProps<DateType>['forcedReturnType'];
@@ -92,10 +93,11 @@ export const Calendar = <DateType extends DateValue>({
   locale: localOverride,
   ...rest
 }: CalendarProps<DateType>) => {
+  const props = { isDisabled: rest.disabled, ...rest };
   const { locale } = useLocale();
   return (
     <I18nProvider locale={localOverride ?? locale}>
-      <CalendarBase {...rest} />
+      <CalendarBase {...props} />
     </I18nProvider>
   );
 };

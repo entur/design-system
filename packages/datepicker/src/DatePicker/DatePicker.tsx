@@ -33,9 +33,9 @@ import {
   DateField,
   ExtendedDateFieldProps,
 } from './DateField';
-import { Calendar } from './Calendar';
+import { Calendar, CalendarProps } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { lastMillisecondOfDay } from '../shared/utils';
+import { handleOnChange, lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
 
@@ -109,7 +109,6 @@ export const DatePicker = <DateType extends DateValue>({
   minDate,
   maxDate,
   modalTreshold = 1000,
-  forcedReturnType,
   ariaLabelForDate,
   append,
   prepend,
@@ -124,6 +123,13 @@ export const DatePicker = <DateType extends DateValue>({
 
   const _props: DatePickerStateOptions<DateType> = {
     ...rest,
+    onChange: value =>
+      handleOnChange<DateType>({
+        value,
+        selectedDate,
+        forcedReturnType: rest.forcedReturnType,
+        onChange: rest.onChange,
+      }),
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
     maxValue:
@@ -167,10 +173,12 @@ export const DatePicker = <DateType extends DateValue>({
     state.setOpen(false);
   });
 
-  const calendarSharedProps = {
+  const calendarSharedProps: CalendarProps<DateType> = {
     ...dialogProps,
     ...calendarProps,
+    // We don't use handleOnChange here since it's handled internally by Calendar
     onChange: rest.onChange,
+    forcedReturnType: rest.forcedReturnType,
     disabled,
     navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
@@ -222,6 +230,7 @@ export const DatePicker = <DateType extends DateValue>({
       <DateField
         {...(groupProps as any)}
         {...fieldProps}
+        // We don't use handleOnChange here since it's handled internally by DateField
         {...rest}
         append={
           !disabled &&
