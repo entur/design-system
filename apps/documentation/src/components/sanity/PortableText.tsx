@@ -93,16 +93,19 @@ const components: Partial<PortableTextReactComponents> = {
         return null;
 
       const Icon = icons[value.iconName];
-      return <Icon inline />;
+      return (
+        <Icon
+          inline
+          aria-hidden={value.hideFromScreenreaders}
+          aria-label={value.iconDescription}
+        />
+      );
     },
   },
 
-  unknownType: ({ value }) => {
-    return <p>Unknown type: {value._type}</p>;
-  },
+  unknownType: ({ value }) => <p>Unknown type: {value._type}</p>,
 };
 
-export const PortableText = ({ value }: PortableTextProps) => {
-  console.log('portable', value);
-  return <PortableTextReact components={components} value={value} />;
-};
+export const PortableText = ({ value }: PortableTextProps) => (
+  <PortableTextReact components={components} value={value} />
+);

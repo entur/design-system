@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, HeadProps } from 'gatsby';
 import { PortableText } from '@components/sanity';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { PageType } from '@components/sanity/types';
@@ -17,11 +17,6 @@ export default function ContentTemplate({
 
   return (
     <>
-      <SEO
-        title={title}
-        description={description}
-        pathname={getSanitizedPath({ title, category, subcategory })}
-      />
       <BasePageHeader
         category={category}
         subcategory={subcategory}
@@ -34,6 +29,32 @@ export default function ContentTemplate({
   );
 }
 
+export const Head = (
+  props: HeadProps & {
+    data: {
+      page: {
+        title: string;
+        description: string;
+        category: string;
+        subcategory: string;
+      };
+    };
+  },
+) => {
+  const {
+    data: {
+      page: { title, description, category, subcategory },
+    },
+  } = props;
+  return (
+    <SEO
+      title={title}
+      description={description}
+      pathname={getSanitizedPath({ title, category, subcategory })}
+    />
+  );
+};
+
 export const query = graphql`
   query ContentBySlug($id: String!) {
     page: sanityPage(id: { eq: $id }) {
@@ -42,10 +63,7 @@ export const query = graphql`
       subcategory
       description
       content {
-        ...ImageAndTextFragment
         ...TextBlockFragment
-        ...LinkFragment
-        ...GroupFragment
       }
     }
   }

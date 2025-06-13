@@ -21,5 +21,17 @@ export const inlineIcon = defineType({
         input: IconInput,
       },
     }),
+    defineField({
+      name: 'iconDescription',
+      title: 'Hva symboliserer ikonet?',
+      type: 'string',
+      hidden: ({parent}) => parent?.hideFromScreenreaders,
+    }),
+    defineField({
+      name: 'hideFromScreenreaders',
+      title: 'Skjul for skjermlesere',
+      type: 'boolean',
+      initialValue: false,
+    }),
   ],
 })

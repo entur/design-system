@@ -27,6 +27,18 @@ export const imageAndText = defineType({
       type: 'image',
     }),
     defineField({
+      name: 'imageDescription',
+      title: 'Hva viser bildet?',
+      type: 'string',
+      hidden: ({parent}) => parent?.hideFromScreenreaders,
+    }),
+    defineField({
+      name: 'hideFromScreenreaders',
+      title: 'Skjul for skjermlesere',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'addMargin',
       title: 'Legg til luft rundt bildet',
       type: 'boolean',

@@ -11,20 +11,24 @@ type Props = {
 };
 
 export const TextBlocksResolver = ({ value }: Props) => {
-  const textBlocksCount = value._rawItems.length;
+  const textBlocksCount = value?._rawItems?.length ?? value?.items?.length;
   const textBlocksVariant = value.variant;
-  if (textBlocksCount === 0) {
-    return null;
-  }
+  if (textBlocksCount === 0) return null;
 
   return (
     <VariantWrapper variant={textBlocksVariant}>
-      <PortableText value={value._rawItems} />
+      <PortableText value={value._rawItems ?? value.items} />
     </VariantWrapper>
   );
 };
 
-const VariantWrapper = ({ children, variant }) => {
+const VariantWrapper = ({
+  children,
+  variant,
+}: {
+  children: React.ReactNode;
+  variant?: string;
+}) => {
   switch (variant) {
     case 'information':
       return (

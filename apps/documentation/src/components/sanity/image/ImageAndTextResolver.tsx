@@ -1,34 +1,39 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
 import classNames from 'classnames';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
 import { PortableText } from '../PortableText';
-import { getGatsbyImageData } from 'gatsby-source-sanity';
 import { ImageAndTextType } from '../types';
+
 import './ImageAndText.scss';
-import { getImage } from 'gatsby-plugin-image';
 
 type Props = {
   value: ImageAndTextType;
 };
 
 export const ImageAndTextResolver = ({ value }: Props) => {
-  const { image, _rawText, addMargin, showDownload } = value;
-  console.log('what', image.asset.gatsbyImageData);
+  const {
+    image,
+    _rawText,
+    addMargin,
+    showDownload,
+    imageDescription,
+    hideFromScreenreaders,
+  } = value;
+  if (!image || typeof image === 'string' || !('asset' in image)) return null;
   const imageData =
-    image.asset.gatsbyImageData ??
-    getGatsbyImageData(
-      {
-        _id: image.asset._id,
-        url: image.asset.url,
-        assetId: image.assetId,
-        extension: image.asset.extension,
-        metadata: image.asset.metadata,
-      },
-      {},
-      { projectId: 'npa0lfls', dataset: 'production' },
-    );
-  console.log('hei', imageData);
+    'gatsbyImageData' in image.asset
+      ? image.asset.gatsbyImageData
+      : getGatsbyImageData(
+          // @ts-expect-error Images inserted inline from Sanity do not contain
+          // gatsbyImageData because of 'resolveReferences: { maxDepth: 10 }' on TextBlock query.
+          // We therefore need to create a GatsbyImage from the resolved data.
+          image,
+          {},
+          { projectId: 'npa0lfls', dataset: 'production' },
+        );
+  if (imageData === null) return null;
 
   return (
     <div
@@ -38,7 +43,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
     >
       <ImageDisplay
         imgSource={imageData}
-        alt={''}
+        alt={imageDescription}
         preset="contain-full-width"
         className="image-and-text__image"
         alwaysShowDownload={showDownload}
@@ -52,6 +57,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
               ]
             : undefined
         }
+        aria-hidden={hideFromScreenreaders}
       />
       <PortableText value={_rawText} />
     </div>

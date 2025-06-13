@@ -1,5 +1,6 @@
 import { PortableTextProps } from '@portabletext/react';
 import type { PortableTextBlock } from '@portabletext/types';
+import { getGatsbyImageData } from 'gatsby-source-sanity';
 
 export type SanityImageType = {
   _type: string;
@@ -8,10 +9,24 @@ export type SanityImageType = {
   };
 };
 
+export type SaintyInlineImageType = {
+  _type: string;
+  asset: {
+    _id: string;
+    url: string;
+    assetId: string;
+    extension: string;
+    metadata: any;
+  };
+  assetId: string;
+};
+
 export type ImageAndTextType = {
   _type: string;
   order: 'image-first' | 'text-first';
-  image: SanityImageType;
+  image: SanityImageType | Parameters<typeof getGatsbyImageData>[0];
+  imageDescription?: string;
+  hideFromScreenreaders?: boolean;
   text: PortableTextBlock;
   _rawText: any[];
   addMargin: boolean;
@@ -29,11 +44,14 @@ export type LinkType = {
 export type InlineIcon = {
   _type: string;
   iconName?: string;
+  iconDescription?: string;
+  hideFromScreenreaders?: boolean;
 };
 
 export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];
+  items: PortableTextBlock[];
   variant?: 'normal' | 'information';
 };
 

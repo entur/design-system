@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import * as icons from '@entur/icons'
+import IconInput from '../../components/IconInput'
 
 const LINK_TYPES = [
   {title: 'Tekst', value: 'text'},
@@ -9,6 +10,8 @@ const LINK_TYPES = [
 
 export const LinkType = defineType({
   name: 'link',
+  title: 'Lenke',
+  icon: icons.LinkIcon,
   type: 'object',
   fields: [
     defineField({
@@ -36,6 +39,9 @@ export const LinkType = defineType({
           title: icon,
           value: icon,
         })),
+      },
+      components: {
+        input: IconInput,
       },
     }),
   ],

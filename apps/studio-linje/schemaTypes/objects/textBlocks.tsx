@@ -1,5 +1,5 @@
 import * as icons from '@entur/icons'
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 import {isEnturIcon} from '../../utils'
 
 export const VARIANT_TYPES = [
@@ -9,7 +9,7 @@ export const VARIANT_TYPES = [
 
 export const textBlocksType = defineType({
   name: 'textBlocks',
-  title: 'Tekstblokker',
+  title: 'Tekstboks',
   type: 'object',
   icon: icons.RowHeightMiddleIcon,
   fields: [
@@ -22,10 +22,11 @@ export const textBlocksType = defineType({
         layout: 'dropdown',
       },
       initialValue: 'normal',
+      hidden: ({parent}) => parent !== undefined && !('_key' in parent),
     }),
     defineField({
       name: 'items',
-      title: 'Items',
+      title: 'Innhold',
       type: 'array',
       of: [
         {
@@ -50,7 +51,6 @@ export const textBlocksType = defineType({
               type: 'inlineIcon',
               components: {
                 inlineBlock: (props) => {
-                  console.log('props', props)
                   return props.renderDefault({
                     ...props,
                     renderPreview: ({value}: {value: {iconName: string}}) => {
@@ -66,10 +66,10 @@ export const textBlocksType = defineType({
             },
           ],
         },
-        {
-          type: 'imageAndText',
-          name: 'imageAndText',
-        },
+        {type: 'imageAndText'},
+        {type: 'textBlocks'},
+        {type: 'link'},
+        {type: 'group'},
       ],
     }),
   ],

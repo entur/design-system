@@ -1,4 +1,4 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export const page = defineType({
   name: 'page',
@@ -29,14 +29,8 @@ export const page = defineType({
     }),
     defineField({
       name: 'content',
-      title: 'Innhold',
-      type: 'array',
-      of: [
-        defineArrayMember({type: 'imageAndText'}),
-        defineArrayMember({type: 'textBlocks'}),
-        defineArrayMember({type: 'link'}),
-        defineArrayMember({type: 'group'}),
-      ],
+      title: 'Sideinnhold',
+      type: 'textBlocks',
     }),
   ],
   preview: {

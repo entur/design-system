@@ -3,6 +3,7 @@ import {defineType, defineField, defineArrayMember} from 'sanity'
 
 export const GroupType = defineType({
   name: 'group',
+  title: 'Gruppe',
   type: 'object',
   icon: GridViewIcon,
   fields: [
@@ -22,7 +23,6 @@ export const GroupType = defineType({
       content: 'content',
     },
     prepare({content}) {
-      console.log(content)
       return {
         title: `Gruppe med: ${content.map((content) => content._type + ' ')}`,
       }
