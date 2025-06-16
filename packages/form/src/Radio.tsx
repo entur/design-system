@@ -15,11 +15,13 @@ export type RadioProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Beskrivelse som leses opp av skjermlesere når radiobutton er readonly */
+  readOnlyLabelDescription?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (
-    { className, children, value, disabled, ...rest },
+    { className, children, value, disabled, readOnlyLabelDescription, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const {
@@ -41,11 +43,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           name={rest.name ?? name}
           ref={ref}
           value={value}
-          checked={
-            readOnly
-              ? selectedValue === value
-              : rest.checked ?? selectedValue === value
-          }
+          checked={rest.checked ?? selectedValue === value}
           onChange={e => {
             if (readOnly) {
               e.preventDefault();
@@ -58,10 +56,13 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
               e.preventDefault();
             }
           }}
-          tabIndex={rest.tabIndex}
           disabled={disabled}
           aria-label={
-            readOnly ? ` ${children?.toString()}. Kan ikke endres` : undefined
+            readOnly
+              ? `${children?.toString()}. ${
+                  readOnlyLabelDescription ?? 'Kan ikke endres'
+                }`
+              : undefined
           }
           {...rest}
         />
