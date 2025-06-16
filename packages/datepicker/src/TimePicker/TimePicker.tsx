@@ -26,73 +26,85 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type TimePickerProps<TimeType extends TimeValue> = Omit<
+type ExtendedTimePickerProps<TimeType extends TimeValue> = Omit<
   AriaTimeFieldProps<TimeType>,
+  | keyof BaseTimePickerProps<TimeValue>
   | 'value'
-  | 'onChange'
-  | 'label'
   | 'hideTimeZone'
   | 'placeholder'
   | 'minValue'
   | 'maxValue'
 > &
-  Omit<Partial<BaseFormControlProps>, 'children' | 'label' | 'onChange'> & {
-    /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
-    selectedTime: TimeType | null;
-    /** Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format */
-    onChange: (value: MappedTimeValue<TimeType> | null) => void;
-    /** Label til TimePicker */
-    label: string;
-    /** Minutter som legges til eller trekkes fra ved klikk på pilene i TimePicker.
-     *  Rundes av til nærmeste hele 'minuteIncrement' som går opp i 60.
-     *
-     *  OBS: Støtter kun verdier <= 60 og multiplum av 60.
-     *  @default 30
-     */
-    minuteIncrementForArrowButtons?: number;
-    /** BCP47-språkkoden til locale-en du ønsker å bruke.
-     * @default Brukerenhetens selvvalgte locale
-     */
-    locale?: string;
-    /** Viser den gjeldende tidssonen hvis en er valgt
-     * @default false
-     */
-    showTimeZone?: boolean;
-    /** Viser sekunder i tillegg til minutter og timer
-     * @default false
-     */
-    showSeconds?: boolean;
-    /** Aria-label for venstrepil-knappen som trekker fra tid
-     * @default `Trekk fra ${minuteIncrementForArrowButtons} minutter`
-     */
-    leftArrowButtonAriaLabel?: string;
-    /** Aria-label for høyrepil-knappen som legger til tid
-     * @default `Legg til ${minuteIncrementForArrowButtons} minutter`
-     */
-    rightArrowButtonAriaLabel?: string;
-    /** Varselmelding, som vil komme under TimePicker */
-    feedback?: string;
-    /** Valideringsvariant*/
-    variant?: VariantType | typeof error | typeof info;
-    labelTooltip?: React.ReactNode;
-    disabled?: boolean;
-    readOnly?: boolean;
-    inputRef?: React.ForwardedRef<HTMLDivElement>;
-    /** Tvinger typen på onChange til den gitte typen.
-     * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-     * TimePicker alltid skal returnere f.eks Time.
-     *
-     * Som standard returnerer onChange TimeValue basert på selectedTime,
-     * eller ZonedDateTime hvis selectedTime er 'null'.
-     *
-     * @default undefined
-     */
-    forcedReturnType?: 'Time' | 'CalendarDateTime' | 'ZonedDateTime';
-    forcedTimeZone?: string;
-    /** Ekstra klassenavn */
-    className?: string;
-    style?: React.CSSProperties;
-  };
+  Omit<
+    Partial<BaseFormControlProps>,
+    | keyof BaseTimePickerProps<TimeType>
+    | 'children'
+    | 'defaultValue'
+    | 'value'
+    | 'isFilled'
+    | 'size'
+  >;
+
+type BaseTimePickerProps<TimeType extends TimeValue> = {
+  /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
+  selectedTime: TimeType | null;
+  /** Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format */
+  onChange: (value: MappedTimeValue<TimeType> | null) => void;
+  /** Label til TimePicker */
+  label: string;
+  /** Minutter som legges til eller trekkes fra ved klikk på pilene i TimePicker.
+   *  Rundes av til nærmeste hele 'minuteIncrement' som går opp i 60.
+   *
+   *  OBS: Støtter kun verdier <= 60 og multiplum av 60.
+   *  @default 30
+   */
+  minuteIncrementForArrowButtons?: number;
+  /** BCP47-språkkoden til locale-en du ønsker å bruke.
+   * @default Brukerenhetens selvvalgte locale
+   */
+  locale?: string;
+  /** Viser den gjeldende tidssonen hvis en er valgt
+   * @default false
+   */
+  showTimeZone?: boolean;
+  /** Viser sekunder i tillegg til minutter og timer
+   * @default false
+   */
+  showSeconds?: boolean;
+  /** Aria-label for venstrepil-knappen som trekker fra tid
+   * @default `Trekk fra ${minuteIncrementForArrowButtons} minutter`
+   */
+  leftArrowButtonAriaLabel?: string;
+  /** Aria-label for høyrepil-knappen som legger til tid
+   * @default `Legg til ${minuteIncrementForArrowButtons} minutter`
+   */
+  rightArrowButtonAriaLabel?: string;
+  /** Varselmelding, som vil komme under TimePicker */
+  feedback?: string;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
+  labelTooltip?: React.ReactNode;
+  disabled?: boolean;
+  readOnly?: boolean;
+  inputRef?: React.ForwardedRef<HTMLDivElement>;
+  /** Tvinger typen på onChange til den gitte typen.
+   * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
+   * TimePicker alltid skal returnere f.eks Time.
+   *
+   * Som standard returnerer onChange TimeValue basert på selectedTime,
+   * eller ZonedDateTime hvis selectedTime er 'null'.
+   *
+   * @default undefined
+   */
+  forcedReturnType?: 'Time' | 'CalendarDateTime' | 'ZonedDateTime';
+  forcedTimeZone?: string;
+  /** Ekstra klassenavn */
+  className?: string;
+  style?: React.CSSProperties;
+};
+
+export type TimePickerProps<TimeType extends TimeValue> =
+  BaseTimePickerProps<TimeType> & ExtendedTimePickerProps<TimeType>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
