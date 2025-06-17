@@ -28,17 +28,18 @@ import { space, zIndexes } from '@entur/tokens';
 import { CalendarIcon } from '@entur/icons';
 import { Modal } from '@entur/modal';
 
-import { DateField, DateFieldProps } from './DateField';
+import {
+  BaseDateFieldProps,
+  DateField,
+  ExtendedDateFieldProps,
+} from './DateField';
 import { Calendar } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
 import { lastMillisecondOfDay } from '../shared/utils';
 
 import './DatePicker.scss';
 
-export type DatePickerProps<DateType extends DateValue> = Omit<
-  DateFieldProps<DateType>,
-  'labelProps' | 'fieldProps' | 'groupProps' | 'dateFieldRef'
-> & {
+type BaseDatePickerProps = {
   /** Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen
    * kan endres med prop-en 'weekNumberHeader'
    * @default false */
@@ -75,6 +76,17 @@ export type DatePickerProps<DateType extends DateValue> = Omit<
    */
   ariaLabelForDate?: (date: CalendarDate) => string;
 };
+
+export type DatePickerProps<DateType extends DateValue> = Omit<
+  BaseDateFieldProps<DateType>,
+  | keyof BaseDatePickerProps
+  | 'labelProps'
+  | 'fieldProps'
+  | 'groupProps'
+  | 'dateFieldRef'
+> &
+  BaseDatePickerProps &
+  ExtendedDateFieldProps<DateType>;
 
 export const DatePicker = <DateType extends DateValue>({
   selectedDate,

@@ -28,15 +28,11 @@
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "DOMAttributes"
           }
         ],
-        "required": false,
+        "required": true,
         "type": {
-          "name": "((value: MappedTimeValue<TimeType> | null) => void) & FormEventHandler<HTMLDivElement>"
+          "name": "(value: MappedTimeValue<TimeType> | null) => void"
         }
       },
       "label": {
@@ -158,15 +154,11 @@
       },
       "feedback": {
         "defaultValue": null,
-        "description": "Varselmelding, som vil komme under TimePicker\nVarselmelding, som vil komme under form-komponenten",
+        "description": "Varselmelding, som vil komme under TimePicker",
         "name": "feedback",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
         ],
@@ -183,10 +175,6 @@
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
           }
         ],
         "required": false,
@@ -196,15 +184,11 @@
       },
       "labelTooltip": {
         "defaultValue": null,
-        "description": "En tooltip som forklarer labelen til inputfeltet",
+        "description": "",
         "name": "labelTooltip",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
         ],
@@ -215,15 +199,11 @@
       },
       "disabled": {
         "defaultValue": null,
-        "description": "Sett til true om skjema-elementet er disabled",
+        "description": "",
         "name": "disabled",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
         ],
@@ -234,15 +214,11 @@
       },
       "readOnly": {
         "defaultValue": null,
-        "description": "Sett til true om skjema-elementet er i read-only modus",
+        "description": "",
         "name": "readOnly",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
         ],
@@ -306,14 +282,6 @@
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
             "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "HTMLAttributes"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
           }
         ],
         "required": false,
@@ -323,19 +291,11 @@
       },
       "style": {
         "defaultValue": null,
-        "description": "Ekstra styling",
+        "description": "",
         "name": "style",
         "declarations": [
           {
             "fileName": "design-system/packages/datepicker/src/TimePicker/TimePicker.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "HTMLAttributes"
-          },
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
             "name": "TypeLiteral"
           }
         ],
@@ -372,23 +332,6 @@
         "required": false,
         "type": {
           "name": "ReactNode"
-        }
-      },
-      "size": {
-        "defaultValue": {
-          "value": "\"medium\""
-        },
-        "description": "Størrelsen på skjemaelementet",
-        "name": "size",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "\"medium\" | \"large\" | undefined"
         }
       },
       "labelTooltipButtonAriaLabel": {
@@ -449,21 +392,6 @@
         "required": false,
         "type": {
           "name": "string | undefined"
-        }
-      },
-      "isFilled": {
-        "defaultValue": null,
-        "description": "Om inputfeltet er fylt med data. Brukes for plassering av label",
-        "name": "isFilled",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
         }
       },
       "labelProps": {

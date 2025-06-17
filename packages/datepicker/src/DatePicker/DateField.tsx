@@ -38,11 +38,10 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type DateFieldProps<DateType extends DateValue> = Omit<
+export type ExtendedDateFieldProps<DateType extends DateValue> = Omit<
   AriaDatePickerProps<DateType>,
+  | keyof BaseDateFieldProps<DateType>
   | 'value'
-  | 'onChange'
-  | 'label'
   | 'hideTimeZone'
   | 'placeholder'
   | 'placeholderValue'
@@ -53,82 +52,92 @@ export type DateFieldProps<DateType extends DateValue> = Omit<
   Partial<
     Omit<
       BaseFormControlProps,
-      'children' | 'label' | 'defaultValue' | 'value' | 'onChange'
+      | keyof BaseDateFieldProps<DateType>
+      | 'children'
+      | 'defaultValue'
+      | 'value'
+      | 'isFilled'
+      | 'size'
     >
-  > & {
-    /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
-    selectedDate: DateType | null;
-    /** Kalles når dato endres. Tid i '@internationalized/date'-pakkens format */
-    onChange?: (value: MappedDateValue<DateType> | null) => void;
-    /** Ledetekst til DateField */
-    label: string;
-    /** BCP47-språkkoden til locale-en du ønsker å bruke.
-     * @default Brukerenhetens selvvalgte locale
-     */
-    locale?: string;
-    /** Viser den gjeldende tidssonen hvis en er valgt
-     * @default false
-     */
-    showTimeZone?: boolean;
-    /** Brukes for å vise tid i datovelgeren. Velg minste enhet som skal vises.
-     * Hvis du vil vise tid vil "minute" vise minutt og ikke sekund, mens "second" viser
-     * sekunder også.
-     * @default "day"
-     */
-    granularity?: Granularity;
-    /** Viser tidspunkt i tillegg til dato.
-     * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
-     */
-    showTime?: boolean;
-    /** Tidligste gyldige datovalg.
-     * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
-     *
-     * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-     * Gyldig fra og med den tiden som legges inn som minDate.
-     * Dato uten tid vil være gyldig hele minDate-dagen */
-    minDate?: DateValue;
-    /** Seneste gyldige datovalg.
-     * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
-     *
-     * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
-     * Gyldig til og med den tiden som legges inn som maxDate.
-     * Dato uten tid vil være gyldig hele maxDate-dagen */
-    maxDate?: DateValue;
-    /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
-     * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
-    isDateUnavailable?: (date: DateValue) => boolean;
-    /** Tvinger typen på onChange til den gitte typen.
-     * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
-     * DatePicker alltid skal returnere f.eks ZonedDateTime.
-     *
-     * Som standard returnerer onChange DateValue basert på selectedDate,
-     * eller CalendarDate hvis selectedDate er 'null'.
-     *
-     * @default undefined
-     */
-    forcedReturnType?: ForcedReturnType;
-    /** Varselmelding, som vil komme under TimePicker */
-    feedback?: string;
-    /** Valideringsvariant*/
-    variant?: VariantType | typeof error | typeof info;
-    /** Varselmelding som forteller om ugyldig dato
-     * @default "Ugyldig dato"
-     */
-    validationFeedback?: string;
-    /** Valideringsvariant for melding om ugyldig dato
-     * @default "negative"
-     */
-    validationVariant?: VariantType | typeof error | typeof info;
-    labelTooltip?: React.ReactNode;
-    labelProps?: React.DOMAttributes<Element>;
-    fieldProps?: DateFieldProps<DateType>;
-    dateFieldRef?: React.Ref<HTMLDivElement>;
-    disabled?: boolean;
-    readOnly?: boolean;
-    /** Ekstra klassenavn */
-    className?: string;
-    style?: React.CSSProperties;
-  };
+  >;
+
+export type BaseDateFieldProps<DateType extends DateValue> = {
+  /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
+  selectedDate: DateType | null;
+  /** Kalles når dato endres. Tid i '@internationalized/date'-pakkens format */
+  onChange?: (value: MappedDateValue<DateType> | null) => void;
+  /** Ledetekst til DateField */
+  label: string;
+  /** BCP47-språkkoden til locale-en du ønsker å bruke.
+   * @default Brukerenhetens selvvalgte locale
+   */
+  locale?: string;
+  /** Viser den gjeldende tidssonen hvis en er valgt
+   * @default false
+   */
+  showTimeZone?: boolean;
+  /** Brukes for å vise tid i datovelgeren. Velg minste enhet som skal vises.
+   * Hvis du vil vise tid vil "minute" vise minutt og ikke sekund, mens "second" viser
+   * sekunder også.
+   * @default "day"
+   */
+  granularity?: Granularity;
+  /** Viser tidspunkt i tillegg til dato.
+   * OBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime
+   */
+  showTime?: boolean;
+  /** Tidligste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig fra og med den tiden som legges inn som minDate.
+   * Dato uten tid vil være gyldig hele minDate-dagen */
+  minDate?: DateValue;
+  /** Seneste gyldige datovalg.
+   * Eks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone
+   *
+   * OBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.
+   * Gyldig til og med den tiden som legges inn som maxDate.
+   * Dato uten tid vil være gyldig hele maxDate-dagen */
+  maxDate?: DateValue;
+  /** Funksjon som tar inn en dato og sier om den er utilgjengelig.
+   * Eks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig */
+  isDateUnavailable?: (date: DateValue) => boolean;
+  /** Tvinger typen på onChange til den gitte typen.
+   * Dette er nyttig når utgangsverdien din er 'null', men du ønsker at
+   * DatePicker alltid skal returnere f.eks ZonedDateTime.
+   *
+   * Som standard returnerer onChange DateValue basert på selectedDate,
+   * eller CalendarDate hvis selectedDate er 'null'.
+   *
+   * @default undefined
+   */
+  forcedReturnType?: ForcedReturnType;
+  /** Varselmelding, som vil komme under TimePicker */
+  feedback?: string;
+  /** Valideringsvariant*/
+  variant?: VariantType | typeof error | typeof info;
+  /** Varselmelding som forteller om ugyldig dato
+   * @default "Ugyldig dato"
+   */
+  validationFeedback?: string;
+  /** Valideringsvariant for melding om ugyldig dato
+   * @default "negative"
+   */
+  validationVariant?: VariantType | typeof error | typeof info;
+  labelTooltip?: React.ReactNode;
+  labelProps?: React.DOMAttributes<Element>;
+  fieldProps?: DateFieldProps<DateType>;
+  dateFieldRef?: React.Ref<HTMLDivElement>;
+  disabled?: boolean;
+  readOnly?: boolean;
+  /** Ekstra klassenavn */
+  className?: string;
+  style?: React.CSSProperties;
+};
+
+export type DateFieldProps<DateType extends DateValue> =
+  BaseDateFieldProps<DateType> & ExtendedDateFieldProps<DateType>;
 
 export const DateField = <DateType extends DateValue>({
   selectedDate,

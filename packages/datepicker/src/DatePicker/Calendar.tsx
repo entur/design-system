@@ -23,10 +23,10 @@ import { DateFieldProps } from './DateField';
 
 import './Calendar.scss';
 
-export type CalendarProps<DateType extends DateValue> = Omit<
+type ExtendedCalendarProps<DateType extends DateValue> = Omit<
   AriaCalendarProps<DateType>,
+  | keyof BaseCalendarProps<DateType>
   | 'value'
-  | 'onChange'
   | 'label'
   | 'hideTimeZone'
   | 'placeholder'
@@ -34,7 +34,9 @@ export type CalendarProps<DateType extends DateValue> = Omit<
   | 'defaultValue'
   | 'minValue'
   | 'maxValue'
-> & {
+>;
+
+type BaseCalendarProps<DateType extends DateValue> = {
   selectedDate: DateType | null;
   onChange?: (selectedDate: MappedDateValue<DateType> | null) => void;
   navigationDescription?: string;
@@ -82,6 +84,9 @@ export type CalendarProps<DateType extends DateValue> = Omit<
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
   forcedReturnType?: DateFieldProps<DateType>['forcedReturnType'];
 };
+
+export type CalendarProps<DateType extends DateValue> =
+  BaseCalendarProps<DateType> & ExtendedCalendarProps<DateType>;
 
 export const Calendar = <DateType extends DateValue>({
   locale: localOverride,

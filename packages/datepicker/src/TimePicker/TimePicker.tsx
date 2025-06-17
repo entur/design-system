@@ -26,7 +26,26 @@ const info = 'info';
 /** @deprecated use variant="negative" instead */
 const error = 'error';
 
-export type TimePickerProps<TimeType extends TimeValue> = {
+type ExtendedTimePickerProps<TimeType extends TimeValue> = Omit<
+  AriaTimeFieldProps<TimeType>,
+  | keyof BaseTimePickerProps<TimeValue>
+  | 'value'
+  | 'hideTimeZone'
+  | 'placeholder'
+  | 'minValue'
+  | 'maxValue'
+> &
+  Omit<
+    Partial<BaseFormControlProps>,
+    | keyof BaseTimePickerProps<TimeType>
+    | 'children'
+    | 'defaultValue'
+    | 'value'
+    | 'isFilled'
+    | 'size'
+  >;
+
+type BaseTimePickerProps<TimeType extends TimeValue> = {
   /** Den valgte tiden. Tid i '@internationalized/date'-pakkens format */
   selectedTime: TimeType | null;
   /** Kalles når tiden endres. Tid i '@internationalized/date'-pakkens format */
@@ -82,17 +101,10 @@ export type TimePickerProps<TimeType extends TimeValue> = {
   /** Ekstra klassenavn */
   className?: string;
   style?: React.CSSProperties;
-} & Omit<
-  AriaTimeFieldProps<TimeType>,
-  | 'value'
-  | 'onChange'
-  | 'label'
-  | 'hideTimeZone'
-  | 'placeholder'
-  | 'minValue'
-  | 'maxValue'
-> &
-  Omit<Partial<BaseFormControlProps>, 'children' | 'label'>;
+};
+
+export type TimePickerProps<TimeType extends TimeValue> =
+  BaseTimePickerProps<TimeType> & ExtendedTimePickerProps<TimeType>;
 
 export const TimePicker = <TimeType extends TimeValue>({
   selectedTime,
