@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.11](https://github.com/entur/design-system/compare/@entur/typography@1.9.10...@entur/typography@1.9.11) (2025-06-17)
+
+**Note:** Version bump only for package @entur/typography
+
 ## [1.9.10](https://github.com/entur/design-system/compare/@entur/typography@1.9.10-beta.0...@entur/typography@1.9.10) (2025-06-06)
 
 **Note:** Version bump only for package @entur/typography

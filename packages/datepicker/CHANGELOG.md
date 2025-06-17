@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.6...@entur/datepicker@11.1.0) (2025-06-17)
+
+### Bug Fixes
+
+- **datepicker:** wrong type in timepicker, omit onchange ([6383f35](https://github.com/entur/design-system/commit/6383f356897c2e81d67664ebbe3331d15ebb7a28))
+
+### Features
+
+- **datepicker, timepicker:** improve types structure ([b79f00c](https://github.com/entur/design-system/commit/b79f00ce999437b9132aac6f80e33d21f7d8075c))
+
 ## [11.0.6](https://github.com/entur/design-system/compare/@entur/datepicker@11.0.6-beta.0...@entur/datepicker@11.0.6) (2025-06-06)
 
 **Note:** Version bump only for package @entur/datepicker

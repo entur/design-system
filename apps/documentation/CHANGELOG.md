@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/entur/design-system/compare/@entur/documentation@6.4.0...@entur/documentation@6.5.0) (2025-06-17)
+
+### Bug Fixes
+
+- **docs:** fix broken internal links ([fd74e6f](https://github.com/entur/design-system/commit/fd74e6f0650d053e96d7892b308dd8e34cf5f4af))
+- **page-builder:** downgrade gatsby-source-sanity ([d5554c1](https://github.com/entur/design-system/commit/d5554c11993cbf3a04814c641b0be7917e160694))
+- **page-builder:** download link for image-and-text now triggers download ([293314c](https://github.com/entur/design-system/commit/293314c065e5585e67211e9e5d98ab75412a3fc2))
+- **page-builder:** improve components ([3b0157d](https://github.com/entur/design-system/commit/3b0157d4082255a7a1b100c24d43df63b17ec91b))
+- **ressurser:** update links for resources overview page ([2b63046](https://github.com/entur/design-system/commit/2b6304677292aaf659badc044402463c607d92a5))
+- **website:** make sanity ImageAndText work with ImageDisplay ([2990986](https://github.com/entur/design-system/commit/2990986d02d46443c468fd61e264251414052b3e))
+- **website:** make side navigation desktop work with page builder ([0202aeb](https://github.com/entur/design-system/commit/0202aeb4d2cc6f4c8770039061b940baf20406be))
+- **website:** update urls and names to work with new side navigation system ([d1ce4e2](https://github.com/entur/design-system/commit/d1ce4e248deb4df09a2ffdff140f0e5e54e219ab))
+
+### Features
+
+- **datepicker, timepicker:** improve types structure ([b79f00c](https://github.com/entur/design-system/commit/b79f00ce999437b9132aac6f80e33d21f7d8075c))
+- **page-builder:** add download link to image ([d9153b1](https://github.com/entur/design-system/commit/d9153b1599a7204398a25715825d7943366d9d7f))
+- **page-builder:** add group type ([33610bd](https://github.com/entur/design-system/commit/33610bd293148b294615ac9679bb9b62cdbb84ee))
+- **page-builder:** add inline icons to rich text editor in sanity ([84ae384](https://github.com/entur/design-system/commit/84ae384d3244d18c4e72849641b5789ea0ca6466))
+- **page-builder:** add link type ([e6f407b](https://github.com/entur/design-system/commit/e6f407b77f7024f5214ebfe00e1999ca52ef8cf3))
+- **page-builder:** add SEO to page builder sites ([d883260](https://github.com/entur/design-system/commit/d883260e01093ede59bc502e106446ab89753d16))
+- **page-builder:** create path for page from categories and title ([940e351](https://github.com/entur/design-system/commit/940e35112cac851f06f0aea9d8d3167c3b31a4c9))
+- **page-builder:** move all blocks into text editor ([c4641cf](https://github.com/entur/design-system/commit/c4641cfbb32103709e8eb707bbb082fb9103b126))
+- **page-builder:** wip add images in text block directly ([4873ab2](https://github.com/entur/design-system/commit/4873ab2883e2feda2c56e6d216ce7813a8a3f9fc))
+- **website:** add support for sanity content ([2652b6b](https://github.com/entur/design-system/commit/2652b6bcd01f18c96616cd4cb43f679c1a8b3ec3))
+
 # [6.4.0](https://github.com/entur/design-system/compare/@entur/documentation@6.4.0-beta.0...@entur/documentation@6.4.0) (2025-06-06)
 
 **Note:** Version bump only for package @entur/documentation

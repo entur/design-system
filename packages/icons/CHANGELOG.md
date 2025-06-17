@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.14.0](https://github.com/entur/design-system/compare/@entur/icons@7.13.0...@entur/icons@7.14.0) (2025-06-17)
+
+### Features
+
+- **icons:** add figma and mural icons ([2390f50](https://github.com/entur/design-system/commit/2390f506a6fb88e01eb834f16ed59c53be60683f))
+- **icons:** add sjnord icon ([a94830e](https://github.com/entur/design-system/commit/a94830ee6f8d0d03a15dd2676b77441fd43d52a7))
+
 # [7.13.0](https://github.com/entur/design-system/compare/@entur/icons@7.13.0-beta.0...@entur/icons@7.13.0) (2025-06-06)
 
 **Note:** Version bump only for package @entur/icons
