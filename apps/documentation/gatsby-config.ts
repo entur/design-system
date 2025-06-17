@@ -19,7 +19,7 @@ const config: GatsbyConfig = {
       options: {
         projectId: 'npa0lfls',
         dataset: 'production',
-        watchMode: true,
+        watchMode: process.env.NODE_ENV === 'development',
       },
     },
     'gatsby-plugin-image',
