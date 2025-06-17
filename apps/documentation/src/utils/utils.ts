@@ -1,3 +1,5 @@
+import * as icons from '@entur/icons';
+
 export function pxToRem(pxValue: number | undefined) {
   if (pxValue === undefined) return undefined;
   const rootFontSize = window.getComputedStyle(document.body)?.['font-size'] as
@@ -13,4 +15,17 @@ export function pxToRem(pxValue: number | undefined) {
 
   const remValue = pxValue / rootFontNumber;
   return remValue;
+}
+
+type IconName = keyof typeof icons;
+
+export function getIconByName(iconName: string | undefined) {
+  if (iconName === undefined) return null;
+  if (Object.keys(icons).includes(iconName)) return icons[iconName as IconName];
+
+  return null;
+}
+
+export function isEnturIcon(iconName: string): iconName is keyof typeof icons {
+  return iconName in icons;
 }

@@ -1,72 +1,48 @@
-import React from 'react';
-
 export type MenuItem = {
   id: string;
-  frontmatter: {
-    title: string;
-    route: string;
-    parent?: string;
-    menu: string;
-    order?: number;
-    hide?: boolean;
-    [key: string]: any;
-  };
+  title: string;
+  category?: string;
+  subcategory?: string;
+  order?: number;
+  categoryIndex?: boolean;
 };
 
 export const isActive = (route: string, location: Location) => {
-  return removeTrailingSlash(route) === removeTrailingSlash(location.pathname);
+  return (
+    removeLeadingAndTrailingSlash(route) ===
+    removeLeadingAndTrailingSlash(location.pathname)
+  );
 };
 
 export const removeTrailingSlash = (str?: string) =>
   str && str.endsWith('/') ? str.slice(0, -1) : str;
 
-export const normalizePath = (path: string): string => {
-  return path.replace(/\//g, '').replace(/-/g, ' ').toLowerCase();
+export const removeLeadingSlash = (str?: string) =>
+  str && str.startsWith('/') ? str.slice(1) : str;
+
+export function removeLeadingAndTrailingSlash(str?: string) {
+  return removeLeadingSlash(removeTrailingSlash(str));
+}
+
+export const normalizeString = (string?: string): string => {
+  if (string === undefined) return '';
+  return string.replace(/\//g, '').replace(/-/g, ' ').toLowerCase();
 };
 
-export const hasSameParentCategory = (
-  menuItem: MenuItem,
-  currentDoc: string,
-): boolean => {
-  const normalizedParent = normalizePath(menuItem.frontmatter.parent || '');
-  const normalizedCurrentDoc = normalizePath(currentDoc);
-  if (normalizedParent === normalizedCurrentDoc) {
-    return true;
-  }
-
-  const menuName = menuItem.frontmatter.menu;
-  if (Array.isArray(menuName)) {
-    return menuName.some((subMenuItem: MenuItem) =>
-      hasSameParentCategory(subMenuItem, currentDoc),
-    );
-  } else if (typeof menuName === 'string') {
-    if (
-      normalizedParent === normalizedCurrentDoc ||
-      normalizedCurrentDoc.startsWith(normalizedParent + '/')
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  return false;
-};
-
-export function compare(a: MenuItem, b: MenuItem) {
-  if (!a.frontmatter.title || !b.frontmatter.title) {
+export function menuItemComparator(a: MenuItem, b: MenuItem) {
+  if (!a.title || !b.title) {
     console.error('Missing title in frontmatter:', a, b);
   }
 
-  const menuItemAOrder = a.frontmatter.order ? a.frontmatter.order : 1000;
-  const menuItemBOrder = b.frontmatter.order ? b.frontmatter.order : 1000;
+  const menuItemAOrder = a.order ? a.order : 1000;
+  const menuItemBOrder = b.order ? b.order : 1000;
 
   if (menuItemAOrder !== menuItemBOrder) {
     return menuItemAOrder - menuItemBOrder;
   }
 
-  const titleA = (a.frontmatter.title || '').toUpperCase();
-  const titleB = (b.frontmatter.title || '').toUpperCase();
+  const titleA = (a.title || '').toUpperCase();
+  const titleB = (b.title || '').toUpperCase();
 
   if (titleA < titleB) {
     return -1;
@@ -117,13 +93,13 @@ export const tokensMenuSortOrder = {
   'Øvrige tokens': 3,
 } as any;
 
-export const sortComponentMenus = (
-  a: MenuItem,
-  b: MenuItem,
-  sortOrder: any,
+export const sortSubCategoriesForCategory = (
+  subcategoryA: string,
+  subcategoryB: string,
+  category: string,
 ) => {
-  const aSortOrder = sortOrder[a.frontmatter.title] || 10;
-  const bSortOrder = sortOrder[b.frontmatter.title] || 10;
+  const aSortOrder = sorters[category]?.[subcategoryA] || 10;
+  const bSortOrder = sorters[category]?.[subcategoryB] || 10;
   return aSortOrder - bSortOrder;
 };
 
@@ -136,30 +112,33 @@ export const sorters: { [key: string]: any } = {
   ressurser: ressurserMenuSortOrder,
 };
 
-export function useSideMenuScroll(page: string) {
-  const [scrollPosition, setScrollPosition] = React.useState<number>(0);
+export function getSanitizedPath({
+  category,
+  subcategory,
+  title,
+  categoryIndex,
+}: Pick<MenuItem, 'category' | 'subcategory' | 'title' | 'categoryIndex'>) {
+  function sanitizeText(text?: string) {
+    if (!text) return undefined;
+    return text
+      .toLowerCase()
+      .replaceAll('æ', 'ae')
+      .replaceAll('ø', 'o')
+      .replaceAll('å', 'a')
+      .replaceAll('&', 'og')
+      .replace(/\?$/, '')
+      .replace(/ +/g, '-')
+      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
+  }
 
-  // React.useEffect(() => {
-  //   // Retrieve the scroll position from sessionStorage
-  //   const savedPosition = sessionStorage.getItem(`scroll-${page}`);
-  //   if (savedPosition !== null) {
-  //     // setScrollPosition(Number(savedPosition)); // Ensure it's a number
-  //   }
-  //   return () => {
-  //     console.log('removescroll!');
-  //     console.log('page', page);
-  //     sessionStorage.removeItem(`scroll-${page}`);
-  //   };
-  // }, [page]);
+  const sanitizedCategory = sanitizeText(category);
+  if (categoryIndex) {
+    return `/${sanitizedCategory}`;
+  }
 
-  // React.useEffect(() => {
-  //   console.log('setscroll!');
-  //   const currentScroll = scrollPosition.toString();
-  //   if (currentScroll !== '0') {
-  //     // Save the current scroll position to sessionStorage
-  //     sessionStorage.setItem(`scroll-${page}`, scrollPosition.toString());
-  //   } else sessionStorage.removeItem(`scroll-${page}`);
-  // }, [scrollPosition, page]);
+  const sanitizedTitle = sanitizeText(title);
+  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
 
-  return [scrollPosition, setScrollPosition] as const;
+  const sanitizedSubcategory = sanitizeText(subcategory);
+  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
 }

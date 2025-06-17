@@ -226,7 +226,7 @@ export const ColorDrawer: React.FC<{
       <Heading4>Kontrast</Heading4>
       <Paragraph>
         Lær mer om{' '}
-        <LinkText as={Link} to="/universell-utforming/kontrast-sjekker">
+        <LinkText as={Link} to="/universell-utforming/kontrastsjekker">
           kontrastkrav for farger.
         </LinkText>
       </Paragraph>

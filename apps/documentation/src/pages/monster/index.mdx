@@ -5,6 +5,7 @@ route: /monster
 parent: monster
 menu: Oversikt
 order: 1
+categoryIndex: true
 ---
 
 import { SEO } from '@components/seo/SEO';
@@ -36,7 +37,7 @@ query komigang {
   <ComponentPreview
     title="Statusbeskjeder"
     description="Statusbeskjeder gir brukeren informasjon om tilstand eller resultat av en handling, som suksess, feil eller pågående prosess."
-    to="/monster/statusbeskjeder"
+    to="/monster/monster/statusbeskjeder"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Sheep").childImageSharp.gatsbyImageData}

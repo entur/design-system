@@ -1,0 +1,28 @@
+@use '@entur/tokens/dist/styles.scss' as eds;
+
+.image-and-text {
+  $self: &;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: eds.$space-default;
+
+  &__image {
+    grid-column: 1 / -1;
+    align-self: center;
+    background-color: var(--basecolors-frame-tint);
+
+    #{ $self }--add-margin & {
+      padding: eds.$space-extra-large3;
+      border-radius: eds.$border-radiuses-large;
+
+      img {
+        border-radius: unset;
+      }
+    }
+  }
+}
+
+.text-first {
+  flex-direction: column-reverse;
+}

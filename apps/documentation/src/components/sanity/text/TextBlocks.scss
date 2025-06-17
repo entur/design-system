@@ -1,0 +1,11 @@
+@use "@entur/tokens/dist/styles.scss" as eds;
+
+.text-blocks {
+  &:not(:first-child) {
+    margin-top: eds.$space-extra-large5;
+  }
+
+  :is(h2, h3, h4, h5):first-child {
+    margin-top: 0;
+  }
+}

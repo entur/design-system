@@ -55,6 +55,65 @@ exports.onPreBootstrap = () => {
   }
   fs.copySync('../../packages/icons/src/svgs', `${__dirname}/icons/`);
 };
+async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allSanityPage {
+        nodes {
+          id
+          title
+          category
+          subcategory
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const pages = (result.data.allSanityPage || {}).nodes || [];
+
+  pages.forEach(page => {
+    const id = page.id;
+    const path = getSanitizedPath({
+      title: page.title,
+      category: page.category,
+      subcategory: page.subcategory,
+    });
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/ContentTemplate.tsx'),
+      context: { id },
+    });
+  });
+  reporter.info(`[create page] Created ${pages.length} documentation pages`);
+}
+
+function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
+  function sanitizeText(text) {
+    if (!text) return undefined;
+    return text
+      .toLowerCase()
+      .replaceAll('æ', 'ae')
+      .replaceAll('ø', 'o')
+      .replaceAll('å', 'a')
+      .replaceAll('&', 'og')
+      .replace(/\?$/, '')
+      .replace(/ +/g, '-')
+      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
+  }
+
+  const sanitizedCategory = sanitizeText(category);
+  if (categoryIndex) return `/${sanitizedCategory}`;
+
+  const sanitizedTitle = sanitizeText(title);
+  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
+
+  const sanitizedSubcategory = sanitizeText(subcategory);
+  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
+}
 
 exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
   // get data from GitHub API at build time
@@ -80,4 +139,8 @@ exports.sourceNodes = async ({ createNodeId, actions: { createNode } }) => {
       });
     }),
   );
+};
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await createDocumentationPagesFromSanity(graphql, actions, reporter);
 };

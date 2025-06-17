@@ -4,6 +4,7 @@ description: Entur Linje har et komplett komponentbibliotek som lar deg lage bru
 route: /komponenter
 parent: Komponenter
 menu: Oversikt
+categoryIndex: true
 ---
 
 import { SEO } from '@components/seo/SEO';
@@ -65,7 +66,7 @@ import { GridContainer } from '@entur/grid';
   <ComponentPreview
     title="FAB"
     description="Flytende handlingsknapp i en sirkulær form. Finnes med kun ikon eller i en bredere variant med tekst i tillegg."
-    to="/komponenter/knapper/floating-button"
+    to="/komponenter/knapper/floatingbutton"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "FAB").childImageSharp.gatsbyImageData}
@@ -74,9 +75,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Icon Button"
+    title="IconButton"
     description="Ikonknapper har bare et ikon uten label og lar brukerne gjøre handlinger og ta valg med et enkelt klikk."
-    to="/komponenter/knapper/icon-button"
+    to="/komponenter/knapper/iconbutton"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Icon button").childImageSharp.gatsbyImageData}
@@ -85,9 +86,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Square Button"
+    title="SquareButton"
     description="Kvadratiske knapper består av et ikon og en valgfri tilhørende label til høyre eller venstre for knappen."
-    to="/komponenter/knapper/square-button"
+    to="/komponenter/knapper/squarebutton"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Square button").childImageSharp.gatsbyImageData}
@@ -112,7 +113,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Datepicker"
+    title="DatePicker"
     description="Datepicker og Native Datepicker er komponenter for å velge dato."
     to="/komponenter/skjemaelementer/datepicker"
   >
@@ -134,7 +135,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="File upload"
+    title="FileUpload"
     description="Filopplaster brukes for å velge en eller flere filer som skal lastes opp til et bestemt sted."
     to="/komponenter/skjemaelementer/fileupload"
   >
@@ -145,7 +146,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Multi select"
+    title="MultiSelect"
     description="Multi select brukes for å velge opp til flere elementer til filtrering eller sortering i en liste."
     to="/komponenter/skjemaelementer/multiselect"
   >
@@ -167,9 +168,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Radio panel"
+    title="RadioPanel"
     description="Fungerer som radio button, men med en større trykkflate, og muligheter for å vise ekstra informasjon."
-    to="/komponenter/skjemaelementer/radio-panel"
+    to="/komponenter/skjemaelementer/radiopanel"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Radio panel").childImageSharp.gatsbyImageData}
@@ -178,7 +179,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Segmented control"
+    title="SegmentedControl"
     description="Segmented controls tilbyr nært beslektede valg som påvirker et objekt, en tilstand eller en visning."
     to="/komponenter/skjemaelementer/segmentedcontrol"
   >
@@ -200,7 +201,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Text area"
+    title="TextArea"
     description="Text area brukes til å fylle inn lengre tekstinnhold som strekker seg over flere linjer."
     to="/komponenter/skjemaelementer/textarea"
   >
@@ -211,7 +212,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Text field"
+    title="TextField"
     description="Text field brukes til å skrive inn eller redigere kortfattet tekst."
     to="/komponenter/skjemaelementer/textfield"
   >
@@ -222,7 +223,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Timepicker"
+    title="TimePicker"
     description="Timepicker er en komponent for å velge et tidspunkt."
     to="/komponenter/skjemaelementer/timepicker"
   >
@@ -249,9 +250,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Overflow menu"
+    title="OverflowMenu"
     description="Overflow menu består av en ikonknapp som viser en liste over handlinger når man klikker på den."
-    to="/komponenter/navigasjon/overflow-menu"
+    to="/komponenter/navigasjon/overflowmenu"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Overflow menu").childImageSharp.gatsbyImageData}
@@ -271,9 +272,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Side navigation"
+    title="SideNavigation"
     description="Side navigation brukes som en global meny for å vise et navigasjons-hierarki med ett eller to nivåer."
-    to="/komponenter/navigasjon/side-navigation"
+    to="/komponenter/navigasjon/sidenavigation"
   >
       <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Side navigation").childImageSharp.gatsbyImageData}
@@ -353,7 +354,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Media card"
+    title="MediaCard"
     description="Media card gir et kort sammendrag av innhold og støtter video, bilde eller grafikk."
     to="/komponenter/layout-og-flater/mediacard"
   >
@@ -473,7 +474,7 @@ import { GridContainer } from '@entur/grid';
 
 <GridContainer spacing="large">
   <ComponentPreview
-    title="Travel switch"
+    title="TravelSwitch"
     description="Travel Switch er en variant av switch som brukes til filtrering av transportmidler."
     to="/komponenter/reise/travelswitch"
   >
@@ -484,7 +485,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Travel header"
+    title="TravelHeader"
     description="Travel header presenterer destinasjonene som man reiser fra og til. "
     to="/komponenter/reise/travelheader"
   >
@@ -495,9 +496,9 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Travel leg"
+    title="TravelLeg"
     description="Travel leg benyttes til å visualisere reisestrekningen mellom to destinasjoner."
-    to="/komponenter/reise/travel-leg"
+    to="/komponenter/reise/travelleg"
   >
   <ImageDisplay
     imgSource={props.data.imagefiles.images.find(image => image.name === "Travel leg").childImageSharp.gatsbyImageData}
@@ -506,7 +507,7 @@ import { GridContainer } from '@entur/grid';
   />
   </ComponentPreview>
   <ComponentPreview
-    title="Travel tag"
+    title="TravelTag"
     description="Travel tag brukes til å opplyse om transportmiddel og linjenummer til en avgang."
     to="/komponenter/reise/traveltag"
   >

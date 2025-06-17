@@ -1,0 +1,125 @@
+---
+title: Retro
+description: En retro er et fast møte der teamet reflekterer over det som har fungert bra og hva som kan forbedres.
+route: /ressurser/workshopmaler/retro
+parent: ressurser
+menu: Workshopmaler
+---
+
+import { graphql } from 'gatsby';
+import { SEO } from '@components/seo/SEO';
+import figma from './figma.svg'
+import mural from './mural.svg'
+import { DetailsList }  from '@components/Pages/DetailsList';
+import { GuidelinesBlock }  from '@components/Pages/GuidelinesBlock';
+import { TimeglassIcon, UsersIcon, ClockIcon } from '@entur/icons';
+import { MediaCard } from '@entur/layout';
+
+export const Head = ( props ) => {
+  return <SEO title={props.pageContext.frontmatter.title} description={props.pageContext.frontmatter.description} pathname={props.pageContext.frontmatter.route} />
+}
+
+export const query = graphql`
+query wsQuery {
+    svgFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "svg"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+    pngFiles: allFile(filter: {sourceInstanceName: {eq: "media"}, relativeDirectory:  {glob: "images/ressurser/workshopmaler/**"}, extension: {eq: "png"}}) {
+    images: nodes {
+      name
+       publicURL
+    }
+  }
+}
+`;
+
+<PageHeader/>
+
+Ved å gjennomføre retro skal deltakerne være i stand til å øke produktiviteten sin. I praksis kan dette gjøres ved å utarbeide forbedringstiltak for å løse både personlige og tekniske utfordringer i teamet. Det er utformet og beskrevet flere metoder for hvordan denne praksisen kan gjennomføres. Hvilken metode som passer teamet best, avhenger av teamets sammensetning, kultur og nåværende behov.
+
+<DetailsList
+  items={[
+    { icon: <TimeglassIcon />, label: 'Tidsbruk', description: '60-90' },
+    { icon: <UsersIcon />, label: 'Deltakere', description: '4-10' },
+    { icon: <ClockIcon />, label: 'Når i prosess',description: '1 gang i måneden avhengig av behovet' },
+  ]}
+/>
+
+<ImageDisplay
+  imgSource={props.data.svgFiles.images.find(image => image.name === "retro").publicURL}
+  downloadSources={[
+    { src: props.data.svgFiles.images.find(image => image.name === "retro").publicURL, format: "svg", label: "Last ned illustrasjon i svg" },
+  ]}
+  name={props.data.svgFiles.images.find(image => image.name === "retro").name}
+  preset="centered-image"
+  alt=""
+  alwaysShowDownload
+  noBorderRadius
+/>
+
+
+<GridContainer spacing="medium" style={{marginTop: '2rem'}}>
+<GridItem small={12} medium={6}>
+<MediaCard title="Retromal fra Selvbetjent" href="https://app.mural.co/t/entur7578/m/entur7578/1661325184396/bf27fa30b45bac0045f3ce8993c4d663df574d4c">
+<img src={props.data.pngFiles.images.find(image => image.name === "retromal1").publicURL} alt="" />
+</MediaCard>
+</GridItem>
+<GridItem small={12} medium={6}>
+<MediaCard title="Retromal fra Designsystem" href="https://app.mural.co/t/entur7578/m/entur7578/1675667739480/f603144a76621c1f726269275c9ae6b3d6df9454">
+<img src={props.data.pngFiles.images.find(image => image.name === "retromal2").publicURL} alt="" />
+</MediaCard>
+</GridItem>
+</GridContainer>
+
+## Forberedelser
+
+<Paragraph margin="none">Digitalt:</Paragraph>
+- Last ned eller koble til malen, og importer den i verktøy som MURAL eller FigJam.
+- Sørg for at alle har tilgang til verktøyet før møtet.
+
+<Paragraph margin="none">Fysisk:</Paragraph>
+- Print ut malen i A1-format, eller tegn den på tavle.
+- Post-it-lapper i ulike farger, tusjer og penner.
+- Klokke eller timer for å holde styr på tiden.
+
+<GuidelinesBlock>
+<Paragraph margin="none">Retroansvarlig kan rulleres på i teamet, og den personen har ansvar for:</Paragraph>
+- Velge retromal
+- Være ordstyrer
+- Fasilitere og notere
+- Sikre at teamet holder tiden
+- Poste oppsummering i teamets kommunikasjonskanal eller dokumentasjonskanal.
+
+<Heading3 as="h4">Steg 1: Status på tidligere tiltak</Heading3>
+
+Teamet går gjennom tiltakene fra forrige retro. Har vi gjennomført tiltakene vi satte opp sist?
+
+<Heading3 as="h4">Steg 2: Hva har skjedd siden sist?</Heading3>
+
+Om dette steget er med i retromalen, skal man skrive en liste sammen med teamet av hva som har skjedd i teamet, enten nye features, sosiale ting, eller annet.
+
+<Heading3 as="h4">Steg 3. Skriv lapper</Heading3>
+
+Gå kjapt gjennom malen, og hvilke deler den inneholder.
+Deltakerne velger farge og skriver lapper som passer til de ulike delene.
+
+<Heading3 as="h4">Steg 4. Sortering og avstemning</Heading3>
+
+Etter lappene er skrevet må de sorteres i klynger av lignende lapper.
+Resten av teamet kan ta en velfortjent pause (5-10 min) mens du gjør dette med team lead eller en designer.
+Når lappene er sortert i klynger er det på tide å stemme. Her holdet det med 5 stemmer til hver.
+
+<Heading3 as="h4">Steg 5. Diskusjon og tiltak</Heading3>
+
+Ta de tre klyngene eller lappene som fikk flest stemmer og dra dem over i Diskusjon-kolonnen. Designerne har veto og kan legge til en ekstra lapp.
+Sett av ca. 5 minutt til hver diskusjon.
+Når diskusjonen er over skriver du ned eventuelle tiltak, og navn på de som er ansvarlig for å følge opp.
+
+<Heading3 as="h4">Steg 6. Etter retro</Heading3>
+
+Når retroen er over dokumenterer og deler retroansvarlig tiltakslisten, og tagger ansvarlige.
+
+</GuidelinesBlock>

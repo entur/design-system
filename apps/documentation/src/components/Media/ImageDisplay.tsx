@@ -52,12 +52,16 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
         <img src={imgSource} alt={alt} className="image-display__image" />
       ) : (
         imgSource !== undefined && (
-          <GatsbyImage image={imgSource as IGatsbyImageData} alt={alt} />
+          <GatsbyImage
+            image={imgSource as IGatsbyImageData}
+            alt={alt}
+            objectFit={preset?.includes('contain') ? 'contain' : undefined}
+          />
         )
       )}
 
       {downloadSources !== undefined && (
-        <Tooltip placement={'bottom'} content="Last ned …">
+        <Tooltip placement={'top'} content="Last ned …">
           <div
             className={classNames('image-display__download-container', {
               'image-display__download-container--show': alwaysShowDownload,
