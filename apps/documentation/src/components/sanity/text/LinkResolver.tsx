@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { NavigationCard } from '@entur/layout';
 import { Link } from '@entur/typography';
+import { PrimaryButton, SecondaryButton } from '@entur/button';
 import { getIconByName } from 'src/utils/utils';
 import { LinkType } from '../types';
 
@@ -21,10 +22,30 @@ export const LinkResolver = ({ value }: Props) => {
           title={linkText ?? ''}
           href={linkAddress}
           titleIcon={Icon ? <Icon /> : undefined}
+          style={{ maxWidth: '22.5rem' }}
         ></NavigationCard>
       );
+    case 'button':
+      return (
+        <PrimaryButton as="a" href={linkAddress}>
+          {linkText}
+          {Icon ? <Icon /> : undefined}
+        </PrimaryButton>
+      );
+    case 'button-secondary':
+      return (
+        <SecondaryButton as="a" href={linkAddress}>
+          {linkText}
+          {Icon ? <Icon /> : undefined}
+        </SecondaryButton>
+      );
     default:
-      return <Link href={linkAddress}>{linkText}</Link>;
+      return (
+        <Link href={linkAddress}>
+          {linkText}
+          {Icon ? <Icon /> : undefined}
+        </Link>
+      );
   }
 };
 

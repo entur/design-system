@@ -5,7 +5,8 @@ import IconInput from '../../components/IconInput'
 const LINK_TYPES = [
   {title: 'Tekst', value: 'text'},
   {title: 'Kort', value: 'navigationcard'},
-  {title: 'Primærnapp', value: 'button'},
+  {title: 'Primærknapp', value: 'button'},
+  {title: 'Sekundærknapp', value: 'button-secondary'},
 ]
 
 export const LinkType = defineType({

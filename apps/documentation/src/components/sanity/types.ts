@@ -37,7 +37,7 @@ export type LinkType = {
   _type: string;
   linkAddress?: string;
   linkText?: string;
-  linkType?: 'text' | 'navigationcard' | 'button';
+  linkType?: 'text' | 'navigationcard' | 'button' | 'button-secondary';
   iconName?: string;
 };
 
