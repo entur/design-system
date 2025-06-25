@@ -43,6 +43,7 @@
     }
     &:has(.eds-form-component--radio__radio--readonly) {
       cursor: default;
+      user-select: text;
     }
 
     .eds-form-component--radio__radio {

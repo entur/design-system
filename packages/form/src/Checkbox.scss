@@ -138,10 +138,12 @@
   }
   &--readonly {
     cursor: default;
-    pointer-events: none;
+    pointer-events: auto;
+    user-select: text;
 
     input {
-      pointer-events: none;
+      pointer-events: auto;
+      user-select: text;
     }
 
     .eds-checkbox__icon {
