@@ -123,13 +123,14 @@ Gjør feltet mulig å klikke på, men gi tilbakemelding når den ikke kan utfør
 - [4.1.3: Statusmeldinger](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
 
 #### Eksempel
+Readonly på radiobuttons settes på gruppenivå i `RadioGroup`
 
 ````jsx
  <RadioGroup
    name="readOnly-type"
    label="Velg readOnly"
    onChange={(e) => setValue(e.target.value)}
-   value="readOnly2"
+   value="readOnly1" // <--- må matche verdien til den Radio-en du vil velge
    readOnly
  >
    <Radio value="readOnly1">readOnly1</Radio>
