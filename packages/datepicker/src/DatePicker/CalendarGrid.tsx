@@ -17,6 +17,7 @@ type CalendarGridProps = {
   showWeekNumbers: boolean;
   weekNumberHeader: string;
   onSelectedCellClick?: () => void;
+  onCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
   ariaLabelForDate?: (date: CalendarDate) => string;
 };
@@ -25,6 +26,9 @@ export const CalendarGrid = ({
   state,
   navigationDescription,
   onSelectedCellClick = () => {
+    return;
+  },
+  onCellClick = () => {
     return;
   },
   showWeekNumbers,
@@ -109,6 +113,7 @@ export const CalendarGrid = ({
                             : ''
                         }
                         onSelectedCellClick={onSelectedCellClick}
+                        onCellClick={onCellClick}
                         classNameForDate={classNameForDate}
                         ariaLabelForDate={ariaLabelForDate}
                       />
