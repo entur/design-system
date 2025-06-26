@@ -79,12 +79,14 @@ export const CalendarCell = ({
         {...rest}
         onClick={e => {
           buttonProps.onClick && buttonProps.onClick(e);
+          // Used to force close calendar on select
           isSelected && onSelectedCellClick();
           cellCanBeSelected && onCellClick();
         }}
-        onKeyDown={e => {
-          buttonProps.onKeyDown && buttonProps.onKeyDown(e);
-          if (e.key === 'Enter' || e.key === ' ') {
+        onKeyUp={e => {
+          buttonProps.onKeyUp && buttonProps.onKeyUp(e);
+          if (e.key === 'Enter') {
+            // Used to force close calendar on select
             isSelected && onSelectedCellClick();
             cellCanBeSelected && onCellClick();
           }
