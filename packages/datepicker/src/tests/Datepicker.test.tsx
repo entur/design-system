@@ -14,6 +14,7 @@ import {
 import { toHaveNoViolations, axe } from 'jest-axe';
 
 import { DateField, DatePicker } from '../DatePicker';
+import { ForcedReturnType } from '../shared/utils';
 
 jest.mock('@floating-ui/react-dom', () => ({
   useFloating: jest.fn(() => {
@@ -604,6 +605,56 @@ test.each([
     expect(emittedDefaultDateCalendarWithGranularity).toHaveProperty(
       'timeZone',
     );
+  },
+);
+
+test.each([
+  {
+    props: { forcedReturnType: 'CalendarDate' as ForcedReturnType },
+    result: { notHave: 'hour' },
+  },
+  {
+    props: { forcedReturnType: 'CalendarDateTime' as ForcedReturnType },
+    result: { notHave: 'timeZone' },
+  },
+])(
+  'emits correct DateType based on forcedReturnType from datefield and calendar in datepicker',
+  async ({ props, result }) => {
+    const user = userEvent.setup();
+    const spy = jest.fn();
+    const currentDate = null;
+
+    const { container } = render(
+      <DatePicker
+        label="test"
+        selectedDate={currentDate}
+        onChange={spy}
+        locale="en-GB"
+        forcedReturnType={props.forcedReturnType}
+      />,
+    );
+
+    const dateFields = screen.getAllByRole('spinbutton');
+    for (const field of dateFields) {
+      field.focus();
+      await user.keyboard('{ArrowUp}');
+    }
+
+    const emittedDateValueFromDateField = spy.mock.calls[0][0];
+    expect(emittedDateValueFromDateField).not.toHaveProperty(result.notHave);
+
+    const openCalendarButton = container.getElementsByClassName(
+      'eds-datepicker__open-calendar-button',
+    )[0];
+    await user.click(openCalendarButton);
+
+    const todaysDateButton = container.getElementsByClassName(
+      'eds-datepicker__calendar__grid__cell--today',
+    )[0];
+    await user.click(todaysDateButton);
+
+    const emittedDateValueFromCalendar = spy.mock.calls[1][0];
+    expect(emittedDateValueFromCalendar).not.toHaveProperty(result.notHave);
   },
 );
 
