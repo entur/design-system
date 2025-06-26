@@ -33,6 +33,7 @@ const SPECIAL_OUTLIERS = [
   'CompassNeedleIcon',
   'FigmaIcon',
   'MuralIcon',
+  'ApplePayIcon',
 ];
 
 buildIconComponents();
