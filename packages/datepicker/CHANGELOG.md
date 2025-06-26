@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.1-beta.1](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.0...@entur/datepicker@11.1.1-beta.1) (2025-06-26)
+
+### Bug Fixes
+
+- **datepicker:** fix for calendar sometimes not closing on date select ([8797e53](https://github.com/entur/design-system/commit/8797e53aed63b9cde14fc2cacc3002ac87fc2331))
+- **datepicker:** fix forcedReturnType doesn't work in DatePicker ([4ac4ad5](https://github.com/entur/design-system/commit/4ac4ad5cde0c001112f4ff99f57ed147633e9b78))
+- **datepicker:** keyboard date selection doesn't work in calendar ([5179735](https://github.com/entur/design-system/commit/5179735db65badf834ab5385e2f390776959f029))
+
 ## [11.1.1-beta.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.0...@entur/datepicker@11.1.1-beta.0) (2025-06-26)
 
 ### Bug Fixes
