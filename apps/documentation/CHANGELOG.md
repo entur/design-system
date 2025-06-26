@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.5.0...@entur/documentation@6.6.0-beta.0) (2025-06-26)
+
+### Features
+
+- **page-builder:** add primary and secondary button link ([5c2f9cc](https://github.com/entur/design-system/commit/5c2f9cc92560f1904565e4befb3a7d1f7d517f8c))
+
 # [6.5.0](https://github.com/entur/design-system/compare/@entur/documentation@6.4.0...@entur/documentation@6.5.0) (2025-06-17)
 
 ### Bug Fixes
