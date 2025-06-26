@@ -265,22 +265,24 @@ export const Dropdown = React.forwardRef(
           },
         })}
         after={
-          <DropdownList
-            ariaLabelChosenSingular={ariaLabelChosenSingular}
-            ariaLabelSelectedItem={ariaLabelSelectedItem}
-            floatingStyles={floatingStyles}
-            getItemProps={getItemProps}
-            getMenuProps={getMenuProps}
-            highlightedIndex={highlightedIndex}
-            isOpen={isOpen}
-            listItems={normalizedItems}
-            noMatchesText={noMatchesText}
-            style={listStyle}
-            setListRef={refs.setFloating}
-            loading={loading ?? resolvedItemsLoading}
-            loadingText={loadingText}
-            selectedItems={selectedItem !== null ? [selectedItem] : []}
-          />
+          !readOnly && (
+            <DropdownList
+              ariaLabelChosenSingular={ariaLabelChosenSingular}
+              ariaLabelSelectedItem={ariaLabelSelectedItem}
+              floatingStyles={floatingStyles}
+              getItemProps={getItemProps}
+              getMenuProps={getMenuProps}
+              highlightedIndex={highlightedIndex}
+              isOpen={isOpen}
+              listItems={normalizedItems}
+              noMatchesText={noMatchesText}
+              style={listStyle}
+              setListRef={refs.setFloating}
+              loading={loading ?? resolvedItemsLoading}
+              loadingText={loadingText}
+              selectedItems={selectedItem !== null ? [selectedItem] : []}
+            />
+          )
         }
         {...rest}
         // Append is not supported as of now
