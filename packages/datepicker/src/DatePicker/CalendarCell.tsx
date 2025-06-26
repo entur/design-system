@@ -15,6 +15,7 @@ type CalendarCellProps = {
   date: CalendarDate;
   weekNumberString: string;
   onSelectedCellClick?: () => void;
+  onCellClick?: () => void;
   classNameForDate?: (date: CalendarDate) => string;
   ariaLabelForDate?: (date: CalendarDate) => string;
 };
@@ -23,6 +24,9 @@ export const CalendarCell = ({
   state,
   date,
   onSelectedCellClick = () => {
+    return;
+  },
+  onCellClick = () => {
     return;
   },
   weekNumberString,
@@ -45,6 +49,12 @@ export const CalendarCell = ({
   const ariaLabel = `${buttonProps['aria-label']}${weekNumberString} ${
     ariaLabelForDate?.(date) ?? ''
   }`;
+
+  const cellCanBeSelected = !(
+    isOutsideVisibleRange ||
+    isDisabled ||
+    isUnavailable
+  );
 
   return (
     <td {...cellProps} className="eds-datepicker__calendar__grid__cell__td">
@@ -70,11 +80,14 @@ export const CalendarCell = ({
         onClick={e => {
           buttonProps.onClick && buttonProps.onClick(e);
           isSelected && onSelectedCellClick();
+          cellCanBeSelected && onCellClick();
         }}
         onKeyDown={e => {
           buttonProps.onKeyDown && buttonProps.onKeyDown(e);
-          if (e.key === 'Enter' || e.key === ' ')
+          if (e.key === 'Enter' || e.key === ' ') {
             isSelected && onSelectedCellClick();
+            cellCanBeSelected && onCellClick();
+          }
         }}
       >
         {formattedDate}

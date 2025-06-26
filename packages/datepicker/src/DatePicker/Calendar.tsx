@@ -44,6 +44,7 @@ type BaseCalendarProps<DateType extends DateValue> = {
   /** Ekstra klassenavn */
   className?: string;
   onSelectedCellClick?: () => void;
+  onCellClick?: () => void;
   /** Tidligste gyldige datovalg.
    * Eks: today(getLocalTimeZone()) == i dag i lokal tidssone.
    *
@@ -116,6 +117,9 @@ const CalendarBase = <DateType extends DateValue>({
   onSelectedCellClick = () => {
     return;
   },
+  onCellClick = () => {
+    return;
+  },
   classNameForDate,
   ariaLabelForDate,
   calendarRef,
@@ -178,6 +182,7 @@ const CalendarBase = <DateType extends DateValue>({
         state={state}
         navigationDescription={navigationDescription}
         onSelectedCellClick={onSelectedCellClick}
+        onCellClick={onCellClick}
         classNameForDate={classNameForDate}
         ariaLabelForDate={ariaLabelForDate}
         showWeekNumbers={showWeekNumbers}

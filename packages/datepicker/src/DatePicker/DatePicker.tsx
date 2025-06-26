@@ -165,13 +165,9 @@ export const DatePicker = <DateType extends DateValue>({
     ],
   });
 
-  useOnClickOutside([calendarRef], () => {
-    state.setOpen(false);
-  });
+  useOnClickOutside([calendarRef], () => state.setOpen(false));
 
-  useOnEscape(calendarRef, () => {
-    state.setOpen(false);
-  });
+  useOnEscape(calendarRef, () => state.setOpen(false));
 
   const calendarSharedProps: CalendarProps<DateType> = {
     ...dialogProps,
@@ -182,6 +178,9 @@ export const DatePicker = <DateType extends DateValue>({
     disabled,
     navigationDescription,
     onSelectedCellClick: () => state.setOpen(false),
+    // onCellClick is a temporary fix solving an issue where the
+    // calendar sometimes doesn't close on date selection
+    onCellClick: () => state.setOpen(false),
     selectedDate,
     minDate,
     maxDate,

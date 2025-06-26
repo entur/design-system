@@ -26,7 +26,7 @@
       &:focus-visible {
         outline: t.$outlines-focus;
         outline-color: var(--basecolors-stroke-focus-standard);
-        outline-offset: t.$outline-offsets-focus;
+        outline-offset: 0;
       }
       &:active {
         background-color: var(--components-button-iconbutton-standard-active);
