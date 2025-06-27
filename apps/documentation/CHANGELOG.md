@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/entur/design-system/compare/@entur/documentation@6.5.0...@entur/documentation@6.6.0) (2025-06-27)
+
+### Features
+
+- **form:** add new prop disableanimation on checkbox ([fc4a2ec](https://github.com/entur/design-system/commit/fc4a2ec3ed71736b84adaadea621fa0b2ba248c5))
+- **form:** add readonly on radio and checkbox ([af575a6](https://github.com/entur/design-system/commit/af575a6c4a91c307606ee44adb6ebd2397a3dd19))
+- **page-builder:** add primary and secondary button link ([5c2f9cc](https://github.com/entur/design-system/commit/5c2f9cc92560f1904565e4befb3a7d1f7d517f8c))
+
 # [6.5.0](https://github.com/entur/design-system/compare/@entur/documentation@6.4.0...@entur/documentation@6.5.0) (2025-06-17)
 
 ### Bug Fixes

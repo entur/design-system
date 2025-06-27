@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.12](https://github.com/entur/design-system/compare/@entur/menu@5.1.11...@entur/menu@5.1.12) (2025-06-27)
+
+**Note:** Version bump only for package @entur/menu
+
 ## [5.1.11](https://github.com/entur/design-system/compare/@entur/menu@5.1.10...@entur/menu@5.1.11) (2025-06-17)
 
 **Note:** Version bump only for package @entur/menu

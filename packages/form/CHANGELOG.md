@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/entur/design-system/compare/@entur/form@8.2.11...@entur/form@8.3.0) (2025-06-27)
+
+### Bug Fixes
+
+- **checkbox:** add arialabel if readonly ([5f01d54](https://github.com/entur/design-system/commit/5f01d545e6c5a2d16e3158d8b8167d82c79a5cf4))
+- **dropdown:** fixes after review - searcabledropdown readonly ([d979be4](https://github.com/entur/design-system/commit/d979be45d5c059eb112ac94513fe5fd2e81597a9))
+- **form:** add user-select text for textcopy in checkbox and radio ([ac37b85](https://github.com/entur/design-system/commit/ac37b8528874a967b6ad7676b885b00ede45dfd4))
+- **form:** fix text copy on readonly in form and dropdown ([3c786fd](https://github.com/entur/design-system/commit/3c786fdf68b4e83b70f40a9aff3779ca78d6d617))
+
+### Features
+
+- **form:** add new prop disableanimation on checkbox ([fc4a2ec](https://github.com/entur/design-system/commit/fc4a2ec3ed71736b84adaadea621fa0b2ba248c5))
+- **form:** add readonly on radio and checkbox ([cdf3008](https://github.com/entur/design-system/commit/cdf3008759f1030b28232a11bbdff8d86a5fa9b2))
+- **form:** add readonly on radio and checkbox ([af575a6](https://github.com/entur/design-system/commit/af575a6c4a91c307606ee44adb6ebd2397a3dd19))
+
 ## [8.2.11](https://github.com/entur/design-system/compare/@entur/form@8.2.10...@entur/form@8.2.11) (2025-06-17)
 
 **Note:** Version bump only for package @entur/form

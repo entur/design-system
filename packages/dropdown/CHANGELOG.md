@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.1...@entur/dropdown@7.2.2) (2025-06-27)
+
+### Bug Fixes
+
+- **dropdown:** fixes after review - searcabledropdown readonly ([d979be4](https://github.com/entur/design-system/commit/d979be45d5c059eb112ac94513fe5fd2e81597a9))
+- **form:** fix text copy on readonly in form and dropdown ([3c786fd](https://github.com/entur/design-system/commit/3c786fdf68b4e83b70f40a9aff3779ca78d6d617))
+
 ## [7.2.1](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.0...@entur/dropdown@7.2.1) (2025-06-17)
 
 **Note:** Version bump only for package @entur/dropdown

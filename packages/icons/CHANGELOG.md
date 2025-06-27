@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/entur/design-system/compare/@entur/icons@7.14.0...@entur/icons@8.0.0) (2025-06-27)
+
+### Code Refactoring
+
+- **icons:** remove deprecated icons ([b142fb2](https://github.com/entur/design-system/commit/b142fb2dc113b85fea0867b3359ac9f411f9ccee))
+
+### Features
+
+- **icons:** add applepay icon ([c2465c5](https://github.com/entur/design-system/commit/c2465c59ae1fef61a4a234f2f1e3e893bd6e1e75))
+
+### BREAKING CHANGES
+
+- **icons:** The following icons have been renamed or replaced:
+
+* ReportsIcon → CopyIcon
+* SubwayIcon → MetroIcon
+* ScooterIcon → MobilityIcon
+* WalkingIcon → WalkIcon
+* OutlinedValidationCheckIcon → ValidationCheckIcon
+* OutlinedValidationErrorIcon → ValidationErrorIcon
+* OutlinedValidationExclamationIcon → ValidationExclamationIcon
+* OutlinedValidationInfoIcon → ValidationInfoIcon
+* ValidationCheckIcon → ValidationSuccessIcon
+* ValidationCheckFilledIcon → ValidationSuccessFilledIcon
+
+Please update your imports and usages accordingly.
+
 # [7.14.0](https://github.com/entur/design-system/compare/@entur/icons@7.13.0...@entur/icons@7.14.0) (2025-06-17)
 
 ### Features
