@@ -135,7 +135,6 @@ export const BaseFormControl = React.forwardRef<
             )}
             ref={ref}
             tabIndex={readOnly ? -1 : 0}
-            aria-label={readOnly ? ariaLabelOnReadOnly : undefined}
             {...rest}
           >
             {prepend && (
@@ -146,6 +145,9 @@ export const BaseFormControl = React.forwardRef<
               required={required}
               labelId={labelId}
               staticAnimation={disableLabelAnimation}
+              aria-label={
+                readOnly ? `${label}, ${ariaLabelOnReadOnly}` : undefined
+              }
               {...labelProps}
             />
             {labelTooltip && (

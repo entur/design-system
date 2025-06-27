@@ -330,6 +330,7 @@ export const SearchableDropdown = React.forwardRef(
             loadingText={loadingText}
             noMatchesText={noMatchesText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
+            readOnly={readOnly}
           />
         }
         {...rest}
@@ -341,8 +342,8 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown--searchable__selected-item--hidden':
               !showSelectedItem,
           })}
-          aria-hidden="true"
-          onClick={getInputProps()?.onClick}
+          onClick={readOnly ? undefined : getInputProps()?.onClick}
+          tabIndex={readOnly ? 0 : -1}
         >
           {showSelectedItem ? selectedItem?.label : ''}
         </span>
@@ -370,7 +371,9 @@ export const SearchableDropdown = React.forwardRef(
               if (selectedItem !== null) setShowSelectedItem(true);
             },
             onFocus() {
-              setShowSelectedItem(false);
+              if (!readOnly) {
+                setShowSelectedItem(false);
+              }
             },
             disabled: disabled,
             readOnly: readOnly,

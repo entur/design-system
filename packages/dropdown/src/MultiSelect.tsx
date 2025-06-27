@@ -446,6 +446,7 @@ export const MultiSelect = React.forwardRef(
             selectAllCheckboxState={selectAllCheckboxState}
             selectAllItem={selectAll}
             selectedItems={selectedItems}
+            readOnly={readOnly}
           />
         }
         {...rest}
