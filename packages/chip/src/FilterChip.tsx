@@ -30,6 +30,13 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
     },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const childrenArray = React.Children.toArray(children);
+    const hasLeadingIcon =
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+    const hasTrailingIcon =
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
+
     const classList = cx(className, 'eds-filter-chip');
 
     return (
@@ -43,7 +50,12 @@ export const FilterChip = React.forwardRef<HTMLInputElement, FilterChipProps>(
           disabled={disabled}
           {...rest}
         />
-        <div className={`eds-chip ${size ? `eds-chip--size-${size}` : ''}`}>
+        <div
+          className={cx('eds-chip', `eds-chip--size-${size}`, {
+            'eds-chip--leading-icon': hasLeadingIcon,
+            'eds-chip--trailing-icon': hasTrailingIcon,
+          })}
+        >
           <span className="eds-filter-chip__icon">
             <CheckboxIcon />
           </span>

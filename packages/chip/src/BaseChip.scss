@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   svg {
     font-size: t.$font-sizes-medium;
   }
@@ -21,12 +22,6 @@
     border-color: var(--components-chip-contrast-border);
   }
 
-  &--leading-icon .eds-icon:first-of-type {
-    margin-right: t.$space-extra-small;
-  }
-  &--trailing-icon .eds-icon:last-of-type {
-    margin-left: t.$space-extra-small;
-  }
   &--size-small {
     height: 1.5rem;
     min-width: 2.5rem;
@@ -45,5 +40,13 @@
     min-width: 3rem;
     padding: 0 t.$space-small;
     font-size: t.$font-sizes-medium;
+  }
+
+  // Will only target svg icons. Might need to expand logic in the future if this isn't sufficient
+  &--leading-icon > svg:first-of-type {
+    margin-right: t.$space-extra-small2;
+  }
+  &--trailing-icon > svg:last-of-type {
+    margin-left: t.$space-extra-small2;
   }
 }

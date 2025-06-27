@@ -15,7 +15,6 @@
       background-color: var(--components-chip-standard-active);
       color: var(--components-chip-standard-text-selected);
       border-color: transparent;
-      gap: t.$space-extra-small2;
       .eds-contrast & {
         background-color: var(--components-chip-contrast-active);
       }
@@ -41,6 +40,7 @@
 
     &:checked ~ .eds-chip .eds-filter-chip__icon {
       display: inline-flex;
+      margin-right: t.$space-extra-small2;
 
       .eds-filter-chip-icon {
         &__path {

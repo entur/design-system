@@ -1,7 +1,7 @@
 @use '@entur/tokens/dist/styles.scss' as t;
 .eds-tag-chip {
   cursor: default;
-  padding-right: t.$space-extra-small2;
+  padding-right: calc(t.$space-extra-small2 / 2);
   width: fit-content;
   &__close-button {
     appearance: none;

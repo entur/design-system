@@ -31,6 +31,13 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
     },
     ref: React.Ref<HTMLButtonElement>,
   ) => {
+    const childrenArray = React.Children.toArray(children);
+    const hasLeadingIcon =
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
+    const hasTrailingIcon =
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
+
     const selectedCloseLabel =
       closeButtonAriaLabel ?? 'Fjern ' + children?.toString();
 
@@ -41,6 +48,10 @@ export const TagChip = React.forwardRef<HTMLButtonElement, TagChipProps>(
           'eds-tag-chip',
           `eds-chip--size-${size}`,
           className,
+          {
+            'eds-chip--leading-icon': hasLeadingIcon,
+            'eds-chip--trailing-icon': hasTrailingIcon,
+          },
         )}
         {...rest}
       >
