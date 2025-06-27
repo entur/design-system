@@ -280,6 +280,7 @@ export const Dropdown = React.forwardRef(
             loading={loading ?? resolvedItemsLoading}
             loadingText={loadingText}
             selectedItems={selectedItem !== null ? [selectedItem] : []}
+            readOnly={readOnly}
           />
         }
         {...rest}

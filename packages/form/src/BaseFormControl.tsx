@@ -65,6 +65,8 @@ export type BaseFormControlProps = React.HTMLAttributes<HTMLDivElement> & {
   after?: React.ReactNode;
   /** Legg til et element før feltet */
   before?: React.ReactNode;
+  /** Aria-label som brukes når inputfeltet er i read-only modus */
+  ariaLabelOnReadOnly?: string;
 };
 
 export const BaseFormControl = React.forwardRef<
@@ -95,6 +97,7 @@ export const BaseFormControl = React.forwardRef<
       style,
       disableLabelAnimation = false,
       ariaAlertOnFeedback = false,
+      ariaLabelOnReadOnly = 'Dette skjemafeltet kan bare leses',
       ...rest
     },
     ref,
@@ -131,6 +134,7 @@ export const BaseFormControl = React.forwardRef<
               },
             )}
             ref={ref}
+            tabIndex={readOnly ? -1 : 0}
             {...rest}
           >
             {prepend && (
@@ -141,6 +145,9 @@ export const BaseFormControl = React.forwardRef<
               required={required}
               labelId={labelId}
               staticAnimation={disableLabelAnimation}
+              aria-label={
+                readOnly ? `${label}, ${ariaLabelOnReadOnly}` : undefined
+              }
               {...labelProps}
             />
             {labelTooltip && (

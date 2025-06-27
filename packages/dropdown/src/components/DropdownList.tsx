@@ -30,6 +30,7 @@ type DropdownListProps<ValueType> = {
   selectAllItem?: NormalizedDropdownItemType<string>;
   selectedItems: NormalizedDropdownItemType<ValueType>[];
   style?: React.CSSProperties;
+  readOnly?: boolean;
 };
 
 export const DropdownList = <ValueType extends NonNullable<any>>({
@@ -48,6 +49,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   selectAllCheckboxState,
   selectAllItem,
   selectedItems,
+  readOnly = false,
   ...rest
 }: DropdownListProps<ValueType>) => {
   const isMultiselect = selectAllItem !== undefined;
@@ -158,13 +160,13 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         className: 'eds-dropdown__list',
         style: {
           ...floatingStyles,
-          display: isOpen ? undefined : 'none',
+          display: isOpen && !readOnly ? undefined : 'none',
           ...rest.style,
         },
       })}
     >
       {(() => {
-        if (!isOpen) {
+        if (!isOpen || readOnly) {
           return null;
         }
 

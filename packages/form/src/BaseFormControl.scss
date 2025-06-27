@@ -37,7 +37,7 @@
       }
     }
 
-    &:focus-within {
+    &:focus-within:not(.eds-form-control-wrapper--readonly) {
       border-color: var(--components-form-baseform-standard-border-interactive);
       outline: 2px solid var(--components-form-baseform-standard-border-interactive);
       .eds-contrast & {
@@ -83,14 +83,15 @@
         }
       }
     }
-
     &--readonly {
       border-color: transparent;
-      pointer-events: none;
       cursor: default;
       background: var(--components-form-baseform-standard-fill-readonly);
       border: var(--components-form-baseform-standard-fill-readonly);
 
+      &:focus-visible {
+        outline: none;
+      }
       .eds-contrast & {
         background: var(--components-form-baseform-contrast-fill-readonly);
         border: var(--components-form-baseform-contrast-fill-readonly);
