@@ -20,18 +20,7 @@ type Component = {
  * If an icon is deprecated without a replacement, it is mapped to no value,
  * and you can still check for deprecation using `deprecatedIcons.has(iconName)`.
  */
-const DEPRECATED_ICONS = new Map([
-  ['ReportsIcon', 'CopyIcon'],
-  ['SubwayIcon', 'MetroIcon'],
-  ['ScooterIcon', 'MobilityIcon'],
-  ['WalkingIcon', 'WalkIcon'],
-  ['OutlinedValidationCheckIcon', 'ValidationCheckIcon'],
-  ['OutlinedValidationErrorIcon', 'ValidationErrorIcon'],
-  ['OutlinedValidationExclamationIcon', 'ValidationExclamationIcon'],
-  ['OutlinedValidationInfoIcon', 'ValidationInfoIcon'],
-  ['ValidationCheckIcon', 'ValidationSuccessIcon'],
-  ['ValidationCheckFilledIcon', 'ValidationSuccessFilledIcon'],
-]);
+const DEPRECATED_ICONS = new Map([]);
 
 // These icons should not use brand-blue by default
 const OUTLIER_CATEGORIES = ['Partner', 'Flag', 'Entur'];
