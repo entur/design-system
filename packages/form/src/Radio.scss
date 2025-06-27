@@ -41,6 +41,10 @@
     &:has(input:disabled) {
       cursor: not-allowed;
     }
+    &:has(.eds-form-component--radio__radio--readonly) {
+      cursor: default;
+      user-select: text;
+    }
 
     .eds-form-component--radio__radio {
       position: relative;
@@ -84,6 +88,22 @@
           }
         }
       }
+
+      &.eds-form-component--radio__radio--readonly {
+        background: var(--components-form-radio-standard-fill-disabled);
+        border-color: var(--components-form-radio-standard-border-readonly);
+
+        .eds-contrast & {
+          background: var(--components-form-radio-contrast-fill-disabled);
+          border-color: var(--components-form-radio-contrast-border-readonly);
+        }
+
+        &:checked ~ .eds-form-component--radio__radio .eds-form-component--radio__circle {
+          background-color: var(--components-form-radio-standard-icon);
+          border-color: var(--components-form-radio-standard-border-readonly);
+        }
+      }
+
       .eds-form-component--radio__circle {
         display: block;
         width: 0;

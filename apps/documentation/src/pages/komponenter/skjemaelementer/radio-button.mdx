@@ -78,6 +78,69 @@ Bruk Checkboxes hvis brukerne har mulighet til å velge flere alternativer fra l
   </DoDontCard>
 </DoDontGroup>
 
+## Universell utforming
+
+### Bruk av disabled og readonly
+
+#### Readonly for visning av ikke-redigerbare verdier
+Readonly har flere fordeler enn disabled som tilgjengelighet, fokus, og verdien kan sendes med i form-data.
+
+**Derfor bruk readonly når:**
+- Feltet skal vises i skjemaet, men ikke endres av brukeren
+- Verdien skal sendes inn i skjemaet
+- Du ønsker å indikere at valget er «låst» eller forhåndsbestemt
+
+#### Problemer med disabled-elementer:
+Vi anbefaler å unngå disabled på skjemaelementer som radio, checkbox og tekstfelt, fordi det kan skape problemer for tilgjengelighet:
+
+- **Manglende tilbakemelding.**
+Deaktiverte elementer er ofte fullstendig inaktive og gir ingen respons når brukeren interagerer med dem. Dette kan føre til forvirring blant brukere som ikke forstår hvorfor elementet ikke virker. Det kan også føre til at brukere av skjermlesere ikke får en indikasjon på hvorfor knappen er inaktiv.
+
+- **Utilgjengelighet for hjelpemiddelteknologi.**
+Deaktiverte elementer kan bli hoppet over av hjelpemiddelteknologi som skjermlesere, fordi slike elementer vanligvis fjernes fra fokusrekkefølgen. Dette betyr at brukere som navigerer med tastatur eller skjermlesere, kanskje aldri oppdager at elementet eller informasjonen eksisterer.
+
+- **Dynamisk oppdatering av status.**
+Hvis et element aktiveres eller deaktiveres basert på brukerens handlinger, må disse endringene kommuniseres effektivt til brukeren. Mange implementasjoner av deaktiverte elementer informerer ikke brukere om statusendringen, noe som skaper trøbbel for personer som navigerer med skjermlesere eller andre hjelpemidler.
+
+- **Forvirrende designmønstre.**
+Brukere forstår ofte ikke hvorfor et deaktivert element ikke kan brukes, spesielt hvis det ikke finnes tydelig informasjon om hva som må gjøres for å aktivere elementet igjen. Dette kan føre til frustrasjon, spesielt for brukere med kognitive eller læringsrelaterte utfordringer.
+
+#### Dersom du likevel trenger å bruke deaktivert element
+
+- **Bruk tydelig hjelpetekst.**
+Forklar på forhånd hva som må gjøres for å aktivere knappen. Dette kan gjøres gjennom visuelle hjelpemidler eller tekst nær knappen. Og/eller `aria-label` for teknologiske hjelpemidler.
+
+- **Oppretthold kontrast.**
+Selv om feltet ikke er interaktiv, bør den ha tilstrekkelig kontrast til å være synlig for alle brukere. Bruk alternative visuelle signaler som ikke senker kontrasten, som et ikon eller en stilendring som fortsatt oppfyller kontrastkravene.
+
+- **Vis alltid knappen som klikkbar.**
+Gjør feltet mulig å klikke på, men gi tilbakemelding når den ikke kan utføre en handling, for eksempel via en alert eller melding som forklarer hvorfor handlingen ikke er mulig.
+
+**Kilder:**
+- [3.3.1 Identifikasjon av feil](https://www.uutilsynet.no/wcag-standarden/331-identifikasjon-av-feil-niva/116)
+- [4.1.2: Navn, rolle, verdi](https://www.uutilsynet.no/wcag-standarden/412-navn-rolle-verdi-niva/121)
+- [1.3.1: Informasjon og relasjoner](https://www.uutilsynet.no/wcag-standarden/131-informasjon-og-relasjoner-niva/90)
+- [4.1.3: Statusmeldinger](https://www.uutilsynet.no/wcag-standarden/413-statusbeskjeder-niva-aa/152)
+
+#### Eksempel
+Readonly på radiobuttons settes på gruppenivå i `RadioGroup`
+
+````jsx
+ <RadioGroup
+   name="readOnly-type"
+   label="Velg readOnly"
+   onChange={(e) => setValue(e.target.value)}
+   value="readOnly1" // <--- må matche verdien til den Radio-en du vil velge
+   readOnly
+ >
+   <Radio value="readOnly1">readOnly1</Radio>
+   <Radio value="readOnly2">readOnly2</Radio>
+   <Radio value="readOnly3">
+     readOnly3
+   </Radio>
+</RadioGroup>
+````
+
 ## Props
 
 ### Radio

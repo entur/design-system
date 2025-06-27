@@ -14,6 +14,8 @@ export type RadioGroupProps = {
   /** En callback som blir kalles hver gang en radioknapp klikkes på  */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   [key: string]: any;
+  /** Sett radiogruppen i readonly-modus */
+  readOnly?: boolean;
 };
 
 export const RadioGroup: React.FC<RadioGroupProps> = ({
@@ -22,11 +24,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   children,
   onChange,
   label,
+  readOnly = false,
   ...rest
 }) => {
   const contextValue = React.useMemo(
-    () => ({ name, value, onChange }),
-    [name, value, onChange],
+    () => ({ name, value, onChange, readOnly }),
+    [name, value, onChange, readOnly],
   );
   return (
     <RadioGroupContextProvider value={contextValue}>

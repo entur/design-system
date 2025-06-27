@@ -68,3 +68,38 @@ test('Radio and RadioGroup should not have basic accessibility issues', async ()
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
+
+test('readonly checked Radio is included in form submission', () => {
+  const handleSubmit = jest.fn((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const result = Object.fromEntries(data.entries());
+    (handleSubmit as any).submittedData = result;
+  });
+
+  const { getByRole } = render(
+    <form onSubmit={handleSubmit}>
+      <RadioGroup
+        name="city"
+        label="Velg by"
+        value="Oslo"
+        onChange={() => undefined}
+      >
+        <Radio value="Oslo" readOnly>
+          Oslo
+        </Radio>
+        <Radio value="Bergen" readOnly>
+          Bergen
+        </Radio>
+      </RadioGroup>
+      <button type="submit">Send</button>
+    </form>,
+  );
+
+  fireEvent.click(getByRole('button', { name: /send/i }));
+
+  expect(handleSubmit).toHaveBeenCalled();
+  expect((handleSubmit as any).submittedData).toEqual({
+    city: 'Oslo',
+  });
+});

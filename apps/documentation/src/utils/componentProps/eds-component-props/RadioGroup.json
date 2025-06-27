@@ -83,6 +83,23 @@
         "type": {
           "name": "(e: ChangeEvent<HTMLInputElement>) => void"
         }
+      },
+      "readOnly": {
+        "defaultValue": {
+          "value": false
+        },
+        "description": "Sett radiogruppen i readonly-modus",
+        "name": "readOnly",
+        "declarations": [
+          {
+            "fileName": "design-system/packages/form/src/RadioGroup.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | undefined"
+        }
       }
     }
   }

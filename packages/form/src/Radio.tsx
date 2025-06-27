@@ -15,17 +15,26 @@ export type RadioProps = {
    * @default false
    */
   disabled?: boolean;
+  /** Beskrivelse som leses opp av skjermlesere når radiobutton er readonly */
+  readOnlyLabelDescription?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (
-    { className, children, value, disabled, ...rest },
+    { className, children, value, disabled, readOnlyLabelDescription, ...rest },
     ref: React.Ref<HTMLInputElement>,
   ) => {
+    const {
+      name,
+      value: selectedValue,
+      onChange,
+      readOnly,
+    } = useRadioGroupContext();
+
     const classList = cx(className, 'eds-form-component--radio__radio', {
       'eds-form-component--radio__radio--disabled': disabled,
+      'eds-form-component--radio__radio--readonly': readOnly,
     });
-    const { name, value: selectedValue, onChange } = useRadioGroupContext();
 
     return (
       <label className="eds-form-component--radio__container">
@@ -35,8 +44,26 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           ref={ref}
           value={value}
           checked={rest.checked ?? selectedValue === value}
-          onChange={rest.onChange ?? onChange}
+          onChange={e => {
+            if (readOnly) {
+              e.preventDefault();
+              return;
+            }
+            (rest.onChange ?? onChange)?.(e);
+          }}
+          onClick={e => {
+            if (readOnly) {
+              e.preventDefault();
+            }
+          }}
           disabled={disabled}
+          aria-label={
+            readOnly
+              ? `${children?.toString()}. ${
+                  readOnlyLabelDescription ?? 'Kan ikke endres'
+                }`
+              : undefined
+          }
           {...rest}
         />
         <span className={classList}>
