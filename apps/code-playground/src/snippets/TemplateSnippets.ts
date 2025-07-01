@@ -1,11 +1,4 @@
-const snippets = [
-  {
-    group: 'Templates',
-    name: 'Column layout',
-    code: `<div style={{ display: 'flex', flexDirection: 'column' }}">
-    
-    </div>`,
-  },
+const templates = [
   {
     group: 'Templates',
     name: 'Use state',
@@ -21,4 +14,4 @@ const snippets = [
   },
 ];
 
-export default snippets;
+export default templates;

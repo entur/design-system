@@ -3,7 +3,7 @@ module.exports = {
   outputPath: './public/playroom',
 
   title: 'Linje lekerom',
-  snippets: './src/snippets.ts',
+  snippets: './src/snippets/index.ts',
   frameComponent: './src/FrameComponent.tsx',
   widths: [320, 768, 1024],
   port: 9000,
@@ -51,11 +51,10 @@ module.exports = {
       ],
     },
   }),
-  exampleCode: `
-  <Button>
-    Hello World!
-  </Button>
-`,
+  exampleCode: `<Paragraph>Velkommen til Linje lekerom! 🎨</Paragraph>
+  <ListItem>Skriv JSX med komponentene fra designsystemet</ListItem>
+  <ListItem>Bruk snippets til høyre (+)</ListItem>
+  <ListItem>Du kan skru på mørk modus og kontrast over</ListItem>`,
   iframeSandbox: 'allow-scripts',
   defaultVisibleWidths: [
     // subset of widths to display on first load
