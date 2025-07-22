@@ -25,7 +25,12 @@ import { IconButton } from '@entur/button';
 import { VerticalDotsIcon } from '@entur/icons';
 import { Placement, standardisePlacement } from '@entur/tooltip';
 import { space } from '@entur/tokens';
-import { useOnClickOutside, useOnEscape, getNodeText } from '@entur/utils';
+import {
+  useOnClickOutside,
+  useOnEscape,
+  getNodeText,
+  PolymorphicComponentProps,
+} from '@entur/utils';
 
 import './OverflowMenu.scss';
 
@@ -187,7 +192,7 @@ export const OverflowMenu = ({
   );
 };
 
-export type OverflowMenuItemProps = {
+type OverflowMenuItemBaseProps = {
   /** Innholdet til OverflowMenuItem */
   children: React.ReactNode;
   /** Ekstra klassenavn */
@@ -200,21 +205,20 @@ export type OverflowMenuItemProps = {
   href?: string;
   /** Om dette valget skal være deaktivert */
   disabled?: boolean;
-  /**
-   * @deprecated Denne prop-en har ikke lenger noe effekt.
-   * Si fra hvis dette er problematisk for ditt produkt!
-   */
-  as?: string;
 };
 
-export const OverflowMenuItem = ({
+export type OverflowMenuItemProps<C extends React.ElementType> =
+  PolymorphicComponentProps<C, OverflowMenuItemBaseProps>;
+
+export const OverflowMenuItem = <C extends React.ElementType = 'button'>({
   children,
   className,
   onSelect = () => undefined,
   href,
   disabled,
+  as,
   ...rest
-}: OverflowMenuItemProps) => {
+}: OverflowMenuItemProps<C>) => {
   const { activeIndex, getItemProps, closeMenuAndReturnFocus } =
     useContext(SelectContext);
   const { ref: listItemRef, index } = useListItem({
@@ -224,7 +228,7 @@ export const OverflowMenuItem = ({
   const isHighlighted = activeIndex === index;
   const isLink = href !== undefined;
 
-  const Element = isLink ? 'a' : 'button';
+  const Element = as ?? (isLink ? 'a' : 'button');
 
   return (
     <Element
@@ -259,15 +263,15 @@ export const OverflowMenuItem = ({
   );
 };
 
-type OverflowMenuLinkExtendedProps = {
-  /** @deprecated onSelect is no longer used
+type OverflowMenuLinkExtendedBaseProps = {
+  /**
+   * @deprecated onSelect is no longer used
    * in OverflowMenuLink, use 'href' instead */
   onSelect?: () => void;
 };
 
-export const OverflowMenuLink = ({
-  href,
-  ...rest
-}: Omit<OverflowMenuItemProps, 'onSelect'> & OverflowMenuLinkExtendedProps) => {
-  return <OverflowMenuItem href={href} {...rest} />;
+export const OverflowMenuLink = <C extends React.ElementType = 'a'>(
+  props: OverflowMenuItemProps<C> & OverflowMenuLinkExtendedBaseProps,
+) => {
+  return <OverflowMenuItem {...props} />;
 };
