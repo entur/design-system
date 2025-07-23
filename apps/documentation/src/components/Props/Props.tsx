@@ -70,7 +70,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
       `../../utils/componentProps/eds-component-props/${componentName}.json`
     )
       .then(data => {
-        setComponentProps(data[0]?.props || {});
+        setComponentProps(data[0]?.props || data?.props || {});
       })
       .catch(error => {
         console.error('Failed to load component props data:', error);

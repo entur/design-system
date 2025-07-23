@@ -1,44 +1,42 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "BaseExpand",
-    "methods": [],
-    "props": {
-      "children": {
-        "defaultValue": null,
-        "description": "Innholdet som skal være expandable",
-        "name": "children",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/expand/src/BaseExpand.tsx",
-            "name": "TypeLiteral"
-          },
-          {
-            "fileName": "design-system/node_modules/@types/react/index.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "BaseExpand",
+  "methods": [],
+  "props": {
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet som skal være expandable",
+      "name": "children",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/expand/src/BaseExpand.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "open": {
-        "defaultValue": null,
-        "description": "Boolean for om innholdet vises eller ikke",
-        "name": "open",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/expand/src/BaseExpand.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": true,
-        "type": {
-          "name": "boolean"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Boolean for om innholdet vises eller ikke",
+      "name": "open",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/expand/src/BaseExpand.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": true,
+      "type": {
+        "name": "boolean"
       }
     }
   }
-]
+}
