@@ -38,6 +38,11 @@
       .illustration-list__display-grid__image-box {
         aspect-ratio: 1 / 1;
         padding: 5%;
+
+        .image-display__download {
+          bottom: t.$space-none;
+          right: t.$space-none;
+        }
       }
     }
 

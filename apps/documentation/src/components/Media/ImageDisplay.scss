@@ -28,7 +28,7 @@
     width: 100%;
   }
 
-  .image-display__download-container {
+  .image-display__download {
     opacity: 0;
 
     &--show {
@@ -36,12 +36,12 @@
     }
   }
 
-  &:hover .image-display__download-container,
-  &:focus-within .image-display__download-container {
+  &:hover .image-display__download,
+  &:focus-within .image-display__download {
     opacity: 1;
   }
 
-  &__download-container {
+  &__download {
     position: absolute;
     bottom: t.$space-small;
     right: t.$space-small;
@@ -76,7 +76,7 @@
         background: var(--basecolors-frame-contrast);
       }
 
-      .image-display__download-container {
+      .image-display__download {
         opacity: 1;
       }
     }

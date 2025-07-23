@@ -61,38 +61,30 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
       )}
 
       {downloadSources !== undefined && (
-        <Tooltip placement={'top'} content="Last ned …">
-          <div
-            className={classNames('image-display__download-container', {
-              'image-display__download-container--show': alwaysShowDownload,
-            })}
-          >
-            <OverflowMenu
-              button={
-                <IconButton aria-label={`Last ned illustrasjon ${name}`}>
-                  <DownloadIcon />
-                </IconButton>
-              }
-              position="left"
-            >
-              {downloadSources.map(
-                (downloadSrc, index) =>
-                  downloadSrc.src !== undefined && (
-                    <OverflowMenuItem
-                      as="a"
-                      href={downloadSrc.src}
-                      download
-                      key={downloadSrc.src + index}
-                      onSelect={() => undefined}
-                    >
-                      {downloadSrc.label ??
-                        `Last ned som ${downloadSrc.format}`}
-                    </OverflowMenuItem>
-                  ),
-              )}
-            </OverflowMenu>
-          </div>
-        </Tooltip>
+        <OverflowMenu
+          buttonIcon={
+            <DownloadIcon aria-label={`Last ned illustrasjon ${name}`} />
+          }
+          placement="bottom-end"
+          className={classNames('image-display__download', {
+            'image-display__download--show': alwaysShowDownload,
+          })}
+        >
+          {downloadSources.map(
+            (downloadSrc, index) =>
+              downloadSrc.src !== undefined && (
+                <OverflowMenuItem
+                  as="a"
+                  href={downloadSrc.src}
+                  download
+                  key={downloadSrc.src + index}
+                  onSelect={() => undefined}
+                >
+                  {downloadSrc.label ?? `Last ned som ${downloadSrc.format}`}
+                </OverflowMenuItem>
+              ),
+          )}
+        </OverflowMenu>
       )}
     </div>
   );
