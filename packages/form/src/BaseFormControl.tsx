@@ -134,7 +134,7 @@ export const BaseFormControl = React.forwardRef<
               },
             )}
             ref={ref}
-            tabIndex={readOnly ? -1 : 0}
+            tabIndex={readOnly ? -1 : undefined}
             {...rest}
           >
             {prepend && (
