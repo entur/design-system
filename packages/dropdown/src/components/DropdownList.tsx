@@ -94,7 +94,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
         checked={selectAllCheckboxState?.()}
         className="eds-dropdown__list__item__checkbox"
         tabIndex={-1}
-        readOnly
+        onChange={() => undefined}
       />
       <span
         className="eds-dropdown__list__item__text"
@@ -124,7 +124,7 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
             checked={isItemSelected(item)}
             className="eds-dropdown__list__item__checkbox"
             tabIndex={-1}
-            readOnly
+            onChange={() => undefined}
           />
         )}
         <span className="eds-dropdown__list__item__text">
