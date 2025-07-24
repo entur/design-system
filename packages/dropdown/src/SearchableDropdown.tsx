@@ -299,7 +299,6 @@ export const SearchableDropdown = React.forwardRef(
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
-        onBlur={() => setInputValue('')}
         onClick={(e: React.MouseEvent) => {
           if (e.target === e.currentTarget) {
             getInputProps()?.onClick?.(e);
@@ -339,7 +338,12 @@ export const SearchableDropdown = React.forwardRef(
             'eds-dropdown--searchable__selected-item--hidden':
               !showSelectedItem,
           })}
-          onClick={readOnly ? undefined : getInputProps()?.onClick}
+          onClick={event => {
+            if (!disabled && !readOnly) {
+              inputRef.current?.focus();
+              getInputProps()?.onClick?.(event);
+            }
+          }}
           tabIndex={readOnly ? 0 : -1}
         >
           {showSelectedItem ? selectedItem?.label : ''}
