@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.3-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.2...@entur/dropdown@7.2.3-beta.0) (2025-07-24)
+
+### Bug Fixes
+
+- **dropdown:** fix rare crash when bluring or focusing searchable dropdown ([a5bf4f2](https://github.com/entur/design-system/commit/a5bf4f2167a9ea9441a1a79e3f7fa593e6b333a3))
+
 ## [7.2.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.1...@entur/dropdown@7.2.2) (2025-06-27)
 
 ### Bug Fixes
