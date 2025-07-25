@@ -222,12 +222,17 @@ export const MultiSelect = React.forwardRef(
       filterListItems({ inputValue });
     }, [normalizedItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const { hasSelectedItems, handleListItemClicked, selectAllCheckboxState } =
-      useMultiselectUtils<ValueType>({
-        listItems,
-        selectAll,
-        selectedItems,
-      });
+    const {
+      hasSelectedItems,
+      handleListItemClicked,
+      selectAllCheckboxState,
+      clickedItemIsInSelectedItems,
+      clickedItemIsSelectAll,
+    } = useMultiselectUtils<ValueType>({
+      listItems,
+      selectAll,
+      selectedItems,
+    });
 
     const {
       getSelectedItemProps,
@@ -505,12 +510,20 @@ export const MultiSelect = React.forwardRef(
               onKeyDown: (e: React.KeyboardEvent) => {
                 if (selectOnTab && isOpen && e.key === 'Tab') {
                   const highlitedItem = listItems[highlightedIndex];
-                  if (highlitedItem) {
-                    handleListItemClicked({
-                      clickedItem: highlitedItem,
-                      onChange: setSelectedItems,
-                    });
-                  }
+                  if (!highlitedItem) return;
+
+                  // Skip tab selection for select all or if item already is selected
+                  const shouldSkipTabSelection =
+                    clickedItemIsSelectAll(highlitedItem) ||
+                    (!clickedItemIsSelectAll(highlitedItem) &&
+                      clickedItemIsInSelectedItems(highlitedItem));
+
+                  if (shouldSkipTabSelection) return;
+
+                  handleListItemClicked({
+                    clickedItem: highlitedItem,
+                    onChange: setSelectedItems,
+                  });
                 }
               },
               ...getDropdownProps({
