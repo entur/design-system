@@ -229,13 +229,19 @@ export const MultiSelect = React.forwardRef(
         selectedItems,
       });
 
-    const { getSelectedItemProps, getDropdownProps } = useMultipleSelection({
+    const {
+      getSelectedItemProps,
+      getDropdownProps,
+      reset,
+      removeSelectedItem,
+      setSelectedItems,
+    } = useMultipleSelection({
       selectedItems,
       // @ts-expect-error prop missing from library types
       itemToString,
       itemToKey,
-      onStateChange({ selectedItems: newSelectedItems }) {
-        if (newSelectedItems !== undefined) onChange(newSelectedItems);
+      onSelectedItemsChange({ selectedItems: newSelectedItems }) {
+        onChange(newSelectedItems);
       },
     });
 
@@ -259,7 +265,6 @@ export const MultiSelect = React.forwardRef(
         switch (type) {
           // reset input value when leaving input field
           case useCombobox.stateChangeTypes.InputBlur:
-            if (state.isOpen) inputRef.current?.focus();
             return {
               ...changes,
               inputValue: EMPTY_INPUT,
@@ -341,13 +346,13 @@ export const MultiSelect = React.forwardRef(
         setHighlightedIndex(hideSelectAll ? 0 : 1);
         setLastHighlightedIndex(hideSelectAll ? 0 : 1);
       },
-      onStateChange({ selectedItem: clickedItem }) {
+      onSelectedItemChange({ selectedItem: clickedItem }) {
         // clickedItem means item chosen either via mouse or keyboard
         if (!clickedItem) return;
 
         handleListItemClicked({
           clickedItem,
-          onChange,
+          onChange: setSelectedItems,
         });
       },
       // Accessibility
@@ -396,10 +401,8 @@ export const MultiSelect = React.forwardRef(
     }, [isOpen, refs.reference, refs.floating, update]);
 
     const handleOnClear = () => {
-      onChange([]);
-      setInputValue(EMPTY_INPUT);
       inputRef.current?.focus();
-      updateListItems({ inputValue });
+      reset();
     };
 
     return (
@@ -481,10 +484,7 @@ export const MultiSelect = React.forwardRef(
                 }
                 readOnly={readOnly}
                 removeSelectedItem={() => {
-                  handleListItemClicked({
-                    clickedItem: selectedItem,
-                    onChange,
-                  });
+                  removeSelectedItem(selectedItem);
                   inputRef?.current?.focus();
                 }}
                 selectedItem={selectedItem}
@@ -505,11 +505,10 @@ export const MultiSelect = React.forwardRef(
               onKeyDown: (e: React.KeyboardEvent) => {
                 if (selectOnTab && isOpen && e.key === 'Tab') {
                   const highlitedItem = listItems[highlightedIndex];
-                  // we don't want to clear selection with tab
                   if (highlitedItem) {
                     handleListItemClicked({
                       clickedItem: highlitedItem,
-                      onChange,
+                      onChange: setSelectedItems,
                     });
                   }
                 }

@@ -99,7 +99,8 @@ export const useMultiselectUtils = <ValueType>({
 
   const clickedItemIsSelectAll = (
     clickedItem: NormalizedDropdownItemType<string | ValueType>,
-  ) => clickedItem.value === selectAll.value;
+  ): clickedItem is NormalizedDropdownItemType<string> =>
+    clickedItem.value === selectAll.value;
 
   const handleListItemClicked = ({
     clickedItem,
