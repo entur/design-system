@@ -150,13 +150,13 @@ export const Dropdown = React.forwardRef(
       useResolvedItems(initialItems);
     const isFilled = selectedItem !== null || placeholder !== undefined;
     const {
-      closeMenu,
       isOpen,
       getItemProps,
       getLabelProps,
       getMenuProps,
       getToggleButtonProps,
       highlightedIndex,
+      selectItem,
       reset,
     } = useSelect({
       items: normalizedItems,
@@ -257,10 +257,8 @@ export const Dropdown = React.forwardRef(
                 highlitedItem &&
                 highlitedItem !== selectedItem
               ) {
-                onChange?.(highlitedItem);
+                selectItem(highlitedItem);
               }
-              closeMenu();
-              e.preventDefault();
             }
           },
         })}
