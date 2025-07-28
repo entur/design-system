@@ -41,12 +41,11 @@ export const ChoiceChip = React.forwardRef<HTMLInputElement, ChoiceChipProps>(
     ref: React.Ref<HTMLInputElement>,
   ) => {
     const childrenArray = React.Children.toArray(children);
-    const isIcon = (child: any) =>
-      child?.type?.toString().toLowerCase().includes('icon');
     const hasLeadingIcon =
-      childrenArray.length > 1 && isIcon(childrenArray.at(0));
+      childrenArray.length > 1 && typeof childrenArray[0] !== 'string';
     const hasTrailingIcon =
-      childrenArray.length > 1 && isIcon(childrenArray.at(-1));
+      childrenArray.length > 1 &&
+      typeof childrenArray[childrenArray.length - 1] !== 'string';
 
     const classList = cx(className, 'eds-chip', `eds-chip--size-${size}`, {
       'eds-chip--disabled': disabled,
