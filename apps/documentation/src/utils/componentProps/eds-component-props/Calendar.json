@@ -211,6 +211,21 @@
         "name": "((date: CalendarDate) => string) | undefined"
       }
     },
+    "onValidate": {
+      "defaultValue": null,
+      "description": "Callback-funksjon for når valideringen til datovelgeren endrer seg",
+      "name": "onValidate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/Calendar.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((isValid?: boolean | undefined) => void) | undefined"
+      }
+    },
     "disabled": {
       "defaultValue": null,
       "description": "",
