@@ -164,6 +164,36 @@ Følgende eksempel godtar datoer som ikke er en helg.
   scope={{now, isWeekend}}
 />
 
+#### Lese ut nåværende datovalidering
+
+Gjennom callback prop-en `onValidate` kan vi hente ut verdien på valideringen av datoen vår: 
+
+<Playground
+  defaultShowEditor
+  hideContrastOption
+  style={{ overflow: 'visible' }}
+  code={`() => {
+    const [date, setDate] = React.useState(now('Europe/Oslo'));
+    const [dateIsValid, setDateIsValid] = React.useState(true);
+    return (
+      <>
+        <DatePicker
+          label="Velg dato"
+          selectedDate={date}
+          onChange={setDate}
+          locale="nb-NO"
+          isDateUnavailable={date => isWeekend(date, 'nb-NO')}
+          onValidate={isValid => setDateIsValid(isValid)}
+        />
+        <SmallAlertBox variant={dateIsValid ? "information" : "negative"} style={{ marginTop: "0.5rem" }}>
+          Valgt dato er {dateIsValid ? "gyldig" : "ikke gyldig"}
+        </SmallAlertBox>
+      </>
+    );
+  }`}
+  scope={{now, isWeekend}}
+/>
+
 ### Bruke JS Date i stedet for @internationalized/date
 
 Hvis du ikke har mulighet til å bruke `@internationalized/date`, kan du bruke konverteringsfunksjonene: `nativeDateToDateValue` og `timeOrDateValueToNativeDate`. Disse konverterer
