@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.1](https://github.com/entur/design-system/compare/@entur/documentation@6.6.0...@entur/documentation@6.6.1) (2025-07-29)
+
+### Bug Fixes
+
+- **website:** fix props tables not always displaying available props ([bf8473f](https://github.com/entur/design-system/commit/bf8473f2d12f80d7bf750050b90cb9ee3922d797))
+- **website:** fix text wrapping in image-display download overflow menu ([4531dce](https://github.com/entur/design-system/commit/4531dce7e5994975b3c66e0dacfb3d58106a82b7))
+
 # [6.6.0](https://github.com/entur/design-system/compare/@entur/documentation@6.5.0...@entur/documentation@6.6.0) (2025-06-27)
 
 ### Features

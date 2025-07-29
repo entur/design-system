@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/entur/design-system/compare/@entur/menu@5.1.12...@entur/menu@5.2.0) (2025-07-29)
+
+### Features
+
+- **overflow menu:** re-add support for 'as' in OverflowMenuItem ([190c01b](https://github.com/entur/design-system/commit/190c01b9874c631a3ca84f88501378bdea2cc589))
+
 ## [5.1.12](https://github.com/entur/design-system/compare/@entur/menu@5.1.11...@entur/menu@5.1.12) (2025-06-27)
 
 **Note:** Version bump only for package @entur/menu
