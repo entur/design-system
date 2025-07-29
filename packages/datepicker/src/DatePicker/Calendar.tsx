@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classNames from 'classnames';
 import { I18nProvider, useLocale } from '@react-aria/i18n';
@@ -81,6 +81,8 @@ type BaseCalendarProps<DateType extends DateValue> = {
    *  @example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''
    */
   ariaLabelForDate?: (date: CalendarDate) => string;
+  /** Callback-funksjon for når valideringen til datovelgeren endrer seg */
+  onValidate?: (isValid?: boolean) => void;
   disabled?: boolean;
   locale?: string;
   calendarRef?: React.MutableRefObject<HTMLDivElement | null>;
@@ -146,6 +148,11 @@ const CalendarBase = <DateType extends DateValue>({
   const state = useCalendarState(_props);
   const { calendarProps, prevButtonProps, nextButtonProps, title } =
     useCalendar(_props, state);
+
+  useEffect(
+    () => rest.onValidate?.(!state.isValueInvalid),
+    [state.isValueInvalid],
+  );
 
   return (
     <div

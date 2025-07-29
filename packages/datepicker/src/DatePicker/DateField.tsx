@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
 import {
   DateFieldStateOptions,
@@ -125,6 +125,8 @@ export type BaseDateFieldProps<DateType extends DateValue> = {
    * @default "negative"
    */
   validationVariant?: VariantType | typeof error | typeof info;
+  /** Callback-funksjon for når valideringen til datovelgeren endrer seg */
+  onValidate?: (isValid?: boolean) => void;
   labelTooltip?: React.ReactNode;
   labelProps?: React.DOMAttributes<Element>;
   fieldProps?: DateFieldProps<DateType>;
@@ -163,6 +165,7 @@ export const DateField = <DateType extends DateValue>({
   labelProps: parentLabelProps,
   append,
   prepend,
+  onValidate,
   dateFieldRef: ref,
   ...rest
 }: DateFieldProps<DateType>) => {
@@ -199,6 +202,8 @@ export const DateField = <DateType extends DateValue>({
 
   const dateFieldRef = useRef(null);
   const { labelProps, fieldProps } = useDateField(_props, state, dateFieldRef);
+
+  useEffect(() => onValidate?.(!state.isInvalid), [state.isInvalid]);
 
   const id = useRandomId('datefield');
 

@@ -658,6 +658,26 @@ test.each([
   },
 );
 
+test('onValidate fires on invalid date', async () => {
+  const spy = jest.fn();
+  const currentDate = new CalendarDate(1997, 7, 10);
+  const minValidDate = new CalendarDate(1997, 7, 11);
+
+  render(
+    <DatePicker
+      label="test"
+      selectedDate={currentDate}
+      onChange={() => undefined}
+      minDate={minValidDate}
+      onValidate={spy}
+      locale="en-GB"
+    />,
+  );
+
+  const emittedValidationState = spy.mock.calls[0][0];
+  expect(emittedValidationState).toBeFalsy();
+}, 10000);
+
 test('Timezones should always be UTC', () => {
   expect(new Date().getTimezoneOffset()).toBe(0);
 });
