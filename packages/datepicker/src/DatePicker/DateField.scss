@@ -2,8 +2,10 @@
 
 .eds-datefield {
   width: fit-content;
+  display: block;
 
   .eds-form-control-wrapper {
+    display: inline-flex;
     padding-inline: 1rem;
     width: fit-content;
 

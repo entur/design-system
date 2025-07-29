@@ -3,6 +3,7 @@
 .eds-timepicker {
   width: fit-content;
   justify-content: center;
+  display: block;
 
   &--disabled {
     padding-inline: t.$space-medium;
@@ -18,6 +19,7 @@
     }
     &-wrapper {
       padding: 0rem;
+      display: inline-flex;
     }
   }
 
