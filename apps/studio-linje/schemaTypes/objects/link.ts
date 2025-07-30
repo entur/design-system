@@ -7,6 +7,7 @@ const LINK_TYPES = [
   {title: 'Kort', value: 'navigationcard'},
   {title: 'Primærknapp', value: 'button'},
   {title: 'Sekundærknapp', value: 'button-secondary'},
+  {title: 'Nedlasting', value: 'download'},
 ]
 
 export const LinkType = defineType({
@@ -18,6 +19,7 @@ export const LinkType = defineType({
     defineField({
       name: 'linkAddress',
       type: 'string',
+      hidden: ({parent}) => parent?.linkType === 'download',
     }),
     defineField({
       name: 'linkText',
@@ -30,6 +32,16 @@ export const LinkType = defineType({
         list: LINK_TYPES,
         layout: 'radio',
         direction: 'horizontal',
+      },
+    }),
+    defineField({
+      name: 'downloadFile',
+      type: 'file',
+      title: 'Fil for nedlasting',
+      description: 'Velg en fil som skal lastes ned',
+      hidden: ({parent}) => parent?.linkType !== 'download',
+      options: {
+        accept: '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar,.jpg,.jpeg,.png,.gif,.svg',
       },
     }),
     defineField({
@@ -49,8 +61,17 @@ export const LinkType = defineType({
   preview: {
     select: {
       linkText: 'linkText',
+      linkType: 'linkType',
+      downloadFile: 'downloadFile',
     },
-    prepare({linkText}) {
+    prepare({linkText, linkType, downloadFile}) {
+      if (linkType === 'download' && downloadFile) {
+        return {
+          title: linkText
+            ? `Nedlasting: ${linkText}`
+            : `Nedlasting: ${downloadFile.asset?.originalFilename || 'Fil'}`,
+        }
+      }
       return {
         title: linkText ? 'Link til: ' + linkText : 'Link',
       }
