@@ -74,9 +74,16 @@
         content: none;
       }
 
-      &:hover,
-      &:focus-within {
+      &--selected {
         background-color: var(--basecolors-frame-subdued);
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+        border-radius: t.$border-radiuses-large;
+
+        &:hover {
+          outline: none;
+        }
       }
 
       .eds-icon {
