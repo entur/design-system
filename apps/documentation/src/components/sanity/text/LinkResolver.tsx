@@ -51,7 +51,7 @@ export const LinkResolver = ({ value }: Props) => {
         <PrimaryButton
           as="a"
           {...linkProps}
-          style={{ marginBlockEnd: '1rem ' }}
+          style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
           {Icon ? <Icon /> : undefined}
@@ -62,7 +62,7 @@ export const LinkResolver = ({ value }: Props) => {
         <SecondaryButton
           as="a"
           {...linkProps}
-          style={{ marginBlockEnd: '1rem ' }}
+          style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
           {Icon ? <Icon /> : undefined}
@@ -74,7 +74,7 @@ export const LinkResolver = ({ value }: Props) => {
           as="a"
           size="small"
           {...linkProps}
-          style={{ marginBlockEnd: '1rem ' }}
+          style={{ marginBlockEnd: '2rem ' }}
         >
           {linkText}
           {Icon ? <Icon /> : undefined}
