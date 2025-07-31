@@ -55,6 +55,7 @@ export const formatVariablePrimitive = (
   const kebabCasedPath = dotNotationPath
     .replace(/\./g, '-') // replaces . with -
     .replace(/_/g, '') // replaces _ with nothing
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2') // camelCase to kebab-case
     .toLowerCase();
 
   return kebabCasedPath;
@@ -65,6 +66,8 @@ export const formatVariableByType = (
   variableFormat: VariableFormat,
   /** The formatted variable to turn into correct formattype */
   formattedVariable: string,
+  /** The original key (for JS format) */
+  originalKey?: string,
 ) => {
   switch (variableFormat) {
     case 'scss':
@@ -74,7 +77,7 @@ export const formatVariableByType = (
     case 'css':
       return `var(--${formattedVariable})`;
     case 'js':
-      return formattedVariable;
+      return originalKey || formattedVariable;
   }
 };
 

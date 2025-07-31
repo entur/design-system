@@ -28,7 +28,6 @@ export const TokensTableColor: React.FC<AllTokensTableProps> = ({
     () => flatten(allTokens[tokenKey]),
     [tokenKey],
   );
-
   const { variableFormat } = useSettings();
 
   let TokenListComponent: React.ComponentType<any> = PrimitiveTokenList; // Initialize with a default value
@@ -62,10 +61,17 @@ export const TokensTableColor: React.FC<AllTokensTableProps> = ({
 
   return (
     <>
-      <p>
-        Du viser nå <CodeText>{variableFormat}</CodeText>, du kan endre format i
-        innstillinger.
-      </p>
+      {tokenKey !== 'base' ? (
+        <p>
+          Du viser nå <CodeText>{variableFormat}</CodeText>, du kan endre format
+          i innstillinger.
+        </p>
+      ) : (
+        <p>
+          For å støtte flere fargemoduser er base kun tilgjengelig i{' '}
+          <CodeText>css</CodeText>.
+        </p>
+      )}
       <GridContainer className="token-table__grid">
         <TokenListComponent
           tokens={flattenedTokens}

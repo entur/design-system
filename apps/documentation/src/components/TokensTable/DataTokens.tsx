@@ -15,42 +15,46 @@ const DataTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
 
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
-    return [formattedVariable, value] as [string, string];
+    return [formattedVariable, value, key] as [string, string, string];
   });
 
-  const categorizedTokens = formatTokens.reduce((categories, [key, value]) => {
-    const formattedVariable = formatDotToVariable(key);
-    const parts = formattedVariable.split('-');
-    const mainCategory = parts[0];
-    const subCategory = parts[1];
+  const categorizedTokens = formatTokens.reduce(
+    (categories, [key, value, original]) => {
+      const formattedVariable = formatDotToVariable(key);
+      const parts = formattedVariable.split('-');
+      const mainCategory = parts[0];
+      const subCategory = parts[1];
 
-    if (!categories[mainCategory]) {
-      categories[mainCategory] = [];
-    }
+      if (!categories[mainCategory]) {
+        categories[mainCategory] = [];
+      }
 
-    if (!categories[mainCategory][subCategory]) {
-      categories[mainCategory][subCategory] = [];
-    }
+      if (!categories[mainCategory][subCategory]) {
+        categories[mainCategory][subCategory] = [];
+      }
 
-    const formatVariableBySettingsType = formatVariableByType(
-      variableFormat,
-      sliceTokenKey(formattedVariable, 1),
-    );
-    const copyValue = formatVariableBySettingsType;
-    const showValue = sliceTokenKey(formattedVariable, 2);
-    const iconCategory = 'chart';
+      const formatVariableBySettingsType = formatVariableByType(
+        variableFormat,
+        sliceTokenKey(formattedVariable, 1),
+        original,
+      );
+      const copyValue = formatVariableBySettingsType;
+      const showValue = sliceTokenKey(formattedVariable, 2);
+      const iconCategory = 'chart';
 
-    categories[mainCategory][subCategory].push(
-      <ColorToken
-        key={formattedVariable}
-        iconCategory={iconCategory}
-        showValue={showValue}
-        hexValue={value}
-        copyValue={copyValue}
-      />,
-    );
-    return categories;
-  }, {} as Record<string, any>);
+      categories[mainCategory][subCategory].push(
+        <ColorToken
+          key={formattedVariable}
+          iconCategory={iconCategory}
+          showValue={showValue}
+          hexValue={value}
+          copyValue={copyValue}
+        />,
+      );
+      return categories;
+    },
+    {} as Record<string, any>,
+  );
 
   return (
     <>
