@@ -66,7 +66,7 @@ export const Search = () => {
     searchQuery,
     data.index.index,
     data.index.store,
-    NUMBER_OF_RESULTS,
+    { limit: NUMBER_OF_RESULTS, suggest: true },
   ).filter((result: StoreResult) => result.path !== null);
 
   const componentGroup = results.filter(result =>

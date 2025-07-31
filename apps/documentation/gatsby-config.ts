@@ -1,5 +1,6 @@
 import path from 'path';
 import { GatsbyConfig, graphql } from 'gatsby';
+import { getSanitizedPath } from './src/utils/utils';
 
 const config: GatsbyConfig = {
   graphqlTypegen: {
@@ -116,39 +117,102 @@ const config: GatsbyConfig = {
         engineOptions: {
           // Info about engineOptions here: https://github.com/nextapps-de/flexsearch?tab=readme-ov-file#index-options
           tokenize: 'forward',
-          threshold: 2,
-          resolution: 30,
-          depth: 20,
+          threshold: 2, // Lower threshold for more sensitive matching
+          resolution: 30, // Higher resolution for better precision
+          depth: 25, // Increased depth for better recall
           document: {
             id: 'id',
-            index: ['title', 'tags', 'body'],
-            // This is done to add more importance to 'title' and 'tags' in the search
+            index: [
+              'title',
+              'tags',
+              'description',
+              'npmPackage',
+              'body',
+              'category',
+              'subcategory',
+            ],
+            // Optimized weights for better search relevance
             field: {
               title: {
-                weight: 3,
+                weight: 5, // Highest weight - most important for exact matches
               },
               tags: {
-                weight: 2,
+                weight: 4, // High weight - contains specific, curated keywords
+              },
+              description: {
+                weight: 3, // Medium-high weight - concise summaries
+              },
+              npmPackage: {
+                weight: 3, // Medium-high weight - important for developers
+              },
+              category: {
+                weight: 2, // Medium weight - provides context
+              },
+              subcategory: {
+                weight: 2, // Medium weight - provides context
               },
               body: {
-                weight: 1,
+                weight: 1, // Lowest weight - can be long and dilute relevance
               },
             },
           },
         },
         ref: 'id',
-        index: ['title', 'tags', 'body'],
-        store: ['id', 'path', 'title', 'description', 'npmPackage'],
-        normalizer: ({ data }) =>
-          data.allMdx.nodes.map(node => ({
+        index: [
+          'title',
+          'tags',
+          'description',
+          'npmPackage',
+          'body',
+          'category',
+          'subcategory',
+        ],
+        store: [
+          'id',
+          'path',
+          'title',
+          'description',
+          'npmPackage',
+          'category',
+          'subcategory',
+        ],
+        normalizer: ({ data }) => {
+          const mdxNodes = data.allMdx.nodes.map(node => ({
             id: node.id,
             path: node.frontmatter.route,
             title: node.frontmatter.title,
             tags: node.frontmatter.tags,
             description: node.frontmatter.description,
-            body: node.body,
             npmPackage: node.frontmatter.npmPackage,
-          })),
+            body: node.body,
+            category: null,
+            subcategory: null,
+          }));
+
+          const sanityNodes = data.allSanityPage.nodes.map(node => {
+            const path = getSanitizedPath({
+              title: node.title,
+              category: node.category,
+              subcategory: node.subcategory,
+            });
+
+            return {
+              id: node.id,
+              path: path,
+              title: node.title,
+              tags: [],
+              description: node.description,
+              npmPackage: null,
+              body: node.content?._rawItems
+                ? JSON.stringify(node.content._rawItems)
+                : '',
+              category: node.category,
+              subcategory: node.subcategory,
+            };
+          });
+
+          return [...mdxNodes, ...sanityNodes];
+        },
 
         // GraphQL query used to fetch all data for the search index. This is
         // required.
@@ -164,6 +228,18 @@ const config: GatsbyConfig = {
                   npmPackage
                   title
                   tags
+                }
+              }
+            }
+            allSanityPage {
+              nodes {
+                id
+                title
+                description
+                category
+                subcategory
+                content {
+                  _rawItems
                 }
               }
             }
