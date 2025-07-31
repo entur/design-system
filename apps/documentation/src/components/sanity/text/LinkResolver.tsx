@@ -11,14 +11,29 @@ type Props = {
 };
 
 export const LinkResolver = ({ value }: Props) => {
-  const { linkText, linkAddress, linkType, iconName, downloadFile } = value;
+  const {
+    linkText,
+    linkAddress,
+    linkType,
+    linkAddressType,
+    iconName,
+    downloadFile,
+  } = value;
   const Icon = getIconByName(iconName);
 
-  // For download links, use the file URL instead of linkAddress
+  // Determine the href based on linkAddressType
   const href =
-    linkType === 'download' && downloadFile?.asset?.url
+    linkAddressType === 'file' && downloadFile?.asset?.url
       ? downloadFile.asset.url + '?&dl='
       : linkAddress;
+
+  const linkProps = {
+    href,
+    download:
+      linkAddressType === 'file'
+        ? downloadFile?.asset?.originalFilename
+        : undefined,
+  };
 
   switch (linkType) {
     case 'navigationcard':
@@ -26,32 +41,40 @@ export const LinkResolver = ({ value }: Props) => {
         <NavigationCard
           compact
           title={linkText ?? ''}
-          href={href}
           titleIcon={Icon ? <Icon /> : undefined}
           style={{ maxWidth: '22.5rem' }}
+          {...linkProps}
         ></NavigationCard>
       );
     case 'button':
       return (
-        <PrimaryButton as="a" href={href}>
+        <PrimaryButton
+          as="a"
+          {...linkProps}
+          style={{ marginBlockEnd: '1rem ' }}
+        >
           {linkText}
           {Icon ? <Icon /> : undefined}
         </PrimaryButton>
       );
     case 'button-secondary':
       return (
-        <SecondaryButton as="a" href={href}>
+        <SecondaryButton
+          as="a"
+          {...linkProps}
+          style={{ marginBlockEnd: '1rem ' }}
+        >
           {linkText}
           {Icon ? <Icon /> : undefined}
         </SecondaryButton>
       );
-    case 'download':
+    case 'button-secondary-small':
       return (
         <SecondaryButton
           as="a"
           size="small"
-          href={href}
-          download={downloadFile?.asset?.originalFilename}
+          {...linkProps}
+          style={{ marginBlockEnd: '1rem ' }}
         >
           {linkText}
           {Icon ? <Icon /> : undefined}
@@ -59,7 +82,7 @@ export const LinkResolver = ({ value }: Props) => {
       );
     default:
       return (
-        <Link href={href}>
+        <Link {...linkProps}>
           {linkText}
           {Icon ? <Icon /> : undefined}
         </Link>
@@ -74,6 +97,7 @@ export const LinkFragment = graphql`
     linkAddress
     linkText
     linkType
+    linkAddressType
     iconName
     downloadFile {
       asset {

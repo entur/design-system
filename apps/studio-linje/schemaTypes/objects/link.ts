@@ -7,7 +7,12 @@ const LINK_TYPES = [
   {title: 'Kort', value: 'navigationcard'},
   {title: 'Primærknapp', value: 'button'},
   {title: 'Sekundærknapp', value: 'button-secondary'},
-  {title: 'Nedlasting', value: 'download'},
+  {title: 'Sekundærknapp liten', value: 'button-secondary-small'},
+]
+
+const LINK_ADDRESS_TYPES = [
+  {title: 'URL', value: 'url'},
+  {title: 'Fil', value: 'file'},
 ]
 
 export const LinkType = defineType({
@@ -17,16 +22,14 @@ export const LinkType = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'linkAddress',
-      type: 'string',
-      hidden: ({parent}) => parent?.linkType === 'download',
-    }),
-    defineField({
       name: 'linkText',
       type: 'string',
+      title: 'Tekst',
+      description: 'Teksten som vises til brukeren',
     }),
     defineField({
       name: 'linkType',
+      title: 'Type komponent',
       type: 'string',
       options: {
         list: LINK_TYPES,
@@ -35,11 +38,30 @@ export const LinkType = defineType({
       },
     }),
     defineField({
+      name: 'linkAddressType',
+      type: 'string',
+      title: 'Type lenkeadresse',
+      description: 'Velg om lenken skal gå til en URL eller en fil',
+      options: {
+        list: LINK_ADDRESS_TYPES,
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'url',
+    }),
+    defineField({
+      name: 'linkAddress',
+      type: 'string',
+      title: 'URL',
+      description: 'Nettadressen lenken skal peke til',
+      hidden: ({parent}) => parent?.linkAddressType !== 'url',
+    }),
+    defineField({
       name: 'downloadFile',
       type: 'file',
       title: 'Fil for nedlasting',
       description: 'Velg en fil som skal lastes ned',
-      hidden: ({parent}) => parent?.linkType !== 'download',
+      hidden: ({parent}) => parent?.linkAddressType !== 'file',
       options: {
         accept: '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar,.jpg,.jpeg,.png,.gif,.svg',
       },
@@ -62,14 +84,15 @@ export const LinkType = defineType({
     select: {
       linkText: 'linkText',
       linkType: 'linkType',
+      linkAddressType: 'linkAddressType',
       downloadFile: 'downloadFile',
     },
-    prepare({linkText, linkType, downloadFile}) {
-      if (linkType === 'download' && downloadFile) {
+    prepare({linkText, linkType, linkAddressType, downloadFile}) {
+      if (linkAddressType === 'file' && downloadFile) {
         return {
           title: linkText
-            ? `Nedlasting: ${linkText}`
-            : `Nedlasting: ${downloadFile.asset?.originalFilename || 'Fil'}`,
+            ? `Fil: ${linkText}`
+            : `Fil: ${downloadFile.asset?.originalFilename || 'Fil'}`,
         }
       }
       return {

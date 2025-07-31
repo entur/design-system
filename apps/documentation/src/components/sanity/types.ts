@@ -42,7 +42,8 @@ export type LinkType = {
     | 'navigationcard'
     | 'button'
     | 'button-secondary'
-    | 'download';
+    | 'button-secondary-small';
+  linkAddressType?: 'url' | 'file';
   iconName?: string;
   downloadFile?: {
     asset: {
