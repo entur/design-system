@@ -11,13 +11,13 @@ const IDENTIFIED_PREFIX = 'entur_ds_';
 
 const basePosthogOptions: Partial<PostHogConfig> = {
   api_host: 'https://eu.posthog.com',
-  persistence: 'memory',
   disable_session_recording: true,
   persistence_name: PERSISTENCE_KEY_NAME,
   cross_subdomain_cookie: false,
   person_profiles: 'identified_only',
   // we disable pageview since we will handle it manually
   capture_pageview: false,
+  debug: true,
 };
 const acceptedPosthogOptions: Partial<PostHogConfig> = {
   ...basePosthogOptions,
@@ -27,9 +27,9 @@ const acceptedPosthogOptions: Partial<PostHogConfig> = {
 };
 export const deniedPosthogOptions: Partial<PostHogConfig> = {
   ...basePosthogOptions,
-  persistence: 'memory',
-  disable_persistence: false,
   enable_heatmaps: false,
+  opt_out_capturing_by_default: true,
+  opt_out_persistence_by_default: true,
 };
 
 export const POSTHOG_API_KEY =
@@ -58,12 +58,30 @@ export const AnalyticsProvider = ({
   );
 
   useEffect(() => {
-    if (posthog.__loaded) return;
+    if (posthog.__loaded || consents?.analytics !== 'accepted') return;
     posthog.init(POSTHOG_API_KEY, deniedPosthogOptions);
-  }, []);
+  }, [consents?.analytics]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => updateAnalyticsConsent(consents?.analytics), []);
+
+  // Function to delete all PostHog cookies
+  const deletePostHogCookies = () => {
+    if (typeof document !== 'undefined') {
+      const cookies = document.cookie.split(';');
+      cookies.forEach(cookie => {
+        const [name] = cookie.split('=');
+        const trimmedName = name.trim();
+        if (trimmedName.startsWith('ph_')) {
+          // Delete cookie by setting it to expire in the past
+          document.cookie = `${trimmedName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+          // Also try with domain-specific paths
+          document.cookie = `${trimmedName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.entur.no;`;
+          document.cookie = `${trimmedName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=entur.no;`;
+        }
+      });
+    }
+  };
 
   const updateAnalyticsConsent = (newConsent: ConsentValue) => {
     switch (newConsent) {
@@ -83,6 +101,8 @@ export const AnalyticsProvider = ({
         posthog.opt_out_capturing();
         posthog.reset();
         setUniqueId(null);
+        // Delete all PostHog cookies when consent is denied
+        deletePostHogCookies();
         break;
       }
       default: {
