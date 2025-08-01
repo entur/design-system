@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.2...@entur/datepicker@11.2.0) (2025-08-01)
+
+### Bug Fixes
+
+- **datefield, datepicker, timepicker:** fix incorrect focus when clicking below datefield, datepicker or timepicker ([309c8b4](https://github.com/entur/design-system/commit/309c8b47917803d38b336f4a219804b8a1be7f9b))
+
+### Features
+
+- **datepicker:** add onValidate prop ([85d9ed8](https://github.com/entur/design-system/commit/85d9ed803843eeaa5fb629487937d6072b7bda18))
+
 ## [11.1.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.1.1...@entur/datepicker@11.1.2) (2025-07-29)
 
 **Note:** Version bump only for package @entur/datepicker

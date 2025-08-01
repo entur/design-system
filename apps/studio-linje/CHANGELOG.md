@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/entur/design-system/compare/linje@1.2.0...linje@1.3.0) (2025-08-01)
+
+### Bug Fixes
+
+- **page-builder:** improve download link and fix margin for links ([4f5795a](https://github.com/entur/design-system/commit/4f5795a4a39a2821024196b1e1cc38de47a8961c))
+
+### Features
+
+- **page-builder:** add download link type to page ([ebb1a63](https://github.com/entur/design-system/commit/ebb1a634a00e3022c00f76cb1548d4bf5c81bd58))
+
 # [1.2.0](https://github.com/entur/design-system/compare/linje@1.1.0...linje@1.2.0) (2025-06-27)
 
 ### Features
