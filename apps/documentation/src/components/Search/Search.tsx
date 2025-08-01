@@ -26,6 +26,7 @@ import {
   Heading2,
   Paragraph,
 } from '@entur/typography';
+import { useSearch } from './SearchContext';
 
 import './Search.scss';
 
@@ -46,9 +47,9 @@ let LIST_ITEM_ICON_PROPS = {
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchbarRef = useRef(null);
+  const { isSearchOpen: open, closeSearch, openSearch } = useSearch();
 
   const NUMBER_OF_RESULTS = 10;
 
@@ -140,34 +141,17 @@ export const Search = () => {
             }
           }
           break;
-        case 'Escape':
-          event.preventDefault();
-          handleDismiss();
-          break;
       }
     },
     [open, selectedIndex, allItems],
   );
 
-  // Toggle the menu when ⌘K is pressed
-  const handleCommandK = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen(open => !open);
-      }
-    },
-    [open],
-  );
-
   useEffect(() => {
-    document.addEventListener('keydown', handleCommandK);
     document.addEventListener('keydown', handleKeyboardNavigation);
     return () => {
-      document.removeEventListener('keydown', handleCommandK);
       document.removeEventListener('keydown', handleKeyboardNavigation);
     };
-  }, [handleKeyboardNavigation, handleCommandK]);
+  }, [handleKeyboardNavigation]);
 
   function updateSearchQuery(query: string) {
     setSearchQuery(query);
@@ -175,7 +159,7 @@ export const Search = () => {
   }
 
   function handleDismiss() {
-    setOpen(false);
+    closeSearch();
     updateSearchQuery('');
   }
 
@@ -188,7 +172,7 @@ export const Search = () => {
       <SecondaryButton
         aria-label="Søk"
         className="searchmodal__button"
-        onClick={() => setOpen(true)}
+        onClick={openSearch}
         size="small"
       >
         <SearchIcon aria-hidden="true" /> Søk …
@@ -203,10 +187,7 @@ export const Search = () => {
           k
         </Badge>
       </SecondaryButton>
-      <IconButton
-        className="searchmodal__button--small"
-        onClick={() => setOpen(true)}
-      >
+      <IconButton className="searchmodal__button--small" onClick={openSearch}>
         <SearchIcon aria-hidden="true" />
       </IconButton>
       <Modal
@@ -224,6 +205,10 @@ export const Search = () => {
           prepend={<SearchIcon aria-hidden="true" />}
           className="searchmodal__searchbar"
           onFocus={() => setSelectedIndex(-1)}
+          onBlur={e => {
+            // Hack to close menu on escape instead of un-focusing input field
+            if (e.relatedTarget === null) closeSearch();
+          }}
         />
         <UnorderedList className="searchmodal__list">
           {results.length === 0 && searchQuery !== '' && (

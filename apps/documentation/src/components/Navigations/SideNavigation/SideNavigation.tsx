@@ -6,7 +6,11 @@ import {
   SideNavigationItem,
   SideNavigationGroup,
 } from '@entur/menu';
-import { fuzzy } from 'fast-fuzzy';
+
+import { SecondaryButton } from '@entur/button';
+import { SearchIcon } from '@entur/icons';
+import { Badge } from '@entur/layout';
+
 import {
   isActive,
   MenuItem,
@@ -17,7 +21,7 @@ import {
   getSanitizedPath,
 } from './utils';
 
-import SearchBar from './SearchBar';
+import { useSearch } from '../../Search/SearchContext';
 
 import './SideNavigation.scss';
 
@@ -36,7 +40,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
   onClickMenuItem,
   currentLocation,
 }) => {
-  const [searchText, setSearchText] = React.useState('');
+  const { openSearch } = useSearch();
 
   const currentPathSegments = removeLeadingAndTrailingSlash(
     currentLocation.pathname,
@@ -48,19 +52,14 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     const grouped: Record<string, MenuItem[]> = {};
     const ungrouped: MenuItem[] = [];
     menuItems
-      .filter(
-        item =>
-          searchText || normalizeString(item.category) === currentCategory,
-      )
+      .filter(item => normalizeString(item.category) === currentCategory)
       .forEach(item => {
         const { subcategory } = item;
-        if (!searchText || fuzzy(searchText, item.title) > 0.5) {
-          if (subcategory) {
-            if (!grouped[subcategory]) grouped[subcategory] = [];
-            grouped[subcategory].push(item);
-          } else {
-            ungrouped.push(item);
-          }
+        if (subcategory) {
+          if (!grouped[subcategory]) grouped[subcategory] = [];
+          grouped[subcategory].push(item);
+        } else {
+          ungrouped.push(item);
         }
       });
 
@@ -78,7 +77,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
     );
 
     return { sortedGrouped, ungrouped };
-  }, [menuItems, currentCategory, searchText]);
+  }, [menuItems, currentCategory]);
 
   const MenuItem = (props: { item: MenuItem }) => {
     const { item } = props;
@@ -99,11 +98,7 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   return (
     <div className={classNames('side-navigation-wrapper', className)}>
-      <SearchBar
-        className="side-navigation__searchbar"
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-      />
+      <SearchBar onOpenSearch={openSearch} />
       <EnturSideNavigation style={{ marginTop: mobile ? '0rem' : '1.5rem' }}>
         {sortedGrouped.map(([subcategory, subcategoryMenuItems]) => (
           <SideNavigationGroup
@@ -122,6 +117,39 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
         ))}
       </EnturSideNavigation>
     </div>
+  );
+};
+
+type SearchBarProps = {
+  /** Callback to open the search modal */
+  onOpenSearch: () => void;
+  /** Ekstra klassenavn */
+  className?: string;
+};
+
+const SearchBar: React.FC<SearchBarProps> = ({ onOpenSearch }) => {
+  return (
+    <SecondaryButton
+      aria-label="Søk i dokumentasjon"
+      className="side-navigation__searchbar__button"
+      onClick={onOpenSearch}
+      width="fluid"
+    >
+      <SearchIcon aria-hidden="true" />
+      <span>Søk …</span>
+      <Badge
+        as="kbd"
+        variant="neutral"
+        type="status"
+        style={{
+          width: '5ch',
+          minWidth: 'unset',
+          paddingInline: '0.25rem',
+        }}
+      >
+        ⌘ k
+      </Badge>
+    </SecondaryButton>
   );
 };
 
