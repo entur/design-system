@@ -15,7 +15,7 @@ type Props = {
 export const ImageAndTextResolver = ({ value }: Props) => {
   const {
     image,
-    _rawText,
+    text,
     addMargin,
     showDownload,
     imageDescription,
@@ -59,7 +59,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         }
         aria-hidden={hideFromScreenreaders}
       />
-      <PortableText value={_rawText} />
+      <PortableText value={text} />
     </div>
   );
 };
@@ -76,6 +76,8 @@ export const ImageAndTextFragment = graphql`
     }
     addMargin
     showDownload
-    _rawText
+    text {
+      ...TextBlockFragment
+    }
   }
 `;

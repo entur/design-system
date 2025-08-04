@@ -17,7 +17,7 @@ export const GroupResolver = ({ value }: Props) => {
   if (content.length == 1) return <PortableText value={content?.[0]} />;
   if (content.length == 2)
     return (
-      <GridContainer spacing="medium">
+      <GridContainer spacing="medium" rowSpacing="none">
         {content.map((block, index) => (
           <GridItem
             key={(block as any)._key || `block-${index}`}
@@ -31,7 +31,7 @@ export const GroupResolver = ({ value }: Props) => {
     );
   if (content.length >= 3)
     return (
-      <GridContainer spacing="medium">
+      <GridContainer spacing="medium" rowSpacing="none">
         {content.map((block, index) => (
           <GridItem
             key={(block as any)._key || `block-${index}`}
