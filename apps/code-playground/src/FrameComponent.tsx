@@ -7,6 +7,11 @@ import { ToastProvider } from '@entur/alert';
 import { TestBench } from './TestBench';
 import { Contrast } from '@entur/layout';
 
+//@ts-ignore
+import logo from './media/logo.svg';
+//@ts-ignore
+import logoDark from './media/logoDark.svg';
+
 type FrameComponentProps = {
   children: React.ReactNode;
 };
@@ -31,6 +36,14 @@ const FrameComponent = ({ children }: FrameComponentProps) => {
   return (
     <Element className="code-playground__wrapper">
       <ToastProvider>
+        <nav aria-label="Navigasjon, hovedseksjoner">
+          <img
+            src={darkMode || contrast ? logoDark : logo}
+            height="32px"
+            width="102px"
+            alt="Entur logo, klikk for å gå til startsiden"
+          />
+        </nav>
         <div style={{ paddingBottom: '1rem', display: 'flex', gap: '1rem' }}>
           <Label>
             Dark mode
