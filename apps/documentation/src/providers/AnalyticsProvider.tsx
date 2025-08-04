@@ -17,7 +17,6 @@ const basePosthogOptions: Partial<PostHogConfig> = {
   person_profiles: 'identified_only',
   // we disable pageview since we will handle it manually
   capture_pageview: false,
-  debug: true,
 };
 const acceptedPosthogOptions: Partial<PostHogConfig> = {
   ...basePosthogOptions,
