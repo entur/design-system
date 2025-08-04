@@ -33,7 +33,7 @@
 
     &__wrapper {
       position: unset;
-      padding-top: 3rem;
+      padding-top: eds.$space-default;
       width: 100%;
       height: 100%;
       max-height: 100dvh;
@@ -52,6 +52,15 @@
         outline: eds.$outlines-focus;
         outline-offset: eds.$outline-offsets-focus;
       }
+
+      &--open {
+        // Quick fix for scrollbar moving the button when drawer is open
+        right: 3rem;
+      }
+    }
+
+    .eds-drawer__close-button {
+      z-index: 10;
     }
   }
 

@@ -58,6 +58,7 @@ const SideNavigationLayout = ({
         menuItems={menuItems}
         openSidebar={openSidebar}
         setOpenSidebar={setOpenSidebar}
+        currentLocation={location}
       />
     );
   if (isLargeScreen)
