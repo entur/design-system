@@ -31,9 +31,14 @@
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
     "@internationalized/date": "3.7.0",
+    "gray-matter": "^4.0.3",
     "playroom": "0.39.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "css-loader": "^7.1.2",
