@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PageProps } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXComponents } from 'mdx/types';
@@ -8,8 +8,14 @@ import TopNavigationLayout from './TopNavigationLayout';
 import components from './MdxProvider-utils';
 import SideNavigationLayout from './SideNavigationLayout';
 import TableOfContentLayout from './TableOfContentLayout';
+import { scrollToHashOnLoad } from '../utils/scrollUtils';
 
 const DocLayout = ({ children, location }: PageProps) => {
+  // Handle hash scrolling on page load
+  useEffect(() => {
+    scrollToHashOnLoad();
+  }, [location.pathname, location.hash]);
+
   return (
     <>
       <SkipToContent mainId="main">Gå til hovedinnhold</SkipToContent>

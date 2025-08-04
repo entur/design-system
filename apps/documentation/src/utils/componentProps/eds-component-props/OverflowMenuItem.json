@@ -1,12 +1,12 @@
 {
   "tags": {},
   "description": "",
-  "displayName": "OverflowMenu",
+  "displayName": "OverflowMenuItem",
   "methods": [],
   "props": {
     "children": {
       "defaultValue": null,
-      "description": "Menypunkter (OverflowMenuItem eller OverflowMenuLink)",
+      "description": "Innholdet til OverflowMenuItem",
       "name": "children",
       "declarations": [
         {
@@ -17,38 +17,6 @@
       "required": true,
       "type": {
         "name": "ReactNode"
-      }
-    },
-    "buttonIcon": {
-      "defaultValue": null,
-      "description": "",
-      "name": "buttonIcon",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "button": {
-      "defaultValue": {
-        "value": "IconButton med VerticalDotsIcon"
-      },
-      "description": "Knapp som skal åpne OverflowMenu",
-      "name": "button",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "ReactElement<any, string | JSXElementConstructor<any>> | undefined"
       }
     },
     "className": {
@@ -66,12 +34,12 @@
         "name": "string | undefined"
       }
     },
-    "placement": {
+    "onSelect": {
       "defaultValue": {
-        "value": "bottom-start"
+        "value": "() => undefined"
       },
-      "description": "Posisjoneringen av OverflowMenu-lista",
-      "name": "placement",
+      "description": "Det som skjer når elementet er valgt, enten ved museklikk eller Enter-klikk",
+      "name": "onSelect",
       "declarations": [
         {
           "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
@@ -80,30 +48,13 @@
       ],
       "required": false,
       "type": {
-        "name": "Placement | undefined"
+        "name": "(() => void) | undefined"
       }
     },
-    "position": {
+    "href": {
       "defaultValue": null,
-      "description": "@deprecated Use placement insted.\nThis is done to standardise the name of\nthe relative position prop used in Entur\ndesigns sytstem components",
-      "name": "position",
-      "declarations": [
-        {
-          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
-          "name": "TypeLiteral"
-        }
-      ],
-      "required": false,
-      "type": {
-        "name": "\"left\" | \"right\" | undefined"
-      }
-    },
-    "aria-label": {
-      "defaultValue": {
-        "value": "\"åpne valgmeny\""
-      },
-      "description": "Tekst som beskriver knappen som åpner Overflow-menyen",
-      "name": "aria-label",
+      "description": "Lenke til siden brukeren skal sendes til.\nObs: kun én av onSelect og href skal brukes på ett element",
+      "name": "href",
       "declarations": [
         {
           "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
@@ -113,6 +64,36 @@
       "required": false,
       "type": {
         "name": "string | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "Om dette valget skal være deaktivert",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/menu/src/OverflowMenu.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "as": {
+      "defaultValue": null,
+      "description": "An override of the default HTML tag.\nCan also be another React component.",
+      "name": "as",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/utils/dist/PolymorphicComponent.d.ts",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ElementType<any> | undefined"
       }
     }
   }

@@ -11,7 +11,6 @@
 
   &__button {
     display: flex;
-    gap: 0.5rem;
     padding-top: 0.25rem;
     padding-inline: 0.25rem;
     margin-left: t.$space-default;
@@ -28,6 +27,7 @@
     kbd {
       padding-inline: 0.2rem;
       padding-top: 0.1rem;
+      margin-left: 0.75rem;
       display: flex;
       align-items: center;
 
@@ -74,9 +74,16 @@
         content: none;
       }
 
-      &:hover,
-      &:focus-within {
+      &--selected {
         background-color: var(--basecolors-frame-subdued);
+        outline: t.$outlines-focus;
+        outline-color: var(--basecolors-stroke-focus-standard);
+        outline-offset: t.$outline-offsets-focus;
+        border-radius: t.$border-radiuses-large;
+
+        &:hover {
+          outline: none;
+        }
       }
 
       .eds-icon {

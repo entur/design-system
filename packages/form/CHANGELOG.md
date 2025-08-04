@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/entur/design-system/compare/@entur/form@8.3.0...@entur/form@8.3.1) (2025-07-29)
+
+### Bug Fixes
+
+- **textfield:** fix double tab to exit input field ([4c87e16](https://github.com/entur/design-system/commit/4c87e166d91725f62f4c568b09233c68384572c1))
+
 # [8.3.0](https://github.com/entur/design-system/compare/@entur/form@8.2.11...@entur/form@8.3.0) (2025-06-27)
 
 ### Bug Fixes

@@ -1,0 +1,179 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "DropdownFieldAppendix",
+  "methods": [],
+  "props": {
+    "disabled": {
+      "defaultValue": null,
+      "description": "",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "ariaLabelCloseList": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ariaLabelCloseList",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "ariaLabelOpenList": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ariaLabelOpenList",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "",
+      "name": "clearable",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "labelClearSelected": {
+      "defaultValue": null,
+      "description": "",
+      "name": "labelClearSelected",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "focusable": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "",
+      "name": "focusable",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "isOpen": {
+      "defaultValue": null,
+      "description": "",
+      "name": "isOpen",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "loading": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "",
+      "name": "loading",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "loadingText": {
+      "defaultValue": null,
+      "description": "",
+      "name": "loadingText",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "onClear": {
+      "defaultValue": null,
+      "description": "",
+      "name": "onClear",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "() => void"
+      }
+    },
+    "itemIsSelected": {
+      "defaultValue": null,
+      "description": "",
+      "name": "itemIsSelected",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "boolean"
+      }
+    }
+  }
+}

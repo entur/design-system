@@ -37,8 +37,21 @@ export type LinkType = {
   _type: string;
   linkAddress?: string;
   linkText?: string;
-  linkType?: 'text' | 'navigationcard' | 'button' | 'button-secondary';
+  linkType?:
+    | 'text'
+    | 'navigationcard'
+    | 'button'
+    | 'button-secondary'
+    | 'button-secondary-small';
+  linkAddressType?: 'url' | 'file';
   iconName?: string;
+  downloadFile?: {
+    asset: {
+      _id: string;
+      url: string;
+      originalFilename?: string;
+    };
+  };
 };
 
 export type InlineIcon = {

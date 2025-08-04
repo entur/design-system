@@ -19,7 +19,7 @@
     top: variables.$navbar-height;
     height: calc(100dvh - variables.$navbar-height);
     overflow-y: scroll;
-    max-width: variables.$side-navigation-width--large-desktop;
+    width: variables.$side-navigation-width--large-desktop;
     background: var(--components-menu-sidenavigation-standard-background);
   }
 
@@ -51,6 +51,41 @@
       &:focus-visible {
         outline: eds.$outlines-focus;
         outline-offset: eds.$outline-offsets-focus;
+      }
+    }
+  }
+
+  &__searchbar__button {
+    display: flex;
+    align-items: center;
+    max-width: 13rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+
+    .eds-icon {
+      margin-right: 0.5rem;
+      margin-left: 0rem;
+      position: relative;
+      bottom: 0.1rem;
+      top: 0;
+    }
+
+    span {
+      flex: 1;
+      text-align: left;
+      position: relative;
+      top: 0.1rem;
+    }
+    kbd {
+      position: relative;
+      bottom: 0.2rem;
+    }
+  }
+
+  @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
+    .searchbar__button {
+      span {
+        display: none;
       }
     }
   }

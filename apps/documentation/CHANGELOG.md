@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/entur/design-system/compare/@entur/documentation@6.6.1...@entur/documentation@6.7.0) (2025-08-01)
+
+### Bug Fixes
+
+- **page-builder:** improve download link and fix margin for links ([4f5795a](https://github.com/entur/design-system/commit/4f5795a4a39a2821024196b1e1cc38de47a8961c))
+- **page-builder:** more spacing for link buttons ([1038b1a](https://github.com/entur/design-system/commit/1038b1ae8e3aee96cddd788b1674def8f2da0020))
+- **website:** incorrect variables for token overview ([588c8e4](https://github.com/entur/design-system/commit/588c8e41287afa2de6edb146847e5e912da0533b))
+
+### Features
+
+- **page-builder:** add download link type to page ([ebb1a63](https://github.com/entur/design-system/commit/ebb1a634a00e3022c00f76cb1548d4bf5c81bd58))
+- **website:** add keyboard navigation to search modal ([3fdb3e7](https://github.com/entur/design-system/commit/3fdb3e764eab2e6ffca68481f789552f56d7903b))
+- **website:** switch sidebar search over to new search modal ([aaee45a](https://github.com/entur/design-system/commit/aaee45a8347dea7953de3d3c5182cabfbf79637a))
+
+### Performance Improvements
+
+- **website:** include sanity created pages in the search index ([e57727e](https://github.com/entur/design-system/commit/e57727e0a5df8ec2761054e2155fd43b875f31ae))
+
+## [6.6.1](https://github.com/entur/design-system/compare/@entur/documentation@6.6.0...@entur/documentation@6.6.1) (2025-07-29)
+
+### Bug Fixes
+
+- **website:** fix props tables not always displaying available props ([bf8473f](https://github.com/entur/design-system/commit/bf8473f2d12f80d7bf750050b90cb9ee3922d797))
+- **website:** fix text wrapping in image-display download overflow menu ([4531dce](https://github.com/entur/design-system/commit/4531dce7e5994975b3c66e0dacfb3d58106a82b7))
+
 # [6.6.0](https://github.com/entur/design-system/compare/@entur/documentation@6.5.0...@entur/documentation@6.6.0) (2025-06-27)
 
 ### Features

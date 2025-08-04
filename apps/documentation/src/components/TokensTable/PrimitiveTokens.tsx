@@ -19,7 +19,7 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
   const formatAndSortTokens = Object.entries(tokens)
     .map(([key, value]) => {
       const formattedVariable = formatVariablePrimitive(key);
-      return [formattedVariable, value] as [string, string];
+      return [formattedVariable, value, key] as [string, string, string];
     })
     .sort(([formattedKeyA], [formattedKeyB]) => {
       const numberA = parseInt(formattedKeyA.split('-')[1] || '0', 10);
@@ -28,7 +28,7 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
     });
 
   const categorizedTokens = formatAndSortTokens.reduce(
-    (categories, [key, value]) => {
+    (categories, [key, value, original]) => {
       const formattedVariable = formatVariablePrimitive(key);
       const parts = formattedVariable.split('-');
       const mainCategory = parts[0];
@@ -37,7 +37,11 @@ const PrimitiveTokenList: React.FC<TokensTableProps> = ({
         categories[mainCategory] = [];
       }
 
-      const copyValue = formatVariableByType(variableFormat, formattedVariable);
+      const copyValue = formatVariableByType(
+        variableFormat,
+        formattedVariable,
+        original,
+      );
       categories[mainCategory].push(
         <ColorToken
           key={formattedVariable}

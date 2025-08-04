@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { graphql, useStaticQuery, Link as GatsbyLink, navigate } from 'gatsby';
 // @ts-expect-error react-use-flexsearch is missing type declerations
 import { useFlexSearch } from 'react-use-flexsearch';
+import classNames from 'classnames';
 
 import { Modal } from '@entur/modal';
 import { IconButton, SecondaryButton } from '@entur/button';
@@ -25,6 +26,7 @@ import {
   Heading2,
   Paragraph,
 } from '@entur/typography';
+import { useSearch } from './SearchContext';
 
 import './Search.scss';
 
@@ -45,8 +47,9 @@ let LIST_ITEM_ICON_PROPS = {
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchbarRef = useRef(null);
+  const { isSearchOpen: open, closeSearch, openSearch } = useSearch();
 
   const NUMBER_OF_RESULTS = 10;
 
@@ -59,34 +62,12 @@ export const Search = () => {
     }
   `);
 
-  // Toggle the menu when ⌘K is pressed
-  React.useEffect(() => {
-    const down = e => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen(open => !open);
-      }
-      if (open && e.key === 'Escape') {
-        e.preventDefault();
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
-  }, [open]);
-
-  function handleDismiss() {
-    setOpen(false);
-    setSearchQuery('');
-  }
-
   // Get the 10 most relevant results for the search
   const results: StoreResult[] = useFlexSearch(
     searchQuery,
     data.index.index,
     data.index.store,
-    NUMBER_OF_RESULTS,
+    { limit: NUMBER_OF_RESULTS, suggest: true },
   ).filter((result: StoreResult) => result.path !== null);
 
   const componentGroup = results.filter(result =>
@@ -105,12 +86,93 @@ export const Search = () => {
       ),
   );
 
+  // Create a flat array of all navigable items for keyboard navigation
+  const allItems: StoreResult[] = [];
+  if (searchQuery === '' || (searchQuery !== '' && results.length === 0)) {
+    allItems.push(...recommendedPages);
+  }
+  allItems.push(...componentGroup);
+  allItems.push(...resourceGroup);
+  allItems.push(...remainingGroup);
+
+  const getStartIndexForSection = (sectionIndex: number): number => {
+    const hasRecommendedPages =
+      searchQuery === '' || (searchQuery !== '' && results.length === 0);
+    const recommendedPagesCount = hasRecommendedPages
+      ? recommendedPages.length
+      : 0;
+
+    switch (sectionIndex) {
+      case 0: // Recommended pages
+        return 0;
+      case 1: // Component group
+        return recommendedPagesCount;
+      case 2: // Resource group
+        return recommendedPagesCount + componentGroup.length;
+      case 3: // Remaining group
+        return (
+          recommendedPagesCount + componentGroup.length + resourceGroup.length
+        );
+      default:
+        return 0;
+    }
+  };
+
+  const handleKeyboardNavigation = useCallback(
+    (event: KeyboardEvent) => {
+      if (!open) return;
+
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault();
+          setSelectedIndex(prev => (prev < allItems.length - 1 ? prev + 1 : 0));
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          setSelectedIndex(prev => (prev > 0 ? prev - 1 : allItems.length - 1));
+          break;
+        case 'Enter':
+          event.preventDefault();
+          if (selectedIndex >= 0 && selectedIndex < allItems.length) {
+            const selectedItem = allItems[selectedIndex];
+            if (selectedItem.path) {
+              handleDismiss();
+              navigate(selectedItem.path);
+            }
+          }
+          break;
+      }
+    },
+    [open, selectedIndex, allItems],
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardNavigation);
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardNavigation);
+    };
+  }, [handleKeyboardNavigation]);
+
+  function updateSearchQuery(query: string) {
+    setSearchQuery(query);
+    setSelectedIndex(-1);
+  }
+
+  function handleDismiss() {
+    closeSearch();
+    updateSearchQuery('');
+  }
+
+  function handleItemSelect(index: number) {
+    setSelectedIndex(index);
+  }
+
   return (
     <>
       <SecondaryButton
         aria-label="Søk"
         className="searchmodal__button"
-        onClick={() => setOpen(true)}
+        onClick={openSearch}
         size="small"
       >
         <SearchIcon aria-hidden="true" /> Søk …
@@ -125,10 +187,7 @@ export const Search = () => {
           k
         </Badge>
       </SecondaryButton>
-      <IconButton
-        className="searchmodal__button--small"
-        onClick={() => setOpen(true)}
-      >
+      <IconButton className="searchmodal__button--small" onClick={openSearch}>
         <SearchIcon aria-hidden="true" />
       </IconButton>
       <Modal
@@ -141,10 +200,15 @@ export const Search = () => {
         <TextField
           label="Søk i dokumentasjon"
           value={searchQuery}
-          onChange={event => setSearchQuery(event.currentTarget.value)}
+          onChange={event => updateSearchQuery(event.currentTarget.value)}
           ref={searchbarRef}
           prepend={<SearchIcon aria-hidden="true" />}
           className="searchmodal__searchbar"
+          onFocus={() => setSelectedIndex(-1)}
+          onBlur={e => {
+            // Hack to close menu on escape instead of un-focusing input field
+            if (e.relatedTarget === null) closeSearch();
+          }}
         />
         <UnorderedList className="searchmodal__list">
           {results.length === 0 && searchQuery !== '' && (
@@ -160,6 +224,9 @@ export const Search = () => {
               group={recommendedPages}
               title="Foreslått"
               handleDismiss={handleDismiss}
+              selectedIndex={selectedIndex}
+              startIndex={getStartIndexForSection(0)}
+              onItemSelect={handleItemSelect}
             />
           )}
           <ListSection
@@ -167,18 +234,27 @@ export const Search = () => {
             title="Komponenter"
             handleDismiss={handleDismiss}
             icon={<ComponentIcon {...LIST_ITEM_ICON_PROPS} />}
+            selectedIndex={selectedIndex}
+            startIndex={getStartIndexForSection(1)}
+            onItemSelect={handleItemSelect}
           />
           <ListSection
             group={resourceGroup}
             title="Ressurser"
             handleDismiss={handleDismiss}
             icon={<ColorPickerIcon {...LIST_ITEM_ICON_PROPS} />}
+            selectedIndex={selectedIndex}
+            startIndex={getStartIndexForSection(2)}
+            onItemSelect={handleItemSelect}
           />
           <ListSection
             group={remainingGroup}
             title="Andre sider"
             handleDismiss={handleDismiss}
             icon={<FileIcon {...LIST_ITEM_ICON_PROPS} />}
+            selectedIndex={selectedIndex}
+            startIndex={getStartIndexForSection(3)}
+            onItemSelect={handleItemSelect}
           />
         </UnorderedList>
       </Modal>
@@ -191,18 +267,32 @@ const ListSection = (props: {
   title: string;
   icon?: any;
   handleDismiss: () => void;
+  selectedIndex: number;
+  startIndex: number;
+  onItemSelect?: (index: number) => void;
 }) => {
-  const { group, title, handleDismiss, icon } = props;
+  const {
+    group,
+    title,
+    handleDismiss,
+    icon,
+    selectedIndex,
+    startIndex,
+    onItemSelect,
+  } = props;
 
   if (group.length === 0) return <></>;
   return (
     <>
       <Heading5 as={Heading2}>{title}</Heading5>
-      {group.map(result => (
+      {group.map((result, index) => (
         <ListElement
+          key={result.id}
           result={result}
           handleDismiss={handleDismiss}
           icon={icon}
+          isSelected={selectedIndex === startIndex + index}
+          onSelect={() => onItemSelect?.(startIndex + index)}
         />
       ))}
     </>
@@ -213,16 +303,25 @@ const ListElement = (props: {
   result: StoreResult;
   handleDismiss: () => void;
   icon: any;
+  isSelected: boolean;
+  onSelect?: () => void;
 }) => {
-  const { result, handleDismiss, icon } = props;
+  const { result, handleDismiss, icon, isSelected, onSelect } = props;
   return (
-    <ListItem className="searchmodal__list__item">
+    <ListItem
+      className={classNames('searchmodal__list__item', {
+        'searchmodal__list__item--selected': isSelected,
+      })}
+      onMouseEnter={onSelect}
+      tabIndex={-1}
+    >
       {icon ?? result.icon}
       <div className="searchmodal__list__item__text">
         <GatsbyLink
           className="searchmodal__list__item__text__link"
           to={result.path ?? '#'}
           onClick={handleDismiss}
+          onFocus={onSelect}
         >
           {result.title}
         </GatsbyLink>

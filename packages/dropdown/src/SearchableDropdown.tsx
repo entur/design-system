@@ -214,7 +214,6 @@ export const SearchableDropdown = React.forwardRef(
     );
 
     const {
-      closeMenu,
       isOpen,
       getToggleButtonProps,
       getLabelProps,
@@ -225,6 +224,8 @@ export const SearchableDropdown = React.forwardRef(
       selectedItem,
       inputValue,
       setInputValue,
+      selectItem,
+      reset,
     } = useCombobox({
       defaultHighlightedIndex: lastHighlightedIndex,
       items: listItems,
@@ -234,8 +235,7 @@ export const SearchableDropdown = React.forwardRef(
       onInputValueChange(changes) {
         updateListItems({ inputValue: changes.inputValue });
       },
-      onStateChange({ selectedItem: newSelectedItem }) {
-        if (newSelectedItem === undefined) return;
+      onSelectedItemChange({ selectedItem: newSelectedItem }) {
         onChange(newSelectedItem);
       },
       // Accessibility
@@ -279,11 +279,8 @@ export const SearchableDropdown = React.forwardRef(
     }, [isOpen, refs.reference, refs.floating, update]);
 
     const handleOnClear = () => {
-      onChange(null);
-      setInputValue(EMPTY_INPUT);
       inputRef.current?.focus();
-      updateListItems({ inputValue });
-      setShowSelectedItem(false);
+      reset();
     };
 
     return (
@@ -361,10 +358,8 @@ export const SearchableDropdown = React.forwardRef(
                   highlitedItem &&
                   highlitedItem !== selectedItem
                 ) {
-                  onChange?.(highlitedItem);
+                  selectItem(highlitedItem);
                 }
-                closeMenu();
-                e.preventDefault();
               }
             },
             onBlur() {

@@ -11,10 +11,10 @@ import { useSettings, VariableFormat } from '@providers/SettingsContext';
 import ColorToken from './ColorToken';
 
 const categorizedTokens = (
-  tokens: [string, string][],
+  tokens: [string, string, string][],
   variableFormat: VariableFormat,
 ): Record<string, any> => {
-  return tokens.reduce((categories, [key, value]) => {
+  return tokens.reduce((categories, [key, value, original]) => {
     const formattedVariable = formatDotToVariable(key);
     const categoryKey = formattedVariable.includes('standard')
       ? 'standard'
@@ -28,7 +28,11 @@ const categorizedTokens = (
       categories[categoryKey] = { standard: [], transparent: [] };
     }
 
-    const copyValue = formatVariableByType(variableFormat, formattedVariable);
+    const copyValue = formatVariableByType(
+      variableFormat,
+      formattedVariable,
+      original,
+    );
     const showValue = sliceTokenKey(formattedVariable, 1);
     const iconCategory = 'transport';
     categories[categoryKey][subCategoryKey].push(
@@ -50,7 +54,7 @@ const TransportTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
 
   const formatTokens = Object.entries(tokens).map(([key, value]) => {
     const formattedVariable = formatDotToVariable(key);
-    return [formattedVariable, value] as [string, string];
+    return [formattedVariable, value, key] as [string, string, string];
   });
 
   const categorizedItems = categorizedTokens(formatTokens, variableFormat);

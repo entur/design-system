@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/entur/design-system/compare/@entur/chip@0.8.12...@entur/chip@0.9.0) (2025-07-29)
+
+### Features
+
+- **chip:** add spacing for leading and trailing icons in text ([905b917](https://github.com/entur/design-system/commit/905b9179040edec0ea9217a0dc14acdf77c89de7))
+
 ## [0.8.12](https://github.com/entur/design-system/compare/@entur/chip@0.8.11...@entur/chip@0.8.12) (2025-06-27)
 
 **Note:** Version bump only for package @entur/chip

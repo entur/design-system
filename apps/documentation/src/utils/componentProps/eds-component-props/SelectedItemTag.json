@@ -1,0 +1,130 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "SelectedItemTag",
+  "methods": [],
+  "props": {
+    "ariaLabelRemoveSelected": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ariaLabelRemoveSelected",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "ariaLabelChosen": {
+      "defaultValue": {
+        "value": "valgt"
+      },
+      "description": "",
+      "name": "ariaLabelChosen",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "getSelectedItemProps": {
+      "defaultValue": null,
+      "description": "",
+      "name": "getSelectedItemProps",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((options: UseMultipleSelectionGetSelectedItemPropsOptions<NormalizedDropdownItemType<ValueType>>) => any) | undefined"
+      }
+    },
+    "index": {
+      "defaultValue": null,
+      "description": "",
+      "name": "index",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "",
+      "name": "readOnly",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "removeSelectedItem": {
+      "defaultValue": null,
+      "description": "",
+      "name": "removeSelectedItem",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "(item: NormalizedDropdownItemType<ValueType>) => void"
+      }
+    },
+    "selectedItem": {
+      "defaultValue": null,
+      "description": "",
+      "name": "selectedItem",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "NormalizedDropdownItemType<ValueType>"
+      }
+    }
+  }
+}

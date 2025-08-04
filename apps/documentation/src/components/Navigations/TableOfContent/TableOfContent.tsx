@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router';
 import classNames from 'classnames';
 import { Heading4 } from '@entur/typography';
 import { removeTrailingSlash } from '../SideNavigation/utils';
+import { handleHashLinkClick } from '../../../utils/scrollUtils';
 
 import './TableOfContent.scss';
 
@@ -155,6 +156,7 @@ const TableOfContent = () => {
                   'table-of-content__link--active': activeHeading === headingId,
                 })}
                 href={heading.url}
+                onClick={handleHashLinkClick}
               >
                 <span>{heading.title}</span>
               </a>

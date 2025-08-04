@@ -106,7 +106,7 @@ async function updatePropsIfComponentIsModified(
     const propsLastCommitDate = await getLastCommitDateForFile(jsonFile);
 
     if (componentLastCommitDate > propsLastCommitDate)
-      generatePropFileForComponent(componentFile, jsonFile);
+      generatePropFileForComponent(componentFile);
   } catch (error) {
     console.error(
       `Error checking if prop for ${jsonFile} needs update:`,
@@ -115,27 +115,26 @@ async function updatePropsIfComponentIsModified(
   }
 }
 
-function generatePropFileForComponent(
-  componentFile: string,
-  outputFilePath: string,
-): void {
+function generatePropFileForComponent(componentFile: string): void {
   try {
-    const componentName = path.basename(componentFile, '.tsx');
     const propFiles = parser.parse(componentFile);
 
-    // Remove the filePath property from the parsed data
-    propFiles.forEach((file: any) => {
-      delete file.filePath;
+    propFiles.forEach((component: any) => {
+      delete component.filePath;
+
+      const componentDisplayName = component.displayName;
+      const outputFilePath = path.join(
+        outputDir,
+        `${componentDisplayName}.json`,
+      );
+      const normalizedJson = JSON.stringify(component, null, 2) + '\n';
+
+      fs.writeFileSync(outputFilePath, normalizedJson, { encoding: 'utf8' });
+
+      console.log(
+        `🚧 ${componentDisplayName}: Found changes and updated prop file.\n⚠️ This change should be committed to the repo!`,
+      );
     });
-
-    // Normalize the JSON output with a final newline
-    const normalizedJson = JSON.stringify(propFiles, null, 2) + '\n';
-
-    // Write the updated JSON file
-    fs.writeFileSync(outputFilePath, normalizedJson, { encoding: 'utf8' });
-    console.log(
-      `🚧 ${componentName}: Found changes and updated prop file.\n⚠️ This change should be committed to the repo!`,
-    );
   } catch (error) {
     console.error(`Failed to extract props for ${componentFile}:`, error);
   }

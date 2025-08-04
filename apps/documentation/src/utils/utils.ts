@@ -29,3 +29,37 @@ export function getIconByName(iconName: string | undefined) {
 export function isEnturIcon(iconName: string): iconName is keyof typeof icons {
   return iconName in icons;
 }
+
+export function getSanitizedPath({
+  category,
+  subcategory,
+  title,
+  categoryIndex,
+}: {
+  category: string;
+  subcategory?: string;
+  title: string;
+  categoryIndex?: number;
+}) {
+  function sanitizeText(text: string) {
+    if (!text) return undefined;
+    return text
+      .toLowerCase()
+      .replaceAll('æ', 'ae')
+      .replaceAll('ø', 'o')
+      .replaceAll('å', 'a')
+      .replaceAll('&', 'og')
+      .replace(/\?$/, '')
+      .replace(/ +/g, '-')
+      .replace(/[^a-zA-Z0-9\-]+\-/g, '');
+  }
+
+  const sanitizedCategory = sanitizeText(category);
+  if (categoryIndex) return `/${sanitizedCategory}`;
+
+  const sanitizedTitle = sanitizeText(title);
+  if (!subcategory) return `/${sanitizedCategory}/${sanitizedTitle}`;
+
+  const sanitizedSubcategory = sanitizeText(subcategory);
+  return `/${sanitizedCategory}/${sanitizedSubcategory}/${sanitizedTitle}`;
+}

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.2...@entur/dropdown@7.3.0) (2025-07-29)
+
+### Bug Fixes
+
+- **multiselect:** fix incorrect styling for checkboxes in multiselect list ([98a03ef](https://github.com/entur/design-system/commit/98a03eff87784f738d5c599b8bb72cf3e4e638bb))
+- **multiselect:** fix tab deselecting item when selectOnTab is true ([c2aeeff](https://github.com/entur/design-system/commit/c2aeeff2aebc9b69785754edeb7fb088fb8d7b80))
+
+### Features
+
+- **dropdown:** change tab to move focus to next element when list is open instead of closing list ([217e11d](https://github.com/entur/design-system/commit/217e11dde0601496912b2c573eb20841bf8612f7))
+
 ## [7.2.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.2.1...@entur/dropdown@7.2.2) (2025-06-27)
 
 ### Bug Fixes

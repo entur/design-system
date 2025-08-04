@@ -14,6 +14,7 @@ import {
   AnalyticsContext,
   ColorsProvider,
 } from './src/providers';
+import { SearchProvider } from './src/components/Search/SearchContext';
 import DocLayout from './src/layouts/DocLayout';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
@@ -26,7 +27,9 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
           <AnalyticsProvider>
             <ToastProvider>
               <ColorsProvider>
-                <MediaContextProvider>{element}</MediaContextProvider>
+                <MediaContextProvider>
+                  <SearchProvider>{element}</SearchProvider>
+                </MediaContextProvider>
               </ColorsProvider>
             </ToastProvider>
           </AnalyticsProvider>

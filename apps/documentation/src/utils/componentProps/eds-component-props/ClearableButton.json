@@ -1,0 +1,72 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "ClearableButton",
+  "methods": [],
+  "props": {
+    "onClear": {
+      "defaultValue": null,
+      "description": "",
+      "name": "onClear",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "() => void"
+      }
+    },
+    "labelClearSelectedItems": {
+      "defaultValue": {
+        "value": "Fjern valgte"
+      },
+      "description": "",
+      "name": "labelClearSelectedItems",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "focusable": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "",
+      "name": "focusable",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "ariaLabelClearItems": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ariaLabelClearItems",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/components/FieldComponents.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

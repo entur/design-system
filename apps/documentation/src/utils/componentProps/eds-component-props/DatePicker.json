@@ -1,591 +1,604 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "DatePicker",
-    "methods": [],
-    "props": {
-      "selectedDate": {
-        "defaultValue": null,
-        "description": "Den valgte tiden. Tid i '@internationalized/date'-pakkens format",
-        "name": "selectedDate",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": true,
-        "type": {
-          "name": "DateValue | null"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "DatePicker",
+  "methods": [],
+  "props": {
+    "selectedDate": {
+      "defaultValue": null,
+      "description": "Den valgte tiden. Tid i '@internationalized/date'-pakkens format",
+      "name": "selectedDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": true,
+      "type": {
+        "name": "DateValue | null"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "Kalles når dato endres. Tid i '@internationalized/date'-pakkens format",
+      "name": "onChange",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((value: MappedDateValue<DateType> | null) => void) | undefined"
+      }
+    },
+    "label": {
+      "defaultValue": null,
+      "description": "Ledetekst til DateField",
+      "name": "label",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string"
+      }
+    },
+    "locale": {
+      "defaultValue": {
+        "value": "Brukerenhetens selvvalgte locale"
       },
-      "onChange": {
-        "defaultValue": null,
-        "description": "Kalles når dato endres. Tid i '@internationalized/date'-pakkens format",
-        "name": "onChange",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((value: MappedDateValue<DateType> | null) => void) | undefined"
+      "description": "BCP47-språkkoden til locale-en du ønsker å bruke.",
+      "name": "locale",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "showTimeZone": {
+      "defaultValue": {
+        "value": false
       },
-      "label": {
-        "defaultValue": null,
-        "description": "Ledetekst til DateField",
-        "name": "label",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": true,
-        "type": {
-          "name": "string"
+      "description": "Viser den gjeldende tidssonen hvis en er valgt",
+      "name": "showTimeZone",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "granularity": {
+      "defaultValue": {
+        "value": "showTime ? 'minute' : 'day'"
       },
-      "locale": {
-        "defaultValue": {
-          "value": "Brukerenhetens selvvalgte locale"
-        },
-        "description": "BCP47-språkkoden til locale-en du ønsker å bruke.",
-        "name": "locale",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "description": "Brukes for å vise tid i datovelgeren. Velg minste enhet som skal vises.\nHvis du vil vise tid vil \"minute\" vise minutt og ikke sekund, mens \"second\" viser\nsekunder også.",
+      "name": "granularity",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "Granularity | undefined"
+      }
+    },
+    "showTime": {
+      "defaultValue": null,
+      "description": "Viser tidspunkt i tillegg til dato.\nOBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime",
+      "name": "showTime",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "minDate": {
+      "defaultValue": null,
+      "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig fra og med den tiden som legges inn som minDate.\nDato uten tid vil være gyldig hele minDate-dagen",
+      "name": "minDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "DateValue | undefined"
+      }
+    },
+    "maxDate": {
+      "defaultValue": null,
+      "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig til og med den tiden som legges inn som maxDate.\nDato uten tid vil være gyldig hele maxDate-dagen",
+      "name": "maxDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "DateValue | undefined"
+      }
+    },
+    "isDateUnavailable": {
+      "defaultValue": null,
+      "description": "Funksjon som tar inn en dato og sier om den er utilgjengelig.\nEks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig",
+      "name": "isDateUnavailable",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((date: DateValue) => boolean) | undefined"
+      }
+    },
+    "forcedReturnType": {
+      "defaultValue": {
+        "value": "undefined"
       },
-      "showTimeZone": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Viser den gjeldende tidssonen hvis en er valgt",
-        "name": "showTimeZone",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "description": "Tvinger typen på onChange til den gitte typen.\nDette er nyttig når utgangsverdien din er 'null', men du ønsker at\nDatePicker alltid skal returnere f.eks ZonedDateTime.\n\nSom standard returnerer onChange DateValue basert på selectedDate,\neller CalendarDate hvis selectedDate er 'null'.",
+      "name": "forcedReturnType",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "ForcedReturnType"
+      }
+    },
+    "feedback": {
+      "defaultValue": null,
+      "description": "Varselmelding, som vil komme under TimePicker",
+      "name": "feedback",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "Valideringsvariant",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "VariantType | \"error\" | \"info\" | undefined"
+      }
+    },
+    "validationFeedback": {
+      "defaultValue": {
+        "value": "\"Ugyldig dato\""
       },
-      "granularity": {
-        "defaultValue": {
-          "value": "showTime ? 'minute' : 'day'"
-        },
-        "description": "Brukes for å vise tid i datovelgeren. Velg minste enhet som skal vises.\nHvis du vil vise tid vil \"minute\" vise minutt og ikke sekund, mens \"second\" viser\nsekunder også.",
-        "name": "granularity",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "Granularity | undefined"
+      "description": "Varselmelding som forteller om ugyldig dato",
+      "name": "validationFeedback",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "validationVariant": {
+      "defaultValue": {
+        "value": "\"negative\""
       },
-      "showTime": {
-        "defaultValue": null,
-        "description": "Viser tidspunkt i tillegg til dato.\nOBS: selectedDate må være av typen CalendarDateTime eller ZonedDateTime",
-        "name": "showTime",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      "description": "Valideringsvariant for melding om ugyldig dato",
+      "name": "validationVariant",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "VariantType | \"error\" | \"info\" | undefined"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "",
+      "name": "disabled",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "",
+      "name": "readOnly",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "showWeekNumbers": {
+      "defaultValue": {
+        "value": "false"
       },
-      "minDate": {
-        "defaultValue": null,
-        "description": "Tidligste gyldige datovalg.\nEks: today(getLocalTimeZone()) == i dag i lokal tidssone.\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig fra og med den tiden som legges inn som minDate.\nDato uten tid vil være gyldig hele minDate-dagen",
-        "name": "minDate",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "DateValue | undefined"
+      "description": "Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen\nkan endres med prop-en 'weekNumberHeader'",
+      "name": "showWeekNumbers",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "weekNumberHeader": {
+      "defaultValue": {
+        "value": "'#'"
       },
-      "maxDate": {
-        "defaultValue": null,
-        "description": "Seneste gyldige datovalg.\nEks: today(getLocalTimeZone()).add({days: 1}) == i morgen i lokal tidssone\n\nOBS: Hvis du bruker dato med tid vil tidspunktet også tas hensyn til.\nGyldig til og med den tiden som legges inn som maxDate.\nDato uten tid vil være gyldig hele maxDate-dagen",
-        "name": "maxDate",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "DateValue | undefined"
+      "description": "Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.",
+      "name": "weekNumberHeader",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "disableModal": {
+      "defaultValue": {
+        "value": false
       },
-      "isDateUnavailable": {
-        "defaultValue": null,
-        "description": "Funksjon som tar inn en dato og sier om den er utilgjengelig.\nEks. (date) => isWeekend(date, 'no-NO') == helgedager er ikke tilgjengelig",
-        "name": "isDateUnavailable",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((date: DateValue) => boolean) | undefined"
+      "description": "Hvis true vil kalenderen alltid vises i en popover når den åpnes",
+      "name": "disableModal",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "modalTreshold": {
+      "defaultValue": {
+        "value": 1000
       },
-      "forcedReturnType": {
-        "defaultValue": {
-          "value": "undefined"
-        },
-        "description": "Tvinger typen på onChange til den gitte typen.\nDette er nyttig når utgangsverdien din er 'null', men du ønsker at\nDatePicker alltid skal returnere f.eks ZonedDateTime.\n\nSom standard returnerer onChange DateValue basert på selectedDate,\neller CalendarDate hvis selectedDate er 'null'.",
-        "name": "forcedReturnType",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ForcedReturnType"
+      "description": "Maxbredden til viewport-en for at modal skal vises",
+      "name": "modalTreshold",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "number | undefined"
+      }
+    },
+    "labelTooltip": {
+      "defaultValue": null,
+      "description": "",
+      "name": "labelTooltip",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "navigationDescription": {
+      "defaultValue": {
+        "value": "'Bruk piltastene til å navigere mellom datoer'"
       },
-      "feedback": {
-        "defaultValue": null,
-        "description": "Varselmelding, som vil komme under TimePicker",
-        "name": "feedback",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "description": "Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.",
+      "name": "navigationDescription",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "classNameForDate": {
+      "defaultValue": {
+        "value": "undefined"
       },
-      "variant": {
-        "defaultValue": null,
-        "description": "Valideringsvariant",
-        "name": "variant",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "VariantType | \"error\" | \"info\" | undefined"
+      "description": "Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.\nTar inn en dato og skal returnere klassenavnet som skal legges til den datoen.\n@example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''\n\nOBS: hvis stylingen er meningsbærende bør du bruke ariaLabelForDate i tillegg for å beskrive\nmeningen til skjermlesere o.l.",
+      "name": "classNameForDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "((date: CalendarDate) => string) | undefined"
+      }
+    },
+    "ariaLabelForDate": {
+      "defaultValue": {
+        "value": "undefined"
       },
-      "validationFeedback": {
-        "defaultValue": {
-          "value": "\"Ugyldig dato\""
-        },
-        "description": "Varselmelding som forteller om ugyldig dato",
-        "name": "validationFeedback",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      "description": "Legger til teksten som returneres på datoen i kalenderen sin aria-label.\nBør brukes sammen med classNameForDate hvis styling-endringene gjort der er meningsbærende.\n@example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''",
+      "name": "ariaLabelForDate",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
+          "name": "TypeLiteral"
         }
-      },
-      "validationVariant": {
-        "defaultValue": {
-          "value": "\"negative\""
-        },
-        "description": "Valideringsvariant for melding om ugyldig dato",
-        "name": "validationVariant",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "VariantType | \"error\" | \"info\" | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "((date: CalendarDate) => string) | undefined"
+      }
+    },
+    "prepend": {
+      "defaultValue": null,
+      "description": "Tekst eller ikon som vises foran skjema-elementet",
+      "name": "prepend",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "disabled": {
-        "defaultValue": null,
-        "description": "",
-        "name": "disabled",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "append": {
+      "defaultValue": null,
+      "description": "Tekst eller ikon som vises etter skjema-elementet",
+      "name": "append",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "readOnly": {
-        "defaultValue": null,
-        "description": "",
-        "name": "readOnly",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "labelTooltipButtonAriaLabel": {
+      "defaultValue": null,
+      "description": "Forklarende tekst for knappen som åpner labelTooltip",
+      "name": "labelTooltipButtonAriaLabel",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "Ekstra klassenavn",
-        "name": "className",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "labelTooltipPlacement": {
+      "defaultValue": null,
+      "description": "",
+      "name": "labelTooltipPlacement",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "style": {
-        "defaultValue": null,
-        "description": "",
-        "name": "style",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DateField.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "Placement | undefined"
+      }
+    },
+    "required": {
+      "defaultValue": null,
+      "description": "Illustrerer om inputfeltet er påkrevd eller ikke",
+      "name": "required",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "showWeekNumbers": {
-        "defaultValue": {
-          "value": "false"
-        },
-        "description": "Slå på visning av ukenummere i kalenderen. Overskriften for ukenummer-kolonnen\nkan endres med prop-en 'weekNumberHeader'",
-        "name": "showWeekNumbers",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "labelId": {
+      "defaultValue": null,
+      "description": "ID som settes på labelen til inputfeltet",
+      "name": "labelId",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "weekNumberHeader": {
-        "defaultValue": {
-          "value": "'#'"
-        },
-        "description": "Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.",
-        "name": "weekNumberHeader",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "disableLabelAnimation": {
+      "defaultValue": null,
+      "description": "Plasserer labelen statisk på toppen av inputfeltet",
+      "name": "disableLabelAnimation",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "disableModal": {
-        "defaultValue": {
-          "value": false
-        },
-        "description": "Hvis true vil kalenderen alltid vises i en popover når den åpnes",
-        "name": "disableModal",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "ariaAlertOnFeedback": {
+      "defaultValue": null,
+      "description": "",
+      "name": "ariaAlertOnFeedback",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "modalTreshold": {
-        "defaultValue": {
-          "value": 1000
-        },
-        "description": "Maxbredden til viewport-en for at modal skal vises",
-        "name": "modalTreshold",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "number | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "boolean | undefined"
+      }
+    },
+    "after": {
+      "defaultValue": null,
+      "description": "Legg til et element etter feltet",
+      "name": "after",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "labelTooltip": {
-        "defaultValue": null,
-        "description": "",
-        "name": "labelTooltip",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "before": {
+      "defaultValue": null,
+      "description": "Legg til et element før feltet",
+      "name": "before",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "navigationDescription": {
-        "defaultValue": {
-          "value": "'Bruk piltastene til å navigere mellom datoer'"
-        },
-        "description": "Skjermlesertest som forklarer navigasjon i kalenderen. Oversettes automatisk for engelsk locale, men ikke andre språk.",
-        "name": "navigationDescription",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
+      ],
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "ariaLabelOnReadOnly": {
+      "defaultValue": null,
+      "description": "Aria-label som brukes når inputfeltet er i read-only modus",
+      "name": "ariaLabelOnReadOnly",
+      "declarations": [
+        {
+          "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
+          "name": "TypeLiteral"
         }
-      },
-      "classNameForDate": {
-        "defaultValue": {
-          "value": "undefined"
-        },
-        "description": "Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.\nTar inn en dato og skal returnere klassenavnet som skal legges til den datoen.\n@example (date) => isWeekend(date, 'no-NO') ? 'weekend' : ''\n\nOBS: hvis stylingen er meningsbærende bør du bruke ariaLabelForDate i tillegg for å beskrive\nmeningen til skjermlesere o.l.",
-        "name": "classNameForDate",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((date: CalendarDate) => string) | undefined"
-        }
-      },
-      "ariaLabelForDate": {
-        "defaultValue": {
-          "value": "undefined"
-        },
-        "description": "Legger til teksten som returneres på datoen i kalenderen sin aria-label.\nBør brukes sammen med classNameForDate hvis styling-endringene gjort der er meningsbærende.\n@example (date) => isWeekend(date, 'no-NO') ? 'helgedag' : ''",
-        "name": "ariaLabelForDate",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/datepicker/src/DatePicker/DatePicker.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "((date: CalendarDate) => string) | undefined"
-        }
-      },
-      "prepend": {
-        "defaultValue": null,
-        "description": "Tekst eller ikon som vises foran skjema-elementet",
-        "name": "prepend",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "append": {
-        "defaultValue": null,
-        "description": "Tekst eller ikon som vises etter skjema-elementet",
-        "name": "append",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "labelTooltipButtonAriaLabel": {
-        "defaultValue": null,
-        "description": "Forklarende tekst for knappen som åpner labelTooltip",
-        "name": "labelTooltipButtonAriaLabel",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "labelTooltipPlacement": {
-        "defaultValue": null,
-        "description": "",
-        "name": "labelTooltipPlacement",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "Placement | undefined"
-        }
-      },
-      "required": {
-        "defaultValue": null,
-        "description": "Illustrerer om inputfeltet er påkrevd eller ikke",
-        "name": "required",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "labelId": {
-        "defaultValue": null,
-        "description": "ID som settes på labelen til inputfeltet",
-        "name": "labelId",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string | undefined"
-        }
-      },
-      "disableLabelAnimation": {
-        "defaultValue": null,
-        "description": "Plasserer labelen statisk på toppen av inputfeltet",
-        "name": "disableLabelAnimation",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "ariaAlertOnFeedback": {
-        "defaultValue": null,
-        "description": "",
-        "name": "ariaAlertOnFeedback",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean | undefined"
-        }
-      },
-      "after": {
-        "defaultValue": null,
-        "description": "Legg til et element etter feltet",
-        "name": "after",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "before": {
-        "defaultValue": null,
-        "description": "Legg til et element før feltet",
-        "name": "before",
-        "declarations": [
-          {
-            "fileName": "design-system/node_modules/@entur/form/dist/BaseFormControl.d.ts",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
       }
     }
   }
-]
+}

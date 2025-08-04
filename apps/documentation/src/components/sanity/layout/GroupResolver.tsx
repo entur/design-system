@@ -18,8 +18,12 @@ export const GroupResolver = ({ value }: Props) => {
   if (content.length == 2)
     return (
       <GridContainer spacing="medium">
-        {content.map(block => (
-          <GridItem small={12} medium={6}>
+        {content.map((block, index) => (
+          <GridItem
+            key={(block as any)._key || `block-${index}`}
+            small={12}
+            medium={6}
+          >
             <PortableText value={block} />
           </GridItem>
         ))}
@@ -28,8 +32,12 @@ export const GroupResolver = ({ value }: Props) => {
   if (content.length >= 3)
     return (
       <GridContainer spacing="medium">
-        {content.map(block => (
-          <GridItem small={12} medium={4}>
+        {content.map((block, index) => (
+          <GridItem
+            key={(block as any)._key || `block-${index}`}
+            small={12}
+            medium={4}
+          >
             <PortableText value={block} />
           </GridItem>
         ))}
