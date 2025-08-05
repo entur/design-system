@@ -8,6 +8,20 @@ export const imageAndText = defineType({
   icon: AdditionalIcon,
   fields: [
     defineField({
+      name: 'variant',
+      title: 'Variant',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Standard', value: 'standard'},
+          {title: 'Retningslinje-kort', value: 'guideline'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'standard',
+    }),
+    defineField({
       name: 'order',
       title: 'Rekkefølge',
       type: 'string',
@@ -20,6 +34,7 @@ export const imageAndText = defineType({
         direction: 'horizontal',
       },
       initialValue: 'image-first',
+      hidden: ({parent}) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'image',
@@ -43,12 +58,20 @@ export const imageAndText = defineType({
       title: 'Legg til luft rundt bildet',
       type: 'boolean',
       initialValue: false,
+      hidden: ({parent}) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'showDownload',
       title: 'Vis mulighet for å laste ned bildet',
       type: 'boolean',
       initialValue: false,
+      hidden: ({parent}) => parent?.variant === 'guideline',
+    }),
+    defineField({
+      name: 'guidelineTitle',
+      title: 'Tittel',
+      type: 'string',
+      hidden: ({parent}) => parent?.variant !== 'guideline',
     }),
     defineField({
       name: 'text',
@@ -70,14 +93,54 @@ export const imageAndText = defineType({
       ],
       validation: (Rule) => Rule.min(1).max(3).error('At least one text block is required'),
     }),
+    defineField({
+      name: 'guidelineVariant',
+      title: 'Retningslinje-variant',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Suksess (Do)', value: 'success'},
+          {title: 'Informasjon', value: 'information'},
+          {title: 'Advarsel', value: 'warning'},
+          {title: 'Feil (Dont)', value: 'negative'},
+          {title: 'Ingen ikon', value: 'none'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'success',
+      hidden: ({parent}) => parent?.variant !== 'guideline',
+    }),
+    defineField({
+      name: 'noPadding',
+      title: 'Ingen padding på bildet',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({parent}) => parent?.variant !== 'guideline',
+    }),
+    defineField({
+      name: 'textInBox',
+      title: 'Tekst i bilde-boks',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({parent}) => parent?.variant !== 'guideline',
+    }),
   ],
   preview: {
     select: {
+      variant: 'variant',
+      dodontVariant: 'dodontVariant',
       order: 'order',
       text: 'text',
       image: 'image',
     },
-    prepare({order, text, image}) {
+    prepare({variant, dodontVariant, order, text, image}) {
+      if (variant === 'dodont') {
+        return {
+          title: `Do/Dont kort (${dodontVariant || 'success'})`,
+          media: image,
+        }
+      }
       return {
         title:
           order === 'image-first' ? 'Tekst og bilde (bilde først)' : 'Bilde og tekst (tekst først)',

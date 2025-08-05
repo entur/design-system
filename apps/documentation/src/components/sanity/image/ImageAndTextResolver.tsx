@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { getGatsbyImageData } from 'gatsby-source-sanity';
 import classNames from 'classnames';
 import { ImageDisplay } from '@components/Media/ImageDisplay';
+import { DoDontCard } from '@components/Cards/DoDont';
 import { PortableText } from '../PortableText';
 import { ImageAndTextType } from '../types';
 
@@ -14,13 +15,20 @@ type Props = {
 
 export const ImageAndTextResolver = ({ value }: Props) => {
   const {
+    variant = 'standard',
     image,
     text,
     addMargin,
     showDownload,
     imageDescription,
     hideFromScreenreaders,
+    // Guideline specific fields
+    guidelineVariant = 'success',
+    guidelineTitle,
+    noPadding = false,
+    textInBox = false,
   } = value;
+
   if (!image || typeof image === 'string' || !('asset' in image)) return null;
   const imageData =
     'gatsbyImageData' in image.asset
@@ -35,6 +43,23 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         );
   if (imageData === null) return null;
 
+  if (variant === 'guideline') {
+    return (
+      <DoDontCard
+        imgSource={imageData}
+        alt={imageDescription}
+        variant={guidelineVariant}
+        title={guidelineTitle}
+        noPadding={noPadding}
+        textInBox={textInBox}
+        aria-hidden={hideFromScreenreaders}
+      >
+        <PortableText value={text} />
+      </DoDontCard>
+    );
+  }
+
+  // Handle standard variant
   return (
     <div
       className={classNames('image-and-text', {
@@ -68,6 +93,7 @@ export const ImageAndTextFragment = graphql`
   fragment ImageAndTextFragment on SanityImageAndText {
     _key
     _type
+    variant
     order
     image {
       asset {
@@ -78,6 +104,11 @@ export const ImageAndTextFragment = graphql`
     hideFromScreenreaders
     addMargin
     showDownload
+    # DoDont specific fields
+    guidelineVariant
+    guidelineTitle
+    noPadding
+    textInBox
     _rawText(resolveReferences: { maxDepth: 10 })
   }
 `;

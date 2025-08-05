@@ -31,7 +31,7 @@ const variantMap = {
     ariaDescription: 'advarselikon',
   },
   negative: { icon: ValidationErrorIcon, ariaDescription: 'feil-ikon' },
-  none: { icon: <></>, ariaDescription: '' },
+  none: { icon: null, ariaDescription: '' },
 };
 
 type DoDontCardProps = {
@@ -44,6 +44,7 @@ type DoDontCardProps = {
   variant: VariantType | 'none';
   noPadding: boolean;
   textInBox: boolean;
+  'aria-hidden'?: boolean;
 };
 
 export const DoDontCard = ({
@@ -56,12 +57,13 @@ export const DoDontCard = ({
   variant = 'success',
   noPadding = false,
   textInBox = false,
+  'aria-hidden': ariaHidden,
 }: DoDontCardProps) => {
   const Icon = variantMap[variant].icon;
 
   const textContent = (
     <div className="do-dont-card__text-content">
-      {variant !== 'none' && (
+      {variant !== 'none' && Icon && (
         <Icon aria-label={variantMap[variant].ariaDescription} size="24px" />
       )}
       <div>
@@ -96,6 +98,7 @@ export const DoDontCard = ({
             image={imgSource}
             alt={alt}
             className="do-dont-card__box__image"
+            aria-hidden={ariaHidden}
           />
         )}
         {!src && !imgSource && textInBox && textContent}

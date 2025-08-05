@@ -23,6 +23,7 @@ export type SaintyInlineImageType = {
 
 export type ImageAndTextType = {
   _type: string;
+  variant?: 'standard' | 'guideline';
   order: 'image-first' | 'text-first';
   image: SanityImageType | Parameters<typeof getGatsbyImageData>[0];
   imageDescription?: string;
@@ -31,6 +32,16 @@ export type ImageAndTextType = {
   _rawText: any[];
   addMargin: boolean;
   showDownload?: boolean;
+  // Guideline specific fields
+  guidelineVariant?:
+    | 'success'
+    | 'information'
+    | 'warning'
+    | 'negative'
+    | 'none';
+  guidelineTitle?: string;
+  noPadding?: boolean;
+  textInBox?: boolean;
 };
 
 export type LinkType = {
