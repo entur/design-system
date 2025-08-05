@@ -74,10 +74,10 @@ export const ImageAndTextFragment = graphql`
         gatsbyImageData
       }
     }
+    imageDescription
+    hideFromScreenreaders
     addMargin
     showDownload
-    text {
-      ...TextBlockFragment
-    }
+    _rawText(resolveReferences: { maxDepth: 10 })
   }
 `;
