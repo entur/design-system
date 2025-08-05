@@ -17,10 +17,10 @@
   "dependencies": {
     "@entur/icons": "workspace:^",
     "@sanity/ui": "^2.15.18",
-    "@sanity/vision": "3.95.0",
+    "@sanity/vision": "3.99.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanity": "3.95.0",
+    "sanity": "3.99.0",
     "sanity-plugin-media": "^3.0.2",
     "styled-components": "^6.1.15"
   },
