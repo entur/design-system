@@ -23,15 +23,20 @@ export type SaintyInlineImageType = {
 
 export type ImageAndTextType = {
   _type: string;
-  variant?: 'standard' | 'guideline';
+  variant?: 'standard' | 'contrast' | 'guideline';
   order: 'image-first' | 'text-first';
   image: SanityImageType | Parameters<typeof getGatsbyImageData>[0];
   imageDescription?: string;
   hideFromScreenreaders?: boolean;
   text: PortableTextBlock;
   _rawText: any[];
-  addMargin: boolean;
   showDownload?: boolean;
+  imageDisplayPreset?:
+    | 'default'
+    | 'full-width-image'
+    | 'contain-logo-display'
+    | 'centered-image'
+    | 'contain-full-width';
   // Guideline specific fields
   guidelineVariant?:
     | 'success'

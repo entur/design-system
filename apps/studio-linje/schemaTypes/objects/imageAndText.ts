@@ -14,6 +14,7 @@ export const imageAndText = defineType({
       options: {
         list: [
           {title: 'Standard', value: 'standard'},
+          {title: 'Fremhevet', value: 'contrast'},
           {title: 'Retningslinje-kort', value: 'guideline'},
         ],
         layout: 'radio',
@@ -52,13 +53,6 @@ export const imageAndText = defineType({
       title: 'Skjul for skjermlesere',
       type: 'boolean',
       initialValue: false,
-    }),
-    defineField({
-      name: 'addMargin',
-      title: 'Legg til luft rundt bildet',
-      type: 'boolean',
-      initialValue: false,
-      hidden: ({parent}) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'showDownload',
@@ -110,6 +104,24 @@ export const imageAndText = defineType({
       },
       initialValue: 'success',
       hidden: ({parent}) => parent?.variant !== 'guideline',
+    }),
+    defineField({
+      name: 'imageDisplayPreset',
+      title: 'Bildeplassering-preset',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Standard', value: 'default'},
+          {title: 'Full bredde', value: 'full-width-image'},
+          {title: 'Logo display', value: 'contain-logo-display'},
+          {title: 'Senteret bilde', value: 'centered-image'},
+          {title: 'Contain full bredde', value: 'contain-full-width'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'default',
+      hidden: ({parent}) => parent?.variant === 'guideline',
     }),
     defineField({
       name: 'noPadding',

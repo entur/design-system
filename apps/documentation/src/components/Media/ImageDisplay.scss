@@ -26,6 +26,7 @@
   .gatsby-image-wrapper {
     height: 100%;
     width: 100%;
+    border-radius: t.$border-radiuses-large;
   }
 
   .image-display__download {
@@ -65,9 +66,10 @@
     border-radius: 0;
   }
   &.preset {
-    &--logo-display {
+    &--contain-logo-display {
       height: 25rem;
       padding-inline: 30%;
+      padding-block: 18%;
       background: var(--basecolors-frame-tint);
       border-radius: t.$border-radiuses-large;
 

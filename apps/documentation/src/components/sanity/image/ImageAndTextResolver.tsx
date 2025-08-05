@@ -18,10 +18,10 @@ export const ImageAndTextResolver = ({ value }: Props) => {
     variant = 'standard',
     image,
     text,
-    addMargin,
     showDownload,
     imageDescription,
     hideFromScreenreaders,
+    imageDisplayPreset = 'default',
     // Guideline specific fields
     guidelineVariant = 'success',
     guidelineTitle,
@@ -59,18 +59,19 @@ export const ImageAndTextResolver = ({ value }: Props) => {
     );
   }
 
-  // Handle standard variant
   return (
-    <div
-      className={classNames('image-and-text', {
-        'image-and-text--add-margin': addMargin,
-      })}
-    >
+    <div className={'image-and-text'}>
       <ImageDisplay
         imgSource={imageData}
         alt={imageDescription}
-        preset="contain-full-width"
-        className="image-and-text__image"
+        preset={
+          imageDisplayPreset === 'default'
+            ? 'contain-full-width'
+            : imageDisplayPreset
+        }
+        className={classNames('image-and-text__image', {
+          'eds-contrast': variant === 'contrast',
+        })}
         alwaysShowDownload={showDownload}
         downloadSources={
           showDownload
@@ -102,9 +103,9 @@ export const ImageAndTextFragment = graphql`
     }
     imageDescription
     hideFromScreenreaders
-    addMargin
     showDownload
-    # DoDont specific fields
+    imageDisplayPreset
+    # Guideline specific fields
     guidelineVariant
     guidelineTitle
     noPadding
