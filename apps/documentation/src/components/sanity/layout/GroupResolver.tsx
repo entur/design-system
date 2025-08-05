@@ -14,8 +14,7 @@ export const GroupResolver = ({ value }: Props) => {
 
   if (!content || content?.length == 0) return null;
 
-  if (content.length == 1) return <PortableText value={content?.[0]} />;
-  if (content.length == 2)
+  if (content.length <= 2)
     return (
       <GridContainer spacing="medium" rowSpacing="none">
         {content.map((block, index) => (
