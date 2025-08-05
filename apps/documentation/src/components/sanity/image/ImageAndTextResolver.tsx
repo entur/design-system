@@ -22,6 +22,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
     imageDescription,
     hideFromScreenreaders,
     imageDisplayPreset = 'default',
+    extraDownloadFiles = [],
     // Guideline specific fields
     guidelineVariant = 'success',
     guidelineTitle,
@@ -72,15 +73,54 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         className={classNames('image-and-text__image', {
           'eds-contrast': variant === 'contrast',
         })}
-        alwaysShowDownload={showDownload}
+        alwaysShowDownload={showDownload || extraDownloadFiles.length > 0}
         downloadSources={
-          showDownload
-            ? [
-                {
-                  src: imageData.images.fallback?.src + '&dl=',
-                  format: 'png',
-                },
-              ]
+          showDownload || extraDownloadFiles.length > 0
+            ? (() => {
+                const sources: Array<{
+                  src: string;
+                  format: string;
+                  label?: string;
+                }> = [];
+
+                // Main image download (if showDownload is enabled)
+                if (showDownload) {
+                  sources.push({
+                    src: imageData.images.fallback?.src + '&dl=',
+                    format: 'png',
+                    label: 'Last ned som PNG',
+                  });
+                }
+
+                // Extra download files
+                extraDownloadFiles.forEach(file => {
+                  if (
+                    file.fileType === 'uploaded' &&
+                    file.uploadedFile?.asset?.url
+                  ) {
+                    const fileFormat = file.uploadedFile.asset.originalFilename
+                      ?.split('.')
+                      ?.at(-1);
+                    sources.push({
+                      src: file.uploadedFile.asset.url + '?&dl=',
+                      format: fileFormat?.toUpperCase() || 'file',
+                      label: file.downloadLabel,
+                    });
+                  } else if (file.fileType === 'link' && file.fileLink) {
+                    sources.push({
+                      src: file.fileLink,
+                      format: file.fileFormat?.toLowerCase() || 'file',
+                      label:
+                        file.downloadLabel ||
+                        `Last ned som ${
+                          file.fileFormat?.toUpperCase() || 'fil'
+                        }`,
+                    });
+                  }
+                });
+
+                return sources;
+              })()
             : undefined
         }
         aria-hidden={hideFromScreenreaders}
@@ -105,6 +145,19 @@ export const ImageAndTextFragment = graphql`
     hideFromScreenreaders
     showDownload
     imageDisplayPreset
+    extraDownloadFiles {
+      fileType
+      uploadedFile {
+        asset {
+          _id
+          url
+          originalFilename
+        }
+      }
+      fileLink
+      downloadLabel
+      fileFormat
+    }
     # Guideline specific fields
     guidelineVariant
     guidelineTitle

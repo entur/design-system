@@ -21,6 +21,20 @@ export type SaintyInlineImageType = {
   assetId: string;
 };
 
+export type DownloadFileType = {
+  fileType: 'uploaded' | 'link';
+  uploadedFile?: {
+    asset: {
+      _id: string;
+      url: string;
+      originalFilename?: string;
+    };
+  };
+  fileLink?: string;
+  downloadLabel?: string;
+  fileFormat?: string;
+};
+
 export type ImageAndTextType = {
   _type: string;
   variant?: 'standard' | 'contrast' | 'guideline';
@@ -31,6 +45,7 @@ export type ImageAndTextType = {
   text: PortableTextBlock;
   _rawText: any[];
   showDownload?: boolean;
+  extraDownloadFiles?: DownloadFileType[];
   imageDisplayPreset?:
     | 'default'
     | 'full-width-image'

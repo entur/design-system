@@ -62,6 +62,13 @@ export const imageAndText = defineType({
       hidden: ({parent}) => parent?.variant === 'guideline',
     }),
     defineField({
+      name: 'extraDownloadFiles',
+      title: 'Ekstra filer for nedlasting',
+      type: 'array',
+      of: [{type: 'downloadFile'}],
+      hidden: ({parent}) => parent?.variant === 'guideline',
+    }),
+    defineField({
       name: 'guidelineTitle',
       title: 'Tittel',
       type: 'string',
