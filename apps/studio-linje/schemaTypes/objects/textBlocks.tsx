@@ -1,10 +1,11 @@
 import * as icons from '@entur/icons'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 import {isEnturIcon} from '../../utils'
 
 export const VARIANT_TYPES = [
   {title: 'Standard', value: 'normal'},
   {title: 'Informasjon', value: 'information'},
+  {title: 'Fremhevet', value: 'contrast'},
 ]
 
 export const textBlocksType = defineType({

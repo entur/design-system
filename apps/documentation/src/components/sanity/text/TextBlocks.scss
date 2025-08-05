@@ -8,4 +8,11 @@
   :is(h2, h3, h4, h5):first-child {
     margin-top: 0;
   }
+
+  &.eds-contrast {
+    background-color: unset;
+    .designentur-base-card__content {
+      background-color: var(--primary-background-color);
+    }
+  }
 }

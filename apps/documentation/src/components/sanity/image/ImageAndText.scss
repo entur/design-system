@@ -23,6 +23,10 @@
         border-radius: unset;
       }
     }
+
+    .eds-contrast & {
+      background-color: transparent;
+    }
   }
 }
 

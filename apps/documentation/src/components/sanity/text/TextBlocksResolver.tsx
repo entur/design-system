@@ -5,6 +5,7 @@ import { PortableText } from '../PortableText';
 import { TextBlocksType } from '../types';
 
 import './TextBlocks.scss';
+import { Contrast } from '@entur/layout';
 
 type Props = {
   value: TextBlocksType;
@@ -33,6 +34,12 @@ const VariantWrapper = ({
     case 'information':
       return (
         <BaseCardDesignEntur className="text-blocks">
+          {children}
+        </BaseCardDesignEntur>
+      );
+    case 'contrast':
+      return (
+        <BaseCardDesignEntur as={Contrast} className="text-blocks">
           {children}
         </BaseCardDesignEntur>
       );
