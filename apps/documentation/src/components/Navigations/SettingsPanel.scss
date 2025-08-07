@@ -27,8 +27,10 @@
   }
   .settings-trigger {
     margin-left: tokens.$space-small;
-    &__icon {
-      margin-right: tokens.$space-extra-small;
+    @media screen and (min-width: 1275px) {
+      &__icon {
+        margin-right: tokens.$space-extra-small;
+      }
     }
     @media screen and (max-width: 1275px) {
       &__button-text {
