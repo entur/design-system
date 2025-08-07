@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/entur/design-system/compare/linje@1.3.0...linje@1.4.0) (2025-08-07)
+
+### Features
+
+- **page-builder:** add contrast variant for textBlocks ([49de793](https://github.com/entur/design-system/commit/49de7930b6f905d894d86bc655bb76c5b3e6da1d))
+- **page-builder:** add guideline card ([07dcdec](https://github.com/entur/design-system/commit/07dcdec7202f5c5cd9bc5c38b9b504ca60f0107a))
+- **page-builder:** add image display presets ([f93e9d7](https://github.com/entur/design-system/commit/f93e9d7b7d51ee57314b769edbbdb94f930d7567))
+- **page-builder:** add possibility to add more download files to imageAndText ([53d58c4](https://github.com/entur/design-system/commit/53d58c4be1f6d43b7003ff1963cba143c3aa8f11))
+- **sanity:** add page sorting in sanity studio ([0d27328](https://github.com/entur/design-system/commit/0d2732873ca3ffa80e07f40acdfce62a67472a4f))
+
 # [1.3.0](https://github.com/entur/design-system/compare/linje@1.2.0...linje@1.3.0) (2025-08-01)
 
 ### Bug Fixes

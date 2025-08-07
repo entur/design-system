@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.1.9...@entur/code-playground@2.2.0) (2025-08-07)
+
+### Features
+
+- **playground:** autogenerate snippets from mdx in docs ([3018f54](https://github.com/entur/design-system/commit/3018f54de46b16a03f7bb598d4943d3ca06ebccb))
+
 ## [2.1.9](https://github.com/entur/design-system/compare/@entur/code-playground@2.1.8...@entur/code-playground@2.1.9) (2025-08-01)
 
 **Note:** Version bump only for package @entur/code-playground

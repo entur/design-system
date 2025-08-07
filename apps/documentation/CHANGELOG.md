@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/entur/design-system/compare/@entur/documentation@6.7.0...@entur/documentation@6.8.0) (2025-08-07)
+
+### Bug Fixes
+
+- **page-builder:** fix graphql type error for ImageAndText ([130f442](https://github.com/entur/design-system/commit/130f4429406afabafca8a95465a017452fe31d67))
+- **page-builder:** text not displayed in ImageAndText ([8312b01](https://github.com/entur/design-system/commit/8312b01b33d090a1b550574c9295c89c8d01064d))
+- **website:** fix low contrast on grid intems in example ([082f691](https://github.com/entur/design-system/commit/082f691304e1fbdf314d92d731bc39cb97cafe0f))
+- **website:** incorrect scroll position for hash links ([b29b5ff](https://github.com/entur/design-system/commit/b29b5ff5e064c216857b122754510f2681e2f49e))
+- **website:** mobile sidenavigation broken after sidenavigation changes ([bc46366](https://github.com/entur/design-system/commit/bc46366788ae39edb4935472000c0af5f07a8dc8))
+- **website:** remove debug true for posthog ([2dba0ff](https://github.com/entur/design-system/commit/2dba0ff814fa07ec8076366d3f4dde3845910c0c))
+- **website:** small styling tweaks for mobile ([4c30e37](https://github.com/entur/design-system/commit/4c30e374977328a939735a52a6d8d05a9eec66ae))
+- **website:** update incorrect routes in frontmatter ([8d2c7ef](https://github.com/entur/design-system/commit/8d2c7efd434fafe2d4ebae3894244dab6407a415))
+
+### Features
+
+- **page-builder:** add contrast variant for textBlocks ([49de793](https://github.com/entur/design-system/commit/49de7930b6f905d894d86bc655bb76c5b3e6da1d))
+- **page-builder:** add guideline card ([07dcdec](https://github.com/entur/design-system/commit/07dcdec7202f5c5cd9bc5c38b9b504ca60f0107a))
+- **page-builder:** add image display presets ([f93e9d7](https://github.com/entur/design-system/commit/f93e9d7b7d51ee57314b769edbbdb94f930d7567))
+- **page-builder:** add possibility to add more download files to imageAndText ([53d58c4](https://github.com/entur/design-system/commit/53d58c4be1f6d43b7003ff1963cba143c3aa8f11))
+- **page-builder:** change group behavior when one element ([336ea16](https://github.com/entur/design-system/commit/336ea16fd43fdd973b8e1efa7d085281da69779d))
+- **posthog:** disable posthog completely on deny consent ([ba42779](https://github.com/entur/design-system/commit/ba42779082a71e5d9e3892ade439fae9196ba5dd))
+
 # [6.7.0](https://github.com/entur/design-system/compare/@entur/documentation@6.6.1...@entur/documentation@6.7.0) (2025-08-01)
 
 ### Bug Fixes
