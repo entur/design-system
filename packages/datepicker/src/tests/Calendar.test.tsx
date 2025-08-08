@@ -299,6 +299,50 @@ describe('Calendar', () => {
     expect(results).toHaveNoViolations();
   });
 
+  test('shows outside month dates when showOutsideMonth is true', () => {
+    const { container } = render(
+      <Calendar {...defaultProps} showOutsideMonth />,
+    );
+
+    const outsideMonthCells = container.querySelectorAll(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    expect(outsideMonthCells.length).toBeGreaterThan(0);
+  });
+
+  test('hides outside month dates when showOutsideMonth is false', () => {
+    const { container } = render(
+      <Calendar {...defaultProps} showOutsideMonth={false} />,
+    );
+
+    const outsideMonthVisibleCells = container.querySelectorAll(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    expect(outsideMonthVisibleCells.length).toBe(0);
+
+    const outsideMonthHiddenCells = container.querySelectorAll(
+      '.eds-datepicker__calendar__grid__cell--outside-month',
+    );
+    expect(outsideMonthHiddenCells.length).toBeGreaterThan(0);
+  });
+
+  test('allows selecting outside month dates when showOutsideMonth is true', async () => {
+    const user = userEvent.setup();
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <Calendar {...defaultProps} showOutsideMonth onChange={onChange} />,
+    );
+
+    const outsideMonthCell = container.querySelector(
+      '.eds-datepicker__calendar__grid__cell--outside-month--visible',
+    );
+    expect(outsideMonthCell).toBeInTheDocument();
+
+    await user.click(outsideMonthCell!);
+    expect(onChange).toHaveBeenCalled();
+  });
+
   test('Timezones should always be UTC', () => {
     expect(new Date().getTimezoneOffset()).toBe(0);
   });
