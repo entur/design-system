@@ -66,6 +66,10 @@ type BaseCalendarProps<DateType extends DateValue> = {
   /** Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.
    * @default 'uke' */
   weekNumberHeader?: string;
+  /** Vis datoer som ligger utenfor den viste måneden.
+   * @example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.
+   * @default false */
+  showOutsideMonth?: boolean;
   /** Brukes for å legge til klassenavn på spesifikke datoer i kalenderen.
    *  Tar inn en dato og skal returnere klassenavnet som skal legges til den datoen.
    *  @default undefined
@@ -112,6 +116,7 @@ const CalendarBase = <DateType extends DateValue>({
   maxDate,
   showWeekNumbers = false,
   weekNumberHeader = 'uke',
+  showOutsideMonth = false,
   forcedReturnType,
   style,
   className,
@@ -194,6 +199,7 @@ const CalendarBase = <DateType extends DateValue>({
         ariaLabelForDate={ariaLabelForDate}
         showWeekNumbers={showWeekNumbers}
         weekNumberHeader={weekNumberHeader}
+        showOutsideMonth={showOutsideMonth}
       />
     </div>
   );

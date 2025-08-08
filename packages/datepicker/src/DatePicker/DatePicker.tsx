@@ -47,6 +47,10 @@ type BaseDatePickerProps = {
   /** Overskrift som vises for ukenummer-kolonnen. Vises kun hvis 'showWeekNumbers' er true.
    * @default '#' */
   weekNumberHeader?: string;
+  /** Vis datoer som ligger utenfor den viste måneden.
+   * @example Hvis uken starter på onsdag vises de to siste datoene i forrige måned i ruten til mandagen og tirsdagen før.
+   * @default false */
+  showOutsideMonth?: boolean;
   /** Hvis true vil kalenderen alltid vises i en popover når den åpnes
    *  @default false
    */
@@ -103,6 +107,7 @@ export const DatePicker = <DateType extends DateValue>({
   validationFeedback,
   showWeekNumbers,
   weekNumberHeader,
+  showOutsideMonth = false,
   disableModal = false,
   labelTooltip,
   navigationDescription,
@@ -189,6 +194,7 @@ export const DatePicker = <DateType extends DateValue>({
     ariaLabelForDate,
     showWeekNumbers,
     weekNumberHeader,
+    showOutsideMonth,
   };
 
   const isModal =
