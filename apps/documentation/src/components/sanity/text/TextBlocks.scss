@@ -9,6 +9,11 @@
     margin-top: 0;
   }
 
+  // Some element apply auto margin-bottom which causes unwanted whitespace in the card. This removes it.
+  .designentur-base-card__children > :last-child {
+    margin-bottom: eds.$space-none;
+  }
+
   &.eds-contrast {
     background-color: unset;
     .designentur-base-card__content {

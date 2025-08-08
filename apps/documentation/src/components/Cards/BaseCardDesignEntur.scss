@@ -1,11 +1,10 @@
-@use '~@entur/tokens/dist/styles.scss' as tokens;
-@use '~@entur/tokens/dist/semantic.scss' as semantic;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .designentur-base-card {
   appearance: none;
   text-decoration: none;
-  margin-bottom: tokens.$space-extra-large3;
+  margin-bottom: eds.$space-extra-large3;
 
   &:has(&__arrow) {
     margin-bottom: 0;
@@ -15,7 +14,7 @@
     text-align: center;
     color: var(--basecolors-stroke-subdued);
     height: 2rem;
-    margin-top: tokens.$space-extra-small;
+    margin-top: eds.$space-extra-small;
   }
 
   &__content {
@@ -23,10 +22,10 @@
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
-    padding: tokens.$space-large;
+    padding: eds.$space-large;
     background-color: var(--designentur-basecard-default-fill-tint);
-    border: tokens.$border-widths-small solid var(--designentur-basecard-default-border);
-    border-radius: tokens.$border-radiuses-medium;
+    border: eds.$border-widths-small solid var(--designentur-basecard-default-border);
+    border-radius: eds.$border-radiuses-medium;
 
     .eds-contrast & {
       background-color: var(--designentur-basecard-contrast-fill-tint);
@@ -43,7 +42,7 @@
   }
 
   &__children {
-    margin: 0 auto;
+    width: 100%;
   }
 
   &__image {
