@@ -30,7 +30,7 @@ export const handleHashLinkClick = (
   const href = event.currentTarget.getAttribute('href');
   if (!href?.startsWith('#')) return;
 
-  event.preventDefault();
+  // event.preventDefault();
   const elementId = href.substring(1);
   scrollToElement(elementId);
 };

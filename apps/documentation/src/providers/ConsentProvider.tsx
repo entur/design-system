@@ -1,5 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { usePersistedState } from './SettingsContext';
+import {
+  CONSENT_UPDATED_EVENT,
+  Consents,
+  handleConsentUpdate,
+} from 'src/utils/cmpUtils';
 
 export type ConsentValue = 'undecided' | 'accepted' | 'denied' | undefined;
 
@@ -31,6 +36,21 @@ export const ConsentProvider = ({
   const updateConsents = (updatedValues: ConsentSet) => {
     setConsents({ ...consents, ...updatedValues });
   };
+
+  // Event listener for handling changes to and from Usercentrics CMP
+  useEffect(() => {
+    let previousConsents: Consents | null = null;
+
+    const consentUpdateHandler = async (event: Event) => {
+      previousConsents = await handleConsentUpdate(event, previousConsents);
+    };
+
+    window.addEventListener(CONSENT_UPDATED_EVENT, consentUpdateHandler);
+
+    return () => {
+      window.removeEventListener(CONSENT_UPDATED_EVENT, consentUpdateHandler);
+    };
+  }, []);
 
   const contextValue = useMemo(
     () => ({

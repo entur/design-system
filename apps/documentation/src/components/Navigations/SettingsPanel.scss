@@ -1,5 +1,5 @@
 @use "sass:map";
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '~@entur/tokens/dist/styles.scss' as eds;
 @use '~@entur/utils/dist/breakpoints.scss' as *;
 
 @use '../../styles/variables' as variables;
@@ -7,6 +7,29 @@
 .settings-panel {
   display: flex;
   justify-content: flex-end;
+
+  &__modal {
+    form {
+      > * {
+        margin-top: eds.$space-default;
+      }
+    }
+
+    // override untill small version is available
+    .eds-copyable-text {
+      max-width: 11rem;
+      width: 100%;
+      margin-top: eds.$space-small;
+      .eds-preformatted-text {
+        height: 24px;
+        padding: 0.25rem;
+      }
+      .eds-copyable-text__button {
+        margin: 0 !important;
+        padding: 0;
+      }
+    }
+  }
 
   @media screen and (max-width: map.get(variables.$breakpoints, 'tablet')) {
     flex-grow: unset;
@@ -26,10 +49,10 @@
     }
   }
   .settings-trigger {
-    margin-left: tokens.$space-small;
+    margin-left: eds.$space-small;
     @media screen and (min-width: 1275px) {
       &__icon {
-        margin-right: tokens.$space-extra-small;
+        margin-right: eds.$space-extra-small;
       }
     }
     @media screen and (max-width: 1275px) {
