@@ -28,7 +28,7 @@ import {
   createCalendar,
   ForcedReturnType,
   handleOnChange,
-  lastMillisecondOfDay,
+  getAdjustedMaxDate,
 } from '../shared/utils';
 
 import './DateField.scss';
@@ -187,13 +187,7 @@ export const DateField = <DateType extends DateValue>({
     hideTimeZone: !showTimeZone,
     granularity,
     minValue: minDate,
-    // this weird logic makes sure the entire day is included if no time is provided in maxDate
-    maxValue:
-      'hour' in (maxDate ?? {})
-        ? maxDate
-        : maxDate !== undefined
-        ? lastMillisecondOfDay(maxDate)
-        : undefined,
+    maxValue: getAdjustedMaxDate(maxDate),
     isDisabled: isDisabled || disabled || readOnly,
     shouldForceLeadingZeros: true,
   };

@@ -35,7 +35,7 @@ import {
 } from './DateField';
 import { Calendar, CalendarProps } from './Calendar';
 import { CalendarButton } from '../shared/CalendarButton';
-import { handleOnChange, lastMillisecondOfDay } from '../shared/utils';
+import { getAdjustedMaxDate, handleOnChange } from '../shared/utils';
 
 import './DatePicker.scss';
 
@@ -137,12 +137,7 @@ export const DatePicker = <DateType extends DateValue>({
       }),
     minValue: minDate,
     // this weird logic makes sure the entire day is included if no time is provided in maxDate
-    maxValue:
-      'hour' in (maxDate ?? {})
-        ? maxDate
-        : maxDate !== undefined
-        ? lastMillisecondOfDay(maxDate)
-        : undefined,
+    maxValue: getAdjustedMaxDate(maxDate),
     value: selectedDate,
     granularity,
     isDisabled: disabled || readOnly,

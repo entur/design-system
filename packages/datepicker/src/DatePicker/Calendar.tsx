@@ -16,6 +16,7 @@ import {
   ariaLabelIfNorwegian,
   createCalendar,
   handleOnChange,
+  getAdjustedMaxDate,
 } from '../shared/utils';
 import { CalendarButton } from '../shared/CalendarButton';
 import { CalendarGrid } from './CalendarGrid';
@@ -147,7 +148,7 @@ const CalendarBase = <DateType extends DateValue>({
     locale,
     createCalendar,
     minValue: minDate,
-    maxValue: maxDate,
+    maxValue: getAdjustedMaxDate(maxDate),
   };
 
   const state = useCalendarState(_props);

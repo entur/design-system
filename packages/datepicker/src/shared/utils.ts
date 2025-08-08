@@ -271,3 +271,10 @@ export function handleOnChange<DateType extends DateValue>({
 
   onChange?.(value);
 }
+
+// this weird logic makes sure the entire day is included if no time is provided in maxDate
+export function getAdjustedMaxDate(maxDate?: DateValue) {
+  if ('hour' in (maxDate ?? {})) return maxDate;
+  if (maxDate !== undefined) return lastMillisecondOfDay(maxDate);
+  return undefined;
+}
