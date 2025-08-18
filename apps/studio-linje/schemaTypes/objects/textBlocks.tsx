@@ -6,6 +6,14 @@ export const VARIANT_TYPES = [
   {title: 'Standard', value: 'normal'},
   {title: 'Informasjon', value: 'information'},
   {title: 'Fremhevet', value: 'contrast'},
+  {title: 'Varselmelding', value: 'alert'},
+]
+
+export const ALERT_VARIANTS = [
+  {title: 'Suksess', value: 'success'},
+  {title: 'Informasjon', value: 'information'},
+  {title: 'Advarsel', value: 'warning'},
+  {title: 'Feil', value: 'negative'},
 ]
 
 export const textBlocksType = defineType({
@@ -24,6 +32,23 @@ export const textBlocksType = defineType({
       },
       initialValue: 'normal',
       hidden: ({parent}) => parent !== undefined && !('_key' in parent),
+    }),
+    defineField({
+      name: 'title',
+      title: 'Tittel',
+      type: 'string',
+      hidden: ({parent}) => !['alert'].includes(parent?.variant || ''),
+    }),
+    defineField({
+      name: 'alertType',
+      title: 'Varseltype',
+      type: 'string',
+      options: {
+        list: ALERT_VARIANTS,
+        layout: 'dropdown',
+      },
+      initialValue: 'information',
+      hidden: ({parent}) => parent?.variant !== 'alert',
     }),
     defineField({
       name: 'items',
@@ -76,12 +101,83 @@ export const textBlocksType = defineType({
   ],
   preview: {
     select: {
-      textBlocks: 'items',
+      variant: 'variant',
+      alertType: 'alertType',
+      title: 'title',
+      items: 'items',
     },
-    prepare: ({textBlocks}) => ({
-      title: textBlocks
-        ? `${textBlocks.length} tekstblokk${textBlocks.length === 1 ? '' : 'er'}`
-        : 'empty',
-    }),
+    prepare: ({variant, alertType, title, items}) => {
+      const textBlockVariantTitle = VARIANT_TYPES.find((v) => v.value === variant)?.title || variant
+
+      const alertTypeTitle = alertType
+        ? ALERT_VARIANTS.find((a) => a.value === alertType)?.title
+        : null
+
+      const textContent =
+        items
+          ?.map((item: any) => {
+            if (item._type === 'block') {
+              return item.children?.map((child: any) => child.text).join('') || ''
+            }
+            return item._type || ''
+          })
+          .join(' ') || ''
+
+      const truncatedText =
+        textContent.length > 50 ? textContent.substring(0, 50) + '...' : textContent
+
+      const previewTitle = buildPreviewTitle({
+        variant,
+        textBlockVariantTitle,
+        alertTypeTitle,
+        title,
+        truncatedText,
+      })
+
+      const itemCount = items?.length || 0
+      const subtitle =
+        itemCount > 0 ? `${itemCount} element${itemCount === 1 ? '' : 'er'}` : 'Ingen innhold'
+
+      return {
+        title: previewTitle,
+        subtitle,
+        media:
+          variant === 'alert'
+            ? icons.ValidationExclamationIcon
+            : variant === 'information'
+            ? icons.ValidationInfoIcon
+            : icons.RowHeightMiddleIcon,
+      }
+    },
   },
 })
+
+function buildPreviewTitle({
+  variant,
+  textBlockVariantTitle,
+  alertTypeTitle,
+  title,
+  truncatedText,
+}: {
+  variant: string
+  textBlockVariantTitle: string
+  alertTypeTitle: string | null | undefined
+  title: string | null | undefined
+  truncatedText: string
+}) {
+  let previewTitle = `${textBlockVariantTitle}`
+
+  if (variant === 'alert') {
+    if (title) {
+      previewTitle += `: ${title}`
+    } else if (alertTypeTitle) {
+      previewTitle += ` (${alertTypeTitle})`
+    }
+  }
+
+  if (truncatedText) {
+    previewTitle += ` - ${truncatedText}`
+  }
+
+  return previewTitle
+}
