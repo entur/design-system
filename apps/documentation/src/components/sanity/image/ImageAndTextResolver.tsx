@@ -22,6 +22,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
     imageDescription,
     hideFromScreenreaders,
     imageDisplayPreset = 'default',
+    order,
     extraDownloadFiles = [],
     // Guideline specific fields
     guidelineVariant = 'success',
@@ -62,6 +63,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
 
   return (
     <div className={'image-and-text'}>
+      {order === 'text-first' && <PortableText value={text} />}
       <ImageDisplay
         imgSource={imageData}
         alt={imageDescription}
@@ -125,7 +127,7 @@ export const ImageAndTextResolver = ({ value }: Props) => {
         }
         aria-hidden={hideFromScreenreaders}
       />
-      <PortableText value={text} />
+      {order !== 'text-first' && <PortableText value={text} />}
     </div>
   );
 };
