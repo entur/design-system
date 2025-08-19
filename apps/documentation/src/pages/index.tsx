@@ -135,6 +135,7 @@ const Index = () => {
                       as={Link}
                       to={card.linkTo}
                       className="frontpage__main__hero__content__navigation-cards__card"
+                      key={card.title}
                     >
                       {card.description}
                     </NavigationCard>

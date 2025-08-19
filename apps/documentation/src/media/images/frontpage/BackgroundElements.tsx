@@ -98,50 +98,50 @@ export const LinjeLines = ({
       <path
         d="M1787.73 1837.34H1602.25C1584.58 1837.34 1570.25 1823.01 1570.25 1805.34V1622.54C1570.25 1604.87 1555.92 1590.54 1538.25 1590.54H1322.84"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         className="animated"
         d="M1938.37 1392.71H2301.49"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="12 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="12 16"
       />
       <path
         d="M1842.59 1837.34H2437.16"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="1 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="1 16"
       />
       <path
         d="M2496.77 1837.83H3255.77"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         className="animated"
         d="M1891.27 1377.72L1823.51 1309.86C1814.51 1300.84 1802.29 1295.77 1789.54 1295.77H1040.53"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M1291.42 2808.04L1060.4 2574.25C1054.38 2568.17 1046.19 2564.74 1037.63 2564.74L933.782 2564.74"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M1811.67 1865.32V2015.94C1811.67 2024.42 1808.3 2032.55 1802.31 2038.55L1588.2 2253"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <ellipse
         cx="2324.44"
@@ -149,7 +149,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="2324.44"
@@ -157,7 +157,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1915.42"
@@ -165,7 +165,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1017.59"
@@ -173,7 +173,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="440.971"
@@ -181,7 +181,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1295.91"
@@ -189,7 +189,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1810.67"
@@ -197,41 +197,41 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <path
         className="animated"
         d="M2346.38 1391.71H2432.1C2449.77 1391.71 2464.1 1406.04 2464.1 1423.71V1810.36"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M2324.44 1366.73L2324.44 1189.88"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M1270.98 1589.55H1049.59C1031.91 1589.55 1017.59 1575.22 1017.59 1557.55V1323.77"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="1 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="1 16"
       />
       <path
         className="animated"
         d="M992.647 1297.79H824.129C806.456 1297.79 792.129 1283.46 792.129 1265.79V1083.99C792.129 1066.32 777.802 1051.99 760.129 1051.99H465.914"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M908.847 2251V1801.4C908.847 1783.73 894.521 1769.4 876.847 1769.4H728.281"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="12 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="12 16"
       />
       <ellipse
         cx="2464.1"
@@ -239,7 +239,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="3287.74"
@@ -247,7 +247,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="2464.1"
@@ -255,7 +255,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="2464.1"
@@ -263,7 +263,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="907.846"
@@ -271,7 +271,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="704.338"
@@ -279,52 +279,52 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <path
         className="animated"
         d="M2464.1 1865.32V2128.1"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M931.789 2272.98L1541.32 2272.98"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M1590.2 2935.44H1927.39"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M2068.05 2442.84H2438.16"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M2041.12 2472.82V2839.27C2041.12 2847.74 2037.76 2855.88 2031.77 2861.88L1971.29 2922.45"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M1601.17 2272.98H1906.36C1924.03 2272.98 1938.36 2287.31 1938.36 2304.98V2410.84C1938.36 2428.52 1952.69 2442.84 1970.36 2442.84H2015.18"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="12 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="12 16"
       />
       <path
         d="M1568.26 3300.14V3334.08C1568.26 3351.76 1582.58 3366.08 1600.26 3366.08H1779.75"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-dasharray="12 16"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray="12 16"
       />
       <ellipse
         cx="907.846"
@@ -332,7 +332,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1308.88"
@@ -340,7 +340,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1567.26"
@@ -348,7 +348,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="2040.12"
@@ -356,7 +356,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1567.26"
@@ -364,7 +364,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1948.34"
@@ -372,13 +372,13 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <path
         d="M1567.26 2299.96V2575.73"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <ellipse
         cx="1567.26"
@@ -386,7 +386,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1567.26"
@@ -394,7 +394,7 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <ellipse
         cx="1810.67"
@@ -402,37 +402,37 @@ export const LinjeLines = ({
         rx="11.9712"
         ry="11.9901"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
+        strokeWidth="8"
       />
       <path
         d="M1567.26 2631.69V2907.46"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M1567.26 2963.42V3239.19"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M2463.6 2180.81C2456.68 2188.01 2456.68 2195.21 2463.6 2202.41C2470.52 2209.61 2470.52 2216.81 2463.6 2224.01C2456.68 2231.21 2456.68 2238.4 2463.6 2245.6C2470.52 2252.8 2470.52 2260 2463.6 2267.2C2456.68 2274.4 2456.68 2281.6 2463.6 2288.8C2470.52 2296 2470.52 2303.2 2463.6 2310.4C2456.68 2317.6 2456.68 2324.8 2463.6 2332C2470.52 2339.2 2470.52 2346.4 2463.6 2353.6C2456.68 2360.8 2456.68 2368 2463.6 2375.2C2470.52 2382.4 2470.52 2389.59 2463.6 2396.79C2456.68 2403.99 2456.68 2411.19 2463.6 2418.39"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M905.555 2299.96C898.638 2307.16 898.638 2314.36 905.555 2321.56C912.471 2328.76 912.471 2335.96 905.555 2343.16C898.638 2350.36 898.638 2357.56 905.555 2364.76C912.471 2371.96 912.471 2379.16 905.555 2386.36C898.638 2393.55 898.638 2400.75 905.555 2407.95C912.471 2415.15 912.471 2422.35 905.555 2429.55C898.638 2436.75 898.638 2443.95 905.555 2451.15C912.471 2458.35 912.471 2465.55 905.555 2472.75C898.638 2479.95 898.638 2487.15 905.555 2494.35C912.471 2501.55 912.471 2508.75 905.555 2515.95C898.638 2523.15 898.638 2530.35 905.555 2537.54"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
       <path
         d="M1309.88 2851.51V2903.94C1309.88 2921.61 1324.2 2935.94 1341.88 2935.94H1539.32"
         stroke="var(--basecolors-stroke-contrast)"
-        stroke-width="8"
-        stroke-linecap="round"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
     </g>
   </svg>
