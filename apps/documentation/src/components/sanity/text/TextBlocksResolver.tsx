@@ -1,11 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { BannerAlertBox } from '@entur/alert';
+import { Contrast } from '@entur/layout';
 import BaseCardDesignEntur from '@components/Cards/BaseCardDesignEntur';
 import { PortableText } from '../PortableText';
 import { TextBlocksType } from '../types';
 
 import './TextBlocks.scss';
-import { Contrast } from '@entur/layout';
 
 type Props = {
   value: TextBlocksType;
@@ -17,7 +18,7 @@ export const TextBlocksResolver = ({ value }: Props) => {
   if (textBlocksCount === 0) return null;
 
   return (
-    <VariantWrapper variant={textBlocksVariant}>
+    <VariantWrapper variant={textBlocksVariant} value={value}>
       <PortableText value={value._rawItems ?? value.items} />
     </VariantWrapper>
   );
@@ -26,9 +27,11 @@ export const TextBlocksResolver = ({ value }: Props) => {
 const VariantWrapper = ({
   children,
   variant,
+  value,
 }: {
   children: React.ReactNode;
   variant?: string;
+  value: TextBlocksType;
 }) => {
   switch (variant) {
     case 'information':
@@ -43,6 +46,16 @@ const VariantWrapper = ({
           {children}
         </BaseCardDesignEntur>
       );
+    case 'alert':
+      return (
+        <BannerAlertBox
+          variant={value.alertType || 'information'}
+          title={value.title}
+          className="text-blocks"
+        >
+          {children}
+        </BannerAlertBox>
+      );
     default:
       return <>{children}</>;
   }
@@ -53,6 +66,8 @@ export const TextBlockFragment = graphql`
     _key
     _type
     variant
+    alertType
+    title
     _rawItems(resolveReferences: { maxDepth: 10 })
   }
 `;

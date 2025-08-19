@@ -96,7 +96,9 @@ export type TextBlocksType = {
   _type: string;
   _rawItems: PortableTextBlock[];
   items: PortableTextBlock[];
-  variant?: 'normal' | 'information';
+  variant?: 'normal' | 'information' | 'contrast' | 'alert';
+  alertType?: 'success' | 'information' | 'warning' | 'negative';
+  title?: string;
 };
 
 export type GroupType = {
