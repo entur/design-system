@@ -107,10 +107,15 @@
     "semver": "7.5.2",
     "shelljs": "0.8.5",
     "tar": "6.2.1",
+    "tar-fs": "3.0.9",
     "typescript": "5.7.3",
     "word-wrap": "1.2.4",
-    "form-data": "4.0.1",
-    "multer": "2.0.2"
+    "form-data": "4.0.4",
+    "multer": "2.0.2",
+    "axios@npm:^0.24.0": "0.30.0",
+    "axios@npm:^1.7.4": "1.8.2",
+    "axios@npm:^1.6.4": "1.8.2",
+    "prismjs": "1.30.0"
   },
   "config": {
     "commitizen": {
