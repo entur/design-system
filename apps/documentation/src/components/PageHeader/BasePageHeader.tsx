@@ -12,13 +12,16 @@ type Props = {
   subcategory?: string;
   description?: string;
   npmPackage?: string;
+  isCategoryLandingPage?: boolean;
 };
 
 export const BasePageHeader: React.FC<Props> = ({
   title,
+  category,
   subcategory,
   description,
   npmPackage,
+  isCategoryLandingPage,
 }) => {
   const { packageManager, userType } = useSettings();
 
@@ -28,15 +31,18 @@ export const BasePageHeader: React.FC<Props> = ({
       : `npm install @entur/${npmPackage}`;
   const cssImport = `@import '@entur/${npmPackage}/dist/styles.css';`;
 
+  // For category landing pages, show category instead of subcategory
+  const labelText = isCategoryLandingPage ? category : subcategory;
+
   return (
     <header>
-      {subcategory && (
+      {labelText && (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Label
             as="div"
             style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
           >
-            {subcategory.toUpperCase()}
+            {labelText.toUpperCase()}
           </Label>
           {npmPackage && userType === 'developer' && (
             <span style={{ float: 'right' }}>

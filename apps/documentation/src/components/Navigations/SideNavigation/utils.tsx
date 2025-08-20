@@ -1,11 +1,13 @@
-export type MenuItem = {
+export interface MenuItem {
   id: string;
   title: string;
-  category?: string;
+  category: string;
   subcategory?: string;
+  categoryIndex?: number;
+  isCategoryLandingPage?: boolean;
+  path?: string;
   order?: number;
-  categoryIndex?: boolean;
-};
+}
 
 export const isActive = (route: string, location: Location) => {
   return (
@@ -32,6 +34,12 @@ export const normalizeString = (string?: string): string => {
 export function menuItemComparator(a: MenuItem, b: MenuItem) {
   if (!a.title || !b.title) {
     console.error('Missing title in frontmatter:', a, b);
+  }
+
+  // Category landing pages should always appear first within their subcategory
+  // Since there can only be one per category, we can use a simple boolean check
+  if (a.isCategoryLandingPage !== b.isCategoryLandingPage) {
+    return a.isCategoryLandingPage ? -1 : 1;
   }
 
   const menuItemAOrder = a.order ? a.order : 1000;
@@ -117,7 +125,15 @@ export function getSanitizedPath({
   subcategory,
   title,
   categoryIndex,
-}: Pick<MenuItem, 'category' | 'subcategory' | 'title' | 'categoryIndex'>) {
+  isCategoryLandingPage,
+}: Pick<
+  MenuItem,
+  | 'category'
+  | 'subcategory'
+  | 'title'
+  | 'categoryIndex'
+  | 'isCategoryLandingPage'
+>) {
   function sanitizeText(text?: string) {
     if (!text) return undefined;
     return text
@@ -132,6 +148,12 @@ export function getSanitizedPath({
   }
 
   const sanitizedCategory = sanitizeText(category);
+
+  // If this is a category landing page, return just the category path
+  if (isCategoryLandingPage) {
+    return `/${sanitizedCategory}`;
+  }
+
   if (categoryIndex) {
     return `/${sanitizedCategory}`;
   }
