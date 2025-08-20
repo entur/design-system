@@ -35,11 +35,13 @@ export function getSanitizedPath({
   subcategory,
   title,
   categoryIndex,
+  isCategoryLandingPage,
 }: {
   category: string;
   subcategory?: string;
   title: string;
   categoryIndex?: number;
+  isCategoryLandingPage?: boolean;
 }) {
   function sanitizeText(text: string) {
     if (!text) return undefined;
@@ -55,6 +57,12 @@ export function getSanitizedPath({
   }
 
   const sanitizedCategory = sanitizeText(category);
+
+  // If this is a category landing page, return just the category path
+  if (isCategoryLandingPage) {
+    return `/${sanitizedCategory}`;
+  }
+
   if (categoryIndex) return `/${sanitizedCategory}`;
 
   const sanitizedTitle = sanitizeText(title);

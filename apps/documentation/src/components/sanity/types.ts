@@ -113,5 +113,6 @@ export type PageType = {
   category: string;
   subcategory?: string;
   npmPackage?: string;
+  isCategoryLandingPage?: boolean;
   content: PortableTextProps['value'];
 };

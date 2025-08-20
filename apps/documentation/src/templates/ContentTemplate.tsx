@@ -12,8 +12,15 @@ export default function ContentTemplate({
   data: { page: PageType };
 }) {
   const { page } = data;
-  const { title, category, subcategory, content, description, npmPackage } =
-    page;
+  const {
+    title,
+    category,
+    subcategory,
+    content,
+    description,
+    npmPackage,
+    isCategoryLandingPage,
+  } = page;
 
   return (
     <>
@@ -23,6 +30,7 @@ export default function ContentTemplate({
         title={title}
         description={description}
         npmPackage={npmPackage}
+        isCategoryLandingPage={isCategoryLandingPage}
       />
       <PortableText value={content} />
     </>
@@ -37,20 +45,32 @@ export const Head = (
         description: string;
         category: string;
         subcategory: string;
+        isCategoryLandingPage: boolean;
       };
     };
   },
 ) => {
   const {
     data: {
-      page: { title, description, category, subcategory },
+      page: {
+        title,
+        description,
+        category,
+        subcategory,
+        isCategoryLandingPage,
+      },
     },
   } = props;
   return (
     <SEO
       title={title}
       description={description}
-      pathname={getSanitizedPath({ title, category, subcategory })}
+      pathname={getSanitizedPath({
+        title,
+        category,
+        subcategory,
+        isCategoryLandingPage,
+      })}
     />
   );
 };
@@ -62,6 +82,7 @@ export const query = graphql`
       category
       subcategory
       description
+      isCategoryLandingPage
       content {
         ...TextBlockFragment
       }

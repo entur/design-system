@@ -43,6 +43,7 @@ const SideNavigationLayout = ({
           subcategory
           category
           title
+          isCategoryLandingPage
         }
       }
     }
@@ -80,6 +81,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
         tags: page.frontmatter.tags,
         order: page.frontmatter.order,
         categoryIndex: page.frontmatter.categoryIndex,
+        isCategoryLandingPage: false, // MDX pages don't have this field
       } as MenuItem;
     });
   const sanityPages = sanityPageData.map(page => {
@@ -91,6 +93,7 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       tags: page?.tags ?? null,
       order: page.order ?? null,
       categoryIndex: page.categoryIndex ?? null,
+      isCategoryLandingPage: page.isCategoryLandingPage ?? false,
     } as MenuItem;
   });
   return [...mdxPages, ...sanityPages];

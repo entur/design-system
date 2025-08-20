@@ -65,6 +65,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           title
           category
           subcategory
+          isCategoryLandingPage
         }
       }
     }
@@ -80,6 +81,7 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
       title: page.title,
       category: page.category,
       subcategory: page.subcategory,
+      isCategoryLandingPage: page.isCategoryLandingPage,
     });
 
     createPage({
@@ -91,7 +93,13 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
   reporter.info(`[create page] Created ${pages.length} documentation pages`);
 }
 
-function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
+function getSanitizedPath({
+  category,
+  subcategory,
+  title,
+  categoryIndex,
+  isCategoryLandingPage,
+}) {
   function sanitizeText(text) {
     if (!text) return undefined;
     return text
@@ -106,6 +114,12 @@ function getSanitizedPath({ category, subcategory, title, categoryIndex }) {
   }
 
   const sanitizedCategory = sanitizeText(category);
+
+  // If this is a category landing page, return just the category path
+  if (isCategoryLandingPage) {
+    return `/${sanitizedCategory}`;
+  }
+
   if (categoryIndex) return `/${sanitizedCategory}`;
 
   const sanitizedTitle = sanitizeText(title);

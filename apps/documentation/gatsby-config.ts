@@ -194,6 +194,7 @@ const config: GatsbyConfig = {
               title: node.title,
               category: node.category,
               subcategory: node.subcategory,
+              isCategoryLandingPage: node.isCategoryLandingPage,
             });
 
             return {
@@ -238,6 +239,7 @@ const config: GatsbyConfig = {
                 description
                 category
                 subcategory
+                isCategoryLandingPage
                 content {
                   _rawItems
                 }

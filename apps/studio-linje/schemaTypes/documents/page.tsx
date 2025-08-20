@@ -62,6 +62,37 @@ export const page = defineType({
       },
     }),
     defineField({
+      name: 'isCategoryLandingPage',
+      title: 'Er kategorilandingsside',
+      description:
+        'Hvis aktivert vil denne siden vises når man går til denne kategorien fra hovedmenyen.',
+      type: 'boolean',
+      initialValue: false,
+      validation: (Rule) =>
+        Rule.custom(async (isCategoryLandingPage, context) => {
+          if (!isCategoryLandingPage) return true
+
+          const {getClient} = context
+          const client = getClient({apiVersion: '2023-05-03'})
+
+          const categoryForCurrentDocument = context.document?.category
+          if (!categoryForCurrentDocument)
+            return 'Kategori må være satt for å kunne bruke kategorilandingsside'
+
+          // Check if there's already a category landing page for this category
+          const existingLandingPage = await client.fetch(
+            `*[_type == "page" && category == $category && isCategoryLandingPage == true && _id != $id][0]`,
+            {category: categoryForCurrentDocument, id: context.document?._id}
+          )
+
+          if (existingLandingPage) {
+            return `Det finnes allerede en kategorilandingsside for "${categoryForCurrentDocument}" ved navn "${existingLandingPage.title}". Kun én landingsside per kategori er tillatt.`
+          }
+
+          return true
+        }),
+    }),
+    defineField({
       name: 'content',
       title: 'Sideinnhold',
       type: 'textBlocks',
@@ -72,11 +103,18 @@ export const page = defineType({
       title: 'title',
       category: 'category',
       subcategory: 'subcategory',
+      isCategoryLandingPage: 'isCategoryLandingPage',
     },
-    prepare({title, category, subcategory}) {
+    prepare({title, category, subcategory, isCategoryLandingPage}) {
+      const subtitle = isCategoryLandingPage
+        ? `${category} (Landingsside)`
+        : subcategory
+        ? `${category} > ${subcategory}`
+        : category
+
       return {
         title: title || 'Ingen tittel',
-        subtitle: subcategory ? `${category} > ${subcategory}` : category,
+        subtitle,
       }
     },
   },
