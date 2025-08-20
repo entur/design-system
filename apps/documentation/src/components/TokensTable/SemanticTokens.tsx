@@ -14,7 +14,6 @@ const SemanticTokenList: React.FC<TokensTableProps> = ({ tokens }) => {
   const { variableFormat } = useSettings();
   const formatTokens = Object.entries(tokens).map(([key, token]) => {
     const formattedVariable = formatDotToVariable(key);
-    console.log('halla', key);
     return [formattedVariable, token, key] as [string, string, string];
   });
 
