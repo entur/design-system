@@ -92,7 +92,6 @@ export const imageAndText = defineType({
           ],
         },
       ],
-      validation: (Rule) => Rule.min(1).max(3).error('At least one text block is required'),
     }),
     defineField({
       name: 'guidelineVariant',

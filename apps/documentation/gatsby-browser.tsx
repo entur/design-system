@@ -23,17 +23,13 @@ export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   return (
     <SettingsProvider>
       <ConsentProvider>
-        <PostHogProvider client={posthog}>
-          <AnalyticsProvider>
-            <ToastProvider>
-              <ColorsProvider>
-                <MediaContextProvider>
-                  <SearchProvider>{element}</SearchProvider>
-                </MediaContextProvider>
-              </ColorsProvider>
-            </ToastProvider>
-          </AnalyticsProvider>
-        </PostHogProvider>
+        <ToastProvider>
+          <ColorsProvider>
+            <MediaContextProvider>
+              <SearchProvider>{element}</SearchProvider>
+            </MediaContextProvider>
+          </ColorsProvider>
+        </ToastProvider>
       </ConsentProvider>
     </SettingsProvider>
   );
@@ -43,22 +39,7 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
   element,
   props,
 }) => {
-  const children = (
-    <ConsentProvider>
-      <PostHogProvider client={posthog}>
-        <AnalyticsContext.Consumer>
-          {context => {
-            if (context !== null && context.posthog.__loaded) {
-              // we manually capture pageviews since gatsby
-              // is not able to detect route changes
-              context.posthog.capture('$pageview');
-            }
-            return element;
-          }}
-        </AnalyticsContext.Consumer>
-      </PostHogProvider>
-    </ConsentProvider>
-  );
+  const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
 
   return <DocLayout {...props}>{children}</DocLayout>;
