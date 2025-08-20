@@ -45,12 +45,12 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
       # Currently only @entur/icons is needed for Sanity
       - name: Build @entur/icons package
         run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
-
-      - name: Install Sanity CLI
-        run: npm install -g @sanity/cli
 
       - name: Deploy Sanity GraphQL API
         working-directory: apps/studio-linje
@@ -58,7 +58,7 @@ jobs:
           # Set non-interactive mode to avoid prompts
           export CI=true
           # Deploy GraphQL API - this will accept deploying breaking changes
-          sanity graphql deploy --yes
+          yarn deploy-graphql --yes
         env:
           # Add any necessary environment variables for Sanity deployment
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN || '' }}
@@ -122,12 +122,12 @@ jobs:
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Use Nx cache
+        uses: ./.github/actions/use-nx-cache
+
       # Currently only @entur/icons is needed for Sanity
       - name: Build @entur/icons package
         run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
-
-      - name: Install Sanity CLI
-        run: npm install -g @sanity/cli
 
       - name: Deploy Sanity Studio
         working-directory: apps/studio-linje
@@ -135,7 +135,7 @@ jobs:
           # Set non-interactive mode to avoid prompts
           export CI=true
           # Deploy without prompts using the config file
-          sanity deploy --yes
+          yarn deploy --yes
         env:
           # Add any necessary environment variables for Sanity deployment
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN || '' }}
