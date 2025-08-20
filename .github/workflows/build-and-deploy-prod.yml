@@ -34,9 +34,38 @@ jobs:
           name: package-artifacts
           path: 'packages/**/dist'
 
+  deploy-sanity-graphql:
+    name: Deploy Sanity GraphQL API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      # Currently only @entur/icons is needed for Sanity
+      - name: Build @entur/icons package
+        run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
+
+      - name: Install Sanity CLI
+        run: npm install -g @sanity/cli
+
+      - name: Deploy Sanity GraphQL API
+        working-directory: apps/studio-linje
+        run: |
+          # Set non-interactive mode to avoid prompts
+          export CI=true
+          # Deploy GraphQL API - this will accept deploying breaking changes
+          sanity graphql deploy --yes
+        env:
+          # Add any necessary environment variables for Sanity deployment
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN || '' }}
+
   build-documentation:
     name: Build documentation
-    needs: build-packages
+    needs: [build-packages, deploy-sanity-graphql]
     runs-on:
       group: 'grp-ubuntu-22.04-4core-x64'
     steps:
@@ -71,6 +100,7 @@ jobs:
           path: apps/documentation/public
 
   deploy-documentation-to-prod:
+    name: Deploy documentation to production
     needs: build-documentation
     uses: entur/gha-firebase/.github/workflows/firebase-hosting-deploy.yml@v1
     with:
@@ -79,3 +109,33 @@ jobs:
       build_artifact_name: documentation-site-artifact
       build_artifact_path: 'apps/documentation/public'
       entry_point: 'apps/documentation'
+
+  deploy-sanity-studio:
+    name: Deploy Sanity Studio
+    needs: build-documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and Cache Yarn Dependencies
+        uses: ./.github/actions/install-and-cache-dependencies
+        with:
+          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      # Currently only @entur/icons is needed for Sanity
+      - name: Build @entur/icons package
+        run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
+
+      - name: Install Sanity CLI
+        run: npm install -g @sanity/cli
+
+      - name: Deploy Sanity Studio
+        working-directory: apps/studio-linje
+        run: |
+          # Set non-interactive mode to avoid prompts
+          export CI=true
+          # Deploy without prompts using the config file
+          sanity deploy --yes
+        env:
+          # Add any necessary environment variables for Sanity deployment
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN || '' }}
