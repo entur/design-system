@@ -80,9 +80,15 @@ export const page = defineType({
             return 'Kategori må være satt for å kunne bruke kategorilandingsside'
 
           // Check if there's already a category landing page for this category
+          // other than the currently view document
+          const currentId = context.document?._id?.replace(/^drafts\./, '')
           const existingLandingPage = await client.fetch(
-            `*[_type == "page" && category == $category && isCategoryLandingPage == true && _id != $id][0]`,
-            {category: categoryForCurrentDocument, id: context.document?._id}
+            `*[_type == "page" && category == $category && isCategoryLandingPage == true && _id != $id && (!defined(_id) || (_id != $draftId))][0]`,
+            {
+              category: categoryForCurrentDocument,
+              id: currentId,
+              draftId: `drafts.${currentId}`,
+            }
           )
 
           if (existingLandingPage) {
