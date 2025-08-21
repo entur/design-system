@@ -38,7 +38,7 @@ export const Heading = ({
     <HeadingElement
       className={classNames(
         'eds-heading',
-        variant && `eds-heading--${usedVariant}`,
+        usedVariant && `eds-heading--${usedVariant}`,
         size && `eds-heading--${size}`,
         {
           [`eds-heading--margin-top`]: margin === 'top',
