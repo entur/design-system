@@ -54,9 +54,26 @@ jobs:
           name: package-artifacts
           path: 'packages'
 
-      - name: Create cache key based on day
-        id: cache_day_key
-        run: echo "cache-key=$(date -u '+%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Create cache key based on content changes
+        id: cache_key
+        run: |
+          # Create a comprehensive hash of all relevant files for cache invalidation
+          echo "Creating cache key for Gatsby build..."
+
+          # Hash source files (components, pages, etc.)
+          SRC_HASH=$(find apps/documentation/src -type f \( -name "*.tsx" -o -name "*.ts" -o -name "*.mdx" -o -name "*.md" -o -name "*.json" \) 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1 || echo "no-src-files")
+
+          # Hash package.json and yarn.lock for dependency changes
+          DEPS_HASH=$(sha256sum apps/documentation/package.json yarn.lock 2>/dev/null | sha256sum | cut -d' ' -f1 || echo "no-deps-files")
+
+          # Hash Gatsby config and other config files
+          CONFIG_HASH=$(find apps/documentation -maxdepth 1 -name "gatsby-*.js" -o -name "gatsby-*.ts" -o -name "*.config.*" 2>/dev/null | sort | xargs sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1 || echo "no-config-files")
+
+          # Combine all hashes for final cache key
+          FINAL_HASH=$(echo "$SRC_HASH-$DEPS_HASH-$CONFIG_HASH" | sha256sum | cut -d' ' -f1)
+
+          echo "cache-key=gatsby-${{ runner.os }}-${{ github.head_ref }}-$FINAL_HASH" >> $GITHUB_OUTPUT
+          echo "Cache key created: gatsby-${{ runner.os }}-${{ github.head_ref }}-$FINAL_HASH"
 
       - name: Cache gatsby
         uses: actions/cache@v4
@@ -64,10 +81,43 @@ jobs:
           path: |
             apps/documentation/.cache
             apps/documentation/public
-          key: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}-${{ github.run_id }}
-          restore-keys: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}
+            apps/documentation/.gatsby-context.js
+            apps/documentation/.cache/caches
+          key: ${{ steps.cache_key.outputs.cache-key }}
+          restore-keys: |
+            gatsby-${{ runner.os }}-${{ github.head_ref }}-
+            gatsby-${{ runner.os }}-
 
-      - run: yarn build:documentation:skip-packages-dependency
+      - name: Build documentation with incremental build
+        run: |
+          # Enable Gatsby incremental builds and optimizations
+          export GATSBY_EXPERIMENTAL_DEV_SSR=false
+          export GATSBY_EXPERIMENTAL_FAST_DEV=false
+          export GATSBY_CPU_COUNT=4
+          export GATSBY_PARALLEL_QUERY_RUNNING=true
+          export GATSBY_EXPERIMENTAL_QUERY_ON_DEMAND=true
+          export GATSBY_EXPERIMENTAL_DEV_SSR=false
+          export GATSBY_EXPERIMENTAL_FAST_DEV=false
+
+          # Check cache status and determine build strategy
+          if [ -d "apps/documentation/.cache" ] && [ -f "apps/documentation/.cache/caches/gatsby-source-filesystem" ]; then
+            echo "✅ Cache found - using incremental build"
+            echo "Cache size: $(du -sh apps/documentation/.cache | cut -f1)"
+            cd apps/documentation && yarn build:skip-props-generator
+          else
+            echo "🔄 No cache found - performing full build"
+            cd apps/documentation && yarn build
+          fi
+
+          # Verify build output
+          if [ -d "apps/documentation/public" ]; then
+            echo "✅ Build completed successfully"
+            echo "Build size: $(du -sh apps/documentation/public | cut -f1)"
+            echo "Generated pages: $(find apps/documentation/public -name "*.html" | wc -l)"
+          else
+            echo "❌ Build failed - no public directory found"
+            exit 1
+          fi
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
