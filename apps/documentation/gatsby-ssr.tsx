@@ -37,6 +37,11 @@ export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({
 }) => {
   const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
+  if (props.location.pathname === '/komponentLayoutBeta')
+    return <DocLayout {...props}></DocLayout>;
+  if (element.type.is404) {
+    return <DocLayout {...props}>{children}</DocLayout>;
+  }
   return <DocLayout {...props}>{children}</DocLayout>;
 };
 

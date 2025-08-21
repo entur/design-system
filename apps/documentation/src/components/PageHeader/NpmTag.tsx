@@ -3,6 +3,8 @@ import { Heading5, SubLabel } from '@entur/typography';
 import { useGetNpmVersion } from './useGetNpmVersion';
 
 import './NpmTag.scss';
+import { ActionChip } from '@entur/chip/dist';
+import { SourceCodeIcon } from '@entur/icons';
 
 export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
   const query = useGetNpmVersion();
@@ -17,8 +19,10 @@ export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {
       className="ds-npm-tag"
       href={`https://www.npmjs.com/package/@entur/${npmInfo.name}`}
     >
-      <Heading5 as="span">npm</Heading5>
-      <SubLabel>v{npmInfo.version}</SubLabel>
+      <ActionChip>
+        <SourceCodeIcon />
+        npm v{npmInfo.version}
+      </ActionChip>
     </a>
   );
 };

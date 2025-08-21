@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CodeText, Paragraph } from '@entur/typography';
+import { CodeText, Heading2, Paragraph } from '@entur/typography';
 import {
   Table,
   TableHead,
@@ -88,11 +88,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
   const isDefaultOpenSet = defaultOpen !== undefined;
 
   return (
-    <ExpandableText
-      as="h3"
-      title={`${componentName} Props`}
-      defaultOpen={isDefaultOpenSet ? defaultOpen : userType === 'developer'}
-    >
+    <>
       {Object.keys(componentProps).length > 0 ? (
         <Table fixed spacing="middle">
           <TableHead>
@@ -139,7 +135,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
       ) : (
         <Paragraph>Denne komponenten har ingen props</Paragraph>
       )}
-    </ExpandableText>
+    </>
   );
 };
 

@@ -16,6 +16,7 @@ import {
 } from './src/providers';
 import { SearchProvider } from './src/components/Search/SearchContext';
 import DocLayout from './src/layouts/DocLayout';
+import ComponentLayout from './src/layouts/ComponentLayout';
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
@@ -41,7 +42,19 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
 }) => {
   const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
-
+  if (props.location.pathname === '/komponentLayoutBeta')
+    return (
+      <DocLayout {...props}>
+        <ComponentLayout
+          title="Button"
+          subcategory="Button"
+          description="This is a placeholder description"
+          npmPackage="button"
+          figmaLink="https://figma.com/xyz"
+          extraInfo="Her er litt ekstra info"
+        ></ComponentLayout>
+      </DocLayout>
+    );
   return <DocLayout {...props}>{children}</DocLayout>;
 };
 

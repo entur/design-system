@@ -5,22 +5,30 @@ import { useSettings } from '@providers/SettingsContext';
 import { PackageChangelog } from './PackageChangelog';
 import { NpmTag } from './NpmTag';
 import './PageHeader.scss';
+import { ComponentIcon } from '@entur/icons';
+import { ActionChip } from '@entur/chip';
+import { Heading2, Paragraph } from '@entur/typography';
 
-type Props = {
+export type BasePageHeaderProps = {
   title: string;
   category?: string;
   subcategory?: string;
   description?: string;
   npmPackage?: string;
+<<<<<<< HEAD
   isCategoryLandingPage?: boolean;
+=======
+  figmaLink?: string;
+>>>>>>> b3601253 (refactor(website): new structure in componentsites with tabs)
 };
 
-export const BasePageHeader: React.FC<Props> = ({
+export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   title,
   category,
   subcategory,
   description,
   npmPackage,
+<<<<<<< HEAD
   isCategoryLandingPage,
 }) => {
   const { packageManager, userType } = useSettings();
@@ -43,38 +51,44 @@ export const BasePageHeader: React.FC<Props> = ({
             style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
           >
             {labelText.toUpperCase()}
+=======
+  figmaLink,
+}) => {
+  const { packageManager, userType } = useSettings();
+
+  return (
+    <header className="page-header">
+      {subcategory && (
+        <div className="page-header__subcategory-wrapper">
+          <Label as="div" className="page-header__subcategory-label">
+            {subcategory.toUpperCase()}
+>>>>>>> b3601253 (refactor(website): new structure in componentsites with tabs)
           </Label>
-          {npmPackage && userType === 'developer' && (
-            <span style={{ float: 'right' }}>
-              <PackageChangelog packageName={npmPackage} />
-            </span>
-          )}
         </div>
       )}
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Heading1 margin="none" style={{ marginRight: '1rem' }}>
+      <div className="page-header__title-row">
+        <Heading1 margin="none" className="page-header__heading">
           {title}
         </Heading1>
-        {npmPackage && userType === 'developer' && (
-          <NpmTag packageName={npmPackage} />
-        )}
-      </div>
-      {description && <LeadParagraph>{description}</LeadParagraph>}
-      {npmPackage && userType === 'developer' && (
-        <div className="page-header__import-wrapper">
-          <CopyableText
-            successMessage="Innstalleringstekst ble kopiert til utklippstavla."
-            className="page-header__import-wrapper__copy-button"
-          >
-            {installText}
-          </CopyableText>
-          <CopyableText
-            successMessage="CSS-importen ble kopiert til utklippstavla."
-            className="page-header__import-wrapper__copy-button"
-          >
-            {cssImport}
-          </CopyableText>
+        <div className="page-header__actions">
+          {npmPackage && userType === 'developer' && (
+            <NpmTag packageName={npmPackage} />
+          )}
+          {npmPackage && userType === 'developer' && (
+            <PackageChangelog packageName={npmPackage} />
+          )}
+          {figmaLink && (
+            <ActionChip>
+              <ComponentIcon />
+              Figma
+            </ActionChip>
+          )}
         </div>
+      </div>
+      {description && (
+        <LeadParagraph className="page-header__description">
+          {description}
+        </LeadParagraph>
       )}
     </header>
   );
