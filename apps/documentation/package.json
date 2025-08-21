@@ -11,7 +11,7 @@
     "start": "gatsby develop",
     "build": "yarn generate-props && gatsby build && yarn copy-playground",
     "build:skip-props-generator": "gatsby build && yarn copy-playground",
-    "copy-playground": "cd ../code-playground && yarn build && cp -r public/playroom ../documentation/public/",
+    "copy-playground": "cd ../code-playground && yarn build && cp -r public/playroom/* ../documentation/public/sandkasse/",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",

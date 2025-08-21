@@ -9,7 +9,7 @@ module.exports = {
   port: 9000,
   openBrowser: true,
   paramType: 'search',
-  baseUrl: '/playroom/',
+  baseUrl: '/sandkasse/',
   webpackConfig: () => ({
     module: {
       rules: [
@@ -88,14 +88,22 @@ module.exports = {
       },
     },
   }),
-  exampleCode: `<Paragraph>Velkommen til Linje lekerom! 🎨</Paragraph>
-  <ListItem>Skriv JSX med komponentene fra designsystemet</ListItem>
-  <ListItem>Bruk snippets til høyre (+)</ListItem>
-  <ListItem>Du kan skru på mørk modus og kontrast over</ListItem>`,
+  exampleCode: `{(() => {
+    const title = 'Velkommen til Linje sandkasse! 🎨';
+  
+    return (
+      <div>
+        <Heading1>{title}</Heading1>
+        <UnorderedList>
+          <ListItem>Skriv JSX med komponentene fra designsystemet</ListItem>
+          <ListItem>Bruk snippets til høyre (+)</ListItem>
+          <ListItem>Du kan skru på mørk modus og kontrast over</ListItem>
+        </UnorderedList>
+      </div>
+    );
+  })()}`,
   iframeSandbox: 'allow-scripts',
-  defaultVisibleWidths: [
-    // subset of widths to display on first load
-  ],
+  defaultVisibleWidths: ['Fit to window'],
   defaultVisibleThemes: [
     // subset of themes to display on first load
   ],

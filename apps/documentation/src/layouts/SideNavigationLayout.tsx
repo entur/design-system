@@ -96,5 +96,17 @@ function mergeMdxAndSanityPageData(mdxPageData: any[], sanityPageData: any[]) {
       isCategoryLandingPage: page.isCategoryLandingPage ?? false,
     } as MenuItem;
   });
-  return [...mdxPages, ...sanityPages];
+  // Add custom menu items
+  const customMenuItems: MenuItem[] = [
+    {
+      id: 'code-playground',
+      title: 'Sandkasse',
+      category: 'Komponenter',
+      subcategory: 'Oversikt',
+      order: 2, // Place it after the main "Komponenter" overview page
+      path: '/sandkasse/',
+    } as MenuItem,
+  ];
+
+  return [...mdxPages, ...sanityPages, ...customMenuItems];
 }
