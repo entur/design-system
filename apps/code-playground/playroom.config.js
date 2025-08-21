@@ -17,8 +17,19 @@ module.exports = {
           oneOf: [
             {
               test: /\.tsx?$/,
-              use: 'ts-loader',
-              exclude: /node_modules/,
+              use: [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', { targets: 'defaults' }],
+                      ['@babel/preset-react', { runtime: 'automatic' }],
+                      '@babel/preset-typescript',
+                    ],
+                  },
+                },
+              ],
+              exclude: /node_modules\/(?!playroom)/,
             },
             {
               test: /\.scss$/,
@@ -49,6 +60,32 @@ module.exports = {
           ],
         },
       ],
+    },
+    resolve: {
+      alias: {
+        // Ensure React is properly deduplicated
+        react: require.resolve('react'),
+        'react-dom': require.resolve('react-dom'),
+        'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+        'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
+        'react-dom/client': require.resolve('react-dom/client'),
+      },
+      fallback: {
+        'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+        'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
+        'react-dom/client': require.resolve('react-dom/client'),
+      },
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
     },
   }),
   exampleCode: `<Paragraph>Velkommen til Linje lekerom! 🎨</Paragraph>
