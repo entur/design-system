@@ -42,19 +42,6 @@ export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
 }) => {
   const children = <ConsentProvider>{element}</ConsentProvider>;
   if (props.location.pathname === '/') return <>{children}</>;
-  if (props.location.pathname === '/komponentLayoutBeta')
-    return (
-      <DocLayout {...props}>
-        <ComponentLayout
-          title="Button"
-          subcategory="Button"
-          description="This is a placeholder description"
-          npmPackage="button"
-          figmaLink="https://figma.com/xyz"
-          extraInfo="Her er litt ekstra info"
-        ></ComponentLayout>
-      </DocLayout>
-    );
   return <DocLayout {...props}>{children}</DocLayout>;
 };
 

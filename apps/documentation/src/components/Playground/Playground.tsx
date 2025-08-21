@@ -14,6 +14,7 @@ import { ConditionalWrapper } from '@entur/utils';
 
 import {
   AdvancedProps,
+  InitialAdvancedProp,
   useAdvancedPlaygroundCode,
   wrapCodeInFragmentIfNecessary,
 } from './playground-utils';
@@ -26,7 +27,7 @@ import './Playground.scss';
 type PlaygroundProps = {
   children?: React.ReactNode;
   language?: Language;
-  props?: AdvancedProps[];
+  props?: InitialAdvancedProp[];
   style?: React.CSSProperties;
   defaultContrast?: boolean;
   defaultDarkMode?: boolean;

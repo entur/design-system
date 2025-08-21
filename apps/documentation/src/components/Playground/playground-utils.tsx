@@ -9,9 +9,11 @@ export type AdvancedProps = {
   options?: string[];
 };
 
+export type InitialAdvancedProp = Omit<AdvancedProps, 'value'>;
+
 export const useAdvancedPlaygroundCode = (
   codeFromMDXInjection: string,
-  initialProps?: AdvancedProps[],
+  initialProps?: InitialAdvancedProp[],
 ) => {
   const [codeWithUpdatedProps, setCodeWithUpdatedProps] =
     useState<string>(codeFromMDXInjection);

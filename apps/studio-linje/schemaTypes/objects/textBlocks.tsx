@@ -96,6 +96,7 @@ export const textBlocksType = defineType({
         {type: 'textBlocks'},
         {type: 'link'},
         {type: 'group'},
+        {type: 'codeExample'},
       ],
     }),
   ],
