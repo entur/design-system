@@ -93,11 +93,13 @@ jobs:
 
       - run: yarn build:documentation:skip-packages-dependency
 
-      - name: upload artifact
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: documentation-site-artifact
-          path: apps/documentation/public
+          path: |
+            apps/documentation/public/**
+            !apps/documentation/public/__node-manifests/**
 
   deploy-documentation-to-prod:
     name: Deploy documentation to production
