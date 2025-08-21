@@ -46,6 +46,7 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+          only-for-workspace: '@entur/documentation'
 
       - name: Download package artifacts
         uses: actions/download-artifact@v4
