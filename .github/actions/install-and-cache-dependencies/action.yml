@@ -4,6 +4,9 @@ inputs:
   cache-key:
     description: 'Cache key for Yarn dependencies'
     required: true
+  only-for-workspace:
+    description: 'Only install dependencies for a specific workspace'
+    required: false
 runs:
   using: 'composite'
   steps:
@@ -27,5 +30,10 @@ runs:
         key: ${{ inputs.cache-key }}
 
     - name: Install dependencies
-      run: yarn install --immutable
+      run: |
+        if [ -n "${{ inputs.only-for-workspace }}" ]; then
+          yarn workspaces focus ${{ inputs.only-for-workspace }}
+        else
+          yarn install --immutable
+        fi
       shell: bash

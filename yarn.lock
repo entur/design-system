@@ -4895,6 +4895,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@entur/icons@npm:latest":
+  version: 8.0.0
+  resolution: "@entur/icons@npm:8.0.0"
+  dependencies:
+    "@entur/tokens": "npm:^3.19.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/face7463ce708178d5a9af7c063df4619c8e483e5eda58fff7cf6b8a9d7a998d66215954aec03ea2b71a55b867b7988d03290f05345cc7878bbe7755d386b22c
+  languageName: node
+  linkType: hard
+
 "@entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@entur/icons@workspace:packages/icons"
@@ -5034,7 +5045,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
+"@entur/tokens@npm:^3.19.1, @entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:
@@ -26043,26 +26054,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"linje@workspace:apps/studio-linje":
-  version: 0.0.0-use.local
-  resolution: "linje@workspace:apps/studio-linje"
-  dependencies:
-    "@entur/icons": "workspace:^"
-    "@sanity/eslint-config-studio": "npm:^5.0.2"
-    "@sanity/ui": "npm:^3.0.7"
-    "@sanity/vision": "npm:4.5.0"
-    "@types/react": "npm:^18.0.25"
-    eslint: "npm:^9.9.0"
-    prettier: "npm:^3.0.2"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    sanity: "npm:4.5.0"
-    sanity-plugin-media: "npm:^4.0.0"
-    styled-components: "npm:^6.1.15"
-    typescript: "npm:^5.1.6"
-  languageName: unknown
-  linkType: soft
-
 "linkfs@npm:^2.1.0":
   version: 2.1.0
   resolution: "linkfs@npm:2.1.0"
@@ -36616,6 +36607,26 @@ __metadata:
   checksum: 10c0/841a4ab8c76795d34aefe129185763b55fbf2e4693208215627caea4dd62e1299423dcd96f708d3128e3dfa0e669bae2cb912e6e906d7d81eaf6493196570923
   languageName: node
   linkType: hard
+
+"studio-linje@workspace:apps/studio-linje":
+  version: 0.0.0-use.local
+  resolution: "studio-linje@workspace:apps/studio-linje"
+  dependencies:
+    "@entur/icons": "npm:latest"
+    "@sanity/eslint-config-studio": "npm:^5.0.2"
+    "@sanity/ui": "npm:^3.0.7"
+    "@sanity/vision": "npm:4.5.0"
+    "@types/react": "npm:^18.0.25"
+    eslint: "npm:^9.9.0"
+    prettier: "npm:^3.0.2"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    sanity: "npm:4.5.0"
+    sanity-plugin-media: "npm:^4.0.0"
+    styled-components: "npm:^6.1.15"
+    typescript: "npm:^5.1.6"
+  languageName: unknown
+  linkType: soft
 
 "style-loader@npm:^2.0.0":
   version: 2.0.0

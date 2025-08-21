@@ -1,5 +1,5 @@
 {
-  "name": "linje",
+  "name": "studio-linje",
   "private": true,
   "version": "1.4.0",
   "main": "package.json",
@@ -15,7 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@entur/icons": "workspace:^",
+    "@entur/icons": "latest",
     "@sanity/ui": "^3.0.7",
     "@sanity/vision": "4.5.0",
     "react": "^18.2.0",

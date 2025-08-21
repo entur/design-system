@@ -44,13 +44,7 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Use Nx cache
-        uses: ./.github/actions/use-nx-cache
-
-      # Currently only @entur/icons is needed for Sanity
-      - name: Build @entur/icons package
-        run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
+          only-for-workspace: 'studio-linje'
 
       - name: Deploy Sanity GraphQL API
         working-directory: apps/studio-linje
@@ -75,7 +69,7 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-
+          only-for-workspace: '@entur/documentation'
       - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
@@ -123,13 +117,7 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Use Nx cache
-        uses: ./.github/actions/use-nx-cache
-
-      # Currently only @entur/icons is needed for Sanity
-      - name: Build @entur/icons package
-        run: NX_REJECT_UNKNOWN_LOCAL_CACHE=0 yarn lerna run build --scope @entur/icons
+          only-for-workspace: 'studio-linje'
 
       - name: Deploy Sanity Studio
         working-directory: apps/studio-linje
