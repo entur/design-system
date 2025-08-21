@@ -1,16 +1,79 @@
 @use '@entur/tokens/dist/styles.scss' as t;
+@use '~@entur/utils/dist/breakpoints.scss' as *;
 
 .page-header {
+  &__subcategory-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    @include for-desktop {
+      &__subcategory-wrapper {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__subcategory-label {
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  &__title-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @include for-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__heading {
+    margin-right: 0;
+    @include for-desktop {
+      margin-right: t.$space-medium;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-left: 0;
+    flex-wrap: wrap;
+    @include for-desktop {
+      margin-left: auto;
+      flex-wrap: nowrap;
+    }
+
+    > span {
+      float: none;
+      @include for-desktop {
+        float: right;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: t.$space-small;
+    @include for-desktop {
+      margin-top: t.$space-default;
+    }
+  }
+
   &__import-wrapper {
     display: flex;
-    align-items: flex-start;
-    column-gap: t.$space-default;
-    row-gap: t.$space-extra-small;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: t.$space-extra-small;
+    @include for-desktop {
+      flex-direction: row;
+      align-items: flex-start;
+      column-gap: t.$space-default;
+      row-gap: t.$space-extra-small;
+    }
 
     &__copy-button {
-      margin-bottom: t.$space-none;
       flex: 1 0;
+      margin-bottom: t.$space-none;
     }
   }
 }
