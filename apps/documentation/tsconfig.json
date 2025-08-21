@@ -8,7 +8,9 @@
     "paths": {
       "@entur/*": ["../../node_modules/@entur/*/dist"],
       "@components/*": ["src/components/*"],
-      "@providers/*": ["src/providers/*"]
+      "@data/*": ["src/data/*"],
+      "@providers/*": ["src/providers/*"],
+      "@layouts/*": ["src/layouts/*"]
     }
   }
 }

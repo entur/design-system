@@ -68,12 +68,21 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           isCategoryLandingPage
         }
       }
+      allSanityComponentDoc {
+        nodes {
+          id
+          title
+          category
+          subcategory
+        }
+      }
     }
   `);
 
   if (result.errors) throw result.errors;
 
   const pages = (result.data.allSanityPage || {}).nodes || [];
+  const componentDocs = (result.data.allSanityComponentDoc || {}).nodes || [];
 
   pages.forEach(page => {
     const id = page.id;
@@ -91,6 +100,24 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
     });
   });
   reporter.info(`[create page] Created ${pages.length} documentation pages`);
+
+  componentDocs.forEach(doc => {
+    const id = doc.id;
+    const path = getSanitizedPath({
+      title: doc.title,
+      category: doc.category,
+      subcategory: doc.subcategory,
+    });
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/ComponentDocTemplate.tsx'),
+      context: { id },
+    });
+  });
+  reporter.info(
+    `[create page] Created ${componentDocs.length} component documentation pages`,
+  );
 }
 
 function getSanitizedPath({

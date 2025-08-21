@@ -42,6 +42,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         '@components': path.join(__dirname, 'src', 'components'),
+        '@layouts': path.join(__dirname, 'src', 'layouts'),
         '@data': path.join(__dirname, 'src', 'data'),
         '@media': path.join(__dirname, 'src', 'media'),
         '@providers': path.join(__dirname, 'src', 'providers'),
@@ -212,7 +213,39 @@ const config: GatsbyConfig = {
             };
           });
 
-          return [...mdxNodes, ...sanityNodes];
+          const sanityComponentDocs = data.allSanityComponentDoc.nodes.map(
+            node => {
+              const path = getSanitizedPath({
+                title: node.title,
+                category: node.category,
+                subcategory: node.subcategory,
+              });
+
+              // Combine beskrivelse and utvikling content for search
+              const beskrivelseContent = node.beskrivelse?._rawItems
+                ? JSON.stringify(node.beskrivelse._rawItems)
+                : '';
+              const utviklingContent = node.utvikling?._rawItems
+                ? JSON.stringify(node.utvikling._rawItems)
+                : '';
+              const combinedContent =
+                `${beskrivelseContent} ${utviklingContent}`.trim();
+
+              return {
+                id: node.id,
+                path,
+                title: node.title,
+                tags: [],
+                description: node.description,
+                npmPackage: node.npmPackage ?? null,
+                body: combinedContent,
+                category: node.category,
+                subcategory: node.subcategory,
+              };
+            },
+          );
+
+          return [...mdxNodes, ...sanityNodes, ...sanityComponentDocs];
         },
 
         // GraphQL query used to fetch all data for the search index. This is
@@ -241,6 +274,22 @@ const config: GatsbyConfig = {
                 subcategory
                 isCategoryLandingPage
                 content {
+                  _rawItems
+                }
+              }
+            }
+            allSanityComponentDoc {
+              nodes {
+                id
+                title
+                description
+                category
+                subcategory
+                npmPackage
+                beskrivelse {
+                  _rawItems
+                }
+                utvikling {
                   _rawItems
                 }
               }

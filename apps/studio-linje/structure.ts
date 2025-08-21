@@ -2,6 +2,113 @@ export const structure = (S: any) =>
   S.list()
     .title('Content')
     .items([
+      // Component Documentation
+      S.listItem()
+        .title('Komponentdokumentasjon (TEST)')
+        .child(
+          S.list()
+            .title('Komponentdokumentasjon(TEST)')
+            .items([
+              S.listItem()
+                .title('Alle komponentdokumenter')
+                .child(
+                  S.documentTypeList('componentDoc')
+                    .apiVersion('2025-02-10')
+                    .title('Alle komponentdokumenter')
+                    .defaultOrdering([
+                      {field: 'category', direction: 'asc'},
+                      {field: 'subcategory', direction: 'asc'},
+                      {field: 'title', direction: 'asc'},
+                    ])
+                ),
+              S.listItem()
+                .title('Komponenter')
+                .child(
+                  S.list()
+                    .title('Komponenter underkategorier')
+                    .items([
+                      S.listItem()
+                        .title('Alle komponentdokumenter under Komponenter')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Komponenter-dokumenter')
+                            .filter('category == "Komponenter"')
+                            .defaultOrdering([
+                              {field: 'subcategory', direction: 'asc'},
+                              {field: 'title', direction: 'asc'},
+                            ])
+                        ),
+                      S.listItem()
+                        .title('Knapper')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Knapper-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Knapper"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Feedback')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Feedback-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Feedback"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Layout og flater')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Layout og flater-dokumenter')
+                            .filter(
+                              'category == "Komponenter" && subcategory == "Layout og flater"'
+                            )
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Navigasjon')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Navigasjon-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Navigasjon"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Reise')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Reise-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Reise"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Ressurser')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Ressurser-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Ressurser"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                      S.listItem()
+                        .title('Skjemaelementer')
+                        .child(
+                          S.documentTypeList('componentDoc')
+                            .apiVersion('2025-02-10')
+                            .title('Skjemaelementer-dokumenter')
+                            .filter('category == "Komponenter" && subcategory == "Skjemaelementer"')
+                            .defaultOrdering([{field: 'title', direction: 'asc'}])
+                        ),
+                    ])
+                ),
+            ])
+        ),
+
       // Pages organized in fully dynamic folder structure
       S.listItem()
         .title('Pages')

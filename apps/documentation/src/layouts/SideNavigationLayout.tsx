@@ -46,13 +46,21 @@ const SideNavigationLayout = ({
           isCategoryLandingPage
         }
       }
+      allSanityComponentDoc {
+        nodes {
+          id
+          subcategory
+          category
+          title
+        }
+      }
     }
   `);
 
-  const menuItems = mergeMdxAndSanityPageData(
-    MenuData.allMdx.nodes,
-    MenuData.allSanityPage.nodes,
-  );
+  const menuItems = mergeMdxAndSanityPageData(MenuData.allMdx.nodes, [
+    ...MenuData.allSanityPage.nodes,
+    ...MenuData.allSanityComponentDoc.nodes,
+  ]);
   if (isSmallScreen)
     return (
       <MobileSideNavigation

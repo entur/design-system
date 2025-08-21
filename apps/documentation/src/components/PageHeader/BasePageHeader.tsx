@@ -15,11 +15,8 @@ export type BasePageHeaderProps = {
   subcategory?: string;
   description?: string;
   npmPackage?: string;
-<<<<<<< HEAD
   isCategoryLandingPage?: boolean;
-=======
   figmaLink?: string;
->>>>>>> b3601253 (refactor(website): new structure in componentsites with tabs)
 };
 
 export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
@@ -28,30 +25,6 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   subcategory,
   description,
   npmPackage,
-<<<<<<< HEAD
-  isCategoryLandingPage,
-}) => {
-  const { packageManager, userType } = useSettings();
-
-  const installText =
-    packageManager === 'yarn'
-      ? `yarn add @entur/${npmPackage}`
-      : `npm install @entur/${npmPackage}`;
-  const cssImport = `@import '@entur/${npmPackage}/dist/styles.css';`;
-
-  // For category landing pages, show category instead of subcategory
-  const labelText = isCategoryLandingPage ? category : subcategory;
-
-  return (
-    <header>
-      {labelText && (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Label
-            as="div"
-            style={{ letterSpacing: '1px', marginBottom: '0.5rem' }}
-          >
-            {labelText.toUpperCase()}
-=======
   figmaLink,
 }) => {
   const { packageManager, userType } = useSettings();
@@ -62,7 +35,6 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
         <div className="page-header__subcategory-wrapper">
           <Label as="div" className="page-header__subcategory-label">
             {subcategory.toUpperCase()}
->>>>>>> b3601253 (refactor(website): new structure in componentsites with tabs)
           </Label>
         </div>
       )}
