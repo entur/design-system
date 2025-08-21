@@ -67,7 +67,8 @@ jobs:
           key: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}-${{ github.run_id }}
           restore-keys: gatsby-${{ github.head_ref }}-${{ runner.os }}-${{ steps.cache_day_key.outputs.cache-key }}
 
-      - run: yarn build:documentation:skip-packages-dependency
+      - name: Build documentation
+        run: yarn build:documentation:skip-packages-dependency
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
