@@ -26,7 +26,6 @@ export function getBodyVariantFromSemanticType(
     case 'p':
     case 'span':
     case 'div':
-    default:
       return 'paragraph';
     case 'code':
       return 'code-text';

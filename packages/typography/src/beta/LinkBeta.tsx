@@ -54,9 +54,7 @@ export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
           className="eds-text--link--ext-icon"
           aria-label={ariaLabelExternalIcon}
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </Element>
   );
 };
