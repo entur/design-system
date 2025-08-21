@@ -43,7 +43,6 @@ const ColorSwatch: React.FC<Props> = ({
   const rgb = hexrgb(backgroundColor, { format: 'array' });
 
   const { setChosenColor } = useColorContext();
-  console.log(setChosenColor);
   return (
     <GridItem small={6} medium={4}>
       {topLabel && <div className="eds-label">{topLabel}</div>}
