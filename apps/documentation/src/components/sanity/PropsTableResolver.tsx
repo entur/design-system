@@ -7,14 +7,12 @@ type PropsTableType = {
 
 type Props = {
   value: PropsTableType;
+  npmPackage?: string;
 };
 
-export const PropsTableResolver = ({ value }: Props) => {
+export const PropsTableResolver = ({ value, npmPackage }: Props) => {
   const { componentName } = value;
+  console.log('PropsTableResolver npmPackage:', npmPackage);
 
-  return (
-    <div style={{ margin: '2rem 0' }}>
-      <Props componentName={componentName} />
-    </div>
-  );
+  return <Props componentName={componentName} npmPackage={npmPackage} />;
 };

@@ -102,7 +102,9 @@ const createComponents = (
     group: GroupResolver,
     codeExample: CodeExampleResolver,
     doDontGroup: DoDontResolver,
-    propsTable: PropsTableResolver,
+    propsTable: ({ value }) => (
+      <PropsTableResolver value={value} npmPackage={npmPackage} />
+    ),
     copyableText: CopyableTextResolver,
     inlineIcon: ({ value }: { value: InlineIcon }) => {
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
