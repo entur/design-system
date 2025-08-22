@@ -26,6 +26,7 @@ import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
 import { GroupResolver } from './layout/GroupResolver';
 import { CodeExampleResolver } from './CodeExampleResolver';
+import { DoDontResolver } from './DoDontResolver';
 import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 
@@ -90,6 +91,7 @@ const components: Partial<PortableTextReactComponents> = {
     link: LinkResolver,
     group: GroupResolver,
     codeExample: CodeExampleResolver,
+    doDontGroup: DoDontResolver,
     inlineIcon: ({ value }: { value: InlineIcon }) => {
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
         return null;
