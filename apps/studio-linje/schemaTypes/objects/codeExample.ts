@@ -9,7 +9,7 @@ export const codeExample = defineType({
       name: 'title',
       title: 'Tittel',
       type: 'string',
-      description: 'Overskrift for kodeeksempelet (valgfritt)',
+      description: 'Overskrift for kodeeksempelet.',
     }),
     defineField({
       name: 'codeDisplayType',
