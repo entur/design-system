@@ -65,7 +65,7 @@ export const componentDoc = defineType({
       name: 'npmPackage',
       title: 'NPM‑pakke',
       type: 'string',
-      description: 'Navn på NPM‑pakken, f.eks. @entur/button',
+      description: 'Navn på NPM‑pakken, f.eks. @entur/button.',
     }),
     defineField({
       name: 'figmaLink',
@@ -83,20 +83,15 @@ export const componentDoc = defineType({
       name: 'beskrivelse',
       title: 'Beskrivelse',
       type: 'textBlocks',
-      description: 'Innhold som vises i Beskrivelse-tabben (inkludert DoDonts og kodeeksempler)',
+      description:
+        'Innhold som vises i Beskrivelse-tabben (følg vår dokumentasjonsmal for standardisering av innholdet)',
     }),
     defineField({
       name: 'utvikling',
       title: 'Utvikling',
       type: 'textBlocks',
       description:
-        'Innhold som vises i Utvikling-tabben (teknisk informasjon, implementasjon, etc.)',
-    }),
-    defineField({
-      name: 'relatedComponents',
-      title: 'Relaterte komponenter',
-      type: 'array',
-      of: [{type: 'relatedComponent'}],
+        'Innhold som vises i Utvikling-tabben (følg vår dokumentasjonsmal for standardisering av innholdet)',
     }),
   ],
   preview: {
