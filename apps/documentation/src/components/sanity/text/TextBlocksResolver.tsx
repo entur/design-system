@@ -10,16 +10,20 @@ import './TextBlocks.scss';
 
 type Props = {
   value: TextBlocksType;
+  npmPackage?: string;
 };
 
-export const TextBlocksResolver = ({ value }: Props) => {
+export const TextBlocksResolver = ({ value, npmPackage }: Props) => {
   const textBlocksCount = value?._rawItems?.length ?? value?.items?.length;
   const textBlocksVariant = value.variant;
   if (textBlocksCount === 0) return null;
 
   return (
     <VariantWrapper variant={textBlocksVariant} value={value}>
-      <PortableText value={value._rawItems ?? value.items} />
+      <PortableText
+        value={value._rawItems ?? value.items}
+        npmPackage={npmPackage}
+      />
     </VariantWrapper>
   );
 };
