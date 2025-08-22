@@ -14,10 +14,6 @@ type ComponentDoc = {
   componentName: string;
   beskrivelse?: any;
   utvikling?: any;
-  relatedComponents?: Array<{
-    title: string;
-    link: string;
-  }>;
 };
 
 export default function ComponentDocTemplate({
@@ -36,7 +32,6 @@ export default function ComponentDocTemplate({
     componentName,
     beskrivelse,
     utvikling,
-    relatedComponents,
   } = componentDoc;
 
   return (
@@ -50,7 +45,6 @@ export default function ComponentDocTemplate({
       componentName={componentName}
       beskrivelse={beskrivelse}
       utvikling={utvikling}
-      relatedComponents={relatedComponents}
     />
   );
 }
@@ -96,10 +90,6 @@ export const query = graphql`
       }
       utvikling {
         ...TextBlockFragment
-      }
-      relatedComponents {
-        title
-        link
       }
     }
   }

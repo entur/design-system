@@ -1,33 +1,30 @@
 import React from 'react';
 import { BasePageHeader } from '@components/PageHeader/BasePageHeader';
 import { BasePageHeaderProps } from '@components/PageHeader/BasePageHeader';
-import KomIGang from '@components/Komponenter/KomIGang';
-import { Heading2, Link } from '@entur/typography';
+import { Heading2 } from '@entur/typography';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
-import Props from '@components/Props/Props';
 import { PortableText } from '@components/sanity/PortableText';
-import { UnorderedList, ListItem } from '@entur/typography';
+
+import { KomIGang } from '../components/Common/KomIGang';
 
 type ComponentLayoutProps = BasePageHeaderProps & {
   componentName: string;
   beskrivelse?: any;
   utvikling?: any;
-  relatedComponents?: Array<{
-    title: string;
-    link: string;
-  }>;
+  npmPackage?: string;
 };
 
 const ComponentLayout: React.FC<ComponentLayoutProps> = ({
   componentName,
   beskrivelse,
   utvikling,
-  relatedComponents,
+  npmPackage,
   ...baseHeaderProps
 }) => {
   return (
     <>
-      <BasePageHeader {...baseHeaderProps} />
+      <BasePageHeader {...baseHeaderProps} npmPackage={npmPackage} />
+
       <Tabs style={{ marginRight: 'auto' }}>
         <TabList width="fluid">
           <Tab>Beskrivelse</Tab>
@@ -37,36 +34,17 @@ const ComponentLayout: React.FC<ComponentLayoutProps> = ({
           <TabPanel>
             {beskrivelse && (
               <>
-                <Heading2>Beskrivelse</Heading2>
-                <PortableText value={beskrivelse} />
-              </>
-            )}
-
-            {relatedComponents && relatedComponents.length > 0 && (
-              <>
-                <Heading2>Relaterte komponenter</Heading2>
-                <UnorderedList>
-                  {relatedComponents.map((component, index) => (
-                    <ListItem key={index}>
-                      <Link href={component.link} external>
-                        {component.title}
-                      </Link>
-                    </ListItem>
-                  ))}
-                </UnorderedList>
+                <PortableText value={beskrivelse} npmPackage={npmPackage} />
               </>
             )}
           </TabPanel>
           <TabPanel>
             {utvikling && (
               <>
-                <Heading2>Utvikling</Heading2>
-                <PortableText value={utvikling} />
+                {npmPackage && <KomIGang npmPackage={npmPackage} />}
+                <PortableText value={utvikling} npmPackage={npmPackage} />
               </>
             )}
-            <KomIGang npmPackage={baseHeaderProps.npmPackage}></KomIGang>
-            <Heading2>Komponentprops</Heading2>
-            <Props componentName={componentName} />
           </TabPanel>
         </TabPanels>
       </Tabs>

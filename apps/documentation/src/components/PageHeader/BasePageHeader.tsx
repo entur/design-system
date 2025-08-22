@@ -28,7 +28,8 @@ export const BasePageHeader: React.FC<BasePageHeaderProps> = ({
   figmaLink,
 }) => {
   const { packageManager, userType } = useSettings();
-
+  console.log('userType:', userType);
+  console.log('npmPackage:', npmPackage);
   return (
     <header className="page-header">
       {subcategory && (
