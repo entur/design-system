@@ -11,6 +11,7 @@ import {
 import { ExpandableText } from '@entur/expand';
 import { useSettings } from '@providers/SettingsContext';
 import './Props.scss';
+import { ImportStatement } from '@components/Common/ImportStatement';
 
 // Utility functions for formatting prop types
 // TODO removeDeprecatedVariantType only removes deprecated variant types that have VariantType. And it does not check if it removes from the correct component. It should be more specific.
@@ -58,9 +59,14 @@ function formatPropType(typeName: string) {
 type PropsProps = {
   componentName: string;
   defaultOpen?: boolean;
+  npmPackage?: string;
 };
 
-const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
+const Props: React.FC<PropsProps> = ({
+  componentName,
+  defaultOpen,
+  npmPackage,
+}) => {
   const { userType } = useSettings();
   const [componentProps, setComponentProps] = useState<any>(null);
 
@@ -89,6 +95,7 @@ const Props: React.FC<PropsProps> = ({ componentName, defaultOpen }) => {
 
   return (
     <>
+      <ImportStatement imports={componentName} packageName={npmPackage || ''} />
       {Object.keys(componentProps).length > 0 ? (
         <Table fixed spacing="middle">
           <TableHead>
