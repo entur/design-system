@@ -1,3 +1,5 @@
+export { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+
 import './index.scss';
 export * from '@entur/a11y';
 export * from '@entur/alert';
@@ -25,7 +27,20 @@ export { TestBench } from './TestBench';
 
 // Exports to make code examples from linje.entur.no work
 
-export * as intdate from '@internationalized/date';
+export {
+  now,
+  today,
+  isWeekday,
+  isWeekend,
+  isToday,
+  parseAbsolute,
+  isSameDay,
+} from '@internationalized/date';
+export {
+  nativeDateToDateValue,
+  nativeDateToTimeValue,
+  timeOrDateValueToNativeDate,
+} from '@entur/datepicker';
 
 import {
   PrioritySeatSeniorsIcon,
