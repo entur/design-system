@@ -52,7 +52,7 @@ jobs:
           # Set non-interactive mode to avoid prompts
           export CI=true
           # Deploy GraphQL API - this will accept deploying breaking changes
-          yarn deploy-graphql --yes
+          yarn deploy-graphql --yes --force
         env:
           # Add any necessary environment variables for Sanity deployment
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN || '' }}
