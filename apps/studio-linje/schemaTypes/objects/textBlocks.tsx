@@ -97,6 +97,7 @@ export const textBlocksType = defineType({
         {type: 'link'},
         {type: 'group'},
         {type: 'codeExample'},
+        {type: 'doDontGroup'},
       ],
     }),
   ],
@@ -146,8 +147,8 @@ export const textBlocksType = defineType({
           variant === 'alert'
             ? icons.ValidationExclamationIcon
             : variant === 'information'
-            ? icons.ValidationInfoIcon
-            : icons.RowHeightMiddleIcon,
+              ? icons.ValidationInfoIcon
+              : icons.RowHeightMiddleIcon,
       }
     },
   },
