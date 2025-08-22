@@ -81,12 +81,13 @@ const SideNavigation: React.FC<SideNavigationProps> = ({
 
   const MenuItem = (props: { item: MenuItem }) => {
     const { item } = props;
+    const path = item.path || getSanitizedPath(item) || '';
     return (
       <SideNavigationItem
         key={item.id}
         as={Link}
-        to={getSanitizedPath(item) || ''}
-        active={isActive(getSanitizedPath(item) || '', currentLocation)}
+        to={path}
+        active={isActive(path, currentLocation)}
         onClick={onClickMenuItem}
       >
         {item.title}

@@ -9,7 +9,7 @@ module.exports = {
   port: 9000,
   openBrowser: true,
   paramType: 'search',
-  baseUrl: '/playroom/',
+  baseUrl: '/sandkasse/',
   webpackConfig: () => ({
     module: {
       rules: [
@@ -17,8 +17,19 @@ module.exports = {
           oneOf: [
             {
               test: /\.tsx?$/,
-              use: 'ts-loader',
-              exclude: /node_modules/,
+              use: [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', { targets: 'defaults' }],
+                      ['@babel/preset-react', { runtime: 'automatic' }],
+                      '@babel/preset-typescript',
+                    ],
+                  },
+                },
+              ],
+              exclude: /node_modules\/(?!playroom)/,
             },
             {
               test: /\.scss$/,
@@ -50,15 +61,49 @@ module.exports = {
         },
       ],
     },
+    resolve: {
+      alias: {
+        // Ensure React is properly deduplicated
+        react: require.resolve('react'),
+        'react-dom': require.resolve('react-dom'),
+        'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+        'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
+        'react-dom/client': require.resolve('react-dom/client'),
+      },
+      fallback: {
+        'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+        'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
+        'react-dom/client': require.resolve('react-dom/client'),
+      },
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
   }),
-  exampleCode: `<Paragraph>Velkommen til Linje lekerom! 🎨</Paragraph>
-  <ListItem>Skriv JSX med komponentene fra designsystemet</ListItem>
-  <ListItem>Bruk snippets til høyre (+)</ListItem>
-  <ListItem>Du kan skru på mørk modus og kontrast over</ListItem>`,
+  exampleCode: `{(() => {
+    const title = 'Velkommen til Linje sandkasse! 🎨';
+  
+    return (
+      <div>
+        <Heading1>{title}</Heading1>
+        <UnorderedList>
+          <ListItem>Skriv JSX med komponentene fra designsystemet</ListItem>
+          <ListItem>Bruk snippets til høyre (+)</ListItem>
+          <ListItem>Du kan skru på mørk modus og kontrast over</ListItem>
+        </UnorderedList>
+      </div>
+    );
+  })()}`,
   iframeSandbox: 'allow-scripts',
-  defaultVisibleWidths: [
-    // subset of widths to display on first load
-  ],
+  defaultVisibleWidths: ['Fit to window'],
   defaultVisibleThemes: [
     // subset of themes to display on first load
   ],

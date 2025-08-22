@@ -25,6 +25,7 @@
 
 body {
   margin: unset;
+  overflow: auto;
 }
 
 .code-playground__wrapper {
@@ -33,5 +34,6 @@ body {
   height: 100%;
   &.eds-contrast {
     background-color: var(--basecolors-frame-contrast);
+    min-height: 100vh;
   }
 }

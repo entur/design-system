@@ -7,6 +7,8 @@
     "paths": {
       "@entur/*": ["../../packages/*/dist"]
     },
-    "declaration": false
+    "declaration": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

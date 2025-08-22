@@ -69,7 +69,7 @@ jobs:
         uses: ./.github/actions/install-and-cache-dependencies
         with:
           cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
-          only-for-workspace: '@entur/documentation'
+          only-for-workspace: '@entur/documentation @entur/code-playground'
       - name: Download package artifacts
         uses: actions/download-artifact@v4
         with:
@@ -85,7 +85,8 @@ jobs:
           key: gatsby-${{ runner.os }}-${{ github.run_id }} # Since this is unique the cache will always be updated
           restore-keys: gatsby-${{ runner.os }} # But since this one always matches we will also always get a cache hit
 
-      - run: yarn build:documentation:skip-packages-dependency
+      - name: Build documentation
+        run: yarn build:documentation:skip-packages-dependency
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

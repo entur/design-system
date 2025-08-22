@@ -4,6 +4,10 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
+        "source": "/sandkasse/**",
+        "destination": "/sandkasse/index.html"
+      },
+      {
         "source": "**",
         "destination": "/404-finnes-ikke/index.html"
       }
