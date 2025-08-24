@@ -83,7 +83,7 @@ const createComponents = (
           }
         }
       } catch (e) {
-        // console.error('Invalid URL:', href, e);
+        console.error('Invalid URL:', href, e);
       }
       return (
         <Link external href={href} target="_blank">

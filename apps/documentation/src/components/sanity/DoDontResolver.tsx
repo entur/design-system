@@ -1,10 +1,11 @@
 import React from 'react';
 import { DoDontGroup, DoDontCard } from '@components/Cards/DoDont';
+import { PortableText } from './PortableText';
 
 type DoDontCardType = {
   variant: 'success' | 'information' | 'warning' | 'negative' | 'none';
   title?: string;
-  content?: string;
+  content?: any[]; // Rich content array from Sanity
   image?: {
     asset?: {
       url?: string;
@@ -45,7 +46,7 @@ export const DoDontResolver = ({ value }: Props) => {
               noPadding={card.noPadding || false}
               textInBox={card.textInBox || false}
             >
-              {card.content}
+              {card.content && <PortableText value={card.content} />}
             </DoDontCard>
           );
         })}

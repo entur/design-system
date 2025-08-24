@@ -30,9 +30,49 @@ export const doDontCard = defineType({
     defineField({
       name: 'content',
       title: 'Innhold',
-      type: 'text',
-      rows: 3,
-      description: 'Tekstinnhold for kortet',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'},
+          ],
+          lists: [
+            {title: 'Bullet', value: 'bullet'},
+            {title: 'Numbered', value: 'number'},
+          ],
+          marks: {
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'},
+              {title: 'Code', value: 'code'},
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                  {
+                    name: 'openInNewTab',
+                    type: 'boolean',
+                    title: 'Åpne i ny fane',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      description: 'Rikt innhold for kortet (støtter lister, overskrifter, lenker, etc.)',
     }),
     defineField({
       name: 'image',
@@ -80,11 +120,14 @@ export const doDontCard = defineType({
         none: 'Ingen ikon',
       }
 
+      // Extract text from rich content array
+      const contentText = content?.[0]?.children?.[0]?.text || 'Ingen innhold'
+      const truncatedText =
+        contentText.length > 50 ? `${contentText.substring(0, 50)}...` : contentText
+
       return {
         title: title || 'Do/Dont kort',
-        subtitle: `${variantLabels[variant]} - ${content?.substring(0, 50) || 'Ingen innhold'}${
-          content?.length > 50 ? '...' : ''
-        }`,
+        subtitle: `${variantLabels[variant as keyof typeof variantLabels]} - ${truncatedText}`,
       }
     },
   },

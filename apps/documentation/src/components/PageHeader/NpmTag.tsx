@@ -3,7 +3,7 @@ import { Heading5, SubLabel } from '@entur/typography';
 import { useGetNpmVersion } from './useGetNpmVersion';
 
 import './NpmTag.scss';
-import { ActionChip } from '@entur/chip/dist';
+import { ActionChip } from '@entur/chip';
 import { SourceCodeIcon } from '@entur/icons';
 
 export const NpmTag: React.FC<{ packageName: string }> = ({ packageName }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSettings } from '@providers/SettingsContext';
 import { CopyableText } from '@entur/alert';
-import { Heading3 } from '@entur/typography';
+import { Heading2 } from '@entur/typography';
 
 type Props = {
   npmPackage: string;
@@ -19,7 +19,7 @@ export const KomIGang: React.FC<Props> = ({ npmPackage }) => {
 
   return (
     <>
-      <Heading3>Kom i gang</Heading3>
+      <Heading2>Kom i gang</Heading2>
 
       <CopyableText
         textToCopy={installCommand}
