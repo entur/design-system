@@ -4,6 +4,7 @@ import { BasePageHeaderProps } from '@components/PageHeader/BasePageHeader';
 import { Heading2 } from '@entur/typography';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@entur/tab';
 import { PortableText } from '@components/sanity/PortableText';
+import { ComponentTokensTable } from '@components/Common/ComponentTokensTable';
 
 import { KomIGang } from '../components/Common/KomIGang';
 
@@ -45,6 +46,7 @@ const ComponentLayout: React.FC<ComponentLayoutProps> = ({
                 <PortableText value={utvikling} npmPackage={npmPackage} />
               </>
             )}
+            {npmPackage && <ComponentTokensTable npmPackage={npmPackage} />}
           </TabPanel>
         </TabPanels>
       </Tabs>

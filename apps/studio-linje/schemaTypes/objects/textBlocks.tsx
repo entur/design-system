@@ -100,6 +100,7 @@ export const textBlocksType = defineType({
         {type: 'doDontGroup'},
         {type: 'propsTable'},
         {type: 'copyableText'},
+        {type: 'componentTokensTable'},
       ],
     }),
   ],

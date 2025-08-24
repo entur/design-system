@@ -31,6 +31,7 @@
     "start:code-playground": "lerna run --scope @entur/code-playground start",
     "start:code-playground-for-package": "lerna run start --scope \"@entur/$*\" | cat && yarn --cwd apps/code-playground start",
     "generate:playground-snippets": "tsx apps/code-playground/src/scripts/generate-snippets.ts",
+    "generate:tokens": "cd apps/documentation && yarn generate-tokens",
     "start:documentation": "lerna run --scope @entur/documentation start",
     "start:package": "lerna run start --scope \"@entur/$*\" | cat",
     "superClean": "rm -rf node_modules apps/*/dist apps/*/node_modules packages/*/dist packages/*/node_modules packages/*/.rts2*",

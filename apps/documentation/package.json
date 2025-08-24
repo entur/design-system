@@ -9,14 +9,15 @@
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
-    "build": "yarn generate-props && gatsby build && yarn copy-playground",
-    "build:skip-props-generator": "gatsby build && yarn copy-playground",
+    "build": "yarn generate-props && yarn generate-tokens && gatsby build && yarn copy-playground",
+    "build:skip-props-generator": "yarn generate-tokens && gatsby build && yarn copy-playground",
     "copy-playground": "cd ../code-playground && yarn build && mkdir -p ../documentation/public/sandkasse && cp -r public/playroom/* ../documentation/public/sandkasse/",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "clean-start": "yarn clean && yarn start",
     "build:componentColors": "tsx src/utils/componentColors/buildVariables.ts",
     "generate-props": "tsx src/utils/componentProps/generate-props.ts",
+    "generate-tokens": "tsx src/utils/componentTokens/buildTokens.ts",
     "deploy-docs": "firebase deploy",
     "deploy-docs:preview": "firebase hosting:channel:deploy"
   },
@@ -85,6 +86,7 @@
     "@types/wcag-contrast": "^3.0.3",
     "firebase-tools": "^14.12.0",
     "gatsby-plugin-root-import": "^2.0.9",
+    "glob": "^11.0.3",
     "react-docgen-typescript": "^2.2.2",
     "tsx": "4.19.2",
     "typescript": "^5.5.4"
