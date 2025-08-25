@@ -34,8 +34,8 @@
     "@entur/tooltip": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "classnames": "^2.3.1",
-    "copy-text-to-clipboard": "^2.2"
+    "classnames": "^2.5.1",
+    "copy-text-to-clipboard": "^2.2.0"
   },
   "devDependencies": {
     "dts-cli": "2.0.5"

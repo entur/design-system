@@ -7,6 +7,10 @@
     font-variant-numeric: tabular-nums;
     text-align: end;
 
+    &:is(:first-child, :last-child):not([role='spinbutton']) {
+      padding: 0;
+    }
+
     &--placeholder {
       color: var(--components-datepicker-datefield-standard-text-content);
     }

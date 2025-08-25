@@ -30,7 +30,7 @@
     "@entur/icons": "workspace:^",
     "@entur/tokens": "workspace:^",
     "@entur/utils": "workspace:^",
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "normalize-scss": "^8.0.0"
   },
   "devDependencies": {
