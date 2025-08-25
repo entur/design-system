@@ -100,7 +100,7 @@
     },
     "aria-label": {
       "defaultValue": {
-        "value": "\"åpne valgmeny\""
+        "value": "åpne valgmeny"
       },
       "description": "Tekst som beskriver knappen som åpner Overflow-menyen",
       "name": "aria-label",
