@@ -31,6 +31,8 @@ const FrameComponent = ({ children }: FrameComponentProps) => {
     setContrast(!contrast);
   };
 
+  document.documentElement.style.overflow = 'visible';
+
   const Element = contrast ? Contrast : 'div';
 
   return (
