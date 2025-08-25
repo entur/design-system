@@ -30,25 +30,25 @@
     "@entur/travel": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "@internationalized/date": "3.7.0",
+    "@internationalized/date": "3.8.2",
     "gray-matter": "^4.0.3",
     "playroom": "0.44.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
-    "babel-loader": "^9.1.3",
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.2"
+    "ts-loader": "^9.5.4"
   }
 }
