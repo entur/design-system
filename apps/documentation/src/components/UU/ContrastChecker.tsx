@@ -21,7 +21,7 @@ import {
   SwitchIcon,
   ValidTicketIcon,
 } from '@entur/icons';
-import { Heading4, CodeText } from '@entur/typography/dist';
+import { Heading4, CodeText } from '@entur/typography';
 import { CopyButton } from './CopyButton';
 import './ContrastChecker.scss';
 
