@@ -148,7 +148,7 @@
       ],
       "required": false,
       "type": {
-        "name": "VariantType | \"error\" | \"info\" | undefined"
+        "name": "any"
       }
     },
     "feedback": {
