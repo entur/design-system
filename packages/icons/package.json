@@ -22,7 +22,9 @@
   "scripts": {
     "prebuild": "rimraf dist native tmp ",
     "build": "yarn prebuild && tsx bin/build.ts && rollup -c && yarn postbuild",
-    "postbuild": "rimraf tmp"
+    "postbuild": "rimraf tmp",
+    "start": "rollup -c --watch",
+    "test": "jest"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
@@ -31,20 +33,25 @@
     "@babel/core": "7.28.3",
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
-    "@rollup/plugin-babel": "6.0.4",
-    "@rollup/plugin-node-resolve": "16.0.1",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@svgr/plugin-prettier": "8.1.0",
     "@svgr/plugin-svgo": "8.1.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^10.4.9",
+    "@testing-library/user-event": "14.6.1",
     "@types/fs-extra": "^11.0.4",
     "case": "1.6.3",
     "fs-extra": "^11.3.1",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
     "rimraf": "6.0.1",
     "rollup": "^4.48.1",
     "sass": "^1.90.0",
     "svgo": "4.0.0",
-    "tsx": "4.20.5"
+    "ts-jest": "^29.0.0",
+    "tsx": "4.20.5",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@entur/tokens": "workspace:^"

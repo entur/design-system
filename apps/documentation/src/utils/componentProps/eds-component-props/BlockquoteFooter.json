@@ -1,0 +1,27 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "BlockquoteFooter",
+  "methods": [],
+  "props": {
+    "className": {
+      "defaultValue": null,
+      "description": "Ekstra klassenavn",
+      "name": "className",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/Blockquote.tsx",
+          "name": "TypeLiteral"
+        },
+        {
+          "fileName": "design-system/node_modules/@types/react/index.d.ts",
+          "name": "HTMLAttributes"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    }
+  }
+}

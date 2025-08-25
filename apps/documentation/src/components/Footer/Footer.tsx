@@ -9,7 +9,7 @@ import {
   TwitterIcon,
 } from '@entur/icons';
 import { Heading3, LeadParagraph, Link as DSLink } from '@entur/typography';
-import { colors, space } from '@entur/tokens/dist';
+import { colors, space } from '@entur/tokens';
 
 import { Logo } from '@components/Logo/Logo';
 import { Theme, useSettings } from '@providers/SettingsContext';
