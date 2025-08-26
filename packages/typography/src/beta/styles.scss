@@ -280,6 +280,11 @@
     text-transform: uppercase;
   }
 
+  &--emphasized {
+    font-style: italic;
+    font-weight: 500;
+  }
+
   &--code-text,
   &--preformatted-text {
     background-color: var(--components-typography-codetext-standard-fill);
