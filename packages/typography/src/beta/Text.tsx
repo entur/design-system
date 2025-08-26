@@ -8,6 +8,7 @@ import {
   TypographyWeight,
   TypographySpacing,
 } from './types';
+import { getSpacingClasses } from './utils';
 
 export type TextProps = {
   /** HTML-element eller React-komponent som rendres */
@@ -43,27 +44,7 @@ const TypographyText = ({
         variant && `eds-text--${variant}`,
         size && `eds-text--${size}`,
         weight && `eds-text--${weight}`,
-        spacing && {
-          [`eds-text--spacing-none`]: spacing === 'none',
-          [`eds-text--spacing-xs2`]: spacing === 'xs2',
-          [`eds-text--spacing-xs2-top`]: spacing === 'xs2-top',
-          [`eds-text--spacing-xs2-bottom`]: spacing === 'xs2-bottom',
-          [`eds-text--spacing-xs`]: spacing === 'xs',
-          [`eds-text--spacing-xs-top`]: spacing === 'xs-top',
-          [`eds-text--spacing-xs-bottom`]: spacing === 'xs-bottom',
-          [`eds-text--spacing-sm`]: spacing === 'sm',
-          [`eds-text--spacing-sm-top`]: spacing === 'sm-top',
-          [`eds-text--spacing-sm-bottom`]: spacing === 'sm-bottom',
-          [`eds-text--spacing-md`]: spacing === 'md',
-          [`eds-text--spacing-md-top`]: spacing === 'md-top',
-          [`eds-text--spacing-md-bottom`]: spacing === 'md-bottom',
-          [`eds-text--spacing-lg`]: spacing === 'lg',
-          [`eds-text--spacing-lg-top`]: spacing === 'lg-top',
-          [`eds-text--spacing-lg-bottom`]: spacing === 'lg-bottom',
-          [`eds-text--spacing-xl`]: spacing === 'xl',
-          [`eds-text--spacing-xl-top`]: spacing === 'xl-top',
-          [`eds-text--spacing-xl-bottom`]: spacing === 'xl-bottom',
-        },
+        getSpacingClasses(spacing, 'eds-text'),
         className,
       )}
       {...rest}
