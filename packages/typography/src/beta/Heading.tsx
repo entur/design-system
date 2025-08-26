@@ -10,11 +10,17 @@ import { getHeadingVariantFromSemanticType, getSpacingClasses } from './utils';
 import './styles.scss';
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  /** HTML-element eller React-komponent som rendres (f.eks. 'h1', 'h2', 'h3', etc.) */
   as: string | React.ElementType;
+  /** Visuell variant som bestemmer styling (anbefalt over size) */
   variant?: TypographyHeadingVariant;
+  /** Visuell tekststørrelse som overstyrer variant-styling */
   size?: TypographySize;
+  /** Innholdet som skal vises */
   children: React.ReactNode;
+  /** Ekstra klassenavn for tilpasset styling */
   className?: string;
+  /** Inline CSS-stiler */
   style?: React.CSSProperties;
   /** Spacing around the component */
   spacing?: TypographySpacing;

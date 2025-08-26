@@ -6,7 +6,7 @@
   "props": {
     "as": {
       "defaultValue": null,
-      "description": "",
+      "description": "HTML-element eller React-komponent som rendres (f.eks. 'h1', 'h2', 'h3', etc.)",
       "name": "as",
       "parent": {
         "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
@@ -25,7 +25,7 @@
     },
     "variant": {
       "defaultValue": null,
-      "description": "",
+      "description": "Visuell variant som bestemmer styling (anbefalt over size)",
       "name": "variant",
       "parent": {
         "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
@@ -44,7 +44,7 @@
     },
     "size": {
       "defaultValue": null,
-      "description": "",
+      "description": "Visuell tekststørrelse som overstyrer variant-styling",
       "name": "size",
       "parent": {
         "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
@@ -61,9 +61,28 @@
         "name": "TypographySize | undefined"
       }
     },
+    "children": {
+      "defaultValue": null,
+      "description": "Innholdet som skal vises",
+      "name": "children",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
     "className": {
       "defaultValue": null,
-      "description": "",
+      "description": "Ekstra klassenavn for tilpasset styling",
       "name": "className",
       "parent": {
         "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
@@ -82,7 +101,7 @@
     },
     "style": {
       "defaultValue": null,
-      "description": "",
+      "description": "Inline CSS-stiler",
       "name": "style",
       "parent": {
         "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
@@ -100,9 +119,7 @@
       }
     },
     "spacing": {
-      "defaultValue": {
-        "value": "md"
-      },
+      "defaultValue": null,
       "description": "Spacing around the component",
       "name": "spacing",
       "parent": {
