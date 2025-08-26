@@ -1,5 +1,5 @@
-@use "sass:map";
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use 'sass:map';
+@use '@entur/tokens/dist/styles.scss' as tokens;
 @use '../../styles/variables' as variables;
 
 .component-preview {

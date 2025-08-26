@@ -1,7 +1,7 @@
-@use "sass:map";
+@use 'sass:map';
 @use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as eds;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/tokens/dist/styles.scss' as eds;
+@use '@entur/utils/dist/breakpoints.scss' as *;
 
 .side-navigation {
   &__logo {
