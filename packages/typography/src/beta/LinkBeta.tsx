@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 import { ExternalIcon } from '@entur/icons';
+import { TypographySpacing } from './types';
+import { getSpacingClasses } from './utils';
 
 export type LinkOwnPropsBeta = {
   external?: boolean;
@@ -13,10 +15,8 @@ export type LinkOwnPropsBeta = {
   className?: string;
   /** Innholdet */
   children: React.ReactNode;
-  /** Hvor du vil ha marginer
-   * @default "both"
-   */
-  margin?: 'top' | 'bottom' | 'both' | 'none';
+  /** Spacing around the component (same as Text and Heading components) */
+  spacing?: TypographySpacing;
   ariaLabelExternalIcon?: string;
 };
 
@@ -29,7 +29,7 @@ export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
   external = false,
   ariaLabelExternalIcon = '(ekstern lenke)',
   className,
-  margin = 'both',
+  spacing,
   children,
   as,
   ...rest
@@ -39,11 +39,7 @@ export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
     <Element
       className={classNames(
         'eds-text--link',
-        {
-          [`eds-text--link--margin-top`]: margin === 'top',
-          [`eds-text--link--margin-bottom`]: margin === 'bottom',
-          [`eds-text--link--margin-none`]: margin === 'none',
-        },
+        getSpacingClasses(spacing, 'eds-text--link'),
         className,
       )}
       {...rest}
