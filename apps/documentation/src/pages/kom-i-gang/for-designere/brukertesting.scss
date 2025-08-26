@@ -1,7 +1,7 @@
-@use "sass:map";
-@use '~@entur/tokens/dist/styles.scss' as tokens;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
-@use '~@entur/tokens/dist/semantic.scss' as semantic;
+@use 'sass:map';
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/tokens/dist/semantic.scss' as semantic;
 
 @use '../../../styles/variables' as variables;
 

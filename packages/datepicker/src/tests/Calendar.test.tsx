@@ -140,7 +140,7 @@ describe('Calendar', () => {
     render(<Calendar {...defaultProps} onChange={onChange} />);
 
     const dateCell = screen.getByRole('button', {
-      name: /^Wednesday 20 September 2023/,
+      name: /^Wednesday, 20 September 2023/,
     });
     await user.click(dateCell);
 
@@ -164,7 +164,7 @@ describe('Calendar', () => {
     render(<Calendar {...defaultProps} maxDate={maxDate} />);
 
     const disabledCell = screen.getByRole('button', {
-      name: /^Wednesday 20 September 2023/,
+      name: /^Wednesday, 20 September 2023/,
     });
     expect(disabledCell).toHaveClass(
       'eds-datepicker__calendar__grid__cell--disabled',
@@ -220,7 +220,7 @@ describe('Calendar', () => {
     render(<Calendar {...defaultProps} disabled />);
 
     const selectedDate = screen.getByRole('button', {
-      name: /^Friday 15 September 2023/,
+      name: /^Friday, 15 September 2023/,
     });
     expect(selectedDate).toHaveClass(
       'eds-datepicker__calendar__grid__cell--disabled',
@@ -258,7 +258,7 @@ describe('Calendar', () => {
 
     // Focus on the selected date cell (September 15, 2023)
     const selectedCell = screen.getByRole('button', {
-      name: /^Friday 15 September 2023 selected/,
+      name: /^Friday, 15 September 2023 selected/,
     });
     selectedCell.focus();
 

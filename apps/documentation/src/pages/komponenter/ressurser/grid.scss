@@ -1,4 +1,4 @@
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/styles.scss' as tokens;
 
 .grid-demo-item {
   background: var(--designentur-basecard-contrast-fill);

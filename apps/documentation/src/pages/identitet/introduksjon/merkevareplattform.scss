@@ -1,5 +1,5 @@
-@use '~@entur/tokens/dist/styles.scss' as tokens;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use '@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/utils/dist/breakpoints.scss' as *;
 
 .merkevare {
   &__grid-container {

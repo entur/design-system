@@ -21,6 +21,12 @@
     "jsx": "react",
     "esModuleInterop": true,
     "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
     "baseUrl": ".",
     "paths": {
       "@entur/*": ["packages/*/src"]

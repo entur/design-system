@@ -11,6 +11,9 @@
   "filePath": "",
   "requirePragma": false,
   "insertPragma": false,
+  "endOfLine": "lf",
+  "quoteProps": "as-needed",
+  "proseWrap": "preserve",
   "overrides": [
     {
       "files": "**/*.scss",

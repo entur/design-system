@@ -1,5 +1,5 @@
 @use '../../../styles/variables' as variables;
-@use '~@entur/tokens/dist/styles.scss' as tokens;
+@use '@entur/tokens/dist/styles.scss' as tokens;
 
 .table-of-content {
   list-style: none;

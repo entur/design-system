@@ -1,50 +1,23 @@
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import { defineConfig, mergeConfig } from 'vite';
 import { resolve } from 'path';
+import { createBaseConfig } from '../../vite.config.base';
+import { getPackageName, createFileNameFunction } from '../../vite.utils';
 
-export default defineConfig({
-  plugins: [
-    dts({
-      insertTypesEntry: true,
-      rollupTypes: true,
-    }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+export default defineConfig(() => {
+  const packageName = getPackageName(__dirname);
 
-      formats: ['es', 'cjs'],
-      fileName: format => 'tokens.' + (format === 'es' ? 'esm' : 'cjs') + '.js',
-    },
-    rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        'react/jsx-dev-runtime',
-        /^@entur\//,
-        'flat',
-        'hex-rgb',
-      ],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-          'react/jsx-dev-runtime': 'jsxDevRuntime',
-          flat: 'flat',
-          'hex-rgb': 'hexRgb',
-        },
-        assetFileNames: assetInfo => {
-          if (assetInfo.name === 'style.css') return 'styles.css';
-          return assetInfo.name || 'asset';
-        },
+  const packageConfig = {
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        formats: ['es', 'cjs'],
+        fileName: createFileNameFunction(packageName),
       },
     },
-    sourcemap: true,
-    minify: false,
-  },
-  css: {
-    modules: false,
-  },
+    css: {
+      modules: false,
+    },
+  };
+
+  return mergeConfig(createBaseConfig(), packageConfig);
 });
