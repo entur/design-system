@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type BlockquotePropsBeta = {
+export type BlockquotePropsBeta = {
   /** Ekstra klassenavn */
   className?: string;
 } & React.DetailedHTMLProps<
