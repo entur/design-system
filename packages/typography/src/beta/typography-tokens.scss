@@ -1,5 +1,19 @@
 @use '@entur/utils/dist/breakpoints.scss' as *;
 
+/*
+ * Typography Display Modes
+ * 
+ * This system allows you to control typography scaling based on display size.
+ * Use the display-mode attribute to switch between different typography scales:
+ * 
+ * - Default/Mobile: [display-mode='mobile'] or no attribute (responsive)
+ * - Large Display: [display-mode='large'] for big screens, kiosks, etc.
+ * 
+ * Usage:
+ * <html display-mode="large"> or <div display-mode="large">
+ * 
+ * The system automatically handles responsive behavior within each mode.
+ */
 /* Primitive size */
 :root {
   /* Mode 1 */
@@ -34,8 +48,8 @@
 }
 
 :root,
-[data-theme='Mobile'] {
-  /* number */
+[display-mode='mobile'] {
+  /* Mobile/Default mode - number */
   --font-line-height-body-lg: var(--size-8);
   --font-line-height-body-m: var(--size-8);
   --font-line-height-body-s: var(--size-7);
@@ -75,7 +89,7 @@
   --font-weight-heading: 600;
 
   @include for-desktop {
-    /* number */
+    /* Desktop override for mobile mode - number */
     --font-line-height-body-lg: var(--size-9);
     --font-line-height-body-m: var(--size-8);
     --font-line-height-body-s: var(--size-7);
@@ -115,8 +129,8 @@
     --font-weight-heading: 600;
   }
 }
-[data-theme='Large'] {
-  /* number */
+[display-mode='large'] {
+  /* Large display mode - optimized for big screens - number */
   --font-line-height-body-lg: var(--size-16);
   --font-line-height-body-m: var(--size-13);
   --font-line-height-body-s: var(--size-10);

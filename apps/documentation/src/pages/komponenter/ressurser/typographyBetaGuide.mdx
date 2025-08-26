@@ -350,6 +350,81 @@ Du kan spesifisere spacing i spesifikke retninger:
 
 ---
 
+## Display Mode
+
+Typography Beta støtter forskjellige visningsmoder for å tilpasse typografien til ulike skjermstørrelser og bruksområder.
+
+### Hvordan det fungerer
+
+Systemet bruker `display-mode` attributtet for å kontrollere typografi-skalering:
+
+- **Default/Mobile**: Responsiv typografi som tilpasser seg skjermstørrelse
+- **Large**: Forstørret typografi for store skjermer, kiosker, eller tilgjengelighet
+
+### Bruk av display-mode
+
+#### HTML-nivå (anbefalt for hele siden)
+
+```html
+<html display-mode="large">
+  <!-- Alt innhold får large typografi -->
+</html>
+```
+
+#### Komponent-nivå (for spesifikke seksjoner)
+
+```html
+<div display-mode="large">
+  <Heading as="h1">Stor tittel for store skjermer</Heading>
+  <Text variant="paragraph">Større tekst som er lettere å lese</Text>
+</div>
+```
+
+#### JavaScript (dynamisk endring)
+
+```javascript
+// Sett display mode for hele siden
+document.documentElement.setAttribute('display-mode', 'large');
+
+// Fjern display mode (tilbake til default)
+document.documentElement.removeAttribute('display-mode');
+
+// Sjekk nåværende mode
+const currentMode = document.documentElement.getAttribute('display-mode');
+```
+
+### Responsiv oppførsel
+
+Hver display-mode har innebygd responsiv oppførsel:
+
+- **Mobile mode**: Automatisk større typografi på desktop
+- **Large mode**: Konsistent stor typografi på alle skjermstørrelser
+
+### Eksempel på forskjell
+
+```jsx
+// Default/Mobile mode (ingen display-mode attributt)
+<Heading as="h1">Normal tittel</Heading>
+<Text variant="paragraph">Normal tekst</Text>
+
+// Large mode
+<div display-mode="large">
+  <Heading as="h1">Stor tittel</Heading>
+  <Text variant="paragraph">Stor tekst</Text>
+</div>
+```
+
+### Når skal du bruke det?
+
+- **Default**: Standard responsive typografi for de fleste bruksområder
+- **Large**: 
+  - Kiosker og informasjonsskjermer
+  - Tilgjengelighet for brukere med synsproblemer
+  - Presentasjoner og store skjermer
+  - Offentlige rom hvor tekst skal være lett å lese
+
+---
+
 ## Oppsummering
 
 Typography Beta gir deg:
@@ -358,6 +433,6 @@ Typography Beta gir deg:
 2. **Bedre tilgjengelighet** - Semantisk korrekt HTML
 3. **Større fleksibilitet** - Uendelige kombinasjoner
 4. **Konsistent spacing** - Intuitivt "legg til"-system
-5. **Fremtidssikkerhet** - Variants som anbefalt tilnærming
+5. **Fremtidssikkerhet** - Variants som anbefalt styling fra DS
 
 **Husk:** Heading er "strengere" og gir automatisk riktig styling, mens Text er mer fleksibel og krever at du velger variant selv.
