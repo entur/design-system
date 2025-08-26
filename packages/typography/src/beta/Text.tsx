@@ -6,7 +6,7 @@ import {
   TypographySize,
   TypographyTextVariant,
   TypographyWeight,
-  TypographyMargin,
+  TypographySpacing,
 } from './types';
 
 export type TextProps = {
@@ -20,18 +20,18 @@ export type TextProps = {
   variant?: TypographyTextVariant;
   /** Innhold */
   children: React.ReactNode;
-  /** Spacingvalg */
-  margin?: TypographyMargin;
+  /** Spacing around the component */
+  spacing?: TypographySpacing;
   /** Ekstra klassenavn */
   className?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
-export const Text = ({
+const TypographyText = ({
   as: BodyElement = 'span',
   size,
   variant,
   weight = 'medium',
-  margin = 'both',
+  spacing,
   className,
   children,
   ...rest
@@ -43,10 +43,26 @@ export const Text = ({
         variant && `eds-text--${variant}`,
         size && `eds-text--${size}`,
         weight && `eds-text--${weight}`,
-        {
-          [`eds-text--margin-top`]: margin === 'top',
-          [`eds-text--margin-bottom`]: margin === 'bottom',
-          [`eds-text--margin-none`]: margin === 'none',
+        spacing && {
+          [`eds-text--spacing-none`]: spacing === 'none',
+          [`eds-text--spacing-xs2`]: spacing === 'xs2',
+          [`eds-text--spacing-xs2-top`]: spacing === 'xs2-top',
+          [`eds-text--spacing-xs2-bottom`]: spacing === 'xs2-bottom',
+          [`eds-text--spacing-xs`]: spacing === 'xs',
+          [`eds-text--spacing-xs-top`]: spacing === 'xs-top',
+          [`eds-text--spacing-xs-bottom`]: spacing === 'xs-bottom',
+          [`eds-text--spacing-sm`]: spacing === 'sm',
+          [`eds-text--spacing-sm-top`]: spacing === 'sm-top',
+          [`eds-text--spacing-sm-bottom`]: spacing === 'sm-bottom',
+          [`eds-text--spacing-md`]: spacing === 'md',
+          [`eds-text--spacing-md-top`]: spacing === 'md-top',
+          [`eds-text--spacing-md-bottom`]: spacing === 'md-bottom',
+          [`eds-text--spacing-lg`]: spacing === 'lg',
+          [`eds-text--spacing-lg-top`]: spacing === 'lg-top',
+          [`eds-text--spacing-lg-bottom`]: spacing === 'lg-bottom',
+          [`eds-text--spacing-xl`]: spacing === 'xl',
+          [`eds-text--spacing-xl-top`]: spacing === 'xl-top',
+          [`eds-text--spacing-xl-bottom`]: spacing === 'xl-bottom',
         },
         className,
       )}
@@ -56,3 +72,6 @@ export const Text = ({
     </BodyElement>
   );
 };
+
+// Export as Text to avoid DOM conflicts
+export const Text = TypographyText;

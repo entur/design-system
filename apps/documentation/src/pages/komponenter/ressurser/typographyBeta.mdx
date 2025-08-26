@@ -1,6 +1,6 @@
 ---
 title: Typographybeta
-description: BETA Oversikt over Entur sine typografiske komponenter
+description: BETA - Komplett guide til Entur sine nye typografiske komponenter. Nå har vi samlet alt i kun to komponenter. Heading og Text – med et mer fleksibelt og fremtidssikkert API.
 route: /komponenter/ressurser/typographybeta
 parent: Komponenter
 menu: Ressurser
@@ -9,34 +9,44 @@ tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, lin
 ---
 
 import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta } from "@entur/typography";
+import { BannerAlertBox } from "@entur/alert";
 
 <PageHeader />
 
 
-## Headings
-Heading-komponenten brukes til å vise overskrifter i ulike nivåer og varianter, i tråd med designsystemets typografiretningslinjer. Den støtter semantiske HTML-elementer ved bruk av prop `as` (f.eks. h1, h2) og visuelle varianter uavhengig av semantikk ved bruk av prop `variant`.
+<BannerAlertBox variant="warning" title="Viktig: CSS-import kreves for beta-versjonen">
+  For å bruke riktig styling for typography beta-komponentene må du importere CSS-filen fra beta-mappen.
 
-### Retningslinjer
-
-Ved å skille mellom semantiske props (as) og visuelle props (variant, size, weight), gir vi utviklere mulighet til å skrive semantisk korrekt HTML uten å være bundet til det visuelle uttrykket. Dette gir flere fordeler:
-
-- **Universell utforming og tilgjengelighet**
+  ```css
+  @import '@entur/typography/dist/beta/styles.css';
+  ```
   
-Skjermlesere og andre hjelpemidler bruker HTML-strukturen for å forstå og navigere innholdet. Ved å bruke riktige semantiske elementer (f.eks. `<h1>–<h6>, <p>, <label>`), styrker vi tilgjengeligheten.
+</BannerAlertBox>
 
-- **Bedre SEO**
-  
-Søkemotorer forstår dokumentstrukturen bedre når overskrifter og tekst er merket riktig semantisk. Det gir bedre rangering og struktur i søkeresultatene.
+## Hvorfor et nytt API?
 
-- **Fleksibilitet i design**
-  
-Det er ikke alltid ønskelig at en semantisk `<h2>` skal se ut som en stor overskrift. Ved å separere `as` og `variant`, kan du velge det som passer designet – uten å gjøre kompromiss med semantikk.
+- Styling - visuelt bedre hierarki
+- Enklere API – kun to hovedkomponenter å forholde seg til.
+- Bedre tilgjengelighet – semantisk korrekt HTML med as-prop.
+- Større fleksibilitet – kombiner `as`, `variant`, `size`, `weight` og `spacing` fritt.
 
-- **Gjenbruk og konsistens**
-  
-Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel kan du bruke samme variant visuelt flere steder, men tilpasse semantikken etter hvor i dokumentstrukturen den vises.
+## Heading
+Heading gir deg riktige styles automatisk, og er laget for å følge designsystemets nivåer.
 
-### Variants / Presets(?)
+- Semantikk (`as`): velg riktig HTML-tag (h1–h6)
+- Visuelt uttrykk (`variant` eller `size`): styr utseendet uavhengig av semantikk. `variant`er vår anbefalt styling av ulike nivåer, men du kan velge `size` om du ønsker annen størrelse.
+
+### Hvorfor skille as og variant?
+Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size`, `weight`, `spacing`), gir vi utviklere mulighet til å skrive semantisk korrekt HTML uten å være bundet til det visuelle uttrykket. Dette gir flere fordeler:
+
+- Universell utforming – skjermlesere forstår innhold bedre
+- SEO – søkemotorer tolker strukturen korrekt
+- Designfrihet – semantisk `<h2>` kan styles som en liten tittel
+- Konsistens – samme variant kan gjenbrukes overalt
+
+## Eksempler
+
+### Standard varianter (anbefalt)
 
 ````jsx
 <Heading as="h1" variant="title-1">Title 1</Heading>
@@ -47,7 +57,7 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Heading as="h6" variant="section-2">Section 2</Heading>
 ````
 
-### as
+### Kun semantikk (heading mapper default variant selv)
 
 ````jsx
 <Heading as="h1">Title 1</Heading>
@@ -56,7 +66,7 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Heading as="h4">Subtitle 2</Heading>
 ````
 
-### as + variant
+### Bland semantikk og visuell variant
 
 ````jsx
 <Heading as="h1" variant="section-1">Title 1</Heading>
@@ -65,7 +75,7 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Heading as="h4" variant="subtitle-2">Subtitle 2</Heading>
 ````
 
-### as + sizes
+### Manuell size
 
 ````jsx
 <Heading as="h1" size="2xl">2xl</Heading>
@@ -76,10 +86,11 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Heading as="h6" size="xs">xs</Heading>
 ````
 
-
 ## Text
 
-### Variants / Presets(?)
+Text er mer fleksibel, og krever at du velger variant selv.
+
+### Varianter (designsystemets anbefaling)
 
 ````jsx
 <Text variant="leading">Leading</Text>
@@ -92,22 +103,13 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Text variant="overline">Overline</Text>
 ````
 
-### Sizes
+### Størrelser og vekt
 
 ````jsx
-<Text size="xl">xl</Text>
-<Text size="m">m</Text>
-<Text size="s">s</Text>
-<Text size="xs">xs</Text>
-````
-
-### Weight
-
-````jsx
-<Text size="m" weight="bold">Bold</Text>
+<Text size="xl" weight="bold">Bold</Text>
 <Text size="m" weight="semibold">Semibold</Text>
 <Text size="m" weight="medium">Medium</Text>
-<Text size="m" weight="regular">Regular</Text>
+<Text size="s" weight="regular">Regular</Text>
 
 <Text size="m" weight="700">700</Text>
 <Text size="m" weight="600">600</Text>
@@ -115,7 +117,9 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Text size="m" weight="400">400</Text>
 ````
 
-### as
+### Semantikk 
+
+Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Default er `as = span`
 
 ````jsx
 <Text as="p">{'<p>as paragraph</p>'}</Text>
@@ -124,6 +128,18 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <Text as="pre">{'<pre>as preformatted text</pre>'}</Text>
 <Text as="blockquote">{'<blockquote>as blockquote</blockquote>'}</Text>
 ````
+
+Hvis du bare skriver:
+
+```html
+<Text as="label">Navn</Text>
+```
+
+…får du et semantisk `<label>` uten styling. Skal den se ut som en etikett etter designsystemet, bør du kombinere med en variant:
+
+```html
+<Text as="label" variant="label">Navn</Text>
+```
 
 ## Andre typografiske komponenter
 
@@ -140,32 +156,39 @@ Dette mønsteret gjør komponentene mer fleksible og konsistente. For eksempel k
 <LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
 ````
 
-## Remove margin from presets
+## Spacing prop
+
+Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker våre [spacing-tokens](/tokens/spacing) fra `xs2` til `xl`. Du kan også spesifisere retningsbestemt spacing med `-top` eller `-bottom` suffiks.
 
 ````jsx
-### Both
-<Heading as="h2" variant="title-1" margin="both">title 1</Heading>
-<Heading as="h2" variant="2xl" margin="both">2xl</Heading>
+### Default spacing (md)
+<Heading as="h2" variant="title-1" spacing="md">title 1</Heading>
+<Heading as="h2" variant="2xl" spacing="md">2xl</Heading>
 
-<Text variant="m" margin="both">m</Text>
+<Text variant="m" spacing="md">m</Text>
 
-### Top margin
-<Heading as="h2" variant="title-1" margin="top">title 1</Heading>
-<Heading as="h2" variant="2xl" margin="top">2xl</Heading>
+### Small spacing
+<Heading as="h2" variant="title-1" spacing="sm">title 1</Heading>
+<Heading as="h2" variant="2xl" spacing="sm">2xl</Heading>
 
-<Text variant="paragraph" margin="top">Paragraph</Text>
-<Text variant="m" margin="top">m</Text>
+<Text variant="paragraph" spacing="sm">Paragraph</Text>
+<Text variant="m" spacing="sm">m</Text>
 
-### Bottom margin
-<Heading as="h2" variant="title-1" margin="bottom">title 1</Heading>
-<Heading as="h2" variant="2xl" margin="bottom">2xl</Heading>
+### Large spacing
+<Heading as="h2" variant="title-1" spacing="lg">title 1</Heading>
+<Heading as="h2" variant="2xl" spacing="lg">2xl</Heading>
 
-<Text variant="m" margin="bottom">m</Text>
+<Text variant="m" spacing="lg">m</Text>
 
-### Remove margin
-<Heading as="h2" variant="title-1" margin="none">title 1</Heading>
-<Heading as="h2" variant="2xl" margin="none">2xl</Heading>
+### No spacing
+<Heading as="h2" variant="title-1" spacing="none">title 1</Heading>
+<Heading as="h2" variant="2xl" spacing="none">2xl</Heading>
 
-<Text variant="m" margin="none">m</Text>
+<Text variant="m" spacing="none">m</Text>
+
+### Directional spacing
+<Heading as="h2" variant="title-1" spacing="lg-top">Large top spacing only</Heading>
+<Text variant="paragraph" spacing="sm-bottom">Small bottom spacing only</Text>
+<Heading as="h2" variant="title-2" spacing="md-top">Medium top spacing only</Heading>
 
 ````
