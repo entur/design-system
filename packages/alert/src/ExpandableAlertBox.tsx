@@ -1,4 +1,4 @@
-import { BaseExpand, ExpandArrow } from '@entur/expand/';
+import { BaseExpand, ExpandArrow } from '@entur/expand';
 import { VariantType } from '@entur/utils';
 
 import classNames from 'classnames';

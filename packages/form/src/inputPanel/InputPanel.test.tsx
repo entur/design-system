@@ -5,7 +5,7 @@ import { toHaveNoViolations, axe } from 'jest-axe';
 
 import { CheckboxPanel, RadioPanel } from '.';
 import { Fieldset, RadioGroup } from '..';
-import { ExpandableText } from '../../../expand/dist';
+import { ExpandableText } from '@entur/expand';
 
 expect.extend(toHaveNoViolations);
 
