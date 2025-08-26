@@ -18,6 +18,7 @@ export type TypographyTextVariant =
   | 'label'
   | 'sublabel'
   | 'overline'
+  | 'emphasized'
   | 'code-text'
   | 'preformatted-text';
 
