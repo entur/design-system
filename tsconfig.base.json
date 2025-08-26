@@ -20,6 +20,10 @@
     "traceResolution": false,
     "jsx": "react",
     "esModuleInterop": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@entur/*": ["packages/*/src"]
+    }
   }
 }
