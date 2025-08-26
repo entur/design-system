@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "yarn build:packages && yarn build:documentation",
-    "build:packages": "lerna run build",
+    "build:packages": "lerna run build --no-private",
     "build:documentation": "lerna run --scope @entur/documentation build",
     "build:documentation:skip-packages-dependency": "lerna run --scope @entur/documentation build:skip-props-generator",
     "build:code-playground": "lerna run --scope @entur/code-playground build",
@@ -25,10 +25,10 @@
     "start:documentation": "lerna run --scope @entur/documentation start",
     "start:package": "lerna run start --scope \"@entur/$*\" | cat",
     "superClean": "rm -rf node_modules apps/*/dist apps/*/node_modules packages/*/dist packages/*/node_modules packages/*/.rts2*",
-    "test": "lerna run test",
-    "test:package": "lerna run test --scope \"@entur/$*\" | cat",
-    "test:single-run": "cross-env CI=true yarn test",
-    "test:watch": "lerna run test --watch"
+    "test": "cross-env TZ=UTC lerna run test -- --passWithNoTests",
+    "test:package": "cross-env TZ=UTC lerna run test --scope \"@entur/$*\" | cat",
+    "test:single-run": "cross-env CI=true TZ=UTC yarn test",
+    "test:watch": "cross-env TZ=UTC lerna run test --watch"
   },
   "workspaces": [
     "packages/*",

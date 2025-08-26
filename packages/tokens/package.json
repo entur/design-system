@@ -5,6 +5,13 @@
   "main": "dist/tokens.cjs.js",
   "module": "dist/tokens.esm.js",
   "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/tokens.esm.js",
+      "require": "./dist/tokens.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
