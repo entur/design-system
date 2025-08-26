@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/expand.cjs.js",
   "module": "dist/expand.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/expand.esm.js",
-      "require": "./dist/expand.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/expand.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

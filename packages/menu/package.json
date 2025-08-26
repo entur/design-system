@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/menu.cjs.js",
   "module": "dist/menu.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/menu.esm.js",
-      "require": "./dist/menu.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/menu.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

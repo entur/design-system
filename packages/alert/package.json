@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/alert.cjs.js",
   "module": "dist/alert.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/alert.esm.js",
-      "require": "./dist/alert.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/alert.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

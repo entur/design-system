@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/grid.cjs.js",
   "module": "dist/grid.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/grid.esm.js",
-      "require": "./dist/grid.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/grid.cjs.js"
     },
     "./dist/*": "./dist/*"
   },
