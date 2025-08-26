@@ -17,21 +17,3 @@ export function getHeadingVariantFromSemanticType(
       return undefined;
   }
 }
-
-export function getBodyVariantFromSemanticType(
-  semanticType: string | React.ElementType,
-) {
-  if (typeof semanticType !== 'string') return undefined;
-  switch (semanticType) {
-    case 'p':
-    case 'span':
-    case 'div':
-      return 'paragraph';
-    case 'code':
-      return 'code-text';
-    case 'pre':
-      return 'preformatted-text';
-    case 'label':
-      return 'label';
-  }
-}

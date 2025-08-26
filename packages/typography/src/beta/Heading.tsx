@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import {
   TypographyHeadingVariant,
   TypographySize,
-  TypographyMargin,
+  TypographySpacing,
 } from './types';
 import { getHeadingVariantFromSemanticType } from './utils';
 import './styles.scss';
@@ -16,7 +16,8 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  margin?: TypographyMargin;
+  /** Spacing around the component */
+  spacing?: TypographySpacing;
 }
 
 export const Heading = ({
@@ -24,7 +25,7 @@ export const Heading = ({
   as,
   size,
   variant,
-  margin = 'both',
+  spacing,
   className,
   ...rest
 }: HeadingProps) => {
@@ -40,10 +41,26 @@ export const Heading = ({
         'eds-heading',
         usedVariant && `eds-heading--${usedVariant}`,
         size && `eds-heading--${size}`,
-        {
-          [`eds-heading--margin-top`]: margin === 'top',
-          [`eds-heading--margin-bottom`]: margin === 'bottom',
-          [`eds-heading--margin-none`]: margin === 'none',
+        spacing && {
+          [`eds-heading--spacing-none`]: spacing === 'none',
+          [`eds-heading--spacing-xs2`]: spacing === 'xs2',
+          [`eds-heading--spacing-xs2-top`]: spacing === 'xs2-top',
+          [`eds-heading--spacing-xs2-bottom`]: spacing === 'xs2-bottom',
+          [`eds-heading--spacing-xs`]: spacing === 'xs',
+          [`eds-heading--spacing-xs-top`]: spacing === 'xs-top',
+          [`eds-heading--spacing-xs-bottom`]: spacing === 'xs-bottom',
+          [`eds-heading--spacing-sm`]: spacing === 'sm',
+          [`eds-heading--spacing-sm-top`]: spacing === 'sm-top',
+          [`eds-heading--spacing-sm-bottom`]: spacing === 'sm-bottom',
+          [`eds-heading--spacing-md`]: spacing === 'md',
+          [`eds-heading--spacing-md-top`]: spacing === 'md-top',
+          [`eds-heading--spacing-md-bottom`]: spacing === 'md-bottom',
+          [`eds-heading--spacing-lg`]: spacing === 'lg',
+          [`eds-heading--spacing-lg-top`]: spacing === 'lg-top',
+          [`eds-heading--spacing-lg-bottom`]: spacing === 'lg-bottom',
+          [`eds-heading--spacing-xl`]: spacing === 'xl',
+          [`eds-heading--spacing-xl-top`]: spacing === 'xl-top',
+          [`eds-heading--spacing-xl-bottom`]: spacing === 'xl-bottom',
         },
         className,
       )}
