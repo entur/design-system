@@ -7,10 +7,10 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "!{projectRoot}/*.md"],
     "configs": [
-      "{workspaceRoot}/dts.config.js",
       "{workspaceRoot}/tsconfig*.json",
       "{workspaceRoot}/package.json",
-      "{workspaceRoot}/.eslintrc"
+      "{workspaceRoot}/.eslintrc",
+      "{workspaceRoot}/jest.config.js"
     ],
     "production": ["default"]
   },
