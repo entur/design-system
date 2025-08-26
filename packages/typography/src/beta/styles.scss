@@ -156,12 +156,12 @@
     margin-bottom: t.$space-small;
   }
   &--spacing-sm-top {
-    margin-top: t.$space-extra-small;
+    margin-top: t.$space-small;
     margin-bottom: 0;
   }
   &--spacing-sm-bottom {
     margin-top: 0;
-    margin-bottom: t.$space-extra-small;
+    margin-bottom: t.$space-small;
   }
   &--spacing-md {
     margin-top: t.$space-medium;
@@ -348,12 +348,12 @@
     margin-bottom: t.$space-small;
   }
   &--spacing-sm-top {
-    margin-top: t.$space-extra-small;
+    margin-top: t.$space-small;
     margin-bottom: 0;
   }
   &--spacing-sm-bottom {
     margin-top: 0;
-    margin-bottom: t.$space-extra-small;
+    margin-bottom: t.$space-small;
   }
   &--spacing-md {
     margin-top: t.$space-medium;
