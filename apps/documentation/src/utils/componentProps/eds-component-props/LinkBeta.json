@@ -72,12 +72,10 @@
         "name": "ReactNode"
       }
     },
-    "margin": {
-      "defaultValue": {
-        "value": "both"
-      },
-      "description": "Hvor du vil ha marginer",
-      "name": "margin",
+    "spacing": {
+      "defaultValue": null,
+      "description": "Spacing around the component (same as Text and Heading components)",
+      "name": "spacing",
       "declarations": [
         {
           "fileName": "design-system/packages/typography/src/beta/LinkBeta.tsx",
@@ -86,7 +84,7 @@
       ],
       "required": false,
       "type": {
-        "name": "\"top\" | \"bottom\" | \"both\" | \"none\" | undefined"
+        "name": "TypographySpacing | undefined"
       }
     },
     "ariaLabelExternalIcon": {

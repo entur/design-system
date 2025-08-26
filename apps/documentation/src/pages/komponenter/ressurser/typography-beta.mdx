@@ -19,7 +19,9 @@ import { BannerAlertBox } from "@entur/alert";
   @import '@entur/typography/dist/beta/styles.css';
 </BannerAlertBox>
 
-## Hvorfor et nytt API?
+## Beskrivelse
+Typography Beta er en ny, forenklet versjon av typografisystemet som samler alle typografiske behov i kun to hovedkomponenter: `Heading` og `Text`. Dette gir et mer fleksibelt og fremtidsrettet API.
+Så, hvorfor et nytt API?
 
 - Styling - visuelt bedre hierarki
 - Enklere API – kun to hovedkomponenter å forholde seg til.
@@ -32,7 +34,7 @@ Heading gir deg riktige styles automatisk, og er laget for å følge designsyste
 - Semantikk (`as`): velg riktig HTML-tag (h1–h6)
 - Visuelt uttrykk (`variant` eller `size`): styr utseendet uavhengig av semantikk. `variant`er vår anbefalt styling av ulike nivåer, men du kan velge `size` om du ønsker annen størrelse.
 
-### Hvorfor skille as og variant?
+**Hvorfor skille as og variant?**
 Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size`, `weight`, `spacing`), gir vi utviklere mulighet til å skrive semantisk korrekt HTML uten å være bundet til det visuelle uttrykket. Dette gir flere fordeler:
 
 - Universell utforming – skjermlesere forstår innhold bedre
@@ -40,9 +42,9 @@ Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size
 - Designfrihet – semantisk `<h2>` kan styles som en liten tittel
 - Konsistens – samme variant kan gjenbrukes overalt
 
-## Eksempler
+### Varianter
 
-### Standard varianter (anbefalt)
+#### Standard varianter (anbefalt)
 
 ````jsx
 <Heading as="h1" variant="title-1">Title 1</Heading>
@@ -53,7 +55,7 @@ Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size
 <Heading as="h6" variant="section-2">Section 2</Heading>
 ````
 
-### Kun semantikk (heading mapper default variant selv)
+#### Kun semantikk (heading mapper default variant selv)
 
 ````jsx
 <Heading as="h1">Title 1</Heading>
@@ -62,7 +64,7 @@ Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size
 <Heading as="h4">Subtitle 2</Heading>
 ````
 
-### Bland semantikk og visuell variant
+#### Bland semantikk og visuell variant
 
 ````jsx
 <Heading as="h1" variant="section-1">Title 1</Heading>
@@ -71,7 +73,7 @@ Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size
 <Heading as="h4" variant="subtitle-2">Subtitle 2</Heading>
 ````
 
-### Manuell size
+#### Manuell size
 
 ````jsx
 <Heading as="h1" size="2xl">2xl</Heading>
@@ -86,7 +88,9 @@ Ved å skille mellom semantiske props (`as`) og visuelle props (`variant`, `size
 
 Text er mer fleksibel, og krever at du velger variant selv.
 
-### Varianter (designsystemets anbefaling)
+### Varianter
+
+#### Variant (designsystemets anbefaling)
 
 ````jsx
 <Text variant="leading">Leading</Text>
@@ -102,7 +106,7 @@ Text er mer fleksibel, og krever at du velger variant selv.
 <Text variant="preformatted-text">Preformatted Text</Text>
 ````
 
-### Størrelser og vekt
+#### Størrelser og vekt
 
 ````jsx
 <Text size="xl" weight="bold">Bold</Text>
@@ -116,7 +120,7 @@ Text er mer fleksibel, og krever at du velger variant selv.
 <Text size="m" weight="400">400</Text>
 ````
 
-### Semantikk 
+#### Semantikk 
 
 Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Default er `as = span`
 
@@ -140,26 +144,7 @@ Hvis du bare skriver:
 <Text as="label" variant="label">Navn</Text>
 ```
 
-## Andre typografiske komponenter
-
-### Blockquote med footer
-
-````jsx
-<BlockquoteBeta> Entur gjør det enklere å reise kollektivt  <BlockquoteFooterBeta>Ola Nordmann, Entur</BlockquoteFooterBeta></BlockquoteBeta>
-````
-
-### Link
-
-````jsx
-<LinkBeta href="https://entur.no/">Reiseplanleggeren til Entur</LinkBeta>
-<LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
-````
-
-<BannerAlertBox variant="warning" title="Under arbeid">
-Andre komponenter vil komme her.. (eks. Liste)
-</BannerAlertBox>
-
-## Spacing prop
+#### Spacing
 
 Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker våre [spacing-tokens](/tokens/ovrige-tokens/spacing) fra `xs2` til `xl`. Du kan også spesifisere retningsbestemt spacing med `-top` eller `-bottom` suffiks.
 
@@ -195,6 +180,24 @@ Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker
 <Heading as="h2" variant="title-2" spacing="md-top">Medium top spacing only</Heading>
 
 ````
+
+## Andre komponenter
+### Blockquote med footer
+
+````jsx
+<BlockquoteBeta> Entur gjør det enklere å reise kollektivt  <BlockquoteFooterBeta>Ola Nordmann, Entur</BlockquoteFooterBeta></BlockquoteBeta>
+````
+
+### Link
+
+````jsx
+<LinkBeta href="https://entur.no/">Reiseplanleggeren til Entur</LinkBeta>
+<LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
+````
+
+<BannerAlertBox variant="warning" title="Under arbeid">
+Andre komponenter vil komme her.. (eks. Liste)
+</BannerAlertBox>
 
 ## Display Mode
 
