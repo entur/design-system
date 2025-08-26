@@ -35,12 +35,17 @@ export const Heading = ({
   const usedVariant =
     variant ?? getHeadingVariantFromSemanticType(HeadingElement) ?? 'title-1';
 
+  // When size is explicitly provided, it should override variant styling
+  const shouldUseSize = size !== undefined;
+
   return (
     <HeadingElement
       className={classNames(
         'eds-heading',
-        usedVariant && `eds-heading--${usedVariant}`,
-        size && `eds-heading--${size}`,
+        // Only apply variant if size is not specified
+        !shouldUseSize && usedVariant && `eds-heading--${usedVariant}`,
+        // Size takes precedence when specified
+        shouldUseSize && size && `eds-heading--${size}`,
         getSpacingClasses(spacing, 'eds-heading'),
         className,
       )}

@@ -16,11 +16,7 @@ import { BannerAlertBox } from "@entur/alert";
 
 <BannerAlertBox variant="warning" title="Viktig: CSS-import kreves for beta-versjonen">
   For å bruke riktig styling for typography beta-komponentene må du importere CSS-filen fra beta-mappen.
-
-  ```css
   @import '@entur/typography/dist/beta/styles.css';
-  ```
-  
 </BannerAlertBox>
 
 ## Hvorfor et nytt API?
@@ -101,6 +97,9 @@ Text er mer fleksibel, og krever at du velger variant selv.
 <Text variant="label">Label</Text>
 <Text variant="sublabel">SubLabel</Text>
 <Text variant="overline">Overline</Text>
+<Text variant="emphasized">Emphasized</Text>
+<Text variant="code-text">Code Text</Text>
+<Text variant="preformatted-text">Preformatted Text</Text>
 ````
 
 ### Størrelser og vekt
@@ -135,7 +134,7 @@ Hvis du bare skriver:
 <Text as="label">Navn</Text>
 ```
 
-…får du et semantisk `<label>` uten styling. Skal den se ut som en etikett etter designsystemet, bør du kombinere med en variant:
+…får du et semantisk `<label>` uten styling. Skal den se ut som den kommer fra vårt designsystem, bør du kombinere med en variant:
 
 ```html
 <Text as="label" variant="label">Navn</Text>
@@ -156,37 +155,41 @@ Hvis du bare skriver:
 <LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
 ````
 
+<BannerAlertBox variant="warning" title="Under arbeid">
+Andre komponenter vil komme her.. (eks. Liste)
+</BannerAlertBox>
+
 ## Spacing prop
 
-Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker våre [spacing-tokens](/tokens/spacing) fra `xs2` til `xl`. Du kan også spesifisere retningsbestemt spacing med `-top` eller `-bottom` suffiks.
+Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker våre [spacing-tokens](/tokens/ovrige-tokens/spacing) fra `xs2` til `xl`. Du kan også spesifisere retningsbestemt spacing med `-top` eller `-bottom` suffiks.
 
 ````jsx
-### Default spacing (md)
+// Default spacing (md)
 <Heading as="h2" variant="title-1" spacing="md">title 1</Heading>
 <Heading as="h2" variant="2xl" spacing="md">2xl</Heading>
 
 <Text variant="m" spacing="md">m</Text>
 
-### Small spacing
+// Small spacing
 <Heading as="h2" variant="title-1" spacing="sm">title 1</Heading>
 <Heading as="h2" variant="2xl" spacing="sm">2xl</Heading>
 
 <Text variant="paragraph" spacing="sm">Paragraph</Text>
 <Text variant="m" spacing="sm">m</Text>
 
-### Large spacing
+// Large spacing
 <Heading as="h2" variant="title-1" spacing="lg">title 1</Heading>
 <Heading as="h2" variant="2xl" spacing="lg">2xl</Heading>
 
 <Text variant="m" spacing="lg">m</Text>
 
-### No spacing
+// No spacing
 <Heading as="h2" variant="title-1" spacing="none">title 1</Heading>
 <Heading as="h2" variant="2xl" spacing="none">2xl</Heading>
 
 <Text variant="m" spacing="none">m</Text>
 
-### Directional spacing
+// Directional spacing
 <Heading as="h2" variant="title-1" spacing="lg-top">Large top spacing only</Heading>
 <Text variant="paragraph" spacing="sm-bottom">Small bottom spacing only</Text>
 <Heading as="h2" variant="title-2" spacing="md-top">Medium top spacing only</Heading>
@@ -195,7 +198,7 @@ Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker
 
 ## Display Mode
 
-TypographyBeta støtter forskjellige visningsmoder for å tilpasse typografien til ulike skjermstørrelser og bruksområder. Denne løsninger er foreløpig designet med tanke på nye automater. Men vil passe flere bruksområder.
+TypographyBeta støtter forskjellige visninger for å tilpasse typografien til ulike skjermstørrelser og bruksområder. Denne løsninger er foreløpig designet med tanke på automater. Men vil passe flere bruksområder.
 
 ### Hvordan det fungerer
 
@@ -265,3 +268,34 @@ Hver display-mode har innebygd responsiv oppførsel:
   - Tilgjengelighet for brukere med synsproblemer
   - Presentasjoner og store skjermer
   - Offentlige rom hvor tekst skal være lett å lese
+
+## Migrering
+
+Her er mappinga av alle gamle komponenter → nye.
+
+### Tittel komponenter → Heading
+
+```html
+Heading1 → <Heading as="h1" variant="title-1">
+Heading2 → <Heading as="h2" variant="title-2">
+Heading3 → <Heading as="h3" variant="subtitle-1">
+Heading4 → <Heading as="h4" variant="subtitle-2">
+Heading5 → <Heading as="h5" variant="section-1">
+Heading6 → <Heading as="h6" variant="section-2">
+BaseHeading → <Heading>
+```
+
+### Tekst komponenter → Text
+
+```html
+Paragraph → <Text as="p" variant="paragraph">
+LeadParagraph → <Text as="p" variant="leading">
+SmallText → <Text as="p" variant="subparagraph">
+StrongText → <Text as="strong" weight="bold">
+EmphasizedText → <Text as="em" variant="emphasized">
+CodeText → <Text as="code" variant="code-text">
+PreformattedText → <Text as="pre" variant="preformatted-text">
+Label → <Text as="label" variant="label">
+SubLabel → <Text as="span" variant="sublabel">
+SubParagraph → <Text as="p" variant="subparagraph">
+```
