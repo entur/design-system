@@ -22,6 +22,7 @@ export type TypographyTextVariant =
   | 'preformatted-text';
 
 export type TypographySize = 'xs' | 's' | 'm' | 'lg' | 'xl' | '2xl';
+
 export type TypographyWeight =
   | 'regular'
   | 'medium'
@@ -31,4 +32,24 @@ export type TypographyWeight =
   | '500'
   | '600'
   | '700';
-export type TypographyMargin = 'top' | 'bottom' | 'both' | 'none';
+
+export type TypographySpacing =
+  | 'none'
+  | 'xs2'
+  | 'xs2-top'
+  | 'xs2-bottom'
+  | 'xs'
+  | 'xs-top'
+  | 'xs-bottom'
+  | 'sm'
+  | 'sm-top'
+  | 'sm-bottom'
+  | 'md'
+  | 'md-top'
+  | 'md-bottom'
+  | 'lg'
+  | 'lg-top'
+  | 'lg-bottom'
+  | 'xl'
+  | 'xl-top'
+  | 'xl-bottom';

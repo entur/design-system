@@ -1,0 +1,124 @@
+{
+  "tags": {},
+  "description": "",
+  "displayName": "Heading",
+  "methods": [],
+  "props": {
+    "as": {
+      "defaultValue": null,
+      "description": "",
+      "name": "as",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": true,
+      "type": {
+        "name": "string | ComponentClass<any, any> | FunctionComponent<any>"
+      }
+    },
+    "variant": {
+      "defaultValue": null,
+      "description": "",
+      "name": "variant",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographyHeadingVariant | undefined"
+      }
+    },
+    "size": {
+      "defaultValue": null,
+      "description": "",
+      "name": "size",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySize | undefined"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "",
+      "name": "className",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "string | undefined"
+      }
+    },
+    "style": {
+      "defaultValue": null,
+      "description": "",
+      "name": "style",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "CSSProperties | undefined"
+      }
+    },
+    "spacing": {
+      "defaultValue": {
+        "value": "md"
+      },
+      "description": "Spacing around the component",
+      "name": "spacing",
+      "parent": {
+        "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+        "name": "HeadingProps"
+      },
+      "declarations": [
+        {
+          "fileName": "design-system/packages/typography/src/beta/Heading.tsx",
+          "name": "HeadingProps"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "TypographySpacing | undefined"
+      }
+    }
+  }
+}
