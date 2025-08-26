@@ -192,3 +192,76 @@ Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker
 <Heading as="h2" variant="title-2" spacing="md-top">Medium top spacing only</Heading>
 
 ````
+
+## Display Mode
+
+Typographybeta støtter forskjellige visningsmoder for å tilpasse typografien til ulike skjermstørrelser og bruksområder. Denne løsninger er foreløpig designet med tanke på nye automater. Men vil passe flere bruksområder.
+
+### Hvordan det fungerer
+
+Systemet bruker `display-mode` attributtet for å kontrollere typografi-skalering:
+
+- **Default/Mobile**: Responsiv typografi som tilpasser seg skjermstørrelse
+- **Large**: Forstørret typografi for store skjermer, kiosker, eller tilgjengelighet
+
+### Bruk av display-mode
+
+#### HTML-nivå (anbefalt for hele siden)
+
+```html
+<html display-mode="large">
+  <!-- Alt innhold får large typografi -->
+</html>
+```
+
+#### Komponent-nivå (for spesifikke seksjoner)
+
+```html
+<div display-mode="large">
+  <Heading as="h1">Stor tittel for store skjermer</Heading>
+  <Text variant="paragraph">Større tekst som er lettere å lese</Text>
+</div>
+```
+
+#### JavaScript (dynamisk endring)
+
+```javascript
+// Sett display mode for hele siden
+document.documentElement.setAttribute('display-mode', 'large');
+
+// Fjern display mode (tilbake til default)
+document.documentElement.removeAttribute('display-mode');
+
+// Sjekk nåværende mode
+const currentMode = document.documentElement.getAttribute('display-mode');
+```
+
+### Responsiv oppførsel
+
+Hver display-mode har innebygd responsiv oppførsel:
+
+- **Mobile mode**: Automatisk større typografi på desktop
+- **Large mode**: Konsistent stor typografi på alle skjermstørrelser
+
+### Eksempel
+
+```jsx
+// Default/Mobile mode (ingen display-mode attributt)
+<Heading as="h1">Normal tittel</Heading>
+<Text variant="paragraph">Normal tekst</Text>
+
+// Large mode
+<div display-mode="large">
+  <Heading as="h1">Stor tittel</Heading>
+  <Text variant="paragraph">Stor tekst</Text>
+</div>
+```
+
+### Når skal du bruke det?
+
+- **Default**: Standard responsive typografi for de fleste bruksområder
+- **Large**:
+  - Automater og informasjonsskjermer
+  - Tilgjengelighet for brukere med synsproblemer
+  - Presentasjoner og store skjermer
+  - Offentlige rom hvor tekst skal være lett å lese
