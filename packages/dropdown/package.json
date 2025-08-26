@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/dropdown.cjs.js",
   "module": "dist/dropdown.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/dropdown.esm.js",
-      "require": "./dist/dropdown.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/dropdown.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

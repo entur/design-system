@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/tab.cjs.js",
   "module": "dist/tab.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/tab.esm.js",
-      "require": "./dist/tab.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/tab.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

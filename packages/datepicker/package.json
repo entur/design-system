@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/datepicker.cjs.js",
   "module": "dist/datepicker.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/datepicker.esm.js",
-      "require": "./dist/datepicker.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/datepicker.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/form.cjs.js",
   "module": "dist/form.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/form.esm.js",
-      "require": "./dist/form.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/form.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

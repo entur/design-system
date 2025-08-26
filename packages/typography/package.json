@@ -4,12 +4,12 @@
   "license": "SEE LICENSE IN README.md",
   "main": "dist/typography.cjs.js",
   "module": "dist/typography.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/typography.esm.js",
-      "require": "./dist/typography.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/typography.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

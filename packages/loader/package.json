@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/loader.cjs.js",
   "module": "dist/loader.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/loader.esm.js",
-      "require": "./dist/loader.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/loader.cjs.js"
     },
     "./dist/*": "./dist/*"
   },
