@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/button.cjs.js",
   "module": "dist/button.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/button.esm.js",
-      "require": "./dist/button.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/button.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

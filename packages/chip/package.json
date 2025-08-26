@@ -4,12 +4,12 @@
   "license": "EUPL-1.2",
   "main": "dist/chip.cjs.js",
   "module": "dist/chip.esm.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/chip.esm.js",
-      "require": "./dist/chip.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/chip.cjs.js"
     },
     "./dist/*": "./dist/*"
   },
