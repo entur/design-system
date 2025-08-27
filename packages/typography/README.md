@@ -10,15 +10,94 @@ This package contains styles and React components for all of our typography.
 
 ## Installation
 
-```sh
+```bash
 npm install @entur/typography
-# or if you are using Yarn:
+# or
 yarn add @entur/typography
 ```
 
-## Usage
+## 🚀 Quick Start
 
-Please refer to the [documentation](https://linje.entur.no/komponenter/ressurser/typography) for usage information.
+### Using Beta Typography (Recommended)
+
+```typescript
+import { Heading, Text, LinkBeta } from '@entur/typography';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading as="h1" variant="title-1">
+        My Title
+      </Heading>
+      <Text variant="paragraph">My content</Text>
+      <LinkBeta href="/more">Learn more</LinkBeta>
+    </div>
+  );
+}
+```
+
+### Using Legacy Typography
+
+```typescript
+import { Heading1, Paragraph, Link } from '@entur/typography';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading1>My Title</Heading1>
+      <Paragraph>My content</Paragraph>
+      <Link href="/more">Learn more</Link>
+    </div>
+  );
+}
+```
+
+## 🔄 Migration
+
+**Migrating from legacy typography?** We've created a comprehensive migration package to help you transition smoothly.
+
+- 📖 **[Migration Guide](./MIGRATION.md)** - Complete migration documentation
+- 🔧 **Migration Helpers** - Drop-in replacements for legacy components
+- 🤖 **Migration Script** - Automated migration tool
+
+### Quick Migration
+
+```bash
+# Run the migration script
+npx @entur/typography@latest scripts/migrate-typography.js
+
+# Update your styles
+# Replace: @import '~@entur/typography/dist/styles.css'
+# With:    @import '~@entur/typography/src/beta/styles.scss'
+```
+
+## 📚 Documentation
+
+- [Typography Beta Documentation](./docs/typography-beta.mdx)
+- [Migration Guide](./MIGRATION.md)
+- [Design System Documentation](https://design.entur.no)
+
+## 🎨 Features
+
+### Beta Typography
+
+- **Semantic variants** - Title, subtitle, section, paragraph, etc.
+- **Size variants** - Extra large, large, medium, small, extra small
+- **Weight variants** - Light, regular, medium, semibold, bold
+- **Spacing options** - Configurable margins and padding
+- **Accessibility** - Built-in ARIA support and semantic HTML
+
+### Legacy Typography
+
+- **Individual components** - Heading1-6, Paragraph, Link, etc.
+- **Simple API** - Easy to use with minimal configuration
+- **Backward compatibility** - Existing code continues to work
+
+## 🔗 Related
+
+- [Design System](https://design.entur.no)
+- [Typography Tokens](./src/typography-tokens.scss)
+- [Migration Helpers](./src/migration/index.ts)
 
 ## Licenses
 

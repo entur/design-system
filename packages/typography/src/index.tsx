@@ -30,3 +30,5 @@ export * from './beta/Text';
 export * from './beta/Heading';
 export * from './beta/BlockquoteBeta';
 export * from './beta/LinkBeta';
+
+// migration helpers - use @entur/typography/migration for migration support

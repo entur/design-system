@@ -20,7 +20,8 @@
     "build": "dts build && cp -r fonts dist/fonts",
     "test": "dts test",
     "lint": "dts lint src",
-    "start": "dts watch --noClean"
+    "start": "dts watch --noClean",
+    "migrate": "node scripts/migrate-typography.js"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
