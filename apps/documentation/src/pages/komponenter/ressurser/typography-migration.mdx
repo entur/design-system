@@ -10,27 +10,38 @@ Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til 
 ### Alternativ 1: Automatisk migrering (Anbefalt)
 
 ```bash
-# Kjør migration scriptet
-npx @entur/typography@latest scripts/migrate-typography.js
+# Se hva som ville blitt endret (trygt)
+npx @entur/typography@latest migrate --dry-run
 
-# Eller for direkte migrering til beta-komponenter
-npx @entur/typography@latest scripts/migrate-typography.js --direct
+# Sikker migrering: oppdater kun import paths 
+npx @entur/typography@latest migrate
 
-# Test hva som ville blitt endret uten å modifisere filer
-npx @entur/typography@latest scripts/migrate-typography.js --dry-run
+# Komplett migrering: oppdater alt til beta-komponenter
+npx @entur/typography@latest migrate --complete
 
 # Vis hjelp og alternativer
-npx @entur/typography@latest scripts/migrate-typography.js --help
+npx @entur/typography@latest migrate --help
 ```
 
 **Oppdater stilene dine:**
 
 ```scss
 // Erstatt denne
-@import '~@entur/typography/dist/styles.css';
+@import '@entur/typography/dist/styles.css';
 
 // Med denne
-@import '~@entur/typography/src/beta/styles.scss';
+@import '@entur/typography/src/beta/styles.scss';
+```
+
+**Alternativ måte å kjøre migreringsskriptet:**
+
+```bash
+# Hvis du har typography-pakken lokalt
+yarn workspace @entur/typography migrate --dry-run
+
+# Eller fra typography-mappen
+cd packages/typography
+yarn migrate --dry-run
 ```
 
 ### Alternativ 2: Manuell migrering
@@ -39,15 +50,36 @@ npx @entur/typography@latest scripts/migrate-typography.js --help
 // Før
 import { Heading1, Paragraph, Link } from '@entur/typography';
 
-// Etter
-import { Heading1, Paragraph, Link } from '@entur/typography/migration';
+// Etter (oppdater komponenter manuelt)
+import { Heading, Text, LinkBeta } from '@entur/typography';
+
+// Eksempel på oppdatering:
+// <Heading1>Title</Heading1> → <Heading as="h1" variant="title-1">Title</Heading>
+// <Paragraph>Text</Paragraph> → <Text variant="paragraph">Text</Text>
 ```
+
+## Migreringsmodi
+
+### 📝 Sikker modus (standard)
+- **Hva det gjør**: Oppdaterer kun import paths
+- **Risiko**: Minimal - dine komponenter forblir uendret
+- **Når å bruke**: Når du vil migrere gradvis og teste steg for steg
+
+### 🚀 Komplett modus (`--complete`)
+- **Hva det gjør**: Oppdaterer både imports og komponentbruk
+- **Konsekvenser**:
+  - `<Heading1>` blir `<Heading as="h1" variant="title-1">`
+  - `<Paragraph>` blir `<Text variant="paragraph">`
+  - `<Link>` blir `<LinkBeta>`
+  - Props kan trenge oppdateringer
+  - Styling-klasser kan endres
+- **⚠️ Viktig**: Test grundig etter migrering!
 
 ## Hva du får
 
-- **Migreringshjelpere**: Drop-in erstatninger for alle gamle komponenter
-- **Automatisk migreringsskript**: Skript som automatisk oppdaterer dine imports
-- **Bakoverkompatibilitet**: Din eksisterende kode vil fortsatt fungere
+- **Automatisk migreringsskript**: Skript som automatisk oppdaterer dine imports og komponenter
+- **Sikker migrering**: Dry-run modus for å se endringer først
+- **Fleksibel tilnærming**: Velg mellom sikker eller komplett migrering
 - **Nye funksjoner**: Tilgang til forbedrede typografi-funksjoner
 
 ### Headings
@@ -297,10 +329,10 @@ import { Heading, Text } from '@entur/typography';
 
 ```scss
 // Fjern denne
-@import '~@entur/typography/dist/styles.css';
+@import '@entur/typography/dist/styles.css';
 
 // Legg til denne
-@import '~@entur/typography/src/beta/styles.scss';
+@import '@entur/typography/src/beta/styles.scss';
 ```
 
 ### Problem: Manglende komponenter

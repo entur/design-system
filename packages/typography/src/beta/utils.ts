@@ -3,7 +3,7 @@ import { TypographySpacing } from './types';
 export function getHeadingVariantFromSemanticType(
   semanticType: string | React.ElementType,
 ) {
-  if (typeof semanticType !== 'string') return undefined;
+  if (typeof semanticType !== 'string') return 'title-1';
   switch (semanticType) {
     case 'h1':
       return 'title-1';
@@ -16,7 +16,7 @@ export function getHeadingVariantFromSemanticType(
     case 'p':
       return 'paragraph';
     default:
-      return undefined;
+      return 'title-1';
   }
 }
 
