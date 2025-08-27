@@ -20,7 +20,8 @@
     "build": "vite build && cp -r fonts dist/",
     "test": "jest",
     "lint": "eslint src",
-    "start": "vite build --watch"
+    "start": "vite build --watch",
+    "migrate": "node scripts/migrate-typography.js"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
