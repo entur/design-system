@@ -4,7 +4,7 @@
 @forward './typography-tokens.scss';
 @use './typography-tokens.scss' as *;
 
-@use '~normalize-scss' as *;
+@import '~modern-normalize/modern-normalize.css';
 
 [data-color-mode='light'],
 [data-color-mode='dark'],
@@ -15,19 +15,15 @@
   --primary-label-color: var(--components-typography-label-standard-text-accent);
   --eds-font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     'Helvetica Neue', sans-serif;
-  // nye header tokens
-  --font-heading-size-2xl: 1.75rem;
-  --font-heading-lineheight-2xl: 2rem;
 
   // Base styles
   // These styles will propagate across the project
-  box-sizing: border-box;
   color: var(--primary-text-color);
   background-color: var(--primary-background-color);
   font-family: 'Nationale', Arial, 'Gotham Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
     sans-serif;
   font-weight: var(--font-weight-body);
-  font-size: t.$font-sizes-large;
+  font-size: var(--font-size-body-m);
   line-height: t.$line-heights-large;
 
   .eds-contrast {
@@ -45,7 +41,6 @@
   }
 }
 
-// Globals
 *,
 *::before,
 *::after {

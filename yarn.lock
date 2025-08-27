@@ -5111,7 +5111,7 @@ __metadata:
     "@entur/utils": "workspace:^"
     classnames: "npm:^2.3.1"
     dts-cli: "npm:2.0.5"
-    normalize-scss: "npm:^8.0.0"
+    modern-normalize: "npm:^3.0.1"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
@@ -28742,6 +28742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"modern-normalize@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "modern-normalize@npm:3.0.1"
+  checksum: 10c0/2c19be1618178b85006e354337d7dda6758640d138be5f3e247c9ebb5dd5d7845edb0b8753cec659e789bb30e1fafe73e91eaa056a332d89055cbb107d9fecec
+  languageName: node
+  linkType: hard
+
 "modify-values@npm:^1.0.1":
   version: 1.0.1
   resolution: "modify-values@npm:1.0.1"
@@ -29388,13 +29395,6 @@ __metadata:
   version: 0.1.2
   resolution: "normalize-range@npm:0.1.2"
   checksum: 10c0/bf39b73a63e0a42ad1a48c2bd1bda5a07ede64a7e2567307a407674e595bcff0fa0d57e8e5f1e7fa5e91000797c7615e13613227aaaa4d6d6e87f5bd5cc95de6
-  languageName: node
-  linkType: hard
-
-"normalize-scss@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "normalize-scss@npm:8.0.0"
-  checksum: 10c0/a0b429574f047f28c2b4ed3c6b23e78183f6567a27ef6351f5939f22a8fa6f2452134e0cb254fa1078c962016bc2e2dfec4042c338ea86dc9de8fa96bbe460b9
   languageName: node
   linkType: hard
 

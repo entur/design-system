@@ -5,7 +5,7 @@
 @use './componentColors.scss';
 @use './fonts.scss';
 
-@use '~normalize-scss' as *;
+@import '~modern-normalize/modern-normalize.css';
 
 [data-color-mode='light'],
 [data-color-mode='dark'],
