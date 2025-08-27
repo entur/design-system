@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.19.2-beta.0](https://github.com/entur/design-system/compare/@entur/tokens@3.19.1...@entur/tokens@3.19.2-beta.0) (2025-08-27)
+
+### Bug Fixes
+
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- fix package.json field order ([23663e3](https://github.com/entur/design-system/commit/23663e3888e9fa9a2a8989958ef4284f01f5b977))
+
 ## [3.19.1](https://github.com/entur/design-system/compare/@entur/tokens@3.19.0...@entur/tokens@3.19.1) (2025-05-22)
 
 ### Bug Fixes
