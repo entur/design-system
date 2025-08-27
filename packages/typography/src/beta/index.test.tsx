@@ -108,7 +108,7 @@ describe('Beta Typography Components', () => {
       const { getByText } = render(<Text>Test text</Text>);
       const text = getByText('Test text');
       expect(text).toBeInTheDocument();
-      expect(text.tagName).toBe('SPAN');
+      expect(text.tagName).toBe('P');
       expect(text).toHaveClass('eds-text');
     });
 
@@ -325,12 +325,12 @@ describe('Beta Typography Components', () => {
         expect(getHeadingVariantFromSemanticType('h4')).toBe('subtitle-2');
       });
 
-      test('returns undefined for unknown semantic type', () => {
-        expect(getHeadingVariantFromSemanticType('div')).toBeUndefined();
+      test('returns default variant for unknown semantic type', () => {
+        expect(getHeadingVariantFromSemanticType('div')).toBe('title-1');
       });
 
-      test('returns undefined for non-string input', () => {
-        expect(getHeadingVariantFromSemanticType('div' as any)).toBeUndefined();
+      test('returns default variant for non-string input', () => {
+        expect(getHeadingVariantFromSemanticType('div' as any)).toBe('title-1');
       });
     });
 

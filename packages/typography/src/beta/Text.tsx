@@ -9,10 +9,9 @@ import {
   TypographySpacing,
 } from './types';
 import { getSpacingClasses } from './utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 
-export type TextProps = {
-  /** HTML-element eller React-komponent som rendres */
-  as?: keyof JSX.IntrinsicElements | React.ElementType;
+type TextBaseProps = {
   /** Visuell tekststørrelse (typografi-token) */
   size?: TypographySize;
   /** Fontvekt */
@@ -25,18 +24,25 @@ export type TextProps = {
   spacing?: TypographySpacing;
   /** Ekstra klassenavn */
   className?: string;
-} & React.HTMLAttributes<HTMLElement>;
+};
 
-const TypographyText = ({
-  as: BodyElement = 'span',
+export type TextProps<C extends React.ElementType> = PolymorphicComponentProps<
+  C,
+  TextBaseProps
+>;
+
+const TypographyText = <C extends React.ElementType = 'p'>({
+  children,
+  as,
   size,
   variant,
   weight = 'medium',
   spacing,
   className,
-  children,
   ...rest
-}: TextProps) => {
+}: TextProps<C>) => {
+  const BodyElement = as || 'p';
+
   return (
     <BodyElement
       className={classNames(

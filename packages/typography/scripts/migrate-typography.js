@@ -5,14 +5,34 @@
  *
  * This script helps you migrate from old typography components to new beta typography.
  *
+ * MIGRATION MODES:
+ *
+ * 📝 Safe Mode (default):
+ *   - Only updates import paths from '@entur/typography' to '@entur/typography'
+ *   - Keeps your existing component usage unchanged
+ *   - Minimal risk, allows gradual migration
+ *   - You can manually update components later
+ *
+ * 🚀 Complete Mode (--complete):
+ *   - Updates import paths AND component usage
+ *   - Replaces old components with beta components
+ *   - CONSEQUENCES:
+ *     * <Heading1> becomes <Heading as="h1" variant="title-1">
+ *     * <Paragraph> becomes <Text variant="paragraph">
+ *     * <Link> becomes <LinkBeta>
+ *     * Props may need updates (e.g., different prop names)
+ *     * Styling classes may change
+ *     * Test thoroughly after migration!
+ *
  * Usage:
  * 1. Run this script in your project root
- * 2. Follow the prompts to migrate your typography imports
+ * 2. Choose your migration mode (safe or complete)
  * 3. Update your styles as needed
+ * 4. Test your application thoroughly
  *
  * Options:
  *   --dry-run     Show what would be changed without modifying files
- *   --direct      Skip migration helpers and go directly to beta components
+ *   --complete    Complete migration: update imports + component usage
  *
  * Environment Variables:
  *   TYPOGRAPHY_MIGRATION_DIRS  Comma-separated list of directories to scan
@@ -30,7 +50,6 @@ const glob = require('glob');
 
 // Configuration
 const OLD_IMPORT = '@entur/typography';
-const NEW_IMPORT = '@entur/typography/migration';
 const BETA_IMPORT = '@entur/typography';
 
 // Security: Allow-list of directories to scan
@@ -123,13 +142,69 @@ function updateImports(content, strategy) {
   if (strategy === 'migration') {
     // Replace old imports with migration helpers
     const oldImportRegex = /from\s+['"`]@entur\/typography['"`]/g;
-    updatedContent = content.replace(oldImportRegex, `from '${NEW_IMPORT}'`);
+    updatedContent = content.replace(oldImportRegex, `from '${BETA_IMPORT}'`);
     changes += (content.match(oldImportRegex) || []).length;
   } else if (strategy === 'direct') {
     // Replace old imports with beta imports
     const oldImportRegex = /from\s+['"`]@entur\/typography['"`]/g;
     updatedContent = content.replace(oldImportRegex, `from '${BETA_IMPORT}'`);
     changes += (content.match(oldImportRegex) || []).length;
+
+    // Replace component usage
+    Object.entries(COMPONENT_MAPPING).forEach(
+      ([oldComponent, newComponent]) => {
+        // Handle components with props like <Heading1 as="h2">
+        const componentRegex = new RegExp(`<${oldComponent}(\\s+[^>]*)?>`, 'g');
+        updatedContent = updatedContent.replace(
+          componentRegex,
+          (match, props) => {
+            // Extract existing props
+            const existingProps = props ? props.trim() : '';
+
+            // For Heading components, preserve the 'as' prop and add variant
+            if (oldComponent.startsWith('Heading')) {
+              const headingNumber = oldComponent.replace('Heading', '');
+              const variant = `title-${headingNumber}`;
+
+              if (existingProps.includes('as=')) {
+                // Keep existing 'as' prop, add variant
+                return `<Heading${existingProps} variant="${variant}">`;
+              } else {
+                // Add default 'as' prop and variant
+                return `<Heading as="h${headingNumber}" variant="${variant}">`;
+              }
+            }
+
+            // For other components, use the mapping
+            const newComponentName = newComponent.split(' ')[0];
+            const space = existingProps ? ' ' : '';
+            return `<${newComponentName}${space}${existingProps}>`;
+          },
+        );
+
+        // Also replace closing tags
+        const closingTagRegex = new RegExp(`</${oldComponent}>`, 'g');
+        if (oldComponent.startsWith('Heading')) {
+          updatedContent = updatedContent.replace(
+            closingTagRegex,
+            '</Heading>',
+          );
+        } else {
+          const newComponentName = newComponent.split(' ')[0];
+          updatedContent = updatedContent.replace(
+            closingTagRegex,
+            `</${newComponentName}>`,
+          );
+        }
+      },
+    );
+
+    // Count component replacements
+    Object.keys(COMPONENT_MAPPING).forEach(oldComponent => {
+      const componentRegex = new RegExp(`<${oldComponent}([^>]*)>`, 'g');
+      const matches = content.match(componentRegex) || [];
+      changes += matches.length;
+    });
   }
 
   return { content: updatedContent, changes };
@@ -186,23 +261,23 @@ function showNextSteps(strategy) {
   console.log('=============');
 
   if (strategy === 'migration') {
-    console.log('1. ✅ Import statements updated to use migration helpers');
+    console.log('1. ✅ Import statements updated');
     console.log('2. 🔄 Update your styles:');
     console.log('   Replace: @import "~@entur/typography/dist/styles.css"');
     console.log(
       '   With:    @import "~@entur/typography/src/beta/styles.scss"',
     );
-    console.log('3. 🧪 Test your application');
-    console.log(
-      '4. 📚 Read the migration guide: packages/typography/MIGRATION.md',
-    );
-    console.log('5. 🚀 Later, migrate to direct beta components when ready');
-  } else {
-    console.log('1. ✅ Import statements updated to use beta components');
-    console.log('2. 🔄 Update component usage according to mapping:');
+    console.log('3. 🔄 Update component usage manually:');
     Object.entries(COMPONENT_MAPPING).forEach(([old, new_]) => {
       console.log(`   ${old} → ${new_}`);
     });
+    console.log('4. 🧪 Test your application');
+    console.log(
+      '5. 📚 Read the migration guide: packages/typography/MIGRATION.md',
+    );
+  } else {
+    console.log('1. ✅ Import statements updated to use beta components');
+    console.log('2. ✅ Component usage updated according to mapping');
     console.log('3. 🔄 Update your styles:');
     console.log('   Replace: @import "~@entur/typography/dist/styles.css"');
     console.log(
@@ -221,16 +296,39 @@ function main() {
     console.log('🎨 Typography Migration Script');
     console.log('==============================');
     console.log('');
-    console.log('Usage: node scripts/migrate-typography.js [options]');
+    console.log('Usage:');
+    console.log('  npx @entur/typography@latest migrate [options]');
+    console.log('  yarn dlx @entur/typography@latest migrate [options]');
+    console.log('  node scripts/migrate-typography.js [options]');
     console.log('');
     console.log('Options:');
     console.log(
       '  --dry-run     Show what would be changed without modifying files',
     );
     console.log(
-      '  --direct      Skip migration helpers and go directly to beta components',
+      '  --complete    Complete migration: update imports + component usage',
     );
     console.log('  --help, -h    Show this help message');
+    console.log('');
+    console.log('Migration Modes:');
+    console.log('  📝 Safe Mode (default): Only updates import paths');
+    console.log('     - Keeps your existing component usage unchanged');
+    console.log('     - Minimal risk, gradual migration');
+    console.log('');
+    console.log('  🚀 Complete Mode (--complete): Updates everything');
+    console.log('     - Replaces old components with beta components');
+    console.log('     - May require prop/styling updates');
+    console.log('     - Test thoroughly after migration');
+    console.log('');
+    console.log('Examples:');
+    console.log('  # See what would be changed (safe)');
+    console.log('  npx @entur/typography@latest migrate --dry-run');
+    console.log('');
+    console.log('  # Safe migration: update import paths only');
+    console.log('  npx @entur/typography@latest migrate');
+    console.log('');
+    console.log('  # Complete migration: update everything');
+    console.log('  npx @entur/typography@latest migrate --complete');
     console.log('');
     console.log('Environment Variables:');
     console.log(
@@ -295,34 +393,35 @@ function main() {
   }
   console.log('');
 
-  // Ask for migration strategy
-  console.log('Choose your migration strategy:');
-  console.log(
-    '1. Migration helpers (recommended) - Gradual migration with backward compatibility',
-  );
-  console.log('2. Direct migration - Skip to beta components directly');
-  console.log('');
-
   // Parse command line options
   const isDryRun = process.argv.includes('--dry-run');
-  const strategy = process.argv.includes('--direct') ? 'direct' : 'migration';
+  const isComplete = process.argv.includes('--complete');
 
   if (isDryRun) {
     console.log('🔍 DRY RUN MODE: No files will be modified');
     console.log('');
   }
 
-  console.log(
-    `Using strategy: ${
-      strategy === 'direct' ? 'Direct migration' : 'Migration helpers'
-    }`,
-  );
+  if (isComplete) {
+    console.log('🚀 COMPLETE MIGRATION: Updating imports + component usage');
+    console.log('⚠️  WARNING: This will modify your component usage!');
+    console.log('   - Old components will be replaced with beta components');
+    console.log('   - You may need to update props and styling');
+    console.log('   - Test thoroughly after migration');
+  } else {
+    console.log('📝 SAFE MIGRATION: Updating import paths only');
+    console.log('   (Use --complete to also update component usage)');
+  }
   console.log('');
 
   // Perform migration
-  const report = generateMigrationReport(allFiles, strategy, isDryRun);
+  const report = generateMigrationReport(
+    allFiles,
+    isComplete ? 'direct' : 'migration',
+    isDryRun,
+  );
   printReport(report);
-  showNextSteps(strategy);
+  showNextSteps(isComplete ? 'direct' : 'migration');
 
   console.log('\n🎯 Migration complete!');
   console.log('For detailed guidance, see: packages/typography/MIGRATION.md');
