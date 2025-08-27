@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.100-beta.0](https://github.com/entur/design-system/compare/@entur/a11y@0.2.99...@entur/a11y@0.2.100-beta.0) (2025-08-27)
+
+### Bug Fixes
+
+- exclude dependencies from bundle ([e8c8ab3](https://github.com/entur/design-system/commit/e8c8ab3ae1626f06867df6cd20576305227269d2))
+- fix package.json field order ([97dfb54](https://github.com/entur/design-system/commit/97dfb54b1de7f8e1db8d3741a33ed9a1910a2f4e))
+
 ## [0.2.99](https://github.com/entur/design-system/compare/@entur/a11y@0.2.98...@entur/a11y@0.2.99) (2025-05-22)
 
 **Note:** Version bump only for package @entur/a11y

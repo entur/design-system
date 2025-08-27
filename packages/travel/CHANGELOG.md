@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.14-beta.0](https://github.com/entur/design-system/compare/@entur/travel@6.3.13...@entur/travel@6.3.14-beta.0) (2025-08-27)
+
+### Bug Fixes
+
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- exclude dependencies from bundle ([e8c8ab3](https://github.com/entur/design-system/commit/e8c8ab3ae1626f06867df6cd20576305227269d2))
+- fix package.json field order ([97dfb54](https://github.com/entur/design-system/commit/97dfb54b1de7f8e1db8d3741a33ed9a1910a2f4e))
+
 ## [6.3.13](https://github.com/entur/design-system/compare/@entur/travel@6.3.12...@entur/travel@6.3.13) (2025-07-29)
 
 **Note:** Version bump only for package @entur/travel
