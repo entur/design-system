@@ -7,11 +7,10 @@ import {
   TypographySpacing,
 } from './types';
 import { getHeadingVariantFromSemanticType, getSpacingClasses } from './utils';
+import { PolymorphicComponentProps } from '@entur/utils';
 import './styles.scss';
 
-export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  /** HTML-element eller React-komponent som rendres (f.eks. 'h1', 'h2', 'h3', etc.) */
-  as: string | React.ElementType;
+type HeadingBaseProps = {
   /** Visuell variant som bestemmer styling (anbefalt over size) */
   variant?: TypographyHeadingVariant;
   /** Visuell tekststørrelse som overstyrer variant-styling */
@@ -24,9 +23,12 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   style?: React.CSSProperties;
   /** Spacing around the component */
   spacing?: TypographySpacing;
-}
+};
 
-export const Heading = ({
+export type HeadingProps<C extends React.ElementType> =
+  PolymorphicComponentProps<C, HeadingBaseProps>;
+
+export const Heading = <C extends React.ElementType = 'h1'>({
   children,
   as,
   size,
@@ -34,12 +36,12 @@ export const Heading = ({
   spacing,
   className,
   ...rest
-}: HeadingProps) => {
+}: HeadingProps<C>) => {
   const HeadingElement = as || 'h1';
 
   // Function to determine the variant based on the semantic type
   const usedVariant =
-    variant ?? getHeadingVariantFromSemanticType(HeadingElement) ?? 'title-1';
+    variant ?? getHeadingVariantFromSemanticType(HeadingElement);
 
   // When size is explicitly provided, it should override variant styling
   const shouldUseSize = size !== undefined;
@@ -49,9 +51,9 @@ export const Heading = ({
       className={classNames(
         'eds-heading',
         // Only apply variant if size is not specified
-        !shouldUseSize && usedVariant && `eds-heading--${usedVariant}`,
+        { [`eds-heading--${usedVariant}`]: !shouldUseSize },
         // Size takes precedence when specified
-        shouldUseSize && size && `eds-heading--${size}`,
+        { [`eds-heading--${size}`]: shouldUseSize && size },
         getSpacingClasses(spacing, 'eds-heading'),
         className,
       )}

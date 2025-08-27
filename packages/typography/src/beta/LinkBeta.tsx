@@ -5,12 +5,9 @@ import { ExternalIcon } from '@entur/icons';
 import { TypographySpacing } from './types';
 import { getSpacingClasses } from './utils';
 
-export type LinkOwnPropsBeta = {
+type LinkBaseProps = {
   external?: boolean;
-  /** HTML-elementet eller React-komponenten som rendres
-   * @default "a"
-   */
-  as?: string | React.ElementType;
+
   /** Ekstra klassenavn */
   className?: string;
   /** Innholdet */
@@ -20,12 +17,10 @@ export type LinkOwnPropsBeta = {
   ariaLabelExternalIcon?: string;
 };
 
-export type LinkPropsBeta<T extends React.ElementType = typeof defaultElement> =
-  PolymorphicComponentProps<T, LinkOwnPropsBeta>;
+export type LinkPropsBeta<C extends React.ElementType> =
+  PolymorphicComponentProps<C, LinkBaseProps>;
 
-const defaultElement = 'a';
-
-export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
+export const LinkBeta = <C extends React.ElementType = 'a'>({
   external = false,
   ariaLabelExternalIcon = '(ekstern lenke)',
   className,
@@ -33,10 +28,10 @@ export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
   children,
   as,
   ...rest
-}: LinkPropsBeta<E>): JSX.Element => {
-  const Element: React.ElementType = as || defaultElement;
+}: LinkPropsBeta<C>): JSX.Element => {
+  const LinkElement: React.ElementType = as || 'a';
   return (
-    <Element
+    <LinkElement
       className={classNames(
         'eds-text--link',
         getSpacingClasses(spacing, 'eds-text--link'),
@@ -51,6 +46,6 @@ export const LinkBeta = <E extends React.ElementType = typeof defaultElement>({
           aria-label={ariaLabelExternalIcon}
         />
       ) : null}
-    </Element>
+    </LinkElement>
   );
 };
