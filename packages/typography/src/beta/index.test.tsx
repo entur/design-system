@@ -330,9 +330,7 @@ describe('Beta Typography Components', () => {
       });
 
       test('returns undefined for non-string input', () => {
-        expect(
-          getHeadingVariantFromSemanticType(React.Fragment),
-        ).toBeUndefined();
+        expect(getHeadingVariantFromSemanticType('div' as any)).toBeUndefined();
       });
     });
 
