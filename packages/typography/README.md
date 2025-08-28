@@ -7,6 +7,7 @@ Entur's official font is Nationale and is created by Playtype Foundry, located i
 This package contains styles and React components for all of our typography.
 
 > 💡 Looking for the [documentation](https://linje.entur.no/komponenter/ressurser/typography)?
+> Looking for the beta [documentation](https://linje.entur.no/komponenter/ressurser/typography-beta)?
 
 ## Installation
 
@@ -54,28 +55,50 @@ function MyComponent() {
 
 ## 🔄 Migration
 
-**Migrating from legacy typography?** We've created a comprehensive migration package to help you transition smoothly.
+**Migrating from legacy typography?** We've created a comprehensive migration package to help you transition smoothly. Follow our migration guide in our website.
 
-- 📖 **[Migration Guide](./MIGRATION.md)** - Complete migration documentation
 - 🔧 **Migration Helpers** - Drop-in replacements for legacy components
 - 🤖 **Migration Script** - Automated migration tool
 
 ### Quick Migration
 
 ```bash
-# Run the migration script
-npx @entur/typography@latest scripts/migrate-typography.js
+# Option 1: Global command (recommended)
+npx @entur/typography@latest migrate
 
-# Update your styles
-# Replace: @import '~@entur/typography/dist/styles.css'
-# With:    @import '~@entur/typography/src/beta/styles.scss'
+# Option 2: From installed package
+npx @entur/typography@latest migrate
+
+# Option 3: Direct execution (if you have the package locally)
+node node_modules/@entur/typography/scripts/migrate-typography.js
+
+# All options support --dry-run and --import-only flags
+npx @entur/typography@latest migrate --dry-run
+npx @entur/typography@latest migrate --import-only
 ```
 
-## 📚 Documentation
+**Note**: The migration script requires `glob` to be available. If you encounter an error, install it:
 
-- [Typography Beta Documentation](./docs/typography-beta.mdx)
-- [Migration Guide](./MIGRATION.md)
-- [Design System Documentation](https://design.entur.no)
+```bash
+npm install glob
+# or
+yarn add glob
+```
+
+### Migration Modes
+
+- **🚀 Complete Migration (default)**: Updates imports + component usage
+- **📝 Import-Only Migration**: Updates only import paths (safer for gradual migration)
+
+### Update Styles
+
+```scss
+// Replace this
+@import '@entur/typography/dist/styles.css';
+
+// With this
+@import '@entur/typography/src/beta/styles.scss';
+```
 
 ## 🎨 Features
 
@@ -92,12 +115,6 @@ npx @entur/typography@latest scripts/migrate-typography.js
 - **Individual components** - Heading1-6, Paragraph, Link, etc.
 - **Simple API** - Easy to use with minimal configuration
 - **Backward compatibility** - Existing code continues to work
-
-## 🔗 Related
-
-- [Design System](https://design.entur.no)
-- [Typography Tokens](./src/typography-tokens.scss)
-- [Migration Helpers](./src/migration/index.ts)
 
 ## Licenses
 
