@@ -7,9 +7,9 @@
   "typings": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "dist/index.d.ts",
-      "import": "dist/a11y.esm.js",
-      "require": "dist/a11y.cjs.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/a11y.esm.js",
+      "require": "./dist/a11y.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

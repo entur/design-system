@@ -7,9 +7,9 @@
   "typings": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "dist/index.d.ts",
-      "import": "dist/tooltip.esm.js",
-      "require": "dist/tooltip.cjs.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/tooltip.esm.js",
+      "require": "./dist/tooltip.cjs.js"
     },
     "./dist/*": "./dist/*"
   },
