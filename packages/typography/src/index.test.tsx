@@ -11,7 +11,9 @@ import {
 } from '.';
 import { SmallText } from './SmallText';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Blockquote, Heading2, LeadParagraph } from '../dist';
+import { Blockquote } from './Blockquote';
+import { Heading2 } from './Heading2';
+import { LeadParagraph } from './LeadParagraph';
 import { StrongText } from './StrongText';
 import { EmphasizedText } from './EmphasizedText';
 import { Link } from './Link';

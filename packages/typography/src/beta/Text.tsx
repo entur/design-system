@@ -49,7 +49,7 @@ const TypographyText = <C extends React.ElementType = 'p'>({
         'eds-text',
         variant && `eds-text--${variant}`,
         size && `eds-text--${size}`,
-        weight && `eds-text--${weight}`,
+        weight && `eds-text--weight-${weight}`,
         getSpacingClasses(spacing, 'eds-text'),
         className,
       )}

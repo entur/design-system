@@ -134,7 +134,7 @@ describe('Beta Typography Components', () => {
 
     test('applies weight classes correctly', () => {
       const { getByText } = render(<Text weight="bold">Bold text</Text>);
-      expect(getByText('Bold text')).toHaveClass('eds-text--bold');
+      expect(getByText('Bold text')).toHaveClass('eds-text--weight-bold');
     });
 
     test('applies spacing classes correctly', () => {
@@ -153,7 +153,7 @@ describe('Beta Typography Components', () => {
       const text = getByText('Combined text');
       expect(text).toHaveClass('eds-text--paragraph');
       expect(text).toHaveClass('eds-text--m');
-      expect(text).toHaveClass('eds-text--medium');
+      expect(text).toHaveClass('eds-text--weight-medium');
       expect(text).toHaveClass('eds-text--spacing-sm');
     });
 
@@ -330,7 +330,11 @@ describe('Beta Typography Components', () => {
       });
 
       test('returns default variant for non-string input', () => {
-        expect(getHeadingVariantFromSemanticType('div' as any)).toBe('title-1');
+        // Test with an actual React component (non-string)
+        const MockComponent = () => <div>Mock</div>;
+        expect(getHeadingVariantFromSemanticType(MockComponent)).toBe(
+          'title-1',
+        );
       });
     });
 
@@ -453,7 +457,11 @@ describe('Beta Typography Components', () => {
             <LinkBeta href="/reference" external>
               external reference
             </LinkBeta>{' '}
-            and <Text variant="emphasized">emphasized text</Text>.
+            and{' '}
+            <Text variant="emphasized" as="span">
+              emphasized text
+            </Text>
+            .
           </Text>
           <BlockquoteBeta>
             <Text variant="quote">This is an important quote</Text>
@@ -475,7 +483,7 @@ describe('Beta Typography Components', () => {
 
     test('Text with no variant, size, or weight uses default weight', () => {
       const { getByText } = render(<Text>Default text</Text>);
-      expect(getByText('Default text')).toHaveClass('eds-text--medium');
+      expect(getByText('Default text')).toHaveClass('eds-text--weight-medium');
     });
 
     test('Link without href still renders', () => {

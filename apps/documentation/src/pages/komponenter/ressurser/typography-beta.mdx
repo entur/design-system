@@ -121,7 +121,7 @@ Text er mer fleksibel, og krever at du velger variant selv.
 
 #### Semantikk 
 
-Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Default er `as = span`
+Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Default er `as = p`
 
 ````jsx
 <Text as="p">{'<p>as paragraph</p>'}</Text>
@@ -147,6 +147,35 @@ Hvis du bare skriver:
 
 Spacing kontrollerer mengden luft over og under typografikomponentene. Vi bruker våre [spacing-tokens](/tokens/ovrige-tokens/spacing) fra `xs2` til `xl`. Du kan også spesifisere retningsbestemt spacing med `-top` eller `-bottom` suffiks.
 
+
+##### Viktig: Standard margin-oppførsel
+
+Baseklasser har **ingen margin som standard** (`margin: 0`), men `variant` tar seg av spacing for deg og legger derfor til margins:
+
+- **Base-klasser**: `.eds-heading` og `.eds-text` har `margin: 0`
+- **Varianter med spacing**: Mange varianter inkluderer anbefalt spacing
+- **Size-klasser**: Kun font-size og line-height, ingen margins
+- **Eksplisitt spacing**: Du kan overstyre med `spacing` prop
+
+##### Hvordan spacing fungerer
+
+```jsx
+// Base-klasse: ingen margin
+<Text>Denne teksten har ingen margin</Text>
+
+// Variant med spacing: har margin
+<Text variant="paragraph">Denne teksten har margin fra variant</Text>
+<Text variant="leading">Denne teksten har også margin fra variant</Text>
+
+// Size-klasse: ingen margin
+<Text size="lg">Denne teksten har ingen margin</Text>
+
+// Eksplisitt spacing: overstyrer variant-spacing
+<Text variant="paragraph" spacing="md">Denne teksten har medium spacing</Text>
+<Text variant="paragraph" spacing="none">Denne teksten har ingen spacing</Text>
+```
+
+##### Flere eksempler:
 ````jsx
 // Default spacing (md)
 <Heading as="h2" variant="title-1" spacing="md">title 1</Heading>
@@ -274,7 +303,7 @@ Hver display-mode har innebygd responsiv oppførsel:
 ## Migrering
 
 Her er en mapping av alle gamle komponenter → nye.
-Du kan lese vår [migreringsguide](/komponenter/ressurser/typography-migration) om du ønsker med kontroll over migreringen.
+Du kan også lese vår [migreringsguide](/komponenter/ressurser/typography-migration/) om du ønsker med kontroll over migreringen.
 
 ### Tittel komponenter → Heading
 

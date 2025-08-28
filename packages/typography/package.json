@@ -6,7 +6,8 @@
   "module": "dist/typography.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "repository": {
     "type": "git",

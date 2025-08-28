@@ -199,6 +199,7 @@
 .eds-text {
   color: var(--primary-text-color);
   font-weight: var(--font-weight-body);
+  margin: 0;
 
   // Sizes
   &--xs {
@@ -297,20 +298,20 @@
   }
 
   // Font weights
-  &--400,
-  &--regular {
+  &--weight-400,
+  &--weight-regular {
     font-weight: 400;
   }
-  &--500,
-  &--medium {
+  &--weight-500,
+  &--weight-medium {
     font-weight: 500;
   }
-  &--600,
-  &--semibold {
+  &--weight-600,
+  &--weight-semibold {
     font-weight: 600;
   }
-  &--700,
-  &--bold {
+  &--weight-700,
+  &--weight-bold {
     font-weight: 700;
   }
 
