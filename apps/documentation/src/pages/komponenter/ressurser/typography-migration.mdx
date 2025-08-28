@@ -13,11 +13,11 @@ Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til 
 # Se hva som ville blitt endret (trygt)
 npx @entur/typography@latest migrate --dry-run
 
-# Sikker migrering: oppdater kun import paths 
+# Komplett migrering: oppdater alt til beta-komponenter
 npx @entur/typography@latest migrate
 
-# Komplett migrering: oppdater alt til beta-komponenter
-npx @entur/typography@latest migrate --complete
+# Import-only migrering: oppdater kun import paths 
+npx @entur/typography@latest migrate --import-only
 
 # Vis hjelp og alternativer
 npx @entur/typography@latest migrate --help
@@ -42,6 +42,16 @@ yarn workspace @entur/typography migrate --dry-run
 # Eller fra typography-mappen
 cd packages/typography
 yarn migrate --dry-run
+
+# Direkte kjøring (krever glob-pakken)
+node node_modules/@entur/typography/scripts/migrate-typography.js --dry-run
+```
+
+**Merk**: Hvis du kjører skriptet direkte og får en feil om manglende `glob`-pakke, installer den:
+```bash
+npm install glob
+# eller
+yarn add glob
 ```
 
 ### Alternativ 2: Manuell migrering
@@ -60,27 +70,30 @@ import { Heading, Text, LinkBeta } from '@entur/typography';
 
 ## Migreringsmodi
 
-### 📝 Sikker modus (standard)
-- **Hva det gjør**: Oppdaterer kun import paths
-- **Risiko**: Minimal - dine komponenter forblir uendret
-- **Når å bruke**: Når du vil migrere gradvis og teste steg for steg
-
-### 🚀 Komplett modus (`--complete`)
-- **Hva det gjør**: Oppdaterer både imports og komponentbruk
+### 🚀 Komplett modus (standard)
+- **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
 - **Konsekvenser**:
   - `<Heading1>` blir `<Heading as="h1" variant="title-1">`
   - `<Paragraph>` blir `<Text variant="paragraph">`
   - `<Link>` blir `<LinkBeta>`
   - Props kan trenge oppdateringer
   - Styling-klasser kan endres
+- **Når å bruke**: Når du vil migrere til det nye systemet umiddelbart
 - **⚠️ Viktig**: Test grundig etter migrering!
+
+### 📝 Import-only modus (`--import-only`)
+- **Hva det gjør**: Oppdaterer kun import paths, beholder eksisterende komponentbruk
+- **Risiko**: Minimal - dine komponenter forblir uendret
+- **Når å bruke**: Når du vil migrere gradvis og teste steg for steg
+- **Fordel**: Du kan oppdatere komponenter manuelt når du er klar
 
 ## Hva du får
 
 - **Automatisk migreringsskript**: Skript som automatisk oppdaterer dine imports og komponenter
 - **Sikker migrering**: Dry-run modus for å se endringer først
-- **Fleksibel tilnærming**: Velg mellom sikker eller komplett migrering
+- **Fleksibel tilnærming**: Velg mellom komplett eller import-only migrering
 - **Nye funksjoner**: Tilgang til forbedrede typografi-funksjoner
+- **Kontrollert spacing**: Alle komponenter har `margin: 0` som standard - du velger når du vil ha spacing
 
 ### Headings
 
@@ -270,26 +283,36 @@ import {
 
 ## Migreringsstrategier
 
-### Strategi 1: Gradvis migrering (Anbefalt)
+### Strategi 1: Komplett migrering (Standard)
 
-Bruk migreringshjelperne for å gradvis migrere komponentene dine:
+Migrer direkte til beta-komponenter med automatisk oppdatering:
+
+```bash
+# Komplett migrering (standard)
+npx @entur/typography@latest migrate
+```
+
+Dette vil automatisk:
+- Oppdatere alle imports
+- Erstatte gamle komponenter med beta-komponenter
+- Konvertere props til det nye formatet
 
 ```typescript
-// Steg 1: Bruk migration helpers
-import { Heading1, Paragraph } from '@entur/typography/migration';
+// Før migrering
+import { Heading1, Paragraph } from '@entur/typography';
 
 function MyComponent() {
   return (
     <div>
-      <Heading1>My Title</Heading1>
-      <Paragraph>My content</Paragraph>
+      <Heading1>Min tittel</Heading1>
+      <Paragraph>Mitt innhold</Paragraph>
     </div>
   );
 }
 ```
 
 ```typescript
-// Steg 2: Senere, migrer til direkte beta-komponenter
+// Etter komplett migrering
 import { Heading, Text } from '@entur/typography';
 
 function MyComponent() {
@@ -302,22 +325,112 @@ function MyComponent() {
     </div>
   );
 }
+```
 
-### Strategi 2: Direkte migrering
+### Strategi 2: Import-only migrering (For gradvis overgang)
 
-Hopp over migreringshjelperne og gå direkte til beta-komponenter:
+Bruk `--import-only` for å migrere steg for steg:
+
+```bash
+# Import-only migrering
+npx @entur/typography@latest migrate --import-only
+```
+
+Dette oppdaterer kun imports og lar deg beholde eksisterende komponentbruk:
 
 ```typescript
-// Før
+// Steg 1: Import-only migrering (kun imports)
 import { Heading1, Paragraph } from '@entur/typography';
 
-// Etter
+function MyComponent() {
+  return (
+    <div>
+      <Heading1>Min tittel</Heading1>
+      <Paragraph>Mitt innhold</Paragraph>
+    </div>
+  );
+}
+```
+
+```typescript
+// Steg 2: Senere, oppdater komponenter manuelt
 import { Heading, Text } from '@entur/typography';
 
-// Oppdater komponentbruk
-<Heading1>Tittel</Heading1> → <Heading as="h1" variant="title-1">Tittel</Heading>
-<Paragraph>Innhold</Paragraph> → <Text variant="paragraph">Innhold</Text>
+function MyComponent() {
+  return (
+    <div>
+      <Heading as="h1" variant="title-1">
+        Min tittel
+      </Heading>
+      <Text variant="paragraph">Mitt innhold</Text>
+    </div>
+  );
+}
 ```
+
+## Viktig: Ny margin-oppførsel
+
+### Standard margin-oppførsel
+
+Beta-komponenter har **ingen margin som standard** (`margin: 0`) på base-klassene, men **mange varianter legger til egne margins**:
+
+**Før migrering:**
+```jsx
+<Heading1>Denne hadde automatisk margin</Heading1>
+<Paragraph>Denne hadde også margin</Paragraph>
+```
+
+**Etter migrering:**
+```jsx
+// Med variant som har spacing
+<Heading as="h1" variant="title-1">Denne har margin fra variant</Heading>
+<Text variant="paragraph">Denne har margin fra variant</Text>
+
+// Uten variant (kun base-klasse)
+<Heading as="h1">Denne har ingen margin</Heading>
+<Text>Denne har ingen margin</Text>
+```
+
+### Hvordan spacing fungerer
+
+```jsx
+// Variant med spacing (standard)
+<Heading as="h1" variant="title-1">Tittel med margin fra variant</Heading>
+<Text variant="paragraph">Tekst med margin fra variant</Text>
+
+// Eksplisitt spacing (overstyrer variant)
+<Heading as="h1" variant="title-1" spacing="lg">Tittel med large spacing</Heading>
+<Text variant="paragraph" spacing="md">Tekst med medium spacing</Text>
+
+// Uten spacing (kun base-klasse)
+<Heading as="h1">Tittel uten margin</Heading>
+<Text>Tekst uten margin</Text>
+
+// Fjern spacing fra variant
+<Heading as="h1" variant="title-1" spacing="none">Tittel uten margin</Heading>
+<Text variant="paragraph" spacing="none">Tekst uten margin</Text>
+```
+
+### Automatisk margin → spacing migrering
+
+Migreringsskriptet oppdaterer automatisk `margin` props til `spacing`:
+
+```jsx
+// Før migrering
+<Heading1 margin="bottom">Tittel</Heading1>
+<Paragraph margin="none">Tekst</Paragraph>
+
+// Etter migrering
+<Heading as="h1" variant="title-1" spacing="md-bottom">Tittel</Heading>
+<Text variant="paragraph" spacing="none">Tekst</Text>
+```
+
+**Spacing-mapping:**
+- `margin="bottom"` → `spacing="md-bottom"`
+- `margin="top"` → `spacing="md-top"`
+- `margin="none"` → `spacing="none"`
+- `margin="lg"` → `spacing="lg"`
+- `margin="sm"` → `spacing="sm"`
 
 ## Vanlige problemer og løsninger
 
@@ -337,7 +450,7 @@ import { Heading, Text } from '@entur/typography';
 
 ### Problem: Manglende komponenter
 
-**Problem**: Noen komponenter kan ikke være tilgjengelige i migreringshjelperne.
+**Problem**: Noen komponenter kan være utilgjengelige i migreringshjelperne.
 
 **Løsning**: Bruk de nye beta-komponentene direkte:
 
@@ -350,6 +463,25 @@ import { Heading, Text } from '@entur/typography';
 **Problem**: TypeScript-feil på grunn av prop-forskjeller.
 
 **Løsning**: Sjekk komponentmappingstabellen over og oppdater props tilsvarende.
+
+### Problem: Semantic HTML-advarsler
+
+**Problem**: Migreringsskriptet kan vise advarsler om heading-nivåer som ikke matcher.
+
+**Eksempel på advarsel:**
+```
+Heading component has 'as="h3"' but expected 'as="h4"' - review semantic HTML structure
+```
+
+**Løsning**: Gjennomgå heading-strukturen din og oppdater `as` props manuelt for å matche riktig heading-nivå:
+
+```jsx
+// Før (kan gi advarsel)
+<Heading4 as="h3">Dette kan gi advarsel</Heading4>
+
+// Etter (korrekt semantic HTML)
+<Heading4 as="h4">Dette er korrekt</Heading4>
+```
 
 ## Eksempler
 
@@ -371,30 +503,7 @@ function Article() {
 }
 ```
 
-### Etter migrering (Bruker migreringshjelpere)
-
-```typescript
-import {
-  Heading1,
-  Paragraph,
-  Link,
-  StrongText,
-} from '@entur/typography/migration';
-
-function Article() {
-  return (
-    <article>
-      <Heading1>Article Title</Heading1>
-      <Paragraph>
-        This is a <StrongText>paragraph</StrongText> with a{' '}
-        <Link href="/more">link to more content</Link>.
-      </Paragraph>
-    </article>
-  );
-}
-```
-
-### Etter migrering (Bruker beta-komponenter)
+### Etter komplett migrering (Standard)
 
 ```typescript
 import { Heading, Text, LinkBeta } from '@entur/typography';
@@ -417,25 +526,43 @@ function Article() {
 }
 ```
 
+### Etter import-only migrering (Med --import-only flagget)
+
+```typescript
+import {
+  Heading1,
+  Paragraph,
+  Link,
+  StrongText,
+} from '@entur/typography';
+
+function Article() {
+  return (
+    <article>
+      <Heading1>Article Title</Heading1>
+      <Paragraph>
+        This is a <StrongText>paragraph</StrongText> with a{' '}
+        <Link href="/more">link to more content</Link>.
+      </Paragraph>
+    </article>
+  );
+}
+```
+
 ## Beste praksis
 
-1. **Start med migreringshjelpere** for en smidig overgang
-2. **Test grundig** etter hvert migreringssteg
+1. **Bruk komplett migrering som standard** for umiddelbar overgang til beta-komponenter
+2. **Test grundig** etter migrering for å sikre at alt fungerer som forventet
 3. **Oppdater stiler** for å bruke de nye beta typografi-stilene
-4. **Adopter gradvis nye funksjoner** som avstand og størrelsesvarianter
-5. **Fjern migreringshjelpere** når du er fullstendig migrert
+4. **Bruk import-only migrering** hvis du trenger mer tid til å tilpasse komponentene
+5. **Adopter nye funksjoner** som avstand og størrelsesvarianter når du er klar
 
 ## Støtte
 
 Hvis du støter på problemer under migrering:
 
 1. Sjekk denne migreringsguiden
-2. Gjennomgå [Typografi Beta Dokumentasjon](./docs/typography-beta.mdx)
+2. Gjennomgå [Typografi Beta Dokumentasjon](/komponenter/ressurser/typography-beta)
 3. Åpne et issue i design system repository
 4. Kontakt design system-teamet
 
-## Relatert dokumentasjon
-
-- [Typografi Beta Dokumentasjon](./docs/typography-beta.mdx)
-- [Design System Dokumentasjon](https://design.entur.no)
-- [Komponent API Referanse](./docs/api-reference.md)
