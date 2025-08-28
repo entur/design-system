@@ -7,9 +7,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/fileupload.esm.js",
-      "require": "./dist/fileupload.cjs.js"
+      "types": "dist/index.d.ts",
+      "import": "dist/fileupload.esm.js",
+      "require": "dist/fileupload.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

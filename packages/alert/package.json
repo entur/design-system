@@ -7,9 +7,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/alert.esm.js",
-      "require": "./dist/alert.cjs.js"
+      "types": "dist/index.d.ts",
+      "import": "dist/alert.esm.js",
+      "require": "dist/alert.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

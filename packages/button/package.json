@@ -7,9 +7,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/button.esm.js",
-      "require": "./dist/button.cjs.js"
+      "types": "dist/index.d.ts",
+      "import": "dist/button.esm.js",
+      "require": "dist/button.cjs.js"
     },
     "./dist/*": "./dist/*"
   },

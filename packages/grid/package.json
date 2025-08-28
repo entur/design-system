@@ -7,9 +7,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/grid.esm.js",
-      "require": "./dist/grid.cjs.js"
+      "types": "dist/index.d.ts",
+      "import": "dist/grid.esm.js",
+      "require": "dist/grid.cjs.js"
     },
     "./dist/*": "./dist/*"
   },
