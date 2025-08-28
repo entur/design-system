@@ -4968,7 +4968,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/icons@npm:^8.0.1-beta.1, @entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
+"@entur/icons@npm:^8.0.1-beta.2, @entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@entur/icons@workspace:packages/icons"
   dependencies:
@@ -36596,7 +36596,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "studio-linje@workspace:apps/studio-linje"
   dependencies:
-    "@entur/icons": "npm:^8.0.1-beta.1"
+    "@entur/icons": "npm:^8.0.1-beta.2"
     "@sanity/eslint-config-studio": "npm:^5.0.2"
     "@sanity/ui": "npm:^3.0.7"
     "@sanity/vision": "npm:4.5.0"

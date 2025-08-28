@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.1-beta.2](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.0...@entur/datepicker@11.2.1-beta.2) (2025-08-28)
+
+### Bug Fixes
+
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- exclude dependencies from bundle ([e8c8ab3](https://github.com/entur/design-system/commit/e8c8ab3ae1626f06867df6cd20576305227269d2))
+- fix package.json field order ([97dfb54](https://github.com/entur/design-system/commit/97dfb54b1de7f8e1db8d3741a33ed9a1910a2f4e))
+- wip incorrect path for export field in package.json ([16c3813](https://github.com/entur/design-system/commit/16c38132a070a0296324d8cae25720d31aea8f46))
+
 ## [11.2.1-beta.0](https://github.com/entur/design-system/compare/@entur/datepicker@11.2.0...@entur/datepicker@11.2.1-beta.0) (2025-08-27)
 
 ### Bug Fixes
