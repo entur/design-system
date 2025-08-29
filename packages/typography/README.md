@@ -63,18 +63,20 @@ function MyComponent() {
 ### Quick Migration
 
 ```bash
-# Option 1: Global command (recommended)
+# Option 1: Using npx (recommended)
 npx @entur/typography@latest migrate
 
-# Option 2: From installed package
-npx @entur/typography@latest migrate
-
-# Option 3: Direct execution (if you have the package locally)
-node node_modules/@entur/typography/scripts/migrate-typography.js
-
-# All options support --dry-run and --import-only flags
+# Option 2: With specific options
 npx @entur/typography@latest migrate --dry-run
 npx @entur/typography@latest migrate --import-only
+
+# Option 3: From installed package
+npm install @entur/typography@latest
+npx @entur/typography@latest migrate
+
+# Option 4: Add to your package.json scripts
+# "scripts": { "migrate-typography": "npx @entur/typography@latest migrate" }
+# Then run: npm run migrate-typography -- --dry-run
 ```
 
 **Note**: The migration script requires `glob` to be available. If you encounter an error, install it:

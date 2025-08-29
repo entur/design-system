@@ -5113,8 +5113,11 @@ __metadata:
     dts-cli: "npm:2.0.5"
     modern-normalize: "npm:^3.0.1"
   peerDependencies:
+    glob: ^8.0.0
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
+  bin:
+    migrate-typography: scripts/migrate-typography.js
   languageName: unknown
   linkType: soft
 

@@ -1,6 +1,6 @@
 {
   "name": "@entur/typography",
-  "version": "1.10.0-beta.0",
+  "version": "1.10.0-beta.1",
   "license": "SEE LICENSE IN README.md",
   "main": "dist/index.js",
   "module": "dist/typography.esm.js",
@@ -24,7 +24,11 @@
     "start": "dts watch --noClean",
     "migrate": "node scripts/migrate-typography.js"
   },
+  "bin": {
+    "migrate-typography": "scripts/migrate-typography.js"
+  },
   "peerDependencies": {
+    "glob": "^8.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
