@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-beta.7](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.6...@entur/typography@1.10.0-beta.7) (2025-08-29)
+
+### Bug Fixes
+
+- **typography:** tweek migration script and guide ([2048098](https://github.com/entur/design-system/commit/2048098f8219598f03eb525f1739ce395a8de32e))
+
 # [1.10.0-beta.6](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.4...@entur/typography@1.10.0-beta.6) (2025-08-29)
 
 ### Bug Fixes
