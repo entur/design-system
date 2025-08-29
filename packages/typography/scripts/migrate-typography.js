@@ -551,10 +551,22 @@ function updateImports(content) {
   let updatedContent = content;
   let changes = 0;
 
+  // First, update import paths
   IMPORT_PATTERNS.forEach(pattern => {
     const matches = content.match(pattern) || [];
     changes += matches.length;
     updatedContent = updatedContent.replace(pattern, `from '${BETA_IMPORT}'`);
+  });
+
+  // Then, update destructured import names
+  Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
+    // Simple approach: find and replace the component name in import statements
+    const importRegex = new RegExp(`\\b${oldComponent}\\b(?=\\s*[,}])`, 'g');
+
+    if (importRegex.test(updatedContent)) {
+      changes++;
+      updatedContent = updatedContent.replace(importRegex, mapping.component);
+    }
   });
 
   return { content: updatedContent, changes };
