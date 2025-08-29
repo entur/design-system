@@ -28,7 +28,7 @@
     "migrate-typography": "scripts/migrate-typography.js"
   },
   "peerDependencies": {
-    "glob": "^8.0.0",
+    "glob": "^11.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
