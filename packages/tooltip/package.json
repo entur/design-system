@@ -5,14 +5,6 @@
   "main": "dist/tooltip.cjs.js",
   "module": "dist/tooltip.esm.js",
   "typings": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/tooltip.esm.js",
-      "require": "./dist/tooltip.cjs.js"
-    },
-    "./dist/*": "./dist/*"
-  },
   "files": [
     "dist"
   ],

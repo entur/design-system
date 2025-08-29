@@ -5,14 +5,6 @@
   "main": "dist/layout.cjs.js",
   "module": "dist/layout.esm.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/layout.esm.js",
-      "require": "./dist/layout.cjs.js"
-    },
-    "./dist/*": "./dist/*"
-  },
   "files": [
     "dist"
   ],
