@@ -5,14 +5,6 @@
   "main": "dist/typography.cjs.js",
   "module": "dist/typography.esm.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/typography.esm.js",
-      "require": "./dist/typography.cjs.js"
-    },
-    "./dist/*": "./dist/*"
-  },
   "files": [
     "dist"
   ],
