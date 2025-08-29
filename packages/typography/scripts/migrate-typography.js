@@ -558,15 +558,37 @@ function updateImports(content) {
     updatedContent = updatedContent.replace(pattern, `from '${BETA_IMPORT}'`);
   });
 
-  // Then, update destructured import names
-  Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
-    // Simple approach: find and replace the component name in import statements
-    const importRegex = new RegExp(`\\b${oldComponent}\\b(?=\\s*[,}])`, 'g');
+  // Then, update destructured import names - only within @entur/typography imports
+  // Find all import statements from @entur/typography and update component names
+  const importRegex =
+    /import\s*{([^}]+)}\s*from\s*['"']@entur\/typography['"']/g;
 
-    if (importRegex.test(updatedContent)) {
+  updatedContent = updatedContent.replace(importRegex, (match, importList) => {
+    let updatedImportList = importList;
+    let hasChanges = false;
+    const uniqueComponents = new Set();
+
+    // Check each component in the import list
+    Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
+      const componentRegex = new RegExp(`\\b${oldComponent}\\b`, 'g');
+      if (componentRegex.test(updatedImportList)) {
+        updatedImportList = updatedImportList.replace(
+          componentRegex,
+          mapping.component,
+        );
+        uniqueComponents.add(mapping.component);
+        hasChanges = true;
+      }
+    });
+
+    if (hasChanges) {
       changes++;
-      updatedContent = updatedContent.replace(importRegex, mapping.component);
+      // Deduplicate components and create clean import statement
+      const finalImportList = Array.from(uniqueComponents).join(', ');
+      return `import {${finalImportList}} from '${BETA_IMPORT}'`;
     }
+
+    return match;
   });
 
   return { content: updatedContent, changes };
