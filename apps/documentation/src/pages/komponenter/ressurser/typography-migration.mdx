@@ -10,6 +10,9 @@ Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til 
 ### Alternativ 1: Automatisk migrering (Anbefalt)
 
 ```bash
+# Vis hjelp og alternativer
+npx @entur/typography@latest migrate --help
+
 # Se hva som ville blitt endret (trygt)
 npx @entur/typography@latest migrate --dry-run
 
@@ -18,32 +21,13 @@ npx @entur/typography@latest migrate
 
 # Import-only migrering: oppdater kun import paths 
 npx @entur/typography@latest migrate --import-only
-
-# Vis hjelp og alternativer
-npx @entur/typography@latest migrate --help
-```
-
-**Oppdater stilene dine:**
-
-```scss
-// Erstatt denne
-@import '@entur/typography/dist/styles.css';
-
-// Med denne
-@import '@entur/typography/src/beta/styles.scss';
 ```
 
 **Alternativ måte å kjøre migreringsskriptet:**
 
-```bash
-# Hvis du har typography-pakken lokalt
-yarn workspace @entur/typography migrate --dry-run
-
-# Eller fra typography-mappen
-cd packages/typography
-yarn migrate --dry-run
-
 # Direkte kjøring (krever glob-pakken)
+
+```bash
 node node_modules/@entur/typography/scripts/migrate-typography.js --dry-run
 ```
 
@@ -68,9 +52,9 @@ import { Heading, Text, LinkBeta } from '@entur/typography';
 // <Paragraph>Text</Paragraph> → <Text variant="paragraph">Text</Text>
 ```
 
-## Migreringsmodi
+## Migreringsmetoder
 
-### 🚀 Komplett modus (standard)
+### 🚀 Komplett migrering (standard)
 - **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
 - **Konsekvenser**:
   - `<Heading1>` blir `<Heading as="h1" variant="title-1">`
