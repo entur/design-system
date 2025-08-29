@@ -4968,7 +4968,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/icons@npm:^8.0.0, @entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
+"@entur/icons@npm:latest":
+  version: 8.0.0
+  resolution: "@entur/icons@npm:8.0.0"
+  dependencies:
+    "@entur/tokens": "npm:^3.19.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/face7463ce708178d5a9af7c063df4619c8e483e5eda58fff7cf6b8a9d7a998d66215954aec03ea2b71a55b867b7988d03290f05345cc7878bbe7755d386b22c
+  languageName: node
+  linkType: hard
+
+"@entur/icons@workspace:^, @entur/icons@workspace:packages/icons":
   version: 0.0.0-use.local
   resolution: "@entur/icons@workspace:packages/icons"
   dependencies:
@@ -5175,7 +5186,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
+"@entur/tokens@npm:^3.19.1, @entur/tokens@workspace:^, @entur/tokens@workspace:packages/tokens":
   version: 0.0.0-use.local
   resolution: "@entur/tokens@workspace:packages/tokens"
   dependencies:
@@ -36596,7 +36607,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "studio-linje@workspace:apps/studio-linje"
   dependencies:
-    "@entur/icons": "npm:^8.0.0"
+    "@entur/icons": "npm:latest"
     "@sanity/eslint-config-studio": "npm:^5.0.2"
     "@sanity/ui": "npm:^3.0.7"
     "@sanity/vision": "npm:4.5.0"

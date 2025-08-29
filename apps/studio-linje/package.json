@@ -15,7 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@entur/icons": "^8.0.0",
+    "@entur/icons": "latest",
     "@sanity/ui": "^3.0.7",
     "@sanity/vision": "4.5.0",
     "react": "^18.3.1",

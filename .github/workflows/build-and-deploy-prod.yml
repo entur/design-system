@@ -43,7 +43,7 @@ jobs:
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
         with:
-          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+          cache-key: yarn-sanity-${{ hashFiles('**/yarn.lock') }}
           only-for-workspace: 'studio-linje'
 
       - name: Deploy Sanity GraphQL API
@@ -117,7 +117,7 @@ jobs:
       - name: Install and Cache Yarn Dependencies
         uses: ./.github/actions/install-and-cache-dependencies
         with:
-          cache-key: yarn-${{ hashFiles('**/yarn.lock') }}
+          cache-key: yarn-sanity-${{ hashFiles('**/yarn.lock') }}
           only-for-workspace: 'studio-linje'
 
       - name: Deploy Sanity Studio
