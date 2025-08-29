@@ -72,6 +72,31 @@ try {
 const OLD_IMPORT = '@entur/typography';
 const BETA_IMPORT = '@entur/typography';
 
+// Enhanced warning detection patterns - only truly problematic patterns
+const PROBLEMATIC_PATTERNS = {
+  // Style conflicts that will cause issues
+  styleMarginConflict: /style=.*margin=/g,
+  styleSpacingConflict: /style=.*spacing=/g,
+
+  // Invalid HTML structure
+  nestedTypography: /<Text[^>]*>.*<Text[^>]*>/g,
+
+  // Accessibility issues
+  missingAsProps: /<Heading[^>]*>(?!.*\bas=)/g,
+
+  // Semantic HTML mismatches
+  semanticMismatch: /<Heading[^>]*as="([^"]*)"[^>]*variant="([^"]*)"/g,
+};
+
+// Warning severity levels
+const WARNING_CATEGORIES = {
+  CRITICAL: 'critical', // Will break functionality
+  HIGH: 'high', // Likely to cause issues
+  MEDIUM: 'medium', // May cause styling issues
+  LOW: 'low', // Best practice suggestions
+  INFO: 'info', // Informational only
+};
+
 // =============================================================================
 // 🎯 MIGRATION FOLDERS CONFIGURATION
 // =============================================================================
@@ -112,6 +137,153 @@ const MIGRATION_FOLDERS = [
 // Validate and sanitize directory input for security
 function validateDirectoryPath(dir) {
   return !path.isAbsolute(dir) && !dir.includes('..') && !dir.includes('~');
+}
+
+// Enhanced file analysis for better warning detection - only truly problematic patterns
+function analyzeFile(filePath, content) {
+  const analysis = {
+    hasStyleConflicts: false,
+    hasNestedTypography: false,
+    hasAccessibilityIssues: false,
+    hasSemanticMismatches: false,
+    lineNumbers: {},
+    suggestions: [],
+    warnings: [],
+  };
+
+  // Line-by-line analysis for better context
+  content.split('\n').forEach((line, index) => {
+    const lineNum = index + 1;
+
+    // Check for style conflicts (style + margin/spacing)
+    if (
+      line.match(PROBLEMATIC_PATTERNS.styleMarginConflict) ||
+      line.match(PROBLEMATIC_PATTERNS.styleSpacingConflict)
+    ) {
+      analysis.hasStyleConflicts = true;
+      analysis.lineNumbers.styleConflicts = (
+        analysis.lineNumbers.styleConflicts || []
+      ).concat(lineNum);
+
+      // Generate warning message
+      analysis.warnings.push(
+        `Line ${lineNum}: Style conflicts detected - component has both style and margin/spacing props`,
+      );
+    }
+
+    // Check for nested typography components (invalid HTML)
+    if (line.match(PROBLEMATIC_PATTERNS.nestedTypography)) {
+      analysis.hasNestedTypography = true;
+      analysis.lineNumbers.nestedTypography = (
+        analysis.lineNumbers.nestedTypography || []
+      ).concat(lineNum);
+
+      // Generate warning message
+      analysis.warnings.push(
+        `Line ${lineNum}: Nested typography components detected - invalid HTML structure`,
+      );
+    }
+
+    // Check for missing as props (accessibility issue)
+    if (line.match(PROBLEMATIC_PATTERNS.missingAsProps)) {
+      analysis.hasAccessibilityIssues = true;
+      analysis.lineNumbers.missingAsProps = (
+        analysis.lineNumbers.missingAsProps || []
+      ).concat(lineNum);
+
+      // Generate warning message
+      analysis.warnings.push(
+        `Line ${lineNum}: Missing 'as' prop - accessibility issue for Heading component`,
+      );
+    }
+
+    // Check for semantic mismatches (e.g., h1 with subtitle variant)
+    if (line.match(PROBLEMATIC_PATTERNS.semanticMismatch)) {
+      analysis.hasSemanticMismatches = true;
+      analysis.lineNumbers.semanticMismatches = (
+        analysis.lineNumbers.semanticMismatches || []
+      ).concat(lineNum);
+
+      // Generate warning message
+      analysis.warnings.push(
+        `Line ${lineNum}: Semantic mismatch detected - heading level and variant combination may be incorrect`,
+      );
+    }
+  });
+
+  return analysis;
+}
+
+// Generate enhanced warnings with context and solutions
+function generateWarningWithSolution(warning, context, filePath, lineNumber) {
+  const severity = determineSeverity(warning);
+  const suggestion = generateSuggestion(warning, context);
+  const codeExample = generateCodeExample(warning);
+
+  return {
+    message: warning,
+    severity,
+    suggestion,
+    codeExample,
+    file: filePath,
+    line: lineNumber,
+    documentation: getRelevantDocs(warning),
+  };
+}
+
+// Determine warning severity based on content
+function determineSeverity(warning) {
+  if (warning.includes('will break') || warning.includes('fatal'))
+    return WARNING_CATEGORIES.CRITICAL;
+  if (warning.includes('conflict') || warning.includes('override'))
+    return WARNING_CATEGORIES.HIGH;
+  if (warning.includes('may cause') || warning.includes('styling'))
+    return WARNING_CATEGORIES.MEDIUM;
+  if (warning.includes('best practice') || warning.includes('consider'))
+    return WARNING_CATEGORIES.LOW;
+  return WARNING_CATEGORIES.INFO;
+}
+
+// Generate actionable suggestions
+function generateSuggestion(warning, context) {
+  if (warning.includes('style and margin')) {
+    return 'Remove the margin prop as it will be overridden by inline styles. Use spacing prop instead.';
+  }
+  if (warning.includes('missing variant')) {
+    return 'Add a variant prop to ensure consistent styling. Example: variant="title-1"';
+  }
+  if (warning.includes('nested typography')) {
+    return 'Avoid nesting Text components. Use spans or other inline elements for emphasis.';
+  }
+  if (warning.includes('deprecated margin')) {
+    return 'Replace margin prop with spacing prop for better consistency.';
+  }
+  return 'Review the component for potential styling conflicts.';
+}
+
+// Generate code examples for fixes
+function generateCodeExample(warning) {
+  if (warning.includes('style and margin')) {
+    return '// Before: <Text style={{color: "red"}} margin="bottom">\n// After:  <Text style={{color: "red"}} spacing="bottom">';
+  }
+  if (warning.includes('missing variant')) {
+    return '// Before: <Heading as="h1">Title</Heading>\n// After:  <Heading as="h1" variant="title-1">Title</Heading>';
+  }
+  if (warning.includes('nested typography')) {
+    return '// Before: <Text>Hello <Text>World</Text></Text>\n// After:  <Text>Hello <span>World</span></Text>';
+  }
+  return '';
+}
+
+// Get relevant documentation links
+function getRelevantDocs(warning) {
+  if (warning.includes('variant'))
+    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#heading-variants';
+  if (warning.includes('spacing'))
+    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#spacing';
+  if (warning.includes('semantic'))
+    return 'https://linje.entur.no/komponenter/ressurser/typography-beta#semantic-html';
+  return 'https://linje.entur.no/komponenter/ressurser/typography-beta';
 }
 
 let ALLOWED_DIRECTORIES = process.env.TYPOGRAPHY_MIGRATION_DIRS
@@ -564,21 +736,32 @@ function generateMigrationReport(files, strategy, isDryRun = false) {
   files.forEach(file => {
     try {
       const content = fs.readFileSync(file, 'utf8');
+
+      // Analyze file for problematic patterns BEFORE migration
+      const fileAnalysis = analyzeFile(file, content);
+
       const {
         content: updatedContent,
         changes,
         warnings,
       } = updateImportsAndComponents(content, strategy);
 
-      if (changes > 0) {
+      // Combine migration warnings with file analysis warnings
+      const allWarnings = [...warnings, ...fileAnalysis.warnings];
+
+      if (changes > 0 || fileAnalysis.warnings.length > 0) {
         if (!isDryRun) {
           fs.writeFileSync(file, updatedContent, 'utf8');
         }
-        report.migratedFiles++;
-        report.totalChanges += changes;
-        report.totalWarnings += warnings.length;
-        report.files.push({ file, changes, warnings });
-        report.warnings.push(...warnings.map(warning => `${file}: ${warning}`));
+        if (changes > 0) {
+          report.migratedFiles++;
+          report.totalChanges += changes;
+        }
+        report.totalWarnings += allWarnings.length;
+        report.files.push({ file, changes, warnings: allWarnings });
+        report.warnings.push(
+          ...allWarnings.map(warning => `${file}: ${warning}`),
+        );
       }
     } catch (error) {
       report.warnings.push(`${file}: Error processing file - ${error.message}`);
@@ -618,6 +801,20 @@ function printReport(report) {
     );
     const conflictWarnings = report.warnings.filter(w =>
       w.includes('check for conflicts'),
+    );
+
+    // New warning types from file analysis
+    const styleConflictWarnings = report.warnings.filter(
+      w => w.includes('style conflicts') || w.includes('style and margin'),
+    );
+    const nestedTypographyWarnings = report.warnings.filter(w =>
+      w.includes('nested typography'),
+    );
+    const accessibilityWarnings = report.warnings.filter(
+      w => w.includes('missing as prop') || w.includes('accessibility'),
+    );
+    const semanticMismatchWarnings = report.warnings.filter(w =>
+      w.includes('semantic mismatch'),
     );
 
     if (marginWarnings.length > 0) {
@@ -662,6 +859,79 @@ function printReport(report) {
       console.log(`    → Review these components for styling conflicts`);
     }
 
+    // Display new warning types
+    if (styleConflictWarnings.length > 0) {
+      console.log(
+        `\n  🎨 Style + Margin Conflicts (${styleConflictWarnings.length}):`,
+      );
+      styleConflictWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (styleConflictWarnings.length > 5) {
+        console.log(
+          `    ... and ${
+            styleConflictWarnings.length - 5
+          } more similar warnings`,
+        );
+      }
+      console.log(`    → Remove margin prop when using inline styles`);
+    }
+
+    if (nestedTypographyWarnings.length > 0) {
+      console.log(
+        `\n  🚫 Nested Typography (${nestedTypographyWarnings.length}):`,
+      );
+      nestedTypographyWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (nestedTypographyWarnings.length > 5) {
+        console.log(
+          `    ... and ${
+            nestedTypographyWarnings.length - 5
+          } more similar warnings`,
+        );
+      }
+      console.log(
+        `    → Use spans or other inline elements instead of nested Text components`,
+      );
+    }
+
+    if (accessibilityWarnings.length > 0) {
+      console.log(
+        `\n  ♿ Accessibility Issues (${accessibilityWarnings.length}):`,
+      );
+      accessibilityWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (accessibilityWarnings.length > 5) {
+        console.log(
+          `    ... and ${
+            accessibilityWarnings.length - 5
+          } more similar warnings`,
+        );
+      }
+      console.log(
+        `    → Add 'as' prop to Heading components for proper semantic HTML`,
+      );
+    }
+
+    if (semanticMismatchWarnings.length > 0) {
+      console.log(
+        `\n  🔍 Semantic Mismatches (${semanticMismatchWarnings.length}):`,
+      );
+      semanticMismatchWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (semanticMismatchWarnings.length > 5) {
+        console.log(
+          `    ... and ${
+            semanticMismatchWarnings.length - 5
+          } more similar warnings`,
+        );
+      }
+      console.log(`    → Review heading level and variant combinations`);
+    }
+
     console.log('\n📋 Summary:');
     if (marginWarnings.length > 0)
       console.log(
@@ -674,6 +944,22 @@ function printReport(report) {
     if (conflictWarnings.length > 0)
       console.log(
         `  • ${conflictWarnings.length} style conflicts need manual review`,
+      );
+    if (styleConflictWarnings.length > 0)
+      console.log(
+        `  • ${styleConflictWarnings.length} style + margin conflicts detected`,
+      );
+    if (nestedTypographyWarnings.length > 0)
+      console.log(
+        `  • ${nestedTypographyWarnings.length} nested typography components found`,
+      );
+    if (accessibilityWarnings.length > 0)
+      console.log(
+        `  • ${accessibilityWarnings.length} accessibility issues need attention`,
+      );
+    if (semanticMismatchWarnings.length > 0)
+      console.log(
+        `  • ${semanticMismatchWarnings.length} semantic mismatches detected`,
       );
 
     // Add helpful note about warning limits
