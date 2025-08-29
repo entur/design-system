@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.2-beta.3](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.2-beta.2...@entur/dropdown@7.3.2-beta.3) (2025-08-29)
+
+### Bug Fixes
+
+- remove exports field for now ([b995714](https://github.com/entur/design-system/commit/b995714d94d6e72f99cb973574453ca172446a0f))
+
+### Reverts
+
+- Revert "fix: wip incorrect path for export field in package.json" ([3f84442](https://github.com/entur/design-system/commit/3f844428b009c3464bd417e85d47d097ee3cf922))
+
 ## [7.3.2-beta.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.1...@entur/dropdown@7.3.2-beta.2) (2025-08-28)
 
 ### Bug Fixes

@@ -1,7 +1,7 @@
 {
   "name": "studio-linje",
   "private": true,
-  "version": "1.5.0-beta.2",
+  "version": "1.5.0-beta.3",
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
@@ -15,7 +15,7 @@
     "sanity"
   ],
   "dependencies": {
-    "@entur/icons": "^8.0.1-beta.2",
+    "@entur/icons": "^8.0.1-beta.3",
     "@sanity/ui": "^3.0.7",
     "@sanity/vision": "4.5.0",
     "react": "^18.3.1",
