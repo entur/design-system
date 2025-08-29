@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/entur/design-system/compare/@entur/icons@8.0.0...@entur/icons@8.0.1) (2025-08-29)
+
+### Bug Fixes
+
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+
 # [8.0.0](https://github.com/entur/design-system/compare/@entur/icons@7.14.0...@entur/icons@8.0.0) (2025-06-27)
 
 ### Code Refactoring

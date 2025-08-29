@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.9](https://github.com/entur/design-system/compare/@entur/layout@3.1.8...@entur/layout@3.1.9) (2025-08-29)
+
+### Bug Fixes
+
+- **deps:** bump minor for dependencies ([bdde8f2](https://github.com/entur/design-system/commit/bdde8f2d5ab46cfa307a424429063b9700edfc1e))
+- exclude dependencies from bundle ([5252a14](https://github.com/entur/design-system/commit/5252a14c4c615452f3cc7effc73287a5ee42399e))
+- fix package.json field order ([7de85f2](https://github.com/entur/design-system/commit/7de85f2baf08a1fc3a0223e3f149c8cf9636546b))
+
 ## [3.1.8](https://github.com/entur/design-system/compare/@entur/layout@3.1.7...@entur/layout@3.1.8) (2025-06-27)
 
 **Note:** Version bump only for package @entur/layout
