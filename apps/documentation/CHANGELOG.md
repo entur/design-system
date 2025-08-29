@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0-beta.2](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0-beta.2) (2025-08-29)
+
+### Bug Fixes
+
+- **gha:** copy playroom fails since directory doesn't already exist ([532b6bc](https://github.com/entur/design-system/commit/532b6bc971b0217b68a3e1ab5c24e833978497c1))
+- **page-builder:** fix styling issues for textblock type information ([e3395b8](https://github.com/entur/design-system/commit/e3395b8777144ebaff01cbdedddd85198abec988))
+- **page-builder:** image and text order is now respected ([fa9077a](https://github.com/entur/design-system/commit/fa9077a0a788584ab396e1526901cef474e70a2f))
+- **page-builder:** remove incorrect border-radius from images ([44eaf9a](https://github.com/entur/design-system/commit/44eaf9a5ddce791ffb7e0a4f69623b45081bf77d))
+- **typography:** beta add spacing utils ([20fbbb9](https://github.com/entur/design-system/commit/20fbbb9e6d07e94799d923d887f8a3463433e084))
+- **typography:** beta fixes after review ([acfae4c](https://github.com/entur/design-system/commit/acfae4c89082a1ba805effbfb5ee5cdeb2d191a6))
+- **typography:** proper ref forwarding in blockquote ([88294bd](https://github.com/entur/design-system/commit/88294bdfc69692436a7fd71e7da9ba84f8f61429))
+- **typography:** small fixes to beta typography ([010abbd](https://github.com/entur/design-system/commit/010abbdb0a522f5dd187b24d04db12e3af8e24e7))
+- **typography:** tweek migration script and guide ([7bb6b9e](https://github.com/entur/design-system/commit/7bb6b9ee346d18283a4b7978d7f68313ddf882fa))
+- **typography:** tweek migration script and guide ([48a624f](https://github.com/entur/design-system/commit/48a624f296eec30e8e579034e6d661cfccc39797))
+- **website:** remove unwanted console.log ([8e45125](https://github.com/entur/design-system/commit/8e451254b1767c027fb604c484f10b384063735c))
+- **website:** syntax issues on frontpage ([b656215](https://github.com/entur/design-system/commit/b6562152d2fedaaa38ddb4519bcbab3355020cbb))
+
+### Features
+
+- **docs:** remove kom-i-gang/introduksjon page to use Sanity page instead ([1c7d943](https://github.com/entur/design-system/commit/1c7d943d33919c897a9f221c7ab865a814e1454f))
+- **docs:** remove non-sanity version of identitet-pages ([fa11e6b](https://github.com/entur/design-system/commit/fa11e6b3a3f04145f1bb744387b2bca3aab95e55))
+- **docs:** remove non-sanity version of workshopmaler-pages ([47bdc47](https://github.com/entur/design-system/commit/47bdc470782ed7009ec980de3f85c0bfa8de7071))
+- **page-builder:** add alert type to textbox ([86ab1a2](https://github.com/entur/design-system/commit/86ab1a225ad02bbe6f79c654dc2920d29418fadb))
+- **page-builder:** add functionality for making a page the category landingpage ([cf78f76](https://github.com/entur/design-system/commit/cf78f7685f790454909ef7d1ea0823bb2a24a162))
+- **typography:** beta display mode ([0377b1a](https://github.com/entur/design-system/commit/0377b1a90e0aa5eb08c941064044773741d63f9b))
+- **typography:** initial beta typography setup ([a07693c](https://github.com/entur/design-system/commit/a07693c9a32d8746d8a4258b4e1043c2189826f0))
+- **website:** add sandkasse to side navigation ([4b159d8](https://github.com/entur/design-system/commit/4b159d898e1e601b55ebf7735596672928b103c0))
+- **website:** include playroom in entur linje documentation site ([6f00c69](https://github.com/entur/design-system/commit/6f00c69fcb4dd530e351d28e47ddf1de05389072))
+- **website:** move to usercentrics for consent management ([79d2043](https://github.com/entur/design-system/commit/79d2043b0a7e71d012bf76ca9077687e0580da96))
+
 # [6.9.0-beta.1](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0-beta.1) (2025-08-29)
 
 ### Bug Fixes
