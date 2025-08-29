@@ -25,55 +25,56 @@ type CollapsibleSideNavigationProps = SideNavigationProps & {
   closeSideMenuAriaLabel?: string;
 };
 
-export const CollapsibleSideNavigation: React.FC<CollapsibleSideNavigationProps> =
-  ({
-    className,
-    children,
-    size,
-    collapsed: collapsible,
-    onCollapseToggle,
-    collapsibleButtonPosition = '50%',
-    openSideMenuAriaLabel = 'Åpne sidemeny',
-    closeSideMenuAriaLabel = 'Lukk sidemeny',
-    ...rest
-  }) => {
-    const [collapsedMenu, setCollapsedMenu] = useControllableProp({
-      prop: collapsible,
-      defaultValue: false,
-      updater: onCollapseToggle,
-    });
+export const CollapsibleSideNavigation: React.FC<
+  CollapsibleSideNavigationProps
+> = ({
+  className,
+  children,
+  size,
+  collapsed: collapsible,
+  onCollapseToggle,
+  collapsibleButtonPosition = '50%',
+  openSideMenuAriaLabel = 'Åpne sidemeny',
+  closeSideMenuAriaLabel = 'Lukk sidemeny',
+  ...rest
+}) => {
+  const [collapsedMenu, setCollapsedMenu] = useControllableProp({
+    prop: collapsible,
+    defaultValue: false,
+    updater: onCollapseToggle,
+  });
 
-    return (
-      <SideNavigationContext.Provider
-        value={{
-          isCollapsed: collapsedMenu,
-        }}
+  return (
+    <SideNavigationContext.Provider
+      value={{
+        isCollapsed: collapsedMenu,
+      }}
+    >
+      <ul
+        className={classNames(
+          'eds-side-navigation',
+          { 'eds-side-navigation--small': size === 'small' },
+          { 'eds-side-navigation--collapsed': collapsedMenu },
+          className,
+        )}
+        {...rest}
       >
-        <ul
-          className={classNames(
-            'eds-side-navigation',
-            { 'eds-side-navigation--small': size === 'small' },
-            { 'eds-side-navigation--collapsed': collapsedMenu },
-            className,
-          )}
-          {...rest}
+        {children}
+        <button
+          className="eds-side-navigation__collapse-button"
+          onClick={() => setCollapsedMenu(!collapsedMenu)}
+          style={{ top: `${collapsibleButtonPosition}` }}
         >
-          {children}
-          <button
-            className="eds-side-navigation__collapse-button"
-            onClick={() => setCollapsedMenu(!collapsedMenu)}
-            style={{ top: `${collapsibleButtonPosition}` }}
-          >
-            {collapsedMenu ? (
-              <MenuIcon aria-label={openSideMenuAriaLabel} />
-            ) : (
-              <LeftArrowIcon aria-label={closeSideMenuAriaLabel} />
-            )}
-          </button>
-        </ul>
-      </SideNavigationContext.Provider>
-    );
-  };
+          {collapsedMenu ? (
+            <MenuIcon aria-label={openSideMenuAriaLabel} />
+          ) : (
+            <LeftArrowIcon aria-label={closeSideMenuAriaLabel} />
+          )}
+        </button>
+      </ul>
+    </SideNavigationContext.Provider>
+  );
+};
 
 const SideNavigationContext = React.createContext<{
   isCollapsed: boolean;

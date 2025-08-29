@@ -1,7 +1,7 @@
-@use "sass:map";
-@use "../styles/variables.scss" as variables;
-@use '~@entur/utils/dist/breakpoints.scss' as breakpoint;
-@use '~@entur/tokens/dist/styles.scss' as eds;
+@use 'sass:map';
+@use '../styles/variables.scss' as variables;
+@use '@entur/utils/dist/breakpoints.scss' as breakpoint;
+@use '@entur/tokens/dist/styles.scss' as eds;
 
 .frontpage {
   $self: &;

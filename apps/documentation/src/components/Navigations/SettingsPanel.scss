@@ -1,6 +1,6 @@
-@use "sass:map";
-@use '~@entur/tokens/dist/styles.scss' as eds;
-@use '~@entur/utils/dist/breakpoints.scss' as *;
+@use 'sass:map';
+@use '@entur/tokens/dist/styles.scss' as eds;
+@use '@entur/utils/dist/breakpoints.scss' as *;
 
 @use '../../styles/variables' as variables;
 

@@ -10,7 +10,10 @@
   "plugins": ["react"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2015
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
     "no-warning-comments": [

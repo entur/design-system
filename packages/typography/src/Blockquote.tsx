@@ -24,12 +24,13 @@ type BlockquoteFooterProps = {
   className?: string;
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
-export const BlockquoteFooter: React.FunctionComponent<BlockquoteFooterProps> =
-  ({ className, ...rest }) => {
-    return (
-      <footer
-        className={classNames('eds-blockquote__footer', className)}
-        {...rest}
-      />
-    );
-  };
+export const BlockquoteFooter: React.FunctionComponent<
+  BlockquoteFooterProps
+> = ({ className, ...rest }) => {
+  return (
+    <footer
+      className={classNames('eds-blockquote__footer', className)}
+      {...rest}
+    />
+  );
+};

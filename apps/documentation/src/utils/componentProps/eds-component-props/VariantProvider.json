@@ -1,27 +1,25 @@
-[
-  {
-    "tags": {},
-    "description": "",
-    "displayName": "VariantProvider",
-    "methods": [],
-    "props": {
-      "variant": {
-        "defaultValue": {
-          "value": null
-        },
-        "description": "",
-        "name": "variant",
-        "declarations": [
-          {
-            "fileName": "design-system/packages/form/src/VariantProvider.tsx",
-            "name": "TypeLiteral"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "VariantType | \"error\" | \"info\" | undefined"
+{
+  "tags": {},
+  "description": "",
+  "displayName": "VariantProvider",
+  "methods": [],
+  "props": {
+    "variant": {
+      "defaultValue": {
+        "value": null
+      },
+      "description": "",
+      "name": "variant",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/form/src/VariantProvider.tsx",
+          "name": "TypeLiteral"
         }
+      ],
+      "required": false,
+      "type": {
+        "name": "any"
       }
     }
   }
-]
+}

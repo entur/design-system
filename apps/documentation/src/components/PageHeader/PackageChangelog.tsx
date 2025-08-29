@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Modal } from '@entur/modal/dist';
+import { Modal } from '@entur/modal';
 import { MarkdownParser } from './MarkdownParser';
-import { ActionChip } from '@entur/chip/dist';
+import { ActionChip } from '@entur/chip';
 import { ListViewIcon } from '@entur/icons';
 import { useGetChangelog } from './useGetChangelog';
 

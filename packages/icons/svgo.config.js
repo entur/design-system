@@ -12,6 +12,7 @@ const plugins = [
   { name: 'removeXMLProcInst' },
   { name: 'removeComments' },
   { name: 'removeMetadata' },
+  { name: 'removeViewBox' },
   { name: 'removeTitle' },
   { name: 'removeDesc' },
   { name: 'removeUselessDefs' },
