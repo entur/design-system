@@ -624,17 +624,41 @@ function printReport(report) {
       console.log(
         `\n  🔄 Margin → Spacing Migrations (${marginWarnings.length}):`,
       );
-      marginWarnings.forEach(warning => console.log(`    ${warning}`));
+      // Show first 5 warnings, then summarize the rest
+      marginWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (marginWarnings.length > 5) {
+        console.log(
+          `    ... and ${marginWarnings.length - 5} more similar warnings`,
+        );
+      }
     }
 
     if (semanticWarnings.length > 0) {
       console.log(`\n  🎯 Semantic HTML Issues (${semanticWarnings.length}):`);
-      semanticWarnings.forEach(warning => console.log(`    ${warning}`));
+      // Show first 5 warnings, then summarize the rest
+      semanticWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (semanticWarnings.length > 5) {
+        console.log(
+          `    ... and ${semanticWarnings.length - 5} more similar warnings`,
+        );
+      }
     }
 
     if (conflictWarnings.length > 0) {
       console.log(`\n  🚨 Style Conflicts (${conflictWarnings.length}):`);
-      conflictWarnings.forEach(warning => console.log(`    ${warning}`));
+      // Show first 5 warnings, then summarize the rest
+      conflictWarnings
+        .slice(0, 5)
+        .forEach(warning => console.log(`    ${warning}`));
+      if (conflictWarnings.length > 5) {
+        console.log(
+          `    ... and ${conflictWarnings.length - 5} more similar warnings`,
+        );
+      }
       console.log(`    → Review these components for styling conflicts`);
     }
 
@@ -651,6 +675,16 @@ function printReport(report) {
       console.log(
         `  • ${conflictWarnings.length} style conflicts need manual review`,
       );
+
+    // Add helpful note about warning limits
+    if (report.warnings.length > 15) {
+      console.log(
+        '\n💡 Note: Only showing first 5 warnings of each type to avoid overwhelming output.',
+      );
+      console.log(
+        '   All warnings are still logged in the migration report above.',
+      );
+    }
   }
 }
 
