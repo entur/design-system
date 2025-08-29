@@ -349,8 +349,6 @@ const COMPONENT_MAPPING = {
   Label: { component: 'Text', variant: 'label' },
   EmphasizedText: { component: 'Text', variant: 'emphasized' },
   CodeText: { component: 'Text', variant: 'code-text' },
-  Link: { component: 'LinkBeta' },
-  Blockquote: { component: 'BlockquoteBeta' },
 };
 
 // Props mapping for migration
