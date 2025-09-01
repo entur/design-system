@@ -68,7 +68,7 @@ npx @entur/typography@latest migrate
 
 # Option 2: With specific options
 npx @entur/typography@latest migrate --dry-run
-npx @entur/typography@latest migrate --import-only
+
 
 # Option 3: From installed package
 npm install @entur/typography@latest
@@ -87,10 +87,9 @@ npm install glob
 yarn add glob
 ```
 
-### Migration Modes
+### Migration Mode
 
-- **🚀 Complete Migration (default)**: Updates imports + component usage
-- **📝 Import-Only Migration**: Updates only import paths (safer for gradual migration)
+- **🚀 Complete Migration**: Updates imports + component usage
 
 ### Update Styles
 

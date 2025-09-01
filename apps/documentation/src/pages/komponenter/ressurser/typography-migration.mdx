@@ -1,13 +1,44 @@
+---
+title: Typography migrering
+description: Komplett guide for migrering til ny typografi
+route: /komponenter/ressurser/typography-migration
+parent: Komponenter
+menu: Ressurser
+npmPackage: typography
+---
+
 import { Table, TableRow, TableHead, TableBody, DataCell, HeaderCell } from '@entur/table';
 import { CodeText } from '@entur/typography';
 
-# Typografi Migreringsguide
+## Typografi migreringsguide
 
 Denne guiden hjelper deg med å migrere fra de gamle typografi-komponentene til det nye beta typografi-systemet.
+Migreringsscriptet er laget basert på frontend-repoer vi forvalter, derfor vil ikke all migrering være 100%, det er derfor viktig å teste alle endringer selv også.
+
+## Komplett migrering
+- **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
+- **Konsekvenser**:
+  - `<Heading1 className="ditt-klassenavn">` blir `<Heading className="ditt-klassenavn" as="h1" variant="title-1">`
+  - `<Paragraph>` blir `<Text variant="paragraph">`
+  - `<Link>` blir `<LinkBeta>`
+  - Dine props og CSS-klasser blir med videre, derfor er det viktig å sjekke hva du overstyrer.
+- **Når bruke denne**: Når du vil migrere til det nye systemet umiddelbart
+- **⚠️ Viktig**: Test grundig etter migrering!
 
 ## Kom i gang
 
-### Alternativ 1: Automatisk migrering (Anbefalt)
+### Installer typografipakken (eller oppdater til siste verjson)
+
+```bash
+  npm install @entur/typography
+```
+
+```scss
+// Importer styles
+  @import '@entur/typography/dist/styles.css';
+```
+
+### Migrering
 
 ```bash
 # Vis hjelp og alternativer
@@ -19,264 +50,10 @@ npx @entur/typography@latest migrate --dry-run
 # Komplett migrering: oppdater alt til beta-komponenter
 npx @entur/typography@latest migrate
 
-# Import-only migrering: oppdater kun import paths 
-npx @entur/typography@latest migrate --import-only
+
 ```
 
-**Alternativ måte å kjøre migreringsskriptet:**
-
-# Direkte kjøring (krever glob-pakken)
-
-```bash
-node node_modules/@entur/typography/scripts/migrate-typography.js --dry-run
-```
-
-**Merk**: Hvis du kjører skriptet direkte og får en feil om manglende `glob`-pakke, installer den:
-```bash
-npm install glob
-# eller
-yarn add glob
-```
-
-### Alternativ 2: Manuell migrering
-
-```typescript
-// Før
-import { Heading1, Paragraph, Link } from '@entur/typography';
-
-// Etter (oppdater komponenter manuelt)
-import { Heading, Text, LinkBeta } from '@entur/typography';
-
-// Eksempel på oppdatering:
-// <Heading1>Title</Heading1> → <Heading as="h1" variant="title-1">Title</Heading>
-// <Paragraph>Text</Paragraph> → <Text variant="paragraph">Text</Text>
-```
-
-## Migreringsmetoder
-
-### 🚀 Komplett migrering (standard)
-- **Hva det gjør**: Oppdaterer både imports og komponentbruk til beta-komponenter
-- **Konsekvenser**:
-  - `<Heading1>` blir `<Heading as="h1" variant="title-1">`
-  - `<Paragraph>` blir `<Text variant="paragraph">`
-  - `<Link>` blir `<LinkBeta>`
-  - Props kan trenge oppdateringer
-  - Styling-klasser kan endres
-- **Når å bruke**: Når du vil migrere til det nye systemet umiddelbart
-- **⚠️ Viktig**: Test grundig etter migrering!
-
-### 📝 Import-only modus (`--import-only`)
-- **Hva det gjør**: Oppdaterer kun import paths, beholder eksisterende komponentbruk
-- **Risiko**: Minimal - dine komponenter forblir uendret
-- **Når å bruke**: Når du vil migrere gradvis og teste steg for steg
-- **Fordel**: Du kan oppdatere komponenter manuelt når du er klar
-
-## Hva du får
-
-- **Automatisk migreringsskript**: Skript som automatisk oppdaterer dine imports og komponenter
-- **Sikker migrering**: Dry-run modus for å se endringer først
-- **Fleksibel tilnærming**: Velg mellom komplett eller import-only migrering
-- **Nye funksjoner**: Tilgang til forbedrede typografi-funksjoner
-- **Kontrollert spacing**: Alle komponenter har `margin: 0` som standard - du velger når du vil ha spacing
-
-### Headings
-
-<Table>
-  <TableHead>
-    <TableRow>
-      <HeaderCell>Gammel komponent</HeaderCell>
-      <HeaderCell>Migreringshjelper</HeaderCell>
-      <HeaderCell>Ny beta-komponent</HeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <DataCell><CodeText>Heading1</CodeText></DataCell>
-      <DataCell><CodeText>Heading1</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h1" variant="title-1"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Heading2</CodeText></DataCell>
-      <DataCell><CodeText>Heading2</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h2" variant="title-2"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Heading3</CodeText></DataCell>
-      <DataCell><CodeText>Heading3</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h3" variant="subtitle-1"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Heading4</CodeText></DataCell>
-      <DataCell><CodeText>Heading4</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h4" variant="subtitle-2"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Heading5</CodeText></DataCell>
-      <DataCell><CodeText>Heading5</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h5" variant="section-1"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Heading6</CodeText></DataCell>
-      <DataCell><CodeText>Heading6</CodeText></DataCell>
-      <DataCell><CodeText>Heading as="h6" variant="section-2"</CodeText></DataCell>
-    </TableRow>
-  </TableBody>
-</Table>
-
-### Text-komponenter
-
-<Table>
-  <TableHead>
-    <TableRow>
-      <HeaderCell>Gammel komponent</HeaderCell>
-      <HeaderCell>Migreringshjelper</HeaderCell>
-      <HeaderCell>Ny beta-komponent</HeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <DataCell><CodeText>Paragraph</CodeText></DataCell>
-      <DataCell><CodeText>Paragraph</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="paragraph"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>LeadParagraph</CodeText></DataCell>
-      <DataCell><CodeText>LeadParagraph</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="leading"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>SmallText</CodeText></DataCell>
-      <DataCell><CodeText>SmallText</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="subparagraph" size="s"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>StrongText</CodeText></DataCell>
-      <DataCell><CodeText>StrongText</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="emphasized" weight="semibold"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>SubLabel</CodeText></DataCell>
-      <DataCell><CodeText>SubLabel</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="sublabel" size="xs"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>SubParagraph</CodeText></DataCell>
-      <DataCell><CodeText>SubParagraph</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="subparagraph"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Label</CodeText></DataCell>
-      <DataCell><CodeText>Label</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="label"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>EmphasizedText</CodeText></DataCell>
-      <DataCell><CodeText>EmphasizedText</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="emphasized"</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>CodeText</CodeText></DataCell>
-      <DataCell><CodeText>CodeText</CodeText></DataCell>
-      <DataCell><CodeText>Text variant="code-text"</CodeText></DataCell>
-    </TableRow>
-  </TableBody>
-</Table>
-
-### Andre komponenter
-
-<Table>
-  <TableHead>
-    <TableRow>
-      <HeaderCell>Gammel komponent</HeaderCell>
-      <HeaderCell>Migreringshjelper</HeaderCell>
-      <HeaderCell>Ny beta-komponent</HeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <DataCell><CodeText>Link</CodeText></DataCell>
-      <DataCell><CodeText>Link</CodeText></DataCell>
-      <DataCell><CodeText>LinkBeta</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>Blockquote</CodeText></DataCell>
-      <DataCell><CodeText>Blockquote</CodeText></DataCell>
-      <DataCell><CodeText>BlockquoteBeta</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>UnorderedList</CodeText></DataCell>
-      <DataCell><CodeText>UnorderedList</CodeText></DataCell>
-      <DataCell><CodeText>&lt;ul&gt; (native)</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>ListItem</CodeText></DataCell>
-      <DataCell><CodeText>ListItem</CodeText></DataCell>
-      <DataCell><CodeText>&lt;li&gt; (native)</CodeText></DataCell>
-    </TableRow>
-    <TableRow>
-      <DataCell><CodeText>NumberedList</CodeText></DataCell>
-      <DataCell><CodeText>NumberedList</CodeText></DataCell>
-      <DataCell><CodeText>&lt;ol&gt; (native)</CodeText></DataCell>
-    </TableRow>
-  </TableBody>
-</Table>
-
-## Sikkerhetsfunksjoner
-
-Migreringsskriptet inkluderer flere sikkerhetsfunksjoner for å beskytte prosjektet ditt:
-
-- **Tillatte mapper**: Skanner kun `src/**`, `app/**`, `components/**`, etc.
-- **Blokkerte mapper**: Skanner aldri `node_modules`, `dist`, `.git`, etc.
-- **Dry-run modus**: Test endringer uten å modifisere filer ved å bruke `--dry-run`
-- **Tilpassbare stier**: Overstyr mapper med `TYPOGRAPHY_MIGRATION_DIRS` miljøvariabel
-- **Filtypefiltrering**: Prosesserer kun TypeScript, JavaScript og SCSS/CSS filer
-
-## Migreringshjelpere
-
-Migreringshjelperne gir drop-in erstatninger for alle gamle typografi-komponenter:
-
-```typescript
-import {
-  // Headings
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-
-  // Text components
-  Paragraph,
-  LeadParagraph,
-  SmallText,
-  StrongText,
-  SubLabel,
-  SubParagraph,
-  Label,
-  EmphasizedText,
-  CodeText,
-
-  // Other components
-  Link,
-  Blockquote,
-  UnorderedList,
-  ListItem,
-  NumberedList,
-} from '@entur/typography/migration';
-```
-
-## Migreringsstrategier
-
-### Strategi 1: Komplett migrering (Standard)
-
-Migrer direkte til beta-komponenter med automatisk oppdatering:
-
-```bash
-# Komplett migrering (standard)
-npx @entur/typography@latest migrate
-```
-
-Dette vil automatisk:
+`migrate` vil automatisk:
 - Oppdatere alle imports
 - Erstatte gamle komponenter med beta-komponenter
 - Konvertere props til det nye formatet
@@ -311,45 +88,181 @@ function MyComponent() {
 }
 ```
 
-### Strategi 2: Import-only migrering (For gradvis overgang)
+### Heading komponenter
 
-Bruk `--import-only` for å migrere steg for steg:
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Heading1</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h1" variant="title-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading2</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h2" variant="title-2"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading3</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h3" variant="subtitle-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading4</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h4" variant="subtitle-2"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading5</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h5" variant="section-1"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Heading6</CodeText></DataCell>
+      <DataCell><CodeText>Heading as="h6" variant="section-2"</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Text komponenter
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Paragraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="paragraph"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>LeadParagraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="leading"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SmallText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="subparagraph" size="s"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>StrongText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="emphasized" weight="semibold"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SubLabel</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="sublabel" size="xs"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>SubParagraph</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="subparagraph"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Label</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="label"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>EmphasizedText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="emphasized"</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>CodeText</CodeText></DataCell>
+      <DataCell><CodeText>Text variant="code-text"</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+### Andre komponenter
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <HeaderCell>Gammel komponent</HeaderCell>
+      <HeaderCell>Ny beta-komponent</HeaderCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <DataCell><CodeText>Link</CodeText></DataCell>
+      <DataCell><CodeText>LinkBeta</CodeText></DataCell>
+    </TableRow>
+    <TableRow>
+      <DataCell><CodeText>Blockquote</CodeText></DataCell>
+      <DataCell><CodeText>BlockquoteBeta</CodeText></DataCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Sikkerhetsfunksjoner
+
+Migreringsskriptet inkluderer flere sikkerhetsfunksjoner for å beskytte prosjektet ditt:
+
+- **Tillatte mapper**: Skanner kun `src/**`, `app/**`, `components/**`, etc.
+- **Blokkerte mapper**: Skanner aldri `node_modules`, `dist`, `.git`, etc.
+- **Dry-run modus**: Test endringer uten å modifisere filer ved å bruke `--dry-run`
+- **Tilpassbare stier**: Overstyr mapper med `TYPOGRAPHY_MIGRATION_DIRS` miljøvariabel
+- **Standardmapper**: Skanner automatisk `src/**`, `app/**`, `apps/**`, `components/**`, `pages/**`, `lib/**`, `utils/**`, `styles/**`, `css/**`, `scss/**`
+- **Filtypefiltrering**: Prosesserer kun TypeScript, JavaScript og SCSS/CSS filer
+
+## Tilpassing av scriptet
+
+### Default mapper som blir scannet
+
+Migreringsskriptet skanner automatisk disse mappene:
+
+- `src/**` - Kildekode
+- `app/**` - Applikasjonsmapper
+- `apps/**` - Flere applikasjoner
+- `components/**` - Komponenter
+- `pages/**` - Sider
+- `lib/**` - Biblioteker
+- `utils/**` - Hjelpefunksjoner
+- `styles/**` - Stilfiler
+- `css/**` - CSS-filer
+- `scss/**` - SCSS-filer
+
+Du kan overstyre standardmappene med miljøvariabelen `TYPOGRAPHY_MIGRATION_DIRS`:
+
+#### Alternativ 1: Miljøvariabel
 
 ```bash
-# Import-only migrering
-npx @entur/typography@latest migrate --import-only
+# Sett miljøvariabel
+export TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"
+
+# Kjør migrering
+npx @entur/typography@latest migrate
 ```
 
-Dette oppdaterer kun imports og lar deg beholde eksisterende komponentbruk:
+#### Alternativ 2: Inline miljøvariabel
 
-```typescript
-// Steg 1: Import-only migrering (kun imports)
-import { Heading1, Paragraph } from '@entur/typography';
-
-function MyComponent() {
-  return (
-    <div>
-      <Heading1>Min tittel</Heading1>
-      <Paragraph>Mitt innhold</Paragraph>
-    </div>
-  );
-}
+```bash
+# Kjør med inline miljøvariabel
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**" npx @entur/typography@latest migrate
 ```
 
-```typescript
-// Steg 2: Senere, oppdater komponenter manuelt
-import { Heading, Text } from '@entur/typography';
+### Viktige sikkerhetsregler
 
-function MyComponent() {
-  return (
-    <div>
-      <Heading as="h1" variant="title-1">
-        Min tittel
-      </Heading>
-      <Text variant="paragraph">Mitt innhold</Text>
-    </div>
-  );
-}
+- **Kun relative stier**: Ikke bruk absolutte stier som `/home/user/project`
+- **Ingen parent-mapper**: Ikke bruk `../parent/directory`
+- **Ingen home-mapper**: Ikke bruk `~/home/directory`
+- **Glob-mønstre**: Bruk `**` for å skanne undermapper (f.eks. `src/**`)
+
+### Eksempler på gyldige mapper
+
+✅ **Gyldige:**
+```bash
+TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"
+TYPOGRAPHY_MIGRATION_DIRS="packages/my-app/**,lib/**"
+TYPOGRAPHY_MIGRATION_DIRS="frontend/**,backend/**"
+```
+
+❌ **Ugyldige:**
+```bash
+TYPOGRAPHY_MIGRATION_DIRS="/absolute/path"      # Absolutt sti
+TYPOGRAPHY_MIGRATION_DIRS="../parent/directory" # Parent-mappe
+TYPOGRAPHY_MIGRATION_DIRS="~/home/directory"    # Home-mappe
 ```
 
 ## Viktig: Ny margin-oppførsel
@@ -378,7 +291,7 @@ Beta-komponenter har **ingen margin som standard** (`margin: 0`) på base-klasse
 ### Hvordan spacing fungerer
 
 ```jsx
-// Variant med spacing (standard)
+// Variant med spacing (default med spacing)
 <Heading as="h1" variant="title-1">Tittel med margin fra variant</Heading>
 <Text variant="paragraph">Tekst med margin fra variant</Text>
 
@@ -395,7 +308,7 @@ Beta-komponenter har **ingen margin som standard** (`margin: 0`) på base-klasse
 <Text variant="paragraph" spacing="none">Tekst uten margin</Text>
 ```
 
-### Automatisk margin → spacing migrering
+### Margin til spacing migrering
 
 Migreringsskriptet oppdaterer automatisk `margin` props til `spacing`:
 
@@ -409,139 +322,8 @@ Migreringsskriptet oppdaterer automatisk `margin` props til `spacing`:
 <Text variant="paragraph" spacing="none">Tekst</Text>
 ```
 
-**Spacing-mapping:**
-- `margin="bottom"` → `spacing="md-bottom"`
-- `margin="top"` → `spacing="md-top"`
-- `margin="none"` → `spacing="none"`
-- `margin="lg"` → `spacing="lg"`
-- `margin="sm"` → `spacing="sm"`
 
-## Vanlige problemer og løsninger
-
-### Problem: CSS-konflikter
-
-**Problem**: CSS-konflikter mellom gamle og nye typografi-stiler.
-
-**Løsning**: Erstatt gamle typografi-stiler med nye beta-stiler:
-
-```scss
-// Fjern denne
-@import '@entur/typography/dist/styles.css';
-
-// Legg til denne
-@import '@entur/typography/src/beta/styles.scss';
-```
-
-### Problem: Manglende komponenter
-
-**Problem**: Noen komponenter kan være utilgjengelige i migreringshjelperne.
-
-**Løsning**: Bruk de nye beta-komponentene direkte:
-
-```typescript
-import { Heading, Text } from '@entur/typography';
-```
-
-### Problem: TypeScript-feil
-
-**Problem**: TypeScript-feil på grunn av prop-forskjeller.
-
-**Løsning**: Sjekk komponentmappingstabellen over og oppdater props tilsvarende.
-
-### Problem: Semantic HTML-advarsler
-
-**Problem**: Migreringsskriptet kan vise advarsler om heading-nivåer som ikke matcher.
-
-**Eksempel på advarsel:**
-```
-Heading component has 'as="h3"' but expected 'as="h4"' - review semantic HTML structure
-```
-
-**Løsning**: Gjennomgå heading-strukturen din og oppdater `as` props manuelt for å matche riktig heading-nivå:
-
-```jsx
-// Før (kan gi advarsel)
-<Heading4 as="h3">Dette kan gi advarsel</Heading4>
-
-// Etter (korrekt semantic HTML)
-<Heading4 as="h4">Dette er korrekt</Heading4>
-```
-
-## Eksempler
-
-### Før migrering
-
-```typescript
-import { Heading1, Paragraph, Link, StrongText } from '@entur/typography';
-
-function Article() {
-  return (
-    <article>
-      <Heading1>Article Title</Heading1>
-      <Paragraph>
-        This is a <StrongText>paragraph</StrongText> with a{' '}
-        <Link href="/more">link to more content</Link>.
-      </Paragraph>
-    </article>
-  );
-}
-```
-
-### Etter komplett migrering (Standard)
-
-```typescript
-import { Heading, Text, LinkBeta } from '@entur/typography';
-
-function Article() {
-  return (
-    <article>
-      <Heading as="h1" variant="title-1">
-        Article Title
-      </Heading>
-      <Text variant="paragraph">
-        This is a{' '}
-        <Text variant="emphasized" weight="semibold">
-          paragraph
-        </Text>{' '}
-        with a <LinkBeta href="/more">link to more content</LinkBeta>.
-      </Text>
-    </article>
-  );
-}
-```
-
-### Etter import-only migrering (Med --import-only flagget)
-
-```typescript
-import {
-  Heading1,
-  Paragraph,
-  Link,
-  StrongText,
-} from '@entur/typography';
-
-function Article() {
-  return (
-    <article>
-      <Heading1>Article Title</Heading1>
-      <Paragraph>
-        This is a <StrongText>paragraph</StrongText> with a{' '}
-        <Link href="/more">link to more content</Link>.
-      </Paragraph>
-    </article>
-  );
-}
-```
-
-## Beste praksis
-
-1. **Bruk komplett migrering som standard** for umiddelbar overgang til beta-komponenter
-2. **Test grundig** etter migrering for å sikre at alt fungerer som forventet
-3. **Oppdater stiler** for å bruke de nye beta typografi-stilene
-4. **Bruk import-only migrering** hvis du trenger mer tid til å tilpasse komponentene
-5. **Adopter nye funksjoner** som avstand og størrelsesvarianter når du er klar
-
-## Støtte
+## Hjelp
 
 Hvis du støter på problemer under migrering:
 
@@ -549,4 +331,3 @@ Hvis du støter på problemer under migrering:
 2. Gjennomgå [Typografi Beta Dokumentasjon](/komponenter/ressurser/typography-beta)
 3. Åpne et issue i design system repository
 4. Kontakt design system-teamet
-

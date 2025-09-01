@@ -18,21 +18,16 @@
  *     * Styling classes may change
  *     * Test thoroughly after migration!
  *
- * 📝 Import-Only Mode (--import-only):
- *   - Only updates import paths from '@entur/typography' to '@entur/typography'
- *   - Keeps your existing component usage unchanged
- *   - Minimal risk, allows gradual migration
- *   - You can manually update components later
+
  *
  * Usage:
  * 1. Run this script in your project root
- * 2. Choose your migration mode (complete or import-only)
+ * 2. Choose your migration mode (complete)
  * 3. Update your styles as needed
  * 4. Test your application thoroughly
  *
  * Options:
  *   --dry-run        Show what would be changed without modifying files
- *   --import-only    Import-only migration: update import paths only
  *
  * Environment Variables:
  *   TYPOGRAPHY_MIGRATION_DIRS  Comma-separated list of directories to scan
@@ -825,37 +820,29 @@ function findFiles(pattern) {
   return uniqueFiles;
 }
 
-function updateImportsAndComponents(content, strategy) {
+function updateImportsAndComponents(content) {
   let updatedContent = content;
   let changes = 0;
   let warnings = [];
 
-  if (strategy === 'import-only') {
-    // Only update imports
-    const { content: newContent, changes: importChanges } =
-      updateImports(content);
-    updatedContent = newContent;
-    changes = importChanges;
-  } else if (strategy === 'complete') {
-    // Update both imports and components
-    const { content: newContent, changes: importChanges } =
-      updateImports(content);
-    const {
-      content: finalContent,
-      changes: componentChanges,
-      warnings: componentWarnings,
-    } = updateComponents(newContent);
-    updatedContent = finalContent;
-    changes = importChanges + componentChanges;
-    warnings = componentWarnings;
-  }
+  // Update both imports and components
+  const { content: newContent, changes: importChanges } =
+    updateImports(content);
+  const {
+    content: finalContent,
+    changes: componentChanges,
+    warnings: componentWarnings,
+  } = updateComponents(newContent);
+  updatedContent = finalContent;
+  changes = importChanges + componentChanges;
+  warnings = componentWarnings;
 
   return { content: updatedContent, changes, warnings };
 }
 
-function generateMigrationReport(files, strategy, isDryRun = false) {
+function generateMigrationReport(files, isDryRun = false) {
   const report = {
-    strategy,
+    strategy: 'complete',
     totalFiles: files.length,
     migratedFiles: 0,
     totalChanges: 0,
@@ -876,7 +863,7 @@ function generateMigrationReport(files, strategy, isDryRun = false) {
         content: updatedContent,
         changes,
         warnings,
-      } = updateImportsAndComponents(content, strategy);
+      } = updateImportsAndComponents(content);
 
       // Combine migration warnings with file analysis warnings
       const allWarnings = [...warnings, ...fileAnalysis.warnings];
@@ -1106,23 +1093,13 @@ function printReport(report) {
   }
 }
 
-function showNextSteps(strategy) {
+function showNextSteps() {
   console.log('\n📝 Next Steps');
   console.log('=============');
 
-  if (strategy === 'import-only') {
-    console.log('1. ✅ Import statements updated');
-    console.log('2. 🔄 Update component usage manually when ready:');
-    Object.entries(COMPONENT_MAPPING).forEach(([old, new_]) => {
-      console.log(`   ${old} → ${new_}`);
-    });
-    console.log('3. 🧪 Test your application');
-    console.log('4. 📚 Read the migration guide on our website');
-  } else if (strategy === 'complete') {
-    console.log('1. 🧪 Test your application thoroughly');
-    console.log('2. 🔄 Review and adjust any component props if needed');
-    console.log('3. 📚 Read the migration guide on our website');
-  }
+  console.log('1. 🧪 Test your application thoroughly');
+  console.log('2. 🔄 Review and adjust any component props if needed');
+  console.log('3. 📚 Read the migration guide on our website');
 
   console.log('\n⚠️  Important Notes:');
   console.log('- Check warnings above for potential issues');
@@ -1151,23 +1128,13 @@ function main() {
     console.log(
       '  --dry-run        Show what would be changed without modifying files',
     );
-    console.log(
-      '  --import-only    Import-only migration: update import paths only',
-    );
-
     console.log('  --help, -h       Show this help message');
     console.log('');
-    console.log('Migration Modes:');
-    console.log('  🚀 Complete Mode (default): Updates everything');
+    console.log('Migration Mode:');
+    console.log('  🚀 Complete Mode: Updates everything');
     console.log('     - Replaces old components with beta components');
     console.log('     - May require prop/styling updates');
     console.log('     - Test thoroughly after migration');
-    console.log('');
-    console.log(
-      '  📝 Import-Only Mode (--import-only): Only updates import paths',
-    );
-    console.log('     - Keeps your existing component usage unchanged');
-    console.log('     - Minimal risk, gradual migration');
     console.log('');
     console.log('Examples:');
     console.log('  # See what would be changed');
@@ -1175,12 +1142,6 @@ function main() {
     console.log('');
     console.log('  # Complete migration: update everything (default)');
     console.log('  npx @entur/typography@latest migrate');
-    console.log('');
-    console.log('  # Import-only migration: update import paths only');
-    console.log('  npx @entur/typography@latest migrate --import-only');
-    console.log('');
-
-    console.log('');
 
     console.log('Environment Variables:');
     console.log(
@@ -1264,36 +1225,24 @@ function main() {
 
   // Parse command line options
   const isDryRun = process.argv.includes('--dry-run');
-  const isImportOnly = process.argv.includes('--import-only');
 
   if (isDryRun) {
     console.log('🔍 DRY RUN MODE: No files will be modified');
     console.log('');
   }
 
-  if (isImportOnly) {
-    console.log('📝 IMPORT-ONLY MIGRATION: Updating import paths only');
-    console.log('   - Your component usage will remain unchanged');
-    console.log('   - You can update components manually later');
-  } else {
-    console.log('🚀 COMPLETE MIGRATION: Updating imports + component usage');
-    console.log('⚠️  WARNING: This will modify your component usage!');
-    console.log('   - Old components will be replaced with beta components');
-    console.log('   - You may need to update props and styling');
-    console.log('   - Test thoroughly after migration');
-    console.log('   (Use --import-only for import-only migration)');
-  }
+  console.log('🚀 COMPLETE MIGRATION: Updating imports + component usage');
+  console.log('⚠️  WARNING: This will modify your component usage!');
+  console.log('   - Old components will be replaced with beta components');
+  console.log('   - You may need to update props and styling');
+  console.log('   - Test thoroughly after migration');
 
   console.log('');
 
   // Perform migration
-  const report = generateMigrationReport(
-    allFiles,
-    isImportOnly ? 'import-only' : 'complete',
-    isDryRun,
-  );
+  const report = generateMigrationReport(allFiles, isDryRun);
   printReport(report);
-  showNextSteps(isImportOnly ? 'import-only' : 'complete');
+  showNextSteps();
 
   console.log('\n🎯 Migration complete!');
 }
