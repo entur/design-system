@@ -342,13 +342,14 @@ const COMPONENT_MAPPING = {
   Heading6: { component: 'Heading', as: 'h6', variant: 'section-2' },
   Paragraph: { component: 'Text', variant: 'paragraph' },
   LeadParagraph: { component: 'Text', variant: 'leading' },
-  SmallText: { component: 'Text', variant: 'subparagraph', size: 's' },
-  StrongText: { component: 'Text', variant: 'emphasized', weight: 'semibold' },
-  SubLabel: { component: 'Text', variant: 'sublabel', size: 'xs' },
+  SmallText: { component: 'Text', variant: 'subparagraph' },
+  StrongText: { component: 'Text', as: 'strong', weight: 'bold' },
+  SubLabel: { component: 'Text', variant: 'sublabel' },
   SubParagraph: { component: 'Text', variant: 'subparagraph' },
   Label: { component: 'Text', variant: 'label' },
   EmphasizedText: { component: 'Text', variant: 'emphasized' },
   CodeText: { component: 'Text', variant: 'code-text' },
+  Link: { component: 'LinkBeta' }, // Convert Link to LinkBeta
 };
 
 // Props mapping for migration
@@ -357,17 +358,43 @@ const PROPS_MAPPING = {
 };
 
 // Spacing value mapping from old margin to new spacing
+// Based on the actual CSS classes in src/beta/styles.scss
+// and the old margin prop values: "top" | "bottom" | "both" | "none"
 const SPACING_MAPPING = {
-  none: 'none',
-  top: 'md-top',
-  bottom: 'md-bottom',
-  left: 'md-left',
-  right: 'md-right',
+  // Old margin values mapped to new spacing values
+  none: 'none', // No spacing
+  top: 'md-top', // Top margin only (medium size)
+  bottom: 'md-bottom', // Bottom margin only (medium size)
+  both: 'md', // Both top and bottom margins (medium size)
+
+  // Additional spacing values for more granular control
+  // These weren't in the old margin prop but are available in new spacing
+  left: 'md-left', // Left margin (medium size)
+  right: 'md-right', // Right margin (medium size)
+
+  // Size-based spacing (applies to both top and bottom)
   xs: 'xs',
   sm: 'sm',
   md: 'md',
   lg: 'lg',
   xl: 'xl',
+
+  // Specific directional spacing with sizes
+  'xs-top': 'xs-top',
+  'xs-bottom': 'xs-bottom',
+  'sm-top': 'sm-top',
+  'sm-bottom': 'sm-bottom',
+  'md-top': 'md-top',
+  'md-bottom': 'md-bottom',
+  'lg-top': 'lg-top',
+  'lg-bottom': 'lg-bottom',
+  'xl-top': 'xl-top',
+  'xl-bottom': 'xl-bottom',
+
+  // Extra small variants
+  xs2: 'xs2',
+  'xs2-top': 'xs2-top',
+  'xs2-bottom': 'xs2-bottom',
 };
 
 // Import patterns to handle
@@ -381,30 +408,33 @@ const IMPORT_PATTERNS = [
 // Parse JSX props more robustly
 function parseJSXProps(propsString) {
   if (!propsString || !propsString.trim()) {
-    return { props: {}, warnings: [] };
+    return { props: {}, warnings: [], spreadProps: [] };
   }
 
   const props = {};
   const warnings = [];
-  const MAX_ITERATIONS = 100; // Prevent infinite loops
-  let iterationCount = 0;
+  const spreadProps = []; // Track spread props separately
 
   try {
     // Parse props manually to handle complex cases
     let remaining = propsString.trim();
-    let lastRemainingLength = remaining.length;
 
-    while (remaining.length > 0 && iterationCount < MAX_ITERATIONS) {
-      iterationCount++;
+    // First, extract all spread props
+    const spreadRegex = /\.\.\.\{?(\w+)\}?/g;
+    let spreadMatch;
+    while ((spreadMatch = spreadRegex.exec(remaining)) !== null) {
+      spreadProps.push(spreadMatch[1]);
+    }
 
-      // Safety check: if we're not making progress, break
-      if (remaining.length >= lastRemainingLength) {
-        warnings.push(`Parser stuck at iteration ${iterationCount}, breaking`);
-        break;
-      }
-      lastRemainingLength = remaining.length;
+    // Remove spread props from the string to parse regular props
+    remaining = remaining.replace(/\.\.\.\{?(\w+)\}?/g, '');
 
-      // Match prop name - more efficient regex
+    // Now parse regular props
+    while (remaining.trim().length > 0) {
+      // Skip whitespace
+      remaining = remaining.replace(/^\s+/, '');
+
+      // Match prop name
       const nameMatch = remaining.match(/^(\w+)=/);
       if (!nameMatch) break;
 
@@ -414,7 +444,7 @@ function parseJSXProps(propsString) {
 
       // Match prop value
       if (remaining.startsWith('"') || remaining.startsWith("'")) {
-        // String value - use indexOf for better performance
+        // String value
         const quote = remaining[0];
         const endQuoteIndex = remaining.indexOf(quote, 1);
         if (endQuoteIndex === -1) {
@@ -426,12 +456,11 @@ function parseJSXProps(propsString) {
         props[propName] = propValue;
         remaining = remaining.substring(endQuoteIndex + 1);
       } else if (remaining.startsWith('{')) {
-        // Object value - find matching closing brace with bounds checking
+        // Object value - find matching closing brace
         let braceCount = 0;
         let endIndex = -1;
-        const maxSearchLength = Math.min(remaining.length, 1000); // Limit search length
 
-        for (let i = 0; i < maxSearchLength; i++) {
+        for (let i = 0; i < remaining.length; i++) {
           if (remaining[i] === '{') braceCount++;
           if (remaining[i] === '}') {
             braceCount--;
@@ -451,23 +480,19 @@ function parseJSXProps(propsString) {
         props[propName] = propValue;
         remaining = remaining.substring(endIndex + 1);
       } else {
-        // Boolean prop (e.g., disabled) or invalid syntax
+        // Boolean prop
         props[propName] = true;
         break;
       }
 
-      // Skip whitespace more efficiently
+      // Skip whitespace
       remaining = remaining.replace(/^\s+/, '');
-    }
-
-    if (iterationCount >= MAX_ITERATIONS) {
-      warnings.push(`Maximum parsing iterations (${MAX_ITERATIONS}) reached`);
     }
   } catch (error) {
     warnings.push(`Failed to parse props: ${error.message}`);
   }
 
-  return { props, warnings };
+  return { props, warnings, spreadProps };
 }
 
 // Migrate props from old to new format
@@ -485,11 +510,12 @@ function migrateProps(props, oldComponent) {
         `Migrated 'margin="${props.margin}"' to 'spacing="${newSpacing}"'`,
       );
     } else {
-      // Unknown margin value - keep as is but warn
-      migratedProps.spacing = props.margin;
+      // Unknown margin value - suggest alternatives
+      const suggestions = getSpacingSuggestions(props.margin);
+      migratedProps.spacing = props.margin; // Keep original value for now
       delete migratedProps.margin;
       warnings.push(
-        `Migrated 'margin="${props.margin}"' to 'spacing="${props.margin}"' (unknown value - may need manual review)`,
+        `Migrated 'margin="${props.margin}"' to 'spacing="${props.margin}"' (unknown value). ${suggestions}`,
       );
     }
   }
@@ -514,6 +540,53 @@ function migrateProps(props, oldComponent) {
   }
 
   return { props: migratedProps, warnings };
+}
+
+// Helper function to suggest spacing alternatives for unknown margin values
+function getSpacingSuggestions(unknownMargin) {
+  const suggestions = [];
+
+  // Check if it might be one of the old margin values
+  if (['top', 'bottom', 'both', 'none'].includes(unknownMargin)) {
+    suggestions.push(
+      `"${unknownMargin}" is a valid old margin value and will be migrated correctly.`,
+    );
+    return suggestions.join(' ');
+  }
+
+  // Check if it might be a directional value
+  if (
+    unknownMargin.includes('top') ||
+    unknownMargin.includes('bottom') ||
+    unknownMargin.includes('left') ||
+    unknownMargin.includes('right')
+  ) {
+    suggestions.push(
+      'Consider using directional spacing like "md-top", "sm-bottom", etc.',
+    );
+  }
+
+  // Check if it might be a size value
+  if (['xs', 'sm', 'md', 'lg', 'xl'].includes(unknownMargin)) {
+    suggestions.push(
+      'Consider using size-based spacing like "xs", "sm", "md", "lg", "xl".',
+    );
+  }
+
+  // Check if it might be a specific variant
+  if (unknownMargin.includes('xs2')) {
+    suggestions.push(
+      'Consider using "xs2", "xs2-top", or "xs2-bottom" for extra small spacing.',
+    );
+  }
+
+  if (suggestions.length === 0) {
+    suggestions.push(
+      'Old margin values: "none", "top", "bottom", "both". New spacing values: "xs", "sm", "md", "lg", "xl", and directional variants.',
+    );
+  }
+
+  return suggestions.join(' ');
 }
 
 // Convert props object back to JSX string
@@ -608,8 +681,11 @@ function updateComponents(content) {
         changes++;
 
         // Parse existing props
-        const { props: existingProps, warnings: parseWarnings } =
-          parseJSXProps(propsString);
+        const {
+          props: existingProps,
+          warnings: parseWarnings,
+          spreadProps,
+        } = parseJSXProps(propsString);
         warnings.push(...parseWarnings);
 
         // Migrate props
@@ -629,8 +705,10 @@ function updateComponents(content) {
 
         // Handle Heading components
         if (mapping.component === 'Heading') {
-          const asValue = newProps.as || mapping.as;
-          const variantValue = newProps.variant || mapping.variant;
+          // Preserve existing 'as' prop if it exists, otherwise use mapping default
+          const asValue = existingProps.as || mapping.as;
+          // Preserve existing 'variant' prop if it exists, otherwise use mapping default
+          const variantValue = existingProps.variant || mapping.variant;
 
           // Remove as and variant from props since we'll add them separately
           delete newProps.as;
@@ -645,7 +723,9 @@ function updateComponents(content) {
           Object.assign(orderedProps, newProps);
 
           const propsString = propsToString(orderedProps);
-          return `<Heading as="${asValue}" variant="${variantValue}"${propsString}>`;
+          const spreadPropsString =
+            spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
+          return `<Heading as="${asValue}" variant="${variantValue}"${propsString}${spreadPropsString}>`;
         }
 
         // Handle other components
@@ -668,7 +748,9 @@ function updateComponents(content) {
         Object.assign(finalProps, newProps);
 
         const otherPropsString = propsToString(finalProps);
-        return `<${componentName}${otherPropsString}>`;
+        const spreadPropsString =
+          spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
+        return `<${componentName}${otherPropsString}${spreadPropsString}>`;
       },
     );
 
@@ -696,15 +778,33 @@ function updateComponents(content) {
  * @returns {string[]} Array of matching file paths
  */
 function findFiles(pattern) {
-  // Create a single glob pattern that covers all allowed directories
-  // Uses brace expansion: {src,app,components}/**/*.{ts,tsx,js,jsx}
-  const combinedPattern = `{${ALLOWED_DIRECTORIES.join(',')}}/${pattern}`;
+  const allFiles = [];
 
-  // Use a single glob call instead of multiple calls
-  const allFiles = glob.sync(combinedPattern, {
-    ignore: BLOCKED_DIRECTORIES,
-    nodir: true,
-    absolute: false,
+  // Process directory patterns
+  const directoryPatterns = ALLOWED_DIRECTORIES.filter(dir =>
+    dir.includes('**'),
+  );
+  const filePatterns = ALLOWED_DIRECTORIES.filter(dir => !dir.includes('**'));
+
+  // Handle directory patterns (e.g., src/**, app/**)
+  if (directoryPatterns.length > 0) {
+    const combinedDirPattern = `{${directoryPatterns.join(',')}}/${pattern}`;
+    const dirFiles = glob.sync(combinedDirPattern, {
+      ignore: BLOCKED_DIRECTORIES,
+      nodir: true,
+      absolute: false,
+    });
+    allFiles.push(...dirFiles);
+  }
+
+  // Handle file patterns (e.g., *.jsx, *.tsx)
+  filePatterns.forEach(filePattern => {
+    const files = glob.sync(filePattern, {
+      ignore: BLOCKED_DIRECTORIES,
+      nodir: true,
+      absolute: false,
+    });
+    allFiles.push(...files);
   });
 
   // Use Set for efficient deduplication and filtering
