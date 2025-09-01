@@ -3,7 +3,7 @@ version: 2
 registries:
   jfrog-artifactory:
     type: npm-registry
-    url: ${{vars.ARTIFACTORY_URL}}
+    url: https://entur2.jfrog.io/entur2
     token: ${{secrets.ARTIFACTORY_AUTH_TOKEN}}
 updates:
   - package-ecosystem: 'github-actions'
