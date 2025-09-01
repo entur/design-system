@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-beta.10](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.9...@entur/typography@1.10.0-beta.10) (2025-09-01)
+
+### Bug Fixes
+
+- **typography:** migration script should not replace props ([ffc63dd](https://github.com/entur/design-system/commit/ffc63dd35f3f185d273d8e82a07011c9bd8044cb))
+
 # [1.10.0-beta.9](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.8...@entur/typography@1.10.0-beta.9) (2025-08-29)
 
 ### Bug Fixes
