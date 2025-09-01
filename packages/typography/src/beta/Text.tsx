@@ -8,7 +8,7 @@ import {
   TypographyWeight,
   TypographySpacing,
 } from './types';
-import { getSpacingClasses } from './utils';
+import { getSpacingClasses, getSemanticTypeFromTextVariant } from './utils';
 import { PolymorphicComponentProps } from '@entur/utils';
 
 type TextBaseProps = {
@@ -41,7 +41,7 @@ const TypographyText = <C extends React.ElementType = 'p'>({
   className,
   ...rest
 }: TextProps<C>) => {
-  const BodyElement = as || 'p';
+  const BodyElement = as || getSemanticTypeFromTextVariant(variant);
 
   return (
     <BodyElement
