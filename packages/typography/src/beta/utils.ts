@@ -1,4 +1,4 @@
-import { TypographySpacing } from './types';
+import { TypographySpacing, TypographyTextVariant } from './types';
 
 export function getHeadingVariantFromSemanticType(
   semanticType: string | React.ElementType,
@@ -23,6 +23,30 @@ export function getHeadingVariantFromSemanticType(
 
   // Handle React component types (functions/classes) - default to 'title-1'
   return 'title-1';
+}
+
+export function getSemanticTypeFromTextVariant(
+  variant?: TypographyTextVariant,
+): React.ElementType {
+  switch (variant) {
+    case 'paragraph':
+    case 'subparagraph':
+    case 'leading':
+    case 'quote':
+      return 'p';
+    case 'caption':
+    case 'sublabel':
+      return 'small';
+    case 'label':
+      return 'span';
+    case 'overline':
+      return 'em';
+    case 'emphasized':
+    case 'code-text':
+      return 'code';
+    default:
+      return 'p';
+  }
 }
 
 /**
