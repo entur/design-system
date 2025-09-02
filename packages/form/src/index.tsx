@@ -20,4 +20,5 @@ export * from './variants';
 export * from './utils';
 export * from './segmented-control/SegmentedChoice';
 export * from './segmented-control/SegmentedControl';
+export * from './segmented-control/SegmentedContext';
 export * from './segmented-control/MultipleSegmentedControl';

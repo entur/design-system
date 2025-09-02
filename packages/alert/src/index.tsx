@@ -3,9 +3,9 @@ import './index.scss';
 
 warnAboutMissingStyles('alert', 'icons');
 
-export { BannerAlertBox } from './BannerAlertBox';
-export { ToastAlertBox } from './ToastAlertBox';
-export { SmallAlertBox } from './SmallAlertBox';
-export { ToastProvider, useToast } from './ToastProvider';
-export { CopyableText } from './CopyableText';
+export * from './BannerAlertBox';
+export * from './CopyableText';
+export * from './SmallAlertBox';
+export * from './ToastAlertBox';
+export * from './ToastProvider';
 export * from './ExpandableAlertBox';

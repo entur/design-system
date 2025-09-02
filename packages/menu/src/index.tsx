@@ -21,3 +21,4 @@ export * from './SideNavigationItem';
 export * from './SideNavigationGroup';
 export * from './Stepper';
 export * from './TopNavigationItem';
+export * from './useControllableProp';

@@ -9,3 +9,4 @@ export * from './LegLine';
 export * from './LegBone';
 export * from './TravelLeg';
 export * from './TravelSwitch';
+export * from './utils';

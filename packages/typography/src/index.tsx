@@ -6,6 +6,7 @@ warnAboutMissingStyles('typography');
 export * from './Blockquote';
 export * from './CodeText';
 export * from './EmphasizedText';
+export * from './BaseHeading';
 export * from './Heading1';
 export * from './Heading2';
 export * from './Heading3';
