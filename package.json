@@ -52,7 +52,7 @@
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "1.90.0"
+    "sass": "1.91.0"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
@@ -115,7 +115,7 @@
     "shelljs": "0.8.5",
     "tar": "6.2.1",
     "tar-fs": "3.0.9",
-    "typescript": "5.7.3",
+    "typescript": "5.9.2",
     "word-wrap": "1.2.4",
     "form-data": "4.0.4",
     "multer": "2.0.2",

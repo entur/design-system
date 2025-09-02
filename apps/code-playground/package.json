@@ -30,7 +30,7 @@
     "@entur/travel": "workspace:^",
     "@entur/typography": "workspace:^",
     "@entur/utils": "workspace:^",
-    "@internationalized/date": "3.8.2",
+    "@internationalized/date": "3.9.0",
     "gray-matter": "^4.0.3",
     "playroom": "0.44.2",
     "react": "^18.3.1",
