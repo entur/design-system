@@ -296,6 +296,12 @@
     white-space: pre-wrap;
     word-break: keep-all;
   }
+  &--code-text {
+    display: inline-block;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small2;
+  }
 
   // Font weights
   &--weight-400,
