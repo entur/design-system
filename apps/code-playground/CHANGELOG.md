@@ -3,7 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
 # [2.3.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0) (2025-08-29)
+=======
+# [2.3.0-beta.11](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.10...@entur/code-playground@2.3.0-beta.11) (2025-09-02)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.10](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.9...@entur/code-playground@2.3.0-beta.10) (2025-09-01)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.9](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.8...@entur/code-playground@2.3.0-beta.9) (2025-08-29)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.8](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.7...@entur/code-playground@2.3.0-beta.8) (2025-08-29)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.7](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.6...@entur/code-playground@2.3.0-beta.7) (2025-08-29)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.6](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.4...@entur/code-playground@2.3.0-beta.6) (2025-08-29)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.5](https://github.com/entur/design-system/compare/@entur/code-playground@2.3.0-beta.4...@entur/code-playground@2.3.0-beta.5) (2025-08-29)
+
+**Note:** Version bump only for package @entur/code-playground
+
+# [2.3.0-beta.4](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0-beta.4) (2025-08-29)
+
+### Bug Fixes
+
+- **code-playground:** add correct wrapper to snippets ([d5c9b9e](https://github.com/entur/design-system/commit/d5c9b9eba272ef01d684b8190bb3af57158701d8))
+- **code-playground:** make build work ([129ccc1](https://github.com/entur/design-system/commit/129ccc14933bc9ca95989ad06854c1de9530024a))
+- **code-playground:** make scroll work in playroom window ([2f72f9d](https://github.com/entur/design-system/commit/2f72f9da135148c1a198fabe061392865a880563))
+
+### Features
+
+- **code-playground:** add more exports to sandkasse ([fd2ed2c](https://github.com/entur/design-system/commit/fd2ed2c7004880819a3056f596853eb0bee29042))
+- **website:** add sandkasse to side navigation ([4b159d8](https://github.com/entur/design-system/commit/4b159d898e1e601b55ebf7735596672928b103c0))
+
+# [2.3.0-beta.3](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0-beta.3) (2025-08-29)
+
+### Bug Fixes
+
+- **code-playground:** add correct wrapper to snippets ([d5c9b9e](https://github.com/entur/design-system/commit/d5c9b9eba272ef01d684b8190bb3af57158701d8))
+- **code-playground:** make build work ([129ccc1](https://github.com/entur/design-system/commit/129ccc14933bc9ca95989ad06854c1de9530024a))
+- **code-playground:** make scroll work in playroom window ([2f72f9d](https://github.com/entur/design-system/commit/2f72f9da135148c1a198fabe061392865a880563))
+
+### Features
+
+- **code-playground:** add more exports to sandkasse ([fd2ed2c](https://github.com/entur/design-system/commit/fd2ed2c7004880819a3056f596853eb0bee29042))
+- **website:** add sandkasse to side navigation ([4b159d8](https://github.com/entur/design-system/commit/4b159d898e1e601b55ebf7735596672928b103c0))
+
+# [2.3.0-beta.2](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0-beta.2) (2025-08-29)
+
+### Bug Fixes
+
+- **code-playground:** add correct wrapper to snippets ([d5c9b9e](https://github.com/entur/design-system/commit/d5c9b9eba272ef01d684b8190bb3af57158701d8))
+- **code-playground:** make build work ([129ccc1](https://github.com/entur/design-system/commit/129ccc14933bc9ca95989ad06854c1de9530024a))
+- **code-playground:** make scroll work in playroom window ([2f72f9d](https://github.com/entur/design-system/commit/2f72f9da135148c1a198fabe061392865a880563))
+
+### Features
+
+- **code-playground:** add more exports to sandkasse ([fd2ed2c](https://github.com/entur/design-system/commit/fd2ed2c7004880819a3056f596853eb0bee29042))
+- **website:** add sandkasse to side navigation ([4b159d8](https://github.com/entur/design-system/commit/4b159d898e1e601b55ebf7735596672928b103c0))
+
+# [2.3.0-beta.1](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0-beta.1) (2025-08-29)
+
+### Bug Fixes
+
+- **code-playground:** add correct wrapper to snippets ([d5c9b9e](https://github.com/entur/design-system/commit/d5c9b9eba272ef01d684b8190bb3af57158701d8))
+- **code-playground:** make build work ([129ccc1](https://github.com/entur/design-system/commit/129ccc14933bc9ca95989ad06854c1de9530024a))
+- **code-playground:** make scroll work in playroom window ([2f72f9d](https://github.com/entur/design-system/commit/2f72f9da135148c1a198fabe061392865a880563))
+
+### Features
+
+- **code-playground:** add more exports to sandkasse ([fd2ed2c](https://github.com/entur/design-system/commit/fd2ed2c7004880819a3056f596853eb0bee29042))
+- **website:** add sandkasse to side navigation ([4b159d8](https://github.com/entur/design-system/commit/4b159d898e1e601b55ebf7735596672928b103c0))
+
+# [2.3.0-beta.0](https://github.com/entur/design-system/compare/@entur/code-playground@2.2.0...@entur/code-playground@2.3.0-beta.0) (2025-08-29)
+>>>>>>> 43d0a9514 (chore(release): publish)
 
 ### Bug Fixes
 

@@ -3,7 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
 # [6.9.0](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0) (2025-08-29)
+=======
+# [6.9.0-beta.11](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.10...@entur/documentation@6.9.0-beta.11) (2025-09-02)
+
+### Features
+
+- **typography:** add list beta components ([43cf693](https://github.com/entur/design-system/commit/43cf693503b6645d460b9ebf35a909b74f7355aa))
+
+# [6.9.0-beta.10](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.9...@entur/documentation@6.9.0-beta.10) (2025-09-01)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.9](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.8...@entur/documentation@6.9.0-beta.9) (2025-08-29)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.8](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.7...@entur/documentation@6.9.0-beta.8) (2025-08-29)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.7](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.6...@entur/documentation@6.9.0-beta.7) (2025-08-29)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.6](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.4...@entur/documentation@6.9.0-beta.6) (2025-08-29)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.5](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.4...@entur/documentation@6.9.0-beta.5) (2025-08-29)
+
+**Note:** Version bump only for package @entur/documentation
+
+# [6.9.0-beta.4](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0-beta.4) (2025-08-29)
+>>>>>>> 43d0a9514 (chore(release): publish)
 
 ### Bug Fixes
 
