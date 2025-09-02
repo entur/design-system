@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-beta.13](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.12...@entur/typography@1.10.0-beta.13) (2025-09-02)
+
+### Bug Fixes
+
+- **typography:** fix migration ([5f4796f](https://github.com/entur/design-system/commit/5f4796f6f36f0b7c901c8941508debd28f3296e3))
+
 # [1.10.0-beta.12](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.11...@entur/typography@1.10.0-beta.12) (2025-09-02)
 
 ### Bug Fixes
