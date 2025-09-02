@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0-beta.11](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.10...@entur/documentation@6.9.0-beta.11) (2025-09-02)
+
+### Features
+
+- **typography:** add list beta components ([43cf693](https://github.com/entur/design-system/commit/43cf693503b6645d460b9ebf35a909b74f7355aa))
+
 # [6.9.0-beta.10](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.9...@entur/documentation@6.9.0-beta.10) (2025-09-01)
 
 **Note:** Version bump only for package @entur/documentation
