@@ -14,6 +14,11 @@
  *     * <Heading1> becomes <Heading as="h1" variant="title-1">
  *     * <Paragraph> becomes <Text variant="paragraph">
  *     * <Link> becomes <LinkBeta>
+ *     * <Blockquote> becomes <BlockquoteBeta>
+ *     * <BlockquoteFooter> becomes <BlockquoteFooterBeta>
+ *     * <UnorderedList> becomes <UnorderedListBeta>
+ *     * <NumberedList> becomes <NumberedListBeta>
+ *     * <ListItem> becomes <ListItemBeta>
  *     * Props may need updates (e.g., different prop names)
  *     * Styling classes may change
  *     * Test thoroughly after migration!
@@ -345,6 +350,11 @@ const COMPONENT_MAPPING = {
   EmphasizedText: { component: 'Text', variant: 'emphasized' },
   CodeText: { component: 'Text', variant: 'code-text' },
   Link: { component: 'LinkBeta' }, // Convert Link to LinkBeta
+  Blockquote: { component: 'BlockquoteBeta' }, // Convert Blockquote to BlockquoteBeta
+  BlockquoteFooter: { component: 'BlockquoteFooterBeta' }, // Convert BlockquoteFooter to BlockquoteFooterBeta
+  UnorderedList: { component: 'UnorderedListBeta' },
+  NumberedList: { component: 'NumberedListBeta' },
+  ListItem: { component: 'ListItemBeta' },
 };
 
 // Props mapping for migration
@@ -1148,6 +1158,12 @@ function main() {
     console.log('Migration Mode:');
     console.log('  🚀 Complete Mode: Updates everything');
     console.log('     - Replaces old components with beta components');
+    console.log('     - Heading1-6 → Heading with as/variant props');
+    console.log('     - Text components → Text with variant props');
+    console.log('     - Link → LinkBeta, Blockquote → BlockquoteBeta');
+    console.log(
+      '     - Lists → UnorderedListBeta, NumberedListBeta, ListItemBeta',
+    );
     console.log('     - May require prop/styling updates');
     console.log('     - Test thoroughly after migration');
     console.log('');
@@ -1172,7 +1188,7 @@ function main() {
     console.log('    Add/remove folder patterns between the 👇 and 👆 markers');
     console.log('    Examples: "src/**", "app/**", "packages/my-app/**"');
     console.log('');
-    console.log('  Option 2: Set environment variable (for CI/CD)');
+    console.log('  Option 2: Set environment variable');
     console.log(
       '    export TYPOGRAPHY_MIGRATION_DIRS="src/**,app/**,components/**"',
     );
@@ -1249,6 +1265,12 @@ function main() {
   console.log('🚀 COMPLETE MIGRATION: Updating imports + component usage');
   console.log('⚠️  WARNING: This will modify your component usage!');
   console.log('   - Old components will be replaced with beta components');
+  console.log(
+    '   - Link → LinkBeta, Blockquote → BlockquoteBeta, Lists → ListBeta components',
+  );
+  console.log(
+    '   - List components → UnorderedListBeta, NumberedListBeta, ListItemBeta',
+  );
   console.log('   - You may need to update props and styling');
   console.log('   - Test thoroughly after migration');
 

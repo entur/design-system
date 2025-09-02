@@ -300,7 +300,7 @@
     display: inline-block;
     word-wrap: break-word;
     overflow-wrap: anywhere;
-    padding: calc(t.$space-extra-small2 / 2) t.$space-extra-small2;
+    padding: 0 t.$space-extra-small2;
   }
 
   // Font weights
@@ -468,6 +468,107 @@
       letter-spacing: 1px;
       margin-top: t.$space-large;
       text-transform: uppercase;
+    }
+  }
+
+  // List components
+  &--unordered-list {
+    list-style: none;
+    margin: t.$space-default 0;
+    padding: 0;
+
+    .eds-text--list-item {
+      &::before {
+        content: '';
+        background: var(--components-typography-list-standard-border);
+        display: block;
+        height: t.$border-widths-medium;
+        left: -1.75rem;
+        top: 0.75rem;
+        position: relative;
+        width: t.$space-small;
+      }
+    }
+  }
+
+  &--numbered-list {
+    counter-reset: eds-numbered-list-counter;
+    list-style: none;
+    margin: t.$space-default 0;
+    padding: 0;
+
+    &--type-a {
+      & > .eds-text--list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, lower-alpha);
+        }
+      }
+    }
+    &--type-A {
+      & > .eds-text--list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, upper-alpha);
+        }
+      }
+    }
+    &--type-1 {
+      & > .eds-text--list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, decimal);
+        }
+      }
+    }
+    &--type-i {
+      & > .eds-text--list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, lower-roman);
+        }
+      }
+    }
+    &--type-I {
+      & > .eds-text--list-item {
+        &::before {
+          content: counter(eds-numbered-list-counter, upper-roman);
+        }
+      }
+    }
+  }
+
+  &--list-item {
+    padding-left: t.$space-extra-small;
+    margin-top: t.$space-large;
+    position: relative;
+    font-size: var(--font-size-body-m);
+    line-height: var(--font-line-height-body-m);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    // Custom bullet/number styling for numbered lists
+    .eds-text--numbered-list > & {
+      counter-increment: eds-numbered-list-counter;
+
+      &::before {
+        color: var(--primary-text-color);
+        position: absolute;
+        font-weight: var(--font-weight-heading);
+        left: -(t.$space-extra-large2);
+        border: t.$border-widths-medium solid var(--components-typography-list-standard-border);
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -0.25rem;
+      }
+    }
+
+    &__title {
+      display: block;
+      font-weight: var(--font-weight-heading);
+      margin-bottom: t.$space-extra-small;
     }
   }
 }
