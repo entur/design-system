@@ -1,1 +1,1 @@
-export * from './variants';
+export type { VariantType } from './variants';

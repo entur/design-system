@@ -37,6 +37,8 @@
     "test:package": "cross-env TZ=UTC lerna run test --scope \"@entur/$*\" | cat",
     "test:single-run": "cross-env CI=true TZ=UTC yarn test",
     "test:watch": "cross-env TZ=UTC lerna run test --watch",
+    "audit-types": "node scripts/audit-all-package-types.js",
+    "audit-types:migrate": "node scripts/audit-all-package-types.js --generate-migration",
     "setup": "yarn && yarn build:packages",
     "deploy:documentation": "lerna exec --scope @entur/documentation -- yarn deploy-docs",
     "deploy:documentation:preview": "lerna exec --scope @entur/documentation -- yarn deploy-docs:preview",

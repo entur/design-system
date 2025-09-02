@@ -1,11 +1,6 @@
 import { warnAboutMissingStyles } from '@entur/utils';
 import './index.scss';
-
 warnAboutMissingStyles('datepicker', 'form', 'icons');
-
-export * from './DatePicker';
-export * from './TimePicker';
-export * from './shared';
 
 export {
   CalendarDate,
@@ -14,3 +9,7 @@ export {
   Time,
 } from '@internationalized/date';
 export type { TimeValue, DateValue } from '@react-types/datepicker';
+
+export * from './DatePicker';
+export * from './TimePicker';
+export * from './shared';
