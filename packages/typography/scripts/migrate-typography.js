@@ -409,6 +409,7 @@ function parseJSXProps(propsString) {
   const props = {};
   const warnings = [];
   const spreadProps = []; // Track spread props separately
+  const originalSyntax = {}; // Track original JSX syntax for each prop
 
   try {
     // Parse props manually to handle complex cases
@@ -449,6 +450,7 @@ function parseJSXProps(propsString) {
 
         const propValue = remaining.substring(1, endQuoteIndex);
         props[propName] = propValue;
+        originalSyntax[propName] = 'string'; // Mark as string literal
         remaining = remaining.substring(endQuoteIndex + 1);
       } else if (remaining.startsWith('{')) {
         // Object value - find matching closing brace
@@ -473,10 +475,12 @@ function parseJSXProps(propsString) {
 
         const propValue = remaining.substring(1, endIndex);
         props[propName] = propValue;
+        originalSyntax[propName] = 'jsx'; // Mark as JSX expression
         remaining = remaining.substring(endIndex + 1);
       } else {
         // Boolean prop
         props[propName] = true;
+        originalSyntax[propName] = 'boolean'; // Mark as boolean
         break;
       }
 
@@ -487,7 +491,7 @@ function parseJSXProps(propsString) {
     warnings.push(`Failed to parse props: ${error.message}`);
   }
 
-  return { props, warnings, spreadProps };
+  return { props, warnings, spreadProps, originalSyntax };
 }
 
 // Migrate props from old to new format
@@ -585,7 +589,7 @@ function getSpacingSuggestions(unknownMargin) {
 }
 
 // Convert props object back to JSX string
-function propsToString(props) {
+function propsToString(props, originalSyntax = {}) {
   if (!props || Object.keys(props).length === 0) {
     return '';
   }
@@ -594,20 +598,30 @@ function propsToString(props) {
     ' ' +
     Object.entries(props)
       .map(([key, value]) => {
-        // Handle different value types
-        if (typeof value === 'string' && !value.includes('{')) {
+        // Use original syntax information if available
+        if (originalSyntax[key] === 'string') {
           return `${key}="${value}"`;
-        } else if (
-          typeof value === 'string' &&
-          value.startsWith('{') &&
-          value.endsWith('}')
-        ) {
-          // Already a JSX object, don't add extra braces
+        } else if (originalSyntax[key] === 'jsx') {
           return `${key}={${value}}`;
+        } else if (originalSyntax[key] === 'boolean') {
+          return value ? key : '';
         } else {
-          return `${key}={${value}}`;
+          // Fallback logic for when originalSyntax is not available
+          if (typeof value === 'string' && !value.includes('{')) {
+            return `${key}="${value}"`;
+          } else if (
+            typeof value === 'string' &&
+            value.startsWith('{') &&
+            value.endsWith('}')
+          ) {
+            // Already a JSX object, don't add extra braces
+            return `${key}={${value}}`;
+          } else {
+            return `${key}={${value}}`;
+          }
         }
       })
+      .filter(prop => prop.length > 0) // Remove empty props (like false booleans)
       .join(' ')
   );
 }
@@ -680,6 +694,7 @@ function updateComponents(content) {
           props: existingProps,
           warnings: parseWarnings,
           spreadProps,
+          originalSyntax,
         } = parseJSXProps(propsString);
         warnings.push(...parseWarnings);
 
@@ -717,7 +732,7 @@ function updateComponents(content) {
           }
           Object.assign(orderedProps, newProps);
 
-          const propsString = propsToString(orderedProps);
+          const propsString = propsToString(orderedProps, originalSyntax);
           const spreadPropsString =
             spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
           return `<Heading as="${asValue}" variant="${variantValue}"${propsString}${spreadPropsString}>`;
@@ -742,7 +757,7 @@ function updateComponents(content) {
         });
         Object.assign(finalProps, newProps);
 
-        const otherPropsString = propsToString(finalProps);
+        const otherPropsString = propsToString(finalProps, originalSyntax);
         const spreadPropsString =
           spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
         return `<${componentName}${otherPropsString}${spreadPropsString}>`;
