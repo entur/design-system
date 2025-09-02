@@ -663,6 +663,9 @@ function updateImports(content) {
       .split(',')
       .map(comp => comp.trim())
       .filter(comp => {
+        // Skip empty components
+        if (!comp) return false;
+
         // Keep components that are:
         // 1. Not in the migration mapping (old components), OR
         // 2. Are the target components (new beta components)
@@ -694,7 +697,13 @@ function updateImports(content) {
         ...existingComponents,
         ...Array.from(uniqueComponents),
       ];
-      const finalImportList = allComponents.join(', ');
+
+      // Filter out any empty components and deduplicate
+      const finalComponents = allComponents
+        .filter(comp => comp && comp.trim())
+        .filter((comp, index, arr) => arr.indexOf(comp) === index); // Remove duplicates
+
+      const finalImportList = finalComponents.join(', ');
       return `import {${finalImportList}} from '${BETA_IMPORT}'`;
     }
 
