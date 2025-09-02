@@ -22,22 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **dropdown:** add onBlur as prop on multiselect and searchable ([6fe1261](https://github.com/entur/design-system/commit/6fe12619de18fc2a978b72f74bad17c2a6440535))
 - **dropdown:** add useful callback props ([f996017](https://github.com/entur/design-system/commit/f9960176e8ce1bb644b53bdb8c88953da5c2bfc1))
 
-=======
-<<<<<<< HEAD
-
-> > > > > > > 71b7ad2a2 (chore(release): publish)
-
 ## [7.3.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.1...@entur/dropdown@7.3.2) (2025-08-29)
-
-=======
-
-## [7.3.2-beta.11](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.2-beta.10...@entur/dropdown@7.3.2-beta.11) (2025-09-02)
-
-**Note:** Version bump only for package @entur/dropdown
-
-## [7.3.2-beta.10](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.2-beta.9...@entur/dropdown@7.3.2-beta.10) (2025-09-01)
-
-> > > > > > > 43d0a9514 (chore(release): publish)
 
 ### Bug Fixes
 

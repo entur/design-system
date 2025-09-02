@@ -31,48 +31,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sanity:** add dodont card as object ([94fe1b2](https://github.com/entur/design-system/commit/94fe1b23a8f236307cfb8f8bba9a0b9054cfa10a))
 - **sanity:** add dodont card as object ([670e386](https://github.com/entur/design-system/commit/670e3868849854ce506e8c3ef27f2be7bc8a79fc))
 
-=======
-<<<<<<< HEAD
-
-> > > > > > > 71b7ad2a2 (chore(release): publish)
-
 # [6.9.0](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0) (2025-08-29)
-
-=======
-
-# [6.9.0-beta.11](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.10...@entur/documentation@6.9.0-beta.11) (2025-09-02)
-
-### Features
-
-- **typography:** add list beta components ([43cf693](https://github.com/entur/design-system/commit/43cf693503b6645d460b9ebf35a909b74f7355aa))
-
-# [6.9.0-beta.10](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.9...@entur/documentation@6.9.0-beta.10) (2025-09-01)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.9](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.8...@entur/documentation@6.9.0-beta.9) (2025-08-29)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.8](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.7...@entur/documentation@6.9.0-beta.8) (2025-08-29)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.7](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.6...@entur/documentation@6.9.0-beta.7) (2025-08-29)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.6](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.4...@entur/documentation@6.9.0-beta.6) (2025-08-29)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.5](https://github.com/entur/design-system/compare/@entur/documentation@6.9.0-beta.4...@entur/documentation@6.9.0-beta.5) (2025-08-29)
-
-**Note:** Version bump only for package @entur/documentation
-
-# [6.9.0-beta.4](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0-beta.4) (2025-08-29)
-
-> > > > > > > 43d0a9514 (chore(release): publish)
 
 ### Bug Fixes
 
