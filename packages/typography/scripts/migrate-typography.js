@@ -658,7 +658,23 @@ function updateImports(content) {
     let hasChanges = false;
     const uniqueComponents = new Set();
 
-    // Check each component in the import list
+    // First, collect all existing components that should be preserved
+    const existingComponents = importList
+      .split(',')
+      .map(comp => comp.trim())
+      .filter(comp => {
+        // Keep components that are:
+        // 1. Not in the migration mapping (old components), OR
+        // 2. Are the target components (new beta components)
+        const isOldComponent = Object.keys(COMPONENT_MAPPING).includes(comp);
+        const isTargetComponent = Object.values(COMPONENT_MAPPING).some(
+          mapping => mapping.component === comp,
+        );
+
+        return !isOldComponent || isTargetComponent;
+      });
+
+    // Then, update components that need migration
     Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
       const componentRegex = new RegExp(`\\b${oldComponent}\\b`, 'g');
       if (componentRegex.test(updatedImportList)) {
@@ -673,8 +689,12 @@ function updateImports(content) {
 
     if (hasChanges) {
       changes++;
-      // Deduplicate components and create clean import statement
-      const finalImportList = Array.from(uniqueComponents).join(', ');
+      // Combine existing components with migrated components
+      const allComponents = [
+        ...existingComponents,
+        ...Array.from(uniqueComponents),
+      ];
+      const finalImportList = allComponents.join(', ');
       return `import {${finalImportList}} from '${BETA_IMPORT}'`;
     }
 
