@@ -8,16 +8,11 @@ npmPackage: typography
 tags: avsnitt, tekst, typo, overskrift, heading, ingress, lead, fet, kursiv, link, sitat, blockquote
 ---
 
-import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta } from "@entur/typography";
+import { Heading, Text, LinkBeta, BlockquoteBeta, BlockquoteFooterBeta, UnorderedListBeta, NumberedListBeta, ListItemBeta } from "@entur/typography";
 import { BannerAlertBox } from "@entur/alert";
 
 <PageHeader />
 
-
-<BannerAlertBox variant="warning" title="Viktig: CSS-import kreves for beta-versjonen">
-  For å bruke riktig styling for typography beta-komponentene må du importere CSS-filen fra beta-mappen.
-  @import '@entur/typography/dist/beta/styles.css';
-</BannerAlertBox>
 
 ## Beskrivelse
 Typography Beta er en ny, forenklet versjon av typografisystemet som samler alle typografiske behov i kun to hovedkomponenter: `Heading` og `Text`. Dette gir et fleksibelt og fremtidsrettet API.
@@ -121,7 +116,7 @@ Text er mer fleksibel, og krever at du velger variant selv.
 
 #### Semantikk 
 
-Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Default er `as = p`
+Husk at det er ditt ansvar å bruke riktig as-prop, slik at HTML-en gir mening for både mennesker, maskiner og hjelpemidler. Men vi legger til riktig semantikk basert på varianten du velger. Om du ikke bruker variant, må du sørge for å legge til riktig `as-prop` selv. Default er `p`.
 
 ````jsx
 <Text as="p">{'<p>as paragraph</p>'}</Text>
@@ -137,11 +132,18 @@ Hvis du bare skriver:
 <Text as="label">Navn</Text>
 ```
 
-…får du et semantisk `<label>` uten styling. Skal den se ut som den kommer fra vårt designsystem, bør du kombinere med en variant:
+…får du semantisk `<label>` uten styling. Skal den se ut som den kommer fra vårt designsystem, kan du bruke variant:
 
 ```html
 <Text as="label" variant="label">Navn</Text>
 ```
+
+Siden label-element også brukes som et designelement ulike steder blir denne default `<span></span>`:
+
+```html
+<Text variant="label">Navn</Text>
+```
+
 
 #### Spacing
 
@@ -223,9 +225,79 @@ Baseklasser har **ingen margin som standard** (`margin: 0`), men `variant` tar s
 <LinkBeta href="https://entur.no/" external>Reiseplanleggeren til Entur</LinkBeta>
 ````
 
-<BannerAlertBox variant="warning" title="Under arbeid">
-Andre komponenter vil komme her.. (eks. Liste)
-</BannerAlertBox>
+### Lists
+
+#### Unordered List
+
+````jsx
+<UnorderedListBeta spacing="md">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</UnorderedListBeta>
+````
+
+#### Numbered List
+
+````jsx
+<NumberedListBeta type="A" spacing="lg">
+  <ListItemBeta>Step 1</ListItemBeta>
+  <ListItemBeta>Step 2</ListItemBeta>
+  <ListItemBeta>Step 3</ListItemBeta>
+</NumberedListBeta>
+````
+
+#### List Items with Titles
+
+````jsx
+<UnorderedListBeta>
+  <ListItemBeta title="Important">This is an important item</ListItemBeta>
+  <ListItemBeta title="Note">This is a note item</ListItemBeta>
+  <ListItemBeta>Regular item without title</ListItemBeta>
+</UnorderedListBeta>
+````
+
+#### List Types
+
+Numbered lists support different numbering styles:
+
+````jsx
+// Decimal (1, 2, 3)
+<NumberedListBeta type="1">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</NumberedListBeta>
+
+// Upper Alpha (A, B, C)
+<NumberedListBeta type="A">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</NumberedListBeta>
+
+// Lower Alpha (a, b, c)
+<NumberedListBeta type="a">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</NumberedListBeta>
+
+// Upper Roman (I, II, III)
+<NumberedListBeta type="I">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</NumberedListBeta>
+
+// Lower Roman (i, ii, iii)
+<NumberedListBeta type="i">
+  <ListItemBeta>First item</ListItemBeta>
+  <ListItemBeta>Second item</ListItemBeta>
+  <ListItemBeta>Third item</ListItemBeta>
+</NumberedListBeta>
+````
+
 
 ## Display Mode
 

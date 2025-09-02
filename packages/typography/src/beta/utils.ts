@@ -44,6 +44,8 @@ export function getSemanticTypeFromTextVariant(
     case 'emphasized':
     case 'code-text':
       return 'code';
+    case 'preformatted-text':
+      return 'pre';
     default:
       return 'p';
   }
