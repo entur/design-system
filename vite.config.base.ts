@@ -7,7 +7,6 @@ export const createBaseConfig = (): UserConfig =>
     plugins: [
       dts({
         insertTypesEntry: true,
-        rollupTypes: true,
       }),
     ],
     build: {
