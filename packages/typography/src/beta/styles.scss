@@ -4,7 +4,7 @@
 @forward './typography-tokens.scss';
 @use './typography-tokens.scss' as *;
 
-@import '~modern-normalize/modern-normalize.css';
+@import 'modern-normalize/modern-normalize.css';
 
 [data-color-mode='light'],
 [data-color-mode='dark'],
@@ -48,15 +48,6 @@
   font-weight: inherit;
 }
 
-// Prevent margin collapse between typography elements
-.eds-heading,
-.eds-text,
-.eds-text--unordered-list,
-.eds-text--numbered-list,
-.eds-text--list-item {
-  display: flow-root; // Creates new block formatting context, preventing margin collapse
-}
-
 .eds-heading {
   color: var(--primary-text-color);
   font-weight: var(--font-weight-heading);
@@ -89,7 +80,7 @@
     line-height: var(--font-line-height-heading-xs);
   }
 
-  // Variants
+  // Variants - No margin-top, extra margin-bottom when following text
   &--title-1 {
     font-size: var(--font-size-heading-2xl);
     line-height: var(--font-line-height-heading-2xl);
@@ -98,33 +89,31 @@
   &--title-2 {
     font-size: var(--font-size-heading-xl);
     line-height: var(--font-line-height-heading-xl);
-    margin-top: var(--font-paragraph-spacing-heading-xl);
     margin-bottom: var(--font-paragraph-spacing-heading-xl);
   }
   &--subtitle-1 {
     font-size: var(--font-size-heading-lg);
     line-height: var(--font-line-height-heading-lg);
-    margin-top: var(--font-paragraph-spacing-heading-lg);
     margin-bottom: var(--font-paragraph-spacing-heading-lg);
   }
   &--subtitle-2 {
     font-size: var(--font-size-heading-m);
     line-height: var(--font-line-height-heading-m);
-    margin-top: var(--font-paragraph-spacing-heading-xl);
     margin-bottom: var(--font-paragraph-spacing-heading-m);
   }
   &--section-1 {
     font-size: var(--font-size-heading-s);
     line-height: var(--font-line-height-heading-s);
-    margin-top: var(--font-paragraph-spacing-heading-lg);
     margin-bottom: var(--font-paragraph-spacing-heading-s);
   }
   &--section-2 {
     font-size: var(--font-size-heading-s);
     line-height: var(--font-line-height-heading-s);
-    margin-top: var(--font-paragraph-spacing-heading-lg);
     margin-bottom: var(--font-paragraph-spacing-heading-xs);
   }
+
+  // Note: CSS cannot target previous siblings, so extra spacing must be added
+  // to text components or handled with CSS Grid container
 
   // Spacing modifiers
   &--spacing-none {
@@ -231,39 +220,67 @@
     line-height: var(--font-line-height-body-xl);
   }
 
-  // Variants - FIXED: Only use margin-bottom to prevent margin collapse
+  // Extra margin-bottom when text is followed by heading (placed before base variants for cascade)
+  &--paragraph:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-m) + 1rem);
+  }
+  &--sub-paragraph:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-s) + 1rem);
+  }
+  &--leading:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-xl) + 1rem);
+  }
+  &--quote:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
+  &--caption:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-xs) + 1rem);
+  }
+  &--label:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-paragraph-spacing-body-xs) + 1rem);
+  }
+  &--sublabel:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-paragraph-spacing-body-xs) + 1rem);
+  }
+  &--unordered-list:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
+  &--numbered-list:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
+  &--blockquote:has(+ .eds-heading) {
+    margin-bottom: calc(var(--font-line-height-body-lg) + 1rem);
+  }
+
+  // Variants
   &--leading {
     font-size: var(--font-size-body-xl);
     line-height: var(--font-line-height-body-xl);
-    margin-top: 0;
-    margin-bottom: var(--font-paragraph-spacing-body-xl);
+    margin-bottom: var(--font-line-height-body-xl);
   }
 
   &--quote {
     font-size: var(--font-size-body-lg);
     line-height: var(--font-line-height-body-lg);
-    margin-top: 0;
-    margin-bottom: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-line-height-body-lg);
   }
 
   &--paragraph {
     font-size: var(--font-size-body-m);
     line-height: var(--font-line-height-body-m);
-    margin-top: 0;
-    margin-bottom: var(--font-paragraph-spacing-body-m);
+    margin-bottom: var(--font-line-height-body-m);
   }
 
   &--sub-paragraph {
     font-size: var(--font-size-body-s);
     line-height: var(--font-line-height-body-s);
-    margin-top: 0;
-    margin-bottom: var(--font-paragraph-spacing-body-s);
+    margin-bottom: var(--font-line-height-body-s);
   }
 
   &--caption {
     font-size: var(--font-size-body-xs);
     line-height: var(--font-line-height-body-xs);
-    margin-bottom: var(--font-paragraph-spacing-body-xs);
+    margin-bottom: var(--font-line-height-body-xs);
   }
 
   &--label {
@@ -473,8 +490,7 @@
     padding-left: t.$space-extra-large;
     font-size: var(--font-size-body-lg);
     line-height: var(--font-line-height-body-lg);
-    margin-top: var(--font-paragraph-spacing-body-lg);
-    margin-bottom: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-line-height-body-lg);
 
     &__footer {
       font-size: var(--font-size-body-s);
@@ -488,8 +504,7 @@
   // List components
   &--unordered-list {
     list-style: none;
-    margin-top: var(--font-paragraph-spacing-body-lg);
-    margin-bottom: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-line-height-body-lg);
 
     .eds-text--list-item {
       &::before {
@@ -508,8 +523,7 @@
   &--numbered-list {
     counter-reset: eds-numbered-list-counter;
     list-style: none;
-    margin-top: var(--font-paragraph-spacing-body-lg);
-    margin-bottom: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-line-height-body-lg);
 
     &--type-a {
       & > .eds-text--list-item {
@@ -554,7 +568,7 @@
 
   &--numbered-list > .eds-text--list-item {
     counter-increment: eds-numbered-list-counter;
-    margin-top: var(--font-paragraph-spacing-body-m);
+    margin-bottom: var(--font-paragraph-spacing-body-m);
     position: relative;
 
     &::before {
