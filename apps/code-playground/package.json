@@ -1,6 +1,6 @@
 {
   "name": "@entur/code-playground",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
