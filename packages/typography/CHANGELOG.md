@@ -3,11 +3,8 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ## [1.9.13](https://github.com/entur/design-system/compare/@entur/typography@1.9.12...@entur/typography@1.9.13) (2025-08-29)
-=======
-=======
+
 # [1.10.0-beta.13](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.12...@entur/typography@1.10.0-beta.13) (2025-09-02)
 
 ### Bug Fixes
@@ -20,7 +17,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **typography:** fix migration ([a033b17](https://github.com/entur/design-system/commit/a033b17cca1c2d10a82066acb921b372c16a5352))
 
->>>>>>> c9b59ab0f (chore(release): publish)
 # [1.10.0-beta.11](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.10...@entur/typography@1.10.0-beta.11) (2025-09-02)
 
 ### Bug Fixes
@@ -33,7 +29,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **typography:** add list beta components ([43cf693](https://github.com/entur/design-system/commit/43cf693503b6645d460b9ebf35a909b74f7355aa))
 
 # [1.10.0-beta.10](https://github.com/entur/design-system/compare/@entur/typography@1.10.0-beta.9...@entur/typography@1.10.0-beta.10) (2025-09-01)
->>>>>>> 43d0a9514 (chore(release): publish)
 
 ### Bug Fixes
 

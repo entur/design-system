@@ -5,9 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [6.10.2](https://github.com/entur/design-system/compare/@entur/documentation@6.10.1...@entur/documentation@6.10.2) (2025-09-08)
 
-**Note:** Version bump only for package @entur/documentation
-
-## [6.10.1-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.10.0...@entur/documentation@6.10.1-beta.0) (2025-09-08)
+# [6.9.0](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0) (2025-08-29)
 
 ### Bug Fixes
 
@@ -22,7 +20,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **dropdown:** add onBlur as prop on multiselect and searchable ([6fe1261](https://github.com/entur/design-system/commit/6fe12619de18fc2a978b72f74bad17c2a6440535))
 - **dropdown:** add useful callback props ([f996017](https://github.com/entur/design-system/commit/f9960176e8ce1bb644b53bdb8c88953da5c2bfc1))
 - **sanity:** add importstatement to proptable ([6a709c2](https://github.com/entur/design-system/commit/6a709c28ee6f00c9794476fe4001c64b671716e9))
-- **sanity:** rich content support in dodont cards ([5df2056](https://github.com/entur/design-system/commit/5df2056698797e0baf14e6227bb9a7b0f5831d88))
+- # **sanity:** rich content support in dodont cards ([5df2056](https://github.com/entur/design-system/commit/5df2056698797e0baf14e6227bb9a7b0f5831d88))
 
 ### Features
 
