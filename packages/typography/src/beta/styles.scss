@@ -48,6 +48,15 @@
   font-weight: inherit;
 }
 
+// Prevent margin collapse between typography elements
+.eds-heading,
+.eds-text,
+.eds-text--unordered-list,
+.eds-text--numbered-list,
+.eds-text--list-item {
+  display: flow-root; // Creates new block formatting context, preventing margin collapse
+}
+
 .eds-heading {
   color: var(--primary-text-color);
   font-weight: var(--font-weight-heading);
@@ -222,29 +231,33 @@
     line-height: var(--font-line-height-body-xl);
   }
 
-  // Variants
+  // Variants - FIXED: Only use margin-bottom to prevent margin collapse
   &--leading {
     font-size: var(--font-size-body-xl);
     line-height: var(--font-line-height-body-xl);
-    margin: var(--font-paragraph-spacing-body-xl) 0;
+    margin-top: 0;
+    margin-bottom: var(--font-paragraph-spacing-body-xl);
   }
 
   &--quote {
     font-size: var(--font-size-body-lg);
     line-height: var(--font-line-height-body-lg);
-    margin: var(--font-paragraph-spacing-body-lg) 0;
+    margin-top: 0;
+    margin-bottom: var(--font-paragraph-spacing-body-lg);
   }
 
   &--paragraph {
     font-size: var(--font-size-body-m);
     line-height: var(--font-line-height-body-m);
-    margin: var(--font-paragraph-spacing-body-m) 0;
+    margin-top: 0;
+    margin-bottom: var(--font-paragraph-spacing-body-m);
   }
 
   &--sub-paragraph {
     font-size: var(--font-size-body-s);
     line-height: var(--font-line-height-body-s);
-    margin: var(--font-paragraph-spacing-body-s) 0;
+    margin-top: 0;
+    margin-bottom: var(--font-paragraph-spacing-body-s);
   }
 
   &--caption {
@@ -460,6 +473,7 @@
     padding-left: t.$space-extra-large;
     font-size: var(--font-size-body-lg);
     line-height: var(--font-line-height-body-lg);
+    margin-top: var(--font-paragraph-spacing-body-lg);
     margin-bottom: var(--font-paragraph-spacing-body-lg);
 
     &__footer {
@@ -474,7 +488,8 @@
   // List components
   &--unordered-list {
     list-style: none;
-    margin: t.$space-default 0;
+    margin-top: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-paragraph-spacing-body-lg);
 
     .eds-text--list-item {
       &::before {
@@ -493,7 +508,8 @@
   &--numbered-list {
     counter-reset: eds-numbered-list-counter;
     list-style: none;
-    margin: t.$space-default 0;
+    margin-top: var(--font-paragraph-spacing-body-lg);
+    margin-bottom: var(--font-paragraph-spacing-body-lg);
 
     &--type-a {
       & > .eds-text--list-item {
@@ -538,7 +554,7 @@
 
   &--numbered-list > .eds-text--list-item {
     counter-increment: eds-numbered-list-counter;
-    margin-top: t.$space-large;
+    margin-top: var(--font-paragraph-spacing-body-m);
     position: relative;
 
     &::before {
