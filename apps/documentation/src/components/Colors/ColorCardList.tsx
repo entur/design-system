@@ -64,7 +64,7 @@ const Colors: React.FC<{
               <ColorCard
                 colorTitle="Lavender"
                 hex="#aeb7e2"
-                rgb="255, 89, 89"
+                rgb="174, 183, 226"
                 cmyk="0, 80, 60, 0"
                 pmsC="178"
               ></ColorCard>
