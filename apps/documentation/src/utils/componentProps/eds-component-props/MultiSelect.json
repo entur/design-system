@@ -148,7 +148,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "feedback": {
@@ -611,6 +611,21 @@
       "required": false,
       "type": {
         "name": "string | undefined"
+      }
+    },
+    "onBlur": {
+      "defaultValue": null,
+      "description": "Callback når input mister fokus",
+      "name": "onBlur",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/MultiSelect.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLInputElement, Element>) => void) | undefined"
       }
     }
   }

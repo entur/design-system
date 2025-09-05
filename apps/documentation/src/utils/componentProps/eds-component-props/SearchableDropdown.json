@@ -180,7 +180,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "feedback": {
@@ -458,6 +458,21 @@
       "required": false,
       "type": {
         "name": "number | undefined"
+      }
+    },
+    "onBlur": {
+      "defaultValue": null,
+      "description": "Callback når input mister fokus",
+      "name": "onBlur",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLInputElement, Element>) => void) | undefined"
       }
     }
   }

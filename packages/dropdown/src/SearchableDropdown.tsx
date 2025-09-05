@@ -54,9 +54,8 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
    * @default "Ingen treff for søket"
    */
   noMatchesText?: string;
-  /** Tekst for skjermleser som beskriver statusen til et element som valgt
-   * @default ", valgt element, trykk for å fjerne"
-   */
+  /** Event handler som kalles når brukeren går ut av input-feltet */
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export const SearchableDropdown = React.forwardRef(
@@ -92,6 +91,7 @@ export const SearchableDropdown = React.forwardRef(
       selectOnTab = false,
       style,
       variant = 'info',
+      onBlur,
       ...rest
     }: SearchableDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -366,8 +366,9 @@ export const SearchableDropdown = React.forwardRef(
                 }
               }
             },
-            onBlur() {
+            onBlur(e) {
               if (selectedItem !== null) setShowSelectedItem(true);
+              onBlur?.(e);
             },
             onFocus() {
               if (!readOnly) {

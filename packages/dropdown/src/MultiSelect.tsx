@@ -109,6 +109,8 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
+  /** Event handler som kalles når brukeren går ut av input-feltet */
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 
 export const MultiSelect = React.forwardRef(
@@ -151,6 +153,7 @@ export const MultiSelect = React.forwardRef(
       ariaLabelOpenList = 'Åpne liste med valg',
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
+      onBlur,
       ...rest
     }: MultiSelectProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -426,7 +429,10 @@ export const MultiSelect = React.forwardRef(
         labelId={getLabelProps().id}
         labelProps={getLabelProps()}
         labelTooltip={labelTooltip}
-        onBlur={() => setInputValue('')}
+        onBlur={e => {
+          setInputValue('');
+          onBlur?.(e);
+        }}
         onClick={(e: React.MouseEvent) => {
           if (e.target === e.currentTarget) {
             getInputProps()?.onClick?.(e);
