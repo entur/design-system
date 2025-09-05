@@ -25,10 +25,20 @@ import { ImageAndTextResolver } from './image/ImageAndTextResolver';
 import { TextBlocksResolver } from './text/TextBlocksResolver';
 import { LinkResolver } from './text/LinkResolver';
 import { GroupResolver } from './layout/GroupResolver';
+import { CodeExampleResolver } from './CodeExampleResolver';
+import { DoDontResolver } from './DoDontResolver';
+import { PropsTableResolver } from './PropsTableResolver';
+import { CopyableTextResolver } from './CopyableTextResolver';
 import { InlineIcon } from './types';
 import { isEnturIcon } from 'src/utils/utils';
 
-const components: Partial<PortableTextReactComponents> = {
+type ExtendedPortableTextProps = PortableTextProps & {
+  npmPackage?: string;
+};
+
+const createComponents = (
+  npmPackage?: string,
+): Partial<PortableTextReactComponents> => ({
   block: {
     h2: ({ children, value }) => (
       <Heading2 id={value._key}>{children}</Heading2>
@@ -85,9 +95,17 @@ const components: Partial<PortableTextReactComponents> = {
   },
   types: {
     imageAndText: ImageAndTextResolver,
-    textBlocks: TextBlocksResolver,
+    textBlocks: ({ value }) => (
+      <TextBlocksResolver value={value} npmPackage={npmPackage} />
+    ),
     link: LinkResolver,
     group: GroupResolver,
+    codeExample: CodeExampleResolver,
+    doDontGroup: DoDontResolver,
+    propsTable: ({ value }) => (
+      <PropsTableResolver value={value} npmPackage={npmPackage} />
+    ),
+    copyableText: CopyableTextResolver,
     inlineIcon: ({ value }: { value: InlineIcon }) => {
       if (value.iconName === undefined || !isEnturIcon(value.iconName))
         return null;
@@ -104,8 +122,16 @@ const components: Partial<PortableTextReactComponents> = {
   },
 
   unknownType: ({ value }) => <p>Unknown type: {value._type}</p>,
-};
+});
 
-export const PortableText = ({ value }: PortableTextProps) => (
-  <PortableTextReact components={components} value={value} />
-);
+export const PortableText = ({
+  value,
+  npmPackage,
+}: ExtendedPortableTextProps) => {
+  return (
+    <PortableTextReact
+      components={createComponents(npmPackage)}
+      value={value}
+    />
+  );
+};
