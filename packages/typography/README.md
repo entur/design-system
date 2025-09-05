@@ -19,10 +19,28 @@ yarn add @entur/typography
 
 ## 🚀 Quick Start
 
-### Using Beta Typography (Recommended)
+### Using Stable Typography (Recommended for Production)
 
 ```typescript
-import { Heading, Text, LinkBeta } from '@entur/typography';
+import { Heading1, Paragraph, Link } from '@entur/typography';
+import '@entur/typography/styles';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading1>My Title</Heading1>
+      <Paragraph>My content</Paragraph>
+      <Link href="/more">Learn more</Link>
+    </div>
+  );
+}
+```
+
+### Using Beta Typography (Experimental Features)
+
+```typescript
+import { Heading, Text, LinkBeta } from '@entur/typography/beta';
+import '@entur/typography/styles';
 
 function MyComponent() {
   return (
@@ -37,23 +55,26 @@ function MyComponent() {
 }
 ```
 
-### Using Legacy Typography
+## 🔄 Migration
+
+**Good news!** This package maintains full backward compatibility. All existing import patterns continue to work exactly as before.
+
+### Backward Compatibility
 
 ```typescript
-import { Heading1, Paragraph, Link } from '@entur/typography';
-
-function MyComponent() {
-  return (
-    <div>
-      <Heading1>My Title</Heading1>
-      <Paragraph>My content</Paragraph>
-      <Link href="/more">Learn more</Link>
-    </div>
-  );
-}
+// ✅ All these still work exactly as before
+import { Heading1 } from '@entur/typography/dist/Heading1';
+import { Paragraph } from '@entur/typography/dist/Paragraph';
+import '@entur/typography/dist/styles.css';
 ```
 
-## 🔄 Migration
+### Modern Imports (Recommended)
+
+```typescript
+// 🚀 But these are now preferred
+import { Heading1, Paragraph } from '@entur/typography';
+import '@entur/typography/styles';
+```
 
 **Migrating from legacy typography?** We've created a comprehensive migration package to help you transition smoothly. Follow our migration guide in our website.
 
@@ -98,7 +119,7 @@ yarn add glob
 @import '@entur/typography/dist/styles.css';
 
 // With this
-@import '@entur/typography/src/beta/styles.scss';
+@import '@entur/typography/styles';
 ```
 
 ## 🎨 Features

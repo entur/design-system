@@ -5,10 +5,14 @@ import {
   TypographyHeadingVariant,
   TypographySize,
   TypographySpacing,
-} from './types';
-import { getHeadingVariantFromSemanticType, getSpacingClasses } from './utils';
+} from '../types';
+import {
+  getHeadingVariantFromSemanticType,
+  getSpacingClasses,
+} from '../utils/utils';
 import { PolymorphicComponentProps } from '@entur/utils';
-import './styles.scss';
+
+import './heading.scss';
 
 type HeadingBaseProps = {
   /** Visuell variant som bestemmer styling (anbefalt over size) */

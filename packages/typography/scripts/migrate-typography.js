@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 /**
+ * NOTICE: This script is generated using AI with human guidance.
  * Typography Migration Script
  *
  * This script helps you migrate from old typography components to new beta typography.
@@ -11,15 +12,25 @@
  *   - Updates import paths AND component usage
  *   - Replaces old components with beta components
  *   - CONSEQUENCES:
- *     * <Heading1> becomes <Heading as="h1" variant="title-1">
+ *     * <Heading1-6> becomes <Heading as="h1-6" variant="title-1|title-2|subtitle-1|subtitle-2|section-1|section-2">
  *     * <Paragraph> becomes <Text variant="paragraph">
- *     * <Link> becomes <LinkBeta>
- *     * <Blockquote> becomes <BlockquoteBeta>
- *     * <BlockquoteFooter> becomes <BlockquoteFooterBeta>
- *     * <UnorderedList> becomes <UnorderedListBeta>
- *     * <NumberedList> becomes <NumberedListBeta>
- *     * <ListItem> becomes <ListItemBeta>
- *     * Props may need updates (e.g., different prop names)
+ *     * <LeadParagraph> becomes <Text variant="leading">
+ *     * <SmallText> becomes <Text variant="subparagraph">
+ *     * <StrongText> becomes <Text as="strong" weight="bold">
+ *     * <SubLabel> becomes <Text variant="sublabel">
+ *     * <SubParagraph> becomes <Text variant="subparagraph">
+ *     * <Label> becomes <Text variant="label"> (or <Text as="label" variant="label"> if htmlFor prop exists)
+ *     * <EmphasizedText> becomes <Text variant="emphasized">
+ *     * <CodeText> becomes <Text variant="code-text">
+ *     * <PreformattedText> becomes <Text variant="preformatted-text">
+ *     * <Link> becomes <Link> (from @entur/typography/beta)
+ *     * <Blockquote> becomes <Blockquote> (from @entur/typography/beta)
+ *     * <BlockquoteFooter> becomes <BlockquoteFooter> (from @entur/typography/beta)
+ *     * <UnorderedList> becomes <UnorderedList> (from @entur/typography/beta)
+ *     * <NumberedList> becomes <NumberedList> (from @entur/typography/beta)
+ *     * <ListItem> becomes <ListItem> (from @entur/typography/beta)
+ *     * Import paths change from @entur/typography to @entur/typography/beta
+ *     * Props may need updates (e.g., margin becomes spacing)
  *     * Styling classes may change
  *     * Test thoroughly after migration!
  *
@@ -46,13 +57,19 @@
  *
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get __dirname equivalent for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Check if glob is available
 let glob;
 try {
-  glob = require('glob');
+  const globModule = await import('glob');
+  glob = globModule.default || globModule;
 } catch (error) {
   console.error(
     '❌ Error: The "glob" package is required to run this migration script.',
@@ -70,7 +87,7 @@ try {
 
 // Configuration
 const OLD_IMPORT = '@entur/typography';
-const BETA_IMPORT = '@entur/typography';
+const BETA_IMPORT = '@entur/typography/beta';
 
 // Enhanced warning detection patterns - only truly problematic patterns
 const PROBLEMATIC_PATTERNS = {
@@ -123,6 +140,7 @@ const MIGRATION_FOLDERS = [
   'app/**',
   'apps/**',
   'components/**',
+  'packages/**',
   'pages/**',
   'lib/**',
   'utils/**',
@@ -349,12 +367,13 @@ const COMPONENT_MAPPING = {
   Label: { component: 'Text', variant: 'label' },
   EmphasizedText: { component: 'Text', variant: 'emphasized' },
   CodeText: { component: 'Text', variant: 'code-text' },
-  Link: { component: 'LinkBeta' }, // Convert Link to LinkBeta
-  Blockquote: { component: 'BlockquoteBeta' }, // Convert Blockquote to BlockquoteBeta
-  BlockquoteFooter: { component: 'BlockquoteFooterBeta' }, // Convert BlockquoteFooter to BlockquoteFooterBeta
-  UnorderedList: { component: 'UnorderedListBeta' },
-  NumberedList: { component: 'NumberedListBeta' },
-  ListItem: { component: 'ListItemBeta' },
+  PreformattedText: { component: 'Text', variant: 'preformatted-text' },
+  Link: { component: 'Link' }, // Convert Link to beta Link
+  Blockquote: { component: 'Blockquote' }, // Convert Blockquote to beta Blockquote
+  BlockquoteFooter: { component: 'BlockquoteFooter' }, // Convert BlockquoteFooter to beta BlockquoteFooter
+  UnorderedList: { component: 'UnorderedList' },
+  NumberedList: { component: 'NumberedList' },
+  ListItem: { component: 'ListItem' },
 };
 
 // Props mapping for migration
@@ -408,6 +427,7 @@ const IMPORT_PATTERNS = [
   /from\s+['"`]@entur\/typography\/dist['"`]/g,
   /from\s+['"`]@entur\/typography\/dist\/index['"`]/g,
   /from\s+['"`]@entur\/typography\/dist\/styles\.css['"`]/g,
+  /from\s+['"`]@entur\/typography\/styles['"`]/g,
 ];
 
 // Parse JSX props more robustly
@@ -641,41 +661,49 @@ function updateImports(content) {
   let updatedContent = content;
   let changes = 0;
 
-  // First, update import paths
-  IMPORT_PATTERNS.forEach(pattern => {
-    const matches = content.match(pattern) || [];
-    changes += matches.length;
-    updatedContent = updatedContent.replace(pattern, `from '${BETA_IMPORT}'`);
-  });
+  // Handle CSS imports separately - these should stay with the main package
+  const cssImportPattern = /from\s+['"`]@entur\/typography\/styles['"`]/g;
+  if (cssImportPattern.test(content)) {
+    // CSS imports should remain unchanged as they're still in the main package
+    // No changes needed for CSS imports
+  }
 
-  // Then, update destructured import names - only within @entur/typography imports
-  // Find all import statements from @entur/typography and update component names
+  // Handle component imports - only migrate if they contain components that need migration
   const importRegex =
     /import\s*{([^}]+)}\s*from\s*['"']@entur\/typography['"']/g;
 
   updatedContent = updatedContent.replace(importRegex, (match, importList) => {
+    const components = importList
+      .split(',')
+      .map(comp => comp.trim())
+      .filter(comp => comp);
+
+    // Check if any of the imported components need migration
+    const needsMigration = components.some(comp =>
+      Object.keys(COMPONENT_MAPPING).includes(comp),
+    );
+
+    if (!needsMigration) {
+      // No migration needed, keep the import as is
+      return match;
+    }
+
     let updatedImportList = importList;
     let hasChanges = false;
     const uniqueComponents = new Set();
 
     // First, collect all existing components that should be preserved
-    const existingComponents = importList
-      .split(',')
-      .map(comp => comp.trim())
-      .filter(comp => {
-        // Skip empty components
-        if (!comp) return false;
+    const existingComponents = components.filter(comp => {
+      // Keep components that are:
+      // 1. Not in the migration mapping (old components), OR
+      // 2. Are the target components (new beta components)
+      const isOldComponent = Object.keys(COMPONENT_MAPPING).includes(comp);
+      const isTargetComponent = Object.values(COMPONENT_MAPPING).some(
+        mapping => mapping.component === comp,
+      );
 
-        // Keep components that are:
-        // 1. Not in the migration mapping (old components), OR
-        // 2. Are the target components (new beta components)
-        const isOldComponent = Object.keys(COMPONENT_MAPPING).includes(comp);
-        const isTargetComponent = Object.values(COMPONENT_MAPPING).some(
-          mapping => mapping.component === comp,
-        );
-
-        return !isOldComponent || isTargetComponent;
-      });
+      return !isOldComponent || isTargetComponent;
+    });
 
     // Then, update components that need migration
     Object.entries(COMPONENT_MAPPING).forEach(([oldComponent, mapping]) => {
@@ -775,6 +803,36 @@ function updateComponents(content) {
           const spreadPropsString =
             spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
           return `<Heading as="${asValue}" variant="${variantValue}"${propsString}${spreadPropsString}>`;
+        }
+
+        // Handle Label components with special case for htmlFor prop
+        if (oldComponent === 'Label' && mapping.component === 'Text') {
+          // If htmlFor prop exists, add as="label" to ensure proper semantic HTML
+          // Otherwise, use existing as prop or default to undefined (no as prop)
+          const asValue = existingProps.htmlFor
+            ? 'label'
+            : existingProps.as || undefined;
+          const variantValue = existingProps.variant || mapping.variant;
+
+          // Remove as and variant from props since we'll add them separately
+          delete newProps.as;
+          delete newProps.variant;
+
+          // Ensure mapping props come first
+          const orderedProps = {};
+          if (newProps.spacing) {
+            orderedProps.spacing = newProps.spacing;
+            delete newProps.spacing;
+          }
+          Object.assign(orderedProps, newProps);
+
+          const propsString = propsToString(orderedProps, originalSyntax);
+          const spreadPropsString =
+            spreadProps.length > 0 ? ` {...${spreadProps.join(', ...')}}` : '';
+
+          // Only add as prop if it has a value
+          const asProp = asValue ? ` as="${asValue}"` : '';
+          return `<Text${asProp} variant="${variantValue}"${propsString}${spreadPropsString}>`;
         }
 
         // Handle other components
@@ -1161,7 +1219,7 @@ function showNextSteps() {
   console.log('- Test thoroughly, especially components with custom styling');
 }
 
-function main() {
+async function main() {
   // Show help if requested
   if (process.argv.includes('--help') || process.argv.includes('-h')) {
     console.log('🎨 Typography Migration Script');
@@ -1189,11 +1247,9 @@ function main() {
     console.log('     - Replaces old components with beta components');
     console.log('     - Heading1-6 → Heading with as/variant props');
     console.log('     - Text components → Text with variant props');
-    console.log('     - Link → LinkBeta, Blockquote → BlockquoteBeta');
-    console.log(
-      '     - Lists → UnorderedListBeta, NumberedListBeta, ListItemBeta',
-    );
-    console.log('     - May require prop/styling updates');
+    console.log('     - All typography components migrate to beta versions');
+    console.log('     - Import paths change to @entur/typography/beta');
+    console.log('     - May require prop/styling updates (margin → spacing)');
     console.log('     - Test thoroughly after migration');
     console.log('');
     console.log('Examples:');
@@ -1294,13 +1350,14 @@ function main() {
   console.log('🚀 COMPLETE MIGRATION: Updating imports + component usage');
   console.log('⚠️  WARNING: This will modify your component usage!');
   console.log('   - Old components will be replaced with beta components');
+  console.log('   - Import paths will change to @entur/typography/beta');
   console.log(
-    '   - Link → LinkBeta, Blockquote → BlockquoteBeta, Lists → ListBeta components',
+    '   - Link → Link, Blockquote → Blockquote, Lists → List components (from beta)',
   );
   console.log(
-    '   - List components → UnorderedListBeta, NumberedListBeta, ListItemBeta',
+    '   - List components → UnorderedList, NumberedList, ListItem (from beta)',
   );
-  console.log('   - You may need to update props and styling');
+  console.log('   - Props may change (margin → spacing)');
   console.log('   - Test thoroughly after migration');
 
   console.log('');
@@ -1313,11 +1370,15 @@ function main() {
   console.log('\n🎯 Migration complete!');
 }
 
-if (require.main === module) {
-  main();
+// Check if this module is being run directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch(error => {
+    console.error('❌ Migration failed:', error);
+    process.exit(1);
+  });
 }
 
-module.exports = {
+export {
   updateImportsAndComponents,
   generateMigrationReport,
   COMPONENT_MAPPING,

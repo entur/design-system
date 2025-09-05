@@ -1,9 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from './types';
-import { getSpacingClasses } from './utils';
+import { TypographySpacing } from '../types';
+import { getSpacingClasses } from '../utils/utils';
 
+import './text.scss';
+
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 type UnorderedListBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
@@ -13,16 +18,19 @@ type UnorderedListBaseProps = {
   spacing?: TypographySpacing;
 };
 
-export type UnorderedListBetaProps<C extends React.ElementType> =
+export type UnorderedListProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, UnorderedListBaseProps>;
 
-export const UnorderedListBeta = <C extends React.ElementType = 'ul'>({
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export const UnorderedList = <C extends React.ElementType = 'ul'>({
   className,
   spacing,
   as,
   children,
   ...rest
-}: UnorderedListBetaProps<C>): JSX.Element => {
+}: UnorderedListProps<C>): JSX.Element => {
   const ListElement: React.ElementType = as || 'ul';
 
   return (

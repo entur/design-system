@@ -10,6 +10,7 @@ export const createBaseConfig = (): UserConfig =>
       }),
     ],
     build: {
+      emptyOutDir: true,
       rollupOptions: {
         external: [
           'react',

@@ -1,11 +1,14 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { Heading } from './Heading';
-import { Text } from './Text';
-import { LinkBeta } from './LinkBeta';
-import { BlockquoteBeta, BlockquoteFooterBeta } from './BlockquoteBeta';
-import { getHeadingVariantFromSemanticType, getSpacingClasses } from './utils';
+import { Heading } from './components/Heading';
+import { Text } from './components/Text';
+import { Link } from './components/Link';
+import { Blockquote, BlockquoteFooter } from './components/Blockquote';
+import {
+  getHeadingVariantFromSemanticType,
+  getSpacingClasses,
+} from './utils/utils';
 
 expect.extend(toHaveNoViolations);
 
@@ -176,9 +179,9 @@ describe('Beta Typography Components', () => {
     });
   });
 
-  describe('LinkBeta Component', () => {
+  describe('Link Component', () => {
     test('renders as anchor by default', () => {
-      const { getByText } = render(<LinkBeta href="/test">Test link</LinkBeta>);
+      const { getByText } = render(<Link href="/test">Test link</Link>);
       const link = getByText('Test link');
       expect(link.tagName).toBe('A');
       expect(link).toHaveAttribute('href', '/test');
@@ -186,9 +189,9 @@ describe('Beta Typography Components', () => {
 
     test('renders with external icon when external is true', () => {
       const { getByText, getByLabelText } = render(
-        <LinkBeta href="/external" external>
+        <Link href="/external" external>
           External link
-        </LinkBeta>,
+        </Link>,
       );
       expect(getByText('External link')).toBeInTheDocument();
       expect(getByLabelText('(ekstern lenke)')).toBeInTheDocument();
@@ -196,31 +199,31 @@ describe('Beta Typography Components', () => {
 
     test('allows custom aria-label for external icon', () => {
       const { getByLabelText } = render(
-        <LinkBeta
+        <Link
           href="/external"
           external
           ariaLabelExternalIcon="External link icon"
         >
           External link
-        </LinkBeta>,
+        </Link>,
       );
       expect(getByLabelText('External link icon')).toBeInTheDocument();
     });
 
     test('renders as different element with as prop', () => {
       const { getByText } = render(
-        <LinkBeta as="button" type="button">
+        <Link as="button" type="button">
           Button link
-        </LinkBeta>,
+        </Link>,
       );
       expect(getByText('Button link').tagName).toBe('BUTTON');
     });
 
     test('applies spacing classes correctly', () => {
       const { getByText } = render(
-        <LinkBeta href="/test" spacing="lg">
+        <Link href="/test" spacing="lg">
           Link with spacing
-        </LinkBeta>,
+        </Link>,
       );
       expect(getByText('Link with spacing')).toHaveClass(
         'eds-text--link--spacing-lg',
@@ -229,9 +232,9 @@ describe('Beta Typography Components', () => {
 
     test('passes through additional props', () => {
       const { getByText } = render(
-        <LinkBeta href="/test" data-testid="link" target="_blank">
+        <Link href="/test" data-testid="link" target="_blank">
           Link with props
-        </LinkBeta>,
+        </Link>,
       );
       const link = getByText('Link with props');
       expect(link).toHaveAttribute('data-testid', 'link');
@@ -240,17 +243,17 @@ describe('Beta Typography Components', () => {
 
     test('applies custom className', () => {
       const { getByText } = render(
-        <LinkBeta href="/test" className="custom-class">
+        <Link href="/test" className="custom-class">
           Custom link
-        </LinkBeta>,
+        </Link>,
       );
       expect(getByText('Custom link')).toHaveClass('custom-class');
     });
   });
 
-  describe('BlockquoteBeta Component', () => {
+  describe('Blockquote Component', () => {
     test('renders blockquote element', () => {
-      const { getByText } = render(<BlockquoteBeta>Test quote</BlockquoteBeta>);
+      const { getByText } = render(<Blockquote>Test quote</Blockquote>);
       const blockquote = getByText('Test quote');
       expect(blockquote.tagName).toBe('BLOCKQUOTE');
       expect(blockquote).toHaveClass('eds-text--blockquote');
@@ -258,9 +261,9 @@ describe('Beta Typography Components', () => {
 
     test('passes through additional props', () => {
       const { getByText } = render(
-        <BlockquoteBeta data-testid="quote" cite="/source">
+        <Blockquote data-testid="quote" cite="/source">
           Quote with props
-        </BlockquoteBeta>,
+        </Blockquote>,
       );
       const blockquote = getByText('Quote with props');
       expect(blockquote).toHaveAttribute('data-testid', 'quote');
@@ -269,16 +272,16 @@ describe('Beta Typography Components', () => {
 
     test('applies custom className', () => {
       const { getByText } = render(
-        <BlockquoteBeta className="custom-class">Custom quote</BlockquoteBeta>,
+        <Blockquote className="custom-class">Custom quote</Blockquote>,
       );
       expect(getByText('Custom quote')).toHaveClass('custom-class');
     });
   });
 
-  describe('BlockquoteFooterBeta Component', () => {
+  describe('BlockquoteFooter Component', () => {
     test('renders footer element', () => {
       const { getByText } = render(
-        <BlockquoteFooterBeta>Footer text</BlockquoteFooterBeta>,
+        <BlockquoteFooter>Footer text</BlockquoteFooter>,
       );
       const footer = getByText('Footer text');
       expect(footer.tagName).toBe('FOOTER');
@@ -287,9 +290,9 @@ describe('Beta Typography Components', () => {
 
     test('passes through additional props', () => {
       const { getByText } = render(
-        <BlockquoteFooterBeta data-testid="footer">
+        <BlockquoteFooter data-testid="footer">
           Footer with props
-        </BlockquoteFooterBeta>,
+        </BlockquoteFooter>,
       );
       expect(getByText('Footer with props')).toHaveAttribute(
         'data-testid',
@@ -299,9 +302,9 @@ describe('Beta Typography Components', () => {
 
     test('applies custom className', () => {
       const { getByText } = render(
-        <BlockquoteFooterBeta className="custom-class">
+        <BlockquoteFooter className="custom-class">
           Custom footer
-        </BlockquoteFooterBeta>,
+        </BlockquoteFooter>,
       );
       expect(getByText('Custom footer')).toHaveClass('custom-class');
     });
@@ -341,16 +344,14 @@ describe('Beta Typography Components', () => {
     describe('getSpacingClasses', () => {
       test('returns correct spacing classes for different values', () => {
         const lgResult = getSpacingClasses('lg', 'eds-heading');
-        expect(lgResult).toBeDefined();
-        expect(lgResult!['eds-heading--spacing-lg']).toBe(true);
+        expect(lgResult).toBe('eds-heading--spacing-lg');
 
         const mdTopResult = getSpacingClasses('md-top', 'eds-text');
-        expect(mdTopResult).toBeDefined();
-        expect(mdTopResult!['eds-text--spacing-md-top']).toBe(true);
+        expect(mdTopResult).toBe('eds-text--spacing-md-top');
       });
 
-      test('returns undefined when spacing is not provided', () => {
-        expect(getSpacingClasses(undefined, 'eds-heading')).toBeUndefined();
+      test('returns empty string when spacing is not provided', () => {
+        expect(getSpacingClasses(undefined, 'eds-heading')).toBe('');
       });
 
       test('handles all spacing variants', () => {
@@ -378,8 +379,7 @@ describe('Beta Typography Components', () => {
 
         spacingVariants.forEach(spacing => {
           const result = getSpacingClasses(spacing as any, 'eds-test');
-          expect(result).toBeDefined();
-          expect(result![`eds-test--spacing-${spacing}`]).toBe(true);
+          expect(result).toBe(`eds-test--spacing-${spacing}`);
         });
       });
     });
@@ -417,10 +417,10 @@ describe('Beta Typography Components', () => {
     test('Link components should not have basic accessibility issues', async () => {
       const { container } = render(
         <>
-          <LinkBeta href="/internal">Internal link</LinkBeta>
-          <LinkBeta href="/external" external>
+          <Link href="/internal">Internal link</Link>
+          <Link href="/external" external>
             External link
-          </LinkBeta>
+          </Link>
         </>,
       );
 
@@ -430,10 +430,10 @@ describe('Beta Typography Components', () => {
 
     test('Blockquote components should not have basic accessibility issues', async () => {
       const { container } = render(
-        <BlockquoteBeta>
+        <Blockquote>
           Quote text
-          <BlockquoteFooterBeta>Author name</BlockquoteFooterBeta>
-        </BlockquoteBeta>,
+          <BlockquoteFooter>Author name</BlockquoteFooter>
+        </Blockquote>,
       );
 
       const results = await axe(container);
@@ -454,19 +454,19 @@ describe('Beta Typography Components', () => {
           </Heading>
           <Text variant="paragraph" spacing="sm">
             This is a regular paragraph with some{' '}
-            <LinkBeta href="/reference" external>
+            <Link href="/reference" external>
               external reference
-            </LinkBeta>{' '}
+            </Link>{' '}
             and{' '}
             <Text variant="emphasized" as="span">
               emphasized text
             </Text>
             .
           </Text>
-          <BlockquoteBeta>
+          <Blockquote>
             <Text variant="quote">This is an important quote</Text>
-            <BlockquoteFooterBeta>— Famous Author</BlockquoteFooterBeta>
-          </BlockquoteBeta>
+            <BlockquoteFooter>— Famous Author</BlockquoteFooter>
+          </Blockquote>
         </div>,
       );
 
@@ -487,7 +487,7 @@ describe('Beta Typography Components', () => {
     });
 
     test('Link without href still renders', () => {
-      const { getByText } = render(<LinkBeta>Link without href</LinkBeta>);
+      const { getByText } = render(<Link>Link without href</Link>);
       expect(getByText('Link without href')).toBeInTheDocument();
     });
 

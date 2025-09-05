@@ -1,9 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from './types';
-import { getSpacingClasses } from './utils';
+import { TypographySpacing } from '../types';
+import { getSpacingClasses } from '../utils/utils';
 
+import './text.scss';
+
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 type ListItemBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
@@ -15,17 +20,20 @@ type ListItemBaseProps = {
   spacing?: TypographySpacing;
 };
 
-export type ListItemBetaProps<C extends React.ElementType> =
+export type ListItemProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, ListItemBaseProps>;
 
-export const ListItemBeta = <C extends React.ElementType = 'li'>({
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export const ListItem = <C extends React.ElementType = 'li'>({
   children,
   className,
   title,
   spacing,
   as,
   ...rest
-}: ListItemBetaProps<C>): JSX.Element => {
+}: ListItemProps<C>): JSX.Element => {
   const ItemElement: React.ElementType = as || 'li';
 
   return (

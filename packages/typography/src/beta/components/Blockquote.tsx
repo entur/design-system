@@ -1,7 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type BlockquotePropsBeta = {
+import './text.scss';
+
+export type BlockquoteProps = {
   /** Ekstra klassenavn */
   className?: string;
 } & React.DetailedHTMLProps<
@@ -9,7 +11,7 @@ export type BlockquotePropsBeta = {
   HTMLQuoteElement
 >;
 
-export const BlockquoteBeta = ({ className, ...rest }: BlockquotePropsBeta) => {
+export const Blockquote = ({ className, ...rest }: BlockquoteProps) => {
   return (
     <blockquote
       className={classNames('eds-text--blockquote', className)}
@@ -18,15 +20,15 @@ export const BlockquoteBeta = ({ className, ...rest }: BlockquotePropsBeta) => {
   );
 };
 
-type BlockquoteFooterPropsBeta = {
+type BlockquoteFooterProps = {
   /** Ekstra klassenavn */
   className?: string;
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
-export const BlockquoteFooterBeta = ({
+export const BlockquoteFooter = ({
   className,
   ...rest
-}: BlockquoteFooterPropsBeta) => {
+}: BlockquoteFooterProps) => {
   return (
     <footer
       className={classNames('eds-text--blockquote__footer', className)}

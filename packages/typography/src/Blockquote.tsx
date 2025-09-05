@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-type BlockquoteProps = {
+export type BlockquoteProps = {
   /** Ekstra klassenavn */
   className?: string;
 } & React.DetailedHTMLProps<
@@ -19,7 +19,7 @@ export const Blockquote = ({ className, ref, ...rest }: BlockquoteProps) => {
   );
 };
 
-type BlockquoteFooterProps = {
+export type BlockquoteFooterProps = {
   /** Ekstra klassenavn */
   className?: string;
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
