@@ -74,6 +74,26 @@ async function createDocumentationPagesFromSanity(graphql, actions, reporter) {
           title
           category
           subcategory
+          description
+          npmPackage
+          figmaLink
+          componentName
+          beskrivelse {
+            _key
+            _type
+            variant
+            alertType
+            title
+            _rawItems(resolveReferences: { maxDepth: 10 })
+          }
+          utvikling {
+            _key
+            _type
+            variant
+            alertType
+            title
+            _rawItems(resolveReferences: { maxDepth: 10 })
+          }
         }
       }
     }
