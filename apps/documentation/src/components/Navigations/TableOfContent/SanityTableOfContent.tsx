@@ -72,7 +72,7 @@ function useCurrentActiveHeading(headings: Heading[]) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '0px 0px -50% 0px',
+      rootMargin: '0px 0px -70% 0px',
       threshold: [0.1, 0.5, 1.0],
     });
 
