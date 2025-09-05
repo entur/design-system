@@ -1,0 +1,174 @@
+// Beta typography heading styles - experimental features
+// These styles may have breaking changes in future releases
+
+@use '@entur/tokens/dist/styles.scss' as t;
+@use '@entur/tokens/dist/base.scss' as *;
+@use '@entur/utils/dist/breakpoints.scss' as *;
+
+// Beta Typography Heading Base Classes
+.eds-heading {
+  color: var(--primary-text-color);
+  font-weight: t.$font-weights-heading;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+
+  // Variant styles
+  &--title-1 {
+    font-size: t.$font-sizes-extra-large2;
+    line-height: t.$line-heights-extra-large5;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-extra-large5;
+      line-height: t.$line-heights-extra-large7;
+    }
+  }
+
+  &--title-2 {
+    font-size: t.$font-sizes-extra-large;
+    line-height: t.$line-heights-extra-large4;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-extra-large4;
+      line-height: t.$line-heights-extra-large6;
+    }
+  }
+
+  &--subtitle-1 {
+    font-size: t.$font-sizes-large;
+    line-height: t.$line-heights-extra-large;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-extra-large2;
+      line-height: t.$line-heights-extra-large4;
+    }
+  }
+
+  &--subtitle-2 {
+    font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-large;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-extra-large;
+      line-height: t.$line-heights-extra-large3;
+    }
+  }
+
+  &--section-1 {
+    font-size: t.$font-sizes-small;
+    line-height: t.$line-heights-medium;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-large;
+      line-height: t.$line-heights-extra-large;
+    }
+  }
+
+  &--section-2 {
+    font-size: t.$font-sizes-small;
+    line-height: t.$line-heights-medium;
+
+    @include for-desktop {
+      font-size: t.$font-sizes-medium;
+      line-height: t.$line-heights-large;
+    }
+  }
+
+  &--label {
+    font-size: t.$font-sizes-medium;
+    line-height: t.$line-heights-medium;
+    color: var(--primary-label-color);
+
+    @include for-desktop {
+      line-height: t.$line-heights-large;
+    }
+  }
+
+  &--sublabel {
+    font-size: t.$font-sizes-small;
+    line-height: t.$line-heights-small;
+    color: var(--primary-label-color);
+
+    @include for-desktop {
+      line-height: t.$line-heights-medium;
+    }
+  }
+
+  // Size overrides
+  &--xs {
+    font-size: t.$font-sizes-extra-small;
+  }
+  &--s {
+    font-size: t.$font-sizes-small;
+  }
+  &--m {
+    font-size: t.$font-sizes-medium;
+  }
+  &--lg {
+    font-size: t.$font-sizes-large;
+  }
+  &--xl {
+    font-size: t.$font-sizes-extra-large;
+  }
+  &--2xl {
+    font-size: t.$font-sizes-extra-large2;
+  }
+
+  // Spacing classes
+  &--spacing-none {
+    margin: 0;
+  }
+  &--spacing-xs2 {
+    margin: t.$space-extra-small2;
+  }
+  &--spacing-xs2-top {
+    margin-top: t.$space-extra-small2;
+  }
+  &--spacing-xs2-bottom {
+    margin-bottom: t.$space-extra-small2;
+  }
+  &--spacing-xs {
+    margin: t.$space-extra-small;
+  }
+  &--spacing-xs-top {
+    margin-top: t.$space-extra-small;
+  }
+  &--spacing-xs-bottom {
+    margin-bottom: t.$space-extra-small;
+  }
+  &--spacing-sm {
+    margin: t.$space-small;
+  }
+  &--spacing-sm-top {
+    margin-top: t.$space-small;
+  }
+  &--spacing-sm-bottom {
+    margin-bottom: t.$space-small;
+  }
+  &--spacing-md {
+    margin: t.$space-default;
+  }
+  &--spacing-md-top {
+    margin-top: t.$space-default;
+  }
+  &--spacing-md-bottom {
+    margin-bottom: t.$space-default;
+  }
+  &--spacing-lg {
+    margin: t.$space-large;
+  }
+  &--spacing-lg-top {
+    margin-top: t.$space-large;
+  }
+  &--spacing-lg-bottom {
+    margin-bottom: t.$space-large;
+  }
+  &--spacing-xl {
+    margin: t.$space-extra-large;
+  }
+  &--spacing-xl-top {
+    margin-top: t.$space-extra-large;
+  }
+  &--spacing-xl-bottom {
+    margin-bottom: t.$space-extra-large;
+  }
+}

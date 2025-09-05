@@ -4,8 +4,6 @@ import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
 import pkg from './package.json';
 
-// Main config for backward-compatible src build
-// This maintains the old structure with individual component files
 export default defineConfig({
   plugins: [
     react({
@@ -13,20 +11,19 @@ export default defineConfig({
     }),
     dts({
       insertTypesEntry: true,
-      rollupTypes: false,
-      // Stop aliasing @entur to ../../packages
+      outDir: 'dist/beta/types',
+      entryRoot: 'src/beta',
+      // Stop aliasing @entur to ../../../packages
       pathsToAliases: false,
     }),
   ],
   build: {
     lib: {
-      entry: {
-        typography: resolve(__dirname, 'src/index.tsx'),
-      },
+      entry: resolve(__dirname, 'src/beta/index.tsx'),
       formats: ['es', 'cjs'],
       fileName: (format, entryName) => {
-        // Match old structure: typography.cjs.js and typography.esm.js
-        return `typography.${format === 'es' ? 'esm.js' : 'cjs.js'}`;
+        const _format = format === 'es' ? 'esm' : format;
+        return `${_format}/${entryName}.${format === 'es' ? 'mjs' : 'cjs'}`;
       },
     },
     rollupOptions: {
@@ -39,18 +36,13 @@ export default defineConfig({
         'react/jsx-dev-runtime',
       ],
       output: {
-        assetFileNames: assetInfo => {
-          if (assetInfo.names?.find(name => name.endsWith('.css'))) {
-            return 'styles.css';
-          }
-          return assetInfo.names?.[0] || 'asset';
-        },
+        preserveModules: true,
       },
     },
     sourcemap: true,
     minify: false,
-    outDir: 'dist',
-    emptyOutDir: true, // Don't empty - we'll build beta separately
+    outDir: 'dist/beta',
+    emptyOutDir: true, // Clean beta directory on each build
   },
   css: {
     modules: false,

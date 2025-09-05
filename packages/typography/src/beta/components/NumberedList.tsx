@@ -1,9 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
-import { TypographySpacing } from './types';
-import { getSpacingClasses } from './utils';
+import { TypographySpacing } from '../types';
+import { getSpacingClasses } from '../utils/utils';
 
+import './text.scss';
+
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 type NumberedListBaseProps = {
   /** Ekstra klassenavn */
   className?: string;
@@ -15,17 +20,20 @@ type NumberedListBaseProps = {
   spacing?: TypographySpacing;
 };
 
-export type NumberedListBetaProps<C extends React.ElementType> =
+export type NumberedListProps<C extends React.ElementType> =
   PolymorphicComponentProps<C, NumberedListBaseProps>;
 
-export const NumberedListBeta = <C extends React.ElementType = 'ol'>({
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export const NumberedList = <C extends React.ElementType = 'ol'>({
   className,
   type = '1',
   spacing,
   as,
   children,
   ...rest
-}: NumberedListBetaProps<C>): JSX.Element => {
+}: NumberedListProps<C>): JSX.Element => {
   const ListElement: React.ElementType = as || 'ol';
 
   return (

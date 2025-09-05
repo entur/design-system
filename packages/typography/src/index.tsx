@@ -24,12 +24,3 @@ export * from './StrongText';
 export * from './SubLabel';
 export * from './SubParagraph';
 export * from './UnorderedList';
-
-// beta
-export * from './beta/Text';
-export * from './beta/Heading';
-export * from './beta/BlockquoteBeta';
-export * from './beta/LinkBeta';
-export * from './beta/UnorderedListBeta';
-export * from './beta/NumberedListBeta';
-export * from './beta/ListItemBeta';

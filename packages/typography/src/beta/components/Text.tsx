@@ -1,15 +1,22 @@
 import React from 'react';
 
-import './styles.scss';
 import classNames from 'classnames';
+
+import { PolymorphicComponentProps } from '@entur/utils';
+
+import {
+  getSpacingClasses,
+  getSemanticTypeFromTextVariant,
+} from '../utils/utils';
+
 import {
   TypographySize,
   TypographyTextVariant,
   TypographyWeight,
   TypographySpacing,
-} from './types';
-import { getSpacingClasses, getSemanticTypeFromTextVariant } from './utils';
-import { PolymorphicComponentProps } from '@entur/utils';
+} from '../types';
+
+import './text.scss';
 
 type TextBaseProps = {
   /** Visuell tekststørrelse (typografi-token) */

@@ -2,9 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps } from '@entur/utils';
 import { ExternalIcon } from '@entur/icons';
-import { TypographySpacing } from './types';
-import { getSpacingClasses } from './utils';
+import { TypographySpacing } from '../types';
+import { getSpacingClasses } from '../utils/utils';
 
+import './text.scss';
+
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
 type LinkBaseProps = {
   external?: boolean;
 
@@ -17,10 +22,15 @@ type LinkBaseProps = {
   ariaLabelExternalIcon?: string;
 };
 
-export type LinkPropsBeta<C extends React.ElementType> =
-  PolymorphicComponentProps<C, LinkBaseProps>;
+export type LinkProps<C extends React.ElementType> = PolymorphicComponentProps<
+  C,
+  LinkBaseProps
+>;
 
-export const LinkBeta = <C extends React.ElementType = 'a'>({
+/**
+ * @beta Experimental component - may have breaking changes in future releases
+ */
+export const Link = <C extends React.ElementType = 'a'>({
   external = false,
   ariaLabelExternalIcon = '(ekstern lenke)',
   className,
@@ -28,7 +38,7 @@ export const LinkBeta = <C extends React.ElementType = 'a'>({
   children,
   as,
   ...rest
-}: LinkPropsBeta<C>): JSX.Element => {
+}: LinkProps<C>): JSX.Element => {
   const LinkElement: React.ElementType = as || 'a';
   return (
     <LinkElement
