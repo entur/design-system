@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.4](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.3...@entur/dropdown@7.3.4) (2025-09-05)
+
+### Bug Fixes
+
+- **dropdown:** add onBlur as prop on multiselect and searchable ([6fe1261](https://github.com/entur/design-system/commit/6fe12619de18fc2a978b72f74bad17c2a6440535))
+- **dropdown:** add useful callback props ([f996017](https://github.com/entur/design-system/commit/f9960176e8ce1bb644b53bdb8c88953da5c2bfc1))
+
 ## [7.3.2](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.1...@entur/dropdown@7.3.2) (2025-08-29)
 
 ### Bug Fixes

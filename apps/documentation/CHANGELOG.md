@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/entur/design-system/compare/@entur/documentation@6.9.1...@entur/documentation@6.10.0) (2025-09-05)
+
+### Bug Fixes
+
+- **docs:** fix incorrect rgb for lavender ([e0a8cc0](https://github.com/entur/design-system/commit/e0a8cc09979edd668be2132890dc8e6a59dd5a4b))
+- **dropdown:** add onBlur as prop on multiselect and searchable ([6fe1261](https://github.com/entur/design-system/commit/6fe12619de18fc2a978b72f74bad17c2a6440535))
+- **dropdown:** add useful callback props ([f996017](https://github.com/entur/design-system/commit/f9960176e8ce1bb644b53bdb8c88953da5c2bfc1))
+- **sanity:** add importstatement to proptable ([6a709c2](https://github.com/entur/design-system/commit/6a709c28ee6f00c9794476fe4001c64b671716e9))
+- **sanity:** rich content support in dodont cards ([5df2056](https://github.com/entur/design-system/commit/5df2056698797e0baf14e6227bb9a7b0f5831d88))
+
+### Features
+
+- **sanity:** add componentspesific document ([0b76c73](https://github.com/entur/design-system/commit/0b76c736debf544b43afc8a251278426e26ab521))
+- **sanity:** add copyabletext as object ([e17856e](https://github.com/entur/design-system/commit/e17856ed3325c530e25b93af5b48427c738c8c0f))
+- **sanity:** add dodont card as object ([94fe1b2](https://github.com/entur/design-system/commit/94fe1b23a8f236307cfb8f8bba9a0b9054cfa10a))
+- **sanity:** add dodont card as object ([670e386](https://github.com/entur/design-system/commit/670e3868849854ce506e8c3ef27f2be7bc8a79fc))
+
 # [6.9.0](https://github.com/entur/design-system/compare/@entur/documentation@6.8.0...@entur/documentation@6.9.0) (2025-08-29)
 
 ### Bug Fixes
