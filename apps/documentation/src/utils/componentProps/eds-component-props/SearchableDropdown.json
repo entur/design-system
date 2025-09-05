@@ -180,7 +180,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "feedback": {
@@ -458,6 +458,66 @@
       "required": false,
       "type": {
         "name": "number | undefined"
+      }
+    },
+    "onBlur": {
+      "defaultValue": null,
+      "description": "Callback som kalles når brukeren går ut av input-feltet",
+      "name": "onBlur",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLInputElement, Element>) => void) | undefined"
+      }
+    },
+    "onClick": {
+      "defaultValue": null,
+      "description": "Callback når komponenten klikkes",
+      "name": "onClick",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined"
+      }
+    },
+    "onKeyDown": {
+      "defaultValue": null,
+      "description": "Callback når en tast trykkes",
+      "name": "onKeyDown",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: KeyboardEvent<HTMLDivElement>) => void) | undefined"
+      }
+    },
+    "onFocus": {
+      "defaultValue": null,
+      "description": "Callback når komponenten får fokus",
+      "name": "onFocus",
+      "declarations": [
+        {
+          "fileName": "design-system/packages/dropdown/src/SearchableDropdown.tsx",
+          "name": "TypeLiteral"
+        }
+      ],
+      "required": false,
+      "type": {
+        "name": "((event: FocusEvent<HTMLDivElement, Element>) => void) | undefined"
       }
     }
   }

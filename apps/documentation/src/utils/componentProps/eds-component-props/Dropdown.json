@@ -100,7 +100,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Lar brukeren velge ved å \"tab-e\" seg ut av komponenten",
+      "description": "Lar brukeren velge ved å \"tab-e\" seg ut av komponenten.",
       "name": "selectOnTab",
       "declarations": [
         {
@@ -178,7 +178,7 @@
       ],
       "required": false,
       "type": {
-        "name": "any"
+        "name": "VariantType | \"error\" | \"info\" | undefined"
       }
     },
     "feedback": {
