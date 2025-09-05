@@ -109,8 +109,14 @@ export type MultiSelectProps<ValueType> = Omit<
    * @default `${selectedItems.length} valgte elementer, trykk for å hoppe til tekstfeltet`
    */
   ariaLabelJumpToInput?: string;
-  /** Event handler som kalles når brukeren går ut av input-feltet */
+  /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  /** Callback når komponenten klikkes */
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  /** Callback når en tast trykkes */
+  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  /** Callback når komponenten får fokus */
+  onFocus?: (event: React.FocusEvent<HTMLDivElement>) => void;
 };
 
 export const MultiSelect = React.forwardRef(
@@ -154,6 +160,9 @@ export const MultiSelect = React.forwardRef(
       ariaLabelRemoveSelected = 'trykk for å fjerne valg',
       ariaLabelSelectedItem,
       onBlur,
+      onClick,
+      onKeyDown,
+      onFocus,
       ...rest
     }: MultiSelectProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -437,7 +446,10 @@ export const MultiSelect = React.forwardRef(
           if (e.target === e.currentTarget) {
             getInputProps()?.onClick?.(e);
           }
+          onClick?.(e);
         }}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
         readOnly={readOnly}
         ref={refs.setReference}
         style={style}

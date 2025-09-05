@@ -54,8 +54,14 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
    * @default "Ingen treff for søket"
    */
   noMatchesText?: string;
-  /** Event handler som kalles når brukeren går ut av input-feltet */
+  /** Callback som kalles når brukeren går ut av input-feltet */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  /** Callback når komponenten klikkes */
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  /** Callback når en tast trykkes */
+  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  /** Callback når komponenten får fokus */
+  onFocus?: (event: React.FocusEvent<HTMLDivElement>) => void;
 };
 
 export const SearchableDropdown = React.forwardRef(
@@ -92,6 +98,9 @@ export const SearchableDropdown = React.forwardRef(
       style,
       variant = 'info',
       onBlur,
+      onClick,
+      onKeyDown,
+      onFocus,
       ...rest
     }: SearchableDropdownProps<ValueType>,
     ref: React.ForwardedRef<HTMLInputElement>,
@@ -303,7 +312,10 @@ export const SearchableDropdown = React.forwardRef(
           if (e.target === e.currentTarget) {
             getInputProps()?.onClick?.(e);
           }
+          onClick?.(e);
         }}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
         prepend={prepend}
         readOnly={readOnly}
         ref={refs.setReference}
