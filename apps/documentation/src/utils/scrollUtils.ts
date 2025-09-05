@@ -7,8 +7,7 @@ export const scrollToElement = (elementId: string, offset?: number) => {
   const element = document.getElementById(elementId);
   if (!element) return;
 
-  // Calculate the offset (navbar height + 1rem by default)
-  const defaultOffset = 2; // 5rem navbar + 1rem spacing
+  const defaultOffset = 5;
   const scrollOffset = offset ?? defaultOffset;
 
   const elementPosition = element.offsetTop;
@@ -30,7 +29,7 @@ export const handleHashLinkClick = (
   const href = event.currentTarget.getAttribute('href');
   if (!href?.startsWith('#')) return;
 
-  // event.preventDefault();
+  event.preventDefault(); // Prevent default browser scroll behavior
   const elementId = href.substring(1);
   scrollToElement(elementId);
 };
