@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.6](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.5...@entur/dropdown@7.3.6) (2025-09-08)
+
+### Bug Fixes
+
+- **dropdown:** fix publish ([1386ccc](https://github.com/entur/design-system/commit/1386ccc5775837672e8218e0c47491a414fb9f3f))
+
 ## [7.3.5-beta.0](https://github.com/entur/design-system/compare/@entur/dropdown@7.3.4...@entur/dropdown@7.3.5-beta.0) (2025-09-08)
 
 ### Bug Fixes
