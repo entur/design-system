@@ -61,11 +61,19 @@ export const DropdownList = <ValueType extends NonNullable<any>>({
   const isItemSelected = (
     item: NormalizedDropdownItemType<ValueType | string>,
   ) =>
-    selectedItems.some(
-      selectedItem =>
-        selectedItem?.value === item?.value &&
-        selectedItem?.label === item?.label,
-    );
+    selectedItems.some(selectedItem => {
+      // Primary match: value must always match
+      if (selectedItem?.value !== item?.value) return false;
+
+      // If both have labels, they must match for accessibility consistency
+      // This ensures screen readers announce the same label for selected items
+      // that users see in the dropdown list, preventing confusion
+      if (selectedItem?.label && item?.label) {
+        return selectedItem.label === item.label;
+      }
+
+      return true;
+    });
 
   const ariaValuesSelectAll = () => {
     switch (selectAllCheckboxState?.()) {
