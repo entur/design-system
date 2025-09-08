@@ -58,7 +58,7 @@ export type SearchableDropdownProps<ValueType> = DropdownProps<ValueType> & {
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Callback når komponenten klikkes */
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  /** Callback når en tast trykkes */
+  /** Callback når en tast trykkes*/
   onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   /** Callback når komponenten får fokus */
   onFocus?: (event: React.FocusEvent<HTMLDivElement>) => void;
