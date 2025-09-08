@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.10.1-beta.0](https://github.com/entur/design-system/compare/@entur/documentation@6.10.0...@entur/documentation@6.10.1-beta.0) (2025-09-08)
+
+### Bug Fixes
+
+- **sanitystudio:** add correct graphqldata ([42ab367](https://github.com/entur/design-system/commit/42ab36756b3a48053868361e01b42e256eba64ac))
+- **sanitystudio:** add correct graphqldata ([b0cdaf5](https://github.com/entur/design-system/commit/b0cdaf51df9ece93671b586423fedbefcf614744))
+
 # [6.10.0](https://github.com/entur/design-system/compare/@entur/documentation@6.9.1...@entur/documentation@6.10.0) (2025-09-05)
 
 ### Bug Fixes
